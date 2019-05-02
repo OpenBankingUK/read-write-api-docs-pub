@@ -231,27 +231,27 @@ An ASPSP must accept all valid [ISO-8601](https://www.iso.org/iso-8601-date-and-
 
 All dates in the JSON payloads are represented in [ISO-8601](https://www.iso.org/iso-8601-date-and-time-format.html) date-time format. All date-time fields in responses **must** include the timezone. For Example:
 
-```javascript
+```
 2017-04-05T10:43:07+00:00
 2018-07-03T14:43:41Z
 ```
 
 All dates in the query string are represented in [ISO-8601](https://www.iso.org/iso-8601-date-and-time-format.html) date-time format and must not include the timezone. For example:
 
-```javascript
+```
 2017-04-05T10:43:07
 2017-04-05
 ```
 
 All dates in the HTTP headers are represented as [RFC 7231](https://tools.ietf.org/html/rfc7231#section-7.1.1.1) Full Dates. An example is below:
 
-```javascript
+```
 Sun, 10 Sep 2017 19:43:31 GMT
 ```
 
 All dates in the JWT claims are expressed as a JSON number, representing the number of seconds from 1970-01-01T0:0:0Z as measured in GMT until the date/time.
 
-```javascript
+```
 //Sun, 12 Feb 2018 14:45:00 GMT
 1518446700
 ```
@@ -262,18 +262,12 @@ The path of the URI must follow the structure below (from the OB API Release Man
 * [participant-path-prefix]/open-banking/[version]/[resource-group]/[resource]/[resource-id]/[sub-resource]
 
 This consists of the following elements:
-* [participant-path-prefix]
-  * An optional ASPSP specific path prefix.
-* open-banking
-  * The constant string "open-banking".
-* [version]
-  * The version of the APIs expressed as /v[major-version].[minor-version]/.
-* [resource-group]
-  * The resource-group identifies the group of endpoints, according to the PSD2 role used to access the API (as "aisp", "pisp" or "cbpii").
-* [resource]/[resource-id]
-  * Details the resource.
-* [sub-resource]
-  * Details the sub-resource.
+* [participant-path-prefix]<br>An optional ASPSP specific path prefix.
+* open-banking<br>The constant string "open-banking".
+* [version]<br>The version of the APIs expressed as /v[major-version].[minor-version]/.
+* [resource-group]<br>The resource-group identifies the group of endpoints, according to the PSD2 role used to access the API (as "aisp", "pisp" or "cbpii").
+* [resource]/[resource-id]<br>Details the resource.
+* [sub-resource]<br>Details the sub-resource.
 
 An ASPSP must use the same participant-path-prefix and host name for all its resources.
 
@@ -537,7 +531,7 @@ Where message signing and encryption is required the convention is for a JWE to 
 
 Where message signing and encryption is required by implementors they should continue to use the detached signature method described above for consistency with the standards.
 
-The use of the type `application/jose+jwe header` indicates the JWT is encrypted and not signed.
+The use of the type `application/jose+jwe` header indicates the JWT is encrypted and not signed.
 
 The exception to this approach is the Event Notification API, which uses a native JWS. The native JWS should continue to be used and encapsulate the JWE.
 
@@ -906,7 +900,7 @@ In objects where the value for an optional field is not specified, the field **m
 
 In objects where an array field is defined as having 0..n values, the array field **must be** included in the payload with an empty array.
 
-```json
+```
 {
 	"Name": "",             // Incorrect. Exclude the Name field from the payload.
 	"Age": 0,               // Incorrect. 0 should not be used to indicate an undefined age.
