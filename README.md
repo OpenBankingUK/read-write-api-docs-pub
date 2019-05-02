@@ -9,19 +9,19 @@ Details of version compatibility can be found on each individual profile or reso
 
 - [Profiles](./profiles/readme.md)
   - [v3.1.2](./profiles/v3.1.2/readme.md)
-    - [Read/Write Data API Profile - v3.1.2 RC1]
-    - [Account and Transaction API Profile - v3.1.2 RC1](./profiles/v3.1.2/account and transaction api profile - v3/readme.md)
-    - [Payment Initiation API Profile - v3.1.2 RC1]
-    - [Confirmation of Funds API Profile - v3.1.2 RC1]
-    - [Event Notification API Profile - v3.1.2 RC1]
-- [Resources and Data Models]
-  - [AISP]
-  - [PISP]
-  - [CBPII]
-  - [Event Notifications]
-- [References]
-  - [Domestic Payment Message Formats - v3.1.2 RC1]
-  - [Namespaced Enumerations - v3.1.2 RC1]
+    - [Read/Write Data API Profile - v3.1.2](./profiles/v3.1.2/read-write data api profile - v3.1.2/readme.md)
+    - [Account and Transaction API Profile - v3.1.2](./profiles/v3.1.2/account and transaction api profile - v3.1.2/readme.md)
+    - [Payment Initiation API Profile - v3.1.2](./profiles/v3.1.2/payment initiation api profile - v3.1.2/readme.md)
+    - [Confirmation of Funds API Profile - v3.1.2](./profiles/v3.1.2/confirmation of funds api profile - v3.1.2/readme.md)
+    - [Event Notification API Profile - v3.1.2](./profiles/v3.1.2/event notification api profile - v3.1.2/readme.md)
+- [Resources and Data Models](./profiles/resources and data models/readme.md)
+  - [AISP](./profiles/resources and data models/aisp/readme.md)
+  - [PISP](./profiles/resources and data models/pisp/readme.md)
+  - [CBPII](./profiles/resources and data models/cbpii/readme.md)
+  - [Event Notifications](./profiles/resources and data models/event notifications/readme.md)
+- [References](./references/readme.md)
+  - [Domestic Payment Message Formats - v3.1.2](./references/domest-payment-message-formats-v3.1.2.md)
+  - [Namespaced Enumerations - v3.1.2](./references/namespaced-enumerations-v3.1.2.md)
 
 This specification should be read in conjunction with the Customer Experience Guidelines and Management Information Requirements. Together these form the OBIE standard, which should enable any ASPSP which implements the specification to meet their obligations under both the CMA Order and PSD2/RTS.
 
