@@ -219,7 +219,15 @@ For fields:
 ## Basics
 ### Actors
 
-[TBC]
+| Actor | Abbreviation| Type | Specialises | Description |
+| ------------- |-------------|-------------|-------------|-------------| 
+| Payment Service User |	PSU	| Person | N/A | A natural or legal person making use of a payment service as a payee, payer or both (PSD2 Article 4(10)).|
+| Payment Service Provider|PSP|Legal Entity|N/A|A legal entity (and some natural persons) that provide payment services as defined by PSD2 Article 4(11).|
+|Account Servicing Payment Service Provider|ASPSP|Legal Entity|PSP|An ASPSP is a PSP that provides and maintains a payment account for a payment services user (PSD 2 Article 4(15).<br>The CMA 9 are all ASPSPs.|
+|Third Party Providers / Trusted Third Parties|TPP|Legal Entity|PSP|A party other than an ASPSP that provides payment related services.<br>The term is not actually defined in PSD2, but is generally deemed to include all payment service providers that are 3rd parties (the ASPSP and the PSU to whom the account belongs being the first two parties).<br>References to a "TPP" in the specification relate to a piece of registered software with an ASPSP (with a specific client_id).
+|Payment Initiation Service Provider|PISP|Legal Entity|TPP|A TPP that provides Payment Initiation Services.<br>PSD2 does not offer a formal definition. Article 4(18) quite circularly defines a PISP as a PSP that provides Payment Initiation Services.
+|Account Information Service Provider|AISP|Legal Entity|TPP|A TPP that provides Account Information Services.<br>Again, PSD2 defines AISPs in Article 4(19) circularly as a PSP that provides account information services
+|Card Based Payment Instrument Issuer|CBPII|Legal Entity|TPP|A TPP that issues card based payment instruments to PSUs and requires access to the Confirmation of Funds API.|
 
 ### Character Encoding
 The API requests and responses **must** use a UTF-8 character encoding. This is the default character encoding for JSON (RFC 7158 - [Section 8.1](https://tools.ietf.org/html/rfc7158#section-8.1))
