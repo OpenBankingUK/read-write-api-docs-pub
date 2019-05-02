@@ -1,4 +1,4 @@
-# read-write-api-docs
+# Open Banking Read-Write API
 Standards documentation for the RW-API specs
 
 ## Authors
