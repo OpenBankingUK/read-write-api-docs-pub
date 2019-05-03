@@ -562,7 +562,7 @@ The verifier **must** extract and decode the JOSE header and signature from the 
 
 ##### Step 2: Validate the JOSE Header and Certificate
 
-The verifier **must** validate the JOSE header to ensure that it is a valid JSON object with only the claims specified in [Process for Signing a Payload - Step 2](#step-2:-form-the-jose-header).
+The verifier **must** validate the JOSE header to ensure that it is a valid JSON object with only the claims specified in [Process for Signing a Payload](#process-for-signing-a-payload) - Step 2.
 
 The verifier **must** validate that the `typ` header if specified has the value JOSE.
 
