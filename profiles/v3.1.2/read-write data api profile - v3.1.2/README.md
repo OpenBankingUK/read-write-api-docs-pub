@@ -342,7 +342,7 @@ An ASPSP **MAY** return other standard HTTP status codes (e.g. from gateways a
 
 ASPSPs **must** respond with error response in the OAuth/OIDC flow with mandatory alignment of the error codes to those specified in OpenID Connect Core Specification [Section 3.1.2.6](https://openid.net/specs/openid-connect-core-1_0.html#AuthError).
 
-ASPSPs **must** respond with Open Banking Error Response Structure [TBC] for all errors during API Calls.
+ASPSPs **must** respond with Open Banking [Error Response Structure](#error-response-structure) for all errors during API Calls.
 
 #### 400 (Bad Request) v/s 404 (Not Found)
 
@@ -993,7 +993,7 @@ The error response structure for Open Banking Read/Write APIs:
 
 ##### UML Diagram
 
-[TBC]
+![](./images/OBErrorResponse1.gif)
 
 ##### Data Dictionary
 
@@ -1150,7 +1150,7 @@ This flow assumes that the following Steps have been completed successfully:
 
 The AISP attempts to provide an expired or missing access token to the ASPSP in an attempt to Request Data
 
-[TBC]
+![](./images/MissingOrExpiredAccessToken.png)
 
 [TBC] - Codeblock
 
@@ -1164,7 +1164,7 @@ This flow assumes that the following Steps have been completed successfully:
 
 The AISP provides a malformed request to the ASPSP in an attempt to setup an Account Request.
 
-[TBC]
+![](./images/IncompleteOrMalformedRequestPayload.png)
 
 [TBC] - Codeblock
 
@@ -1178,7 +1178,7 @@ This flow assumes that the following Steps have been completed successfully:
 
 The AISP provides a (valid) access token which does not have a valid scope (or link to the correct Permissions) to Request Data
 
-[TBC]
+![](./images/MissingOrInvalidAccessTokenScope.png)
 
 [TBC] - Codeblock
 
@@ -1194,7 +1194,7 @@ The AISP provides a (valid) access token which is used to generate a burst of mu
 
 The ASPSP may optionally choose to return a 429 Response
 
-[TBC]
+![](./images/TooManyRequests.png)
 
 [TBC] - Codeblock
 
@@ -1207,7 +1207,7 @@ This flow assumes that the following Steps have been completed successfully:
 
 The Step 3: Authorise Consent Flow fails to succeed due to the PSU providing invalid credentials to the ASPSP, resulting in no Authorization Code being generated.
 
-[TBC]
+![](./images/FailedAuthorisationConsent.png)
 
 [TBC] - Codeblock
 
