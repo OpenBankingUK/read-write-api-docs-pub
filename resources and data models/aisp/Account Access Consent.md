@@ -1,4 +1,4 @@
-# Table of Contents
+
 1. [Overview](#overview)
    1. [Profile Compatibility](#profile-ompatibility)
       1. [Account and Transaction API Profile](#account-aransaction-APIProfile)
