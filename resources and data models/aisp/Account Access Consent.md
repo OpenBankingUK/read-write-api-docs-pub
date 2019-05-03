@@ -4,7 +4,7 @@
    1. [Profile Compatibility](#profile-ompatibility)
 2. [Endpoints](#Endpoints)
    1. [POST /account-access-consents](#POSTaccount-access-consents)
-      1. [Account Access Consent Status](#Account-Access-ConsentStatus)
+      1. [Account Access Consent Status](#Account-Access-Consent-Status)
       2. [Status Flow](#Status-Flow)
    2. [GET /account-access-consents/{ConsentId}](#GET-account-access-consents-ConsentId)
       1. [Account Access Consent Status](#Account-Access-ConsentStatus1)
