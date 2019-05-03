@@ -1,13 +1,34 @@
-# Endpoints
+  - [Endpoints](#endpoints)
+	- [POST&nbsp;/domestic-payment-consents](#postnbspdomestic-payment-consents)
+		- [Status](#status)
+	- [GET&nbsp;/domestic-payment-consents/{ConsentId}/funds-confirmation](#getnbspdomestic-payment-consentsconsentidfunds-confirmation)
+		- [Status](#status-1)
+	- [GET&nbsp;/domestic-payments/{DomesticPaymentId}](#getnbspdomestic-paymentsdomesticpaymentid)
+		- [Status](#status-2)
+	- [State&nbsp;Model](#statenbspmodel)
+		- [Payment&nbsp;Order&nbsp;Consent](#paymentnbspordernbspconsent)
+		- [Payment&nbsp;Order](#paymentnbsporder)
+			- [Multiple&nbsp;Authorisation](#multiplenbspauthorisation)
+- [Data&nbsp;Model](#datanbspmodel)
+	- [Reused&nbsp;Classes](#reusednbspclasses)
+		- [OBDomestic2](#obdomestic2)
+			- [UML&nbsp;Diagram](#umlnbspdiagram)
+			- [Notes](#notes)
+			- [Data&nbsp;Dictionary](#datanbspdictionary)
+	- [Domestic&nbsp;Payment&nbsp;Consent&nbsp;-&nbsp;Request](#domesticnbsppaymentnbspconsentnbsp-nbsprequest)
+		- [UML Diagram](#uml-diagram)
+		- 
+# [Endpoints](Endpoints)
 | Resource |HTTP Operation |Endpoint |Mandatory ? |Scope |Grant Type |Message Signing |Idempotency Key |Request Object |Response Object |
 | -------- |-------------- |-------- |----------- |----- |---------- |--------------- |--------------- |-------------- |--------------- |
-| domestic-payment-consents |POST |POST /domestic-payment-consents |Mandatory |payments |Client Credentials |Signed Request Signed Response |Yes |OBWriteDomesticConsent2 |OBWriteDomesticConsentResponse2 |
-| domestic-payment-consents |GET |GET /domestic-payment-consents/{ConsentId} |Mandatory |payments |Client Credentials |Signed Response |No |NA |OBWriteDomesticConsentResponse2 |
+| domestic-payment-consents |POST |POST /domestic-payment-consents |Mandatory |payments |Client Credentials |Signed Request Signed Response |Yes |OBWriteDomesticConsent3 |OBWriteDomesticConsentResponse3 |
+| domestic-payment-consents |GET |GET /domestic-payment-consents/{ConsentId} |Mandatory |payments |Client Credentials |Signed Response |No |NA |OBWriteDomesticConsentResponse3 |
 | domestic-payment-consents |GET |GET /domestic-payment-consents/{ConsentId}/funds-confirmation |Mandatory |payments |Authorization Code |Signed Response |No |NA |OBWriteFundsConfirmationResponse1 |
-| domestic-payments |POST |POST /domestic-payments |Mandatory |payments |Authorization Code |Signed Request Signed Response |Yes |OBWriteDomestic2 |OBWriteDomesticResponse2 |
-| domestic-payments |GET |GET /domestic-payments/{DomesticPaymentId} |Mandatory |payments |Client Credentials |Signed Response |No |NA |OBWriteDomesticResponse2 |
+| domestic-payments |POST |POST /domestic-payments |Mandatory |payments |Authorization Code |Signed Request Signed Response |Yes |OBWriteDomestic2 |OBWriteDomesticResponse3 |
+| domestic-payments |GET |GET /domestic-payments/{DomesticPaymentId} |Mandatory |payments |Client Credentials |Signed Response |No |NA |OBWriteDomesticResponse3 |
+| payment-details |GET |GET /domestic-payments/{DomesticPaymentId}/payment-details |Optional |payments |Client Credentials |Signed Response |No |NA |OBWritePaymentDetailsResponse1 |
 
-## POST /domestic-payment-consents 
+## [POST&nbsp;/domestic-payment-consents](POST&nbsp;/domestic-payment-consents)
 ```POST /domestic-payment-consents```
 
 The API endpoint allows the PISP to ask an ASPSP to create a new **domestic-payment-consent** resource.
@@ -22,17 +43,17 @@ The default Status is &quot;AwaitingAuthorisation&quot; immediately after the do
 | ------ |
 | AwaitingAuthorisation |
 
-## GET /domestic-payment-consents/{ConsentId}
+## [GET&nbsp;/domestic-payment-consents/{ConsentId}](GET&nbsp;/domestic-payment-consents/{ConsentId})
 ```GET /domestic-payment-consents/{ConsentId}```
 
 A PISP can optionally retrieve a payment consent resource that they have created to check its status. 
 ### Status
 
-Once the PSU authorises the payment-consent resource - the Status of the payment-consent resource will be updated with "Authorised".
+Once the PSU authorises the payment-consent resource - the Status of the payment-consent resource will be updated with &quot;Authorised&quot;.
 
-If the PSU rejects the consent or the domestic-payment-consent has failed some other ASPSP validation, the Status will be set to "Rejected".
+If the PSU rejects the consent or the domestic-payment-consent has failed some other ASPSP validation, the Status will be set to &quot;Rejected&quot;.
 
-Once a domestic-payment has been successfully created using the domestic-payment-consent, the Status of the domestic-payment-consent will be set to "Consumed".
+Once a domestic-payment has been successfully created using the domestic-payment-consent, the Status of the domestic-payment-consent will be set to &quot;Consumed&quot;.
 
 The available status codes for the domestic-payment-consent resource are:
 
@@ -43,7 +64,7 @@ The available status codes for the domestic-payment-consent resource are:
 | Authorised |
 | Consumed |
 
-## GET /domestic-payment-consents/{ConsentId}/funds-confirmation
+## [GET&nbsp;/domestic-payment-consents/{ConsentId}/funds-confirmation](GET&nbsp;/domestic-payment-consents/{ConsentId}/funds-confirmation)
 ```GET /domestic-payment-consents/{ConsentId}/funds-confirmation```
 
 The API endpoint allows the PISP to ask an ASPSP to confirm funds on a **domestic-payment-consent** resource.
@@ -51,7 +72,7 @@ The API endpoint allows the PISP to ask an ASPSP to confirm funds on a **domesti
 * An ASPSP can only respond to a funds confirmation request if the **domestic-payment-consent** resource has an Authorised status. If the status is not Authorised, an ASPSP must respond with a 400 (Bad Request) and a ```UK.OBIE.Resource.InvalidConsentStatus``` error code.
 * Confirmation of funds requests do not affect the status of the **domestic-payment-consent** resource.
 
-## POST /domestic-payments
+## [POST&nbsp;/domestic-payments](POST&nbsp;/domestic-payments)
 ```POST /domestic-payments```
 
 Once the domestic-payment-consent has been authorised by the PSU, the PISP can proceed to submitting the domestic-payment for processing:
@@ -61,7 +82,7 @@ Once the domestic-payment-consent has been authorised by the PSU, the PISP can p
 * The PISP **must** ensure that the Initiation and Risk sections of the domestic-payment match the corresponding Initiation and Risk sections of the domestic-payment-consent resource. If the two do not match, the ASPSP must not process the request and **must** respond with a 400 (Bad Request).
 * Any operations on the domestic-payment resource will not result in a status change for the domestic-payment resource.
 
-### Status
+### [Status](Status)
 
 A domestic-payment can only be created if its corresponding domestic-payment-consent resource has the status of "Authorised". 
 
@@ -72,13 +93,16 @@ The domestic-payment resource that is created successfully must have one of the 
 | Pending |
 | Rejected |
 | AcceptedSettlementInProcess |
+| AcceptedSettlementCompleted |
+| AcceptedWithoutPosting |
+| AcceptedCreditSettlementCompleted |
 
-## GET /domestic-payments/{DomesticPaymentId}
+## [GET&nbsp;/domestic-payments/{DomesticPaymentId}](GET&nbsp;/domestic-payments/{DomesticPaymentId})
 ```GET /domestic-payments/{DomesticPaymentId}```
 
 A PISP can retrieve the domestic-payment to check its status.
 
-### Status
+### [Status](Status)
 
 The domestic-payment resource must have one of the following PaymentStatusCode code-set enumerations:
 
@@ -88,10 +112,42 @@ The domestic-payment resource must have one of the following PaymentStatusCode c
 | Rejected |
 | AcceptedSettlementInProcess |
 | AcceptedSettlementCompleted |
+| AcceptedWithoutPosting |
+| AcceptedCreditSettlementCompleted |
 
-## State Model
-### Payment Order Consent
-The state model for the domestic-payment-consent resource follows the generic consent state model. However, does not use the "Revoked" status, as the consent for a domestic-payment is not a long-lived consent.
+## [GET&nbsp;/domestic-payments/{DomesticPaymentId}/payment-details](GET&nbsp;/domestic-payments/{DomesticPaymentId}/payment-details)
+```GET /domestic-payments/{DomesticPaymentId}/payment-details```
+
+A PISP can retrieve the Details of the underlying payment transaction via this endpoint. This resource allows ASPSPs to return richer list of Payment Statuses, and if available payment scheme related statuses.
+### [Status](Status)
+
+The domestic-payment - payment-details must have one of the following PaymentStatusCode code-set enumerations:
+| Status |
+| ------ |
+| Accepted |
+| AcceptedCancellationRequest |
+| AcceptedTechnicalValidation |
+| AcceptedCustomerProfile |
+| AcceptedFundsChecked |
+| AcceptedWithChange |
+| Pending |
+| Rejected |
+| AcceptedSettlementInProcess |
+| AcceptedSettlementCompleted |
+| AcceptedWithoutPosting |
+| AcceptedCreditSettlementCompleted |
+| Cancelled |
+| NoCancellationProcess |
+| PartiallyAcceptedCancellationRequest |
+| PartiallyAcceptedTechnicalCorrect |
+| PaymentCancelled |
+| PendingCancellationRequest |
+| Received |
+| RejectedCancellationRequest |
+
+## [State&nbsp;Model](State&nbsp;Model)
+### [Payment&nbsp;Order&nbsp;Consent](Payment&nbsp;Order&nbsp;Consent)
+The state model for the domestic-payment-consent resource follows the generic consent state model. However, does not use the &nbsp;Revoked&nbsp; status, as the consent for a domestic-payment is not a long-lived consent.
 
 ![Status](images/image2018-5-18_10-24-21.png "Payment Order Consent Status")
 
@@ -104,10 +160,11 @@ The definitions for the Status:
 | 3 |Authorised |The consent resource has been successfully authorised. |
 | 4 |Consumed |The consented action has been successfully completed. This does not reflect the status of the consented action. |
 
-### Payment Order
+### [Payment&nbsp;Order](Payment&nbsp;Order)
+
 The state model for the domestic-payment resource follows the behaviour and definitions for the ISO 20022 PaymentStatusCode code-set.
 
-![Status](images/payment-status-v3.1.png "Payment Order Status")
+![Status](images/PaymentStatusLifeCycle.png "Payment Order Status")
 
 The definitions for the status:
 
@@ -117,8 +174,12 @@ The definitions for the status:
 | 2 |Rejected |Payment initiation or individual transaction included in the payment initiation has been rejected. |
 | 3 |AcceptedSettlementInProcess |All preceding checks such as technical validation and customer profile were successful and therefore the payment initiation has been accepted for execution. |
 | 4 |AcceptedSettlementCompleted |Settlement on the debtor's account has been completed. |
+| 5 |AcceptedWithoutPosting |Payment instruction included in the credit transfer is accepted without being posted to the creditor customer’s account. |
+| 6 |AcceptedCreditSettlementCompleted |Settlement on the creditor's account has been completed. |
 
-#### Multiple Authorisation
+
+#### [Multiple&nbsp;Authorisation](Multiple&nbsp;Authorisation)
+
 If the payment-order requires multiple authorisations - the Status of the multiple authorisations will be updated in the MultiAuthorisation object.
 
 ![Status](images/image2018-6-29_16-36-34.png "Multi Authorisation Status")
@@ -131,18 +192,20 @@ The definitions for the status:
 | 2 |Rejected |The payment-order resource has been rejected by an authoriser. |
 | 3 |Authorised |The payment-order resource has been successfully authorised by all required authorisers.|
 
-# Data Model
+# [Data&nbsp;Model](Data&nbsp;Model)
+
 The data dictionary section gives the detail on the payload content for the Domestic Payment API flows.
 
-## Reused Classes
-### OBDomestic2
+## [Reused&nbsp;Classes](Reused&nbsp;Classes)
+### [OBDomestic2](OBDomestic2)
+
 This section describes the OBDomestic2 class which is reused as the Initiation object in the domestic-payment-consent and domestic-payment resources.
 
-#### UML Diagram
+#### [UML&nbsp;Diagram](UML&nbsp;Diagram)
 
 ![UML Diagram$](images/OBDomestic2.gif "UML Diagram")
 
-#### Notes
+#### [Notes](Notes)
 For the OBDomestic2 Initiation object:  
 
 * All elements in the Initiation payload that are specified by the PISP must not be changed via the ASPSP as this is part of formal consent from the PSU.
@@ -157,11 +220,13 @@ For the OBDomestic2 Initiation object:
   * Where the "UK.OBIE.IBAN" is specified as the SchemeName in the Account identification section (either DebtorAccount or CreditorAccount), the Identification field must be populated with the full IBAN.
 * The element Reference has been renamed from CreditorReferenceInformation as this is the unique ISO 20022 element used in pain.001, rather than an ISO 20022 message component.
 * As a merchant may be initiating a payment via a PISP two identifiers are included in the payload: 
-InstructionIdentification is uniquely generated by the PISP. The expectation is that this is unique indefinitely across all time periods. The PISP can ensure that this is indefinitely unique by including a date or date-time element to the field, or by inserting a unique Id. 
-* EndToEndIdentification is uniquely generated by the merchant.
+  * InstructionIdentification is uniquely generated by the PISP. The expectation is that this is unique indefinitely across all time periods. The PISP can ensure that this is indefinitely unique by including a date or date-time element to the field, or by inserting a unique Id. 
+  * EndToEndIdentification is uniquely generated by the merchant.
 * Neither the InstructionIdentification nor EndToEndIdentification will be used as the domestic-payment-consent resource identifier (ConsentId) as the ConsentId must be uniquely generated by the ASPSP.
 * LocalInstrument is the requested payment scheme for execution. This is a free-text field.
 * Design decisions for the Initiation section of the payload and how this maps to the ISO 20022 messaging standard are articulated in the Mapping to Schemes and Standards section.
+
+#### [Data&nbsp;Dictionary](Data&nbsp;Dictionary)
 
 | Name |Occurrence |XPath |EnhancedDefinition |Class |Codes |Pattern |
 | ---- |---------- |----- |------------------ |----- |----- |------- |
@@ -175,12 +240,12 @@ InstructionIdentification is uniquely generated by the PISP. The expectation is 
 | DebtorAccount |0..1 |OBDomestic2/DebtorAccount |Unambiguous identification of the account of the debtor to which a debit entry will be made as a result of the transaction. |OBCashAccountDebtor4 | | |
 | SchemeName |1..1 |OBDomestic2/DebtorAccount/SchemeName |Name of the identification scheme, in a coded form as published in an external list. |OBExternalAccountIdentification4Code | | |
 | Identification |1..1 |OBDomestic2/DebtorAccount/Identification |Identification assigned by an institution to identify an account. This identification is known by the account owner. |Max256Text | | |
-| Name |0..1 |OBDomestic2/DebtorAccount/Name |Name of the account, as assigned by the account servicing institution. Usage: The account name is the name or names of the account owner(s) represented at an account level. The account name is not the product name or the nickname of the account. |Max70Text | | |
+| Name |0..1 |OBDomestic2/DebtorAccount/Name |The account name is the name or names of the account owner(s) represented at an account level, as displayed by the ASPSP's online channels. Note, the account name is not the product name or the nickname of the account. |Max70Text | | |
 | SecondaryIdentification |0..1 |OBDomestic2/DebtorAccount/SecondaryIdentification |This is secondary identification of the account, as assigned by the account servicing institution. This can be used by building societies to additionally identify accounts with a roll number (in addition to a sort code and account number combination). |Max34Text | | |
 | CreditorAccount |1..1 |OBDomestic2/CreditorAccount |Unambiguous identification of the account of the creditor to which a credit entry will be posted as a result of the payment transaction. |OBCashAccountCreditor3 | | |
 | SchemeName |1..1 |OBDomestic2/CreditorAccount/SchemeName |Name of the identification scheme, in a coded form as published in an external list. |OBExternalAccountIdentification4Code | | |
 | Identification |1..1 |OBDomestic2/CreditorAccount/Identification |Identification assigned by an institution to identify an account. This identification is known by the account owner. |Max256Text | | |
-| Name |1..1 |OBDomestic2/CreditorAccount/Name |Name of the account, as assigned by the account servicing institution. Usage: The account name is the name or names of the account owner(s) represented at an account level. The account name is not the product name or the nickname of the account. OB: ASPSPs may carry out name validation for Confirmation of Payee, but it is not mandatory. |Max70Text | | |
+| Name |1..1 |OBDomestic2/CreditorAccount/Name |The account name is the name or names of the account owner(s) represented at an account level. Note, the account name is not the product name or the nickname of the account. OB: ASPSPs may carry out name validation for Confirmation of Payee, but it is not mandatory. |Max70Text | | |
 | SecondaryIdentification |0..1 |OBDomestic2/CreditorAccount/SecondaryIdentification |This is secondary identification of the account, as assigned by the account servicing institution. This can be used by building societies to additionally identify accounts with a roll number (in addition to a sort code and account number combination). |Max34Text | | |
 | CreditorPostalAddress |0..1 |OBDomestic2/CreditorPostalAddress |Information that locates and identifies a specific address, as defined by postal services. |OBPostalAddress6 | | |
 | AddressType |0..1 |OBDomestic2/CreditorPostalAddress/AddressType |Identifies the nature of the postal address. |OBAddressTypeCode |Business Correspondence DeliveryTo MailTo POBox Postal Residential Statement | |
@@ -197,3 +262,185 @@ InstructionIdentification is uniquely generated by the PISP. The expectation is 
 | Unstructured |0..1 |OBDomestic2/RemittanceInformation/Unstructured |Information supplied to enable the matching/reconciliation of an entry with the items that the payment is intended to settle, such as commercial invoices in an accounts' receivable system, in an unstructured form. |Max140Text | | |
 | Reference |0..1 |OBDomestic2/RemittanceInformation/Reference |Unique reference, as assigned by the creditor, to unambiguously refer to the payment transaction. Usage: If available, the initiating party should provide this reference in the structured remittance information, to enable reconciliation by the creditor upon receipt of the amount of money. If the business context requires the use of a creditor reference or a payment remit identification, and only one identifier can be passed through the end-to-end chain, the creditor's reference or payment remittance identification should be quoted in the end-to-end transaction identification. OB: The Faster Payments Scheme can only accept 18 characters for the ReferenceInformation field - which is where this ISO field will be mapped. |Max35Text | | |
 | SupplementaryData |0..1 |OBDomestic2/SupplementaryData |Additional information that can not be captured in the structured fields and/or any other specific block. |OBSupplementaryData1 | | |
+
+## [Domestic&nbsp;Payment&nbsp;Consent&nbsp;-&nbsp;Request](Domestic&nbsp;Payment&nbsp;Consent&nbsp;-&nbsp;Request)
+
+The OBWriteDomesticConsent3 object will be used for the call to:
+* POST /domestic-payment-consents
+  
+### UML Diagram
+
+![Domestic Payment Consent - Request](images/OBWriteDomesticConsent3.gif)
+
+### Notes
+
+The domestic-payment-consent **request** contains these objects:
+
+* Initiation
+* Authorisation
+* SCASupportData
+* Risk.
+
+### Data Dictionary
+
+| Name |Occurrence |XPath |EnhancedDefinition |Class |Codes |Pattern |
+| ---- |---------- |----- |------------------ |----- |----- |------- |
+| OBWriteDomesticConsent3 |OBWriteDomesticConsent3 | | |OBWriteDomesticConsent3 | | |
+| Data |1..1 |OBWriteDomesticConsent3/Data | |OBWriteDataDomesticConsent3 | | |
+| Initiation |1..1 |OBWriteDomesticConsent3/Data/Initiation |The Initiation payload is sent by the initiating party to the ASPSP. It is used to request movement of funds from the debtor account to a creditor for a single domestic payment. |OBDomestic2 | | |
+| Authorisation |0..1 |OBWriteDomesticConsent3/Data/Authorisation |The authorisation type request from the TPP. |OBAuthorisation1 | | |
+| SCASupportData |0..1 |OBWriteDomesticConsent3/Data/SCASupportData |Supporting Data provided by TPP, when requesting SCA Exemption. |OBSCASupportData1 | | |
+
+## Domestic Payment Consent - Response
+The OBWriteDomesticConsentResponse3 object will be used for a response to a call to:
+
+* POST /domestic-payment-consents
+* GET /domestic-payment-consents/{ConsentId}
+
+### UML Diagram
+
+![Domestic Payment Consent - Response](images/OBWriteDomesticConsentResponse3.gif)
+
+### Notes
+
+Them domestic-payment-consent&nbsp;**response**&nbsp;contains the full **original** payload from the&nbsp;domestic-payment-consent&nbsp;**request**,&nbsp;with the additional elements below:
+* ConsentId
+* CreationDateTime the&nbsp;domestic-payment-consent resource was created.
+* Status and StatusUpdateDateTime of the&nbsp;domestic-payment-consent resource.
+* CutOffDateTime Behaviour is explained in Payment Initiation API Specification, Section - Payment Restrictions -&gt; CutOffDateTime API Behaviour.
+* ExpectedExecutionDateTime for the&nbsp;domestic-payment resource if created before CutOffDateTIme - the expected DateTime the payment is executed against the Debtor Account.&nbsp;If populated, the ASPSP must update the value with any changes (e.g., after PSU authorisation).
+* ExpectedSettlementDateTime for the&nbsp;domestic-payment resource if created before CutOffDateTIme - the expected DateTime the payment will be received&nbsp;at the Creditor Account.&nbsp;If populated, the ASPSP must update the value with any changes (e.g., after PSU authorisation).
+* Charges array for the breakdown of applicable ASPSP charges.
+
+### Data Dictionary
+
+ | Name |Occurrence |XPath |EnhancedDefinition |Class |Codes |Pattern |
+| ---- |---------- |----- |------------------ |----- |----- |------- |
+| OBWriteDomesticConsentResponse3 | |OBWriteDomesticConsentResponse3 | |OBWriteDomesticConsentResponse3 | | |
+| Data |1..1 |OBWriteDomesticConsentResponse3/Data | |OBWriteDataDomesticConsentResponse3 | | |
+| ConsentId |1..1 |OBWriteDomesticConsentResponse3/Data/ConsentId |OB: Unique identification as assigned by the ASPSP to uniquely identify the consent resource. |Max128Text | | |
+| CreationDateTime |1..1 |OBWriteDomesticConsentResponse3/Data/CreationDateTime |Date and time at which the resource was created. |ISODateTime | | |
+| Status |1..1 |OBWriteDomesticConsentResponse3/Data/Status |Specifies the status of consent resource in code form. |OBExternalConsentStatus1Code |Authorised AwaitingAuthorisation Consumed Rejected | |
+| StatusUpdateDateTime |1..1 |OBWriteDomesticConsentResponse3/Data/StatusUpdateDateTime |Date and time at which the resource status was updated. |ISODateTime | | |
+| CutOffDateTime |0..1 |OBWriteDomesticConsentResponse3/Data/CutOffDateTime |Specified cut-off date and time for the payment consent. |ISODateTime | | |
+| ExpectedExecutionDateTime |0..1 |OBWriteDomesticConsentResponse3/Data/ExpectedExecutionDateTime |Expected execution date and time for the payment resource. |ISODateTime | | |
+| ExpectedSettlementDateTime |0..1 |OBWriteDomesticConsentResponse3/Data/ExpectedSettlementDateTime |Expected settlement date and time for the payment resource. |ISODateTime | | |
+| Charges |0..n |OBWriteDomesticConsentResponse3/Data/Charges |Set of elements used to provide details of a charge for the payment initiation. |OBCharge2 | | |
+| Initiation |1..1 |OBWriteDomesticConsentResponse3/Data/Initiation |The Initiation payload is sent by the initiating party to the ASPSP. It is used to request movement of funds from the debtor account to a creditor for a single domestic payment. |OBDomestic2 | | |
+| Authorisation |0..1 |OBWriteDomesticConsentResponse3/Data/Authorisation |The authorisation type request from the TPP. |OBAuthorisation1 | | |
+| SCASupportData |0..1 |OBWriteDomesticConsentResponse3/Data/SCASupportData |Supporting Data provided by TPP, when requesting SCA Exemption. |OBSCASupportData1 | | |
+| Risk |1..1 |OBWriteDomesticConsentResponse3/Risk |The Risk section is sent by the initiating party to the ASPSP. It is used to specify additional details for risk scoring for Payments. |OBRisk1 | | |
+
+## Domestic Payment Consent Confirmation of Funds -&nbsp;Response
+in
+The&nbsp;OBWriteFundsConfirmationResponse1 object will be used for a response to a call to:
+
+* GET&nbsp;/domestic-payment-consents/{ConsentId}/funds-confirmation
+
+### UML Diagram
+
+![Domestic Payment Consent Confirmation of Funds -&nbsp;Response](images/OBWriteConfirmFundsResponse1.gif)
+
+### Notes
+
+The confirmation of funds&nbsp;response&nbsp;contains the result of a funds availability&nbsp;check, or SupplementaryData.
+
+### Data Dictionary 
+
+| Name |Occurrence |XPath |EnhancedDefinition |Class |Codes |Pattern |
+| ---- |---------- |----- |------------------ |----- |----- |------- |
+| OBWriteFundsConfirmationResponse1 | |OBWriteFundsConfirmationResponse1 | |OBWriteFundsConfirmationResponse1 | | |
+| Data |1..1 |OBWriteFundsConfirmationResponse1/Data | |OBWriteDataFundsConfirmationResponse1 | | |
+| FundsAvailableResult |0..1 |OBWriteFundsConfirmationResponse1/Data/FundsAvailableResult |Result of a funds availability check. |OBFundsAvailableResult1 | | |
+| FundsAvailableDateTime |1..1 |OBWriteFundsConfirmationResponse1/Data/FundsAvailableResult/FundsAvailableDateTime |Date and time at which the funds availability check was generated. |ISODateTime | | |
+| FundsAvailable |1..1 |OBWriteFundsConfirmationResponse1/Data/FundsAvailableResult/FundsAvailable |Flag to indicate the availability of funds given the Amount in the consent request. |xs:boolean | | |
+| SupplementaryData |0..1 |OBWriteFundsConfirmationResponse1/Data/SupplementaryData |Additional information that can not be captured in the structured fields and/or any other specific block. |OBSupplementaryData1 | | |
+
+## Domestic Payment&nbsp;-&nbsp;Request
+
+The&nbsp;OBWriteDomestic2 object will be used for a call to:
+* POST /domestic-payments
+
+### UML Diagram
+
+![Domestic&nbsp;Payment&nbsp;Request](images/OBWriteDomestic2.gif)
+
+### Notes
+
+The domestic-payment **request** object contains the:
+
+* ConsentId.
+* The full Initiation and Risk objects from the domestic-payment-consent &nbsp;request.
+
+The&nbsp;**Initiation** and **Risk**&nbsp;sections of the&nbsp;domestic-payment request **must**&nbsp;match the&nbsp;**Initiation** and **Risk**&nbsp;sections of the corresponding&nbsp;domestic-payment-consent request.
+
+### Data Dictionary
+
+ | Name |Occurrence |XPath |EnhancedDefinition |Class |Codes |Pattern |
+| ---- |---------- |----- |------------------ |----- |----- |------- |
+| OBWriteDomestic2 | |OBWriteDomestic2 | |OBWriteDomestic2 | | |
+| Data |1..1 |OBWriteDomestic2/Data | |OBWriteDataDomestic2 | | |
+| ConsentId |1..1 |OBWriteDomestic2/Data/ConsentId |OB: Unique identification as assigned by the ASPSP to uniquely identify the consent resource. |Max128Text | | |
+| Initiation |1..1 |OBWriteDomestic2/Data/Initiation |The Initiation payload is sent by the initiating party to the ASPSP. It is used to request movement of funds from the debtor account to a creditor for a single domestic payment. |OBDomestic2 | | |
+| Risk |1..1 |OBWriteDomestic2/Risk |The Risk section is sent by the initiating party to the ASPSP. It is used to specify additional details for risk scoring for Payments. |OBRisk1 | | |
+
+ ## Domestic Payment&nbsp;-&nbsp;Response
+ 
+ The&nbsp;OBWriteDomesticResponse3 object will be used for a response to a call to:
+ 
+ * POST /domestic-payments
+ * GET /domestic-payments/{DomesticPaymentId}
+
+ ### UML Diagram
+
+ ![Domestic Payment Response](images/OBWriteDataDomesticResponse3.png)
+ 
+ ### Notes
+ 
+ The domestic-payment&nbsp;**response**&nbsp;object contains the:
+
+* DomesticPaymentId.
+* ConsentId.
+* CreationDateTime the&nbsp;domestic-payment resource was created.
+* Status and StatusUpdateDateTime of the&nbsp;domestic-payment resource.
+* ExpectedExecutionDateTime for the&nbsp;domestic-payment resource.
+* ExpectedSettlementDateTime for the&nbsp;domestic-payment resource.
+* Charges array for the breakdown of applicable ASPSP charges.
+* The Initiation object from the domestic-payment-consent.
+* The MultiAuthorisation object if the&nbsp;domestic-payment resource requires multiple authorisations.
+
+### Data Dictionary
+
+| Name |Occurrence |XPath |EnhancedDefinition |Class |Codes |Pattern |
+| ---- |---------- |----- |------------------ |----- |----- |------- |
+| OBWriteDomesticResponse3 | |OBWriteDomesticResponse3 | |OBWriteDomesticResponse3 | | |
+| Data |1..1 |OBWriteDomesticResponse3/Data | |OBWriteDataDomesticResponse3 | | |
+| DomesticPaymentId |1..1 |OBWriteDomesticResponse3/Data/DomesticPaymentId |OB: Unique identification as assigned by the ASPSP to uniquely identify the domestic payment resource. |Max40Text | | |
+| ConsentId |1..1 |OBWriteDomesticResponse3/Data/ConsentId |OB: Unique identification as assigned by the ASPSP to uniquely identify the consent resource. |Max128Text | | |
+| CreationDateTime |1..1 |OBWriteDomesticResponse3/Data/CreationDateTime |Date and time at which the message was created. |ISODateTime | | |
+| Status |1..1 |OBWriteDomesticResponse3/Data/Status |Specifies the status of the payment information group. |OBTransactionIndividualStatus1Code |AcceptedCreditSettlementCompleted AcceptedWithoutPosting AcceptedSettlementCompleted AcceptedSettlementInProcess Pending Rejected | |
+| StatusUpdateDateTime |1..1 |OBWriteDomesticResponse3/Data/StatusUpdateDateTime |Date and time at which the resource status was updated. |ISODateTime | | |
+| ExpectedExecutionDateTime |0..1 |OBWriteDomesticResponse3/Data/ExpectedExecutionDateTime |Expected execution date and time for the payment resource. |ISODateTime | | |
+| ExpectedSettlementDateTime |0..1 |OBWriteDomesticResponse3/Data/ExpectedSettlementDateTime |Expected settlement date and time for the payment resource. |ISODateTime | | |
+| Charges |0..n |OBWriteDomesticResponse3/Data/Charges |Set of elements used to provide details of a charge for the payment initiation. |OBCharge2 | | |
+| Initiation |1..1 |OBWriteDomesticResponse3/Data/Initiation |The Initiation payload is sent by the initiating party to the ASPSP. It is used to request movement of funds from the debtor account to a creditor for a single domestic payment. |OBDomestic2 | | |
+| MultiAuthorisation |0..1 |OBWriteDomesticResponse3/Data/MultiAuthorisation |The multiple authorisation flow response from the ASPSP. |OBMultiAuthorisation1 | | |
+
+## Domestic Payment Order - Payment Details -&nbsp;Response
+
+The&nbsp;OBWritePaymentDetailsResponse1&nbsp;object will be used for a response to a call to:
+
+* GET /domestic-payments/{DomesticPaymentId}/payment-details
+
+### UML Diagram
+
+![Domestic Payment Order-Payment Details](images/OBWritePaymentDetailsResponse1.png)
+
+### Data Dictionary
+
+| Name |Occurrence |XPath |EnhancedDefinition |Class |Codes |Pattern |
+| ---- |---------- |----- |------------------ |----- |----- |------- |
+| OBWritePaymentDetailsResponse1 | |OBWritePaymentDetailsResponse1 | |OBWritePaymentDetailsResponse1 | | |
+| Data |1..1 |OBWritePaymentDetailsResponse1/Data | |OBWriteDataPaymentOrderStatusResponse1 | | |
+| PaymentStatus |0..unbounded |OBWritePaymentDetailsResponse1/Data/PaymentStatus |Payment status details. |OBWritePaymentDetails1 | | |
+
