@@ -87,11 +87,13 @@
       6. [JSON Error Response](#json-error-response)
 
 ## Overview
+
 The Read/Write Data API Profile provides a description of the elements that are common across all the Read/Write Data APIs.
 
 This profile should be used in conjunction with compatible functional profiles (such as Accounts and Transactions or Payments) and compatible resources.
 
 ### Document Structure
+
 This document consists of the following parts:
 
 * **Overview**: Provides an overview of the profile and the key decisions and principles.
@@ -101,7 +103,9 @@ This document consists of the following parts:
 * **Usage Examples**: Usage examples for Pagination and Error Flows.
 
 ### Design Principles
+
 #### RESTful APIs
+
 The API adheres to RESTful API concepts where possible and sensible to do so.
 
 However, the priority is to have an API that is simple to understand and easy to use. In instances where following RESTful principles would be convoluted and complex, the principles have not been followed.
@@ -113,13 +117,16 @@ References:
 * The Interface Description Language used is the Swagger Specification version 2.0 (also known as Open API) : http://swagger.io/ https://github.com/OAI/OpenAPI-Specification
 
 #### Standards
+
 The OBIE principles for developing API standards:
 
 * OBIE will adopt existing standards where relevant/appropriate to minimise re-inventing the wheel.
 The Standards currently being reviewed include ISO20022 and FAPI.
 * OBIE will favour developer/user experience over and above adoption of existing Standards, in order to create a more future proof Standard.
 * OBIE will work with other relevant bodies to align with, contribute to and/or adopt other Standards work, especially relating to creation of Standards around APIs and JSON payloads.
+
 #### ISO 20022
+
 The CMA Order requires the CMA9 Banks to be aligned with the Regulatory and Technical Standards (RTS) under PSD2.
 
 A previous draft of the EBA RTS required that the interface "shall use ISO 20022 elements, components or approved message definitions". In keeping with that requirement, the API payloads are designed using the ISO 20022 message elements and components where available.
@@ -129,10 +136,13 @@ The principles we have applied to re-use of ISO message elements and components 
 * Where relevant, the API payloads have been **flattened** so that they are more developer friendly. This has been a request from the developer community, and the stakeholders involved in the design workshop.
 * Only elements that are required for the functioning of the API endpoint will be included in the API payload. API endpoints are defined for specific use-cases (not to be generically extensible for all use-cases).
 * We will modify ISO 20022 elements where the existing standard does not cater for an API context (such as filtering, pagination etc.). An example is having latitude and longitude in decimal format, as this is how developers will work with latitude and longitude; or using simple types (e.g., a single date-time field) instead of a complex type (e.g., a choice field with a nesting of date and time).
+
 #### Extensibility
+
 It is intended that the API flows will be extended to cater for more complex use-cases in subsequent releases, and we have kept this in mind during the design.
 
 #### Idempotency
+
 Idempotency is difficult to implement consistently and leverage consistently. 
 
 As a result, idempotency is used sparingly in the Open Banking API specifications; with a preference to allow TPPs to simply re-submit a request under failure conditions.
@@ -140,6 +150,7 @@ As a result, idempotency is used sparingly in the Open Banking API specification
 APIs have been defined to be idempotent, where not doing so would cause a poor PSU user-experience or increase false positive risk indicators.
 
 #### Message Signing
+
 Digital signatures will facilitate non-repudiation for Open Banking APIs. 
 
 The approach for message signing is documented in [Basics / Message Signing](#message-signing-1).
@@ -147,6 +158,7 @@ The approach for message signing is documented in [Basics / Message Signing](#me
 The applicability of signatures to individual requests and responses is documented on the page for each of the resources. However, implementors of the standards can **optionally** add signatures to all response and request payloads.
 
 #### Message Encryption
+
 Message Encryption is an **optional** feature of the Open Banking APIs to facilitate additional protection of inflight data.
 
 The approach for message encryption is documented in [Basics / Message Encryption](#message-encryption-1).
@@ -154,6 +166,7 @@ The approach for message encryption is documented in [Basics / Message Encryptio
 Applicability to individual requests and responses is not defined in the standards. Application will be based on agreement between implementors of the standards.
 
 #### Agnostic to Payment Schemes
+
 The API will be designed so that it is agnostic to the underlying payment scheme that is responsible for carrying out the payment.
 
 As a result, we will not design field lengths and payloads to only match the Faster Payments message, and will instead rely on the field lengths and definitions in ISO 20022. Due diligence has been carried out to ensure that the API has the necessary fields to function with Bacs payments - as per the agreed scope.
@@ -161,11 +174,14 @@ As a result, we will not design field lengths and payloads to only match the Fas
 We will provide further mapping guidance to ensure that differences are understood between the Open Banking Payment API standard, and FPS and Bacs schemes where applicable.
 
 #### Status Codes
+
 The API uses two status codes that serve two different purposes:
 
 * The HTTP Status Code reflects the outcome of the API call (the HTTP operation on the resource). Granular Functional Error Codes are specified as part of API [Error Response Structure](#error-response-structure), after consultation with Security and Fraud Working Group.
 * A Status field in some of the resource payloads reflects the status of resources.
+
 #### Unique Identifiers (Id Fields)
+
 A REST resource should have a unique identifier (e.g. a primary key) that may be used to identify the resource. These unique identifiers are used to construct URLs to identify and address specific resources.
 
 However, considering that some of the resources described in these specifications do not have a primary key in the system of record, the Id field will be optional for some resources.
@@ -173,11 +189,13 @@ However, considering that some of the resources described in these specification
 An ASPSP that chooses to populate optional Id fields must ensure that the values are unique and immutable.
 
 #### Categorisation of Implementation Requirements
+
 Where a requirement is being implemented by either an ASPSP and/or a TPP, a different categorisation is applied. The functionality, endpoints and fields within each resource are categorised as 'Mandatory', 'Conditional' or 'Optional'.
 
 ASPSPs **must** make documentation available to TPPs (e.g. on their developer portals) to which 'Conditional' / 'Optional' endpoints and fields are implemented for any given implementation of the specification.
 
 ##### Mandatory
+
 Functionality, endpoints and fields marked as Mandatory are required in all cases for regulatory compliance and/or for the API to function and deliver essential customer outcomes.
 
 For functionalities and endpoints: 
@@ -190,6 +208,7 @@ For fields:
 * An ASPSP **must** include meaningful values for Mandatory fields in an API response.
 
 ##### Conditional
+
 Functionality, endpoints and fields marked as Conditional may be required in some cases for regulatory compliance (for example, if these are made available to the PSU in the ASPSP's existing Online Channel, or if ASPSPs (or a subset of ASPSPs) have been mandated by a regulatory requirement).
 
 For functionalities and endpoints:
@@ -204,6 +223,7 @@ For fields:
 * An ASPSP **must** include meaningful values for Conditional fields in an API response if these are required for regulatory compliance.
 
 ##### Optional
+
 Functionality and endpoints marked as Optional are not necessarily required for regulatory compliance but may be implemented to enable desired customer outcomes.
 
 For functionalities and endpoints:
@@ -217,6 +237,7 @@ For fields:
 * For any endpoints which are implemented by an ASPSP, the fields are either Mandatory or Conditional.
 
 ## Basics
+
 ### Actors
 
 | Actor                                         | Abbreviation | Type         | Specialises | Description                                                                                                                                                                                                                                                                                                                                                                                                               |
@@ -230,11 +251,13 @@ For fields:
 | Card Based Payment Instrument Issuer          | CBPII        | Legal Entity | TPP         | A TPP that issues card based payment instruments to PSUs and requires access to the Confirmation of Funds API.                                                                                                                                                                                                                                                                                                            |
 
 ### Character Encoding
+
 The API requests and responses **must** use a UTF-8 character encoding. This is the default character encoding for JSON (RFC 7158 - [Section 8.1](https://tools.ietf.org/html/rfc7158#section-8.1))
 
 However, an ASPSP's downstream system may not accept some UTF-8 characters, such as emoji characters (e.g. "Happy Birthday 🎂🎂!" may not be an acceptable Payment Reference). If the ASPSP rejects the message with a UTF-8 character that cannot be processed, the ASPSP **must** respond with an HTTP 400 (Bad Request) status code.
 
 ### Date Formats
+
 An ASPSP must accept all valid [ISO-8601](https://www.iso.org/iso-8601-date-and-time-format.html) date formats including its permitted variations (e.g. variations in how the timezone is defined, dates with or with a seconds or milliseconds part etc.) in the requests.
 
 All dates in the JSON payloads are represented in [ISO-8601](https://www.iso.org/iso-8601-date-and-time-format.html) date-time format. All date-time fields in responses **must** include the timezone. For Example:
@@ -265,6 +288,7 @@ All dates in the JWT claims are expressed as a JSON number, representing the nu
 ```
 
 ### Resource URI Path Structure
+
 The path of the URI must follow the structure below (from the OB API Release Management document).
 
 * [participant-path-prefix]/open-banking/[version]/[resource-group]/[resource]/[resource-id]/[sub-resource]
@@ -291,6 +315,7 @@ Examples:
 For brevity, the APIs are referred to by their resource names in these documents and in all examples.
 
 ### Headers
+
 #### Request Headers
 
 [TBC]
@@ -308,6 +333,7 @@ The implications to this are:
 [TBC]
 
 ### HTTP Status Codes
+
 The following are the HTTP response codes for the different HTTP methods, across all Read/Write API endpoints.
 
 [TBC]
@@ -319,6 +345,7 @@ ASPSPs **must** respond with error response in the OAuth/OIDC flow with mandat
 ASPSPs **must** respond with Open Banking Error Response Structure [TBC] for all errors during API Calls.
 
 #### 400 (Bad Request) v/s 404 (Not Found)
+
 When a TPP tries to request a resource URL with a resource Id that does not exist, the ASPSP **must** respond with a 400 (Bad Request) rather than a 404 (Not Found).
 
 e.g., if a TPP tries to GET /domestic-payments/22289 where 22289 is not a valid DomesticPaymentId, the ASPSP must respond with a 400.
@@ -334,6 +361,7 @@ The table below illustrates some examples of expected behaviour:
 [TBC]
 
 #### 403 (Forbidden)
+
 When a TPP tries to access a resource that it does not have permission to access, the ASPSP **must** return a 403 (Forbidden) with an optional body with Error Response.
 
 The situation could arise when:
@@ -343,7 +371,9 @@ The situation could arise when:
 * The TPP tries to access an account/transaction resource and the TPP does not have a consent authorisation with the right Permissions to access the requested resource. e.g., an attempt to access GET /standing-orders when the ReadStandingOrdersBasic permission was not included in the consent authorisation.
 * The TPP tries to access an account/transaction resource and the TPP does not have a consent authorisation for the AccountId. e.g., an attempt to access GET /accounts/2001 or GET /accounts/2001/transactions when the PSU has not selected AccountId 2001 for authorisation.
 * The TPP attempts to access a Resource and the ASPSP decides to re-authenticate the PSU. The ASPSP must respond back with an appropriate error code to indicate re-authentication is required.
+
 #### 401 (Unauthorized)
+
 When the TPP uses an expired access token, the ASPSP **must** return a 401 (Unauthorized) **without** any error response.
 
 The situation could arise when an ASPSP has chosen to expire an Access Token for any of the following reasons:
@@ -355,16 +385,20 @@ The situation could arise when an ASPSP has chosen to expire an Access Token for
 This error can potentially be remedied by asking the PSU to re-authenticate or authenticate with the right permissions.
 
 #### 429 (Too Many Requests)
+
 When a TPP tries to access a resource too frequently the ASPSP **may** return a 429 (Too Many Requests).  This is a non functional requirement and is down to individual ASPSPs to decide throttling limits. 
 
 This situation could arise when:
 
 * A TPP decides to implement "Real Time Payment Status" functionality for its users and implements this badly by polling a GET endpoint or an Idempotent POST endpoint in excess of the ASPSP's fair usage policy to provide pseudo "real-time" Status updates to the user.
 * A TPP decides to use the Single Immediate Payment endpoint as if it were a batch payment facility and sends a large number of payment requests in a very short space of time such that it exceeds the ASPSP's fair usage policy. 
+
 ### Pre-Conditions
+
 The following pre-conditions must be satisfied in order to use these APIs:
 
 #### Pre-conditions for TPPs
+
 1. The TPP must have completed onboarding on the Open Banking Directory.
 2. The TPP must have registered one or more software statements with the Open Banking Directory.
    * To use the Payment Initiation APIs, the software statement must have "payments" as one of the permitted scopes.
@@ -374,10 +408,12 @@ The following pre-conditions must be satisfied in order to use these APIs:
 4. The TPP must have completed registration with each of the ASPSPs that it wants to transact with and have been issued with a client-id.
 
 #### Pre-conditions for ASPSPs
+
 1. The ASPSP must have completed onboarding on the Open Banking Directory.
 2. The ASPSP must have valid network and signing certificates issued by Open Banking.
 
 ### Idempotency
+
 An idempotency key is used to guard against the creation of duplicate resources when using the **POST** API endpoints (where indicated). 
 
 If an idempotency key is required for an API endpoint:
@@ -395,7 +431,9 @@ If an idempotency key is not required for an API endpoint:
 * The ASPSP **must** ignore the idempotency key if provided.
 
 ### Message Signing
+
 #### Overview
+
 This section provides an overview of how message signing is implemented for the Open Banking Read/Write APIs.
 
 The APIs require TLS 1.2 Mutual Authentication and this may be used as a means of non-repudiation. However, it would be difficult to maintain digital records and evidence of non-repudiation if the API only relied on TLS 1.2.
@@ -411,6 +449,7 @@ A request would be signed by a TPP's private key and a response would be signed 
 Not all API requests and responses are signed. Whether message signing is mandatory, supported or not supported is documented along with each API.
 
 #### Key Stores
+
 A Trust Anchor that is trusted by the ASPSPs and TPPs is responsible for providing a store of public keys for each of the parties. 
 
 The Trust Anchor could be a centralised directory (such as the Open Banking Directory) that hosts the public part of a key pair generated any of the parties.
@@ -420,6 +459,7 @@ Alternatively the Trust Anchor could be a CA (or a set of CAs) that provide dig
 The Trust Anchor must provide a means for any of the parties to retrieve public keys to verify messages.
 
 #### Specification
+
 The TPP **must** sign the HTTP body of each API request that requires message signing.
 
 The ASPSP **must** sign the HTTP body of each API response that requires message signing.
@@ -435,11 +475,13 @@ The signer **must** sign the message with PS256.
 #### Process for Signing a Payload
 
 ##### Step 1: Identify the Private Key and Corresponding Signing Certificate to be Used for Signing
+
 The signer **must** use a private key that has a corresponding public key that is lodged with the Trust Anchor.
 
 The signing key **must** be valid at the time of creating the JWS.
 
 ##### Step 2: Form the JOSE Header
+
 The JOSE header for the signature must contain the following fields
 
 | Claim                           | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
@@ -455,6 +497,7 @@ The JOSE header for the signature must contain the following fields
 | `crit`                          | This **must** be a string array consisting of the values `b64`, `http://openbanking.org.uk/iat`, `http://openbanking.org.uk/iss`, `http://openbanking.org.uk/tan`<br>This indicates that the JWS signature validator must understand and process the three additional claims.                                                                                                                                                                                                                                                                                                                                                                                    |
 
 ##### Step 3: Compute the JWS
+
 The signer must compute the signature as a detached JWS as defined in [RFC 7515, Appendix F](https://tools.ietf.org/html/rfc7515)
 
 > "One way to do this is to create a JWS
@@ -467,6 +510,7 @@ The signer must compute the signature as a detached JWS as defined in [RFC 7515
    of standard JWS libraries.   
 
 ##### Step 4: Add the JWS as a HTTP Header 
+
 The signer **must** include an HTTP header called **x-jws-signature** with its value set to the signature computed in Step 3.
 
 ```
@@ -474,10 +518,13 @@ x-jws-signature: V2hhdCBoYXRoIGdvZCB3cm91Z2h0ID8=..QnkgR2VvcmdlLCBzaGUncyBnb3Qga
 ```
 
 #### Process for Verifying a Signature
+
 ##### Step 1: Extract the components from the JWS 
+
 The verifier **must** extract and decode the JOSE header and signature from the JWS provided in the x-jws-signature.
 
 ##### Step 2: Validate the JOSE Header and Certificate
+
 The verifier **must** validate the JOSE header to ensure that it is a valid JSON object with only the claims specified in Process for Signing a Payload - Step 2 [TBC].
 
 The verifier **must** validate that the `typ` header if specified has the value JOSE.
@@ -499,6 +546,7 @@ The verifier **must** ensure that `http://openbanking.org.uk/tan` claim contains
 The verifier **must** ensure that the `crit` claim does not contain additional critical elements.
 
 ##### Step 3: Verify the Signature
+
 The verifier must verify the signature, as defined in [RFC 7515, Appendix F](https://tools.ietf.org/html/rfc7515#appendix-F).
 
 >To use the modified object, the recipient
@@ -509,6 +557,7 @@ The verifier must verify the signature, as defined in [RFC 7515, Appendix F](htt
    of standard JWS libraries.
 
 #### Sample JOSE Header
+
 ```json
 {
     "alg": "RS512",
@@ -520,8 +569,11 @@ The verifier must verify the signature, as defined in [RFC 7515, Appendix F](htt
     "crit": [ "b64", "http://openbanking.org.uk/iat", "http://openbanking.org.uk/iss", "http://openbanking.org.uk/tan"]
 }
 ```
+
 ### Message Encryption
+
 #### Overview
+
 This section provides an overview of how message encryption is implemented for the Open Banking Read/Write APIs.
 
 Message encryption is implemented through [JSON Web Encryption](https://tools.ietf.org/html/rfc7516) (JWE).
@@ -535,6 +587,7 @@ The approach differs from message signing in that:
 Message encryption is optional for ASPSPs to implement. If an ASPSP does not support should reject any requests with a `Content-type` or `Accept` headers that indicate that message encryption is required.
 
 #### Message Signing and Encryption
+
 Where message signing and encryption is required the convention is for a JWE to be encapsulated in a JWS.
 
 Where message signing and encryption is required by implementors they should continue to use the detached signature method described above for consistency with the standards.
@@ -544,6 +597,7 @@ The use of the type `application/jose+jwe` header indicates the JWT is encrypted
 The exception to this approach is the Event Notification API, which uses a native JWS. The native JWS should continue to be used and encapsulate the JWE.
 
 #### Key Stores
+
 A Trust Anchor that is trusted by the ASPSPs and TPPs is responsible for providing a store of public keys for each of the parties.
 
 The Trust Anchor could be a centralised directory (such as the Open Banking Directory) that hosts the public part of a key pair generated by any of the parties. Alternatively implementors can self-host key stores containing their public keys and publicise their location through appropriate means.
@@ -565,6 +619,7 @@ In order to provide a simple implementation of communicating key usage the follo
 If following these guidelines is not possible the recipient must publicise the key identifier (`kid`) of the public key to be used for encryption using a means agreed between implementors.
 
 #### Encrypting Non-JSON Data
+
 For endpoints that implement non-JSON payloads JWE may be used to encryption the payload. The JWE must indicate the underlying content type through the `cty` header:
 
 ```json
@@ -573,7 +628,9 @@ For endpoints that implement non-JSON payloads JWE may be used to encryption the
   "cty": "application/octet-stream"
 }
 ```
+
 ### Filtering
+
 An ASPSP must provide limited support of filtering on GET operations that return multiple records.
 
 The filter parameters, are always specific to particular field(s) of the resource, and follow the rules/formats defined under the resource's data dictionary.
@@ -583,6 +640,7 @@ In case of DateTime type filter parameters, values must be specified in ISO8601 
 The filter values will be assumed to refer to the same timezone as the timezone in which the resource is maintained.
 
 ### Pagination
+
 An ASPSP **MAY** provide a paginated response for GET operations that return multiple records.
 
 In such a situation, the ASPSP **MUST**:
@@ -607,6 +665,7 @@ If the original request from the AISP included filter parameters, the paginated 
 ASPSPs are not expected to implement pagination with transaction isolation. The underlying data-set may change between two subsequent requests. This may result in situations where the same transaction is returned on more than one page.
 
 ### Archiving
+
 Archiving of resources will be for ASPSPs to define based on their internal Legal and Regulatory requirements.
 
 In addition:
@@ -615,6 +674,7 @@ In addition:
 * ASPSPs **may** archive these expired intent-ids
 
 ### Supplementary Data
+
 A number of resources in the specification include a section for Supplementary Data. This is intended to allow ASPSPs to accept or provide information in a request or response that is not catered for by other sections of the resource definition.
 
 The Supplementary Data section is defined as an empty JSON object in the specification.
@@ -624,12 +684,15 @@ Wherever used, an ASPSP **must** define and document (on their developer portal)
 An ASPSP **must not** use Supplementary Data if an element already exists in the OBIE standard that fulfils the requirement.
 
 ## Security & Access Control
+
 ### Scopes & Grant Types
+
 To access each of the APIs, the API must be called with an access token in the HTTP `Authorization` header.
 
 The scopes required with these access tokens and the grant type used to get the access token are specified in the specific API documentation.
 
 ### Consent Authorisation
+
 OAuth 2.0 scopes are coarse grained and the set of available scopes are defined at the point of client registration. There is no standard method for specifying and enforcing fine grained scopes (e.g. a scope to enforce payments of a specified amount on a specified date). 
 
 An *intent* is used to define the fine-grained permissions that are granted by the PSU to the TPP.
@@ -645,9 +708,11 @@ This is done through an authorization grant flow and results in the issuance of 
 An access token is bound to a single PSU and an intent.
 
 #### Error Condition
+
 If the PSU does not complete a successful consent authorisation (e.g. if the PSU is not authenticated successfully), the authorization code grant ends with a redirection to the TPP with an error response as described in OpenID Connect Core Specification [Section 3.1.2.6](https://openid.net/specs/openid-connect-core-1_0.html#AuthError). The PSU is redirected to the TPP with an error parameter indicating the error that occurred.
 
 #### Token Expiry Time
+
 The expiry time for issued access tokens and refresh tokens must be deterministic for the TPP.
 
 In order to achieve this:
@@ -659,11 +724,13 @@ In order to achieve this:
 * If the ASPSP issues a refresh token that does not expire, the ASPSP **must** populate the claim named `http://openbanking.org.uk/refresh_token_expires_at` in the Id token with a value representing the number of seconds to 03:14:07 UTC on 19 January 2038 (end of UNIX epoch)
 
 #### Exemptions from Strong Customer Authentication
+
 The PSD2 [RTS](http://ec.europa.eu/finance/docs/level-2-measures/psd2-rts-2017-7782_en.pdf) specifies the conditions under which a payment services provider is exempt from carrying out strong customer authentication.
 
 This specification does not provide any direction or guidance on the application of these exemptions.
 
 ### Supported Grant Types
+
 OAuth2.0 and OIDC provide support for a variety of methods for the Authorization Server to issue an access token to the Client. These methods are called Grants.
 
 Some of these Grant Types only identify the client, but not the resource owner. It is sufficient to provide the client's identity.
@@ -675,13 +742,17 @@ The Open Banking Read/Write specification supports a sub-set of these grants as 
 The security profile describes these grants in detail.
 
 #### Grant Types for identifying the TPP
+
 ##### Client Credentials Grant
+
 Some of the APIs can be accessed using an access token issued through a Client Credentials Grant. These APIs do not execute in the context of a consent or of a PSU and it is sufficient to identify and authenticate the TPP in order to call these APIs.
 
 The Client Credentials Grant is documented in [Section 4.4 of the OAuth 2.0 RFC](https://tools.ietf.org/html/rfc6749#section-4.4)
 
 #### Grant Types for identifying the TPP and PSU
+
 ##### Authorization Code Grant & Hybrid Grant
+
 APIs that require the PSU as well as TPP to be identified and authenticated can only be accessed using an access token issued through an Authorization Code Grant, Hybrid Grant or CIBA.
 
 The Authorization Code Grant (see [Section 4.1 of the OAuth 2.0 RFC](https://tools.ietf.org/html/rfc6749#section-4.1) and [Section 3.1 of the OIDC Specification](http://openid.net/specs/openid-connect-core-1_0.html#CodeFlowAuth)) can be used to redirect a PSU to the ASPSP's authorization pages in order to authenticate the PSU and generate and authorization code. The TPP can then exchange this authorization code for an access token by calling the ASPSP's token end-point and authenticating itself.
@@ -702,6 +773,7 @@ As the `id_token` is signed by the ASPSP and bound to a specific TPP (through th
 The [Client Initiated Back-channel Authentication flow](https://openid.net/specs/openid-client-initiated-backchannel-authentication-core-1_0.html) is part of the OpenID specifications. A [FAPI Profile of the CIBA specification](https://bitbucket.org/openid/fapi/src/a9e55356b5f233af804227d5001d3c32d23d1a91/Financial_API_WD_CIBA.md?at=master&fileviewer=file-view-default) is available and ASPSPs that implement CIBA **must** adhere to the profile. An ASPSP **may** optionally implement the CIBA flow to allow PSUs to authenticate themselves using a decoupled *authentication device* that is distinct from the *consumption device* on which they consume the TPP application.
 
 ##### Identifying the PSU
+
 ASPSPs that implement CIBA must support one or more of the following methods of identifying the PSU that is to be authenticated using the `login_hint_token`.
 
 * **User Id**: Using a static identifier that is shared by the ASPSP and the PSU. This could include a static identifier issued by the ASPSP (e.g., a user name, card number, account number) or a public identifier that allows the ASPSP to uniquely identify the PSU (e.g., an email address or phone number)
@@ -716,6 +788,7 @@ If the ASPSP does not support a specific method of identifying a PSU, the ASPSP 
 Prior to creating the `login_hint_token` the TPP must create a consent. The generated consent id must be passed in the `http://openbanking.org.uk/openbanking-intent-id` custom claim. This allows the access token that is eventually generated to be bound to a specific consent.
 
 ###### Identifying the PSU Using a User Id
+
 To identify a PSU through a user Id, the TPP **must** issue `login_hint_token` in the `bc_authorize` request that contains:
 
 * The custom claim `http://openbanking.org.uk/sit` set to the value UID
@@ -749,7 +822,9 @@ If the ASPSP support identification of the user through a static identifier, it 
   "http://openbanking.org.uk/openbanking_intent_id": "11bf5b37-e0b8-42e0-8dcf-dc8c4aefc000"
 }
 ```
+
 ###### Identifying the PSU Using an Ephemeral User Id
+
 To identify a PSU through an ephemeral user Id, the TPP **must** issue a `login_hint_token` in the `bc_authorize` request that contains:
 
 * The custom claim `http://openbanking.org.uk/sit` set to the value EUID
@@ -762,6 +837,7 @@ To identify a PSU through an ephemeral user Id, the TPP **must** issue a `login_
   "http://openbanking.org.uk/openbanking_intent_id": "11bf5b37-e0b8-42e0-8dcf-dc8c4aefc000"
 }
 ```
+
 ###### Identifying the PSU Using an Intent Id
 
 To identify a PSU through an intent Id, the TPP **must** first create a consent resource with the ASPSP.
@@ -783,6 +859,7 @@ The TPP must provide a `login_hint_token` in the `bc_authorize` request that con
 Once the PSU has been authenticated, the TPP is issued another `id_token` which is bound to the `intent_id` provided in the `login_token_hint`.
 
 ###### Identifying the PSU Using a Previously Issued Id Token
+
 To identify a PSU through a previously issued `id_token` the TPP must issue an `id_token_hint` containing the id_token in the `bc_authorize` request.
 
 ```json
@@ -794,6 +871,7 @@ To identify a PSU through a previously issued `id_token` the TPP must issue an `
 ```
 
 ### Changes to an Intent's Authorized State
+
 A PSU may revoke their consent either through the TPP or directly through the ASPSP. This only applies to long-lived consents:
 
 * When a PSU does not complete the consent-authorisation flow, the ASPSP must mark the consent as `Rejected`.
@@ -803,10 +881,13 @@ A PSU may revoke their consent either through the TPP or directly through the AS
 In each of the above cases, the consent states are terminal i.e. the ASPSP **must not** allow any further state changes. The ASPSP **must not** permit any authorisation code grants to be initiated with such a consent.
 
 #### Effect of Token Expiry on an Intent's Authorized State
+
 An ASPSP may issue an access token and refresh token for a long-lived consent. These tokens may expire before the consent expires. In such a situation, the state of the intent does not change and the ASPSP **must not** modify the state of the intent.
 
 ### Consent Re-authentication
+
 #### Ability to re-authenticate an Authorised consent at any point of time
+
 A TPP **may** request a PSU to re-authenticate a consent at *any point of time* for a long-lived consent that is in the `Authorised` state. This includes before and after the underlying tokens have expired.
 
 An ASPSP **must** accept a request from a TPP to re-authenticate a consent at any point of time for a long-lived consent that is in the Authorised state. This includes before and after the underlying tokens have expired.
@@ -816,25 +897,31 @@ Once a consent re-authentication is successful, the TPP **must not** use access 
 When an ASPSP issues a new access token and refresh token as a result of consent re-authentication, it **may** invalidate the previously issued access tokens and refresh tokens for the same consent.
 
 #### Low Friction User Experience
+
 A PSU's consent re-authentication user experience **must** be aligned with the low friction user experience defined in the guidelines.
 
 #### Use of Refresh Token
+
 An ASPSP **may** issue a refresh token along with an access token as a result of consent re-authentication.
 
 When an access token expires, the TPP **may** attempt to get a new access and refresh token as defined in [Section 6 of the OAuth 2.0 specification](https://tools.ietf.org/html/rfc6749#section-6).
 
 ## Data Model
+
 ### Enumerations
+
 OBIE Specifications include various fields of Enumerated data types, where either the values are fixed to a OBIE defined set of alternatives (i.e. Static Enumerations), or flexible with an initial OBIE defined set of alternatives, and ASPSPs can use/extend these alternatives (i.e. Namespaced Enumerations).
 
 While Static Enumerations are listed on each API Specification page, Namespaced Enumerations are captured on the Namespaced Enumerations page.
 
 ### Common Payload Structure
+
 This section gives an overview of the top level structure for the API payloads for the Open Banking Read/Write APIs.
 
 The data contained within the Data section is documented with each individual API endpoint.
 
 #### Request Structure
+
 The top level request structure for Open Banking Read/Write APIs:
 ```json
 {
@@ -846,17 +933,21 @@ The top level request structure for Open Banking Read/Write APIs:
   }
 }
 ```
+
 ##### Data
+
 The `Data` section contains the request data for the specific API request.
 
 The structure of this element differs for each API endpoint.
 
 ##### Risk
+
 The `Risk` section contains risk indicators for the specific API request as provided by the TPP.
 
 The risk indicators contained in this element may be different for each API endpoint.
 
 #### Response Structure
+
 The top level response structure for Open Banking Read/Write APIs:
 
 ```json
@@ -882,6 +973,7 @@ Two additional top-level sections are included in the response for:
 * Meta
 
 #### Error Response Structure
+
 The error response structure for Open Banking Read/Write APIs:
 ```json
 {
@@ -898,12 +990,17 @@ The error response structure for Open Banking Read/Write APIs:
   ]
 }
 ```
+
 ##### UML Diagram
+
 [TBC]
+
 ##### Data Dictionary
+
 [TBC]
 
 #### Optional Fields
+
 In objects where the value for an optional field is not specified, the field **must** be excluded from the JSON payload.
 
 In objects where an array field is defined as having 0..n values, the array field **must be** included in the payload with an empty array.
@@ -916,7 +1013,9 @@ In objects where an array field is defined as having 0..n values, the array fiel
     "Balances": []          // Correct. This is the method of indicating an empty array. Do not suppress the Balance field.
 }
 ```
+
 #### Links
+
 The Links section is mandatory and will always contain absolute URIs to related resources, 
 
 The "Self" member is mandatory.
@@ -941,7 +1040,9 @@ For example:
     "Last": "http://example.com/articles?page[number]=13&page[size]=1"
   }
 ```
+
 #### Meta
+
 The Meta section is mandatory, but may be empty.  An optional member is "TotalPages" which is specified as an integer (int32) and shows how many pages of results (for pagination) are available.
 
 For example:
@@ -950,15 +1051,19 @@ For example:
     "TotalPages": 13
   }
 ```
+
 ## Usage Examples
+
 The usage examples for the individual APIs are documented in their respective pages.
 
 This section provides usage examples for some repeating patterns that are used by multiple resources.
 
 ### Pagination Flows
+
 The example below illustrates how an ASPSP may return a paginated response. 
 
 #### Request
+
 ```json
 GET /accounts/22289/transactions HTTP/1.1
 Authorization: Bearer Az90SAOJklae
@@ -967,6 +1072,7 @@ x-fapi-customer-ip-address: 104.25.212.99
 x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Accept: application/json
 ```
+
 #### Paginated Resource Response
 
 ```json
@@ -992,7 +1098,9 @@ Content-Type: application/json
 }
 ```
 The TPP may follow the links provided in the Links section of the payload to navigate to the first, last, next and previous pages:
+
 #### Request Next Page of Results
+
 ```json
 GET /accounts/22289/transactions?pg=2 HTTP/1.1
 Authorization: Bearer Az90SAOJklae
@@ -1001,7 +1109,9 @@ x-fapi-customer-ip-address: 104.25.212.99
 x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Accept: application/json
 ```
+
 #### Paginated Resource Response
+
 ```json
 HTTP/1.1 200 OK
 x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
@@ -1025,10 +1135,13 @@ Content-Type: application/json
   }
 }
 ```
+
 ### Error Flows
+
 This section provides some examples of error scenarios and the expected outputs.
 
 #### Missing or Expired Access Token
+
 This flow assumes that the following Steps have been completed successfully:
 
 * Step 1: Request Account Information
@@ -1042,6 +1155,7 @@ The AISP attempts to provide an expired or missing access token to the ASPSP in 
 [TBC] - Codeblock
 
 #### Incomplete or Malformed Request Payload
+
 This flow assumes that the following Steps have been completed successfully:
 
 * Step 1: Request Account Information
@@ -1055,6 +1169,7 @@ The AISP provides a malformed request to the ASPSP in an attempt to setup an Acc
 [TBC] - Codeblock
 
 #### Missing or Invalid Access Token Scope
+
 This flow assumes that the following Steps have been completed successfully:
 
 * Step 1: Request Account Information
@@ -1068,6 +1183,7 @@ The AISP provides a (valid) access token which does not have a valid scope (or l
 [TBC] - Codeblock
 
 #### Sudden Burst of API Requests
+
 This flow assumes that the following Steps have been completed successfully:
 
 * Step 1: Request Account Information
@@ -1083,6 +1199,7 @@ The ASPSP may optionally choose to return a 429 Response
 [TBC] - Codeblock
 
 #### Failed Authorisation Consent
+
 This flow assumes that the following Steps have been completed successfully:
 
 * Step 1: Request Account Information
@@ -1095,6 +1212,7 @@ The Step 3: Authorise Consent Flow fails to succeed due to the PSU providing inv
 [TBC] - Codeblock
 
 #### JSON Error Response
+
 ##### Request
 
 ```json
@@ -1149,7 +1267,9 @@ Accept: application/json
   }
 }
 ```
+
 ##### Response
+
 ```json
 HTTP/1.1 400 Bad Request
 x-jws-signature: V2hhdCB3ZSBnb3QgaGVyZQ0K..aXMgZmFpbHVyZSB0byBjb21tdW5pY2F0ZQ0K
