@@ -1200,7 +1200,28 @@ The AISP attempts to provide an expired or missing access token to the ASPSP in 
 
 ![](./images/MissingOrExpiredAccessToken.png)
 
-[TBC] - Codeblock
+
+<details>
+  <summary>Diagram content</summary>
+
+```
+participant PSU
+participant AISP
+participant ASPSP Authorisation Server
+participant ASPSP Resource Server
+  
+alt Request data with a missing or expired access-token
+AISP <-> ASPSP Resource Server: Establish TLS 1.2 MA
+AISP -> ASPSP Resource Server: GET /accounts
+ASPSP Resource Server -> AISP: HTTP 401 (Unauthorized)
+  
+AISP -> ASPSP Resource Server: GET /accounts/{AccountId}/transactions
+ASPSP Resource Server -> AISP: HTTP 401 (Unauthorized)
+ 
+end alt
+```
+
+</details>
 
 #### Incomplete or Malformed Request Payload
 
@@ -1214,7 +1235,26 @@ The AISP provides a malformed request to the ASPSP in an attempt to setup an Acc
 
 ![](./images/IncompleteOrMalformedRequestPayload.png)
 
-[TBC] - Codeblock
+<details>
+  <summary>Diagram content</summary>
+
+```
+participant PSU
+participant AISP
+participant ASPSP Authorisation Server
+participant ASPSP Resource Server
+  
+ 
+alt AISP attempts to setup an account request with a malformed payload
+AISP <-> ASPSP Resource Server: Establish TLS 1.2 MA
+AISP -> ASPSP Resource Server: POST /account-requests
+ASPSP Resource Server -> AISP: HTTP 400 (Bad Request)
+  
+end alt
+```
+
+</details>
+
 
 #### Missing or Invalid Access Token Scope
 
@@ -1228,7 +1268,30 @@ The AISP provides a (valid) access token which does not have a valid scope (or l
 
 ![](./images/MissingOrInvalidAccessTokenScope.png)
 
-[TBC] - Codeblock
+<details>
+  <summary>Diagram content</summary>
+
+```
+participant PSU
+participant AISP
+participant ASPSP Authorisation Server
+participant ASPSP Resource Server
+  
+ 
+alt Request data with a missing or invalid access-token scope
+AISP <-> ASPSP Resource Server: Establish TLS 1.2 MA
+AISP -> ASPSP Resource Server: GET /accounts
+ASPSP Resource Server -> AISP: HTTP 403 (Forbidden)
+  
+  
+AISP -> ASPSP Resource Server: GET /accounts/{AccountId}/transactions
+ASPSP Resource Server -> AISP: HTTP 403 (Forbidden)
+  
+ 
+end alt
+```
+
+</details>
 
 #### Sudden Burst of API Requests
 
@@ -1244,7 +1307,28 @@ The ASPSP may optionally choose to return a 429 Response
 
 ![](./images/TooManyRequests.png)
 
-[TBC] - Codeblock
+<details>
+  <summary>Diagram content</summary>
+
+```
+participant PSU
+participant AISP
+participant ASPSP Authorisation Server
+participant ASPSP Resource Server
+   
+  
+alt AISP attempts to retrieve an Account Resource
+AISP <-> ASPSP Resource Server: Establish TLS 1.2 MA
+    loop Burst of multiple GET requests
+        AISP -> ASPSP Resource Server: GET /accounts/{AccountId}
+        opt
+            ASPSP Resource Server -> AISP: HTTP 429 (Too Many Requests)
+        end
+    end
+end
+```
+
+</details>
 
 #### Failed Authorisation Consent
 
@@ -1257,7 +1341,42 @@ The Step 3: Authorise Consent Flow fails to succeed due to the PSU providing inv
 
 ![](./images/FailedAuthorisationConsent.png)
 
-[TBC] - Codeblock
+<details>
+  <summary>Diagram content</summary>
+
+```
+participant PSU
+participant AISP
+participant ASPSP Authorisation Server
+participant ASPSP Resource Server
+   
+note over PSU, ASPSP Resource Server
+    Step 1: Request account information
+end note
+PSU -> AISP: Get account/transaction information
+  
+note over PSU, ASPSP Resource Server
+    Step 2: Setup account request
+end note
+AISP <-> ASPSP Authorisation Server: Establish TLS 1.2 MA
+AISP -> ASPSP Authorisation Server: Initiate Client Credentials Grant
+ASPSP Authorisation Server -> AISP: access-token
+AISP <-> ASPSP Resource Server: Establish TLS 1.2 MA
+AISP -> ASPSP Resource Server: POST /account-requests
+ASPSP Resource Server -> AISP: HTTP 201 (Created), AccountRequestId
+AISP -> PSU: HTTP 302 (Found), Redirect (AccountRequestId)
+  
+note over PSU, ASPSP Resource Server
+Step 3: Failed authorise consent
+end note
+PSU -> ASPSP Authorisation Server: Follow redirect (AccountRequestId)
+PSU -> ASPSP Authorisation Server: Invalid Credentials
+ASPSP Authorisation Server -> PSU: HTTP 302 (Found), Redirect (error)
+PSU -> AISP: Follow redirect (error)
+AISP -> PSU : Error Response
+```
+
+</details>
 
 #### JSON Error Response
 
