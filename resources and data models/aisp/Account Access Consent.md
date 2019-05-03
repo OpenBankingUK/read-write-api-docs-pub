@@ -1,28 +1,28 @@
 # Account Access Consents v3.1.2
 # Table of Contents
 1. [Overview](#overview)
-    1.1 [Profile Compatibility](#profile-ompatibility)
-        1.1.1 [Account and Transaction API Profile](#account-aransaction-APIProfile)
+1.1 [Profile Compatibility](#profile-ompatibility)
+1.1.1 [Account and Transaction API Profile](#account-aransaction-APIProfile)
 2. [Endpoints](#Endpoints)
-    2.1 [POST /account-access-consents](#POSTaccount-access-consents)
-    2.1.1 [Account Access Consent Status](#Account-Access-ConsentStatus)
-    2.1.2 [Status Flow](#Status-Flow)
-    2.2[GET /account-access-consents/{ConsentId}](#GET-account-access-consents-ConsentId)
-    2.2.1[Account Access Consent Status](#Account-Access-ConsentStatus1)
-    2.3[DELETE /account-access-consents/{ConsentId}](#DELETEaccount-accessconsents-ConsentId)
+2.1 [POST /account-access-consents](#POSTaccount-access-consents)
+2.1.1 [Account Access Consent Status](#Account-Access-ConsentStatus)
+2.1.2 [Status Flow](#Status-Flow)
+2.2[GET /account-access-consents/{ConsentId}](#GET-account-access-consents-ConsentId)
+2.2.1[Account Access Consent Status](#Account-Access-ConsentStatus1)
+2.3[DELETE /account-access-consents/{ConsentId}](#DELETEaccount-accessconsents-ConsentId)
 3. [Data Model](#DataModel)
-    3.1 [Account Access Consents - Request](#Account-Access-Consents-Request)
-    3.1.1 [UML Diagram](#UMLDiagram-Account-Access-ConsentsRequest)
-    3.1.2 [Data Dictionary](#DataDictionary-Account-Access-ConsentsRequest)
-    3.2 [Account Access Consents - Response](#Account-Access-ConsentsResponse1)
-    3.2.1 [UML Diagram](#UMLDiagram-Account-Access-ConsentsResponse1)
-    3.2.2 [Data Dictionary](#DataDictionary-Account-Access-ConsentsResponse1)
+3.1 [Account Access Consents - Request](#Account-Access-Consents-Request)
+3.1.1 [UML Diagram](#UMLDiagram-Account-Access-ConsentsRequest)
+3.1.2 [Data Dictionary](#DataDictionary-Account-Access-ConsentsRequest)
+3.2 [Account Access Consents - Response](#Account-Access-ConsentsResponse1)
+3.2.1 [UML Diagram](#UMLDiagram-Account-Access-ConsentsResponse1)
+3.2.2 [Data Dictionary](#DataDictionary-Account-Access-ConsentsResponse1)
 4. [Usage Examples](#UsageExamples)
-    4.1 [Setup Account Access Consent - All Permissions Granted](#SetupAccount-Access-Consent)
-    4.2 [Status - AwaitingAuthorisation](#StatusAwaiting-Authorisation)
-    4.3 [Status - Authorised](#StatusAuthorised)
-    4.4 [Delete Account Access Consent](#DeleteAccount-Access-Consent2)
-    4.5 [Setup Account Access Consent with Limited Permissions](#SetupAccount-Limited-Permissions)
+4.1 [Setup Account Access Consent - All Permissions Granted](#SetupAccount-Access-Consent)
+4.2 [Status - AwaitingAuthorisation](#StatusAwaiting-Authorisation)
+4.3 [Status - Authorised](#StatusAuthorised)
+4.4 [Delete Account Access Consent](#DeleteAccount-Access-Consent2)
+4.5 [Setup Account Access Consent with Limited Permissions](#SetupAccount-Limited-Permissions)
 
 
 ## Overview
@@ -52,10 +52,12 @@ The API allows the AISP to ask an ASPSP to create a new account-access-consent r
 #### Account Access Consent Status
 The PSU must authenticate with the ASPSP and authorise the account-access-consent for the account-access-consent to be successfully setup.
 The account-access-consent resource that is created successfully must have the following Status code-list enumeration:
+
 |  | Status |Status Description |
 | -------- | -------- |-------------- |
 | 1 | AwaitingAuthorisation |The account access consent is awaiting authorisation. |
 After authorisation has taken place the account-access-consent resource may have these following statuses.
+
 |  | Status |Status Description |
 | -------- | -------- |-------------- |
 | 1 | Rejected |The account access consent has been rejected.|
