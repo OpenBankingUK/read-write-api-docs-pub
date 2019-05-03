@@ -1,4 +1,4 @@
-  - [Endpoints](#endpoints)
+- [Endpoints](#endpoints)
 	- [POST&nbsp;/domestic-payment-consents](#postnbspdomestic-payment-consents)
 		- [Status](#status)
 	- [GET&nbsp;/domestic-payment-consents/{ConsentId}/funds-confirmation](#getnbspdomestic-payment-consentsconsentidfunds-confirmation)
@@ -17,7 +17,26 @@
 			- [Data&nbsp;Dictionary](#datanbspdictionary)
 	- [Domestic&nbsp;Payment&nbsp;Consent&nbsp;-&nbsp;Request](#domesticnbsppaymentnbspconsentnbsp-nbsprequest)
 		- [UML Diagram](#uml-diagram)
-		- 
+		- [Notes](#notes-1)
+		- [Data Dictionary](#data-dictionary)
+	- [Domestic Payment Consent - Response](#domestic-payment-consent---response)
+		- [UML Diagram](#uml-diagram-1)
+		- [Notes](#notes-2)
+		- [Data Dictionary](#data-dictionary-1)
+	- [Domestic Payment Consent Confirmation of Funds -&nbsp;Response](#domestic-payment-consent-confirmation-of-funds--nbspresponse)
+		- [UML Diagram](#uml-diagram-2)
+		- [Notes](#notes-3)
+		- [Data Dictionary](#data-dictionary-2)
+	- [Domestic Payment&nbsp;-&nbsp;Request](#domestic-paymentnbsp-nbsprequest)
+		- [UML Diagram](#uml-diagram-3)
+		- [Notes](#notes-4)
+		- [Data Dictionary](#data-dictionary-3)
+		- [Data Dictionary](#data-dictionary-4)
+	- [Domestic Payment Order - Payment Details -&nbsp;Response](#domestic-payment-order---payment-details--nbspresponse)
+		- [UML Diagram](#uml-diagram-4)
+		- [Data Dictionary](#data-dictionary-5)
+
+
 # [Endpoints](Endpoints)
 | Resource |HTTP Operation |Endpoint |Mandatory ? |Scope |Grant Type |Message Signing |Idempotency Key |Request Object |Response Object |
 | -------- |-------------- |-------- |----------- |----- |---------- |--------------- |--------------- |-------------- |--------------- |
@@ -72,7 +91,9 @@ The API endpoint allows the PISP to ask an ASPSP to confirm funds on a **domesti
 * An ASPSP can only respond to a funds confirmation request if the **domestic-payment-consent** resource has an Authorised status. If the status is not Authorised, an ASPSP must respond with a 400 (Bad Request) and a ```UK.OBIE.Resource.InvalidConsentStatus``` error code.
 * Confirmation of funds requests do not affect the status of the **domestic-payment-consent** resource.
 
+
 ## [POST&nbsp;/domestic-payments](POST&nbsp;/domestic-payments)
+
 ```POST /domestic-payments```
 
 Once the domestic-payment-consent has been authorised by the PSU, the PISP can proceed to submitting the domestic-payment for processing:
@@ -119,6 +140,7 @@ The domestic-payment resource must have one of the following PaymentStatusCode c
 ```GET /domestic-payments/{DomesticPaymentId}/payment-details```
 
 A PISP can retrieve the Details of the underlying payment transaction via this endpoint. This resource allows ASPSPs to return richer list of Payment Statuses, and if available payment scheme related statuses.
+
 ### [Status](Status)
 
 The domestic-payment - payment-details must have one of the following PaymentStatusCode code-set enumerations:
