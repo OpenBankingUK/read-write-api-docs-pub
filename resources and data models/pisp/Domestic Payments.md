@@ -1,7 +1,7 @@
 - [Endpoints](#endpoints)
-	- [POST&nbsp;/domestic-payment-consents](#postnbspdomestic-payment-consents)
+	- [POST /domestic-payment-consents](#post-domestic-payment-consents)
 		- [Status](#status)
-	- [GET&nbsp;/domestic-payment-consents/{ConsentId}/funds-confirmation](#getnbspdomestic-payment-consentsconsentidfunds-confirmation)
+	- [GET /domestic-payment-consents/{ConsentId}/funds-confirmation](#get-domestic-payment-consentsconsentidfunds-confirmation)
 		- [Status](#status-1)
 	- [GET&nbsp;/domestic-payments/{DomesticPaymentId}](#getnbspdomestic-paymentsdomesticpaymentid)
 		- [Status](#status-2)
@@ -27,17 +27,23 @@
 		- [UML Diagram](#uml-diagram-2)
 		- [Notes](#notes-3)
 		- [Data Dictionary](#data-dictionary-2)
-	- [Domestic Payment&nbsp;-&nbsp;Request](#domestic-paymentnbsp-nbsprequest)
+	- [Domestic Payment - Request](#domestic-payment---request)
 		- [UML Diagram](#uml-diagram-3)
 		- [Notes](#notes-4)
 		- [Data Dictionary](#data-dictionary-3)
 		- [Data Dictionary](#data-dictionary-4)
-	- [Domestic Payment Order - Payment Details -&nbsp;Response](#domestic-payment-order---payment-details--nbspresponse)
+	- [Domestic Payment Order - Payment Details - Response](#domestic-payment-order---payment-details---response)
 		- [UML Diagram](#uml-diagram-4)
 		- [Data Dictionary](#data-dictionary-5)
+- [Usage Examples](#usage-examples)
+	- [Merchant Initiation via PISP](#merchant-initiation-via-pisp)
+		- [Sequence Diagram](#sequence-diagram)
+		- [Illustrative Interactions](#illustrative-interactions)
+			- [Create Domestic Payment Order Consent](#create-domestic-payment-order-consent)
+			- [Confirm Funds on Domestic Payment Order Consent](#confirm-funds-on-domestic-payment-order-consent)
 
+# Endpoints
 
-# [Endpoints](Endpoints)
 | Resource |HTTP Operation |Endpoint |Mandatory ? |Scope |Grant Type |Message Signing |Idempotency Key |Request Object |Response Object |
 | -------- |-------------- |-------- |----------- |----- |---------- |--------------- |--------------- |-------------- |--------------- |
 | domestic-payment-consents |POST |POST /domestic-payment-consents |Mandatory |payments |Client Credentials |Signed Request Signed Response |Yes |OBWriteDomesticConsent3 |OBWriteDomesticConsentResponse3 |
@@ -47,7 +53,8 @@
 | domestic-payments |GET |GET /domestic-payments/{DomesticPaymentId} |Mandatory |payments |Client Credentials |Signed Response |No |NA |OBWriteDomesticResponse3 |
 | payment-details |GET |GET /domestic-payments/{DomesticPaymentId}/payment-details |Optional |payments |Client Credentials |Signed Response |No |NA |OBWritePaymentDetailsResponse1 |
 
-## [POST&nbsp;/domestic-payment-consents](POST&nbsp;/domestic-payment-consents)
+## POST /domestic-payment-consents
+
 ```POST /domestic-payment-consents```
 
 The API endpoint allows the PISP to ask an ASPSP to create a new **domestic-payment-consent** resource.
@@ -55,17 +62,21 @@ The API endpoint allows the PISP to ask an ASPSP to create a new **domestic-paym
 * The POST action indicates to the ASPSP that a domestic payment consent has been staged. At this point, the PSU may not have been identified by the ASPSP, and the request payload may not contain any information of the account that should be debited.
 * The endpoint allows the PISP to send a copy of the consent (between PSU and PISP) to the ASPSP for the PSU to authorise.
 * The ASPSP creates the **domestic-payment-consent** resource and responds with a unique ConsentId to refer to the resource.
+
 ### Status
+
 The default Status is &quot;AwaitingAuthorisation&quot; immediately after the domestic-payment-consent has been created.
 
 | Status |
 | ------ |
 | AwaitingAuthorisation |
 
-## [GET&nbsp;/domestic-payment-consents/{ConsentId}](GET&nbsp;/domestic-payment-consents/{ConsentId})
+## GET /domestic-payment-consents/{ConsentId}
+
 ```GET /domestic-payment-consents/{ConsentId}```
 
 A PISP can optionally retrieve a payment consent resource that they have created to check its status. 
+
 ### Status
 
 Once the PSU authorises the payment-consent resource - the Status of the payment-consent resource will be updated with &quot;Authorised&quot;.
@@ -83,7 +94,8 @@ The available status codes for the domestic-payment-consent resource are:
 | Authorised |
 | Consumed |
 
-## [GET&nbsp;/domestic-payment-consents/{ConsentId}/funds-confirmation](GET&nbsp;/domestic-payment-consents/{ConsentId}/funds-confirmation)
+## GET /domestic-payment-consents/{ConsentId}/funds-confirmation
+
 ```GET /domestic-payment-consents/{ConsentId}/funds-confirmation```
 
 The API endpoint allows the PISP to ask an ASPSP to confirm funds on a **domestic-payment-consent** resource.
@@ -91,8 +103,7 @@ The API endpoint allows the PISP to ask an ASPSP to confirm funds on a **domesti
 * An ASPSP can only respond to a funds confirmation request if the **domestic-payment-consent** resource has an Authorised status. If the status is not Authorised, an ASPSP must respond with a 400 (Bad Request) and a ```UK.OBIE.Resource.InvalidConsentStatus``` error code.
 * Confirmation of funds requests do not affect the status of the **domestic-payment-consent** resource.
 
-
-## [POST&nbsp;/domestic-payments](POST&nbsp;/domestic-payments)
+## POST /domestic-payments
 
 ```POST /domestic-payments```
 
@@ -103,7 +114,7 @@ Once the domestic-payment-consent has been authorised by the PSU, the PISP can p
 * The PISP **must** ensure that the Initiation and Risk sections of the domestic-payment match the corresponding Initiation and Risk sections of the domestic-payment-consent resource. If the two do not match, the ASPSP must not process the request and **must** respond with a 400 (Bad Request).
 * Any operations on the domestic-payment resource will not result in a status change for the domestic-payment resource.
 
-### [Status](Status)
+### Status
 
 A domestic-payment can only be created if its corresponding domestic-payment-consent resource has the status of "Authorised". 
 
@@ -118,12 +129,13 @@ The domestic-payment resource that is created successfully must have one of the 
 | AcceptedWithoutPosting |
 | AcceptedCreditSettlementCompleted |
 
-## [GET&nbsp;/domestic-payments/{DomesticPaymentId}](GET&nbsp;/domestic-payments/{DomesticPaymentId})
+## GET&nbsp;/domestic-payments/{DomesticPaymentId}
+
 ```GET /domestic-payments/{DomesticPaymentId}```
 
 A PISP can retrieve the domestic-payment to check its status.
 
-### [Status](Status)
+### Status
 
 The domestic-payment resource must have one of the following PaymentStatusCode code-set enumerations:
 
@@ -136,12 +148,13 @@ The domestic-payment resource must have one of the following PaymentStatusCode c
 | AcceptedWithoutPosting |
 | AcceptedCreditSettlementCompleted |
 
-## [GET&nbsp;/domestic-payments/{DomesticPaymentId}/payment-details](GET&nbsp;/domestic-payments/{DomesticPaymentId}/payment-details)
+## GET&nbsp;/domestic-payments/{DomesticPaymentId}/payment-details
+
 ```GET /domestic-payments/{DomesticPaymentId}/payment-details```
 
 A PISP can retrieve the Details of the underlying payment transaction via this endpoint. This resource allows ASPSPs to return richer list of Payment Statuses, and if available payment scheme related statuses.
 
-### [Status](Status)
+### Status
 
 The domestic-payment - payment-details must have one of the following PaymentStatusCode code-set enumerations:
 | Status |
@@ -167,8 +180,10 @@ The domestic-payment - payment-details must have one of the following PaymentSta
 | Received |
 | RejectedCancellationRequest |
 
-## [State&nbsp;Model](State&nbsp;Model)
-### [Payment&nbsp;Order&nbsp;Consent](Payment&nbsp;Order&nbsp;Consent)
+## State&nbsp;Model
+
+### Payment&nbsp;Order&nbsp;Consent
+
 The state model for the domestic-payment-consent resource follows the generic consent state model. However, does not use the &nbsp;Revoked&nbsp; status, as the consent for a domestic-payment is not a long-lived consent.
 
 ![Status](images/image2018-5-18_10-24-21.png "Payment Order Consent Status")
@@ -182,7 +197,7 @@ The definitions for the Status:
 | 3 |Authorised |The consent resource has been successfully authorised. |
 | 4 |Consumed |The consented action has been successfully completed. This does not reflect the status of the consented action. |
 
-### [Payment&nbsp;Order](Payment&nbsp;Order)
+### Payment&nbsp;Order
 
 The state model for the domestic-payment resource follows the behaviour and definitions for the ISO 20022 PaymentStatusCode code-set.
 
@@ -197,10 +212,10 @@ The definitions for the status:
 | 3 |AcceptedSettlementInProcess |All preceding checks such as technical validation and customer profile were successful and therefore the payment initiation has been accepted for execution. |
 | 4 |AcceptedSettlementCompleted |Settlement on the debtor's account has been completed. |
 | 5 |AcceptedWithoutPosting |Payment instruction included in the credit transfer is accepted without being posted to the creditor customer’s account. |
-| 6 |AcceptedCreditSettlementCompleted |Settlement on the creditor's account has been completed. |
+| 6 |AcceptedCreditSettlementCompleted |Settlement on the creditor's account has been completed.|
 
 
-#### [Multiple&nbsp;Authorisation](Multiple&nbsp;Authorisation)
+#### Multiple&nbsp;Authorisation
 
 If the payment-order requires multiple authorisations - the Status of the multiple authorisations will be updated in the MultiAuthorisation object.
 
@@ -214,20 +229,22 @@ The definitions for the status:
 | 2 |Rejected |The payment-order resource has been rejected by an authoriser. |
 | 3 |Authorised |The payment-order resource has been successfully authorised by all required authorisers.|
 
-# [Data&nbsp;Model](Data&nbsp;Model)
+# Data&nbsp;Model
 
 The data dictionary section gives the detail on the payload content for the Domestic Payment API flows.
 
-## [Reused&nbsp;Classes](Reused&nbsp;Classes)
-### [OBDomestic2](OBDomestic2)
+## Reused&nbsp;Classes
+
+### OBDomestic2
 
 This section describes the OBDomestic2 class which is reused as the Initiation object in the domestic-payment-consent and domestic-payment resources.
 
-#### [UML&nbsp;Diagram](UML&nbsp;Diagram)
+#### UML&nbsp;Diagram
 
 ![UML Diagram$](images/OBDomestic2.gif "UML Diagram")
 
-#### [Notes](Notes)
+#### Notes
+
 For the OBDomestic2 Initiation object:  
 
 * All elements in the Initiation payload that are specified by the PISP must not be changed via the ASPSP as this is part of formal consent from the PSU.
@@ -248,7 +265,7 @@ For the OBDomestic2 Initiation object:
 * LocalInstrument is the requested payment scheme for execution. This is a free-text field.
 * Design decisions for the Initiation section of the payload and how this maps to the ISO 20022 messaging standard are articulated in the Mapping to Schemes and Standards section.
 
-#### [Data&nbsp;Dictionary](Data&nbsp;Dictionary)
+#### Data&nbsp;Dictionary
 
 | Name |Occurrence |XPath |EnhancedDefinition |Class |Codes |Pattern |
 | ---- |---------- |----- |------------------ |----- |----- |------- |
@@ -285,7 +302,7 @@ For the OBDomestic2 Initiation object:
 | Reference |0..1 |OBDomestic2/RemittanceInformation/Reference |Unique reference, as assigned by the creditor, to unambiguously refer to the payment transaction. Usage: If available, the initiating party should provide this reference in the structured remittance information, to enable reconciliation by the creditor upon receipt of the amount of money. If the business context requires the use of a creditor reference or a payment remit identification, and only one identifier can be passed through the end-to-end chain, the creditor's reference or payment remittance identification should be quoted in the end-to-end transaction identification. OB: The Faster Payments Scheme can only accept 18 characters for the ReferenceInformation field - which is where this ISO field will be mapped. |Max35Text | | |
 | SupplementaryData |0..1 |OBDomestic2/SupplementaryData |Additional information that can not be captured in the structured fields and/or any other specific block. |OBSupplementaryData1 | | |
 
-## [Domestic&nbsp;Payment&nbsp;Consent&nbsp;-&nbsp;Request](Domestic&nbsp;Payment&nbsp;Consent&nbsp;-&nbsp;Request)
+## Domestic&nbsp;Payment&nbsp;Consent&nbsp;-&nbsp;Request
 
 The OBWriteDomesticConsent3 object will be used for the call to:
 * POST /domestic-payment-consents
@@ -354,7 +371,7 @@ Them domestic-payment-consent&nbsp;**response**&nbsp;contains the full **origina
 | Risk |1..1 |OBWriteDomesticConsentResponse3/Risk |The Risk section is sent by the initiating party to the ASPSP. It is used to specify additional details for risk scoring for Payments. |OBRisk1 | | |
 
 ## Domestic Payment Consent Confirmation of Funds -&nbsp;Response
-in
+
 The&nbsp;OBWriteFundsConfirmationResponse1 object will be used for a response to a call to:
 
 * GET&nbsp;/domestic-payment-consents/{ConsentId}/funds-confirmation
@@ -378,7 +395,7 @@ The confirmation of funds&nbsp;response&nbsp;contains the result of a funds avai
 | FundsAvailable |1..1 |OBWriteFundsConfirmationResponse1/Data/FundsAvailableResult/FundsAvailable |Flag to indicate the availability of funds given the Amount in the consent request. |xs:boolean | | |
 | SupplementaryData |0..1 |OBWriteFundsConfirmationResponse1/Data/SupplementaryData |Additional information that can not be captured in the structured fields and/or any other specific block. |OBSupplementaryData1 | | |
 
-## Domestic Payment&nbsp;-&nbsp;Request
+## Domestic Payment - Request
 
 The&nbsp;OBWriteDomestic2 object will be used for a call to:
 * POST /domestic-payments
@@ -406,7 +423,7 @@ The&nbsp;**Initiation** and **Risk**&nbsp;sections of the&nbsp;domestic-payment 
 | Initiation |1..1 |OBWriteDomestic2/Data/Initiation |The Initiation payload is sent by the initiating party to the ASPSP. It is used to request movement of funds from the debtor account to a creditor for a single domestic payment. |OBDomestic2 | | |
 | Risk |1..1 |OBWriteDomestic2/Risk |The Risk section is sent by the initiating party to the ASPSP. It is used to specify additional details for risk scoring for Payments. |OBRisk1 | | |
 
- ## Domestic Payment&nbsp;-&nbsp;Response
+ ## Domestic Payment - Response
  
  The&nbsp;OBWriteDomesticResponse3 object will be used for a response to a call to:
  
@@ -448,7 +465,7 @@ The&nbsp;**Initiation** and **Risk**&nbsp;sections of the&nbsp;domestic-payment 
 | Initiation |1..1 |OBWriteDomesticResponse3/Data/Initiation |The Initiation payload is sent by the initiating party to the ASPSP. It is used to request movement of funds from the debtor account to a creditor for a single domestic payment. |OBDomestic2 | | |
 | MultiAuthorisation |0..1 |OBWriteDomesticResponse3/Data/MultiAuthorisation |The multiple authorisation flow response from the ASPSP. |OBMultiAuthorisation1 | | |
 
-## Domestic Payment Order - Payment Details -&nbsp;Response
+## Domestic Payment Order - Payment Details - Response
 
 The&nbsp;OBWritePaymentDetailsResponse1&nbsp;object will be used for a response to a call to:
 
@@ -465,4 +482,240 @@ The&nbsp;OBWritePaymentDetailsResponse1&nbsp;object will be used for a response 
 | OBWritePaymentDetailsResponse1 | |OBWritePaymentDetailsResponse1 | |OBWritePaymentDetailsResponse1 | | |
 | Data |1..1 |OBWritePaymentDetailsResponse1/Data | |OBWriteDataPaymentOrderStatusResponse1 | | |
 | PaymentStatus |0..unbounded |OBWritePaymentDetailsResponse1/Data/PaymentStatus |Payment status details. |OBWritePaymentDetails1 | | |
+
+# Usage Examples
+
+## Merchant Initiation via PISP
+
+This example set of flows and payload examples are for a domestic payment initiated by a merchant via a PISP.
+
+In this scenario:
+
+* The merchant has **not** specified the Debtor Account details for the PSU. The PSU will select their account during the authorisation of consent.
+* The merchant's account is a building society account with a roll number specified in the SecondaryIdentification field.
+
+### Sequence Diagram
+
+![Sequence Diagram](images/MerchantDomesticPaymentUsageExample-3.png)
+
+<details>
+  <summary>Expand source</summary>
+  <![CDATA[participant PSU
+                    participant Merchant
+                    participant PISP
+                    participant ASPSP Authorisation Server
+                    participant ASPSP Resource Server
+                    note over PSU, ASPSP Resource Server
+                    Step 1: Agree Domestic Payment-Order Initiation
+                    end note
+                    PSU -> Merchant: Check-out and pay
+                    Merchant -> PISP: Send request to setup domestic payment consent
+                    note over PSU, ASPSP Resource Server
+                    Step 2: Setup Domestic Payment-Order Consent
+                    end note
+                    PISP <-> ASPSP Authorisation Server: Establish TLS 1.2 MA
+                    PISP -> ASPSP Authorisation Server: Initiate Client Credentials Grant
+                    ASPSP Authorisation Server -> PISP: access-token
+                    PISP <-> ASPSP Resource Server: Establish TLS 1.2 MA
+                    PISP -> ASPSP Resource Server: POST /domestic-payment-consents
+                    ASPSP Resource Server -> PISP: HTTP 201 (Created), ConsentId
+                    PISP -> Merchant: HTTP 302 (Found), Redirect (ConsentId)
+                    Merchant -> PSU: HTTP 302 (Found), Redirect (ConsentId)
+                    note over PSU, ASPSP Resource Server
+                    Step 3: Authorize consent
+                    end note
+                    PSU -> ASPSP Authorisation Server: Follow redirect (ConsentId)
+                    PSU <-> ASPSP Authorisation Server: authenticate
+                    PSU <-> ASPSP Authorisation Server: SCA if required
+                    PSU <-> ASPSP Authorisation Server: Select debtor account
+                    ASPSP Authorisation Server -> PSU: HTTP 302 (Found), Redirect (authorization-code)
+                    PSU -> PISP: Follow redirect (authorization-code)
+                    PISP <-> ASPSP Authorisation Server: Establish TLS 1.2 MA
+                    PISP -> ASPSP Authorisation Server: Exchange authorization-code for access token
+                    ASPSP Authorisation Server -> PISP: access-token
+                    PISP -> PSU: HTTP 302 (Found), Redirect back to merchant
+                    PSU -> Merchant: Follow redirect
+                    note over PSU, ASPSP Resource Server
+                    Step 4: Create Domestic Payment-Order
+                    end note
+                    PISP <-> ASPSP Resource Server: Establish TLS 1.2 MA
+                    PISP -> ASPSP Resource Server: POST /domestic-payments
+                    ASPSP Resource Server -> PISP: HTTP 201 (Created), DomesticPaymentId
+                    note over PSU, ASPSP Resource Server
+                    Step 5: Get Domestic Payment-Order status
+                    end note
+                    opt
+                    Merchant -> PISP: Check payment status
+                    PISP <-> ASPSP Resource Server: Establish TLS 1.2 MA
+                    PISP -> ASPSP Resource Server: GET /domestic-payments/{DomesticPaymentId}
+                    ASPSP Resource Server -> PISP: HTTP 200 (OK), domestic-payments resource
+                    PISP -> Merchant: HTTP 200 (OK), Return domestic-payments Status
+                    end opt
+                    ]]>
+
+</details>
+
+### Illustrative Interactions
+
+Notes:
+
+* As per the Security & Access Control section, examples are given where the call to GET must use a client credentials grant to obtain a token to make GET requests.
+
+#### Create Domestic Payment Order Consent
+
+|POST /domestic-payment-consents request | POST  /domestic-payment-consents response |
+| -- | --|
+|
+<details><summary>Payment Order Consent Request Payload</summary>
+
+```javascript
+POST /domestic-payment-consents HTTP/1.1
+Authorization: Bearer 2YotnFZFEjr1zCsicMWpAA
+x-idempotency-key: FRESCO.21302.GFX.20
+x-jws-signature: TGlmZSdzIGEgam91cm5leSBub3QgYSBkZXN0aW5hdGlvbiA=..T2ggZ29vZCBldmVuaW5nIG1yIHR5bGVyIGdvaW5nIGRvd24gPw==
+x-fapi-auth-date: Sun, 10 Sep 2017 19:43:31 GMT
+x-fapi-customer-ip-address: 104.25.212.99
+x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
+Content-Type: application/json
+Accept: application/json
+
+ {
+  "Data": {
+    "Initiation": {
+      "InstructionIdentification": "ACME412",
+      "EndToEndIdentification": "FRESCO.21302.GFX.20",
+      "InstructedAmount": {
+        "Amount": "165.88",
+        "Currency": "GBP"
+      },
+      "CreditorAccount": {
+        "SchemeName": "UK.OBIE.SortCodeAccountNumber",
+        "Identification": "08080021325698",
+        "Name": "ACME Inc",
+        "SecondaryIdentification": "0002"
+      },
+      "RemittanceInformation": {
+        "Reference": "FRESCO-101",
+        "Unstructured": "Internal ops code 5120101"
+      }
+    }
+  },
+  "Risk": {
+    "PaymentContextCode": "EcommerceGoods",
+    "MerchantCategoryCode": "5967",
+    "MerchantCustomerIdentification": "053598653254",
+    "DeliveryAddress": {
+      "AddressLine": [
+        "Flat 7",
+        "Acacia Lodge"
+      ],
+      "StreetName": "Acacia Avenue",
+      "BuildingNumber": "27",
+      "PostCode": "GU31 2ZZ",
+      "TownName": "Sparsholt",
+      "CountySubDivision": [
+        "Wessex"
+      ],
+      "Country": "UK"
+    }
+  }
+}
+```
+
+</details>|<details><summary>Payment Order Consent Respseon Payload</summary>
+
+```javascript
+HTTP/1.1 201 Created
+x-jws-signature: V2hhdCB3ZSBnb3QgaGVyZQ0K..aXMgZmFpbHVyZSB0byBjb21tdW5pY2F0ZQ0K
+x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
+Content-Type: application/json
+ 
+{
+  "Data": {
+    "ConsentId": "58923",
+    "Status": "AwaitingAuthorisation",
+    "CreationDateTime": "2017-06-05T15:15:13+00:00",
+    "StatusUpdateDateTime": "2017-06-05T15:15:13+00:00",
+    "Initiation": {
+      "InstructionIdentification": "ACME412",
+      "EndToEndIdentification": "FRESCO.21302.GFX.20",
+      "InstructedAmount": {
+        "Amount": "165.88",
+        "Currency": "GBP"
+      },
+      "CreditorAccount": {
+        "SchemeName": "UK.OBIE.SortCodeAccountNumber",
+        "Identification": "08080021325698",
+        "Name": "ACME Inc",
+        "SecondaryIdentification": "0002"
+      },
+      "RemittanceInformation": {
+        "Reference": "FRESCO-101",
+        "Unstructured": "Internal ops code 5120101"
+      }
+    }
+  },
+  "Risk": {
+    "PaymentContextCode": "EcommerceGoods",
+    "MerchantCategoryCode": "5967",
+    "MerchantCustomerIdentification": "053598653254",
+    "DeliveryAddress": {
+      "AddressLine": [
+        "Flat 7",
+        "Acacia Lodge"
+      ],
+      "StreetName": "Acacia Avenue",
+      "BuildingNumber": "27",
+      "PostCode": "GU31 2ZZ",
+      "TownName": "Sparsholt",
+      "CountySubDivision": [
+        "Wessex"
+      ],
+      "Country": "UK"
+    }
+  },
+  "Links": {
+    "Self": "https://api.alphabank.com/open-banking/v3.1/pisp/domestic-payment-consents/58923"
+  },
+  "Meta": {}
+}
+```
+</details>|
+
+#### Confirm Funds on Domestic Payment Order Consent
+
+|GET /domestic-payment-consents/{ConsentId}/funds-confirmation Request|GET /domestic-payment-consents/{ConsentId}/funds-confirmation Response|
+|--|--|
+|
+<details><summary>Payment Order Funds Confirmation Request</summary>
+
+```javascript
+GET /domestic-payment-consents/58923/funds-confirmation HTTP/1.1
+Authorization: Bearer Jhingapulaav
+x-fapi-auth-date: Sun, 10 Sep 2017 19:43:31 GMT
+x-fapi-customer-ip-address: 104.25.212.99
+x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
+Accept: application/json
+```
+</details>|<details><summary>Payment Order Funds Confirmation Response Payload</summary>
+
+```javascript
+HTTP/1.1 200 OK
+x-jws-signature: V2hhdCB3ZSBnb3QgaGVyZQ0K..aXMgZmFpbHVyZSB0byBjb21tdW5pY2F0ZQ0K
+x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
+Content-Type: application/json
+{
+    "Data": {
+        "FundsAvailableResult": {
+            "FundsAvailableDateTime": "2017-06-05T15:15:23+00:00",
+            "FundsAvailable": true
+        }
+    },
+    "Links": {
+        "Self": "https://api.alphabank.com/open-banking/v3.1/pisp/domestic-payment-consents/58923/funds-confirmation"
+    },
+    "Meta": {}
+}
+```
+</details>|
 
