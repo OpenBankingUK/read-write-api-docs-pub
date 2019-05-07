@@ -58,6 +58,7 @@ The account-access-consent resource that is created successfully must have the f
 | 1 |AwaitingAuthorisation |The account access consent is awaiting authorisation. |
 
 After authorisation has taken place the account-access-consent resource may have these following statuses.
+
 |  |Status |Status Description |
 | --- |--- |--- |
 | 1 |Rejected |The account access consent has been rejected. |
@@ -404,3 +405,4 @@ Content-Type: application/json
   }
 }
 ```
+
