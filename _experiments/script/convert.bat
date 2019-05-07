@@ -4,8 +4,6 @@ rem rm -rf out
 
 xcopy .\in\*.html .\out\*.md /i /s /q
 
-grep -rl p ./out/*.md | xargs sed -i "s/<p>/\n\n /g"
-
 grep -rl h1 ./out/*.md | xargs sed -i "s/<h1[^>]*>/\n# /g"
 grep -rl h2 ./out/*.md | xargs sed -i "s/<h2[^>]*>/\n## /g"
 grep -rl h3 ./out/*.md | xargs sed -i "s/<h3[^>]*>/\n### /g"
@@ -19,9 +17,6 @@ grep -rl h3 ./out/*.md | xargs sed -i "s/<\/h3>/\n/g"
 grep -rl h4 ./out/*.md | xargs sed -i "s/<\/h4>/\n/g"
 grep -rl h5 ./out/*.md | xargs sed -i "s/<\/h5>/\n/g"
 grep -rl h6 ./out/*.md | xargs sed -i "s/<\/h6>/\n/g"
-
-grep -rl nbsp ./out/*.md | xargs sed -i "s/&nbsp;/ /"
-grep -rl quot ./out/*.md | xargs sed -i "s/&quot;/\"/"
 
 grep -rl p ./out/*.md | xargs sed -i -E "s/<p[^>]*>/\n/g"
 grep -rl p ./out/*.md | xargs sed -i "s/<\/p>/\n/g"
@@ -43,8 +38,8 @@ grep -rl div ./out/*.md | xargs sed -i -E "s/<\/div>/\n/g"
 grep -rl span ./out/*.md | xargs sed -i -E "s/<span[^>]*>//g"
 grep -rl span ./out/*.md | xargs sed -i -E "s/<\/span>//g"
 
-grep -rl table ./out/*.md | xargs sed -i -E "s/<table[^>]*>/\n```\n/g"
-grep -rl table ./out/*.md | xargs sed -i -E "s/<\/table>/\n```\n/g"
+grep -rl table ./out/*.md | xargs sed -i -E "s/<table[^>]*>/\n```TABLE START\n/g"
+grep -rl table ./out/*.md | xargs sed -i -E "s/<\/table>/\n```TABLE END\n/g"
 
 grep -rl colgroup ./out/*.md | xargs sed -i -E "s/<colgroup[^>]*>//g"
 grep -rl colgroup ./out/*.md | xargs sed -i -E "s/<\/colgroup>/\n/g"
