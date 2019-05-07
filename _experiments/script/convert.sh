@@ -1,4 +1,4 @@
-cp $1 $1.out -r
+cp $1 $1.out
 
 grep -rl h1 $1.out | xargs sed -i 's/<h1[^>]*>/\n# /g'
 grep -rl h2 $1.out | xargs sed -i 's/<h2[^>]*>/\n## /g'
