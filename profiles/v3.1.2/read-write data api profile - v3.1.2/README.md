@@ -1202,7 +1202,7 @@ The AISP attempts to provide an expired or missing access token to the ASPSP in 
 
 
 <details>
-  <summary>Diagram content</summary>
+  <summary>Diagram source</summary>
 
 ```
 participant PSU
@@ -1236,7 +1236,7 @@ The AISP provides a malformed request to the ASPSP in an attempt to setup an Acc
 ![](./images/IncompleteOrMalformedRequestPayload.png)
 
 <details>
-  <summary>Diagram content</summary>
+  <summary>Diagram source</summary>
 
 ```
 participant PSU
@@ -1269,7 +1269,7 @@ The AISP provides a (valid) access token which does not have a valid scope (or l
 ![](./images/MissingOrInvalidAccessTokenScope.png)
 
 <details>
-  <summary>Diagram content</summary>
+  <summary>Diagram source</summary>
 
 ```
 participant PSU
@@ -1308,7 +1308,7 @@ The ASPSP may optionally choose to return a 429 Response
 ![](./images/TooManyRequests.png)
 
 <details>
-  <summary>Diagram content</summary>
+  <summary>Diagram source</summary>
 
 ```
 participant PSU
@@ -1342,7 +1342,7 @@ The Step 3: Authorise Consent Flow fails to succeed due to the PSU providing inv
 ![](./images/FailedAuthorisationConsent.png)
 
 <details>
-  <summary>Diagram content</summary>
+  <summary>Diagram source</summary>
 
 ```
 participant PSU
