@@ -1,7 +1,6 @@
     
         
-
-  
+ 
          
 
 
@@ -10,14 +9,14 @@
 
 
 
-```
+```TABLE START
 
 ---
 | 
 
 
 
-```
+```TABLE START
 
 
 ---
@@ -35,11 +34,9 @@ accounts
 
 
 
+GET /accounts
 
- GET /accounts
-
-
- GET /accounts/{AccountId}
+GET /accounts/{AccountId}
 
 
 
@@ -51,11 +48,9 @@ accounts
 
 
 
+Mandatory
 
- Mandatory
-
-
- Mandatory
+Mandatory
 
 
 
@@ -73,7 +68,7 @@ accounts
 ---
 
 
-```
+```TABLE END
 
 
 
@@ -83,13 +78,13 @@ accounts
 
 ---
 
-```
+```TABLE END
 
 <img class="editor-inline-macro" src="/wiki/plugins/servlet/confluence/placeholder/macro?definition=e3RvYzpvdXRsaW5lPXRydWV8c3R5bGU9bm9uZX0&amp;locale=en_GB&amp;version=2" data-macro-name="toc" data-macro-id="e85f4a0a-4196-4efb-aa41-b5a73b7ff369" data-macro-parameters="outline=true|style=none" data-macro-schema-version="1">
 
 # Version Control
 
-```
+```TABLE START
 
 
 ---
@@ -151,8 +146,7 @@ OB R/W API Team
 
 
 
-
- v4.0-draft2 changes:
+v4.0-draft2 changes:
 
 - Added `Status` and `StatusUpdateDateTime` to data model.
 
@@ -166,8 +160,7 @@ OB R/W API Team
 
 
 
-
-  31 Jan 2019  
+ 31 Jan 2019  
 
 
 
@@ -175,12 +168,10 @@ OB R/W API Team
 
 
 
-
- v4.0-draft4 changes:
+v4.0-draft4 changes:
 
 - 
-
- Corrected Usage Examples so that Account.Account is an array.
+Corrected Usage Examples so that Account.Account is an array.
 
 
 
@@ -229,13 +220,13 @@ OB R/W API Team
 ---
 
 
-```
+```TABLE END
 
 # Endpoints
 
 Endpoints for the resource - and available methods.
 
-```
+```TABLE START
 
 
 ---
@@ -297,14 +288,12 @@ GET
 
 
 
-
- GET /accounts
-
+GET /accounts
 
 
 
 
- Mandatory
+Mandatory
 
 
 
@@ -370,37 +359,33 @@ OBReadAccount4
 ---
 
 
-```
+```TABLE END
 
 ## GET /accounts
 
 
-```
+```TABLE START
 
 ---
 | 
-
- The first step for an AISP after an account-request is authorised - is to call the GET /accounts endpoint. 
+The first step for an AISP after an account-request is authorised - is to call the GET /accounts endpoint. 
 
 
 
 
 ---
 
-```
+```TABLE END
 
-
- An AISP will be given the full list of accounts (the AccountId(s)) that the PSU has authorised the AISP to access. The AccountId(s) returned may then be used to retrieve other resources for a specific AccountId. The selection of authorised accounts happens  **only**  at the ASPSP's interface.
+An AISP will be given the full list of accounts (the AccountId(s)) that the PSU has authorised the AISP to access. The AccountId(s) returned may then be used to retrieve other resources for a specific AccountId. The selection of authorised accounts happens  **only**  at the ASPSP's interface.
 
 ## GET /accounts/{AccountId}
 
-
- An AISP  **may**  retrieve the account information resources for the AccountId (which is retrieved in the call to GET /accounts).
+An AISP  **may**  retrieve the account information resources for the AccountId (which is retrieved in the call to GET /accounts).
 
 # Data Model
 
-
- The OBReadAccount4 object will be used for the call to:
+The OBReadAccount4 object will be used for the call to:
 
 - GET /accounts/{AccountId}
 
@@ -408,19 +393,15 @@ OBReadAccount4
 
 ## Resource Definition
 
+This resource represents the account to which credit and debit entries are made.
 
- This resource represents the account to which credit and debit entries are made.
-
-
- Each account resource will have a unique and immutable AccountId.
+Each account resource will have a unique and immutable AccountId.
 
 ## UML Diagram
 
+<img class="confluence-embedded-image" src="https://openbanking.atlassian.net/wiki/download/attachments/1077805362/OBReadAccount4.gif?version=1&amp;modificationDate=1556635326263&amp;cacheVersion=1&amp;api=v2" data-image-src="https://openbanking.atlassian.net/wiki/download/attachments/1077805362/OBReadAccount4.gif?version=1&amp;modificationDate=1556635326263&amp;cacheVersion=1&amp;api=v2" data-unresolved-comment-count="0" data-linked-resource-id="1077805369" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="OBReadAccount4.gif" data-base-url="https://openbanking.atlassian.net/wiki" data-linked-resource-content-type="image/gif" data-linked-resource-container-id="1077805362" data-linked-resource-container-version="1" data-media-id="4fedbdb8-55c2-4fea-81a0-76fa190a81de" data-media-type="file" title="Developer Zone > Accounts v3.1.2 > OBReadAccount4.gif" data-location="Developer Zone > Accounts v3.1.2 > OBReadAccount4.gif" data-image-height="185" data-image-width="642">
 
- <img class="confluence-embedded-image" src="https://openbanking.atlassian.net/wiki/download/attachments/1077805362/OBReadAccount4.gif?version=1&amp;modificationDate=1556635326263&amp;cacheVersion=1&amp;api=v2" data-image-src="https://openbanking.atlassian.net/wiki/download/attachments/1077805362/OBReadAccount4.gif?version=1&amp;modificationDate=1556635326263&amp;cacheVersion=1&amp;api=v2" data-unresolved-comment-count="0" data-linked-resource-id="1077805369" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="OBReadAccount4.gif" data-base-url="https://openbanking.atlassian.net/wiki" data-linked-resource-content-type="image/gif" data-linked-resource-container-id="1077805362" data-linked-resource-container-version="1" data-media-id="4fedbdb8-55c2-4fea-81a0-76fa190a81de" data-media-type="file" title="Developer Zone > Accounts v3.1.2 > OBReadAccount4.gif" data-location="Developer Zone > Accounts v3.1.2 > OBReadAccount4.gif" data-image-height="185" data-image-width="642">
-
-
-  **Notes:** 
+ **Notes:** 
 
 - The  **Account**  and  **Servicer**  structure has been designed to:
 - Reflect the DebtorAccount and DebtorAgent (and similarly for CreditorAccount and CreditorAgent) structures in the PISP use case.
@@ -446,8 +427,7 @@ OBReadAccount4
 
 ## Permission Codes
 
-
- The resource differs depending on the permissions (ReadAccountsBasic and ReadAccountsDetail) used to access the resource. In the event that the resource is accessed with both ReadAccountsBasic and ReadAccountsDetail, the most detailed level (ReadAccountsDetail) must be used.
+The resource differs depending on the permissions (ReadAccountsBasic and ReadAccountsDetail) used to access the resource. In the event that the resource is accessed with both ReadAccountsBasic and ReadAccountsDetail, the most detailed level (ReadAccountsDetail) must be used.
 
 - These objects  **must not ** be returned  **without**  the  **ReadAccountsDetail ** permission:
 - OBReadAccount4/Data/Account/Account
@@ -461,12 +441,11 @@ OBReadAccount4
 - OBReadAccount4/Data/Account/Servicer  **may**  be returned if applicable to the account and ASPSP (0..1)
 
 
-
- If the ReadPAN permission is granted by the PSU, the ASPSP may choose to populate the OBReadAccount4/Data/Account/Account/Identification with the unmasked PAN (if the PAN is being populated in the response).
+If the ReadPAN permission is granted by the PSU, the ASPSP may choose to populate the OBReadAccount4/Data/Account/Account/Identification with the unmasked PAN (if the PAN is being populated in the response).
 
 ## Data Dictionary
 
-```
+```TABLE START
        
 
 ---
@@ -496,47 +475,40 @@ Pattern
 
 ---
 | 
-
- OBReadAccount4
-
-
-
-
-
- 
+OBReadAccount4
 
 
 
 
 
 
- OBReadAccount4
 
 
 
 
-
- 
-
-
-
-
-
-
- OBReadAccount4
-
-
-
-
-
- 
+OBReadAccount4
 
 
 
 
 
 
- 
+
+
+
+
+OBReadAccount4
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -546,46 +518,39 @@ Pattern
 
 ---
 | 
-
- Data
-
+Data
 
 
 
 
- 1..1
+1..1
 
 
 
 
-
- OBReadAccount4/Data
-
-
-
-
-
- 
+OBReadAccount4/Data
 
 
 
 
 
 
- OBReadDataAccount4
+
+
+
+
+OBReadDataAccount4
 
 
 
 
 
- 
 
 
 
 
 
 
- 
 
 
 
@@ -595,45 +560,38 @@ Pattern
 
 ---
 | 
-
- Account
-
+Account
 
 
 
 
- 0..n
+0..n
 
 
 
 
-
- OBReadAccount4/Data/Account
-
+OBReadAccount4/Data/Account
 
 
 
 
- Unambiguous identification of the account to which credit and debit entries are made.
+Unambiguous identification of the account to which credit and debit entries are made.
 
 
 
 
-
- OBAccount4
-
-
-
-
-
- 
+OBAccount4
 
 
 
 
 
 
- 
+
+
+
+
+
 
 
 
@@ -643,45 +601,38 @@ Pattern
 
 ---
 | 
-
- AccountId
-
+AccountId
 
 
 
 
- 1..1
+1..1
 
 
 
 
-
- OBReadAccount4/Data/Account/AccountId
-
+OBReadAccount4/Data/Account/AccountId
 
 
 
 
- A unique and immutable identifier used to identify the account resource. This identifier has no meaning to the account owner.
+A unique and immutable identifier used to identify the account resource. This identifier has no meaning to the account owner.
 
 
 
 
-
- Max40Text
-
-
-
-
-
- 
+Max40Text
 
 
 
 
 
 
- 
+
+
+
+
+
 
 
 
@@ -706,20 +657,15 @@ OBAccountStatus1Code
 
 
 
+Enabled
 
- Enabled
+Disabled
 
+Deleted
 
- Disabled
+ProForma
 
-
- Deleted
-
-
- ProForma
-
-
- Pending
+Pending
 
 
 
@@ -759,55 +705,45 @@ ISODateTime
 
 ---
 | 
-
- Currency
-
+Currency
 
 
 
 
- 1..1
+1..1
 
 
 
 
-
- OBReadAccount4/Data/Account/Currency
-
+OBReadAccount4/Data/Account/Currency
 
 
 
 
- Identification of the currency in which the account is held.
-
-
- 
-
-
-
- Usage: Currency should only be used in case one and the same account number covers several currencies
-
-
- and the initiating party needs to identify which currency needs to be used for settlement on the account.
+Identification of the currency in which the account is held.
 
 
 
 
+Usage: Currency should only be used in case one and the same account number covers several currencies
 
- ActiveOrHistoricCurrencyCode
-
-
-
+and the initiating party needs to identify which currency needs to be used for settlement on the account.
 
 
- 
+
+
+ActiveOrHistoricCurrencyCode
 
 
 
 
 
 
- ^[A-Z]{3,3}$
+
+
+
+
+^[A-Z]{3,3}$
 
 
 
@@ -816,47 +752,39 @@ ISODateTime
 
 ---
 | 
-
- AccountType
-
+AccountType
 
 
 
 
- 1..1
+1..1
 
 
 
 
-
- OBReadAccount4/Data/Account/AccountType
-
+OBReadAccount4/Data/Account/AccountType
 
 
 
 
- Specifies the type of account (personal or business).
+Specifies the type of account (personal or business).
 
 
 
 
-
- OBExternalAccountType1Code
-
+OBExternalAccountType1Code
 
 
 
 
- Business
+Business
 
-
- Personal
+Personal
 
 
 
 
 
- 
 
 
 
@@ -866,65 +794,51 @@ ISODateTime
 
 ---
 | 
-
- AccountSubType
-
+AccountSubType
 
 
 
 
- 1..1
+1..1
 
 
 
 
-
- OBReadAccount4/Data/Account/AccountSubType
-
+OBReadAccount4/Data/Account/AccountSubType
 
 
 
 
- Specifies the sub type of account (product family group).
+Specifies the sub type of account (product family group).
 
 
 
 
-
- OBExternalAccountSubType1Code
-
+OBExternalAccountSubType1Code
 
 
 
 
- ChargeCard
+ChargeCard
 
+CreditCard
 
- CreditCard
+CurrentAccount
 
+EMoney
 
- CurrentAccount
+Loan
 
+Mortgage
 
- EMoney
+PrePaidCard
 
-
- Loan
-
-
- Mortgage
-
-
- PrePaidCard
-
-
- Savings
+Savings
 
 
 
 
 
- 
 
 
 
@@ -934,45 +848,38 @@ ISODateTime
 
 ---
 | 
-
- Description
-
+Description
 
 
 
 
- 0..1
+0..1
 
 
 
 
-
- OBReadAccount4/Data/Account/Description
-
+OBReadAccount4/Data/Account/Description
 
 
 
 
- Specifies the description of the account type.
+Specifies the description of the account type.
 
 
 
 
-
- Max35Text
-
-
-
-
-
- 
+Max35Text
 
 
 
 
 
 
- 
+
+
+
+
+
 
 
 
@@ -982,45 +889,38 @@ ISODateTime
 
 ---
 | 
-
- Nickname
-
+Nickname
 
 
 
 
- 0..1
+0..1
 
 
 
 
-
- OBReadAccount4/Data/Account/Nickname
-
+OBReadAccount4/Data/Account/Nickname
 
 
 
 
- The nickname of the account, assigned by the account owner in order to provide an additional means of identification of the account.
+The nickname of the account, assigned by the account owner in order to provide an additional means of identification of the account.
 
 
 
 
-
- Max70Text
-
-
-
-
-
- 
+Max70Text
 
 
 
 
 
 
- 
+
+
+
+
+
 
 
 
@@ -1030,45 +930,38 @@ ISODateTime
 
 ---
 | 
-
- Account
-
+Account
 
 
 
 
- 0..n
+0..n
 
 
 
 
-
- OBReadAccount4/Data/Account/Account
-
+OBReadAccount4/Data/Account/Account
 
 
 
 
- Provides the details to identify an account.
+Provides the details to identify an account.
 
 
 
 
-
- OBCashAccount5
-
-
-
-
-
- 
+OBCashAccount5
 
 
 
 
 
 
- 
+
+
+
+
+
 
 
 
@@ -1078,45 +971,38 @@ ISODateTime
 
 ---
 | 
-
- SchemeName
-
+SchemeName
 
 
 
 
- 1..1
+1..1
 
 
 
 
-
- OBReadAccount4/Data/Account/Account/SchemeName
-
+OBReadAccount4/Data/Account/Account/SchemeName
 
 
 
 
- Name of the identification scheme, in a coded form as published in an external list.
+Name of the identification scheme, in a coded form as published in an external list.
 
 
 
 
-
- OBExternalAccountIdentification4Code
-
-
-
-
-
- 
+OBExternalAccountIdentification4Code
 
 
 
 
 
 
- 
+
+
+
+
+
 
 
 
@@ -1126,45 +1012,38 @@ ISODateTime
 
 ---
 | 
-
- Identification
-
+Identification
 
 
 
 
- 1..1
+1..1
 
 
 
 
-
- OBReadAccount4/Data/Account/Account/Identification
-
+OBReadAccount4/Data/Account/Account/Identification
 
 
 
 
- Identification assigned by an institution to identify an account. This identification is known by the account owner.
+Identification assigned by an institution to identify an account. This identification is known by the account owner.
 
 
 
 
-
- Max256Text
-
-
-
-
-
- 
+Max256Text
 
 
 
 
 
 
- 
+
+
+
+
+
 
 
 
@@ -1174,48 +1053,40 @@ ISODateTime
 
 ---
 | 
-
- Name
-
+Name
 
 
 
 
- 0..1
+0..1
 
 
 
 
-
- OBReadAccount4/Data/Account/Account/Name
-
+OBReadAccount4/Data/Account/Account/Name
 
 
 
 
- The account name is the name or names of the account owner(s) represented at an account level, as displayed by the ASPSP's online channels.
+The account name is the name or names of the account owner(s) represented at an account level, as displayed by the ASPSP's online channels.
 
-
- Note, the account name is not the product name or the nickname of the account.
-
-
-
-
-
- Max70Text
+Note, the account name is not the product name or the nickname of the account.
 
 
 
 
-
- 
+Max70Text
 
 
 
 
 
 
- 
+
+
+
+
+
 
 
 
@@ -1225,48 +1096,40 @@ ISODateTime
 
 ---
 | 
-
- SecondaryIdentification
-
+SecondaryIdentification
 
 
 
 
- 0..1
+0..1
 
 
 
 
-
- OBReadAccount4/Data/Account/Account/SecondaryIdentification
-
+OBReadAccount4/Data/Account/Account/SecondaryIdentification
 
 
 
 
- This is secondary identification of the account, as assigned by the account servicing institution.
+This is secondary identification of the account, as assigned by the account servicing institution.
 
-
- This can be used by building societies to additionally identify accounts with a roll number (in addition to a sort code and account number combination).
-
-
-
-
-
- Max34Text
+This can be used by building societies to additionally identify accounts with a roll number (in addition to a sort code and account number combination).
 
 
 
 
-
- 
+Max34Text
 
 
 
 
 
 
- 
+
+
+
+
+
 
 
 
@@ -1276,45 +1139,38 @@ ISODateTime
 
 ---
 | 
-
- Servicer
-
+Servicer
 
 
 
 
- 0..1
+0..1
 
 
 
 
-
- OBReadAccount4/Data/Account/Servicer
-
+OBReadAccount4/Data/Account/Servicer
 
 
 
 
- Party that manages the account on behalf of the account owner, that is manages the registration and booking of entries on the account, calculates balances on the account and provides information about the account.
+Party that manages the account on behalf of the account owner, that is manages the registration and booking of entries on the account, calculates balances on the account and provides information about the account.
 
 
 
 
-
- OBBranchAndFinancialInstitutionIdentification5
-
-
-
-
-
- 
+OBBranchAndFinancialInstitutionIdentification5
 
 
 
 
 
 
- 
+
+
+
+
+
 
 
 
@@ -1324,45 +1180,38 @@ ISODateTime
 
 ---
 | 
-
- SchemeName
-
+SchemeName
 
 
 
 
- 1..1
+1..1
 
 
 
 
-
- OBReadAccount4/Data/Account/Servicer/SchemeName
-
+OBReadAccount4/Data/Account/Servicer/SchemeName
 
 
 
 
- Name of the identification scheme, in a coded form as published in an external list.
+Name of the identification scheme, in a coded form as published in an external list.
 
 
 
 
-
- OBExternalFinancialInstitutionIdentification4Code
-
-
-
-
-
- 
+OBExternalFinancialInstitutionIdentification4Code
 
 
 
 
 
 
- 
+
+
+
+
+
 
 
 
@@ -1372,45 +1221,38 @@ ISODateTime
 
 ---
 | 
-
- Identification
-
+Identification
 
 
 
 
- 1..1
+1..1
 
 
 
 
-
- OBReadAccount4/Data/Account/Servicer/Identification
-
+OBReadAccount4/Data/Account/Servicer/Identification
 
 
 
 
- Unique and unambiguous identification of the servicing institution.
+Unique and unambiguous identification of the servicing institution.
 
 
 
 
-
- Max35Text
-
-
-
-
-
- 
+Max35Text
 
 
 
 
 
 
- 
+
+
+
+
+
 
 
 
@@ -1419,20 +1261,17 @@ ISODateTime
 ---
 
 
-```
+```TABLE END
 
 # Usage Examples
 
 ## Bulk - Detail Permission
 
+The call to GET /accounts is the first step after an account-request is authorised. This will allow the AISP to discover which accounts (and AccountId values) are associated with the authorisation of consent.
 
- The call to GET /accounts is the first step after an account-request is authorised. This will allow the AISP to discover which accounts (and AccountId values) are associated with the authorisation of consent.
+In this scenario, AccountId 22289 has a building society roll number; and AccountId 31820 does not.
 
-
- In this scenario, AccountId 22289 has a building society roll number; and AccountId 31820 does not.
-
-
- The  **ReadAccountsDetail**  permission has been granted.
+The  **ReadAccountsDetail**  permission has been granted.
 
 
 
@@ -1443,10 +1282,9 @@ ISODateTime
 
 
 
+ **Request** 
 
-  **Request** 
-
-```
+```TABLE START
 
 ---
 | 
@@ -1463,7 +1301,7 @@ Accept: application/json
 
 ---
 
-```
+```TABLE END
 
 
 
@@ -1474,10 +1312,9 @@ Accept: application/json
 
 
 
+ **Response** 
 
-  **Response** 
-
-```
+```TABLE START
 
 ---
 | 
@@ -1538,7 +1375,7 @@ Content-Type: application/json
 
 ---
 
-```
+```TABLE END
 
 
 
@@ -1554,11 +1391,9 @@ Content-Type: application/json
 
 ## Specific Account - Detail Permission
 
+An AISP may also retrieve the account resource details specifically for AccountId 22289.
 
- An AISP may also retrieve the account resource details specifically for AccountId 22289.
-
-
- The  **ReadAccountsDetail**  permission has been granted.
+The  **ReadAccountsDetail**  permission has been granted.
 
 
 
@@ -1569,10 +1404,9 @@ Content-Type: application/json
 
 
 
+ **Request** 
 
-  **Request** 
-
-```
+```TABLE START
 
 ---
 | 
@@ -1589,7 +1423,7 @@ Accept: application/json
 
 ---
 
-```
+```TABLE END
 
 
 
@@ -1600,10 +1434,9 @@ Accept: application/json
 
 
 
+ **Response** 
 
-  **Response** 
-
-```
+```TABLE START
 
 ---
 | 
@@ -1646,7 +1479,7 @@ Content-Type: application/json
 
 ---
 
-```
+```TABLE END
 
 
 
@@ -1662,8 +1495,7 @@ Content-Type: application/json
 
 ## Bulk - Basic Permission
 
-
- The  **ReadAccountsBasic ** permission has been granted.
+The  **ReadAccountsBasic ** permission has been granted.
 
 
 
@@ -1676,7 +1508,7 @@ Content-Type: application/json
 
  **Request** 
 
-```
+```TABLE START
 
 ---
 | 
@@ -1692,7 +1524,7 @@ Accept: application/json
 
 ---
 
-```
+```TABLE END
 
 
 
@@ -1705,7 +1537,7 @@ Accept: application/json
 
  **Response** 
 
-```
+```TABLE START
 
 ---
 | 
@@ -1751,7 +1583,7 @@ Content-Type: application/json
 
 ---
 
-```
+```TABLE END
 
 
 
@@ -1764,8 +1596,7 @@ Content-Type: application/json
 
 
         
-
-  
+ 
 
     
 

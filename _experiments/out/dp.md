@@ -10,7 +10,7 @@
 <br/>
 
                     
-```
+```TABLE START
 
                         
                             
@@ -26,28 +26,22 @@
 
 
                             
-
- domestic-payment-consents
-
-                                
-
- domestic-payment-consents
+domestic-payment-consents
 
                                 
-
- domestic-payment-consents
-
-                                
-
- domestic-payments
+domestic-payment-consents
 
                                 
-
- domestic-payments
+domestic-payment-consents
 
                                 
+domestic-payments
 
- payment-details
+                                
+domestic-payments
+
+                                
+payment-details
 
 
 
@@ -63,30 +57,24 @@
 
 
                             
+POST /domestic-payment-consents
 
- POST /domestic-payment-consents
+                                
+GET /domestic-payment-consents/{ConsentId}
 
                                 
 
- GET /domestic-payment-consents/{ConsentId}
-
-                                
-
- 
                                     GET /domestic-payment-consents/{ConsentId}/funds-confirmation
                                 
 
                                 
-
- POST /domestic-payments
-
-                                
-
- GET /domestic-payments/{DomesticPaymentId}
+POST /domestic-payments
 
                                 
+GET /domestic-payments/{DomesticPaymentId}
 
- GET /domestic-payments/{DomesticPaymentId}/payment-details
+                                
+GET /domestic-payments/{DomesticPaymentId}/payment-details
                                 
 
 
@@ -103,28 +91,22 @@
 
 
                             
-
- Mandatory
-
-                                
-
- Mandatory
+Mandatory
 
                                 
-
- Mandatory
-
-                                
-
- Mandatory
+Mandatory
 
                                 
-
- Mandatory
+Mandatory
 
                                 
+Mandatory
 
- Optional
+                                
+Mandatory
+
+                                
+Optional
 
 
 
@@ -149,7 +131,7 @@
                         
 
                     
-```
+```TABLE END
 
                     
 <br/>
@@ -157,7 +139,6 @@
             </ac:structured-macro>
             
 
- 
                 <ac:structured-macro ac:name="toc" ac:schema-version="1"
                                      ac:macro-id="3181eb94-0159-4a16-a4b2-ed6cd8033318">
                     <ac:parameter ac:name="outline">true</ac:parameter>
@@ -171,7 +152,7 @@
             
 
             
-```
+```TABLE START
 
                 
                     
@@ -269,8 +250,7 @@
 
 
                     
-
- v4.0-draft6 changes:
+v4.0-draft6 changes:
 
                         
                             
@@ -309,8 +289,7 @@
 
 
                     
-
- v4.0-draft7 changes:
+v4.0-draft7 changes:
 
                         
                             
@@ -386,13 +365,13 @@ v4.0-RC1 changes:
                 
 
             
-```
+```TABLE END
 
             
 # Endpoints
 
             
-```
+```TABLE START
 
                 
                     
@@ -482,12 +461,10 @@ v4.0-RC1 changes:
 
 
                     
-
- Signed Request
+Signed Request
 
                         
-
- Signed Response
+Signed Response
 
 
 
@@ -531,8 +508,7 @@ v4.0-RC1 changes:
 
 
                     
-
- Client Credentials
+Client Credentials
 
 
 
@@ -630,12 +606,10 @@ v4.0-RC1 changes:
 
 
                     
-
- Signed Request
+Signed Request
 
                         
-
- Signed Response
+Signed Response
 
 
 
@@ -679,8 +653,7 @@ v4.0-RC1 changes:
 
 
                     
-
- Client Credentials
+Client Credentials
 
 
 
@@ -754,7 +727,7 @@ v4.0-RC1 changes:
                 
 
             
-```
+```TABLE END
 
             
 ## POST /domestic-payment-consents 
@@ -769,7 +742,6 @@ v4.0-RC1 changes:
             </ac:structured-macro>
             
 
- 
                 <ac:inline-comment-marker ac:ref="5f42a169-2eac-4ef3-aab9-76f103e2de49">The API endpoint allows the PISP
                     to ask an ASPSP to create a new
                 </ac:inline-comment-marker>
@@ -806,12 +778,11 @@ v4.0-RC1 changes:
 ### Status
 
             
-
- The default Status is "AwaitingAuthorisation&quot; immediately after the domestic-payment-consent
+The default Status is "AwaitingAuthorisation&quot; immediately after the domestic-payment-consent
                 has been created.
 
             
-```
+```TABLE START
 
                 
                     
@@ -841,7 +812,7 @@ v4.0-RC1 changes:
                 
 
             
-```
+```TABLE END
 
             
 ## GET /domestic-payment-consents/{ConsentId}
@@ -855,34 +826,29 @@ v4.0-RC1 changes:
                 <ac:plain-text-body><![CDATA[GET /domestic-payment-consents/{ConsentId}]]></ac:plain-text-body>
             </ac:structured-macro>
             
-
- A PISP can optionally retrieve a payment consent resource that they have created to check its
+A PISP can optionally retrieve a payment consent resource that they have created to check its
                 status. 
 
             
 ### Status
 
             
-
- Once the PSU authorises the payment-consent resource - the Status of the&nbsp;payment-consent
+Once the PSU authorises the payment-consent resource - the Status of the&nbsp;payment-consent
                 resource will be updated with "Authorised&quot;.
 
             
-
- If the PSU rejects the consent or the domestic-payment-consent has failed some other ASPSP validation,
+If the PSU rejects the consent or the domestic-payment-consent has failed some other ASPSP validation,
                 the Status will be set to "Rejected&quot;.
 
             
-
- Once a domestic-payment has been successfully created using the domestic-payment-consent, the Status of
+Once a domestic-payment has been successfully created using the domestic-payment-consent, the Status of
                 the domestic-payment-consent will be set to "Consumed&quot;.
 
             
-
- The available status codes for the domestic-payment-consent resource are:
+The available status codes for the domestic-payment-consent resource are:
 
             
-```
+```TABLE START
 
                 
                     
@@ -942,7 +908,7 @@ v4.0-RC1 changes:
                 
 
             
-```
+```TABLE END
 
             
 ## GET /domestic-payment-consents/{ConsentId}/funds-confirmation
@@ -957,8 +923,7 @@ v4.0-RC1 changes:
                 </ac:plain-text-body>
             </ac:structured-macro>
             
-
- The API endpoint allows the PISP to ask an ASPSP to confirm funds on a  **domestic-payment-consent** 
+The API endpoint allows the PISP to ask an ASPSP to confirm funds on a  **domestic-payment-consent** 
                 resource.
 
             
@@ -986,8 +951,7 @@ v4.0-RC1 changes:
                 <ac:plain-text-body><![CDATA[POST /domestic-payments]]></ac:plain-text-body>
             </ac:structured-macro>
             
-
- Once the domestic-payment-consent has been authorised by the PSU, the PISP can proceed to submitting the
+Once the domestic-payment-consent has been authorised by the PSU, the PISP can proceed to submitting the
                 domestic-payment for processing:
 
             
@@ -1017,17 +981,15 @@ v4.0-RC1 changes:
 ### Status
 
             
-
- A domestic-payment can only be created if its corresponding&nbsp;domestic-payment-consent resource
+A domestic-payment can only be created if its corresponding&nbsp;domestic-payment-consent resource
                 has the status of "Authorised&quot;. 
 
             
-
- The domestic-payment resource that is created successfully must have one of the following&nbsp;PaymentStatusCode
+The domestic-payment resource that is created successfully must have one of the following&nbsp;PaymentStatusCode
                 code-set enumerations:
 
             
-```
+```TABLE START
 
                 
                     
@@ -1107,7 +1069,7 @@ v4.0-RC1 changes:
                 
 
             
-```
+```TABLE END
 
             
 ## GET /domestic-payments/{DomesticPaymentId}
@@ -1121,19 +1083,17 @@ v4.0-RC1 changes:
                 <ac:plain-text-body><![CDATA[GET /domestic-payments/{DomesticPaymentId}]]></ac:plain-text-body>
             </ac:structured-macro>
             
-
- A PISP can retrieve the domestic-payment to check its status.
+A PISP can retrieve the domestic-payment to check its status.
 
             
 ### Status
 
             
-
- The domestic-payment resource must have one of the following&nbsp;PaymentStatusCode code-set
+The domestic-payment resource must have one of the following&nbsp;PaymentStatusCode code-set
                 enumerations:
 
             
-```
+```TABLE START
 
                 
                     
@@ -1213,7 +1173,7 @@ v4.0-RC1 changes:
                 
 
             
-```
+```TABLE END
 
             
 ## GET /domestic-payments/{DomesticPaymentId}/payment-details
@@ -1228,8 +1188,7 @@ v4.0-RC1 changes:
                 </ac:plain-text-body>
             </ac:structured-macro>
             
-
- A PISP can retrieve the Details of the underlying payment transaction via this endpoint. This resource
+A PISP can retrieve the Details of the underlying payment transaction via this endpoint. This resource
                 allows ASPSPs to return richer list of Payment Statuses, and if available payment scheme related
                 statuses.
 
@@ -1237,12 +1196,11 @@ v4.0-RC1 changes:
 ### Status
 
             
-
- The domestic-payment - payment-details must have one of the following&nbsp;PaymentStatusCode
+The domestic-payment - payment-details must have one of the following&nbsp;PaymentStatusCode
                 code-set enumerations:
 
             
-```
+```TABLE START
 
                 
                     
@@ -1462,7 +1420,7 @@ v4.0-RC1 changes:
                 
 
             
-```
+```TABLE END
 
             
 ## State Model
@@ -1471,33 +1429,28 @@ v4.0-RC1 changes:
 ### Payment Order Consent
 
             
-
- The state model for the domestic-payment-consent resource follows the generic consent state model.
+The state model for the domestic-payment-consent resource follows the generic consent state model.
                 However, does not use the "Revoked&quot; status, as the consent for a domestic-payment is not a
                 long-lived consent.
 
             
-
- <br/>
+<br/>
 
             
 
- 
                 <ac:image ac:width="1000">
                     <ri:attachment ri:filename="image2018-5-18_10-24-21.png" ri:version-at-save="1"/>
                 </ac:image>
             
 
             
-
- <br/>
-
-            
-
- The definitions for the Status:
+<br/>
 
             
-```
+The definitions for the Status:
+
+            
+```TABLE START
 
                 
                     
@@ -1603,34 +1556,30 @@ v4.0-RC1 changes:
                 
 
             
-```
+```TABLE END
 
             
 ### Payment Order
 
             
-
- The state model for the domestic-payment resource follows the behaviour and definitions for the ISO 20022
+The state model for the domestic-payment resource follows the behaviour and definitions for the ISO 20022
                 PaymentStatusCode code-set.
 
             
 
- 
                 <ac:image ac:width="1000">
                     <ri:attachment ri:filename="PaymentStatusLifeCycle.png" ri:version-at-save="1"/>
                 </ac:image>
             
 
             
-
- <br/>
-
-            
-
- The definitions for the status:
+<br/>
 
             
-```
+The definitions for the status:
+
+            
+```TABLE START
 
                 
                     
@@ -1776,34 +1725,30 @@ v4.0-RC1 changes:
                 
 
             
-```
+```TABLE END
 
             
 #### Multiple Authorisation
 
             
-
- If the payment-order requires multiple authorisations - the Status of the multiple authorisations will be
+If the payment-order requires multiple authorisations - the Status of the multiple authorisations will be
                 updated in the MultiAuthorisation object.
 
             
 
- 
                 <ac:image ac:width="1000">
                     <ri:attachment ri:filename="image2018-6-29_16-36-34.png" ri:version-at-save="1"/>
                 </ac:image>
             
 
             
-
- <br/>
-
-            
-
- The definitions for the status:
+<br/>
 
             
-```
+The definitions for the status:
+
+            
+```TABLE START
 
                 
                     
@@ -1891,14 +1836,13 @@ v4.0-RC1 changes:
                 
 
             
-```
+```TABLE END
 
             
 # Data Model
 
             
-
- The data dictionary section gives the detail on the payload content for the Domestic Payment API
+The data dictionary section gives the detail on the payload content for the Domestic Payment API
                 flows.
 
             
@@ -1908,8 +1852,7 @@ v4.0-RC1 changes:
 ### OBDomestic2
 
             
-
- This section describes the
+This section describes the
                 <ac:inline-comment-marker ac:ref="4ac4ccd0-0111-40be-8bde-981404f9184d">OBDomestic2
                 </ac:inline-comment-marker>
                 class which is reused as the Initiation object in the domestic-payment-consent and domestic-payment
@@ -1924,7 +1867,6 @@ v4.0-RC1 changes:
 
             
 
- 
                 <ac:image ac:width="450">
                     <ri:attachment ri:filename="OBDomestic2.gif" ri:version-at-save="1"/>
                 </ac:image>
@@ -1934,8 +1876,7 @@ v4.0-RC1 changes:
 ####  **Notes** 
 
             
-
- For the OBDomestic2 Initiation object:&nbsp;&nbsp;
+For the OBDomestic2 Initiation object:&nbsp;&nbsp;
 
             
                 
@@ -1945,15 +1886,13 @@ v4.0-RC1 changes:
 
                 
 - 
-
- If the ASPSP is able to establish a problem with payload or any contextual error during the API
+If the ASPSP is able to establish a problem with payload or any contextual error during the API
                     call, the ASPSP must reject the domestic-payment-consent request immediately.
 
 
                 
 - 
-
- If the ASPSP establishes a problem with the domestic-payment-consent after the API call, the
+If the ASPSP establishes a problem with the domestic-payment-consent after the API call, the
                     ASPSP must set the status of the domestic-payment-consent resource to Rejected.
 
 
@@ -2025,7 +1964,7 @@ v4.0-RC1 changes:
 #### Data Dictionary
 
             
-```
+```TABLE START
 
                 
                     
@@ -2076,29 +2015,25 @@ v4.0-RC1 changes:
 ---
 | 
                     
-
- OBDomestic2
-
-
-
-
-                    
-
- <br/>
+OBDomestic2
 
 
 
 
                     
-
- OBDomestic2
+<br/>
 
 
 
 
                     
+OBDomestic2
 
- The Initiation payload is sent by the initiating party to the ASPSP. It is used
+
+
+
+                    
+The Initiation payload is sent by the initiating party to the ASPSP. It is used
                         to request movement of funds from the debtor account to a creditor for a single domestic
                         payment.
 
@@ -2106,22 +2041,19 @@ v4.0-RC1 changes:
 
 
                     
-
- OBDomestic2
-
-
-
-
-                    
-
- <br/>
+OBDomestic2
 
 
 
 
                     
+<br/>
 
- <br/>
+
+
+
+                    
+<br/>
 
 
 
@@ -2133,38 +2065,32 @@ v4.0-RC1 changes:
 ---
 | 
                     
-
- InstructionIdentification
-
-
-
-
-                    
-
- 1..1
+InstructionIdentification
 
 
 
 
                     
-
- OBDomestic2/InstructionIdentification
+1..1
 
 
 
 
                     
+OBDomestic2/InstructionIdentification
 
- Unique identification as assigned by an instructing party for an instructed party to
+
+
+
+                    
+Unique identification as assigned by an instructing party for an instructed party to
                         unambiguously identify the instruction.
 
                         
-
- <br/>
+<br/>
 
                         
-
- Usage: the  instruction identification is a point to point reference that can be used
+Usage: the  instruction identification is a point to point reference that can be used
                             between the instructing party and the instructed party to refer to the individual
                             instruction. It can be included in several messages related to the instruction.
 
@@ -2172,22 +2098,19 @@ v4.0-RC1 changes:
 
 
                     
-
- Max35Text
-
-
-
-
-                    
-
- <br/>
+Max35Text
 
 
 
 
                     
+<br/>
 
- <br/>
+
+
+
+                    
+<br/>
 
 
 
@@ -2199,66 +2122,56 @@ v4.0-RC1 changes:
 ---
 | 
                     
-
- EndToEndIdentification
-
-
-
-
-                    
-
- 1..1
+EndToEndIdentification
 
 
 
 
                     
-
- OBDomestic2/EndToEndIdentification
+1..1
 
 
 
 
                     
+OBDomestic2/EndToEndIdentification
 
- Unique identification assigned by the initiating party to unambiguously identify the
+
+
+
+                    
+Unique identification assigned by the initiating party to unambiguously identify the
                         transaction. This identification is passed on, unchanged, throughout the entire end-to-end
                         chain.
 
                         
-
- <br/>
+<br/>
 
                         
-
- Usage: The end-to-end identification can be used for reconciliation or to link tasks relating
+Usage: The end-to-end identification can be used for reconciliation or to link tasks relating
                             to the transaction. It can be included in several messages related to the transaction.
 
                         
-
- OB: The Faster Payments Scheme can only access 31 characters for the EndToEndIdentification
+OB: The Faster Payments Scheme can only access 31 characters for the EndToEndIdentification
                             field.
 
 
 
 
                     
-
- Max35Text
-
-
-
-
-                    
-
- <br/>
+Max35Text
 
 
 
 
                     
+<br/>
 
- <br/>
+
+
+
+                    
+<br/>
 
 
 
@@ -2270,59 +2183,50 @@ v4.0-RC1 changes:
 ---
 | 
                     
-
- LocalInstrument
-
-
-
-
-                    
-
- 0..1
+LocalInstrument
 
 
 
 
                     
-
- OBDomestic2/LocalInstrument
+0..1
 
 
 
 
                     
+OBDomestic2/LocalInstrument
 
- User community specific instrument.
+
+
+
+                    
+User community specific instrument.
 
                         
-
- <br/>
+<br/>
 
                         
-
- Usage: This element is used to specify a local instrument, local clearing option and/or
+Usage: This element is used to specify a local instrument, local clearing option and/or
                             further qualify the service or service level.
 
 
 
 
                     
-
- OBExternalLocalInstrument1Code
-
-
-
-
-                    
-
- <br/>
+OBExternalLocalInstrument1Code
 
 
 
 
                     
+<br/>
 
- <br/>
+
+
+
+                    
+<br/>
 
 
 
@@ -2334,59 +2238,50 @@ v4.0-RC1 changes:
 ---
 | 
                     
-
- InstructedAmount
-
-
-
-
-                    
-
- 1..1
+InstructedAmount
 
 
 
 
                     
-
- OBDomestic2/InstructedAmount
+1..1
 
 
 
 
                     
+OBDomestic2/InstructedAmount
 
- Amount of money to be moved between the debtor and creditor, before deduction of charges,
+
+
+
+                    
+Amount of money to be moved between the debtor and creditor, before deduction of charges,
                         expressed in the currency as ordered by the initiating party.
 
                         
-
- <br/>
+<br/>
 
                         
-
- Usage: This amount has to be transported unchanged through the transaction chain.
-
-
-
-
-                    
-
- OBActiveOrHistoricCurrencyAndAmount
+Usage: This amount has to be transported unchanged through the transaction chain.
 
 
 
 
                     
-
- <br/>
+OBActiveOrHistoricCurrencyAndAmount
 
 
 
 
                     
+<br/>
 
- <br/>
+
+
+
+                    
+<br/>
 
 
 
@@ -2398,51 +2293,44 @@ v4.0-RC1 changes:
 ---
 | 
                     
-
- Amount
-
-
-
-
-                    
-
- 1..1
+Amount
 
 
 
 
                     
-
- OBDomestic2/InstructedAmount/Amount
+1..1
 
 
 
 
                     
+OBDomestic2/InstructedAmount/Amount
 
- A number of monetary units specified in an active currency where the unit of currency is
+
+
+
+                    
+A number of monetary units specified in an active currency where the unit of currency is
                         explicit and compliant with ISO 4217.
 
 
 
 
                     
-
- OBActiveCurrencyAndAmount_SimpleType
-
-
-
-
-                    
-
- <br/>
+OBActiveCurrencyAndAmount_SimpleType
 
 
 
 
                     
+<br/>
 
- ^\d{1,13}\.\d{1,5}$
+
+
+
+                    
+^\d{1,13}\.\d{1,5}$
 
 
 
@@ -2454,29 +2342,25 @@ v4.0-RC1 changes:
 ---
 | 
                     
-
- Currency
-
-
-
-
-                    
-
- 1..1
+Currency
 
 
 
 
                     
-
- OBDomestic2/InstructedAmount/Currency
+1..1
 
 
 
 
                     
+OBDomestic2/InstructedAmount/Currency
 
- A code allocated to a currency by a Maintenance Agency under an international identification
+
+
+
+                    
+A code allocated to a currency by a Maintenance Agency under an international identification
                         scheme, as described in the latest edition of the international standard ISO 4217 "Codes
                         for the representation of currencies and funds".
 
@@ -2484,22 +2368,19 @@ v4.0-RC1 changes:
 
 
                     
-
- ActiveOrHistoricCurrencyCode
-
-
-
-
-                    
-
- <br/>
+ActiveOrHistoricCurrencyCode
 
 
 
 
                     
+<br/>
 
- ^[A-Z]{3,3}$
+
+
+
+                    
+^[A-Z]{3,3}$
 
 
 
@@ -2511,51 +2392,44 @@ v4.0-RC1 changes:
 ---
 | 
                     
-
- DebtorAccount
-
-
-
-
-                    
-
- 0..1
+DebtorAccount
 
 
 
 
                     
-
- OBDomestic2/DebtorAccount
+0..1
 
 
 
 
                     
+OBDomestic2/DebtorAccount
 
- Unambiguous identification of the account of the debtor to which a debit entry will be made
+
+
+
+                    
+Unambiguous identification of the account of the debtor to which a debit entry will be made
                         as a result of the transaction.
 
 
 
 
                     
-
- OBCashAccountDebtor4
-
-
-
-
-                    
-
- <br/>
+OBCashAccountDebtor4
 
 
 
 
                     
+<br/>
 
- <br/>
+
+
+
+                    
+<br/>
 
 
 
@@ -2567,50 +2441,43 @@ v4.0-RC1 changes:
 ---
 | 
                     
-
- SchemeName
-
-
-
-
-                    
-
- 1..1
+SchemeName
 
 
 
 
                     
-
- OBDomestic2/DebtorAccount/SchemeName
-
-
-
-
-                    
-
- Name of the identification scheme, in a coded form as published in an external list.
+1..1
 
 
 
 
                     
-
- OBExternalAccountIdentification4Code
-
-
-
-
-                    
-
- <br/>
+OBDomestic2/DebtorAccount/SchemeName
 
 
 
 
                     
+Name of the identification scheme, in a coded form as published in an external list.
 
- <br/>
+
+
+
+                    
+OBExternalAccountIdentification4Code
+
+
+
+
+                    
+<br/>
+
+
+
+
+                    
+<br/>
 
 
 
@@ -2622,51 +2489,44 @@ v4.0-RC1 changes:
 ---
 | 
                     
-
- Identification
-
-
-
-
-                    
-
- 1..1
+Identification
 
 
 
 
                     
-
- OBDomestic2/DebtorAccount/Identification
+1..1
 
 
 
 
                     
+OBDomestic2/DebtorAccount/Identification
 
- Identification assigned by an institution to identify an account. This identification is
+
+
+
+                    
+Identification assigned by an institution to identify an account. This identification is
                         known by the account owner.
 
 
 
 
                     
-
- Max256Text
-
-
-
-
-                    
-
- <br/>
+Max256Text
 
 
 
 
                     
+<br/>
 
- <br/>
+
+
+
+                    
+<br/>
 
 
 
@@ -2678,55 +2538,47 @@ v4.0-RC1 changes:
 ---
 | 
                     
-
- Name
-
-
-
-
-                    
-
- 0..1
+Name
 
 
 
 
                     
-
- OBDomestic2/DebtorAccount/Name
+0..1
 
 
 
 
                     
+OBDomestic2/DebtorAccount/Name
 
- The account name is the name or names of the account owner(s) represented at an account
+
+
+
+                    
+The account name is the name or names of the account owner(s) represented at an account
                         level, as displayed by the ASPSP's online channels.
 
                         
-
- Note, the account name is not the product name or the nickname of the account.
-
-
-
-
-                    
-
- Max70Text
+Note, the account name is not the product name or the nickname of the account.
 
 
 
 
                     
-
- <br/>
+Max70Text
 
 
 
 
                     
+<br/>
 
- <br/>
+
+
+
+                    
+<br/>
 
 
 
@@ -2738,56 +2590,48 @@ v4.0-RC1 changes:
 ---
 | 
                     
-
- SecondaryIdentification
-
-
-
-
-                    
-
- 0..1
+SecondaryIdentification
 
 
 
 
                     
-
- OBDomestic2/DebtorAccount/SecondaryIdentification
+0..1
 
 
 
 
                     
+OBDomestic2/DebtorAccount/SecondaryIdentification
 
- This is secondary identification of the account, as assigned by the account servicing
+
+
+
+                    
+This is secondary identification of the account, as assigned by the account servicing
                         institution.
 
                         
-
- This can be used by building societies to additionally identify accounts with a roll number
+This can be used by building societies to additionally identify accounts with a roll number
                             (in addition to a sort code and account number combination).
 
 
 
 
                     
-
- Max34Text
-
-
-
-
-                    
-
- <br/>
+Max34Text
 
 
 
 
                     
+<br/>
 
- <br/>
+
+
+
+                    
+<br/>
 
 
 
@@ -2799,51 +2643,44 @@ v4.0-RC1 changes:
 ---
 | 
                     
-
- CreditorAccount
-
-
-
-
-                    
-
- 1..1
+CreditorAccount
 
 
 
 
                     
-
- OBDomestic2/CreditorAccount
+1..1
 
 
 
 
                     
+OBDomestic2/CreditorAccount
 
- Unambiguous identification of the account of the creditor to which a credit entry will be
+
+
+
+                    
+Unambiguous identification of the account of the creditor to which a credit entry will be
                         posted as a result of the payment transaction.
 
 
 
 
                     
-
- OBCashAccountCreditor3
-
-
-
-
-                    
-
- <br/>
+OBCashAccountCreditor3
 
 
 
 
                     
+<br/>
 
- <br/>
+
+
+
+                    
+<br/>
 
 
 
@@ -2855,50 +2692,43 @@ v4.0-RC1 changes:
 ---
 | 
                     
-
- SchemeName
-
-
-
-
-                    
-
- 1..1
+SchemeName
 
 
 
 
                     
-
- OBDomestic2/CreditorAccount/SchemeName
-
-
-
-
-                    
-
- Name of the identification scheme, in a coded form as published in an external list.
+1..1
 
 
 
 
                     
-
- OBExternalAccountIdentification4Code
-
-
-
-
-                    
-
- <br/>
+OBDomestic2/CreditorAccount/SchemeName
 
 
 
 
                     
+Name of the identification scheme, in a coded form as published in an external list.
 
- <br/>
+
+
+
+                    
+OBExternalAccountIdentification4Code
+
+
+
+
+                    
+<br/>
+
+
+
+
+                    
+<br/>
 
 
 
@@ -2910,51 +2740,44 @@ v4.0-RC1 changes:
 ---
 | 
                     
-
- Identification
-
-
-
-
-                    
-
- 1..1
+Identification
 
 
 
 
                     
-
- OBDomestic2/CreditorAccount/Identification
+1..1
 
 
 
 
                     
+OBDomestic2/CreditorAccount/Identification
 
- Identification assigned by an institution to identify an account. This identification is
+
+
+
+                    
+Identification assigned by an institution to identify an account. This identification is
                         known by the account owner.
 
 
 
 
                     
-
- Max256Text
-
-
-
-
-                    
-
- <br/>
+Max256Text
 
 
 
 
                     
+<br/>
 
- <br/>
+
+
+
+                    
+<br/>
 
 
 
@@ -2966,60 +2789,51 @@ v4.0-RC1 changes:
 ---
 | 
                     
-
- Name
-
-
-
-
-                    
-
- 1..1
+Name
 
 
 
 
                     
-
- OBDomestic2/CreditorAccount/Name
+1..1
 
 
 
 
                     
+OBDomestic2/CreditorAccount/Name
 
- The account name is the name or names of the account owner(s) represented at an account
+
+
+
+                    
+The account name is the name or names of the account owner(s) represented at an account
                         level.
 
                         
-
- Note, the account name is not the product name or the nickname of the account.
+Note, the account name is not the product name or the nickname of the account.
 
                         
-
- OB: ASPSPs may carry out name validation for Confirmation of Payee, but it is not
+OB: ASPSPs may carry out name validation for Confirmation of Payee, but it is not
                             mandatory.
 
 
 
 
                     
-
- Max70Text
-
-
-
-
-                    
-
- <br/>
+Max70Text
 
 
 
 
                     
+<br/>
 
- <br/>
+
+
+
+                    
+<br/>
 
 
 
@@ -3031,56 +2845,48 @@ v4.0-RC1 changes:
 ---
 | 
                     
-
- SecondaryIdentification
-
-
-
-
-                    
-
- 0..1
+SecondaryIdentification
 
 
 
 
                     
-
- OBDomestic2/CreditorAccount/SecondaryIdentification
+0..1
 
 
 
 
                     
+OBDomestic2/CreditorAccount/SecondaryIdentification
 
- This is secondary identification of the account, as assigned by the account servicing
+
+
+
+                    
+This is secondary identification of the account, as assigned by the account servicing
                         institution.
 
                         
-
- This can be used by building societies to additionally identify accounts with a roll number
+This can be used by building societies to additionally identify accounts with a roll number
                             (in addition to a sort code and account number combination).
 
 
 
 
                     
-
- Max34Text
-
-
-
-
-                    
-
- <br/>
+Max34Text
 
 
 
 
                     
+<br/>
 
- <br/>
+
+
+
+                    
+<br/>
 
 
 
@@ -3092,51 +2898,44 @@ v4.0-RC1 changes:
 ---
 | 
                     
-
- CreditorPostalAddress
-
-
-
-
-                    
-
- 0..1
+CreditorPostalAddress
 
 
 
 
                     
-
- OBDomestic2/CreditorPostalAddress
+0..1
 
 
 
 
                     
+OBDomestic2/CreditorPostalAddress
 
- Information that locates and identifies a specific address, as defined by postal
+
+
+
+                    
+Information that locates and identifies a specific address, as defined by postal
                         services.
 
 
 
 
                     
-
- OBPostalAddress6
-
-
-
-
-                    
-
- <br/>
+OBPostalAddress6
 
 
 
 
                     
+<br/>
 
- <br/>
+
+
+
+                    
+<br/>
 
 
 
@@ -3148,78 +2947,64 @@ v4.0-RC1 changes:
 ---
 | 
                     
-
- AddressType
-
-
-
-
-                    
-
- 0..1
+AddressType
 
 
 
 
                     
-
- OBDomestic2/CreditorPostalAddress/AddressType
-
-
-
-
-                    
-
- Identifies the nature of the postal address.
+0..1
 
 
 
 
                     
-
- OBAddressTypeCode
-
-
-
-
-                    
-
- Business
-
-                        
-
- Correspondence
-
-                        
-
- DeliveryTo
-
-                        
-
- MailTo
-
-                        
-
- POBox
-
-                        
-
- Postal
-
-                        
-
- Residential
-
-                        
-
- Statement
+OBDomestic2/CreditorPostalAddress/AddressType
 
 
 
 
                     
+Identifies the nature of the postal address.
 
- <br/>
+
+
+
+                    
+OBAddressTypeCode
+
+
+
+
+                    
+Business
+
+                        
+Correspondence
+
+                        
+DeliveryTo
+
+                        
+MailTo
+
+                        
+POBox
+
+                        
+Postal
+
+                        
+Residential
+
+                        
+Statement
+
+
+
+
+                    
+<br/>
 
 
 
@@ -3231,50 +3016,43 @@ v4.0-RC1 changes:
 ---
 | 
                     
-
- Department
-
-
-
-
-                    
-
- 0..1
+Department
 
 
 
 
                     
-
- OBDomestic2/CreditorPostalAddress/Department
-
-
-
-
-                    
-
- Identification of a division of a large organisation or building.
+0..1
 
 
 
 
                     
-
- Max70Text
-
-
-
-
-                    
-
- <br/>
+OBDomestic2/CreditorPostalAddress/Department
 
 
 
 
                     
+Identification of a division of a large organisation or building.
 
- <br/>
+
+
+
+                    
+Max70Text
+
+
+
+
+                    
+<br/>
+
+
+
+
+                    
+<br/>
 
 
 
@@ -3286,50 +3064,43 @@ v4.0-RC1 changes:
 ---
 | 
                     
-
- SubDepartment
-
-
-
-
-                    
-
- 0..1
+SubDepartment
 
 
 
 
                     
-
- OBDomestic2/CreditorPostalAddress/SubDepartment
-
-
-
-
-                    
-
- Identification of a sub-division of a large organisation or building.
+0..1
 
 
 
 
                     
-
- Max70Text
-
-
-
-
-                    
-
- <br/>
+OBDomestic2/CreditorPostalAddress/SubDepartment
 
 
 
 
                     
+Identification of a sub-division of a large organisation or building.
 
- <br/>
+
+
+
+                    
+Max70Text
+
+
+
+
+                    
+<br/>
+
+
+
+
+                    
+<br/>
 
 
 
@@ -3341,50 +3112,43 @@ v4.0-RC1 changes:
 ---
 | 
                     
-
- StreetName
-
-
-
-
-                    
-
- 0..1
+StreetName
 
 
 
 
                     
-
- OBDomestic2/CreditorPostalAddress/StreetName
-
-
-
-
-                    
-
- Name of a street or thoroughfare.
+0..1
 
 
 
 
                     
-
- Max70Text
-
-
-
-
-                    
-
- <br/>
+OBDomestic2/CreditorPostalAddress/StreetName
 
 
 
 
                     
+Name of a street or thoroughfare.
 
- <br/>
+
+
+
+                    
+Max70Text
+
+
+
+
+                    
+<br/>
+
+
+
+
+                    
+<br/>
 
 
 
@@ -3396,50 +3160,43 @@ v4.0-RC1 changes:
 ---
 | 
                     
-
- BuildingNumber
-
-
-
-
-                    
-
- 0..1
+BuildingNumber
 
 
 
 
                     
-
- OBDomestic2/CreditorPostalAddress/BuildingNumber
-
-
-
-
-                    
-
- Number that identifies the position of a building on a street.
+0..1
 
 
 
 
                     
-
- Max16Text
-
-
-
-
-                    
-
- <br/>
+OBDomestic2/CreditorPostalAddress/BuildingNumber
 
 
 
 
                     
+Number that identifies the position of a building on a street.
 
- <br/>
+
+
+
+                    
+Max16Text
+
+
+
+
+                    
+<br/>
+
+
+
+
+                    
+<br/>
 
 
 
@@ -3451,51 +3208,44 @@ v4.0-RC1 changes:
 ---
 | 
                     
-
- PostCode
-
-
-
-
-                    
-
- 0..1
+PostCode
 
 
 
 
                     
-
- OBDomestic2/CreditorPostalAddress/PostCode
+0..1
 
 
 
 
                     
+OBDomestic2/CreditorPostalAddress/PostCode
 
- Identifier consisting of a group of letters and/or numbers that is added to a postal address
+
+
+
+                    
+Identifier consisting of a group of letters and/or numbers that is added to a postal address
                         to assist the sorting of mail.
 
 
 
 
                     
-
- Max16Text
-
-
-
-
-                    
-
- <br/>
+Max16Text
 
 
 
 
                     
+<br/>
 
- <br/>
+
+
+
+                    
+<br/>
 
 
 
@@ -3507,50 +3257,43 @@ v4.0-RC1 changes:
 ---
 | 
                     
-
- TownName
-
-
-
-
-                    
-
- 0..1
+TownName
 
 
 
 
                     
-
- OBDomestic2/CreditorPostalAddress/TownName
-
-
-
-
-                    
-
- Name of a built-up area, with defined boundaries, and a local government.
+0..1
 
 
 
 
                     
-
- Max35Text
-
-
-
-
-                    
-
- <br/>
+OBDomestic2/CreditorPostalAddress/TownName
 
 
 
 
                     
+Name of a built-up area, with defined boundaries, and a local government.
 
- <br/>
+
+
+
+                    
+Max35Text
+
+
+
+
+                    
+<br/>
+
+
+
+
+                    
+<br/>
 
 
 
@@ -3562,50 +3305,43 @@ v4.0-RC1 changes:
 ---
 | 
                     
-
- CountrySubDivision
-
-
-
-
-                    
-
- 0..1
+CountrySubDivision
 
 
 
 
                     
-
- OBDomestic2/CreditorPostalAddress/CountrySubDivision
-
-
-
-
-                    
-
- Identifies a subdivision of a country such as state, region, county.
+0..1
 
 
 
 
                     
-
- Max35Text
-
-
-
-
-                    
-
- <br/>
+OBDomestic2/CreditorPostalAddress/CountrySubDivision
 
 
 
 
                     
+Identifies a subdivision of a country such as state, region, county.
 
- <br/>
+
+
+
+                    
+Max35Text
+
+
+
+
+                    
+<br/>
+
+
+
+
+                    
+<br/>
 
 
 
@@ -3617,50 +3353,43 @@ v4.0-RC1 changes:
 ---
 | 
                     
-
- Country
-
-
-
-
-                    
-
- 0..1
+Country
 
 
 
 
                     
-
- OBDomestic2/CreditorPostalAddress/Country
-
-
-
-
-                    
-
- Nation with its own government.
+0..1
 
 
 
 
                     
-
- CountryCode
-
-
-
-
-                    
-
- <br/>
+OBDomestic2/CreditorPostalAddress/Country
 
 
 
 
                     
+Nation with its own government.
 
- ^[A-Z]{2,2}$
+
+
+
+                    
+CountryCode
+
+
+
+
+                    
+<br/>
+
+
+
+
+                    
+^[A-Z]{2,2}$
 
 
 
@@ -3672,51 +3401,44 @@ v4.0-RC1 changes:
 ---
 | 
                     
-
- AddressLine
-
-
-
-
-                    
-
- 0..7
+AddressLine
 
 
 
 
                     
-
- OBDomestic2/CreditorPostalAddress/AddressLine
+0..7
 
 
 
 
                     
+OBDomestic2/CreditorPostalAddress/AddressLine
 
- Information that locates and identifies a specific address, as defined by postal services,
+
+
+
+                    
+Information that locates and identifies a specific address, as defined by postal services,
                         presented in free format text.
 
 
 
 
                     
-
- Max70Text
-
-
-
-
-                    
-
- <br/>
+Max70Text
 
 
 
 
                     
+<br/>
 
- <br/>
+
+
+
+                    
+<br/>
 
 
 
@@ -3728,51 +3450,44 @@ v4.0-RC1 changes:
 ---
 | 
                     
-
- RemittanceInformation
-
-
-
-
-                    
-
- 0..1
+RemittanceInformation
 
 
 
 
                     
-
- OBDomestic2/RemittanceInformation
+0..1
 
 
 
 
                     
+OBDomestic2/RemittanceInformation
 
- Information supplied to enable the matching of an entry with the items that the transfer is
+
+
+
+                    
+Information supplied to enable the matching of an entry with the items that the transfer is
                         intended to settle, such as commercial invoices in an accounts' receivable system.
 
 
 
 
                     
-
- OBRemittanceInformation1
-
-
-
-
-                    
-
- <br/>
+OBRemittanceInformation1
 
 
 
 
                     
+<br/>
 
- <br/>
+
+
+
+                    
+<br/>
 
 
 
@@ -3784,29 +3499,25 @@ v4.0-RC1 changes:
 ---
 | 
                     
-
- Unstructured
-
-
-
-
-                    
-
- 0..1
+Unstructured
 
 
 
 
                     
-
- OBDomestic2/RemittanceInformation/Unstructured
+0..1
 
 
 
 
                     
+OBDomestic2/RemittanceInformation/Unstructured
 
- Information supplied to enable the matching/reconciliation of an entry with the items that
+
+
+
+                    
+Information supplied to enable the matching/reconciliation of an entry with the items that
                         the payment is intended to settle, such as commercial invoices in an accounts' receivable
                         system, in an unstructured form.
 
@@ -3814,22 +3525,19 @@ v4.0-RC1 changes:
 
 
                     
-
- Max140Text
-
-
-
-
-                    
-
- <br/>
+Max140Text
 
 
 
 
                     
+<br/>
 
- <br/>
+
+
+
+                    
+<br/>
 
 
 
@@ -3841,77 +3549,65 @@ v4.0-RC1 changes:
 ---
 | 
                     
-
- Reference
-
-
-
-
-                    
-
- 0..1
+Reference
 
 
 
 
                     
-
- OBDomestic2/RemittanceInformation/Reference
+0..1
 
 
 
 
                     
+OBDomestic2/RemittanceInformation/Reference
 
- Unique reference, as assigned by the creditor, to unambiguously refer to the payment
+
+
+
+                    
+Unique reference, as assigned by the creditor, to unambiguously refer to the payment
                         transaction.
 
                         
-
- <br/>
+<br/>
 
                         
-
- Usage: If available, the initiating party should provide this reference in the structured
+Usage: If available, the initiating party should provide this reference in the structured
                             remittance information, to enable reconciliation by the creditor upon receipt of the amount
                             of money.
 
                         
-
- <br/>
+<br/>
 
                         
-
- If the business context requires the use of a creditor reference or a payment remit
+If the business context requires the use of a creditor reference or a payment remit
                             identification, and only one identifier can be passed through the end-to-end chain, the
                             creditor's reference or payment remittance identification should be quoted in the end-to-end
                             transaction identification.
 
                         
-
- OB: The Faster Payments Scheme can only accept 18 characters for the ReferenceInformation
+OB: The Faster Payments Scheme can only accept 18 characters for the ReferenceInformation
                             field - which is where this ISO field will be mapped.
 
 
 
 
                     
-
- Max35Text
-
-
-
-
-                    
-
- <br/>
+Max35Text
 
 
 
 
                     
+<br/>
 
- <br/>
+
+
+
+                    
+<br/>
 
 
 
@@ -3923,51 +3619,44 @@ v4.0-RC1 changes:
 ---
 | 
                     
-
- SupplementaryData
-
-
-
-
-                    
-
- 0..1
+SupplementaryData
 
 
 
 
                     
-
- OBDomestic2/SupplementaryData
+0..1
 
 
 
 
                     
+OBDomestic2/SupplementaryData
 
- Additional information that can not be captured in the structured fields and/or any other
+
+
+
+                    
+Additional information that can not be captured in the structured fields and/or any other
                         specific block.
 
 
 
 
                     
-
- OBSupplementaryData1
-
-
-
-
-                    
-
- <br/>
+OBSupplementaryData1
 
 
 
 
                     
+<br/>
 
- <br/>
+
+
+
+                    
+<br/>
 
 
 
@@ -3978,14 +3667,13 @@ v4.0-RC1 changes:
                 
 
             
-```
+```TABLE END
 
             
 ## Domestic Payment Consent - Request
 
             
-
- The OBWriteDomesticConsent3 object will be used for the call to:
+The OBWriteDomesticConsent3 object will be used for the call to:
 
             
                 
@@ -3997,7 +3685,6 @@ v4.0-RC1 changes:
 
             
 
- 
                 <ac:image>
                     <ri:attachment ri:filename="OBWriteDomesticConsent3.gif" ri:version-at-save="1"/>
                 </ac:image>
@@ -4007,8 +3694,7 @@ v4.0-RC1 changes:
 ###  **Notes** 
 
             
-
- The domestic-payment-consent  **request** &nbsp;contains these objects:
+The domestic-payment-consent  **request** &nbsp;contains these objects:
 
             
                 
@@ -4028,7 +3714,7 @@ v4.0-RC1 changes:
 ### Data Dictionary
 
             
-```
+```TABLE START
 
                 
                     
@@ -4250,14 +3936,13 @@ v4.0-RC1 changes:
                 
 
             
-```
+```TABLE END
 
             
 ## Domestic Payment Consent -&nbsp;Response
 
             
-
- The OBWriteDomesticConsentResponse3 object will be used for a response to a call to:
+The OBWriteDomesticConsentResponse3 object will be used for a response to a call to:
 
             
                 
@@ -4272,7 +3957,6 @@ v4.0-RC1 changes:
 
             
 
- 
                 <ac:image>
                     <ri:attachment ri:filename="OBWriteDomesticConsentResponse3.gif" ri:version-at-save="1"/>
                 </ac:image>
@@ -4282,8 +3966,7 @@ v4.0-RC1 changes:
 ###  **Notes** 
 
             
-
- The
+The
                 domestic-payment-consent  **response** &nbsp;contains the full&nbsp; **original** 
                 payload from the domestic-payment-consent&nbsp; **request,** &nbsp;with the additional
                 elements below:
@@ -4329,7 +4012,7 @@ v4.0-RC1 changes:
 ### Data Dictionary
 
             
-```
+```TABLE START
 
                 
                     
@@ -4860,14 +4543,13 @@ v4.0-RC1 changes:
                 
 
             
-```
+```TABLE END
 
             
 ## Domestic Payment Consent Confirmation of Funds - Response
 
             
-
- The OBWriteFundsConfirmationResponse1 object will be used for a response to a call to:
+The OBWriteFundsConfirmationResponse1 object will be used for a response to a call to:
 
             
                 
@@ -4879,7 +4561,6 @@ v4.0-RC1 changes:
 
             
 
- 
                 <ac:image>
                     <ri:attachment ri:filename="OBWriteConfirmFundsResponse1.gif" ri:version-at-save="1"/>
                 </ac:image>
@@ -4889,15 +4570,14 @@ v4.0-RC1 changes:
 ###  **Notes** 
 
             
-
- The confirmation of funds response&nbsp;contains the result of a funds availability&nbsp;check, or SupplementaryData.
+The confirmation of funds response&nbsp;contains the result of a funds availability&nbsp;check, or SupplementaryData.
             
 
             
 ### Data Dictionary
 
             
-```
+```TABLE START
 
                 
                     
@@ -5153,14 +4833,13 @@ v4.0-RC1 changes:
                 
 
             
-```
+```TABLE END
 
             
 ## Domestic Payment -&nbsp;Request
 
             
-
- The OBWriteDomestic2 object will be used for a call to:
+The OBWriteDomestic2 object will be used for a call to:
 
             
                 
@@ -5172,7 +4851,6 @@ v4.0-RC1 changes:
 
             
 
- 
                 <ac:image ac:width="900">
                     <ri:attachment ri:filename="OBWriteDomestic2.gif" ri:version-at-save="1"/>
                 </ac:image>
@@ -5182,8 +4860,7 @@ v4.0-RC1 changes:
 ###  **Notes** 
 
             
-
- The domestic-payment  **request**  object contains the: 
+The domestic-payment  **request**  object contains the: 
 
             
                 
@@ -5196,8 +4873,7 @@ v4.0-RC1 changes:
 
             
             
-
- The  **Initiation ** and ** Risk** &nbsp;sections of the&nbsp;<span
+The  **Initiation ** and ** Risk** &nbsp;sections of the&nbsp;<span
                     style="color: rgb(0,0,0);">domestic-payment request  **must**  match the&nbsp; **Initiation ** and ** Risk&nbsp;** sections of the corresponding&nbsp;<span
                     style="color: rgb(0,0,0);">domestic-payment-consent request.
 
@@ -5205,7 +4881,7 @@ v4.0-RC1 changes:
 ### Data Dictionary
 
             
-```
+```TABLE START
 
                 
                     
@@ -5430,14 +5106,13 @@ v4.0-RC1 changes:
                 
 
             
-```
+```TABLE END
 
             
 ## Domestic Payment -&nbsp;Response
 
             
-
- The OBWriteDomesticResponse2 object will be used for a response to a call to:
+The OBWriteDomesticResponse2 object will be used for a response to a call to:
 
             
                 
@@ -5452,7 +5127,6 @@ v4.0-RC1 changes:
 
             
 
- 
                 <ac:image>
                     <ri:attachment ri:filename="OBWriteDataDomesticResponse3.png" ri:version-at-save="1"/>
                 </ac:image>
@@ -5462,8 +5136,7 @@ v4.0-RC1 changes:
 ###  **Notes** 
 
             
-
- The domestic-payment  **response** &nbsp;object contains the:&nbsp;
+The domestic-payment  **response** &nbsp;object contains the:&nbsp;
 
             
                 
@@ -5513,7 +5186,7 @@ v4.0-RC1 changes:
 ### Data Dictionary
 
             
-```
+```TABLE START
 
                 
                     
@@ -5757,16 +5430,13 @@ v4.0-RC1 changes:
 
 
                     
-
- AcceptedCreditSettlementCompleted
-
-                        
-
- AcceptedWithoutPosting
+AcceptedCreditSettlementCompleted
 
                         
+AcceptedWithoutPosting
 
- AcceptedSettlementCompleted<br/>AcceptedSettlementInProcess<br/>Pending<br/>Rejected
+                        
+AcceptedSettlementCompleted<br/>AcceptedSettlementInProcess<br/>Pending<br/>Rejected
 
 
 
@@ -5987,14 +5657,13 @@ v4.0-RC1 changes:
                 
 
             
-```
+```TABLE END
 
             
 ## Domestic Payment Order - Payment Details - Response
 
             
-
- The OBWritePaymentDetailsResponse1&nbsp;object will be used for a response to a call to:
+The OBWritePaymentDetailsResponse1&nbsp;object will be used for a response to a call to:
 
             
                 
@@ -6006,7 +5675,6 @@ v4.0-RC1 changes:
 
             
 
- 
                 <ac:image>
                     <ri:attachment ri:filename="OBWritePaymentDetailsResponse1.png" ri:version-at-save="1"/>
                 </ac:image>
@@ -6016,7 +5684,7 @@ v4.0-RC1 changes:
 ### Data Dictionary
 
             
-```
+```TABLE START
 
                 
                     
@@ -6168,7 +5836,7 @@ v4.0-RC1 changes:
                 
 
             
-```
+```TABLE END
 
             
 # Usage Examples
@@ -6179,13 +5847,11 @@ v4.0-RC1 changes:
 ## Merchant Initiation via PISP
 
             
-
- This example set of flows and payload examples are for a domestic payment initiated by a merchant via a
+This example set of flows and payload examples are for a domestic payment initiated by a merchant via a
                 PISP.
 
             
-
- In this scenario:
+In this scenario:
 
             
                 
@@ -6204,15 +5870,13 @@ v4.0-RC1 changes:
 
             
 
- 
                 <ac:image>
                     <ri:url ri:value="https://openbanking.atlassian.net/wiki/download/thumbnails/352190840/MerchantDomesticPaymentUsageExample-3.png?version=1&amp;modificationDate=1528363757177&amp;cacheVersion=1&amp;api=v2&amp;width=1000"/>
                 </ac:image>
             
 
             
-
- <br/>
+<br/>
 
             <ac:structured-macro ac:name="code" ac:schema-version="1"
                                  ac:macro-id="b4680fc1-ace8-469d-b547-21aa00f0b1e1">
@@ -6283,8 +5947,7 @@ v4.0-RC1 changes:
 ### Illustrative Interactions
 
             
-
- Notes:
+Notes:
 
             
                 
@@ -6825,13 +6488,11 @@ v4.0-RC1 changes:
 ## Person To Person Initiation via PISP
 
             
-
- This example set of flows and payload examples are for a domestic payment initiated by a person to
+This example set of flows and payload examples are for a domestic payment initiated by a person to
                 another person via a PISP.
 
             
-
- In this scenario:
+In this scenario:
 
             
                 
@@ -6850,7 +6511,6 @@ v4.0-RC1 changes:
 
             
 
- 
                 <ac:image ac:width="1000">
                     <ri:attachment ri:filename="P2PDomesticPaymentExample.png" ri:version-at-save="1"/>
                 </ac:image>
@@ -7347,8 +7007,7 @@ v4.0-RC1 changes:
 ## BACS Payment Order Consent
 
             
-
- Use of LocalInstrument and CutOffDateTime.
+Use of LocalInstrument and CutOffDateTime.
 </ac:layout-cell>
     </ac:layout-section>
     <ac:layout-section ac:type="two_equal">
@@ -7477,8 +7136,7 @@ v4.0-RC1 changes:
 ## CHAPS Payment Order Consent
 
             
-
- Use of LocalInstrument, CreditorPostalAddress, <span
+Use of LocalInstrument, CreditorPostalAddress, <span
                     style="color: rgb(0,0,0);text-decoration: none;">CutOffDateTime and Charges.
 
         </ac:layout-cell>
@@ -7634,12 +7292,10 @@ v4.0-RC1 changes:
 ## Balance Transfer
 
             
-
- Below in an example illustrating a balance transfer offer available on a Card A.
+Below in an example illustrating a balance transfer offer available on a Card A.
 
             
-
- To facilitate a Balance Transfer, a PISP can initiate a Payment from Card B to Card A with
+To facilitate a Balance Transfer, a PISP can initiate a Payment from Card B to Card A with
                 LocalInstrument as UK.OBIE.BalanceTransfer, Account SchemeName as UK.OBIE.PAN and if there is an
                 Offer Code/Id provided by Issuer of the Card A, then it can be supplied in the field: RemittanceInformation.Reference.
                 Example below:
@@ -7769,8 +7425,7 @@ v4.0-RC1 changes:
 ## Money Transfer
 
             
-
- Below in an example illustrating Money transfer from a card account to a bank account.&nbsp;
+Below in an example illustrating Money transfer from a card account to a bank account.&nbsp;
 
         </ac:layout-cell>
     </ac:layout-section>
