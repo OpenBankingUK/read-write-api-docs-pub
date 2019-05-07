@@ -1,0 +1,3395 @@
+<ac:layout>
+    <ac:layout-section ac:type="single">
+        <ac:layout-cell><p class="auto-cursor-target"><br/></p>
+            <ac:structured-macro ac:name="details" ac:schema-version="1"
+                                 ac:macro-id="74ab54c9-0540-477a-9f4f-2e5ede59029d">
+                <ac:parameter ac:name="hidden">true</ac:parameter>
+                <ac:rich-text-body><p class="auto-cursor-target"><br/></p>
+                    <table class="wrapped relative-table" style="width: 43.4251%;">
+                        <colgroup>
+                            <col style="width: 17.8131%;"/>
+                            <col style="width: 82.1869%;"/>
+                        </colgroup>
+                        <tbody>x
+                        <tr>
+                            <th>Resource</th>
+                            <td><p>domestic-payment-consents</p>
+                                <p>domestic-payment-consents</p>
+                                <p>domestic-payment-consents</p>
+                                <p>domestic-payments</p>
+                                <p>domestic-payments</p>
+                                <p>payment-details</p></td>
+                        </tr>
+                        <tr>
+                            <th>Endpoints</th>
+                            <td><p>POST /<span>domestic-payment-consents</span></p>
+                                <p><span>GET /<span>domestic-payment-consents</span>/{ConsentId}</span></p>
+                                <p>
+                                    <span>GET /<span>domestic-payment-consents</span>/{ConsentId}/funds-confirmation</span>
+                                </p>
+                                <p>POST /<span>domestic-payments</span></p>
+                                <p><span>GET /<span>domestic-payments</span>/{DomesticPaymentId}</span></p>
+                                <p><span>GET /<span>domestic-payments</span>/{DomesticPaymentId}/payment-details</span>
+                                </p></td>
+                        </tr>
+                        <tr>
+                            <th colspan="1">Mandatory?</th>
+                            <td colspan="1"><p>Mandatory</p>
+                                <p>Mandatory</p>
+                                <p>Mandatory</p>
+                                <p>Mandatory</p>
+                                <p>Mandatory</p>
+                                <p>Optional</p></td>
+                        </tr>
+                        <tr>
+                            <th colspan="1">SortOrder</th>
+                            <td colspan="1">01</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <p class="auto-cursor-target"><br/></p></ac:rich-text-body>
+            </ac:structured-macro>
+            <p>
+                <ac:structured-macro ac:name="toc" ac:schema-version="1"
+                                     ac:macro-id="3181eb94-0159-4a16-a4b2-ed6cd8033318">
+                    <ac:parameter ac:name="outline">true</ac:parameter>
+                </ac:structured-macro>
+            </p>
+            <h1>
+                <ac:inline-comment-marker ac:ref="19d03b39-edf8-426a-8f5a-f294705741c3">Version Control
+                </ac:inline-comment-marker>
+            </h1>
+            <table class="wrapped relative-table" style="width: 100.0%;">
+                <colgroup>
+                    <col style="width: 9.0517645%;"/>
+                    <col style="width: 9.257141%;"/>
+                    <col style="width: 14.819828%;"/>
+                    <col style="width: 66.87244%;"/>
+                </colgroup>
+                <tbody>
+                <tr>
+                    <th>Version</th>
+                    <th>Date</th>
+                    <th>Author</th>
+                    <th colspan="1">Comments</th>
+                </tr>
+                <tr>
+                    <td colspan="1">3.1</td>
+                    <td colspan="1">
+                        <time datetime="2018-12-03"/>&nbsp;
+                    </td>
+                    <td colspan="1">OB R/W API Team</td>
+                    <td colspan="1">This is the baseline version.</td>
+                </tr>
+                <tr>
+                    <td colspan="1">4.0-draft1</td>
+                    <td colspan="1">
+                        <time datetime="2018-12-18"/>&nbsp;
+                    </td>
+                    <td colspan="1">OB R/W API Team</td>
+                    <td colspan="1">No changes.</td>
+                </tr>
+                <tr>
+                    <td colspan="1">4.0-draft6</td>
+                    <td colspan="1">
+                        <time datetime="2019-02-27"/>&nbsp;
+                    </td>
+                    <td colspan="1">OB R/W API Team</td>
+                    <td colspan="1"><p>v4.0-draft6 changes:</p>
+                        <ul>
+                            <li>Added&nbsp;AcceptedCreditSettlementCompleted enumeration value&nbsp; in&nbsp;OBTransactionIndividualStatus1Code</li>
+                            <li>Added Payment Status details endpoint, Data Model, and underlying Status enumerations
+                            </li>
+                            <li>Updated Account Name definition.</li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="1">4.0-draft7</td>
+                    <td colspan="1">
+                        <time datetime="2019-03-08"/>&nbsp;
+                    </td>
+                    <td colspan="1">OB R/W API Team</td>
+                    <td colspan="1"><p>v4.0-draft7 changes:</p>
+                        <ul>
+                            <li>Payment Status details Data Model: changed the cardinality between Data and
+                                PaymentStatus from 1..unbounded to 0..Unbounded
+                            </li>
+                            <li>Deleted the &quot;AcceptedCreditSettlementCompleted to Rejected&quot; flow from the
+                                Payment Order Status diagram
+                            </li>
+                            <li>Added SCASupportData element to Domestic Payment Consent, to enable PISPs to provide
+                                Supporting Data, when requesting SCA Exemption
+                            </li>
+                            <li>Changes for alignment with FAPI Implementer's Draft 2<br/>
+                                <ul>
+                                    <li>Replace references of `x-fapi-customer-last-logged-time` to `x-fapi-auth-date`
+                                    </li>
+                                    <li>Remove references of x-fapi-financial-id</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="1">v4.0-RC1</td>
+                    <td colspan="1">
+                        <time datetime="2019-03-22"/>&nbsp;
+                    </td>
+                    <td colspan="1">OB R/W API Team</td>
+                    <td colspan="1"><p style="text-align: left;">v4.0-RC1 changes:</p>
+                        <ul style="text-align: left;">
+                            <li>Replaced reference to&nbsp;Mapping to Schemes and Standards section with Domestic
+                                Payment Message Formats page.
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            <h1>Endpoints</h1>
+            <table class="wrapped">
+                <colgroup>
+                    <col style="width: 197.0px;"/>
+                    <col style="width: 128.0px;"/>
+                    <col style="width: 429.0px;"/>
+                    <col style="width: 105.0px;"/>
+                    <col style="width: 82.0px;"/>
+                    <col style="width: 141.0px;"/>
+                    <col style="width: 136.0px;"/>
+                    <col style="width: 137.0px;"/>
+                    <col style="width: 192.0px;"/>
+                    <col style="width: 263.0px;"/>
+                </colgroup>
+                <tbody>
+                <tr>
+                    <th>Resource</th>
+                    <th>HTTP Operation</th>
+                    <th colspan="1">Endpoint</th>
+                    <th>Mandatory ?</th>
+                    <th colspan="1">Scope</th>
+                    <th colspan="1">Grant Type</th>
+                    <th colspan="1">Message Signing</th>
+                    <th colspan="1">Idempotency Key</th>
+                    <th colspan="1">Request Object</th>
+                    <th colspan="1">Response Object</th>
+                </tr>
+                <tr>
+                    <td><span>domestic-payment-consents</span></td>
+                    <td>POST</td>
+                    <td colspan="1">POST /<span>domestic-payment-consents</span></td>
+                    <td>Mandatory</td>
+                    <td colspan="1">payments</td>
+                    <td colspan="1">Client Credentials</td>
+                    <td colspan="1"><p>Signed Request</p>
+                        <p>Signed Response</p></td>
+                    <td colspan="1">Yes</td>
+                    <td colspan="1">OBWriteDomesticConsent3</td>
+                    <td colspan="1">OBWriteDomesticConsentResponse3</td>
+                </tr>
+                <tr>
+                    <td><span>domestic-payment-consents</span></td>
+                    <td>GET</td>
+                    <td colspan="1">GET /<span>domestic-payment-consents</span>/{ConsentId}</td>
+                    <td>Mandatory</td>
+                    <td colspan="1"><span>payments</span></td>
+                    <td colspan="1"><p>Client Credentials</p></td>
+                    <td colspan="1">Signed Response</td>
+                    <td colspan="1">No</td>
+                    <td colspan="1">NA</td>
+                    <td colspan="1">OBWriteDomesticConsentResponse3</td>
+                </tr>
+                <tr>
+                    <td colspan="1"><span>domestic-payment-consents</span></td>
+                    <td colspan="1">GET</td>
+                    <td colspan="1">GET /<span>domestic-payment-consents</span>/{ConsentId}/funds-confirmation</td>
+                    <td colspan="1">Mandatory</td>
+                    <td colspan="1"><span>payments</span></td>
+                    <td colspan="1">Authorization Code</td>
+                    <td colspan="1">Signed Response</td>
+                    <td colspan="1">No</td>
+                    <td colspan="1">NA</td>
+                    <td colspan="1">OBWriteFundsConfirmationResponse1</td>
+                </tr>
+                <tr>
+                    <td colspan="1"><span>domestic-payments</span></td>
+                    <td colspan="1">POST</td>
+                    <td colspan="1">POST /<span>domestic-payments</span></td>
+                    <td colspan="1">Mandatory</td>
+                    <td colspan="1">payments</td>
+                    <td colspan="1">Authorization Code</td>
+                    <td colspan="1"><p>Signed Request</p>
+                        <p>Signed Response</p></td>
+                    <td colspan="1">Yes</td>
+                    <td colspan="1">OBWriteDomestic2</td>
+                    <td colspan="1">OBWriteDomesticResponse2</td>
+                </tr>
+                <tr>
+                    <td><span>domestic-payments</span></td>
+                    <td>GET</td>
+                    <td>GET /<span>domestic-payments</span>/{<span>DomesticPaymentId</span>}</td>
+                    <td>Mandatory</td>
+                    <td>payments</td>
+                    <td><p>Client Credentials</p></td>
+                    <td>Signed Response</td>
+                    <td>No</td>
+                    <td>NA</td>
+                    <td>OBWriteDomesticResponse2</td>
+                </tr>
+                <tr>
+                    <td colspan="1"><span>payment-details</span></td>
+                    <td colspan="1">GET</td>
+                    <td colspan="1">GET /<span>domestic-payments</span>/{<span>DomesticPaymentId</span>}/payment-details
+                    </td>
+                    <td colspan="1">Optional</td>
+                    <td colspan="1">payments</td>
+                    <td colspan="1">Client Credentials</td>
+                    <td colspan="1">Signed Response</td>
+                    <td colspan="1">No</td>
+                    <td colspan="1">NA</td>
+                    <td colspan="1">OBWritePaymentDetailsResponse1</td>
+                </tr>
+                </tbody>
+            </table>
+            <h2>POST /<span>domestic-payment-consents</span>&nbsp;</h2>
+            <ac:structured-macro ac:name="code" ac:schema-version="1"
+                                 ac:macro-id="bbcbf706-e2c6-4d2a-a3d3-4a3f6ba2936b">
+                <ac:parameter ac:name="language">text</ac:parameter>
+                <ac:parameter ac:name="theme">Midnight</ac:parameter>
+                <ac:parameter ac:name="firstline">1</ac:parameter>
+                <ac:parameter ac:name="linenumbers">true</ac:parameter>
+                <ac:plain-text-body><![CDATA[POST /domestic-payment-consents]]></ac:plain-text-body>
+            </ac:structured-macro>
+            <p>
+                <ac:inline-comment-marker ac:ref="5f42a169-2eac-4ef3-aab9-76f103e2de49">The API endpoint allows the PISP
+                    to ask an ASPSP to create a new
+                </ac:inline-comment-marker>
+                <strong>
+                    <ac:inline-comment-marker ac:ref="5f42a169-2eac-4ef3-aab9-76f103e2de49">domestic-payment-consent
+                    </ac:inline-comment-marker>
+                </strong>
+                <ac:inline-comment-marker ac:ref="5f42a169-2eac-4ef3-aab9-76f103e2de49"> resource.
+                </ac:inline-comment-marker>
+            </p>
+            <ul>
+                <li>
+                    <ac:inline-comment-marker ac:ref="a5452acb-ddc8-41dc-bd2d-6969a92677ae">The POST action
+                    </ac:inline-comment-marker>
+                    indicates to the ASPSP that a domestic payment consent has been staged. At this point, the PSU may
+                    not have been identified by the ASPSP, and the request payload may not contain any information of
+                    the account that should be debited.
+                </li>
+                <li>The endpoint allows the PISP to send a copy of the consent (between PSU and PISP) to the ASPSP for
+                    the PSU to authorise.
+                </li>
+                <li>The ASPSP creates the&nbsp;<strong>domestic-payment-consent</strong> resource and responds with a
+                    unique ConsentId to refer to the resource.
+                </li>
+            </ul>
+            <h3>Status</h3>
+            <p>The default Status is &quot;AwaitingAuthorisation&quot; immediately after the domestic-payment-consent
+                has been created.</p>
+            <table class="relative-table wrapped" style="width: 57.0272%;">
+                <colgroup>
+                    <col style="width: 26.0747%;"/>
+                </colgroup>
+                <tbody>
+                <tr>
+                    <th>Status</th>
+                </tr>
+                <tr>
+                    <td colspan="1">AwaitingAuthorisation</td>
+                </tr>
+                </tbody>
+            </table>
+            <h2><span style="font-size: 20.0px;">GET /<span>domestic-payment-consents</span>/{ConsentId}</span></h2>
+            <ac:structured-macro ac:name="code" ac:schema-version="1"
+                                 ac:macro-id="8f7d84a3-9020-4ae0-9762-3b3c395e333e">
+                <ac:parameter ac:name="language">text</ac:parameter>
+                <ac:parameter ac:name="theme">Midnight</ac:parameter>
+                <ac:parameter ac:name="firstline">1</ac:parameter>
+                <ac:parameter ac:name="linenumbers">true</ac:parameter>
+                <ac:plain-text-body><![CDATA[GET /domestic-payment-consents/{ConsentId}]]></ac:plain-text-body>
+            </ac:structured-macro>
+            <p>A PISP can optionally retrieve a payment consent&nbsp;resource that they have created to check its
+                status.&nbsp;</p>
+            <h3>Status</h3>
+            <p>Once the PSU authorises the&nbsp;payment-consent resource - the Status of the&nbsp;payment-consent
+                resource will be updated with &quot;Authorised&quot;.</p>
+            <p>If the PSU rejects the consent or the domestic-payment-consent has failed some other ASPSP validation,
+                the Status will be set to &quot;Rejected&quot;.</p>
+            <p>Once a domestic-payment has been successfully created using the domestic-payment-consent, the Status of
+                the&nbsp;domestic-payment-consent will be set to &quot;Consumed&quot;.</p>
+            <p>The available status codes for the domestic-payment-consent resource are:</p>
+            <table class="relative-table wrapped" style="width: 57.245903%;">
+                <colgroup>
+                    <col style="width: 27.052275%;"/>
+                </colgroup>
+                <tbody>
+                <tr>
+                    <th>Status</th>
+                </tr>
+                <tr>
+                    <td colspan="1">AwaitingAuthorisation</td>
+                </tr>
+                <tr>
+                    <td colspan="1">Rejected</td>
+                </tr>
+                <tr>
+                    <td colspan="1">Authorised</td>
+                </tr>
+                <tr>
+                    <td colspan="1">Consumed</td>
+                </tr>
+                </tbody>
+            </table>
+            <h2>GET&nbsp;/domestic-payment-consents/{ConsentId}/funds-confirmation</h2>
+            <ac:structured-macro ac:name="code" ac:schema-version="1"
+                                 ac:macro-id="c95a7dba-76e3-4308-8be6-8fb1a5f1623b">
+                <ac:parameter ac:name="language">text</ac:parameter>
+                <ac:parameter ac:name="theme">Midnight</ac:parameter>
+                <ac:parameter ac:name="firstline">1</ac:parameter>
+                <ac:parameter ac:name="linenumbers">true</ac:parameter>
+                <ac:plain-text-body><![CDATA[GET /domestic-payment-consents/{ConsentId}/funds-confirmation]]>
+                </ac:plain-text-body>
+            </ac:structured-macro>
+            <p>The API endpoint allows the PISP to ask an ASPSP to confirm funds on a&nbsp;<strong>domestic-payment-consent</strong>
+                resource.</p>
+            <ul>
+                <li>An ASPSP can only respond to a funds confirmation request if the <strong>domestic-payment-consent&nbsp;</strong>resource
+                    has an <code>Authorised</code>&nbsp;status. If the status is not <code>Authorised</code>, an ASPSP
+                    <strong>must</strong> respond with a&nbsp;400 (Bad Request) and a <code>UK.OBIE.Resource.InvalidConsentStatus</code>&nbsp;error
+                    code.
+                </li>
+                <li>Confirmation of funds requests do not affect the status of the&nbsp;<strong>domestic-payment-consent&nbsp;</strong>resource.
+                </li>
+            </ul>
+            <h2 class="auto-cursor-target">POST /<span>domestic-payments</span></h2>
+            <ac:structured-macro ac:name="code" ac:schema-version="1"
+                                 ac:macro-id="c4b9a325-e3b3-4b57-9df3-f6aee93d3240">
+                <ac:parameter ac:name="language">text</ac:parameter>
+                <ac:parameter ac:name="theme">Midnight</ac:parameter>
+                <ac:parameter ac:name="firstline">1</ac:parameter>
+                <ac:parameter ac:name="linenumbers">true</ac:parameter>
+                <ac:plain-text-body><![CDATA[POST /domestic-payments]]></ac:plain-text-body>
+            </ac:structured-macro>
+            <p>Once the domestic-payment-consent has been authorised by the PSU, the PISP can proceed to submitting the
+                domestic-payment for processing:</p>
+            <ul>
+                <li>This is done by making a POST request to the <strong>domestic-payments</strong>&nbsp;endpoint.</li>
+                <li>This request is an instruction to the ASPSP to begin the domestic single immediate&nbsp;payment
+                    journey. The domestic payment must be submitted immediately, however, there are some scenarios where
+                    the domestic payment may not&nbsp;be executed immediately (e.g., busy periods at the ASPSP).
+                </li>
+                <li>The PISP&nbsp;<strong>must&nbsp;</strong>ensure that the Initiation and Risk sections of the
+                    domestic-payment match the corresponding Initiation and Risk sections of the
+                    domestic-payment-consent resource. If the two do not match, the ASPSP&nbsp;<strong>must not</strong>
+                    process the request and&nbsp;<strong>must&nbsp;</strong>respond with a 400 (Bad Request).
+                </li>
+                <li>Any operations on the&nbsp;domestic-payment resource will not result in a status change for the&nbsp;domestic-payment
+                    resource.
+                </li>
+            </ul>
+            <h3>Status</h3>
+            <p>A&nbsp;domestic-payment can only be created if its corresponding&nbsp;domestic-payment-consent resource
+                has the status of &quot;Authorised&quot;.&nbsp;</p>
+            <p>The&nbsp;domestic-payment resource that is created successfully must have one of the following&nbsp;PaymentStatusCode
+                code-set enumerations:</p>
+            <table class="relative-table wrapped" style="width: 57.2459%;">
+                <colgroup>
+                    <col style="width: 25.6881%;"/>
+                </colgroup>
+                <tbody>
+                <tr>
+                    <th colspan="1">Status</th>
+                </tr>
+                <tr>
+                    <td colspan="1">Pending</td>
+                </tr>
+                <tr>
+                    <td colspan="1">Rejected</td>
+                </tr>
+                <tr>
+                    <td colspan="1">AcceptedSettlementInProcess&nbsp;</td>
+                </tr>
+                <tr>
+                    <td colspan="1">AcceptedSettlementCompleted</td>
+                </tr>
+                <tr>
+                    <td colspan="1">AcceptedWithoutPosting</td>
+                </tr>
+                <tr>
+                    <td colspan="1">AcceptedCreditSettlementCompleted</td>
+                </tr>
+                </tbody>
+            </table>
+            <h2><span>GET /domestic-payments/{DomesticPaymentId}</span></h2>
+            <ac:structured-macro ac:name="code" ac:schema-version="1"
+                                 ac:macro-id="85e8e4a8-e792-42bd-b85f-b6c591bde75f">
+                <ac:parameter ac:name="language">text</ac:parameter>
+                <ac:parameter ac:name="theme">Midnight</ac:parameter>
+                <ac:parameter ac:name="firstline">1</ac:parameter>
+                <ac:parameter ac:name="linenumbers">true</ac:parameter>
+                <ac:plain-text-body><![CDATA[GET /domestic-payments/{DomesticPaymentId}]]></ac:plain-text-body>
+            </ac:structured-macro>
+            <p>A PISP can retrieve the&nbsp;domestic-payment to check its status.</p>
+            <h3>Status</h3>
+            <p>The&nbsp;domestic-payment resource must have one of the following&nbsp;PaymentStatusCode code-set
+                enumerations:</p>
+            <table class="relative-table wrapped" style="width: 20.6716%;">
+                <colgroup>
+                    <col style="width: 100.0%;"/>
+                </colgroup>
+                <tbody>
+                <tr>
+                    <th>Status</th>
+                </tr>
+                <tr>
+                    <td colspan="1">Pending</td>
+                </tr>
+                <tr>
+                    <td colspan="1">Rejected</td>
+                </tr>
+                <tr>
+                    <td colspan="1">AcceptedSettlementInProcess&nbsp;</td>
+                </tr>
+                <tr>
+                    <td colspan="1">AcceptedSettlementCompleted</td>
+                </tr>
+                <tr>
+                    <td colspan="1">AcceptedWithoutPosting</td>
+                </tr>
+                <tr>
+                    <td colspan="1">AcceptedCreditSettlementCompleted</td>
+                </tr>
+                </tbody>
+            </table>
+            <h2><span>GET /domestic-payments/{DomesticPaymentId}/payment-details</span></h2>
+            <ac:structured-macro ac:name="code" ac:schema-version="1"
+                                 ac:macro-id="6ab4f90b-d453-4388-8d38-d6cd0a01cd95">
+                <ac:parameter ac:name="language">text</ac:parameter>
+                <ac:parameter ac:name="theme">Midnight</ac:parameter>
+                <ac:parameter ac:name="firstline">1</ac:parameter>
+                <ac:parameter ac:name="linenumbers">true</ac:parameter>
+                <ac:plain-text-body><![CDATA[GET /domestic-payments/{DomesticPaymentId}/payment-details]]>
+                </ac:plain-text-body>
+            </ac:structured-macro>
+            <p>A PISP can retrieve the Details of the underlying payment transaction via this endpoint. This resource
+                allows ASPSPs to return richer list of Payment Statuses, and if available payment scheme related
+                statuses.</p>
+            <h3>Status</h3>
+            <p>The&nbsp;domestic-payment - payment-details must have one of the following&nbsp;PaymentStatusCode
+                code-set enumerations:</p>
+            <table class="relative-table wrapped" style="width: 28.0932%;">
+                <colgroup>
+                    <col style="width: 100.0%;"/>
+                </colgroup>
+                <tbody>
+                <tr>
+                    <th>Status</th>
+                </tr>
+                <tr>
+                    <td colspan="1">Accepted</td>
+                </tr>
+                <tr>
+                    <td colspan="1">AcceptedCancellationRequest</td>
+                </tr>
+                <tr>
+                    <td colspan="1">AcceptedTechnicalValidation</td>
+                </tr>
+                <tr>
+                    <td colspan="1">AcceptedCustomerProfile</td>
+                </tr>
+                <tr>
+                    <td colspan="1">AcceptedFundsChecked</td>
+                </tr>
+                <tr>
+                    <td colspan="1">AcceptedWithChange</td>
+                </tr>
+                <tr>
+                    <td colspan="1">Pending</td>
+                </tr>
+                <tr>
+                    <td colspan="1">Rejected</td>
+                </tr>
+                <tr>
+                    <td colspan="1">AcceptedSettlementInProcess&nbsp;</td>
+                </tr>
+                <tr>
+                    <td colspan="1">AcceptedSettlementCompleted</td>
+                </tr>
+                <tr>
+                    <td colspan="1">AcceptedWithoutPosting</td>
+                </tr>
+                <tr>
+                    <td colspan="1">AcceptedCreditSettlementCompleted</td>
+                </tr>
+                <tr>
+                    <td colspan="1">Cancelled</td>
+                </tr>
+                <tr>
+                    <td colspan="1">NoCancellationProcess</td>
+                </tr>
+                <tr>
+                    <td colspan="1">PartiallyAcceptedCancellationRequest</td>
+                </tr>
+                <tr>
+                    <td colspan="1">PartiallyAcceptedTechnicalCorrect</td>
+                </tr>
+                <tr>
+                    <td colspan="1">PaymentCancelled</td>
+                </tr>
+                <tr>
+                    <td colspan="1">PendingCancellationRequest</td>
+                </tr>
+                <tr>
+                    <td colspan="1">Received</td>
+                </tr>
+                <tr>
+                    <td colspan="1">RejectedCancellationRequest</td>
+                </tr>
+                </tbody>
+            </table>
+            <h2>State Model</h2>
+            <h3>Payment Order Consent</h3>
+            <p>The state model for the domestic-payment-consent resource follows the generic consent state model.
+                However, does not use the &quot;Revoked&quot; status, as the consent for a domestic-payment is not a
+                long-lived consent.</p>
+            <p><br/></p>
+            <p>
+                <ac:image ac:width="1000">
+                    <ri:attachment ri:filename="image2018-5-18_10-24-21.png" ri:version-at-save="1"/>
+                </ac:image>
+            </p>
+            <p><br/></p>
+            <p>The definitions for the Status:</p>
+            <table class="relative-table wrapped" style="width: 57.1803%;">
+                <colgroup>
+                    <col/>
+                    <col style="width: 27.1096%;"/>
+                    <col style="width: 72.8306%;"/>
+                </colgroup>
+                <tbody>
+                <tr>
+                    <th class="numberingColumn"><br/></th>
+                    <th>Status</th>
+                    <th>Status Description</th>
+                </tr>
+                <tr>
+                    <td class="numberingColumn">1</td>
+                    <td colspan="1">AwaitingAuthorisation</td>
+                    <td colspan="1"><span style="color: rgb(51,51,51);">The consent resource is awaiting PSU authorisation.</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="numberingColumn" colspan="1">2</td>
+                    <td colspan="1">Rejected</td>
+                    <td colspan="1"><span style="color: rgb(51,51,51);">The consent resource has been rejected.</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="numberingColumn" colspan="1">3</td>
+                    <td colspan="1">Authorised&nbsp;</td>
+                    <td colspan="1">The consent resource has been successfully authorised.</td>
+                </tr>
+                <tr>
+                    <td class="numberingColumn" colspan="1">4</td>
+                    <td colspan="1">Consumed</td>
+                    <td colspan="1">The consented action has been successfully completed. This does not reflect the
+                        status of the consented action.
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            <h3>Payment Order</h3>
+            <p>The state model for the domestic-payment resource follows the behaviour and definitions for the ISO 20022
+                PaymentStatusCode code-set.</p>
+            <p>
+                <ac:image ac:width="1000">
+                    <ri:attachment ri:filename="PaymentStatusLifeCycle.png" ri:version-at-save="1"/>
+                </ac:image>
+            </p>
+            <p><br/></p>
+            <p>The definitions for the status:</p>
+            <table class="relative-table wrapped" style="width: 57.1803%;">
+                <colgroup>
+                    <col/>
+                    <col style="width: 27.1096%;"/>
+                    <col style="width: 72.8306%;"/>
+                </colgroup>
+                <tbody>
+                <tr>
+                    <th class="numberingColumn"><br/></th>
+                    <th>Status</th>
+                    <th>Payment Status Description</th>
+                </tr>
+                <tr>
+                    <td class="numberingColumn">1</td>
+                    <td colspan="1">Pending</td>
+                    <td colspan="1">Payment initiation or individual transaction included in the payment initiation is
+                        pending.&nbsp; Further checks and status update will be performed.
+                    </td>
+                </tr>
+                <tr>
+                    <td class="numberingColumn" colspan="1">2</td>
+                    <td colspan="1">Rejected</td>
+                    <td colspan="1">Payment initiation or individual transaction included in the payment initiation has
+                        been rejected.
+                    </td>
+                </tr>
+                <tr>
+                    <td class="numberingColumn" colspan="1">3</td>
+                    <td colspan="1">AcceptedSettlementInProcess&nbsp;</td>
+                    <td colspan="1">All preceding checks such as technical validation and customer profile were
+                        successful and therefore the payment initiation has been accepted for execution.
+                    </td>
+                </tr>
+                <tr>
+                    <td class="numberingColumn" colspan="1">4</td>
+                    <td colspan="1">AcceptedSettlementCompleted</td>
+                    <td colspan="1">Settlement on the debtor's account has been completed.&nbsp;</td>
+                </tr>
+                <tr>
+                    <td class="numberingColumn" colspan="1">5</td>
+                    <td colspan="1">AcceptedWithoutPosting</td>
+                    <td colspan="1"><span style="color: rgb(0,0,0);">Payment instruction included in the credit transfer is accepted without being posted to the creditor customer&rsquo;s account.</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="numberingColumn" colspan="1">6</td>
+                    <td colspan="1"><span style="color: rgb(0,0,0);">AcceptedCreditSettlementCompleted</span></td>
+                    <td colspan="1"><span style="color: rgb(0,0,0);">Settlement on the creditor's account has been completed.</span>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            <h4>Multiple Authorisation</h4>
+            <p>If the payment-order requires multiple authorisations - the Status of the multiple authorisations will be
+                updated in the MultiAuthorisation object.</p>
+            <p>
+                <ac:image ac:width="1000">
+                    <ri:attachment ri:filename="image2018-6-29_16-36-34.png" ri:version-at-save="1"/>
+                </ac:image>
+            </p>
+            <p><br/></p>
+            <p>The definitions for the status:</p>
+            <table class="relative-table wrapped" style="width: 57.1803%;">
+                <colgroup>
+                    <col/>
+                    <col style="width: 27.1096%;"/>
+                    <col style="width: 72.8306%;"/>
+                </colgroup>
+                <tbody>
+                <tr>
+                    <th class="numberingColumn"><br/></th>
+                    <th>Status</th>
+                    <th>Status Description</th>
+                </tr>
+                <tr>
+                    <td class="numberingColumn">1</td>
+                    <td colspan="1">AwaitingFurtherAuthorisation</td>
+                    <td colspan="1"><span style="color: rgb(51,51,51);">The payment-order resource is awaiting further authorisation.</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="numberingColumn" colspan="1">2</td>
+                    <td colspan="1">Rejected</td>
+                    <td colspan="1"><span style="color: rgb(51,51,51);">The&nbsp;<span style="color: rgb(51,51,51);">payment-order</span> resource has been rejected by an authoriser.</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="numberingColumn" colspan="1">3</td>
+                    <td colspan="1">Authorised&nbsp;</td>
+                    <td colspan="1">The&nbsp;<span style="color: rgb(51,51,51);"><span style="color: rgb(51,51,51);">payment-order</span></span>
+                        resource has been successfully authorised by all required authorisers.
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            <h1>Data Model</h1>
+            <p>The data dictionary section gives the detail on the payload content for the Domestic Payment API
+                flows.</p>
+            <h2>Reused Classes</h2>
+            <h3>OBDomestic2</h3>
+            <p>This section describes the
+                <ac:inline-comment-marker ac:ref="4ac4ccd0-0111-40be-8bde-981404f9184d">OBDomestic2
+                </ac:inline-comment-marker>
+                class which is reused as the Initiation object in the domestic-payment-consent and domestic-payment
+                resources.
+            </p>
+            <h4>UML
+                <ac:inline-comment-marker ac:ref="41e6f785-2fe1-475b-8cef-d655041ccc0e">Diagram
+                </ac:inline-comment-marker>
+            </h4>
+            <p>
+                <ac:image ac:width="450">
+                    <ri:attachment ri:filename="OBDomestic2.gif" ri:version-at-save="1"/>
+                </ac:image>
+            </p>
+            <h4><strong>Notes</strong></h4>
+            <p>For the&nbsp;OBDomestic2 Initiation object:&nbsp;&nbsp;</p>
+            <ul>
+                <li>All elements in the Initiation payload that are specified by the PISP must not be changed via the
+                    ASPSP as this is part of formal consent from the PSU.
+                </li>
+                <li><p>If the ASPSP is able to establish a problem with payload or any contextual error during the API
+                    call, the ASPSP must reject the&nbsp;domestic-payment-consent request immediately.</p></li>
+                <li><p>If the ASPSP establishes a problem with the&nbsp;domestic-payment-consent after the API call, the
+                    ASPSP must set the status of the&nbsp;domestic-payment-consent resource to Rejected.</p></li>
+                <li>DebtorAccount is&nbsp;<strong>optional</strong>&nbsp;as the PISP may not know the account
+                    identification details for the PSU.
+                </li>
+                <li>If the DebtorAccount&nbsp;is specified by the PISP and is invalid for the PSU, then the&nbsp;domestic-payment-consent
+                    will be set to Rejected after PSU authentication.
+                </li>
+                <li>Account Identification field usage:
+                    <ul>
+                        <li>Where &quot;<span style="color: rgb(9,30,66);">UK.OBIE.</span>SortCodeAccountNumber&quot; is
+                            specified as the SchemeName in the Account identification section (either DebtorAccount or
+                            CreditorAccount), the Identification field <strong>must</strong> be populated with the 6
+                            digit Sort Code and 8 digit Account Number (a 14 digit field).
+                        </li>
+                        <li>Where the&nbsp;&quot;UK.OBIE.IBAN&quot; is specified as the SchemeName in the Account
+                            identification section (either DebtorAccount or CreditorAccount), the Identification field
+                            <strong>must</strong> be populated with the full IBAN.
+                        </li>
+                    </ul>
+                </li>
+                <li>The element Reference has been renamed from CreditorReferenceInformation as this is the unique ISO
+                    20022 element used in pain.001, rather than an ISO 20022 message component.
+                </li>
+                <li>As a merchant may be initiating a payment via a PISP two identifiers are included in the payload:&nbsp;<ul>
+                    <li>InstructionIdentification is uniquely generated by the PISP. The expectation is that this is
+                        unique indefinitely<span> across all time periods</span>. The PISP can ensure that this is
+                        indefinitely unique by including a date or date-time element to the field, or by inserting a
+                        unique Id.&nbsp;
+                    </li>
+                    <li>EndToEndIdentification is uniquely generated by the merchant.</li>
+                </ul>
+                </li>
+                <li>Neither the&nbsp;InstructionIdentification nor&nbsp;EndToEndIdentification will be used as the&nbsp;domestic-payment-consent
+                    resource identifier (ConsentId) as the ConsentId <strong>must</strong>&nbsp;be uniquely generated by
+                    the ASPSP.
+                </li>
+                <li>LocalInstrument is the requested payment scheme for execution. This is a free-text field.</li>
+                <li>Design decisions for the Initiation section of the payload and how this maps to the ISO 20022
+                    messaging standard are articulated in the Domestic Payment Message Formats page.
+                </li>
+            </ul>
+            <h4>Data Dictionary</h4>
+            <table class="wrapped">
+                <colgroup>
+                    <col/>
+                    <col/>
+                    <col/>
+                    <col/>
+                    <col/>
+                    <col/>
+                    <col/>
+                </colgroup>
+                <tbody>
+                <tr>
+                    <th>Name</th>
+                    <th>Occurrence</th>
+                    <th>XPath</th>
+                    <th>EnhancedDefinition</th>
+                    <th>Class</th>
+                    <th>Codes</th>
+                    <th>Pattern</th>
+                </tr>
+                <tr>
+                    <td colspan="1"><p>OBDomestic2</p></td>
+                    <td colspan="1"><p><br/></p></td>
+                    <td colspan="1"><p>OBDomestic2</p></td>
+                    <td colspan="1"><p>The Initiation payload is sent by the initiating party to the ASPSP. It is used
+                        to request movement of funds from the debtor account to a creditor for a single domestic
+                        payment.</p></td>
+                    <td colspan="1"><p>OBDomestic2</p></td>
+                    <td colspan="1"><p><br/></p></td>
+                    <td colspan="1"><p><br/></p></td>
+                </tr>
+                <tr>
+                    <td><p>InstructionIdentification</p></td>
+                    <td><p>1..1</p></td>
+                    <td><p>OBDomestic2/InstructionIdentification</p></td>
+                    <td><p>Unique identification as assigned by an instructing party for an instructed party to
+                        unambiguously identify the instruction.</p>
+                        <p><br/></p>
+                        <p>Usage: the&nbsp; instruction identification is a point to point reference that can be used
+                            between the instructing party and the instructed party to refer to the individual
+                            instruction. It can be included in several messages related to the instruction.</p></td>
+                    <td><p>Max35Text</p></td>
+                    <td><p><br/></p></td>
+                    <td><p><br/></p></td>
+                </tr>
+                <tr>
+                    <td><p>EndToEndIdentification</p></td>
+                    <td><p>1..1</p></td>
+                    <td><p>OBDomestic2/EndToEndIdentification</p></td>
+                    <td><p>Unique identification assigned by the initiating party to unambiguously identify the
+                        transaction. This identification is passed on, unchanged, throughout the entire end-to-end
+                        chain.</p>
+                        <p><br/></p>
+                        <p>Usage: The end-to-end identification can be used for reconciliation or to link tasks relating
+                            to the transaction. It can be included in several messages related to the transaction.</p>
+                        <p>OB: The Faster Payments Scheme can only access 31 characters for the EndToEndIdentification
+                            field.</p></td>
+                    <td><p>Max35Text</p></td>
+                    <td><p><br/></p></td>
+                    <td><p><br/></p></td>
+                </tr>
+                <tr>
+                    <td><p>LocalInstrument</p></td>
+                    <td><p>0..1</p></td>
+                    <td><p>OBDomestic2/LocalInstrument</p></td>
+                    <td><p>User community specific instrument.</p>
+                        <p><br/></p>
+                        <p>Usage: This element is used to specify a local instrument, local clearing option and/or
+                            further qualify the service or service level.</p></td>
+                    <td><p><span>OBExternalLocalInstrument1Code</span></p></td>
+                    <td><p><br/></p></td>
+                    <td><p><br/></p></td>
+                </tr>
+                <tr>
+                    <td><p>InstructedAmount</p></td>
+                    <td><p>1..1</p></td>
+                    <td><p>OBDomestic2/InstructedAmount</p></td>
+                    <td><p>Amount of money to be moved between the debtor and creditor, before deduction of charges,
+                        expressed in the currency as ordered by the initiating party.</p>
+                        <p><br/></p>
+                        <p>Usage: This amount has to be transported unchanged through the transaction chain.</p></td>
+                    <td><p>OBActiveOrHistoricCurrencyAndAmount</p></td>
+                    <td><p><br/></p></td>
+                    <td><p><br/></p></td>
+                </tr>
+                <tr>
+                    <td><p>Amount</p></td>
+                    <td><p>1..1</p></td>
+                    <td><p>OBDomestic2/InstructedAmount/Amount</p></td>
+                    <td><p>A number of monetary units specified in an active currency where the unit of currency is
+                        explicit and compliant with ISO 4217.</p></td>
+                    <td><p>OBActiveCurrencyAndAmount_SimpleType</p></td>
+                    <td><p><br/></p></td>
+                    <td><p>^\d{1,13}\.\d{1,5}$</p></td>
+                </tr>
+                <tr>
+                    <td><p>Currency</p></td>
+                    <td><p>1..1</p></td>
+                    <td><p>OBDomestic2/InstructedAmount/Currency</p></td>
+                    <td><p>A code allocated to a currency by a Maintenance Agency under an international identification
+                        scheme, as described in the latest edition of the international standard ISO 4217 &quot;Codes
+                        for the representation of currencies and funds&quot;.</p></td>
+                    <td><p>ActiveOrHistoricCurrencyCode</p></td>
+                    <td><p><br/></p></td>
+                    <td><p>^[A-Z]{3,3}$</p></td>
+                </tr>
+                <tr>
+                    <td><p>DebtorAccount</p></td>
+                    <td><p>0..1</p></td>
+                    <td><p>OBDomestic2/DebtorAccount</p></td>
+                    <td><p>Unambiguous identification of the account of the debtor to which a debit entry will be made
+                        as a result of the transaction.</p></td>
+                    <td><p><span>OBCashAccountDebtor4</span></p></td>
+                    <td><p><br/></p></td>
+                    <td><p><br/></p></td>
+                </tr>
+                <tr>
+                    <td><p>SchemeName</p></td>
+                    <td><p>1..1</p></td>
+                    <td><p>OBDomestic2/DebtorAccount/SchemeName</p></td>
+                    <td><p>Name of the identification scheme, in a coded form as published in an external list.</p></td>
+                    <td><p><span>OBExternalAccountIdentification4Code</span></p></td>
+                    <td><p><br/></p></td>
+                    <td><p><br/></p></td>
+                </tr>
+                <tr>
+                    <td><p>Identification</p></td>
+                    <td><p>1..1</p></td>
+                    <td><p>OBDomestic2/DebtorAccount/Identification</p></td>
+                    <td><p>Identification assigned by an institution to identify an account. This identification is
+                        known by the account owner.</p></td>
+                    <td><p>Max256Text</p></td>
+                    <td><p><br/></p></td>
+                    <td><p><br/></p></td>
+                </tr>
+                <tr>
+                    <td><p>Name</p></td>
+                    <td><p>0..1</p></td>
+                    <td><p>OBDomestic2/DebtorAccount/Name</p></td>
+                    <td><p>The account name is the name or names of the account owner(s) represented at an account
+                        level, as displayed by the ASPSP's online channels.</p>
+                        <p>Note, the account name is not the product name or the nickname of the account.</p></td>
+                    <td><p>Max70Text</p></td>
+                    <td><p><br/></p></td>
+                    <td><p><br/></p></td>
+                </tr>
+                <tr>
+                    <td><p>SecondaryIdentification</p></td>
+                    <td><p>0..1</p></td>
+                    <td><p>OBDomestic2/DebtorAccount/SecondaryIdentification</p></td>
+                    <td><p>This is secondary identification of the account, as assigned by the account servicing
+                        institution.</p>
+                        <p>This can be used by building societies to additionally identify accounts with a roll number
+                            (in addition to a sort code and account number combination).</p></td>
+                    <td><p>Max34Text</p></td>
+                    <td><p><br/></p></td>
+                    <td><p><br/></p></td>
+                </tr>
+                <tr>
+                    <td><p>CreditorAccount</p></td>
+                    <td><p>1..1</p></td>
+                    <td><p>OBDomestic2/CreditorAccount</p></td>
+                    <td><p>Unambiguous identification of the account of the creditor to which a credit entry will be
+                        posted as a result of the payment transaction.</p></td>
+                    <td><p><span>OBCashAccountCreditor3</span></p></td>
+                    <td><p><br/></p></td>
+                    <td><p><br/></p></td>
+                </tr>
+                <tr>
+                    <td><p>SchemeName</p></td>
+                    <td><p>1..1</p></td>
+                    <td><p>OBDomestic2/CreditorAccount/SchemeName</p></td>
+                    <td><p>Name of the identification scheme, in a coded form as published in an external list.</p></td>
+                    <td><p><span>OBExternalAccountIdentification4Code</span></p></td>
+                    <td><p><br/></p></td>
+                    <td><p><br/></p></td>
+                </tr>
+                <tr>
+                    <td><p>Identification</p></td>
+                    <td><p>1..1</p></td>
+                    <td><p>OBDomestic2/CreditorAccount/Identification</p></td>
+                    <td><p>Identification assigned by an institution to identify an account. This identification is
+                        known by the account owner.</p></td>
+                    <td><p>Max256Text</p></td>
+                    <td><p><br/></p></td>
+                    <td><p><br/></p></td>
+                </tr>
+                <tr>
+                    <td><p>Name</p></td>
+                    <td><p>1..1</p></td>
+                    <td><p>OBDomestic2/CreditorAccount/Name</p></td>
+                    <td><p>The account name is the name or names of the account owner(s) represented at an account
+                        level.</p>
+                        <p>Note, the account name is not the product name or the nickname of the account.</p>
+                        <p>OB: ASPSPs may carry out name validation for Confirmation of Payee, but it is not
+                            mandatory.</p></td>
+                    <td><p>Max70Text</p></td>
+                    <td><p><br/></p></td>
+                    <td><p><br/></p></td>
+                </tr>
+                <tr>
+                    <td><p>SecondaryIdentification</p></td>
+                    <td><p>0..1</p></td>
+                    <td><p>OBDomestic2/CreditorAccount/SecondaryIdentification</p></td>
+                    <td><p>This is secondary identification of the account, as assigned by the account servicing
+                        institution.</p>
+                        <p>This can be used by building societies to additionally identify accounts with a roll number
+                            (in addition to a sort code and account number combination).</p></td>
+                    <td><p>Max34Text</p></td>
+                    <td><p><br/></p></td>
+                    <td><p><br/></p></td>
+                </tr>
+                <tr>
+                    <td><p>CreditorPostalAddress</p></td>
+                    <td><p>0..1</p></td>
+                    <td><p>OBDomestic2/CreditorPostalAddress</p></td>
+                    <td><p>Information that locates and identifies a specific address, as defined by postal
+                        services.</p></td>
+                    <td><p>OBPostalAddress6</p></td>
+                    <td><p><br/></p></td>
+                    <td><p><br/></p></td>
+                </tr>
+                <tr>
+                    <td><p>AddressType</p></td>
+                    <td><p>0..1</p></td>
+                    <td><p>OBDomestic2/CreditorPostalAddress/AddressType</p></td>
+                    <td><p>Identifies the nature of the postal address.</p></td>
+                    <td><p>OBAddressTypeCode</p></td>
+                    <td><p>Business</p>
+                        <p>Correspondence</p>
+                        <p>DeliveryTo</p>
+                        <p>MailTo</p>
+                        <p>POBox</p>
+                        <p>Postal</p>
+                        <p>Residential</p>
+                        <p>Statement</p></td>
+                    <td><p><br/></p></td>
+                </tr>
+                <tr>
+                    <td><p>Department</p></td>
+                    <td><p>0..1</p></td>
+                    <td><p>OBDomestic2/CreditorPostalAddress/Department</p></td>
+                    <td><p>Identification of a division of a large organisation or building.</p></td>
+                    <td><p>Max70Text</p></td>
+                    <td><p><br/></p></td>
+                    <td><p><br/></p></td>
+                </tr>
+                <tr>
+                    <td><p>SubDepartment</p></td>
+                    <td><p>0..1</p></td>
+                    <td><p>OBDomestic2/CreditorPostalAddress/SubDepartment</p></td>
+                    <td><p>Identification of a sub-division of a large organisation or building.</p></td>
+                    <td><p>Max70Text</p></td>
+                    <td><p><br/></p></td>
+                    <td><p><br/></p></td>
+                </tr>
+                <tr>
+                    <td><p>StreetName</p></td>
+                    <td><p>0..1</p></td>
+                    <td><p>OBDomestic2/CreditorPostalAddress/StreetName</p></td>
+                    <td><p>Name of a street or thoroughfare.</p></td>
+                    <td><p>Max70Text</p></td>
+                    <td><p><br/></p></td>
+                    <td><p><br/></p></td>
+                </tr>
+                <tr>
+                    <td><p>BuildingNumber</p></td>
+                    <td><p>0..1</p></td>
+                    <td><p>OBDomestic2/CreditorPostalAddress/BuildingNumber</p></td>
+                    <td><p>Number that identifies the position of a building on a street.</p></td>
+                    <td><p>Max16Text</p></td>
+                    <td><p><br/></p></td>
+                    <td><p><br/></p></td>
+                </tr>
+                <tr>
+                    <td><p>PostCode</p></td>
+                    <td><p>0..1</p></td>
+                    <td><p>OBDomestic2/CreditorPostalAddress/PostCode</p></td>
+                    <td><p>Identifier consisting of a group of letters and/or numbers that is added to a postal address
+                        to assist the sorting of mail.</p></td>
+                    <td><p>Max16Text</p></td>
+                    <td><p><br/></p></td>
+                    <td><p><br/></p></td>
+                </tr>
+                <tr>
+                    <td><p>TownName</p></td>
+                    <td><p>0..1</p></td>
+                    <td><p>OBDomestic2/CreditorPostalAddress/TownName</p></td>
+                    <td><p>Name of a built-up area, with defined boundaries, and a local government.</p></td>
+                    <td><p>Max35Text</p></td>
+                    <td><p><br/></p></td>
+                    <td><p><br/></p></td>
+                </tr>
+                <tr>
+                    <td><p>CountrySubDivision</p></td>
+                    <td><p>0..1</p></td>
+                    <td><p>OBDomestic2/CreditorPostalAddress/CountrySubDivision</p></td>
+                    <td><p>Identifies a subdivision of a country such as state, region, county.</p></td>
+                    <td><p>Max35Text</p></td>
+                    <td><p><br/></p></td>
+                    <td><p><br/></p></td>
+                </tr>
+                <tr>
+                    <td><p>Country</p></td>
+                    <td><p>0..1</p></td>
+                    <td><p>OBDomestic2/CreditorPostalAddress/Country</p></td>
+                    <td><p>Nation with its own government.</p></td>
+                    <td><p>CountryCode</p></td>
+                    <td><p><br/></p></td>
+                    <td><p>^[A-Z]{2,2}$</p></td>
+                </tr>
+                <tr>
+                    <td><p>AddressLine</p></td>
+                    <td><p>0..7</p></td>
+                    <td><p>OBDomestic2/CreditorPostalAddress/AddressLine</p></td>
+                    <td><p>Information that locates and identifies a specific address, as defined by postal services,
+                        presented in free format text.</p></td>
+                    <td><p>Max70Text</p></td>
+                    <td><p><br/></p></td>
+                    <td><p><br/></p></td>
+                </tr>
+                <tr>
+                    <td><p>RemittanceInformation</p></td>
+                    <td><p>0..1</p></td>
+                    <td><p>OBDomestic2/RemittanceInformation</p></td>
+                    <td><p>Information supplied to enable the matching of an entry with the items that the transfer is
+                        intended to settle, such as commercial invoices in an accounts' receivable system.</p></td>
+                    <td><p>OBRemittanceInformation1</p></td>
+                    <td><p><br/></p></td>
+                    <td><p><br/></p></td>
+                </tr>
+                <tr>
+                    <td><p>Unstructured</p></td>
+                    <td><p>0..1</p></td>
+                    <td><p>OBDomestic2/RemittanceInformation/Unstructured</p></td>
+                    <td><p>Information supplied to enable the matching/reconciliation of an entry with the items that
+                        the payment is intended to settle, such as commercial invoices in an accounts' receivable
+                        system, in an unstructured form.</p></td>
+                    <td><p>Max140Text</p></td>
+                    <td><p><br/></p></td>
+                    <td><p><br/></p></td>
+                </tr>
+                <tr>
+                    <td><p>Reference</p></td>
+                    <td><p>0..1</p></td>
+                    <td><p>OBDomestic2/RemittanceInformation/Reference</p></td>
+                    <td><p>Unique reference, as assigned by the creditor, to unambiguously refer to the payment
+                        transaction.</p>
+                        <p><br/></p>
+                        <p>Usage: If available, the initiating party should provide this reference in the structured
+                            remittance information, to enable reconciliation by the creditor upon receipt of the amount
+                            of money.</p>
+                        <p><br/></p>
+                        <p>If the business context requires the use of a creditor reference or a payment remit
+                            identification, and only one identifier can be passed through the end-to-end chain, the
+                            creditor's reference or payment remittance identification should be quoted in the end-to-end
+                            transaction identification.</p>
+                        <p>OB: The Faster Payments Scheme can only accept 18 characters for the ReferenceInformation
+                            field - which is where this ISO field will be mapped.</p></td>
+                    <td><p>Max35Text</p></td>
+                    <td><p><br/></p></td>
+                    <td><p><br/></p></td>
+                </tr>
+                <tr>
+                    <td><p>SupplementaryData</p></td>
+                    <td><p>0..1</p></td>
+                    <td><p>OBDomestic2/SupplementaryData</p></td>
+                    <td><p>Additional information that can not be captured in the structured fields and/or any other
+                        specific block.</p></td>
+                    <td><p>OBSupplementaryData1</p></td>
+                    <td><p><br/></p></td>
+                    <td><p><br/></p></td>
+                </tr>
+                </tbody>
+            </table>
+            <h2>Domestic Payment Consent - Request</h2>
+            <p>The&nbsp;OBWriteDomesticConsent3 object will be used for the call to:</p>
+            <ul>
+                <li>POST /domestic-payment-consents</li>
+            </ul>
+            <h3>UML Diagram</h3>
+            <p>
+                <ac:image>
+                    <ri:attachment ri:filename="OBWriteDomesticConsent3.gif" ri:version-at-save="1"/>
+                </ac:image>
+            </p>
+            <h3><strong>Notes</strong></h3>
+            <p>The domestic-payment-consent&nbsp;<strong>request</strong><span>&nbsp;contains these objects:</span></p>
+            <ul>
+                <li>Initiation</li>
+                <li>Authorisation</li>
+                <li>SCASupportData</li>
+                <li>Risk.</li>
+            </ul>
+            <h3>Data Dictionary</h3>
+            <table class="wrapped">
+                <colgroup>
+                    <col/>
+                    <col/>
+                    <col/>
+                    <col/>
+                    <col/>
+                    <col/>
+                    <col/>
+                </colgroup>
+                <tbody>
+                <tr>
+                    <th>Name</th>
+                    <th>Occurrence</th>
+                    <th>XPath</th>
+                    <th>EnhancedDefinition</th>
+                    <th>Class</th>
+                    <th>Codes</th>
+                    <th>Pattern</th>
+                </tr>
+                <tr>
+                    <td colspan="1">OBWriteDomesticConsent3</td>
+                    <td colspan="1">OBWriteDomesticConsent3</td>
+                    <td colspan="1"><br/></td>
+                    <td colspan="1"><br/></td>
+                    <td colspan="1">OBWriteDomesticConsent3</td>
+                    <td colspan="1"><br/></td>
+                    <td colspan="1"><br/></td>
+                </tr>
+                <tr>
+                    <td>Data</td>
+                    <td>1..1</td>
+                    <td>OBWriteDomesticConsent3/Data</td>
+                    <td><br/></td>
+                    <td>OBWriteDataDomesticConsent3</td>
+                    <td><br/></td>
+                    <td><br/></td>
+                </tr>
+                <tr>
+                    <td>Initiation</td>
+                    <td>1..1</td>
+                    <td>OBWriteDomesticConsent3/Data/Initiation</td>
+                    <td>The Initiation payload is sent by the initiating party to the ASPSP. It is used to request
+                        movement of funds from the debtor account to a creditor for a single domestic payment.
+                    </td>
+                    <td>OBDomestic2</td>
+                    <td><br/></td>
+                    <td><br/></td>
+                </tr>
+                <tr>
+                    <td>Authorisation</td>
+                    <td>0..1</td>
+                    <td>OBWriteDomesticConsent3/Data/Authorisation</td>
+                    <td>The authorisation type request from the TPP.</td>
+                    <td>OBAuthorisation1</td>
+                    <td><br/></td>
+                    <td><br/></td>
+                </tr>
+                <tr>
+                    <td colspan="1">SCASupportData</td>
+                    <td colspan="1">0..1</td>
+                    <td colspan="1">OBWriteDomesticConsent3/Data/SCASupportData</td>
+                    <td colspan="1">Supporting Data provided by TPP, when requesting SCA Exemption.</td>
+                    <td colspan="1">OBSCASupportData1</td>
+                    <td colspan="1"><br/></td>
+                    <td colspan="1"><br/></td>
+                </tr>
+                </tbody>
+            </table>
+            <h2>Domestic Payment Consent&nbsp;-&nbsp;<span>Response</span></h2>
+            <p>The&nbsp;OBWriteDomesticConsentResponse3 object will be used for a response to a call to:</p>
+            <ul>
+                <li>POST /domestic-payment-consents</li>
+                <li>GET /domestic-payment-consents/{ConsentId}</li>
+            </ul>
+            <h3>UML Diagram</h3>
+            <p>
+                <ac:image>
+                    <ri:attachment ri:filename="OBWriteDomesticConsentResponse3.gif" ri:version-at-save="1"/>
+                </ac:image>
+            </p>
+            <h3><strong>Notes</strong></h3>
+            <p>The
+                domestic-payment-consent&nbsp;<strong>response</strong><span>&nbsp;contains the full</span>&nbsp;<strong>original</strong>
+                payload from the&nbsp;domestic-payment-consent&nbsp;<strong>request,</strong>&nbsp;with the additional
+                elements below:</p>
+            <ul>
+                <li>ConsentId.</li>
+                <li>CreationDateTime the&nbsp;domestic-payment-consent resource was created.</li>
+                <li>Status and StatusUpdateDateTime of the&nbsp;domestic-payment-consent resource.</li>
+                <li>CutOffDateTime Behaviour is explained in Payment Initiation API Specification, Section - Payment
+                    Restrictions -&gt; CutOffDateTime API Behaviour.
+                </li>
+                <li>ExpectedExecutionDateTime for the&nbsp;<span style="color: rgb(0,0,0);"><span
+                        style="color: rgb(0,0,0);"><span style="color: rgb(0,0,0);">domestic<span
+                        style="color: rgb(0,0,0);"><span style="color: rgb(0,0,0);"><span style="color: rgb(0,0,0);">-payment</span></span></span></span></span></span>
+                    resource if created before CutOffDateTIme - the expected DateTime the payment is executed against
+                    the Debtor Account.&nbsp;If populated, the ASPSP must update the value with any changes (e.g., after
+                    PSU authorisation).
+                </li>
+                <li>ExpectedSettlementDateTime for the&nbsp;<span style="color: rgb(0,0,0);"><span
+                        style="color: rgb(0,0,0);"><span style="color: rgb(0,0,0);">domestic<span
+                        style="color: rgb(0,0,0);"><span style="color: rgb(0,0,0);"><span style="color: rgb(0,0,0);">-payment</span></span></span></span></span></span>
+                    resource if created before CutOffDateTIme - the expected DateTime the payment will be received&nbsp;at
+                    the Creditor Account.&nbsp;If populated, the ASPSP must update the value with any changes (e.g.,
+                    after PSU authorisation).
+                </li>
+                <li>Charges array for the breakdown of applicable ASPSP charges.</li>
+            </ul>
+            <h3>Data Dictionary</h3>
+            <table class="wrapped">
+                <colgroup>
+                    <col style="width: 205.0px;"/>
+                    <col style="width: 100.0px;"/>
+                    <col style="width: 205.0px;"/>
+                    <col style="width: 154.0px;"/>
+                    <col style="width: 205.0px;"/>
+                    <col style="width: 65.0px;"/>
+                    <col style="width: 70.0px;"/>
+                </colgroup>
+                <tbody>
+                <tr>
+                    <th>Name</th>
+                    <th>Occurrence</th>
+                    <th>XPath</th>
+                    <th>EnhancedDefinition</th>
+                    <th>Class</th>
+                    <th>Codes</th>
+                    <th>Pattern</th>
+                </tr>
+                <tr>
+                    <td colspan="1">OBWriteDomesticConsentResponse3</td>
+                    <td colspan="1"><br/></td>
+                    <td colspan="1">OBWriteDomesticConsentResponse3</td>
+                    <td colspan="1"><br/></td>
+                    <td colspan="1">OBWriteDomesticConsentResponse3</td>
+                    <td colspan="1"><br/></td>
+                    <td colspan="1"><br/></td>
+                </tr>
+                <tr>
+                    <td>Data</td>
+                    <td>1..1</td>
+                    <td>OBWriteDomesticConsentResponse3/Data</td>
+                    <td><br/></td>
+                    <td>OBWriteDataDomesticConsentResponse3</td>
+                    <td><br/></td>
+                    <td><br/></td>
+                </tr>
+                <tr>
+                    <td>ConsentId</td>
+                    <td>1..1</td>
+                    <td>OBWriteDomesticConsentResponse3/Data/ConsentId</td>
+                    <td>OB: Unique identification as assigned by the ASPSP to uniquely identify the consent resource.
+                    </td>
+                    <td>Max128Text</td>
+                    <td><br/></td>
+                    <td><br/></td>
+                </tr>
+                <tr>
+                    <td>CreationDateTime</td>
+                    <td>1..1</td>
+                    <td>OBWriteDomesticConsentResponse3/Data/CreationDateTime</td>
+                    <td>Date and time at which the resource was created.</td>
+                    <td>ISODateTime</td>
+                    <td><br/></td>
+                    <td><br/></td>
+                </tr>
+                <tr>
+                    <td>Status</td>
+                    <td>1..1</td>
+                    <td>OBWriteDomesticConsentResponse3/Data/Status</td>
+                    <td>Specifies the status of consent resource in code form.</td>
+                    <td>OBExternalConsentStatus1Code</td>
+                    <td>Authorised<br/>AwaitingAuthorisation<br/>Consumed<br/>Rejected</td>
+                    <td><br/></td>
+                </tr>
+                <tr>
+                    <td>StatusUpdateDateTime</td>
+                    <td>1..1</td>
+                    <td>OBWriteDomesticConsentResponse3/Data/StatusUpdateDateTime</td>
+                    <td>Date and time at which the resource status was updated.</td>
+                    <td>ISODateTime</td>
+                    <td><br/></td>
+                    <td><br/></td>
+                </tr>
+                <tr>
+                    <td>CutOffDateTime</td>
+                    <td>0..1</td>
+                    <td>OBWriteDomesticConsentResponse3/Data/CutOffDateTime</td>
+                    <td>Specified cut-off date and time for the payment consent.</td>
+                    <td>ISODateTime</td>
+                    <td><br/></td>
+                    <td><br/></td>
+                </tr>
+                <tr>
+                    <td>ExpectedExecutionDateTime</td>
+                    <td>0..1</td>
+                    <td>OBWriteDomesticConsentResponse3/Data/ExpectedExecutionDateTime</td>
+                    <td>Expected execution date and time for the payment resource.</td>
+                    <td>ISODateTime</td>
+                    <td><br/></td>
+                    <td><br/></td>
+                </tr>
+                <tr>
+                    <td>ExpectedSettlementDateTime</td>
+                    <td>0..1</td>
+                    <td>OBWriteDomesticConsentResponse3/Data/ExpectedSettlementDateTime</td>
+                    <td>Expected settlement date and time for the payment resource.</td>
+                    <td>ISODateTime</td>
+                    <td><br/></td>
+                    <td><br/></td>
+                </tr>
+                <tr>
+                    <td>Charges</td>
+                    <td>0..n</td>
+                    <td>OBWriteDomesticConsentResponse3/Data/Charges</td>
+                    <td>Set of elements used to provide details of a charge for the payment initiation.</td>
+                    <td>OBCharge2</td>
+                    <td><br/></td>
+                    <td><br/></td>
+                </tr>
+                <tr>
+                    <td>Initiation</td>
+                    <td>1..1</td>
+                    <td>OBWriteDomesticConsentResponse3/Data/Initiation</td>
+                    <td>The Initiation payload is sent by the initiating party to the ASPSP. It is used to request
+                        movement of funds from the debtor account to a creditor for a single domestic payment.
+                    </td>
+                    <td>OBDomestic2</td>
+                    <td><br/></td>
+                    <td><br/></td>
+                </tr>
+                <tr>
+                    <td>Authorisation</td>
+                    <td>0..1</td>
+                    <td>OBWriteDomesticConsentResponse3/Data/Authorisation</td>
+                    <td>The authorisation type request from the TPP.</td>
+                    <td>OBAuthorisation1</td>
+                    <td><br/></td>
+                    <td><br/></td>
+                </tr>
+                <tr>
+                    <td colspan="1">SCASupportData</td>
+                    <td colspan="1">0..1</td>
+                    <td colspan="1">OBWriteDomesticConsentResponse3/Data/SCASupportData</td>
+                    <td colspan="1">Supporting Data provided by TPP, when requesting SCA Exemption.</td>
+                    <td colspan="1">OBSCASupportData1</td>
+                    <td colspan="1"><br/></td>
+                    <td colspan="1"><br/></td>
+                </tr>
+                <tr>
+                    <td>Risk</td>
+                    <td>1..1</td>
+                    <td>OBWriteDomesticConsentResponse3/Risk</td>
+                    <td>The Risk section is sent by the initiating party to the ASPSP. It is used to specify additional
+                        details for risk scoring for Payments.
+                    </td>
+                    <td>OBRisk1</td>
+                    <td><br/></td>
+                    <td><br/></td>
+                </tr>
+                </tbody>
+            </table>
+            <h2>Domestic Payment Consent Confirmation of Funds -&nbsp;<span>Response</span></h2>
+            <p>The&nbsp;OBWriteFundsConfirmationResponse1 object will be used for a response to a call to:</p>
+            <ul>
+                <li>GET&nbsp;/domestic-payment-consents/{ConsentId}/funds-confirmation</li>
+            </ul>
+            <h3>UML Diagram</h3>
+            <p>
+                <ac:image>
+                    <ri:attachment ri:filename="OBWriteConfirmFundsResponse1.gif" ri:version-at-save="1"/>
+                </ac:image>
+            </p>
+            <h3><strong>Notes</strong></h3>
+            <p>The confirmation of funds&nbsp;response<span>&nbsp;contains the result of a funds availability&nbsp;check, or SupplementaryData.</span>
+            </p>
+            <h3>Data Dictionary</h3>
+            <table class="wrapped">
+                <colgroup>
+                    <col style="width: 205.0px;"/>
+                    <col style="width: 100.0px;"/>
+                    <col style="width: 205.0px;"/>
+                    <col style="width: 154.0px;"/>
+                    <col style="width: 205.0px;"/>
+                    <col style="width: 65.0px;"/>
+                    <col style="width: 70.0px;"/>
+                </colgroup>
+                <tbody>
+                <tr>
+                    <th>Name</th>
+                    <th>Occurrence</th>
+                    <th>XPath</th>
+                    <th>EnhancedDefinition</th>
+                    <th>Class</th>
+                    <th>Codes</th>
+                    <th>Pattern</th>
+                </tr>
+                <tr>
+                    <td colspan="1">OBWriteFundsConfirmationResponse1</td>
+                    <td colspan="1"><br/></td>
+                    <td colspan="1">OBWriteFundsConfirmationResponse1</td>
+                    <td colspan="1"><br/></td>
+                    <td colspan="1">OBWriteFundsConfirmationResponse1</td>
+                    <td colspan="1"><br/></td>
+                    <td colspan="1"><br/></td>
+                </tr>
+                <tr>
+                    <td>Data</td>
+                    <td>1..1</td>
+                    <td>OBWriteFundsConfirmationResponse1/Data</td>
+                    <td><br/></td>
+                    <td>OBWriteDataFundsConfirmationResponse1</td>
+                    <td><br/></td>
+                    <td><br/></td>
+                </tr>
+                <tr>
+                    <td colspan="1">FundsAvailableResult</td>
+                    <td colspan="1">0..1</td>
+                    <td colspan="1">OBWriteFundsConfirmationResponse1/Data/FundsAvailableResult</td>
+                    <td colspan="1">Result of a funds availability check.</td>
+                    <td colspan="1">OBFundsAvailableResult1</td>
+                    <td colspan="1"><br/></td>
+                    <td colspan="1"><br/></td>
+                </tr>
+                <tr>
+                    <td>FundsAvailableDateTime</td>
+                    <td>1..1</td>
+                    <td>OBWriteFundsConfirmationResponse1/Data/FundsAvailableResult/FundsAvailableDateTime</td>
+                    <td>Date and time at which the funds availability check was generated.</td>
+                    <td>ISODateTime</td>
+                    <td><br/></td>
+                    <td><br/></td>
+                </tr>
+                <tr>
+                    <td>FundsAvailable</td>
+                    <td>1..1</td>
+                    <td>OBWriteFundsConfirmationResponse1/Data/FundsAvailableResult/FundsAvailable</td>
+                    <td>Flag to indicate the availability of funds given the Amount in the consent request.</td>
+                    <td>xs:boolean</td>
+                    <td><br/></td>
+                    <td><br/></td>
+                </tr>
+                <tr>
+                    <td colspan="1">SupplementaryData</td>
+                    <td colspan="1">0..1</td>
+                    <td colspan="1">OBWriteFundsConfirmationResponse1/Data/SupplementaryData</td>
+                    <td colspan="1">Additional information that can not be captured in the structured fields and/or any
+                        other specific block.
+                    </td>
+                    <td colspan="1">OBSupplementaryData1</td>
+                    <td colspan="1"><br/></td>
+                    <td colspan="1"><br/></td>
+                </tr>
+                </tbody>
+            </table>
+            <h2>Domestic Payment&nbsp;-&nbsp;Request</h2>
+            <p>The&nbsp;OBWriteDomestic2 object will be used for a call to:</p>
+            <ul>
+                <li>POST /domestic-payments</li>
+            </ul>
+            <h3>UML Diagram</h3>
+            <p>
+                <ac:image ac:width="900">
+                    <ri:attachment ri:filename="OBWriteDomestic2.gif" ri:version-at-save="1"/>
+                </ac:image>
+            </p>
+            <h3><strong>Notes</strong></h3>
+            <p>The domestic-payment <strong>request</strong> object contains the:&nbsp;</p>
+            <ul>
+                <li>ConsentId.</li>
+                <li><span style="color: rgb(0,0,0);">The full Initiation and Risk objects from the domestic-payment-consent<span
+                        style="color: rgb(0,0,0);"><span style="color: rgb(0,0,0);">&nbsp;request.</span></span></span>
+                </li>
+            </ul>
+            <p><span style="color: rgb(0,0,0);"><span style="color: rgb(112,112,112);"><span style="color: rgb(0,0,0);">The&nbsp;<strong>Initiation </strong>and<strong> Risk</strong>&nbsp;sections of the&nbsp;<span
+                    style="color: rgb(0,0,0);">domestic-payment</span> request <strong>must</strong>&nbsp;match the&nbsp;<strong>Initiation </strong>and<strong> Risk&nbsp;</strong>sections of the corresponding&nbsp;<span
+                    style="color: rgb(0,0,0);">domestic-payment-consent</span> request.</span></span></span></p>
+            <h3>Data Dictionary</h3>
+            <table class="wrapped">
+                <colgroup>
+                    <col/>
+                    <col/>
+                    <col/>
+                    <col/>
+                    <col/>
+                    <col/>
+                    <col/>
+                </colgroup>
+                <tbody>
+                <tr>
+                    <th>Name</th>
+                    <th>Occurrence</th>
+                    <th>XPath</th>
+                    <th>EnhancedDefinition</th>
+                    <th>Class</th>
+                    <th>Codes</th>
+                    <th>Pattern</th>
+                </tr>
+                <tr>
+                    <td colspan="1">OBWriteDomestic2</td>
+                    <td colspan="1"><br/></td>
+                    <td colspan="1">OBWriteDomestic2</td>
+                    <td colspan="1"><br/></td>
+                    <td colspan="1">OBWriteDomestic2</td>
+                    <td colspan="1"><br/></td>
+                    <td colspan="1"><br/></td>
+                </tr>
+                <tr>
+                    <td>Data</td>
+                    <td>1..1</td>
+                    <td>OBWriteDomestic2/Data</td>
+                    <td><br/></td>
+                    <td>OBWriteDataDomestic2</td>
+                    <td><br/></td>
+                    <td><br/></td>
+                </tr>
+                <tr>
+                    <td>ConsentId</td>
+                    <td>1..1</td>
+                    <td>OBWriteDomestic2/Data/ConsentId</td>
+                    <td>OB: Unique identification as assigned by the ASPSP to uniquely identify the consent resource.
+                    </td>
+                    <td>Max128Text</td>
+                    <td><br/></td>
+                    <td><br/></td>
+                </tr>
+                <tr>
+                    <td>Initiation</td>
+                    <td>1..1</td>
+                    <td>OBWriteDomestic2/Data/Initiation</td>
+                    <td>The Initiation payload is sent by the initiating party to the ASPSP. It is used to request
+                        movement of funds from the debtor account to a creditor for a single domestic payment.
+                    </td>
+                    <td>OBDomestic2</td>
+                    <td><br/></td>
+                    <td><br/></td>
+                </tr>
+                <tr>
+                    <td>Risk</td>
+                    <td>1..1</td>
+                    <td>OBWriteDomestic2/Risk</td>
+                    <td>The Risk section is sent by the initiating party to the ASPSP. It is used to specify additional
+                        details for risk scoring for Payments.
+                    </td>
+                    <td>OBRisk1</td>
+                    <td><br/></td>
+                    <td><br/></td>
+                </tr>
+                </tbody>
+            </table>
+            <h2>Domestic Payment&nbsp;-&nbsp;Response</h2>
+            <p>The&nbsp;OBWriteDomesticResponse2 object will be used for a response to a call to:</p>
+            <ul>
+                <li>POST /domestic-payments</li>
+                <li>GET /domestic-payments/{DomesticPaymentId}</li>
+            </ul>
+            <h3>UML Diagram</h3>
+            <p>
+                <ac:image>
+                    <ri:attachment ri:filename="OBWriteDataDomesticResponse3.png" ri:version-at-save="1"/>
+                </ac:image>
+            </p>
+            <h3><strong>Notes</strong></h3>
+            <p>The domestic-payment&nbsp;<strong>response</strong>&nbsp;object contains the:&nbsp;</p>
+            <ul>
+                <li>DomesticPaymentId.</li>
+                <li>ConsentId.</li>
+                <li>CreationDateTime the&nbsp;domestic-payment resource was created.</li>
+                <li>Status and StatusUpdateDateTime of the&nbsp;domestic-payment resource.</li>
+                <li>ExpectedExecutionDateTime for the&nbsp;<span style="color: rgb(0,0,0);"><span
+                        style="color: rgb(0,0,0);"><span style="color: rgb(0,0,0);">domestic<span
+                        style="color: rgb(0,0,0);"><span style="color: rgb(0,0,0);"><span style="color: rgb(0,0,0);">-payment</span></span></span></span></span></span>
+                    resource.
+                </li>
+                <li>ExpectedSettlementDateTime for the&nbsp;<span style="color: rgb(0,0,0);"><span
+                        style="color: rgb(0,0,0);"><span style="color: rgb(0,0,0);">domestic<span
+                        style="color: rgb(0,0,0);"><span style="color: rgb(0,0,0);"><span style="color: rgb(0,0,0);">-payment</span></span></span></span></span></span>
+                    resource.
+                </li>
+                <li>Charges array for the breakdown of applicable ASPSP charges.</li>
+                <li><span style="color: rgb(0,0,0);"><span style="color: rgb(0,0,0);"><span style="color: rgb(0,0,0);">The Initiation object from the domestic<span
+                        style="color: rgb(0,0,0);"><span style="color: rgb(0,0,0);"><span style="color: rgb(0,0,0);">-payment-consent.</span></span></span></span></span></span>
+                </li>
+                <li><span style="color: rgb(0,0,0);"><span style="color: rgb(0,0,0);"><span
+                        style="color: rgb(0,0,0);"><span style="color: rgb(0,0,0);"><span
+                        style="color: rgb(0,0,0);"><span style="color: rgb(0,0,0);">The MultiAuthorisation object if the&nbsp;<span
+                        style="color: rgb(0,0,0);"><span style="color: rgb(0,0,0);"><span style="color: rgb(0,0,0);">domestic<span
+                        style="color: rgb(0,0,0);"><span style="color: rgb(0,0,0);"><span style="color: rgb(0,0,0);">-payment</span></span></span></span></span></span> resource requires multiple authorisations.</span></span></span></span></span></span>
+                </li>
+            </ul>
+            <h3>Data Dictionary</h3>
+            <table class="wrapped relative-table" style="width: 100.0%;">
+                <colgroup>
+                    <col style="width: 12.973%;"/>
+                    <col style="width: 12.973%;"/>
+                    <col style="width: 31.0811%;"/>
+                    <col style="width: 12.973%;"/>
+                    <col style="width: 14.5946%;"/>
+                    <col style="width: 11.6216%;"/>
+                    <col style="width: 3.78378%;"/>
+                </colgroup>
+                <tbody>
+                <tr>
+                    <th>Name</th>
+                    <th>Occurrence</th>
+                    <th>XPath</th>
+                    <th>EnhancedDefinition</th>
+                    <th>Class</th>
+                    <th>Codes</th>
+                    <th>Pattern</th>
+                </tr>
+                <tr>
+                    <td colspan="1">OBWriteDomesticResponse3</td>
+                    <td colspan="1"><br/></td>
+                    <td colspan="1">OBWriteDomesticResponse3</td>
+                    <td colspan="1"><br/></td>
+                    <td colspan="1">OBWriteDomesticResponse3</td>
+                    <td colspan="1"><br/></td>
+                    <td colspan="1"><br/></td>
+                </tr>
+                <tr>
+                    <td>Data</td>
+                    <td>1..1</td>
+                    <td>OBWriteDomesticResponse3/Data</td>
+                    <td><br/></td>
+                    <td>OBWriteDataDomesticResponse3</td>
+                    <td><br/></td>
+                    <td><br/></td>
+                </tr>
+                <tr>
+                    <td>DomesticPaymentId</td>
+                    <td>1..1</td>
+                    <td>OBWriteDomesticResponse3/Data/DomesticPaymentId</td>
+                    <td>OB: Unique identification as assigned by the ASPSP to uniquely identify the domestic payment
+                        resource.
+                    </td>
+                    <td>Max40Text</td>
+                    <td><br/></td>
+                    <td><br/></td>
+                </tr>
+                <tr>
+                    <td>ConsentId</td>
+                    <td>1..1</td>
+                    <td>OBWriteDomesticResponse3/Data/ConsentId</td>
+                    <td>OB: Unique identification as assigned by the ASPSP to uniquely identify the consent resource.
+                    </td>
+                    <td>Max128Text</td>
+                    <td><br/></td>
+                    <td><br/></td>
+                </tr>
+                <tr>
+                    <td>CreationDateTime</td>
+                    <td>1..1</td>
+                    <td>OBWriteDomesticResponse3/Data/CreationDateTime</td>
+                    <td>Date and time at which the message was created.</td>
+                    <td>ISODateTime</td>
+                    <td><br/></td>
+                    <td><br/></td>
+                </tr>
+                <tr>
+                    <td>Status</td>
+                    <td>1..1</td>
+                    <td>OBWriteDomesticResponse3/Data/Status</td>
+                    <td>Specifies the status of the payment information group.</td>
+                    <td>OBTransactionIndividualStatus1Code</td>
+                    <td><p>AcceptedCreditSettlementCompleted</p>
+                        <p>AcceptedWithoutPosting</p>
+                        <p>AcceptedSettlementCompleted<br/>AcceptedSettlementInProcess<br/>Pending<br/>Rejected</p></td>
+                    <td><br/></td>
+                </tr>
+                <tr>
+                    <td>StatusUpdateDateTime</td>
+                    <td>1..1</td>
+                    <td>OBWriteDomesticResponse3/Data/StatusUpdateDateTime</td>
+                    <td>Date and time at which the resource status was updated.</td>
+                    <td>ISODateTime</td>
+                    <td><br/></td>
+                    <td><br/></td>
+                </tr>
+                <tr>
+                    <td>ExpectedExecutionDateTime</td>
+                    <td>0..1</td>
+                    <td>OBWriteDomesticResponse3/Data/ExpectedExecutionDateTime</td>
+                    <td>Expected execution date and time for the payment resource.</td>
+                    <td>ISODateTime</td>
+                    <td><br/></td>
+                    <td><br/></td>
+                </tr>
+                <tr>
+                    <td>ExpectedSettlementDateTime</td>
+                    <td>0..1</td>
+                    <td>OBWriteDomesticResponse3/Data/ExpectedSettlementDateTime</td>
+                    <td>Expected settlement date and time for the payment resource.</td>
+                    <td>ISODateTime</td>
+                    <td><br/></td>
+                    <td><br/></td>
+                </tr>
+                <tr>
+                    <td>Charges</td>
+                    <td>0..n</td>
+                    <td>OBWriteDomesticResponse3/Data/Charges</td>
+                    <td>Set of elements used to provide details of a charge for the payment initiation.</td>
+                    <td>OBCharge2</td>
+                    <td><br/></td>
+                    <td><br/></td>
+                </tr>
+                <tr>
+                    <td>Initiation</td>
+                    <td>1..1</td>
+                    <td>OBWriteDomesticResponse3/Data/Initiation</td>
+                    <td>The Initiation payload is sent by the initiating party to the ASPSP. It is used to request
+                        movement of funds from the debtor account to a creditor for a single domestic payment.
+                    </td>
+                    <td>OBDomestic2</td>
+                    <td><br/></td>
+                    <td><br/></td>
+                </tr>
+                <tr>
+                    <td>MultiAuthorisation</td>
+                    <td>0..1</td>
+                    <td>OBWriteDomesticResponse3/Data/MultiAuthorisation</td>
+                    <td>The multiple authorisation flow response from the ASPSP.</td>
+                    <td>OBMultiAuthorisation1</td>
+                    <td><br/></td>
+                    <td><br/></td>
+                </tr>
+                </tbody>
+            </table>
+            <h2>Domestic Payment Order - Payment Details -&nbsp;<span>Response</span></h2>
+            <p>The&nbsp;OBWritePaymentDetailsResponse1&nbsp;object will be used for a response to a call to:</p>
+            <ul>
+                <li><span>GET /<span>domestic-payments</span>/{DomesticPaymentId}/payment-details</span></li>
+            </ul>
+            <h3>UML Diagram</h3>
+            <p>
+                <ac:image>
+                    <ri:attachment ri:filename="OBWritePaymentDetailsResponse1.png" ri:version-at-save="1"/>
+                </ac:image>
+            </p>
+            <h3>Data Dictionary</h3>
+            <table class="wrapped">
+                <colgroup>
+                    <col style="width: 205.0px;"/>
+                    <col style="width: 100.0px;"/>
+                    <col style="width: 205.0px;"/>
+                    <col style="width: 154.0px;"/>
+                    <col style="width: 205.0px;"/>
+                    <col style="width: 65.0px;"/>
+                    <col style="width: 70.0px;"/>
+                </colgroup>
+                <tbody>
+                <tr>
+                    <th>Name</th>
+                    <th>Occurrence</th>
+                    <th>XPath</th>
+                    <th>EnhancedDefinition</th>
+                    <th>Class</th>
+                    <th>Codes</th>
+                    <th>Pattern</th>
+                </tr>
+                <tr>
+                    <td colspan="1">OBWritePaymentDetailsResponse1</td>
+                    <td colspan="1"><br/></td>
+                    <td colspan="1">OBWritePaymentDetailsResponse1</td>
+                    <td colspan="1"><br/></td>
+                    <td colspan="1">OBWritePaymentDetailsResponse1</td>
+                    <td colspan="1"><br/></td>
+                    <td colspan="1"><br/></td>
+                </tr>
+                <tr>
+                    <td>Data</td>
+                    <td>1..1</td>
+                    <td>OBWritePaymentDetailsResponse1/Data</td>
+                    <td><br/></td>
+                    <td>OBWriteDataPaymentOrderStatusResponse1</td>
+                    <td><br/></td>
+                    <td><br/></td>
+                </tr>
+                <tr>
+                    <td colspan="1">PaymentStatus</td>
+                    <td colspan="1">0..unbounded</td>
+                    <td colspan="1">OBWritePaymentDetailsResponse1/Data/PaymentStatus</td>
+                    <td colspan="1">Payment status details.</td>
+                    <td colspan="1">OBWritePaymentDetails1</td>
+                    <td colspan="1"><br/></td>
+                    <td colspan="1"><br/></td>
+                </tr>
+                </tbody>
+            </table>
+            <h1>Usage Examples</h1></ac:layout-cell>
+    </ac:layout-section>
+    <ac:layout-section ac:type="single">
+        <ac:layout-cell><h2>Merchant Initiation via PISP</h2>
+            <p>This example set of flows and payload examples are for a domestic payment initiated by a merchant via a
+                PISP.</p>
+            <p>In this scenario:</p>
+            <ul>
+                <li>The merchant has <strong>not&nbsp;</strong>specified the Debtor Account details for the PSU. The&nbsp;PSU
+                    will select their account during the authorisation of consent.
+                </li>
+                <li>The merchant's account is a building society account with a roll number specified in the
+                    SecondaryIdentification field.
+                </li>
+            </ul>
+            <h3>Sequence Diagram</h3>
+            <p>
+                <ac:image>
+                    <ri:url ri:value="https://openbanking.atlassian.net/wiki/download/thumbnails/352190840/MerchantDomesticPaymentUsageExample-3.png?version=1&amp;modificationDate=1528363757177&amp;cacheVersion=1&amp;api=v2&amp;width=1000"/>
+                </ac:image>
+            </p>
+            <p><br/></p>
+            <ac:structured-macro ac:name="code" ac:schema-version="1"
+                                 ac:macro-id="b4680fc1-ace8-469d-b547-21aa00f0b1e1">
+                <ac:parameter ac:name="title">Usage Examples - Merchant</ac:parameter>
+                <ac:parameter ac:name="collapse">true</ac:parameter>
+                <ac:plain-text-body><![CDATA[participant PSU
+                    participant Merchant
+                    participant PISP
+                    participant ASPSP Authorisation Server
+                    participant ASPSP Resource Server
+
+                    note over PSU, ASPSP Resource Server
+                    Step 1: Agree Domestic Payment-Order Initiation
+                    end note
+                    PSU -> Merchant: Check-out and pay
+                    Merchant -> PISP: Send request to setup domestic payment consent
+
+                    note over PSU, ASPSP Resource Server
+                    Step 2: Setup Domestic Payment-Order Consent
+                    end note
+                    PISP <-> ASPSP Authorisation Server: Establish TLS 1.2 MA
+                    PISP -> ASPSP Authorisation Server: Initiate Client Credentials Grant
+                    ASPSP Authorisation Server -> PISP: access-token
+                    PISP <-> ASPSP Resource Server: Establish TLS 1.2 MA
+                    PISP -> ASPSP Resource Server: POST /domestic-payment-consents
+                    ASPSP Resource Server -> PISP: HTTP 201 (Created), ConsentId
+                    PISP -> Merchant: HTTP 302 (Found), Redirect (ConsentId)
+                    Merchant -> PSU: HTTP 302 (Found), Redirect (ConsentId)
+
+                    note over PSU, ASPSP Resource Server
+                    Step 3: Authorize consent
+                    end note
+                    PSU -> ASPSP Authorisation Server: Follow redirect (ConsentId)
+                    PSU <-> ASPSP Authorisation Server: authenticate
+                    PSU <-> ASPSP Authorisation Server: SCA if required
+                    PSU <-> ASPSP Authorisation Server: Select debtor account
+                    ASPSP Authorisation Server -> PSU: HTTP 302 (Found), Redirect (authorization-code)
+                    PSU -> PISP: Follow redirect (authorization-code)
+                    PISP <-> ASPSP Authorisation Server: Establish TLS 1.2 MA
+                    PISP -> ASPSP Authorisation Server: Exchange authorization-code for access token
+                    ASPSP Authorisation Server -> PISP: access-token
+                    PISP -> PSU: HTTP 302 (Found), Redirect back to merchant
+                    PSU -> Merchant: Follow redirect
+
+                    note over PSU, ASPSP Resource Server
+                    Step 4: Create Domestic Payment-Order
+                    end note
+                    PISP <-> ASPSP Resource Server: Establish TLS 1.2 MA
+                    PISP -> ASPSP Resource Server: POST /domestic-payments
+                    ASPSP Resource Server -> PISP: HTTP 201 (Created), DomesticPaymentId
+
+                    note over PSU, ASPSP Resource Server
+                    Step 5: Get Domestic Payment-Order status
+                    end note
+                    opt
+                    Merchant -> PISP: Check payment status
+                    PISP <-> ASPSP Resource Server: Establish TLS 1.2 MA
+                    PISP -> ASPSP Resource Server: GET /domestic-payments/{DomesticPaymentId}
+                    ASPSP Resource Server -> PISP: HTTP 200 (OK), domestic-payments resource
+                    PISP -> Merchant: HTTP 200 (OK), Return domestic-payments Status
+
+                    end opt
+
+                    ]]>
+                </ac:plain-text-body>
+            </ac:structured-macro>
+            <h3>Illustrative Interactions</h3>
+            <p>Notes:</p>
+            <ul>
+                <li>As per the Security &amp; Access Control section, examples are given where the call to GET <strong>must</strong>&nbsp;use
+                    a client credentials grant to obtain a token to make GET requests.
+                </li>
+            </ul>
+        </ac:layout-cell>
+    </ac:layout-section>
+    <ac:layout-section ac:type="single">
+        <ac:layout-cell><h4>Create Domestic Payment Order Consent</h4></ac:layout-cell>
+    </ac:layout-section>
+    <ac:layout-section ac:type="two_equal">
+        <ac:layout-cell><p class="auto-cursor-target"><strong>POST /domestic-payment-consents request</strong></p>
+            <ac:structured-macro ac:name="code" ac:schema-version="1"
+                                 ac:macro-id="d38134cb-fc01-4b05-8cd8-45cc2f1ff2a0">
+                <ac:parameter ac:name="language">js</ac:parameter>
+                <ac:parameter ac:name="theme">Midnight</ac:parameter>
+                <ac:parameter ac:name="title">Payment Order Consent Request Payload</ac:parameter>
+                <ac:parameter ac:name="linenumbers">true</ac:parameter>
+                <ac:plain-text-body><![CDATA[POST /domestic-payment-consents HTTP/1.1
+                    Authorization: Bearer 2YotnFZFEjr1zCsicMWpAA
+                    x-idempotency-key: FRESCO.21302.GFX.20
+                    x-jws-signature:
+                    TGlmZSdzIGEgam91cm5leSBub3QgYSBkZXN0aW5hdGlvbiA=..T2ggZ29vZCBldmVuaW5nIG1yIHR5bGVyIGdvaW5nIGRvd24gPw==
+                    x-fapi-auth-date: Sun, 10 Sep 2017 19:43:31 GMT
+                    x-fapi-customer-ip-address: 104.25.212.99
+                    x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
+                    Content-Type: application/json
+                    Accept: application/json
+
+                    {
+                    "Data": {
+                    "Initiation": {
+                    "InstructionIdentification": "ACME412",
+                    "EndToEndIdentification": "FRESCO.21302.GFX.20",
+                    "InstructedAmount": {
+                    "Amount": "165.88",
+                    "Currency": "GBP"
+                    },
+                    "CreditorAccount": {
+                    "SchemeName": "UK.OBIE.SortCodeAccountNumber",
+                    "Identification": "08080021325698",
+                    "Name": "ACME Inc",
+                    "SecondaryIdentification": "0002"
+                    },
+                    "RemittanceInformation": {
+                    "Reference": "FRESCO-101",
+                    "Unstructured": "Internal ops code 5120101"
+                    }
+                    }
+                    },
+                    "Risk": {
+                    "PaymentContextCode": "EcommerceGoods",
+                    "MerchantCategoryCode": "5967",
+                    "MerchantCustomerIdentification": "053598653254",
+                    "DeliveryAddress": {
+                    "AddressLine": [
+                    "Flat 7",
+                    "Acacia Lodge"
+                    ],
+                    "StreetName": "Acacia Avenue",
+                    "BuildingNumber": "27",
+                    "PostCode": "GU31 2ZZ",
+                    "TownName": "Sparsholt",
+                    "CountySubDivision": [
+                    "Wessex"
+                    ],
+                    "Country": "UK"
+                    }
+                    }
+                    }
+
+
+                    ]]>
+                </ac:plain-text-body>
+            </ac:structured-macro>
+            <p class="auto-cursor-target"><br/></p></ac:layout-cell>
+        <ac:layout-cell><p class="auto-cursor-target"><strong>POST /domestic-payment-consents&nbsp;response</strong></p>
+            <ac:structured-macro ac:name="code" ac:schema-version="1"
+                                 ac:macro-id="b34a4050-2798-4986-8fdb-a6ff1d429405">
+                <ac:parameter ac:name="language">js</ac:parameter>
+                <ac:parameter ac:name="theme">Midnight</ac:parameter>
+                <ac:parameter ac:name="title">Payment Order Consent Response Payload</ac:parameter>
+                <ac:parameter ac:name="linenumbers">true</ac:parameter>
+                <ac:plain-text-body><![CDATA[HTTP/1.1 201 Created
+                    x-jws-signature: V2hhdCB3ZSBnb3QgaGVyZQ0K..aXMgZmFpbHVyZSB0byBjb21tdW5pY2F0ZQ0K
+                    x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
+                    Content-Type: application/json
+
+                    {
+                    "Data": {
+                    "ConsentId": "58923",
+                    "Status": "AwaitingAuthorisation",
+                    "CreationDateTime": "2017-06-05T15:15:13+00:00",
+                    "StatusUpdateDateTime": "2017-06-05T15:15:13+00:00",
+                    "Initiation": {
+                    "InstructionIdentification": "ACME412",
+                    "EndToEndIdentification": "FRESCO.21302.GFX.20",
+                    "InstructedAmount": {
+                    "Amount": "165.88",
+                    "Currency": "GBP"
+                    },
+                    "CreditorAccount": {
+                    "SchemeName": "UK.OBIE.SortCodeAccountNumber",
+                    "Identification": "08080021325698",
+                    "Name": "ACME Inc",
+                    "SecondaryIdentification": "0002"
+                    },
+                    "RemittanceInformation": {
+                    "Reference": "FRESCO-101",
+                    "Unstructured": "Internal ops code 5120101"
+                    }
+                    }
+                    },
+                    "Risk": {
+                    "PaymentContextCode": "EcommerceGoods",
+                    "MerchantCategoryCode": "5967",
+                    "MerchantCustomerIdentification": "053598653254",
+                    "DeliveryAddress": {
+                    "AddressLine": [
+                    "Flat 7",
+                    "Acacia Lodge"
+                    ],
+                    "StreetName": "Acacia Avenue",
+                    "BuildingNumber": "27",
+                    "PostCode": "GU31 2ZZ",
+                    "TownName": "Sparsholt",
+                    "CountySubDivision": [
+                    "Wessex"
+                    ],
+                    "Country": "UK"
+                    }
+                    },
+                    "Links": {
+                    "Self": "https://api.alphabank.com/open-banking/v3.1/pisp/domestic-payment-consents/58923"
+                    },
+                    "Meta": {}
+                    }
+
+
+                    ]]>
+                </ac:plain-text-body>
+            </ac:structured-macro>
+            <p class="auto-cursor-target"><br/></p></ac:layout-cell>
+    </ac:layout-section>
+    <ac:layout-section ac:type="single">
+        <ac:layout-cell><h4>Confirm Funds on Domestic Payment Order Consent</h4></ac:layout-cell>
+    </ac:layout-section>
+    <ac:layout-section ac:type="two_equal">
+        <ac:layout-cell><p class="auto-cursor-target"><strong>GET&nbsp;/domestic-payment-consents/{ConsentId}/funds-confirmation
+            Request</strong></p>
+            <ac:structured-macro ac:name="code" ac:schema-version="1"
+                                 ac:macro-id="f49bae6c-bfe7-4ba8-86cc-535316243c10">
+                <ac:parameter ac:name="language">js</ac:parameter>
+                <ac:parameter ac:name="theme">Midnight</ac:parameter>
+                <ac:parameter ac:name="title">Payment Order Consent Request Payload</ac:parameter>
+                <ac:parameter ac:name="linenumbers">true</ac:parameter>
+                <ac:plain-text-body><![CDATA[GET /domestic-payment-consents/58923/funds-confirmation HTTP/1.1
+                    Authorization: Bearer Jhingapulaav
+                    x-fapi-auth-date: Sun, 10 Sep 2017 19:43:31 GMT
+                    x-fapi-customer-ip-address: 104.25.212.99
+                    x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
+                    Accept: application/json
+
+                    ]]>
+                </ac:plain-text-body>
+            </ac:structured-macro>
+            <p class="auto-cursor-target"><br/></p></ac:layout-cell>
+        <ac:layout-cell><p class="auto-cursor-target"><strong>GET
+            /domestic-payment-consents/{ConsentId}/funds-confirmation Response</strong></p>
+            <ac:structured-macro ac:name="code" ac:schema-version="1"
+                                 ac:macro-id="555d1a54-8a57-4579-bef2-28f60be81ff1">
+                <ac:parameter ac:name="language">js</ac:parameter>
+                <ac:parameter ac:name="theme">Midnight</ac:parameter>
+                <ac:parameter ac:name="title">Payment Order Consent Response Payload</ac:parameter>
+                <ac:parameter ac:name="linenumbers">true</ac:parameter>
+                <ac:plain-text-body><![CDATA[HTTP/1.1 200 OK
+                    x-jws-signature: V2hhdCB3ZSBnb3QgaGVyZQ0K..aXMgZmFpbHVyZSB0byBjb21tdW5pY2F0ZQ0K
+                    x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
+                    Content-Type: application/json
+
+                    {
+                    "Data": {
+                    "FundsAvailableResult": {
+                    "FundsAvailableDateTime": "2017-06-05T15:15:23+00:00",
+                    "FundsAvailable": true
+                    }
+                    },
+                    "Links": {
+                    "Self":
+                    "https://api.alphabank.com/open-banking/v3.1/pisp/domestic-payment-consents/58923/funds-confirmation"
+                    },
+                    "Meta": {}
+                    }]]>
+                </ac:plain-text-body>
+            </ac:structured-macro>
+            <p class="auto-cursor-target"><br/></p></ac:layout-cell>
+    </ac:layout-section>
+    <ac:layout-section ac:type="single">
+        <ac:layout-cell><h4>Create Domestic Payment Order</h4></ac:layout-cell>
+    </ac:layout-section>
+    <ac:layout-section ac:type="two_equal">
+        <ac:layout-cell><p class="auto-cursor-target"><strong>POST /domestic-payments&nbsp;Request</strong></p>
+            <ac:structured-macro ac:name="code" ac:schema-version="1"
+                                 ac:macro-id="9318fea6-8597-4895-bcc2-5b8d1dddfcbe">
+                <ac:parameter ac:name="language">js</ac:parameter>
+                <ac:parameter ac:name="theme">Midnight</ac:parameter>
+                <ac:parameter ac:name="title">Payment Order Request Payload</ac:parameter>
+                <ac:parameter ac:name="linenumbers">true</ac:parameter>
+                <ac:plain-text-body><![CDATA[POST /domestic-payments HTTP/1.1
+                    Authorization: Bearer Jhingapulaav
+                    x-idempotency-key: FRESNO.1317.GFX.22
+                    x-jws-signature:
+                    TGlmZSdzIGEgam91cm5leSBub3QgYSBkZXN0aW5hdGlvbiA=..T2ggZ29vZCBldmVuaW5nIG1yIHR5bGVyIGdvaW5nIGRvd24gPw==
+                    x-fapi-auth-date: Sun, 10 Sep 2017 19:43:31 GMT
+                    x-fapi-customer-ip-address: 104.25.212.99
+                    x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
+                    Content-Type: application/json
+                    Accept: application/json
+
+                    {
+                    "Data": {
+                    "ConsentId": "58923",
+                    "Initiation": {
+                    "InstructionIdentification": "ACME412",
+                    "EndToEndIdentification": "FRESCO.21302.GFX.20",
+                    "InstructedAmount": {
+                    "Amount": "165.88",
+                    "Currency": "GBP"
+                    },
+                    "CreditorAccount": {
+                    "SchemeName": "UK.OBIE.SortCodeAccountNumber",
+                    "Identification": "08080021325698",
+                    "Name": "ACME Inc",
+                    "SecondaryIdentification": "0002"
+                    },
+                    "RemittanceInformation": {
+                    "Reference": "FRESCO-101",
+                    "Unstructured": "Internal ops code 5120101"
+                    }
+                    }
+                    },
+                    "Risk": {
+                    "PaymentContextCode": "EcommerceGoods",
+                    "MerchantCategoryCode": "5967",
+                    "MerchantCustomerIdentification": "053598653254",
+                    "DeliveryAddress": {
+                    "AddressLine": [
+                    "Flat 7",
+                    "Acacia Lodge"
+                    ],
+                    "StreetName": "Acacia Avenue",
+                    "BuildingNumber": "27",
+                    "PostCode": "GU31 2ZZ",
+                    "TownName": "Sparsholt",
+                    "CountySubDivision": [
+                    "Wessex"
+                    ],
+                    "Country": "UK"
+                    }
+                    }
+                    }
+
+
+                    ]]>
+                </ac:plain-text-body>
+            </ac:structured-macro>
+            <p class="auto-cursor-target"><br/></p></ac:layout-cell>
+        <ac:layout-cell><p class="auto-cursor-target"><strong>POST /domestic-payments&nbsp;Response</strong></p>
+            <ac:structured-macro ac:name="code" ac:schema-version="1"
+                                 ac:macro-id="adf60e19-d737-4264-95fa-371c71b2740b">
+                <ac:parameter ac:name="language">js</ac:parameter>
+                <ac:parameter ac:name="theme">Midnight</ac:parameter>
+                <ac:parameter ac:name="title">Payment Order Response Payload</ac:parameter>
+                <ac:parameter ac:name="linenumbers">true</ac:parameter>
+                <ac:plain-text-body><![CDATA[HTTP/1.1 201 Created
+                    x-jws-signature: V2hhdCB3ZSBnb3QgaGVyZQ0K..aXMgZmFpbHVyZSB0byBjb21tdW5pY2F0ZQ0K
+                    x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
+                    Content-Type: application/json
+
+                    {
+                    "Data": {
+                    "DomesticPaymentId": "58923-001",
+                    "ConsentId": "58923",
+                    "Status": "AcceptedSettlementInProcess",
+                    "CreationDateTime": "2017-06-05T15:15:22+00:00",
+                    "StatusUpdateDateTime": "2017-06-05T15:15:13+00:00",
+                    "Initiation": {
+                    "InstructionIdentification": "ACME412",
+                    "EndToEndIdentification": "FRESCO.21302.GFX.20",
+                    "InstructedAmount": {
+                    "Amount": "165.88",
+                    "Currency": "GBP"
+                    },
+                    "CreditorAccount": {
+                    "SchemeName": "UK.OBIE.SortCodeAccountNumber",
+                    "Identification": "08080021325698",
+                    "Name": "ACME Inc",
+                    "SecondaryIdentification": "0002"
+                    },
+                    "RemittanceInformation": {
+                    "Reference": "FRESCO-101",
+                    "Unstructured": "Internal ops code 5120101"
+                    }
+                    }
+                    },
+                    "Links": {
+                    "Self": "https://api.alphabank.com/open-banking/v3.1/pisp/domestic-payments/58923-001"
+                    },
+                    "Meta": {}
+                    }
+
+                    ]]>
+                </ac:plain-text-body>
+            </ac:structured-macro>
+            <p class="auto-cursor-target"><br/></p></ac:layout-cell>
+    </ac:layout-section>
+    <ac:layout-section ac:type="single">
+        <ac:layout-cell><h4>Get Domestic Payment Order Consent</h4></ac:layout-cell>
+    </ac:layout-section>
+    <ac:layout-section ac:type="two_equal">
+        <ac:layout-cell><p class="auto-cursor-target"><strong>GET /domestic-payment-consents/{ConsentId}
+            Request</strong></p>
+            <ac:structured-macro ac:name="code" ac:schema-version="1"
+                                 ac:macro-id="9e34a94a-d1ec-498c-aff1-f49c7df7d455">
+                <ac:parameter ac:name="language">js</ac:parameter>
+                <ac:parameter ac:name="theme">Midnight</ac:parameter>
+                <ac:parameter ac:name="title">Get Payment Order Consent Request</ac:parameter>
+                <ac:parameter ac:name="linenumbers">true</ac:parameter>
+                <ac:plain-text-body><![CDATA[GET /domestic-payment-consents/58923 HTTP/1.1
+                    Authorization: Bearer Jhingapulaav
+                    x-fapi-auth-date: Sun, 10 Sep 2017 19:43:31 GMT
+                    x-fapi-customer-ip-address: 104.25.212.99
+                    x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
+                    Accept: application/json
+
+                    ]]>
+                </ac:plain-text-body>
+            </ac:structured-macro>
+            <p class="auto-cursor-target"><br/></p></ac:layout-cell>
+        <ac:layout-cell><p class="auto-cursor-target"><strong>GET /domestic-payment-consents/{ConsentId}
+            Response</strong></p>
+            <ac:structured-macro ac:name="code" ac:schema-version="1"
+                                 ac:macro-id="2e18435c-334f-4750-8c09-5ae61cc03422">
+                <ac:parameter ac:name="language">js</ac:parameter>
+                <ac:parameter ac:name="theme">Midnight</ac:parameter>
+                <ac:parameter ac:name="title">Get Payment Order Consent Response Payload</ac:parameter>
+                <ac:parameter ac:name="linenumbers">true</ac:parameter>
+                <ac:plain-text-body><![CDATA[HTTP/1.1 200 OK
+                    x-jws-signature: V2hhdCB3ZSBnb3QgaGVyZQ0K..aXMgZmFpbHVyZSB0byBjb21tdW5pY2F0ZQ0K
+                    x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
+                    Content-Type: application/json
+
+                    {
+                    "Data": {
+                    "ConsentId": "58923",
+                    "Status": "Authorised",
+                    "CreationDateTime": "2017-06-05T15:15:13+00:00",
+                    "StatusUpdateDateTime": "2017-06-05T15:15:22+00:00",
+                    "Initiation": {
+                    "InstructionIdentification": "ACME412",
+                    "EndToEndIdentification": "FRESCO.21302.GFX.20",
+                    "InstructedAmount": {
+                    "Amount": "165.88",
+                    "Currency": "GBP"
+                    },
+                    "CreditorAccount": {
+                    "SchemeName": "UK.OBIE.SortCodeAccountNumber",
+                    "Identification": "08080021325698",
+                    "Name": "ACME Inc",
+                    "SecondaryIdentification": "0002"
+                    },
+                    "RemittanceInformation": {
+                    "Reference": "FRESCO-101",
+                    "Unstructured": "Internal ops code 5120101"
+                    }
+                    }
+                    },
+                    "Risk": {
+                    "PaymentContextCode": "EcommerceGoods",
+                    "MerchantCategoryCode": "5967",
+                    "MerchantCustomerIdentification": "053598653254",
+                    "DeliveryAddress": {
+                    "AddressLine": [
+                    "Flat 7",
+                    "Acacia Lodge"
+                    ],
+                    "StreetName": "Acacia Avenue",
+                    "BuildingNumber": "27",
+                    "PostCode": "GU31 2ZZ",
+                    "TownName": "Sparsholt",
+                    "CountySubDivision": [
+                    "Wessex"
+                    ],
+                    "Country": "UK"
+                    }
+                    },
+                    "Links": {
+                    "Self": "https://api.alphabank.com/open-banking/v3.1/pisp/domestic-payment-consents/58923"
+                    },
+                    "Meta": {}
+                    }
+
+
+                    ]]>
+                </ac:plain-text-body>
+            </ac:structured-macro>
+            <p class="auto-cursor-target"><br/></p></ac:layout-cell>
+    </ac:layout-section>
+    <ac:layout-section ac:type="single">
+        <ac:layout-cell><h4>Get Domestic Payment Order</h4></ac:layout-cell>
+    </ac:layout-section>
+    <ac:layout-section ac:type="two_equal">
+        <ac:layout-cell><p class="auto-cursor-target"><strong>GET /domestic-payments/{DomesticPaymentId}
+            Request</strong></p>
+            <ac:structured-macro ac:name="code" ac:schema-version="1"
+                                 ac:macro-id="a7ed53fc-e9ed-43ac-aadf-727b1913be9e">
+                <ac:parameter ac:name="language">js</ac:parameter>
+                <ac:parameter ac:name="theme">Midnight</ac:parameter>
+                <ac:parameter ac:name="title">GET Payment Order Request</ac:parameter>
+                <ac:parameter ac:name="linenumbers">true</ac:parameter>
+                <ac:plain-text-body><![CDATA[GET /domestic-payments/58923-001 HTTP/1.1
+                    Authorization: Bearer 2YotnFZFEjr1zCsicMWpAA
+                    x-fapi-auth-date: Sun, 10 Sep 2017 19:43:31 GMT
+                    x-fapi-customer-ip-address: 104.25.212.99
+                    x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
+                    Accept: application/json
+
+                    ]]>
+                </ac:plain-text-body>
+            </ac:structured-macro>
+            <p class="auto-cursor-target"><br/></p></ac:layout-cell>
+        <ac:layout-cell><p class="auto-cursor-target"><strong>GET /domestic-payments/{DomesticPaymentId}
+            Response</strong></p>
+            <ac:structured-macro ac:name="code" ac:schema-version="1"
+                                 ac:macro-id="9abbbd0a-6c5f-4c6d-8bb4-10493a99ac34">
+                <ac:parameter ac:name="language">js</ac:parameter>
+                <ac:parameter ac:name="theme">Midnight</ac:parameter>
+                <ac:parameter ac:name="title">Get Payment Order Response Payload</ac:parameter>
+                <ac:parameter ac:name="linenumbers">true</ac:parameter>
+                <ac:plain-text-body><![CDATA[HTTP/1.1 200 OK
+                    x-jws-signature: V2hhdCB3ZSBnb3QgaGVyZQ0K..aXMgZmFpbHVyZSB0byBjb21tdW5pY2F0ZQ0K
+                    x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
+                    Content-Type: application/json
+
+                    {
+                    "Data": {
+                    "DomesticPaymentId": "58923-001",
+                    "ConsentId": "58923",
+                    "Status": "AcceptedSettlementInProcess",
+                    "CreationDateTime": "2017-06-05T15:15:22+00:00",
+                    "StatusUpdateDateTime": "2017-06-05T15:15:22+00:00",
+                    "Initiation": {
+                    "InstructionIdentification": "ACME412",
+                    "EndToEndIdentification": "FRESCO.21302.GFX.20",
+                    "InstructedAmount": {
+                    "Amount": "165.88",
+                    "Currency": "GBP"
+                    },
+                    "CreditorAccount": {
+                    "SchemeName": "UK.OBIE.SortCodeAccountNumber",
+                    "Identification": "08080021325698",
+                    "Name": "ACME Inc",
+                    "SecondaryIdentification": "0002"
+                    },
+                    "RemittanceInformation": {
+                    "Reference": "FRESCO-101",
+                    "Unstructured": "Internal ops code 5120101"
+                    }
+                    }
+                    },
+                    "Links": {
+                    "Self": "https://api.alphabank.com/open-banking/v3.1/pisp/domestic-payments/58923-001"
+                    },
+                    "Meta": {}
+                    }
+
+
+                    ]]>
+                </ac:plain-text-body>
+            </ac:structured-macro>
+            <p class="auto-cursor-target"><br/></p></ac:layout-cell>
+    </ac:layout-section>
+    <ac:layout-section ac:type="single">
+        <ac:layout-cell><h2>Person To Person Initiation via PISP</h2>
+            <p>This example set of flows and payload examples are&nbsp;for a domestic payment initiated by a person to
+                another person via a PISP.</p>
+            <p>In this scenario:</p>
+            <ul>
+                <li>The PSU has pre-specified the account from which funds will be transferred (i.e., the Debtor Account
+                    details)
+                </li>
+                <li>No building society accounts are involved in this interaction, and there only the sort code and
+                    account number are specified in the DebtorAccount and CreditorAccount sections.
+                </li>
+            </ul>
+            <h3>Sequence Diagram</h3>
+            <p>
+                <ac:image ac:width="1000">
+                    <ri:attachment ri:filename="P2PDomesticPaymentExample.png" ri:version-at-save="1"/>
+                </ac:image>
+            </p>
+            <ac:structured-macro ac:name="code" ac:schema-version="1"
+                                 ac:macro-id="e8cf7a5b-c03f-4479-bb58-226e81acbc39">
+                <ac:parameter ac:name="title">Usage Examples - Person to Person</ac:parameter>
+                <ac:parameter ac:name="collapse">true</ac:parameter>
+                <ac:plain-text-body><![CDATA[participant PSU
+                    participant PISP
+                    participant ASPSP Authorisation Server
+                    participant ASPSP Resource Server
+
+                    note over PSU, ASPSP Resource Server
+                    Step 1: Agree Domestic Payment-Order initiation
+                    end note
+                    PSU <-> PISP: Initiate a funds transfer
+                    PSU -> PISP: Select debtor and creditor accounts
+
+                    note over PSU, ASPSP Resource Server
+                    Step 2: Setup Domestic Payment-Order Consent
+                    end note
+                    PISP <-> ASPSP Authorisation Server: Establish TLS 1.2 MA
+                    PISP -> ASPSP Authorisation Server: Initiate Client Credentials Grant
+                    ASPSP Authorisation Server -> PISP: access-token
+                    PISP <-> ASPSP Resource Server: Establish TLS 1.2 MA
+                    PISP -> ASPSP Resource Server: POST /domestic-payment-consents
+                    ASPSP Resource Server -> PISP: HTTP 201 (Created), ConsentId
+                    PISP -> PSU: HTTP 302 (Found), Redirect (ConsentId)
+
+                    note over PSU, ASPSP Resource Server
+                    Step 3: Authorize consent
+                    end note
+                    PSU -> ASPSP Authorisation Server: Follow redirect (ConsentId)
+                    PSU <-> ASPSP Authorisation Server: authenticate
+                    PSU <-> ASPSP Authorisation Server: SCA if required
+                    ASPSP Authorisation Server -> PSU: HTTP 302 (Found), Redirect (authorization-code)
+                    PSU -> PISP: Follow redirect (authorization-code)
+                    PISP <-> ASPSP Authorisation Server: Establish TLS 1.2 MA
+                    PISP -> ASPSP Authorisation Server: Exchange authorization-code for access token
+                    ASPSP Authorisation Server -> PISP: access-token
+
+                    note over PSU, ASPSP Resource Server
+                    Step 4: Create Domestic Payment-Order
+                    end note
+                    PISP <-> ASPSP Resource Server: Establish TLS 1.2 MA
+                    PISP -> ASPSP Resource Server: POST /domestic-payments
+                    ASPSP Resource Server -> PISP: HTTP 201 (Created), DomesticPaymentId
+
+
+                    note over PSU, ASPSP Resource Server
+                    Step 5: Get Domestic Payment-Order status
+                    end note
+                    opt
+                    PISP <-> ASPSP Resource Server: Establish TLS 1.2 MA
+                    PISP -> ASPSP Resource Server: GET /domestic-payments/{DomesticPaymentId}
+                    ASPSP Resource Server -> PISP: HTTP 200 (OK), domestic-payments resource
+
+                    end opt
+
+                    ]]>
+                </ac:plain-text-body>
+            </ac:structured-macro>
+            <h3>Illustrative Interactions</h3></ac:layout-cell>
+    </ac:layout-section>
+    <ac:layout-section ac:type="single">
+        <ac:layout-cell><h4>Create Domestic Payment Order Consent</h4></ac:layout-cell>
+    </ac:layout-section>
+    <ac:layout-section ac:type="two_equal">
+        <ac:layout-cell><p class="auto-cursor-target"><strong>POST /domestic-payment-consents request</strong></p>
+            <ac:structured-macro ac:name="code" ac:schema-version="1"
+                                 ac:macro-id="fde75e39-a956-40fb-a516-fd30f6c485a5">
+                <ac:parameter ac:name="language">js</ac:parameter>
+                <ac:parameter ac:name="theme">Midnight</ac:parameter>
+                <ac:parameter ac:name="title">Payment Order Consent Request Payload</ac:parameter>
+                <ac:parameter ac:name="linenumbers">true</ac:parameter>
+                <ac:plain-text-body><![CDATA[POST /domestic-payment-consents HTTP/1.1
+                    Authorization: Bearer 2YotnFZFEjr1zCsicMWpAA
+                    x-idempotency-key: FRESCO.21302.GFX.20
+                    x-jws-signature:
+                    TGlmZSdzIGEgam91cm5leSBub3QgYSBkZXN0aW5hdGlvbiA=..T2ggZ29vZCBldmVuaW5nIG1yIHR5bGVyIGdvaW5nIGRvd24gPw==
+                    x-fapi-auth-date: Sun, 10 Sep 2017 19:43:31 GMT
+                    x-fapi-customer-ip-address: 104.25.212.99
+                    x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
+                    Content-Type: application/json
+                    Accept: application/json
+
+                    {
+                    "Data": {
+                    "Initiation": {
+                    "InstructionIdentification": "ANSM023",
+                    "EndToEndIdentification": "FRESCO.21302.GFX.37",
+                    "InstructedAmount": {
+                    "Amount": "20.00",
+                    "Currency": "GBP"
+                    },
+                    "DebtorAccount": {
+                    "SchemeName": "UK.OBIE.SortCodeAccountNumber",
+                    "Identification": "11280001234567",
+                    "Name": "Andrea Smith"
+                    },
+                    "CreditorAccount": {
+                    "SchemeName": "UK.OBIE.SortCodeAccountNumber",
+                    "Identification": "08080021325698",
+                    "Name": "Bob Clements"
+                    },
+                    "RemittanceInformation": {
+                    "Reference": "FRESCO-037",
+                    "Unstructured": "Internal ops code 5120103"
+                    }
+                    }
+                    },
+                    "Risk": {
+                    "PaymentContextCode": "PartyToParty"
+                    }
+                    }
+
+
+                    ]]>
+                </ac:plain-text-body>
+            </ac:structured-macro>
+            <p class="auto-cursor-target"><br/></p></ac:layout-cell>
+        <ac:layout-cell><p class="auto-cursor-target"><strong>POST /domestic-payment-consents&nbsp;response</strong></p>
+            <ac:structured-macro ac:name="code" ac:schema-version="1"
+                                 ac:macro-id="28e1ff72-737b-46bc-87e7-6094f0155642">
+                <ac:parameter ac:name="language">js</ac:parameter>
+                <ac:parameter ac:name="theme">Midnight</ac:parameter>
+                <ac:parameter ac:name="title">Payment Order Consent Response Payload</ac:parameter>
+                <ac:parameter ac:name="linenumbers">true</ac:parameter>
+                <ac:plain-text-body><![CDATA[HTTP/1.1 201 Created
+                    x-jws-signature: V2hhdCB3ZSBnb3QgaGVyZQ0K..aXMgZmFpbHVyZSB0byBjb21tdW5pY2F0ZQ0K
+                    x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
+                    Content-Type: application/json
+
+                    {
+                    "Data": {
+                    "ConsentId": "7290",
+                    "Status": "AwaitingAuthorisation",
+                    "CreationDateTime": "2017-06-05T15:15:13+00:00",
+                    "StatusUpdateDateTime": "2017-06-05T15:15:13+00:00",
+                    "Initiation": {
+                    "InstructionIdentification": "ANSM023",
+                    "EndToEndIdentification": "FRESCO.21302.GFX.37",
+                    "InstructedAmount": {
+                    "Amount": "20.00",
+                    "Currency": "GBP"
+                    },
+                    "DebtorAccount": {
+                    "SchemeName": "UK.OBIE.SortCodeAccountNumber",
+                    "Identification": "11280001234567",
+                    "Name": "Andrea Smith"
+                    },
+                    "CreditorAccount": {
+                    "SchemeName": "UK.OBIE.SortCodeAccountNumber",
+                    "Identification": "08080021325698",
+                    "Name": "Bob Clements"
+                    },
+                    "RemittanceInformation": {
+                    "Reference": "FRESCO-037",
+                    "Unstructured": "Internal ops code 5120103"
+                    }
+                    }
+                    },
+                    "Risk": {
+                    "PaymentContextCode": "PartyToParty"
+                    },
+                    "Links": {
+                    "Self": "https://api.alphabank.com/open-banking/v3.1/pisp/domestic-payment-consents/7290"
+                    },
+                    "Meta": {}
+                    }
+
+
+                    ]]>
+                </ac:plain-text-body>
+            </ac:structured-macro>
+            <p class="auto-cursor-target"><br/></p></ac:layout-cell>
+    </ac:layout-section>
+    <ac:layout-section ac:type="single">
+        <ac:layout-cell><h4>Create Domestic Payment Order</h4></ac:layout-cell>
+    </ac:layout-section>
+    <ac:layout-section ac:type="two_equal">
+        <ac:layout-cell><p class="auto-cursor-target"><strong>POST&nbsp;/domestic-payments request</strong></p>
+            <ac:structured-macro ac:name="code" ac:schema-version="1"
+                                 ac:macro-id="f937f883-ae7c-4ae4-9529-10386efdf478">
+                <ac:parameter ac:name="language">js</ac:parameter>
+                <ac:parameter ac:name="theme">Midnight</ac:parameter>
+                <ac:parameter ac:name="title">Payment Order Request Payload</ac:parameter>
+                <ac:parameter ac:name="linenumbers">true</ac:parameter>
+                <ac:plain-text-body><![CDATA[POST /domestic-payments HTTP/1.1
+                    Authorization: Bearer 2YotnFZFEjr1zCsicMWpAA
+                    x-idempotency-key: FRESNO.1317.GFX.22
+                    x-jws-signature:
+                    TGlmZSdzIGEgam91cm5leSBub3QgYSBkZXN0aW5hdGlvbiA=..T2ggZ29vZCBldmVuaW5nIG1yIHR5bGVyIGdvaW5nIGRvd24gPw==
+                    x-fapi-auth-date: Sun, 10 Sep 2017 19:43:31 GMT
+                    x-fapi-customer-ip-address: 104.25.212.99
+                    x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
+                    Content-Type: application/json
+                    Accept: application/json
+
+                    {
+                    "Data": {
+                    "ConsentId": "7290",
+                    "Initiation": {
+                    "InstructionIdentification": "ANSM023",
+                    "EndToEndIdentification": "FRESCO.21302.GFX.37",
+                    "InstructedAmount": {
+                    "Amount": "20.00",
+                    "Currency": "GBP"
+                    },
+                    "DebtorAccount": {
+                    "SchemeName": "UK.OBIE.SortCodeAccountNumber",
+                    "Identification": "11280001234567",
+                    "Name": "Andrea Smith"
+                    },
+                    "CreditorAccount": {
+                    "SchemeName": "UK.OBIE.SortCodeAccountNumber",
+                    "Identification": "08080021325698",
+                    "Name": "Bob Clements"
+                    },
+                    "RemittanceInformation": {
+                    "Reference": "FRESCO-037",
+                    "Unstructured": "Internal ops code 5120103"
+                    }
+                    }
+                    },
+                    "Risk": {
+                    "PaymentContextCode": "PartyToParty"
+                    }
+                    }
+
+
+                    ]]>
+                </ac:plain-text-body>
+            </ac:structured-macro>
+            <p class="auto-cursor-target"><br/></p></ac:layout-cell>
+        <ac:layout-cell><p class="auto-cursor-target"><strong>POST&nbsp;/domestic-payments&nbsp;response</strong></p>
+            <ac:structured-macro ac:name="code" ac:schema-version="1"
+                                 ac:macro-id="225768fd-fb43-4091-9907-f3b1ac1b9455">
+                <ac:parameter ac:name="language">js</ac:parameter>
+                <ac:parameter ac:name="theme">Midnight</ac:parameter>
+                <ac:parameter ac:name="title">Payment Order Response Payload</ac:parameter>
+                <ac:parameter ac:name="linenumbers">true</ac:parameter>
+                <ac:plain-text-body><![CDATA[HTTP/1.1 201 Created
+                    x-jws-signature: V2hhdCB3ZSBnb3QgaGVyZQ0K..aXMgZmFpbHVyZSB0byBjb21tdW5pY2F0ZQ0K
+                    x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
+                    Content-Type: application/json
+
+                    {
+                    "Data": {
+                    "DomesticPaymentId": "7290-003",
+                    "ConsentId": "7290",
+                    "Status": "AcceptedSettlementInProcess",
+                    "CreationDateTime": "2017-06-05T15:15:22+00:00",
+                    "StatusUpdateDateTime": "2017-06-05T15:15:22+00:00",
+                    "Initiation": {
+                    "InstructionIdentification": "ANSM023",
+                    "EndToEndIdentification": "FRESCO.21302.GFX.37",
+                    "InstructedAmount": {
+                    "Amount": "20.00",
+                    "Currency": "GBP"
+                    },
+                    "DebtorAccount": {
+                    "SchemeName": "UK.OBIE.SortCodeAccountNumber",
+                    "Identification": "11280001234567",
+                    "Name": "Andrea Smith"
+                    },
+                    "CreditorAccount": {
+                    "SchemeName": "UK.OBIE.SortCodeAccountNumber",
+                    "Identification": "08080021325698",
+                    "Name": "Bob Clements"
+                    },
+                    "RemittanceInformation": {
+                    "Reference": "FRESCO-037",
+                    "Unstructured": "Internal ops code 5120103"
+                    }
+                    }
+                    },
+                    "Links": {
+                    "Self": "https://api.alphabank.com/open-banking/v3.1/pisp/domestic-payments/7290-003"
+                    },
+                    "Meta": {}
+                    }
+
+
+                    ]]>
+                </ac:plain-text-body>
+            </ac:structured-macro>
+            <p class="auto-cursor-target"><br/></p></ac:layout-cell>
+    </ac:layout-section>
+    <ac:layout-section ac:type="single">
+        <ac:layout-cell><h4>Get Domestic Payment Order Consent</h4></ac:layout-cell>
+    </ac:layout-section>
+    <ac:layout-section ac:type="two_equal">
+        <ac:layout-cell><p class="auto-cursor-target"><strong>GET /domestic-payment-consents/{ConsentId}
+            request</strong></p>
+            <ac:structured-macro ac:name="code" ac:schema-version="1"
+                                 ac:macro-id="95151e46-0707-4e91-8abe-df389369077d">
+                <ac:parameter ac:name="language">js</ac:parameter>
+                <ac:parameter ac:name="theme">Midnight</ac:parameter>
+                <ac:parameter ac:name="title">Get Payment Order Consent Request</ac:parameter>
+                <ac:parameter ac:name="linenumbers">true</ac:parameter>
+                <ac:plain-text-body><![CDATA[GET /domestic-payment-consents/7290 HTTP/1.1
+                    Authorization: Bearer 2YotnFZFEjr1zCsicMWpAA
+                    x-fapi-auth-date: Sun, 10 Sep 2017 19:43:31 GMT
+                    x-fapi-customer-ip-address: 104.25.212.99
+                    x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
+                    Accept: application/json
+
+                    ]]>
+                </ac:plain-text-body>
+            </ac:structured-macro>
+            <p class="auto-cursor-target"><br/></p></ac:layout-cell>
+        <ac:layout-cell><p class="auto-cursor-target"><strong>GET /domestic-payment-consents/{ConsentId}
+            response</strong></p>
+            <ac:structured-macro ac:name="code" ac:schema-version="1"
+                                 ac:macro-id="b275bb45-edad-4b07-9b79-932bf68da851">
+                <ac:parameter ac:name="language">js</ac:parameter>
+                <ac:parameter ac:name="theme">Midnight</ac:parameter>
+                <ac:parameter ac:name="title">Get Payment Order Consent Response Payload</ac:parameter>
+                <ac:parameter ac:name="linenumbers">true</ac:parameter>
+                <ac:plain-text-body><![CDATA[HTTP/1.1 200 OK
+                    x-jws-signature: V2hhdCB3ZSBnb3QgaGVyZQ0K..aXMgZmFpbHVyZSB0byBjb21tdW5pY2F0ZQ0K
+                    x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
+                    Content-Type: application/json
+
+                    {
+                    "Data": {
+                    "ConsentId": "7290",
+                    "Status": "Consumed",
+                    "CreationDateTime": "2017-06-05T15:15:13+00:00",
+                    "StatusUpdateDateTime": "2017-06-05T15:15:13+00:00",
+                    "Initiation": {
+                    "InstructionIdentification": "ANSM023",
+                    "EndToEndIdentification": "FRESCO.21302.GFX.37",
+                    "InstructedAmount": {
+                    "Amount": "20.00",
+                    "Currency": "GBP"
+                    },
+                    "DebtorAccount": {
+                    "SchemeName": "UK.OBIE.SortCodeAccountNumber",
+                    "Identification": "11280001234567",
+                    "Name": "Andrea Smith"
+                    },
+                    "CreditorAccount": {
+                    "SchemeName": "UK.OBIE.SortCodeAccountNumber",
+                    "Identification": "08080021325698",
+                    "Name": "Bob Clements"
+                    },
+                    "RemittanceInformation": {
+                    "Reference": "FRESCO-037",
+                    "Unstructured": "Internal ops code 5120103"
+                    }
+                    }
+                    },
+                    "Risk": {
+                    "PaymentContextCode": "PartyToParty"
+                    },
+                    "Links": {
+                    "Self": "https://api.alphabank.com/open-banking/v3.1/pisp/domestic-payment-consents/7290"
+                    },
+                    "Meta": {}
+                    }
+
+
+                    ]]>
+                </ac:plain-text-body>
+            </ac:structured-macro>
+            <p class="auto-cursor-target"><br/></p></ac:layout-cell>
+    </ac:layout-section>
+    <ac:layout-section ac:type="single">
+        <ac:layout-cell><h4>Get Domestic Payment Order</h4></ac:layout-cell>
+    </ac:layout-section>
+    <ac:layout-section ac:type="two_equal">
+        <ac:layout-cell><p class="auto-cursor-target"><strong>GET /domestic-payments/{DomesticPaymentId}
+            request</strong></p>
+            <ac:structured-macro ac:name="code" ac:schema-version="1"
+                                 ac:macro-id="b58271d3-e9b8-401c-bd9c-18950b97ba8f">
+                <ac:parameter ac:name="language">js</ac:parameter>
+                <ac:parameter ac:name="theme">Midnight</ac:parameter>
+                <ac:parameter ac:name="title">Get Payment Order Request</ac:parameter>
+                <ac:parameter ac:name="linenumbers">true</ac:parameter>
+                <ac:plain-text-body><![CDATA[GET /domestic-payments/7290-003 HTTP/1.1
+                    Authorization: Bearer 2YotnFZFEjr1zCsicMWpAA
+                    x-fapi-auth-date: Sun, 10 Sep 2017 19:43:31 GMT
+                    x-fapi-customer-ip-address: 104.25.212.99
+                    x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
+                    Accept: application/json
+
+                    ]]>
+                </ac:plain-text-body>
+            </ac:structured-macro>
+            <p class="auto-cursor-target"><br/></p></ac:layout-cell>
+        <ac:layout-cell><p class="auto-cursor-target"><strong>GET /domestic-payments/{DomesticPaymentId}
+            response</strong></p>
+            <ac:structured-macro ac:name="code" ac:schema-version="1"
+                                 ac:macro-id="e39beaca-a20c-4f37-b182-bed9d308dba3">
+                <ac:parameter ac:name="language">js</ac:parameter>
+                <ac:parameter ac:name="theme">Midnight</ac:parameter>
+                <ac:parameter ac:name="title">Get Payment Order Response Payload</ac:parameter>
+                <ac:parameter ac:name="linenumbers">true</ac:parameter>
+                <ac:plain-text-body><![CDATA[HTTP/1.1 200 OK
+                    x-jws-signature: V2hhdCB3ZSBnb3QgaGVyZQ0K..aXMgZmFpbHVyZSB0byBjb21tdW5pY2F0ZQ0K
+                    x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
+                    Content-Type: application/json
+
+                    {
+                    "Data": {
+                    "DomesticPaymentId": "7290-003",
+                    "ConsentId": "7290",
+                    "Status": "AcceptedSettlementInProcess",
+                    "CreationDateTime": "2017-06-05T15:15:22+00:00",
+                    "StatusUpdateDateTime": "2017-06-05T15:15:22+00:00",
+                    "Initiation": {
+                    "InstructionIdentification": "ANSM023",
+                    "EndToEndIdentification": "FRESCO.21302.GFX.37",
+                    "InstructedAmount": {
+                    "Amount": "20.00",
+                    "Currency": "GBP"
+                    },
+                    "DebtorAccount": {
+                    "SchemeName": "UK.OBIE.SortCodeAccountNumber",
+                    "Identification": "11280001234567",
+                    "Name": "Andrea Smith"
+                    },
+                    "CreditorAccount": {
+                    "SchemeName": "UK.OBIE.SortCodeAccountNumber",
+                    "Identification": "08080021325698",
+                    "Name": "Bob Clements"
+                    },
+                    "RemittanceInformation": {
+                    "Reference": "FRESCO-037",
+                    "Unstructured": "Internal ops code 5120103"
+                    }
+                    }
+                    },
+                    "Links": {
+                    "Self": "https://api.alphabank.com/open-banking/v3.1/pisp/domestic-payments/7290-003"
+                    },
+                    "Meta": {}
+                    }
+
+
+                    ]]>
+                </ac:plain-text-body>
+            </ac:structured-macro>
+            <p class="auto-cursor-target"><br/></p></ac:layout-cell>
+    </ac:layout-section>
+    <ac:layout-section ac:type="single">
+        <ac:layout-cell><h2>BACS Payment Order Consent</h2>
+            <p>Use of LocalInstrument and CutOffDateTime.</p></ac:layout-cell>
+    </ac:layout-section>
+    <ac:layout-section ac:type="two_equal">
+        <ac:layout-cell><p class="auto-cursor-target"><strong>POST /domestic-payment-consents request</strong></p>
+            <ac:structured-macro ac:name="code" ac:schema-version="1"
+                                 ac:macro-id="56164547-320b-4a0a-87be-4bb9df79083f">
+                <ac:parameter ac:name="language">js</ac:parameter>
+                <ac:parameter ac:name="theme">Midnight</ac:parameter>
+                <ac:parameter ac:name="title">Payment Order Consent Request Payload</ac:parameter>
+                <ac:parameter ac:name="linenumbers">true</ac:parameter>
+                <ac:plain-text-body><![CDATA[POST /domestic-payment-consents HTTP/1.1
+                    Authorization: Bearer 2YotnFZFEjr1zCsicMWpAA
+                    x-idempotency-key: FRESCO.21302.GFX.20
+                    x-jws-signature:
+                    TGlmZSdzIGEgam91cm5leSBub3QgYSBkZXN0aW5hdGlvbiA=..T2ggZ29vZCBldmVuaW5nIG1yIHR5bGVyIGdvaW5nIGRvd24gPw==
+                    x-fapi-auth-date: Sun, 10 Sep 2017 19:43:31 GMT
+                    x-fapi-customer-ip-address: 104.25.212.99
+                    x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
+                    Content-Type: application/json
+                    Accept: application/json
+
+                    {
+                    "Data": {
+                    "Initiation": {
+                    "InstructionIdentification": "ANSM023",
+                    "EndToEndIdentification": "FRESCO.21302.GFX.37",
+                    "LocalInstrument": "UK.OBIE.BACS",
+                    "InstructedAmount": {
+                    "Amount": "20.00",
+                    "Currency": "GBP"
+                    },
+                    "DebtorAccount": {
+                    "SchemeName": "UK.OBIE.SortCodeAccountNumber",
+                    "Identification": "11280001234567",
+                    "Name": "Andrea Smith"
+                    },
+                    "CreditorAccount": {
+                    "SchemeName": "UK.OBIE.SortCodeAccountNumber",
+                    "Identification": "08080021325698",
+                    "Name": "Bob Clements"
+                    },
+                    "RemittanceInformation": {
+                    "Reference": "FRESCO-037",
+                    "Unstructured": "Internal ops code 5120103"
+                    }
+                    }
+                    },
+                    "Risk": {
+                    "PaymentContextCode": "PartyToParty"
+                    }
+                    }
+
+
+                    ]]>
+                </ac:plain-text-body>
+            </ac:structured-macro>
+            <p class="auto-cursor-target"><br/></p></ac:layout-cell>
+        <ac:layout-cell><p class="auto-cursor-target"><strong>POST /domestic-payment-consents response</strong></p>
+            <ac:structured-macro ac:name="code" ac:schema-version="1"
+                                 ac:macro-id="c2957a55-6581-4d8f-b4b8-1dd344e26d48">
+                <ac:parameter ac:name="language">js</ac:parameter>
+                <ac:parameter ac:name="theme">Midnight</ac:parameter>
+                <ac:parameter ac:name="title">Payment Order Consent Response Payload</ac:parameter>
+                <ac:parameter ac:name="linenumbers">true</ac:parameter>
+                <ac:plain-text-body><![CDATA[HTTP/1.1 201 Created
+                    x-jws-signature: V2hhdCB3ZSBnb3QgaGVyZQ0K..aXMgZmFpbHVyZSB0byBjb21tdW5pY2F0ZQ0K
+                    x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
+                    Content-Type: application/json
+
+                    {
+                    "Data": {
+                    "ConsentId": "7290",
+                    "Status": "AwaitingAuthorisation",
+                    "CreationDateTime": "2017-06-05T15:15:13+00:00",
+                    "StatusUpdateDateTime": "2017-06-05T15:15:13+00:00",
+                    "CutOffDateTime":"2017-06-05T17:30:00+00:00",
+                    "Initiation": {
+                    "InstructionIdentification": "ANSM023",
+                    "EndToEndIdentification": "FRESCO.21302.GFX.37",
+                    "LocalInstrument": "UK.OBIE.BACS",
+                    "InstructedAmount": {
+                    "Amount": "20.00",
+                    "Currency": "GBP"
+                    },
+                    "DebtorAccount": {
+                    "SchemeName": "UK.OBIE.SortCodeAccountNumber",
+                    "Identification": "11280001234567",
+                    "Name": "Andrea Smith"
+                    },
+                    "CreditorAccount": {
+                    "SchemeName": "UK.OBIE.SortCodeAccountNumber",
+                    "Identification": "08080021325698",
+                    "Name": "Bob Clements"
+                    },
+                    "RemittanceInformation": {
+                    "Reference": "FRESCO-037",
+                    "Unstructured": "Internal ops code 5120103"
+                    }
+                    }
+                    },
+                    "Risk": {
+                    "PaymentContextCode": "PartyToParty"
+                    },
+                    "Links": {
+                    "Self": "https://api.alphabank.com/open-banking/v3.1/pisp/domestic-payment-consents/7290"
+                    },
+                    "Meta": {}
+                    }
+
+
+                    ]]>
+                </ac:plain-text-body>
+            </ac:structured-macro>
+            <p class="auto-cursor-target"><br/></p></ac:layout-cell>
+    </ac:layout-section>
+    <ac:layout-section ac:type="single">
+        <ac:layout-cell><h2>CHAPS Payment Order Consent</h2>
+            <p>Use of LocalInstrument, <span style="color: rgb(51,51,51);text-decoration: none;">CreditorPostalAddress,&nbsp;<span
+                    style="color: rgb(0,0,0);text-decoration: none;">CutOffDateTime</span></span>&nbsp;and Charges.</p>
+        </ac:layout-cell>
+    </ac:layout-section>
+    <ac:layout-section ac:type="two_equal">
+        <ac:layout-cell><p class="auto-cursor-target"><strong>POST /domestic-payment-consents request</strong></p>
+            <ac:structured-macro ac:name="code" ac:schema-version="1"
+                                 ac:macro-id="3c657da6-d59b-439c-becc-a0640cda8fe9">
+                <ac:parameter ac:name="language">js</ac:parameter>
+                <ac:parameter ac:name="theme">Midnight</ac:parameter>
+                <ac:parameter ac:name="title">Payment Order Consent Request Payload</ac:parameter>
+                <ac:parameter ac:name="linenumbers">true</ac:parameter>
+                <ac:plain-text-body><![CDATA[POST /domestic-payment-consents HTTP/1.1
+                    Authorization: Bearer 2YotnFZFEjr1zCsicMWpAA
+                    x-idempotency-key: FRESCO.21302.GFX.20
+                    x-jws-signature:
+                    TGlmZSdzIGEgam91cm5leSBub3QgYSBkZXN0aW5hdGlvbiA=..T2ggZ29vZCBldmVuaW5nIG1yIHR5bGVyIGdvaW5nIGRvd24gPw==
+                    x-fapi-auth-date: Sun, 10 Sep 2017 19:43:31 GMT
+                    x-fapi-customer-ip-address: 104.25.212.99
+                    x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
+                    Content-Type: application/json
+                    Accept: application/json
+
+                    {
+                    "Data": {
+                    "Initiation": {
+                    "InstructionIdentification": "ANSM023",
+                    "EndToEndIdentification": "FRESCO.21302.GFX.37",
+                    "LocalInstrument": "UK.OBIE.CHAPS",
+                    "InstructedAmount": {
+                    "Amount": "20.00",
+                    "Currency": "GBP"
+                    },
+                    "DebtorAccount": {
+                    "SchemeName": "UK.OBIE.SortCodeAccountNumber",
+                    "Identification": "11280001234567",
+                    "Name": "Andrea Smith"
+                    },
+                    "CreditorAccount": {
+                    "SchemeName": "UK.OBIE.SortCodeAccountNumber",
+                    "Identification": "08080021325698",
+                    "Name": "Bob Clements"
+                    },
+                    "CreditorPostalAddress": {
+                    "AddressType": "Correspondence",
+                    "StreetName": "Liberty",
+                    "BuildingNumber":"1",
+                    "PostCode":"AB1 2CD",
+                    "TownName":"London",
+                    "Country":"UK"
+                    },
+                    "RemittanceInformation": {
+                    "Reference": "FRESCO-037",
+                    "Unstructured": "Internal ops code 5120103"
+                    }
+                    }
+                    },
+                    "Risk": {
+                    "PaymentContextCode": "PartyToParty"
+                    }
+                    }
+
+
+                    ]]>
+                </ac:plain-text-body>
+            </ac:structured-macro>
+            <p class="auto-cursor-target"><br/></p></ac:layout-cell>
+        <ac:layout-cell><p class="auto-cursor-target"><strong>POST /domestic-payment-consents response</strong></p>
+            <ac:structured-macro ac:name="code" ac:schema-version="1"
+                                 ac:macro-id="bebfdc32-c124-4864-bc87-67a5459edad1">
+                <ac:parameter ac:name="language">js</ac:parameter>
+                <ac:parameter ac:name="theme">Midnight</ac:parameter>
+                <ac:parameter ac:name="title">Payment Order Consent Response Payload</ac:parameter>
+                <ac:parameter ac:name="linenumbers">true</ac:parameter>
+                <ac:plain-text-body><![CDATA[HTTP/1.1 201 Created
+                    x-jws-signature: V2hhdCB3ZSBnb3QgaGVyZQ0K..aXMgZmFpbHVyZSB0byBjb21tdW5pY2F0ZQ0K
+                    x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
+                    Content-Type: application/json
+
+                    {
+                    "Data":{
+                    "ConsentId":"7290",
+                    "Status":"AwaitingAuthorisation",
+                    "CreationDateTime":"2017-06-05T15:15:13+00:00",
+                    "StatusUpdateDateTime":"2017-06-05T15:15:13+00:00",
+                    "CutOffDateTime":"2017-06-05T17:30:00+00:00",
+                    "Initiation":{
+                    "InstructionIdentification":"ANSM023",
+                    "EndToEndIdentification":"FRESCO.21302.GFX.37",
+                    "LocalInstrument":"UK.OBIE.CHAPS",
+                    "InstructedAmount":{
+                    "Amount":"20.00",
+                    "Currency":"GBP"
+                    },
+                    "DebtorAccount":{
+                    "SchemeName":"UK.OBIE.SortCodeAccountNumber",
+                    "Identification":"11280001234567",
+                    "Name":"Andrea Smith"
+                    },
+                    "CreditorAccount":{
+                    "SchemeName":"UK.OBIE.SortCodeAccountNumber",
+                    "Identification":"08080021325698",
+                    "Name":"Bob Clements"
+                    },
+                    "CreditorPostalAddress": {
+                    "AddressType": "Correspondence",
+                    "StreetName": "Liberty",
+                    "BuildingNumber":"1",
+                    "PostCode":"AB1 2CD",
+                    "TownName":"London",
+                    "Country":"UK"
+                    },
+                    "RemittanceInformation":{
+                    "Reference":"FRESCO-037",
+                    "Unstructured":"Internal ops code 5120103"
+                    }
+                    },
+                    "Charges":[
+                    {
+                    "ChargeBearer":"BorneByDebtor",
+                    "Type":"UK.OBIE.ChapsOut",
+                    "Amount":{
+                    "Amount":"30.00",
+                    "Currency":"GBP"
+                    }
+                    }
+                    ]
+                    },
+                    "Risk":{
+                    "PaymentContextCode":"PartyToParty"
+                    },
+                    "Links":{
+                    "Self":"https://api.alphabank.com/open-banking/v3.1/pisp/domestic-payment-consents/7290"
+                    },
+                    "Meta":{}
+                    }
+
+                    ]]>
+                </ac:plain-text-body>
+            </ac:structured-macro>
+            <p class="auto-cursor-target"><br/></p></ac:layout-cell>
+    </ac:layout-section>
+    <ac:layout-section ac:type="single">
+        <ac:layout-cell><h2 class="auto-cursor-target">Balance Transfer</h2>
+            <p>Below in an example illustrating a balance transfer offer available on a Card A.</p>
+            <p>To facilitate a Balance Transfer, a PISP can initiate a Payment from Card B to Card A with
+                LocalInstrument as&nbsp;UK.OBIE.BalanceTransfer, Account SchemeName as UK.OBIE.PAN and if there is an
+                Offer Code/Id provided by Issuer of the Card A, then it can be supplied in the field:&nbsp;RemittanceInformation.Reference.
+                Example below:</p></ac:layout-cell>
+    </ac:layout-section>
+    <ac:layout-section ac:type="two_equal">
+        <ac:layout-cell><p class="auto-cursor-target"><strong>POST /domestic-payment-consents request</strong></p>
+            <ac:structured-macro ac:name="code" ac:schema-version="1"
+                                 ac:macro-id="695515a4-cb89-413d-91ac-91a8ebfc8326">
+                <ac:parameter ac:name="language">js</ac:parameter>
+                <ac:parameter ac:name="theme">Midnight</ac:parameter>
+                <ac:parameter ac:name="title">Payment Order Consent Request Payload</ac:parameter>
+                <ac:parameter ac:name="linenumbers">true</ac:parameter>
+                <ac:plain-text-body><![CDATA[POST /domestic-payment-consents HTTP/1.1
+                    Authorization: Bearer 2YotnFZFEjr1zCsicMWpAA
+                    x-idempotency-key: FRESCO.21302.GFX.20
+                    x-jws-signature:
+                    TGlmZSdzIGEgam91cm5leSBub3QgYSBkZXN0aW5hdGlvbiA=..T2ggZ29vZCBldmVuaW5nIG1yIHR5bGVyIGdvaW5nIGRvd24gPw==
+                    x-fapi-auth-date: Sun, 10 Sep 2017 19:43:31 GMT
+                    x-fapi-customer-ip-address: 104.25.212.99
+                    x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
+                    Content-Type: application/json
+                    Accept: application/json
+
+                    {
+                    "Data": {
+                    "Initiation": {
+                    "InstructionIdentification": "ANSM023",
+                    "EndToEndIdentification": "FRESCO.21302.GFX.37",
+                    "LocalInstrument": "UK.OBIE.BalanceTransfer",
+                    "InstructedAmount": {
+                    "Amount": "3000.00",
+                    "Currency": "GBP"
+                    },
+                    "DebtorAccount": {
+                    "SchemeName": "UK.OBIE.PAN",
+                    "Identification": "5555555555554444",
+                    "Name": "Andrea Smith"
+                    },
+                    "CreditorAccount": {
+                    "SchemeName": "UK.OBIE.PAN",
+                    "Identification": "4444333322221111",
+                    "Name": "Andrea Smith"
+                    },
+                    "RemittanceInformation": {
+                    "Reference": "BT-OfferCode-12",
+                    "Unstructured": "Internal ops code 5120103"
+                    }
+                    }
+                    },
+                    "Risk": {
+                    "PaymentContextCode": "PartyToParty"
+                    }
+                    }
+
+
+                    ]]>
+                </ac:plain-text-body>
+            </ac:structured-macro>
+            <p class="auto-cursor-target"><br/></p></ac:layout-cell>
+        <ac:layout-cell><p class="auto-cursor-target"><strong>POST /domestic-payment-consents response</strong></p>
+            <ac:structured-macro ac:name="code" ac:schema-version="1"
+                                 ac:macro-id="ef91b66c-caab-4a10-960e-a1884fc58f4b">
+                <ac:parameter ac:name="language">js</ac:parameter>
+                <ac:parameter ac:name="theme">Midnight</ac:parameter>
+                <ac:parameter ac:name="title">Payment Order Consent Response Payload</ac:parameter>
+                <ac:parameter ac:name="linenumbers">true</ac:parameter>
+                <ac:plain-text-body><![CDATA[HTTP/1.1 201 Created
+                    x-jws-signature: V2hhdCB3ZSBnb3QgaGVyZQ0K..aXMgZmFpbHVyZSB0byBjb21tdW5pY2F0ZQ0K
+                    x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
+                    Content-Type: application/json
+
+                    {
+                    "Data": {
+                    "ConsentId": "7290",
+                    "Status": "AwaitingAuthorisation",
+                    "CreationDateTime": "2017-06-05T15:15:13+00:00",
+                    "StatusUpdateDateTime": "2017-06-05T15:15:13+00:00",
+                    "CutOffDateTime": "2017-06-05T17:30:00+00:00",
+                    "Initiation": {
+                    "InstructionIdentification": "ANSM023",
+                    "EndToEndIdentification": "FRESCO.21302.GFX.37",
+                    "LocalInstrument": "UK.OBIE.BalanceTransfer",
+                    "InstructedAmount": {
+                    "Amount": "3000.00",
+                    "Currency": "GBP"
+                    },
+                    "DebtorAccount": {
+                    "SchemeName": "UK.OBIE.PAN",
+                    "Identification": "5555555555554444",
+                    "Name": "Andrea Smith"
+                    },
+                    "CreditorAccount": {
+                    "SchemeName": "UK.OBIE.PAN",
+                    "Identification": "4444333322221111",
+                    "Name": "Andrea Smith"
+                    },
+                    "RemittanceInformation": {
+                    "Reference": "BT-OfferCode-12",
+                    "Unstructured": "Internal ops code 5120103"
+                    }
+                    }
+                    },
+                    "Risk": {
+                    "PaymentContextCode": "PartyToParty"
+                    },
+                    "Links": {
+                    "Self": "https://api.alphabank.com/open-banking/v3.1/pisp/domestic-payment-consents/7290"
+                    },
+                    "Meta": {}
+                    }
+                    ]]>
+                </ac:plain-text-body>
+            </ac:structured-macro>
+            <p class="auto-cursor-target"><br/></p></ac:layout-cell>
+    </ac:layout-section>
+    <ac:layout-section ac:type="single">
+        <ac:layout-cell><h2>Money Transfer</h2>
+            <p>Below in an example illustrating&nbsp;Money transfer from a card account to a bank account.&nbsp;</p>
+        </ac:layout-cell>
+    </ac:layout-section>
+    <ac:layout-section ac:type="two_equal">
+        <ac:layout-cell><p class="auto-cursor-target"><strong>POST /domestic-payment-consents request</strong></p>
+            <ac:structured-macro ac:name="code" ac:schema-version="1"
+                                 ac:macro-id="c1b229f0-7c80-4e6f-a9fb-0bfdcc49f252">
+                <ac:parameter ac:name="language">js</ac:parameter>
+                <ac:parameter ac:name="theme">Midnight</ac:parameter>
+                <ac:parameter ac:name="title">Payment Order Consent Request Payload</ac:parameter>
+                <ac:parameter ac:name="linenumbers">true</ac:parameter>
+                <ac:plain-text-body><![CDATA[POST /domestic-payment-consents HTTP/1.1
+                    Authorization: Bearer 2YotnFZFEjr1zCsicMWpAA
+                    x-idempotency-key: FRESCO.21302.GFX.20
+                    x-jws-signature:
+                    TGlmZSdzIGEgam91cm5leSBub3QgYSBkZXN0aW5hdGlvbiA=..T2ggZ29vZCBldmVuaW5nIG1yIHR5bGVyIGdvaW5nIGRvd24gPw==
+                    x-fapi-auth-date: Sun, 10 Sep 2017 19:43:31 GMT
+                    x-fapi-customer-ip-address: 104.25.212.99
+                    x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
+                    Content-Type: application/json
+                    Accept: application/json
+
+                    {
+                    "Data": {
+                    "Initiation": {
+                    "InstructionIdentification": "ANSM023",
+                    "EndToEndIdentification": "FRESCO.21302.GFX.37",
+                    "LocalInstrument": "UK.OBIE.MoneyTransfer",
+                    "InstructedAmount": {
+                    "Amount": "3000.00",
+                    "Currency": "GBP"
+                    },
+                    "DebtorAccount": {
+                    "SchemeName": "UK.OBIE.PAN",
+                    "Identification": "5555555555554444",
+                    "Name": "Andrea Smith"
+                    },
+                    "CreditorAccount": {
+                    "SchemeName": "UK.OBIE.SortCodeAccountNumber",
+                    "Identification": "11280001234567",
+                    "Name": "Andrea Smith"
+                    },
+                    "RemittanceInformation": {
+                    "Reference": "MT-OfferCode-24",
+                    "Unstructured": "Internal ops code 5120103"
+                    }
+                    }
+                    },
+                    "Risk": {
+                    "PaymentContextCode": "PartyToParty"
+                    }
+                    }
+
+
+                    ]]>
+                </ac:plain-text-body>
+            </ac:structured-macro>
+            <p class="auto-cursor-target"><br/></p></ac:layout-cell>
+        <ac:layout-cell><p class="auto-cursor-target"><strong>POST /domestic-payment-consents response</strong></p>
+            <ac:structured-macro ac:name="code" ac:schema-version="1"
+                                 ac:macro-id="c47dfd23-5c3b-4346-a754-8fed6183f80e">
+                <ac:parameter ac:name="language">js</ac:parameter>
+                <ac:parameter ac:name="theme">Midnight</ac:parameter>
+                <ac:parameter ac:name="title">Payment Order Consent Response Payload</ac:parameter>
+                <ac:parameter ac:name="linenumbers">true</ac:parameter>
+                <ac:plain-text-body><![CDATA[HTTP/1.1 201 Created
+                    x-jws-signature: V2hhdCB3ZSBnb3QgaGVyZQ0K..aXMgZmFpbHVyZSB0byBjb21tdW5pY2F0ZQ0K
+                    x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
+                    Content-Type: application/json
+
+                    {
+                    "Data": {
+                    "ConsentId": "7290",
+                    "Status": "AwaitingAuthorisation",
+                    "CreationDateTime": "2017-06-05T15:15:13+00:00",
+                    "StatusUpdateDateTime": "2017-06-05T15:15:13+00:00",
+                    "CutOffDateTime": "2017-06-05T17:30:00+00:00",
+                    "Initiation": {
+                    "InstructionIdentification": "ANSM023",
+                    "EndToEndIdentification": "FRESCO.21302.GFX.37",
+                    "LocalInstrument": "UK.OBIE.MoneyTransfer",
+                    "InstructedAmount": {
+                    "Amount": "3000.00",
+                    "Currency": "GBP"
+                    },
+                    "DebtorAccount": {
+                    "SchemeName": "UK.OBIE.PAN",
+                    "Identification": "5555555555554444",
+                    "Name": "Andrea Smith"
+                    },
+                    "CreditorAccount": {
+                    "SchemeName": "UK.OBIE.SortCodeAccountNumber",
+                    "Identification": "11280001234567",
+                    "Name": "Andrea Smith"
+                    },
+                    "RemittanceInformation": {
+                    "Reference": "MT-OfferCode-24",
+                    "Unstructured": "Internal ops code 5120103"
+                    }
+                    }
+                    },
+                    "Risk": {
+                    "PaymentContextCode": "PartyToParty"
+                    },
+                    "Links": {
+                    "Self": "https://api.alphabank.com/open-banking/v3.1/pisp/domestic-payment-consents/7290"
+                    },
+                    "Meta": {}
+                    }
+                    ]]>
+                </ac:plain-text-body>
+            </ac:structured-macro>
+            <p class="auto-cursor-target"><br/></p></ac:layout-cell>
+    </ac:layout-section>
+</ac:layout>
