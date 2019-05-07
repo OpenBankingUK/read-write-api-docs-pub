@@ -38,18 +38,13 @@
 - [Usage Examples](#usage-examples)
 	- [Merchant Initiation via PISP](#merchant-initiation-via-pisp)
 		- [Sequence Diagram](#sequence-diagram)
-		- [Illustrative Interactions](#illustrative-interactions)
-			- [Create Domestic Payment Order Consent](#create-domestic-payment-order-consent)
-			- [Confirm Funds on Domestic Payment Order Consent](#confirm-funds-on-domestic-payment-order-consent)
-			- [Create Domestic Payment Order](#create-domestic-payment-order)
-			- [Get Domestic Payment Order](#get-domestic-payment-order)
 	- [Person To Person Initiation via PISP](#person-to-person-initiation-via-pisp)
 		- [Sequence Diagram](#sequence-diagram-1)
-		- [Illustrative Interactions](#illustrative-interactions-1)
-			- [Create Domestic Payment Order Consent](#create-domestic-payment-order-consent-1)
-		- [Create Domestic Payment Order](#create-domestic-payment-order-1)
+		- [Illustrative Interactions](#illustrative-interactions)
+			- [Create Domestic Payment Order Consent](#create-domestic-payment-order-consent)
+		- [Create Domestic Payment Order](#create-domestic-payment-order)
 			- [Get Domestic Payment Order Consent](#get-domestic-payment-order-consent)
-		- [Get Domestic Payment Order](#get-domestic-payment-order-1)
+		- [Get Domestic Payment Order](#get-domestic-payment-order)
 	- [BACS Payment Order Consent](#bacs-payment-order-consent)
 	- [CHAPS Payment Order Consent](#chaps-payment-order-consent)
 	- [Balance Transfer](#balance-transfer)
@@ -517,59 +512,60 @@ In this scenario:
   
   ```
   participant PSU
-	participant Merchant
-	participant PISP
-	participant ASPSP Authorisation Server
-	participant ASPSP Resource Server
-	note over PSU, ASPSP Resource Server
-	Step 1: Agree Domestic Payment-Order Initiation
-	end note
-	PSU -> Merchant: Check-out and pay
-	Merchant -> PISP: Send request to setup domestic payment consent
-	note over PSU, ASPSP Resource Server
-	Step 2: Setup Domestic Payment-Order Consent
-	end note
-	PISP <-> ASPSP Authorisation Server: Establish TLS 1.2 MA
-	PISP -> ASPSP Authorisation Server: Initiate Client Credentials Grant
-	ASPSP Authorisation Server -> PISP: access-token
-	PISP <-> ASPSP Resource Server: Establish TLS 1.2 MA
-	PISP -> ASPSP Resource Server: POST /domestic-payment-consents
-	ASPSP Resource Server -> PISP: HTTP 201 (Created), ConsentId
-	PISP -> Merchant: HTTP 302 (Found), Redirect (ConsentId)
-	Merchant -> PSU: HTTP 302 (Found), Redirect (ConsentId)
-	note over PSU, ASPSP Resource Server
-	Step 3: Authorize consent
-	end note
-	PSU -> ASPSP Authorisation Server: Follow redirect (ConsentId)
-	PSU <-> ASPSP Authorisation Server: authenticate
-	PSU <-> ASPSP Authorisation Server: SCA if required
-	PSU <-> ASPSP Authorisation Server: Select debtor account
-	ASPSP Authorisation Server -> PSU: HTTP 302 (Found), Redirect (authorization-code)
-	PSU -> PISP: Follow redirect (authorization-code)
-	PISP <-> ASPSP Authorisation Server: Establish TLS 1.2 MA
-	PISP -> ASPSP Authorisation Server: Exchange authorization-code for access token
-	ASPSP Authorisation Server -> PISP: access-token
-	PISP -> PSU: HTTP 302 (Found), Redirect back to merchant
-	PSU -> Merchant: Follow redirect
-	note over PSU, ASPSP Resource Server
-	Step 4: Create Domestic Payment-Order
-	end note
-	PISP <-> ASPSP Resource Server: Establish TLS 1.2 MA
-	PISP -> ASPSP Resource Server: POST /domestic-payments
-	ASPSP Resource Server -> PISP: HTTP 201 (Created), DomesticPaymentId
-	note over PSU, ASPSP Resource Server
-	Step 5: Get Domestic Payment-Order status
-	end note
-	opt
-	Merchant -> PISP: Check payment status
-	PISP <-> ASPSP Resource Server: Establish TLS 1.2 MA
-	PISP -> ASPSP Resource Server: GET /domestic-payments/{DomesticPaymentId}
-	ASPSP Resource Server -> PISP: HTTP 200 (OK), domestic-payments resource
-	PISP -> Merchant: HTTP 200 (OK), Return domestic-payments Status
-	end opt
-	```
+participant Merchant
+participant PISP
+participant ASPSP Authorisation Server
+participant ASPSP Resource Server
+note over PSU, ASPSP Resource Server
+Step 1: Agree Domestic Payment-Order Initiation
+end note
+PSU -> Merchant: Check-out and pay
+Merchant -> PISP: Send request to setup domestic payment consent
+note over PSU, ASPSP Resource Server
+Step 2: Setup Domestic Payment-Order Consent
+end note
+PISP <-> ASPSP Authorisation Server: Establish TLS 1.2 MA
+PISP -> ASPSP Authorisation Server: Initiate Client Credentials Grant
+ASPSP Authorisation Server -> PISP: access-token
+PISP <-> ASPSP Resource Server: Establish TLS 1.2 MA
+PISP -> ASPSP Resource Server: POST /domestic-payment-consents
+ASPSP Resource Server -> PISP: HTTP 201 (Created), ConsentId
+PISP -> Merchant: HTTP 302 (Found), Redirect (ConsentId)
+Merchant -> PSU: HTTP 302 (Found), Redirect (ConsentId)
+note over PSU, ASPSP Resource Server
+Step 3: Authorize consent
+end note
+PSU -> ASPSP Authorisation Server: Follow redirect (ConsentId)
+PSU <-> ASPSP Authorisation Server: authenticate
+PSU <-> ASPSP Authorisation Server: SCA if required
+PSU <-> ASPSP Authorisation Server: Select debtor account
+ASPSP Authorisation Server -> PSU: HTTP 302 (Found), Redirect (authorization-code)
+PSU -> PISP: Follow redirect (authorization-code)
+PISP <-> ASPSP Authorisation Server: Establish TLS 1.2 MA
+PISP -> ASPSP Authorisation Server: Exchange authorization-code for access token
+ASPSP Authorisation Server -> PISP: access-token
+PISP -> PSU: HTTP 302 (Found), Redirect back to merchant
+PSU -> Merchant: Follow redirect
+note over PSU, ASPSP Resource Server
+Step 4: Create Domestic Payment-Order
+end note
+PISP <-> ASPSP Resource Server: Establish TLS 1.2 MA
+PISP -> ASPSP Resource Server: POST /domestic-payments
+ASPSP Resource Server -> PISP: HTTP 201 (Created), DomesticPaymentId
+note over PSU, ASPSP Resource Server
+Step 5: Get Domestic Payment-Order status
+end note
+opt
+Merchant -> PISP: Check payment status
+PISP <-> ASPSP Resource Server: Establish TLS 1.2 MA
+PISP -> ASPSP Resource Server: GET /domestic-payments/{DomesticPaymentId}
+ASPSP Resource Server -> PISP: HTTP 200 (OK), domestic-payments resource
+PISP -> Merchant: HTTP 200 (OK), Return domestic-payments Status
+end opt
+```
 
 </details>
+
 
 ### Illustrative Interactions
 
@@ -707,11 +703,13 @@ Accept: application/json
 
 **GET /domestic-payment-consents/{ConsentId}/funds-confirmation Response**
 
-```javascript
+```text
 HTTP/1.1 200 OK
 x-jws-signature: V2hhdCB3ZSBnb3QgaGVyZQ0K..aXMgZmFpbHVyZSB0byBjb21tdW5pY2F0ZQ0K
 x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Content-Type: application/json
+```
+```javascript
 {
     "Data": {
         "FundsAvailableResult": {
@@ -730,7 +728,7 @@ Content-Type: application/json
 
 **POST /domestic-payments Request**
 
-```javascript
+```text
 POST /domestic-payments HTTP/1.1
 Authorization: Bearer Jhingapulaav
 x-idempotency-key: FRESNO.1317.GFX.22
@@ -740,7 +738,8 @@ x-fapi-customer-ip-address: 104.25.212.99
 x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Content-Type: application/json
 Accept: application/json
- 
+```
+```javascript
 {
   "Data": {
     "ConsentId": "58923",
@@ -787,12 +786,14 @@ Accept: application/json
 
 **POST /domestic-payments Response**
 
-```javascript
+```text
 HTTP/1.1 201 Created
 x-jws-signature: V2hhdCB3ZSBnb3QgaGVyZQ0K..aXMgZmFpbHVyZSB0byBjb21tdW5pY2F0ZQ0K
 x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Content-Type: application/json
- 
+```
+
+```javascript
 {
   "Data": {
     "DomesticPaymentId": "58923-001",
@@ -830,7 +831,7 @@ Content-Type: application/json
 
 **GET /domestic-payment-consents/{ConsentId} Request**
 
-```javascript
+```text
 GET /domestic-payment-consents/58923 HTTP/1.1
 Authorization: Bearer Jhingapulaav
 x-fapi-auth-date: Sun, 10 Sep 2017 19:43:31 GMT
@@ -841,12 +842,14 @@ Accept: application/json
 
 **GET /domestic-payment-consents/{ConsentId} Response**
 
-```javascript
+```text
 HTTP/1.1 200 OK
 x-jws-signature: V2hhdCB3ZSBnb3QgaGVyZQ0K..aXMgZmFpbHVyZSB0byBjb21tdW5pY2F0ZQ0K
 x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Content-Type: application/json
- 
+```
+
+```javascript
 {
   "Data": {
     "ConsentId": "58923",
@@ -903,7 +906,7 @@ Content-Type: application/json
 
 **GET /domestic-payments/{DomesticPaymentId} Request**
 
-```javascript
+```text
 GET /domestic-payments/58923-001 HTTP/1.1
 Authorization: Bearer 2YotnFZFEjr1zCsicMWpAA
 x-fapi-auth-date:  Sun, 10 Sep 2017 19:43:31 GMT
@@ -914,12 +917,13 @@ Accept: application/json
 
 **GET /domestic-payments/{DomesticPaymentId} Response**
 
-```javascript
+```text
 HTTP/1.1 200 OK
 x-jws-signature: V2hhdCB3ZSBnb3QgaGVyZQ0K..aXMgZmFpbHVyZSB0byBjb21tdW5pY2F0ZQ0K
 x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Content-Type: application/json
- 
+
+```javascript
 {
   "Data": {
     "DomesticPaymentId": "58923-001",
@@ -1030,7 +1034,7 @@ end opt
 
 **POST /domestic-payment-consents request**
 
-```javascript
+```text
 POST /domestic-payment-consents HTTP/1.1
 Authorization: Bearer 2YotnFZFEjr1zCsicMWpAA
 x-idempotency-key: FRESCO.21302.GFX.20
@@ -1040,7 +1044,9 @@ x-fapi-customer-ip-address: 104.25.212.99
 x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Content-Type: application/json
 Accept: application/json
- 
+```
+
+```javascript
 {
   "Data": {
     "Initiation": {
@@ -1074,12 +1080,14 @@ Accept: application/json
 
 **POST /domestic-payment-consents response**
 
-```javascript
+```text
 HTTP/1.1 201 Created
 x-jws-signature: V2hhdCB3ZSBnb3QgaGVyZQ0K..aXMgZmFpbHVyZSB0byBjb21tdW5pY2F0ZQ0K
 x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Content-Type: application/json
- 
+```
+
+```javascript
 {
   "Data": {
     "ConsentId": "7290",
@@ -1123,7 +1131,7 @@ Content-Type: application/json
 
 **POST /domestic-payments request**
 
-```javascript
+```text
 POST /domestic-payments HTTP/1.1
 Authorization: Bearer 2YotnFZFEjr1zCsicMWpAA
 x-idempotency-key: FRESNO.1317.GFX.22
@@ -1133,7 +1141,9 @@ x-fapi-customer-ip-address: 104.25.212.99
 x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Content-Type: application/json
 Accept: application/json
- 
+```
+
+```javascript 
 {
   "Data": {
     "ConsentId": "7290",
@@ -1168,12 +1178,14 @@ Accept: application/json
 
 **POST /domestic-payments response**
 
-```javascript
+```text
 HTTP/1.1 201 Created
 x-jws-signature: V2hhdCB3ZSBnb3QgaGVyZQ0K..aXMgZmFpbHVyZSB0byBjb21tdW5pY2F0ZQ0K
 x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Content-Type: application/json
- 
+```
+
+```javascript
 {
   "Data": {
     "DomesticPaymentId": "7290-003",
@@ -1215,7 +1227,7 @@ Content-Type: application/json
 
 **GET /domestic-payment-consents/{ConsentId} request**
 
-```javascript
+```text
 GET /domestic-payment-consents/7290 HTTP/1.1
 Authorization: Bearer 2YotnFZFEjr1zCsicMWpAA
 x-fapi-auth-date:  Sun, 10 Sep 2017 19:43:31 GMT
@@ -1226,12 +1238,14 @@ Accept: application/json
 
 **GET /domestic-payment-consents/{ConsentId} response**
 
-```javascript
+```text
 HTTP/1.1 200 OK
 x-jws-signature: V2hhdCB3ZSBnb3QgaGVyZQ0K..aXMgZmFpbHVyZSB0byBjb21tdW5pY2F0ZQ0K
 x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Content-Type: application/json
- 
+```
+
+```javascript
 {
   "Data": {
     "ConsentId": "7290",
@@ -1275,7 +1289,7 @@ Content-Type: application/json
 
 **GET /domestic-payments/{DomesticPaymentId} request**
 
-```javascript
+```text
 GET /domestic-payments/7290-003 HTTP/1.1
 Authorization: Bearer 2YotnFZFEjr1zCsicMWpAA
 x-fapi-auth-date:  Sun, 10 Sep 2017 19:43:31 GMT
@@ -1286,12 +1300,14 @@ Accept: application/json
 
 **GET /domestic-payments/{DomesticPaymentId} response**
 
-```javascript
+```text
 HTTP/1.1 200 OK
 x-jws-signature: V2hhdCB3ZSBnb3QgaGVyZQ0K..aXMgZmFpbHVyZSB0byBjb21tdW5pY2F0ZQ0K
 x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Content-Type: application/json
- 
+```
+
+```javascript
 {
   "Data": {
     "DomesticPaymentId": "7290-003",
@@ -1335,7 +1351,7 @@ Use of LocalInstrument and CutOffDateTime.
 
 **POST /domestic-payment-consents request**
 
-```javascript
+```text
 POST /domestic-payment-consents HTTP/1.1
 Authorization: Bearer 2YotnFZFEjr1zCsicMWpAA
 x-idempotency-key: FRESCO.21302.GFX.20
@@ -1345,7 +1361,9 @@ x-fapi-customer-ip-address: 104.25.212.99
 x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Content-Type: application/json
 Accept: application/json
- 
+```
+
+```javascript
 {
   "Data": {
     "Initiation": {
@@ -1380,12 +1398,14 @@ Accept: application/json
 
 **POST /domestic-payment-consents response**
 
-```javascript
+```text
 HTTP/1.1 201 Created
 x-jws-signature: V2hhdCB3ZSBnb3QgaGVyZQ0K..aXMgZmFpbHVyZSB0byBjb21tdW5pY2F0ZQ0K
 x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Content-Type: application/json
- 
+```
+
+```javascript
 {
   "Data": {
     "ConsentId": "7290",
@@ -1433,7 +1453,7 @@ Use of LocalInstrument, CreditorPostalAddress, CutOffDateTime and Charges.
 
 **POST /domestic-payment-consents request**
 
-```javascript
+```text
 POST /domestic-payment-consents HTTP/1.1
 Authorization: Bearer 2YotnFZFEjr1zCsicMWpAA
 x-idempotency-key: FRESCO.21302.GFX.20
@@ -1443,7 +1463,9 @@ x-fapi-customer-ip-address: 104.25.212.99
 x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Content-Type: application/json
 Accept: application/json
- 
+```
+
+```javascript
 {
   "Data": {
     "Initiation": {
@@ -1486,12 +1508,14 @@ Accept: application/json
 
 **POST /domestic-payment-consents response**
 
-```javascript
+```text
 HTTP/1.1 201 Created
 x-jws-signature: V2hhdCB3ZSBnb3QgaGVyZQ0K..aXMgZmFpbHVyZSB0byBjb21tdW5pY2F0ZQ0K
 x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Content-Type: application/json
- 
+```
+
+```javascript
 {
    "Data":{
       "ConsentId":"7290",
@@ -1559,7 +1583,7 @@ Example below:
 
 **POST /domestic-payment-consents request**
 
-```javascript
+```text
 POST /domestic-payment-consents HTTP/1.1
 Authorization: Bearer 2YotnFZFEjr1zCsicMWpAA
 x-idempotency-key: FRESCO.21302.GFX.20
@@ -1569,7 +1593,9 @@ x-fapi-customer-ip-address: 104.25.212.99
 x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Content-Type: application/json
 Accept: application/json
- 
+```
+
+```javascript
 {
     "Data": {
         "Initiation": {
@@ -1600,17 +1626,18 @@ Accept: application/json
         "PaymentContextCode": "PartyToParty"
     }
 }
-
 ```
 
 **POST /domestic-payment-consents response**
 
-```javascript
+```text
 HTTP/1.1 201 Created
 x-jws-signature: V2hhdCB3ZSBnb3QgaGVyZQ0K..aXMgZmFpbHVyZSB0byBjb21tdW5pY2F0ZQ0K
 x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Content-Type: application/json
- 
+```
+
+```javascript
 {
     "Data": {
         "ConsentId": "7290",
@@ -1650,7 +1677,6 @@ Content-Type: application/json
     },
     "Meta": {}
 }
-
 ```
 
 ## Money Transfer
@@ -1658,7 +1684,7 @@ Below in an example illustrating Money transfer from a card account to a bank ac
 
 **POST /domestic-payment-consents request**
 
-```javascript
+```text
 POST /domestic-payment-consents HTTP/1.1
 Authorization: Bearer 2YotnFZFEjr1zCsicMWpAA
 x-idempotency-key: FRESCO.21302.GFX.20
@@ -1668,7 +1694,9 @@ x-fapi-customer-ip-address: 104.25.212.99
 x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Content-Type: application/json
 Accept: application/json
- 
+```
+
+```javascript
 {
     "Data": {
         "Initiation": {
@@ -1749,5 +1777,4 @@ Content-Type: application/json
     },
     "Meta": {}
 }
-
 ```
