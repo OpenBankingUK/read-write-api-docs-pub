@@ -76,6 +76,7 @@ The usage of this API endpoint will be subject to an ASPSP's fair usage policies
 ### Account Access Consent Status
 Once the PSU authorises the account-access-consent resource - the Status of the account-access-consent resource will be updated with "Authorised".
 The available Status code-list enumerations for the account-access-consent resource are:
+
  |  |Status |Status Description |
 | --- |--- |--- |
 | 1 |Rejected |The account access consent has been rejected. |
@@ -143,8 +144,7 @@ Notes:
 
 # Usage Examples
 ## Setup Account Access Consent - All Permissions Granted
-### Request
-**Post Account Access Consents Request**
+### Post Account Access Consents Request
 ```javascript
 POST /account-access-consents HTTP/1.1
 Authorization: Bearer 2YotnFZFEjr1zCsicMWpAA
@@ -180,8 +180,7 @@ Accept: application/json
   "Risk": {}
 }
 ```
-### Response
-**Post Account Access Consents Response**
+### Post Account Access Consents Response
 ```javascript
 HTTP/1.1 201 Created
 x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
@@ -226,9 +225,8 @@ Content-Type: application/json
 ```
 
 ## Status - AwaitingAuthorisation
-This is an example of a GET request which is made before the account access consent resource is authorised. 
-### Request
-**Get Account Access Consents Request**
+This is an example of a GET request which is made **before** the account access consent resource is authorised. 
+### Get Account Access Consents Request
 ```javascript
 GET /account-access-consents/urn-alphabank-intent-88379 HTTP/1.1
 Authorization: Bearer 2YotnFZFEjr1zCsicMWpAA
@@ -237,8 +235,7 @@ x-fapi-customer-ip-address: 104.25.212.99
 x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Accept: application/json
 ```
-### Response
-**Get Account Access Consents Response**
+### Get Account Access Consents Response
 ```javascript
 HTTP/1.1 200 OK
 x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
@@ -406,3 +403,4 @@ Content-Type: application/json
 }
 ```
 
+   [AccountTransactionAPIProfileV312RC1]: <https://openbanking.atlassian.net/wiki/spaces/OBT/pages/1052508498/Account+and+Transaction+API+Profile+-+v3.1.2+RC1>
