@@ -566,7 +566,8 @@ In this scenario:
 	PISP -> ASPSP Resource Server: GET /domestic-payments/{DomesticPaymentId}
 	ASPSP Resource Server -> PISP: HTTP 200 (OK), domestic-payments resource
 	PISP -> Merchant: HTTP 200 (OK), Return domestic-payments Status
-	end opt```
+	end opt
+	```
 
 </details>
 
