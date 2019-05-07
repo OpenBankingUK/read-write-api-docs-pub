@@ -96,6 +96,7 @@ The OBReadConsent1 object will be used for the call to:
 
 ### UML Diagram
 ![UML Diagram$](images/OBReadConsent1_DataModel.gif"UML Diagram")
+
 Notes:
 * The fields in the OBReadConsent1 object are described in the Consent Elements section.
 * No fields have been identified for the Risk section.
@@ -119,6 +120,7 @@ And response to:
 
 ### UML Diagram
 ![UML Diagram$](images/OBReadConsentResponse1_DataModel.gif"UML Diagram")
+
 Notes:
 * The OBReadConsentResponse1 object contains the same information as the OBReadConsent1, but with additional fields:
     * ConsentId - to uniquely identify the account-access-consent resource.
