@@ -169,6 +169,7 @@
                 <ac:inline-comment-marker ac:ref="19d03b39-edf8-426a-8f5a-f294705741c3">Version Control
                 </ac:inline-comment-marker>
             
+
             
 ```
 
@@ -210,7 +211,7 @@
 
 
                     
-                        <time datetime="2018-12-03"/> 
+                          
                     
 
 
@@ -234,7 +235,7 @@
 
 
                     
-                        <time datetime="2018-12-18"/> 
+                          
                     
 
 
@@ -258,7 +259,7 @@
 
 
                     
-                        <time datetime="2019-02-27"/> 
+                          
                     
 
 
@@ -298,7 +299,7 @@
 
 
                     
-                        <time datetime="2019-03-08"/> 
+                          
                     
 
 
@@ -356,7 +357,7 @@
 
 
                     
-                        <time datetime="2019-03-22"/> 
+                          
                     
 
 
@@ -389,6 +390,7 @@ v4.0-RC1 changes:
 
             
 # Endpoints
+
             
 ```
 
@@ -756,6 +758,7 @@ v4.0-RC1 changes:
 
             
 ## POST /domestic-payment-consents 
+
             <ac:structured-macro ac:name="code" ac:schema-version="1"
                                  ac:macro-id="bbcbf706-e2c6-4d2a-a3d3-4a3f6ba2936b">
                 <ac:parameter ac:name="language">text</ac:parameter>
@@ -801,6 +804,7 @@ v4.0-RC1 changes:
             
             
 ### Status
+
             
 
  The default Status is "AwaitingAuthorisation&quot; immediately after the domestic-payment-consent
@@ -841,6 +845,7 @@ v4.0-RC1 changes:
 
             
 ## GET /domestic-payment-consents/{ConsentId}
+
             <ac:structured-macro ac:name="code" ac:schema-version="1"
                                  ac:macro-id="8f7d84a3-9020-4ae0-9762-3b3c395e333e">
                 <ac:parameter ac:name="language">text</ac:parameter>
@@ -856,6 +861,7 @@ v4.0-RC1 changes:
 
             
 ### Status
+
             
 
  Once the PSU authorises the payment-consent resource - the Status of the&nbsp;payment-consent
@@ -940,6 +946,7 @@ v4.0-RC1 changes:
 
             
 ## GET /domestic-payment-consents/{ConsentId}/funds-confirmation
+
             <ac:structured-macro ac:name="code" ac:schema-version="1"
                                  ac:macro-id="c95a7dba-76e3-4308-8be6-8fb1a5f1623b">
                 <ac:parameter ac:name="language">text</ac:parameter>
@@ -957,8 +964,8 @@ v4.0-RC1 changes:
             
                 
 - An ASPSP can only respond to a funds confirmation request if the  **domestic-payment-consent ** resource
-                    has an <code>Authorised</code> status. If the status is not <code>Authorised</code>, an ASPSP
-                     **must**  respond with a 400 (Bad Request) and a <code>UK.OBIE.Resource.InvalidConsentStatus</code>&nbsp;error
+                    has an `Authorised` status. If the status is not `Authorised`, an ASPSP
+                     **must**  respond with a 400 (Bad Request) and a `UK.OBIE.Resource.InvalidConsentStatus`&nbsp;error
                     code.
                 
 
@@ -967,7 +974,9 @@ v4.0-RC1 changes:
                 
 
             
-            <h2 class="auto-cursor-target">POST /domestic-payments
+            
+## POST /domestic-payments
+
             <ac:structured-macro ac:name="code" ac:schema-version="1"
                                  ac:macro-id="c4b9a325-e3b3-4b57-9df3-f6aee93d3240">
                 <ac:parameter ac:name="language">text</ac:parameter>
@@ -1006,6 +1015,7 @@ v4.0-RC1 changes:
             
             
 ### Status
+
             
 
  A domestic-payment can only be created if its corresponding&nbsp;domestic-payment-consent resource
@@ -1101,6 +1111,7 @@ v4.0-RC1 changes:
 
             
 ## GET /domestic-payments/{DomesticPaymentId}
+
             <ac:structured-macro ac:name="code" ac:schema-version="1"
                                  ac:macro-id="85e8e4a8-e792-42bd-b85f-b6c591bde75f">
                 <ac:parameter ac:name="language">text</ac:parameter>
@@ -1115,6 +1126,7 @@ v4.0-RC1 changes:
 
             
 ### Status
+
             
 
  The domestic-payment resource must have one of the following&nbsp;PaymentStatusCode code-set
@@ -1205,6 +1217,7 @@ v4.0-RC1 changes:
 
             
 ## GET /domestic-payments/{DomesticPaymentId}/payment-details
+
             <ac:structured-macro ac:name="code" ac:schema-version="1"
                                  ac:macro-id="6ab4f90b-d453-4388-8d38-d6cd0a01cd95">
                 <ac:parameter ac:name="language">text</ac:parameter>
@@ -1222,6 +1235,7 @@ v4.0-RC1 changes:
 
             
 ### Status
+
             
 
  The domestic-payment - payment-details must have one of the following&nbsp;PaymentStatusCode
@@ -1452,8 +1466,10 @@ v4.0-RC1 changes:
 
             
 ## State Model
+
             
 ### Payment Order Consent
+
             
 
  The state model for the domestic-payment-consent resource follows the generic consent state model.
@@ -1591,6 +1607,7 @@ v4.0-RC1 changes:
 
             
 ### Payment Order
+
             
 
  The state model for the domestic-payment resource follows the behaviour and definitions for the ISO 20022
@@ -1763,6 +1780,7 @@ v4.0-RC1 changes:
 
             
 #### Multiple Authorisation
+
             
 
  If the payment-order requires multiple authorisations - the Status of the multiple authorisations will be
@@ -1877,6 +1895,7 @@ v4.0-RC1 changes:
 
             
 # Data Model
+
             
 
  The data dictionary section gives the detail on the payload content for the Domestic Payment API
@@ -1884,8 +1903,10 @@ v4.0-RC1 changes:
 
             
 ## Reused Classes
+
             
 ### OBDomestic2
+
             
 
  This section describes the
@@ -1900,6 +1921,7 @@ v4.0-RC1 changes:
                 <ac:inline-comment-marker ac:ref="41e6f785-2fe1-475b-8cef-d655041ccc0e">Diagram
                 </ac:inline-comment-marker>
             
+
             
 
  
@@ -1910,6 +1932,7 @@ v4.0-RC1 changes:
 
             
 ####  **Notes** 
+
             
 
  For the OBDomestic2 Initiation object:&nbsp;&nbsp;
@@ -2000,6 +2023,7 @@ v4.0-RC1 changes:
             
             
 #### Data Dictionary
+
             
 ```
 
@@ -3958,6 +3982,7 @@ v4.0-RC1 changes:
 
             
 ## Domestic Payment Consent - Request
+
             
 
  The OBWriteDomesticConsent3 object will be used for the call to:
@@ -3969,6 +3994,7 @@ v4.0-RC1 changes:
             
             
 ### UML Diagram
+
             
 
  
@@ -3979,6 +4005,7 @@ v4.0-RC1 changes:
 
             
 ###  **Notes** 
+
             
 
  The domestic-payment-consent  **request** &nbsp;contains these objects:
@@ -3999,6 +4026,7 @@ v4.0-RC1 changes:
             
             
 ### Data Dictionary
+
             
 ```
 
@@ -4226,6 +4254,7 @@ v4.0-RC1 changes:
 
             
 ## Domestic Payment Consent -&nbsp;Response
+
             
 
  The OBWriteDomesticConsentResponse3 object will be used for a response to a call to:
@@ -4240,6 +4269,7 @@ v4.0-RC1 changes:
             
             
 ### UML Diagram
+
             
 
  
@@ -4250,6 +4280,7 @@ v4.0-RC1 changes:
 
             
 ###  **Notes** 
+
             
 
  The
@@ -4296,6 +4327,7 @@ v4.0-RC1 changes:
             
             
 ### Data Dictionary
+
             
 ```
 
@@ -4832,6 +4864,7 @@ v4.0-RC1 changes:
 
             
 ## Domestic Payment Consent Confirmation of Funds - Response
+
             
 
  The OBWriteFundsConfirmationResponse1 object will be used for a response to a call to:
@@ -4843,6 +4876,7 @@ v4.0-RC1 changes:
             
             
 ### UML Diagram
+
             
 
  
@@ -4853,6 +4887,7 @@ v4.0-RC1 changes:
 
             
 ###  **Notes** 
+
             
 
  The confirmation of funds response&nbsp;contains the result of a funds availability&nbsp;check, or SupplementaryData.
@@ -4860,6 +4895,7 @@ v4.0-RC1 changes:
 
             
 ### Data Dictionary
+
             
 ```
 
@@ -5121,6 +5157,7 @@ v4.0-RC1 changes:
 
             
 ## Domestic Payment -&nbsp;Request
+
             
 
  The OBWriteDomestic2 object will be used for a call to:
@@ -5132,6 +5169,7 @@ v4.0-RC1 changes:
             
             
 ### UML Diagram
+
             
 
  
@@ -5142,6 +5180,7 @@ v4.0-RC1 changes:
 
             
 ###  **Notes** 
+
             
 
  The domestic-payment  **request**  object contains the: 
@@ -5164,6 +5203,7 @@ v4.0-RC1 changes:
 
             
 ### Data Dictionary
+
             
 ```
 
@@ -5394,6 +5434,7 @@ v4.0-RC1 changes:
 
             
 ## Domestic Payment -&nbsp;Response
+
             
 
  The OBWriteDomesticResponse2 object will be used for a response to a call to:
@@ -5408,6 +5449,7 @@ v4.0-RC1 changes:
             
             
 ### UML Diagram
+
             
 
  
@@ -5418,6 +5460,7 @@ v4.0-RC1 changes:
 
             
 ###  **Notes** 
+
             
 
  The domestic-payment  **response** &nbsp;object contains the:&nbsp;
@@ -5468,6 +5511,7 @@ v4.0-RC1 changes:
             
             
 ### Data Dictionary
+
             
 ```
 
@@ -5947,6 +5991,7 @@ v4.0-RC1 changes:
 
             
 ## Domestic Payment Order - Payment Details - Response
+
             
 
  The OBWritePaymentDetailsResponse1&nbsp;object will be used for a response to a call to:
@@ -5958,6 +6003,7 @@ v4.0-RC1 changes:
             
             
 ### UML Diagram
+
             
 
  
@@ -5968,6 +6014,7 @@ v4.0-RC1 changes:
 
             
 ### Data Dictionary
+
             
 ```
 
@@ -6124,11 +6171,13 @@ v4.0-RC1 changes:
 ```
 
             
-# Usage Examples</ac:layout-cell>
+# Usage Examples
+</ac:layout-cell>
     </ac:layout-section>
     <ac:layout-section ac:type="single">
         <ac:layout-cell>
 ## Merchant Initiation via PISP
+
             
 
  This example set of flows and payload examples are for a domestic payment initiated by a merchant via a
@@ -6152,6 +6201,7 @@ v4.0-RC1 changes:
             
             
 ### Sequence Diagram
+
             
 
  
@@ -6231,6 +6281,7 @@ v4.0-RC1 changes:
             </ac:structured-macro>
             
 ### Illustrative Interactions
+
             
 
  Notes:
@@ -6246,7 +6297,8 @@ v4.0-RC1 changes:
     </ac:layout-section>
     <ac:layout-section ac:type="single">
         <ac:layout-cell>
-#### Create Domestic Payment Order Consent</ac:layout-cell>
+#### Create Domestic Payment Order Consent
+</ac:layout-cell>
     </ac:layout-section>
     <ac:layout-section ac:type="two_equal">
         <ac:layout-cell>
@@ -6392,7 +6444,8 @@ v4.0-RC1 changes:
     </ac:layout-section>
     <ac:layout-section ac:type="single">
         <ac:layout-cell>
-#### Confirm Funds on Domestic Payment Order Consent</ac:layout-cell>
+#### Confirm Funds on Domestic Payment Order Consent
+</ac:layout-cell>
     </ac:layout-section>
     <ac:layout-section ac:type="two_equal">
         <ac:layout-cell>
@@ -6454,7 +6507,8 @@ v4.0-RC1 changes:
     </ac:layout-section>
     <ac:layout-section ac:type="single">
         <ac:layout-cell>
-#### Create Domestic Payment Order</ac:layout-cell>
+#### Create Domestic Payment Order
+</ac:layout-cell>
     </ac:layout-section>
     <ac:layout-section ac:type="two_equal">
         <ac:layout-cell>
@@ -6582,7 +6636,8 @@ v4.0-RC1 changes:
     </ac:layout-section>
     <ac:layout-section ac:type="single">
         <ac:layout-cell>
-#### Get Domestic Payment Order Consent</ac:layout-cell>
+#### Get Domestic Payment Order Consent
+</ac:layout-cell>
     </ac:layout-section>
     <ac:layout-section ac:type="two_equal">
         <ac:layout-cell>
@@ -6683,7 +6738,8 @@ v4.0-RC1 changes:
     </ac:layout-section>
     <ac:layout-section ac:type="single">
         <ac:layout-cell>
-#### Get Domestic Payment Order</ac:layout-cell>
+#### Get Domestic Payment Order
+</ac:layout-cell>
     </ac:layout-section>
     <ac:layout-section ac:type="two_equal">
         <ac:layout-cell>
@@ -6767,6 +6823,7 @@ v4.0-RC1 changes:
     <ac:layout-section ac:type="single">
         <ac:layout-cell>
 ## Person To Person Initiation via PISP
+
             
 
  This example set of flows and payload examples are for a domestic payment initiated by a person to
@@ -6790,6 +6847,7 @@ v4.0-RC1 changes:
             
             
 ### Sequence Diagram
+
             
 
  
@@ -6858,11 +6916,13 @@ v4.0-RC1 changes:
                 </ac:plain-text-body>
             </ac:structured-macro>
             
-### Illustrative Interactions</ac:layout-cell>
+### Illustrative Interactions
+</ac:layout-cell>
     </ac:layout-section>
     <ac:layout-section ac:type="single">
         <ac:layout-cell>
-#### Create Domestic Payment Order Consent</ac:layout-cell>
+#### Create Domestic Payment Order Consent
+</ac:layout-cell>
     </ac:layout-section>
     <ac:layout-section ac:type="two_equal">
         <ac:layout-cell>
@@ -6984,7 +7044,8 @@ v4.0-RC1 changes:
     </ac:layout-section>
     <ac:layout-section ac:type="single">
         <ac:layout-cell>
-#### Create Domestic Payment Order</ac:layout-cell>
+#### Create Domestic Payment Order
+</ac:layout-cell>
     </ac:layout-section>
     <ac:layout-section ac:type="two_equal">
         <ac:layout-cell>
@@ -7105,7 +7166,8 @@ v4.0-RC1 changes:
     </ac:layout-section>
     <ac:layout-section ac:type="single">
         <ac:layout-cell>
-#### Get Domestic Payment Order Consent</ac:layout-cell>
+#### Get Domestic Payment Order Consent
+</ac:layout-cell>
     </ac:layout-section>
     <ac:layout-section ac:type="two_equal">
         <ac:layout-cell>
@@ -7194,7 +7256,8 @@ v4.0-RC1 changes:
     </ac:layout-section>
     <ac:layout-section ac:type="single">
         <ac:layout-cell>
-#### Get Domestic Payment Order</ac:layout-cell>
+#### Get Domestic Payment Order
+</ac:layout-cell>
     </ac:layout-section>
     <ac:layout-section ac:type="two_equal">
         <ac:layout-cell>
@@ -7282,6 +7345,7 @@ v4.0-RC1 changes:
     <ac:layout-section ac:type="single">
         <ac:layout-cell>
 ## BACS Payment Order Consent
+
             
 
  Use of LocalInstrument and CutOffDateTime.
@@ -7411,6 +7475,7 @@ v4.0-RC1 changes:
     <ac:layout-section ac:type="single">
         <ac:layout-cell>
 ## CHAPS Payment Order Consent
+
             
 
  Use of LocalInstrument, CreditorPostalAddress, <span
@@ -7565,7 +7630,9 @@ v4.0-RC1 changes:
 </ac:layout-cell>
     </ac:layout-section>
     <ac:layout-section ac:type="single">
-        <ac:layout-cell><h2 class="auto-cursor-target">Balance Transfer
+        <ac:layout-cell>
+## Balance Transfer
+
             
 
  Below in an example illustrating a balance transfer offer available on a Card A.
@@ -7700,6 +7767,7 @@ v4.0-RC1 changes:
     <ac:layout-section ac:type="single">
         <ac:layout-cell>
 ## Money Transfer
+
             
 
  Below in an example illustrating Money transfer from a card account to a bank account.&nbsp;
