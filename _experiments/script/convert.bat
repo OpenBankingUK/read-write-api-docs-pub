@@ -4,12 +4,12 @@ rem rm -rf out
 
 xcopy .\in\*.html .\out\*.md /i /s /q
 
-grep -rl h1 ./out/*.md | xargs sed -i "s/<h1[^>]*>/\n# /g"
-grep -rl h2 ./out/*.md | xargs sed -i "s/<h2[^>]*>/\n## /g"
-grep -rl h3 ./out/*.md | xargs sed -i "s/<h3[^>]*>/\n### /g"
-grep -rl h4 ./out/*.md | xargs sed -i "s/<h4[^>]*>/\n#### /g"
-grep -rl h5 ./out/*.md | xargs sed -i "s/<h5[^>]*>/\n##### /g"
-grep -rl h6 ./out/*.md | xargs sed -i "s/<h6[^>]*>/\n##### /g"
+grep -rl h1 ./out/*.md | xargs sed -i "s/<h1[^>]*>/\n## /g"
+grep -rl h2 ./out/*.md | xargs sed -i "s/<h2[^>]*>/\n### /g"
+grep -rl h3 ./out/*.md | xargs sed -i "s/<h3[^>]*>/\n#### /g"
+grep -rl h4 ./out/*.md | xargs sed -i "s/<h4[^>]*>/\n##### /g"
+grep -rl h5 ./out/*.md | xargs sed -i "s/<h5[^>]*>/\n###### /g"
+grep -rl h6 ./out/*.md | xargs sed -i "s/<h6[^>]*>/\n####### /g"
 
 grep -rl h1 ./out/*.md | xargs sed -i "s/<\/h1>/\n/g"
 grep -rl h2 ./out/*.md | xargs sed -i "s/<\/h2>/\n/g"
@@ -76,5 +76,9 @@ grep -rl code ./out/*.md | xargs sed -i -E "s/<\/code>/`/g"
 
 grep -rl pre ./out/*.md | xargs sed -i "s/<\/pre>//g"
 grep -rl html ./out/*.md | xargs sed -i "s/<\/html>//g"
+
+grep -rl lt ./out/*.md | xargs sed -i "s/&lt;/</g"
+grep -rl gt ./out/*.md | xargs sed -i "s/&gt;/>/g"
+grep -rl quot ./out/*.md | xargs sed -i "s/&quot;/\"/g"
 
 cd script

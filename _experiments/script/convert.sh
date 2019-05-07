@@ -1,11 +1,11 @@
 cp $1 $1.out
 
-grep -rl h1 $1.out | xargs sed -i 's/<h1[^>]*>/\n# /g'
-grep -rl h2 $1.out | xargs sed -i 's/<h2[^>]*>/\n## /g'
-grep -rl h3 $1.out | xargs sed -i 's/<h3[^>]*>/\n### /g'
-grep -rl h4 $1.out | xargs sed -i 's/<h4[^>]*>/\n#### /g'
-grep -rl h5 $1.out | xargs sed -i 's/<h5[^>]*>/\n##### /g'
-grep -rl h6 $1.out | xargs sed -i 's/<h6[^>]*>/\n##### /g'
+grep -rl h1 $1.out | xargs sed -i 's/<h1[^>]*>/\n## /g'
+grep -rl h2 $1.out | xargs sed -i 's/<h2[^>]*>/\n### /g'
+grep -rl h3 $1.out | xargs sed -i 's/<h3[^>]*>/\n#### /g'
+grep -rl h4 $1.out | xargs sed -i 's/<h4[^>]*>/\n##### /g'
+grep -rl h5 $1.out | xargs sed -i 's/<h5[^>]*>/\n###### /g'
+grep -rl h6 $1.out | xargs sed -i 's/<h6[^>]*>/\n####### /g'
 
 grep -rl h1 $1.out | xargs sed -i 's/<\/h1>/\n/g'
 grep -rl h2 $1.out | xargs sed -i 's/<\/h2>/\n/g'
@@ -72,3 +72,7 @@ grep -rl code $1.out | xargs sed -i -E 's/<\/code>/`/g'
 
 grep -rl pre $1.out | xargs sed -i 's/<\/pre>//g'
 grep -rl html $1.out | xargs sed -i 's/<\/html>//g'
+
+grep -rl lt $1.out | xargs sed -i 's/&lt;/</g'
+grep -rl gt $1.out | xargs sed -i 's/&gt;/>/g'
+grep -rl quot $1.out | xargs sed -i 's/&quot;/\"/g'
