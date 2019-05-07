@@ -1,6 +1,7 @@
 # Accounts v3.1.2
 # Endpoints
 Endpoints for the resource - and available methods.
+
  |  |Resource |HTTP Operation |Endpoint |Mandatory? |Scope |Grant Type |Idempotency Key |Parameters |Request Object |Response Object |
 | --- |--- |--- |--- |--- |--- |--- |--- |--- |--- |--- |
 | 1 |accounts |GET |GET /accounts |Mandatory |accounts |Authorization Code |No |Pagination | |OBReadAccount4 |
@@ -49,10 +50,10 @@ Endpoints for the resource - and available methods.
 ## Permission Codes
  The resource differs depending on the permissions (ReadAccountsBasic and ReadAccountsDetail) used to access the resource. In the event that the resource is accessed with both ReadAccountsBasic and ReadAccountsDetail, the most detailed level (ReadAccountsDetail) must be used.
 
-- These objects  **must not ** be returned  **without**  the  **ReadAccountsDetail ** permission:
+- These objects  **must not** be returned  **without**  the  **ReadAccountsDetail** permission:
     - OBReadAccount4/Data/Account/Account
     - OBReadAccount4/Data/Account/Servicer
-- If the  **ReadAccountsDetail**  ** ** is granted by the PSU:
+- If the  **ReadAccountsDetail** is granted by the PSU:
     - OBReadAccount4/Data/Account/Account  **must**  be returned (1..n)
     - OBReadAccount4/Data/Account/Servicer  **may**  be returned if applicable to the account and ASPSP (0..1)
 
