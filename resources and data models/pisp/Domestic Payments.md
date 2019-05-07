@@ -525,7 +525,7 @@ Notes:
 
 **POST /domestic-payment-consents request** 
 
-```javascript
+```text
 POST /domestic-payment-consents HTTP/1.1
 Authorization: Bearer 2YotnFZFEjr1zCsicMWpAA
 x-idempotency-key: FRESCO.21302.GFX.20
@@ -535,6 +535,8 @@ x-fapi-customer-ip-address: 104.25.212.99
 x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Content-Type: application/json
 Accept: application/json
+```
+```javascript
 {
   "Data": {
     "Initiation": {
@@ -579,11 +581,13 @@ Accept: application/json
 ```
 **POST  /domestic-payment-consents response**
 
-```javascript
+```text
 HTTP/1.1 201 Created
 x-jws-signature: V2hhdCB3ZSBnb3QgaGVyZQ0K..aXMgZmFpbHVyZSB0byBjb21tdW5pY2F0ZQ0K
 x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Content-Type: application/json
+```
+```javascript
 {
   "Data": {
     "ConsentId": "58923",
@@ -640,7 +644,7 @@ Content-Type: application/json
 
 **GET /domestic-payment-consents/{ConsentId}/funds-confirmation Request**
 
-```javascript
+```text
 GET /domestic-payment-consents/58923/funds-confirmation HTTP/1.1
 Authorization: Bearer Jhingapulaav
 x-fapi-auth-date: Sun, 10 Sep 2017 19:43:31 GMT
@@ -870,7 +874,7 @@ HTTP/1.1 200 OK
 x-jws-signature: V2hhdCB3ZSBnb3QgaGVyZQ0K..aXMgZmFpbHVyZSB0byBjb21tdW5pY2F0ZQ0K
 x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Content-Type: application/json
-
+```
 ```javascript
 {
   "Data": {
@@ -1643,7 +1647,6 @@ x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Content-Type: application/json
 Accept: application/json
 ```
-
 ```javascript
 {
     "Data": {
