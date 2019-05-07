@@ -95,7 +95,7 @@ The OBReadConsent1 object will be used for the call to:
 * POST /account-access-consents
 
 ### UML Diagram
-![UML Diagram$](images/OBReadConsent1_DataModel.gif"UML Diagram")
+![UML Diagram$](images/OBReadConsent1_DataModel.gif "UML Diagram")
 
 Notes:
 * The fields in the OBReadConsent1 object are described in the Consent Elements section.
@@ -119,7 +119,7 @@ And response to:
 * POST /account-access-consents
 
 ### UML Diagram
-![UML Diagram$](images/OBReadConsentResponse1_DataModel.gif"UML Diagram")
+![UML Diagram$](images/OBReadConsentResponse1_DataModel.gif "UML Diagram")
 
 Notes:
 * The OBReadConsentResponse1 object contains the same information as the OBReadConsent1, but with additional fields:
