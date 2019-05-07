@@ -9,7 +9,7 @@ Endpoints for the resource - and available methods.
 
 ## GET /accounts
 
- The first step for an AISP after an account-request is authorised - is to call the GET /accounts endpoint. 
+ >The first step for an AISP after an account-request is authorised - is to call the GET /accounts endpoint. 
 
  An AISP will be given the full list of accounts (the AccountId(s)) that the PSU has authorised the AISP to access. The AccountId(s) returned may then be used to retrieve other resources for a specific AccountId. The selection of authorised accounts happens  **only**  at the ASPSP's interface.
 
