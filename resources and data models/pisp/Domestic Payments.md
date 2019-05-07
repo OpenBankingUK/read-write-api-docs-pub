@@ -116,7 +116,7 @@ The API endpoint allows the PISP to ask an ASPSP to confirm funds on a **domesti
 * An ASPSP can only respond to a funds confirmation request if the **domestic-payment-consent** resource has an Authorised status. If the status is not Authorised, an ASPSP must respond with a 400 (Bad Request) and a ```UK.OBIE.Resource.InvalidConsentStatus``` error code.
 * Confirmation of funds requests do not affect the status of the **domestic-payment-consent** resource.
 
-## POST /domestic-payments
+## POST&nbsp;/domestic-payments
 
 ```POST /domestic-payments```
 
@@ -170,6 +170,7 @@ A PISP can retrieve the Details of the underlying payment transaction via this e
 ### Status
 
 The domestic-payment - payment-details must have one of the following PaymentStatusCode code-set enumerations:
+
 | Status |
 | ------ |
 | Accepted |
@@ -512,60 +513,60 @@ In this scenario:
 ![Sequence Diagram](images/MerchantDomesticPaymentUsageExample-3.png)
 
 <details>
-  <summary>Expand source</summary>
+  <summary>Diagram source</summary>
   
-  <![CDATA[participant PSU
-                    participant Merchant
-                    participant PISP
-                    participant ASPSP Authorisation Server
-                    participant ASPSP Resource Server
-                    note over PSU, ASPSP Resource Server
-                    Step 1: Agree Domestic Payment-Order Initiation
-                    end note
-                    PSU -> Merchant: Check-out and pay
-                    Merchant -> PISP: Send request to setup domestic payment consent
-                    note over PSU, ASPSP Resource Server
-                    Step 2: Setup Domestic Payment-Order Consent
-                    end note
-                    PISP <-> ASPSP Authorisation Server: Establish TLS 1.2 MA
-                    PISP -> ASPSP Authorisation Server: Initiate Client Credentials Grant
-                    ASPSP Authorisation Server -> PISP: access-token
-                    PISP <-> ASPSP Resource Server: Establish TLS 1.2 MA
-                    PISP -> ASPSP Resource Server: POST /domestic-payment-consents
-                    ASPSP Resource Server -> PISP: HTTP 201 (Created), ConsentId
-                    PISP -> Merchant: HTTP 302 (Found), Redirect (ConsentId)
-                    Merchant -> PSU: HTTP 302 (Found), Redirect (ConsentId)
-                    note over PSU, ASPSP Resource Server
-                    Step 3: Authorize consent
-                    end note
-                    PSU -> ASPSP Authorisation Server: Follow redirect (ConsentId)
-                    PSU <-> ASPSP Authorisation Server: authenticate
-                    PSU <-> ASPSP Authorisation Server: SCA if required
-                    PSU <-> ASPSP Authorisation Server: Select debtor account
-                    ASPSP Authorisation Server -> PSU: HTTP 302 (Found), Redirect (authorization-code)
-                    PSU -> PISP: Follow redirect (authorization-code)
-                    PISP <-> ASPSP Authorisation Server: Establish TLS 1.2 MA
-                    PISP -> ASPSP Authorisation Server: Exchange authorization-code for access token
-                    ASPSP Authorisation Server -> PISP: access-token
-                    PISP -> PSU: HTTP 302 (Found), Redirect back to merchant
-                    PSU -> Merchant: Follow redirect
-                    note over PSU, ASPSP Resource Server
-                    Step 4: Create Domestic Payment-Order
-                    end note
-                    PISP <-> ASPSP Resource Server: Establish TLS 1.2 MA
-                    PISP -> ASPSP Resource Server: POST /domestic-payments
-                    ASPSP Resource Server -> PISP: HTTP 201 (Created), DomesticPaymentId
-                    note over PSU, ASPSP Resource Server
-                    Step 5: Get Domestic Payment-Order status
-                    end note
-                    opt
-                    Merchant -> PISP: Check payment status
-                    PISP <-> ASPSP Resource Server: Establish TLS 1.2 MA
-                    PISP -> ASPSP Resource Server: GET /domestic-payments/{DomesticPaymentId}
-                    ASPSP Resource Server -> PISP: HTTP 200 (OK), domestic-payments resource
-                    PISP -> Merchant: HTTP 200 (OK), Return domestic-payments Status
-                    end opt
-                    ]]>
+  ```
+  participant PSU
+	participant Merchant
+	participant PISP
+	participant ASPSP Authorisation Server
+	participant ASPSP Resource Server
+	note over PSU, ASPSP Resource Server
+	Step 1: Agree Domestic Payment-Order Initiation
+	end note
+	PSU -> Merchant: Check-out and pay
+	Merchant -> PISP: Send request to setup domestic payment consent
+	note over PSU, ASPSP Resource Server
+	Step 2: Setup Domestic Payment-Order Consent
+	end note
+	PISP <-> ASPSP Authorisation Server: Establish TLS 1.2 MA
+	PISP -> ASPSP Authorisation Server: Initiate Client Credentials Grant
+	ASPSP Authorisation Server -> PISP: access-token
+	PISP <-> ASPSP Resource Server: Establish TLS 1.2 MA
+	PISP -> ASPSP Resource Server: POST /domestic-payment-consents
+	ASPSP Resource Server -> PISP: HTTP 201 (Created), ConsentId
+	PISP -> Merchant: HTTP 302 (Found), Redirect (ConsentId)
+	Merchant -> PSU: HTTP 302 (Found), Redirect (ConsentId)
+	note over PSU, ASPSP Resource Server
+	Step 3: Authorize consent
+	end note
+	PSU -> ASPSP Authorisation Server: Follow redirect (ConsentId)
+	PSU <-> ASPSP Authorisation Server: authenticate
+	PSU <-> ASPSP Authorisation Server: SCA if required
+	PSU <-> ASPSP Authorisation Server: Select debtor account
+	ASPSP Authorisation Server -> PSU: HTTP 302 (Found), Redirect (authorization-code)
+	PSU -> PISP: Follow redirect (authorization-code)
+	PISP <-> ASPSP Authorisation Server: Establish TLS 1.2 MA
+	PISP -> ASPSP Authorisation Server: Exchange authorization-code for access token
+	ASPSP Authorisation Server -> PISP: access-token
+	PISP -> PSU: HTTP 302 (Found), Redirect back to merchant
+	PSU -> Merchant: Follow redirect
+	note over PSU, ASPSP Resource Server
+	Step 4: Create Domestic Payment-Order
+	end note
+	PISP <-> ASPSP Resource Server: Establish TLS 1.2 MA
+	PISP -> ASPSP Resource Server: POST /domestic-payments
+	ASPSP Resource Server -> PISP: HTTP 201 (Created), DomesticPaymentId
+	note over PSU, ASPSP Resource Server
+	Step 5: Get Domestic Payment-Order status
+	end note
+	opt
+	Merchant -> PISP: Check payment status
+	PISP <-> ASPSP Resource Server: Establish TLS 1.2 MA
+	PISP -> ASPSP Resource Server: GET /domestic-payments/{DomesticPaymentId}
+	ASPSP Resource Server -> PISP: HTTP 200 (OK), domestic-payments resource
+	PISP -> Merchant: HTTP 200 (OK), Return domestic-payments Status
+	end opt```
 
 </details>
 
@@ -965,7 +966,7 @@ In this scenario:
 ![P2P Payment](images/P2PDomesticPaymentExample.png)
 
 <details>
-<summary>Expand source</summary>
+<summary>Diagram source</summary>
 
 ```
 participant PSU
@@ -1019,7 +1020,6 @@ PISP -> ASPSP Resource Server: GET /domestic-payments/{DomesticPaymentId}
 ASPSP Resource Server -> PISP: HTTP 200 (OK), domestic-payments resource
 
 end opt
-
 ```
 
 </details>
@@ -1702,12 +1702,13 @@ Accept: application/json
 
 **POST /domestic-payment-consents response**
 
-```javascript
+```text
 HTTP/1.1 201 Created
 x-jws-signature: V2hhdCB3ZSBnb3QgaGVyZQ0K..aXMgZmFpbHVyZSB0byBjb21tdW5pY2F0ZQ0K
 x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Content-Type: application/json
- 
+``` 
+```javascript
 {
     "Data": {
         "ConsentId": "7290",
