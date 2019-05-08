@@ -25,7 +25,7 @@ A resource that contains a set of elements that describes the list of standing-o
 An account (AccountId) may have no standing orders set up, or may have multiple standing orders set up.
 
 ### UML Diagram
-![UML Diagram$](images/StandingOrders/OBDomestic2.gif  "UML Diagram")
+![UML Diagram$](images/StandingOrders/OBReadStandingOrder5.png  "UML Diagram")
 
  **Notes:**
 - The  **Creditor**  **Account**  and  **CreditorAgent**  blocks replicate what is used consistently throughout the Account Information APIs to identify an account. 
