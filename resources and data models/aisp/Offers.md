@@ -1,7 +1,7 @@
 # Offers v3.1.2
 ## Endpoints
-
 Endpoints for the resource and available methods.
+
  |  |Resource |HTTP Operation |Endpoint |Mandatory? |Scope |Grant Type |Idempotency Key |Parameters |Request Object |Response Object |
 | --- |--- |--- |--- |--- |--- |--- |--- |--- |--- |--- |
 | 1 |offers |GET |GET /accounts/{AccountId}/offers |Conditional |accounts |Authorization Code |No | | |OBReadOffer1 |
