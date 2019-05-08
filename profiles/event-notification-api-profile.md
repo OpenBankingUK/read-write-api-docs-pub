@@ -1,1 +1,1 @@
-# Event Notification API Profile v3.1.2
+# Event Notification API Profile
