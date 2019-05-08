@@ -38,7 +38,6 @@
 The Account and Transaction API Profile describes the flows and common functionality for the Accounts and Transaction API, which allows an Account Information Service Provider ('AISP') to:
 
 - Register an intent to retrieve account information by creating an "account access consent". This registers the data "permissions", expiration and historical period allowed for transactions / statements - that the customer (PSU) has consented to provide to the AISP; and 
-
 - Subsequently, retrieve account and transaction data.
 
 This specification should be read in conjunction with a compatible Read/Write Data API Profile which provides a description of the elements that are common across all the Read/Write Data APIs, and compatible individual resources.
@@ -48,13 +47,9 @@ This specification should be read in conjunction with a compatible Read/Write Da
 This document consists of the following parts:
 
  **Overview:**  Provides an overview of the profile.
-
  **Basics:**  Identifies the flows, release management and permission model.
-
  **Security & Access Control:** Specifies the means for AISPs and PSUs to authenticate themselves and provide consent.
-
  **Data Model:** Documents mappings and enumerations that apply to all the end-points.
-
  **Alternative Flows:**  Documents rules for alternative flows.
 
 ### Profile Compatibility
@@ -63,7 +58,7 @@ This document consists of the following parts:
 
 The Account and Transaction API Profile - v3.1.2 is compatible with the following Read/Write Data API Profiles:
 
-Read/Write Data API Profile - v3.1.2 RC1 [TODO]
+- Read/Write Data API Profile - v3.1.2 RC1 [TODO]
 
 ### Resources
 
@@ -72,7 +67,7 @@ Each of the Account and Transaction API resources are documented in the  *Resour
 - Endpoints
   - The API endpoints available for the resource.
 - Data Model
-- Resource definition.
+  - Resource definition.
   - UML diagram.
   - Permissions as they relate to accessing the resource.
   - Data dictionary - which defines fields, re-usable classes, mandatory (1..1) or conditional (0..1) as defined in the Design Principles section, and enumerations.
@@ -326,10 +321,10 @@ The following combinations of permissions are not allowed, and the ASPSP  **must
 | ReadAccounts**Detail** |/accounts<br>/accounts/{AccountId} |Access to additional elements in the payload |Ability to read account identification details |
 | ReadBalances |/balances<br>/accounts/{AccountId}/balances | |Ability to read **all** balance information |
 | ReadBeneficiaries**Basic** |/beneficiaries<br>/accounts/{AccountId}/beneficiaries | |Ability to read basic beneficiary details |
-| ReadBeneficiariesDetail |/beneficiaries<br>/accounts/{AccountId}/beneficiaries |Access to additional elements in the payload |Ability to read account identification details for the beneficiary |
+| ReadBeneficiaries**Detail** |/beneficiaries<br>/accounts/{AccountId}/beneficiaries |Access to additional elements in the payload |Ability to read account identification details for the beneficiary |
 | ReadDirectDebits |/direct-debits<br>/accounts/{AccountId}/direct-debits | |Ability to read **all** direct debit information |
 | ReadStandingOrders**Basic** |/standing-orders<br>/accounts/{AccountId}/standing-orders | |Ability to read basic standing order information |
-| ReadStandingOrdersDetail |/standing-orders<br>/accounts/{AccountId}/standing-orders |Access to additional elements in the payload |Ability to read account identification details for beneficiary of the standing order |
+| ReadStandingOrders**Detail** |/standing-orders<br>/accounts/{AccountId}/standing-orders |Access to additional elements in the payload |Ability to read account identification details for beneficiary of the standing order |
 | ReadTransactions**Basic** |/transactions<br>/accounts/{AccountId}/transactions<br>/accounts/{AccountId}/statements/{StatementId}/transactions |Permissions must also include at least one of:<br><br><li>ReadTransactions**Credits**<li>ReadTransactions**Debits** |Ability to read basic transaction information |
 | ReadTransactions**Detail** |/transactions<br>/accounts/{AccountId}/transactions<br>/accounts/{AccountId}/statements/{StatementId}/transactions |Access to additional elements in the payload<br><br>Permissions must also include at least one of:<br><br><li>ReadTransactions**Credits** <li>ReadTransactions**Debits** |Ability to read transaction data elements which may hold silent party details |
 | ReadTransactions**Credits** |/transactions<br>/accounts/{AccountId}/transactions<br>/accounts/{AccountId}/statements/{StatementId}/transactions |Access to credit transactions.<br><br>Permissions must also include one of:<br><br><li>ReadTransactions**Basic**<li>ReadTransactions**Detail** |Ability to read **only** credit transactions |
