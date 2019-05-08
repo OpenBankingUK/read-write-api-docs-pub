@@ -417,7 +417,7 @@ x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Content-Type: application/json
 Accept: application/json
 ```
-```javascript
+```json
 {
   "Data": {
     "Permission": "Create",
@@ -458,7 +458,7 @@ x-jws-signature: V2hhdCB3ZSBnb3QgaGVyZQ0K..aXMgZmFpbHVyZSB0byBjb21tdW5pY2F0ZQ0K
 x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Content-Type: application/json
 ```
-```javascript
+```json
 {
   "Data": {
     "ConsentId": "7290",
@@ -514,7 +514,7 @@ x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Content-Type: application/json
 Accept: application/json
 ```
-```javascript
+```json
 {
   "Data": {
     "ConsentId": "7290",
@@ -555,7 +555,7 @@ x-jws-signature: V2hhdCB3ZSBnb3QgaGVyZQ0K..aXMgZmFpbHVyZSB0byBjb21tdW5pY2F0ZQ0K
 x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Content-Type: application/json
 ```
-```javascript
+```json
 {
   "Data": {
     "DomesticScheduledPaymentId": "7290-003",

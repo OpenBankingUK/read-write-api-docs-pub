@@ -536,7 +536,7 @@ x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Content-Type: application/json
 Accept: application/json
 ```
-```javascript
+```json
 {
   "Data": {
     "Initiation": {
@@ -587,7 +587,7 @@ x-jws-signature: V2hhdCB3ZSBnb3QgaGVyZQ0K..aXMgZmFpbHVyZSB0byBjb21tdW5pY2F0ZQ0K
 x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Content-Type: application/json
 ```
-```javascript
+```json
 {
   "Data": {
     "ConsentId": "58923",
@@ -639,7 +639,6 @@ Content-Type: application/json
 }
 ```
 
-
 #### Confirm Funds on Domestic Payment Order Consent
 
 **GET /domestic-payment-consents/{ConsentId}/funds-confirmation Request**
@@ -661,7 +660,7 @@ x-jws-signature: V2hhdCB3ZSBnb3QgaGVyZQ0K..aXMgZmFpbHVyZSB0byBjb21tdW5pY2F0ZQ0K
 x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Content-Type: application/json
 ```
-```javascript
+```json
 {
     "Data": {
         "FundsAvailableResult": {
@@ -691,7 +690,7 @@ x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Content-Type: application/json
 Accept: application/json
 ```
-```javascript
+```json
 {
   "Data": {
     "ConsentId": "58923",
@@ -735,7 +734,6 @@ Accept: application/json
   }
 }
 ```
-
 **POST /domestic-payments Response**
 
 ```text
@@ -745,7 +743,7 @@ x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Content-Type: application/json
 ```
 
-```javascript
+```json
 {
   "Data": {
     "DomesticPaymentId": "58923-001",
@@ -801,7 +799,7 @@ x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Content-Type: application/json
 ```
 
-```javascript
+```json
 {
   "Data": {
     "ConsentId": "58923",
@@ -875,7 +873,7 @@ x-jws-signature: V2hhdCB3ZSBnb3QgaGVyZQ0K..aXMgZmFpbHVyZSB0byBjb21tdW5pY2F0ZQ0K
 x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Content-Type: application/json
 ```
-```javascript
+```json
 {
   "Data": {
     "DomesticPaymentId": "58923-001",
@@ -998,7 +996,7 @@ Content-Type: application/json
 Accept: application/json
 ```
 
-```javascript
+```json
 {
   "Data": {
     "Initiation": {
@@ -1039,7 +1037,7 @@ x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Content-Type: application/json
 ```
 
-```javascript
+```json
 {
   "Data": {
     "ConsentId": "7290",
@@ -1095,7 +1093,7 @@ Content-Type: application/json
 Accept: application/json
 ```
 
-```javascript 
+```json 
 {
   "Data": {
     "ConsentId": "7290",
@@ -1137,7 +1135,7 @@ x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Content-Type: application/json
 ```
 
-```javascript
+```json
 {
   "Data": {
     "DomesticPaymentId": "7290-003",
@@ -1197,7 +1195,7 @@ x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Content-Type: application/json
 ```
 
-```javascript
+```json
 {
   "Data": {
     "ConsentId": "7290",
@@ -1259,7 +1257,7 @@ x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Content-Type: application/json
 ```
 
-```javascript
+```json
 {
   "Data": {
     "DomesticPaymentId": "7290-003",
@@ -1315,7 +1313,7 @@ Content-Type: application/json
 Accept: application/json
 ```
 
-```javascript
+```json
 {
   "Data": {
     "Initiation": {
@@ -1357,7 +1355,7 @@ x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Content-Type: application/json
 ```
 
-```javascript
+```json
 {
   "Data": {
     "ConsentId": "7290",
@@ -1417,7 +1415,7 @@ Content-Type: application/json
 Accept: application/json
 ```
 
-```javascript
+```json
 {
   "Data": {
     "Initiation": {
@@ -1467,7 +1465,7 @@ x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Content-Type: application/json
 ```
 
-```javascript
+```json
 {
    "Data":{
       "ConsentId":"7290",
@@ -1547,7 +1545,7 @@ Content-Type: application/json
 Accept: application/json
 ```
 
-```javascript
+```json
 {
     "Data": {
         "Initiation": {
@@ -1589,7 +1587,7 @@ x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Content-Type: application/json
 ```
 
-```javascript
+```json
 {
     "Data": {
         "ConsentId": "7290",
@@ -1647,7 +1645,7 @@ x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Content-Type: application/json
 Accept: application/json
 ```
-```javascript
+```json
 {
     "Data": {
         "Initiation": {
@@ -1688,7 +1686,7 @@ x-jws-signature: V2hhdCB3ZSBnb3QgaGVyZQ0K..aXMgZmFpbHVyZSB0byBjb21tdW5pY2F0ZQ0K
 x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Content-Type: application/json
 ``` 
-```javascript
+```json
 {
     "Data": {
         "ConsentId": "7290",
