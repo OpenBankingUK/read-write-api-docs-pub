@@ -61,7 +61,7 @@ The resource requires the ReadOffers permission. The resource response payload d
 ## Usage Examples
 ### Specific Account
  **Request** 
-```JavaScript
+```
 GET /accounts/22289/offers HTTP/1.1
 Authorization: Bearer Az90SAOJklae
 x-fapi-auth-date:  Sun, 10 Sep 2017 19:43:31 GMT
@@ -71,11 +71,12 @@ Accept: application/json
 ```
 
 **Response** 
-```JavaScript
+```
 HTTP/1.1 200 OK
 x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Content-Type: application/json
-
+```
+```json
 {
   "Data": {
     "Offer": [
