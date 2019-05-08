@@ -960,6 +960,7 @@ The data contained within the Data section is documented with each individual AP
 #### Request Structure
 
 The top level request structure for Open Banking Read/Write APIs:
+
 ```json
 {
   "Data": {
@@ -1003,6 +1004,7 @@ The top level response structure for Open Banking Read/Write APIs:
   }
 }
 ```
+
 In line with the principle of RESTful APIs, the full resource must be replayed as part of the response.
 
 Two additional top-level sections are included in the response for:
@@ -1012,6 +1014,7 @@ Two additional top-level sections are included in the response for:
 #### Error Response Structure
 
 The error response structure for Open Banking Read/Write APIs:
+
 ```json
 {
   "Code": "...",
@@ -1079,6 +1082,7 @@ For example:
 Where an API provides a paginated response, the `Links` element may also contain the members `First`, `Prev`, `Next` and `Last` as described in the section Basics / Pagination.
 
 For example:
+
 ```json
   "Links": {
     "Self": "http://example.com/articles?page[number]=3&page[size]=1",
@@ -1094,6 +1098,7 @@ For example:
 The Meta section is mandatory, but may be empty.  An optional member is "TotalPages" which is specified as an integer (int32) and shows how many pages of results (for pagination) are available.
 
 For example:
+
 ```json
   "Meta": {
     "TotalPages": 13
@@ -1112,7 +1117,7 @@ The example below illustrates how an ASPSP may return a paginated response. 
 
 #### Request
 
-```json
+```
 GET /accounts/22289/transactions HTTP/1.1
 Authorization: Bearer Az90SAOJklae
 x-fapi-auth-date:  Sun, 10 Sep 2017 19:43:31 GMT
@@ -1123,11 +1128,13 @@ Accept: application/json
 
 #### Paginated Resource Response
 
-```json
+```
 HTTP/1.1 200 OK
 x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Content-Type: application/json
+```
 
+```json
 {
   "Data": {
     ...
@@ -1149,7 +1156,7 @@ The TPP may follow the links provided in the Links section of the payload to nav
 
 #### Request Next Page of Results
 
-```json
+```
 GET /accounts/22289/transactions?pg=2 HTTP/1.1
 Authorization: Bearer Az90SAOJklae
 x-fapi-auth-date:  Sun, 10 Sep 2017 19:43:31 GMT
@@ -1160,11 +1167,13 @@ Accept: application/json
 
 #### Paginated Resource Response
 
-```json
+```
 HTTP/1.1 200 OK
 x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Content-Type: application/json
+```
 
+```json
 {
   "Data": {
     ...
@@ -1382,7 +1391,7 @@ AISP -> PSU : Error Response
 
 ##### Request
 
-```json
+```
 POST /domestic-payment-consents HTTP/1.1
 Authorization: Bearer 2YotnFZFEjr1zCsicMWpAA
 x-idempotency-key: FRESCO.21302.GFX.20
@@ -1392,7 +1401,9 @@ x-fapi-customer-ip-address: 104.25.212.99
 x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Content-Type: application/json
 Accept: application/json
- 
+```
+
+```json 
 {
   "Data": {
     "Initiation": {
@@ -1437,12 +1448,14 @@ Accept: application/json
 
 ##### Response
 
-```json
+```
 HTTP/1.1 400 Bad Request
 x-jws-signature: V2hhdCB3ZSBnb3QgaGVyZQ0K..aXMgZmFpbHVyZSB0byBjb21tdW5pY2F0ZQ0K
 x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Content-Type: application/json
+```
 
+```json
 {
   "Code": "400 BadRequest",
   "Id": "2b5f0fb2-730b-11e8-adc0-fa7ae01bbebc",
