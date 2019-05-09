@@ -67,7 +67,7 @@ The Account and Transaction API Profile - v3.1.2 is compatible with the followin
 
 ### Resources
 
-Each of the Account and Transaction API resources are documented in the  *Resources and Data Models*  /  *AISP*  area of the specification. Each resource is documented with:
+Each of the Account and Transaction API resources are documented in the  [*Resources and Data Models*  /  *AISP*](resources%20and%20data%20models/aisp)  area of the specification. Each resource is documented with:
 
 - Endpoints
   - The API endpoints available for the resource.
