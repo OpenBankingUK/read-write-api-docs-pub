@@ -39,7 +39,7 @@ The Account and Transaction API Profile describes the flows and common functiona
 - Register an intent to retrieve account information by creating an "account access consent". This registers the data "permissions", expiration and historical period allowed for transactions / statements - that the customer (PSU) has consented to provide to the AISP; and
 - Subsequently, retrieve account and transaction data.
 
-This specification should be read in conjunction with a compatible Read/Write Data API Profile which provides a description of the elements that are common across all the Read/Write Data APIs, and compatible individual resources.
+This profile should be read in conjunction with a compatible Read/Write Data API Profile which provides a description of the elements that are common across all the Read/Write Data APIs, and compatible individual resources.
 
 ### Document Structure
 
@@ -61,7 +61,7 @@ For a list of profiles and resources compatible with this profile, please see th
 
 ### Resources
 
-Each of the Account and Transaction API resources are documented in the  [*Resources and Data Models*  /  *AISP*](../resources%20and%20data%20models/aisp)  area of the specification. Each resource is documented with:
+Each of the Account and Transaction API resources are documented in the  [*Resources and Data Models*  /  *AISP*](../resources%20and%20data%20models/aisp) area of the specification. Each resource is documented with:
 
 - Endpoints
   - The API endpoints available for the resource.
