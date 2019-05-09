@@ -12,10 +12,7 @@
 
 ### POST /international-scheduled-payment-consents
 
-```
-POST /international-scheduled-payment-consents
-```
-
+```POST /international-scheduled-payment-consents```
 
 
 The API endpoint allows the PISP to ask an ASPSP to create a new  **international-scheduled-payment-consent**  resource.
@@ -36,10 +33,7 @@ The default Status is "AwaitingAuthorisation" immediately after the internationa
 
 ### GET /international-scheduled-payment-consents/{ConsentId}
 
-```
-GET /international-scheduled-payment-consents/{ConsentId}
-```
-
+```GET /international-scheduled-payment-consents/{ConsentId}```
 
 
 A PISP can optionally retrieve a payment consent resource that they have created to check its status. 
@@ -63,9 +57,7 @@ The available Status codes for the international-scheduled-payment-consent resou
 
 ### GET /international-scheduled-payment-consents/{ConsentId}/funds-confirmation
 
-```
-GET /international-scheduled-payment-consents/{ConsentId}/funds-confirmation
-```
+```GET /international-scheduled-payment-consents/{ConsentId}/funds-confirmation```
 
 
 
@@ -77,10 +69,7 @@ The API endpoint allows the PISP to ask an ASPSP to confirm funds on an  **inter
 
 ### POST /international-scheduled-payments
 
-```
-POST /international-scheduled-payments
-```
-
+```POST /international-scheduled-payments```
 
 
 Once the international-scheduled-payment-consent has been authorised by the PSU, the PISP can proceed to submit the international-scheduled-payment for processing:
@@ -107,9 +96,7 @@ The international-scheduled-payment resource that is created successfully must h
 
 ### GET /international-scheduled-payments/{InternationalScheduledPaymentId}
 
-```
-GET /international-scheduled-payments/{InternationalScheduledPaymentId}
-```
+```GET /international-scheduled-payments/{InternationalScheduledPaymentId}```
 
 
 
@@ -128,9 +115,7 @@ The international-scheduled-payment resource must have one of the following Stat
 
 ### GET /international-scheduled-payments/{InternationalScheduledPaymentId}/payment-details
 
-```
-GET /international-scheduled-payments/{InternationalScheduledPaymentId}/payment-details
-```
+```GET /international-scheduled-payments/{InternationalScheduledPaymentId}/payment-details```
 
 
 
@@ -241,13 +226,10 @@ For the OBInternationalScheduled2 Initiation object:
 
 * All elements in the Initiation payload, that are specified by the PISP must not be changed via the ASPSP as this is part of formal consent from the PSU.
 
-* 
-If the ASPSP is able to establish a problem with payload or any contextual error during the API call, the ASPSP must reject the international-scheduled-payment-consent consent request immediately.
+* If the ASPSP is able to establish a problem with payload or any contextual error during the API call, the ASPSP must reject the international-scheduled-payment-consent consent request immediately.
 
 
-* 
-If the ASPSP establishes a problem with the international-scheduled-payment-consent after the API call, the ASPSP must set the Status of the international-scheduled-payment-consent resource to Rejected.
-
+* If the ASPSP establishes a problem with the international-scheduled-payment-consent after the API call, the ASPSP must set the Status of the international-scheduled-payment-consent resource to Rejected.
 
 * DebtorAccount is  **optional**  as the PISP may not know the account identification details for the PSU.
 
@@ -256,20 +238,19 @@ If the ASPSP establishes a problem with the international-scheduled-payment-cons
 * CreditorAgent must at least have either of the pairs provided: SchemeName and Identification, or Name and PostalAddress.
 
 * Account Identification field usage:
-* SchemeName is a free-text field which will be populated with identification schemes an ASPSP accepts.
+  * SchemeName is a free-text field which will be populated with identification schemes an ASPSP accepts.
 
-* Identification is a field which is populated with the Identification of the account, using the valid identification scheme provided.
+  * Identification is a field which is populated with the Identification of the account, using the valid identification scheme provided.
 
 
 * Valid UK Account Identification SchemeName values include, but are not restricted to:
-* "UK.OBIE.SortCodeAccountNumber" - Identification field  **must**  be populated with the 6 digit Sort Code and 8 digit Account Number (a 14 digit field).
+  * "UK.OBIE.SortCodeAccountNumber" - Identification field  **must**  be populated with the 6 digit Sort Code and 8 digit Account Number (a 14 digit field).
 
-* "UK.OBIE.IBAN" - The Identification field  **must**  be populated with the full IBAN.
+  * "UK.OBIE.IBAN" - The Identification field  **must**  be populated with the full IBAN.
 
-* "UK.OBIE.PAN" - The Identification field  **must**  be populated with the full PAN. A PAN may be an instrument (e.g., a debit card) linked to a payment account, and may not be the only PAN linked to the payment account.
+  * "UK.OBIE.PAN" - The Identification field  **must**  be populated with the full PAN. A PAN may be an instrument (e.g., a debit card) linked to a payment account, and may not be the only PAN linked to the payment account.
 
-* "UK.OBIE.Paym" - The Identification field  **must**  be populated with the Paym proxy value.
-
+  * "UK.OBIE.Paym" - The Identification field  **must**  be populated with the Paym proxy value.
 
 * LocalInstrument is the requested payment scheme for execution. This is a free-text field.
 
@@ -290,18 +271,15 @@ The ExchangeRateInformation object must conform to these behaviours:
 * A PISP must specify the DebtorAccount currency in the UnitCurrency field if the PISP is requesting a specific RateType so the ASPSP can respond with an exchange rate quote prior to PSU authorisation.
 
 * A PISP may indicate an exchange rate request using the RateType with these enumerations: 
-* Actual.
-
-* Agreed.
-
-* Indicative.
-
+  * Actual.
+  * Agreed.
+  * Indicative.
 
 * A PISP must specify ExchangeRate and ContractIdentification when requesting an  **Agreed**  RateType. If an invalid ContractIdentification and ExchangeRate are requested together, an ASPSP must reject the request.
-* For an "Agreed" RateType - a requested exchange rate is populated in the ExchangeRate field, against the UnitCurrency. I.e, if the UnitCurrency is GBP and CurrencyOfTransfer is USD, then ExchangeRate will be 1.34 (USD to 1 GBP).
+  
+	* For an "Agreed" RateType - a requested exchange rate is populated in the ExchangeRate field, against the UnitCurrency. I.e, if the UnitCurrency is GBP and CurrencyOfTransfer is USD, then ExchangeRate will be 1.34 (USD to 1 GBP).
 
-* For an "Agreed" RateType - the exchange rate contract identifier is populated in the ContractIdentification field.
-
+  * For an "Agreed" RateType - the exchange rate contract identifier is populated in the ContractIdentification field.
 
 * A PISP must not specify ExchangeRate and/or ContractIdentification when requesting an  **Actual**  RateType.
 
@@ -469,30 +447,31 @@ The international-scheduled-payment-consent  **response**  contains the full  **
 Exchange rate behaviour:
 
 * For an  **Agreed**  RateType - if an ASPSP chooses to respond with Data/ExchangeRateInformation object:
-* An ASPSP may respond with the same requested exchange rate in the Data/ExchangeRateInformation object.
+  * An ASPSP may respond with the same requested exchange rate in the Data/ExchangeRateInformation object.
 
-* An ASPSP must not populate Data/ExchangeRateInformation/ExpirationDateTime.
+  * An ASPSP must not populate Data/ExchangeRateInformation/ExpirationDateTime.
 
 
 * For an  **Actual**  RateType - if an ASPSP chooses to respond with Data/ExchangeRateInformation object:
-* An ASPSP must respond with an actual ExchangeRate quote in the Data/ExchangeRateInformation object.
+  * An ASPSP must respond with an actual ExchangeRate quote in the Data/ExchangeRateInformation object.
 
-* An ASPSP must respond with an ExpirationDateTime
+  * An ASPSP must respond with an ExpirationDateTime
 
-* An ASPSP must reject the international-payment request if the PISP does not submit the international-payment within the ExchangeRateInformation/ExpirationDateTime
+  * An ASPSP must reject the international-payment request if the PISP does not submit the international-payment within the ExchangeRateInformation/ExpirationDateTime
 
-* An ASPSP may choose to debit the DebtorAccount with the agreed exchange rate on the date the international-scheduled-payment is created and settle on the RequestedExecutionDateTime
+  * An ASPSP may choose to debit the DebtorAccount with the agreed exchange rate on the date the international-scheduled-payment is created and settle on the RequestedExecutionDateTime
 
 
-* For an  **Indicative**  RateType - if an ASPSP chooses to respond with Data/ExchangeRateInformation object:
-* An ASPSP must respond with an indicative quote in the Data/ExchangeRateInformation object.
+* For an **Indicative**  RateType - if an ASPSP chooses to respond with Data/ExchangeRateInformation object:
+  * An ASPSP must respond with an indicative quote in the Data/ExchangeRateInformation object.
 
-* An ASPSP must respond with an indicative ExchangeRate quote
+  * An ASPSP must respond with an indicative ExchangeRate quote
 
-* An ASPSP must not populate Data/ExchangeRateInformation/ExpirationDateTime for the exchange rate, as it is the market rate on the date of execution (date on which the DebtorAccount is debited)
+  * An ASPSP must not populate Data/ExchangeRateInformation/ExpirationDateTime for the exchange rate, as it is the market rate on the date of execution (date on which the DebtorAccount is debited)
 
 
 #### Data Dictionary
+
 | Name |Occurrence |XPath |EnhancedDefinition |Class |Codes |Pattern |
 | --- |--- |--- |--- |--- |--- |--- |
 | OBWriteInternationalScheduledConsentResponse3 | |OBWriteInternationalScheduledConsentResponse3 | |OBWriteInternationalScheduledConsentResponse3 | | |
@@ -637,39 +616,18 @@ The OBWritePaymentDetailsResponse1 object will be used for a response to a call 
 | Data |1..1 |OBWritePaymentDetailsResponse1/Data | |OBWriteDataPaymentOrderStatusResponse1 | | |
 | PaymentStatus |0..unbounded |OBWritePaymentDetailsResponse1/Data/PaymentStatus |Payment status details. |OBWritePaymentDetails1 | | |
 
-
-
-
 ## Usage Examples
-
-<br>
-
-
-
-
-
-
-
-
 
 
 #### Credit amount specified; Future Dated Payment, ASPSP provides actual (guaranteed) FX rate , for limited time
 
 The example below shows a Scheduled (future dated) payment with final credit amount specified and requesting an Actual rate to be applied.
 
- **Actual rate will be applied on the date of Payment Order setup** , and transfer happens on the RequestedExecutionDateTime.
+**Actual rate will be applied on the date of Payment Order setup** , and transfer happens on the RequestedExecutionDateTime.
 
+**POST /international-scheduled-payment-consents request** 
 
-
-
-
-
-
-
-
-
- **POST /international-scheduled-payment-consents request** 
-<b>Payment Order Consent Request Payload</b>
+**Payment Order Consent Request Payload**
 
 ```
 POST /international-scheduled-payment-consents HTTP/1.1
@@ -681,7 +639,8 @@ x-fapi-customer-ip-address: 104.25.212.99
 x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Content-Type: application/json
 Accept: application/json
-
+```
+```json
 {
   "Data": {
     "Permission":"Create",
@@ -718,23 +677,17 @@ Accept: application/json
 }
 ```
 
+**POST /international-scheduled-payment-consents response** 
 
-
-
-
-
-
-
-
- **POST /international-scheduled-payment-consents response** 
-<b>Payment Order Consent Response Payload</b>
+**Payment Order Consent Response Payload**
 
 ```
 HTTP/1.1 201 Created
 x-jws-signature: V2hhdCB3ZSBnb3QgaGVyZQ0K..aXMgZmFpbHVyZSB0byBjb21tdW5pY2F0ZQ0K
 x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Content-Type: application/json
-
+```
+```json
 {
 	"Data": {
 		"Permission": "Create",
@@ -787,34 +740,15 @@ Content-Type: application/json
 }
 ```
 
-
-
-
-
-
-
-
-
-
-
-
 #### Credit amount specified; Future Dated Payment, ASPSP doesn't provide Indicative rate on payment order setup
 
 The example below shows a Scheduled (future dated) payment with final credit amount specified and requesting an Indicative rate to be applied.
 
- **Indicative rate will be applied on RequestedExecutionDateTime, as per the prevailing Indicative rate** . So No Exchange Rate information will be returned in the ASPSP response
+**Indicative rate will be applied on RequestedExecutionDateTime, as per the prevailing Indicative rate** . So No Exchange Rate information will be returned in the ASPSP response
 
+**POST /international-scheduled-payment-consents request** 
 
-
-
-
-
-
-
-
-
- **POST /international-scheduled-payment-consents request** 
-<b>Payment Order Consent Request Payload</b>
+**Payment Order Consent Request Payload**
 
 ```
 POST /international-scheduled-payment-consents HTTP/1.1
@@ -826,7 +760,8 @@ x-fapi-customer-ip-address: 104.25.212.99
 x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Content-Type: application/json
 Accept: application/json
-
+```
+```json
 {
   "Data": {
     "Permission":"Create",
@@ -863,23 +798,17 @@ Accept: application/json
 }
 ```
 
+**POST /international-scheduled-payment-consents response** 
 
-
-
-
-
-
-
-
- **POST /international-scheduled-payment-consents response** 
-<b>Payment Order Consent Response Payload</b>
+**Payment Order Consent Response Payload**
 
 ```
 HTTP/1.1 201 Created
 x-jws-signature: V2hhdCB3ZSBnb3QgaGVyZQ0K..aXMgZmFpbHVyZSB0byBjb21tdW5pY2F0ZQ0K
 x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Content-Type: application/json
-
+```
+```json
 {
 	"Data": {
 		"Permission": "Create",
@@ -926,30 +855,11 @@ Content-Type: application/json
 }
 ```
 
-
-
-
-
-
-
-
-
-
-
-
 #### Confirm Funds on International Payment Order Consent
 
+**GET /international-scheduled-payment-consents/{ConsentId}/funds-confirmation Request** 
 
-
-
-
-
-
-
-
-
- **GET /international-scheduled-payment-consents/{ConsentId}/funds-confirmation Request** 
-<b>Payment Order Consent Request Payload</b>
+**Payment Order Consent Request Payload**
 
 ```
 GET /international-scheduled-payment-consents/58923/funds-confirmation HTTP/1.1
@@ -960,23 +870,17 @@ x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Accept: application/json
 ```
 
+**GET /international-scheduled-payment-consents/{ConsentId}/funds-confirmation Response** 
 
-
-
-
-
-
-
-
- **GET /international-scheduled-payment-consents/{ConsentId}/funds-confirmation Response** 
-<b>Payment Order Consent Response Payload</b>
+**Payment Order Consent Response Payload**
 
 ```
 HTTP/1.1 200 OK
 x-jws-signature: V2hhdCB3ZSBnb3QgaGVyZQ0K..aXMgZmFpbHVyZSB0byBjb21tdW5pY2F0ZQ0K
 x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Content-Type: application/json
-
+```
+```json
 {
 	"Data": {
 		"FundsAvailableResult": {
@@ -990,13 +894,3 @@ Content-Type: application/json
 	"Meta": {}
 }
 ```
-
-
-
-
-
-
-
-
-
-

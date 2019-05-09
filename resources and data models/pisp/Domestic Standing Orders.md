@@ -134,7 +134,7 @@ The domestic-standing-orders - payment-details must have one of the following Pa
 
 The state model for the domestic-standing-order-consent resource follows the generic consent state model. However, does not use the &quot;Revoked&quot; status, as the consent for a domestic-standing-order is not a long-lived consent.
 
-![Payment Order Consent](images/dso/image2018-5-18_10-24-21.png)
+![Payment Order Consent](images/image2018-5-18_10-24-21.png)
 
 The definitions for the Status:
 
@@ -149,7 +149,7 @@ The definitions for the Status:
 
 The state model for the domestic-standing-order resource describes the initiation status only. I.e., not the subsequent execution of the domestic-standing-order.
 
-![Payment Order](images/dso/DomesticScheduledStatusModel.png)
+![Payment Order](images/DomesticScheduledStatusModel.png)
 
 The definitions for the Status:
 
@@ -164,7 +164,7 @@ The definitions for the Status:
 
 If the payment-order requires multiple authorisations, the Status of the multiple authorisations will be updated in the MultiAuthorisation object.
 
-![Multiple Authorisation](images/dso/image2018-6-29_16-36-34.png)
+![Multiple Authorisation](images/image2018-6-29_16-36-34.png)
 
 The definitions for the Status:
 
@@ -186,7 +186,7 @@ This section describes the OBDomesticStandingOrder3 class, which is reused as th
 
 #### UML Diagram
 
-![Domestic Standing Order](images/dso/OBDomesticStandingOrder3.png)
+![Domestic Standing Order](images/OBDomesticStandingOrder3.png)
 
 ####  Notes
 
@@ -272,7 +272,7 @@ The OBWriteDomesticStandingOrderConsent4 object will be used for the call to:
 
 ### UML Diagram
 
-![Domestic Standing Order Consent - Request](images/dso/OBWriteDomesticStandingOrderConsent4.gif)
+![Domestic Standing Order Consent - Request](images/OBWriteDomesticStandingOrderConsent4.gif)
 
 ###  Notes
 
@@ -309,7 +309,7 @@ The OBWriteDomesticStandingOrderConsentResponse4 object will be used for a respo
 
 ### UML Diagram
 
-![Domestic Standing Order Consent - Response](images/dso/OBWriteDomesticStandingOrderConsentResponse4.gif)
+![Domestic Standing Order Consent - Response](images/OBWriteDomesticStandingOrderConsentResponse4.gif)
 
 ### Notes
 
@@ -354,7 +354,7 @@ The OBWriteDomesticStandingOrder3 object will be used for a call to:
 
 ### UML Diagram
 
-![Domestic Standing Order - Request](images/dso/OBWriteDomesticStandingOrder3.png)
+![Domestic Standing Order - Request](images/OBWriteDomesticStandingOrder3.png)
 
 ### Notes
 
@@ -385,7 +385,7 @@ The OBWriteDomesticStandingOrderResponse4 object will be used for a response to 
 
 ### UML Diagram
 
-![Domestic Standing Order - Response](images/dso/OBWriteDomesticStandingOrderResponse4.png)
+![Domestic Standing Order - Response](images/OBWriteDomesticStandingOrderResponse4.png)
 
 ### Notes
 
@@ -422,7 +422,7 @@ The OBWritePaymentDetailsResponse1 object will be used for a response to a call 
 
 ### UML Diagram
 
-![Domestic Standing Order - Payment Details - Response](images/dso/OBWritePaymentDetailsResponse1.png)
+![Domestic Standing Order - Payment Details - Response](images/OBWritePaymentDetailsResponse1.png)
 
 ### Data Dictionary
 
@@ -436,7 +436,7 @@ The OBWritePaymentDetailsResponse1 object will be used for a response to a call 
 
 This set of flows and payload examples are for creating and retrieving a domestic standing order through a PISP:
 
-![Domestic Standing Order - Sequence Diagram](images/dso/DomesticStandingOrder.png)
+![Domestic Standing Order - Sequence Diagram](images/DomesticStandingOrder.png)
 
 <details>
   <summary>Diagram source</summary>
