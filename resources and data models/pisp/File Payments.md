@@ -140,9 +140,7 @@ option footer=bar
 
 ### POST /file-payment-consents 
 
-```
-POST /file-payment-consents
-```
+```POST /file-payment-consents```
 
 The API endpoint allows the PISP to ask an ASPSP to create a new  **file-payment-consent**  resource.
 
@@ -166,9 +164,7 @@ The default Status is "AwaitingUpload" immediately after the file-payment-consen
 
 ### POST /file-payment-consents/{ConsentId}/file
 
-```
-POST /file-payment-consents/{ConsentId}/file
-```
+```POST /file-payment-consents/{ConsentId}/file```
 
 
 The API endpoint allows the PISP to upload a file to an ASPSP, against a  **file-payment-consent**  resource.
@@ -197,9 +193,7 @@ The default Status is "AwaitingAuthorisation" immediately after the file has bee
 
 ### GET /file-payment-consents/{ConsentId}
 
-```
-GET /file-payment-consents/{ConsentId}
-```
+```GET /file-payment-consents/{ConsentId}```
 
 A PISP can optionally retrieve a payment consent resource that they have created to check its status. 
 
@@ -223,9 +217,7 @@ The available Status codes for the file-payment-consent resource are:
 
 ### GET /file-payment-consents/{ConsentId}/file
 
-```
-GET /file-payment-consents/{ConsentId}/file
-```
+```GET /file-payment-consents/{ConsentId}/file```
 
 The API endpoint allows the PISP to download a file (that had been uploaded against a  **file-payment-consent**  resource) from an ASPSP.
 
@@ -235,9 +227,7 @@ The API endpoint allows the PISP to download a file (that had been uploaded agai
 
 ### POST /file-payments
 
-```
-POST /file-payments
-```
+```POST /file-payments```
 
 Once the file-payment-consent has been authorised by the PSU, the PISP can proceed to submit the file-payment for processing:
 
@@ -259,9 +249,7 @@ The file-payments resource that is created successfully, must have one of the fo
 
 ### GET /file-payments/{FilePaymentId}
 
-```
-GET /file-payments/{FilePaymentId}
-```
+```GET /file-payments/{FilePaymentId}```
 
 A PISP can retrieve the file-payment to check its status.
 
@@ -277,9 +265,7 @@ The file-payments resource must have one of the following Status codes:
 
 ### GET /file-payments/{FilePaymentId}/report-file
 
-```
-GET /file-payments/{FilePaymentId}/report-file
-```
+```GET /file-payments/{FilePaymentId}/report-file```
 
 The API endpoint allows the PISP to download a payment report file from an ASPSP.
 
@@ -293,9 +279,7 @@ The API endpoint allows the PISP to download a payment report file from an ASPSP
 
 ### GET /file-payments/{FilePaymentId}/payment-details
 
-```
-GET /file-payments/{FilePaymentId}/payment-details
-```
+```GET /file-payments/{FilePaymentId}/payment-details```
 
 A PISP can retrieve the Details of the underlying payment transaction(s) via this endpoint. This resource allows ASPSPs to return richer list of Payment Statuses, and if available payment scheme related statuses.
 
@@ -396,7 +380,7 @@ This section describes the OBFile2 class, which is reused as the Initiation obje
 
 ![ OBFile2.gif ]( images/OBFile2.gif )
 
-#####  **Notes** 
+##### **Notes** 
 
 For the OBFile2 Initiation object: 
 
@@ -417,6 +401,7 @@ For the OBFile2 Initiation object:
 * An ASPSP may choose which fields  **must not**  be populated to process a specified FileType, and may reject the request if the fields are populated. These ASPSP specific requirements must be documented.
 
 ##### Data Dictionary
+
 | Name |Occurrence |XPath |EnhancedDefinition |Class |Codes |Pattern |
 | --- |--- |--- |--- |--- |--- |--- |
 | OBFile2 | |OBFile2 |The Initiation payload is sent by the initiating party to the ASPSP. It is used to request movement of funds using a payment file. |OBFile2 | | |

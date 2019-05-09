@@ -148,7 +148,7 @@ The international-payments - payment-details must have one of the following Paym
 
 The state model for the international-payment-consent resource follows the generic consent state model. However, does not use the &quot;Revoked&quot; status, as the consent for an international-payment is not a long-lived consent.
 
-![Payment Order Consent State Model](images/ip/image2018-5-18_10-24-21.png)
+![Payment Order Consent State Model](images/image2018-5-18_10-24-21.png)
 
 The definitions for the Status:
 
@@ -164,7 +164,7 @@ The definitions for the Status:
 
 The state model for the international-payment resource follows the behaviour and definitions for the ISO 20022 PaymentStatusCode code-set.
 
-![Payment Order Status Lifecycle](images/ip/PaymentStatusLifeCycle.png)
+![Payment Order Status Lifecycle](images/PaymentStatusLifeCycle.png)
 
 The definitions for the Status:
 
@@ -181,7 +181,7 @@ The definitions for the Status:
 
 If the payment-order requires multiple authorisations, the Status of the multiple authorisations will be updated in the MultiAuthorisation object.
 
-![Multiple Authorisation Statss](images/ip/image2018-6-29_16-36-34.png)
+![Multiple Authorisation Statss](images/image2018-6-29_16-36-34.png)
 
 The definitions for the Status:
 
@@ -203,7 +203,7 @@ This section describes the OBInternational2 class which is reused as the Initiat
 
 #### UML Diagram
 
-![OB International Reusable class](images/ip/OBInternational2.gif)
+![OB International Reusable class](images/OBInternational2.gif)
 
 #### Notes
 
@@ -323,7 +323,7 @@ The OBInternational2/ExchangeRateInformation object must conform to these behavi
 
 This section describes the OBExchangeRate2 class, which is reused in the response payloads in the international-payment-consent and international-payment resources.
 
-![Exchange Rate Model](images/ip/OBExchangeRate2.gif)
+![Exchange Rate Model](images/OBExchangeRate2.gif)
 
 #### Data Dictionary
 
@@ -344,7 +344,7 @@ The OBWriteInternationalConsent3 object will be used for the call to:
 
 ### UML Diagram
 
-![International Payment Consent - Request](images/ip/OBWriteInternationalConsent3.gif)
+![International Payment Consent - Request](images/OBWriteInternationalConsent3.gif)
 
 ### Notes 
 
@@ -386,7 +386,7 @@ The OBWriteInternationalConsentResponse3 object will be used for a response to a
 
 ### UML Diagram
 
-![International Payment Consent - Response](images/ip/OBWriteInternationalConsentResponse3.gif)
+![International Payment Consent - Response](images/OBWriteInternationalConsentResponse3.gif)
 
 ### Notes 
 
@@ -460,7 +460,7 @@ The OBWriteFundsConfirmationResponse1 object will be used for a response to a ca
 
 ### UML Diagram
 
-![International Payment Consent Confirmation of Funds - Response](images/ip/OBWriteConfirmFundsResponse1.gif)
+![International Payment Consent Confirmation of Funds - Response](images/OBWriteConfirmFundsResponse1.gif)
 
 ### Notes 
 
@@ -485,7 +485,7 @@ The OBWriteInternational2 object will be used for a call to:
 
 ### UML Diagram
 
-![International Payment - Request](images/ip/OBWriteInternational2.gif)
+![International Payment - Request](images/OBWriteInternational2.gif)
 
 ### Notes 
 
@@ -517,7 +517,7 @@ The OBWriteInternationalResponse3 object will be used for a response to a call t
 
 ### UML Diagram
 
-![International Payment - Response](images/ip/OBWriteInternationalResponse3.png)
+![International Payment - Response](images/OBWriteInternationalResponse3.png)
 
 ### Notes 
 
@@ -567,7 +567,7 @@ The OBWritePaymentDetailsResponse1 object will be used for a response to a call 
 
 ### UML Diagram
 
-![International Payment Order - Payment Details - Response](images/ip/OBWritePaymentDetailsResponse1.png)
+![International Payment Order - Payment Details - Response](images/OBWritePaymentDetailsResponse1.png)
 
 ### Data Dictionary
 

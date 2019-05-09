@@ -143,7 +143,8 @@ The domestic-payment - payment-details must have one of the following PaymentSta
 
 The state model for the domestic-payment-consent resource follows the generic consent state model. However, does not use the &nbsp;Revoked&nbsp; status, as the consent for a domestic-payment is not a long-lived consent.
 
-!["Payment Order Consent Status"](images/dp/image2018-5-18_10-24-21.png "Payment Order Consent Status")
+
+!["Payment Order Consent Status"](images/image2018-5-18_10-24-21.png "Payment Order Consent Status")
 
 The definitions for the Status:
 
@@ -158,7 +159,7 @@ The definitions for the Status:
 
 The state model for the domestic-payment resource follows the behaviour and definitions for the ISO 20022 PaymentStatusCode code-set.
 
-![Status](images/dp/PaymentStatusLifeCycle.png "Payment Order Status")
+![Status](images/PaymentStatusLifeCycle.png "Payment Order Status")
 
 The definitions for the status:
 
@@ -176,7 +177,7 @@ The definitions for the status:
 
 If the payment-order requires multiple authorisations - the Status of the multiple authorisations will be updated in the MultiAuthorisation object.
 
-![Status](images/dp/image2018-6-29_16-36-34.png "Multi Authorisation Status")
+![Status](images/image2018-6-29_16-36-34.png "Multi Authorisation Status")
 
 The definitions for the status:
 
@@ -198,7 +199,7 @@ This section describes the OBDomestic2 class which is reused as the Initiation o
 
 #### UML&nbsp;Diagram
 
-![UML Diagram$](images/dp/OBDomestic2.gif "UML Diagram")
+![UML Diagram$](images/OBDomestic2.gif "UML Diagram")
 
 #### Notes
 
@@ -266,7 +267,7 @@ The OBWriteDomesticConsent3 object will be used for the call to:
   
 ### UML Diagram
 
-![Domestic Payment Consent - Request](images/dp/OBWriteDomesticConsent3.gif)
+![Domestic Payment Consent - Request](images/OBWriteDomesticConsent3.gif)
 
 ### Notes
 
@@ -295,7 +296,7 @@ The OBWriteDomesticConsentResponse3 object will be used for a response to a call
 
 ### UML Diagram
 
-![Domestic Payment Consent - Response](images/dp/OBWriteDomesticConsentResponse3.gif)
+![Domestic Payment Consent - Response](images/OBWriteDomesticConsentResponse3.gif)
 
 ### Notes
 
@@ -335,7 +336,7 @@ The&nbsp;OBWriteFundsConfirmationResponse1 object will be used for a response to
 
 ### UML Diagram
 
-![Domestic Payment Consent Confirmation of Funds -&nbsp;Response](images/dp/OBWriteConfirmFundsResponse1.gif)
+![Domestic Payment Consent Confirmation of Funds -&nbsp;Response](images/OBWriteConfirmFundsResponse1.gif)
 
 ### Notes
 
@@ -359,7 +360,7 @@ The&nbsp;OBWriteDomestic2 object will be used for a call to:
 
 ### UML Diagram
 
-![Domestic&nbsp;Payment&nbsp;Request](images/dp/OBWriteDomestic2.gif)
+![Domestic&nbsp;Payment&nbsp;Request](images/OBWriteDomestic2.gif)
 
 ### Notes
 
@@ -389,7 +390,7 @@ The&nbsp;**Initiation** and **Risk**&nbsp;sections of the&nbsp;domestic-payment 
 
  ### UML Diagram
 
- ![Domestic Payment Response](images/dp/OBWriteDataDomesticResponse3.png)
+ ![Domestic Payment Response](images/OBWriteDataDomesticResponse3.png)
  
  ### Notes
  
@@ -430,7 +431,7 @@ The&nbsp;OBWritePaymentDetailsResponse1&nbsp;object will be used for a response 
 
 ### UML Diagram
 
-![Domestic Payment Order-Payment Details](images/dp/OBWritePaymentDetailsResponse1.png)
+![Domestic Payment Order-Payment Details](images/OBWritePaymentDetailsResponse1.png)
 
 ### Data Dictionary
 
@@ -453,7 +454,7 @@ In this scenario:
 
 ### Sequence Diagram
 
-![Sequence Diagram](images/dp/MerchantDomesticPaymentUsageExample-3.png)
+![Sequence Diagram](images/MerchantDomesticPaymentUsageExample-3.png)
 
 <details>
   <summary>Diagram source</summary>
@@ -918,7 +919,7 @@ In this scenario:
 
 ### Sequence Diagram
 
-![P2P Payment](images/dp/P2PDomesticPaymentExample.png)
+![P2P Payment](images/P2PDomesticPaymentExample.png)
 
 <details>
 <summary>Diagram source</summary>

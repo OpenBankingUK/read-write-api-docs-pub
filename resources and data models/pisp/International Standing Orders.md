@@ -10,9 +10,7 @@
 
 ### POST /international-standing-order-consents
 
-```
-POST /international-standing-order-consents
-```
+```POST /international-standing-order-consents```
 
 The API endpoint allows the PISP to ask an ASPSP to create a new  **international-standing-order-consent**  resource.
 
@@ -32,9 +30,7 @@ The default Status is "AwaitingAuthorisation" immediately after the internationa
 
 ### GET /international-standing-order-consents/{ConsentId}
 
-```
-GET /international-standing-order-consents/{ConsentId}
-```
+```GET /international-standing-order-consents/{ConsentId}```
 
 A PISP can optionally retrieve a payment consent resource that they have created to check its status. 
 
@@ -57,9 +53,7 @@ The available Status codes for the international-standing-order-consent resource
 
 ### POST /international-standing-orders
 
-```
-POST /international-standing-orders
-```
+```POST /international-standing-orders```
 
 Once the international-standing-order-consent has been authorised by the PSU, the PISP can proceed to submit the international-standing-orders for processing:
 
@@ -85,9 +79,7 @@ The international-standing-orders resource that is created successfully must hav
 
 ### GET /international-standing-orders/{InternationalStandingOrderPaymentId}
 
-```
-GET /international-standing-orders/{InternationalStandingOrderPaymentId}
-```
+```GET /international-standing-orders/{InternationalStandingOrderPaymentId}```
 
 A PISP can retrieve the international-standing-orders to check its status.
 
@@ -104,9 +96,7 @@ The international-standing-orders resource must have one of the following Status
 
 ### GET /international-standing-orders/{InternationalStandingOrderPaymentId}/payment-details
 
-```
-GET /international-standing-orders/{InternationalStandingOrderPaymentId}/payment-details
-```
+```GET /international-standing-orders/{InternationalStandingOrderPaymentId}/payment-details```
 
 A PISP can retrieve the Details of the underlying payment transaction via this endpoint. This resource allows ASPSPs to return richer list of Payment Statuses, and if available payment scheme related statuses.
 
@@ -486,7 +476,7 @@ The OBWritePaymentDetailsResponse1 object will be used for a response to a call 
 
 **POST /international-standing-order-consents** 
 
-<b>Payment Order Consent Request Payload</b>
+**Payment Order Consent Request Payload**
 
 ```
 POST /international-standing-order-consents HTTP/1.1
@@ -532,7 +522,7 @@ Accept: application/json
 
 **POST /international-standing-order-consents response** 
 
-<b>Payment Order Consent Response Payload</b>
+**Payment Order Consent Response Payload**
 
 ```
 HTTP/1.1 201 Created
@@ -583,7 +573,7 @@ Content-Type: application/json
 
 **POST /international-standing-orders request** 
 
-<b>Payment Order Request Payload</b>
+**Payment Order Request Payload**
 
 ```
 POST /international-standing-orders HTTP/1.1
@@ -629,7 +619,7 @@ Accept: application/json
 
 **POST /international-standing-orders response** 
 
-<b>Payment Order Response Payload</b>
+**Payment Order Response Payload**
 
 ```
 HTTP/1.1 201 Created
