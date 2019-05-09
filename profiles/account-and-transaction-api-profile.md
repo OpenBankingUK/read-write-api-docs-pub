@@ -45,15 +45,15 @@ This specification should be read in conjunction with a compatible Read/Write Da
 
 This document consists of the following parts:
 
- **Overview:**  Provides an overview of the profile.
+ **Overview:** Provides an overview of the profile.
 
- **Basics:**  Identifies the flows, release management and permission model.
+ **Basics:** Identifies the flows, release management and permission model.
 
  **Security & Access Control:** Specifies the means for AISPs and PSUs to authenticate themselves and provide consent.
 
  **Data Model:** Documents mappings and enumerations that apply to all the end-points.
 
- **Alternative Flows:**  Documents rules for alternative flows.
+ **Alternative Flows:** Documents rules for alternative flows.
 
 ### Profile Compatibility
 
@@ -88,12 +88,12 @@ Step 1: Request Account Information
 
 Step 2: Setup Account Access Consent
 
-- The AISP connects to the ASPSP that services the PSU's account(s) and creates an  **account-access-consent**  resource. This informs the ASPSP that one of its PSUs is granting access to account and transaction information to an AISP. The ASPSP responds with an identifier for the resource (the ConsentId - which is the intent identifier). This step is carried out by making a  **POST**  request to / **account-access-consents**  endpoint.
+- The AISP connects to the ASPSP that services the PSU's account(s) and creates an **account-access-consent** resource. This informs the ASPSP that one of its PSUs is granting access to account and transaction information to an AISP. The ASPSP responds with an identifier for the resource (the ConsentId - which is the intent identifier). This step is carried out by making a **POST** request to / **account-access-consents** endpoint.
 - The account-access-consent resource will include these fields below - which describe the data that the PSU has consented with the AISP:
   - Permissions - a list of data clusters that have been consented for access.
   - Expiration Date - an optional expiration for when the AISP will no longer have access to the PSU's data.
   - Transaction Validity Period - the From/To date range which specifies a historical period for transactions and statements which may be accessed by the AISP.
-- An AISP may be a broker for data to other parties, and so it is valid for a PSU to have multiple account-access-consents for the same accounts,  **with different consent/authorisation parameters agreed** .
+- An AISP may be a broker for data to other parties, and so it is valid for a PSU to have multiple account-access-consents for the same accounts, **with different consent/authorisation parameters agreed**.
 
 Step 3: Authorise Consent
 
@@ -115,7 +115,7 @@ Step 3: Authorise Consent
 Step 4: Request Data
 
 - This is carried out by making a **GET** request the relevant **resource**.
-- The unique AccountId(s) that are valid for the account-access-consent will be returned with a call to GET /accounts.  **This will always be the first call once an AISP has a valid access token.**
+- The unique AccountId(s) that are valid for the account-access-consent will be returned with a call to GET /accounts. **This will always be the first call once an AISP has a valid access token.**
 
 #### Sequence Diagram
 
@@ -225,34 +225,34 @@ The account-access-consent resource is referred to as an account-request resourc
 - An AISP **must not** access a Consent on an older version, via the Id for a Consent created in a newer version:
   - E.g., An account-access-consent created in v3 accessed via v2 account-request.
 - An ASPSP **must** allow a Consent to be accessed in a newer version.
-- An ASPSP  **must**  ensure Permissions set associated with a Consent are unchanged when accessed in a different version:
+- An ASPSP **must** ensure Permissions set associated with a Consent are unchanged when accessed in a different version:
   - E.g., An account-request created in v2 will have the same details when accessed via v2 and v3 (as an account-access-consent).
-- An ASPSP  **must**  ensure a Consent's fields are unchanged when accessed in a different version.
-- An ASPSP **may**  allow expired Consents to be accessed in a newer version.
-- An ASPSP  **may**  choose to populate new fields introduced in a resource from previous version sensible defaults (if mandatory) or not populate at all (if not mandatory):
+- An ASPSP **must** ensure a Consent's fields are unchanged when accessed in a different version.
+- An ASPSP **may** allow expired Consents to be accessed in a newer version.
+- An ASPSP **may** choose to populate new fields introduced in a resource from previous version sensible defaults (if mandatory) or not populate at all (if not mandatory):
   - E.g., OBReadResponse1/Data/StatusUpdateDateTime introduced in v2 accessed with v1 AccountRequestId can be populated with Last accessed date time, if not already available in the system of records.
 
 ##### DELETE
 
-- An AISP  **must not**  delete a Consent on an older version, via an Id for a Consent created in a newer version:
+- An AISP **must not** delete a Consent on an older version, via an Id for a Consent created in a newer version:
   - E.g., An account-access-consent is created in v3, and request DELETE on v2.
-- An ASPSP  **must**  support deleting a Consent from a previous version via a newer version:
+- An ASPSP **must** support deleting a Consent from a previous version via a newer version:
   - E.g., An account-request is created in v2, and request DELETE on v3.
 
 #### Account Information Resources
 
 ##### GET
 
-- An AISP  **may** use a token that is bound to a Consent in a previous version, to access an endpoint of a newer version.
-- An AISP  **may**  use an Id for a Consent created in a previous version to retrieve Account Information resources in a newer version:
+- An AISP **may** use a token that is bound to a Consent in a previous version, to access an endpoint of a newer version.
+- An AISP **may** use an Id for a Consent created in a previous version to retrieve Account Information resources in a newer version:
   - E.g., AccountRequestId from v2 can be used as ConsentId in v3, to GET /accounts.
-- An AISP  **must not**  use an Id for a Consent from a newer version to access Account Information resources in a previous version:
+- An AISP **must not** use an Id for a Consent from a newer version to access Account Information resources in a previous version:
   - E.g., ConsentId for an account-access-consent created in v3, must not be used to access v2 Account Information endpoints.
-- An AISP  **must not**  use an Id for a Consent from a previous version to access a resource introduced in a newer version (as the Consent will not have Permissions required to access the new resource).
-- An ASPSP  **must**  allow an AISP to use an Id for a Consent from a previous version to access Account Information resource endpoints in a newer version:
+- An AISP **must not** use an Id for a Consent from a previous version to access a resource introduced in a newer version (as the Consent will not have Permissions required to access the new resource).
+- An ASPSP **must** allow an AISP to use an Id for a Consent from a previous version to access Account Information resource endpoints in a newer version:
   - E.g., AccountRequestId created in v2 must be allowed to access Account Information resource endpoints in v3.
-- An ASPSP  **must**  reject the request to access a resource, for which a Consent's Permissions set does not permit.
-- An ASPSP  **may**  choose to populate new fields introduced in a resource from previous version sensible defaults (if mandatory) or not populate at all:
+- An ASPSP **must** reject the request to access a resource, for which a Consent's Permissions set does not permit.
+- An ASPSP **may** choose to populate new fields introduced in a resource from previous version sensible defaults (if mandatory) or not populate at all:
   - E.g., OBReadResponse1/Data/StatusUpdateDateTime introduced in Version2 accessed with V1 AccountRequestId can be populated with Last accessed date time, if not already available in the system of records.
 
 ## Security & Access Control
@@ -267,13 +267,13 @@ accounts: Ability to read Accounts information
 
 ### Grants Types
 
-AISPs  **must**  use a client credentials grant to obtain a token to access the account-access-consents resource. In the specification, this grant type is referred to as "Client Credentials".
+AISPs **must** use a client credentials grant to obtain a token to access the account-access-consents resource. In the specification, this grant type is referred to as "Client Credentials".
 
-AISPs  **must** use an authorization code grant using a redirect or decoupled flow to obtain a token to access all other resources. In the specification, this grant type is referred to as "Authorization Code".
+AISPs **must** use an authorization code grant using a redirect or decoupled flow to obtain a token to access all other resources. In the specification, this grant type is referred to as "Authorization Code".
 
 ### Consent Authorisation
 
-The AISP  **must**  create an  **account-access-consent** resource through a  **POST**  operation. This resource indicates the  *consent* that the AISP claims it has been given by the PSU to retrieve account and transaction information. At this stage, the consent is not yet authorised as the ASPSP has not yet verified this claim with the PSU.
+The AISP **must** create an **account-access-consent** resource through a **POST** operation. This resource indicates the  *consent* that the AISP claims it has been given by the PSU to retrieve account and transaction information. At this stage, the consent is not yet authorised as the ASPSP has not yet verified this claim with the PSU.
 
 The ASPSP responds with a ConsentId. This is the intent-id that is used when initiating the authorization code grant (as described in the Trust Framework).
 
@@ -289,10 +289,10 @@ Once these steps are complete, the consent is considered to have been authorised
 
 The Account Access Consent resource consists of the following fields, which together form the elements of the consent provided by the PSU to the AISP:
 
--  **Permissions:**  The set of data clusters that the PSU has consented to allow the AISP to access.
--  **ExpirationDateTime:**  The date-time up to which the consent is valid.
--  **TransactionFromDateTime:**  The earliest point of the transaction / statement historical period that the PSU has consented to provide access to the AISP.
--  **TransactionToDateTime:** The last point of the transaction / statement historical period that the PSU has consented to provide access to the AISP.
+- **Permissions:** The set of data clusters that the PSU has consented to allow the AISP to access.
+- **ExpirationDateTime:** The date-time up to which the consent is valid.
+- **TransactionFromDateTime:** The earliest point of the transaction / statement historical period that the PSU has consented to provide access to the AISP.
+- **TransactionToDateTime:** The last point of the transaction / statement historical period that the PSU has consented to provide access to the AISP.
 
 ##### Permissions
 
@@ -302,16 +302,16 @@ When a permission is granted for a "Detail" permission code (e.g., ReadAccountsD
 
 While it is duplication for a TPP to request a "Basic" permission code and the corresponding "Detail" permission code, it is not a malformed request, and the ASPSP must not reject solely on the basis of duplication.
 
-The permissions array  **must**  contain at least  **ReadAccountsBasic**  or  **ReadAccountsDetail** .
+The permissions array **must** contain at least **ReadAccountsBasic** or **ReadAccountsDetail**.
 
-The following combinations of permissions are not allowed, and the ASPSP  **must**  reject these account-access-consents with a 400 response code:
+The following combinations of permissions are not allowed, and the ASPSP **must** reject these account-access-consents with a 400 response code:
 
 - Account Access Consents with an empty Permissions array.
 - Account Access Consents with a permission code that is not supported by the ASPSP (ASPSPs are expected to publish which API endpoints are supported).
-- Account Access Consents with a Permissions array that contains  **ReadTransactionsBasic**  but does not contain at least one of  **ReadTransactionsCredits**  and  **ReadTransactionsDebits** .
-- Account Access Consents with a Permissions array that contains  **ReadTransactionsDetail**  but does not contain at least one of  **ReadTransactionsCredits**  and  **ReadTransactionsDebits** .
-- Account Access Consents with a Permissions array that contains  **ReadTransactionsCredits**  but does not contain at least one of  **ReadTransactionsBasic**  and  **ReadTransactionsDetail**
-- Account Access Consents with a Permissions array that contains  **ReadTransactionsDebits**  but does not contain at least one of  **ReadTransactionsBasic**  and  **ReadTransactionsDetail** .
+- Account Access Consents with a Permissions array that contains **ReadTransactionsBasic** but does not contain at least one of **ReadTransactionsCredits** and **ReadTransactionsDebits**.
+- Account Access Consents with a Permissions array that contains **ReadTransactionsDetail** but does not contain at least one of **ReadTransactionsCredits** and **ReadTransactionsDebits**.
+- Account Access Consents with a Permissions array that contains **ReadTransactionsCredits** but does not contain at least one of **ReadTransactionsBasic** and **ReadTransactionsDetail**
+- Account Access Consents with a Permissions array that contains **ReadTransactionsDebits** but does not contain at least one of **ReadTransactionsBasic** and **ReadTransactionsDetail**.
 
 | Permissions |Endpoints |Business Logic |Data Cluster Description |
 | --- |--- |--- |--- |
@@ -388,9 +388,9 @@ The ExpirationDateTime applies to all Permissions (data clusters) being consente
 
 The TransactionToDateTime and the TransactionFromDateTime specify the period for consented transaction and/or statement history. Both the fields are optional and one may be specified without the other.
 
-The AISP  **must**  be restricted to accessing transactions within this period when accessing the transactions resource.
+The AISP **must** be restricted to accessing transactions within this period when accessing the transactions resource.
 
-The AISP  **must**  be restricted to accessing statements which are  **completely**  within this period when accessing the statements resource.
+The AISP **must** be restricted to accessing statements which are **completely** within this period when accessing the statements resource.
 
 #### Account Access Consent Status
 
@@ -413,24 +413,24 @@ A PSU can re-authenticate an Account Access Consent if:
 
 The accounts bound to the account-access-consent are selected in the ASPSP domain.
 
-An ASPSP  **may**  allow the PSU to change the selected accounts during consent re-authentication.
+An ASPSP **may** allow the PSU to change the selected accounts during consent re-authentication.
 
 ### Consent Revocation
 
 A PSU may revoke consent for accessing account information at any point in time.
 
-A PSU  **may**  revoke authorisation directly with the ASPSP. The mechanisms for this are in the competitive space and are up to each ASPSP to implement in the ASPSP's banking interface. If the PSU revokes authorisation with the ASPSP, the Status of the  **account-access-consent**  resource must be set to *Revoked*.
+A PSU **may** revoke authorisation directly with the ASPSP. The mechanisms for this are in the competitive space and are up to each ASPSP to implement in the ASPSP's banking interface. If the PSU revokes authorisation with the ASPSP, the Status of the **account-access-consent** resource must be set to *Revoked*.
 
 The PSU may request the AISP to revoke consent that it has authorised. If consent is revoked with the AISP:
 
-- The AISP  **must**  cease to access the APIs at that point.
-- The AISP  **must**  call the  **DELETE**  operation on the account-access-consent resource (before confirming consent revocation with the PSU) to indicate to the ASPSP that the PSU has revoked consent.
+- The AISP **must** cease to access the APIs at that point.
+- The AISP **must** call the **DELETE** operation on the account-access-consent resource (before confirming consent revocation with the PSU) to indicate to the ASPSP that the PSU has revoked consent.
 
 ### Changes to Selected Account(s)
 
-The PSU  **must**  select the accounts to which the consent should be applied at the point of consent authorisation.
+The PSU **must** select the accounts to which the consent should be applied at the point of consent authorisation.
 
-Subsequent changes to the set of accounts to which the consent authorisation applies  **may**  be carried out directly with the ASPSP. The method for doing this lies in the competitive space and is not part of this specification.
+Subsequent changes to the set of accounts to which the consent authorisation applies **may** be carried out directly with the ASPSP. The method for doing this lies in the competitive space and is not part of this specification.
 
 Additionally, the set of selected accounts may also change due to external factors. This includes (but is not limited to):
 
@@ -439,7 +439,7 @@ Additionally, the set of selected accounts may also change due to external facto
 - The account is barred or frozen.
 - The PSU changes the selected accounts during consent re-authentication.
 
-In these scenarios, only the affected account is removed from the list of selected accounts. The ASPSP  **must not**  revoke authorisation to other accounts.
+In these scenarios, only the affected account is removed from the list of selected accounts. The ASPSP **must not** revoke authorisation to other accounts.
 
 ### Risk Scoring Information
 
@@ -463,7 +463,7 @@ The transactions or statements for a particular range of dates may be excluded f
 
 The absence of transactions / statements in the payload does not indicate that there were no transactions / statements during that period.
 
-To ensure that the data is interpreted correctly, the ASPSP  **may**  provide the date of the first available transaction and last available transaction as part of the response in the Meta section in the FirstAvailableDateTime and LastAvailableDateTime fields.
+To ensure that the data is interpreted correctly, the ASPSP **may** provide the date of the first available transaction and last available transaction as part of the response in the Meta section in the FirstAvailableDateTime and LastAvailableDateTime fields.
 
 ```json
   "Meta": {
