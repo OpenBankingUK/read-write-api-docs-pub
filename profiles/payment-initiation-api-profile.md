@@ -2,21 +2,22 @@
 
 1. [Overview](#overview)
    1. [Document Overview](#document-overview)
-   2. [Design Principles](#design-principles)
+   2. [Profile Compatibility](#profile-compatibility)
+   3. [Resources](#resources)
+   4. [Design Principles](#design-principles)
       1. [Scheme Agnostic](#scheme-agnostic)
       2. [Status Codes](#status-codes)
 2. [Basics](#basics)
    1. [Overview](#overview-1)
-   2. [Steps](#steps)
-   3. [Sequence Diagram](#sequence-diagram)
-   4. [Payment Restrictions](#payment-restrictions)
+      1. [Steps](#steps)
+      2. [Sequence Diagram](#sequence-diagram)
+   2. [Payment Restrictions](#payment-restrictions)
       1. [CutOffDateTime Behaviour](#cutoffdatetime-behaviour)
-   5. [Release Management](#release-management)
+   3. [Release Management](#release-management)
       1. [Payment-Order Consent](#payment-order-consent)
       2. [Payment-Order Consent (Confirm Funds)](#payment-order-consent-confirm-funds)
       3. [Payment-Order Resource](#payment-order-resource)
-3. [Endpoints](#endpoints)
-4. [Security & Access Control](#security--access-control)
+3. [Security & Access Control](#security--access-control)
    1. [Scopes](#scopes)
    2. [Grants Types](#grants-types)
    3. [Consent Authorisation](#consent-authorisation)
@@ -26,7 +27,7 @@
       4. [Changes to Selected Account](#changes-to-selected-account)
       5. [Consent Re-authentication](#consent-re-authentication)
    4. [Risk Scoring Information](#risk-scoring-information)
-5. [Data Model](#data-model)
+4. [Data Model](#data-model)
    1. [Reused Classes](#reused-classes)
       1. [OBRisk1](#obrisk1)
       2. [OBCharge2](#obcharge2)
@@ -37,12 +38,11 @@
    2. [Identifier Fields](#identifier-fields)
       1. [Merchant Flow](#merchant-flow)
       2. [Party to Party Flow](#party-to-party-flow)
-   3. [Payment Order Types](#payment-order-types)
-   4. [Enumerations](#enumerations)
+   3. [Enumerations](#enumerations)
       1. [Static Enumerations](#static-enumerations)
       2. [ISO Enumerations](#iso-enumerations)
       3. [Namespaced Enumerations](#namespaced-enumerations)
-6. [Alternative and Error Flows](#alternative-and-error-flows)
+5. [Alternative and Error Flows](#alternative-and-error-flows)
    1. [Idempotent Payment Order Consent](#idempotent-payment-order-consent)
    2. [Idempotent Payment Order](#idempotent-payment-order)
    3. [Multi-Auth Payment Order Consent](#multi-auth-payment-order-consent)
@@ -51,33 +51,46 @@
 
 ## Overview
 
-This Payment Initiation API Specification describes the flows and payloads for initiating a  **general**  payment-order. 
+The Payment Initiation API Profile describes the flows and common functionality for the Payment Initiation API, which allows a Payment Initiation Service Provider ('PISP') to:
 
-The API endpoints described here allow a PISP to: 
-
-- Register an intent to  **stage**  a payment-order consent.
+- Register an intent to **stage** a payment-order consent.
 - Optionally confirm available funds for a payment-order
   - Domestic immediate, international immediate and international scheduled (immediate debit) payments only.
-- Subsequently  **submit**  the payment-order for processing.
-- Optionally retrieve the status of a payment-order  **consent**  or payment-order  **resource.** 
+- Subsequently **submit** the payment-order for processing.
+- Optionally retrieve the status of a payment-order **consent** or payment-order **resource**.
 
-This specification should be read in conjunction with Read/Write Data API Specification which provides a description of the elements that are common across all the Read/Write Data APIs.
+This profile should be read in conjunction with a compatible Read/Write Data API Profile which provides a description of the elements that are common across all the Read/Write Data APIs, and compatible individual resources.
 
 ### Document Overview
 
 This document consists of the following parts:
 
- **Overview:**  Provides an overview of the API and the key decisions and principles that contributed to the specification.
+ **Overview:** Provides an overview of the profile.
  
- **Basics:**  The section begins with an introduction to how the API is to be used to initiate a payment order, using the example of a single immediate payment. It goes on to identify the resources and operations that are permitted on those resources and various special cases.
+ **Basics:** Identifies the flows, restrictions and release management.
  
  **Security & Access Control:** Specifies the means for PISPs and PSUs to authenticate themselves and provide consent.
 
- **Swagger Specifications:**  Provides links to the swagger specifications for the APIs.
+ **Data Model:** Documents mappings and enumerations that apply to all the end-points.
 
- **Data Model:** Describes the data model for the API payloads.
+ **Alternative Flows:** Documents rules for alternative flows.
 
- **Usage Examples:**  Provides examples for normal flows, and alternate flows.
+### Profile Compatibility
+
+For a list of profiles and resources compatible with this profile, please see the [Compatibility Matrix]().
+
+### Resources
+
+Each of the Payment Initiation API resources are documented in the  [*Resources and Data Models*  /  *PISP*](../resources%20and%20data%20models/pisp) area of the specification. Each resource is documented with:
+
+- Endpoints
+  - The API endpoints available for the resource.
+- Data Model
+  - Resource definition.
+  - UML diagram.
+  - Permissions as they relate to accessing the resource.
+  - Data dictionary - which defines fields, re-usable classes, mandatory (1..1) or conditional (0..1) as defined in the Design Principles section, and enumerations.
+- Usage Examples
 
 ### Design Principles
 
@@ -97,12 +110,11 @@ The API uses two status codes that serve two different purposes:
 - The Status field for the payment-order consent reflects the status of the PSU consent authorisation.
 - The Status field for the payment-order resource reflects the status of the payment-order initiation or execution.
 
-
 ## Basics
 
 ### Overview
 
-The figure below provides a  **general**  outline of a payment flow for all payment-order types using the Payment APIs. The payment-order types covered in this specification include:
+The figure below provides a **general** outline of a payment flow for all payment-order types using the Payment APIs. The payment-order types covered in this profile include:
 
 - Domestic payments.
 - Domestic scheduled payments.
@@ -114,7 +126,7 @@ The payment-order consent and payment-order resource in the following flow gener
 
 ![](./images/PaymentStatusModelTriangle.png)
 
-### Steps
+#### Steps
 
 Step 1: Agree Payment-Order Initiation
 
@@ -123,8 +135,8 @@ Step 1: Agree Payment-Order Initiation
 
 Step 2: Setup Payment-Order Consent
 
-- The PISP connects to the ASPSP that services the PSU's payment account and creates a new  **payment-order consent**  resource. This informs the ASPSP that one of its PSUs intends to make a  **payment-order** . The ASPSP responds with an identifier for the payment-order consent resource (the ConsentId, which is the intent identifier).
-- This step is carried out by making a  **POST**  request to the  **payment-order consent**  resource.
+- The PISP connects to the ASPSP that services the PSU's payment account and creates a new **payment-order consent** resource. This informs the ASPSP that one of its PSUs intends to make a **payment-order**. The ASPSP responds with an identifier for the payment-order consent resource (the ConsentId, which is the intent identifier).
+- This step is carried out by making a **POST** request to the **payment-order consent** resource.
 
 Step 3: Authorise Consent
 
@@ -146,21 +158,21 @@ Step 3: Authorise Consent
 
 Step 4: Confirm Funds (Domestic and International Single Immediate Payments Only)
 
-- Once the PSU is authenticated and authorised the  **payment-order-consent** , the PISP can check whether funds are available to make the payment.
-- This is carried out by making a  **GET**  request, calling the  **funds-confirmation**  operator on the  **payment-order-consent**  resource.
+- Once the PSU is authenticated and authorised the **payment-order-consent** , the PISP can check whether funds are available to make the payment.
+- This is carried out by making a **GET** request, calling the **funds-confirmation** operator on the **payment-order-consent** resource.
 
 Step 5: Create Payment-Order
 
-- The PISP creates a  **payment-order**  resource to indicate that the payment created in the steps above should be submitted for processing.
-- This is carried out by making a  **POST**  request to the appropriate  **payment-order** resource.
+- The PISP creates a **payment-order** resource to indicate that the payment created in the steps above should be submitted for processing.
+- This is carried out by making a **POST** request to the appropriate **payment-order** resource.
 - The ASPSP returns the identifier for the payment-order resource to the PISP.
 
 Step 6: Get Consent/Payment-Order/Payment-Details Status
 
 - The PISP can check the status of the payment-order consent (with the ConsentId) or payment-order resource (with the payment-order resource identifier) or payment-details(with the payment-order resource identifier) .
-- This is carried out by making a  **GET**  request to the  **payment-order consent** or  **payment-order**  or  **payment-details**  resource.
+- This is carried out by making a **GET** request to the **payment-order consent** or **payment-order** or **payment-details** resource.
 
-### Sequence Diagram
+#### Sequence Diagram
 
 ![](./images/Payments-Flow.png)
 
@@ -292,15 +304,15 @@ For example, but not limited to:
 - The domestic-standing-order Frequency patterns supported.
 - The maximum future date on a scheduled-payment.
 
-Each ASPSP  **must**  determine appropriate restrictions that they support based on their individual practices, standards and limitations. These restrictions should be documented on ASPSP developer portals.
+Each ASPSP **must** determine appropriate restrictions that they support based on their individual practices, standards and limitations. These restrictions should be documented on ASPSP developer portals.
 
-An ASPSP  **must**  reject the payment-order  **consent**  if the ASPSP is unable to handle the request.
+An ASPSP **must** reject the payment-order **consent** if the ASPSP is unable to handle the request.
 
-####  CutOffDateTime Behaviour
+#### CutOffDateTime Behaviour
 
-An ASPSP  **may**  return the specific CutOffDateTime when responding to a payment-order consent request.
+An ASPSP **may** return the specific CutOffDateTime when responding to a payment-order consent request.
 
-An ASPSP  **must**  document the behaviour for a payment receipt before and after the CutOffDateTime for a payment-order has elapsed.
+An ASPSP **must** document the behaviour for a payment receipt before and after the CutOffDateTime for a payment-order has elapsed.
 
 Two strategies for handling behaviour are:
 
@@ -311,21 +323,21 @@ Two strategies for handling behaviour are:
 
 In this scenario, the behaviour of payment-order execution is explicit to the PISP and PSU.
 
-- An ASPSP  **must**  reject the payment-order  **consent**  if the CutOffDateTime for a specific payment-order type has elapsed.
-- An ASPSP  **must** reject an authorization request when the underlying intent object is associated with a CutoffDateTime that has elapsed. The ASPSP  **must not**  issue an access token in such a situation. The ASPSP  **must**  set the status of the payment-order consent resource to “Rejected”.
-- An ASPSP  **must**  reject the payment-order  **resource**  if the CutOffDateTime for a specific payment-order type, has been established and has elapsed.
-- A PISP  **must**  ensure that the PSU consent authorisation is completed and the payment-order resource is created before the CutOffDateTime elapses. 
+- An ASPSP **must** reject the payment-order **consent** if the CutOffDateTime for a specific payment-order type has elapsed.
+- An ASPSP **must** reject an authorization request when the underlying intent object is associated with a CutoffDateTime that has elapsed. The ASPSP **must not** issue an access token in such a situation. The ASPSP **must** set the status of the payment-order consent resource to “Rejected”.
+- An ASPSP **must** reject the payment-order **resource** if the CutOffDateTime for a specific payment-order type, has been established and has elapsed.
+- A PISP **must** ensure that the PSU consent authorisation is completed and the payment-order resource is created before the CutOffDateTime elapses. 
 
-For a payment-order  **consent**  or a payment-order  **resource**  that has been rejected due to the elapsed CutoffDateTime, the PISP  **may**  decide to create a corresponding schedule payment endpoint to create a new payment-order consent. E.g. if a PISP attempts to make a BACS payment after 16:00, it would be rejected. The PISP may use the /domestic-scheduled-payment-consents endpoint to create a consent for the same payment for the next working day.
+For a payment-order **consent** or a payment-order **resource** that has been rejected due to the elapsed CutoffDateTime, the PISP **may** decide to create a corresponding schedule payment endpoint to create a new payment-order consent. E.g. if a PISP attempts to make a BACS payment after 16:00, it would be rejected. The PISP may use the /domestic-scheduled-payment-consents endpoint to create a consent for the same payment for the next working day.
 
 ##### Accept the Payment-Order
 
 In this scenario, the behaviour of the payment-order execution is not explicit to the PISP and PSU, and the payment-order will be executed on the next available working day.
 
-- An ASPSP  **must**  accept the payment-order  **consent**  if the CutOffDateTime for a specific payment-order type has elapsed.
-- An ASPSP  **must** accept an authorization request when the underlying intent object is associated with a CutoffDateTime that has elapsed.
-- An ASPSP  **must**  accept the payment-order  **resource**  if the CutOffDateTime for a specific payment-order type, has been established and has elapsed.
-- An ASPSP  **may** update the payment-order consent or payment-order  **resource** with the CutOffDateTime, ExpectedExecutionDateTime and ExpectedSettlementDateTime, to communicate expected execution behaviour  if the CutOffDateTime has elapsed.
+- An ASPSP **must** accept the payment-order **consent** if the CutOffDateTime for a specific payment-order type has elapsed.
+- An ASPSP **must** accept an authorization request when the underlying intent object is associated with a CutoffDateTime that has elapsed.
+- An ASPSP **must** accept the payment-order **resource** if the CutOffDateTime for a specific payment-order type, has been established and has elapsed.
+- An ASPSP **may** update the payment-order consent or payment-order **resource** with the CutOffDateTime, ExpectedExecutionDateTime and ExpectedSettlementDateTime, to communicate expected execution behaviour  if the CutOffDateTime has elapsed.
 
 ### Release Management
 
@@ -335,19 +347,17 @@ This section overviews the release management and versioning strategy for the Pa
 
 ##### POST
 
-- A PISP  **must not**  create a payment-order consent ConsentId on a newer version and use it to create a payment-order resource in a previous version 
+- A PISP **must not** create a payment-order consent ConsentId on a newer version and use it to create a payment-order resource in a previous version 
   - E.g., A ConsentId created in v3, must not be used to create a v1 PaymentSubmissionId
-- A PISP **must not**  create a payment-order consent ConsentId on a previous version and use it to create a payment-order resource in a newer version
+- A PISP **must not** create a payment-order consent ConsentId on a previous version and use it to create a payment-order resource in a newer version
   - E.g., A PaymentId created in v1, must not be used to create a v3 DomesticPaymentId
-
 
 ##### GET
 
-- A PISP  **must not**  access a payment-order ConsentId created in a newer version, via a previous version endpoint
+- A PISP **must not** access a payment-order ConsentId created in a newer version, via a previous version endpoint
   - E.g., A ConsentId created in v3 accessed via a v1 PaymentId
-- An ASPSP  **may** choose to make ConsentIds accessible across versions
+- An ASPSP **may** choose to make ConsentIds accessible across versions
   - E.g., for a PaymentId created in v1, an ASPSP may or may not make it available via v3, as this is a short-lived consent
-
 
 #### Payment-Order Consent (Confirm Funds)
 
@@ -356,41 +366,27 @@ This section overviews the release management and versioning strategy for the Pa
 - A PISP **must not** confirm funds using a payment-order-consent ConsentId created in a different version.
   - E.g. A ConsentId created in v3, must not be used to confirm funds on a v1 endpoint.
 
-
 #### Payment-Order Resource
 
 ##### POST
 
-- A PISP  **must**  use a payment-order consent ConsentId within the same version to create the payment-order resource (in that version)
-  - E.g., A v3 payment-order  **consent**  can only be used to create a payment-order  **resource**  in v3.
-- An ASPSP  **must not**  allow a PISP to use a ConsentId from a previous version to create a Payment Order in a newer version, and vice versa
+- A PISP **must** use a payment-order consent ConsentId within the same version to create the payment-order resource (in that version)
+  - E.g., A v3 payment-order **consent** can only be used to create a payment-order **resource** in v3.
+- An ASPSP **must not** allow a PISP to use a ConsentId from a previous version to create a Payment Order in a newer version, and vice versa
 
 ##### GET
 
-- A PISP  **must**  refer to the ASPSP's online Developer Portal for guidelines on accessibility of a payment-order resource in a newer version
+- A PISP **must** refer to the ASPSP's online Developer Portal for guidelines on accessibility of a payment-order resource in a newer version
 
-- A PISP  **must**  not access the payment-order resource types introduced in a newer version, on an older version endpoint:
+- A PISP **must** not access the payment-order resource types introduced in a newer version, on an older version endpoint:
   - E.g., an international-payment created in v3, that is accessed via the v1 payment-submissions endpoint.
-- A PISP  **must**  not access the payment-order resource created in a newer version on an older version endpoint:
+- A PISP **must** not access the payment-order resource created in a newer version on an older version endpoint:
   - E.g., for a domestic-payment resource created in v3, access via the v1 payment-submissions endpoint is not permitted.
-- An ASPSP  **must**  document the behaviour on the accessibility of a payment-order resource in a newer version on the ASPSP's online Developer Portal.
-- An ASPSP  **must**  allow access to the payment-order resource created in a previous version on a newer version endpoint (depending on an ASPSP's legal requirement for data retention):
+- An ASPSP **must** document the behaviour on the accessibility of a payment-order resource in a newer version on the ASPSP's online Developer Portal.
+- An ASPSP **must** allow access to the payment-order resource created in a previous version on a newer version endpoint (depending on an ASPSP's legal requirement for data retention):
   - E.g., a payment-submission created in v1, must be accessible as a v3 domestic-payment, with sensible defaults for additional fields introduced in v3 (e.g., if an ASPSP must make payment resources available for 7 years).
 - In the case where a payment-order type is the same, but the structure has changed in a newer version, sensible defaults may be used, with the ASPSP's Developer Portal clearly specifying the behaviour. 
   - E.g., a new field StatusUpdateDateTime was introduced in v3, an ASPSPs must populate this with the last status update time (as the StatusUpdateDateTime is a mandatory field).
-
-## Endpoints
-
-This section looks at the list of available API endpoints to complete a Payment flow and optionality (definitions of mandatory, conditional or optional are defined in the Design Principles section in Read/Write Data API Specification). For detail on the request and response objects, please refer to the Data Model section of the specification.
-
-The Mandatory/Conditional/Optional status of a resource's POST endpoint matches the GET operation. If a POST endpoint is implemented, the GET endpoint  **must**  also be implemented.
-
-Endpoint design considerations:
-
-- Having a separate resource for the payment-order consent and payment-order resource ** ** means we can extend the flows in the future. 
-- Separation in the payment-order consent and  the payment-order resource also allows for cleaner separation in updating the status of resources for ASPSPs that chose to implement the functionally.
-
-[TODO]
 
 ## Security & Access Control
 
@@ -404,11 +400,11 @@ payments: Generic payment scope
 
 ### Grants Types
 
-PISPs  **must**  use a client credentials grant to obtain a token to make POST requests to the payment-order  **consent**  endpoints. In the specification, this grant type is referred to as "Client Credentials".
+PISPs **must** use a client credentials grant to obtain a token to make POST requests to the payment-order **consent** endpoints. In the specification, this grant type is referred to as "Client Credentials".
 
-PISPs  **must**  use an authorization code grant using a redirect or decoupled flow to obtain a token to make POST requests to the payment-order  **resource** endpoints. This token may also be used to confirm funds on a payment-order  **consent**  resource. In the specification, this grant type is referred to as "Authorization Code".
+PISPs **must** use an authorization code grant using a redirect or decoupled flow to obtain a token to make POST requests to the payment-order **resource** endpoints. This token may also be used to confirm funds on a payment-order **consent** resource. In the specification, this grant type is referred to as "Authorization Code".
 
-PISPs  **must**  use a client credentials grant to obtain a token to make GET requests (excluding confirming funds).
+PISPs **must** use a client credentials grant to obtain a token to make GET requests (excluding confirming funds).
 
 ### Consent Authorisation
 
@@ -416,7 +412,7 @@ OAuth 2.0 scopes are coarse-grained and the set of available scopes are defined 
 
 A  *consent authorisation* is used to define the fine-grained scope that is granted by the PSU to the PISP.
 
-The PISP  **must**  begin a payment-order request by creating a  **payment-order consent**  resource through a  **POST**  operation. These resources indicate the  _consent _ that the PISP claims it has been given by the PSU. At this stage, the consent is not yet authorised as the ASPSP has not yet verified this claim with the PSU.
+The PISP **must** begin a payment-order request by creating a **payment-order consent** resource through a **POST** operation. These resources indicate the  _consent _ that the PISP claims it has been given by the PSU. At this stage, the consent is not yet authorised as the ASPSP has not yet verified this claim with the PSU.
 
 The ASPSP responds with a ConsentId. This is the intent-id that is used when initiating the authorization code grant (as described in the Trust Framework).
 
@@ -434,24 +430,24 @@ In a multiple authorisation context, the same consent authorisation steps are fo
 
 In the payment-order consent:
 
-- A PISP  **may**  request an AuthorisationType for the payment-order (i.e., Single or Any). If a value is not provided, an ASPSP will interpret the AuthorisationType as 'Any'.
-- A PISP  **may**  request a CompletionDateTime for the payment-order authorisation to be complete. If a value is not provided, an ASPSP will interpret the CompletionDateTime as unbounded.
-- An ASPSP  **must**  reject the payment-order consent if the AuthorisationType requested by the PISP does not match the DebtorAccount in the request.
-- An ASPSP **must**  set the status of the payment-order consent to Rejected, if the AuthorisationType requested by the PISP cannot be satisfied, after PSU Authentication:
-  - The ASPSP must respond back with an OAuth error response fields  _ **error**  _ specified as invalid_request and  **error_description** containing an appropriate message.
-- An ASPSP  **must**  restrict the selection of DebtorAccount (in the ASPSP online channel) to accounts that match the AuthorisationType requested by the PISP.
+- A PISP **may** request an AuthorisationType for the payment-order (i.e., Single or Any). If a value is not provided, an ASPSP will interpret the AuthorisationType as 'Any'.
+- A PISP **may** request a CompletionDateTime for the payment-order authorisation to be complete. If a value is not provided, an ASPSP will interpret the CompletionDateTime as unbounded.
+- An ASPSP **must** reject the payment-order consent if the AuthorisationType requested by the PISP does not match the DebtorAccount in the request.
+- An ASPSP **must** set the status of the payment-order consent to Rejected, if the AuthorisationType requested by the PISP cannot be satisfied, after PSU Authentication:
+  - The ASPSP must respond back with an OAuth error response fields  _ **error** _ specified as invalid_request and **error_description** containing an appropriate message.
+- An ASPSP **must** restrict the selection of DebtorAccount (in the ASPSP online channel) to accounts that match the AuthorisationType requested by the PISP.
 
 In the payment-order resource:
 
-- An ASPSP  **must**  respond with the MultiAuthorisation object if the payment-order requires multiple authorisations. The MultiAuthorisation object indicates to the PISP that the payment-order requires multiple authorisations.
-- The ASPSP  **must**  populate the MultiAuthorisation object with the Status of the multiple authorisaitons.
-- The ASPSP  **may**  populate the MultiAuthorisation object with additional details of the multiple authorisation journey including:
+- An ASPSP **must** respond with the MultiAuthorisation object if the payment-order requires multiple authorisations. The MultiAuthorisation object indicates to the PISP that the payment-order requires multiple authorisations.
+- The ASPSP **must** populate the MultiAuthorisation object with the Status of the multiple authorisaitons.
+- The ASPSP **may** populate the MultiAuthorisation object with additional details of the multiple authorisation journey including:
   - The number of required authorisations (total required at the start of the multi authorisation journey).
   - The number of authorisations complete.
   - The date and time of the last authorisation update.
   - The date and time that the authorisation flow must be completed.
 
-Once the final authorisation is received by the ASPSP, the ASPSP  **may**  notify the PISP that the payment-order resource has been fully Authorised using an Event Notification (as described in the Event Notification API Specification).
+Once the final authorisation is received by the ASPSP, the ASPSP **may** notify the PISP that the payment-order resource has been fully Authorised using an Event Notification (as described in the Event Notification API Profile and Resources).
 
 #### Error Condition
 
@@ -622,10 +618,6 @@ This section describes the OBSCASupportData1 class, which is used across all  _p
 | AppliedAuthenticationApproach |0..1 |SCASupportData/AppliedAuthenticationApproach |Specifies a character string with a maximum length of 40 characters.<br><br>Usage: This field indicates whether the PSU was subject to SCA performed by the TPP |OBExternalAppliedAuthenticationApproach1Code |CA<br>SCA | |
 | ReferencePaymentOrderId |0..1 |SCASupportData/ReferencePaymentOrderId |Specifies a character string with a maximum length of 140 characters.<br><br>Usage: If the payment is recurring, then the transaction identifier of the previous payment occurrence so that the ASPSP can verify that the PISP, amount and the payee are the same as the previous occurrence. |Max128Text | | |
 
-
-
-
-
 ### Identifier Fields
 
 This section describes the identifiers used through the Payment API flows, the direction of flow through the system, and how they are used.
@@ -648,8 +640,8 @@ These flows are indicative and will be dependent on what payment schemes or agen
 Key:
 
 - O indicates the actor that creates the identifier.
-- **=>**  downstream direction of flow
-- **<=**  upstream direction of flow
+- **=>** downstream direction of flow
+- **<=** upstream direction of flow
 
 #### Merchant Flow
 
@@ -672,19 +664,6 @@ Key:
 | ConsentId | | |<= |O | | |
 | Payment Order Id | | |<= |O | | |
 | Scheme Payment ID (e.g., FPID) | | | |O |=> |=> |
-
-### Payment Order Types
-
-Each of the payment-order types are documented in sub-pages of this specification. Each payment-order type is documented with:
-
-- Endpoints
-  - The API endpoints available for the resource.
-- Data Model
-  - Resource definition.
-  - UML diagram.
-  - Permissions as they relate to accessing the resource.
-  - Data dictionary - which defines fields, re-usable classes, mandatory (1..1) or conditional (0..1) as defined in the Design Principles section, and enumerations.
-- Usage Examples.
 
 ### Enumerations
 
