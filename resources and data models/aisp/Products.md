@@ -33,7 +33,8 @@ An account (AccountId) must only have a single product.
 - High level product information for other products (other than BCA and PCA products) may be available via a reference to the Open Data APIs.
 
 ### UML Diagram
-![UML Diagram$](images/OBReadProduct2.png  "UML Diagram")
+![UML Diagram$](images/Products/OBReadProduct2.png  "UML Diagram")
+
 
 **Notes:**
 - All PSD2 in-scope accounts are expected to return a response to the product resource. However, the BCA and PCA objects only apply to current account products (which are a CMA Order requirement).
