@@ -36,7 +36,7 @@ The resource differs depending on the permissions (ReadScheduledPaymentsBasic an
 - These objects  **must not** be returned  **without**  the  **ReadScheduledPaymentsDetail** permission:
     - OBReadScheduledPayment2/Data/ScheduledPayment/CreditorAgent
     - OBReadScheduledPayment2/Data/ScheduledPayment/CreditorAccount
-- If the  **ReadScheduledPaymentsDetail**  ** ** is granted by the PSU:
+- If the  **ReadScheduledPaymentsDetail** is granted by the PSU:
     - OBReadScheduledPayment2/Data/ScheduledPayment/CreditorAgent  **may**  be returned if applicable to the account and ASPSP (0..1)
     - OBReadScheduledPayment2/Data/ScheduledPayment/CreditorAccount  **must**  be returned (1..1)
 
@@ -68,7 +68,7 @@ If the ReadPAN permission is granted by the PSU - the ASPSP may choose to popula
 ## Usage Examples
 ### Specific Account
  **Request** 
-```json
+```
 GET /accounts/22289/scheduled-payments HTTP/1.1
 Authorization: Bearer Az90SAOJklae
 x-fapi-auth-date:  Sun, 10 Sep 2017 19:43:31 GMT
@@ -114,7 +114,7 @@ Content-Type: application/json
 ```
 ### Bulk
  **Request** 
-```JSON
+```
 GET /scheduled-payments HTTP/1.1
 Authorization: Bearer Az90SAOJklae
 x-fapi-auth-date:  Sun, 10 Sep 2017 19:43:31 GMT
@@ -172,4 +172,6 @@ Content-Type: application/json
   }
 }
 ```
+
+
 
