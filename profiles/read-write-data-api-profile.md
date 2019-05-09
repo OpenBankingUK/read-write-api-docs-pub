@@ -121,7 +121,7 @@ References:
 The OBIE principles for developing API standards:
 
 * OBIE will adopt existing standards where relevant/appropriate to minimise re-inventing the wheel.
-The Standards currently being reviewed include ISO20022 and FAPI.
+* The Standards currently being reviewed include ISO20022 and FAPI.
 * OBIE will favour developer/user experience over and above adoption of existing Standards, in order to create a more future proof Standard.
 * OBIE will work with other relevant bodies to align with, contribute to and/or adopt other Standards work, especially relating to creation of Standards around APIs and JSON payloads.
 
@@ -155,7 +155,7 @@ Digital signatures will facilitate non-repudiation for Open Banking APIs. 
 
 The approach for message signing is documented in [Basics / Message Signing](#message-signing-1).
 
-The applicability of signatures to individual requests and responses is documented on the page for each of the resources. However, implementors of the standards can **optionally** add signatures to all response and request payloads.
+The applicability of signatures to individual requests and responses is documented on the page for each of the resources. However, implementers of the standards can **optionally** add signatures to all response and request payloads.
 
 #### Message Encryption
 
@@ -201,7 +201,7 @@ Functionality, endpoints and fields marked as Mandatory are required in all case
 For functionalities and endpoints: 
 * An ASPSP **must** implement an endpoint that is marked Mandatory.
 * An ASPSP **must** implement functionality that is marked Mandatory.
- 
+
 For fields:
 * A TPP **must** specify the value of a Mandatory field.
 * An ASPSP **must** process a Mandatory field when provided by the TPP in an API request.
@@ -267,7 +267,7 @@ All dates in the JSON payloads are represented in [ISO-8601](https://www.iso.org
 2018-07-03T14:43:41Z
 ```
 
-All dates in the query string are represented in [ISO-8601](https://www.iso.org/iso-8601-date-and-time-format.html) date-time format and must not include the timezone. For example:
+All dates in the query string are represented in [ISO-8601](https://www.iso.org/iso-8601-date-and-time-format.html) date-time format and **must not** include the timezone. For example:
 
 ```
 2017-04-05T10:43:07
@@ -324,7 +324,7 @@ For brevity, the APIs are referred to by their resource names in these documents
 |x-fapi-customer-ip-address|The PSU's IP address if the PSU is currently logged in with the TPP.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |Optional     |Optional    |Optional       |Do not use  |
 |x-fapi-interaction-id     |An RFC4122 UID used as a correlation Id.<br><br>If provided, the ASPSP **must** "play back" this value in the x-fapi-interaction-id response header.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |Optional     |Optional    |Optional       |Optional    |
 |Authorization             |Standard HTTP Header; Allows Credentials to be provided to the Authorisation / Resource Server depending on the type of resource being requested. For OAuth 2.0 / OIDC, this comprises of either the Basic / Bearer Authentication Schemes.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |Mandatory    |Mandatory   |Mandatory      |Mandatory   |
-|Content-Type              |Standard HTTP Header; Represents the format of the payload being provided in the request.<br><br>This **must** be set to `application/json`, except for the endpoints that support Content-Type other than `application/json` (e.g POST /file-payment-consents/{ConsentId}/file), the ASPSP must specify the available options on their developer portals.<br><br>This **must** be set to `application/jose+jwe` for encrypted requests.<br><br>The TPP may provide additional information (e.g. a 'q' value and charset).<br><br>If set to any other value, the ASPSP **must** respond with a 415 Unsupported Media Type.                                                                                                                                                                                                                                                                                                                                  |Mandatory    |Do not use  |Do not use     |Mandatory   |
+|Content-Type              |Standard HTTP Header; Represents the format of the payload being provided in the request.<br><br>This **must** be set to `application/json`, except for the endpoints that support Content-Type other than `application/json` (e.g POST /file-payment-consents/{ConsentId}/file), the ASPSP must specify the available options on their developer portals.<br><br>This **must** be set to `application/jose+jwe` for encrypted requests.<br><br>The TPP **may** provide additional information (e.g. a 'q' value and charset).<br><br>If set to any other value, the ASPSP **must** respond with a 415 Unsupported Media Type.                                                                                                                                                                                                                                                                                                                                  |Mandatory    |Do not use  |Do not use     |Mandatory   |
 |Accept                    |Standard HTTP Header; Determine the Content-Type that is required from the Server.<br><br>If the TPP expects an unencrypted response, it **must** indicate that the only a JSON response is accepted (e.g by setting the value to `application/json`) as a content header for all endpoints that respond with JSON.<br><br>If the TPP expects an encrypted response, it **must** indicate that the only a JWT response is accepted (e.g by setting the value to `application/jose+jwe`) as a content header for all endpoints that respond with JSON.<br><br>For endpoints that do not respond with JSON (e.g GET ../statements/{StatementId}/file), the ASPSP must specify the available options on their developer portals.<br><br>The TPP **may** provide additional information (e.g. a 'q' value and charset).<br><br>If set to an unacceptable value the ASPSP **must** respond with a 406 (Not Acceptable).<br><br>If not specified, the default is application/json.|Optional     |Optional    |Do not use     |Optional    |
 |x-idempotency-key         |Custom HTTP Header; Unique request identifier to support idempotency.<br><br>Mandatory for POST requests to idempotent resource end-points.<br><br>Must not be specified for other requests.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |Optional     |Do not use  |Do not use     |Do not use  |
 |x-jws-signature           |Header containing a detached JWS signature of the body of the payload.<br><br>Refer to resource specific documentation on when this header must be specified.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |API specific |API specific|API specific   |Mandatory   |
@@ -345,7 +345,7 @@ The implications to this are:
 |--------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------|
 |Content-Type              |Standard HTTP Header; Represents the format of the payload returned in the response.<br><br>The ASPSP **must** return `Content-Type: application/json`  as a content header for all unencrypted endpoints, except the GET ../statements/{StatementId}/file and ../file-payment-consents/{ConsentId}/file endpoints, where it is up to the ASPSP to specify available options.<br><br>The ASPSP **must** return `Content-type: application/jwe` for all encrypted end-points.                                                                                                                                                                                                                                                                                                                                                                                                                                                            |Mandatory   |
 |x-jws-signature           |Header containing a detached JWS signature of the body of the payload.<br><br>Refer to resource specific documentation on when this header **must** be returned. Where a signed response is indicated in the documentation this header **should** be returned for error responses where a response body is returned.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |API specific|
-|x-fapi-interaction-id     |An RFC4122 UID used as a correlation Id.<br><br>The ASPSP **must** set the response header `x-fapi-interaction-id` to the value received from the corresponding fapi client request header or to a [RFC4122](https://tools.ietf.org/html/rfc4122) UUID value if the request header was not provided to track the interaction. The header must be returned for both successful and error responses.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |Mandatory   |
+|x-fapi-interaction-id     |An RFC4122 UID used as a correlation Id.<br><br>The ASPSP **must** set the response header `x-fapi-interaction-id` to the value received from the corresponding fapi client request header or to a [RFC4122](https://tools.ietf.org/html/rfc4122) UUID value if the request header was not provided to track the interaction. The header **must** be returned for both successful and error responses.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |Mandatory   |
 |Retry-After               |Header indicating the time (in seconds) that the TPP should wait before retrying an operation.<br><br>The ASPSP **should** include this header along with responses with the HTTP status code of 429 (Too Many Requests).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |Optional    |
 
 
@@ -529,7 +529,7 @@ The JOSE header for the signature must contain the following fields
 | `kid`                           | This is a mandatory claim.<br><br>It must match a value that can be used to look up the key in a key store hosted by the Trust Anchor.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
 | `b64`                           | This **must** have the boolean value false.<br><br>This indicates that the message payload is not base64 url encoded.<br><br>(See [RFC 7797 - The "b64" header Parameter](https://tools.ietf.org/html/rfc7797#section-3))                                                                                                                                                                                                                                                                                                                                                                                                                                                |
 | `http://openbanking.org.uk/iat` | This **must** be a JSON number representing the number of seconds from 1970-01-01T0:0:0Z as measured in GMT until the date/time. <br><br>This is a private header parameter name. (See [RFC 7515 - Private Header Parameter Names](https://tools.ietf.org/html/rfc7515#section-4.3))                                                                                                                                                                                                                                                                                                                                                                                 |
-| `http://openbanking.org.uk/iss` | This **must** be a string that identifies the PSP.<br><br>If the issuer is using a certificate this value must match the subject of the signing certificate.<br><br>If the issuer is using a signing key lodged with a Trust Anchor, the value is defined by the Trust Anchor and should uniquely identify the PSP.<br><br>For example, when using the Open Banking Directory, the value must be:<br><br><li>When issued by a TPP, of the form {{orgi-id}}/{{software-statement-id}},<li>When issued by an ASPSP of the form {{org-id}}<br><br>Where:<li>org-id is the open-banking issued organization id<li>software-statement-id is the open-banking issued software-statement-id |
+| `http://openbanking.org.uk/iss` | This **must** be a string that identifies the PSP.<br><br>If the issuer is using a certificate this value **must** match the **subject** of the signing certificate.<br><br>If the issuer is using a signing key lodged with a Trust Anchor, the value is defined by the Trust Anchor and should uniquely identify the PSP.<br><br>For example, when using the Open Banking Directory, the value must be:<br><br><li>When issued by a TPP, of the form {{orgi-id}}/{{software-statement-id}},<li>When issued by an ASPSP of the form {{org-id}}<br><br>Where:<li>org-id is the open-banking issued organization id<li>software-statement-id is the open-banking issued software-statement-id |
 | `http://openbanking.org.uk/tan` | This **must** be a string that consists of a domain name that is registered to and identifies the Trust Anchor that hosts the public counter-part of the key used for signing.<br><br>For example, when using the Open Banking Directory, the value must be `openbanking.org.uk`                                                                                                                                                                                                                                                                                                                                                                                     |
 | `crit`                          | This **must** be a string array consisting of the values `b64`, `http://openbanking.org.uk/iat`, `http://openbanking.org.uk/iss`, `http://openbanking.org.uk/tan`<br><br>This indicates that the JWS signature validator must understand and process the three additional claims.                                                                                                                                                                                                                                                                                                                                                                                    |
 
@@ -556,7 +556,7 @@ x-jws-signature: V2hhdCBoYXRoIGdvZCB3cm91Z2h0ID8=..QnkgR2VvcmdlLCBzaGUncyBnb3Qga
 
 #### Process for Verifying a Signature
 
-##### Step 1: Extract the components from the JWS 
+##### Step 1: Extract the components from the JWS
 
 The verifier **must** extract and decode the JOSE header and signature from the JWS provided in the x-jws-signature.
 
@@ -566,7 +566,7 @@ The verifier **must** validate the JOSE header to ensure that it is a valid JSON
 
 The verifier **must** validate that the `typ` header if specified has the value JOSE.
 
-The verifier **must** validate that the `cty` header to ensure that the payload is of the expected mime type. 
+The verifier **must** validate that the `cty` header to ensure that the payload is of the expected mime type.
 
 The verifier **must** ensure that the specified `alg` is one of the algorithms specified by OBIE.
 
@@ -621,6 +621,7 @@ The approach differs from message signing in that:
 * The definition of a given request or response in the Swagger specification represents the decrypted payload.
 * The JWE will not be represented in its encrypted form in the Swagger specifications.
 * Sending or expecting to receive an encrypted payload is denoted by setting the `Accept` or `Content-type` header to `application/jose+jwe`.
+
 Message encryption is optional for ASPSPs to implement. If an ASPSP does not support should reject any requests with a `Content-type` or `Accept` headers that indicate that message encryption is required.
 
 #### Message Signing and Encryption
@@ -730,7 +731,7 @@ The scopes required with these access tokens and the grant type used to get the 
 
 ### Consent Authorisation
 
-OAuth 2.0 scopes are coarse grained and the set of available scopes are defined at the point of client registration. There is no standard method for specifying and enforcing fine grained scopes (e.g. a scope to enforce payments of a specified amount on a specified date). 
+OAuth 2.0 scopes are coarse grained and the set of available scopes are defined at the point of client registration. There is no standard method for specifying and enforcing fine grained scopes (e.g. a scope to enforce payments of a specified amount on a specified date).
 
 An *intent* is used to define the fine-grained permissions that are granted by the PSU to the TPP.
 
@@ -755,7 +756,7 @@ The expiry time for issued access tokens and refresh tokens must be deterministi
 In order to achieve this:
 
 * The ASPSP **must** indicate the lifetime in seconds of the access token in the `expires_in` field of the JSON object returned by the token end-point. (See https://tools.ietf.org/html/rfc6749#section-4.2.2)
-* If the ASPSP issues a refresh token, the ASPSP **must** indicate the date-time at which the refresh token will expire in a claim named `http://openbanking.org.uk/refresh_token_expires_at` in the Id token (returned by the token end-point or userinfo end-point). Its value MUST be a number containing a NumericDate value, as specified in https://tools.ietf.org/html/rfc7519#section-2 
+* If the ASPSP issues a refresh token, the ASPSP **must** indicate the date-time at which the refresh token will expire in a claim named `http://openbanking.org.uk/refresh_token_expires_at` in the Id token (returned by the token end-point or userinfo end-point). Its value MUST be a number containing a NumericDate value, as specified in https://tools.ietf.org/html/rfc7519#section-2
 * NumericDate is a JSON numeric value representing the number of seconds from 1970-01-01T00:00:00Z UTC until the specified UTC date-time, ignoring leap seconds.
 * If the ASPSP does not issue a refresh token, the ASPSP **must not** populate the `http://openbanking.org.uk/refresh_token_expires_at` claim in the Id token
 * If the ASPSP issues a refresh token that does not expire, the ASPSP **must** populate the claim named `http://openbanking.org.uk/refresh_token_expires_at` in the Id token with a value representing the number of seconds to 03:14:07 UTC on 19 January 2038 (end of UNIX epoch)
@@ -802,7 +803,7 @@ The [The UK Open Banking Security Profile](https://bitbucket.org/openid/obuk/src
 
 When an access token is generated through an authorization code grant (or hybrid flow), an OIDC Authorization Server will also issue and `id_token` along with the access token.
 
-The `id_token` is a signed JWT that consists of a number of claims that identify the resource owner. In the Open Banking context, the `id_token` always identifies the `intent_id` that was authorised which can be mapped onto a single PSU. 
+The `id_token` is a signed JWT that consists of a number of claims that identify the resource owner. In the Open Banking context, the `id_token` always identifies the `intent_id` that was authorised which can be mapped onto a single PSU.
 
 As the `id_token` is signed by the ASPSP and bound to a specific TPP (through the `aud` claim), the `id_token` could be leveraged to *identify* the PSU in subsequent authorisation requests. OIDC caters for this by allowing the `id_token` to be passed into an authorization code grant request as the `id_token_hint` query parameter (as documented [here](https://openid.net/specs/openid-connect-core-1_0.html#AuthRequest)).
 
@@ -844,14 +845,14 @@ If the ASPSP support identification of the user through a static identifier, it 
   "sub": "scott",
   "http://openbanking.org.uk/openbanking_intent_id": "11bf5b37-e0b8-42e0-8dcf-dc8c4aefc000"
 }
- 
+
 // using email address
 {
   "http://openbanking.org.uk/sit": "UID",
   "email": "scott@oracle.com",
   "http://openbanking.org.uk/openbanking_intent_id": "11bf5b37-e0b8-42e0-8dcf-dc8c4aefc000"
 }
- 
+
 // using phone number
 {
   "http://openbanking.org.uk/sit": "UID",
@@ -1218,15 +1219,15 @@ participant PSU
 participant AISP
 participant ASPSP Authorisation Server
 participant ASPSP Resource Server
-  
+
 alt Request data with a missing or expired access-token
 AISP <-> ASPSP Resource Server: Establish TLS 1.2 MA
 AISP -> ASPSP Resource Server: GET /accounts
 ASPSP Resource Server -> AISP: HTTP 401 (Unauthorized)
-  
+
 AISP -> ASPSP Resource Server: GET /accounts/{AccountId}/transactions
 ASPSP Resource Server -> AISP: HTTP 401 (Unauthorized)
- 
+
 end alt
 ```
 
@@ -1252,13 +1253,13 @@ participant PSU
 participant AISP
 participant ASPSP Authorisation Server
 participant ASPSP Resource Server
-  
- 
+
+
 alt AISP attempts to setup an account request with a malformed payload
 AISP <-> ASPSP Resource Server: Establish TLS 1.2 MA
 AISP -> ASPSP Resource Server: POST /account-requests
 ASPSP Resource Server -> AISP: HTTP 400 (Bad Request)
-  
+
 end alt
 ```
 
@@ -1285,18 +1286,18 @@ participant PSU
 participant AISP
 participant ASPSP Authorisation Server
 participant ASPSP Resource Server
-  
- 
+
+
 alt Request data with a missing or invalid access-token scope
 AISP <-> ASPSP Resource Server: Establish TLS 1.2 MA
 AISP -> ASPSP Resource Server: GET /accounts
 ASPSP Resource Server -> AISP: HTTP 403 (Forbidden)
-  
-  
+
+
 AISP -> ASPSP Resource Server: GET /accounts/{AccountId}/transactions
 ASPSP Resource Server -> AISP: HTTP 403 (Forbidden)
-  
- 
+
+
 end alt
 ```
 
@@ -1324,8 +1325,8 @@ participant PSU
 participant AISP
 participant ASPSP Authorisation Server
 participant ASPSP Resource Server
-   
-  
+
+
 alt AISP attempts to retrieve an Account Resource
 AISP <-> ASPSP Resource Server: Establish TLS 1.2 MA
     loop Burst of multiple GET requests
@@ -1358,12 +1359,12 @@ participant PSU
 participant AISP
 participant ASPSP Authorisation Server
 participant ASPSP Resource Server
-   
+
 note over PSU, ASPSP Resource Server
     Step 1: Request account information
 end note
 PSU -> AISP: Get account/transaction information
-  
+
 note over PSU, ASPSP Resource Server
     Step 2: Setup account request
 end note
@@ -1374,7 +1375,7 @@ AISP <-> ASPSP Resource Server: Establish TLS 1.2 MA
 AISP -> ASPSP Resource Server: POST /account-requests
 ASPSP Resource Server -> AISP: HTTP 201 (Created), AccountRequestId
 AISP -> PSU: HTTP 302 (Found), Redirect (AccountRequestId)
-  
+
 note over PSU, ASPSP Resource Server
 Step 3: Failed authorise consent
 end note
@@ -1403,7 +1404,7 @@ Content-Type: application/json
 Accept: application/json
 ```
 
-```json 
+```json
 {
   "Data": {
     "Initiation": {
