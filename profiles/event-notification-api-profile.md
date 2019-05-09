@@ -44,7 +44,7 @@ Implementation of the Event Notification API Specification, and its individual s
 
 Event notifications are aligned with the Security Event Token standard, a proposed IETF standard for exchanging information about security events. See https://tools.ietf.org/html/rfc8417. An event notification is structured as a JWT, indicating an event has occurred through a set of claims.
 
-A resource-update event (urn:uk:org:openbanking:events:resource-update) is used to communicate that a specific resource has been updated. It contains identifiers for the resource and links to retrieve it.
+A resource-update event (`urn:uk:org:openbanking:events:resource-update`) is used to communicate that a specific resource has been updated. It contains identifiers for the resource and links to retrieve it.
 
 #### Event Notification Message Signing
 
@@ -244,9 +244,9 @@ Note, the OBEventNotification2 object is aligned with the Security Event Token (
 | txn |1..1 |OBEventNotification2/txn |Transaction Identifier. |Max128Text | | |
 | toe |1..1 |OBEventNotification2/toe |Time of Event. |xs:int | | |
 | events |1..1 |OBEventNotification2/events |Events. |OBEvent2 | | |
-| urn:uk:org:openbanking:events:resource-update |0..1 |OBEventNotification2/events/urn:uk:org:openbanking:events:resource-update |Resource-Update Event. |OBEventResourceUpdate2 | | |
-| urn:uk:org:openbanking:events:account-access-consent-linked-account-update |0..1 |OBEventNotification2/events/urn:uk:org:openbanking:events:account-access-consent-linked-account-update |An event that indicates an account linked to a consent has move in/out of scope of the consent. |OBEventAccountAccessConsentLinkedAccountUpdate1 | | |
-| urn:uk:org:openbanking:events:consent-authorization-revoked |0..1 |OBEventNotification2/events/urn:uk:org:openbanking:events:consent-authorization-revoked |An event that indicates a consent resource has had its authorisation revoked. |OBEventConsentAuthorizationRevoked1 | | |
+| `urn:uk:org:openbanking:events:resource-update` |0..1 |`OBEventNotification2/events/urn:uk:org:openbanking:events:resource-update` |Resource-Update Event. |OBEventResourceUpdate2 | | |
+| `urn:uk:org:openbanking:events:account-access-consent-linked-account-update` |0..1 |`OBEventNotification2/events/urn:uk:org:openbanking:events:account-access-consent-linked-account-update` |An event that indicates an account linked to a consent has move in/out of scope of the consent. |OBEventAccountAccessConsentLinkedAccountUpdate1 | | |
+| `urn:uk:org:openbanking:events:consent-authorization-revoked` |0..1 |`OBEventNotification2/events/urn:uk:org:openbanking:events:consent-authorization-revoked` |An event that indicates a consent resource has had its authorisation revoked. |OBEventConsentAuthorizationRevoked1 | | |
 
 #### OBEventSubject1
 
@@ -286,8 +286,8 @@ This section describes the OBEventResourceUpdate2 class which is used in the OBE
 
 | Name |Occurrence |XPath |Enhanced Definition |Class |Codes |Pattern |
 | --- |--- |--- |--- |--- |--- |--- |
-| urn:uk:org:openbanking:events:resource-update | | |An event that indicates a resource has been updated. |OBEventResourceDescriptor1 | | |
-| subject |1..1 |urn:uk:org:openbanking:events:resource-update/subject |The subject of the event. |OBEventSubject1 | | |
+| `urn:uk:org:openbanking:events:resource-update` | | |An event that indicates a resource has been updated. |OBEventResourceDescriptor1 | | |
+| subject |1..1 |`urn:uk:org:openbanking:events:resource-update/subject` |The subject of the event. |OBEventSubject1 | | |
 
 #### OBEventConsentAuthorizationRevoked1
 
@@ -301,15 +301,15 @@ This section describes the OBEventConsentAuthorizationRevoked1 class which is us
 
 For the OBEventConsentAuthorizationRevoked1 object:  
 
-- The subject claim **must** be populated if the Event Notification does not include a urn:uk:org:openbanking:events:resource-update event.
+- The subject claim **must** be populated if the Event Notification does not include a `urn:uk:org:openbanking:events:resource-update` event.
 
 ##### Data Dictionary
 
 | Name |Occurrence |XPath |Enhanced Definition |Class |Codes |Pattern |
 | --- |--- |--- |--- |--- |--- |--- |
-| urn:uk:org:openbanking:events:consent-authorization-revoked | | |An event that indicates a consent resource has had its authorisation revoked. |OBEventConsentAuthorizationRevoked1 | | |
-| reason |0..1 |urn:uk:org:openbanking:events:consent-authorization-revoked/reason |Reason for the Consent Authorization Revoked event. |OBExternalEventConsentAuthorizationRevokedReason1Code | | |
-| subject |0..1 |urn:uk:org:openbanking:events:consent-authorization-revoked/subject |The subject of the event. |OBEventSubject1 | | |
+| `urn:uk:org:openbanking:events:consent-authorization-revoked` | | |An event that indicates a consent resource has had its authorisation revoked. |OBEventConsentAuthorizationRevoked1 | | |
+| reason |0..1 |`urn:uk:org:openbanking:events:consent-authorization-revoked/reason` |Reason for the Consent Authorization Revoked event. |OBExternalEventConsentAuthorizationRevokedReason1Code | | |
+| subject |0..1 |`urn:uk:org:openbanking:events:consent-authorization-revoked/subject` |The subject of the event. |OBEventSubject1 | | |
 
 #### OBEventAccountAccessConsentLinkedAccountUpdate1
 
@@ -329,6 +329,6 @@ For the OBEventAccountAccessConsentLinkedAccountUpdate object:
 
 | Name |Occurrence |XPath |Enhanced Definition |Class |Codes |Pattern |
 | --- |--- |--- |--- |--- |--- |--- |
-| urn:uk:org:openbanking:events:account-access-consent-linked-account-update | | |An event that indicates an account linked to a consent has move in/out of scope of the consent. |OBEventAccountAccessConsentLinkedAccountUpdate1 | | |
-| reason |0..1 |urn:uk:org:openbanking:events:account-access-consent-linked-account-update/reason |Reason for the Account Access Consent Linked Account Update event. |OBExternalEventAccountAccessConsentLinkedAccountUpdateReason1Code | | |
-| subject |1..1 |urn:uk:org:openbanking:events:account-access-consent-linked-account-update/subject |The subject of the event. |OBEventSubject1 | | |
+| `urn:uk:org:openbanking:events:account-access-consent-linked-account-update` | | |An event that indicates an account linked to a consent has move in/out of scope of the consent. |OBEventAccountAccessConsentLinkedAccountUpdate1 | | |
+| reason |0..1 |`urn:uk:org:openbanking:events:account-access-consent-linked-account-update/reason` |Reason for the Account Access Consent Linked Account Update event. |OBExternalEventAccountAccessConsentLinkedAccountUpdateReason1Code | | |
+| subject |1..1 |`urn:uk:org:openbanking:events:account-access-consent-linked-account-update/subject` |The subject of the event. |OBEventSubject1 | | |
