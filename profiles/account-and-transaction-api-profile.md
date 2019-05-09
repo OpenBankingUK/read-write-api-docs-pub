@@ -90,7 +90,7 @@ The figure below provides a general outline of an account information request an
 
 Step 1: Request Account Information
 
-- This flow begins with a PSU consenting to allow an AISP to access account information data. 
+- This flow begins with a PSU consenting to allow an AISP to access account information data.
 
 Step 2: Setup Account Access Consent
 
@@ -120,7 +120,7 @@ Step 3: Authorise Consent
 
 Step 4: Request Data
 
-- This is carried out by making a  **GET**  request the relevant  **resource**.
+- This is carried out by making a **GET** request the relevant **resource**.
 - The unique AccountId(s) that are valid for the account-access-consent will be returned with a call to GET /accounts.  **This will always be the first call once an AISP has a valid access token.**
 
 #### Sequence Diagram
