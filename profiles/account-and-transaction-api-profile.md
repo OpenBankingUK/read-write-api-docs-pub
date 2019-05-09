@@ -115,7 +115,7 @@ Step 3: Authorise Consent
 
 Step 4: Request Data
 
-- This is carried out by making a  **GET**  request the relevant  **resource**.
+- This is carried out by making a **GET** request the relevant **resource**.
 - The unique AccountId(s) that are valid for the account-access-consent will be returned with a call to GET /accounts.  **This will always be the first call once an AISP has a valid access token.** 
 
 #### Sequence Diagram
