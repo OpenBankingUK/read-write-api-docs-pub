@@ -15,7 +15,7 @@ Further analysis required:-
 | Product Section |Fields to be included |
 | --- |--- |
 | BCA (We will rename this "Product and merge BCA and CoreProduct attributes) |Name ProductType ("BCA") Product Segment (e.g. "Startup","Switcher" ) Open Data Product ID (Mandatory, if product info is available on Open Data BCA API) Fee-free period |
-| CoreProduct |**None** - Will be merged in to new â€œProductâ€ section. |
+| CoreProduct |**None** - Will be merged in to new "Product" section. |
 | BCAMarketingState |**None** - Sections will only include current state information, so this section is not required. |
 | CreditInterest |TierBandSet fields (excluding credit interest eligibility). All TierBand fields **Note: Only current state credit interest information is required. Where the interest rate(s) have been negotiated, the actual rates applied to the account should be provided.** |
 | Overdraft |All TierBandSet fields (including OverdraftFeesAndCharges) All TierBand fields (including OverdraftFeesAndCharges). **Note: Only current state information is required. Where the overdraft rate(s) have been negotiated, the actual rates applied to the account should be provided.** |
@@ -40,6 +40,412 @@ Notes:
 ### Changes from the OpenData Model
 #### No Eligibility and FeaturesAndBenefits
 - Eligibility and FeaturesAndBenefits sections are removed from the Account Info section as information related to them might not be easily available. 
--  **Unlike PCA, there is no requirement to publish aMaximumMonthlyCharge, so Monthly Charge field has been omitted. In the BCA On Sale Product Data API, There were two fields**  **MonthlyCharge and IncludedInMonthlyChargeIndicator(OtherFeesAndCharges section). Both of these fields have been removed from this specification.** 
+-  **Unlike PCA, there is no requirement to publish aMaximumMonthlyCharge, so Monthly Charge field has been omitted. In the BCA On Sale Product Data API, There were two fields MonthlyCharge and IncludedInMonthlyChargeIndicator(OtherFeesAndCharges section). Both of these fields have been removed from this specification.** 
 
 ![ BCATopLevel.ClassDiagram.png ]( images/BCA/BCATopLevel.ClassDiagram.png )
+
+#### CreditInterest Model
+- AER is the only representative rate for CreditInterest for product comparison purposes and therefore has been explicitly captured.
+- The banks often also specify Gross rates. Net is usually determined by removing basic rate tax only, and banks stopped doing this from April 2016. This may still be required for backbook products.
+- It has been ensured that both the calculation and application frequency for credit interest is captured.
+- The term "Nominal" used by some banks is synonymous with "Gross".
+- DepositInterestAppliedCoverage refers to which interest rate is applied when interests are tiered. For example, if an account balance is Â£2k and the interest tiers are:- 0-£500 0.1%, 500-1000 0.2%, 1000-10000 0.5%, then the applicable interest rate could either be 0.5% of the entire balance (since the account balance sits in the top interest tier) or (0.1%*500)+(0.2%*500)+(0.5%*1000). In the 1st situation, the interest should be applied to the "Whole" of the account balance,  and in the 2nd this should be "Tiered".
+* Destination refers to whether the BCA allows interest to be credited to another account ("PayAway") or only to the BCA itself ("SelfCredit").
+
+![ BCAProductInfoCreditIntrstClassDiagram.png ]( images/BCA/BCAProductInfoCreditIntrstClassDiagram.png )
+
+#### Overdraft
+- Overdraft Types can either be Committed e.g., the bank are committed to provide this overdraft facility and cannot demand repayment without notifying the customer, or OnDemand: The bank can demand instant repayment of this overdraft.
+- OverdraftFeeCharges are defined at TierBandSet level for fees/charges that are not tiered and at the TierBand level for those that are. See following slide for details.
+- For BCA, as well as the bank's own tiers, they have to specify the EAR for representative overdrafts in the CMA defined bands set out in article 32.3 of the order.
+- OverdraftInterestChargingCoverage refers to which interest rate is applied when interest is tiered. For example, if an overdraft balance is Â£2k and the interest tiers are:- 0-£500 0.1%, 500-1000 0.2%, 1000-10000 0.5%, then the applicable interest rate could either be 0.5% of the entire balance (since the account balance sits in the top interest tier) or (0.1%*500)+(0.2%*500)+(0.5%*1000). In the 1st situation, the interest should be applied to the "Whole" of the account balance,  and in the 2nd, this be "Tiered".
+- BankGuaranteedIndicator indicates whether the advertised overdraft rate is guaranteed to be offered to a borrower by the bank e.g., if it is part of a government scheme, or whether the rate may vary dependent on the applicant's circumstances.
+
+- AgreementLengthMin, AgreementLengthMax and AgreementLengthPeriod are added to allow for Overdrafts where the rate varies dependent on the length of the agreement, as well as the size of the overdraft.
+
+#### OverdraftFeeCharges
+- Overdraft/borrowing fees are less important for BCA than for PCA, as only 15% of business customers have overdrafts. (Ref: page 15 - [https://assets.publishing.service.gov.uk/media/55c4bf0340f0b61374000015/BCA_and_PCA_pricing_analysis_v2.pdf](https://assets.publishing.service.gov.uk/media/55c4bf0340f0b61374000015/BCA_and_PCA_pricing_analysis_v2.pdf))
+- A cap can be applied to 1 or more Overdraft Fees/Charges and are typically capped for a particular period e.g., Total overdraft charges (Arranged, Unarranged, Paid Transaction and Unpaid Transaction) may be capped on a monthly basis.
+- Capping can either be based on an amount (in gbp), an amount (in items) or a rate.
+- Additional notes are required to ensure it is made clear how any formula used to apply the capping is deduced.
+- The codelist for OverdraftFeeChargeCap/FeeType and OverdraftFeeChargeDetail/FeeType is different from the equivalent fields in OtherFeesAndCharges.
+- FeeCapOccurrence has been added to capture situations where fees/charges are captured dependent on the number of occurrences rather than capped at a particular amount.
+- Setup/arrangement and renewal fees are common for business overdrafts, and therefore need to be included in the OB_BCAOverdraftFeeType1Codelist.
+- Fees/charges are often negotiable, so a NegotiableIndicator has been added to OverdraftFeeChargeDetail.
+
+![ BCAAccountInfoOverdraftt.ClassDiagram.png ]( images/BCA/BCAAccountInfoOverdraftt.ClassDiagram.png )
+
+#### OtherFeesCharges
+- OtherFeesCharges is a lot more important for companies who have not opened a startup or switcher account.
+- Fees/charges are often negotiable for BCA, so a NegotiableIndicator has been added to FeeChargeDetail.
+
+![ AINFOBCA.2.2.0.OtherFeesCharges.png ]( images/BCA/AINFOBCA.2.2.0.OtherFeesCharges.png )
+
+
+## Data Model
+### Data Payload
+#### BCA
+##### UML Class Diagram
+- This implementation is based on the assumption that all pending decisions were based on the OBIE recommended option.
+- Other Fee Charges: Only Periodic Fee(service charge) has been included in the Code List.
+- We have taken Open Data BCA Segments for BCA Account Info as well. 
+
+![ AINFOBCA.2.2.0.ClassDiagram.png ]( images/BCA/AINFOBCA.2.2.0.ClassDiagram.png )
+
+### Data Dictionary
+- [BCA Account Info Data Definition](https://openbanking.atlassian.net/wiki/download/attachments/1077805458/ainfobca.v3.rc3.DD.xlsx?version=1&modificationDate=1556635332741&cacheVersion=1&api=v2)
+
+### Data Payload - Enumerations
+- [BCA Account Info Code List](https://openbanking.atlassian.net/wiki/download/attachments/1077805458/ainfobca.2.2.0.CodeList.xlsx?version=1&modificationDate=1556635332166&cacheVersion=1&api=v2)
+
+## Usage Examples
+### Publish Open Data Standard BCA Product
+Example reference HSBC Startup Business Account
+ **Request** 
+```
+GET /accounts/22389/product HTTP/1.1
+Authorization: Bearer Az90SAOJklae
+x-fapi-auth-date:  Sun, 10 Sep 2017 19:43:31 GMT
+x-fapi-customer-ip-address: 104.25.212.99
+x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
+Accept: application/json
+```
+ **Response** 
+```
+HTTP/1.1 200 OK
+x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
+Content-Type: application/json
+```
+```JSON
+{
+   "Data":{
+      "Product":[
+         {
+            "AccountId":"22389",
+            "ProductId":"HSBC12234BAS",
+            "ProductType":"BusinessCurrentAccount",
+            "ProductName":"HSBC Startup Business Current Account"
+         }
+      ]
+   },
+   "Links":{
+      "Self":"https://api.alphabank.com/open-banking/v3.1/aisp/accounts/22289/product"
+   },
+   "Meta":{
+      "TotalPages":1
+   }
+}
+```
+### Publish Open Data Standard BCA Product along with new other fee charges
+The example below has been taken from Santander Business Current Account.
+The customer is at Â£12.50 monthly account fee for Â£3,000 cash deposits per month.
+ **Request** 
+```
+GET /accounts/22390/product HTTP/1.1
+Authorization: Bearer Az90SAOJklae
+x-fapi-auth-date:  Sun, 10 Sep 2017 19:43:31 GMT
+x-fapi-customer-ip-address: 104.25.212.99
+x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
+Accept: application/json
+```
+ **Response** 
+```
+HTTP/1.1 200 OK
+x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
+Content-Type: application/json
+```
+```JSON
+{
+   "Data":{
+      "Product":[
+         {
+            "AccountId":"22390",
+            "ProductId":"HSBC12234BAS",
+            "ProductType":"BusinessCurrentAccount",
+            "ProductName":"Business Current Account Â£12.50 Monthly Fee",
+            "BCA":{
+               "OtherFeesCharges":{
+                  "FeeChargeDetail":[
+                     {
+                        "FeeCategory":"Servicing",
+                        "FeeType":"ServiceCAccountFeeMonthly",
+                        "FeeAmount":"12.500",
+                        "ApplicationFrequency":"Monthly",
+                        "CalculationFrequency":"Daily",
+                        "Notes":[
+                           "Our tariff includes:
+* depositing and sending cheques
+* cash deposits up to the limit your tariff allows
+* withdrawals
+* Direct Debits, standing orders, bill payments
+* Bas credits
+* debit card payments"
+                        ]
+                     }
+                  ]
+               }
+            }
+         }
+      ]
+   },
+   "Links":{
+      "Self":"https://api.alphabank.com/open-banking/v3.1/aisp/accounts/22390/product"
+   },
+   "Meta":{
+      "TotalPages":1
+   }
+}
+```
+### Publish Back Book product
+Lloyds Retail Business  Current Account
+ **Request** 
+```
+GET /accounts/22391/product HTTP/1.1
+Authorization: Bearer Az90SAOJklae
+x-fapi-auth-date:  Sun, 10 Sep 2017 19:43:31 GMT
+x-fapi-customer-ip-address: 104.25.212.99
+x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
+Accept: application/json
+```
+ **Response** 
+```
+HTTP/1.1 200 OK
+x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
+Content-Type: application/json
+```
+```JSON
+{
+   "Data":{
+      "Product":[
+         {
+            "AccountId":"22391",
+            "ProductType":"BusinessCurrentAccount",
+            "ProductName":"Lloyds Business Current Account",
+			"BCA": {
+				"ProductDetails": {
+					"Segment": "General",
+					"FeeFreeLength": "18",
+					"FeeFreeLengthPeriod":"Month",
+					"Notes": ["The customer is no longer in the fee free period."]
+				}
+			}
+         }
+      ]
+   },
+   "Links":{
+      "Self":"https://api.alphabank.com/open-banking/v3.1/aisp/accounts/22391/product"
+   },
+   "Meta":{
+      "TotalPages":1
+   }
+}
+```
+### Represent a business overdraft fees
+The example below has been taken from the  Barclays Business Current Account
+ **Request** 
+```
+GET /accounts/22392/product HTTP/1.1
+Authorization: Bearer Az90SAOJklae
+x-fapi-auth-date:  Sun, 10 Sep 2017 19:43:31 GMT
+x-fapi-customer-ip-address: 104.25.212.99
+x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
+Accept: application/json
+```
+ **Response** 
+```
+HTTP/1.1 200 OK
+x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
+Content-Type: application/json
+```
+```JSON
+{
+   "Data":{
+      "Product":[
+         {
+            "AccountId":"22392",
+            "ProductType":"BusinessCurrentAccount",
+            "ProductName":"Barclays Business Current Account",
+            "BCA":{
+               "Overdraft":{
+                  "OverdraftTierBandSet":[
+                     {
+                        "TierBandMethod":"Tiered",
+                        "OverdraftType":"Committed",
+                        "OverdraftFeesCharges":[
+                           {
+                              "OverdraftFeeChargeDetail":[
+                                 {
+                                    "FeeType":"OverdraftSetup",
+                                    "NegotiableIndicator":true,
+                                    "FeeAmount":"75.00",
+                                    "CalculationFrequency":"OnOpening",
+                                    "ApplicationFrequency":"OnOpening"
+                                 },
+                                 {
+                                    "FeeType":"TempOverdraft",
+                                    "FeeRate":"12.30",
+                                    "FeeRateType":"Gross",
+                                    "ApplicationFrequency":"Monthly",
+                                    "CalculationFrequency":"Daily"
+                                 },
+                                 {
+                                    "FeeType":"OverdraftRenewal",
+                                    "FeeRate":"0.5",
+                                    "FeeRateType":"Gross",
+                                    "ApplicationFrequency":"OnAnniversary",
+                                    "CalculationFrequency":"OnAnniversary"
+                                 }
+                              ]
+                           }
+                        ],
+                        "BufferAmount":"10.00",
+                        "Notes":[
+                           "The daily usage fee-free overdraft period is for 12 months starting on the date you open a Current Account with us."
+                        ]
+                     }
+                  ]
+               }
+            }
+         }
+      ]
+   },
+   "Links":{
+      "Self":"https://api.alphabank.com/open-banking/v3.1/aisp/accounts/22392/product"
+   },
+   "Meta":{
+      "TotalPages":1
+   }
+}
+```
+### Show whole interest rates
+The example below has been taken from the Lloyds Schools Banking Account
+0.05% Fixed interest
+No interest-related eligibly criteria specific
+ **Request** 
+```
+GET /accounts/22393/product HTTP/1.1
+Authorization: Bearer Az90SAOJklae
+x-fapi-auth-date:  Sun, 10 Sep 2017 19:43:31 GMT
+x-fapi-customer-ip-address: 104.25.212.99
+x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
+Accept: application/json
+```
+ **Response** 
+```
+HTTP/1.1 200 OK
+x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
+Content-Type: application/json
+```
+```JSON
+{
+   "Data":{
+      "Product":[
+         {
+            "AccountId":"22393",
+            "ProductType":"BusinessCurrentAccount",
+            "ProductName":"School Bank Account",
+            "BCA":{
+               "CreditInterest":{
+                  "TierBandSet":{
+                     "TierBandMethod":"Whole",
+                     "CalculationMethod":"Compound",
+                     "Destination":"SelfCredit",
+                     "Notes":[
+                        "Â£1 minimum balance"
+                     ],
+                     "TierBand":[
+                        {
+                           "Identification":"1",
+                           "TierValueMinimum":"1.0000",
+                           "CalculationFrequency":"Monthly",
+                           "ApplicationFrequency":"Monthly",
+                           "DepositInterestAppliedCoverage":"Whole",
+                           "FixedVariableInterestRateType":"Fixed",
+                           "AER":"0.0500",
+                           "BankInterestRateType":"Gross",
+                           "BankInterestRate":"0.0500"
+                        }
+                     ]
+                  }
+               }
+            }
+         }
+      ]
+   },
+   "Links":{
+      "Self":"https://api.alphabank.com/open-banking/v3.1/aisp/accounts/22393/product"
+   },
+   "Meta":{
+      "TotalPages":1
+   }
+}
+```
+### Represent Tariffs and "Other Fees And Charges"
+The example below has been taken from the HSBC Business Current Account
+ **Request** 
+```
+GET /accounts/22394/product HTTP/1.1
+Authorization: Bearer Az90SAOJklae
+x-fapi-auth-date:  Sun, 10 Sep 2017 19:43:31 GMT
+x-fapi-customer-ip-address: 104.25.212.99
+x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
+Accept: application/json
+```
+ **Response** 
+```
+HTTP/1.1 200 OK
+x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
+Content-Type: application/json
+```
+```JSON
+{
+   "Data":{
+      "Product":[
+         {
+            "AccountId":"22394",
+            "ProductId":"HSBC1234BCA",
+            "ProductType":"BusinessCurrentAccount",
+            "ProductName":"BCA Startup Current Account",
+            "PCA":{
+               "OtherFeesCharges":[
+                  {
+                     "TariffType":"Mixed",
+                     "TariffName":"Small Business Tariff",
+                     "FeeChargeDetail":{
+                        "FeeCategory":"Servicing",
+                        "FeeType":"ServiceCAccountFeeMonthly",
+                        "FeeAmount":"5.50",
+                        "CalculationFrequency":"Monthly",
+                        "ApplicationFrequency":"Monthly",
+                        "Notes":[
+                           "Standard account charges. Small Business Tariff."
+                        ]
+                     }
+                  },
+                  {
+                     "TariffType":"Electronic",
+                     "TariffName":"Electronic Banking Tariff",
+                     "FeeChargeDetail":{
+                        "FeeCategory":"Servicing",
+                        "FeeType":"ServiceCAccountFeeMonthly",
+                        "FeeAmount":"5.50",
+                        "CalculationFrequency":"Monthly",
+                        "ApplicationFrequency":"Monthly",
+                        "Notes":[
+                           "Standard account charges. Electronic Banking Tariff."
+                        ]
+                     }
+                  }
+               ]
+            }
+         }
+      ]
+   },
+   "Links":{
+      "Self":"https://api.alphabank.com/open-banking/v3.1/aisp/accounts/22394/product"
+   },
+   "Meta":{
+      "TotalPages":1
+   }
+}
+```
