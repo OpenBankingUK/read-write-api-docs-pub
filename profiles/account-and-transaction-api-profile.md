@@ -3,7 +3,6 @@
 1. [Overview](#overview)
    1. [Document Structure](#document-structure)
    2. [Profile Compatibility](#profile-compatibility)
-      1. [Read/Write Data API Profile](#readwrite-data-api-profile)
    3. [Resources](#resources)
 2. [Basics](#basics)
    1. [Overview](#overview-1)
@@ -13,8 +12,7 @@
    3. [Release Management](#release-management)
       1. [Account Access Consent](#account-access-consent)
       2. [Account Information Resources](#account-information-resources)
-3. [Endpoints](#endpoints)
-4. [Security &amp; Access Control](#security-amp-access-control)
+3. [Security & Access Control](#security--access-control)
    1. [Scopes](#scopes)
    2. [Grants Types](#grants-types)
    3. [Consent Authorisation](#consent-authorisation)
@@ -24,14 +22,14 @@
    4. [Consent Revocation](#consent-revocation)
    5. [Changes to Selected Account(s)](#changes-to-selected-accounts)
    6. [Risk Scoring Information](#risk-scoring-information)
-5. [Data Model](#data-model)
+4. [Data Model](#data-model)
    1. [Using Meta to identify Available Transaction Period](#using-meta-to-identify-available-transaction-period)
    2. [Mapping to Schemes & Standards](#mapping-to-schemes--standards)
    3. [Enumerations](#enumerations)
       1. [Static Enumerations](#static-enumerations)
       2. [ISO Enumerations](#iso-enumerations)
       3. [Namespaced Enumerations](#namespaced-enumerations)
-6. [Alternative Flows](#alternative-flows)
+5. [Alternative Flows](#alternative-flows)
    1. [Multi-Authorisation Consent for Corporate Accounts](#multi-authorisation-consent-for-corporate-accounts)
 
 ## Overview
@@ -59,11 +57,7 @@ This document consists of the following parts:
 
 ### Profile Compatibility
 
-#### Read/Write Data API Profile
-
-The Account and Transaction API Profile - v3.1.2 is compatible with the following Read/Write Data API Profiles:
-
-- Read/Write Data API Profile - v3.1.2 RC1 [TODO]
+For a list of profiles and resources compatible with this profile, please see the [Compatibility Matrix]().
 
 ### Resources
 
@@ -261,11 +255,7 @@ The account-access-consent resource is referred to as an account-request resourc
 - An ASPSP  **may**  choose to populate new fields introduced in a resource from previous version sensible defaults (if mandatory) or not populate at all:
   - E.g., OBReadResponse1/Data/StatusUpdateDateTime introduced in Version2 accessed with V1 AccountRequestId can be populated with Last accessed date time, if not already available in the system of records.
 
-## Endpoints
-
-For a list of endpoints that are compatible with this profile, please see the [Compatibility Matrix]()
-
-## Security &amp; Access Control
+## Security & Access Control
 
 ### Scopes
 
