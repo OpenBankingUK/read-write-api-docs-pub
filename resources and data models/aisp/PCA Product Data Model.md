@@ -1,4 +1,4 @@
-# BCA Product Data Model v3.1.2
+# PCA Product Data Model v3.1.2
 ## Overview
 From the analysis:- 
 - Most banks (other than CMA9) simply have to supply the MMC for their PCA products (on-sale, negotiated or back book).
