@@ -20,7 +20,7 @@ This document consists of the following parts:
 ### Overview
 The figure below provides a general outline of an account information request and flow using the Account Info APIs.
 
-![ accounts api v1.gif ]( images/AccountAndTransaction/accounts api v1.gif )
+![ accountsapiv1.gif ]( images/AccountAndTransaction/accountsapiv1.gif )
 
 ####  **Steps** 
 
@@ -55,7 +55,7 @@ Step 4: Request Data
 - The unique AccountId(s) that are valid for the account-access-consent will be returned with a call to GET /accounts.  **This will always be the first call once an AISP has a valid access token.** 
 
 ####  **Sequence Diagram** 
-![ Accounts Overview with CIBA.png ]( images/AccountAndTransaction/Accounts Overview with CIBA.png )
+![ AccountsOverviewwithCIBA.png ]( images/AccountAndTransaction/AccountsOverviewwithCIBA.png )
 
  
 Account Info - High Level Flow
