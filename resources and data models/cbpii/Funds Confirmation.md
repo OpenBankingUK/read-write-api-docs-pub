@@ -1,4 +1,18 @@
-# Funds Confirmation
+# Funds Confirmation <!-- omit in toc -->
+
+1. [Endpoints](#endpoints)
+   1. [POST /funds-confirmations](#post-funds-confirmations)
+2. [Data Model](#data-model)
+   1. [Funds Confirmation - Request](#funds-confirmation---request)
+      1. [UML Diagram](#uml-diagram)
+      2. [Data Dictionary](#data-dictionary)
+   2. [Funds Confirmation - Response](#funds-confirmation---response)
+      1. [UML Diagram](#uml-diagram-1)
+      2. [Data Dictionary](#data-dictionary-1)
+3. [Usage Examples](#usage-examples)
+   1. [Funds Confirmation](#funds-confirmation)
+      1. [Example with all permitted fields](#example-with-all-permitted-fields)
+      2. [Example with a USD account](#example-with-a-usd-account)
 
 ## Endpoints
 | Resource |HTTP Operation |Endpoint |Mandatory ? |Scope |Grant Type |Message Signing |Idempotency Key |Request Object |Response Object |
@@ -8,11 +22,11 @@
 
 ### POST /funds-confirmations
 
-If the CBPII would like to confirm funds with the ASPSP, it should create a new  **funds-confirmation** resource, and check the funds available flag in the response.
+If the CBPII would like to confirm funds with the ASPSP, it should create a new **funds-confirmation** resource, and check the funds available flag in the response.
 
-* The ASPSP creates the  **funds-confirmation**  resource and responds with a unique FundsConfirmationId to refer to the resource, and a flag confirming if funds are available.
-* The CBPII **must**  use a token issued via an authorization code grant and specify the ConsentId in the request payload.
-* This CBPII  **must**  use a currency of the account.
+* The ASPSP creates the **funds-confirmation** resource and responds with a unique FundsConfirmationId to refer to the resource, and a flag confirming if funds are available.
+* The CBPII **must** use a token issued via an authorization code grant and specify the ConsentId in the request payload.
+* This CBPII **must** use a currency of the account.
 
 ## Data Model
 
@@ -76,3 +90,125 @@ The OBFundsConfirmationResponse1 object contains the same information as the OBF
 | InstructedAmount |1..1 |OBFundsConfirmationResponse1/Data/InstructedAmount |Amount of money to be confirmed as available funds in the debtor account. Contains an Amount and a Currency. |OBActiveOrHistoricCurrencyAndAmount | | |
 | Amount |1..1 |OBFundsConfirmationResponse1/Data/InstructedAmount/Amount |A number of monetary units specified in an active currency where the unit of currency is explicit and compliant with ISO 4217. |OBActiveCurrencyAndAmount_SimpleType | |^\d{1,13}\.\d{1,5}$ |
 | Currency |1..1 |OBFundsConfirmationResponse1/Data/InstructedAmount/Currency |A code allocated to a currency by a Maintenance Agency under an international identification scheme, as described in the latest edition of the international standard ISO 4217 "Codes for the representation of currencies and funds". |ActiveOrHistoricCurrencyCode | |^[A-Z]{3,3}$ |
+
+## Usage Examples
+
+### Funds Confirmation
+
+#### Example with all permitted fields
+
+##### Request
+
+Post Funds Confirmation Request
+
+```
+POST /funds-confirmations HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer 1t1satruthun1v3rs4lly
+Accept: application/json; charset=utf-8
+x-fapi-interaction-id: hook5i13-ntIg-4th3-rP41-3ro535touch3
+```
+
+```json
+{
+  "Data": {
+    "ConsentId": "88379",
+	"Reference": "Purchase01",
+    "InstructedAmount": {
+       "Amount": "20.00",
+       "Currency": "GBP"
+    }
+  }
+}
+```
+
+##### Response
+
+Post Funds Confirmation Response
+
+```
+HTTP/1.1 201 Created
+Content-Type: application/json
+x-fapi-interaction-id: hook5i13-ntIg-4th3-rP41-3ro535touch3
+```
+
+```json
+{
+  "Data": {
+    "FundsConfirmationId": "123456",
+    "ConsentId": "88379",
+    "CreationDateTime": "2017-05-02T00:00:00+00:00",
+	"FundsAvailable": true,
+	"Reference": "Purchase01",
+    "InstructedAmount": {
+       "Amount": "20.00",
+       "Currency": "GBP"
+    }
+  },
+  "Links": {
+    "Self": "https://api.alphabank.com/open-banking/v3.1/cbpii/funds-confirmations/123456"
+  },
+  "Meta": {}
+}
+```
+
+#### Example with a USD account
+
+A funds confirmation check can be made in a currency other than GBP as long as the InstructedAmount is in the currency of the payment account.
+
+In this example, a USD funds check is made on a USD payment account.
+
+##### Request
+
+Post Funds Confirmation Request
+
+```
+POST /funds-confirmations HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer 1t1satruthun1v3rs4lly
+Accept: application/json; charset=utf-8
+x-fapi-interaction-id: hook5i13-ntIg-4th3-rP41-3ro535touch3
+```
+
+```json
+{
+  "Data": {
+    "ConsentId": "912304",
+	"Reference": "Purchase02",
+    "InstructedAmount": {
+       "Amount": "20.00",
+       "Currency": "USD"
+    }
+  }
+}
+```
+
+##### Response
+
+Post Funds Confirmation Response
+
+```
+HTTP/1.1 201 Created
+Content-Type: application/json
+x-fapi-interaction-id: hook5i13-ntIg-4th3-rP41-3ro535touch3
+```
+
+```json
+{
+  "Data": {
+    "FundsConfirmationId": "836403",
+    "ConsentId": "912304",
+    "CreationDateTime": "2017-06-02T00:00:00+00:00",
+	"FundsAvailable": true,
+	"Reference": "Purchase02",
+    "InstructedAmount": {
+       "Amount": "20.00",
+       "Currency": "USD"
+    }
+  },
+  "Links": {
+    "Self": "https://api.alphabank.com/open-banking/v3.1/cbpii/funds-confirmations/836403"
+  },
+  "Meta": {}
+}
+```
