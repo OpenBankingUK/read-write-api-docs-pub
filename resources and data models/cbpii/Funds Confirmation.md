@@ -1,18 +1,30 @@
 # Funds Confirmation <!-- omit in toc -->
 
-1. [Endpoints](#endpoints)
+1. [Overview](#overview)
+   1. [Profile Compatibility](#profile-compatibility)
+2. [Endpoints](#endpoints)
    1. [POST /funds-confirmations](#post-funds-confirmations)
-2. [Data Model](#data-model)
+3. [Data Model](#data-model)
    1. [Funds Confirmation - Request](#funds-confirmation---request)
       1. [UML Diagram](#uml-diagram)
       2. [Data Dictionary](#data-dictionary)
    2. [Funds Confirmation - Response](#funds-confirmation---response)
       1. [UML Diagram](#uml-diagram-1)
       2. [Data Dictionary](#data-dictionary-1)
-3. [Usage Examples](#usage-examples)
+4. [Usage Examples](#usage-examples)
    1. [Funds Confirmation](#funds-confirmation)
       1. [Example with all permitted fields](#example-with-all-permitted-fields)
       2. [Example with a USD account](#example-with-a-usd-account)
+
+## Overview
+
+The Funds Confirmation resource is used by an CBPII to request to confirm funds are available.
+
+This resource description should be read in conjunction with a compatible Confirmation of Funds API Profile.
+
+### Profile Compatibility
+
+For a list of profiles compatible with this resource, please see the [Compatibility Matrix]().
 
 ## Endpoints
 | Resource |HTTP Operation |Endpoint |Mandatory ? |Scope |Grant Type |Message Signing |Idempotency Key |Request Object |Response Object |

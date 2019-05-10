@@ -1,13 +1,15 @@
 # Funds Confirmation Consent <!-- omit in toc -->
 
-1. [Endpoints](#endpoints)
+1. [Overview](#overview)
+   1. [Profile Compatibility](#profile-compatibility)
+2. [Endpoints](#endpoints)
    1. [POST /funds-confirmation-consents](#post-funds-confirmation-consents)
       1. [Funds Confirmation Consent Status](#funds-confirmation-consent-status)
       2. [Status Flow](#status-flow)
    2. [GET /funds-confirmation-consents/{ConsentId}](#get-funds-confirmation-consentsconsentid)
       1. [Funds Confirmation Consent Status](#funds-confirmation-consent-status-1)
    3. [DELETE /funds-confirmation-consents/{ConsentId}](#delete-funds-confirmation-consentsconsentid)
-2. [Data Model](#data-model)
+3. [Data Model](#data-model)
    1. [Funds Confirmation Consent - Request](#funds-confirmation-consent---request)
       1. [UML Diagram](#uml-diagram)
       2. [Data Dictionary](#data-dictionary)
@@ -15,13 +17,23 @@
       1. [UML Diagram](#uml-diagram-1)
       2. [Data Dictionary](#data-dictionary-1)
    3. [Data Payload - Enumerations](#data-payload---enumerations)
-3. [Usage Examples](#usage-examples)
+4. [Usage Examples](#usage-examples)
    1. [POST - Funds Confirmation Consent](#post---funds-confirmation-consent)
       1. [Example with all permitted fields](#example-with-all-permitted-fields)
    2. [GET - Funds Confirmation Consent](#get---funds-confirmation-consent)
       1. [Example with all permitted fields](#example-with-all-permitted-fields-1)
    3. [DELETE - Funds Confirmation Consent](#delete---funds-confirmation-consent)
       1. [Example with all permitted fields](#example-with-all-permitted-fields-2)
+
+## Overview
+
+The Funds Confirmation Consent resource is used by an CBPII to register an intent to confirm funds.
+
+This resource description should be read in conjunction with a compatible Confirmation of Funds API Profile.
+
+### Profile Compatibility
+
+For a list of profiles compatible with this resource, please see the [Compatibility Matrix]().
 
 ## Endpoints
 | Resource |HTTP Operation |Endpoint |Mandatory ? |Scope |Grant Type |Message Signing |Idempotency Key |Request Object |Response Object |
