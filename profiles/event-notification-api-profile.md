@@ -225,7 +225,7 @@ Note, the OBEventNotification2 object is aligned with the Security Event Token (
 
 #### UML Diagram
 
-![](./images/OBEventNotification2.gif)
+![OBEventNotification2](./images/OBEventNotification2.gif)
 
 ##### Notes
 
@@ -254,7 +254,7 @@ This section describes the OBEventSubject1 class which is used in the OBEventRes
 
 ##### UML Diagram
 
-![](./images/OBEventSubject1.gif)
+![OBEventSubject1](./images/OBEventSubject1.gif)
 
 ##### Notes
 
@@ -280,7 +280,7 @@ This section describes the OBEventResourceUpdate2 class which is used in the OBE
 
 ##### UML Diagram
 
-![](./images/resource-update.gif)
+![resource-update](./images/resource-update.gif)
 
 ##### Data Dictionary
 
@@ -295,7 +295,7 @@ This section describes the OBEventConsentAuthorizationRevoked1 class which is us
 
 ##### UML Diagram
 
-![](./images/OBEventConsentAuthorizationRevoked1.gif)
+![OBEventConsentAuthorizationRevoked1](./images/OBEventConsentAuthorizationRevoked1.gif)
 
 ##### Notes
 
@@ -317,7 +317,7 @@ This section describes the OBEventAccountAccessConsentLinkedAccountUpdate1 class
 
 ##### UML Diagram
 
-![](./images/OBEventAccountAccessConsentLinkedAccountUpdate1.gif)
+![OBEventAccountAccessConsentLinkedAccountUpdate1](./images/OBEventAccountAccessConsentLinkedAccountUpdate1.gif)
 
 ##### Notes
 
