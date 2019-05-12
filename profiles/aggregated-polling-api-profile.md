@@ -48,7 +48,6 @@ Following the initial poll the TPP can then repeatedly poll the ASPSP, acknowled
 
 ![Aggregated Polling](images/AggregatedPolling.png)
 
-
 <details>
   <summary>Diagram source</summary>
   
