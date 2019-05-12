@@ -38,6 +38,7 @@ For a list of profiles compatible with this resource, please see the [Compatibil
 ## Endpoints
 
 A TPP will set up and maintain its call back details (URL and version number) using the callback-url resource.
+
 | Resource |HTTP Operation |Endpoint |Mandatory ? |Scope |Grant Type |Message Signing |Idempotency Key |Request Object |Response Object |
 | --- |--- |--- |--- |--- |--- |--- |--- |--- |--- |
 | callback-url |POST |POST /callback-urls |Optional |accounts<br>payments<br>fundsconfirmations |Client Credentials |Signed Request<br>Signed Response |No |OBCallbackUrl1 |OBCallbackUrlResponse1 |
