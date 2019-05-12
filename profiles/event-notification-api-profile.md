@@ -23,7 +23,7 @@
 
 ## Overview
 
-The Event Notification API Specification describes the flows and payloads to allow ASPSPs to deliver event notifications to TPPs. The specification has four sub-specifications:
+The Event Notification API Profile describes the flows and payloads to allow ASPSPs to deliver event notifications to TPPs. The profile has four sub-specifications:
 
 [TODO]
 
