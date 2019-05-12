@@ -45,9 +45,9 @@ A TPP will set up and maintain its event subscription details (URL, event types 
 
 | Resource |HTTP Operation |Endpoint |Mandatory ? |Scope |Grant Type |Message Signing |Idempotency Key |Request Object |Response Object |
 | --- |--- |--- |--- |--- |--- |--- |--- |--- |--- |
-| event-subscription |POST |POST /event-subscriptions |Optional |accounts<br>payments<br>fundsconfirmations |Client Credentials |Signed Request<br>Signed Response |No |OBEventSubscription1 |OBEventSubscriptionResponse1 |
+| event-subscription |POST |POST /event-subscriptions |Optional |accounts<br>payments<br>fundsconfirmations |Client Credentials |Signed Request<br><br>Signed Response |No |OBEventSubscription1 |OBEventSubscriptionResponse1 |
 | event-subscription |GET |GET /event-subscriptions |Mandatory (if resource POST implemented) |accounts<br>payments<br>fundsconfirmations |Client Credentials |Signed Response |No |n/a |OBEventSubscriptionsResponse1 |
-| event-subscription |PUT |PUT /event-subscriptions/{EventSubscriptionId} |Mandatory (if resource POST implemented) |accounts<br>payments<br>fundsconfirmations |Client Credentials |Signed Request<br>Signed Response |No |OBEventSubscriptionResponse1 |OBEventSubscriptionResponse1 |
+| event-subscription |PUT |PUT /event-subscriptions/{EventSubscriptionId} |Mandatory (if resource POST implemented) |accounts<br>payments<br>fundsconfirmations |Client Credentials |Signed Request<br><br>Signed Response |No |OBEventSubscriptionResponse1 |OBEventSubscriptionResponse1 |
 | event-subscription |DELETE |DELETE /event-subscriptions/{EventSubscriptionId} |Mandatory (if resource POST implemented) |accounts<br>payments<br>fundsconfirmations |Client Credentials |n/a |No |n/a |n/a |
 
 
