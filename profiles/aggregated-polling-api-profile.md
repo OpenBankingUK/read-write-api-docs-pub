@@ -166,7 +166,7 @@ The `OBEventPolling1` will be used as the request payload for:
 
 #### UML Diagram
 
-![OBEventPolling1]( images/OBEventPolling1.gif )
+![OBEventPolling1](images/OBEventPolling1.gif)
 
 #### Data Dictionary
 
