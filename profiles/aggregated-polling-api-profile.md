@@ -11,7 +11,7 @@ This specification defines the APIs for an ASPSP to aggregate and deliver multip
 
 The payload of the event notifications will be encoded according to the `OBEventNotification2` model.
 
-Implementation of the Aggregated Polling API is  **optional**  for ASPSPs.
+Implementation of the Aggregated Polling API is **optional** for ASPSPs.
 
 ## Basics
 
@@ -119,7 +119,7 @@ TPPs can send two parameters to indicate the polling behaviours:
 * The maximum number of events to be transmitted by the ASPSP.
 * Whether the ASPSP should return a response immediately, or allow the TPP to maintain a connection to support long polling.
 
-Given the implications of long polling (described [here](https://tools.ietf.org/html/rfc6202#page-4)) supporting long polling is  **optional**.
+Given the implications of long polling (described [here](https://tools.ietf.org/html/rfc6202#page-4)) supporting long polling is **optional**.
 
 ASPSPs are responsible for documenting in their developer portal any upper bound for the maximum number of events parameter and their support for long polling.
 
@@ -141,7 +141,7 @@ eventpolling: Ability to poll for, acknowledge and receive Security Event Tokens
 
 #### Grants Types
 
-Consumers  **must**  use a client credentials grant to obtain a token to make POST requests to the  **events**  endpoint. In the specification, this grant type is referred to as "Client Credentials".
+Consumers **must** use a client credentials grant to obtain a token to make POST requests to the **events** endpoint. In the specification, this grant type is referred to as "Client Credentials".
 
 ## Endpoints
 | Resource |HTTP Operation |Endpoint |Mandatory? |Scope |Grant Type |Message Signing |Idempotency Key |Request Object |Response Object |
@@ -209,7 +209,7 @@ Note for the sake of readability the SETs shown in examples are shorted.
 
 #### POST /events
 
-<b>Poll Only Request</b>
+Poll Only Request
 
 ```
 POST /event HTTP/1.1
@@ -227,7 +227,7 @@ x-fapi-interaction-id: 1af4c0e6b5da49f6b1aebf439e87c199
 
 #### POST /events response
 
-<b>Poll Only Response</b>
+Poll Only Response
 
 ```
 POST /event HTTP/1.1
@@ -251,7 +251,7 @@ x-fapi-interaction-id: 1af4c0e6b5da49f6b1aebf439e87c199
 
 #### POST /events
 
-<b>Acknowledge Only Request</b>
+Acknowledge Only Request
 
 ```
 POST /event HTTP/1.1
@@ -268,7 +268,7 @@ x-fapi-interaction-id: 295f6c6c7b2045b2a3e91e4f1c31d681
 
 #### POST /events response
 
-<b>Acknowledge Only Response</b>
+Acknowledge Only Response
 
 ```
 POST /event HTTP/1.1
@@ -287,7 +287,7 @@ x-fapi-interaction-id: 295f6c6c7b2045b2a3e91e4f1c31d681
 
 #### POST /events
 
-<b>Poll and Acknowledge With Errors Request</b>
+Poll and Acknowledge With Errors Request
 
 ```
 POST /event HTTP/1.1
@@ -313,7 +313,7 @@ x-fapi-interaction-id: 3fc0df586e45404abd5bbf1b23ce343d
 
 #### POST /events response
 
-<b>Poll and Acknowledge With Errors Response</b>
+Poll and Acknowledge With Errors Response
 
 ```
 POST /event HTTP/1.1

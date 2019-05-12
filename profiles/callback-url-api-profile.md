@@ -19,18 +19,18 @@ The steps and sequence diagram below provide a general outline of a notification
 
 Step 1: Setup Event Notification Configuration
 
-* This flow begins with a TPP creating a  **callback-url**  resource with an ASPSP.
+* This flow begins with a TPP creating a **callback-url** resource with an ASPSP.
 * The callback URL must be specified at this stage.
 
 Step 2: Event Notification Required
 
-* When an event occurs on a resource that requires a notification, the ASPSP identifies the  **callback-url**  associated with the TPP owning the affected resource.
+* When an event occurs on a resource that requires a notification, the ASPSP identifies the **callback-url** associated with the TPP owning the affected resource.
 * The ASPSP sends the event notification to the callback URL, detailing the nature of the event and identifying the affected resource.
 * The TPP initiates a client credential grant and retrieves the resource using the details contained in the event notification.
 
 Step 3: Retrieve/Update/Delete Event Notification Configuration
 
-* The TPP may optionally read/update/delete the  **callback-url**  resource.
+* The TPP may optionally read/update/delete the **callback-url** resource.
 
 #### Sequence Diagram
 
@@ -116,7 +116,7 @@ option footer=bar
 
 ### Callback URL
 
-TPPs must register a URL for TPP hosted services to receive event notifications from an ASPSP. The URL  **must**  end with the Event Notification API specification version number, followed by ‘/event-notifications'.
+TPPs must register a URL for TPP hosted services to receive event notifications from an ASPSP. The URL **must** end with the Event Notification API specification version number, followed by ‘/event-notifications'.
 
 For example: 
 
@@ -128,31 +128,31 @@ This section overviews the release management and versioning strategy for the Ca
 
 #### Callback-URL Resource
 
-TPPs  **must**  register for event-notification callbacks with the version of Event Notification API they have implemented. The version element of the Callback-URL resource is used for this purpose.
+TPPs **must** register for event-notification callbacks with the version of Event Notification API they have implemented. The version element of the Callback-URL resource is used for this purpose.
 
 ##### POST
 
-* A TPP  **must only**  create a callback-url on one version
+* A TPP **must only** create a callback-url on one version
 
 ##### GET
 
-* A TPP  **must not**  access a callback-url on an older version, via the CallbackUrlId for a callback-url created in a newer version.
+* A TPP **must not** access a callback-url on an older version, via the CallbackUrlId for a callback-url created in a newer version.
   * E.g., a callback-url created in v4, accessed via v3.
-* An ASPSP **must**  allow a callback-url resource to be accessed in a newer version.
-* An ASPSP  **must**  ensure callback-url fields are unchanged when accessed in a different version.
+* An ASPSP **must** allow a callback-url resource to be accessed in a newer version.
+* An ASPSP **must** ensure callback-url fields are unchanged when accessed in a different version.
 
 ##### PUT
 
-* A TPP  **must not**  update a callback-url on an older version via a CallbackUrlId created in a newer version.
+* A TPP **must not** update a callback-url on an older version via a CallbackUrlId created in a newer version.
   * E.g., A callback-url is created in v4, and a PUT request on v3.
-* An ASPSP  **must**  support updating a callback-url from a previous version via a CallbackUrlId created in a newer version.
+* An ASPSP **must** support updating a callback-url from a previous version via a CallbackUrlId created in a newer version.
   * E.g., A callback-url is created in v3, and a PUT request on v4.
 
 ##### DELETE
 
-* A TPP  **must not**  delete a callback-url on an older version via a CallbackUrlId created in a newer version.
+* A TPP **must not** delete a callback-url on an older version via a CallbackUrlId created in a newer version.
   * E.g. A callback-url is created in v4, and request DELETE on v3.
-* An ASPSP  **must**  support deleting a callback-url from a previous version via a CallbackUrlId created in a newer version.
+* An ASPSP **must** support deleting a callback-url from a previous version via a CallbackUrlId created in a newer version.
   * E.g., A callback-url is created in v3, and request DELETE on v4.
 
 ### Callback-URL per TPP
@@ -172,30 +172,30 @@ A TPP will set up and maintain its call back details (URL and version number) us
 
 #### POST /callback-urls
 
-The API endpoint allows the TPP to ask an ASPSP to create a new  **callback-url**  resource.
+The API endpoint allows the TPP to ask an ASPSP to create a new **callback-url** resource.
 
 * The POST action allows the TPP to register a callback URL for an ASPSP to send event notifications to.
-* The ASPSP creates the  **callback-url**  resource and responds with a unique CallbackUrlId to refer to the resource.
-* An ASPSP  **must**  respond with a 409 error if a callback-url exists for that TPP.
+* The ASPSP creates the **callback-url** resource and responds with a unique CallbackUrlId to refer to the resource.
+* An ASPSP **must** respond with a 409 error if a callback-url exists for that TPP.
 
 #### GET /callback-urls
 
-The API endpoint allows the TPP to ask an ASPSP to retrieve its  **callback-url**  resource.
+The API endpoint allows the TPP to ask an ASPSP to retrieve its **callback-url** resource.
 
-* The ASPSP retrieves the  **callback-url**  resource and responds with the resource.
+* The ASPSP retrieves the **callback-url** resource and responds with the resource.
 
 #### PUT /callback-urls/{CallbackUrlId}
 
-The API endpoint allows the TPP to ask an ASPSP to update a  **callback-url**  resource.
+The API endpoint allows the TPP to ask an ASPSP to update a **callback-url** resource.
 
 * The PUT action allows the TPP to update a callback URL for an ASPSP to send event notifications to.
-* The ASPSP updates the  **callback-url**  resource and responds with the updated resource.
+* The ASPSP updates the **callback-url** resource and responds with the updated resource.
 
 #### DELETE /callback-urls/{CallbackUrlId}
 
-The API endpoint allows the TPP to ask an ASPSP to delete a  **callback-url**  resource.
+The API endpoint allows the TPP to ask an ASPSP to delete a **callback-url** resource.
 
-* The ASPSP deletes the  **callback-url**  resource.
+* The ASPSP deletes the **callback-url** resource.
 
 ## Data Model
 
@@ -273,7 +273,7 @@ The OBCallbackUrlsResponse1 object will be used for a response to a call to:
 ### Create Callback Url
 
  **POST /callback-urls** 
-<b>Callback Url Request</b>
+Callback Url Request
 
 ```
 POST /callback-urls HTTP/1.1
@@ -294,7 +294,7 @@ Accept: application/json
 ```
 
  **POST /callback-urls response** 
-<b>Callback Url Response</b>
+Callback Url Response
 
 ```
 HTTP/1.1 201 Created
@@ -320,7 +320,7 @@ Content-Type: application/json
 ### Get Callback Urls
 
  **GET /callback-urls** 
-<b>GET Callback Url Request</b>
+GET Callback Url Request
 
 ```
 GET /callback-urls HTTP/1.1
@@ -330,7 +330,7 @@ Accept: application/json
 ```
 
  **GET /callback-urls response** 
-<b>GET Callback Url Response</b>
+GET Callback Url Response
 
 ```
 GET/1.1 200 OK

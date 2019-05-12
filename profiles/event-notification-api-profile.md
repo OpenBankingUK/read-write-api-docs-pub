@@ -75,7 +75,7 @@ In this outline TPP registration for event notifications is performed using the 
 
 Step 1: Setup Event Notification Subscription
 
-- This flow begins with a TPP creating an  **event-subscription**  resource with an ASPSP. This may optionally contain a callback url, and a series of event types.
+- This flow begins with a TPP creating an **event-subscription** resource with an ASPSP. This may optionally contain a callback url, and a series of event types.
 
 Step 2: Deliver Event Notification
 
@@ -201,13 +201,13 @@ option footer=bar
 
 The specification defines a number of namespaced event types corresponding to individual event notifications.
 
-ASPSPs  **may**  define their own custom Events (together with a corresponding namespaced event type) consistent with the principles and conventions outlined in the specification.
+ASPSPs **may** define their own custom Events (together with a corresponding namespaced event type) consistent with the principles and conventions outlined in the specification.
 
-ASPSPs  **must**  document all supported events types on their developer documentation.
+ASPSPs **must** document all supported events types on their developer documentation.
 
 ### Event-Notification Backwards Compatibility
 
-TPPs may have implemented the event-notification resource defined in v3.1 or v3.1.1 of the Event Notification API Specification. A TPP implementation limited to this resource would only be able to receive event-notifications for the `urn:uk:org:openbanking:events:resource-update` event. In order to receive backwards compatible v3.1.2 event-notifications, TPPs  **must**  restrict the events they receive to the `urn:uk:org:openbanking:events:resource-update` event using one of the following methods:
+TPPs may have implemented the event-notification resource defined in v3.1 or v3.1.1 of the Event Notification API Specification. A TPP implementation limited to this resource would only be able to receive event-notifications for the `urn:uk:org:openbanking:events:resource-update` event. In order to receive backwards compatible v3.1.2 event-notifications, TPPs **must** restrict the events they receive to the `urn:uk:org:openbanking:events:resource-update` event using one of the following methods:
 
 - Registering via the callback-url resource, implicitly limiting event types to `urn:uk:org:openbanking:events:resource-update`.
 - Registering via the event-subscription resource with the Version set to 3.1.1, implicitly limiting events to `urn:uk:org:openbanking:events:resource-update`.
@@ -260,7 +260,7 @@ This section describes the OBEventSubject1 class which is used in the OBEventRes
 
 - The `rid`, `rty` and `rlk` claims are prefixed with the OB namespace `http://openbanking.org.uk` in the data model. The namespace has been removed from the diagram for clarity.
 
-- The array of resource links (`http://openbanking.org.uk/rlk`)  **must**  contain links to all supported versions of the resource.
+- The array of resource links (`http://openbanking.org.uk/rlk`) **must** contain links to all supported versions of the resource.
 
 ##### Data Dictionary
 
@@ -297,7 +297,7 @@ This section describes the OBEventConsentAuthorizationRevoked1 class which is us
 
 ![](./images/OBEventConsentAuthorizationRevoked1.gif)
 
-#####  **Notes** 
+##### Notes
 
 For the OBEventConsentAuthorizationRevoked1 object:  
 
@@ -323,7 +323,7 @@ This section describes the OBEventAccountAccessConsentLinkedAccountUpdate1 class
 
 For the OBEventAccountAccessConsentLinkedAccountUpdate object: 
 
-- The http://openbanking.org.uk/rty claim  **must**  be populated with "account-access-consent".
+- The http://openbanking.org.uk/rty claim **must** be populated with "account-access-consent".
 
 ##### Data Dictionary
 
