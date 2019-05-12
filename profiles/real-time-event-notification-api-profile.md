@@ -133,8 +133,7 @@ A TPP **may** make GET requests for its resources if its `/event-notifications` 
 
 ### Send Event Notification - Resource Update
 
- **POST /event-notifications** 
-Event Notification Request
+#### POST Event Notification Request
 
 ```
 POST /event-notifications HTTP/1.1
@@ -172,8 +171,7 @@ Decoded JWT Body - Event Notification Payload
 }
 ```
 
- **POST /event-notifications response** 
-Event Notification Response
+#### POST Event Notification Response
 
 ```
 HTTP/1.1 202 Accepted
@@ -182,8 +180,7 @@ x-fapi-interaction-id: 14ba1762-a316-4a87-8d6e-5bfbefaf01d7
 
 ### Send Event Notification - Consent Authorisation Revoked
 
- **POST /event-notifications** 
-Event Notification Request
+#### POST Event Notification Request
 
 ```
 POST /event-notifications HTTP/1.1
@@ -222,8 +219,7 @@ Decoded JWT Body - Event Notification Payload
 }
 ```
 
- **POST /event-notifications response** 
-Event Notification Response
+#### POST Event Notification Response
 
 ```
 HTTP/1.1 202 Accepted

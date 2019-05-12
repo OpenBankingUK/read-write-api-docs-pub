@@ -201,15 +201,13 @@ The `OBEventPollingResponse1` will be used as the response payload for:
 | sets |1..1 |OBEventPollingResponse1/sets |A JSON object that contains zero or more nested JSON attributes. If there are no outstanding event notifications to be transmitted, the JSON object SHALL be empty. |xs:anyType | | |
 | `<jti>` |0..n |`OBEventPollingResponse1/sets/<jti>` |An object named with the `jti` of the event notification to be delivered. The value is the event notification, expressed as a `string`. The payload of the event should be defined in the `OBEventNotification2` format. |xs:string | | |
 
-## Examples
+## Usage Examples
 
 Note for the sake of readability the SETs shown in examples are shorted.
 
 ### Poll Only
 
-#### POST /events
-
-Poll Only Request
+#### POST Events Request
 
 ```
 POST /event HTTP/1.1
@@ -225,9 +223,7 @@ x-fapi-interaction-id: 1af4c0e6b5da49f6b1aebf439e87c199
 }
 ```
 
-#### POST /events response
-
-Poll Only Response
+#### POST Events Response
 
 ```
 POST /event HTTP/1.1
@@ -249,9 +245,7 @@ x-fapi-interaction-id: 1af4c0e6b5da49f6b1aebf439e87c199
 
 ### Acknowledge Only
 
-#### POST /events
-
-Acknowledge Only Request
+#### POST Events Request
 
 ```
 POST /event HTTP/1.1
@@ -266,9 +260,7 @@ x-fapi-interaction-id: 295f6c6c7b2045b2a3e91e4f1c31d681
 }
 ```
 
-#### POST /events response
-
-Acknowledge Only Response
+#### POST Events Response
 
 ```
 POST /event HTTP/1.1
@@ -283,11 +275,9 @@ x-fapi-interaction-id: 295f6c6c7b2045b2a3e91e4f1c31d681
 }
 ```
 
-### Poll and Acknowledge
+### Poll and Acknowledge With Errors
 
-#### POST /events
-
-Poll and Acknowledge With Errors Request
+#### POST Events Request
 
 ```
 POST /event HTTP/1.1
@@ -311,9 +301,7 @@ x-fapi-interaction-id: 3fc0df586e45404abd5bbf1b23ce343d
 }
 ```
 
-#### POST /events response
-
-Poll and Acknowledge With Errors Response
+#### POST Events Response
 
 ```
 POST /event HTTP/1.1

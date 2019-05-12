@@ -257,8 +257,7 @@ The OBEventSubscriptionsResponse1 object will be used for a response to a call t
 
 ### Create Event Subscription
 
- **POST /event-subscriptions** 
-POST Event Subscription Request
+#### POST Event Subscription Request
 
 ```
 POST /event-subscriptions HTTP/1.1
@@ -278,8 +277,7 @@ Accept: application/json
 }
 ```
 
- **POST /event-subscriptions response** 
-POST Event Subscription Response
+#### POST Event Subscription Response
 
 ```
 HTTP/1.1 201 Created
@@ -304,8 +302,7 @@ Content-Type: application/json
 
 ### Get Event Subscriptions
 
- **GET /event-subscriptions**
-GET Event Subscription Request
+#### GET Event Subscription Request
 
 ```
 GET /event-subscriptions HTTP/1.1
@@ -314,8 +311,7 @@ x-fapi-interaction-id: 86ebcd82-8e38-4f2d-a79c-965b41d15865
 Accept: application/json
 ```
 
- **GET /event-subscriptions response** 
-GET Event Subscription Response
+#### GET Event Subscription Response
 
 ```
 GET/1.1 200 OK

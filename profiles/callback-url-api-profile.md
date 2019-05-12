@@ -218,8 +218,6 @@ The OBCallbackurl1 object will be used for the call to:
 | Url |1..1 |OBCallbackUrl1/Data/Url |Callback URL for a TPP hosted service. Will be used by ASPSPs, in conjunction with the resource name, to construct a URL to send event notifications to. |xs:anyURI | | |
 | Version |1..1 |OBCallbackUrl1/Data/Version |Version for the event notification. |Max10Text | | |
 
-
-
 ### Callback Url - Response
 
 The OBCallbackUrlResponse1 object will be used for a response to a call to:
@@ -272,8 +270,7 @@ The OBCallbackUrlsResponse1 object will be used for a response to a call to:
 
 ### Create Callback Url
 
- **POST /callback-urls** 
-Callback Url Request
+#### POST Callback Url Request
 
 ```
 POST /callback-urls HTTP/1.1
@@ -293,8 +290,7 @@ Accept: application/json
 }
 ```
 
- **POST /callback-urls response** 
-Callback Url Response
+#### POST Callback Url Response
 
 ```
 HTTP/1.1 201 Created
@@ -319,8 +315,7 @@ Content-Type: application/json
 
 ### Get Callback Urls
 
- **GET /callback-urls** 
-GET Callback Url Request
+#### GET Callback Url Request
 
 ```
 GET /callback-urls HTTP/1.1
@@ -329,8 +324,7 @@ x-fapi-interaction-id: 86ebcd82-8e38-4f2d-a79c-965b41d15865
 Accept: application/json
 ```
 
- **GET /callback-urls response** 
-GET Callback Url Response
+#### GET Callback Url Response
 
 ```
 GET/1.1 200 OK
