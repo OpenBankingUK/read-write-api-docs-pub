@@ -1,41 +1,47 @@
 # Standing Orders v3.1.2
+
 ## Endpoints
 
 Endpoints for the resource and available methods.
 
- |  |Resource |HTTP Operation |Endpoint |Mandatory? |Scope |Grant Type |Idempotency Key |Parameters |Request Object |Response Object |
+|  |Resource |HTTP Operation |Endpoint |Mandatory? |Scope |Grant Type |Idempotency Key |Parameters |Request Object |Response Object |
 | --- |--- |--- |--- |--- |--- |--- |--- |--- |--- |--- |
 | 1 |standing-orders |GET |GET /accounts/{AccountId}/standing-orders |Conditional |accounts |Authorization Code |No | | |OBReadStandingOrder5 |
 | 2 |standing-orders |GET |GET /standing-orders |Optional |accounts |Authorization Code |No |Pagination | |OBReadStandingOrder5 |
 
+
 ### GET /accounts/{AccountId}/standing-orders
+
 An AISP may retrieve the standing-order resource for a specific AccountId (which is retrieved in the call to GET /accounts).
 
 ### GET /standing-orders
+
 If an ASPSP has implemented the bulk retrieval endpoints, an AISP may optionally retrieve the standing-order resources in bulk.
 This will retrieve the resources for all authorised accounts linked to the account-request.
 
 ## Data Model
+
 The OBReadStandingOrder5 object will be used for the call to: 
-- GET /accounts/{AccountId}/standing-orders
-- GET /standing-orders
+* GET /accounts/{AccountId}/standing-orders
+* GET /standing-orders
 
 ### Resource Definition
+
 A resource that contains a set of elements that describes the list of standing-orders that have been set up on a specific account (AccountId).
 An account (AccountId) may have no standing orders set up, or may have multiple standing orders set up.
 
 ### UML Diagram
-![UML Diagram$](images/StandingOrders/OBReadStandingOrder5.png  "UML Diagram")
 
- **Notes:**
-- The  **Creditor**  **Account**  and  **CreditorAgent**  blocks replicate what is used consistently throughout the Account Information APIs to identify an account. 
-- For the /accounts/{AccountId}/standing-orders endpoint, the  **CreditorAccount**  and  **CreditorAgent**  blocks represent the account that is receiving funds (so has been named the CreditorAccount for consistency with the PISP use case).
-- A DateTime element has been used so that there is consistency across all API endpoints using dates. Where time elements do not exist in ASPSP systems, the time portion of the DateTime element will be defaulted to 00:00:00+00:00.
-- The Amount elements all have embedded Currency elements for consistency is ISO 20022, and across the other API endpoints.
+![ OBReadStandingOrder5.png ]( images/StandingOrders/OBReadStandingOrder5.png )
+Notes:
+* The **Creditor** **Account** and **CreditorAgent** blocks replicate what is used consistently throughout the Account Information APIs to identify an account.
+* For the /accounts/{AccountId}/standing-orders endpoint, the **Creditor** **Account** and **CreditorAgent** blocks represent the account that is receiving funds (so has been named the CreditorAccount for consistency with the PISP use case).
+* A DateTime element has been used so that there is consistency across all API endpoints using dates. Where time elements do not exist in ASPSP systems, the time portion of the DateTime element will be defaulted to 00:00:00+00:00.
+* The Amount elements all have embedded Currency elements for consistency is ISO 20022, and across the other API endpoints.
 
-###### Frequency Examples
+### Frequency Examples
 
- | Frequency |Example |Details |
+| Frequency |Example |Details |
 | --- |--- |--- |
 | EvryDay |EvryDay |Every day |
 | EvryWorkgDay |EvryWorkgDay |Every working day |
@@ -47,18 +53,22 @@ An account (AccountId) may have no standing orders set up, or may have multiple 
 | IntrvlMnthDay |IntrvlMnthDay:06:15 |Every 6th month, on the 15th day of the month |
 | QtrDay |QtrDay:ENGLISH |Paid on the 25th March, 24th June, 29th September and 25th December |
 
+
 ### Permission Codes
+
 The resource differs depending on the permissions (ReadStandingOrdersBasic and ReadStandingOrdersDetail) used to access resource. In the event the resource is accessed with both ReadStandingOrdersBasic and ReadStandingOrdersDetail, the most detailed level (ReadStandingOrdersDetail) must be used.
-- These objects  **must not** be returned  **without**  the  **ReadStandingOrdersDetail** permission:
-    - OBReadStandingOrder5/Data/StandingOrder/CreditorAgent
-    - OBReadStandingOrder5/Data/StandingOrder/CreditorAccount
-- If the  **ReadStandingOrdersDetail** is granted by the PSU:
-    - OBReadStandingOrder5/Data/StandingOrder/CreditorAgent  **may**  be returned if applicable to the account and ASPSP (0..1)
-    - OBReadStandingOrder5/Data/StandingOrder/CreditorAccount  **must**  be returned (1..1)
+* These objects **must not** be returned **without** the **ReadStandingOrdersDetail** permission: 
+    * OBReadStandingOrder5/Data/StandingOrder/CreditorAgent 
+    * OBReadStandingOrder5/Data/StandingOrder/CreditorAccount
+* If the **ReadStandingOrdersDetail** is granted by the PSU:     
+    * OBReadStandingOrder5/Data/StandingOrder/CreditorAgent **may** be returned if applicable to the account and ASPSP (0..1) 
+    * OBReadStandingOrder5/Data/StandingOrder/CreditorAccount **must** be returned (1..1)
+
 If the ReadPAN permission is granted by the PSU, the ASPSP may choose to populate the OBReadStandingOrder5/Data/StandingOrder/CreditorAccount/Identification with the unmasked PAN (if the PAN is being populated in the response).
 
 ### Data Dictionary
- | Name |Occurrence |XPath |EnhancedDefinition |Class |Codes |Pattern |
+
+| Name |Occurrence |XPath |EnhancedDefinition |Class |Codes |Pattern |
 | --- |--- |--- |--- |--- |--- |--- |
 | OBReadStandingOrder5 | |OBReadStandingOrder5 | |OBReadStandingOrder5 | | |
 | Data |1..1 |OBReadStandingOrder5/Data | |OBReadDataStandingOrder5 | | |
@@ -92,10 +102,12 @@ If the ReadPAN permission is granted by the PSU, the ASPSP may choose to populat
 
 
 ## Usage Examples
-### Specific Account
- **Request** 
 
-```JavaScript
+### Specific Account
+
+ **Request** **Get Accounts Standing Orders Request**
+
+```
 GET /accounts/22289/standing-orders HTTP/1.1
 Authorization: Bearer Az90SAOJklae
 x-fapi-auth-date:  Sun, 10 Sep 2017 19:43:31 GMT
@@ -103,12 +115,15 @@ x-fapi-customer-ip-address: 104.25.212.99
 x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Accept: application/json
 ```
- **Response** 
-```JavaScript
+
+ **Response** **Get Accounts Standing Orders Response**
+
+```
 HTTP/1.1 200 OK
 x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Content-Type: application/json
-
+```
+```json
 {
   "Data": {
     "StandingOrder": [
@@ -149,9 +164,12 @@ Content-Type: application/json
   }
 }
 ```
+
 ### Bulk
- **Request** 
-```JavaScript
+
+ **Request** **Get Standing Orders Request**
+
+```
 GET /standing-orders HTTP/1.1
 Authorization: Bearer Az90SAOJklae
 x-fapi-auth-date:  Sun, 10 Sep 2017 19:43:31 GMT
@@ -159,12 +177,15 @@ x-fapi-customer-ip-address: 104.25.212.99
 x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Accept: application/json
 ```
- **Response** 
-```JavaScript
+
+ **Response** **Get Standing Orders Response**
+
+```
 HTTP/1.1 200 OK
 x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Content-Type: application/json
-
+```
+```json
 {
   "Data": {
     "StandingOrder": [
