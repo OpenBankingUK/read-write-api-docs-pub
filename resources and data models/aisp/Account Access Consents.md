@@ -46,6 +46,7 @@ The usage of this API endpoint will be subject to an ASPSP's fair usage policies
 Once the PSU authorises the account-access-consent resource - the Status of the account-access-consent resource will be updated with "Authorised".
 
 The available Status code-list enumerations for the account-access-consent resource are:
+
 |  |Status |Status Description |
 | --- |--- |--- |
 | 1 |Rejected |The account access consent has been rejected. |
