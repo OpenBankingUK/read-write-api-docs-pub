@@ -14,7 +14,7 @@
 
 The Callback URL API Profile describes the flows and common functionality for the Callback URL API, which allows a TPPs to:
 
-* Register a callback URL with an ASPSP to receive event notifications.
+* Register a callback URL with an ASPSP to register to receive a `urn:uk:org:openbanking:events:resource-update` event notification via the Real Time Event Notification API.
 * Optionally read, update or delete a registered callback URL.
 
 This profile should be read in conjunction with a compatible Read/Write Data API Profile, a compatible Event Notification API Profile and compatible individual resources.

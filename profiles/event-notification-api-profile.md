@@ -23,20 +23,18 @@
 
 ## Overview
 
-The Event Notification API Profile describes the flows and payloads to allow ASPSPs to deliver event notifications to TPPs. The profile has four sub-specifications:
+The Event Notification API Profile describes the flows and common functionality to allow a TPP to receive event notifications.
 
-[TODO]
-
-The Event Notification Subscription API and the Callback URL API provide alternative mechanisms for TPPs to register for event notifications.
+The Event Notification Subscription API Profile and the Callback URL API Profile provide alternative mechanisms for TPPs to register for event notifications.
 
 - The Event Notification Subscription API allows TPPs to register to receive all or specific event types via the Real Time Event Notification API and/or the Aggregated Polling API.
 - The Callback URL API allows TPPs to register to receive a `urn:uk:org:openbanking:events:resource-update` event notification via the Real Time Event Notification API.
 
 Note, should an ASPSP choose to provide both APIs for event notification registrations, any registration made using the Event Notification Subscription API supersedes a registration made using the Callback URL API.
 
-This specification should be read in conjunction with the Payments, Accounts, and Confirmation of Funds API specifications. These specifications detail the circumstances under which an event notification may be delivered.
+This profile should be read in conjunction with the other API profiles which detail the circumstances under which an event notification may be delivered.
 
-Implementation of the Event Notification API Specification, and its individual sub-specifications, is **optional** for both ASPSPs and TPPs. 
+Implementation of Event Notifications is **optional** for both ASPSPs and TPPs.
 
 ### Design Principles
 
