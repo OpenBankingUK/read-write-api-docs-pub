@@ -1,66 +1,69 @@
 # Accounts v3.1.2
-# Endpoints
+
+## Endpoints
+
 Endpoints for the resource - and available methods.
 
- |  |Resource |HTTP Operation |Endpoint |Mandatory? |Scope |Grant Type |Idempotency Key |Parameters |Request Object |Response Object |
+|  |Resource |HTTP Operation |Endpoint |Mandatory? |Scope |Grant Type |Idempotency Key |Parameters |Request Object |Response Object |
 | --- |--- |--- |--- |--- |--- |--- |--- |--- |--- |--- |
 | 1 |accounts |GET |GET /accounts |Mandatory |accounts |Authorization Code |No |Pagination | |OBReadAccount4 |
 | 2 |accounts |GET |GET /accounts/{AccountId} |Mandatory |accounts |Authorization Code |No | | |OBReadAccount4 |
 
-## GET /accounts
 
- >The first step for an AISP after an account-request is authorised - is to call the GET /accounts endpoint. 
+### GET /accounts
 
- An AISP will be given the full list of accounts (the AccountId(s)) that the PSU has authorised the AISP to access. The AccountId(s) returned may then be used to retrieve other resources for a specific AccountId. The selection of authorised accounts happens  **only**  at the ASPSP's interface.
+*First Step
+The first step for an AISP after an account-request is authorised - is to call the GET /accounts endpoint.*
 
-## GET /accounts/{AccountId}
- An AISP  **may**  retrieve the account information resources for the AccountId (which is retrieved in the call to GET /accounts).
+An AISP will be given the full list of accounts (the AccountId(s)) that the PSU has authorised the AISP to access. The AccountId(s) returned may then be used to retrieve other resources for a specific AccountId. The selection of authorised accounts happens  **only**  at the ASPSP's interface.
 
-# Data Model
- The OBReadAccount4 object will be used for the call to:
-- GET /accounts/{AccountId}
-- GET /accounts
+### GET /accounts/{AccountId}
 
-## Resource Definition
+An AISP  **may**  retrieve the account information resources for the AccountId (which is retrieved in the call to GET /accounts).
 
- This resource represents the account to which credit and debit entries are made.
- Each account resource will have a unique and immutable AccountId.
+## Data Model
 
-## UML Diagram
+The OBReadAccount4 object will be used for the call to:
+* GET /accounts/{AccountId}
+* GET /accounts
 
- ![UML Diagram$](images/OBReadAccount4.gif "UML Diagram")
+### Resource Definition
 
-  **Notes:** 
+This resource represents the account to which credit and debit entries are made.
+Each account resource will have a unique and immutable AccountId.
 
-- The  **Account**  and  **Servicer**  structure has been designed to:
-    - Reflect the DebtorAccount and DebtorAgent (and similarly for CreditorAccount and CreditorAgent) structures in the PISP use case.
+### UML Diagram
 
-    - Having a SchemeName for the Account and Servicer blocks means we can be flexible to accommodate multiple types of accounts.
+![ OBReadAccount4.gif ]( images/Accounts/OBReadAccount4.gif )
 
+ **Notes:** 
+* The **Account** and **Servicer** structure has been designed to: 
+    * Reflect the DebtorAccount and DebtorAgent (and similarly for CreditorAccount and CreditorAgent) structures in the PISP use case. 
+    * Having a SchemeName for the Account and Servicer blocks means we can be flexible to accommodate multiple types of accounts.
+* For common Domestic UK identification schemes: 
+    * Account/Account 
+        * Where "UK.OBIE.SortCodeAccountNumber" is specified as the SchemeName, the Identification field **must** be populated with the 6 digit Sort Code and 8 digit Account Number (a 14 digit field). 
+        * Where "UK.OBIE.IBAN" is specified as the SchemeName, the Identification field must be populated with the full IBAN. 
+        * Where "UK.OBIE.PAN" is specified as the SchemeName, the Identification field **must** be populated with the primary PAN linked to the account. An ASPSP **may** choose to mask digits returned in the Identification field. 
+    * Account/Servicer 
+        * Where "UK.OBIE.BICFI" is populated as the SchemeName, the Identification field **must** be populated with the BIC.
+* The SecondaryIdentification field is used to identify an account in addition to the primary Account/Identification field. SecondaryIdentification may be populated with a roll number for building societies, or a currency code where an account has multiple currency sub-accounts.
 
-- For common Domestic UK identification schemes:
-    - Account/Account
-        - Where "UK.OBIE.SortCodeAccountNumber" is specified as the SchemeName, the Identification field  **must**  be populated with the 6 digit Sort Code and 8 digit Account Number (a 14 digit field).
-        - Where "UK.OBIE.IBAN" is specified as the SchemeName, the Identification field  **must**  be populated with the full IBAN.
-        - Where "UK.OBIE.PAN" is specified as the SchemeName, the Identification field  **must**  be populated with the primary PAN linked to the account. An ASPSP  **may**  choose to mask digits returned in the Identification field.
-    - Account/Servicer
-        - Where "UK.OBIE.BICFI" is populated as the SchemeName, the Identification field  **must**  be populated with the BIC.
-- The SecondaryIdentification field is used to identify an account in addition to the primary Account/Identification field. SecondaryIdentification may be populated with a roll number for building societies, or a currency code where an account has multiple currency sub-accounts.
+### Permission Codes
 
-## Permission Codes
- The resource differs depending on the permissions (ReadAccountsBasic and ReadAccountsDetail) used to access the resource. In the event that the resource is accessed with both ReadAccountsBasic and ReadAccountsDetail, the most detailed level (ReadAccountsDetail) must be used.
+The resource differs depending on the permissions (ReadAccountsBasic and ReadAccountsDetail) used to access the resource. In the event that the resource is accessed with both ReadAccountsBasic and ReadAccountsDetail, the most detailed level (ReadAccountsDetail) must be used.
+* These objects **must not** be returned **without** the **ReadAccountsDetail** permission: 
+    * OBReadAccount4/Data/Account/Account 
+    * OBReadAccount4/Data/Account/Servicer
+* If the **ReadAccountsDetail** is granted by the PSU: 
+    * OBReadAccount4/Data/Account/Account **must** be returned (1..n) 
+    * OBReadAccount4/Data/Account/Servicer **may** be returned if applicable to the account and ASPSP (0..1)
 
-- These objects  **must not** be returned  **without**  the  **ReadAccountsDetail** permission:
-    - OBReadAccount4/Data/Account/Account
-    - OBReadAccount4/Data/Account/Servicer
-- If the  **ReadAccountsDetail** is granted by the PSU:
-    - OBReadAccount4/Data/Account/Account  **must**  be returned (1..n)
-    - OBReadAccount4/Data/Account/Servicer  **may**  be returned if applicable to the account and ASPSP (0..1)
+If the ReadPAN permission is granted by the PSU, the ASPSP may choose to populate the OBReadAccount4/Data/Account/Account/Identification with the unmasked PAN (if the PAN is being populated in the response).
 
- If the ReadPAN permission is granted by the PSU, the ASPSP may choose to populate the OBReadAccount4/Data/Account/Account/Identification with the unmasked PAN (if the PAN is being populated in the response).
+### Data Dictionary
 
-## Data Dictionary
- | Name |Occurrence |XPath |EnhancedDefinition |Class |Codes |Pattern |
+| Name |Occurrence |XPath |EnhancedDefinition |Class |Codes |Pattern |
 | --- |--- |--- |--- |--- |--- |--- |
 | OBReadAccount4 | |OBReadAccount4 | |OBReadAccount4 | | |
 | Data |1..1 |OBReadAccount4/Data | |OBReadDataAccount4 | | |
@@ -83,14 +86,17 @@ Endpoints for the resource - and available methods.
 | Identification |1..1 |OBReadAccount4/Data/Account/Servicer/Identification |Unique and unambiguous identification of the servicing institution. |Max35Text | | |
 
 
-# Usage Examples
-## Bulk - Detail Permission
- The call to GET /accounts is the first step after an account-request is authorised. This will allow the AISP to discover which accounts (and AccountId values) are associated with the authorisation of consent.
- In this scenario, AccountId 22289 has a building society roll number; and AccountId 31820 does not.
- The  **ReadAccountsDetail**  permission has been granted.
-  **Request** 
+## Usage Examples
 
-```javascript
+### Bulk - Detail Permission
+
+The call to GET /accounts is the first step after an account-request is authorised. This will allow the AISP to discover which accounts (and AccountId values) are associated with the authorisation of consent.
+In this scenario, AccountId 22289 has a building society roll number; and AccountId 31820 does not.
+The  **ReadAccountsDetail**  permission has been granted.
+
+ **Request** **Get Accounts Request**
+
+```
 GET /accounts HTTP/1.1
 Authorization: Bearer Az90SAOJklae
 x-fapi-auth-date: Sun, 10 Sep 2017 19:43:31 GMT
@@ -98,12 +104,15 @@ x-fapi-customer-ip-address: 104.25.212.99
 x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Accept: application/json
 ```
-  **Response** 
-```javascript
+
+ **Response** **Get Accounts Response**
+
+```
 HTTP/1.1 200 OK
 x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Content-Type: application/json
-
+```
+```json
 {
   "Data": {
     "Account": [
@@ -150,11 +159,15 @@ Content-Type: application/json
   }
 }
 ```
-## Specific Account - Detail Permission
- An AISP may also retrieve the account resource details specifically for AccountId 22289.
- The  **ReadAccountsDetail**  permission has been granted.
-  **Request** 
-```javascript
+
+### Specific Account - Detail Permission
+
+An AISP may also retrieve the account resource details specifically for AccountId 22289.
+The  **ReadAccountsDetail**  permission has been granted.
+
+ **Request** **Get Accounts Request**
+
+```
 GET /accounts/22289 HTTP/1.1
 Authorization: Bearer Az90SAOJklae
 x-fapi-auth-date: Sun, 10 Sep 2017 19:43:31 GMT
@@ -162,12 +175,15 @@ x-fapi-customer-ip-address: 104.25.212.99
 x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Accept: application/json
 ```
-  **Response** 
-```javascript
+
+ **Response** **Get Accounts Response**
+
+```
 HTTP/1.1 200 OK
 x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Content-Type: application/json
-
+```
+```json
 {
   "Data": {
     "Account": [
@@ -198,10 +214,14 @@ Content-Type: application/json
   }
 }
 ```
-## Bulk - Basic Permission
- The  **ReadAccountsBasic** permission has been granted.
- **Request** 
-```javascript
+
+### Bulk - Basic Permission
+
+The  **ReadAccountsBasic** permission has been granted.
+
+ **Request** **Get Accounts Request**
+
+```
 GET /accounts HTTP/1.1
 Authorization: Bearer Az90SAOJklae
 x-fapi-auth-date:  Sun, 10 Sep 2017 19:43:31 GMT
@@ -209,12 +229,15 @@ x-fapi-customer-ip-address: 104.25.212.99
 x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Accept: application/json
 ```
- **Response** 
-```javascript
+
+ **Response** **Get Accounts Response**
+
+```
 HTTP/1.1 200 OK
 x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Content-Type: application/json
-
+```
+```json
 {
   "Data": {
     "Account": [
