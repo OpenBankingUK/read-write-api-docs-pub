@@ -39,10 +39,10 @@
       5. [Process for Verifying a Signature](#process-for-verifying-a-signature)
       6. [Sample JOSE Header](#sample-jose-header)
    10. [Message Encryption](#message-encryption-1)
-      1. [Overview](#overview-2)
-      2. [Message Signing and Encryption](#message-signing-and-encryption)
-      3. [Key Stores](#key-stores-1)
-      4. [Encrypting Non-JSON Data](#encrypting-non-json-data)
+          1. [Overview](#overview-2)
+          2. [Message Signing and Encryption](#message-signing-and-encryption)
+          3. [Key Stores](#key-stores-1)
+          4. [Encrypting Non-JSON Data](#encrypting-non-json-data)
    11. [Filtering](#filtering)
    12. [Pagination](#pagination)
    13. [Archiving](#archiving)
@@ -86,7 +86,7 @@
       5. [Failed Authorisation Consent](#failed-authorisation-consent)
       6. [JSON Error Response](#json-error-response)
 
-## Overview
+## Overview 
 
 The Read/Write Data API Profile provides a description of the elements that are common across all the Read/Write Data APIs.
 
