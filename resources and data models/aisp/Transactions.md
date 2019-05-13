@@ -3,6 +3,7 @@
 ## Endpoints
 
 Endpoints for the resource - and available methods.
+
 |  |Resource |HTTP Operation |Endpoint |Mandatory? |Scope |Grant Type |Idempotency Key |Parameters |Request Object |Response Object |
 | --- |--- |--- |--- |--- |--- |--- |--- |--- |--- |--- |
 | 1 |transactions |GET |GET /accounts/{AccountId}/transactions |Mandatory |accounts |Authorization Code |No |Pagination Filtering | |OBReadTransaction5 |
@@ -47,6 +48,7 @@ Notes:
 ### Filtering
 
 Limited support for filtering is provided on the  **transactions**  resource.
+
 | Name |Occurrence |Enhanced Definition |Class |
 | --- |--- |--- |--- |
 | fromBookingDateTime |0..1 |Specifies start date and time for filtering of the Transaction records on the Transaction/BookingDateTime field |ISODateTime |
