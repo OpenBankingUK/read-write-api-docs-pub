@@ -11,7 +11,7 @@
    1. [Mapping](#mapping-2)
    2. [Notes](#notes-2)
 
-## ISO 20022
+## ISO 20022 
 
 The Initiation section of the Payment API payloads is based on the ISO 20022 pain.001 XML standard and we have used ISO 20022 message elements or components where possible. However, has been adapted for APIs based as per our design principles. 
 
