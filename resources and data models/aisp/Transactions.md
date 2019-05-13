@@ -1,69 +1,69 @@
-# Transactions 3.1.2
-# Endpoints
+# Transactions v3.1.2
 
- |  |Resource |HTTP Operation |Endpoint |Mandatory? |Scope |Grant Type |Idempotency Key |Parameters |Request Object |Response Object |
+## Endpoints
+
+Endpoints for the resource - and available methods.
+|  |Resource |HTTP Operation |Endpoint |Mandatory? |Scope |Grant Type |Idempotency Key |Parameters |Request Object |Response Object |
 | --- |--- |--- |--- |--- |--- |--- |--- |--- |--- |--- |
 | 1 |transactions |GET |GET /accounts/{AccountId}/transactions |Mandatory |accounts |Authorization Code |No |Pagination Filtering | |OBReadTransaction5 |
 | 2 |transactions |GET |GET /transactions |Optional |accounts |Authorization Code |No |Pagination Filtering | |OBReadTransaction5 |
 
 
-## GET /accounts/{AccountId}/transactions
+### GET /accounts/{AccountId}/transactions
+
 An AISP  **may**  retrieve the transaction resource for a specific AccountId (which is retrieved in the call to GET /accounts).
 
-## GET /transactions
+### GET /transactions
+
 If an ASPSP has implemented the bulk retrieval endpoints, an AISP  **may**  optionally retrieve the transactions in bulk. 
 This will retrieve the resources for all authorised accounts linked to the account-request.
 
-# Data Model
+## Data Model
+
 The OBReadTransaction5 object will be used for the call to:
+* GET /accounts/{AccountId}/transactions
+* GET /transactions
+* GET /accounts/{AccountId}/statements/{StatementId}transactions
 
-- GET /accounts/{AccountId}/transactions
-- GET /transactions
-- GET /accounts/{AccountId}/statements/{StatementId}transactions
+### Resource Definition
 
-## Resource Definition
 A resource that describes a posting to an account that results in an increase or decrease to a balance.
 For a specific date range, an account (AccountId) may have no transactions booked, or may have multiple transactions booked.
 
-## UML Diagram
+### UML Diagram
 
-![UML Diagram$](images/Transactions/OBReadTransaction5.png  "UML Diagram")
+![ OBReadTransaction5.png ]( images/Transactions/OBReadTransaction5.png )
 
 Notes:
-- The use of the term &quot;Transaction&quot; has been made consistently in the Transaction endpoint payload (instead of &quot;Entry&quot; which is the ISO20022 element name).
-- A DateTime element has been used instead of a complex choice element of Date and DateTime. Where time elements do not exist in ASPSP systems, the time portion of the DateTime element will be defaulted to 00:00:00+00:00.
+* The use of the term "Transaction" has been made consistently in the Transaction endpoint payload (instead of "Entry" which is the ISO20022 element name).
+* A DateTime element has been used instead of a complex choice element of Date and DateTime. Where time elements do not exist in ASPSP systems, the time portion of the DateTime element will be defaulted to 00:00:00+00:00.
+* The BookingDateTime has been set to mandatory as all ASPSPs must provide this field for pagination and filtering. The BookingDateTime is the date the transaction is booked (or posted) and becomes immutable, which is not the date the transaction took place.
+* Either the BankTransactionCode (which is the ISO transaction code list), **or** ProprietaryBankTransactionCode, **or** **both** may be populated. While the expectation is that at least one of BankTransactionCode. or ProprietaryBankTransactionCode are populated, we have decided not to enforce this behaviour in the payload structure as this would require nesting elements and introducing complex choice elements.
+* The BankTransactionCode (ISO) code-list is documented on the ISO20022 website: https://www.iso20022.org/external_code_list.page; and External Code Sets spreadsheet. 
+    * The ISO 20022 BankTransactionCode Code and SubCode are specified as 4 letter codes. However, the principle we have applied for the code lists is to have longer more descriptive codes. 
+    * The BankTransactionCode Code and SubCode will be populated with the long form description of the ISO 20022 code, with delimiters removed. E.g., the Family Code "CNTR" has a description of "Counter Transactions" which is populated as "CounterTransactions"
+* ASPSPs must have the ability to provide transactions through APIs for a period that at least equals the period provided through their online channels.
 
-- The BookingDateTime has been set to mandatory as all ASPSPs must provide this field for pagination and filtering. The BookingDateTime is the date the transaction is booked (or posted) and becomes immutable, which is not the date the transaction took place.
+### Filtering
 
-
-- Either the BankTransactionCode (which is the ISO transaction code list),  **or**  ProprietaryBankTransactionCode,  **or**   **both**  may be populated. While the expectation is that at least one of BankTransactionCode. or ProprietaryBankTransactionCode are populated, we have decided not to enforce this behaviour in the payload structure as this would require nesting elements and introducing complex choice elements.
-
-
-- The BankTransactionCode (ISO) code-list is documented on the ISO20022 website: <a href="https://www.iso20022.org/external_code_list.page">https://www.iso20022.org/external_code_list.page</a>; and <a href="https://www.iso20022.org/sites/default/files/documents/External_code_lists/ExternalCodeSets_4Q2016_February2017_v1.xls">External Code Sets spreadsheet</a>.
-
-    - The ISO 20022 BankTransactionCode Code and SubCode are specified as 4 letter codes. However, the principle we have applied for the code lists is to have longer more descriptive codes.
-    - The BankTransactionCode Code and SubCode will be populated with the long form description of the ISO 20022 code, with delimiters removed. E.g., the Family Code "CNTR" has a description of &quot;Counter Transactions&quot; which is populated as &quot;CounterTransactions&quot;
-
-
-- ASPSPs must have the ability to provide transactions through APIs for a period that at least equals the period provided through their online channels.
-
-## Filtering
 Limited support for filtering is provided on the  **transactions**  resource.
-
- | Name |Occurrence |Enhanced Definition |Class |
+| Name |Occurrence |Enhanced Definition |Class |
 | --- |--- |--- |--- |
-| **fromBookingDateTime** |0..1 |Specifies start date and time for filtering of the Transaction records on the Transaction/BookingDateTime field |ISODateTime |
-| **toBookingDateTime** |0..1 |Specifies end date and time for filtering of the Transaction records on the Transaction/BookingDateTime field. |ISODateTime |
+| fromBookingDateTime |0..1 |Specifies start date and time for filtering of the Transaction records on the Transaction/BookingDateTime field |ISODateTime |
+| toBookingDateTime |0..1 |Specifies end date and time for filtering of the Transaction records on the Transaction/BookingDateTime field. |ISODateTime |
+
 
 The ASPSP must treat the following as valid input:
-- Non-working days (e.g. a Sunday or a Bank holiday) or any other days on which no transactions are recorded.
-- Dates that fall outside the range for which transaction information is provided through APIs.
-- Dates that fall outside the range for which a consent authorisation is available.
-- Timezone may be included in the filter request, but must be ignored by the ASPSP.
+* Non-working days (e.g. a Sunday or a Bank holiday) or any other days on which no transactions are recorded.
+* Dates that fall outside the range for which transaction information is provided through APIs.
+* Dates that fall outside the range for which a consent authorisation is available.
+* Timezone may be included in the filter request, but must be ignored by the ASPSP.
 
 In the above situations, the ASPSP must return data for the remaining valid period specified by the filter.
+
 **Filtering Examples**
-```javascript
+
+```
 // All transactions from 1st Jan, 2015
 GET /transactions?fromBookingDateTime=2015-01-01T00:00:00
 
@@ -74,34 +74,37 @@ GET /transactions?fromBookingDateTime=2016-01-01T00:00:00&amp;toBookingDateTime=
 GET /accounts/1/transactions?toBookingDateTime=2017-03-31T23:59:59
 ```
 
-## Permission Codes
+
+
+### Permission Codes
 
 The resource differs depending on the permissions (ReadTransactionsBasic and ReadTransactionsDetail) used to access resource. In the event the resource is accessed with both ReadTransactionsBasic and ReadTransactionsDetail, the most detailed level (ReadTransactionsDetail) must be used.
-
-- These objects  **must not** be returned  **without**  the  **ReadTransactionsDetail** permission:
-    - OBReadTransaction5/Data/Transaction/TransactionInformation
-    - OBReadTransaction5/Data/Transaction/Balance
-    - OBReadTransaction5/Data/Transaction/MerchantDetails
-    - OBReadTransaction5/Data/Transaction/CreditorAgent
-    - OBReadTransaction5/Data/Transaction/CreditorAccount
-    - OBReadTransaction5/Data/Transaction/DebtorAgent
-    - OBReadTransaction5/Data/Transaction/DebtorAccount
-- If the  **ReadTransactionsDetail** is granted by the PSU:
-    - OBReadTransaction5/Data/Transaction/TransactionInformation  **may**  be returned if applicable to the transaction and ASPSP (0..1)
-    - OBReadTransaction5/Data/Transaction/Balance  **may**  be returned if applicable to the transaction and ASPSP (0..1)
-    - OBReadTransaction5/Data/Transaction/MerchantDetails  **may**  be returned if applicable to the transaction and ASPSP (0..1)
-    - OBReadTransaction5/Data/Transaction/CreditorAgent  **may**  be returned if applicable to the transaction and ASPSP (0..1)
-    - OBReadTransaction5/Data/Transaction/CreditorAccount  **may**  be returned if applicable to the transaction and ASPSP (0..1)
-    - OBReadTransaction5/Data/Transaction/DebtorAgent  **may**  be returned if applicable to the transaction and ASPSP (0..1)
-    - OBReadTransaction5/Data/Transaction/DebtorAccount  **may**  be returned if applicable to the transaction and ASPSP (0..1)
+* These objects **must not** be returned **without** the **ReadTransactionsDetail** permission: 
+    * OBReadTransaction5/Data/Transaction/TransactionInformation 
+    * OBReadTransaction5/Data/Transaction/Balance 
+    * OBReadTransaction5/Data/Transaction/MerchantDetails 
+    * OBReadTransaction5/Data/Transaction/CreditorAgent 
+    * OBReadTransaction5/Data/Transaction/CreditorAccount 
+    * OBReadTransaction5/Data/Transaction/DebtorAgent 
+    * OBReadTransaction5/Data/Transaction/DebtorAccount
+* If the **ReadTransactionsDetail** **** is granted by the PSU: 
+    * OBReadTransaction5/Data/Transaction/TransactionInformation **may** be returned if applicable to the transaction and ASPSP (0..1) 
+    * OBReadTransaction5/Data/Transaction/Balance **may** be returned if applicable to the transaction and ASPSP (0..1) 
+    * OBReadTransaction5/Data/Transaction/MerchantDetails **may** be returned if applicable to the transaction and ASPSP (0..1) 
+    * OBReadTransaction5/Data/Transaction/CreditorAgent **may** be returned if applicable to the transaction and ASPSP (0..1) 
+    * OBReadTransaction5/Data/Transaction/CreditorAccount **may** be returned if applicable to the transaction and ASPSP (0..1) 
+    * OBReadTransaction5/Data/Transaction/DebtorAgent **may** be returned if applicable to the transaction and ASPSP (0..1) 
+    * OBReadTransaction5/Data/Transaction/DebtorAccount **may** be returned if applicable to the transaction and ASPSP (0..1)
 
 If the ReadPAN permission is granted by the PSU - the ASPSP may choose to populate the unmasked PAN - if the PAN is being populated in the response for these fields:
-- OBReadTransaction5/Data/Transaction/CreditorAccount/Identification
-- OBReadTransaction5/Data/Transaction/DebtorAccount/Identification
-- OBReadTransaction5/Data/Transaction/CardInstrument/Identification
 
-## Data Dictionary
- | Name |Occurrence |XPath |EnhancedDefinition |Class |Codes |Pattern |
+* OBReadTransaction5/Data/Transaction/CreditorAccount/Identification
+* OBReadTransaction5/Data/Transaction/DebtorAccount/Identification
+* OBReadTransaction5/Data/Transaction/CardInstrument/Identification
+
+### Data Dictionary
+
+| Name |Occurrence |XPath |EnhancedDefinition |Class |Codes |Pattern |
 | --- |--- |--- |--- |--- |--- |--- |
 | OBReadTransaction5 | |OBReadTransaction5 | |OBReadTransaction5 | | |
 | Data |1..1 |OBReadTransaction5/Data | |OBReadDataTransaction5 | | |
@@ -195,12 +198,13 @@ If the ReadPAN permission is granted by the PSU - the ASPSP may choose to popula
 | SupplementaryData |0..1 |OBReadTransaction5/Data/Transaction/SupplementaryData |Additional information that can not be captured in the structured fields and/or any other specific block. |OBSupplementaryData1 | | |
 
 
-# Usage Examples
+## Usage Examples
 
-## Specific Account
- **Request** 
+### Specific Account
 
-```javascript
+ **Request** **Get  Account Transactions Request**
+
+```
 GET /accounts/22289/transactions HTTP/1.1
 Authorization: Bearer Az90SAOJklae
 x-fapi-auth-date:  Sun, 10 Sep 2017 19:43:31 GMT
@@ -208,12 +212,15 @@ x-fapi-customer-ip-address: 104.25.212.99
 x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Accept: application/json
 ```
-**Response** 
-```javascript
+
+ **Response** **Get Account Transactions Response**
+
+```
 HTTP/1.1 200 OK
 x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Content-Type: application/json
-
+```
+```json
 {
   "Data": {
     "Transaction": [
@@ -260,10 +267,13 @@ Content-Type: application/json
 }
 ```
 
-## Bulk
+### Bulk
+
 None of the transactions included in the payload are Ecommerce transactions, so MerchantDetails are not included in the examples.
- **Request** 
-```javascript
+
+ **Request** **Get Transactions Request**
+
+```
 GET /transactions HTTP/1.1
 Authorization: Bearer Az90SAOJklae
 x-fapi-auth-date:  Sun, 10 Sep 2017 19:43:31 GMT
@@ -271,12 +281,15 @@ x-fapi-customer-ip-address: 104.25.212.99
 x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Accept: application/json
 ```
- **Response** 
-```javascript
-HTTP/1.1 200 OK
+
+ **Response** **Get Transactions Response**
+
+```
+HTTP/1.1 200 OK 
 x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Content-Type: application/json
-
+```
+```json
 {
   "Data": {
     "Transaction": [
@@ -353,10 +366,14 @@ Content-Type: application/json
   }
 }
 ```
-## No Access
+
+### No Access
+
 In this example, the AISP  **does not**  have access to call the transactions endpoint. This will result in a 403 error.
- **Request** 
-```javascript
+
+ **Request** **GET Account Transactions Request**
+
+```
 GET /accounts/22289/transactions HTTP/1.1
 Authorization: Bearer Az90SAOJklae
 x-fapi-auth-date:  Sun, 10 Sep 2017 19:43:31 GMT
@@ -364,11 +381,10 @@ x-fapi-customer-ip-address: 104.25.212.99
 x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Accept: application/json
 ```
- **Response** 
-```javascript
-HTTP/1.1 403 Forbidden
+
+ **Response** **GET Account Transactions Response**
+
+```
+HTTP/1.1 403 Forbidden 
 x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 ```
-
-
-
