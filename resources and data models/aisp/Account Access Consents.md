@@ -17,11 +17,13 @@ The API allows the AISP to ask an ASPSP to create a new account-access-consent *
 #### Account Access Consent Status
 The PSU  **must**  authenticate with the ASPSP and authorise the account-access-consent for the account-access-consent to be successfully setup.
 The account-access-consent resource that is created successfully must have the following Status code-list enumeration:
+
 |  |Status |Status Description |
 | --- |--- |--- |
 | 1 |AwaitingAuthorisation |The account access consent is awaiting authorisation. |
 
 After authorisation has taken place the account-access-consent resource may have these following statuses.
+
 |  |Status |Status Description |
 | --- |--- |--- |
 | 1 |Rejected |The account access consent has been rejected. |
@@ -31,7 +33,7 @@ After authorisation has taken place the account-access-consent resource may have
 #### Status Flow
 This is the state diagram for the Status.
 
-![ Consent Authorisation.jpg ]( images/AccountAccessConsents/Consent Authorisation.jpg )
+![ Consent Authorisation.jpg ]( images/AccountAccessConsents/ConsentAuthorisation.jpg )
 
 ### GET /account-access-consents/{ConsentId}
 An AISP may optionally retrieve an account-access-consent resource that they have created to check its status. 
@@ -404,4 +406,3 @@ Content-Type: application/json
   }
 }
 ```
-
