@@ -8,7 +8,7 @@
 
 
 ### POST /account-access-consents 
-The API allows the AISP to ask an ASPSP to create a new account-access-consent **** resource.
+The API allows the AISP to ask an ASPSP to create a new account-access-consent resource.
 * This API effectively allows the AISP to send a copy of the consent to the ASPSP to authorise access to account and transaction information.
 * An AISP is not able to pre-select a set of accounts for account-access-consent authorisation. This is because the behaviour of the pre-selected accounts, after authorisation, is not clear from a Legal perspective.
 * An ASPSP creates the account-access-consent resource and responds with a unique ConsentId to refer to the resource.
