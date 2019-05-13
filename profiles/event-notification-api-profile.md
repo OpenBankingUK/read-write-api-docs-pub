@@ -14,12 +14,10 @@
 3. [Data Model](#data-model)
    1. [Reused Classes](#reused-classes)
       1. [OBEventNotification2](#obeventnotification2)
-      2. [UML Diagram](#uml-diagram)
-      3. [Data Dictionary](#data-dictionary)
-      4. [OBEventSubject1](#obeventsubject1)
-      5. [OBEventResourceUpdate2](#obeventresourceupdate2)
-      6. [OBEventConsentAuthorizationRevoked1](#obeventconsentauthorizationrevoked1)
-      7. [OBEventAccountAccessConsentLinkedAccountUpdate1](#obeventaccountaccessconsentlinkedaccountupdate1)
+      2. [OBEventSubject1](#obeventsubject1)
+      3. [OBEventResourceUpdate2](#obeventresourceupdate2)
+      4. [OBEventConsentAuthorizationRevoked1](#obeventconsentauthorizationrevoked1)
+      5. [OBEventAccountAccessConsentLinkedAccountUpdate1](#obeventaccountaccessconsentlinkedaccountupdate1)
 
 ## Overview
 
@@ -221,7 +219,7 @@ This section describes the OBEventNotification2 class which is used in the Real 
 
 Note, the OBEventNotification2 object is aligned with the Security Event Token (https://tools.ietf.org/html/rfc8417). It acts as a wrapper for events contained within the events claim.
 
-#### UML Diagram
+##### UML Diagram
 
 ![OBEventNotification2](./images/OBEventNotification2.gif)
 
@@ -229,7 +227,7 @@ Note, the OBEventNotification2 object is aligned with the Security Event Token (
 
 - The `rid`, `rty` and `rlk` claims are prefixed with the OB namespace `http://openbanking.org.uk` in the data model. The namespace has been removed from the diagram for clarity.
 
-#### Data Dictionary
+##### Data Dictionary
 
 | Name |Occurrence |XPath |EnhancedDefinition |Class |Codes |Pattern |
 | --- |--- |--- |--- |--- |--- |--- |
