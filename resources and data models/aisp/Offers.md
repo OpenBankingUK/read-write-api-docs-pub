@@ -1,42 +1,53 @@
 # Offers v3.1.2
+
+
 ## Endpoints
+
 Endpoints for the resource and available methods.
 
- |  |Resource |HTTP Operation |Endpoint |Mandatory? |Scope |Grant Type |Idempotency Key |Parameters |Request Object |Response Object |
+|  |Resource |HTTP Operation |Endpoint |Mandatory? |Scope |Grant Type |Idempotency Key |Parameters |Request Object |Response Object |
 | --- |--- |--- |--- |--- |--- |--- |--- |--- |--- |--- |
 | 1 |offers |GET |GET /accounts/{AccountId}/offers |Conditional |accounts |Authorization Code |No | | |OBReadOffer1 |
 | 2 |offers |GET |GET /offers |Optional |accounts |Authorization Code |No |Pagination | |OBReadOffer1 |
 
+
 ### GET /accounts/{AccountId}/offers
+
 An AISP  **may**  retrieve the offers resource for a specific AccountId (which is retrieved in the call to GET /accounts).
+
 ### GET /offers
+
 If an ASPSP has implemented the bulk retrieval endpoints, an AISP  **may**  optionally retrieve the offers in bulk. 
 This will retrieve the resources for all authorised accounts linked to the account-request.
 
 ## Data Model
+
 The OBReadOffer1 object will be used for the call to: 
-- GET /accounts/{AccountId}/offers
-- GET /offers
+* GET /accounts/{AccountId}/offers
+* GET /offers
 
 ### Resource Definition
+
 A resource that contains a set of elements that describes the list of offers available to a specific account (AccountId).
-- Generic features (and pricing) for the account product will be not be available via the  **offers**  resources. These generic features will be available via the  **product ** resource.
-- The outcome of any offer (or product feature) uptake will not be reported via the  **offers**  resource. The benefits, interest, cash-back for any account will be available via the  **statements**  resource (if this is available to PSUs in the existing ASPSP online channel).
+* Generic features (and pricing) for the account product will be not be available via the **offers** resources. These generic features will be available via the **product** resource.
+* The outcome of any offer (or product feature) uptake will not be reported via the **offers** resource. The benefits, interest, cash-back for any account will be available via the **statements** resource (if this is available to PSUs in the existing ASPSP online channel).
 
 An account (AccountId) may have no offers available, or may have multiple offers available.
 
 ### UML Diagram
-![UML Diagram$](images/Offers/OBReadOffer1.gif  "UML Diagram")
 
-**Notes:**
+![ OBReadOffer1.gif ]( images/Offers/OBReadOffer1.gif )
 
-- Offers (or promotions) for a specific AccountId, which may be viewable in the ASPSP online banking interface, may have a complicated offer structure (which cannot be expressed using a flat Amount, Fee, Rate, or Value structure). In this case, the ASPSP must use the Description field to describe the nature of the offer in free-text
+Notes:
+* Offers (or promotions) for a specific AccountId, which may be viewable in the ASPSP online banking interface, may have a complicated offer structure (which cannot be expressed using a flat Amount, Fee, Rate, or Value structure). In this case, the ASPSP must use the Description field to describe the nature of the offer in free-text
 
 ### Permission Codes
+
 The resource requires the ReadOffers permission. The resource response payload does not differ depending on the permissions granted.
 
 ### Data Dictionary
- | Name |Occurrence |XPath |EnhancedDefinition |Class |Codes |Pattern |
+
+| Name |Occurrence |XPath |EnhancedDefinition |Class |Codes |Pattern |
 | --- |--- |--- |--- |--- |--- |--- |
 | OBReadOffer1 | |OBReadOffer1 | |OBReadOffer1 | | |
 | Data |1..1 |OBReadOffer1/Data | |OBReadDataOffer1 | | |
@@ -58,9 +69,12 @@ The resource requires the ReadOffers permission. The resource response payload d
 | Amount |1..1 |OBReadOffer1/Data/Offer/Fee/Amount |A number of monetary units specified in an active currency where the unit of currency is explicit and compliant with ISO 4217. |OBActiveCurrencyAndAmount_SimpleType | |^\d{1,13}\.\d{1,5}$ |
 | Currency |1..1 |OBReadOffer1/Data/Offer/Fee/Currency |A code allocated to a currency by a Maintenance Agency under an international identification scheme, as described in the latest edition of the international standard ISO 4217 "Codes for the representation of currencies and funds". |ActiveOrHistoricCurrencyCode | |^[A-Z]{3,3}$ |
 
+
 ## Usage Examples
+
 ### Specific Account
- **Request** 
+ **Request** **Get Offers Request**
+
 ```
 GET /accounts/22289/offers HTTP/1.1
 Authorization: Bearer Az90SAOJklae
@@ -70,7 +84,8 @@ x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Accept: application/json
 ```
 
-**Response** 
+ **Response** **Get Offers Response**
+
 ```
 HTTP/1.1 200 OK
 x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
@@ -84,7 +99,7 @@ Content-Type: application/json
         "AccountId": "22289",
         "OfferId": "Offer1",
         "OfferType": "LimitIncrease",
-        "Description": "Credit limit increase for the account up to Â£10000.00",
+        "Description": "Credit limit increase for the account up to �10000.00",
         "Amount": {
           "Amount": "10000.00",
           "Currency": "GBP"
@@ -94,12 +109,12 @@ Content-Type: application/json
         "AccountId": "22289",
         "OfferId": "Offer2",
         "OfferType": "BalanceTransfer",
-        "Description": "Balance transfer offer up to Â£2000",
+        "Description": "Balance transfer offer up to �2000",
         "Amount": {
           "Amount": "2000.00",
           "Currency": "GBP"
         }
-      }
+      }      
     ]
   },
   "Links": {
@@ -110,9 +125,12 @@ Content-Type: application/json
   }
 }
 ```
+
 ### Bulk
- **Request** 
-```JavaScript
+
+ **Request** **Get Offers Request**
+
+```
 GET /offers HTTP/1.1
 Authorization: Bearer Az90SAOJklae
 x-fapi-auth-date:  Sun, 10 Sep 2017 19:43:31 GMT
@@ -120,12 +138,15 @@ x-fapi-customer-ip-address: 104.25.212.99
 x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Accept: application/json
 ```
- **Response** 
-```JavaScript 
+
+ **Response** **Get Offers Response**
+
+```
 HTTP/1.1 200 OK
 x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Content-Type: application/json
-
+```
+```json
 {
   "Data": {
     "Offer": [
@@ -133,7 +154,7 @@ Content-Type: application/json
         "AccountId": "22289",
         "OfferId": "Offer1",
         "OfferType": "LimitIncrease",
-        "Description": "Credit limit increase for the account up to Â£10000.00",
+        "Description": "Credit limit increase for the account up to �10000.00",
         "Amount": {
           "Amount": "10000.00",
           "Currency": "GBP"
@@ -143,7 +164,7 @@ Content-Type: application/json
         "AccountId": "22289",
         "OfferId": "Offer2",
         "OfferType": "BalanceTransfer",
-        "Description": "Balance transfer offer up to Â£2000",
+        "Description": "Balance transfer offer up to �2000",
         "Amount": {
           "Amount": "2000.00",
           "Currency": "GBP"
@@ -153,12 +174,12 @@ Content-Type: application/json
         "AccountId": "32515",
         "OfferId": "Offer3",
         "OfferType": "LimitIncrease",
-        "Description": "Credit limit increase for the account up to Â£50000.00",
+        "Description": "Credit limit increase for the account up to �50000.00",
         "Amount": {
           "Amount": "50000.00",
           "Currency": "GBP"
         }
-      }
+      }   
     ]
   },
   "Links": {
@@ -169,6 +190,3 @@ Content-Type: application/json
   }
 }
 ```
-
-
-
