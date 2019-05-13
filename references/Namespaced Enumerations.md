@@ -1,4 +1,38 @@
-# Overview
+# Namespaced Enumerations <!-- omit in toc -->
+
+1. [Overview](#overview)
+2. [Basics](#basics)
+   1. [Design Principles](#design-principles)
+   2. [Release Management](#release-management)
+3. [Common Namespaced Enumerations](#common-namespaced-enumerations)
+   1. [OBExternalAccountIdentification4Code](#obexternalaccountidentification4code)
+   2. [OBExternalFinancialInstitutionIdentification4Code](#obexternalfinancialinstitutionidentification4code)
+   3. [OBErrorResponseError1Code](#oberrorresponseerror1code)
+4. [Account and Transaction API Namespaced Enumerations](#account-and-transaction-api-namespaced-enumerations)
+   1. [OBExternalStatementAmountType1Code](#obexternalstatementamounttype1code)
+   2. [OBExternalStatementBenefitType1Code](#obexternalstatementbenefittype1code)
+   3. [OBExternalStatementDateTimeType1Code](#obexternalstatementdatetimetype1code)
+   4. [OBExternalStatementFeeType1Code](#obexternalstatementfeetype1code)
+   5. [OBExternalStatementInterestType1Code](#obexternalstatementinteresttype1code)
+   6. [OBExternalStatementRateType1Code](#obexternalstatementratetype1code)
+   7. [OBExternalStatementValueType1Code](#obexternalstatementvaluetype1code)
+   8. [OBExternalStatementFeeRateType1Code](#obexternalstatementfeeratetype1code)
+   9. [OBExternalStatementFeeFrequency1Code](#obexternalstatementfeefrequency1code)
+   10. [OBExternalStatementInterestRateType1Code](#obexternalstatementinterestratetype1code)
+   11. [OBExternalStatementInterestFrequency1Code](#obexternalstatementinterestfrequency1code)
+   12. [OBExternalLegalStructureType1Code](#obexternallegalstructuretype1code)
+   13. [OBExternalAccountRole1Code](#obexternalaccountrole1code)
+5. [Payment Initiation API Namespaced Enumerations](#payment-initiation-api-namespaced-enumerations)
+   1. [OBExternalLocalInstrument1Code](#obexternallocalinstrument1code)
+   2. [OBExternalPaymentChargeType1Code](#obexternalpaymentchargetype1code)
+   3. [OBExternalFileType1Code](#obexternalfiletype1code)
+6. [Confirmation of Funds API Namespaced Enumerations](#confirmation-of-funds-api-namespaced-enumerations)
+7. [Event Notification API Namespaced Enumerations](#event-notification-api-namespaced-enumerations)
+   1. [OBEventType1Code](#obeventtype1code)
+   2. [OBExternalEventConsentAuthorizationRevokedReason1Code](#obexternaleventconsentauthorizationrevokedreason1code)
+   3. [OBExternalEventAccountAccessConsentLinkedAccountUpdateReason1Code](#obexternaleventaccountaccessconsentlinkedaccountupdatereason1code)
+
+## Overview
 
 The specification defines certain fields with only a fixed set of possible values as enumerations, and further additions to possible values require a Specification change.
 
@@ -6,7 +40,7 @@ As part of Version 3 OBIE Specifications defined new custom Data Types, which ar
 
 The extendable Data Type values are namespaced, to help identify the issuer of the value, and the relevant value.
 
-# Basics
+## Basics
 
 These Data Types, in general, are called namespaced enumerations.
 
@@ -14,7 +48,7 @@ Specific API Data Dictionary will define a custom Data Type class, which will he
 
 The namespaced enumeration values specified by Open Banking are documented here and will be prefixed by `UK.OBIE.`
 
-## Design Principles
+### Design Principles
 
 When extending a namespaced enumeration:
 * ASPSPs **must not** publish an ASPSP-specific enumerated value where a generic OBIE defined enumerated value may be used.
@@ -22,7 +56,7 @@ When extending a namespaced enumeration:
   *  UK.Barclays.PingIt
   *  KE.Safaricom.M-Pesa
 
-## Release Management
+### Release Management
 
 Usage of non-namespaced values may be discontinued in a future version of this standard. 
 
@@ -30,11 +64,11 @@ As a special case and in order to minimise disruption between versions of the st
 
 In ASPSP generated responses, however, an ASPSP **must** always respond with fully namespaced values.
 
-# Common Namespaced Enumerations
+## Common Namespaced Enumerations
 
 The following namespaced enumerations are used across all the standards.
 
-##### **OBExternalAccountIdentification4Code** 
+### OBExternalAccountIdentification4Code
 
 This is Data Type for Account/SchemeName and used to identify the type of Identification used to identify an account.
 
@@ -47,15 +81,16 @@ This is Data Type for Account/SchemeName and used to identify the type of Identi
 | UK.OBIE.SortCodeAccountNumber |Sort Code and Account Number - identifier scheme used in the UK by financial institutions to identify the account of a customer. The identifier is the concatenation of the 6 digit UK sort code and 8 digit account number. The regular expression for this identifier is: ^[0-9]{6}[0-9]{8}$ |
 
 
-##### OBExternalFinancialInstitutionIdentification4Code
+### OBExternalFinancialInstitutionIdentification4Code
 
 This is the Data Type for Agent/SchemeName and used to identify the type of Identification used to identify an agent. 
+
 | Code |Description |
 | --- |--- |
 | UK.OBIE.BICFI |Valid BICs for financial institutions are registered by the ISO 9362 Registration Authority in the BIC directory, and consist of eight (8) or eleven (11) contiguous characters. |
 
 
-##### OBErrorResponseError1Code
+### OBErrorResponseError1Code
 
 This is Data Type gives a low level textual error code to help categorise an error response. The applicable HTTP response code is also given.
 
@@ -91,14 +126,12 @@ This is Data Type gives a low level textual error code to help categorise an err
 | UK.OBIE.Unsupported.Scheme |400 |Identification scheme is not supported. The path element should be populated with the path of the scheme. The URL should be populated with a link to ASPSP documentation listing out the supported schemes. |
 | UK.OBIE.Reauthenticate |403 |The ASPSP must use this error code in Error Response to indicate that re-authentication by the PSU is required to process the request. |
 | UK.OBIE.UnexpectedError |5xx |An error code that can be used, when an unexpected error occurs. The ASPSP must populate the message with a meaningful error description, without revealing sensitive information. |
+
 </details>
 
-<br>
-<br>
+## Account and Transaction API Namespaced Enumerations 
 
-# Account and Transaction API Namespaced Enumerations 
-
-##### OBExternalStatementAmountType1Code
+### OBExternalStatementAmountType1Code
 
 <details><summary>Show</summary>
 
@@ -128,9 +161,11 @@ This is Data Type gives a low level textual error code to help categorise an err
 | UK.OBIE.TotalCredits |Total amount credited in the account during the statement period. |
 | UK.OBIE.TotalDebits |Total amount debited (money taken out from account) from the account during the statement period. |
 | UK.OBIE.TotalPurchases |The total transactions made during that statement period. |
+
 </details>
 
-##### OBExternalStatementBenefitType1Code
+### OBExternalStatementBenefitType1Code
+
 <details><summary>Show</summary>
 
 | Code |Description |
@@ -139,9 +174,10 @@ This is Data Type gives a low level textual error code to help categorise an err
 | UK.OBIE.Insurance |Insurance amount during the statement period. |
 | UK.OBIE.TravelDiscount |Travel discount amount received during the statement period. |
 | UK.OBIE.TravelInsurance |Travel insurance amount during the statement period. |
+
 </details>
 
-##### OBExternalStatementDateTimeType1Code
+### OBExternalStatementDateTimeType1Code
 
 <details><summary>Show</summary>
 
@@ -155,9 +191,10 @@ This is Data Type gives a low level textual error code to help categorise an err
 | UK.OBIE.PaymentDue |The date that an account holder must make the payment for the current statement period. |
 | UK.OBIE.PurchasePromoEnd |The date the purchase promo rate will end. |
 | UK.OBIE.StatementAvailable |The date on which the current statement was made available to account holder. |
+
 </details>
 
-##### OBExternalStatementFeeType1Code
+### OBExternalStatementFeeType1Code
 
 <details><summary>Show</summary>
 
@@ -178,9 +215,10 @@ This is Data Type gives a low level textual error code to help categorise an err
 | UK.OBIE.PrizeEntry |Prize entry fees charged during the statement period. |
 | UK.OBIE.StatementCopy |Statement copy fees charged during the statement period. |
 | UK.OBIE.Total |Total fees charges during the statement period. |
+
 </details>
 
-##### OBExternalStatementInterestType1Code
+### OBExternalStatementInterestType1Code
 
 <details><summary>Show</summary>
 
@@ -191,9 +229,10 @@ This is Data Type gives a low level textual error code to help categorise an err
 | UK.OBIE.EstimatedNext |The estimated interest that will be charged if the closing balance is not paid in full. |
 | UK.OBIE.Purchase |Interest on purchases. |
 | UK.OBIE.Total |Total interest charges during the statement period. |
+
 </details>
 
-##### OBExternalStatementRateType1Code
+### OBExternalStatementRateType1Code
 
 <details><summary>Show</summary>
 
@@ -209,9 +248,10 @@ This is Data Type gives a low level textual error code to help categorise an err
 | UK.OBIE.MonthlyBalanceTransfer |Monthly interest rate charged on balance transfer from other service provider. |
 | UK.OBIE.MonthlyCash |Monthly interest rate charged on cash advance. |
 | UK.OBIE.MonthlyPurchase |Monthly interest rate charged on purchases. |
+
 </details>
 
-##### OBExternalStatementValueType1Code
+### OBExternalStatementValueType1Code
 
 <details><summary>Show</summary>
 
@@ -225,9 +265,10 @@ This is Data Type gives a low level textual error code to help categorise an err
 | UK.OBIE.HotelPointsBalance |Hotel points at the end of the statement period. |
 | UK.OBIE.RetailShoppingPoints |Retail shopping points at the end of the statement period. |
 | UK.OBIE.RetailShoppingPointsBalance |Retail shopping points at the end of the statement period. |
+
 </details>
 
-##### OBExternalStatementFeeRateType1Code
+### OBExternalStatementFeeRateType1Code
 
 <details><summary>Show</summary>
 
@@ -235,9 +276,10 @@ This is Data Type gives a low level textual error code to help categorise an err
 | --- |--- |
 | UK.OBIE.AER |The annual equivalent rate (AER) is interest that is calculated under the assumption that any interest paid is combined with the original balance and the next interest payment will be based on the slightly higher account balance. Overall, this means that interest can be compounded several times in a year depending on the number of times that interest payments are made. |
 | UK.OBIE.EAR |EAR means Effective Annual Rate and/or Equivalent Annual Rate (frequently used interchangeably), being the actual annual interest rate of an Overdraft. |
+
 </details>
 
-##### OBExternalStatementFeeFrequency1Code
+### OBExternalStatementFeeFrequency1Code
 
 <details><summary>Show</summary>
 
@@ -249,9 +291,10 @@ This is Data Type gives a low level textual error code to help categorise an err
 | UK.OBIE.StatementMonthly |This fee is triggered based on a monthly statement period. |
 | UK.OBIE.Quarterly |This fee is triggered at the end of every quarter. |
 | UK.OBIE.Weekly |The fee is triggered weekly. |
+
 </details>
 
-##### OBExternalStatementInterestRateType1Code
+### OBExternalStatementInterestRateType1Code
 
 <details><summary>Show</summary>
 
@@ -262,9 +305,10 @@ This is Data Type gives a low level textual error code to help categorise an err
 | UK.OBIE.Gross |Interest rate shown is before any tax deducted. |
 | UK.OBIE.LoanProviderBaseRate |Loan provider base rate. |
 | UK.OBIE.Net |Interest rate shown is after tax is deducted. |
+
 </details>
 
-##### OBExternalStatementInterestFrequency1Code
+### OBExternalStatementInterestFrequency1Code
 
 <details><summary>Show</summary>
 
@@ -277,9 +321,10 @@ This is Data Type gives a low level textual error code to help categorise an err
 | UK.OBIE.Quarterly |This fee is triggered at the end of every quarter. |
 | UK.OBIE.Weekly |The fee is triggered weekly. |
 | UK.OBIE.Yearly |Calculated and/or applied annually. |
+
 </details>
 
-##### OBExternalLegalStructureType1Code
+### OBExternalLegalStructureType1Code
 
 <details><summary>Show</summary>
 
@@ -297,9 +342,10 @@ This is Data Type gives a low level textual error code to help categorise an err
 | UK.OBIE.PrivateLimitedCompany |Private Limited Company |
 | UK.OBIE.PublicLimitedCompany |Public Limited Company |
 | UK.OBIE.Sole |Sole (sole trader) |
+
 </details>
 
-##### OBExternalAccountRole1Code
+### OBExternalAccountRole1Code
 
 <details><summary>Show</summary>
 
@@ -319,15 +365,17 @@ This is Data Type gives a low level textual error code to help categorise an err
 | UK.OBIE.SeniorManagingOfficial |Senior managing official |
 | UK.OBIE.Protector |Protector |
 | UK.OBIE.RegisteredShareholderName |Registered shareholder name |
+
 </details>
 
-# Payment Initiation API Namespaced Enumerations
+## Payment Initiation API Namespaced Enumerations
 
-##### OBExternalLocalInstrument1Code
+### OBExternalLocalInstrument1Code
 
 <details><summary>Show</summary>
 
 This field is used to indicate the ASPSP's payment service to be used for making a payment.
+
 | Code |Description |
 | --- |--- |
 | UK.OBIE.BACS |Back Payment Scheme |
@@ -342,68 +390,79 @@ This field is used to indicate the ASPSP's payment service to be used for making
 | UK.OBIE.SEPAInstantCreditTransfer |To indicate SEPA Instant Credit Transfer payment service |
 | UK.OBIE.Link |To indicate Link payment service |
 | UK.OBIE.Target2 |To indicate Target2 payment service |
+
 </details>
 
-##### OBExternalPaymentChargeType1Code
-
-This field is used to indicate the type of fee/charge to be applied to the payment-order.
-The enumerated values specified by Open Banking align with the OBIE Open Data Standard.
-This enumeration consists of a subset of the fees and charges identified in the Open Data Standard. The subset is limited to fees and charges associated with payments.
+### OBExternalPaymentChargeType1Code
 
 <details><summary>Show</summary>
+
+This field is used to indicate the type of fee/charge to be applied to the payment-order.
+
+The enumerated values specified by Open Banking align with the OBIE Open Data Standard.
+
+This enumeration consists of a subset of the fees and charges identified in the Open Data Standard. The subset is limited to fees and charges associated with payments.
 
 | Code |Description |
 | --- |--- |
 | UK.OBIE.CHAPSOut |CHAPS Payment Service fee |
 | UK.OBIE.BalanceTransferOut |Balance Transfer Service fee |
 | UK.OBIE.MoneyTransferOut |Money Transfer Service fee |
+
 </details>
 
-##### OBExternalFileType1Code
-This field is used to indicate the file-type that is being submitted as part of a file-payment payload. 
+### OBExternalFileType1Code
 
 <details><summary>Show</summary>
+
+This field is used to indicate the file-type that is being submitted as part of a file-payment payload. 
 
 | Code |Description |
 | --- |--- |
 | UK.OBIE.pain.001.001.08 |This is specified when a fully compliant pain.001 XML file is staged for the payment initiation. |
 | UK.OBIE.PaymentInitiation.4.0 |This is specified when an array of payments, which are compliant with the OBIE Initiation objects in the v4.0 standard, are staged in a .json file for the payment initiation. |
+
 </details>
 
-# Confirmation of Funds API Namespaced Enumerations
+## Confirmation of Funds API Namespaced Enumerations
 
 None
-# Event Notification API Namespaced Enumerations
 
-##### OBEventType1Code
-This field is used to indicate the event types a TPP would like to subscribe to as part of the callback-urls payload.
+## Event Notification API Namespaced Enumerations
+
+### OBEventType1Code
 
 <details><summary>Show</summary>
+
+This field is used to indicate the event types a TPP would like to subscribe to as part of the callback-urls payload.
 
 | Code |Description |
 | --- |--- |
 | UK.OBIE.Resource-Update |An event that indicates a resource has been updated. |
 | UK.OBIE.Consent-Authorization-Revoked |An event that indicates a consent resource has had its authorisation revoked. |
 | UK.OBIE.Acount-Access-Consent-Linked-Account-Update |An event that indicates an account linked to a consent has move in/out of scope of the consent. |
+
 </details>
 
-##### OBExternalEventConsentAuthorizationRevokedReason1Code
+### OBExternalEventConsentAuthorizationRevokedReason1Code
+
+<details><summary>Show</summary>
 
 This field is used to indicate the reason associated with a Consent Authorization Revoked event.
 
-<details><summary>Show</summary>
-
 No UK.OBIE codes have been defined for this event.
+
 </details>
 
-##### OBExternalEventAccountAccessConsentLinkedAccountUpdateReason1Code
-
-This field is used to indicate the reason associated with an Account Access Consent Linked Account Update event.
+### OBExternalEventAccountAccessConsentLinkedAccountUpdateReason1Code
 
 <details><summary>Show</summary>
+
+This field is used to indicate the reason associated with an Account Access Consent Linked Account Update event.
 
 | Code |Description |
 | --- |--- |
 | UK.OBIE.AccountClosure |An account is no longer associated with the consent as it has been closed. |
 | UK.OBIE.CASS |An account is no longer associated with the consent as it has been switched (using the Current Account Switch Service) to another ASPSP. |
+
 </details>
