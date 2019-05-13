@@ -41,7 +41,7 @@
 
 The Event Notification resource is used by a ASPSP to notify a TPP of an event.
 
-This resource description should be read in conjunction with a compatible Real Time Event Notification Profile or Aggregated Polling Profile.
+This resource description should be read in conjunction with a compatible Real Time Event Notification Profile.
 
 ### Profile Compatibility
 
