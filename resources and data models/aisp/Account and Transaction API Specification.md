@@ -1,13 +1,15 @@
-# Account and Transaction API Specification - v3.1.2
+# Account and Transaction API Specification * v3.1.2
 ## Overview
+
 This specification describes the Account Information and Transaction API flows and payloads.
 The API endpoints described here allow an Account Information Service Provider ('AISP') to: 
-- Register an intent to retrieve account information by creating an "account access consent". This registers the data "permissions", expiration and historical period allowed for transactions / statements - that the customer (PSU) has consented to provide to the AISP; and 
-- Subsequently, retrieve account and transaction data.
+* Register an intent to retrieve account information by creating an "account access consent". This registers the data "permissions", expiration and historical period allowed for transactions / statements * that the customer (PSU) has consented to provide to the AISP; and 
+* Subsequently, retrieve account and transaction data.
 
 This specification should be read in conjunction with Read/Write Data API Specification  which provides a description of the elements that are common across all the Read/Write Data APIs.
 
 ### Document Structure
+
 This document consists of the following parts:
  **Overview:**  Provides an overview of the API and the key decisions and principles that contributed to the specification.
  **Basics:**  Identifies the resources, operations that are permitted on those resources, and various special cases.
@@ -18,48 +20,51 @@ This document consists of the following parts:
 
 ## Basics
 ### Overview
+
 The figure below provides a general outline of an account information request and flow using the Account Info APIs.
 
 ![ accountsapiv1.gif ]( images/AccountAndTransaction/accountsapiv1.gif )
 
-####  **Steps** 
+####  Steps
 
 Step 1: Request Account Information
-- This flow begins with a PSU consenting to allow an AISP to access account information data. 
+* This flow begins with a PSU consenting to allow an AISP to access account information data.
+
 Step 2: Setup Account Access Consent
-- The AISP connects to the ASPSP that services the PSU's account(s) and creates an  **account-access-consent**  resource. This informs the ASPSP that one of its PSUs is granting access to account and transaction information to an AISP. The ASPSP responds with an identifier for the resource (the ConsentId - which is the intent identifier). This step is carried out by making a  **POST**  request to / **account-access-consents**  endpoint.
-- The account-access-consent resource will include these fields below - which describe the data that the PSU has consented with the AISP:
-    - Permissions - a list of data clusters that have been consented for access.
-    - Expiration Date - an optional expiration for when the AISP will no longer have access to the PSU's data.
-    - Transaction Validity Period - the From/To date range which specifies a historical period for transactions and statements which may be accessed by the AISP.
-- An AISP may be a broker for data to other parties, and so it is valid for a PSU to have multiple account-access-consents for the same accounts,  **with different consent/authorisation parameters agreed** . 
+* The AISP connects to the ASPSP that services the PSU's account(s) and creates an  **account-access-consent**  resource. This informs the ASPSP that one of its PSUs is granting access to account and transaction information to an AISP. The ASPSP responds with an identifier for the resource (the ConsentId - which is the intent identifier). This step is carried out by making a  **POST**  request to / **account-access-consents**  endpoint.
+* The account-access-consent resource will include these fields below - which describe the data that the PSU has consented with the AISP:
+    * Permissions - a list of data clusters that have been consented for access.
+    * Expiration Date - an optional expiration for when the AISP will no longer have access to the PSU's data.
+    * Transaction Validity Period - the From/To date range which specifies a historical period for transactions and statements which may be accessed by the AISP.
+* An AISP may be a broker for data to other parties, and so it is valid for a PSU to have multiple account-access-consents for the same accounts,  **with different consent/authorisation parameters agreed** . 
 
 Step 3: Authorise Consent
-- The AISP requests the PSU to authorise the consent. The ASPSP may carry this out by using a  _redirection flow_  or a  _decoupled flow_ .
-    - In a redirection flow, the AISP redirects the PSU to the ASPSP.
-        - The redirect includes the ConsentId generated in the previous step.
-        - This allows the ASPSP to correlate the account-access-consent that was setup.
-        - The ASPSP authenticates the PSU.
-        - The ASPSP updates the state of the account-access-consent resource internally to indicate that the account access consent has been authorised.
-        - Once the consent has been authorised, the PSU is redirected back to the AISP.
-    - In a decoupled flow, the ASPSP requests the PSU to authorise consent on an  _authentication device _ that is separate from the  *consumption device*  on which the PSU is interacting with the AISP.
-        - The decoupled flow is initiated by the AISP calling a back-channel authorisation request.
-        - The request contains a 'hint' that identifies the PSU, paired with the consent to be authorised.
-        - The ASPSP authenticates the PSU and updates the state of the account-access-consent resource internally to indicate that the account access consent has been authorised.
-        - Once the consent has been authorised, the ASPSP can make a callback to the AISP to provide an access token.
-- The principle we have agreed is that consent is managed between the PSU and the AISP - so the account-access-consent details must not be changed (with the ASPSP) in this step. The PSU will only be able to authorise or reject the account-access-consent details in its entirety.
-- During authorisation, the PSU selects accounts that are authorised for the AISP request (in the ASPSP's banking interface).
+* The AISP requests the PSU to authorise the consent. The ASPSP may carry this out by using a  *redirection flow  or a  decoupled flow* .
+    * In a redirection flow, the AISP redirects the PSU to the ASPSP.
+        * The redirect includes the ConsentId generated in the previous step.
+        * This allows the ASPSP to correlate the account-access-consent that was setup.
+        * The ASPSP authenticates the PSU.
+        * The ASPSP updates the state of the account-access-consent resource internally to indicate that the account access consent has been authorised.
+        * Once the consent has been authorised, the PSU is redirected back to the AISP.
+    * In a decoupled flow, the ASPSP requests the PSU to authorise consent on an  _authentication device _ that is separate from the  *consumption device*  on which the PSU is interacting with the AISP.
+        * The decoupled flow is initiated by the AISP calling a back-channel authorisation request.
+        * The request contains a 'hint' that identifies the PSU, paired with the consent to be authorised.
+        * The ASPSP authenticates the PSU and updates the state of the account-access-consent resource internally to indicate that the account access consent has been authorised.
+        * Once the consent has been authorised, the ASPSP can make a callback to the AISP to provide an access token.
+* The principle we have agreed is that consent is managed between the PSU and the AISP * so the account-access-consent details must not be changed (with the ASPSP) in this step. The PSU will only be able to authorise or reject the account-access-consent details in its entirety.
+* During authorisation, the PSU selects accounts that are authorised for the AISP request (in the ASPSP's banking interface).
 
 Step 4: Request Data
-- This is carried out by making a  **GET**  request the relevant  **resource** .
-- The unique AccountId(s) that are valid for the account-access-consent will be returned with a call to GET /accounts.  **This will always be the first call once an AISP has a valid access token.** 
+* This is carried out by making a  **GET**  request the relevant  **resource** .
+* The unique AccountId(s) that are valid for the account-access-consent will be returned with a call to GET /accounts.  **This will always be the first call once an AISP has a valid access token.** 
 
-####  **Sequence Diagram** 
+####  Sequence Diagram 
 ![ AccountsOverviewwithCIBA.png ]( images/AccountAndTransaction/AccountsOverviewwithCIBA.png )
 
  
-Account Info - High Level Flow
-```participant PSU
+#### Account Info  High Level Flow
+```
+participant PSU
 participant AISP
 participant ASPSP Authorisation Server
 participant ASPSP Resource Server
@@ -117,8 +122,6 @@ alt Redirection (Using Authorization Code Grant)
         end alt
 end alt
 
-
-   
 note over PSU, ASPSP Resource Server
 Step 4: Request data
 end note
@@ -133,63 +136,74 @@ option footer=bar
 ``` 
 
 ### Idempotency
+
 The API endpoints for creating account-access-consent resources  **are not**  idempotent.
-If a time-out error occurs - then we would expect an AISP to create a new account-access-consent resource - rather than try with the same resource.
+If a time-out error occurs - then we would expect an AISP to create a new account-access-consent resource * rather than try with the same resource.
 
 ### Release Management
+
 This section overviews the release management and versioning strategy for the Account and Transaction API.
 
 #### Account Access Consent
+
 The account-access-consent resource is referred to as an account-request resource in v1 and v2 of this specification. For clarity, it has been generalised to 'Consent' in the detail below.
 
 ##### POST
-- An AISP  **must not**  create a Consent on a newer version, and use it on a previous version
-    - E.g., A ConsentId for an account-access-consent created in v3, must not be used to access v2 endpoints.
 
+* An AISP  **must not**  create a Consent on a newer version, and use it on a previous version
+    * E.g., A ConsentId for an account-access-consent created in v3, must not be used to access v2 endpoints.
 
 ##### GET
-- An AISP  **must not**  access a Consent on an older version, via the Id for a Consent created in a newer version:
-    - E.g., An account-access-consent created in v3 accessed via v2 account-request.
-- An ASPSP **must**  allow a Consent to be accessed in a newer version.
-- An ASPSP  **must**  ensure Permissions set associated with a Consent are unchanged when accessed in a different version:
-    - E.g., An account-request created in v2 will have the same details when accessed via v2 and v3 (as an account-access-consent).
-- An ASPSP  **must**  ensure a Consent's fields are unchanged when accessed in a different version.
-- An ASPSP **may**  allow expired Consents to be accessed in a newer version.
-- An ASPSP  **may**  choose to populate new fields introduced in a resource from previous version sensible defaults (if mandatory) or not populate at all (if not mandatory):
-    - E.g., OBReadResponse1/Data/StatusUpdateDateTime introduced in v2 accessed with v1 AccountRequestId can be populated with Last accessed date time, if not already available in the system of records.
+
+* An AISP  **must not**  access a Consent on an older version, via the Id for a Consent created in a newer version:
+    * E.g., An account-access-consent created in v3 accessed via v2 account-request.
+* An ASPSP **must**  allow a Consent to be accessed in a newer version.
+* An ASPSP  **must**  ensure Permissions set associated with a Consent are unchanged when accessed in a different version:
+    * E.g., An account-request created in v2 will have the same details when accessed via v2 and v3 (as an account-access-consent).
+* An ASPSP  **must**  ensure a Consent's fields are unchanged when accessed in a different version.
+* An ASPSP **may**  allow expired Consents to be accessed in a newer version.
+* An ASPSP  **may**  choose to populate new fields introduced in a resource from previous version sensible defaults (if mandatory) or not populate at all (if not mandatory):
+    * E.g., OBReadResponse1/Data/StatusUpdateDateTime introduced in v2 accessed with v1 AccountRequestId can be populated with Last accessed date time, if not already available in the system of records.
+
 ##### DELETE
-- An AISP  **must not**  delete a Consent on an older version, via an Id for a Consent created in a newer version:
-    - E.g., An account-access-consent is created in v3, and request DELETE on v2.
-- An ASPSP  **must**  support deleting a Consent from a previous version via a newer version:
-    - E.g., An account-request is created in v2, and request DELETE on v3.
+* An AISP  **must not**  delete a Consent on an older version, via an Id for a Consent created in a newer version:
+    * E.g., An account-access-consent is created in v3, and request DELETE on v2.
+* An ASPSP  **must**  support deleting a Consent from a previous version via a newer version:
+    * E.g., An account-request is created in v2, and request DELETE on v3.
+    
 #### Account Information Resources
-##### GET
-- An AISP  **may** use a token that is bound to a Consent in a previous version, to access an endpoint of a newer version.
-- An AISP  **may**  use an Id for a Consent created in a previous version to retrieve Account Information resources in a newer version:
-    - E.g., AccountRequestId from v2 can be used as ConsentId in v3, to GET /accounts.
-- An AISP  **must not**  use an Id for a Consent from a newer version to access Account Information resources in a previous version:<br>
-    - E.g., ConsentId for an account-access-consent created in v3, must not be used to access v2 Account Information endpoints.
-- An AISP  **must not**  use an Id for a Consent from a previous version to access a resource introduced in a newer version (as the Consent will not have Permissions required to access the new resource).
-- An ASPSP  **must**  allow an AISP to use an Id for a Consent from a previous version to access Account Information resource endpoints in a newer version:
-    - E.g., AccountRequestId created in v2 must be allowed to access Account Information resource endpoints in v3.
-- An ASPSP  **must**  reject the request to access a resource, for which a Consent's Permissions set does not permit.
-- An ASPSP  **may**  choose to populate new fields introduced in a resource from previous version sensible defaults (if mandatory) or not populate at all:
-    - E.g., OBReadResponse1/Data/StatusUpdateDateTime introduced in Version2 accessed with V1 AccountRequestId can be populated with Last accessed date time, if not already available in the system of records.
 
+##### GET
+
+* An AISP  **may** use a token that is bound to a Consent in a previous version, to access an endpoint of a newer version.
+* An AISP  **may**  use an Id for a Consent created in a previous version to retrieve Account Information resources in a newer version:
+    * E.g., AccountRequestId from v2 can be used as ConsentId in v3, to GET /accounts.
+* An AISP  **must not**  use an Id for a Consent from a newer version to access Account Information resources in a previous version:<br>
+    * E.g., ConsentId for an account-access-consent created in v3, must not be used to access v2 Account Information endpoints.
+* An AISP  **must not**  use an Id for a Consent from a previous version to access a resource introduced in a newer version (as the Consent will not have Permissions required to access the new resource).
+* An ASPSP  **must**  allow an AISP to use an Id for a Consent from a previous version to access Account Information resource endpoints in a newer version:
+    * E.g., AccountRequestId created in v2 must be allowed to access Account Information resource endpoints in v3.
+* An ASPSP  **must**  reject the request to access a resource, for which a Consent's Permissions set does not permit.
+* An ASPSP  **may**  choose to populate new fields introduced in a resource from previous version sensible defaults (if mandatory) or not populate at all:
+    * E.g., OBReadResponse1/Data/StatusUpdateDateTime introduced in Version2 accessed with V1 AccountRequestId can be populated with Last accessed date time, if not already available in the system of records.
 
 ## Endpoints
+
 This section looks at the list of available API endpoints to access Account Information and Transaction data and optionality (definitions of mandatory, conditional or optional are defined in the Principles section).
 
 Endpoint design considerations:
-- Having resources that are finer grained (e.g., beneficiaries, direct-debits, standing-orders) means that we can, in the future, manage these resources (with unique identifiers).
-- While balances is not a typical resource - we believe having an /accounts/{AccountId}/balances endpoint is simpler to understand than a URI to expand the /accounts resource .
-- Some ASPSPs were uncomfortable implementing the bulk APIs (e.g., /accounts, /transactions, /beneficiaries etc.) so the bulk APIs have been specified as optional. However, the bulk endpoint for /accounts is mandatory to discover what accounts have been authorised for the account-access-consent.
+
+* Having resources that are finer grained (e.g., beneficiaries, direct-debits, standing-orders) means that we can, in the future, manage these resources (with unique identifiers).
+* While balances is not a typical resource * we believe having an /accounts/{AccountId}/balances endpoint is simpler to understand than a URI to expand the /accounts resource .
+* Some ASPSPs were uncomfortable implementing the bulk APIs (e.g., /accounts, /transactions, /beneficiaries etc.) so the bulk APIs have been specified as optional. However, the bulk endpoint for /accounts is mandatory to discover what accounts have been authorised for the account-access-consent.
 
 We have specified the "mandatory" endpoints for the functioning of the Account Info APIs.
+
 However, endpoints will not be "mandatory" if ASPSPs do not provide these resources via existing online channels e.g., direct debits, standing orders, statements.
 
 ## Security &amp; Access Control
 ### Scopes
+
 The access tokens required for accessing the Account Info APIs must have at least the following scope:
 **Scopes**
 
@@ -197,52 +211,65 @@ The access tokens required for accessing the Account Info APIs must have at leas
 accounts: Ability to read Accounts information
 ```
 ### Grants Types
+
 AISPs  **must**  use a client credentials grant to obtain a token to access the account-access-consents resource. In the specification, this grant type is referred to as "Client Credentials".
+
 AISPs  **must** use an authorization code grant using a redirect or decoupled flow to obtain a token to access all other resources. In the specification, this grant type is referred to as "Authorization Code".
 
 ### Consent Authorisation
-The AISP  **must**  create an  **account-access-consent** resource through a  **POST**  operation. This resource indicates the  _consent _ that the AISP claims it has been given by the PSU to retrieve account and transaction information. At this stage, the consent is not yet authorised as the ASPSP has not yet verified this claim with the PSU.
+
+The AISP  **must**  create an  **account-access-consent** resource through a  **POST**  operation. This resource indicates the  *consent* that the AISP claims it has been given by the PSU to retrieve account and transaction information. At this stage, the consent is not yet authorised as the ASPSP has not yet verified this claim with the PSU.
 
 The ASPSP responds with a ConsentId. This is the intent-id that is used when initiating the authorization code grant (as described in the Trust Framework).
 
 As part of the consent authorization flow:
-- The ASPSP authenticates the PSU.
-- The ASPSP plays back the consent (registered by the AISP) back to the PSU - to get consent authorisation. The PSU may accept or reject the consent in its entirety (but not selectively).
-- The ASPSP presents the PSU with a list of accounts to which the consent will apply.
+
+* The ASPSP authenticates the PSU.
+* The ASPSP plays back the consent (registered by the AISP) back to the PSU * to get consent authorisation. The PSU may accept or reject the consent in its entirety (but not selectively).
+* The ASPSP presents the PSU with a list of accounts to which the consent will apply.
 
 Once these steps are complete, the consent is considered to have been authorised by the PSU.
 
 #### Consent Elements
+
 The Account Access Consent resource consists of the following fields, which together form the elements of the consent provided by the PSU to the AISP:
--  **Permissions:**  The set of data clusters that the PSU has consented to allow the AISP to access.
--  **ExpirationDateTime:**  The date-time up to which the consent is valid.
--  **TransactionFromDateTime:**  The earliest point of the transaction / statement historical period that the PSU has consented to provide access to the AISP.
--  **TransactionToDateTime:** The last point of the transaction / statement historical period that the PSU has consented to provide access to the AISP.
+
+*  **Permissions:**  The set of data clusters that the PSU has consented to allow the AISP to access.
+*  **ExpirationDateTime:**  The date-time up to which the consent is valid.
+*  **TransactionFromDateTime:**  The earliest point of the transaction / statement historical period that the PSU has consented to provide access to the AISP.
+*  **TransactionToDateTime:** The last point of the transaction / statement historical period that the PSU has consented to provide access to the AISP.
 
 ##### Permissions
+
 Permissions codes will be used to limit the data that is returned in response to a resource request. 
+
 When a permission is granted for a "Detail" permission code (e.g., ReadAccountsDetail) it implies that access is also granted to the corresponding "Basic" permission code (e.g., ReadAccountsBasic).
+
 While it is duplication for a TPP to request a "Basic" permission code and the corresponding "Detail" permission code, it is not a malformed request, and the ASPSP must not reject solely on the basis of duplication.
+
 The permissions array  **must**  contain at least  **ReadAccountsBasic**  or  **ReadAccountsDetail** .
+
 The following combinations of permissions are not allowed, and the ASPSP  **must**  reject these account-access-consents with a 400 response code:
-- Account Access Consents with an empty Permissions array.
-- Account Access Consents with a permission code that is not supported by the ASPSP (ASPSPs are expected to publish which API endpoints are supported).
-- Account Access Consents with a Permissions array that contains  **ReadTransactionsBasic**  but does not contain at least one of  **ReadTransactionsCredits**  and  **ReadTransactionsDebits** .
-- Account Access Consents with a Permissions array that contains  **ReadTransactionsDetail**  but does not contain at least one of  **ReadTransactionsCredits**  and  **ReadTransactionsDebits** .
-- Account Access Consents with a Permissions array that contains  **ReadTransactionsCredits**  but does not contain at least one of  **ReadTransactionsBasic**  and  **ReadTransactionsDetail** .
-- Account Access Consents with a Permissions array that contains  **ReadTransactionsDebits**  but does not contain at least one of  **ReadTransactionsBasic**  and  **ReadTransactionsDetail** .
+
+* Account Access Consents with an empty Permissions array.
+* Account Access Consents with a permission code that is not supported by the ASPSP (ASPSPs are expected to publish which API endpoints are supported).
+* Account Access Consents with a Permissions array that contains  **ReadTransactionsBasic**  but does not contain at least one of  **ReadTransactionsCredits**  and  **ReadTransactionsDebits** .
+* Account Access Consents with a Permissions array that contains  **ReadTransactionsDetail**  but does not contain at least one of  **ReadTransactionsCredits**  and  **ReadTransactionsDebits** .
+* Account Access Consents with a Permissions array that contains  **ReadTransactionsCredits**  but does not contain at least one of  **ReadTransactionsBasic**  and  **ReadTransactionsDetail** .
+* Account Access Consents with a Permissions array that contains  **ReadTransactionsDebits**  but does not contain at least one of  **ReadTransactionsBasic**  and  **ReadTransactionsDetail** .
+
 
 | Permissions |Endpoints |Business Logic |Data Cluster Description |
 | --- |--- |--- |--- |
-| ReadAccountsBasic |/accounts /accounts/{AccountId} | |Ability to read basic account information |
-| ReadAccountsDetail |/accounts /accounts/{AccountId} |Access to additional elements in the payload |Ability to read account identification details |
-| ReadBalances |/balances /accounts/{AccountId}/balances | |Ability to read all balance information |
-| ReadBeneficiariesBasic |/beneficiaries /accounts/{AccountId}/beneficiaries | |Ability to read basic beneficiary details |
-| ReadBeneficiariesDetail |/beneficiaries /accounts/{AccountId}/beneficiaries |Access to additional elements in the payload |Ability to read account identification details for the beneficiary |
-| ReadDirectDebits |/direct-debits /accounts/{AccountId}/direct-debits | |Ability to read all direct debit information |
-| ReadStandingOrdersBasic |/standing-orders /accounts/{AccountId}/standing-orders | |Ability to read basic standing order information |
-| ReadStandingOrdersDetail |/standing-orders /accounts/{AccountId}/standing-orders |Access to additional elements in the payload |Ability to read account identification details for beneficiary of the standing order |
-| ReadTransactionsBasic |/transactions /accounts/{AccountId}/transactions /accounts/{AccountId}/statements/{StatementId}/transactions |Permissions must also include at least one of: ReadTransactionsCredits ReadTransactionsDebits |Ability to read basic transaction information |
+| ReadAccounts**Basic** |/accounts /accounts/{AccountId} | |Ability to read basic account information |
+| ReadAccounts**Detail** |/accounts /accounts/{AccountId} |Access to additional elements in the payload |Ability to read account identification details |
+| ReadBalances |/balances /accounts/{AccountId}/balances | |Ability to read **all** balance information |
+| ReadBeneficiaries**Basic** |/beneficiaries /accounts/{AccountId}/beneficiaries | |Ability to read basic beneficiary details |
+| ReadBeneficiaries**Detail** |/beneficiaries /accounts/{AccountId}/beneficiaries |Access to additional elements in the payload |Ability to read account identification details for the beneficiary |
+| ReadDirectDebits |/direct-debits /accounts/{AccountId}/direct-debits | |Ability to read **all** direct debit information |
+| ReadStandingOrders**Basic** |/standing-orders /accounts/{AccountId}/standing-orders | |Ability to read basic standing order information |
+| ReadStandingOrders**Detail** |/standing-orders /accounts/{AccountId}/standing-orders |Access to additional elements in the payload |Ability to read account identification details for beneficiary of the standing order |
+| ReadTransactions**Basic** |/transactions /accounts/{AccountId}/transactions /accounts/{AccountId}/statements/{StatementId}/transactions |Permissions must also include at least one of: <br><br><li>ReadTransactions**Credits** <li>ReadTransactions**Debits** |Ability to read basic transaction information |
 | ReadTransactionsDetail |/transactions /accounts/{AccountId}/transactions /accounts/{AccountId}/statements/{StatementId}/transactions |Access to additional elements in the payload Permissions must also include at least one of ReadTransactionsCredits ReadTransactionsDebits |Ability to read transaction data elements which may hold silent party details |
 | ReadTransactionsCredits |/transactions /accounts/{AccountId}/transactions /accounts/{AccountId}/statements/{StatementId}/transactions |Access to credit transactions. Permissions must also include one of: ReadTransactionsBasic ReadTransactionsDetail |Ability to read only credit transactions |
 | ReadTransactionsDebits |/transactions /accounts/{AccountId}/transactions /accounts/{AccountId}/statements/{StatementId}/transactions |Access to debit transactions. Permissions must also include one of: ReadTransactionsBasic ReadTransactionsDetail |Ability to read only debit transactions |
@@ -257,12 +284,13 @@ The following combinations of permissions are not allowed, and the ASPSP  **must
 | ReadPAN |All API endpoints where PAN is available as a structured field |Request to access to PAN in the clear |Request to access PAN in the clear across the available endpoints. If this permission code is not in the account-access-consent, the AISP will receive a masked PAN. While an AISP may request to access PAN in the clear, an ASPSP may still respond with a masked PAN if: The ASPSP does not display PAN in the clear in existing online channels The ASPSP takes a legal view to respond with only the masked PAN |
 
 
+
 ###### Detail Permissions
 The additional elements that are granted for "Detail" permissions are listed in this section.
 All other fields (other than these fields listed) are available with the "Basic" Permission access. 
 
-| Permission - Detail Codes |Data Element Name |Occurrence |XPath |
-| --- |--- |--- |--- |
+| Permission * Detail Codes |Data Element Name |Occurrence |XPath |
+| --* |--* |--* |--* |
 | ReadAccountsDetail |Account |0..1 |OBReadAccount3/Data/Account/Account |
 | ReadAccountsDetail |Servicer |0..1 |OBReadAccount3/Data/Account/Servicer |
 | ReadBeneficiariesDetail |CreditorAgent |0..1 |OBReadBeneficiary3/Data/Beneficiary/CreditorAgent |
@@ -304,7 +332,7 @@ The AISP  **must**  be restricted to accessing statements which are  **completel
 #### Account Access Consent Status
 The Account Access Consent resource may have one of the following status codes after authorisation has taken place:
 |  |Status |Description |
-| --- |--- |--- |
+| --* |--* |--* |
 | 1 |Authorised |The account access consent has been successfully authorised. |
 | 2 |Rejected |The account access consent has been rejected. |
 | 3 |Revoked |The account access consent has been revoked via the ASPSP interface. |
@@ -313,8 +341,8 @@ The Account Access Consent resource may have one of the following status codes a
 #### Consent Re-authentication
 Account Access Consents are long-lived consents. 
 A PSU can re-authenticate an Account Access Consent if:
-- The account-access-consent has a status of `Authorised` and 
-- The `ExpirationDateTime` of the account-access-consent, if specified, has not elapsed.
+* The account-access-consent has a status of `Authorised` and 
+* The `ExpirationDateTime` of the account-access-consent, if specified, has not elapsed.
 
 The accounts bound to the account-access-consent are selected in the ASPSP domain.
 An ASPSP  **may**  allow the PSU to change the selected accounts during consent re-authentication.
@@ -323,24 +351,24 @@ An ASPSP  **may**  allow the PSU to change the selected accounts during consent 
 A PSU may revoke consent for accessing account information at any point in time.
 A PSU  **may**  revoke authorisation directly with the ASPSP. The mechanisms for this are in the competitive space and are up to each ASPSP to implement in the ASPSP's banking interface. If the PSU revokes authorisation with the ASPSP, the Status of the  **account-access-consent**  resource must be set to  _Revoked._ 
 The PSU may request the AISP to revoke consent that it has authorised. If consent is revoked with the AISP:
-- The AISP  **must**  cease to access the APIs at that point.
-- The AISP  **must**  call the  **DELETE**  operation on the account-access-consent resource (before confirming consent revocation with the PSU) to indicate to the ASPSP that the PSU has revoked consent.
+* The AISP  **must**  cease to access the APIs at that point.
+* The AISP  **must**  call the  **DELETE**  operation on the account-access-consent resource (before confirming consent revocation with the PSU) to indicate to the ASPSP that the PSU has revoked consent.
 
 ### Changes to Selected Account(s)
 The PSU  **must**  select the accounts to which the consent should be applied at the point of consent authorisation.
 Subsequent changes to the set of accounts to which the consent authorisation applies  **may**  be carried out directly with the ASPSP. The method for doing this lies in the competitive space and is not part of this specification.
 Additionally, the set of selected accounts may also change due to external factors. This includes (but is not limited to):
-- The account being closed.
-- The PSU's mandate to operate the account is revoked.
-- The account is barred or frozen.
-- The PSU changes the selected accounts during consent re-authentication.
+* The account being closed.
+* The PSU's mandate to operate the account is revoked.
+* The account is barred or frozen.
+* The PSU changes the selected accounts during consent re-authentication.
 
 In these scenarios, only the affected account is removed from the list of selected accounts. The ASPSP  **must not**  revoke authorisation to other accounts.
 
 ### Risk Scoring Information
 Information for risk scoring and assessment will come via:
-- FAPI HTTP headers. These are defined in [Section 6.3](http://openid.net/specs/openid-financial-api-part-1-wd-02.html#client-provisions) of the FAPI specification and in the Headers section above.
-- Additional fields identified by the industry as business logic security concerns - which will be passed in the Risk section of the payload in the JSON object. 
+* FAPI HTTP headers. These are defined in [Section 6.3](http://openid.net/specs/openid-financial-api-part-1-wd-02.html#client-provisions) of the FAPI specification and in the Headers section above.
+* Additional fields identified by the industry as business logic security concerns * which will be passed in the Risk section of the payload in the JSON object. 
 
 No fields for business logic security concerns have been identified for the Account Info APIs.
 
@@ -348,8 +376,8 @@ No fields for business logic security concerns have been identified for the Acco
 ### Using Meta to identify Available Transaction Period
 For Accounts &amp; Transaction APIs, the `Meta` section in API responses may contain two additional fields to indicate the date range for which data has been returned.
 The transactions or statements for a particular range of dates may be excluded from the response because:
-- The ASPSP does not provide historical transactions / statements for that date range.
-- The PSU has not consented to transactions / statements for that date range.
+* The ASPSP does not provide historical transactions / statements for that date range.
+* The PSU has not consented to transactions / statements for that date range.
 
 The absence of transactions / statements in the payload does not indicate that there were no transactions / statements during that period.
 To ensure that the data is interpreted correctly, the ASPSP  **may**  provide the date of the first available transaction and last available transaction as part of the response in the Meta section in the FirstAvailableDateTime and LastAvailableDateTime fields.
@@ -365,48 +393,48 @@ Example Meta
 ### Mapping to Schemes &amp; Standards
 The Account Info API resources, where possible, have been borrowed from the ISO 20022 camt.052 XML standard. However, has been adapted for APIs based as per our design principles. 
 Deviations from the camt.052 XML standard are:
-- The camt.052 header section and trailer sections have been removed as these are not required for a RESTful API.
-- Resources have been identified and payload structures have been designed for these resources rather than a full message (i.e., camt.052) that encompasses all resources in a report format. This has meant we have designed separate endpoints and payloads to cover:
-    - accounts
-    - balances
-    - beneficiaries
-    - direct-debits
-    - offers
-    - party
-    - products
-    - standing-orders
-    - statements
-    - transactions
-    - scheduled-payments
-- New payloads have been designed for beneficiaries, direct-debits, standing-orders, and products resources as these are not in the ISO 20022 standard (or the camt.052 message).
-- A DateTime element has been used instead of a complex choice element of Date and DateTime (across all API endpoints). Where time elements do not exist in ASPSP systems, the expectation is the time portion of the DateTime element will be defaulted to 00:00:00+00:00.
-- Variations for the accounts structure include: 
-    - Standardised inline with the Payment API account structures.
-    - Contains elements to identify an account Nickname, SecondaryIdentification.
-- Variations for the balances structure include:
-    - Adding a Type into the CreditLine section to allow for multiple credit line types affecting the available balance.
-    - DateTime element has been specified instead of a complex choice of Date and DateTime.
-- Variations for the transactions structure include:
-    - Renaming "entry" to "transaction" for consistency as this is the language used in the CMA Order and PSD2.
-    - DateTime elements used instead of a complex choice of Date and DateTime.
-    - Flattening of the structure for BankTransactionCode and ProprietaryBankTransactionCode.
-    - Additional information for an AddressLine, MerchantDetails and a running Balance.
+* The camt.052 header section and trailer sections have been removed as these are not required for a RESTful API.
+* Resources have been identified and payload structures have been designed for these resources rather than a full message (i.e., camt.052) that encompasses all resources in a report format. This has meant we have designed separate endpoints and payloads to cover:
+    * accounts
+    * balances
+    * beneficiaries
+    * direct-debits
+    * offers
+    * party
+    * products
+    * standing-orders
+    * statements
+    * transactions
+    * scheduled-payments
+* New payloads have been designed for beneficiaries, direct-debits, standing-orders, and products resources as these are not in the ISO 20022 standard (or the camt.052 message).
+* A DateTime element has been used instead of a complex choice element of Date and DateTime (across all API endpoints). Where time elements do not exist in ASPSP systems, the expectation is the time portion of the DateTime element will be defaulted to 00:00:00+00:00.
+* Variations for the accounts structure include: 
+    * Standardised inline with the Payment API account structures.
+    * Contains elements to identify an account Nickname, SecondaryIdentification.
+* Variations for the balances structure include:
+    * Adding a Type into the CreditLine section to allow for multiple credit line types affecting the available balance.
+    * DateTime element has been specified instead of a complex choice of Date and DateTime.
+* Variations for the transactions structure include:
+    * Renaming "entry" to "transaction" for consistency as this is the language used in the CMA Order and PSD2.
+    * DateTime elements used instead of a complex choice of Date and DateTime.
+    * Flattening of the structure for BankTransactionCode and ProprietaryBankTransactionCode.
+    * Additional information for an AddressLine, MerchantDetails and a running Balance.
 
 ### Resources
 Each of the Account and Transaction API resources are documented in sub-pages of this specification. Each resource is documented with:
-- Endpoints
-    - The API endpoints available for the resource.
-- Data Model
-    - Resource definition.
-    - UML diagram.
-    - Permissions as they relate to accessing the resource.
-    - Data dictionary - which defines fields, re-usable classes, mandatory (1..1) or conditional (0..1) as defined in the Design Principles section, and enumerations.
-- Usage Examples
+* Endpoints
+    * The API endpoints available for the resource.
+* Data Model
+    * Resource definition.
+    * UML diagram.
+    * Permissions as they relate to accessing the resource.
+    * Data dictionary * which defines fields, re-usable classes, mandatory (1..1) or conditional (0..1) as defined in the Design Principles section, and enumerations.
+* Usage Examples
 
 ### Enumerations
 #### Static Enumerations
 | Code Class |Name |Definition |
-| --- |--- |--- |
+| --* |--* |--* |
 | OBAccountStatus1Code |Enabled |Account can be used for its intended purpose. |
 | OBAccountStatus1Code |Disabled |Account cannot be used for its intended purpose, either temporarily or permanently. |
 | OBAccountStatus1Code |Deleted |Account cannot be used any longer. |
@@ -435,7 +463,7 @@ Each of the Account and Transaction API resources are documented in sub-pages of
 | OBBalanceType1Code |PreviouslyClosedBooked |Balance of the account at the previously closed account reporting period. The opening booked balance for the new period has to be equal to this balance. Usage: the previously booked closing balance should equal (inclusive date) the booked closing balance of the date it references and equal the actual booked opening balance of the current date. |
 | OBCreditDebitCode |Credit |Operation is a credit |
 | OBCreditDebitCode |Debit |Operation is a debit |
-| OBEntryStatus1Code |Booked |Booked means that the transfer of money has been completed between account servicer and account owner Usage: Status Booked does not necessarily imply finality of money as this depends on other factors such as the payment system used, the completion of the end- to-end transaction and the terms agreed between account servicer and owner. Status Booked is the only status that can be reversed. |
+| OBEntryStatus1Code |Booked |Booked means that the transfer of money has been completed between account servicer and account owner Usage: Status Booked does not necessarily imply finality of money as this depends on other factors such as the payment system used, the completion of the end* to-end transaction and the terms agreed between account servicer and owner. Status Booked is the only status that can be reversed. |
 | OBEntryStatus1Code |Pending |Booking on the account owner's account in the account servicer's ledger has not been completed. Usage: this can be used for expected items, or for items for which some conditions still need to be fulfilled before they can be booked. If booking takes place, the entry will be included with status Booked in subsequent account report or statement. Status Pending cannot be reversed. |
 | OBExternalAccountSubType1Code |ChargeCard |Account sub-type is a Charge Card. |
 | OBExternalAccountSubType1Code |CreditCard |Account sub-type is a Credit Card. |
@@ -483,7 +511,7 @@ Each of the Account and Transaction API resources are documented in sub-pages of
 #### ISO Enumerations
 These following ISO Enumerations are used in the Accounts APIs.
 | ISO Data Type |Fields |ISO Enumeration Values URL |
-| --- |--- |--- |
+| --* |--* |--* |
 | Min3Max4Text |MerchantCategoryCode |https://www.iso.org/standard/33365.html |
 | ActiveOrHistoricCurrencyCode |Currency |https://www.iso20022.org/external_code_list.page |
 | CountryCode |Country |https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2#Officially_assigned_code_elements |
@@ -501,6 +529,5 @@ It's up to ASPSP to engage with AISP/PSUs to enable them to facilitate the Accou
 
 ## Swagger Specification
 The Swagger Specification for Account Information APIs can be downloaded from the following links:
-- [JSON](https://raw.githubusercontent.com/OpenBankingUK/read-write-api-specs/v3.1.2-RC1/dist/account-info-swagger.json)
+* [JSON](https://raw.githubusercontent.com/OpenBankingUK/read-write-api-specs/v3.1.2-RC1/dist/account-info-swagger.json)
 * [YAML](https://raw.githubusercontent.com/OpenBankingUK/read-write-api-specs/v3.1.2-RC1/dist/account-info-swagger.yaml)
-
