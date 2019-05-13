@@ -1,8 +1,22 @@
+# Domestic Payment Message Formats <!-- omit in toc -->
 
-# ISO 20022
+1. [ISO 20022](#iso-20022)
+2. [ISO 8583](#iso-8583)
+   1. [Mapping](#mapping)
+   2. [Notes](#notes)
+3. [BACS STD18](#bacs-std18)
+   1. [Mapping](#mapping-1)
+   2. [Notes](#notes-1)
+4. [MT103](#mt103)
+   1. [Mapping](#mapping-2)
+   2. [Notes](#notes-2)
+
+## ISO 20022
 
 The Initiation section of the Payment API payloads is based on the ISO 20022 pain.001 XML standard and we have used ISO 20022 message elements or components where possible. However, has been adapted for APIs based as per our design principles. 
+
 Deviations from the pain.001 XML standard are:
+
 * The pain.001 header section and trailer sections have been removed as these are not required for a RESTful API
 * Only required fields have been included in the Initiation objects. This has meant: 
   * The separate CreditTransferTransactionInformation section in pain.001 which is a repeating group for multi-credit payments, has been removed and flattened.
@@ -14,10 +28,12 @@ Deviations from the pain.001 XML standard are:
   * InstructionIdentification and EndToEndIdentification moved to the top level (instead of embedding within Payment Order Identification). 
   * DebtorAccount and CreditorAccount are simplified to only include the SchemeName and Identification.
 
-# ISO 8583
+## ISO 8583
 
 The ISO 8583 message format is used for the Faster Payments Scheme (FPS).
+
 Execution:
+
 * The processing of payments via the FPS scheme is business as usual processing - i.e., no change.
 * FPS scheme requirements (are not formally part of the Open Banking API Specification, but are included for guidance): 
   * The field 61.1 PAYMENT SUB-TYPE will be set by the FPS Institution with a **A** {\**} prefix for any FPS transaction initiated by a PISP. Values within {**} will ordinarily be “00” unless the PISP initiated payment requires usage of other facilities (as indicated by the usage of an FPS sub-type code).
@@ -31,7 +47,7 @@ In the size column, highlighted in **bold** are the fields which are smaller in 
 
 In the case that a PISP sets up a payment-order consent with a larger field size (e.g., EndToEndIdentification, or InstructedAmount) than the eventual scheme field size - it will be up to the ASPSP to decide whether to reject the payment-order consent or truncate the field. 
 
-## Mapping
+### Mapping
 
 | Name |XPath |Occurrence |Class |ISO8583 BIT |Field Name |Mandatory |Size |
 | --- |--- |--- |--- |--- |--- |--- |--- |
@@ -44,8 +60,7 @@ In the case that a PISP sets up a payment-order consent with a larger field size
 | Unstructured |Initiation/RemittanceInformation/Unstructured |0..1 |Max140Text |121 |REMITTANCE INFORMATION |O |140 |
 | Reference |Initiation/RemittanceInformation/Reference |0..1 |Max35Text |120 |REFERENCE INFORMATION |O |**18** |
 
-
-**Notes** 
+### Notes
 
 * If the Initiation/CreditorAccount/SecondaryIdentification field is populated - this field must be mapped to field 120 REFERENCE INFORMATION as this will be used for the Creditor Agent to identify the account (i.e., the roll numbers in the building society context).
 * However, if the Initiation/CreditorAccount/SecondaryIdentification is **not** populated then field 120 REFERENCE INFORMATION must be populated with the Initiation/RemittanceInformation/Reference field.
@@ -55,10 +70,12 @@ In the case that a PISP sets up a payment-order consent with a larger field size
 * Where the Initiation/CreditorAccount/SchemeName field is populated with "UK.OBIE.SortCodeAccountNumber", the Initiation/CreditorAccount/Identification field will be populated with a 14 digit field comprised of a 6 digit Sort Code (mapped to field 95 BENEFICIARY CREDIT INSTITUTION) and 8 digit Account Number (mapped to field 35 BENEFICIARY CUSTOMER ACCOUNT NUMBER)
 * CreditorPostalAddress is not supported in FPS.
 
-# BACS STD18
+## BACS STD18
 
 The BACS STD18 message format is used for the BACS scheme.
+
 Execution:
+
 * The processing of payments via the Bacs scheme is business as usual processing i.e., no change
 * Expectation is that a Bank Grade user will be able to bulk up payments generated via the Payment API and create the appropriate file and submission structure (as per usual processing). None of these details will need to be generated via the Payment API.
 * The mapping below uses theBacs Electronic Funds Transfer, File Structures (PN5011) document and the section on 2.6.1 CREDIT AND DEBIT PAYMENT INSTRUCTIONS (BANK GRADE USERS)
@@ -71,7 +88,7 @@ In the size column, highlighted in **bold** are the fields which are smaller in 
 
 In the case that a PISP sets up a payment-order consent with a larger field size (e.g., EndToEndIdentification, or InstructedAmount) than the eventual scheme field size, it will be up to the ASPSP to decide whether to reject the payment-order consent or truncate the field. 
 
-## Mapping
+### Mapping
 
 | Name |XPath |Occurrence |Class |STD18 Field |Field Name |Mandatory ? |Size |
 | --- |--- |--- |--- |--- |--- |--- |--- |
@@ -82,8 +99,7 @@ In the case that a PISP sets up a payment-order consent with a larger field size
 | SecondaryIdentification |Initiation/CreditorAccount/SecondaryIdentification |0..1 |Max34Text |10 |service user’s reference |M |**18** |
 | Reference |Initiation/RemittanceInformation/Reference |0..1 |Max35Text |10 |service user’s reference |M |**18** |
 
-
-**Notes** 
+### Notes
 
 * If the Initiation/CreditorAccount/SecondaryIdentification field is populated, this must be mapped to field 10 service user's reference as this will be used for the Creditor Agent to identify the account (i.e., the roll numbers in the building society context).
 * However, if the /CreditorAccount/SecondaryIdentification is **not** populated then 10 service user's reference must be populated with the Initiation/RemittanceInformation/Reference field.
@@ -93,7 +109,7 @@ In the case that a PISP sets up a payment-order consent with a larger field size
 * Where the Initiation/CreditorAccount/SchemeName field is populated with "UK.OBIE.SortCodeAccountNumber", the Initiation/CreditorAccount/Identification field will be populated with a 14 digit field comprised of a 6 digit Sort Code (mapped to field 1 destination sorting code) and 8 digit Account Number (mapped to field 2 destination a/c number)
 * CreditorPostalAddress is not supported in BACS.
 
-# MT103
+## MT103
 
 The MT103 message format is used for the CHAPS scheme.
 Execution:
@@ -107,7 +123,7 @@ In the size column, highlighted in bold are the fields which are smaller in size
 
 In the case that a PISP sets up a payment-order consent with a larger field size (e.g., EndToEndIdentification, or InstructedAmount) than the eventual scheme field size, it will be up to the ASPSP to decide whether to reject the payment-order consent or truncate the field. 
 
-## Mapping
+### Mapping
 
 | Name |XPath |Occurrence |Class |MT103 Field |Field Name |Mandatory |Size |
 | --- |--- |--- |--- |--- |--- |--- |--- |
@@ -123,8 +139,7 @@ In the case that a PISP sets up a payment-order consent with a larger field size
 | Reference |Initiation/RemittanceInformation/Reference |0..1 |Max35Text |70 |Beneficiary Reference |O |35x |
 | Unstructured |Initiation/RemittanceInformation/Unstructured |0..1 |Max140Text |70 |Beneficiary Reference |O |**2*35x** |
 
-
-**Notes** 
+### Notes
 
 * The Value Date must be a valid BoE business day. It must be a valid date expressed as YYMMDD and is populated by the ASPSP.
 * Details for field 50K (Ordering Customer) relating to the Debtor's Name and Address must be populated from the ASPSP's system of record.
@@ -138,5 +153,3 @@ In the case that a PISP sets up a payment-order consent with a larger field size
   * /ROC/ and EndToEndIndentification 
   * /RFB/ and RemittanceInformation/Reference (only 16 chars supported)
   * RemittanceInformation/Unstructured
-
-<br>
