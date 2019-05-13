@@ -4,3 +4,7 @@
 .DS_Store
 *.DS_Store
 *.iml
+<<<<<<< HEAD
+=======
+*.vscode
+>>>>>>> 935d9af9db83ff31ec0402b7b834aa0fcebfa5f7
