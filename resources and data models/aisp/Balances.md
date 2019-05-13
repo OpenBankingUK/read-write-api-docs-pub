@@ -1,42 +1,49 @@
-# Balances 3.1.2
-# Endpoints
+# Balances v3.1.2
 
- |  |Resource |HTTP Operation |Endpoint |Mandatory? |Scope |Grant Type |Idempotency Key |Parameters |Request Object |Response Object |
+## Endpoints
+
+|  |Resource |HTTP Operation |Endpoint |Mandatory? |Scope |Grant Type |Idempotency Key |Parameters |Request Object |Response Object |
 | --- |--- |--- |--- |--- |--- |--- |--- |--- |--- |--- |
 | 1 |balances |GET |GET /accounts/{AccountId}/balances |Mandatory |accounts |Authorization Code |No | | |OBReadBalance1 |
 | 2 |balances |GET |GET /balances |Optional |accounts |Authorization Code |No |Pagination | |OBReadBalance1 |
 
 
-## GET /accounts/{AccountId}/balances
- An AISP may retrieve the account balance information resource for a specific AccountId (which is retrieved in the call to GET /accounts).
+### GET /accounts/{AccountId}/balances
 
-## GET /balances
- If an ASPSP has implemented the bulk retrieval endpoints, an AISP may optionally retrieve the account information resources in bulk.
- This will retrieve the resources for all authorised accounts linked to the account-request.
+An AISP may retrieve the account balance information resource for a specific AccountId (which is retrieved in the call to GET /accounts).
 
-# Data Model
- The OBReadBalance1 object will be used for the call to: 
-- GET /accounts/{AccountId}/balances
-- GET /balances
+### GET /balances
 
-## Resource Definition
- This resource represents the net increases and decreases in an account (AccountId) at a specific point in time.
- An account (AccountId) may have multiple balance types (these follow the standard ISO 20022 balance type enumerations). If an ASPSP includes a credit line in an available balance, then the balance representation will have a section for the credit line amount and type.
+If an ASPSP has implemented the bulk retrieval endpoints, an AISP may optionally retrieve the account information resources in bulk.
+This will retrieve the resources for all authorised accounts linked to the account-request.
 
-## UML Diagram
+## Data Model
 
-![UML Diagram$](images/Balances/OBReadBalance1.gif  "UML Diagram")
+The OBReadBalance1 object will be used for the call to: 
+* GET /accounts/{AccountId}/balances
+* GET /balances
+
+### Resource Definition
+
+This resource represents the net increases and decreases in an account (AccountId) at a specific point in time.
+
+An account (AccountId) may have multiple balance types (these follow the standard ISO 20022 balance type enumerations). If an ASPSP includes a credit line in an available balance, then the balance representation will have a section for the credit line amount and type.
+### UML Diagram
+
+![ OBReadBalance1.gif ]( images/Balances/OBReadBalance1.gif )
 
 Notes:
-- Multiple balances may be returned (each with a different value for Type) for an account. This is for ASPSPs that show multiple balances in their online channels.
-- The CreditLine section may be repeated as multiple credit lines may be included in an available balance.
-- A DateTime element has been used instead of a complex choice element of Date and DateTime. Where time elements do not exist in ASPSP systems, the time portion of the DateTime element will be defaulted to 00:00:00+00:00.
+* Multiple balances may be returned (each with a different value for Type) for an account. This is for ASPSPs that show multiple balances in their online channels.
+* The CreditLine section may be repeated as multiple credit lines may be included in an available balance.
+* A DateTime element has been used instead of a complex choice element of Date and DateTime. Where time elements do not exist in ASPSP systems, the time portion of the DateTime element will be defaulted to 00:00:00+00:00.
 
-## Permission Codes
- The resource requires the ReadBalances permission. The resource response payload does not differ depending on the permissions granted.
+### Permission Codes
 
-## Data Dictionary
- | Name |Occurrence |XPath |EnhancedDefinition |Class |Codes |Pattern |
+The resource requires the ReadBalances permission. The resource response payload does not differ depending on the permissions granted.
+
+### Data Dictionary
+
+| Name |Occurrence |XPath |EnhancedDefinition |Class |Codes |Pattern |
 | --- |--- |--- |--- |--- |--- |--- |
 | OBReadBalance1 | |OBReadBalance1 | |OBReadBalance1 | | |
 | Data |1..1 |OBReadBalance1/Data | |OBReadDataBalance1 | | |
@@ -55,11 +62,15 @@ Notes:
 | Amount |1..1 |OBReadBalance1/Data/Balance/CreditLine/Amount/Amount |A number of monetary units specified in an active currency where the unit of currency is explicit and compliant with ISO 4217. |OBActiveCurrencyAndAmount_SimpleType | |^\d{1,13}\.\d{1,5}$ |
 | Currency |1..1 |OBReadBalance1/Data/Balance/CreditLine/Amount/Currency |A code allocated to a currency by a Maintenance Agency under an international identification scheme, as described in the latest edition of the international standard ISO 4217 "Codes for the representation of currencies and funds". |ActiveOrHistoricCurrencyCode | |^[A-Z]{3,3}$ |
 
-# Usage Examples
-## Specific Account
- **Request** 
 
-```javascript
+## Usage Examples
+
+### Specific Account
+
+ **Request** **Get Account Balances Request**
+
+
+```
 GET /accounts/22289/balances HTTP/1.1
 Authorization: Bearer Az90SAOJklae
 x-fapi-auth-date: Sun, 10 Sep 2017 19:43:31 GMT
@@ -67,13 +78,15 @@ x-fapi-customer-ip-address: 104.25.212.99
 x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Accept: application/json
 ```
- **Response** 
 
-```javascript
+ **Response** **Get Account Balances Response**
+
+```
 HTTP/1.1 200 OK
 x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Content-Type: application/json
-
+```
+```json
 {
   "Data": {
     "Balance": [
@@ -107,9 +120,12 @@ Content-Type: application/json
   }
 }
 ```
-## Bulk
- **Request** 
-```javascript
+
+### Bulk
+
+ **Request** **Get Balances Request**
+
+```
 GET /balances HTTP/1.1
 Authorization: Bearer Az90SAOJklae
 x-fapi-auth-date:  Sun, 10 Sep 2017 19:43:31 GMT
@@ -117,12 +133,15 @@ x-fapi-customer-ip-address: 104.25.212.99
 x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Accept: application/json
 ```
-  **Response** 
-```javascript
+
+ **Response** **Get Balances Response**
+
+```
 HTTP/1.1 200 OK
 x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Content-Type: application/json
-
+```
+```json
 {
   "Data": {
     "Balance": [
