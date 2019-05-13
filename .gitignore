@@ -2,3 +2,5 @@
 **/_experiments/out/*
 .vscode/*
 .DS_Store
+*.DS_Store
+*.iml
