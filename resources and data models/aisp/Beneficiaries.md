@@ -1,58 +1,71 @@
-# Beneficiaries 3.1.2
+# Beneficiaries v3.1.2
+
 ## Endpoints
+
 Endpoints for the resource and available methods.
 
- |  |Resource |HTTP Operation |Endpoint |Mandatory? |Scope |Grant Type |Idempotency Key |Parameters |Request Object |Response Object |
+|  |Resource |HTTP Operation |Endpoint |Mandatory? |Scope |Grant Type |Idempotency Key |Parameters |Request Object |Response Object |
 | --- |--- |--- |--- |--- |--- |--- |--- |--- |--- |--- |
 | 1 |beneficiaries |GET |GET /accounts/{AccountId}/beneficiaries |Conditional |accounts |Authorization Code |No | | |OBReadBeneficiary3 |
 | 2 |beneficiaries |GET |GET /beneficiaries |Optional |accounts |Authorization Code |No |Pagination | |OBReadBeneficiary3 |
 
-### GET /accounts/{AccountId}/beneficiaries
+### GET/accounts/{AccountId}/beneficiaries
+
 An AISP may retrieve the account beneficiaries information resource for a specific AccountId (which is retrieved in the call to GET /accounts).
 
 ### GET /beneficiaries
-If an ASPSP has implemented the bulk retrieval endpoints for beneficiaries, an AISP may optionally retrieve the beneficiaries' information in bulk.
 
+If an ASPSP has implemented the bulk retrieval endpoints for beneficiaries, an AISP may optionally retrieve the beneficiaries' information in bulk.
 This endpoint will retrieve the beneficiaries' resources for all authorised accounts linked to a specific account-request.
 
 ## Data Model
+
 The OBReadBeneficiary3 object will be used for the call to: 
-- GET /accounts/{AccountId}/beneficiaries
-- GET /beneficiaries
+* GET /accounts/{AccountId}/beneficiaries
+* GET /beneficiaries
 
 ### Resource Definition
+
 A resource that contains a set of elements that describes the list of trusted beneficiaries linked to a specific account (AccountId).
+
 An account (AccountId) may have no trusted beneficiaries set up, or may have multiple beneficiaries set up.
+
 In the case an ASPSP manages beneficiaries at a customer level (logged in user), instead of account level:
-- If a PSU selects multiple accounts for authorisation, then their beneficiaries apply consistently to all selected accounts (i.e., in the bulk endpoint /beneficiaries).
-- If a different PSU selects the same accounts, a different set of beneficiaries could be returned.
+
+* If a PSU selects multiple accounts for authorisation, then their beneficiaries apply consistently to all selected accounts (i.e., in the bulk endpoint /beneficiaries).
+* If a different PSU selects the same accounts, a different set of beneficiaries could be returned.
+
 This is the expected behaviour of the beneficiaries' endpoints, in the case an ASPSP manages beneficiaries at a customer level:
-- The bulk endpoint /beneficiaries will return the unique list of beneficiaries against the PSU. In this case, the AccountId in the OBReadBeneficiary3 payload would be set to NULL / empty (even if the PSU only has one account).
-- The selected account endpoint /accounts/{AccountId}/beneficiaries will return the beneficiaries that  **may ** be accessible to the AccountId, based on the PSU. In this case, the AccountId will be populated in the payload.
+
+* The bulk endpoint /beneficiaries will return the unique list of beneficiaries against the PSU. In this case, the AccountId in the OBReadBeneficiary3 payload would be set to NULL / empty (even if the PSU only has one account).
+* The selected account endpoint /accounts/{AccountId}/beneficiaries will return the beneficiaries that **may** be accessible to the AccountId, based on the PSU. In this case, the AccountId will be populated in the payload.
 
 ### UML Diagram
-![UML Diagram$](images/Beneficiaries/OBReadBeneficiary3.gif  "UML Diagram")
+
+![ OBReadBeneficiary3.gif ]( images/Beneficiaries/OBReadBeneficiary3.gif )
 
  **Notes:** 
-- The CreditorAccount is used consistently throughout the Account Information APIs to identify an account
-- Due to internationalisation requirements:
-    - The CreditorAgent object may be used to represent either (1) the BIC (with UK.OBIE.BICFI in the SchemeName field and the BIC in the Identification field), or (2) the Name and Address details for the financial institution.
-    - The CreditorAccount/Identification field may be used to represent a non-UK specific branch and account numbering scheme with "UK.OBIE.SortCodeAccountNumber" being populated in the CreditorAccount/SchemeName.
-- For the /accounts/{AccountId}/beneficiaries endpoint, the CreditorAccount and CreditorAgent blocks represent the account of the beneficiary that is receiving funds (so has been named the CreditorAccount for consistency with the PISP use case).
+* The CreditorAccount is used consistently throughout the Account Information APIs to identify an account
+* Due to internationalisation requirements: 
+    * The CreditorAgent object may be used to represent either (1) the BIC (with UK.OBIE.BICFI in the SchemeName field and the BIC in the Identification field), or (2) the Name and Address details for the financial institution. 
+    * The CreditorAccount/Identification field may be used to represent a non-UK specific branch and account numbering scheme with "UK.OBIE.SortCodeAccountNumber" being populated in the CreditorAccount/SchemeName.
+* For the /accounts/{AccountId}/beneficiaries endpoint, the CreditorAccount and CreditorAgent blocks represent the account of the beneficiary that is receiving funds (so has been named the CreditorAccount for consistency with the PISP use case).
 
 ### Permission Codes
+
 The resource differs depending on the permissions (ReadBeneficiariesBasic and ReadBeneficiariesDetail) used to access the resource. In the event that the resource is accessed with both ReadBeneficiariesBasic and ReadBeneficiariesDetail, the most detailed level (ReadBeneficiariesDetail) must be used.
-- These objects  **must not** be returned  **without**  the  **ReadBeneficiariesDetail** permission:
-    - OBReadBeneficiary3/Data/Beneficiary/CreditorAgent
-    - OBReadBeneficiary3/Data/Beneficiary/CreditorAccount
-- If the  **ReadBeneficiariesDetail** granted by the PSU:
-    - OBReadBeneficiary3/Data/Beneficiary/CreditorAgent  **may**  be returned if applicable to the account and ASPSP (0..1)
-    - OBReadBeneficiary3/Data/Beneficiary/CreditorAccount  **must**  be returned (1..1)
+* These objects **must not** be returned **without** the **ReadBeneficiariesDetail** permission: 
+    * OBReadBeneficiary3/Data/Beneficiary/CreditorAgent 
+    * OBReadBeneficiary3/Data/Beneficiary/CreditorAccount
+* If the **ReadBeneficiariesDetail** is granted by the PSU:     
+    * OBReadBeneficiary3/Data/Beneficiary/CreditorAgent **may** be returned if applicable to the account and ASPSP (0..1) 
+    * OBReadBeneficiary3/Data/Beneficiary/CreditorAccount **must** be returned (1..1)
 
 If the ReadPAN permission is granted by the PSU, the ASPSP may choose to populate the OBReadBeneficiary3/Data/Beneficiary/CreditorAccount/Identification with the unmasked PAN (if the PAN is being populated in the response).
 
 ### Data Dictionary
- | Name |Occurrence |XPath |EnhancedDefinition |Class |Codes |Pattern |
+
+| Name |Occurrence |XPath |EnhancedDefinition |Class |Codes |Pattern |
 | --- |--- |--- |--- |--- |--- |--- |
 | OBReadBeneficiary3 | |OBReadBeneficiary3 | |OBReadBeneficiary3 | | |
 | Data |1..1 |OBReadBeneficiary3/Data | |OBReadDataBeneficiary3 | | |
@@ -81,11 +94,14 @@ If the ReadPAN permission is granted by the PSU, the ASPSP may choose to populat
 | Name |0..1 |OBReadBeneficiary3/Data/Beneficiary/CreditorAccount/Name |The account name is the name or names of the account owner(s) represented at an account level, as displayed by the ASPSP's online channels. Note, the account name is not the product name or the nickname of the account. |Max70Text | | |
 | SecondaryIdentification |0..1 |OBReadBeneficiary3/Data/Beneficiary/CreditorAccount/SecondaryIdentification |This is secondary identification of the account, as assigned by the account servicing institution. This can be used by building societies to additionally identify accounts with a roll number (in addition to a sort code and account number combination). |Max34Text | | |
 
-## Usage Examples
-### Specific Account
- **Request** 
 
-```JavaScript
+## Usage Examples
+
+### Specific Account
+
+ **Request** **Get Account Beneficiaries Request**
+
+```
 GET /accounts/22289/beneficiaries HTTP/1.1
 Authorization: Bearer Az90SAOJklae
 x-fapi-auth-date:  Sun, 10 Sep 2017 19:43:31 GMT
@@ -93,12 +109,15 @@ x-fapi-customer-ip-address: 104.25.212.99
 x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Accept: application/json
 ```
- **Request** 
-```JavaScript
+
+ **Request** **Get Account Beneficiaries Response**
+
+```
 HTTP/1.1 200 OK
 x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Content-Type: application/json
-
+```
+```json
 {
   "Data": {
     "Beneficiary": [
@@ -121,10 +140,13 @@ Content-Type: application/json
     "TotalPages": 1
   }
 }
-```TABLE END
+```
+
 ### Bulk
- **Request** 
-```JavaScript
+
+ **Request** **Get Beneficiaries Request**
+
+```
 GET /beneficiaries HTTP/1.1
 Authorization: Bearer Az90SAOJklae
 x-fapi-auth-date:  Sun, 10 Sep 2017 19:43:31 GMT
@@ -132,12 +154,15 @@ x-fapi-customer-ip-address: 104.25.212.99
 x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Accept: application/json
 ```
- **Response** 
-```JavaScript
+
+ **Response** **Get Beneficiaries Response**
+
+```
 HTTP/1.1 200 OK
 x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Content-Type: application/json
-
+```
+```json
 {
   "Data": {
     "Beneficiary": [
