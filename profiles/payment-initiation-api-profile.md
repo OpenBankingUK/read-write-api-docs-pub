@@ -124,7 +124,7 @@ The figure below provides a **general** outline of a payment flow for all paymen
 
 The payment-order consent and payment-order resource in the following flow generalises for the different payment-order types. e.g. for a domestic payment, the payment-order consent resource is domestic-payment-consents; and the payment-order resource is domestic-payments. 
 
-![](./images/PaymentStatusModelTriangle.png)
+![Payments Flow](./images/PaymentStatusModelTriangle.png)
 
 #### Steps
 

@@ -64,7 +64,7 @@ Each of the Payment Initiation API resources are documented in the  [*Resources 
 
 The diagram below provides a general outline of a confirmation of funds request and flow using the Confirmation of Funds APIs. It assumes a CBPII has issued a card to a PSU, and the PSU would like to use a PSD2 in-scope account as a funding mechanism for that card.
 
-![](./images/CoFAPIv4.jpg)
+![Confirmation of Funds Flow](./images/CoFAPIv4.jpg)
 
 ####  Steps
 

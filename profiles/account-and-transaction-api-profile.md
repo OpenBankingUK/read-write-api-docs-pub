@@ -78,7 +78,7 @@ Each of the Account and Transaction API resources are documented in the  [*Resou
 
 The figure below provides a general outline of an account information request and flow using the Account Info APIs.
 
-![](./images/accountsapiv1.gif)
+![Accounts and Transactions Flow](./images/accountsapiv1.gif)
 
 #### Steps
 
