@@ -33,6 +33,7 @@ An account (AccountId) may have no standing orders set up, or may have multiple 
 ### UML Diagram
 
 ![ OBReadStandingOrder5.png ]( images/StandingOrders/OBReadStandingOrder5.png )
+
 Notes:
 * The **Creditor** **Account** and **CreditorAgent** blocks replicate what is used consistently throughout the Account Information APIs to identify an account.
 * For the /accounts/{AccountId}/standing-orders endpoint, the **Creditor** **Account** and **CreditorAgent** blocks represent the account that is receiving funds (so has been named the CreditorAccount for consistency with the PISP use case).
