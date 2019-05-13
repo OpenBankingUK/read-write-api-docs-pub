@@ -1,31 +1,40 @@
 # Direct Debits v3.1.2
+
 ## Endpoints
+
 Endpoints for the resource and available methods.
 
- |  |Resource |HTTP Operation |Endpoint |Mandatory? |Scope |Grant Type |Idempotency Key |Parameters |Request Object |Response Object |
+|  |Resource |HTTP Operation |Endpoint |Mandatory? |Scope |Grant Type |Idempotency Key |Parameters |Request Object |Response Object |
 | --- |--- |--- |--- |--- |--- |--- |--- |--- |--- |--- |
 | 1 |direct-debits |GET |GET /accounts/{AccountId}/direct-debits |Conditional |accounts |Authorization Code |No | | |OBReadDirectDebit1 |
 | 2 |direct-debits |GET |GET /direct-debits |Optional |accounts |Authorization Code |No |Pagination | |OBReadDirectDebit1 |
 
 ### GET /accounts/{AccountId}/direct-debits
+
 An ASPSP must provide this endpoint for AISPs to retrieve the direct-debits for a specific account identified by AccountId.
 
 ### GET /direct-debits
+
 An ASPSP may provide this endpoint for AISPs to retrieve direct-debits for all accounts that the PSU has consented to. This will retrieve the direct-debit resources for all authorised accounts linked to the account-request.
 
 ## Data Model
+
 ### Resource Definition
+
 A resource that contains a set of elements that describes the list of direct debits that have been set up on a specific account (AccountId).
 An account (AccountId) may have no direct debits set up, or may have multiple direct debits set up.
 
 ### UML Diagram
-![UML Diagram$](images/DirectDebits/OBReadDirectDebit1.gif  "UML Diagram")
+
+![ OBReadDirectDebit1.gif ]( images/DirectDebits/OBReadDirectDebit1.gif )
 
 ### Permission Codes
+
 The resource requires the ReadDirectDebits permission. The resource response payload does not differ depending on the permissions granted.
 
 ### Data Dictionary
- | Name |Occurrence |XPath |EnhancedDefinition |Class |Codes |Pattern |
+
+| Name |Occurrence |XPath |EnhancedDefinition |Class |Codes |Pattern |
 | --- |--- |--- |--- |--- |--- |--- |
 | OBReadDirectDebit1 | |OBReadDirectDebit1 | |OBReadDirectDebit1 | | |
 | Data |1..1 |OBReadDirectDebit1/Data | |OBReadDataDirectDebit1 | | |
@@ -40,10 +49,14 @@ The resource requires the ReadDirectDebits permission. The resource response pay
 | Amount |1..1 |OBReadDirectDebit1/Data/DirectDebit/PreviousPaymentAmount/Amount |A number of monetary units specified in an active currency where the unit of currency is explicit and compliant with ISO 4217. |OBActiveCurrencyAndAmount_SimpleType | |^\d{1,13}\.\d{1,5}$ |
 | Currency |1..1 |OBReadDirectDebit1/Data/DirectDebit/PreviousPaymentAmount/Currency |A code allocated to a currency by a Maintenance Agency under an international identification scheme, as described in the latest edition of the international standard ISO 4217 "Codes for the representation of currencies and funds". |ActiveOrHistoricCurrencyCode | |^[A-Z]{3,3}$ |
 
+
 ## Usage Examples
+
 ### Specific Account
- **Request** 
-```JavaScript
+
+ **Request** **Get Accounts Direct Debits Request**
+
+```
 GET /accounts/22289/direct-debits HTTP/1.1
 Authorization: Bearer Az90SAOJklae
 x-fapi-auth-date:  Sun, 10 Sep 2017 19:43:31 GMT
@@ -51,12 +64,15 @@ x-fapi-customer-ip-address: 104.25.212.99
 x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Accept: application/json
 ```
- **Response** 
-```JavaScript
+
+ **Response** **Get Accounts Direct Debits Response**
+
+```
 HTTP/1.1 200 OK
 x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Content-Type: application/json
-
+```
+```json
 {
   "Data": {
     "DirectDebit": [
@@ -81,11 +97,13 @@ Content-Type: application/json
     "TotalPages": 1
   }
 }
+```
+
+### Bulk
+
+ **Request** **Get Direct Debits Request**
 
 ```
-### Bulk
- **Request** 
-```JavaScript
 GET /direct-debits HTTP/1.1
 Authorization: Bearer Az90SAOJklae
 x-fapi-auth-date:  Sun, 10 Sep 2017 19:43:31 GMT
@@ -93,12 +111,15 @@ x-fapi-customer-ip-address: 104.25.212.99
 x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Accept: application/json
 ```
- **Response** 
-```JavaScript
+
+ **Response** **Get Direct Debits Response**
+
+```
 HTTP/1.1 200 OK
 x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Content-Type: application/json
-
+```
+```json
 {
   "Data": {
     "DirectDebit": [
@@ -136,4 +157,3 @@ Content-Type: application/json
   }
 }
 ```
-
