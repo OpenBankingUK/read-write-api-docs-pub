@@ -1,4 +1,4 @@
-# Event Notification Subscription Profile <!-- omit in toc -->
+# Event Notification Subscription API Profile <!-- omit in toc -->
 
 1. [Overview](#overview)
 2. [Basics](#basics)

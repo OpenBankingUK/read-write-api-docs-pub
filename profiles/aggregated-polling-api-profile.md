@@ -1,4 +1,4 @@
-# Aggregated Polling Profile <!-- omit in toc -->
+# Aggregated Polling API Profile <!-- omit in toc -->
 
 1. [Overview](#overview)
 2. [Basics](#basics)

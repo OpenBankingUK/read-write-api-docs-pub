@@ -1,4 +1,4 @@
-# Real Time Event Notification Profile <!-- omit in toc -->
+# Real Time Event Notification API Profile <!-- omit in toc -->
 
 1. [Overview](#overview)
 2. [Basics](#basics)

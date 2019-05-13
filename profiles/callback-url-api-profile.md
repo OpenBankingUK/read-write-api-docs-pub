@@ -1,14 +1,14 @@
-# Callback URL Profile <!-- omit in toc -->
+# Callback URL API Profile <!-- omit in toc -->
 
 1. [Overview](#overview)
 2. [Basics](#basics)
-	1. [Overview](#overview-1)
-		1. [Steps](#steps)
-		2. [Sequence Diagram](#sequence-diagram)
-	2. [Callback URL](#callback-url)
-	3. [Release Management](#release-management)
-		1. [Callback-URL Resource](#callback-url-resource)
-	4. [Callback-URL per TPP](#callback-url-per-tpp)
+   1. [Overview](#overview-1)
+      1. [Steps](#steps)
+      2. [Sequence Diagram](#sequence-diagram)
+   2. [Callback URL](#callback-url)
+   3. [Release Management](#release-management)
+      1. [Callback-URL Resource](#callback-url-resource)
+   4. [Callback-URL per TPP](#callback-url-per-tpp)
 
 ## Overview
 
