@@ -20,10 +20,16 @@
 4. [Usage Examples](#usage-examples)
    1. [POST - Funds Confirmation Consent](#post---funds-confirmation-consent)
       1. [Example with all permitted fields](#example-with-all-permitted-fields)
+         1. [Request](#request)
+         2. [Response](#response)
    2. [GET - Funds Confirmation Consent](#get---funds-confirmation-consent)
       1. [Example with all permitted fields](#example-with-all-permitted-fields-1)
+         1. [Request](#request-1)
+         2. [Response](#response-1)
    3. [DELETE - Funds Confirmation Consent](#delete---funds-confirmation-consent)
       1. [Example with all permitted fields](#example-with-all-permitted-fields-2)
+         1. [Request](#request-2)
+         2. [Response](#response-2)
 
 ## Overview
 

@@ -14,7 +14,11 @@
 4. [Usage Examples](#usage-examples)
    1. [Funds Confirmation](#funds-confirmation)
       1. [Example with all permitted fields](#example-with-all-permitted-fields)
+         1. [Request](#request)
+         2. [Response](#response)
       2. [Example with a USD account](#example-with-a-usd-account)
+         1. [Request](#request-1)
+         2. [Response](#response-1)
 
 ## Overview
 
