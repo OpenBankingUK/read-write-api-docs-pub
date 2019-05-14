@@ -44,7 +44,7 @@ The resource differs depending on the permissions (ReadScheduledPaymentsBasic an
 * These objects **must not** be returned **without** the **ReadScheduledPaymentsDetail** permission: 
     * OBReadScheduledPayment2/Data/ScheduledPayment/CreditorAgent 
     * OBReadScheduledPayment2/Data/ScheduledPayment/CreditorAccount
-* If the **ReadScheduledPaymentsDetail** **** is granted by the PSU: 
+* If the **ReadScheduledPaymentsDetail** is granted by the PSU: 
     * OBReadScheduledPayment2/Data/ScheduledPayment/CreditorAgent**may** be returned if applicable to the account and ASPSP (0..1) 
     * OBReadScheduledPayment2/Data/ScheduledPayment/CreditorAccount **must** be returned (1..1)
 
