@@ -1,8 +1,9 @@
 # Parties v3.1.2
-## Endpoints
-Endpoints for the resource and available methods.
 
- |  |Resource |HTTP Operation |Endpoint |Mandatory? |Scope |Grant Type |Idempotency Key |Parameters |Request Object |Response Object |
+## Endpoints
+
+Endpoints for the resource and available methods.
+|  |Resource |HTTP Operation |Endpoint |Mandatory? |Scope |Grant Type |Idempotency Key |Parameters |Request Object |Response Object |
 | --- |--- |--- |--- |--- |--- |--- |--- |--- |--- |--- |
 | 1 |parties |GET |GET /accounts/{AccountId}/parties |Conditional |accounts |Authorization Code |No | | |OBReadParty3 |
 | 2 |parties |GET |GET /accounts/{AccountId}/party |Conditional |accounts |Authorization Code |No | | |OBReadParty2 |
@@ -10,36 +11,42 @@ Endpoints for the resource and available methods.
 
 
 ### GET /accounts/{AccountId}/parties
+
 If the ASPSP has chosen to implement the /accounts/{AccountId}/parties endpoint, the ASPSP may return details on the account owner(s)/holder(s) and operator(s).
 
 ### GET /accounts/{AccountId}/party
-If the ASPSP has chosen to implement the /accounts/{AccountId}/party endpoint, the ASPSP  **must**  return details on the account owner/holder:
 
-- In the case of a business, this will be the details of the business
-- In the case of a joint account, this will be the party that has given authorisation to the AISP to view the account. 
+If the ASPSP has chosen to implement the /accounts/{AccountId}/party endpoint, the ASPSP  **must**  return details on the account owner/holder:
+* In the case of a business, this will be the details of the business
+* In the case of a joint account, this will be the party that has given authorisation to the AISP to view the account.
 
 ### GET /party
-If the ASPSP has chosen to implement the /party endpoint, the ASPSP  **must**  return details on the user that has authorised the account-access-consent with the ASPSP:
 
-- In the case of a business account, this will be the details of the party that has given authorisation to the AISP to view the account.
-- In the case of a joint account, this will be the party that has given authorisation to the AISP to view the account.
+If the ASPSP has chosen to implement the /party endpoint, the ASPSP  **must**  return details on the user that has authorised the account-access-consent with the ASPSP:
+* In the case of a business account, this will be the details of the party that has given authorisation to the AISP to view the account.
+* In the case of a joint account, this will be the party that has given authorisation to the AISP to view the account.
 
 ## Data Model
+
 The data dictionary section gives the detail on the payload content for the Party endpoints.
 
 ### Reused Classes
 #### OBParty2
-This section describes the OBParty2 class which is reused as the Party resource in the OBReadParty2 and OBReadParty3 payloads.
+
+This section describes theOBParty2class which is reused as the Party resource in the OBReadParty2 and OBReadParty3 payloads.
 The Party resource contains a set of elements that describes a party. The party may be linked to a specific account.
 
-##### UML Diagram
-![UML Diagram$](images/Parties/OBParty2.gif  "UML Diagram")
+###### UML Diagram
 
-##### Notes
-- Each ASPSP must determine appropriate format for the full legal name. This format should be documented on ASPSP developer portals.
+![ OBParty2.gif ]( images/Parties/OBParty2.gif )
 
-##### Data Dictionary
- | Name |Occurence |XPath |EnhancedDefinition |Class |Codes |Pattern |
+**Notes**
+
+* Each ASPSP must determine appropriate format for the full legal name. This format should be documented on ASPSP developer portals.
+
+###### Data Dictionary
+
+| Name |Occurence |XPath |EnhancedDefinition |Class |Codes |Pattern |
 | --- |--- |--- |--- |--- |--- |--- |
 | OBParty2 | |OBParty2 | |OBParty2 | | |
 | PartyId |1..1 |OBParty2/PartyId |A unique and immutable identifier used to identify the customer resource. This identifier has no meaning to the account owner. |Max40Text | | |
@@ -67,48 +74,59 @@ The Party resource contains a set of elements that describes a party. The party 
 | CountrySubDivision |0..1 |OBParty2/Address/CountrySubDivision |Identifies a subdivision of a country eg, state, region, county. |Max35Text | | |
 | Country |1..1 |OBParty2/Address/Country |Nation with its own government, occupying a particular territory. |CountryCode | |^[A-Z]{2,2}$ |
 
+
 ### OBReadParty2
+
 The OBReadParty2 object will be used for the call to: 
-- GET /accounts/{AccountId}/party
-- GET /party
+* GET /accounts/{AccountId}/party
+* GET /party
 
 The response to GET /accounts/{AccountId}/party and GET /party (if available)  **must**  contain at most one party.
 
 #### UML Diagram
-![UML Diagram$](images/Parties/OBReadParty2.gif  "UML Diagram")
+
+![ OBReadParty2.gif ]( images/Parties/OBReadParty2.gif )
 
 #### Data Dictionary
- | Name |Occurrence |XPath |EnhancedDefinition |Class |Codes |Pattern |
+
+| Name |Occurrence |XPath |EnhancedDefinition |Class |Codes |Pattern |
 | --- |--- |--- |--- |--- |--- |--- |
 | OBReadParty2 | |OBReadParty2 | |OBReadParty2 | | |
 | Data |1..1 |OBReadParty2/Data | |OBReadDataParty2 | | |
 | Party |0..1 |OBReadParty2/Data/Party | |OBParty2 | | |
 
+
 ### OBReadParty3
+
 The OBReadParty3 object will be used for the call to: 
-- GET /accounts/{AccountId}/parties
+* GET /accounts/{AccountId}/parties
 
 The response to GET /accounts/{AccountId}/parties  **may**  contain multiple parties.
 
 #### UML Diagram
-![UML Diagram$](images/Parties/OBReadParty3.gif  "UML Diagram")
+
+![ OBReadParty3.gif ]( images/Parties/OBReadParty3.gif )
 
 #### Data Dictionary
- | Name |Occurrence |XPath |EnhancedDefinition |Class |Codes |Pattern |
+
+| Name |Occurrence |XPath |EnhancedDefinition |Class |Codes |Pattern |
 | --- |--- |--- |--- |--- |--- |--- |
 | OBReadParty3 | |OBReadParty3 | |OBReadParty3 | | |
 | Data |1..1 |OBReadParty3/Data | |OBReadDataParty3 | | |
 | Party |0..n |OBReadParty3/Data/Party | |OBParty2 | | |
 
-
 ### Permission Codes
-The ReadParty permission is required to access GET /accounts/{AccountId}/party or GET /accounts/{AccountId}/parties. The resource response payload does not differ depending on the permissions granted.
+
+The ReadPartypermission is required to access GET /accounts/{AccountId}/party or GET /accounts/{AccountId}/parties. The resource response payload does not differ depending on the permissions granted.
+
 The ReadPartyPSU permission is required to access GET /party. The resource response payload does not differ depending on the permissions granted.
 
 ## Usage Examples
+
 ### All Parties
- **Request** 
-```JavaScript
+ **Request Get Account Parties Request**
+
+```
 GET /accounts/22289/parties HTTP/1.1
 Authorization: Bearer Az90SAOJklae
 x-fapi-auth-date:  Sun, 10 Sep 2017 19:43:31 GMT
@@ -116,12 +134,15 @@ x-fapi-customer-ip-address: 104.25.212.99
 x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Accept: application/json
 ```
- **Response** 
-```JavaScript
+
+ **Response Get Account Parties Response**
+
+```
 HTTP/1.1 200 OK
 x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Content-Type: application/json
-
+```
+```json
 {
     "Data": {
         "Party": [
@@ -178,9 +199,12 @@ Content-Type: application/json
     }
 }
 ```
+
 ### All Parties
- **Request** 
-```JavaScript
+
+ **Request Get Parties Request**
+
+```
 GET /accounts/89019/parties HTTP/1.1
 Authorization: Bearer k4tsuc4r1
 x-fapi-auth-date:  Sun, 10 Sep 2018 19:43:31 GMT
@@ -188,12 +212,15 @@ x-fapi-customer-ip-address: 104.25.212.99
 x-fapi-interaction-id: 0761c465-0f8c-43d1-8952-f2cd7fa1aa8b
 Accept: application/json
 ```
- **Response** 
-```JavaScript
+
+ **Response** **Get Parties Response**
+
+```
 HTTP/1.1 200 OK
 x-fapi-interaction-id: 0761c465-0f8c-43d1-8952-f2cd7fa1aa8b
 Content-Type: application/json
-
+```
+```json
 {
     "Data": {
         "Party": [
@@ -264,9 +291,12 @@ Content-Type: application/json
     }
 }
 ```
+
 ### Account Owner
- **Request** 
-```JavaScript
+
+ **Request Get Account Party Request**
+
+```
 GET /accounts/22289/party HTTP/1.1
 Authorization: Bearer Az90SAOJklae
 x-fapi-auth-date:  Sun, 10 Sep 2017 19:43:31 GMT
@@ -274,12 +304,15 @@ x-fapi-customer-ip-address: 104.25.212.99
 x-fapi-interaction-id: 7f570e68-c7f0-44e2-a934-a854d2ca8cca
 Accept: application/json
 ```
- **Response** 
-```JavaScript
+
+ **Response Get Account Party Response**
+
+```
 HTTP/1.1 200 OK
 x-fapi-interaction-id: 7f570e68-c7f0-44e2-a934-a854d2ca8cca
 Content-Type: application/json
-
+```
+```json
 {
   "Data": {
     "Party": {
@@ -305,9 +338,12 @@ Content-Type: application/json
   }
 }
 ```
+
 ### Authorised User
- **Request** 
-```JavaScript
+
+ **Request Get Party Request**
+
+```
 GET /party HTTP/1.1
 Authorization: Bearer Az90SAOJklae
 x-fapi-auth-date:  Sun, 10 Sep 2017 19:43:31 GMT
@@ -315,12 +351,15 @@ x-fapi-customer-ip-address: 104.25.212.99
 x-fapi-interaction-id: 7903ae4f-bbdf-4291-bb23-bd44daf7bc24
 Accept: application/json
 ```
- **Response** 
-```JavaScript 
+
+ **Response** **Get Party Response**
+
+```
 HTTP/1.1 200 OK
 x-fapi-interaction-id: 7903ae4f-bbdf-4291-bb23-bd44daf7bc24
 Content-Type: application/json
-
+```
+```json
 {
   "Data": {
     "Party": {
@@ -338,5 +377,3 @@ Content-Type: application/json
   }
 }
 ```
-
-
