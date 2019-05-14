@@ -16,7 +16,7 @@ Further analysis required:-
 
 | Product Section |Fields to be included |
 | --- |--- |
-| BCA (We’ll rename this “Product” and merge BCA and CoreProduct attributes) |<br><br><li>Name <li>ProductType (“BCA”) <li>Product Segment (e.g. “Startup”,”Switcher”,… ) <li>Open Data Product ID (Mandatory, if product info is available on Open Data BCA API) <li>Fee-free period |
+| BCA (We’ll rename this “Product” and merge BCA and CoreProduct attributes) |<li>Name <li>ProductType (“BCA”) <li>Product Segment (e.g. “Startup”,”Switcher”,… ) <li>Open Data Product ID (Mandatory, if product info is available on Open Data BCA API) <li>Fee-free period |
 | CoreProduct |**None** – Will be merged in to new “Product” section. |
 | BCAMarketingState |**None** – Sections will only include current state information, so this section is not required. |
 | CreditInterest |<br><br><li>TierBandSet fields (excluding credit interest eligibility). <li>All TierBand fields <li>**Note: Only current state credit interest information is required. Where the interest rate(s) have been negotiated, the actual rates applied to the account should be provided.** |
