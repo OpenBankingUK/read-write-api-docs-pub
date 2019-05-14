@@ -1,4 +1,70 @@
-# Endpoints
+# Domestic Standing Orders <!-- omit in toc -->
+
+1. [Overview](#overview)
+   1. [Profile Compatibility](#profile-compatibility)
+2. [Endpoints](#endpoints)
+   1. [POST /domestic-standing-order-consents](#post-domestic-standing-order-consents)
+      1. [Status](#status)
+   2. [GET /domestic-standing-order-consents/{ConsentId}](#get-domestic-standing-order-consentsconsentid)
+      1. [Status](#status-1)
+   3. [POST /domestic-standing-orders](#post-domestic-standing-orders)
+      1. [Status](#status-2)
+   4. [GET /domestic-standing-orders/{DomesticStandingOrderId}](#get-domestic-standing-ordersdomesticstandingorderid)
+      1. [Status](#status-3)
+   5. [GET /domestic-standing-orders/{DomesticStandingOrderId}/payment-details](#get-domestic-standing-ordersdomesticstandingorderidpayment-details)
+      1. [Status](#status-4)
+   6. [State Model](#state-model)
+      1. [Payment Order Consent](#payment-order-consent)
+      2. [Payment Order](#payment-order)
+         1. [Multiple Authorisation](#multiple-authorisation)
+3. [Data Model](#data-model)
+   1. [Reused Classes](#reused-classes)
+      1. [OBDomesticStandingOrder3](#obdomesticstandingorder3)
+         1. [UML Diagram](#uml-diagram)
+         2. [Notes](#notes)
+            1. [Frequency Examples](#frequency-examples)
+         3. [Data Dictionary](#data-dictionary)
+   2. [Domestic Standing Order Consent - Request](#domestic-standing-order-consent---request)
+      1. [UML Diagram](#uml-diagram-1)
+      2. [Notes](#notes-1)
+      3. [Data Dictionary](#data-dictionary-1)
+   3. [Domestic Standing Order Consent - Response](#domestic-standing-order-consent---response)
+      1. [UML Diagram](#uml-diagram-2)
+      2. [Notes](#notes-2)
+      3. [Data Dictionary](#data-dictionary-2)
+   4. [Domestic Standing Order - Request](#domestic-standing-order---request)
+      1. [UML Diagram](#uml-diagram-3)
+      2. [Notes](#notes-3)
+      3. [Data Dictionary](#data-dictionary-3)
+   5. [Domestic Standing Order - Response](#domestic-standing-order---response)
+      1. [UML Diagram](#uml-diagram-4)
+      2. [Notes](#notes-4)
+      3. [Data Dictionary](#data-dictionary-4)
+   6. [Domestic Standing Order - Payment Details - Response](#domestic-standing-order---payment-details---response)
+      1. [UML Diagram](#uml-diagram-5)
+      2. [Data Dictionary](#data-dictionary-5)
+4. [Usage Examples](#usage-examples)
+      1. [Create Domestic Standing Order Consent](#create-domestic-standing-order-consent)
+         1. [POST /domestic-standing-order-consents](#post-domestic-standing-order-consents-1)
+         2. [POST /domestic-standing-order-consents response](#post-domestic-standing-order-consents-response)
+   1. [Create a Domestic Standing Order](#create-a-domestic-standing-order)
+      1. [POST /domestic-standing-orders request](#post-domestic-standing-orders-request)
+      2. [POST /domestic-standing-orders response](#post-domestic-standing-orders-response)
+   2. [Get a Domestic Standing Order Consent](#get-a-domestic-standing-order-consent)
+      1. [GET /domestic-standing-order-consents/{ConsentId}](#get-domestic-standing-order-consentsconsentid-1)
+      2. [GET /domestic-standing-order-consents response](#get-domestic-standing-order-consents-response)
+
+## Overview
+
+The Domestic Standing Orders resource is used by a PISP to initiate a Domestic Standing Order.
+
+This resource description should be read in conjunction with a compatible Payment Initiation API Profile.
+
+### Profile Compatibility
+
+For a list of profiles compatible with this resource, please see the [Compatibility Matrix]().
+
+## Endpoints
 
 | Resource |HTTP Operation |Endpoint |Mandatory ? |Scope |Grant Type |Message Signing |Idempotency Key |Request Object |Response Object |
 | -------- |-------------- |-------- |----------- |----- |---------- |--------------- |--------------- |-------------- |--------------- |
@@ -8,40 +74,33 @@
 | domestic-standing-orders |GET |GET /domestic-standing-orders/{DomesticStandingOrderId} |Mandatory (if resource POST implemented) |payments |Client Credentials |Signed Response |No |NA |OBWriteDomesticStandingOrderResponse4 |
 | payment-details |GET |GET /domestic-standing-orders/{DomesticStandingOrderId}/payment-details |Optional |payments |Client Credentials |Signed Response |No |NA |OBWritePaymentDetailsResponse1 |
 
+### POST /domestic-standing-order-consents
 
-## POST /domestic-standing-order-consents
-
-```POST /domestic-standing-order-consents```
-
-The API endpoint allows the PISP to ask an ASPSP to create a new  **domestic-standing-order-consent**  resource.
+The API endpoint allows the PISP to ask an ASPSP to create a new **domestic-standing-order-consent** resource.
 
 * The POST action indicates to the ASPSP that a domestic standing order consent has been staged. At this point, the PSU may not have been identified by the ASPSP, and the request payload may not contain any information of the account that should be debited.
-
 * The endpoint allows the PISP to send a copy of the consent (between PSU and PISP) to the ASPSP for the PSU to authorise.
+* The ASPSP creates the **domestic-standing-order-consent** resource and responds with a unique ConsentId to refer to the resource.
 
-* The ASPSP creates the  **domestic-standing-order-consent**  resource and responds with a unique ConsentId to refer to the resource.
+#### Status
 
-### Status
-
-The default Status is "AwaitingAuthorisation&quot; immediately after the domestic-standing-order-consent has been created.
+The default Status is "AwaitingAuthorisation" immediately after the domestic-standing-order-consent has been created.
 
 | Status |
 | --- |
 | AwaitingAuthorisation |
 
-## GET /domestic-standing-order-consents/{ConsentId}
-
-```GET /domestic-standing-order-consents/{ConsentId```
+### GET /domestic-standing-order-consents/{ConsentId}
 
 A PISP can optionally retrieve a payment consent resource that they have created to check its status. 
 
-### Status
+#### Status
 
-Once the PSU authorises the payment-consent resource , the Status of the payment-consent resource will be updated with &quot;Authorised&quot;.
+Once the PSU authorises the payment-consent resource , the Status of the payment-consent resource will be updated with "Authorised".
 
-If the PSU rejects the consent or the domestic-standing-order-consent has failed some other ASPSP validation, the Status will be set to &quot;Rejected&quot;.
+If the PSU rejects the consent or the domestic-standing-order-consent has failed some other ASPSP validation, the Status will be set to "Rejected".
 
-Once a domestic-standing-order has been successfully created using the domestic-standing-order-consent, the Status of the domestic-standing-order-consent will be set to &quot;Consumed&quot;.
+Once a domestic-standing-order has been successfully created using the domestic-standing-order-consent, the Status of the domestic-standing-order-consent will be set to "Consumed".
 
 The available Status codes for the domestic-standing-order-consent resource are:
 
@@ -52,23 +111,18 @@ The available Status codes for the domestic-standing-order-consent resource are:
 | Authorised |
 | Consumed |
 
-## POST /domestic-standing-orders
-
-```POST /domestic-standing-orders```
+### POST /domestic-standing-orders
 
 Once the domestic-standing-order-consent has been authorised by the PSU, the PISP can proceed to submitting the domestic-standing-order for processing:
 
-* This is done by making a POST request to the  **domestic-standing-orders**  endpoint.
-
+* This is done by making a POST request to the **domestic-standing-orders** endpoint.
 * This request is an instruction to the ASPSP to begin the domestic standing order journey. The PISP must submit the domestic standing order immediately, however, there are some scenarios where the ASPSP may not warehouse the domestic standing order immediately (e.g. busy periods at the ASPSP).
-
-* The PISP  **must** ensure that the Initiation and Risk sections of the domestic-standing-order match the corresponding Initiation and Risk sections of the domestic-standing-order-consent resource. If the two do not match, the ASPSP  **must not**  process the request and  **must** respond with a 400 (Bad Request).
-
+* The PISP **must** ensure that the Initiation and Risk sections of the domestic-standing-order match the corresponding Initiation and Risk sections of the domestic-standing-order-consent resource. If the two do not match, the ASPSP **must not** process the request and **must** respond with a 400 (Bad Request).
 * Any operations on the domestic-standing-order resource will not result in a Status change for the domestic-standing-order resource.
 
-### Status
+#### Status
 
-A domestic-standing-order can only be created if its corresponding domestic-standing-order-consent resource has the status of &quot;Authorised&quot;. 
+A domestic-standing-order can only be created if its corresponding domestic-standing-order-consent resource has the status of "Authorised". 
 
 The domestic-standing-order resource that is created successfully must have one of the following Status codes:
 
@@ -78,14 +132,11 @@ The domestic-standing-order resource that is created successfully must have one 
 | InitiationFailed |
 | InitiationCompleted |
 
-## GET /domestic-standing-orders/{DomesticStandingOrderId}
-
-```GET /domestic-standing-orders/{DomesticStandingOrderId}```
+### GET /domestic-standing-orders/{DomesticStandingOrderId}
 
 A PISP can retrieve the domestic-standing-order to check its status.
 
-### Status
-
+#### Status
 
 The domestic-standing-order resource must have one of the following Status codes:
 
@@ -95,13 +146,11 @@ The domestic-standing-order resource must have one of the following Status codes
 | InitiationCompleted |
 | Cancelled |
 
-## GET /domestic-standing-orders/{DomesticStandingOrderId}/payment-details
-
-```GET /domestic-standing-orders/{DomesticStandingOrderId}/payment-details```
+### GET /domestic-standing-orders/{DomesticStandingOrderId}/payment-details
 
 A PISP can retrieve the Details of the underlying payment transaction via this endpoint. This resource allows ASPSPs to return richer list of Payment Statuses, and if available payment scheme related statuses.
 
-### Status
+#### Status
 
 The domestic-standing-orders - payment-details must have one of the following PaymentStatusCode code-set enumerations:
 
@@ -128,11 +177,11 @@ The domestic-standing-orders - payment-details must have one of the following Pa
 | Received |
 | RejectedCancellationRequest |
 
-## State Model
+### State Model
 
-### Payment Order Consent
+#### Payment Order Consent
 
-The state model for the domestic-standing-order-consent resource follows the generic consent state model. However, does not use the &quot;Revoked&quot; status, as the consent for a domestic-standing-order is not a long-lived consent.
+The state model for the domestic-standing-order-consent resource follows the generic consent state model. However, does not use the "Revoked" status, as the consent for a domestic-standing-order is not a long-lived consent.
 
 ![Payment Order Consent](images/image2018-5-18_10-24-21.png)
 
@@ -145,7 +194,7 @@ The definitions for the Status:
 | 3 |Authorised |The consent resource has been successfully authorised. |
 | 4 |Consumed |The consented action has been successfully completed. This does not reflect the status of the consented action. |
 
-### Payment Order
+#### Payment Order
 
 The state model for the domestic-standing-order resource describes the initiation status only. I.e., not the subsequent execution of the domestic-standing-order.
 
@@ -160,7 +209,7 @@ The definitions for the Status:
 | 3 |InitiationCompleted |The initiation of the payment order is complete. |
 | 4 |Cancelled |Payment initiation has been successfully cancelled after having received a request for cancellation. |
 
-#### Multiple Authorisation
+##### Multiple Authorisation
 
 If the payment-order requires multiple authorisations, the Status of the multiple authorisations will be updated in the MultiAuthorisation object.
 
@@ -174,49 +223,38 @@ The definitions for the Status:
 | 2 |Rejected |The payment-order resource has been rejected by an authoriser. |
 | 3 |Authorised |The payment-order resource has been successfully authorised by all required authorisers. |
 
-# Data Model
+## Data Model
 
 The Data Dictionary section gives the detail on the payload content for the Domestic Standing Order API flows.
 
-## Reused Classes
+### Reused Classes
 
-### OBDomesticStandingOrder3
+#### OBDomesticStandingOrder3
 
 This section describes the OBDomesticStandingOrder3 class, which is reused as the Initiation object in the domestic-standing-order-consent and domestic-standing-order resources.
 
-#### UML Diagram
+##### UML Diagram
 
 ![Domestic Standing Order](images/OBDomesticStandingOrder3.png)
 
-####  Notes
+##### Notes
 
 For the OBDomesticStandingOrder3 Initiation object: 
 
 * All elements in the Initiation payload that are specified by the PISP must not be changed via the ASPSP, as this is part of formal consent from the PSU.
-
 * If the ASPSP is able to establish a problem with payload or any contextual error during the API call, the ASPSP must reject the domestic-standing-order-consent request immediately.
-
 * If the ASPSP establishes a problem with the domestic-standing-order-consent after the API call, the ASPSP can set the Status of the domestic-standing-order-consent resource to Rejected
-
-* DebtorAccount is  **optional**  as the PISP may not know the account identification details for the PSU.
-
+* DebtorAccount is **optional** as the PISP may not know the account identification details for the PSU.
 * If the DebtorAccount is specified by the PISP and is invalid for the PSU, then the domestic-standing-order-consent will be set to Rejected after PSU authentication.
-
 * Account Identification field usage:
-
-  * Where "UK.OBIE.SortCodeAccountNumber&quot; is specified as the SchemeName in the Account identification section (either DebtorAccount or CreditorAccount), the Identification field  **must**  be populated with the 6 digit Sort Code and 8 digit Account Number (a 14 digit field).
-
-  * Where the &quot;UK.OBIE.IBAN&quot; is specified as the SchemeName in the Account identification section (either DebtorAccount or CreditorAccount), the Identification field  **must**  be populated with the full IBAN.
-
-* The Permission field is restricted to &quot;Create&quot;, however, may be extended to &quot;Update&quot; and &quot;Delete&quot; in a future iteration of the specification.
-
+  * Where "UK.OBIE.SortCodeAccountNumber" is specified as the SchemeName in the Account identification section (either DebtorAccount or CreditorAccount), the Identification field **must** be populated with the 6 digit Sort Code and 8 digit Account Number (a 14 digit field).
+  * Where the "UK.OBIE.IBAN" is specified as the SchemeName in the Account identification section (either DebtorAccount or CreditorAccount), the Identification field **must** be populated with the full IBAN.
+* The Permission field is restricted to "Create", however, may be extended to "Update" and "Delete" in a future iteration of the specification.
 * Either the NumberOfPayments or FinalPaymentDateTime must be specified (not both) if the domestic standing order is not open ended.
-
 * The structure allows a PISP to specify a domestic standing order with a different payment amount and date combinations: for the first payment, the recurring payment, and the final payment. The recurring payment (and date) must only be populated if different from the first payment (and date).
+* If the PISP requests a Frequency that is not supported by the ASPSP the ASPSP **must** respond with a 400 HTTP status code.
 
-* If the PISP requests a Frequency that is not supported by the ASPSP the ASPSP  **must**  respond with a 400 HTTP status code.
-
-##### Frequency Examples
+###### Frequency Examples
 
 | Frequency |Example |Details |
 | --------- |------- |------- |
@@ -231,7 +269,7 @@ For the OBDomesticStandingOrder3 Initiation object:
 | QtrDay |QtrDay:ENGLISH |Paid on the 25th March, 24th June, 29th September and 25th December. |
 
 
-#### Data Dictionary
+##### Data Dictionary
 
 | Name |Occurrence |XPath |EnhancedDefinition |Class |Codes |Pattern |
 | ---- |---------- |----- |------------------ |----- |----- |------- |
@@ -263,30 +301,26 @@ For the OBDomesticStandingOrder3 Initiation object:
 | SecondaryIdentification |0..1 |OBDomesticStandingOrder3/CreditorAccount/SecondaryIdentification |This is secondary identification of the account, as assigned by the account servicing institution. This can be used by building societies to additionally identify accounts with a roll number (in addition to a sort code and account number combination). |Max34Text | | |
 | SupplementaryData |0..1 |OBDomesticStandingOrder3/SupplementaryData |Additional information that can not be captured in the structured fields and/or any other specific block. |OBSupplementaryData1 | | |
 
-
-## Domestic Standing Order Consent - Request
+### Domestic Standing Order Consent - Request
 
 The OBWriteDomesticStandingOrderConsent4 object will be used for the call to:
 
 * POST /domestic-standing-order-consents
 
-### UML Diagram
+#### UML Diagram
 
 ![Domestic Standing Order Consent - Request](images/OBWriteDomesticStandingOrderConsent4.gif)
 
-###  Notes
+#### Notes
 
-The domestic-standing-consent  **request**  contains these objects:
+The domestic-standing-consent **request** contains these objects:
 
 * Initiation
-
 * Authorisation
-
 * SCASupportData
+* Risk
 
-* Risk.
-
-### Data Dictionary
+#### Data Dictionary
 
 | Name |Occurrence |XPath |EnhancedDefinition |Class |Codes |Pattern |
 | ---- |---------- |----- |------------------ |----- |----- |------- |
@@ -298,36 +332,29 @@ The domestic-standing-consent  **request**  contains these objects:
 | SCASupportData |0..1 |OBWriteDomesticStandingOrderConsent4/Data/SCASupportData |Supporting Data provided by TPP, when requesting SCA Exemption. |OBSCASupportData1 | | |
 | Risk |1..1 |OBWriteDomesticStandingOrderConsent4/Risk |The Risk section is sent by the initiating party to the ASPSP. It is used to specify additional details for risk scoring for Payments. |OBRisk1 | | |
 
-
-## Domestic Standing Order Consent - Response
+### Domestic Standing Order Consent - Response
 
 The OBWriteDomesticStandingOrderConsentResponse4 object will be used for a response to a call to:
 
 * POST /domestic-standing-order-consents
-
 * GET /domestic-standing-order-consents/{ConsentId}
 
-### UML Diagram
+#### UML Diagram
 
 ![Domestic Standing Order Consent - Response](images/OBWriteDomesticStandingOrderConsentResponse4.gif)
 
-### Notes
+#### Notes
 
-The domestic-standing-order-consent  **response**  contains the full  **original**  payload from the domestic-standing-order-consent  **request,**  with the following additional elements:
+The domestic-standing-order-consent **response** contains the full **original** payload from the domestic-standing-order-consent **request,** with the following additional elements:
 
 * ConsentId.
-
 * CreationDateTime the domestic-standing-order-consent resource was created.
-
 * Status and StatusUpdateDateTime of the domestic-standing-order-consent resource.
-
 * Permission field in the original request.
-
 * CutOffDateTime Behaviour is explained in Payment Initiation API Specification, Section - Payment Restrictions -&gt; CutOffDateTime API Behaviour.
-
 * Charges array - for the breakdown of applicable ASPSP charges.
 
-### Data Dictionary
+#### Data Dictionary
 
 | Name |Occurrence |XPath |EnhancedDefinition |Class |Codes |Pattern |
 | ---- |---------- |----- |------------------ |----- |----- |------- |
@@ -345,28 +372,25 @@ The domestic-standing-order-consent  **response**  contains the full  **original
 | SCASupportData |0..1 |OBWriteDomesticStandingOrderConsentResponse4/Data/SCASupportData |Supporting Data provided by TPP, when requesting SCA Exemption. |OBSCASupportData1 | | |
 | Risk |1..1 |OBWriteDomesticStandingOrderConsentResponse4/Risk |The Risk section is sent by the initiating party to the ASPSP. It is used to specify additional details for risk scoring for Payments. |OBRisk1 | | |
 
-
-## Domestic Standing Order - Request
+### Domestic Standing Order - Request
 
 The OBWriteDomesticStandingOrder3 object will be used for a call to:
 
 * POST /domestic-standing-orders
 
-### UML Diagram
+#### UML Diagram
 
 ![Domestic Standing Order - Request](images/OBWriteDomesticStandingOrder3.png)
 
-### Notes
+#### Notes
 
-The domestic-standing-order  **request**  object contains the: 
+The domestic-standing-order **request** object contains the: 
 
 * ConsentId.
-
 * The full Initiation and Risk objects from the domestic-standing-order-consent request.
+* The **Initiation** and **Risk** sections of the domestic-standing-order request **must** match the **Initiation** and **Risk** sections of the corresponding domestic-standing-order-consent request.
 
-* The  **Initiation** and **Risk**  sections of the domestic-standing-order request  **must**  match the  **Initiation** and **Risk** sections of the corresponding domestic-standing-order-consent request.
-
-### Data Dictionary
+#### Data Dictionary
 
 | Name |Occurrence |XPath |EnhancedDefinition |Class |Codes |Pattern |
 | ---- |---------- |----- |------------------ |----- |----- |------- |
@@ -376,20 +400,20 @@ The domestic-standing-order  **request**  object contains the:
 | Initiation |1..1 |OBWriteDomesticStandingOrder3/Data/Initiation |The Initiation payload is sent by the initiating party to the ASPSP. It is used to request movement of funds from the debtor account to a creditor for a domestic standing order. |OBDomesticStandingOrder3 | | |
 | Risk |1..1 |OBWriteDomesticStandingOrder3/Risk |The Risk section is sent by the initiating party to the ASPSP. It is used to specify additional details for risk scoring for Payments. |OBRisk1 | | |
 
-## Domestic Standing Order - Response
+### Domestic Standing Order - Response
 
 The OBWriteDomesticStandingOrderResponse4 object will be used for a response to a call to:
 
 * POST /domestic-standing-orders
 * GET /domestic-standing-orders/{DomesticStandingOrderId}
 
-### UML Diagram
+#### UML Diagram
 
 ![Domestic Standing Order - Response](images/OBWriteDomesticStandingOrderResponse4.png)
 
-### Notes
+#### Notes
 
-The domestic-standing-order  **response**  object contains the: 
+The domestic-standing-order **response** object contains the: 
 
 * DomesticStandingOrderId.
 * ConsentId.
@@ -399,7 +423,7 @@ The domestic-standing-order  **response**  object contains the:
 * The Initiation object from the domestic-standing-order-consent.
 * The MultiAuthorisation object if the domestic-standing-order resource requires multiple authorisations.
 
-### Data Dictionary
+#### Data Dictionary
 
 | Name |Occurrence |XPath |EnhancedDefinition |Class |Codes |Pattern |
 | ---- |---------- |----- |------------------ |----- |----- |------- |
@@ -414,17 +438,17 @@ The domestic-standing-order  **response**  object contains the:
 | Initiation |1..1 |OBWriteDomesticStandingOrderResponse4/Data/Initiation |The Initiation payload is sent by the initiating party to the ASPSP. It is used to request movement of funds from the debtor account to a creditor for a domestic standing order. |OBDomesticStandingOrder3 | | |
 | MultiAuthorisation |0..1 |OBWriteDomesticStandingOrderResponse4/Data/MultiAuthorisation | |OBMultiAuthorisation1 | | |
 
-## Domestic Standing Order - Payment Details - Response
+### Domestic Standing Order - Payment Details - Response
 
 The OBWritePaymentDetailsResponse1 object will be used for a response to a call to:
 
 * GET /domestic-standing-orders/{DomesticStandingOrderId}/payment-details
 
-### UML Diagram
+#### UML Diagram
 
 ![Domestic Standing Order - Payment Details - Response](images/OBWritePaymentDetailsResponse1.png)
 
-### Data Dictionary
+#### Data Dictionary
 
 | Name |Occurrence |XPath |EnhancedDefinition |Class |Codes |Pattern |
 | ---- |---------- |----- |------------------ |----- |----- |------- |
@@ -432,7 +456,7 @@ The OBWritePaymentDetailsResponse1 object will be used for a response to a call 
 | Data |1..1 |OBWritePaymentDetailsResponse1/Data | |OBWriteDataPaymentOrderStatusResponse1 | | |
 | PaymentStatus |0..unbounded |OBWritePaymentDetailsResponse1/Data/PaymentStatus |Payment status details. |OBWritePaymentDetails1 | | |
 
-# Usage Examples
+## Usage Examples
 
 This set of flows and payload examples are for creating and retrieving a domestic standing order through a PISP:
 
@@ -493,9 +517,9 @@ ASPSP Resource Server -> PISP: HTTP 201 (Created), DomesticStandingOrder resourc
 ```
 </details>
 
-### Create Domestic Standing Order Consent
+#### Create Domestic Standing Order Consent
 
-**POST /domestic-standing-order-consents** 
+##### POST /domestic-standing-order-consents
 
 ```
 POST /domestic-standing-order-consents HTTP/1.1
@@ -548,7 +572,7 @@ Accept: application/json
 }
 ```
 
- **POST /domestic-standing-order-consents response** 
+##### POST /domestic-standing-order-consents response
 
 ```
 HTTP/1.1 201 Created
@@ -556,6 +580,7 @@ x-jws-signature: V2hhdCB3ZSBnb3QgaGVyZQ0K..aXMgZmFpbHVyZSB0byBjb21tdW5pY2F0ZQ0K
 x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Content-Type: application/json
 ```
+
 ```json
 {
   "Data": {
@@ -603,10 +628,9 @@ Content-Type: application/json
 }
 
 ```
-
 ### Create a Domestic Standing Order
 
- **POST /domestic-standing-orders request** 
+#### POST /domestic-standing-orders request
 
 ```
 POST /domestic-standing-orders HTTP/1.1
@@ -619,6 +643,7 @@ x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Content-Type: application/json
 Accept: application/json
 ```
+
 ```json
 {
   "Data": {
@@ -659,7 +684,7 @@ Accept: application/json
 
 ```
 
-**POST /domestic-standing-orders response** 
+#### POST /domestic-standing-orders response
 
 ```
 HTTP/1.1 201 Created
@@ -667,6 +692,7 @@ x-jws-signature: V2hhdCB3ZSBnb3QgaGVyZQ0K..aXMgZmFpbHVyZSB0byBjb21tdW5pY2F0ZQ0K
 x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Content-Type: application/json
 ```
+
 ```json
 {
   "Data": {
@@ -716,7 +742,7 @@ Content-Type: application/json
 
 ### Get a Domestic Standing Order Consent
 
-**GET /domestic-standing-order-consents/{ConsentId}** 
+#### GET /domestic-standing-order-consents/{ConsentId}
 
 ```
 GET /domestic-standing-order-consents/SOC-100 HTTP/1.1
@@ -727,13 +753,14 @@ x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Accept: application/json
 ```
 
-**GET /domestic-standing-order-consents response** 
+#### GET /domestic-standing-order-consents response
 
 ```
 HTTP/1.1 200 OK
 x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Content-Type: application/json
 ```
+
 ```json
 {
   "Data": {

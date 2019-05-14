@@ -1,7 +1,67 @@
+# Domestic Scheduled Payments  <!-- omit in toc -->
 
-# Domestic Scheduled Payment v3.1.2
+1. [Overview](#overview)
+   1. [Profile Compatibility](#profile-compatibility)
+2. [Endpoints](#endpoints)
+   1. [POST /domestic-scheduled-payment-consents](#post-domestic-scheduled-payment-consents)
+      1. [Status](#status)
+   2. [GET /domestic-scheduled-payment-consents/{ConsentId}](#get-domestic-scheduled-payment-consentsconsentid)
+      1. [Status](#status-1)
+   3. [POST /domestic-scheduled-payments](#post-domestic-scheduled-payments)
+      1. [Status](#status-2)
+   4. [GET /domestic-scheduled-payments/{DomesticScheduledPaymentId}](#get-domestic-scheduled-paymentsdomesticscheduledpaymentid)
+      1. [Status](#status-3)
+   5. [GET /domestic-scheduled-payments/{DomesticScheduledPaymentId}/payment-details](#get-domestic-scheduled-paymentsdomesticscheduledpaymentidpayment-details)
+      1. [Status](#status-4)
+   6. [State Model](#state-model)
+      1. [Payment Order Consent](#payment-order-consent)
+      2. [Payment Order](#payment-order)
+         1. [Multiple Authorisation](#multiple-authorisation)
+3. [Data Model](#data-model)
+   1. [Reused Classes](#reused-classes)
+      1. [OBDomesticScheduled2](#obdomesticscheduled2)
+         1. [UML Diagram](#uml-diagram)
+         2. [Notes](#notes)
+         3. [Data Dictionary](#data-dictionary)
+   2. [Domestic Scheduled Payment Consent - Request](#domestic-scheduled-payment-consent---request)
+      1. [UML Diagram](#uml-diagram-1)
+      2. [Notes](#notes-1)
+      3. [Data Dictionary](#data-dictionary-1)
+   3. [Domestic Scheduled Payment Consent - Response](#domestic-scheduled-payment-consent---response)
+      1. [UML Diagram](#uml-diagram-2)
+      2. [Notes](#notes-2)
+      3. [Data Dictionary](#data-dictionary-2)
+   4. [Domestic Scheduled Payment - Request](#domestic-scheduled-payment---request)
+      1. [UML Diagram](#uml-diagram-3)
+      2. [Notes](#notes-3)
+      3. [Data Dictionary](#data-dictionary-3)
+   5. [Domestic Scheduled Payment - Response](#domestic-scheduled-payment---response)
+      1. [UML Diagram](#uml-diagram-4)
+      2. [Notes](#notes-4)
+      3. [Data Dictionary](#data-dictionary-4)
+   6. [Domestic Schedule Payment Order - Payment Details - Response](#domestic-schedule-payment-order---payment-details---response)
+      1. [UML Diagram](#uml-diagram-5)
+      2. [Data Dictionary](#data-dictionary-5)
+4. [Usage Examples](#usage-examples)
+      1. [Create a Domestic Scheduled Payment Consent](#create-a-domestic-scheduled-payment-consent)
+         1. [POST /domestic-scheduled-payment-consents Request](#post-domestic-scheduled-payment-consents-request)
+         2. [POST /domestic-scheduled-payment-consents Response](#post-domestic-scheduled-payment-consents-response)
+      2. [Create a Domestic Scheduled Payment](#create-a-domestic-scheduled-payment)
+         1. [POST /domestic-scheduled-payments Request](#post-domestic-scheduled-payments-request)
+         2. [POST /domestic-scheduled-payments Response](#post-domestic-scheduled-payments-response)
 
-# Endpoints
+## Overview
+
+The Domestic Scheduled Payments resource is used by a PISP to initiate a Domestic Scheduled Payment.
+
+This resource description should be read in conjunction with a compatible Payment Initiation API Profile.
+
+### Profile Compatibility
+
+For a list of profiles compatible with this resource, please see the [Compatibility Matrix]().
+
+## Endpoints
+
 | Resource |HTTP Operation |Endpoint |Mandatory ? |Scope |Grant Type |Message Signing |Idempotency Key |Request Object |Response Object |
 | -------- |-------------- |-------- |----------- |----- |---------- |--------------- |--------------- |-------------- |--------------- |
 | domestic-scheduled-payment-consents |POST |POST /domestic-scheduled-payment-consents |Conditional |payments |Client Credentials |Signed Request Signed Response |Yes |OBWriteDomesticScheduledConsent3 |OBWriteDomesticScheduledConsentResponse3 |
@@ -10,9 +70,7 @@
 | domestic-scheduled-payments |GET |GET /domestic-scheduled-payments/{DomesticScheduledPaymentId} |Mandatory (if resource POST implemented) |payments |Client Credentials |Signed Response |No |NA |OBWriteDomesticScheduledResponse3 |
 | payment-details |GET |GET /domestic-scheduled-payments/{DomesticScheduledPaymentId}/payment-details |Optional |payments |Client Credentials |Signed Response |No |NA |OBWritePaymentDetailsResponse1 |
 
-## POST /domestic-scheduled-payment-consents
-
-``` POST /domestic-scheduled-payment-consents ```
+### POST /domestic-scheduled-payment-consents
 
 The API endpoint allows the PISP to ask an ASPSP to create a new **domestic-scheduled-payment-consent** resource.
 
@@ -20,7 +78,7 @@ The API endpoint allows the PISP to ask an ASPSP to create a new **domestic-sche
 * The endpoint allows the PISP to send a copy of the consent (between PSU and PISP) to the ASPSP for the PSU to authorise.
 * The ASPSP creates the **domestic-scheduled-payment-consent** resource and responds with a unique ConsentId to refer to the resource.
 
-### Status
+#### Status
 
 * The default Status is "AwaitingAuthorisation" immediately after the domestic-scheduled-payment-consent has been created.
 
@@ -28,13 +86,11 @@ The API endpoint allows the PISP to ask an ASPSP to create a new **domestic-sche
 | ------ |
 | AwaitingAuthorisation |
 
-## GET /domestic-scheduled-payment-consents/{ConsentId}
-
-``` GET /domestic-scheduled-payment-consents/{ConsentId} ```
+### GET /domestic-scheduled-payment-consents/{ConsentId}
 
 A PISP can optionally retrieve a payment consent resource that they have created to check its status. 
 
-### Status
+#### Status
 
 Once the PSU authorises the payment-consent resource, the Status of the payment-consent resource will be updated with "Authorised".
 
@@ -51,9 +107,7 @@ The available Status codes for the domestic-scheduled-payment-consent resource a
 | Authorised |
 | Consumed |
 
-## POST /domestic-scheduled-payments
-
-```POST /domestic-scheduled-payments```
+### POST /domestic-scheduled-payments
 
 Once the domestic-scheduled-payment-consent has been authorised by the PSU, the PISP can proceed to submitting the domestic-scheduled-payment for processing:
 
@@ -62,7 +116,7 @@ Once the domestic-scheduled-payment-consent has been authorised by the PSU, the 
 * The PISP **must** ensure that the Initiation and Risk sections of the domestic-scheduled-payment match the corresponding Initiation and Risk sections of the domestic-scheduled-payment-consent resource. If the two do not match, the ASPSP **must not** process the request and **must** respond with a 400 (Bad Request).
 * Any operations on the domestic-scheduled-payment resource will not result in a Status change for the domestic-scheduled-payment resource.
 
-### Status
+#### Status
 
 A domestic-scheduled-payment can only be created if its corresponding domestic-scheduled-payment-consent resource has the status of "Authorised". 
 
@@ -74,13 +128,12 @@ The domestic-scheduled-payment resource that is created successfully must have o
 | InitiationFailed |
 | InitiationCompleted |
 
-## GET /domestic-scheduled-payments/{DomesticScheduledPaymentId}
-
-```GET /domestic-scheduled-payments/{DomesticScheduledPaymentId}```
+### GET /domestic-scheduled-payments/{DomesticScheduledPaymentId}
 
 A PISP can retrieve the domestic-scheduled-payment to check its status.
 
-### Status
+#### Status
+
 The domestic-scheduled-payment resource must have one of the following Status codes:
 
 | Status |
@@ -90,13 +143,11 @@ The domestic-scheduled-payment resource must have one of the following Status co
 | InitiationCompleted |
 | Cancelled |
 
-## GET /domestic-scheduled-payments/{DomesticScheduledPaymentId}/payment-details
-
-```GET /domestic-scheduled-payments/{DomesticScheduledPaymentId}/payment-details```
+### GET /domestic-scheduled-payments/{DomesticScheduledPaymentId}/payment-details
 
 A PISP can retrieve the Details of the underlying payment transaction via this endpoint. This resource allows ASPSPs to return richer list of Payment Statuses, and if available payment scheme related statuses.
 
-### Status
+#### Status
 
 The domestic-scheduled-payments - payment-details must have one of the following PaymentStatusCode code-set enumerations:
 
@@ -123,9 +174,9 @@ The domestic-scheduled-payments - payment-details must have one of the following
 | Received |
 | RejectedCancellationRequest |
 
-## State Model
+### State Model
 
-### Payment Order Consent
+#### Payment Order Consent
 
 The state model for the domestic-scheduled-payment-consent resource follows the generic consent state model. However, does not use the "Revoked" status, as the consent for a domestic-scheduled-payment is not a long-lived consent.
 
@@ -140,7 +191,7 @@ The definitions for the Status:
 | 3 |Authorised |The consent resource has been successfully authorised. |
 | 4 |Consumed |The consented action has been successfully completed. This does not reflect the status of the consented action. |
 
-### Payment Order
+#### Payment Order
 
 The state model for the domestic-scheduled-payment resource describes the initiation status only. I.e., not the subsequent execution of the domestic-scheduled-payment.
 
@@ -155,7 +206,7 @@ The definitions for the Status:
 | 3 |InitiationCompleted |The initiation of the payment order is complete. |
 | 4 |Cancelled |Payment initiation has been successfully cancelled after having received a request for cancellation. |
 
-### Multiple Authorisation
+##### Multiple Authorisation
 
 If the payment-order requires multiple authorisations, the Status of the multiple authorisations will be updated in the MultiAuthorisation object.
 
@@ -169,42 +220,38 @@ The definitions for the Status:
 | 2 |Rejected |The payment-order resource has been rejected by an authoriser. |
 | 3 |Authorised |The payment-order resource has been successfully authorised by all required authorisers. |
 
-# Data Model
+## Data Model
+
 The data dictionary section gives the detail on the payload content for the Domestic Scheduled Payment API flows.
 
-## Reused Classes
+### Reused Classes
 
-### OBDomesticScheduled2
+#### OBDomesticScheduled2
 
 This section describes the OBDomesticScheduled2 class which is reused as the Initiation object in the domestic-scheduled-payment-consent and domestic-scheduled-payment resources.
 
-#### UML Diagram
+##### UML Diagram
 
 ![OBDomesticScheduled2](images/OBDomesticScheduled2.gif)
 
-#### Notes
+##### Notes
 
 For the OBDomesticScheduled2 Initiation object:  
 
 * All elements in the Initiation payload that are specified by the PISP must not be changed via the ASPSP, as this is part of formal consent from the PSU.
-
 * If the ASPSP is able to establish a problem with payload or any contextual error during the API call, the ASPSP must reject the domestic-scheduled-payment-consent consent request immediately.
-
 * If the ASPSP establishes a problem with the domestic-scheduled-payment-consent after the API call, the ASPSP must set the Status of the domestic-scheduled-payment-consent resource to Rejected.
-
 * DebtorAccount is **optional** as the PISP may not know the account identification details for the PSU.
 * If the DebtorAccount is specified by the PISP and is invalid for the PSU, then the domestic-scheduled-payment-consent will be set to Rejected after PSU authentication.
 Account Identification field usage:
-
   * Where "UK.OBIE.SortCodeAccountNumber" is specified as the SchemeName in the Account identification section (either DebtorAccount or CreditorAccount), the Identification field **must** be populated with the 6 digit Sort Code and 8 digit Account Number (a 14 digit field).
-
   * Where the "UK.OBIE.IBAN" is specified as the SchemeName in the Account identification section (either DebtorAccount or CreditorAccount), the Identification field **must** be populated with the full IBAN.
   * Neither the InstructionIdentification nor EndToEndIdentification will be used as the domestic-payment-consent resource identifier (ConsentId) as the ConsentId **must** be uniquely generated by the ASPSP.
 * Permission field is restricted to "Create", however, may be extended to "Update" and "Delete" in a future iteration of the specification.
 * LocalInstrument is the requested payment scheme for execution. This is a free-text field.
 * RequestedExecutionDateTime allows a PISP to specify the date for an ASPSP to execute the domestic scheduled payment.
 
-#### Data Dictionary
+##### Data Dictionary
 
 | Name |Occurrence |XPath |EnhancedDefinition |Class |Codes |Pattern |
 | ---- |---------- |----- |------------------ |----- |----- |------- |
@@ -242,25 +289,26 @@ Account Identification field usage:
 | Reference |0..1 |OBDomesticScheduled2/RemittanceInformation/Reference |Unique reference, as assigned by the creditor, to unambiguously refer to the payment transaction. Usage: If available, the initiating party should provide this reference in the structured remittance information, to enable reconciliation by the creditor upon receipt of the amount of money. If the business context requires the use of a creditor reference or a payment remit identification, and only one identifier can be passed through the end-to-end chain, the creditor's reference or payment remittance identification should be quoted in the end-to-end transaction identification. OB: The Faster Payments Scheme can only accept 18 characters for the ReferenceInformation field - which is where this ISO field will be mapped. |Max35Text | | |
 | SupplementaryData |0..1 |OBDomesticScheduled2/SupplementaryData |Additional information that can not be captured in the structured fields and/or any other specific block. |OBSupplementaryData1 | | |
 
-## Domestic Scheduled Payment Consent - Request
+### Domestic Scheduled Payment Consent - Request
 
 The OBWriteDomesticScheduledConsent3 object will be used for the call to:
 
 * POST /domestic-scheduled-payment-consents
 
-### UML Diagram
+#### UML Diagram
 
 ![Domestic Scheduled Payment Consent - Request](images/OBWriteDomesticScheduledConsent3.gif)
 
-### Notes
+#### Notes
+
 The domestic-scheduled-payment-consent **request** contains these objects:
 
 * Initiation
 * Authorisation
 * SCASupportData
-* Risk.
+* Risk
 
-### Data Dictionary
+#### Data Dictionary
 
 | Name |Occurrence |XPath |EnhancedDefinition |Class |Codes |Pattern |
 | ---- |---------- |----- |------------------ |----- |----- |------- |
@@ -272,17 +320,19 @@ The domestic-scheduled-payment-consent **request** contains these objects:
 | SCASupportData |0..1 |OBWriteDomesticScheduledConsent3/Data/SCASupportData |Supporting Data provided by TPP, when requesting SCA Exemption. |OBSCASupportData1 | | |
 | Risk |1..1 |OBWriteDomesticScheduledConsent3/Risk |The Risk section is sent by the initiating party to the ASPSP. It is used to specify additional details for risk scoring for Payments. |OBRisk1 | | |
 
-## Domestic Scheduled Payment Consent - Response
+### Domestic Scheduled Payment Consent - Response
+
 The OBWriteDomesticScheduledConsentResponse3 object will be used for a response to a call to:
 
 * POST /domestic-scheduled-payment-consents
 * GET /domestic-scheduled-payment-consents/{ConsentId}
 
-### UML Diagram
+#### UML Diagram
 
 ![Domestic Scheduled Payment Consent - Response](images/OBWriteDomesticScheduledConsentResponse3.gif)
 
-### Notes
+#### Notes
+
 The domestic-scheduled-payment-consent **response** contains the full **original** payload from the domestic-scheduled-payment-consent **request** with these additional elements:
 
 * ConsentId.
@@ -294,7 +344,7 @@ The domestic-scheduled-payment-consent **response** contains the full **original
 * ExpectedSettlementDateTime for the domestic-scheduled-payment resource if created before CutOffDateTIme - the expected DateTime the payment will be received at the Creditor Account. If populated, the ASPSP must update the value with any changes (e.g., after PSU authorisation).
 * Charges array - for the breakdown of applicable ASPSP charges.
 
-### Data Dictionary
+#### Data Dictionary
 
 | Name |Occurrence |XPath |EnhancedDefinition |Class |Codes |Pattern |
 | ---- |---------- |----- |------------------ |----- |----- |------- |
@@ -314,16 +364,18 @@ The domestic-scheduled-payment-consent **response** contains the full **original
 | SCASupportData |0..1 |OBWriteDomesticScheduledConsentResponse3/Data/SCASupportData |Supporting Data provided by TPP, when requesting SCA Exemption. |OBSCASupportData1 | | |
 | Risk |1..1 |OBWriteDomesticScheduledConsentResponse3/Risk |The Risk section is sent by the initiating party to the ASPSP. It is used to specify additional details for risk scoring for Payments. |OBRisk1 | | |
 
-## Domestic Scheduled Payment - Request
+### Domestic Scheduled Payment - Request
+
 The OBWriteDomesticScheduled2 object will be used for a call to:
 
 * POST /domestic-scheduled-payments
 
-### UML Diagram
+#### UML Diagram
 
 ![Domestic Scheduled Payment - Request](images/OBWriteDomesticScheduled2.gif)
 
-### Notes
+#### Notes
+
 The domestic-scheduled-payment **request** object contains the: 
 
 * ConsentId.
@@ -331,7 +383,7 @@ The domestic-scheduled-payment **request** object contains the:
   
 The **Initiation** and **Risk** sections of the domestic-scheduled-payment request **must** match the **Initiation** and **Risk** sections of the corresponding domestic-scheduled-payment-consent request.
 
-### Data Dictionary
+#### Data Dictionary
 
 | Name |Occurrence |XPath |EnhancedDefinition |Class |Codes |Pattern |
 | ---- |---------- |----- |------------------ |----- |----- |------- |
@@ -341,18 +393,19 @@ The **Initiation** and **Risk** sections of the domestic-scheduled-payment reque
 | Initiation |1..1 |OBWriteDomesticScheduled2/Data/Initiation |The Initiation payload is sent by the initiating party to the ASPSP. It is used to request movement of funds from the debtor account to a creditor for a single scheduled domestic payment. |OBDomesticScheduled2 | | |
 | Risk |1..1 |OBWriteDomesticScheduled2/Risk |The Risk section is sent by the initiating party to the ASPSP. It is used to specify additional details for risk scoring for Payments. |OBRisk1 | | |
 
-## Domestic Scheduled Payment - Response
+### Domestic Scheduled Payment - Response
 
 The OBWriteDomesticScheduledResponse3 object will be used for a response to a call to:
 
 * POST /domestic-scheduled-payments
 * GET /domestic-scheduled-payments/{DomesticScheduledPaymentId}
 
-### UML Diagram
+#### UML Diagram
 
 ![Domestic Scheduled Payment - Response](images/OBWriteDomesticScheduledResponse3.png)
 
-### Notes
+#### Notes
+
 The domestic-scheduled-payment **response** object contains the: 
 
 * DomesticScheduledPaymentId.
@@ -365,7 +418,7 @@ The domestic-scheduled-payment **response** object contains the:
 * The Initiation object from the domestic-scheduled-payment-consent.
 * The MultiAuthorisation object if the domestic-scheduled-payment resource requires multiple authorisations.
 
-### Data Dictionary
+#### Data Dictionary
 
 | Name |Occurrence |XPath |EnhancedDefinition |Class |Codes |Pattern |
 | ---- |---------- |----- |------------------ |----- |----- |------- |
@@ -382,16 +435,17 @@ The domestic-scheduled-payment **response** object contains the:
 | Initiation |1..1 |OBWriteDomesticScheduledResponse3/Data/Initiation |The Initiation payload is sent by the initiating party to the ASPSP. It is used to request movement of funds from the debtor account to a creditor for a single scheduled domestic payment. |OBDomesticScheduled2 | | |
 | MultiAuthorisation |0..1 |OBWriteDomesticScheduledResponse3/Data/MultiAuthorisation |The multiple authorisation flow response from the ASPSP. |OBMultiAuthorisation1 | | |
 
-## Domestic Schedule Payment Order - Payment Details - Response
+### Domestic Schedule Payment Order - Payment Details - Response
+
 The OBWritePaymentDetailsResponse1 object will be used for a response to a call to:
 
 * GET /domestic-scheduled-payments/{DomesticScheduledPaymentId}/payment-details
 
-### UML Diagram
+#### UML Diagram
 
 ![Domestic Schedule Payment Order - Payment Details - Response](images/OBWritePaymentDetailsResponse1.png)
 
-### Data Dictionary
+#### Data Dictionary
 
 | Name |Occurrence |XPath |EnhancedDefinition |Class |Codes |Pattern |
 | ---- |---------- |----- |------------------ |----- |----- |------- |
@@ -399,11 +453,11 @@ The OBWritePaymentDetailsResponse1 object will be used for a response to a call 
 | Data |1..1 |OBWritePaymentDetailsResponse1/Data | |OBWriteDataPaymentOrderStatusResponse1 | | |
 | PaymentStatus |0..unbounded |OBWritePaymentDetailsResponse1/Data/PaymentStatus |Payment status details. |OBWritePaymentDetails1 | | |
 
-# Usage Examples
+## Usage Examples
 
-### Create a Domestic Scheduled Payment Consent
+#### Create a Domestic Scheduled Payment Consent
 
-**POST /domestic-scheduled-payment-consents Request**
+##### POST /domestic-scheduled-payment-consents Request
 
 ```text
 POST /domestic-scheduled-payment-consents HTTP/1.1
@@ -417,6 +471,7 @@ x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Content-Type: application/json
 Accept: application/json
 ```
+
 ```json
 {
   "Data": {
@@ -450,7 +505,7 @@ Accept: application/json
 }
 ```
 
-**POST /domestic-scheduled-payment-consents Response**
+##### POST /domestic-scheduled-payment-consents Response
 
 ```text
 HTTP/1.1 201 Created
@@ -458,6 +513,7 @@ x-jws-signature: V2hhdCB3ZSBnb3QgaGVyZQ0K..aXMgZmFpbHVyZSB0byBjb21tdW5pY2F0ZQ0K
 x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Content-Type: application/json
 ```
+
 ```json
 {
   "Data": {
@@ -499,9 +555,9 @@ Content-Type: application/json
 }
 ```
 
-### Create a Domestic Scheduled Payment
+#### Create a Domestic Scheduled Payment
 
-**POST /domestic-scheduled-payments Request**
+##### POST /domestic-scheduled-payments Request
 
 ```text
 POST /domestic-scheduled-payments HTTP/1.1
@@ -514,6 +570,7 @@ x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Content-Type: application/json
 Accept: application/json
 ```
+
 ```json
 {
   "Data": {
@@ -547,7 +604,7 @@ Accept: application/json
 }
 ```
 
-**POST /domestic-scheduled-payments Response**
+##### POST /domestic-scheduled-payments Response
 
 ```text
 HTTP/1.1 201 Created
@@ -555,6 +612,7 @@ x-jws-signature: V2hhdCB3ZSBnb3QgaGVyZQ0K..aXMgZmFpbHVyZSB0byBjb21tdW5pY2F0ZQ0K
 x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Content-Type: application/json
 ```
+
 ```json
 {
   "Data": {

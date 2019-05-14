@@ -1,4 +1,86 @@
-# Endpoints
+# International Payments <!-- omit in toc -->
+
+1. [Overview](#overview)
+   1. [Profile Compatibility](#profile-compatibility)
+2. [Endpoints](#endpoints)
+   1. [POST /international-payment-consents](#post-international-payment-consents)
+      1. [Status](#status)
+3. [GET /international-payment-consents/{ConsentId}](#get-international-payment-consentsconsentid)
+      1. [Status](#status-1)
+   1. [GET /international-payment-consents/{ConsentId}/funds-confirmation](#get-international-payment-consentsconsentidfunds-confirmation)
+   2. [POST /international-payments](#post-international-payments)
+      1. [Status](#status-2)
+   3. [GET /international-payments/{InternationalPaymentId}](#get-international-paymentsinternationalpaymentid)
+      1. [Status](#status-3)
+   4. [GET /international-payments/{InternationalPaymentId}/payment-details](#get-international-paymentsinternationalpaymentidpayment-details)
+      1. [Status](#status-4)
+   5. [State Model](#state-model)
+      1. [Payment Order Consent](#payment-order-consent)
+      2. [Payment Order](#payment-order)
+         1. [Multiple Authorisation](#multiple-authorisation)
+4. [Data Model](#data-model)
+   1. [Reused Classes](#reused-classes)
+      1. [OBInternational2](#obinternational2)
+         1. [UML Diagram](#uml-diagram)
+         2. [Notes](#notes)
+         3. [Data Dictionary](#data-dictionary)
+      2. [OBExchangeRate2](#obexchangerate2)
+         1. [Data Dictionary](#data-dictionary-1)
+   2. [International Payment Consent - Request](#international-payment-consent---request)
+      1. [UML Diagram](#uml-diagram-1)
+      2. [Notes](#notes-1)
+      3. [Data Dictionary](#data-dictionary-2)
+   3. [International Payment Consent - Response](#international-payment-consent---response)
+      1. [UML Diagram](#uml-diagram-2)
+      2. [Notes](#notes-2)
+      3. [Data Dictionary](#data-dictionary-3)
+   4. [International Payment Consent Confirmation of Funds - Response](#international-payment-consent-confirmation-of-funds---response)
+      1. [UML Diagram](#uml-diagram-3)
+      2. [Notes](#notes-3)
+      3. [Data Dictionary](#data-dictionary-4)
+   5. [International Payment - Request](#international-payment---request)
+      1. [UML Diagram](#uml-diagram-4)
+      2. [Notes](#notes-4)
+      3. [Data Dictionary](#data-dictionary-5)
+   6. [International Payment - Response](#international-payment---response)
+      1. [UML Diagram](#uml-diagram-5)
+      2. [Notes](#notes-5)
+      3. [Data Dictionary](#data-dictionary-6)
+   7. [International Payment Order - Payment Details - Response](#international-payment-order---payment-details---response)
+      1. [UML Diagram](#uml-diagram-6)
+      2. [Data Dictionary](#data-dictionary-7)
+5. [Usage Examples](#usage-examples)
+   1. [Debit amount specified; ASPSP provides actual (guaranteed) FX rate, for limited time](#debit-amount-specified-aspsp-provides-actual-guaranteed-fx-rate-for-limited-time)
+      1. [POST /international-payment-consents request](#post-international-payment-consents-request)
+      2. [POST /international-payment-consents response](#post-international-payment-consents-response)
+   2. [Confirm Funds on International Payment Order Consent](#confirm-funds-on-international-payment-order-consent)
+      1. [GET / international-payment-consents/{ConsentId}/funds-confirmation Request](#get--international-payment-consentsconsentidfunds-confirmation-request)
+      2. [GET /international-payment-consents/{ConsentId}/funds-confirmation Response](#get-international-payment-consentsconsentidfunds-confirmation-response)
+   3. [Debit amount specified; ASPSP provides indicative FX rate](#debit-amount-specified-aspsp-provides-indicative-fx-rate)
+      1. [POST /international-payment-consents request](#post-international-payment-consents-request-1)
+      2. [POST /international-payment-consents response](#post-international-payment-consents-response-1)
+   4. [Debit amount specified; ASPSP provides a pre-booked FX rate](#debit-amount-specified-aspsp-provides-a-pre-booked-fx-rate)
+      1. [POST /international-payment-consents request](#post-international-payment-consents-request-2)
+      2. [POST /international-payment-consents response](#post-international-payment-consents-response-2)
+   5. [Credit amount specified; ASPSP provides actual (guaranteed) FX rate, for limited time](#credit-amount-specified-aspsp-provides-actual-guaranteed-fx-rate-for-limited-time)
+      1. [POST /international-payment-consents request](#post-international-payment-consents-request-3)
+      2. [POST /international-payment-consents response](#post-international-payment-consents-response-3)
+   6. [International payment with all charges paid by payer](#international-payment-with-all-charges-paid-by-payer)
+      1. [POST /international-payment-consents request](#post-international-payment-consents-request-4)
+      2. [POST /international-payment-consents response](#post-international-payment-consents-response-4)
+
+## Overview
+
+The International Payments resource is used by a PISP to initiate an International Payment.
+
+This resource description should be read in conjunction with a compatible Payment Initiation API Profile.
+
+### Profile Compatibility
+
+For a list of profiles compatible with this resource, please see the [Compatibility Matrix]().
+
+## Endpoints
+
 | Resource |HTTP Operation |Endpoint |Mandatory ? |Scope |Grant Type |Message Signing |Idempotency Key |Request Object |Response Object |
 | -------- |-------------- |-------- |----------- |----- |---------- |--------------- |--------------- |-------------- |--------------- |
 | international-payment-consents |POST |POST /international-payment-consents |Conditional |payments |Client Credentials |Signed Request Signed Response |Yes |OBWriteInternationalConsent3 |OBWriteInternationalConsentResponse3 |
@@ -8,21 +90,17 @@
 | international-payments |GET |GET /international-payments/{InternationalPaymentId} |Mandatory (if resource POST implemented) |payments |Client Credentials |Signed Response |No |NA |OBWriteInternationalResponse3 |
 | payment-details |GET |GET /international-payments/{InternationalPaymentId}/payment-details |Optional |payments |Client Credentials |Signed Response |No |NA |OBWritePaymentDetailsResponse1 |
 
-## POST /international-payment-consents 
-
-```POST /international-payment-consents```
+### POST /international-payment-consents 
 
 The API endpoint allows the PISP to ask an ASPSP to create a new **international-payment-consent** resource.
 
 * The POST action indicates to the ASPSP that a payment consent has been staged. At this point, the PSU may not have been identified by the ASPSP, and the request payload may not contain any information of the account that should be debited.
-
 * The endpoint allows the PISP to send a copy of the consent (between PSU and PISP) to the ASPSP for the PSU to authorise.
-
 * The ASPSP creates the **international-payment-consent** resource and responds with a unique ConsentId to refer to the resource.
 
-### Status
+#### Status
 
-The default Status is &quot;AwaitingAuthorisation&quot; immediately after the international-payment-consent has been created.
+The default Status is "AwaitingAuthorisation" immediately after the international-payment-consent has been created.
 
 | Status |
 | --- |
@@ -30,17 +108,15 @@ The default Status is &quot;AwaitingAuthorisation&quot; immediately after the in
 
 ## GET /international-payment-consents/{ConsentId}
 
-```GET /international-payment-consents/{ConsentId}```
-
 A PISP can optionally retrieve a payment consent resource that they have created to check its status. 
 
-### Status
+#### Status
 
-Once the PSU authorises the payment-consent resource, the Status of the payment-consent resource will be updated with &quot;Authorised&quot;.
+Once the PSU authorises the payment-consent resource, the Status of the payment-consent resource will be updated with "Authorised".
 
-If the PSU rejects the consent or the international-payment-consent has failed some other ASPSP validation, the Status will be set to &quot;Rejected&quot;.
+If the PSU rejects the consent or the international-payment-consent has failed some other ASPSP validation, the Status will be set to "Rejected".
 
-Once an international-payment has been successfully created using the international-payment-consent, the Status of the international-payment-consent will be set to &quot;Consumed&quot;.
+Once an international-payment has been successfully created using the international-payment-consent, the Status of the international-payment-consent will be set to "Consumed".
 
 The available Status codes for the international-payment-consent resource are:
 
@@ -51,33 +127,25 @@ The available Status codes for the international-payment-consent resource are:
 | Authorised |
 | Consumed |
 
-## GET /international-payment-consents/{ConsentId}/funds-confirmation
-
-```GET /international-payment-consents/{ConsentId}/funds-confirmation```
+### GET /international-payment-consents/{ConsentId}/funds-confirmation
 
 The API endpoint allows the PISP to ask an ASPSP to confirm funds on an **international-payment-consent** resource.
 
 * An ASPSP can only respond to a funds confirmation request if the **international-payment-consent** resource has an `Authorised` status. If the status is not `Authorised`, an ASPSP **must** respond with a 400 (Bad Request) and a `UK.OBIE.Resource.InvalidConsentStatus` error code.
-
 * Confirmation of funds requests do not affect the status of the **international-payment-consent** resource.
 
-## POST /international-payments
-
-```POST /international-payments```
+### POST /international-payments
 
 Once the international-payment-consent has been authorised by the PSU, the PISP can proceed to submit the international-payment for processing:
 
 * This is done by making a POST request to the **international-payments** endpoint.
-
 * This request is an instruction to the ASPSP to begin the international single immediate payment journey. The international payment must be submitted immediately, however, there are some scenarios where the international payment may not be executed immediately (e.g. busy periods at the ASPSP).
-
 * The PISP **must** ensure that the Initiation and Risk sections of the international-payment match the corresponding Initiation and Risk sections of the international-payment-consent resource. If the two do not match, the ASPSP **must not** process the request and **must** respond with a 400 (Bad Request).
-
 * Any operations on the international-payment resource will not result in a Status change for the international-payment resource.
 
-### Status
+#### Status
 
-An international-payment can only be created if its corresponding international-payment-consent resource has the status of &quot;Authorised&quot;. 
+An international-payment can only be created if its corresponding international-payment-consent resource has the status of "Authorised". 
 
 The international-payment resource that is created successfully must have one of the following PaymentStatusCode code-set enumerations:
 
@@ -90,13 +158,11 @@ The international-payment resource that is created successfully must have one of
 | AcceptedWithoutPosting |
 | AcceptedCreditSettlementCompleted |
 
-## GET /international-payments/{InternationalPaymentId}
-
-```GET /international-payments/{InternationalPaymentId}```
+### GET /international-payments/{InternationalPaymentId}
 
 A PISP can retrieve the international-payment to check its status.
 
-### Status
+#### Status
 
 The international-payment resource must have one of the following PaymentStatusCode code-set enumerations:
 
@@ -109,13 +175,11 @@ The international-payment resource must have one of the following PaymentStatusC
 | AcceptedWithoutPosting |
 | AcceptedCreditSettlementCompleted |
 
-## GET /international-payments/{InternationalPaymentId}/payment-details
-
-```GET /international-payments/{InternationalPaymentId}/payment-details```
+### GET /international-payments/{InternationalPaymentId}/payment-details
 
 A PISP can retrieve the Details of the underlying payment transaction via this endpoint. This resource allows ASPSPs to return richer list of Payment Statuses, and if available payment scheme related statuses.
 
-### Status
+#### Status
 
 The international-payments - payment-details must have one of the following PaymentStatusCode code-set enumerations:
 
@@ -142,11 +206,11 @@ The international-payments - payment-details must have one of the following Paym
 | Received |
 | RejectedCancellationRequest |
 
-## State Model
+### State Model
 
-### Payment Order Consent
+#### Payment Order Consent
 
-The state model for the international-payment-consent resource follows the generic consent state model. However, does not use the &quot;Revoked&quot; status, as the consent for an international-payment is not a long-lived consent.
+The state model for the international-payment-consent resource follows the generic consent state model. However, does not use the "Revoked" status, as the consent for an international-payment is not a long-lived consent.
 
 ![Payment Order Consent State Model](images/image2018-5-18_10-24-21.png)
 
@@ -159,8 +223,7 @@ The definitions for the Status:
 | 3 |Authorised |The consent resource has been successfully authorised. |
 | 4 |Consumed |The consented action has been successfully completed. This does not reflect the status of the consented action. |
 
-
-### Payment Order
+#### Payment Order
 
 The state model for the international-payment resource follows the behaviour and definitions for the ISO 20022 PaymentStatusCode code-set.
 
@@ -177,7 +240,7 @@ The definitions for the Status:
 | 5 |AcceptedWithoutPosting |Payment instruction included in the credit transfer is accepted without being posted to the creditor customer’s account. |
 | 6 |AcceptedCreditSettlementCompleted |Settlement on the creditor's account has been completed. |
 
-#### Multiple Authorisation
+##### Multiple Authorisation
 
 If the payment-order requires multiple authorisations, the Status of the multiple authorisations will be updated in the MultiAuthorisation object.
 
@@ -191,71 +254,53 @@ The definitions for the Status:
 | 2 |Rejected |The payment-order resource has been rejected by an authoriser. |
 | 3 |Authorised |The payment-order resource has been successfully authorised by all required authorisers. |
 
-# Data Model
+## Data Model
 
 The data dictionary section gives the detail on the payload content for the International Payment API flows.
 
-## Reused Classes
+### Reused Classes
 
-### OBInternational2
+#### OBInternational2
 
 This section describes the OBInternational2 class which is reused as the Initiation object in the international-payment-consent and international-payment resources.
 
-#### UML Diagram
+##### UML Diagram
 
 ![OB International Reusable class](images/OBInternational2.gif)
 
-#### Notes
+##### Notes
 
 For the OBInternational2 Initiation object: 
 
 * All elements in the Initiation payload that are specified by the PISP, must not be changed via the ASPSP as this is part of formal consent from the PSU.
-
 * If the ASPSP is able to establish a problem with payload or any contextual error during the API call, the ASPSP must reject the international-payment-consent request immediately.
-
 * If the ASPSP establishes a problem with the international-payment-consent after the API call, the ASPSP must set the Status of the international-payment-consent resource to Rejected.
-
 * DebtorAccount is **optional** as the PISP may not know the account identification details for the PSU.
-
 * If the DebtorAccount is specified by the PISP and is invalid for the PSU, then the international-payment-consent will be set to Rejected after PSU authentication.
-
 * CreditorAgent must at least have either of the pairs provided: Scheme Name and Identification or Name and Postal Address.
-
 * Account Identification field usage:
-  * Where &quot;UK.OBIE.SortCodeAccountNumber&quot; is specified as the SchemeName in the Account Identification Section (either DebtorAccount or CreditorAccount), the Identification field **must** be populated with the 6 digit Sort Code and 8 digit Account Number (a 14 digit field).
-
-  * Where the &quot;UK.OBIE.IBAN&quot; is specified as the SchemeName in the Account Identification Section (either DebtorAccount or CreditorAccount), the Identification field **must** be populated with the full IBAN.
-
+  * Where "UK.OBIE.SortCodeAccountNumber" is specified as the SchemeName in the Account Identification Section (either DebtorAccount or CreditorAccount), the Identification field **must** be populated with the 6 digit Sort Code and 8 digit Account Number (a 14 digit field).
+  * Where the "UK.OBIE.IBAN" is specified as the SchemeName in the Account Identification Section (either DebtorAccount or CreditorAccount), the Identification field **must** be populated with the full IBAN.
 * LocalInstrument is the requested payment scheme for execution. This is a free-text field.
-
 * InstructionPrioirty may be used by the ASPSP to determine the payment scheme for execution.
-
 * The InstructedAmount object must be populated with the desired Amount and Currency of transfer, regardless of the currency of the DebtorAccount or CreditorAccount. I.e., a PSU may wish to transfer 100EUR from a GBP DebtorAccount (InstructedAmount will be 100EUR), or 100GBP to an EUR CreditorAccount (the InstructedAmount will be 100GBP).
-
 * The CurrencyOfTransfer is used to specify the currency the funds will be transferred. I.e., a PSU may wish to transfer 100USD from a GBP DebtorAccount to a Rupee INR CreditorAccount in India.
-
 * The ChargeBearer field is used by the PISP to indicate the bearer of charges. An ASPSP must reject the request if the requested charge allocation cannot be fulfilled.
 
 The OBInternational2/ExchangeRateInformation object must conform to these behaviours:
 
 * A PISP must specify the DebtorAccount currency in the UnitCurrency field if the PISP is requesting a specific RateType so the ASPSP can respond with an exchange rate quote prior to PSU authorisation.
-
 * A PISP may indicate an exchange rate request using the RateType with these enumerations: 
   * Actual.
   * Agreed.
   * Indicative.
-
 * A PISP must specify ExchangeRate and ContractIdentification when requesting an **Agreed** RateType. If an invalid ContractIdentification and ExchangeRate are requested together, an ASPSP must reject the request.
-  * For an &quot;Agreed&quot; RateType a requested exchange rate is populated in the ExchangeRate field, against the UnitCurrency. I.e, if the UnitCurrency is GBP and CurrencyOfTransfer is USD, then ExchangeRate will be 1.34 (USD to 1 GBP).
-
-  * For an &quot;Agreed&quot; RateType the exchange rate contract identifier is populated in the ContractIdentification field.
-
-
+  * For an "Agreed" RateType a requested exchange rate is populated in the ExchangeRate field, against the UnitCurrency. I.e, if the UnitCurrency is GBP and CurrencyOfTransfer is USD, then ExchangeRate will be 1.34 (USD to 1 GBP).
+  * For an "Agreed" RateType the exchange rate contract identifier is populated in the ContractIdentification field.
 * A PISP must not specify ExchangeRate and/or ContractIdentification when requesting an **Actual** RateType.
-
 * A PISP must not specify ExchangeRate and/or ContractIdentification when requesting an **Indicative** RateType.
 
-#### Data Dictionary
+##### Data Dictionary
 
 | Name |Occurrence |XPath |EnhancedDefinition |Class |Codes |Pattern |
 | ---- |---------- |----- |------------------ |----- |----- |------- |
@@ -318,14 +363,13 @@ The OBInternational2/ExchangeRateInformation object must conform to these behavi
 | Reference |0..1 |OBInternational2/RemittanceInformation/Reference |Unique reference, as assigned by the creditor, to unambiguously refer to the payment transaction. Usage: If available, the initiating party should provide this reference in the structured remittance information, to enable reconciliation by the creditor upon receipt of the amount of money. If the business context requires the use of a creditor reference or a payment remit identification, and only one identifier can be passed through the end-to-end chain, the creditor's reference or payment remittance identification should be quoted in the end-to-end transaction identification. OB: The Faster Payments Scheme can only accept 18 characters for the ReferenceInformation field - which is where this ISO field will be mapped. |Max35Text | | |
 | SupplementaryData |0..1 |OBInternational2/SupplementaryData |Additional information that can not be captured in the structured fields and/or any other specific block. |OBSupplementaryData1 | | |
 
-
-### OBExchangeRate2
+#### OBExchangeRate2
 
 This section describes the OBExchangeRate2 class, which is reused in the response payloads in the international-payment-consent and international-payment resources.
 
 ![Exchange Rate Model](images/OBExchangeRate2.gif)
 
-#### Data Dictionary
+##### Data Dictionary
 
 | Name |Occurrence |XPath |EnhancedDefinition |Class |Codes |Pattern |
 | ---- |---------- |----- |------------------ |----- |----- |------- |
@@ -336,36 +380,33 @@ This section describes the OBExchangeRate2 class, which is reused in the respons
 | ContractIdentification |0..1 |OBExchangeRate2/ContractIdentification |Unique and unambiguous reference to the foreign exchange contract agreed between the initiating party/creditor and the debtor agent. |Max256Text | | |
 | ExpirationDateTime |0..1 |OBExchangeRate2/ExpirationDateTime |Specified date and time the exchange rate agreement will expire. |ISODateTime | | |
 
-## International Payment Consent - Request
+### International Payment Consent - Request
 
 The OBWriteInternationalConsent3 object will be used for the call to:
 
 * POST /international-payment-consents
 
-### UML Diagram
+#### UML Diagram
 
 ![International Payment Consent - Request](images/OBWriteInternationalConsent3.gif)
 
-### Notes 
+#### Notes 
 
 The international-payment-consent **request** contains these objects:
 
 * Initiation
 * Authorisation
 * SCASupportData
-* Risk.
+* Risk
 
 Exchange rate behaviour:
 
 * An ASPSP **must** respond to an **Agreed** RateType request. 
-
 * An ASPSP **may** respond to an **Actual** RateType request or **may** reject the request. 
-
 * An ASPSP **may** respond to an **Indicative** RateType request or **may** reject the request. 
-
 * An ASPSP **must** reject the international-payment-consent request if the specified Initiation/ExchangeRateInformation cannot be fulfilled.
 
-### Data Dictionary
+#### Data Dictionary
 
 | Name |Occurrence |XPath |EnhancedDefinition |Class |Codes |Pattern |
 | ---- |---------- |----- |------------------ |----- |----- |------- |
@@ -376,63 +417,46 @@ Exchange rate behaviour:
 | SCASupportData |0..1 |OBWriteInternationalConsent3/Data/SCASupportData |Supporting Data provided by TPP, when requesting SCA Exemption. |OBSCASupportData1 | | |
 | Risk |1..1 |OBWriteInternationalConsent3/Risk |The Risk section is sent by the initiating party to the ASPSP. It is used to specify additional details for risk scoring for Payments. |OBRisk1 | | |
 
-## International Payment Consent - Response
+### International Payment Consent - Response
 
 The OBWriteInternationalConsentResponse3 object will be used for a response to a call to:
 
 * POST /international-payment-consents
-
 * GET /international-payment-consents/{ConsentId}
 
-### UML Diagram
+#### UML Diagram
 
 ![International Payment Consent - Response](images/OBWriteInternationalConsentResponse3.gif)
 
-### Notes 
+#### Notes 
 
 The international-payment-consent **response** contains the full **original** payload from the international-payment-consent **request** with the additional elements below:
 
 * ConsentId.
-
 * CreationDateTime the international-payment-consent resource was created.
-
 * Status and StatusUpdateDateTime of the international-payment-consent resource.
-
 * CutOffDateTime Behaviour is explained in Payment Initiation API Specification, Section - Payment Restrictions -&gt; CutOffDateTime API Behaviour.
-
 * ExpectedExecutionDateTime for the international-payment resource if created before CutOffDateTIme - the expected DateTime the payment is executed against the Debtor Account. If populated, the ASPSP must update the value with any changes (e.g., after PSU authorisation).
-
 * ExpectedSettlementDateTime for the international-payment resource if created before CutOffDateTIme - the expected DateTime the payment will be received at the Creditor Account. If populated, the ASPSP must update the value with any changes (e.g., after PSU authorisation).
-
 * Charges array which will be used by the ASPSP to indicate charges, and the ChargeBearer as relevant.
-
 * ExchangeRateInformation (the ASPSP response) - this object will be used to communicate exchange rate information back to the PISP. It must be consistent with what is requested in the Initiation object from the PISP.
 
 Exchange rate behaviour:
 
 * For an **Agreed** RateType - if an ASPSP chooses to respond with Data/ExchangeRateInformation object:
   * An ASPSP may respond with the same requested exchange rate in the Data/ExchangeRateInformation object.
-
   * An ASPSP must not populate Data/ExchangeRateInformation/ExpirationDateTime.
-
-
 * For an **Actual** RateType - if an ASPSP chooses to respond with Data/ExchangeRateInformation object:
   * An ASPSP must respond with an actual quote in the Data/ExchangeRateInformation object.
-
   * An ASPSP must respond with an actual ExchangeRate quote.
-
   * An ASPSP must respond with an ExpirationDateTime.
-
   * An ASPSP must reject the international-payment request if the PISP does not submit the international-payment within the ExchangeRateInformation/ExpirationDateTime.
-
 * For an **Indicative** RateType - if an ASPSP chooses to respond with Data/ExchangeRateInformation object:
   * An ASPSP must respond with an indicative quote in the Data/ExchangeRateInformation object.
-
   * An ASPSP must respond with an indicative ExchangeRate quote.
-
   * An ASPSP must not populate Data/ExchangeRateInformation/ExpirationDateTime for the exchange rate, as it is the market rate on the date of execution (date on which the DebtorAccount is debited).
 
-### Data Dictionary
+#### Data Dictionary
 
 | Name |Occurrence |XPath |EnhancedDefinition |Class |Codes |Pattern |
 | ---- |---------- |----- |------------------ |----- |----- |------- |
@@ -452,21 +476,21 @@ Exchange rate behaviour:
 | SCASupportData |0..1 |OBWriteInternationalConsentResponse3/Data/SCASupportData |Supporting Data provided by TPP, when requesting SCA Exemption. |OBSCASupportData1 | | |
 | Risk |1..1 |OBWriteInternationalConsentResponse3/Risk |The Risk section is sent by the initiating party to the ASPSP. It is used to specify additional details for risk scoring for Payments. |OBRisk1 | | |
 
-## International Payment Consent Confirmation of Funds - Response
+### International Payment Consent Confirmation of Funds - Response
 
 The OBWriteFundsConfirmationResponse1 object will be used for a response to a call to:
 
 * GET /international-payment-consents/{ConsentId}/funds-confirmation
 
-### UML Diagram
+#### UML Diagram
 
 ![International Payment Consent Confirmation of Funds - Response](images/OBWriteConfirmFundsResponse1.gif)
 
-### Notes 
+#### Notes 
 
 The confirmation of funds response contains the result of a funds availability check, or SupplementaryData.
 
-### Data Dictionary
+#### Data Dictionary
 
 | Name |Occurrence |XPath |EnhancedDefinition |Class |Codes |Pattern |
 | ---- |---------- |----- |------------------ |----- |----- |------- |
@@ -477,27 +501,25 @@ The confirmation of funds response contains the result of a funds availability c
 | FundsAvailable |1..1 |OBWriteFundsConfirmationResponse1/Data/FundsAvailableResult/FundsAvailable |Flag to indicate the availability of funds given the Amount in the consent request. |xs:boolean | | |
 | SupplementaryData |0..1 |OBWriteFundsConfirmationResponse1/Data/SupplementaryData |Additional information that can not be captured in the structured fields and/or any other specific block. |OBSupplementaryData1 | | |
 
-## International Payment - Request
+### International Payment - Request
 
 The OBWriteInternational2 object will be used for a call to:
 
 * POST /international-payments
 
-### UML Diagram
+#### UML Diagram
 
 ![International Payment - Request](images/OBWriteInternational2.gif)
 
-### Notes 
+#### Notes 
 
 The international-payment **request** object contains the: 
 
 * ConsentId.
-
 * The full Initiation and Risk objects from the international-payment request.
-
 * The **Initiation** and **Risk** sections of the international-payment request **must** match the **Initiation** and **Risk** sections of the corresponding international-payment-consent request.
 
-### Data Dictionary
+#### Data Dictionary
 
 | Name |Occurrence |XPath |EnhancedDefinition |Class |Codes |Pattern |
 | ---- |---------- |----- |------------------ |----- |----- |------- |
@@ -507,41 +529,32 @@ The international-payment **request** object contains the:
 | Initiation |1..1 |OBWriteInternational2/Data/Initiation |The Initiation payload is sent by the initiating party to the ASPSP. It is used to request movement of funds from the debtor account to a creditor for a single international payment. |OBInternational2 | | |
 | Risk |1..1 |OBWriteInternational2/Risk |The Risk section is sent by the initiating party to the ASPSP. It is used to specify additional details for risk scoring for Payments. |OBRisk1 | | |
 
-## International Payment - Response
+### International Payment - Response
 
 The OBWriteInternationalResponse3 object will be used for a response to a call to:
 
 * POST /international-payments
-
 * GET /international-payments/{InternationalPaymentId}
 
-### UML Diagram
+#### UML Diagram
 
 ![International Payment - Response](images/OBWriteInternationalResponse3.png)
 
-### Notes 
+#### Notes 
 
 The international-payment **response** object contains the: 
 
 * InternationalPaymentId.
-
 * ConsentId.
-
 * CreationDateTime of the international-payment resource.
-
 * Status and StatusUpdateDateTime of the international-payment resource.
-
 * ExpectedExecutionDateTime for the international-payment resource.
-
 * ExpectedSettlementDateTime for the international-payment resource.
-
 * The Charges and ExchangeRateInformation in the international-payment-consent response from the ASPSP.
-
 * The Initiation object from the international-payment-consent.
-
 * The MultiAuthorisation object if the international-payment resource requires multiple authorisations.
 
-### Data Dictionary
+#### Data Dictionary
 
 | Name |Occurrence |XPath |EnhancedDefinition |Class |Codes |Pattern |
 | ---- |---------- |----- |------------------ |----- |----- |------- |
@@ -559,17 +572,17 @@ The international-payment **response** object contains the:
 | Initiation |1..1 |OBWriteInternationalResponse3/Data/Initiation |The Initiation payload is sent by the initiating party to the ASPSP. It is used to request movement of funds from the debtor account to a creditor for a single international payment. |OBInternational2 | | |
 | MultiAuthorisation |0..1 |OBWriteInternationalResponse3/Data/MultiAuthorisation |The multiple authorisation flow response from the ASPSP. |OBMultiAuthorisation1 | | |
 
-## International Payment Order - Payment Details - Response
+### International Payment Order - Payment Details - Response
 
 The OBWritePaymentDetailsResponse1 object will be used for a response to a call to:
 
 * GET /international-payments/{InternationalPaymentId}/payment-details
 
-### UML Diagram
+#### UML Diagram
 
 ![International Payment Order - Payment Details - Response](images/OBWritePaymentDetailsResponse1.png)
 
-### Data Dictionary
+#### Data Dictionary
 
 | Name |Occurrence |XPath |EnhancedDefinition |Class |Codes |Pattern |
 | ---- |---------- |----- |------------------ |----- |----- |------- |
@@ -577,13 +590,13 @@ The OBWritePaymentDetailsResponse1 object will be used for a response to a call 
 | Data |1..1 |OBWritePaymentDetailsResponse1/Data | |OBWriteDataPaymentOrderStatusResponse1 | | |
 | PaymentStatus |0..unbounded |OBWritePaymentDetailsResponse1/Data/PaymentStatus |Payment status details. |OBWritePaymentDetails1 | | |
 
-# Usage Examples
+## Usage Examples
 
 ### Debit amount specified; ASPSP provides actual (guaranteed) FX rate, for limited time
 
 The payee specifies the amount to be debited from the payment account and requests a payment to be credited in USD at a fixed rate.
 
-**POST /international-payment-consents request** 
+#### POST /international-payment-consents request
 
 ```
 POST /international-payment-consents HTTP/1.1
@@ -596,6 +609,7 @@ x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Content-Type: application/json
 Accept: application/json
 ```
+
 ```json
 {
  "Data": {
@@ -629,7 +643,8 @@ Accept: application/json
  }
 }
 ```
-**POST /international-payment-consents response** 
+
+#### POST /international-payment-consents response
 
 ```
 HTTP/1.1 201 Created
@@ -637,6 +652,7 @@ x-jws-signature: V2hhdCB3ZSBnb3QgaGVyZQ0K..aXMgZmFpbHVyZSB0byBjb21tdW5pY2F0ZQ0K
 x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Content-Type: application/json
 ```
+
 ```json
 {
  "Data": {
@@ -688,7 +704,7 @@ Content-Type: application/json
 
 ### Confirm Funds on International Payment Order Consent
 
-**GET / **international** -payment-consents/{ConsentId}/funds-confirmation Request** 
+#### GET / international-payment-consents/{ConsentId}/funds-confirmation Request
 
 ```
 GET /international-payment-consents/58923/funds-confirmation HTTP/1.1
@@ -699,7 +715,7 @@ x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Accept: application/json
 ```
 
-**GET /international-payment-consents/{ConsentId}/funds-confirmation Response** 
+#### GET /international-payment-consents/{ConsentId}/funds-confirmation Response
 
 ```
 HTTP/1.1 200 OK
@@ -707,6 +723,7 @@ x-jws-signature: V2hhdCB3ZSBnb3QgaGVyZQ0K..aXMgZmFpbHVyZSB0byBjb21tdW5pY2F0ZQ0K
 x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Content-Type: application/json
 ```
+
 ```json
 {
 	"Data": {
@@ -726,7 +743,7 @@ Content-Type: application/json
 
 The payee specifies the amount to be debited from the payment account and requests a payment to be credited in USD at an indicative rate.
 
-**POST /international-payment-consents request** 
+#### POST /international-payment-consents request
 
 ```
 POST /international-payment-consents HTTP/1.1
@@ -739,6 +756,7 @@ x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Content-Type: application/json
 Accept: application/json
 ```
+
 ```json
 {
  "Data": {
@@ -773,7 +791,7 @@ Accept: application/json
 }
 ```
 
-**POST /international-payment-consents response** 
+#### POST /international-payment-consents response
 
 ```
 HTTP/1.1 201 Created
@@ -781,6 +799,7 @@ x-jws-signature: V2hhdCB3ZSBnb3QgaGVyZQ0K..aXMgZmFpbHVyZSB0byBjb21tdW5pY2F0ZQ0K
 x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Content-Type: application/json
 ```
+
 ```json
 {
 	"Data": {
@@ -811,7 +830,7 @@ Content-Type: application/json
 
 The payee specifies the amount to be debited from the payment account and requests a payment to be credited in USD. The payee specifies a contract reference number that has been pre-negotiated and pre-booked with the ASPSP.
 
-**POST /international-payment-consents request** 
+#### POST /international-payment-consents request
 
 ```
 POST /international-payment-consents HTTP/1.1
@@ -824,6 +843,7 @@ x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Content-Type: application/json
 Accept: application/json
 ```
+
 ```json
 {
  "Data": {
@@ -860,7 +880,7 @@ Accept: application/json
 }
 ```
 
-**POST /international-payment-consents response** 
+#### POST /international-payment-consents response
 
 ```
 HTTP/1.1 201 Created
@@ -868,6 +888,7 @@ x-jws-signature: V2hhdCB3ZSBnb3QgaGVyZQ0K..aXMgZmFpbHVyZSB0byBjb21tdW5pY2F0ZQ0K
 x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Content-Type: application/json
 ```
+
 ```json
 {
 	"Data": {
@@ -901,7 +922,7 @@ In this situation, the PSU specifies the amount that must be credited to the pay
 
 As in the situation where the PSU specifies the amount to be debited the exchange rate could be guaranteed, indicative or pre-booked. CurrencyOfTransfer specified.
 
-**POST /international-payment-consents request** 
+#### POST /international-payment-consents request
 
 ```
 POST /international-payment-consents HTTP/1.1
@@ -914,6 +935,7 @@ x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Content-Type: application/json
 Accept: application/json
 ```
+
 ```json
 {
  "Data": {
@@ -947,7 +969,7 @@ Accept: application/json
 }
 ```
 
-**POST /international-payment-consents response** 
+#### POST /international-payment-consents response
 
 ```
 HTTP/1.1 201 Created
@@ -955,6 +977,7 @@ x-jws-signature: V2hhdCB3ZSBnb3QgaGVyZQ0K..aXMgZmFpbHVyZSB0byBjb21tdW5pY2F0ZQ0K
 x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Content-Type: application/json
 ```
+
 ```json
 {
  "Data": {
@@ -998,7 +1021,7 @@ Content-Type: application/json
 
 Charge types are indicative only.
 
-**POST /international-payment-consents request** 
+#### POST /international-payment-consents request
 
 ```
 POST /international-payment-consents HTTP/1.1
@@ -1011,6 +1034,7 @@ x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Content-Type: application/json
 Accept: application/json
 ```
+
 ```json
 {
  "Data": {
@@ -1033,7 +1057,8 @@ Accept: application/json
  }
 }
 ```
-**POST /international-payment-consents response** 
+
+#### POST /international-payment-consents response
 
 ```
 HTTP/1.1 201 Created
@@ -1041,6 +1066,7 @@ x-jws-signature: V2hhdCB3ZSBnb3QgaGVyZQ0K..aXMgZmFpbHVyZSB0byBjb21tdW5pY2F0ZQ0K
 x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Content-Type: application/json
 ```
+
 ```json
 {
 	"Data": {

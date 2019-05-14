@@ -237,7 +237,7 @@ The domestic-payment - payment-details must have one of the following PaymentSta
 
 The state model for the domestic-payment-consent resource follows the generic consent state model. However, does not use the Revoked status, as the consent for a domestic-payment is not a long-lived consent.
 
-!["Payment Order Consent Status"](images/image2018-5-18_10-24-21.png "Payment Order Consent Status")
+!["Payment Order Consent Status"](images/image2018-5-18_10-24-21.png)
 
 The definitions for the Status:
 
@@ -252,7 +252,7 @@ The definitions for the Status:
 
 The state model for the domestic-payment resource follows the behaviour and definitions for the ISO 20022 PaymentStatusCode code-set.
 
-![Status](images/PaymentStatusLifeCycle.png "Payment Order Status")
+![Payment Order Status](images/PaymentStatusLifeCycle.png)
 
 The definitions for the status:
 
@@ -265,12 +265,11 @@ The definitions for the status:
 | 5 |AcceptedWithoutPosting |Payment instruction included in the credit transfer is accepted without being posted to the creditor customer’s account. |
 | 6 |AcceptedCreditSettlementCompleted |Settlement on the creditor's account has been completed.|
 
-
 ##### Multiple Authorisation
 
 If the payment-order requires multiple authorisations - the Status of the multiple authorisations will be updated in the MultiAuthorisation object.
 
-![Status](images/image2018-6-29_16-36-34.png "Multi Authorisation Status")
+![Multi Authorisation Status](images/image2018-6-29_16-36-34.png)
 
 The definitions for the status:
 
@@ -292,7 +291,7 @@ This section describes the OBDomestic2 class which is reused as the Initiation o
 
 ##### UML Diagram
 
-![UML Diagram$](images/OBDomestic2.gif "UML Diagram")
+![OBDomestic2](images/OBDomestic2.gif)
 
 ##### Notes
 
@@ -359,7 +358,7 @@ The OBWriteDomesticConsent3 object will be used for the call to:
   
 #### UML Diagram
 
-![Domestic Payment Consent - Request](images/OBWriteDomesticConsent3.gif)
+![OBWriteDomesticConsent3](images/OBWriteDomesticConsent3.gif)
 
 #### Notes
 
@@ -368,7 +367,7 @@ The domestic-payment-consent **request** contains these objects:
 * Initiation
 * Authorisation
 * SCASupportData
-* Risk.
+* Risk
 
 #### Data Dictionary
 
@@ -389,7 +388,7 @@ The OBWriteDomesticConsentResponse3 object will be used for a response to a call
 
 #### UML Diagram
 
-![Domestic Payment Consent - Response](images/OBWriteDomesticConsentResponse3.gif)
+![OBWriteDomesticConsentResponse3](images/OBWriteDomesticConsentResponse3.gif)
 
 #### Notes
 
@@ -430,7 +429,7 @@ The OBWriteFundsConfirmationResponse1 object will be used for a response to a ca
 
 #### UML Diagram
 
-![Domestic Payment Consent Confirmation of Funds - Response](images/OBWriteConfirmFundsResponse1.gif)
+![OBWriteConfirmFundsResponse1](images/OBWriteConfirmFundsResponse1.gif)
 
 #### Notes
 
@@ -455,7 +454,7 @@ The OBWriteDomestic2 object will be used for a call to:
 
 #### UML Diagram
 
-![Domestic Payment Request](images/OBWriteDomestic2.gif)
+![OBWriteDomestic2](images/OBWriteDomestic2.gif)
 
 #### Notes
 
@@ -485,7 +484,7 @@ The **Initiation** and **Risk** sections of the domestic-payment request **must*
 
 #### UML Diagram
 
- ![Domestic Payment Response](images/OBWriteDataDomesticResponse3.png)
+ ![OBWriteDataDomesticResponse3](images/OBWriteDataDomesticResponse3.png)
  
 #### Notes
  
@@ -526,7 +525,7 @@ The OBWritePaymentDetailsResponse1 object will be used for a response to a call 
 
 #### UML Diagram
 
-![Domestic Payment Order-Payment Details](images/OBWritePaymentDetailsResponse1.png)
+![OBWritePaymentDetailsResponse1](images/OBWritePaymentDetailsResponse1.png)
 
 #### Data Dictionary
 
