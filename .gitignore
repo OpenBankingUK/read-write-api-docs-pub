@@ -1,5 +1,6 @@
 **/_experiments/in/*
 **/_experiments/out/*
+_experiments
 .vscode/*
 .DS_Store
 *.DS_Store
