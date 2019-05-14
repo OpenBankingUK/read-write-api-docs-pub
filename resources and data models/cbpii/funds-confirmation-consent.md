@@ -289,7 +289,7 @@ Content-Type: application/json
 
 ### DELETE - Funds Confirmation Consent
 
-#### Example with all permitted fields
+#### Example with all permitted fields 
 
 ##### Request
 
