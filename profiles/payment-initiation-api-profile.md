@@ -81,7 +81,7 @@ For a list of profiles and resources compatible with this profile, please see th
 
 ### Resources
 
-Each of the Payment Initiation API resources are documented in the  [*Resources and Data Models*  /  *PISP*](../resources%20and%20data%20models/pisp) area of the specification. Each resource is documented with:
+Each of the Payment Initiation API resources are documented in the  [Resources and Data Models  /  PISP](../resources%20and%20data%20models/pisp) area of the specification. Each resource is documented with:
 
 - Endpoints
   - The API endpoints available for the resource.
@@ -412,7 +412,7 @@ OAuth 2.0 scopes are coarse-grained and the set of available scopes are defined 
 
 A  *consent authorisation* is used to define the fine-grained scope that is granted by the PSU to the PISP.
 
-The PISP **must** begin a payment-order request by creating a **payment-order consent** resource through a **POST** operation. These resources indicate the  _consent _ that the PISP claims it has been given by the PSU. At this stage, the consent is not yet authorised as the ASPSP has not yet verified this claim with the PSU.
+The PISP **must** begin a payment-order request by creating a **payment-order consent** resource through a **POST** operation. These resources indicate the  _consent_ that the PISP claims it has been given by the PSU. At this stage, the consent is not yet authorised as the ASPSP has not yet verified this claim with the PSU.
 
 The ASPSP responds with a ConsentId. This is the intent-id that is used when initiating the authorization code grant (as described in the Trust Framework).
 
@@ -434,7 +434,7 @@ In the payment-order consent:
 - A PISP **may** request a CompletionDateTime for the payment-order authorisation to be complete. If a value is not provided, an ASPSP will interpret the CompletionDateTime as unbounded.
 - An ASPSP **must** reject the payment-order consent if the AuthorisationType requested by the PISP does not match the DebtorAccount in the request.
 - An ASPSP **must** set the status of the payment-order consent to Rejected, if the AuthorisationType requested by the PISP cannot be satisfied, after PSU Authentication:
-  - The ASPSP must respond back with an OAuth error response fields  _ **error** _ specified as invalid_request and **error_description** containing an appropriate message.
+  - The ASPSP must respond back with an OAuth error response fields  _**error**_ specified as invalid_request and _**error_description**_ containing an appropriate message.
 - An ASPSP **must** restrict the selection of DebtorAccount (in the ASPSP online channel) to accounts that match the AuthorisationType requested by the PISP.
 
 In the payment-order resource:
