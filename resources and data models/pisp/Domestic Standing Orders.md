@@ -351,7 +351,7 @@ The domestic-standing-order-consent **response** contains the full **original** 
 * CreationDateTime the domestic-standing-order-consent resource was created.
 * Status and StatusUpdateDateTime of the domestic-standing-order-consent resource.
 * Permission field in the original request.
-* CutOffDateTime Behaviour is explained in Payment Initiation API Specification, Section - Payment Restrictions -&gt; CutOffDateTime API Behaviour.
+* CutOffDateTime Behaviour is explained in Payment Initiation API Profile, Section - [Payment Restrictions -> CutOffDateTime Behaviour](../../profiles/payment-initiation-api-profile.md#cutoffdatetime-behaviour).
 * Charges array - for the breakdown of applicable ASPSP charges.
 
 #### Data Dictionary

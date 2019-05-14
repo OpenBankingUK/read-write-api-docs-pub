@@ -397,7 +397,7 @@ Them domestic-payment-consent **response** contains the full **original** payloa
 * ConsentId
 * CreationDateTime the domestic-payment-consent resource was created.
 * Status and StatusUpdateDateTime of the domestic-payment-consent resource.
-* CutOffDateTime Behaviour is explained in Payment Initiation API Specification, Section - Payment Restrictions -&gt; CutOffDateTime API Behaviour.
+* CutOffDateTime Behaviour is explained in Payment Initiation API Profile, Section - [Payment Restrictions -> CutOffDateTime Behaviour](../../profiles/payment-initiation-api-profile.md#cutoffdatetime-behaviour).
 * ExpectedExecutionDateTime for the domestic-payment resource if created before CutOffDateTIme - the expected DateTime the payment is executed against the Debtor Account. If populated, the ASPSP must update the value with any changes (e.g., after PSU authorisation).
 * ExpectedSettlementDateTime for the domestic-payment resource if created before CutOffDateTIme - the expected DateTime the payment will be received at the Creditor Account. If populated, the ASPSP must update the value with any changes (e.g., after PSU authorisation).
 * Charges array for the breakdown of applicable ASPSP charges.

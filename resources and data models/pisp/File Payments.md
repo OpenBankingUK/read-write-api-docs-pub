@@ -495,7 +495,7 @@ The file-payment-consent **response** contains the full **original** payload fro
 * ConsentId.
 * CreationDateTime the file-payment-consent resource was created.
 * Status and StatusUpdateDateTime of the file-payment-consent resource.
-* CutOffDateTime Behaviour is explained in Payment Initiation API Specification, Section - Payment Restrictions -> CutOffDateTime API Behaviour.
+* CutOffDateTime Behaviour is explained in Payment Initiation API Profile, Section - [Payment Restrictions -> CutOffDateTime Behaviour](../../profiles/payment-initiation-api-profile.md#cutoffdatetime-behaviour).
 * Charges array - for the breakdown of applicable ASPSP charges.
 
 #### Data Dictionary

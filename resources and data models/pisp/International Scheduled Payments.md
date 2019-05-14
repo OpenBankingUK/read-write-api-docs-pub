@@ -435,7 +435,7 @@ The international-scheduled-payment-consent **response** contains the full **ori
 * CreationDateTime the international-scheduled-payment-consent resource was created.
 * Status and StatusUpdateDateTime of the international-scheduled-payment-consent resource.
 * Permission field in the original request.
-* CutOffDateTime Behaviour is explained in Payment Initiation API Specification, Section - Payment Restrictions -> CutOffDateTime API Behaviour.
+* CutOffDateTime Behaviour is explained in Payment Initiation API Profile, Section - [Payment Restrictions -> CutOffDateTime Behaviour](../../profiles/payment-initiation-api-profile.md#cutoffdatetime-behaviour).
 * ExpectedExecutionDateTime for the international-scheduled-payment resource, if created before CutOffDateTIme, the expected DateTime the payment is executed against the Debtor Account. If populated, the ASPSP must update the value with any changes (e.g., after PSU authorisation).
 * ExpectedSettlementDateTime for the international-scheduled-payment resource, if created before CutOffDateTIme, the expected DateTime the payment will be received at the Creditor Account. If populated, the ASPSP must update the value with any changes (e.g., after PSU authorisation).
 * Charges array which will be used by the ASPSP to indicate charges, and the ChargeBearer as relevant.

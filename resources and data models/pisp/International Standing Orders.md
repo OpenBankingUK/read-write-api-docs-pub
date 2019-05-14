@@ -370,7 +370,7 @@ The international-standing-order-consent **response** contains the full **origin
 * CreationDateTime the international-standing-order-consent resource was created.
 * Status and StatusUpdateDateTime of the international-standing-order-consent resource.
 * Permission field in the original request.
-* CutOffDateTime Behaviour is explained in Payment Initiation API Specification, Section - Payment Restrictions -> CutOffDateTime API Behaviour.
+* CutOffDateTime Behaviour is explained in Payment Initiation API Profile, Section - [Payment Restrictions -> CutOffDateTime Behaviour](../../profiles/payment-initiation-api-profile.md#cutoffdatetime-behaviour).
 * Charges array which will be used by the ASPSP to indicate charges, and the ChargeBearer as relevant.
 
 #### Data Dictionary
