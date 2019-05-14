@@ -1059,10 +1059,10 @@ In objects where an array field is defined as having 0..n values, the array fiel
 
 ```
 {
-	"Name": "",             // Incorrect. Exclude the Name field from the payload.
-	"Age": 0,               // Incorrect. 0 should not be used to indicate an undefined age.
-    "CreditorAccount": {},  // Incorrect. Exclude the CreditorAccount field.
-    "Balances": []          // Correct. This is the method of indicating an empty array. Do not suppress the Balance field.
+  "Name": "",             // Incorrect. Exclude the Name field from the payload.
+  "Age": 0,               // Incorrect. 0 should not be used to indicate an undefined age.
+  "CreditorAccount": {},  // Incorrect. Exclude the CreditorAccount field.
+  "Balances": []          // Correct. This is the method of indicating an empty array. Do not suppress the Balance field.
 }
 ```
 
