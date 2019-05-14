@@ -200,7 +200,7 @@ x-fapi-interaction-id: hook5i13-ntIg-4th3-rP41-3ro535touch3
 ```json
 {
   "Data": {
-	"DebtorAccount": {
+	  "DebtorAccount": {
       "SchemeName": "UK.OBIE.IBAN",
       "Identification": "GB76LOYD30949301273801",
       "SecondaryIdentification": "Roll 56988"
