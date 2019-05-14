@@ -1,8 +1,102 @@
 # Domestic Payments <!-- omit in toc -->
 
+1. [Overview](#overview)
+   1. [Profile Compatibility](#profile-compatibility)
+2. [Endpoints](#endpoints)
+   1. [POST /domestic-payment-consents](#post-domestic-payment-consents)
+      1. [Status](#status)
+   2. [GET /domestic-payment-consents/{ConsentId}](#get-domestic-payment-consentsconsentid)
+      1. [Status](#status-1)
+   3. [GET /domestic-payment-consents/{ConsentId}/funds-confirmation](#get-domestic-payment-consentsconsentidfunds-confirmation)
+   4. [POST /domestic-payments](#post-domestic-payments)
+      1. [Status](#status-2)
+   5. [GET /domestic-payments/{DomesticPaymentId}](#get-domestic-paymentsdomesticpaymentid)
+      1. [Status](#status-3)
+   6. [GET /domestic-payments/{DomesticPaymentId}/payment-details](#get-domestic-paymentsdomesticpaymentidpayment-details)
+      1. [Status](#status-4)
+   7. [State Model](#state-model)
+      1. [Payment Order Consent](#payment-order-consent)
+      2. [Payment Order](#payment-order)
+         1. [Multiple Authorisation](#multiple-authorisation)
+3. [Data Model](#data-model)
+   1. [Reused Classes](#reused-classes)
+      1. [OBDomestic2](#obdomestic2)
+         1. [UML Diagram](#uml-diagram)
+         2. [Notes](#notes)
+         3. [Data Dictionary](#data-dictionary)
+   2. [Domestic Payment Consent - Request](#domestic-payment-consent---request)
+      1. [UML Diagram](#uml-diagram-1)
+      2. [Notes](#notes-1)
+      3. [Data Dictionary](#data-dictionary-1)
+   3. [Domestic Payment Consent - Response](#domestic-payment-consent---response)
+      1. [UML Diagram](#uml-diagram-2)
+      2. [Notes](#notes-2)
+      3. [Data Dictionary](#data-dictionary-2)
+   4. [Domestic Payment Consent Confirmation of Funds - Response](#domestic-payment-consent-confirmation-of-funds---response)
+      1. [UML Diagram](#uml-diagram-3)
+      2. [Notes](#notes-3)
+      3. [Data Dictionary](#data-dictionary-3)
+   5. [Domestic Payment - Request](#domestic-payment---request)
+      1. [UML Diagram](#uml-diagram-4)
+      2. [Notes](#notes-4)
+      3. [Data Dictionary](#data-dictionary-4)
+   6. [Domestic Payment - Response](#domestic-payment---response)
+      1. [UML Diagram](#uml-diagram-5)
+      2. [Notes](#notes-5)
+      3. [Data Dictionary](#data-dictionary-5)
+   7. [Domestic Payment Order - Payment Details - Response](#domestic-payment-order---payment-details---response)
+      1. [UML Diagram](#uml-diagram-6)
+      2. [Data Dictionary](#data-dictionary-6)
+4. [Usage Examples](#usage-examples)
+   1. [Merchant Initiation via PISP](#merchant-initiation-via-pisp)
+      1. [Sequence Diagram](#sequence-diagram)
+      2. [Illustrative Interactions](#illustrative-interactions)
+         1. [Create Domestic Payment Order Consent](#create-domestic-payment-order-consent)
+            1. [POST /domestic-payment-consents request](#post-domestic-payment-consents-request)
+            2. [POST /domestic-payment-consents response](#post-domestic-payment-consents-response)
+         2. [Confirm Funds on Domestic Payment Order Consent](#confirm-funds-on-domestic-payment-order-consent)
+            1. [GET /domestic-payment-consents/{ConsentId}/funds-confirmation Request](#get-domestic-payment-consentsconsentidfunds-confirmation-request)
+            2. [GET /domestic-payment-consents/{ConsentId}/funds-confirmation Response](#get-domestic-payment-consentsconsentidfunds-confirmation-response)
+         3. [Create Domestic Payment Order](#create-domestic-payment-order)
+            1. [POST /domestic-payments Request](#post-domestic-payments-request)
+            2. [POST /domestic-payments Response](#post-domestic-payments-response)
+         4. [Get Domestic Payment Order Consent](#get-domestic-payment-order-consent)
+            1. [GET /domestic-payment-consents/{ConsentId} Request](#get-domestic-payment-consentsconsentid-request)
+            2. [GET /domestic-payment-consents/{ConsentId} Response](#get-domestic-payment-consentsconsentid-response)
+         5. [Get Domestic Payment Order](#get-domestic-payment-order)
+            1. [GET /domestic-payments/{DomesticPaymentId} Request](#get-domestic-paymentsdomesticpaymentid-request)
+            2. [GET /domestic-payments/{DomesticPaymentId} Response](#get-domestic-paymentsdomesticpaymentid-response)
+   2. [Person To Person Initiation via PISP](#person-to-person-initiation-via-pisp)
+      1. [Sequence Diagram](#sequence-diagram-1)
+      2. [Illustrative Interactions](#illustrative-interactions-1)
+         1. [Create Domestic Payment Order Consent](#create-domestic-payment-order-consent-1)
+            1. [POST /domestic-payment-consents request](#post-domestic-payment-consents-request-1)
+            2. [POST /domestic-payment-consents response](#post-domestic-payment-consents-response-1)
+         2. [Create Domestic Payment Order](#create-domestic-payment-order-1)
+            1. [POST /domestic-payments request](#post-domestic-payments-request)
+            2. [POST /domestic-payments response](#post-domestic-payments-response)
+         3. [Get Domestic Payment Order Consent](#get-domestic-payment-order-consent-1)
+            1. [GET /domestic-payment-consents/{ConsentId} request](#get-domestic-payment-consentsconsentid-request)
+            2. [GET /domestic-payment-consents/{ConsentId} response](#get-domestic-payment-consentsconsentid-response)
+         4. [Get Domestic Payment Order](#get-domestic-payment-order-1)
+            1. [GET /domestic-payments/{DomesticPaymentId} request](#get-domestic-paymentsdomesticpaymentid-request)
+            2. [GET /domestic-payments/{DomesticPaymentId} response](#get-domestic-paymentsdomesticpaymentid-response)
+   3. [BACS Payment Order Consent](#bacs-payment-order-consent)
+      1. [POST /domestic-payment-consents request](#post-domestic-payment-consents-request-2)
+      2. [POST /domestic-payment-consents response](#post-domestic-payment-consents-response-2)
+   4. [CHAPS Payment Order Consent](#chaps-payment-order-consent)
+      1. [POST /domestic-payment-consents request](#post-domestic-payment-consents-request-3)
+      2. [POST /domestic-payment-consents response](#post-domestic-payment-consents-response-3)
+   5. [Balance Transfer](#balance-transfer)
+      1. [POST /domestic-payment-consents request](#post-domestic-payment-consents-request-4)
+      2. [POST /domestic-payment-consents response](#post-domestic-payment-consents-response-4)
+   6. [Money Transfer](#money-transfer)
+      1. [POST /domestic-payment-consents request](#post-domestic-payment-consents-request-5)
+      2. [POST /domestic-payment-consents response](#post-domestic-payment-consents-response-5)
+
 ## Overview
 
-The Domestic Payments resource is used by an PISP to initiate a Domestic Payment.
+The Domestic Payments resource is used by a PISP to initiate a Domestic Payment.
 
 This resource description should be read in conjunction with a compatible Payment Initiation API Profile.
 
@@ -356,6 +450,7 @@ The confirmation of funds response contains the result of a funds availability c
 ### Domestic Payment - Request
 
 The OBWriteDomestic2 object will be used for a call to:
+
 * POST /domestic-payments
 
 #### UML Diagram
@@ -523,7 +618,7 @@ Notes:
 
 ##### Create Domestic Payment Order Consent
 
-**POST /domestic-payment-consents request** 
+###### POST /domestic-payment-consents request
 
 ```text
 POST /domestic-payment-consents HTTP/1.1
@@ -581,7 +676,7 @@ Accept: application/json
 }
 ```
 
-**POST  /domestic-payment-consents response**
+###### POST  /domestic-payment-consents response
 
 ```text
 HTTP/1.1 201 Created
@@ -644,7 +739,7 @@ Content-Type: application/json
 
 ##### Confirm Funds on Domestic Payment Order Consent
 
-**GET /domestic-payment-consents/{ConsentId}/funds-confirmation Request**
+###### GET /domestic-payment-consents/{ConsentId}/funds-confirmation Request
 
 ```text
 GET /domestic-payment-consents/58923/funds-confirmation HTTP/1.1
@@ -655,7 +750,7 @@ x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Accept: application/json
 ```
 
-**GET /domestic-payment-consents/{ConsentId}/funds-confirmation Response**
+###### GET /domestic-payment-consents/{ConsentId}/funds-confirmation Response
 
 ```text
 HTTP/1.1 200 OK
@@ -681,7 +776,7 @@ Content-Type: application/json
 
 ##### Create Domestic Payment Order
 
-**POST /domestic-payments Request**
+###### POST /domestic-payments Request
 
 ```text
 POST /domestic-payments HTTP/1.1
@@ -740,7 +835,7 @@ Accept: application/json
 }
 ```
 
-**POST /domestic-payments Response**
+###### POST /domestic-payments Response
 
 ```text
 HTTP/1.1 201 Created
@@ -785,7 +880,7 @@ Content-Type: application/json
 
 ##### Get Domestic Payment Order Consent
 
-**GET /domestic-payment-consents/{ConsentId} Request**
+###### GET /domestic-payment-consents/{ConsentId} Request
 
 ```text
 GET /domestic-payment-consents/58923 HTTP/1.1
@@ -796,7 +891,7 @@ x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Accept: application/json
 ```
 
-**GET /domestic-payment-consents/{ConsentId} Response**
+###### GET /domestic-payment-consents/{ConsentId} Response
 
 ```text
 HTTP/1.1 200 OK
@@ -860,7 +955,7 @@ Content-Type: application/json
 
 ##### Get Domestic Payment Order
 
-**GET /domestic-payments/{DomesticPaymentId} Request**
+###### GET /domestic-payments/{DomesticPaymentId} Request
 
 ```text
 GET /domestic-payments/58923-001 HTTP/1.1
@@ -871,7 +966,7 @@ x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Accept: application/json
 ```
 
-**GET /domestic-payments/{DomesticPaymentId} Response**
+###### GET /domestic-payments/{DomesticPaymentId} Response
 
 ```text
 HTTP/1.1 200 OK
@@ -990,7 +1085,7 @@ end opt
 
 ##### Create Domestic Payment Order Consent
 
-**POST /domestic-payment-consents request**
+###### POST /domestic-payment-consents request
 
 ```text
 POST /domestic-payment-consents HTTP/1.1
@@ -1036,7 +1131,7 @@ Accept: application/json
 }
 ```
 
-**POST /domestic-payment-consents response**
+###### POST /domestic-payment-consents response
 
 ```text
 HTTP/1.1 201 Created
@@ -1085,9 +1180,9 @@ Content-Type: application/json
 }
 ```
 
-#### Create Domestic Payment Order
+##### Create Domestic Payment Order
 
-**POST /domestic-payments request**
+###### POST /domestic-payments request
 
 ```text
 POST /domestic-payments HTTP/1.1
@@ -1134,7 +1229,7 @@ Accept: application/json
 }
 ```
 
-**POST /domestic-payments response**
+###### POST /domestic-payments response
 
 ```text
 HTTP/1.1 201 Created
@@ -1183,7 +1278,7 @@ Content-Type: application/json
 
 ##### Get Domestic Payment Order Consent
 
-**GET /domestic-payment-consents/{ConsentId} request**
+###### GET /domestic-payment-consents/{ConsentId} request
 
 ```text
 GET /domestic-payment-consents/7290 HTTP/1.1
@@ -1194,7 +1289,7 @@ x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Accept: application/json
 ```
 
-**GET /domestic-payment-consents/{ConsentId} response**
+###### GET /domestic-payment-consents/{ConsentId} response
 
 ```text
 HTTP/1.1 200 OK
@@ -1243,9 +1338,9 @@ Content-Type: application/json
 }
 ```
 
-#### Get Domestic Payment Order
+##### Get Domestic Payment Order
 
-**GET /domestic-payments/{DomesticPaymentId} request**
+###### GET /domestic-payments/{DomesticPaymentId} request
 
 ```text
 GET /domestic-payments/7290-003 HTTP/1.1
@@ -1256,7 +1351,7 @@ x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Accept: application/json
 ```
 
-**GET /domestic-payments/{DomesticPaymentId} response**
+###### GET /domestic-payments/{DomesticPaymentId} response
 
 ```text
 HTTP/1.1 200 OK
@@ -1307,7 +1402,7 @@ Content-Type: application/json
 
 Use of LocalInstrument and CutOffDateTime.
 
-**POST /domestic-payment-consents request**
+#### POST /domestic-payment-consents request
 
 ```text
 POST /domestic-payment-consents HTTP/1.1
@@ -1354,7 +1449,7 @@ Accept: application/json
 }
 ```
 
-**POST /domestic-payment-consents response**
+#### POST /domestic-payment-consents response
 
 ```text
 HTTP/1.1 201 Created
@@ -1409,7 +1504,7 @@ Content-Type: application/json
 
 Use of LocalInstrument, CreditorPostalAddress, CutOffDateTime and Charges.
 
-**POST /domestic-payment-consents request**
+#### POST /domestic-payment-consents request
 
 ```text
 POST /domestic-payment-consents HTTP/1.1
@@ -1464,7 +1559,7 @@ Accept: application/json
 }
 ```
 
-**POST /domestic-payment-consents response**
+#### POST /domestic-payment-consents response
 
 ```text
 HTTP/1.1 201 Created
@@ -1539,7 +1634,7 @@ Below in an example illustrating a balance transfer offer available on a Card A.
 To facilitate a Balance Transfer, a PISP can initiate a Payment from Card B to Card A with LocalInstrument as UK.OBIE.BalanceTransfer, Account SchemeName as UK.OBIE.PAN and if there is an Offer Code/Id provided by Issuer of the Card A, then it can be supplied in the field: RemittanceInformation.Reference. 
 Example below:
 
-**POST /domestic-payment-consents request**
+#### POST /domestic-payment-consents request
 
 ```text
 POST /domestic-payment-consents HTTP/1.1
@@ -1586,7 +1681,7 @@ Accept: application/json
 }
 ```
 
-**POST /domestic-payment-consents response**
+#### POST /domestic-payment-consents response
 
 ```text
 HTTP/1.1 201 Created
@@ -1641,7 +1736,7 @@ Content-Type: application/json
 
 Below in an example illustrating Money transfer from a card account to a bank account. 
 
-**POST /domestic-payment-consents request**
+#### POST /domestic-payment-consents request
 
 ```text
 POST /domestic-payment-consents HTTP/1.1
@@ -1687,7 +1782,7 @@ Accept: application/json
 }
 ```
 
-**POST /domestic-payment-consents response**
+#### POST /domestic-payment-consents response
 
 ```text
 HTTP/1.1 201 Created
