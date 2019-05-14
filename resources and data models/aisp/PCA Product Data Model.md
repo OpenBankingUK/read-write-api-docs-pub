@@ -19,14 +19,12 @@ Further analysis required:-
 | PCA (We’ll rename this “Product” and merge PCA and CoreProduct attributes) |<li>Name <li>Open Data Product ID (Mandatory, if product info is available on Open Data PCA API) <li>ProductType (“PCA”) <li>MonthlyMaximumCharge (Mandatory for “front book” products) |
 | CoreProduct |**None** – Will be merged in to new “Product” section. |
 | PCAMarketingState |**None** – Sections will only include current state information, so this section is not required |
-| CreditInterest |<li>TierBandSet fields (excluding credit interest eligibility). <li>All TierBand fields <li>**Note:** Only current state credit interest information is required. |
-| Overdraft |<li> All TierBandSet fields (including OverdraftFeesAndCharges) <li> All TierBand fields (including OverdraftFeesAndCharges). <li>**Note:** Only current state information is required. |
+| CreditInterest |<li>TierBandSet fields (excluding credit interest eligibility). <li>All TierBand fields <br>**Note:** Only current state credit interest information is required. |
+| Overdraft |<li> All TierBandSet fields (including OverdraftFeesAndCharges) <li> All TierBand fields (including OverdraftFeesAndCharges). <br>**Note:** Only current state information is required. |
 | Eligibility |**None** – Eligibility criteria met when PCA was sold unlikely to be reliable. |
 | FeaturesAndBenefits |**None** – The value of a particular feature and benefit to an accountholder is dependent on their use of that benefit and whether they met eligibility criteria. Certain benefits may be provided by external suppliers making it difficult to provide real time info. Relevant general features &amp; benefits info can be obtained from Open Data API for “front book” products. |
 | OtherFeesAndCharges |<li> Periodic Fee (i.e. the service charge) |
 
-
-<br>
 ### Changes from the OpenData Model
 
 #### No Eligibility and FeaturesAndBenefits
@@ -34,25 +32,27 @@ Further analysis required:-
 * Eligibility and FeaturesAndBenefits section are removed from Product as information related to them might not be easily available. May be looked into, in future releases.
 * Monthly maximum charge (MMC): covering all unarranged overdraft charges (including debit interest)
 
-<br>
-![ PCAHighLevel.ClassDiagram.png ]( images/PCAHighLevel.ClassDiagram.png )
+![ PCAHighLevel.ClassDiagram.png ]( images/PCA/PCAHighLevel.ClassDiagram.png )
+
 #### Credit Interest Model
 
 * AER is the only representative rate for CreditInterest for product comparison purposes and therefore has been explicitly captured.
 * The banks often also specify Gross rates. Net is usually determined by removing basic rate tax only, and banks stopped doing this from April 2016. This may still be required for backbook products.
-* It has been ensured that both the calculation and application frequency for credit interest is captured. The term ‘Nominal’ used by some banks is synonymous with ‘Gross’.
+* It has been ensured that both the calculation and application frequency for credit interest is captured. 
+    * The term ‘Nominal’ used by some banks is synonymous with ‘Gross’.
 * DepositInterestAppliedCoverage refers to which interest rate is applied when interests are tiered. For example, if an account balance is £2k and the interest tiers are:- 0-£500 0.1%, 500-1000 0.2%, 1000-10000 0.5%, then the applicable interest rate could either be 0.5% of the entire balance (since the account balance sits in the top interest tier) or (0.1%*500)+(0.2%*500)+(0.5%*1000). In the 1st situation, the interest should be applied to the ‘Whole’ of the account balance and in the 2nd, this should be ‘Tiered’.
 * Destination refers to whether the Product allows interest to be credited to another account (‘PayAway’) or only to itself (‘SelfCredit’).
 
-<br>
-![ PCACreditInterestClassDiagram.png ]( images/PCACreditInterestClassDiagram.png )
+![ PCACreditInterestClassDiagram.png ]( images/PCA/PCACreditInterestClassDiagram.png )
+
 #### Overdraft
 
 * Overdraft Types can either be committed: The banks are committed to provide this overdraft facility and cannot demand repayment without notifying the customer, or OnDemand : The bank can demand instant repayment of this overdraft.
 * Student Account: Can it be negotiated or back book product?
 * OverdraftFeeCharges are defined at TierBandSet level for fees/charges that are not tiered and at the TierBand level for those that are.
 
-![ PCAOverdraftClassDiagram.png ]( images/PCAOverdraftClassDiagram.png )
+![ PCAOverdraftClassDiagram.png ]( images/PCA/PCAOverdraftClassDiagram.png )
+
 #### OverdraftFeeCharges
 
 * A cap can be applied to 1 or more Overdraft Fees/Charges and are typically capped for a particular period e.g. Total overdraft charges (Arranged, Unarranged, Paid Transaction, Unpaid Transaction) may be capped on a monthly basis. More than one fee charges can be clubbed to be capped into one cap. Also a fee charge can be clubbed or used in more than one caps?
@@ -65,38 +65,37 @@ Further analysis required:-
 
 * Other fee charges such as Service charge, Monthly Account Maintenance Fee or Service Charge - Account Fee.
 
-![ ainfopca.2.2.0.OtherFeesCharges.png ]( images/ainfopca.2.2.0.OtherFeesCharges.png )
+![ ainfopca.2.2.0.OtherFeesCharges.png ]( images/PCA/ainfopca.2.2.0.OtherFeesCharges.png )
+
 ## Data Model
 
 ### Data Payload
 
 #### PCA
 
-###### UML Class Diagram
+##### UML Class Diagram
 
 * This implementation is based on the assumption that all pending decisions were based on the OBIE recommended option.
 * Other Fee Charges: Only Periodic Fee(service charge) has been included in the Code List.
 * We have taken Open Data PCA Segments for PCA Account Info as well.
 
-<br>
-![ ainfopca.2.2.0.ClassDiagram.png ]( images/ainfopca.2.2.0.ClassDiagram.png )
-###### Data Dictionary
+![ ainfopca.2.2.0.ClassDiagram.png ]( images/PCA/ainfopca.2.2.0.ClassDiagram.png )
 
-* PCA Account Info Data Definition
+##### Data Dictionary
 
-### Data Payload - Enumerations
+* [PCA Account Info Data Definition](https://openbanking.atlassian.net/wiki/download/attachments/1077805458/ainfobca.v3.rc3.DD.xlsx?version=1&modificationDate=1556635332741&cacheVersion=1&api=v2)
 
-* PCA Product Info CodeList
+##### Data Payload - Enumerations
+
+* [PCA Product Info CodeList](https://openbanking.atlassian.net/wiki/download/attachments/1077805528/ainfopca.2.2.0.CodeLists.xlsx?version=1&modificationDate=1556635335891&cacheVersion=1&api=v2)
 
 ## Usage Examples
 
 ### Publish Open Data Standard PCA Product
 
+ **Request: Get Accounts Product Request**
 
- **Request** **Get Accounts Product Request**
-
-
-```json
+```
 GET /accounts/22289/product HTTP/1.1
 Authorization: Bearer Az90SAOJklae
 x-fapi-auth-date:  Sun, 10 Sep 2017 19:43:31 GMT
@@ -105,14 +104,14 @@ x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Accept: application/json
 ```
 
- **Response** **Get Accounts Product Response**
-
+ **Response: Get Accounts Product Response**
 
 ```json
 HTTP/1.1 200 OK
 x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Content-Type: application/json
-
+```
+```json
 {
    "Data":{
       "Product":[
@@ -133,17 +132,13 @@ Content-Type: application/json
 }
 ```
 
-
-
-
 ### Publish Open Data Standard PCA Product, along with new other fee charges
 
 Additional £5 monthly account fee
 
- **Request** **Get Accounts Product Request**
+ **Request: Get Accounts Product Request**
 
-
-```json
+```
 GET /accounts/22299/product HTTP/1.1
 Authorization: Bearer Az90SAOJklae
 x-fapi-auth-date:  Sun, 10 Sep 2017 19:43:31 GMT
@@ -152,14 +147,14 @@ x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Accept: application/json
 ```
 
- **Response** **Get Accounts Product Response**
+ **Response: Get Accounts Product Response**
 
-
-```json
+```
 HTTP/1.1 200 OK
 x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Content-Type: application/json
-
+```
+```json
 {
    "Data":{
       "Product":[
@@ -197,16 +192,11 @@ Content-Type: application/json
 }
 ```
 
-
-
-
 ### Publish Open Data Standard PCA Product along with Marketing State ID
 
+ **Request: Get Accounts Product Request**
 
- **Request** **Get Accounts Product Request**
-
-
-```json
+```
 GET /accounts/22305/product HTTP/1.1
 Authorization: Bearer Az90SAOJklae
 x-fapi-auth-date:  Sun, 10 Sep 2017 19:43:31 GMT
@@ -215,14 +205,14 @@ x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Accept: application/json
 ```
 
- **Response** **Get Accounts Product Response**
+ **Response: Get Accounts Product Response**
 
-
-```json
+```
 HTTP/1.1 200 OK
 x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Content-Type: application/json
-
+```
+```json
 {
    "Data":{
       "Product":[
@@ -244,16 +234,11 @@ Content-Type: application/json
 }
 ```
 
-
-
-
 ### Publish Back Book product along with MMC
 
+ **Request: Get Accounts Product Request**
 
- **Request** **Get Accounts Product Request**
-
-
-```json
+```
 GET /accounts/22306/product HTTP/1.1
 Authorization: Bearer Az90SAOJklae
 x-fapi-auth-date:  Sun, 10 Sep 2017 19:43:31 GMT
@@ -262,14 +247,14 @@ x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Accept: application/json
 ```
 
- **Response** **Get Accounts Product Response**
-
+ **Response: Get Accounts Product Response**
 
 ```json
 HTTP/1.1 200 OK
 x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Content-Type: application/json
-
+```
+```json
 {
    "Data":{
       "Product":[
@@ -299,9 +284,6 @@ Content-Type: application/json
 }
 ```
 
-
-
-
 ### Showing tiered interest rates (Example for back book prod)
 
 Example is from Bank of Scotland Classic Vantage account (prior to 11th June 2017)
@@ -309,10 +291,9 @@ Example is from Bank of Scotland Classic Vantage account (prior to 11th June 201
 2.00% AER (1.98% Gross) variable on balances £1,000-£2,999.99
 1.50% AER (1.49% Gross) variable on balances £1-£999.99
 
- **Request** **Get Accounts Product Request**
+ **Request: Get Accounts Product Request**
 
-
-```json
+```
 GET /accounts/22307/product HTTP/1.1
 Authorization: Bearer Az90SAOJkla
 x-fapi-auth-date:  Sun, 10 Sep 2017 19:43:31 GMT
@@ -321,14 +302,14 @@ x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Accept: application/json
 ```
 
- **Response** **Get Accounts Product Response**
+ **Response: Get Accounts Product Response**
 
-
-```json
+```
 HTTP/1.1 200 OK
 x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Content-Type: application/json
-
+```
+```json
 {
    "Data":{
       "Product":[
@@ -394,18 +375,14 @@ Content-Type: application/json
 }
 ```
 
-
-
-
 ### Showing whole interest rates
 
 Example is Bank of Scotland Classic Vantage account (After 11th June 2017)
 2% AER (1.98% Gross) variable on balances £1-£5,000
 
- **Request** **Get Accounts Product Request**
+ **Request: Get Accounts Product Request**
 
-
-```json
+```
 GET /accounts/22308/product HTTP/1.1
 Authorization: Bearer Az90SAOJklae
 x-fapi-auth-date:  Sun, 10 Sep 2017 19:43:31 GMT
@@ -414,14 +391,14 @@ x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Accept: application/json
 ```
 
- **Response** **Get Accounts Product Response**
+ **Response: Get Accounts Product Response**
 
-
-```json
+```
 HTTP/1.1 200 OK
 x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Content-Type: application/json
-
+```
+```json
 {
    "Data":{
       "Product":[
@@ -466,9 +443,6 @@ Content-Type: application/json
 }
 ```
 
-
-
-
 ### Represent graduate overdraft limits
 
 If you've graduated within the last 3 years, you can apply for an overdraft of upto £3,000 (subject to status).
@@ -477,10 +451,9 @@ This is the breakdown of the fee free amounts available based on how long ago yo
 2nd year after graduation: Up to £2,000
 3rd year after graduation: Up to £1,000
 
- **Request** **Get Accounts Product Request**
+ **Request: Get Accounts Product Request**
 
-
-```json
+```
 GET /accounts/22309/product HTTP/1.1
 Authorization: Bearer Az90SAOJklae
 x-fapi-auth-date:  Sun, 10 Sep 2017 19:43:31 GMT
@@ -489,14 +462,14 @@ x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Accept: application/json
 ```
 
- **Response** **Get Accounts Product Response**
+ **Response: Get Accounts Product Response**
 
-
-```json
+```
 HTTP/1.1 200 OK
 x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Content-Type: application/json
-
+```
+```json
 {
    "Data":{
       "Product":[
@@ -565,9 +538,6 @@ Content-Type: application/json
 }
 ```
 
-
-
-
 ### Represent overdrafts with periodic &amp; per item fees with caps
 
 Example: Nationwide Flex Direct
@@ -575,10 +545,9 @@ Daily arranged overdraft fee: £0.50 per day (with £10 buffer amount)
 Daily unarranged overdraft fee: £5 per day (capped at £60 per calendar month)
 Fee for a paid or unpaid transaction when you have insufficient funds: £5 per transaction (capped at £35 per month)
 
- **Request** **Get Accounts Product Request**
+ **Request: Get Accounts Product Request**
 
-
-```json
+```
 GET /accounts/22310/product HTTP/1.1
 Authorization: Bearer Az90SAOJklae
 x-fapi-auth-date:  Sun, 10 Sep 2017 19:43:31 GMT
@@ -587,15 +556,14 @@ x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Accept: application/json
 ```
 
- **Response** **Get Accounts Product Response**
+ **Response: Get Accounts Product Response**
 
-
-```json
+```
 HTTP/1.1 200 OK
 x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Content-Type: application/json
-
-
+```
+```json
 {
    "Data":{
       "Product":[
@@ -671,18 +639,14 @@ Content-Type: application/json
 }
 ```
 
-
-
-
 ### Represent overdrafts with periodic &amp; per item fees with caps, another example
 
 Example is from Lloydsbank current accounts, personal overdraft rates
 Daily arranged overdraft fee: 1p per day for every £7 pound borrowing
 
- **Request** **Get Accounts Product Request**
+ **Request: Get Accounts Product Request**
 
-
-```json
+```
 GET /accounts/22311/product HTTP/1.1
 Authorization: Bearer Az90SAOJklae
 x-fapi-auth-date:  Sun, 10 Sep 2017 19:43:31 GMT
@@ -691,14 +655,14 @@ x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Accept: application/json
 ```
 
- **Response** **Get Accounts Product Response**
+ **Response: Get Accounts Product Response**
 
-
-```json
+```
 HTTP/1.1 200 OK
 x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Content-Type: application/json
-
+```
+```json
 {
    "Data":{
       "Product":[
