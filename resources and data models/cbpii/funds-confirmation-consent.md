@@ -272,7 +272,7 @@ Content-Type: application/json
     "ConsentId": "88379",
     "CreationDateTime": "2017-05-02T00:00:00+00:00",
     "Status": "AwaitingAuthorisation",
-	"StatusUpdateDateTime": "2017-05-02T00:00:00+00:00",
+    "StatusUpdateDateTime": "2017-05-02T00:00:00+00:00",
     "ExpirationDateTime": "2017-05-02T00:00:00+00:00",
     "DebtorAccount": {
       "SchemeName": "UK.OBIE.IBAN",
