@@ -31,7 +31,7 @@ Further analysis required:-
 
 * A generic data model to publish the Credit Interest functionality if applicable to Other Product Type.
 
-![ OtherProductInfoCreditInterest.png ]( images/OtherProduct/OtherProduct/OtherProductInfoCreditInterest.png )
+![ OtherProductInfoCreditInterest.png ]( images/OtherProduct/OtherProductInfoCreditInterest.png )
 
 #### Overdraft
 
@@ -47,7 +47,7 @@ Further analysis required:-
 
 * A generic structure for Loan Interest published only if applicable to Other Product Type .
 
-![ OtherProductInfoLoanInterest.png ]( images/OtherProductOtherProductInfoLoanInterest.png )
+![ OtherProductInfoLoanInterest.png ]( images/OtherProduct/OtherProductInfoLoanInterest.png )
 
 #### Repayment
 
