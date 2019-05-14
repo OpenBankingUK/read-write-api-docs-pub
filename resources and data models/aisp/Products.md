@@ -87,7 +87,9 @@ Data Dictionary for Common Payload between PCA, BCA and other product types.
 #### PCA &amp; BCA Extensions
 
 [BCA Product Data Model v3.1.2](https://openbanking.atlassian.net/wiki/spaces/DZ/pages/1077805458/BCA+Product+Data+Model+v3.1.2)
+
 [PCA Product Data Model v3.1.2](https://openbanking.atlassian.net/wiki/spaces/DZ/pages/1077805528/PCA+Product+Data+Model+v3.1.2)
+
 [Other Product Data Model v3.1.2](https://openbanking.atlassian.net/wiki/spaces/DZ/pages/1077805590/Other+Product+Data+Model+v3.1.2)
 
 
