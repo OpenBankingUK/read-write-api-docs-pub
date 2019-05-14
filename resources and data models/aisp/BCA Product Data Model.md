@@ -19,7 +19,7 @@ Further analysis required:-
 | BCA (We’ll rename this “Product” and merge BCA and CoreProduct attributes) |<li>Name <li>ProductType (“BCA”) <li>Product Segment (e.g. “Startup”,”Switcher”,… ) <li>Open Data Product ID (Mandatory, if product info is available on Open Data BCA API) <li>Fee-free period |
 | CoreProduct |**None** – Will be merged in to new “Product” section. |
 | BCAMarketingState |**None** – Sections will only include current state information, so this section is not required. |
-| CreditInterest <li>TierBandSet fields (excluding credit interest eligibility). <li>All TierBand fields <li>**Note: Only current state credit interest information is required. Where the interest rate(s) have been negotiated, the actual rates applied to the account should be provided.** |
+| CreditInterest |<li>TierBandSet fields (excluding credit interest eligibility). <li>All TierBand fields <li>**Note: Only current state credit interest information is required. Where the interest rate(s) have been negotiated, the actual rates applied to the account should be provided.** |
 | Overdraft |<li>All TierBandSet fields (including OverdraftFeesAndCharges) <li>All TierBand fields (including OverdraftFeesAndCharges). <li>**Note: Only current state information is required. Where the overdraft rate(s) have been negotiated, the actual rates applied to the account should be provided.** |
 | Eligibility |**None** – Whether an organisation is eligible for other products cannot be determined by looking at existing product eligibility e.g., criteria for a startup can vary from bank to bank. |
 | FeaturesAndBenefits |**None** – The value of a particular feature and benefit to an accountholder is dependent on their use of that benefit and whether they met the eligibility criteria. Features &amp; benefits are less significant in the BCA market than the PCA. |
@@ -99,7 +99,7 @@ Notes:
 * Other Fee Charges: Only Periodic Fee(service charge) has been included in the Code List.
 * We have taken Open Data BCA Segments for BCA Account Info as well.
 
-![ AINFOBCA.2.2.0.ClassDiagram.png ]( images/AINFOBCA.2.2.0.ClassDiagram.png )
+![ AINFOBCA.2.2.0.ClassDiagram.png ]( images/BCA/AINFOBCA.2.2.0.ClassDiagram.png )
 
 ## Data Dictionary
 
