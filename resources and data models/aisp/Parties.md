@@ -3,6 +3,7 @@
 ## Endpoints
 
 Endpoints for the resource and available methods.
+
 |  |Resource |HTTP Operation |Endpoint |Mandatory? |Scope |Grant Type |Idempotency Key |Parameters |Request Object |Response Object |
 | --- |--- |--- |--- |--- |--- |--- |--- |--- |--- |--- |
 | 1 |parties |GET |GET /accounts/{AccountId}/parties |Conditional |accounts |Authorization Code |No | | |OBReadParty3 |
