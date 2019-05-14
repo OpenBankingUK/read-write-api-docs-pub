@@ -1,10 +1,17 @@
 **/_experiments/in/*
 **/_experiments/out/*
+_experiments
 .vscode/*
+*.vscode
 .DS_Store
 *.DS_Store
+<<<<<<< HEAD
 *.iml
 <<<<<<< HEAD
 =======
 *.vscode
 >>>>>>> 935d9af9db83ff31ec0402b7b834aa0fcebfa5f7
+=======
+*.iml
+>>>>>>> 46c33c8ba1e4390dc5247b288e13ddcbdd33d5d2
+.gitignore
