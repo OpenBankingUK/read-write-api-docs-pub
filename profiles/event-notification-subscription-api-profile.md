@@ -10,6 +10,10 @@
       2. [Aggregated Polling](#aggregated-polling)
    3. [Release Management](#release-management)
       1. [Event-Subscription Resource](#event-subscription-resource)
+         1. [POST](#post)
+         2. [GET](#get)
+         3. [PUT](#put)
+         4. [DELETE](#delete)
    4. [Event-Subscription per TPP](#event-subscription-per-tpp)
 
 ## Overview
