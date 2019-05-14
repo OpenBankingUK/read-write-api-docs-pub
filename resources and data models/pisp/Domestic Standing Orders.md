@@ -56,7 +56,7 @@
 
 ## Overview
 
-The Domestic Standing Orders resource is used by a PISP to initiate a Domestic Standing Order.
+The Domestic Standing Order resources (domestic-standing-order-consents and domestic-standing-orders) are used by a PISP to initiate a Domestic Standing Order.
 
 This resource description should be read in conjunction with a compatible Payment Initiation API Profile.
 

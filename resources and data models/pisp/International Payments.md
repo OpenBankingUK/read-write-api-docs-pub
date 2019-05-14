@@ -71,7 +71,7 @@
 
 ## Overview
 
-The International Payments resource is used by a PISP to initiate an International Payment.
+The International Payments resources (international-payment-consents and international-payments) are used by a PISP to initiate an International Payment.
 
 This resource description should be read in conjunction with a compatible Payment Initiation API Profile.
 

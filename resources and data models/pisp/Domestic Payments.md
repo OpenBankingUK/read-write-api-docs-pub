@@ -96,7 +96,7 @@
 
 ## Overview
 
-The Domestic Payments resource is used by a PISP to initiate a Domestic Payment.
+The Domestic Payments resources (domestic-payment-consents and domestic-payments) are used by a PISP to initiate a Domestic Payment.
 
 This resource description should be read in conjunction with a compatible Payment Initiation API Profile.
 

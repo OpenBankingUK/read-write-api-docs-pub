@@ -68,7 +68,7 @@
 
 ## Overview
 
-The International Scheduled Payments resource is used by a PISP to initiate an International Scheduled Payment.
+The International Scheduled Payments resources (international-scheduled-payment-consents and international-scheduled-payments) are used by a PISP to initiate an International Scheduled Payment.
 
 This resource description should be read in conjunction with a compatible Payment Initiation API Profile.
 

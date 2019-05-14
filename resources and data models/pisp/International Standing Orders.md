@@ -56,7 +56,7 @@
 
 ## Overview
 
-The International Standing Orders resource is used by a PISP to initiate an International Standing Order.
+The International Standing Order resources (international-standing-order-consents and international-standing-orders) are used by a PISP to initiate an International Standing Order.
 
 This resource description should be read in conjunction with a compatible Payment Initiation API Profile.
 

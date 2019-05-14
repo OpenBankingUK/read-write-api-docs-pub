@@ -73,7 +73,7 @@
 
 ## Overview
 
-The File Payments resource is used by a PISP to initiate a File Payment.
+The File Payments resources (file-payment-consents and file-payments) are used by a PISP to initiate a File Payment.
 
 This resource description should be read in conjunction with a compatible Payment Initiation API Profile.
 

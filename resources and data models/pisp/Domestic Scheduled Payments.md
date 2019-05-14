@@ -52,7 +52,7 @@
 
 ## Overview
 
-The Domestic Scheduled Payments resource is used by a PISP to initiate a Domestic Scheduled Payment.
+The Domestic Scheduled Payments resources (domestic-scheduled-payment-consents and domestic-scheduled-payments) are used by a PISP to initiate a Domestic Scheduled Payment.
 
 This resource description should be read in conjunction with a compatible Payment Initiation API Profile.
 
