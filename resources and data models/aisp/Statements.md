@@ -1,8 +1,10 @@
 # Statements v3.1.2
+
 ## Endpoints
+
 Endpoints for the resource and available methods.
 
- |  |Resource |HTTP Operation |Endpoint |Mandatory? |Scope |Grant Type |Idempotency Key |Parameters |Request Object |Response Object |
+|  |Resource |HTTP Operation |Endpoint |Mandatory? |Scope |Grant Type |Idempotency Key |Parameters |Request Object |Response Object |
 | --- |--- |--- |--- |--- |--- |--- |--- |--- |--- |--- |
 | 1 |statements |GET |GET /accounts/{AccountId}/statements |Conditional |accounts |Authorization Code |No |Pagination Filtering | |OBReadStatement2 |
 | 2 |statements |GET |GET /accounts/{AccountId}/statements/{StatementId} |Conditional |accounts |Authorization Code |No |Pagination | |OBReadStatement2 |
@@ -11,95 +13,110 @@ Endpoints for the resource and available methods.
 | 5 |statements |GET |GET /statements |Optional |accounts |Authorization Code |No |Pagination Filtering | |OBReadStatement2 |
 
 ### GET /accounts/{AccountId}/statements
+
 An ASPSP may provide this endpoint for AISPs to retrieve the statements information resource for the AccountId (which is retrieved in the call to GET /accounts).
 
 ### GET /accounts/{AccountId}/statements/{StatementId}
+
 An ASPSP may provide this endpoint for AISPs to retrieve the statement information resource for a specific statement in the AccountId (which is retrieved in the call to GET /accounts).
 
 ### GET /accounts/{AccountId}/statements/{StatementId}/file
+
 An ASPSP may provide this endpoint for AISPs to retrieve a non-json representation of a specific statement.
 
 ### GET /accounts/{AccountId}/statements/{StatementId}/transactions
+
 An ASPSP may provide this endpoint for AISPs to retrieve transactions that appear on the selected statement.
 The data model for the returned objects is documented in the  **transactions**  resource.
 
 ### GET /statements
+
 An ASPSP may provide this endpoint for AISPs to retrieve statement information for all accounts that the PSU has consented to. This will retrieve the statement resources for all authorised accounts linked to the account-request.
 
 ## Data Model
+
 The OBReadStatement2 object will be used for the call to:
-- GET /statements
-- GET /accounts/{AccountId}/statements
-- GET /accounts/{AccountId}/statements/{StatementId}
+* GET /statements
+* GET /accounts/{AccountId}/statements
+* GET /accounts/{AccountId}/statements/{StatementId}
 
 The call to
-
-- GET /accounts/{AccountId}/statements/{StatementId}/file
+* GET /accounts/{AccountId}/statements/{StatementId}/file
 
 will return unstructured data in binary (e.g., pdf, doc) or text (e.g., csv) formats. This will be specified in the Accept header by the AISP.
+
 The OBReadTransaction3 object (documented in the transactions resource) will be used the call to:
-- GET /accounts/{AccountId}/statements/{StatementId}/transactions
+* GET /accounts/{AccountId}/statements/{StatementId}/transactions
 
 ### Resource Definition
+
 A resource that describes summary details for an account statement period.
 For a specific date range, an account (AccountId) may have no statements, or may have multiple statements.
-The /statements endpoint (if implemented by the ASPSP)  **must**  return all statements within the requested date range for all accounts selected during the authorisation of the account-request.
-If an AISP would like to access a specific statement (StatementId) to retrieve a formal statement download or transactions for a specific statement - the AISP  **must**  specify the account (the AccountId) via the URI request path i.e., via:
-
-- GET /accounts/{AccountId}/statements/{StatementId}/file - to download the statement.
-- GET /accounts/{AccountId}/statements/{StatementId}/transactions - to return the transactions relating to a statement.
+The /statements endpoint (if implemented by the ASPSP) **must** return all statements within the requested date range for all accounts selected during the authorisation of the account-request.
+If an AISP would like to access a specific statement (StatementId) to retrieve a formal statement download or transactions for a specific statement - the AISP **must** specify the account (the AccountId) via the URI request path i.e., via:
+* GET /accounts/{AccountId}/statements/{StatementId}/file - to download the statement.
+* GET /accounts/{AccountId}/statements/{StatementId}/transactions - to return the transactions relating to a statement.
 
 ### UML Diagram
 
-![UML Diagram$](images/Statements/OBReadStatement2.png  "UML Diagram")
+![ OBReadStatement2.png ]( images/Statements/OBReadStatement2.png )
 
-**Notes:**
-- The statements resource  **must**  only be used for data that can be returned for a statement period.
-- StartDateTime, EndDateTime and CreationDateTime are mandatory for the statements resource. If an ASPSP does not display these dates in an online channel, the ASPSP must populate these dates with sensible values. E.g., the StartDateTime could be the day after the previous statement EndDateTime, and the CreationDateTime could be the day after the EndDateTime.
+Notes:
+* The statements resource **must** only be used for data that can be returned for a statement period.
+* StartDateTime, EndDateTime and CreationDateTime are mandatory for the statements resource. If an ASPSP does not display these dates in an online channel, the ASPSP must populate these dates with sensible values. E.g., the StartDateTime could be the day after the previous statement EndDateTime, and the CreationDateTime could be the day after the EndDateTime.
 
 ### Filtering
-Limited support for filtering is provided on the  **statements**  resource.
 
- | Name |Occurrence |Enhanced Definition |Class |
+Limited support for filtering is provided on the  **statements** resource.
+
+| Name |Occurrence |Enhanced Definition |Class |
 | --- |--- |--- |--- |
-| **fromStatementDateTime** |0..1 |Specifies start date and time for filtering of the Statements on the Statement/StartDateTime field. If this is not populated, the start date will be open ended |ISODateTime |
-| **toStatementDateTime** |0..1 |Specifies end date and time for filtering of the Statements on the Statement/StartDateTime field. If this is not populated, the end date will be open ended |ISODateTime |
+| fromStatementDateTime |0..1 |Specifies start date and time for filtering of the Statements on the Statement/StartDateTime field. If this is not populated, the start date will be open ended |ISODateTime |
+| toStatementDateTime |0..1 |Specifies end date and time for filtering of the Statements on the Statement/StartDateTime field. If this is not populated, the end date will be open ended |ISODateTime |
 
 The ASPSP must treat the following as valid input:
-- non-working days (e.g. a Sunday or a Bank holiday) or any other days on which no transactions are recorded
-- dates that fall outside the range for which transaction information is provided through APIs
-- dates that fall outside the range for which a consent authorisation is available.
+* non-working days (e.g. a Sunday or a Bank holiday) or any other days on which no transactions are recorded
+* dates that fall outside the range for which transaction information is provided through APIs
+* dates that fall outside the range for which a consent authorisation is available.
 
-In the above situations, the ASPSP must return statements where the StartDateTime and EndDateTime are both between the  **fromStatementDateTime**  and  **toStatementDateTime** parameters.
+In the above situations, the ASPSP must return statements where the StartDateTime and EndDateTime are both between the  **fromStatementDateTime**  and **toStatementDateTime** parameters.
+
+**Filtering Examples**
 
 ```
 // All statements from 1st Jan, 2015
 GET /statements?fromStatementDateTime=2015-01-01T00:00:00
+ 
 // All statements in 2016
 GET /statements?fromStatementDateTime=2016-01-01T00:00:00&amp;toStatementDateTime=2016-12-31T23:59:59
+ 
 // All statements in a specific account up to 31-Mar-2017
 GET /accounts/1/statements?toStatementDateTime=2017-03-31T23:59:59
 ```
 
 ### Permission Codes
+
 The resource differs depending on the permissions (ReadStatementsBasic and ReadStatementsDetail) used to access resource (the OBReadStatement2 object). In the event the resource is accessed with both ReadStatementsBasic and ReadStatementsDetail, the most detailed level (ReadStatementsDetail) must be used.
 
-- These objects  **must not** be returned  **without**  the  **ReadStatementsDetail** permission:
-- OBReadStatement2/Data/Statement/StatementAmount
-- Calls to GET /accounts/{AccountId}/statements/{StatementId}/file
-- If the  **ReadStatementsDetail** is granted by the PSU:
-    - OBReadStatement2/Data/Statement/StatementAmount  **may**  be returned if applicable to the statement and ASPSP (0..n)
+* These objects **must not** be returned **without** the **ReadStatementsDetail** permission:
+* OBReadStatement2/Data/Statement/StatementAmount
+* Calls to GET /accounts/{AccountId}/statements/{StatementId}/file
 
-For the call to GET /accounts/{AccountId}/statements/{StatementId}/transactions: 
+* If the **ReadStatementsDetail** is granted by the PSU: 
+    * OBReadStatement2/Data/Statement/StatementAmount **may** be returned if applicable to the statement and ASPSP (0..n)
 
-- The  **ReadTransactionsBasic** or  **ReadTransactionsDetail** (in addition to the appropriate  **ReadTransactionsCredits** and/or **  **ReadTransactionsDebits** ) permission codes will be required. The ASPSP must apply the same access to GET /accounts/{AccountId}/statements/{StatementId}/transactions as GET /accounts/{AccountId}/transactions
-- If the ReadPAN permission is granted by the PSU - the ASPSP may choose to populate the unmasked PAN - if the PAN is being populated in the response for these fields:
-    - OBReadTransaction3/Data/Transaction/CreditorAgent/Identification
-    - OBReadTransaction3/Data/Transaction/DebtorAccount/Identification
-    - OBReadTransaction3/Data/Transaction/CardInstrument/Identification
+For the call toGET /accounts/{AccountId}/statements/{StatementId}/transactions:
+
+* The **ReadTransactionsBasic or** **ReadTransactionsDetail** (in addition to the appropriate **ReadTransactionsCredits** and/or **ReadTransactionsDebits** ) permission codes will be required. The ASPSP must apply the same access to GET /accounts/{AccountId}/statements/{StatementId}/transactions as GET /accounts/{AccountId}/transactions
+* If the ReadPAN permission is granted by the PSU - the ASPSP may choose to populate the unmasked PAN - if the PAN is being populated in the response for these fields: 
+    * OBReadTransaction3/Data/Transaction/CreditorAgent/Identification 
+    * OBReadTransaction3/Data/Transaction/DebtorAccount/Identification 
+    * OBReadTransaction3/Data/Transaction/CardInstrument/Identification
+
 
 ### Data Dictionary
- | Name |Occurrence |XPath |EnhancedDefinition |Class |Codes |Pattern |
+
+| Name |Occurrence |XPath |EnhancedDefinition |Class |Codes |Pattern |
 | --- |--- |--- |--- |--- |--- |--- |
 | OBReadStatement2 | |OBReadStatement2 | |OBReadStatement2 | | |
 | Data |1..1 |OBReadStatement2/Data | |OBReadDataStatement2 | | |
@@ -153,9 +170,13 @@ For the call to GET /accounts/{AccountId}/statements/{StatementId}/transactions:
 | Value |1..1 |OBReadStatement2/Data/Statement/StatementValue/Value |Value associated with the statement value type. |OBExternalStatementValueType1Code | | |
 | Type |1..1 |OBReadStatement2/Data/Statement/StatementValue/Type |Statement value type, in a coded form. |Max40Text | | |
 
+
 ## Usage Examples
+
 ### Specific Account
- **Request** 
+
+ **Request Get Account Statements Request**
+
 ```
 GET /accounts/22289/statements HTTP/1.1
 Authorization: Bearer Az90SAOJklae
@@ -164,13 +185,15 @@ x-fapi-customer-ip-address: 104.25.212.99
 x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Accept: application/json
 ```
- **Response** 
+
+ **Response Response**
+
 ```
 HTTP/1.1 200 OK
 x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Content-Type: application/json
 ```
-```JSON
+```json
 {
   "Data": {
     "Statement": [
@@ -189,9 +212,9 @@ Content-Type: application/json
           "Amount": "400.00",
           "Currency": "GBP"
         },
-		"CreditDebitIndicator": "Credit",
-		"Type": "ClosingBalance"
-      },
+		"CreditDebitIndicator": "Credit",        
+		"Type": "ClosingBalance"        
+      }, 
       {
         "Amount": {
           "Amount": "600.00",
@@ -201,7 +224,7 @@ Content-Type: application/json
         "Type": "PreviousClosingBalance"
       }
       ]
-    },
+    }, 
     {
       "AccountId": "22289",
       "StatementId": "34hj24u-324h33-31i3p4",
@@ -239,8 +262,11 @@ Content-Type: application/json
   }
 }
 ```
+
 ### Bulk
- **Request** 
+
+ **Request Get Statements Request**
+
 ```
 GET /statements HTTP/1.1
 Authorization: Bearer Az90SAOJklae
@@ -249,13 +275,15 @@ x-fapi-customer-ip-address: 104.25.212.99
 x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Accept: application/json
 ```
- **Response** 
-``` 
+
+ **Response Response**
+
+```
 HTTP/1.1 200 OK
 x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Content-Type: application/json
 ```
-```JSON
+```json
 {
   "Data": {
     "Statement": [
@@ -274,9 +302,9 @@ Content-Type: application/json
           "Amount": "400.00",
           "Currency": "GBP"
         },
-		"CreditDebitIndicator": "Credit",
-		"Type": "ClosingBalance"
-      },
+		"CreditDebitIndicator": "Credit",        
+		"Type": "ClosingBalance"        
+      }, 
       {
         "Amount": {
           "Amount": "600.00",
@@ -286,7 +314,7 @@ Content-Type: application/json
         "Type": "PreviousClosingBalance"
       }
       ]
-    },
+    }, 
     {
       "AccountId": "22289",
       "StatementId": "34hj24u-324h33-31i3p4",
@@ -302,9 +330,9 @@ Content-Type: application/json
           "Amount": "200.00",
           "Currency": "GBP"
         },
-		"CreditDebitIndicator": "Credit",
-		"Type": "ClosingBalance"
-      },
+		"CreditDebitIndicator": "Credit",        
+		"Type": "ClosingBalance"        
+      }, 
       {
         "Amount": {
           "Amount": "400.00",
@@ -314,7 +342,7 @@ Content-Type: application/json
         "Type": "PreviousClosingBalance"
       }
       ]
-    },
+    }, 
     {
       "AccountId": "32389",
       "StatementId": "9034ee-4ewa4e-342er6",
@@ -329,9 +357,9 @@ Content-Type: application/json
           "Amount": "2700.00",
           "Currency": "GBP"
         },
-		"CreditDebitIndicator": "Credit",
-		"Type": "ClosingBalance"
-      },
+		"CreditDebitIndicator": "Credit",        
+		"Type": "ClosingBalance"        
+      }, 
       {
         "Amount": {
           "Amount": "4060.00",
@@ -352,7 +380,3 @@ Content-Type: application/json
   }
 }
 ```
-
-    
-
-
