@@ -468,8 +468,8 @@ To ensure that the data is interpreted correctly, the ASPSP **may** provide the 
 ```json
   "Meta": {
     "TotalPages": 1,
-	"FirstAvailableDateTime": "2017-05-03T00:00:00+00:00",
-	"LastAvailableDateTime": "2017-12-03T00:00:00+00:00"
+    "FirstAvailableDateTime": "2017-05-03T00:00:00+00:00",
+    "LastAvailableDateTime": "2017-12-03T00:00:00+00:00"
   }
 ```
 
