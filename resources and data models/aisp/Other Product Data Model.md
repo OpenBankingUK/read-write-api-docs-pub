@@ -1,13 +1,3 @@
-
-
-
-
-
-
- 
-
-
-
 # Other Product Data Model v3.1.2
 
 ## Overview
@@ -41,7 +31,7 @@ Further analysis required:-
 
 * A generic data model to publish the Credit Interest functionality if applicable to Other Product Type.
 
-![ OtherProductInfoCreditInterest.png ]( images/OtherProduct/OtherProductInfoCreditInterest.png )
+![ OtherProductInfoCreditInterest.png ]( images/OtherProduct/OtherProduct/OtherProductInfoCreditInterest.png )
 
 #### Overdraft
 
