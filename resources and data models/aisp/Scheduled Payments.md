@@ -1,49 +1,58 @@
 # Scheduled Payments v3.1.2
+
 ## Endpoints
+
 Endpoints for the resource and available methods.
 
- |  |Resource |HTTP Operation |Endpoint |Mandatory? |Scope |Grant Type |Idempotency Key |Parameters |Request Object |Response Object |
+|  |Resource |HTTP Operation |Endpoint |Mandatory? |Scope |Grant Type |Idempotency Key |Parameters |Request Object |Response Object |
 | --- |--- |--- |--- |--- |--- |--- |--- |--- |--- |--- |
 | 1 |scheduled-payments |GET |GET /accounts/{AccountId}/scheduled-payments |Conditional |accounts |Authorization Code |No | | |OBReadScheduledPayment2 |
 | 2 |scheduled-payments |GET |GET /scheduled-payments |Optional |accounts |Authorization Code |No |Pagination | |OBReadScheduledPayment2 |
 
 
 ### GET /accounts/{AccountId}/scheduled-payments
+
 An ASPSP may provide this endpoint for AISPs to retrieve the scheduled-payments for a specific AccountId (which is retrieved in the call to GET /accounts).
 
 ### GET /scheduled-payments
+
 If an ASPSP has implemented the bulk retrieval endpoints, an AISP may optionally retrieve the scheduled-payments resources in bulk.
+
 This will retrieve the scheduled-payments resources for all authorised accounts linked to the account-request.
 
 ## Data Model
+
 ### Resource Definition
+
 A resource that contains a set of elements that describes the scheduled payments that have been set up on a specific account (AccountId). A scheduled payment is a single one-off payment scheduled for a future date.
+
 An account (AccountId) may have no scheduled payments set up, or may have multiple scheduled payments set up.
 
 ### UML Diagram
 
-![UML Diagram$](images/ScheduledPayments/OBReadScheduledPayment2.gif  "UML Diagram")
+![ OBReadScheduledPayment2.gif ]( images/ScheduledPayments/OBReadScheduledPayment2.gif )
 
-**Notes:**
-
-- The  **Creditor**  **Account**  and  **CreditorAgent**  blocks replicate what is used consistently throughout the Account Information APIs to identify an account. 
-- For the /accounts/{AccountId}/scheduled-payments endpoint, the  **Creditor**  **Account**  and  **CreditorAgent**  blocks represent the account that is receiving funds (so has been named the CreditorAccount, for consistency with the PISP use case).
-- A DateTime element has been used so that there is consistency across all API endpoints using dates. Where time elements do not exist in ASPSP systems, the time portion of the DateTime element will be defaulted to 00:00:00+00:00.
-- The Amount elements all have embedded Currency elements for consistency is ISO 20022, and across the other API endpoints.
+Notes:
+* The **Creditor** **Account** and **CreditorAgent** blocks replicate what is used consistently throughout the Account Information APIs to identify an account.
+* For the /accounts/{AccountId}/scheduled-payments endpoint, the **Creditor** **Account** and **CreditorAgent** blocks represent the account that is receiving funds (so has been named the CreditorAccount, for consistency with the PISP use case).
+* A DateTime element has been used so that there is consistency across all API endpoints using dates. Where time elements do not exist in ASPSP systems, the time portion of the DateTime element will be defaulted to 00:00:00+00:00.
+* The Amount elements all have embedded Currency elements for consistency is ISO 20022, and across the other API endpoints.
 
 ### Permission Codes
+
 The resource differs depending on the permissions (ReadScheduledPaymentsBasic and ReadScheduledPaymentsDetail) used to access resource. In the event that the resource is accessed with both ReadScheduledPaymentsBasic and ReadScheduledPaymentsDetail, the most detailed level (ReadScheduledPaymentsDetail) must be used.
-- These objects  **must not** be returned  **without**  the  **ReadScheduledPaymentsDetail** permission:
-    - OBReadScheduledPayment2/Data/ScheduledPayment/CreditorAgent
-    - OBReadScheduledPayment2/Data/ScheduledPayment/CreditorAccount
-- If the  **ReadScheduledPaymentsDetail** is granted by the PSU:
-    - OBReadScheduledPayment2/Data/ScheduledPayment/CreditorAgent  **may**  be returned if applicable to the account and ASPSP (0..1)
-    - OBReadScheduledPayment2/Data/ScheduledPayment/CreditorAccount  **must**  be returned (1..1)
+* These objects **must not** be returned **without** the **ReadScheduledPaymentsDetail** permission: 
+    * OBReadScheduledPayment2/Data/ScheduledPayment/CreditorAgent 
+    * OBReadScheduledPayment2/Data/ScheduledPayment/CreditorAccount
+* If the **ReadScheduledPaymentsDetail** **** is granted by the PSU: 
+    * OBReadScheduledPayment2/Data/ScheduledPayment/CreditorAgent**may** be returned if applicable to the account and ASPSP (0..1) 
+    * OBReadScheduledPayment2/Data/ScheduledPayment/CreditorAccount **must** be returned (1..1)
 
 If the ReadPAN permission is granted by the PSU - the ASPSP may choose to populate the OBReadScheduledPayment2/Data/ScheduledPayment/CreditorAccount/Identification with the unmasked PAN (if the PAN is being populated in the response).
 
 ### Data Dictionary
- | Name |Occurrence |XPath |EnhancedDefinition |Class |Codes |Pattern |
+
+| Name |Occurrence |XPath |EnhancedDefinition |Class |Codes |Pattern |
 | --- |--- |--- |--- |--- |--- |--- |
 | OBReadScheduledPayment2 | |OBReadScheduledPayment2 | |OBReadScheduledPayment2 | | |
 | Data |1..1 |OBReadScheduledPayment2/Data | |OBReadDataScheduledPayment2 | | |
@@ -65,9 +74,13 @@ If the ReadPAN permission is granted by the PSU - the ASPSP may choose to popula
 | Name |0..1 |OBReadScheduledPayment2/Data/ScheduledPayment/CreditorAccount/Name |The account name is the name or names of the account owner(s) represented at an account level, as displayed by the ASPSP's online channels. Note, the account name is not the product name or the nickname of the account. |Max70Text | | |
 | SecondaryIdentification |0..1 |OBReadScheduledPayment2/Data/ScheduledPayment/CreditorAccount/SecondaryIdentification |This is secondary identification of the account, as assigned by the account servicing institution. This can be used by building societies to additionally identify accounts with a roll number (in addition to a sort code and account number combination). |Max34Text | | |
 
+
 ## Usage Examples
+
 ### Specific Account
- **Request** 
+
+ **Request Get Account Specific Scheduled Payments Request**
+
 ```
 GET /accounts/22289/scheduled-payments HTTP/1.1
 Authorization: Bearer Az90SAOJklae
@@ -76,7 +89,8 @@ x-fapi-customer-ip-address: 104.25.212.99
 x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Accept: application/json
 ```
- **Response** 
+
+ **Response Get Accounts Specific Scheduled Payments Response**
 
 ```
 HTTP/1.1 200 OK
@@ -112,8 +126,11 @@ Content-Type: application/json
   }
 }
 ```
+
 ### Bulk
- **Request** 
+
+ **Request Get Bulk Scheduled Payments Request**
+
 ```
 GET /scheduled-payments HTTP/1.1
 Authorization: Bearer Az90SAOJklae
@@ -122,17 +139,19 @@ x-fapi-customer-ip-address: 104.25.212.99
 x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Accept: application/json
 ```
- **Response** 
+
+ **Response Get Bulk Scheduled Payments Response**
+
 ```
 HTTP/1.1 200 OK
 x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Content-Type: application/json
 ```
-```JSON
+```json
 {
   "Data": {
     "ScheduledPayment": [
-      {
+      { 
 		"AccountId": "22289",
         "ScheduledPaymentId": "SP03",
         "ScheduledPaymentDateTime": "2017-05-05T00:00:00+00:00",
@@ -172,6 +191,3 @@ Content-Type: application/json
   }
 }
 ```
-
-
-
