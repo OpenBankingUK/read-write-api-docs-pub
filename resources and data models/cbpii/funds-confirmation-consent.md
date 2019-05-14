@@ -36,12 +36,12 @@ This resource description should be read in conjunction with a compatible Confir
 For a list of profiles compatible with this resource, please see the [Compatibility Matrix]().
 
 ## Endpoints
+
 | Resource |HTTP Operation |Endpoint |Mandatory ? |Scope |Grant Type |Message Signing |Idempotency Key |Request Object |Response Object |
 | --- |--- |--- |--- |--- |--- |--- |--- |--- |--- |
 | funds-confirmation-consent |POST |POST /funds-confirmation-consents |Mandatory |fundsconfirmations |Client Credentials |No |No |OBFundsConfirmationConsent1 |OBFundsConfirmationConsentResponse1 |
 | funds-confirmation-consent |GET |GET /funds-confirmation-consents/{ConsentId} |Mandatory |fundsconfirmations |Client Credentials |No |No |NA |OBFundsConfirmationConsentResponse1 |
 | funds-confirmation-consent |DELETE |DELETE /funds-confirmation-consents/{ConsentId} |Mandatory |fundsconfirmations |Client Credentials |No |No |NA |NA |
-
 
 ### POST /funds-confirmation-consents
 
@@ -56,18 +56,18 @@ The API allows the CBPII to ask an ASPSP to create a new **funds-confirmation-co
 The PSU **must** authenticate with the ASPSP and agree the **funds-confirmation-consent** with the ASPSP, for the **funds-confirmation-consent** to be successfully setup.
 
 The **funds-confirmation-consent** resource that is created successfully must have one of the following Status code-list enumerations:
+
 |  |Status |Status Description |
 | --- |--- |--- |
 | 1 |AwaitingAuthorisation |The Funds Confirmation Consent is awaiting agreement. |
 
-
 After consent has been agreed the **funds-confirmation-consent** resource may have these following statuses.
+
 |  |Status |Status Description |
 | --- |--- |--- |
 | 1 |Rejected |The Funds Confirmation Consent has been rejected. |
 | 2 |Authorised |The Funds Confirmation Consent has been successfully agreed. |
 | 3 |Revoked |The Funds Confirmation Consent has been revoked via the ASPSP interface. |
-
 
 #### Status Flow
 
@@ -86,6 +86,7 @@ Prior to calling the operation, the CBPII must have an access token issued by th
 Once the PSU agrees the consent outlined in the **funds-confirmation-consent** resource, the Status of the **funds-confirmation-consent** resource will be updated with "Authorised".
 
 The available Status code-list enumerations for the **funds-confirmation-consent** resource are:
+
 |  |Status |Status Description |
 | --- |--- |--- |
 | 1 |Rejected |The Funds Confirmation Consent has been rejected. |
@@ -116,6 +117,7 @@ The OBFundsConfirmationConsent1 object will be used for the following:
 ![OBFundsConfirmationConsent1](images/OBFundsConfirmationConsent1.gif)
 
 #### Data Dictionary
+
 | Name |Occurrence |XPath |EnhancedDefinition |Class |Codes |Pattern |
 | --- |--- |--- |--- |--- |--- |--- |
 | OBFundsConfirmationConsent1 | |OBFundsConfirmationConsent1 | |OBFundsConfirmationConsent1 | | |
@@ -126,7 +128,6 @@ The OBFundsConfirmationConsent1 object will be used for the following:
 | Identification |1..1 |OBFundsConfirmationConsent1/Data/DebtorAccount/Identification |Identification assigned by an institution to identify an account. This identification is known by the account owner. |Max256Text | | |
 | Name |0..1 |OBFundsConfirmationConsent1/Data/DebtorAccount/Name |The account name is the name or names of the account owner(s) represented at an account level, as displayed by the ASPSP's online channels. Note, the account name is not the product name or the nickname of the account. |Max70Text | | |
 | SecondaryIdentification |0..1 |OBFundsConfirmationConsent1/Data/DebtorAccount/SecondaryIdentification |This is secondary identification of the account, as assigned by the account servicing institution. This can be used by building societies to additionally identify accounts with a roll number (in addition to a sort code and account number combination). |Max34Text | | |
-
 
 ### Funds Confirmation Consent - Response
 
@@ -168,6 +169,7 @@ The OBFundsConfirmationConsentResponse1 object contains the same information as 
 ### Data Payload - Enumerations
 
 This section gives the definitions for enumerations used in the Confirmation of Funds APIs.
+
 | Code Class |Name |Definition |
 | --- |--- |--- |
 | OBExternalRequestStatus1Code |Authorised |The funds confirmation consent has been successfully agreed. |
