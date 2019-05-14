@@ -19,16 +19,15 @@ Further analysis required:-
 | BCA (We’ll rename this “Product” and merge BCA and CoreProduct attributes) |<li>Name <li>ProductType (“BCA”) <li>Product Segment (e.g. “Startup”,”Switcher”,… ) <li>Open Data Product ID (Mandatory, if product info is available on Open Data BCA API) <li>Fee-free period |
 | CoreProduct |**None** – Will be merged in to new “Product” section. |
 | BCAMarketingState |**None** – Sections will only include current state information, so this section is not required. |
-| CreditInterest |<br><br><li>TierBandSet fields (excluding credit interest eligibility). <li>All TierBand fields <li>**Note: Only current state credit interest information is required. Where the interest rate(s) have been negotiated, the actual rates applied to the account should be provided.** |
-| Overdraft |<br><br><li>All TierBandSet fields (including OverdraftFeesAndCharges) <li>All TierBand fields (including OverdraftFeesAndCharges). <li>**Note: Only current state information is required. Where the overdraft rate(s) have been negotiated, the actual rates applied to the account should be provided.** |
+| CreditInterest <li>TierBandSet fields (excluding credit interest eligibility). <li>All TierBand fields <li>**Note: Only current state credit interest information is required. Where the interest rate(s) have been negotiated, the actual rates applied to the account should be provided.** |
+| Overdraft |<li>All TierBandSet fields (including OverdraftFeesAndCharges) <li>All TierBand fields (including OverdraftFeesAndCharges). <li>**Note: Only current state information is required. Where the overdraft rate(s) have been negotiated, the actual rates applied to the account should be provided.** |
 | Eligibility |**None** – Whether an organisation is eligible for other products cannot be determined by looking at existing product eligibility e.g., criteria for a startup can vary from bank to bank. |
 | FeaturesAndBenefits |**None** – The value of a particular feature and benefit to an accountholder is dependent on their use of that benefit and whether they met the eligibility criteria. Features &amp; benefits are less significant in the BCA market than the PCA. |
-| OtherFeesAndCharges |<br><br><li>See Notes below |
-
+| OtherFeesAndCharges |<li>See Notes below |
 
 Notes:
 * With BCA, there are substantially more other fees &amp; charges than are applicable to PCA account holders.
-* Prior to OBIE being formed, the CMA asked the 9 banks to provide a set of fees &amp; charges that would allow for a comparison between banks, the results of which are documented in the Business current account and personal current account pricing analysis. The comparison included the following Fee Types(Please see the attached codelist file), which we think are relevant, all of which are domestic transactions. As well as fee comparison information provided by the banks to the CMA9, there are tariff comparison calculators provided by some of the banks that allow a BCA holder the ability to determine which bank product would provide them with the lowest set of charges.
+* Prior to OBIE being formed, the CMA asked the 9 banks to provide a set of fees &amp; charges that would allow for a comparison between banks, the results of which are documented in the [Business current account and personal current account pricing analysis](https://assets.digital.cabinet-office.gov.uk/media/574470efe5274a0375000006/update_on_pca_pricing_working_paper.pdf). The comparison included the following Fee Types(Please see the attached codelist file), which we think are relevant, all of which are domestic transactions. As well as fee comparison information provided by the banks to the CMA9, there are tariff comparison calculators provided by some of the banks that allow a BCA holder the ability to determine which bank product would provide them with the lowest set of charges.
 * **Electronic:** Auto credit, Bill payment, Debit card payment, Direct debit, Standing Order
 * **Branch/Other:** Pay in (Counter), Deposit (Cheque), Issue (Cheque), Withdrawal (Counter), Cash In, Cash Out (Counter), Cash Out (ATM)
 * However, our analysis is that the basket of fees is a weighted average provided as a one-off activity and it would be difficult for the banks to supply fees/charges for these business activities in a real time API. This is due to banks charging fees at different levels of granularity today and fee standardisation being required. Although comparative pricing is highlighted as a key driver of the Open Banking initiative, without fee standardisation, the complexity of comparing fees is likely to deter customers from considering switching.
@@ -44,19 +43,21 @@ Notes:
 ### No Eligibility and FeaturesAndBenefits
 
 * Eligibility and FeaturesAndBenefits sections are removed from the Account Info section as information related to them might not be easily available.
-* **Unlike** **PCA** **, there is no requirement to publish a** **MaximumMonthlyCharge** **, so Monthly Charge field has been omitted. In the BCA On Sale Product Data API, There were two fields** **MonthlyCharge and I** **ncludedInMonthlyChargeIndicator(** **OtherFeesAndCharges section)** **. Both of these fields have been removed from this specification.**
+* **Unlike PCA, there is no requirement to publish a MaximumMonthlyCharge , so Monthly Charge field has been omitted. In the BCA On Sale Product Data API, There were two fields MonthlyCharge and IncludedInMonthlyChargeIndicator( OtherFeesAndCharges section). Both of these fields have been removed from this specification.**
 
-![ BCATopLevel.ClassDiagram.png ]( images/BCATopLevel.ClassDiagram.png )
-<br>
+![ BCATopLevel.ClassDiagram.png ]( images/BCA/BCATopLevel.ClassDiagram.png )
+
 ### CreditInterest Model
 
 * AER is the only representative rate for CreditInterest for product comparison purposes and therefore has been explicitly captured.
 * The banks often also specify Gross rates. Net is usually determined by removing basic rate tax only, and banks stopped doing this from April 2016. This may still be required for backbook products.
-* It has been ensured that both the calculation and application frequency for credit interest is captured. The term ‘Nominal’ used by some banks is synonymous with ‘Gross’.
+* It has been ensured that both the calculation and application frequency for credit interest is captured. 
+* The term ‘Nominal’ used by some banks is synonymous with ‘Gross’.
 * DepositInterestAppliedCoverage refers to which interest rate is applied when interests are tiered. For example, if an account balance is £2k and the interest tiers are:- 0-£500 0.1%, 500-1000 0.2%, 1000-10000 0.5%, then the applicable interest rate could either be 0.5% of the entire balance (since the account balance sits in the top interest tier) or (0.1%*500)+(0.2%*500)+(0.5%*1000). In the 1st situation, the interest should be applied to the ‘Whole’ of the account balance, and in the 2nd this should be ‘Tiered’.
 * Destination refers to whether the BCA allows interest to be credited to another account (‘PayAway’) or only to the BCA itself (‘SelfCredit’).
 
-![ BCAProductInfoCreditIntrstClassDiagram.png ]( images/BCAProductInfoCreditIntrstClassDiagram.png )
+![ BCAProductInfoCreditIntrstClassDiagram.png ]( images/BCA/BCAProductInfoCreditIntrstClassDiagram.png )
+
 ### Overdraft
 
 * Overdraft Types can either be Committed e.g., the bank are committed to provide this overdraft facility and cannot demand repayment without notifying the customer, or OnDemand: The bank can demand instant repayment of this overdraft.
@@ -68,7 +69,7 @@ Notes:
 
 ### OverdraftFeeCharges
 
-* Overdraft/borrowing fees are less important for BCA than for PCA, as only 15% of business customers have overdrafts. (Ref: page 15 - https://assets.publishing.service.gov.uk/media/55c4bf0340f0b61374000015/BCA_and_PCA_pricing_analysis_v2.pdf)
+* Overdraft/borrowing fees are less important for BCA than for PCA, as only 15% of business customers have overdrafts. (Ref: page 15 - [https://assets.publishing.service.gov.uk/media/55c4bf0340f0b61374000015/BCA_and_PCA_pricing_analysis_v2.pdf](https://assets.publishing.service.gov.uk/media/55c4bf0340f0b61374000015/BCA_and_PCA_pricing_analysis_v2.pdf))
 * A cap can be applied to 1 or more Overdraft Fees/Charges and are typically capped for a particular period e.g., Total overdraft charges (Arranged, Unarranged, Paid Transaction and Unpaid Transaction) may be capped on a monthly basis.
 * Capping can either be based on an amount (in gbp), an amount (in items) or a rate.
 * Additional notes are required to ensure it is made clear how any formula used to apply the capping is deduced.
@@ -77,15 +78,15 @@ Notes:
 * Setup/arrangement and renewal fees are common for business overdrafts, and therefore need to be included in the OB_BCAOverdraftFeeType1Codelist.
 * Fees/charges are often negotiable, so a NegotiableIndicator has been added to OverdraftFeeChargeDetail.
 
-<br>
-![ BCAAccountInfoOverdraftt.ClassDiagram.png ]( images/BCAAccountInfoOverdraftt.ClassDiagram.png )
+![ BCAAccountInfoOverdraftt.ClassDiagram.png ]( images/BCA/BCAAccountInfoOverdraftt.ClassDiagram.png )
+
 ### OtherFeesCharges
 
 * OtherFeesCharges is a lot more important for companies who have not opened a startup or switcher account.
 * Fees/charges are often negotiable for BCA, so a NegotiableIndicator has been added to FeeChargeDetail.
 
-![ AINFOBCA.2.2.0.OtherFeesCharges.png ]( images/AINFOBCA.2.2.0.OtherFeesCharges.png )
-<br>
+![ AINFOBCA.2.2.0.OtherFeesCharges.png ]( images/BCA/AINFOBCA.2.2.0.OtherFeesCharges.png )
+
 # Data Model
 
 ## Data Payload
@@ -98,26 +99,25 @@ Notes:
 * Other Fee Charges: Only Periodic Fee(service charge) has been included in the Code List.
 * We have taken Open Data BCA Segments for BCA Account Info as well.
 
-<br>
 ![ AINFOBCA.2.2.0.ClassDiagram.png ]( images/AINFOBCA.2.2.0.ClassDiagram.png )
+
 ## Data Dictionary
 
-* BCA Account Info Data Definition
+* [BCA Account Info Data Definition](https://openbanking.atlassian.net/wiki/download/attachments/1077805458/ainfobca.v3.rc3.DD.xlsx?version=1&modificationDate=1556635332741&cacheVersion=1&api=v2)
 
 ## Data Payload - Enumerations
 
-* BCA Account Info Code List
+* [BCA Account Info Code List](https://openbanking.atlassian.net/wiki/download/attachments/1077805458/ainfobca.2.2.0.CodeList.xlsx?version=1&modificationDate=1556635332166&cacheVersion=1&api=v2)
 
 # Usage Examples
 
 ## Publish Open Data Standard BCA Product
 
-Example reference HSBC Startup Business Account
+**Example reference HSBC Startup Business Account**
 
- **Request** **Get Accounts Product Request**
+ **Request:  Get Accounts Product Request**
 
-
-```json
+```
 GET /accounts/22389/product HTTP/1.1
 Authorization: Bearer Az90SAOJklae
 x-fapi-auth-date:  Sun, 10 Sep 2017 19:43:31 GMT
@@ -126,14 +126,14 @@ x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Accept: application/json
 ```
 
- **Response** **Get Accounts Product Response**
-
+ **Response: Get Accounts Product Response**
 
 ```json
 HTTP/1.1 200 OK
 x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Content-Type: application/json
-
+```
+```json
 {
    "Data":{
       "Product":[
@@ -154,18 +154,14 @@ Content-Type: application/json
 }
 ```
 
-
-
-
 ## Publish Open Data Standard BCA Product along with new other fee charges
 
 The example below has been taken from Santander Business Current Account.
 The customer is at £12.50 monthly account fee for £3,000 cash deposits per month.
 
- **Request** **Get Accounts Product Request**
+ **Request: Get Accounts Product Request**
 
-
-```json
+```
 GET /accounts/22390/product HTTP/1.1
 Authorization: Bearer Az90SAOJklae
 x-fapi-auth-date:  Sun, 10 Sep 2017 19:43:31 GMT
@@ -174,14 +170,14 @@ x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Accept: application/json
 ```
 
- **Response** **Get Accounts Product Response**
+ **Response: Get Accounts Product Response**
 
-
-```json
+```
 HTTP/1.1 200 OK
 x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Content-Type: application/json
-
+```
+```json
 {
    "Data":{
       "Product":[
@@ -224,17 +220,13 @@ Content-Type: application/json
 }
 ```
 
-
-
-
 ## Publish Back Book product
 
 Lloyds Retail Business  Current Account
 
- **Request** **Get Accounts Product Request**
+ **Request: Get Accounts Product Request**
 
-
-```json
+```
 GET /accounts/22391/product HTTP/1.1
 Authorization: Bearer Az90SAOJklae
 x-fapi-auth-date:  Sun, 10 Sep 2017 19:43:31 GMT
@@ -243,14 +235,14 @@ x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Accept: application/json
 ```
 
- **Response** **Get Accounts Product Response**
+ **Response: Get Accounts Product Response**
 
-
-```json
+```
 HTTP/1.1 200 OK
 x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Content-Type: application/json
-
+```
+```json
 {
    "Data":{
       "Product":[
@@ -277,18 +269,13 @@ Content-Type: application/json
    }
 }
 ```
-
-
-
-
 ## Represent a business overdraft fees
 
 The example below has been taken from the  Barclays Business Current Account
 
- **Request** **Get Accounts Product Request**
+ **Request: Get Accounts Product Request**
 
-
-```json
+```
 GET /accounts/22392/product HTTP/1.1
 Authorization: Bearer Az90SAOJklae
 x-fapi-auth-date:  Sun, 10 Sep 2017 19:43:31 GMT
@@ -297,14 +284,14 @@ x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Accept: application/json
 ```
 
- **Response** **Get Accounts Product Response**
-
+ **Response: Get Accounts Product Response**
 
 ```json
 HTTP/1.1 200 OK
 x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Content-Type: application/json
-
+```
+```json
 {
    "Data":{
       "Product":[
@@ -365,19 +352,16 @@ Content-Type: application/json
 }
 ```
 
-
-
-
 ## Show whole interest rates
 
 The example below has been taken from the Lloyds Schools Banking Account
 0.05% Fixed interest
 No interest-related eligibly criteria specific
 
- **Request** **Get Accounts Product Request**
+ **Request: Get Accounts Product Request**
 
 
-```json
+```
 GET /accounts/22393/product HTTP/1.1
 Authorization: Bearer Az90SAOJklae
 x-fapi-auth-date:  Sun, 10 Sep 2017 19:43:31 GMT
@@ -386,14 +370,14 @@ x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Accept: application/json
 ```
 
- **Response** **Get Accounts Product Response**
+ **Response: Get Accounts Product Response**
 
-
-```json
+```
 HTTP/1.1 200 OK
 x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Content-Type: application/json
-
+```
+```json
 {
    "Data":{
       "Product":[
@@ -438,17 +422,14 @@ Content-Type: application/json
 }
 ```
 
-
-
-
 ## Represent Tariffs and “Other Fees And Charges”
 
 The example below has been taken from the HSBC Business Current Account
 
- **Request** **Get Accounts Product Request**
+ **Request: Get Accounts Product Request**
 
 
-```json
+```
 GET /accounts/22394/product HTTP/1.1
 Authorization: Bearer Az90SAOJklae
 x-fapi-auth-date:  Sun, 10 Sep 2017 19:43:31 GMT
@@ -459,12 +440,12 @@ Accept: application/json
 
  **Response** **Get Accounts Product Response**
 
-
-```json
+```
 HTTP/1.1 200 OK
 x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Content-Type: application/json
-
+```
+```json
 {
    "Data":{
       "Product":[
