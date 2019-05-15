@@ -6,6 +6,10 @@ The Account Access Consents API is used by an AISP to request an ASPSP to create
 
 This resource description should be read in conjunction with a compatible Account Information Services API Profile.
 
+## Profile Compatibility
+
+For a list of profiles compatible with this resource, please see the [Compatibility Matrix](https://github.com/OpenBankingUK/read-write-api-docs/tree/dj-align-payment-resource-page-structure/resources%20and%20data%20models/aisp)
+
 ## Endpoints
 
 |  |Resource |HTTP Operation |Endpoint |Mandatory? |Scope |Grant Type |Idempotency Key |Parameters |Request Object |Response Object |
