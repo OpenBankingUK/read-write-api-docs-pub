@@ -1,5 +1,13 @@
-# Account Access Consents v3.1.2
+# Account Access Consents <!-- omit in toc -->
+
+## Overview
+
+The Account Access Consents API is used by an AISP to request an ASPSP to create a new account-access-consent resource, retrieve the status of account-access-consent resource and delete the account-access-consent resource.
+
+This resource description should be read in conjunction with a compatible Account Information Services API Profile.
+
 ## Endpoints
+
 |  |Resource |HTTP Operation |Endpoint |Mandatory? |Scope |Grant Type |Idempotency Key |Parameters |Request Object |Response Object |
 | --- |--- |--- |--- |--- |--- |--- |--- |--- |--- |--- |
 | 1 |account-access-consents |POST |POST /account-access-consents |Mandatory |accounts |Client Credentials |No | |OBReadConsent1 |OBReadConsentResponse1 |
@@ -7,7 +15,8 @@
 | 3 |account-access-consents |DELETE |DELETE /account-access-consents/{ConsentId} |Mandatory |accounts |Client Credentials |No | | | |
 
 
-### POST /account-access-consents 
+### POST /account-access-consents
+ 
 The API allows the AISP to ask an ASPSP to create a new account-access-consent resource.
 * This API effectively allows the AISP to send a copy of the consent to the ASPSP to authorise access to account and transaction information.
 * An AISP is not able to pre-select a set of accounts for account-access-consent authorisation. This is because the behaviour of the pre-selected accounts, after authorisation, is not clear from a Legal perspective.
@@ -15,6 +24,7 @@ The API allows the AISP to ask an ASPSP to create a new account-access-consent r
 * Prior to calling the API, the AISP must have an access token issued by the ASPSP using a client credentials grant.
 
 #### Account Access Consent Status
+
 The PSU  **must**  authenticate with the ASPSP and authorise the account-access-consent for the account-access-consent to be successfully setup.
 The account-access-consent resource that is created successfully must have the following Status code-list enumeration:
 
@@ -31,11 +41,13 @@ After authorisation has taken place the account-access-consent resource may have
 | 3 |Revoked |The account access consent has been revoked via the ASPSP interface. |
 
 #### Status Flow
+
 This is the state diagram for the Status.
 
 ![ Consent Authorisation.jpg ]( images/AccountAccessConsents/ConsentAuthorisation.jpg )
 
 ### GET /account-access-consents/{ConsentId}
+
 An AISP may optionally retrieve an account-access-consent resource that they have created to check its status. 
 
 Prior to calling the API, the AISP must have an access token issued by the ASPSP using a client credentials grant.
@@ -43,6 +55,7 @@ Prior to calling the API, the AISP must have an access token issued by the ASPSP
 The usage of this API endpoint will be subject to an ASPSP's fair usage policies.
 
 #### Account Access Consent Status
+
 Once the PSU authorises the account-access-consent resource - the Status of the account-access-consent resource will be updated with "Authorised".
 
 The available Status code-list enumerations for the account-access-consent resource are:
@@ -56,23 +69,28 @@ The available Status code-list enumerations for the account-access-consent resou
 
 
 ### DELETE /account-access-consents/{ConsentId}
+
 If the PSU revokes consent to data access with the AISP, the AISP  **must**  delete the account-access-consent resource with the ASPSP before confirming consent revocation with the PSU.
 
 * This is done by making a call to DELETE the account-access-consent resource.
 * Prior to calling the API, the AISP must have an access token issued by the ASPSP using a client credentials grant.
 
 ## Data Model
+
 ### Account Access Consents - Request
+
 The OBReadConsent1 object will be used for the call to:
 * POST /account-access-consents
 
 #### UML Diagram
+
 ![ OBReadConsent1.gif ]( images/AccountAccessConsents/OBReadConsent1.gif )
 Notes:
 * The fields in the OBReadConsent1 object are described in the Consent Elements section.
 * No fields have been identified for the Risk section.
 
 #### Data Dictionary
+
 | Name |Occurrence |XPath |EnhancedDefinition |Class |Codes |
 | --- |--- |--- |--- |--- |--- |
 | OBReadConsent1 | |OBReadConsent1 | |OBReadConsent1 | |
@@ -85,6 +103,7 @@ Notes:
 
 
 ### Account Access Consents - Response
+
 The OBReadConsentResponse1 object will be used for the call to:
 * GET /account-access-consents/{ConsentId}
 
@@ -92,6 +111,7 @@ And response to:
 * POST /account-access-consents
 
 #### UML Diagram
+
 ![ OBReadConsentResponse1.gif ]( images/AccountAccessConsents/OBReadConsentResponse1.gif )
 
 Notes:
@@ -103,6 +123,7 @@ Notes:
 * No fields have been identified for the Risk section.
 
 #### Data Dictionary
+
 | Name |Occurrence |XPath |EnhancedDefinition |Class |Codes |
 | --- |--- |--- |--- |--- |--- |
 | OBReadConsentResponse1 | |OBReadConsentResponse1 | |OBReadConsentResponse1 | |
@@ -268,6 +289,7 @@ Content-Type: application/json
 ```
 
 ### Status - Authorised
+
 This is an example of a GET request which is made  **after**  the account access consent resource is authorised.
 
 #### Get Account Access Consents Request
@@ -327,6 +349,7 @@ Content-Type: application/json
 ```
 
 ### Delete Account Access Consent
+
 The DELETE /account-access-consents call allows an AISP to delete a previously created account-access-consent (whether it is currently authorised or not). The PSU may want to remove their consent via the AISP instead of revoking authorisation with the ASPSP.
 
 This API call allows the PSU to revoke consent with the AISP, and for that consent to be reflected in authorisation with the ASPSP.
