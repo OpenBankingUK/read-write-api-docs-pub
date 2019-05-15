@@ -141,6 +141,7 @@ A PISP can retrieve the domestic-standing-order to check its status.
 The domestic-standing-order resource must have one of the following Status codes:
 
 | Status |
+| --- |
 | InitiationPending |
 | InitiationFailed |
 | InitiationCompleted |
