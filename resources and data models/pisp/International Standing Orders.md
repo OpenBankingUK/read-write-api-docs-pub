@@ -1,4 +1,71 @@
+# International Standing Orders <!-- omit in toc -->
+
+1. [Overview](#overview)
+   1. [Profile Compatibility](#profile-compatibility)
+2. [Endpoints](#endpoints)
+   1. [POST /international-standing-order-consents](#post-international-standing-order-consents)
+      1. [Status](#status)
+   2. [GET /international-standing-order-consents/{ConsentId}](#get-international-standing-order-consentsconsentid)
+      1. [Status](#status-1)
+   3. [POST /international-standing-orders](#post-international-standing-orders)
+      1. [Status](#status-2)
+   4. [GET /international-standing-orders/{InternationalStandingOrderPaymentId}](#get-international-standing-ordersinternationalstandingorderpaymentid)
+      1. [Status](#status-3)
+   5. [GET /international-standing-orders/{InternationalStandingOrderPaymentId}/payment-details](#get-international-standing-ordersinternationalstandingorderpaymentidpayment-details)
+      1. [Status](#status-4)
+   6. [State Model](#state-model)
+      1. [Payment Order Consent](#payment-order-consent)
+      2. [Payment Order](#payment-order)
+         1. [Multiple Authorisation](#multiple-authorisation)
+3. [Data Model](#data-model)
+   1. [Reused Classes](#reused-classes)
+      1. [OBInternationalStandingOrder3](#obinternationalstandingorder3)
+         1. [UML Diagram](#uml-diagram)
+         2. [Notes](#notes)
+         3. [Data Dictionary](#data-dictionary)
+   2. [International Standing Order Consent - Request](#international-standing-order-consent---request)
+      1. [UML Diagram](#uml-diagram-1)
+      2. [Notes](#notes-1)
+      3. [Data Dictionary](#data-dictionary-1)
+   3. [International Standing Order Consent - Response](#international-standing-order-consent---response)
+      1. [UML Diagram](#uml-diagram-2)
+      2. [Notes](#notes-2)
+      3. [Data Dictionary](#data-dictionary-2)
+   4. [International Standing Order - Request](#international-standing-order---request)
+      1. [UML Diagram](#uml-diagram-3)
+      2. [Notes](#notes-3)
+      3. [Data Dictionary](#data-dictionary-3)
+   5. [International Standing Order - Response](#international-standing-order---response)
+      1. [UML Diagram](#uml-diagram-4)
+      2. [Notes](#notes-4)
+      3. [Data Dictionary](#data-dictionary-4)
+   6. [International Standing Order - Payment Details - Response](#international-standing-order---payment-details---response)
+      1. [UML Diagram](#uml-diagram-5)
+      2. [Data Dictionary](#data-dictionary-5)
+4. [Usage Examples](#usage-examples)
+      1. [Create International Standing Order Consent](#create-international-standing-order-consent)
+         1. [POST /international-standing-order-consents](#post-international-standing-order-consents-1)
+            1. [Payment Order Consent Request Payload](#payment-order-consent-request-payload)
+         2. [POST /international-standing-order-consents response](#post-international-standing-order-consents-response)
+            1. [Payment Order Consent Response Payload](#payment-order-consent-response-payload)
+      2. [Create an International Standing Order](#create-an-international-standing-order)
+         1. [POST /international-standing-orders request](#post-international-standing-orders-request)
+            1. [Payment Order Request Payload](#payment-order-request-payload)
+         2. [POST /international-standing-orders response](#post-international-standing-orders-response)
+            1. [Payment Order Response Payload](#payment-order-response-payload)
+
+## Overview
+
+The International Standing Order resources (international-standing-order-consents and international-standing-orders) are used by a PISP to initiate an International Standing Order.
+
+This resource description should be read in conjunction with a compatible Payment Initiation API Profile.
+
+### Profile Compatibility
+
+For a list of profiles compatible with this resource, please see the [Compatibility Matrix]().
+
 ## Endpoints
+
 | Resource |HTTP Operation |Endpoint |Mandatory ? |Scope |Grant Type |Message Signing |Idempotency Key |Request Object |Response Object |
 | --- |--- |--- |--- |--- |--- |--- |--- |--- |--- |
 | international-standing-order-consents |POST |POST /international-standing-order-consents |Conditional |payments |Client Credentials |Signed Request Signed Response |Yes |OBWriteInternationalStandingOrderConsent4 |OBWriteInternationalStandingOrderConsentResponse4 |
@@ -7,30 +74,24 @@
 | international-standing-orders |GET |GET /international-standing-orders/{InternationalStandingOrderPaymentId} |Mandatory (if resource POST implemented) |payments |Client Credentials |Signed Response |No |NA |OBWriteInternationalStandingOrderResponse4 |
 | payment-details |GET |GET /international-standing-orders/{InternationalStandingOrderPaymentId}/payment-details |Optional |payments |Client Credentials |Signed Response |No |NA |OBWritePaymentDetailsResponse1 |
 
-
 ### POST /international-standing-order-consents
 
-```POST /international-standing-order-consents```
-
-The API endpoint allows the PISP to ask an ASPSP to create a new  **international-standing-order-consent**  resource.
+The API endpoint allows the PISP to ask an ASPSP to create a new **international-standing-order-consent** resource.
 
 * The POST action indicates to the ASPSP that an international standing order consent has been staged. At this point, the PSU may not have been identified by the ASPSP, and the request payload may not contain any information of the account that should be debited.
-
 * The endpoint allows the PISP to send a copy of the consent (between PSU and PISP) to the ASPSP for the PSU to authorise.
-
-* The ASPSP creates the  **international-standing-order-consent**  resource and responds with a unique ConsentId to refer to the resource.
+* The ASPSP creates the **international-standing-order-consent** resource and responds with a unique ConsentId to refer to the resource.
 
 #### Status
 
 The default Status is "AwaitingAuthorisation" immediately after the international-standing-order-consent has been created.
+
 | Status |
 | --- |
 | AwaitingAuthorisation |
 
 
 ### GET /international-standing-order-consents/{ConsentId}
-
-```GET /international-standing-order-consents/{ConsentId}```
 
 A PISP can optionally retrieve a payment consent resource that they have created to check its status. 
 
@@ -43,6 +104,7 @@ If the PSU rejects the consent or the international-standing-order-consent has f
 Once an international-standing-orders has been successfully created using the international-standing-order-consent, the Status of the international-standing-order-consent will be set to "Consumed".
 
 The available Status codes for the international-standing-order-consent resource are:
+
 | Status |
 | --- |
 | AwaitingAuthorisation |
@@ -53,16 +115,11 @@ The available Status codes for the international-standing-order-consent resource
 
 ### POST /international-standing-orders
 
-```POST /international-standing-orders```
-
 Once the international-standing-order-consent has been authorised by the PSU, the PISP can proceed to submit the international-standing-orders for processing:
 
-* This is done by making a POST request to the  **international-standing-orders**  endpoint.
-
+* This is done by making a POST request to the **international-standing-orders** endpoint.
 * This request is an instruction to the ASPSP to begin the international standing order journey. The PISP must submit the international standing order immediately, however, there are some scenarios where the ASPSP may not warehouse the international standing order immediately (e.g. busy periods at the ASPSP).
-
-* The PISP  **must** ensure that the Initiation and Risk sections of the international-standing-orders match the corresponding Initiation and Risk sections of the international-standing-order-consent resource. If the two do not match, the ASPSP  **must not**  process the request and  **must** respond with a 400 (Bad Request).
-
+* The PISP **must** ensure that the Initiation and Risk sections of the international-standing-orders match the corresponding Initiation and Risk sections of the international-standing-order-consent resource. If the two do not match, the ASPSP **must not** process the request and **must** respond with a 400 (Bad Request).
 * Any operations on the international-standing-orders resource will not result in a Status change for the international-standing-orders resource.
 
 #### Status
@@ -70,22 +127,21 @@ Once the international-standing-order-consent has been authorised by the PSU, th
 An international-standing-orders can only be created if its corresponding international-standing-order-consent resource has the status of "Authorised". 
 
 The international-standing-orders resource that is created successfully must have one of the following Status codes:
+
 | Status |
 | --- |
 | InitiationPending |
 | InitiationFailed |
 | InitiationCompleted |
 
-
 ### GET /international-standing-orders/{InternationalStandingOrderPaymentId}
-
-```GET /international-standing-orders/{InternationalStandingOrderPaymentId}```
 
 A PISP can retrieve the international-standing-orders to check its status.
 
 #### Status
 
 The international-standing-orders resource must have one of the following Status codes:
+
 | Status |
 | --- |
 | InitiationPending |
@@ -93,16 +149,14 @@ The international-standing-orders resource must have one of the following Status
 | InitiationCompleted |
 | Cancelled |
 
-
 ### GET /international-standing-orders/{InternationalStandingOrderPaymentId}/payment-details
-
-```GET /international-standing-orders/{InternationalStandingOrderPaymentId}/payment-details```
 
 A PISP can retrieve the Details of the underlying payment transaction via this endpoint. This resource allows ASPSPs to return richer list of Payment Statuses, and if available payment scheme related statuses.
 
 #### Status
 
 The international-standing-orders - payment-details must have one of the following PaymentStatusCode code-set enumerations:
+
 | Status |
 | --- |
 | Accepted |
@@ -126,20 +180,16 @@ The international-standing-orders - payment-details must have one of the followi
 | Received |
 | RejectedCancellationRequest |
 
-
 ### State Model
 
 #### Payment Order Consent
 
 The state model for the international-standing-order-consent resource follows the generic consent state model. However, does not use the "Revoked" status, as the consent for an international-standing-order is not a long-lived consent.
 
-<br>
-
 ![ image2018-5-18_10-24-21.png ]( images/image2018-5-18_10-24-21.png )
 
-<br>
-
 The definitions for the Status:
+
 |  |Status |Status Description |
 | --- |--- |--- |
 | 1 |AwaitingAuthorisation |The consent resource is awaiting PSU authorisation. |
@@ -147,18 +197,14 @@ The definitions for the Status:
 | 3 |Authorised |The consent resource has been successfully authorised. |
 | 4 |Consumed |The consented action has been successfully completed. This does not reflect the status of the consented action. |
 
-
 #### Payment Order
 
 The state model for the international-standing-orders resource describes the initiation status only. I.e., not the subsequent execution of the international-standing-orders.
 
-<br>
-
 ![ DomesticScheduledStatusModel.png ]( images/DomesticScheduledStatusModel.png )
 
-<br>
-
 The definitions for the Status:
+
 |  |Status |Payment Status Description |
 | --- |--- |--- |
 | 1 |InitiationPending |The initiation of the payment order is pending. |
@@ -166,16 +212,14 @@ The definitions for the Status:
 | 3 |InitiationCompleted |The initiation of the payment order is complete. |
 | 4 |Cancelled |Payment initiation has been successfully cancelled after having received a request for cancellation. |
 
-
 ##### Multiple Authorisation
 
 If the payment-order requires multiple authorisations, the Status of the multiple authorisations will be updated in the MultiAuthorisation object.
 
 ![ image2018-6-29_16-36-34.png ]( images/image2018-6-29_16-36-34.png )
 
-<br>
-
 The definitions for the Status:
+
 |  |Status |Status Description |
 | --- |--- |--- |
 | 1 |AwaitingFurtherAuthorisation |The payment-order resource is awaiting further authorisation. |
@@ -197,47 +241,30 @@ This section describes the OBInternationalStandingOrder3 class which is reused a
 
 ![ OBInternationalStandingOrder3.png ]( images/OBInternationalStandingOrder3.png )
 
-##### **Notes** 
+##### Notes
 
 For the OBInternationalStandingOrder3 Initiation object: 
 
 * All elements in the Initiation payload that are specified by the PISP must not be changed via the ASPSP - as this is part of formal consent from the PSU.
-
 * If the ASPSP is able to establish a problem with payload or any contextual error during the API call, the ASPSP must reject the international-standing-order-consent request immediately.
-
-
 * If the ASPSP establishes a problem with the international-standing-order-consent after the API call, the ASPSP must set the Status of the international-standing-order-consent resource to Rejected.
-
-
-* The DebtorAccount is  **optional**  as the PISP may not know the account identification details for the PSU.
-
+* The DebtorAccount is **optional** as the PISP may not know the account identification details for the PSU.
 * If the DebtorAccount is specified by the PISP and is invalid for the PSU, then the international-standing-order-consent will be set to Rejected after PSU authentication.
-
 * The CreditorAgent must at least have either of the pairs provided: SchemeName and Identification, or Name and PostalAddress.
-
 * Account Identification field usage:
   * SchemeName is a free-text field which will be populated with identification schemes an ASPSP accepts.
-
   * Identification is a field which is populated with the Identification of the account, using the valid identification scheme provided.
-
-
 * Valid UK Account Identification SchemeName values include, but are not restricted to:
-  * "UK.OBIE.SortCodeAccountNumber" - The Identification field  **must**  be populated with the 6 digit Sort Code and 8 digit Account Number (a 14 digit field).
-
-  * "UK.OBIE.IBAN" - The Identification field  **must**  be populated with the full IBAN.
-
-  * "UK.OBIE.PAN" - The Identification field  **must**  be populated with the full PAN. A PAN may be an instrument (e.g., a debit card) linked to a payment account, and may not be the only PAN linked to the payment account.
-
-
-* The InstructedAmount object  **must**  be populated with the desired Amount and Currency of transfer, regardless of the currency of the DebtorAccount. I.e., a PSU may wish to transfer 100EUR from a GBP DebtorAccount (InstructedAmount will be 100EUR), or 100GBP in EUR (the InstructedAmount will be 100GBP).
-
-* The CurrencyOfTransfer  **must**  be used to specify the currency the funds will be transferred. I.e., a PSU may wish to transfer 100USD from a GBP DebtorAccount to a Rupee INR CreditorAccount in India.
-
+  * "UK.OBIE.SortCodeAccountNumber" - The Identification field **must** be populated with the 6 digit Sort Code and 8 digit Account Number (a 14 digit field).
+  * "UK.OBIE.IBAN" - The Identification field **must** be populated with the full IBAN.
+  * "UK.OBIE.PAN" - The Identification field **must** be populated with the full PAN. A PAN may be an instrument (e.g., a debit card) linked to a payment account, and may not be the only PAN linked to the payment account.
+* The InstructedAmount object **must** be populated with the desired Amount and Currency of transfer, regardless of the currency of the DebtorAccount. I.e., a PSU may wish to transfer 100EUR from a GBP DebtorAccount (InstructedAmount will be 100EUR), or 100GBP in EUR (the InstructedAmount will be 100GBP).
+* The CurrencyOfTransfer **must** be used to specify the currency the funds will be transferred. I.e., a PSU may wish to transfer 100USD from a GBP DebtorAccount to a Rupee INR CreditorAccount in India.
 * The ChargeBearer field is used by the PISP to indicate the bearer of charges. An ASPSP must Reject the Initiation request if the requested charge allocation cannot be fulfilled.
-
 * Permission field is restricted to "Create", however, may be extended to "Update" and "Delete" in a future iteration of the specification.
 
 ##### Data Dictionary
+
 | Name |Occurrence |XPath |EnhancedDefinition |Class |Codes |Pattern |
 | --- |--- |--- |--- |--- |--- |--- |
 | OBInternationalStandingOrder3 | |OBInternationalStandingOrder3 |The Initiation payload is sent by the initiating party to the ASPSP. It is used to request movement of funds from the debtor account to a creditor for an international standing order. |OBInternationalStandingOrder3 | | |
@@ -292,7 +319,6 @@ For the OBInternationalStandingOrder3 Initiation object:
 | SecondaryIdentification |0..1 |OBInternationalStandingOrder3/CreditorAccount/SecondaryIdentification |This is secondary identification of the account, as assigned by the account servicing institution. This can be used by building societies to additionally identify accounts with a roll number (in addition to a sort code and account number combination). |Max34Text | | |
 | SupplementaryData |0..1 |OBInternationalStandingOrder3/SupplementaryData |Additional information that can not be captured in the structured fields and/or any other specific block. |OBSupplementaryData1 | | |
 
-
 ### International Standing Order Consent - Request
 
 The OBWriteInternationalStandingOrderConsent4 object will be used for the call to:
@@ -303,19 +329,17 @@ The OBWriteInternationalStandingOrderConsent4 object will be used for the call t
 
 ![ OBWriteInternationalStandingOrderConsent4.gif ]( images/OBWriteInternationalStandingOrderConsent4.gif )
 
-####  **Notes** 
+#### Notes
 
-The international-standing-order-consent  **request**  contains these objects:
+The international-standing-order-consent **request** contains these objects:
 
 * Initiation
-
 * Authorisation
-
 * SCASupportData
-
 * Risk
 
 #### Data Dictionary
+
 | Name |Occurrence |XPath |EnhancedDefinition |Class |Codes |Pattern |
 | --- |--- |--- |--- |--- |--- |--- |
 | OBWriteInternationalStandingOrderConsent4 | |OBWriteInternationalStandingOrderConsent4 | |OBWriteInternationalStandingOrderConsent4 | | |
@@ -332,30 +356,25 @@ The international-standing-order-consent  **request**  contains these objects:
 The OBWriteInternationalStandingOrderConsentResponse4 object will be used for a response to a call to:
 
 * POST /international-standing-order-consents
-
 * GET /international-standing-order-consents/{ConsentId}
 
 #### UML Diagram
 
 ![ OBWriteInternationalStandingOrderConsentResponse4.gif ]( images/OBWriteInternationalStandingOrderConsentResponse4.gif )
 
-####  **Notes** 
+#### Notes
 
-The international-standing-order-consent  **response**  contains the full  **original**  payload from the international-standing-order-consent  **request**  with the additional elements below:
+The international-standing-order-consent **response** contains the full **original** payload from the international-standing-order-consent **request** with the additional elements below:
 
 * ConsentId.
-
 * CreationDateTime the international-standing-order-consent resource was created.
-
 * Status and StatusUpdateDateTime of the international-standing-order-consent resource.
-
 * Permission field in the original request.
-
-* CutOffDateTime Behaviour is explained in Payment Initiation API Specification, Section - Payment Restrictions -> CutOffDateTime API Behaviour.
-
+* CutOffDateTime Behaviour is explained in Payment Initiation API Profile, Section - [Payment Restrictions -> CutOffDateTime Behaviour](../../profiles/payment-initiation-api-profile.md#cutoffdatetime-behaviour).
 * Charges array which will be used by the ASPSP to indicate charges, and the ChargeBearer as relevant.
 
 #### Data Dictionary
+
 | Name |Occurrence |XPath |EnhancedDefinition |Class |Codes |Pattern |
 | --- |--- |--- |--- |--- |--- |--- |
 | OBWriteInternationalStandingOrderConsentResponse4 | |OBWriteInternationalStandingOrderConsentResponse4 | |OBWriteInternationalStandingOrderConsentResponse4 | | |
@@ -372,7 +391,6 @@ The international-standing-order-consent  **response**  contains the full  **ori
 | SCASupportData |0..1 |OBWriteInternationalStandingOrderConsentResponse4/Data/SCASupportData |Supporting Data provided by TPP, when requesting SCA Exemption. |OBSCASupportData1 | | |
 | Risk |1..1 |OBWriteInternationalStandingOrderConsentResponse4/Risk |The Risk section is sent by the initiating party to the ASPSP. It is used to specify additional details for risk scoring for Payments. |OBRisk1 | | |
 
-
 ### International Standing Order - Request
 
 The OBWriteInternationalStandingOrder3 object will be used for a call to:
@@ -383,17 +401,17 @@ The OBWriteInternationalStandingOrder3 object will be used for a call to:
 
 ![ OBWriteInternationalStandingOrder3.png ]( images/OBWriteInternationalStandingOrder3.png )
 
-####  **Notes** 
+#### Notes
 
-The international-standing-orders  **request**  object contains the: 
+The international-standing-orders **request** object contains the: 
 
 * ConsentId.
-
 * The full Initiation and Risk objects from the international-standing-order-consent request.
 
-The  **Initiation** and **Risk**  sections of the international-standing-orders request  **must**  match the  **Initiation** and **Risk** sections of the corresponding international-standing-order-consent request.
+The **Initiation** and **Risk** sections of the international-standing-orders request **must** match the **Initiation** and **Risk** sections of the corresponding international-standing-order-consent request.
 
 #### Data Dictionary
+
 | Name |Occurrence |XPath |EnhancedDefinition |Class |Codes |Pattern |
 | --- |--- |--- |--- |--- |--- |--- |
 | OBWriteInternationalStandingOrder3 | |OBWriteInternationalStandingOrder3 | |OBWriteInternationalStandingOrder3 | | |
@@ -402,38 +420,31 @@ The  **Initiation** and **Risk**  sections of the international-standing-orders 
 | Initiation |1..1 |OBWriteInternationalStandingOrder3/Data/Initiation |The Initiation payload is sent by the initiating party to the ASPSP. It is used to request movement of funds from the debtor account to a creditor for an international standing order. |OBInternationalStandingOrder3 | | |
 | Risk |1..1 |OBWriteInternationalStandingOrder3/Risk |The Risk section is sent by the initiating party to the ASPSP. It is used to specify additional details for risk scoring for Payments. |OBRisk1 | | |
 
-
 ### International Standing Order - Response
 
 The OBWriteInternationalStandingOrderResponse4 object will be used for a response to a call to:
 
 * POST /international-standing-orders
-
 * GET /international-standing-orders/{InternationalStandingOrderPaymentId}
 
 #### UML Diagram
 
 ![ OBWriteInternationalStandingOrderResponse4.png ]( images/OBWriteInternationalStandingOrderResponse4.png )
 
-####  **Notes** 
+#### Notes 
 
-The international-standing-orders  **response**  object contains the: 
+The international-standing-orders **response** object contains the: 
 
 * InternationalStandingOrderPaymentId.
-
 * ConsentId.
-
 * CreationDateTime the international-standing-orders resource was created.
-
 * Status and StatusUpdateDateTime of the international-standing-orders resource.
-
 * The Charges in the international-standing-order-consent response from the ASPSP.
-
 * The Initiation object from the international-standing-order-consent.
-
 * The MultiAuthorisation object if the international-standing-order resource requires multiple authorisations.
 
 #### Data Dictionary
+
 | Name |Occurrence |XPath |EnhancedDefinition |Class |Codes |Pattern |
 | --- |--- |--- |--- |--- |--- |--- |
 | OBWriteInternationalStandingOrderResponse4 | |OBWriteInternationalStandingOrderResponse4 | |OBWriteInternationalStandingOrderResponse4 | | |
@@ -447,8 +458,6 @@ The international-standing-orders  **response**  object contains the:
 | Initiation |1..1 |OBWriteInternationalStandingOrderResponse4/Data/Initiation |The Initiation payload is sent by the initiating party to the ASPSP. It is used to request movement of funds from the debtor account to a creditor for an international standing order. |OBInternationalStandingOrder3 | | |
 | MultiAuthorisation |0..1 |OBWriteInternationalStandingOrderResponse4/Data/MultiAuthorisation | |OBMultiAuthorisation1 | | |
 
-
-
 ### International Standing Order - Payment Details - Response
 
 The OBWritePaymentDetailsResponse1 object will be used for a response to a call to:
@@ -460,23 +469,20 @@ The OBWritePaymentDetailsResponse1 object will be used for a response to a call 
 ![ OBWritePaymentDetailsResponse1.png ]( images/OBWritePaymentDetailsResponse1.png )
 
 #### Data Dictionary
+
 | Name |Occurrence |XPath |EnhancedDefinition |Class |Codes |Pattern |
 | --- |--- |--- |--- |--- |--- |--- |
 | OBWritePaymentDetailsResponse1 | |OBWritePaymentDetailsResponse1 | |OBWritePaymentDetailsResponse1 | | |
 | Data |1..1 |OBWritePaymentDetailsResponse1/Data | |OBWriteDataPaymentOrderStatusResponse1 | | |
 | PaymentStatus |0..unbounded |OBWritePaymentDetailsResponse1/Data/PaymentStatus |Payment status details. |OBWritePaymentDetails1 | | |
 
-
-
-
 ## Usage Examples
-
 
 #### Create International Standing Order Consent
 
-**POST /international-standing-order-consents** 
+##### POST /international-standing-order-consents
 
-**Payment Order Consent Request Payload**
+###### Payment Order Consent Request Payload
 
 ```
 POST /international-standing-order-consents HTTP/1.1
@@ -489,6 +495,7 @@ x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Content-Type: application/json
 Accept: application/json
 ```
+
 ```json
 {
   "Data": {
@@ -520,9 +527,9 @@ Accept: application/json
 }
 ```
 
-**POST /international-standing-order-consents response** 
+##### POST /international-standing-order-consents response
 
-**Payment Order Consent Response Payload**
+###### Payment Order Consent Response Payload
 
 ```
 HTTP/1.1 201 Created
@@ -530,6 +537,7 @@ x-jws-signature: V2hhdCB3ZSBnb3QgaGVyZQ0K..aXMgZmFpbHVyZSB0byBjb21tdW5pY2F0ZQ0K
 x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Content-Type: application/json
 ```
+
 ```json
 {
   "Data": {
@@ -571,9 +579,9 @@ Content-Type: application/json
 
 #### Create an International Standing Order
 
-**POST /international-standing-orders request** 
+##### POST /international-standing-orders request
 
-**Payment Order Request Payload**
+###### Payment Order Request Payload
 
 ```
 POST /international-standing-orders HTTP/1.1
@@ -586,6 +594,7 @@ x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Content-Type: application/json
 Accept: application/json
 ```
+
 ```json
 {
   "Data": {
@@ -617,9 +626,9 @@ Accept: application/json
 }
 ```
 
-**POST /international-standing-orders response** 
+##### POST /international-standing-orders response
 
-**Payment Order Response Payload**
+###### Payment Order Response Payload
 
 ```
 HTTP/1.1 201 Created
@@ -627,6 +636,7 @@ x-jws-signature: V2hhdCB3ZSBnb3QgaGVyZQ0K..aXMgZmFpbHVyZSB0byBjb21tdW5pY2F0ZQ0K
 x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Content-Type: application/json
 ```
+
 ```json
 {
   "Data": {
@@ -665,4 +675,3 @@ Content-Type: application/json
   "Meta": {}
 }
 ```
-

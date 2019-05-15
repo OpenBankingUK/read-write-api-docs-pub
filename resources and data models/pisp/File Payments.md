@@ -1,13 +1,95 @@
+# File Payments <!-- omit in toc -->
+
+1. [Overview](#overview)
+	1. [Profile Compatibility](#profile-compatibility)
+2. [Basics](#basics)
+	1. [Overview](#overview-1)
+		1. [Steps](#steps)
+		2. [Sequence Diagram](#sequence-diagram)
+3. [Endpoints](#endpoints)
+	1. [POST /file-payment-consents](#post-file-payment-consents)
+		1. [Status](#status)
+	2. [POST /file-payment-consents/{ConsentId}/file](#post-file-payment-consentsconsentidfile)
+		1. [Status](#status-1)
+	3. [GET /file-payment-consents/{ConsentId}](#get-file-payment-consentsconsentid)
+		1. [Status](#status-2)
+	4. [GET /file-payment-consents/{ConsentId}/file](#get-file-payment-consentsconsentidfile)
+	5. [POST /file-payments](#post-file-payments)
+	6. [GET /file-payments/{FilePaymentId}](#get-file-paymentsfilepaymentid)
+		1. [Status](#status-3)
+	7. [GET /file-payments/{FilePaymentId}/report-file](#get-file-paymentsfilepaymentidreport-file)
+	8. [GET /file-payments/{FilePaymentId}/payment-details](#get-file-paymentsfilepaymentidpayment-details)
+		1. [Status](#status-4)
+	9. [State Model](#state-model)
+		1. [Payment Order Consent](#payment-order-consent)
+		2. [Payment Order](#payment-order)
+			1. [Multiple Authorisation](#multiple-authorisation)
+4. [Data Model](#data-model)
+	1. [Reused Classes](#reused-classes)
+		1. [OBFile2](#obfile2)
+			1. [UML Diagram](#uml-diagram)
+			2. [Notes](#notes)
+			3. [Data Dictionary](#data-dictionary)
+	2. [File Payment Consent - Request](#file-payment-consent---request)
+		1. [UML Diagram](#uml-diagram-1)
+		2. [Notes](#notes-1)
+		3. [Data Dictionary](#data-dictionary-1)
+	3. [File Payment Consent - Response](#file-payment-consent---response)
+		1. [UML Diagram](#uml-diagram-2)
+		2. [Notes](#notes-2)
+		3. [Data Dictionary](#data-dictionary-2)
+	4. [File Payment - Request](#file-payment---request)
+		1. [UML Diagram](#uml-diagram-3)
+		2. [Notes](#notes-3)
+		3. [Data Dictionary](#data-dictionary-3)
+	5. [File Payment - Response](#file-payment---response)
+		1. [UML Diagram](#uml-diagram-4)
+		2. [Notes](#notes-4)
+		3. [Data Dictionary](#data-dictionary-4)
+	6. [Domestic Payment Order - Payment Details - Response](#domestic-payment-order---payment-details---response)
+		1. [UML Diagram](#uml-diagram-5)
+		2. [Data Dictionary](#data-dictionary-5)
+5. [Usage Examples](#usage-examples)
+	1. [Setup File Payment Consent](#setup-file-payment-consent)
+		1. [POST /file-payment-consents request](#post-file-payment-consents-request)
+			1. [Request Payload](#request-payload)
+		2. [POST /file-payment-consents Response](#post-file-payment-consents-response)
+			1. [Response Payload](#response-payload)
+	2. [Upload File to for the File Payment Consent](#upload-file-to-for-the-file-payment-consent)
+		1. [POST /file-payment-consents/{ConsentId}/file Request](#post-file-payment-consentsconsentidfile-request)
+			1. [Request Payload](#request-payload-1)
+		2. [POST /file-payment-consents/{ConsentId}/file Response](#post-file-payment-consentsconsentidfile-response)
+			1. [Response Payload](#response-payload-1)
+	3. [Submit the File Payment after Authorisation](#submit-the-file-payment-after-authorisation)
+		1. [POST /file-payments Request](#post-file-payments-request)
+			1. [Request Payload](#request-payload-2)
+		2. [POST /file-payments Response](#post-file-payments-response)
+			1. [Response Payload](#response-payload-2)
+	4. [Upload File in the UK.OBIE.PaymentInitiation.4.0 format to the File Payment Consent](#upload-file-in-the-ukobiepaymentinitiation40-format-to-the-file-payment-consent)
+		1. [POST /file-payment-consents/{ConsentId}/file Request](#post-file-payment-consentsconsentidfile-request-1)
+			1. [Request Payload](#request-payload-3)
+		2. [POST /file-payment-consents/{ConsentId}/file Response](#post-file-payment-consentsconsentidfile-response-1)
+			1. [Response Payload](#response-payload-3)
+
+## Overview
+
+The File Payments resources (file-payment-consents and file-payments) are used by a PISP to initiate a File Payment.
+
+This resource description should be read in conjunction with a compatible Payment Initiation API Profile.
+
+### Profile Compatibility
+
+For a list of profiles compatible with this resource, please see the [Compatibility Matrix]().
+
 ## Basics
 
 ### Overview
 
 File Payments allow a file of payments to be uploaded to an ASPSP for payment initiation.
 
-The high-level flow for file-payments follow the flow for all other payment-order types (as described in the Basic > Overview Section of Payment Initiation API Specification) however, with an additional step to upload the file. The step for staging the payment-order consent is broken into two steps:
+The high-level flow for file-payments follow the flow for all other payment-order types (as described in the Basic > Overview Section of Payment Initiation API Profile) however, with an additional step to upload the file. The step for staging the payment-order consent is broken into two steps:
 
 * POST metadata of the file-payment for payment initiation.
-
 * POST the file of the file-payment for payment initiation.
 
 #### Steps
@@ -16,19 +98,15 @@ Step 1: Agree File Payment-Order Initiation.
 
 Step 2a: Setup File Payment-Order Consent (Metadata):
 
-* The PISP connects to the ASPSP that services the PSU's payment account and creates a new  **file-payment-consent**  resource. This JSON message contains the Metadata of the file payments file. The ASPSP responds with a ConsentId.
-
-* This step is carried out by making a  **POST**  request to the  **file-payment-consent**  resource.
+* The PISP connects to the ASPSP that services the PSU's payment account and creates a new **file-payment-consent** resource. This JSON message contains the Metadata of the file payments file. The ASPSP responds with a ConsentId.
+* This step is carried out by making a **POST** request to the **file-payment-consent** resource.
 
 Step 2b: Setup File Payment-Order Consent (Upload File):
 
-* The PISP uploads the payment file to the  **file-payment-consent** endpoint with ConsentId obtained in Step 2a.
-
-* ASPSP verifies the payment file against the hash of payment file received in the  **file-payment-consent**  Metadata in Step 2a.
-
+* The PISP uploads the payment file to the **file-payment-consent** endpoint with ConsentId obtained in Step 2a.
+* ASPSP verifies the payment file against the hash of payment file received in the **file-payment-consent** Metadata in Step 2a.
 * ASPSP responds with 200 OK.
-
-* This step completes the  **file-payment-consent**  creation.
+* This step completes the **file-payment-consent** creation.
 
 Step 3: Authorise Consent.
 
@@ -37,20 +115,14 @@ Step 4: Create Payment-Order.
 Step 5: Get Consent/Payment-Order/Payment-Details Status:
 
 * A PISP may optionally request the Status of the file-payment-consent.
-
 * A PISP may optionally request File uploaded to file-payment-consent, for verification.
-
 * A PISP may optionally request the Status of the file-payment.
-
 * A PISP may optionally request a report in a file format, on the status of the individual payments in file-payments, if the ASPSP makes this available.
-
 * A PISP may optionally request the detail status of the individual payments in file-payments, if the ASPSP makes this available.
 
 #### Sequence Diagram
 
 ![File Payment Initiation - High Level Flow](images/FilePaymentStatusv4-draft7.png)
-
-<br>
 
 <details>
    <Summary>Diagram source</Summary>
@@ -124,8 +196,8 @@ option footer=bar
 ``` 
 </details> 
 
-
 ## Endpoints
+
 | Resource |HTTP Operation |Endpoint |Mandatory ? |Scope |Grant Type |Message Signing |Idempotency Key |Request Object |Response Object |
 | --- |--- |--- |--- |--- |--- |--- |--- |--- |--- |
 | file-payment-consents |POST |POST /file-payment-consents |Conditional |payments |Client Credentials |Signed Request Signed Response |Yes |OBWriteFileConsent3 |OBWriteFileConsentResponse3 |
@@ -137,63 +209,45 @@ option footer=bar
 | file-payments |GET |GET /file-payments/{FilePaymentId}/report-file |Conditional |payments |Client Credentials |Signed Response |No |NA |File |
 | payment-details |GET |GET /file-payments/{FilePaymentId}/payment-details |Optional |payments |Client Credentials |Signed Response |No |NA |OBWritePaymentDetailsResponse1 |
 
-
 ### POST /file-payment-consents 
 
-```POST /file-payment-consents```
-
-The API endpoint allows the PISP to ask an ASPSP to create a new  **file-payment-consent**  resource.
+The API endpoint allows the PISP to ask an ASPSP to create a new **file-payment-consent** resource.
 
 * The POST action indicates to the ASPSP that a file payment consent has been staged. At this point, the PSU may not have been identified by the ASPSP and the request payload may not contain any information of the account(s) that should be debited.
-
 * The endpoint allows the PISP to send metadata of the consent (between PSU and PISP) to the ASPSP.
-
 * The metadata of the consent must include the FileType of the request.
-
 * The metadata of the consent must include the FileHash, which is a base64 encoding of a SHA256 hash of the file to be uploaded.
-
-* The ASPSP creates the  **file-payment-consent**  resource and responds with a unique ConsentId to refer to the resource.
+* The ASPSP creates the **file-payment-consent** resource and responds with a unique ConsentId to refer to the resource.
 
 #### Status
 
 The default Status is "AwaitingUpload" immediately after the file-payment-consent has been created.
+
 | Status |
 | --- |
 | AwaitingUpload |
 
-
 ### POST /file-payment-consents/{ConsentId}/file
 
-```POST /file-payment-consents/{ConsentId}/file```
-
-
-The API endpoint allows the PISP to upload a file to an ASPSP, against a  **file-payment-consent**  resource.
+The API endpoint allows the PISP to upload a file to an ASPSP, against a **file-payment-consent** resource.
 
 * The endpoint allows the PISP to send a copy of the consent (between PSU and PISP) to the ASPSP for the PSU to authorise. The PISP must upload the file against the ConsentId before redirecting the PSU to authorise the consent.
-
 * The file structure must match the FileType in the file-payment-consent request.
-
 * An ASPSP must confirm the hash of the file matches with the FileHash provided in the file-payment-consent Metadata.
-
 * The metadata for the file-payment-consent must match the contents of the uploaded file:
-    * If the content of the metadata does not match the content of the file, the ASPSP  **must**  reject the file-payment-consent.
-
-
+    * If the content of the metadata does not match the content of the file, the ASPSP **must** reject the file-payment-consent.
 * The file is sent in the HTTP request body.
-
 * HTTP headers (e.g. Content-Type) are used to describe the file.
 
 #### Status
 
 The default Status is "AwaitingAuthorisation" immediately after the file has been uploaded.
+
 | Status |
 | --- |
 | AwaitingAuthorisation |
 
-
 ### GET /file-payment-consents/{ConsentId}
-
-```GET /file-payment-consents/{ConsentId}```
 
 A PISP can optionally retrieve a payment consent resource that they have created to check its status. 
 
@@ -206,6 +260,7 @@ If the PSU rejects the consent or the file-payment-consent has failed some other
 Once a file-payment has been successfully created using the file-payment-consent, the Status of the file-payment-consent will be set to "Consumed".
 
 The available Status codes for the file-payment-consent resource are:
+
 | Status |
 | --- |
 | AwaitingUpload |
@@ -217,29 +272,22 @@ The available Status codes for the file-payment-consent resource are:
 
 ### GET /file-payment-consents/{ConsentId}/file
 
-```GET /file-payment-consents/{ConsentId}/file```
-
-The API endpoint allows the PISP to download a file (that had been uploaded against a  **file-payment-consent**  resource) from an ASPSP.
+The API endpoint allows the PISP to download a file (that had been uploaded against a **file-payment-consent** resource) from an ASPSP.
 
 * The file is sent in the HTTP response body.
-
 * HTTP headers (e.g. Content-Type) are used to describe the file.
 
 ### POST /file-payments
 
-```POST /file-payments```
-
 Once the file-payment-consent has been authorised by the PSU, the PISP can proceed to submit the file-payment for processing:
 
-* This is done by making a POST request to the  **file-payments**  endpoint.
-
+* This is done by making a POST request to the **file-payments** endpoint.
 * This request is an instruction to the ASPSP to begin the file payment journey. The PISP must submit the file payment immediately, however, there are some scenarios where the ASPSP may not stage the file payment immediately (e.g. busy periods at the ASPSP).
-
-* The PISP  **must** ensure that the Initiation section of the file-payment match the corresponding Initiation section of the file-payment-consent resource. If the two do not match, the ASPSP  **must not**  process the request and  **must** respond with a 400 (Bad Request).
-
+* The PISP **must** ensure that the Initiation section of the file-payment match the corresponding Initiation section of the file-payment-consent resource. If the two do not match, the ASPSP **must not** process the request and **must** respond with a 400 (Bad Request).
 * Any operations on the file-payment resource will not result in a Status change for the file-payment resource.
 
 The file-payments resource that is created successfully, must have one of the following Status codes:
+
 | Status |
 | --- |
 | InitiationPending |
@@ -249,13 +297,12 @@ The file-payments resource that is created successfully, must have one of the fo
 
 ### GET /file-payments/{FilePaymentId}
 
-```GET /file-payments/{FilePaymentId}```
-
 A PISP can retrieve the file-payment to check its status.
 
 #### Status
 
 The file-payments resource must have one of the following Status codes:
+
 | Status |
 | --- |
 | InitiationPending |
@@ -265,27 +312,21 @@ The file-payments resource must have one of the following Status codes:
 
 ### GET /file-payments/{FilePaymentId}/report-file
 
-```GET /file-payments/{FilePaymentId}/report-file```
-
 The API endpoint allows the PISP to download a payment report file from an ASPSP.
 
 * This endpoint enables ASPSP to return a report on the processing results of Payments in the file
-
 * The file is sent in the HTTP response body.
-
 * The file structure may match a payment execution report for the corresponding FileType in the file-payment-consent request.
-
 * HTTP headers (e.g. Content-Type) are used to describe the file.
 
 ### GET /file-payments/{FilePaymentId}/payment-details
-
-```GET /file-payments/{FilePaymentId}/payment-details```
 
 A PISP can retrieve the Details of the underlying payment transaction(s) via this endpoint. This resource allows ASPSPs to return richer list of Payment Statuses, and if available payment scheme related statuses.
 
 #### Status
 
 The file-payments - payment-details must have one of the following PaymentStatusCode code-set enumerations:
+
 | Status |
 | --- |
 | Accepted |
@@ -309,20 +350,16 @@ The file-payments - payment-details must have one of the following PaymentStatus
 | Received |
 | RejectedCancellationRequest |
 
-
 ### State Model
 
 #### Payment Order Consent
 
 The state model for the file-payment-consent resource follows the generic consent state model. However, does not use the "Revoked" status, as the consent for a file-payment is not a long-lived consent.
 
-<br>
-
 ![ image2018-7-5_15-37-22.png ]( images/image2018-7-5_15-37-22.png )
 
-<br>
-
 The definitions for the Status:
+
 |  |Status |Status Description |
 | --- |--- |--- |
 | 1 |AwaitingUpload |The file for the consent resource is awaiting upload. |
@@ -331,18 +368,14 @@ The definitions for the Status:
 | 4 |Authorised |The consent resource has been successfully authorised. |
 | 5 |Consumed |The consented action has been successfully completed. This does not reflect the status of the consented action. |
 
-
 #### Payment Order
 
 The state model for the file-payments resource describes the initiation status only. I.e., not the subsequent execution of the file-payments.
 
-<br>
-
 ![ image2018-5-18_13-3-8.png ]( images/image2018-5-18_13-3-8.png )
 
-<br>
-
 The definitions for the Status:
+
 |  |Status |Payment Status Description |
 | --- |--- |--- |
 | 1 |InitiationPending |The initiation of the payment order is pending. |
@@ -356,15 +389,13 @@ If the payment-order requires multiple authorisations the Status of the multiple
 
 ![ image2018-6-29_16-36-34.png ]( images/image2018-6-29_16-36-34.png )
 
-<br>
-
 The definitions for the Status:
+
 |  |Status |Status Description |
 | --- |--- |--- |
 | 1 |AwaitingFurtherAuthorisation |The payment-order resource is awaiting further authorisation. |
 | 2 |Rejected |The payment-order resource has been rejected by an authoriser. |
 | 3 |Authorised |The payment-order resource has been successfully authorised by all required authorisers. |
-
 
 ## Data Model
 
@@ -378,27 +409,19 @@ This section describes the OBFile2 class, which is reused as the Initiation obje
 
 ##### UML Diagram
 
-![ OBFile2.gif ]( images/OBFile2.gif )
+![OBFile2]( images/OBFile2.gif )
 
-##### **Notes** 
+##### Notes 
 
 For the OBFile2 Initiation object: 
 
 * All elements in the Initiation payload that are specified by the PISP must not be changed via the ASPSP, as this is part of formal consent from the PSU.
-
 * If the ASPSP is able to establish a problem with payload or any contextual error during the API call, the ASPSP must reject the file-payment-consent request immediately.
-
-
 * If the ASPSP establishes a problem with the file-payment-consent after the API call, the ASPSP must set the Status of the file-payment-consent resource to Rejected.
-
-
-* The DebtorAccount is  **optional**  as the PISP may not know the account identification details for the PSU.
-
+* The DebtorAccount is **optional** as the PISP may not know the account identification details for the PSU.
 * If the DebtorAccount is specified by the PISP and is invalid for the PSU - then the file-payment-consent will be set to Rejected after PSU authentication.
-
-* An ASPSP may choose which fields  **must**  be populated to process a specified FileType, and may reject the request if the fields are not populated. These ASPSP specific requirements must be documented.
-
-* An ASPSP may choose which fields  **must not**  be populated to process a specified FileType, and may reject the request if the fields are populated. These ASPSP specific requirements must be documented.
+* An ASPSP may choose which fields **must** be populated to process a specified FileType, and may reject the request if the fields are not populated. These ASPSP specific requirements must be documented.
+* An ASPSP may choose which fields **must not** be populated to process a specified FileType, and may reject the request if the fields are populated. These ASPSP specific requirements must be documented.
 
 ##### Data Dictionary
 
@@ -422,7 +445,6 @@ For the OBFile2 Initiation object:
 | Reference |0..1 |OBFile2/RemittanceInformation/Reference |Unique reference, as assigned by the creditor, to unambiguously refer to the payment transaction. Usage: If available, the initiating party should provide this reference in the structured remittance information, to enable reconciliation by the creditor upon receipt of the amount of money. If the business context requires the use of a creditor reference or a payment remit identification, and only one identifier can be passed through the end-to-end chain, the creditor's reference or payment remittance identification should be quoted in the end-to-end transaction identification. OB: The Faster Payments Scheme can only accept 18 characters for the ReferenceInformation field - which is where this ISO field will be mapped. |Max35Text | | |
 | SupplementaryData |0..1 |OBFile2/SupplementaryData |Additional information that can not be captured in the structured fields and/or any other specific block. |OBSupplementaryData1 | | |
 
-
 ### File Payment Consent - Request
 
 The OBWriteFileConsent3 object will be used for the call to:
@@ -431,23 +453,22 @@ The OBWriteFileConsent3 object will be used for the call to:
 
 #### UML Diagram
 
-![ OBWriteFileConsent3.gif ]( images/OBWriteFileConsent3.gif )
+![OBWriteFileConsent3]( images/OBWriteFileConsent3.gif )
 
-####  **Notes** 
+#### Notes 
 
-The file-payment-consent  **request**  contains these objects:
+The file-payment-consent **request** contains these objects:
 
 * Initiation
-
 * Authorisation
-
-* SCASupportData.
+* SCASupportData
 
 For the file-payment-consent request object: 
 
 * There is no Risk section in the OBWriteFileConsent3 object - as this is not relevant for a file payment.
 
 #### Data Dictionary
+
 | Name |Occurrence |XPath |EnhancedDefinition |Class |Codes |Pattern |
 | --- |--- |--- |--- |--- |--- |--- |
 | OBWriteFileConsent3 | |OBWriteFileConsent3 | |OBWriteFileConsent3 | | |
@@ -456,34 +477,29 @@ For the file-payment-consent request object:
 | Authorisation |0..1 |OBWriteFileConsent3/Data/Authorisation |The authorisation type request from the TPP. |OBAuthorisation1 | | |
 | SCASupportData |0..1 |OBWriteFileConsent3/Data/SCASupportData |Supporting Data provided by TPP, when requesting SCA Exemption. |OBSCASupportData1 | | |
 
-
 ### File Payment Consent - Response
 
 The OBWriteFileConsentResponse3 object will be used for a response to a call to:
 
 * POST /file-payment-consents
-
 * GET /file-payment-consents/{ConsentId}
 
 #### UML Diagram
 
-![ OBWriteFileConsentResponse3.gif ]( images/OBWriteFileConsentResponse3.gif )
+![OBWriteFileConsentResponse3]( images/OBWriteFileConsentResponse3.gif )
 
-####  **Notes** 
+#### Notes 
 
-The file-payment-consent  **response**  contains the full  **original**  payload from the file-payment-consent  **request**  with these additional elements:
+The file-payment-consent **response** contains the full **original** payload from the file-payment-consent **request** with these additional elements:
 
 * ConsentId.
-
 * CreationDateTime the file-payment-consent resource was created.
-
 * Status and StatusUpdateDateTime of the file-payment-consent resource.
-
-* CutOffDateTime Behaviour is explained in Payment Initiation API Specification, Section - Payment Restrictions -> CutOffDateTime API Behaviour.
-
+* CutOffDateTime Behaviour is explained in Payment Initiation API Profile, Section - [Payment Restrictions -> CutOffDateTime Behaviour](../../profiles/payment-initiation-api-profile.md#cutoffdatetime-behaviour).
 * Charges array - for the breakdown of applicable ASPSP charges.
 
 #### Data Dictionary
+
 | Name |Occurrence |XPath |EnhancedDefinition |Class |Codes |Pattern |
 | --- |--- |--- |--- |--- |--- |--- |
 | OBWriteFileConsentResponse3 | |OBWriteFileConsentResponse3 | |OBWriteFileConsentResponse3 | | |
@@ -498,7 +514,6 @@ The file-payment-consent  **response**  contains the full  **original**  payload
 | Authorisation |0..1 |OBWriteFileConsentResponse3/Data/Authorisation |The authorisation type request from the TPP. |OBAuthorisation1 | | |
 | SCASupportData |0..1 |OBWriteFileConsentResponse3/Data/SCASupportData |Supporting Data provided by TPP, when requesting SCA Exemption. |OBSCASupportData1 | | |
 
-
 ### File Payment - Request
 
 The OBWriteFile2 object will be used for a call to:
@@ -507,19 +522,19 @@ The OBWriteFile2 object will be used for a call to:
 
 #### UML Diagram
 
-![ OBWriteFile2.gif ]( images/OBWriteFile2.gif )
+![OBWriteFile2]( images/OBWriteFile2.gif )
 
-####  **Notes** 
+#### Notes 
 
-The file-payment  **request**  object contains the: 
+The file-payment **request** object contains the: 
 
 * ConsentId.
-
 * The full Initiation object from the file-payment-consent request.
 
-The  **Initiation** section of the file-payment request  **must**  match the  **Initiation** section of the corresponding file-payment-consent request.
+The **Initiation** section of the file-payment request **must** match the **Initiation** section of the corresponding file-payment-consent request.
 
 #### Data Dictionary
+
 | Name |Occurrence |XPath |EnhancedDefinition |Class |Codes |Pattern |
 | --- |--- |--- |--- |--- |--- |--- |
 | OBWriteFile2 | |OBWriteFile2 | |OBWriteFile2 | | |
@@ -527,38 +542,31 @@ The  **Initiation** section of the file-payment request  **must**  match the  **
 | ConsentId |1..1 |OBWriteFile2/Data/ConsentId |OB: Unique identification as assigned by the ASPSP to uniquely identify the consent resource. |Max128Text | | |
 | Initiation |1..1 |OBWriteFile2/Data/Initiation |The Initiation payload is sent by the initiating party to the ASPSP. It is used to request movement of funds using a payment file. |OBFile2 | | |
 
-
 ### File Payment - Response
 
 The OBWriteFileResponse2 object will be used for a response to a call to:
 
 * POST /file-payments
-
 * GET /file-payments/{FilePaymentId}
 
 #### UML Diagram
 
-![ OBWriteFileResponse2.gif ]( images/OBWriteFileResponse2.gif )
+![OBWriteFileResponse2]( images/OBWriteFileResponse2.gif )
 
-####  **Notes** 
+#### Notes 
 
-The file-payment  **response**  object contains the: 
+The file-payment **response** object contains the: 
 
 * FilePaymentId.
-
 * ConsentId.
-
 * CreationDateTime the file-payment resource was created.
-
 * Status and StatusUpdateDateTime of the file-payment resource.
-
 * Charges array is used for the breakdown of applicable ASPSP charges.
-
 * The Initiation object from the file-payment-consent.
-
 * The MultiAuthorisation object if the file-payment resource requires multiple authorisations.
 
 #### Data Dictionary
+
 | Name |Occurrence |XPath |EnhancedDefinition |Class |Codes |Pattern |
 | --- |--- |--- |--- |--- |--- |--- |
 | OBWriteFileResponse2 | |OBWriteFileResponse2 | |OBWriteFileResponse2 | | |
@@ -572,7 +580,6 @@ The file-payment  **response**  object contains the:
 | Initiation |1..1 |OBWriteFileResponse2/Data/Initiation |The Initiation payload is sent by the initiating party to the ASPSP. It is used to request movement of funds using a payment file. |OBFile2 | | |
 | MultiAuthorisation |0..1 |OBWriteFileResponse2/Data/MultiAuthorisation |The multiple authorisation flow response from the ASPSP. |OBMultiAuthorisation1 | | |
 
-
 ### Domestic Payment Order - Payment Details - Response
 
 The OBWritePaymentDetailsResponse1 object will be used for a response to a call to:
@@ -581,27 +588,25 @@ The OBWritePaymentDetailsResponse1 object will be used for a response to a call 
 
 #### UML Diagram
 
-![ OBWritePaymentDetailsResponse1.png ]( images/OBWritePaymentDetailsResponse1.png )
+![OBWritePaymentDetailsResponse1]( images/OBWritePaymentDetailsResponse1.png )
 
 #### Data Dictionary
+
 | Name |Occurrence |XPath |EnhancedDefinition |Class |Codes |Pattern |
 | --- |--- |--- |--- |--- |--- |--- |
 | OBWritePaymentDetailsResponse1 | |OBWritePaymentDetailsResponse1 | |OBWritePaymentDetailsResponse1 | | |
 | Data |1..1 |OBWritePaymentDetailsResponse1/Data | |OBWriteDataPaymentOrderStatusResponse1 | | |
 | PaymentStatus |0..unbounded |OBWritePaymentDetailsResponse1/Data/PaymentStatus |Payment status details. |OBWritePaymentDetails1 | | |
 
-
-# Usage Examples
-
+## Usage Examples
 
 ### Setup File Payment Consent
 
 This is an API call by the PISP to create the file-payment-consent metadata.
 
+#### POST /file-payment-consents request
 
-**POST /file-payment-consents request** 
-
-**Request Payload**
+##### Request Payload
 
 ```
 POST /file-payment-consents HTTP/1.1
@@ -614,6 +619,7 @@ x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Content-Type: application/json
 Accept: application/json
 ```
+
 ```json
 {
   "Data": {
@@ -628,9 +634,9 @@ Accept: application/json
 }
 ```
 
-**POST /file-payment-consents Response** 
+#### POST /file-payment-consents Response
 
-**Response Payload**
+##### Response Payload
 
 ```
 HTTP/1.1 201 Created
@@ -638,6 +644,7 @@ x-jws-signature: V2hhdCB3ZSBnb3QgaGVyZQ0K..aXMgZmFpbHVyZSB0byBjb21tdW5pY2F0ZQ0K
 x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Content-Type: application/json
 ```
+
 ```json
 {
   "Data": {
@@ -666,10 +673,9 @@ Once the metadata has been accepted by the ASPSP, the PISP may post the file to 
 
 The file should conform to the XML ISO20022 pain.001.001.08 format.
 
+#### POST /file-payment-consents/{ConsentId}/file Request
 
-**POST /file-payment-consents/{ConsentId}/file Request** 
-
-**Request Payload**
+##### Request Payload
 
 ```
 POST /file-payment-consents/512345/file HTTP/1.1
@@ -684,8 +690,6 @@ Accept: application/json
 
 [File-Data]
 ```
-
-
 
 A sample file with 3 transactions is provided below:
 
@@ -891,18 +895,17 @@ A sample file with 3 transactions is provided below:
 </CstmrCdtTrfInitn>
 </Document>
 ``` 
+
 </details> 
 
+#### POST /file-payment-consents/{ConsentId}/file Response
 
-**POST /file-payment-consents/{ConsentId}/file Response** 
-
-**Response Payload**
+##### Response Payload
 
 ```
 HTTP/1.1 200 OK
 x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 ```
-
 
 ### Submit the File Payment after Authorisation
 
@@ -910,9 +913,9 @@ Once the metadata and file are both attached to the consent, and the user is abl
 
 The PISP must POST the file-payment resource to submit the file-payment for execution. The JSON message is signed.
 
-**POST /file-payments Request** 
+#### POST /file-payments Request
 
-**Request Payload**
+##### Request Payload
 
 ```
 POST /file-payments HTTP/1.1
@@ -925,6 +928,7 @@ x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Content-Type: application/json
 Accept: application/json
 ```
+
 ```json
 {
   "Data": {
@@ -940,9 +944,9 @@ Accept: application/json
 }
 ```
 
-**POST /file-payments Response** 
+#### POST /file-payments Response
 
-**Response Payload**
+##### Response Payload
 
 ```
 HTTP/1.1 201 Created
@@ -950,6 +954,7 @@ x-jws-signature: V2hhdCB3ZSBnb3QgaGVyZQ0K..aXMgZmFpbHVyZSB0byBjb21tdW5pY2F0ZQ0K
 x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Content-Type: application/json
 ```
+
 ```json
 {
   "Data": {
@@ -978,12 +983,11 @@ Content-Type: application/json
 Steps:
 
 * Stage the File Payment Consent with  "FileType": "UK.OBIE.PaymentInitiation.4.0".
-
 * Upload the File with payments in UK.OBIE.PaymentInitiation.v4.0 format, as described below.
 
-**POST /file-payment-consents/{ConsentId}/file Request** 
+#### POST /file-payment-consents/{ConsentId}/file Request
 
-**Request Payload**
+##### Request Payload
 
 ```
 POST /file-payment-consents/512346/file HTTP/1.1
@@ -1084,14 +1088,14 @@ A sample file with 3 Domestic Payments - CHAPS, BACS and one unspecified is prov
 	}
 }
 ``` 
+
 </details> 
 
-**POST /file-payment-consents/{ConsentId}/file Response** 
+#### POST /file-payment-consents/{ConsentId}/file Response
 
-**Response Payload**
+##### Response Payload
 
 ```
 HTTP/1.1 200 OK
 x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 ```
-
