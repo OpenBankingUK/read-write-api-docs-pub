@@ -1,4 +1,16 @@
-# Accounts v3.1.2
+# Accounts <!-- omit in toc -->
+
+## Overview
+
+The Accounts resource is used by an AISP to retrieve full list of accounts and account infromation that the PSU has authorised to access.
+
+This resource description should be read in conjunction with a compatible Account Information Services API Profile.
+
+## Profile Compatibility
+
+For a list of profiles compatible with this resource, please see the [Compatibility Matrix](https://github.com/OpenBankingUK/read-write-api-docs/tree/dj-align-payment-resource-page-structure/resources%20and%20data%20models/aisp)
+
+
 
 ## Endpoints
 
@@ -94,7 +106,7 @@ The call to GET /accounts is the first step after an account-request is authoris
 In this scenario, AccountId 22289 has a building society roll number; and AccountId 31820 does not.
 The  **ReadAccountsDetail**  permission has been granted.
 
- **Request** **Get Accounts Request**
+ **Request: Get Accounts Request**
 
 ```
 GET /accounts HTTP/1.1
@@ -105,7 +117,7 @@ x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Accept: application/json
 ```
 
- **Response** **Get Accounts Response**
+ **Response: Get Accounts Response**
 
 ```
 HTTP/1.1 200 OK
@@ -165,7 +177,7 @@ Content-Type: application/json
 An AISP may also retrieve the account resource details specifically for AccountId 22289.
 The  **ReadAccountsDetail**  permission has been granted.
 
- **Request** **Get Accounts Request**
+ **Request: Get Accounts Request**
 
 ```
 GET /accounts/22289 HTTP/1.1
@@ -176,7 +188,7 @@ x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Accept: application/json
 ```
 
- **Response** **Get Accounts Response**
+ **Response: Get Accounts Response**
 
 ```
 HTTP/1.1 200 OK
@@ -219,7 +231,7 @@ Content-Type: application/json
 
 The  **ReadAccountsBasic** permission has been granted.
 
- **Request** **Get Accounts Request**
+ **Request: Get Accounts Request**
 
 ```
 GET /accounts HTTP/1.1
@@ -230,7 +242,7 @@ x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Accept: application/json
 ```
 
- **Response** **Get Accounts Response**
+ **Response: Get Accounts Response**
 
 ```
 HTTP/1.1 200 OK
