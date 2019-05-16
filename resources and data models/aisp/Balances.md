@@ -1,5 +1,17 @@
 # Balances v3.1.2
 
+## Overview
+
+The Balances resource is used by an AISP to retrieve in bulk or single account balance information for a specific AccountId for that the PSU has authorised to access.
+
+This resource description should be read in conjunction with a compatible Account Information Services API Profile.
+
+## Profile Compatibility
+
+For a list of profiles compatible with this resource, please see the [Compatibility Matrix](https://github.com/OpenBankingUK/read-write-api-docs/tree/dj-align-payment-resource-page-structure/resources%20and%20data%20models/aisp)
+
+
+
 ## Endpoints
 
 |  |Resource |HTTP Operation |Endpoint |Mandatory? |Scope |Grant Type |Idempotency Key |Parameters |Request Object |Response Object |
@@ -28,6 +40,7 @@ The OBReadBalance1 object will be used for the call to:
 This resource represents the net increases and decreases in an account (AccountId) at a specific point in time.
 
 An account (AccountId) may have multiple balance types (these follow the standard ISO 20022 balance type enumerations). If an ASPSP includes a credit line in an available balance, then the balance representation will have a section for the credit line amount and type.
+
 ### UML Diagram
 
 ![ OBReadBalance1.gif ]( images/Balances/OBReadBalance1.gif )
