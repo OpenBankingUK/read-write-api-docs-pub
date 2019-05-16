@@ -1,4 +1,4 @@
-# Balances v3.1.2
+# Balances <!-- omit in toc -->
 
 ## Overview
 
