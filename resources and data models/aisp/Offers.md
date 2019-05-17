@@ -2,7 +2,7 @@
 
 ## Overview
 
-The direct-debits resource is used by an AISP to retrieve the offers available for a specific AccountId or to retrieve the offers detail in bulk for all accounts that the PSU has consented to. 
+The offers resource is used by an AISP to retrieve the offers available for a specific AccountId or to retrieve the offers detail in bulk for all accounts that the PSU has consented to. 
 
 This resource description should be read in conjunction with a compatible Account Information Services API Profile.
 
