@@ -1,4 +1,16 @@
-# Standing Orders v3.1.2
+# Standing Orders <!-- omit in toc -->
+
+## Overview
+
+The standing-orders resource is used by an AISP to retrieve the standing orders for a specific AccountId or to retrieve the standing orders in bulk for all the accounts that the PSU has consented to. 
+
+This resource description should be read in conjunction with a compatible Account Information Services API Profile.
+
+## Profile Compatibility
+
+For a list of profiles compatible with this resource, please see the [Compatibility Matrix](https://github.com/OpenBankingUK/read-write-api-docs/tree/dj-align-payment-resource-page-structure/resources%20and%20data%20models/aisp)
+
+
 
 ## Endpoints
 
@@ -106,7 +118,7 @@ If the ReadPAN permission is granted by the PSU, the ASPSP may choose to populat
 
 ### Specific Account
 
- **Request** **Get Accounts Standing Orders Request**
+ **Request: Get Accounts Standing Orders Request**
 
 ```
 GET /accounts/22289/standing-orders HTTP/1.1
@@ -117,7 +129,7 @@ x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Accept: application/json
 ```
 
- **Response** **Get Accounts Standing Orders Response**
+ **Response: Get Accounts Standing Orders Response**
 
 ```
 HTTP/1.1 200 OK
@@ -168,7 +180,7 @@ Content-Type: application/json
 
 ### Bulk
 
- **Request** **Get Standing Orders Request**
+ **Request: Get Standing Orders Request**
 
 ```
 GET /standing-orders HTTP/1.1
@@ -179,7 +191,7 @@ x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Accept: application/json
 ```
 
- **Response** **Get Standing Orders Response**
+ **Response: Get Standing Orders Response**
 
 ```
 HTTP/1.1 200 OK
