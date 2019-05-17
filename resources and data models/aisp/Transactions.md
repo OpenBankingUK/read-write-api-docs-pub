@@ -1,4 +1,15 @@
-# Transactions v3.1.2
+# Transactions <!-- omit in toc -->
+
+## Overview
+
+The Transactions resource is used by an AISP to retrieve the  transactions for a specific AccountId or to retrieve the transactions in bulk for account(s) that the PSU has authorised to access.
+
+This resource description should be read in conjunction with a compatible Account Information Services API Profile.
+
+## Profile Compatibility
+
+For a list of profiles compatible with this resource, please see the [Compatibility Matrix](https://github.com/OpenBankingUK/read-write-api-docs/tree/dj-align-payment-resource-page-structure/resources%20and%20data%20models/aisp)
+
 
 ## Endpoints
 
@@ -204,7 +215,7 @@ If the ReadPAN permission is granted by the PSU - the ASPSP may choose to popula
 
 ### Specific Account
 
- **Request** **Get  Account Transactions Request**
+ **Request: Get  Account Transactions Request**
 
 ```
 GET /accounts/22289/transactions HTTP/1.1
@@ -215,7 +226,7 @@ x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Accept: application/json
 ```
 
- **Response** **Get Account Transactions Response**
+ **Response: Get Account Transactions Response**
 
 ```
 HTTP/1.1 200 OK
@@ -273,7 +284,7 @@ Content-Type: application/json
 
 None of the transactions included in the payload are Ecommerce transactions, so MerchantDetails are not included in the examples.
 
- **Request** **Get Transactions Request**
+ **Request: Get Transactions Request**
 
 ```
 GET /transactions HTTP/1.1
@@ -284,7 +295,7 @@ x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Accept: application/json
 ```
 
- **Response** **Get Transactions Response**
+ **Response: Get Transactions Response**
 
 ```
 HTTP/1.1 200 OK 
@@ -373,7 +384,7 @@ Content-Type: application/json
 
 In this example, the AISP  **does not**  have access to call the transactions endpoint. This will result in a 403 error.
 
- **Request** **GET Account Transactions Request**
+ **Request: GET Account Transactions Request**
 
 ```
 GET /accounts/22289/transactions HTTP/1.1
@@ -384,7 +395,7 @@ x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Accept: application/json
 ```
 
- **Response** **GET Account Transactions Response**
+ **Response: GET Account Transactions Response**
 
 ```
 HTTP/1.1 403 Forbidden 
