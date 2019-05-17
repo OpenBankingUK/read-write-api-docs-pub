@@ -2,7 +2,7 @@
 
 ## Overview
 
-The Beneficiaries resource is used by an AISP to retrieve the account beneficiaries information for a specific AccountId or to retrieve the beneficiaries' information in bulk for account(s) that the PSU has authorised to access.
+The beneficiaries resource is used by an AISP to retrieve the account beneficiaries information for a specific AccountId or to retrieve the beneficiaries' information in bulk for account(s) that the PSU has authorised to access.
 
 This resource description should be read in conjunction with a compatible Account Information Services API Profile.
 
