@@ -2,7 +2,7 @@
 
 ## Overview
 
-The Balances resource is used by an AISP to retrieve in bulk or single account balance information for a specific AccountId for that the PSU has authorised to access.
+The balances resource is used by an AISP to retrieve in bulk or single account balance information for a specific AccountId for that the PSU has authorised to access.
 
 This resource description should be read in conjunction with a compatible Account Information Services API Profile.
 
