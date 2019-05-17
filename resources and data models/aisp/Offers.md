@@ -1,4 +1,14 @@
-# Offers v3.1.2
+# Offers <!-- omit in toc -->
+
+## Overview
+
+The direct-debits resource is used by an AISP to retrieve the offers available for a specific AccountId or to retrieve the offers detail in bulk for all accounts that the PSU has consented to. 
+
+This resource description should be read in conjunction with a compatible Account Information Services API Profile.
+
+## Profile Compatibility
+
+For a list of profiles compatible with this resource, please see the [Compatibility Matrix](https://github.com/OpenBankingUK/read-write-api-docs/tree/dj-align-payment-resource-page-structure/resources%20and%20data%20models/aisp)
 
 
 ## Endpoints
@@ -73,7 +83,8 @@ The resource requires the ReadOffers permission. The resource response payload d
 ## Usage Examples
 
 ### Specific Account
- **Request** **Get Offers Request**
+
+ **Request: Get Offers Request**
 
 ```
 GET /accounts/22289/offers HTTP/1.1
@@ -84,7 +95,7 @@ x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Accept: application/json
 ```
 
- **Response** **Get Offers Response**
+ **Response: Get Offers Response**
 
 ```
 HTTP/1.1 200 OK
@@ -128,7 +139,7 @@ Content-Type: application/json
 
 ### Bulk
 
- **Request** **Get Offers Request**
+ **Request: Get Offers Request**
 
 ```
 GET /offers HTTP/1.1
@@ -139,7 +150,7 @@ x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Accept: application/json
 ```
 
- **Response** **Get Offers Response**
+ **Response: Get Offers Response**
 
 ```
 HTTP/1.1 200 OK
