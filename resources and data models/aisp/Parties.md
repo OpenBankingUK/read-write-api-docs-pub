@@ -1,4 +1,19 @@
-# Parties v3.1.2
+# Parties <!-- omit in toc -->
+
+## Overview
+
+The parties resource is used by an AISP to retrieve the details on the account owner(s)/holder(s) and operator(s) for a specific account identified by AccountId. 
+
+The party resource is used by an AISP to retrieve the details on the account owner/holder for a specific account identified by AccountId:
+
+* In the case of a business, this will be the details of the business
+* In the case of a joint account, this will be the party that has given authorisation to the AISP to view the account.  
+
+This resource description should be read in conjunction with a compatible Account Information Services API Profile.
+
+## Profile Compatibility
+
+For a list of profiles compatible with this resource, please see the [Compatibility Matrix](https://github.com/OpenBankingUK/read-write-api-docs/tree/dj-align-payment-resource-page-structure/resources%20and%20data%20models/aisp)
 
 ## Endpoints
 
@@ -32,6 +47,7 @@ If the ASPSP has chosen to implement the /party endpoint, the ASPSP  **must**  r
 The data dictionary section gives the detail on the payload content for the Party endpoints.
 
 ### Reused Classes
+
 #### OBParty2
 
 This section describes theOBParty2class which is reused as the Party resource in the OBReadParty2 and OBReadParty3 payloads.
@@ -125,7 +141,8 @@ The ReadPartyPSU permission is required to access GET /party. The resource respo
 ## Usage Examples
 
 ### All Parties
- **Request Get Account Parties Request**
+
+ **Request: Get Account Parties Request**
 
 ```
 GET /accounts/22289/parties HTTP/1.1
@@ -136,7 +153,7 @@ x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Accept: application/json
 ```
 
- **Response Get Account Parties Response**
+ **Response: Get Account Parties Response**
 
 ```
 HTTP/1.1 200 OK
@@ -203,7 +220,7 @@ Content-Type: application/json
 
 ### All Parties
 
- **Request Get Parties Request**
+ **Request: Get Parties Request**
 
 ```
 GET /accounts/89019/parties HTTP/1.1
@@ -214,7 +231,7 @@ x-fapi-interaction-id: 0761c465-0f8c-43d1-8952-f2cd7fa1aa8b
 Accept: application/json
 ```
 
- **Response** **Get Parties Response**
+ **Response: Get Parties Response**
 
 ```
 HTTP/1.1 200 OK
@@ -295,7 +312,7 @@ Content-Type: application/json
 
 ### Account Owner
 
- **Request Get Account Party Request**
+ **Request: Get Account Party Request**
 
 ```
 GET /accounts/22289/party HTTP/1.1
@@ -306,7 +323,7 @@ x-fapi-interaction-id: 7f570e68-c7f0-44e2-a934-a854d2ca8cca
 Accept: application/json
 ```
 
- **Response Get Account Party Response**
+ **Response: Get Account Party Response**
 
 ```
 HTTP/1.1 200 OK
@@ -342,7 +359,7 @@ Content-Type: application/json
 
 ### Authorised User
 
- **Request Get Party Request**
+ **Request: Get Party Request**
 
 ```
 GET /party HTTP/1.1
@@ -353,7 +370,7 @@ x-fapi-interaction-id: 7903ae4f-bbdf-4291-bb23-bd44daf7bc24
 Accept: application/json
 ```
 
- **Response** **Get Party Response**
+ **Response: Get Party Response**
 
 ```
 HTTP/1.1 200 OK
