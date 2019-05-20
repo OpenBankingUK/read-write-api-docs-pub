@@ -1,6 +1,10 @@
 Resources accessed using the pisp PSD2 role are detailed here:
 
-* [Domestic Payments](Domestic%20Payments.md)
+* [Domestic Payment Consents](domestic-payment-consents.md)
+* [Domestic Payments](domestic-payments.md)
+
+---
+
 * [Domestic Scheduled Payments](Domestic%20Scheduled%20Payments.md)
 * [Domestic Standing Orders](Domestic%20Standing%20Orders.md)
 * [International Payments](International%20Payments.md)
