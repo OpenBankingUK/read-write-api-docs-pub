@@ -1,4 +1,18 @@
-# Products v3.1.2
+# Products <!-- omit in toc -->
+
+## Overview
+
+The product resource is used by an AISP to retrieve the account product information for a specific AccountId. 
+
+The products resource is used by an AISP to retrieve the products for all authorised accounts linked to a specific account-request. 
+
+This resource description should be read in conjunction with a compatible Account Information Services API Profile.
+
+## Profile Compatibility
+
+For a list of profiles compatible with this resource, please see the [Compatibility Matrix](https://github.com/OpenBankingUK/read-write-api-docs/tree/dj-align-payment-resource-page-structure/resources%20and%20data%20models/aisp)
+
+
 
 ## Endpoints
 
@@ -99,7 +113,7 @@ Detailed usage examples for PCA, and BCA can be found in theMessage Implementati
 
 ### Specific Account
 
- **Request Get Accounts Product Request**
+ **Request: Get Accounts Product Request**
 
 ```
 GET /accounts/22289/product HTTP/1.1
@@ -110,7 +124,7 @@ x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Accept: application/json
 ```
 
- **Response Get Accounts Product Response**
+ **Response: Get Accounts Product Response**
 
 ```
 HTTP/1.1 200 OK
@@ -143,7 +157,7 @@ Content-Type: application/json
 
 ### Bulk
 
- **Request Get Products Request**
+ **Request: Get Products Request**
 
 ```
 GET /products HTTP/1.1
@@ -154,7 +168,7 @@ x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Accept: application/json
 ```
 
- **Response Get Products Response**
+ **Response: Get Products Response**
 
 ```
 HTTP/1.1 200 OK
