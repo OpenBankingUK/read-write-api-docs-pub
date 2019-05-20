@@ -1,4 +1,4 @@
-# Other Product Data Model v3.1.2
+# Other Product Data Model <!-- omit in toc -->
 
 ## Overview
 
