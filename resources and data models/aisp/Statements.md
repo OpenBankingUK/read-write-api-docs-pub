@@ -1,4 +1,19 @@
-# Statements v3.1.2
+# Statements <!-- omit in toc -->
+
+## Overview
+
+The statements resource is used by an AISP to retrieve the 
+* statements information
+* statement information for a StatementId in json and non-json(file) format.
+* transactions for a selected StatementId
+for a specific account identified by AccountId or retrieve statement information for all accounts that the PSU has consented to.
+
+This resource description should be read in conjunction with a compatible Account Information Services API Profile.
+
+## Profile Compatibility
+
+For a list of profiles compatible with this resource, please see the [Compatibility Matrix](https://github.com/OpenBankingUK/read-write-api-docs/tree/dj-align-payment-resource-page-structure/resources%20and%20data%20models/aisp)
+
 
 ## Endpoints
 
@@ -175,7 +190,7 @@ For the call toGET /accounts/{AccountId}/statements/{StatementId}/transactions:
 
 ### Specific Account
 
- **Request Get Account Statements Request**
+ **Request: Get Account Statements Request**
 
 ```
 GET /accounts/22289/statements HTTP/1.1
@@ -186,7 +201,7 @@ x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Accept: application/json
 ```
 
- **Response Response**
+ **Response: Get Account Statements Response**
 
 ```
 HTTP/1.1 200 OK
@@ -265,7 +280,7 @@ Content-Type: application/json
 
 ### Bulk
 
- **Request Get Statements Request**
+ **Request: Get Statements Request**
 
 ```
 GET /statements HTTP/1.1
@@ -276,7 +291,7 @@ x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Accept: application/json
 ```
 
- **Response Response**
+ **Response: Get Statements Response**
 
 ```
 HTTP/1.1 200 OK
