@@ -1,4 +1,4 @@
-# PCA Product Data Model v3.1.2
+# PCA Product Data Model <!-- omit in toc -->
 
 ## Overview
 
