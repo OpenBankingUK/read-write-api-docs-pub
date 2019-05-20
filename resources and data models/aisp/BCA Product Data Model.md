@@ -1,4 +1,4 @@
-# BCA Product Data Model v3.1.2
+# BCA Product Data Model <!-- omit in toc -->
 
 # Overview
 
