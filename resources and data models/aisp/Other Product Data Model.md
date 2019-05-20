@@ -1,5 +1,26 @@
 # Other Product Data Model <!-- omit in toc -->
 
+1. [Overview](#overview)
+   1. [Fields to include in Other Product](#fields-to-include-in-other-product)
+   2. [Data Model](#data-model)
+      1. [CreditInterest Model](#creditinterest-model)
+      2. [Overdraft](#overdraft)
+      3. [OverdraftFeeCharges](#overdraftfeecharges)
+      4. [LoanInterest](#loaninterest)
+      5. [Repayment](#repayment)
+      6. [OtherFeesCharges](#otherfeescharges)
+      7. [SupplementaryData](#supplementarydata)
+   3. [Data Payload](#data-payload)
+   4. [Data Dictionary](#data-dictionary)
+   5. [Data Payload - Enumerations](#data-payload---enumerations)
+2. [Usage Examples](#usage-examples)
+   1. [Publish Other Product Type](#publish-other-product-type)
+      1. [Get Accounts Product Request](#get-accounts-product-request)
+      2. [Get Accounts Product Response](#get-accounts-product-response)
+   2. [Publish Other Product Type along with Other Fee and Charges](#publish-other-product-type-along-with-other-fee-and-charges)
+      1. [Get Accounts Product Request](#get-accounts-product-request-1)
+      2. [Get Accounts Product Response](#get-accounts-product-response-1)
+
 ## Overview
 
 From the analysis:-
