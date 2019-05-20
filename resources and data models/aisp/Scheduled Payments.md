@@ -1,4 +1,15 @@
-# Scheduled Payments v3.1.2
+# Scheduled Payments <!-- omit in toc -->
+
+## Overview
+
+The scheduled-payments resource is used by an AISP to retrieve the scheduled payments for a specific account identified by AccountId or to retrieve scheduled payments for all accounts that the PSU has consented to. 
+
+This resource description should be read in conjunction with a compatible Account Information Services API Profile.
+
+## Profile Compatibility
+
+For a list of profiles compatible with this resource, please see the [Compatibility Matrix](https://github.com/OpenBankingUK/read-write-api-docs/tree/dj-align-payment-resource-page-structure/resources%20and%20data%20models/aisp)
+
 
 ## Endpoints
 
@@ -79,7 +90,7 @@ If the ReadPAN permission is granted by the PSU - the ASPSP may choose to popula
 
 ### Specific Account
 
- **Request Get Account Specific Scheduled Payments Request**
+ **Request: Get Account Specific Scheduled Payments Request**
 
 ```
 GET /accounts/22289/scheduled-payments HTTP/1.1
@@ -90,7 +101,7 @@ x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Accept: application/json
 ```
 
- **Response Get Accounts Specific Scheduled Payments Response**
+ **Response: Get Accounts Specific Scheduled Payments Response**
 
 ```
 HTTP/1.1 200 OK
@@ -129,7 +140,7 @@ Content-Type: application/json
 
 ### Bulk
 
- **Request Get Bulk Scheduled Payments Request**
+ **Request: Get Bulk Scheduled Payments Request**
 
 ```
 GET /scheduled-payments HTTP/1.1
@@ -140,7 +151,7 @@ x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Accept: application/json
 ```
 
- **Response Get Bulk Scheduled Payments Response**
+ **Response: Get Bulk Scheduled Payments Response**
 
 ```
 HTTP/1.1 200 OK
