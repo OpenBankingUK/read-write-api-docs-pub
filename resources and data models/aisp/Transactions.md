@@ -1,15 +1,38 @@
 # Transactions <!-- omit in toc -->
 
+1. [Overview](#overview)
+   1. [Profile Compatibility](#profile-compatibility)
+2. [Endpoints](#endpoints)
+   1. [GET /accounts/{AccountId}/transactions](#get-accountsaccountidtransactions)
+   2. [GET /transactions](#get-transactions)
+3. [Data Model](#data-model)
+   1. [Resource Definition](#resource-definition)
+   2. [UML Diagram](#uml-diagram)
+      1. [Notes](#notes)
+   3. [Filtering](#filtering)
+      1. [Filtering Examples](#filtering-examples)
+   4. [Permission Codes](#permission-codes)
+   5. [Data Dictionary](#data-dictionary)
+4. [Usage Examples](#usage-examples)
+   1. [Specific Account](#specific-account)
+      1. [Get Account Transactions Request](#get-account-transactions-request)
+      2. [Get Account Transactions Response](#get-account-transactions-response)
+   2. [Bulk](#bulk)
+      1. [Get Transactions Request](#get-transactions-request)
+      2. [Get Transactions Response](#get-transactions-response)
+   3. [No Access](#no-access)
+      1. [GET Account Transactions Request](#get-account-transactions-request)
+      2. [GET Account Transactions Response](#get-account-transactions-response)
+
 ## Overview
 
 The transactions resource is used by an AISP to retrieve the  transactions for a specific AccountId or to retrieve the transactions in bulk for account(s) that the PSU has authorised to access.
 
 This resource description should be read in conjunction with a compatible Account Information Services API Profile.
 
-## Profile Compatibility
+### Profile Compatibility
 
 For a list of profiles compatible with this resource, please see the [Compatibility Matrix](https://github.com/OpenBankingUK/read-write-api-docs/tree/dj-align-payment-resource-page-structure/resources%20and%20data%20models/aisp)
-
 
 ## Endpoints
 
@@ -19,7 +42,6 @@ Endpoints for the resource - and available methods.
 | --- |--- |--- |--- |--- |--- |--- |--- |--- |--- |--- |
 | 1 |transactions |GET |GET /accounts/{AccountId}/transactions |Mandatory |accounts |Authorization Code |No |Pagination Filtering | |OBReadTransaction5 |
 | 2 |transactions |GET |GET /transactions |Optional |accounts |Authorization Code |No |Pagination Filtering | |OBReadTransaction5 |
-
 
 ### GET /accounts/{AccountId}/transactions
 
@@ -33,6 +55,7 @@ This will retrieve the resources for all authorised accounts linked to the accou
 ## Data Model
 
 The OBReadTransaction5 object will be used for the call to:
+
 * GET /accounts/{AccountId}/transactions
 * GET /transactions
 * GET /accounts/{AccountId}/statements/{StatementId}transactions
@@ -46,7 +69,8 @@ For a specific date range, an account (AccountId) may have no transactions booke
 
 ![ OBReadTransaction5.png ]( images/Transactions/OBReadTransaction5.png )
 
-Notes:
+#### Notes
+
 * The use of the term "Transaction" has been made consistently in the Transaction endpoint payload (instead of "Entry" which is the ISO20022 element name).
 * A DateTime element has been used instead of a complex choice element of Date and DateTime. Where time elements do not exist in ASPSP systems, the time portion of the DateTime element will be defaulted to 00:00:00+00:00.
 * The BookingDateTime has been set to mandatory as all ASPSPs must provide this field for pagination and filtering. The BookingDateTime is the date the transaction is booked (or posted) and becomes immutable, which is not the date the transaction took place.
@@ -65,7 +89,6 @@ Limited support for filtering is provided on the  **transactions**  resource.
 | fromBookingDateTime |0..1 |Specifies start date and time for filtering of the Transaction records on the Transaction/BookingDateTime field |ISODateTime |
 | toBookingDateTime |0..1 |Specifies end date and time for filtering of the Transaction records on the Transaction/BookingDateTime field. |ISODateTime |
 
-
 The ASPSP must treat the following as valid input:
 * Non-working days (e.g. a Sunday or a Bank holiday) or any other days on which no transactions are recorded.
 * Dates that fall outside the range for which transaction information is provided through APIs.
@@ -74,7 +97,7 @@ The ASPSP must treat the following as valid input:
 
 In the above situations, the ASPSP must return data for the remaining valid period specified by the filter.
 
-**Filtering Examples**
+#### Filtering Examples
 
 ```
 // All transactions from 1st Jan, 2015
@@ -87,11 +110,10 @@ GET /transactions?fromBookingDateTime=2016-01-01T00:00:00&amp;toBookingDateTime=
 GET /accounts/1/transactions?toBookingDateTime=2017-03-31T23:59:59
 ```
 
-
-
 ### Permission Codes
 
 The resource differs depending on the permissions (ReadTransactionsBasic and ReadTransactionsDetail) used to access resource. In the event the resource is accessed with both ReadTransactionsBasic and ReadTransactionsDetail, the most detailed level (ReadTransactionsDetail) must be used.
+
 * These objects **must not** be returned **without** the **ReadTransactionsDetail** permission: 
     * OBReadTransaction5/Data/Transaction/TransactionInformation 
     * OBReadTransaction5/Data/Transaction/Balance 
@@ -210,12 +232,11 @@ If the ReadPAN permission is granted by the PSU - the ASPSP may choose to popula
 | Identification |0..1 |OBReadTransaction5/Data/Transaction/CardInstrument/Identification |Identification assigned by an institution to identify the card instrument used in the transaction. This identification is known by the account owner, and may be masked. |Max34Text | | |
 | SupplementaryData |0..1 |OBReadTransaction5/Data/Transaction/SupplementaryData |Additional information that can not be captured in the structured fields and/or any other specific block. |OBSupplementaryData1 | | |
 
-
 ## Usage Examples
 
 ### Specific Account
 
- **Request: Get  Account Transactions Request**
+#### Get Account Transactions Request
 
 ```
 GET /accounts/22289/transactions HTTP/1.1
@@ -226,13 +247,14 @@ x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Accept: application/json
 ```
 
- **Response: Get Account Transactions Response**
+#### Get Account Transactions Response
 
 ```
 HTTP/1.1 200 OK
 x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Content-Type: application/json
 ```
+
 ```json
 {
   "Data": {
@@ -284,7 +306,7 @@ Content-Type: application/json
 
 None of the transactions included in the payload are Ecommerce transactions, so MerchantDetails are not included in the examples.
 
- **Request: Get Transactions Request**
+#### Get Transactions Request
 
 ```
 GET /transactions HTTP/1.1
@@ -295,13 +317,14 @@ x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Accept: application/json
 ```
 
- **Response: Get Transactions Response**
+#### Get Transactions Response
 
 ```
 HTTP/1.1 200 OK 
 x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Content-Type: application/json
 ```
+
 ```json
 {
   "Data": {
@@ -384,7 +407,7 @@ Content-Type: application/json
 
 In this example, the AISP  **does not**  have access to call the transactions endpoint. This will result in a 403 error.
 
- **Request: GET Account Transactions Request**
+#### GET Account Transactions Request
 
 ```
 GET /accounts/22289/transactions HTTP/1.1
@@ -395,7 +418,7 @@ x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Accept: application/json
 ```
 
- **Response: GET Account Transactions Response**
+#### GET Account Transactions Response
 
 ```
 HTTP/1.1 403 Forbidden 

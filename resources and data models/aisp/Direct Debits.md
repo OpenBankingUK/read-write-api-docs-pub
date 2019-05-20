@@ -1,15 +1,32 @@
 # Direct Debits <!-- omit in toc -->
 
+1. [Overview](#overview)
+   1. [Profile Compatibility](#profile-compatibility)
+2. [Endpoints](#endpoints)
+   1. [GET /accounts/{AccountId}/direct-debits](#get-accountsaccountiddirect-debits)
+   2. [GET /direct-debits](#get-direct-debits)
+3. [Data Model](#data-model)
+   1. [Resource Definition](#resource-definition)
+   2. [UML Diagram](#uml-diagram)
+   3. [Permission Codes](#permission-codes)
+   4. [Data Dictionary](#data-dictionary)
+4. [Usage Examples](#usage-examples)
+   1. [Specific Account](#specific-account)
+      1. [Get Accounts Direct Debits Request](#get-accounts-direct-debits-request)
+      2. [Get Accounts Direct Debits Response](#get-accounts-direct-debits-response)
+   2. [Bulk](#bulk)
+      1. [Get Direct Debits Request](#get-direct-debits-request)
+      2. [Get Direct Debits Response](#get-direct-debits-response)
+
 ## Overview
 
 The direct-debits resource is used by an AISP to retrieve the direct debits for a specific account identified by AccountId or to retrieve direct debits for all accounts that the PSU has consented to. 
 
 This resource description should be read in conjunction with a compatible Account Information Services API Profile.
 
-## Profile Compatibility
+### Profile Compatibility
 
 For a list of profiles compatible with this resource, please see the [Compatibility Matrix](https://github.com/OpenBankingUK/read-write-api-docs/tree/dj-align-payment-resource-page-structure/resources%20and%20data%20models/aisp)
-
 
 ## Endpoints
 
@@ -60,12 +77,11 @@ The resource requires the ReadDirectDebits permission. The resource response pay
 | Amount |1..1 |OBReadDirectDebit1/Data/DirectDebit/PreviousPaymentAmount/Amount |A number of monetary units specified in an active currency where the unit of currency is explicit and compliant with ISO 4217. |OBActiveCurrencyAndAmount_SimpleType | |^\d{1,13}\.\d{1,5}$ |
 | Currency |1..1 |OBReadDirectDebit1/Data/DirectDebit/PreviousPaymentAmount/Currency |A code allocated to a currency by a Maintenance Agency under an international identification scheme, as described in the latest edition of the international standard ISO 4217 "Codes for the representation of currencies and funds". |ActiveOrHistoricCurrencyCode | |^[A-Z]{3,3}$ |
 
-
 ## Usage Examples
 
 ### Specific Account
 
- **Request: Get Accounts Direct Debits Request**
+#### Get Accounts Direct Debits Request
 
 ```
 GET /accounts/22289/direct-debits HTTP/1.1
@@ -76,13 +92,14 @@ x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Accept: application/json
 ```
 
- **Response: Get Accounts Direct Debits Response**
+#### Get Accounts Direct Debits Response
 
 ```
 HTTP/1.1 200 OK
 x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Content-Type: application/json
 ```
+
 ```json
 {
   "Data": {
@@ -112,7 +129,7 @@ Content-Type: application/json
 
 ### Bulk
 
- **Request: Get Direct Debits Request**
+#### Get Direct Debits Request
 
 ```
 GET /direct-debits HTTP/1.1
@@ -123,13 +140,14 @@ x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Accept: application/json
 ```
 
- **Response: Get Direct Debits Response**
+#### Get Direct Debits Response
 
 ```
 HTTP/1.1 200 OK
 x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Content-Type: application/json
 ```
+
 ```json
 {
   "Data": {

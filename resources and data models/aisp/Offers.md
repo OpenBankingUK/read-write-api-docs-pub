@@ -1,12 +1,31 @@
 # Offers <!-- omit in toc -->
 
+1. [Overview](#overview)
+   1. [Profile Compatibility](#profile-compatibility)
+2. [Endpoints](#endpoints)
+   1. [GET /accounts/{AccountId}/offers](#get-accountsaccountidoffers)
+   2. [GET /offers](#get-offers)
+3. [Data Model](#data-model)
+   1. [Resource Definition](#resource-definition)
+   2. [UML Diagram](#uml-diagram)
+   3. [Notes](#notes)
+   4. [Permission Codes](#permission-codes)
+   5. [Data Dictionary](#data-dictionary)
+4. [Usage Examples](#usage-examples)
+   1. [Specific Account](#specific-account)
+      1. [Get Offers Request](#get-offers-request)
+      2. [Response: Get Offers Response](#response-get-offers-response)
+   2. [Bulk](#bulk)
+      1. [Request: Get Offers Request](#request-get-offers-request)
+      2. [Response: Get Offers Response](#response-get-offers-response-1)
+
 ## Overview
 
 The offers resource is used by an AISP to retrieve the offers available for a specific AccountId or to retrieve the offers detail in bulk for all accounts that the PSU has consented to. 
 
 This resource description should be read in conjunction with a compatible Account Information Services API Profile.
 
-## Profile Compatibility
+### Profile Compatibility
 
 For a list of profiles compatible with this resource, please see the [Compatibility Matrix](https://github.com/OpenBankingUK/read-write-api-docs/tree/dj-align-payment-resource-page-structure/resources%20and%20data%20models/aisp)
 
@@ -20,7 +39,6 @@ Endpoints for the resource and available methods.
 | 1 |offers |GET |GET /accounts/{AccountId}/offers |Conditional |accounts |Authorization Code |No | | |OBReadOffer1 |
 | 2 |offers |GET |GET /offers |Optional |accounts |Authorization Code |No |Pagination | |OBReadOffer1 |
 
-
 ### GET /accounts/{AccountId}/offers
 
 An AISP  **may**  retrieve the offers resource for a specific AccountId (which is retrieved in the call to GET /accounts).
@@ -33,12 +51,14 @@ This will retrieve the resources for all authorised accounts linked to the accou
 ## Data Model
 
 The OBReadOffer1 object will be used for the call to: 
+
 * GET /accounts/{AccountId}/offers
 * GET /offers
 
 ### Resource Definition
 
 A resource that contains a set of elements that describes the list of offers available to a specific account (AccountId).
+
 * Generic features (and pricing) for the account product will be not be available via the **offers** resources. These generic features will be available via the **product** resource.
 * The outcome of any offer (or product feature) uptake will not be reported via the **offers** resource. The benefits, interest, cash-back for any account will be available via the **statements** resource (if this is available to PSUs in the existing ASPSP online channel).
 
@@ -48,7 +68,8 @@ An account (AccountId) may have no offers available, or may have multiple offers
 
 ![ OBReadOffer1.gif ]( images/Offers/OBReadOffer1.gif )
 
-Notes:
+### Notes
+
 * Offers (or promotions) for a specific AccountId, which may be viewable in the ASPSP online banking interface, may have a complicated offer structure (which cannot be expressed using a flat Amount, Fee, Rate, or Value structure). In this case, the ASPSP must use the Description field to describe the nature of the offer in free-text
 
 ### Permission Codes
@@ -79,12 +100,11 @@ The resource requires the ReadOffers permission. The resource response payload d
 | Amount |1..1 |OBReadOffer1/Data/Offer/Fee/Amount |A number of monetary units specified in an active currency where the unit of currency is explicit and compliant with ISO 4217. |OBActiveCurrencyAndAmount_SimpleType | |^\d{1,13}\.\d{1,5}$ |
 | Currency |1..1 |OBReadOffer1/Data/Offer/Fee/Currency |A code allocated to a currency by a Maintenance Agency under an international identification scheme, as described in the latest edition of the international standard ISO 4217 "Codes for the representation of currencies and funds". |ActiveOrHistoricCurrencyCode | |^[A-Z]{3,3}$ |
 
-
 ## Usage Examples
 
 ### Specific Account
 
- **Request: Get Offers Request**
+#### Get Offers Request
 
 ```
 GET /accounts/22289/offers HTTP/1.1
@@ -95,13 +115,14 @@ x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Accept: application/json
 ```
 
- **Response: Get Offers Response**
+#### Response: Get Offers Response
 
 ```
 HTTP/1.1 200 OK
 x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Content-Type: application/json
 ```
+
 ```json
 {
   "Data": {
@@ -110,7 +131,7 @@ Content-Type: application/json
         "AccountId": "22289",
         "OfferId": "Offer1",
         "OfferType": "LimitIncrease",
-        "Description": "Credit limit increase for the account up to £10000.00",
+        "Description": "Credit limit increase for the account up to ï¿½10000.00",
         "Amount": {
           "Amount": "10000.00",
           "Currency": "GBP"
@@ -120,7 +141,7 @@ Content-Type: application/json
         "AccountId": "22289",
         "OfferId": "Offer2",
         "OfferType": "BalanceTransfer",
-        "Description": "Balance transfer offer up to £2000",
+        "Description": "Balance transfer offer up to ï¿½2000",
         "Amount": {
           "Amount": "2000.00",
           "Currency": "GBP"
@@ -139,7 +160,7 @@ Content-Type: application/json
 
 ### Bulk
 
- **Request: Get Offers Request**
+#### Request: Get Offers Request
 
 ```
 GET /offers HTTP/1.1
@@ -150,13 +171,14 @@ x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Accept: application/json
 ```
 
- **Response: Get Offers Response**
+#### Response: Get Offers Response
 
 ```
 HTTP/1.1 200 OK
 x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Content-Type: application/json
 ```
+
 ```json
 {
   "Data": {
@@ -165,7 +187,7 @@ Content-Type: application/json
         "AccountId": "22289",
         "OfferId": "Offer1",
         "OfferType": "LimitIncrease",
-        "Description": "Credit limit increase for the account up to £10000.00",
+        "Description": "Credit limit increase for the account up to ï¿½10000.00",
         "Amount": {
           "Amount": "10000.00",
           "Currency": "GBP"
@@ -175,7 +197,7 @@ Content-Type: application/json
         "AccountId": "22289",
         "OfferId": "Offer2",
         "OfferType": "BalanceTransfer",
-        "Description": "Balance transfer offer up to £2000",
+        "Description": "Balance transfer offer up to ï¿½2000",
         "Amount": {
           "Amount": "2000.00",
           "Currency": "GBP"
@@ -185,7 +207,7 @@ Content-Type: application/json
         "AccountId": "32515",
         "OfferId": "Offer3",
         "OfferType": "LimitIncrease",
-        "Description": "Credit limit increase for the account up to £50000.00",
+        "Description": "Credit limit increase for the account up to ï¿½50000.00",
         "Amount": {
           "Amount": "50000.00",
           "Currency": "GBP"

@@ -1,15 +1,36 @@
 # Accounts <!-- omit in toc -->
 
+1. [Overview](#overview)
+   1. [Profile Compatibility](#profile-compatibility)
+2. [Endpoints](#endpoints)
+   1. [GET /accounts](#get-accounts)
+   2. [GET /accounts/{AccountId}](#get-accountsaccountid)
+3. [Data Model](#data-model)
+   1. [Resource Definition](#resource-definition)
+   2. [UML Diagram](#uml-diagram)
+   3. [Notes](#notes)
+   4. [Permission Codes](#permission-codes)
+   5. [Data Dictionary](#data-dictionary)
+4. [Usage Examples](#usage-examples)
+   1. [Bulk - Detail Permission](#bulk---detail-permission)
+      1. [Get Accounts Request](#get-accounts-request)
+      2. [Get Accounts Response](#get-accounts-response)
+   2. [Specific Account - Detail Permission](#specific-account---detail-permission)
+      1. [Get Accounts Request](#get-accounts-request-1)
+      2. [Get Accounts Response](#get-accounts-response-1)
+   3. [Bulk - Basic Permission](#bulk---basic-permission)
+      1. [Get Accounts Request](#get-accounts-request-2)
+      2. [Get Accounts Response](#get-accounts-response-2)
+
 ## Overview
 
 The accounts resource is used by an AISP to retrieve full list of accounts and account infromation that the PSU has authorised to access.
 
 This resource description should be read in conjunction with a compatible Account Information Services API Profile.
 
-## Profile Compatibility
+### Profile Compatibility
 
 For a list of profiles compatible with this resource, please see the [Compatibility Matrix](https://github.com/OpenBankingUK/read-write-api-docs/tree/dj-align-payment-resource-page-structure/resources%20and%20data%20models/aisp)
-
 
 
 ## Endpoints
@@ -36,6 +57,7 @@ An AISP  **may**  retrieve the account information resources for the AccountId (
 ## Data Model
 
 The OBReadAccount4 object will be used for the call to:
+
 * GET /accounts/{AccountId}
 * GET /accounts
 
@@ -48,7 +70,8 @@ Each account resource will have a unique and immutable AccountId.
 
 ![ OBReadAccount4.gif ]( images/Accounts/OBReadAccount4.gif )
 
- **Notes:** 
+### Notes
+
 * The **Account** and **Servicer** structure has been designed to: 
     * Reflect the DebtorAccount and DebtorAgent (and similarly for CreditorAccount and CreditorAgent) structures in the PISP use case. 
     * Having a SchemeName for the Account and Servicer blocks means we can be flexible to accommodate multiple types of accounts.
@@ -64,6 +87,7 @@ Each account resource will have a unique and immutable AccountId.
 ### Permission Codes
 
 The resource differs depending on the permissions (ReadAccountsBasic and ReadAccountsDetail) used to access the resource. In the event that the resource is accessed with both ReadAccountsBasic and ReadAccountsDetail, the most detailed level (ReadAccountsDetail) must be used.
+
 * These objects **must not** be returned **without** the **ReadAccountsDetail** permission: 
     * OBReadAccount4/Data/Account/Account 
     * OBReadAccount4/Data/Account/Servicer
@@ -97,7 +121,6 @@ If the ReadPAN permission is granted by the PSU, the ASPSP may choose to populat
 | SchemeName |1..1 |OBReadAccount4/Data/Account/Servicer/SchemeName |Name of the identification scheme, in a coded form as published in an external list. |OBExternalFinancialInstitutionIdentification4Code | | |
 | Identification |1..1 |OBReadAccount4/Data/Account/Servicer/Identification |Unique and unambiguous identification of the servicing institution. |Max35Text | | |
 
-
 ## Usage Examples
 
 ### Bulk - Detail Permission
@@ -106,7 +129,7 @@ The call to GET /accounts is the first step after an account-request is authoris
 In this scenario, AccountId 22289 has a building society roll number; and AccountId 31820 does not.
 The  **ReadAccountsDetail**  permission has been granted.
 
- **Request: Get Accounts Request**
+#### Get Accounts Request
 
 ```
 GET /accounts HTTP/1.1
@@ -117,13 +140,14 @@ x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Accept: application/json
 ```
 
- **Response: Get Accounts Response**
+#### Get Accounts Response
 
 ```
 HTTP/1.1 200 OK
 x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Content-Type: application/json
 ```
+
 ```json
 {
   "Data": {
@@ -177,7 +201,7 @@ Content-Type: application/json
 An AISP may also retrieve the account resource details specifically for AccountId 22289.
 The  **ReadAccountsDetail**  permission has been granted.
 
- **Request: Get Accounts Request**
+#### Get Accounts Request
 
 ```
 GET /accounts/22289 HTTP/1.1
@@ -188,7 +212,7 @@ x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Accept: application/json
 ```
 
- **Response: Get Accounts Response**
+#### Get Accounts Response
 
 ```
 HTTP/1.1 200 OK
@@ -231,7 +255,7 @@ Content-Type: application/json
 
 The  **ReadAccountsBasic** permission has been granted.
 
- **Request: Get Accounts Request**
+#### Get Accounts Request
 
 ```
 GET /accounts HTTP/1.1
@@ -242,13 +266,14 @@ x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Accept: application/json
 ```
 
- **Response: Get Accounts Response**
+#### Get Accounts Response
 
 ```
 HTTP/1.1 200 OK
 x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Content-Type: application/json
 ```
+
 ```json
 {
   "Data": {

@@ -1,15 +1,32 @@
 # Beneficiaries <!-- omit in toc -->
 
+1. [Overview](#overview)
+   1. [Profile Compatibility](#profile-compatibility)
+2. [Endpoints](#endpoints)
+   1. [GET/accounts/{AccountId}/beneficiaries](#getaccountsaccountidbeneficiaries)
+   2. [GET /beneficiaries](#get-beneficiaries)
+3. [Data Model](#data-model)
+   1. [Resource Definition](#resource-definition)
+   2. [UML Diagram](#uml-diagram)
+   3. [Notes](#notes)
+   4. [Permission Codes](#permission-codes)
+   5. [Data Dictionary](#data-dictionary)
+4. [Usage Examples](#usage-examples)
+   1. [Specific Account](#specific-account)
+      1. [Get Account Beneficiaries Request](#get-account-beneficiaries-request)
+   2. [Bulk](#bulk)
+      1. [Get Beneficiaries Request](#get-beneficiaries-request)
+      2. [Get Beneficiaries Response](#get-beneficiaries-response)
+
 ## Overview
 
 The beneficiaries resource is used by an AISP to retrieve the account beneficiaries information for a specific AccountId or to retrieve the beneficiaries' information in bulk for account(s) that the PSU has authorised to access.
 
 This resource description should be read in conjunction with a compatible Account Information Services API Profile.
 
-## Profile Compatibility
+### Profile Compatibility
 
 For a list of profiles compatible with this resource, please see the [Compatibility Matrix](https://github.com/OpenBankingUK/read-write-api-docs/tree/dj-align-payment-resource-page-structure/resources%20and%20data%20models/aisp)
-
 
 ## Endpoints
 
@@ -55,7 +72,8 @@ This is the expected behaviour of the beneficiaries' endpoints, in the case an A
 
 ![ OBReadBeneficiary3.gif ]( images/Beneficiaries/OBReadBeneficiary3.gif )
 
- **Notes:** 
+### Notes
+
 * The CreditorAccount is used consistently throughout the Account Information APIs to identify an account
 * Due to internationalisation requirements: 
     * The CreditorAgent object may be used to represent either (1) the BIC (with UK.OBIE.BICFI in the SchemeName field and the BIC in the Identification field), or (2) the Name and Address details for the financial institution. 
@@ -105,12 +123,11 @@ If the ReadPAN permission is granted by the PSU, the ASPSP may choose to populat
 | Name |0..1 |OBReadBeneficiary3/Data/Beneficiary/CreditorAccount/Name |The account name is the name or names of the account owner(s) represented at an account level, as displayed by the ASPSP's online channels. Note, the account name is not the product name or the nickname of the account. |Max70Text | | |
 | SecondaryIdentification |0..1 |OBReadBeneficiary3/Data/Beneficiary/CreditorAccount/SecondaryIdentification |This is secondary identification of the account, as assigned by the account servicing institution. This can be used by building societies to additionally identify accounts with a roll number (in addition to a sort code and account number combination). |Max34Text | | |
 
-
 ## Usage Examples
 
 ### Specific Account
 
- **Request** **Get Account Beneficiaries Request**
+#### Get Account Beneficiaries Request
 
 ```
 GET /accounts/22289/beneficiaries HTTP/1.1
@@ -121,13 +138,14 @@ x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Accept: application/json
 ```
 
- **Request** **Get Account Beneficiaries Response**
+ #### Get Account Beneficiaries Response
 
 ```
 HTTP/1.1 200 OK
 x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Content-Type: application/json
 ```
+
 ```json
 {
   "Data": {
@@ -155,7 +173,7 @@ Content-Type: application/json
 
 ### Bulk
 
- **Request** **Get Beneficiaries Request**
+#### Get Beneficiaries Request
 
 ```
 GET /beneficiaries HTTP/1.1
@@ -166,13 +184,14 @@ x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Accept: application/json
 ```
 
- **Response** **Get Beneficiaries Response**
+#### Get Beneficiaries Response
 
 ```
 HTTP/1.1 200 OK
 x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Content-Type: application/json
 ```
+
 ```json
 {
   "Data": {

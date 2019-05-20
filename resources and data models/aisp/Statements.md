@@ -1,8 +1,33 @@
 # Statements <!-- omit in toc -->
 
+1. [Overview](#overview)
+   1. [Profile Compatibility](#profile-compatibility)
+2. [Endpoints](#endpoints)
+   1. [GET /accounts/{AccountId}/statements](#get-accountsaccountidstatements)
+   2. [GET /accounts/{AccountId}/statements/{StatementId}](#get-accountsaccountidstatementsstatementid)
+   3. [GET /accounts/{AccountId}/statements/{StatementId}/file](#get-accountsaccountidstatementsstatementidfile)
+   4. [GET /accounts/{AccountId}/statements/{StatementId}/transactions](#get-accountsaccountidstatementsstatementidtransactions)
+   5. [GET /statements](#get-statements)
+3. [Data Model](#data-model)
+   1. [Resource Definition](#resource-definition)
+   2. [UML Diagram](#uml-diagram)
+   3. [Notes](#notes)
+   4. [Filtering](#filtering)
+      1. [Filtering Examples](#filtering-examples)
+   5. [Permission Codes](#permission-codes)
+   6. [Data Dictionary](#data-dictionary)
+4. [Usage Examples](#usage-examples)
+   1. [Specific Account](#specific-account)
+      1. [Get Account Statements Request](#get-account-statements-request)
+      2. [Get Account Statements Response](#get-account-statements-response)
+   2. [Bulk](#bulk)
+      1. [Get Statements Request](#get-statements-request)
+      2. [Get Statements Response](#get-statements-response)
+
 ## Overview
 
 The statements resource is used by an AISP to retrieve the 
+
 * statements information
 * statement information for a StatementId in json and non-json(file) format.
 * transactions for a selected StatementId
@@ -11,10 +36,9 @@ for a specific account identified by AccountId or retrieve statement information
 
 This resource description should be read in conjunction with a compatible Account Information Services API Profile.
 
-## Profile Compatibility
+### Profile Compatibility
 
 For a list of profiles compatible with this resource, please see the [Compatibility Matrix](https://github.com/OpenBankingUK/read-write-api-docs/tree/dj-align-payment-resource-page-structure/resources%20and%20data%20models/aisp)
-
 
 ## Endpoints
 
@@ -52,16 +76,19 @@ An ASPSP may provide this endpoint for AISPs to retrieve statement information f
 ## Data Model
 
 The OBReadStatement2 object will be used for the call to:
+
 * GET /statements
 * GET /accounts/{AccountId}/statements
 * GET /accounts/{AccountId}/statements/{StatementId}
 
 The call to
+
 * GET /accounts/{AccountId}/statements/{StatementId}/file
 
 will return unstructured data in binary (e.g., pdf, doc) or text (e.g., csv) formats. This will be specified in the Accept header by the AISP.
 
 The OBReadTransaction3 object (documented in the transactions resource) will be used the call to:
+
 * GET /accounts/{AccountId}/statements/{StatementId}/transactions
 
 ### Resource Definition
@@ -70,6 +97,7 @@ A resource that describes summary details for an account statement period.
 For a specific date range, an account (AccountId) may have no statements, or may have multiple statements.
 The /statements endpoint (if implemented by the ASPSP) **must** return all statements within the requested date range for all accounts selected during the authorisation of the account-request.
 If an AISP would like to access a specific statement (StatementId) to retrieve a formal statement download or transactions for a specific statement - the AISP **must** specify the account (the AccountId) via the URI request path i.e., via:
+
 * GET /accounts/{AccountId}/statements/{StatementId}/file - to download the statement.
 * GET /accounts/{AccountId}/statements/{StatementId}/transactions - to return the transactions relating to a statement.
 
@@ -77,7 +105,8 @@ If an AISP would like to access a specific statement (StatementId) to retrieve a
 
 ![ OBReadStatement2.png ]( images/Statements/OBReadStatement2.png )
 
-Notes:
+### Notes
+
 * The statements resource **must** only be used for data that can be returned for a statement period.
 * StartDateTime, EndDateTime and CreationDateTime are mandatory for the statements resource. If an ASPSP does not display these dates in an online channel, the ASPSP must populate these dates with sensible values. E.g., the StartDateTime could be the day after the previous statement EndDateTime, and the CreationDateTime could be the day after the EndDateTime.
 
@@ -91,13 +120,14 @@ Limited support for filtering is provided on the  **statements** resource.
 | toStatementDateTime |0..1 |Specifies end date and time for filtering of the Statements on the Statement/StartDateTime field. If this is not populated, the end date will be open ended |ISODateTime |
 
 The ASPSP must treat the following as valid input:
+
 * non-working days (e.g. a Sunday or a Bank holiday) or any other days on which no transactions are recorded
 * dates that fall outside the range for which transaction information is provided through APIs
 * dates that fall outside the range for which a consent authorisation is available.
 
 In the above situations, the ASPSP must return statements where the StartDateTime and EndDateTime are both between the  **fromStatementDateTime**  and **toStatementDateTime** parameters.
 
-**Filtering Examples**
+#### Filtering Examples
 
 ```
 // All statements from 1st Jan, 2015
@@ -186,12 +216,11 @@ For the call toGET /accounts/{AccountId}/statements/{StatementId}/transactions:
 | Value |1..1 |OBReadStatement2/Data/Statement/StatementValue/Value |Value associated with the statement value type. |OBExternalStatementValueType1Code | | |
 | Type |1..1 |OBReadStatement2/Data/Statement/StatementValue/Type |Statement value type, in a coded form. |Max40Text | | |
 
-
 ## Usage Examples
 
 ### Specific Account
 
- **Request: Get Account Statements Request**
+#### Get Account Statements Request
 
 ```
 GET /accounts/22289/statements HTTP/1.1
@@ -202,13 +231,14 @@ x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Accept: application/json
 ```
 
- **Response: Get Account Statements Response**
+#### Get Account Statements Response
 
 ```
 HTTP/1.1 200 OK
 x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Content-Type: application/json
 ```
+
 ```json
 {
   "Data": {
@@ -281,7 +311,7 @@ Content-Type: application/json
 
 ### Bulk
 
- **Request: Get Statements Request**
+#### Get Statements Request
 
 ```
 GET /statements HTTP/1.1
@@ -292,13 +322,14 @@ x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Accept: application/json
 ```
 
- **Response: Get Statements Response**
+#### Get Statements Response
 
 ```
 HTTP/1.1 200 OK
 x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Content-Type: application/json
 ```
+
 ```json
 {
   "Data": {

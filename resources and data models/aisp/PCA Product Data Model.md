@@ -3,26 +3,28 @@
 ## Overview
 
 From the analysis:- 
+
 * Most banks (other than CMA9) simply have to supply the MMC for their PCA products (on-sale, negotiated or back book).
-* The MMC is the CMA’s attempt to come up with a core fee/charge that can be used for PCA product comparison purposes.
+* The MMC is the CMAï¿½s attempt to come up with a core fee/charge that can be used for PCA product comparison purposes.
 * This, in combination, with representative rates (AER for Credit Interest, EAR for overdrafts) would allow a customer to reasonably compare PCA products.
 * PCA Marketing state information is not required.
 * Eligibility criteria met when the PCA was sold is unlikely to be reliable. Hence eligibility criteria information is not required.
 
 Further analysis required:- 
+
 * FeaturesAndBenefits: Further analysis is required to check whether the features and benefits section is needed.
 
 ### Fields to include in PCA Product
 
 | Product Section |Fields to be included |
 | --- |--- |
-| PCA (We’ll rename this “Product” and merge PCA and CoreProduct attributes) |<li>Name <li>Open Data Product ID (Mandatory, if product info is available on Open Data PCA API) <li>ProductType (“PCA”) <li>MonthlyMaximumCharge (Mandatory for “front book” products) |
-| CoreProduct |**None** – Will be merged in to new “Product” section. |
-| PCAMarketingState |**None** – Sections will only include current state information, so this section is not required |
+| PCA (Weï¿½ll rename this ï¿½Productï¿½ and merge PCA and CoreProduct attributes) |<li>Name <li>Open Data Product ID (Mandatory, if product info is available on Open Data PCA API) <li>ProductType (ï¿½PCAï¿½) <li>MonthlyMaximumCharge (Mandatory for ï¿½front bookï¿½ products) |
+| CoreProduct |**None** ï¿½ Will be merged in to new ï¿½Productï¿½ section. |
+| PCAMarketingState |**None** ï¿½ Sections will only include current state information, so this section is not required |
 | CreditInterest |<li>TierBandSet fields (excluding credit interest eligibility). <li>All TierBand fields <br>**Note:** Only current state credit interest information is required. |
 | Overdraft |<li> All TierBandSet fields (including OverdraftFeesAndCharges) <li> All TierBand fields (including OverdraftFeesAndCharges). <br>**Note:** Only current state information is required. |
-| Eligibility |**None** – Eligibility criteria met when PCA was sold unlikely to be reliable. |
-| FeaturesAndBenefits |**None** – The value of a particular feature and benefit to an accountholder is dependent on their use of that benefit and whether they met eligibility criteria. Certain benefits may be provided by external suppliers making it difficult to provide real time info. Relevant general features &amp; benefits info can be obtained from Open Data API for “front book” products. |
+| Eligibility |**None** ï¿½ Eligibility criteria met when PCA was sold unlikely to be reliable. |
+| FeaturesAndBenefits |**None** ï¿½ The value of a particular feature and benefit to an accountholder is dependent on their use of that benefit and whether they met eligibility criteria. Certain benefits may be provided by external suppliers making it difficult to provide real time info. Relevant general features &amp; benefits info can be obtained from Open Data API for ï¿½front bookï¿½ products. |
 | OtherFeesAndCharges |<li> Periodic Fee (i.e. the service charge) |
 
 ### Changes from the OpenData Model
@@ -39,9 +41,9 @@ Further analysis required:-
 * AER is the only representative rate for CreditInterest for product comparison purposes and therefore has been explicitly captured.
 * The banks often also specify Gross rates. Net is usually determined by removing basic rate tax only, and banks stopped doing this from April 2016. This may still be required for backbook products.
 * It has been ensured that both the calculation and application frequency for credit interest is captured. 
-    * The term ‘Nominal’ used by some banks is synonymous with ‘Gross’.
-* DepositInterestAppliedCoverage refers to which interest rate is applied when interests are tiered. For example, if an account balance is £2k and the interest tiers are:- 0-£500 0.1%, 500-1000 0.2%, 1000-10000 0.5%, then the applicable interest rate could either be 0.5% of the entire balance (since the account balance sits in the top interest tier) or (0.1%*500)+(0.2%*500)+(0.5%*1000). In the 1st situation, the interest should be applied to the ‘Whole’ of the account balance and in the 2nd, this should be ‘Tiered’.
-* Destination refers to whether the Product allows interest to be credited to another account (‘PayAway’) or only to itself (‘SelfCredit’).
+    * The term ï¿½Nominalï¿½ used by some banks is synonymous with ï¿½Grossï¿½.
+* DepositInterestAppliedCoverage refers to which interest rate is applied when interests are tiered. For example, if an account balance is ï¿½2k and the interest tiers are:- 0-ï¿½500 0.1%, 500-1000 0.2%, 1000-10000 0.5%, then the applicable interest rate could either be 0.5% of the entire balance (since the account balance sits in the top interest tier) or (0.1%*500)+(0.2%*500)+(0.5%*1000). In the 1st situation, the interest should be applied to the ï¿½Wholeï¿½ of the account balance and in the 2nd, this should be ï¿½Tieredï¿½.
+* Destination refers to whether the Product allows interest to be credited to another account (ï¿½PayAwayï¿½) or only to itself (ï¿½SelfCreditï¿½).
 
 ![ PCACreditInterestClassDiagram.png ]( images/PCA/PCACreditInterestClassDiagram.png )
 
@@ -85,7 +87,7 @@ Further analysis required:-
 
 * [PCA Account Info Data Definition](https://openbanking.atlassian.net/wiki/download/attachments/1077805458/ainfobca.v3.rc3.DD.xlsx?version=1&modificationDate=1556635332741&cacheVersion=1&api=v2)
 
-##### Data Payload - Enumerations
+### Data Payload - Enumerations
 
 * [PCA Product Info CodeList](https://openbanking.atlassian.net/wiki/download/attachments/1077805528/ainfopca.2.2.0.CodeLists.xlsx?version=1&modificationDate=1556635335891&cacheVersion=1&api=v2)
 
@@ -93,7 +95,7 @@ Further analysis required:-
 
 ### Publish Open Data Standard PCA Product
 
- **Request: Get Accounts Product Request**
+#### Get Accounts Product Request
 
 ```
 GET /accounts/22289/product HTTP/1.1
@@ -104,13 +106,14 @@ x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Accept: application/json
 ```
 
- **Response: Get Accounts Product Response**
+#### Get Accounts Product Response
 
-```json
+```
 HTTP/1.1 200 OK
 x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Content-Type: application/json
 ```
+
 ```json
 {
    "Data":{
@@ -134,9 +137,9 @@ Content-Type: application/json
 
 ### Publish Open Data Standard PCA Product, along with new other fee charges
 
-Additional £5 monthly account fee
+Additional ï¿½5 monthly account fee
 
- **Request: Get Accounts Product Request**
+#### Get Accounts Product Request
 
 ```
 GET /accounts/22299/product HTTP/1.1
@@ -147,13 +150,14 @@ x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Accept: application/json
 ```
 
- **Response: Get Accounts Product Response**
+#### Get Accounts Product Response
 
 ```
 HTTP/1.1 200 OK
 x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Content-Type: application/json
 ```
+
 ```json
 {
    "Data":{
@@ -194,7 +198,7 @@ Content-Type: application/json
 
 ### Publish Open Data Standard PCA Product along with Marketing State ID
 
- **Request: Get Accounts Product Request**
+#### Get Accounts Product Request
 
 ```
 GET /accounts/22305/product HTTP/1.1
@@ -205,13 +209,14 @@ x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Accept: application/json
 ```
 
- **Response: Get Accounts Product Response**
+#### Get Accounts Product Response
 
 ```
 HTTP/1.1 200 OK
 x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Content-Type: application/json
 ```
+
 ```json
 {
    "Data":{
@@ -236,7 +241,7 @@ Content-Type: application/json
 
 ### Publish Back Book product along with MMC
 
- **Request: Get Accounts Product Request**
+#### Get Accounts Product Request
 
 ```
 GET /accounts/22306/product HTTP/1.1
@@ -247,13 +252,14 @@ x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Accept: application/json
 ```
 
- **Response: Get Accounts Product Response**
+#### Get Accounts Product Response
 
-```json
+```
 HTTP/1.1 200 OK
 x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Content-Type: application/json
 ```
+
 ```json
 {
    "Data":{
@@ -268,7 +274,7 @@ Content-Type: application/json
                   "Segment":"General",
                   "MonthlyMaximumCharge":"32",
                   "Notes":[
-                     "We'll only charge you a single fee - whichever is highest. So, for example, if your've exceeded your overdraft limit, exceeded your Emergency Borrowing Limit and had a transaction returned as unpaid, all on the same day, we'll only charge your the £8 Unpaid Transaction Fee"
+                     "We'll only charge you a single fee - whichever is highest. So, for example, if your've exceeded your overdraft limit, exceeded your Emergency Borrowing Limit and had a transaction returned as unpaid, all on the same day, we'll only charge your the ï¿½8 Unpaid Transaction Fee"
                   ]
                }
             }
@@ -287,11 +293,11 @@ Content-Type: application/json
 ### Showing tiered interest rates (Example for back book prod)
 
 Example is from Bank of Scotland Classic Vantage account (prior to 11th June 2017)
-3.00% AER (2.96% Gross) variable on balances £3,000-£5,000
-2.00% AER (1.98% Gross) variable on balances £1,000-£2,999.99
-1.50% AER (1.49% Gross) variable on balances £1-£999.99
+3.00% AER (2.96% Gross) variable on balances ï¿½3,000-ï¿½5,000
+2.00% AER (1.98% Gross) variable on balances ï¿½1,000-ï¿½2,999.99
+1.50% AER (1.49% Gross) variable on balances ï¿½1-ï¿½999.99
 
- **Request: Get Accounts Product Request**
+#### Get Accounts Product Request
 
 ```
 GET /accounts/22307/product HTTP/1.1
@@ -302,13 +308,14 @@ x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Accept: application/json
 ```
 
- **Response: Get Accounts Product Response**
+#### Get Accounts Product Response
 
 ```
 HTTP/1.1 200 OK
 x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Content-Type: application/json
 ```
+
 ```json
 {
    "Data":{
@@ -324,7 +331,7 @@ Content-Type: application/json
                      "CalculationMethod":"Compound",
                      "Notes":[
                         "From the 11th June 2017, we will be changing how we pat credit interest on our Bank of Scotland current accounts with Vantage.",
-                        "We are replacing the current tiered rates with a single interest rate of 2% AER(1.98% gross) (variable) on credit balances between £1 and £5,000. Depending on the balance of your account this may be an increase or decrease to the rate your currently receive."
+                        "We are replacing the current tiered rates with a single interest rate of 2% AER(1.98% gross) (variable) on credit balances between ï¿½1 and ï¿½5,000. Depending on the balance of your account this may be an increase or decrease to the rate your currently receive."
                      ],
                      "TierBand":[
                         {
@@ -378,9 +385,9 @@ Content-Type: application/json
 ### Showing whole interest rates
 
 Example is Bank of Scotland Classic Vantage account (After 11th June 2017)
-2% AER (1.98% Gross) variable on balances £1-£5,000
+2% AER (1.98% Gross) variable on balances ï¿½1-ï¿½5,000
 
- **Request: Get Accounts Product Request**
+#### Get Accounts Product Request
 
 ```
 GET /accounts/22308/product HTTP/1.1
@@ -391,13 +398,14 @@ x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Accept: application/json
 ```
 
- **Response: Get Accounts Product Response**
+#### Get Accounts Product Response
 
 ```
 HTTP/1.1 200 OK
 x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Content-Type: application/json
 ```
+
 ```json
 {
    "Data":{
@@ -412,7 +420,7 @@ Content-Type: application/json
                      "TierBandMethod":"Whole",
                      "CalculationMethod":"Compound",
                      "Notes":[
-                        "No interest on balances over £5000"
+                        "No interest on balances over ï¿½5000"
                      ],
                      "TierBand":[
                         {
@@ -445,13 +453,13 @@ Content-Type: application/json
 
 ### Represent graduate overdraft limits
 
-If you've graduated within the last 3 years, you can apply for an overdraft of upto £3,000 (subject to status).
-This is the breakdown of the fee free amounts available based on how long ago you graduated. The maximum overdraft you can apply for this account is £3,000.
-1st year after graduation: Up to £3,000 
-2nd year after graduation: Up to £2,000
-3rd year after graduation: Up to £1,000
+If you've graduated within the last 3 years, you can apply for an overdraft of upto ï¿½3,000 (subject to status).
+This is the breakdown of the fee free amounts available based on how long ago you graduated. The maximum overdraft you can apply for this account is ï¿½3,000.
+1st year after graduation: Up to ï¿½3,000 
+2nd year after graduation: Up to ï¿½2,000
+3rd year after graduation: Up to ï¿½1,000
 
- **Request: Get Accounts Product Request**
+#### Get Accounts Product Request
 
 ```
 GET /accounts/22309/product HTTP/1.1
@@ -462,7 +470,7 @@ x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Accept: application/json
 ```
 
- **Response: Get Accounts Product Response**
+#### Get Accounts Product Response
 
 ```
 HTTP/1.1 200 OK
@@ -487,8 +495,8 @@ Content-Type: application/json
                         "AuthorisedIndicator":true,
                         "BufferAmount":"0.00",
                         "Notes":[
-                           "If you've graduated within the last 3 years, you can apply for an overdraft of upto £3,000 (subject to status). This is a breakdown of the fee free amounts available based on how long ago you graduated.",
-                           "The maximum overdraft you can apply for with this account is £3,000."
+                           "If you've graduated within the last 3 years, you can apply for an overdraft of upto ï¿½3,000 (subject to status). This is a breakdown of the fee free amounts available based on how long ago you graduated.",
+                           "The maximum overdraft you can apply for with this account is ï¿½3,000."
                         ],
                         "OverdraftTierBand":[
                            {
@@ -498,7 +506,7 @@ Content-Type: application/json
                               "BankGuaranteedIndicator":true,
                               "EAR":"0",
                               "Notes":[
-                                 "Upto £3000"
+                                 "Upto ï¿½3000"
                               ]
                            },
                            {
@@ -508,7 +516,7 @@ Content-Type: application/json
                               "BankGuaranteedIndicator":true,
                               "EAR":"0",
                               "Notes":[
-                                 "Upto £2000"
+                                 "Upto ï¿½2000"
                               ]
                            },
                            {
@@ -518,7 +526,7 @@ Content-Type: application/json
                               "BankGuaranteedIndicator":true,
                               "EAR":"0",
                               "Notes":[
-                                 "Upto £1000"
+                                 "Upto ï¿½1000"
                               ]
                            }
                         ]
@@ -541,11 +549,11 @@ Content-Type: application/json
 ### Represent overdrafts with periodic &amp; per item fees with caps
 
 Example: Nationwide Flex Direct
-Daily arranged overdraft fee: £0.50 per day (with £10 buffer amount)
-Daily unarranged overdraft fee: £5 per day (capped at £60 per calendar month)
-Fee for a paid or unpaid transaction when you have insufficient funds: £5 per transaction (capped at £35 per month)
+Daily arranged overdraft fee: ï¿½0.50 per day (with ï¿½10 buffer amount)
+Daily unarranged overdraft fee: ï¿½5 per day (capped at ï¿½60 per calendar month)
+Fee for a paid or unpaid transaction when you have insufficient funds: ï¿½5 per transaction (capped at ï¿½35 per month)
 
- **Request: Get Accounts Product Request**
+#### Get Accounts Product Request
 
 ```
 GET /accounts/22310/product HTTP/1.1
@@ -556,13 +564,14 @@ x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Accept: application/json
 ```
 
- **Response: Get Accounts Product Response**
+#### Get Accounts Product Response
 
 ```
 HTTP/1.1 200 OK
 x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Content-Type: application/json
 ```
+
 ```json
 {
    "Data":{
@@ -642,9 +651,9 @@ Content-Type: application/json
 ### Represent overdrafts with periodic &amp; per item fees with caps, another example
 
 Example is from Lloydsbank current accounts, personal overdraft rates
-Daily arranged overdraft fee: 1p per day for every £7 pound borrowing
+Daily arranged overdraft fee: 1p per day for every ï¿½7 pound borrowing
 
- **Request: Get Accounts Product Request**
+#### Get Accounts Product Request
 
 ```
 GET /accounts/22311/product HTTP/1.1
@@ -655,13 +664,14 @@ x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Accept: application/json
 ```
 
- **Response: Get Accounts Product Response**
+#### Get Accounts Product Response
 
 ```
 HTTP/1.1 200 OK
 x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Content-Type: application/json
 ```
+
 ```json
 {
    "Data":{
@@ -699,9 +709,9 @@ Content-Type: application/json
                                           "CalculationFrequency":"Daily",
                                           "Notes":[
                                              "One Daily Overdraft Fee",
-                                             "You’ll pay a daily overdraft fee of 1p for every £7 you borrow, over your £1000 fee-free amount. When calculating the daily overdraft fee, we will only use every full £7 you have borrowed, so if you borrow less than £7 you won’t be charged.",
-                                             "Daily Charging Instead of paying all fees in one go each month, any fees will be charged at the end of each day you use your overdraft – so you’ll pay for what you borrow on the day you borrow it. This will help you keep track of how much your overdraft costs you.",
-                                             "If you go over your limit So all your payments are made, it’s important you manage your account within your planned overdraft limit. If you don’t have enough money in your account or you reach your limit, you may not be able to make any more payments. If a payment takes you over your limit or we stop it, you won’t be charged."
+                                             "Youï¿½ll pay a daily overdraft fee of 1p for every ï¿½7 you borrow, over your ï¿½1000 fee-free amount. When calculating the daily overdraft fee, we will only use every full ï¿½7 you have borrowed, so if you borrow less than ï¿½7 you wonï¿½t be charged.",
+                                             "Daily Charging Instead of paying all fees in one go each month, any fees will be charged at the end of each day you use your overdraft ï¿½ so youï¿½ll pay for what you borrow on the day you borrow it. This will help you keep track of how much your overdraft costs you.",
+                                             "If you go over your limit So all your payments are made, itï¿½s important you manage your account within your planned overdraft limit. If you donï¿½t have enough money in your account or you reach your limit, you may not be able to make any more payments. If a payment takes you over your limit or we stop it, you wonï¿½t be charged."
                                           ]
                                        }
                                     ]

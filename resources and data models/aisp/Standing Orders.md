@@ -1,16 +1,34 @@
 # Standing Orders <!-- omit in toc -->
 
+1. [Overview](#overview)
+   1. [Profile Compatibility](#profile-compatibility)
+2. [Endpoints](#endpoints)
+   1. [GET /accounts/{AccountId}/standing-orders](#get-accountsaccountidstanding-orders)
+   2. [GET /standing-orders](#get-standing-orders)
+3. [Data Model](#data-model)
+   1. [Resource Definition](#resource-definition)
+   2. [UML Diagram](#uml-diagram)
+   3. [Notes](#notes)
+   4. [Frequency Examples](#frequency-examples)
+   5. [Permission Codes](#permission-codes)
+   6. [Data Dictionary](#data-dictionary)
+4. [Usage Examples](#usage-examples)
+   1. [Specific Account](#specific-account)
+      1. [Get Accounts Standing Orders Request](#get-accounts-standing-orders-request)
+      2. [Get Accounts Standing Orders Response](#get-accounts-standing-orders-response)
+   2. [Bulk](#bulk)
+      1. [Get Standing Orders Request](#get-standing-orders-request)
+      2. [Get Standing Orders Response](#get-standing-orders-response)
+
 ## Overview
 
 The standing-orders resource is used by an AISP to retrieve the standing orders for a specific AccountId or to retrieve the standing orders in bulk for all the accounts that the PSU has consented to. 
 
 This resource description should be read in conjunction with a compatible Account Information Services API Profile.
 
-## Profile Compatibility
+### Profile Compatibility
 
 For a list of profiles compatible with this resource, please see the [Compatibility Matrix](https://github.com/OpenBankingUK/read-write-api-docs/tree/dj-align-payment-resource-page-structure/resources%20and%20data%20models/aisp)
-
-
 
 ## Endpoints
 
@@ -20,7 +38,6 @@ Endpoints for the resource and available methods.
 | --- |--- |--- |--- |--- |--- |--- |--- |--- |--- |--- |
 | 1 |standing-orders |GET |GET /accounts/{AccountId}/standing-orders |Conditional |accounts |Authorization Code |No | | |OBReadStandingOrder5 |
 | 2 |standing-orders |GET |GET /standing-orders |Optional |accounts |Authorization Code |No |Pagination | |OBReadStandingOrder5 |
-
 
 ### GET /accounts/{AccountId}/standing-orders
 
@@ -34,6 +51,7 @@ This will retrieve the resources for all authorised accounts linked to the accou
 ## Data Model
 
 The OBReadStandingOrder5 object will be used for the call to: 
+
 * GET /accounts/{AccountId}/standing-orders
 * GET /standing-orders
 
@@ -46,7 +64,8 @@ An account (AccountId) may have no standing orders set up, or may have multiple 
 
 ![ OBReadStandingOrder5.png ]( images/StandingOrders/OBReadStandingOrder5.png )
 
-Notes:
+### Notes
+
 * The **Creditor** **Account** and **CreditorAgent** blocks replicate what is used consistently throughout the Account Information APIs to identify an account.
 * For the /accounts/{AccountId}/standing-orders endpoint, the **Creditor** **Account** and **CreditorAgent** blocks represent the account that is receiving funds (so has been named the CreditorAccount for consistency with the PISP use case).
 * A DateTime element has been used so that there is consistency across all API endpoints using dates. Where time elements do not exist in ASPSP systems, the time portion of the DateTime element will be defaulted to 00:00:00+00:00.
@@ -66,10 +85,10 @@ Notes:
 | IntrvlMnthDay |IntrvlMnthDay:06:15 |Every 6th month, on the 15th day of the month |
 | QtrDay |QtrDay:ENGLISH |Paid on the 25th March, 24th June, 29th September and 25th December |
 
-
 ### Permission Codes
 
 The resource differs depending on the permissions (ReadStandingOrdersBasic and ReadStandingOrdersDetail) used to access resource. In the event the resource is accessed with both ReadStandingOrdersBasic and ReadStandingOrdersDetail, the most detailed level (ReadStandingOrdersDetail) must be used.
+
 * These objects **must not** be returned **without** the **ReadStandingOrdersDetail** permission: 
     * OBReadStandingOrder5/Data/StandingOrder/CreditorAgent 
     * OBReadStandingOrder5/Data/StandingOrder/CreditorAccount
@@ -113,12 +132,11 @@ If the ReadPAN permission is granted by the PSU, the ASPSP may choose to populat
 | SecondaryIdentification |0..1 |OBReadStandingOrder5/Data/StandingOrder/CreditorAccount/SecondaryIdentification |This is secondary identification of the account, as assigned by the account servicing institution. This can be used by building societies to additionally identify accounts with a roll number (in addition to a sort code and account number combination). |Max34Text | | |
 | SupplementaryData |0..1 |OBReadStandingOrder5/Data/StandingOrder/SupplementaryData |Additional information that can not be captured in the structured fields and/or any other specific block. |OBSupplementaryData1 | | |
 
-
 ## Usage Examples
 
 ### Specific Account
 
- **Request: Get Accounts Standing Orders Request**
+#### Get Accounts Standing Orders Request
 
 ```
 GET /accounts/22289/standing-orders HTTP/1.1
@@ -129,13 +147,14 @@ x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Accept: application/json
 ```
 
- **Response: Get Accounts Standing Orders Response**
+#### Get Accounts Standing Orders Response
 
 ```
 HTTP/1.1 200 OK
 x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Content-Type: application/json
 ```
+
 ```json
 {
   "Data": {
@@ -180,7 +199,7 @@ Content-Type: application/json
 
 ### Bulk
 
- **Request: Get Standing Orders Request**
+#### Get Standing Orders Request
 
 ```
 GET /standing-orders HTTP/1.1
@@ -191,13 +210,14 @@ x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Accept: application/json
 ```
 
- **Response: Get Standing Orders Response**
+#### Get Standing Orders Response
 
 ```
 HTTP/1.1 200 OK
 x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Content-Type: application/json
 ```
+
 ```json
 {
   "Data": {

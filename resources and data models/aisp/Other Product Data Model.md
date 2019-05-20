@@ -3,11 +3,13 @@
 ## Overview
 
 From the analysis:-
+
 * Banks will provide the Open Data Product ID
-* In addition to the “Open Data Product ID” link, we should focus on fields that are provided by price comparison websites today. Each product type may have completely different set of fields, like Mortgages , Insurance or Islamic Banking. It may not be possible to publish complete product details using the generic structure.
+* In addition to the ï¿½Open Data Product IDï¿½ link, we should focus on fields that are provided by price comparison websites today. Each product type may have completely different set of fields, like Mortgages , Insurance or Islamic Banking. It may not be possible to publish complete product details using the generic structure.
 * The generic structure supports the publishing of key feature of Other Product Type
 
 Further analysis required:-
+
 * Further analysis is required to elaborate key features of other supported products. Generic Data Model just supports the publishing of very basic features.
 
 ### Fields to include in Other Product
@@ -21,11 +23,9 @@ Further analysis required:-
 | OtherFeesAndCharges |<li>Other fee charges such as servicing |
 | SupplementaryData |Any other feature of the product which cant be published using above functionality. |
 
-
 ### Data Model
 
 ![ OtherProductInfoMainPage.png ]( images/OtherProduct/OtherProductInfoMainPage.png )
-
 
 #### CreditInterest Model
 
@@ -86,8 +86,7 @@ Wherever used, an ASPSP **must** define and document (on their developer portal)
 
 Example reference HSBC Basic Saving Account
 
- **Request: Get Accounts Product Request**
-
+#### Get Accounts Product Request
 
 ```
 GET /accounts/22389/product HTTP/1.1
@@ -98,13 +97,14 @@ x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Accept: application/json
 ```
 
- **Response: Get Accounts Product Response**
+#### Get Accounts Product Response
 
 ```
 HTTP/1.1 200 OK
 x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Content-Type: application/json
 ```
+
 ```json
 {
   "Data": {
@@ -134,7 +134,7 @@ Content-Type: application/json
 
 The example below has been taken from HSBC saving account. The example is purely madeup data for illustration purpose only.
 
- **Request: Get Accounts Product Request**
+#### Get Accounts Product Request
 
 ```
 GET /accounts/22390/product HTTP/1.1
@@ -145,13 +145,14 @@ x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Accept: application/json
 ```
 
- **Response: Get Accounts Product Response**
+#### Get Accounts Product Response
 
 ```
 HTTP/1.1 200 OK
 x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Content-Type: application/json
 ```
+
 ```json
 {
   "Data": {
