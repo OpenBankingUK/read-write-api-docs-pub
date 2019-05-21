@@ -1,54 +1,54 @@
 # PCA Product Data Model <!-- omit in toc -->
 
-1. [Overview](#overview)
-   1. [Fields to include in PCA Product](#fields-to-include-in-pca-product)
-   2. [Changes from the OpenData Model](#changes-from-the-opendata-model)
-      1. [No Eligibility and FeaturesAndBenefits](#no-eligibility-and-featuresandbenefits)
-      2. [Credit Interest Model](#credit-interest-model)
-      3. [Overdraft](#overdraft)
-      4. [OverdraftFeeCharges](#overdraftfeecharges)
-      5. [OtherFeeCharges](#otherfeecharges)
-2. [Data Model](#data-model)
-   1. [Data Payload](#data-payload)
-      1. [PCA](#pca)
-         1. [UML Class Diagram](#uml-class-diagram)
-         2. [Data Dictionary](#data-dictionary)
-   2. [Data Payload - Enumerations](#data-payload---enumerations)
-3. [Usage Examples](#usage-examples)
-   1. [Publish Open Data Standard PCA Product](#publish-open-data-standard-pca-product)
-      1. [Get Accounts Product Request](#get-accounts-product-request)
-      2. [Get Accounts Product Response](#get-accounts-product-response)
-   2. [Publish Open Data Standard PCA Product, along with new other fee charges](#publish-open-data-standard-pca-product-along-with-new-other-fee-charges)
-      1. [Get Accounts Product Request](#get-accounts-product-request-1)
-      2. [Get Accounts Product Response](#get-accounts-product-response-1)
-   3. [Publish Open Data Standard PCA Product along with Marketing State ID](#publish-open-data-standard-pca-product-along-with-marketing-state-id)
-      1. [Get Accounts Product Request](#get-accounts-product-request-2)
-      2. [Get Accounts Product Response](#get-accounts-product-response-2)
-   4. [Publish Back Book product along with MMC](#publish-back-book-product-along-with-mmc)
-      1. [Get Accounts Product Request](#get-accounts-product-request-3)
-      2. [Get Accounts Product Response](#get-accounts-product-response-3)
-   5. [Showing tiered interest rates (Example for back book prod)](#showing-tiered-interest-rates-example-for-back-book-prod)
-      1. [Get Accounts Product Request](#get-accounts-product-request-4)
-      2. [Get Accounts Product Response](#get-accounts-product-response-4)
-   6. [Showing whole interest rates](#showing-whole-interest-rates)
-      1. [Get Accounts Product Request](#get-accounts-product-request-5)
-      2. [Get Accounts Product Response](#get-accounts-product-response-5)
-   7. [Represent graduate overdraft limits](#represent-graduate-overdraft-limits)
-      1. [Get Accounts Product Request](#get-accounts-product-request-6)
-      2. [Get Accounts Product Response](#get-accounts-product-response-6)
-   8. [Represent overdrafts with periodic &amp; per item fees with caps](#represent-overdrafts-with-periodic-amp-per-item-fees-with-caps)
-      1. [Get Accounts Product Request](#get-accounts-product-request-7)
-      2. [Get Accounts Product Response](#get-accounts-product-response-7)
-   9. [Represent overdrafts with periodic &amp; per item fees with caps, another example](#represent-overdrafts-with-periodic-amp-per-item-fees-with-caps-another-example)
-      1. [Get Accounts Product Request](#get-accounts-product-request-8)
-      2. [Get Accounts Product Response](#get-accounts-product-response-8)
+- [Overview](#overview)
+  - [Fields to include in PCA Product](#fields-to-include-in-pca-product)
+  - [Changes from the OpenData Model](#changes-from-the-opendata-model)
+    - [No Eligibility and FeaturesAndBenefits](#no-eligibility-and-featuresandbenefits)
+    - [Credit Interest Model](#credit-interest-model)
+    - [Overdraft](#overdraft)
+    - [OverdraftFeeCharges](#overdraftfeecharges)
+    - [OtherFeeCharges](#otherfeecharges)
+- [Data Model](#data-model)
+  - [Data Payload](#data-payload)
+    - [PCA](#pca)
+      - [UML Class Diagram](#uml-class-diagram)
+      - [Data Dictionary](#data-dictionary)
+  - [Data Payload - Enumerations](#data-payload---enumerations)
+- [Usage Examples](#usage-examples)
+  - [Publish Open Data Standard PCA Product](#publish-open-data-standard-pca-product)
+    - [Get Accounts Product Request](#get-accounts-product-request)
+    - [Get Accounts Product Response](#get-accounts-product-response)
+  - [Publish Open Data Standard PCA Product, along with new other fee charges](#publish-open-data-standard-pca-product-along-with-new-other-fee-charges)
+    - [Get Accounts Product Request](#get-accounts-product-request-1)
+    - [Get Accounts Product Response](#get-accounts-product-response-1)
+  - [Publish Open Data Standard PCA Product along with Marketing State ID](#publish-open-data-standard-pca-product-along-with-marketing-state-id)
+    - [Get Accounts Product Request](#get-accounts-product-request-2)
+    - [Get Accounts Product Response](#get-accounts-product-response-2)
+  - [Publish Back Book product along with MMC](#publish-back-book-product-along-with-mmc)
+    - [Get Accounts Product Request](#get-accounts-product-request-3)
+    - [Get Accounts Product Response](#get-accounts-product-response-3)
+  - [Showing tiered interest rates (Example for back book prod)](#showing-tiered-interest-rates-example-for-back-book-prod)
+    - [Get Accounts Product Request](#get-accounts-product-request-4)
+    - [Get Accounts Product Response](#get-accounts-product-response-4)
+  - [Showing whole interest rates](#showing-whole-interest-rates)
+    - [Get Accounts Product Request](#get-accounts-product-request-5)
+    - [Get Accounts Product Response](#get-accounts-product-response-5)
+  - [Represent graduate overdraft limits](#represent-graduate-overdraft-limits)
+    - [Get Accounts Product Request](#get-accounts-product-request-6)
+    - [Get Accounts Product Response](#get-accounts-product-response-6)
+  - [Represent overdrafts with periodic &amp; per item fees with caps](#represent-overdrafts-with-periodic-amp-per-item-fees-with-caps)
+    - [Get Accounts Product Request](#get-accounts-product-request-7)
+    - [Get Accounts Product Response](#get-accounts-product-response-7)
+  - [Represent overdrafts with periodic &amp; per item fees with caps, another example](#represent-overdrafts-with-periodic-amp-per-item-fees-with-caps-another-example)
+    - [Get Accounts Product Request](#get-accounts-product-request-8)
+    - [Get Accounts Product Response](#get-accounts-product-response-8)
 
 ## Overview
 
 From the analysis:- 
 
 * Most banks (other than CMA9) simply have to supply the MMC for their PCA products (on-sale, negotiated or back book).
-* The MMC is the CMA�s attempt to come up with a core fee/charge that can be used for PCA product comparison purposes.
+* The MMC is the CMA's attempt to come up with a core fee/charge that can be used for PCA product comparison purposes.
 * This, in combination, with representative rates (AER for Credit Interest, EAR for overdrafts) would allow a customer to reasonably compare PCA products.
 * PCA Marketing state information is not required.
 * Eligibility criteria met when the PCA was sold is unlikely to be reliable. Hence eligibility criteria information is not required.
@@ -61,13 +61,13 @@ Further analysis required:-
 
 | Product Section |Fields to be included |
 | --- |--- |
-| PCA (We�ll rename this �Product� and merge PCA and CoreProduct attributes) |<li>Name <li>Open Data Product ID (Mandatory, if product info is available on Open Data PCA API) <li>ProductType (�PCA�) <li>MonthlyMaximumCharge (Mandatory for �front book� products) |
-| CoreProduct |**None** � Will be merged in to new �Product� section. |
-| PCAMarketingState |**None** � Sections will only include current state information, so this section is not required |
+| PCA (We'll rename this "Product" and merge PCA and CoreProduct attributes) |<li>Name <li>Open Data Product ID (Mandatory, if product info is available on Open Data PCA API) <li>ProductType ("PCA") <li>MonthlyMaximumCharge (Mandatory for "front book" products) |
+| CoreProduct |**None** - Will be merged in to new "Product" section. |
+| PCAMarketingState |**None** - Sections will only include current state information, so this section is not required |
 | CreditInterest |<li>TierBandSet fields (excluding credit interest eligibility). <li>All TierBand fields <br>**Note:** Only current state credit interest information is required. |
 | Overdraft |<li> All TierBandSet fields (including OverdraftFeesAndCharges) <li> All TierBand fields (including OverdraftFeesAndCharges). <br>**Note:** Only current state information is required. |
-| Eligibility |**None** � Eligibility criteria met when PCA was sold unlikely to be reliable. |
-| FeaturesAndBenefits |**None** � The value of a particular feature and benefit to an accountholder is dependent on their use of that benefit and whether they met eligibility criteria. Certain benefits may be provided by external suppliers making it difficult to provide real time info. Relevant general features &amp; benefits info can be obtained from Open Data API for �front book� products. |
+| Eligibility |**None** - Eligibility criteria met when PCA was sold unlikely to be reliable. |
+| FeaturesAndBenefits |**None** - The value of a particular feature and benefit to an accountholder is dependent on their use of that benefit and whether they met eligibility criteria. Certain benefits may be provided by external suppliers making it difficult to provide real time info. Relevant general features &amp; benefits info can be obtained from Open Data API for "front book" products. |
 | OtherFeesAndCharges |<li> Periodic Fee (i.e. the service charge) |
 
 ### Changes from the OpenData Model
@@ -84,9 +84,9 @@ Further analysis required:-
 * AER is the only representative rate for CreditInterest for product comparison purposes and therefore has been explicitly captured.
 * The banks often also specify Gross rates. Net is usually determined by removing basic rate tax only, and banks stopped doing this from April 2016. This may still be required for backbook products.
 * It has been ensured that both the calculation and application frequency for credit interest is captured. 
-    * The term �Nominal� used by some banks is synonymous with �Gross�.
-* DepositInterestAppliedCoverage refers to which interest rate is applied when interests are tiered. For example, if an account balance is �2k and the interest tiers are:- 0-�500 0.1%, 500-1000 0.2%, 1000-10000 0.5%, then the applicable interest rate could either be 0.5% of the entire balance (since the account balance sits in the top interest tier) or (0.1%*500)+(0.2%*500)+(0.5%*1000). In the 1st situation, the interest should be applied to the �Whole� of the account balance and in the 2nd, this should be �Tiered�.
-* Destination refers to whether the Product allows interest to be credited to another account (�PayAway�) or only to itself (�SelfCredit�).
+    * The term "Nominal" used by some banks is synonymous with "Gross".
+* DepositInterestAppliedCoverage refers to which interest rate is applied when interests are tiered. For example, if an account balance is £2k and the interest tiers are:- 0-£500 0.1%, 500-1000 0.2%, 1000-10000 0.5%, then the applicable interest rate could either be 0.5% of the entire balance (since the account balance sits in the top interest tier) or (0.1%*500)+(0.2%*500)+(0.5%*1000). In the 1st situation, the interest should be applied to the "Whole" of the account balance and in the 2nd, this should be "Tiered".
+* Destination refers to whether the Product allows interest to be credited to another account ("PayAway") or only to itself ("SelfCredit").
 
 ![ PCACreditInterestClassDiagram.png ]( images/PCA/PCACreditInterestClassDiagram.png )
 
@@ -180,7 +180,7 @@ Content-Type: application/json
 
 ### Publish Open Data Standard PCA Product, along with new other fee charges
 
-Additional �5 monthly account fee
+Additional £5 monthly account fee
 
 #### Get Accounts Product Request
 
@@ -317,7 +317,7 @@ Content-Type: application/json
                   "Segment":"General",
                   "MonthlyMaximumCharge":"32",
                   "Notes":[
-                     "We'll only charge you a single fee - whichever is highest. So, for example, if your've exceeded your overdraft limit, exceeded your Emergency Borrowing Limit and had a transaction returned as unpaid, all on the same day, we'll only charge your the �8 Unpaid Transaction Fee"
+                     "We'll only charge you a single fee - whichever is highest. So, for example, if your've exceeded your overdraft limit, exceeded your Emergency Borrowing Limit and had a transaction returned as unpaid, all on the same day, we'll only charge your the £8 Unpaid Transaction Fee"
                   ]
                }
             }
@@ -336,9 +336,9 @@ Content-Type: application/json
 ### Showing tiered interest rates (Example for back book prod)
 
 Example is from Bank of Scotland Classic Vantage account (prior to 11th June 2017)
-3.00% AER (2.96% Gross) variable on balances �3,000-�5,000
-2.00% AER (1.98% Gross) variable on balances �1,000-�2,999.99
-1.50% AER (1.49% Gross) variable on balances �1-�999.99
+3.00% AER (2.96% Gross) variable on balances £3,000-£5,000
+2.00% AER (1.98% Gross) variable on balances £1,000-£2,999.99
+1.50% AER (1.49% Gross) variable on balances £1-£999.99
 
 #### Get Accounts Product Request
 
@@ -374,7 +374,7 @@ Content-Type: application/json
                      "CalculationMethod":"Compound",
                      "Notes":[
                         "From the 11th June 2017, we will be changing how we pat credit interest on our Bank of Scotland current accounts with Vantage.",
-                        "We are replacing the current tiered rates with a single interest rate of 2% AER(1.98% gross) (variable) on credit balances between �1 and �5,000. Depending on the balance of your account this may be an increase or decrease to the rate your currently receive."
+                        "We are replacing the current tiered rates with a single interest rate of 2% AER(1.98% gross) (variable) on credit balances between £1 and £5,000. Depending on the balance of your account this may be an increase or decrease to the rate your currently receive."
                      ],
                      "TierBand":[
                         {
@@ -428,7 +428,7 @@ Content-Type: application/json
 ### Showing whole interest rates
 
 Example is Bank of Scotland Classic Vantage account (After 11th June 2017)
-2% AER (1.98% Gross) variable on balances �1-�5,000
+2% AER (1.98% Gross) variable on balances £1-£5,000
 
 #### Get Accounts Product Request
 
@@ -463,7 +463,7 @@ Content-Type: application/json
                      "TierBandMethod":"Whole",
                      "CalculationMethod":"Compound",
                      "Notes":[
-                        "No interest on balances over �5000"
+                        "No interest on balances over £5000"
                      ],
                      "TierBand":[
                         {
@@ -496,11 +496,11 @@ Content-Type: application/json
 
 ### Represent graduate overdraft limits
 
-If you've graduated within the last 3 years, you can apply for an overdraft of upto �3,000 (subject to status).
-This is the breakdown of the fee free amounts available based on how long ago you graduated. The maximum overdraft you can apply for this account is �3,000.
-1st year after graduation: Up to �3,000 
-2nd year after graduation: Up to �2,000
-3rd year after graduation: Up to �1,000
+If you've graduated within the last 3 years, you can apply for an overdraft of upto £3,000 (subject to status).
+This is the breakdown of the fee free amounts available based on how long ago you graduated. The maximum overdraft you can apply for this account is £3,000.
+1st year after graduation: Up to £3,000 
+2nd year after graduation: Up to £2,000
+3rd year after graduation: Up to £1,000
 
 #### Get Accounts Product Request
 
@@ -538,8 +538,8 @@ Content-Type: application/json
                         "AuthorisedIndicator":true,
                         "BufferAmount":"0.00",
                         "Notes":[
-                           "If you've graduated within the last 3 years, you can apply for an overdraft of upto �3,000 (subject to status). This is a breakdown of the fee free amounts available based on how long ago you graduated.",
-                           "The maximum overdraft you can apply for with this account is �3,000."
+                           "If you've graduated within the last 3 years, you can apply for an overdraft of upto £3,000 (subject to status). This is a breakdown of the fee free amounts available based on how long ago you graduated.",
+                           "The maximum overdraft you can apply for with this account is £3,000."
                         ],
                         "OverdraftTierBand":[
                            {
@@ -549,7 +549,7 @@ Content-Type: application/json
                               "BankGuaranteedIndicator":true,
                               "EAR":"0",
                               "Notes":[
-                                 "Upto �3000"
+                                 "Upto £3000"
                               ]
                            },
                            {
@@ -559,7 +559,7 @@ Content-Type: application/json
                               "BankGuaranteedIndicator":true,
                               "EAR":"0",
                               "Notes":[
-                                 "Upto �2000"
+                                 "Upto £2000"
                               ]
                            },
                            {
@@ -569,7 +569,7 @@ Content-Type: application/json
                               "BankGuaranteedIndicator":true,
                               "EAR":"0",
                               "Notes":[
-                                 "Upto �1000"
+                                 "Upto £1000"
                               ]
                            }
                         ]
@@ -592,9 +592,9 @@ Content-Type: application/json
 ### Represent overdrafts with periodic &amp; per item fees with caps
 
 Example: Nationwide Flex Direct
-Daily arranged overdraft fee: �0.50 per day (with �10 buffer amount)
-Daily unarranged overdraft fee: �5 per day (capped at �60 per calendar month)
-Fee for a paid or unpaid transaction when you have insufficient funds: �5 per transaction (capped at �35 per month)
+Daily arranged overdraft fee: £0.50 per day (with £10 buffer amount)
+Daily unarranged overdraft fee: £5 per day (capped at £60 per calendar month)
+Fee for a paid or unpaid transaction when you have insufficient funds: £5 per transaction (capped at £35 per month)
 
 #### Get Accounts Product Request
 
@@ -694,7 +694,7 @@ Content-Type: application/json
 ### Represent overdrafts with periodic &amp; per item fees with caps, another example
 
 Example is from Lloydsbank current accounts, personal overdraft rates
-Daily arranged overdraft fee: 1p per day for every �7 pound borrowing
+Daily arranged overdraft fee: 1p per day for every £7 pound borrowing
 
 #### Get Accounts Product Request
 
@@ -752,9 +752,9 @@ Content-Type: application/json
                                           "CalculationFrequency":"Daily",
                                           "Notes":[
                                              "One Daily Overdraft Fee",
-                                             "You�ll pay a daily overdraft fee of 1p for every �7 you borrow, over your �1000 fee-free amount. When calculating the daily overdraft fee, we will only use every full �7 you have borrowed, so if you borrow less than �7 you won�t be charged.",
-                                             "Daily Charging Instead of paying all fees in one go each month, any fees will be charged at the end of each day you use your overdraft � so you�ll pay for what you borrow on the day you borrow it. This will help you keep track of how much your overdraft costs you.",
-                                             "If you go over your limit So all your payments are made, it�s important you manage your account within your planned overdraft limit. If you don�t have enough money in your account or you reach your limit, you may not be able to make any more payments. If a payment takes you over your limit or we stop it, you won�t be charged."
+                                             "You'll pay a daily overdraft fee of 1p for every £7 you borrow, over your £1000 fee-free amount. When calculating the daily overdraft fee, we will only use every full £7 you have borrowed, so if you borrow less than £7 you won't be charged.",
+                                             "Daily Charging Instead of paying all fees in one go each month, any fees will be charged at the end of each day you use your overdraft - so you'll pay for what you borrow on the day you borrow it. This will help you keep track of how much your overdraft costs you.",
+                                             "If you go over your limit So all your payments are made, it's important you manage your account within your planned overdraft limit. If you don't have enough money in your account or you reach your limit, you may not be able to make any more payments. If a payment takes you over your limit or we stop it, you won't be charged."
                                           ]
                                        }
                                     ]

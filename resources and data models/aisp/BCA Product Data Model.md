@@ -31,7 +31,7 @@
   - [Show whole interest rates](#show-whole-interest-rates)
     - [Get Accounts Product Request](#get-accounts-product-request-3)
     - [Get Accounts Product Response](#get-accounts-product-response-3)
-  - [Represent Tariffs and �Other Fees And Charges�](#represent-tariffs-and-%EF%BF%BDother-fees-and-charges%EF%BF%BD)
+  - [Represent Tariffs and "Other Fees And Charges"](#represent-tariffs-and-%22other-fees-and-charges%22)
     - [Get Accounts Product Request](#get-accounts-product-request-4)
     - [Get Accounts Product Response](#get-accounts-product-response-4)
 
@@ -39,7 +39,7 @@
 
 From the analysis:-
 * Banks will provide the Open Data Product ID
-* In addition to the "Open Data Product ID" link, we should focus on fields that are provided by price comparison websites today. Although overdraft rates are typically marked as �Negotiable� on PCWs, we feel that it would be useful to provide information about the actual overdraft rate(s) that the accountholder is on, even if this cannot easily be used for comparison with other products.
+* In addition to the "Open Data Product ID" link, we should focus on fields that are provided by price comparison websites today. Although overdraft rates are typically marked as "Negotiable" on PCWs, we feel that it would be useful to provide information about the actual overdraft rate(s) that the accountholder is on, even if this cannot easily be used for comparison with other products.
 * The sections which are most useful for price comparison are: Fee-free periods, Credit Interest and certain sections of eligibilities where other fee charges are dependent on them and periodic fee(s).
 * BCA Marketing state information is not required.
 * The eligibility criteria met when the BCA was sold is unlikely to be reliable. Hence eligibility criteria information is optional.
@@ -51,13 +51,13 @@ Further analysis required:-
 
 | Product Section |Fields to be included |
 | --- |--- |
-| BCA (We�ll rename this �Product� and merge BCA and CoreProduct attributes) |<li>Name <li>ProductType (�BCA�) <li>Product Segment (e.g. �Startup�,�Switcher�,� ) <li>Open Data Product ID (Mandatory, if product info is available on Open Data BCA API) <li>Fee-free period |
-| CoreProduct |**None** � Will be merged in to new �Product� section. |
-| BCAMarketingState |**None** � Sections will only include current state information, so this section is not required. |
+| BCA (We'll rename this "Product" and merge BCA and CoreProduct attributes) |<li>Name <li>ProductType ("BCA") <li>Product Segment (e.g. "Startup","Switcher",...) <li>Open Data Product ID (Mandatory, if product info is available on Open Data BCA API) <li>Fee-free period |
+| CoreProduct |**None** - Will be merged in to new "Product" section. |
+| BCAMarketingState |**None** - Sections will only include current state information, so this section is not required. |
 | CreditInterest |<li>TierBandSet fields (excluding credit interest eligibility). <li>All TierBand fields <li>**Note: Only current state credit interest information is required. Where the interest rate(s) have been negotiated, the actual rates applied to the account should be provided.** |
 | Overdraft |<li>All TierBandSet fields (including OverdraftFeesAndCharges) <li>All TierBand fields (including OverdraftFeesAndCharges). <li>**Note: Only current state information is required. Where the overdraft rate(s) have been negotiated, the actual rates applied to the account should be provided.** |
-| Eligibility |**None** � Whether an organisation is eligible for other products cannot be determined by looking at existing product eligibility e.g., criteria for a startup can vary from bank to bank. |
-| FeaturesAndBenefits |**None** � The value of a particular feature and benefit to an accountholder is dependent on their use of that benefit and whether they met the eligibility criteria. Features &amp; benefits are less significant in the BCA market than the PCA. |
+| Eligibility |**None** - Whether an organisation is eligible for other products cannot be determined by looking at existing product eligibility e.g., criteria for a startup can vary from bank to bank. |
+| FeaturesAndBenefits |**None** - The value of a particular feature and benefit to an accountholder is dependent on their use of that benefit and whether they met the eligibility criteria. Features &amp; benefits are less significant in the BCA market than the PCA. |
 | OtherFeesAndCharges |<li>See Notes below |
 
 #### Notes
@@ -67,9 +67,9 @@ Further analysis required:-
 * **Electronic:** Auto credit, Bill payment, Debit card payment, Direct debit, Standing Order
 * **Branch/Other:** Pay in (Counter), Deposit (Cheque), Issue (Cheque), Withdrawal (Counter), Cash In, Cash Out (Counter), Cash Out (ATM)
 * However, our analysis is that the basket of fees is a weighted average provided as a one-off activity and it would be difficult for the banks to supply fees/charges for these business activities in a real time API. This is due to banks charging fees at different levels of granularity today and fee standardisation being required. Although comparative pricing is highlighted as a key driver of the Open Banking initiative, without fee standardisation, the complexity of comparing fees is likely to deter customers from considering switching.
-* **We conclude, that as with PCA, the periodic fee is the most common �Other� fee and charge that BCA price comparison websites provide today.**
+* **We conclude, that as with BCA, the periodic fee is the most common "Other" fee and charge that BCA price comparison websites provide today.**
 * Banks will provide the Open Data Product ID.
-* In addition to the �Open Data Product ID� link, we should focus on fields that are provided by price comparison websites today. Although overdraft rates are typically marked as �Negotiable� on PCWs, we feel that it would be useful to provide information about the actual overdraft rate(s) that the accountholder is on, even if this cannot easily be used for comparison with other products.
+* In addition to the "Open Data Product ID" link, we should focus on fields that are provided by price comparison websites today. Although overdraft rates are typically marked as "Negotiable" on PCWs, we feel that it would be useful to provide information about the actual overdraft rate(s) that the accountholder is on, even if this cannot easily be used for comparison with other products.
 * The sections which are most useful for price comparison for Fee-free periods, Credit Interest and certain section of eligibilities where other fee charges are dependent on them and periodic fee(s) .
 * BCA Marketing state information is not required.
 * Eligibility criteria met when BCA was sold is unlikely to be reliable. Hence eligibility criteria information is optional.
@@ -88,9 +88,9 @@ Further analysis required:-
 * AER is the only representative rate for CreditInterest for product comparison purposes and therefore has been explicitly captured.
 * The banks often also specify Gross rates. Net is usually determined by removing basic rate tax only, and banks stopped doing this from April 2016. This may still be required for backbook products.
 * It has been ensured that both the calculation and application frequency for credit interest is captured. 
-* The term �Nominal� used by some banks is synonymous with �Gross�.
-* DepositInterestAppliedCoverage refers to which interest rate is applied when interests are tiered. For example, if an account balance is �2k and the interest tiers are:- 0-�500 0.1%, 500-1000 0.2%, 1000-10000 0.5%, then the applicable interest rate could either be 0.5% of the entire balance (since the account balance sits in the top interest tier) or (0.1%*500)+(0.2%*500)+(0.5%*1000). In the 1st situation, the interest should be applied to the �Whole� of the account balance, and in the 2nd this should be �Tiered�.
-* Destination refers to whether the BCA allows interest to be credited to another account (�PayAway�) or only to the BCA itself (�SelfCredit�).
+* The term "Nominal" used by some banks is synonymous with "Gross".
+* DepositInterestAppliedCoverage refers to which interest rate is applied when interests are tiered. For example, if an account balance is £2k and the interest tiers are:- 0-£500 0.1%, 500-1000 0.2%, 1000-10000 0.5%, then the applicable interest rate could either be 0.5% of the entire balance (since the account balance sits in the top interest tier) or (0.1%*500)+(0.2%*500)+(0.5%*1000). In the 1st situation, the interest should be applied to the "Whole" of the account balance, and in the 2nd this should be "Tiered".
+* Destination refers to whether the BCA allows interest to be credited to another account ("PayAway") or only to the BCA itself ("SelfCredit").
 
 ![ BCAProductInfoCreditIntrstClassDiagram.png ]( images/BCA/BCAProductInfoCreditIntrstClassDiagram.png )
 
@@ -98,9 +98,9 @@ Further analysis required:-
 
 * Overdraft Types can either be Committed e.g., the bank are committed to provide this overdraft facility and cannot demand repayment without notifying the customer, or OnDemand: The bank can demand instant repayment of this overdraft.
 * OverdraftFeeCharges are defined at TierBandSet level for fees/charges that are not tiered and at the TierBand level for those that are. See following slide for details.
-* For BCA, as well as the bank�s own tiers, they have to specify the EAR for representative overdrafts in the CMA defined bands set out in article 32.3 of the order.
-* OverdraftInterestChargingCoverage refers to which interest rate is applied when interest is tiered. For example, if an overdraft balance is �2k and the interest tiers are:- 0-�500 0.1%, 500-1000 0.2%, 1000-10000 0.5%, then the applicable interest rate could either be 0.5% of the entire balance (since the account balance sits in the top interest tier) or (0.1%*500)+(0.2%*500)+(0.5%*1000). In the 1st situation, the interest should be applied to the �Whole� of the account balance, and in the 2nd, this be �Tiered�.
-* BankGuaranteedIndicator indicates whether the advertised overdraft rate is guaranteed to be offered to a borrower by the bank e.g., if it is part of a government scheme, or whether the rate may vary dependent on the applicant�s circumstances.
+* For BCA, as well as the bank's own tiers, they have to specify the EAR for representative overdrafts in the CMA defined bands set out in article 32.3 of the order.
+* OverdraftInterestChargingCoverage refers to which interest rate is applied when interest is tiered. For example, if an overdraft balance is £2k and the interest tiers are:- 0-£500 0.1%, 500-1000 0.2%, 1000-10000 0.5%, then the applicable interest rate could either be 0.5% of the entire balance (since the account balance sits in the top interest tier) or (0.1%*500)+(0.2%*500)+(0.5%*1000). In the 1st situation, the interest should be applied to the "Whole" of the account balance, and in the 2nd, this be "Tiered".
+* BankGuaranteedIndicator indicates whether the advertised overdraft rate is guaranteed to be offered to a borrower by the bank e.g., if it is part of a government scheme, or whether the rate may vary dependent on the applicant's circumstances.
 * AgreementLengthMin, AgreementLengthMax and AgreementLengthPeriod are added to allow for Overdrafts where the rate varies dependent on the length of the agreement, as well as the size of the overdraft.
 
 #### OverdraftFeeCharges
@@ -194,7 +194,7 @@ Content-Type: application/json
 ### Publish Open Data Standard BCA Product along with new other fee charges
 
 The example below has been taken from Santander Business Current Account.
-The customer is at �12.50 monthly account fee for �3,000 cash deposits per month.
+The customer is at £12.50 monthly account fee for £3,000 cash deposits per month.
 
 #### Request: Get Accounts Product Request
 
@@ -223,7 +223,7 @@ Content-Type: application/json
             "AccountId":"22390",
             "ProductId":"HSBC12234BAS",
             "ProductType":"BusinessCurrentAccount",
-            "ProductName":"Business Current Account �12.50 Monthly Fee",
+            "ProductName":"Business Current Account £12.50 Monthly Fee",
             "BCA":{
                "OtherFeesCharges":{
                   "FeeChargeDetail":[
@@ -433,7 +433,7 @@ Content-Type: application/json
                      "CalculationMethod":"Compound",
                      "Destination":"SelfCredit",
                      "Notes":[
-                        "�1 minimum balance"
+                        "£1 minimum balance"
                      ],
                      "TierBand":[
                         {
@@ -463,7 +463,7 @@ Content-Type: application/json
 }
 ```
 
-### Represent Tariffs and �Other Fees And Charges�
+### Represent Tariffs and "Other Fees And Charges"
 
 The example below has been taken from the HSBC Business Current Account
 

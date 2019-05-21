@@ -1,32 +1,32 @@
 # Other Product Data Model <!-- omit in toc -->
 
-1. [Overview](#overview)
-   1. [Fields to include in Other Product](#fields-to-include-in-other-product)
-   2. [Data Model](#data-model)
-      1. [CreditInterest Model](#creditinterest-model)
-      2. [Overdraft](#overdraft)
-      3. [OverdraftFeeCharges](#overdraftfeecharges)
-      4. [LoanInterest](#loaninterest)
-      5. [Repayment](#repayment)
-      6. [OtherFeesCharges](#otherfeescharges)
-      7. [SupplementaryData](#supplementarydata)
-   3. [Data Payload](#data-payload)
-   4. [Data Dictionary](#data-dictionary)
-   5. [Data Payload - Enumerations](#data-payload---enumerations)
-2. [Usage Examples](#usage-examples)
-   1. [Publish Other Product Type](#publish-other-product-type)
-      1. [Get Accounts Product Request](#get-accounts-product-request)
-      2. [Get Accounts Product Response](#get-accounts-product-response)
-   2. [Publish Other Product Type along with Other Fee and Charges](#publish-other-product-type-along-with-other-fee-and-charges)
-      1. [Get Accounts Product Request](#get-accounts-product-request-1)
-      2. [Get Accounts Product Response](#get-accounts-product-response-1)
+- [Overview](#overview)
+  - [Fields to include in Other Product](#fields-to-include-in-other-product)
+  - [Data Model](#data-model)
+    - [CreditInterest Model](#creditinterest-model)
+    - [Overdraft](#overdraft)
+    - [OverdraftFeeCharges](#overdraftfeecharges)
+    - [LoanInterest](#loaninterest)
+    - [Repayment](#repayment)
+    - [OtherFeesCharges](#otherfeescharges)
+    - [SupplementaryData](#supplementarydata)
+  - [Data Payload](#data-payload)
+  - [Data Dictionary](#data-dictionary)
+  - [Data Payload - Enumerations](#data-payload---enumerations)
+- [Usage Examples](#usage-examples)
+  - [Publish Other Product Type](#publish-other-product-type)
+    - [Get Accounts Product Request](#get-accounts-product-request)
+    - [Get Accounts Product Response](#get-accounts-product-response)
+  - [Publish Other Product Type along with Other Fee and Charges](#publish-other-product-type-along-with-other-fee-and-charges)
+    - [Get Accounts Product Request](#get-accounts-product-request-1)
+    - [Get Accounts Product Response](#get-accounts-product-response-1)
 
 ## Overview
 
 From the analysis:-
 
 * Banks will provide the Open Data Product ID
-* In addition to the �Open Data Product ID� link, we should focus on fields that are provided by price comparison websites today. Each product type may have completely different set of fields, like Mortgages , Insurance or Islamic Banking. It may not be possible to publish complete product details using the generic structure.
+* In addition to the "Open Data Product ID" link, we should focus on fields that are provided by price comparison websites today. Each product type may have completely different set of fields, like Mortgages , Insurance or Islamic Banking. It may not be possible to publish complete product details using the generic structure.
 * The generic structure supports the publishing of key feature of Other Product Type
 
 Further analysis required:-

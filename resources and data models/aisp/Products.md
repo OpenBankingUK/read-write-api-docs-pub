@@ -1,26 +1,26 @@
 # Products <!-- omit in toc -->
 
-1. [Overview](#overview)
-   1. [Profile Compatibility](#profile-compatibility)
-2. [Endpoints](#endpoints)
-   1. [GET /accounts/{AccountId}/product](#get-accountsaccountidproduct)
-   2. [GET /products](#get-products)
-3. [Data Model](#data-model)
-   1. [Resource Definition](#resource-definition)
-      1. [Notes](#notes)
-   2. [UML Diagram](#uml-diagram)
-      1. [Notes](#notes-1)
-   3. [Permission Codes](#permission-codes)
-   4. [Data Dictionary](#data-dictionary)
-      1. [Common Payload](#common-payload)
-      2. [PCA & BCA Extensions](#pca--bca-extensions)
-4. [Usage Examples](#usage-examples)
-   1. [Specific Account](#specific-account)
-      1. [Get Accounts Product Request](#get-accounts-product-request)
-      2. [Get Accounts Product Response](#get-accounts-product-response)
-   2. [Bulk](#bulk)
-      1. [Get Products Request](#get-products-request)
-      2. [Get Products Response](#get-products-response)
+- [Overview](#overview)
+  - [Profile Compatibility](#profile-compatibility)
+- [Endpoints](#endpoints)
+  - [GET /accounts/{AccountId}/product](#get-accountsaccountidproduct)
+  - [GET /products](#get-products)
+- [Data Model](#data-model)
+  - [Resource Definition](#resource-definition)
+    - [Notes](#notes)
+  - [UML Diagram](#uml-diagram)
+    - [Notes](#notes-1)
+  - [Permission Codes](#permission-codes)
+  - [Data Dictionary](#data-dictionary)
+    - [Common Payload](#common-payload)
+    - [PCA & BCA Extensions](#pca--bca-extensions)
+- [Usage Examples](#usage-examples)
+  - [Specific Account](#specific-account)
+    - [Get Accounts Product Request](#get-accounts-product-request)
+    - [Get Accounts Product Response](#get-accounts-product-response)
+  - [Bulk](#bulk)
+    - [Get Products Request](#get-products-request)
+    - [Get Products Response](#get-products-response)
 
 ## Overview
 
@@ -81,15 +81,15 @@ An account (AccountId) must only have a single product.
 * Product/ProductIdentifier and Product/SecondaryProductIdentifier are renamed to Product/ProductId and Product/SecondaryProductId respectively.
 * The APIs are split in to 2 broad groups based on respective security requirements:- 
     * Open Data includes an API which provides **Marketed** PCA/BCA/Other Information. 
-    * Read-Write (aka �Closed Data�) includes an API which provides **Operated** PCA/BCA/Other Information.
+    * Read-Write (aka "Closed Data") includes an API which provides **Operated** PCA/BCA/Other Information.
 * Open Data Product information covers:- Core Product, Eligibility, Credit Interest, Overdraft, Features &amp; Benefits and Other Fees &amp; Charges.
-* In July 2017, as part of Open Data-Account Information design workshop, it was agreed that the Products endpoint should contain a reference to Open Data AND subset of Open Data model (Decision [039](https://openbanking.atlassian.net/wiki/spaces/WOR/pages/3654377/039) � option 4).
+* In July 2017, as part of Open Data-Account Information design workshop, it was agreed that the Products endpoint should contain a reference to Open Data AND subset of Open Data model (Decision [039](https://openbanking.atlassian.net/wiki/spaces/WOR/pages/3654377/039) - option 4).
 * Approach to supplying product information via the Account and Transaction Information API for v2.x: 
-    * An optional �Open Data Product ID� link to the Open Data APIs should be retained, so that marketed product information is made available (where this is available). This could be more than �Front book� if a bank has decided to retain marketed product information for �Back book� products on the Open Data API. 
-    * In addition to the �Open Data Product ID� link, we should focus on fields that are provided by price comparison websites today. Although overdraft rates are typically marked as �Negotiable� on PCWs, we feel that it would be useful to provide information about the actual overdraft rate(s) that the account holder is on, even if this cannot easily be used for comparison with other products. 
-    * If there is a reference to �Open Data Product ID�, then the TPP may lookup product features from Open Data. If any element/fields of the products endpoint are populated, then this should override the default in Open Data (Decision 
+    * An optional "Open Data Product ID" link to the Open Data APIs should be retained, so that marketed product information is made available (where this is available). This could be more than "Front book" if a bank has decided to retain marketed product information for "Back book" products on the Open Data API. 
+    * In addition to the "Open Data Product ID" link, we should focus on fields that are provided by price comparison websites today. Although overdraft rates are typically marked as "Negotiable" on PCWs, we feel that it would be useful to provide information about the actual overdraft rate(s) that the account holder is on, even if this cannot easily be used for comparison with other products. 
+    * If there is a reference to "Open Data Product ID", then the TPP may lookup product features from Open Data. If any element/fields of the products endpoint are populated, then this should override the default in Open Data (Decision 
 [039](https://openbanking.atlassian.net/wiki/spaces/WOR/pages/3654377/039) &amp; [100](https://openbanking.atlassian.net/wiki/spaces/WOR/pages/32376202/100)). 
-    * The �Open Data Product ID� should be populated by the ASPSP in the **products** resource if there is a corresponding entry in the Open Data APIs. 
+    * The "Open Data Product ID" should be populated by the ASPSP in the **products** resource if there is a corresponding entry in the Open Data APIs. 
     * Information supplied in the Account and Transaction Information API v2.x product section must come from account operating platforms. 
     * ProductType enumeration matches to types available in Open Data APIs, ASPSPs may choose to provide any additional product type by closing value=Other in ProductType, and providing a brief type details in OtherProductType data fields, and reference to their Open Data product. At this moment, we don't have detailed Product Info structure for product types other than PCA/BCA.
 
