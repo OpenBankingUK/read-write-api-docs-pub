@@ -95,11 +95,12 @@ Wherever used, an ASPSP **must** define and document (on their developer portal)
 
 ### Data Dictionary
 
-* [Other Product Type Data Definition](https://openbanking.atlassian.net/wiki/download/attachments/1077805590/OtherProductInfo.xlsx?version=1&modificationDate=1556635342834&cacheVersion=1&api=v2)
+* [Other Product Type Data Definition]( productdatafiles/OtherProductInfo.v3.1.2.DD.xlsx )
+ 
 
 ### Data Payload - Enumerations
 
-* [Other Product Type Code List](https://openbanking.atlassian.net/wiki/download/attachments/1077805590/OtherProduct.3.1.1.CodeList.xlsx?version=1&modificationDate=1556635339404&cacheVersion=1&api=v2)
+* [Other Product Type Code List]( productdatafiles/OtherProduct.v3.1.2.CodeList.xlsx )
 
 ## Usage Examples
 

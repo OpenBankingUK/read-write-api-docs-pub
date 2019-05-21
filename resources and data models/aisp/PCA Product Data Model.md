@@ -88,7 +88,7 @@ Further analysis required:-
 * DepositInterestAppliedCoverage refers to which interest rate is applied when interests are tiered. For example, if an account balance is £2k and the interest tiers are:- 0-£500 0.1%, 500-1000 0.2%, 1000-10000 0.5%, then the applicable interest rate could either be 0.5% of the entire balance (since the account balance sits in the top interest tier) or (0.1%*500)+(0.2%*500)+(0.5%*1000). In the 1st situation, the interest should be applied to the "Whole" of the account balance and in the 2nd, this should be "Tiered".
 * Destination refers to whether the Product allows interest to be credited to another account ("PayAway") or only to itself ("SelfCredit").
 
-![ PCACreditInterestClassDiagram.png ]( images/PCA/PCACreditInterestClassDiagram.png )
+![ images/PCA/PCACreditInterestClassDiagram.png ]( images/PCA/PCACreditInterestClassDiagram.png )
 
 #### Overdraft
 
@@ -128,7 +128,9 @@ Further analysis required:-
 
 ##### Data Dictionary
 
-* [PCA Account Info Data Definition](https://openbanking.atlassian.net/wiki/download/attachments/1077805458/ainfobca.v3.rc3.DD.xlsx?version=1&modificationDate=1556635332741&cacheVersion=1&api=v2)
+* [PCA Account Info Data Definition]( productdatafiles/ainfopca.v3.1.2.DD.xlsx )
+
+![ images/PCA/PCACreditInterestClassDiagram.png ]( images/PCA/PCACreditInterestClassDiagram.png )
 
 ### Data Payload - Enumerations
 

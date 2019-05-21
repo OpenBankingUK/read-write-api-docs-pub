@@ -139,11 +139,11 @@ Further analysis required:-
 
 ### Data Dictionary
 
-* [BCA Account Info Data Definition](https://openbanking.atlassian.net/wiki/download/attachments/1077805458/ainfobca.v3.rc3.DD.xlsx?version=1&modificationDate=1556635332741&cacheVersion=1&api=v2)
+* [BCA Account Info Data Definition](productdatafiles/ainfobca.v3.1.2.DD.xlsx )
 
 ### Data Payload - Enumerations
 
-* [BCA Account Info Code List](https://openbanking.atlassian.net/wiki/download/attachments/1077805458/ainfobca.2.2.0.CodeList.xlsx?version=1&modificationDate=1556635332166&cacheVersion=1&api=v2)
+* [BCA Account Info Code List](productdatafiles/ainfobca.v3.1.2.CodeList.xlsx )
 
 ## Usage Examples
 
