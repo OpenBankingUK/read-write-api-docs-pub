@@ -1,6 +1,36 @@
 # Domestic Standing Order Consents <!-- omit in toc -->
 
-
+1. [Overview](#overview)
+   1. [Profile Compatibility](#profile-compatibility)
+2. [Endpoints](#endpoints)
+   1. [POST /domestic-standing-order-consents](#post-domestic-standing-order-consents)
+      1. [Status](#status)
+   2. [GET /domestic-standing-order-consents/{ConsentId}](#get-domestic-standing-order-consentsconsentid)
+      1. [Status](#status-1)
+   3. [State Model](#state-model)
+      1. [Payment Order Consent](#payment-order-consent)
+3. [Data Model](#data-model)
+   1. [Reused Classes](#reused-classes)
+      1. [OBDomesticStandingOrder3](#obdomesticstandingorder3)
+         1. [UML Diagram](#uml-diagram)
+         2. [Notes](#notes)
+            1. [Frequency Examples](#frequency-examples)
+         3. [Data Dictionary](#data-dictionary)
+   2. [Domestic Standing Order Consent - Request](#domestic-standing-order-consent---request)
+      1. [UML Diagram](#uml-diagram-1)
+      2. [Notes](#notes-1)
+      3. [Data Dictionary](#data-dictionary-1)
+   3. [Domestic Standing Order Consent - Response](#domestic-standing-order-consent---response)
+      1. [UML Diagram](#uml-diagram-2)
+      2. [Notes](#notes-2)
+      3. [Data Dictionary](#data-dictionary-2)
+4. [Usage Examples](#usage-examples)
+      1. [Create Domestic Standing Order Consent](#create-domestic-standing-order-consent)
+         1. [POST /domestic-standing-order-consents](#post-domestic-standing-order-consents-1)
+         2. [POST /domestic-standing-order-consents response](#post-domestic-standing-order-consents-response)
+   1. [Get a Domestic Standing Order Consent](#get-a-domestic-standing-order-consent)
+      1. [GET /domestic-standing-order-consents/{ConsentId}](#get-domestic-standing-order-consentsconsentid-1)
+      2. [GET /domestic-standing-order-consents response](#get-domestic-standing-order-consents-response)
 
 ## Overview
 

@@ -1,6 +1,35 @@
 # Domestic Standing Orders <!-- omit in toc -->
 
-
+1. [Overview](#overview)
+   1. [Profile Compatibility](#profile-compatibility)
+2. [Endpoints](#endpoints)
+   1. [POST /domestic-standing-orders](#post-domestic-standing-orders)
+      1. [Status](#status)
+   2. [GET /domestic-standing-orders/{DomesticStandingOrderId}](#get-domestic-standing-ordersdomesticstandingorderid)
+      1. [Status](#status-1)
+   3. [GET /domestic-standing-orders/{DomesticStandingOrderId}/payment-details](#get-domestic-standing-ordersdomesticstandingorderidpayment-details)
+      1. [Status](#status-2)
+   4. [State Model](#state-model)
+      1. [Payment Order](#payment-order)
+         1. [Multiple Authorisation](#multiple-authorisation)
+3. [Data Model](#data-model)
+   1. [Reused Classes](#reused-classes)
+      1. [OBDomesticStandingOrder3](#obdomesticstandingorder3)
+   2. [Domestic Standing Order - Request](#domestic-standing-order---request)
+      1. [UML Diagram](#uml-diagram)
+      2. [Notes](#notes)
+      3. [Data Dictionary](#data-dictionary)
+   3. [Domestic Standing Order - Response](#domestic-standing-order---response)
+      1. [UML Diagram](#uml-diagram-1)
+      2. [Notes](#notes-1)
+      3. [Data Dictionary](#data-dictionary-1)
+   4. [Domestic Standing Order - Payment Details - Response](#domestic-standing-order---payment-details---response)
+      1. [UML Diagram](#uml-diagram-2)
+      2. [Data Dictionary](#data-dictionary-2)
+4. [Usage Examples](#usage-examples)
+   1. [Create a Domestic Standing Order](#create-a-domestic-standing-order)
+      1. [POST /domestic-standing-orders request](#post-domestic-standing-orders-request)
+      2. [POST /domestic-standing-orders response](#post-domestic-standing-orders-response)
 
 ## Overview
 
