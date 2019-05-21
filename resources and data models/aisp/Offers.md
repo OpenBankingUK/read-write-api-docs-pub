@@ -1,23 +1,23 @@
 # Offers <!-- omit in toc -->
 
-1. [Overview](#overview)
-   1. [Profile Compatibility](#profile-compatibility)
-2. [Endpoints](#endpoints)
-   1. [GET /accounts/{AccountId}/offers](#get-accountsaccountidoffers)
-   2. [GET /offers](#get-offers)
-3. [Data Model](#data-model)
-   1. [Resource Definition](#resource-definition)
-   2. [UML Diagram](#uml-diagram)
-   3. [Notes](#notes)
-   4. [Permission Codes](#permission-codes)
-   5. [Data Dictionary](#data-dictionary)
-4. [Usage Examples](#usage-examples)
-   1. [Specific Account](#specific-account)
-      1. [Get Offers Request](#get-offers-request)
-      2. [Response: Get Offers Response](#response-get-offers-response)
-   2. [Bulk](#bulk)
-      1. [Request: Get Offers Request](#request-get-offers-request)
-      2. [Response: Get Offers Response](#response-get-offers-response-1)
+- [Overview](#overview)
+  - [Profile Compatibility](#profile-compatibility)
+- [Endpoints](#endpoints)
+  - [GET /accounts/{AccountId}/offers](#get-accountsaccountidoffers)
+  - [GET /offers](#get-offers)
+- [Data Model](#data-model)
+  - [Resource Definition](#resource-definition)
+  - [UML Diagram](#uml-diagram)
+  - [Notes](#notes)
+  - [Permission Codes](#permission-codes)
+  - [Data Dictionary](#data-dictionary)
+- [Usage Examples](#usage-examples)
+  - [Specific Account](#specific-account)
+    - [Get Offers Request](#get-offers-request)
+    - [Response: Get Offers Response](#response-get-offers-response)
+  - [Bulk](#bulk)
+    - [Request: Get Offers Request](#request-get-offers-request)
+    - [Response: Get Offers Response](#response-get-offers-response-1)
 
 ## Overview
 
@@ -131,7 +131,7 @@ Content-Type: application/json
         "AccountId": "22289",
         "OfferId": "Offer1",
         "OfferType": "LimitIncrease",
-        "Description": "Credit limit increase for the account up to �10000.00",
+        "Description": "Credit limit increase for the account up to £10000.00",
         "Amount": {
           "Amount": "10000.00",
           "Currency": "GBP"
@@ -141,7 +141,7 @@ Content-Type: application/json
         "AccountId": "22289",
         "OfferId": "Offer2",
         "OfferType": "BalanceTransfer",
-        "Description": "Balance transfer offer up to �2000",
+        "Description": "Balance transfer offer up to £2000",
         "Amount": {
           "Amount": "2000.00",
           "Currency": "GBP"
@@ -187,7 +187,7 @@ Content-Type: application/json
         "AccountId": "22289",
         "OfferId": "Offer1",
         "OfferType": "LimitIncrease",
-        "Description": "Credit limit increase for the account up to �10000.00",
+        "Description": "Credit limit increase for the account up to £10000.00",
         "Amount": {
           "Amount": "10000.00",
           "Currency": "GBP"
@@ -197,7 +197,7 @@ Content-Type: application/json
         "AccountId": "22289",
         "OfferId": "Offer2",
         "OfferType": "BalanceTransfer",
-        "Description": "Balance transfer offer up to �2000",
+        "Description": "Balance transfer offer up to £2000",
         "Amount": {
           "Amount": "2000.00",
           "Currency": "GBP"
@@ -207,7 +207,7 @@ Content-Type: application/json
         "AccountId": "32515",
         "OfferId": "Offer3",
         "OfferType": "LimitIncrease",
-        "Description": "Credit limit increase for the account up to �50000.00",
+        "Description": "Credit limit increase for the account up to £50000.00",
         "Amount": {
           "Amount": "50000.00",
           "Currency": "GBP"
