@@ -130,11 +130,9 @@ Further analysis required:-
 
 * [PCA Account Info Data Definition]( productdatafiles/ainfopca.v3.1.2.DD.xlsx )
 
-![ images/PCA/PCACreditInterestClassDiagram.png ]( images/PCA/PCACreditInterestClassDiagram.png )
-
 ### Data Payload - Enumerations
 
-* [PCA Product Info CodeList](https://openbanking.atlassian.net/wiki/download/attachments/1077805528/ainfopca.2.2.0.CodeLists.xlsx?version=1&modificationDate=1556635335891&cacheVersion=1&api=v2)
+* [PCA Product Info CodeList]( productdatafiles/ainfopca.v3.1.2.CodeLists.xlsx )
 
 ## Usage Examples
 
