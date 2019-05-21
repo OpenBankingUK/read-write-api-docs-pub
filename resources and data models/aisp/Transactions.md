@@ -122,7 +122,7 @@ The resource differs depending on the permissions (ReadTransactionsBasic and Rea
     * OBReadTransaction5/Data/Transaction/CreditorAccount 
     * OBReadTransaction5/Data/Transaction/DebtorAgent 
     * OBReadTransaction5/Data/Transaction/DebtorAccount
-* If the **ReadTransactionsDetail** **** is granted by the PSU: 
+* If the **ReadTransactionsDetail** is granted by the PSU: 
     * OBReadTransaction5/Data/Transaction/TransactionInformation **may** be returned if applicable to the transaction and ASPSP (0..1) 
     * OBReadTransaction5/Data/Transaction/Balance **may** be returned if applicable to the transaction and ASPSP (0..1) 
     * OBReadTransaction5/Data/Transaction/MerchantDetails **may** be returned if applicable to the transaction and ASPSP (0..1) 
