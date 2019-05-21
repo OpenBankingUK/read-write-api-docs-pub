@@ -234,13 +234,7 @@ Content-Type: application/json
                         "ApplicationFrequency":"Monthly",
                         "CalculationFrequency":"Daily",
                         "Notes":[
-                           "Our tariff includes:
-* depositing and sending cheques
-* cash deposits up to the limit your tariff allows
-* withdrawals
-* Direct Debits, standing orders, bill payments
-* Bas credits
-* debit card payments"
+                           "Our tariff includes:\n* depositing and sending cheques\n* cash deposits up to the limit your tariff allows\n* withdrawals\n* Direct Debits, standing orders, bill payments\n* Bas credits\n* debit card payments"
                         ]
                      }
                   ]
