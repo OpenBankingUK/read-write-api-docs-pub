@@ -284,6 +284,8 @@ The confirmation of funds response contains the result of a funds availability c
 
 ## Usage Examples
 
+Note, further usage examples are available [here](../../references/usage%20examples/README.md).
+
 ### POST /domestic-payment-consents
 
 #### Request
