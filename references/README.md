@@ -6,3 +6,4 @@
 ## Usage Examples
 
 - [Domestic Payments](usage%20examples/Domestic%20Payment%20Usage%20Examples.md)
+- [Domestic Standing Orders](usage%20examples/Domestic%20standing%20Order%20Usage%20Examples.md)
