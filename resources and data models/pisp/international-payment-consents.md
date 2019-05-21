@@ -1,4 +1,4 @@
-# International Payments <!-- omit in toc -->
+# International Payment Consents <!-- omit in toc -->
 
 1. [Overview](#overview)
    1. [Profile Compatibility](#profile-compatibility)
@@ -8,16 +8,8 @@
 3. [GET /international-payment-consents/{ConsentId}](#get-international-payment-consentsconsentid)
       1. [Status](#status-1)
    1. [GET /international-payment-consents/{ConsentId}/funds-confirmation](#get-international-payment-consentsconsentidfunds-confirmation)
-   2. [POST /international-payments](#post-international-payments)
-      1. [Status](#status-2)
-   3. [GET /international-payments/{InternationalPaymentId}](#get-international-paymentsinternationalpaymentid)
-      1. [Status](#status-3)
-   4. [GET /international-payments/{InternationalPaymentId}/payment-details](#get-international-paymentsinternationalpaymentidpayment-details)
-      1. [Status](#status-4)
-   5. [State Model](#state-model)
+   2. [State Model](#state-model)
       1. [Payment Order Consent](#payment-order-consent)
-      2. [Payment Order](#payment-order)
-         1. [Multiple Authorisation](#multiple-authorisation)
 4. [Data Model](#data-model)
    1. [Reused Classes](#reused-classes)
       1. [OBInternational2](#obinternational2)
@@ -38,40 +30,17 @@
       1. [UML Diagram](#uml-diagram-3)
       2. [Notes](#notes-3)
       3. [Data Dictionary](#data-dictionary-4)
-   5. [International Payment - Request](#international-payment---request)
-      1. [UML Diagram](#uml-diagram-4)
-      2. [Notes](#notes-4)
-      3. [Data Dictionary](#data-dictionary-5)
-   6. [International Payment - Response](#international-payment---response)
-      1. [UML Diagram](#uml-diagram-5)
-      2. [Notes](#notes-5)
-      3. [Data Dictionary](#data-dictionary-6)
-   7. [International Payment Order - Payment Details - Response](#international-payment-order---payment-details---response)
-      1. [UML Diagram](#uml-diagram-6)
-      2. [Data Dictionary](#data-dictionary-7)
 5. [Usage Examples](#usage-examples)
-   1. [Debit amount specified; ASPSP provides actual (guaranteed) FX rate, for limited time](#debit-amount-specified-aspsp-provides-actual-guaranteed-fx-rate-for-limited-time)
-      1. [POST /international-payment-consents request](#post-international-payment-consents-request)
-      2. [POST /international-payment-consents response](#post-international-payment-consents-response)
-   2. [Confirm Funds on International Payment Order Consent](#confirm-funds-on-international-payment-order-consent)
-      1. [GET / international-payment-consents/{ConsentId}/funds-confirmation Request](#get--international-payment-consentsconsentidfunds-confirmation-request)
-      2. [GET /international-payment-consents/{ConsentId}/funds-confirmation Response](#get-international-payment-consentsconsentidfunds-confirmation-response)
-   3. [Debit amount specified; ASPSP provides indicative FX rate](#debit-amount-specified-aspsp-provides-indicative-fx-rate)
-      1. [POST /international-payment-consents request](#post-international-payment-consents-request-1)
-      2. [POST /international-payment-consents response](#post-international-payment-consents-response-1)
-   4. [Debit amount specified; ASPSP provides a pre-booked FX rate](#debit-amount-specified-aspsp-provides-a-pre-booked-fx-rate)
-      1. [POST /international-payment-consents request](#post-international-payment-consents-request-2)
-      2. [POST /international-payment-consents response](#post-international-payment-consents-response-2)
-   5. [Credit amount specified; ASPSP provides actual (guaranteed) FX rate, for limited time](#credit-amount-specified-aspsp-provides-actual-guaranteed-fx-rate-for-limited-time)
-      1. [POST /international-payment-consents request](#post-international-payment-consents-request-3)
-      2. [POST /international-payment-consents response](#post-international-payment-consents-response-3)
-   6. [International payment with all charges paid by payer](#international-payment-with-all-charges-paid-by-payer)
-      1. [POST /international-payment-consents request](#post-international-payment-consents-request-4)
-      2. [POST /international-payment-consents response](#post-international-payment-consents-response-4)
+   1. [POST /international-payment-consents](#post-international-payment-consents-1)
+      1. [Request](#request)
+      2. [Response](#response)
+   2. [GET / international-payment-consents/{ConsentId}/funds-confirmation](#get--international-payment-consentsconsentidfunds-confirmation)
+      1. [Request](#request-1)
+      2. [Response](#response-1)
 
 ## Overview
 
-The International Payments resources (international-payment-consents and international-payments) are used by a PISP to initiate an International Payment.
+The International Payment Consent resource is used by a PISP to register an intent to initiate an International Payment.
 
 This resource description should be read in conjunction with a compatible Payment Initiation API Profile.
 
@@ -86,9 +55,6 @@ For a list of profiles compatible with this resource, please see the [Compatibil
 | international-payment-consents |POST |POST /international-payment-consents |Conditional |payments |Client Credentials |Signed Request Signed Response |Yes |OBWriteInternationalConsent3 |OBWriteInternationalConsentResponse3 |
 | international-payment-consents |GET |GET /international-payment-consents/{ConsentId} |Mandatory (if resource POST implemented) |payments |Client Credentials |Signed Response |No |NA |OBWriteInternationalConsentResponse3 |
 | international-payment-consents |GET |GET /international-payment-consents/{ConsentId}/funds-confirmation |Mandatory (if resource POST implemented) |payments |Authorization Code |Signed Response |No |NA |OBWriteFundsConfirmationResponse1 |
-| international-payments |POST |POST /international-payments |Conditional |payments |Authorization Code |Signed Request Signed Response |Yes |OBWriteInternational2 |OBWriteInternationalResponse3 |
-| international-payments |GET |GET /international-payments/{InternationalPaymentId} |Mandatory (if resource POST implemented) |payments |Client Credentials |Signed Response |No |NA |OBWriteInternationalResponse3 |
-| payment-details |GET |GET /international-payments/{InternationalPaymentId}/payment-details |Optional |payments |Client Credentials |Signed Response |No |NA |OBWritePaymentDetailsResponse1 |
 
 ### POST /international-payment-consents 
 
@@ -134,78 +100,6 @@ The API endpoint allows the PISP to ask an ASPSP to confirm funds on an **intern
 * An ASPSP can only respond to a funds confirmation request if the **international-payment-consent** resource has an `Authorised` status. If the status is not `Authorised`, an ASPSP **must** respond with a 400 (Bad Request) and a `UK.OBIE.Resource.InvalidConsentStatus` error code.
 * Confirmation of funds requests do not affect the status of the **international-payment-consent** resource.
 
-### POST /international-payments
-
-Once the international-payment-consent has been authorised by the PSU, the PISP can proceed to submit the international-payment for processing:
-
-* This is done by making a POST request to the **international-payments** endpoint.
-* This request is an instruction to the ASPSP to begin the international single immediate payment journey. The international payment must be submitted immediately, however, there are some scenarios where the international payment may not be executed immediately (e.g. busy periods at the ASPSP).
-* The PISP **must** ensure that the Initiation and Risk sections of the international-payment match the corresponding Initiation and Risk sections of the international-payment-consent resource. If the two do not match, the ASPSP **must not** process the request and **must** respond with a 400 (Bad Request).
-* Any operations on the international-payment resource will not result in a Status change for the international-payment resource.
-
-#### Status
-
-An international-payment can only be created if its corresponding international-payment-consent resource has the status of "Authorised". 
-
-The international-payment resource that is created successfully must have one of the following PaymentStatusCode code-set enumerations:
-
-| Status |
-| --- |
-| Pending |
-| Rejected |
-| AcceptedSettlementInProcess |
-| AcceptedSettlementCompleted |
-| AcceptedWithoutPosting |
-| AcceptedCreditSettlementCompleted |
-
-### GET /international-payments/{InternationalPaymentId}
-
-A PISP can retrieve the international-payment to check its status.
-
-#### Status
-
-The international-payment resource must have one of the following PaymentStatusCode code-set enumerations:
-
-| Status |
-| --- |
-| Pending |
-| Rejected |
-| AcceptedSettlementInProcess |
-| AcceptedSettlementCompleted|
-| AcceptedWithoutPosting |
-| AcceptedCreditSettlementCompleted |
-
-### GET /international-payments/{InternationalPaymentId}/payment-details
-
-A PISP can retrieve the Details of the underlying payment transaction via this endpoint. This resource allows ASPSPs to return richer list of Payment Statuses, and if available payment scheme related statuses.
-
-#### Status
-
-The international-payments - payment-details must have one of the following PaymentStatusCode code-set enumerations:
-
-| Status |
-| ------ |
-| Accepted |
-| AcceptedCancellationRequest |
-| AcceptedTechnicalValidation |
-| AcceptedCustomerProfile |
-| AcceptedFundsChecked |
-| AcceptedWithChange |
-| Pending |
-| Rejected |
-| AcceptedSettlementInProcess |
-| AcceptedSettlementCompleted |
-| AcceptedWithoutPosting |
-| AcceptedCreditSettlementCompleted |
-| Cancelled |
-| NoCancellationProcess |
-| PartiallyAcceptedCancellationRequest |
-| PartiallyAcceptedTechnicalCorrect |
-| PaymentCancelled |
-| PendingCancellationRequest |
-| Received |
-| RejectedCancellationRequest |
-
 ### State Model
 
 #### Payment Order Consent
@@ -223,37 +117,6 @@ The definitions for the Status:
 | 3 |Authorised |The consent resource has been successfully authorised. |
 | 4 |Consumed |The consented action has been successfully completed. This does not reflect the status of the consented action. |
 
-#### Payment Order
-
-The state model for the international-payment resource follows the behaviour and definitions for the ISO 20022 PaymentStatusCode code-set.
-
-![Payment Order Status Lifecycle](images/PaymentStatusLifeCycle.png)
-
-The definitions for the Status:
-
-| |Status |Payment Status Description |
-| --- |------ |-------------------------- |
-| 1 |Pending |Payment initiation or individual transaction included in the payment initiation is pending. Further checks and status update will be performed. |
-| 2 |Rejected |Payment initiation or individual transaction included in the payment initiation has been rejected. |
-| 3 |AcceptedSettlementInProcess |All preceding checks such as technical validation and customer profile were successful and therefore the payment initiation has been accepted for execution. |
-| 4 |AcceptedSettlementCompleted |Settlement on the debtor's account has been completed. |
-| 5 |AcceptedWithoutPosting |Payment instruction included in the credit transfer is accepted without being posted to the creditor customer’s account. |
-| 6 |AcceptedCreditSettlementCompleted |Settlement on the creditor's account has been completed. |
-
-##### Multiple Authorisation
-
-If the payment-order requires multiple authorisations, the Status of the multiple authorisations will be updated in the MultiAuthorisation object.
-
-![Multiple Authorisation Statss](images/image2018-6-29_16-36-34.png)
-
-The definitions for the Status:
-
-| |Status |Status Description |
-| --- |------ |------------------ |
-| 1 |AwaitingFurtherAuthorisation |The payment-order resource is awaiting further authorisation. |
-| 2 |Rejected |The payment-order resource has been rejected by an authoriser. |
-| 3 |Authorised |The payment-order resource has been successfully authorised by all required authorisers. |
-
 ## Data Model
 
 The data dictionary section gives the detail on the payload content for the International Payment API flows.
@@ -262,7 +125,7 @@ The data dictionary section gives the detail on the payload content for the Inte
 
 #### OBInternational2
 
-This section describes the OBInternational2 class which is reused as the Initiation object in the international-payment-consent and international-payment resources.
+This section describes the OBInternational2 class which is reused as the Initiation object in the international-payment-consent resource.
 
 ##### UML Diagram
 
@@ -365,7 +228,7 @@ The OBInternational2/ExchangeRateInformation object must conform to these behavi
 
 #### OBExchangeRate2
 
-This section describes the OBExchangeRate2 class, which is reused in the response payloads in the international-payment-consent and international-payment resources.
+This section describes the OBExchangeRate2 class, which is used in the response payloads in the international-payment-consent resource.
 
 ![Exchange Rate Model](images/OBExchangeRate2.gif)
 
@@ -501,102 +364,11 @@ The confirmation of funds response contains the result of a funds availability c
 | FundsAvailable |1..1 |OBWriteFundsConfirmationResponse1/Data/FundsAvailableResult/FundsAvailable |Flag to indicate the availability of funds given the Amount in the consent request. |xs:boolean | | |
 | SupplementaryData |0..1 |OBWriteFundsConfirmationResponse1/Data/SupplementaryData |Additional information that can not be captured in the structured fields and/or any other specific block. |OBSupplementaryData1 | | |
 
-### International Payment - Request
-
-The OBWriteInternational2 object will be used for a call to:
-
-* POST /international-payments
-
-#### UML Diagram
-
-![International Payment - Request](images/OBWriteInternational2.gif)
-
-#### Notes 
-
-The international-payment **request** object contains the: 
-
-* ConsentId.
-* The full Initiation and Risk objects from the international-payment request.
-* The **Initiation** and **Risk** sections of the international-payment request **must** match the **Initiation** and **Risk** sections of the corresponding international-payment-consent request.
-
-#### Data Dictionary
-
-| Name |Occurrence |XPath |EnhancedDefinition |Class |Codes |Pattern |
-| ---- |---------- |----- |------------------ |----- |----- |------- |
-| OBWriteInternational2 |OBWriteInternational2 | |OBWriteInternational2 | | | |
-| Data |1..1 |OBWriteInternational2/Data | |OBWriteDataInternational2 | | |
-| ConsentId |1..1 |OBWriteInternational2/Data/ConsentId |OB: Unique identification as assigned by the ASPSP to uniquely identify the consent resource. |Max128Text | | |
-| Initiation |1..1 |OBWriteInternational2/Data/Initiation |The Initiation payload is sent by the initiating party to the ASPSP. It is used to request movement of funds from the debtor account to a creditor for a single international payment. |OBInternational2 | | |
-| Risk |1..1 |OBWriteInternational2/Risk |The Risk section is sent by the initiating party to the ASPSP. It is used to specify additional details for risk scoring for Payments. |OBRisk1 | | |
-
-### International Payment - Response
-
-The OBWriteInternationalResponse3 object will be used for a response to a call to:
-
-* POST /international-payments
-* GET /international-payments/{InternationalPaymentId}
-
-#### UML Diagram
-
-![International Payment - Response](images/OBWriteInternationalResponse3.png)
-
-#### Notes 
-
-The international-payment **response** object contains the: 
-
-* InternationalPaymentId.
-* ConsentId.
-* CreationDateTime of the international-payment resource.
-* Status and StatusUpdateDateTime of the international-payment resource.
-* ExpectedExecutionDateTime for the international-payment resource.
-* ExpectedSettlementDateTime for the international-payment resource.
-* The Charges and ExchangeRateInformation in the international-payment-consent response from the ASPSP.
-* The Initiation object from the international-payment-consent.
-* The MultiAuthorisation object if the international-payment resource requires multiple authorisations.
-
-#### Data Dictionary
-
-| Name |Occurrence |XPath |EnhancedDefinition |Class |Codes |Pattern |
-| ---- |---------- |----- |------------------ |----- |----- |------- |
-| OBWriteInternationalResponse3 | |OBWriteInternationalResponse3 | |OBWriteInternationalResponse3 | | |
-| Data |1..1 |OBWriteInternationalResponse3/Data | |OBWriteDataInternationalResponse3 | | |
-| InternationalPaymentId |1..1 |OBWriteInternationalResponse3/Data/InternationalPaymentId |OB: Unique identification as assigned by the ASPSP to uniquely identify the international payment resource. |Max40Text | | |
-| ConsentId |1..1 |OBWriteInternationalResponse3/Data/ConsentId |OB: Unique identification as assigned by the ASPSP to uniquely identify the consent resource. |Max128Text | | |
-| CreationDateTime |1..1 |OBWriteInternationalResponse3/Data/CreationDateTime |Date and time at which the message was created. |ISODateTime | | |
-| Status |1..1 |OBWriteInternationalResponse3/Data/Status |Specifies the status of the payment information group. |OBTransactionIndividualStatus1Code |AcceptedCreditSettlementCompleted AcceptedWithoutPosting AcceptedSettlementCompleted AcceptedSettlementInProcess Pending Rejected | |
-| StatusUpdateDateTime |1..1 |OBWriteInternationalResponse3/Data/StatusUpdateDateTime |Date and time at which the resource status was updated. |ISODateTime | | |
-| ExpectedExecutionDateTime |0..1 |OBWriteInternationalResponse3/Data/ExpectedExecutionDateTime |Expected execution date and time for the payment resource. |ISODateTime | | |
-| ExpectedSettlementDateTime |0..1 |OBWriteInternationalResponse3/Data/ExpectedSettlementDateTime |Expected settlement date and time for the payment resource. |ISODateTime | | |
-| Charges |0..n |OBWriteInternationalResponse3/Data/Charges |Set of elements used to provide details of a charge for the payment initiation. |OBCharge2 | | |
-| ExchangeRateInformation |0..1 |OBWriteInternationalResponse3/Data/ExchangeRateInformation |Further detailed information on the exchange rate that has been used in the payment transaction. |OBExchangeRate2 | | |
-| Initiation |1..1 |OBWriteInternationalResponse3/Data/Initiation |The Initiation payload is sent by the initiating party to the ASPSP. It is used to request movement of funds from the debtor account to a creditor for a single international payment. |OBInternational2 | | |
-| MultiAuthorisation |0..1 |OBWriteInternationalResponse3/Data/MultiAuthorisation |The multiple authorisation flow response from the ASPSP. |OBMultiAuthorisation1 | | |
-
-### International Payment Order - Payment Details - Response
-
-The OBWritePaymentDetailsResponse1 object will be used for a response to a call to:
-
-* GET /international-payments/{InternationalPaymentId}/payment-details
-
-#### UML Diagram
-
-![International Payment Order - Payment Details - Response](images/OBWritePaymentDetailsResponse1.png)
-
-#### Data Dictionary
-
-| Name |Occurrence |XPath |EnhancedDefinition |Class |Codes |Pattern |
-| ---- |---------- |----- |------------------ |----- |----- |------- |
-| OBWritePaymentDetailsResponse1 | |OBWritePaymentDetailsResponse1 | |OBWritePaymentDetailsResponse1 | | |
-| Data |1..1 |OBWritePaymentDetailsResponse1/Data | |OBWriteDataPaymentOrderStatusResponse1 | | |
-| PaymentStatus |0..unbounded |OBWritePaymentDetailsResponse1/Data/PaymentStatus |Payment status details. |OBWritePaymentDetails1 | | |
-
 ## Usage Examples
 
-### Debit amount specified; ASPSP provides actual (guaranteed) FX rate, for limited time
+### POST /international-payment-consents
 
-The payee specifies the amount to be debited from the payment account and requests a payment to be credited in USD at a fixed rate.
-
-#### POST /international-payment-consents request
+#### Request
 
 ```
 POST /international-payment-consents HTTP/1.1
@@ -644,7 +416,7 @@ Accept: application/json
 }
 ```
 
-#### POST /international-payment-consents response
+#### Response
 
 ```
 HTTP/1.1 201 Created
@@ -702,9 +474,9 @@ Content-Type: application/json
 }
 ```
 
-### Confirm Funds on International Payment Order Consent
+### GET / international-payment-consents/{ConsentId}/funds-confirmation
 
-#### GET / international-payment-consents/{ConsentId}/funds-confirmation Request
+#### Request
 
 ```
 GET /international-payment-consents/58923/funds-confirmation HTTP/1.1
@@ -715,7 +487,7 @@ x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Accept: application/json
 ```
 
-#### GET /international-payment-consents/{ConsentId}/funds-confirmation Response
+#### Response
 
 ```
 HTTP/1.1 200 OK
@@ -737,363 +509,4 @@ Content-Type: application/json
 	},
 	"Meta": {}
 }
-```
-
-### Debit amount specified; ASPSP provides indicative FX rate
-
-The payee specifies the amount to be debited from the payment account and requests a payment to be credited in USD at an indicative rate.
-
-#### POST /international-payment-consents request
-
-```
-POST /international-payment-consents HTTP/1.1
-Authorization: Bearer 2YotnFZFEjr1zCsicMWpAA
-x-idempotency-key: FRESCO.21302.GFX.20
-x-jws-signature: TGlmZSdzIGEgam91cm5leSBub3QgYSBkZXN0aW5hdGlvbiA=..T2ggZ29vZCBldmVuaW5nIG1yIHR5bGVyIGdvaW5nIGRvd24gPw==
-x-fapi-auth-date: Sun, 10 Sep 2017 19:43:31 GMT
-x-fapi-customer-ip-address: 104.25.212.99
-x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
-Content-Type: application/json
-Accept: application/json
-```
-
-```json
-{
- "Data": {
-  "Initiation": {
-   "InstructionIdentification": "ACME412",
-   "EndToEndIdentification": "FRESCO.21302.GFX.20",
-   "InstructionPriority": "Normal",
-   "CurrencyOfTransfer": "USD",
-   "InstructedAmount": {
-    "Amount": "165.88",
-    "Currency": "GBP"
-   },
-   "CreditorAccount": {
-    "SchemeName": "UK.OBIE.SortCodeAccountNumber",
-    "Identification": "08080021325698",
-    "Name": "ACME Inc",
-    "SecondaryIdentification": "0002"
-   },
-   "RemittanceInformation": {
-    "Reference": "FRESCO-101",
-    "Unstructured": "Internal ops code 5120101"
-   },
-   "ExchangeRateInformation": {
-    "UnitCurrency": "GBP",
-    "RateType": "Indicative"
-   }
-  }
- },
- "Risk": {
-  "PaymentContextCode": "PartyToParty"
- }
-}
-```
-
-#### POST /international-payment-consents response
-
-```
-HTTP/1.1 201 Created
-x-jws-signature: V2hhdCB3ZSBnb3QgaGVyZQ0K..aXMgZmFpbHVyZSB0byBjb21tdW5pY2F0ZQ0K
-x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
-Content-Type: application/json
-```
-
-```json
-{
-	"Data": {
-		"ConsentId": "58923",
-		"Status": "AwaitingAuthorisation",
-		"CutOffDateTime": "2017-06-05T16:00:13+00:00",
-		"CreationDateTime": "2017-06-05T15:15:13+00:00",
-		"StatusUpdateDateTime": "2017-06-05T15:15:13+00:00",
-		"Initiation": {},
-		"ExchangeRateInformation": {
-			"UnitCurrency": "GBP",
-			"ExchangeRate": 1.10,
-			"RateType": "Indicative"
-		},
-	},
-	"Risk": {
-		"PaymentContextCode": "PartyToParty"
-
-	},
-	"Links": {
-		"Self": "https://api.alphabank.com/open-banking/v3.1/pisp/international-payment-consents/58923"
-	},
-	"Meta": {}
-}
-```
-
-### Debit amount specified; ASPSP provides a pre-booked FX rate
-
-The payee specifies the amount to be debited from the payment account and requests a payment to be credited in USD. The payee specifies a contract reference number that has been pre-negotiated and pre-booked with the ASPSP.
-
-#### POST /international-payment-consents request
-
-```
-POST /international-payment-consents HTTP/1.1
-Authorization: Bearer 2YotnFZFEjr1zCsicMWpAA
-x-idempotency-key: FRESCO.21302.GFX.20
-x-jws-signature: TGlmZSdzIGEgam91cm5leSBub3QgYSBkZXN0aW5hdGlvbiA=..T2ggZ29vZCBldmVuaW5nIG1yIHR5bGVyIGdvaW5nIGRvd24gPw==
-x-fapi-auth-date: Sun, 10 Sep 2017 19:43:31 GMT
-x-fapi-customer-ip-address: 104.25.212.99
-x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
-Content-Type: application/json
-Accept: application/json
-```
-
-```json
-{
- "Data": {
-  "Initiation": {
-   "InstructionIdentification": "ACME412",
-   "EndToEndIdentification": "FRESCO.21302.GFX.20",
-   "InstructionPriority": "Normal",
-   "CurrencyOfTransfer": "USD",
-   "InstructedAmount": {
-    "Amount": "165.88",
-    "Currency": "GBP"
-   },
-   "CreditorAccount": {
-    "SchemeName": "UK.OBIE.SortCodeAccountNumber",
-    "Identification": "08080021325698",
-    "Name": "ACME Inc",
-    "SecondaryIdentification": "0002"
-   },
-   "RemittanceInformation": {
-    "Reference": "FRESCO-101",
-    "Unstructured": "Internal ops code 5120101"
-   },
-   "ExchangeRateInformation": {
-    "UnitCurrency": "GBP",
-    "RateType": "Agreed",
-    "ExchangeRate": 1.09,
-    "ContractIdentification": "/tbill/2018/T102993"
-   }
-  }
- },
- "Risk": {
-  "PaymentContextCode": "PartyToParty"
- }
-}
-```
-
-#### POST /international-payment-consents response
-
-```
-HTTP/1.1 201 Created
-x-jws-signature: V2hhdCB3ZSBnb3QgaGVyZQ0K..aXMgZmFpbHVyZSB0byBjb21tdW5pY2F0ZQ0K
-x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
-Content-Type: application/json
-```
-
-```json
-{
-	"Data": {
-		"ConsentId": "58923",
-		"Status": "AwaitingAuthorisation",
-		"CutOffDateTime": "2017-06-05T16:00:13+00:00",
-		"CreationDateTime": "2017-06-05T15:15:13+00:00",
-		"StatusUpdateDateTime": "2017-06-05T15:15:13+00:00",
-		"Initiation": {},
-		"ExchangeRateInformation": {
-			"UnitCurrency": "GBP",
-	 		"RateType": "Agreed",	
-			"ExchangeRate": 1.09,
-			"ContractIdentification": "/tbill/2018/T102993"
-	 	}
-	},
-	"Risk": {
-		"PaymentContextCode": "PartyToParty"
-
-	},
-	"Links": {
-		"Self": "https://api.alphabank.com/open-banking/v3.1/pisp/international-payment-consents/58923"
-	},
-	"Meta": {}
-}
-```
-
-### Credit amount specified; ASPSP provides actual (guaranteed) FX rate, for limited time
-
-In this situation, the PSU specifies the amount that must be credited to the payee. The ASPSP will debit the appropriate amount in GBP depending on the exchange rate.
-
-As in the situation where the PSU specifies the amount to be debited the exchange rate could be guaranteed, indicative or pre-booked. CurrencyOfTransfer specified.
-
-#### POST /international-payment-consents request
-
-```
-POST /international-payment-consents HTTP/1.1
-Authorization: Bearer 2YotnFZFEjr1zCsicMWpAA
-x-idempotency-key: FRESCO.21302.GFX.20
-x-jws-signature: TGlmZSdzIGEgam91cm5leSBub3QgYSBkZXN0aW5hdGlvbiA=..T2ggZ29vZCBldmVuaW5nIG1yIHR5bGVyIGdvaW5nIGRvd24gPw==
-x-fapi-auth-date: Sun, 10 Sep 2017 19:43:31 GMT
-x-fapi-customer-ip-address: 104.25.212.99
-x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
-Content-Type: application/json
-Accept: application/json
-```
-
-```json
-{
- "Data": {
-  "Initiation": {
-   "InstructionIdentification": "ACME412",
-   "EndToEndIdentification": "FRESCO.21302.GFX.20",
-   "InstructedAmount": {
-    "Amount": "165.88",
-    "Currency": "USD"
-   },
-   "CurrencyOfTransfer": "USD",
-   "CreditorAccount": {
-    "SchemeName": "UK.OBIE.SortCodeAccountNumber",
-    "Identification": "08080021325698",
-    "Name": "ACME Inc",
-    "SecondaryIdentification": "0002"
-   },
-   "RemittanceInformation": {
-    "Reference": "FRESCO-101",
-    "Unstructured": "Internal ops code 5120101"
-   },
-   "ExchangeRateInformation": {
-    "UnitCurrency": "GBP",
-    "RateType": "Actual"
-   }
-  }
- },
- "Risk": {
-  "PaymentContextCode": "PartyToParty"
- }
-}
-```
-
-#### POST /international-payment-consents response
-
-```
-HTTP/1.1 201 Created
-x-jws-signature: V2hhdCB3ZSBnb3QgaGVyZQ0K..aXMgZmFpbHVyZSB0byBjb21tdW5pY2F0ZQ0K
-x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
-Content-Type: application/json
-```
-
-```json
-{
- "Data": {
-  "ConsentId": "58923",
-  "Status": "AwaitingAuthorisation",
-  "CutOffDateTime": "2017-06-05T16:00:13+00:00",
-  "CreationDateTime": "2017-06-05T15:15:13+00:00",
-  "StatusUpdateDateTime": "2017-06-05T15:15:13+00:00",
-  "Initiation": {
-   "InstructionIdentification": "ACME412",
-   "EndToEndIdentification": "FRESCO.21302.GFX.20",
-   "InstructionPriority": "Normal",
-   "CurrencyOfTransfer": "USD",
-   "InstructedAmount": {
-    "Amount": "165.88",
-    "Currency": "GBP"
-   },
-   "CreditorAccount": {
-    "SchemeName": "UK.OBIE.SortCodeAccountNumber",
-    "Identification": "08080021325698",
-    "Name": "ACME Inc",
-    "SecondaryIdentification": "0002"
-   },
-   "RemittanceInformation": {
-    "Reference": "FRESCO-101",
-    "Unstructured": "Internal ops code 5120101"
-   },
-   "ExchangeRateInformation": {
-    "UnitCurrency": "GBP",
-    "RateType": "Actual"
-   }
-  }
- },
- "Risk": {
-  "PaymentContextCode": "PartyToParty"
- }
-}
-```
-
-### International payment with all charges paid by payer
-
-Charge types are indicative only.
-
-#### POST /international-payment-consents request
-
-```
-POST /international-payment-consents HTTP/1.1
-Authorization: Bearer 2YotnFZFEjr1zCsicMWpAA
-x-idempotency-key: FRESCO.21302.GFX.20
-x-jws-signature: TGlmZSdzIGEgam91cm5leSBub3QgYSBkZXN0aW5hdGlvbiA=..T2ggZ29vZCBldmVuaW5nIG1yIHR5bGVyIGdvaW5nIGRvd24gPw==
-x-fapi-auth-date: Sun, 10 Sep 2017 19:43:31 GMT
-x-fapi-customer-ip-address: 104.25.212.99
-x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
-Content-Type: application/json
-Accept: application/json
-```
-
-```json
-{
- "Data": {
-  "Initiation": {
-   "InstructionIdentification": "ACME412",
-   "EndToEndIdentification": "FRESCO.21302.GFX.20",
-   "ChargeBearer": "BorneByDebtor",
-   "RemittanceInformation": {
-    "Reference": "FRESCO-101",
-    "Unstructured": "Internal ops code 5120101"
-   },
-	 "ExchangeRateInformation": {
-		"UnitCurrency": "USD",
-	 	"RateType": "Indicative"
-	 }
-  }
- },
- "Risk": {
-  "PaymentContextCode": "PartyToParty"
- }
-}
-```
-
-#### POST /international-payment-consents response
-
-```
-HTTP/1.1 201 Created
-x-jws-signature: V2hhdCB3ZSBnb3QgaGVyZQ0K..aXMgZmFpbHVyZSB0byBjb21tdW5pY2F0ZQ0K
-x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
-Content-Type: application/json
-```
-
-```json
-{
-	"Data": {
-		"ConsentId": "58923",
-		"Status": "AwaitingAuthorisation",
-		"CutOffDateTime": "2017-06-05T16:00:13+00:00",
-		"CreationDateTime": "2017-06-05T15:15:13+00:00",
-		"StatusUpdateDateTime": "2017-06-05T15:15:13+00:00",
-		"Initiation": {},
-    "Charges":[{
-      "ChargeBearer": "BorneByDebtor",
-      "Type":"UK.OBIE.MoneyTransferOut"
-     }],
-    "ExchangeRateInformation": {
-			"UnitCurrency": "USD",
-			"ExchangeRate": 0.9090,
-			"RateType": "Indicative"
-		}
-	},
-	"Risk": {
-		"PaymentContextCode": "PartyToParty"
-
-	},
-	"Links": {
-		"Self": "https://api.alphabank.com/open-banking/v3.1/pisp/international-payment-consents/58923"
-	},
-	"Meta": {}
-}
-
 ```
