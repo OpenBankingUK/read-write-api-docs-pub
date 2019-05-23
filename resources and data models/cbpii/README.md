@@ -11,7 +11,7 @@ The API endpoints for these resources, and their mandatory/conditional/optional 
 
 | Resource |Endpoints |Mandatory? |
 | --- |--- |--- |
-| [funds-confirmation-consents](funds-confirmation-consent.md) |<li>POST /funds-confirmation-consents<li>GET /funds-confirmation-consents/{ConsentId}<li>DELETE /funds-confirmation-consents/{ConsentId} |<li>Mandatory<li>Mandatory<li>Mandatory |
-| [funds-confirmations](funds-confirmation.md) |<li>POST /funds-confirmations |<li>Mandatory |
+| [funds-confirmation-consents](funds-confirmation-consent.md) |POST /funds-confirmation-consents<br>GET /funds-confirmation-consents/{ConsentId}<br>DELETE /funds-confirmation-consents/{ConsentId} |Mandatory<br>Mandatory<br>Mandatory |
+| [funds-confirmations](funds-confirmation.md) |POST /funds-confirmations |Mandatory |
 
 Definitions for Mandatory, Conditional and Optional are given in the [Read/Write Data API Profile](../../profiles/read-write-data-api-profile.md#categorisation-of-implementation-requirements).
