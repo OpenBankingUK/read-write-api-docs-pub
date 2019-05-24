@@ -11,7 +11,9 @@ The API endpoints for these resources, and their mandatory/conditional/optional 
 
 | Resource |Endpoints |Mandatory? |
 | --- |--- |---|
-| [funds-confirmation-consents](funds-confirmation-consent.md) |POST /funds-confirmation-consents<br>GET /funds-confirmation-consents/{ConsentId}<br>DELETE /funds-confirmation-consents/{ConsentId} |Mandatory<br>Mandatory<br>Mandatory |
+| [funds-confirmation-consents](funds-confirmation-consent.md) |POST /funds-confirmation-consents |Mandatory |
+| [funds-confirmation-consents](funds-confirmation-consent.md) |GET /funds-confirmation-consents/{ConsentId} |Mandatory |
+| [funds-confirmation-consents](funds-confirmation-consent.md) |DELETE /funds-confirmation-consents/{ConsentId} |Mandatory |
 | [funds-confirmations](funds-confirmation.md) |POST /funds-confirmations |Mandatory |
 
 ### Notes
