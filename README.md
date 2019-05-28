@@ -26,7 +26,7 @@ https://github.com/OpenBankingUK/read-write-api-specs
 - Arif Khan
 - Chris Wood
 - Daniel Johnson
-- Freddi Gyara
+- Freddi  Gyara
 - Nitin Tiwari
 
 ### Past
