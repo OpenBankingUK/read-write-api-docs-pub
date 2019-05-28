@@ -1,4 +1,4 @@
-# File Payments <!-- omit in toc -->
+# File Payments
 
 1. [Overview](#overview)
    1. [Profile Compatibility](#profile-compatibility)
@@ -10,7 +10,7 @@
       1. [Status](#status-1)
    4. [State Model](#state-model)
       1. [Payment Order](#payment-order)
-         1. [Multiple Authorisation](#multiple-authorisation)
+      2. [Multiple Authorisation](#multiple-authorisation)
 3. [Data Model](#data-model)
    1. [Reused Classes](#reused-classes)
       1. [OBFile2](#obfile2)
