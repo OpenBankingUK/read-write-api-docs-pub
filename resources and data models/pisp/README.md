@@ -12,12 +12,8 @@ Resources accessed using the pisp PSD2 role are detailed here:
 * [International Scheduled Payments](international-scheduled-payments.md)
 * [International Standing Order Consents](international-standing-order-consents.md)
 * [International Standing Orders](international-standing-orders.md)
-
----
-
-* [File Payments](File%20Payments.md)
-
----
+* [File Payment Consents](file-payment-consents.md)
+* [File Payments](file-payments.md)
 
 ## Endpoints
 
