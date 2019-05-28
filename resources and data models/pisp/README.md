@@ -29,7 +29,7 @@ The API endpoints for these resources, and their mandatory/conditional/optional 
 | [domestic-payments](domestic-payments.md) |GET /domestic-payments/{DomesticPaymentId}/payment-details |Optional |
 | [domestic-scheduled-payment-consents](domestic-scheduled-payment-consents.md) |POST /domestic-scheduled-payment-consents |Conditional |
 | [domestic-scheduled-payment-consents](domestic-scheduled-payment-consents.md) |GET /domestic-scheduled-payment-consents/{ConsentId} |Mandatory (if resource POST implemented) |
-| [domestic-scheduled-payments](domestic-scheduled-payments.md) |POST /domestic-scheduled-payments< |Conditional |
+| [domestic-scheduled-payments](domestic-scheduled-payments.md) |POST /domestic-scheduled-payments |Conditional |
 | [domestic-scheduled-payments](domestic-scheduled-payments.md) |GET /domestic-scheduled-payments/{DomesticScheduledPaymentId} |Mandatory (if resource POST implemented) |
 | [domestic-scheduled-payments](domestic-scheduled-payments.md) |GET /domestic-scheduled-payments/{DomesticScheduledPaymentId}/payment-details |Optional |
 | [domestic-standing-order-consents](domestic-standing-order-consents.md) |POST /domestic-standing-order-consents |Conditional |
