@@ -1,4 +1,4 @@
-# Open Banking Read-Write API Profile  <!-- omit in toc -->
+# Open Banking Read-Write API Profile  - v3.1.2
 
 1. [Overview](#overview)
    1. [Document Structure](#document-structure)

@@ -1,4 +1,4 @@
-# International Payment Consents <!-- omit in toc -->
+# International Payment Consents - v3.1.2
 
 1. [Overview](#overview)
    1. [Profile Compatibility](#profile-compatibility)
