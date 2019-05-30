@@ -1,4 +1,4 @@
-# Open Banking Read-Write API - v3.1.2
+# Open Banking Read-Write API
 
 The Read/Write Data API specification describes a collection of RESTful APIs that enable TPPs to access information and initiate payments for customers, by connecting to ASPSPs – securely, efficiently, and with customer consent.
 
