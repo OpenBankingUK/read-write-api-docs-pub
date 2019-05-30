@@ -1,4 +1,4 @@
-# Products <!-- omit in toc -->
+# Products - v3.1.2
 
 1. [Overview](#overview)
    1. [Profile Compatibility](#profile-compatibility)

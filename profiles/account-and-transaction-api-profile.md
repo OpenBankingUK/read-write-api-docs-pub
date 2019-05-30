@@ -1,4 +1,4 @@
-# Account and Transaction API Profile <!-- omit in toc -->
+# Account and Transaction API Profile - v3.1.2
 
 1. [Overview](#overview)
    1. [Document Structure](#document-structure)
