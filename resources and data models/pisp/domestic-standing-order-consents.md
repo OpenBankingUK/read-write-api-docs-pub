@@ -1,4 +1,4 @@
-# Domestic Standing Order Consents <!-- omit in toc -->
+# Domestic Standing Order Consents - v3.1.2
 
 1. [Overview](#overview)
    1. [Profile Compatibility](#profile-compatibility)

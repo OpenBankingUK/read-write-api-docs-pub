@@ -1,4 +1,4 @@
-# Event Subscription <!-- omit in toc -->
+# Event Subscription - v3.1.2
 
 1. [Overview](#overview)
    1. [Profile Compatibility](#profile-compatibility)
