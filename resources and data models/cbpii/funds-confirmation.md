@@ -1,4 +1,4 @@
-# Funds Confirmation <!-- omit in toc -->
+# Funds Confirmation - v3.1.2
 
 1. [Overview](#overview)
    1. [Profile Compatibility](#profile-compatibility)
