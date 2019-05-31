@@ -28,7 +28,7 @@ This document consists of the following parts:
 
 ### Profile Compatibility
 
-For a list of profiles compatible with this resource, please see the [Compatibility Matrix]().
+For a list of profiles compatible with this resource, please see the [Compatibility Matrix](../compatibility-matrix.xlsx).
 
 ## Basics
 

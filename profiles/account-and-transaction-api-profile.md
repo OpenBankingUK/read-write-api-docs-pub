@@ -66,7 +66,7 @@ This document consists of the following parts:
 
 ### Profile Compatibility
 
-For a list of profiles and resources compatible with this profile, please see the [Compatibility Matrix]().
+For a list of profiles and resources compatible with this profile, please see the [Compatibility Matrix](../compatibility-matrix.xlsx).
 
 ### Resources
 

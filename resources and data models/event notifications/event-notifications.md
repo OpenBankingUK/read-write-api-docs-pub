@@ -1,7 +1,6 @@
 # Event Notifications - v3.1.2
 
 1. [Overview](#overview)
-   1. [Profile Compatibility](#profile-compatibility)
 2. [Endpoints](#endpoints)
    1. [Endpoints](#endpoints-1)
       1. [POST /event-notifications](#post-event-notifications)
@@ -42,10 +41,6 @@
 The Event Notification resource is used by a ASPSP to notify a TPP of an event.
 
 This resource description should be read in conjunction with a compatible Real Time Event Notification Profile.
-
-### Profile Compatibility
-
-For a list of profiles compatible with this resource, please see the [Compatibility Matrix]().
 
 ## Endpoints
 
