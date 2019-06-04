@@ -1,7 +1,6 @@
 # Beneficiaries - v3.1.2
 
 1. [Overview](#overview)
-   1. [Profile Compatibility](#profile-compatibility)
 2. [Endpoints](#endpoints)
    1. [GET/accounts/{AccountId}/beneficiaries](#getaccountsaccountidbeneficiaries)
    2. [GET /beneficiaries](#get-beneficiaries)
@@ -23,10 +22,6 @@
 The beneficiaries resource is used by an AISP to retrieve the account beneficiaries information for a specific AccountId or to retrieve the beneficiaries' information in bulk for account(s) that the PSU has authorised to access.
 
 This resource description should be read in conjunction with a compatible Account Information Services API Profile.
-
-### Profile Compatibility
-
-For a list of profiles compatible with this resource, please see the [Compatibility Matrix](https://github.com/OpenBankingUK/read-write-api-docs/tree/dj-align-payment-resource-page-structure/resources%20and%20data%20models/aisp)
 
 ## Endpoints
 

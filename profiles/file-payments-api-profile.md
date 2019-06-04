@@ -2,7 +2,6 @@
 
 1. [Overview](#overview)
    1. [Document Overview](#document-overview)
-   2. [Profile Compatibility](#profile-compatibility)
 2. [Basics](#basics)
    1. [Overview](#overview-1)
       1. [Steps](#steps)
@@ -25,10 +24,6 @@ This document consists of the following parts:
  **Overview:** Provides an overview of the profile.
  
  **Basics:** Identifies the flows.
-
-### Profile Compatibility
-
-For a list of profiles compatible with this resource, please see the [Compatibility Matrix]().
 
 ## Basics
 

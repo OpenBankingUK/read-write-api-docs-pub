@@ -1,7 +1,6 @@
 # Domestic Standing Orders - v3.1.2
 
 1. [Overview](#overview)
-   1. [Profile Compatibility](#profile-compatibility)
 2. [Endpoints](#endpoints)
    1. [POST /domestic-standing-orders](#post-domestic-standing-orders)
       1. [Status](#status)
@@ -36,10 +35,6 @@
 The Domestic Standing Orders resource is used by a PISP to initiate a Domestic Standing Order.
 
 This resource description should be read in conjunction with a compatible Payment Initiation API Profile.
-
-### Profile Compatibility
-
-For a list of profiles compatible with this resource, please see the [Compatibility Matrix]().
 
 ## Endpoints
 

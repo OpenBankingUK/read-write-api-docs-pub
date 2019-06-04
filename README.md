@@ -4,7 +4,7 @@ The Read/Write Data API specification describes a collection of RESTful APIs tha
 
 The specification is structured as a series of profiles, resources and data models. The structure is intended to give ASPSPs a suite of functionality to meet their regulatory and commercial requirements. ASPSPs implementing aspects of the specification should select a version of the R/W Data API Profile, compatible functional profiles (such as Accounts and Transactions or Payments) and compatible resources.
 
-Details of version compatibility can be found [TODO].
+Details of version compatibility can be found in **profiles** section and specific sub-sections of **resources and data models** section of the specification.
 
 This specification should be read in conjunction with the Customer Experience Guidelines, Operational Guidelines and Management Information Requirements. Together these form the OBIE standard, which should enable any ASPSP which implements the specification to meet their obligations under both the CMA Order and PSD2/RTS.
 

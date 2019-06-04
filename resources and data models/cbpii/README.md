@@ -19,3 +19,15 @@ The API endpoints for these resources, and their mandatory/conditional/optional 
 ### Notes
 
 Definitions for Mandatory, Conditional and Optional are given in the [Read/Write Data API Profile](../../profiles/read-write-data-api-profile.md#categorisation-of-implementation-requirements).
+
+## Confirmation of Funds Resource Compatibility
+
+|  | |Read-Write API Profile |Read-Write API Profile |Read-Write API Profile |Confirmation of Funds API Profile |Confirmation of Funds API Profile |Confirmation of Funds API Profile |
+| --- |--- |--- |--- |--- |--- |--- |--- |
+|  | |v3.1 |v3.1.1 |3.1.2 |v3.1 |v3.1.1 |3.1.2 |
+| Funds Confirmation Consent |v3.1 |TRUE |TRUE |TRUE |TRUE |TRUE |TRUE |
+|  |v3.1.1 |TRUE |TRUE |TRUE |TRUE |TRUE |TRUE |
+|  |v3.1.2 |TRUE |TRUE |TRUE |TRUE |TRUE |TRUE |
+| Funds Confirmation |v3.1 |TRUE |TRUE |TRUE |TRUE |TRUE |TRUE |
+|  |v3.1.1 |TRUE |TRUE |TRUE |TRUE |TRUE |TRUE |
+|  |v3.1.2 |TRUE |TRUE |TRUE |TRUE |TRUE |TRUE |

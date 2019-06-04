@@ -1,7 +1,6 @@
 # Transactions - v3.1.2
 
 1. [Overview](#overview)
-   1. [Profile Compatibility](#profile-compatibility)
 2. [Endpoints](#endpoints)
    1. [GET /accounts/{AccountId}/transactions](#get-accountsaccountidtransactions)
    2. [GET /transactions](#get-transactions)
@@ -29,10 +28,6 @@
 The transactions resource is used by an AISP to retrieve the  transactions for a specific AccountId or to retrieve the transactions in bulk for account(s) that the PSU has authorised to access.
 
 This resource description should be read in conjunction with a compatible Account Information Services API Profile.
-
-### Profile Compatibility
-
-For a list of profiles compatible with this resource, please see the [Compatibility Matrix](https://github.com/OpenBankingUK/read-write-api-docs/tree/dj-align-payment-resource-page-structure/resources%20and%20data%20models/aisp)
 
 ## Endpoints
 

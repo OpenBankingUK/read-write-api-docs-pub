@@ -58,3 +58,45 @@ The API endpoints for these resources, and their mandatory/conditional/optional 
 ### Notes
 
 Definitions for Mandatory, Conditional and Optional are given in the [Read/Write Data API Profile](../../profiles/read-write-data-api-profile.md#categorisation-of-implementation-requirements).
+
+## Account and Transactionns Resource Compatibility
+
+|  | |Read-Write API Profile |Read-Write API Profile |Read-Write API Profile |Account and Transaction API Profile |Account and Transaction API Profile |Account and Transaction API Profile |
+| --- |--- |--- |--- |--- |--- |--- |--- |
+|  | |v3.1 |v3.1.1 |3.1.2 |v3.1 |v3.1.1 |3.1.2 |
+| Account Access Consents |v3.1 |TRUE |TRUE |TRUE |TRUE |TRUE |TRUE |
+|  |v3.1.1 |TRUE |TRUE |TRUE |TRUE |TRUE |TRUE |
+|  |v3.1.2 |TRUE |TRUE |TRUE |TRUE |TRUE |TRUE |
+| Accounts |v3.1 |TRUE |TRUE |TRUE |TRUE |TRUE |TRUE |
+|  |v3.1.1 |TRUE |TRUE |TRUE |TRUE |TRUE |TRUE |
+|  |v3.1.2 |TRUE |TRUE |TRUE |TRUE |TRUE |TRUE |
+| Balances |v3.1 |TRUE |TRUE |TRUE |TRUE |TRUE |TRUE |
+|  |v3.1.1 |TRUE |TRUE |TRUE |TRUE |TRUE |TRUE |
+|  |v3.1.2 |TRUE |TRUE |TRUE |TRUE |TRUE |TRUE |
+| Beneficiaries |v3.1 |TRUE |TRUE |TRUE |TRUE |TRUE |TRUE |
+|  |v3.1.1 |TRUE |TRUE |TRUE |TRUE |TRUE |TRUE |
+|  |v3.1.2 |TRUE |TRUE |TRUE |TRUE |TRUE |TRUE |
+| Direct Debits |v3.1 |TRUE |TRUE |TRUE |TRUE |TRUE |TRUE |
+|  |v3.1.1 |TRUE |TRUE |TRUE |TRUE |TRUE |TRUE |
+|  |v3.1.2 |TRUE |TRUE |TRUE |TRUE |TRUE |TRUE |
+| Offers |v3.1 |TRUE |TRUE |TRUE |TRUE |TRUE |TRUE |
+|  |v3.1.1 |TRUE |TRUE |TRUE |TRUE |TRUE |TRUE |
+|  |v3.1.2 |TRUE |TRUE |TRUE |TRUE |TRUE |TRUE |
+| Parties |v3.1 |TRUE |TRUE |TRUE |TRUE |TRUE |TRUE |
+|  |v3.1.1 |TRUE |TRUE |TRUE |TRUE |TRUE |TRUE |
+|  |v3.1.2 |TRUE |TRUE |TRUE |TRUE |TRUE |TRUE |
+| Products |v3.1 |TRUE |TRUE |TRUE |TRUE |TRUE |TRUE |
+|  |v3.1.1 |TRUE |TRUE |TRUE |TRUE |TRUE |TRUE |
+|  |v3.1.2 |TRUE |TRUE |TRUE |TRUE |TRUE |TRUE |
+| Scheduled Payments |v3.1 |TRUE |TRUE |TRUE |TRUE |TRUE |TRUE |
+|  |v3.1.1 |TRUE |TRUE |TRUE |TRUE |TRUE |TRUE |
+|  |v3.1.2 |TRUE |TRUE |TRUE |TRUE |TRUE |TRUE |
+| Standing Orders |v3.1 |TRUE |TRUE |TRUE |TRUE |TRUE |TRUE |
+|  |v3.1.1 |TRUE |TRUE |TRUE |TRUE |TRUE |TRUE |
+|  |v3.1.2 |TRUE |TRUE |TRUE |TRUE |TRUE |TRUE |
+| Statements |v3.1 |TRUE |TRUE |TRUE |TRUE |TRUE |TRUE |
+|  |v3.1.1 |TRUE |TRUE |TRUE |TRUE |TRUE |TRUE |
+|  |v3.1.2 |TRUE |TRUE |TRUE |TRUE |TRUE |TRUE |
+| Transactions |v3.1 |TRUE |TRUE |TRUE |TRUE |TRUE |TRUE |
+|  |v3.1.1 |TRUE |TRUE |TRUE |TRUE |TRUE |TRUE |
+|  |v3.1.2 |TRUE |TRUE |TRUE |TRUE |TRUE |TRUE |

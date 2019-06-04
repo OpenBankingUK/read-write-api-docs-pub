@@ -1,7 +1,6 @@
 # International Scheduled Payment Consents - v3.1.2
 
 1. [Overview](#overview)
-	1. [Profile Compatibility](#profile-compatibility)
 2. [Endpoints](#endpoints)
 	1. [POST /international-scheduled-payment-consents](#post-international-scheduled-payment-consents)
 		1. [Status](#status)
@@ -43,10 +42,6 @@
 The International Scheduled Payment Consent resource is used by a PISP to register an intent to initiate an International Scheduled Payment.
 
 This resource description should be read in conjunction with a compatible Payment Initiation API Profile.
-
-### Profile Compatibility
-
-For a list of profiles compatible with this resource, please see the [Compatibility Matrix]().
 
 ## Endpoints
 

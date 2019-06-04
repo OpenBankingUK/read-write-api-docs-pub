@@ -1,7 +1,6 @@
 # Events - v3.1.2
 
 1. [Overview](#overview)
-   1. [Profile Compatibility](#profile-compatibility)
 2. [Endpoints](#endpoints)
    1. [POST /events](#post-events)
 3. [Data Model](#data-model)
@@ -46,10 +45,6 @@
 The Events resource is used by a TPP to retrieve multiple signed event notifications from an ASPSP.
 
 This resource description should be read in conjunction with a compatible Aggregated Polling Profile.
-
-### Profile Compatibility
-
-For a list of profiles compatible with this resource, please see the [Compatibility Matrix]()
 
 ## Endpoints
 | Resource |HTTP Operation |Endpoint |Mandatory? |Scope |Grant Type |Message Signing |Idempotency Key |Request Object |Response Object |
