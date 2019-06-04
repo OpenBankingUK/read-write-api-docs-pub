@@ -10,3 +10,21 @@
   - [Aggregated Polling API Profile](aggregated-polling-api-profile.md)
   - [Event Notification Subscription API Profile](event-notification-subscription-api-profile.md)
   - [Callback URL API Profile](callback-url-api-profile.md)
+
+## Profile Compatibility
+
+|  | |Read-Write API Profile |Read-Write API Profile |Read-Write API Profile |
+| --- |--- |--- |--- |--- |
+|  | |v3.1 |v3.1.1 |v3.1.2 |
+| Account and Transaction API Profile |v3.1 |TRUE |TRUE |TRUE |
+|  |v3.1.1 |TRUE |TRUE |TRUE |
+|  |v3.1.2 |TRUE |TRUE |TRUE |
+| Payment Initiation API Profile |v3.1 |TRUE |TRUE |TRUE |
+|  |v3.1.1 |TRUE |TRUE |TRUE |
+|  |v3.1.2 |TRUE |TRUE |TRUE |
+| Confirmation of Funds API Profile |v3.1 |TRUE |TRUE |TRUE |
+|  |v3.1.1 |TRUE |TRUE |TRUE |
+|  |v3.1.2 |TRUE |TRUE |TRUE |
+| Event Notification API Profile |v3.1 |TRUE |TRUE |TRUE |
+|  |v3.1.1 |TRUE |TRUE |TRUE |
+|  |v3.1.2 |TRUE |TRUE |TRUE |
