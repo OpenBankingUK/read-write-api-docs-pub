@@ -25,13 +25,13 @@ https://github.com/OpenBankingUK/read-write-api-specs
 
 - Arif Khan
 - Chris Wood
-- Daniel Johnson
 - Freddi  Gyara
 - Nitin Tiwari
 
 ### Past
 
 - Claudio Viola
+- [Daniel Johnson](https://github.com/danielcjohnson)
 - Gavin Wong
 - Imran Qureshi
 - Jan Szumiec
