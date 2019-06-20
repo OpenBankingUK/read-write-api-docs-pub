@@ -1,7 +1,6 @@
 # Domestic Payments - v3.1.2
 
 1. [Overview](#overview)
-   1. [Profile Compatibility](#profile-compatibility)
 2. [Endpoints](#endpoints)
    1. [POST /domestic-payments](#post-domestic-payments)
       1. [Status](#status)
@@ -15,19 +14,17 @@
 3. [Data Model](#data-model)
    1. [Reused Classes](#reused-classes)
       1. [OBDomestic2](#obdomestic2)
-         1. [UML Diagram](#uml-diagram)
-         2. [Data Dictionary](#data-dictionary)
    2. [Domestic Payment - Request](#domestic-payment---request)
-      1. [UML Diagram](#uml-diagram-1)
+      1. [UML Diagram](#uml-diagram)
       2. [Notes](#notes)
-      3. [Data Dictionary](#data-dictionary-1)
+      3. [Data Dictionary](#data-dictionary)
    3. [Domestic Payment - Response](#domestic-payment---response)
-      1. [UML Diagram](#uml-diagram-2)
+      1. [UML Diagram](#uml-diagram-1)
       2. [Notes](#notes-1)
-      3. [Data Dictionary](#data-dictionary-2)
+      3. [Data Dictionary](#data-dictionary-1)
    4. [Domestic Payment Order - Payment Details - Response](#domestic-payment-order---payment-details---response)
-      1. [UML Diagram](#uml-diagram-3)
-      2. [Data Dictionary](#data-dictionary-3)
+      1. [UML Diagram](#uml-diagram-2)
+      2. [Data Dictionary](#data-dictionary-2)
 4. [Usage Examples](#usage-examples)
    1. [POST /domestic-payments](#post-domestic-payments-1)
       1. [Request](#request)
@@ -41,10 +38,6 @@
 The Domestic Payments resource is used by a PISP to initiate a Domestic Payment.
 
 This resource description should be read in conjunction with a compatible Payment Initiation API Profile.
-
-### Profile Compatibility
-
-For a list of profiles compatible with this resource, please see the [Compatibility Matrix]().
 
 ## Endpoints
 

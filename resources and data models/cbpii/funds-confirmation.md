@@ -1,7 +1,6 @@
 # Funds Confirmation - v3.1.2
 
 1. [Overview](#overview)
-   1. [Profile Compatibility](#profile-compatibility)
 2. [Endpoints](#endpoints)
    1. [POST /funds-confirmations](#post-funds-confirmations)
 3. [Data Model](#data-model)
@@ -25,10 +24,6 @@
 The Funds Confirmation resource is used by an CBPII to request to confirm funds are available.
 
 This resource description should be read in conjunction with a compatible Confirmation of Funds API Profile.
-
-### Profile Compatibility
-
-For a list of profiles compatible with this resource, please see the [Compatibility Matrix]().
 
 ## Endpoints
 | Resource |HTTP Operation |Endpoint |Mandatory ? |Scope |Grant Type |Message Signing |Idempotency Key |Request Object |Response Object |

@@ -68,3 +68,51 @@ The API endpoints for these resources, and their mandatory/conditional/optional 
 ### Notes
 
 Definitions for Mandatory, Conditional and Optional are given in the [Read/Write Data API Profile](../../profiles/read-write-data-api-profile.md#categorisation-of-implementation-requirements).
+
+## Payment Initiation Resource Compatibility
+
+|  | |Read-Write API Profile |Read-Write API Profile |Read-Write API Profile |Payment Initiation API Profile |Payment Initiation API Profile |Payment Initiation API Profile |File Payments API Profile |File Payments API Profile |File Payments API Profile |
+| --- |--- |--- |--- |--- |--- |--- |--- |--- |--- |--- |
+|  | |v3.1 |v3.1.1 |3.1.2 |v3.1 |v3.1.1 |3.1.2 |v3.1 |v3.1.1 |3.1.2 |
+| Domestic Payment Consents |v3.1 |TRUE |TRUE |TRUE |TRUE |TRUE |TRUE |n/a | | |
+|  |v3.1.1 |TRUE |TRUE |TRUE |TRUE |TRUE |TRUE | | | |
+|  |v3.1.2 |TRUE |TRUE |TRUE |TRUE |TRUE |TRUE | | | |
+| Domestic Payments |v3.1 |TRUE |TRUE |TRUE |TRUE |TRUE |TRUE |n/a | | |
+|  |v3.1.1 |TRUE |TRUE |TRUE |TRUE |TRUE |TRUE | | | |
+|  |v3.1.2 |TRUE |TRUE |TRUE |TRUE |TRUE |TRUE | | | |
+| Domestic Scheduled Payment Consents |v3.1 |TRUE |TRUE |TRUE |TRUE |TRUE |TRUE |n/a | | |
+|  |v3.1.1 |TRUE |TRUE |TRUE |TRUE |TRUE |TRUE | | | |
+|  |v3.1.2 |TRUE |TRUE |TRUE |TRUE |TRUE |TRUE | | | |
+| Domestic Scheduled Payments |v3.1 |TRUE |TRUE |TRUE |TRUE |TRUE |TRUE |n/a | | |
+|  |v3.1.1 |TRUE |TRUE |TRUE |TRUE |TRUE |TRUE | | | |
+|  |v3.1.2 |TRUE |TRUE |TRUE |TRUE |TRUE |TRUE | | | |
+| Domestic Standing Order Consents |v3.1 |TRUE |TRUE |TRUE |TRUE |TRUE |TRUE |n/a | | |
+|  |v3.1.1 |TRUE |TRUE |TRUE |TRUE |TRUE |TRUE | | | |
+|  |v3.1.2 |TRUE |TRUE |TRUE |TRUE |TRUE |TRUE | | | |
+| Domestic Standing Orders |v3.1 |TRUE |TRUE |TRUE |TRUE |TRUE |TRUE |n/a | | |
+|  |v3.1.1 |TRUE |TRUE |TRUE |TRUE |TRUE |TRUE | | | |
+|  |v3.1.2 |TRUE |TRUE |TRUE |TRUE |TRUE |TRUE | | | |
+| International Payment Consents |v3.1 |TRUE |TRUE |TRUE |TRUE |TRUE |TRUE |n/a | | |
+|  |v3.1.1 |TRUE |TRUE |TRUE |TRUE |TRUE |TRUE | | | |
+|  |v3.1.2 |TRUE |TRUE |TRUE |TRUE |TRUE |TRUE | | | |
+| International Payments |v3.1 |TRUE |TRUE |TRUE |TRUE |TRUE |TRUE |n/a | | |
+|  |v3.1.1 |TRUE |TRUE |TRUE |TRUE |TRUE |TRUE | | | |
+|  |v3.1.2 |TRUE |TRUE |TRUE |TRUE |TRUE |TRUE | | | |
+| International Scheduled Payment Consents |v3.1 |TRUE |TRUE |TRUE |TRUE |TRUE |TRUE |n/a | | |
+|  |v3.1.1 |TRUE |TRUE |TRUE |TRUE |TRUE |TRUE | | | |
+|  |v3.1.2 |TRUE |TRUE |TRUE |TRUE |TRUE |TRUE | | | |
+| International Scheduled Payments |v3.1 |TRUE |TRUE |TRUE |TRUE |TRUE |TRUE |n/a | | |
+|  |v3.1.1 |TRUE |TRUE |TRUE |TRUE |TRUE |TRUE | | | |
+|  |v3.1.2 |TRUE |TRUE |TRUE |TRUE |TRUE |TRUE | | | |
+| International Standing Order Consents |v3.1 |TRUE |TRUE |TRUE |TRUE |TRUE |TRUE |n/a | | |
+|  |v3.1.1 |TRUE |TRUE |TRUE |TRUE |TRUE |TRUE | | | |
+|  |v3.1.2 |TRUE |TRUE |TRUE |TRUE |TRUE |TRUE | | | |
+| International Standing Orders |v3.1 |TRUE |TRUE |TRUE |TRUE |TRUE |TRUE |n/a | | |
+|  |v3.1.1 |TRUE |TRUE |TRUE |TRUE |TRUE |TRUE | | | |
+|  |v3.1.2 |TRUE |TRUE |TRUE |TRUE |TRUE |TRUE | | | |
+| File Payment Consents |v3.1 |TRUE |TRUE |TRUE |TRUE |TRUE |TRUE |TRUE |TRUE |TRUE |
+|  |v3.1.1 |TRUE |TRUE |TRUE |TRUE |TRUE |TRUE |TRUE |TRUE |TRUE |
+|  |v3.1.2 |TRUE |TRUE |TRUE |TRUE |TRUE |TRUE |TRUE |TRUE |TRUE |
+| File Payments |v3.1 |TRUE |TRUE |TRUE |TRUE |TRUE |TRUE |TRUE |TRUE |TRUE |
+|  |v3.1.1 |TRUE |TRUE |TRUE |TRUE |TRUE |TRUE |TRUE |TRUE |TRUE |
+|  |v3.1.2 |TRUE |TRUE |TRUE |TRUE |TRUE |TRUE |TRUE |TRUE |TRUE |

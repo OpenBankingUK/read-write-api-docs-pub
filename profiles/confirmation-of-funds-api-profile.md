@@ -2,8 +2,7 @@
 
 1. [Overview](#overview)
    1. [Document Structure](#document-structure)
-   2. [Profile Compatibility](#profile-compatibility)
-   3. [Resources](#resources)
+   2. [Resources](#resources)
 2. [Basics](#basics)
    1. [Overview](#overview-1)
       1. [Steps](#steps)
@@ -44,10 +43,6 @@ This document consists of the following parts:
 **Basics:** Identifies the flows and release management.
  
 **Security & Access Control:** Specifies the means for CBPIIs and PSUs to authenticate themselves and provide consent.
-
-### Profile Compatibility
-
-For a list of profiles and resources compatible with this profile, please see the [Compatibility Matrix]().
 
 ### Resources
 

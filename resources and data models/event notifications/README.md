@@ -30,3 +30,21 @@ The API endpoints for these resources, and their mandatory/conditional/optional 
 ### Notes
 
 Definitions for Mandatory, Conditional and Optional are given in the [Read/Write Data API Profile](../../profiles/read-write-data-api-profile.md#categorisation-of-implementation-requirements).
+
+## Event Notification Resource Compatibility
+
+|  | |Read-Write API Profile |Read-Write API Profile |Read-Write API Profile |Event Notification API Profile |Event Notification API Profile |Event Notification API Profile |Real Time Event Notification API Profile |Real Time Event Notification API Profile |Real Time Event Notification API Profile |Aggregated Polling API Profile |Aggregated Polling API Profile |Aggregated Polling API Profile |Event Notification Subscription API Profile |Event Notification Subscription API Profile |Event Notification Subscription API Profile |Callback URL API Profile |Callback URL API Profile |Callback URL API Profile |
+| --- |--- |--- |--- |--- |--- |--- |--- |--- |--- |--- |--- |--- |--- |--- |--- |--- |--- |--- |--- |
+|  | |v3.1 |v3.1.1 |3.1.2 |v3.1 |v3.1.1 |3.1.2 |v3.1 |v3.1.1 |3.1.2 |v3.1 |v3.1.1 |3.1.2 |v3.1 |v3.1.1 |3.1.2 |v3.1 |v3.1.1 |3.1.2 |
+| Event Subscription |v3.1 |TRUE |TRUE |TRUE |TRUE |TRUE |TRUE |n/a | | |n/a | | |TRUE |TRUE |TRUE |n/a | | |
+|  |v3.1.1 |TRUE |TRUE |TRUE |TRUE |TRUE |TRUE | | | | | | |TRUE |TRUE |TRUE | | | |
+|  |v3.1.2 |TRUE |TRUE |TRUE |TRUE |TRUE |TRUE | | | | | | |TRUE |TRUE |TRUE | | | |
+| Callback URL |v3.1 |TRUE |TRUE |TRUE |TRUE |TRUE |TRUE |n/a | | |n/a | | |n/a | | |TRUE |TRUE |TRUE |
+|  |v3.1.1 |TRUE |TRUE |TRUE |TRUE |TRUE |TRUE | | | | | | | | | |TRUE |TRUE |TRUE |
+|  |v3.1.2 |TRUE |TRUE |TRUE |TRUE |TRUE |TRUE | | | | | | | | | |TRUE |TRUE |TRUE |
+| Event Notifications |v3.1 |TRUE |TRUE |TRUE |TRUE |TRUE |TRUE |TRUE |TRUE |TRUE |n/a | | |n/a | | |n/a | | |
+|  |v3.1.1 |TRUE |TRUE |TRUE |TRUE |TRUE |TRUE |TRUE |TRUE |TRUE | | | | | | | | | |
+|  |v3.1.2 |TRUE |TRUE |TRUE |TRUE |TRUE |TRUE |TRUE |TRUE |TRUE | | | | | | | | | |
+| Events |v3.1 |TRUE |TRUE |TRUE |TRUE |TRUE |TRUE |n/a | | |TRUE |TRUE |TRUE |n/a | | |n/a | | |
+|  |v3.1.1 |TRUE |TRUE |TRUE |TRUE |TRUE |TRUE | | | |TRUE |TRUE |TRUE | | | | | | |
+|  |v3.1.2 |TRUE |TRUE |TRUE |TRUE |TRUE |TRUE | | | |TRUE |TRUE |TRUE | | | | | | |

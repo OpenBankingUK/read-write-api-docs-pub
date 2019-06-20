@@ -2,9 +2,8 @@
 
 1. [Overview](#overview)
    1. [Document Overview](#document-overview)
-   2. [Profile Compatibility](#profile-compatibility)
-   3. [Resources](#resources)
-   4. [Design Principles](#design-principles)
+   2. [Resources](#resources)
+   3. [Design Principles](#design-principles)
       1. [Scheme Agnostic](#scheme-agnostic)
       2. [Status Codes](#status-codes)
 2. [Basics](#basics)
@@ -93,10 +92,6 @@ This document consists of the following parts:
  **Data Model:** Documents mappings and enumerations that apply to all the end-points.
 
  **Alternative Flows:** Documents rules for alternative flows.
-
-### Profile Compatibility
-
-For a list of profiles and resources compatible with this profile, please see the [Compatibility Matrix]().
 
 ### Resources
 

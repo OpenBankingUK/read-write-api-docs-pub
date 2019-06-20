@@ -2,8 +2,7 @@
 
 1. [Overview](#overview)
    1. [Document Structure](#document-structure)
-   2. [Profile Compatibility](#profile-compatibility)
-   3. [Resources](#resources)
+   2. [Resources](#resources)
 2. [Basics](#basics)
    1. [Overview](#overview-1)
       1. [Steps](#steps)
@@ -63,10 +62,6 @@ This document consists of the following parts:
  **Data Model:** Documents mappings and enumerations that apply to all the end-points.
 
  **Alternative Flows:** Documents rules for alternative flows.
-
-### Profile Compatibility
-
-For a list of profiles and resources compatible with this profile, please see the [Compatibility Matrix]().
 
 ### Resources
 

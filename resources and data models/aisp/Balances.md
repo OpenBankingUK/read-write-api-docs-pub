@@ -1,7 +1,6 @@
 # Balances - v3.1.2
 
 1. [Overview](#overview)
-   1. [Profile Compatibility](#profile-compatibility)
 2. [Endpoints](#endpoints)
    1. [GET /accounts/{AccountId}/balances](#get-accountsaccountidbalances)
    2. [GET /balances](#get-balances)
@@ -24,10 +23,6 @@
 The balances resource is used by an AISP to retrieve in bulk or single account balance information for a specific AccountId for that the PSU has authorised to access.
 
 This resource description should be read in conjunction with a compatible Account Information Services API Profile.
-
-### Profile Compatibility
-
-For a list of profiles compatible with this resource, please see the [Compatibility Matrix](https://github.com/OpenBankingUK/read-write-api-docs/tree/dj-align-payment-resource-page-structure/resources%20and%20data%20models/aisp)
 
 ## Endpoints
 
