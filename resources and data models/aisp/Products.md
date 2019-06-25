@@ -1,25 +1,26 @@
 # Products - v3.1.2
 
-1. [Overview](#overview)
-2. [Endpoints](#endpoints)
-   1. [GET /accounts/{AccountId}/product](#get-accountsaccountidproduct)
-   2. [GET /products](#get-products)
-3. [Data Model](#data-model)
-   1. [Resource Definition](#resource-definition)
-      1. [Notes](#notes)
-   2. [UML Diagram](#uml-diagram)
-      1. [Notes](#notes-1)
-   3. [Permission Codes](#permission-codes)
-   4. [Data Dictionary](#data-dictionary)
-      1. [Common Payload](#common-payload)
-      2. [PCA & BCA Extensions](#pca--bca-extensions)
-4. [Usage Examples](#usage-examples)
-   1. [Specific Account](#specific-account)
-      1. [Get Accounts Product Request](#get-accounts-product-request)
-      2. [Get Accounts Product Response](#get-accounts-product-response)
-   2. [Bulk](#bulk)
-      1. [Get Products Request](#get-products-request)
-      2. [Get Products Response](#get-products-response)
+- [Products - v3.1.2](#Products---v312)
+  - [Overview](#Overview)
+  - [Endpoints](#Endpoints)
+    - [GET /accounts/{AccountId}/product](#GET-accountsAccountIdproduct)
+    - [GET /products](#GET-products)
+  - [Data Model](#Data-Model)
+    - [Resource Definition](#Resource-Definition)
+      - [Notes](#Notes)
+    - [UML Diagram](#UML-Diagram)
+      - [Notes](#Notes-1)
+    - [Permission Codes](#Permission-Codes)
+    - [Data Dictionary](#Data-Dictionary)
+      - [Common Payload](#Common-Payload)
+      - [PCA & BCA Extensions](#PCA--BCA-Extensions)
+  - [Usage Examples](#Usage-Examples)
+    - [Specific Account](#Specific-Account)
+      - [Get Accounts Product Request](#Get-Accounts-Product-Request)
+      - [Get Accounts Product Response](#Get-Accounts-Product-Response)
+    - [Bulk](#Bulk)
+      - [Get Products Request](#Get-Products-Request)
+      - [Get Products Response](#Get-Products-Response)
 
 ## Overview
 
@@ -107,7 +108,7 @@ Data Dictionary for Common Payload between PCA, BCA and other product types.
 | ProductId |0..1 |OBReadProduct2/Data/Product/ProductId |Identifier within the parent organisation for the product. Must be unique in the organisation. |Max40Text | | |
 | AccountId |1..1 |OBReadProduct2/Data/Product/AccountId |A unique and immutable identifier used to identify the account resource. This identifier has no meaning to the account owner. |Max40Text | | |
 | SecondaryProductId |0..1 |OBReadProduct2/Data/Product/SecondaryProductId |Identifier within the parent organisation for the product. Must be unique in the organisation. |Max70Text | | |
-| ProductType |0..1 |OBReadProduct2/Data/Product/ProductType |Descriptive code for the product category. If ProductType - "Other" is chosen, the object OtherProductType must be populated with name, and description. |OBExternalProductType1Code |BusinessCurrentAccount CommercialCreditCard Other PersonalCurrentAccount SMELoan | |
+| ProductType |1..1 |OBReadProduct2/Data/Product/ProductType |Descriptive code for the product category. If ProductType - "Other" is chosen, the object OtherProductType must be populated with name, and description. |OBExternalProductType1Code |BusinessCurrentAccount CommercialCreditCard Other PersonalCurrentAccount SMELoan | |
 | MarketingStateId |0..1 |OBReadProduct2/Data/Product/MarketingStateId |Unique and unambiguous identification of a Product Marketing State. |Max35Text | | |
 | OtherProductType |0..1 |OBReadProduct2/Data/Product/OtherProductType |This field provides extension to the ProductType enumeration. If ProductType - "Other" is chosen, this field must be populated with name, and description for ASPSP specific product type. |OBOtherProductType1 | | |
 | Name |1..1 |OBReadProduct2/Data/Product/OtherProductType/Name |Name of "Other" product type. |Max350Text | | |

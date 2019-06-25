@@ -1,27 +1,28 @@
 # Statements - v3.1.2
 
-1. [Overview](#overview)
-2. [Endpoints](#endpoints)
-   1. [GET /accounts/{AccountId}/statements](#get-accountsaccountidstatements)
-   2. [GET /accounts/{AccountId}/statements/{StatementId}](#get-accountsaccountidstatementsstatementid)
-   3. [GET /accounts/{AccountId}/statements/{StatementId}/file](#get-accountsaccountidstatementsstatementidfile)
-   4. [GET /accounts/{AccountId}/statements/{StatementId}/transactions](#get-accountsaccountidstatementsstatementidtransactions)
-   5. [GET /statements](#get-statements)
-3. [Data Model](#data-model)
-   1. [Resource Definition](#resource-definition)
-   2. [UML Diagram](#uml-diagram)
-   3. [Notes](#notes)
-   4. [Filtering](#filtering)
-      1. [Filtering Examples](#filtering-examples)
-   5. [Permission Codes](#permission-codes)
-   6. [Data Dictionary](#data-dictionary)
-4. [Usage Examples](#usage-examples)
-   1. [Specific Account](#specific-account)
-      1. [Get Account Statements Request](#get-account-statements-request)
-      2. [Get Account Statements Response](#get-account-statements-response)
-   2. [Bulk](#bulk)
-      1. [Get Statements Request](#get-statements-request)
-      2. [Get Statements Response](#get-statements-response)
+- [Statements - v3.1.2](#Statements---v312)
+  - [Overview](#Overview)
+  - [Endpoints](#Endpoints)
+    - [GET /accounts/{AccountId}/statements](#GET-accountsAccountIdstatements)
+    - [GET /accounts/{AccountId}/statements/{StatementId}](#GET-accountsAccountIdstatementsStatementId)
+    - [GET /accounts/{AccountId}/statements/{StatementId}/file](#GET-accountsAccountIdstatementsStatementIdfile)
+    - [GET /accounts/{AccountId}/statements/{StatementId}/transactions](#GET-accountsAccountIdstatementsStatementIdtransactions)
+    - [GET /statements](#GET-statements)
+  - [Data Model](#Data-Model)
+    - [Resource Definition](#Resource-Definition)
+    - [UML Diagram](#UML-Diagram)
+    - [Notes](#Notes)
+    - [Filtering](#Filtering)
+      - [Filtering Examples](#Filtering-Examples)
+    - [Permission Codes](#Permission-Codes)
+    - [Data Dictionary](#Data-Dictionary)
+  - [Usage Examples](#Usage-Examples)
+    - [Specific Account](#Specific-Account)
+      - [Get Account Statements Request](#Get-Account-Statements-Request)
+      - [Get Account Statements Response](#Get-Account-Statements-Response)
+    - [Bulk](#Bulk)
+      - [Get Statements Request](#Get-Statements-Request)
+      - [Get Statements Response](#Get-Statements-Response)
 
 ## Overview
 
@@ -42,7 +43,7 @@ Endpoints for the resource and available methods.
 |  |Resource |HTTP Operation |Endpoint |Mandatory? |Scope |Grant Type |Idempotency Key |Parameters |Request Object |Response Object |
 | --- |--- |--- |--- |--- |--- |--- |--- |--- |--- |--- |
 | 1 |statements |GET |GET /accounts/{AccountId}/statements |Conditional |accounts |Authorization Code |No |Pagination Filtering | |OBReadStatement2 |
-| 2 |statements |GET |GET /accounts/{AccountId}/statements/{StatementId} |Conditional |accounts |Authorization Code |No |Pagination | |OBReadStatement2 |
+| 2 |statements |GET |GET /accounts/{AccountId}/statements/{StatementId} |Conditional |accounts |Authorization Code |No | | |OBReadStatement2 |
 | 3 |statements |GET |GET /accounts/{AccountId}/statements/{StatementId}/file |Optional |accounts |Authorization Code |No | | |File |
 | 4 |transactions |GET |GET /accounts/{AccountId}/statements/{StatementId}/transactions |Conditional |accounts |Authorization Code |No |Pagination | |OBReadTransaction5 |
 | 5 |statements |GET |GET /statements |Optional |accounts |Authorization Code |No |Pagination Filtering | |OBReadStatement2 |
