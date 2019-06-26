@@ -1,34 +1,35 @@
 # Parties - v3.1.2
 
-1. [Overview](#overview)
-2. [Endpoints](#endpoints)
-   1. [GET /accounts/{AccountId}/parties](#get-accountsaccountidparties)
-   2. [GET /accounts/{AccountId}/party](#get-accountsaccountidparty)
-   3. [GET /party](#get-party)
-3. [Data Model](#data-model)
-   1. [Reused Classes](#reused-classes)
-      1. [OBParty2](#obparty2)
-            1. [UML Diagram](#uml-diagram)
-            2. [Notes](#notes)
-            3. [Data Dictionary](#data-dictionary)
-   2. [OBReadParty2](#obreadparty2)
-      1. [UML Diagram](#uml-diagram-1)
-      2. [Data Dictionary](#data-dictionary-1)
-   3. [OBReadParty3](#obreadparty3)
-      1. [UML Diagram](#uml-diagram-2)
-      2. [Data Dictionary](#data-dictionary-2)
-   4. [Permission Codes](#permission-codes)
-4. [Usage Examples](#usage-examples)
-   1. [All Parties](#all-parties)
-      1. [Get Account Parties Request](#get-account-parties-request)
-      2. [Get Account Parties Response](#get-account-parties-response)
-   2. [All Parties](#all-parties-1)
-      1. [Get Parties Request](#get-parties-request)
-      2. [Get Parties Response](#get-parties-response)
-   3. [Account Owner](#account-owner)
-      1. [Get Account Party Request](#get-account-party-request)
-   4. [Authorised User](#authorised-user)
-      1. [Get Party Request](#get-party-request)
+- [Parties - v3.1.2](#Parties---v312)
+  - [Overview](#Overview)
+  - [Endpoints](#Endpoints)
+    - [GET /accounts/{AccountId}/parties](#GET-accountsAccountIdparties)
+    - [GET /accounts/{AccountId}/party](#GET-accountsAccountIdparty)
+    - [GET /party](#GET-party)
+  - [Data Model](#Data-Model)
+    - [Reused Classes](#Reused-Classes)
+      - [OBParty2](#OBParty2)
+          - [UML Diagram](#UML-Diagram)
+          - [Notes](#Notes)
+          - [Data Dictionary](#Data-Dictionary)
+    - [OBReadParty2](#OBReadParty2)
+      - [UML Diagram](#UML-Diagram-1)
+      - [Data Dictionary](#Data-Dictionary-1)
+    - [OBReadParty3](#OBReadParty3)
+      - [UML Diagram](#UML-Diagram-2)
+      - [Data Dictionary](#Data-Dictionary-2)
+    - [Permission Codes](#Permission-Codes)
+  - [Usage Examples](#Usage-Examples)
+    - [All Parties](#All-Parties)
+      - [Get Account Parties Request](#Get-Account-Parties-Request)
+      - [Get Account Parties Response](#Get-Account-Parties-Response)
+    - [All Parties](#All-Parties-1)
+      - [Get Parties Request](#Get-Parties-Request)
+      - [Get Parties Response](#Get-Parties-Response)
+    - [Account Owner](#Account-Owner)
+      - [Get Account Party Request](#Get-Account-Party-Request)
+    - [Authorised User](#Authorised-User)
+      - [Get Party Request](#Get-Party-Request)
 
 ## Overview
 
@@ -282,8 +283,8 @@ Content-Type: application/json
                 "BeneficialOwnership": true,
                 "AccountRole": "UK.OBIE.Principal",
                 "EmailAddress": "speakup@rosesandthorns.co.uk",
-                "Phone": "++4455565411099",
-                "Mobile": "+4455565411098",
+                "Phone": "+44-55565411099",
+                "Mobile": "+44-55565411098",
                 "Relationships": [
                     {
                         "Related": "https://api.alphabank.com/open-banking/v4.0/aisp/accounts/89019",
@@ -310,8 +311,8 @@ Content-Type: application/json
                 "BeneficialOwnership": false,
                 "AccountRole": "UK.OBIE.SeniorManagingOfficial",
                 "EmailAddress": "neil@rosesandthorns.co.uk",
-                "Phone": "+4455565411097",
-                "Mobile": "+4455565411096",
+                "Phone": "+44-55565411097",
+                "Mobile": "+44-55565411096",
                 "Relationships": [
                     {
                         "Related": "https://api.alphabank.com/open-banking/v4.0/aisp/accounts/89019",
@@ -368,7 +369,7 @@ Content-Type: application/json
       "PartyId": "PABC123",
       "PartyType": "Sole",
       "Name": "Semiotec",
-      "Email": "contact@semiotec.co.jp",
+      "EmailAddress": "contact@semiotec.co.jp",
 	  "Address": {
 		"AddressType": "Business",
 		"StreetName": "Street",
