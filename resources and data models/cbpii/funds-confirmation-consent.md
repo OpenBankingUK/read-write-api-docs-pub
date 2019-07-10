@@ -1,7 +1,6 @@
 # Funds Confirmation Consent - v3.1.2
 
 1. [Overview](#overview)
-   1. [Profile Compatibility](#profile-compatibility)
 2. [Endpoints](#endpoints)
    1. [POST /funds-confirmation-consents](#post-funds-confirmation-consents)
       1. [Funds Confirmation Consent Status](#funds-confirmation-consent-status)
@@ -36,10 +35,6 @@
 The Funds Confirmation Consent resource is used by an CBPII to register an intent to confirm funds.
 
 This resource description should be read in conjunction with a compatible Confirmation of Funds API Profile.
-
-### Profile Compatibility
-
-For a list of profiles compatible with this resource, please see the [Compatibility Matrix]().
 
 ## Endpoints
 

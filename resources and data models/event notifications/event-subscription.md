@@ -1,7 +1,6 @@
 # Event Subscription - v3.1.2
 
 1. [Overview](#overview)
-   1. [Profile Compatibility](#profile-compatibility)
 2. [Endpoints](#endpoints)
    1. [Endpoints](#endpoints-1)
       1. [POST /event-subscriptions](#post-event-subscriptions)
@@ -32,10 +31,6 @@
 The Event Subscription resource is used by a TPP to subscribe to events with an ASPSP.
 
 This resource description should be read in conjunction with a compatible Event Notification Subscription Profile.
-
-### Profile Compatibility
-
-For a list of profiles compatible with this resource, please see the [Compatibility Matrix]().
 
 ## Endpoints
 

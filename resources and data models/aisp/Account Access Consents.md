@@ -1,7 +1,6 @@
 # Account Access Consents - v3.1.2
 
 1. [Overview](#overview)
-   1. [Profile Compatibility](#profile-compatibility)
 2. [Endpoints](#endpoints)
    1. [POST /account-access-consents](#post-account-access-consents)
       1. [Account Access Consent Status](#account-access-consent-status)
@@ -41,10 +40,6 @@ The Account Access Consents API is used by an AISP to request an ASPSP to create
 
 This resource description should be read in conjunction with a compatible Account Information Services API Profile.
 
-### Profile Compatibility
-
-For a list of profiles compatible with this resource, please see the [Compatibility Matrix](https://github.com/OpenBankingUK/read-write-api-docs/tree/dj-align-payment-resource-page-structure/resources%20and%20data%20models/aisp)
-
 ## Endpoints
 
 |  |Resource |HTTP Operation |Endpoint |Mandatory? |Scope |Grant Type |Idempotency Key |Parameters |Request Object |Response Object |
@@ -52,7 +47,6 @@ For a list of profiles compatible with this resource, please see the [Compatibil
 | 1 |account-access-consents |POST |POST /account-access-consents |Mandatory |accounts |Client Credentials |No | |OBReadConsent1 |OBReadConsentResponse1 |
 | 2 |account-access-consents |GET |GET /account-access-consents/{ConsentId} |Mandatory |accounts |Client Credentials |No | | |OBReadConsentResponse1 |
 | 3 |account-access-consents |DELETE |DELETE /account-access-consents/{ConsentId} |Mandatory |accounts |Client Credentials |No | | | |
-
 
 ### POST /account-access-consents
  

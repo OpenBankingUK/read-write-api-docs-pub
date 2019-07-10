@@ -1,7 +1,6 @@
 # Callback URL - v3.1.2
 
 1. [Overview](#overview)
-   1. [Profile Compatibility](#profile-compatibility)
 2. [Endpoints](#endpoints)
       1. [POST /callback-urls](#post-callback-urls)
       2. [GET /callback-urls](#get-callback-urls)
@@ -30,10 +29,6 @@
 The Callback URL resource is used by a TPP to subscribe to events with an ASPSP.
 
 This resource description should be read in conjunction with a compatible Callback URL Profile.
-
-### Profile Compatibility
-
-For a list of profiles compatible with this resource, please see the [Compatibility Matrix]().
 
 ## Endpoints
 
