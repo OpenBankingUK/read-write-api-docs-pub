@@ -43,6 +43,7 @@ This resource description should be read in conjunction with a compatible Paymen
 | domestic-scheduled-payments |POST |POST /domestic-scheduled-payments |Conditional |payments |Authorization Code |Signed Request Signed Response |Yes |OBWriteDomesticScheduled2 |OBWriteDomesticScheduledResponse3 |
 | domestic-scheduled-payments |GET |GET /domestic-scheduled-payments/{DomesticScheduledPaymentId} |Mandatory (if resource POST implemented) |payments |Client Credentials |Signed Response |No |NA |OBWriteDomesticScheduledResponse3 |
 | payment-details |GET |GET /domestic-scheduled-payments/{DomesticScheduledPaymentId}/payment-details |Optional |payments |Client Credentials |Signed Response |No |NA |OBWritePaymentDetailsResponse1 |
+| refund-account |GET |GET /domestic-scheduled-payments/{DomesticScheduledPaymentId}/refund-account |Optional |payments |Client Credentials |Signed Response |No |NA | OBWriteRefundAccountResponse1 |
 
 ### POST /domestic-scheduled-payments
 
@@ -240,6 +241,24 @@ The OBWritePaymentDetailsResponse1 object will be used for a response to a call 
 | OBWritePaymentDetailsResponse1 | |OBWritePaymentDetailsResponse1 | |OBWritePaymentDetailsResponse1 | | |
 | Data |1..1 |OBWritePaymentDetailsResponse1/Data | |OBWriteDataPaymentOrderStatusResponse1 | | |
 | PaymentStatus |0..unbounded |OBWritePaymentDetailsResponse1/Data/PaymentStatus |Payment status details. |OBWritePaymentDetails1 | | |
+
+## Domestic Scheduled Payment Order - Refund Account - Response
+
+The OBWriteRefundAccountResponse1 object will be used for a response to a call to:
+
+* GET /domestic-payments/{DomesticPaymentId}/refund-account
+
+#### UML Diagram
+
+![OBWriteRefundAccountResponse1](images/OBWriteRefundAccountResponse1.png)
+
+#### Data Dictionary
+
+| Name |Occurrence |XPath |EnhancedDefinition |Class |Codes |Pattern |
+| ---- |---------- |----- |------------------ |----- |----- |------- |
+| OBWriteRefundAccountResponse1| |OBWriteRefundAccountResponse1 | |OBWriteRefundAccountResponse1 | | |
+| Data | 1..1 |OBWriteDataRefundAccountResponse1/Data | |OBWriteDataRefundAccountResponse1 | | |
+| RefundAccount| 0..1| OBWriteRefundAccountResponse1/Data/RefundAccount| | OBWriteRefundAccount1 | | |  
 
 ## Usage Examples
 
