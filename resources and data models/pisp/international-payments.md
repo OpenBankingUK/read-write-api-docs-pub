@@ -253,7 +253,7 @@ The OBWritePaymentDetailsResponse1 object will be used for a response to a call 
 | Data |1..1 |OBWritePaymentDetailsResponse1/Data | |OBWriteDataPaymentOrderStatusResponse1 | | |
 | PaymentStatus |0..unbounded |OBWritePaymentDetailsResponse1/Data/PaymentStatus |Payment status details. |OBWritePaymentDetails1 | | |
 
-## International Payment Order - Refund Account - Response
+### International Payment Order - Refund Account - Response
 
 The OBWriteRefundAccountResponse1 object will be used for a response to a call to:
 
