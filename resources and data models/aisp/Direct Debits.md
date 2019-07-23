@@ -29,8 +29,8 @@ Endpoints for the resource and available methods.
 
 |  |Resource |HTTP Operation |Endpoint |Mandatory? |Scope |Grant Type |Idempotency Key |Parameters |Request Object |Response Object |
 | --- |--- |--- |--- |--- |--- |--- |--- |--- |--- |--- |
-| 1 |direct-debits |GET |GET /accounts/{AccountId}/direct-debits |Conditional |accounts |Authorization Code |No | | |OBReadDirectDebit1 |
-| 2 |direct-debits |GET |GET /direct-debits |Optional |accounts |Authorization Code |No |Pagination | |OBReadDirectDebit1 |
+| 1 |direct-debits |GET |GET /accounts/{AccountId}/direct-debits |Conditional |accounts |Authorization Code |No | | |OBReadDirectDebit2 |
+| 2 |direct-debits |GET |GET /direct-debits |Optional |accounts |Authorization Code |No |Pagination | |OBReadDirectDebit2 |
 
 ### GET /accounts/{AccountId}/direct-debits
 
@@ -49,7 +49,7 @@ An account (AccountId) may have no direct debits set up, or may have multiple di
 
 ### UML Diagram
 
-![ OBReadDirectDebit1.gif ]( images/DirectDebits/OBReadDirectDebit2.png)
+![ OBReadDirectDebit2.png ]( images/DirectDebits/OBReadDirectDebit2.png)
 
 ### Permission Codes
 
@@ -59,19 +59,19 @@ The resource requires the ReadDirectDebits permission. The resource response pay
 
 | Name |Occurrence |XPath |EnhancedDefinition |Class |Codes |Pattern |
 | --- |--- |--- |--- |--- |--- |--- |
-| OBReadDirectDebit1 | |OBReadDirectDebit1 | |OBReadDirectDebit1 | | |
-| Data |1..1 |OBReadDirectDebit1/Data | |OBReadDataDirectDebit1 | | |
-| DirectDebit |0..n |OBReadDirectDebit1/Data/DirectDebit |Account to or from which a cash entry is made. |OBDirectDebit1 | | |
-| AccountId |1..1 |OBReadDirectDebit1/Data/DirectDebit/AccountId |A unique and immutable identifier used to identify the account resource. This identifier has no meaning to the account owner. |Max40Text | | |
-| DirectDebitId |0..1 |OBReadDirectDebit1/Data/DirectDebit/DirectDebitId |A unique and immutable identifier used to identify the direct debit resource. This identifier has no meaning to the account owner. |Max40Text | | |
-| MandateIdentification |1..1 |OBReadDirectDebit1/Data/DirectDebit/MandateIdentification |Direct Debit reference. For AUDDIS service users provide Core Reference. For non AUDDIS service users provide Core reference if possible or last used reference. |Max35Text | | |
-| DirectDebitStatusCode |0..1 |OBReadDirectDebit1/Data/DirectDebit/DirectDebitStatusCode |Specifies the status of the direct debit in code form. |OBExternalDirectDebitStatus1Code |Active Inactive | |
-| Name |1..1 |OBReadDirectDebit1/Data/DirectDebit/Name |Name of Service User. |Max70Text | | |
-| PreviousPaymentDateTime |0..1 |OBReadDirectDebit1/Data/DirectDebit/PreviousPaymentDateTime |Date of most recent direct debit collection. |ISODateTime | | |
-| Frequency |0..1 |OBReadDirectDebit1/Data/DirectDebit/Frequency |Regularity with which direct debit instructions are to be created and processed |OBExternalDirectDebitFrequency1Code | | |
-| PreviousPaymentAmount |0..1 |OBReadDirectDebit1/Data/DirectDebit/PreviousPaymentAmount |The amount of the most recent direct debit collection. |OBActiveOrHistoricCurrencyAndAmount | | |
-| Amount |1..1 |OBReadDirectDebit1/Data/DirectDebit/PreviousPaymentAmount/Amount |A number of monetary units specified in an active currency where the unit of currency is explicit and compliant with ISO 4217. |OBActiveCurrencyAndAmount_SimpleType | |^\d{1,13}\.\d{1,5}$ |
-| Currency |1..1 |OBReadDirectDebit1/Data/DirectDebit/PreviousPaymentAmount/Currency |A code allocated to a currency by a Maintenance Agency under an international identification scheme, as described in the latest edition of the international standard ISO 4217 "Codes for the representation of currencies and funds". |ActiveOrHistoricCurrencyCode | |^[A-Z]{3,3}$ |
+| OBReadDirectDebit2 | |OBReadDirectDebit2 | |OBReadDirectDebit2 | | |
+| Data |1..1 |OBReadDirectDebit2/Data | |OBReadDataDirectDebit2 | | |
+| DirectDebit |0..n |OBReadDirectDebit2/Data/DirectDebit |Account to or from which a cash entry is made. |OBDirectDebit2| | |
+| AccountId |1..1 |OBReadDirectDebit2/Data/DirectDebit/AccountId |A unique and immutable identifier used to identify the account resource. This identifier has no meaning to the account owner. |Max40Text | | |
+| DirectDebitId |0..1 |OBReadDirectDebit2/Data/DirectDebit/DirectDebitId |A unique and immutable identifier used to identify the direct debit resource. This identifier has no meaning to the account owner. |Max40Text | | |
+| MandateIdentification |1..1 |OBReadDirectDebit2/Data/DirectDebit/MandateIdentification |Direct Debit reference. For AUDDIS service users provide Core Reference. For non AUDDIS service users provide Core reference if possible or last used reference. |Max35Text | | |
+| DirectDebitStatusCode |0..1 |OBReadDirectDebit2/Data/DirectDebit/DirectDebitStatusCode |Specifies the status of the direct debit in code form. |OBExternalDirectDebitStatus1Code |Active Inactive | |
+| Name |1..1 |OBReadDirectDebit2/Data/DirectDebit/Name |Name of Service User. |Max70Text | | |
+| PreviousPaymentDateTime |0..1 |OBReadDirectDebit2/Data/DirectDebit/PreviousPaymentDateTime |Date of most recent direct debit collection. |ISODateTime | | |
+| Frequency |0..1 |OBReadDirectDebit2/Data/DirectDebit/Frequency |Regularity with which direct debit instructions are to be created and processed |OBExternalDirectDebitFrequency1Code | | |
+| PreviousPaymentAmount |0..1 |OBReadDirectDebit2/Data/DirectDebit/PreviousPaymentAmount |The amount of the most recent direct debit collection. |OBActiveOrHistoricCurrencyAndAmount | | |
+| Amount |1..1 |OBReadDirectDebit2/Data/DirectDebit/PreviousPaymentAmount/Amount |A number of monetary units specified in an active currency where the unit of currency is explicit and compliant with ISO 4217. |OBActiveCurrencyAndAmount_SimpleType | |^\d{1,13}\.\d{1,5}$ |
+| Currency |1..1 |OBReadDirectDebit2/Data/DirectDebit/PreviousPaymentAmount/Currency |A code allocated to a currency by a Maintenance Agency under an international identification scheme, as described in the latest edition of the international standard ISO 4217 "Codes for the representation of currencies and funds". |ActiveOrHistoricCurrencyCode | |^[A-Z]{3,3}$ |
 
 ## Usage Examples
 
