@@ -614,6 +614,41 @@ This section describes the OBWritePaymentDetails1 class which used in the respon
 | StatusReason |0..1 |OBWritePaymentDetails1/StatusDetail/StatusReason |Reason Code provided for the status of a transfer. |OBTransactionIndividualStatusReason1Code |Cancelled<br>PendingFailingSettlement<br>PendingSettlement<br>Proprietary<br>ProprietaryRejection<br>Suspended<br>Unmatched | |
 | StatusReasonDescription |0..1 |OBWritePaymentDetails1/StatusDetail/StatusReasonDescription |Reason provided for the status of a transfer. |Max256Text | | |
 
+#### OBWriteRefundAccount1
+
+This section describes the OBWriteRefundAccount1 class which used in the response payloads of refund-account sub resources.
+
+##### UML Diagram
+
+![OBWriteRefundAccount1](images/OBWriteRefundAccount1.png)
+
+##### Data Dictionary
+
+| Name |Occurrence |XPath |EnhancedDefinition |Class |Codes |Pattern |
+| ---- |---------- |----- |------------------ |----- |----- |------- |
+| OBWriteRefundAccount1| 0..1| OBWriteRefundAccount1| | OBWriteRefundAccount1 | | |  
+| Agent |0..1 | OBWriteRefundAccount1/Agent | Financial institution servicing an account for the debtor. |OBBranchAndFinancialInstitutionIdentification6 | | |
+| SchemeName|0..1 | OBWriteRefundAccount1/Agent/SchemeName | Name of the identification scheme, in a coded form as published in an external list. | OBExternalFinancialInstitutionIdentification4Code | | | |
+| Identification | 0..1 | OBWriteRefundAccount1/Agent/Identification|Unique and unambiguous identification of a financial institution or a branch of a financial institution. | Max35Text | | |
+| Name | 0..1 | OBWriteRefundAccount1/Agent/Name|Name by which an agent is known and which is usually used to identify that agent. | Max140Text | | |
+| PostalAddress | 0..1 | OBWriteRefundAccount1/Agent/PostalAddress | Information that locates and identifies a specific address, as defined by postal services.|OBPostalAddress6 | | |
+| AddressType | 0..1 | OBWriteRefundAccount1/Agent/PostalAddress/AddressType | Identifies the nature of the postal address. | OBAddressTypeCode | | |
+| Department | 0..1 | OBWriteRefundAccount1/Agent/PostalAddress/Department | Identification of a division of a large organisation or building. | Max70Text | | |
+| SubDepartment | 0..1 | OBWriteRefundAccount1/Agent/PostalAddress/SubDepartment | Identification of a sub-division of a large organisation or building. | Max70Text | | |
+| StreetName | 0..1 | OBWriteRefundAccount1/Agent/PostalAddress/StreetName | Name of a street or thoroughfare. | Max70Text | | |
+| BuildingNumber | 0..1 | OBWriteRefundAccount1/Agent/PostalAddress/BuildingNumber | Number that identifies the position of a building on a street. | Max16Text | | |
+| PostCode | 0..1 | OBWriteRefundAccount1/Agent/PostalAddress/PostCode | Identifier consisting of a group of letters and/or numbers that is added to a postal address to assist the sorting of mail. | Max16Text | | |
+| TownName | 0..1 | OBWriteRefundAccount1/Agent/PostalAddress/TownName | Name of a built-up area, with defined boundaries, and a local government. | Max35Text | | |
+| CountrySubDivision | 0..1 | OBWriteRefundAccount1/Agent/PostalAddress/CountrySubDivision | Identifies a subdivision of a country such as state, region, county. | Max35Text | | |
+| Country | 0..1 | OBWriteRefundAccount1/Agent/PostalAddress/Country | Nation with its own government. | CountryCode | | ^[A-Z]{2,2}$ |
+| AddressLine | 0..7 | OBWriteRefundAccount1/Agent/PostalAddress/AddressLine | Information that locates and identifies a specific address, as defined by postal services, presented in free format text. | Max70Text | | |
+| Account | 1..1 | OBWriteRefundAccount1/Account | Unambiguous identification of the account of the debtor to which a debit entry will be made as a result of the transaction. | OBCashAccountDebtor4 |  |  |  |
+| SchemeName | 1..1 | OBWriteRefundAccount1/Account/SchemeName | Name of the identification scheme, in a coded form as published in an external list. | OBExternalAccountIdentification4Code | |  |  |
+|Identification | 1..1 | OBWriteRefundAccount1/Account/Identification | Identification assigned by an institution to identify an account. This identification is known by the account owner. | Max256Text |  |  |
+| Name | 0..1 | OBWriteRefundAccount1/Account/Name | The account name is the name or names of the account owner(s) represented at an account level, as displayed by the ASPSP's online channels. Note, the account name is not the product name or the nickname of the account. | Max70Text |  |  |
+| SecondaryIdentification | 0..1 | OBWriteRefundAccount1/Account/SecondaryIdentification | This is secondary identification of the account, as assigned by the account servicing institution. This can be used by building societies to additionally identify accounts with a roll number (in addition to a sort code and account number combination). | Max34Text |  |  |
+
+
 
 #### OBSCASupportData1
 
