@@ -138,7 +138,8 @@ Content-Type: application/json
         "ProductName": "HSBC Basic Saving Account",
         "OtherProductType": {
           "Name": "BasicSavingAccount",
-          "Description": "HSBC fee free saving basic saving account"
+          "Description": "HSBC fee free saving basic saving account",
+          "MaturityDate": "01-01-2022"
         }
       }
     ]
@@ -187,6 +188,7 @@ Content-Type: application/json
         "OtherProductType": {
           "Name": "BasicSavingAccount",
           "Description": "HSBC fee free saving basic saving account",
+          "MaturityDate": "01-03-2021",
           "OtherProductDetails": {
             "OtherFeesCharges": {
               "FeeChargeDetail": [

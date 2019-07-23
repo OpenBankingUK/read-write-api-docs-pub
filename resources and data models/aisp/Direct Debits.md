@@ -49,7 +49,7 @@ An account (AccountId) may have no direct debits set up, or may have multiple di
 
 ### UML Diagram
 
-![ OBReadDirectDebit1.gif ]( images/DirectDebits/OBReadDirectDebit1.gif )
+![ OBReadDirectDebit1.gif ]( images/DirectDebits/OBReadDirectDebit2.png)
 
 ### Permission Codes
 
@@ -68,6 +68,7 @@ The resource requires the ReadDirectDebits permission. The resource response pay
 | DirectDebitStatusCode |0..1 |OBReadDirectDebit1/Data/DirectDebit/DirectDebitStatusCode |Specifies the status of the direct debit in code form. |OBExternalDirectDebitStatus1Code |Active Inactive | |
 | Name |1..1 |OBReadDirectDebit1/Data/DirectDebit/Name |Name of Service User. |Max70Text | | |
 | PreviousPaymentDateTime |0..1 |OBReadDirectDebit1/Data/DirectDebit/PreviousPaymentDateTime |Date of most recent direct debit collection. |ISODateTime | | |
+| Frequency |0..1 |OBReadDirectDebit1/Data/DirectDebit/Frequency |Regularity with which direct debit instructions are to be created and processed |OBExternalDirectDebitFrequency1Code | | |
 | PreviousPaymentAmount |0..1 |OBReadDirectDebit1/Data/DirectDebit/PreviousPaymentAmount |The amount of the most recent direct debit collection. |OBActiveOrHistoricCurrencyAndAmount | | |
 | Amount |1..1 |OBReadDirectDebit1/Data/DirectDebit/PreviousPaymentAmount/Amount |A number of monetary units specified in an active currency where the unit of currency is explicit and compliant with ISO 4217. |OBActiveCurrencyAndAmount_SimpleType | |^\d{1,13}\.\d{1,5}$ |
 | Currency |1..1 |OBReadDirectDebit1/Data/DirectDebit/PreviousPaymentAmount/Currency |A code allocated to a currency by a Maintenance Agency under an international identification scheme, as described in the latest edition of the international standard ISO 4217 "Codes for the representation of currencies and funds". |ActiveOrHistoricCurrencyCode | |^[A-Z]{3,3}$ |
