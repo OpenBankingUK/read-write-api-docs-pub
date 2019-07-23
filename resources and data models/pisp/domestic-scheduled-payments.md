@@ -1,4 +1,4 @@
-# Domestic Scheduled Payments  - v3.1.2
+# Domestic Scheduled Payments  - v3.1.3
 
 1. [Overview](#overview)
 2. [Endpoints](#endpoints)
@@ -25,7 +25,10 @@
    4. [Domestic Schedule Payment Order - Payment Details - Response](#domestic-schedule-payment-order---payment-details---response)
       1. [UML Diagram](#uml-diagram-2)
       2. [Data Dictionary](#data-dictionary-2)
-4. [Usage Examples](#usage-examples)
+4. [Domestic Scheduled Payment Order - Refund Account - Response](#domestic-scheduled-payment-order---refund-account---response)
+      1. [UML Diagram](#uml-diagram-3)
+      2. [Data Dictionary](#data-dictionary-3)
+5. [Usage Examples](#usage-examples)
       1. [Create a Domestic Scheduled Payment](#create-a-domestic-scheduled-payment)
          1. [POST /domestic-scheduled-payments Request](#post-domestic-scheduled-payments-request)
          2. [POST /domestic-scheduled-payments Response](#post-domestic-scheduled-payments-response)

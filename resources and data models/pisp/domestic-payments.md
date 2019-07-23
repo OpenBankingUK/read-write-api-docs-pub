@@ -1,4 +1,4 @@
-# Domestic Payments - v3.1.2
+# Domestic Payments - v3.1.3
 
 1. [Overview](#overview)
 2. [Endpoints](#endpoints)
@@ -25,6 +25,9 @@
    4. [Domestic Payment Order - Payment Details - Response](#domestic-payment-order---payment-details---response)
       1. [UML Diagram](#uml-diagram-2)
       2. [Data Dictionary](#data-dictionary-2)
+   5. [Domestic Payment Order - Refund Account - Response](#domestic-payment-order---refund-account---response)
+      1. [UML Diagram](#uml-diagram-3)
+      2. [Data Dictionary](#data-dictionary-3)
 4. [Usage Examples](#usage-examples)
    1. [POST /domestic-payments](#post-domestic-payments-1)
       1. [Request](#request)

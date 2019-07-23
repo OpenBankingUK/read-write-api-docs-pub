@@ -1,4 +1,4 @@
-# Domestic Standing Orders - v3.1.2
+# Domestic Standing Orders - v3.1.3
 
 1. [Overview](#overview)
 2. [Endpoints](#endpoints)
@@ -25,7 +25,10 @@
    4. [Domestic Standing Order - Payment Details - Response](#domestic-standing-order---payment-details---response)
       1. [UML Diagram](#uml-diagram-2)
       2. [Data Dictionary](#data-dictionary-2)
-4. [Usage Examples](#usage-examples)
+4. [Domestic Standing Order - Refund Account - Response](#domestic-standing-order---refund-account---response)
+      1. [UML Diagram](#uml-diagram-3)
+      2. [Data Dictionary](#data-dictionary-3)
+5. [Usage Examples](#usage-examples)
    1. [Create a Domestic Standing Order](#create-a-domestic-standing-order)
       1. [POST /domestic-standing-orders request](#post-domestic-standing-orders-request)
       2. [POST /domestic-standing-orders response](#post-domestic-standing-orders-response)
