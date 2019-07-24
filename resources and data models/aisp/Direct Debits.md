@@ -1,4 +1,4 @@
-# Direct Debits - v3.1.2
+# Direct Debits - v3.1.3
 
 1. [Overview](#overview)
 2. [Endpoints](#endpoints)
