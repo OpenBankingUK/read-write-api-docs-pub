@@ -1,4 +1,4 @@
-# International Payments - v3.1.2
+# International Payments - v3.1.3
 
 1. [Overview](#overview)
 2. [Endpoints](#endpoints)
@@ -26,6 +26,9 @@
    4. [International Payment Order - Payment Details - Response](#international-payment-order---payment-details---response)
       1. [UML Diagram](#uml-diagram-2)
       2. [Data Dictionary](#data-dictionary-2)
+4. [International Payment Order - Refund Account - Response](#international-payment-order---refund-account---response)
+      1. [UML Diagram](#uml-diagram-3)
+      2. [Data Dictionary](#data-dictionary-3)
 
 ## Overview
 
@@ -40,6 +43,7 @@ This resource description should be read in conjunction with a compatible Paymen
 | international-payments |POST |POST /international-payments |Conditional |payments |Authorization Code |Signed Request Signed Response |Yes |OBWriteInternational2 |OBWriteInternationalResponse3 |
 | international-payments |GET |GET /international-payments/{InternationalPaymentId} |Mandatory (if resource POST implemented) |payments |Client Credentials |Signed Response |No |NA |OBWriteInternationalResponse3 |
 | payment-details |GET |GET /international-payments/{InternationalPaymentId}/payment-details |Optional |payments |Client Credentials |Signed Response |No |NA |OBWritePaymentDetailsResponse1 |
+| refund-account |GET |GET /international-payments/{InternationalPaymentId}/refund-account |Optional |payments |Client Credentials |Signed Response |No |NA | OBWriteRefundAccountResponse1 |
 
 ### POST /international-payments
 
@@ -248,3 +252,22 @@ The OBWritePaymentDetailsResponse1 object will be used for a response to a call 
 | OBWritePaymentDetailsResponse1 | |OBWritePaymentDetailsResponse1 | |OBWritePaymentDetailsResponse1 | | |
 | Data |1..1 |OBWritePaymentDetailsResponse1/Data | |OBWriteDataPaymentOrderStatusResponse1 | | |
 | PaymentStatus |0..unbounded |OBWritePaymentDetailsResponse1/Data/PaymentStatus |Payment status details. |OBWritePaymentDetails1 | | |
+
+### International Payment Order - Refund Account - Response
+
+The OBWriteRefundAccountResponse1 object will be used for a response to a call to:
+
+* GET /domestic-payments/{DomesticPaymentId}/refund-account
+
+#### UML Diagram
+
+![OBWriteRefundAccountResponse1](images/OBWriteRefundAccountResponse1.png)
+
+#### Data Dictionary
+
+| Name |Occurrence |XPath |EnhancedDefinition |Class |Codes |Pattern |
+| ---- |---------- |----- |------------------ |----- |----- |------- |
+| OBWriteRefundAccountResponse1| |OBWriteRefundAccountResponse1 | |OBWriteRefundAccountResponse1 | | |
+| Data | 1..1 |OBWriteDataRefundAccountResponse1/Data | |OBWriteDataRefundAccountResponse1 | | |
+| RefundAccount| 0..1| OBWriteRefundAccountResponse1/Data/RefundAccount| | OBWriteRefundAccount1 | | |  
+

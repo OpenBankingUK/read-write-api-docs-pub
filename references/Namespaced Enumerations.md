@@ -1,4 +1,4 @@
-# Namespaced Enumerations - v3.1.2
+# Namespaced Enumerations - v3.1.3
 
 1. [Overview](#overview)
 2. [Basics](#basics)
@@ -22,6 +22,7 @@
    11. [OBExternalStatementInterestFrequency1Code](#obexternalstatementinterestfrequency1code)
    12. [OBExternalLegalStructureType1Code](#obexternallegalstructuretype1code)
    13. [OBExternalAccountRole1Code](#obexternalaccountrole1code)
+   14. [OBExternalDirectDebitFrequency1Code](#obexternaldirectdebitfrequency1code)
 5. [Payment Initiation API Namespaced Enumerations](#payment-initiation-api-namespaced-enumerations)
    1. [OBExternalLocalInstrument1Code](#obexternallocalinstrument1code)
    2. [OBExternalPaymentChargeType1Code](#obexternalpaymentchargetype1code)
@@ -368,6 +369,24 @@ This is Data Type gives a low level textual error code to help categorise an err
 | UK.OBIE.RegisteredShareholderName |Registered shareholder name |
 
 </details>
+
+### OBExternalDirectDebitFrequency1Code
+
+<details><summary>Show</summary>
+
+| Code |Description |
+| --- |--- |
+| UK.OBIE.Monthly |Monthly |
+| UK.OBIE.Quarterly |Quarterly |
+| UK.OBIE.HalfYearly |Half-yearly |
+| UK.OBIE.Weekly |Weekly |
+| UK.OBIE.Annual |Annual |
+| UK.OBIE.Fortnightly |Fortnightly |
+| UK.OBIE.Daily |Daily |
+| UK.OBIE.NotKnown |Not Known |
+
+</details>
+
 
 ## Payment Initiation API Namespaced Enumerations
 

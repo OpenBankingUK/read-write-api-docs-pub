@@ -186,7 +186,7 @@ Content-Type: application/json
         "ProductName": "Saving Account No Monthly Fee",
         "OtherProductType": {
           "Name": "BasicSavingAccount",
-          "Description": "HSBC fee free saving basic saving account",
+          "Description": "HSBC fee free saving basic saving account"
           "OtherProductDetails": {
             "OtherFeesCharges": {
               "FeeChargeDetail": [
