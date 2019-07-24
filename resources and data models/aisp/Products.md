@@ -65,7 +65,6 @@ An account (AccountId) must only have a single product.
 * The product resource must be available for all PSD2 in scope accounts (if the product information is also available to the logged in PSU).
 * Detailed product information is only available for BCA and PCA products.
 * High level product information for other products (other than BCA and PCA products) may be available via a reference to the Open Data APIs.
-* MaturityDate is applicable to Personal Saving Account and Business Saving Account.
 
 ### UML Diagram
 
@@ -113,7 +112,6 @@ Data Dictionary for Common Payload between PCA, BCA and other product types.
 | OtherProductType |0..1 |OBReadProduct2/Data/Product/OtherProductType |This field provides extension to the ProductType enumeration. If ProductType - "Other" is chosen, this field must be populated with name, and description for ASPSP specific product type. |OBOtherProductType1 | | |
 | Name |1..1 |OBReadProduct2/Data/Product/OtherProductType/Name |Name of "Other" product type. |Max350Text | | |
 | Description |1..1 |OBReadProduct2/Data/Product/OtherProductType/Description |Description of "Other" product type. |Max350Text | | |
-| MaturityData |0..1 |OBReadProduct2/Data/Product/OtherProductType/MaturityData | Maturity date of the product associated with the account | ISODate | | |
 | BCA |0..1 |OBReadProduct2/Data/Product/BCA | |OBBCAData1 | | |
 | PCA |0..1 |OBReadProduct2/Data/Product/PCA | |OBPCAData1 | | |
 
