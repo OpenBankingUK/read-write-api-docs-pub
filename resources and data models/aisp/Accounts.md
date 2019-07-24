@@ -106,7 +106,7 @@ If the ReadPAN permission is granted by the PSU, the ASPSP may choose to populat
 | Description |0..1 |OBReadAccount5/Data/Account/Description |Specifies the description of the account type. |Max35Text | | |
 | Nickname |0..1 |OBReadAccount5/Data/Account/Nickname |The nickname of the account, assigned by the account owner in order to provide an additional means of identification of the account. |Max70Text | | |
 | OpeningDate |0..1 |OBReadAccount5/Data/Account/OpeningDate | Date on which the account and related basic services are effectively operational for the account owner. | ISODate | | |
-| MaturityDate |0..1 |OBReadAccount5/Data/Account/MaturityDate | Maturity date of the product associated with the Account. | ISODate | | |
+| MaturityDate |0..1 |OBReadAccount5/Data/Account/MaturityDate | Maturity date for the account. | ISODate | | |
 | Account |0..n |OBReadAccount5/Data/Account/Account |Provides the details to identify an account. |OBCashAccount5 | | |
 | SchemeName |1..1 |OBReadAccount5/Data/Account/Account/SchemeName |Name of the identification scheme, in a coded form as published in an external list. |OBExternalAccountIdentification4Code | | |
 | Identification |1..1 |OBReadAccount5/Data/Account/Account/Identification |Identification assigned by an institution to identify an account. This identification is known by the account owner. |Max256Text | | |
