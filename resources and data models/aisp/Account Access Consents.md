@@ -1,4 +1,4 @@
-# Account Access Consents - v3.1.2
+# Account Access Consents - v3.1.3
 
 1. [Overview](#overview)
 2. [Endpoints](#endpoints)
@@ -104,7 +104,7 @@ The available Status code-list enumerations for the account-access-consent resou
 
 ### DELETE /account-access-consents/{ConsentId}
 
-If the PSU revokes consent to data access with the AISP, the AISP  **must**  delete the account-access-consent resource with the ASPSP before confirming consent revocation with the PSU.
+If the PSU revokes consent to data access with the AISP, the AISP  **should**  delete the account-access-consent resource with the ASPSP.
 
 * This is done by making a call to DELETE the account-access-consent resource.
 * Prior to calling the API, the AISP must have an access token issued by the ASPSP using a client credentials grant.
