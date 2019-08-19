@@ -1,4 +1,4 @@
-# Beneficiaries - v3.1.2
+# Beneficiaries - v3.1.3
 
 1. [Overview](#overview)
 2. [Endpoints](#endpoints)
@@ -29,10 +29,10 @@ Endpoints for the resource and available methods.
 
 |  |Resource |HTTP Operation |Endpoint |Mandatory? |Scope |Grant Type |Idempotency Key |Parameters |Request Object |Response Object |
 | --- |--- |--- |--- |--- |--- |--- |--- |--- |--- |--- |
-| 1 |beneficiaries |GET |GET /accounts/{AccountId}/beneficiaries |Conditional |accounts |Authorization Code |No | | |OBReadBeneficiary3 |
-| 2 |beneficiaries |GET |GET /beneficiaries |Optional |accounts |Authorization Code |No |Pagination | |OBReadBeneficiary3 |
+| 1 |beneficiaries |GET |GET /accounts/{AccountId}/beneficiaries |Conditional |accounts |Authorization Code |No | | |OBReadBeneficiary4 |
+| 2 |beneficiaries |GET |GET /beneficiaries |Optional |accounts |Authorization Code |No |Pagination | |OBReadBeneficiary4 |
 
-### GET/accounts/{AccountId}/beneficiaries
+### GET /accounts/{AccountId}/beneficiaries
 
 An AISP may retrieve the account beneficiaries information resource for a specific AccountId (which is retrieved in the call to GET /accounts).
 
@@ -43,7 +43,7 @@ This endpoint will retrieve the beneficiaries' resources for all authorised acco
 
 ## Data Model
 
-The OBReadBeneficiary3 object will be used for the call to: 
+The OBReadBeneficiary4 object will be used for the call to: 
 * GET /accounts/{AccountId}/beneficiaries
 * GET /beneficiaries
 
@@ -60,12 +60,12 @@ In the case an ASPSP manages beneficiaries at a customer level (logged in user),
 
 This is the expected behaviour of the beneficiaries' endpoints, in the case an ASPSP manages beneficiaries at a customer level:
 
-* The bulk endpoint /beneficiaries will return the unique list of beneficiaries against the PSU. In this case, the AccountId in the OBReadBeneficiary3 payload would be set to NULL / empty (even if the PSU only has one account).
+* The bulk endpoint /beneficiaries will return the unique list of beneficiaries against the PSU. In this case, the AccountId in the OBReadBeneficiary4 payload would be set to NULL / empty (even if the PSU only has one account).
 * The selected account endpoint /accounts/{AccountId}/beneficiaries will return the beneficiaries that **may** be accessible to the AccountId, based on the PSU. In this case, the AccountId will be populated in the payload.
 
 ### UML Diagram
 
-![ OBReadBeneficiary3.gif ]( images/Beneficiaries/OBReadBeneficiary3.gif )
+![ OBReadBeneficiary4.gif ]( images/Beneficiaries/OBReadBeneficiary4.gif )
 
 ### Notes
 
@@ -79,44 +79,45 @@ This is the expected behaviour of the beneficiaries' endpoints, in the case an A
 
 The resource differs depending on the permissions (ReadBeneficiariesBasic and ReadBeneficiariesDetail) used to access the resource. In the event that the resource is accessed with both ReadBeneficiariesBasic and ReadBeneficiariesDetail, the most detailed level (ReadBeneficiariesDetail) must be used.
 * These objects **must not** be returned **without** the **ReadBeneficiariesDetail** permission: 
-    * OBReadBeneficiary3/Data/Beneficiary/CreditorAgent 
-    * OBReadBeneficiary3/Data/Beneficiary/CreditorAccount
+    * OBReadBeneficiary4/Data/Beneficiary/CreditorAgent 
+    * OBReadBeneficiary4/Data/Beneficiary/CreditorAccount
 * If the **ReadBeneficiariesDetail** is granted by the PSU:     
-    * OBReadBeneficiary3/Data/Beneficiary/CreditorAgent **may** be returned if applicable to the account and ASPSP (0..1) 
-    * OBReadBeneficiary3/Data/Beneficiary/CreditorAccount **must** be returned (1..1)
+    * OBReadBeneficiary4/Data/Beneficiary/CreditorAgent **may** be returned if applicable to the account and ASPSP (0..1) 
+    * OBReadBeneficiary4/Data/Beneficiary/CreditorAccount **must** be returned (1..1)
 
-If the ReadPAN permission is granted by the PSU, the ASPSP may choose to populate the OBReadBeneficiary3/Data/Beneficiary/CreditorAccount/Identification with the unmasked PAN (if the PAN is being populated in the response).
+If the ReadPAN permission is granted by the PSU, the ASPSP may choose to populate the OBReadBeneficiary4/Data/Beneficiary/CreditorAccount/Identification with the unmasked PAN (if the PAN is being populated in the response).
 
 ### Data Dictionary
 
 | Name |Occurrence |XPath |EnhancedDefinition |Class |Codes |Pattern |
 | --- |--- |--- |--- |--- |--- |--- |
-| OBReadBeneficiary3 | |OBReadBeneficiary3 | |OBReadBeneficiary3 | | |
-| Data |1..1 |OBReadBeneficiary3/Data | |OBReadDataBeneficiary3 | | |
-| Beneficiary |0..n |OBReadBeneficiary3/Data/Beneficiary | |OBBeneficiary3 | | |
-| AccountId |0..1 |OBReadBeneficiary3/Data/Beneficiary/AccountId |A unique and immutable identifier used to identify the account resource. This identifier has no meaning to the account owner. |Max40Text | | |
-| BeneficiaryId |0..1 |OBReadBeneficiary3/Data/Beneficiary/BeneficiaryId |A unique and immutable identifier used to identify the beneficiary resource. This identifier has no meaning to the account owner. |Max40Text | | |
-| Reference |0..1 |OBReadBeneficiary3/Data/Beneficiary/Reference |Unique reference, as assigned by the creditor, to unambiguously refer to the payment transaction. Usage: If available, the initiating party should provide this reference in the structured remittance information, to enable reconciliation by the creditor upon receipt of the amount of money. If the business context requires the use of a creditor reference or a payment remit identification, and only one identifier can be passed through the end-to-end chain, the creditor's reference or payment remittance identification should be quoted in the end-to-end transaction identification. |Max35Text | | |
-| CreditorAgent |0..1 |OBReadBeneficiary3/Data/Beneficiary/CreditorAgent |Party that manages the account on behalf of the account owner, that is manages the registration and booking of entries on the account, calculates balances on the account and provides information about the account. This is the servicer of the beneficiary account. |OBBranchAndFinancialInstitutionIdentification6 | | |
-| SchemeName |0..1 |OBReadBeneficiary3/Data/Beneficiary/CreditorAgent/SchemeName |Name of the identification scheme, in a coded form as published in an external list. |OBExternalFinancialInstitutionIdentification4Code | | |
-| Identification |0..1 |OBReadBeneficiary3/Data/Beneficiary/CreditorAgent/Identification |Unique and unambiguous identification of the servicing institution. |Max35Text | | |
-| Name |0..1 |OBReadBeneficiary3/Data/Beneficiary/CreditorAgent/Name |Name by which an agent is known and which is usually used to identify that agent. |Max140Text | | |
-| PostalAddress |0..1 |OBReadBeneficiary3/Data/Beneficiary/CreditorAgent/PostalAddress |Information that locates and identifies a specific address, as defined by postal services. |OBPostalAddress6 | | |
-| AddressType |0..1 |OBReadBeneficiary3/Data/Beneficiary/CreditorAgent/PostalAddress/AddressType |Identifies the nature of the postal address. |OBAddressTypeCode |Business Correspondence DeliveryTo MailTo POBox Postal Residential Statement | |
-| Department |0..1 |OBReadBeneficiary3/Data/Beneficiary/CreditorAgent/PostalAddress/Department |Identification of a division of a large organisation or building. |Max70Text | | |
-| SubDepartment |0..1 |OBReadBeneficiary3/Data/Beneficiary/CreditorAgent/PostalAddress/SubDepartment |Identification of a sub-division of a large organisation or building. |Max70Text | | |
-| StreetName |0..1 |OBReadBeneficiary3/Data/Beneficiary/CreditorAgent/PostalAddress/StreetName |Name of a street or thoroughfare. |Max70Text | | |
-| BuildingNumber |0..1 |OBReadBeneficiary3/Data/Beneficiary/CreditorAgent/PostalAddress/BuildingNumber |Number that identifies the position of a building on a street. |Max16Text | | |
-| PostCode |0..1 |OBReadBeneficiary3/Data/Beneficiary/CreditorAgent/PostalAddress/PostCode |Identifier consisting of a group of letters and/or numbers that is added to a postal address to assist the sorting of mail. |Max16Text | | |
-| TownName |0..1 |OBReadBeneficiary3/Data/Beneficiary/CreditorAgent/PostalAddress/TownName |Name of a built-up area, with defined boundaries, and a local government. |Max35Text | | |
-| CountrySubDivision |0..1 |OBReadBeneficiary3/Data/Beneficiary/CreditorAgent/PostalAddress/CountrySubDivision |Identifies a subdivision of a country such as state, region, county. |Max35Text | | |
-| Country |0..1 |OBReadBeneficiary3/Data/Beneficiary/CreditorAgent/PostalAddress/Country |Nation with its own government. |CountryCode | |^[A-Z]{2,2}$ |
-| AddressLine |0..7 |OBReadBeneficiary3/Data/Beneficiary/CreditorAgent/PostalAddress/AddressLine |Information that locates and identifies a specific address, as defined by postal services, presented in free format text. |Max70Text | | |
-| CreditorAccount |0..1 |OBReadBeneficiary3/Data/Beneficiary/CreditorAccount |Provides the details to identify the beneficiary account. |OBCashAccount5 | | |
-| SchemeName |1..1 |OBReadBeneficiary3/Data/Beneficiary/CreditorAccount/SchemeName |Name of the identification scheme, in a coded form as published in an external list. |OBExternalAccountIdentification4Code | | |
-| Identification |1..1 |OBReadBeneficiary3/Data/Beneficiary/CreditorAccount/Identification |Identification assigned by an institution to identify an account. This identification is known by the account owner. |Max256Text | | |
-| Name |0..1 |OBReadBeneficiary3/Data/Beneficiary/CreditorAccount/Name |The account name is the name or names of the account owner(s) represented at an account level, as displayed by the ASPSP's online channels. Note, the account name is not the product name or the nickname of the account. |Max70Text | | |
-| SecondaryIdentification |0..1 |OBReadBeneficiary3/Data/Beneficiary/CreditorAccount/SecondaryIdentification |This is secondary identification of the account, as assigned by the account servicing institution. This can be used by building societies to additionally identify accounts with a roll number (in addition to a sort code and account number combination). |Max34Text | | |
+| OBReadBeneficiary4 | |OBReadBeneficiary4 | |OBReadBeneficiary4 | | |
+| Data |1..1 |OBReadBeneficiary4/Data | |OBReadDataBeneficiary4 | | |
+| Beneficiary |0..n |OBReadBeneficiary4/Data/Beneficiary | |OBBeneficiary4 | | |
+| AccountId |0..1 |OBReadBeneficiary4/Data/Beneficiary/AccountId |A unique and immutable identifier used to identify the account resource. This identifier has no meaning to the account owner. |Max40Text | | |
+| BeneficiaryId |0..1 |OBReadBeneficiary4/Data/Beneficiary/BeneficiaryId |A unique and immutable identifier used to identify the beneficiary resource. This identifier has no meaning to the account owner. |Max40Text | | |
+| Reference |0..1 |OBReadBeneficiary4/Data/Beneficiary/Reference |Unique reference, as assigned by the creditor, to unambiguously refer to the payment transaction. Usage: If available, the initiating party should provide this reference in the structured remittance information, to enable reconciliation by the creditor upon receipt of the amount of money. If the business context requires the use of a creditor reference or a payment remit identification, and only one identifier can be passed through the end-to-end chain, the creditor's reference or payment remittance identification should be quoted in the end-to-end transaction identification. |Max35Text | | |
+| SupplementaryData |0..1 |OBReadBeneficiary4/Data/Beneficiary/SupplementaryData |Additional information that can not be captured in the structured fields and/or any other specific block|OBSupplementaryData1 | | |
+| CreditorAgent |0..1 |OBReadBeneficiary4/Data/Beneficiary/CreditorAgent |Party that manages the account on behalf of the account owner, that is manages the registration and booking of entries on the account, calculates balances on the account and provides information about the account. This is the servicer of the beneficiary account. |OBBranchAndFinancialInstitutionIdentification6 | | |
+| SchemeName |0..1 |OBReadBeneficiary4/Data/Beneficiary/CreditorAgent/SchemeName |Name of the identification scheme, in a coded form as published in an external list. |OBExternalFinancialInstitutionIdentification4Code | | |
+| Identification |0..1 |OBReadBeneficiary4/Data/Beneficiary/CreditorAgent/Identification |Unique and unambiguous identification of the servicing institution. |Max35Text | | |
+| Name |0..1 |OBReadBeneficiary4/Data/Beneficiary/CreditorAgent/Name |Name by which an agent is known and which is usually used to identify that agent. |Max140Text | | |
+| PostalAddress |0..1 |OBReadBeneficiary4/Data/Beneficiary/CreditorAgent/PostalAddress |Information that locates and identifies a specific address, as defined by postal services. |OBPostalAddress6 | | |
+| AddressType |0..1 |OBReadBeneficiary4/Data/Beneficiary/CreditorAgent/PostalAddress/AddressType |Identifies the nature of the postal address. |OBAddressTypeCode |Business Correspondence DeliveryTo MailTo POBox Postal Residential Statement | |
+| Department |0..1 |OBReadBeneficiary4/Data/Beneficiary/CreditorAgent/PostalAddress/Department |Identification of a division of a large organisation or building. |Max70Text | | |
+| SubDepartment |0..1 |OBReadBeneficiary4/Data/Beneficiary/CreditorAgent/PostalAddress/SubDepartment |Identification of a sub-division of a large organisation or building. |Max70Text | | |
+| StreetName |0..1 |OBReadBeneficiary4/Data/Beneficiary/CreditorAgent/PostalAddress/StreetName |Name of a street or thoroughfare. |Max70Text | | |
+| BuildingNumber |0..1 |OBReadBeneficiary4/Data/Beneficiary/CreditorAgent/PostalAddress/BuildingNumber |Number that identifies the position of a building on a street. |Max16Text | | |
+| PostCode |0..1 |OBReadBeneficiary4/Data/Beneficiary/CreditorAgent/PostalAddress/PostCode |Identifier consisting of a group of letters and/or numbers that is added to a postal address to assist the sorting of mail. |Max16Text | | |
+| TownName |0..1 |OBReadBeneficiary4/Data/Beneficiary/CreditorAgent/PostalAddress/TownName |Name of a built-up area, with defined boundaries, and a local government. |Max35Text | | |
+| CountrySubDivision |0..1 |OBReadBeneficiary4/Data/Beneficiary/CreditorAgent/PostalAddress/CountrySubDivision |Identifies a subdivision of a country such as state, region, county. |Max35Text | | |
+| Country |0..1 |OBReadBeneficiary4/Data/Beneficiary/CreditorAgent/PostalAddress/Country |Nation with its own government. |CountryCode | |^[A-Z]{2,2}$ |
+| AddressLine |0..7 |OBReadBeneficiary4/Data/Beneficiary/CreditorAgent/PostalAddress/AddressLine |Information that locates and identifies a specific address, as defined by postal services, presented in free format text. |Max70Text | | |
+| CreditorAccount |0..1 |OBReadBeneficiary4/Data/Beneficiary/CreditorAccount |Provides the details to identify the beneficiary account. |OBCashAccount5 | | |
+| SchemeName |1..1 |OBReadBeneficiary4/Data/Beneficiary/CreditorAccount/SchemeName |Name of the identification scheme, in a coded form as published in an external list. |OBExternalAccountIdentification4Code | | |
+| Identification |1..1 |OBReadBeneficiary4/Data/Beneficiary/CreditorAccount/Identification |Identification assigned by an institution to identify an account. This identification is known by the account owner. |Max256Text | | |
+| Name |0..1 |OBReadBeneficiary4/Data/Beneficiary/CreditorAccount/Name |The account name is the name or names of the account owner(s) represented at an account level, as displayed by the ASPSP's online channels. Note, the account name is not the product name or the nickname of the account. |Max70Text | | |
+| SecondaryIdentification |0..1 |OBReadBeneficiary4/Data/Beneficiary/CreditorAccount/SecondaryIdentification |This is secondary identification of the account, as assigned by the account servicing institution. This can be used by building societies to additionally identify accounts with a roll number (in addition to a sort code and account number combination). |Max34Text | | |
 
 ## Usage Examples
 
