@@ -1,4 +1,4 @@
-# Account and Transaction API Profile - v3.1.2
+# Account and Transaction API Profile - v3.1.3
 
 1. [Overview](#overview)
    1. [Document Structure](#document-structure)
@@ -428,7 +428,7 @@ A PSU **may** revoke authorisation directly with the ASPSP. The mechanisms for t
 The PSU may request the AISP to revoke consent that it has authorised. If consent is revoked with the AISP:
 
 - The AISP **must** cease to access the APIs at that point.
-- The AISP **must** call the **DELETE** operation on the account-access-consent resource (before confirming consent revocation with the PSU) to indicate to the ASPSP that the PSU has revoked consent.
+- The AISP **must** call the **DELETE** operation on the account-access-consent resource (before confirming consent revocation with the PSU) as soon as is practically possible, to indicate to the ASPSP that the PSU has revoked consent.
 
 ### Changes to Selected Account(s)
 

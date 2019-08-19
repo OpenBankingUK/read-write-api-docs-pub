@@ -1,4 +1,4 @@
-# Funds Confirmation Consent - v3.1.2
+# Funds Confirmation Consent - v3.1.3
 
 1. [Overview](#overview)
 2. [Endpoints](#endpoints)
@@ -100,7 +100,7 @@ The available Status code-list enumerations for the **funds-confirmation-consent
 
 If the PSU revokes consent to confirm funds with the CBPII, the CBPII **must** delete the **funds-confirmation-consent** resource.
 
-* This is done by making a call to DELETE the **funds-confirmation-consent** resource.
+* This is done by making a call to DELETE the **funds-confirmation-consent** resource as soon as is practically possible.
 * Prior to calling the operation, the CBPII must have an access token issued by the ASPSP using a client credentials grant.
 
 ## Data Model

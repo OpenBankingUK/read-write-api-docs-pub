@@ -13,7 +13,7 @@
          1. [Multiple Authorisation](#multiple-authorisation)
 3. [Data Model](#data-model)
    1. [Reused Classes](#reused-classes)
-      1. [OBInternational2](#obinternational2)
+      1. [OBInternational3](#obinternational3)
       2. [OBExchangeRate2](#obexchangerate2)
    2. [International Payment - Request](#international-payment---request)
       1. [UML Diagram](#uml-diagram)
@@ -26,9 +26,6 @@
    4. [International Payment Order - Payment Details - Response](#international-payment-order---payment-details---response)
       1. [UML Diagram](#uml-diagram-2)
       2. [Data Dictionary](#data-dictionary-2)
-4. [International Payment Order - Refund Account - Response](#international-payment-order---refund-account---response)
-      1. [UML Diagram](#uml-diagram-3)
-      2. [Data Dictionary](#data-dictionary-3)
 
 ## Overview
 
@@ -40,10 +37,9 @@ This resource description should be read in conjunction with a compatible Paymen
 
 | Resource |HTTP Operation |Endpoint |Mandatory ? |Scope |Grant Type |Message Signing |Idempotency Key |Request Object |Response Object |
 | -------- |-------------- |-------- |----------- |----- |---------- |--------------- |--------------- |-------------- |--------------- |
-| international-payments |POST |POST /international-payments |Conditional |payments |Authorization Code |Signed Request Signed Response |Yes |OBWriteInternational2 |OBWriteInternationalResponse3 |
-| international-payments |GET |GET /international-payments/{InternationalPaymentId} |Mandatory (if resource POST implemented) |payments |Client Credentials |Signed Response |No |NA |OBWriteInternationalResponse3 |
+| international-payments |POST |POST /international-payments |Conditional |payments |Authorization Code |Signed Request Signed Response |Yes |OBWriteInternational3 |OBWriteInternationalResponse4 |
+| international-payments |GET |GET /international-payments/{InternationalPaymentId} |Mandatory (if resource POST implemented) |payments |Client Credentials |Signed Response |No |NA |OBWriteInternationalResponse4 |
 | payment-details |GET |GET /international-payments/{InternationalPaymentId}/payment-details |Optional |payments |Client Credentials |Signed Response |No |NA |OBWritePaymentDetailsResponse1 |
-| refund-account |GET |GET /international-payments/{InternationalPaymentId}/refund-account |Optional |payments |Client Credentials |Signed Response |No |NA | OBWriteRefundAccountResponse1 |
 
 ### POST /international-payments
 
@@ -156,9 +152,9 @@ The data dictionary section gives the detail on the payload content for the Inte
 
 ### Reused Classes
 
-#### OBInternational2
+#### OBInternational3
 
-The OBInternational2 class is defined in the [international-payment-consents](./international-payment-consents.md#obinternational2) page.
+The OBInternational3 class is defined in the [international-payment-consents](./international-payment-consents.md#obinternational3) page.
 
 #### OBExchangeRate2
 
@@ -166,13 +162,13 @@ The OBExchangeRate2 class is defined in the [international-payment-consents](./i
 
 ### International Payment - Request
 
-The OBWriteInternational2 object will be used for a call to:
+The OBWriteInternational3 object will be used for a call to:
 
 * POST /international-payments
 
 #### UML Diagram
 
-![International Payment - Request](images/OBWriteInternational2.gif)
+![International Payment - Request](images/OBWriteInternational3.gif)
 
 #### Notes 
 
@@ -186,22 +182,22 @@ The international-payment **request** object contains the:
 
 | Name |Occurrence |XPath |EnhancedDefinition |Class |Codes |Pattern |
 | ---- |---------- |----- |------------------ |----- |----- |------- |
-| OBWriteInternational2 |OBWriteInternational2 | |OBWriteInternational2 | | | |
-| Data |1..1 |OBWriteInternational2/Data | |OBWriteDataInternational2 | | |
-| ConsentId |1..1 |OBWriteInternational2/Data/ConsentId |OB: Unique identification as assigned by the ASPSP to uniquely identify the consent resource. |Max128Text | | |
-| Initiation |1..1 |OBWriteInternational2/Data/Initiation |The Initiation payload is sent by the initiating party to the ASPSP. It is used to request movement of funds from the debtor account to a creditor for a single international payment. |OBInternational2 | | |
-| Risk |1..1 |OBWriteInternational2/Risk |The Risk section is sent by the initiating party to the ASPSP. It is used to specify additional details for risk scoring for Payments. |OBRisk1 | | |
+| OBWriteInternational3 |OBWriteInternational3 | |OBWriteInternational3 | | | |
+| Data |1..1 |OBWriteInternational3/Data | |OBWriteDataInternational3 | | |
+| ConsentId |1..1 |OBWriteInternational3/Data/ConsentId |OB: Unique identification as assigned by the ASPSP to uniquely identify the consent resource. |Max128Text | | |
+| Initiation |1..1 |OBWriteInternational3/Data/Initiation |The Initiation payload is sent by the initiating party to the ASPSP. It is used to request movement of funds from the debtor account to a creditor for a single international payment. |OBInternational3 | | |
+| Risk |1..1 |OBWriteInternational3/Risk |The Risk section is sent by the initiating party to the ASPSP. It is used to specify additional details for risk scoring for Payments. |OBRisk1 | | |
 
 ### International Payment - Response
 
-The OBWriteInternationalResponse3 object will be used for a response to a call to:
+The OBWriteInternationalResponse4 object will be used for a response to a call to:
 
 * POST /international-payments
 * GET /international-payments/{InternationalPaymentId}
 
 #### UML Diagram
 
-![International Payment - Response](images/OBWriteInternationalResponse3.png)
+![International Payment - Response](images/OBWriteInternationalResponse4.gif)
 
 #### Notes 
 
@@ -221,19 +217,19 @@ The international-payment **response** object contains the:
 
 | Name |Occurrence |XPath |EnhancedDefinition |Class |Codes |Pattern |
 | ---- |---------- |----- |------------------ |----- |----- |------- |
-| OBWriteInternationalResponse3 | |OBWriteInternationalResponse3 | |OBWriteInternationalResponse3 | | |
-| Data |1..1 |OBWriteInternationalResponse3/Data | |OBWriteDataInternationalResponse3 | | |
-| InternationalPaymentId |1..1 |OBWriteInternationalResponse3/Data/InternationalPaymentId |OB: Unique identification as assigned by the ASPSP to uniquely identify the international payment resource. |Max40Text | | |
-| ConsentId |1..1 |OBWriteInternationalResponse3/Data/ConsentId |OB: Unique identification as assigned by the ASPSP to uniquely identify the consent resource. |Max128Text | | |
-| CreationDateTime |1..1 |OBWriteInternationalResponse3/Data/CreationDateTime |Date and time at which the message was created. |ISODateTime | | |
-| Status |1..1 |OBWriteInternationalResponse3/Data/Status |Specifies the status of the payment information group. |OBTransactionIndividualStatus1Code |AcceptedCreditSettlementCompleted AcceptedWithoutPosting AcceptedSettlementCompleted AcceptedSettlementInProcess Pending Rejected | |
-| StatusUpdateDateTime |1..1 |OBWriteInternationalResponse3/Data/StatusUpdateDateTime |Date and time at which the resource status was updated. |ISODateTime | | |
-| ExpectedExecutionDateTime |0..1 |OBWriteInternationalResponse3/Data/ExpectedExecutionDateTime |Expected execution date and time for the payment resource. |ISODateTime | | |
-| ExpectedSettlementDateTime |0..1 |OBWriteInternationalResponse3/Data/ExpectedSettlementDateTime |Expected settlement date and time for the payment resource. |ISODateTime | | |
-| Charges |0..n |OBWriteInternationalResponse3/Data/Charges |Set of elements used to provide details of a charge for the payment initiation. |OBCharge2 | | |
-| ExchangeRateInformation |0..1 |OBWriteInternationalResponse3/Data/ExchangeRateInformation |Further detailed information on the exchange rate that has been used in the payment transaction. |OBExchangeRate2 | | |
-| Initiation |1..1 |OBWriteInternationalResponse3/Data/Initiation |The Initiation payload is sent by the initiating party to the ASPSP. It is used to request movement of funds from the debtor account to a creditor for a single international payment. |OBInternational2 | | |
-| MultiAuthorisation |0..1 |OBWriteInternationalResponse3/Data/MultiAuthorisation |The multiple authorisation flow response from the ASPSP. |OBMultiAuthorisation1 | | |
+| OBWriteInternationalResponse4 | |OBWriteInternationalResponse4 | |OBWriteInternationalResponse4 | | |
+| Data |1..1 |OBWriteInternationalResponse4/Data | |OBWriteDataInternationalResponse4 | | |
+| InternationalPaymentId |1..1 |OBWriteInternationalResponse4/Data/InternationalPaymentId |OB: Unique identification as assigned by the ASPSP to uniquely identify the international payment resource. |Max40Text | | |
+| ConsentId |1..1 |OBWriteInternationalResponse4/Data/ConsentId |OB: Unique identification as assigned by the ASPSP to uniquely identify the consent resource. |Max128Text | | |
+| CreationDateTime |1..1 |OBWriteInternationalResponse4/Data/CreationDateTime |Date and time at which the message was created. |ISODateTime | | |
+| Status |1..1 |OBWriteInternationalResponse4/Data/Status |Specifies the status of the payment information group. |OBTransactionIndividualStatus1Code |AcceptedCreditSettlementCompleted AcceptedWithoutPosting AcceptedSettlementCompleted AcceptedSettlementInProcess Pending Rejected | |
+| StatusUpdateDateTime |1..1 |OBWriteInternationalResponse4/Data/StatusUpdateDateTime |Date and time at which the resource status was updated. |ISODateTime | | |
+| ExpectedExecutionDateTime |0..1 |OBWriteInternationalResponse4/Data/ExpectedExecutionDateTime |Expected execution date and time for the payment resource. |ISODateTime | | |
+| ExpectedSettlementDateTime |0..1 |OBWriteInternationalResponse4/Data/ExpectedSettlementDateTime |Expected settlement date and time for the payment resource. |ISODateTime | | |
+| Charges |0..n |OBWriteInternationalResponse4/Data/Charges |Set of elements used to provide details of a charge for the payment initiation. |OBCharge2 | | |
+| ExchangeRateInformation |0..1 |OBWriteInternationalResponse4/Data/ExchangeRateInformation |Further detailed information on the exchange rate that has been used in the payment transaction. |OBExchangeRate2 | | |
+| Initiation |1..1 |OBWriteInternationalResponse4/Data/Initiation |The Initiation payload is sent by the initiating party to the ASPSP. It is used to request movement of funds from the debtor account to a creditor for a single international payment. |OBInternational3 | | |
+| MultiAuthorisation |0..1 |OBWriteInternationalResponse4/Data/MultiAuthorisation |The multiple authorisation flow response from the ASPSP. |OBMultiAuthorisation1 | | |
 
 ### International Payment Order - Payment Details - Response
 
@@ -252,22 +248,4 @@ The OBWritePaymentDetailsResponse1 object will be used for a response to a call 
 | OBWritePaymentDetailsResponse1 | |OBWritePaymentDetailsResponse1 | |OBWritePaymentDetailsResponse1 | | |
 | Data |1..1 |OBWritePaymentDetailsResponse1/Data | |OBWriteDataPaymentOrderStatusResponse1 | | |
 | PaymentStatus |0..unbounded |OBWritePaymentDetailsResponse1/Data/PaymentStatus |Payment status details. |OBWritePaymentDetails1 | | |
-
-### International Payment Order - Refund Account - Response
-
-The OBWriteRefundAccountResponse1 object will be used for a response to a call to:
-
-* GET /domestic-payments/{DomesticPaymentId}/refund-account
-
-#### UML Diagram
-
-![OBWriteRefundAccountResponse1](images/OBWriteRefundAccountResponse1.png)
-
-#### Data Dictionary
-
-| Name |Occurrence |XPath |EnhancedDefinition |Class |Codes |Pattern |
-| ---- |---------- |----- |------------------ |----- |----- |------- |
-| OBWriteRefundAccountResponse1| |OBWriteRefundAccountResponse1 | |OBWriteRefundAccountResponse1 | | |
-| Data | 1..1 |OBWriteDataRefundAccountResponse1/Data | |OBWriteDataRefundAccountResponse1 | | |
-| RefundAccount| 0..1| OBWriteRefundAccountResponse1/Data/RefundAccount| | OBWriteRefundAccount1 | | |  
 
