@@ -11,7 +11,7 @@
 		1. [Payment Order Consent](#payment-order-consent)
 3. [Data Model](#data-model)
 	1. [Reused Classes](#reused-classes)
-		1. [OBInternationalScheduled2](#obinternationalscheduled2)
+		1. [OBInternationalScheduled3](#obinternationalscheduled3)
 			1. [UML Diagram](#uml-diagram)
 			2. [Notes](#notes)
 			3. [Data Dictionary](#data-dictionary)
@@ -47,8 +47,8 @@ This resource description should be read in conjunction with a compatible Paymen
 
 | Resource |HTTP Operation |Endpoint |Mandatory ? |Scope |Grant Type |Message Signing |Idempotency Key |Request Object |Response Object |
 | --- |--- |--- |--- |--- |--- |--- |--- |--- |--- |
-| international-scheduled-payment-consents |POST |POST /international-scheduled-payment-consents |Conditional |payments |Client Credentials |Signed Request Signed Response |Yes |OBWriteInternationalScheduledConsent3 |OBWriteInternationalScheduledConsentResponse3 |
-| international-scheduled-payment-consents |GET |GET /international-scheduled-payment-consents/{ConsentId} |Mandatory (if resource POST implemented) |payments |Client Credentials |Signed Response |No |NA |OBWriteInternationalScheduledConsentResponse3 |
+| international-scheduled-payment-consents |POST |POST /international-scheduled-payment-consents |Conditional |payments |Client Credentials |Signed Request Signed Response |Yes |OBWriteInternationalScheduledConsent4 |OBWriteInternationalScheduledConsentResponse4 |
+| international-scheduled-payment-consents |GET |GET /international-scheduled-payment-consents/{ConsentId} |Mandatory (if resource POST implemented) |payments |Client Credentials |Signed Response |No |NA |OBWriteInternationalScheduledConsentResponse4 |
 | international-scheduled-payment-consents |GET |GET /international-scheduled-payment-consents/{ConsentId}/funds-confirmation |Mandatory (if immediate debit supported) |payments |Authorization Code |Signed Response |No |NA |OBWriteFundsConfirmationResponse1 |
 
 ### POST /international-scheduled-payment-consents
@@ -118,17 +118,17 @@ The data dictionary section gives the detail on the payload content for the Inte
 
 ### Reused Classes
 
-#### OBInternationalScheduled2
+#### OBInternationalScheduled3
 
-This section describes the OBInternationalScheduled2 class which is reused as the Initiation object in the international-scheduled-payment-consent resource.
+This section describes the OBInternationalScheduled3 class which is reused as the Initiation object in the international-scheduled-payment-consent resource.
 
 ##### UML Diagram
 
-![OBInternationalScheduled2.gif](images/OBInternationalScheduled2.gif)
+![OBInternationalScheduled3.gif](images/OBInternationalScheduled3.gif)
 
 ##### Notes
 
-For the OBInternationalScheduled2 Initiation object: 
+For the OBInternationalScheduled3 Initiation object: 
 
 * All elements in the Initiation payload, that are specified by the PISP must not be changed via the ASPSP as this is part of formal consent from the PSU.
 * If the ASPSP is able to establish a problem with payload or any contextual error during the API call, the ASPSP must reject the international-scheduled-payment-consent consent request immediately.
@@ -169,65 +169,67 @@ The ExchangeRateInformation object must conform to these behaviours:
 
 | Name |Occurrence |XPath |EnhancedDefinition |Class |Codes |Pattern |
 | --- |--- |--- |--- |--- |--- |--- |
-| OBInternationalScheduled2 | |OBInternationalScheduled2 |The Initiation payload is sent by the initiating party to the ASPSP. It is used to request movement of funds from the debtor account to a creditor for a single scheduled international payment. |OBInternationalScheduled2 | | |
-| InstructionIdentification |1..1 |OBInternationalScheduled2/InstructionIdentification |Unique identification as assigned by an instructing party for an instructed party to unambiguously identify the instruction. Usage: the instruction identification is a point to point reference that can be used between the instructing party and the instructed party to refer to the individual instruction. It can be included in several messages related to the instruction. |Max35Text | | |
-| EndToEndIdentification |0..1 |OBInternationalScheduled2/EndToEndIdentification |Unique identification assigned by the initiating party to unambiguously identify the transaction. This identification is passed on, unchanged, throughout the entire end-to-end chain. Usage: The end-to-end identification can be used for reconciliation or to link tasks relating to the transaction. It can be included in several messages related to the transaction. OB: The Faster Payments Scheme can only access 31 characters for the EndToEndIdentification field. |Max35Text | | |
-| LocalInstrument |0..1 |OBInternationalScheduled2/LocalInstrument |User community specific instrument. Usage: This element is used to specify a local instrument, local clearing option and/or further qualify the service or service level. |OBExternalLocalInstrument1Code | | |
-| InstructionPriority |0..1 |OBInternationalScheduled2/InstructionPriority |Indicator of the urgency or order of importance that the instructing party would like the instructed party to apply to the processing of the instruction. |OBPriority2Code |Normal Urgent | |
-| Purpose |0..1 |OBInternationalScheduled2/Purpose |Specifies the external purpose code in the format of character string with a maximum length of 4 characters. The list of valid codes is an external code list published separately. External code sets can be downloaded from www.iso20022.org. |OBExternalPurpose1Code1 | | |
-| ChargeBearer |0..1 |OBInternationalScheduled2/ChargeBearer |Specifies which party/parties will bear the charges associated with the processing of the payment transaction. |OBChargeBearerType1Code |BorneByCreditor BorneByDebtor FollowingServiceLevel Shared | |
-| RequestedExecutionDateTime |1..1 |OBInternationalScheduled2/RequestedExecutionDateTime |Date at which the initiating party requests the clearing agent to process the payment. Usage: This is the date on which the debtor's account is to be debited. |ISODateTime | | |
-| CurrencyOfTransfer |1..1 |OBInternationalScheduled2/CurrencyOfTransfer |Specifies the currency of the to be transferred amount, which is different from the currency of the debtor's account. |ActiveOrHistoricCurrencyCode | |^[A-Z]{3,3}$ |
-| InstructedAmount |1..1 |OBInternationalScheduled2/InstructedAmount |Amount of money to be moved between the debtor and creditor, before deduction of charges, expressed in the currency as ordered by the initiating party. Usage: This amount has to be transported unchanged through the transaction chain. |OBActiveOrHistoricCurrencyAndAmount | | |
-| Amount |1..1 |OBInternationalScheduled2/InstructedAmount/Amount |A number of monetary units specified in an active currency where the unit of currency is explicit and compliant with ISO 4217. |OBActiveCurrencyAndAmount_SimpleType | |^\d{1,13}\.\d{1,5}$ |
-| Currency |1..1 |OBInternationalScheduled2/InstructedAmount/Currency |A code allocated to a currency by a Maintenance Agency under an international identification scheme, as described in the latest edition of the international standard ISO 4217 "Codes for the representation of currencies and funds". |ActiveOrHistoricCurrencyCode | |^[A-Z]{3,3}$ |
-| ExchangeRateInformation |0..1 |OBInternationalScheduled2/ExchangeRateInformation |Provides details on the currency exchange rate and contract. |OBExchangeRate1 | | |
-| UnitCurrency |1..1 |OBInternationalScheduled2/ExchangeRateInformation/UnitCurrency |Currency in which the rate of exchange is expressed in a currency exchange. In the example 1GBP = xxxCUR, the unit currency is GBP. |ActiveOrHistoricCurrencyCode | |^[A-Z]{3,3}$ |
-| ExchangeRate |0..1 |OBInternationalScheduled2/ExchangeRateInformation/ExchangeRate |The factor used for conversion of an amount from one currency to another. This reflects the price at which one currency was bought with another currency. |BaseOneRate | | |
-| RateType |1..1 |OBInternationalScheduled2/ExchangeRateInformation/RateType |Specifies the type used to complete the currency exchange. |OBExchangeRateType2Code |Actual Agreed Indicative | |
-| ContractIdentification |0..1 |OBInternationalScheduled2/ExchangeRateInformation/ContractIdentification |Unique and unambiguous reference to the foreign exchange contract agreed between the initiating party/creditor and the debtor agent. |Max256Text | | |
-| DebtorAccount |0..1 |OBInternationalScheduled2/DebtorAccount |Unambiguous identification of the account of the debtor to which a debit entry will be made as a result of the transaction. |OBCashAccountDebtor4 | | |
-| SchemeName |1..1 |OBInternationalScheduled2/DebtorAccount/SchemeName |Name of the identification scheme, in a coded form as published in an external list. |OBExternalAccountIdentification4Code | | |
-| Identification |1..1 |OBInternationalScheduled2/DebtorAccount/Identification |Identification assigned by an institution to identify an account. This identification is known by the account owner. |Max256Text | | |
-| Name |0..1 |OBInternationalScheduled2/DebtorAccount/Name |The account name is the name or names of the account owner(s) represented at an account level, as displayed by the ASPSP's online channels. Note, the account name is not the product name or the nickname of the account. |Max70Text | | |
-| SecondaryIdentification |0..1 |OBInternationalScheduled2/DebtorAccount/SecondaryIdentification |This is secondary identification of the account, as assigned by the account servicing institution. This can be used by building societies to additionally identify accounts with a roll number (in addition to a sort code and account number combination). |Max34Text | | |
-| Creditor |0..1 |OBInternationalScheduled2/Creditor |Party to which an amount of money is due. |OBPartyIdentification43 | | |
-| Name |0..1 |OBInternationalScheduled2/Creditor/Name |Name by which a party is known and which is usually used to identify that party. |Max140Text | | |
-| PostalAddress |0..1 |OBInternationalScheduled2/Creditor/PostalAddress |Information that locates and identifies a specific address, as defined by postal services. |OBPostalAddress6 | | |
-| AddressType |0..1 |OBInternationalScheduled2/Creditor/PostalAddress/AddressType |Identifies the nature of the postal address. |OBAddressTypeCode |Business Correspondence DeliveryTo MailTo POBox Postal Residential Statement | |
-| Department |0..1 |OBInternationalScheduled2/Creditor/PostalAddress/Department |Identification of a division of a large organisation or building. |Max70Text | | |
-| SubDepartment |0..1 |OBInternationalScheduled2/Creditor/PostalAddress/SubDepartment |Identification of a sub-division of a large organisation or building. |Max70Text | | |
-| StreetName |0..1 |OBInternationalScheduled2/Creditor/PostalAddress/StreetName |Name of a street or thoroughfare. |Max70Text | | |
-| BuildingNumber |0..1 |OBInternationalScheduled2/Creditor/PostalAddress/BuildingNumber |Number that identifies the position of a building on a street. |Max16Text | | |
-| PostCode |0..1 |OBInternationalScheduled2/Creditor/PostalAddress/PostCode |Identifier consisting of a group of letters and/or numbers that is added to a postal address to assist the sorting of mail. |Max16Text | | |
-| TownName |0..1 |OBInternationalScheduled2/Creditor/PostalAddress/TownName |Name of a built-up area, with defined boundaries, and a local government. |Max35Text | | |
-| CountrySubDivision |0..1 |OBInternationalScheduled2/Creditor/PostalAddress/CountrySubDivision |Identifies a subdivision of a country such as state, region, county. |Max35Text | | |
-| Country |0..1 |OBInternationalScheduled2/Creditor/PostalAddress/Country |Nation with its own government. |CountryCode | |^[A-Z]{2,2}$ |
-| AddressLine |0..7 |OBInternationalScheduled2/Creditor/PostalAddress/AddressLine |Information that locates and identifies a specific address, as defined by postal services, presented in free format text. |Max70Text | | |
-| CreditorAgent |0..1 |OBInternationalScheduled2/CreditorAgent |Financial institution servicing an account for the creditor. |OBBranchAndFinancialInstitutionIdentification6 | | |
-| SchemeName |0..1 |OBInternationalScheduled2/CreditorAgent/SchemeName |Name of the identification scheme, in a coded form as published in an external list. |OBExternalFinancialInstitutionIdentification4Code | | |
-| Identification |0..1 |OBInternationalScheduled2/CreditorAgent/Identification |Unique and unambiguous identification of a financial institution or a branch of a financial institution. |Max35Text | | |
-| Name |0..1 |OBInternationalScheduled2/CreditorAgent/Name |Name by which an agent is known and which is usually used to identify that agent. |Max140Text | | |
-| PostalAddress |0..1 |OBInternationalScheduled2/CreditorAgent/PostalAddress |Information that locates and identifies a specific address, as defined by postal services. |OBPostalAddress6 | | |
-| AddressType |0..1 |OBInternationalScheduled2/CreditorAgent/PostalAddress/AddressType |Identifies the nature of the postal address. |OBAddressTypeCode |Business Correspondence DeliveryTo MailTo POBox Postal Residential Statement | |
-| Department |0..1 |OBInternationalScheduled2/CreditorAgent/PostalAddress/Department |Identification of a division of a large organisation or building. |Max70Text | | |
-| SubDepartment |0..1 |OBInternationalScheduled2/CreditorAgent/PostalAddress/SubDepartment |Identification of a sub-division of a large organisation or building. |Max70Text | | |
-| StreetName |0..1 |OBInternationalScheduled2/CreditorAgent/PostalAddress/StreetName |Name of a street or thoroughfare. |Max70Text | | |
-| BuildingNumber |0..1 |OBInternationalScheduled2/CreditorAgent/PostalAddress/BuildingNumber |Number that identifies the position of a building on a street. |Max16Text | | |
-| PostCode |0..1 |OBInternationalScheduled2/CreditorAgent/PostalAddress/PostCode |Identifier consisting of a group of letters and/or numbers that is added to a postal address to assist the sorting of mail. |Max16Text | | |
-| TownName |0..1 |OBInternationalScheduled2/CreditorAgent/PostalAddress/TownName |Name of a built-up area, with defined boundaries, and a local government. |Max35Text | | |
-| CountrySubDivision |0..1 |OBInternationalScheduled2/CreditorAgent/PostalAddress/CountrySubDivision |Identifies a subdivision of a country such as state, region, county. |Max35Text | | |
-| Country |0..1 |OBInternationalScheduled2/CreditorAgent/PostalAddress/Country |Nation with its own government. |CountryCode | |^[A-Z]{2,2}$ |
-| AddressLine |0..7 |OBInternationalScheduled2/CreditorAgent/PostalAddress/AddressLine |Information that locates and identifies a specific address, as defined by postal services, presented in free format text. |Max70Text | | |
-| CreditorAccount |1..1 |OBInternationalScheduled2/CreditorAccount |Unambiguous identification of the account of the creditor to which a credit entry will be posted as a result of the payment transaction. |OBCashAccountCreditor3 | | |
-| SchemeName |1..1 |OBInternationalScheduled2/CreditorAccount/SchemeName |Name of the identification scheme, in a coded form as published in an external list. |OBExternalAccountIdentification4Code | | |
-| Identification |1..1 |OBInternationalScheduled2/CreditorAccount/Identification |Identification assigned by an institution to identify an account. This identification is known by the account owner. |Max256Text | | |
-| Name |1..1 |OBInternationalScheduled2/CreditorAccount/Name |The account name is the name or names of the account owner(s) represented at an account level. Note, the account name is not the product name or the nickname of the account. OB: ASPSPs may carry out name validation for Confirmation of Payee, but it is not mandatory. |Max70Text | | |
-| SecondaryIdentification |0..1 |OBInternationalScheduled2/CreditorAccount/SecondaryIdentification |This is secondary identification of the account, as assigned by the account servicing institution. This can be used by building societies to additionally identify accounts with a roll number (in addition to a sort code and account number combination). |Max34Text | | |
-| RemittanceInformation |0..1 |OBInternationalScheduled2/RemittanceInformation |Information supplied to enable the matching of an entry with the items that the transfer is intended to settle, such as commercial invoices in an accounts' receivable system. |OBRemittanceInformation1 | | |
-| Unstructured |0..1 |OBInternationalScheduled2/RemittanceInformation/Unstructured |Information supplied to enable the matching/reconciliation of an entry with the items that the payment is intended to settle, such as commercial invoices in an accounts' receivable system, in an unstructured form. |Max140Text | | |
-| Reference |0..1 |OBInternationalScheduled2/RemittanceInformation/Reference |Unique reference, as assigned by the creditor, to unambiguously refer to the payment transaction. Usage: If available, the initiating party should provide this reference in the structured remittance information, to enable reconciliation by the creditor upon receipt of the amount of money. If the business context requires the use of a creditor reference or a payment remit identification, and only one identifier can be passed through the end-to-end chain, the creditor's reference or payment remittance identification should be quoted in the end-to-end transaction identification. OB: The Faster Payments Scheme can only accept 18 characters for the ReferenceInformation field - which is where this ISO field will be mapped. |Max35Text | | |
-| SupplementaryData |0..1 |OBInternationalScheduled2/SupplementaryData |Additional information that can not be captured in the structured fields and/or any other specific block. |OBSupplementaryData1 | | |
+| OBInternationalScheduled3 | |OBInternationalScheduled3 |The Initiation payload is sent by the initiating party to the ASPSP. It is used to request movement of funds from the debtor account to a creditor for a single scheduled international payment. |OBInternationalScheduled3 | | |
+| InstructionIdentification |1..1 |OBInternationalScheduled3/InstructionIdentification |Unique identification as assigned by an instructing party for an instructed party to unambiguously identify the instruction. Usage: the instruction identification is a point to point reference that can be used between the instructing party and the instructed party to refer to the individual instruction. It can be included in several messages related to the instruction. |Max35Text | | |
+| EndToEndIdentification |0..1 |OBInternationalScheduled3/EndToEndIdentification |Unique identification assigned by the initiating party to unambiguously identify the transaction. This identification is passed on, unchanged, throughout the entire end-to-end chain. Usage: The end-to-end identification can be used for reconciliation or to link tasks relating to the transaction. It can be included in several messages related to the transaction. OB: The Faster Payments Scheme can only access 31 characters for the EndToEndIdentification field. |Max35Text | | |
+| LocalInstrument |0..1 |OBInternationalScheduled3/LocalInstrument |User community specific instrument. Usage: This element is used to specify a local instrument, local clearing option and/or further qualify the service or service level. |OBExternalLocalInstrument1Code | | |
+| InstructionPriority |0..1 |OBInternationalScheduled3/InstructionPriority |Indicator of the urgency or order of importance that the instructing party would like the instructed party to apply to the processing of the instruction. |OBPriority2Code |Normal Urgent | |
+| Purpose |0..1 |OBInternationalScheduled3/Purpose |Specifies the external purpose code in the format of character string with a maximum length of 4 characters. The list of valid codes is an external code list published separately. External code sets can be downloaded from www.iso20022.org. |OBExternalPurpose1Code1 | | |
+| ExtendedPurpose |0..1 |OBInternationalScheduled3/ExtendedPurpose |Specifies the purpose of an international payment, when there is no corresponding 4 character code available in the ISO20022 list of Purpose Codes. |Max140Text | | |
+| ChargeBearer |0..1 |OBInternationalScheduled3/ChargeBearer |Specifies which party/parties will bear the charges associated with the processing of the payment transaction. |OBChargeBearerType1Code |BorneByCreditor BorneByDebtor FollowingServiceLevel Shared | |
+| RequestedExecutionDateTime |1..1 |OBInternationalScheduled3/RequestedExecutionDateTime |Date at which the initiating party requests the clearing agent to process the payment. Usage: This is the date on which the debtor's account is to be debited. |ISODateTime | | |
+| CurrencyOfTransfer |1..1 |OBInternationalScheduled3/CurrencyOfTransfer |Specifies the currency of the to be transferred amount, which is different from the currency of the debtor's account. |ActiveOrHistoricCurrencyCode | |^[A-Z]{3,3}$ |
+| DestinationCountryCode |0..1 |OBInternationalScheduled3/DestinationCountryCode |Country in which Credit Account is domiciled. Nation with its own government. |CountryCode | |^[A-Z]{2,2}$ |
+| InstructedAmount |1..1 |OBInternationalScheduled3/InstructedAmount |Amount of money to be moved between the debtor and creditor, before deduction of charges, expressed in the currency as ordered by the initiating party. Usage: This amount has to be transported unchanged through the transaction chain. |OBActiveOrHistoricCurrencyAndAmount | | |
+| Amount |1..1 |OBInternationalScheduled3/InstructedAmount/Amount |A number of monetary units specified in an active currency where the unit of currency is explicit and compliant with ISO 4217. |OBActiveCurrencyAndAmount_SimpleType | |^\d{1,13}\.\d{1,5}$ |
+| Currency |1..1 |OBInternationalScheduled3/InstructedAmount/Currency |A code allocated to a currency by a Maintenance Agency under an international identification scheme, as described in the latest edition of the international standard ISO 4217 "Codes for the representation of currencies and funds". |ActiveOrHistoricCurrencyCode | |^[A-Z]{3,3}$ |
+| ExchangeRateInformation |0..1 |OBInternationalScheduled3/ExchangeRateInformation |Provides details on the currency exchange rate and contract. |OBExchangeRate1 | | |
+| UnitCurrency |1..1 |OBInternationalScheduled3/ExchangeRateInformation/UnitCurrency |Currency in which the rate of exchange is expressed in a currency exchange. In the example 1GBP = xxxCUR, the unit currency is GBP. |ActiveOrHistoricCurrencyCode | |^[A-Z]{3,3}$ |
+| ExchangeRate |0..1 |OBInternationalScheduled3/ExchangeRateInformation/ExchangeRate |The factor used for conversion of an amount from one currency to another. This reflects the price at which one currency was bought with another currency. |BaseOneRate | | |
+| RateType |1..1 |OBInternationalScheduled3/ExchangeRateInformation/RateType |Specifies the type used to complete the currency exchange. |OBExchangeRateType2Code |Actual Agreed Indicative | |
+| ContractIdentification |0..1 |OBInternationalScheduled3/ExchangeRateInformation/ContractIdentification |Unique and unambiguous reference to the foreign exchange contract agreed between the initiating party/creditor and the debtor agent. |Max256Text | | |
+| DebtorAccount |0..1 |OBInternationalScheduled3/DebtorAccount |Unambiguous identification of the account of the debtor to which a debit entry will be made as a result of the transaction. |OBCashAccountDebtor4 | | |
+| SchemeName |1..1 |OBInternationalScheduled3/DebtorAccount/SchemeName |Name of the identification scheme, in a coded form as published in an external list. |OBExternalAccountIdentification4Code | | |
+| Identification |1..1 |OBInternationalScheduled3/DebtorAccount/Identification |Identification assigned by an institution to identify an account. This identification is known by the account owner. |Max256Text | | |
+| Name |0..1 |OBInternationalScheduled3/DebtorAccount/Name |The account name is the name or names of the account owner(s) represented at an account level, as displayed by the ASPSP's online channels. Note, the account name is not the product name or the nickname of the account. |Max70Text | | |
+| SecondaryIdentification |0..1 |OBInternationalScheduled3/DebtorAccount/SecondaryIdentification |This is secondary identification of the account, as assigned by the account servicing institution. This can be used by building societies to additionally identify accounts with a roll number (in addition to a sort code and account number combination). |Max34Text | | |
+| Creditor |0..1 |OBInternationalScheduled3/Creditor |Party to which an amount of money is due. |OBPartyIdentification43 | | |
+| Name |0..1 |OBInternationalScheduled3/Creditor/Name |Name by which a party is known and which is usually used to identify that party. |Max140Text | | |
+| PostalAddress |0..1 |OBInternationalScheduled3/Creditor/PostalAddress |Information that locates and identifies a specific address, as defined by postal services. |OBPostalAddress6 | | |
+| AddressType |0..1 |OBInternationalScheduled3/Creditor/PostalAddress/AddressType |Identifies the nature of the postal address. |OBAddressTypeCode |Business Correspondence DeliveryTo MailTo POBox Postal Residential Statement | |
+| Department |0..1 |OBInternationalScheduled3/Creditor/PostalAddress/Department |Identification of a division of a large organisation or building. |Max70Text | | |
+| SubDepartment |0..1 |OBInternationalScheduled3/Creditor/PostalAddress/SubDepartment |Identification of a sub-division of a large organisation or building. |Max70Text | | |
+| StreetName |0..1 |OBInternationalScheduled3/Creditor/PostalAddress/StreetName |Name of a street or thoroughfare. |Max70Text | | |
+| BuildingNumber |0..1 |OBInternationalScheduled3/Creditor/PostalAddress/BuildingNumber |Number that identifies the position of a building on a street. |Max16Text | | |
+| PostCode |0..1 |OBInternationalScheduled3/Creditor/PostalAddress/PostCode |Identifier consisting of a group of letters and/or numbers that is added to a postal address to assist the sorting of mail. |Max16Text | | |
+| TownName |0..1 |OBInternationalScheduled3/Creditor/PostalAddress/TownName |Name of a built-up area, with defined boundaries, and a local government. |Max35Text | | |
+| CountrySubDivision |0..1 |OBInternationalScheduled3/Creditor/PostalAddress/CountrySubDivision |Identifies a subdivision of a country such as state, region, county. |Max35Text | | |
+| Country |0..1 |OBInternationalScheduled3/Creditor/PostalAddress/Country |Nation with its own government. |CountryCode | |^[A-Z]{2,2}$ |
+| AddressLine |0..7 |OBInternationalScheduled3/Creditor/PostalAddress/AddressLine |Information that locates and identifies a specific address, as defined by postal services, presented in free format text. |Max70Text | | |
+| CreditorAgent |0..1 |OBInternationalScheduled3/CreditorAgent |Financial institution servicing an account for the creditor. |OBBranchAndFinancialInstitutionIdentification6 | | |
+| SchemeName |0..1 |OBInternationalScheduled3/CreditorAgent/SchemeName |Name of the identification scheme, in a coded form as published in an external list. |OBExternalFinancialInstitutionIdentification4Code | | |
+| Identification |0..1 |OBInternationalScheduled3/CreditorAgent/Identification |Unique and unambiguous identification of a financial institution or a branch of a financial institution. |Max35Text | | |
+| Name |0..1 |OBInternationalScheduled3/CreditorAgent/Name |Name by which an agent is known and which is usually used to identify that agent. |Max140Text | | |
+| PostalAddress |0..1 |OBInternationalScheduled3/CreditorAgent/PostalAddress |Information that locates and identifies a specific address, as defined by postal services. |OBPostalAddress6 | | |
+| AddressType |0..1 |OBInternationalScheduled3/CreditorAgent/PostalAddress/AddressType |Identifies the nature of the postal address. |OBAddressTypeCode |Business Correspondence DeliveryTo MailTo POBox Postal Residential Statement | |
+| Department |0..1 |OBInternationalScheduled3/CreditorAgent/PostalAddress/Department |Identification of a division of a large organisation or building. |Max70Text | | |
+| SubDepartment |0..1 |OBInternationalScheduled3/CreditorAgent/PostalAddress/SubDepartment |Identification of a sub-division of a large organisation or building. |Max70Text | | |
+| StreetName |0..1 |OBInternationalScheduled3/CreditorAgent/PostalAddress/StreetName |Name of a street or thoroughfare. |Max70Text | | |
+| BuildingNumber |0..1 |OBInternationalScheduled3/CreditorAgent/PostalAddress/BuildingNumber |Number that identifies the position of a building on a street. |Max16Text | | |
+| PostCode |0..1 |OBInternationalScheduled3/CreditorAgent/PostalAddress/PostCode |Identifier consisting of a group of letters and/or numbers that is added to a postal address to assist the sorting of mail. |Max16Text | | |
+| TownName |0..1 |OBInternationalScheduled3/CreditorAgent/PostalAddress/TownName |Name of a built-up area, with defined boundaries, and a local government. |Max35Text | | |
+| CountrySubDivision |0..1 |OBInternationalScheduled3/CreditorAgent/PostalAddress/CountrySubDivision |Identifies a subdivision of a country such as state, region, county. |Max35Text | | |
+| Country |0..1 |OBInternationalScheduled3/CreditorAgent/PostalAddress/Country |Nation with its own government. |CountryCode | |^[A-Z]{2,2}$ |
+| AddressLine |0..7 |OBInternationalScheduled3/CreditorAgent/PostalAddress/AddressLine |Information that locates and identifies a specific address, as defined by postal services, presented in free format text. |Max70Text | | |
+| CreditorAccount |1..1 |OBInternationalScheduled3/CreditorAccount |Unambiguous identification of the account of the creditor to which a credit entry will be posted as a result of the payment transaction. |OBCashAccountCreditor3 | | |
+| SchemeName |1..1 |OBInternationalScheduled3/CreditorAccount/SchemeName |Name of the identification scheme, in a coded form as published in an external list. |OBExternalAccountIdentification4Code | | |
+| Identification |1..1 |OBInternationalScheduled3/CreditorAccount/Identification |Identification assigned by an institution to identify an account. This identification is known by the account owner. |Max256Text | | |
+| Name |1..1 |OBInternationalScheduled3/CreditorAccount/Name |The account name is the name or names of the account owner(s) represented at an account level. Note, the account name is not the product name or the nickname of the account. OB: ASPSPs may carry out name validation for Confirmation of Payee, but it is not mandatory. |Max70Text | | |
+| SecondaryIdentification |0..1 |OBInternationalScheduled3/CreditorAccount/SecondaryIdentification |This is secondary identification of the account, as assigned by the account servicing institution. This can be used by building societies to additionally identify accounts with a roll number (in addition to a sort code and account number combination). |Max34Text | | |
+| RemittanceInformation |0..1 |OBInternationalScheduled3/RemittanceInformation |Information supplied to enable the matching of an entry with the items that the transfer is intended to settle, such as commercial invoices in an accounts' receivable system. |OBRemittanceInformation1 | | |
+| Unstructured |0..1 |OBInternationalScheduled3/RemittanceInformation/Unstructured |Information supplied to enable the matching/reconciliation of an entry with the items that the payment is intended to settle, such as commercial invoices in an accounts' receivable system, in an unstructured form. |Max140Text | | |
+| Reference |0..1 |OBInternationalScheduled3/RemittanceInformation/Reference |Unique reference, as assigned by the creditor, to unambiguously refer to the payment transaction. Usage: If available, the initiating party should provide this reference in the structured remittance information, to enable reconciliation by the creditor upon receipt of the amount of money. If the business context requires the use of a creditor reference or a payment remit identification, and only one identifier can be passed through the end-to-end chain, the creditor's reference or payment remittance identification should be quoted in the end-to-end transaction identification. OB: The Faster Payments Scheme can only accept 18 characters for the ReferenceInformation field - which is where this ISO field will be mapped. |Max35Text | | |
+| SupplementaryData |0..1 |OBInternationalScheduled3/SupplementaryData |Additional information that can not be captured in the structured fields and/or any other specific block. |OBSupplementaryData1 | | |
 
 #### OBExchangeRate2
 
@@ -248,13 +250,13 @@ This section describes the OBExchangeRate2 class which is reused in the response
 
 ### International Scheduled Payment Consent - Request
 
-The OBWriteInternationalScheduledConsent3 object will be used for the call to:
+The OBWriteInternationalScheduledConsent4 object will be used for the call to:
 
 * POST /international-scheduled-payment-consents
 
 #### UML Diagram
 
-![OBWriteInternationalScheduledConsent3.gif]( images/OBWriteInternationalScheduledConsent3.gif )
+![OBWriteInternationalScheduledConsent4.gif]( images/OBWriteInternationalScheduledConsent4.gif )
 
 #### Notes
 
@@ -276,24 +278,24 @@ Exchange rate behaviour:
 
 | Name |Occurrence |XPath |EnhancedDefinition |Class |Codes |Pattern |
 | --- |--- |--- |--- |--- |--- |--- |
-| OBWriteInternationalScheduledConsent3 | |OBWriteInternationalScheduledConsent3 | |OBWriteInternationalScheduledConsent3 | | |
-| Data |1..1 |OBWriteInternationalScheduledConsent3/Data | |OBWriteDataInternationalScheduledConsent3 | | |
-| Permission |1..1 |OBWriteInternationalScheduledConsent3/Data/Permission |Specifies the Open Banking service request types. |OBExternalPermissions2Code |Create | |
-| Initiation |1..1 |OBWriteInternationalScheduledConsent3/Data/Initiation |The Initiation payload is sent by the initiating party to the ASPSP. It is used to request movement of funds from the debtor account to a creditor for a single scheduled international payment. |OBInternationalScheduled2 | | |
-| Authorisation |0..1 |OBWriteInternationalScheduledConsent3/Data/Authorisation |The authorisation type request from the TPP. |OBAuthorisation1 | | |
-| SCASupportData |0..1 |OBWriteInternationalScheduledConsent3/Data/SCASupportData |Supporting Data provided by TPP, when requesting SCA Exemption. |OBSCASupportData1 | | |
-| Risk |1..1 |OBWriteInternationalScheduledConsent3/Risk |The Risk section is sent by the initiating party to the ASPSP. It is used to specify additional details for risk scoring for Payments. |OBRisk1 | | |
+| OBWriteInternationalScheduledConsent4 | |OBWriteInternationalScheduledConsent4 | |OBWriteInternationalScheduledConsent4 | | |
+| Data |1..1 |OBWriteInternationalScheduledConsent4/Data | |OBWriteDataInternationalScheduledConsent4 | | |
+| Permission |1..1 |OBWriteInternationalScheduledConsent4/Data/Permission |Specifies the Open Banking service request types. |OBExternalPermissions2Code |Create | |
+| Initiation |1..1 |OBWriteInternationalScheduledConsent4/Data/Initiation |The Initiation payload is sent by the initiating party to the ASPSP. It is used to request movement of funds from the debtor account to a creditor for a single scheduled international payment. |OBInternationalScheduled3 | | |
+| Authorisation |0..1 |OBWriteInternationalScheduledConsent4/Data/Authorisation |The authorisation type request from the TPP. |OBAuthorisation1 | | |
+| SCASupportData |0..1 |OBWriteInternationalScheduledConsent4/Data/SCASupportData |Supporting Data provided by TPP, when requesting SCA Exemption. |OBSCASupportData1 | | |
+| Risk |1..1 |OBWriteInternationalScheduledConsent4/Risk |The Risk section is sent by the initiating party to the ASPSP. It is used to specify additional details for risk scoring for Payments. |OBRisk1 | | |
 
 ### International Scheduled Payment Consent - Response
 
-The OBWriteInternationalScheduledConsentResponse3 object will be used for a response to a call to:
+The OBWriteInternationalScheduledConsentResponse4 object will be used for a response to a call to:
 
 * POST /international-scheduled-payment-consents
 * GET /international-scheduled-payment-consents/{ConsentId}
 
 #### UML Diagram
 
-![ OBWriteInternationalScheduledConsentResponse3.gif ]( images/OBWriteInternationalScheduledConsentResponse3.gif )
+![ OBWriteInternationalScheduledConsentResponse4.gif ]( images/OBWriteInternationalScheduledConsentResponse4.gif )
 
 ####  Notes
 
@@ -328,22 +330,22 @@ Exchange rate behaviour:
 
 | Name |Occurrence |XPath |EnhancedDefinition |Class |Codes |Pattern |
 | --- |--- |--- |--- |--- |--- |--- |
-| OBWriteInternationalScheduledConsentResponse3 | |OBWriteInternationalScheduledConsentResponse3 | |OBWriteInternationalScheduledConsentResponse3 | | |
-| Data |1..1 |OBWriteInternationalScheduledConsentResponse3/Data | |OBWriteDataInternationalScheduledConsentResponse3 | | |
-| ConsentId |1..1 |OBWriteInternationalScheduledConsentResponse3/Data/ConsentId |OB: Unique identification as assigned by the ASPSP to uniquely identify the consent resource. |Max128Text | | |
-| CreationDateTime |1..1 |OBWriteInternationalScheduledConsentResponse3/Data/CreationDateTime |Date and time at which the resource was created. |ISODateTime | | |
-| Status |1..1 |OBWriteInternationalScheduledConsentResponse3/Data/Status |Specifies the status of consent resource in code form. |OBExternalConsentStatus1Code |Authorised AwaitingAuthorisation Consumed Rejected | |
-| StatusUpdateDateTime |1..1 |OBWriteInternationalScheduledConsentResponse3/Data/StatusUpdateDateTime |Date and time at which the resource status was updated. |ISODateTime | | |
-| Permission |1..1 |OBWriteInternationalScheduledConsentResponse3/Data/Permission |Specifies the Open Banking service request types. |OBExternalPermissions2Code |Create | |
-| CutOffDateTime |0..1 |OBWriteInternationalScheduledConsentResponse3/Data/CutOffDateTime |Specified cut-off date and time for the payment consent. |ISODateTime | | |
-| ExpectedExecutionDateTime |0..1 |OBWriteInternationalScheduledConsentResponse3/Data/ExpectedExecutionDateTime |Expected execution date and time for the payment resource. |ISODateTime | | |
-| ExpectedSettlementDateTime |0..1 |OBWriteInternationalScheduledConsentResponse3/Data/ExpectedSettlementDateTime |Expected settlement date and time for the payment resource. |ISODateTime | | |
-| Charges |0..n |OBWriteInternationalScheduledConsentResponse3/Data/Charges |Set of elements used to provide details of a charge for the payment initiation. |OBCharge2 | | |
-| ExchangeRateInformation |0..1 |OBWriteInternationalScheduledConsentResponse3/Data/ExchangeRateInformation |Further detailed information on the exchange rate that has been used in the payment transaction. |OBExchangeRate2 | | |
-| Initiation |1..1 |OBWriteInternationalScheduledConsentResponse3/Data/Initiation |The Initiation payload is sent by the initiating party to the ASPSP. It is used to request movement of funds from the debtor account to a creditor for a single scheduled international payment. |OBInternationalScheduled2 | | |
-| Authorisation |0..1 |OBWriteInternationalScheduledConsentResponse3/Data/Authorisation |The multiple authorisation flow response from the ASPSP. |OBAuthorisation1 | | |
-| SCASupportData |0..1 |OBWriteInternationalScheduledConsentResponse3/Data/SCASupportData |Supporting Data provided by TPP, when requesting SCA Exemption. |OBSCASupportData1 | | |
-| Risk |1..1 |OBWriteInternationalScheduledConsentResponse3/Risk |The Risk section is sent by the initiating party to the ASPSP. It is used to specify additional details for risk scoring for Payments. |OBRisk1 | | |
+| OBWriteInternationalScheduledConsentResponse4 | |OBWriteInternationalScheduledConsentResponse4 | |OBWriteInternationalScheduledConsentResponse4 | | |
+| Data |1..1 |OBWriteInternationalScheduledConsentResponse4/Data | |OBWriteDataInternationalScheduledConsentResponse4 | | |
+| ConsentId |1..1 |OBWriteInternationalScheduledConsentResponse4/Data/ConsentId |OB: Unique identification as assigned by the ASPSP to uniquely identify the consent resource. |Max128Text | | |
+| CreationDateTime |1..1 |OBWriteInternationalScheduledConsentResponse4/Data/CreationDateTime |Date and time at which the resource was created. |ISODateTime | | |
+| Status |1..1 |OBWriteInternationalScheduledConsentResponse4/Data/Status |Specifies the status of consent resource in code form. |OBExternalConsentStatus1Code |Authorised AwaitingAuthorisation Consumed Rejected | |
+| StatusUpdateDateTime |1..1 |OBWriteInternationalScheduledConsentResponse4/Data/StatusUpdateDateTime |Date and time at which the resource status was updated. |ISODateTime | | |
+| Permission |1..1 |OBWriteInternationalScheduledConsentResponse4/Data/Permission |Specifies the Open Banking service request types. |OBExternalPermissions2Code |Create | |
+| CutOffDateTime |0..1 |OBWriteInternationalScheduledConsentResponse4/Data/CutOffDateTime |Specified cut-off date and time for the payment consent. |ISODateTime | | |
+| ExpectedExecutionDateTime |0..1 |OBWriteInternationalScheduledConsentResponse4/Data/ExpectedExecutionDateTime |Expected execution date and time for the payment resource. |ISODateTime | | |
+| ExpectedSettlementDateTime |0..1 |OBWriteInternationalScheduledConsentResponse4/Data/ExpectedSettlementDateTime |Expected settlement date and time for the payment resource. |ISODateTime | | |
+| Charges |0..n |OBWriteInternationalScheduledConsentResponse4/Data/Charges |Set of elements used to provide details of a charge for the payment initiation. |OBCharge2 | | |
+| ExchangeRateInformation |0..1 |OBWriteInternationalScheduledConsentResponse4/Data/ExchangeRateInformation |Further detailed information on the exchange rate that has been used in the payment transaction. |OBExchangeRate2 | | |
+| Initiation |1..1 |OBWriteInternationalScheduledConsentResponse4/Data/Initiation |The Initiation payload is sent by the initiating party to the ASPSP. It is used to request movement of funds from the debtor account to a creditor for a single scheduled international payment. |OBInternationalScheduled3 | | |
+| Authorisation |0..1 |OBWriteInternationalScheduledConsentResponse4/Data/Authorisation |The multiple authorisation flow response from the ASPSP. |OBAuthorisation1 | | |
+| SCASupportData |0..1 |OBWriteInternationalScheduledConsentResponse4/Data/SCASupportData |Supporting Data provided by TPP, when requesting SCA Exemption. |OBSCASupportData1 | | |
+| Risk |1..1 |OBWriteInternationalScheduledConsentResponse4/Risk |The Risk section is sent by the initiating party to the ASPSP. It is used to specify additional details for risk scoring for Payments. |OBRisk1 | | |
 
 ### International Scheduled Payment Consent Confirmation of Funds - Response
 
