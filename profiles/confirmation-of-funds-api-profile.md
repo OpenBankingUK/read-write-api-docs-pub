@@ -1,4 +1,4 @@
-# Confirmation of Funds API Profile - v3.1.2
+# Confirmation of Funds API Profile - v3.1.3
 
 1. [Overview](#overview)
    1. [Document Structure](#document-structure)
