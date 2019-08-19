@@ -364,5 +364,5 @@ The PSU may request the ASPSP to revoke consent that it has authorised. The mech
 
 The PSU may request the CBPII to revoke consent that it has authorised. If consent is revoked with the CBPII:
 
-- The CBPII **must** call the **DELETE** operation on the funds-confirmation-consent resource to indicate to the ASPSP that the PSU has revoked consent.
+- The CBPII **must** call the **DELETE** operation on the funds-confirmation-consent resource as soon as it practically possible to indicate to the ASPSP that the PSU has revoked consent.
 - The CBPII **must** cease to access the APIs at that point.
