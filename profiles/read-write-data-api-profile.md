@@ -110,7 +110,7 @@
          1. [Request](#request-1)
          2. [Response](#response)
 
-## Overview 
+## Overview
 
 The Read/Write Data API Profile provides a description of the elements that are common across all the Read/Write Data APIs.
 
@@ -136,9 +136,9 @@ However, the priority is to have an API that is simple to understand and easy to
 
 References:
 
-* The highest level Data Description Language used is the JSON Schema : http://json-schema.org/
-* Best Practice has also been taken from the Data Description Language for APIs; JSON API : http://jsonapi.org/
-* The Interface Description Language used is the Swagger Specification version 2.0 (also known as Open API) : http://swagger.io/ https://github.com/OAI/OpenAPI-Specification
+* The highest level Data Description Language used is the JSON Schema : <http://json-schema.org/>
+* Best Practice has also been taken from the Data Description Language for APIs; JSON API : <http://jsonapi.org/>
+* The Interface Description Language used is the Swagger Specification version 2.0 (also known as Open API) : <http://swagger.io/> <https://github.com/OAI/OpenAPI-Specification>
 
 #### Standards
 
@@ -167,7 +167,7 @@ It is intended that the API flows will be extended to cater for more complex use
 
 #### Idempotency
 
-Idempotency is difficult to implement consistently and leverage consistently. 
+Idempotency is difficult to implement consistently and leverage consistently.
 
 As a result, idempotency is used sparingly in the Open Banking API specifications; with a preference to allow TPPs to simply re-submit a request under failure conditions.
 
@@ -175,7 +175,7 @@ APIs have been defined to be idempotent, where not doing so would cause a poor P
 
 #### Message Signing
 
-Digital signatures will facilitate non-repudiation for Open Banking APIs. 
+Digital signatures will facilitate non-repudiation for Open Banking APIs.
 
 The approach for message signing is documented in [Basics / Message Signing](#message-signing-1).
 
@@ -227,6 +227,7 @@ For functionalities and endpoints: 
 * An ASPSP **must** implement functionality that is marked Mandatory.
 
 For fields:
+
 * A TPP **must** specify the value of a Mandatory field.
 * An ASPSP **must** process a Mandatory field when provided by the TPP in an API request.
 * An ASPSP **must** include meaningful values for Mandatory fields in an API response.
@@ -329,12 +330,12 @@ An ASPSP must use the same participant-path-prefix and host name for all its res
 
 Examples:
 
-* https://superbank.com/apis/open-banking/v3.1/pisp/domestic-payments
-* https://superbank.com/apis/open-banking/v3.1/aisp/account-access-consents
-* https://superbank.com/apis/open-banking/v3.1/aisp/accounts
-* https://superbank.com/apis/open-banking/v3.1/aisp/accounts/1234
-* https://superbank.com/apis/open-banking/v3.1/aisp/accounts/1234/transactions
-* https://superbank.com/apis/open-banking/v3.1/cbpii/funds-confirmation-consents
+* <https://superbank.com/apis/open-banking/v3.1/pisp/domestic-payments>
+* <https://superbank.com/apis/open-banking/v3.1/aisp/account-access-consents>
+* <https://superbank.com/apis/open-banking/v3.1/aisp/accounts>
+* <https://superbank.com/apis/open-banking/v3.1/aisp/accounts/1234>
+* <https://superbank.com/apis/open-banking/v3.1/aisp/accounts/1234/transactions>
+* <https://superbank.com/apis/open-banking/v3.1/cbpii/funds-confirmation-consents>
 
 For brevity, the APIs are referred to by their resource names in these documents and in all examples.
 
