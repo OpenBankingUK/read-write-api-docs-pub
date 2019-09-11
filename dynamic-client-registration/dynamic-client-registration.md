@@ -1,4 +1,10 @@
-# Dynamic Client Registration v3.2
+# Dynamic Client Registration v3.3
+
+## Change log
+__Ver 3.3__
+- Added reference to CIBA and FAPI-CIBA profile in `Underlying Specifications`
+- Added new grant_type enumeration `urn:openid:params:grant-type:ciba` in the list of grant_types for OBClientRegistrationRequest1
+- Added ciba-specific claims to the list of claims for OBClientRegistrationRequest1
 
 ## Overview
 This specification defines the APIs for a TPP to submit a Software Statement Assertion to an ASPSP for the purpose of creating OAuth clients that are registered with ASPSP.
@@ -46,6 +52,8 @@ The Open Banking Dynamic Client Management specification builds upon the capabil
 - [RFC 7591](https://tools.ietf.org/html/rfc7591): OAuth 2.0 Dynamic Client Registration
 - [RFC 7592](https://tools.ietf.org/html/rfc7592): OAuth 2.0 Dynamic Client Registration Management Protocol
 - [OpenID Connect Dynamic Client Registration 1.0 incorporating errata set 1](https://openid.net/specs/openid-connect-registration-1_0.html)
+- [OpenID Connect Client Initiated Backchannel Authentication Flow - Core 1.0 draft-02](https://openid.net/specs/openid-client-initiated-backchannel-authentication-core-1_0-ID1.html)
+- [Financial-grade API: Client Initiated Backchannel Authentication Profile](https://openid.net/specs/openid-financial-api-ciba-ID1.html)
 
 ### Software Statement
 RFC 7591 defines a Software Statement as
@@ -248,7 +256,7 @@ An ASPSP may ignore claims in the request that it cannot process.
 | client_secret_expires_at	       | 0..1	| client_secret_expires_at |Time at which the client secret will expire expressed as "seconds since the epoch". The value must be populated if a client_secret  is returned. Set to zero if the client_secret does not expire.  |Integer |Unix timestamp ||	Response
 | redirect_uris	                   | 1..*	| redirect_uris | Registered URIs the TPP will use to interact with the ASPSP AS. If the software statement defines a master set of redirect URIs, this must match or be a subset of the redirect URIs  in the SSA. Each of the URIs must adhere to the following rules: - The URI MUST use the https scheme - The URI MUST NOT contain a host with a value of localhost - If the request_uris metadata element is omitted from the request, the entire contents of the software_redirect_uris element in the SSA are considered to be requested by the TPP. | String[] | Each string upto 256 |URL	| Both |
 | token_endpoint_auth_method	     | 1..1 | token_endpoint_auth_method |Specifies which Token endpoint authentication method the TPP wants to use private_key_jwt if requested the OP should extract the TPPs JWKS location from the software statement assertion included. It should be noted that only tls_client_auth and private_key_jwt are FAPI compliant.  |String (32) |private_key_jwt  client_secret_jwt client_secret_basic client_secret_post tls_client_auth | |Both|
-| grant_types	                     | 1..* | grant_types | A JSON array specifying what the TPP can request to be supplied to the token endpoint as exchangefor an access token	| String[] (32) |client_credentials authorization_code refresh_token  || Both |
+| grant_types	                     | 1..* | grant_types | A JSON array specifying what the TPP can request to be supplied to the token endpoint as exchangefor an access token	| String[] (32) |client_credentials authorization_code refresh_token urn:openid:params:grant-type:ciba  || Both |
 | response_types                   | 0..* | response_types | A JSON array specifying what the TPP can request to be returned from the ASPSP authorisation endpoint. ASPSPs MAY reject the request if any of the requested response_types are not supported by it (as advertised at its .well-known end-points) Defaults to code id_token if not specified| String[] (32)|`code`, `code id_token` ||Both |
 | software_id                      | 0..1 | software_id | If specified, the software_id in the request MUST match the software_id specified in the SSA. ASPSPs can choose to allow multiple registrations for a given software statement. The Software ID must be represented as a Base62 UUID |String (22) |^[0-9a-zA-Z]{1,22}$||	Both
 | scope	                           | 1..1 | scope | Scopes the client is asking for (if not specified, default scopes are assigned by the AS). This consists of a list scopes separated by spaces. |String(256) || |Both |
@@ -258,6 +266,11 @@ An ASPSP may ignore claims in the request that it cannot process.
 | request_object_signing_alg	     | 1..1 | request_object_signing_alg | Algorithm which the TPP expects to sign the request object if a request object will be part of the authorization request sent to the ASPSP.	| String (5)	| Supported values as constrained by FAPI-RW ||Both |
 | token_endpoint_auth_signing_alg	 | 0..1 | token_endpoint_auth_signing_alg | Algorithm which the TPP uses to authenticate with the token endpoint if using private_key_jwt or client_secret_jwt. Must be specified if token_endpoint_auth_method is private_key_jwt or client_secret_jwt |String (5)	| Supported values as constrained by FAPI-RW ||Both |
 | tls_client_auth_subject_dn       | 0..1  | tls_client_auth_subject_dn |This value must be set iff token_endpoint_auth_method is set to tls_client_auth. The tls_client_auth_subject_dn claim MUST contain the DN of the certificate that the TPP will present to the ASPSP token endpoint.The ASPSP may decide to match only a part of the DN so that the match is based only on the part of the DN that will be immutable for the TPP across all EIDAS certificates issued to it. |String (128) |||Both
+| backchannel_token_delivery_mode       | 0..1  | backchannel_token_delivery_mode |This value MUST be specified iff the grant_types includes `urn:openid:params:grant-type:ciba`  |String (8) | Supported values as constrained by FAPI-CIBA (ie poll or ping, but not push)||Both
+| backchannel_client_notification_endpoint | 0..1  | backchannel_client_notification_endpoint |This value MUST be specified iff the grant_types includes `urn:openid:params:grant-type:ciba`. This must be a valid HTTPS URL  |String (256) | ||Both
+| backchannel_authentication_request_signing_alg | 0..1  | backchannel_authentication_request_signing_alg |This value MUST be specified iff the grant_types includes `urn:openid:params:grant-type:ciba`.  |String (8) | Supported values as constrained by FAPI-CIBA (ie ES256 or PS256) ||Both
+| backchannel_user_code_parameter_supported | 0..1  | backchannel_user_code_parameter_supported |This value MUST be specified iff the grant_types includes `urn:openid:params:grant-type:ciba`. |boolean |  ||Both
+
 
 
 ## Error Structure
