@@ -833,11 +833,17 @@ The `id_token` is a signed JWT that consists of a number of claims that identify
 As the `id_token` is signed by the ASPSP and bound to a specific TPP (through the `aud` claim), the `id_token` could be leveraged to *identify* the PSU in subsequent authorisation requests. OIDC caters for this by allowing the `id_token` to be passed into an authorization code grant request as the `id_token_hint` query parameter (as documented [here](https://openid.net/specs/openid-connect-core-1_0.html#AuthRequest)).
 
 #### CIBA
-The [Client Initiated Back-channel Authentication flow](https://openid.net/specs/openid-client-initiated-backchannel-authentication-core-1_0.html) is part of the OpenID specifications. A [FAPI Profile of the CIBA specification](https://bitbucket.org/openid/fapi/src/a9e55356b5f233af804227d5001d3c32d23d1a91/Financial_API_WD_CIBA.md?at=master&fileviewer=file-view-default) is available and ASPSPs that implement CIBA **must** adhere to the profile. An ASPSP **may** optionally implement the CIBA flow to allow PSUs to authenticate themselves using a decoupled *authentication device* that is distinct from the *consumption device* on which they consume the TPP application.
+The [Client Initiated Back-channel Authentication flow](https://openid.net/specs/openid-client-initiated-backchannel-authentication-core-1_0.html) is part of the OpenID specifications.
+
+FAPI has published [Financial-grade API: Client Initiated Backchannel Authentication Profile](https://openid.net/specs/openid-financial-api-ciba-ID1.html).
+
+ASPSPs that implement CIBA **must** adhere to the profile.
+
+An ASPSP **may** optionally implement the CIBA flow to allow PSUs to authenticate themselves using a decoupled *authentication device* that is distinct from the *consumption device* on which they consume the TPP application.
 
 ##### Identifying the PSU
 
-ASPSPs that implement CIBA must support one or more of the following methods of identifying the PSU that is to be authenticated using the `login_hint_token`.
+ASPSPs that implement CIBA must support one or more of the following methods of identifying the PSU that is to be authenticated:
 
 * **User Id**: Using a static identifier that is shared by the ASPSP and the PSU. This could include a static identifier issued by the ASPSP (e.g., a user name, card number, account number) or a public identifier that allows the ASPSP to uniquely identify the PSU (e.g., an email address or phone number)
 * **Ephemeral User Id**: Using a dynamically generated, single use identifier issued by the ASPSP to the PSU. This could be a single use token generated on the PSU's authentication device or communicated to the PSU by any other means.
@@ -846,16 +852,24 @@ ASPSPs that implement CIBA must support one or more of the following methods of 
 
 An ASPSP **must** document on their developer portal, the methods of identifying a PSU the ASPSP supports.
 
-If the ASPSP does not support a specific method of identifying a PSU, the ASPSP **must** return an authentication error with the error field set to invalid_request.
+If the ASPSP does not support a specific method of identifying a PSU, the ASPSP **must** return an authentication error with the error field set to `invalid_request`.
 
-Prior to creating the `login_hint_token` the TPP must create a consent. The generated consent id must be passed in the `http://openbanking.org.uk/openbanking-intent-id` custom claim. This allows the access token that is eventually generated to be bound to a specific consent.
+
+###### Identifying the consent to be authorised
+For the OBIE APIs, all authentication journeys take place in the context of a consent.
+
+CIBA does not define a standard mechanism for transmitting an identifier for the consent to the ASPSP. Additionally, FAPI-CIBA specifically states that the Authorization server:
+> should not use the login_hint or login_hint_token to convey "intent ids" or any other authorization metadata
+
+It goes on to suggest that additional contextual information should be passed in using one of the alternatives defined in the "Lodging Intent" pattern.
+
+Prior to creating the issuing the `bc-authorize` request the TPP must create a consent.
+The generated consent id must be passed in the request object as a parameter called `openbanking-intent-id`.
+This allows the access token that is eventually generated to be bound to a specific consent.
 
 ###### Identifying the PSU Using a User Id
 
-To identify a PSU through a user Id, the TPP **must** issue `login_hint_token` in the `bc_authorize` request that contains:
-
-* The custom claim `http://openbanking.org.uk/sit` set to the value UID
-* At least one of the following claims with a value indicating the user Id:
+To identify a PSU through a user Id, the TPP **must** issue a `login_hint_token` in the `bc_authorize` request that contain at least one of the following claims with a value indicating the user id:
   * sub
   * preferred_username
   * email
@@ -866,72 +880,46 @@ If the ASPSP support identification of the user through a static identifier, it 
 ```json
 // using login name
 {
-  "http://openbanking.org.uk/sit": "UID",
   "sub": "scott",
-  "http://openbanking.org.uk/openbanking_intent_id": "11bf5b37-e0b8-42e0-8dcf-dc8c4aefc000"
 }
 
 // using email address
 {
-  "http://openbanking.org.uk/sit": "UID",
   "email": "scott@oracle.com",
-  "http://openbanking.org.uk/openbanking_intent_id": "11bf5b37-e0b8-42e0-8dcf-dc8c4aefc000"
 }
 
 // using phone number
 {
-  "http://openbanking.org.uk/sit": "UID",
   "phone_number": "00448903748394",
-  "http://openbanking.org.uk/openbanking_intent_id": "11bf5b37-e0b8-42e0-8dcf-dc8c4aefc000"
 }
 ```
 
+
 ###### Identifying the PSU Using an Ephemeral User Id
-
-To identify a PSU through an ephemeral user Id, the TPP **must** issue a `login_hint_token` in the `bc_authorize` request that contains:
-
-* The custom claim `http://openbanking.org.uk/sit` set to the value EUID
-* The claim sub populated with the ephemeral user Id
+To identify a PSU through an ephemeral user Id, the TPP **must** issue a `login_hint_token` in the `bc_authorize` request that contains the custom claim `ephemeral_sub` set to the ephemeral user id
 
 ```json
 {
-  "http://openbanking.org.uk/sit": "EUID",
-  "sub": "11bf5b37-e0b8-42e0-8dcf-dc8c4aefc000",
-  "http://openbanking.org.uk/openbanking_intent_id": "11bf5b37-e0b8-42e0-8dcf-dc8c4aefc000"
+  "ephemeral_sub": "11bf5b37-e0b8-42e0-8dcf-dc8c4aefc000"
 }
 ```
 
 ###### Identifying the PSU Using an Intent Id
 
-To identify a PSU through an intent Id, the TPP **must** first create a consent resource with the ASPSP.
+To identify a PSU through an intent Id, the only passes in the consent id as described in the previous section.
+A `login_hint_token` **must not** be included in the request.
 
-In order to initiate authentication, the TPP must lodge a `bc_authorize` request and then displaying the resulting `auth_req_id` and `intent_id` as a QR code which the user would scan using their banking app. The ASPSP would then link the user (who is authenticated in their banking app) with the authentication request.
+In order to initiate authentication, the TPP must lodge a `bc_authorize` request and then display the resulting `auth_req_id` and `intent_id` as a QR code.
 
-The TPP must provide a `login_hint_token` in the `bc_authorize` request that contains:
+The PSU would authenticate themselves on the ASPSP's banking app and then scan the QR code.
 
-* The custom claim `http://openbanking.org.uk/sit` set to the value IID
-* The claim `http://openbanking.org.uk/openbanking_intent_id` set to the value of the intent Id that is being used.
-
-```json
-{
-  "http://openbanking.org.uk/sit": "IID",
-  "http://openbanking.org.uk/openbanking_intent_id": "11bf5b37-e0b8-42e0-8dcf-dc8c4aefc000"
-}
-```
-
-Once the PSU has been authenticated, the TPP is issued another `id_token` which is bound to the `intent_id` provided in the `login_token_hint`.
+This will allow the ASPSP to identify the PSU that is authenticating the consent.
 
 ###### Identifying the PSU Using a Previously Issued Id Token
 
 To identify a PSU through a previously issued `id_token` the TPP must issue an `id_token_hint` containing the id_token in the `bc_authorize` request.
+A `login_hint_token` **must not** be included in the request.
 
-```json
-{
-  "http://openbanking.org.uk/sit": "ID_TOKEN",
-  "http://openbanking.org.uk/id_token": "... id token as a JWS ...",
-  "http://openbanking.org.uk/openbanking_intent_id": "11bf5b37-e0b8-42e0-8dcf-dc8c4aefc000"
-}
-```
 
 ### Changes to an Intent's Authorized State
 
