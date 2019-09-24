@@ -1,4 +1,4 @@
-# AISP Resources and Data Models - v3.1.4-Draft1
+# AISP Resources and Data Models - v3.1.4
 
 Resources accessed using the aisp PSD2 role are detailed here:
 
