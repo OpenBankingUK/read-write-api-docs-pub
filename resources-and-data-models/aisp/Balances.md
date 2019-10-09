@@ -100,62 +100,6 @@ The resource requires the ReadBalances permission. The resource response payload
 
 ## Usage Examples
 
-### Specific Account
-
-#### Get Account Balances Request
-
-```
-GET /accounts/22289/balances HTTP/1.1
-Authorization: Bearer Az90SAOJklae
-x-fapi-auth-date: Sun, 10 Sep 2017 19:43:31 GMT
-x-fapi-customer-ip-address: 104.25.212.99
-x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
-Accept: application/json
-```
-
-#### Get Account Balances Response
-
-```
-HTTP/1.1 200 OK
-x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
-Content-Type: application/json
-```
-
-```json
-{
-  "Data": {
-    "Balance": [
-      {
-        "AccountId": "22289",
-        "Amount": {
-          "Amount": "1230.00",
-          "Currency": "GBP"
-        },
-        "CreditDebitIndicator": "Credit",
-        "Type": "InterimAvailable",
-        "DateTime": "2017-04-05T10:43:07+00:00",
-        "CreditLine": [
-          {
-            "Included": true,
-            "Amount": {
-              "Amount": "1000.00",
-              "Currency": "GBP"
-            },
-            "Type": "Pre-Agreed"
-          }
-        ]
-      }
-    ]
-  },
-  "Links": {
-    "Self": "https://api.alphabank.com/open-banking/v3.1/aisp/accounts/22289/balances/"
-  },
-  "Meta": {
-    "TotalPages": 1
-  }
-}
-```
-
 ### Bulk
 
 #### Get Balances Request
@@ -197,7 +141,7 @@ Content-Type: application/json
               "Amount": "1000.00",
               "Currency": "GBP"
             },
-            "Type": "Pre-Agreed"
+            "Type": "Temporary"
           }
         ]
       },
@@ -222,7 +166,7 @@ Content-Type: application/json
 }
 ```
 
-### Specific Account with High Cost Credit Not Included and and Account in Credit
+### Specific Account with High Cost Credit Not Included in Balance and Account in Credit
 
 #### Get Account Balances Request
 
@@ -283,11 +227,11 @@ Content-Type: application/json
 }
 ```
 
-### Specific Account with High Cost Credit Included and Account in Credit
+### Specific Account with Creditline Included in Balance and Account in Credit
 
 #### Get Account Balances Request
 
-An account has a balance of 300 GBP with an arranged overdraft of 500 GBP none of which has been used.
+An account has a balance of 300 GBP with an temporary creditline of 500 GBP none of which has been used.
 
 ```
 GET /accounts/22289/balances HTTP/1.1
@@ -331,7 +275,7 @@ Content-Type: application/json
          "Amount": "500.00",
          "Currency": "GBP"
        },
-       "Type": "Pre-Agreed"
+       "Type": "Temporary"
      }
    ]
 },
@@ -344,7 +288,7 @@ Content-Type: application/json
 }
 ```
 
-### Specific Account with High Cost Credit not Included and Account in Debit
+### Specific Account with High Cost Credit not Included in Balance and Account in Debit
 
 #### Get Account Balances Request
 
