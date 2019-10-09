@@ -212,3 +212,186 @@ Content-Type: application/json
   }
 }
 ```
+
+### Specific Account - High Cost Credit - Account Balance in Credit
+
+#### Get Account Balances Request - Accoiunt in Credit and High Cost Credit not included in Balance
+
+An account has a balance of 300 GBP with an arranged overdraft of 500 GBP none of which has been used.
+
+```
+GET /accounts/22289/balances HTTP/1.1
+Authorization: Bearer Az90SAOJklae
+x-fapi-auth-date: Sun, 10 Sep 2017 19:43:31 GMT
+x-fapi-customer-ip-address: 104.25.212.99
+x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
+Accept: application/json
+```
+
+#### Get Account Balances Response
+
+```
+HTTP/1.1 200 OK
+x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
+Content-Type: application/json
+```
+
+```json
+{
+  "AccountId": "22289",
+   "Amount": {
+     "Amount": "300.00",
+     "Currency": "GBP"
+   },
+   "CreditDebitIndicator": "Credit",
+   "Type": "InterimAvailable",
+   "DateTime": "2017-04-05T10:43:07+00:00",
+   "CreditLine": [
+      {
+       "Included": false,
+       "Amount": {
+         "Amount": "500.00",
+         "Currency": "GBP"
+       },
+       "Type": "Available"
+     },
+    {
+       "Included": false,
+       "Amount": {
+         "Amount": "500.00",
+         "Currency": "GBP"
+       },
+       "Type": "Pre-Agreed"
+     }
+   ]
+},
+  "Links": {
+    "Self": "https://api.alphabank.com/open-banking/v3.1/aisp/accounts/22289/balances/"
+  },
+  "Meta": {
+    "TotalPages": 1
+  }
+}
+```
+
+### Specific Account - High Cost Credit - Account Balance in Debit
+
+#### Get Account Balances Request - Account in Debit and High Cost Credit not included in Balance
+
+If the account holder spends 400 GBP, then their account balance drops to 100 GBP (Debit) with a further 400 GBP available (if their pre-agreed overdraft remains unchanged at 500 GBP)
+
+```
+GET /accounts/22289/balances HTTP/1.1
+Authorization: Bearer Az90SAOJklae
+x-fapi-auth-date: Sun, 10 Sep 2017 19:43:31 GMT
+x-fapi-customer-ip-address: 104.25.212.99
+x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
+Accept: application/json
+```
+
+#### Get Account Balances Response
+
+```
+HTTP/1.1 200 OK
+x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
+Content-Type: application/json
+```
+
+```json
+{
+  "AccountId": "22289",
+   "Amount": {
+     "Amount": "100.00",
+     "Currency": "GBP"
+   },
+   "CreditDebitIndicator": "Debit",
+   "Type": "InterimAvailable",
+   "DateTime": "2017-04-05T10:43:07+00:00",
+   "CreditLine": [
+     {
+       "Included": false,
+       "Amount": {
+         "Amount": "400.00",
+         "Currency": "GBP"
+       },
+       "Type": "Available"
+     },
+     {
+       "Included": false,
+       "Amount": {
+         "Amount": "500.00",
+         "Currency": "GBP"
+       },
+       "Type": "Pre-Agreed"
+     }
+   ]
+},
+  "Links": {
+    "Self": "https://api.alphabank.com/open-banking/v3.1/aisp/accounts/22289/balances/"
+  },
+  "Meta": {
+    "TotalPages": 1
+  }
+}
+```
+
+### Specific Account - High Cost Credit - Account Balance in Credit
+
+#### Get Account Balances Request - Account in Credit and High Cost Credit included in Balance
+
+An account has a balance of 300 GBP with an arranged overdraft of 500 GBP none of which has been used.
+
+```
+GET /accounts/22289/balances HTTP/1.1
+Authorization: Bearer Az90SAOJklae
+x-fapi-auth-date: Sun, 10 Sep 2017 19:43:31 GMT
+x-fapi-customer-ip-address: 104.25.212.99
+x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
+Accept: application/json
+```
+
+#### Get Account Balances Response
+
+```
+HTTP/1.1 200 OK
+x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
+Content-Type: application/json
+```
+
+```json
+{
+  "AccountId": "22289",
+   "Amount": {
+     "Amount": "800.00",
+     "Currency": "GBP"
+   },
+   "CreditDebitIndicator": "Credit",
+   "Type": "InterimAvailable",
+   "DateTime": "2017-04-05T10:43:07+00:00",
+   "CreditLine": [
+      {
+       "Included": false,
+       "Amount": {
+         "Amount": "500.00",
+         "Currency": "GBP"
+       },
+       "Type": "Available"
+     },
+    {
+       "Included": true,
+       "Amount": {
+         "Amount": "500.00",
+         "Currency": "GBP"
+       },
+       "Type": "Pre-Agreed"
+     }
+   ]
+},
+  "Links": {
+    "Self": "https://api.alphabank.com/open-banking/v3.1/aisp/accounts/22289/balances/"
+  },
+  "Meta": {
+    "TotalPages": 1
+  }
+}
+```
