@@ -49,7 +49,7 @@ This resource description should be read in conjunction with a compatible Aggreg
 ## Endpoints
 | Resource |HTTP Operation |Endpoint |Mandatory? |Scope |Grant Type |Message Signing |Idempotency Key |Request Object |Response Object |
 | --- |--- |--- |--- |--- |--- |--- |--- |--- |--- |
-| events |POST |POST /events |Optional |eventpolling |Client Credentials |N/A |No |OBEventPolling1 |OBEventPollingResponse1 |
+| events |POST |POST /events |Optional |accounts fundsconfirmations |Client Credentials |N/A |No |OBEventPolling1 |OBEventPollingResponse1 |
 
 ### POST /events
 

@@ -19,21 +19,17 @@ The Swagger Specification for R/W APIs can be downloaded from the following GitH
 
 https://github.com/OpenBankingUK/read-write-api-specs
 
-## Authors
+## Change Log
 
-### Present
+### Version 3.1.4
 
-- Arif Khan
-- Chris Wood
-- Freddi  Gyara
-- Nitin Tiwari
+#### Decision 205 - Scope for Event notifications
 
-### Past
+- Changed scope for `event-notifications` API to be either of accounts or fundsconfirmations
 
-- Claudio Viola
-- [Daniel Johnson](https://github.com/danielcjohnson)
-- Gavin Wong
-- Imran Qureshi
-- Jan Szumiec
+#### Decision 205 - Optionality of PUT requests
 
-### Supporting Cast
+- Changed the optionality of `PUT /callback-urls`
+
+#### Decision 205 - Optionality of DELETE requests
+- Changed the optionality of `DELETE /callback-urls`
