@@ -1,4 +1,4 @@
-# PISP Resources and Data Models - v3.1.2
+# PISP Resources and Data Models - v3.1.4
 
 Resources accessed using the pisp PSD2 role are detailed here:
 

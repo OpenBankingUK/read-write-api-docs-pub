@@ -1,4 +1,4 @@
-# Domestic Payment Usage Examples - v3.1.2
+# Domestic Payment Usage Examples - v3.1.4
 
 1. [Merchant Initiation via PISP](#merchant-initiation-via-pisp)
    1. [Sequence Diagram](#sequence-diagram)
@@ -61,7 +61,7 @@ In this scenario:
 
 <details>
   <summary>Diagram source</summary>
-  
+
 ```
 participant PSU
 participant Merchant
@@ -704,7 +704,7 @@ Content-Type: application/json
 Accept: application/json
 ```
 
-```json 
+```json
 {
   "Data": {
     "ConsentId": "7290",
@@ -1139,7 +1139,7 @@ Content-Type: application/json
 ## Balance Transfer
 Below in an example illustrating a balance transfer offer available on a Card A.
 
-To facilitate a Balance Transfer, a PISP can initiate a Payment from Card B to Card A with LocalInstrument as UK.OBIE.BalanceTransfer, Account SchemeName as UK.OBIE.PAN and if there is an Offer Code/Id provided by Issuer of the Card A, then it can be supplied in the field: RemittanceInformation.Reference. 
+To facilitate a Balance Transfer, a PISP can initiate a Payment from Card B to Card A with LocalInstrument as UK.OBIE.BalanceTransfer, Account SchemeName as UK.OBIE.PAN and if there is an Offer Code/Id provided by Issuer of the Card A, then it can be supplied in the field: RemittanceInformation.Reference.
 Example below:
 
 ### POST /domestic-payment-consents request
@@ -1242,7 +1242,7 @@ Content-Type: application/json
 
 ## Money Transfer
 
-Below in an example illustrating Money transfer from a card account to a bank account. 
+Below in an example illustrating Money transfer from a card account to a bank account.
 
 ### POST /domestic-payment-consents request
 
@@ -1297,7 +1297,7 @@ HTTP/1.1 201 Created
 x-jws-signature: V2hhdCB3ZSBnb3QgaGVyZQ0K..aXMgZmFpbHVyZSB0byBjb21tdW5pY2F0ZQ0K
 x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Content-Type: application/json
-``` 
+```
 ```json
 {
     "Data": {

@@ -1,4 +1,4 @@
-# Event Subscription - v3.1.2
+# Event Subscription - v3.1.4
 
 1. [Overview](#overview)
 2. [Endpoints](#endpoints)
@@ -46,7 +46,7 @@ A TPP will set up and maintain its event subscription details (URL, event types 
 | event-subscription |DELETE |DELETE /event-subscriptions/{EventSubscriptionId} |Mandatory (if resource POST implemented) |accounts<br>payments<br>fundsconfirmations |Client Credentials |n/a |No |n/a |n/a |
 
 
-#### POST /event-subscriptions 
+#### POST /event-subscriptions
 
 The API endpoint allows the TPP to ask an ASPSP to create a new **event-subscription** resource.
 

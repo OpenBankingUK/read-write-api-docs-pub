@@ -1,4 +1,4 @@
-# Namespaced Enumerations - v3.1.3
+# Namespaced Enumerations - v3.1.4
 
 1. [Overview](#overview)
 2. [Basics](#basics)
@@ -59,7 +59,7 @@ When extending a namespaced enumeration:
 
 ### Release Management
 
-Usage of non-namespaced values may be discontinued in a future version of this standard. 
+Usage of non-namespaced values may be discontinued in a future version of this standard.
 
 As a special case and in order to minimise disruption between versions of the standard, a TPP **may** specify previous non-namespaces values, e.g. IBAN instead of UK.OBIE.IBAN.
 
@@ -84,7 +84,7 @@ This is Data Type for Account/SchemeName and used to identify the type of Identi
 
 ### OBExternalFinancialInstitutionIdentification4Code
 
-This is the Data Type for Agent/SchemeName and used to identify the type of Identification used to identify an agent. 
+This is the Data Type for Agent/SchemeName and used to identify the type of Identification used to identify an agent.
 
 | Code |Description |
 | --- |--- |
@@ -131,7 +131,7 @@ This is Data Type gives a low level textual error code to help categorise an err
 
 </details>
 
-## Account and Transaction API Namespaced Enumerations 
+## Account and Transaction API Namespaced Enumerations
 
 ### OBExternalStatementAmountType1Code
 
@@ -435,7 +435,7 @@ This enumeration consists of a subset of the fees and charges identified in the 
 
 <details><summary>Show</summary>
 
-This field is used to indicate the file-type that is being submitted as part of a file-payment payload. 
+This field is used to indicate the file-type that is being submitted as part of a file-payment payload.
 
 | Code |Description |
 | --- |--- |

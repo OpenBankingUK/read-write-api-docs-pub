@@ -1,4 +1,4 @@
-# BCA Product Data Model - v3.1.2
+# BCA Product Data Model - v3.1.4
 
 1. [Overview](#overview)
    1. [Fields to include in BCA Product](#fields-to-include-in-bca-product)
@@ -87,7 +87,7 @@ Further analysis required:-
 
 * AER is the only representative rate for CreditInterest for product comparison purposes and therefore has been explicitly captured.
 * The banks often also specify Gross rates. Net is usually determined by removing basic rate tax only, and banks stopped doing this from April 2016. This may still be required for backbook products.
-* It has been ensured that both the calculation and application frequency for credit interest is captured. 
+* It has been ensured that both the calculation and application frequency for credit interest is captured.
 * The term "Nominal" used by some banks is synonymous with "Gross".
 * DepositInterestAppliedCoverage refers to which interest rate is applied when interests are tiered. For example, if an account balance is £2k and the interest tiers are:- 0-£500 0.1%, 500-1000 0.2%, 1000-10000 0.5%, then the applicable interest rate could either be 0.5% of the entire balance (since the account balance sits in the top interest tier) or (0.1%*500)+(0.2%*500)+(0.5%*1000). In the 1st situation, the interest should be applied to the "Whole" of the account balance, and in the 2nd this should be "Tiered".
 * Destination refers to whether the BCA allows interest to be credited to another account ("PayAway") or only to the BCA itself ("SelfCredit").

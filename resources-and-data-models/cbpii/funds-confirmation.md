@@ -1,4 +1,4 @@
-# Funds Confirmation - v3.1.2
+# Funds Confirmation - v3.1.4
 
 1. [Overview](#overview)
 2. [Endpoints](#endpoints)
