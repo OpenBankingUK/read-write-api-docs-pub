@@ -109,6 +109,20 @@ draft-ietf-secevent-http-poll-01 specifies that recipients of event notification
 
 ASPSPs can evict positively acknowledged event notifications from their stores. It is implicit that TPPs are responsible for retaining a record of event notifications appropriate to their needs once positively acknowledged.
 
+### Operating without acknowledgements
+
+The SET standard allows the event transmitter (the ASPSP in our case) to decide how many times an event re-delivery is attempted even if it is not acknowledged
+
+> If after a period of time, negotiated between the Event Transmitter and Recipient, an SET Transmitter MAY reissue SETs it has previously delivered. The SET Recipient SHOULD accept repeat SETs and acknowledge the SETs regardless of whether the Recipient believes it has already acknowledged the SETs previously. An SET Transmitter MAY limit the number of times it attempts to deliver a SET.
+
+If the ASPSP limits the number of times it attempts to deliver a SET to one, it can safely ignore the acknowledgements while still remaining compliant with the standard.
+
+Similarly the TPP may safely make poll requests without acknowledging the SETs that it has received.
+
+An ASPSP that provides aggregated polling without expecting acknowledgements must document the expected behaviour on their developer portal.
+
+
+
 ### Event Recycling Frequency
 
 ASPSPs are responsible for documenting the frequency at which JWT Identifiers will be recycled and reused in their developer portal.

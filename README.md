@@ -33,3 +33,6 @@ https://github.com/OpenBankingUK/read-write-api-specs
 
 #### Decision 205 - Optionality of DELETE requests
 - Changed the optionality of `DELETE /callback-urls`
+
+#### Decision 206 - Optionality of acknowledgements for aggregated polling
+- Clarified behaviour that is expected when ASPSPs do not want to process acknowledgements for aggregated polling
