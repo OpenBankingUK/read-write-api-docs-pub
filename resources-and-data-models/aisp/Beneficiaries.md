@@ -1,4 +1,4 @@
-# Beneficiaries - v3.1.3
+# Beneficiaries - v3.1.4
 
 1. [Overview](#overview)
 2. [Endpoints](#endpoints)
@@ -43,7 +43,7 @@ This endpoint will retrieve the beneficiaries' resources for all authorised acco
 
 ## Data Model
 
-The OBReadBeneficiary4 object will be used for the call to: 
+The OBReadBeneficiary4 object will be used for the call to:
 * GET /accounts/{AccountId}/beneficiaries
 * GET /beneficiaries
 
@@ -70,19 +70,19 @@ This is the expected behaviour of the beneficiaries' endpoints, in the case an A
 ### Notes
 
 * The CreditorAccount is used consistently throughout the Account Information APIs to identify an account
-* Due to internationalisation requirements: 
-    * The CreditorAgent object may be used to represent either (1) the BIC (with UK.OBIE.BICFI in the SchemeName field and the BIC in the Identification field), or (2) the Name and Address details for the financial institution. 
+* Due to internationalisation requirements:
+    * The CreditorAgent object may be used to represent either (1) the BIC (with UK.OBIE.BICFI in the SchemeName field and the BIC in the Identification field), or (2) the Name and Address details for the financial institution.
     * The CreditorAccount/Identification field may be used to represent a non-UK specific branch and account numbering scheme with "UK.OBIE.SortCodeAccountNumber" being populated in the CreditorAccount/SchemeName.
 * For the /accounts/{AccountId}/beneficiaries endpoint, the CreditorAccount and CreditorAgent blocks represent the account of the beneficiary that is receiving funds (so has been named the CreditorAccount for consistency with the PISP use case).
 
 ### Permission Codes
 
 The resource differs depending on the permissions (ReadBeneficiariesBasic and ReadBeneficiariesDetail) used to access the resource. In the event that the resource is accessed with both ReadBeneficiariesBasic and ReadBeneficiariesDetail, the most detailed level (ReadBeneficiariesDetail) must be used.
-* These objects **must not** be returned **without** the **ReadBeneficiariesDetail** permission: 
-    * OBReadBeneficiary4/Data/Beneficiary/CreditorAgent 
+* These objects **must not** be returned **without** the **ReadBeneficiariesDetail** permission:
+    * OBReadBeneficiary4/Data/Beneficiary/CreditorAgent
     * OBReadBeneficiary4/Data/Beneficiary/CreditorAccount
 * If the **ReadBeneficiariesDetail** is granted by the PSU:     
-    * OBReadBeneficiary4/Data/Beneficiary/CreditorAgent **may** be returned if applicable to the account and ASPSP (0..1) 
+    * OBReadBeneficiary4/Data/Beneficiary/CreditorAgent **may** be returned if applicable to the account and ASPSP (0..1)
     * OBReadBeneficiary4/Data/Beneficiary/CreditorAccount **must** be returned (1..1)
 
 If the ReadPAN permission is granted by the PSU, the ASPSP may choose to populate the OBReadBeneficiary4/Data/Beneficiary/CreditorAccount/Identification with the unmasked PAN (if the PAN is being populated in the response).

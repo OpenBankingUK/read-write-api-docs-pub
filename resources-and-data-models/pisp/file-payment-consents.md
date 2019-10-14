@@ -1,4 +1,4 @@
-# File Payment Consents - v3.1.2
+# File Payment Consents - v3.1.4
 
 1. [Overview](#overview)
 2. [Endpoints](#endpoints)
@@ -48,7 +48,7 @@ This resource description should be read in conjunction with a compatible Paymen
 | file-payment-consents |GET |GET /file-payment-consents/{ConsentId} |Mandatory (if resource POST implemented) |payments |Client Credentials |Signed Response |No |NA |OBWriteFileConsentResponse3 |
 | file-payment-consents |GET |GET /file-payment-consents/{ConsentId}/file |Conditional |payments |Client Credentials |Signed Response |No |NA |File |
 
-### POST /file-payment-consents 
+### POST /file-payment-consents
 
 The API endpoint allows the PISP to ask an ASPSP to create a new **file-payment-consent** resource.
 
@@ -88,7 +88,7 @@ The default Status is "AwaitingAuthorisation" immediately after the file has bee
 
 ### GET /file-payment-consents/{ConsentId}
 
-A PISP can optionally retrieve a payment consent resource that they have created to check its status. 
+A PISP can optionally retrieve a payment consent resource that they have created to check its status.
 
 #### Status
 
@@ -147,9 +147,9 @@ This section describes the OBFile2 class, which is reused as the Initiation obje
 
 ![OBFile2]( images/OBFile2.gif )
 
-##### Notes 
+##### Notes
 
-For the OBFile2 Initiation object: 
+For the OBFile2 Initiation object:
 
 * All elements in the Initiation payload that are specified by the PISP must not be changed via the ASPSP, as this is part of formal consent from the PSU.
 * If the ASPSP is able to establish a problem with payload or any contextual error during the API call, the ASPSP must reject the file-payment-consent request immediately.
@@ -191,7 +191,7 @@ The OBWriteFileConsent3 object will be used for the call to:
 
 ![OBWriteFileConsent3]( images/OBWriteFileConsent3.gif )
 
-#### Notes 
+#### Notes
 
 The file-payment-consent **request** contains these objects:
 
@@ -199,7 +199,7 @@ The file-payment-consent **request** contains these objects:
 * Authorisation
 * SCASupportData
 
-For the file-payment-consent request object: 
+For the file-payment-consent request object:
 
 * There is no Risk section in the OBWriteFileConsent3 object - as this is not relevant for a file payment.
 
@@ -224,7 +224,7 @@ The OBWriteFileConsentResponse3 object will be used for a response to a call to:
 
 ![OBWriteFileConsentResponse3]( images/OBWriteFileConsentResponse3.gif )
 
-#### Notes 
+#### Notes
 
 The file-payment-consent **response** contains the full **original** payload from the file-payment-consent **request** with these additional elements:
 
@@ -335,7 +335,7 @@ A sample file with 3 transactions is provided below:
 
 <details>
  <summary>File Data Expand source </summary>
-   
+
 ```xml
 <?xml version="1.0" encoding="UTF-8" ?>
 <Document xmlns="urn:iso:std:iso:20022:tech:xsd:pain.001.001.08" xmlns:xsi="http://www.w3.org/2001/XMLSchema- instance">
@@ -534,9 +534,9 @@ A sample file with 3 transactions is provided below:
 	</PmtInf>
 </CstmrCdtTrfInitn>
 </Document>
-``` 
+```
 
-</details> 
+</details>
 
 #### Response
 

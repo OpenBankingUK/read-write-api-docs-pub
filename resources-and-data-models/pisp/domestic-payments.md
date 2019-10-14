@@ -1,4 +1,4 @@
-# Domestic Payments - v3.1.2
+# Domestic Payments - v3.1.4
 
 1. [Overview](#overview)
 2. [Endpoints](#endpoints)
@@ -58,7 +58,7 @@ Once the domestic-payment-consent has been authorised by the PSU, the PISP can p
 
 #### Status
 
-A domestic-payment can only be created if its corresponding domestic-payment-consent resource has the status of "Authorised". 
+A domestic-payment can only be created if its corresponding domestic-payment-consent resource has the status of "Authorised".
 
 The domestic-payment resource that is created successfully must have one of the following PaymentStatusCode code-set enumerations:
 
@@ -192,18 +192,18 @@ The **Initiation** and **Risk** sections of the domestic-payment request **must*
 | Risk |1..1 |OBWriteDomestic2/Risk |The Risk section is sent by the initiating party to the ASPSP. It is used to specify additional details for risk scoring for Payments. |OBRisk1 | | |
 
 ### Domestic Payment - Response
- 
+
  The OBWriteDomesticResponse3 object will be used for a response to a call to:
- 
+
  * POST /domestic-payments
  * GET /domestic-payments/{DomesticPaymentId}
 
 #### UML Diagram
 
  ![OBWriteDataDomesticResponse3](images/OBWriteDataDomesticResponse3.png)
- 
+
 #### Notes
- 
+
 The domestic-payment **response** object contains the:
 
 * DomesticPaymentId.
