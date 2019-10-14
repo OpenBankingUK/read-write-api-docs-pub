@@ -1,4 +1,4 @@
-# Domestic Payment Message Formats - v3.1.2
+# Domestic Payment Message Formats - v3.1.4
 
 1. [ISO 20022](#iso-20022)
 2. [ISO 8583](#iso-8583)
@@ -11,21 +11,21 @@
    1. [Mapping](#mapping-2)
    2. [Notes](#notes-2)
 
-## ISO 20022 
+## ISO 20022
 
-The Initiation section of the Payment API payloads is based on the ISO 20022 pain.001 XML standard and we have used ISO 20022 message elements or components where possible. However, has been adapted for APIs based as per our design principles. 
+The Initiation section of the Payment API payloads is based on the ISO 20022 pain.001 XML standard and we have used ISO 20022 message elements or components where possible. However, has been adapted for APIs based as per our design principles.
 
 Deviations from the pain.001 XML standard are:
 
 * The pain.001 header section and trailer sections have been removed as these are not required for a RESTful API
-* Only required fields have been included in the Initiation objects. This has meant: 
+* Only required fields have been included in the Initiation objects. This has meant:
   * The separate CreditTransferTransactionInformation section in pain.001 which is a repeating group for multi-credit payments, has been removed and flattened.
-  * PaymentInformationIdentification not required - we also have a InstructionIdentification. 
-  * PaymentMethod is not required as this is always immediate execution for the ASPSP. 
-  * RequestedExecutionDate is not required as this is always as soon as possible - which may differ between FPS and Bacs payments. 
+  * PaymentInformationIdentification not required - we also have a InstructionIdentification.
+  * PaymentMethod is not required as this is always immediate execution for the ASPSP.
+  * RequestedExecutionDate is not required as this is always as soon as possible - which may differ between FPS and Bacs payments.
   * Debtor / DebtorAccount are optional as the debtor details are not always known to the PISP submitting the payment setup or submit.
-* The Payment Initiation team has requested a flatter structure for the payload: 
-  * InstructionIdentification and EndToEndIdentification moved to the top level (instead of embedding within Payment Order Identification). 
+* The Payment Initiation team has requested a flatter structure for the payload:
+  * InstructionIdentification and EndToEndIdentification moved to the top level (instead of embedding within Payment Order Identification).
   * DebtorAccount and CreditorAccount are simplified to only include the SchemeName and Identification.
 
 ## ISO 8583
@@ -35,7 +35,7 @@ The ISO 8583 message format is used for the Faster Payments Scheme (FPS).
 Execution:
 
 * The processing of payments via the FPS scheme is business as usual processing - i.e., no change.
-* FPS scheme requirements (are not formally part of the Open Banking API Specification, but are included for guidance): 
+* FPS scheme requirements (are not formally part of the Open Banking API Specification, but are included for guidance):
   * The field 61.1 PAYMENT SUB-TYPE will be set by the FPS Institution with a **A** {\**} prefix for any FPS transaction initiated by a PISP. Values within {**} will ordinarily be “00” unless the PISP initiated payment requires usage of other facilities (as indicated by the usage of an FPS sub-type code).
   * There is also a requirement from the FPS scheme to identify the PISP via the field 122 REGULATORY REPORTING
 
@@ -45,7 +45,7 @@ All required fields in the ISO 8583 message can be generated from the Initiation
 
 In the size column, highlighted in **bold** are the fields which are smaller in size than the corresponding ISO 20022 field.
 
-In the case that a PISP sets up a payment-order consent with a larger field size (e.g., EndToEndIdentification, or InstructedAmount) than the eventual scheme field size - it will be up to the ASPSP to decide whether to reject the payment-order consent or truncate the field. 
+In the case that a PISP sets up a payment-order consent with a larger field size (e.g., EndToEndIdentification, or InstructedAmount) than the eventual scheme field size - it will be up to the ASPSP to decide whether to reject the payment-order consent or truncate the field.
 
 ### Mapping
 
@@ -84,9 +84,9 @@ This is the mapping from the Payment API Initiation section to the relevant Bacs
 
 All required fields in the BACS STD18 message can all be generated from the Initiation section of the payload or from the ASPSP for domestic-payments and domestic-scheduled-payments.
 
-In the size column, highlighted in **bold** are the fields which are smaller in size than the corresponding ISO 20022 field. 
+In the size column, highlighted in **bold** are the fields which are smaller in size than the corresponding ISO 20022 field.
 
-In the case that a PISP sets up a payment-order consent with a larger field size (e.g., EndToEndIdentification, or InstructedAmount) than the eventual scheme field size, it will be up to the ASPSP to decide whether to reject the payment-order consent or truncate the field. 
+In the case that a PISP sets up a payment-order consent with a larger field size (e.g., EndToEndIdentification, or InstructedAmount) than the eventual scheme field size, it will be up to the ASPSP to decide whether to reject the payment-order consent or truncate the field.
 
 ### Mapping
 
@@ -119,9 +119,9 @@ This is the mapping from the Initiation section to the relevant CHAPS scheme fie
 
 All required fields in the CHAPS MT103 message can all be generated from the Initiation section of the payload or from the ASPSP for domestic-payments and domestic-scheduled-payments.
 
-In the size column, highlighted in bold are the fields which are smaller in size than the corresponding ISO 20022 field. 
+In the size column, highlighted in bold are the fields which are smaller in size than the corresponding ISO 20022 field.
 
-In the case that a PISP sets up a payment-order consent with a larger field size (e.g., EndToEndIdentification, or InstructedAmount) than the eventual scheme field size, it will be up to the ASPSP to decide whether to reject the payment-order consent or truncate the field. 
+In the case that a PISP sets up a payment-order consent with a larger field size (e.g., EndToEndIdentification, or InstructedAmount) than the eventual scheme field size, it will be up to the ASPSP to decide whether to reject the payment-order consent or truncate the field.
 
 ### Mapping
 
@@ -145,11 +145,11 @@ In the case that a PISP sets up a payment-order consent with a larger field size
 * Details for field 50K (Ordering Customer) relating to the Debtor's Name and Address must be populated from the ASPSP's system of record.
 * Where the Initiation/DebtorAccount/SchemeName field is populated with "UK.OBIE.SortCodeAccountNumber", the Initiation/DebtorAccount/Identification field will be populated with a 14 digit field comprised of a 6 digit Sort Code (mapped to field 50K Ordering Customer).
 * Where the Initiation/CreditorAccount/SchemeName field is populated with "UK.OBIE.SortCodeAccountNumber", the Initiation/CreditorAccount/Identification field will be populated with a 14 digit field comprised of a 6 digit Sort Code (mapped to field 57 Account With Institution) and 8 digit Account Number (mapped to field 59F Beneficiary Customer).
-* Beneficiary Customer Address (59) - there are only 3 fields of length 35 available in the MT103 message for the CreditorPostalAddress these will be mapped from: 
-  * Initiation/CreditorPostalAddress/StreetName. 
-  * Initiation/CreditorPostalAddress/BuildingNumber. 
+* Beneficiary Customer Address (59) - there are only 3 fields of length 35 available in the MT103 message for the CreditorPostalAddress these will be mapped from:
+  * Initiation/CreditorPostalAddress/StreetName.
+  * Initiation/CreditorPostalAddress/BuildingNumber.
   * Initiation/CreditorPostalAddress/PostCode.
-* Beneficiary Reference (70) - this MT103 field has 4 fields of length 35 to be mapped with: 
-  * /ROC/ and EndToEndIndentification 
+* Beneficiary Reference (70) - this MT103 field has 4 fields of length 35 to be mapped with:
+  * /ROC/ and EndToEndIndentification
   * /RFB/ and RemittanceInformation/Reference (only 16 chars supported)
   * RemittanceInformation/Unstructured

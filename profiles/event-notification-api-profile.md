@@ -1,4 +1,4 @@
-# Event Notification API Profile - v3.1.2
+# Event Notification API Profile - v3.1.4
 
 1. [Overview](#overview)
    1. [Design Principles](#design-principles)
