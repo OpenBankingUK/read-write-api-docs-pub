@@ -188,32 +188,32 @@ Content-Type: application/json
 
 ```json
 {
-  "AccountId": "22289",
-   "Amount": {
-     "Amount": "300.00",
-     "Currency": "GBP"
-   },
-   "CreditDebitIndicator": "Credit",
-   "Type": "InterimAvailable",
-   "DateTime": "2017-04-05T10:43:07+00:00",
-   "CreditLine": [
-      {
-       "Included": false,
-       "Amount": {
-         "Amount": "500.00",
-         "Currency": "GBP"
-       },
-       "Type": "Available"
-     },
-    {
-       "Included": false,
-       "Amount": {
-         "Amount": "500.00",
-         "Currency": "GBP"
-       },
-       "Type": "Pre-Agreed"
-     }
-   ]
+  "AccountId": "22289",
+  "Amount": {
+    "Amount": "300.00",
+    "Currency": "GBP"
+  },
+  "CreditDebitIndicator": "Credit",
+  "Type": "InterimAvailable",
+  "DateTime": "2017-04-05T10:43:07+00:00",
+  "CreditLine": [
+    {
+      "Included": false,
+      "Amount": {
+        "Amount": "500.00",
+        "Currency": "GBP"
+      },
+      "Type": "Available"
+    },
+    {
+      "Included": false,
+      "Amount": {
+        "Amount": "500.00",
+        "Currency": "GBP"
+      },
+      "Type": "Pre-Agreed"
+    }
+  ]
 },
   "Links": {
     "Self": "https://api.alphabank.com/open-banking/v3.1/aisp/accounts/22289/balances/"
@@ -249,32 +249,32 @@ Content-Type: application/json
 
 ```json
 {
-  "AccountId": "22289",
-   "Amount": {
-     "Amount": "800.00",
-     "Currency": "GBP"
-   },
-   "CreditDebitIndicator": "Credit",
-   "Type": "InterimAvailable",
-   "DateTime": "2017-04-05T10:43:07+00:00",
-   "CreditLine": [
-      {
-       "Included": false,
-       "Amount": {
-         "Amount": "500.00",
-         "Currency": "GBP"
-       },
-       "Type": "Available"
-     },
-    {
-       "Included": true,
-       "Amount": {
-         "Amount": "500.00",
-         "Currency": "GBP"
-       },
-       "Type": "Temporary"
-     }
-   ]
+  "AccountId": "22289",
+  "Amount": {
+    "Amount": "800.00",
+    "Currency": "GBP"
+  },
+  "CreditDebitIndicator": "Credit",
+  "Type": "InterimAvailable",
+  "DateTime": "2017-04-05T10:43:07+00:00",
+  "CreditLine": [
+    {
+      "Included": false,
+      "Amount": {
+        "Amount": "500.00",
+        "Currency": "GBP"
+      },
+      "Type": "Available"
+    },
+    {
+      "Included": true,
+      "Amount": {
+        "Amount": "500.00",
+        "Currency": "GBP"
+      },
+      "Type": "Temporary"
+    }
+  ]
 },
   "Links": {
     "Self": "https://api.alphabank.com/open-banking/v3.1/aisp/accounts/22289/balances/"
@@ -310,32 +310,32 @@ Content-Type: application/json
 
 ```json
 {
-  "AccountId": "22289",
-   "Amount": {
-     "Amount": "100.00",
-     "Currency": "GBP"
-   },
-   "CreditDebitIndicator": "Debit",
-   "Type": "InterimAvailable",
-   "DateTime": "2017-04-05T10:43:07+00:00",
-   "CreditLine": [
-     {
-       "Included": false,
-       "Amount": {
-         "Amount": "400.00",
-         "Currency": "GBP"
-       },
-       "Type": "Available"
-     },
-     {
-       "Included": false,
-       "Amount": {
-         "Amount": "500.00",
-         "Currency": "GBP"
-       },
-       "Type": "Pre-Agreed"
-     }
-   ]
+  "AccountId": "22289",
+  "Amount": {
+    "Amount": "100.00",
+    "Currency": "GBP"
+  },
+  "CreditDebitIndicator": "Debit",
+  "Type": "InterimAvailable",
+  "DateTime": "2017-04-05T10:43:07+00:00",
+  "CreditLine": [
+    {
+      "Included": false,
+      "Amount": {
+        "Amount": "400.00",
+        "Currency": "GBP"
+      },
+      "Type": "Available"
+    },
+    {
+      "Included": false,
+      "Amount": {
+        "Amount": "500.00",
+        "Currency": "GBP"
+      },
+      "Type": "Pre-Agreed"
+    }
+  ]
 },
   "Links": {
     "Self": "https://api.alphabank.com/open-banking/v3.1/aisp/accounts/22289/balances/"
