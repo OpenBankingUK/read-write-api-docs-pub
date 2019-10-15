@@ -42,7 +42,7 @@ Feedback on their utility is welcome.
 [View Diff](https://github.com/OpenBankingUK/read-write-api-docs/commit/538e1995407c4178336a9c9fcd18d9e364a05e51)
 - Clarified behaviour that is expected when ASPSPs do not want to process acknowledgements for aggregated polling
 
-#### Decision ???
+#### Decision 201 - Clarify that Credit Line should NOT be included in AvailableBalance
 [View Diff](https://github.com/OpenBankingUK/read-write-api-docs/commit/bfc668834060eb212360fe7fe892b0e9c389394c)
 
 High Cost Credit
