@@ -1,4 +1,4 @@
-# Accounts - v3.1.3
+# Accounts - v3.1.4
 
 1. [Overview](#overview)
 2. [Endpoints](#endpoints)
@@ -65,15 +65,15 @@ Each account resource will have a unique and immutable AccountId.
 
 ### Notes
 
-* The **Account** and **Servicer** structure has been designed to: 
-    * Reflect the DebtorAccount and DebtorAgent (and similarly for CreditorAccount and CreditorAgent) structures in the PISP use case. 
+* The **Account** and **Servicer** structure has been designed to:
+    * Reflect the DebtorAccount and DebtorAgent (and similarly for CreditorAccount and CreditorAgent) structures in the PISP use case.
     * Having a SchemeName for the Account and Servicer blocks means we can be flexible to accommodate multiple types of accounts.
-* For common Domestic UK identification schemes: 
-    * Account/Account 
-        * Where "UK.OBIE.SortCodeAccountNumber" is specified as the SchemeName, the Identification field **must** be populated with the 6 digit Sort Code and 8 digit Account Number (a 14 digit field). 
-        * Where "UK.OBIE.IBAN" is specified as the SchemeName, the Identification field must be populated with the full IBAN. 
-        * Where "UK.OBIE.PAN" is specified as the SchemeName, the Identification field **must** be populated with the primary PAN linked to the account. An ASPSP **may** choose to mask digits returned in the Identification field. 
-    * Account/Servicer 
+* For common Domestic UK identification schemes:
+    * Account/Account
+        * Where "UK.OBIE.SortCodeAccountNumber" is specified as the SchemeName, the Identification field **must** be populated with the 6 digit Sort Code and 8 digit Account Number (a 14 digit field).
+        * Where "UK.OBIE.IBAN" is specified as the SchemeName, the Identification field must be populated with the full IBAN.
+        * Where "UK.OBIE.PAN" is specified as the SchemeName, the Identification field **must** be populated with the primary PAN linked to the account. An ASPSP **may** choose to mask digits returned in the Identification field.
+    * Account/Servicer
         * Where "UK.OBIE.BICFI" is populated as the SchemeName, the Identification field **must** be populated with the BIC.
 * The SecondaryIdentification field is used to identify an account in addition to the primary Account/Identification field. SecondaryIdentification may be populated with a roll number for building societies, or a currency code where an account has multiple currency sub-accounts.
 
@@ -81,11 +81,11 @@ Each account resource will have a unique and immutable AccountId.
 
 The resource differs depending on the permissions (ReadAccountsBasic and ReadAccountsDetail) used to access the resource. In the event that the resource is accessed with both ReadAccountsBasic and ReadAccountsDetail, the most detailed level (ReadAccountsDetail) must be used.
 
-* These objects **must not** be returned **without** the **ReadAccountsDetail** permission: 
-    * OBReadAccount5/Data/Account/Account 
+* These objects **must not** be returned **without** the **ReadAccountsDetail** permission:
+    * OBReadAccount5/Data/Account/Account
     * OBReadAccount5/Data/Account/Servicer
-* If the **ReadAccountsDetail** is granted by the PSU: 
-    * OBReadAccount5/Data/Account/Account **must** be returned (1..n) 
+* If the **ReadAccountsDetail** is granted by the PSU:
+    * OBReadAccount5/Data/Account/Account **must** be returned (1..n)
     * OBReadAccount5/Data/Account/Servicer **may** be returned if applicable to the account and ASPSP (0..1)
 
 If the ReadPAN permission is granted by the PSU, the ASPSP may choose to populate the OBReadAccount5/Data/Account/Account/Identification with the unmasked PAN (if the PAN is being populated in the response).

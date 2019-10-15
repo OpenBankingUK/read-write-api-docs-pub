@@ -1,4 +1,4 @@
-# Other Product Data Model - v3.1.2
+# Other Product Data Model - v3.1.4
 
 1. [Overview](#overview)
    1. [Fields to include in Other Product](#fields-to-include-in-other-product)
@@ -96,7 +96,7 @@ Wherever used, an ASPSP **must** define and document (on their developer portal)
 ### Data Dictionary
 
 * [Other Product Type Data Definition]( productdatafiles/OtherProductInfo.v3.1.2.DD.xlsx )
- 
+
 
 ### Data Payload - Enumerations
 

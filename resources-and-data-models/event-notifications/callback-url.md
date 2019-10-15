@@ -1,4 +1,4 @@
-# Callback URL - v3.1.2
+# Callback URL - v3.1.4
 
 1. [Overview](#overview)
 2. [Endpoints](#endpoints)
@@ -38,9 +38,12 @@ A TPP will set up and maintain its call back details (URL and version number) us
 | --- |--- |--- |--- |--- |--- |--- |--- |--- |--- |
 | callback-url |POST |POST /callback-urls |Optional |accounts<br>payments<br>fundsconfirmations |Client Credentials |Signed Request<br><br>Signed Response |No |OBCallbackUrl1 |OBCallbackUrlResponse1 |
 | callback-url |GET |GET /callback-urls |Mandatory (if resource POST implemented) |accounts<br>payments<br>fundsconfirmations |Client Credentials |Signed Response |No |n/a |OBCallbackUrlsResponse1 |
-| callback-url |PUT |PUT /callback-urls/{CallbackUrlId} |Mandatory (if resource POST implemented) |accounts<br>payments<br>fundsconfirmations |Client Credentials |Signed Request<br><br>Signed Response |No |OBCallbackUrlResponse1 |OBCallbackUrlResponse1 |
-| callback-url |DELETE |DELETE /callback-urls/{CallbackUrlId} |Mandatory (if resource POST implemented) |accounts<br>payments<br>fundsconfirmations |Client Credentials |n/a |No |n/a |n/a |
+| callback-url |PUT |PUT /callback-urls/{CallbackUrlId} | See Note 1 |accounts<br>payments<br>fundsconfirmations |Client Credentials |Signed Request<br><br>Signed Response |No |OBCallbackUrlResponse1 |OBCallbackUrlResponse1 |
+| callback-url |DELETE |DELETE /callback-urls/{CallbackUrlId} | See Note 1 |accounts<br>payments<br>fundsconfirmations |Client Credentials |n/a |No |n/a |n/a |
 
+__Note 1__: The endpoint is optional for an ASPSP to implement where both the following are true:
+- The ASPSP supports aggregated polling only
+- The ASPSP only supports a single event type for aggregated polling
 
 #### POST /callback-urls
 

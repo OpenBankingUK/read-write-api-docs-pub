@@ -1,4 +1,4 @@
-# Aggregated Polling API Profile - v3.1.2
+# Aggregated Polling API Profile - v3.1.4
 
 1. [Overview](#overview)
 2. [Basics](#basics)
@@ -12,7 +12,7 @@
 The Aggregated Polling API Profile describes the flows and common functionality for the Aggregated Polling API, which allows a ASPSPs to deliver multiple signed event notifications to TPPs though the use of polling. It is intended as an alternative or complement to Real Time Notification in that:
 
 * It can be used as the sole method to collect event notifications by a TPP.
-* It offers a means to catch-up following a period where the TPP's Real Time Notification endpoint has been offline. 
+* It offers a means to catch-up following a period where the TPP's Real Time Notification endpoint has been offline.
 
 Implementation of the Aggregated Polling API is **optional** for ASPSPs.
 
@@ -55,7 +55,7 @@ Following the initial poll the TPP can then repeatedly poll the ASPSP, acknowled
 
 <details>
   <summary>Diagram source</summary>
-  
+
   ```
 participant TPP
 participant ASPSP Authorisation Server
@@ -97,7 +97,7 @@ ASPSP Event Polling Service -> TPP: HTTP 200 (Zero or more events)
 
 option footer=bar
 ```
- 
+
 </details>
 
 ### Acknowledgement by the TPP
@@ -108,6 +108,20 @@ draft-ietf-secevent-http-poll-01 specifies that recipients of event notification
 * Through negative acknowledgement where the event notification has been received but the TPP encountered an error in processing.
 
 ASPSPs can evict positively acknowledged event notifications from their stores. It is implicit that TPPs are responsible for retaining a record of event notifications appropriate to their needs once positively acknowledged.
+
+### Operating without acknowledgements
+
+The SET standard allows the event transmitter (the ASPSP in our case) to decide how many times an event re-delivery is attempted even if it is not acknowledged
+
+> If after a period of time, negotiated between the Event Transmitter and Recipient, an SET Transmitter MAY reissue SETs it has previously delivered. The SET Recipient SHOULD accept repeat SETs and acknowledge the SETs regardless of whether the Recipient believes it has already acknowledged the SETs previously. An SET Transmitter MAY limit the number of times it attempts to deliver a SET.
+
+If the ASPSP limits the number of times it attempts to deliver a SET to one, it can safely ignore the acknowledgements while still remaining compliant with the standard.
+
+Similarly the TPP may safely make poll requests without acknowledging the SETs that it has received.
+
+An ASPSP that provides aggregated polling without expecting acknowledgements must document the expected behaviour on their developer portal.
+
+
 
 ### Event Recycling Frequency
 
@@ -138,10 +152,10 @@ draft-ietf-secevent-http-poll-01 allows for the use signed event notifications f
 
 #### Scopes
 
-The access tokens required for accessing the Aggregated Polling API must have at least the following scope:
+The access tokens required for accessing the Aggregated Polling API must have at one of the following scope:
 
 ```
-eventpolling: Ability to poll for, acknowledge and receive Security Event Tokens
+accounts, fundsconfirmations
 ```
 
 #### Grants Types

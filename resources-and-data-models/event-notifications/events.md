@@ -1,4 +1,4 @@
-# Events - v3.1.2
+# Events - v3.1.4
 
 1. [Overview](#overview)
 2. [Endpoints](#endpoints)
@@ -49,7 +49,7 @@ This resource description should be read in conjunction with a compatible Aggreg
 ## Endpoints
 | Resource |HTTP Operation |Endpoint |Mandatory? |Scope |Grant Type |Message Signing |Idempotency Key |Request Object |Response Object |
 | --- |--- |--- |--- |--- |--- |--- |--- |--- |--- |
-| events |POST |POST /events |Optional |eventpolling |Client Credentials |N/A |No |OBEventPolling1 |OBEventPollingResponse1 |
+| events |POST |POST /events |Optional |accounts fundsconfirmations |Client Credentials |N/A |No |OBEventPolling1 |OBEventPollingResponse1 |
 
 ### POST /events
 
@@ -207,7 +207,7 @@ This section describes the OBEventAccountAccessConsentLinkedAccountUpdate1 class
 
 #### Notes
 
-For the OBEventAccountAccessConsentLinkedAccountUpdate object: 
+For the OBEventAccountAccessConsentLinkedAccountUpdate object:
 
 - The http://openbanking.org.uk/rty claim **must** be populated with "account-access-consent".
 
@@ -235,7 +235,7 @@ Content-Type: application/json
 x-fapi-interaction-id: 1af4c0e6b5da49f6b1aebf439e87c199
 ```
 
-```json 
+```json
 {
   "returnImmediately": true
 }
@@ -271,7 +271,7 @@ POST /event HTTP/1.1
 Authorization: Bearer 7b99f6c331e841dab811176e25d57ca7
 Content-Type: application/json
 x-fapi-interaction-id: 295f6c6c7b2045b2a3e91e4f1c31d681
- 
+
 {
   "maxEvents": 0,
   "ack": [ "b6a68c1db7fc4c178fd7d8a41b9ef85c" ]
