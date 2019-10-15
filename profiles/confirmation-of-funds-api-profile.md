@@ -1,4 +1,4 @@
-# Confirmation of Funds API Profile - v3.1.2
+# Confirmation of Funds API Profile - v3.1.4
 
 1. [Overview](#overview)
    1. [Document Structure](#document-structure)
@@ -28,7 +28,7 @@
 
 The Confirmation of Funds API Profile describes the flows and common functionality for the Confirmation of Funds API, which allows a Card Based Payment Instrument Issuer ('CBPII') to:
 
-- Register an intent to confirm funds by creating a "funds confirmation consent" resource with an ASPSP, for agreement between the PSU and ASPSP. This consent is a long lived consent, and contains the length of time (expiration date) the customer (PSU) would like to provide to the CBPII; and 
+- Register an intent to confirm funds by creating a "funds confirmation consent" resource with an ASPSP, for agreement between the PSU and ASPSP. This consent is a long lived consent, and contains the length of time (expiration date) the customer (PSU) would like to provide to the CBPII; and
 - Subsequently make a request to confirm funds are available.
   - Funds can only be confirmed against the currency of the account.
 
@@ -39,9 +39,9 @@ This profile should be read in conjunction with a compatible Read/Write Data API
 This document consists of the following parts:
 
 **Overview:** Provides an overview of the profile.
- 
+
 **Basics:** Identifies the flows and release management.
- 
+
 **Security & Access Control:** Specifies the means for CBPIIs and PSUs to authenticate themselves and provide consent.
 
 ### Resources
@@ -65,7 +65,7 @@ The diagram below provides a general outline of a confirmation of funds request 
 
 ![Confirmation of Funds Flow](./images/CoFAPIv4.jpg)
 
-####  Steps
+#### Steps
 
 The Consent model for the Confirmation of Funds API differs to the Payments API and the Account and Transactions API, as the consent is held between the PSU and the ASPSP, rather than between the PSU and the TPP. Whilst the flow follows the same process, the context for each step has a different meaning and is detailed below.
 
@@ -270,10 +270,9 @@ This section overviews the release management and versioning strategy for the Ac
 - A CBPII **must not** create a consent on a newer version, and use it on a previous version.
   - E.g., ConsentId for a funds-confirmation-consent resource created in v4, must not be used to access v3 endpoints.
 
-
 ##### GET
 
-- A CBPII **must not** access a funds-confirmation-consent on an older version, via the ConsentId created in a newer version. 
+- A CBPII **must not** access a funds-confirmation-consent on an older version, via the ConsentId created in a newer version.
   - E.g., a funds-confirmation-consent created in v3 accessed via v2.
 - An ASPSP **must** allow a funds-confirmation-consent to be accessed in a newer version.
 - An ASPSP **must** ensure details in the funds-confirmation-consent are unchanged when accessed via a newer version.
@@ -317,7 +316,7 @@ CBPIIs **must** use an authorization code grant using a redirect or decoupled fl
 
 CBPIIs **must** use a client credentials grant to obtain a token to make GET requests.
 
-### Consent Authorisation 
+### Consent Authorisation
 
 The CBPII **must** create a **funds-confirmation-consent** resource through a **POST** operation. This resource outlines the *consent* that the CBPII claims the PSU has committed to agreeing with the ASPSP, to retrieve confirmation of funds information. At this stage, the consent is not yet agreed between the PSU and the ASPSP.
 
@@ -335,9 +334,9 @@ Once these steps are complete, the consent is considered to have been agreed bet
 The funds-confirmation-consent resource consists of the following fields, which together form the elements of the consent provided by the PSU to the CBPII:
 
 - **DebtorAccount:** The account to which the consent has been applied.
-   - The field is mandatory, as the consent for CBPII access to a PSU's data must be for a specific account known to the PSU and the CBPII.
+  - The field is mandatory, as the consent for CBPII access to a PSU's data must be for a specific account known to the PSU and the CBPII.
 - **ExpirationDateTime:** The date-time up to which the consent is valid.
-   - The field is optional, as the consent for CBPII access to a PSU's data may be indefinite.
+  - The field is optional, as the consent for CBPII access to a PSU's data may be indefinite.
 
 #### Funds Confirmation Consent Status
 
@@ -354,7 +353,7 @@ The funds-confirmation-consent resource may have one of the following status cod
 The funds-confirmation-consent resource is a long lived consent. A funds-confirmation-consent can be re-authenticated if:
 
 - the funds-confirmation-consent resource has a status of `Authorised` and
-- The `ExpirationDateTime`, if specified, has not elapsed 
+- The `ExpirationDateTime`, if specified, has not elapsed
 
 ### Consent Revocation
 
@@ -364,5 +363,5 @@ The PSU may request the ASPSP to revoke consent that it has authorised. The mech
 
 The PSU may request the CBPII to revoke consent that it has authorised. If consent is revoked with the CBPII:
 
-- The CBPII **must** call the **DELETE** operation on the funds-confirmation-consent resource to indicate to the ASPSP that the PSU has revoked consent.
+- The CBPII **must** call the **DELETE** operation on the funds-confirmation-consent resource as soon as it practically possible to indicate to the ASPSP that the PSU has revoked consent.
 - The CBPII **must** cease to access the APIs at that point.
