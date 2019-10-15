@@ -1,4 +1,4 @@
-# Open Banking Read-Write API Profile  - v3.1.2
+# Open Banking Read-Write API Profile  - v3.1.4
 
 1. [Overview](#overview)
    1. [Document Structure](#document-structure)
@@ -110,7 +110,7 @@
          1. [Request](#request-1)
          2. [Response](#response)
 
-## Overview 
+## Overview
 
 The Read/Write Data API Profile provides a description of the elements that are common across all the Read/Write Data APIs.
 
@@ -136,9 +136,9 @@ However, the priority is to have an API that is simple to understand and easy to
 
 References:
 
-* The highest level Data Description Language used is the JSON Schema : http://json-schema.org/
-* Best Practice has also been taken from the Data Description Language for APIs; JSON API : http://jsonapi.org/
-* The Interface Description Language used is the Swagger Specification version 2.0 (also known as Open API) : http://swagger.io/ https://github.com/OAI/OpenAPI-Specification
+* The highest level Data Description Language used is the JSON Schema : <http://json-schema.org/>
+* Best Practice has also been taken from the Data Description Language for APIs; JSON API : <http://jsonapi.org/>
+* The Interface Description Language used is the Swagger Specification version 2.0 (also known as Open API) : <http://swagger.io/> <https://github.com/OAI/OpenAPI-Specification>
 
 #### Standards
 
@@ -167,7 +167,7 @@ It is intended that the API flows will be extended to cater for more complex use
 
 #### Idempotency
 
-Idempotency is difficult to implement consistently and leverage consistently. 
+Idempotency is difficult to implement consistently and leverage consistently.
 
 As a result, idempotency is used sparingly in the Open Banking API specifications; with a preference to allow TPPs to simply re-submit a request under failure conditions.
 
@@ -175,7 +175,7 @@ APIs have been defined to be idempotent, where not doing so would cause a poor P
 
 #### Message Signing
 
-Digital signatures will facilitate non-repudiation for Open Banking APIs. 
+Digital signatures will facilitate non-repudiation for Open Banking APIs.
 
 The approach for message signing is documented in [Basics / Message Signing](#message-signing-1).
 
@@ -227,6 +227,7 @@ For functionalities and endpoints: 
 * An ASPSP **must** implement functionality that is marked Mandatory.
 
 For fields:
+
 * A TPP **must** specify the value of a Mandatory field.
 * An ASPSP **must** process a Mandatory field when provided by the TPP in an API request.
 * An ASPSP **must** include meaningful values for Mandatory fields in an API response.
@@ -329,12 +330,12 @@ An ASPSP must use the same participant-path-prefix and host name for all its res
 
 Examples:
 
-* https://superbank.com/apis/open-banking/v3.1/pisp/domestic-payments
-* https://superbank.com/apis/open-banking/v3.1/aisp/account-access-consents
-* https://superbank.com/apis/open-banking/v3.1/aisp/accounts
-* https://superbank.com/apis/open-banking/v3.1/aisp/accounts/1234
-* https://superbank.com/apis/open-banking/v3.1/aisp/accounts/1234/transactions
-* https://superbank.com/apis/open-banking/v3.1/cbpii/funds-confirmation-consents
+* <https://superbank.com/apis/open-banking/v3.1/pisp/domestic-payments>
+* <https://superbank.com/apis/open-banking/v3.1/aisp/account-access-consents>
+* <https://superbank.com/apis/open-banking/v3.1/aisp/accounts>
+* <https://superbank.com/apis/open-banking/v3.1/aisp/accounts/1234>
+* <https://superbank.com/apis/open-banking/v3.1/aisp/accounts/1234/transactions>
+* <https://superbank.com/apis/open-banking/v3.1/cbpii/funds-confirmation-consents>
 
 For brevity, the APIs are referred to by their resource names in these documents and in all examples.
 
@@ -550,12 +551,11 @@ The JOSE header for the signature must contain the following fields
 | `alg`                           | The algorithm that will be used for signing the JWS.<br><br>The list of valid algorithms is here https://tools.ietf.org/html/rfc7518#section-3.1.<br><br>This value must be `PS256`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
 | `typ`                           | This is an optional claim.<br><br>If it is specified, it must be set to the value `JOSE`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
 | `cty`                           | This is an optional claim for JSON payloads<br><br>If it is specified, it must be set to the value `json` or `application/json` for json payloads.<br><br>For non-json payloads (e.g. for PDF files), the mime type of the payload must be specified in this claim.                                                                                                                                                                                                                                                                                                                                                                                                      |
-| `kid`                           | This is a mandatory claim.<br><br>It must match a value that can be used to look up the key in a key store hosted by the Trust Anchor.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
-| `b64`                           | This **must** have the boolean value false.<br><br>This indicates that the message payload is not base64 url encoded.<br><br>(See [RFC 7797 - The "b64" header Parameter](https://tools.ietf.org/html/rfc7797#section-3))                                                                                                                                                                                                                                                                                                                                                                                                                                                |
+| `kid`                           | This is a mandatory claim.<br><br>It must match a value that can be used to look up the key in a key store hosted by the Trust Anchor.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
 | `http://openbanking.org.uk/iat` | This **must** be a JSON number representing the number of seconds from 1970-01-01T0:0:0Z as measured in GMT until the date/time. <br><br>This is a private header parameter name. (See [RFC 7515 - Private Header Parameter Names](https://tools.ietf.org/html/rfc7515#section-4.3))                                                                                                                                                                                                                                                                                                                                                                                 |
 | `http://openbanking.org.uk/iss` | This **must** be a string that identifies the PSP.<br><br>If the issuer is using a certificate this value **must** match the **subject** of the signing certificate.<br><br>If the issuer is using a signing key lodged with a Trust Anchor, the value is defined by the Trust Anchor and should uniquely identify the PSP.<br><br>For example, when using the Open Banking Directory, the value must be:<br><br><li>When issued by a TPP, of the form {{orgi-id}}/{{software-statement-id}},<li>When issued by an ASPSP of the form {{org-id}}<br><br>Where:<li>org-id is the open-banking issued organization id<li>software-statement-id is the open-banking issued software-statement-id |
 | `http://openbanking.org.uk/tan` | This **must** be a string that consists of a domain name that is registered to and identifies the Trust Anchor that hosts the public counter-part of the key used for signing.<br><br>For example, when using the Open Banking Directory, the value must be `openbanking.org.uk`                                                                                                                                                                                                                                                                                                                                                                                     |
-| `crit`                          | This **must** be a string array consisting of the values `b64`, `http://openbanking.org.uk/iat`, `http://openbanking.org.uk/iss`, `http://openbanking.org.uk/tan`<br><br>This indicates that the JWS signature validator must understand and process the three additional claims.                                                                                                                                                                                                                                                                                                                                                                                    |
+| `crit`                          | This **must** be a string array consisting of the values `http://openbanking.org.uk/iat`, `http://openbanking.org.uk/iss`, `http://openbanking.org.uk/tan`<br><br>This indicates that the JWS signature validator must understand and process the three additional claims.                                                                                                                                                                                                                                                                                                                                                                                    |
 
 ##### Step 3: Compute the JWS
 
@@ -596,8 +596,6 @@ The verifier **must** ensure that the specified `alg` is one of the algorithms s
 
 The verifier **must** ensure that the specified `kid` is valid and a public key with the specified key Id can be retrieved from the Trust Anchor.
 
-The verifier **must** ensure that the `b64` claim is set to false.
-
 The verifier **must** ensure that the `http://openbanking.org.uk/iat` claim has a date-time value set in the past.
 
 The verifier **must** ensure that PSP bound to the `http://openbanking.org.uk/iss` claim matches the expected PSP.
@@ -623,11 +621,10 @@ The verifier must verify the signature, as defined in [RFC 7515, Appendix F](htt
 {
     "alg": "RS512",
     "kid": "90210ABAD",
-    "b64": false,
     "http://openbanking.org.uk/iat": 1501497671,
     "http://openbanking.org.uk/iss": "C=UK, ST=England, L=London, O=Acme Ltd.",
     "http://openbanking.org.uk/tan": "openbanking.org.uk",
-    "crit": [ "b64", "http://openbanking.org.uk/iat", "http://openbanking.org.uk/iss", "http://openbanking.org.uk/tan"]
+    "crit": [ "http://openbanking.org.uk/iat", "http://openbanking.org.uk/iss", "http://openbanking.org.uk/tan"]
 }
 ```
 
@@ -832,11 +829,17 @@ The `id_token` is a signed JWT that consists of a number of claims that identify
 As the `id_token` is signed by the ASPSP and bound to a specific TPP (through the `aud` claim), the `id_token` could be leveraged to *identify* the PSU in subsequent authorisation requests. OIDC caters for this by allowing the `id_token` to be passed into an authorization code grant request as the `id_token_hint` query parameter (as documented [here](https://openid.net/specs/openid-connect-core-1_0.html#AuthRequest)).
 
 #### CIBA
-The [Client Initiated Back-channel Authentication flow](https://openid.net/specs/openid-client-initiated-backchannel-authentication-core-1_0.html) is part of the OpenID specifications. A [FAPI Profile of the CIBA specification](https://bitbucket.org/openid/fapi/src/a9e55356b5f233af804227d5001d3c32d23d1a91/Financial_API_WD_CIBA.md?at=master&fileviewer=file-view-default) is available and ASPSPs that implement CIBA **must** adhere to the profile. An ASPSP **may** optionally implement the CIBA flow to allow PSUs to authenticate themselves using a decoupled *authentication device* that is distinct from the *consumption device* on which they consume the TPP application.
+The [Client Initiated Back-channel Authentication flow](https://openid.net/specs/openid-client-initiated-backchannel-authentication-core-1_0.html) is part of the OpenID specifications.
+
+FAPI has published [Financial-grade API: Client Initiated Backchannel Authentication Profile](https://openid.net/specs/openid-financial-api-ciba-ID1.html).
+
+ASPSPs that implement CIBA **must** adhere to the profile.
+
+An ASPSP **may** optionally implement the CIBA flow to allow PSUs to authenticate themselves using a decoupled *authentication device* that is distinct from the *consumption device* on which they consume the TPP application.
 
 ##### Identifying the PSU
 
-ASPSPs that implement CIBA must support one or more of the following methods of identifying the PSU that is to be authenticated using the `login_hint_token`.
+ASPSPs that implement CIBA must support one or more of the following methods of identifying the PSU that is to be authenticated:
 
 * **User Id**: Using a static identifier that is shared by the ASPSP and the PSU. This could include a static identifier issued by the ASPSP (e.g., a user name, card number, account number) or a public identifier that allows the ASPSP to uniquely identify the PSU (e.g., an email address or phone number)
 * **Ephemeral User Id**: Using a dynamically generated, single use identifier issued by the ASPSP to the PSU. This could be a single use token generated on the PSU's authentication device or communicated to the PSU by any other means.
@@ -845,16 +848,24 @@ ASPSPs that implement CIBA must support one or more of the following methods of 
 
 An ASPSP **must** document on their developer portal, the methods of identifying a PSU the ASPSP supports.
 
-If the ASPSP does not support a specific method of identifying a PSU, the ASPSP **must** return an authentication error with the error field set to invalid_request.
+If the ASPSP does not support a specific method of identifying a PSU, the ASPSP **must** return an authentication error with the error field set to `invalid_request`.
 
-Prior to creating the `login_hint_token` the TPP must create a consent. The generated consent id must be passed in the `http://openbanking.org.uk/openbanking-intent-id` custom claim. This allows the access token that is eventually generated to be bound to a specific consent.
+
+###### Identifying the consent to be authorised
+For the OBIE APIs, all authentication journeys take place in the context of a consent.
+
+CIBA does not define a standard mechanism for transmitting an identifier for the consent to the ASPSP. Additionally, FAPI-CIBA specifically states that the Authorization server:
+> should not use the login_hint or login_hint_token to convey "intent ids" or any other authorization metadata
+
+It goes on to suggest that additional contextual information should be passed in using one of the alternatives defined in the "Lodging Intent" pattern.
+
+Prior to creating the issuing the `bc-authorize` request the TPP must create a consent.
+The generated consent id must be passed in the request object as a parameter called `openbanking-intent-id`.
+This allows the access token that is eventually generated to be bound to a specific consent.
 
 ###### Identifying the PSU Using a User Id
 
-To identify a PSU through a user Id, the TPP **must** issue `login_hint_token` in the `bc_authorize` request that contains:
-
-* The custom claim `http://openbanking.org.uk/sit` set to the value UID
-* At least one of the following claims with a value indicating the user Id:
+To identify a PSU through a user Id, the TPP **must** issue a `login_hint_token` in the `bc_authorize` request that contain at least one of the following claims with a value indicating the user id:
   * sub
   * preferred_username
   * email
@@ -865,72 +876,46 @@ If the ASPSP support identification of the user through a static identifier, it 
 ```json
 // using login name
 {
-  "http://openbanking.org.uk/sit": "UID",
   "sub": "scott",
-  "http://openbanking.org.uk/openbanking_intent_id": "11bf5b37-e0b8-42e0-8dcf-dc8c4aefc000"
 }
 
 // using email address
 {
-  "http://openbanking.org.uk/sit": "UID",
   "email": "scott@oracle.com",
-  "http://openbanking.org.uk/openbanking_intent_id": "11bf5b37-e0b8-42e0-8dcf-dc8c4aefc000"
 }
 
 // using phone number
 {
-  "http://openbanking.org.uk/sit": "UID",
   "phone_number": "00448903748394",
-  "http://openbanking.org.uk/openbanking_intent_id": "11bf5b37-e0b8-42e0-8dcf-dc8c4aefc000"
 }
 ```
 
+
 ###### Identifying the PSU Using an Ephemeral User Id
-
-To identify a PSU through an ephemeral user Id, the TPP **must** issue a `login_hint_token` in the `bc_authorize` request that contains:
-
-* The custom claim `http://openbanking.org.uk/sit` set to the value EUID
-* The claim sub populated with the ephemeral user Id
+To identify a PSU through an ephemeral user Id, the TPP **must** issue a `login_hint_token` in the `bc_authorize` request that contains the custom claim `ephemeral_sub` set to the ephemeral user id
 
 ```json
 {
-  "http://openbanking.org.uk/sit": "EUID",
-  "sub": "11bf5b37-e0b8-42e0-8dcf-dc8c4aefc000",
-  "http://openbanking.org.uk/openbanking_intent_id": "11bf5b37-e0b8-42e0-8dcf-dc8c4aefc000"
+  "ephemeral_sub": "11bf5b37-e0b8-42e0-8dcf-dc8c4aefc000"
 }
 ```
 
 ###### Identifying the PSU Using an Intent Id
 
-To identify a PSU through an intent Id, the TPP **must** first create a consent resource with the ASPSP.
+To identify a PSU through an intent Id, the only passes in the consent id as described in the previous section.
+A `login_hint_token` **must not** be included in the request.
 
-In order to initiate authentication, the TPP must lodge a `bc_authorize` request and then displaying the resulting `auth_req_id` and `intent_id` as a QR code which the user would scan using their banking app. The ASPSP would then link the user (who is authenticated in their banking app) with the authentication request.
+In order to initiate authentication, the TPP must lodge a `bc_authorize` request and then display the resulting `auth_req_id` and `intent_id` as a QR code.
 
-The TPP must provide a `login_hint_token` in the `bc_authorize` request that contains:
+The PSU would authenticate themselves on the ASPSP's banking app and then scan the QR code.
 
-* The custom claim `http://openbanking.org.uk/sit` set to the value IID
-* The claim `http://openbanking.org.uk/openbanking_intent_id` set to the value of the intent Id that is being used.
-
-```json
-{
-  "http://openbanking.org.uk/sit": "IID",
-  "http://openbanking.org.uk/openbanking_intent_id": "11bf5b37-e0b8-42e0-8dcf-dc8c4aefc000"
-}
-```
-
-Once the PSU has been authenticated, the TPP is issued another `id_token` which is bound to the `intent_id` provided in the `login_token_hint`.
+This will allow the ASPSP to identify the PSU that is authenticating the consent.
 
 ###### Identifying the PSU Using a Previously Issued Id Token
 
 To identify a PSU through a previously issued `id_token` the TPP must issue an `id_token_hint` containing the id_token in the `bc_authorize` request.
+A `login_hint_token` **must not** be included in the request.
 
-```json
-{
-  "http://openbanking.org.uk/sit": "ID_TOKEN",
-  "http://openbanking.org.uk/id_token": "... id token as a JWS ...",
-  "http://openbanking.org.uk/openbanking_intent_id": "11bf5b37-e0b8-42e0-8dcf-dc8c4aefc000"
-}
-```
 
 ### Changes to an Intent's Authorized State
 
