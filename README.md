@@ -23,44 +23,34 @@ https://github.com/OpenBankingUK/read-write-api-specs
 
 ### Version 3.1.4
 
-#### Add a Change Log
-- Added a Change Log with commit links to be able to view differences between versions
-
-> The diff links below are experimental for this draft and may function correctly
-Feedback on their utility is welcome.
-
-#### Decision 205
-[View Diff](https://github.com/OpenBankingUK/read-write-api-docs/commit/c9757fcb35e9d2d6d88e45c9de62df9bd5533aaa)
-- Scope for Event notifications
-  - Changed scope for `event-notifications` API to be either of accounts or fundsconfirmations
-- Optionality of PUT requests
-  - Changed the optionality of `PUT /callback-urls`
-- Optionality of DELETE requests
-  - Changed the optionality of `DELETE /callback-urls`
-
-#### Decision 206 - Optionality of acknowledgements for aggregated polling
-[View Diff](https://github.com/OpenBankingUK/read-write-api-docs/commit/538e1995407c4178336a9c9fcd18d9e364a05e51)
-- Clarified behaviour that is expected when ASPSPs do not want to process acknowledgements for aggregated polling
-
-#### Decision 201 - Clarify that Credit Line should NOT be included in AvailableBalance
+- __Decision 201 - Support for High Cost Credit (HCC) requirements__
 [View Diff](https://github.com/OpenBankingUK/read-write-api-docs/commit/bfc668834060eb212360fe7fe892b0e9c389394c)
-
-High Cost Credit
-
-#### Waiver 7
+  - Clarify that Credit Line should NOT be included in AvailableBalance
+- __Decision 203 - Changes to Dynamic Client Registration due to CIBA__
+  [View Diff](https://github.com/OpenBankingUK/read-write-api-docs/commit/c77293e1f0542b5c437de6831d4aeac7a7f86c26)
+- __Decision 204 - Changes to CIBA profile__
+[View Diff](https://github.com/OpenBankingUK/read-write-api-docs/commit/89ea24c373591f6f90b2c7795b1c9a0dfb108a99)
+- __Decision 205 - Aggregated Polling (Miscelleneous)__
+[View Diff](https://github.com/OpenBankingUK/read-write-api-docs/commit/c9757fcb35e9d2d6d88e45c9de62df9bd5533aaa)
+  - Scope for Event notifications
+    - Changed scope for `event-notifications` API to be either of accounts or fundsconfirmations
+  - Optionality of PUT requests
+    - Changed the optionality of `PUT /callback-urls`
+  - Optionality of DELETE requests
+    - Changed the optionality of `DELETE /callback-urls`
+- __Decision 206 - Optionality of acknowledgements for aggregated polling__
+[View Diff](https://github.com/OpenBankingUK/read-write-api-docs/commit/538e1995407c4178336a9c9fcd18d9e364a05e51)
+  - Clarified behaviour that is expected when ASPSPs do not want to process acknowledgements for aggregated polling
+- __Add a Change Log__
+  - Added a Change Log with commit links to be able to view differences between versions
+  > The diff links below are experimental for this draft and may function correctly
+Feedback on their utility is welcome.
+- __Implement changes for Waiver 7__
 [View Diff](https://github.com/OpenBankingUK/read-write-api-docs/commit/f0ca9da113626f7fec980b384ed1d54fbe5e0a24)
-
-#### Fix Known Issues
+  - Removed the requirement for the `b64` claim in signatures
+- __Fix Known Issues__
 [View Diff](https://github.com/OpenBankingUK/read-write-api-docs/commit/ba4abc36b60b89da48b980586be2d72e0bdb9c35)
-
-#### Decision ??? - CIBA Profile changes
-[View Diff](https://github.com/OpenBankingUK/read-write-api-docs/commit/89ea24c373591f6f90b2c7795b1c9a0dfb108a99)
-
-#### Housekeeping - Fix markdown errors and file naming
-[View Diff](https://github.com/OpenBankingUK/read-write-api-docs/commit/89ea24c373591f6f90b2c7795b1c9a0dfb108a99)
-
-#### Decision ??? - DCR changes
-[View Diff](https://github.com/OpenBankingUK/read-write-api-docs/commit/c77293e1f0542b5c437de6831d4aeac7a7f86c26)
-
-#### DCR 3.1 (Migrate from Confluence)
+- __Housekeeping - Fix markdown errors and file naming__
+[View Diff](https://github.com/OpenBankingUK/read-write-api-docs/commit/c36a270434203b3727afed34a74e6567dd7d8163)
+- __DCR 3.1 (Migrate from Confluence)__
 [View Diff](https://github.com/OpenBankingUK/read-write-api-docs/commit/ba47bcaea2235bbe6f9eb873ae4b9a553666d78a)
