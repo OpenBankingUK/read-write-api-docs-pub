@@ -124,11 +124,11 @@ Further analysis required:-
 * Other Fee Charges: Only Periodic Fee(service charge) has been included in the Code List.
 * We have taken Open Data PCA Segments for PCA Account Info as well.
 
-![ ainfopca.2.2.0.ClassDiagram.png ]( images/PCA/ainfopca.2.2.0.ClassDiagram.png )
+![ ainfopca.3.1.4.ClassDiagram.png ]( images/PCA/ainfopca.3.1.4.ClassDiagram.png )
 
 ##### Data Dictionary
 
-* [PCA Account Info Data Definition]( productdatafiles/ainfopca.v3.1.2.DD.xlsx )
+* [PCA Account Info Data Definition]( productdatafiles/ainfopca.v3.1.4.DD.xlsx )
 
 ### Data Payload - Enumerations
 
