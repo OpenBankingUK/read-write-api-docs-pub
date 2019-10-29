@@ -72,7 +72,7 @@ After authorisation has taken place the account-access-consent resource may have
 | --- |--- |--- |
 | 1 |Rejected |The account access consent has been rejected. |
 | 2 |Authorised |The account access consent has been successfully authorised. |
-| 3 |Revoked |The account access consent has been revoked via the ASPSP interface. |
+| 3 |Revoked |The account access consent has been revoked via the ASPSP interface. This is no longer possible from Ver 3.1.4. |
 
 #### Status Flow
 
@@ -99,7 +99,7 @@ The available Status code-list enumerations for the account-access-consent resou
 | 1 |Rejected |The account access consent has been rejected. |
 | 2 |AwaitingAuthorisation |The account access consent is awaiting authorisation. |
 | 3 |Authorised |The account access consent has been successfully authorised. |
-| 4 |Revoked |The account access consent has been revoked via the ASPSP interface. |
+| 4 |Revoked |The account access consent has been revoked via the ASPSP interface. This is no longer possible since Ver 3.1.4 |
 
 
 ### DELETE /account-access-consents/{ConsentId}

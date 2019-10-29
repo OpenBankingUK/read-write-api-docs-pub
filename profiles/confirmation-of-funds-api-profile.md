@@ -346,7 +346,6 @@ The funds-confirmation-consent resource may have one of the following status cod
 | --- |--- |--- |
 | 1 |Authorised |The Funds Confirmation Consent has been successfully authorised. |
 | 2 |Rejected |The Funds Confirmation Consent has been rejected. |
-| 3 |Revoked |The Funds Confirmation Consent has been revoked via the ASPSP interface. |
 
 #### Consent Re-authentication
 
@@ -358,8 +357,6 @@ The funds-confirmation-consent resource is a long lived consent. A funds-confirm
 ### Consent Revocation
 
 A PSU may revoke consent for confirming funds at any point in time.
-
-The PSU may request the ASPSP to revoke consent that it has authorised. The mechanisms for this are in the competitive space and are up to each ASPSP to implement in the ASPSP's banking interface.
 
 The PSU may request the CBPII to revoke consent that it has authorised. If consent is revoked with the CBPII:
 
