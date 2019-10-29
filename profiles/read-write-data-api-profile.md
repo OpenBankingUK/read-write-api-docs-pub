@@ -919,13 +919,14 @@ A `login_hint_token` **must not** be included in the request.
 
 ### Changes to an Intent's Authorized State
 
-A PSU may revoke their consent either through the TPP or directly through the ASPSP. This only applies to long-lived consents:
+A PSU may revoke their consent either through the TPP. This only applies to long-lived consents:
 
 * When a PSU does not complete the consent-authorisation flow, the ASPSP must mark the consent as `Rejected`.
-* When the PSU revokes their consent with the ASPSP, the ASPSP must mark the underlying intent status as `Revoked`.
 * When the PSU revokes their consent with the TPP, the TPP must make a `DELETE` request to the consent resource. The ASPSP **must** delete the resource (possibly as a "soft" delete) and respond to subsequent `GET` requests with an Http Status of `400`.
 
 In each of the above cases, the consent states are terminal i.e. the ASPSP **must not** allow any further state changes. The ASPSP **must not** permit any authorisation code grants to be initiated with such a consent.
+
+A PSU cannot revoke consent with the ASPSP directly. This must be done through the TPP. However, an ASPSP may support the revocation of access tokens for various reasons. In such a situation, the consent status remains unchanged and the TPP must be allowed to re-authorise using the Consent Re-authorisation steps described below.
 
 #### Effect of Token Expiry on an Intent's Authorized State
 

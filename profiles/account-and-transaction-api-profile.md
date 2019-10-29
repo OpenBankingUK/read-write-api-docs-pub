@@ -402,7 +402,6 @@ The Account Access Consent resource may have one of the following status codes a
 | --- |--- |--- |
 | 1 |Authorised |The account access consent has been successfully authorised. |
 | 2 |Rejected |The account access consent has been rejected. |
-| 3 |Revoked |The account access consent has been revoked via the ASPSP interface. |
 
 #### Consent Re-authentication
 
@@ -420,8 +419,6 @@ An ASPSP **may** allow the PSU to change the selected accounts during consent re
 ### Consent Revocation
 
 A PSU may revoke consent for accessing account information at any point in time.
-
-A PSU **may** revoke authorisation directly with the ASPSP. The mechanisms for this are in the competitive space and are up to each ASPSP to implement in the ASPSP's banking interface. If the PSU revokes authorisation with the ASPSP, the Status of the **account-access-consent** resource must be set to *Revoked*.
 
 The PSU may request the AISP to revoke consent that it has authorised. If consent is revoked with the AISP:
 
