@@ -402,7 +402,7 @@ The Account Access Consent resource may have one of the following status codes a
 | --- |--- |--- |
 | 1 |Authorised |The account access consent has been successfully authorised. |
 | 2 |Rejected |The account access consent has been rejected. |
-| 3 |Revoked |The account access consent has been revoked via the ASPSP interface. |
+| 3 |Revoked |The account access consent has been revoked via the ASPSP interface. This status is not applicable for the resource created after Ver 3.1.4. |	
 
 #### Consent Re-authentication
 
@@ -421,12 +421,17 @@ An ASPSP **may** allow the PSU to change the selected accounts during consent re
 
 A PSU may revoke consent for accessing account information at any point in time.
 
-A PSU **may** revoke authorisation directly with the ASPSP. The mechanisms for this are in the competitive space and are up to each ASPSP to implement in the ASPSP's banking interface. If the PSU revokes authorisation with the ASPSP, the Status of the **account-access-consent** resource must be set to *Revoked*.
-
 The PSU may request the AISP to revoke consent that it has authorised. If consent is revoked with the AISP:
 
 - The AISP **must** cease to access the APIs at that point.
 - The AISP **must** call the **DELETE** operation on the account-access-consent resource (before confirming consent revocation with the PSU) as soon as is practically possible, to indicate to the ASPSP that the PSU has revoked consent.
+
+### Access Revocation
+
+A PSU **may** revoke AISP's access directly with the ASPSP,  via the access dashboard. In such a situation:
+- The ASPSPs **may** revoke/expire the access token provided to the AISP.
+- The status of the account-access-consent **must** remain unchanged and the AISP **must** be allowed to request PSU to re-authenticate the same account-access-consent resource.
+- Upon successful re-authentication by PSU, an ASPSP **may** issue new authorization code and subsequently new access token to the AISP.
 
 ### Changes to Selected Account(s)
 
@@ -437,7 +442,6 @@ Subsequent changes to the set of accounts to which the consent authorisation app
 Additionally, the set of selected accounts may also change due to external factors. This includes (but is not limited to):
 
 - The account being closed.
-- The PSU's mandate to operate the account is revoked.
 - The account is barred or frozen.
 - The PSU changes the selected accounts during consent re-authentication.
 
