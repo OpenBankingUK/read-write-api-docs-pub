@@ -68,7 +68,7 @@ After consent has been agreed the **funds-confirmation-consent** resource may ha
 | --- |--- |--- |
 | 1 |Rejected |The Funds Confirmation Consent has been rejected. |
 | 2 |Authorised |The Funds Confirmation Consent has been successfully agreed. |
-| 3 |Revoked |The Funds Confirmation Consent has been revoked via the ASPSP interface. This state is retained for backward compatibility. Since Ver 3.1.4 a consent cannot reach this state. |
+| 3 |Revoked |The Funds Confirmation Consent has been revoked via the ASPSP interface. |
 
 #### Status Flow
 

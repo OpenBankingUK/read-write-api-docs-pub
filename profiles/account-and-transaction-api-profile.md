@@ -402,6 +402,7 @@ The Account Access Consent resource may have one of the following status codes a
 | --- |--- |--- |
 | 1 |Authorised |The account access consent has been successfully authorised. |
 | 2 |Rejected |The account access consent has been rejected. |
+| 3 |Revoked |The account access consent has been revoked via the ASPSP interface. This status is not applicable for the resource created after Ver 3.1.4. |	
 
 #### Consent Re-authentication
 
@@ -424,6 +425,13 @@ The PSU may request the AISP to revoke consent that it has authorised. If consen
 
 - The AISP **must** cease to access the APIs at that point.
 - The AISP **must** call the **DELETE** operation on the account-access-consent resource (before confirming consent revocation with the PSU) as soon as is practically possible, to indicate to the ASPSP that the PSU has revoked consent.
+
+### Access Revocation
+
+A PSU **may** revoke AISP's access directly with the ASPSP,  via the access dashboard. In such a situation:
+- The ASPSPs **may** revoke/expire the access token provided to the AISP.
+- The status of the account-access-consent **must** remain unchanged and the AISP **must** be allowed to request PSU to re-authenticate the same account-access-consent resource.
+- Upon successful re-authentication by PSU, an ASPSP **may** issue new authorization code and subsequently new access token to the AISP.
 
 ### Changes to Selected Account(s)
 
