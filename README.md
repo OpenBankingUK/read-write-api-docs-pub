@@ -21,7 +21,14 @@ https://github.com/OpenBankingUK/read-write-api-specs
 
 ## Change Log
 
-### Version 3.1.4
+### Version 3.1.4 - Draft 3
+- __Decision 199 - Update spec to suggest only Access Revocation is possible from ASPSP's dashboard__
+[View Diff](https://github.com/OpenBankingUK/read-write-api-docs-pub/commit/c1bdea6379220fad35f49e2f8f4326b022928572)
+- __Decision 209 - Add RepresentativeAPR field in PCA/BCA Product endpoints__
+  [View Diff](https://github.com/OpenBankingUK/read-write-api-docs-pub/commit/5c2d12b6aa1f1abd4a8e8da618e1a01675c50684)
+
+
+### Version 3.1.4 - Draft 2
 
 - __Decision 201 - Support for High Cost Credit (HCC) requirements__
 [View Diff](https://github.com/OpenBankingUK/read-write-api-docs-pub/commit/bfc668834060eb212360fe7fe892b0e9c389394c)
