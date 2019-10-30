@@ -442,7 +442,6 @@ Subsequent changes to the set of accounts to which the consent authorisation app
 Additionally, the set of selected accounts may also change due to external factors. This includes (but is not limited to):
 
 - The account being closed.
-- The PSU's mandate to operate the account is revoked.
 - The account is barred or frozen.
 - The PSU changes the selected accounts during consent re-authentication.
 
