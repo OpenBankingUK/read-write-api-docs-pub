@@ -814,11 +814,13 @@ The Client Credentials Grant is documented in [Section 4.4 of the OAuth 2.0 RFC]
 
 APIs that require the PSU as well as TPP to be identified and authenticated can only be accessed using an access token issued through an Authorization Code Grant, Hybrid Grant or CIBA.
 
-The Authorization Code Grant (see [Section 4.1 of the OAuth 2.0 RFC](https://tools.ietf.org/html/rfc6749#section-4.1) and [Section 3.1 of the OIDC Specification](http://openid.net/specs/openid-connect-core-1_0.html#CodeFlowAuth)) can be used to redirect a PSU to the ASPSP's authorization pages in order to authenticate the PSU and generate and authorization code. The TPP can then exchange this authorization code for an access token by calling the ASPSP's token end-point and authenticating itself.
+The Hybrid Grant (See [Section 3.3. of the OIDC Specification](http://openid.net/specs/openid-connect-core-1_0.html#HybridFlowAuth)) can be used to redirect a PSU to the ASPSP's authorization pages in order to authenticate the PSU and generate and authorization code. The TPP can then exchange this authorization code for an access token by calling the ASPSP's token end-point and authenticating itself.
 
-The Hybrid Grant (See [Section 3.3. of the OIDC Specification](http://openid.net/specs/openid-connect-core-1_0.html#HybridFlowAuth)) provides another redirect based mechanism for authenticating PSUs that is deemed to be more secure than using the Authorization Code Grant.
+Earlier versions of thsi specification referenced the use of The Authorization Code Grant (see [Section 4.1 of the OAuth 2.0 RFC](https://tools.ietf.org/html/rfc6749#section-4.1) and [Section 3.1 of the OIDC Specification](http://openid.net/specs/openid-connect-core-1_0.html#CodeFlowAuth)) as  another redirect based mechanism for authenticating PSUs. The FAPI security profile states states that the hybrid flow should be used. ASPSPs should not implement this flow, but should use the Hybrid Grant instead.
 
-The [The UK Open Banking Security Profile](https://bitbucket.org/openid/obuk/src/4630771db004da59992fb201641f5c4ff2c881f1/uk-openbanking-security-profile.md?at=master&fileviewer=file-view-default) and [FAPI read & Write API Security Profile](https://openid.net/specs/openid-financial-api-part-2-ID2.html) specify a more stringent set of requirements that ASPSPs and TPPs must adhere to.
+ The [FAPI read & Write API Security Profile](https://openid.net/specs/openid-financial-api-part-2-ID2.html) specify a more stringent set of requirements that ASPSPs and TPPs must adhere to.
+
+Earlier versions of this specification referenced the use of [The UK Open Banking Security Profile](https://bitbucket.org/openid/obuk/src/4630771db004da59992fb201641f5c4ff2c881f1/uk-openbanking-security-profile.md?at=master&fileviewer=file-view-default). It should be noted that the UK Open Banking Security Profile is no longer supported by OBIE. ASPSPs should not implement this profile, but should use FAPI instead.
 
 ##### id_token_hint
 
@@ -865,9 +867,8 @@ This allows the access token that is eventually generated to be bound to a speci
 
 ###### Identifying the PSU Using a User Id
 
-To identify a PSU through a user Id, the TPP **must** issue a `login_hint_token` in the `bc_authorize` request that contain at least one of the following claims with a value indicating the user id:
+To identify a PSU through a user Id, the TPP **must** issue a `login_hint_token` in the `bc_authorize` request that contain at least one of the following claims with a value identifying the end-user:
   * sub
-  * preferred_username
   * email
   * phone_number
 
@@ -876,20 +877,64 @@ If the ASPSP support identification of the user through a static identifier, it 
 ```json
 // using login name
 {
-  "sub": "scott",
+  "sub": "scott"
 }
 
 // using email address
 {
-  "email": "scott@oracle.com",
+  "email": "scott@oracle.com"
 }
 
 // using phone number
 {
-  "phone_number": "00448903748394",
+  "phone_number": "00448903748394"
 }
 ```
 
+The following is a non-normative example shows a call to `bc-authorize` using a login name as an identifier and MTLS for authenticating the client.
+```
+POST /bc-authorize HTTP/1.1
+   Host: server.example.com
+   Authorization: Basic czZCaGRSa3F0MzpnWDFmQmF0M2JW
+   Content-Type: application/x-www-form-urlencoded
+
+   client_id=9a77c8ec-fbf6-11e9-8f0b-362b9e155667
+   request=<jwt>
+```
+
+where the JWT represents the following payload:
+
+```
+{
+  "alg": "PS256",
+  "kid": "9f5625be-fbf8-11e9-aad5-362b9e155667"
+}
+.
+{
+  "aud": "https://issuer.alphabank.co.uk",
+  "iss": "9a77c8ec-fbf6-11e9-8f0b-362b9e155667",
+  "exp": "1572537993",
+  "iat": "1572537963",
+  "nbf": "1572537963",
+  "jti": "77ad3a98-fbf8-11e9-8f0b-362b9e155667",
+  "scope": "payments",
+  "client_notification_token": "c3c03478-fbf6-11e9-aad5-362b9e155667",
+  "login_hint_token": "<jwt>",
+  "openbanking-intent-id": "aac-a319ff12-fbf9-11e9-8f0b-362b9e155667"
+}
+```
+where the `login_hint_token` JWT represents the following payload:
+
+```
+{
+  "alg": "none"
+}
+.
+{
+  "sub": "scott"
+}
+.
+```
 
 ###### Identifying the PSU Using an Ephemeral User Id
 To identify a PSU through an ephemeral user Id, the TPP **must** issue a `login_hint_token` in the `bc_authorize` request that contains the custom claim `ephemeral_sub` set to the ephemeral user id
@@ -902,10 +947,13 @@ To identify a PSU through an ephemeral user Id, the TPP **must** issue a `login_
 
 ###### Identifying the PSU Using an Intent Id
 
-To identify a PSU through an intent Id, the only passes in the consent id as described in the previous section.
+To identify a PSU through an intent Id, the client only passes in the consent id as described in the previous section.
+
 A `login_hint_token` **must not** be included in the request.
 
-In order to initiate authentication, the TPP must lodge a `bc_authorize` request and then display the resulting `auth_req_id` and `intent_id` as a QR code.
+In order to initiate authentication, the TPP must lodge a `bc_authorize` request and then display a QR code representing the `auth_req_id` and `intent_id` seperated by a colon.
+
+e.g If the `auth_req_id` is `3c5d9552-fbfb-11e9-8f0b-362b9e155667` and `intent_id` is `548b399a-fbfb-11e9-8f0b-362b9e155667`, generate a QR code for `3c5d9552-fbfb-11e9-8f0b-362b9e155667:548b399a-fbfb-11e9-8f0b-362b9e155667`
 
 The PSU would authenticate themselves on the ASPSP's banking app and then scan the QR code.
 
