@@ -865,6 +865,8 @@ Prior to creating the issuing the `bc-authorize` request the TPP must create a c
 The generated consent id must be passed in the request object as a parameter called `openbanking-intent-id`.
 This allows the access token that is eventually generated to be bound to a specific consent.
 
+The ASPSP must allow at most one `bc_authorize` request at any time to be associated with a given consent.
+
 ###### Identifying the PSU Using a User Id
 
 To identify a PSU through a user Id, the TPP **must** issue a `login_hint_token` in the `bc_authorize` request that contain at least one of the following claims with a value identifying the end-user:
@@ -951,13 +953,17 @@ To identify a PSU through an intent Id, the client only passes in the consent id
 
 A `login_hint_token` **must not** be included in the request.
 
-In order to initiate authentication, the TPP must lodge a `bc_authorize` request and then display a QR code representing the `auth_req_id` and `intent_id` seperated by a colon.
-
-e.g If the `auth_req_id` is `3c5d9552-fbfb-11e9-8f0b-362b9e155667` and `intent_id` is `548b399a-fbfb-11e9-8f0b-362b9e155667`, generate a QR code for `3c5d9552-fbfb-11e9-8f0b-362b9e155667:548b399a-fbfb-11e9-8f0b-362b9e155667`
+In order to initiate authentication, the TPP must lodge a `bc_authorize` request and then display a QR code representing the `intent_id`.
 
 The PSU would authenticate themselves on the ASPSP's banking app and then scan the QR code.
 
-This will allow the ASPSP to identify the PSU that is authenticating the consent.
+This will allow the ASPSP to identify the PSU that is authenticating the consent and work out the associated `auth_req_id`
+
+It should be noted that the CIBA specification treats the `auth_req_id` as a shared secret:
+
+> This is a unique identifier to identify the authentication request made by the Client. It MUST contain sufficient entropy (a minimum of 128 bits while 160 bits is recommended) to make brute force guessing or forgery of a valid auth_req_id computationally infeasible.
+
+Although displaying the auth_req_id as part of the
 
 ###### Identifying the PSU Using a Previously Issued Id Token
 
