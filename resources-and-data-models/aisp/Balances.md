@@ -1,4 +1,4 @@
-# Balances - v3.1.4
+# Balances - v3.1.2
 
 1. [Overview](#overview)
 2. [Endpoints](#endpoints)
@@ -11,19 +11,12 @@
    4. [Permission Codes](#permission-codes)
    5. [Data Dictionary](#data-dictionary)
 4. [Usage Examples](#usage-examples)
-   1. [Bulk](#bulk)
-      1. [Get Balances Request](#get-balances-request)
-      2. [Get Balances Response](#get-balances-response)
-   2. [Specific Account with High Cost Credit Not Included in Balance and Account in Credit](#specific-account-with-high-cost-credit-not-included-in-balance-and-account-in-credit)
+   1. [Specific Account](#specific-account)
       1. [Get Account Balances Request](#get-account-balances-request)
       2. [Get Account Balances Response](#get-account-balances-response)
-   3. [Specific Account with Creditline Included in Balance and Account in Credit](#specific-account-with-creditline-included-in-balance-and-account-in-credit)
-      1. [Get Account Balances Request](#get-account-balances-request-1)
-      2. [Get Account Balances Response](#get-account-balances-response-1)
-   4. [Specific Account with High Cost Credit not Included in Balance and Account in Debit](#specific-account-with-high-cost-credit-not-included-in-balance-and-account-in-debit)
-      1. [Get Account Balances Request](#get-account-balances-request-2)
-      2. [Get Account Balances Response](#get-account-balances-response-2)
-
+   2. [Bulk](#bulk)
+      1. [Get Balances Request](#get-balances-request)
+      2. [Get Balances Response](#get-balances-response)
 
 ## Overview
 
@@ -49,7 +42,7 @@ This will retrieve the resources for all authorised accounts linked to the accou
 
 ## Data Model
 
-The OBReadBalance1 object will be used for the call to:
+The OBReadBalance1 object will be used for the call to: 
 
 * GET /accounts/{AccountId}/balances
 * GET /balances
@@ -97,6 +90,63 @@ The resource requires the ReadBalances permission. The resource response payload
 
 ## Usage Examples
 
+### Specific Account
+
+#### Get Account Balances Request
+
+
+```
+GET /accounts/22289/balances HTTP/1.1
+Authorization: Bearer Az90SAOJklae
+x-fapi-auth-date: Sun, 10 Sep 2017 19:43:31 GMT
+x-fapi-customer-ip-address: 104.25.212.99
+x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
+Accept: application/json
+```
+
+#### Get Account Balances Response
+
+```
+HTTP/1.1 200 OK
+x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
+Content-Type: application/json
+```
+
+```json
+{
+  "Data": {
+    "Balance": [
+      {
+        "AccountId": "22289",
+        "Amount": {
+          "Amount": "1230.00",
+          "Currency": "GBP"
+        },
+        "CreditDebitIndicator": "Credit",
+        "Type": "InterimAvailable",
+        "DateTime": "2017-04-05T10:43:07+00:00",
+        "CreditLine": [
+          {
+            "Included": true,
+            "Amount": {
+              "Amount": "1000.00",
+              "Currency": "GBP"
+            },
+            "Type": "Pre-Agreed"
+          }
+        ]
+      }
+    ]
+  },
+  "Links": {
+    "Self": "https://api.alphabank.com/open-banking/v3.1/aisp/accounts/22289/balances/"
+  },
+  "Meta": {
+    "TotalPages": 1
+  }
+}
+```
+
 ### Bulk
 
 #### Get Balances Request
@@ -138,7 +188,7 @@ Content-Type: application/json
               "Amount": "1000.00",
               "Currency": "GBP"
             },
-            "Type": "Temporary"
+            "Type": "Pre-Agreed"
           }
         ]
       },
@@ -156,189 +206,6 @@ Content-Type: application/json
   },
   "Links": {
     "Self": "https://api.alphabank.com/open-banking/v3.1/aisp/balances/"
-  },
-  "Meta": {
-    "TotalPages": 1
-  }
-}
-```
-
-### Specific Account with High Cost Credit Not Included in Balance and Account in Credit
-
-#### Get Account Balances Request
-
-An account has a balance of 300 GBP with an arranged overdraft of 500 GBP none of which has been used.
-
-```
-GET /accounts/22289/balances HTTP/1.1
-Authorization: Bearer Az90SAOJklae
-x-fapi-auth-date: Sun, 10 Sep 2017 19:43:31 GMT
-x-fapi-customer-ip-address: 104.25.212.99
-x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
-Accept: application/json
-```
-
-#### Get Account Balances Response
-
-```
-HTTP/1.1 200 OK
-x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
-Content-Type: application/json
-```
-
-```json
-{
-  "AccountId": "22289",
-  "Amount": {
-    "Amount": "300.00",
-    "Currency": "GBP"
-  },
-  "CreditDebitIndicator": "Credit",
-  "Type": "InterimAvailable",
-  "DateTime": "2017-04-05T10:43:07+00:00",
-  "CreditLine": [
-    {
-      "Included": false,
-      "Amount": {
-        "Amount": "500.00",
-        "Currency": "GBP"
-      },
-      "Type": "Available"
-    },
-    {
-      "Included": false,
-      "Amount": {
-        "Amount": "500.00",
-        "Currency": "GBP"
-      },
-      "Type": "Pre-Agreed"
-    }
-  ]
-},
-  "Links": {
-    "Self": "https://api.alphabank.com/open-banking/v3.1/aisp/accounts/22289/balances/"
-  },
-  "Meta": {
-    "TotalPages": 1
-  }
-}
-```
-
-### Specific Account with Creditline Included in Balance and Account in Credit
-
-#### Get Account Balances Request
-
-An account has a balance of 300 GBP with an temporary creditline of 500 GBP none of which has been used.
-
-```
-GET /accounts/22289/balances HTTP/1.1
-Authorization: Bearer Az90SAOJklae
-x-fapi-auth-date: Sun, 10 Sep 2017 19:43:31 GMT
-x-fapi-customer-ip-address: 104.25.212.99
-x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
-Accept: application/json
-```
-
-#### Get Account Balances Response
-
-```
-HTTP/1.1 200 OK
-x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
-Content-Type: application/json
-```
-
-```json
-{
-  "AccountId": "22289",
-  "Amount": {
-    "Amount": "800.00",
-    "Currency": "GBP"
-  },
-  "CreditDebitIndicator": "Credit",
-  "Type": "InterimAvailable",
-  "DateTime": "2017-04-05T10:43:07+00:00",
-  "CreditLine": [
-    {
-      "Included": false,
-      "Amount": {
-        "Amount": "500.00",
-        "Currency": "GBP"
-      },
-      "Type": "Available"
-    },
-    {
-      "Included": true,
-      "Amount": {
-        "Amount": "500.00",
-        "Currency": "GBP"
-      },
-      "Type": "Temporary"
-    }
-  ]
-},
-  "Links": {
-    "Self": "https://api.alphabank.com/open-banking/v3.1/aisp/accounts/22289/balances/"
-  },
-  "Meta": {
-    "TotalPages": 1
-  }
-}
-```
-
-### Specific Account with High Cost Credit not Included in Balance and Account in Debit
-
-#### Get Account Balances Request
-
-If the account holder spends 400 GBP, then their account balance drops to 100 GBP (Debit) with a further 400 GBP available (if their pre-agreed overdraft remains unchanged at 500 GBP)
-
-```
-GET /accounts/22289/balances HTTP/1.1
-Authorization: Bearer Az90SAOJklae
-x-fapi-auth-date: Sun, 10 Sep 2017 19:43:31 GMT
-x-fapi-customer-ip-address: 104.25.212.99
-x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
-Accept: application/json
-```
-
-#### Get Account Balances Response
-
-```
-HTTP/1.1 200 OK
-x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
-Content-Type: application/json
-```
-
-```json
-{
-  "AccountId": "22289",
-  "Amount": {
-    "Amount": "100.00",
-    "Currency": "GBP"
-  },
-  "CreditDebitIndicator": "Debit",
-  "Type": "InterimAvailable",
-  "DateTime": "2017-04-05T10:43:07+00:00",
-  "CreditLine": [
-    {
-      "Included": false,
-      "Amount": {
-        "Amount": "400.00",
-        "Currency": "GBP"
-      },
-      "Type": "Available"
-    },
-    {
-      "Included": false,
-      "Amount": {
-        "Amount": "500.00",
-        "Currency": "GBP"
-      },
-      "Type": "Pre-Agreed"
-    }
-  ]
-},
-  "Links": {
-    "Self": "https://api.alphabank.com/open-banking/v3.1/aisp/accounts/22289/balances/"
   },
   "Meta": {
     "TotalPages": 1

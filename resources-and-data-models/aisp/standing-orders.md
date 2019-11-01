@@ -1,4 +1,4 @@
-# Standing Orders - v3.1.4
+# Standing Orders - v3.1.2
 
 1. [Overview](#overview)
 2. [Endpoints](#endpoints)
@@ -21,7 +21,7 @@
 
 ## Overview
 
-The standing-orders resource is used by an AISP to retrieve the standing orders for a specific AccountId or to retrieve the standing orders in bulk for all the accounts that the PSU has consented to.
+The standing-orders resource is used by an AISP to retrieve the standing orders for a specific AccountId or to retrieve the standing orders in bulk for all the accounts that the PSU has consented to. 
 
 This resource description should be read in conjunction with a compatible Account Information Services API Profile.
 
@@ -45,7 +45,7 @@ This will retrieve the resources for all authorised accounts linked to the accou
 
 ## Data Model
 
-The OBReadStandingOrder5 object will be used for the call to:
+The OBReadStandingOrder5 object will be used for the call to: 
 
 * GET /accounts/{AccountId}/standing-orders
 * GET /standing-orders
@@ -84,11 +84,11 @@ An account (AccountId) may have no standing orders set up, or may have multiple 
 
 The resource differs depending on the permissions (ReadStandingOrdersBasic and ReadStandingOrdersDetail) used to access resource. In the event the resource is accessed with both ReadStandingOrdersBasic and ReadStandingOrdersDetail, the most detailed level (ReadStandingOrdersDetail) must be used.
 
-* These objects **must not** be returned **without** the **ReadStandingOrdersDetail** permission:
-    * OBReadStandingOrder5/Data/StandingOrder/CreditorAgent
+* These objects **must not** be returned **without** the **ReadStandingOrdersDetail** permission: 
+    * OBReadStandingOrder5/Data/StandingOrder/CreditorAgent 
     * OBReadStandingOrder5/Data/StandingOrder/CreditorAccount
 * If the **ReadStandingOrdersDetail** is granted by the PSU:     
-    * OBReadStandingOrder5/Data/StandingOrder/CreditorAgent **may** be returned if applicable to the account and ASPSP (0..1)
+    * OBReadStandingOrder5/Data/StandingOrder/CreditorAgent **may** be returned if applicable to the account and ASPSP (0..1) 
     * OBReadStandingOrder5/Data/StandingOrder/CreditorAccount **must** be returned (1..1)
 
 If the ReadPAN permission is granted by the PSU, the ASPSP may choose to populate the OBReadStandingOrder5/Data/StandingOrder/CreditorAccount/Identification with the unmasked PAN (if the PAN is being populated in the response).

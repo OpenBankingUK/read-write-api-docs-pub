@@ -1,4 +1,4 @@
-# International Scheduled Payments - v3.1.4
+# International Scheduled Payments - v3.1.3
 
 1. [Overview](#overview)
 2. [Endpoints](#endpoints)
@@ -52,7 +52,7 @@ Once the international-scheduled-payment-consent has been authorised by the PSU,
 
 #### Status
 
-An international-scheduled-payment can only be created if its corresponding international-scheduled-payment-consent resource has the status of "Authorised".
+An international-scheduled-payment can only be created if its corresponding international-scheduled-payment-consent resource has the status of "Authorised". 
 
 The international-scheduled-payment resource that is created successfully must have one of the following Status codes:
 
@@ -165,7 +165,7 @@ The OBWriteInternationalScheduled3 object will be used for a call to:
 
 #### Notes
 
-The international-scheduled-payment **request** object contains the:
+The international-scheduled-payment **request** object contains the: 
 
 * ConsentId.
 * The full Initiation and Risk objects from the international-scheduled-payment-consent request.
@@ -194,7 +194,7 @@ The OBWriteInternationalScheduledResponse4 object will be used for a response to
 
 #### Notes
 
-The international-scheduled-payment **response** object contains the:
+The international-scheduled-payment **response** object contains the: 
 
 * InternationalScheduledPaymentId.
 * ConsentId.
@@ -241,3 +241,4 @@ The OBWritePaymentDetailsResponse1 object will be used for a response to a call 
 | OBWritePaymentDetailsResponse1 | |OBWritePaymentDetailsResponse1 | |OBWritePaymentDetailsResponse1 | | |
 | Data |1..1 |OBWritePaymentDetailsResponse1/Data | |OBWriteDataPaymentOrderStatusResponse1 | | |
 | PaymentStatus |0..unbounded |OBWritePaymentDetailsResponse1/Data/PaymentStatus |Payment status details. |OBWritePaymentDetails1 | | |
+

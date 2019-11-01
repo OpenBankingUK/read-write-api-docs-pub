@@ -1,4 +1,4 @@
-# Domestic Scheduled Payment Consents  - v3.1.4
+# Domestic Scheduled Payment Consents  - v3.1.2
 
 1. [Overview](#overview)
 2. [Endpoints](#endpoints)
@@ -58,7 +58,7 @@ The API endpoint allows the PISP to ask an ASPSP to create a new **domestic-sche
 
 ### GET /domestic-scheduled-payment-consents/{ConsentId}
 
-A PISP can optionally retrieve a payment consent resource that they have created to check its status.
+A PISP can optionally retrieve a payment consent resource that they have created to check its status. 
 
 #### Status
 
