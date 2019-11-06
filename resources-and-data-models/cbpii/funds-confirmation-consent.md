@@ -1,4 +1,4 @@
-# Funds Confirmation Consent - v3.1.4
+# Funds Confirmation Consent - v3.1.3
 
 1. [Overview](#overview)
 2. [Endpoints](#endpoints)
@@ -78,7 +78,7 @@ This is the state diagram for the Status.
 
 ### GET /funds-confirmation-consents/{ConsentId}
 
-A CBPII may optionally retrieve a **funds-confirmation-consent** resource that they have created to check its status.
+A CBPII may optionally retrieve a **funds-confirmation-consent** resource that they have created to check its status. 
 
 Prior to calling the operation, the CBPII must have an access token issued by the ASPSP using a client credentials grant.
 

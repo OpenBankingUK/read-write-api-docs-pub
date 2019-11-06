@@ -1,4 +1,4 @@
-# File Payments - v3.1.4
+# File Payments - v3.1.2
 
 1. [Overview](#overview)
 2. [Endpoints](#endpoints)
@@ -149,9 +149,9 @@ The OBWriteFile2 object will be used for a call to:
 
 ![OBWriteFile2]( images/OBWriteFile2.gif )
 
-#### Notes
+#### Notes 
 
-The file-payment **request** object contains the:
+The file-payment **request** object contains the: 
 
 * ConsentId.
 * The full Initiation object from the file-payment-consent request.
@@ -178,9 +178,9 @@ The OBWriteFileResponse2 object will be used for a response to a call to:
 
 ![OBWriteFileResponse2]( images/OBWriteFileResponse2.gif )
 
-#### Notes
+#### Notes 
 
-The file-payment **response** object contains the:
+The file-payment **response** object contains the: 
 
 * FilePaymentId.
 * ConsentId.

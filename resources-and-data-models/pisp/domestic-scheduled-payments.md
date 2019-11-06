@@ -1,4 +1,4 @@
-# Domestic Scheduled Payments  - v3.1.4
+# Domestic Scheduled Payments  - v3.1.2
 
 1. [Overview](#overview)
 2. [Endpoints](#endpoints)
@@ -55,7 +55,7 @@ Once the domestic-scheduled-payment-consent has been authorised by the PSU, the 
 
 #### Status
 
-A domestic-scheduled-payment can only be created if its corresponding domestic-scheduled-payment-consent resource has the status of "Authorised".
+A domestic-scheduled-payment can only be created if its corresponding domestic-scheduled-payment-consent resource has the status of "Authorised". 
 
 The domestic-scheduled-payment resource that is created successfully must have one of the following Status codes:
 
@@ -164,11 +164,11 @@ The OBWriteDomesticScheduled2 object will be used for a call to:
 
 #### Notes
 
-The domestic-scheduled-payment **request** object contains the:
+The domestic-scheduled-payment **request** object contains the: 
 
 * ConsentId.
 * The full Initiation and Risk objects from the domestic-scheduled-payment-consent request.
-
+  
 The **Initiation** and **Risk** sections of the domestic-scheduled-payment request **must** match the **Initiation** and **Risk** sections of the corresponding domestic-scheduled-payment-consent request.
 
 #### Data Dictionary
@@ -194,7 +194,7 @@ The OBWriteDomesticScheduledResponse3 object will be used for a response to a ca
 
 #### Notes
 
-The domestic-scheduled-payment **response** object contains the:
+The domestic-scheduled-payment **response** object contains the: 
 
 * DomesticScheduledPaymentId.
 * ConsentId.

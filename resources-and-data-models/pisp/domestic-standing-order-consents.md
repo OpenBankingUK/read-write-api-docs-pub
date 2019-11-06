@@ -1,4 +1,4 @@
-# Domestic Standing Order Consents - v3.1.4
+# Domestic Standing Order Consents - v3.1.2
 
 1. [Overview](#overview)
 2. [Endpoints](#endpoints)
@@ -62,7 +62,7 @@ The default Status is "AwaitingAuthorisation" immediately after the domestic-sta
 
 ### GET /domestic-standing-order-consents/{ConsentId}
 
-A PISP can optionally retrieve a payment consent resource that they have created to check its status.
+A PISP can optionally retrieve a payment consent resource that they have created to check its status. 
 
 #### Status
 
@@ -114,7 +114,7 @@ This section describes the OBDomesticStandingOrder3 class, which is reused as th
 
 ##### Notes
 
-For the OBDomesticStandingOrder3 Initiation object:
+For the OBDomesticStandingOrder3 Initiation object: 
 
 * All elements in the Initiation payload that are specified by the PISP must not be changed via the ASPSP, as this is part of formal consent from the PSU.
 * If the ASPSP is able to establish a problem with payload or any contextual error during the API call, the ASPSP must reject the domestic-standing-order-consent request immediately.
@@ -170,7 +170,7 @@ For the OBDomesticStandingOrder3 Initiation object:
 | Name |0..1 |OBDomesticStandingOrder3/DebtorAccount/Name |The account name is the name or names of the account owner(s) represented at an account level, as displayed by the ASPSP's online channels. Note, the account name is not the product name or the nickname of the account. |Max70Text | | |
 | SecondaryIdentification |0..1 |OBDomesticStandingOrder3/DebtorAccount/SecondaryIdentification |This is secondary identification of the account, as assigned by the account servicing institution. This can be used by building societies to additionally identify accounts with a roll number (in addition to a sort code and account number combination). |Max34Text | | |
 | CreditorAccount |1..1 |OBDomesticStandingOrder3/CreditorAccount |Identification assigned by an institution to identify an account. This identification is known by the account owner. |OBBranchAndFinancialInstitutionIdentification6 | | |
-| SchemeName |1..1 |OBDomesticStandingOrder3/CreditorAccount/SchemeName |Name of the identification scheme, in a coded form as published in an external list. |OBExternalAccountIdentification4Code | | |
+| SchemeName |1..1 |OBDomesticStandingOrder3/CreditorAccount/SchemeName |Name of the identification scheme, in a coded form as published in an external list. |OBExternalFinancialInstitutionIdentification4Code | | |
 | Identification |1..1 |OBDomesticStandingOrder3/CreditorAccount/Identification |Identification assigned by an institution to identify an account. This identification is known by the account owner. |Max256Text | | |
 | Name |1..1 |OBDomesticStandingOrder3/CreditorAccount/Name |The account name is the name or names of the account owner(s) represented at an account level. Note, the account name is not the product name or the nickname of the account. OB: ASPSPs may carry out name validation for Confirmation of Payee, but it is not mandatory. |Max70Text | | |
 | SecondaryIdentification |0..1 |OBDomesticStandingOrder3/CreditorAccount/SecondaryIdentification |This is secondary identification of the account, as assigned by the account servicing institution. This can be used by building societies to additionally identify accounts with a roll number (in addition to a sort code and account number combination). |Max34Text | | |

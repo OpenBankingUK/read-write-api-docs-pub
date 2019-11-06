@@ -1,4 +1,4 @@
-# AISP Resources and Data Models - v3.1.4
+# AISP Resources and Data Models - v3.1.2
 
 Resources accessed using the aisp PSD2 role are detailed here:
 
@@ -40,7 +40,7 @@ The API endpoints for these resources, and their mandatory/conditional/optional 
 | [direct-debits](Direct%20Debits.md) |GET /direct-debits |Optional |
 | [standing-orders](Standing%20Orders.md) |GET /accounts/{AccountId}/standing-orders |Conditional |
 | [standing-orders](Standing%20Orders.md) |GET /standing-orders |Optional |
-| [products](Products.md) |GET /accounts/{AccountId}/product |Conditional |
+| [products](Products.md) |GET /accounts/{AccountId}/products |Conditional |
 | [products](Products.md) |GET /products |Optional |
 | [offers](Offers.md) |GET /accounts/{AccountId}/offers |Conditional |
 | [offers](Offers.md) |GET /offers |Optional |

@@ -1,4 +1,4 @@
-# Event Notifications - v3.1.4
+# Event Notifications - v3.1.2
 
 1. [Overview](#overview)
 2. [Endpoints](#endpoints)
@@ -178,7 +178,7 @@ This section describes the OBEventAccountAccessConsentLinkedAccountUpdate1 class
 
 #### Notes
 
-For the OBEventAccountAccessConsentLinkedAccountUpdate object:
+For the OBEventAccountAccessConsentLinkedAccountUpdate object: 
 
 - The http://openbanking.org.uk/rty claim **must** be populated with "account-access-consent".
 

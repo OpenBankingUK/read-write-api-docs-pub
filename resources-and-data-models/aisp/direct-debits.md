@@ -1,4 +1,4 @@
-# Direct Debits - v3.1.4
+# Direct Debits - v3.1.3
 
 1. [Overview](#overview)
 2. [Endpoints](#endpoints)
@@ -19,7 +19,7 @@
 
 ## Overview
 
-The direct-debits resource is used by an AISP to retrieve the direct debits for a specific account identified by AccountId or to retrieve direct debits for all accounts that the PSU has consented to.
+The direct-debits resource is used by an AISP to retrieve the direct debits for a specific account identified by AccountId or to retrieve direct debits for all accounts that the PSU has consented to. 
 
 This resource description should be read in conjunction with a compatible Account Information Services API Profile.
 

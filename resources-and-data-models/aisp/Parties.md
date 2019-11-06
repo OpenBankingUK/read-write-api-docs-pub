@@ -1,4 +1,4 @@
-# Parties - v3.1.4
+# Parties - v3.1.2
 
 1. [Overview](#overview)
 2. [Endpoints](#endpoints)
@@ -32,7 +32,7 @@
 
 ## Overview
 
-The parties resource is used by an AISP to retrieve the details on the account owner(s)/holder(s) and operator(s) for a specific account identified by AccountId.
+The parties resource is used by an AISP to retrieve the details on the account owner(s)/holder(s) and operator(s) for a specific account identified by AccountId. 
 
 The party resource is used by an AISP to retrieve the details on the account owner/holder for a specific account identified by AccountId:
 
@@ -120,7 +120,7 @@ The Party resource contains a set of elements that describes a party. The party 
 
 ### OBReadParty2
 
-The OBReadParty2 object will be used for the call to:
+The OBReadParty2 object will be used for the call to: 
 
 * GET /accounts/{AccountId}/party
 * GET /party
@@ -142,7 +142,7 @@ The response to GET /accounts/{AccountId}/party and GET /party (if available)  *
 
 ### OBReadParty3
 
-The OBReadParty3 object will be used for the call to:
+The OBReadParty3 object will be used for the call to: 
 
 * GET /accounts/{AccountId}/parties
 
