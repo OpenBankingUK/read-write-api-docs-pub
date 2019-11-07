@@ -959,12 +959,6 @@ The PSU would authenticate themselves on the ASPSP's banking app and then scan t
 
 This will allow the ASPSP to identify the PSU that is authenticating the consent and work out the associated `auth_req_id`
 
-It should be noted that the CIBA specification treats the `auth_req_id` as a shared secret:
-
-> This is a unique identifier to identify the authentication request made by the Client. It MUST contain sufficient entropy (a minimum of 128 bits while 160 bits is recommended) to make brute force guessing or forgery of a valid auth_req_id computationally infeasible.
-
-Although displaying the auth_req_id as part of the
-
 ###### Identifying the PSU Using a Previously Issued Id Token
 
 To identify a PSU through a previously issued `id_token` the TPP must issue an `id_token_hint` containing the id_token in the `bc_authorize` request.
