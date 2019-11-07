@@ -816,7 +816,7 @@ APIs that require the PSU as well as TPP to be identified and authenticated can 
 
 The Hybrid Grant (See [Section 3.3. of the OIDC Specification](http://openid.net/specs/openid-connect-core-1_0.html#HybridFlowAuth)) can be used to redirect a PSU to the ASPSP's authorization pages in order to authenticate the PSU and generate and authorization code. The TPP can then exchange this authorization code for an access token by calling the ASPSP's token end-point and authenticating itself.
 
-Earlier versions of thsi specification referenced the use of The Authorization Code Grant (see [Section 4.1 of the OAuth 2.0 RFC](https://tools.ietf.org/html/rfc6749#section-4.1) and [Section 3.1 of the OIDC Specification](http://openid.net/specs/openid-connect-core-1_0.html#CodeFlowAuth)) as  another redirect based mechanism for authenticating PSUs. The FAPI security profile states states that the hybrid flow should be used. ASPSPs should not implement this flow, but should use the Hybrid Grant instead.
+Earlier versions of this specification referenced the use of The Authorization Code Grant (see [Section 4.1 of the OAuth 2.0 RFC](https://tools.ietf.org/html/rfc6749#section-4.1) and [Section 3.1 of the OIDC Specification](http://openid.net/specs/openid-connect-core-1_0.html#CodeFlowAuth)) as  another redirect based mechanism for authenticating PSUs. The FAPI security profile states states that the hybrid flow should be used. ASPSPs should not implement this flow, but should use the Hybrid Grant instead.
 
  The [FAPI read & Write API Security Profile](https://openid.net/specs/openid-financial-api-part-2-ID2.html) specify a more stringent set of requirements that ASPSPs and TPPs must adhere to.
 
