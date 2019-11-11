@@ -1032,10 +1032,10 @@ A TPP that has contracts with multiple ASPSPs for carrying out re-authentication
 
 The solution leverages RFC 7523's 'Using JWTs as Authorization Grants' as a means of passing in a "trusted" JWT that identifies the PSU to the TPP. This is referred to as the jwt-bearer grant type.
 
-##### Introspecting support for jwt-bearer grant-type.
+##### Discovery of support for jwt-bearer grant-type.
 
-The formal grant name for jwt-bearer is `urn:ietf:params:oauth:grant-type:jwt-bearer`
-ASPSPs that support this capability should advertise this as a supported grant_type on their well known end point.
+ASPSPs that support this capability should advertise this as a supported grant_type on their .well-known end-point.
+The formal grant name for jwt-bearer is `urn:ietf:params:oauth:grant-type:jwt-bearer`.
 
 ##### Client registration
 TPPs that would like to use this capability must register their clients with `urn:ietf:params:oauth:grant-type:jwt-bearer` as a supported grant_type.
