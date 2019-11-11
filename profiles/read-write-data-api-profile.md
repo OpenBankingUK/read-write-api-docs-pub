@@ -1076,6 +1076,8 @@ ASPSPs and TPPs may adopt RFC 8485 - Vectors of Trust.
 
 RFC 7523 allows additional custom claims to be passed in the JWT body. The TPP may use the claim `vot` to pass in vectors of trust that provides a description of the sca applied.
 
+ASPSPs that require the `vot` claim to be included in the jwt-bearer should document the required details on their developer portal.
+
 ##### Example
 
 The following is a non-normative example of a call made to a token end-point to initiate a jwt-bearer grant
