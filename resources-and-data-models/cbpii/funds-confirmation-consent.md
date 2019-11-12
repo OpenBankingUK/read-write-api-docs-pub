@@ -1,4 +1,4 @@
-# Funds Confirmation Consent - v3.1.4
+<!-- omit in toc --># Funds Confirmation Consent - v3.1.4
 
 1. [Overview](#overview)
 2. [Endpoints](#endpoints)
@@ -25,10 +25,13 @@
       1. [Example with all permitted fields](#example-with-all-permitted-fields-1)
          1. [Request](#request-1)
          2. [Response](#response-1)
-   3. [DELETE - Funds Confirmation Consent](#delete---funds-confirmation-consent)
-      1. [Example with all permitted fields](#example-with-all-permitted-fields-2)
+      2. [Example with PAN as Account Identification](#example-with-pan-as-account-identification)
          1. [Request](#request-2)
          2. [Response](#response-2)
+   3. [DELETE - Funds Confirmation Consent](#delete---funds-confirmation-consent)
+      1. [Example with all permitted fields](#example-with-all-permitted-fields-2)
+         1. [Request](#request-3)
+         2. [Response](#response-3)
 
 ## Overview
 
@@ -81,6 +84,10 @@ This is the state diagram for the Status.
 A CBPII may optionally retrieve a **funds-confirmation-consent** resource that they have created to check its status.
 
 Prior to calling the operation, the CBPII must have an access token issued by the ASPSP using a client credentials grant.
+
+ASPSP may mask the Identification field partially in the GET response.
+
+ASPSPs may return masked PAN as per their online system e.g. 5555 **** **** 4444, **** **** **** 4444 etc.
 
 #### Funds Confirmation Consent Status
 
@@ -283,6 +290,48 @@ Content-Type: application/json
   },
   "Links": {
     "Self": "https://api.alphabank.com/open-banking/v3.1/cbpii/funds-confirmation-consents/88379"
+  },
+  "Meta": {}
+}
+```
+#### Example with PAN as Account Identification
+
+##### Request
+
+GET Funds Confirmation Consent Request
+
+```
+GET /funds-confirmation-consents/88999 HTTP/1.1
+Authorization: Bearer a27393fd-12af-4aba-908d-faf042b2a7d9
+x-fapi-interaction-id: 80e03097-b808-4557-b5f4-aa820c772e3c
+Accept: application/json
+```
+
+##### Response
+
+GET Funds Confirmation Consent Response
+
+```
+HTTP/1.1 200 OK
+x-fapi-interaction-id: 80e03097-b808-4557-b5f4-aa820c772e3c
+Content-Type: application/json
+```
+
+```json
+{
+  "Data": {
+    "ConsentId": "88999",
+    "CreationDateTime": "2017-05-02T00:00:00+00:00",
+    "Status": "AwaitingAuthorisation",
+    "StatusUpdateDateTime": "2017-05-02T00:00:00+00:00",
+    "ExpirationDateTime": "2017-05-02T00:00:00+00:00",
+    "DebtorAccount": {
+      "SchemeName": "UK.OBIE.PAN",
+      "Identification": "4444********1111"
+    }
+  },
+  "Links": {
+    "Self": "https://api.alphabank.com/open-banking/v3.1/cbpii/funds-confirmation-consents/88999"
   },
   "Meta": {}
 }
