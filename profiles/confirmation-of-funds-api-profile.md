@@ -1,4 +1,4 @@
-# Confirmation of Funds API Profile - v3.1.4
+<!-- omit in toc --># Confirmation of Funds API Profile - v3.1.4
 
 1. [Overview](#overview)
    1. [Document Structure](#document-structure)
