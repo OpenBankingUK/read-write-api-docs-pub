@@ -1,4 +1,4 @@
-# Account Access Consents - v3.1.4
+<!-- omit in toc --># Account Access Consents - v3.1.4
 
 1. [Overview](#overview)
 2. [Endpoints](#endpoints)
@@ -108,6 +108,10 @@ If the PSU revokes consent to data access with the AISP, the AISP  **must**  del
 
 * This is done by making a call to DELETE the account-access-consent resource.
 * Prior to calling the API, the AISP must have an access token issued by the ASPSP using a client credentials grant.
+
+TPP should also clear the Account Access Consent resources, from ASPSP's system, which are:
+* Expired, i.e. ExpirationDateTime is lapsed, or ExpirationDateTime is not lapsed, but PSU doesn't want to refresh/re-authenticate it, and
+* Consent Resource may never be referenced by the PSU in AISP or ASPSP domain.
 
 ## Data Model
 
