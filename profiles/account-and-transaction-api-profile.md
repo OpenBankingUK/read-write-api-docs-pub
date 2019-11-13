@@ -352,8 +352,8 @@ All other fields (other than these fields listed) are available with the "Basic"
 | ReadAccountsDetail |Servicer |0..1 |OBReadAccount3/Data/Account/Servicer |
 | ReadBeneficiariesDetail |CreditorAgent |0..1 |OBReadBeneficiary3/Data/Beneficiary/CreditorAgent |
 | ReadBeneficiariesDetail |CreditorAccount |0..1 |OBReadBeneficiary3/Data/Beneficiary/CreditorAccount |
-| ReadStandingOrdersDetail |CreditorAgent |0..1 |OBReadStandingOrder4/Data/StandingOrder/CreditorAgent |
-| ReadStandingOrdersDetail |CreditorAccount |0..1 |OBReadStandingOrder4/Data/StandingOrder/CreditorAccount |
+| ReadStandingOrdersDetail |CreditorAgent |0..1 |OBReadStandingOrder6/Data/StandingOrder/CreditorAgent |
+| ReadStandingOrdersDetail |CreditorAccount |0..1 |OBReadStandingOrder6/Data/StandingOrder/CreditorAccount |
 | ReadTransactionsDetail |TransactionInformation |0..1 |OBReadTransaction4/Data/Transaction/TransactionInformation |
 | ReadTransactionsDetail |Balance |0..1 |OBReadTransaction4/Data/Transaction/Balance |
 | ReadTransactionsDetail |MerchantDetails |0..1 |OBReadTransaction4/Data/Transaction/MerchantDetails |
