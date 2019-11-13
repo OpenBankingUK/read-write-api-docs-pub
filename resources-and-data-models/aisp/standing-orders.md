@@ -110,6 +110,7 @@ If the ReadPAN permission is granted by the PSU, the ASPSP may choose to populat
 | NextPaymentDateTime |0..1 |OBReadStandingOrder6/Data/StandingOrder/NextPaymentDateTime |The date on which the next payment for a Standing Order schedule will be made. |ISODateTime | | |
 |LastPaymentDateTime| 0..1| OBReadStandingOrder6/Data/StandingOrder/LastPaymentDateTime |The date on which the last (most recent) payment for a Standing Order schedule was made. |ISODateTime | | |
 | FinalPaymentDateTime |0..1 |OBReadStandingOrder6/Data/StandingOrder/FinalPaymentDateTime |The date on which the final payment for a Standing Order schedule will be made. |ISODateTime | | |
+| NumberOfPayments |0..1 | OBReadStandingOrder6/Data/StandingOrder/NumberOfPayments| Number of the payments that will be made in completing this frequency sequence including any executed since the sequence start date. |Max35Text | | |
 | StandingOrderStatusCode |0..1 |OBReadStandingOrder6/Data/StandingOrder/StandingOrderStatusCode |Specifies the status of the standing order in code form. |OBExternalStandingOrderStatus1Code |Active Inactive | |
 | FirstPaymentAmount |0..1 |OBReadStandingOrder6/Data/StandingOrder/FirstPaymentAmount |The amount of the first Standing Order |OBActiveOrHistoricCurrencyAndAmount | | |
 | Amount |1..1 |OBReadStandingOrder6/Data/StandingOrder/FirstPaymentAmount/Amount |A number of monetary units specified in an active currency where the unit of currency is explicit and compliant with ISO 4217. |OBActiveCurrencyAndAmount_SimpleType | |^\d{1,13}\.\d{1,5}$ |
