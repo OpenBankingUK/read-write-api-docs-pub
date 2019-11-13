@@ -1,4 +1,4 @@
-# Standing Orders - v3.1.4
+<!-- omit in toc --># Standing Orders - v3.1.4
 
 1. [Overview](#overview)
 2. [Endpoints](#endpoints)
@@ -31,8 +31,8 @@ Endpoints for the resource and available methods.
 
 |  |Resource |HTTP Operation |Endpoint |Mandatory? |Scope |Grant Type |Idempotency Key |Parameters |Request Object |Response Object |
 | --- |--- |--- |--- |--- |--- |--- |--- |--- |--- |--- |
-| 1 |standing-orders |GET |GET /accounts/{AccountId}/standing-orders |Conditional |accounts |Authorization Code |No | | |OBReadStandingOrder5 |
-| 2 |standing-orders |GET |GET /standing-orders |Optional |accounts |Authorization Code |No |Pagination | |OBReadStandingOrder5 |
+| 1 |standing-orders |GET |GET /accounts/{AccountId}/standing-orders |Conditional |accounts |Authorization Code |No | | |OBReadStandingOrder6 |
+| 2 |standing-orders |GET |GET /standing-orders |Optional |accounts |Authorization Code |No |Pagination | |OBReadStandingOrder6 |
 
 ### GET /accounts/{AccountId}/standing-orders
 
@@ -45,7 +45,7 @@ This will retrieve the resources for all authorised accounts linked to the accou
 
 ## Data Model
 
-The OBReadStandingOrder5 object will be used for the call to:
+The OBReadStandingOrder6 object will be used for the call to:
 
 * GET /accounts/{AccountId}/standing-orders
 * GET /standing-orders
@@ -57,19 +57,21 @@ An account (AccountId) may have no standing orders set up, or may have multiple 
 
 ### UML Diagram
 
-![ OBReadStandingOrder5.png ]( images/StandingOrders/OBReadStandingOrder5.png )
+![ OBReadStandingOrder6.png ]( images/StandingOrders/OBReadStandingOrder6.png )
 
 ### Notes
 
-* The **Creditor** **Account** and **CreditorAgent** blocks replicate what is used consistently throughout the Account Information APIs to identify an account.
-* For the /accounts/{AccountId}/standing-orders endpoint, the **Creditor** **Account** and **CreditorAgent** blocks represent the account that is receiving funds (so has been named the CreditorAccount for consistency with the PISP use case).
+* The **Creditor Account** and **CreditorAgent** blocks replicate what is used consistently throughout the Account Information APIs to identify an account.
+* For the /accounts/{AccountId}/standing-orders endpoint, the **Creditor Account** and **CreditorAgent** blocks represent the account that is receiving funds (so has been named the CreditorAccount for consistency with the PISP use case).
 * A DateTime element has been used so that there is consistency across all API endpoints using dates. Where time elements do not exist in ASPSP systems, the time portion of the DateTime element will be defaulted to 00:00:00+00:00.
 * The Amount elements all have embedded Currency elements for consistency is ISO 20022, and across the other API endpoints.
-
+* ASPSPs must give TPPs at least three month's notice, prior to implementing any change in the code-lists of the fields, if such a change impacts the ability of TPPs to continue with the provision of their service.
+  
 ### Frequency Examples
 
 | Frequency |Example |Details |
 | --- |--- |--- |
+| NotKnown |NotKnown |Not known |
 | EvryDay |EvryDay |Every day |
 | EvryWorkgDay |EvryWorkgDay |Every working day |
 | IntrvlDay |IntrvlDay:15 |Every 15 Calendar day. |
@@ -85,47 +87,52 @@ An account (AccountId) may have no standing orders set up, or may have multiple 
 The resource differs depending on the permissions (ReadStandingOrdersBasic and ReadStandingOrdersDetail) used to access resource. In the event the resource is accessed with both ReadStandingOrdersBasic and ReadStandingOrdersDetail, the most detailed level (ReadStandingOrdersDetail) must be used.
 
 * These objects **must not** be returned **without** the **ReadStandingOrdersDetail** permission:
-    * OBReadStandingOrder5/Data/StandingOrder/CreditorAgent
-    * OBReadStandingOrder5/Data/StandingOrder/CreditorAccount
+    * OBReadStandingOrder6/Data/StandingOrder/CreditorAgent
+    * OBReadStandingOrder6/Data/StandingOrder/CreditorAccount
 * If the **ReadStandingOrdersDetail** is granted by the PSU:     
-    * OBReadStandingOrder5/Data/StandingOrder/CreditorAgent **may** be returned if applicable to the account and ASPSP (0..1)
-    * OBReadStandingOrder5/Data/StandingOrder/CreditorAccount **must** be returned (1..1)
+    * OBReadStandingOrder6/Data/StandingOrder/CreditorAgent **may** be returned if applicable to the account and ASPSP (0..1)
+    * OBReadStandingOrder6/Data/StandingOrder/CreditorAccount **must** be returned (1..1)
 
-If the ReadPAN permission is granted by the PSU, the ASPSP may choose to populate the OBReadStandingOrder5/Data/StandingOrder/CreditorAccount/Identification with the unmasked PAN (if the PAN is being populated in the response).
+If the ReadPAN permission is granted by the PSU, the ASPSP may choose to populate the OBReadStandingOrder6/Data/StandingOrder/CreditorAccount/Identification with the unmasked PAN (if the PAN is being populated in the response).
 
 ### Data Dictionary
 
 | Name |Occurrence |XPath |EnhancedDefinition |Class |Codes |Pattern |
 | --- |--- |--- |--- |--- |--- |--- |
-| OBReadStandingOrder5 | |OBReadStandingOrder5 | |OBReadStandingOrder5 | | |
-| Data |1..1 |OBReadStandingOrder5/Data | |OBReadDataStandingOrder5 | | |
-| StandingOrder |0..n |OBReadStandingOrder5/Data/StandingOrder | |OBStandingOrder5 | | |
-| AccountId |1..1 |OBReadStandingOrder5/Data/StandingOrder/AccountId |A unique and immutable identifier used to identify the account resource. This identifier has no meaning to the account owner. |Max40Text | | |
-| StandingOrderId |0..1 |OBReadStandingOrder5/Data/StandingOrder/StandingOrderId |A unique and immutable identifier used to identify the standing order resource. This identifier has no meaning to the account owner. |Max40Text | | |
-| Frequency |1..1 |OBReadStandingOrder5/Data/StandingOrder/Frequency |Individual Definitions: EvryDay - Every day EvryWorkgDay - Every working day IntrvlDay - An interval specified in number of calendar days (02 to 31) IntrvlWkDay - An interval specified in weeks (01 to 09), and the day within the week (01 to 07) WkInMnthDay - A monthly interval, specifying the week of the month (01 to 05) and day within the week (01 to 07) IntrvlMnthDay - An interval specified in months (between 01 to 06, 12, 24), specifying the day within the month (-05 to -01, 01 to 31) QtrDay - Quarterly (either ENGLISH, SCOTTISH, or RECEIVED) ENGLISH = Paid on the 25th March, 24th June, 29th September and 25th December. SCOTTISH = Paid on the 2nd February, 15th May, 1st August and 11th November. RECEIVED = Paid on the 20th March, 19th June, 24th September and 20th December. Individual Patterns: EvryDay (ScheduleCode) EvryWorkgDay (ScheduleCode) IntrvlDay:NoOfDay (ScheduleCode + NoOfDay) IntrvlWkDay:IntervalInWeeks:DayInWeek (ScheduleCode + IntervalInWeeks + DayInWeek) WkInMnthDay:WeekInMonth:DayInWeek (ScheduleCode + WeekInMonth + DayInWeek) IntrvlMnthDay:IntervalInMonths:DayInMonth (ScheduleCode + IntervalInMonths + DayInMonth) QtrDay: + either (ENGLISH, SCOTTISH or RECEIVED) ScheduleCode + QuarterDay The regular expression for this element combines five smaller versions for each permitted pattern. To aid legibility - the components are presented individually here: EvryDay EvryWorkgDay IntrvlDay:((0[2-9])|([1-2][0-9])|3[0-1]) IntrvlWkDay:0[1-9]:0[1-7] WkInMnthDay:0[1-5]:0[1-7] IntrvlMnthDay:(0[1-6]|12|24):(-0[1-5]|0[1-9]|[12][0-9]|3[01]) QtrDay:(ENGLISH|SCOTTISH|RECEIVED) Full Regular Expression: ^(EvryDay)$|^(EvryWorkgDay)$|^(IntrvlDay:((0[2-9])|([1-2][0-9])|3[0-1]))$|^(IntrvlWkDay:0[1-9]:0[1-7])$|^(WkInMnthDay:0[1-5]:0[1-7])$|^(IntrvlMnthDay:(0[1-6]|12|24):(-0[1-5]|0[1-9]|[12][0-9]|3[01]))$|^(QtrDay:(ENGLISH|SCOTTISH|RECEIVED))$ |Max35Text | |^(EvryDay)$|^(EvryWorkgDay)$|^(IntrvlWkDay:0[1-9]:0[1-7])$|^(WkInMnthDay:0[1-5]:0[1-7])$|^(IntrvlMnthDay:(0[1-6]|12|24):(-0[1-5]|0[1-9]|[12][0-9]|3[01]))$|^(QtrDay:(ENGLISH|SCOTTISH|RECEIVED))$ |
-| Reference |0..1 |OBReadStandingOrder5/Data/StandingOrder/Reference |Unique reference, as assigned by the creditor, to unambiguously refer to the payment transaction. Usage: If available, the initiating party should provide this reference in the structured remittance information, to enable reconciliation by the creditor upon receipt of the amount of money. If the business context requires the use of a creditor reference or a payment remit identification, and only one identifier can be passed through the end-to-end chain, the creditor's reference or payment remittance identification should be quoted in the end-to-end transaction identification. |Max35Text | | |
-| FirstPaymentDateTime |0..1 |OBReadStandingOrder5/Data/StandingOrder/FirstPaymentDateTime |The date on which the first payment for a Standing Order schedule will be made. |ISODateTime | | |
-| NextPaymentDateTime |0..1 |OBReadStandingOrder5/Data/StandingOrder/NextPaymentDateTime |The date on which the next payment for a Standing Order schedule will be made. |ISODateTime | | |
-| FinalPaymentDateTime |0..1 |OBReadStandingOrder5/Data/StandingOrder/FinalPaymentDateTime |The date on which the final payment for a Standing Order schedule will be made. |ISODateTime | | |
-| StandingOrderStatusCode |0..1 |OBReadStandingOrder5/Data/StandingOrder/StandingOrderStatusCode |Specifies the status of the standing order in code form. |OBExternalStandingOrderStatus1Code |Active Inactive | |
-| FirstPaymentAmount |0..1 |OBReadStandingOrder5/Data/StandingOrder/FirstPaymentAmount |The amount of the first Standing Order |OBActiveOrHistoricCurrencyAndAmount | | |
-| Amount |1..1 |OBReadStandingOrder5/Data/StandingOrder/FirstPaymentAmount/Amount |A number of monetary units specified in an active currency where the unit of currency is explicit and compliant with ISO 4217. |OBActiveCurrencyAndAmount_SimpleType | |^\d{1,13}\.\d{1,5}$ |
-| Currency |1..1 |OBReadStandingOrder5/Data/StandingOrder/FirstPaymentAmount/Currency |A code allocated to a currency by a Maintenance Agency under an international identification scheme, as described in the latest edition of the international standard ISO 4217 "Codes for the representation of currencies and funds". |ActiveOrHistoricCurrencyCode | |^[A-Z]{3,3}$ |
-| NextPaymentAmount |0..1 |OBReadStandingOrder5/Data/StandingOrder/NextPaymentAmount |The amount of the next Standing Order. |OBActiveOrHistoricCurrencyAndAmount | | |
-| Amount |1..1 |OBReadStandingOrder5/Data/StandingOrder/NextPaymentAmount/Amount |A number of monetary units specified in an active currency where the unit of currency is explicit and compliant with ISO 4217. |OBActiveCurrencyAndAmount_SimpleType | |^\d{1,13}\.\d{1,5}$ |
-| Currency |1..1 |OBReadStandingOrder5/Data/StandingOrder/NextPaymentAmount/Currency |A code allocated to a currency by a Maintenance Agency under an international identification scheme, as described in the latest edition of the international standard ISO 4217 "Codes for the representation of currencies and funds". |ActiveOrHistoricCurrencyCode | |^[A-Z]{3,3}$ |
-| FinalPaymentAmount |0..1 |OBReadStandingOrder5/Data/StandingOrder/FinalPaymentAmount |The amount of the final Standing Order |OBActiveOrHistoricCurrencyAndAmount | | |
-| Amount |1..1 |OBReadStandingOrder5/Data/StandingOrder/FinalPaymentAmount/Amount |A number of monetary units specified in an active currency where the unit of currency is explicit and compliant with ISO 4217. |OBActiveCurrencyAndAmount_SimpleType | |^\d{1,13}\.\d{1,5}$ |
-| Currency |1..1 |OBReadStandingOrder5/Data/StandingOrder/FinalPaymentAmount/Currency |A code allocated to a currency by a Maintenance Agency under an international identification scheme, as described in the latest edition of the international standard ISO 4217 "Codes for the representation of currencies and funds". |ActiveOrHistoricCurrencyCode | |^[A-Z]{3,3}$ |
-| CreditorAgent |0..1 |OBReadStandingOrder5/Data/StandingOrder/CreditorAgent |Party that manages the account on behalf of the account owner, that is manages the registration and booking of entries on the account, calculates balances on the account and provides information about the account. This is the servicer of the beneficiary account. |OBBranchAndFinancialInstitutionIdentification5 | | |
-| SchemeName |1..1 |OBReadStandingOrder5/Data/StandingOrder/CreditorAgent/SchemeName |Name of the identification scheme, in a coded form as published in an external list. |OBExternalFinancialInstitutionIdentification4Code | | |
-| Identification |1..1 |OBReadStandingOrder5/Data/StandingOrder/CreditorAgent/Identification |Unique and unambiguous identification of the servicing institution. |Max35Text | | |
-| CreditorAccount |0..1 |OBReadStandingOrder5/Data/StandingOrder/CreditorAccount |Provides the details to identify the beneficiary account. |OBCashAccount5 | | |
-| SchemeName |1..1 |OBReadStandingOrder5/Data/StandingOrder/CreditorAccount/SchemeName |Name of the identification scheme, in a coded form as published in an external list. |OBExternalAccountIdentification4Code | | |
-| Identification |1..1 |OBReadStandingOrder5/Data/StandingOrder/CreditorAccount/Identification |Beneficiary account identification. |Max256Text | | |
-| Name |0..1 |OBReadStandingOrder5/Data/StandingOrder/CreditorAccount/Name |The account name is the name or names of the account owner(s) represented at an account level, as displayed by the ASPSP's online channels. Note, the account name is not the product name or the nickname of the account. |Max70Text | | |
-| SecondaryIdentification |0..1 |OBReadStandingOrder5/Data/StandingOrder/CreditorAccount/SecondaryIdentification |This is secondary identification of the account, as assigned by the account servicing institution. This can be used by building societies to additionally identify accounts with a roll number (in addition to a sort code and account number combination). |Max34Text | | |
-| SupplementaryData |0..1 |OBReadStandingOrder5/Data/StandingOrder/SupplementaryData |Additional information that can not be captured in the structured fields and/or any other specific block. |OBSupplementaryData1 | | |
+| OBReadStandingOrder6 | |OBReadStandingOrder6 | |OBReadStandingOrder6 | | |
+| Data |1..1 |OBReadStandingOrder6/Data | |OBReadDataStandingOrder5 | | |
+| StandingOrder |0..n |OBReadStandingOrder6/Data/StandingOrder | |OBStandingOrder5 | | |
+| AccountId |1..1 |OBReadStandingOrder6/Data/StandingOrder/AccountId |A unique and immutable identifier used to identify the account resource. This identifier has no meaning to the account owner. |Max40Text | | |
+| StandingOrderId |0..1 |OBReadStandingOrder6/Data/StandingOrder/StandingOrderId |A unique and immutable identifier used to identify the standing order resource. This identifier has no meaning to the account owner. |Max40Text | | |
+| Frequency |1..1 |OBReadStandingOrder6/Data/StandingOrder/Frequency |Individual Definitions: <br>NotKnown - Not known <br>EvryDay - Every day<br> EvryWorkgDay - Every working day<br> IntrvlDay - An interval specified in number of calendar days (02 to 31)<br> IntrvlWkDay - An interval specified in weeks (01 to 09), and the day within the week (01 to 07)<br> WkInMnthDay - A monthly interval, specifying the week of the month (01 to 05) and day within the week (01 to 07)<br> IntrvlMnthDay - An interval specified in months (between 01 to 06, 12, 24), specifying the day within the month (-05 to -01, 01 to 31)<br> QtrDay - Quarterly (either ENGLISH, SCOTTISH, or RECEIVED)<br> ENGLISH = Paid on the 25th March, 24th June, 29th September and 25th December.<br> SCOTTISH = Paid on the 2nd February, 15th May, 1st August and 11th November.<br> RECEIVED = Paid on the 20th March, 19th June, 24th September and 20th December.  <br><br><br>Individual Patterns: <br>NotKnown (ScheduleCode)<br>EvryDay (ScheduleCode)<br> EvryWorkgDay (ScheduleCode)<br> IntrvlDay:NoOfDay (ScheduleCode + NoOfDay)<br> IntrvlWkDay:IntervalInWeeks:DayInWeek (ScheduleCode + IntervalInWeeks + DayInWeek)<br> WkInMnthDay:WeekInMonth:DayInWeek (ScheduleCode + WeekInMonth + DayInWeek)<br> IntrvlMnthDay:IntervalInMonths:DayInMonth (ScheduleCode + IntervalInMonths + DayInMonth)<br> QtrDay: + either (ENGLISH, SCOTTISH or RECEIVED) ScheduleCode + QuarterDay<br><br> The regular expression for this element combines five smaller versions for each permitted pattern. To aid legibility - the components are presented individually here:<br>NotKnown <br>EvryDay<br> EvryWorkgDay<br> IntrvlDay:((0[2-9])\|([1-2][0-9])\|3[0-1])<br> IntrvlWkDay:0[1-9]:0[1-7]<br> WkInMnthDay:0[1-5]:0[1-7]<br> IntrvlMnthDay:(0[1-6]\|12\|24):(-0[1-5]\|0[1-9]\|[12][0-9]\|3[01])<br> QtrDay:(ENGLISH\|SCOTTISH\|RECEIVED)<br> Full Regular Expression:<BR> ```^(NotKnown)$|^(EvryDay)$|^(EvryWorkgDay)$|^(IntrvlDay:((0[2-9])|([1-2][0-9])|3[0-1]))$|^(IntrvlWkDay:0[1-9]:0[1-7])$|^(WkInMnthDay:0[1-5]:0[1-7])$|^(IntrvlMnthDay:(0[1-6]|12|24):(-0[1-5]|0[1-9]|[12][0-9]|3[01]))$|^(QtrDay:(ENGLISH|SCOTTISH|RECEIVED))$``` |Max35Text | |```^(NotKnown)$|^(EvryDay)$|^(EvryWorkgDay)$|^(IntrvlWkDay:0[1-9]:0[1-7])$|^(WkInMnthDay:0[1-5]:0[1-7])$|^(IntrvlMnthDay:(0[1-6]|12|24):(-0[1-5]|0[1-9]|[12][0-9]|3[01]))$|^(QtrDay:(ENGLISH|SCOTTISH|RECEIVED))$``` |
+| Reference |0..1 |OBReadStandingOrder6/Data/StandingOrder/Reference |Unique reference, as assigned by the creditor, to unambiguously refer to the payment transaction. Usage: If available, the initiating party should provide this reference in the structured remittance information, to enable reconciliation by the creditor upon receipt of the amount of money. If the business context requires the use of a creditor reference or a payment remit identification, and only one identifier can be passed through the end-to-end chain, the creditor's reference or payment remittance identification should be quoted in the end-to-end transaction identification. |Max35Text | | |
+| FirstPaymentDateTime |0..1 |OBReadStandingOrder6/Data/StandingOrder/FirstPaymentDateTime |The date on which the first payment for a Standing Order schedule will be made. |ISODateTime | | |
+| NextPaymentDateTime |0..1 |OBReadStandingOrder6/Data/StandingOrder/NextPaymentDateTime |The date on which the next payment for a Standing Order schedule will be made. |ISODateTime | | |
+|LastPaymentDateTime| 0..1| OBReadStandingOrder6/Data/StandingOrder/LastPaymentDateTime |The date on which the last (most recent) payment for a Standing Order schedule was made. |ISODateTime | | |
+| FinalPaymentDateTime |0..1 |OBReadStandingOrder6/Data/StandingOrder/FinalPaymentDateTime |The date on which the final payment for a Standing Order schedule will be made. |ISODateTime | | |
+| NumberOfPayments |0..1 | OBReadStandingOrder6/Data/StandingOrder/NumberOfPayments| Number of the payments that will be made in completing this frequency sequence including any executed since the sequence start date. |Max35Text | | |
+| StandingOrderStatusCode |0..1 |OBReadStandingOrder6/Data/StandingOrder/StandingOrderStatusCode |Specifies the status of the standing order in code form. |OBExternalStandingOrderStatus1Code |Active Inactive | |
+| FirstPaymentAmount |0..1 |OBReadStandingOrder6/Data/StandingOrder/FirstPaymentAmount |The amount of the first Standing Order |OBActiveOrHistoricCurrencyAndAmount | | |
+| Amount |1..1 |OBReadStandingOrder6/Data/StandingOrder/FirstPaymentAmount/Amount |A number of monetary units specified in an active currency where the unit of currency is explicit and compliant with ISO 4217. |OBActiveCurrencyAndAmount_SimpleType | |^\d{1,13}\.\d{1,5}$ |
+| Currency |1..1 |OBReadStandingOrder6/Data/StandingOrder/FirstPaymentAmount/Currency |A code allocated to a currency by a Maintenance Agency under an international identification scheme, as described in the latest edition of the international standard ISO 4217 "Codes for the representation of currencies and funds". |ActiveOrHistoricCurrencyCode | |^[A-Z]{3,3}$ |
+| NextPaymentAmount |0..1 |OBReadStandingOrder6/Data/StandingOrder/NextPaymentAmount |The amount of the next Standing Order. |OBActiveOrHistoricCurrencyAndAmount | | |
+| Amount |1..1 |OBReadStandingOrder6/Data/StandingOrder/NextPaymentAmount/Amount |A number of monetary units specified in an active currency where the unit of currency is explicit and compliant with ISO 4217. |OBActiveCurrencyAndAmount_SimpleType | |^\d{1,13}\.\d{1,5}$ |
+| Currency |1..1 |OBReadStandingOrder6/Data/StandingOrder/NextPaymentAmount/Currency |A code allocated to a currency by a Maintenance Agency under an international identification scheme, as described in the latest edition of the international standard ISO 4217 "Codes for the representation of currencies and funds". |ActiveOrHistoricCurrencyCode | |^[A-Z]{3,3}$ |
+|LastPaymentAmount|0..1|OBReadStandingOrder6/Data/StandingOrder/LastPaymentAmount|The amount of the last (most recent) Standing Order instruction.|OBActiveOrHistoricCurrencyAndAmount | | |
+| Amount |1..1 |OBReadStandingOrder6/Data/StandingOrder/LastPaymentAmount/Amount |A number of monetary units specified in an active currency where the unit of currency is explicit and compliant with ISO 4217. |OBActiveCurrencyAndAmount_SimpleType | |^\d{1,13}\.\d{1,5}$ |
+| Currency |1..1 |OBReadStandingOrder6/Data/StandingOrder/LastPaymentAmount/Currency |A code allocated to a currency by a Maintenance Agency under an international identification scheme, as described in the latest edition of the international standard ISO 4217 "Codes for the representation of currencies and funds". |ActiveOrHistoricCurrencyCode | |^[A-Z]{3,3}$ |
+| FinalPaymentAmount |0..1 |OBReadStandingOrder6/Data/StandingOrder/FinalPaymentAmount |The amount of the final Standing Order |OBActiveOrHistoricCurrencyAndAmount | | |
+| Amount |1..1 |OBReadStandingOrder6/Data/StandingOrder/FinalPaymentAmount/Amount |A number of monetary units specified in an active currency where the unit of currency is explicit and compliant with ISO 4217. |OBActiveCurrencyAndAmount_SimpleType | |^\d{1,13}\.\d{1,5}$ |
+| Currency |1..1 |OBReadStandingOrder6/Data/StandingOrder/FinalPaymentAmount/Currency |A code allocated to a currency by a Maintenance Agency under an international identification scheme, as described in the latest edition of the international standard ISO 4217 "Codes for the representation of currencies and funds". |ActiveOrHistoricCurrencyCode | |^[A-Z]{3,3}$ |
+| CreditorAgent |0..1 |OBReadStandingOrder6/Data/StandingOrder/CreditorAgent |Party that manages the account on behalf of the account owner, that is manages the registration and booking of entries on the account, calculates balances on the account and provides information about the account. This is the servicer of the beneficiary account. |OBBranchAndFinancialInstitutionIdentification5 | | |
+| SchemeName |1..1 |OBReadStandingOrder6/Data/StandingOrder/CreditorAgent/SchemeName |Name of the identification scheme, in a coded form as published in an external list. |OBExternalFinancialInstitutionIdentification4Code | | |
+| Identification |1..1 |OBReadStandingOrder6/Data/StandingOrder/CreditorAgent/Identification |Unique and unambiguous identification of the servicing institution. |Max35Text | | |
+| CreditorAccount |0..1 |OBReadStandingOrder6/Data/StandingOrder/CreditorAccount |Provides the details to identify the beneficiary account. |OBCashAccount5 | | |
+| SchemeName |1..1 |OBReadStandingOrder6/Data/StandingOrder/CreditorAccount/SchemeName |Name of the identification scheme, in a coded form as published in an external list. |OBExternalAccountIdentification4Code | | |
+| Identification |1..1 |OBReadStandingOrder6/Data/StandingOrder/CreditorAccount/Identification |Beneficiary account identification. |Max256Text | | |
+| Name |0..1 |OBReadStandingOrder6/Data/StandingOrder/CreditorAccount/Name |The account name is the name or names of the account owner(s) represented at an account level, as displayed by the ASPSP's online channels. Note, the account name is not the product name or the nickname of the account. |Max70Text | | |
+| SecondaryIdentification |0..1 |OBReadStandingOrder6/Data/StandingOrder/CreditorAccount/SecondaryIdentification |This is secondary identification of the account, as assigned by the account servicing institution. This can be used by building societies to additionally identify accounts with a roll number (in addition to a sort code and account number combination). |Max34Text | | |
+| SupplementaryData |0..1 |OBReadStandingOrder6/Data/StandingOrder/SupplementaryData |Additional information that can not be captured in the structured fields and/or any other specific block. |OBSupplementaryData1 | | |
 
 ## Usage Examples
 
