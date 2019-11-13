@@ -197,7 +197,7 @@ The OBWriteInternationalResponse4 object will be used for a response to a call t
 
 #### UML Diagram
 
-![International Payment - Response](images/OBWriteInternationalResponse4.gif)
+![International Payment - Response](images/OBWriteInternationalResponse4.png)
 
 #### Notes
 
@@ -209,6 +209,7 @@ The international-payment **response** object contains the:
 * Status and StatusUpdateDateTime of the international-payment resource.
 * ExpectedExecutionDateTime for the international-payment resource.
 * ExpectedSettlementDateTime for the international-payment resource.
+* Refund Account details
 * The Charges and ExchangeRateInformation in the international-payment-consent response from the ASPSP.
 * The Initiation object from the international-payment-consent.
 * The MultiAuthorisation object if the international-payment resource requires multiple authorisations.
@@ -226,6 +227,7 @@ The international-payment **response** object contains the:
 | StatusUpdateDateTime |1..1 |OBWriteInternationalResponse4/Data/StatusUpdateDateTime |Date and time at which the resource status was updated. |ISODateTime | | |
 | ExpectedExecutionDateTime |0..1 |OBWriteInternationalResponse4/Data/ExpectedExecutionDateTime |Expected execution date and time for the payment resource. |ISODateTime | | |
 | ExpectedSettlementDateTime |0..1 |OBWriteInternationalResponse4/Data/ExpectedSettlementDateTime |Expected settlement date and time for the payment resource. |ISODateTime | | |
+| Refund |0..1 |OBWriteInternationalResponse4/Data/Refund |Unambiguous identification of the refund account to which a refund will be made as a result of the transaction. |OBInternationalRefundAccount1 | | |
 | Charges |0..n |OBWriteInternationalResponse4/Data/Charges |Set of elements used to provide details of a charge for the payment initiation. |OBCharge2 | | |
 | ExchangeRateInformation |0..1 |OBWriteInternationalResponse4/Data/ExchangeRateInformation |Further detailed information on the exchange rate that has been used in the payment transaction. |OBExchangeRate2 | | |
 | Initiation |1..1 |OBWriteInternationalResponse4/Data/Initiation |The Initiation payload is sent by the initiating party to the ASPSP. It is used to request movement of funds from the debtor account to a creditor for a single international payment. |OBInternational3 | | |

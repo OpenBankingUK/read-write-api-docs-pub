@@ -40,8 +40,8 @@ This resource description should be read in conjunction with a compatible Paymen
 
 | Resource |HTTP Operation |Endpoint |Mandatory ? |Scope |Grant Type |Message Signing |Idempotency Key |Request Object |Response Object |
 | -------- |-------------- |-------- |----------- |----- |---------- |--------------- |--------------- |-------------- |--------------- |
-| domestic-scheduled-payments |POST |POST /domestic-scheduled-payments |Conditional |payments |Authorization Code |Signed Request Signed Response |Yes |OBWriteDomesticScheduled2 |OBWriteDomesticScheduledResponse3 |
-| domestic-scheduled-payments |GET |GET /domestic-scheduled-payments/{DomesticScheduledPaymentId} |Mandatory (if resource POST implemented) |payments |Client Credentials |Signed Response |No |NA |OBWriteDomesticScheduledResponse3 |
+| domestic-scheduled-payments |POST |POST /domestic-scheduled-payments |Conditional |payments |Authorization Code |Signed Request Signed Response |Yes |OBWriteDomesticScheduled2 |OBWriteDomesticScheduledResponse4 |
+| domestic-scheduled-payments |GET |GET /domestic-scheduled-payments/{DomesticScheduledPaymentId} |Mandatory (if resource POST implemented) |payments |Client Credentials |Signed Response |No |NA |OBWriteDomesticScheduledResponse4 |
 | payment-details |GET |GET /domestic-scheduled-payments/{DomesticScheduledPaymentId}/payment-details |Optional |payments |Client Credentials |Signed Response |No |NA |OBWritePaymentDetailsResponse1 |
 
 ### POST /domestic-scheduled-payments
@@ -183,14 +183,14 @@ The **Initiation** and **Risk** sections of the domestic-scheduled-payment reque
 
 ### Domestic Scheduled Payment - Response
 
-The OBWriteDomesticScheduledResponse3 object will be used for a response to a call to:
+The OBWriteDomesticScheduledResponse4 object will be used for a response to a call to:
 
 * POST /domestic-scheduled-payments
 * GET /domestic-scheduled-payments/{DomesticScheduledPaymentId}
 
 #### UML Diagram
 
-![Domestic Scheduled Payment - Response](images/OBWriteDomesticScheduledResponse3.png)
+![Domestic Scheduled Payment - Response](images/OBWriteDomesticScheduledResponse4.png)
 
 #### Notes
 
@@ -202,6 +202,7 @@ The domestic-scheduled-payment **response** object contains the:
 * Status and StatusUpdateDateTime of the domestic-scheduled-payment resource.
 * ExpectedExecutionDateTime for the domestic-scheduled-payment resource.
 * ExpectedSettlementDateTime for the domestic-scheduled-payment resource.
+* Refund Account details.
 * Charges array - for the breakdown of applicable ASPSP charges.
 * The Initiation object from the domestic-scheduled-payment-consent.
 * The MultiAuthorisation object if the domestic-scheduled-payment resource requires multiple authorisations.
@@ -210,18 +211,19 @@ The domestic-scheduled-payment **response** object contains the:
 
 | Name |Occurrence |XPath |EnhancedDefinition |Class |Codes |Pattern |
 | ---- |---------- |----- |------------------ |----- |----- |------- |
-| OBWriteDomesticScheduledResponse3 | |OBWriteDomesticScheduledResponse3 | |OBWriteDomesticScheduledResponse3 | | |
-| Data |1..1 |OBWriteDomesticScheduledResponse3/Data | |OBWriteDataDomesticScheduledResponse3 | | |
-| DomesticScheduledPaymentId |1..1 |OBWriteDomesticScheduledResponse3/Data/DomesticScheduledPaymentId |OB: Unique identification as assigned by the ASPSP to uniquely identify the domestic schedule payment resource. |Max40Text | | |
-| ConsentId |1..1 |OBWriteDomesticScheduledResponse3/Data/ConsentId |OB: Unique identification as assigned by the ASPSP to uniquely identify the consent resource. |Max128Text | | |
-| CreationDateTime |1..1 |OBWriteDomesticScheduledResponse3/Data/CreationDateTime |Date and time at which the message was created. |ISODateTime | | |
-| Status |1..1 |OBWriteDomesticScheduledResponse3/Data/Status |Specifies the status of the payment order resource. |OBExternalStatus3Code |InitiationCompleted InitiationFailed InitiationPending Cancelled | |
-| StatusUpdateDateTime |1..1 |OBWriteDomesticScheduledResponse3/Data/StatusUpdateDateTime |Date and time at which the resource status was updated. |ISODateTime | | |
-| ExpectedExecutionDateTime |0..1 |OBWriteDomesticScheduledResponse3/Data/ExpectedExecutionDateTime |Expected execution date and time for the payment resource. |ISODateTime | | |
-| ExpectedSettlementDateTime |0..1 |OBWriteDomesticScheduledResponse3/Data/ExpectedSettlementDateTime |Expected settlement date and time for the payment resource. |ISODateTime | | |
-| Charges |0..n |OBWriteDomesticScheduledResponse3/Data/Charges |Set of elements used to provide details of a charge for the payment initiation. |OBCharge2 | | |
-| Initiation |1..1 |OBWriteDomesticScheduledResponse3/Data/Initiation |The Initiation payload is sent by the initiating party to the ASPSP. It is used to request movement of funds from the debtor account to a creditor for a single scheduled domestic payment. |OBDomesticScheduled2 | | |
-| MultiAuthorisation |0..1 |OBWriteDomesticScheduledResponse3/Data/MultiAuthorisation |The multiple authorisation flow response from the ASPSP. |OBMultiAuthorisation1 | | |
+| OBWriteDomesticScheduledResponse4 | |OBWriteDomesticScheduledResponse4 | |OBWriteDomesticScheduledResponse4 | | |
+| Data |1..1 |OBWriteDomesticScheduledResponse4/Data | |OBWriteDataDomesticScheduledResponse4 | | |
+| DomesticScheduledPaymentId |1..1 |OBWriteDomesticScheduledResponse4/Data/DomesticScheduledPaymentId |OB: Unique identification as assigned by the ASPSP to uniquely identify the domestic schedule payment resource. |Max40Text | | |
+| ConsentId |1..1 |OBWriteDomesticScheduledResponse4/Data/ConsentId |OB: Unique identification as assigned by the ASPSP to uniquely identify the consent resource. |Max128Text | | |
+| CreationDateTime |1..1 |OBWriteDomesticScheduledResponse4/Data/CreationDateTime |Date and time at which the message was created. |ISODateTime | | |
+| Status |1..1 |OBWriteDomesticScheduledResponse4/Data/Status |Specifies the status of the payment order resource. |OBExternalStatus3Code |InitiationCompleted InitiationFailed InitiationPending Cancelled | |
+| StatusUpdateDateTime |1..1 |OBWriteDomesticScheduledResponse4/Data/StatusUpdateDateTime |Date and time at which the resource status was updated. |ISODateTime | | |
+| ExpectedExecutionDateTime |0..1 |OBWriteDomesticScheduledResponse4/Data/ExpectedExecutionDateTime |Expected execution date and time for the payment resource. |ISODateTime | | |
+| ExpectedSettlementDateTime |0..1 |OBWriteDomesticScheduledResponse4/Data/ExpectedSettlementDateTime |Expected settlement date and time for the payment resource. |ISODateTime | | |
+| Refund |0..1 |OBWriteDomesticScheduledResponse4/Data/Refund |Unambiguous identification of the refund account to which a refund will be made as a result of the transaction. |OBDomesticRefundAccount1 | | |
+| Charges |0..n |OBWriteDomesticScheduledResponse4/Data/Charges |Set of elements used to provide details of a charge for the payment initiation. |OBCharge2 | | |
+| Initiation |1..1 |OBWriteDomesticScheduledResponse4/Data/Initiation |The Initiation payload is sent by the initiating party to the ASPSP. It is used to request movement of funds from the debtor account to a creditor for a single scheduled domestic payment. |OBDomesticScheduled2 | | |
+| MultiAuthorisation |0..1 |OBWriteDomesticScheduledResponse4/Data/MultiAuthorisation |The multiple authorisation flow response from the ASPSP. |OBMultiAuthorisation1 | | |
 
 ### Domestic Schedule Payment Order - Payment Details - Response
 
@@ -309,6 +311,13 @@ Content-Type: application/json
     "Status": "InitiationPending",
     "CreationDateTime": "2018-05-05T15:15:13+00:00",
     "StatusUpdateDateTime": "2018-05-05T15:15:13+00:00",
+    "Refund": {
+      "Account": {
+        "SchemeName": "UK.OBIE.SortCodeAccountNumber",
+        "Identification": "08080021325677",
+        "Name": "NTPC Inc"
+      }
+    },
     "Initiation": {
       "InstructionIdentification": "89f0a53a91ee47f6a383536f851d6b5a",
       "RequestedExecutionDateTime": "2018-08-06T00:00:00+00:00",
