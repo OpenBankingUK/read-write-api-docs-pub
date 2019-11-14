@@ -1,4 +1,4 @@
-<!-- omit in toc --># Standing Orders - v3.1.4
+# Standing Orders - v3.1.4 <!-- omit in toc -->
 
 1. [Overview](#overview)
 2. [Endpoints](#endpoints)
