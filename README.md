@@ -21,6 +21,24 @@ https://github.com/OpenBankingUK/read-write-api-specs
 
 ## Change Log
 
+### Version 3.1.4 - RC1
+- __P7 - Refunds__[View Diff](https://github.com/OpenBankingUK/read-write-api-docs-pub/commit/aa393c8ffa87b5f045a718b6f9482cfbc0b74f14)
+- __Decision 191 - PAN Masking for CoF API - ASPSPs may return masked PAN as per their online system__
+- __Decision 195 - Define PAN Masking pattern and extend to POST CoF consent response__
+[View Diff](https://github.com/OpenBankingUK/read-write-api-docs-pub/commit/3dbd7b6e5704c12ce6fee203c0de314076345bad)
+- __Decision 199 - Update spec to suggest only Access Revocation is possible from ASPSP's dashboard (further clarification)__
+[View Diff](https://github.com/OpenBankingUK/read-write-api-docs-pub/commit/26ae9af161a9462ec5ed91e9ee0bc48d78883a0a)
+- __Decision 204 - Changes to CIBA profile (Updates based on feedback)__
+[View Diff](https://github.com/OpenBankingUK/read-write-api-docs-pub/commit/e746aacb05963f1a4066f58c4d1fc39744d42297)
+- __Decision 207 - Publish guidance on the length of Authorization Code, Refresh Token and Access Token__
+[View Diff](https://github.com/OpenBankingUK/read-write-api-docs-pub/commit/5f71b4eb8d287150050e532491c495742b8b580c)
+- __Decision 208 - Publish guidance on avoiding creation of duplicate consent resources__
+[View Diff](https://github.com/OpenBankingUK/read-write-api-docs-pub/commit/abb1aeef82726aba6e11dbe17929fb6444cd1514)
+- __Decision 210 - Adding new fields in Standing Order specs and make the Frequency field Conditional__
+[View Diff](https://github.com/OpenBankingUK/read-write-api-docs-pub/commit/f2fded02cad1bcbc49ec0f6b7a09392b03ca9e1d)
+- __Decision 211 - Publish Error guidance for scenario when ASPSPs reject the request due to the size of the field value supplied__
+[View Diff](https://github.com/OpenBankingUK/read-write-api-docs-pub/commit/85668d956134fa53a576157fa305b14eaa6200b8)
+
 ### Version 3.1.4 - Draft 3
 - __Decision 199 - Update spec to suggest only Access Revocation is possible from ASPSP's dashboard__
 [View Diff](https://github.com/OpenBankingUK/read-write-api-docs-pub/commit/c1bdea6379220fad35f49e2f8f4326b022928572)
