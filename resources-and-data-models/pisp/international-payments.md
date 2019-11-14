@@ -209,7 +209,7 @@ The international-payment **response** object contains the:
 * Status and StatusUpdateDateTime of the international-payment resource.
 * ExpectedExecutionDateTime for the international-payment resource.
 * ExpectedSettlementDateTime for the international-payment resource.
-* Refund Account details
+* Refund account details, if requested by PISP as part of the international-payment-consents resource.
 * The Charges and ExchangeRateInformation in the international-payment-consent response from the ASPSP.
 * The Initiation object from the international-payment-consent.
 * The MultiAuthorisation object if the international-payment resource requires multiple authorisations.

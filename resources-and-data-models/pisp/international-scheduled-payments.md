@@ -202,7 +202,7 @@ The international-scheduled-payment **response** object contains the:
 * Status and StatusUpdateDateTime of the international-scheduled-payment resource.
 * ExpectedExecutionDateTime for the international-scheduled-payment resource.
 * ExpectedSettlementDateTime for the international-scheduled-payment resource.
-* Refund Account details
+* Refund account details, if requested by PISP as part of the international-scheduled-payment-consents resource.
 * The Charges and ExchangeRateInformation in the international-scheduled-payment-consent response from the ASPSP.
 * The Initiation object from the international-payment-consent.
 * The MultiAuthorisation object if the international-scheduled-payment resource requires multiple authorisations.

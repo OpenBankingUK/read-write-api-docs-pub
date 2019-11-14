@@ -202,7 +202,7 @@ The international-standing-orders **response** object contains the:
 * CreationDateTime the international-standing-orders resource was created.
 * Status and StatusUpdateDateTime of the international-standing-orders resource.
 * The Charges in the international-standing-order-consent response from the ASPSP.
-* Refund Account details.
+* Refund account details, if requested by PISP as part of the international-scheduled-payment-consents resource.
 * The Initiation object from the international-standing-order-consent.
 * The MultiAuthorisation object if the international-standing-order resource requires multiple authorisations.
 

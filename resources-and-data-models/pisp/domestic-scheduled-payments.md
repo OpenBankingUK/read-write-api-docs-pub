@@ -202,7 +202,7 @@ The domestic-scheduled-payment **response** object contains the:
 * Status and StatusUpdateDateTime of the domestic-scheduled-payment resource.
 * ExpectedExecutionDateTime for the domestic-scheduled-payment resource.
 * ExpectedSettlementDateTime for the domestic-scheduled-payment resource.
-* Refund Account details.
+* Refund account details, if requested by PISP as part of the domestic-payment-consents resource.
 * Charges array - for the breakdown of applicable ASPSP charges.
 * The Initiation object from the domestic-scheduled-payment-consent.
 * The MultiAuthorisation object if the domestic-scheduled-payment resource requires multiple authorisations.

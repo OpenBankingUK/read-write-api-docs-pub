@@ -199,7 +199,7 @@ The domestic-standing-order **response** object contains the:
 * ConsentId.
 * CreationDateTime the domestic-standing-order resource was created.
 * Status and StatusUpdateDateTime of the domestic-standing-order resource.
-* Refund - Refund account details to process a refund.
+* Refund account details, if requested by PISP as part of the domestic-payment-consents resource.
 * Charges array - for the breakdown of applicable ASPSP charges.
 * The Initiation object from the domestic-standing-order-consent.
 * The MultiAuthorisation object if the domestic-standing-order resource requires multiple authorisations.
