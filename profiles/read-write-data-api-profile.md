@@ -1,114 +1,118 @@
 # Open Banking Read-Write API Profile  - v3.1.4
 
-1. [Overview](#overview)
-   1. [Document Structure](#document-structure)
-   2. [Design Principles](#design-principles)
-      1. [RESTful APIs](#restful-apis)
-      2. [Standards](#standards)
-      3. [ISO 20022](#iso-20022)
-      4. [Extensibility](#extensibility)
-      5. [Idempotency](#idempotency)
-      6. [Message Signing](#message-signing)
-      7. [Message Encryption](#message-encryption)
-      8. [Agnostic to Payment Schemes](#agnostic-to-payment-schemes)
-      9. [Status Codes](#status-codes)
-      10. [Unique Identifiers (Id Fields)](#unique-identifiers-id-fields)
-      11. [Categorisation of Implementation Requirements](#categorisation-of-implementation-requirements)
-         1. [Mandatory](#mandatory)
-         2. [Conditional](#conditional)
-         3. [Optional](#optional)
-2. [Basics](#basics)
-   1. [Actors](#actors)
-   2. [Character Encoding](#character-encoding)
-   3. [Date Formats](#date-formats)
-   4. [Resource URI Path Structure](#resource-uri-path-structure)
-   5. [Headers](#headers)
-      1. [Request Headers](#request-headers)
-      2. [Response Headers](#response-headers)
-   6. [HTTP Status Codes](#http-status-codes)
-      1. [400 (Bad Request) v/s 404 (Not Found)](#400-bad-request-vs404not-found)
-      2. [403 (Forbidden)](#403-forbidden)
-      3. [401 (Unauthorized)](#401-unauthorized)
-      4. [429 (Too Many Requests)](#429-too-many-requests)
-   7. [Pre-Conditions](#pre-conditions)
-      1. [Pre-conditions for TPPs](#pre-conditions-for-tpps)
-      2. [Pre-conditions for ASPSPs](#pre-conditions-for-aspsps)
-   8. [Idempotency](#idempotency-1)
-   9. [Message Signing](#message-signing-1)
-      1. [Overview](#overview-1)
-      2. [Key Stores](#key-stores)
-      3. [Specification](#specification)
-      4. [Process for Signing a Payload](#process-for-signing-a-payload)
-         1. [Step 1: Identify the Private Key and Corresponding Signing Certificate to be Used for Signing](#step-1-identify-the-private-key-and-corresponding-signing-certificate-to-be-used-for-signing)
-         2. [Step 2: Form the JOSE Header](#step-2-form-the-jose-header)
-         3. [Step 3: Compute the JWS](#step-3-compute-the-jws)
-         4. [Step 4: Add the JWS as a HTTP Header](#step-4-add-the-jws-as-a-http-header)
-      5. [Process for Verifying a Signature](#process-for-verifying-a-signature)
-         1. [Step 1: Extract the components from the JWS](#step-1-extract-the-components-from-the-jws)
-         2. [Step 2: Validate the JOSE Header and Certificate](#step-2-validate-the-jose-header-and-certificate)
-         3. [Step 3: Verify the Signature](#step-3-verify-the-signature)
-      6. [Sample JOSE Header](#sample-jose-header)
-   10. [Message Encryption](#message-encryption-1)
-      1. [Overview](#overview-2)
-      2. [Message Signing and Encryption](#message-signing-and-encryption)
-      3. [Key Stores](#key-stores-1)
-      4. [Encrypting Non-JSON Data](#encrypting-non-json-data)
-   11. [Filtering](#filtering)
-   12. [Pagination](#pagination)
-   13. [Archiving](#archiving)
-   14. [Supplementary Data](#supplementary-data)
-3. [Security & Access Control](#security--access-control)
-   1. [Scopes & Grant Types](#scopes--grant-types)
-   2. [Consent Authorisation](#consent-authorisation)
-      1. [Error Condition](#error-condition)
-      2. [Token Expiry Time](#token-expiry-time)
-      3. [Exemptions from Strong Customer Authentication](#exemptions-from-strong-customer-authentication)
-   3. [Supported Grant Types](#supported-grant-types)
-      1. [Grant Types for identifying the TPP](#grant-types-for-identifying-the-tpp)
-         1. [Client Credentials Grant](#client-credentials-grant)
-      2. [Grant Types for identifying the TPP and PSU](#grant-types-for-identifying-the-tpp-and-psu)
-         1. [Authorization Code Grant & Hybrid Grant](#authorization-code-grant--hybrid-grant)
-         2. [id_token_hint](#id_token_hint)
-      3. [CIBA](#ciba)
-         1. [Identifying the PSU](#identifying-the-psu)
-            1. [Identifying the PSU Using a User Id](#identifying-the-psu-using-a-user-id)
-            2. [Identifying the PSU Using an Ephemeral User Id](#identifying-the-psu-using-an-ephemeral-user-id)
-            3. [Identifying the PSU Using an Intent Id](#identifying-the-psu-using-an-intent-id)
-            4. [Identifying the PSU Using a Previously Issued Id Token](#identifying-the-psu-using-a-previously-issued-id-token)
-   4. [Changes to an Intent's Authorized State](#changes-to-an-intents-authorized-state)
-      1. [Effect of Token Expiry on an Intent's Authorized State](#effect-of-token-expiry-on-an-intents-authorized-state)
-   5. [Consent Re-authentication](#consent-re-authentication)
-      1. [Ability to re-authenticate an Authorised consent at any point of time](#ability-to-re-authenticate-an-authorised-consent-at-any-point-of-time)
-      2. [Low Friction User Experience](#low-friction-user-experience)
-      3. [Use of Refresh Token](#use-of-refresh-token)
-4. [Data Model](#data-model)
-   1. [Enumerations](#enumerations)
-   2. [Common Payload Structure](#common-payload-structure)
-      1. [Request Structure](#request-structure)
-         1. [Data](#data)
-         2. [Risk](#risk)
-      2. [Response Structure](#response-structure)
-      3. [Error Response Structure](#error-response-structure)
-         1. [UML Diagram](#uml-diagram)
-         2. [Data Dictionary](#data-dictionary)
-      4. [Optional Fields](#optional-fields)
-      5. [Links](#links)
-      6. [Meta](#meta)
-5. [Usage Examples](#usage-examples)
-   1. [Pagination Flows](#pagination-flows)
-      1. [Request](#request)
-      2. [Paginated Resource Response](#paginated-resource-response)
-      3. [Request Next Page of Results](#request-next-page-of-results)
-      4. [Paginated Resource Response](#paginated-resource-response-1)
-   2. [Error Flows](#error-flows)
-      1. [Missing or Expired Access Token](#missing-or-expired-access-token)
-      2. [Incomplete or Malformed Request Payload](#incomplete-or-malformed-request-payload)
-      3. [Missing or Invalid Access Token Scope](#missing-or-invalid-access-token-scope)
-      4. [Sudden Burst of API Requests](#sudden-burst-of-api-requests)
-      5. [Failed Authorisation Consent](#failed-authorisation-consent)
-      6. [JSON Error Response](#json-error-response)
-         1. [Request](#request-1)
-         2. [Response](#response)
+   1. [Overview](#overview)
+      1. [Document Structure](#document-structure)
+      2. [Design Principles](#design-principles)
+         1. [RESTful APIs](#restful-apis)
+         2. [Standards](#standards)
+         3. [ISO 20022](#iso-20022)
+         4. [Extensibility](#extensibility)
+         5. [Idempotency](#idempotency)
+         6. [Message Signing](#message-signing)
+         7. [Message Encryption](#message-encryption)
+         8. [Agnostic to Payment Schemes](#agnostic-to-payment-schemes)
+         9. [Status Codes](#status-codes)
+         10. [Unique Identifiers (Id Fields)](#unique-identifiers-id-fields)
+         11. [Categorisation of Implementation Requirements](#categorisation-of-implementation-requirements)
+            1. [Mandatory](#mandatory)
+            2. [Conditional](#conditional)
+            3. [Optional](#optional)
+   2. [Basics](#basics)
+      1. [Actors](#actors)
+      2. [Character Encoding](#character-encoding)
+      3. [Date Formats](#date-formats)
+      4. [Resource URI Path Structure](#resource-uri-path-structure)
+      5. [Headers](#headers)
+         1. [Request Headers](#request-headers)
+         2. [Response Headers](#response-headers)
+      6. [HTTP Status Codes](#http-status-codes)
+         1. [400 (Bad Request) v/s 404 (Not Found)](#400-bad-request-vs404not-found)
+         2. [403 (Forbidden)](#403-forbidden)
+         3. [401 (Unauthorized)](#401-unauthorized)
+         4. [429 (Too Many Requests)](#429-too-many-requests)
+      7. [Pre-Conditions](#pre-conditions)
+         1. [Pre-conditions for TPPs](#pre-conditions-for-tpps)
+         2. [Pre-conditions for ASPSPs](#pre-conditions-for-aspsps)
+      8. [Idempotency](#idempotency-1)
+      9. [Message Signing](#message-signing-1)
+         1. [Overview](#overview-1)
+         2. [Key Stores](#key-stores)
+         3. [Specification](#specification)
+         4. [Process for Signing a Payload](#process-for-signing-a-payload)
+            1. [Step 1: Identify the Private Key and Corresponding Signing Certificate to be Used for Signing](#step-1-identify-the-private-key-and-corresponding-signing-certificate-to-be-used-for-signing)
+            2. [Step 2: Form the JOSE Header](#step-2-form-the-jose-header)
+            3. [Step 3: Compute the JWS](#step-3-compute-the-jws)
+            4. [Step 4: Add the JWS as a HTTP Header](#step-4-add-the-jws-as-a-http-header)
+         5. [Process for Verifying a Signature](#process-for-verifying-a-signature)
+            1. [Step 1: Extract the components from the JWS](#step-1-extract-the-components-from-the-jws)
+            2. [Step 2: Validate the JOSE Header and Certificate](#step-2-validate-the-jose-header-and-certificate)
+            3. [Step 3: Verify the Signature](#step-3-verify-the-signature)
+         6. [Sample JOSE Header](#sample-jose-header)
+      10. [Message Encryption](#message-encryption-1)
+         1. [Overview](#overview-2)
+         2. [Message Signing and Encryption](#message-signing-and-encryption)
+         3. [Key Stores](#key-stores-1)
+         4. [Encrypting Non-JSON Data](#encrypting-non-json-data)
+      11. [Filtering](#filtering)
+      12. [Pagination](#pagination)
+      13. [Archiving](#archiving)
+      14. [Supplementary Data](#supplementary-data)
+   3. [Security & Access Control](#security--access-control)
+      1. [Scopes & Grant Types](#scopes--grant-types)
+      2. [Length of Authorization Code, Access Token and Refresh Token](#length-of-authorization-code-access-token-and-refresh-token)
+      3. [Consent Authorisation](#consent-authorisation)
+         1. [Error Condition](#error-condition)
+         2. [Token Expiry Time](#token-expiry-time)
+         3. [Exemptions from Strong Customer Authentication](#exemptions-from-strong-customer-authentication)
+      4. [Supported Grant Types](#supported-grant-types)
+         1. [Grant Types for identifying the TPP](#grant-types-for-identifying-the-tpp)
+            1. [Client Credentials Grant](#client-credentials-grant)
+         2. [Grant Types for identifying the TPP and PSU](#grant-types-for-identifying-the-tpp-and-psu)
+            1. [Authorization Code Grant & Hybrid Grant](#authorization-code-grant--hybrid-grant)
+            2. [id_token_hint](#id_token_hint)
+            3. [jwt_bearer](#jwt_bearer)
+         3. [CIBA](#ciba)
+            1. [Identifying the PSU](#identifying-the-psu)
+               1. [Identifying the consent to be authorised](#identifying-the-consent-to-be-authorised)
+               2. [Identifying the PSU Using a User Id](#identifying-the-psu-using-a-user-id)
+               3. [Identifying the PSU Using an Ephemeral User Id](#identifying-the-psu-using-an-ephemeral-user-id)
+               4. [Identifying the PSU Using an Intent Id](#identifying-the-psu-using-an-intent-id)
+               5. [Identifying the PSU Using a Previously Issued Id Token](#identifying-the-psu-using-a-previously-issued-id-token)
+      5. [Changes to an Intent's Authorized State](#changes-to-an-intents-authorized-state)
+         1. [Effect of Token Expiry on an Intent's Authorized State](#effect-of-token-expiry-on-an-intents-authorized-state)
+      6. [Consent Re-authentication](#consent-re-authentication)
+         1. [Ability to re-authenticate an Authorised consent at any point of time](#ability-to-re-authenticate-an-authorised-consent-at-any-point-of-time)
+         2. [Low Friction User Experience](#low-friction-user-experience)
+         3. [Use of Refresh Token](#use-of-refresh-token)
+         4. [Consent re-authentication through TPP](#consent-re--authentication-through-TPP)
+   4. [Data Model](#data-model)
+      1. [Enumerations](#enumerations)
+      2. [Common Payload Structure](#common-payload-structure)
+         1. [Request Structure](#request-structure)
+            1. [Data](#data)
+            2. [Risk](#risk)
+         2. [Response Structure](#response-structure)
+         3. [Error Response Structure](#error-response-structure)
+            1. [UML Diagram](#uml-diagram)
+            2. [Data Dictionary](#data-dictionary)
+         4. [Optional Fields](#optional-fields)
+         5. [Links](#links)
+         6. [Meta](#meta)
+   5. [Usage Examples](#usage-examples)
+      1. [Pagination Flows](#pagination-flows)
+         1. [Request](#request)
+         2. [Paginated Resource Response](#paginated-resource-response)
+         3. [Request Next Page of Results](#request-next-page-of-results)
+         4. [Paginated Resource Response](#paginated-resource-response-1)
+      2. [Error Flows](#error-flows)
+         1. [Missing or Expired Access Token](#missing-or-expired-access-token)
+         2. [Incomplete or Malformed Request Payload](#incomplete-or-malformed-request-payload)
+         3. [Missing or Invalid Access Token Scope](#missing-or-invalid-access-token-scope)
+         4. [Sudden Burst of API Requests](#sudden-burst-of-api-requests)
+         5. [Failed Authorisation Consent](#failed-authorisation-consent)
+         6. [JSON Error Response](#json-error-response)
+            1. [Request](#request-1)
+            2. [Response](#response)
 
 ## Overview
 
@@ -750,6 +754,16 @@ To access each of the APIs, the API must be called with an access token in the H
 
 The scopes required with these access tokens and the grant type used to get the access token are specified in the specific API documentation.
 
+### Length of Authorization Code, Access Token and Refresh Token
+
+* In accordance with the OAuth 2.0 Framework, TPPs **must** expect that the length of the authorization code, access token and refresh token, where applicable, may change over time as ASPSPs make changes to what is stored in them and how they are encoded. TPPs **should** expect that they will grow and shrink over time.
+
+* TPPs **must** use a variable length data type without a specific maximum size to store these attributes.
+
+* ASPSPs **must** give TPPs at least three month's notice of any material increase to token lengths being issued, as this could cause a breaking issue for TPPs.
+
+* An ASPSP, prior to any increase in the length of Authorization Code, Access Token and Refresh Tokens, **must** consider the limits enforced by the common tools available in the market to publish and consume Authorization Code, Access Token and Refresh Tokens. Violation of these limits may break the TPPs, using those browsers/tools.
+
 ### Consent Authorisation
 
 OAuth 2.0 scopes are coarse grained and the set of available scopes are defined at the point of client registration. There is no standard method for specifying and enforcing fine grained scopes (e.g. a scope to enforce payments of a specified amount on a specified date).
@@ -814,11 +828,13 @@ The Client Credentials Grant is documented in [Section 4.4 of the OAuth 2.0 RFC]
 
 APIs that require the PSU as well as TPP to be identified and authenticated can only be accessed using an access token issued through an Authorization Code Grant, Hybrid Grant or CIBA.
 
-The Authorization Code Grant (see [Section 4.1 of the OAuth 2.0 RFC](https://tools.ietf.org/html/rfc6749#section-4.1) and [Section 3.1 of the OIDC Specification](http://openid.net/specs/openid-connect-core-1_0.html#CodeFlowAuth)) can be used to redirect a PSU to the ASPSP's authorization pages in order to authenticate the PSU and generate and authorization code. The TPP can then exchange this authorization code for an access token by calling the ASPSP's token end-point and authenticating itself.
+The Hybrid Grant (See [Section 3.3. of the OIDC Specification](http://openid.net/specs/openid-connect-core-1_0.html#HybridFlowAuth)) can be used to redirect a PSU to the ASPSP's authorization pages in order to authenticate the PSU and generate and authorization code. The TPP can then exchange this authorization code for an access token by calling the ASPSP's token end-point and authenticating itself.
 
-The Hybrid Grant (See [Section 3.3. of the OIDC Specification](http://openid.net/specs/openid-connect-core-1_0.html#HybridFlowAuth)) provides another redirect based mechanism for authenticating PSUs that is deemed to be more secure than using the Authorization Code Grant.
+Earlier versions of this specification referenced the use of The Authorization Code Grant (see [Section 4.1 of the OAuth 2.0 RFC](https://tools.ietf.org/html/rfc6749#section-4.1) and [Section 3.1 of the OIDC Specification](http://openid.net/specs/openid-connect-core-1_0.html#CodeFlowAuth)) as  another redirect based mechanism for authenticating PSUs. The FAPI security profile states states that the hybrid flow should be used. ASPSPs should not implement this flow, but should use the Hybrid Grant instead.
 
-The [The UK Open Banking Security Profile](https://bitbucket.org/openid/obuk/src/4630771db004da59992fb201641f5c4ff2c881f1/uk-openbanking-security-profile.md?at=master&fileviewer=file-view-default) and [FAPI read & Write API Security Profile](https://openid.net/specs/openid-financial-api-part-2-ID2.html) specify a more stringent set of requirements that ASPSPs and TPPs must adhere to.
+ The [FAPI read & Write API Security Profile](https://openid.net/specs/openid-financial-api-part-2-ID2.html) specify a more stringent set of requirements that ASPSPs and TPPs must adhere to.
+
+Earlier versions of this specification referenced the use of [The UK Open Banking Security Profile](https://bitbucket.org/openid/obuk/src/4630771db004da59992fb201641f5c4ff2c881f1/uk-openbanking-security-profile.md?at=master&fileviewer=file-view-default). It should be noted that the UK Open Banking Security Profile is no longer supported by OBIE. ASPSPs should not implement this profile, but should use FAPI instead.
 
 ##### id_token_hint
 
@@ -827,6 +843,16 @@ When an access token is generated through an authorization code grant (or hybrid
 The `id_token` is a signed JWT that consists of a number of claims that identify the resource owner. In the Open Banking context, the `id_token` always identifies the `intent_id` that was authorised which can be mapped onto a single PSU.
 
 As the `id_token` is signed by the ASPSP and bound to a specific TPP (through the `aud` claim), the `id_token` could be leveraged to *identify* the PSU in subsequent authorisation requests. OIDC caters for this by allowing the `id_token` to be passed into an authorization code grant request as the `id_token_hint` query parameter (as documented [here](https://openid.net/specs/openid-connect-core-1_0.html#AuthRequest)).
+
+##### jwt_bearer
+
+An ASPSP may rely on a TPP to carry out consent authorization and SCA on its behalf. In such a situation, the TPP takes on the responsibility of authenticating the PSU using credentials issued by the TPP.
+
+Once the PSU has been authenticated, the TPP can directly call the ASPSP's token end-point with a grant type of `urn:ietf:params:oauth:grant-type:jwt-bearer`. The TPP passes in an assertion of the PSU identity through a signed JWT.
+
+The ASPSP returns an access token directly to the TPP without any further user interaction.
+
+The jwt-bearer grant type is an extension to OpenID Connect and covered in [RFC 7523](https://tools.ietf.org/html/rfc7523)
 
 #### CIBA
 The [Client Initiated Back-channel Authentication flow](https://openid.net/specs/openid-client-initiated-backchannel-authentication-core-1_0.html) is part of the OpenID specifications.
@@ -863,11 +889,12 @@ Prior to creating the issuing the `bc-authorize` request the TPP must create a c
 The generated consent id must be passed in the request object as a parameter called `openbanking-intent-id`.
 This allows the access token that is eventually generated to be bound to a specific consent.
 
+The ASPSP must allow at most one `bc_authorize` request at any time to be associated with a given consent.
+
 ###### Identifying the PSU Using a User Id
 
-To identify a PSU through a user Id, the TPP **must** issue a `login_hint_token` in the `bc_authorize` request that contain at least one of the following claims with a value indicating the user id:
+To identify a PSU through a user Id, the TPP **must** issue a `login_hint_token` in the `bc_authorize` request that contain at least one of the following claims with a value identifying the end-user:
   * sub
-  * preferred_username
   * email
   * phone_number
 
@@ -876,20 +903,64 @@ If the ASPSP support identification of the user through a static identifier, it 
 ```json
 // using login name
 {
-  "sub": "scott",
+  "sub": "scott"
 }
 
 // using email address
 {
-  "email": "scott@oracle.com",
+  "email": "scott@oracle.com"
 }
 
 // using phone number
 {
-  "phone_number": "00448903748394",
+  "phone_number": "00448903748394"
 }
 ```
 
+The following is a non-normative example shows a call to `bc-authorize` using a login name as an identifier and MTLS for authenticating the client.
+```
+POST /bc-authorize HTTP/1.1
+   Host: server.example.com
+   Authorization: Basic czZCaGRSa3F0MzpnWDFmQmF0M2JW
+   Content-Type: application/x-www-form-urlencoded
+
+   client_id=9a77c8ec-fbf6-11e9-8f0b-362b9e155667
+   request=<jwt>
+```
+
+where the JWT represents the following payload:
+
+```
+{
+  "alg": "PS256",
+  "kid": "9f5625be-fbf8-11e9-aad5-362b9e155667"
+}
+.
+{
+  "aud": "https://issuer.alphabank.co.uk",
+  "iss": "9a77c8ec-fbf6-11e9-8f0b-362b9e155667",
+  "exp": "1572537993",
+  "iat": "1572537963",
+  "nbf": "1572537963",
+  "jti": "77ad3a98-fbf8-11e9-8f0b-362b9e155667",
+  "scope": "payments",
+  "client_notification_token": "c3c03478-fbf6-11e9-aad5-362b9e155667",
+  "login_hint_token": "<jwt>",
+  "openbanking-intent-id": "aac-a319ff12-fbf9-11e9-8f0b-362b9e155667"
+}
+```
+where the `login_hint_token` JWT represents the following payload:
+
+```
+{
+  "alg": "none"
+}
+.
+{
+  "sub": "scott"
+}
+.
+```
 
 ###### Identifying the PSU Using an Ephemeral User Id
 To identify a PSU through an ephemeral user Id, the TPP **must** issue a `login_hint_token` in the `bc_authorize` request that contains the custom claim `ephemeral_sub` set to the ephemeral user id
@@ -902,14 +973,15 @@ To identify a PSU through an ephemeral user Id, the TPP **must** issue a `login_
 
 ###### Identifying the PSU Using an Intent Id
 
-To identify a PSU through an intent Id, the only passes in the consent id as described in the previous section.
+To identify a PSU through an intent Id, the client only passes in the consent id as described in the previous section.
+
 A `login_hint_token` **must not** be included in the request.
 
-In order to initiate authentication, the TPP must lodge a `bc_authorize` request and then display the resulting `auth_req_id` and `intent_id` as a QR code.
+In order to initiate authentication, the TPP must lodge a `bc_authorize` request and then display a QR code representing the `intent_id`.
 
 The PSU would authenticate themselves on the ASPSP's banking app and then scan the QR code.
 
-This will allow the ASPSP to identify the PSU that is authenticating the consent.
+This will allow the ASPSP to identify the PSU that is authenticating the consent and work out the associated `auth_req_id`
 
 ###### Identifying the PSU Using a Previously Issued Id Token
 
@@ -951,6 +1023,93 @@ A PSU's consent re-authentication user experience **must** be aligned with the l
 An ASPSP **may** issue a refresh token along with an access token as a result of consent re-authentication.
 
 When an access token expires, the TPP **may** attempt to get a new access and refresh token as defined in [Section 6 of the OAuth 2.0 specification](https://tools.ietf.org/html/rfc6749#section-6).
+
+#### Consent re-authentication through TPP
+
+An ASPSP may rely on re-authentication and SCA to be carried out by an AISP on its behalf. It may be necessary to have a contract in place between the two parties that specifies the TPP responsibilities, the method of SCA, resolving disputes etc.
+
+A TPP that has contracts with multiple ASPSPs for carrying out re-authentication and SCA on their behalf could provide a PSU a very streamlined user journey by strongly authenticating the user once and subsequently using that single SCA to renew access tokens with multiple ASPSPs.
+
+The solution leverages RFC 7523's 'Using JWTs as Authorization Grants' as a means of passing in a "trusted" JWT that identifies the PSU to the TPP. This is referred to as the jwt-bearer grant type.
+
+##### Discovery of support for jwt-bearer grant-type.
+
+ASPSPs that support this capability should advertise this as a supported grant_type on their .well-known end-point.
+The formal grant name for jwt-bearer is `urn:ietf:params:oauth:grant-type:jwt-bearer`.
+
+##### Client registration
+TPPs that would like to use this capability must register their clients with `urn:ietf:params:oauth:grant-type:jwt-bearer` as a supported grant_type.
+An ASPSP may determine selective access to this grant type only to TPPs that have a contract with the ASPSP to carry out authentication on their behalf.
+An ASPSP may support the registration of such clients through dynamic client registration.
+
+##### PSU identifiers
+
+The standard assumes that the PSU may one set of identifiers to identify itself to the ASPSP and another distinct set of identifiers to identify itself to the TPP.
+The standard does not assume that the ASPSP and TPP must share the PSU's password as this is inherently a poor security practice.
+
+##### Using jwt-bearer for re-authentication
+
+In order to use a jwt-bearer for re-authentication, the TPP must have created a consent and authorised it using some other grant-type.
+
+As a result of that step, the ASPSP would have a consent that is bound to a specific PSU. The intent-id can then be used as a proxy to identify the PSU.
+
+In order to carry out re-authentication, the TPP can take a PSU through SCA in the context of the consent that is to be re-authenticated.
+
+The TPP should then call the ASPSP's token end-point with a grant type of `urn:ietf:params:oauth:grant-type:jwt-bearer` as defined in RFC 7523.
+
+The TPP must follow the following additional criteria for the JWT header:
+- Set the `alg` of the JWS header to PS256
+- Specify the `kid` of the signing key in the JWS header. The `kid` be resolvable as a signing key on the client's registered JWKS.
+- Not use any other method of key resolution
+
+The TPP must follow the following additional criteria for the JWT body:
+- set `iss` to its own client_id
+- set `sub` to the intent_id that is to be re-authorised.
+- set `aud` to the token endpoint url
+- specify all the other mandatory claims in Section 2.2 Pt 3
+
+##### Vector of Trust
+
+The ASPSP may optionally require the TPP to send it contextual information on the SCA that was carried out.
+
+ASPSPs and TPPs may adopt RFC 8485 - Vectors of Trust.
+
+RFC 7523 allows additional custom claims to be passed in the JWT body. The TPP may use the claim `vot` to pass in vectors of trust that provides a description of the sca applied.
+
+ASPSPs that require the `vot` claim to be included in the jwt-bearer should document the required details on their developer portal.
+
+##### Example
+
+The following is a non-normative example of a call made to a token end-point to initiate a jwt-bearer grant
+
+```
+POST /token HTTP/1.1
+Content-Type: application/x-www-form-urlencoded
+
+grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer
+&scope=Accounts
+&assertion=eyJhbGciOiJFUzI1NiIsImtpZCI6IjE2In0.......
+```
+
+where the `assertion` is a JWS of the format
+
+```
+{
+  "alg": "PS256",
+  "kid": "8ug4r-r4y-br4nd0the3k1ng-andi"
+}
+.
+{
+  "iss": "{client-id}",
+  "sub": "{intent-id}",
+  "aud": "https://auth.bancosupreme.co.uk/token",
+  "exp": "1573456067",
+  "nbf": "1573455767",
+  "iat": "1573455767",
+  "jti": "85570316-0451-11ea-9a9f-362b9e155667",
+  "vot": "..."
+}
+```
 
 ## Data Model
 
