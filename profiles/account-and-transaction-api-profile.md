@@ -352,8 +352,8 @@ All other fields (other than these fields listed) are available with the "Basic"
 | ReadAccountsDetail |Servicer |0..1 |OBReadAccount3/Data/Account/Servicer |
 | ReadBeneficiariesDetail |CreditorAgent |0..1 |OBReadBeneficiary3/Data/Beneficiary/CreditorAgent |
 | ReadBeneficiariesDetail |CreditorAccount |0..1 |OBReadBeneficiary3/Data/Beneficiary/CreditorAccount |
-| ReadStandingOrdersDetail |CreditorAgent |0..1 |OBReadStandingOrder4/Data/StandingOrder/CreditorAgent |
-| ReadStandingOrdersDetail |CreditorAccount |0..1 |OBReadStandingOrder4/Data/StandingOrder/CreditorAccount |
+| ReadStandingOrdersDetail |CreditorAgent |0..1 |OBReadStandingOrder6/Data/StandingOrder/CreditorAgent |
+| ReadStandingOrdersDetail |CreditorAccount |0..1 |OBReadStandingOrder6/Data/StandingOrder/CreditorAccount |
 | ReadTransactionsDetail |TransactionInformation |0..1 |OBReadTransaction4/Data/Transaction/TransactionInformation |
 | ReadTransactionsDetail |Balance |0..1 |OBReadTransaction4/Data/Transaction/Balance |
 | ReadTransactionsDetail |MerchantDetails |0..1 |OBReadTransaction4/Data/Transaction/MerchantDetails |
@@ -387,6 +387,8 @@ The field is optional as the consent for AISP access to a PSU's data may be inde
 
 The ExpirationDateTime applies to all Permissions (data clusters) being consented.
 
+ASPSP **must** not modify the ExpirationDateTime for an account access consent, and **must** leave it as provided by the TPP, i.e. null/absent. The change in ExpirationDateTime by ASPSP may be considered as altering the PSU Consent.
+
 ##### Transaction To/From Date Time
 
 The TransactionToDateTime and the TransactionFromDateTime specify the period for consented transaction and/or statement history. Both the fields are optional and one may be specified without the other.
@@ -414,9 +416,9 @@ A PSU can re-authenticate an Account Access Consent if:
 - The account-access-consent has a status of `Authorised` and
 - The `ExpirationDateTime` of the account-access-consent, if specified, has not elapsed.
 
-The accounts bound to the account-access-consent are selected in the ASPSP domain.
+Where there is no change in the consent parameters required, TPPs should perform a re-authentication / refresh upon the original consent using the same intent-id as before, instead of issuing a new, duplicate consent.
 
-An ASPSP **may** allow the PSU to change the selected accounts during consent re-authentication.
+A TPP and PSU may have multiple consents at any point in time.
 
 ### Consent Revocation
 

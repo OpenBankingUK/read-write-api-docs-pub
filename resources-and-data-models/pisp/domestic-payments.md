@@ -43,8 +43,8 @@ This resource description should be read in conjunction with a compatible Paymen
 
 | Resource |HTTP Operation |Endpoint |Mandatory ? |Scope |Grant Type |Message Signing |Idempotency Key |Request Object |Response Object |
 | -------- |-------------- |-------- |----------- |----- |---------- |--------------- |--------------- |-------------- |--------------- |
-| domestic-payments |POST |POST /domestic-payments |Mandatory |payments |Authorization Code |Signed Request Signed Response |Yes |OBWriteDomestic2 |OBWriteDomesticResponse3 |
-| domestic-payments |GET |GET /domestic-payments/{DomesticPaymentId} |Mandatory |payments |Client Credentials |Signed Response |No |NA |OBWriteDomesticResponse3 |
+| domestic-payments |POST |POST /domestic-payments |Mandatory |payments |Authorization Code |Signed Request Signed Response |Yes |OBWriteDomestic2 |OBWriteDomesticResponse4 |
+| domestic-payments |GET |GET /domestic-payments/{DomesticPaymentId} |Mandatory |payments |Client Credentials |Signed Response |No |NA |OBWriteDomesticResponse4 |
 | payment-details |GET |GET /domestic-payments/{DomesticPaymentId}/payment-details |Optional |payments |Client Credentials |Signed Response |No |NA |OBWritePaymentDetailsResponse1 |
 
 ### POST /domestic-payments
@@ -193,14 +193,14 @@ The **Initiation** and **Risk** sections of the domestic-payment request **must*
 
 ### Domestic Payment - Response
 
- The OBWriteDomesticResponse3 object will be used for a response to a call to:
+ The OBWriteDomesticResponse4 object will be used for a response to a call to:
 
  * POST /domestic-payments
  * GET /domestic-payments/{DomesticPaymentId}
 
 #### UML Diagram
 
- ![OBWriteDataDomesticResponse3](images/OBWriteDataDomesticResponse3.png)
+ ![OBWriteDomesticResponse4](images/OBWriteDomesticResponse4.png)
 
 #### Notes
 
@@ -212,6 +212,7 @@ The domestic-payment **response** object contains the:
 * Status and StatusUpdateDateTime of the domestic-payment resource.
 * ExpectedExecutionDateTime for the domestic-payment resource.
 * ExpectedSettlementDateTime for the domestic-payment resource.
+* Refund account details, if requested by PISP as part of the domestic-payment-consents resource.
 * Charges array for the breakdown of applicable ASPSP charges.
 * The Initiation object from the domestic-payment-consent.
 * The MultiAuthorisation object if the domestic-payment resource requires multiple authorisations.
@@ -220,18 +221,19 @@ The domestic-payment **response** object contains the:
 
 | Name |Occurrence |XPath |EnhancedDefinition |Class |Codes |Pattern |
 | ---- |---------- |----- |------------------ |----- |----- |------- |
-| OBWriteDomesticResponse3 | |OBWriteDomesticResponse3 | |OBWriteDomesticResponse3 | | |
-| Data |1..1 |OBWriteDomesticResponse3/Data | |OBWriteDataDomesticResponse3 | | |
-| DomesticPaymentId |1..1 |OBWriteDomesticResponse3/Data/DomesticPaymentId |OB: Unique identification as assigned by the ASPSP to uniquely identify the domestic payment resource. |Max40Text | | |
-| ConsentId |1..1 |OBWriteDomesticResponse3/Data/ConsentId |OB: Unique identification as assigned by the ASPSP to uniquely identify the consent resource. |Max128Text | | |
-| CreationDateTime |1..1 |OBWriteDomesticResponse3/Data/CreationDateTime |Date and time at which the message was created. |ISODateTime | | |
-| Status |1..1 |OBWriteDomesticResponse3/Data/Status |Specifies the status of the payment information group. |OBTransactionIndividualStatus1Code |AcceptedCreditSettlementCompleted AcceptedWithoutPosting AcceptedSettlementCompleted AcceptedSettlementInProcess Pending Rejected | |
-| StatusUpdateDateTime |1..1 |OBWriteDomesticResponse3/Data/StatusUpdateDateTime |Date and time at which the resource status was updated. |ISODateTime | | |
-| ExpectedExecutionDateTime |0..1 |OBWriteDomesticResponse3/Data/ExpectedExecutionDateTime |Expected execution date and time for the payment resource. |ISODateTime | | |
-| ExpectedSettlementDateTime |0..1 |OBWriteDomesticResponse3/Data/ExpectedSettlementDateTime |Expected settlement date and time for the payment resource. |ISODateTime | | |
-| Charges |0..n |OBWriteDomesticResponse3/Data/Charges |Set of elements used to provide details of a charge for the payment initiation. |OBCharge2 | | |
-| Initiation |1..1 |OBWriteDomesticResponse3/Data/Initiation |The Initiation payload is sent by the initiating party to the ASPSP. It is used to request movement of funds from the debtor account to a creditor for a single domestic payment. |OBDomestic2 | | |
-| MultiAuthorisation |0..1 |OBWriteDomesticResponse3/Data/MultiAuthorisation |The multiple authorisation flow response from the ASPSP. |OBMultiAuthorisation1 | | |
+| OBWriteDomesticResponse4 | |OBWriteDomesticResponse4 | |OBWriteDomesticResponse4 | | |
+| Data |1..1 |OBWriteDomesticResponse4/Data | |OBWriteDataDomesticResponse4 | | |
+| DomesticPaymentId |1..1 |OBWriteDomesticResponse4/Data/DomesticPaymentId |OB: Unique identification as assigned by the ASPSP to uniquely identify the domestic payment resource. |Max40Text | | |
+| ConsentId |1..1 |OBWriteDomesticResponse4/Data/ConsentId |OB: Unique identification as assigned by the ASPSP to uniquely identify the consent resource. |Max128Text | | |
+| CreationDateTime |1..1 |OBWriteDomesticResponse4/Data/CreationDateTime |Date and time at which the message was created. |ISODateTime | | |
+| Status |1..1 |OBWriteDomesticResponse4/Data/Status |Specifies the status of the payment information group. |OBTransactionIndividualStatus1Code |AcceptedCreditSettlementCompleted AcceptedWithoutPosting AcceptedSettlementCompleted AcceptedSettlementInProcess Pending Rejected | |
+| StatusUpdateDateTime |1..1 |OBWriteDomesticResponse4/Data/StatusUpdateDateTime |Date and time at which the resource status was updated. |ISODateTime | | |
+| ExpectedExecutionDateTime |0..1 |OBWriteDomesticResponse4/Data/ExpectedExecutionDateTime |Expected execution date and time for the payment resource. |ISODateTime | | |
+| ExpectedSettlementDateTime |0..1 |OBWriteDomesticResponse4/Data/ExpectedSettlementDateTime |Expected settlement date and time for the payment resource. |ISODateTime | | |
+| Refund |0..1 |OBWriteDomesticResponse4/Data/Refund |Unambiguous identification of the refund account to which a refund will be made as a result of the transaction. |OBDomesticRefundAccount1 | | |
+| Charges |0..n |OBWriteDomesticResponse4/Data/Charges |Set of elements used to provide details of a charge for the payment initiation. |OBCharge2 | | |
+| Initiation |1..1 |OBWriteDomesticResponse4/Data/Initiation |The Initiation payload is sent by the initiating party to the ASPSP. It is used to request movement of funds from the debtor account to a creditor for a single domestic payment. |OBDomestic2 | | |
+| MultiAuthorisation |0..1 |OBWriteDomesticResponse4/Data/MultiAuthorisation |The multiple authorisation flow response from the ASPSP. |OBMultiAuthorisation1 | | |
 
 ### Domestic Payment Order - Payment Details - Response
 
@@ -333,6 +335,13 @@ Content-Type: application/json
     "Status": "AcceptedSettlementInProcess",
     "CreationDateTime": "2017-06-05T15:15:22+00:00",
     "StatusUpdateDateTime": "2017-06-05T15:15:13+00:00",
+    "Refund": {
+      "Account": {
+        "SchemeName": "UK.OBIE.SortCodeAccountNumber",
+        "Identification": "08080021325677",
+        "Name": "NTPC Inc"
+      }
+    },
     "Initiation": {
       "InstructionIdentification": "ACME412",
       "EndToEndIdentification": "FRESCO.21302.GFX.20",

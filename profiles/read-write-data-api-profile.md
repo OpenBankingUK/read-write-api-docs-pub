@@ -70,6 +70,7 @@
          2. [Grant Types for identifying the TPP and PSU](#grant-types-for-identifying-the-tpp-and-psu)
             1. [Authorization Code Grant & Hybrid Grant](#authorization-code-grant--hybrid-grant)
             2. [id_token_hint](#id_token_hint)
+            3. [jwt_bearer](#jwt_bearer)
          3. [CIBA](#ciba)
             1. [Identifying the PSU](#identifying-the-psu)
                1. [Identifying the consent to be authorised](#identifying-the-consent-to-be-authorised)
@@ -83,6 +84,7 @@
          1. [Ability to re-authenticate an Authorised consent at any point of time](#ability-to-re-authenticate-an-authorised-consent-at-any-point-of-time)
          2. [Low Friction User Experience](#low-friction-user-experience)
          3. [Use of Refresh Token](#use-of-refresh-token)
+         4. [Consent re-authentication through TPP](#consent-re--authentication-through-TPP)
    4. [Data Model](#data-model)
       1. [Enumerations](#enumerations)
       2. [Common Payload Structure](#common-payload-structure)
@@ -842,6 +844,16 @@ The `id_token` is a signed JWT that consists of a number of claims that identify
 
 As the `id_token` is signed by the ASPSP and bound to a specific TPP (through the `aud` claim), the `id_token` could be leveraged to *identify* the PSU in subsequent authorisation requests. OIDC caters for this by allowing the `id_token` to be passed into an authorization code grant request as the `id_token_hint` query parameter (as documented [here](https://openid.net/specs/openid-connect-core-1_0.html#AuthRequest)).
 
+##### jwt_bearer
+
+An ASPSP may rely on a TPP to carry out consent authorization and SCA on its behalf. In such a situation, the TPP takes on the responsibility of authenticating the PSU using credentials issued by the TPP.
+
+Once the PSU has been authenticated, the TPP can directly call the ASPSP's token end-point with a grant type of `urn:ietf:params:oauth:grant-type:jwt-bearer`. The TPP passes in an assertion of the PSU identity through a signed JWT.
+
+The ASPSP returns an access token directly to the TPP without any further user interaction.
+
+The jwt-bearer grant type is an extension to OpenID Connect and covered in [RFC 7523](https://tools.ietf.org/html/rfc7523)
+
 #### CIBA
 The [Client Initiated Back-channel Authentication flow](https://openid.net/specs/openid-client-initiated-backchannel-authentication-core-1_0.html) is part of the OpenID specifications.
 
@@ -1011,6 +1023,93 @@ A PSU's consent re-authentication user experience **must** be aligned with the l
 An ASPSP **may** issue a refresh token along with an access token as a result of consent re-authentication.
 
 When an access token expires, the TPP **may** attempt to get a new access and refresh token as defined in [Section 6 of the OAuth 2.0 specification](https://tools.ietf.org/html/rfc6749#section-6).
+
+#### Consent re-authentication through TPP
+
+An ASPSP may rely on re-authentication and SCA to be carried out by an AISP on its behalf. It may be necessary to have a contract in place between the two parties that specifies the TPP responsibilities, the method of SCA, resolving disputes etc.
+
+A TPP that has contracts with multiple ASPSPs for carrying out re-authentication and SCA on their behalf could provide a PSU a very streamlined user journey by strongly authenticating the user once and subsequently using that single SCA to renew access tokens with multiple ASPSPs.
+
+The solution leverages RFC 7523's 'Using JWTs as Authorization Grants' as a means of passing in a "trusted" JWT that identifies the PSU to the TPP. This is referred to as the jwt-bearer grant type.
+
+##### Discovery of support for jwt-bearer grant-type.
+
+ASPSPs that support this capability should advertise this as a supported grant_type on their .well-known end-point.
+The formal grant name for jwt-bearer is `urn:ietf:params:oauth:grant-type:jwt-bearer`.
+
+##### Client registration
+TPPs that would like to use this capability must register their clients with `urn:ietf:params:oauth:grant-type:jwt-bearer` as a supported grant_type.
+An ASPSP may determine selective access to this grant type only to TPPs that have a contract with the ASPSP to carry out authentication on their behalf.
+An ASPSP may support the registration of such clients through dynamic client registration.
+
+##### PSU identifiers
+
+The standard assumes that the PSU may one set of identifiers to identify itself to the ASPSP and another distinct set of identifiers to identify itself to the TPP.
+The standard does not assume that the ASPSP and TPP must share the PSU's password as this is inherently a poor security practice.
+
+##### Using jwt-bearer for re-authentication
+
+In order to use a jwt-bearer for re-authentication, the TPP must have created a consent and authorised it using some other grant-type.
+
+As a result of that step, the ASPSP would have a consent that is bound to a specific PSU. The intent-id can then be used as a proxy to identify the PSU.
+
+In order to carry out re-authentication, the TPP can take a PSU through SCA in the context of the consent that is to be re-authenticated.
+
+The TPP should then call the ASPSP's token end-point with a grant type of `urn:ietf:params:oauth:grant-type:jwt-bearer` as defined in RFC 7523.
+
+The TPP must follow the following additional criteria for the JWT header:
+- Set the `alg` of the JWS header to PS256
+- Specify the `kid` of the signing key in the JWS header. The `kid` be resolvable as a signing key on the client's registered JWKS.
+- Not use any other method of key resolution
+
+The TPP must follow the following additional criteria for the JWT body:
+- set `iss` to its own client_id
+- set `sub` to the intent_id that is to be re-authorised.
+- set `aud` to the token endpoint url
+- specify all the other mandatory claims in Section 2.2 Pt 3
+
+##### Vector of Trust
+
+The ASPSP may optionally require the TPP to send it contextual information on the SCA that was carried out.
+
+ASPSPs and TPPs may adopt RFC 8485 - Vectors of Trust.
+
+RFC 7523 allows additional custom claims to be passed in the JWT body. The TPP may use the claim `vot` to pass in vectors of trust that provides a description of the sca applied.
+
+ASPSPs that require the `vot` claim to be included in the jwt-bearer should document the required details on their developer portal.
+
+##### Example
+
+The following is a non-normative example of a call made to a token end-point to initiate a jwt-bearer grant
+
+```
+POST /token HTTP/1.1
+Content-Type: application/x-www-form-urlencoded
+
+grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer
+&scope=Accounts
+&assertion=eyJhbGciOiJFUzI1NiIsImtpZCI6IjE2In0.......
+```
+
+where the `assertion` is a JWS of the format
+
+```
+{
+  "alg": "PS256",
+  "kid": "8ug4r-r4y-br4nd0the3k1ng-andi"
+}
+.
+{
+  "iss": "{client-id}",
+  "sub": "{intent-id}",
+  "aud": "https://auth.bancosupreme.co.uk/token",
+  "exp": "1573456067",
+  "nbf": "1573455767",
+  "iat": "1573455767",
+  "jti": "85570316-0451-11ea-9a9f-362b9e155667",
+  "vot": "..."
+}
+```
 
 ## Data Model
 
