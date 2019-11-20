@@ -22,7 +22,8 @@ https://github.com/OpenBankingUK/read-write-api-specs
 ## Change Log
 
 ### Version 3.1.4 - RC1
-- __P7 - Refunds__[View Diff](https://github.com/OpenBankingUK/read-write-api-docs-pub/commit/aa393c8ffa87b5f045a718b6f9482cfbc0b74f14)
+- __Reducing the negative impact of 90 days re-authentication option 3__ [View Diff](https://github.com/OpenBankingUK/read-write-api-docs-pub/commit/3c7cbfb09126aad6c4ba500c50aa455ada7ece88)
+- __P7 - Refunds__ [View Diff](https://github.com/OpenBankingUK/read-write-api-docs-pub/commit/aa393c8ffa87b5f045a718b6f9482cfbc0b74f14)
 - __Decision 191 - PAN Masking for CoF API - ASPSPs may return masked PAN as per their online system__
 - __Decision 195 - Define PAN Masking pattern and extend to POST CoF consent response__
 [View Diff](https://github.com/OpenBankingUK/read-write-api-docs-pub/commit/3dbd7b6e5704c12ce6fee203c0de314076345bad)
