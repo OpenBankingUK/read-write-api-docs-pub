@@ -39,7 +39,7 @@ Further analysis required:-
 | --- |--- |
 | ProductDetails |<ul><li>Name</li><li>Segmeent </li><li>Notes to capture other details</li></ul> |
 | CreditInterest |<ul><li>TierBandSet fields (excluding credit interest eligibility). </li><li>All TierBand fields</li></ul> |
-| LoanInterest |<ul><li>TierBandSet fields. </li><li>All TierBand fields</li></li> |
+| LoanInterest |<ul><li>TierBandSet fields. </li><li>All TierBand fields</li></ui> |
 | Repayment |<ul><li>Repayment Charges </li><li>Repayment holiday</li></ul> |
 | OtherFeesAndCharges |<ul><li>Other fee charges such as servicing</li></ul> |
 | SupplementaryData |Any other feature of the product which cant be published using above functionality. |
