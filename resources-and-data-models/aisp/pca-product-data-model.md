@@ -1,4 +1,4 @@
-# PCA Product Data Model - v3.1.2
+# PCA Product Data Model - v3.1.4 <!-- omit in toc -->
 
 1. [Overview](#overview)
    1. [Fields to include in PCA Product](#fields-to-include-in-pca-product)
@@ -61,14 +61,14 @@ Further analysis required:-
 
 | Product Section |Fields to be included |
 | --- |--- |
-| PCA (We'll rename this "Product" and merge PCA and CoreProduct attributes) |<li>Name <li>Open Data Product ID (Mandatory, if product info is available on Open Data PCA API) <li>ProductType ("PCA") <li>MonthlyMaximumCharge (Mandatory for "front book" products) |
+| PCA (We'll rename this "Product" and merge PCA and CoreProduct attributes) |<ul><li>Name</li> <li>Open Data Product ID (Mandatory, if product info is available on Open Data PCA API) </li><li>ProductType ("PCA") </li><li>MonthlyMaximumCharge (Mandatory for "front book" products)</li></ul> |
 | CoreProduct |**None** - Will be merged in to new "Product" section. |
 | PCAMarketingState |**None** - Sections will only include current state information, so this section is not required |
-| CreditInterest |<li>TierBandSet fields (excluding credit interest eligibility). <li>All TierBand fields <br>**Note:** Only current state credit interest information is required. |
-| Overdraft |<li> All TierBandSet fields (including OverdraftFeesAndCharges) <li> All TierBand fields (including OverdraftFeesAndCharges). <br>**Note:** Only current state information is required. |
+| CreditInterest |<ul><li>TierBandSet fields (excluding credit interest eligibility). </li><li>All TierBand fields <br>**Note:** Only current state credit interest information is required.</li></ul> |
+| Overdraft |<ul><li> All TierBandSet fields (including OverdraftFeesAndCharges) </li><li> All TierBand fields (including OverdraftFeesAndCharges). <br>**Note:** Only current state information is required.</li></ul> |
 | Eligibility |**None** - Eligibility criteria met when PCA was sold unlikely to be reliable. |
 | FeaturesAndBenefits |**None** - The value of a particular feature and benefit to an accountholder is dependent on their use of that benefit and whether they met eligibility criteria. Certain benefits may be provided by external suppliers making it difficult to provide real time info. Relevant general features &amp; benefits info can be obtained from Open Data API for "front book" products. |
-| OtherFeesAndCharges |<li> Periodic Fee (i.e. the service charge) |
+| OtherFeesAndCharges |<ul><li> Periodic Fee (i.e. the service charge)</li></ul> |
 
 ### Changes from the OpenData Model
 
@@ -124,11 +124,11 @@ Further analysis required:-
 * Other Fee Charges: Only Periodic Fee(service charge) has been included in the Code List.
 * We have taken Open Data PCA Segments for PCA Account Info as well.
 
-![ ainfopca.2.2.0.ClassDiagram.png ]( images/PCA/ainfopca.2.2.0.ClassDiagram.png )
+![ ainfopca.3.1.4.ClassDiagram.png ]( images/PCA/ainfopca.3.1.4.ClassDiagram.png )
 
 ##### Data Dictionary
 
-* [PCA Account Info Data Definition]( productdatafiles/ainfopca.v3.1.2.DD.xlsx )
+* [PCA Account Info Data Definition]( productdatafiles/ainfopca.v3.1.4.DD.xlsx )
 
 ### Data Payload - Enumerations
 

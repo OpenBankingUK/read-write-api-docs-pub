@@ -1,4 +1,4 @@
-# Account Access Consents - v3.1.3
+# Account Access Consents - v3.1.4 <!-- omit in toc -->
 
 1. [Overview](#overview)
 2. [Endpoints](#endpoints)
@@ -72,7 +72,7 @@ After authorisation has taken place the account-access-consent resource may have
 | --- |--- |--- |
 | 1 |Rejected |The account access consent has been rejected. |
 | 2 |Authorised |The account access consent has been successfully authorised. |
-| 3 |Revoked |The account access consent has been revoked via the ASPSP interface. |
+| 3 |Revoked |The account access consent has been revoked via the ASPSP interface. This status is not applicable for the resource created after Ver 3.1.4. |
 
 #### Status Flow
 
@@ -99,7 +99,7 @@ The available Status code-list enumerations for the account-access-consent resou
 | 1 |Rejected |The account access consent has been rejected. |
 | 2 |AwaitingAuthorisation |The account access consent is awaiting authorisation. |
 | 3 |Authorised |The account access consent has been successfully authorised. |
-| 4 |Revoked |The account access consent has been revoked via the ASPSP interface. |
+| 4 |Revoked |The account access consent has been revoked via the ASPSP interface. This status is not applicable for the resource created after Ver 3.1.4. |
 
 
 ### DELETE /account-access-consents/{ConsentId}
@@ -108,6 +108,10 @@ If the PSU revokes consent to data access with the AISP, the AISP  **must**  del
 
 * This is done by making a call to DELETE the account-access-consent resource.
 * Prior to calling the API, the AISP must have an access token issued by the ASPSP using a client credentials grant.
+
+TPP should also clear the Account Access Consent resources, from ASPSP's system, which are:
+* Expired, i.e. ExpirationDateTime is lapsed, or ExpirationDateTime is not lapsed, but PSU doesn't want to refresh/re-authenticate it, and
+* Consent Resource may never be referenced by the PSU in AISP or ASPSP domain.
 
 ## Data Model
 

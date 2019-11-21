@@ -37,8 +37,8 @@ This resource description should be read in conjunction with a compatible Paymen
 
 | Resource |HTTP Operation |Endpoint |Mandatory ? |Scope |Grant Type |Message Signing |Idempotency Key |Request Object |Response Object |
 | --- |--- |--- |--- |--- |--- |--- |--- |--- |--- |
-| international-standing-order-consents |POST |POST /international-standing-order-consents |Conditional |payments |Client Credentials |Signed Request Signed Response |Yes |OBWriteInternationalStandingOrderConsent5 |OBWriteInternationalStandingOrderConsentResponse5 |
-| international-standing-order-consents |GET |GET /international-standing-order-consents/{ConsentId} |Mandatory (if resource POST implemented) |payments |Client Credentials |Signed Response |No |NA |OBWriteInternationalStandingOrderConsentResponse5 |
+| international-standing-order-consents |POST |POST /international-standing-order-consents |Conditional |payments |Client Credentials |Signed Request Signed Response |Yes |OBWriteInternationalStandingOrderConsent6 |OBWriteInternationalStandingOrderConsentResponse6 |
+| international-standing-order-consents |GET |GET /international-standing-order-consents/{ConsentId} |Mandatory (if resource POST implemented) |payments |Client Credentials |Signed Response |No |NA |OBWriteInternationalStandingOrderConsentResponse6 |
 
 ### POST /international-standing-order-consents
 
@@ -191,13 +191,13 @@ For the OBInternationalStandingOrder4 Initiation object:
 
 ### International Standing Order Consent - Request
 
-The OBWriteInternationalStandingOrderConsent5 object will be used for the call to:
+The OBWriteInternationalStandingOrderConsent6 object will be used for the call to:
 
 * POST /international-standing-order-consents
 
 #### UML Diagram
 
-![ OBWriteInternationalStandingOrderConsent5.gif ]( images/OBWriteInternationalStandingOrderConsent5.gif )
+![ OBWriteInternationalStandingOrderConsent6.png ]( images/OBWriteInternationalStandingOrderConsent6.png )
 
 #### Notes
 
@@ -212,25 +212,26 @@ The international-standing-order-consent **request** contains these objects:
 
 | Name |Occurrence |XPath |EnhancedDefinition |Class |Codes |Pattern |
 | --- |--- |--- |--- |--- |--- |--- |
-| OBWriteInternationalStandingOrderConsent5 | |OBWriteInternationalStandingOrderConsent5 | |OBWriteInternationalStandingOrderConsent5 | | |
-| Data |1..1 |OBWriteInternationalStandingOrderConsent5/Data | |OBWriteDataInternationalStandingOrderConsent5 | | |
-| Permission |1..1 |OBWriteInternationalStandingOrderConsent5/Data/Permission |Specifies the Open Banking service request types. |OBExternalPermissions2Code |Create | |
-| Initiation |1..1 |OBWriteInternationalStandingOrderConsent5/Data/Initiation |The Initiation payload is sent by the initiating party to the ASPSP. It is used to request movement of funds from the debtor account to a creditor for an international standing order. |OBInternationalStandingOrder4 | | |
-| Authorisation |0..1 |OBWriteInternationalStandingOrderConsent5/Data/Authorisation | |OBAuthorisation1 | | |
-| SCASupportData |0..1 |OBWriteInternationalStandingOrderConsent5/Data/SCASupportData |Supporting Data provided by TPP, when requesting SCA Exemption. |OBSCASupportData1 | | |
-| Risk |1..1 |OBWriteInternationalStandingOrderConsent5/Risk |The Risk section is sent by the initiating party to the ASPSP. It is used to specify additional details for risk scoring for Payments. |OBRisk1 | | |
+| OBWriteInternationalStandingOrderConsent6 | |OBWriteInternationalStandingOrderConsent6 | |OBWriteInternationalStandingOrderConsent6 | | |
+| Data |1..1 |OBWriteInternationalStandingOrderConsent6/Data | |OBWriteDataInternationalStandingOrderConsent6 | | |
+| Permission |1..1 |OBWriteInternationalStandingOrderConsent6/Data/Permission |Specifies the Open Banking service request types. |OBExternalPermissions2Code |Create | |
+| ReadRefundAccount |0..1 |OBWriteInternationalStandingOrderConsent6/Data/ReadRefundAccount | Specifies to share the refund account details with PISP |OBReadRefundAccount1Code |Yes No | |
+| Initiation |1..1 |OBWriteInternationalStandingOrderConsent6/Data/Initiation |The Initiation payload is sent by the initiating party to the ASPSP. It is used to request movement of funds from the debtor account to a creditor for an international standing order. |OBInternationalStandingOrder4 | | |
+| Authorisation |0..1 |OBWriteInternationalStandingOrderConsent6/Data/Authorisation | |OBAuthorisation1 | | |
+| SCASupportData |0..1 |OBWriteInternationalStandingOrderConsent6/Data/SCASupportData |Supporting Data provided by TPP, when requesting SCA Exemption. |OBSCASupportData1 | | |
+| Risk |1..1 |OBWriteInternationalStandingOrderConsent6/Risk |The Risk section is sent by the initiating party to the ASPSP. It is used to specify additional details for risk scoring for Payments. |OBRisk1 | | |
 
 
 ### International Standing Order Consent - Response
 
-The OBWriteInternationalStandingOrderConsentResponse5 object will be used for a response to a call to:
+The OBWriteInternationalStandingOrderConsentResponse6 object will be used for a response to a call to:
 
 * POST /international-standing-order-consents
 * GET /international-standing-order-consents/{ConsentId}
 
 #### UML Diagram
 
-![ OBWriteInternationalStandingOrderConsentResponse5.gif ]( images/OBWriteInternationalStandingOrderConsentResponse5.gif )
+![ OBWriteInternationalStandingOrderConsentResponse6.png ]( images/OBWriteInternationalStandingOrderConsentResponse6.png )
 
 #### Notes
 
@@ -240,6 +241,7 @@ The international-standing-order-consent **response** contains the full **origin
 * CreationDateTime the international-standing-order-consent resource was created.
 * Status and StatusUpdateDateTime of the international-standing-order-consent resource.
 * Permission field in the original request.
+* ReadRefundAccount field in the original request.
 * CutOffDateTime Behaviour is explained in Payment Initiation API Profile, Section - [Payment Restrictions -> CutOffDateTime Behaviour](../../profiles/payment-initiation-api-profile.md#cutoffdatetime-behaviour).
 * Charges array which will be used by the ASPSP to indicate charges, and the ChargeBearer as relevant.
 
@@ -247,19 +249,20 @@ The international-standing-order-consent **response** contains the full **origin
 
 | Name |Occurrence |XPath |EnhancedDefinition |Class |Codes |Pattern |
 | --- |--- |--- |--- |--- |--- |--- |
-| OBWriteInternationalStandingOrderConsentResponse5 | |OBWriteInternationalStandingOrderConsentResponse5 | |OBWriteInternationalStandingOrderConsentResponse5 | | |
-| Data |1..1 |OBWriteInternationalStandingOrderConsentResponse5/Data | |OBWriteDataInternationalStandingOrderConsentResponse5 | | |
-| ConsentId |1..1 |OBWriteInternationalStandingOrderConsentResponse5/Data/ConsentId |OB: Unique identification as assigned by the ASPSP to uniquely identify the consent resource. |Max128Text | | |
-| CreationDateTime |1..1 |OBWriteInternationalStandingOrderConsentResponse5/Data/CreationDateTime |Date and time at which the resource was created. |ISODateTime | | |
-| Status |1..1 |OBWriteInternationalStandingOrderConsentResponse5/Data/Status |Specifies the status of resource in code form. |OBExternalConsentStatus1Code |Authorised AwaitingAuthorisation Consumed Rejected | |
-| StatusUpdateDateTime |1..1 |OBWriteInternationalStandingOrderConsentResponse5/Data/StatusUpdateDateTime |Date and time at which the resource status was updated. |ISODateTime | | |
-| Permission |1..1 |OBWriteInternationalStandingOrderConsentResponse5/Data/Permission |Specifies the Open Banking service request types. |OBExternalPermissions2Code |Create | |
-| CutOffDateTime |0..1 |OBWriteInternationalStandingOrderConsentResponse5/Data/CutOffDateTime |Specified cut-off date and time for the payment consent. |ISODateTime | | |
-| Charges |0..n |OBWriteInternationalStandingOrderConsentResponse5/Data/Charges |Set of elements used to provide details of a charge for the payment initiation. |OBCharge2 | | |
-| Initiation |1..1 |OBWriteInternationalStandingOrderConsentResponse5/Data/Initiation |The Initiation payload is sent by the initiating party to the ASPSP. It is used to request movement of funds from the debtor account to a creditor for an international standing order. |OBInternationalStandingOrder4 | | |
-| Authorisation |0..1 |OBWriteInternationalStandingOrderConsentResponse5/Data/Authorisation | |OBAuthorisation1 | | |
-| SCASupportData |0..1 |OBWriteInternationalStandingOrderConsentResponse5/Data/SCASupportData |Supporting Data provided by TPP, when requesting SCA Exemption. |OBSCASupportData1 | | |
-| Risk |1..1 |OBWriteInternationalStandingOrderConsentResponse5/Risk |The Risk section is sent by the initiating party to the ASPSP. It is used to specify additional details for risk scoring for Payments. |OBRisk1 | | |
+| OBWriteInternationalStandingOrderConsentResponse6 | |OBWriteInternationalStandingOrderConsentResponse6 | |OBWriteInternationalStandingOrderConsentResponse6 | | |
+| Data |1..1 |OBWriteInternationalStandingOrderConsentResponse6/Data | |OBWriteDataInternationalStandingOrderConsentResponse5 | | |
+| ConsentId |1..1 |OBWriteInternationalStandingOrderConsentResponse6/Data/ConsentId |OB: Unique identification as assigned by the ASPSP to uniquely identify the consent resource. |Max128Text | | |
+| CreationDateTime |1..1 |OBWriteInternationalStandingOrderConsentResponse6/Data/CreationDateTime |Date and time at which the resource was created. |ISODateTime | | |
+| Status |1..1 |OBWriteInternationalStandingOrderConsentResponse6/Data/Status |Specifies the status of resource in code form. |OBExternalConsentStatus1Code |Authorised AwaitingAuthorisation Consumed Rejected | |
+| StatusUpdateDateTime |1..1 |OBWriteInternationalStandingOrderConsentResponse6/Data/StatusUpdateDateTime |Date and time at which the resource status was updated. |ISODateTime | | |
+| Permission |1..1 |OBWriteInternationalStandingOrderConsentResponse6/Data/Permission |Specifies the Open Banking service request types. |OBExternalPermissions2Code |Create | |
+| ReadRefundAccount |0..1 |OBWriteInternationalStandingOrderConsentResponse6/Data/ReadRefundAccount | Specifies to share the refund account details with PISP |OBReadRefundAccount1Code |Yes No | |
+| CutOffDateTime |0..1 |OBWriteInternationalStandingOrderConsentResponse6/Data/CutOffDateTime |Specified cut-off date and time for the payment consent. |ISODateTime | | |
+| Charges |0..n |OBWriteInternationalStandingOrderConsentResponse6/Data/Charges |Set of elements used to provide details of a charge for the payment initiation. |OBCharge2 | | |
+| Initiation |1..1 |OBWriteInternationalStandingOrderConsentResponse6/Data/Initiation |The Initiation payload is sent by the initiating party to the ASPSP. It is used to request movement of funds from the debtor account to a creditor for an international standing order. |OBInternationalStandingOrder4 | | |
+| Authorisation |0..1 |OBWriteInternationalStandingOrderConsentResponse6/Data/Authorisation | |OBAuthorisation1 | | |
+| SCASupportData |0..1 |OBWriteInternationalStandingOrderConsentResponse6/Data/SCASupportData |Supporting Data provided by TPP, when requesting SCA Exemption. |OBSCASupportData1 | | |
+| Risk |1..1 |OBWriteInternationalStandingOrderConsentResponse6/Risk |The Risk section is sent by the initiating party to the ASPSP. It is used to specify additional details for risk scoring for Payments. |OBRisk1 | | |
 
 ## Usage Examples
 
@@ -283,6 +286,7 @@ Accept: application/json
 {
   "Data": {
 	"Permission": "Create",
+  "ReadRefundAccount": "Yes",
     "Initiation": {
 	  "Frequency": "EvryWorkgDay",
 	  "FirstPaymentDateTime": "2018-06-06T06:06:06+00:00",
@@ -327,6 +331,7 @@ Content-Type: application/json
 	"Status": "AwaitingAuthorisation",
 	"StatusUpdateDateTime": "2018-01-01T06:06:06+00:00",
 	"Permission": "Create",
+  "ReadRefundAccount": "Yes",
     "Initiation": {
 	  "Frequency": "EvryWorkgDay",
 	  "FirstPaymentDateTime": "2018-06-06T06:06:06+00:00",

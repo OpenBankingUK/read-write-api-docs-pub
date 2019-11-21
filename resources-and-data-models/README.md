@@ -3,4 +3,4 @@
 * [AISP](aisp/README.md)
 * [PISP](pisp/README.md)
 * [CBPII](cbpii/README.md)
-* [Event Notifications](event%20notifications/README.md)
+* [Event Notifications](event-notifications/README.md)

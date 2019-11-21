@@ -1,44 +1,45 @@
 # Account and Transaction API Profile - v3.1.3
 
-1. [Overview](#overview)
-   1. [Document Structure](#document-structure)
-   2. [Resources](#resources)
-2. [Basics](#basics)
-   1. [Overview](#overview-1)
-      1. [Steps](#steps)
-      2. [Sequence Diagram](#sequence-diagram)
-   2. [Idempotency](#idempotency)
-   3. [Release Management](#release-management)
-      1. [Account Access Consent](#account-access-consent)
-         1. [POST](#post)
-         2. [GET](#get)
-         3. [DELETE](#delete)
-      2. [Account Information Resources](#account-information-resources)
-         1. [GET](#get-1)
-3. [Security & Access Control](#security--access-control)
-   1. [Scopes](#scopes)
-   2. [Grants Types](#grants-types)
-   3. [Consent Authorisation](#consent-authorisation)
-      1. [Consent Elements](#consent-elements)
-         1. [Permissions](#permissions)
-            1. [Detail Permissions](#detail-permissions)
-            2. [Reversing Entries](#reversing-entries)
-         2. [Expiration Date Time](#expiration-date-time)
-         3. [Transaction To/From Date Time](#transaction-tofrom-date-time)
-      2. [Account Access Consent Status](#account-access-consent-status)
-      3. [Consent Re-authentication](#consent-re-authentication)
-   4. [Consent Revocation](#consent-revocation)
-   5. [Changes to Selected Account(s)](#changes-to-selected-accounts)
-   6. [Risk Scoring Information](#risk-scoring-information)
-4. [Data Model](#data-model)
-   1. [Using Meta to identify Available Transaction Period](#using-meta-to-identify-available-transaction-period)
-   2. [Mapping to Schemes & Standards](#mapping-to-schemes--standards)
-   3. [Enumerations](#enumerations)
-      1. [Static Enumerations](#static-enumerations)
-      2. [ISO Enumerations](#iso-enumerations)
-      3. [Namespaced Enumerations](#namespaced-enumerations)
-5. [Alternative Flows](#alternative-flows)
-   1. [Multi-Authorisation Consent for Corporate Accounts](#multi-authorisation-consent-for-corporate-accounts)
+   1. [Overview](#overview)
+      1. [Document Structure](#document-structure)
+      2. [Resources](#resources)
+   2. [Basics](#basics)
+      1. [Overview](#overview-1)
+         1. [Steps](#steps)
+         2. [Sequence Diagram](#sequence-diagram)
+      2. [Idempotency](#idempotency)
+      3. [Release Management](#release-management)
+         1. [Account Access Consent](#account-access-consent)
+            1. [POST](#post)
+            2. [GET](#get)
+            3. [DELETE](#delete)
+         2. [Account Information Resources](#account-information-resources)
+            1. [GET](#get-1)
+   3. [Security & Access Control](#security--access-control)
+      1. [Scopes](#scopes)
+      2. [Grants Types](#grants-types)
+      3. [Consent Authorisation](#consent-authorisation)
+         1. [Consent Elements](#consent-elements)
+            1. [Permissions](#permissions)
+               1. [Detail Permissions](#detail-permissions)
+               2. [Reversing Entries](#reversing-entries)
+            2. [Expiration Date Time](#expiration-date-time)
+            3. [Transaction To/From Date Time](#transaction-tofrom-date-time)
+         2. [Account Access Consent Status](#account-access-consent-status)
+         3. [Consent Re-authentication](#consent-re-authentication)
+      4. [Consent Revocation](#consent-revocation)
+      5. [Access Revocation](#access-revocation)
+      6. [Changes to Selected Account(s)](#changes-to-selected-accounts)
+      7. [Risk Scoring Information](#risk-scoring-information)
+   4. [Data Model](#data-model)
+      1. [Using Meta to identify Available Transaction Period](#using-meta-to-identify-available-transaction-period)
+      2. [Mapping to Schemes & Standards](#mapping-to-schemes--standards)
+      3. [Enumerations](#enumerations)
+         1. [Static Enumerations](#static-enumerations)
+         2. [ISO Enumerations](#iso-enumerations)
+         3. [Namespaced Enumerations](#namespaced-enumerations)
+   5. [Alternative Flows](#alternative-flows)
+      1. [Multi-Authorisation Consent for Corporate Accounts](#multi-authorisation-consent-for-corporate-accounts)
 
 ## Overview
 
@@ -337,7 +338,7 @@ The following combinations of permissions are not allowed, and the ASPSP **must*
 | ReadParty**PSU** |/party | |Ability to read party information on the PSU logged in. |
 | ReadScheduledPayments**Basic** |/scheduled-payments<br>/accounts/{AccountId}/scheduled-payments | |Ability to read basic statement details |
 | ReadScheduledPayments**Detail** |/scheduled-payments<br>/accounts/{AccountId}/scheduled-payments |Access to additional elements in the payload | |
-| ReadPAN |All API endpoints where PAN is available as a structured field |Request to access to PAN in the clear |Request to access **PAN** in the clear across the available endpoints.<br><br>If this permission code is not in the account-access-consent, the AISP will receive a masked PAN.<br><br>While an AISP may request to access PAN in the clear, an ASPSP may still respond with a masked PAN if:<br><br><li>The ASPSP does not display PAN in the clear in existing online channels</li><li>The ASPSP takes a legal view to respond with only the masked PAN</li> |
+| ReadPAN |All API endpoints where PAN is available as a structured field |Request to access to PAN in the clear |Request to access **PAN** in the clear across the available endpoints.<br><br>If this permission code is not in the account-access-consent, the AISP will receive a masked PAN.<br><br>While an AISP may request to access PAN in the clear, an ASPSP may still respond with a masked PAN if:<br><br><li>The ASPSP does not display PAN in the clear in existing online channels</li><li>The ASPSP takes a legal view to respond with only the masked PAN</li><li> ASPSP should return last 4 digits unmasked, **or** </li><li>ASPSP should return at max first 6 and last 4 digits unmasked. e.g. 5555 **** **** 4444, **** **** **** 4444 etc</li>|
 
 ###### Detail Permissions
 
@@ -351,8 +352,8 @@ All other fields (other than these fields listed) are available with the "Basic"
 | ReadAccountsDetail |Servicer |0..1 |OBReadAccount3/Data/Account/Servicer |
 | ReadBeneficiariesDetail |CreditorAgent |0..1 |OBReadBeneficiary3/Data/Beneficiary/CreditorAgent |
 | ReadBeneficiariesDetail |CreditorAccount |0..1 |OBReadBeneficiary3/Data/Beneficiary/CreditorAccount |
-| ReadStandingOrdersDetail |CreditorAgent |0..1 |OBReadStandingOrder4/Data/StandingOrder/CreditorAgent |
-| ReadStandingOrdersDetail |CreditorAccount |0..1 |OBReadStandingOrder4/Data/StandingOrder/CreditorAccount |
+| ReadStandingOrdersDetail |CreditorAgent |0..1 |OBReadStandingOrder6/Data/StandingOrder/CreditorAgent |
+| ReadStandingOrdersDetail |CreditorAccount |0..1 |OBReadStandingOrder6/Data/StandingOrder/CreditorAccount |
 | ReadTransactionsDetail |TransactionInformation |0..1 |OBReadTransaction4/Data/Transaction/TransactionInformation |
 | ReadTransactionsDetail |Balance |0..1 |OBReadTransaction4/Data/Transaction/Balance |
 | ReadTransactionsDetail |MerchantDetails |0..1 |OBReadTransaction4/Data/Transaction/MerchantDetails |
@@ -386,6 +387,8 @@ The field is optional as the consent for AISP access to a PSU's data may be inde
 
 The ExpirationDateTime applies to all Permissions (data clusters) being consented.
 
+ASPSP **must** not modify the ExpirationDateTime for an account access consent, and **must** leave it as provided by the TPP, i.e. null/absent. The change in ExpirationDateTime by ASPSP may be considered as altering the PSU Consent.
+
 ##### Transaction To/From Date Time
 
 The TransactionToDateTime and the TransactionFromDateTime specify the period for consented transaction and/or statement history. Both the fields are optional and one may be specified without the other.
@@ -402,7 +405,7 @@ The Account Access Consent resource may have one of the following status codes a
 | --- |--- |--- |
 | 1 |Authorised |The account access consent has been successfully authorised. |
 | 2 |Rejected |The account access consent has been rejected. |
-| 3 |Revoked |The account access consent has been revoked via the ASPSP interface. |
+| 3 |Revoked |The account access consent has been revoked via the ASPSP interface. This status is not applicable for the resource created after Ver 3.1.4. |	
 
 #### Consent Re-authentication
 
@@ -413,20 +416,25 @@ A PSU can re-authenticate an Account Access Consent if:
 - The account-access-consent has a status of `Authorised` and
 - The `ExpirationDateTime` of the account-access-consent, if specified, has not elapsed.
 
-The accounts bound to the account-access-consent are selected in the ASPSP domain.
+Where there is no change in the consent parameters required, TPPs should perform a re-authentication / refresh upon the original consent using the same intent-id as before, instead of issuing a new, duplicate consent.
 
-An ASPSP **may** allow the PSU to change the selected accounts during consent re-authentication.
+A TPP and PSU may have multiple consents at any point in time.
 
 ### Consent Revocation
 
 A PSU may revoke consent for accessing account information at any point in time.
 
-A PSU **may** revoke authorisation directly with the ASPSP. The mechanisms for this are in the competitive space and are up to each ASPSP to implement in the ASPSP's banking interface. If the PSU revokes authorisation with the ASPSP, the Status of the **account-access-consent** resource must be set to *Revoked*.
-
 The PSU may request the AISP to revoke consent that it has authorised. If consent is revoked with the AISP:
 
 - The AISP **must** cease to access the APIs at that point.
 - The AISP **must** call the **DELETE** operation on the account-access-consent resource (before confirming consent revocation with the PSU) as soon as is practically possible, to indicate to the ASPSP that the PSU has revoked consent.
+
+### Access Revocation
+
+A PSU **may** revoke AISP's access directly with the ASPSP,  via the access dashboard. In such a situation:
+- The ASPSPs **may** revoke/expire the access token provided to the AISP.
+- The status of the account-access-consent **must** remain unchanged and the AISP **must** be allowed to request PSU to re-authenticate the same account-access-consent resource.
+- Upon successful re-authentication by PSU, an ASPSP **may** issue new authorization code and subsequently new access token to the AISP.
 
 ### Changes to Selected Account(s)
 
@@ -437,9 +445,8 @@ Subsequent changes to the set of accounts to which the consent authorisation app
 Additionally, the set of selected accounts may also change due to external factors. This includes (but is not limited to):
 
 - The account being closed.
-- The PSU's mandate to operate the account is revoked.
 - The account is barred or frozen.
-- The PSU changes the selected accounts during consent re-authentication.
+- The beneficial owner of the account revokes the PSU's mandate  or power of attorney to operate the account.
 
 In these scenarios, only the affected account is removed from the list of selected accounts. The ASPSP **must not** revoke authorisation to other accounts.
 

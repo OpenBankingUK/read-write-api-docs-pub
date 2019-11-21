@@ -1,4 +1,4 @@
-# Namespaced Enumerations - v3.1.3
+# Namespaced Enumerations - v3.1.4 <!-- omit in toc --> 
 
 1. [Overview](#overview)
 2. [Basics](#basics)
@@ -101,7 +101,7 @@ This is Data Type gives a low level textual error code to help categorise an err
 | Code |HTTP Status Category |Description |
 | --- |--- |--- |
 | UK.OBIE.Field.Expected |400 |For the scenario, when a field-value is not provided in the payload, that is expected in combination with preceding field-value pairs.<br><br>The corresponding path must be populated with the path of the unexpected field.<br><br>E.g.<br><br>ExchangeRate must be specified with Agreed RateType. ExchangeRate should be specified in the path element.<br><br>InstructionPriority must be specified with Agreed RateType. InstructionPriority should be specified in the path element. |
-| UK.OBIE.Field.Invalid |400 |An invalid value is supplied in one of the fields. Reference of the invalid field should be provided in the path field, and the URL field may have the link to a website explaining the valid behaviour. The error message should describe the problem in detail. |
+| UK.OBIE.Field.Invalid |400 |An invalid value is supplied in one of the fields, or the length of value supplied is larger than the corresponding maximum field length in ASPSP's domain. Reference of the invalid field should be provided in the path field, and the URL field may have the link to a website explaining the valid behaviour. The error message should describe the problem in detail. |
 | UK.OBIE.Field.InvalidDate |400 |An invalid date is supplied e.g. when a future date is expected, a date in past or current date is supplied. The message can specify the actual problem with the date. The reference of the invalid field should be provided in the path field, and URL field may have the link to a website explaining the valid behaviour |
 | UK.OBIE.Field.Missing |400 |A mandatory field, required for the API, is missing from the payload. This error code can be used, if it is not already captured under the validation for UK.OBIE.Resource.InvalidFormat.<br><br>Reference of the missing field should be provided in the path field, and URL field may have the link to a website explaining the valid behaviour |
 | UK.OBIE.Field.Unexpected |400 |For the scenario, when a field-value is provided in the payload, that is not expected in combination with preceding field-value pairs. E.g.<br><br>ContractIdentification must not be specified with [Actual/Indicative] RateType.<br><br>ContractIdentification should be specified in the path element ExchangeRate must not be specified with [Actual/Indicative] RateType.<br><br>ExchangeRate should be specified in the path element.<br><br>InstructionPriority must not be specified with LocalInstrument. InstructionPriority should be specified in the path element. |

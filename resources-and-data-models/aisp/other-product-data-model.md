@@ -1,4 +1,4 @@
-# Other Product Data Model - v3.1.2
+# Other Product Data Model - v3.1.4 <!-- omit in toc -->
 
 1. [Overview](#overview)
    1. [Fields to include in Other Product](#fields-to-include-in-other-product)
@@ -37,11 +37,11 @@ Further analysis required:-
 
 | Product Section |Fields to be included |
 | --- |--- |
-| ProductDetails |<li>Name <li>Segmeent <li>Notes to capture other details |
-| CreditInterest |<li>TierBandSet fields (excluding credit interest eligibility). <li>All TierBand fields |
-| LoanInterest |<li>TierBandSet fields. <li>All TierBand fields |
-| Repayment |<li>Repayment Charges <li>Repayment holiday |
-| OtherFeesAndCharges |<li>Other fee charges such as servicing |
+| ProductDetails |<ul><li>Name</li><li>Segmeent </li><li>Notes to capture other details</li></ul> |
+| CreditInterest |<ul><li>TierBandSet fields (excluding credit interest eligibility). </li><li>All TierBand fields</li></ul> |
+| LoanInterest |<ul><li>TierBandSet fields. </li><li>All TierBand fields</li></ui> |
+| Repayment |<ul><li>Repayment Charges </li><li>Repayment holiday</li></ul> |
+| OtherFeesAndCharges |<ul><li>Other fee charges such as servicing</li></ul> |
 | SupplementaryData |Any other feature of the product which cant be published using above functionality. |
 
 ### Data Model

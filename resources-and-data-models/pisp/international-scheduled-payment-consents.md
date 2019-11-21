@@ -47,8 +47,8 @@ This resource description should be read in conjunction with a compatible Paymen
 
 | Resource |HTTP Operation |Endpoint |Mandatory ? |Scope |Grant Type |Message Signing |Idempotency Key |Request Object |Response Object |
 | --- |--- |--- |--- |--- |--- |--- |--- |--- |--- |
-| international-scheduled-payment-consents |POST |POST /international-scheduled-payment-consents |Conditional |payments |Client Credentials |Signed Request Signed Response |Yes |OBWriteInternationalScheduledConsent4 |OBWriteInternationalScheduledConsentResponse4 |
-| international-scheduled-payment-consents |GET |GET /international-scheduled-payment-consents/{ConsentId} |Mandatory (if resource POST implemented) |payments |Client Credentials |Signed Response |No |NA |OBWriteInternationalScheduledConsentResponse4 |
+| international-scheduled-payment-consents |POST |POST /international-scheduled-payment-consents |Conditional |payments |Client Credentials |Signed Request Signed Response |Yes |OBWriteInternationalScheduledConsent5 |OBWriteInternationalScheduledConsentResponse5 |
+| international-scheduled-payment-consents |GET |GET /international-scheduled-payment-consents/{ConsentId} |Mandatory (if resource POST implemented) |payments |Client Credentials |Signed Response |No |NA |OBWriteInternationalScheduledConsentResponse5 |
 | international-scheduled-payment-consents |GET |GET /international-scheduled-payment-consents/{ConsentId}/funds-confirmation |Mandatory (if immediate debit supported) |payments |Authorization Code |Signed Response |No |NA |OBWriteFundsConfirmationResponse1 |
 
 ### POST /international-scheduled-payment-consents
@@ -250,13 +250,13 @@ This section describes the OBExchangeRate2 class which is reused in the response
 
 ### International Scheduled Payment Consent - Request
 
-The OBWriteInternationalScheduledConsent4 object will be used for the call to:
+The OBWriteInternationalScheduledConsent5 object will be used for the call to:
 
 * POST /international-scheduled-payment-consents
 
 #### UML Diagram
 
-![OBWriteInternationalScheduledConsent4.gif]( images/OBWriteInternationalScheduledConsent4.gif )
+![OBWriteInternationalScheduledConsent5.png]( images/OBWriteInternationalScheduledConsent5.png )
 
 #### Notes
 
@@ -278,24 +278,25 @@ Exchange rate behaviour:
 
 | Name |Occurrence |XPath |EnhancedDefinition |Class |Codes |Pattern |
 | --- |--- |--- |--- |--- |--- |--- |
-| OBWriteInternationalScheduledConsent4 | |OBWriteInternationalScheduledConsent4 | |OBWriteInternationalScheduledConsent4 | | |
-| Data |1..1 |OBWriteInternationalScheduledConsent4/Data | |OBWriteDataInternationalScheduledConsent4 | | |
-| Permission |1..1 |OBWriteInternationalScheduledConsent4/Data/Permission |Specifies the Open Banking service request types. |OBExternalPermissions2Code |Create | |
-| Initiation |1..1 |OBWriteInternationalScheduledConsent4/Data/Initiation |The Initiation payload is sent by the initiating party to the ASPSP. It is used to request movement of funds from the debtor account to a creditor for a single scheduled international payment. |OBInternationalScheduled3 | | |
-| Authorisation |0..1 |OBWriteInternationalScheduledConsent4/Data/Authorisation |The authorisation type request from the TPP. |OBAuthorisation1 | | |
-| SCASupportData |0..1 |OBWriteInternationalScheduledConsent4/Data/SCASupportData |Supporting Data provided by TPP, when requesting SCA Exemption. |OBSCASupportData1 | | |
-| Risk |1..1 |OBWriteInternationalScheduledConsent4/Risk |The Risk section is sent by the initiating party to the ASPSP. It is used to specify additional details for risk scoring for Payments. |OBRisk1 | | |
+| OBWriteInternationalScheduledConsent5 | |OBWriteInternationalScheduledConsent5 | |OBWriteInternationalScheduledConsent5 | | |
+| Data |1..1 |OBWriteInternationalScheduledConsent5/Data | |OBWriteDataInternationalScheduledConsent5 | | |
+| Permission |1..1 |OBWriteInternationalScheduledConsent5/Data/Permission |Specifies the Open Banking service request types. |OBExternalPermissions2Code |Create | |
+| ReadRefundAccount |0..1 |OBWriteInternationalScheduledConsent5/Data/ReadRefundAccount | Specifies to share the refund account details with PISP |OBReadRefundAccount1Code |Yes No | |
+| Initiation |1..1 |OBWriteInternationalScheduledConsent5/Data/Initiation |The Initiation payload is sent by the initiating party to the ASPSP. It is used to request movement of funds from the debtor account to a creditor for a single scheduled international payment. |OBInternationalScheduled3 | | |
+| Authorisation |0..1 |OBWriteInternationalScheduledConsent5/Data/Authorisation |The authorisation type request from the TPP. |OBAuthorisation1 | | |
+| SCASupportData |0..1 |OBWriteInternationalScheduledConsent5/Data/SCASupportData |Supporting Data provided by TPP, when requesting SCA Exemption. |OBSCASupportData1 | | |
+| Risk |1..1 |OBWriteInternationalScheduledConsent5/Risk |The Risk section is sent by the initiating party to the ASPSP. It is used to specify additional details for risk scoring for Payments. |OBRisk1 | | |
 
 ### International Scheduled Payment Consent - Response
 
-The OBWriteInternationalScheduledConsentResponse4 object will be used for a response to a call to:
+The OBWriteInternationalScheduledConsentResponse5 object will be used for a response to a call to:
 
 * POST /international-scheduled-payment-consents
 * GET /international-scheduled-payment-consents/{ConsentId}
 
 #### UML Diagram
 
-![ OBWriteInternationalScheduledConsentResponse4.gif ]( images/OBWriteInternationalScheduledConsentResponse4.gif )
+![ OBWriteInternationalScheduledConsentResponse5.png ]( images/OBWriteInternationalScheduledConsentResponse5.png )
 
 ####  Notes
 
@@ -330,22 +331,23 @@ Exchange rate behaviour:
 
 | Name |Occurrence |XPath |EnhancedDefinition |Class |Codes |Pattern |
 | --- |--- |--- |--- |--- |--- |--- |
-| OBWriteInternationalScheduledConsentResponse4 | |OBWriteInternationalScheduledConsentResponse4 | |OBWriteInternationalScheduledConsentResponse4 | | |
-| Data |1..1 |OBWriteInternationalScheduledConsentResponse4/Data | |OBWriteDataInternationalScheduledConsentResponse4 | | |
-| ConsentId |1..1 |OBWriteInternationalScheduledConsentResponse4/Data/ConsentId |OB: Unique identification as assigned by the ASPSP to uniquely identify the consent resource. |Max128Text | | |
-| CreationDateTime |1..1 |OBWriteInternationalScheduledConsentResponse4/Data/CreationDateTime |Date and time at which the resource was created. |ISODateTime | | |
-| Status |1..1 |OBWriteInternationalScheduledConsentResponse4/Data/Status |Specifies the status of consent resource in code form. |OBExternalConsentStatus1Code |Authorised AwaitingAuthorisation Consumed Rejected | |
-| StatusUpdateDateTime |1..1 |OBWriteInternationalScheduledConsentResponse4/Data/StatusUpdateDateTime |Date and time at which the resource status was updated. |ISODateTime | | |
-| Permission |1..1 |OBWriteInternationalScheduledConsentResponse4/Data/Permission |Specifies the Open Banking service request types. |OBExternalPermissions2Code |Create | |
-| CutOffDateTime |0..1 |OBWriteInternationalScheduledConsentResponse4/Data/CutOffDateTime |Specified cut-off date and time for the payment consent. |ISODateTime | | |
-| ExpectedExecutionDateTime |0..1 |OBWriteInternationalScheduledConsentResponse4/Data/ExpectedExecutionDateTime |Expected execution date and time for the payment resource. |ISODateTime | | |
-| ExpectedSettlementDateTime |0..1 |OBWriteInternationalScheduledConsentResponse4/Data/ExpectedSettlementDateTime |Expected settlement date and time for the payment resource. |ISODateTime | | |
-| Charges |0..n |OBWriteInternationalScheduledConsentResponse4/Data/Charges |Set of elements used to provide details of a charge for the payment initiation. |OBCharge2 | | |
-| ExchangeRateInformation |0..1 |OBWriteInternationalScheduledConsentResponse4/Data/ExchangeRateInformation |Further detailed information on the exchange rate that has been used in the payment transaction. |OBExchangeRate2 | | |
-| Initiation |1..1 |OBWriteInternationalScheduledConsentResponse4/Data/Initiation |The Initiation payload is sent by the initiating party to the ASPSP. It is used to request movement of funds from the debtor account to a creditor for a single scheduled international payment. |OBInternationalScheduled3 | | |
-| Authorisation |0..1 |OBWriteInternationalScheduledConsentResponse4/Data/Authorisation |The multiple authorisation flow response from the ASPSP. |OBAuthorisation1 | | |
-| SCASupportData |0..1 |OBWriteInternationalScheduledConsentResponse4/Data/SCASupportData |Supporting Data provided by TPP, when requesting SCA Exemption. |OBSCASupportData1 | | |
-| Risk |1..1 |OBWriteInternationalScheduledConsentResponse4/Risk |The Risk section is sent by the initiating party to the ASPSP. It is used to specify additional details for risk scoring for Payments. |OBRisk1 | | |
+| OBWriteInternationalScheduledConsentResponse5 | |OBWriteInternationalScheduledConsentResponse5 | |OBWriteInternationalScheduledConsentResponse5 | | |
+| Data |1..1 |OBWriteInternationalScheduledConsentResponse5/Data | |OBWriteDataInternationalScheduledConsentResponse5 | | |
+| ConsentId |1..1 |OBWriteInternationalScheduledConsentResponse5/Data/ConsentId |OB: Unique identification as assigned by the ASPSP to uniquely identify the consent resource. |Max128Text | | |
+| CreationDateTime |1..1 |OBWriteInternationalScheduledConsentResponse5/Data/CreationDateTime |Date and time at which the resource was created. |ISODateTime | | |
+| Status |1..1 |OBWriteInternationalScheduledConsentResponse5/Data/Status |Specifies the status of consent resource in code form. |OBExternalConsentStatus1Code |Authorised AwaitingAuthorisation Consumed Rejected | |
+| StatusUpdateDateTime |1..1 |OBWriteInternationalScheduledConsentResponse5/Data/StatusUpdateDateTime |Date and time at which the resource status was updated. |ISODateTime | | |
+| Permission |1..1 |OBWriteInternationalScheduledConsentResponse5/Data/Permission |Specifies the Open Banking service request types. |OBExternalPermissions2Code |Create | |
+| ReadRefundAccount |0..1 |OBWriteInternationalScheduledConsentResponse5/Data/ReadRefundAccount | Specifies to share the refund account details with PISP |OBReadRefundAccount1Code |Yes No | |
+| CutOffDateTime |0..1 |OBWriteInternationalScheduledConsentResponse5/Data/CutOffDateTime |Specified cut-off date and time for the payment consent. |ISODateTime | | |
+| ExpectedExecutionDateTime |0..1 |OBWriteInternationalScheduledConsentResponse5/Data/ExpectedExecutionDateTime |Expected execution date and time for the payment resource. |ISODateTime | | |
+| ExpectedSettlementDateTime |0..1 |OBWriteInternationalScheduledConsentResponse5/Data/ExpectedSettlementDateTime |Expected settlement date and time for the payment resource. |ISODateTime | | |
+| Charges |0..n |OBWriteInternationalScheduledConsentResponse5/Data/Charges |Set of elements used to provide details of a charge for the payment initiation. |OBCharge2 | | |
+| ExchangeRateInformation |0..1 |OBWriteInternationalScheduledConsentResponse5/Data/ExchangeRateInformation |Further detailed information on the exchange rate that has been used in the payment transaction. |OBExchangeRate2 | | |
+| Initiation |1..1 |OBWriteInternationalScheduledConsentResponse5/Data/Initiation |The Initiation payload is sent by the initiating party to the ASPSP. It is used to request movement of funds from the debtor account to a creditor for a single scheduled international payment. |OBInternationalScheduled3 | | |
+| Authorisation |0..1 |OBWriteInternationalScheduledConsentResponse5/Data/Authorisation |The multiple authorisation flow response from the ASPSP. |OBAuthorisation1 | | |
+| SCASupportData |0..1 |OBWriteInternationalScheduledConsentResponse5/Data/SCASupportData |Supporting Data provided by TPP, when requesting SCA Exemption. |OBSCASupportData1 | | |
+| Risk |1..1 |OBWriteInternationalScheduledConsentResponse5/Risk |The Risk section is sent by the initiating party to the ASPSP. It is used to specify additional details for risk scoring for Payments. |OBRisk1 | | |
 
 ### International Scheduled Payment Consent Confirmation of Funds - Response
 
@@ -393,6 +395,7 @@ Accept: application/json
 {
   "Data": {
     "Permission":"Create",
+	"ReadRefundAccount": "Yes",
     "Initiation": {
       "InstructionIdentification": "ACME412",
       "EndToEndIdentification": "FRESCO.21302.GFX.20",
@@ -439,6 +442,7 @@ Content-Type: application/json
 {
 	"Data": {
 		"Permission": "Create",
+		"ReadRefundAccount": "Yes",
 		"ConsentId": "58923",
 		"Status": "AwaitingAuthorisation",
 		"CutOffDateTime": "2017-06-05T16:00:13+00:00",

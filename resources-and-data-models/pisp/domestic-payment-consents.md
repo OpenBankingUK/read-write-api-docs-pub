@@ -45,8 +45,8 @@ This resource description should be read in conjunction with a compatible Paymen
 
 | Resource |HTTP Operation |Endpoint |Mandatory ? |Scope |Grant Type |Message Signing |Idempotency Key |Request Object |Response Object |
 | -------- |-------------- |-------- |----------- |----- |---------- |--------------- |--------------- |-------------- |--------------- |
-| domestic-payment-consents |POST |POST /domestic-payment-consents |Mandatory |payments |Client Credentials |Signed Request Signed Response |Yes |OBWriteDomesticConsent3 |OBWriteDomesticConsentResponse3 |
-| domestic-payment-consents |GET |GET /domestic-payment-consents/{ConsentId} |Mandatory |payments |Client Credentials |Signed Response |No |NA |OBWriteDomesticConsentResponse3 |
+| domestic-payment-consents |POST |POST /domestic-payment-consents |Mandatory |payments |Client Credentials |Signed Request Signed Response |Yes |OBWriteDomesticConsent4 |OBWriteDomesticConsentResponse4 |
+| domestic-payment-consents |GET |GET /domestic-payment-consents/{ConsentId} |Mandatory |payments |Client Credentials |Signed Response |No |NA |OBWriteDomesticConsentResponse4 |
 | domestic-payment-consents |GET |GET /domestic-payment-consents/{ConsentId}/funds-confirmation |Mandatory |payments |Authorization Code |Signed Response |No |NA |OBWriteFundsConfirmationResponse1 |
 
 ### POST /domestic-payment-consents
@@ -183,13 +183,13 @@ For the OBDomestic2 Initiation object:
 
 ### Domestic Payment Consent - Request
 
-The OBWriteDomesticConsent3 object will be used for the call to:
+The OBWriteDomesticConsent4 object will be used for the call to:
 
 * POST /domestic-payment-consents
   
 #### UML Diagram
 
-![OBWriteDomesticConsent3](images/OBWriteDomesticConsent3.gif)
+![OBWriteDomesticConsent4](images/OBWriteDomesticConsent4.png)
 
 #### Notes
 
@@ -204,22 +204,23 @@ The domestic-payment-consent **request** contains these objects:
 
 | Name |Occurrence |XPath |EnhancedDefinition |Class |Codes |Pattern |
 | ---- |---------- |----- |------------------ |----- |----- |------- |
-| OBWriteDomesticConsent3 |OBWriteDomesticConsent3 | | |OBWriteDomesticConsent3 | | |
-| Data |1..1 |OBWriteDomesticConsent3/Data | |OBWriteDataDomesticConsent3 | | |
-| Initiation |1..1 |OBWriteDomesticConsent3/Data/Initiation |The Initiation payload is sent by the initiating party to the ASPSP. It is used to request movement of funds from the debtor account to a creditor for a single domestic payment. |OBDomestic2 | | |
-| Authorisation |0..1 |OBWriteDomesticConsent3/Data/Authorisation |The authorisation type request from the TPP. |OBAuthorisation1 | | |
-| SCASupportData |0..1 |OBWriteDomesticConsent3/Data/SCASupportData |Supporting Data provided by TPP, when requesting SCA Exemption. |OBSCASupportData1 | | |
+| OBWriteDomesticConsent4 |OBWriteDomesticConsent4 | | |OBWriteDomesticConsent4 | | |
+| Data |1..1 |OBWriteDomesticConsent4/Data | |OBWriteDataDomesticConsent4 | | |
+| ReadRefundAccount |0..1 |OBWriteDomesticConsent4/Data/ReadRefundAccount | Specifies to share the refund account details with PISP |OBReadRefundAccount1Code |Yes No | |
+| Initiation |1..1 |OBWriteDomesticConsent4/Data/Initiation |The Initiation payload is sent by the initiating party to the ASPSP. It is used to request movement of funds from the debtor account to a creditor for a single domestic payment. |OBDomestic2 | | |
+| Authorisation |0..1 |OBWriteDomesticConsent4/Data/Authorisation |The authorisation type request from the TPP. |OBAuthorisation1 | | |
+| SCASupportData |0..1 |OBWriteDomesticConsent4/Data/SCASupportData |Supporting Data provided by TPP, when requesting SCA Exemption. |OBSCASupportData1 | | |
 
 ### Domestic Payment Consent - Response
 
-The OBWriteDomesticConsentResponse3 object will be used for a response to a call to:
+The OBWriteDomesticConsentResponse4 object will be used for a response to a call to:
 
 * POST /domestic-payment-consents
 * GET /domestic-payment-consents/{ConsentId}
 
 #### UML Diagram
 
-![OBWriteDomesticConsentResponse3](images/OBWriteDomesticConsentResponse3.gif)
+![OBWriteDomesticConsentResponse4](images/OBWriteDomesticConsentResponse4.png)
 
 #### Notes
 
@@ -237,20 +238,21 @@ Them domestic-payment-consent **response** contains the full **original** payloa
 
  | Name |Occurrence |XPath |EnhancedDefinition |Class |Codes |Pattern |
 | ---- |---------- |----- |------------------ |----- |----- |------- |
-| OBWriteDomesticConsentResponse3 | |OBWriteDomesticConsentResponse3 | |OBWriteDomesticConsentResponse3 | | |
-| Data |1..1 |OBWriteDomesticConsentResponse3/Data | |OBWriteDataDomesticConsentResponse3 | | |
-| ConsentId |1..1 |OBWriteDomesticConsentResponse3/Data/ConsentId |OB: Unique identification as assigned by the ASPSP to uniquely identify the consent resource. |Max128Text | | |
-| CreationDateTime |1..1 |OBWriteDomesticConsentResponse3/Data/CreationDateTime |Date and time at which the resource was created. |ISODateTime | | |
-| Status |1..1 |OBWriteDomesticConsentResponse3/Data/Status |Specifies the status of consent resource in code form. |OBExternalConsentStatus1Code |Authorised AwaitingAuthorisation Consumed Rejected | |
-| StatusUpdateDateTime |1..1 |OBWriteDomesticConsentResponse3/Data/StatusUpdateDateTime |Date and time at which the resource status was updated. |ISODateTime | | |
-| CutOffDateTime |0..1 |OBWriteDomesticConsentResponse3/Data/CutOffDateTime |Specified cut-off date and time for the payment consent. |ISODateTime | | |
-| ExpectedExecutionDateTime |0..1 |OBWriteDomesticConsentResponse3/Data/ExpectedExecutionDateTime |Expected execution date and time for the payment resource. |ISODateTime | | |
-| ExpectedSettlementDateTime |0..1 |OBWriteDomesticConsentResponse3/Data/ExpectedSettlementDateTime |Expected settlement date and time for the payment resource. |ISODateTime | | |
-| Charges |0..n |OBWriteDomesticConsentResponse3/Data/Charges |Set of elements used to provide details of a charge for the payment initiation. |OBCharge2 | | |
-| Initiation |1..1 |OBWriteDomesticConsentResponse3/Data/Initiation |The Initiation payload is sent by the initiating party to the ASPSP. It is used to request movement of funds from the debtor account to a creditor for a single domestic payment. |OBDomestic2 | | |
-| Authorisation |0..1 |OBWriteDomesticConsentResponse3/Data/Authorisation |The authorisation type request from the TPP. |OBAuthorisation1 | | |
-| SCASupportData |0..1 |OBWriteDomesticConsentResponse3/Data/SCASupportData |Supporting Data provided by TPP, when requesting SCA Exemption. |OBSCASupportData1 | | |
-| Risk |1..1 |OBWriteDomesticConsentResponse3/Risk |The Risk section is sent by the initiating party to the ASPSP. It is used to specify additional details for risk scoring for Payments. |OBRisk1 | | |
+| OBWriteDomesticConsentResponse4 | |OBWriteDomesticConsentResponse4 | |OBWriteDomesticConsentResponse4 | | |
+| Data |1..1 |OBWriteDomesticConsentResponse4/Data | |OBWriteDataDomesticConsentResponse4 | | |
+| ConsentId |1..1 |OBWriteDomesticConsentResponse4/Data/ConsentId |OB: Unique identification as assigned by the ASPSP to uniquely identify the consent resource. |Max128Text | | |
+| CreationDateTime |1..1 |OBWriteDomesticConsentResponse4/Data/CreationDateTime |Date and time at which the resource was created. |ISODateTime | | |
+| Status |1..1 |OBWriteDomesticConsentResponse4/Data/Status |Specifies the status of consent resource in code form. |OBExternalConsentStatus1Code |Authorised AwaitingAuthorisation Consumed Rejected | |
+| StatusUpdateDateTime |1..1 |OBWriteDomesticConsentResponse4/Data/StatusUpdateDateTime |Date and time at which the resource status was updated. |ISODateTime | | |
+| ReadRefundAccount |0..1 |OBWriteDomesticConsentResponse4/Data/ReadRefundAccount | Specifies to share the refund account details with PISP |OBReadRefundAccount1Code |Yes No | |
+| CutOffDateTime |0..1 |OBWriteDomesticConsentResponse4/Data/CutOffDateTime |Specified cut-off date and time for the payment consent. |ISODateTime | | |
+| ExpectedExecutionDateTime |0..1 |OBWriteDomesticConsentResponse4/Data/ExpectedExecutionDateTime |Expected execution date and time for the payment resource. |ISODateTime | | |
+| ExpectedSettlementDateTime |0..1 |OBWriteDomesticConsentResponse4/Data/ExpectedSettlementDateTime |Expected settlement date and time for the payment resource. |ISODateTime | | |
+| Charges |0..n |OBWriteDomesticConsentResponse4/Data/Charges |Set of elements used to provide details of a charge for the payment initiation. |OBCharge2 | | |
+| Initiation |1..1 |OBWriteDomesticConsentResponse4/Data/Initiation |The Initiation payload is sent by the initiating party to the ASPSP. It is used to request movement of funds from the debtor account to a creditor for a single domestic payment. |OBDomestic2 | | |
+| Authorisation |0..1 |OBWriteDomesticConsentResponse4/Data/Authorisation |The authorisation type request from the TPP. |OBAuthorisation1 | | |
+| SCASupportData |0..1 |OBWriteDomesticConsentResponse4/Data/SCASupportData |Supporting Data provided by TPP, when requesting SCA Exemption. |OBSCASupportData1 | | |
+| Risk |1..1 |OBWriteDomesticConsentResponse4/Risk |The Risk section is sent by the initiating party to the ASPSP. It is used to specify additional details for risk scoring for Payments. |OBRisk1 | | |
 
 ### Domestic Payment Consent Confirmation of Funds - Response
 
@@ -300,6 +302,7 @@ Accept: application/json
 ```json
 {
   "Data": {
+    "ReadRefundAccount": "Yes",
     "Initiation": {
       "InstructionIdentification": "ACME412",
       "EndToEndIdentification": "FRESCO.21302.GFX.20",
@@ -357,6 +360,7 @@ Content-Type: application/json
     "Status": "AwaitingAuthorisation",
     "CreationDateTime": "2017-06-05T15:15:13+00:00",
     "StatusUpdateDateTime": "2017-06-05T15:15:13+00:00",
+    "ReadRefundAccount": "Yes",
     "Initiation": {
       "InstructionIdentification": "ACME412",
       "EndToEndIdentification": "FRESCO.21302.GFX.20",
@@ -431,6 +435,7 @@ Content-Type: application/json
     "Status": "Authorised",
     "CreationDateTime": "2017-06-05T15:15:13+00:00",
     "StatusUpdateDateTime": "2017-06-05T15:15:22+00:00",
+    "ReadRefundAccount": "Yes",
     "Initiation": {
       "InstructionIdentification": "ACME412",
       "EndToEndIdentification": "FRESCO.21302.GFX.20",

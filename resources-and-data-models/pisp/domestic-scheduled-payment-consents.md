@@ -37,8 +37,8 @@ This resource description should be read in conjunction with a compatible Paymen
 
 | Resource |HTTP Operation |Endpoint |Mandatory ? |Scope |Grant Type |Message Signing |Idempotency Key |Request Object |Response Object |
 | -------- |-------------- |-------- |----------- |----- |---------- |--------------- |--------------- |-------------- |--------------- |
-| domestic-scheduled-payment-consents |POST |POST /domestic-scheduled-payment-consents |Conditional |payments |Client Credentials |Signed Request Signed Response |Yes |OBWriteDomesticScheduledConsent3 |OBWriteDomesticScheduledConsentResponse3 |
-| domestic-scheduled-payment-consents |GET |GET /domestic-scheduled-payment-consents/{ConsentId} |Mandatory (if resource POST implemented) |payments |Client Credentials |Signed Response |No |NA |OBWriteDomesticScheduledConsentResponse3 |
+| domestic-scheduled-payment-consents |POST |POST /domestic-scheduled-payment-consents |Conditional |payments |Client Credentials |Signed Request Signed Response |Yes |OBWriteDomesticScheduledConsent4 |OBWriteDomesticScheduledConsentResponse4 |
+| domestic-scheduled-payment-consents |GET |GET /domestic-scheduled-payment-consents/{ConsentId} |Mandatory (if resource POST implemented) |payments |Client Credentials |Signed Response |No |NA |OBWriteDomesticScheduledConsentResponse4 |
 
 ### POST /domestic-scheduled-payment-consents
 
@@ -165,13 +165,13 @@ Account Identification field usage:
 
 ### Domestic Scheduled Payment Consent - Request
 
-The OBWriteDomesticScheduledConsent3 object will be used for the call to:
+The OBWriteDomesticScheduledConsent4 object will be used for the call to:
 
 * POST /domestic-scheduled-payment-consents
 
 #### UML Diagram
 
-![Domestic Scheduled Payment Consent - Request](images/OBWriteDomesticScheduledConsent3.gif)
+![Domestic Scheduled Payment Consent - Request](images/OBWriteDomesticScheduledConsent4.png)
 
 #### Notes
 
@@ -186,24 +186,25 @@ The domestic-scheduled-payment-consent **request** contains these objects:
 
 | Name |Occurrence |XPath |EnhancedDefinition |Class |Codes |Pattern |
 | ---- |---------- |----- |------------------ |----- |----- |------- |
-| OBWriteDomesticScheduledConsent3 | |OBWriteDomesticScheduledConsent3 | |OBWriteDomesticScheduledConsent3 | | |
-| Data |1..1 |OBWriteDomesticScheduledConsent3/Data | |OBWriteDataDomesticScheduledConsent3 | | |
-| Permission |1..1 |OBWriteDomesticScheduledConsent3/Data/Permission |Specifies the Open Banking service request types. |OBExternalPermissions2Code |Create | |
-| Initiation |1..1 |OBWriteDomesticScheduledConsent3/Data/Initiation |The Initiation payload is sent by the initiating party to the ASPSP. It is used to request movement of funds from the debtor account to a creditor for a single scheduled domestic payment. |OBDomesticScheduled2 | | |
-| Authorisation |0..1 |OBWriteDomesticScheduledConsent3/Data/Authorisation |Type of authorisation flow requested. |OBAuthorisation1 | | |
-| SCASupportData |0..1 |OBWriteDomesticScheduledConsent3/Data/SCASupportData |Supporting Data provided by TPP, when requesting SCA Exemption. |OBSCASupportData1 | | |
-| Risk |1..1 |OBWriteDomesticScheduledConsent3/Risk |The Risk section is sent by the initiating party to the ASPSP. It is used to specify additional details for risk scoring for Payments. |OBRisk1 | | |
+| OBWriteDomesticScheduledConsent4 | |OBWriteDomesticScheduledConsent4 | |OBWriteDomesticScheduledConsent4 | | |
+| Data |1..1 |OBWriteDomesticScheduledConsent4/Data | |OBWriteDataDomesticScheduledConsent4 | | |
+| Permission |1..1 |OBWriteDomesticScheduledConsent4/Data/Permission |Specifies the Open Banking service request types. |OBExternalPermissions2Code |Create | |
+| ReadRefundAccount |0..1 |OBWriteDomesticScheduledConsent4/Data/ReadRefundAccount | Specifies to share the refund account details with PISP |OBReadRefundAccount1Code |Yes No | |
+| Initiation |1..1 |OBWriteDomesticScheduledConsent4/Data/Initiation |The Initiation payload is sent by the initiating party to the ASPSP. It is used to request movement of funds from the debtor account to a creditor for a single scheduled domestic payment. |OBDomesticScheduled2 | | |
+| Authorisation |0..1 |OBWriteDomesticScheduledConsent4/Data/Authorisation |Type of authorisation flow requested. |OBAuthorisation1 | | |
+| SCASupportData |0..1 |OBWriteDomesticScheduledConsent4/Data/SCASupportData |Supporting Data provided by TPP, when requesting SCA Exemption. |OBSCASupportData1 | | |
+| Risk |1..1 |OBWriteDomesticScheduledConsent4/Risk |The Risk section is sent by the initiating party to the ASPSP. It is used to specify additional details for risk scoring for Payments. |OBRisk1 | | |
 
 ### Domestic Scheduled Payment Consent - Response
 
-The OBWriteDomesticScheduledConsentResponse3 object will be used for a response to a call to:
+The OBWriteDomesticScheduledConsentResponse4 object will be used for a response to a call to:
 
 * POST /domestic-scheduled-payment-consents
 * GET /domestic-scheduled-payment-consents/{ConsentId}
 
 #### UML Diagram
 
-![Domestic Scheduled Payment Consent - Response](images/OBWriteDomesticScheduledConsentResponse3.gif)
+![Domestic Scheduled Payment Consent - Response](images/OBWriteDomesticScheduledConsentResponse4.png)
 
 #### Notes
 
@@ -213,6 +214,7 @@ The domestic-scheduled-payment-consent **response** contains the full **original
 * CreationDateTime the domestic-scheduled-payment-consent resource was created.
 * Status and StatusUpdateDateTime of the domestic-scheduled-payment-consent resource.
 * Permission field in the original request.
+* ReadRefundAccount field in the original request.
 * CutOffDateTime Behaviour is explained in the Payment Initiation API Profile, Section - [Payment Restrictions -> CutOffDateTime Behaviour](../../profiles/payment-initiation-api-profile.md#cutoffdatetime-behaviour).
 * ExpectedExecutionDateTime for the domestic-scheduled-payment resource if created before CutOffDateTIme - the expected DateTime the payment is executed against the Debtor Account. If populated, the ASPSP must update the value with any changes (e.g., after PSU authorisation).
 * ExpectedSettlementDateTime for the domestic-scheduled-payment resource if created before CutOffDateTIme - the expected DateTime the payment will be received at the Creditor Account. If populated, the ASPSP must update the value with any changes (e.g., after PSU authorisation).
@@ -222,21 +224,22 @@ The domestic-scheduled-payment-consent **response** contains the full **original
 
 | Name |Occurrence |XPath |EnhancedDefinition |Class |Codes |Pattern |
 | ---- |---------- |----- |------------------ |----- |----- |------- |
-| OBWriteDomesticScheduledConsentResponse3 | |OBWriteDomesticScheduledConsentResponse3 | |OBWriteDomesticScheduledConsentResponse3 | | |
-| Data |1..1 |OBWriteDomesticScheduledConsentResponse3/Data | |OBWriteDataDomesticScheduledConsentResponse3 | | |
-| ConsentId |1..1 |OBWriteDomesticScheduledConsentResponse3/Data/ConsentId |OB: Unique identification as assigned by the ASPSP to uniquely identify the consent resource. |Max128Text | | |
-| CreationDateTime |1..1 |OBWriteDomesticScheduledConsentResponse3/Data/CreationDateTime |Date and time at which the resource was created. |ISODateTime | | |
-| Status |1..1 |OBWriteDomesticScheduledConsentResponse3/Data/Status |Specifies the status of consent resource in code form. |OBExternalConsentStatus1Code |Authorised AwaitingAuthorisation Consumed Rejected | |
-| StatusUpdateDateTime |1..1 |OBWriteDomesticScheduledConsentResponse3/Data/StatusUpdateDateTime |Date and time at which the consent resource status was updated. |ISODateTime | | |
-| Permission |1..1 |OBWriteDomesticScheduledConsentResponse3/Data/Permission |Specifies the Open Banking service request types. |OBExternalPermissions2Code |Create | |
-| CutOffDateTime |0..1 |OBWriteDomesticScheduledConsentResponse3/Data/CutOffDateTime |Specified cut-off date and time for the payment consent. |ISODateTime | | |
-| ExpectedExecutionDateTime |0..1 |OBWriteDomesticScheduledConsentResponse3/Data/ExpectedExecutionDateTime |Expected execution date and time for the payment resource. |ISODateTime | | |
-| ExpectedSettlementDateTime |0..1 |OBWriteDomesticScheduledConsentResponse3/Data/ExpectedSettlementDateTime |Expected settlement date and time for the payment resource. |ISODateTime | | |
-| Charges |0..n |OBWriteDomesticScheduledConsentResponse3/Data/Charges |Set of elements used to provide details of a charge for the payment initiation. |OBCharge2 | | |
-| Initiation |1..1 |OBWriteDomesticScheduledConsentResponse3/Data/Initiation |The Initiation payload is sent by the initiating party to the ASPSP. It is used to request movement of funds from the debtor account to a creditor for a single scheduled domestic payment. |OBDomesticScheduled2 | | |
-| Authorisation |0..1 |OBWriteDomesticScheduledConsentResponse3/Data/Authorisation |Type of authorisation flow requested. |OBAuthorisation1 | | |
-| SCASupportData |0..1 |OBWriteDomesticScheduledConsentResponse3/Data/SCASupportData |Supporting Data provided by TPP, when requesting SCA Exemption. |OBSCASupportData1 | | |
-| Risk |1..1 |OBWriteDomesticScheduledConsentResponse3/Risk |The Risk section is sent by the initiating party to the ASPSP. It is used to specify additional details for risk scoring for Payments. |OBRisk1 | | |
+| OBWriteDomesticScheduledConsentResponse4 | |OBWriteDomesticScheduledConsentResponse4 | |OBWriteDomesticScheduledConsentResponse4 | | |
+| Data |1..1 |OBWriteDomesticScheduledConsentResponse4/Data | |OBWriteDataDomesticScheduledConsentResponse4 | | |
+| ConsentId |1..1 |OBWriteDomesticScheduledConsentResponse4/Data/ConsentId |OB: Unique identification as assigned by the ASPSP to uniquely identify the consent resource. |Max128Text | | |
+| CreationDateTime |1..1 |OBWriteDomesticScheduledConsentResponse4/Data/CreationDateTime |Date and time at which the resource was created. |ISODateTime | | |
+| Status |1..1 |OBWriteDomesticScheduledConsentResponse4/Data/Status |Specifies the status of consent resource in code form. |OBExternalConsentStatus1Code |Authorised AwaitingAuthorisation Consumed Rejected | |
+| StatusUpdateDateTime |1..1 |OBWriteDomesticScheduledConsentResponse4/Data/StatusUpdateDateTime |Date and time at which the consent resource status was updated. |ISODateTime | | |
+| Permission |1..1 |OBWriteDomesticScheduledConsentResponse4/Data/Permission |Specifies the Open Banking service request types. |OBExternalPermissions2Code |Create | |
+| ReadRefundAccount |0..1 |OBWriteDomesticScheduledConsentResponse4/Data/ReadRefundAccount | Specifies to share the refund account details with PISP |OBReadRefundAccount1Code |Yes No | 
+| CutOffDateTime |0..1 |OBWriteDomesticScheduledConsentResponse4/Data/CutOffDateTime |Specified cut-off date and time for the payment consent. |ISODateTime | | |
+| ExpectedExecutionDateTime |0..1 |OBWriteDomesticScheduledConsentResponse4/Data/ExpectedExecutionDateTime |Expected execution date and time for the payment resource. |ISODateTime | | |
+| ExpectedSettlementDateTime |0..1 |OBWriteDomesticScheduledConsentResponse4/Data/ExpectedSettlementDateTime |Expected settlement date and time for the payment resource. |ISODateTime | | |
+| Charges |0..n |OBWriteDomesticScheduledConsentResponse4/Data/Charges |Set of elements used to provide details of a charge for the payment initiation. |OBCharge2 | | |
+| Initiation |1..1 |OBWriteDomesticScheduledConsentResponse4/Data/Initiation |The Initiation payload is sent by the initiating party to the ASPSP. It is used to request movement of funds from the debtor account to a creditor for a single scheduled domestic payment. |OBDomesticScheduled2 | | |
+| Authorisation |0..1 |OBWriteDomesticScheduledConsentResponse4/Data/Authorisation |Type of authorisation flow requested. |OBAuthorisation1 | | |
+| SCASupportData |0..1 |OBWriteDomesticScheduledConsentResponse4/Data/SCASupportData |Supporting Data provided by TPP, when requesting SCA Exemption. |OBSCASupportData1 | | |
+| Risk |1..1 |OBWriteDomesticScheduledConsentResponse4/Risk |The Risk section is sent by the initiating party to the ASPSP. It is used to specify additional details for risk scoring for Payments. |OBRisk1 | | |
 
 ## Usage Examples
 
@@ -261,6 +264,7 @@ Accept: application/json
 {
   "Data": {
     "Permission": "Create",
+    "ReadRefundAccount": "Yes",
     "Initiation": {
       "InstructionIdentification": "89f0a53a91ee47f6a383536f851d6b5a",
       "RequestedExecutionDateTime": "2018-08-06T00:00:00+00:00",
@@ -304,6 +308,7 @@ Content-Type: application/json
   "Data": {
     "ConsentId": "7290",
     "Permission": "Create",
+    "ReadRefundAccount": "Yes",
     "Status": "AwaitingAuthorisation",
     "CreationDateTime": "2018-05-05T15:15:13+00:00",
     "StatusUpdateDateTime": "2018-05-05T15:15:13+00:00",
