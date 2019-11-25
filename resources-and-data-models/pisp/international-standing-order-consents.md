@@ -84,7 +84,7 @@ The available Status codes for the international-standing-order-consent resource
 
 The state model for the international-standing-order-consent resource follows the generic consent state model. However, does not use the "Revoked" status, as the consent for an international-standing-order is not a long-lived consent.
 
-![ image2018-5-18_10-24-21.png ]( images/image2018-5-18_10-24-21.png )
+![ image2018-5-18_10-24-21.png ](./images/image2018-5-18_10-24-21.png )
 
 The definitions for the Status:
 
@@ -107,7 +107,7 @@ This section describes the OBInternationalStandingOrder4 class which is reused a
 
 ##### UML Diagram
 
-![ OBInternationalStandingOrder4.gif ]( images/OBInternationalStandingOrder4.gif )
+![ OBInternationalStandingOrder4.gif ](./images/OBInternationalStandingOrder4.gif )
 
 ##### Notes
 
@@ -197,7 +197,7 @@ The OBWriteInternationalStandingOrderConsent6 object will be used for the call t
 
 #### UML Diagram
 
-![ OBWriteInternationalStandingOrderConsent6.png ]( images/OBWriteInternationalStandingOrderConsent6.png )
+![ OBWriteInternationalStandingOrderConsent6.png ](./images/OBWriteInternationalStandingOrderConsent6.png )
 
 #### Notes
 
@@ -231,7 +231,7 @@ The OBWriteInternationalStandingOrderConsentResponse6 object will be used for a 
 
 #### UML Diagram
 
-![ OBWriteInternationalStandingOrderConsentResponse6.png ]( images/OBWriteInternationalStandingOrderConsentResponse6.png )
+![ OBWriteInternationalStandingOrderConsentResponse6.png ](./images/OBWriteInternationalStandingOrderConsentResponse6.png )
 
 #### Notes
 

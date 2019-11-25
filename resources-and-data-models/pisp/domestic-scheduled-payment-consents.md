@@ -83,7 +83,7 @@ The available Status codes for the domestic-scheduled-payment-consent resource a
 
 The state model for the domestic-scheduled-payment-consent resource follows the generic consent state model. However, does not use the "Revoked" status, as the consent for a domestic-scheduled-payment is not a long-lived consent.
 
-![Payment Order Consent](images/image2018-5-18_10-24-21.png)
+![Payment Order Consent](./images/image2018-5-18_10-24-21.png)
 
 The definitions for the Status:
 
@@ -106,7 +106,7 @@ This section describes the OBDomesticScheduled2 class which is reused as the Ini
 
 ##### UML Diagram
 
-![OBDomesticScheduled2](images/OBDomesticScheduled2.gif)
+![OBDomesticScheduled2](./images/OBDomesticScheduled2.gif)
 
 ##### Notes
 
@@ -171,7 +171,7 @@ The OBWriteDomesticScheduledConsent4 object will be used for the call to:
 
 #### UML Diagram
 
-![Domestic Scheduled Payment Consent - Request](images/OBWriteDomesticScheduledConsent4.png)
+![Domestic Scheduled Payment Consent - Request](./images/OBWriteDomesticScheduledConsent4.png)
 
 #### Notes
 
@@ -204,7 +204,7 @@ The OBWriteDomesticScheduledConsentResponse4 object will be used for a response 
 
 #### UML Diagram
 
-![Domestic Scheduled Payment Consent - Response](images/OBWriteDomesticScheduledConsentResponse4.png)
+![Domestic Scheduled Payment Consent - Response](./images/OBWriteDomesticScheduledConsentResponse4.png)
 
 #### Notes
 
@@ -247,7 +247,7 @@ The domestic-scheduled-payment-consent **response** contains the full **original
 
 ##### POST /domestic-scheduled-payment-consents Request
 
-```text
+```
 POST /domestic-scheduled-payment-consents HTTP/1.1
 Authorization: Bearer 2YotnFZFEjr1zCsicMWpAA
 x-idempotency-key: FRESCO.21302.GFX.20
@@ -296,7 +296,7 @@ Accept: application/json
 
 ##### POST /domestic-scheduled-payment-consents Response
 
-```text
+```
 HTTP/1.1 201 Created
 x-jws-signature: V2hhdCB3ZSBnb3QgaGVyZQ0K..aXMgZmFpbHVyZSB0byBjb21tdW5pY2F0ZQ0K
 x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d

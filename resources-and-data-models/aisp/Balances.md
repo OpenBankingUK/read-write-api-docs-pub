@@ -62,7 +62,7 @@ An account (AccountId) may have multiple balance types (these follow the standar
 
 ### UML Diagram
 
-![ OBReadBalance1.gif ]( images/Balances/OBReadBalance1.gif )
+![ OBReadBalance1.gif ](./images/Balances/OBReadBalance1.gif )
 
 ### Notes
 

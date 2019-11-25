@@ -82,7 +82,7 @@ The OBCallbackurl1 object will be used for the call to:
 
 #### UML Diagram
 
-![OBCallbackUrl1](images/OBCallbackUrl1.gif)
+![OBCallbackUrl1](./images/OBCallbackUrl1.gif)
 
 #### Data Dictionary
 
@@ -106,7 +106,7 @@ The OBCallbackUrlResponse1 object will also be used for the call to:
 
 #### UML
 
-![OBCallbackUrlResponse1](images/OBCallbackUrlResponse1.gif)
+![OBCallbackUrlResponse1](./images/OBCallbackUrlResponse1.gif)
 
 #### Data Dictionary
 
@@ -128,7 +128,7 @@ The OBCallbackUrlsResponse1 object will be used for a response to a call to:
 
 #### UML
 
-![OBCallbackUrlsResponse1](images/OBCallbackUrlsResponse1.gif)
+![OBCallbackUrlsResponse1](./images/OBCallbackUrlsResponse1.gif)
 
 #### Data Dictionary
 

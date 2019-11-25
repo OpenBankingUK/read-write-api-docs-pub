@@ -68,7 +68,7 @@ The `OBEventPolling1` will be used as the request payload for:
 
 #### UML Diagram
 
-![OBEventPolling1](images/OBEventPolling1.gif)
+![OBEventPolling1](./images/OBEventPolling1.gif)
 
 #### Data Dictionary
 
@@ -92,7 +92,7 @@ The `OBEventPollingResponse1` will be used as the response payload for:
 
 #### UML Diagram
 
-![OBEventPollingResponse1](images/OBEventPollingResponse1.gif)
+![OBEventPollingResponse1](./images/OBEventPollingResponse1.gif)
 
 #### Data Dictionary
 

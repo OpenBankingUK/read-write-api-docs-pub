@@ -65,7 +65,7 @@ This is the expected behaviour of the beneficiaries' endpoints, in the case an A
 
 ### UML Diagram
 
-![ OBReadBeneficiary4.gif ]( images/Beneficiaries/OBReadBeneficiary4.gif )
+![ OBReadBeneficiary4.gif ](./images/Beneficiaries/OBReadBeneficiary4.gif )
 
 ### Notes
 
