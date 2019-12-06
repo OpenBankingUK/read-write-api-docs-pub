@@ -83,7 +83,7 @@ The OBEventSubscription1 object will be used for the call to:
 
 #### UML Diagram
 
-![OBEventSubscription1](images/OBEventSubscription1.gif)
+![OBEventSubscription1](./images/OBEventSubscription1.gif)
 
 #### Notes
 
@@ -118,7 +118,7 @@ The OBEventSubscriptionResponse1 object will also be used for the call to:
 
 #### UML
 
-![OBEventSubscriptionResponse1](images/OBEventSubscriptionResponse1.gif)
+![OBEventSubscriptionResponse1](./images/OBEventSubscriptionResponse1.gif)
 
 #### Data Dictionary
 
@@ -139,7 +139,7 @@ The OBEventSubscriptionsResponse1 object will be used for a response to a call t
 
 #### UML
 
-![OBEventSubscriptionsResponse1](images/OBEventSubscriptionsResponse1.gif)
+![OBEventSubscriptionsResponse1](./images/OBEventSubscriptionsResponse1.gif)
 
 #### Data Dictionary
 

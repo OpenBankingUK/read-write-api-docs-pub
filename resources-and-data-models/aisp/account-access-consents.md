@@ -78,7 +78,7 @@ After authorisation has taken place the account-access-consent resource may have
 
 This is the state diagram for the Status.
 
-![ Consent Authorisation.jpg ]( images/AccountAccessConsents/ConsentAuthorisation.jpg )
+![ Consent Authorisation.jpg ](./images/AccountAccessConsents/ConsentAuthorisation.jpg )
 
 ### GET /account-access-consents/{ConsentId}
 
@@ -123,7 +123,7 @@ The OBReadConsent1 object will be used for the call to:
 
 #### UML Diagram
 
-![ OBReadConsent1.gif ]( images/AccountAccessConsents/OBReadConsent1.gif )
+![ OBReadConsent1.gif ](./images/AccountAccessConsents/OBReadConsent1.gif )
 
 #### Notes
 
@@ -154,7 +154,7 @@ And response to:
 
 #### UML Diagram
 
-![ OBReadConsentResponse1.gif ]( images/AccountAccessConsents/OBReadConsentResponse1.gif )
+![ OBReadConsentResponse1.gif ](./images/AccountAccessConsents/OBReadConsentResponse1.gif )
 
 #### Notes
 

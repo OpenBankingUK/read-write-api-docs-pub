@@ -77,7 +77,7 @@ After consent has been agreed the **funds-confirmation-consent** resource may ha
 
 This is the state diagram for the Status.
 
-![CoFStateFlow](images/CoFStateFlow.png)
+![CoFStateFlow](./images/CoFStateFlow.png)
 
 ### GET /funds-confirmation-consents/{ConsentId}
 
@@ -122,7 +122,7 @@ The OBFundsConfirmationConsent1 object will be used for the following:
 
 #### UML Diagram
 
-![OBFundsConfirmationConsent1](images/OBFundsConfirmationConsent1.gif)
+![OBFundsConfirmationConsent1](./images/OBFundsConfirmationConsent1.gif)
 
 #### Data Dictionary
 
@@ -146,7 +146,7 @@ The OBFundsConfirmationConsentResponse1 object will be used for the following:
 
 #### UML Diagram
 
-![OBFundsConfirmationConsentResponse1](images/OBFundsConfirmationConsentResponse1.gif)
+![OBFundsConfirmationConsentResponse1](./images/OBFundsConfirmationConsentResponse1.gif)
 
 Notes:
 

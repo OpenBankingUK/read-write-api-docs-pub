@@ -119,7 +119,7 @@ The international-payments - payment-details must have one of the following Paym
 
 The state model for the international-payment resource follows the behaviour and definitions for the ISO 20022 PaymentStatusCode code-set.
 
-![Payment Order Status Lifecycle](images/PaymentStatusLifeCycle.png)
+![Payment Order Status Lifecycle](./images/PaymentStatusLifeCycle.png)
 
 The definitions for the Status:
 
@@ -136,7 +136,7 @@ The definitions for the Status:
 
 If the payment-order requires multiple authorisations, the Status of the multiple authorisations will be updated in the MultiAuthorisation object.
 
-![Multiple Authorisation Statss](images/image2018-6-29_16-36-34.png)
+![Multiple Authorisation Statss](./images/image2018-6-29_16-36-34.png)
 
 The definitions for the Status:
 
@@ -168,7 +168,7 @@ The OBWriteInternational3 object will be used for a call to:
 
 #### UML Diagram
 
-![International Payment - Request](images/OBWriteInternational3.gif)
+![International Payment - Request](./images/OBWriteInternational3.gif)
 
 #### Notes
 
@@ -197,7 +197,7 @@ The OBWriteInternationalResponse4 object will be used for a response to a call t
 
 #### UML Diagram
 
-![International Payment - Response](images/OBWriteInternationalResponse4.png)
+![International Payment - Response](./images/OBWriteInternationalResponse4.png)
 
 #### Notes
 
@@ -241,7 +241,7 @@ The OBWritePaymentDetailsResponse1 object will be used for a response to a call 
 
 #### UML Diagram
 
-![International Payment Order - Payment Details - Response](images/OBWritePaymentDetailsResponse1.png)
+![International Payment Order - Payment Details - Response](./images/OBWritePaymentDetailsResponse1.png)
 
 #### Data Dictionary
 
