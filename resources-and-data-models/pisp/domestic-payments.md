@@ -125,7 +125,7 @@ The domestic-payment - payment-details must have one of the following PaymentSta
 
 The state model for the domestic-payment resource follows the behaviour and definitions for the ISO 20022 PaymentStatusCode code-set.
 
-![Payment Order Status](images/PaymentStatusLifeCycle.png)
+![Payment Order Status](./images/PaymentStatusLifeCycle.png)
 
 The definitions for the status:
 
@@ -142,7 +142,7 @@ The definitions for the status:
 
 If the payment-order requires multiple authorisations - the Status of the multiple authorisations will be updated in the MultiAuthorisation object.
 
-![Multi Authorisation Status](images/image2018-6-29_16-36-34.png)
+![Multi Authorisation Status](./images/image2018-6-29_16-36-34.png)
 
 The definitions for the status:
 
@@ -170,7 +170,7 @@ The OBWriteDomestic2 object will be used for a call to:
 
 #### UML Diagram
 
-![OBWriteDomestic2](images/OBWriteDomestic2.gif)
+![OBWriteDomestic2](./images/OBWriteDomestic2.gif)
 
 #### Notes
 
@@ -200,7 +200,7 @@ The **Initiation** and **Risk** sections of the domestic-payment request **must*
 
 #### UML Diagram
 
- ![OBWriteDomesticResponse4](images/OBWriteDomesticResponse4.png)
+ ![OBWriteDomesticResponse4](./images/OBWriteDomesticResponse4.png)
 
 #### Notes
 
@@ -243,7 +243,7 @@ The OBWritePaymentDetailsResponse1 object will be used for a response to a call 
 
 #### UML Diagram
 
-![OBWritePaymentDetailsResponse1](images/OBWritePaymentDetailsResponse1.png)
+![OBWritePaymentDetailsResponse1](./images/OBWritePaymentDetailsResponse1.png)
 
 #### Data Dictionary
 
@@ -261,7 +261,7 @@ Note, further usage examples are available [here](../../references/usage%20examp
 
 #### Request
 
-```text
+```
 POST /domestic-payments HTTP/1.1
 Authorization: Bearer Jhingapulaav
 x-idempotency-key: FRESNO.1317.GFX.22
@@ -320,7 +320,7 @@ Accept: application/json
 
 #### Response
 
-```text
+```
 HTTP/1.1 201 Created
 x-jws-signature: V2hhdCB3ZSBnb3QgaGVyZQ0K..aXMgZmFpbHVyZSB0byBjb21tdW5pY2F0ZQ0K
 x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
@@ -371,7 +371,7 @@ Content-Type: application/json
 
 #### Request
 
-```text
+```
 GET /domestic-payments/58923-001 HTTP/1.1
 Authorization: Bearer 2YotnFZFEjr1zCsicMWpAA
 x-fapi-auth-date:  Sun, 10 Sep 2017 19:43:31 GMT
@@ -382,7 +382,7 @@ Accept: application/json
 
 #### Response
 
-```text
+```
 HTTP/1.1 200 OK
 x-jws-signature: V2hhdCB3ZSBnb3QgaGVyZQ0K..aXMgZmFpbHVyZSB0byBjb21tdW5pY2F0ZQ0K
 x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d

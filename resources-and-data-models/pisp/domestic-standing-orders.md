@@ -117,7 +117,7 @@ The domestic-standing-orders - payment-details must have one of the following Pa
 
 The state model for the domestic-standing-order resource describes the initiation status only. I.e., not the subsequent execution of the domestic-standing-order.
 
-![Payment Order](images/DomesticScheduledStatusModel.png)
+![Payment Order](./images/DomesticScheduledStatusModel.png)
 
 The definitions for the Status:
 
@@ -132,7 +132,7 @@ The definitions for the Status:
 
 If the payment-order requires multiple authorisations, the Status of the multiple authorisations will be updated in the MultiAuthorisation object.
 
-![Multiple Authorisation](images/image2018-6-29_16-36-34.png)
+![Multiple Authorisation](./images/image2018-6-29_16-36-34.png)
 
 The definitions for the Status:
 
@@ -160,7 +160,7 @@ The OBWriteDomesticStandingOrder3 object will be used for a call to:
 
 #### UML Diagram
 
-![Domestic Standing Order - Request](images/OBWriteDomesticStandingOrder3.png)
+![Domestic Standing Order - Request](./images/OBWriteDomesticStandingOrder3.png)
 
 #### Notes
 
@@ -189,7 +189,7 @@ The OBWriteDomesticStandingOrderResponse5 object will be used for a response to 
 
 #### UML Diagram
 
-![Domestic Standing Order - Response](images/OBWriteDomesticStandingOrderResponse5.png)
+![Domestic Standing Order - Response](./images/OBWriteDomesticStandingOrderResponse5.png)
 
 #### Notes
 
@@ -228,7 +228,7 @@ The OBWritePaymentDetailsResponse1 object will be used for a response to a call 
 
 #### UML Diagram
 
-![Domestic Standing Order - Payment Details - Response](images/OBWritePaymentDetailsResponse1.png)
+![Domestic Standing Order - Payment Details - Response](./images/OBWritePaymentDetailsResponse1.png)
 
 #### Data Dictionary
 

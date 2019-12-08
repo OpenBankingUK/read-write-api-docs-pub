@@ -81,7 +81,7 @@ Further analysis required:-
 * Eligibility and FeaturesAndBenefits sections are removed from the Account Info section as information related to them might not be easily available.
 * **Unlike PCA, there is no requirement to publish a MaximumMonthlyCharge , so Monthly Charge field has been omitted. In the BCA On Sale Product Data API, There were two fields MonthlyCharge and IncludedInMonthlyChargeIndicator( OtherFeesAndCharges section). Both of these fields have been removed from this specification.**
 
-![ BCATopLevel.ClassDiagram.png ]( images/BCA/BCATopLevel.ClassDiagram.png )
+![ BCATopLevel.ClassDiagram.png ](./images/BCA/BCATopLevel.ClassDiagram.png )
 
 #### CreditInterest Model
 
@@ -92,7 +92,7 @@ Further analysis required:-
 * DepositInterestAppliedCoverage refers to which interest rate is applied when interests are tiered. For example, if an account balance is £2k and the interest tiers are:- 0-£500 0.1%, 500-1000 0.2%, 1000-10000 0.5%, then the applicable interest rate could either be 0.5% of the entire balance (since the account balance sits in the top interest tier) or (0.1%*500)+(0.2%*500)+(0.5%*1000). In the 1st situation, the interest should be applied to the "Whole" of the account balance, and in the 2nd this should be "Tiered".
 * Destination refers to whether the BCA allows interest to be credited to another account ("PayAway") or only to the BCA itself ("SelfCredit").
 
-![ BCAProductInfoCreditIntrstClassDiagram.png ]( images/BCA/BCAProductInfoCreditIntrstClassDiagram.png )
+![ BCAProductInfoCreditIntrstClassDiagram.png ](./images/BCA/BCAProductInfoCreditIntrstClassDiagram.png )
 
 #### Overdraft
 
@@ -114,14 +114,14 @@ Further analysis required:-
 * Setup/arrangement and renewal fees are common for business overdrafts, and therefore need to be included in the OB_BCAOverdraftFeeType1Codelist.
 * Fees/charges are often negotiable, so a NegotiableIndicator has been added to OverdraftFeeChargeDetail.
 
-![ BCAAccountInfoOverdraftt.ClassDiagram.png ]( images/BCA/BCAAccountInfoOverdraftt.ClassDiagram.png )
+![ BCAAccountInfoOverdraftt.ClassDiagram.png ](./images/BCA/BCAAccountInfoOverdraftt.ClassDiagram.png )
 
 #### OtherFeesCharges
 
 * OtherFeesCharges is a lot more important for companies who have not opened a startup or switcher account.
 * Fees/charges are often negotiable for BCA, so a NegotiableIndicator has been added to FeeChargeDetail.
 
-![ AINFOBCA.2.2.0.OtherFeesCharges.png ]( images/BCA/AINFOBCA.2.2.0.OtherFeesCharges.png )
+![ AINFOBCA.2.2.0.OtherFeesCharges.png ](./images/BCA/AINFOBCA.2.2.0.OtherFeesCharges.png )
 
 ## Data Model
 
@@ -135,7 +135,7 @@ Further analysis required:-
 * Other Fee Charges: Only Periodic Fee(service charge) has been included in the Code List.
 * We have taken Open Data BCA Segments for BCA Account Info as well.
 
-![ AINFOBCA.3.1.4.ClassDiagram.png ]( images/BCA/AINFOBCA.3.1.4.ClassDiagram.png )
+![ AINFOBCA.3.1.4.ClassDiagram.png ](./images/BCA/AINFOBCA.3.1.4.ClassDiagram.png )
 
 ### Data Dictionary
 

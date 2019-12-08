@@ -1,12 +1,11 @@
-# Event Subscription - v3.1.4
+# Event Subscription - v3.1.4 <!-- omit in toc -->
 
 1. [Overview](#overview)
 2. [Endpoints](#endpoints)
-   1. [Endpoints](#endpoints-1)
-      1. [POST /event-subscriptions](#post-event-subscriptions)
-      2. [GET /event-subscriptions](#get-event-subscriptions)
-      3. [PUT /event-subscriptions/{EventSubscriptionId}](#put-event-subscriptionseventsubscriptionid)
-      4. [DELETE /event-subscriptions/{EventSubscriptionId}](#delete-event-subscriptionseventsubscriptionid)
+   1. [POST /event-subscriptions](#post-event-subscriptions)
+   2. [GET /event-subscriptions](#get-event-subscriptions)
+   3. [PUT /event-subscriptions/{EventSubscriptionId}](#put-event-subscriptionseventsubscriptionid)
+   4. [DELETE /event-subscriptions/{EventSubscriptionId}](#delete-event-subscriptionseventsubscriptionid)
 3. [Data Model](#data-model)
    1. [Event Subscription - Request](#event-subscription---request)
       1. [UML Diagram](#uml-diagram)
@@ -36,38 +35,45 @@ This resource description should be read in conjunction with a compatible Event 
 
 A TPP will set up and maintain its event subscription details (URL, event types and version number) using the event-subscription resource.
 
-### Endpoints
-
 | Resource |HTTP Operation |Endpoint |Mandatory ? |Scope |Grant Type |Message Signing |Idempotency Key |Request Object |Response Object |
 | --- |--- |--- |--- |--- |--- |--- |--- |--- |--- |
 | event-subscription |POST |POST /event-subscriptions |Optional |accounts<br>payments<br>fundsconfirmations |Client Credentials |Signed Request<br><br>Signed Response |No |OBEventSubscription1 |OBEventSubscriptionResponse1 |
 | event-subscription |GET |GET /event-subscriptions |Mandatory (if resource POST implemented) |accounts<br>payments<br>fundsconfirmations |Client Credentials |Signed Response |No |n/a |OBEventSubscriptionsResponse1 |
-| event-subscription |PUT |PUT /event-subscriptions/{EventSubscriptionId} |Mandatory (if resource POST implemented) |accounts<br>payments<br>fundsconfirmations |Client Credentials |Signed Request<br><br>Signed Response |No |OBEventSubscriptionResponse1 |OBEventSubscriptionResponse1 |
-| event-subscription |DELETE |DELETE /event-subscriptions/{EventSubscriptionId} |Mandatory (if resource POST implemented) |accounts<br>payments<br>fundsconfirmations |Client Credentials |n/a |No |n/a |n/a |
+| event-subscription |PUT |PUT /event-subscriptions/{EventSubscriptionId} | Conditional (See [Note 1](#note-1)) |accounts<br>payments<br>fundsconfirmations |Client Credentials |Signed Request<br><br>Signed Response |No |OBEventSubscriptionResponse1 |OBEventSubscriptionResponse1 |
+| event-subscription |DELETE |DELETE /event-subscriptions/{EventSubscriptionId} | Conditional (See [Note 1](#note-1)) |accounts<br>payments<br>fundsconfirmations |Client Credentials |n/a |No |n/a |n/a |
 
+### Note 1 <!-- omit in toc -->
 
-#### POST /event-subscriptions
+Implementation for an ASPSP is:
+
+- **Optional**, where both the following are true:
+
+  - The ASPSP supports aggregated polling only
+  - The ASPSP only supports a single event type for aggregated polling
+- **Mandatory**, when the above is not true and ASPSP implemented `POST /event-subscriptions`
+  
+### POST /event-subscriptions
 
 The API endpoint allows the TPP to ask an ASPSP to create a new **event-subscription** resource.
 
-* The POST action allows the TPP to register an event subscription for a TPP to access event notifications.
-* The ASPSP creates the **event-subscription** resource and responds with a unique EventSubscriptionId to refer to the resource.
-* An ASPSP **must** respond with a 409 error if an event-subscription exists for that TPP.
+- The POST action allows the TPP to register an event subscription for a TPP to access event notifications.
+- The ASPSP creates the **event-subscription** resource and responds with a unique EventSubscriptionId to refer to the resource.
+- An ASPSP **must** respond with a 409 error if an event-subscription exists for that TPP.
 
-#### GET /event-subscriptions
+### GET /event-subscriptions
 
 The API endpoint allows the TPP to ask an ASPSP to retrieve its **event-subscription** resource.
 
-* The ASPSP retrieves the **event-subscription** resource and responds with the resource.
+- The ASPSP retrieves the **event-subscription** resource and responds with the resource.
 
-#### PUT /event-subscriptions/{EventSubscriptionId}
+### PUT /event-subscriptions/{EventSubscriptionId}
 
 The API endpoint allows the TPP to ask an ASPSP to update an **event-subscription** resource.
 
 * The PUT action allows the TPP to update an event subscription for a TPP to access event notifications.
 * The ASPSP updates the **event-subscription** resource and responds with the updated resource.
 
-#### DELETE /event-subscriptions/{EventSubscriptionId}
+### DELETE /event-subscriptions/{EventSubscriptionId}
 
 The API endpoint allows the TPP to ask an ASPSP to delete an **event-subscription** resource.
 
@@ -79,20 +85,22 @@ The API endpoint allows the TPP to ask an ASPSP to delete an **event-subscriptio
 
 The OBEventSubscription1 object will be used for the call to:
 
-* POST /event-subscriptions
+- POST /event-subscriptions
 
 #### UML Diagram
 
-![OBEventSubscription1](images/OBEventSubscription1.gif)
+![OBEventSubscription1](./images/OBEventSubscription1.gif)
 
 #### Notes
 
 For the OBEventSubscription1 object:
 
-* EventTypes usage:
-  * TPPs may provide a list of event types to subscribe to specific events.
-  * TPPs may omit this field to subscribe to all supported events.
+- TPP must not provide CallbackUrl, when subscribing for Aggregated Polling only
+- TPP must provide the Version of Resources, for which they want to subscribe the events for. E.g. if supplied with value "3.1", TPP indicates the subscription for the change in state of resources created in v3.1 version
 
+- EventTypes usage:
+  - TPPs may provide a list of event types to subscribe to specific events.
+  - TPPs may omit this field to subscribe to all supported events.
 
 #### Data Dictionary
 
@@ -118,7 +126,7 @@ The OBEventSubscriptionResponse1 object will also be used for the call to:
 
 #### UML
 
-![OBEventSubscriptionResponse1](images/OBEventSubscriptionResponse1.gif)
+![OBEventSubscriptionResponse1](./images/OBEventSubscriptionResponse1.gif)
 
 #### Data Dictionary
 
@@ -135,11 +143,11 @@ The OBEventSubscriptionResponse1 object will also be used for the call to:
 
 The OBEventSubscriptionsResponse1 object will be used for a response to a call to:
 
-* GET /event-subscriptions
+- GET /event-subscriptions
 
 #### UML
 
-![OBEventSubscriptionsResponse1](images/OBEventSubscriptionsResponse1.gif)
+![OBEventSubscriptionsResponse1](./images/OBEventSubscriptionsResponse1.gif)
 
 #### Data Dictionary
 

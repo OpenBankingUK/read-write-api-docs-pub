@@ -1,28 +1,28 @@
-# Callback URL - v3.1.4
+# Callback URL - v3.1.4 <!-- omit in toc -->
 
 1. [Overview](#overview)
 2. [Endpoints](#endpoints)
-      1. [POST /callback-urls](#post-callback-urls)
-      2. [GET /callback-urls](#get-callback-urls)
-      3. [PUT /callback-urls/{CallbackUrlId}](#put-callback-urlscallbackurlid)
-      4. [DELETE /callback-urls/{CallbackUrlId}](#delete-callback-urlscallbackurlid)
+	1. [POST /callback-urls](#post-callback-urls)
+	2. [GET /callback-urls](#get-callback-urls)
+	3. [PUT /callback-urls/{CallbackUrlId}](#put-callback-urlscallbackurlid)
+	4. [DELETE /callback-urls/{CallbackUrlId}](#delete-callback-urlscallbackurlid)
 3. [Data Model](#data-model)
-   1. [Callback Url - Request](#callback-url---request)
-      1. [UML Diagram](#uml-diagram)
-      2. [Data Dictionary](#data-dictionary)
-   2. [Callback Url - Response](#callback-url---response)
-      1. [UML](#uml)
-      2. [Data Dictionary](#data-dictionary-1)
-   3. [Callback Urls - Response](#callback-urls---response)
-      1. [UML](#uml-1)
-      2. [Data Dictionary](#data-dictionary-2)
+	1. [Callback Url - Request](#callback-url---request)
+		1. [UML Diagram](#uml-diagram)
+		2. [Data Dictionary](#data-dictionary)
+	2. [Callback Url - Response](#callback-url---response)
+		1. [UML](#uml)
+		2. [Data Dictionary](#data-dictionary-1)
+	3. [Callback Urls - Response](#callback-urls---response)
+		1. [UML](#uml-1)
+		2. [Data Dictionary](#data-dictionary-2)
 4. [Usage Examples](#usage-examples)
-   1. [Create Callback Url](#create-callback-url)
-      1. [POST Callback Url Request](#post-callback-url-request)
-      2. [POST Callback Url Response](#post-callback-url-response)
-   2. [Get Callback Urls](#get-callback-urls)
-      1. [GET Callback Url Request](#get-callback-url-request)
-      2. [GET Callback Url Response](#get-callback-url-response)
+	1. [Create Callback Url](#create-callback-url)
+		1. [POST Callback Url Request](#post-callback-url-request)
+		2. [POST Callback Url Response](#post-callback-url-response)
+	2. [Get Callback Urls](#get-callback-urls)
+		1. [GET Callback Url Request](#get-callback-url-request)
+		2. [GET Callback Url Response](#get-callback-url-response)
 
 ## Overview
 
@@ -38,14 +38,20 @@ A TPP will set up and maintain its call back details (URL and version number) us
 | --- |--- |--- |--- |--- |--- |--- |--- |--- |--- |
 | callback-url |POST |POST /callback-urls |Optional |accounts<br>payments<br>fundsconfirmations |Client Credentials |Signed Request<br><br>Signed Response |No |OBCallbackUrl1 |OBCallbackUrlResponse1 |
 | callback-url |GET |GET /callback-urls |Mandatory (if resource POST implemented) |accounts<br>payments<br>fundsconfirmations |Client Credentials |Signed Response |No |n/a |OBCallbackUrlsResponse1 |
-| callback-url |PUT |PUT /callback-urls/{CallbackUrlId} | See Note 1 |accounts<br>payments<br>fundsconfirmations |Client Credentials |Signed Request<br><br>Signed Response |No |OBCallbackUrlResponse1 |OBCallbackUrlResponse1 |
-| callback-url |DELETE |DELETE /callback-urls/{CallbackUrlId} | See Note 1 |accounts<br>payments<br>fundsconfirmations |Client Credentials |n/a |No |n/a |n/a |
+| callback-url |PUT |PUT /callback-urls/{CallbackUrlId} | Conditional (See [Note 1](#note-1))  |accounts<br>payments<br>fundsconfirmations |Client Credentials |Signed Request<br><br>Signed Response |No |OBCallbackUrlResponse1 |OBCallbackUrlResponse1 |
+| callback-url |DELETE |DELETE /callback-urls/{CallbackUrlId} | Conditional (See [Note 1](#note-1))  |accounts<br>payments<br>fundsconfirmations |Client Credentials |n/a |No |n/a |n/a |
 
-__Note 1__: The endpoint is optional for an ASPSP to implement where both the following are true:
-- The ASPSP supports aggregated polling only
-- The ASPSP only supports a single event type for aggregated polling
+### Note 1 <!-- omit in toc -->
 
-#### POST /callback-urls
+Implementation for an ASPSP is:
+
+- **Optional**, where both the following are true:
+
+  - The ASPSP supports aggregated polling only
+  - The ASPSP only supports a single event type for aggregated polling
+- **Mandatory**, when the above is not true and ASPSP implemented `POST /callback-urls`
+
+### POST /callback-urls
 
 The API endpoint allows the TPP to ask an ASPSP to create a new **callback-url** resource.
 
@@ -53,20 +59,20 @@ The API endpoint allows the TPP to ask an ASPSP to create a new **callback-url**
 * The ASPSP creates the **callback-url** resource and responds with a unique CallbackUrlId to refer to the resource.
 * An ASPSP **must** respond with a 409 error if a callback-url exists for that TPP.
 
-#### GET /callback-urls
+### GET /callback-urls
 
 The API endpoint allows the TPP to ask an ASPSP to retrieve its **callback-url** resource.
 
 * The ASPSP retrieves the **callback-url** resource and responds with the resource.
 
-#### PUT /callback-urls/{CallbackUrlId}
+### PUT /callback-urls/{CallbackUrlId}
 
 The API endpoint allows the TPP to ask an ASPSP to update a **callback-url** resource.
 
 * The PUT action allows the TPP to update a callback URL for an ASPSP to send event notifications to.
 * The ASPSP updates the **callback-url** resource and responds with the updated resource.
 
-#### DELETE /callback-urls/{CallbackUrlId}
+### DELETE /callback-urls/{CallbackUrlId}
 
 The API endpoint allows the TPP to ask an ASPSP to delete a **callback-url** resource.
 
@@ -82,7 +88,7 @@ The OBCallbackurl1 object will be used for the call to:
 
 #### UML Diagram
 
-![OBCallbackUrl1](images/OBCallbackUrl1.gif)
+![OBCallbackUrl1](./images/OBCallbackUrl1.gif)
 
 #### Data Dictionary
 
@@ -106,7 +112,7 @@ The OBCallbackUrlResponse1 object will also be used for the call to:
 
 #### UML
 
-![OBCallbackUrlResponse1](images/OBCallbackUrlResponse1.gif)
+![OBCallbackUrlResponse1](./images/OBCallbackUrlResponse1.gif)
 
 #### Data Dictionary
 
@@ -128,7 +134,7 @@ The OBCallbackUrlsResponse1 object will be used for a response to a call to:
 
 #### UML
 
-![OBCallbackUrlsResponse1](images/OBCallbackUrlsResponse1.gif)
+![OBCallbackUrlsResponse1](./images/OBCallbackUrlsResponse1.gif)
 
 #### Data Dictionary
 
