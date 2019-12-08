@@ -121,7 +121,7 @@ The API endpoint allows the PISP to download a file (that had been uploaded agai
 
 The state model for the file-payment-consent resource follows the generic consent state model. However, does not use the "Revoked" status, as the consent for a file-payment is not a long-lived consent.
 
-![ image2018-7-5_15-37-22.png ]( images/image2018-7-5_15-37-22.png )
+![ image2018-7-5_15-37-22.png ](./images/image2018-7-5_15-37-22.png )
 
 The definitions for the Status:
 
@@ -145,7 +145,7 @@ This section describes the OBFile2 class, which is reused as the Initiation obje
 
 ##### UML Diagram
 
-![OBFile2]( images/OBFile2.gif )
+![OBFile2](./images/OBFile2.gif )
 
 ##### Notes 
 
@@ -189,7 +189,7 @@ The OBWriteFileConsent3 object will be used for the call to:
 
 #### UML Diagram
 
-![OBWriteFileConsent3]( images/OBWriteFileConsent3.gif )
+![OBWriteFileConsent3](./images/OBWriteFileConsent3.gif )
 
 #### Notes 
 
@@ -222,7 +222,7 @@ The OBWriteFileConsentResponse3 object will be used for a response to a call to:
 
 #### UML Diagram
 
-![OBWriteFileConsentResponse3]( images/OBWriteFileConsentResponse3.gif )
+![OBWriteFileConsentResponse3](./images/OBWriteFileConsentResponse3.gif )
 
 #### Notes 
 

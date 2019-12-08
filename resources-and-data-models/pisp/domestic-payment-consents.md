@@ -99,7 +99,7 @@ The API endpoint allows the PISP to ask an ASPSP to confirm funds on a **domesti
 
 The state model for the domestic-payment-consent resource follows the generic consent state model. However, does not use the Revoked status, as the consent for a domestic-payment is not a long-lived consent.
 
-!["Payment Order Consent Status"](images/image2018-5-18_10-24-21.png)
+!["Payment Order Consent Status"](./images/image2018-5-18_10-24-21.png)
 
 The definitions for the Status:
 
@@ -122,7 +122,7 @@ This section describes the OBDomestic2 class which is reused as the Initiation o
 
 ##### UML Diagram
 
-![OBDomestic2](images/OBDomestic2.gif)
+![OBDomestic2](./images/OBDomestic2.gif)
 
 ##### Notes
 
@@ -189,7 +189,7 @@ The OBWriteDomesticConsent4 object will be used for the call to:
   
 #### UML Diagram
 
-![OBWriteDomesticConsent4](images/OBWriteDomesticConsent4.png)
+![OBWriteDomesticConsent4](./images/OBWriteDomesticConsent4.png)
 
 #### Notes
 
@@ -220,7 +220,7 @@ The OBWriteDomesticConsentResponse4 object will be used for a response to a call
 
 #### UML Diagram
 
-![OBWriteDomesticConsentResponse4](images/OBWriteDomesticConsentResponse4.png)
+![OBWriteDomesticConsentResponse4](./images/OBWriteDomesticConsentResponse4.png)
 
 #### Notes
 
@@ -262,7 +262,7 @@ The OBWriteFundsConfirmationResponse1 object will be used for a response to a ca
 
 #### UML Diagram
 
-![OBWriteConfirmFundsResponse1](images/OBWriteConfirmFundsResponse1.gif)
+![OBWriteConfirmFundsResponse1](./images/OBWriteConfirmFundsResponse1.gif)
 
 #### Notes
 
@@ -287,7 +287,7 @@ Note, further usage examples are available [here](../../references/usage%20examp
 
 #### Request
 
-```text
+```
 POST /domestic-payment-consents HTTP/1.1
 Authorization: Bearer 2YotnFZFEjr1zCsicMWpAA
 x-idempotency-key: FRESCO.21302.GFX.20
@@ -346,7 +346,7 @@ Accept: application/json
 
 #### Response
 
-```text
+```
 HTTP/1.1 201 Created
 x-jws-signature: V2hhdCB3ZSBnb3QgaGVyZQ0K..aXMgZmFpbHVyZSB0byBjb21tdW5pY2F0ZQ0K
 x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
@@ -410,7 +410,7 @@ Content-Type: application/json
 
 #### Request
 
-```text
+```
 GET /domestic-payment-consents/58923 HTTP/1.1
 Authorization: Bearer Jhingapulaav
 x-fapi-auth-date: Sun, 10 Sep 2017 19:43:31 GMT
@@ -421,7 +421,7 @@ Accept: application/json
 
 #### Response
 
-```text
+```
 HTTP/1.1 200 OK
 x-jws-signature: V2hhdCB3ZSBnb3QgaGVyZQ0K..aXMgZmFpbHVyZSB0byBjb21tdW5pY2F0ZQ0K
 x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d

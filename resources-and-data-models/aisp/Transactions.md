@@ -62,7 +62,7 @@ For a specific date range, an account (AccountId) may have no transactions booke
 
 ### UML Diagram
 
-![ OBReadTransaction5.png ]( images/Transactions/OBReadTransaction5.png )
+![ OBReadTransaction5.png ](./images/Transactions/OBReadTransaction5.png )
 
 #### Notes
 

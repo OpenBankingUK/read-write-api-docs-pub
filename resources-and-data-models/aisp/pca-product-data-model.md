@@ -77,7 +77,7 @@ Further analysis required:-
 * Eligibility and FeaturesAndBenefits section are removed from Product as information related to them might not be easily available. May be looked into, in future releases.
 * Monthly maximum charge (MMC): covering all unarranged overdraft charges (including debit interest)
 
-![ PCAHighLevel.ClassDiagram.png ]( images/PCA/PCAHighLevel.ClassDiagram.png )
+![ PCAHighLevel.ClassDiagram.png ](./images/PCA/PCAHighLevel.ClassDiagram.png )
 
 #### Credit Interest Model
 
@@ -88,7 +88,7 @@ Further analysis required:-
 * DepositInterestAppliedCoverage refers to which interest rate is applied when interests are tiered. For example, if an account balance is £2k and the interest tiers are:- 0-£500 0.1%, 500-1000 0.2%, 1000-10000 0.5%, then the applicable interest rate could either be 0.5% of the entire balance (since the account balance sits in the top interest tier) or (0.1%*500)+(0.2%*500)+(0.5%*1000). In the 1st situation, the interest should be applied to the "Whole" of the account balance and in the 2nd, this should be "Tiered".
 * Destination refers to whether the Product allows interest to be credited to another account ("PayAway") or only to itself ("SelfCredit").
 
-![ images/PCA/PCACreditInterestClassDiagram.png ]( images/PCA/PCACreditInterestClassDiagram.png )
+![ images/PCA/PCACreditInterestClassDiagram.png ](./images/PCA/PCACreditInterestClassDiagram.png )
 
 #### Overdraft
 
@@ -96,7 +96,7 @@ Further analysis required:-
 * Student Account: Can it be negotiated or back book product?
 * OverdraftFeeCharges are defined at TierBandSet level for fees/charges that are not tiered and at the TierBand level for those that are.
 
-![ PCAOverdraftClassDiagram.png ]( images/PCA/PCAOverdraftClassDiagram.png )
+![ PCAOverdraftClassDiagram.png ](./images/PCA/PCAOverdraftClassDiagram.png )
 
 #### OverdraftFeeCharges
 
@@ -110,7 +110,7 @@ Further analysis required:-
 
 * Other fee charges such as Service charge, Monthly Account Maintenance Fee or Service Charge - Account Fee.
 
-![ ainfopca.2.2.0.OtherFeesCharges.png ]( images/PCA/ainfopca.2.2.0.OtherFeesCharges.png )
+![ ainfopca.2.2.0.OtherFeesCharges.png ](./images/PCA/ainfopca.2.2.0.OtherFeesCharges.png )
 
 ## Data Model
 
@@ -124,7 +124,7 @@ Further analysis required:-
 * Other Fee Charges: Only Periodic Fee(service charge) has been included in the Code List.
 * We have taken Open Data PCA Segments for PCA Account Info as well.
 
-![ ainfopca.3.1.4.ClassDiagram.png ]( images/PCA/ainfopca.3.1.4.ClassDiagram.png )
+![ ainfopca.3.1.4.ClassDiagram.png ](./images/PCA/ainfopca.3.1.4.ClassDiagram.png )
 
 ##### Data Dictionary
 

@@ -57,7 +57,7 @@ In this scenario:
 
 ### Sequence Diagram
 
-![Sequence Diagram](images/MerchantDomesticPaymentUsageExample-3.png)
+![Sequence Diagram](./images/MerchantDomesticPaymentUsageExample-3.png)
 
 <details>
   <summary>Diagram source</summary>
@@ -128,7 +128,7 @@ Notes:
 
 ##### POST /domestic-payment-consents request
 
-```text
+```
 POST /domestic-payment-consents HTTP/1.1
 Authorization: Bearer 2YotnFZFEjr1zCsicMWpAA
 x-idempotency-key: FRESCO.21302.GFX.20
@@ -186,7 +186,7 @@ Accept: application/json
 
 ##### POST  /domestic-payment-consents response
 
-```text
+```
 HTTP/1.1 201 Created
 x-jws-signature: V2hhdCB3ZSBnb3QgaGVyZQ0K..aXMgZmFpbHVyZSB0byBjb21tdW5pY2F0ZQ0K
 x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
@@ -249,7 +249,7 @@ Content-Type: application/json
 
 ##### GET /domestic-payment-consents/{ConsentId}/funds-confirmation Request
 
-```text
+```
 GET /domestic-payment-consents/58923/funds-confirmation HTTP/1.1
 Authorization: Bearer Jhingapulaav
 x-fapi-auth-date: Sun, 10 Sep 2017 19:43:31 GMT
@@ -260,7 +260,7 @@ Accept: application/json
 
 ##### GET /domestic-payment-consents/{ConsentId}/funds-confirmation Response
 
-```text
+```
 HTTP/1.1 200 OK
 x-jws-signature: V2hhdCB3ZSBnb3QgaGVyZQ0K..aXMgZmFpbHVyZSB0byBjb21tdW5pY2F0ZQ0K
 x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
@@ -286,7 +286,7 @@ Content-Type: application/json
 
 ##### POST /domestic-payments Request
 
-```text
+```
 POST /domestic-payments HTTP/1.1
 Authorization: Bearer Jhingapulaav
 x-idempotency-key: FRESNO.1317.GFX.22
@@ -345,7 +345,7 @@ Accept: application/json
 
 ##### POST /domestic-payments Response
 
-```text
+```
 HTTP/1.1 201 Created
 x-jws-signature: V2hhdCB3ZSBnb3QgaGVyZQ0K..aXMgZmFpbHVyZSB0byBjb21tdW5pY2F0ZQ0K
 x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
@@ -390,7 +390,7 @@ Content-Type: application/json
 
 ##### GET /domestic-payment-consents/{ConsentId} Request
 
-```text
+```
 GET /domestic-payment-consents/58923 HTTP/1.1
 Authorization: Bearer Jhingapulaav
 x-fapi-auth-date: Sun, 10 Sep 2017 19:43:31 GMT
@@ -401,7 +401,7 @@ Accept: application/json
 
 ##### GET /domestic-payment-consents/{ConsentId} Response
 
-```text
+```
 HTTP/1.1 200 OK
 x-jws-signature: V2hhdCB3ZSBnb3QgaGVyZQ0K..aXMgZmFpbHVyZSB0byBjb21tdW5pY2F0ZQ0K
 x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
@@ -465,7 +465,7 @@ Content-Type: application/json
 
 ##### GET /domestic-payments/{DomesticPaymentId} Request
 
-```text
+```
 GET /domestic-payments/58923-001 HTTP/1.1
 Authorization: Bearer 2YotnFZFEjr1zCsicMWpAA
 x-fapi-auth-date:  Sun, 10 Sep 2017 19:43:31 GMT
@@ -476,7 +476,7 @@ Accept: application/json
 
 ##### GET /domestic-payments/{DomesticPaymentId} Response
 
-```text
+```
 HTTP/1.1 200 OK
 x-jws-signature: V2hhdCB3ZSBnb3QgaGVyZQ0K..aXMgZmFpbHVyZSB0byBjb21tdW5pY2F0ZQ0K
 x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
@@ -528,7 +528,7 @@ In this scenario:
 
 ### Sequence Diagram
 
-![P2P Payment](images/P2PDomesticPaymentExample.png)
+![P2P Payment](./images/P2PDomesticPaymentExample.png)
 
 <details>
 <summary>Diagram source</summary>
@@ -595,7 +595,7 @@ end opt
 
 ##### POST /domestic-payment-consents request
 
-```text
+```
 POST /domestic-payment-consents HTTP/1.1
 Authorization: Bearer 2YotnFZFEjr1zCsicMWpAA
 x-idempotency-key: FRESCO.21302.GFX.20
@@ -641,7 +641,7 @@ Accept: application/json
 
 ##### POST /domestic-payment-consents response
 
-```text
+```
 HTTP/1.1 201 Created
 x-jws-signature: V2hhdCB3ZSBnb3QgaGVyZQ0K..aXMgZmFpbHVyZSB0byBjb21tdW5pY2F0ZQ0K
 x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
@@ -692,7 +692,7 @@ Content-Type: application/json
 
 ##### POST /domestic-payments request
 
-```text
+```
 POST /domestic-payments HTTP/1.1
 Authorization: Bearer 2YotnFZFEjr1zCsicMWpAA
 x-idempotency-key: FRESNO.1317.GFX.22
@@ -739,7 +739,7 @@ Accept: application/json
 
 ##### POST /domestic-payments response
 
-```text
+```
 HTTP/1.1 201 Created
 x-jws-signature: V2hhdCB3ZSBnb3QgaGVyZQ0K..aXMgZmFpbHVyZSB0byBjb21tdW5pY2F0ZQ0K
 x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
@@ -788,7 +788,7 @@ Content-Type: application/json
 
 ##### GET /domestic-payment-consents/{ConsentId} request
 
-```text
+```
 GET /domestic-payment-consents/7290 HTTP/1.1
 Authorization: Bearer 2YotnFZFEjr1zCsicMWpAA
 x-fapi-auth-date:  Sun, 10 Sep 2017 19:43:31 GMT
@@ -799,7 +799,7 @@ Accept: application/json
 
 ##### GET /domestic-payment-consents/{ConsentId} response
 
-```text
+```
 HTTP/1.1 200 OK
 x-jws-signature: V2hhdCB3ZSBnb3QgaGVyZQ0K..aXMgZmFpbHVyZSB0byBjb21tdW5pY2F0ZQ0K
 x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
@@ -850,7 +850,7 @@ Content-Type: application/json
 
 ##### GET /domestic-payments/{DomesticPaymentId} request
 
-```text
+```
 GET /domestic-payments/7290-003 HTTP/1.1
 Authorization: Bearer 2YotnFZFEjr1zCsicMWpAA
 x-fapi-auth-date:  Sun, 10 Sep 2017 19:43:31 GMT
@@ -861,7 +861,7 @@ Accept: application/json
 
 ##### GET /domestic-payments/{DomesticPaymentId} response
 
-```text
+```
 HTTP/1.1 200 OK
 x-jws-signature: V2hhdCB3ZSBnb3QgaGVyZQ0K..aXMgZmFpbHVyZSB0byBjb21tdW5pY2F0ZQ0K
 x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
@@ -912,7 +912,7 @@ Use of LocalInstrument and CutOffDateTime.
 
 ### POST /domestic-payment-consents request
 
-```text
+```
 POST /domestic-payment-consents HTTP/1.1
 Authorization: Bearer 2YotnFZFEjr1zCsicMWpAA
 x-idempotency-key: FRESCO.21302.GFX.20
@@ -959,7 +959,7 @@ Accept: application/json
 
 ### POST /domestic-payment-consents response
 
-```text
+```
 HTTP/1.1 201 Created
 x-jws-signature: V2hhdCB3ZSBnb3QgaGVyZQ0K..aXMgZmFpbHVyZSB0byBjb21tdW5pY2F0ZQ0K
 x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
@@ -1014,7 +1014,7 @@ Use of LocalInstrument, CreditorPostalAddress, CutOffDateTime and Charges.
 
 ### POST /domestic-payment-consents request
 
-```text
+```
 POST /domestic-payment-consents HTTP/1.1
 Authorization: Bearer 2YotnFZFEjr1zCsicMWpAA
 x-idempotency-key: FRESCO.21302.GFX.20
@@ -1069,7 +1069,7 @@ Accept: application/json
 
 ### POST /domestic-payment-consents response
 
-```text
+```
 HTTP/1.1 201 Created
 x-jws-signature: V2hhdCB3ZSBnb3QgaGVyZQ0K..aXMgZmFpbHVyZSB0byBjb21tdW5pY2F0ZQ0K
 x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
@@ -1144,7 +1144,7 @@ Example below:
 
 ### POST /domestic-payment-consents request
 
-```text
+```
 POST /domestic-payment-consents HTTP/1.1
 Authorization: Bearer 2YotnFZFEjr1zCsicMWpAA
 x-idempotency-key: FRESCO.21302.GFX.20
@@ -1191,7 +1191,7 @@ Accept: application/json
 
 ### POST /domestic-payment-consents response
 
-```text
+```
 HTTP/1.1 201 Created
 x-jws-signature: V2hhdCB3ZSBnb3QgaGVyZQ0K..aXMgZmFpbHVyZSB0byBjb21tdW5pY2F0ZQ0K
 x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
@@ -1246,7 +1246,7 @@ Below in an example illustrating Money transfer from a card account to a bank ac
 
 ### POST /domestic-payment-consents request
 
-```text
+```
 POST /domestic-payment-consents HTTP/1.1
 Authorization: Bearer 2YotnFZFEjr1zCsicMWpAA
 x-idempotency-key: FRESCO.21302.GFX.20
@@ -1292,7 +1292,7 @@ Accept: application/json
 
 ### POST /domestic-payment-consents response
 
-```text
+```
 HTTP/1.1 201 Created
 x-jws-signature: V2hhdCB3ZSBnb3QgaGVyZQ0K..aXMgZmFpbHVyZSB0byBjb21tdW5pY2F0ZQ0K
 x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d

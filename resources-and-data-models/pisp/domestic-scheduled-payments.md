@@ -117,7 +117,7 @@ The domestic-scheduled-payments - payment-details must have one of the following
 
 The state model for the domestic-scheduled-payment resource describes the initiation status only. I.e., not the subsequent execution of the domestic-scheduled-payment.
 
-![Payment Order](images/DomesticScheduledStatusModel.png)
+![Payment Order](./images/DomesticScheduledStatusModel.png)
 
 The definitions for the Status:
 
@@ -132,7 +132,7 @@ The definitions for the Status:
 
 If the payment-order requires multiple authorisations, the Status of the multiple authorisations will be updated in the MultiAuthorisation object.
 
-![Multi Authorisation](images/image2018-6-29_16-36-34.png)
+![Multi Authorisation](./images/image2018-6-29_16-36-34.png)
 
 The definitions for the Status:
 
@@ -160,7 +160,7 @@ The OBWriteDomesticScheduled2 object will be used for a call to:
 
 #### UML Diagram
 
-![Domestic Scheduled Payment - Request](images/OBWriteDomesticScheduled2.gif)
+![Domestic Scheduled Payment - Request](./images/OBWriteDomesticScheduled2.gif)
 
 #### Notes
 
@@ -190,7 +190,7 @@ The OBWriteDomesticScheduledResponse4 object will be used for a response to a ca
 
 #### UML Diagram
 
-![Domestic Scheduled Payment - Response](images/OBWriteDomesticScheduledResponse4.png)
+![Domestic Scheduled Payment - Response](./images/OBWriteDomesticScheduledResponse4.png)
 
 #### Notes
 
@@ -233,7 +233,7 @@ The OBWritePaymentDetailsResponse1 object will be used for a response to a call 
 
 #### UML Diagram
 
-![Domestic Schedule Payment Order - Payment Details - Response](images/OBWritePaymentDetailsResponse1.png)
+![Domestic Schedule Payment Order - Payment Details - Response](./images/OBWritePaymentDetailsResponse1.png)
 
 #### Data Dictionary
 
@@ -249,7 +249,7 @@ The OBWritePaymentDetailsResponse1 object will be used for a response to a call 
 
 ##### POST /domestic-scheduled-payments Request
 
-```text
+```
 POST /domestic-scheduled-payments HTTP/1.1
 Authorization: Bearer 2YotnFZFEjr1zCsicMWpAA
 x-idempotency-key: FRESNO.1317.GFX.22
@@ -296,7 +296,7 @@ Accept: application/json
 
 ##### POST /domestic-scheduled-payments Response
 
-```text
+```
 HTTP/1.1 201 Created
 x-jws-signature: V2hhdCB3ZSBnb3QgaGVyZQ0K..aXMgZmFpbHVyZSB0byBjb21tdW5pY2F0ZQ0K
 x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d

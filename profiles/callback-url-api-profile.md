@@ -48,7 +48,7 @@ Step 3: Retrieve/Update/Delete Event Notification Configuration
 
 #### Sequence Diagram
 
-![Event Notification Overview](images/EventNotificationOverview.png)
+![Event Notification Overview](./images/EventNotificationOverview.png)
 
 <details>
   <summary>Diagram source</summary>
