@@ -11,17 +11,25 @@ This specification should be read in conjunction with the Customer Experience Gu
 The key difference between the CMA Order and PSD2/RTS requirements relate to which product types are implemented, and the timing for implementation. For example, the CMA Order requires the CMA9 to implement the standard for PCA and BCA accounts earlier (in some cases) than the PSD2/RTS timelines. The timings are defined in the Open Banking Roadmap (https://www.openbanking.org.uk/wp-content/uploads/Open-Banking-Revised-Roadmap-July-2018.pdf).
 
 ## Known Issues
+
 The specification must be read in conjunction with the [Known Issues](https://openbanking.atlassian.net/wiki/spaces/DZ/pages/47546479/Known+Specification+Issues).
 
 ## Swagger Specification
 
 The Swagger Specification for R/W APIs can be downloaded from the following GitHub Repository:
 
-https://github.com/OpenBankingUK/read-write-api-specs
+[https://github.com/OpenBankingUK/read-write-api-specs](https://github.com/OpenBankingUK/read-write-api-specs)
 
 ## Change Log
 
+### Version 3.1.4 - RC1
+
+- __Decision 212 - implementing Decision A and C, aliging the conditionality of Aggregated Polling and Realtime notification with trustee letter__ [View Diff](TBD)
+- __Errata - Event Notification Specification usage examples and clarifications__  [View Diff](TBD)
+- __Feedback changes__ [View Diff](TBD)
+
 ### Version 3.1.4 - Draft 4
+
 - __Reducing the negative impact of 90 days re-authentication option 3__ [View Diff](https://github.com/OpenBankingUK/read-write-api-docs-pub/commit/3c7cbfb09126aad6c4ba500c50aa455ada7ece88)
 - __P7 - Refunds__ [View Diff](https://github.com/OpenBankingUK/read-write-api-docs-pub/commit/aa393c8ffa87b5f045a718b6f9482cfbc0b74f14)
 - __Decision 191 - PAN Masking for CoF API - ASPSPs may return masked PAN as per their online system__
@@ -41,11 +49,11 @@ https://github.com/OpenBankingUK/read-write-api-specs
 [View Diff](https://github.com/OpenBankingUK/read-write-api-docs-pub/commit/85668d956134fa53a576157fa305b14eaa6200b8)
 
 ### Version 3.1.4 - Draft 3
+
 - __Decision 199 - Update spec to suggest only Access Revocation is possible from ASPSP's dashboard__
 [View Diff](https://github.com/OpenBankingUK/read-write-api-docs-pub/commit/c1bdea6379220fad35f49e2f8f4326b022928572)
 - __Decision 209 - Add RepresentativeAPR field in PCA/BCA Product endpoints__
   [View Diff](https://github.com/OpenBankingUK/read-write-api-docs-pub/commit/5c2d12b6aa1f1abd4a8e8da618e1a01675c50684)
-
 
 ### Version 3.1.4 - Draft 2
 

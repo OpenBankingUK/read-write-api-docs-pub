@@ -14,7 +14,7 @@ The Aggregated Polling API Profile describes the flows and common functionality 
 * It can be used as the sole method to collect event notifications by a TPP.
 * It offers a means to catch-up following a period where the TPP's Real Time Notification endpoint has been offline.
 
-Implementation of the Aggregated Polling API is **optional** for ASPSPs.
+Implementation of the Aggregated Polling API is **conditional** for ASPSPs.
 
 This profile should be read in conjunction with a compatible Read/Write Data API Profile, a compatible Event Notification API Profile and compatible individual resources.
 
@@ -32,6 +32,8 @@ This is the first time a TPP calls the ASPSP to poll for events:
 
 * A TPP calls an ASPSP to poll for events.
 * The ASPSP responds with an array of awaiting events encoded as signed event notifications.
+
+Awaiting events are the events that have not been acknowledgement by the TPP, or have been reported as errors by the TPP.
 
 Step 2a: Acknowledge Only
 
@@ -120,8 +122,6 @@ If the ASPSP limits the number of times it attempts to deliver a SET to one, it 
 Similarly the TPP may safely make poll requests without acknowledging the SETs that it has received.
 
 An ASPSP that provides aggregated polling without expecting acknowledgements must document the expected behaviour on their developer portal.
-
-
 
 ### Event Recycling Frequency
 

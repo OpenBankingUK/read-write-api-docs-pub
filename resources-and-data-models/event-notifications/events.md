@@ -1,4 +1,4 @@
-# Events - v3.1.4
+# Events - v3.1.4 <!-- omit in toc -->
 
 1. [Overview](#overview)
 2. [Endpoints](#endpoints)
@@ -47,6 +47,7 @@ The Events resource is used by a TPP to retrieve multiple signed event notificat
 This resource description should be read in conjunction with a compatible Aggregated Polling Profile.
 
 ## Endpoints
+
 | Resource |HTTP Operation |Endpoint |Mandatory? |Scope |Grant Type |Message Signing |Idempotency Key |Request Object |Response Object |
 | --- |--- |--- |--- |--- |--- |--- |--- |--- |--- |
 | events |POST |POST /events |Optional |accounts fundsconfirmations |Client Credentials |N/A |No |OBEventPolling1 |OBEventPollingResponse1 |
@@ -228,7 +229,7 @@ Note for the sake of readability the SETs shown in examples are shorted.
 #### POST Events Request
 
 ```
-POST /event HTTP/1.1
+POST /events HTTP/1.1
 
 Authorization: Bearer 7b99f6c331e841dab811176e25d57ca7
 Content-Type: application/json
@@ -244,7 +245,7 @@ x-fapi-interaction-id: 1af4c0e6b5da49f6b1aebf439e87c199
 #### POST Events Response
 
 ```
-POST /event HTTP/1.1
+POST /events HTTP/1.1
 
 Content-Type: application/json
 x-fapi-interaction-id: 1af4c0e6b5da49f6b1aebf439e87c199
@@ -266,7 +267,7 @@ x-fapi-interaction-id: 1af4c0e6b5da49f6b1aebf439e87c199
 #### POST Events Request
 
 ```
-POST /event HTTP/1.1
+POST /events HTTP/1.1
 
 Authorization: Bearer 7b99f6c331e841dab811176e25d57ca7
 Content-Type: application/json
@@ -281,7 +282,7 @@ x-fapi-interaction-id: 295f6c6c7b2045b2a3e91e4f1c31d681
 #### POST Events Response
 
 ```
-POST /event HTTP/1.1
+POST /events HTTP/1.1
 
 Content-Type: application/json
 x-fapi-interaction-id: 295f6c6c7b2045b2a3e91e4f1c31d681
@@ -298,7 +299,7 @@ x-fapi-interaction-id: 295f6c6c7b2045b2a3e91e4f1c31d681
 #### POST Events Request
 
 ```
-POST /event HTTP/1.1
+POST /events HTTP/1.1
 
 Authorization: Bearer 7b99f6c331e841dab811176e25d57ca7
 Content-Type: application/json
@@ -322,7 +323,7 @@ x-fapi-interaction-id: 3fc0df586e45404abd5bbf1b23ce343d
 #### POST Events Response
 
 ```
-POST /event HTTP/1.1
+POST /events HTTP/1.1
 
 Content-Type: application/json
 x-fapi-interaction-id: 3fc0df586e45404abd5bbf1b23ce343d
