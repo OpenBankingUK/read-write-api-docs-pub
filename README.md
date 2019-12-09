@@ -24,9 +24,9 @@ The Swagger Specification for R/W APIs can be downloaded from the following GitH
 
 ### Version 3.1.4 - RC1
 
-- __Decision 212 - implementing Decision A and C, aliging the conditionality of Aggregated Polling and Realtime notification with trustee letter__ [View Diff](TBD)
-- __Errata - Event Notification Specification usage examples and clarifications__  [View Diff](TBD)
-- __Feedback changes__ [View Diff](TBD)
+- __Decision 212 - implementing Decision A and C, aliging the conditionality of Aggregated Polling and Realtime notification with trustee letter__ [View Diff](https://github.com/OpenBankingUK/read-write-api-docs-pub/commit/85addb6bd4ef06f78c600a28d4ef2be5c3a5ab1f)
+- __Errata - Event Notification Specification usage examples and clarifications__  [View Diff](https://github.com/OpenBankingUK/read-write-api-docs-pub/commit/85addb6bd4ef06f78c600a28d4ef2be5c3a5ab1f)
+- __Feedback changes__ [View Diff](https://github.com/OpenBankingUK/read-write-api-docs-pub/commit/85addb6bd4ef06f78c600a28d4ef2be5c3a5ab1f)
 
 ### Version 3.1.4 - Draft 4
 
