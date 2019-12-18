@@ -1,4 +1,4 @@
-# Callback URL API Profile - v3.1.2
+# Callback URL API Profile - v3.1.4 <!-- omit in toc -->
 
 1. [Overview](#overview)
 2. [Basics](#basics)
@@ -52,35 +52,35 @@ Step 3: Retrieve/Update/Delete Event Notification Configuration
 
 <details>
   <summary>Diagram source</summary>
-  
+
   ```
 participant TPP
 participant ASPSP Authorisation Server
 participant ASPSP Resource Server
 participant ASPSP Notification Service
-     
+
 note over TPP, ASPSP Notification Service
 Step 1: Setup Event Notification Configuration
 end note
- 
+
 TPP <-> ASPSP Authorisation Server: Establish TLS 1.2 MA
 TPP -> ASPSP Authorisation Server: Initiate Client Credentials Grant
 ASPSP Authorisation Server -> TPP: access-token
 TPP <-> ASPSP Resource Server: Establish TLS 1.2 MA
 TPP -> ASPSP Resource Server: POST /callback-urls
 ASPSP Resource Server -> TPP: HTTP 201 (Created),  CallbackUrlId
- 
+
 note over TPP, ASPSP Notification Service
  Step 2: Event Notification Required
 end note
- 
- 
- 
+
+
+
 note left of ASPSP Notification Service
 - Create EventNotification
 - Sign EventNotification
 end note
- 
+
 loop Retry Until Successful (as per retry policy)
 ASPSP Notification Service -> TPP: POST /event-notifications, EventNotification, signature
 alt success
@@ -89,26 +89,26 @@ else failure
 TPP -> ASPSP Notification Service: HTTP 500/400
 end alt
 end loop
- 
+
 note right of TPP
 TPP verifies signature
- 
+
 URL for resource contained in the
 EventNotification rlk (resource links) claim
 end note
- 
+
 TPP <-> ASPSP Authorisation Server: Establish TLS 1.2 MA
 TPP -> ASPSP Authorisation Server: Initiate Client Credentials Grant
 ASPSP Authorisation Server -> TPP: access-token
- 
+
 TPP <-> ASPSP Resource Server: Establish TLS 1.2 MA
 TPP -> ASPSP Resource Server: GET Resource
 ASPSP Resource Server -> TPP: HTTP 200 (OK),  Resource
- 
+
 note over TPP, ASPSP Notification Service
 Step 3: Retrieve/Update/Delete Event Notification Configuration
 end note
- 
+
 TPP <-> ASPSP Authorisation Server: Establish TLS 1.2 MA
 TPP -> ASPSP Authorisation Server: Initiate Client Credentials Grant
 ASPSP Authorisation Server -> TPP: access-token
@@ -124,15 +124,15 @@ TPP -> ASPSP Resource Server: DELETE /callback-urls/{CallbackUrlId}
 ASPSP Resource Server -> TPP: HTTP 204 (OK)
 end alt
 option footer=bar
-``` 
- 
+```
+
 </details>
 
 ### Callback URL
 
 TPPs must register a URL for TPP hosted services to receive event notifications from an ASPSP. The URL **must** end with the Event Notification API specification version number, followed by ‘/event-notifications'.
 
-For example: 
+For example:
 
 * URL: https://tpp.com/open-banking/v3.1/event-notifications
 

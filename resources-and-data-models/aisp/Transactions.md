@@ -1,4 +1,4 @@
-# Transactions - v3.1.2
+# Transactions - v3.1.4 <!-- omit in toc -->
 
 1. [Overview](#overview)
 2. [Endpoints](#endpoints)
@@ -44,7 +44,7 @@ An AISP  **may**  retrieve the transaction resource for a specific AccountId (wh
 
 ### GET /transactions
 
-If an ASPSP has implemented the bulk retrieval endpoints, an AISP  **may**  optionally retrieve the transactions in bulk. 
+If an ASPSP has implemented the bulk retrieval endpoints, an AISP  **may**  optionally retrieve the transactions in bulk.
 This will retrieve the resources for all authorised accounts linked to the account-request.
 
 ## Data Model
@@ -70,8 +70,8 @@ For a specific date range, an account (AccountId) may have no transactions booke
 * A DateTime element has been used instead of a complex choice element of Date and DateTime. Where time elements do not exist in ASPSP systems, the time portion of the DateTime element will be defaulted to 00:00:00+00:00.
 * The BookingDateTime has been set to mandatory as all ASPSPs must provide this field for pagination and filtering. The BookingDateTime is the date the transaction is booked (or posted) and becomes immutable, which is not the date the transaction took place.
 * Either the BankTransactionCode (which is the ISO transaction code list), **or** ProprietaryBankTransactionCode, **or** **both** may be populated. While the expectation is that at least one of BankTransactionCode. or ProprietaryBankTransactionCode are populated, we have decided not to enforce this behaviour in the payload structure as this would require nesting elements and introducing complex choice elements.
-* The BankTransactionCode (ISO) code-list is documented on the ISO20022 website: https://www.iso20022.org/external_code_list.page; and External Code Sets spreadsheet. 
-    * The ISO 20022 BankTransactionCode Code and SubCode are specified as 4 letter codes. However, the principle we have applied for the code lists is to have longer more descriptive codes. 
+* The BankTransactionCode (ISO) code-list is documented on the ISO20022 website: https://www.iso20022.org/external_code_list.page; and External Code Sets spreadsheet.
+    * The ISO 20022 BankTransactionCode Code and SubCode are specified as 4 letter codes. However, the principle we have applied for the code lists is to have longer more descriptive codes.
     * The BankTransactionCode Code and SubCode will be populated with the long form description of the ISO 20022 code, with delimiters removed. E.g., the Family Code "CNTR" has a description of "Counter Transactions" which is populated as "CounterTransactions"
 * ASPSPs must have the ability to provide transactions through APIs for a period that at least equals the period provided through their online channels.
 
@@ -109,21 +109,21 @@ GET /accounts/1/transactions?toBookingDateTime=2017-03-31T23:59:59
 
 The resource differs depending on the permissions (ReadTransactionsBasic and ReadTransactionsDetail) used to access resource. In the event the resource is accessed with both ReadTransactionsBasic and ReadTransactionsDetail, the most detailed level (ReadTransactionsDetail) must be used.
 
-* These objects **must not** be returned **without** the **ReadTransactionsDetail** permission: 
-    * OBReadTransaction5/Data/Transaction/TransactionInformation 
-    * OBReadTransaction5/Data/Transaction/Balance 
-    * OBReadTransaction5/Data/Transaction/MerchantDetails 
-    * OBReadTransaction5/Data/Transaction/CreditorAgent 
-    * OBReadTransaction5/Data/Transaction/CreditorAccount 
-    * OBReadTransaction5/Data/Transaction/DebtorAgent 
+* These objects **must not** be returned **without** the **ReadTransactionsDetail** permission:
+    * OBReadTransaction5/Data/Transaction/TransactionInformation
+    * OBReadTransaction5/Data/Transaction/Balance
+    * OBReadTransaction5/Data/Transaction/MerchantDetails
+    * OBReadTransaction5/Data/Transaction/CreditorAgent
+    * OBReadTransaction5/Data/Transaction/CreditorAccount
+    * OBReadTransaction5/Data/Transaction/DebtorAgent
     * OBReadTransaction5/Data/Transaction/DebtorAccount
-* If the **ReadTransactionsDetail** is granted by the PSU: 
-    * OBReadTransaction5/Data/Transaction/TransactionInformation **may** be returned if applicable to the transaction and ASPSP (0..1) 
-    * OBReadTransaction5/Data/Transaction/Balance **may** be returned if applicable to the transaction and ASPSP (0..1) 
-    * OBReadTransaction5/Data/Transaction/MerchantDetails **may** be returned if applicable to the transaction and ASPSP (0..1) 
-    * OBReadTransaction5/Data/Transaction/CreditorAgent **may** be returned if applicable to the transaction and ASPSP (0..1) 
-    * OBReadTransaction5/Data/Transaction/CreditorAccount **may** be returned if applicable to the transaction and ASPSP (0..1) 
-    * OBReadTransaction5/Data/Transaction/DebtorAgent **may** be returned if applicable to the transaction and ASPSP (0..1) 
+* If the **ReadTransactionsDetail** is granted by the PSU:
+    * OBReadTransaction5/Data/Transaction/TransactionInformation **may** be returned if applicable to the transaction and ASPSP (0..1)
+    * OBReadTransaction5/Data/Transaction/Balance **may** be returned if applicable to the transaction and ASPSP (0..1)
+    * OBReadTransaction5/Data/Transaction/MerchantDetails **may** be returned if applicable to the transaction and ASPSP (0..1)
+    * OBReadTransaction5/Data/Transaction/CreditorAgent **may** be returned if applicable to the transaction and ASPSP (0..1)
+    * OBReadTransaction5/Data/Transaction/CreditorAccount **may** be returned if applicable to the transaction and ASPSP (0..1)
+    * OBReadTransaction5/Data/Transaction/DebtorAgent **may** be returned if applicable to the transaction and ASPSP (0..1)
     * OBReadTransaction5/Data/Transaction/DebtorAccount **may** be returned if applicable to the transaction and ASPSP (0..1)
 
 If the ReadPAN permission is granted by the PSU - the ASPSP may choose to populate the unmasked PAN - if the PAN is being populated in the response for these fields:
@@ -315,7 +315,7 @@ Accept: application/json
 #### Get Transactions Response
 
 ```
-HTTP/1.1 200 OK 
+HTTP/1.1 200 OK
 x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Content-Type: application/json
 ```
@@ -416,6 +416,6 @@ Accept: application/json
 #### GET Account Transactions Response
 
 ```
-HTTP/1.1 403 Forbidden 
+HTTP/1.1 403 Forbidden
 x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 ```

@@ -1,4 +1,4 @@
-# International Standing Order Consents - v3.1.3
+# International Standing Order Consents - v3.1.4 <!-- omit in toc -->
 
 1. [Overview](#overview)
 2. [Endpoints](#endpoints)

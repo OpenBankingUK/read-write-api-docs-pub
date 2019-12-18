@@ -31,7 +31,7 @@
    5. [Show whole interest rates](#show-whole-interest-rates)
       1. [Get Accounts Product Request](#get-accounts-product-request-3)
       2. [Get Accounts Product Response](#get-accounts-product-response-3)
-   6. [Represent Tariffs and "Other Fees And Charges"](#represent-tariffs-and-other-fees-and-charges)
+   6. [Represent Tariffs and &quot;Other Fees And Charges&quot;](#represent-tariffs-and-quotother-fees-and-chargesquot)
       1. [Get Accounts Product Request](#get-accounts-product-request-4)
       2. [Get Accounts Product Response](#get-accounts-product-response-4)
 

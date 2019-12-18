@@ -1,4 +1,4 @@
-# Event Notification Subscription API Profile - v3.1.2
+# Event Notification Subscription API Profile - v3.1.4 <!-- omit in toc -->
 
 1. [Overview](#overview)
 2. [Basics](#basics)
@@ -22,7 +22,7 @@ The Event Notification Subscription API Profile describes the flows and common f
 
 * Register an event subscription with an ASPSP to subscribe to event notifications.
   * A subscription can enable real time event notifications via a HTTP callback from the ASPSP, and aggregated polling by the TPP.
-* Specify a list of event types to be notified on. 
+* Specify a list of event types to be notified on.
 * Optionally read, update or delete a registered event subscription.
 
 This profile should be read in conjunction with a compatible Read/Write Data API Profile, a compatible Event Notification API Profile and compatible individual resources.
@@ -49,13 +49,13 @@ Step 2: Retrieve/Update/Delete Event Notification Subscription
 
 <details>
   <summary>Diagram source</summary>
-  
+
   ```
 participant TPP
 participant ASPSP Authorisation Server
 participant ASPSP Resource Server
 participant ASPSP Notification Service
-    
+
 note over TPP, ASPSP Notification Service
 Step 1: Setup Event Subscription
 end note
@@ -86,8 +86,8 @@ TPP -> ASPSP Resource Server: DELETE /event-subscriptions/{EventSubscriptionId}
 ASPSP Resource Server -> TPP: HTTP 204 (OK)
 end alt
 option footer=bar
-``` 
- 
+```
+
 </details>
 
 ### Subscriptions for Real Time Event Notifications and Aggregated Polling
@@ -100,7 +100,7 @@ TPPs must register an event subscription with a CallbackUrl for TPP hosted servi
 
 The CallbackUrl **must** end with the Event Notification API specification version number, followed by ‘/event-notifications'.
 
-For example: 
+For example:
 
 * URL: https://tpp.com/open-banking/v3.1/event-notifications
 

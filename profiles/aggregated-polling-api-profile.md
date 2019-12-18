@@ -1,10 +1,18 @@
-# Aggregated Polling API Profile - v3.1.2
+# Aggregated Polling API Profile - v3.1.4 <!-- omit in toc -->
 
 1. [Overview](#overview)
 2. [Basics](#basics)
    1. [Overview](#overview-1)
       1. [Steps](#steps)
       2. [Sequence Diagram](#sequence-diagram)
+   2. [Acknowledgement by the TPP](#acknowledgement-by-the-tpp)
+   3. [Operating without acknowledgements](#operating-without-acknowledgements)
+   4. [Event Recycling Frequency](#event-recycling-frequency)
+   5. [Polling Frequency](#polling-frequency)
+   6. [Polling Parameters](#polling-parameters)
+   7. [Security](#security)
+      1. [Authentication](#authentication)
+      2. [Scopes](#scopes)
       3. [Grants Types](#grants-types)
 
 ## Overview
@@ -12,7 +20,7 @@
 The Aggregated Polling API Profile describes the flows and common functionality for the Aggregated Polling API, which allows a ASPSPs to deliver multiple signed event notifications to TPPs though the use of polling. It is intended as an alternative or complement to Real Time Notification in that:
 
 * It can be used as the sole method to collect event notifications by a TPP.
-* It offers a means to catch-up following a period where the TPP's Real Time Notification endpoint has been offline. 
+* It offers a means to catch-up following a period where the TPP's Real Time Notification endpoint has been offline.
 
 Implementation of the Aggregated Polling API is **conditional** for ASPSPs.
 
@@ -57,8 +65,7 @@ Following the initial poll the TPP can then repeatedly poll the ASPSP, acknowled
 
 <details>
   <summary>Diagram source</summary>
-  
-  ```
+```
 participant TPP
 participant ASPSP Authorisation Server
 participant ASPSP Event Polling Service
@@ -152,10 +159,10 @@ draft-ietf-secevent-http-poll-01 allows for the use signed event notifications f
 
 #### Scopes
 
-The access tokens required for accessing the Aggregated Polling API must have at least the following scope:
+The access tokens required for accessing the Aggregated Polling API must have one of the following scope:
 
 ```
-eventpolling: Ability to poll for, acknowledge and receive Security Event Tokens
+accounts, fundsconfirmations
 ```
 
 #### Grants Types

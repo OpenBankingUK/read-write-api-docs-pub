@@ -1,4 +1,4 @@
-# Domestic Standing Order Usage Examples - v3.1.2
+# Domestic Standing Order Usage Examples - v3.1.4 <!-- omit in toc -->
 
 1. [Standing Order Initiation](#standing-order-initiation)
    1. [Create Domestic Standing Order Consent](#create-domestic-standing-order-consent)

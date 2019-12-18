@@ -1,4 +1,4 @@
-# Scheduled Payments - v3.1.3
+# Scheduled Payments - v3.1.4 <!-- omit in toc -->
 
 1. [Overview](#overview)
 2. [Endpoints](#endpoints)
@@ -20,7 +20,7 @@
 
 ## Overview
 
-The scheduled-payments resource is used by an AISP to retrieve the scheduled payments for a specific account identified by AccountId or to retrieve scheduled payments for all accounts that the PSU has consented to. 
+The scheduled-payments resource is used by an AISP to retrieve the scheduled payments for a specific account identified by AccountId or to retrieve scheduled payments for all accounts that the PSU has consented to.
 
 This resource description should be read in conjunction with a compatible Account Information Services API Profile.
 
@@ -66,11 +66,11 @@ An account (AccountId) may have no scheduled payments set up, or may have multip
 
 The resource differs depending on the permissions (ReadScheduledPaymentsBasic and ReadScheduledPaymentsDetail) used to access resource. In the event that the resource is accessed with both ReadScheduledPaymentsBasic and ReadScheduledPaymentsDetail, the most detailed level (ReadScheduledPaymentsDetail) must be used.
 
-* These objects **must not** be returned **without** the **ReadScheduledPaymentsDetail** permission: 
-    * OBReadScheduledPayment3/Data/ScheduledPayment/CreditorAgent 
+* These objects **must not** be returned **without** the **ReadScheduledPaymentsDetail** permission:
+    * OBReadScheduledPayment3/Data/ScheduledPayment/CreditorAgent
     * OBReadScheduledPayment3/Data/ScheduledPayment/CreditorAccount
-* If the **ReadScheduledPaymentsDetail** is granted by the PSU: 
-    * OBReadScheduledPayment3/Data/ScheduledPayment/CreditorAgent**may** be returned if applicable to the account and ASPSP (0..1) 
+* If the **ReadScheduledPaymentsDetail** is granted by the PSU:
+    * OBReadScheduledPayment3/Data/ScheduledPayment/CreditorAgent **may** be returned if applicable to the account and ASPSP (0..1)
     * OBReadScheduledPayment3/Data/ScheduledPayment/CreditorAccount **must** be returned (1..1)
 
 If the ReadPAN permission is granted by the PSU - the ASPSP may choose to populate the OBReadScheduledPayment3/Data/ScheduledPayment/CreditorAccount/Identification with the unmasked PAN (if the PAN is being populated in the response).
@@ -178,7 +178,7 @@ Content-Type: application/json
 {
   "Data": {
     "ScheduledPayment": [
-      { 
+      {
 		"AccountId": "22289",
         "ScheduledPaymentId": "SP03",
         "ScheduledPaymentDateTime": "2017-05-05T00:00:00+00:00",

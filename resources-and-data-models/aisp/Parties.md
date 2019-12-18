@@ -1,4 +1,4 @@
-# Parties - v3.1.2
+# Parties - v3.1.4 <!-- omit in toc -->
 
 1. [Overview](#overview)
 2. [Endpoints](#endpoints)
@@ -27,8 +27,10 @@
       2. [Get Parties Response](#get-parties-response)
    3. [Account Owner](#account-owner)
       1. [Get Account Party Request](#get-account-party-request)
+      2. [Get Account Party Response](#get-account-party-response)
    4. [Authorised User](#authorised-user)
       1. [Get Party Request](#get-party-request)
+      2. [Get Party Response](#get-party-response)
 
 ## Overview
 

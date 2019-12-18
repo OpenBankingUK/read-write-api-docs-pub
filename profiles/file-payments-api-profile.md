@@ -1,4 +1,4 @@
-# File Payments API Profile - v3.1.2
+# File Payments API Profile - v3.1.4 <!-- omit in toc -->
 
 1. [Overview](#overview)
    1. [Document Overview](#document-overview)
@@ -22,7 +22,7 @@ This profile should be read in conjunction with a compatible Read/Write Data API
 This document consists of the following parts:
 
  **Overview:** Provides an overview of the profile.
- 
+
  **Basics:** Identifies the flows.
 
 ## Basics
@@ -70,7 +70,7 @@ Step 5: Get Consent/Payment-Order/Payment-Details Status:
 
 <details>
    <Summary>Diagram source</Summary>
-   
+
 ```
 participant PSU
 participant PISP
@@ -137,5 +137,5 @@ ASPSP Resource Server -> PISP: HTTP 200 (OK) file resource
 end opt
 
 option footer=bar
-``` 
+```
 </details>
