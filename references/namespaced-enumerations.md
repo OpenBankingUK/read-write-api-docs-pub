@@ -460,7 +460,7 @@ This field is used to indicate the event types a TPP would like to subscribe to 
 | --- |--- |
 | UK.OBIE.Resource-Update |An event that indicates a resource has been updated. |
 | UK.OBIE.Consent-Authorization-Revoked |An event that indicates a consent resource has had its authorisation revoked. |
-| UK.OBIE.Acount-Access-Consent-Linked-Account-Update |An event that indicates an account linked to a consent has move in/out of scope of the consent. |
+| UK.OBIE.Account-Access-Consent-Linked-Account-Update |An event that indicates an account linked to a consent has move in/out of scope of the consent. |
 
 </details>
 
