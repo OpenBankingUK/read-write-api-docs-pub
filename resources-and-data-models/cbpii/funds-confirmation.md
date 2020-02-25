@@ -1,4 +1,4 @@
-# Funds Confirmation - v3.1.4 <!-- omit in toc -->
+# Funds Confirmation - v3.1.5 <!-- omit in toc -->
 
 1. [Overview](#overview)
 2. [Endpoints](#endpoints)

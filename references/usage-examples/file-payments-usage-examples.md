@@ -1,4 +1,4 @@
-# File Payment Usage Examples - v3.1.4 <!-- omit in toc -->
+# File Payment Usage Examples - v3.1.5 <!-- omit in toc -->
 
 1. [Setup File Payment Consent](#setup-file-payment-consent)
 	1. [POST /file-payment-consents](#post-file-payment-consents)

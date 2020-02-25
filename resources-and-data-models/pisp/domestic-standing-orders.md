@@ -1,4 +1,4 @@
-# Domestic Standing Orders - v3.1.4 <!-- omit in toc -->
+# Domestic Standing Orders - v3.1.5 <!-- omit in toc -->
 
 1. [Overview](#overview)
 2. [Endpoints](#endpoints)
@@ -40,8 +40,8 @@ This resource description should be read in conjunction with a compatible Paymen
 
 | Resource |HTTP Operation |Endpoint |Mandatory ? |Scope |Grant Type |Message Signing |Idempotency Key |Request Object |Response Object |
 | -------- |-------------- |-------- |----------- |----- |---------- |--------------- |--------------- |-------------- |--------------- |
-| domestic-standing-orders |POST |POST /domestic-standing-orders |Conditional |payments |Authorization Code |Signed Request Signed Response |Yes |OBWriteDomesticStandingOrder3 |OBWriteDomesticStandingOrderResponse5 |
-| domestic-standing-orders |GET |GET /domestic-standing-orders/{DomesticStandingOrderId} |Mandatory (if resource POST implemented) |payments |Client Credentials |Signed Response |No |NA |OBWriteDomesticStandingOrderResponse5 |
+| domestic-standing-orders |POST |POST /domestic-standing-orders |Conditional |payments |Authorization Code |Signed Request Signed Response |Yes |OBWriteDomesticStandingOrder3 |OBWriteDomesticStandingOrderResponse6 |
+| domestic-standing-orders |GET |GET /domestic-standing-orders/{DomesticStandingOrderId} |Mandatory (if resource POST implemented) |payments |Client Credentials |Signed Response |No |NA |OBWriteDomesticStandingOrderResponse6 |
 | payment-details |GET |GET /domestic-standing-orders/{DomesticStandingOrderId}/payment-details |Optional |payments |Client Credentials |Signed Response |No |NA |OBWritePaymentDetailsResponse1 |
 
 ### POST /domestic-standing-orders
@@ -164,7 +164,7 @@ The OBWriteDomesticStandingOrder3 object will be used for a call to:
 
 #### Notes
 
-The domestic-standing-order **request** object contains the: 
+The domestic-standing-order **request** object contains the:
 
 * ConsentId.
 * The full Initiation and Risk objects from the domestic-standing-order-consent request.
@@ -182,18 +182,18 @@ The domestic-standing-order **request** object contains the:
 
 ### Domestic Standing Order - Response
 
-The OBWriteDomesticStandingOrderResponse5 object will be used for a response to a call to:
+The OBWriteDomesticStandingOrderResponse6 object will be used for a response to a call to:
 
 * POST /domestic-standing-orders
 * GET /domestic-standing-orders/{DomesticStandingOrderId}
 
 #### UML Diagram
 
-![Domestic Standing Order - Response](./images/OBWriteDomesticStandingOrderResponse5.png)
+![Domestic Standing Order - Response](./images/OBWriteDomesticStandingOrderResponse6.gif)
 
 #### Notes
 
-The domestic-standing-order **response** object contains the: 
+The domestic-standing-order **response** object contains the:
 
 * DomesticStandingOrderId.
 * ConsentId.
@@ -203,22 +203,25 @@ The domestic-standing-order **response** object contains the:
 * Charges array - for the breakdown of applicable ASPSP charges.
 * The Initiation object from the domestic-standing-order-consent.
 * The MultiAuthorisation object if the domestic-standing-order resource requires multiple authorisations.
+* An ASPSP should conditionally provide `Debtor/Name` in the Payment Order Response, even when the Payer didn't provide the Debtor Account via PISP.
 
 #### Data Dictionary
 
 | Name |Occurrence |XPath |EnhancedDefinition |Class |Codes |Pattern |
 | ---- |---------- |----- |------------------ |----- |----- |------- |
-| OBWriteDomesticStandingOrderResponse5 | |OBWriteDomesticStandingOrderResponse5 | |OBWriteDomesticStandingOrderResponse5 | | |
-| Data |1..1 |OBWriteDomesticStandingOrderResponse5/Data | |OBWriteDataDomesticStandingOrderResponse5 | | |
-| DomesticStandingOrderId |1..1 |OBWriteDomesticStandingOrderResponse5/Data/DomesticStandingOrderId |OB: Unique identification as assigned by the ASPSP to uniquely identify the domestic standing order resource. |Max40Text | | |
-| ConsentId |1..1 |OBWriteDomesticStandingOrderResponse5/Data/ConsentId |OB: Unique identification as assigned by the ASPSP to uniquely identify the consent resource. |Max128Text | | |
-| CreationDateTime |1..1 |OBWriteDomesticStandingOrderResponse5/Data/CreationDateTime |Date and time at which the resource was created. |ISODateTime | | |
-| Status |1..1 |OBWriteDomesticStandingOrderResponse5/Data/Status |Specifies the status of the payment order resource. |OBExternalStatus1Code |InitiationCompleted InitiationFailed InitiationPending Cancelled | |
-| StatusUpdateDateTime |1..1 |OBWriteDomesticStandingOrderResponse5/Data/StatusUpdateDateTime |Date and time at which the resource status was updated. |ISODateTime | | |
-| Refund |0..1 |OBWriteDomesticStandingOrderResponse5/Data/Refund |Unambiguous identification of the refund account to which a refund will be made as a result of the transaction. |OBDomesticRefundAccount1 | | |
-| Charges |0..n |OBWriteDomesticStandingOrderResponse5/Data/Charges |Set of elements used to provide details of a charge for the payment initiation. |OBCharge2 | | |
-| Initiation |1..1 |OBWriteDomesticStandingOrderResponse5/Data/Initiation |The Initiation payload is sent by the initiating party to the ASPSP. It is used to request movement of funds from the debtor account to a creditor for a domestic standing order. |OBDomesticStandingOrder3 | | |
-| MultiAuthorisation |0..1 |OBWriteDomesticStandingOrderResponse5/Data/MultiAuthorisation | |OBMultiAuthorisation1 | | |
+| OBWriteDomesticStandingOrderResponse6 | |OBWriteDomesticStandingOrderResponse6 | |OBWriteDomesticStandingOrderResponse6 | | |
+| Data |1..1 |OBWriteDomesticStandingOrderResponse6/Data | |OBWriteDataDomesticStandingOrderResponse6 | | |
+| DomesticStandingOrderId |1..1 |OBWriteDomesticStandingOrderResponse6/Data/DomesticStandingOrderId |OB: Unique identification as assigned by the ASPSP to uniquely identify the domestic standing order resource. |Max40Text | | |
+| ConsentId |1..1 |OBWriteDomesticStandingOrderResponse6/Data/ConsentId |OB: Unique identification as assigned by the ASPSP to uniquely identify the consent resource. |Max128Text | | |
+| CreationDateTime |1..1 |OBWriteDomesticStandingOrderResponse6/Data/CreationDateTime |Date and time at which the resource was created. |ISODateTime | | |
+| Status |1..1 |OBWriteDomesticStandingOrderResponse6/Data/Status |Specifies the status of the payment order resource. |OBExternalStatus1Code |InitiationCompleted InitiationFailed InitiationPending Cancelled | |
+| StatusUpdateDateTime |1..1 |OBWriteDomesticStandingOrderResponse6/Data/StatusUpdateDateTime |Date and time at which the resource status was updated. |ISODateTime | | |
+| Refund |0..1 |OBWriteDomesticStandingOrderResponse6/Data/Refund |Unambiguous identification of the refund account to which a refund will be made as a result of the transaction. |OBDomesticRefundAccount1 | | |
+| Charges |0..n |OBWriteDomesticStandingOrderResponse6/Data/Charges |Set of elements used to provide details of a charge for the payment initiation. |OBCharge2 | | |
+| Initiation |1..1 |OBWriteDomesticStandingOrderResponse6/Data/Initiation |The Initiation payload is sent by the initiating party to the ASPSP. It is used to request movement of funds from the debtor account to a creditor for a domestic standing order. |OBDomesticStandingOrder3 | | |
+| MultiAuthorisation |0..1 |OBWriteDomesticStandingOrderResponse6/Data/MultiAuthorisation | |OBMultiAuthorisation1 | | |
+| Debtor |0..1 |OBWriteDomesticStandingOrderResponse6/Data/Debtor |Set of elements used to identify a person or an organisation. |OBDebtorIdentification1 | | |
+| Name |1..1 |OBWriteDomesticStandingOrderResponse6/Data/Debtor/Name |The account name is the name or names of the account owner(s) represented at an account level, as displayed by the ASPSP's online channels. <BR/><BR/> Note, the account name is not the product name or the nickname of the account. |Max140Text | | |
 
 ### Domestic Standing Order - Payment Details - Response
 

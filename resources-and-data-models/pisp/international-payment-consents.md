@@ -1,4 +1,4 @@
-# International Payment Consents - v3.1.4 <!-- omit in toc -->
+# International Payment Consents - v3.1.5 <!-- omit in toc -->
 
 1. [Overview](#overview)
 2. [Endpoints](#endpoints)
@@ -47,11 +47,11 @@ This resource description should be read in conjunction with a compatible Paymen
 
 | Resource |HTTP Operation |Endpoint |Mandatory ? |Scope |Grant Type |Message Signing |Idempotency Key |Request Object |Response Object |
 | -------- |-------------- |-------- |----------- |----- |---------- |--------------- |--------------- |-------------- |--------------- |
-| international-payment-consents |POST |POST /international-payment-consents |Conditional |payments |Client Credentials |Signed Request Signed Response |Yes |OBWriteInternationalConsent5 |OBWriteInternationalConsentResponse5 |
-| international-payment-consents |GET |GET /international-payment-consents/{ConsentId} |Mandatory (if resource POST implemented) |payments |Client Credentials |Signed Response |No |NA |OBWriteInternationalConsentResponse5 |
+| international-payment-consents |POST |POST /international-payment-consents |Conditional |payments |Client Credentials |Signed Request Signed Response |Yes |OBWriteInternationalConsent5 |OBWriteInternationalConsentResponse6 |
+| international-payment-consents |GET |GET /international-payment-consents/{ConsentId} |Mandatory (if resource POST implemented) |payments |Client Credentials |Signed Response |No |NA |OBWriteInternationalConsentResponse6 |
 | international-payment-consents |GET |GET /international-payment-consents/{ConsentId}/funds-confirmation |Mandatory (if resource POST implemented) |payments |Authorization Code |Signed Response |No |NA |OBWriteFundsConfirmationResponse1 |
 
-### POST /international-payment-consents 
+### POST /international-payment-consents
 
 The API endpoint allows the PISP to ask an ASPSP to create a new **international-payment-consent** resource.
 
@@ -69,7 +69,7 @@ The default Status is "AwaitingAuthorisation" immediately after the internationa
 
 ## GET /international-payment-consents/{ConsentId}
 
-A PISP can optionally retrieve a payment consent resource that they have created to check its status. 
+A PISP can optionally retrieve a payment consent resource that they have created to check its status.
 
 #### Status
 
@@ -148,7 +148,7 @@ For the OBInternational3 Initiation object:
 The OBInternational3/ExchangeRateInformation object must conform to these behaviours:
 
 * A PISP must specify the DebtorAccount currency in the UnitCurrency field if the PISP is requesting a specific RateType so the ASPSP can respond with an exchange rate quote prior to PSU authorisation.
-* A PISP may indicate an exchange rate request using the RateType with these enumerations: 
+* A PISP may indicate an exchange rate request using the RateType with these enumerations:
   * Actual.
   * Agreed.
   * Indicative.
@@ -196,7 +196,7 @@ The OBInternational3/ExchangeRateInformation object must conform to these behavi
 | PostCode |0..1 |OBInternational3/Creditor/PostalAddress/PostCode |Identifier consisting of a group of letters and/or numbers that is added to a postal address to assist the sorting of mail. |Max16Text | | |
 | TownName |0..1 |OBInternational3/Creditor/PostalAddress/TownName |Name of a built-up area, with defined boundaries, and a local government. |Max35Text | | |
 | CountrySubDivision |0..1 |OBInternational3/Creditor/PostalAddress/CountrySubDivision |Identifies a subdivision of a country such as state, region, county. |Max35Text | | |
-| Country |0..1 |OBInternational3/Creditor/PostalAddress/Country |Nation with its own government. |CountryCode | |^[A-Z]{2,2}$ |
+| Country |0..1 |OBInternational3/Creditor/PostalAddress/Country |Nation with its own government. |CountryCode | |`^[A-Z]{2,2}$` |
 | AddressLine |0..7 |OBInternational3/Creditor/PostalAddress/AddressLine |Information that locates and identifies a specific address, as defined by postal services, presented in free format text. |Max70Text | | |
 | CreditorAgent |0..1 |OBInternational3/CreditorAgent |Financial institution servicing an account for the creditor. |OBBranchAndFinancialInstitutionIdentification6 | | |
 | SchemeName |0..1 |OBInternational3/CreditorAgent/SchemeName |Name of the identification scheme, in a coded form as published in an external list. |OBExternalFinancialInstitutionIdentification4Code | | |
@@ -280,14 +280,14 @@ Exchange rate behaviour:
 
 ### International Payment Consent - Response
 
-The OBWriteInternationalConsentResponse5 object will be used for a response to a call to:
+The OBWriteInternationalConsentResponse6 object will be used for a response to a call to:
 
 * POST /international-payment-consents
 * GET /international-payment-consents/{ConsentId}
 
 #### UML Diagram
 
-![International Payment Consent - Response](./images/OBWriteInternationalConsentResponse5.png)
+![International Payment Consent - Response](./images/OBWriteInternationalConsentResponse6.gif)
 
 #### Notes 
 
@@ -300,6 +300,7 @@ The international-payment-consent **response** contains the full **original** pa
 * ExpectedExecutionDateTime for the international-payment resource if created before CutOffDateTIme - the expected DateTime the payment is executed against the Debtor Account. If populated, the ASPSP must update the value with any changes (e.g., after PSU authorisation).
 * ExpectedSettlementDateTime for the international-payment resource if created before CutOffDateTIme - the expected DateTime the payment will be received at the Creditor Account. If populated, the ASPSP must update the value with any changes (e.g., after PSU authorisation).
 * Charges array which will be used by the ASPSP to indicate charges, and the ChargeBearer as relevant.
+* Post successful PSU Authentication, an ASPSP may provide `Debtor/Name` in the Payment Order Consent Response, even when the Payer didn't provide the Debtor Account via PISP.
 * ExchangeRateInformation (the ASPSP response) - this object will be used to communicate exchange rate information back to the PISP. It must be consistent with what is requested in the Initiation object from the PISP.
 
 Exchange rate behaviour:
@@ -321,22 +322,24 @@ Exchange rate behaviour:
 
 | Name |Occurrence |XPath |EnhancedDefinition |Class |Codes |Pattern |
 | ---- |---------- |----- |------------------ |----- |----- |------- |
-| OBWriteInternationalConsentResponse5 | |OBWriteInternationalConsentResponse5 | |OBWriteInternationalConsentResponse5 | | |
-| Data |1..1 |OBWriteInternationalConsentResponse5/Data | |OBWriteDataInternationalConsentResponse5 | | |
-| ConsentId |1..1 |OBWriteInternationalConsentResponse5/Data/ConsentId |OB: Unique identification as assigned by the ASPSP to uniquely identify the consent resource. |Max128Text | | |
-| CreationDateTime |1..1 |OBWriteInternationalConsentResponse5/Data/CreationDateTime |Date and time at which the resource was created. |ISODateTime | | |
-| Status |1..1 |OBWriteInternationalConsentResponse5/Data/Status |Specifies the status of consent resource in code form. |OBExternalConsentStatus1Code |Authorised AwaitingAuthorisation Consumed Rejected | |
-| StatusUpdateDateTime |1..1 |OBWriteInternationalConsentResponse5/Data/StatusUpdateDateTime |Date and time at which the resource status was updated. |ISODateTime | | |
-| ReadRefundAccount |0..1 |OBWriteInternationalConsent5/Data/ReadRefundAccount | Specifies to share the refund account details with PISP |OBReadRefundAccount1Code |Yes No | |
-| CutOffDateTime |0..1 |OBWriteInternationalConsentResponse5/Data/CutOffDateTime |Specified cut-off date and time for the payment consent. |ISODateTime | | |
-| ExpectedExecutionDateTime |0..1 |OBWriteInternationalConsentResponse5/Data/ExpectedExecutionDateTime |Expected execution date and time for the payment resource. |ISODateTime | | |
-| ExpectedSettlementDateTime |0..1 |OBWriteInternationalConsentResponse5/Data/ExpectedSettlementDateTime |Expected settlement date and time for the payment resource. |ISODateTime | | |
-| Charges |0..n |OBWriteInternationalConsentResponse5/Data/Charges |Set of elements used to provide details of a charge for the payment initiation. |OBCharge2 | | |
-| ExchangeRateInformation |0..1 |OBWriteInternationalConsentResponse5/Data/ExchangeRateInformation |Further detailed information on the exchange rate that has been used in the payment transaction. |OBExchangeRate2 | | |
-| Initiation |1..1 |OBWriteInternationalConsentResponse5/Data/Initiation |The Initiation payload is sent by the initiating party to the ASPSP. It is used to request movement of funds from the debtor account to a creditor for a single international payment. |OBInternational3 | | |
-| Authorisation |0..1 |OBWriteInternationalConsentResponse5/Data/Authorisation |The authorisation type request from the TPP. |OBAuthorisation1 | | |
-| SCASupportData |0..1 |OBWriteInternationalConsentResponse5/Data/SCASupportData |Supporting Data provided by TPP, when requesting SCA Exemption. |OBSCASupportData1 | | |
-| Risk |1..1 |OBWriteInternationalConsentResponse5/Risk |The Risk section is sent by the initiating party to the ASPSP. It is used to specify additional details for risk scoring for Payments. |OBRisk1 | | |
+| OBWriteInternationalConsentResponse6 | |OBWriteInternationalConsentResponse6 | |OBWriteInternationalConsentResponse6 | | |
+| Data |1..1 |OBWriteInternationalConsentResponse6/Data | |OBWriteDataInternationalConsentResponse6 | | |
+| ConsentId |1..1 |OBWriteInternationalConsentResponse6/Data/ConsentId |OB: Unique identification as assigned by the ASPSP to uniquely identify the consent resource. |Max128Text | | |
+| CreationDateTime |1..1 |OBWriteInternationalConsentResponse6/Data/CreationDateTime |Date and time at which the resource was created. |ISODateTime | | |
+| Status |1..1 |OBWriteInternationalConsentResponse6/Data/Status |Specifies the status of consent resource in code form. |OBExternalConsentStatus1Code |Authorised AwaitingAuthorisation Consumed Rejected | |
+| StatusUpdateDateTime |1..1 |OBWriteInternationalConsentResponse6/Data/StatusUpdateDateTime |Date and time at which the resource status was updated. |ISODateTime | | |
+| ReadRefundAccount |0..1 |OBWriteInternationalConsentResponse6/Data/ReadRefundAccount | Specifies to share the refund account details with PISP |OBReadRefundAccount1Code |Yes No | |
+| CutOffDateTime |0..1 |OBWriteInternationalConsentResponse6/Data/CutOffDateTime |Specified cut-off date and time for the payment consent. |ISODateTime | | |
+| ExpectedExecutionDateTime |0..1 |OBWriteInternationalConsentResponse6/Data/ExpectedExecutionDateTime |Expected execution date and time for the payment resource. |ISODateTime | | |
+| ExpectedSettlementDateTime |0..1 |OBWriteInternationalConsentResponse6/Data/ExpectedSettlementDateTime |Expected settlement date and time for the payment resource. |ISODateTime | | |
+| Charges |0..n |OBWriteInternationalConsentResponse6/Data/Charges |Set of elements used to provide details of a charge for the payment initiation. |OBCharge2 | | |
+| ExchangeRateInformation |0..1 |OBWriteInternationalConsentResponse6/Data/ExchangeRateInformation |Further detailed information on the exchange rate that has been used in the payment transaction. |OBExchangeRate2 | | |
+| Initiation |1..1 |OBWriteInternationalConsentResponse6/Data/Initiation |The Initiation payload is sent by the initiating party to the ASPSP. It is used to request movement of funds from the debtor account to a creditor for a single international payment. |OBInternational3 | | |
+| Authorisation |0..1 |OBWriteInternationalConsentResponse6/Data/Authorisation |The authorisation type request from the TPP. |OBAuthorisation1 | | |
+| SCASupportData |0..1 |OBWriteInternationalConsentResponse6/Data/SCASupportData |Supporting Data provided by TPP, when requesting SCA Exemption. |OBSCASupportData1 | | |
+| Debtor |0..1 |OBWriteInternationalConsentResponse6/Data/Debtor |Set of elements used to identify a person or an organisation. |OBDebtorIdentification1 | | |
+| Name |1..1 |OBWriteInternationalConsentResponse6/Data/Debtor/Name |The account name is the name or names of the account owner(s) represented at an account level, as displayed by the ASPSP's online channels. <BR/><BR/> Note, the account name is not the product name or the nickname of the account. |Max140Text | | |
+| Risk |1..1 |OBWriteInternationalConsentResponse6/Risk |The Risk section is sent by the initiating party to the ASPSP. It is used to specify additional details for risk scoring for Payments. |OBRisk1 | | |
 
 ### International Payment Consent Confirmation of Funds - Response
 
