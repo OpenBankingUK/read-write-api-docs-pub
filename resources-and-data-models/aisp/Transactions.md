@@ -10,8 +10,10 @@
       1. [Notes](#notes)
    3. [Filtering](#filtering)
       1. [Filtering Examples](#filtering-examples)
-   4. [Permission Codes](#permission-codes)
-   5. [Data Dictionary](#data-dictionary)
+   4. [Mutability](#mutability)
+      1. [Examples to illustrate mutability](#examples-to-illustrate-mutability)
+   5. [Permission Codes](#permission-codes)
+   6. [Data Dictionary](#data-dictionary)
 4. [Usage Examples](#usage-examples)
    1. [Specific Account](#specific-account)
       1. [Get Account Transactions Request](#get-account-transactions-request)
@@ -20,8 +22,8 @@
       1. [Get Transactions Request](#get-transactions-request)
       2. [Get Transactions Response](#get-transactions-response)
    3. [No Access](#no-access)
-      1. [GET Account Transactions Request](#get-account-transactions-request)
-      2. [GET Account Transactions Response](#get-account-transactions-response)
+      1. [GET Account Transactions Request](#get-account-transactions-request-1)
+      2. [GET Account Transactions Response](#get-account-transactions-response-1)
 
 ## Overview
 
@@ -106,15 +108,17 @@ GET /accounts/1/transactions?toBookingDateTime=2017-03-31T23:59:59
 ```
 
 ### Mutability
+
 Due to the way that ASPSPs and payment systems operate, some of the fields in a transaction may change for a short period of time before it settles into an eventual immutable state.
 
 Prior to Version 3.1.5, there was no specific flag to indicate the mutability of a transaction record and TPPs inferred it from the `Status` field. As an "unstated" standard, a transaction with a status of `Pending` was considered to be mutable (ie some of its fields like date, description and amount may change or the transaction may be backed out completely) while a `Booked` transaction was considered to be immutable. There were however, some edge cases where a `Booked` transaction may suffer from changes to some fields.
 
 Since Version 3.1.5, the mutability for a transaction has been made explicit:
-- A transaction with a `Status` of `Pending` is mutable
-- A transaction with a `Status` of `Booked` where the `TransactionMutability` flag is not specified is immutable.
-- A transaction with a `Status` of `Booked` with the `TransactionMutability` flag set to `Immutable` is immutable.
-- A transaction with a `Status` of `Booked` with the `TransactionMutability` flag set to `Mutable` is mutable.
+* A transaction with a `Status` of `Pending` is mutable
+* A transaction with a `Status` of `Booked` where the `TransactionMutability` flag is not specified is immutable.
+* A transaction with a `Status` of `Booked` with the `TransactionMutability` flag set to `Immutable` is immutable.
+* A transaction with a `Status` of `Booked` with the `TransactionMutability` flag set to `Mutable` is mutable.
+
 
 #### Examples to illustrate mutability
 
@@ -142,6 +146,7 @@ Since Version 3.1.5, the mutability for a transaction has been made explicit:
   "Status": "Booked",
   "TransactionMutability": "Immutable"
 }
+```
  
 ### Permission Codes
 
@@ -183,7 +188,7 @@ If the ReadPAN permission is granted by the PSU - the ASPSP may choose to popula
 | StatementReference |0..n |OBReadTransaction6/Data/Transaction/StatementReference |Unique reference for the statement. This reference may be optionally populated if available. |Max35Text | | |
 | CreditDebitIndicator |1..1 |OBReadTransaction6/Data/Transaction/CreditDebitIndicator |Indicates whether the transaction is a credit or a debit entry. |OBCreditDebitCode |Credit Debit | |
 | Status |1..1 |OBReadTransaction6/Data/Transaction/Status |Status of a transaction entry on the books of the account servicer. |OBEntryStatus1Code |Booked Pending | |
-| StatusMutability |1..1 |OBReadTransaction6/Data/Transaction/StatusMutability |Specifies the Mutability of the Transaction record. |OBStatusMutability1Code |Mutable Immutable | |
+| TransactionMutability |1..1 |OBReadTransaction6/Data/Transaction/TransactionMutability |Specifies the Mutability of the Transaction record. |OBTransactionMutability1Code |Mutable Immutable | |
 | BookingDateTime |1..1 |OBReadTransaction6/Data/Transaction/BookingDateTime |Date and time when a transaction entry is posted to an account on the account servicer's books. Usage: Booking date is the expected booking date, unless the status is booked, in which case it is the actual booking date. |ISODateTime | | |
 | ValueDateTime |0..1 |OBReadTransaction6/Data/Transaction/ValueDateTime |Date and time at which assets become available to the account owner in case of a credit entry, or cease to be available to the account owner in case of a debit transaction entry. Usage: If transaction entry status is pending and value date is present, then the value date refers to an expected/requested value date. For transaction entries subject to availability/float and for which availability information is provided, the value date must not be used. In this case the availability component identifies the number of availability days. |ISODateTime | | |
 | TransactionInformation |0..1 |OBReadTransaction6/Data/Transaction/TransactionInformation |Further details of the transaction. This is the transaction narrative, which is unstructured text. |Max500Text | | |
