@@ -40,11 +40,12 @@ An AISP may retrieve the account beneficiaries information resource for a specif
 ### GET /beneficiaries
 
 If an ASPSP has implemented the bulk retrieval endpoints for beneficiaries, an AISP may optionally retrieve the beneficiaries' information in bulk.
-This endpoint will retrieve the beneficiaries' resources for all authorised accounts linked to a specific account-request.
+This endpoint will retrieve the beneficiaries resource for all authorised accounts linked to a specific account-request.
 
 ## Data Model
 
 The OBReadBeneficiary5 object will be used for the call to:
+
 * GET /accounts/{AccountId}/beneficiaries
 * GET /beneficiaries
 
@@ -61,7 +62,7 @@ In the case an ASPSP manages beneficiaries at a customer level (logged in user),
 * If a PSU selects multiple accounts for authorisation, then their beneficiaries apply consistently to all selected accounts (i.e., in the bulk endpoint /beneficiaries).
 * If a different PSU selects the same accounts, a different set of beneficiaries could be returned.
 
-This is the expected behaviour of the beneficiaries' endpoints, in the case an ASPSP manages beneficiaries at a customer level:
+This is the expected behaviour of the beneficiaries endpoints, in the case an ASPSP manages beneficiaries at a customer level:
 
 * The bulk endpoint /beneficiaries will return the unique list of beneficiaries against the PSU. In this case, the AccountId in the OBReadBeneficiary5 payload would be set to NULL / empty (even if the PSU only has one account).
 * The selected account endpoint /accounts/{AccountId}/beneficiaries will return the beneficiaries that **may** be accessible to the AccountId, based on the PSU. In this case, the AccountId will be populated in the payload.
@@ -74,20 +75,21 @@ This is the expected behaviour of the beneficiaries' endpoints, in the case an A
 
 * The CreditorAccount is used consistently throughout the Account Information APIs to identify an account
 * Due to internationalisation requirements:
-    * The CreditorAgent object may be used to represent either (1) the BIC (with UK.OBIE.BICFI in the SchemeName field and the BIC in the Identification field), or (2) the Name and Address details for the financial institution.
-    * The CreditorAccount/Identification field may be used to represent a non-UK specific branch and account numbering scheme with "UK.OBIE.SortCodeAccountNumber" being populated in the CreditorAccount/SchemeName.
+  * The CreditorAgent object may be used to represent either (1) the BIC (with UK.OBIE.BICFI in the SchemeName field and the BIC in the Identification field), or (2) the Name and Address details for the financial institution.
+  * The CreditorAccount/Identification field may be used to represent a non-UK specific branch and account numbering scheme with "UK.OBIE.SortCodeAccountNumber" being populated in the CreditorAccount/SchemeName.
 * For the /accounts/{AccountId}/beneficiaries endpoint, the CreditorAccount and CreditorAgent blocks represent the account of the beneficiary that is receiving funds (so has been named the CreditorAccount for consistency with the PISP use case).
 * If the BeneficiaryType field is not specified, it would indicate that the beneficiary is a  trusted beneficiary.
 
 ### Permission Codes
 
 The resource differs depending on the permissions (ReadBeneficiariesBasic and ReadBeneficiariesDetail) used to access the resource. In the event that the resource is accessed with both ReadBeneficiariesBasic and ReadBeneficiariesDetail, the most detailed level (ReadBeneficiariesDetail) must be used.
+
 * These objects **must not** be returned **without** the **ReadBeneficiariesDetail** permission:
-    * OBReadBeneficiary5/Data/Beneficiary/CreditorAgent
-    * OBReadBeneficiary5/Data/Beneficiary/CreditorAccount
-* If the **ReadBeneficiariesDetail** is granted by the PSU:     
-    * OBReadBeneficiary5/Data/Beneficiary/CreditorAgent **may** be returned if applicable to the account and ASPSP (0..1)
-    * OBReadBeneficiary5/Data/Beneficiary/CreditorAccount **must** be returned (1..1)
+  * OBReadBeneficiary5/Data/Beneficiary/CreditorAgent
+  * OBReadBeneficiary5/Data/Beneficiary/CreditorAccount
+* If the **ReadBeneficiariesDetail** is granted by the PSU:
+  * OBReadBeneficiary5/Data/Beneficiary/CreditorAgent **may** be returned if applicable to the account and ASPSP (0..1)
+  * OBReadBeneficiary5/Data/Beneficiary/CreditorAccount **must** be returned (1..1)
 
 If the ReadPAN permission is granted by the PSU, the ASPSP may choose to populate the OBReadBeneficiary5/Data/Beneficiary/CreditorAccount/Identification with the unmasked PAN (if the PAN is being populated in the response).
 
