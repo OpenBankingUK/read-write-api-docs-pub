@@ -20,7 +20,7 @@
 
 ## Overview
 
-The beneficiaries resource is used by an AISP to retrieve the account beneficiaries information for a specific AccountId or to retrieve the beneficiaries' information in bulk for account(s) that the PSU has authorised to access.
+The beneficiaries resource is used by an AISP to retrieve the account beneficiaries information for a specific AccountId or to retrieve the beneficiaries information in bulk for account(s) that the PSU has authorised to access.
 
 This resource description should be read in conjunction with a compatible Account Information Services API Profile.
 
@@ -50,7 +50,9 @@ The OBReadBeneficiary5 object will be used for the call to:
 
 ### Resource Definition
 
-A resource that contains a set of elements that describes the list of beneficiaries(trusted and ordinary) linked to a specific account (AccountId).
+A resource that contains a set of elements that describes the list of beneficiaries linked to a specific account (AccountId).
+
+The beneficiaries may be Trusted Beneficiaries as well as other types of beneficiaries as indicated by the `BeneficiaryType` flag.
 
 An account (AccountId) may have no beneficiaries set up, or may have multiple beneficiaries set up.
 
