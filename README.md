@@ -24,4 +24,14 @@ The Swagger Specification for R/W APIs can be downloaded from the following GitH
 
 ### Version 3.1.5 - Draft1
 
-- __Decision 216 - implemented option#3 - introduced Debtor name in response of the payment order consent and payment order__ [View Diff](TBC)
+- __Decision 214 - Changes to the transactions AIS end-point to address mutability of booked transactions__ [View Diff](TBC)
+
+- __Decision 216 - implemented option#3 - introduced Debtor name in response of the payment order consent and payment order__ [View Diff](https://github.com/OpenBankingUK/read-write-api-docs/commit/10a6a5d608f1abc970527cb38426336995f00436))
+
+- __Decision 217 - Guidance for ASPSPs to provide an expected booking date for Credit Card Transactions - No Swagger change)__ [View Diff](TBC)
+
+- __Decision 219​ - Provision for returning beneficiaries other than trusted beneficiaries__ [View Diff](TBC)
+
+- __Errata__ [View Diff](TBC)
+  - Broken links in Usage Examples Readme
+  - UML diagrams for for International payments - Reusable classes corrected.
