@@ -74,7 +74,6 @@ For a specific date range, an account (AccountId) may have no transactions booke
     * The ISO 20022 BankTransactionCode Code and SubCode are specified as 4 letter codes. However, the principle we have applied for the code lists is to have longer more descriptive codes.
     * The BankTransactionCode Code and SubCode will be populated with the long form description of the ISO 20022 code, with delimiters removed. E.g., the Family Code "CNTR" has a description of "Counter Transactions" which is populated as "CounterTransactions"
 * ASPSPs must have the ability to provide transactions through APIs for a period that at least equals the period provided through their online channels.
-* If an ASPSP does not provide StatusMutability field, then Mutability is based on the Status field with the expectation that Booked means Immutable.
 
 ### Filtering
 
@@ -106,6 +105,44 @@ GET /transactions?fromBookingDateTime=2016-01-01T00:00:00&amp;toBookingDateTime=
 GET /accounts/1/transactions?toBookingDateTime=2017-03-31T23:59:59
 ```
 
+### Mutability
+Due to the way that ASPSPs and payment systems operate, some of the fields in a transaction may change for a short period of time before it settles into an eventual immutable state.
+
+Prior to Version 3.1.5, there was no specific flag to indicate the mutability of a transaction record and TPPs inferred it from the `Status` field. As an "unstated" standard, a transaction with a status of `Pending` was considered to be mutable (ie some of its fields like date, description and amount may change or the transaction may be backed out completely) while a `Booked` transaction was considered to be immutable. There were however, some edge cases where a `Booked` transaction may suffer from changes to some fields.
+
+Since Version 3.1.5, the mutability for a transaction has been made explicit:
+- A transaction with a `Status` of `Pending` is mutable
+- A transaction with a `Status` of `Booked` where the `TransactionMutability` flag is not specified is immutable.
+- A transaction with a `Status` of `Booked` with the `TransactionMutability` flag set to `Immutable` is immutable.
+- A transaction with a `Status` of `Booked` with the `TransactionMutability` flag set to `Mutable` is mutable.
+
+#### Examples to illustrate mutability
+
+```
+// Mutable ( Status is Pending )
+{
+  "Status": "Pending",
+  ...
+}
+
+// Immutable (Status is Booked, TransactionMutability is not specified)
+{
+  "Status": "Booked"
+  ...
+}
+
+// Mutable 
+{
+  "Status": "Booked",
+  "TransactionMutability": "Mutable"
+}
+
+// Immutable
+{
+  "Status": "Booked",
+  "TransactionMutability": "Immutable"
+}
+ 
 ### Permission Codes
 
 The resource differs depending on the permissions (ReadTransactionsBasic and ReadTransactionsDetail) used to access resource. In the event the resource is accessed with both ReadTransactionsBasic and ReadTransactionsDetail, the most detailed level (ReadTransactionsDetail) must be used.
