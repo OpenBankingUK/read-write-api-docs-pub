@@ -44,7 +44,7 @@ Endpoints for the resource and available methods.
 | 1 |statements |GET |GET /accounts/{AccountId}/statements |Conditional |accounts |Authorization Code |No |Pagination Filtering | |OBReadStatement2 |
 | 2 |statements |GET |GET /accounts/{AccountId}/statements/{StatementId} |Conditional |accounts |Authorization Code |No | | |OBReadStatement2 |
 | 3 |statements |GET |GET /accounts/{AccountId}/statements/{StatementId}/file |Optional |accounts |Authorization Code |No | | |File |
-| 4 |transactions |GET |GET /accounts/{AccountId}/statements/{StatementId}/transactions |Conditional |accounts |Authorization Code |No |Pagination | |OBReadTransaction5 |
+| 4 |transactions |GET |GET /accounts/{AccountId}/statements/{StatementId}/transactions |Conditional |accounts |Authorization Code |No |Pagination | |OBReadTransaction6 |
 | 5 |statements |GET |GET /statements |Optional |accounts |Authorization Code |No |Pagination Filtering | |OBReadStatement2 |
 
 ### GET /accounts/{AccountId}/statements
@@ -82,7 +82,7 @@ The call to
 
 will return unstructured data in binary (e.g., pdf, doc) or text (e.g., csv) formats. This will be specified in the Accept header by the AISP.
 
-The OBReadTransaction3 object (documented in the transactions resource) will be used the call to:
+The OBReadTransaction6 object (documented in the transactions resource) will be used the call to:
 
 * GET /accounts/{AccountId}/statements/{StatementId}/transactions
 
@@ -150,9 +150,9 @@ For the call toGET /accounts/{AccountId}/statements/{StatementId}/transactions:
 
 * The **ReadTransactionsBasic or** **ReadTransactionsDetail** (in addition to the appropriate **ReadTransactionsCredits** and/or **ReadTransactionsDebits** ) permission codes will be required. The ASPSP must apply the same access to GET /accounts/{AccountId}/statements/{StatementId}/transactions as GET /accounts/{AccountId}/transactions
 * If the ReadPAN permission is granted by the PSU - the ASPSP may choose to populate the unmasked PAN - if the PAN is being populated in the response for these fields:
-    * OBReadTransaction3/Data/Transaction/CreditorAgent/Identification
-    * OBReadTransaction3/Data/Transaction/DebtorAccount/Identification
-    * OBReadTransaction3/Data/Transaction/CardInstrument/Identification
+    * OBReadTransaction6/Data/Transaction/CreditorAgent/Identification
+    * OBReadTransaction6/Data/Transaction/DebtorAccount/Identification
+    * OBReadTransaction6/Data/Transaction/CardInstrument/Identification
 
 
 ### Data Dictionary
