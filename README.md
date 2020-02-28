@@ -24,14 +24,16 @@ The Swagger Specification for R/W APIs can be downloaded from the following GitH
 
 ### Version 3.1.5 - Draft1
 
-- __Decision 214 - Changes to the transactions AIS end-point to address mutability of booked transactions__ [View Diff](TBC)
+- __Decision 214 - Changes to the transactions AIS end-point to address mutability of booked transactions__ 
+[View Diff 1](https://github.com/OpenBankingUK/read-write-api-docs-pub/commit/af8a0c56dab25b6bf2c35ee7ee11e9a6ca47e2a8) 
+[View Diff 2](https://github.com/OpenBankingUK/read-write-api-docs-pub/commit/b984c28655b3a7646ba8995312b64bd4ffeba236)
 
-- __Decision 216 - implemented option#3 - introduced Debtor name in response of the payment order consent and payment order__ [View Diff](https://github.com/OpenBankingUK/read-write-api-docs/commit/10a6a5d608f1abc970527cb38426336995f00436))
+- __Decision 216 - implemented option#3 - introduced Debtor name in response of the payment order consent and payment order__ [View Diff](https://github.com/OpenBankingUK/read-write-api-docs-pub/commit/10a6a5d608f1abc970527cb38426336995f00436))
 
-- __Decision 217 - Guidance for ASPSPs to provide an expected booking date for Credit Card Transactions - No Swagger change)__ [View Diff](TBC)
+- __Decision 217 - Guidance for ASPSPs to provide an expected booking date for Credit Card Transactions__ [View Diff](https://github.com/OpenBankingUK/read-write-api-docs-pub/commit/e763fe34669c5968708504e7c9d3a9299ec1f27e)
 
-- __Decision 219​ - Provision for returning beneficiaries other than trusted beneficiaries__ [View Diff](TBC)
+- __Decision 219 - Provision for returning beneficiaries other than trusted beneficiaries__ [View Diff](https://github.com/OpenBankingUK/read-write-api-docs-pub/commit/26f3ec03e28a59d2823a7c8fe6180c8b44f2029e)
 
-- __Errata__ [View Diff](TBC)
+- __Errata__ [View Diff](https://github.com/OpenBankingUK/read-write-api-docs-pub/commit/e763fe34669c5968708504e7c9d3a9299ec1f27e)
   - Broken links in Usage Examples Readme
   - UML diagrams for for International payments - Reusable classes corrected.
