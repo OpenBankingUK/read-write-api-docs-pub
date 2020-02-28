@@ -258,7 +258,7 @@ The OBWritePaymentDetailsResponse1 object will be used for a response to a call 
 
 ## Usage Examples
 
-Note, further usage examples are available [here](../../references/usage%20examples/README.md).
+Note, further usage examples are available [here](../../references/usage-examples/README.md).
 
 ### POST /domestic-payments
 

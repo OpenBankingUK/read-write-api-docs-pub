@@ -65,6 +65,7 @@ Following the initial poll the TPP can then repeatedly poll the ASPSP, acknowled
 
 <details>
   <summary>Diagram source</summary>
+  
 ```
 participant TPP
 participant ASPSP Authorisation Server
