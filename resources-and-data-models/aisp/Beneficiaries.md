@@ -77,7 +77,7 @@ This is the expected behaviour of the beneficiaries' endpoints, in the case an A
     * The CreditorAgent object may be used to represent either (1) the BIC (with UK.OBIE.BICFI in the SchemeName field and the BIC in the Identification field), or (2) the Name and Address details for the financial institution.
     * The CreditorAccount/Identification field may be used to represent a non-UK specific branch and account numbering scheme with "UK.OBIE.SortCodeAccountNumber" being populated in the CreditorAccount/SchemeName.
 * For the /accounts/{AccountId}/beneficiaries endpoint, the CreditorAccount and CreditorAgent blocks represent the account of the beneficiary that is receiving funds (so has been named the CreditorAccount for consistency with the PISP use case).
-* If the BeneficiaryType field is not specified, it would indicate that the beneficiary is a  trusted beneficiary.
+* The beneficiaries may be Trusted Beneficiaries as well as other types of beneficiaries as indicated by the BeneficiaryType property. When the BeneficiaryType property is not specified, the consumer should refer to the ASPSP's developer portal.
 
 ### Permission Codes
 
@@ -221,6 +221,55 @@ Content-Type: application/json
   },
   "Links": {
     "Self": "https://api.alphabank.com/open-banking/v3.1/aisp/beneficiaries/"
+  },
+  "Meta": {
+    "TotalPages": 1
+  }
+}
+```
+
+#### Get Account Beneficiaries Response with BeneficiaryType
+
+```json
+{
+  "Data": {
+    "Beneficiary": [
+      {
+        "AccountId": "22289",
+        "BeneficiaryId": "Ben1",
+        "BeneficiaryType": "Ordinary",
+        "Reference": "Towbar Club",
+        "CreditorAccount": {
+          "SchemeName": "UK.OBIE.SortCodeAccountNumber",
+          "Identification": "80200112345678",
+          "Name": "Mrs Juniper"
+        }
+      },
+      {
+        "AccountId": "22289",
+        "BeneficiaryId": "Ben2",
+        "BeneficiaryType": "Trusted",
+        "Reference": "Champagne Club",
+        "CreditorAccount": {
+          "SchemeName": "UK.OBIE.SortCodeAccountNumber",
+          "Identification": "80200112345678",
+          "Name": "Mr Tully"
+        }
+      },
+      {
+        "AccountId": "22289",
+        "BeneficiaryId": "Ben3",
+        "Reference": "O2-234823781",
+        "CreditorAccount": {
+          "SchemeName": "UK.OBIE.SortCodeAccountNumber",
+          "Identification": "80200112345678",
+          "Name": "Mr Tully"
+        }
+      }
+    ]
+  },
+  "Links": {
+    "Self": "https://api.alphabank.com/open-banking/v3.1/aisp/accounts/22289/beneficiaries/"
   },
   "Meta": {
     "TotalPages": 1
