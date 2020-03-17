@@ -22,6 +22,12 @@ The Swagger Specification for R/W APIs can be downloaded from the following GitH
 
 ## Change Log
 
+### Version 3.1.5 - RC1
+
+- __Decision 220 - TransactionReference Length increased__ [View Diff](https://github.com/OpenBankingUK/read-write-api-docs-pub/commit/ad5e5c8c599b2f6611d45e1c956240f811a92fa6)
+- __Errata - Refund Account/Name cardinality was incorrect__ [View Diff](https://github.com/OpenBankingUK/read-write-api-docs-pub/commit/788eb1f5261177a49e8afaee7f9e52a19c5bda52)
+- __Errata - Amount pattern allowed to supply amount with fractional digits__ [View Diff](https://github.com/OpenBankingUK/read-write-api-docs-pub/commit/cfdba4047b9cbea9982051e9b821fc48adb916eb)
+
 ### Version 3.1.5 - Draft1
 
 - __Decision 214 - Changes to the transactions AIS end-point to address mutability of booked transactions__ 
