@@ -593,7 +593,6 @@ Deviations from the camt.052 XML standard are:
 | OBExternalStatementType1Code |Interim |Adhoc or customised statement period. |
 | OBExternalStatementType1Code |RegularPeriodic |Regular pre-agreed reporting statement. |
 
-
 #### ISO Enumerations
 
 These following ISO Enumerations are used in the Accounts APIs.

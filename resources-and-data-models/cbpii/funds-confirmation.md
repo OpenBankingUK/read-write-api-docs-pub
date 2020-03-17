@@ -66,9 +66,8 @@ Notes:
 | ConsentId |1..1 |OBFundsConfirmation1/Data/ConsentId |Unique identification as assigned by the ASPSP to uniquely identify the funds confirmation consent resource. |Max128Text | | |
 | Reference |1..1 |OBFundsConfirmation1/Data/Reference |Unique reference, as assigned by the CBPII, to unambiguously refer to the request related to the payment transaction. |Max35Text | | |
 | InstructedAmount |1..1 |OBFundsConfirmation1/Data/InstructedAmount |Amount of money to be confirmed as available funds in the debtor account. Contains an Amount and a Currency. |OBActiveOrHistoricCurrencyAndAmount | | |
-| Amount |1..1 |OBFundsConfirmation1/Data/InstructedAmount/Amount |A number of monetary units specified in an active currency where the unit of currency is explicit and compliant with ISO 4217. |OBActiveCurrencyAndAmount_SimpleType | |^\d{1,13}\.\d{1,5}$ |
+| Amount |1..1 |OBFundsConfirmation1/Data/InstructedAmount/Amount |A number of monetary units specified in an active currency where the unit of currency is explicit and compliant with ISO 4217. |OBActiveCurrencyAndAmount_SimpleType | |`^\d{1,13}$\|^\d{1,13}\.\d{1,5}$` |
 | Currency |1..1 |OBFundsConfirmation1/Data/InstructedAmount/Currency |A code allocated to a currency by a Maintenance Agency under an international identification scheme, as described in the latest edition of the international standard ISO 4217 "Codes for the representation of currencies and funds". |ActiveOrHistoricCurrencyCode | |^[A-Z]{3,3}$ |
-
 
 ### Funds Confirmation - Response
 
@@ -99,7 +98,7 @@ The OBFundsConfirmationResponse1 object contains the same information as the OBF
 | FundsAvailable |1..1 |OBFundsConfirmationResponse1/Data/FundsAvailable |Flag to indicate the result of a confirmation of funds check. |xs:boolean | | |
 | Reference |1..1 |OBFundsConfirmationResponse1/Data/Reference |Unique reference, as assigned by the CBPII, to unambiguously refer to the request related to the payment transaction. |Max35Text | | |
 | InstructedAmount |1..1 |OBFundsConfirmationResponse1/Data/InstructedAmount |Amount of money to be confirmed as available funds in the debtor account. Contains an Amount and a Currency. |OBActiveOrHistoricCurrencyAndAmount | | |
-| Amount |1..1 |OBFundsConfirmationResponse1/Data/InstructedAmount/Amount |A number of monetary units specified in an active currency where the unit of currency is explicit and compliant with ISO 4217. |OBActiveCurrencyAndAmount_SimpleType | |^\d{1,13}\.\d{1,5}$ |
+| Amount |1..1 |OBFundsConfirmationResponse1/Data/InstructedAmount/Amount |A number of monetary units specified in an active currency where the unit of currency is explicit and compliant with ISO 4217. |OBActiveCurrencyAndAmount_SimpleType | |`^\d{1,13}$\|^\d{1,13}\.\d{1,5}$` |
 | Currency |1..1 |OBFundsConfirmationResponse1/Data/InstructedAmount/Currency |A code allocated to a currency by a Maintenance Agency under an international identification scheme, as described in the latest edition of the international standard ISO 4217 "Codes for the representation of currencies and funds". |ActiveOrHistoricCurrencyCode | |^[A-Z]{3,3}$ |
 
 ## Usage Examples
