@@ -116,11 +116,11 @@ Due to the way that ASPSPs and payment systems operate, some of the fields in a 
 Prior to Version 3.1.5, there was no specific flag to indicate the mutability of a transaction record and TPPs inferred it from the `Status` field. As an "unstated" standard, a transaction with a status of `Pending` was considered to be mutable (ie some of its fields like date, description and amount may change or the transaction may be backed out completely) while a `Booked` transaction was considered to be immutable. There were however, some edge cases where a `Booked` transaction may suffer from changes to some fields.
 
 Since Version 3.1.5, the mutability for a transaction has been made explicit:
+
 * A transaction with a `Status` of `Pending` is mutable
 * A transaction with a `Status` of `Booked` where the `TransactionMutability` flag is not specified is immutable.
 * A transaction with a `Status` of `Booked` with the `TransactionMutability` flag set to `Immutable` is immutable.
 * A transaction with a `Status` of `Booked` with the `TransactionMutability` flag set to `Mutable` is mutable.
-
 
 #### Examples to illustrate mutability
 
@@ -155,27 +155,27 @@ Since Version 3.1.5, the mutability for a transaction has been made explicit:
 The resource differs depending on the permissions (ReadTransactionsBasic and ReadTransactionsDetail) used to access resource. In the event the resource is accessed with both ReadTransactionsBasic and ReadTransactionsDetail, the most detailed level (ReadTransactionsDetail) must be used.
 
 * These objects **must not** be returned **without** the **ReadTransactionsDetail** permission:
-    * OBReadTransaction6/Data/Transaction/TransactionInformation
-    * OBReadTransaction6/Data/Transaction/Balance
-    * OBReadTransaction6/Data/Transaction/MerchantDetails
-    * OBReadTransaction6/Data/Transaction/CreditorAgent
-    * OBReadTransaction6/Data/Transaction/CreditorAccount
-    * OBReadTransaction6/Data/Transaction/DebtorAgent
-    * OBReadTransaction6/Data/Transaction/DebtorAccount
+  * OBReadTransaction6/Data/Transaction/TransactionInformation
+  * OBReadTransaction6/Data/Transaction/Balance
+  * OBReadTransaction6/Data/Transaction/MerchantDetails
+  * OBReadTransaction6/Data/Transaction/CreditorAgent
+  * OBReadTransaction6/Data/Transaction/CreditorAccount
+  * OBReadTransaction6/Data/Transaction/DebtorAgent
+  * OBReadTransaction6/Data/Transaction/DebtorAccount
 * If the **ReadTransactionsDetail** is granted by the PSU:
-    * OBReadTransaction6/Data/Transaction/TransactionInformation **may** be returned if applicable to the transaction and ASPSP (0..1)
-    * OBReadTransaction6/Data/Transaction/Balance **may** be returned if applicable to the transaction and ASPSP (0..1)
-    * OBReadTransaction6/Data/Transaction/MerchantDetails **may** be returned if applicable to the transaction and ASPSP (0..1)
-    * OBReadTransaction6/Data/Transaction/CreditorAgent **may** be returned if applicable to the transaction and ASPSP (0..1)
-    * OBReadTransaction6/Data/Transaction/CreditorAccount **may** be returned if applicable to the transaction and ASPSP (0..1)
-    * OBReadTransaction6/Data/Transaction/DebtorAgent **may** be returned if applicable to the transaction and ASPSP (0..1)
-    * OBReadTransaction6/Data/Transaction/DebtorAccount **may** be returned if applicable to the transaction and ASPSP (0..1)
+  * OBReadTransaction6/Data/Transaction/TransactionInformation **may** be returned if applicable to the transaction and ASPSP (0..1)
+  * OBReadTransaction6/Data/Transaction/Balance **may** be returned if applicable to the transaction and ASPSP (0..1)
+  * OBReadTransaction6/Data/Transaction/MerchantDetails **may** be returned if applicable to the transaction and ASPSP (0..1)
+  * OBReadTransaction6/Data/Transaction/CreditorAgent **may** be returned if applicable to the transaction and ASPSP (0..1)
+  * OBReadTransaction6/Data/Transaction/CreditorAccount **may** be returned if applicable to the transaction and ASPSP (0..1)
+  * OBReadTransaction6/Data/Transaction/DebtorAgent **may** be returned if applicable to the transaction and ASPSP (0..1)
+  * OBReadTransaction6/Data/Transaction/DebtorAccount **may** be returned if applicable to the transaction and ASPSP (0..1)
 
-If the ReadPAN permission is granted by the PSU - the ASPSP may choose to populate the unmasked PAN - if the PAN is being populated in the response for these fields:
+* If the ReadPAN permission is granted by the PSU - the ASPSP may choose to populate the unmasked PAN - if the PAN is being populated in the response for these fields:
 
-* OBReadTransaction6/Data/Transaction/CreditorAccount/Identification
-* OBReadTransaction6/Data/Transaction/DebtorAccount/Identification
-* OBReadTransaction6/Data/Transaction/CardInstrument/Identification
+  * OBReadTransaction6/Data/Transaction/CreditorAccount/Identification
+  * OBReadTransaction6/Data/Transaction/DebtorAccount/Identification
+  * OBReadTransaction6/Data/Transaction/CardInstrument/Identification
 
 ### Data Dictionary
 
@@ -186,7 +186,7 @@ If the ReadPAN permission is granted by the PSU - the ASPSP may choose to popula
 | Transaction |0..n |OBReadTransaction6/Data/Transaction |Provides further details on an entry in the report. |OBTransaction6 | | |
 | AccountId |1..1 |OBReadTransaction6/Data/Transaction/AccountId |A unique and immutable identifier used to identify the account resource. This identifier has no meaning to the account owner. |Max40Text | | |
 | TransactionId |0..1 |OBReadTransaction6/Data/Transaction/TransactionId |Unique identifier for the transaction within an servicing institution. This identifier is both unique and immutable. |Max210Text | | |
-| TransactionReference |0..1 |OBReadTransaction6/Data/Transaction/TransactionReference |Unique reference for the transaction. This reference is optionally populated, and may as an example be the FPID in the Faster Payments context. |Max35Text | | |
+| TransactionReference |0..1 |OBReadTransaction6/Data/Transaction/TransactionReference |Unique reference for the transaction. This reference is optionally populated, and may as an example be the FPID in the Faster Payments context. |Max210Text | | |
 | StatementReference |0..n |OBReadTransaction6/Data/Transaction/StatementReference |Unique reference for the statement. This reference may be optionally populated if available. |Max35Text | | |
 | CreditDebitIndicator |1..1 |OBReadTransaction6/Data/Transaction/CreditDebitIndicator |Indicates whether the transaction is a credit or a debit entry. |OBCreditDebitCode |Credit Debit | |
 | Status |1..1 |OBReadTransaction6/Data/Transaction/Status |Status of a transaction entry on the books of the account servicer. |OBEntryStatus1Code |Booked Pending | |

@@ -144,15 +144,17 @@ The resource differs depending on the permissions (ReadStatementsBasic and ReadS
 * Calls to GET /accounts/{AccountId}/statements/{StatementId}/file
 
 * If the **ReadStatementsDetail** is granted by the PSU:
-    * OBReadStatement2/Data/Statement/StatementAmount **may** be returned if applicable to the statement and ASPSP (0..n)
+
+  * OBReadStatement2/Data/Statement/StatementAmount **may** be returned if applicable to the statement and ASPSP (0..n)
 
 For the call toGET /accounts/{AccountId}/statements/{StatementId}/transactions:
 
 * The **ReadTransactionsBasic or** **ReadTransactionsDetail** (in addition to the appropriate **ReadTransactionsCredits** and/or **ReadTransactionsDebits** ) permission codes will be required. The ASPSP must apply the same access to GET /accounts/{AccountId}/statements/{StatementId}/transactions as GET /accounts/{AccountId}/transactions
 * If the ReadPAN permission is granted by the PSU - the ASPSP may choose to populate the unmasked PAN - if the PAN is being populated in the response for these fields:
-    * OBReadTransaction6/Data/Transaction/CreditorAgent/Identification
-    * OBReadTransaction6/Data/Transaction/DebtorAccount/Identification
-    * OBReadTransaction6/Data/Transaction/CardInstrument/Identification
+  
+  * OBReadTransaction6/Data/Transaction/CreditorAgent/Identification
+  * OBReadTransaction6/Data/Transaction/DebtorAccount/Identification
+  * OBReadTransaction6/Data/Transaction/CardInstrument/Identification
 
 
 ### Data Dictionary
