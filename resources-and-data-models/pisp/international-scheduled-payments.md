@@ -1,4 +1,4 @@
-# International Scheduled Payments - v3.1.4 <!-- omit in toc -->
+# International Scheduled Payments - v3.1.5 <!-- omit in toc -->
 
 1. [Overview](#overview)
 2. [Endpoints](#endpoints)
@@ -37,8 +37,8 @@ This resource description should be read in conjunction with a compatible Paymen
 
 | Resource |HTTP Operation |Endpoint |Mandatory ? |Scope |Grant Type |Message Signing |Idempotency Key |Request Object |Response Object |
 | --- |--- |--- |--- |--- |--- |--- |--- |--- |--- |
-| international-scheduled-payments |POST |POST /international-scheduled-payments |Conditional |payments |Authorization Code |Signed Request Signed Response |Yes |OBWriteInternationalScheduled3 |OBWriteInternationalScheduledResponse5 |
-| international-scheduled-payments |GET |GET /international-scheduled-payments/{InternationalScheduledPaymentId} |Mandatory (if resource POST implemented) |payments |Client Credentials |Signed Response |No |NA |OBWriteInternationalScheduledResponse5 |
+| international-scheduled-payments |POST |POST /international-scheduled-payments |Conditional |payments |Authorization Code |Signed Request Signed Response |Yes |OBWriteInternationalScheduled3 |OBWriteInternationalScheduledResponse6 |
+| international-scheduled-payments |GET |GET /international-scheduled-payments/{InternationalScheduledPaymentId} |Mandatory (if resource POST implemented) |payments |Client Credentials |Signed Response |No |NA |OBWriteInternationalScheduledResponse6 |
 | payment-details |GET |GET /international-scheduled-payments/{InternationalScheduledPaymentId}/payment-details |Optional |payments |Client Credentials |Signed Response |No |NA |OBWritePaymentDetailsResponse1 |
 
 ### POST /international-scheduled-payments
@@ -183,18 +183,18 @@ The international-scheduled-payment **request** object contains the:
 
 ### International Scheduled Payment - Response
 
-The OBWriteInternationalScheduledResponse5 object will be used for a response to a call to:
+The OBWriteInternationalScheduledResponse6 object will be used for a response to a call to:
 
 * POST /international-scheduled-payments
 * GET /international-scheduled-payments/{InternationalScheduledPaymentId}
 
 #### UML Diagram
 
-![ OBWriteInternationalScheduledResponse5.png ](./images/OBWriteInternationalScheduledResponse5.png )
+![ OBWriteInternationalScheduledResponse6.png ](./images/OBWriteInternationalScheduledResponse6.gif )
 
 #### Notes
 
-The international-scheduled-payment **response** object contains the: 
+The international-scheduled-payment **response** object contains the:
 
 * InternationalScheduledPaymentId.
 * ConsentId.
@@ -206,25 +206,28 @@ The international-scheduled-payment **response** object contains the:
 * The Charges and ExchangeRateInformation in the international-scheduled-payment-consent response from the ASPSP.
 * The Initiation object from the international-payment-consent.
 * The MultiAuthorisation object if the international-scheduled-payment resource requires multiple authorisations.
+* An ASPSP should conditionally provide `Debtor/Name` in the Payment Order Response, even when the Payer didn't provide the Debtor Account via PISP.
 
 #### Data Dictionary
 
 | Name |Occurrence |XPath |EnhancedDefinition |Class |Codes |Pattern |
 | --- |--- |--- |--- |--- |--- |--- |
-| OBWriteInternationalScheduledResponse5 | |OBWriteInternationalScheduledResponse5 | |OBWriteInternationalScheduledResponse5 | | |
-| Data |1..1 |OBWriteInternationalScheduledResponse5/Data | |OBWriteDataInternationalScheduledResponse5 | | |
-| InternationalScheduledPaymentId |1..1 |OBWriteInternationalScheduledResponse5/Data/InternationalScheduledPaymentId |OB: Unique identification as assigned by the ASPSP to uniquely identify the international scheduled payment resource. |Max40Text | | |
-| ConsentId |1..1 |OBWriteInternationalScheduledResponse5/Data/ConsentId |OB: Unique identification as assigned by the ASPSP to uniquely identify the consent resource. |Max128Text | | |
-| CreationDateTime |1..1 |OBWriteInternationalScheduledResponse5/Data/CreationDateTime |Date and time at which the message was created. |ISODateTime | | |
-| Status |1..1 |OBWriteInternationalScheduledResponse5/Data/Status |Specifies the status of the payment order resource. |OBExternalStatus1Code |InitiationCompleted InitiationFailed InitiationPending Cancelled | |
-| StatusUpdateDateTime |1..1 |OBWriteInternationalScheduledResponse5/Data/StatusUpdateDateTime |Date and time at which the resource status was updated. |ISODateTime | | |
-| ExpectedExecutionDateTime |0..1 |OBWriteInternationalScheduledResponse5/Data/ExpectedExecutionDateTime |Expected execution date and time for the payment resource. |ISODateTime | | |
-| ExpectedSettlementDateTime |0..1 |OBWriteInternationalScheduledResponse5/Data/ExpectedSettlementDateTime |Expected settlement date and time for the payment resource. |ISODateTime | | |
-| Refund |0..1 |OBWriteInternationalScheduledResponse5/Data/Refund |Unambiguous identification of the refund account to which a refund will be made as a result of the transaction. |OBInternationalRefundAccount1 | | |
-| Charges |0..n |OBWriteInternationalScheduledResponse5/Data/Charges |Set of elements used to provide details of a charge for the payment initiation. |OBCharge2 | | |
-| ExchangeRateInformation |0..1 |OBWriteInternationalScheduledResponse5/Data/ExchangeRateInformation |Further detailed information on the exchange rate that has been used in the payment transaction. |OBExchangeRate2 | | |
-| Initiation |1..1 |OBWriteInternationalScheduledResponse5/Data/Initiation |The Initiation payload is sent by the initiating party to the ASPSP. It is used to request movement of funds from the debtor account to a creditor for a single scheduled international payment. |OBInternationalScheduled3 | | |
-| MultiAuthorisation |0..1 |OBWriteInternationalScheduledResponse5/Data/MultiAuthorisation | |OBMultiAuthorisation1 | | |
+| OBWriteInternationalScheduledResponse6 | |OBWriteInternationalScheduledResponse6 | |OBWriteInternationalScheduledResponse6 | | |
+| Data |1..1 |OBWriteInternationalScheduledResponse6/Data | |OBWriteDataInternationalScheduledResponse6 | | |
+| InternationalScheduledPaymentId |1..1 |OBWriteInternationalScheduledResponse6/Data/InternationalScheduledPaymentId |OB: Unique identification as assigned by the ASPSP to uniquely identify the international scheduled payment resource. |Max40Text | | |
+| ConsentId |1..1 |OBWriteInternationalScheduledResponse6/Data/ConsentId |OB: Unique identification as assigned by the ASPSP to uniquely identify the consent resource. |Max128Text | | |
+| CreationDateTime |1..1 |OBWriteInternationalScheduledResponse6/Data/CreationDateTime |Date and time at which the message was created. |ISODateTime | | |
+| Status |1..1 |OBWriteInternationalScheduledResponse6/Data/Status |Specifies the status of the payment order resource. |OBExternalStatus1Code |InitiationCompleted InitiationFailed InitiationPending Cancelled | |
+| StatusUpdateDateTime |1..1 |OBWriteInternationalScheduledResponse6/Data/StatusUpdateDateTime |Date and time at which the resource status was updated. |ISODateTime | | |
+| ExpectedExecutionDateTime |0..1 |OBWriteInternationalScheduledResponse6/Data/ExpectedExecutionDateTime |Expected execution date and time for the payment resource. |ISODateTime | | |
+| ExpectedSettlementDateTime |0..1 |OBWriteInternationalScheduledResponse6/Data/ExpectedSettlementDateTime |Expected settlement date and time for the payment resource. |ISODateTime | | |
+| Refund |0..1 |OBWriteInternationalScheduledResponse6/Data/Refund |Unambiguous identification of the refund account to which a refund will be made as a result of the transaction. |OBInternationalRefundAccount1 | | |
+| Charges |0..n |OBWriteInternationalScheduledResponse6/Data/Charges |Set of elements used to provide details of a charge for the payment initiation. |OBCharge2 | | |
+| ExchangeRateInformation |0..1 |OBWriteInternationalScheduledResponse6/Data/ExchangeRateInformation |Further detailed information on the exchange rate that has been used in the payment transaction. |OBExchangeRate2 | | |
+| Initiation |1..1 |OBWriteInternationalScheduledResponse6/Data/Initiation |The Initiation payload is sent by the initiating party to the ASPSP. It is used to request movement of funds from the debtor account to a creditor for a single scheduled international payment. |OBInternationalScheduled3 | | |
+| MultiAuthorisation |0..1 |OBWriteInternationalScheduledResponse6/Data/MultiAuthorisation | |OBMultiAuthorisation1 | | |
+| Debtor |0..1 |OBWriteInternationalScheduledResponse6/Data/Debtor |Set of elements used to identify a person or an organisation. |OBDebtorIdentification1 | | |
+| Name |1..1 |OBWriteInternationalScheduledResponse6/Data/Debtor/Name |The account name is the name or names of the account owner(s) represented at an account level, as displayed by the ASPSP's online channels. <BR/><BR/> Note, the account name is not the product name or the nickname of the account. |Max140Text | | |
 
 ### International Schedule Payment Order - Payment Details - Response
 

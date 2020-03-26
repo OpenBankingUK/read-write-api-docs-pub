@@ -1,4 +1,4 @@
-# Direct Debits - v3.1.4 <!-- omit in toc -->
+# Direct Debits - v3.1.5 <!-- omit in toc -->
 
 1. [Overview](#overview)
 2. [Endpoints](#endpoints)
@@ -70,7 +70,7 @@ The resource requires the ReadDirectDebits permission. The resource response pay
 | PreviousPaymentDateTime |0..1 |OBReadDirectDebit2/Data/DirectDebit/PreviousPaymentDateTime |Date of most recent direct debit collection. |ISODateTime | | |
 | Frequency |0..1 |OBReadDirectDebit2/Data/DirectDebit/Frequency |Regularity with which direct debit instructions are to be created and processed |OBExternalDirectDebitFrequency1Code | | |
 | PreviousPaymentAmount |0..1 |OBReadDirectDebit2/Data/DirectDebit/PreviousPaymentAmount |The amount of the most recent direct debit collection. |OBActiveOrHistoricCurrencyAndAmount | | |
-| Amount |1..1 |OBReadDirectDebit2/Data/DirectDebit/PreviousPaymentAmount/Amount |A number of monetary units specified in an active currency where the unit of currency is explicit and compliant with ISO 4217. |OBActiveCurrencyAndAmount_SimpleType | |^\d{1,13}\.\d{1,5}$ |
+| Amount |1..1 |OBReadDirectDebit2/Data/DirectDebit/PreviousPaymentAmount/Amount |A number of monetary units specified in an active currency where the unit of currency is explicit and compliant with ISO 4217. |OBActiveCurrencyAndAmount_SimpleType | |`^\d{1,13}$\|^\d{1,13}\.\d{1,5}$` |
 | Currency |1..1 |OBReadDirectDebit2/Data/DirectDebit/PreviousPaymentAmount/Currency |A code allocated to a currency by a Maintenance Agency under an international identification scheme, as described in the latest edition of the international standard ISO 4217 "Codes for the representation of currencies and funds". |ActiveOrHistoricCurrencyCode | |^[A-Z]{3,3}$ |
 
 ## Usage Examples

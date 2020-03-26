@@ -1,4 +1,4 @@
-# International Payment Usage Examples - v3.1.4 <!-- omit in toc -->
+# International Payment Usage Examples - v3.1.5 <!-- omit in toc -->
 
 1. [Debit amount specified; ASPSP provides actual (guaranteed) FX rate, for limited time](#debit-amount-specified-aspsp-provides-actual-guaranteed-fx-rate-for-limited-time)
    1. [POST /international-payment-consents request](#post-international-payment-consents-request)

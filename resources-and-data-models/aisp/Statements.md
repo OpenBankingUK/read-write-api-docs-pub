@@ -1,4 +1,4 @@
-# Statements - v3.1.4 <!-- omit in toc -->
+# Statements - v3.1.5 <!-- omit in toc -->
 
 1. [Overview](#overview)
 2. [Endpoints](#endpoints)
@@ -44,7 +44,7 @@ Endpoints for the resource and available methods.
 | 1 |statements |GET |GET /accounts/{AccountId}/statements |Conditional |accounts |Authorization Code |No |Pagination Filtering | |OBReadStatement2 |
 | 2 |statements |GET |GET /accounts/{AccountId}/statements/{StatementId} |Conditional |accounts |Authorization Code |No | | |OBReadStatement2 |
 | 3 |statements |GET |GET /accounts/{AccountId}/statements/{StatementId}/file |Optional |accounts |Authorization Code |No | | |File |
-| 4 |transactions |GET |GET /accounts/{AccountId}/statements/{StatementId}/transactions |Conditional |accounts |Authorization Code |No |Pagination | |OBReadTransaction5 |
+| 4 |transactions |GET |GET /accounts/{AccountId}/statements/{StatementId}/transactions |Conditional |accounts |Authorization Code |No |Pagination | |OBReadTransaction6 |
 | 5 |statements |GET |GET /statements |Optional |accounts |Authorization Code |No |Pagination Filtering | |OBReadStatement2 |
 
 ### GET /accounts/{AccountId}/statements
@@ -82,7 +82,7 @@ The call to
 
 will return unstructured data in binary (e.g., pdf, doc) or text (e.g., csv) formats. This will be specified in the Accept header by the AISP.
 
-The OBReadTransaction3 object (documented in the transactions resource) will be used the call to:
+The OBReadTransaction6 object (documented in the transactions resource) will be used the call to:
 
 * GET /accounts/{AccountId}/statements/{StatementId}/transactions
 
@@ -144,15 +144,17 @@ The resource differs depending on the permissions (ReadStatementsBasic and ReadS
 * Calls to GET /accounts/{AccountId}/statements/{StatementId}/file
 
 * If the **ReadStatementsDetail** is granted by the PSU:
-    * OBReadStatement2/Data/Statement/StatementAmount **may** be returned if applicable to the statement and ASPSP (0..n)
+
+  * OBReadStatement2/Data/Statement/StatementAmount **may** be returned if applicable to the statement and ASPSP (0..n)
 
 For the call toGET /accounts/{AccountId}/statements/{StatementId}/transactions:
 
 * The **ReadTransactionsBasic or** **ReadTransactionsDetail** (in addition to the appropriate **ReadTransactionsCredits** and/or **ReadTransactionsDebits** ) permission codes will be required. The ASPSP must apply the same access to GET /accounts/{AccountId}/statements/{StatementId}/transactions as GET /accounts/{AccountId}/transactions
 * If the ReadPAN permission is granted by the PSU - the ASPSP may choose to populate the unmasked PAN - if the PAN is being populated in the response for these fields:
-    * OBReadTransaction3/Data/Transaction/CreditorAgent/Identification
-    * OBReadTransaction3/Data/Transaction/DebtorAccount/Identification
-    * OBReadTransaction3/Data/Transaction/CardInstrument/Identification
+  
+  * OBReadTransaction6/Data/Transaction/CreditorAgent/Identification
+  * OBReadTransaction6/Data/Transaction/DebtorAccount/Identification
+  * OBReadTransaction6/Data/Transaction/CardInstrument/Identification
 
 
 ### Data Dictionary
@@ -173,7 +175,7 @@ For the call toGET /accounts/{AccountId}/statements/{StatementId}/transactions:
 | StatementBenefit |0..n |OBReadStatement2/Data/Statement/StatementBenefit |Set of elements used to provide details of a benefit or reward amount for the statement resource. |OBStatementBenefit1 | | |
 | Type |1..1 |OBReadStatement2/Data/Statement/StatementBenefit/Type |Benefit type, in a coded form. |OBExternalStatementBenefitType1Code | | |
 | Amount |1..1 |OBReadStatement2/Data/Statement/StatementBenefit/Amount |Amount of money associated with the statement benefit type. |OBActiveOrHistoricCurrencyAndAmount | | |
-| Amount |1..1 |OBReadStatement2/Data/Statement/StatementBenefit/Amount/Amount |A number of monetary units specified in an active currency where the unit of currency is explicit and compliant with ISO 4217. |OBActiveCurrencyAndAmount_SimpleType | |^\d{1,13}\.\d{1,5}$ |
+| Amount |1..1 |OBReadStatement2/Data/Statement/StatementBenefit/Amount/Amount |A number of monetary units specified in an active currency where the unit of currency is explicit and compliant with ISO 4217. |OBActiveCurrencyAndAmount_SimpleType | |`^\d{1,13}$\|^\d{1,13}\.\d{1,5}$` |
 | Currency |1..1 |OBReadStatement2/Data/Statement/StatementBenefit/Amount/Currency |A code allocated to a currency by a Maintenance Agency under an international identification scheme, as described in the latest edition of the international standard ISO 4217 "Codes for the representation of currencies and funds". |ActiveOrHistoricCurrencyCode | |^[A-Z]{3,3}$ |
 | StatementFee |0..n |OBReadStatement2/Data/Statement/StatementFee |Set of elements used to provide details of a fee for the statement resource. |OBStatementFee2 | | |
 | Description |0..1 |OBReadStatement2/Data/Statement/StatementFee/Description |Description that may be available for the statement fee. |Max128Text | | |
@@ -183,7 +185,7 @@ For the call toGET /accounts/{AccountId}/statements/{StatementId}/transactions:
 | RateType |0..1 |OBReadStatement2/Data/Statement/StatementFee/RateType |Description that may be available for the statement fee rate type. |OBExternalStatementFeeRateType1Code |UK.OBIE.AER UK.OBIE.EAR | |
 | Frequency |0..1 |OBReadStatement2/Data/Statement/StatementFee/Frequency |How frequently the fee is applied to the Account. |OBExternalStatementFeeFrequency1Code |UK.OBIE.ChargingPeriod UK.OBIE.PerTransactionAmount UK.OBIE.PerTransactionPercentage UK.OBIE.Quarterly UK.OBIE.StatementMonthly UK.OBIE.Weekly | |
 | Amount |1..1 |OBReadStatement2/Data/Statement/StatementFee/Amount |Amount of money associated with the statement fee type. |OBActiveOrHistoricCurrencyAndAmount | | |
-| Amount |1..1 |OBReadStatement2/Data/Statement/StatementFee/Amount/Amount |A number of monetary units specified in an active currency where the unit of currency is explicit and compliant with ISO 4217. |OBActiveCurrencyAndAmount_SimpleType | |^\d{1,13}\.\d{1,5}$ |
+| Amount |1..1 |OBReadStatement2/Data/Statement/StatementFee/Amount/Amount |A number of monetary units specified in an active currency where the unit of currency is explicit and compliant with ISO 4217. |OBActiveCurrencyAndAmount_SimpleType | |`^\d{1,13}$\|^\d{1,13}\.\d{1,5}$` |
 | Currency |1..1 |OBReadStatement2/Data/Statement/StatementFee/Amount/Currency |A code allocated to a currency by a Maintenance Agency under an international identification scheme, as described in the latest edition of the international standard ISO 4217 "Codes for the representation of currencies and funds". |ActiveOrHistoricCurrencyCode | |^[A-Z]{3,3}$ |
 | StatementInterest |0..n |OBReadStatement2/Data/Statement/StatementInterest |Set of elements used to provide details of a generic interest amount related to the statement resource. |OBStatementInterest2 | | |
 | Description |0..1 |OBReadStatement2/Data/Statement/StatementInterest/Description |Description that may be available for the statement interest. |Max128Text | | |
@@ -193,13 +195,13 @@ For the call toGET /accounts/{AccountId}/statements/{StatementId}/transactions:
 | RateType |0..1 |OBReadStatement2/Data/Statement/StatementInterest/RateType |Description that may be available for the statement Interest rate type. |OBExternalStatementInterestRateType1Code |UK.OBIE.BOEBaseRate UK.OBIE.FixedRate UK.OBIE.Gross UK.OBIE.LoanProviderBaseRate UK.OBIE.Net | |
 | Frequency |0..1 |OBReadStatement2/Data/Statement/StatementInterest/Frequency |How frequently the Interest Rate is applied to the Account. |OBExternalStatementInterestFrequency1Code |UK.OBIE.Daily UK.OBIE.HalfYearly UK.OBIE.Monthly UK.OBIE.PerStatementDate UK.OBIE.Quarterly UK.OBIE.Weekly UK.OBIE.Yearly | |
 | Amount |1..1 |OBReadStatement2/Data/Statement/StatementInterest/Amount |Amount of money associated with the statement interest amount type. |OBActiveOrHistoricCurrencyAndAmount | | |
-| Amount |1..1 |OBReadStatement2/Data/Statement/StatementInterest/Amount/Amount |A number of monetary units specified in an active currency where the unit of currency is explicit and compliant with ISO 4217. |OBActiveCurrencyAndAmount_SimpleType | |^\d{1,13}\.\d{1,5}$ |
+| Amount |1..1 |OBReadStatement2/Data/Statement/StatementInterest/Amount/Amount |A number of monetary units specified in an active currency where the unit of currency is explicit and compliant with ISO 4217. |OBActiveCurrencyAndAmount_SimpleType | |`^\d{1,13}$\|^\d{1,13}\.\d{1,5}$` |
 | Currency |1..1 |OBReadStatement2/Data/Statement/StatementInterest/Amount/Currency |A code allocated to a currency by a Maintenance Agency under an international identification scheme, as described in the latest edition of the international standard ISO 4217 "Codes for the representation of currencies and funds". |ActiveOrHistoricCurrencyCode | |^[A-Z]{3,3}$ |
 | StatementAmount |0..n |OBReadStatement2/Data/Statement/StatementAmount |Set of elements used to provide details of a generic amount for the statement resource. |OBStatementAmount1 | | |
 | CreditDebitIndicator |1..1 |OBReadStatement2/Data/Statement/StatementAmount/CreditDebitIndicator |Indicates whether the amount is a credit or a debit. Usage: A zero amount is considered to be a credit amount. |OBCreditDebitCode |Credit Debit | |
 | Type |1..1 |OBReadStatement2/Data/Statement/StatementAmount/Type |Amount type, in a coded form. |OBExternalStatementAmountType1Code | | |
 | Amount |1..1 |OBReadStatement2/Data/Statement/StatementAmount/Amount |Amount of money associated with the amount type. |OBActiveOrHistoricCurrencyAndAmount | | |
-| Amount |1..1 |OBReadStatement2/Data/Statement/StatementAmount/Amount/Amount |A number of monetary units specified in an active currency where the unit of currency is explicit and compliant with ISO 4217. |OBActiveCurrencyAndAmount_SimpleType | |^\d{1,13}\.\d{1,5}$ |
+| Amount |1..1 |OBReadStatement2/Data/Statement/StatementAmount/Amount/Amount |A number of monetary units specified in an active currency where the unit of currency is explicit and compliant with ISO 4217. |OBActiveCurrencyAndAmount_SimpleType | |`^\d{1,13}$\|^\d{1,13}\.\d{1,5}$` |
 | Currency |1..1 |OBReadStatement2/Data/Statement/StatementAmount/Amount/Currency |A code allocated to a currency by a Maintenance Agency under an international identification scheme, as described in the latest edition of the international standard ISO 4217 "Codes for the representation of currencies and funds". |ActiveOrHistoricCurrencyCode | |^[A-Z]{3,3}$ |
 | StatementDateTime |0..n |OBReadStatement2/Data/Statement/StatementDateTime |Set of elements used to provide details of a generic date time for the statement resource. |OBStatementDateTime1 | | |
 | DateTime |1..1 |OBReadStatement2/Data/Statement/StatementDateTime/DateTime |Date and time associated with the date time type. |ISODateTime | | |

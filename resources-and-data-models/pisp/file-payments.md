@@ -1,4 +1,4 @@
-# File Payments - v3.1.4 <!-- omit in toc -->
+# File Payments - v3.1.5 <!-- omit in toc -->
 
 1. [Overview](#overview)
 2. [Endpoints](#endpoints)
@@ -39,8 +39,8 @@ This resource description should be read in conjunction with a compatible Paymen
 
 | Resource |HTTP Operation |Endpoint |Mandatory ? |Scope |Grant Type |Message Signing |Idempotency Key |Request Object |Response Object |
 | --- |--- |--- |--- |--- |--- |--- |--- |--- |--- |
-| file-payments |POST |POST /file-payments |Conditional |payments |Authorization Code |Signed Request Signed Response |Yes |OBWriteFile2 |OBWriteFileResponse2 |
-| file-payments |GET |GET /file-payments/{FilePaymentId} |Mandatory (if resource POST implemented) |payments |Client Credentials |Signed Response |No |NA |OBWriteFileResponse2 |
+| file-payments |POST |POST /file-payments |Conditional |payments |Authorization Code |Signed Request Signed Response |Yes |OBWriteFile2 |OBWriteFileResponse3 |
+| file-payments |GET |GET /file-payments/{FilePaymentId} |Mandatory (if resource POST implemented) |payments |Client Credentials |Signed Response |No |NA |OBWriteFileResponse3 |
 | file-payments |GET |GET /file-payments/{FilePaymentId}/report-file |Conditional |payments |Client Credentials |Signed Response |No |NA |File |
 | payment-details |GET |GET /file-payments/{FilePaymentId}/payment-details |Optional |payments |Client Credentials |Signed Response |No |NA |OBWritePaymentDetailsResponse1 |
 
@@ -57,7 +57,6 @@ The file-payments resource must have one of the following Status codes:
 | InitiationPending |
 | InitiationFailed |
 | InitiationCompleted |
-
 
 ### GET /file-payments/{FilePaymentId}/report-file
 
@@ -169,18 +168,18 @@ The **Initiation** section of the file-payment request **must** match the **Init
 
 ### File Payment - Response
 
-The OBWriteFileResponse2 object will be used for a response to a call to:
+The OBWriteFileResponse3 object will be used for a response to a call to:
 
 * POST /file-payments
 * GET /file-payments/{FilePaymentId}
 
 #### UML Diagram
 
-![OBWriteFileResponse2](./images/OBWriteFileResponse2.gif )
+![OBWriteFileResponse3](./images/OBWriteFileResponse3.gif)
 
 #### Notes 
 
-The file-payment **response** object contains the: 
+The file-payment **response** object contains the:
 
 * FilePaymentId.
 * ConsentId.
@@ -189,21 +188,24 @@ The file-payment **response** object contains the:
 * Charges array is used for the breakdown of applicable ASPSP charges.
 * The Initiation object from the file-payment-consent.
 * The MultiAuthorisation object if the file-payment resource requires multiple authorisations.
+* An ASPSP should conditionally provide `Debtor/Name` in the Payment Order Response, even when the Payer didn't provide the Debtor Account via PISP.
 
 #### Data Dictionary
 
 | Name |Occurrence |XPath |EnhancedDefinition |Class |Codes |Pattern |
 | --- |--- |--- |--- |--- |--- |--- |
-| OBWriteFileResponse2 | |OBWriteFileResponse2 | |OBWriteFileResponse2 | | |
-| Data |1..1 |OBWriteFileResponse2/Data | |OBWriteDataFileResponse2 | | |
-| FilePaymentId |1..1 |OBWriteFileResponse2/Data/FilePaymentId |OB: Unique identification as assigned by the ASPSP to uniquely identify the file payment resource. |Max40Text | | |
-| ConsentId |1..1 |OBWriteFileResponse2/Data/ConsentId |OB: Unique identification as assigned by the ASPSP to uniquely identify the consent resource. |Max128Text | | |
-| CreationDateTime |1..1 |OBWriteFileResponse2/Data/CreationDateTime |Date and time at which the message was created. |ISODateTime | | |
-| Status |1..1 |OBWriteFileResponse2/Data/Status |Specifies the status of the payment order resource. |OBExternalStatus1Code |InitiationCompleted InitiationFailed InitiationPending | |
-| StatusUpdateDateTime |1..1 |OBWriteFileResponse2/Data/StatusUpdateDateTime |Date and time at which the resource status was updated. |ISODateTime | | |
-| Charges |0..n |OBWriteFileResponse2/Data/Charges |Set of elements used to provide details of a charge for the payment initiation. |OBCharge2 | | |
-| Initiation |1..1 |OBWriteFileResponse2/Data/Initiation |The Initiation payload is sent by the initiating party to the ASPSP. It is used to request movement of funds using a payment file. |OBFile2 | | |
-| MultiAuthorisation |0..1 |OBWriteFileResponse2/Data/MultiAuthorisation |The multiple authorisation flow response from the ASPSP. |OBMultiAuthorisation1 | | |
+| OBWriteFileResponse3 | |OBWriteFileResponse3 | |OBWriteFileResponse3 | | |
+| Data |1..1 |OBWriteFileResponse3/Data | |OBWriteDataFileResponse3 | | |
+| FilePaymentId |1..1 |OBWriteFileResponse3/Data/FilePaymentId |OB: Unique identification as assigned by the ASPSP to uniquely identify the file payment resource. |Max40Text | | |
+| ConsentId |1..1 |OBWriteFileResponse3/Data/ConsentId |OB: Unique identification as assigned by the ASPSP to uniquely identify the consent resource. |Max128Text | | |
+| CreationDateTime |1..1 |OBWriteFileResponse3/Data/CreationDateTime |Date and time at which the message was created. |ISODateTime | | |
+| Status |1..1 |OBWriteFileResponse3/Data/Status |Specifies the status of the payment order resource. |OBExternalStatus1Code |InitiationCompleted InitiationFailed InitiationPending | |
+| StatusUpdateDateTime |1..1 |OBWriteFileResponse3/Data/StatusUpdateDateTime |Date and time at which the resource status was updated. |ISODateTime | | |
+| Charges |0..n |OBWriteFileResponse3/Data/Charges |Set of elements used to provide details of a charge for the payment initiation. |OBCharge2 | | |
+| Initiation |1..1 |OBWriteFileResponse3/Data/Initiation |The Initiation payload is sent by the initiating party to the ASPSP. It is used to request movement of funds using a payment file. |OBFile2 | | |
+| MultiAuthorisation |0..1 |OBWriteFileResponse3/Data/MultiAuthorisation |The multiple authorisation flow response from the ASPSP. |OBMultiAuthorisation1 | | |
+| Debtor |0..1 |OBWriteDomesticResponse5/Data/Debtor |Set of elements used to identify a person or an organisation. |OBDebtorIdentification1 | | |
+| Name |1..1 |OBWriteDomesticResponse5/Data/Debtor/Name |The account name is the name or names of the account owner(s) represented at an account level, as displayed by the ASPSP's online channels. <BR/><BR/> Note, the account name is not the product name or the nickname of the account. |Max140Text | | |
 
 ### File Payment - Payment Details - Response
 

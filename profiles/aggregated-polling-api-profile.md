@@ -1,4 +1,4 @@
-# Aggregated Polling API Profile - v3.1.4 <!-- omit in toc -->
+# Aggregated Polling API Profile - v3.1.5 <!-- omit in toc -->
 
 1. [Overview](#overview)
 2. [Basics](#basics)
@@ -65,6 +65,7 @@ Following the initial poll the TPP can then repeatedly poll the ASPSP, acknowled
 
 <details>
   <summary>Diagram source</summary>
+  
 ```
 participant TPP
 participant ASPSP Authorisation Server
