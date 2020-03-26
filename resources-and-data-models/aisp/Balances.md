@@ -1,4 +1,4 @@
-# Balances - v3.1.4 <!-- omit in toc -->
+# Balances - v3.1.5 <!-- omit in toc -->
 
 1. [Overview](#overview)
 2. [Endpoints](#endpoints)
@@ -86,13 +86,13 @@ The resource requires the ReadBalances permission. The resource response payload
 | Type |1..1 |OBReadBalance1/Data/Balance/Type |Balance type, in a coded form. |OBBalanceType1Code |ClosingAvailable ClosingBooked ClosingCleared Expected ForwardAvailable Information InterimAvailable InterimBooked InterimCleared OpeningAvailable OpeningBooked OpeningCleared PreviouslyClosedBooked | |
 | DateTime |1..1 |OBReadBalance1/Data/Balance/DateTime |Indicates the date (and time) of the balance. |ISODateTime | | |
 | Amount |1..1 |OBReadBalance1/Data/Balance/Amount |Amount of money of the cash balance. |OBActiveOrHistoricCurrencyAndAmount | | |
-| Amount |1..1 |OBReadBalance1/Data/Balance/Amount/Amount |A number of monetary units specified in an active currency where the unit of currency is explicit and compliant with ISO 4217. |OBActiveCurrencyAndAmount_SimpleType | |^\d{1,13}\.\d{1,5}$ |
+| Amount |1..1 |OBReadBalance1/Data/Balance/Amount/Amount |A number of monetary units specified in an active currency where the unit of currency is explicit and compliant with ISO 4217. |OBActiveCurrencyAndAmount_SimpleType | |`^\d{1,13}$\|^\d{1,13}\.\d{1,5}$` |
 | Currency |1..1 |OBReadBalance1/Data/Balance/Amount/Currency |A code allocated to a currency by a Maintenance Agency under an international identification scheme, as described in the latest edition of the international standard ISO 4217 "Codes for the representation of currencies and funds". |ActiveOrHistoricCurrencyCode | |^[A-Z]{3,3}$ |
 | CreditLine |0..n |OBReadBalance1/Data/Balance/CreditLine |Set of elements used to provide details on the credit line. |OBCreditLine1 | | |
 | Included |1..1 |OBReadBalance1/Data/Balance/CreditLine/Included |Indicates whether or not the credit line is included in the balance of the account. Usage: If not present, credit line is not included in the balance amount of the account. |xs:boolean | | |
 | Type |0..1 |OBReadBalance1/Data/Balance/CreditLine/Type |Limit type, in a coded form. |OBExternalLimitType1Code |Available Credit Emergency Pre-Agreed Temporary | |
 | Amount |0..1 |OBReadBalance1/Data/Balance/CreditLine/Amount |Amount of money of the credit line. |OBActiveOrHistoricCurrencyAndAmount | | |
-| Amount |1..1 |OBReadBalance1/Data/Balance/CreditLine/Amount/Amount |A number of monetary units specified in an active currency where the unit of currency is explicit and compliant with ISO 4217. |OBActiveCurrencyAndAmount_SimpleType | |^\d{1,13}\.\d{1,5}$ |
+| Amount |1..1 |OBReadBalance1/Data/Balance/CreditLine/Amount/Amount |A number of monetary units specified in an active currency where the unit of currency is explicit and compliant with ISO 4217. |OBActiveCurrencyAndAmount_SimpleType | |`^\d{1,13}$\|^\d{1,13}\.\d{1,5}$` |
 | Currency |1..1 |OBReadBalance1/Data/Balance/CreditLine/Amount/Currency |A code allocated to a currency by a Maintenance Agency under an international identification scheme, as described in the latest edition of the international standard ISO 4217 "Codes for the representation of currencies and funds". |ActiveOrHistoricCurrencyCode | |^[A-Z]{3,3}$ |
 
 ## Usage Examples

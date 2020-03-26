@@ -1,4 +1,4 @@
-# Account and Transaction API Profile - v3.1.4
+# Account and Transaction API Profile - v3.1.5
 
    1. [Overview](#overview)
       1. [Document Structure](#document-structure)
@@ -592,7 +592,6 @@ Deviations from the camt.052 XML standard are:
 | OBExternalStatementType1Code |Annual |Annual statement report. |
 | OBExternalStatementType1Code |Interim |Adhoc or customised statement period. |
 | OBExternalStatementType1Code |RegularPeriodic |Regular pre-agreed reporting statement. |
-
 
 #### ISO Enumerations
 
