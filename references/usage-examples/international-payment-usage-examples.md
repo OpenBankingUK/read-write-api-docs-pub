@@ -1,17 +1,17 @@
-# International Scheduled Payment Usage Examples - v3.1.5 <!-- omit in toc -->
+# International Scheduled Payment Usage Examples - v3.1.6 <!-- omit in toc -->
 
-1. [Credit amount specified; Future Dated Payment, ASPSP provides actual (guaranteed) FX rate , for limited time](#credit-amount-specified-future-dated-payment-aspsp-provides-actual-guaranteed-fx-rate--for-limited-time)
-	1. [POST /international-scheduled-payment-consents](#post-international-scheduled-payment-consents)
-		1. [Request](#request)
-		2. [Response](#response)
-2. [Credit amount specified; Future Dated Payment, ASPSP doesn't provide Indicative rate on payment order setup](#credit-amount-specified-future-dated-payment-aspsp-doesnt-provide-indicative-rate-on-payment-order-setup)
-	1. [POST /international-scheduled-payment-consents](#post-international-scheduled-payment-consents-1)
-		1. [Request](#request-1)
-		2. [Response](#response-1)
-3. [Confirm Funds on International Payment Order Consent](#confirm-funds-on-international-payment-order-consent)
-	1. [GET /international-scheduled-payment-consents/{ConsentId}/funds-confirmation](#get-international-scheduled-payment-consentsconsentidfunds-confirmation)
-		1. [Request](#request-2)
-		2. [Response](#response-2)
+- [Credit amount specified; Future Dated Payment, ASPSP provides actual (guaranteed) FX rate , for limited time](#credit-amount-specified-future-dated-payment-aspsp-provides-actual-guaranteed-fx-rate--for-limited-time)
+  - [POST /international-scheduled-payment-consents](#post-international-scheduled-payment-consents)
+    - [Request](#request)
+    - [Response](#response)
+- [Credit amount specified; Future Dated Payment, ASPSP doesn't provide Indicative rate on payment order setup](#credit-amount-specified-future-dated-payment-aspsp-doesnt-provide-indicative-rate-on-payment-order-setup)
+  - [POST /international-scheduled-payment-consents](#post-international-scheduled-payment-consents-1)
+    - [Request](#request-1)
+    - [Response](#response-1)
+- [Confirm Funds on International Payment Order Consent](#confirm-funds-on-international-payment-order-consent)
+  - [GET /international-scheduled-payment-consents/{ConsentId}/funds-confirmation](#get-international-scheduled-payment-consentsconsentidfunds-confirmation)
+    - [Request](#request-2)
+    - [Response](#response-2)
 
 ## Credit amount specified; Future Dated Payment, ASPSP provides actual (guaranteed) FX rate , for limited time
 

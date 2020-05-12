@@ -1,33 +1,33 @@
-# File Payments - v3.1.5 <!-- omit in toc -->
+# File Payments - v3.1.6 <!-- omit in toc -->
 
-1. [Overview](#overview)
-2. [Endpoints](#endpoints)
-   1. [GET /file-payments/{FilePaymentId}](#get-file-paymentsfilepaymentid)
-      1. [Status](#status)
-   2. [GET /file-payments/{FilePaymentId}/report-file](#get-file-paymentsfilepaymentidreport-file)
-   3. [GET /file-payments/{FilePaymentId}/payment-details](#get-file-paymentsfilepaymentidpayment-details)
-      1. [Status](#status-1)
-   4. [State Model](#state-model)
-      1. [Payment Order](#payment-order)
-      2. [Multiple Authorisation](#multiple-authorisation)
-3. [Data Model](#data-model)
-   1. [Reused Classes](#reused-classes)
-      1. [OBFile2](#obfile2)
-   2. [File Payment - Request](#file-payment---request)
-      1. [UML Diagram](#uml-diagram)
-      2. [Notes](#notes)
-      3. [Data Dictionary](#data-dictionary)
-   3. [File Payment - Response](#file-payment---response)
-      1. [UML Diagram](#uml-diagram-1)
-      2. [Notes](#notes-1)
-      3. [Data Dictionary](#data-dictionary-1)
-   4. [File Payment - Payment Details - Response](#file-payment---payment-details---response)
-      1. [UML Diagram](#uml-diagram-2)
-      2. [Data Dictionary](#data-dictionary-2)
-4. [Usage Examples](#usage-examples)
-   1. [POST /file-payments](#post-file-payments)
-      1. [Request](#request)
-      2. [Response](#response)
+- [Overview](#overview)
+- [Endpoints](#endpoints)
+  - [GET /file-payments/{FilePaymentId}](#get-file-paymentsfilepaymentid)
+    - [Status](#status)
+  - [GET /file-payments/{FilePaymentId}/report-file](#get-file-paymentsfilepaymentidreport-file)
+  - [GET /file-payments/{FilePaymentId}/payment-details](#get-file-paymentsfilepaymentidpayment-details)
+    - [Status](#status-1)
+  - [State Model](#state-model)
+    - [Payment Order](#payment-order)
+    - [Multiple Authorisation](#multiple-authorisation)
+- [Data Model](#data-model)
+  - [Reused Classes](#reused-classes)
+    - [OBFile2](#obfile2)
+  - [File Payment - Request](#file-payment---request)
+    - [UML Diagram](#uml-diagram)
+    - [Notes](#notes)
+    - [Data Dictionary](#data-dictionary)
+  - [File Payment - Response](#file-payment---response)
+    - [UML Diagram](#uml-diagram-1)
+    - [Notes](#notes-1)
+    - [Data Dictionary](#data-dictionary-1)
+  - [File Payment - Payment Details - Response](#file-payment---payment-details---response)
+    - [UML Diagram](#uml-diagram-2)
+    - [Data Dictionary](#data-dictionary-2)
+- [Usage Examples](#usage-examples)
+  - [POST /file-payments](#post-file-payments)
+    - [Request](#request)
+    - [Response](#response)
 
 ## Overview
 
@@ -204,13 +204,8 @@ The file-payment **response** object contains the:
 | Charges |0..n |OBWriteFileResponse3/Data/Charges |Set of elements used to provide details of a charge for the payment initiation. |OBCharge2 | | |
 | Initiation |1..1 |OBWriteFileResponse3/Data/Initiation |The Initiation payload is sent by the initiating party to the ASPSP. It is used to request movement of funds using a payment file. |OBFile2 | | |
 | MultiAuthorisation |0..1 |OBWriteFileResponse3/Data/MultiAuthorisation |The multiple authorisation flow response from the ASPSP. |OBMultiAuthorisation1 | | |
-<<<<<<< HEAD
-| Debtor |0..1 |OBWriteDomesticResponse5/Data/Debtor |Set of elements used to identify a person or an organisation. |OBDebtorIdentification1 | | |
-| Name |1..1 |OBWriteDomesticResponse5/Data/Debtor/Name |The account name is the name or names of the account owner(s) represented at an account level, as displayed by the ASPSP's online channels. <BR/><BR/> Note, the account name is not the product name or the nickname of the account. |Max140Text | | |
-=======
 | Debtor |0..1 |OBWriteFileResponse3/Data/Debtor |Set of elements used to identify a person or an organisation. |OBDebtorIdentification1 | | |
 | Name |1..1 |OBWriteFileResponse3/Data/Debtor/Name |The account name is the name or names of the account owner(s) represented at an account level, as displayed by the ASPSP's online channels. <BR/><BR/> Note, the account name is not the product name or the nickname of the account. |Max140Text | | |
->>>>>>> origin/release/v3.1.5
 
 ### File Payment - Payment Details - Response
 

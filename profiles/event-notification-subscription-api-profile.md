@@ -1,20 +1,20 @@
-# Event Notification Subscription API Profile - v3.1.5 <!-- omit in toc -->
+# Event Notification Subscription API Profile - v3.1.6 <!-- omit in toc -->
 
-1. [Overview](#overview)
-2. [Basics](#basics)
-   1. [Overview](#overview-1)
-      1. [Steps](#steps)
-      2. [Sequence Diagram](#sequence-diagram)
-   2. [Subscriptions for Real Time Event Notifications and Aggregated Polling](#subscriptions-for-real-time-event-notifications-and-aggregated-polling)
-      1. [Real Time Event Notifications](#real-time-event-notifications)
-      2. [Aggregated Polling](#aggregated-polling)
-   3. [Release Management](#release-management)
-      1. [Event-Subscription Resource](#event-subscription-resource)
-         1. [POST](#post)
-         2. [GET](#get)
-         3. [PUT](#put)
-         4. [DELETE](#delete)
-   4. [Event-Subscription per TPP](#event-subscription-per-tpp)
+- [Overview](#overview)
+- [Basics](#basics)
+  - [Overview](#overview-1)
+    - [Steps](#steps)
+    - [Sequence Diagram](#sequence-diagram)
+  - [Subscriptions for Real Time Event Notifications and Aggregated Polling](#subscriptions-for-real-time-event-notifications-and-aggregated-polling)
+    - [Real Time Event Notifications](#real-time-event-notifications)
+    - [Aggregated Polling](#aggregated-polling)
+  - [Release Management](#release-management)
+    - [Event-Subscription Resource](#event-subscription-resource)
+      - [POST](#post)
+      - [GET](#get)
+      - [PUT](#put)
+      - [DELETE](#delete)
+  - [Event-Subscription per TPP](#event-subscription-per-tpp)
 
 ## Overview
 

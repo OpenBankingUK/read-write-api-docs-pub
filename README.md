@@ -1,4 +1,4 @@
-# Open Banking Read-Write API
+# Open Banking Read-Write API Version 3.1.6
 
 The Read/Write Data API specification describes a collection of RESTful APIs that enable TPPs to access information and initiate payments for customers, by connecting to ASPSPs – securely, efficiently, and with customer consent.
 
@@ -21,6 +21,9 @@ The Swagger Specification for R/W APIs can be downloaded from the following GitH
 [https://github.com/OpenBankingUK/read-write-api-specs](https://github.com/OpenBankingUK/read-write-api-specs)
 
 ## Change Log
+
+### Version 3.1.6 - Draft1
+- __Update version numbers__ [View Diff](https://github.com/OpenBankingUK/read-write-api-docs-pub/commit/tbc)
 
 ### Version 3.1.5 - RC1
 
