@@ -22,6 +22,7 @@
   - [OBExternalStatementInterestFrequency1Code](#obexternalstatementinterestfrequency1code)
   - [OBExternalLegalStructureType1Code](#obexternallegalstructuretype1code)
   - [OBExternalAccountRole1Code](#obexternalaccountrole1code)
+  - [OBExternalSwitchStatusCode](#obexternalswitchstatuscode)
   - [OBExternalDirectDebitFrequency1Code](#obexternaldirectdebitfrequency1code)
 - [Payment Initiation API Namespaced Enumerations](#payment-initiation-api-namespaced-enumerations)
   - [OBExternalLocalInstrument1Code](#obexternallocalinstrument1code)
@@ -367,6 +368,18 @@ This is Data Type gives a low level textual error code to help categorise an err
 | UK.OBIE.SeniorManagingOfficial |Senior managing official |
 | UK.OBIE.Protector |Protector |
 | UK.OBIE.RegisteredShareholderName |Registered shareholder name |
+
+</details>
+
+### OBExternalSwitchStatusCode
+
+<details><summary>Show</summary>
+
+| Code |Description |
+| --- |--- |
+| UK.OBIE.NotSwitched |Indicator to show that the account has not been switched to another ASPSP |
+| UK.OBIE.SwitchStarted |Indicator to show that the account is undergoing an account switch |
+| UK.OBIE.SwitchCompleted |Indicator to show that the account has been switched and the switching process is complete |
 
 </details>
 

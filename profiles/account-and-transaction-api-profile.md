@@ -30,6 +30,7 @@
   - [Consent Revocation](#consent-revocation)
   - [Access Revocation](#access-revocation)
   - [Changes to Selected Account(s)](#changes-to-selected-accounts)
+  - [Account Switching](#account-switching)
   - [Risk Scoring Information](#risk-scoring-information)
 - [Data Model](#data-model)
   - [Using Meta to identify Available Transaction Period](#using-meta-to-identify-available-transaction-period)
@@ -449,6 +450,15 @@ Additionally, the set of selected accounts may also change due to external facto
 - The beneficial owner of the account revokes the PSU's mandate  or power of attorney to operate the account.
 
 In these scenarios, only the affected account is removed from the list of selected accounts. The ASPSP **must not** revoke authorisation to other accounts.
+
+### Account Switching
+
+In addition to the changes that may take place to a selected account, an account may be switched to another ASPSP through an account switching service such as CASS.
+
+In such a situation:
+
+- The ASPSP should indicate the switching status of the account on the `accounts` resources.
+- The ASPSP may chooose not to return any other resources related to an account that has switched on their corresponding end-points.
 
 ### Risk Scoring Information
 
