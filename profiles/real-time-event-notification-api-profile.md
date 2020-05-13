@@ -1,10 +1,10 @@
-# Real Time Event Notification API Profile - v3.1.5 <!-- omit in toc -->
+# Real Time Event Notification API Profile - v3.1.6 <!-- omit in toc -->
 
-1. [Overview](#overview)
-2. [Basics](#basics)
-   1. [Overview](#overview-1)
-      1. [Steps](#steps)
-      2. [Sequence Diagram](#sequence-diagram)
+- [Overview](#overview)
+- [Basics](#basics)
+  - [Overview](#overview-1)
+    - [Steps](#steps)
+    - [Sequence Diagram](#sequence-diagram)
 
 ## Overview
 

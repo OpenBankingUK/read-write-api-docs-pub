@@ -1,37 +1,38 @@
-# Namespaced Enumerations - v3.1.5 <!-- omit in toc --> 
+# Namespaced Enumerations - v3.1.6 <!-- omit in toc -->
 
-1. [Overview](#overview)
-2. [Basics](#basics)
-   1. [Design Principles](#design-principles)
-   2. [Release Management](#release-management)
-3. [Common Namespaced Enumerations](#common-namespaced-enumerations)
-   1. [OBExternalAccountIdentification4Code](#obexternalaccountidentification4code)
-   2. [OBExternalFinancialInstitutionIdentification4Code](#obexternalfinancialinstitutionidentification4code)
-   3. [OBErrorResponseError1Code](#oberrorresponseerror1code)
-4. [Account and Transaction API Namespaced Enumerations](#account-and-transaction-api-namespaced-enumerations)
-   1. [OBExternalStatementAmountType1Code](#obexternalstatementamounttype1code)
-   2. [OBExternalStatementBenefitType1Code](#obexternalstatementbenefittype1code)
-   3. [OBExternalStatementDateTimeType1Code](#obexternalstatementdatetimetype1code)
-   4. [OBExternalStatementFeeType1Code](#obexternalstatementfeetype1code)
-   5. [OBExternalStatementInterestType1Code](#obexternalstatementinteresttype1code)
-   6. [OBExternalStatementRateType1Code](#obexternalstatementratetype1code)
-   7. [OBExternalStatementValueType1Code](#obexternalstatementvaluetype1code)
-   8. [OBExternalStatementFeeRateType1Code](#obexternalstatementfeeratetype1code)
-   9. [OBExternalStatementFeeFrequency1Code](#obexternalstatementfeefrequency1code)
-   10. [OBExternalStatementInterestRateType1Code](#obexternalstatementinterestratetype1code)
-   11. [OBExternalStatementInterestFrequency1Code](#obexternalstatementinterestfrequency1code)
-   12. [OBExternalLegalStructureType1Code](#obexternallegalstructuretype1code)
-   13. [OBExternalAccountRole1Code](#obexternalaccountrole1code)
-   14. [OBExternalDirectDebitFrequency1Code](#obexternaldirectdebitfrequency1code)
-5. [Payment Initiation API Namespaced Enumerations](#payment-initiation-api-namespaced-enumerations)
-   1. [OBExternalLocalInstrument1Code](#obexternallocalinstrument1code)
-   2. [OBExternalPaymentChargeType1Code](#obexternalpaymentchargetype1code)
-   3. [OBExternalFileType1Code](#obexternalfiletype1code)
-6. [Confirmation of Funds API Namespaced Enumerations](#confirmation-of-funds-api-namespaced-enumerations)
-7. [Event Notification API Namespaced Enumerations](#event-notification-api-namespaced-enumerations)
-   1. [OBEventType1Code](#obeventtype1code)
-   2. [OBExternalEventConsentAuthorizationRevokedReason1Code](#obexternaleventconsentauthorizationrevokedreason1code)
-   3. [OBExternalEventAccountAccessConsentLinkedAccountUpdateReason1Code](#obexternaleventaccountaccessconsentlinkedaccountupdatereason1code)
+- [Overview](#overview)
+- [Basics](#basics)
+  - [Design Principles](#design-principles)
+  - [Release Management](#release-management)
+- [Common Namespaced Enumerations](#common-namespaced-enumerations)
+  - [OBExternalAccountIdentification4Code](#obexternalaccountidentification4code)
+  - [OBExternalFinancialInstitutionIdentification4Code](#obexternalfinancialinstitutionidentification4code)
+  - [OBErrorResponseError1Code](#oberrorresponseerror1code)
+- [Account and Transaction API Namespaced Enumerations](#account-and-transaction-api-namespaced-enumerations)
+  - [OBExternalStatementAmountType1Code](#obexternalstatementamounttype1code)
+  - [OBExternalStatementBenefitType1Code](#obexternalstatementbenefittype1code)
+  - [OBExternalStatementDateTimeType1Code](#obexternalstatementdatetimetype1code)
+  - [OBExternalStatementFeeType1Code](#obexternalstatementfeetype1code)
+  - [OBExternalStatementInterestType1Code](#obexternalstatementinteresttype1code)
+  - [OBExternalStatementRateType1Code](#obexternalstatementratetype1code)
+  - [OBExternalStatementValueType1Code](#obexternalstatementvaluetype1code)
+  - [OBExternalStatementFeeRateType1Code](#obexternalstatementfeeratetype1code)
+  - [OBExternalStatementFeeFrequency1Code](#obexternalstatementfeefrequency1code)
+  - [OBExternalStatementInterestRateType1Code](#obexternalstatementinterestratetype1code)
+  - [OBExternalStatementInterestFrequency1Code](#obexternalstatementinterestfrequency1code)
+  - [OBExternalLegalStructureType1Code](#obexternallegalstructuretype1code)
+  - [OBExternalAccountRole1Code](#obexternalaccountrole1code)
+  - [OBExternalSwitchStatusCode](#obexternalswitchstatuscode)
+  - [OBExternalDirectDebitFrequency1Code](#obexternaldirectdebitfrequency1code)
+- [Payment Initiation API Namespaced Enumerations](#payment-initiation-api-namespaced-enumerations)
+  - [OBExternalLocalInstrument1Code](#obexternallocalinstrument1code)
+  - [OBExternalPaymentChargeType1Code](#obexternalpaymentchargetype1code)
+  - [OBExternalFileType1Code](#obexternalfiletype1code)
+- [Confirmation of Funds API Namespaced Enumerations](#confirmation-of-funds-api-namespaced-enumerations)
+- [Event Notification API Namespaced Enumerations](#event-notification-api-namespaced-enumerations)
+  - [OBEventType1Code](#obeventtype1code)
+  - [OBExternalEventConsentAuthorizationRevokedReason1Code](#obexternaleventconsentauthorizationrevokedreason1code)
+  - [OBExternalEventAccountAccessConsentLinkedAccountUpdateReason1Code](#obexternaleventaccountaccessconsentlinkedaccountupdatereason1code)
 
 ## Overview
 
@@ -370,6 +371,18 @@ This is Data Type gives a low level textual error code to help categorise an err
 
 </details>
 
+### OBExternalSwitchStatusCode
+
+<details><summary>Show</summary>
+
+| Code |Description |
+| --- |--- |
+| UK.CASS.NotSwitched |Indicator to show that the account has not been switched to another ASPSP |
+| UK.CASS.SwitchStarted |Indicator to show that the account is undergoing an account switch |
+| UK.CASS.SwitchCompleted |Indicator to show that the account has been switched and the switching process is complete |
+
+</details>
+
 ### OBExternalDirectDebitFrequency1Code
 
 <details><summary>Show</summary>
@@ -483,6 +496,8 @@ This field is used to indicate the reason associated with an Account Access Cons
 | Code |Description |
 | --- |--- |
 | UK.OBIE.AccountClosure |An account is no longer associated with the consent as it has been closed. |
-| UK.OBIE.CASS |An account is no longer associated with the consent as it has been switched (using the Current Account Switch Service) to another ASPSP. |
+| UK.CASS.NotSwitched |Indicator to show that the account has not been switched to another ASPSP |
+| UK.CASS.SwitchStarted |Indicator to show that the account is undergoing an account switch |
+| UK.CASS.SwitchCompleted |Indicator to show that the account has been switched and the switching process is complete |
 
 </details>

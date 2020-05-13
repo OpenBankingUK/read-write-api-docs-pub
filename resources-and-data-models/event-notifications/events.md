@@ -1,44 +1,45 @@
-# Events - v3.1.5 <!-- omit in toc -->
+# Events - v3.1.6 <!-- omit in toc -->
 
-1. [Overview](#overview)
-2. [Endpoints](#endpoints)
-   1. [POST /events](#post-events)
-3. [Data Model](#data-model)
-   1. [Aggregated Polling - Request](#aggregated-polling---request)
-      1. [UML Diagram](#uml-diagram)
-      2. [Data Dictionary](#data-dictionary)
-   2. [Aggregated Polling - Response](#aggregated-polling---response)
-      1. [UML Diagram](#uml-diagram-1)
-      2. [Data Dictionary](#data-dictionary-1)
-   3. [OBEventNotification2](#obeventnotification2)
-      1. [UML Diagram](#uml-diagram-2)
-      2. [Notes](#notes)
-      3. [Data Dictionary](#data-dictionary-2)
-   4. [OBEventSubject1](#obeventsubject1)
-      1. [UML Diagram](#uml-diagram-3)
-      2. [Notes](#notes-1)
-      3. [Data Dictionary](#data-dictionary-3)
-   5. [OBEventResourceUpdate2](#obeventresourceupdate2)
-      1. [UML Diagram](#uml-diagram-4)
-      2. [Data Dictionary](#data-dictionary-4)
-   6. [OBEventConsentAuthorizationRevoked1](#obeventconsentauthorizationrevoked1)
-      1. [UML Diagram](#uml-diagram-5)
-      2. [Notes](#notes-2)
-      3. [Data Dictionary](#data-dictionary-5)
-   7. [OBEventAccountAccessConsentLinkedAccountUpdate1](#obeventaccountaccessconsentlinkedaccountupdate1)
-      1. [UML Diagram](#uml-diagram-6)
-      2. [Notes](#notes-3)
-      3. [Data Dictionary](#data-dictionary-6)
-4. [Usage Examples](#usage-examples)
-   1. [Poll Only](#poll-only)
-      1. [POST Events Request](#post-events-request)
-      2. [POST Events Response](#post-events-response)
-   2. [Acknowledge Only](#acknowledge-only)
-      1. [POST Events Request](#post-events-request-1)
-      2. [POST Events Response](#post-events-response-1)
-   3. [Poll and Acknowledge With Errors](#poll-and-acknowledge-with-errors)
-      1. [POST Events Request](#post-events-request-2)
-      2. [POST Events Response](#post-events-response-2)
+- [Overview](#overview)
+- [Endpoints](#endpoints)
+  - [POST /events](#post-events)
+- [Data Model](#data-model)
+  - [Aggregated Polling - Request](#aggregated-polling---request)
+    - [UML Diagram](#uml-diagram)
+    - [Data Dictionary](#data-dictionary)
+  - [Aggregated Polling - Response](#aggregated-polling---response)
+    - [UML Diagram](#uml-diagram-1)
+    - [Data Dictionary](#data-dictionary-1)
+  - [OBEventNotification2](#obeventnotification2)
+    - [UML Diagram](#uml-diagram-2)
+    - [Notes](#notes)
+    - [Data Dictionary](#data-dictionary-2)
+  - [OBEventSubject1](#obeventsubject1)
+    - [UML Diagram](#uml-diagram-3)
+    - [Notes](#notes-1)
+    - [Data Dictionary](#data-dictionary-3)
+  - [OBEventResourceUpdate2](#obeventresourceupdate2)
+    - [UML Diagram](#uml-diagram-4)
+    - [Data Dictionary](#data-dictionary-4)
+  - [OBEventConsentAuthorizationRevoked1](#obeventconsentauthorizationrevoked1)
+    - [UML Diagram](#uml-diagram-5)
+    - [Notes](#notes-2)
+    - [Data Dictionary](#data-dictionary-5)
+  - [OBEventAccountAccessConsentLinkedAccountUpdate1](#obeventaccountaccessconsentlinkedaccountupdate1)
+    - [UML Diagram](#uml-diagram-6)
+    - [Notes](#notes-3)
+    - [Data Dictionary](#data-dictionary-6)
+- [Usage Examples](#usage-examples)
+  - [Poll Only](#poll-only)
+    - [POST Events Request](#post-events-request)
+    - [POST Events Response](#post-events-response)
+  - [Acknowledge Only](#acknowledge-only)
+    - [POST Events Request](#post-events-request-1)
+    - [POST Events Response](#post-events-response-1)
+  - [Poll and Acknowledge With Errors](#poll-and-acknowledge-with-errors)
+    - [POST Events Request](#post-events-request-2)
+    - [POST Events Response](#post-events-response-2)
+- [Event Notification for Account Switching](#event-notification-for-account-switching)
 
 ## Overview
 
@@ -218,7 +219,7 @@ For the OBEventAccountAccessConsentLinkedAccountUpdate object:
 | --- |--- |--- |--- |--- |--- |--- |
 | `urn:uk:org:openbanking:events:account-access-consent-linked-account-update` | | |An event that indicates an account linked to a consent has move in/out of scope of the consent. |OBEventAccountAccessConsentLinkedAccountUpdate1 | | |
 | reason |0..1 |`urn:uk:org:openbanking:events:account-access-consent-linked-account-update/reason` |Reason for the Account Access Consent Linked Account Update event. |OBExternalEventAccountAccessConsentLinkedAccountUpdateReason1Code | | |
-| subject |1..1 |`urn:uk:org:openbanking:events:account-access-consent-linked-account-update/subject` |The subject of the event. |OBEventSubject1 | | |
+| subject |1..1 |`urn:uk:org:openbanking:events:account-access-consent-linked-account-update/subject` |The subject of the event. This indicates the account that has been updated. (The `sub` claim for the event should be used to indicate the affected account-access-consent) |OBEventSubject1 | | |
 
 ## Usage Examples
 
@@ -335,5 +336,46 @@ x-fapi-interaction-id: 3fc0df586e45404abd5bbf1b23ce343d
     "25fd4432da4e4e609033a733aea68a54": "eyJhbG...8o8PLY"
   },
   "moreAvailable": true
+}
+```
+
+## Event Notification for Account Switching
+
+When an account that a TPP has access to is switched using CASS, the ASPSP may send an event to indicate that the account is undergoing a switch.
+
+The `urn:uk:org:openbanking:events:account-access-consent-linked-account-update` event is used to indicate this.
+
+If the event is sent when a switch is started, the `reason` claim should be populated with the value `UK.CASS.SwitchStarted`.
+If the event is sent to indicate that the switch was cancelled or failed, the `reason` claim should be populated with the value `UK.CASS.NotSwitched`.
+If the event is sent when a switch is complete, the `reason` claim should be populated with the value `UK.CASS.SwitchCompleted`.
+
+The `sub` claim references the URL of the `account-access-consent` that gives the TPP access to the account.
+The `subject` claim references the actual account that has switched.
+
+In the example below, the account 90200 has just started a switch. The account was linked to an account-access-consent with an id of aac-1234-007
+
+``` json
+{
+  "iss": "https://examplebank.com/",
+  "iat": 1516239022,
+  "jti": "b460a07c-4962-43d1-85ee-9dc10fbb8f6c",
+  "sub": "https://examplebank.com/api/open-banking/v3.1/aisp/account-access-consents/aac-1234-007",
+  "aud": "7umx5nTR33811QyQfi",
+  "events": {
+    "urn:uk:org:openbanking:events:account-access-consent-linked-account-update": {
+      "subject": {
+        "subject_type": "http://openbanking.org.uk/rid_http://openbanking.org.uk/rty",
+        "http://openbanking.org.uk/rid": "90200",
+        "http://openbanking.org.uk/rty": "accounts",
+        "http://openbanking.org.uk/rlk": [{
+            "version": "v3.1",
+            "link": "https://examplebank.com/api/open-banking/v3.1/aisp/accounts/90200"
+          }
+        ]
+      }
+      }
+   },
+  "txn": "dfc51628-3479-4b81-ad60-210b43d02306",
+  "toe": 1516239022
 }
 ```
