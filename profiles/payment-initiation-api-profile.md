@@ -525,7 +525,7 @@ This section describes the Risk1 class which is reused in the payment-order cons
 
 ##### UML Diagram
 
-![](./images/OBRisk1.gif)
+![](./images/OBRisk1.png)
 
 ##### Data Dictionary
 
