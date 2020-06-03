@@ -236,7 +236,7 @@ The domestic-payment **response** object contains the:
 | Initiation |1..1 |OBWriteDomesticResponse5/Data/Initiation |The Initiation payload is sent by the initiating party to the ASPSP. It is used to request movement of funds from the debtor account to a creditor for a single domestic payment. |OBDomestic2 | | |
 | MultiAuthorisation |0..1 |OBWriteDomesticResponse5/Data/MultiAuthorisation |The multiple authorisation flow response from the ASPSP. |OBMultiAuthorisation1 | | |
 | Debtor |0..1 |OBWriteDomesticResponse5/Data/Debtor |Set of elements used to identify a person or an organisation. |OBDebtorIdentification1 | | |
-| Name |1..1 |OBWriteDomesticResponse5/Data/Debtor/Name |The account name is the name or names of the account owner(s) represented at an account level, as displayed by the ASPSP's online channels. <BR/><BR/> Note, the account name is not the product name or the nickname of the account. |Max140Text | | |
+| Name |1..1 |OBWriteDomesticResponse5/Data/Debtor/Name |The account name is the name or names of the account owner(s) represented at an account level, as displayed by the ASPSP's online channels. <BR/><BR/> Note, the account name is not the product name or the nickname of the account. |Max350Text | | |
 
 ### Domestic Payment Order - Payment Details - Response
 
