@@ -316,6 +316,8 @@ All dates in the JWT claims are expressed as a JSON number, representing the nu
 1518446700
 ```
 
+When an ASPSP receives a request with an incorrectly formatted date, it **may** respond with a status code of `400 Bad Request` and an error code of `UK.OBIE.Field.InvalidDate`
+
 ### Resource URI Path Structure
 
 The path of the URI must follow the structure below (from the OB API Release Management document).
