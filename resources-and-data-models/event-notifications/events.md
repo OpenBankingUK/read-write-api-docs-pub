@@ -39,7 +39,7 @@
   - [Poll and Acknowledge With Errors](#poll-and-acknowledge-with-errors)
     - [POST Events Request](#post-events-request-2)
     - [POST Events Response](#post-events-response-2)
-
+    
 ## Overview
 
 The Events resource is used by a TPP to retrieve multiple signed event notifications from an ASPSP.
@@ -335,5 +335,46 @@ x-fapi-interaction-id: 3fc0df586e45404abd5bbf1b23ce343d
     "25fd4432da4e4e609033a733aea68a54": "eyJhbG...8o8PLY"
   },
   "moreAvailable": true
+}
+```
+
+## Event Notification for Account Switching
+
+When an account that a TPP has access to is switched using CASS, the ASPSP may send an event to indicate that the account is undergoing a switch.
+
+The `urn:uk:org:openbanking:events:account-access-consent-linked-account-update` event is used to indicate this.
+
+If the event is sent when a switch is started, the `reason` claim should be populated with the value `UK.CASS.SwitchStarted`.
+If the event is sent to indicate that the switch was cancelled or failed, the `reason` claim should be populated with the value `UK.CASS.NotSwitched`.
+If the event is sent when a switch is complete, the `reason` claim should be populated with the value `UK.CASS.SwitchCompleted`.
+
+The `sub` claim references the URL of the `account-access-consent` that gives the TPP access to the account.
+The `subject` claim references the actual account that has switched.
+
+In the example below, the account 90200 has just started a switch. The account was linked to an account-access-consent with an id of aac-1234-007
+
+``` json
+{
+  "iss": "https://examplebank.com/",
+  "iat": 1516239022,
+  "jti": "b460a07c-4962-43d1-85ee-9dc10fbb8f6c",
+  "sub": "https://examplebank.com/api/open-banking/v3.1/aisp/account-access-consents/aac-1234-007",
+  "aud": "7umx5nTR33811QyQfi",
+  "events": {
+    "urn:uk:org:openbanking:events:account-access-consent-linked-account-update": {
+      "subject": {
+        "subject_type": "http://openbanking.org.uk/rid_http://openbanking.org.uk/rty",
+        "http://openbanking.org.uk/rid": "90200",
+        "http://openbanking.org.uk/rty": "accounts",
+        "http://openbanking.org.uk/rlk": [{
+            "version": "v3.1",
+            "link": "https://examplebank.com/api/open-banking/v3.1/aisp/accounts/90200"
+          }
+        ]
+      }
+      }
+   },
+  "txn": "dfc51628-3479-4b81-ad60-210b43d02306",
+  "toe": 1516239022
 }
 ```

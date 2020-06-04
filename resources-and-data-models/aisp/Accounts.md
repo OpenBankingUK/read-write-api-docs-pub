@@ -77,8 +77,8 @@ Each account resource will have a unique and immutable AccountId.
         * Where "UK.OBIE.BICFI" is populated as the SchemeName, the Identification field **must** be populated with the BIC.
 * The SecondaryIdentification field is used to identify an account in addition to the primary Account/Identification field. SecondaryIdentification may be populated with a roll number for building societies, or a currency code where an account has multiple currency sub-accounts.
 * The `SwitchStatus` field is used to indicate that an account is undergoing an account switch.
-  * An ASPSP may populate this field with the value `UK.CASS.NotSwitced` to indicate that the account has not been switched.
-  * Once an account switch has been completed, an ASPSP may populate this field with the value `UK.CASS.SwitchCompleted`
+* An ASPSP may populate this field with the value `UK.CASS.NotSwitced` to indicate that the account has not been switched.
+* Once an account switch has been completed, an ASPSP may populate this field with the value `UK.CASS.SwitchCompleted`
 
 ### Permission Codes
 
