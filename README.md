@@ -22,6 +22,14 @@ The Swagger Specification for R/W APIs can be downloaded from the following GitH
 
 ## Change Log
 
+### Version 3.1.6 - RC1
+- Decision 213 - Change length of Account/Name fields [View Diff](https://github.com/OpenBankingUK/read-write-api-docs-pub/commit/99fe0a45334038c56f121ccfe4ed958e17e3b531)
+- Errata
+  - Fix the multiplicity for `CountrySubDivision` [View Diff](https://github.com/OpenBankingUK/read-write-api-docs-pub/commit/3bdd9be8d204b0336f12a5c36158c803ec9270a4)
+  - Clarify error message for invalid ISO Date [View Diff](https://github.com/OpenBankingUK/read-write-api-docs-pub/commit/aa5974ee9a6535eb2585f34329aef54ad58f0497)
+  - Clarify the use of `txn` for Event Notifications [View Diff](https://github.com/OpenBankingUK/read-write-api-docs-pub/commit/aa5974ee9a6535eb2585f34329aef54ad58f0497)
+
+
 ### Version 3.1.6 - Draft1
 - __CASS__
   - Option 1 [View Diff](https://github.com/OpenBankingUK/read-write-api-docs-pub/compare/0015144..a04ad5d)
