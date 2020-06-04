@@ -378,7 +378,6 @@ This is Data Type gives a low level textual error code to help categorise an err
 | Code |Description |
 | --- |--- |
 | UK.CASS.NotSwitched |Indicator to show that the account has not been switched to another ASPSP |
-| UK.CASS.SwitchStarted |Indicator to show that the account is undergoing an account switch |
 | UK.CASS.SwitchCompleted |Indicator to show that the account has been switched and the switching process is complete |
 
 </details>
@@ -496,8 +495,6 @@ This field is used to indicate the reason associated with an Account Access Cons
 | Code |Description |
 | --- |--- |
 | UK.OBIE.AccountClosure |An account is no longer associated with the consent as it has been closed. |
-| UK.CASS.NotSwitched |Indicator to show that the account has not been switched to another ASPSP |
-| UK.CASS.SwitchStarted |Indicator to show that the account is undergoing an account switch |
-| UK.CASS.SwitchCompleted |Indicator to show that the account has been switched and the switching process is complete |
+| UK.OBIE.CASS |An account is no longer associated with the consent as it has been switched (using the Current Account Switch Service) to another ASPSP. |
 
 </details>
