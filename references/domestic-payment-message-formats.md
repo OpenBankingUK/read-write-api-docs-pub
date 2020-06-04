@@ -55,7 +55,7 @@ In the case that a PISP sets up a payment-order consent with a larger field size
 | Amount |Initiation/InstructedAmount/Amount |1..1 |TotalDigits: 18, FractionDigits: 5 |6 |AMOUNT |M |**14** |
 | Identification |Initiation/DebtorAccount/Identification |1..1 |Max256Text |42 43 |ORIGINATING CREDIT INSTITUTION <br><br>ORIGINATING CUSTOMER ACCOUNT NUMBER |M <br>M |**11** <br><br>**34** |
 | Identification |Initiation/CreditorAccount/Identification |1..1 |Max256Text |95 35 |BENEFICIARY CREDIT INSTITUTION <br><br>BENEFICIARY CUSTOMER ACCOUNT NUMBER |M M |**11** <br><br>**34** |
-| Name |Initiation/CreditorAccount/Name |1..1 |Max70Text |118 |BENEFICIARY CUSTOMER ACCOUNT NAME |O |**40** |
+| Name |Initiation/CreditorAccount/Name |1..1 |Max350Text |118 |BENEFICIARY CUSTOMER ACCOUNT NAME |O |**40** |
 | SecondaryIdentification |Initiation/CreditorAccount/SecondaryIdentification |0..1 |Max34Text |120 |REFERENCE INFORMATION |O |**18** |
 | Unstructured |Initiation/RemittanceInformation/Unstructured |0..1 |Max140Text |121 |REMITTANCE INFORMATION |O |140 |
 | Reference |Initiation/RemittanceInformation/Reference |0..1 |Max35Text |120 |REFERENCE INFORMATION |O |**18** |
@@ -95,7 +95,7 @@ In the case that a PISP sets up a payment-order consent with a larger field size
 | Amount |Initiation/InstructedAmount/Amount |1..1 |TotalDigits: 18, FractionDigits: 5 |8 |amount in pence |M |**11** |
 | Identification |Initiation/DebtorAccount/Identification |1..1 |Max256Text |5 6 |originating sorting code <br><br>originating account number |M M |**6** <br><br>**8** |
 | Identification |Initiation/CreditorAccount/Identification |1..1 |Max256Text |1 2 |destination sorting code <br><br>destination a/c number |M M |**6** <br><br>**8** |
-| Name |Initiation/CreditorAccount/Name |1..1 |Max70Text |11 |destination account name |M |**18** |
+| Name |Initiation/CreditorAccount/Name |1..1 |Max350Text |11 |destination account name |M |**18** |
 | SecondaryIdentification |Initiation/CreditorAccount/SecondaryIdentification |0..1 |Max34Text |10 |service user’s reference |M |**18** |
 | Reference |Initiation/RemittanceInformation/Reference |0..1 |Max35Text |10 |service user’s reference |M |**18** |
 
@@ -131,7 +131,7 @@ In the case that a PISP sets up a payment-order consent with a larger field size
 | Currency |Initiation/InstructedAmount/Currency |1..1 |ActiveOrHistoricCurrencyCode "GBP" |32A |Value Date / Currency / Interbank Settled Amount |M |3x |
 | Identification |Initiation/DebtorAccount/Identification |1..1 |Max256Text |50K |Ordering Customer |M |**34x** |
 | Identification |Initiation/CreditorAccount/Identification |1..1 |Max256Text |57 <br><br>59 |Account With Institution <br><br>Beneficiary Customer |M <br><br>M |**6n** <br><br>**8n** |
-| Name |Initiation/CreditorAccount/Name |1..1 |Max70Text |59 |Beneficiary Customer |M |**35x** |
+| Name |Initiation/CreditorAccount/Name |1..1 |Max350Text |59 |Beneficiary Customer |M |**35x** |
 | StreetName |Initiation/CreditorPostalAddress/StreetName |0..1 |Max70Text |59 |Beneficiary Customer |O |**35x** |
 | BuildingNumber |Initiation/CreditorPostalAddress/BuildingNumber |0..1 |Max16Text |59 |Beneficiary Customer |O |35x |
 | PostCode |Initiation/CreditorPostalAddress/PostCode |0..1 |Max16Text |59 |Beneficiary Customer |O |35x |

@@ -39,8 +39,7 @@
   - [Poll and Acknowledge With Errors](#poll-and-acknowledge-with-errors)
     - [POST Events Request](#post-events-request-2)
     - [POST Events Response](#post-events-response-2)
-- [Event Notification for Account Switching](#event-notification-for-account-switching)
-
+    
 ## Overview
 
 The Events resource is used by a TPP to retrieve multiple signed event notifications from an ASPSP.
@@ -129,7 +128,7 @@ Note, the OBEventNotification2 object is aligned with the Security Event Token (
 | jti |1..1 |OBEventNotification2/jti |JWT ID. |Max128Text | | |
 | aud |1..1 |OBEventNotification2/aud |Audience. |Max128Text | | |
 | sub |1..1 |OBEventNotification2/sub |Subject. |xs:anyURI | | |
-| txn |1..1 |OBEventNotification2/txn |Transaction Identifier. |Max128Text | | |
+| txn |1..1 |OBEventNotification2/txn |Transaction Identifier. A unique identifier for the transaction. ASPSPs **may** populate this field with the `x-fapi-transaction-id` of the api operation that lead to the change, or populate it with the same value as `jti` |Max128Text | | |
 | toe |1..1 |OBEventNotification2/toe |Time of Event. |xs:int | | |
 | events |1..1 |OBEventNotification2/events |Events. |OBEvent2 | | |
 | `urn:uk:org:openbanking:events:resource-update` |0..1 |`OBEventNotification2/events/urn:uk:org:openbanking:events:resource-update` |Resource-Update Event. |OBEventResourceUpdate2 | | |

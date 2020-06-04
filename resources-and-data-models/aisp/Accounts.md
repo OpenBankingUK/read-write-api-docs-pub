@@ -77,10 +77,8 @@ Each account resource will have a unique and immutable AccountId.
         * Where "UK.OBIE.BICFI" is populated as the SchemeName, the Identification field **must** be populated with the BIC.
 * The SecondaryIdentification field is used to identify an account in addition to the primary Account/Identification field. SecondaryIdentification may be populated with a roll number for building societies, or a currency code where an account has multiple currency sub-accounts.
 * The `SwitchStatus` field is used to indicate that an account is undergoing an account switch.
-  * An ASPSP may populate this field with the value `UK.OBIE.NotSwitced` to indicate that the account has not been switched.
-  * An ASPSP may populate this field with the value `UK.OBIE.SwitchStarted` if the account has started undergoing a switching process.
-  * If subsequently the account switch is cancelled or failed, the ASPSP may populate the field with the value `UK.OBIE.NotSwitched` once it is aware of the cancellation or failure.
-  * Once an account switch has been completed, an ASPSP may populate this field with the value `UK.OBIE.SwitchCompleted`
+* An ASPSP may populate this field with the value `UK.CASS.NotSwitced` to indicate that the account has not been switched.
+* Once an account switch has been completed, an ASPSP may populate this field with the value `UK.CASS.SwitchCompleted`
 
 ### Permission Codes
 
@@ -116,7 +114,7 @@ If the ReadPAN permission is granted by the PSU, the ASPSP may choose to populat
 | Account |0..n |OBReadAccount6/Data/Account/Account |Provides the details to identify an account. |OBCashAccount5 | | |
 | SchemeName |1..1 |OBReadAccount6/Data/Account/Account/SchemeName |Name of the identification scheme, in a coded form as published in an external list. |OBExternalAccountIdentification4Code | | |
 | Identification |1..1 |OBReadAccount6/Data/Account/Account/Identification |Identification assigned by an institution to identify an account. This identification is known by the account owner. |Max256Text | | |
-| Name |0..1 |OBReadAccount6/Data/Account/Account/Name |The account name is the name or names of the account owner(s) represented at an account level, as displayed by the ASPSP's online channels. Note, the account name is not the product name or the nickname of the account. |Max70Text | | |
+| Name |0..1 |OBReadAccount6/Data/Account/Account/Name |The account name is the name or names of the account owner(s) represented at an account level, as displayed by the ASPSP's online channels. Note, the account name is not the product name or the nickname of the account. |Max350Text | | |
 | SecondaryIdentification |0..1 |OBReadAccount6/Data/Account/Account/SecondaryIdentification |This is secondary identification of the account, as assigned by the account servicing institution. This can be used by building societies to additionally identify accounts with a roll number (in addition to a sort code and account number combination). |Max34Text | | |
 | Servicer |0..1 |OBReadAccount6/Data/Account/Servicer |Party that manages the account on behalf of the account owner, that is manages the registration and booking of entries on the account, calculates balances on the account and provides information about the account. |OBBranchAndFinancialInstitutionIdentification5 | | |
 | SchemeName |1..1 |OBReadAccount6/Data/Account/Servicer/SchemeName |Name of the identification scheme, in a coded form as published in an external list. |OBExternalFinancialInstitutionIdentification4Code | | |
