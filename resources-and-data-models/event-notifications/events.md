@@ -39,7 +39,7 @@
   - [Poll and Acknowledge With Errors](#poll-and-acknowledge-with-errors)
     - [POST Events Request](#post-events-request-2)
     - [POST Events Response](#post-events-response-2)
-    
+
 ## Overview
 
 The Events resource is used by a TPP to retrieve multiple signed event notifications from an ASPSP.

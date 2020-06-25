@@ -378,7 +378,7 @@ This is Data Type gives a low level textual error code to help categorise an err
 | Code |Description |
 | --- |--- |
 | UK.CASS.NotSwitched |Indicator to show that the account has not been switched to another ASPSP |
-| UK.CASS.SwitchStarted |Indicator to show that the account is undergoing an account switch |
+| UK.CASS.SwitchCompleted |Indicator to show that the account has been switched and the switching process is complete |
 
 </details>
 
