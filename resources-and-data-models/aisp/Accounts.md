@@ -79,7 +79,9 @@ Each account resource will have a unique and immutable AccountId.
 * The `SwitchStatus` field is used to indicate that an account is undergoing an account switch.
   * An ASPSP may populate this field with the value `UK.CASS.NotSwitced` to indicate that the account has not been switched.
   * Once an account switch has been completed, an ASPSP may populate this field with the value `UK.CASS.SwitchCompleted`
-
+  * An ASPSP may populate this field with the value `UK.CASS.NotSwitced` to indicate that the account has not been switched.
+  * Once an account switch has been completed, an ASPSP may populate this field with the value `UK.CASS.SwitchCompleted`
+  
 ### Permission Codes
 
 The resource differs depending on the permissions (ReadAccountsBasic and ReadAccountsDetail) used to access the resource. In the event that the resource is accessed with both ReadAccountsBasic and ReadAccountsDetail, the most detailed level (ReadAccountsDetail) must be used.
