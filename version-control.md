@@ -8,3 +8,4 @@
 | v3.1.6-draft1 | 13 May 2020 | API Delivery Team | CASS implementation options |
 | v3.1.6-RC1    | 04 Jun 2020 | API Delivery Team | CASS finalised option following impact assessment <br/> Decision 223 <br/> Misc Errata |
 | v3.1.6-Final  | 25 Jun 2020 | API Delivery Team | Public release of v3.1.6-RC1 |
+| v3.1.7-draft1 | ----------- | API Delivery Team | Fixed multiple known issues |
