@@ -623,13 +623,36 @@ The verifier must verify the signature, as defined in [RFC 7515, Appendix F](htt
 
 #### Sample JOSE Header
 
+##### Using a certificate or keypair registered with OBIE Directory as a trust anchor
+
+In the example below, the message signer's key (identified by the `kid`) is registered with the OBIE Directory.
+
+The TPP signing the message has an organization id of `0015800001041RHAAY` and a software statement id of `HQuZPIt3ipkh33Uxytox1E`.
+
 ```json
 {
-    "alg": "RS512",
+    "alg": "PS256",
     "kid": "90210ABAD",
     "http://openbanking.org.uk/iat": 1501497671,
-    "http://openbanking.org.uk/iss": "C=UK, ST=England, L=London, O=Acme Ltd.",
+    "http://openbanking.org.uk/iss": "0015800001041RHAAY/HQuZPIt3ipkh33Uxytox1E",
     "http://openbanking.org.uk/tan": "openbanking.org.uk",
+    "crit": [ "http://openbanking.org.uk/iat", "http://openbanking.org.uk/iss", "http://openbanking.org.uk/tan"]
+}
+```
+
+##### Using an EIDAS certificate that is not registered with a trust anchor
+
+This is a non-normative example and is only provided as an example. 
+
+The value to be provided for the `tan` claim is determined by the ASPSP and is not outside the scope of this specification.
+
+```json
+{
+    "alg": "PS256",
+    "kid": "90210ABAD",
+    "http://openbanking.org.uk/iat": 1501497671,
+    "http://openbanking.org.uk/iss": "C = GB, O = Surgicon Limited, organizationIdentifier = PSDGB-OB-Unknown0015800001041RHAAY, CN = 0015800001041RHAAY",
+    "http://openbanking.org.uk/tan": "aspsp.co.uk",
     "crit": [ "http://openbanking.org.uk/iat", "http://openbanking.org.uk/iss", "http://openbanking.org.uk/tan"]
 }
 ```

@@ -21,6 +21,8 @@ The Swagger Specification for R/W APIs can be downloaded from the following GitH
 ## Change Log
 
 ### Version 3.1.7 - Draft1
+
 - __Miscelleneous fixes to address Known Issues__ [View Diff](tbc)
+  - Add additional examples for message signing
   - 
-- __Update version numbers__ [View Diff](tbc)
+- __Update version numbers__ [View Diff](https://github.com/OpenBankingUK/read-write-api-docs/commit/ab83f6bdd7b9e64a3599ede6f89ffeff70984462)
