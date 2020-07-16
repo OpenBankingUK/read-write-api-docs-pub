@@ -1,4 +1,4 @@
-# BCA Product Data Model - v3.1.6 <!-- omit in toc -->
+# BCA Product Data Model - v3.1.7 <!-- omit in toc -->
 
 - [Overview](#overview)
   - [Fields to include in BCA Product](#fields-to-include-in-bca-product)
@@ -31,7 +31,7 @@
   - [Show whole interest rates](#show-whole-interest-rates)
     - [Get Accounts Product Request](#get-accounts-product-request-3)
     - [Get Accounts Product Response](#get-accounts-product-response-3)
-  - [Represent Tariffs and "Other Fees And Charges"](#represent-tariffs-and-%22other-fees-and-charges%22)
+  - [Represent Tariffs and "Other Fees And Charges"](#represent-tariffs-and-other-fees-and-charges)
     - [Get Accounts Product Request](#get-accounts-product-request-4)
     - [Get Accounts Product Response](#get-accounts-product-response-4)
 

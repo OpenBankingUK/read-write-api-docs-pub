@@ -1,4 +1,4 @@
-# Domestic Standing Orders - v3.1.6 <!-- omit in toc -->
+# Domestic Standing Orders - v3.1.7 <!-- omit in toc -->
 
 - [Overview](#overview)
 - [Endpoints](#endpoints)

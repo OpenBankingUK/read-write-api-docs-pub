@@ -1,4 +1,4 @@
-# Payment Initiation API Profile - v3.1.6 <!-- omit in toc -->
+# Payment Initiation API Profile - v3.1.7 <!-- omit in toc -->
 
 - [Overview](#overview)
   - [Document Overview](#document-overview)
