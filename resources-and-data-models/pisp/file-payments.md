@@ -44,6 +44,12 @@ This resource description should be read in conjunction with a compatible Paymen
 | file-payments |GET |GET /file-payments/{FilePaymentId}/report-file |Conditional |payments |Client Credentials |Signed Response |No |NA |File |
 | payment-details |GET |GET /file-payments/{FilePaymentId}/payment-details |Optional |payments |Client Credentials |Signed Response |No |NA |OBWritePaymentDetailsResponse1 |
 
+### POST /file-payments
+
+Once the file-payment-consent has been authorised by the PSU, the PISP can proceed to submit the file-payment for processing:
+
+- This is done by making a POST request to the **file-payments** endpoint.
+
 ### GET /file-payments/{FilePaymentId}
 
 A PISP can retrieve the file-payment to check its status.

@@ -98,7 +98,7 @@ The Party resource contains a set of elements that describes a party. The party 
 | PartyId |1..1 |OBParty2/PartyId |A unique and immutable identifier used to identify the customer resource. This identifier has no meaning to the account owner. |Max40Text | | |
 | PartyNumber |0..1 |OBParty2/PartyNumber |Number assigned by an agent to identify its customer. |Max35Text | | |
 | PartyType |0..1 |OBParty2/PartyType |Party type |OBExternalPartyType1Code |Delegate Joint Sole | |
-| Name |0..1 |OBParty2/Name |Name by which a party is known and which is usually used to identify that party. |Max70Text | | |
+| Name |0..1 |OBParty2/Name |Name by which a party is known and which is usually used to identify that party. |Max350Text | | |
 | FullLegalName |0..1 |OBParty2/FullLegalName |The full legal name of the party. |Max350Text | | |
 | LegalStructure |0..1 |OBParty2/LegalStructure |Legal standing of the party. |OBExternalLegalStructureType1Code | | |
 | BeneficialOwnership |0..1 |OBParty2/BeneficialOwnership |A flag to indicate a party's beneficial ownership of the related account. |xs:boolean | | |
