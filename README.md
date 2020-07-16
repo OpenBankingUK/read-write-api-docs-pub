@@ -24,5 +24,5 @@ The Swagger Specification for R/W APIs can be downloaded from the following GitH
 
 - __Miscelleneous fixes to address Known Issues__ [View Diff](tbc)
   - Add additional examples for message signing
-  - 
+  - Fixed incorrect class name for `CreditorAccount` in `domestic-standing-order-consents`
 - __Update version numbers__ [View Diff](https://github.com/OpenBankingUK/read-write-api-docs/commit/ab83f6bdd7b9e64a3599ede6f89ffeff70984462)
