@@ -223,7 +223,7 @@ The international-payment **response** object contains the:
 | Data |1..1 |OBWriteInternationalResponse5/Data | |OBWriteDataInternationalResponse6 | | |
 | InternationalPaymentId |1..1 |OBWriteInternationalResponse5/Data/InternationalPaymentId |OB: Unique identification as assigned by the ASPSP to uniquely identify the international payment resource. |Max40Text | | |
 | ConsentId |1..1 |OBWriteInternationalResponse5/Data/ConsentId |OB: Unique identification as assigned by the ASPSP to uniquely identify the consent resource. |Max128Text | | |
-| CreationDateTime |1..1 |OBWriteInternationalResponse5/Data/CreationDateTime |Date and time at which the message was created. |ISODateTime | | |
+| CreationDateTime |1..1 |OBWriteInternationalResponse5/Data/CreationDateTime |Date and time at which the resource was created. |ISODateTime | | |
 | Status |1..1 |OBWriteInternationalResponse5/Data/Status |Specifies the status of the payment information group. |OBTransactionIndividualStatus1Code |AcceptedCreditSettlementCompleted AcceptedWithoutPosting AcceptedSettlementCompleted AcceptedSettlementInProcess Pending Rejected | |
 | StatusUpdateDateTime |1..1 |OBWriteInternationalResponse5/Data/StatusUpdateDateTime |Date and time at which the resource status was updated. |ISODateTime | | |
 | ExpectedExecutionDateTime |0..1 |OBWriteInternationalResponse5/Data/ExpectedExecutionDateTime |Expected execution date and time for the payment resource. |ISODateTime | | |

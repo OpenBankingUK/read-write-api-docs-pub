@@ -216,7 +216,7 @@ The international-scheduled-payment **response** object contains the:
 | Data |1..1 |OBWriteInternationalScheduledResponse6/Data | |OBWriteDataInternationalScheduledResponse6 | | |
 | InternationalScheduledPaymentId |1..1 |OBWriteInternationalScheduledResponse6/Data/InternationalScheduledPaymentId |OB: Unique identification as assigned by the ASPSP to uniquely identify the international scheduled payment resource. |Max40Text | | |
 | ConsentId |1..1 |OBWriteInternationalScheduledResponse6/Data/ConsentId |OB: Unique identification as assigned by the ASPSP to uniquely identify the consent resource. |Max128Text | | |
-| CreationDateTime |1..1 |OBWriteInternationalScheduledResponse6/Data/CreationDateTime |Date and time at which the message was created. |ISODateTime | | |
+| CreationDateTime |1..1 |OBWriteInternationalScheduledResponse6/Data/CreationDateTime |Date and time at which the resource was created. |ISODateTime | | |
 | Status |1..1 |OBWriteInternationalScheduledResponse6/Data/Status |Specifies the status of the payment order resource. |OBExternalStatus1Code |InitiationCompleted InitiationFailed InitiationPending Cancelled | |
 | StatusUpdateDateTime |1..1 |OBWriteInternationalScheduledResponse6/Data/StatusUpdateDateTime |Date and time at which the resource status was updated. |ISODateTime | | |
 | ExpectedExecutionDateTime |0..1 |OBWriteInternationalScheduledResponse6/Data/ExpectedExecutionDateTime |Expected execution date and time for the payment resource. |ISODateTime | | |

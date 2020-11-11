@@ -216,7 +216,7 @@ The domestic-scheduled-payment **response** object contains the:
 | Data |1..1 |OBWriteDomesticScheduledResponse5/Data | |OBWriteDataDomesticScheduledResponse5 | | |
 | DomesticScheduledPaymentId |1..1 |OBWriteDomesticScheduledResponse5/Data/DomesticScheduledPaymentId |OB: Unique identification as assigned by the ASPSP to uniquely identify the domestic schedule payment resource. |Max40Text | | |
 | ConsentId |1..1 |OBWriteDomesticScheduledResponse5/Data/ConsentId |OB: Unique identification as assigned by the ASPSP to uniquely identify the consent resource. |Max128Text | | |
-| CreationDateTime |1..1 |OBWriteDomesticScheduledResponse5/Data/CreationDateTime |Date and time at which the message was created. |ISODateTime | | |
+| CreationDateTime |1..1 |OBWriteDomesticScheduledResponse5/Data/CreationDateTime |Date and time at which the resource was created. |ISODateTime | | |
 | Status |1..1 |OBWriteDomesticScheduledResponse5/Data/Status |Specifies the status of the payment order resource. |OBExternalStatus3Code |InitiationCompleted InitiationFailed InitiationPending Cancelled | |
 | StatusUpdateDateTime |1..1 |OBWriteDomesticScheduledResponse5/Data/StatusUpdateDateTime |Date and time at which the resource status was updated. |ISODateTime | | |
 | ExpectedExecutionDateTime |0..1 |OBWriteDomesticScheduledResponse5/Data/ExpectedExecutionDateTime |Expected execution date and time for the payment resource. |ISODateTime | | |

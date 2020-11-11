@@ -338,9 +338,7 @@ Accept: application/json
       "BuildingNumber": "27",
       "PostCode": "GU31 2ZZ",
       "TownName": "Sparsholt",
-      "CountySubDivision": [
-        "Wessex"
-      ],
+      "CountrySubDivision": "Wessex",
       "Country": "UK"
     }
   }
@@ -396,9 +394,7 @@ Content-Type: application/json
       "BuildingNumber": "27",
       "PostCode": "GU31 2ZZ",
       "TownName": "Sparsholt",
-      "CountySubDivision": [
-        "Wessex"
-      ],
+      "CountrySubDivision": "Wessex",
       "Country": "UK"
     }
   },
@@ -474,9 +470,7 @@ Content-Type: application/json
       "BuildingNumber": "27",
       "PostCode": "GU31 2ZZ",
       "TownName": "Sparsholt",
-      "CountySubDivision": [
-        "Wessex"
-      ],
+      "CountrySubDivision": "Wessex",
       "Country": "UK"
     }
   },
