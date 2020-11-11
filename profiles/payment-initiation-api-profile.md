@@ -703,7 +703,7 @@ This section describes the OBSCASupportData1 class, which is used across all  _p
 | OBSCASupportData1 | |SCASupportData |Supporting Data provided by TPP, when requesting SCA Exemption. |OBSCASupportData1 | | |
 | RequestedSCAExemptionType |0..1 |SCASupportData/RequestedSCAExemptionType |This field allows a PISP to request specific SCA Exemption for a Payment Initiation |OBExternalSCAExemptionType1Code |BillPayment<br>ContactlessTravel<br>EcommerceGoods<br>EcommerceServices<br>Kiosk<br>Parking<br>PartyToParty | |
 | AppliedAuthenticationApproach |0..1 |SCASupportData/AppliedAuthenticationApproach |Specifies a character string with a maximum length of 40 characters.<br><br>Usage: This field indicates whether the PSU was subject to SCA performed by the TPP |OBExternalAppliedAuthenticationApproach1Code |CA<br>SCA | |
-| ReferencePaymentOrderId |0..1 |SCASupportData/ReferencePaymentOrderId |Specifies a character string with a maximum length of 140 characters.<br><br>Usage: If the payment is recurring, then the transaction identifier of the previous payment occurrence so that the ASPSP can verify that the PISP, amount and the payee are the same as the previous occurrence. |Max128Text | | |
+| ReferencePaymentOrderId |0..1 |SCASupportData/ReferencePaymentOrderId |If the payment is recurring, then this field is populated with the transaction identifier of the previous payment occurrence so that the ASPSP can verify that the PISP, amount and the payee are the same as the previous occurrence. The value here refers to the payment id e.g. DomesticPaymentId |Max40Text | | |
 
 ### Identifier Fields
 
