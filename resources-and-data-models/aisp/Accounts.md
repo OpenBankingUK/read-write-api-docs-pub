@@ -79,6 +79,11 @@ Each account resource will have a unique and immutable AccountId.
 * The `SwitchStatus` field is used to indicate that an account is undergoing an account switch.
   * An ASPSP may populate this field with the value `UK.CASS.NotSwitched` to indicate that the account has not been switched.
   * Once an account switch has been completed, an ASPSP may populate this field with the value `UK.CASS.SwitchCompleted`
+* The following fields are optional only for accounts that are switched. For all other accounts, the fields must be populated by the ASPSP.
+  * Data.Currency
+  * Data.AccountType
+  * Data.AccountSubType
+
 
 ### Permission Codes
 
@@ -103,9 +108,9 @@ If the ReadPAN permission is granted by the PSU, the ASPSP may choose to populat
 | AccountId |1..1 |OBReadAccount6/Data/Account/AccountId |A unique and immutable identifier used to identify the account resource. This identifier has no meaning to the account owner. |Max40Text | | |
 | Status |0..1 |OBReadAccount6/Data/Account/Status |Specifies the status of account resource in code form. |OBAccountStatus1Code |Enabled Disabled Deleted ProForma Pending | |
 | StatusUpdateDateTime |0..1 |OBReadAccount6/Data/Account/StatusUpdateDateTime |Date and time at which the resource status was updated. |ISODateTime | | |
-| Currency |1..1 |OBReadAccount6/Data/Account/Currency |Identification of the currency in which the account is held. Usage: Currency should only be used in case one and the same account number covers several currencies and the initiating party needs to identify which currency needs to be used for settlement on the account. |ActiveOrHistoricCurrencyCode | |^[A-Z]{3,3}$ |
-| AccountType |1..1 |OBReadAccount6/Data/Account/AccountType |Specifies the type of account (personal or business). |OBExternalAccountType1Code |Business Personal | |
-| AccountSubType |1..1 |OBReadAccount6/Data/Account/AccountSubType |Specifies the sub type of account (product family group). |OBExternalAccountSubType1Code |ChargeCard CreditCard CurrentAccount EMoney Loan Mortgage PrePaidCard Savings | |
+| Currency |0..1 |OBReadAccount6/Data/Account/Currency |Identification of the currency in which the account is held. Usage: Currency should only be used in case one and the same account number covers several currencies and the initiating party needs to identify which currency needs to be used for settlement on the account. |ActiveOrHistoricCurrencyCode | |^[A-Z]{3,3}$ |
+| AccountType |0..1 |OBReadAccount6/Data/Account/AccountType |Specifies the type of account (personal or business). |OBExternalAccountType1Code |Business Personal | |
+| AccountSubType |0..1 |OBReadAccount6/Data/Account/AccountSubType |Specifies the sub type of account (product family group). |OBExternalAccountSubType1Code |ChargeCard CreditCard CurrentAccount EMoney Loan Mortgage PrePaidCard Savings | |
 | Description |0..1 |OBReadAccount6/Data/Account/Description |Specifies the description of the account type. |Max35Text | | |
 | Nickname |0..1 |OBReadAccount6/Data/Account/Nickname |The nickname of the account, assigned by the account owner in order to provide an additional means of identification of the account. |Max70Text | | |
 | OpeningDate |0..1 |OBReadAccount6/Data/Account/OpeningDate | Date on which the account and related basic services are effectively operational for the account owner. | ISODate | | |

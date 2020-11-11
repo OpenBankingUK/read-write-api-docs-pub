@@ -23,7 +23,7 @@ The Swagger Specification for R/W APIs can be downloaded from the following GitH
 ### Version 3.1.7 - Draft1
 
 - __Decision 225 - Debtor account details following payment initiation__ [View Diff](tbc)
-
+- __Decion 226 - Optional fields for accounts that have been switched out__ [View Diff](tbc)
 - __Miscelleneous fixes to address Known Issues__ [View Diff](tbc)
   - OBSD-16647 - Fixed incorrect class name for `CreditorAccount` in `domestic-standing-order-consents`
   - OBSD-16818 - Corrected the `txn` specification for `events` to replace the reference to `x-fapi-transaction-id` with `x-fapi-interaction-id`
