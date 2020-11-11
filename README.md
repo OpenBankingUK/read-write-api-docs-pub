@@ -22,9 +22,9 @@ The Swagger Specification for R/W APIs can be downloaded from the following GitH
 
 ### Version 3.1.7 - Draft1
 
-- __Decision 225 - Debtor account details following payment initiation__ [View Diff](tbc)
-- __Decion 226 - Optional fields for accounts that have been switched out__ [View Diff](tbc)
-- __Miscelleneous fixes to address Known Issues__ [View Diff](tbc)
+- __Decision 225 - Debtor account details following payment initiation__ [View Diff](https://github.com/OpenBankingUK/read-write-api-docs-pub/commit/dfbd08c9e8fa5c160c034778425b8ab33e1c0fc7)
+- __Decion 226 - Optional fields for accounts that have been switched out__ [View Diff](https://github.com/OpenBankingUK/read-write-api-docs-pub/commit/8fe664760839d55ca2127b20a101be95f238a6ee)
+- __Miscelleneous fixes to address Known Issues__ [View Diff](https://github.com/OpenBankingUK/read-write-api-docs-pub/compare/bf6d569ad9ae2f3d792e86d4b78b4267978efca2...c465c79887ceb05db4a8b6f8a75b8c61d0404baa)
   - OBSD-16647 - Fixed incorrect class name for `CreditorAccount` in `domestic-standing-order-consents`
   - OBSD-16818 - Corrected the `txn` specification for `events` to replace the reference to `x-fapi-transaction-id` with `x-fapi-interaction-id`
   - OBSD-16778 - Added description for post endpoints in `file-payments`
