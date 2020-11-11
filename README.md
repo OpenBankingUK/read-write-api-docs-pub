@@ -29,4 +29,5 @@ The Swagger Specification for R/W APIs can be downloaded from the following GitH
   - Added description for post endpoints in `file-payments`
   - Updated the account name field sizes for `parties` so that they are consistent
   - In the Accounts resource, corrected `UK.CASS.NotSwitced` in description to `UK.CASS.NotSwitched`
+  - Corrected the description and length of `ReferencePaymentOrderId` 
 - __Update version numbers__ [View Diff](https://github.com/OpenBankingUK/read-write-api-docs/commit/ab83f6bdd7b9e64a3599ede6f89ffeff70984462)
