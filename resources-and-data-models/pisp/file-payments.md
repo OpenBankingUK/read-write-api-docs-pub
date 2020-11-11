@@ -2,6 +2,7 @@
 
 - [Overview](#overview)
 - [Endpoints](#endpoints)
+  - [POST /file-payments](#post-file-payments)
   - [GET /file-payments/{FilePaymentId}](#get-file-paymentsfilepaymentid)
     - [Status](#status)
   - [GET /file-payments/{FilePaymentId}/report-file](#get-file-paymentsfilepaymentidreport-file)
@@ -25,7 +26,7 @@
     - [UML Diagram](#uml-diagram-2)
     - [Data Dictionary](#data-dictionary-2)
 - [Usage Examples](#usage-examples)
-  - [POST /file-payments](#post-file-payments)
+  - [POST /file-payments](#post-file-payments-1)
     - [Request](#request)
     - [Response](#response)
 
@@ -210,8 +211,11 @@ The file-payment **response** object contains the:
 | Charges |0..n |OBWriteFileResponse3/Data/Charges |Set of elements used to provide details of a charge for the payment initiation. |OBCharge2 | | |
 | Initiation |1..1 |OBWriteFileResponse3/Data/Initiation |The Initiation payload is sent by the initiating party to the ASPSP. It is used to request movement of funds using a payment file. |OBFile2 | | |
 | MultiAuthorisation |0..1 |OBWriteFileResponse3/Data/MultiAuthorisation |The multiple authorisation flow response from the ASPSP. |OBMultiAuthorisation1 | | |
-| Debtor |0..1 |OBWriteFileResponse3/Data/Debtor |Set of elements used to identify a person or an organisation. |OBDebtorIdentification1 | | |
-| Name |1..1 |OBWriteFileResponse3/Data/Debtor/Name |The account name is the name or names of the account owner(s) represented at an account level, as displayed by the ASPSP's online channels. <BR/><BR/> Note, the account name is not the product name or the nickname of the account. |Max350Text | | |
+| Debtor |0..1 |OBWriteFileResponse3/Data/Debtor |Set of elements used to identify a person or an organisation. | | | |
+| SchemeName |0..1 |OBWriteFileResponse3/Data/Debtor/SchemeName |Name of the identification scheme, in a coded form as published in an external list. |OBExternalAccountIdentification4Code | | |
+| Identification |0..1 |OBWriteFileResponse3/Data/Debtor/Identification |Identification assigned by an institution to identify an account. This identification is known by the account owner. |Max256Text | | |
+| Name |0..1 |OBWriteFileResponse3/Data/Debtor/Name |The account name is the name or names of the account owner(s) represented at an account level, as displayed by the ASPSP's online channels. Note, the account name is not the product name or the nickname of the account. |Max350Text | | |
+| SecondaryIdentification |0..1 |OBWriteFileResponse3/Data/Debtor/SecondaryIdentification |This is secondary identification of the account, as assigned by the account servicing institution. This can be used by building societies to additionally identify accounts with a roll number (in addition to a sort code and account number combination). |Max34Text | | |
 
 ### File Payment - Payment Details - Response
 
