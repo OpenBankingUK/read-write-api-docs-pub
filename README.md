@@ -20,6 +20,9 @@ The Swagger Specification for R/W APIs can be downloaded from the following GitH
 
 ## Change Log
 
+### Version 3.1.7
+No further changes from Version 3.1.7 - Draft 1
+
 ### Version 3.1.7 - Draft1
 
 - __Decision 225 - Debtor account details following payment initiation__ [View Diff](https://github.com/OpenBankingUK/read-write-api-docs-pub/commit/dfbd08c9e8fa5c160c034778425b8ab33e1c0fc7)
