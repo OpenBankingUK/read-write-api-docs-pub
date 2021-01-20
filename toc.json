@@ -1,0 +1,292 @@
+{
+  "items": [
+    {
+      "type": "item",
+      "title": "Overview",
+      "uri": "docs/overview.md"
+    },
+    {
+      "type": "group",
+      "title": "Account and Transaction API",
+      "items": [
+        {
+          "type": "item",
+          "title": "Profile",
+          "uri": "docs/accounts-and-transaction/profile.md"
+        },
+        {
+          "type": "item",
+          "title": "Account Access Consents",
+          "uri": "docs/accounts-and-transaction/account-access-consents.md"
+        },
+        {
+          "type": "item",
+          "title": "Balances",
+          "uri": "docs/accounts-and-transaction/balances.md"
+        },
+        {
+          "type": "item",
+          "title": "Transactions",
+          "uri": "docs/accounts-and-transaction/transactions.md"
+        },
+        {
+          "type": "item",
+          "title": "Beneficiaries",
+          "uri": "docs/accounts-and-transaction/beneficiaries.md"
+        },
+        {
+          "type": "item",
+          "title": "Direct Debits",
+          "uri": "docs/accounts-and-transaction/direct-debits.md"
+        },
+        {
+          "type": "item",
+          "title": "Standing Orders",
+          "uri": "docs/accounts-and-transaction/standing-orders.md"
+        },
+        {
+          "type": "group",
+          "title": "Products",
+          "items": [
+            {
+              "type": "item",
+              "title": "Overview",
+              "uri": "docs/accounts-and-transaction/products/products.md"
+            },
+            {
+              "type": "item",
+              "title": "BCA Product Data Model",
+              "uri": "docs/accounts-and-transaction/products/bca-product-data-model.md"
+            },
+            {
+              "type": "item",
+              "title": "PCA Product Data Model",
+              "uri": "docs/accounts-and-transaction/products/pca-product-data-model.md"
+            },
+            {
+              "type": "item",
+              "title": "Other Product Data Model",
+              "uri": "docs/accounts-and-transaction/products/other-product-data-model.md"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "group",
+      "title": "Payment Initiation API",
+      "items": [
+        {
+          "type": "item",
+          "title": "Profile",
+          "uri": "docs/payment-initiation/profile.md"
+        },
+        {
+          "type": "item",
+          "title": "Domestic Payments Consents",
+          "uri": "docs/payment-initiation/domestic-payment-consents.md"
+        },
+        {
+          "type": "item",
+          "title": "Domestic Payments",
+          "uri": "docs/payment-initiation/domestic-payments.md"
+        },
+        {
+          "type": "item",
+          "title": "Domestic Scheduled Payment Consents",
+          "uri": "docs/payment-initiation/domestic-scheduled-payment-consents.md"
+        },
+        {
+          "type": "item",
+          "title": "Domestic Scheduled Payment",
+          "uri": "docs/payment-initiation/domestic-scheduled-payments.md"
+        },
+        {
+          "type": "item",
+          "title": "Domestic Standing Order Consents",
+          "uri": "docs/payment-initiation/domestic-standing-order-consents.md"
+        },
+        {
+          "type": "item",
+          "title": "Domestic Standing Orders",
+          "uri": "docs/payment-initiation/domestic-standing-orders.md"
+        },
+        {
+          "type": "item",
+          "title": "International Payment Consents",
+          "uri": "docs/payment-initiation/international-payment-consents.md"
+        },
+        {
+          "type": "item",
+          "title": "International Payments",
+          "uri": "docs/payment-initiation/international-payments.md"
+        },
+        {
+          "type": "item",
+          "title": "International Scheduled Payment Consents",
+          "uri": "docs/payment-initiation/international-scheduled-payment-consents.md"
+        },
+        {
+          "type": "item",
+          "title": "International Scheduled Payments",
+          "uri": "docs/payment-initiation/international-scheduled-payments.md"
+        },
+        {
+          "type": "item",
+          "title": "International Standing Order Consents",
+          "uri": "docs/payment-initiation/international-standing-order-consents.md"
+        },
+        {
+          "type": "item",
+          "title": "International Standing Orders",
+          "uri": "docs/payment-initiation/international-standing-orders.md"
+        },
+        {
+          "type": "item",
+          "title": "File Payments API Profile",
+          "uri": "docs/payment-initiation/file-payments-api-profile.md"
+        },
+        {
+          "type": "item",
+          "title": "File Payment Consents",
+          "uri": "docs/payment-initiation/file-payment-consents.md"
+        },
+        {
+          "type": "item",
+          "title": "File Payments",
+          "uri": "docs/payment-initiation/file-payments.md"
+        }
+      ]
+    },
+    {
+      "type": "group",
+      "title": "Confirmation of Funds API",
+      "items": [
+        {
+          "type": "item",
+          "title": "Profile",
+          "uri": "docs/confirmation-of-funds/profile.md"
+        },
+        {
+          "type": "item",
+          "title": "Funds Confirmation Consent",
+          "uri": "docs/confirmation-of-funds/funds-confirmation-consent.md"
+        },
+        {
+          "type": "item",
+          "title": "Funds Confirmation",
+          "uri": "docs/confirmation-of-funds/funds-confirmation.md"
+        }
+      ]
+    },
+    {
+      "type": "group",
+      "title": "Event Notification API ",
+      "items": [
+        {
+          "type": "item",
+          "title": "Profile",
+          "uri": "docs/event-notification/profile.md"
+        },
+        {
+          "type": "item",
+          "title": "Event Notification Subscription API",
+          "uri": "docs/event-notification/event-notification-subscription-api-profile.md"
+        },
+        {
+          "type": "item",
+          "title": "Callback URL API",
+          "uri": "docs/event-notification/callback-url-api-profile.md"
+        },
+        {
+          "type": "item",
+          "title": "Real Time Event Notification API",
+          "uri": "docs/event-notification/real-time-event-notification-api-profile.md"
+        },
+        {
+          "type": "item",
+          "title": "Aggregated Polling API",
+          "uri": "docs/event-notification/aggregated-polling-api-profile.md"
+        }
+      ]
+    },
+    {
+      "type": "group",
+      "title": "Resources and Data Models",
+      "items": [
+        {
+          "type": "item",
+          "title": "AISP Resources",
+          "uri": "docs/resources-and-data-models/aisp/README.md"
+        },
+        {
+          "type": "item",
+          "title": "PISP Resources",
+          "uri": "docs/resources-and-data-models/pisp/README.md"
+        },
+        {
+          "type": "item",
+          "title": "CBPII Resources",
+          "uri": "docs/resources-and-data-models/cbpii/README.md"
+        },
+        {
+          "type": "item",
+          "title": "Event Notifications Resources",
+          "uri": "docs/resources-and-data-models/event-notifications/README.md"
+        }
+      ]
+    },
+    {
+      "type": "group",
+      "title": "References",
+      "items": [
+        {
+          "type": "item",
+          "title": "Domestic Payment Message Formats",
+          "uri": "docs/references/domestic-payment-message-formats.md"
+        },
+        {
+          "type": "item",
+          "title": "Namespaced Enumerations",
+          "uri": "docs/references/namespaced-enumerations.md"
+        },
+        {
+          "type": "group",
+          "title": "Usage Examples",
+          "items": [
+            {
+              "type": "item",
+              "title": "Domestic Payments",
+              "uri": "docs/references/usage-examples/domestic-payments-usage-examples.md"
+            },
+            {
+              "type": "item",
+              "title": "Domestic Standing Orders",
+              "uri": "docs/references/usage-examples/domestic-standing-order-usage-examples.md"
+            },
+            {
+              "type": "item",
+              "title": "International Payments",
+              "uri": "docs/references/usage-examples/international-payment-usage-examples.md"
+            },
+            {
+              "type": "item",
+              "title": "International Scheduled Payments",
+              "uri": "docs/references/usage-examples/international-scheduled-payment-usage-examples.md"
+            },
+            {
+              "type": "item",
+              "title": "File Payments",
+              "uri": "docs/references/usage-examples/file-payments-usage-examples.md"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "item",
+      "title": "Version Control",
+      "uri": "docs/version-control.md"
+    }
+  ]
+}

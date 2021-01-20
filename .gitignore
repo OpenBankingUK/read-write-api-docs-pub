@@ -1,9 +1,0 @@
-**/_experiments/in/*
-**/_experiments/out/*
-_experiments
-.vscode/*
-*.vscode
-.DS_Store
-*.DS_Store
-*.iml
-*.vscode

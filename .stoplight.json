@@ -1,0 +1,19 @@
+{
+  "formats": {
+    "markdown": {
+      "rootDir": "docs",
+      "include": [
+        "**"
+      ]
+    },
+    "image": {
+      "rootDir": "assets/images",
+      "include": [
+        "**"
+      ]
+    }
+  },
+  "exclude": [
+    "origin"
+  ]
+}
