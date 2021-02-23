@@ -1,4 +1,4 @@
-# CBPII Resources and Data Models - v3.1.7 <!-- omit in toc -->
+# CBPII Resources and Data Models - v3.1.8 <!-- omit in toc -->
 
 Resources accessed by CBPIIs are detailed here:
 
