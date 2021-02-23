@@ -20,7 +20,7 @@ The Swagger Specification for R/W APIs can be downloaded from the following GitH
 
 ## Change Log
 
-### Version 3.1.8 - Draft1
+### Version 3.1.8 - RC1
 - __VRP Profile, Resources and Examples__ [View Diff](https://github.com/OpenBankingUK/read-write-api-docs-pub/commit/4b733a8db96feb1fed65e50d8d6be1ba09522194)
 - __Decision 229 - Support for rejected transactions__ [View Diff](https://github.com/OpenBankingUK/read-write-api-docs-pub/commit/d2a34d014f4240b2b8e44c7b6b8001079551dd4c)
 - __Update version numbers__ [View Diff](https://github.com/OpenBankingUK/read-write-api-docs-pub/commit/3c520048ae587ce859247c8049e9baaa3033e299)
