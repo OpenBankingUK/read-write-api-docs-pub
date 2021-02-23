@@ -1,4 +1,4 @@
-# Domestic Payment Message Formats - v3.1.7 <!-- omit in toc -->
+# Domestic Payment Message Formats - v3.1.8 <!-- omit in toc -->
 
 - [ISO 20022](#iso-20022)
 - [ISO 8583](#iso-8583)

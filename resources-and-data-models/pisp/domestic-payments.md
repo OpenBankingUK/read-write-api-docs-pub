@@ -1,4 +1,4 @@
-# Domestic Payments - v3.1.7 <!-- omit in toc -->
+# Domestic Payments - v3.1.8 <!-- omit in toc -->
 
 - [Overview](#overview)
 - [Endpoints](#endpoints)
