@@ -10,7 +10,7 @@
   - [Aggregated Polling API Profile](aggregated-polling-api-profile.md)
   - [Event Notification Subscription API Profile](event-notification-subscription-api-profile.md)
   - [Callback URL API Profile](callback-url-api-profile.md)
-
+- [Variable Recurring Payments API Profile](vrp-profile.md)
 ## Profile Compatibility
 
 |  | |Read-Write API Profile |Read-Write API Profile |Read-Write API Profile |
