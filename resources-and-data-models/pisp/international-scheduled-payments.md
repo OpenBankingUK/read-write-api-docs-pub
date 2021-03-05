@@ -161,7 +161,7 @@ The OBWriteInternationalScheduled3 object will be used for a call to:
 
 #### UML Diagram
 
-![ OBWriteInternationalScheduled3.gif ](./images/OBWriteInternationalScheduled3.gif )
+![ OBWriteInternationalScheduled3.svg ](./images/OBWriteInternationalScheduled3.svg )
 
 #### Notes
 
@@ -190,7 +190,7 @@ The OBWriteInternationalScheduledResponse6 object will be used for a response to
 
 #### UML Diagram
 
-![ OBWriteInternationalScheduledResponse6.png ](./images/OBWriteInternationalScheduledResponse6.gif )
+![ OBWriteInternationalScheduledResponse6.svg ](./images/OBWriteInternationalScheduledResponse6.svg )
 
 #### Notes
 
@@ -240,7 +240,7 @@ The OBWritePaymentDetailsResponse1 object will be used for a response to a call 
 
 #### UML Diagram
 
-![OBWritePaymentDetailsResponse1.png](./images/OBWritePaymentDetailsResponse1.png)
+![OBWritePaymentDetailsResponse1.svg](./images/OBWritePaymentDetailsResponse1.svg)
 
 #### Data Dictionary
 

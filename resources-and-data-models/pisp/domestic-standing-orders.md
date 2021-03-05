@@ -160,7 +160,7 @@ The OBWriteDomesticStandingOrder3 object will be used for a call to:
 
 #### UML Diagram
 
-![Domestic Standing Order - Request](./images/OBWriteDomesticStandingOrder3.png)
+![Domestic Standing Order - Request](./images/OBWriteDomesticStandingOrder3.svg)
 
 #### Notes
 
@@ -189,7 +189,7 @@ The OBWriteDomesticStandingOrderResponse6 object will be used for a response to 
 
 #### UML Diagram
 
-![Domestic Standing Order - Response](./images/OBWriteDomesticStandingOrderResponse6.gif)
+![Domestic Standing Order - Response](./images/OBWriteDomesticStandingOrderResponse6.svg)
 
 #### Notes
 
@@ -234,7 +234,7 @@ The OBWritePaymentDetailsResponse1 object will be used for a response to a call 
 
 #### UML Diagram
 
-![Domestic Standing Order - Payment Details - Response](./images/OBWritePaymentDetailsResponse1.png)
+![Domestic Standing Order - Payment Details - Response](./images/OBWritePaymentDetailsResponse1.svg)
 
 #### Data Dictionary
 

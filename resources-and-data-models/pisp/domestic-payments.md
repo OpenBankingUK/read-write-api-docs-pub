@@ -170,7 +170,7 @@ The OBWriteDomestic2 object will be used for a call to:
 
 #### UML Diagram
 
-![OBWriteDomestic2](./images/OBWriteDomestic2.gif)
+![OBWriteDomestic2](./images/OBWriteDomestic2.svg)
 
 #### Notes
 
@@ -200,7 +200,7 @@ The OBWriteDomesticResponse5 object will be used for a response to a call to:
 
 #### UML Diagram
 
-![OBWriteDomesticResponse5](./images/OBWriteDomesticResponse5.gif)
+![OBWriteDomesticResponse5](./images/OBWriteDomesticResponse5.svg)
 
 #### Notes
 
@@ -249,7 +249,7 @@ The OBWritePaymentDetailsResponse1 object will be used for a response to a call 
 
 #### UML Diagram
 
-![OBWritePaymentDetailsResponse1](./images/OBWritePaymentDetailsResponse1.png)
+![OBWritePaymentDetailsResponse1](./images/OBWritePaymentDetailsResponse1.svg)
 
 #### Data Dictionary
 

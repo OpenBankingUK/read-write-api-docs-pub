@@ -161,7 +161,7 @@ The OBWriteInternationalStandingOrder4 object will be used for a call to:
 
 #### UML Diagram
 
-![ OBWriteInternationalStandingOrder4.gif ](./images/OBWriteInternationalStandingOrder4.gif )
+![ OBWriteInternationalStandingOrder4.svg ](./images/OBWriteInternationalStandingOrder4.svg )
 
 #### Notes
 
@@ -191,7 +191,7 @@ The OBWriteInternationalStandingOrderResponse7 object will be used for a respons
 
 #### UML Diagram
 
-![ OBWriteInternationalStandingOrderResponse7.png ](./images/OBWriteInternationalStandingOrderResponse7.gif )
+![ OBWriteInternationalStandingOrderResponse7.svg ](./images/OBWriteInternationalStandingOrderResponse7.svg )
 
 #### Notes 
 
@@ -236,7 +236,7 @@ The OBWritePaymentDetailsResponse1 object will be used for a response to a call 
 
 #### UML Diagram
 
-![ OBWritePaymentDetailsResponse1.png ](./images/OBWritePaymentDetailsResponse1.png )
+![ OBWritePaymentDetailsResponse1.svg ](./images/OBWritePaymentDetailsResponse1.svg )
 
 #### Data Dictionary
 

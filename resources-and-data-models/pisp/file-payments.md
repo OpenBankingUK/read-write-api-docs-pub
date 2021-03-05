@@ -153,7 +153,7 @@ The OBWriteFile2 object will be used for a call to:
 
 #### UML Diagram
 
-![OBWriteFile2](./images/OBWriteFile2.gif )
+![OBWriteFile2](./images/OBWriteFile2.svg )
 
 #### Notes 
 
@@ -182,7 +182,7 @@ The OBWriteFileResponse3 object will be used for a response to a call to:
 
 #### UML Diagram
 
-![OBWriteFileResponse3](./images/OBWriteFileResponse3.gif)
+![OBWriteFileResponse3](./images/OBWriteFileResponse3.svg)
 
 #### Notes 
 
@@ -225,7 +225,7 @@ The OBWritePaymentDetailsResponse1 object will be used for a response to a call 
 
 #### UML Diagram
 
-![OBWritePaymentDetailsResponse1](./images/OBWritePaymentDetailsResponse1.png )
+![OBWritePaymentDetailsResponse1](./images/OBWritePaymentDetailsResponse1.svg )
 
 #### Data Dictionary
 

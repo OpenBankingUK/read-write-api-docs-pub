@@ -107,7 +107,7 @@ This section describes the OBInternationalStandingOrder4 class which is reused a
 
 ##### UML Diagram
 
-![ OBInternationalStandingOrder4.gif ](./images/OBInternationalStandingOrder4.gif )
+![ OBInternationalStandingOrder4.svg ](./images/OBInternationalStandingOrder4.svg )
 
 ##### Notes
 
@@ -197,7 +197,7 @@ The OBWriteInternationalStandingOrderConsent6 object will be used for the call t
 
 #### UML Diagram
 
-![ OBWriteInternationalStandingOrderConsent6.png ](./images/OBWriteInternationalStandingOrderConsent6.png )
+![ OBWriteInternationalStandingOrderConsent6.svg ](./images/OBWriteInternationalStandingOrderConsent6.svg )
 
 #### Notes
 
@@ -231,7 +231,7 @@ The OBWriteInternationalStandingOrderConsentResponse7 object will be used for a 
 
 #### UML Diagram
 
-![ OBWriteInternationalStandingOrderConsentResponse7.png ](./images/OBWriteInternationalStandingOrderConsentResponse7.gif )
+![ OBWriteInternationalStandingOrderConsentResponse7.svg ](./images/OBWriteInternationalStandingOrderConsentResponse7.svg )
 
 #### Notes
 

@@ -124,7 +124,7 @@ This section describes the OBInternational3 class which is reused as the Initiat
 
 ##### UML Diagram
 
-![OB International Reusable class](./images/OBInternational3.gif)
+![OB International Reusable class](./images/OBInternational3.svg)
 
 ##### Notes
 
@@ -227,7 +227,7 @@ The OBInternational3/ExchangeRateInformation object must conform to these behavi
 
 This section describes the OBExchangeRate2 class, which is used in the response payloads in the international-payment-consent resource.
 
-![Exchange Rate Model](./images/OBExchangeRate2.gif)
+![Exchange Rate Model](./images/OBExchangeRate2.svg)
 
 ##### Data Dictionary
 
@@ -248,7 +248,7 @@ The OBWriteInternationalConsent5 object will be used for the call to:
 
 #### UML Diagram
 
-![International Payment Consent - Request](./images/OBWriteInternationalConsent5.png)
+![International Payment Consent - Request](./images/OBWriteInternationalConsent5.svg)
 
 #### Notes 
 
@@ -287,7 +287,7 @@ The OBWriteInternationalConsentResponse6 object will be used for a response to a
 
 #### UML Diagram
 
-![International Payment Consent - Response](./images/OBWriteInternationalConsentResponse6.gif)
+![International Payment Consent - Response](./images/OBWriteInternationalConsentResponse6.svg)
 
 #### Notes 
 

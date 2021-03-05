@@ -122,7 +122,7 @@ This section describes the OBDomestic2 class which is reused as the Initiation o
 
 ##### UML Diagram
 
-![OBDomestic2](./images/OBDomestic2.gif)
+![OBDomestic2](./images/OBDomestic2.svg)
 
 ##### Notes
 
@@ -189,7 +189,7 @@ The OBWriteDomesticConsent4 object will be used for the call to:
   
 #### UML Diagram
 
-![OBWriteDomesticConsent4](./images/OBWriteDomesticConsent4.png)
+![OBWriteDomesticConsent4](./images/OBWriteDomesticConsent4.svg)
 
 #### Notes
 
@@ -220,7 +220,7 @@ The OBWriteDomesticConsentResponse5 object will be used for a response to a call
 
 #### UML Diagram
 
-![OBWriteDomesticConsentResponse5](./images/OBWriteDomesticConsentResponse5.png)
+![OBWriteDomesticConsentResponse5](./images/OBWriteDomesticConsentResponse5.svg)
 
 #### Notes
 

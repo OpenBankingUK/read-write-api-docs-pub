@@ -124,7 +124,7 @@ This section describes the OBInternationalScheduled3 class which is reused as th
 
 ##### UML Diagram
 
-![OBInternationalScheduled3.gif](./images/OBInternationalScheduled3.gif)
+![OBInternationalScheduled3.svg](./images/OBInternationalScheduled3.svg)
 
 ##### Notes
 
@@ -235,7 +235,7 @@ The ExchangeRateInformation object must conform to these behaviours:
 
 This section describes the OBExchangeRate2 class which is reused in the response payloads in the international-scheduled-payment-consent resource.
 
-![OBExchangeRate2.gif](./images/OBExchangeRate2.gif)
+![OBExchangeRate2.svg](./images/OBExchangeRate2.svg)
 
 ##### Data Dictionary
 
@@ -256,7 +256,7 @@ The OBWriteInternationalScheduledConsent5 object will be used for the call to:
 
 #### UML Diagram
 
-![OBWriteInternationalScheduledConsent5.png](./images/OBWriteInternationalScheduledConsent5.png )
+![OBWriteInternationalScheduledConsent5.svg](./images/OBWriteInternationalScheduledConsent5.svg )
 
 #### Notes
 
@@ -296,7 +296,7 @@ The OBWriteInternationalScheduledConsentResponse6 object will be used for a resp
 
 #### UML Diagram
 
-![ OBWriteInternationalScheduledConsentResponse6.png ](./images/OBWriteInternationalScheduledConsentResponse6.gif )
+![ OBWriteInternationalScheduledConsentResponse6.svg ](./images/OBWriteInternationalScheduledConsentResponse6.svg )
 
 ####  Notes
 
