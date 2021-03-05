@@ -61,7 +61,7 @@ Each account resource will have a unique and immutable AccountId.
 
 ### UML Diagram
 
-![ OBReadAccount6.png ](./images/Accounts/OBReadAccount6.png )
+![ OBReadAccount6 ](./images/OBReadAccount6.svg )
 
 ### Notes
 

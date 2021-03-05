@@ -49,7 +49,7 @@ An account (AccountId) may have no direct debits set up, or may have multiple di
 
 ### UML Diagram
 
-![ OBReadDirectDebit2.png ](./images/DirectDebits/OBReadDirectDebit2.png)
+![ OBReadDirectDebit2 ](./images/OBReadDirectDebit2.svg)
 
 ### Permission Codes
 

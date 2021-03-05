@@ -123,7 +123,7 @@ The OBReadConsent1 object will be used for the call to:
 
 #### UML Diagram
 
-![ OBReadConsent1.gif ](./images/AccountAccessConsents/OBReadConsent1.gif )
+![ OBReadConsent1 ](./images/OBReadConsent1.svg )
 
 #### Notes
 
@@ -154,7 +154,7 @@ And response to:
 
 #### UML Diagram
 
-![ OBReadConsentResponse1.gif ](./images/AccountAccessConsents/OBReadConsentResponse1.gif )
+![ OBReadConsentResponse1 ](./images/OBReadConsentResponse1.svg )
 
 #### Notes
 

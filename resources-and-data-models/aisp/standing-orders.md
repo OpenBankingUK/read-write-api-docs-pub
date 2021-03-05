@@ -57,7 +57,7 @@ An account (AccountId) may have no standing orders set up, or may have multiple 
 
 ### UML Diagram
 
-![ OBReadStandingOrder6.png ](./images/StandingOrders/OBReadStandingOrder6.png )
+![ OBReadStandingOrder6 ](./images/OBReadStandingOrder6.svg )
 
 ### Notes
 

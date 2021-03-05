@@ -53,7 +53,7 @@ An account (AccountId) may have no scheduled payments set up, or may have multip
 
 ### UML Diagram
 
-![ OBReadScheduledPayment3.gif ](./images/ScheduledPayments/OBReadScheduledPayment3.gif )
+![ OBReadScheduledPayment3 ](./images/OBReadScheduledPayment3.gif )
 
 #### Notes
 

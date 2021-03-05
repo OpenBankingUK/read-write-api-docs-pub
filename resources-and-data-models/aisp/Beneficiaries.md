@@ -70,7 +70,7 @@ This is the expected behaviour of the beneficiaries endpoints, in the case an AS
 
 ### UML Diagram
 
-![ OBReadBeneficiary5.gif ](./images/Beneficiaries/OBReadBeneficiary5.gif )
+![ OBReadBeneficiary5if ](./images/OBReadBeneficiary5.svg )
 
 ### Notes
 

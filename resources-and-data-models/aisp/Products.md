@@ -68,7 +68,7 @@ An account (AccountId) must only have a single product.
 
 ### UML Diagram
 
-![ OBReadProduct2.png ](./images/Products/OBReadProduct2.png )
+![ OBReadProduct2 ](./images/OBReadProduct2.svg )
 
 #### Notes
 

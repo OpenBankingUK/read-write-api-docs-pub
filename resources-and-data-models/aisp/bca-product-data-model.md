@@ -135,7 +135,7 @@ Further analysis required:-
 * Other Fee Charges: Only Periodic Fee(service charge) has been included in the Code List.
 * We have taken Open Data BCA Segments for BCA Account Info as well.
 
-![ AINFOBCA.3.1.4.ClassDiagram.png ](./images/BCA/AINFOBCA.3.1.4.ClassDiagram.png )
+![ BCA ClassDiagram ](./images/OBReadProduct2.svg )
 
 ### Data Dictionary
 
