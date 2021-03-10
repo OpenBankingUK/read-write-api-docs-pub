@@ -1,0 +1,161 @@
+<template>
+  <div
+    class="theme-container"
+    :class="pageClasses"
+    @touchstart="onTouchStart"
+    @touchend="onTouchEnd"
+  >
+    <Navbar
+      v-if="shouldShowNavbar"
+      @toggle-sidebar="toggleSidebar"
+    />
+
+    <div
+      class="sidebar-mask"
+      @click="toggleSidebar(false)"
+    ></div>
+
+    <Sidebar
+      :items="sidebarItems"
+      @toggle-sidebar="toggleSidebar"
+    >
+      <slot
+        name="sidebar-top"
+        slot="top"
+      />
+      <slot
+        name="sidebar-bottom"
+        slot="bottom"
+      />
+    </Sidebar>
+
+    <Home v-if="$page.frontmatter.home"/>
+
+    <Page
+      v-else
+      :sidebar-items="sidebarItems"
+    >
+      <slot
+        name="page-top"
+        slot="top"
+      />
+      <slot
+        name="page-bottom"
+        slot="bottom"
+      />
+    </Page>
+
+    <OBIEFooter />
+  </div>
+</template>
+
+<script>
+import Home from '@theme/components/Home.vue'
+import Navbar from '@theme/components/Navbar.vue'
+import Page from '@theme/components/Page.vue'
+import Sidebar from '@theme/components/Sidebar.vue'
+import OBIEFooter from '@theme/obie-components/OBIEFooter.vue'
+import { resolveSidebarItems } from '../util'
+
+export default {
+  components: { Home, Page, Sidebar, Navbar, OBIEFooter },
+
+  data () {
+    return {
+      isSidebarOpen: false
+    }
+  },
+
+  computed: {
+    shouldShowNavbar () {
+      const { themeConfig } = this.$site
+      const { frontmatter } = this.$page
+      if (
+        frontmatter.navbar === false
+        || themeConfig.navbar === false) {
+        return false
+      }
+      return (
+        this.$title
+        || themeConfig.logo
+        || themeConfig.repo
+        || themeConfig.nav
+        || this.$themeLocaleConfig.nav
+      )
+    },
+
+    shouldShowSidebar () {
+      const { frontmatter } = this.$page
+      return (
+        !frontmatter.home
+        && frontmatter.sidebar !== false
+        && this.sidebarItems.length
+      )
+    },
+
+    sidebarItems () {
+      return resolveSidebarItems(
+        this.$page,
+        this.$page.regularPath,
+        this.$site,
+        this.$localePath
+      )
+    },
+
+    pageClasses () {
+      const userPageClass = this.$page.frontmatter.pageClass
+      return [
+        {
+          'no-navbar': !this.shouldShowNavbar,
+          'sidebar-open': this.isSidebarOpen,
+          'no-sidebar': !this.shouldShowSidebar
+        },
+        userPageClass
+      ]
+    }
+  },
+
+  mounted () {
+    this.$router.afterEach(() => {
+      this.isSidebarOpen = false
+    })
+    // console.log('this.$site.themeConfig.search=', this.$site.themeConfig.search);
+    this.checkDebugQueryParam();
+  },
+
+  methods: {
+    toggleSidebar (to) {
+      this.isSidebarOpen = typeof to === 'boolean' ? to : !this.isSidebarOpen
+      this.$emit('toggle-sidebar', this.isSidebarOpen)
+    },
+
+    // side swipe
+    onTouchStart (e) {
+      this.touchStart = {
+        x: e.changedTouches[0].clientX,
+        y: e.changedTouches[0].clientY
+      }
+    },
+
+    onTouchEnd (e) {
+      const dx = e.changedTouches[0].clientX - this.touchStart.x
+      const dy = e.changedTouches[0].clientY - this.touchStart.y
+      if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 40) {
+        if (dx > 0 && this.touchStart.x <= 80) {
+          this.toggleSidebar(true)
+        } else {
+          this.toggleSidebar(false)
+        }
+      }
+    },
+
+    checkDebugQueryParam() {
+      if (this.$route.query && this.$route.query["debug"] && this.$route.query["debug"] === 'true') {
+        // https://gist.github.com/addyosmani/fd3999ea7fce242756b1
+        const empty = [];
+        empty.forEach.call(document.querySelectorAll("*"), function (a) { a.style.outline = "1px solid #" + (~~(Math.random() * (1 << 24))).toString(16) });
+      }
+    },
+  }
+}
+</script>
