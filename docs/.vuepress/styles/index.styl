@@ -1,0 +1,37 @@
+/**
+ * Install https://thisismanta.github.io/stylus-supremacy/#vscode for better coding experience.
+ */
+@require './palette.styl';
+@require './fonts_metropolis.styl';
+
+html, body {
+  font-family: 'Metropolis', 'Arial', sans-serif;
+  -webkit-font-smoothing: subpixel-antialiased;
+  font-size: 14px;
+}
+
+html, body, #app, .theme-container {
+  height: 100%;
+}
+
+.page {
+  .page-nav, .theme-default-content:not(.custom) {
+    // Make this elements fill the entire width.
+    max-width: 100%;
+  }
+
+  .page-edit {
+    // Make this elements fill the entire width.
+    max-width: 100%;
+
+    // Align `Last Updated: 9/13/2019, 3:44:56 PM` to the left by unsetting it.
+    .last-updated {
+      float: unset;
+    }
+  }
+}
+
+.page-edit.footer {
+  // Make this elements fill the entire width.
+  max-width: 100%;
+}

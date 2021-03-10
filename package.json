@@ -1,0 +1,35 @@
+{
+  "name": "ob-read-write",
+  "version": "v1.0.0",
+  "description": "Open Banking Read-Write API Specifications",
+  "repository": "git@github.com:OpenBankingUK/read-write-api-docs-pub.git",
+  "homepage": "https://github.com/OpenBankingUK/read-write-api-docs-pub",
+  "private": true,
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/OpenBankingUK/read-write-api-docs-pub/issues"
+  },
+  "engines": {
+    "node": ">=8.6"
+  },
+  "devDependencies": {
+    "@types/markdown-it": "^12.0.1",
+    "@vuepress/plugin-back-to-top": "^1.8.2",
+    "@vuepress/plugin-nprogress": "^1.8.2",
+    "@vuepress/plugin-search": "^1.8.2",
+    "markdown-it": "^12.0.4",
+    "node-sass": "^5.0.0",
+    "remark-cli": "^9.0.0",
+    "remark-lint": "^8.0.0",
+    "remark-preset-lint-consistent": "^4.0.0",
+    "remark-preset-lint-recommended": "^5.0.0",
+    "sass-loader": "^11.0.1",
+    "vuepress": "^1.8.2",
+    "vuepress-plugin-redirect": "^1.2.5"
+  },
+  "scripts": {
+    "docs:dev:no-cache": "vuepress dev docs --no-clear-screen --no-cache --debug",
+    "docs:dev": "vuepress dev docs --no-clear-screen --debug",
+    "docs:build": "vuepress build docs"
+  }
+}
