@@ -13,7 +13,7 @@ module.exports = {
         nav,
         logo: '/assets/img/logo-dark.svg',
         sidebarDepth: 0,
-        searchMaxSuggestions: 10,
+        searchMaxSuggestions: 20,
         smoothScroll: true,
         lastUpdated: false,
     },

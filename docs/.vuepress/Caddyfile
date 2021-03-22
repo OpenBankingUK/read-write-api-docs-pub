@@ -1,4 +1,4 @@
-:8080/mi-docs-pub/, :8080/mi-docs-pub {
+:8080/read-write-api-docs-pub/, :8080/read-write-api-docs-pub {
     tls off
 
     log stdout
