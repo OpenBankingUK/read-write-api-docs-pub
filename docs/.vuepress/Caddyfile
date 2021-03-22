@@ -1,0 +1,11 @@
+:8080/mi-docs-pub/, :8080/mi-docs-pub {
+    tls off
+
+    log stdout
+    errors stdout
+
+    gzip
+
+    root .
+    browse
+}
