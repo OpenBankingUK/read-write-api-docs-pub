@@ -39,11 +39,7 @@ yarn docs:build
 
 # copy files ignored by yarn docs:build
 printf "%b" "\e[32m" "copying extra files ..." "\e[0m" "\n"
-<<<<<<< HEAD
-mkdir docs/.vuepress/dist/F/references
-=======
 mkdir -p docs/.vuepress/dist/v3.1.7/references
->>>>>>> feature/vuepress-to-master
 cp docs/v3.1.7/references/* docs/.vuepress/dist/v3.1.7/references/
 
 printf "%b" "\e[32m" "content generated in folder " "\e[31m\e[1m" "'docs/.vuepress/.dist'" "\e[0m\e[32m" ", deploy its content on a public website.\n\e[39m"

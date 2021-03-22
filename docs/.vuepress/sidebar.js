@@ -1,29 +1,11 @@
-<<<<<<< HEAD
-// https://vuepress.vuejs.org/theme/default-theme-config.html#sidebar
-
-const collapsable = true;
-const sidebarDepth = 0;
-
-=======
->>>>>>> feature/vuepress-to-master
 module.exports = [
     {
         title: 'Version 3.1.7',
         path: '/v3.1.7/profiles/read-write-data-api-profile',
-<<<<<<< HEAD
-        collapsable: collapsable,
-        sidebarDepth,
-=======
->>>>>>> feature/vuepress-to-master
         children: [
             {
                 title: 'Account and Transaction API',
                 path: '/v3.1.7/profiles/account-and-transaction-api-profile',
-<<<<<<< HEAD
-                collapsable: collapsable,
-                sidebarDepth,
-=======
->>>>>>> feature/vuepress-to-master
                 children: [
                     ['/v3.1.7/resources-and-data-models/aisp/account-access-consents', 'Account Access Consents'],
                     {
@@ -53,8 +35,6 @@ module.exports = [
                     {
                         title: 'Products',
                         path: '/v3.1.7/resources-and-data-models/aisp/Products',
-<<<<<<< HEAD
-                        collapsable: collapsable,
                         children: [
                             {
                                 title: 'BCA Product Data Model',
@@ -68,12 +48,6 @@ module.exports = [
                                 title: 'Other Product Data Model',
                                 path: '/v3.1.7/resources-and-data-models/aisp/other-product-data-model',
                             },
-=======
-                        children: [
-                            ['/v3.1.7/resources-and-data-models/aisp/bca-product-data-model', 'BCA Product Data Model'],
-                            ['/v3.1.7/resources-and-data-models/aisp/pca-product-data-model', 'PCA Product Data Model'],
-                            ['/v3.1.7/resources-and-data-models/aisp/other-product-data-model', 'Other Product Data Model']
->>>>>>> feature/vuepress-to-master
                         ],
                     },
                     {
@@ -97,11 +71,6 @@ module.exports = [
             {
                 title: 'Payment Initiation API ',
                 path: '/v3.1.7/profiles/payment-initiation-api-profile',
-<<<<<<< HEAD
-                collapsable: collapsable,
-                sidebarDepth,
-=======
->>>>>>> feature/vuepress-to-master
                 children: [
                     {
                         title: 'Domestic Payments Consents',
@@ -164,11 +133,6 @@ module.exports = [
             {
                 title: 'Confirmation of Funds API Profile',
                 path: '/v3.1.7/profiles/confirmation-of-funds-api-profile',
-<<<<<<< HEAD
-                collapsable: collapsable,
-                sidebarDepth,
-=======
->>>>>>> feature/vuepress-to-master
                 children: [
                     {
                         title: 'Funds Confirmation Consent',
@@ -183,11 +147,6 @@ module.exports = [
             {
                 title: 'Event Notification API',
                 path: '/v3.1.7/profiles/event-notification-api-profile',
-<<<<<<< HEAD
-                collapsable: collapsable,
-                sidebarDepth,
-=======
->>>>>>> feature/vuepress-to-master
                 children: [
                     {
                         title: 'Event Notification Subscription API',
@@ -210,11 +169,6 @@ module.exports = [
             {
                 title: 'Resources and Data Models',
                 path: '/v3.1.7/resources-and-data-models/',
-<<<<<<< HEAD
-                collapsable: collapsable,
-                sidebarDepth,
-=======
->>>>>>> feature/vuepress-to-master
                 children: [
                     {path: '/v3.1.7/resources-and-data-models/aisp/', title: 'AIS Resources'},
                     {path: '/v3.1.7/resources-and-data-models/pisp/', title: 'PIS Resources'},
@@ -228,11 +182,6 @@ module.exports = [
             {
                 title: 'References',
                 path: '/v3.1.7/references/',
-<<<<<<< HEAD
-                collapsable: collapsable,
-                sidebarDepth,
-=======
->>>>>>> feature/vuepress-to-master
                 children: [
                     {
                         path: '/v3.1.7/references/domestic-payment-message-formats',
@@ -250,20 +199,10 @@ module.exports = [
     {
         title: 'Version 3.1.6',
         path: '/v3.1.6/profiles/read-write-data-api-profile',
-<<<<<<< HEAD
-        collapsable: collapsable,
-        sidebarDepth,
-=======
->>>>>>> feature/vuepress-to-master
         children: [
             {
                 title: 'Account and Transaction API',
                 path: '/v3.1.6/profiles/account-and-transaction-api-profile',
-<<<<<<< HEAD
-                collapsable: collapsable,
-                sidebarDepth,
-=======
->>>>>>> feature/vuepress-to-master
                 children: [
                     {
                         title: 'Account Access Consents',
@@ -296,10 +235,6 @@ module.exports = [
                     {
                         title: 'Products',
                         path: '/v3.1.6/resources-and-data-models/aisp/Products',
-<<<<<<< HEAD
-                        collapsable: collapsable,
-=======
->>>>>>> feature/vuepress-to-master
                         children: [
                             {
                                 title: 'BCA Product Data Model',
@@ -336,11 +271,6 @@ module.exports = [
             {
                 title: 'Payment Initiation API ',
                 path: '/v3.1.6/profiles/payment-initiation-api-profile',
-<<<<<<< HEAD
-                collapsable: collapsable,
-                sidebarDepth,
-=======
->>>>>>> feature/vuepress-to-master
                 children: [
                     {
                         title: 'Domestic Payments Consents',
@@ -403,11 +333,6 @@ module.exports = [
             {
                 title: 'Confirmation of Funds API Profile',
                 path: '/v3.1.6/profiles/confirmation-of-funds-api-profile',
-<<<<<<< HEAD
-                collapsable: collapsable,
-                sidebarDepth,
-=======
->>>>>>> feature/vuepress-to-master
                 children: [
                     {
                         title: 'Funds Confirmation Consent',
@@ -422,11 +347,6 @@ module.exports = [
             {
                 title: 'Event Notification API',
                 path: '/v3.1.6/profiles/event-notification-api-profile',
-<<<<<<< HEAD
-                collapsable: collapsable,
-                sidebarDepth,
-=======
->>>>>>> feature/vuepress-to-master
                 children: [
                     {
                         title: 'Event Notification Subscription API',
@@ -449,11 +369,6 @@ module.exports = [
             {
                 title: 'Resources and Data Models',
                 path: '/v3.1.6/resources-and-data-models/',
-<<<<<<< HEAD
-                collapsable: collapsable,
-                sidebarDepth,
-=======
->>>>>>> feature/vuepress-to-master
                 children: [
                     {path: '/v3.1.6/resources-and-data-models/aisp/', title: 'AIS Resources'},
                     {path: '/v3.1.6/resources-and-data-models/pisp/', title: 'PIS Resources'},
@@ -467,11 +382,6 @@ module.exports = [
             {
                 title: 'References',
                 path: '/v3.1.6/references/',
-<<<<<<< HEAD
-                collapsable: collapsable,
-                sidebarDepth,
-=======
->>>>>>> feature/vuepress-to-master
                 children: [
                     {
                         path: '/v3.1.6/references/domestic-payment-message-formats',
@@ -489,20 +399,10 @@ module.exports = [
     {
         title: 'Version 3.1.5',
         path: '/v3.1.5/profiles/read-write-data-api-profile',
-<<<<<<< HEAD
-        collapsable: collapsable,
-        sidebarDepth,
-=======
->>>>>>> feature/vuepress-to-master
         children: [
             {
                 title: 'Account and Transaction API',
                 path: '/v3.1.5/profiles/account-and-transaction-api-profile',
-<<<<<<< HEAD
-                collapsable: collapsable,
-                sidebarDepth,
-=======
->>>>>>> feature/vuepress-to-master
                 children: [
                     {
                         title: 'Account Access Consents',
@@ -535,10 +435,6 @@ module.exports = [
                     {
                         title: 'Products',
                         path: '/v3.1.5/resources-and-data-models/aisp/Products',
-<<<<<<< HEAD
-                        collapsable: collapsable,
-=======
->>>>>>> feature/vuepress-to-master
                         children: [
                             {
                                 title: 'BCA Product Data Model',
@@ -575,11 +471,6 @@ module.exports = [
             {
                 title: 'Payment Initiation API ',
                 path: '/v3.1.5/profiles/payment-initiation-api-profile',
-<<<<<<< HEAD
-                collapsable: collapsable,
-                sidebarDepth,
-=======
->>>>>>> feature/vuepress-to-master
                 children: [
                     {
                         title: 'Domestic Payments Consents',
@@ -642,11 +533,6 @@ module.exports = [
             {
                 title: 'Confirmation of Funds API Profile',
                 path: '/v3.1.5/profiles/confirmation-of-funds-api-profile',
-<<<<<<< HEAD
-                collapsable: collapsable,
-                sidebarDepth,
-=======
->>>>>>> feature/vuepress-to-master
                 children: [
                     {
                         title: 'Funds Confirmation Consent',
@@ -661,11 +547,6 @@ module.exports = [
             {
                 title: 'Event Notification API',
                 path: '/v3.1.5/profiles/event-notification-api-profile',
-<<<<<<< HEAD
-                collapsable: collapsable,
-                sidebarDepth,
-=======
->>>>>>> feature/vuepress-to-master
                 children: [
                     {
                         title: 'Event Notification Subscription API',
@@ -688,11 +569,6 @@ module.exports = [
             {
                 title: 'Resources and Data Models',
                 path: '/v3.1.5/resources-and-data-models/',
-<<<<<<< HEAD
-                collapsable: collapsable,
-                sidebarDepth,
-=======
->>>>>>> feature/vuepress-to-master
                 children: [
                     {path: '/v3.1.5/resources-and-data-models/aisp/', title: 'AIS Resources'},
                     {path: '/v3.1.5/resources-and-data-models/pisp/', title: 'PIS Resources'},
@@ -706,11 +582,6 @@ module.exports = [
             {
                 title: 'References',
                 path: '/v3.1.5/references/',
-<<<<<<< HEAD
-                collapsable: collapsable,
-                sidebarDepth,
-=======
->>>>>>> feature/vuepress-to-master
                 children: [
                     {
                         path: '/v3.1.5/references/domestic-payment-message-formats',
@@ -728,20 +599,10 @@ module.exports = [
     {
         title: 'Version 3.1.4',
         path: '/v3.1.4/profiles/read-write-data-api-profile',
-<<<<<<< HEAD
-        collapsable: collapsable,
-        sidebarDepth,
-=======
->>>>>>> feature/vuepress-to-master
         children: [
             {
                 title: 'Account and Transaction API',
                 path: '/v3.1.4/profiles/account-and-transaction-api-profile',
-<<<<<<< HEAD
-                collapsable: collapsable,
-                sidebarDepth,
-=======
->>>>>>> feature/vuepress-to-master
                 children: [
                     {
                         title: 'Account Access Consents',
@@ -774,10 +635,6 @@ module.exports = [
                     {
                         title: 'Products',
                         path: '/v3.1.4/resources-and-data-models/aisp/products',
-<<<<<<< HEAD
-                        collapsable: collapsable,
-=======
->>>>>>> feature/vuepress-to-master
                         children: [
                             {
                                 title: 'BCA Product Data Model',
@@ -814,11 +671,6 @@ module.exports = [
             {
                 title: 'Payment Initiation API ',
                 path: '/v3.1.4/profiles/payment-initiation-api-profile',
-<<<<<<< HEAD
-                collapsable: collapsable,
-                sidebarDepth,
-=======
->>>>>>> feature/vuepress-to-master
                 children: [
                     {
                         title: 'Domestic Payments Consents',
@@ -881,11 +733,6 @@ module.exports = [
             {
                 title: 'Confirmation of Funds API Profile',
                 path: '/v3.1.4/profiles/confirmation-of-funds-api-profile',
-<<<<<<< HEAD
-                collapsable: collapsable,
-                sidebarDepth,
-=======
->>>>>>> feature/vuepress-to-master
                 children: [
                     {
                         title: 'Funds Confirmation Consent',
@@ -900,11 +747,6 @@ module.exports = [
             {
                 title: 'Event Notification API',
                 path: '/v3.1.4/profiles/event-notification-api-profile',
-<<<<<<< HEAD
-                collapsable: collapsable,
-                sidebarDepth,
-=======
->>>>>>> feature/vuepress-to-master
                 children: [
                     {
                         title: 'Event Notification Subscription API',
@@ -927,11 +769,6 @@ module.exports = [
             {
                 title: 'Resources and Data Models',
                 path: '/v3.1.4/resources-and-data-models/',
-<<<<<<< HEAD
-                collapsable: collapsable,
-                sidebarDepth,
-=======
->>>>>>> feature/vuepress-to-master
                 children: [
                     '/v3.1.4/resources-and-data-models/aisp/',
                     '/v3.1.4/resources-and-data-models/pisp/',
@@ -942,11 +779,6 @@ module.exports = [
             {
                 title: 'References',
                 path: '/v3.1.4/references/',
-<<<<<<< HEAD
-                collapsable: collapsable,
-                sidebarDepth,
-=======
->>>>>>> feature/vuepress-to-master
                 children: [
                     '/v3.1.4/references/domestic-payment-message-formats',
                     '/v3.1.4/references/namespaced-enumerations',
@@ -961,20 +793,10 @@ module.exports = [
     {
         title: 'Version 3.1.3',
         path: '/v3.1.3/profiles/read-write-data-api-profile',
-<<<<<<< HEAD
-        collapsable: collapsable,
-        sidebarDepth,
-=======
->>>>>>> feature/vuepress-to-master
         children: [
             {
                 title: 'Account and Transaction API',
                 path: '/v3.1.3/profiles/account-and-transaction-api-profile',
-<<<<<<< HEAD
-                collapsable: collapsable,
-                sidebarDepth,
-=======
->>>>>>> feature/vuepress-to-master
                 children: [
                     {
                         title: 'Account Access Consents',
@@ -1007,10 +829,6 @@ module.exports = [
                     {
                         title: 'Products',
                         path: '/v3.1.3/resources-and-data-models/aisp/products',
-<<<<<<< HEAD
-                        collapsable: collapsable,
-=======
->>>>>>> feature/vuepress-to-master
                         children: [
                             {
                                 title: 'BCA Product Data Model',
@@ -1047,11 +865,6 @@ module.exports = [
             {
                 title: 'Payment Initiation API ',
                 path: '/v3.1.3/profiles/payment-initiation-api-profile',
-<<<<<<< HEAD
-                collapsable: collapsable,
-                sidebarDepth,
-=======
->>>>>>> feature/vuepress-to-master
                 children: [
                     {
                         title: 'Domestic Payments Consents',
@@ -1114,11 +927,6 @@ module.exports = [
             {
                 title: 'Confirmation of Funds API Profile',
                 path: '/v3.1.3/profiles/confirmation-of-funds-api-profile',
-<<<<<<< HEAD
-                collapsable: collapsable,
-                sidebarDepth,
-=======
->>>>>>> feature/vuepress-to-master
                 children: [
                     {
                         title: 'Funds Confirmation Consent',
@@ -1133,11 +941,6 @@ module.exports = [
             {
                 title: 'Event Notification API',
                 path: '/v3.1.3/profiles/event-notification-api-profile',
-<<<<<<< HEAD
-                collapsable: collapsable,
-                sidebarDepth,
-=======
->>>>>>> feature/vuepress-to-master
                 children: [
                     {
                         title: 'Event Notification Subscription API',
@@ -1160,11 +963,6 @@ module.exports = [
             {
                 title: 'Resources and Data Models',
                 path: '/v3.1.3/resources-and-data-models/',
-<<<<<<< HEAD
-                collapsable: collapsable,
-                sidebarDepth,
-=======
->>>>>>> feature/vuepress-to-master
                 children: [
                     '/v3.1.3/resources-and-data-models/aisp/',
                     '/v3.1.3/resources-and-data-models/pisp/',
@@ -1175,11 +973,6 @@ module.exports = [
             {
                 title: 'References',
                 path: '/v3.1.3/references/',
-<<<<<<< HEAD
-                collapsable: collapsable,
-                sidebarDepth,
-=======
->>>>>>> feature/vuepress-to-master
                 children: [
                     '/v3.1.3/references/domestic-payment-message-formats',
                     '/v3.1.3/references/namespaced-enumerations',
@@ -1195,20 +988,10 @@ module.exports = [
     {
         title: 'Version 3.1.2',
         path: '/v3.1.2/profiles/read-write-data-api-profile',
-<<<<<<< HEAD
-        collapsable: collapsable,
-        sidebarDepth,
-=======
->>>>>>> feature/vuepress-to-master
         children: [
             {
                 title: 'Account and Transaction API',
                 path: '/v3.1.2/profiles/account-and-transaction-api-profile',
-<<<<<<< HEAD
-                collapsable: collapsable,
-                sidebarDepth,
-=======
->>>>>>> feature/vuepress-to-master
                 children: [
                     {
                         title: 'Account Access Consents',
@@ -1241,34 +1024,18 @@ module.exports = [
                     {
                         title: 'Products',
                         path: '/v3.1.2/resources-and-data-models/aisp/products',
-<<<<<<< HEAD
-                        collapsable: collapsable,
-=======
->>>>>>> feature/vuepress-to-master
                         children: [
                             {
                                 title: 'BCA Product Data Model',
                                 path: '/v3.1.2/resources-and-data-models/aisp/bca-product-data-model',
-<<<<<<< HEAD
-                                sidebarDepth,
-=======
->>>>>>> feature/vuepress-to-master
                             },
                             {
                                 title: 'PCA Product Data Model',
                                 path: '/v3.1.2/resources-and-data-models/aisp/pca-product-data-model',
-<<<<<<< HEAD
-                                sidebarDepth,
-=======
->>>>>>> feature/vuepress-to-master
                             },
                             {
                                 title: 'Other Product Data Model',
                                 path: '/v3.1.2/resources-and-data-models/aisp/other-product-data-model',
-<<<<<<< HEAD
-                                sidebarDepth,
-=======
->>>>>>> feature/vuepress-to-master
                             },
                         ],
                     },
@@ -1293,11 +1060,6 @@ module.exports = [
             {
                 title: 'Payment Initiation API ',
                 path: '/v3.1.2/profiles/payment-initiation-api-profile',
-<<<<<<< HEAD
-                collapsable: collapsable,
-                sidebarDepth,
-=======
->>>>>>> feature/vuepress-to-master
                 children: [
                     {
                         title: 'Domestic Payments Consents',
@@ -1360,11 +1122,6 @@ module.exports = [
             {
                 title: 'Confirmation of Funds API Profile',
                 path: '/v3.1.2/profiles/confirmation-of-funds-api-profile',
-<<<<<<< HEAD
-                collapsable: collapsable,
-                sidebarDepth,
-=======
->>>>>>> feature/vuepress-to-master
                 children: [
                     {
                         title: 'Funds Confirmation Consent',
@@ -1379,11 +1136,6 @@ module.exports = [
             {
                 title: 'Event Notification API',
                 path: '/v3.1.2/profiles/event-notification-api-profile',
-<<<<<<< HEAD
-                collapsable: collapsable,
-                sidebarDepth,
-=======
->>>>>>> feature/vuepress-to-master
                 children: [
                     {
                         title: 'Event Notification Subscription API',
@@ -1406,11 +1158,6 @@ module.exports = [
             {
                 title: 'Resources and Data Models',
                 path: '/v3.1.2/resources-and-data-models/',
-<<<<<<< HEAD
-                collapsable: collapsable,
-                sidebarDepth,
-=======
->>>>>>> feature/vuepress-to-master
                 children: [
                     '/v3.1.2/resources-and-data-models/aisp/',
                     '/v3.1.2/resources-and-data-models/pisp/',
@@ -1421,11 +1168,6 @@ module.exports = [
             {
                 title: 'References',
                 path: '/v3.1.2/references/',
-<<<<<<< HEAD
-                collapsable: collapsable,
-                sidebarDepth,
-=======
->>>>>>> feature/vuepress-to-master
                 children: [
                     '/v3.1.2/references/domestic-payment-message-formats',
                     '/v3.1.2/references/namespaced-enumerations',
