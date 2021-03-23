@@ -51,7 +51,7 @@ The OBFundsConfirmation1 object will be used for the following:
 
 #### UML Diagram
 
-![OBFundsConfirmation1](./images/OBFundsConfirmation1.gif)
+![OBFundsConfirmation1](./images/OBFundsConfirmation1.svg)
 
 Notes:
 
@@ -77,7 +77,7 @@ The OBFundsConfirmationResponse1 object will be used for the following:
 
 #### UML Diagram
 
-![OBFundsConfirmationResponse1](./images/OBFundsConfirmationResponse1.gif)
+![OBFundsConfirmationResponse1](./images/OBFundsConfirmationResponse1.svg)
 
 Notes:
 

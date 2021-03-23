@@ -160,7 +160,7 @@ The OBWriteDomesticScheduled2 object will be used for a call to:
 
 #### UML Diagram
 
-![Domestic Scheduled Payment - Request](./images/OBWriteDomesticScheduled2.gif)
+![Domestic Scheduled Payment - Request](./images/OBWriteDomesticScheduled2.svg)
 
 #### Notes
 
@@ -190,7 +190,7 @@ The OBWriteDomesticScheduledResponse5 object will be used for a response to a ca
 
 #### UML Diagram
 
-![Domestic Scheduled Payment - Response](./images/OBWriteDomesticScheduledResponse5.gif)
+![Domestic Scheduled Payment - Response](./images/OBWriteDomesticScheduledResponse5.svg)
 
 #### Notes
 
@@ -239,7 +239,7 @@ The OBWritePaymentDetailsResponse1 object will be used for a response to a call 
 
 #### UML Diagram
 
-![Domestic Schedule Payment Order - Payment Details - Response](./images/OBWritePaymentDetailsResponse1.png)
+![Domestic Schedule Payment Order - Payment Details - Response](./images/OBWritePaymentDetailsResponse1.svg)
 
 #### Data Dictionary
 

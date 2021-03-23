@@ -168,7 +168,7 @@ The OBWriteInternational3 object will be used for a call to:
 
 #### UML Diagram
 
-![International Payment - Request](./images/OBWriteInternational3.gif)
+![International Payment - Request](./images/OBWriteInternational3.svg)
 
 #### Notes 
 
@@ -197,7 +197,7 @@ The OBWriteInternationalResponse5 object will be used for a response to a call t
 
 #### UML Diagram
 
-![International Payment - Response](./images/OBWriteInternationalResponse5.gif)
+![International Payment - Response](./images/OBWriteInternationalResponse5.svg)
 
 #### Notes 
 
@@ -247,7 +247,7 @@ The OBWritePaymentDetailsResponse1 object will be used for a response to a call 
 
 #### UML Diagram
 
-![International Payment Order - Payment Details - Response](./images/OBWritePaymentDetailsResponse1.png)
+![International Payment Order - Payment Details - Response](./images/OBWritePaymentDetailsResponse1.svg)
 
 #### Data Dictionary
 

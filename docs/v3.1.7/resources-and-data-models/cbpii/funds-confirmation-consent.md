@@ -122,7 +122,7 @@ The OBFundsConfirmationConsent1 object will be used for the following:
 
 #### UML Diagram
 
-![OBFundsConfirmationConsent1](./images/OBFundsConfirmationConsent1.gif)
+![OBFundsConfirmationConsent1](./images/OBFundsConfirmationConsent1.svg)
 
 #### Data Dictionary
 
@@ -146,7 +146,7 @@ The OBFundsConfirmationConsentResponse1 object will be used for the following:
 
 #### UML Diagram
 
-![OBFundsConfirmationConsentResponse1](./images/OBFundsConfirmationConsentResponse1.gif)
+![OBFundsConfirmationConsentResponse1](./images/OBFundsConfirmationConsentResponse1.svg)
 
 Notes:
 
