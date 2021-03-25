@@ -106,7 +106,7 @@ This section describes the OBDomesticScheduled2 class which is reused as the Ini
 
 ##### UML Diagram
 
-![OBDomesticScheduled2](./images/OBDomesticScheduled2.gif)
+![OBDomesticScheduled2](./images/OBDomesticScheduled2.svg)
 
 ##### Notes
 
@@ -171,7 +171,7 @@ The OBWriteDomesticScheduledConsent4 object will be used for the call to:
 
 #### UML Diagram
 
-![Domestic Scheduled Payment Consent - Request](./images/OBWriteDomesticScheduledConsent4.png)
+![Domestic Scheduled Payment Consent - Request](./images/OBWriteDomesticScheduledConsent4.svg)
 
 #### Notes
 
@@ -204,7 +204,7 @@ The OBWriteDomesticScheduledConsentResponse5 object will be used for a response 
 
 #### UML Diagram
 
-![Domestic Scheduled Payment Consent - Response](./images/OBWriteDomesticScheduledConsentResponse5.gif)
+![Domestic Scheduled Payment Consent - Response](./images/OBWriteDomesticScheduledConsentResponse5.svg)
 
 #### Notes
 

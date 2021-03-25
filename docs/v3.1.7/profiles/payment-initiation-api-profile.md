@@ -525,7 +525,7 @@ This section describes the Risk1 class which is reused in the payment-order cons
 
 ##### UML Diagram
 
-![](./images/OBRisk1.png)
+![](./images/OBRisk1.svg)
 
 ##### Data Dictionary
 
@@ -569,7 +569,7 @@ This section describes the OBAuthorisation1 class which is used in the payment-o
 
 ##### UML Diagram
 
-![](./images/OBAuthorisation1.gif)
+![](./images/OBAuthorisation1.svg)
 
 ##### Data Dictionary
 
@@ -585,7 +585,7 @@ This section describes the OBMultiAuthorisation1 class which used in the respons
 
 ##### UML Diagram
 
-![](./images/OBMultiAuthorisation1.gif)
+![](./images/OBMultiAuthorisation1.svg)
 
 ##### Data Dictionary
 
@@ -604,7 +604,7 @@ This section describes the OBDomesticRefundAccount1 class which is used in the r
 
 ##### UML Diagram
 
-![](./images/OBDomesticRefundAccount1.png)
+![](./images/OBDomesticRefundAccount1.svg)
 
 ##### Data Dictionary
 
@@ -624,7 +624,7 @@ This section describes the OBInternationalRefundAccount1 class which is used in 
 
 ##### UML Diagram
 
-![](./images/OBInternationalRefundAccount1.png)
+![](./images/OBInternationalRefundAccount1.svg)
 
 ##### Data Dictionary
 

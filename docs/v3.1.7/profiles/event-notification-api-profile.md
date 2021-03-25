@@ -87,7 +87,7 @@ Step 3: Retrieve/Update/Delete Event Notification Subscription
 
 #### Sequence Diagram
 
-![](./images/EventNotifications(Full).png)
+![](./images/EventNotificationsFull.png)
 
 <details>
   <summary>Diagram source</summary>

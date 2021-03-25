@@ -98,7 +98,7 @@ If an AISP would like to access a specific statement (StatementId) to retrieve a
 
 ### UML Diagram
 
-![ OBReadStatement2.png ](./images/Statements/OBReadStatement2.png )
+![ OBReadStatement2 ](./images/OBReadStatement2.svg )
 
 ### Notes
 

@@ -84,7 +84,7 @@ The Party resource contains a set of elements that describes a party. The party 
 
 ###### UML Diagram
 
-![ OBParty2.gif ](./images/Parties/OBParty2.gif )
+![ OBParty2 ](./images/OBParty2.svg )
 
 ###### Notes
 
@@ -131,7 +131,7 @@ The response to GET /accounts/{AccountId}/party and GET /party (if available)  *
 
 #### UML Diagram
 
-![ OBReadParty2.gif ](./images/Parties/OBReadParty2.gif )
+![ OBReadParty2 ](./images/OBReadParty2.svg )
 
 #### Data Dictionary
 
@@ -152,7 +152,7 @@ The response to GET /accounts/{AccountId}/parties  **may**  contain multiple par
 
 #### UML Diagram
 
-![ OBReadParty3.gif ](./images/Parties/OBReadParty3.gif )
+![ OBReadParty3 ](./images/OBReadParty3.svg )
 
 #### Data Dictionary
 

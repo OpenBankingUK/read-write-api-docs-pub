@@ -62,25 +62,25 @@ Further analysis required:-
 
 * A generic structure for Overdraft Fee Charges published only if applicable to Other Product Type .
 
-![ OtherProductInfoOverdraft.png ](./images/OtherProduct/OtherProductInfoOverdraft.png )
+![ OtherProductInfoOverdraft ](./images/Overdraft.svg )
 
 #### LoanInterest
 
 * A generic structure for Loan Interest published only if applicable to Other Product Type .
 
-![ OtherProductInfoLoanInterest.png ](./images/OtherProduct/OtherProductInfoLoanInterest.png )
+![ OtherProductInfoLoanInterest ](./images/LoanInterest.svg )
 
 #### Repayment
 
 * A generic structure for Loan Repayment along with Fee Charges published only if applicable to Other Product Type.
 
-![ OtherProductInfoRepayment.png ](./images/OtherProduct/OtherProductInfoRepayment.png )
+![ OtherProductInfoRepayment ](./images/Repayment.svg )
 
 #### OtherFeesCharges
 
 * A generic structure for Other Fee Charges published only if applicable to Other Product Type.
 
-![ OtherProductInfoOtherFeesCharges.png ](./images/OtherProduct/OtherProductInfoOtherFeesCharges.png )
+![ OtherProductInfoOtherFeesCharges ](./images/OtherFeesCharges.svg )
 
 #### SupplementaryData
 

@@ -110,7 +110,7 @@ This section describes the OBDomesticStandingOrder3 class, which is reused as th
 
 ##### UML Diagram
 
-![Domestic Standing Order](./images/OBDomesticStandingOrder3.png)
+![Domestic Standing Order](./images/OBDomesticStandingOrder3.svg)
 
 ##### Notes
 
@@ -183,7 +183,7 @@ The OBWriteDomesticStandingOrderConsent5 object will be used for the call to:
 
 #### UML Diagram
 
-![Domestic Standing Order Consent - Request](./images/OBWriteDomesticStandingOrderConsent5.png)
+![Domestic Standing Order Consent - Request](./images/OBWriteDomesticStandingOrderConsent5.svg)
 
 #### Notes
 
@@ -217,7 +217,7 @@ The OBWriteDomesticStandingOrderConsentResponse6 object will be used for a respo
 
 #### UML Diagram
 
-![Domestic Standing Order Consent - Response](./images/OBWriteDomesticStandingOrderConsentResponse6.gif)
+![Domestic Standing Order Consent - Response](./images/OBWriteDomesticStandingOrderConsentResponse6.svg)
 
 #### Notes
 
