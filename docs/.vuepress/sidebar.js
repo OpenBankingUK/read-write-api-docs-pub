@@ -145,6 +145,20 @@ module.exports = [
                 ],
             },
             {
+              title: 'Variable Recurring Payments',
+              path: '/v3.1.8/profiles/vrp-profile',
+              children: [
+                  {
+                      title: 'Domestic VRP Consents',
+                      path: '/v3.1.8/resources-and-data-models/vrp/domestic-vrp-consents',
+                  },
+                  {
+                      title: 'Domestic VRPs',
+                      path: '/v3.1.8/resources-and-data-models/vrp/domestic-vrps',
+                  },
+              ],
+            },            
+            {
                 title: 'Event Notification API',
                 path: '/v3.1.8/profiles/event-notification-api-profile',
                 children: [
@@ -177,6 +191,7 @@ module.exports = [
                     {path: '/v3.1.8/resources-and-data-models/aisp/', title: 'AIS Resources'},
                     {path: '/v3.1.8/resources-and-data-models/pisp/', title: 'PIS Resources'},
                     {path: '/v3.1.8/resources-and-data-models/cbpii/', title: 'CBPII Resources'},
+                    {path: '/v3.1.8/resources-and-data-models/vrp/', title: 'VRP Resources'},
                     {
                         path: '/v3.1.8/resources-and-data-models/event-notifications/',
                         title: 'Event Notification Resources'
