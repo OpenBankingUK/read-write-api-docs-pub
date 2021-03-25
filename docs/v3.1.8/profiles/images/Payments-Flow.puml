@@ -1,0 +1,105 @@
+@startuml vrp-consent-flow
+
+participant PSU
+participant PISP
+participant ASPSP
+
+note over PSU, PISP
+Step 1: Agree VRP - VRP Consent Initiation
+end note
+
+PSU -> PISP: Agree vrp-consent initiation request
+
+note over PISP, ASPSP
+Step 2: Setup VRP Consent
+end note
+
+PISP -> ASPSP: PISP requests access token (Post to OIDC token endpoint with Client Credentials)
+note over ASPSP
+- PISP authentication & validation
+- ASPSP to validate the identity of PISP to establish a secure connection
+end note
+ASPSP -> PISP: ASPSP identifies TPP, establishes TLS, responds with access token
+
+note over PISP
+ PISP may chose to request PSU a list of Accounts
+ to participate in VRP, e.g. to support sweeping
+end note
+
+PISP -> ASPSP: Post VRP Consent (e.g. POST /domestic-vrp-consents)
+note over ASPSP
+- Setup payment consent, with or without PSU's Debtor Accounts
+- PISP makes it clear to PSU, that PISP will get Debtor Accounts info from ASPSP,
+- in case a/c selection happens at ASPSP, for the better functioning
+- ASPSP to setup the payment consent and respond with the Consent ID
+end note
+ASPSP -> PISP: ASPSP responds with ConsentID
+
+note over PSU, ASPSP
+Step 3: Authorise Consent
+end note
+
+PSU -> ASPSP: PISP redirects PSU to ASPSP to authenticate
+note over ASPSP
+ - PSU Authentication
+end note
+PSU -> ASPSP: PSU completes authentication (may be multiple steps/screens)
+
+note over ASPSP
+    - PSU Selects Accounts if not provided already to PISP
+    - ASPSP generates Authorisation Code
+end note
+
+ASPSP -> PSU: ASPSP returns authorization-code to the PISP domain
+
+PSU -> PISP: PSU redirected to PISP
+
+PISP -> ASPSP: PISP requests the Status of VRP Consent
+
+ASPSP -> PISP: ASPSP returns the VRP Consent resource
+
+note over ASPSP
+    - To support ongoing frictionless payments, and refunds
+    - ASPSP always returns List of Debtor Accounts selected by PSU
+end note
+
+PISP -> ASPSP: PISP requests access tokens (post authorisation code to OIDC token endpoint)
+
+ASPSP -> PISP: ASPSP responds with access token
+
+note over PISP, ASPSP
+Step 4: Confirmation of Funds on the VRP Consent (optional)
+end note
+PISP -> ASPSP: PISP requests Confirmation of Funds
+
+note over PISP
+ - PISP to chose an account with Available Funds to initiate a payment
+ - Option for PISP to specify Debtor Account, otherwise
+ - Covers all Debtor Accounts
+end note
+ASPSP -> PISP: ASPSP responds with an array of Funds Availability Result, for each account
+
+note over PISP, ASPSP
+Step 5: Create Payment Order
+end note
+
+PISP -> ASPSP: PISP posts Payment Order (e.g. POST /domestic-vrp-consents/{ConsentId}/domestic-payments)
+
+note over PISP
+- PISP prepares Payment Order, with a mandatory Debtor Account
+- Payment Order is within the Consent's Control Parameters
+end note
+
+note over ASPSP
+Payment Order Confirmation
+end note
+ASPSP -> PISP: ASPSP responds with Payment Order ID (e.g. DomesticPaymentID)
+
+note over PISP, ASPSP
+Step 6: Get Status (optional)
+end note
+
+PISP -> ASPSP: PISP gets the status of a consent or payment (e.g. GET /domestic-payments)
+ASPSP -> PISP: ASPSP responds with full payload of payment order, including status
+
+@enduml
