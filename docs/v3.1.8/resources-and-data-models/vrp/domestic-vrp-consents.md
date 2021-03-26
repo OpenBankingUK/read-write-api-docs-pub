@@ -359,4 +359,4 @@ The confirmation of funds response contains the result of a funds availability c
 
 ## Usage Examples
 
-See [Usage Examples](../references/usage-examples.md)
+See [Usage Examples](../../references/usage-examples.md)
