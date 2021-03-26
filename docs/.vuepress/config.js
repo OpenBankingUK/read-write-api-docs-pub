@@ -4,7 +4,7 @@ const head = require('./head.js');
 const devServer = require('./devServer.js');
 
 module.exports = {
-    base: '/read-write-api-docs-pub/',
+    base: '/read-write-api-site3/',
     title: '',
     description: 'OBIE Read/Write API Standards',
     head,
