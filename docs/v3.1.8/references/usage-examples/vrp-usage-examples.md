@@ -1,4 +1,5 @@
 # Usage Examples
+
 - [Usage Examples](#usage-examples)
   - [VRP with Debtor Account specified by PISP](#vrp-with-debtor-account-specified-by-pisp)
     - [POST /domestic-vrp-consents](#post-domestic-vrp-consents)
@@ -10,12 +11,15 @@
     - [POST /domestic-vrps](#post-domestic-vrps)
       - [Request](#request-2)
       - [Response](#response-2)
+  - [VRP with Debtor Account specified during consent authorisation and CreditorAccount specified during payment initiation](#vrp-with-debtor-account-specified-during-consent-authorisation-and-creditoraccount-specified-during-payment-initiation)
+    - [POST /domestic-vrp-consents](#post-domestic-vrp-consents-1)
+      - [Request](#request-3)
       - [Response](#response-3)
     - [GET /domestic-vrp-consents/{ConsentId}](#get-domestic-vrp-consentsconsentid-1)
-      - [Request](#request-3)
+      - [Request](#request-4)
       - [Response](#response-4)
     - [POST /domestic-vrps](#post-domestic-vrps-1)
-      - [Request](#request-4)
+      - [Request](#request-5)
       - [Response](#response-5)
 ## VRP with Debtor Account specified by PISP
 
@@ -39,8 +43,7 @@ Accept: application/json
   "Data": {
     "ReadRefundAccount": "Yes",
     "ControlParameters": {
-      "Reference": "my-first-vrp",
-      "PSUAuthenticationMethods": [ "UK.OBIE.AuthenticationNotRequired" ],
+      "PSUAuthenticationMethods": [ "UK.OBIE.SCA" ],
       "VRPType": "UK.OBIE.VRPType.Sweeping",
       "ValidFromDateTime": "2017-06-05T15:15:13+00:00",
       "ValidToDateTime": "2020-06-05T15:15:13+00:00",
@@ -50,19 +53,11 @@ Accept: application/json
       },
       "PeriodicLimits": [
         {
-          "Amount": "1000.00",
+          "Amount": "200.00",
           "Currency": "GBP",
-          "PeriodAlignment": "Calendar",
-          "PeriodType": "Month"
-        },
-
-        {
-          "Amount": "10000.00",
-          "Currency": "GBP",
-          "PeriodAlignment": "Calendar",
-          "PeriodType": "Year"
+          "PeriodAlignment": "Consent",
+          "PeriodType": "Week"
         }
-
       ]
     },
     "Initiation": {
@@ -78,7 +73,7 @@ Accept: application/json
         "Name": "Marcus Sweepimus"
       },
       "RemittanceInformation": {
-        "Reference": "To savings"
+        "Reference": "Sweepco"
       }
     }
   },
@@ -100,38 +95,12 @@ Content-Type: application/json
 ```json
 {
   "Data": {
-    "ConsentId": "3e3dd6cd-3b13-4049-872b-4664b0b6b026",
-    "CreationDateTime": "2017-06-05T15:15:13+00:00",
-    "ReadRefundAccount": "Yes",
-    "Status": "AwaitingAuthorisation",
-    "ControlParameters": {
-      "Reference": "my-first-vrp",
-      "PSUAuthenticationMethods": [ "UK.OBIE.AuthenticationNotRequired" ],
-      "VRPType": "UK.OBIE.VRPType.Sweeping",
-      "ValidFromDateTime": "2017-06-05T15:15:13+00:00",
-      "ValidToDateTime": "2020-06-05T15:15:13+00:00",
-      "MaximumIndividualAmount": {
-        "Amount": "100.00",
-        "Currency": "GBP"
-      },
-      "PeriodicLimits": [
-        {
-          "Amount": "1000.00",
-          "Currency": "GBP",
-          "PeriodAlignment": "Calendar",
-          "PeriodType": "Month"
-        },
+    "ConsentId": "fe615446-e53a-45ed-954c-ae5d1f97a93b",
+    "CreationDateTime": "2017-06-05T15:15:15+00:00",
+    "DomesticVRPId": "OU90210",
+    "Status": "Pending",
+    "StatusUpdateDateTime": "2017-06-05T15:15:15+00:00",
 
-        {
-          "Amount": "10000.00",
-          "Currency": "GBP",
-          "PeriodAlignment": "Calendar",
-          "PeriodType": "Year"
-        }
-
-      ]
-    },
-,
     "DebtorAccount": {
       "SchemeName": "UK.OBIE.IBAN",
       "Identification": "GB76LOYD30949301273801",
@@ -151,19 +120,37 @@ Content-Type: application/json
         "Name": "Marcus Sweepimus"
       },
       "RemittanceInformation": {
-        "Reference": "To savings"
+        "Reference": "Sweepco"
+      }
+    },
+
+    "Instruction": {
+      "CreditorAccount": {
+        "SchemeName": "SortCodeAccountNumber",
+        "Identification": "30949330000010",
+        "SecondaryIdentification": "Roll 90210",
+        "Name": "Marcus Sweepimus"
+      },
+      "InstructedAmount": {
+        "Amount": "10.00",
+        "Currency": "GBP"
+      },
+      "RemittanceInformation": {
+        "Reference": "Sweepco"
       }
     }
   },
-  "Links": {
-    "Self": "https://www.open.bank/open-banking/v3.1/payments/domestic-vrp-consents/3e3dd6cd-3b13-4049-872b-4664b0b6b026"
-  },
-  "Meta": {
 
-  },
   "Risk": {
     "PaymentContextCode": "PartyToParty"
-  }
+  },
+
+  
+  "Links": {
+    "Self": "https://api.alphabank.com/open-banking/v1.0/vrp/domestic-vrps/OU90210"
+  },
+  
+  "Meta": {}  
 }
 ```
 
@@ -194,13 +181,14 @@ Content-Type: application/json
 ```json
 {
   "Data": {
-    "ConsentId": "3e3dd6cd-3b13-4049-872b-4664b0b6b026",
-    "CreationDateTime": "2017-06-05T15:15:13+00:00",
-    "ReadRefundAccount": "Yes",
+    "ConsentId": "fe615446-e53a-45ed-954c-ae5d1f97a93b",
+    "CreationDateTime": "2017-06-05T15:15:15+00:00",
     "Status": "Authorised",
+    "StatusUpdateDateTime": "2017-06-05T15:15:15+05:00",
+    "ReadRefundAccount": "Yes",
+
     "ControlParameters": {
-      "Reference": "my-first-vrp",
-      "PSUAuthenticationMethods": [ "UK.OBIE.AuthenticationNotRequired" ],
+      "PSUAuthenticationMethods": [ "UK.OBIE.SCA" ],
       "VRPType": "UK.OBIE.VRPType.Sweeping",
       "ValidFromDateTime": "2017-06-05T15:15:13+00:00",
       "ValidToDateTime": "2020-06-05T15:15:13+00:00",
@@ -210,26 +198,20 @@ Content-Type: application/json
       },
       "PeriodicLimits": [
         {
-          "Amount": "1000.00",
+          "Amount": "200.00",
           "Currency": "GBP",
-          "PeriodAlignment": "Calendar",
-          "PeriodType": "Month"
-        },
-
-        {
-          "Amount": "10000.00",
-          "Currency": "GBP",
-          "PeriodAlignment": "Calendar",
-          "PeriodType": "Year"
+          "PeriodAlignment": "Consent",
+          "PeriodType": "Week"
         }
-
       ]
     },
+
     "DebtorAccount": {
       "SchemeName": "UK.OBIE.IBAN",
       "Identification": "GB76LOYD30949301273801",
       "Name": "Marcus Sweepimus"
     },
+
     "Initiation": {
       "DebtorAccount": {
         "SchemeName": "UK.OBIE.IBAN",
@@ -243,19 +225,21 @@ Content-Type: application/json
         "Name": "Marcus Sweepimus"
       },
       "RemittanceInformation": {
-        "Reference": "To savings"
+        "Reference": "Sweepco"
       }
     }
   },
-  "Links": {
-    "Self": "https://www.open.bank/open-banking/v3.1/payments/domestic-vrp-consents/3e3dd6cd-3b13-4049-872b-4664b0b6b026"
-  },
-  "Meta": {
 
-  },
   "Risk": {
     "PaymentContextCode": "PartyToParty"
-  }
+  },
+
+  
+  "Links": {
+    "Self": "https://api.alphabank.com/open-banking/v1.0/vrp/domestic-vrp-consents/fe615446-e53a-45ed-954c-ae5d1f97a93b"
+  },
+  
+  "Meta": {}
 }
 ```
 
@@ -278,8 +262,8 @@ Accept: application/json
 ```json
 {
   "Data": {
-    "ConsentId": "3e3dd6cd-3b13-4049-872b-4664b0b6b026",
-    "PSUAuthenticationMethods": "UK.OBIE.AuthenticationNotRequired",
+    "ConsentId": "fe615446-e53a-45ed-954c-ae5d1f97a93b",
+    "PSUAuthenticationMethods": "UK.OBIE.SCA",
 
     "Initiation": {
       "DebtorAccount": {
@@ -294,13 +278,11 @@ Accept: application/json
         "Name": "Marcus Sweepimus"
       },
       "RemittanceInformation": {
-        "Reference": "To savings"
+        "Reference": "Sweepco"
       }
     },
 
     "Instruction": {
-      "EndToEndIdentification": "PSG.SBG.011",
-      "InstructionIdentification": "Sweepme",
       "CreditorAccount": {
         "SchemeName": "SortCodeAccountNumber",
         "Identification": "30949330000010",
@@ -308,26 +290,113 @@ Accept: application/json
         "Name": "Marcus Sweepimus"
       },
       "InstructedAmount": {
-        "Amount": "20.01",
-        "Currency":
+        "Amount": "10.00",
+        "Currency": "GBP"
+      },
+      "RemittanceInformation": {
+        "Reference": "Sweepco"
       }
     }
+  },
 
+  "Risk": {
+    "PaymentContextCode": "PartyToParty"
+  }
+}
+```
+
+#### Response
+
+```json
+HTTP/1.1 201 Created
+x-jws-signature: V2hhdCB3ZSBnb3QgaGVyZQ0K..aXMgZmFpbHVyZSB0byBjb21tdW5pY2F0ZQ0K
+x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
+Content-Type: application/json
+```
+
+```json
+{
+  "Data": {
+    "ConsentId": "fe615446-e53a-45ed-954c-ae5d1f97a93b",
+    "CreationDateTime": "2017-06-05T15:15:15+00:00",
+    "DomesticVRPId": "OU90210",
+    "Status": "Pending",
+    "StatusUpdateDateTime": "2017-06-05T15:15:15+00:00",
+
+    "DebtorAccount": {
+      "SchemeName": "UK.OBIE.IBAN",
+      "Identification": "GB76LOYD30949301273801",
+      "Name": "Marcus Sweepimus"
+    },
+
+    "Initiation": {
+      "DebtorAccount": {
+        "SchemeName": "UK.OBIE.IBAN",
+        "Identification": "GB76LOYD30949301273801",
+        "Name": "Marcus Sweepimus"
+      },
+      "CreditorAccount": {
+        "SchemeName": "SortCodeAccountNumber",
+        "Identification": "30949330000010",
+        "SecondaryIdentification": "Roll 90210",
+        "Name": "Marcus Sweepimus"
+      },
+      "RemittanceInformation": {
+        "Reference": "Sweepco"
+      }
+    },
+
+    "Instruction": {
+      "CreditorAccount": {
+        "SchemeName": "SortCodeAccountNumber",
+        "Identification": "30949330000010",
+        "SecondaryIdentification": "Roll 90210",
+        "Name": "Marcus Sweepimus"
+      },
+      "InstructedAmount": {
+        "Amount": "10.00",
+        "Currency": "GBP"
+      },
+      "RemittanceInformation": {
+        "Reference": "Sweepco"
+      }
+    }
+  },
+
+  "Risk": {
+    "PaymentContextCode": "PartyToParty"
+  },
+
+  
+  "Links": {
+    "Self": "https://api.alphabank.com/open-banking/v1.0/vrp/domestic-vrps/OU90210"
   },
   
-  "Risk": {
-    "PaymentContextCode": "PartyToParty"
-  }
+  "Meta": {}  
 }
 ```
 
-#### Response
+## VRP with Debtor Account specified during consent authorisation and CreditorAccount specified during payment initiation
+
+In this scenario, the PISP creates a `domestic-vrp-consent` where the debtor account and creditor account are not specified.
+
+The PSU selects the debtor account during consent authorisation.
+
+The PISP specifies the creditor account during payment initiation.
+
+### POST /domestic-vrp-consents
+
+#### Request
 
 ```json
-HTTP/1.1 201 Created
-x-jws-signature: V2hhdCB3ZSBnb3QgaGVyZQ0K..aXMgZmFpbHVyZSB0byBjb21tdW5pY2F0ZQ0K
+POST /domestic-vrp-consents HTTP/1.1
+Authorization: Bearer 2YotnFZFEjr1zCsicMWpAA
+x-idempotency-key: FRESCO.21302.GFX.20
+x-jws-signature: TGlmZSdzIGEgam91cm5leSBub3QgYSBkZXN0aW5hdGlvbiA=..T2ggZ29vZCBldmVuaW5nIG1yIHR5bGVyIGdvaW5nIGRvd24gPw==
+x-fapi-customer-ip-address: 104.25.212.99
 x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Content-Type: application/json
+Accept: application/json
 ```
 
 ```json
@@ -335,8 +404,7 @@ Content-Type: application/json
   "Data": {
     "ReadRefundAccount": "Yes",
     "ControlParameters": {
-      "Reference": "my-first-vrp",
-      "PSUAuthenticationMethods": [ "UK.OBIE.AuthenticationNotRequired" ],
+      "PSUAuthenticationMethods": [ "UK.OBIE.SCA" ],
       "VRPType": "UK.OBIE.VRPType.Sweeping",
       "ValidFromDateTime": "2017-06-05T15:15:13+00:00",
       "ValidToDateTime": "2020-06-05T15:15:13+00:00",
@@ -346,24 +414,16 @@ Content-Type: application/json
       },
       "PeriodicLimits": [
         {
-          "Amount": "1000.00",
+          "Amount": "200.00",
           "Currency": "GBP",
-          "PeriodAlignment": "Calendar",
-          "PeriodType": "Month"
-        },
-
-        {
-          "Amount": "10000.00",
-          "Currency": "GBP",
-          "PeriodAlignment": "Calendar",
-          "PeriodType": "Year"
+          "PeriodAlignment": "Consent",
+          "PeriodType": "Week"
         }
-
       ]
     },
     "Initiation": {
       "RemittanceInformation": {
-        "Reference": "To savings"
+        "Reference": "Sweepco"
       }
     }
   },
@@ -385,13 +445,14 @@ Content-Type: application/json
 ```json
 {
   "Data": {
-    "ConsentId": "3e3dd6cd-3b13-4049-872b-4664b0b6b026",
-    "CreationDateTime": "2017-06-05T15:15:13+00:00",
-    "ReadRefundAccount": "Yes",
+    "ConsentId": "fe615446-e53a-45ed-954c-ae5d1f97a93b",
+    "CreationDateTime": "2017-06-05T15:15:15+00:00",
     "Status": "AwaitingAuthorisation",
+    "StatusUpdateDateTime": "2017-06-05T15:15:15+00:00",
+    "ReadRefundAccount": "Yes",
+
     "ControlParameters": {
-      "Reference": "my-first-vrp",
-      "PSUAuthenticationMethods": [ "UK.OBIE.AuthenticationNotRequired" ],
+      "PSUAuthenticationMethods": [ "UK.OBIE.SCA" ],
       "VRPType": "UK.OBIE.VRPType.Sweeping",
       "ValidFromDateTime": "2017-06-05T15:15:13+00:00",
       "ValidToDateTime": "2020-06-05T15:15:13+00:00",
@@ -401,37 +462,31 @@ Content-Type: application/json
       },
       "PeriodicLimits": [
         {
-          "Amount": "1000.00",
+          "Amount": "200.00",
           "Currency": "GBP",
-          "PeriodAlignment": "Calendar",
-          "PeriodType": "Month"
-        },
-
-        {
-          "Amount": "10000.00",
-          "Currency": "GBP",
-          "PeriodAlignment": "Calendar",
-          "PeriodType": "Year"
+          "PeriodAlignment": "Consent",
+          "PeriodType": "Week"
         }
-
       ]
     },
 
     "Initiation": {
       "RemittanceInformation": {
-        "Reference": "To savings"
+        "Reference": "Sweepco"
       }
     }
   },
-  "Links": {
-    "Self": "https://www.open.bank/open-banking/v3.1/payments/domestic-vrp-consents/3e3dd6cd-3b13-4049-872b-4664b0b6b026"
-  },
-  "Meta": {
 
-  },
   "Risk": {
     "PaymentContextCode": "PartyToParty"
-  }
+  },
+
+  
+  "Links": {
+    "Self": "https://api.alphabank.com/open-banking/v1.0/vrp/domestic-vrp-consents/fe615446-e53a-45ed-954c-ae5d1f97a93b"
+  },
+  
+  "Meta": {}
 }
 ```
 
@@ -463,13 +518,14 @@ Content-Type: application/json
 ```json
 {
   "Data": {
-    "ConsentId": "3e3dd6cd-3b13-4049-872b-4664b0b6b026",
-    "CreationDateTime": "2017-06-05T15:15:13+00:00",
+    "ConsentId": "fe615446-e53a-45ed-954c-ae5d1f97a93b",
+    "CreationDateTime": "2017-06-05T15:15:15+00:00",
+    "Status": "Authorised",
+    "StatusUpdateDateTime": "2017-06-05T15:15:15+05:00",
     "ReadRefundAccount": "Yes",
-    "Status": "AwaitingAuthorisation",
+
     "ControlParameters": {
-      "Reference": "my-first-vrp",
-      "PSUAuthenticationMethods": [ "UK.OBIE.AuthenticationNotRequired" ],
+      "PSUAuthenticationMethods": [ "UK.OBIE.SCA" ],
       "VRPType": "UK.OBIE.VRPType.Sweeping",
       "ValidFromDateTime": "2017-06-05T15:15:13+00:00",
       "ValidToDateTime": "2020-06-05T15:15:13+00:00",
@@ -479,22 +535,14 @@ Content-Type: application/json
       },
       "PeriodicLimits": [
         {
-          "Amount": "1000.00",
+          "Amount": "200.00",
           "Currency": "GBP",
-          "PeriodAlignment": "Calendar",
-          "PeriodType": "Month"
-        },
-
-        {
-          "Amount": "10000.00",
-          "Currency": "GBP",
-          "PeriodAlignment": "Calendar",
-          "PeriodType": "Year"
+          "PeriodAlignment": "Consent",
+          "PeriodType": "Week"
         }
-
       ]
     },
-,
+
     "DebtorAccount": {
       "SchemeName": "UK.OBIE.IBAN",
       "Identification": "GB76LOYD30949301273801",
@@ -503,19 +551,21 @@ Content-Type: application/json
 
     "Initiation": {
       "RemittanceInformation": {
-        "Reference": "To savings"
+        "Reference": "Sweepco"
       }
     }
   },
-  "Links": {
-    "Self": "https://www.open.bank/open-banking/v3.1/payments/domestic-vrp-consents/3e3dd6cd-3b13-4049-872b-4664b0b6b026"
-  },
-  "Meta": {
 
-  },
   "Risk": {
     "PaymentContextCode": "PartyToParty"
-  }
+  },
+
+  
+  "Links": {
+    "Self": "https://api.alphabank.com/open-banking/v1.0/vrp/domestic-vrp-consents/fe615446-e53a-45ed-954c-ae5d1f97a93b"
+  },
+  
+  "Meta": {}
 }
 ```
 
@@ -541,22 +591,15 @@ Accept: application/json
 {
   "Data": {
     "ConsentId": "fe615446-e53a-45ed-954c-ae5d1f97a93b",
+    "PSUAuthenticationMethods": "UK.OBIE.SCA",
+
     "Initiation": {
-      "DebtorAccount": {
-        "SchemeName": "UK.OBIE.IBAN",
-        "Identification": "GB76LOYD30949301273801",
-        "Name": "Marcus Sweepimus"
-      },
-      "CreditorAccount": {
-        "SchemeName": "SortCodeAccountNumber",
-        "Identification": "30949330000010",
-        "SecondaryIdentification": "Roll 90210",
-        "Name": "Marcus Sweepimus"
+      "RemittanceInformation": {
+        "Reference": "Sweepco"
       }
     },
+
     "Instruction": {
-      "EndToEndIdentification": "Circusmaximus",
-      "InstructionIdentification": "Sweepautomatix",
       "CreditorAccount": {
         "SchemeName": "SortCodeAccountNumber",
         "Identification": "30949330000010",
@@ -566,9 +609,13 @@ Accept: application/json
       "InstructedAmount": {
         "Amount": "10.00",
         "Currency": "GBP"
+      },
+      "RemittanceInformation": {
+        "Reference": "Sweepco"
       }
     }
   },
+
   "Risk": {
     "PaymentContextCode": "PartyToParty"
   }
@@ -589,8 +636,8 @@ Content-Type: application/json
   "Data": {
     "ConsentId": "fe615446-e53a-45ed-954c-ae5d1f97a93b",
     "CreationDateTime": "2017-06-05T15:15:15+00:00",
-    "DomesticVRPId": "96100554-8029-47c8-85b1-7df980ef9ef4",
-    "Status": "AwaitingAuthorisation",
+    "DomesticVRPId": "OU90210",
+    "Status": "Pending",
     "StatusUpdateDateTime": "2017-06-05T15:15:15+00:00",
 
     "DebtorAccount": {
@@ -600,11 +647,12 @@ Content-Type: application/json
     },
 
     "Initiation": {
+      "RemittanceInformation": {
+        "Reference": "Sweepco"
+      }
     },
 
     "Instruction": {
-      "EndToEndIdentification": "Circusmaximus",
-      "InstructionIdentification": "Sweepautomatix",
       "CreditorAccount": {
         "SchemeName": "SortCodeAccountNumber",
         "Identification": "30949330000010",
@@ -614,17 +662,22 @@ Content-Type: application/json
       "InstructedAmount": {
         "Amount": "10.00",
         "Currency": "GBP"
+      },
+      "RemittanceInformation": {
+        "Reference": "Sweepco"
       }
-    },
-
-    "Refund": {
-      "SchemeName": "UK.OBIE.IBAN",
-      "Identification": "GB76LOYD30949301273801",
-      "Name": "Marcus Sweepimus"
     }
   },
+
   "Risk": {
     "PaymentContextCode": "PartyToParty"
-  }
+  },
+
+  
+  "Links": {
+    "Self": "https://api.alphabank.com/open-banking/v1.0/vrp/domestic-vrps/OU90210"
+  },
+  
+  "Meta": {}  
 }
 ```
