@@ -156,6 +156,10 @@ module.exports = [
                       title: 'Domestic VRPs',
                       path: '/v3.1.8/resources-and-data-models/vrp/domestic-vrps',
                   },
+                  {
+                      title: 'Usage Examples',
+                      path: '/v3.1.8/references/usage-examples/vrp-usage-examples',
+                  }
               ],
             },            
             {
@@ -179,10 +183,6 @@ module.exports = [
                         path: '/v3.1.8/profiles/aggregated-polling-api-profile',
                     },
                 ],
-            },
-            {
-                title: 'Variable Recurring Payments API ',
-                path: '/v3.1.8/profiles/vrp-profile.md',
             },
             {
                 title: 'Resources and Data Models',
