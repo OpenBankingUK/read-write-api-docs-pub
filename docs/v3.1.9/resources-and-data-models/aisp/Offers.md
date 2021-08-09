@@ -30,7 +30,7 @@ Endpoints for the resource and available methods.
 
 |  |Resource |HTTP Operation |Endpoint |Mandatory? |Scope |Grant Type |Idempotency Key |Parameters |Request Object |Response Object |
 | --- |--- |--- |--- |--- |--- |--- |--- |--- |--- |--- |
-| 1 |offers |GET |GET /accounts/{AccountId}/offers |Conditional |accounts |Authorization Code |No | | |OBReadOffer1 |
+| 1 |offers |GET |GET /accounts/{AccountId}/offers |Conditional |accounts |Authorization Code |No | Pagination| |OBReadOffer1 |
 | 2 |offers |GET |GET /offers |Optional |accounts |Authorization Code |No |Pagination | |OBReadOffer1 |
 
 ### GET /accounts/{AccountId}/offers

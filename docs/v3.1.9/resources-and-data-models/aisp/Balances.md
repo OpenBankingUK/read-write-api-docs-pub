@@ -35,8 +35,8 @@ This resource description should be read in conjunction with a compatible Accoun
 
 |  |Resource |HTTP Operation |Endpoint |Mandatory? |Scope |Grant Type |Idempotency Key |Parameters |Request Object |Response Object |
 | --- |--- |--- |--- |--- |--- |--- |--- |--- |--- |--- |
-| 1 |balances |GET |GET /accounts/{AccountId}/balances |Mandatory |accounts |Authorization Code |No | | |OBReadBalance1 |
-| 2 |balances |GET |GET /balances |Optional |accounts |Authorization Code |No |Pagination | |OBReadBalance1 |
+| 1 |balances |GET |GET /accounts/{AccountId}/balances |Mandatory |accounts |Authorization Code | | Pagination| |OBReadBalance1 |
+| 2 |balances |GET |GET /balances |Optional |accounts |Authorization Code | | Pagination| |OBReadBalance1 |
 
 ### GET /accounts/{AccountId}/balances
 

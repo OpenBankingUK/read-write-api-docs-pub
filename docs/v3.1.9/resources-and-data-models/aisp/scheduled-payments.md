@@ -30,7 +30,7 @@ Endpoints for the resource and available methods.
 
 |  |Resource |HTTP Operation |Endpoint |Mandatory? |Scope |Grant Type |Idempotency Key |Parameters |Request Object |Response Object |
 | --- |--- |--- |--- |--- |--- |--- |--- |--- |--- |--- |
-| 1 |scheduled-payments |GET |GET /accounts/{AccountId}/scheduled-payments |Conditional |accounts |Authorization Code |No | | |OBReadScheduledPayment3 |
+| 1 |scheduled-payments |GET |GET /accounts/{AccountId}/scheduled-payments |Conditional |accounts |Authorization Code |No | Pagination| |OBReadScheduledPayment3 |
 | 2 |scheduled-payments |GET |GET /scheduled-payments |Optional |accounts |Authorization Code |No |Pagination | |OBReadScheduledPayment3 |
 
 ### GET /accounts/{AccountId}/scheduled-payments
