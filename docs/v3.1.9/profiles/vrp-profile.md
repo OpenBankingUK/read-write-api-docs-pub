@@ -1,4 +1,4 @@
-# Variable Recurring Payments API Profile - v3.1.8 <!-- omit in toc -->
+# Variable Recurring Payments API Profile - v3.1.9 <!-- omit in toc -->
 
 - [Introduction](#introduction)
   - [Resources](#resources)

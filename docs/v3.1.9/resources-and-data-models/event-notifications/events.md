@@ -1,4 +1,4 @@
-# Events - v3.1.8 <!-- omit in toc -->
+# Events - v3.1.9 <!-- omit in toc -->
 
 - [Overview](#overview)
 - [Endpoints](#endpoints)

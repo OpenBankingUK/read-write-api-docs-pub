@@ -1,4 +1,4 @@
-# Event Notifications Resources and Data Models - v3.1.8 <!-- omit in toc -->
+# Event Notifications Resources and Data Models - v3.1.9 <!-- omit in toc -->
 
 Resources for Event Notifications are detailed here:
 

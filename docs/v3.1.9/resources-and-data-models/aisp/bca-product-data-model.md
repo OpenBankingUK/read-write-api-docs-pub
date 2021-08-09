@@ -1,4 +1,4 @@
-# BCA Product Data Model - v3.1.8 <!-- omit in toc -->
+# BCA Product Data Model - v3.1.9 <!-- omit in toc -->
 
 - [Overview](#overview)
   - [Fields to include in BCA Product](#fields-to-include-in-bca-product)
