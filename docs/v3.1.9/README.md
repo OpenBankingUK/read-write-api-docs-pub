@@ -23,7 +23,7 @@ The Swagger Specification for R/W APIs can be downloaded from the following GitH
 ### Version 3.1.9 - Draft 1
 - __Decision 238 - Pagination Parameters__ [View Diff](https://openbanking.atlassian.net/wiki/spaces/WOR/pages/2120550261/238)
 
-- __Errata__ identified on [Known Issues Page](https://openbanking.atlassian.net/wiki/spaces/DZ/pages/47546479/Known+Specification+Issues)
+- __Errata identified on [Known Issues Page](https://openbanking.atlassian.net/wiki/spaces/DZ/pages/47546479/Known+Specification+Issues)__ [View Diff](https://github.com/OpenBankingUK/read-write-api-docs-pub/commit/f17f3e01b6dfa277b382de51f9f320c0075bb6fb)
   - CDRW-3937 - Clarification on processing of events when accounts linked to VRP is changed
   - OBSD-23244 - Correction of how `RemittanceInformation` should be populated
   - OBSD-23512 - Added missing transaction code of `Rejected` to static enum list
