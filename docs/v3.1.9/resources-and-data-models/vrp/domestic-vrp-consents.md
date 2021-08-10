@@ -226,7 +226,7 @@ The VRP consent is a common class used in `domestic-payment-consents` requests a
 |--------|-------|------|----|
 | 1      | 05-Jun-2021 | 04-Jul-2021 | 500.00 GBP |
 | 2      | 05-Jul-2021 | 04-Jul-2021 | 500.00 GBP |
-| 3      | 05-Aug-2021 | 04-Aug-2021 | 500.00 GBP |
+| 3      | 05-Aug-2021 | 04-Sep-2021 | 500.00 GBP |
 
 ##### Example 3
 
@@ -245,8 +245,8 @@ The VRP consent is a common class used in `domestic-payment-consents` requests a
 | Period | Start | End | Applicable Limit
 |--------|-------|------|-----|
 | 1      | 06-Jun-2021 | 31-Dec-2021 | 286.30 GBP (500 x 209 / 365) |
-| 2      | 01-Jan-2021 | 31-Dec-2022 | 500.00 GBP |
-| 3      | 01-Jan-2021 | 31-Dec-2023 | 500.00 GBP |
+| 2      | 01-Jan-2022 | 31-Dec-2022 | 500.00 GBP |
+| 3      | 01-Jan-2023 | 31-Dec-2023 | 500.00 GBP |
 
 ##### Example 4
 

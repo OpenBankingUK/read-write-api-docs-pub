@@ -243,7 +243,7 @@ The `DebtorAccount` that is associated with a `vrp-consent` may change due to a 
 - The account may be blocked due to a fraud referal
 - The PSU may have ceased trading or may be deceased
 
-In any such situation where an account linked to a `vrp-consent` can no longer be used, temporarily or permanently, to make payments, the ASPSP must inform the TPP using events.
+Where the vrp-consent is associated with non-sweeping activity, and it can no longer be used, temporarily or permanently, to make payments, the ASPSP must inform the TPP using events.
 
 The TPP may subscribe to these events using an aggregated polling mechanism or a push notification mechanism.
 

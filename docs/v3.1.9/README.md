@@ -21,5 +21,12 @@ The Swagger Specification for R/W APIs can be downloaded from the following GitH
 ## Change Log
 
 ### Version 3.1.9 - Draft 1
-- __Decision 238 - Pagination Parameters__ [View Diff]()
+- __Decision 238 - Pagination Parameters__ [View Diff](https://openbanking.atlassian.net/wiki/spaces/WOR/pages/2120550261/238)
 
+- __Errata__ identified on [Known Issues Page](https://openbanking.atlassian.net/wiki/spaces/DZ/pages/47546479/Known+Specification+Issues)
+  - CDRW-3937 - Clarification on processing of events when accounts linked to VRP is changed
+  - OBSD-23244 - Correction of how `RemittanceInformation` should be populated
+  - OBSD-23512 - Added missing transaction code of `Rejected` to static enum list
+  - OBSD-23823 - Clarification on actions to be taken by ASPSP when access is revoked at TPP
+  - OBSD-24689 - Corrected incorrect class reference to `OBDomesticVRPRequestDetailResponse`
+  - OBSD-24907 - Corrected VRP example dates

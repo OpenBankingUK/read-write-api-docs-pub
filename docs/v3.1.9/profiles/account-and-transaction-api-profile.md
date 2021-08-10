@@ -433,7 +433,7 @@ The PSU may request the AISP to revoke consent that it has authorised. If consen
 ### Access Revocation
 
 A PSU **may** revoke AISP's access directly with the ASPSP,  via the access dashboard. In such a situation:
-- The ASPSPs **may** revoke/expire the access token provided to the AISP.
+- The ASPSP **must** take the necessary action to revoke access e.g. by revoking/expiring the access token provided to the AISP.
 - The status of the account-access-consent **must** remain unchanged and the AISP **must** be allowed to request PSU to re-authenticate the same account-access-consent resource.
 - Upon successful re-authentication by PSU, an ASPSP **may** issue new authorization code and subsequently new access token to the AISP.
 
@@ -561,6 +561,7 @@ Deviations from the camt.052 XML standard are:
 | OBCreditDebitCode |Debit |Operation is a debit |
 | OBEntryStatus1Code |Booked |Booked means that the transfer of money has been completed between account servicer and account owner Usage: Status Booked does not necessarily imply finality of money as this depends on other factors such as the payment system used, the completion of the end- to-end transaction and the terms agreed between account servicer and owner. Status Booked is the only status that can be reversed. |
 | OBEntryStatus1Code |Pending |Booking on the account owner's account in the account servicer's ledger has not been completed. Usage: this can be used for expected items, or for items for which some conditions still need to be fulfilled before they can be booked. If booking takes place, the entry will be included with status Booked in subsequent account report or statement. Status Pending cannot be reversed. |
+| OBEntryStatus1Code |Rejected | Transaction has been rejected. Typically used for indicating card transactions that have been rejected. |
 | OBExternalAccountSubType1Code |ChargeCard |Account sub-type is a Charge Card. |
 | OBExternalAccountSubType1Code |CreditCard |Account sub-type is a Credit Card. |
 | OBExternalAccountSubType1Code |CurrentAccount |Account sub-type is a Current Account. |
