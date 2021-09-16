@@ -19,6 +19,13 @@ The Swagger Specification for R/W APIs can be downloaded from the following GitH
 [https://github.com/OpenBankingUK/read-write-api-specs](https://github.com/OpenBankingUK/read-write-api-specs)
 
 ## Change Log
+### Version 3.1.9 - Draft 2
+- __Errata identified on [Known Issues Page](https://openbanking.atlassian.net/wiki/spaces/DZ/pages/47546479/Known+Specification+Issues)__ [View Diff](https://github.com/OpenBankingUK/read-write-api-docs-pub/commit/f17f3e01b6dfa277b382de51f9f320c0075bb6fb)
+  - OBSD-25460 - Update VRP Resources and Data Models page to include all VRP endpoints including resource compatibility with version 3.1.8 and 3.1.9	
+  - OBSD-25446 - Updated Namespaced Enumerations
+  - OBSD-25600 - Updated state model. Removed "Expired" from the graph and from the data table.
+  - OBSD-25715 - Update Permissions section to include ReadTransactionsCredits and ReadTransactionsDebits
+  - OBSD-25599 - Clarified that a period of "Fortnight" can only be applied to "consent aligned" VRP consents
 
 ### Version 3.1.9 - Draft 1
 - __Decision 238 - Pagination Parameters__ [View Diff](https://openbanking.atlassian.net/wiki/spaces/WOR/pages/2120550261/238)

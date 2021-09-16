@@ -179,7 +179,7 @@ The VRP consent is a common class used in `domestic-payment-consents` requests a
 | __Currency__ (1..1) | `ControlParameters. MaximumIndividualAmount. Currency` | A code allocated to a currency by a Maintenance Agency under an international identification scheme, as described in the latest edition of the international standard ISO 4217 "Codes for the representation of currencies and funds".   | ActiveOrHistoricCurrencyCode  
 | __PeriodicLimits__ (0..*) | `ControlParameters. PeriodicLimits` | Maximum amount that can be specified in all payment instructions in a given period under this VRP consent. If the `PeriodAlignment` is `Calendar`, the limit is pro-rated in the first period to the remaining number of days |
 | __PeriodType__ (1..1) | `ControlParameters. PeriodicLimits. PeriodType` | Period type for this period limit | Day, Week, Fortnight, Month, Half-year, Year
-| __PeriodAlignment__ (1..1) | `ControlParameters. PeriodicLimits. PeriodAlignment` | Specifies whether the period starts on the date of consent creation or lines up with a calendar | Consent, Calendar
+| __PeriodAlignment__ (1..1) | `ControlParameters. PeriodicLimits. PeriodAlignment` | Specifies whether the period starts on the date of consent creation or lines up with a calendar. FOr a `PeriodType` of `Fortnight` the `PeriodAlignment` must be `Consent`. | Consent, Calendar
 | __Amount__ (1..1)  | `ControlParameters. PeriodicLimits. Amount` | A number of monetary units specified in an active currency where the unit of currency is explicit and compliant with ISO 4217.
 | __Currency__ (1..1) | `ControlParameters. PeriodicLimits. Currency` | A code allocated to a currency by a Maintenance Agency under an international identification scheme, as described in the latest edition of the international standard ISO 4217 "Codes for the representation of currencies and funds". | ActiveOrHistoricCurrencyCode
 | __VRPType__ (1..*) | `ControlParameters. VRPType` | The types of payments that can be made under this VRP consent. This can be used to indicate whether this include sweeping payment or other ecommerce payments. | OBVRPConsentType - Namespaced Enumeration
@@ -311,7 +311,7 @@ The Risk block is a common class used in requests and responses
 | __ConsentId__  (1..1)| `Data. ConsentId` | Unique identification as assigned by the ASPSP to uniquely identify the consent resource.      | Max128Text
 | __Data. ReadRefundAccount__ (0..1) | `Data. ReadRefundAccount` | Indicates whether the `RefundAccount` object should be included in the response | Yes No
 | __CreationDateTime__ (1..1)| `Data. CreationDateTime` | Date and time at which the resource was created.|ISODateTime
-| __Status__ (1..1) | `Data. Status` | Specifies the status of resource in code form.  |Authorised AwaitingAuthorisation Rejected Revoked Expired
+| __Status__ (1..1) | `Data. Status` | Specifies the status of resource in code form.  |Authorised AwaitingAuthorisation Rejected Revoked
 | __StatusUpdateDateTime__ (1..1)| `Data. StatusUpdateDateTime` |Date and time at which the resource status was updated.  | ISODateTime  
 | __ControlParameters__ (1..1) | `Data. ControlParameters` | The control parameters under which this VRP must operate | [OBDomesticVRPControlParameters](#OBDomesticVRPControlParameters)
 | __Initiation__ (1..1) | `Data. Initiation` | The parameters of the VRP consent that should remain unchanged for each payment under this VRP |  [OBDomesticVRPInitiation](#OBDomesticVRPInitiation)

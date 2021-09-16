@@ -33,6 +33,9 @@
   - [OBEventType1Code](#obeventtype1code)
   - [OBExternalEventConsentAuthorizationRevokedReason1Code](#obexternaleventconsentauthorizationrevokedreason1code)
   - [OBExternalEventAccountAccessConsentLinkedAccountUpdateReason1Code](#obexternaleventaccountaccessconsentlinkedaccountupdatereason1code)
+- [Variable Recurring Payments Namespaced Enumerations](#variable-recurring-payments-namespaced-enumerations)
+  - [OBVRPConsentType](#obvrpconsenttype)
+  - [OBVRPAuthenticationMethods](#obvrpauthenticationmethods)
 
 ## Overview
 
@@ -496,5 +499,33 @@ This field is used to indicate the reason associated with an Account Access Cons
 | --- |--- |
 | UK.OBIE.AccountClosure |An account is no longer associated with the consent as it has been closed. |
 | UK.OBIE.CASS |An account is no longer associated with the consent as it has been switched (using the Current Account Switch Service) to another ASPSP. |
+
+</details>
+
+
+## Variable Recurring Payments Namespaced Enumerations
+
+### OBVRPConsentType
+
+<details><summary>Show</summary>
+
+The types of payments that can be made under a VRP consent. This can be used to indicate whether this include sweeping payment or other ecommerce payments.
+
+| Code |Description |
+| --- |--- |
+| UK.OBIE.VRPType.Sweeping | Limited to sweeping payments as per definition of sweeping in proposition paper |
+| UK.OBIE.VRPType.Other | Variable recurring payment that does not meet definition of sweeping |
+
+</details>
+
+### OBVRPAuthenticationMethods
+
+<details><summary>Show</summary>
+
+Indicates a PSU authentication methods supported or used
+
+| Code |Description |
+| --- |--- |
+| UK.OBIE.SCA | Authentication method where the consent is authorised through SCA. |
 
 </details>
