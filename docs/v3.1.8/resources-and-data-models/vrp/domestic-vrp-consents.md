@@ -183,7 +183,7 @@ The VRP consent is a common class used in `domestic-payment-consents` requests a
 | __Amount__ (1..1)  | `ControlParameters. PeriodicLimits. Amount` | A number of monetary units specified in an active currency where the unit of currency is explicit and compliant with ISO 4217.
 | __Currency__ (1..1) | `ControlParameters. PeriodicLimits. Currency` | A code allocated to a currency by a Maintenance Agency under an international identification scheme, as described in the latest edition of the international standard ISO 4217 "Codes for the representation of currencies and funds". | ActiveOrHistoricCurrencyCode
 | __VRPType__ (1..*) | `ControlParameters. VRPType` | The types of payments that can be made under this VRP consent. This can be used to indicate whether this include sweeping payment or other ecommerce payments. | OBVRPConsentType - Namespaced Enumeration
-| __PSUAuthenticationMethods__ (1..M) | `ControlParameters. __PSUAuthenticationMethods___` | Indicates that the PSU authentication methods supported.  | OBVRPAuthenticationMethods - Namespaced Enumeration
+| __PSUAuthenticationMethods__ (1..M) | `ControlParameters. PSUAuthenticationMethods` | Indicates that the PSU authentication methods supported.  | OBVRPAuthenticationMethods - Namespaced Enumeration
 | __SupplementaryData__ (0..1) | `ControlParameters. SupplementaryData` | Additional information that can not be captured in the structured fields and/or any other specific block  | *
 
 #### Examples of Periodic Limits
