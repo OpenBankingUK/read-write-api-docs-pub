@@ -172,14 +172,14 @@ The VRP consent is a common class used in `domestic-payment-consents` requests a
 
 | Name |Path |Definition | Type |
 | ---- |-----|---------- |------|
-| __ValidFromDateTime__ (0..1) | `ValidFromDateTime` | Start date time for which the consent remains valid. | ISODateTime
-| __ValidToDateTime__ (0..1) | `ValidToDateTime`   | End date time for which the consent remains valid. | ISODateTime
+| __ValidFromDateTime__ (0..1) | `ValidFromDateTime` | Start date time for which the consent remains valid. <br>The time element of the date should be disregarded in computing the date range and pro-rating. | ISODateTime
+| __ValidToDateTime__ (0..1) | `ValidToDateTime`   | End date time for which the consent remains valid.     <br>The time element of the date should be disregarded in computing the date range and pro-rating. | ISODateTime
 | __MaximumIndividualAmount__ (0..1) | `ControlParameters. MaximumIndividualAmount` | Maximum amount that can be specified in a payment instruction under this VRP consent| ActiveOrHistoricCurrencyAndAmount  
 | __Amount__ (1..1) | `ControlParameters. MaximumIndividualAmount. Amount` | A number of monetary units specified in an active currency where the unit of currency is explicit and compliant with ISO 4217.
 | __Currency__ (1..1) | `ControlParameters. MaximumIndividualAmount. Currency` | A code allocated to a currency by a Maintenance Agency under an international identification scheme, as described in the latest edition of the international standard ISO 4217 "Codes for the representation of currencies and funds".   | ActiveOrHistoricCurrencyCode  
 | __PeriodicLimits__ (0..*) | `ControlParameters. PeriodicLimits` | Maximum amount that can be specified in all payment instructions in a given period under this VRP consent. If the `PeriodAlignment` is `Calendar`, the limit is pro-rated in the first period to the remaining number of days |
 | __PeriodType__ (1..1) | `ControlParameters. PeriodicLimits. PeriodType` | Period type for this period limit | Day, Week, Fortnight, Month, Half-year, Year
-| __PeriodAlignment__ (1..1) | `ControlParameters. PeriodicLimits. PeriodAlignment` | Specifies whether the period starts on the date of consent creation or lines up with a calendar. For a `PeriodType` of `Fortnight` the `PeriodAlignment` must be `Consent`. | Consent, Calendar
+| __PeriodAlignment__ (1..1) | `ControlParameters. PeriodicLimits. PeriodAlignment` | Specifies whether the period starts on the date of consent creation or lines up with a calendar. As the ISO calendar does not support or provide any guidance on when a fortnight should start, hence for a `PeriodType` of `Fortnight` the `PeriodAlignment` must be `Consent`.| Consent, Calendar
 | __Amount__ (1..1)  | `ControlParameters. PeriodicLimits. Amount` | A number of monetary units specified in an active currency where the unit of currency is explicit and compliant with ISO 4217.
 | __Currency__ (1..1) | `ControlParameters. PeriodicLimits. Currency` | A code allocated to a currency by a Maintenance Agency under an international identification scheme, as described in the latest edition of the international standard ISO 4217 "Codes for the representation of currencies and funds". | ActiveOrHistoricCurrencyCode
 | __VRPType__ (1..*) | `ControlParameters. VRPType` | The types of payments that can be made under this VRP consent. This can be used to indicate whether this include sweeping payment or other ecommerce payments. | OBVRPConsentType - Namespaced Enumeration

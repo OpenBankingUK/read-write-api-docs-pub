@@ -42,5 +42,13 @@ printf "%b" "\e[32m" "copying extra files ..." "\e[0m" "\n"
 mkdir -p docs/.vuepress/dist/v3.1.7/references
 cp -r docs/v3.1.7/references/* docs/.vuepress/dist/v3.1.7/references/
 
+#This is a, hopefully, temporary workaround for Vuepress ignoring non-image link files when building
+for VER in $(ls docs | grep v);
+  do echo $VER;
+  mkdir -p docs/.vuepress/dist/$VER/resources-and-data-models/aisp/productdatafiles/;
+  cp -r docs/$VER/resources-and-data-models/aisp/productdatafiles/* docs/.vuepress/dist/$VER/resources-and-data-models/aisp/productdatafiles/;
+done;
+
+
 printf "%b" "\e[32m" "content generated in folder " "\e[31m\e[1m" "'docs/.vuepress/.dist'" "\e[0m\e[32m" ", deploy its content on a public website.\n\e[39m"
 

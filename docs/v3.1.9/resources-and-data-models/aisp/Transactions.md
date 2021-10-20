@@ -152,7 +152,7 @@ Since Version 3.1.5, the mutability for a transaction has been made explicit:
 
 ### Permission Codes
 
-The resource differs depending on the permissions (ReadTransactionsBasic and ReadTransactionsDetail) used to access resource. In the event the resource is accessed with both ReadTransactionsBasic and ReadTransactionsDetail, the most detailed level (ReadTransactionsDetail) must be used.
+The resource differs depending on the permissions (ReadTransactionsBasic and ReadTransactionsDetail in addition to the appropriate ReadTransactionsCredits and/or ReadTransactionsDebits) used to access resource. In the event the resource is accessed with both ReadTransactionsBasic and ReadTransactionsDetail, the most detailed level (ReadTransactionsDetail) must be used.
 
 * These objects **must not** be returned **without** the **ReadTransactionsDetail** permission:
   * OBReadTransaction6/Data/Transaction/TransactionInformation

@@ -527,5 +527,6 @@ Indicates a PSU authentication methods supported or used
 | Code |Description |
 | --- |--- |
 | UK.OBIE.SCA | Authentication method where the consent is authorised through SCA. |
+| UK.OBIE.SCANotRequired | This indicates that the PSU does not need to authenticate for individual payments and the payments can be made without the PSU being present. |
 
 </details>
