@@ -184,7 +184,7 @@ The VRP Consent must specify the `PSUAuthenticationMethods` that are acceptable 
 One or more PSU Authentication methods can be specified:
 
 - __Authentication Not Required__: This indicates that the PSU does not need to authenticate for individual payments and the payments can be made without the PSU being present. This method is useful for sweeping use-cases, but may also be used in other situations.
-- __SCA By TPP__: This indicuates that SCA is carried out by the TPP. The ASPSP and TPP must have a contract in place to accept this type of authentication.
+- __SCA By TPP__: This indicates that SCA is carried out by the TPP. The ASPSP and TPP must have a contract in place to accept this type of authentication.
 
 ### Consent Revocation
 

@@ -135,15 +135,15 @@ Further analysis required:-
 * Other Fee Charges: Only Periodic Fee(service charge) has been included in the Code List.
 * We have taken Open Data BCA Segments for BCA Account Info as well.
 
-![ AINFOBCA.3.1.4.ClassDiagram.png ](./images/BCA/AINFOBCA.3.1.4.ClassDiagram.png )
+![ AINFOBCA.3.1.4.ClassDiagram.png ](./images/BCA/AINFOBCA.3.1.4.ClassDiagram.png)
 
 ### Data Dictionary
 
-* [BCA Account Info Data Definition](productdatafiles/ainfobca.v3.1.4.DD.xlsx )
+* [BCA Account Info Data Definition](./productdatafiles/ainfobca.v3.1.4.DD.xlsx)
 
 ### Data Payload - Enumerations
 
-* [BCA Account Info Code List](productdatafiles/ainfobca.v3.1.2.CodeList.xlsx )
+* [BCA Account Info Code List](./productdatafiles/ainfobca.v3.1.2.CodeList.xlsx)
 
 ## Usage Examples
 
