@@ -31,5 +31,6 @@
     "docs:dev:no-cache": "vuepress dev docs --no-clear-screen --no-cache --debug",
     "docs:dev": "vuepress dev docs --no-clear-screen --debug",
     "docs:build": "vuepress build docs"
-  }
+  },
+  "dependencies": {}
 }
