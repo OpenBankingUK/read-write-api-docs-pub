@@ -1,0 +1,31 @@
+{
+  "Data": {
+    "ReadRefundAccount": "Yes",
+    "ControlParameters": {
+      "PSUAuthenticationMethods": [ "UK.OBIE.SCA" ],
+      "VRPType": "UK.OBIE.VRPType.Sweeping",
+      "ValidFromDateTime": "2017-06-05T15:15:13+00:00",
+      "ValidToDateTime": "2020-06-05T15:15:13+00:00",
+      "MaximumIndividualAmount": {
+        "Amount": "100.00",
+        "Currency": "GBP"
+      },
+      "PeriodicLimits": [
+        {
+          "Amount": "200.00",
+          "Currency": "GBP",
+          "PeriodAlignment": "Consent",
+          "PeriodType": "Week"
+        }
+      ]
+    },
+    "Initiation": {
+      "RemittanceInformation": {
+        "Reference": "Sweepco"
+      }
+    }
+  },
+  "Risk": {
+    "PaymentContextCode": "PartyToParty"
+  }
+}
