@@ -194,10 +194,8 @@ The VRP consent is a common class used in `domestic-payment-consents` requests a
 {
   "PeriodType": "Month",
   "PeriodAlignment": "Calendar",
-  "Amount": {
-    "Amount": "300.00",
-    "Currency": "GBP"
-  }
+  "Amount": "300.00",
+  "Currency": "GBP"
 }
 ```
 
@@ -214,10 +212,8 @@ The VRP consent is a common class used in `domestic-payment-consents` requests a
 {
   "PeriodType": "Month",
   "PeriodAlignment": "Consent",
-  "Amount": {
-    "Amount": "500.00",
-    "Currency": "GBP"
-  }
+  "Amount": "500.00",
+  "Currency": "GBP"
 }
 ```
 
@@ -234,10 +230,8 @@ The VRP consent is a common class used in `domestic-payment-consents` requests a
 {
   "PeriodType": "Year",
   "PeriodAlignment": "Calendar",
-  "Amount": {
-    "Amount": "500.00",
-    "Currency": "GBP"
-  }
+  "Amount": "500.00",
+  "Currency": "GBP"
 }
 ```
 
@@ -254,10 +248,8 @@ The VRP consent is a common class used in `domestic-payment-consents` requests a
 {
   "PeriodType": "Year",
   "PeriodAlignment": "Consent",
-  "Amount": {
-    "Amount": "500.00",
-    "Currency": "GBP"
-  }
+  "Amount": "500.00",
+  "Currency": "GBP"
 }
 ```
 
