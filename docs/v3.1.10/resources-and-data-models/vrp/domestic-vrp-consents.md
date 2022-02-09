@@ -97,12 +97,11 @@ The available status codes for the VRP consents resource are:
 
 The definitions for the Status:
 
-|  | Status |Status Description |
-| ---| ------ |------------------ |
-| 1 |AwaitingAuthorisation |The consent resource is awaiting PSU authorisation. |
-| 2 |Rejected |The consent resource has been rejected. |
-| 3 |Authorised |The consent resource has been successfully authorised. |
-| 4 |Revoked |The consent resource has been revoked by the PSU, via ASPSP's online channel. |
+|     | Status                | Status Description                                                            |
+|-----|-----------------------|-------------------------------------------------------------------------------|
+| 1   | AwaitingAuthorisation | The consent resource is awaiting PSU authorisation.                           |
+| 2   | Rejected              | The consent resource has been rejected.                                       |
+| 3   | Authorised            | The consent resource has been successfully authorised.                        |
 
 ## Data Model
 
