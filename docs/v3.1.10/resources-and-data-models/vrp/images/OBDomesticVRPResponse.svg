@@ -855,7 +855,7 @@ TownName [1..1]
 <line x1="81.80000000000001em" y1="59.8em" x2="83.80000000000001em" y2="59.8em" stroke="black" marker-start="url(#Diamond)"/>
 <line x1="83.80000000000001em" y1="59.8em" x2="83.80000000000001em" y2="86em" stroke="black" />
 <line x1="83.80000000000001em" y1="86em" x2="87.00000000000001em" y2="86em" stroke="black" marker-end="url(#Triangle)"/>
-<text x="84.30000000000001em" y="85.5em">0..1</text>
+<text x="84.30000000000001em" y="85.5em">1..1</text>
 <line x1="81.80000000000001em" y1="59.8em" x2="83.80000000000001em" y2="59.8em" stroke="black" marker-start="url(#Diamond)"/>
 <line x1="83.80000000000001em" y1="59.8em" x2="83.80000000000001em" y2="92.6em" stroke="black" />
 <line x1="83.80000000000001em" y1="92.6em" x2="87.00000000000001em" y2="92.6em" stroke="black" marker-end="url(#Triangle)"/>

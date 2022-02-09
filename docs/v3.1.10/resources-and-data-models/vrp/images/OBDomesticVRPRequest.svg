@@ -625,7 +625,7 @@ TownName [1..1]
 <line x1="78.6em" y1="44em" x2="80.6em" y2="44em" stroke="black" marker-start="url(#Diamond)"/>
 <line x1="80.6em" y1="44em" x2="80.6em" y2="70.2em" stroke="black" />
 <line x1="80.6em" y1="70.2em" x2="83.8em" y2="70.2em" stroke="black" marker-end="url(#Triangle)"/>
-<text x="81.1em" y="69.7em">0..1</text>
+<text x="81.1em" y="69.7em">1..1</text>
 <line x1="78.6em" y1="44em" x2="80.6em" y2="44em" stroke="black" marker-start="url(#Diamond)"/>
 <line x1="80.6em" y1="44em" x2="80.6em" y2="76.8em" stroke="black" />
 <line x1="80.6em" y1="76.8em" x2="83.8em" y2="76.8em" stroke="black" marker-end="url(#Triangle)"/>
