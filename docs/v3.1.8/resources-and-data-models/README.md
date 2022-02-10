@@ -4,4 +4,4 @@
 * [PISP](pisp/README.md)
 * [CBPII](cbpii/README.md)
 * [VRP](vrp/README.md)
-* [Event Notifications](event-notifications/domestic-vrp-consents.md)
+* [Event Notifications](event-notifications/README.md)
