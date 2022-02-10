@@ -163,7 +163,7 @@ draft-ietf-secevent-http-poll-01 allows for the use signed event notifications f
 The access tokens required for accessing the Aggregated Polling API must have one of the following scope:
 
 ```
-accounts, fundsconfirmations
+accounts, fundsconfirmations, payments
 ```
 
 #### Grants Types
