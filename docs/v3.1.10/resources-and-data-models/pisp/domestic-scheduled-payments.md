@@ -295,7 +295,7 @@ Accept: application/json
     }
   },
   "Risk": {
-    "PaymentContextCode": "PartyToParty"
+    "PaymentContextCode": "TransferToThirdParty"
   }
 }
 ```

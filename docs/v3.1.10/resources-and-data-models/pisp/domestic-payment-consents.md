@@ -329,8 +329,11 @@ Accept: application/json
     }
   },
   "Risk": {
-    "PaymentContextCode": "EcommerceGoods",
-    "MerchantCategoryCode": "5967",
+    "PaymentContextCode": "EcommerceMerchantInitiatedPayment",
+    "ContractPresentInidicator": false,
+    "PaymentPurposeCode": "EPAY",
+    "BeneficiaryPaymentDetailsPrepopulatedIndicator": false,
+    "BeneficiaryAccountType": "Business",
     "MerchantCustomerIdentification": "053598653254",
     "DeliveryAddress": {
       "AddressLine": [
@@ -385,8 +388,11 @@ Content-Type: application/json
     }
   },
   "Risk": {
-    "PaymentContextCode": "EcommerceGoods",
-    "MerchantCategoryCode": "5967",
+    "PaymentContextCode": "EcommerceMerchantInitiatedPayment",
+    "ContractPresentInidicator": false,
+    "PaymentPurposeCode": "EPAY",
+    "BeneficiaryPaymentDetailsPrepopulatedIndicator": false,
+    "BeneficiaryAccountType": "Business",
     "MerchantCustomerIdentification": "053598653254",
     "DeliveryAddress": {
       "AddressLine": [
@@ -461,8 +467,11 @@ Content-Type: application/json
     }
   },
   "Risk": {
-    "PaymentContextCode": "EcommerceGoods",
-    "MerchantCategoryCode": "5967",
+    "PaymentContextCode": "EcommerceMerchantInitiatedPayment",
+    "ContractPresentInidicator": false,
+    "PaymentPurposeCode": "EPAY",
+    "BeneficiaryPaymentDetailsPrepopulatedIndicator": false,
+    "BeneficiaryAccountType": "Business",
     "MerchantCustomerIdentification": "053598653254",
     "DeliveryAddress": {
       "AddressLine": [

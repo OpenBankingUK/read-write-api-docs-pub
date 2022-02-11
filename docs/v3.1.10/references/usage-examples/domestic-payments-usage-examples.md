@@ -163,8 +163,11 @@ Accept: application/json
     }
   },
   "Risk": {
-    "PaymentContextCode": "EcommerceGoods",
-    "MerchantCategoryCode": "5967",
+    "PaymentContextCode": "EcommerceMerchantInitiatedPayment",
+    "ContractPresentInidicator": false,
+    "PaymentPurposeCode": "EPAY",
+    "BeneficiaryPaymentDetailsPrepopulatedIndicator": false,
+    "BeneficiaryAccountType": "Business",
     "MerchantCustomerIdentification": "053598653254",
     "DeliveryAddress": {
       "AddressLine": [
@@ -218,8 +221,11 @@ Content-Type: application/json
     }
   },
   "Risk": {
-    "PaymentContextCode": "EcommerceGoods",
-    "MerchantCategoryCode": "5967",
+    "PaymentContextCode": "EcommerceMerchantInitiatedPayment",
+    "ContractPresentInidicator": false,
+    "PaymentPurposeCode": "EPAY",
+    "BeneficiaryPaymentDetailsPrepopulatedIndicator": false,
+    "BeneficiaryAccountType": "Business",
     "MerchantCustomerIdentification": "053598653254",
     "DeliveryAddress": {
       "AddressLine": [
@@ -318,8 +324,11 @@ Accept: application/json
     }
   },
   "Risk": {
-    "PaymentContextCode": "EcommerceGoods",
-    "MerchantCategoryCode": "5967",
+    "PaymentContextCode": "EcommerceMerchantInitiatedPayment",
+    "ContractPresentInidicator": false,
+    "PaymentPurposeCode": "EPAY",
+    "BeneficiaryPaymentDetailsPrepopulatedIndicator": false,
+    "BeneficiaryAccountType": "Business",
     "MerchantCustomerIdentification": "053598653254",
     "DeliveryAddress": {
       "AddressLine": [
@@ -429,8 +438,11 @@ Content-Type: application/json
     }
   },
   "Risk": {
-    "PaymentContextCode": "EcommerceGoods",
-    "MerchantCategoryCode": "5967",
+    "PaymentContextCode": "EcommerceMerchantInitiatedPayment",
+    "ContractPresentInidicator": false,
+    "PaymentPurposeCode": "EPAY",
+    "BeneficiaryPaymentDetailsPrepopulatedIndicator": false,
+    "BeneficiaryAccountType": "Business",
     "MerchantCustomerIdentification": "053598653254",
     "DeliveryAddress": {
       "AddressLine": [
@@ -626,7 +638,7 @@ Accept: application/json
     }
   },
   "Risk": {
-    "PaymentContextCode": "PartyToParty"
+    "PaymentContextCode": "TransferToThirdParty"
   }
 }
 ```
@@ -671,7 +683,7 @@ Content-Type: application/json
     }
   },
   "Risk": {
-    "PaymentContextCode": "PartyToParty"
+    "PaymentContextCode": "TransferToThirdParty"
   },
   "Links": {
     "Self": "https://api.alphabank.com/open-banking/v3.1/pisp/domestic-payment-consents/7290"
@@ -724,7 +736,7 @@ Accept: application/json
     }
   },
   "Risk": {
-    "PaymentContextCode": "PartyToParty"
+    "PaymentContextCode": "TransferToThirdParty"
   }
 }
 ```
@@ -829,7 +841,7 @@ Content-Type: application/json
     }
   },
   "Risk": {
-    "PaymentContextCode": "PartyToParty"
+    "PaymentContextCode": "TransferToThirdParty"
   },
   "Links": {
     "Self": "https://api.alphabank.com/open-banking/v3.1/pisp/domestic-payment-consents/7290"
@@ -944,7 +956,7 @@ Accept: application/json
     }
   },
   "Risk": {
-    "PaymentContextCode": "PartyToParty"
+    "PaymentContextCode": "TransferToThirdParty"
   }
 }
 ```
@@ -991,7 +1003,7 @@ Content-Type: application/json
     }
   },
   "Risk": {
-    "PaymentContextCode": "PartyToParty"
+    "PaymentContextCode": "TransferToThirdParty"
   },
   "Links": {
     "Self": "https://api.alphabank.com/open-banking/v3.1/pisp/domestic-payment-consents/7290"
@@ -1054,7 +1066,7 @@ Accept: application/json
     }
   },
   "Risk": {
-    "PaymentContextCode": "PartyToParty"
+    "PaymentContextCode": "TransferToThirdParty"
   }
 }
 ```
@@ -1119,7 +1131,7 @@ Content-Type: application/json
       ]
    },
    "Risk":{
-      "PaymentContextCode":"PartyToParty"
+      "PaymentContextCode":"TransferToThirdParty"
    },
    "Links":{
       "Self":"https://api.alphabank.com/open-banking/v3.1/pisp/domestic-payment-consents/7290"
@@ -1176,7 +1188,7 @@ Accept: application/json
         }
     },
     "Risk": {
-        "PaymentContextCode": "PartyToParty"
+        "PaymentContextCode": "TransferToThirdParty"
     }
 }
 ```
@@ -1223,7 +1235,7 @@ Content-Type: application/json
         }
     },
     "Risk": {
-        "PaymentContextCode": "PartyToParty"
+        "PaymentContextCode": "TransferToThirdParty"
     },
     "Links": {
         "Self": "https://api.alphabank.com/open-banking/v3.1/pisp/domestic-payment-consents/7290"
@@ -1277,7 +1289,7 @@ Accept: application/json
         }
     },
     "Risk": {
-        "PaymentContextCode": "PartyToParty"
+        "PaymentContextCode": "TransferToThirdParty"
     }
 }
 ```
@@ -1324,7 +1336,7 @@ Content-Type: application/json
         }
     },
     "Risk": {
-        "PaymentContextCode": "PartyToParty"
+        "PaymentContextCode": "TransferToThirdParty"
     },
     "Links": {
         "Self": "https://api.alphabank.com/open-banking/v3.1/pisp/domestic-payment-consents/7290"

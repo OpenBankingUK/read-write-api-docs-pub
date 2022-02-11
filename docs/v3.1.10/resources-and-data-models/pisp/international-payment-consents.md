@@ -417,7 +417,7 @@ Accept: application/json
     }
   },
   "Risk": {
-    "PaymentContextCode": "PartyToParty"
+    "PaymentContextCode": "TransferToThirdParty"
   }
 }
 ```
@@ -472,7 +472,7 @@ Content-Type: application/json
   }
  },
  "Risk": {
-  "PaymentContextCode": "PartyToParty"
+  "PaymentContextCode": "TransferToThirdParty"
  },
  "Links": {
   "Self": "https://api.alphabank.com/open-banking/v3.1/pisp/international-payment-consents/58923"

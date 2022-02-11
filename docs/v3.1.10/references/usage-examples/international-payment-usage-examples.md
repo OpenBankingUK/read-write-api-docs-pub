@@ -67,7 +67,7 @@ Accept: application/json
     }
   },
   "Risk": {
-    "PaymentContextCode": "PartyToParty"
+    "PaymentContextCode": "TransferToThirdParty"
   }
 }
 ```
@@ -124,7 +124,7 @@ Content-Type: application/json
 		}
 	},
 	"Risk": {
-		"PaymentContextCode": "PartyToParty"
+		"PaymentContextCode": "TransferToThirdParty"
 
 	},
 	"Links": {
@@ -188,7 +188,7 @@ Accept: application/json
     }
   },
   "Risk": {
-    "PaymentContextCode": "PartyToParty"
+    "PaymentContextCode": "TransferToThirdParty"
   }
 }
 ```
@@ -240,7 +240,7 @@ Content-Type: application/json
 		}
 	},
 	"Risk": {
-		"PaymentContextCode": "PartyToParty"
+		"PaymentContextCode": "TransferToThirdParty"
 
 	},
 	"Links": {

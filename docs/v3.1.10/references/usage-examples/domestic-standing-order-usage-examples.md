@@ -122,7 +122,7 @@ Accept: application/json
     }
   },
   "Risk": {
-    "PaymentContextCode": "PartyToParty"
+    "PaymentContextCode": "TransferToThirdParty"
   }
 }
 ```
@@ -174,7 +174,7 @@ Content-Type: application/json
     }
   },
   "Risk": {
-    "PaymentContextCode": "PartyToParty"
+    "PaymentContextCode": "TransferToThirdParty"
   },
   "Links": {
     "Self": "https://api.alphabank.com/open-banking/v3.1/pisp/domestic-standing-order-consents/SOC-100"
@@ -233,7 +233,7 @@ Accept: application/json
     }
   },
   "Risk": {
-    "PaymentContextCode": "PartyToParty"
+    "PaymentContextCode": "TransferToThirdParty"
   }
 }
 
@@ -286,7 +286,7 @@ Content-Type: application/json
     }
   },
   "Risk": {
-    "PaymentContextCode": "PartyToParty"
+    "PaymentContextCode": "TransferToThirdParty"
   },
   "Links": {
     "Self": "https://api.alphabank.com/open-banking/v3.1/pisp/domestic-standing-orders/SO-SOC-100"
@@ -354,7 +354,7 @@ Content-Type: application/json
     }
   },
   "Risk": {
-    "PaymentContextCode": "PartyToParty"
+    "PaymentContextCode": "TransferToThirdParty"
   },
   "Links": {
     "Self": "https://api.alphabank.com/open-banking/v3.1/pisp/domestic-standing-order-consents/SOC-100"
