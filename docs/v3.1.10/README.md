@@ -19,21 +19,26 @@ The Swagger Specification for R/W APIs can be downloaded from the following GitH
 [https://github.com/OpenBankingUK/read-write-api-specs](https://github.com/OpenBankingUK/read-write-api-specs)
 
 ## Change Log
-### Version 3.1.9 - Draft 2
-- __Errata identified on [Known Issues Page](https://openbanking.atlassian.net/wiki/spaces/DZ/pages/47546479/Known+Specification+Issues)__ [View Diff](https://github.com/OpenBankingUK/read-write-api-docs-pub/commit/f17f3e01b6dfa277b382de51f9f320c0075bb6fb)
-  - OBSD-25460 - Update VRP Resources and Data Models page to include all VRP endpoints including resource compatibility with version 3.1.8 and 3.1.9	
-  - OBSD-25446 - Updated Namespaced Enumerations
-  - OBSD-25600 - Updated state model. Removed "Expired" from the graph and from the data table.
-  - OBSD-25715 - Update Permissions section to include ReadTransactionsCredits and ReadTransactionsDebits
-  - OBSD-25599 - Clarified that a period of "Fortnight" can only be applied to "consent aligned" VRP consents
+### Version 3.1.10 - Draft 1
+CDRW-4102 - v319_KI1  - AISP - update permissions field (AISP: OBReadConsent1)
+CDRW-4103 - v319_KI2  - VRP  - update Instructed amount field
+CDRW-4105 - v319_KI3  - VRP  - Remove revoked status from VRP Consent
+CDRW-4106 - v319_KI4  - VRP  - Remove revoked and expired status from VRP Consent
+CDRW-4107 - v319_KI5  - VRP  - Consents - Clarify access vs Consent revocation
+CDRW-4108 - v319_KI6  - VRP  - OBDomesticVRPConsentResponse make DebtorAccount conditional
+CDRW-4109 - v319_KI7  - VRP  - make MaximumIndividualAmount and PeriodicLimits required
+CDRW-4110 - v319_KI8  - VRP  - Clarification on additional control parameters for non-sweeping
+CDRW-4111 - v319_KI9  - VRP  - remove CreditorAgent and rename PostalAddress under OBDomesticVRPInstruction as CreditorPostalAddress
+CDRW-4112 - v319_KI10 -        Change to make Reference field optional in CoF check as it is optional in the VRP consent request
+CDRW-4114 - v319_KI5a - VRP  - Consents - Clarify access vs Consent revocation - new Event type
+CDRW-4115 - v319_KI11 - VRP  - flatten amount and currency in examples
+CDRW-4116 - v319_KI12 -        include Payments in the scope of event notification
+CDRW-4117 - v319_KI13 -        fix Event Notification link
+CDRW-4118 - v319_KI14 - VRP - add PSUInteractionTypes array and PSUInteractionType field
+CDRW-4125 - v319_KI15 - VRP - Decision 242 - Implement StatusReason and StatusReasonDescription fields
+CDRW-4126 - v319_KI16 - VRP - Decision 243 - Change resource-group to pisp
 
-### Version 3.1.9 - Draft 1
-- __Decision 238 - Pagination Parameters__ [View Diff](https://openbanking.atlassian.net/wiki/spaces/WOR/pages/2120550261/238)
+CDRW-4122 - v3.1.10 - Article 10a SCA exemption changes
 
-- __Errata identified on [Known Issues Page](https://openbanking.atlassian.net/wiki/spaces/DZ/pages/47546479/Known+Specification+Issues)__ [View Diff](https://github.com/OpenBankingUK/read-write-api-docs-pub/commit/f17f3e01b6dfa277b382de51f9f320c0075bb6fb)
-  - CDRW-3937 - Clarification on processing of events when accounts linked to VRP is changed
-  - OBSD-23244 - Correction of how `RemittanceInformation` should be populated
-  - OBSD-23512 - Added missing transaction code of `Rejected` to static enum list
-  - OBSD-23823 - Clarification on actions to be taken by ASPSP when access is revoked at TPP
-  - OBSD-24689 - Corrected incorrect class reference to `OBDomesticVRPRequestDetailResponse`
-  - OBSD-24907 - Corrected VRP example dates
+CDRW-4123 - v3.1.10 - Transaction Risk Indicators
+CDRW-4124 - v3.1.10 - Correct cardinality of array fields in SVG
