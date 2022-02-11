@@ -471,11 +471,12 @@ None
 
 This field is used to indicate the event types a TPP would like to subscribe to as part of the callback-urls payload.
 
-| Code |Description |
-| --- |--- |
-| UK.OBIE.Resource-Update |An event that indicates a resource has been updated. |
-| UK.OBIE.Consent-Authorization-Revoked |An event that indicates a consent resource has had its authorisation revoked. |
-| UK.OBIE.Account-Access-Consent-Linked-Account-Update |An event that indicates an account linked to a consent has move in/out of scope of the consent. |
+| Code                                                 | Description                                                                                                          |
+|------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------|
+| UK.OBIE.Resource-Update                              | An event that indicates a resource has been updated.                                                                 |
+| UK.OBIE.Consent-Authorization-Revoked                | An event that indicates a consent resource has had its authorisation revoked. (left for backward compatibility)      |
+| UK.OBIE.Consent-Access-Revoked                       | An event that indicates a consent has its underlying access revoked. The consent itself remains in authorised state. |
+| UK.OBIE.Account-Access-Consent-Linked-Account-Update | An event that indicates an account linked to a consent has move in/out of scope of the consent.                      |
 
 </details>
 
