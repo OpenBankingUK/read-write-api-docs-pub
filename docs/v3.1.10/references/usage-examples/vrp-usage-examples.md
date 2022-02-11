@@ -44,6 +44,7 @@ Accept: application/json
     "ReadRefundAccount": "Yes",
     "ControlParameters": {
       "PSUAuthenticationMethods": [ "UK.OBIE.SCA" ],
+      "PSUInteractionTypes": [ "OffSession" ],
       "VRPType": "UK.OBIE.VRPType.Sweeping",
       "ValidFromDateTime": "2017-06-05T15:15:13+00:00",
       "ValidToDateTime": "2020-06-05T15:15:13+00:00",
@@ -189,6 +190,7 @@ Content-Type: application/json
 
     "ControlParameters": {
       "PSUAuthenticationMethods": [ "UK.OBIE.SCA" ],
+      "PSUInteractionTypes": [ "OffSession" ],
       "VRPType": "UK.OBIE.VRPType.Sweeping",
       "ValidFromDateTime": "2017-06-05T15:15:13+00:00",
       "ValidToDateTime": "2020-06-05T15:15:13+00:00",
@@ -263,7 +265,8 @@ Accept: application/json
 {
   "Data": {
     "ConsentId": "fe615446-e53a-45ed-954c-ae5d1f97a93b",
-    "PSUAuthenticationMethods": "UK.OBIE.SCA",
+    "PSUAuthenticationMethod": "UK.OBIE.SCA",
+    "PSUInteractionType": "OffSession",
 
     "Initiation": {
       "DebtorAccount": {
@@ -405,6 +408,7 @@ Accept: application/json
     "ReadRefundAccount": "Yes",
     "ControlParameters": {
       "PSUAuthenticationMethods": [ "UK.OBIE.SCA" ],
+      "PSUInteractionTypes": [ "OffSession" ],
       "VRPType": "UK.OBIE.VRPType.Sweeping",
       "ValidFromDateTime": "2017-06-05T15:15:13+00:00",
       "ValidToDateTime": "2020-06-05T15:15:13+00:00",
@@ -453,6 +457,7 @@ Content-Type: application/json
 
     "ControlParameters": {
       "PSUAuthenticationMethods": [ "UK.OBIE.SCA" ],
+      "PSUInteractionTypes": [ "OffSession" ],
       "VRPType": "UK.OBIE.VRPType.Sweeping",
       "ValidFromDateTime": "2017-06-05T15:15:13+00:00",
       "ValidToDateTime": "2020-06-05T15:15:13+00:00",
@@ -526,6 +531,7 @@ Content-Type: application/json
 
     "ControlParameters": {
       "PSUAuthenticationMethods": [ "UK.OBIE.SCA" ],
+      "PSUInteractionTypes": [ "OffSession" ],
       "VRPType": "UK.OBIE.VRPType.Sweeping",
       "ValidFromDateTime": "2017-06-05T15:15:13+00:00",
       "ValidToDateTime": "2020-06-05T15:15:13+00:00",
@@ -591,7 +597,8 @@ Accept: application/json
 {
   "Data": {
     "ConsentId": "fe615446-e53a-45ed-954c-ae5d1f97a93b",
-    "PSUAuthenticationMethods": "UK.OBIE.SCA",
+    "PSUAuthenticationMethod": "UK.OBIE.SCA",
+    "PSUInteractionType": "OffSession",
 
     "Initiation": {
       "RemittanceInformation": {

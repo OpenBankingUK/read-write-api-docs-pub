@@ -39,7 +39,7 @@ Values:
 ReadRefundAccount [0..1]
 </text>
 
-<rect x="53.800000000000004em" y="1em" width="24.8em" height="8.2em" fill="beige" stroke="black" stroke-width="2"/>
+<rect x="53.800000000000004em" y="1em" width="24.8em" height="9.5em" fill="beige" stroke="black" stroke-width="2"/>
 <text style="font-weight:bold" text-anchor="middle" x="66.2em" y="2.3em" fill="black">
 <title></title>
 ControlParameters
@@ -57,13 +57,22 @@ PSUAuthenticationMethods [1..*]
 <text x="54.800000000000004em" y="5.6em" fill="darkslateblue">
 <title>Type: string
 Values:
+ - InSession
+ - OffSession
+</title>
+PSUInteractionTypes [1..*]
+</text>
+
+<text x="54.800000000000004em" y="6.9em" fill="darkslateblue">
+<title>Type: string
+Values:
  - UK.OBIE.VRPType.Sweeping
  - UK.OBIE.VRPType.Other
 </title>
 VRPType [1..*]
 </text>
 
-<text x="54.800000000000004em" y="6.9em" fill="darkslateblue">
+<text x="54.800000000000004em" y="8.2em" fill="darkslateblue">
 <title>Type: string
 Format: date-time
 Description: ^ Start date time for which the consent remains valid.
@@ -71,7 +80,7 @@ Description: ^ Start date time for which the consent remains valid.
 ValidFromDateTime [0..1]
 </text>
 
-<text x="54.800000000000004em" y="8.2em" fill="darkslateblue">
+<text x="54.800000000000004em" y="9.5em" fill="darkslateblue">
 <title>Type: string
 Format: date-time
 Description: ^ End date time for which the consent remains valid.
