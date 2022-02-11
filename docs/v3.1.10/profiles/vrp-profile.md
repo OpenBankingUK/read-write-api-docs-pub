@@ -195,11 +195,13 @@ The PSU may request the TPP to revoke consent that it has authorised. If consent
 - The TPP must cease to initiate any future payment orders or Funds Confirmations using the VRP Consent.
 - The TPP must call the DELETE operation on the VRP Consent resource to indicate to the ASPSP that the PSU has revoked consent.
 
-The PSU may revoke the VRP Consent via ASPSP's online channel. If the consent is revoked via ASPSP:
+The PSU may revoke the VRP access via ASPSP's online channel. If the access is revoked via ASPSP:
 
-- The ASPSP must immediately update the VRP Consent resource status to Revoked.
-- The ASPSP must fail any future payment order request using the ConsentId, with the Status Revoked.
-- The ASPSP must make a Notification Event available for the TPP to poll/deliver Real Time Event Notification for the event - consent-authorization-revoked.
+- The ASPSP must fail any future payment order request using the ConsentId.
+- The ASPSP must make a Notification Event available for the TPP to poll/deliver Real Time Event Notification for the event - `consent-access-revoked`.
+- The ASPSP must take the necessary action to revoke access e.g. by revoking/expiring the access token provided to the PISP.
+- The status of the `domestic-vrp-consents` resource must remain unchanged and the PISP must be allowed to request PSU to re-authenticate the same `domestic-vrp-consents` resource.
+- Upon successful re-authentication by the PSU, an ASPSP may issue new authorization code and subsequently new access token to the PISP.
 
 ### Multiple Authorisation
 
