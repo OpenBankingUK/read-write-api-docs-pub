@@ -1,4 +1,4 @@
-# VRP Resources and Data Models - v3.1.9 <!-- omit in toc -->
+# VRP Resources and Data Models - v3.1.10 <!-- omit in toc -->
 
 Resources accessed by VRPs are detailed here:
 * [Domestic VRP Consents](domestic-vrp-consents.md)

@@ -1,4 +1,4 @@
-# Funds Confirmation Consent - v3.1.9 <!-- omit in toc -->
+# Funds Confirmation Consent - v3.1.10 <!-- omit in toc -->
 
 - [Overview](#overview)
 - [Endpoints](#endpoints)

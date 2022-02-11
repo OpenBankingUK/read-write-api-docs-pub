@@ -1,4 +1,4 @@
-# Aggregated Polling API Profile - v3.1.9 <!-- omit in toc -->
+# Aggregated Polling API Profile - v3.1.10 <!-- omit in toc -->
 
 - [Overview](#overview)
 - [Basics](#basics)
