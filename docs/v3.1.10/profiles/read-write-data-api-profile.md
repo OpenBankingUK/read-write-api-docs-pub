@@ -448,7 +448,6 @@ The situation could arise when an ASPSP has chosen to expire an Access Token for
 
 1. The consent has expired (the Expiration Date Time has lapsed)
 2. Suspicious usage of the Access Token or suspected fraud
-3. Implementation of 90 Day SCA
 
 This error can potentially be remedied by asking the PSU to re-authenticate or authenticate with the right permissions.
 
@@ -819,11 +818,11 @@ In order to achieve this:
 * If the ASPSP issues a refresh token, the ASPSP **must** indicate the date-time at which the refresh token will expire in a claim named `http://openbanking.org.uk/refresh_token_expires_at` in the Id token (returned by the token end-point or userinfo end-point). Its value MUST be a number containing a NumericDate value, as specified in https://tools.ietf.org/html/rfc7519#section-2
 * NumericDate is a JSON numeric value representing the number of seconds from 1970-01-01T00:00:00Z UTC until the specified UTC date-time, ignoring leap seconds.
 * If the ASPSP does not issue a refresh token, the ASPSP **must not** populate the `http://openbanking.org.uk/refresh_token_expires_at` claim in the Id token
-* If the ASPSP issues a refresh token that does not expire, the ASPSP **must** populate the claim named `http://openbanking.org.uk/refresh_token_expires_at` in the Id token with a value representing the number of seconds to 03:14:07 UTC on 19 January 2038 (end of UNIX epoch)
+* If the ASPSP issues a refresh token that does not expire, the ASPSP **must** populate the claim named `http://openbanking.org.uk/refresh_token_expires_at` in the Id token with a value representing the number of seconds equal to 200 years (6311385200 seconds) in the future, starting from token issuance time.
 
 #### Exemptions from Strong Customer Authentication
 
-The PSD2 [RTS](http://ec.europa.eu/finance/docs/level-2-measures/psd2-rts-2017-7782_en.pdf) specifies the conditions under which a payment services provider is exempt from carrying out strong customer authentication.
+The PSD2 [RTS](https://www.legislation.gov.uk/uksi/2017/752/pdfs/uksi_20170752_en.pdf) specifies the conditions under which a payment services provider is exempt from carrying out strong customer authentication.
 
 This specification does not provide any direction or guidance on the application of these exemptions.
 
