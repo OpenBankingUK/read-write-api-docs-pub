@@ -181,7 +181,7 @@ MinLength: 1
 MaxLength: 70
 Description: Information that locates and identifies a specific address, as defined by postal services, presented in free format text.
 </title>
-AddressLine [0..1]
+AddressLine [0..7]
 </text>
 
 <text x="98em" y="5.6em" fill="darkslateblue">
@@ -365,7 +365,7 @@ MinLength: 1
 MaxLength: 70
 Description: Information that locates and identifies a specific address, as defined by postal services, presented in free format text.
 </title>
-AddressLine [0..1]
+AddressLine [0..7]
 </text>
 
 <text x="106em" y="31.8em" fill="darkslateblue">
@@ -649,7 +649,7 @@ MinLength: 1
 MaxLength: 70
 Description: Information that locates and identifies a specific address, as defined by postal services, that is presented in free format text.
 </title>
-AddressLine [0..1]
+AddressLine [0..2]
 </text>
 
 <text x="67.6em" y="84.39999999999999em" fill="darkslateblue">
