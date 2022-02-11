@@ -823,7 +823,7 @@ In order to achieve this:
 
 #### Exemptions from Strong Customer Authentication
 
-The PSD2 [RTS](http://ec.europa.eu/finance/docs/level-2-measures/psd2-rts-2017-7782_en.pdf) specifies the conditions under which a payment services provider is exempt from carrying out strong customer authentication.
+The PSD2 [RTS](https://www.legislation.gov.uk/uksi/2017/752/pdfs/uksi_20170752_en.pdf) specifies the conditions under which a payment services provider is exempt from carrying out strong customer authentication.
 
 This specification does not provide any direction or guidance on the application of these exemptions.
 
