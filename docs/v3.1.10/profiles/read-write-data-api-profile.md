@@ -448,7 +448,6 @@ The situation could arise when an ASPSP has chosen to expire an Access Token for
 
 1. The consent has expired (the Expiration Date Time has lapsed)
 2. Suspicious usage of the Access Token or suspected fraud
-3. Implementation of 90 Day SCA
 
 This error can potentially be remedied by asking the PSU to re-authenticate or authenticate with the right permissions.
 
