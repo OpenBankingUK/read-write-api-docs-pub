@@ -145,15 +145,15 @@ The definitions for the status:
 
 ![OBDomesticVRPRequest](./images/OBDomesticVRPRequest.svg)
 
-| Name |Path |Definition | Type |
-| ---- |-----|---------- |------|
-| __Data__ (1..1) | `Data`
-| __PSUAuthenticationMethod__ (1..1) | `Data. PSUAuthenticationMethod` | The authentication method that was used to authenicate the PSU. | OBVRPAuthenticationMethods - Namespaced Enumeration
-| __PSUInteractionType__ (1..1) | `Data. PSUInteractionType` | Indicates interaction type, currently if customer is present or not present. | OBVRPInteractionTypes
-| __ConsentId__ (1..1) | `Data. ConsentId` | Identifier for the Domestic VRP Consent that this payment is made under | Max128Text|
-| __Initiation__ (1..1) | `Data. Initiation` | The parameters of the VRP consent that should remain unchanged for each payment under this VRP. | OBDomesticVRPInitiation
-| __Instruction__ (1..1) | `Data. Instruction` | Specific instructions for this particular payment within the VRP consent | [OBDomesticVRPInstruction](#OBDomesticVRPInstruction)
-| __Risk__ (1..1) | `Risk` | The risk block for this payment. This must match the risk block for the corresponding Domestic VRP consent. | OBRisk1
+| Name                               | Path                            | Definition                                                                                                  | Type                                                  |
+|------------------------------------|---------------------------------|-------------------------------------------------------------------------------------------------------------|-------------------------------------------------------|
+| __Data__ (1..1)                    | `Data`                          |                                                                                                             |                                                       |
+| __PSUAuthenticationMethod__ (1..1) | `Data. PSUAuthenticationMethod` | The authentication method that was used to authenicate the PSU.                                             | OBVRPAuthenticationMethods - Namespaced Enumeration   |
+| __PSUInteractionType__ (0..1)      | `Data. PSUInteractionType`      | Indicates interaction type, currently if customer is present or not present.                                | OBVRPInteractionTypes                                 |
+| __ConsentId__ (1..1)               | `Data. ConsentId`               | Identifier for the Domestic VRP Consent that this payment is made under                                     | Max128Text                                            |
+| __Initiation__ (1..1)              | `Data. Initiation`              | The parameters of the VRP consent that should remain unchanged for each payment under this VRP.             | OBDomesticVRPInitiation                               |
+| __Instruction__ (1..1)             | `Data. Instruction`             | Specific instructions for this particular payment within the VRP consent                                    | [OBDomesticVRPInstruction](#OBDomesticVRPInstruction) |
+| __Risk__ (1..1)                    | `Risk`                          | The risk block for this payment. This must match the risk block for the corresponding Domestic VRP consent. | OBRisk1                                               |
 
 ### OBDomesticVRPResponse
 
