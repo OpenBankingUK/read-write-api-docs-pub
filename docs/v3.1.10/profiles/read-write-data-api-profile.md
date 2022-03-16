@@ -815,10 +815,10 @@ The expiry time for issued access tokens and refresh tokens must be deterministi
 In order to achieve this:
 
 * The ASPSP **must** indicate the lifetime in seconds of the access token in the `expires_in` field of the JSON object returned by the token end-point. (See https://tools.ietf.org/html/rfc6749#section-4.2.2)
-* If the ASPSP issues a refresh token, the ASPSP **must** indicate the date-time at which the refresh token will expire in a claim named `http://openbanking.org.uk/refresh_token_expires_at` in the Id token (returned by the token end-point or userinfo end-point). Its value MUST be a number containing a NumericDate value, as specified in https://tools.ietf.org/html/rfc7519#section-2
-* NumericDate is a JSON numeric value representing the number of seconds from 1970-01-01T00:00:00Z UTC until the specified UTC date-time, ignoring leap seconds.
 * If the ASPSP does not issue a refresh token, the ASPSP **must not** populate the `http://openbanking.org.uk/refresh_token_expires_at` claim in the Id token
-* If the ASPSP issues a refresh token that does not expire, the ASPSP **must** populate the claim named `http://openbanking.org.uk/refresh_token_expires_at` in the Id token with a value representing the number of seconds equal to 200 years (6311385200 seconds) in the future, starting from token issuance time.
+* If the ASPSP issues a refresh token that does not expire, the ASPSP **must not** populate the claim named `http://openbanking.org.uk/refresh_token_expires_at` in the Id token.
+* If the ASPSP issues a refresh token that expires, the ASPSP **must** indicate the date-time at which the refresh token will expire in a claim named `http://openbanking.org.uk/refresh_token_expires_at` in the Id token (returned by the token end-point or userinfo end-point). Its value MUST be a number containing a NumericDate value, as specified in https://tools.ietf.org/html/rfc7519#section-2
+  * NumericDate is a JSON numeric value representing the number of seconds from 1970-01-01T00:00:00Z UTC until the specified UTC date-time, ignoring leap seconds.
 
 #### Exemptions from Strong Customer Authentication
 
