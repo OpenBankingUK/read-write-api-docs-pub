@@ -444,10 +444,11 @@ The situation could arise when:
 
 When the TPP uses an expired access token, the ASPSP **must** return a 401 (Unauthorized) **without** any error response.
 
-The situation could arise when an ASPSP has chosen to expire an Access Token for any of the following reasons:
+The situation could arise when an ASPSP has chosen to expire an Access Token. Here are few reasons:
 
 1. The consent has expired (the Expiration Date Time has lapsed)
 2. Suspicious usage of the Access Token or suspected fraud
+3. SCA is required in permitted circumstances
 
 This error can potentially be remedied by asking the PSU to re-authenticate or authenticate with the right permissions.
 

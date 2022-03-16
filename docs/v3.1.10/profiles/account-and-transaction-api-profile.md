@@ -384,7 +384,7 @@ If the PSU has provided permission for ReadTransactionsDebits, the ASPSP **must*
 
 The ExpirationDateTime is an optional field which specifies the expiration for AISP access to the PSU's data.
 
-The field is optional as the consent for AISP access to a PSU's data may be indefinite. The ExpirationDateTime is not impacted by SCA requirements. If needed, the same account-access-consent resource will be re-authenticated with the same ExpirationDateTime as the original request.
+The field is optional as the consent for AISP access to a PSU's data may be indefinite. If SCA is applied in permitted circumstances, the same account-access-consent resource will be re-authenticated with the same ExpirationDateTime as the original request.
 
 The ExpirationDateTime applies to all Permissions (data clusters) being consented.
 
