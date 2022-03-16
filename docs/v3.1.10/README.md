@@ -19,26 +19,34 @@ The Swagger Specification for R/W APIs can be downloaded from the following GitH
 [https://github.com/OpenBankingUK/read-write-api-specs](https://github.com/OpenBankingUK/read-write-api-specs)
 
 ## Change Log
+### Version 3.1.10 - Release Candidate 1
+- CDRW-4116 - v319_KI12 - include Payments in the scope of event notification
+- CDRW-4118 - v319_KI14 - VRP - add PSUInteractionTypes array and PSUInteractionType field (make non required)
+- CDRW-4122 - TDA-245 - Article 10a SCA exemption changes - as approved
+- CDRW-4122 - TDA-249 - Article 10a SCA exemption changes - as approved
+- CDRW-4123 - TDA-246 - Transaction Risk Indicators - as proposed
+- CDRW-4124 - v3.1.10 - Correct cardinality of array fields in SVG - additional corrections
+
 ### Version 3.1.10 - Draft 1
-CDRW-4102 - v319_KI1  - AISP - update permissions field (AISP: OBReadConsent1)
-CDRW-4103 - v319_KI2  - VRP  - update Instructed amount field
-CDRW-4105 - v319_KI3  - VRP  - Remove revoked status from VRP Consent
-CDRW-4106 - v319_KI4  - VRP  - Remove revoked and expired status from VRP Consent
-CDRW-4107 - v319_KI5  - VRP  - Consents - Clarify access vs Consent revocation
-CDRW-4108 - v319_KI6  - VRP  - OBDomesticVRPConsentResponse make DebtorAccount conditional
-CDRW-4109 - v319_KI7  - VRP  - make MaximumIndividualAmount and PeriodicLimits required
-CDRW-4110 - v319_KI8  - VRP  - Clarification on additional control parameters for non-sweeping
-CDRW-4111 - v319_KI9  - VRP  - remove CreditorAgent and rename PostalAddress under OBDomesticVRPInstruction as CreditorPostalAddress
-CDRW-4112 - v319_KI10 -        Change to make Reference field optional in CoF check as it is optional in the VRP consent request
-CDRW-4114 - v319_KI5a - VRP  - Consents - Clarify access vs Consent revocation - new Event type
-CDRW-4115 - v319_KI11 - VRP  - flatten amount and currency in examples
-CDRW-4116 - v319_KI12 -        include Payments in the scope of event notification
-CDRW-4117 - v319_KI13 -        fix Event Notification link
-CDRW-4118 - v319_KI14 - VRP - add PSUInteractionTypes array and PSUInteractionType field
-CDRW-4125 - v319_KI15 - VRP - Decision 242 - Implement StatusReason and StatusReasonDescription fields
-CDRW-4126 - v319_KI16 - VRP - Decision 243 - Change resource-group to pisp
+- CDRW-4102 - v319_KI1  - AISP - update permissions field (AISP: OBReadConsent1)
+- CDRW-4103 - v319_KI2  - VRP  - update Instructed amount field
+- CDRW-4105 - v319_KI3  - VRP  - Remove revoked status from VRP Consent
+- CDRW-4106 - v319_KI4  - VRP  - Remove revoked and expired status from VRP Consent
+- CDRW-4107 - v319_KI5  - VRP  - Consents - Clarify access vs Consent revocation
+- CDRW-4108 - v319_KI6  - VRP  - OBDomesticVRPConsentResponse make DebtorAccount conditional
+- CDRW-4109 - v319_KI7  - VRP  - make MaximumIndividualAmount and PeriodicLimits required
+- CDRW-4110 - v319_KI8  - VRP  - Clarification on additional control parameters for non-sweeping
+- CDRW-4111 - v319_KI9  - VRP  - remove CreditorAgent and rename PostalAddress under OBDomesticVRPInstruction as CreditorPostalAddress
+- CDRW-4112 - v319_KI10 -        Change to make Reference field optional in CoF check as it is optional in the VRP consent request
+- CDRW-4114 - v319_KI5a - VRP  - Consents - Clarify access vs Consent revocation - new Event type
+- CDRW-4115 - v319_KI11 - VRP  - flatten amount and currency in examples
+- CDRW-4116 - v319_KI12 -        include Payments in the scope of event notification
+- CDRW-4117 - v319_KI13 -        fix Event Notification link
+- CDRW-4118 - v319_KI14 - VRP - add PSUInteractionTypes array and PSUInteractionType field
+- CDRW-4125 - v319_KI15 - VRP - Decision 242 - Implement StatusReason and StatusReasonDescription fields
+- CDRW-4126 - v319_KI16 - VRP - Decision 243 - Change resource-group to pisp
 
-CDRW-4122 - v3.1.10 - Article 10a SCA exemption changes
+- CDRW-4122 - v3.1.10 - Article 10a SCA exemption changes
 
-CDRW-4123 - v3.1.10 - Transaction Risk Indicators
-CDRW-4124 - v3.1.10 - Correct cardinality of array fields in SVG
+- CDRW-4123 - v3.1.10 - Transaction Risk Indicators
+- CDRW-4124 - v3.1.10 - Correct cardinality of array fields in SVG
