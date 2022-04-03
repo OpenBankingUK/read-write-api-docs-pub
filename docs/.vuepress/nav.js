@@ -18,7 +18,7 @@ module.exports = [
     },
     {
         text: 'Other Guidelines',
-        link: 'https://standards.openbanking.org.uk/tpp-guidelines/introduction/latest/',
+        link: 'https://standards.openbanking.org.uk/other-guidelines/introduction/latest/',
     },
     {
         text: 'Reference Library',
