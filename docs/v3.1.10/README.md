@@ -19,6 +19,9 @@ The Swagger Specification for R/W APIs can be downloaded from the following GitH
 [https://github.com/OpenBankingUK/read-write-api-specs](https://github.com/OpenBankingUK/read-write-api-specs)
 
 ## Change Log
+### Version 3.1.10 - FINAL
+- CDRW-4132 - v3.1.10 - Minor EAG feedback driven changes
+
 ### Version 3.1.10 - Release Candidate 1
 - CDRW-4116 - v319_KI12 - include Payments in the scope of event notification
 - CDRW-4118 - v319_KI14 - VRP - add PSUInteractionTypes array and PSUInteractionType field (make non required)
