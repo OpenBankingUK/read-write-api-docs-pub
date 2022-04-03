@@ -126,7 +126,7 @@ Step 6: Check resource status
 
 The standard provides a set of conrol parameters that may be specified as part of the VRP Consent. These control parameters set limits for the payment orders that can be created by the TPP for a given VRP.
 
-In addition to the control parameters defined in this standard ASPSPs may implement additional control parameters, limits and restrictions for non=sweeping VRPs.
+In addition to the control parameters defined in this standard ASPSPs may implement additional control parameters, limits and restrictions for non-sweeping VRPs.
 
 These restrictions should be documented on ASPSP's developer portal.
 
