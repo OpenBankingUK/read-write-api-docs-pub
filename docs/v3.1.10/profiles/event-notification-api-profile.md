@@ -6,7 +6,7 @@
     - [Event Notification Message Signing](#event-notification-message-signing)
     - [SET Aggregation Alignment](#set-aggregation-alignment)
 - [Basics](#basics)
-  - [Overview](#overview-1)
+  - [Overview](#overview-2)
     - [Steps](#steps)
     - [Sequence Diagram](#sequence-diagram)
   - [Event Types and Extensibility](#event-types-and-extensibility)

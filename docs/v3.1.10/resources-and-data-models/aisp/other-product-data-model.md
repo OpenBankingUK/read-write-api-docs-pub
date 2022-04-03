@@ -12,14 +12,14 @@
     - [SupplementaryData](#supplementarydata)
   - [Data Payload](#data-payload)
   - [Data Dictionary](#data-dictionary)
-  - [Data Payload - Enumerations](#data-payload---enumerations)
+  - [Data Payload - Enumerations](#data-payload-enumerations)
 - [Usage Examples](#usage-examples)
   - [Publish Other Product Type](#publish-other-product-type)
     - [Get Accounts Product Request](#get-accounts-product-request)
     - [Get Accounts Product Response](#get-accounts-product-response)
   - [Publish Other Product Type along with Other Fee and Charges](#publish-other-product-type-along-with-other-fee-and-charges)
-    - [Get Accounts Product Request](#get-accounts-product-request-1)
-    - [Get Accounts Product Response](#get-accounts-product-response-1)
+    - [Get Accounts Product Request](#get-accounts-product-request-2)
+    - [Get Accounts Product Response](#get-accounts-product-response-2)
 
 ## Overview
 

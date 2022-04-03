@@ -3,7 +3,7 @@
 - [Overview](#overview)
   - [Document Overview](#document-overview)
 - [Basics](#basics)
-  - [Overview](#overview-1)
+  - [Overview](#overview-2)
     - [Steps](#steps)
     - [Sequence Diagram](#sequence-diagram)
 
@@ -31,7 +31,7 @@ This document consists of the following parts:
 
 File Payments allow a file of payments to be uploaded to an ASPSP for payment initiation.
 
-The high-level flow for file-payments follow the flow for all other payment-order types (as described in the [Basics > Overview](payment-initiation-api-profile.md#overview-1) Section of Payment Initiation API Profile) however, with an additional step to upload the file. The step for staging the payment-order consent is broken into two steps:
+The high-level flow for file-payments follow the flow for all other payment-order types (as described in the [Basics > Overview](payment-initiation-api-profile.md#overview-2) Section of Payment Initiation API Profile) however, with an additional step to upload the file. The step for staging the payment-order consent is broken into two steps:
 
 * POST metadata of the file-payment for payment initiation.
 * POST the file of the file-payment for payment initiation.

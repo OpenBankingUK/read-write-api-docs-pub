@@ -8,16 +8,16 @@
     - [UML Diagram](#uml-diagram)
     - [Data Dictionary](#data-dictionary)
   - [Funds Confirmation - Response](#funds-confirmation---response)
-    - [UML Diagram](#uml-diagram-1)
-    - [Data Dictionary](#data-dictionary-1)
+    - [UML Diagram](#uml-diagram-2)
+    - [Data Dictionary](#data-dictionary-2)
 - [Usage Examples](#usage-examples)
   - [Funds Confirmation](#funds-confirmation)
     - [Example with all permitted fields](#example-with-all-permitted-fields)
       - [Request](#request)
       - [Response](#response)
     - [Example with a USD account](#example-with-a-usd-account)
-      - [Request](#request-1)
-      - [Response](#response-1)
+      - [Request](#request-2)
+      - [Response](#response-2)
 
 ## Overview
 

@@ -2,7 +2,7 @@
 
 - [Overview](#overview)
 - [Basics](#basics)
-  - [Overview](#overview-1)
+  - [Overview](#overview-2)
     - [Steps](#steps)
     - [Sequence Diagram](#sequence-diagram)
   - [Subscriptions for Real Time Event Notifications and Aggregated Polling](#subscriptions-for-real-time-event-notifications-and-aggregated-polling)

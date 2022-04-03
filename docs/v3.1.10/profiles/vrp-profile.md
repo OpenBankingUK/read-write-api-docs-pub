@@ -9,7 +9,7 @@
   - [Payment Restrictions](#payment-restrictions)
   - [Deferred specification of VRP Consent Parameters](#deferred-specification-of-vrp-consent-parameters)
   - [Deferred specification of CreditorAccount and CreditorAgent](#deferred-specification-of-creditoraccount-and-creditoragent)
-- [Security & Access Control](#security--access-control)
+- [Security & Access Control](#security-access-control)
   - [Scopes](#scopes)
   - [Grants Types](#grants-types)
   - [Consent Authorisation](#consent-authorisation)

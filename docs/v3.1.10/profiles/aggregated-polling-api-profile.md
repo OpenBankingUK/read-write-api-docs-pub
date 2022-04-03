@@ -2,7 +2,7 @@
 
 - [Overview](#overview)
 - [Basics](#basics)
-  - [Overview](#overview-1)
+  - [Overview](#overview-2)
     - [Steps](#steps)
     - [Sequence Diagram](#sequence-diagram)
   - [Acknowledgement by the TPP](#acknowledgement-by-the-tpp)
