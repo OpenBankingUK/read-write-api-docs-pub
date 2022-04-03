@@ -27,7 +27,7 @@
 
 #### Request
 
-```json
+```
 POST /domestic-vrp-consents HTTP/1.1
 Authorization: Bearer 2YotnFZFEjr1zCsicMWpAA
 x-idempotency-key: FRESCO.21302.GFX.20
@@ -86,7 +86,7 @@ Accept: application/json
 
 #### Response
 
-```json
+```
 HTTP/1.1 201 Created
 x-jws-signature: V2hhdCB3ZSBnb3QgaGVyZQ0K..aXMgZmFpbHVyZSB0byBjb21tdW5pY2F0ZQ0K
 x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
@@ -98,9 +98,29 @@ Content-Type: application/json
   "Data": {
     "ConsentId": "fe615446-e53a-45ed-954c-ae5d1f97a93b",
     "CreationDateTime": "2017-06-05T15:15:15+00:00",
-    "DomesticVRPId": "OU90210",
-    "Status": "Pending",
-    "StatusUpdateDateTime": "2017-06-05T15:15:15+00:00",
+    "Status": "Authorised",
+    "StatusUpdateDateTime": "2017-06-05T15:15:15+05:00",
+    "ReadRefundAccount": "Yes",
+
+    "ControlParameters": {
+      "PSUAuthenticationMethods": [ "UK.OBIE.SCA" ],
+      "PSUInteractionTypes": [ "OffSession" ],
+      "VRPType": "UK.OBIE.VRPType.Sweeping",
+      "ValidFromDateTime": "2017-06-05T15:15:13+00:00",
+      "ValidToDateTime": "2020-06-05T15:15:13+00:00",
+      "MaximumIndividualAmount": {
+        "Amount": "100.00",
+        "Currency": "GBP"
+      },
+      "PeriodicLimits": [
+        {
+          "Amount": "200.00",
+          "Currency": "GBP",
+          "PeriodAlignment": "Consent",
+          "PeriodType": "Week"
+        }
+      ]
+    },
 
     "DebtorAccount": {
       "SchemeName": "UK.OBIE.IBAN",
@@ -123,22 +143,6 @@ Content-Type: application/json
       "RemittanceInformation": {
         "Reference": "Sweepco"
       }
-    },
-
-    "Instruction": {
-      "CreditorAccount": {
-        "SchemeName": "SortCodeAccountNumber",
-        "Identification": "30949330000010",
-        "SecondaryIdentification": "Roll 90210",
-        "Name": "Marcus Sweepimus"
-      },
-      "InstructedAmount": {
-        "Amount": "10.00",
-        "Currency": "GBP"
-      },
-      "RemittanceInformation": {
-        "Reference": "Sweepco"
-      }
     }
   },
 
@@ -148,7 +152,7 @@ Content-Type: application/json
 
   
   "Links": {
-    "Self": "https://api.alphabank.com/open-banking/v3.1/pisp/domestic-vrps/OU90210"
+    "Self": "https://api.alphabank.com/open-banking/v3.1/pisp/domestic-vrp-consents/fe615446-e53a-45ed-954c-ae5d1f97a93b"
   },
   
   "Meta": {}  
@@ -161,7 +165,7 @@ After consent authorisation
 
 #### Request
 
-```json
+```
 GET /domestic-vrp-consents/fe615446-e53a-45ed-954c-ae5d1f97a93b HTTP/1.1
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9
 x-fapi-auth-date: Sun, 10 Sep 2017 19:43:31 GMT
@@ -172,7 +176,7 @@ Accept: application/json
 
 #### Response
 
-```json
+```
 HTTP/1.1 200 OK
 x-jws-signature: V2hhdCB3ZSBnb3QgaGVyZQ0K..aXMgZmFpbHVyZSB0byBjb21tdW5pY2F0ZQ0K
 x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
@@ -249,7 +253,7 @@ Content-Type: application/json
 
 #### Request
 
-```json
+```
 POST /domestic-vrps HTTP/1.1
 Authorization: Bearer eyJhbGciOiJIUzI1NiIhTyU5cCI6IkpXVCJ9
 x-idempotency-key: FRESNO.1317.GFX.22
@@ -310,7 +314,7 @@ Accept: application/json
 
 #### Response
 
-```json
+```
 HTTP/1.1 201 Created
 x-jws-signature: V2hhdCB3ZSBnb3QgaGVyZQ0K..aXMgZmFpbHVyZSB0byBjb21tdW5pY2F0ZQ0K
 x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
@@ -391,7 +395,7 @@ The PISP specifies the creditor account during payment initiation.
 
 #### Request
 
-```json
+```
 POST /domestic-vrp-consents HTTP/1.1
 Authorization: Bearer 2YotnFZFEjr1zCsicMWpAA
 x-idempotency-key: FRESCO.21302.GFX.20
@@ -439,7 +443,7 @@ Accept: application/json
 
 #### Response
 
-```json
+```
 HTTP/1.1 201 Created
 x-jws-signature: V2hhdCB3ZSBnb3QgaGVyZQ0K..aXMgZmFpbHVyZSB0byBjb21tdW5pY2F0ZQ0K
 x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
@@ -502,7 +506,7 @@ This is returned as part of the GET response.
 
 #### Request
 
-```json
+```
 GET /domestic-vrp-consents/fe615446-e53a-45ed-954c-ae5d1f97a93b HTTP/1.1
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9
 x-fapi-auth-date: Sun, 10 Sep 2017 19:43:31 GMT
@@ -513,7 +517,7 @@ Accept: application/json
 
 #### Response
 
-```json
+```
 HTTP/1.1 200 OK
 x-jws-signature: V2hhdCB3ZSBnb3QgaGVyZQ0K..aXMgZmFpbHVyZSB0byBjb21tdW5pY2F0ZQ0K
 x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
@@ -581,7 +585,7 @@ Finally, when the PISP initiates the payment, it specifies the CreditorAccount t
 
 #### Request
 
-```json
+```
 POST /domestic-vrps HTTP/1.1
 Authorization: Bearer eyJhbGciOiJIUzI1NiIhTyU5cCI6IkpXVCJ9
 x-idempotency-key: FRESNO.1317.GFX.22
@@ -631,7 +635,7 @@ Accept: application/json
 
 #### Response
 
-```json
+```
 HTTP/1.1 201 Created
 x-jws-signature: V2hhdCB3ZSBnb3QgaGVyZQ0K..aXMgZmFpbHVyZSB0byBjb21tdW5pY2F0ZQ0K
 x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
