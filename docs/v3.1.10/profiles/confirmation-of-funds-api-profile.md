@@ -46,7 +46,7 @@ This document consists of the following parts:
 
 ### Resources
 
-Each of the Payment Initiation API resources are documented in the  [*Resources and Data Models*  /  *CBPII*](../resources%20and%20data%20models/cbpii) area of the specification. Each resource is documented with:
+Each of the Payment Initiation API resources are documented in the  [*Resources and Data Models*  /  *CBPII*](../resources-and-data-models/cbpii) area of the specification. Each resource is documented with:
 
 - Endpoints
   - The API endpoints available for the resource.

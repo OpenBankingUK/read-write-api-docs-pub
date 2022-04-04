@@ -6,7 +6,7 @@
     - [Status](#status)
   - [GET /international-standing-orders/{InternationalStandingOrderPaymentId}](#get-international-standing-orders-internationalstandingorderpaymentid)
     - [Status](#status-2)
-  - [GET /international-standing-orders/{InternationalStandingOrderPaymentId}/payment-details](#get-international-standing-orders-internationalstandingorderpaymentidpayment-details)
+  - [GET /international-standing-orders/{InternationalStandingOrderPaymentId}/payment-details](#get-international-standing-orders-internationalstandingorderpaymentid-payment-details)
     - [Status](#status-3)
   - [State Model](#state-model)
     - [Payment Order](#payment-order)

@@ -29,7 +29,7 @@
   - [POST /domestic-payments](#post-domestic-payments-2)
     - [Request](#request)
     - [Response](#response)
-  - [GET /domestic-payments/{DomesticPaymentId}](#get-domestic-paymentsdomesticpaymentid-2)
+  - [GET /domestic-payments/{DomesticPaymentId}](#get-domestic-payments-domesticpaymentid-2)
     - [Request](#request-2)
     - [Response](#response-2)
 

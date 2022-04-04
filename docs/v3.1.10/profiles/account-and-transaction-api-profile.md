@@ -67,7 +67,7 @@ This document consists of the following parts:
 
 ### Resources
 
-Each of the Account and Transaction API resources are documented in the  [*Resources and Data Models*  /  *AISP*](../resources%20and%20data%20models/aisp) area of the specification. Each resource is documented with:
+Each of the Account and Transaction API resources are documented in the  [*Resources and Data Models*  /  *AISP*](../resources-and-data-models/aisp) area of the specification. Each resource is documented with:
 
 - Endpoints
   - The API endpoints available for the resource.
