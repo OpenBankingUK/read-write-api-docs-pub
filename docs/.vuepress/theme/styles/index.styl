@@ -127,7 +127,7 @@ ol ol ol ol
   & > ul
   & > ol
     & > li
-      & > a
+      & > a[href*='#']
         font-weight 700
 
 strong
@@ -153,7 +153,7 @@ h1, h2, h3, h4, h5, h6
     opacity: 1
 
 h1
-  font-size 2.857rem
+  font-size 2.5rem
   color: $primaryBlue
   margin-bottom 1rem
 
@@ -166,15 +166,15 @@ h1
     background-color: currentColor;
 
 h2
-  font-size 2.286rem
+  font-size 2rem
   padding-bottom .3rem
   border-bottom 1px solid $borderColor
 
 h3
-  font-size 1.714rem
+  font-size 1.5rem
 
 h4
-  font-size 1.143rem
+  font-size 1rem
 
 a.header-anchor
   font-size 1em
@@ -191,6 +191,9 @@ a.header-anchor
 code, kbd, .line-number
   font-family source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace
 
+p 
+  font-weight 400
+
 p, ul, ol
   line-height 1.7
 
@@ -203,16 +206,24 @@ table
   margin 1rem 0
   display: block
   overflow-x: auto
+  font-size 0.875rem
+  line-height 1.4
+
+thead
+  th
+    background-color $primaryBlue
+    color #ffffff
+    text-align left
 
 tr
   border-top 1px solid #dfe2e5
 
   &:nth-child(2n)
-    background-color #f6f8fa
+    background-color #EEEEEE
 
 th, td
   border 1px solid #dfe2e5
-  padding .6em 1em
+  padding 1em 1.2em
 
 .theme-container
   &.sidebar-open
@@ -227,6 +238,10 @@ th, td
     .sidebar
       top 0
 
+.icon
+  &.outbound
+    width 20px
+    height 20px
 
 @media (min-width: ($MQMobile + 1px))
   .theme-container.no-sidebar
