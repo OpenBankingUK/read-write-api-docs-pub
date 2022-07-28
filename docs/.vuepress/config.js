@@ -11,7 +11,7 @@ module.exports = {
     themeConfig: {
         sidebar: sidebar,
         nav,
-        logo: '/assets/img/logo-dark.svg',
+        logo: '/assets/img/open-banking-logo.svg',
         sidebarDepth: 0,
         searchMaxSuggestions: 20,
         smoothScroll: true,

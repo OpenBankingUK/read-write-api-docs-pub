@@ -1,37 +1,44 @@
 <template>
   <header class="navbar">
-    <SidebarButton @toggle-sidebar="$emit('toggle-sidebar')"/>
-
-    <router-link
-      :to="$localePath"
-      class="home-link"
-    >
-      <img
-        class="logo"
-        v-if="$site.themeConfig.logo"
-        :src="$withBase($site.themeConfig.logo)"
-        :alt="$siteTitle"
-      >
-      <span
-        ref="siteName"
-        class="site-name"
-        v-if="$siteTitle"
-        :class="{ 'can-hide': $site.themeConfig.logo }"
-      >{{ $siteTitle }}</span>
-    </router-link>
-
     <div
-      class="links"
-      :style="linksWrapMaxWidth ? {
-        'max-width': linksWrapMaxWidth + 'px'
-      } : {}"
+      class="socket"
     >
       <AlgoliaSearchBox
         v-if="isAlgoliaSearch"
         :options="algolia"
       />
       <SearchBox v-else-if="$site.themeConfig.search !== false && $page.frontmatter.search !== false"/>
-      <NavLinks class="can-hide"/>
+    </div>
+
+    <div class="navbar-wrapper">
+      <SidebarButton @toggle-sidebar="$emit('toggle-sidebar')"/>
+  
+      <router-link
+        :to="$localePath"
+        class="home-link"
+      >
+        <img
+          class="logo"
+          v-if="$site.themeConfig.logo"
+          :src="$withBase($site.themeConfig.logo)"
+          :alt="$siteTitle"
+        >
+        <span
+          ref="siteName"
+          class="site-name"
+          v-if="$siteTitle"
+          :class="{ 'can-hide': $site.themeConfig.logo }"
+        >{{ $siteTitle }}</span>
+      </router-link>
+  
+      <div
+        class="links"
+        :style="linksWrapMaxWidth ? {
+          'max-width': linksWrapMaxWidth + 'px'
+        } : {}"
+      >
+        <NavLinks class="can-hide"/>
+      </div>
     </div>
   </header>
 </template>
@@ -95,9 +102,9 @@ $navbar-horizontal-padding = 1.5rem
   a, span, img
     display inline-block
   .logo
-    height $navbarHeight - 1.4rem
+    // height $navbarHeight - 1.4rem
     min-width $navbarHeight - 1.4rem
-    margin-right 0.8rem
+    // margin-right 0.8rem
     vertical-align top
   .site-name
     font-size 1.3rem
@@ -110,9 +117,9 @@ $navbar-horizontal-padding = 1.5rem
     background-color white
     white-space nowrap
     font-size 0.9rem
-    position absolute
-    right $navbar-horizontal-padding
-    top $navbar-vertical-padding
+    // position absolute
+    // right $navbar-horizontal-padding
+    // top $navbar-vertical-padding
     display flex
     .search-box
       flex: 0 0 auto
@@ -132,13 +139,9 @@ $navbar-horizontal-padding = 1.5rem
       text-overflow ellipsis
 
 .logo {
-  // padding: 1.775rem 0 1.35rem; // official
-  padding: 1.35rem 0 1.35rem;
-  max-width: 11rem;
-  width: 100%;
-  display: block;
+  display: flex !important;
   height: 100% !important;
-  padding: 0.4em;
+  padding: 0;
 }
 
 .nav-links,
@@ -146,9 +149,15 @@ $navbar-horizontal-padding = 1.5rem
   padding: 0.4em;
 }
 
-.home-link {
+.navbar-wrapper
   display: flex;
-  padding: 0.4em;
+  justify-content: space-between;
+  align-items: center;
+
+.home-link {
+  display: block;
+  padding: 0;
+  width 190px
 }
 
 .links {

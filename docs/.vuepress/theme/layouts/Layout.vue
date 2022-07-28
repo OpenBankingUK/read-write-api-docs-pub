@@ -10,42 +10,45 @@
       @toggle-sidebar="toggleSidebar"
     />
 
-    <div
-      class="sidebar-mask"
-      @click="toggleSidebar(false)"
-    ></div>
+    <div class="page-wrap">
+      <div
+        class="sidebar-mask"
+        @click="toggleSidebar(false)"
+      ></div>
+  
+      <Sidebar
+        :items="sidebarItems"
+        @toggle-sidebar="toggleSidebar"
+      >
+        <slot
+          name="sidebar-top"
+          slot="top"
+        />
+        <slot
+          name="sidebar-bottom"
+          slot="bottom"
+        />
+      </Sidebar>
 
-    <Sidebar
-      :items="sidebarItems"
-      @toggle-sidebar="toggleSidebar"
-    >
-      <slot
-        name="sidebar-top"
-        slot="top"
-      />
-      <slot
-        name="sidebar-bottom"
-        slot="bottom"
-      />
-    </Sidebar>
+      <Home v-if="$page.frontmatter.home"/>
 
-    <Home v-if="$page.frontmatter.home"/>
+      <Page
+        v-else
+        :sidebar-items="sidebarItems"
+      >
+        <slot
+          name="page-top"
+          slot="top"
+        />
+        <slot
+          name="page-bottom"
+          slot="bottom"
+        />
+      </Page>
+    </div>
 
-    <Page
-      v-else
-      :sidebar-items="sidebarItems"
-    >
-      <slot
-        name="page-top"
-        slot="top"
-      />
-      <slot
-        name="page-bottom"
-        slot="bottom"
-      />
-    </Page>
 
-    <OBIEFooter />
+    <StdRefFooter />
   </div>
 </template>
 
@@ -54,11 +57,11 @@ import Home from '@theme/components/Home.vue'
 import Navbar from '@theme/components/Navbar.vue'
 import Page from '@theme/components/Page.vue'
 import Sidebar from '@theme/components/Sidebar.vue'
-import OBIEFooter from '@theme/obie-components/OBIEFooter.vue'
+import StdRefFooter from '@theme/obie-components/StdRefFooter.vue'
 import { resolveSidebarItems } from '../util'
 
 export default {
-  components: { Home, Page, Sidebar, Navbar, OBIEFooter },
+  components: { Home, Page, Sidebar, Navbar, StdRefFooter },
 
   data () {
     return {

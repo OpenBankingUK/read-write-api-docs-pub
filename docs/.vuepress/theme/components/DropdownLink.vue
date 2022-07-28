@@ -20,6 +20,18 @@
         v-show="open"
       >
         <li
+          class="dropdown-description"
+        >
+          <span class="dropdown-description__title">{{ item.text }}</span>
+          <span class="dropdown-description__description">{{ item.description }}</span>
+          <a
+             class="dropdown-description__link"
+            :href="item"
+            target="_blank"
+          >Find out more</a>
+        </li>
+
+        <li
           class="dropdown-item"
           :key="subItem.link || index"
           v-for="(subItem, index) in item.items"
@@ -160,20 +172,14 @@ export default {
       border-bottom 0
     .nav-dropdown
       display none
-      // Avoid height shaked by clicking
-      height auto !important
-      box-sizing border-box;
-      max-height calc(100vh - 2.7rem)
-      overflow-y auto
       position absolute
       top 100%
-      right 0
+      left 0
+      width 100%
       background-color #fff
       padding 0.6rem 0
-      border 1px solid #ddd
-      border-bottom-color #ccc
       text-align left
-      border-radius 0.25rem
-      white-space nowrap
       margin 0
+      border-top 1px solid rgba(0,0,0,.1);
+      box-shadow 0 8px 24px rgba(16, 18, 137, 0.1);
 </style>

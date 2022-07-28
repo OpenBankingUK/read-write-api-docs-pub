@@ -202,6 +202,8 @@ hr
   border-top 1px solid $borderColor
 
 table
+  position relative
+  z-index 2
   border-collapse collapse
   margin 1rem 0
   display: block
@@ -237,6 +239,19 @@ th, td
 
     .sidebar
       top 0
+
+.page-wrap
+  display flex
+  width 100%
+  flex-wrap wrap
+
+  .sidebar
+    position sticky
+    height calc(100vh - 116px)
+
+  .page
+    padding 0
+    width calc(100% - 20rem)
 
 .icon
   &.outbound
