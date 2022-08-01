@@ -198,6 +198,8 @@ export default {
         margin-left 3px
         margin-top -2px
         transition margin-left .25s ease
+      &:hover
+        color $primaryBlue
       &:hover svg
         margin-left 6px
 

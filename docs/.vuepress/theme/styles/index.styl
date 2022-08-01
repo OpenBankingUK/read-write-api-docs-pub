@@ -64,7 +64,7 @@ body
 {$contentClass}:not(.custom)
   @extend $wrapper
   > *:first-child
-    margin-top $navbarHeight
+    margin-top 0
 
   a:hover
     text-decoration underline
@@ -145,12 +145,12 @@ h1, h2, h3, h4, h5, h6
   line-height 1.25
 
   {$contentClass}:not(.custom) > &
-    margin-top (0.5rem - $navbarHeight)
-    padding-top ($navbarHeight + 1rem)
-    margin-bottom 0
+    //margin-top (0.5rem - $navbarHeight)
+    //padding-top ($navbarHeight + 1rem)
+    //margin-bottom 0
 
     &:first-child
-      margin-top -1.5rem
+      //margin-top -1.5rem
       margin-bottom 1.75rem
 
       + p, + pre, + .custom-block
@@ -254,11 +254,12 @@ th, td
 
   .sidebar
     position sticky
-    height calc(100vh - 116px)
+    height calc(100vh - 137px)
 
   .page
     padding 0
-    width calc(100% - 20rem)
+    width calc(100% - 25rem)
+    padding-top $navbarHeight
 
 .icon
   &.outbound

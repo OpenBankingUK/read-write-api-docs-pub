@@ -22,7 +22,6 @@ export default {
 
 <style lang="stylus">
 .sidebar
-  height: calc(100vh - 306px);
   ul
     padding 0
     margin 0
@@ -64,7 +63,4 @@ export default {
     & > .sidebar-links
       padding 1rem 0
 
-.sidebar {
-  height: calc(100vh - 356px);
-}
 </style>

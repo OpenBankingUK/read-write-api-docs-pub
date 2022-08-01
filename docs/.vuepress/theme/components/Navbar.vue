@@ -58,11 +58,18 @@
       class="search-wrapper"
       :class="{ active: isSearchOpen }"
     >
-      <AlgoliaSearchBox
-        v-if="isAlgoliaSearch"
-        :options="algolia"
-      />
-      <SearchBox v-else-if="$site.themeConfig.search !== false && $page.frontmatter.search !== false"/>
+      <div class="container">
+        <span
+          class="close"
+          @click="isSearchOpen = false"
+        >Close X</span>
+        <h3>HOW CAN WE HELP?</h3>
+        <AlgoliaSearchBox
+          v-if="isAlgoliaSearch"
+          :options="algolia"
+        />
+        <SearchBox v-else-if="$site.themeConfig.search !== false && $page.frontmatter.search !== false"/>
+      </div>
     </div>
   </header>
 </template>
@@ -170,8 +177,7 @@ $navbar-horizontal-padding = 1.5rem
   padding: 0;
 }
 
-.nav-links,
-.search-box {
+.nav-links {
   padding: 0.4em;
 }
 
@@ -196,15 +202,13 @@ $navbar-horizontal-padding = 1.5rem
   // box-sizing: content-box;
 }
 
-.search-box {
-  margin-right: 0;
-}
-
 .links {
   // margin-right: 1rem;
 }
 
 .search-box {
+  position: relative;
+  margin-right: 0;
   display: flex;
 
   input {
@@ -221,6 +225,56 @@ $navbar-horizontal-padding = 1.5rem
 
 .search-wrapper {
   display: none;
+  background: $primaryBlue
+  position: absolute;
+  width: 100%;
+  padding: 0;
+
+  .close {
+    display: block;
+    position: absolute;
+    color: white;
+    top: 20px;
+    right: 5.4%;
+    font-size: 14px;
+  }
+
+  .suggestions {
+    width: calc(100% - 15px);
+    border-radius: 0;
+    max-height: 400px;
+    overflow-y: scroll;
+  }
+
+  .container {
+    max-width: 620px;
+    padding: 50px 0;
+  }
+
+  h3 {
+    color: #fff;
+    font-size: 16px;
+    letter-spacing: .57px;
+    line-height: 20px;
+    text-transform: uppercase;
+    padding: 0 0 10px;
+    max-width: 620px;
+    margin: 0 auto;
+  }
+
+  input {
+    border-radius: 0;
+    margin: auto;
+    width: 100%;
+    font-size: 16px;
+    letter-spacing: .15px;
+    color: #000;
+    line-height: normal;
+    border: 0;
+    padding: 14px 14px 14px 36px;
+    background-position: left 10px center;
+    height: auto;
+  }
 
   &.active {
     display: block;
@@ -234,6 +288,7 @@ $navbar-horizontal-padding = 1.5rem
   letter-spacing: .00625rem;
   line-height: 1.05rem;
   font-weight: 300;
+  cursor: pointer;
 
   svg {
     height: 14px;
