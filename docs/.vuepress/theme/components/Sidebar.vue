@@ -41,12 +41,13 @@ export default {
       padding 0.5rem 0 0.5rem 1.5rem
   & > .sidebar-links
     padding 1.5rem 0
+    & > li
+      border-bottom 1px solid #ddd
+      padding 0.45rem 1rem 0.35rem 2rem
     & > li > a.sidebar-link
       font-size 1.1em
       line-height 1.7
       font-weight bold
-    & > li:not(:first-child)
-      margin-top .75rem
 
 .theme-container.sidebar-open .sidebar {
   border-right: 1px solid $borderColor;

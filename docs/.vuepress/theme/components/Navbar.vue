@@ -237,6 +237,7 @@ $navbar-horizontal-padding = 1.5rem
     top: 20px;
     right: 5.4%;
     font-size: 14px;
+    cursor: pointer;
   }
 
   .suggestions {

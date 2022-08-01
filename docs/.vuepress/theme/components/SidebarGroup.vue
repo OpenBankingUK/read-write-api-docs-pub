@@ -107,7 +107,6 @@ export default {
   width 100%
   box-sizing border-box
   margin 0
-  border-left 0.25rem solid transparent
   &.open, &:hover
     color inherit
   .arrow
@@ -116,14 +115,27 @@ export default {
     left 0.5em
   &.clickable
     &.active
-      font-weight 600
-      color $accentColor
-      border-left-color $accentColor
+      font-weight 700
+      color $primaryBlue
     &:hover
-      color $accentColor
+      color $primaryBlue
 
 .sidebar-group-items
   transition height .1s ease-out
   font-size 0.95em
   overflow hidden
+
+.sidebar-group.depth-0
+ & > a
+  color $primaryBlue
+  &:hover, &.open
+    text-decoration underline
+
+.sidebar
+  & > .sidebar-links
+    & > li > a
+      color $primaryBlue
+      &:hover
+        text-decoration underline
+
 </style>
