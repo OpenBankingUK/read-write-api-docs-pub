@@ -3,14 +3,27 @@
     <div
       class="socket"
     >
-      <AlgoliaSearchBox
-        v-if="isAlgoliaSearch"
-        :options="algolia"
-      />
-      <SearchBox v-else-if="$site.themeConfig.search !== false && $page.frontmatter.search !== false"/>
+      <div class="container">
+        <div
+          class="search-button"
+          @click="isSearchOpen = !isSearchOpen"
+        >
+          <svg width="14px" height="14px" viewBox="0 0 14 14" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+            <title>icon_search</title>
+            <g id="🎨-Design" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+              <g id="T#4---Generic-Content" transform="translate(-1254.000000, -11.000000)" fill="currentColor" fill-rule="nonzero" stroke="currentColor" stroke-width="0.4">
+                <g id="Secondary-Nav">
+                  <path d="M1263.76363,19.8996461 L1266.82154,22.9581266 C1267.05943,23.1960632 1267.06021,23.5810599 1266.81955,23.8217632 C1266.58056,24.0608 1266.18963,24.0573595 1265.95607,23.8237552 L1262.89817,20.7652747 C1260.97752,22.2603077 1258.19934,22.1249657 1256.43395,20.3592489 C1254.52202,18.4469551 1254.52202,15.3465142 1256.43395,13.4342204 C1258.34589,11.5219265 1261.44575,11.5219265 1263.35768,13.4342204 C1265.12307,15.1999372 1265.25838,17.9786391 1263.76363,19.8996461 L1263.76363,19.8996461 Z M1262.49222,19.4936204 C1263.92617,18.0594 1263.92617,15.7340693 1262.49222,14.2998489 C1261.05826,12.8656286 1258.73337,12.8656286 1257.29942,14.2998489 C1255.86547,15.7340693 1255.86547,18.0594 1257.29942,19.4936204 C1258.73337,20.9278407 1261.05826,20.9278407 1262.49222,19.4936204 Z" id="icon_search"></path>
+                </g>
+              </g>
+            </g>
+          </svg>
+          <span>Search</span>
+        </div>
+      </div>
     </div>
 
-    <div class="navbar-wrapper">
+    <div class="navbar-wrapper container">
       <SidebarButton @toggle-sidebar="$emit('toggle-sidebar')"/>
   
       <router-link
@@ -40,6 +53,17 @@
         <NavLinks class="can-hide"/>
       </div>
     </div>
+
+    <div
+      class="search-wrapper"
+      :class="{ active: isSearchOpen }"
+    >
+      <AlgoliaSearchBox
+        v-if="isAlgoliaSearch"
+        :options="algolia"
+      />
+      <SearchBox v-else-if="$site.themeConfig.search !== false && $page.frontmatter.search !== false"/>
+    </div>
   </header>
 </template>
 
@@ -54,7 +78,8 @@ export default {
 
   data () {
     return {
-      linksWrapMaxWidth: null
+      linksWrapMaxWidth: null,
+      isSearchOpen: false
     }
   },
 
@@ -97,7 +122,8 @@ $navbar-vertical-padding = 0.7rem
 $navbar-horizontal-padding = 1.5rem
 
 .navbar
-  padding $navbar-vertical-padding $navbar-horizontal-padding
+  // padding $navbar-vertical-padding $navbar-horizontal-padding
+  padding 0
   line-height $navbarHeight - 1.4rem
   a, span, img
     display inline-block
@@ -186,5 +212,34 @@ $navbar-horizontal-padding = 1.5rem
   }
 }
 
+.socket {
+  background-color: $primaryBlue;
+  padding: 10px 0;
+  color: #fff;
+  text-align: right;
+}
+
+.search-wrapper {
+  display: none;
+
+  &.active {
+    display: block;
+  }
+}
+
+.search-button {
+  display: inline-flex;
+  align-items: center;
+  font-size: .875rem;
+  letter-spacing: .00625rem;
+  line-height: 1.05rem;
+  font-weight: 300;
+
+  svg {
+    height: 14px;
+    width: 14px;
+    margin-right: 4px;
+  }
+}
 
 </style>
