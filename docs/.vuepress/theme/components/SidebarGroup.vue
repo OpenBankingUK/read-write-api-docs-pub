@@ -21,9 +21,18 @@
     >
       <span>{{ item.title }}</span>
       <span
-        class="arrow"
+        class="chevron"
         v-if="collapsable"
-        :class="open ? 'down' : 'right'">
+        :class="open ? 'up' : 'down'"
+      >
+        <svg width="8px" height="14px" viewBox="0 0 8 14" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+          <title>ico_chevron</title>
+          <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+            <g transform="translate(-788.000000, -1329.000000)" fill="currentColor" fill-rule="nonzero">
+              <polygon transform="translate(792.000000, 1336.000000) rotate(-90.000000) translate(-792.000000, -1336.000000)" points="798.5 1333.45455 792 1340 785.5 1333.45455 786.944444 1332 792 1337.09091 797.055556 1332"></polygon>
+            </g>
+          </g>
+        </svg>
       </span>
     </router-link>
 
@@ -35,9 +44,18 @@
     >
       <span>{{ item.title }}</span>
       <span
-        class="arrow"
+        class="chevron"
         v-if="collapsable"
-        :class="open ? 'down' : 'right'">
+        :class="open ? 'up' : 'down'"
+      >
+        <svg width="8px" height="14px" viewBox="0 0 8 14" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+          <title>ico_chevron</title>
+          <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+            <g transform="translate(-788.000000, -1329.000000)" fill="currentColor" fill-rule="nonzero">
+              <polygon transform="translate(792.000000, 1336.000000) rotate(-90.000000) translate(-792.000000, -1336.000000)" points="798.5 1333.45455 792 1340 785.5 1333.45455 786.944444 1332 792 1337.09091 797.055556 1332"></polygon>
+            </g>
+          </g>
+        </svg>
       </span>
     </p>
 
@@ -113,6 +131,17 @@ export default {
     position relative
     top -0.12em
     left 0.5em
+  .chevron
+    float right
+    transform translateY(3px)
+    &.up
+      svg
+        transform rotate(-90deg)
+    &.down
+      svg
+        transform rotate(90deg)
+    svg
+      color #00A5B7
   &.clickable
     &.active
       font-weight 700
