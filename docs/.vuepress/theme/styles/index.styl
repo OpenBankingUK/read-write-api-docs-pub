@@ -145,6 +145,15 @@ h1, h2, h3, h4, h5, h6
   font-weight 600
   line-height 1.25
 
+  &[id]
+    &:before
+      display block
+      content " "
+      margin-top (0 - $navbarHeight)
+      height $navbarHeight
+      visibility hidden
+      pointer-events none
+
   {$contentClass}:not(.custom) > &
     //margin-top (0.5rem - $navbarHeight)
     //padding-top ($navbarHeight + 1rem)
