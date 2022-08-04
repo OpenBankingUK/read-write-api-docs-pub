@@ -29,6 +29,7 @@ body
 
 .navbar
   position fixed
+  max-width 100vw
   z-index 20
   top 0
   left 0
@@ -253,13 +254,19 @@ th, td
   flex-wrap wrap
 
   .sidebar
-    position sticky
     height calc(100vh - 137px)
+    @media (min-width: $MQMobile + 1px)
+      position sticky
 
   .page
     padding 0
-    width calc(100% - 25rem)
     padding-top $navbarHeight
+    width: 90%;
+    margin-right: auto;
+    margin-left: auto;
+    max-width: 1268px;
+    @media (min-width: $MQMobile + 1px)
+      width calc(100% - 25rem)
 
 .icon
   &.outbound

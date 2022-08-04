@@ -24,8 +24,6 @@
     </div>
 
     <div class="navbar-wrapper container">
-      <SidebarButton @toggle-sidebar="$emit('toggle-sidebar')"/>
-  
       <router-link
         :to="$localePath"
         class="home-link"
@@ -43,6 +41,8 @@
           :class="{ 'can-hide': $site.themeConfig.logo }"
         >{{ $siteTitle }}</span>
       </router-link>
+
+      <SidebarButton @toggle-sidebar="$emit('toggle-sidebar')"/>
   
       <div
         class="links"
@@ -91,7 +91,7 @@ export default {
   },
 
   mounted () {
-    const MOBILE_DESKTOP_BREAKPOINT = 719 // refer to config.styl
+    const MOBILE_DESKTOP_BREAKPOINT = 930 // refer to config.styl
     const NAVBAR_VERTICAL_PADDING = parseInt(css(this.$el, 'paddingLeft')) + parseInt(css(this.$el, 'paddingRight'))
     const handleLinksWrapWidth = () => {
       if (document.documentElement.clientWidth < MOBILE_DESKTOP_BREAKPOINT) {
@@ -160,11 +160,12 @@ $navbar-horizontal-padding = 1.5rem
 
 @media (max-width: $MQMobile)
   .navbar
-    padding-left 4rem
+    //padding-left 4rem
     .can-hide
       display none
     .links
-      padding-left 1.5rem
+      display none
+      //padding-left 1.5rem
     .site-name
       width calc(100vw - 9.4rem)
       overflow hidden
@@ -185,6 +186,8 @@ $navbar-horizontal-padding = 1.5rem
   display: flex;
   justify-content: space-between;
   align-items: center;
+  @media (max-width: $MQMobile)
+    padding: 24px 0;
 
 .home-link {
   display: block;
@@ -275,6 +278,7 @@ $navbar-horizontal-padding = 1.5rem
     padding: 14px 14px 14px 36px;
     background-position: left 10px center;
     height: auto;
+    left: 0;
   }
 
   &.active {
