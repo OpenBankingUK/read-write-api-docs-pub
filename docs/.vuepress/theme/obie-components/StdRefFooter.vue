@@ -24,7 +24,10 @@
               <img class="g02__logo-image" src="https://standards.openbanking.org.uk/wp-content/uploads/2022/03/open-banking-footer-logo.png" alt="" width="567" height="57">
             </a>
             
-            <p>© Copyright Open Banking Limited 2022.
+            <p>
+              © Copyright Open Banking Limited 2022.
+              <br><br>
+              Unless otherwise stated, all specifications, documentation, articles, and downloadable reference applications are subject to the MIT Licence.
               <br><br>
               Registered in England. Company Number: 10440081
               <br><br>
