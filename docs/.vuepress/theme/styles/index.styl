@@ -173,34 +173,49 @@ h1
   font-size 2.5rem
   color: $primaryBlue
   margin-bottom 1rem
-
   &:after
     content: "";
     display: block;
     width: 2em;
     height: 0.2em;
     margin-top: 0.225em;
-    background-color: currentColor;
+    background-color: currentColor
 
 h2
   font-size 2rem
   padding-top .5em
   padding-bottom .3rem
   border-bottom 1px solid $borderColor
+  &[id]
+    &:before
+      margin-top calc(0px - 137px + 0.8rem)
+      height calc(137px + 0.8rem)
 
 h3
   font-size 1.5rem
   padding-top .5em
   line-height 1.4
+  &[id]
+    &:before
+      margin-top calc(0px - 137px + 0.5em)
+      height calc(137px + 0.5em)
 
 h4
   font-size 1rem
   padding-top .5em
   line-height 1.4
+  &[id]
+    &:before
+      margin-top calc(0px - 137px + 0.5em)
+      height calc(137px + 0.5em)
 
 h5
   padding-top .5em
   line-height 1.4
+  &[id]
+    &:before
+      margin-top calc(0px - 137px + 0.5em)
+      height calc(137px + 0.5em)
 
 a.header-anchor
   font-size 1em
@@ -234,8 +249,10 @@ table
   margin 1rem 0
   display: block
   overflow-x: auto
-  font-size 0.875rem
+  font-size 0.8rem
   line-height 1.4
+  pre
+    white-space pre-wrap
 
 thead
   th
