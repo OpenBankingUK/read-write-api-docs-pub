@@ -135,6 +135,7 @@ export default {
 
 <style lang="stylus">
 .g02 {
+  display: flex;
   position: relative;
   background-color: $primaryBlue;
   color :#fff;
