@@ -35,8 +35,8 @@ printf "
                           |_|
 "
 
-# printf "%b" "\e[32m" "yarn installing dependencies ..." "\e[0m" "\n"
-# yarn install --non-interactive
+printf "%b" "\e[32m" "yarn installing dependencies ..." "\e[0m" "\n"
+yarn install --non-interactive
 
 printf "%b" "\e[32m" "running yarn docs:build ..." "\e[0m" "\n"
 yarn docs:build
