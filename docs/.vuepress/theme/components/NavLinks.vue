@@ -117,14 +117,16 @@ export default {
 
 <style lang="stylus">
 .nav-links
-  display inline-block
+  display flex
+  align-items center
+
   a
     line-height 1.4rem
     color inherit
     &:hover, &.router-link-active
       color $accentColor
   .nav-item
-    position relative
+    // position relative
     display inline-block
     margin-left 1.5rem
     line-height 2rem

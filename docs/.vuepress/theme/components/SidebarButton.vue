@@ -12,14 +12,16 @@
   display none
   width 1.25rem
   height 1.25rem
-  position absolute
-  padding 0.6rem
-  top 0.6rem
-  left 1rem
+  //position absolute
+  //padding 0.6rem
+  //top 0.6rem
+  //left 1rem
   .icon
     display block
-    width 1.25rem
-    height 1.25rem
+    color $primaryBlue
+    width 1.8rem
+    height 1.8rem
+    transform scaleX(1.4)
 
 @media (max-width: $MQMobile)
   .sidebar-button
@@ -31,12 +33,12 @@
 
 .sidebar-button,
 .icon {
-  padding: 0.4em;
+  // padding: 0.4em;
 }
 
 .sidebar-button {
   width: unset;
   height: unset;
-  top: unset;
+  // top: unset;
 }
 </style>

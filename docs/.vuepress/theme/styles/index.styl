@@ -17,16 +17,24 @@ body
   font-size 16px
   color $textColor
 
+.container
+  width 90%
+  margin-right auto
+  margin-left auto
+  max-width 1268px
+  line-height 1
+
 .page
   padding-left $sidebarWidth
 
 .navbar
   position fixed
+  max-width 100vw
   z-index 20
   top 0
   left 0
   right 0
-  height $navbarHeight
+  // height $navbarHeight
   background-color #fff
   box-sizing border-box
   border-bottom 1px solid $borderColor
@@ -42,7 +50,7 @@ body
 
 .sidebar
   font-size 16px
-  background-color #fff
+  background-color #FAFAFA
   width $sidebarWidth
   position fixed
   z-index 10
@@ -55,9 +63,10 @@ body
   overflow-y auto
 
 {$contentClass}:not(.custom)
-  @extend $wrapper
+  margin 0 auto
+  padding 2rem
   > *:first-child
-    margin-top $navbarHeight
+    margin-top 0
 
   a:hover
     text-decoration underline
@@ -78,7 +87,7 @@ body
     max-width 100%
 
 a
-  font-weight 500
+  font-weight 400
   color $accentColor
   text-decoration none
 
@@ -106,6 +115,30 @@ blockquote
 ul, ol
   padding-left 1.2em
 
+  a
+    line-height 2
+
+  & > li
+    &:marker
+      color #000000
+
+ol
+  ol
+    list-style-type lower-alpha
+
+    ol
+      list-style-type: lower-roman
+
+ol ol ol ol
+  list-style-type: decimal
+
+.content__default
+  & > ul
+  & > ol
+    & > li
+      & > a[href*='#']
+        font-weight 700
+
 strong
   font-weight 600
 
@@ -113,14 +146,23 @@ h1, h2, h3, h4, h5, h6
   font-weight 600
   line-height 1.25
 
+  &[id]
+    &:before
+      display block
+      content " "
+      margin-top (0 - $navbarHeight)
+      height $navbarHeight
+      visibility hidden
+      pointer-events none
+
   {$contentClass}:not(.custom) > &
-    margin-top (0.5rem - $navbarHeight)
-    padding-top ($navbarHeight + 1rem)
-    margin-bottom 0
+    //margin-top (0.5rem - $navbarHeight)
+    //padding-top ($navbarHeight + 1rem)
+    //margin-bottom 0
 
     &:first-child
-      margin-top -1.5rem
-      margin-bottom 1rem
+      //margin-top -1.5rem
+      margin-bottom 1.75rem
 
       + p, + pre, + .custom-block
         margin-top 2rem
@@ -129,29 +171,71 @@ h1, h2, h3, h4, h5, h6
     opacity: 1
 
 h1
-  font-size 2.2rem
+  font-size 2.5rem
+  color: $primaryBlue
+  margin-bottom 1rem
+  &:after
+    content: "";
+    display: block;
+    width: 2em;
+    height: 0.2em;
+    margin-top: 0.225em;
+    background-color: currentColor
 
 h2
-  font-size 1.65rem
-  padding-bottom .3rem
+  font-size 2rem
+  margin-top .5em
+  margin-bottom .3rem
   border-bottom 1px solid $borderColor
+  &[id]
+    &:before
+      margin-top calc(0px - 137px + 0.8rem)
+      height calc(137px + 0.8rem)
 
 h3
-  font-size 1.35rem
+  font-size 1.5rem
+  margin-top .5em
+  line-height 1.4
+  &[id]
+    &:before
+      margin-top calc(0px - 137px + 0.5em)
+      height calc(137px + 0.5em)
+
+h4
+  font-size 1rem
+  margin-top .5em
+  line-height 1.4
+  &[id]
+    &:before
+      margin-top calc(0px - 137px + 0.5em)
+      height calc(137px + 0.5em)
+
+h5
+  margin-top .5em
+  line-height 1.4
+  &[id]
+    &:before
+      margin-top calc(0px - 137px + 0.5em)
+      height calc(137px + 0.5em)
 
 a.header-anchor
-  font-size 0.85em
+  font-size 1em
+  font-weight 700
   float left
   margin-left -0.87em
   padding-right 0.23em
-  margin-top 0.125em
+  margin-top 0.025em
   opacity 0
+  line-height 1.4
 
   &:hover
     text-decoration none
 
 code, kbd, .line-number
   font-family source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace
+
+p 
+  font-weight 400
 
 p, ul, ol
   line-height 1.7
@@ -161,20 +245,32 @@ hr
   border-top 1px solid $borderColor
 
 table
+  position relative
+  z-index 2
   border-collapse collapse
   margin 1rem 0
   display: block
   overflow-x: auto
+  font-size 0.8rem
+  line-height 1.4
+  pre
+    white-space pre-wrap
+
+thead
+  th
+    background-color $primaryBlue
+    color #ffffff
+    text-align left
 
 tr
   border-top 1px solid #dfe2e5
 
   &:nth-child(2n)
-    background-color #f6f8fa
+    background-color #EEEEEE
 
 th, td
   border 1px solid #dfe2e5
-  padding .6em 1em
+  padding 1em 1.2em
 
 .theme-container
   &.sidebar-open
@@ -189,6 +285,31 @@ th, td
     .sidebar
       top 0
 
+.page-wrap
+  display flex
+  width 100%
+  flex-wrap wrap
+
+  .sidebar
+    height calc(100vh - 137px)
+    @media (min-width: $MQMobile + 1px)
+      position sticky
+
+  .page
+    padding 0
+    padding-top $navbarHeight
+    width: 90%;
+    margin-right: auto;
+    margin-left: auto;
+    // max-width: 1268px;
+    min-height: calc(100vh - 137px)
+    @media (min-width: $MQMobile + 1px)
+      width calc(100% - 25rem)
+
+.icon
+  &.outbound
+    width 20px
+    height 20px
 
 @media (min-width: ($MQMobile + 1px))
   .theme-container.no-sidebar

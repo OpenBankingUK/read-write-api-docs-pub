@@ -20,6 +20,10 @@ shopt -s failglob    # Non-matching globs throw errors
 shopt -s nocaseglob  # Case insensitive globs
 shopt -s dotglob     # Wildcards match dotfiles ("*.sh" => ".foo.sh")
 
+# Fix memory leak issue
+export NODE_OPTIONS="--max-old-space-size=8192"
+printf "Setting node memory size to 8GB"
+
 # build
 printf "
  ______ _  _  _     ______

@@ -20,11 +20,48 @@
         v-show="open"
       >
         <li
+          class="dropdown-description"
+        >
+          <div class="dropdown-description__title">{{ item.text }}</div>
+          <div class="dropdown-description__description">{{ item.description }}</div>
+          <a
+             class="dropdown-description__link"
+            :href="item"
+            target="_blank"
+          >
+            <span>Find out more</span>
+            <svg width="8px" height="14px" viewBox="0 0 8 14" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+              <title>ico_chevron</title>
+              <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                <g transform="translate(-788.000000, -1329.000000)" fill="#00A5B7" fill-rule="nonzero">
+                  <polygon transform="translate(792.000000, 1336.000000) rotate(-90.000000) translate(-792.000000, -1336.000000)" points="798.5 1333.45455 792 1340 785.5 1333.45455 786.944444 1332 792 1337.09091 797.055556 1332"></polygon>
+                </g>
+              </g>
+            </svg>
+          </a>
+        </li>
+
+        <li
           class="dropdown-item"
           :key="subItem.link || index"
           v-for="(subItem, index) in item.items"
         >
-          <h4 v-if="subItem.type === 'links'">{{ subItem.text }}</h4>
+          <h4
+            v-if="subItem.type === 'links'"
+          >
+            {{ subItem.text }}
+            <svg width="10px" height="6px" viewBox="0 0 10 6" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+              <title>Combined Shape</title>
+              <g id="Design" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                <g id="T#01---Homepage---Navigation" transform="translate(-600.000000, -71.000000)" fill="#101289">
+                  <g id="About-Us" transform="translate(553.000000, 65.218476)">
+                    <path d="M50.5,4 L50.5,8.5 L55,8.5 L55,10 L49,10 L49,4 L50.5,4 Z" id="Combined-Shape" transform="translate(52.000000, 7.000000) rotate(-45.000000) translate(-52.000000, -7.000000) "></path>
+                  </g>
+                </g>
+              </g>
+            </svg>
+
+          </h4>
 
           <ul
             class="dropdown-subitem-wrapper"
@@ -126,6 +163,45 @@ export default {
         margin-top 0
         padding-top 0
         border-top 0
+.nav-links
+  .dropdown-description
+    width 235px
+    padding 31px 40px 40px 0
+    background-color #f8f8f8
+    position relative
+    padding-left 5.4%
+    &__description
+      white-space normal
+      font-size 16px
+      font-weight 300
+      letter-spacing .15px
+      line-height 28px
+      color #333
+    &__title
+      font-size 20px
+      font-weight 700
+      letter-spacing .15px
+      line-height 1.2
+      text-decoration none
+      color $primaryBlue
+      margin-bottom 18px
+    &__link
+      color $primaryBlue
+      font-size 16px
+      font-weight 700
+      display flex
+      align-items center
+      margin-top 18px
+      svg
+        width 18px
+        height 13px
+        margin-left 3px
+        margin-top -2px
+        transition margin-left .25s ease
+      &:hover
+        color $primaryBlue
+      &:hover svg
+        margin-left 6px
 
 @media (max-width: $MQMobile)
   .dropdown-wrapper
@@ -147,33 +223,84 @@ export default {
           padding-left 1rem
 
 @media (min-width: $MQMobile)
+  .navbar-wrapper
+    .nav-links
+      padding 0
+  .nav-item
+    margin 0 11px
+    &:last-child
+      margin-right 0
   .dropdown-wrapper
-    height 1.8rem
     &:hover .nav-dropdown
       // override the inline style.
-      display block !important
+      display flex !important
+    &:hover .dropdown-title
+      color: #101289;
+      -webkit-text-stroke: 0.9px #101289;
+    .dropdown-title
+      opacity .85
+      color #000
+      font-size 15px
+      font-weight 300
+      letter-spacing .1px
+      line-height 12px
+      padding 42.5px 0
     .dropdown-title .arrow
       // make the arrow always down at desktop
-      border-left 4px solid transparent
-      border-right 4px solid transparent
-      border-top 6px solid $arrowBgColor
-      border-bottom 0
+      // border-left 4px solid transparent
+      // border-right 4px solid transparent
+      // border-top 6px solid $arrowBgColor
+      // border-bottom 0
+      display none
     .nav-dropdown
       display none
-      // Avoid height shaked by clicking
-      height auto !important
-      box-sizing border-box;
-      max-height calc(100vh - 2.7rem)
-      overflow-y auto
       position absolute
       top 100%
-      right 0
+      left 0
+      width 100%
       background-color #fff
-      padding 0.6rem 0
-      border 1px solid #ddd
-      border-bottom-color #ccc
+      padding 0
       text-align left
-      border-radius 0.25rem
-      white-space nowrap
       margin 0
+      border-top 1px solid rgba(0,0,0,.1);
+      box-shadow 0 8px 24px rgba(16, 18, 137, 0.1);
+      .dropdown-item
+        list-style none
+        padding 30px 20px 40px 35px
+        width min(392px, 15%)
+        .nav-link
+          padding 0
+          svg
+            display none
+        h4
+          border none
+          position relative
+          margin-bottom 8px
+          font-size .875rem
+          letter-spacing .00625rem
+          line-height 1.2rem
+          color $primaryBlue
+          padding 0
+          font-weight 700
+          display inline-block
+          white-space normal
+          svg
+            transition margin-left .25s ease
+          &:hover svg
+            margin-left 6px
+        .dropdown-subitem
+          white-space normal
+          margin-bottom 8px
+          span
+            display none
+          a
+            font-size .875rem
+            letter-spacing .00625rem
+            line-height 1.2rem
+            display block
+            color #000
+            padding-top 7px
+            &:hover
+              text-decoration underline
+              color $primaryBlue
 </style>
