@@ -38,7 +38,7 @@ module.exports = [
                     { text: 'Directory Specifications', link: 'https://openbanking.atlassian.net/wiki/spaces/DZ/pages/1150124033/Directory+2.0+Technical+Overview+v1.5' },
                     { text: 'Dynamic Client Registration (DCR) Specifications', link: 'https://openbankinguk.github.io/dcr-docs-pub/' },
                     { text: 'MI Reporting / ASPSP', link: 'https://openbankinguk.github.io/mi-docs-pub/v3.1.10-aspsp/specification/mi-data-reporting-api-specification.html' },
-                    { text: 'MI Reporting / TPP', link: 'https://openbankinguk.github.io/mi-docs-pub/v3.1.10-tpp/specification/mi-data-reporting-api-specification.html' },
+                    { text: 'MI Reporting / TPP', link: 'https://openbankinguk.github.io/mi-docs-pub/v3.1.10-TPP/logical-data-dictionary.html' },
                 ]
             },
             {
