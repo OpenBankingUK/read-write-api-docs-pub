@@ -493,6 +493,8 @@ If an idempotency key is required for an API endpoint:
 * The ASPSP **must** respond to the request with the current status of the resource (or a status which is at least as current as what is available on existing online channels) and a HTTP status code of 201 (Created).
 * The TPP **must not** use the idempotent behaviour to poll the status of resources.
 * The ASPSP **may** use the message signature, along with the x-idempotency-key to ensure that the request body has not changed.
+* The TPP **must** delay sending duplicate payment initiation requests using the same x-idempotency key for a minimum of 1 second even if they have not received a response.
+* The TPP **may** use the GET endpoint to check the status of the payment before initiating a duplicate payment whenever possible to do so.
 
 If an idempotency key is not required for an API endpoint:
 
