@@ -24,4 +24,12 @@ The Swagger Specification for R/W APIs can be downloaded from the following GitH
 <!-- ### Version 3.1.11 - DRAFT 1 - Release Candidate 1 -->
 
 ### Version 3.1.11 - Draft 1
-- 
+- CDRW-4134 - v3110_KI1 - Add VRPType to VRPRequest
+- CDRW-4133 - v3110_KI2 - Correct VRPType in examples
+- CDRW-4152 - v3110_KI3 - fix incorrect field to BeneficiaryPrepopulatedIndicator in specs
+- CDRW-4154 - v3110_KI4 - fix incorrect field to ContractPresentIndicator IN PROGRESS
+- CDRW-4155 - v3110_KI5 - fix regular expression pattern in the specs
+- CDRW-4156 - v3110_KI6 - Swagger misses UK.OBIE.Rules.ResourceAlreadyExists for 409
+- CDRW-4158 - v3110_KI7 - Update usage examples of accounts balances to fit OBReadBalance1 object definition
+- CDRW-4165 - v3110_KI8 - Add missing OBVRPStatusReasonCode enumeration - VRP
+- CDRW-4164 - v3110_KI9 - OB-301-VRP-100650 update asserted status code
