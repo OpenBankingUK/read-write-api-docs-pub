@@ -15,11 +15,11 @@ module.exports = [
             },
             {
                 text: 'Propositions',
-                link: 'https://openbanking.atlassian.net/wiki/spaces/DZ/pages/1120207073/Propositions',
+                link: 'https://consultation.standards.openbanking.org.uk/get-started/propositions',
                 items: [
-                    { text: 'Core Propositions', link: 'https://openbanking.atlassian.net/wiki/spaces/DZ/pages/1120207073/Propositions' },
-                    { text: 'Variable Recurring Payments', link: 'https://openbanking.atlassian.net/wiki/spaces/DZ/pages/1939243099/Proposition+-+Variable+Recurring+Payments+VRPs' },
-                    { text: 'Premium API', link: 'https://openbanking.atlassian.net/wiki/spaces/DZ/pages/1163952382/Options+paper+-+reducing+the+negative+impact+of+90+days+re-authentication' }
+                    { text: 'Core Propositions', link: 'https://consultation.standards.openbanking.org.uk/get-started/propositions#corep' },
+                    { text: 'Variable Recurring Payments', link: 'https://consultation.standards.openbanking.org.uk/get-started/propositions#premiumapis' },
+                    { text: 'Premium API', link: 'https://consultation.standards.openbanking.org.uk/get-started/propositions#pothers' }
                 ]
             }
         ]
