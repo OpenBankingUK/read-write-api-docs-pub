@@ -531,3 +531,16 @@ Indicates a PSU authentication methods supported or used
 | UK.OBIE.SCANotRequired | This indicates that the PSU does not need to authenticate for individual payments and the payments can be made without the PSU being present. |
 
 </details>
+
+### OBVRPStatusReasonCode
+
+<details><summary>Show</summary>
+
+| Code |Description |
+| --- |--- |
+| UK.OBIE.ExemptionNotApplied | Reason when exemption could not applied for the status of a VRP. |
+| UK.OBIE.OtherReason | The OtherReason only in scenarios where the actual reason cannot be determined or disclosed.|
+
+Note: ASPSPs may define enumerations that are more appropriate and document in the Developer Portal.
+
+</details>
