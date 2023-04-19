@@ -1621,7 +1621,7 @@ Accept: application/json
     "PaymentContextCode": "EcommerceMerchantInitiatedPayment",
     "ContractPresentInidicator": false,
     "PaymentPurposeCode": "EPAY",
-    "BeneficiaryPaymentDetailsPrepopulatedIndicator": false,
+    "BeneficiaryPrepopulatedIndicator": false,
     "BeneficiaryAccountType": "Business",
     "MerchantCustomerIdentification": "053598653254",
     "DeliveryAddress": {
