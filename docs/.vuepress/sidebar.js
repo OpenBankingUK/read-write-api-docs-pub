@@ -1,6 +1,6 @@
 module.exports = [
     {
-        title: 'Version 3.1.11',
+        title: 'Version 3.1.11 - DRAFT 1',
         path: '/v3.1.11-draft1/profiles/read-write-data-api-profile',
         children: [
             {
