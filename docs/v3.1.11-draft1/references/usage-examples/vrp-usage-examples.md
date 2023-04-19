@@ -603,6 +603,7 @@ Accept: application/json
     "ConsentId": "fe615446-e53a-45ed-954c-ae5d1f97a93b",
     "PSUAuthenticationMethod": "UK.OBIE.SCA",
     "PSUInteractionType": "OffSession",
+    "VRPType": "UK.OBIE.VRPType.Sweeping"
 
     "Initiation": {
       "RemittanceInformation": {
