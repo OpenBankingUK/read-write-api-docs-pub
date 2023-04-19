@@ -45,7 +45,7 @@ Accept: application/json
     "ControlParameters": {
       "PSUAuthenticationMethods": [ "UK.OBIE.SCA" ],
       "PSUInteractionTypes": [ "OffSession" ],
-      "VRPType": "UK.OBIE.VRPType.Sweeping",
+      "VRPType": ["UK.OBIE.VRPType.Sweeping"],
       "ValidFromDateTime": "2017-06-05T15:15:13+00:00",
       "ValidToDateTime": "2020-06-05T15:15:13+00:00",
       "MaximumIndividualAmount": {
