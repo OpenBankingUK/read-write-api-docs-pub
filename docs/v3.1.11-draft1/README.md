@@ -33,3 +33,5 @@ The Swagger Specification for R/W APIs can be downloaded from the following GitH
 - CDRW-4158 - v3110_KI7 - Update usage examples of accounts balances to fit OBReadBalance1 object definition
 - CDRW-4165 - v3110_KI8 - Add missing OBVRPStatusReasonCode enumeration - VRP
 - CDRW-4164 - v3110_KI9 - OB-301-VRP-100650 update asserted status code
+- [Decision 256](https://openbanking.atlassian.net/wiki/spaces/WOR/pages/2561933359/256) - enhance the idempotency section of the specs
+- [Decision 258](https://openbanking.atlassian.net/wiki/spaces/WOR/pages/2594308097/258) - update OBReadStatement2, OBReadBalance1 
