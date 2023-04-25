@@ -19,6 +19,9 @@
   - [Specific Account](#specific-account)
     - [Get Account Statements Request](#get-account-statements-request)
     - [Get Account Statements Response](#get-account-statements-response)
+  - [Wallet Account with multiple currencies](#wallet-account-with-multiple-currencies)
+    - [Get Wallet Statements Request](#get-wallet-statements-request)
+    - [Get Wallet Statements Response](#get-wallet-statements-response)
   - [Bulk](#bulk)
     - [Get Statements Request](#get-statements-request)
     - [Get Statements Response](#get-statements-response)
@@ -203,6 +206,11 @@ For the call toGET /accounts/{AccountId}/statements/{StatementId}/transactions:
 | Amount |1..1 |OBReadStatement2/Data/Statement/StatementAmount/Amount |Amount of money associated with the amount type. |OBActiveOrHistoricCurrencyAndAmount | | |
 | Amount |1..1 |OBReadStatement2/Data/Statement/StatementAmount/Amount/Amount |A number of monetary units specified in an active currency where the unit of currency is explicit and compliant with ISO 4217. |OBActiveCurrencyAndAmount_SimpleType | |`^\d{1,13}$|^\d{1,13}\.\d{1,5}$` |
 | Currency |1..1 |OBReadStatement2/Data/Statement/StatementAmount/Amount/Currency |A code allocated to a currency by a Maintenance Agency under an international identification scheme, as described in the latest edition of the international standard ISO 4217 "Codes for the representation of currencies and funds". |ActiveOrHistoricCurrencyCode | |^[A-Z]{3,3}$ |
+| SubType |0..1 |OBReadStatement2/Data/Statement/StatementAmount/Amount/SubType |Amount sub type, in a coded form.<br>Default if not specified is BaseCurrency of the account |OBExternalBalanceSubType1Code |BaseCurrency LocalCurrency | |
+| LocalAmount |0..1 |OBReadStatement2/Data/Statement/StatementAmount/LocalAmount |Optional component providing the equivalent of Amount in local currency. | | | |
+| Amount |1..1 |OBReadStatement2/Data/Statement/StatementAmount/LocalAmount/Amount |A number of monetary units specified in an active currency where the unit of currency is explicit and compliant with ISO 4217. |OBActiveCurrencyAndAmount_SimpleType | |`^\d{1,13}$|^\d{1,13}\.\d{1,5}$` |
+| Currency |1..1 |OBReadStatement2/Data/Statement/StatementAmount/LocalAmount/Currency |A code allocated to a currency by a Maintenance Agency under an international identification scheme, as described in the latest edition of the international standard ISO 4217 "Codes for the representation of currencies and funds". |ActiveOrHistoricCurrencyCode | |^[A-Z]{3,3}$ |
+| SubType |0..1 |OBReadStatement2/Data/Statement/StatementAmount/LocalAmount/SubType |Amount sub type, in a coded form.<br>Default if not specified is LocalCurrency of the account |OBExternalBalanceSubType1Code |BaseCurrency LocalCurrency | |
 | StatementDateTime |0..n |OBReadStatement2/Data/Statement/StatementDateTime |Set of elements used to provide details of a generic date time for the statement resource. |OBStatementDateTime1 | | |
 | DateTime |1..1 |OBReadStatement2/Data/Statement/StatementDateTime/DateTime |Date and time associated with the date time type. |ISODateTime | | |
 | Type |1..1 |OBReadStatement2/Data/Statement/StatementDateTime/Type |Date time type, in a coded form. |OBExternalStatementDateTimeType1Code | | |
@@ -212,6 +220,9 @@ For the call toGET /accounts/{AccountId}/statements/{StatementId}/transactions:
 | StatementValue |0..n |OBReadStatement2/Data/Statement/StatementValue |Set of elements used to provide details of a generic number value related to the statement resource. |OBStatementValue1 | | |
 | Value |1..1 |OBReadStatement2/Data/Statement/StatementValue/Value |Value associated with the statement value type. |OBExternalStatementValueType1Code | | |
 | Type |1..1 |OBReadStatement2/Data/Statement/StatementValue/Type |Statement value type, in a coded form. |Max40Text | | |
+| TotalValue |0..1 |OBReadStatement2/Data/Statement/TotalValue |Combined sum of all Amounts in the accounts base currency. | | | |
+| Amount |1..1 |OBReadStatement2/Data/Statement/TotalValue/Amount |A number of monetary units specified in an active currency where the unit of currency is explicit and compliant with ISO 4217. |OBActiveCurrencyAndAmount_SimpleType | |`^\d{1,13}$|^\d{1,13}\.\d{1,5}$` |
+| Currency |1..1 |OBReadStatement2/Data/Statement/TotalValue/Currency |A code allocated to a currency by a Maintenance Agency under an international identification scheme, as described in the latest edition of the international standard ISO 4217 "Codes for the representation of currencies and funds". |ActiveOrHistoricCurrencyCode | |^[A-Z]{3,3}$ |
 
 ## Usage Examples
 
@@ -296,6 +307,71 @@ Content-Type: application/json
       }
       ]
     }],
+    "Links": {
+      "Self": "https://api.alphabank.com/open-banking/v3.1/aisp/accounts/22289/statements/"
+    },
+    "Meta": {
+      "TotalPages": 1
+    }
+  }
+}
+```
+
+### Wallet Account with multiple currencies
+
+#### Get Wallet Statements Request
+
+```
+GET /accounts/22289/statements HTTP/1.1
+Authorization: Bearer Az90SAOJklae
+x-fapi-auth-date:  Sun, 10 Sep 2017 19:43:31 GMT
+x-fapi-customer-ip-address: 104.25.212.99
+x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
+Accept: application/json
+```
+
+#### Get Wallet Statements Response
+
+```
+HTTP/1.1 200 OK
+x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
+Content-Type: application/json
+```
+
+```json
+{
+  "Data": {
+    "Statement": [
+    {
+      "AccountId": "22289",
+      "StatementId": "8sfhke-sifhkeuf-97813",
+      "StatementReference": "002",
+      "Type": "RegularPeriodic",
+      "StartDateTime": "2023-08-01T00:00:00+00:00",
+      "EndDateTime": "2023-08-31T23:59:59+00:00",
+      "CreationDateTime": "2023-09-01T00:00:00+00:00",
+      "StatementDescription": ["August 2023 Statement", "One Free Uber Ride"],
+      "StatementAmount": [
+      {
+        "Amount": {
+          "SubType": "BaseCurrency",
+          "Amount": "329.06",
+          "Currency": "GBP"
+        },
+        "LocalAmount": {
+          "SubType": "LocalCurrency",
+          "Amount": "400.00",
+          "Currency": "USD"
+        },
+		"CreditDebitIndicator": "Credit",        
+		"Type": "ClosingBalance"        
+      },
+      ],
+      "TotalValue": {
+        "Amount": "720.39",
+        "Currency": "GBP"
+      }
+    },
     "Links": {
       "Self": "https://api.alphabank.com/open-banking/v3.1/aisp/accounts/22289/statements/"
     },

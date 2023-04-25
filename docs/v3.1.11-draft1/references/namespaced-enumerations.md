@@ -8,6 +8,7 @@
   - [OBExternalAccountIdentification4Code](#obexternalaccountidentification4code)
   - [OBExternalFinancialInstitutionIdentification4Code](#obexternalfinancialinstitutionidentification4code)
   - [OBErrorResponseError1Code](#oberrorresponseerror1code)
+  - [OBExternalBalanceSubType1Code](#obexternalbalancesubtype1code)
 - [Account and Transaction API Namespaced Enumerations](#account-and-transaction-api-namespaced-enumerations)
   - [OBExternalStatementAmountType1Code](#obexternalstatementamounttype1code)
   - [OBExternalStatementBenefitType1Code](#obexternalstatementbenefittype1code)
@@ -84,6 +85,7 @@ This is Data Type for Account/SchemeName and used to identify the type of Identi
 | UK.OBIE.PAN |Primary Account Number - identifier scheme used to identify a card account. |
 | UK.OBIE.Paym |Paym Scheme to make payments via mobile |
 | UK.OBIE.SortCodeAccountNumber |Sort Code and Account Number - identifier scheme used in the UK by financial institutions to identify the account of a customer. The identifier is the concatenation of the 6 digit UK sort code and 8 digit account number.<br>The regular expression for this identifier is: ^[0-9]{6}[0-9]{8}$ |
+| UK.OBIE.Wallet |A primary and unique account identifier used to identify a wallet.<br>An ASPSP must document on their developer portal, the payment methods that supports this account identifier. |
 
 
 ### OBExternalFinancialInstitutionIdentification4Code
@@ -134,6 +136,15 @@ This is Data Type gives a low level textual error code to help categorise an err
 | UK.OBIE.UnexpectedError |5xx |An error code that can be used, when an unexpected error occurs.<br><br>The ASPSP must populate the message with a meaningful error description, without revealing sensitive information. |
 
 </details>
+
+### OBExternalBalanceSubType1Code
+
+Default if not specified is BaseCurrency of the account.
+
+| Code |Description |
+| --- |--- |
+| UK.OBIE.BaseCurrency |Balance representing the amount in the base accounting currency. |
+| UK.OBIE.LocalCurrency | Balance representing the amount in the local market currency for which the asset is held.  |
 
 ## Account and Transaction API Namespaced Enumerations
 

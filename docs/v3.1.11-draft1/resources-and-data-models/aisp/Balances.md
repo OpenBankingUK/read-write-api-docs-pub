@@ -23,6 +23,9 @@
   - [Specific Account with High Cost Credit not Included in Balance and Account in Debit](#specific-account-with-high-cost-credit-not-included-in-balance-and-account-in-debit)
     - [Get Account Balances Request](#get-account-balances-request-2)
     - [Get Account Balances Response](#get-account-balances-response-2)
+  - [Wallet Account with multiple currencies](#wallet-account-with-multiple-currencies)
+    - [Get Wallet Balances Request](#get-wallet-balances-request)
+    - [Get Wallet Balances Response](#get-wallet-balances-response)
 
 
 ## Overview
@@ -88,13 +91,20 @@ The resource requires the ReadBalances permission. The resource response payload
 | Amount |1..1 |OBReadBalance1/Data/Balance/Amount |Amount of money of the cash balance. |OBActiveOrHistoricCurrencyAndAmount | | |
 | Amount |1..1 |OBReadBalance1/Data/Balance/Amount/Amount |A number of monetary units specified in an active currency where the unit of currency is explicit and compliant with ISO 4217. |OBActiveCurrencyAndAmount_SimpleType | |`^\d{1,13}$|^\d{1,13}\.\d{1,5}$` |
 | Currency |1..1 |OBReadBalance1/Data/Balance/Amount/Currency |A code allocated to a currency by a Maintenance Agency under an international identification scheme, as described in the latest edition of the international standard ISO 4217 "Codes for the representation of currencies and funds". |ActiveOrHistoricCurrencyCode | |^[A-Z]{3,3}$ |
+| SubType |0..1 |OBReadBalance1/Data/Balance/Amount/SubType |Balance sub type, in a coded form.<br>Default if not specified is BaseCurrency of the account |OBExternalBalanceSubType1Code | |BaseCurrency LocalCurrency |
+| LocalAmount |0..1 |OBReadBalance1/Data/Balance/LocalAmount |Optional component providing the equivalent of Amount in local currency| | | |
+| Amount |1..1 |OBReadBalance1/Data/Balance/LocalAmount/Amount |A number of monetary units specified in an active currency where the unit of currency is explicit and compliant with ISO 4217. |OBActiveCurrencyAndAmount_SimpleType | |`^\d{1,13}$|^\d{1,13}\.\d{1,5}$` |
+| Currency |1..1 |OBReadBalance1/Data/Balance/LocalAmount/Amount/Currency |A code allocated to a currency by a Maintenance Agency under an international identification scheme, as described in the latest edition of the international standard ISO 4217 "Codes for the representation of currencies and funds". |ActiveOrHistoricCurrencyCode | |^[A-Z]{3,3}$ |
+| SubType |0..1 |OBReadBalance1/Data/Balance/LocalAmount/SubType |Balance sub type, in a coded form.<br>Default if not specified is LocalCurrency of the account |OBExternalBalanceSubType1Code | |BaseCurrency LocalCurrency |
 | CreditLine |0..n |OBReadBalance1/Data/Balance/CreditLine |Set of elements used to provide details on the credit line. |OBCreditLine1 | | |
 | Included |1..1 |OBReadBalance1/Data/Balance/CreditLine/Included |Indicates whether or not the credit line is included in the balance of the account. Usage: If not present, credit line is not included in the balance amount of the account. |xs:boolean | | |
 | Type |0..1 |OBReadBalance1/Data/Balance/CreditLine/Type |Limit type, in a coded form. |OBExternalLimitType1Code |Available Credit Emergency Pre-Agreed Temporary | |
 | Amount |0..1 |OBReadBalance1/Data/Balance/CreditLine/Amount |Amount of money of the credit line. |OBActiveOrHistoricCurrencyAndAmount | | |
 | Amount |1..1 |OBReadBalance1/Data/Balance/CreditLine/Amount/Amount |A number of monetary units specified in an active currency where the unit of currency is explicit and compliant with ISO 4217. |OBActiveCurrencyAndAmount_SimpleType | |`^\d{1,13}$|^\d{1,13}\.\d{1,5}$` |
 | Currency |1..1 |OBReadBalance1/Data/Balance/CreditLine/Amount/Currency |A code allocated to a currency by a Maintenance Agency under an international identification scheme, as described in the latest edition of the international standard ISO 4217 "Codes for the representation of currencies and funds". |ActiveOrHistoricCurrencyCode | |^[A-Z]{3,3}$ |
-
+| TotalValue |0..1 |OBReadBalance1/Data/TotalValue |Combined sum of all Amounts in the accounts base currency. | | | |
+| Amount |1..1 |OBReadBalance1/Data/TotalValue/Amount |A number of monetary units specified in an active currency where the unit of currency is explicit and compliant with ISO 4217. |OBActiveCurrencyAndAmount_SimpleType | |`^\d{1,13}$|^\d{1,13}\.\d{1,5}$` |
+| Currency |1..1 |OBReadBalance1/Data/TotalValue/Currency |A code allocated to a currency by a Maintenance Agency under an international identification scheme, as described in the latest edition of the international standard ISO 4217 "Codes for the representation of currencies and funds". |ActiveOrHistoricCurrencyCode | |^[A-Z]{3,3}$ |
 ## Usage Examples
 
 ### Bulk
@@ -344,6 +354,62 @@ Content-Type: application/json
           "Type": "Pre-Agreed"
         }
       ]
+    }
+  },
+  "Links": {
+    "Self": "https://api.alphabank.com/open-banking/v3.1/aisp/accounts/22289/balances/"
+  },
+  "Meta": {
+    "TotalPages": 1
+  }
+}
+```
+### Wallet Account with multiple currencies
+
+#### Get Wallet Balances Request
+
+If the account holder has 2 currencies under the wallet.
+Total value of all currencies in the wallet in local currency.
+
+```
+GET /accounts/22289/balances HTTP/1.1
+Authorization: Bearer Az90SAOJklae
+x-fapi-auth-date: Sun, 10 Sep 2017 19:43:31 GMT
+x-fapi-customer-ip-address: 104.25.212.99
+x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
+Accept: application/json
+```
+
+#### Get Wallet Balances Response
+
+```
+HTTP/1.1 200 OK
+x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
+Content-Type: application/json
+```
+
+```json
+{
+  "Data": {
+    "Balance": {
+      "AccountId": "22289",
+      "Amount": {
+        "Amount": "329.06",
+        "Currency": "GBP",
+        "SubType": "BaseCurrency"
+      },
+      "LocalAmount": {
+        "Amount": "400.00",
+        "Currency": "USD",
+        "SubType": "LocalCurrency"
+      },
+      "CreditDebitIndicator": "Credit",
+      "Type": "ClosingAvailable",
+      "DateTime": "2023-04-05T10:43:07+00:00"
+    },
+    "TotalValue": {
+      "Amount": "720.39",
+      "Currency": "GBP"
     }
   },
   "Links": {
