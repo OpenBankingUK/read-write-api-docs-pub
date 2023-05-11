@@ -118,6 +118,7 @@ This is Data Type gives a low level textual error code to help categorise an err
 | UK.OBIE.Resource.NotFound |400 |Returned when a resource with the specified Id does not exist (and hence could not be operated upon). |
 | UK.OBIE.Rules.AfterCutOffDateTime |400 |{payment-order} consent / resource received after CutOffDateTime |
 | UK.OBIE.Rules.DuplicateReference |400 |A duplicate reference has been used for a CBPII confirmation of funds request. |
+| UK.OBIE.Rules.FailsControlParameters |400 |A payment breaches a limitation set by one or more ControlParameters. |
 | UK.OBIE.Signature.Invalid |400 |The signature header x-jws-signature was parsed and has a valid JOSE header that complies with the specification. However, the signature itself could not be verified. |
 | UK.OBIE.Signature.InvalidClaim |400 |The JOSE header in the x-jws-signature has one or more claims with an invalid value. (e.g. a kid that does not resolve to a valid certificate). The name of the missing claim should be specified in the path field of the error response. |
 | UK.OBIE.Signature.MissingClaim |400 |The JOSE header in the x-jws-signature has one or more mandatory claim(s) that are not specified. The name of the missing claim(s) should be specified in the path field of the error response. |
