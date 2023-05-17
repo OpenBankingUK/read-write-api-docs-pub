@@ -43,6 +43,7 @@
 
         <li
           class="dropdown-item"
+          :href="item.link"
           :key="subItem.link || index"
           v-for="(subItem, index) in item.items"
         >
