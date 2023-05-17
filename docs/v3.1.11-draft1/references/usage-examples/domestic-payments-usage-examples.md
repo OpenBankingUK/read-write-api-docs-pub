@@ -164,7 +164,7 @@ Accept: application/json
   },
   "Risk": {
     "PaymentContextCode": "EcommerceMerchantInitiatedPayment",
-    "ContractPresentInidicator": false,
+    "ContractPresentIndicator": false,
     "PaymentPurposeCode": "EPAY",
     "BeneficiaryPaymentDetailsPrepopulatedIndicator": false,
     "BeneficiaryAccountType": "Business",
@@ -222,7 +222,7 @@ Content-Type: application/json
   },
   "Risk": {
     "PaymentContextCode": "EcommerceMerchantInitiatedPayment",
-    "ContractPresentInidicator": false,
+    "ContractPresentIndicator": false,
     "PaymentPurposeCode": "EPAY",
     "BeneficiaryPaymentDetailsPrepopulatedIndicator": false,
     "BeneficiaryAccountType": "Business",
@@ -325,7 +325,7 @@ Accept: application/json
   },
   "Risk": {
     "PaymentContextCode": "EcommerceMerchantInitiatedPayment",
-    "ContractPresentInidicator": false,
+    "ContractPresentIndicator": false,
     "PaymentPurposeCode": "EPAY",
     "BeneficiaryPaymentDetailsPrepopulatedIndicator": false,
     "BeneficiaryAccountType": "Business",
@@ -439,7 +439,7 @@ Content-Type: application/json
   },
   "Risk": {
     "PaymentContextCode": "EcommerceMerchantInitiatedPayment",
-    "ContractPresentInidicator": false,
+    "ContractPresentIndicator": false,
     "PaymentPurposeCode": "EPAY",
     "BeneficiaryPaymentDetailsPrepopulatedIndicator": false,
     "BeneficiaryAccountType": "Business",
