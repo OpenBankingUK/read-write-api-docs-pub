@@ -26,7 +26,7 @@
           <div class="dropdown-description__description">{{ item.description }}</div>
           <a
              class="dropdown-description__link"
-            :href="item"
+            :href="item.link"
             target="_blank"
           >
             <span>Find out more</span>
