@@ -26,7 +26,7 @@
           <div class="dropdown-description__description">{{ item.description }}</div>
           <a
              class="dropdown-description__link"
-            :href="item"
+            :href="item.link"
             target="_blank"
           >
             <span>Find out more</span>
@@ -43,6 +43,7 @@
 
         <li
           class="dropdown-item"
+          :href="item.link"
           :key="subItem.link || index"
           v-for="(subItem, index) in item.items"
         >

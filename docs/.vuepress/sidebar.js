@@ -1,5 +1,221 @@
 module.exports = [
     {
+        title: 'Version 3.1.11 - DRAFT 1',
+        path: '/v3.1.11-draft1/profiles/read-write-data-api-profile',
+        children: [
+            {
+                title: 'Account and Transaction API',
+                path: '/v3.1.11-draft1/profiles/account-and-transaction-api-profile',
+                children: [
+                    ['/v3.1.11-draft1/resources-and-data-models/aisp/account-access-consents', 'Account Access Consents'],
+                    {
+                        title: 'Accounts',
+                        path: '/v3.1.11-draft1/resources-and-data-models/aisp/Accounts',
+                    },
+                    {
+                        title: 'Balances',
+                        path: '/v3.1.11-draft1/resources-and-data-models/aisp/Balances',
+                    },
+                    {
+                        title: 'Transactions',
+                        path: '/v3.1.11-draft1/resources-and-data-models/aisp/Transactions',
+                    },
+                    {
+                        title: 'Beneficiaries',
+                        path: '/v3.1.11-draft1/resources-and-data-models/aisp/Beneficiaries',
+                    },
+                    {
+                        title: 'Direct Debits',
+                        path: '/v3.1.11-draft1/resources-and-data-models/aisp/direct-debits',
+                    },
+                    {
+                        title: 'Standing Orders',
+                        path: '/v3.1.11-draft1/resources-and-data-models/aisp/standing-orders',
+                    },
+                    {
+                        title: 'Products',
+                        path: '/v3.1.11-draft1/resources-and-data-models/aisp/Products',
+                        children: [
+                            {
+                                title: 'BCA Product Data Model',
+                                path: '/v3.1.11-draft1/resources-and-data-models/aisp/bca-product-data-model',
+                            },
+                            {
+                                title: 'PCA Product Data Model',
+                                path: '/v3.1.11-draft1/resources-and-data-models/aisp/pca-product-data-model',
+                            },
+                            {
+                                title: 'Other Product Data Model',
+                                path: '/v3.1.11-draft1/resources-and-data-models/aisp/other-product-data-model',
+                            },
+                        ],
+                    },
+                    {
+                        title: 'Offers',
+                        path: '/v3.1.11-draft1/resources-and-data-models/aisp/Offers',
+                    },
+                    {
+                        title: 'Parties',
+                        path: '/v3.1.11-draft1/resources-and-data-models/aisp/Parties',
+                    },
+                    {
+                        title: 'Scheduled Payments',
+                        path: '/v3.1.11-draft1/resources-and-data-models/aisp/scheduled-payments',
+                    },
+                    {
+                        title: 'Statements',
+                        path: '/v3.1.11-draft1/resources-and-data-models/aisp/Statements',
+                    },
+                ],
+            },
+            {
+                title: 'Payment Initiation API ',
+                path: '/v3.1.11-draft1/profiles/payment-initiation-api-profile',
+                children: [
+                    {
+                        title: 'Domestic Payments Consents',
+                        path: '/v3.1.11-draft1/resources-and-data-models/pisp/domestic-payment-consents',
+                    },
+                    {
+                        title: 'Domestic Payments',
+                        path: '/v3.1.11-draft1/resources-and-data-models/pisp/domestic-payments',
+                    },
+                    {
+                        title: 'Domestic Scheduled Payment Consents',
+                        path: '/v3.1.11-draft1/resources-and-data-models/pisp/domestic-scheduled-payment-consents',
+                    },
+                    {
+                        title: 'Domestic Scheduled Payment',
+                        path: '/v3.1.11-draft1/resources-and-data-models/pisp/domestic-scheduled-payments',
+                    },
+                    {
+                        title: 'Domestic Standing Order Consents',
+                        path: '/v3.1.11-draft1/resources-and-data-models/pisp/domestic-standing-order-consents',
+                    },
+                    {
+                        title: 'Domestic Standing Orders',
+                        path: '/v3.1.11-draft1/resources-and-data-models/pisp/domestic-standing-orders',
+                    },
+                    {
+                        title: 'International Payment Consents',
+                        path: '/v3.1.11-draft1/resources-and-data-models/pisp/international-payment-consents',
+                    },
+                    {
+                        title: 'International Payments',
+                        path: '/v3.1.11-draft1/resources-and-data-models/pisp/international-payments',
+                    },
+                    {
+                        title: 'International Scheduled Payment Consents',
+                        path: '/v3.1.11-draft1/resources-and-data-models/pisp/international-scheduled-payment-consents',
+                    },
+                    {
+                        title: 'International Scheduled Payments',
+                        path: '/v3.1.11-draft1/resources-and-data-models/pisp/international-scheduled-payments',
+                    },
+                    {
+                        title: 'International Standing Order Consents',
+                        path: '/v3.1.11-draft1/resources-and-data-models/pisp/international-standing-order-consents',
+                    },
+                    {
+                        title: 'International Standing Orders ',
+                        path: '/v3.1.11-draft1/resources-and-data-models/pisp/international-standing-orders',
+                    },
+                    {
+                        title: 'File Payment Consents',
+                        path: '/v3.1.11-draft1/resources-and-data-models/pisp/file-payment-consents',
+                    },
+                    {
+                        title: 'File Payments',
+                        path: '/v3.1.11-draft1/resources-and-data-models/pisp/file-payments',
+                    },
+                ],
+            },
+            {
+                title: 'Confirmation of Funds API Profile',
+                path: '/v3.1.11-draft1/profiles/confirmation-of-funds-api-profile',
+                children: [
+                    {
+                        title: 'Funds Confirmation Consent',
+                        path: '/v3.1.11-draft1/resources-and-data-models/cbpii/funds-confirmation-consent',
+                    },
+                    {
+                        title: 'Funds Confirmation',
+                        path: '/v3.1.11-draft1/resources-and-data-models/cbpii/funds-confirmation',
+                    },
+                ],
+            },
+            {
+                title: 'Variable Recurring Payments',
+                path: '/v3.1.11-draft1/profiles/vrp-profile',
+                children: [
+                    {
+                        title: 'Domestic VRP Consents',
+                        path: '/v3.1.11-draft1/resources-and-data-models/vrp/domestic-vrp-consents',
+                    },
+                    {
+                        title: 'Domestic VRPs',
+                        path: '/v3.1.11-draft1/resources-and-data-models/vrp/domestic-vrps',
+                    },
+                    {
+                        title: 'Usage Examples',
+                        path: '/v3.1.11-draft1/references/usage-examples/vrp-usage-examples',
+                    }
+                ],
+            },
+            {
+                title: 'Event Notification API',
+                path: '/v3.1.11-draft1/profiles/event-notification-api-profile',
+                children: [
+                    {
+                        title: 'Event Notification Subscription API',
+                        path: '/v3.1.11-draft1/profiles/event-notification-subscription-api-profile',
+                    },
+                    {
+                        title: 'Callback URL API',
+                        path: '/v3.1.11-draft1/profiles/callback-url-api-profile',
+                    },
+                    {
+                        title: 'Real Time Event Notification API',
+                        path: '/v3.1.11-draft1/profiles/real-time-event-notification-api-profile',
+                    },
+                    {
+                        title: 'Aggregated Polling API',
+                        path: '/v3.1.11-draft1/profiles/aggregated-polling-api-profile',
+                    },
+                ],
+            },
+            {
+                title: 'Resources and Data Models',
+                path: '/v3.1.11-draft1/resources-and-data-models/',
+                children: [
+                    {path: '/v3.1.11-draft1/resources-and-data-models/aisp/', title: 'AIS Resources'},
+                    {path: '/v3.1.11-draft1/resources-and-data-models/pisp/', title: 'PIS Resources'},
+                    {path: '/v3.1.11-draft1/resources-and-data-models/cbpii/', title: 'CBPII Resources'},
+                    {path: '/v3.1.11-draft1/resources-and-data-models/vrp/', title: 'VRP Resources'},
+                    {
+                        path: '/v3.1.11-draft1/resources-and-data-models/event-notifications/',
+                        title: 'Event Notification Resources'
+                    },
+                ]
+            },
+            {
+                title: 'References',
+                path: '/v3.1.11-draft1/references/',
+                children: [
+                    {
+                        path: '/v3.1.11-draft1/references/domestic-payment-message-formats',
+                        title: 'Domestic Payment Message Formats'
+                    },
+                    {path: '/v3.1.11-draft1/references/namespaced-enumerations', title: 'Namespaced Enumerations'},
+                ]
+            },
+            {
+                title: 'Version Control',
+                path: '/v3.1.11-draft1/version-control'
+            },
+        ]
+    },
+    {
         title: 'Version 3.1.10',
         path: '/v3.1.10/profiles/read-write-data-api-profile',
         children: [
@@ -1827,6 +2043,6 @@ module.exports = [
             },
         ],
     },
-    ['https://standards.openbanking.org.uk/api-specifications/read-write-specs/v3-1-1/', 'Version 3.1.1'],
-    ['https://standards.openbanking.org.uk/api-specifications/read-write-specs/v3-1/', 'Version 3.1']
+    ['https://openbanking.atlassian.net/wiki/spaces/DZ/pages/1000702294/Read+Write+Data+API+Specification+-+v3.1.1', 'Version 3.1.1'],
+    ['https://openbanking.atlassian.net/wiki/spaces/DZ/pages/937656404/Read+Write+Data+API+Specification+-+v3.1', 'Version 3.1']
 ];

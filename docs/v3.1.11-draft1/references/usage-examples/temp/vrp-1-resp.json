@@ -1,0 +1,59 @@
+{
+  "Data": {
+    "ConsentId": "fe615446-e53a-45ed-954c-ae5d1f97a93b",
+    "CreationDateTime": "2017-06-05T15:15:15+00:00",
+    "DomesticVRPId": "OU90210",
+    "Status": "Pending",
+    "StatusUpdateDateTime": "2017-06-05T15:15:15+00:00",
+
+    "DebtorAccount": {
+      "SchemeName": "UK.OBIE.IBAN",
+      "Identification": "GB76LOYD30949301273801",
+      "Name": "Marcus Sweepimus"
+    },
+
+    "Initiation": {
+      "DebtorAccount": {
+        "SchemeName": "UK.OBIE.IBAN",
+        "Identification": "GB76LOYD30949301273801",
+        "Name": "Marcus Sweepimus"
+      },
+      "CreditorAccount": {
+        "SchemeName": "SortCodeAccountNumber",
+        "Identification": "30949330000010",
+        "SecondaryIdentification": "Roll 90210",
+        "Name": "Marcus Sweepimus"
+      },
+      "RemittanceInformation": {
+        "Reference": "Sweepco"
+      }
+    },
+
+    "Instruction": {
+      "CreditorAccount": {
+        "SchemeName": "SortCodeAccountNumber",
+        "Identification": "30949330000010",
+        "SecondaryIdentification": "Roll 90210",
+        "Name": "Marcus Sweepimus"
+      },
+      "InstructedAmount": {
+        "Amount": "10.00",
+        "Currency": "GBP"
+      },
+      "RemittanceInformation": {
+        "Reference": "Sweepco"
+      }
+    }
+  },
+
+  "Risk": {
+    "PaymentContextCode": "PartyToParty"
+  },
+
+  
+  "Links": {
+    "Self": "https://api.alphabank.com/open-banking/v3.1/vrp/domestic-vrps/OU90210"
+  },
+  
+  "Meta": {}  
+}
