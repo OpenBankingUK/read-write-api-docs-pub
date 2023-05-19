@@ -1827,6 +1827,6 @@ module.exports = [
             },
         ],
     },
-    ['https://standards.openbanking.org.uk/api-specifications/read-write-specs/v3-1-1/', 'Version 3.1.1'],
-    ['https://standards.openbanking.org.uk/api-specifications/read-write-specs/v3-1/', 'Version 3.1']
+    ['https://openbanking.atlassian.net/wiki/spaces/DZ/pages/1000702294/Read+Write+Data+API+Specification+-+v3.1.1', 'Version 3.1.1'],
+    ['https://openbanking.atlassian.net/wiki/spaces/DZ/pages/937656404/Read+Write+Data+API+Specification+-+v3.1', 'Version 3.1']
 ];
