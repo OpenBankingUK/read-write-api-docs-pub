@@ -5,6 +5,8 @@
   >
     <a
       class="dropdown-title"
+      :href="item.link"
+      target="_blank"
       @click="toggle"
     >
       <span class="title">{{ item.text }}</span>
@@ -47,22 +49,27 @@
           :key="subItem.link || index"
           v-for="(subItem, index) in item.items"
         >
-          <h4
-            v-if="subItem.type === 'links'"
+          <a
+            style="padding: 0"
+            :href="subItem.link"
+            target="_blank"
           >
-            {{ subItem.text }}
-            <svg width="10px" height="6px" viewBox="0 0 10 6" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-              <title>Combined Shape</title>
-              <g id="Design" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                <g id="T#01---Homepage---Navigation" transform="translate(-600.000000, -71.000000)" fill="#101289">
-                  <g id="About-Us" transform="translate(553.000000, 65.218476)">
-                    <path d="M50.5,4 L50.5,8.5 L55,8.5 L55,10 L49,10 L49,4 L50.5,4 Z" id="Combined-Shape" transform="translate(52.000000, 7.000000) rotate(-45.000000) translate(-52.000000, -7.000000) "></path>
+            <h4
+              v-if="subItem.type === 'links'"
+            >
+              {{ subItem.text }}
+              <svg width="10px" height="6px" viewBox="0 0 10 6" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                <title>Combined Shape</title>
+                <g id="Design" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                  <g id="T#01---Homepage---Navigation" transform="translate(-600.000000, -71.000000)" fill="#101289">
+                    <g id="About-Us" transform="translate(553.000000, 65.218476)">
+                      <path d="M50.5,4 L50.5,8.5 L55,8.5 L55,10 L49,10 L49,4 L50.5,4 Z" id="Combined-Shape" transform="translate(52.000000, 7.000000) rotate(-45.000000) translate(-52.000000, -7.000000) "></path>
+                    </g>
                   </g>
                 </g>
-              </g>
-            </svg>
-
-          </h4>
+              </svg>
+            </h4>
+          </a>
 
           <ul
             class="dropdown-subitem-wrapper"
