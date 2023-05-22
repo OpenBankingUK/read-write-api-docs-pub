@@ -42,7 +42,7 @@
 
 The specification defines certain fields with only a fixed set of possible values as enumerations, and further additions to possible values require a Specification change.
 
-As part of Version 3 OBIE Specifications defined new custom Data Types, which are an extendable list of enumerated values. Any extensions to this standard list of values can be done by the ASPSPs, with relevant documentation on their Developer Portals.
+As part of Version 3 OBL Specifications defined new custom Data Types, which are an extendable list of enumerated values. Any extensions to this standard list of values can be done by the ASPSPs, with relevant documentation on their Developer Portals.
 
 The extendable Data Type values are namespaced, to help identify the issuer of the value, and the relevant value.
 
@@ -50,14 +50,14 @@ The extendable Data Type values are namespaced, to help identify the issuer of t
 
 These Data Types, in general, are called namespaced enumerations.
 
-Specific API Data Dictionary will define a custom Data Type class, which will help lookup the OBIE defined standard set of namespaced enumerations in this specification page as well as respective swagger files.
+Specific API Data Dictionary will define a custom Data Type class, which will help lookup the OBL defined standard set of namespaced enumerations in this specification page as well as respective swagger files.
 
 The namespaced enumeration values specified by Open Banking are documented here and will be prefixed by `UK.OBIE.`
 
 ### Design Principles
 
 When extending a namespaced enumeration:
-* ASPSPs **must not** publish an ASPSP-specific enumerated value where a generic OBIE defined enumerated value may be used.
+* ASPSPs **must not** publish an ASPSP-specific enumerated value where a generic OBL defined enumerated value may be used.
 * ASPSPs **must** place such values in a namespace consisting of their two-letter country code (ISO 3166-1 Alpha-2 code), followed by a full-stop, followed by their name. e.g.
   *  UK.Barclays.PingIt
   *  KE.Safaricom.M-Pesa
@@ -446,7 +446,7 @@ This field is used to indicate the ASPSP's payment service to be used for making
 
 This field is used to indicate the type of fee/charge to be applied to the payment-order.
 
-The enumerated values specified by Open Banking align with the OBIE Open Data Standard.
+The enumerated values specified by Open Banking align with the OBL Open Data Standard.
 
 This enumeration consists of a subset of the fees and charges identified in the Open Data Standard. The subset is limited to fees and charges associated with payments.
 
@@ -467,7 +467,7 @@ This field is used to indicate the file-type that is being submitted as part of 
 | Code |Description |
 | --- |--- |
 | UK.OBIE.pain.001.001.08 |This is specified when a fully compliant pain.001 XML file is staged for the payment initiation. |
-| UK.OBIE.PaymentInitiation.4.0 |This is specified when an array of payments, which are compliant with the OBIE Initiation objects in the v4.0 standard, are staged in a .json file for the payment initiation. |
+| UK.OBIE.PaymentInitiation.4.0 |This is specified when an array of payments, which are compliant with the OBL Initiation objects in the v4.0 standard, are staged in a .json file for the payment initiation. |
 
 </details>
 

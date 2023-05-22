@@ -146,12 +146,12 @@ References:
 
 #### Standards
 
-The OBIE principles for developing API standards:
+The OBL principles for developing API standards:
 
-* OBIE will adopt existing standards where relevant/appropriate to minimise re-inventing the wheel.
+* OBL will adopt existing standards where relevant/appropriate to minimise re-inventing the wheel.
 * The Standards currently being reviewed include ISO20022 and FAPI.
-* OBIE will favour developer/user experience over and above adoption of existing Standards, in order to create a more future proof Standard.
-* OBIE will work with other relevant bodies to align with, contribute to and/or adopt other Standards work, especially relating to creation of Standards around APIs and JSON payloads.
+* OBL will favour developer/user experience over and above adoption of existing Standards, in order to create a more future proof Standard.
+* OBL will work with other relevant bodies to align with, contribute to and/or adopt other Standards work, especially relating to creation of Standards around APIs and JSON payloads.
 
 #### ISO 20022
 
@@ -600,7 +600,7 @@ The verifier **must** validate that the `typ` header if specified has the value 
 
 The verifier **must** validate that the `cty` header to ensure that the payload is of the expected mime type.
 
-The verifier **must** ensure that the specified `alg` is one of the algorithms specified by OBIE.
+The verifier **must** ensure that the specified `alg` is one of the algorithms specified by OBL.
 
 The verifier **must** ensure that the specified `kid` is valid and a public key with the specified key Id can be retrieved from the Trust Anchor.
 
@@ -625,9 +625,9 @@ The verifier must verify the signature, as defined in [RFC 7515, Appendix F](htt
 
 #### Sample JOSE Header
 
-##### Using a certificate or keypair registered with OBIE Directory as a trust anchor
+##### Using a certificate or keypair registered with OBL Directory as a trust anchor
 
-In the example below, the message signer's key (identified by the `kid`) is registered with the OBIE Directory.
+In the example below, the message signer's key (identified by the `kid`) is registered with the OBL Directory.
 
 The TPP signing the message has an organization id of `0015800001041RHAAY` and a software statement id of `HQuZPIt3ipkh33Uxytox1E`.
 
@@ -771,7 +771,7 @@ The Supplementary Data section is defined as an empty JSON object in the specifi
 
 Wherever used, an ASPSP **must** define and document (on their developer portal) their own structure, usage and (mandatory/optional) requirements for Supplementary Data.
 
-An ASPSP **must not** use Supplementary Data if an element already exists in the OBIE standard that fulfils the requirement.
+An ASPSP **must not** use Supplementary Data if an element already exists in the OBL standard that fulfils the requirement.
 
 ## Security & Access Control
 
@@ -861,7 +861,7 @@ Earlier versions of this specification referenced the use of The Authorization C
 
  The [FAPI read & Write API Security Profile](https://openid.net/specs/openid-financial-api-part-2-ID2.html) specify a more stringent set of requirements that ASPSPs and TPPs must adhere to.
 
-Earlier versions of this specification referenced the use of [The UK Open Banking Security Profile](https://bitbucket.org/openid/obuk/src/4630771db004da59992fb201641f5c4ff2c881f1/uk-openbanking-security-profile.md?at=master&fileviewer=file-view-default). It should be noted that the UK Open Banking Security Profile is no longer supported by OBIE. ASPSPs should not implement this profile, but should use FAPI instead.
+Earlier versions of this specification referenced the use of [The UK Open Banking Security Profile](https://bitbucket.org/openid/obuk/src/4630771db004da59992fb201641f5c4ff2c881f1/uk-openbanking-security-profile.md?at=master&fileviewer=file-view-default). It should be noted that the UK Open Banking Security Profile is no longer supported by OBL. ASPSPs should not implement this profile, but should use FAPI instead.
 
 ##### id_token_hint
 
@@ -905,7 +905,7 @@ If the ASPSP does not support a specific method of identifying a PSU, the ASPSP 
 
 
 ###### Identifying the consent to be authorised
-For the OBIE APIs, all authentication journeys take place in the context of a consent.
+For the OBL APIs, all authentication journeys take place in the context of a consent.
 
 CIBA does not define a standard mechanism for transmitting an identifier for the consent to the ASPSP. Additionally, FAPI-CIBA specifically states that the Authorization server:
 > should not use the login_hint or login_hint_token to convey "intent ids" or any other authorization metadata
@@ -1142,7 +1142,7 @@ where the `assertion` is a JWS of the format
 
 ### Enumerations
 
-OBIE Specifications include various fields of Enumerated data types, where either the values are fixed to a OBIE defined set of alternatives (i.e. Static Enumerations), or flexible with an initial OBIE defined set of alternatives, and ASPSPs can use/extend these alternatives (i.e. Namespaced Enumerations).
+OBL Specifications include various fields of Enumerated data types, where either the values are fixed to a OBL defined set of alternatives (i.e. Static Enumerations), or flexible with an initial OBL defined set of alternatives, and ASPSPs can use/extend these alternatives (i.e. Namespaced Enumerations).
 
 While Static Enumerations are listed on each API Specification page, Namespaced Enumerations are captured on the Namespaced Enumerations page.
 
@@ -1240,7 +1240,7 @@ The error response structure for Open Banking Read/Write APIs:
 |Message                   |1..1                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |OBErrorResponse1/Message|Brief Error message, e.g., 'There is something wrong with the request parameters provided'                                                                              |Max500Text               |     |       |
 |Errors                    |1..n                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |OBErrorResponse1/Errors|                                                                                                                                                                        |OBError1                 |     |       |
 |ErrorCode                 |1..1                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |OBErrorResponse1/Errors/ErrorCode|Low level textual error code, e.g., UK.OBIE.Field.Missing                                                                                                               |OBErrorResponseError1Code|     |       |
-|Message                   |1..1                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |OBErrorResponse1/Errors/Message|A description of the error that occurred. e.g., 'A mandatory field isn't supplied' or 'RequestedExecutionDateTime must be in future'<br><br>OBIE doesn't standardise this field|Max500Text               |     |       |
+|Message                   |1..1                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |OBErrorResponse1/Errors/Message|A description of the error that occurred. e.g., 'A mandatory field isn't supplied' or 'RequestedExecutionDateTime must be in future'<br><br>OBL doesn't standardise this field|Max500Text               |     |       |
 |Path                      |0..1                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |OBErrorResponse1/Errors/Path|Recommended but optional reference to the JSON Path of the field with error, e.g., Data.Initiation.InstructedAmount.Currency                                            |Max500Text               |     |       |
 |Url                       |0..1                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |OBErrorResponse1/Errors/Url|URL to help remediate the problem, or provide more information, or to API Reference, or help etc                                                                        |xs:anyURI                |     |       |
 

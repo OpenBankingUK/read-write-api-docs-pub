@@ -140,7 +140,7 @@ None** - The value of a particular feature and benefit to an accountholder is de
 
 ##### UML Class Diagram
 
-* This implementation is based on the assumption that all pending decisions were based on the OBIE recommended option.
+* This implementation is based on the assumption that all pending decisions were based on the OBL recommended option.
 * Other Fee Charges: Only Periodic Fee(service charge) has been included in the Code List.
 * We have taken Open Data PCA Segments for PCA Account Info as well.
 

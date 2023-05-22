@@ -131,7 +131,7 @@ Further analysis required:-
 
 ###### UML Class Diagram
 
-* This implementation is based on the assumption that all pending decisions were based on the OBIE recommended option.
+* This implementation is based on the assumption that all pending decisions were based on the OBL recommended option.
 * Other Fee Charges: Only Periodic Fee(service charge) has been included in the Code List.
 * We have taken Open Data BCA Segments for BCA Account Info as well.
 

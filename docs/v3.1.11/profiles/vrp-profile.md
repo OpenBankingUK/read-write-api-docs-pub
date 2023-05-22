@@ -232,7 +232,7 @@ ASPSPs may revoke access tokens issued for a VRP consent if they suspect risk or
 
 ### Risk Scoring Information
 
-The same risk scoring information contained in the `Risk` of other OBIE R/W payment resources will be available.
+The same risk scoring information contained in the `Risk` of other OBL R/W payment resources will be available.
 
 ## Event Notifications
 

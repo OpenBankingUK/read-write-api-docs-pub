@@ -6,7 +6,7 @@ The specification is structured as a series of profiles, resources and data mode
 
 Details of version compatibility can be found in **profiles** section and specific sub-sections of **resources and data models** section of the specification.
 
-This specification should be read in conjunction with the Customer Experience Guidelines, Operational Guidelines and Management Information Requirements. Together these form the OBIE standard, which should enable any ASPSP which implements the specification to meet their obligations under both the CMA Order and PSD2/RTS.
+This specification should be read in conjunction with the Customer Experience Guidelines, Operational Guidelines and Management Information Requirements. Together these form the OBL standard, which should enable any ASPSP which implements the specification to meet their obligations under both the CMA Order and PSD2/RTS.
 
 ## Known Issues
 
