@@ -42,7 +42,7 @@
 
 The specification defines certain fields with only a fixed set of possible values as enumerations, and further additions to possible values require a Specification change.
 
-As part of Version 3 OBL Specifications defined new custom Data Types, which are an extendable list of enumerated values. Any extensions to this standard list of values can be done by the ASPSPs, with relevant documentation on their Developer Portals.
+As part of Version 3 Open Banking Specifications defined new custom Data Types, which are an extendable list of enumerated values. Any extensions to this standard list of values can be done by the ASPSPs, with relevant documentation on their Developer Portals.
 
 The extendable Data Type values are namespaced, to help identify the issuer of the value, and the relevant value.
 

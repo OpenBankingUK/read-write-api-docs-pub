@@ -1142,7 +1142,7 @@ where the `assertion` is a JWS of the format
 
 ### Enumerations
 
-OBL Specifications include various fields of Enumerated data types, where either the values are fixed to a OBL defined set of alternatives (i.e. Static Enumerations), or flexible with an initial OBL defined set of alternatives, and ASPSPs can use/extend these alternatives (i.e. Namespaced Enumerations).
+Open Banking Specifications include various fields of Enumerated data types, where either the values are fixed to a OBL defined set of alternatives (i.e. Static Enumerations), or flexible with an initial OBL defined set of alternatives, and ASPSPs can use/extend these alternatives (i.e. Namespaced Enumerations).
 
 While Static Enumerations are listed on each API Specification page, Namespaced Enumerations are captured on the Namespaced Enumerations page.
 
