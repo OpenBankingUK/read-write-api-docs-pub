@@ -624,6 +624,6 @@ The enumerated values specified by Open Banking are documented in Swagger specif
 
 ### Multi-Authorisation Consent for Corporate Accounts
 
-OBL Specification doesn't provide a specific state modelling for Account Access Consent resource where the Authorisation cannot be completed by a Single Authoriser.
+Open Banking Specification doesn't provide a specific state modelling for Account Access Consent resource where the Authorisation cannot be completed by a Single Authoriser.
 
 It's up to ASPSP to engage with AISP/PSUs to enable them to facilitate the Account Access in such cases, with an alternative workflow, and the ASPSP must document the behaviour on their Developer Portal.
