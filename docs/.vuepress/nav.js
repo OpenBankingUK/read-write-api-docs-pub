@@ -45,7 +45,7 @@ module.exports = [
                 text: 'Security Profiles',
                 link: 'https://standards.openbanking.org.uk/security-profiles/',
                 items: [
-                    { text: 'Financial Grade API', link: 'https://openid.net/specs/openid-financial-api-part-2-wd-06.html' },
+                    { text: 'Financial Grade API', link: 'https://openid.net/specs/openid-financial-api-part-2-1_0.html' },
                     { text: 'Client Initiated Backchannel Authentication', link: 'https://openid.net/specs/openid-financial-api-ciba.html' }
                 ]
             }
