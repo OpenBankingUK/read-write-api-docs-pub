@@ -70,7 +70,7 @@ An account (AccountId) may have multiple balance types (these follow the standar
 ### Notes
 
 * Multiple balances may be returned (each with a different value for Type) for an account. This is for ASPSPs that show multiple balances in their online channels.
-* The CreditLine section may be repeated as multiple credit lines may be included in an available balance.
+* The CreditLine section may be repeated as multiple credit lines maSy be included in an available balance.
 * A DateTime element has been used instead of a complex choice element of Date and DateTime. Where time elements do not exist in ASPSP systems, the time portion of the DateTime element will be defaulted to 00:00:00+00:00.
 
 ### Permission Codes
@@ -86,7 +86,7 @@ The resource requires the ReadBalances permission. The resource response payload
 | Balance |1..n |OBReadBalance1/Data/Balance |Set of elements used to define the balance details. |OBCashBalance1 | | |
 | AccountId |1..1 |OBReadBalance1/Data/Balance/AccountId |A unique and immutable identifier used to identify the account resource. This identifier has no meaning to the account owner. |Max40Text | | |
 | CreditDebitIndicator |1..1 |OBReadBalance1/Data/Balance/CreditDebitIndicator |Indicates whether the balance is a credit or a debit balance. Usage: A zero balance is considered to be a credit balance. |OBCreditDebitCode |Credit Debit | |
-| Type |1..1 |OBReadBalance1/Data/Balance/Type |Balance type, in a coded form. |OBBalanceType1Code |ClosingAvailable ClosingBooked ClosingCleared Expected ForwardAvailable Information InterimAvailable InterimBooked InterimCleared OpeningAvailable OpeningBooked OpeningCleared PreviouslyClosedBooked | |
+| Type |1..1 |OBReadBalance1/Data/Balance/Type |Balance type, in a coded form. |OBBalanceType1Code |CLAV (ClosingAvailable)<br>CLBS (ClosingBooked)<br> XPCH (Expected)<br>FWAV (ForwardAvailable) <br>INFO (Information)<br>ITAV (InterimAvailable) <br>ITBD (InterimBooked)<br>OPAV (OpeningAvailable)<br>OPBD (OpeningBooked)<br>PRCD (PreviouslyClosedBooked)| |
 | DateTime |1..1 |OBReadBalance1/Data/Balance/DateTime |Indicates the date (and time) of the balance. |ISODateTime | | |
 | Amount |1..1 |OBReadBalance1/Data/Balance/Amount |Amount of money of the cash balance. |OBActiveOrHistoricCurrencyAndAmount | | |
 | Amount |1..1 |OBReadBalance1/Data/Balance/Amount/Amount |A number of monetary units specified in an active currency where the unit of currency is explicit and compliant with ISO 4217. |OBActiveCurrencyAndAmount_SimpleType | |`^\d{1,13}$|^\d{1,13}\.\d{1,5}$` |
@@ -139,7 +139,7 @@ Content-Type: application/json
           "Currency": "GBP"
         },
         "CreditDebitIndicator": "Credit",
-        "Type": "InterimAvailable",
+        "Type": "ITAV",
         "DateTime": "2017-04-05T10:43:07+00:00",
         "CreditLine": [
           {
@@ -159,7 +159,7 @@ Content-Type: application/json
           "Currency": "GBP"
         },
         "CreditDebitIndicator": "Debit",
-        "Type": "InterimBooked",
+        "Type": "ITBD",
         "DateTime": "2017-05-02T14:22:09+00:00"
       }
     ]
@@ -206,7 +206,7 @@ Content-Type: application/json
         "Currency": "GBP"
       },
       "CreditDebitIndicator": "Credit",
-      "Type": "InterimAvailable",
+      "Type": "ITAV",
       "DateTime": "2017-04-05T10:43:07+00:00",
       "CreditLine": [
         {
@@ -270,7 +270,7 @@ Content-Type: application/json
         "Currency": "GBP"
       },
       "CreditDebitIndicator": "Credit",
-      "Type": "InterimAvailable",
+      "Type": "ITAV",
       "DateTime": "2017-04-05T10:43:07+00:00",
       "CreditLine": [
         {
@@ -334,7 +334,7 @@ Content-Type: application/json
         "Currency": "GBP"
       },
       "CreditDebitIndicator": "Debit",
-      "Type": "InterimAvailable",
+      "Type": "ITAV",
       "DateTime": "2017-04-05T10:43:07+00:00",
       "CreditLine": [
         {
@@ -404,7 +404,7 @@ Content-Type: application/json
         "SubType": "LocalCurrency"
       },
       "CreditDebitIndicator": "Credit",
-      "Type": "ClosingAvailable",
+      "Type": "CLAV",
       "DateTime": "2023-04-05T10:43:07+00:00"
     },
     "TotalValue": {
