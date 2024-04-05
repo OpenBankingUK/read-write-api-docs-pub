@@ -215,11 +215,11 @@ For the call toGET /accounts/{AccountId}/statements/{StatementId}/transactions:
 | DateTime |1..1 |OBReadStatement2/Data/Statement/StatementDateTime/DateTime |Date and time associated with the date time type. |ISODateTime | | |
 | Type |1..1 |OBReadStatement2/Data/Statement/StatementDateTime/Type |Date time type, in a coded form. |OBExternalStatementDateTimeType1Code | | |
 | StatementRate |0..n |OBReadStatement2/Data/Statement/StatementRate |Set of elements used to provide details of a generic rate related to the statement resource. |OBStatementRate1 | | |
-| Rate |1..1 |OBReadStatement2/Data/Statement/StatementRate/Rate |Rate associated with the statement rate type. |OBExternalStatementRateType1Code | |^(-?\d{1,3}){1}(\.\d{1,4}){0,1}$ |
-| Type |1..1 |OBReadStatement2/Data/Statement/StatementRate/Type |Statement rate type, in a coded form. |Max40Text | | |
+| Rate |1..1 |OBReadStatement2/Data/Statement/StatementRate/Rate |Rate associated with the statement rate type. |Max40Text | |^(-?\d{1,3}){1}(\.\d{1,4}){0,1}$ |
+| Type |1..1 |OBReadStatement2/Data/Statement/StatementRate/Type |Statement rate type, in a coded form. |OBExternalStatementRateType1Code | | |
 | StatementValue |0..n |OBReadStatement2/Data/Statement/StatementValue |Set of elements used to provide details of a generic number value related to the statement resource. |OBStatementValue1 | | |
-| Value |1..1 |OBReadStatement2/Data/Statement/StatementValue/Value |Value associated with the statement value type. |OBExternalStatementValueType1Code | | |
-| Type |1..1 |OBReadStatement2/Data/Statement/StatementValue/Type |Statement value type, in a coded form. |Max40Text | | |
+| Value |1..1 |OBReadStatement2/Data/Statement/StatementValue/Value |Value associated with the statement value type. |Max40Text | | |
+| Type |1..1 |OBReadStatement2/Data/Statement/StatementValue/Type |Statement value type, in a coded form. |OBExternalStatementValueType1Code | | |
 | TotalValue |0..1 |OBReadStatement2/Data/Statement/TotalValue |Combined sum of all Amounts in the accounts base currency. | | | |
 | Amount |1..1 |OBReadStatement2/Data/Statement/TotalValue/Amount |A number of monetary units specified in an active currency where the unit of currency is explicit and compliant with ISO 4217. |OBActiveCurrencyAndAmount_SimpleType | |`^\d{1,13}$|^\d{1,13}\.\d{1,5}$` |
 | Currency |1..1 |OBReadStatement2/Data/Statement/TotalValue/Currency |A code allocated to a currency by a Maintenance Agency under an international identification scheme, as described in the latest edition of the international standard ISO 4217 "Codes for the representation of currencies and funds". |ActiveOrHistoricCurrencyCode | |^[A-Z]{3,3}$ |
