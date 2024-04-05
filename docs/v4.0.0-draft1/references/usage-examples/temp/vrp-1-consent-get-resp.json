@@ -1,0 +1,62 @@
+{
+  "Data": {
+    "ConsentId": "fe615446-e53a-45ed-954c-ae5d1f97a93b",
+    "CreationDateTime": "2017-06-05T15:15:15+00:00",
+    "Status": "Authorised",
+    "StatusUpdateDateTime": "2017-06-05T15:15:15+05:00",
+    "ReadRefundAccount": "Yes",
+
+    "ControlParameters": {
+      "PSUAuthenticationMethods": [ "UK.OBIE.SCA" ],
+      "VRPType": "UK.OBIE.VRPType.Sweeping",
+      "ValidFromDateTime": "2017-06-05T15:15:13+00:00",
+      "ValidToDateTime": "2020-06-05T15:15:13+00:00",
+      "MaximumIndividualAmount": {
+        "Amount": "100.00",
+        "Currency": "GBP"
+      },
+      "PeriodicLimits": [
+        {
+          "Amount": "200.00",
+          "Currency": "GBP",
+          "PeriodAlignment": "Consent",
+          "PeriodType": "Week"
+        }
+      ]
+    },
+
+    "DebtorAccount": {
+      "SchemeName": "UK.OBIE.IBAN",
+      "Identification": "GB76LOYD30949301273801",
+      "Name": "Marcus Sweepimus"
+    },
+
+    "Initiation": {
+      "DebtorAccount": {
+        "SchemeName": "UK.OBIE.IBAN",
+        "Identification": "GB76LOYD30949301273801",
+        "Name": "Marcus Sweepimus"
+      },
+      "CreditorAccount": {
+        "SchemeName": "SortCodeAccountNumber",
+        "Identification": "30949330000010",
+        "SecondaryIdentification": "Roll 90210",
+        "Name": "Marcus Sweepimus"
+      },
+      "RemittanceInformation": {
+        "Reference": "Sweepco"
+      }
+    }
+  },
+
+  "Risk": {
+    "PaymentContextCode": "PartyToParty"
+  },
+
+  
+  "Links": {
+    "Self": "https://api.alphabank.com/open-banking/v3.1/pisp/domestic-vrp-consents/fe615446-e53a-45ed-954c-ae5d1f97a93b"
+  },
+  
+  "Meta": {}
+}
