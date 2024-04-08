@@ -82,7 +82,7 @@ Each account resource will have a unique and immutable AccountId.
 * The following fields are optional only for accounts that are switched. For all other accounts, the fields must be populated by the ASPSP.
   * Data.Currency
   * Data.AccountCategory
-  * Data.AccountSubType
+  * Data.AccountTypeCode
 
 
 ### Permission Codes
@@ -110,7 +110,7 @@ If the ReadPAN permission is granted by the PSU, the ASPSP may choose to populat
 | StatusUpdateDateTime |0..1 |OBReadAccount6/Data/Account/StatusUpdateDateTime |Date and time at which the resource status was updated. |ISODateTime | | |
 | Currency |0..1 |OBReadAccount6/Data/Account/Currency |Identification of the currency in which the account is held. Usage: Currency should only be used in case one and the same account number covers several currencies and the initiating party needs to identify which currency needs to be used for settlement on the account. |ActiveOrHistoricCurrencyCode | |^[A-Z]{3,3}$ |
 | AccountCategory |0..1 |OBReadAccount6/Data/Account/AccountCategory |Specifies the type of account (personal or business). |OBInternalAccountType1Code |Business Personal | |
-| AccountSubType |0..1 |OBReadAccount6/Data/Account/AccountSubType |Specifies the sub type of account (product family group). |OBExternalAccountSubType1Code |ChargeCard CreditCard CurrentAccount EMoney Loan Mortgage PrePaidCard Savings | |
+| AccountTypeCode |0..1 |OBReadAccount6/Data/Account/AccountTypeCode |Specifies the sub type of account (product family group). |OBExternalAccountSubType1Code |CACC (Current)<br>CARD (CardAccount)<br>CASH (CashPayment)<br>CHAR (Charges)<br>CISH (CashIncome)<br>COMM (Commission)<br>CPAC (ClearingParticipantSettlementAccount)<br>LLSV (LimitedLiquiditySavingsAccount)<br>LOAN (Loan)<br>MGLD (MarginalLending)<br>MOMA (MoneyMarket)<br>NFCA (NonResidentForeignCurrencyAccount)<br>NREX (NonResidentExternal)<br>ODFT (Overdraft)<br>ONDP (OverNightDeposit)<br>OTHR (OtherAccount)<br>SACC (Settlement)<br>SLRY (Salary)<br>SVGS (Savings)<br>TAXE (Tax)<br>TRAN (TransactingAccount)<br>TRAS (CashTrading)<br>VACC (VirtualAccount)<br>MORT (Mortgage Account)<br>WALT (Wallet) | |
 | Description |0..1 |OBReadAccount6/Data/Account/Description |Specifies the description of the account type. |Max35Text | | |
 | Nickname |0..1 |OBReadAccount6/Data/Account/Nickname |The nickname of the account, assigned by the account owner in order to provide an additional means of identification of the account. |Max70Text | | |
 | OpeningDate |0..1 |OBReadAccount6/Data/Account/OpeningDate | Date on which the account and related basic services are effectively operational for the account owner. | ISODate | | |
@@ -162,7 +162,7 @@ Content-Type: application/json
 		"StatusUpdateDateTime": "2019-01-01T06:06:06+00:00",
         "Currency": "GBP",
         "AccountCategory": "Personal",
-        "AccountSubType": "CurrentAccount",
+        "AccountTypeCode": "CACC",
         "Nickname": "Bills",
         "OpeningDate": "01-05-2002",
         "Account": [
@@ -180,7 +180,7 @@ Content-Type: application/json
 		"StatusUpdateDateTime": "2018-01-01T06:06:06+00:00",
         "Currency": "GBP",
         "AccountCategory": "Personal",
-        "AccountSubType": "CurrentAccount",
+        "AccountTypeCode": "CACC",
         "Nickname": "Household",
         "Account": [
 			{
@@ -234,7 +234,7 @@ Content-Type: application/json
 		"StatusUpdateDateTime": "2019-01-01T06:06:06+00:00",
         "Currency": "GBP",
         "AccountCategory": "Personal",
-        "AccountSubType": "CurrentAccount",
+        "AccountTypeCode": "CACC",
         "Nickname": "Bills",
         "Account": [
 			{
@@ -289,7 +289,7 @@ Content-Type: application/json
 		"StatusUpdateDateTime": "2019-01-01T06:06:06+00:00",
         "Currency": "GBP",
         "AccountCategory": "Personal",
-        "AccountSubType": "CurrentAccount",
+        "AccountTypeCode": "CACC",
         "Nickname": "Bills"
       },
       {
@@ -298,7 +298,7 @@ Content-Type: application/json
 		"StatusUpdateDateTime": "2018-01-01T06:06:06+00:00",
         "Currency": "GBP",
         "AccountCategory": "Personal",
-        "AccountSubType": "CurrentAccount",
+        "AccountTypeCode": "CACC",
         "Nickname": "Household"
       }
     ]
