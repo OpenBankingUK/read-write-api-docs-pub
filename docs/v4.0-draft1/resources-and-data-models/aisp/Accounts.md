@@ -81,7 +81,7 @@ Each account resource will have a unique and immutable AccountId.
   * Once an account switch has been completed, an ASPSP may populate this field with the value `UK.CASS.SwitchCompleted`
 * The following fields are optional only for accounts that are switched. For all other accounts, the fields must be populated by the ASPSP.
   * Data.Currency
-  * Data.AccountType
+  * Data.AccountCategory
   * Data.AccountSubType
 
 
@@ -109,7 +109,7 @@ If the ReadPAN permission is granted by the PSU, the ASPSP may choose to populat
 | Status |0..1 |OBReadAccount6/Data/Account/Status |Specifies the status of account resource in code form. |OBAccountStatus1Code |Enabled Disabled Deleted ProForma Pending | |
 | StatusUpdateDateTime |0..1 |OBReadAccount6/Data/Account/StatusUpdateDateTime |Date and time at which the resource status was updated. |ISODateTime | | |
 | Currency |0..1 |OBReadAccount6/Data/Account/Currency |Identification of the currency in which the account is held. Usage: Currency should only be used in case one and the same account number covers several currencies and the initiating party needs to identify which currency needs to be used for settlement on the account. |ActiveOrHistoricCurrencyCode | |^[A-Z]{3,3}$ |
-| AccountType |0..1 |OBReadAccount6/Data/Account/AccountType |Specifies the type of account (personal or business). |OBExternalAccountType1Code |Business Personal | |
+| AccountCategory |0..1 |OBReadAccount6/Data/Account/AccountCategory |Specifies the type of account (personal or business). |OBInternalAccountType1Code |Business Personal | |
 | AccountSubType |0..1 |OBReadAccount6/Data/Account/AccountSubType |Specifies the sub type of account (product family group). |OBExternalAccountSubType1Code |ChargeCard CreditCard CurrentAccount EMoney Loan Mortgage PrePaidCard Savings | |
 | Description |0..1 |OBReadAccount6/Data/Account/Description |Specifies the description of the account type. |Max35Text | | |
 | Nickname |0..1 |OBReadAccount6/Data/Account/Nickname |The nickname of the account, assigned by the account owner in order to provide an additional means of identification of the account. |Max70Text | | |
@@ -161,7 +161,7 @@ Content-Type: application/json
 		"Status": "Enabled",
 		"StatusUpdateDateTime": "2019-01-01T06:06:06+00:00",
         "Currency": "GBP",
-        "AccountType": "Personal",
+        "AccountCategory": "Personal",
         "AccountSubType": "CurrentAccount",
         "Nickname": "Bills",
         "OpeningDate": "01-05-2002",
@@ -179,7 +179,7 @@ Content-Type: application/json
 		"Status": "Enabled",
 		"StatusUpdateDateTime": "2018-01-01T06:06:06+00:00",
         "Currency": "GBP",
-        "AccountType": "Personal",
+        "AccountCategory": "Personal",
         "AccountSubType": "CurrentAccount",
         "Nickname": "Household",
         "Account": [
@@ -233,7 +233,7 @@ Content-Type: application/json
 		"Status": "Enabled",
 		"StatusUpdateDateTime": "2019-01-01T06:06:06+00:00",
         "Currency": "GBP",
-        "AccountType": "Personal",
+        "AccountCategory": "Personal",
         "AccountSubType": "CurrentAccount",
         "Nickname": "Bills",
         "Account": [
@@ -288,7 +288,7 @@ Content-Type: application/json
 		"Status": "Enabled",
 		"StatusUpdateDateTime": "2019-01-01T06:06:06+00:00",
         "Currency": "GBP",
-        "AccountType": "Personal",
+        "AccountCategory": "Personal",
         "AccountSubType": "CurrentAccount",
         "Nickname": "Bills"
       },
@@ -297,7 +297,7 @@ Content-Type: application/json
 		"Status": "Enabled",
 		"StatusUpdateDateTime": "2018-01-01T06:06:06+00:00",
         "Currency": "GBP",
-        "AccountType": "Personal",
+        "AccountCategory": "Personal",
         "AccountSubType": "CurrentAccount",
         "Nickname": "Household"
       }
