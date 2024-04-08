@@ -70,7 +70,7 @@ An account (AccountId) may have multiple balance types (these follow the standar
 ### Notes
 
 * Multiple balances may be returned (each with a different value for Type) for an account. This is for ASPSPs that show multiple balances in their online channels.
-* The CreditLine section may be repeated as multiple credit lines maSy be included in an available balance.
+* The CreditLine section may be repeated as multiple credit lines may be included in an available balance.
 * A DateTime element has been used instead of a complex choice element of Date and DateTime. Where time elements do not exist in ASPSP systems, the time portion of the DateTime element will be defaulted to 00:00:00+00:00.
 
 ### Permission Codes
