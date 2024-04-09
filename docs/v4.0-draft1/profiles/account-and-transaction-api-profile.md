@@ -544,32 +544,51 @@ Deviations from the camt.052 XML standard are:
 | OBAddressTypeCode |Postal |Address is the complete postal address. |
 | OBAddressTypeCode |Residential |Address is the home address. |
 | OBAddressTypeCode |Statement |Address is the address where statements are sent. |
-| OBBalanceType1Code |ClosingAvailable |Closing balance of amount of money that is at the disposal of the account owner on the date specified. |
-| OBBalanceType1Code |ClosingBooked |Balance of the account at the end of the pre-agreed account reporting period. It is the sum of the opening booked balance at the beginning of the period and all entries booked to the account during the pre-agreed account reporting period. |
-| OBBalanceType1Code |ClosingCleared |Closing balance of amount of money that is cleared on the date specified. |
-| OBBalanceType1Code |Expected |Balance, composed of booked entries and pending items known at the time of calculation, which projects the end of day balance if everything is booked on the account and no other entry is posted. |
-| OBBalanceType1Code |ForwardAvailable |Forward available balance of money that is at the disposal of the account owner on the date specified. |
-| OBBalanceType1Code |Information |Balance for informational purposes. |
-| OBBalanceType1Code |InterimAvailable |Available balance calculated in the course of the account servicer's business day, at the time specified, and subject to further changes during the business day. The interim balance is calculated on the basis of booked credit and debit items during the calculation time/period specified. |
-| OBBalanceType1Code |InterimBooked |Balance calculated in the course of the account servicer's business day, at the time specified, and subject to further changes during the business day. The interim balance is calculated on the basis of booked credit and debit items during the calculation time/period specified. |
-| OBBalanceType1Code |InterimCleared |Cleared balance calculated in the course of the account servicer's business day, at the time specified, and subject to further changes during the business day. |
-| OBBalanceType1Code |OpeningAvailable |Opening balance of amount of money that is at the disposal of the account owner on the date specified. |
-| OBBalanceType1Code |OpeningBooked |Book balance of the account at the beginning of the account reporting period. It always equals the closing book balance from the previous report. |
-| OBBalanceType1Code |OpeningCleared |Opening balance of amount of money that is cleared on the date specified. |
-| OBBalanceType1Code |PreviouslyClosedBooked |Balance of the account at the previously closed account reporting period. The opening booked balance for the new period has to be equal to this balance. Usage: the previously booked closing balance should equal (inclusive date) the booked closing balance of the date it references and equal the actual booked opening balance of the current date. |
+| OBBalanceType1Code |CLAV |ClosingAvailable - Closing balance of amount of money that is at the disposal of the account owner on the date specified. |
+| OBBalanceType1Code |CLBS |ClosingBooked - Balance of the account at the end of the pre-agreed account reporting period. It is the sum of the opening booked balance at the beginning of the period and all entries booked to the account during the pre-agreed account reporting period. |
+| OBBalanceType1Code |XPCH |Expected - Balance, composed of booked entries and pending items known at the time of calculation, which projects the end of day balance if everything is booked on the account and no other entry is posted. |
+| OBBalanceType1Code |FWAV |ForwardAvailable - Forward available balance of money that is at the disposal of the account owner on the date specified. |
+| OBBalanceType1Code |INFO |Information - Balance for informational purposes. |
+| OBBalanceType1Code |ITAV |InterimAvailable - Available balance calculated in the course of the account servicer's business day, at the time specified, and subject to further changes during the business day. The interim balance is calculated on the basis of booked credit and debit items during the calculation time/period specified. |
+| OBBalanceType1Code |ITBD |InterimBooked - Balance calculated in the course of the account servicer's business day, at the time specified, and subject to further changes during the business day. The interim balance is calculated on the basis of booked credit and debit items during the calculation time/period specified. |
+| OBBalanceType1Code |OPAV |OpeningAvailable - Opening balance of amount of money that is at the disposal of the account owner on the date specified. |
+| OBBalanceType1Code |OPBD |OpeningBooked - Book balance of the account at the beginning of the account reporting period. It always equals the closing book balance from the previous report. |
+| OBBalanceType1Code |PRCD |PreviouslyClosedBooked - Balance of the account at the previously closed account reporting period. The opening booked balance for the new period has to be equal to this balance. Usage: the previously booked closing balance should equal (inclusive date) the booked closing balance of the date it references and equal the actual booked opening balance of the current date. |
+| OBCommunicationMethod |EMAL | Email communication method. |
+| OBCommunicationMethod |FAXI | Fax communication method. |
+| OBCommunicationMethod |FILE | File communication method. |
+| OBCommunicationMethod |ONLI | Online communication method. |
+| OBCommunicationMethod |POST | Postal communication method. |
 | OBCreditDebitCode |Credit |Operation is a credit |
 | OBCreditDebitCode |Debit |Operation is a debit |
-| OBEntryStatus1Code |Booked |Booked means that the transfer of money has been completed between account servicer and account owner Usage: Status Booked does not necessarily imply finality of money as this depends on other factors such as the payment system used, the completion of the end- to-end transaction and the terms agreed between account servicer and owner. Status Booked is the only status that can be reversed. |
-| OBEntryStatus1Code |Pending |Booking on the account owner's account in the account servicer's ledger has not been completed. Usage: this can be used for expected items, or for items for which some conditions still need to be fulfilled before they can be booked. If booking takes place, the entry will be included with status Booked in subsequent account report or statement. Status Pending cannot be reversed. |
-| OBEntryStatus1Code |Rejected | Transaction has been rejected. Typically used for indicating card transactions that have been rejected. |
-| OBExternalAccountSubType1Code |ChargeCard |Account sub-type is a Charge Card. |
-| OBExternalAccountSubType1Code |CreditCard |Account sub-type is a Credit Card. |
-| OBExternalAccountSubType1Code |CurrentAccount |Account sub-type is a Current Account. |
-| OBExternalAccountSubType1Code |EMoney |Account sub-type is an EMoney. |
-| OBExternalAccountSubType1Code |Loan |Account sub-type is a Loan. |
-| OBExternalAccountSubType1Code |Mortgage |Account sub-type is a Mortgage. |
-| OBExternalAccountSubType1Code |PrePaidCard |Account sub-type is a PrePaid Card. |
-| OBExternalAccountSubType1Code |Savings |Account sub-type is a Savings. |
+| OBEntryStatus1Code |BOOK |Booked - Booked means that the transfer of money has been completed between account servicer and account owner Usage: Status Booked does not necessarily imply finality of money as this depends on other factors such as the payment system used, the completion of the end- to-end transaction and the terms agreed between account servicer and owner. Status Booked is the only status that can be reversed. |
+| OBEntryStatus1Code |PDNG |Pending - Booking on the account owner's account in the account servicer's ledger has not been completed. Usage: this can be used for expected items, or for items for which some conditions still need to be fulfilled before they can be booked. If booking takes place, the entry will be included with status Booked in subsequent account report or statement. Status Pending cannot be reversed. |
+| OBEntryStatus1Code |INFO | Information <!-- TODO Get descriptions--> |
+| OBEntryStatus1Code |FUTR | Transaction has is for the future. Typically used for indicating card transactions that will be booked in the future. <!-- TODO Get descriptions--> |
+| OBExternalAccountSubType1Code |CACC |Account sub-type is a Current Account. |
+| OBExternalAccountSubType1Code |CARD |Account sub-type is a Card Account. |
+| OBExternalAccountSubType1Code |CASH |Account sub-type is a Cash Payment Account. |
+| OBExternalAccountSubType1Code |CHAR |Account sub-type is a Charge Account. |
+| OBExternalAccountSubType1Code |CISH |Account sub-type is a Cash Income Account. |
+| OBExternalAccountSubType1Code |COMM |Account sub-type is a Commission Account. |
+| OBExternalAccountSubType1Code |CPAC |Account sub-type is a Clearing Participant Settlement Account. |
+| OBExternalAccountSubType1Code |LLSV |Account sub-type is a Limited Liquidity Savings Account. |
+| OBExternalAccountSubType1Code |LOAN |Account sub-type is a Loan Account. |
+| OBExternalAccountSubType1Code |MGLD |Account sub-type is a Marginal Lending Account. |
+| OBExternalAccountSubType1Code |MORT |Account sub-type is a Mortgage Account. |
+| OBExternalAccountSubType1Code |MOMA |Account sub-type is a Money Market Account. |
+| OBExternalAccountSubType1Code |NFCA |Account sub-type is a Non-Resident Foreign Currency Account. |
+| OBExternalAccountSubType1Code |NREX |Account sub-type is a Non-Resident External Account. |
+| OBExternalAccountSubType1Code |ODFT |Account sub-type is an Overdraft Account. |
+| OBExternalAccountSubType1Code |ONDP |Account sub-type is an Overnight Deposit Account. |
+| OBExternalAccountSubType1Code |OTHR |Account sub-type is other. |
+| OBExternalAccountSubType1Code |SACC |Account sub-type is a Settlement Account. |
+| OBExternalAccountSubType1Code |SLRY |Account sub-type is a Salary Account. |
+| OBExternalAccountSubType1Code |TAXE |Account sub-type is a  Account. |
+| OBExternalAccountSubType1Code |TRAN |Account sub-type is a Transacting Account. |
+| OBExternalAccountSubType1Code |TRAS |Account sub-type is a Cash Trading Account. |
+| OBExternalAccountSubType1Code |VACC |Account sub-type is a Virtual Account. |
+| OBExternalAccountSubType1Code |WALT |Account sub-type is a Wallet Account. |
 | OBExternalAccountType1Code |Business |Account type is for business. |
 | OBExternalAccountType1Code |Personal |Account type is for personal. |
 | OBExternalCardAuthorisationType1Code |ConsumerDevice |Card authorisation was via a Consumer Device Cardholder Verification Method (CDCVM). |
@@ -603,6 +622,20 @@ Deviations from the camt.052 XML standard are:
 | OBExternalStatementType1Code |Annual |Annual statement report. |
 | OBExternalStatementType1Code |Interim |Adhoc or customised statement period. |
 | OBExternalStatementType1Code |RegularPeriodic |Regular pre-agreed reporting statement. |
+| OBFileFormat | DPDF | PDF file format (.pdf). |
+| OBFileFormat | DXML | XML file format (.xml). |
+| OBFileFormat | SDSH | spreadsheet file format (e.g. .csv). |
+| OBFileFormat | WORD | Word file format (.doc/.docx). |
+| OBFileFormat | XSLT | XSLT file format (.xslt). |
+| OBFrequency2 | YEAR | Annual. |
+| OBFrequency2 | DAIL | Daily. |
+| OBFrequency2 | INDA | Intra-day. |
+| OBFrequency2 | MNTH | Monthly. |
+| OBFrequency2 | QURT | Quarterly. |
+| OBFrequency2 | MIAN | Semi-annual. |
+| OBFrequency2 | TEND | Ten days. |
+| OBFrequency2 | MOVE | Triggered by Movement. |
+| OBFrequency2 | WEEK | Weekly. |
 
 #### ISO Enumerations
 
