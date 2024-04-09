@@ -58,7 +58,7 @@ The API endpoints for these resources, and their mandatory/conditional/optional 
 
 Definitions for Mandatory, Conditional and Optional are given in the [Read/Write Data API Profile](../../profiles/read-write-data-api-profile.md#categorisation-of-implementation-requirements).
 
-## Account and Transactionns Resource Compatibility
+## Account and Transactions Resource Compatibility”
 
 |  | |Read-Write API Profile |Read-Write API Profile |Read-Write API Profile |Account and Transaction API Profile |Account and Transaction API Profile |Account and Transaction API Profile |
 | --- |--- |--- |--- |--- |--- |--- |--- |
