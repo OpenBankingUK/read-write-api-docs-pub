@@ -126,7 +126,7 @@ If the ReadPAN permission is granted by the PSU, the ASPSP may choose to populat
 | CommunicationMethod |0..1 |OBReadAccount6/Data/Account/StatementFrequencyAndFormat/CommunicationMethod |EMAL (Email)<br>FAXI (Fax)<br>FILE (File)<br>ONLI (Online)<br>POST (Postal Service)|OBCommunicationMethod | | |
 | Format |0..1 |OBReadAccount6/Data/Account/StatementFrequencyAndFormat/Format |DPDF (Pdf)<br>DXML (XML)<br>SDSH (Spreadsheet)<br>WORD (Word)<br>XSLT (XSLT)|OBFileFormat | | |
 | Servicer |0..1 |OBReadAccount6/Data/Account/Servicer |Party that manages the account on behalf of the account owner, that is manages the registration and booking of entries on the account, calculates balances on the account and provides information about the account. |StatementFrequencyAndFormat | | |
-| Name |0..1 |OBReadAccount6/Data/Account/Servicer/Name |Name of Service User. |Max70Text | | |
+| Name |0..1 |OBReadAccount6/Data/Account/Servicer/Name |Name of Service User. |Max140Text | | |
 | SchemeName |1..1 |OBReadAccount6/Data/Account/Servicer/SchemeName |Name of the identification scheme, in a coded form as published in an external list. |OBExternalFinancialInstitutionIdentification4Code | | |
 | Identification |1..1 |OBReadAccount6/Data/Account/Servicer/Identification |Unique and unambiguous identification of the servicing institution. |Max35Text | | |
 
