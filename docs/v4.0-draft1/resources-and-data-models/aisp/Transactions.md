@@ -177,8 +177,8 @@ The resource differs depending on the permissions (ReadTransactionsBasic and Rea
   * OBReadTransaction6/Data/Transaction/DebtorAccount/Identification
   * OBReadTransaction6/Data/Transaction/CardInstrument/Identification
 
-* If the `ReadTransactionDebits` permission is granted by the PSU, the data returned should include credit transactions.
-* If the `ReadTransactionCredits` permission is granted by the PSU, the data returned should include debit transactions.
+* If the `ReadTransactionDebits` permission is granted by the PSU, the data returned should include debit transactions.
+* If the `ReadTransactionCredits` permission is granted by the PSU, the data returned should include credit transactions.
 * If the `ReadTransactionCredits` and `ReadTransactionDebits` permission is granted by the PSU, the data returned should include debit and credit transactions.
 
 
