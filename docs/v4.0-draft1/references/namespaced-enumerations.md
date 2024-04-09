@@ -37,6 +37,8 @@
 - [Variable Recurring Payments Namespaced Enumerations](#variable-recurring-payments-namespaced-enumerations)
   - [OBVRPConsentType](#obvrpconsenttype)
   - [OBVRPAuthenticationMethods](#obvrpauthenticationmethods)
+  - [OBVRPStatusReasonCode](#OBVRPStatusReasonCode)
+  - [OBVRPInteractionTypes](#OBVRPInteractionTypes)
 
 ## Overview
 
@@ -552,6 +554,19 @@ Indicates a PSU authentication methods supported or used
 | --- |--- |
 | UK.OBIE.ExemptionNotApplied | Reason when exemption could not applied for the status of a VRP. |
 | UK.OBIE.OtherReason | The OtherReason only in scenarios where the actual reason cannot be determined or disclosed.|
+
+Note: ASPSPs may define enumerations that are more appropriate and document in the Developer Portal.
+
+</details>
+
+### OBVRPInteractionTypes
+
+<details><summary>Show</summary>
+
+| Code |Description |
+| --- |--- |
+| UK.OBIE.InSeason | Indicates the customer is present for interaction type. |
+| UK.OBIE.OffSeason | Indicates the customer is not present for interaction type.|
 
 Note: ASPSPs may define enumerations that are more appropriate and document in the Developer Portal.
 
