@@ -1,4 +1,4 @@
-# Offers - v3.1.11 <!-- omit in toc -->
+# Offers - v4.0-draft1 <!-- omit in toc -->
 
 - [Overview](#overview)
 - [Endpoints](#endpoints)

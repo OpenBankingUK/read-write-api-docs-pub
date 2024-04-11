@@ -1,4 +1,4 @@
-# Other Product Data Model - v3.1.11 <!-- omit in toc -->
+# Other Product Data Model - v4.0-draft1 <!-- omit in toc -->
 
 - [Overview](#overview)
   - [Fields to include in Other Product](#fields-to-include-in-other-product)

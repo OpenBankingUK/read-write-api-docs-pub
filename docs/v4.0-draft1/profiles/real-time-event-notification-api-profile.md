@@ -1,4 +1,4 @@
-# Real Time Event Notification API Profile - v3.1.11 <!-- omit in toc -->
+# Real Time Event Notification API Profile - v4.0-draft1 <!-- omit in toc -->
 
 - [Overview](#overview)
 - [Basics](#basics)
