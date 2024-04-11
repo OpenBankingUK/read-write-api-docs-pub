@@ -2,7 +2,7 @@
 # install umldiagram from https://bitbucket.org/openbankingteam/uml-generator/src/master/
 # requires access to Github
 
-umldiagram --src=https://raw.githubusercontent.com/OpenBankingUK/read-write-api-specs/v4.0-draft1/dist/openapi/account-info-openapi.yaml --api-version=3 --dir=resources-and-data-models/aisp/images\
+umldiagram --src=https://raw.githubusercontent.com/OpenBankingUK/read-write-api-specs/v4.0.0-draft1/dist/openapi/account-info-openapi.yaml --api-version=3 --dir=resources-and-data-models/aisp/images\
 	--schema=OBReadConsent1\
 	--schema=OBReadConsentResponse1\
 	--schema=OBReadAccount6\
@@ -28,7 +28,7 @@ umldiagram --src=https://raw.githubusercontent.com/OpenBankingUK/read-write-api-
 	--schema=OBReadProduct2.properties.Data.properties.Product.items.properties.OtherProductType.properties.Repayment:Repayment\
 
 
-umldiagram --src=https://raw.githubusercontent.com/OpenBankingUK/read-write-api-specs/v4.0-draft1/dist/openapi/payment-initiation-openapi.yaml --api-version=3 --dir=resources-and-data-models/pisp/images\
+umldiagram --src=https://raw.githubusercontent.com/OpenBankingUK/read-write-api-specs/v4.0.0-draft1/dist/openapi/payment-initiation-openapi.yaml --api-version=3 --dir=resources-and-data-models/pisp/images\
 	--schema=OBRisk1\
 	--schema=OBSCASupportData1\
 	--schema=OBWriteFundsConfirmationResponse1\
@@ -88,13 +88,13 @@ mv resources-and-data-models/pisp/images/OBDomesticRefundAccount1.svg profiles/i
 mv resources-and-data-models/pisp/images/OBInternationalRefundAccount1.svg profiles/images
 mv resources-and-data-models/pisp/images/OBRisk1.svg profiles/images
 
-umldiagram --src=https://raw.githubusercontent.com/OpenBankingUK/read-write-api-specs/v4.0-draft1/dist/openapi/confirmation-funds-openapi.yaml --api-version=3 --dir=resources-and-data-models/cbpii/images\
+umldiagram --src=https://raw.githubusercontent.com/OpenBankingUK/read-write-api-specs/v4.0.0-draft1/dist/openapi/confirmation-funds-openapi.yaml --api-version=3 --dir=resources-and-data-models/cbpii/images\
 	--schema=OBFundsConfirmationConsent1\
 	--schema=OBFundsConfirmationConsentResponse1\
 	--schema=OBFundsConfirmation1\
 	--schema=OBFundsConfirmationResponse1\
 
-umldiagram --src=https://raw.githubusercontent.com/OpenBankingUK/read-write-api-specs/v4.0-draft1/dist/openapi/event-notifications-openapi.yaml --api-version=3 --dir=resources-and-data-models/event-notifications/images\
+umldiagram --src=https://raw.githubusercontent.com/OpenBankingUK/read-write-api-specs/v4.0.0-draft1/dist/openapi/event-notifications-openapi.yaml --api-version=3 --dir=resources-and-data-models/event-notifications/images\
 	--schema=OBEventsSubscription1.properties.Data.properties.CallbackUrl\
 	--schema=OBEventPolling1\
 	--schema=OBEventPollingResponse1\
