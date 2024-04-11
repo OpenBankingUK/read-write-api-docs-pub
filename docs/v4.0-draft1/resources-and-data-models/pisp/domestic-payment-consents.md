@@ -1,4 +1,4 @@
-# Domestic Payments Consents - v3.1.11 <!-- omit in toc -->
+# Domestic Payments Consents - v4.0-draft1 <!-- omit in toc -->
 
 - [Overview](#overview)
 - [Endpoints](#endpoints)

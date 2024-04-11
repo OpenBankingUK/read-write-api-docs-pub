@@ -1,4 +1,4 @@
-# Domestic Standing Order Consents - v3.1.11 <!-- omit in toc -->
+# Domestic Standing Order Consents - v4.0-draft1 <!-- omit in toc -->
 
 - [Overview](#overview)
 - [Endpoints](#endpoints)
