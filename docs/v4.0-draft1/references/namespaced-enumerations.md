@@ -565,8 +565,8 @@ Note: ASPSPs may define enumerations that are more appropriate and document in t
 
 | Code |Description |
 | --- |--- |
-| UK.OBIE.InSeason | Indicates the customer is present for interaction type. |
-| UK.OBIE.OffSeason | Indicates the customer is not present for interaction type.|
+| UK.OB.InSeason | Indicates the customer is present for interaction type. |
+| UK.OB.OffSeason | Indicates the customer is not present for interaction type.|
 
 Note: ASPSPs may define enumerations that are more appropriate and document in the Developer Portal.
 
