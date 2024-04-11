@@ -521,6 +521,7 @@ This section describes the Risk1 class which is reused in the payment-order cons
 | ContractPresentIndicator       | 0..1       | OBRisk1/ContractPresentIndicator         | Indicates if Payee has a contractual relationship with the PISP.                                                                                                                                                               | Boolean                            |                                                                                                                                                                                                                                                                                                                         |         |
 | BeneficiaryPrepopulatedIndicator | 0..1       | OBRisk1/BeneficiaryPrepopulatedIndicator   | Indicates if PISP has immutably prepopulated payment details in for the PSU.                                                                                                                                                   | Boolean                            |                                                                                                                                                                                                                                                                                                                         |         |
 | PaymentPurposeCode               | 0..1       | OBRisk1/PaymentPurposeCode                 | Category code, related to the type of services or goods that corresponds to the underlying purpose of the payment that conforms to Recommended UK Purpose Code in ISO 20022 Payment Messaging List.                            | Min3Max4Text                       |                                                                                                                                                                                                                                                                                                                         |         |
+| CategoryPurposeCode                | 0..1       | OBRisk1/CategoryPurposeCode                  |Enumeration to outline the purpose to the underlying purpose of the payment<br> BONU (BonusPayment)<br>CASH (CashManagementTransfer)<br>CBLK (CardBulkClearing)<br>CCRD (CreditCardPayment)<br>CGWV (CarrierGuardedWholesaleValuables)<br>CIPC (CashInPreCredit)<br>CONC (CashOutNotesCoins)<br>CORT (TradeSettlementPayment)<br>DCRD (DebitCardPayment)<br>DIVI (Dividend)<br>DVPM (DeliverAgainstPayment)<br>EPAY (Epayment)<br>FCDT (ForeignCurrencyDomesticTransfer)<br>FCIN (FeeCollectionAndInterest)<br>FCOL (FeeCollection)<br>GOVT (GovernmentPayment)<br>GP2P (PersontoPersonPayment)<br>HEDG (Hedging)<br>ICCP (IrrevocableCreditCardPayment)<br>IDCP (IrrevocableDebitCardPayment)<br>INTC (IntraCompanyPayment)<br>INTE (Interest)<br>LBOX (LockboxTransactions)<br>LOAN (Loan)<br>MP2B (Commercial)<br>MP2P (Consumer)<br>OTHR (OtherPayment)<br>PENS (PensionPayment)<br>RPRE (Represented)<br>RRCT (ReimbursementReceivedCreditTransfer)<br>RVPM (ReceiveAgainstPayment)<br>SALA (SalaryPayment)<br>SECU (Securities)<br>SSBE (SocialSecurityBenefit)<br>SUPP (SupplierPayment)<br>SWEP (CashManagementSweepAccount)<br>TAXS (TaxPayment)<br>TOPG (CashManagementTopAccount)<br>TRAD (Trade)<br>TREA (TreasuryPayment)<br>VATX (ValueAddedTaxPayment)<br>VOST (Crossborder MIPayments)<br>WHLD (WithHolding)<br>ZABA (CashManagementZeroBalanceAccount)| OBCategoryPurposeCode                       |                                                                                                                                                                                                                                                                                                                         |         |
 | BeneficiaryAccountType           | 0..1       | OBRisk1/BeneficiaryAccountType             | To be provided if the AccountType is known.                                                                                                                                                                                    | OBExternalExtendedAccountType1Code | Personal<br>JointPersonal<br>PersonalSavingsAccount<br>Business<br>BusinessSavingsAccount<br>Charity<br>Collection<br>Corporate<br>Government<br>Ewallet<br>Investment<br>ISA<br>Premier<br>Wealth<br>Pension<br>                                                                                                       |         |
 | DeliveryAddress                  | 0..1       | OBRisk1/DeliveryAddress                    | Information that locates and identifies a specific address, as defined by postal services or in free format text.                                                                                                              | PostalAddress2Lines                |                                                                                                                                                                                                                                                                                                                         |         |
 | AddressLine                      | 0..2       | OBRisk1/DeliveryAddress/AddressLine        | Information that locates and identifies a specific address, as defined by postal services, that is presented in free format text.                                                                                              | Max70Text                          |                                                                                                                                                                                                                                                                                                                         |         |
@@ -830,6 +831,51 @@ This section gives the definitions for enumerations used in the Payment APIs.
 | OBExternalAppliedAuthenticationApproach1Code |SCA |Multi Factor Strong Customer Authentication |
 | OBReadRefundAccount1Code |Yes |Yes |
 | OBReadRefundAccount1Code |No |No |
+| OBCategoryPurposeCode |BONU |BonusPayment|
+| OBCategoryPurposeCode |CASH |CashManagementTransfer|
+| OBCategoryPurposeCode |CBLK |CardBulkClearing|
+| OBCategoryPurposeCode |CCRD |CreditCardPayment|
+| OBCategoryPurposeCode |CGWV |CarrierGuardedWholesaleValuables|
+| OBCategoryPurposeCode |CIPC |CashInPreCredit|
+| OBCategoryPurposeCode |CONC |CashOutNotesCoins|
+| OBCategoryPurposeCode |CORT |TradeSettlementPayment|
+| OBCategoryPurposeCode |DCRD |DebitCardPayment|
+| OBCategoryPurposeCode |DIVI |Dividend|
+| OBCategoryPurposeCode |DVPM |DeliverAgainstPayment|
+| OBCategoryPurposeCode |EPAY |Epayment|
+| OBCategoryPurposeCode |FCDT |ForeignCurrencyDomesticTransfer|
+| OBCategoryPurposeCode |FCIN |FeeCollectionAndInterest|
+| OBCategoryPurposeCode |FCOL |FeeCollection|
+| OBCategoryPurposeCode |GOVT |GovernmentPayment|
+| OBCategoryPurposeCode |GP2P |PersontoPersonPayment|
+| OBCategoryPurposeCode |HEDG |Hedging|
+| OBCategoryPurposeCode |ICCP |IrrevocableCreditCardPayment|
+| OBCategoryPurposeCode |IDCP |IrrevocableDebitCardPayment|
+| OBCategoryPurposeCode |INTC |IntraCompanyPayment|
+| OBCategoryPurposeCode |INTE |Interest|
+| OBCategoryPurposeCode |LBOX |LockboxTransactions|
+| OBCategoryPurposeCode |LOAN |Loan|
+| OBCategoryPurposeCode |MP2B |Commercial|
+| OBCategoryPurposeCode |MP2P |Consumer|
+| OBCategoryPurposeCode |OTHR |OtherPayment|
+| OBCategoryPurposeCode |PENS |PensionPayment|
+| OBCategoryPurposeCode |RPRE |Represented|
+| OBCategoryPurposeCode |RRCT |ReimbursementReceivedCreditTransfer|
+| OBCategoryPurposeCode |RVPM |ReceiveAgainstPayment|
+| OBCategoryPurposeCode |SALA |SalaryPayment|
+| OBCategoryPurposeCode |SECU |Securities|
+| OBCategoryPurposeCode |SSBE |SocialSecurityBenefit|
+| OBCategoryPurposeCode |SUPP |SupplierPayment|
+| OBCategoryPurposeCode |SWEP |CashManagementSweepAccount|
+| OBCategoryPurposeCode |TAXS |TaxPayment|
+| OBCategoryPurposeCode |TOPG |CashManagementTopAccount|
+| OBCategoryPurposeCode |TRAD |Trade|
+| OBCategoryPurposeCode |TREA |TreasuryPayment|
+| OBCategoryPurposeCode |VATX |ValueAddedTaxPayment|
+| OBCategoryPurposeCode |VOST |Crossborder MIPayments|
+| OBCategoryPurposeCode |WHLD |WithHolding|
+| OBCategoryPurposeCode |ZABA |CashManagementZeroBalanceAccount|
+
 
 #### ISO Enumerations
 
