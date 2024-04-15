@@ -106,7 +106,7 @@ The API must return one of the following status codes:
 
 ### Payment Order
 
-The state model for the `domestic-vrps` resource follows the behaviour and definitions for the ISO 20022 PaymentStatusCode code-set.
+The state model for the `domestic-vrps` resource follows the behavior and definitions for the ISO 20022 PaymentStatusCode code-set.
 
 ![Domestic VRP Status](./images/PaymentStatusLifeCycle.png)
 
@@ -187,7 +187,10 @@ The definitions for the status:
 | __Data__ (1..1) | `Data`
 | __PaymentStatus__ (0..*) | `Data. PaymentStatus`
 | __PaymentTransactionId__ (1..1) | `Data. PaymentStatus. PaymentTransactionId` |Unique identifier for the transaction within an servicing institution. This identifier is both unique and immutable. |Max210Text|
-| __Status__ (1..1) | `Data. PaymentStatus. Status` |Status of a transfer, as assigned by the transaction administrator. |Accepted AcceptedCancellationRequest AcceptedCreditSettlementCompleted AcceptedCustomerProfile AcceptedFundsChecked AcceptedSettlementCompleted AcceptedSettlementInProcess AcceptedTechnicalValidation AcceptedWithChange AcceptedWithoutPosting Cancelled NoCancellationProcess PartiallyAcceptedCancellationRequest PartiallyAcceptedTechnicalCorrect PaymentCancelled Pending PendingCancellationRequest Received Rejected RejectedCancellationRequest
+| __StatusCode__ (1..1) |`Data. PaymentStatus. StatusCode` |Status of a transfer, as assigned by the transaction administrator. |OBTransactionIndividualExtendedISOStatus1Code |Specifies the status reason in a code form. Values:<br>RCVD<br>PDNG<br>ACTC<br>ACFC<br>ACSP<br>ACSC<br>ACWP<br>ACCC<br>BLCK<br>CANC<br>RJCT| Max4Text|
+| __StatusReason__ (0..* )|`Data. PaymentStatus. StatusReason` ||OBPaymentStatusReason | 
+| __StatusReasonCode__ (0..*)|`Data. PaymentStatus. StatusReason. StatusReasonCode` |Specifies the status reason in a code form.<br> For more information and enum values see `ExternalStatusReason1Code`[here](https://github.com/OpenBankingUK/External_Interal_CodeSets) |ExternalStatusReason1Code |
+| __StatusReasonDescription__ (0..*) |`Data. PaymentStatus. StatusReason. StatusReasonDescription`|Description supporting the StatusReasonCode|Max500Text |
 | __StatusUpdateDateTime__ (1..1) | `Data. PaymentStatus. StatusUpdateDateTime` |Date and time at which the status was assigned to the transfer. |ISODateTime
 | __StatusDetail__ (0..1) | `Data. PaymentStatus. StatusDetail` |Payment status details as per underlying Payment Rail.
 | __LocalInstrument__ (0..1) | `Data. PaymentStatus. StatusDetail. LocalInstrument` |User community specific instrument.  Usage: This element is used to specify a local instrument, local clearing option and/or further qualify the service or service level. |OBExternalLocalInstrument1Code|
