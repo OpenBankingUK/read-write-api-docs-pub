@@ -1,4 +1,4 @@
-# Domestic Payment Usage Examples - v3.1.11 <!-- omit in toc -->
+# Domestic Payment Usage Examples - v4.0-draft1 <!-- omit in toc -->
 
 - [Merchant Initiation via PISP](#merchant-initiation-via-pisp)
   - [Sequence Diagram](#sequence-diagram)

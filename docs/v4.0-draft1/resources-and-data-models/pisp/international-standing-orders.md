@@ -1,4 +1,4 @@
-# International Standing Orders - v3.1.11 <!-- omit in toc -->
+# International Standing Orders - v4.0-draft1 <!-- omit in toc -->
 
 - [Overview](#overview)
 - [Endpoints](#endpoints)

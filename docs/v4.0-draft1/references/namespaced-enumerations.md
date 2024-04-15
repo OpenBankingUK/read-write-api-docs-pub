@@ -1,4 +1,4 @@
-# Namespaced Enumerations - v3.1.11 <!-- omit in toc -->
+# Namespaced Enumerations - v4.0-draft1 <!-- omit in toc -->
 
 - [Overview](#overview)
 - [Basics](#basics)

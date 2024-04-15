@@ -1,4 +1,4 @@
-# Event Notification API Profile - v3.1.11 <!-- omit in toc -->
+# Event Notification API Profile - v4.0-draft1 <!-- omit in toc -->
 
 - [Overview](#overview)
   - [Design Principles](#design-principles)
