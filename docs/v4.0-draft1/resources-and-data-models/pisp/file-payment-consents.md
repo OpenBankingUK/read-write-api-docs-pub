@@ -96,7 +96,7 @@ Once the PSU authorises the payment-consent resource, the StatusCode of the paym
 
 If the PSU rejects the consent or the file-payment-consent has failed some other ASPSP validation, the StatusCode will be set to "RJCT".
 
-Once a file-payment has been successfully created using the file-payment-consent, the StatusCode of the file-payment-consent will be set to "AUTH".
+Once a file-payment has been successfully created using the file-payment-consent, the StatusCode of the file-payment-consent will be set to "AWUP".
 
 The available Status codes for the file-payment-consent resource are:
 
