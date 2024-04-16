@@ -160,8 +160,15 @@ The data dictionary section gives the detail on the payload content for the VRP 
 | __CreditorAgent__ (0..1) | `CreditorAgent` | Financial institution servicing an account for the creditor.     | OBBranchAndFinancialInstitutionIdentification6
 | __CreditorAccount__ (0..1) | `CreditorAccount`   |Unambiguous identification of the account of the creditor to which a credit entry will be posted as a result of the payment transaction.       |OBCashAccountCreditor3
 | __RemittanceInformation__ (0..1) | `RemittanceInformation`   | Information supplied to enable the matching of an entry with the items that the transfer is intended to settle, such as commercial invoices in an accounts' receivable system. | Max140Text
-| __Unstructured__ (0..1) | `RemittanceInformation. Unstructured`   | Information supplied to enable the matching of an entry with the items that the transfer is intended to settle, such as commercial invoices in an accounts' receivable system | OBRemittanceInformation1
-| __Reference__ (0..1) | `RemittanceInformation. Reference`   | Unique reference, as assigned by the creditor, to unambiguously refer to the payment transaction. Usage: If available, the initiating party should provide this reference in the structured remittance information, to enable reconciliation by the creditor upon receipt of the amount of money. If the business context requires the use of a creditor reference or a payment remit identification, and only one identifier can be passed through the end-to-end chain, the creditor's reference or payment remittance identification should be quoted in the end-to-end transaction identification. | Max35Text
+| __Structured__ (0..*) |`RemittanceInformation. Structured` |Information supplied to enable the matching/reconciliation of an entry with the items that the payment is intended to settle, such as commercial invoices in an accounts' receivable system, in an structured form. |OBRemittanceInformationStructured
+| __ReferredDocumentInformation__ (0..*) |`RemittanceInformation . Structured. ReferredDocumentInformation` | |OBReferredDocumentInformation
+| __ReferredDocumentAmount__ (0..1) |`RemittanceInformation. . Structured. ReferredDocumentAmount` | |OBReferredDocumentAmount| 
+| __CreditorReferenceInformation__ (0..1) |`RemittanceInformation. Structured. ReferredDocumentAmount`  | |OBCreditorReferenceInformation
+| __Invoicer__ (0..1) |`RemittanceInformation. Structured. Invoicer`  | |OBInvoicer| | |
+| __Invoicer__ (0..1) |`RemittanceInformation. Structured. Invoicee`  | |OBInvoicee| | |
+| __TaxRemittance__ (0..1) |`RemittanceInformation. Structured. TaxRemittance` | |OBTaxRemittance| | |
+| __AdditionalRemittanceInformation__ (0..3)|`RemittanceInformation. Structured. AdditionalRemittanceInformation`|
+| __Unstructured__ |0..* |`RemittanceInformation. Unstructured.` |Information supplied to enable the matching/reconciliation of an entry with the items that the payment is intended to settle, such as commercial invoices in an accounts' receivable system, in an unstructured form. |Max140Text
 
 ### OBDomesticVRPControlParameters
 
