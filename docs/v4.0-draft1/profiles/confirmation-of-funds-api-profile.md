@@ -344,15 +344,14 @@ The funds-confirmation-consent resource may have one of the following status cod
 
 |  |Status |Description |
 | --- |--- |--- |
-| 1 |Authorised |The Funds Confirmation Consent has been successfully authorised. |
-| 2 |Rejected |The Funds Confirmation Consent has been rejected. |
-| 3 |Revoked |The Funds Confirmation Consent has been revoked via the ASPSP interface. |
+| 1 |AUTH |The Funds Confirmation Consent has been successfully authorised. |
+| 2 |RJCT |The Funds Confirmation Consent has been rejected. |
 
 #### Consent Re-authentication
 
 The funds-confirmation-consent resource is a long lived consent. A funds-confirmation-consent can be re-authenticated if:
 
-- the funds-confirmation-consent resource has a status of `Authorised` and
+- the funds-confirmation-consent resource has a StatusCode of `AUTH` and
 - The `ExpirationDateTime`, if specified, has not elapsed
 
 ### Consent Revocation
