@@ -423,7 +423,7 @@ Content-Type: application/json
     }
   },
   "Links": {
-    "Self": "https:/api.alphabank.com/open-banking/v3.1/pisp/domestic-payment-consents/58923"
+    "Self": "https://api.alphabank.com/open-banking/v3.1/pisp/domestic-payment-consents/58923"
   },
   "Meta": {}
 }
@@ -502,7 +502,7 @@ Content-Type: application/json
     }
   },
   "Links": {
-    "Self": "https:/api.alphabank.com/open-banking/v3.1/pisp/domestic-payment-consents/58923"
+    "Self": "https://api.alphabank.com/open-banking/v3.1/pisp/domestic-payment-consents/58923"
   },
   "Meta": {}
 }

@@ -139,7 +139,7 @@ The OBFundsConfirmationConsent1 object will be used for the following:
 | Proxy |0..1 |OBFundsConfirmationConsent1/Data/DebtorAccount/Proxy |The external proxy account type |OBProxyAccount | | |
 | Identification |1..1 |OBFundsConfirmationConsent1/Data/DebtorAccount/Proxy/Identification| Identification assigned by an institution to identify an account. This identification is known by the account owner. |Max256Text | | |
 | Type |0..1 |OBFundsConfirmationConsent1/Data/DebtorAccount/Proxy/Type| Specifies the external proxy account type |MaxText70 | | |
-| Code |1..1 |OBFundsConfirmationConsent1/Data/DebtorAccount/Proxy/Code| Specifies the external proxy account type code, as published in the proxy account type external code set.<br> For more information see `ExternalProxyAccountType1Code` [here](https:/github.com/OpenBankingUK/External_Interal_CodeSets) |OBExternalProxyAccountType1Code | | |
+| Code |1..1 |OBFundsConfirmationConsent1/Data/DebtorAccount/Proxy/Code| Specifies the external proxy account type code, as published in the proxy account type external code set.<br> For more information see `ExternalProxyAccountType1Code` [here](https://github.com/OpenBankingUK/External_Interal_CodeSets) |OBExternalProxyAccountType1Code | | |
 | Proprietary |1..1 |OBFundsConfirmationConsent1/Data/DebtorAccount/Proxy/Proprietary| The owner of the proxy account |MaxText70 | | |
 
 ### Funds Confirmation Consent - Response
