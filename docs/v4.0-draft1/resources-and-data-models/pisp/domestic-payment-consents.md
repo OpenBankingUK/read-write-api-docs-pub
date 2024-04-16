@@ -163,7 +163,7 @@ For the OBDomestic2 Initiation object:
 | Proxy |0..1 |OBDomestic2/DebtorAccount/Proxy |The external proxy account type |OBProxyAccount | | |
 | Identification |1..1 |OBDomestic2/DebtorAccount/Proxy/Identification| Identification assigned by an institution to identify an account. This identification is known by the account owner. |Max256Text | | |
 | Type |0..1 |OBDomestic2/DebtorAccount/Proxy/Type| Specifies the external proxy account type |MaxText70 | | |
-| Code |1..1 |OBDomestic2/DebtorAccount/Proxy/Code| Specifies the external proxy account type code, as published in the proxy account type external code set.<br> For more information see `ExternalProxyAccountType1Code` [here](https:/github.com/OpenBankingUK/External_Interal_CodeSets) |OBExternalProxyAccountType1Code | | |
+| Code |1..1 |OBDomestic2/DebtorAccount/Proxy/Code| Specifies the external proxy account type code, as published in the proxy account type external code set.<br> For more information see `ExternalProxyAccountType1Code` [here](https://github.com/OpenBankingUK/External_Interal_CodeSets) |OBExternalProxyAccountType1Code | | |
 | Proprietary |1..1 |OBDomestic2/DebtorAccount/Proxy/Proprietary| The owner of the proxy account |MaxText70 | | |
 | CreditorAccount |1..1 |OBDomestic2/CreditorAccount |Unambiguous identification of the account of the creditor to which a credit entry will be posted as a result of the payment transaction. |OBCashAccountCreditor3 | | |
 | SchemeName |1..1 |OBDomestic2/CreditorAccount/SchemeName |Name of the identification scheme, in a coded form as published in an external list. |OBExternalAccountIdentification4Code | | |
@@ -173,7 +173,7 @@ For the OBDomestic2 Initiation object:
 | Proxy |0..1 |OBDomestic2/CreditorAccount/Proxy |The external proxy account type |OBProxyAccount | | |
 | Identification |1..1 |OBDomestic2/CreditorAccount/Proxy/Identification| Identification assigned by an institution to identify an account. This identification is known by the account owner. |Max256Text | | |
 | Type |0..1 |OBDomestic2/CreditorAccount/Proxy/Type| Specifies the external proxy account type |MaxText70 | | |
-| Code |1..1 |OBDomestic2/CreditorAccount/Proxy/Code| Specifies the external proxy account type code, as published in the proxy account type external code set.<br> For more information see `ExternalProxyAccountType1Code` [here](https:/github.com/OpenBankingUK/External_Interal_CodeSets) |OBExternalProxyAccountType1Code | | |
+| Code |1..1 |OBDomestic2/CreditorAccount/Proxy/Code| Specifies the external proxy account type code, as published in the proxy account type external code set.<br> For more information see `ExternalProxyAccountType1Code` [here](https://github.com/OpenBankingUK/External_Interal_CodeSets) |OBExternalProxyAccountType1Code | | |
 | Proprietary |1..1 |OBDomestic2/CreditorAccount/Proxy/Proprietary| The owner of the proxy account |MaxText70 | | |
 | CreditorPostalAddress |0..1 |OBDomestic2/CreditorPostalAddress |Information that locates and identifies a specific address, as defined by postal services. |OBPostalAddress6 | | |
 | AddressType |0..1 |OBDomestic2/CreditorPostalAddress/AddressType |Identifies the nature of the postal address. |OBAddressTypeCode |Business Correspondence DeliveryTo MailTo POBox Postal Residential Statement | |
@@ -271,7 +271,7 @@ Them domestic-payment-consent **response** contains the full **original** payloa
 | Proxy |0..1 |OBWriteDomesticConsentResponse5/Data/Debtor/Proxy |The external proxy account type |OBProxyAccount | | |
 | Identification |1..1 |OBWriteDomesticConsentResponse5/Data/Debtor/Proxy/Identification| Identification assigned by an institution to identify an account. This identification is known by the account owner. |Max256Text | | |
 | Type |0..1 |OBWriteDomesticConsentResponse5/Data/Debtor/Proxy/Type| Specifies the external proxy account type |MaxText70 | | |
-| Code |1..1 |OBWriteDomesticConsentResponse5/Data/Debtor/Proxy/Code| Specifies the external proxy account type code, as published in the proxy account type external code set.<br> For more information see `ExternalProxyAccountType1Code` [here](https:/github.com/OpenBankingUK/External_Interal_CodeSets) |OBExternalProxyAccountType1Code | | |
+| Code |1..1 |OBWriteDomesticConsentResponse5/Data/Debtor/Proxy/Code| Specifies the external proxy account type code, as published in the proxy account type external code set.<br> For more information see `ExternalProxyAccountType1Code` [here](https://github.com/OpenBankingUK/External_Interal_CodeSets) |OBExternalProxyAccountType1Code | | |
 | Proprietary |1..1 |OBWriteDomesticConsentResponse5/Data/Debtor/Proxy/Proprietary| The owner of the proxy account |MaxText70 | | |
 | Risk |1..1 |OBWriteDomesticConsentResponse5/Risk |The Risk section is sent by the initiating party to the ASPSP. It is used to specify additional details for risk scoring for Payments. |OBRisk1 | | |
 
