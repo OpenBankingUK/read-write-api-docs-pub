@@ -73,7 +73,7 @@ The resource requires the ReadDirectDebits permission. The resource response pay
 | Currency |1..1 |OBReadDirectDebit2/Data/DirectDebit/PreviousPaymentAmount/Currency |A code allocated to a currency by a Maintenance Agency under an international identification scheme, as described in the latest edition of the international standard ISO 4217 "Codes for the representation of currencies and funds". |ActiveOrHistoricCurrencyCode | |^[A-Z]{3,3}$ |
 | MandateRelatedInformation | 0..1 |OBReadDirectDebit2/Data/DirectDebit/MandateRelatedInformation ||OBMandateRelatedInformation | | |
 | MandateIdentification | 0..1 |OBReadDirectDebit2/Data/DirectDebit/MandateRelatedInformation/MandateIdentification ||TODO | | |
-| Classification | 0..1 |OBReadDirectDebit2/Data/DirectDebit/MandateRelatedInformation/OBClassification1Code |FIXE<br>USGB<br>VARI|OBClassification1Code | | |
+| Classification | 0..1 |OBReadDirectDebit2/Data/DirectDebit/MandateRelatedInformation/Classification|FIXE<br>USGB<br>VARI|OBClassification1Code | | |
 | CategoryPurposeCode | 0..1 |OBReadDirectDebit2/Data/DirectDebit/MandateRelatedInformation/CategoryPurposeCode ||OBCategoryPurpose1Code | | |
 | FirstPaymentDate | 0..1 |OBReadDirectDebit2/Data/DirectDebit/MandateRelatedInformation/FirstPaymentDate |The date on which the first payment for a Standing Order schedule will be made. |ISODate | | |
 | FinalPaymentDate | 0..1 |OBReadDirectDebit2/Data/DirectDebit/MandateRelatedInformation/FinalPaymentDate |The date on which the final payment for a Standing Order schedule will be made. |ISODate | | |
@@ -82,7 +82,7 @@ The resource requires the ReadDirectDebits permission. The resource response pay
 | CountPerPeriod | 1..1 |OBReadDirectDebit2/Data/DirectDebit/MandateRelatedInformation/CountPerPeriod | |int32 | |
 | PointInTimeType | 1..1 |OBReadDirectDebit2/Data/DirectDebit/MandateRelatedInformation/PointInTimeType |A code indicating the point in time for payment of the Standing Order. Values:<br>ADHO<br>YEAR<br>DALI<br>INDA<br>MNTH<br>QURT<br>MIAN<br>WEEK |OBFrequencyPeriodType | | |
 | PointInTime | 1..1 |OBReadDirectDebit2/Data/DirectDebit/MandateRelatedInformation/PointInTime |ISOTime | | |
-| Reason| 1..1 |OBReadDirectDebit2/Data/DirectDebit/MandateRelatedInformation/Reason | |Max256Text | |
+| Reason| 0..1 |OBReadDirectDebit2/Data/DirectDebit/MandateRelatedInformation/Reason | |Max256Text | |
 
 ## Usage Examples
 
