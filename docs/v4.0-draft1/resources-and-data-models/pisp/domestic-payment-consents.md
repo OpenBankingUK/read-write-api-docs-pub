@@ -63,7 +63,7 @@ The default Status is &quot;AwaitingAuthorisation&quot; immediately after the do
 
 | Status |
 | ------ |
-| AwaitingAuthorisation |
+| AWAU |
 
 ### GET /domestic-payment-consents/{ConsentId}
 
@@ -81,10 +81,9 @@ The available status codes for the domestic-payment-consent resource are:
 
 | Status |
 | ------ |
-| AwaitingAuthorisation |
-| Rejected |
-| Authorised |
-| Consumed |
+| AWAU |
+| RJCT |
+| AUTH |
 
 ### GET /domestic-payment-consents/{ConsentId}/funds-confirmation
 
@@ -101,14 +100,13 @@ The state model for the domestic-payment-consent resource follows the generic co
 
 !["Payment Order Consent Status"](./images/image2018-5-18_10-24-21.png)
 
-The definitions for the Status:
+The definitions for the StatusCode:
 
-|  | Status |Status Description |
+|  | StatusCode |Status Description |
 | ---| ------ |------------------ |
-| 1 |AwaitingAuthorisation |The consent resource is awaiting PSU authorisation. |
-| 2 |Rejected |The consent resource has been rejected. |
-| 3 |Authorised |The consent resource has been successfully authorised. |
-| 4 |Consumed |The consented action has been successfully completed. This does not reflect the status of the consented action. |
+| 1 |AWAU |The consent resource is awaiting PSU authorisation. |
+| 2 |RJCT |The consent resource has been rejected. |
+| 3 |AUTH |The consent resource has been successfully authorised. |
 
 ## Data Model
 
@@ -130,7 +128,7 @@ For the OBDomestic2 Initiation object:
 
 * All elements in the Initiation payload that are specified by the PISP must not be changed via the ASPSP as this is part of formal consent from the PSU.
 * If the ASPSP is able to establish a problem with payload or any contextual error during the API call, the ASPSP must reject the domestic-payment-consent request immediately.
-* If the ASPSP establishes a problem with the domestic-payment-consent after the API call, the ASPSP must set the status of the domestic-payment-consent resource to Rejected.
+* If the ASPSP establishes a problem with the domestic-payment-consent after the API call, the ASPSP must set the StatusCode of the domestic-payment-consent resource to RJCT.
 * DebtorAccount is **optional** as the PISP may not know the account identification details for the PSU.
 * If the DebtorAccount is specified by the PISP and is invalid for the PSU, then the domestic-payment-consent will be set to Rejected after PSU authentication.
 * Account Identification field usage:
@@ -251,7 +249,11 @@ Them domestic-payment-consent **response** contains the full **original** payloa
 | Data |1..1 |OBWriteDomesticConsentResponse5/Data | |OBWriteDataDomesticConsentResponse5 | | |
 | ConsentId |1..1 |OBWriteDomesticConsentResponse5/Data/ConsentId |OB: Unique identification as assigned by the ASPSP to uniquely identify the consent resource. |Max128Text | | |
 | CreationDateTime |1..1 |OBWriteDomesticConsentResponse5/Data/CreationDateTime |Date and time at which the resource was created. |ISODateTime | | |
-| Status |1..1 |OBWriteDomesticConsentResponse5/Data/Status |Specifies the status of consent resource in code form. |OBExternalConsentStatus1Code |Authorised AwaitingAuthorisation Consumed Rejected | |
+| StatusCode |0..1 |OBReadConsentResponse1/Data/StatusCode |Specifies the status of consent resource in code form. |
+ExternalStatusReason1Code |AUTH AWAU RJCT COND |
+| StatusReason |0..* |OBReadConsentResponse1/Data/StatusReason |Specifies the status reason. | OBStatusReason |
+| StatusReasonCode |0..1 |OBReadConsentResponse1/Data/StatusReason/*/StatusReasonCode |Specifies the status reason in a code form. For a full description see `ExternalStatusReason1Code` [here](https://github.com/OpenBankingUK/External_Interal_CodeSets). | ExternalStatusReason1Code |
+| StatusReasonDescription |0..1 |OBReadConsentResponse1/Data/StatusReason/*/StatusReasonDescription |Description supporting the StatusReasonCode. |
 | StatusUpdateDateTime |1..1 |OBWriteDomesticConsentResponse5/Data/StatusUpdateDateTime |Date and time at which the resource status was updated. |ISODateTime | | |
 | ReadRefundAccount |0..1 |OBWriteDomesticConsentResponse5/Data/ReadRefundAccount | Specifies to share the refund account details with PISP |OBReadRefundAccount1Code |Yes No | |
 | CutOffDateTime |0..1 |OBWriteDomesticConsentResponse5/Data/CutOffDateTime |Specified cut-off date and time for the payment consent. |ISODateTime | | |
@@ -372,7 +374,7 @@ Content-Type: application/json
 {
   "Data": {
     "ConsentId": "58923",
-    "Status": "AwaitingAuthorisation",
+    "StatusCode": "AWAU",
     "CreationDateTime": "2017-06-05T15:15:13+00:00",
     "StatusUpdateDateTime": "2017-06-05T15:15:13+00:00",
     "ReadRefundAccount": "Yes",
@@ -448,7 +450,7 @@ Content-Type: application/json
 {
   "Data": {
     "ConsentId": "58923",
-    "Status": "Authorised",
+    "StatusCode": "AUTH",
     "CreationDateTime": "2017-06-05T15:15:13+00:00",
     "StatusUpdateDateTime": "2017-06-05T15:15:22+00:00",
     "ReadRefundAccount": "Yes",

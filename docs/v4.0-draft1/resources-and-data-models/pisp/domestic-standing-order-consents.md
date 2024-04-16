@@ -54,11 +54,11 @@ The API endpoint allows the PISP to ask an ASPSP to create a new **domestic-stan
 
 #### Status
 
-The default Status is "AwaitingAuthorisation" immediately after the domestic-standing-order-consent has been created.
+The default Status is "AWAU" immediately after the domestic-standing-order-consent has been created.
 
 | Status |
 | --- |
-| AwaitingAuthorisation |
+| AWAU |
 
 ### GET /domestic-standing-order-consents/{ConsentId}
 
@@ -66,20 +66,20 @@ A PISP can optionally retrieve a payment consent resource that they have created
 
 #### Status
 
-Once the PSU authorises the payment-consent resource , the Status of the payment-consent resource will be updated with "Authorised".
+Once the PSU authorises the payment-consent resource , the Status of the payment-consent resource will be updated with "AUTH".
 
-If the PSU rejects the consent or the domestic-standing-order-consent has failed some other ASPSP validation, the Status will be set to "Rejected".
+If the PSU rejects the consent or the domestic-standing-order-consent has failed some other ASPSP validation, the Status will be set to "RJCT".
 
-Once a domestic-standing-order has been successfully created using the domestic-standing-order-consent, the Status of the domestic-standing-order-consent will be set to "Consumed".
+Once a domestic-standing-order has been successfully created using the domestic-standing-order-consent, the Status of the domestic-standing-order-consent will be set to "COND".
 
 The available Status codes for the domestic-standing-order-consent resource are:
 
-| Status |
+| StatusCode |
 | --- |
-| AwaitingAuthorisation |
-| Rejected |
-| Authorised |
-| Consumed |
+| AWAU |
+| RJCT |
+| AUTH |
+| COND |
 
 ### State Model
 
@@ -93,10 +93,10 @@ The definitions for the Status:
 
 |  |Status |Status Description |
 | --- |------ |------------------ |
-| 1 |AwaitingAuthorisation |The consent resource is awaiting PSU authorisation. |
-| 2 |Rejected |The consent resource has been rejected. |
-| 3 |Authorised |The consent resource has been successfully authorised. |
-| 4 |Consumed |The consented action has been successfully completed. This does not reflect the status of the consented action. |
+| 1 |AWAU |The consent resource is awaiting PSU authorisation. |
+| 2 |RJCT |The consent resource has been rejected. |
+| 3 |AUTH |The consent resource has been successfully authorised. |
+| 4 |COND |The consented action has been successfully completed. This does not reflect the status of the consented action. |
 
 ## Data Model
 
@@ -234,7 +234,7 @@ The domestic-standing-order-consent **response** contains the full **original** 
 
 * ConsentId.
 * CreationDateTime the domestic-standing-order-consent resource was created.
-* Status and StatusUpdateDateTime of the domestic-standing-order-consent resource.
+* Status, StatusReason and StatusUpdateDateTime of the domestic-standing-order-consent resource.
 * Permission field in the original request.
 * ReadRefundAccount field in the original request.
 * CutOffDateTime Behaviour is explained in Payment Initiation API Profile, Section - [Payment Restrictions -> CutOffDateTime Behaviour](../../profiles/payment-initiation-api-profile.md#cutoffdatetime-behaviour).
@@ -249,7 +249,11 @@ The domestic-standing-order-consent **response** contains the full **original** 
 | Data |1..1 |OBWriteDomesticStandingOrderConsentResponse6/Data | |OBWriteDataDomesticStandingOrderConsentResponse6 | | |
 | ConsentId |1..1 |OBWriteDomesticStandingOrderConsentResponse6/Data/ConsentId |OB: Unique identification as assigned by the ASPSP to uniquely identify the consent resource. |Max128Text | | |
 | CreationDateTime |1..1 |OBWriteDomesticStandingOrderConsentResponse6/Data/CreationDateTime |Date and time at which the resource was created. |ISODateTime | | |
-| Status |1..1 |OBWriteDomesticStandingOrderConsentResponse6/Data/Status |Specifies the status of consent resource in code form. |OBExternalConsentStatus1Code |Authorised AwaitingAuthorisation Consumed Rejected | |
+| StatusCode |0..1 |OBReadConsentResponse1/Data/StatusCode |Specifies the status of consent resource in code form. |
+ExternalStatusReason1Code |AUTH AWAU RJCT COND |
+| StatusReason |0..* |OBReadConsentResponse1/Data/StatusReason |Specifies the status reason. | OBStatusReason |
+| StatusReasonCode |0..1 |OBReadConsentResponse1/Data/StatusReason/*/StatusReasonCode |Specifies the status reason in a code form. For a full description see `ExternalStatusReason1Code` [here](https://github.com/OpenBankingUK/External_Interal_CodeSets). | ExternalStatusReason1Code |
+| StatusReasonDescription |0..1 |OBReadConsentResponse1/Data/StatusReason/*/StatusReasonDescription |Description supporting the StatusReasonCode. |
 | StatusUpdateDateTime |1..1 |OBWriteDomesticStandingOrderConsentResponse6/Data/StatusUpdateDateTime |Date and time at which the resource status was updated. |ISODateTime | | |
 | Permission |1..1 |OBWriteDomesticStandingOrderConsentResponse6/Data/Permission |Specifies the Open Banking service request types. |OBExternalPermissions2Code |Create | |
 | ReadRefundAccount |0..1 |OBWriteDomesticStandingOrderConsentResponse6/Data/ReadRefundAccount | Specifies to share the refund account details with PISP |OBReadRefundAccount1Code |Yes No | |
@@ -337,7 +341,7 @@ Content-Type: application/json
   "Data": {
 	"ConsentId": "SOC-100",
 	"CreationDateTime": "1976-01-01T06:06:06+00:00",
-	"Status": "AwaitingAuthorisation",
+	"StatusCode": "AWAU",
 	"StatusUpdateDateTime": "1976-06-06T06:06:06+00:00",
 	"Permission": "Create",
   "ReadRefundAccount": "Yes",
@@ -407,7 +411,7 @@ Content-Type: application/json
   "Data": {
 	"ConsentId": "SOC-100",
 	"CreationDateTime": "1976-01-01T06:06:06+00:00",
-	"Status": "Authorised",
+	"StatusCode": "AUTH",
 	"StatusUpdateDateTime": "1976-06-06T06:06:06+00:00",
 	"Permission": "Create",
     "Initiation": {

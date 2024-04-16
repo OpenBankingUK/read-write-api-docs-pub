@@ -51,7 +51,7 @@ The ASPSP **must** reject a payment that has `Data.Instruction.SupplementaryData
 
 #### Status
 
-A `domestic-vrps` can only be created if its corresponding `domestic-vrp-consents` resource has the status of `Authorised`.
+A `domestic-vrps` can only be created if its corresponding `domestic-vrp-consents` resource has the StatusCode of `AUTH`.
 
 The `domestic-vrps` resource that is created successfully must have one of the following `PaymentStatusCode` values
 
