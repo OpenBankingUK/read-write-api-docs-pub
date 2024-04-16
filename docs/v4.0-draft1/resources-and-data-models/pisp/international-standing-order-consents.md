@@ -82,9 +82,7 @@ The available Status codes for the international-standing-order-consent resource
 
 #### Payment Order Consent
 
-The state model for the international-standing-order-consent resource follows the generic consent state model. However, does not use the "Revoked" status, as the consent for an international-standing-order is not a long-lived consent.
-
-![ image2018-5-18_10-24-21.png ](./images/image2018-5-18_10-24-21.png )
+The state model for the international-standing-order-consent resource follows the generic consent state model. 
 
 The definitions for the Status:
 
@@ -350,12 +348,12 @@ Accept: application/json
         "PointInTime": "T06:06:06+00:00"
       },
 	  "DebtorAccount": {
-        "SchemeName": "UK.OBIE.SortCodeAccountNumber",
+        "SchemeName": "UK.OB.SortCodeAccountNumber",
         "Identification": "11280001234567",
         "Name": "Andrea Frost"
       },
       "CreditorAccount": {
-        "SchemeName": "UK.OBIE.IBAN",
+        "SchemeName": "UK.OB.IBAN",
         "Identification": "DE89370400440532013000",
         "Name": "Tom Kirkman"
       },
@@ -401,12 +399,12 @@ Content-Type: application/json
         "PointInTime": "T06:06:06+00:00"
       },
       "DebtorAccount": {
-        "SchemeName": "UK.OBIE.SortCodeAccountNumber",
+        "SchemeName": "UK.OB.SortCodeAccountNumber",
         "Identification": "11280001234567",
         "Name": "Andrea Frost"
       },
       "CreditorAccount": {
-        "SchemeName": "UK.OBIE.IBAN",
+        "SchemeName": "UK.OB.IBAN",
         "Identification": "DE89370400440532013000",
         "Name": "Tom Kirkman"
       },

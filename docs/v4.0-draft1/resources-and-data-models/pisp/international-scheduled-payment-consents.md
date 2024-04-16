@@ -99,9 +99,7 @@ The API endpoint allows the PISP to ask an ASPSP to confirm funds on an **intern
 
 #### Payment Order Consent
 
-The state model for the international-scheduled-payment-consent resource follows the generic consent state model. However, does not use the "Revoked" status, as the consent for an international-scheduled-payment is not a long-lived consent.
-
-![image2018-5-18_10-24-21](./images/image2018-5-18_10-24-21.png)
+The state model for the international-scheduled-payment-consent resource follows the generic consent state model. 
 
 The definitions for the Status:
 
@@ -449,7 +447,7 @@ Accept: application/json
       },
       "CurrencyOfTransfer":"USD",
       "CreditorAccount": {
-        "SchemeName": "UK.OBIE.SortCodeAccountNumber",
+        "SchemeName": "UK.OB.SortCodeAccountNumber",
         "Identification": "08080021325698",
         "Name": "ACME Inc",
         "SecondaryIdentification": "0002"
@@ -501,7 +499,7 @@ Content-Type: application/json
 		      },
 			"CurrencyOfTransfer":"USD",
 			"CreditorAccount": {
-				"SchemeName": "UK.OBIE.SortCodeAccountNumber",
+				"SchemeName": "UK.OB.SortCodeAccountNumber",
 				"Identification": "08080021325698",
 				"Name": "ACME Inc",
 				"SecondaryIdentification": "0002"

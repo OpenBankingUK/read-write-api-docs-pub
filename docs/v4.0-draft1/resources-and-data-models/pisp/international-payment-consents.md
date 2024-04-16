@@ -92,25 +92,24 @@ The available Status codes for the international-payment-consent resource are:
 
 The API endpoint allows the PISP to ask an ASPSP to confirm funds on an **international-payment-consent** resource.
 
-* An ASPSP can only respond to a funds confirmation request if the **international-payment-consent** resource has an `AUTH` status. If the status is not `AUTH`, an ASPSP **must** respond with a 400 (Bad Request) and a `UK.OBIE.Resource.InvalidConsentStatus` error code.
+* An ASPSP can only respond to a funds confirmation request if the **international-payment-consent** resource has an `AUTH` status. If the status is not `AUTH`, an ASPSP **must** respond with a 400 (Bad Request) and a `UK.OB.Resource.InvalidConsentStatus` error code.
 * Confirmation of funds requests do not affect the status of the **international-payment-consent** resource.
 
 ### State Model
 
 #### Payment Order Consent
 
-The state model for the international-payment-consent resource follows the generic consent state model. However, does not use the "Revoked" status, as the consent for an international-payment is not a long-lived consent.
+The state model for the international-payment-consent resource follows the generic consent state model.
 
-![Payment Order Consent State Model](./images/image2018-5-18_10-24-21.png)
 
 The definitions for the Status:
 
 | | Status | Status Description |
 | --- |------ |------------------ |
-| 1 |AwaitingAuthorisation |The consent resource is awaiting PSU authorisation. |
-| 2 |Rejected |The consent resource has been rejected. |
-| 3 |Authorised |The consent resource has been successfully authorised. |
-| 4 |Consumed |The consented action has been successfully completed. This does not reflect the status of the consented action. |
+| 1 |AWAU |The consent resource is awaiting PSU authorisation. |
+| 2 |RJCT |The consent resource has been rejected. |
+| 3 |AUTH |The consent resource has been successfully authorised. |
+| 4 |COND |The consented action has been successfully completed. This does not reflect the status of the consented action. |
 
 ## Data Model
 
@@ -435,7 +434,7 @@ Accept: application/json
         "Currency": "GBP"
       },
       "CreditorAccount": {
-        "SchemeName": "UK.OBIE.SortCodeAccountNumber",
+        "SchemeName": "UK.OB.SortCodeAccountNumber",
         "Identification": "08080021325698",
         "Name": "ACME Inc",
         "SecondaryIdentification": "0002"
@@ -484,7 +483,7 @@ Content-Type: application/json
     "Currency": "GBP"
    },
    "CreditorAccount": {
-    "SchemeName": "UK.OBIE.SortCodeAccountNumber",
+    "SchemeName": "UK.OB.SortCodeAccountNumber",
     "Identification": "08080021325698",
     "Name": "ACME Inc",
     "SecondaryIdentification": "0002"

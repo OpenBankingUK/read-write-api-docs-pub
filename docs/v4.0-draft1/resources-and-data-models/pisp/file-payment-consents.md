@@ -119,8 +119,6 @@ The API endpoint allows the PISP to download a file (that had been uploaded agai
 
 #### Payment Order Consent
 
-![ image2018-7-5_15-37-22.png ](./images/image2018-7-5_15-37-22.png )
-
 The definitions for the Status:
 
 |  |Status |Status Description |
@@ -284,7 +282,7 @@ Accept: application/json
 {
   "Data": {
     "Initiation": {
-      "FileType": "UK.OBIE.pain.001.001.08",
+      "FileType": "UK.OB.pain.001.001.08",
       "FileHash": "m5ah/h1UjLvJYMxqAoZmj9dKdjZnsGNm+yMkJp/KuqQ",
       "FileReference": "GB2OK238",
       "NumberOfTransactions": "100",
@@ -311,7 +309,7 @@ Content-Type: application/json
     "CreationDateTime": "2018-06-05T15:15:13+00:00",
     "StatusUpdateDateTime": "2018-06-05T15:15:13+00:00",
     "Initiation": {
-      "FileType": "UK.OBIE.pain.001.001.08",
+      "FileType": "UK.OB.pain.001.001.08",
       "FileHash": "m5ah/h1UjLvJYMxqAoZmj9dKdjZnsGNm+yMkJp/KuqQ",
       "FileReference": "GB2OK238",
       "NumberOfTransactions": "100",

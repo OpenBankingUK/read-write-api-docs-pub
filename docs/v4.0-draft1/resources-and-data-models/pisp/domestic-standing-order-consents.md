@@ -85,13 +85,12 @@ The available Status codes for the domestic-standing-order-consent resource are:
 
 #### Payment Order Consent
 
-The state model for the domestic-standing-order-consent resource follows the generic consent state model. However, does not use the "Revoked" status, as the consent for a domestic-standing-order is not a long-lived consent.
+The state model for the domestic-standing-order-consent resource follows the generic consent state model. 
 
-![Payment Order Consent](./images/image2018-5-18_10-24-21.png)
 
 The definitions for the Status:
 
-|  |Status |Status Description |
+|  |StatusCode |Status Description |
 | --- |------ |------------------ |
 | 1 |AWAU |The consent resource is awaiting PSU authorisation. |
 | 2 |RJCT |The consent resource has been rejected. |
@@ -381,12 +380,12 @@ Content-Type: application/json
         "Currency": "GBP"
 	  },
       "DebtorAccount": {
-        "SchemeName": "UK.OBIE.SortCodeAccountNumber",
+        "SchemeName": "UK.OB.SortCodeAccountNumber",
         "Identification": "11280001234567",
         "Name": "Andrea Smith"
       },
       "CreditorAccount": {
-        "SchemeName": "UK.OBIE.SortCodeAccountNumber",
+        "SchemeName": "UK.OB.SortCodeAccountNumber",
         "Identification": "08080021325698",
         "Name": "Bob Clements"
       }

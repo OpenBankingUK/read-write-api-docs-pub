@@ -61,9 +61,9 @@ The domestic-scheduled-payment resource that is created successfully must have o
 
 | Status |
 | ------ |
-| InitiationPending |
-| InitiationFailed |
-| InitiationCompleted |
+| RCVD |
+| RJCT |
+| ACSP |
 
 ### GET /domestic-scheduled-payments/{DomesticScheduledPaymentId}
 
@@ -75,10 +75,10 @@ The domestic-scheduled-payment resource must have one of the following Status co
 
 | Status |
 | ------ |
-| InitiationPending |
-| InitiationFailed |
-| InitiationCompleted |
-| Cancelled |
+| RCVD |
+| RJCT |
+| ACSP |
+| CANC |
 
 ### GET /domestic-scheduled-payments/{DomesticScheduledPaymentId}/payment-details
 
@@ -88,59 +88,34 @@ A PISP can retrieve the Details of the underlying payment transaction via this e
 
 The domestic-scheduled-payments - payment-details must have one of the following PaymentStatusCode code-set enumerations:
 
-| Status |
+| StatusCode |
 | ------ |
-| Accepted |
-| AcceptedCancellationRequest |
-| AcceptedTechnicalValidation |
-| AcceptedCustomerProfile |
-| AcceptedFundsChecked |
-| AcceptedWithChange |
-| Pending |
-| Rejected |
-| AcceptedSettlementInProcess |
-| AcceptedSettlementCompleted |
-| AcceptedWithoutPosting |
-| AcceptedCreditSettlementCompleted |
-| Cancelled |
-| NoCancellationProcess |
-| PartiallyAcceptedCancellationRequest |
-| PartiallyAcceptedTechnicalCorrect |
-| PaymentCancelled |
-| PendingCancellationRequest |
-| Received |
-| RejectedCancellationRequest |
+| PDNG |
+| ACTC |
+| PATC |
+| ACCP |
+| ACFC |
+| ACSP |
+| ACWC |
+| ACSC |
+| ACWP |
+| ACCC |
+| BLCK |
+| RJCT |
+
 
 ### State Model
 
 #### Payment Order
 
-The state model for the domestic-scheduled-payment resource describes the initiation status only. I.e., not the subsequent execution of the domestic-scheduled-payment.
+The state model for the domestic-scheduled-payment resource describes the initiation and subsequent execution of the domestic-scheduled-payment.
 
-![Payment Order](./images/DomesticScheduledStatusModel.png)
-
-The definitions for the Status:
-
-|  |Status |Payment Status Description |
-| --- |------ |-------------------------- |
-| 1 |InitiationPending |The initiation of the payment order is pending. |
-| 2 |InitiationFailed |The initiation of the payment order has failed. |
-| 3 |InitiationCompleted |The initiation of the payment order is complete. |
-| 4 |Cancelled |Payment initiation has been successfully cancelled after having received a request for cancellation. |
+![Payment state model](./images/new-state-model.png)
 
 ##### Multiple Authorisation
+Once the payment is RCVD, it goes in PATC or CANC. If PATC then ACFC (if all authorisers have authorised) and then ACSP
+replace Awaiting Further Authorisation with PATC means partially accepted technically correct
 
-If the payment-order requires multiple authorisations, the Status of the multiple authorisations will be updated in the MultiAuthorisation object.
-
-![Multi Authorisation](./images/image2018-6-29_16-36-34.png)
-
-The definitions for the Status:
-
-|  |Status |Status Description |
-| --- |------ |------------------ |
-| 1 |AwaitingFurtherAuthorisation |The payment-order resource is awaiting further authorisation. |
-| 2 |Rejected |The payment-order resource has been rejected by an authoriser. |
-| 3 |Authorised |The payment-order resource has been successfully authorised by all required authorisers. |
 
 ## Data Model
 
@@ -279,12 +254,12 @@ Accept: application/json
         "Currency": "GBP"
       },
       "DebtorAccount": {
-        "SchemeName": "UK.OBIE.SortCodeAccountNumber",
+        "SchemeName": "UK.OB.SortCodeAccountNumber",
         "Identification": "11280001234567",
         "Name": "Andrea Frost"
       },
       "CreditorAccount": {
-        "SchemeName": "UK.OBIE.SortCodeAccountNumber",
+        "SchemeName": "UK.OB.SortCodeAccountNumber",
         "Identification": "08080021325698",
         "Name": "Tom Kirkman"
       },
@@ -314,12 +289,12 @@ Content-Type: application/json
   "Data": {
     "DomesticScheduledPaymentId": "7290-003",
     "ConsentId": "7290",
-    "Status": "InitiationPending",
+    "Status": "RCVD",
     "CreationDateTime": "2018-05-05T15:15:13+00:00",
     "StatusUpdateDateTime": "2018-05-05T15:15:13+00:00",
     "Refund": {
       "Account": {
-        "SchemeName": "UK.OBIE.SortCodeAccountNumber",
+        "SchemeName": "UK.OB.SortCodeAccountNumber",
         "Identification": "08080021325677",
         "Name": "NTPC Inc"
       }
@@ -332,12 +307,12 @@ Content-Type: application/json
         "Currency": "GBP"
       },
       "DebtorAccount": {
-        "SchemeName": "UK.OBIE.SortCodeAccountNumber",
+        "SchemeName": "UK.OB.SortCodeAccountNumber",
         "Identification": "11280001234567",
         "Name": "Andrea Frost"
       },
       "CreditorAccount": {
-        "SchemeName": "UK.OBIE.SortCodeAccountNumber",
+        "SchemeName": "UK.OB.SortCodeAccountNumber",
         "Identification": "08080021325698",
         "Name": "Tom Kirkman"
       },

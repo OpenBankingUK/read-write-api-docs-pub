@@ -61,9 +61,9 @@ The international-standing-orders resource that is created successfully must hav
 
 | Status |
 | --- |
-| InitiationPending |
-| InitiationFailed |
-| InitiationCompleted |
+| RCVD |
+| RJCT |
+| ACSP |
 
 ### GET /international-standing-orders/{InternationalStandingOrderPaymentId}
 
@@ -75,10 +75,10 @@ The international-standing-orders resource must have one of the following Status
 
 | Status |
 | --- |
-| InitiationPending |
-| InitiationFailed |
-| InitiationCompleted |
-| Cancelled |
+| RCVD |
+| RJCT |
+| ACSP |
+| CANC |
 
 ### GET /international-standing-orders/{InternationalStandingOrderPaymentId}/payment-details
 
@@ -88,51 +88,41 @@ A PISP can retrieve the Details of the underlying payment transaction via this e
 
 The international-standing-orders - payment-details must have one of the following PaymentStatusCode code-set enumerations:
 
-| Status |
-| --- |
-| Accepted |
-| AcceptedCancellationRequest |
-| AcceptedTechnicalValidation |
-| AcceptedCustomerProfile |
-| AcceptedFundsChecked |
-| AcceptedWithChange |
-| Pending |
-| Rejected |
-| AcceptedSettlementInProcess |
-| AcceptedSettlementCompleted |
-| AcceptedWithoutPosting |
-| AcceptedCreditSettlementCompleted |
-| Cancelled |
-| NoCancellationProcess |
-| PartiallyAcceptedCancellationRequest |
-| PartiallyAcceptedTechnicalCorrect |
-| PaymentCancelled |
-| PendingCancellationRequest |
-| Received |
-| RejectedCancellationRequest |
+| StatusCode |
+| ------ |
+| PDNG |
+| ACTC |
+| PATC |
+| ACCP |
+| ACFC |
+| ACSP |
+| ACWC |
+| ACSC |
+| ACWP |
+| ACCC |
+| BLCK |
+| RJCT |
 
 ### State Model
 
 #### Payment Order
 
-The state model for the international-standing-orders resource describes the initiation status only. I.e., not the subsequent execution of the international-standing-orders.
+The state model for the international-standing-orders resource describes the initiation status and the subsequent execution of the international-standing-orders.
 
-![ DomesticScheduledStatusModel ](./images/DomesticScheduledStatusModel.png )
+![ DomesticScheduledStatusModel ](./images/new-state-model.png )
 
 The definitions for the Status:
 
 |  |Status |Payment Status Description |
 | --- |--- |--- |
-| 1 |InitiationPending |The initiation of the payment order is pending. |
-| 2 |InitiationFailed |The initiation of the payment order has failed. |
-| 3 |InitiationCompleted |The initiation of the payment order is complete. |
-| 4 |Cancelled |Payment initiation has been successfully cancelled after having received a request for cancellation. |
+| 1 |RCVD |The initiation of the payment order is pending. |
+| 2 |RJCT |The initiation of the payment order has failed. |
+| 3 |ACSP |The initiation of the payment order is complete. |
+| 4 |CANC |Payment initiation has been successfully cancelled after having received a request for cancellation. |
 
 ##### Multiple Authorisation
-
-If the payment-order requires multiple authorisations, the Status of the multiple authorisations will be updated in the MultiAuthorisation object.
-
-![ image2018-6-29_16-36-34 ](./images/image2018-6-29_16-36-34.png )
+Once the payment is RCVD, it goes in PATC or CANC. If PATC then ACFC (if all authorisers have authorised) and then ACSP
+replace Awaiting Further Authorisation with PATC means partially accepted technically correct
 
 The definitions for the Status:
 
@@ -310,14 +300,14 @@ Content-Type: application/json
     "InternationalStandingOrderId": "SO-ISOC-100",
     "ConsentId": "ISOC-100",
     "CreationDateTime": "2018-01-01T06:06:36+00:00",
-    "Status": "InitiationCompleted",
+    "StatusCode": "ACSP",
     "StatusUpdateDateTime": "2018-01-01T06:36:06+00:00",
     "Refund": {
       "Creditor" : {
         "Name":"NTPC Ltd"
       },
       "Account": {
-        "SchemeName": "UK.OBIE.SortCodeAccountNumber",
+        "SchemeName": "UK.OB.SortCodeAccountNumber",
         "Identification": "08080021325677",
         "Name": "NTPC Inc"
       }
@@ -327,7 +317,7 @@ Content-Type: application/json
       "FirstPaymentDateTime": "2018-06-06T06:06:06+00:00",
       "FinalPaymentDateTime": "2020-03-20T06:06:06+00:00",
       "DebtorAccount": {
-        "SchemeName": "UK.OBIE.SortCodeAccountNumber",
+        "SchemeName": "UK.OB.SortCodeAccountNumber",
         "Identification": "11280001234567",
         "Name": "Andrea Frost"
       },
