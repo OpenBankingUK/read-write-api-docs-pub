@@ -61,17 +61,16 @@ The PSU **must** authenticate with the ASPSP and agree the **funds-confirmation-
 
 The **funds-confirmation-consent** resource that is created successfully must have one of the following Status code-list enumerations:
 
-|  |Status |Status Description |
+|  |StatusCode |Status Description |
 | --- |--- |--- |
-| 1 |AwaitingAuthorisation |The Funds Confirmation Consent is awaiting agreement. |
+| 1 |AWAU |The Funds Confirmation Consent is awaiting agreement. |
 
 After consent has been agreed the **funds-confirmation-consent** resource may have these following statuses.
 
-|  |Status |Status Description |
+|  |StatusCode |Status Description |
 | --- |--- |--- |
-| 1 |Rejected |The Funds Confirmation Consent has been rejected. |
-| 2 |Authorised |The Funds Confirmation Consent has been successfully agreed. |
-| 3 |Revoked |The Funds Confirmation Consent has been revoked via the ASPSP interface. |
+| 1 |RJCT |The Funds Confirmation Consent has been rejected. |
+| 2 |AUTH |The Funds Confirmation Consent has been successfully agreed. |
 
 #### Status Flow
 
@@ -97,9 +96,9 @@ The available Status code-list enumerations for the **funds-confirmation-consent
 
 |  |Status |Status Description |
 | --- |--- |--- |
-| 1 |Rejected |The Funds Confirmation Consent has been rejected. |
-| 2 |AwaitingAuthorisation |The Funds Confirmation Consent is awaiting agreement. |
-| 3 |Authorised |The Funds Confirmation Consent has been successfully agreed. |
+| 1 |RJCT |The Funds Confirmation Consent has been rejected. |
+| 2 |AWAU |The Funds Confirmation Consent is awaiting agreement. |
+| 3 |AUTH |The Funds Confirmation Consent has been successfully agreed. |
 | 4 |Revoked |The Funds Confirmation Consent has been revoked via the ASPSP interface. |
 
 
@@ -136,6 +135,11 @@ The OBFundsConfirmationConsent1 object will be used for the following:
 | Identification |1..1 |OBFundsConfirmationConsent1/Data/DebtorAccount/Identification |Identification assigned by an institution to identify an account. This identification is known by the account owner. |Max256Text | | |
 | Name |0..1 |OBFundsConfirmationConsent1/Data/DebtorAccount/Name |The account name is the name or names of the account owner(s) represented at an account level, as displayed by the ASPSP's online channels. Note, the account name is not the product name or the nickname of the account. |Max350Text | | |
 | SecondaryIdentification |0..1 |OBFundsConfirmationConsent1/Data/DebtorAccount/SecondaryIdentification |This is secondary identification of the account, as assigned by the account servicing institution. This can be used by building societies to additionally identify accounts with a roll number (in addition to a sort code and account number combination). |Max34Text | | |
+| Proxy |0..1 |OBFundsConfirmationConsent1/Data/DebtorAccount/Proxy |The external proxy account type |OBProxyAccount | | |
+| Identification |1..1 |OBFundsConfirmationConsent1/Data/DebtorAccount/Proxy/Identification| Identification assigned by an institution to identify an account. This identification is known by the account owner. |Max256Text | | |
+| Type |0..1 |OBFundsConfirmationConsent1/Data/DebtorAccount/Proxy/Type| Specifies the external proxy account type |MaxText70 | | |
+| Code |1..1 |OBFundsConfirmationConsent1/Data/DebtorAccount/Proxy/Code| Specifies the external proxy account type code, as published in the proxy account type external code set.<br> For more information see `ExternalProxyAccountType1Code` [here](https://github.com/OpenBankingUK/External_Interal_CodeSets) |OBExternalProxyAccountType1Code | | |
+| Proprietary |1..1 |OBFundsConfirmationConsent1/Data/DebtorAccount/Proxy/Proprietary| The owner of the proxy account |MaxText70 | | |
 
 ### Funds Confirmation Consent - Response
 
@@ -153,7 +157,8 @@ Notes:
 The OBFundsConfirmationConsentResponse1 object contains the same information as the OBFundsConfirmation1, but with additional fields:
 
 * ConsentId - to uniquely identify the funds-confirmation-consent resource.
-* Status.
+* StatusCode.
+* StatusReason
 * StatusUpdateDateTime.
 * CreationDateTime.
 
@@ -165,7 +170,11 @@ The OBFundsConfirmationConsentResponse1 object contains the same information as 
 | Data |1..1 |OBFundsConfirmationConsentResponse1/Data | |OBFundsConfirmationConsentDataResponse1 | | |
 | ConsentId |1..1 |OBFundsConfirmationConsentResponse1/Data/ConsentId |Unique identification as assigned to identify the funds confirmation consent resource. |Max128Text | | |
 | CreationDateTime |1..1 |OBFundsConfirmationConsentResponse1/Data/CreationDateTime |Date and time at which the resource was created. |ISODateTime | | |
-| Status |1..1 |OBFundsConfirmationConsentResponse1/Data/Status |Specifies the status of consent resource in code form. |OBExternalRequestStatus1Code |Authorised AwaitingAuthorisation Rejected Revoked | |
+| StatusCode |0..1 |OBReadConsentResponse1/Data/StatusCode |Specifies the status of consent resource in code form. |
+ExternalStatusReason1Code |AUTH AWAU RJCT COND |
+| StatusReason |0..* |OBReadConsentResponse1/Data/StatusReason |Specifies the status reason. | OBStatusReason |
+| StatusReasonCode |0..1 |OBReadConsentResponse1/Data/StatusReason/*/StatusReasonCode |Specifies the status reason in a code form. For a full description see `ExternalStatusReason1Code` [here](https://github.com/OpenBankingUK/External_Interal_CodeSets). | ExternalStatusReason1Code |
+| StatusReasonDescription |0..1 |OBReadConsentResponse1/Data/StatusReason/*/StatusReasonDescription |Description supporting the StatusReasonCode. |
 | StatusUpdateDateTime |1..1 |OBFundsConfirmationConsentResponse1/Data/StatusUpdateDateTime |Date and time at which the resource status was updated. |ISODateTime | | |
 | ExpirationDateTime |0..1 |OBFundsConfirmationConsentResponse1/Data/ExpirationDateTime |Specified date and time the funds confirmation authorisation will expire. If this is not populated, the authorisation will be open ended. |ISODateTime | | |
 | DebtorAccount |1..1 |OBFundsConfirmationConsentResponse1/Data/DebtorAccount |Unambiguous identification of the account of the debtor to which a confirmation of funds consent will be applied. |OBCashAccountDebtor4 | | |
@@ -173,6 +182,11 @@ The OBFundsConfirmationConsentResponse1 object contains the same information as 
 | Identification |1..1 |OBFundsConfirmationConsentResponse1/Data/DebtorAccount/Identification |Identification assigned by an institution to identify an account. This identification is known by the account owner. |Max256Text | | |
 | Name |0..1 |OBFundsConfirmationConsentResponse1/Data/DebtorAccount/Name |The account name is the name or names of the account owner(s) represented at an account level, as displayed by the ASPSP's online channels. Note, the account name is not the product name or the nickname of the account. |Max350Text | | |
 | SecondaryIdentification |0..1 |OBFundsConfirmationConsentResponse1/Data/DebtorAccount/SecondaryIdentification |This is secondary identification of the account, as assigned by the account servicing institution. This can be used by building societies to additionally identify accounts with a roll number (in addition to a sort code and account number combination). |Max34Text | | |
+| Proxy |0..1 |OBFundsConfirmationConsentResponse1/Data/DebtorAccount |The external proxy account type |OBProxyAccount | | |
+| Identification |1..1 |OBFundsConfirmationConsentResponse1/Data/DebtorAccount/Identification| Identification assigned by an institution to identify an account. This identification is known by the account owner. |Max256Text | | |
+| Type |0..1 |OBFundsConfirmationConsentResponse1/Data/DebtorAccount/Type| Specifies the external proxy account type |MaxText70 | | |
+| Code |1..1 |OBFundsConfirmationConsentResponse1/Data/DebtorAccount/Code| Specifies the external proxy account type code, as published in the proxy account type external code set.<br> For more information see `ExternalProxyAccountType1Code` [here](https://github.com/OpenBankingUK/External_Interal_CodeSets) |OBExternalProxyAccountType1Code | | |
+| Proprietary |1..1 |OBFundsConfirmationConsentResponse1/Data/DebtorAccount/Proprietary| The owner of the proxy account |MaxText70 | | |
 
 ### Data Payload - Enumerations
 
@@ -233,7 +247,7 @@ x-fapi-interaction-id: hook5i13-ntIg-4th3-rP41-3ro535touch3
   "Data": {
     "ConsentId": "88379",
     "CreationDateTime": "2017-05-02T00:00:00+00:00",
-    "Status": "AwaitingAuthorisation",
+    "StatusCode": "AWAU",
     "StatusUpdateDateTime": "2017-05-02T00:00:00+00:00",
     "ExpirationDateTime": "2017-05-02T00:00:00+00:00",
     "DebtorAccount": {
@@ -279,7 +293,7 @@ Content-Type: application/json
   "Data": {
     "ConsentId": "88379",
     "CreationDateTime": "2017-05-02T00:00:00+00:00",
-    "Status": "AwaitingAuthorisation",
+    "StatusCode": "AWAU",
     "StatusUpdateDateTime": "2017-05-02T00:00:00+00:00",
     "ExpirationDateTime": "2017-05-02T00:00:00+00:00",
     "DebtorAccount": {
@@ -322,7 +336,7 @@ Content-Type: application/json
   "Data": {
     "ConsentId": "88999",
     "CreationDateTime": "2017-05-02T00:00:00+00:00",
-    "Status": "AwaitingAuthorisation",
+    "StatusCOde": "AWAU",
     "StatusUpdateDateTime": "2017-05-02T00:00:00+00:00",
     "ExpirationDateTime": "2017-05-02T00:00:00+00:00",
     "DebtorAccount": {

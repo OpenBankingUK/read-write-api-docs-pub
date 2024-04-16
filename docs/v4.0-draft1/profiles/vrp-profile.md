@@ -225,7 +225,7 @@ ASPSPs may revoke access tokens associated with a VRP consent for fraud and risk
 
 A PSU may re-authenticate a VRP Consent where:
 
-- the resource has a status of `Authorised` and
+- the resource has a status of `AUTH` and
 - the consent has not expired as determined through the `ValidToDate` in the control parameters.
 
 ASPSPs may revoke access tokens issued for a VRP consent if they suspect risk or fraud situations. However, unlike AIS consents, VRP access tokens should not be set to expire at 90 days.

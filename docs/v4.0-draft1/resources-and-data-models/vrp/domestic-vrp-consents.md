@@ -53,7 +53,7 @@ The endpoint allows the TPP to send a copy of the consent (between PSU and TPP) 
 
 The ASPSP creates the resource and responds with a unique ConsentId to refer to the resource.
 
-The default/initial Status of the resource is set to `AwaitingAuthorisation`.
+The default/initial StatusCode of the resource is set to `AWAU`.
 
 If the parameters specified by the TPP in this resource are not valid, or fail any rules, the ASPSP must return a 400 Bad Request. In such a situation a resource is not created.
 
@@ -73,35 +73,35 @@ A TPP can delete a VRP consent resource that they have created by calling this A
 
 This API endpoint allows the TPP to ask an ASPSP to confirm funds on the `DebtorAccount` associated with the `domestic-vrp-consent`.
 
-An ASPSP can only respond to a funds confirmation request if the resource has a Status of `Authorised`.
+An ASPSP can only respond to a funds confirmation request if the resource has a StatusCode of `AUTH`.
 
 If resource has any other Status, the ASPSP must respond with a 400 (Bad Request) and a `UK.OBIE.Resource.InvalidConsentStatus` error code.
 
 ## State Model - VRP consents
 
-The state model for the VRP consents resource follows the generic consent state model. However, it does not use the `Consumed` status.
+The state model for the VRP consents resource follows the generic consent state model. However, it does not use the `COND` StatusCode.
 
 !["VRP consents Status"](./images/VRP-State-Diagram.png)
 
-All `domestic-vrp-consents` start off with a state of `AwaitingAuthorisation`
+All `domestic-vrp-consents` start off with a state of `AWAU`
 
 Once the PSU authorises the resource - the state of the resource will be set to `Authorised`.
 
-If the PSU rejects the consent, the state will be set to `Rejected`.
+If the PSU rejects the consent, the state will be set to `RJCT`.
 
 The available status codes for the VRP consents resource are:
 
-- AwaitingAuthorisation
-- Rejected
-- Authorised
+- AWAU
+- RJCT
+- AUTH
 
 The definitions for the Status:
 
-|     | Status                | Status Description                                                            |
+|     | StatusCode                | Status Description                                                            |
 |-----|-----------------------|-------------------------------------------------------------------------------|
-| 1   | AwaitingAuthorisation | The consent resource is awaiting PSU authorisation.                           |
-| 2   | Rejected              | The consent resource has been rejected.                                       |
-| 3   | Authorised            | The consent resource has been successfully authorised.                        |
+| 1   | AWAU | The consent resource is awaiting PSU authorisation.                           |
+| 2   | RJCT              | The consent resource has been rejected.                                       |
+| 3   | AUTH            | The consent resource has been successfully authorised.                        |
 
 ## Data Model
 
@@ -128,6 +128,11 @@ The data dictionary section gives the detail on the payload content for the VRP 
 | __Identification__ (1..1) | `Identification` |Identification assigned by an institution to identify an account. This identification is known by the account owner.   |Max256Text
 | __Name__ (1..1) | `Name` |Name of the account, as assigned by the account servicing institution, in consent with the account owner in order to provide an additional means of identification of the account.  Usage: The account name is different from the account owner name. The account name is used in certain user communities to provide a means of identifying the account, in addition to the account owner's identity and the account number. OB: No name validation is expected for confirmation of payee.|Max70Text  
 | __SecondaryIdentification__ (0..1) | `SecondaryIdentification` |This is secondary identification of the account, as assigned by the account servicing institution.  This can be used by building societies to additionally identify accounts with a roll number__ (in addition to a sort code and account number combination).             |Max34Text
+| __Proxy__ (0..1) |OBInternationalStandingOrder4/CreditorAccount/Proxy |The external proxy account type |OBProxyAccount
+| __Identification__ (1..1) |OBInternationalStandingOrder4/CreditorAccount/Proxy/Identification| Identification assigned by an institution to identify an account. This identification is known by the account owner. |Max256Text 
+| __Type__ (0..1) |OBInternationalStandingOrder4/CreditorAccount/Proxy/Type| Specifies the external proxy account type |MaxText70 
+| __Code__ 1..1 |OBInternationalStandingOrder4/CreditorAccount/Proxy/Code| Specifies the external proxy account type code, as published in the proxy account type external code set.<br> For more information see `ExternalProxyAccountType1Code` [here](https://github.com/OpenBankingUK/External_Interal_CodeSets) |OBExternalProxyAccountType1Code 
+| __Proprietary__ (1..1) |OBInternationalStandingOrder4/CreditorAccount/Proxy/Proprietary| The owner of the proxy account |MaxText70 
 
 ### OBBranchAndFinancialInstitutionIdentification6
 
@@ -144,6 +149,13 @@ The data dictionary section gives the detail on the payload content for the VRP 
 | __SubDepartment__ (0..1) | `PostalAddress. SubDepartment` |Identification of a sub-division of a large organisation or building. |Max70Text
 | __StreetName__ (0..1) | `PostalAddress. StreetName`   |Name of a street or thoroughfare.    |Max70Text  
 | __BuildingNumber__ (0..1) | `PostalAddress. BuildingNumber` |Number that identifies the position of a building on a street.   |Max16Text  
+| __BuildingName__ (0..1) |`PostalAddress. BuildingName`  |Name of a referenced building. |Max70Text
+| __Floor__ (0..1) |`PostalAddress. Floor`|Number that identifies the level within a building. |Max16Text 
+| __UnitNumber__(0..1) |`PostalAddress. UnitNumber`|Number that identifies the unit of a specific address |Max16Text 
+| __Room__ (0..1)| `PostalAddress. Room`|Information that locates and identifies a room to form part of an address. |Max70Text 
+| __TownLocationName__ (0..1)|`PostalAddress. TownLocationName` |Name of a built-up area, with defined boundaries, and a local government. |Max35Text 
+| __DistrictName__ (0..1) |`PostalAddress. DistrictName`|Number that of the regional area, known as a district, which forms part of an address. |Max35Text 
+| __CareOf__ (0..1 )|`PostalAddress. CareOf` |The 'care of' address is used whenever sending mail to a person or organisation who does not actually live or work at the address. They will receive the mail for the individual. |Max70Text 
 | __PostCode__ (0..1) | `PostalAddress. PostCode` |Identifier consisting of a group of letters and. or numbers that is added to a postal address to assist the sorting of mail.    |Max16Text  
 | __TownName__ (0..1) | `PostalAddress. TownName` |Name of a built-up area, with defined boundaries, and a local government. |Max35Text  
 | __CountrySubDivision__ (0..1) | `PostalAddress. CountrySubDivision` |Identifies a subdivision of a country such as state, region, county.      |Max35Text  
@@ -279,7 +291,7 @@ The Risk block is a common class used in requests and responses
 | Name                             | Occurrence | XPath                                      | EnhancedDefinition                                                                                                                                                                                                             | Class                              | Codes                                                                                                                                                                                                                                                                                                                   | Pattern |
 |----------------------------------|------------|--------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------|
 | OBRisk1                          |            | OBRisk1                                    | The Risk section is sent by the initiating party to the ASPSP. It is used to specify additional details for risk scoring for Payments.                                                                                         | OBRisk1                            |                                                                                                                                                                                                                                                                                                                         |         |
-| PaymentContextCode               | 0..1       | OBRisk1/PaymentContextCode                 | Specifies the payment context <br> Usage of BillPayment, EcommerceGoods, EcommerceServices, Other, PartyToParty is strongly discouraged. These items are deprecated and will be removed in the future version of the Standard. | OBExternalPaymentContext1Code      | <br>BillingGoodsAndServicesInAdvance <br>BillingGoodsAndServicesInArrears <br>EcommerceMerchantInitiatedPayment <br>FaceToFacePointOfSale <br>TransferToSelf <br>TransferToThirdParty  <br><br>**Deprecated values:** <br>BillPayment <br>EcommerceGoods <br>EcommerceServices <br>Other <br>PartyToParty |         |
+| PaymentContextCode               | 0..1       | OBRisk1/PaymentContextCode                 | Specifies the payment context | OBExternalPaymentContext1Code      | <br>BillingGoodsAndServicesInAdvance <br>BillingGoodsAndServicesInArrears <br>EcommerceMerchantInitiatedPayment <br>FaceToFacePointOfSale <br>TransferToSelf <br>TransferToThirdParty |         |
 | CategoryPurposeCode                | 0..1       | OBRisk1/CategoryPurposeCode                  |Enumeration to outline the purpose to the underlying purpose of the payment<br> BONU (BonusPayment)<br>CASH (CashManagementTransfer)<br>CBLK (CardBulkClearing)<br>CCRD (CreditCardPayment)<br>CGWV (CarrierGuardedWholesaleValuables)<br>CIPC (CashInPreCredit)<br>CONC (CashOutNotesCoins)<br>CORT (TradeSettlementPayment)<br>DCRD (DebitCardPayment)<br>DIVI (Dividend)<br>DVPM (DeliverAgainstPayment)<br>EPAY (Epayment)<br>FCDT (ForeignCurrencyDomesticTransfer)<br>FCIN (FeeCollectionAndInterest)<br>FCOL (FeeCollection)<br>GOVT (GovernmentPayment)<br>GP2P (PersontoPersonPayment)<br>HEDG (Hedging)<br>ICCP (IrrevocableCreditCardPayment)<br>IDCP (IrrevocableDebitCardPayment)<br>INTC (IntraCompanyPayment)<br>INTE (Interest)<br>LBOX (LockboxTransactions)<br>LOAN (Loan)<br>MP2B (Commercial)<br>MP2P (Consumer)<br>OTHR (OtherPayment)<br>PENS (PensionPayment)<br>RPRE (Represented)<br>RRCT (ReimbursementReceivedCreditTransfer)<br>RVPM (ReceiveAgainstPayment)<br>SALA (SalaryPayment)<br>SECU (Securities)<br>SSBE (SocialSecurityBenefit)<br>SUPP (SupplierPayment)<br>SWEP (CashManagementSweepAccount)<br>TAXS (TaxPayment)<br>TOPG (CashManagementTopAccount)<br>TRAD (Trade)<br>TREA (TreasuryPayment)<br>VATX (ValueAddedTaxPayment)<br>VOST (Crossborder MIPayments)<br>WHLD (WithHolding)<br>ZABA (CashManagementZeroBalanceAccount)| OBCategoryPurposeCode                       |                                                                                                                                                                                                                                                                                                                         |         |
 | ExtendedPurpose |0..1 |OBRisk1/ExtendedPurpose |Specifies the purpose of an __international payment__, when there is no corresponding 4 character code available in the ISO20022 list of Purpose Codes. |Max140Text | | |
 | MerchantCategoryCode             | 0..1       | OBRisk1/MerchantCategoryCode               | **`@DEPRECATED`** Category code conform to ISO 18245, related to the type of services or goods the merchant provides for the transaction.                                                                                      | Min3Max4Text                       |                                                                                                                                                                                                                                                                                                                         |         |
@@ -288,14 +300,19 @@ The Risk block is a common class used in requests and responses
 | BeneficiaryPrepopulatedIndicator | 0..1       | OBRisk1/BeneficiaryPrepopulatedIndicator   | Indicates if PISP has immutably prepopulated payment details in for the PSU.                                                                                                                                                   | Boolean                            |                                                                                                                                                                                                                                                                                                                         |         |
 | PaymentPurposeCode |0..1 |OBRisk1/PaymentPurposeCode | For a full description see `ExternalPurpose1Code` [here](https://github.com/OpenBankingUK/External_Interal_CodeSets) |OBExternalPaymentPurpose1Code | | |
 | BeneficiaryAccountType           | 0..1       | OBRisk1/BeneficiaryAccountType             | To be provided if the AccountType is known.                                                                                                                                                                                    | OBExternalExtendedAccountType1Code | Personal<br>JointPersonal<br>PersonalSavingsAccount<br>Business<br>BusinessSavingsAccount<br>Charity<br>Collection<br>Corporate<br>Government<br>Ewallet<br>Investment<br>ISA<br>Premier<br>Wealth<br>Pension<br>                                                                                                       |         |
-| DeliveryAddress                  | 0..1       | OBRisk1/DeliveryAddress                    | Information that locates and identifies a specific address, as defined by postal services or in free format text.                                                                                                              | PostalAddress2Lines                |                                                                                                                                                                                                                                                                                                                         |         |
-| AddressLine                      | 0..2       | OBRisk1/DeliveryAddress/AddressLine        | Information that locates and identifies a specific address, as defined by postal services, that is presented in free format text.                                                                                              | Max70Text                          |                                                                                                                                                                                                                                                                                                                         |         |
-| StreetName                       | 0..1       | OBRisk1/DeliveryAddress/StreetName         | Name of a street or thoroughfare.                                                                                                                                                                                              | Max70Text                          |                                                                                                                                                                                                                                                                                                                         |         |
-| BuildingNumber                   | 0..1       | OBRisk1/DeliveryAddress/BuildingNumber     | Number that identifies the position of a building on a street.                                                                                                                                                                 | Max16Text                          |                                                                                                                                                                                                                                                                                                                         |         |
-| PostCode                         | 0..1       | OBRisk1/DeliveryAddress/PostCode           | Identifier consisting of a group of letters and/or numbers that is added to a postal address to assist the sorting of mail.                                                                                                    | Max16Text                          |                                                                                                                                                                                                                                                                                                                         |         |
-| TownName                         | 1..1       | OBRisk1/DeliveryAddress/TownName           | Name of a built-up area, with defined boundaries, and a local government.                                                                                                                                                      | Max35Text                          |                                                                                                                                                                                                                                                                                                                         |         |
-| CountrySubDivision               | 0..1       | OBRisk1/DeliveryAddress/CountrySubDivision | Identifies a subdivision of a country, for instance state, region, county.                                                                                                                                                     | Max35Text                          |                                                                                                                                                                                                                                                                                                                         |         |
-| Country                          | 1..1       | OBRisk1/DeliveryAddress/Country            | Nation with its own government, occupying a particular territory.                                                                                                                                                              | CountryCode                        | ^[A-Z]{2,2}$                                                                                                                                                                                                                                                                                                            |         |
+| DeliveryAddress                  | 0..1       | OBRisk1/DeliveryAddress                    | Information that locates and identifies a specific address, as defined by postal services or in free format text.                                                                                                              | OBPostalAddress6               |                                                                                                                                                                                                                                                                                                                         |         |
+| AddressType |0..1 |OBRisk1/DeliveryAddress AddressType |BIZZ (Business)<br>DLVY (Delivery To)<br>MLTO (Mail To)<br>PBOX (PO Box)<br>ADDR (Postal)<br>HOME (Residential)<br>CORR (Correspondence)<br>STAT (Statement) | ||
+| Department |0..1 |OBRisk1/DeliveryAddress Department |Identification of a division of a large organisation or building. |Max70Text | | |
+| SubDepartment |0..1 |OBRisk1/DeliveryAddress SubDepartment |Identification of a sub-division of a large organisation or building. |Max70Text | | |
+| StreetName |0..1 |OBRisk1/DeliveryAddress StreetName |Name of a street or thoroughfare. |Max70Text | | |
+| BuildingNumber |0..1 |OBRisk1/DeliveryAddress BuildingNumber |Number that identifies the position of a building on a street. |Max16Text | | |
+| BuildingName |0..1 |OBRisk1/DeliveryAddress BuildingName |Name of a referenced building. |Max70Text | | |
+| Floor |0..1 |OBRisk1/DeliveryAddress Floor|Number that identifies the level within a building. |Max16Text | | |
+| UnitNumber|0..1 |OBRisk1/DeliveryAddress UnitNumber|Number that identifies the unit of a specific address |Max16Text | | |
+| Room |0..1 |OBRisk1/DeliveryAddress Room|Information that locates and identifies a room to form part of an address. |Max70Text | | |
+| TownLocationName |0..1 |OBRisk1/DeliveryAddress TownLocationName |Name of a built-up area, with defined boundaries, and a local government. |Max35Text | | |
+| DistrictName |0..1 |OBRisk1/DeliveryAddress DistrictName |Number that of the regional area, known as a district, which forms part of an address. |Max35Text | | |
+| CareOf |0..1 |OBRisk1/DeliveryAddress CareOf |The 'care of' address is used whenever sending mail to a person or organisation who does not actually live or work at the address. They will receive the mail for the individual. |Max70Text | | |
 
 ### OBDomesticVRPConsentRequest
 
@@ -319,7 +336,10 @@ The Risk block is a common class used in requests and responses
 | __ConsentId__  (1..1)| `Data. ConsentId` | Unique identification as assigned by the ASPSP to uniquely identify the consent resource.      | Max128Text
 | __Data. ReadRefundAccount__ (0..1) | `Data. ReadRefundAccount` | Indicates whether the `RefundAccount` object should be included in the response | Yes No
 | __CreationDateTime__ (1..1)| `Data. CreationDateTime` | Date and time at which the resource was created.|ISODateTime
-| __Status__ (1..1) | `Data. Status` | Specifies the status of resource in code form.  |Authorised AwaitingAuthorisation Rejected
+| __StatusCode__ (0..1) | `Data. Status` | Specifies the status of resource in code form.  |AUTH AWAU RJCT COND
+| __StatusReason__ (0..*) | `Data. StatusReason` | Specifies the status reason.  |OBStatusReason
+| __StatusReasonCode__ (0..1) | `Data. StatusReason. *. StatusReasonCode` | Specifies the status reason in a code form. For a full description see `ExternalStatusReason1Code` [here](https://github.com/OpenBankingUK/External_Interal_CodeSets).  |ExternalStatusReason1Code
+| __StatusReasonDescription__ (0..1) | `Data. StatusReason. *. StatusReasonDescription` | Description supporting the StatusReasonCode.  |String
 | __StatusUpdateDateTime__ (1..1)| `Data. StatusUpdateDateTime` |Date and time at which the resource status was updated.  | ISODateTime  
 | __ControlParameters__ (1..1) | `Data. ControlParameters` | The control parameters under which this VRP must operate | [OBDomesticVRPControlParameters](#OBDomesticVRPControlParameters)
 | __Initiation__ (1..1) | `Data. Initiation` | The parameters of the VRP consent that should remain unchanged for each payment under this VRP |  [OBDomesticVRPInitiation](#OBDomesticVRPInitiation)

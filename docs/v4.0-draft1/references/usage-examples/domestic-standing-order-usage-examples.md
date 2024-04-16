@@ -141,7 +141,7 @@ Content-Type: application/json
   "Data": {
 	"ConsentId": "SOC-100",
 	"CreationDateTime": "1976-01-01T06:06:06+00:00",
-	"Status": "AwaitingAuthorisation",
+	"StatusCode": "AWAU",
 	"StatusUpdateDateTime": "1976-06-06T06:06:06+00:00",
 	"Permission": "Create",
     "Initiation": {
@@ -321,7 +321,7 @@ Content-Type: application/json
   "Data": {
 	"ConsentId": "SOC-100",
 	"CreationDateTime": "1976-01-01T06:06:06+00:00",
-	"Status": "Authorised",
+	"StatusCode": "AUTH",
 	"StatusUpdateDateTime": "1976-06-06T06:06:06+00:00",
 	"Permission": "Create",
     "Initiation": {
