@@ -150,21 +150,19 @@ For the OBDomesticStandingOrder3 Initiation object:
 | OBDomesticStandingOrder3 | |OBDomesticStandingOrder3 |The Initiation payload is sent by the initiating party to the ASPSP. It is used to request movement of funds from the debtor account to a creditor for a domestic standing order. |OBDomesticStandingOrder3 | | |
 | MandateRelatedInformation | 0..1 |OBDomesticStandingOrder3/MandateRelatedInformation ||OBMandateRelatedInformation | | |
 | MandateIdentification | 0..1 |OBDomesticStandingOrder3/MandateRelatedInformation/MandateIdentification ||TODO | | |
-| Classification | 0..1 |OBDomesticStandingOrder3/MandateRelatedInformation/OBClassification1Code ||OBClassification1Code | | |
+| Classification | 0..1 |OBDomesticStandingOrder3/MandateRelatedInformation/OBClassification1Code |FIXE<br>USGB<br>VARI|OBClassification1Code | | |
 | CategoryPurposeCode | 0..1 |OBDomesticStandingOrder3/MandateRelatedInformation/CategoryPurposeCode ||OBCategoryPurpose1Code | | |
-| FirstPaymentDate | 0..1 |OBDomesticStandingOrder3/MandateRelatedInformation/FirstPaymentDate |The date on which the first payment for a Standing Order schedule will be made. |ISODateTime | | |
-| FinalPaymentDate | 0..1 |OBDomesticStandingOrder3/MandateRelatedInformation/FinalPaymentDate |The date on which the final payment for a Standing Order schedule will be made. |ISODateTime | | |
-| Frequency | 0..1 |OBDomesticStandingOrder3/MandateRelatedInformation/Frequency |The date on which the first payment for a Standing Order schedule will be made. |ISODateTime | | |
-| PeriodType | 1..1 |OBDomesticStandingOrder3/MandateRelatedInformation/Frequency/PeriodType |TODO | | |
-| CountPerPeriod | 1..1 |OBDomesticStandingOrder3/MandateRelatedInformation/Frequency/CountPerPeriod |TODO | | |
-| PointInTimeType | 1..1 |OBDomesticStandingOrder3/MandateRelatedInformation/Frequency/PointInTimeType |TODO | | |
-| PointInTime | 1..1 |OBDomesticStandingOrder3/MandateRelatedInformation/Frequency/PointInTime |TODO | | |
-| Reason| 1..1 |OBDomesticStandingOrder3/MandateRelatedInformation/Reason |TODO | | |
+| FirstPaymentDate | 0..1 |OBDomesticStandingOrder3/MandateRelatedInformation/FirstPaymentDate |The date on which the first payment for a Standing Order schedule will be made. |ISODate | | |
+| FinalPaymentDate | 0..1 |OBDomesticStandingOrder3/MandateRelatedInformation/FinalPaymentDate |The date on which the final payment for a Standing Order schedule will be made. |ISODate | | |
+| Frequency | 0..1 |OBDomesticStandingOrder3/MandateRelatedInformation/Frequency |A code indicating the frequency of payment for the Standing Order. Values:<br>ADHO<br>YEAR<br>DALI<br>INDA<br>MNTH<br>QURT<br>MIAN<br>WEEK |OBFrequencyPeriodType | | |
+| PeriodType | 1..1 |OBDomesticStandingOrder3/MandateRelatedInformation/PeriodType |A code indicating the period type for the Standing Order. Values:<br>ADHO<br>YEAR<br>DALI<br>INDA<br>MNTH<br>QURT<br>MIAN<br>WEEK |OBFrequencyPeriodType | | |
+| CountPerPeriod | 1..1 |OBDomesticStandingOrder3/MandateRelatedInformation/CountPerPeriod | |int32 | |
+| PointInTimeType | 1..1 |OBDomesticStandingOrder3/MandateRelatedInformation/PointInTimeType |A code indicating the point in time for payment of the Standing Order. Values:<br>ADHO<br>YEAR<br>DALI<br>INDA<br>MNTH<br>QURT<br>MIAN<br>WEEK |OBFrequencyPeriodType | | |
+| PointInTime | 1..1 |OBDomesticStandingOrder3/MandateRelatedInformation/PointInTime |ISOTime | | |
+| Reason| 1..1 |OBDomesticStandingOrder3/MandateRelatedInformation/Reason | |Max256Text | |
 | Reference |0..1 |OBDomesticStandingOrder3/Reference |Unique reference, as assigned by the creditor, to unambiguously refer to the payment transaction. Usage: If available, the initiating party should provide this reference in the structured remittance information, to enable reconciliation by the creditor upon receipt of the amount of money. If the business context requires the use of a creditor reference or a payment remit identification, and only one identifier can be passed through the end-to-end chain, the creditor's reference or payment remittance identification should be quoted in the end-to-end transaction identification. |Max35Text | | |
 | NumberOfPayments |0..1 |OBDomesticStandingOrder3/NumberOfPayments |Number of the payments that will be made in completing this frequency sequence including any executed since the sequence start date. |Max35Text | | |
 | RecurringPaymentDateTime |0..1 |OBDomesticStandingOrder3/RecurringPaymentDateTime |The date on which the first recurring payment for a Standing Order schedule will be made. Usage: This must be populated only if the first recurring date is different to the first payment date. |ISODateTime | | |
-| FinalPaymentDateTime |0..1 |OBDomesticStandingOrder3/FinalPaymentDateTime |The date on which the final payment for a Standing Order schedule will be made. |ISODateTime | | |
-| FirstPaymentAmount |1..1 |OBDomesticStandingOrder3/FirstPaymentAmount |The amount of the first Standing Order |OBActiveOrHistoricCurrencyAndAmount | | |
 | Amount |1..1 |OBDomesticStandingOrder3/FirstPaymentAmount/Amount |A number of monetary units specified in an active currency where the unit of currency is explicit and compliant with ISO 4217. |OBActiveCurrencyAndAmount_SimpleType | |`^\d{1,13}$|^\d{1,13}\.\d{1,5}$` |
 | Currency |1..1 |OBDomesticStandingOrder3/FirstPaymentAmount/Currency |A code allocated to a currency by a Maintenance Agency under an international identification scheme, as described in the latest edition of the international standard ISO 4217 "Codes for the representation of currencies and funds". |ActiveOrHistoricCurrencyCode | |^[A-Z]{3,3}$ |
 | RecurringPaymentAmount |0..1 |OBDomesticStandingOrder3/RecurringPaymentAmount |The amount of the recurring Standing Order |OBActiveOrHistoricCurrencyAndAmount | | |
@@ -412,9 +410,16 @@ Content-Type: application/json
 	"StatusUpdateDateTime": "1976-06-06T06:06:06+00:00",
 	"Permission": "Create",
     "Initiation": {
-	  "Frequency": "EvryDay",
+      "MandateRelatedInformation": {
+        "Frequency": "DAIL",
+        "PeriodType": "DAIL",
+        "FirstPaymentDate": "1976-06-06",
+        "LastPaymentDate": "1981-03-20",
+        "CountPerPeriod": 1,
+        "PointInTimeType": "DAIL",
+        "PointInTime": "T06:06:06+00:00"
+      },
 	  "Reference": "Pocket money for Damien",
-	  "FirstPaymentDateTime": "1976-06-06T06:06:06+00:00",
 	  "FirstPaymentAmount": {
         "Amount": "6.66",
         "Currency": "GBP"
@@ -423,7 +428,6 @@ Content-Type: application/json
         "Amount": "7.00",
         "Currency": "GBP"
 	  },
-	  "FinalPaymentDateTime": "1981-03-20T06:06:06+00:00",
 	  "FinalPaymentAmount": {
         "Amount": "7.00",
         "Currency": "GBP"

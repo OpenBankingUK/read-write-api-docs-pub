@@ -64,7 +64,6 @@ The resource requires the ReadDirectDebits permission. The resource response pay
 | DirectDebit |0..n |OBReadDirectDebit2/Data/DirectDebit |Account to or from which a cash entry is made. |OBDirectDebit2| | |
 | AccountId |1..1 |OBReadDirectDebit2/Data/DirectDebit/AccountId |A unique and immutable identifier used to identify the account resource. This identifier has no meaning to the account owner. |Max40Text | | |
 | DirectDebitId |0..1 |OBReadDirectDebit2/Data/DirectDebit/DirectDebitId |A unique and immutable identifier used to identify the direct debit resource. This identifier has no meaning to the account owner. |Max40Text | | |
-| MandateIdentification |1..1 |OBReadDirectDebit2/Data/DirectDebit/MandateIdentification |Direct Debit reference. For AUDDIS service users provide Core Reference. For non AUDDIS service users provide Core reference if possible or last used reference. |Max35Text | | |
 | DirectDebitStatusCode |0..1 |OBReadDirectDebit2/Data/DirectDebit/DirectDebitStatusCode |Specifies the status of the direct debit in code form. |OBExternalDirectDebitStatus1Code |Active Inactive | |
 | Name |1..1 |OBReadDirectDebit2/Data/DirectDebit/Name |Name of Service User. |Max70Text | | |
 | PreviousPaymentDateTime |0..1 |OBReadDirectDebit2/Data/DirectDebit/PreviousPaymentDateTime |Date of most recent direct debit collection. |ISODateTime | | |
@@ -72,6 +71,18 @@ The resource requires the ReadDirectDebits permission. The resource response pay
 | PreviousPaymentAmount |0..1 |OBReadDirectDebit2/Data/DirectDebit/PreviousPaymentAmount |The amount of the most recent direct debit collection. |OBActiveOrHistoricCurrencyAndAmount | | |
 | Amount |1..1 |OBReadDirectDebit2/Data/DirectDebit/PreviousPaymentAmount/Amount |A number of monetary units specified in an active currency where the unit of currency is explicit and compliant with ISO 4217. |OBActiveCurrencyAndAmount_SimpleType | |`^\d{1,13}$|^\d{1,13}\.\d{1,5}$` |
 | Currency |1..1 |OBReadDirectDebit2/Data/DirectDebit/PreviousPaymentAmount/Currency |A code allocated to a currency by a Maintenance Agency under an international identification scheme, as described in the latest edition of the international standard ISO 4217 "Codes for the representation of currencies and funds". |ActiveOrHistoricCurrencyCode | |^[A-Z]{3,3}$ |
+| MandateRelatedInformation | 0..1 |OBReadDirectDebit2/Data/DirectDebit/MandateRelatedInformation ||OBMandateRelatedInformation | | |
+| MandateIdentification | 0..1 |OBReadDirectDebit2/Data/DirectDebit/MandateRelatedInformation/MandateIdentification ||TODO | | |
+| Classification | 0..1 |OBReadDirectDebit2/Data/DirectDebit/MandateRelatedInformation/OBClassification1Code |FIXE<br>USGB<br>VARI|OBClassification1Code | | |
+| CategoryPurposeCode | 0..1 |OBReadDirectDebit2/Data/DirectDebit/MandateRelatedInformation/CategoryPurposeCode ||OBCategoryPurpose1Code | | |
+| FirstPaymentDate | 0..1 |OBReadDirectDebit2/Data/DirectDebit/MandateRelatedInformation/FirstPaymentDate |The date on which the first payment for a Standing Order schedule will be made. |ISODate | | |
+| FinalPaymentDate | 0..1 |OBReadDirectDebit2/Data/DirectDebit/MandateRelatedInformation/FinalPaymentDate |The date on which the final payment for a Standing Order schedule will be made. |ISODate | | |
+| Frequency | 0..1 |OBReadDirectDebit2/Data/DirectDebit/MandateRelatedInformation/Frequency |A code indicating the frequency of payment for the Standing Order. Values:<br>ADHO<br>YEAR<br>DALI<br>INDA<br>MNTH<br>QURT<br>MIAN<br>WEEK |OBFrequencyPeriodType | | |
+| PeriodType | 1..1 |OBReadDirectDebit2/Data/DirectDebit/MandateRelatedInformation/PeriodType |A code indicating the period type for the Standing Order. Values:<br>ADHO<br>YEAR<br>DALI<br>INDA<br>MNTH<br>QURT<br>MIAN<br>WEEK |OBFrequencyPeriodType | | |
+| CountPerPeriod | 1..1 |OBReadDirectDebit2/Data/DirectDebit/MandateRelatedInformation/CountPerPeriod | |int32 | |
+| PointInTimeType | 1..1 |OBReadDirectDebit2/Data/DirectDebit/MandateRelatedInformation/PointInTimeType |A code indicating the point in time for payment of the Standing Order. Values:<br>ADHO<br>YEAR<br>DALI<br>INDA<br>MNTH<br>QURT<br>MIAN<br>WEEK |OBFrequencyPeriodType | | |
+| PointInTime | 1..1 |OBReadDirectDebit2/Data/DirectDebit/MandateRelatedInformation/PointInTime |ISOTime | | |
+| Reason| 1..1 |OBReadDirectDebit2/Data/DirectDebit/MandateRelatedInformation/Reason | |Max256Text | |
 
 ## Usage Examples
 
@@ -103,7 +114,13 @@ Content-Type: application/json
       {
         "AccountId": "22289",
         "DirectDebitId": "DD03",
-        "MandateIdentification": "Caravanners",
+        "MandateRelatedInformation": {
+            "MandateIdentification": "Caravanners",
+            "PeriodType": "WEEK",
+            "CountPerPeriod": 1,
+            "PointInTimeType": "WEEK",
+            "PointInTime": "2017-08-13T00:00:00+00:00"
+        },
         "DirectDebitStatusCode": "Active",
         "Name": "Towbar Club 3 - We Love Towbars",
         "PreviousPaymentDateTime": "2017-04-05T10:43:07+00:00",
@@ -151,7 +168,13 @@ Content-Type: application/json
       {
         "AccountId": "22289",
         "DirectDebitId": "DD03",
-        "MandateIdentification": "Caravanners",
+        "MandateRelatedInformation": {
+            "MandateIdentification": "Caravanners",
+            "PeriodType": "MNTH",
+            "CountPerPeriod": 1,
+            "PointInTimeType": "MNTH",
+            "PointInTime": "T00:00:00+00:00"
+        },
         "DirectDebitStatusCode": "Active",
         "Name": "Towbar Club 3 - We Love Towbars",
         "PreviousPaymentDateTime": "2017-04-05T10:43:07+00:00",
@@ -163,7 +186,13 @@ Content-Type: application/json
       {
         "AccountId": "31820",
         "DirectDebitId": "DD77",
-        "MandateIdentification": "Golfers",
+        "MandateRelatedInformation": {
+          "MandateIdentification": "Golfers",
+          "PeriodType": "MNTH",
+          "CountPerPeriod": 1,
+          "PointInTimeType": "MNTH",
+          "PointInTime": "T00:00:00+00:00"
+        },
         "DirectDebitStatusCode": "Active",
         "Name": "Golf Club",
         "PreviousPaymentDateTime": "2017-05-06T09:00:00+00:00",
