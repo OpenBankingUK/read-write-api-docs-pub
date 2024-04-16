@@ -81,11 +81,10 @@ If resource has any other Status, the ASPSP must respond with a 400 (Bad Request
 
 The state model for the VRP consents resource follows the generic consent state model. However, it does not use the `COND` StatusCode.
 
-!["VRP consents Status"](./images/VRP-State-Diagram.png)
 
 All `domestic-vrp-consents` start off with a state of `AWAU`
 
-Once the PSU authorises the resource - the state of the resource will be set to `Authorised`.
+Once the PSU authorises the resource - the state of the resource will be set to `AUTH`.
 
 If the PSU rejects the consent, the state will be set to `RJCT`.
 

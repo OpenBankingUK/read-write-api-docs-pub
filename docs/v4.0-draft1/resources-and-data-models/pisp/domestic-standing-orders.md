@@ -55,15 +55,15 @@ Once the domestic-standing-order-consent has been authorised by the PSU, the PIS
 
 #### Status
 
-A domestic-standing-order can only be created if its corresponding domestic-standing-order-consent resource has the status of "Authorised". 
+A domestic-standing-order can only be created if its corresponding domestic-standing-order-consent resource has the status of "AUTH". 
 
 The domestic-standing-order resource that is created successfully must have one of the following Status codes:
 
 | Status |
 | --- |
-| InitiationPending |
-| InitiationFailed |
-| InitiationCompleted |
+| RCVD |
+| RJCT |
+| ASCP |
 
 ### GET /domestic-standing-orders/{DomesticStandingOrderId}
 
@@ -75,10 +75,10 @@ The domestic-standing-order resource must have one of the following Status codes
 
 | Status |
 | --- |
-| InitiationPending |
-| InitiationFailed |
-| InitiationCompleted |
-| Cancelled |
+| RCVD |
+| RJCT |
+| ASCP |
+| CANC |
 
 ### GET /domestic-standing-orders/{DomesticStandingOrderId}/payment-details
 
@@ -88,59 +88,34 @@ A PISP can retrieve the Details of the underlying payment transaction via this e
 
 The domestic-standing-orders - payment-details must have one of the following PaymentStatusCode code-set enumerations:
 
-| Status |
-| --- |
-| Accepted |
-| AcceptedCancellationRequest |
-| AcceptedTechnicalValidation |
-| AcceptedCustomerProfile |
-| AcceptedFundsChecked |
-| AcceptedWithChange |
-| Pending |
-| Rejected |
-| AcceptedSettlementInProcess |
-| AcceptedSettlementCompleted |
-| AcceptedWithoutPosting |
-| AcceptedCreditSettlementCompleted |
-| Cancelled |
-| NoCancellationProcess |
-| PartiallyAcceptedCancellationRequest |
-| PartiallyAcceptedTechnicalCorrect |
-| PaymentCancelled |
-| PendingCancellationRequest |
-| Received |
-| RejectedCancellationRequest |
+| StatusCode |
+| ------ |
+| PDNG |
+| ACTC |
+| PATC |
+| ACCP |
+| ACFC |
+| ACSP |
+| ACWC |
+| ACSC |
+| ACWP |
+| ACCC |
+| BLCK |
+| RJCT |
 
 ### State Model
 
 #### Payment Order
 
-The state model for the domestic-standing-order resource describes the initiation status only. I.e., not the subsequent execution of the domestic-standing-order.
+The state model for the domestic-standing-order resource describes the initiation status and the subsequent execution of the domestic-standing-order.
 
-![Payment Order](./images/DomesticScheduledStatusModel.png)
+![Payment Order](./images/new-state-model.png)
 
-The definitions for the Status:
-
-|  |Status |Payment Status Description |
-| --- |------ |-------------------------- |
-| 1 |InitiationPending |The initiation of the payment order is pending. |
-| 2 |InitiationFailed |The initiation of the payment order has failed. |
-| 3 |InitiationCompleted |The initiation of the payment order is complete. |
-| 4 |Cancelled |Payment initiation has been successfully cancelled after having received a request for cancellation. |
 
 ##### Multiple Authorisation
+Once the payment is RCVD, it goes in PATC or CANC. If PATC then ACFC (if all authorisers have authorised) and then ACSP
+replace Awaiting Further Authorisation with PATC means partially accepted technically correct
 
-If the payment-order requires multiple authorisations, the Status of the multiple authorisations will be updated in the MultiAuthorisation object.
-
-![Multiple Authorisation](./images/image2018-6-29_16-36-34.png)
-
-The definitions for the Status:
-
-|  | Status |Status Description |
-| --- |------ |------------------ |
-| 1 |AwaitingFurtherAuthorisation |The payment-order resource is awaiting further authorisation. |
-| 2 |Rejected |The payment-order resource has been rejected by an authoriser. |
-| 3 |Authorised |The payment-order resource has been successfully authorised by all required authorisers. |
 
 ## Data Model
 
@@ -289,7 +264,7 @@ Accept: application/json
         "Name": "Andrea Smith"
       },
       "CreditorAccount": {
-        "SchemeName": "UK.OBIE.SortCodeAccountNumber",
+        "SchemeName": "UK.OB.SortCodeAccountNumber",
         "Identification": "08080021325698",
         "Name": "Bob Clements"
       }
@@ -317,11 +292,11 @@ Content-Type: application/json
 	"DomesticStandingOrderId": "SO-SOC-100",
 	"ConsentId": "SOC-100",
 	"CreationDateTime": "1976-01-01T06:06:06+00:00",
-	"Status": "InitiationCompleted",
+	"StatusCode": "ASCP",
 	"StatusUpdateDateTime": "1976-06-06T06:06:06+00:00",
    "Refund": {
       "Account": {
-        "SchemeName": "UK.OBIE.SortCodeAccountNumber",
+        "SchemeName": "UK.OB.SortCodeAccountNumber",
         "Identification": "08080021325677",
         "Name": "NTPC Inc"
       }
@@ -344,12 +319,12 @@ Content-Type: application/json
         "Currency": "GBP"
 	  },
       "DebtorAccount": {
-        "SchemeName": "UK.OBIE.SortCodeAccountNumber",
+        "SchemeName": "UK.OB.SortCodeAccountNumber",
         "Identification": "11280001234567",
         "Name": "Andrea Smith"
       },
       "CreditorAccount": {
-        "SchemeName": "UK.OBIE.SortCodeAccountNumber",
+        "SchemeName": "UK.OB.SortCodeAccountNumber",
         "Identification": "08080021325698",
         "Name": "Bob Clements"
       }

@@ -50,7 +50,7 @@ The API endpoint allows the PISP to ask an ASPSP to create a new **domestic-sche
 
 #### Status
 
-* The default Status is "AwaitingAuthorisation" immediately after the domestic-scheduled-payment-consent has been created.
+* The default Status is "AWAU" immediately after the domestic-scheduled-payment-consent has been created.
 
 | Status |
 | ------ |
@@ -62,11 +62,11 @@ A PISP can optionally retrieve a payment consent resource that they have created
 
 #### Status
 
-Once the PSU authorises the payment-consent resource, the Status of the payment-consent resource will be updated with "Authorised".
+Once the PSU authorises the payment-consent resource, the Status of the payment-consent resource will be updated with "AUTH".
 
-If the PSU rejects the consent or the domestic-scheduled-payment-consent has failed some other ASPSP validation, the Status will be set to "Rejected".
+If the PSU rejects the consent or the domestic-scheduled-payment-consent has failed some other ASPSP validation, the Status will be set to "RJCT".
 
-Once a domestic-scheduled-payment has been successfully created using the domestic-scheduled-payment-consent, the Status of the domestic-scheduled-payment-consent will be set to "Consumed".
+Once a domestic-scheduled-payment has been successfully created using the domestic-scheduled-payment-consent, the Status of the domestic-scheduled-payment-consent will be set to "COND".
 
 The available Status codes for the domestic-scheduled-payment-consent resource are:
 
@@ -81,18 +81,8 @@ The available Status codes for the domestic-scheduled-payment-consent resource a
 
 #### Payment Order Consent
 
-The state model for the domestic-scheduled-payment-consent resource follows the generic consent state model. However, does not use the "Revoked" status, as the consent for a domestic-scheduled-payment is not a long-lived consent.
+The state model for the domestic-scheduled-payment-consent resource follows the generic consent state model. 
 
-![Payment Order Consent](./images/image2018-5-18_10-24-21.png)
-
-The definitions for the Status:
-
-|  |Status |Status Description |
-| --- |------ |------------------ |
-| 1 |AwaitingAuthorisation |The consent resource is awaiting PSU authorisation. |
-| 2 |Rejected |The consent resource has been rejected. |
-| 3 |Authorised |The consent resource has been successfully authorised. |
-| 4 |Consumed |The consented action has been successfully completed. This does not reflect the status of the consented action. |
 
 ## Data Model
 

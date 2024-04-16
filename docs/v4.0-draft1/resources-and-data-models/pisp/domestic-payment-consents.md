@@ -96,9 +96,8 @@ The API endpoint allows the PISP to ask an ASPSP to confirm funds on a **domesti
 
 #### Payment Order Consent
 
-The state model for the domestic-payment-consent resource follows the generic consent state model. However, does not use the Revoked status, as the consent for a domestic-payment is not a long-lived consent.
+The state model for the domestic-payment-consent resource follows the generic consent state model.
 
-!["Payment Order Consent Status"](./images/image2018-5-18_10-24-21.png)
 
 The definitions for the StatusCode:
 
@@ -484,7 +483,7 @@ Content-Type: application/json
         "Currency": "GBP"
       },
       "CreditorAccount": {
-        "SchemeName": "UK.OBIE.SortCodeAccountNumber",
+        "SchemeName": "UK.OB.SortCodeAccountNumber",
         "Identification": "08080021325698",
         "Name": "ACME Inc",
         "SecondaryIdentification": "0002"

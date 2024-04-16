@@ -55,12 +55,20 @@ A `domestic-vrps` can only be created if its corresponding `domestic-vrp-consent
 
 The `domestic-vrps` resource that is created successfully must have one of the following `PaymentStatusCode` values
 
-- Pending
-- Rejected
-- AcceptedSettlementInProcess
-- AcceptedSettlementCompleted
-- AcceptedWithoutPosting
-- AcceptedCreditSettlementCompleted
+| StatusCode |
+| ------ |
+| PDNG |
+| ACTC |
+| PATC |
+| ACCP |
+| ACFC |
+| ACSP |
+| ACWC |
+| ACSC |
+| ACWP |
+| ACCC |
+| BLCK |
+| RJCT |
 
 ### GET /domestic-vrps/{DomesticVRPId}
 
@@ -68,12 +76,20 @@ Once the domestic vrp is created, a TPP can retrieve the `domestic-vrps` to chec
 
 The domestic-vrp resource must have one of the following PaymentStatusCode code-set enumerations:
 
-- Pending
-- Rejected
-- AcceptedSettlementInProcess
-- AcceptedSettlementCompleted
-- AcceptedWithoutPosting
-- AcceptedCreditSettlementCompleted
+| StatusCode |
+| ------ |
+| PDNG |
+| ACTC |
+| PATC |
+| ACCP |
+| ACFC |
+| ACSP |
+| ACWC |
+| ACSC |
+| ACWP |
+| ACCC |
+| BLCK |
+| RJCT |
 
 ### GET /domestic-vrps/{DomesticVRPId}/payment-details
 
@@ -81,26 +97,20 @@ A TPP can retrieve the details of the underlying payment transaction via this en
 
 The API must return one of the following status codes:
 
-- Accepted
-- AcceptedCancellationRequest
-- AcceptedTechnicalValidation
-- AcceptedCustomerProfile
-- AcceptedFundsChecked
-- AcceptedWithChange
-- Pending
-- Rejected
-- AcceptedSettlementInProcess
-- AcceptedSettlementCompleted
-- AcceptedWithoutPosting
-- AcceptedCreditSettlementCompleted
-- Cancelled
-- NoCancellationProcess
-- PartiallyAcceptedCancellationRequest
-- PartiallyAcceptedTechnicalCorrect
-- PaymentCancelled
-- PendingCancellationRequest
-- Received
-- RejectedCancellationRequest
+| StatusCode |
+| ------ |
+| PDNG |
+| ACTC |
+| PATC |
+| ACCP |
+| ACFC |
+| ACSP |
+| ACWC |
+| ACSC |
+| ACWP |
+| ACCC |
+| BLCK |
+| RJCT |
 
 ## State Model
 
@@ -108,17 +118,17 @@ The API must return one of the following status codes:
 
 The state model for the `domestic-vrps` resource follows the behavior and definitions for the ISO 20022 PaymentStatusCode code-set.
 
-![Domestic VRP Status](./images/PaymentStatusLifeCycle.png)
+![Domestic VRP Status](./images/new-state-model.png)
 
 The definitions for the status:
 |  |Status |Payment Status Description |
 |--|------ |-------------------------- |
-| 1 |Pending |Payment initiation or individual transaction included in the payment initiation is pending. Further checks and status update will be performed. |
-| 2 |Rejected |Payment initiation or individual transaction included in the payment initiation has been rejected. |
-| 3 |AcceptedSettlementInProcess |All preceding checks such as technical validation and customer profile were successful and therefore the payment initiation has been accepted for execution. |
-| 4 |AcceptedSettlementCompleted |Settlement on the debtor's account has been completed. |
-| 5 |AcceptedWithoutPosting |Payment instruction included in the credit transfer is accepted without being posted to the creditor customer’s account. |
-| 6 |AcceptedCreditSettlementCompleted |Settlement on the creditor's account has been completed.|
+| 1 |PDNG |Payment initiation or individual transaction included in the payment initiation is pending. Further checks and status update will be performed. |
+| 2 |RJCT |Payment initiation or individual transaction included in the payment initiation has been rejected. |
+| 3 |ACSP |All preceding checks such as technical validation and customer profile were successful and therefore the payment initiation has been accepted for execution. |
+| 4 |ACSC |Settlement on the debtor's account has been completed. |
+| 5 |ACWP |Payment instruction included in the credit transfer is accepted without being posted to the creditor customer’s account. |
+| 6 |ACCC |Settlement on the creditor's account has been completed.|
 
 ## Data Model
 
