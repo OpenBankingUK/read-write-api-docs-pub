@@ -53,7 +53,7 @@ The endpoint allows the TPP to send a copy of the consent (between PSU and TPP) 
 
 The ASPSP creates the resource and responds with a unique ConsentId to refer to the resource.
 
-The default/initial Status of the resource is set to `AwaitingAuthorisation`.
+The default/initial StatusCode of the resource is set to `AWAU`.
 
 If the parameters specified by the TPP in this resource are not valid, or fail any rules, the ASPSP must return a 400 Bad Request. In such a situation a resource is not created.
 
@@ -73,35 +73,35 @@ A TPP can delete a VRP consent resource that they have created by calling this A
 
 This API endpoint allows the TPP to ask an ASPSP to confirm funds on the `DebtorAccount` associated with the `domestic-vrp-consent`.
 
-An ASPSP can only respond to a funds confirmation request if the resource has a Status of `Authorised`.
+An ASPSP can only respond to a funds confirmation request if the resource has a StatusCode of `AUTH`.
 
 If resource has any other Status, the ASPSP must respond with a 400 (Bad Request) and a `UK.OBIE.Resource.InvalidConsentStatus` error code.
 
 ## State Model - VRP consents
 
-The state model for the VRP consents resource follows the generic consent state model. However, it does not use the `Consumed` status.
+The state model for the VRP consents resource follows the generic consent state model. However, it does not use the `AUTH` StatusCode.
 
 !["VRP consents Status"](./images/VRP-State-Diagram.png)
 
-All `domestic-vrp-consents` start off with a state of `AwaitingAuthorisation`
+All `domestic-vrp-consents` start off with a state of `AWAU`
 
 Once the PSU authorises the resource - the state of the resource will be set to `Authorised`.
 
-If the PSU rejects the consent, the state will be set to `Rejected`.
+If the PSU rejects the consent, the state will be set to `RJCT`.
 
 The available status codes for the VRP consents resource are:
 
-- AwaitingAuthorisation
-- Rejected
-- Authorised
+- AWAU
+- RJCT
+- AUTH
 
 The definitions for the Status:
 
-|     | Status                | Status Description                                                            |
+|     | StatusCode                | Status Description                                                            |
 |-----|-----------------------|-------------------------------------------------------------------------------|
-| 1   | AwaitingAuthorisation | The consent resource is awaiting PSU authorisation.                           |
-| 2   | Rejected              | The consent resource has been rejected.                                       |
-| 3   | Authorised            | The consent resource has been successfully authorised.                        |
+| 1   | AWAU | The consent resource is awaiting PSU authorisation.                           |
+| 2   | RJCT              | The consent resource has been rejected.                                       |
+| 3   | AUTH            | The consent resource has been successfully authorised.                        |
 
 ## Data Model
 
@@ -311,7 +311,10 @@ The Risk block is a common class used in requests and responses
 | __ConsentId__  (1..1)| `Data. ConsentId` | Unique identification as assigned by the ASPSP to uniquely identify the consent resource.      | Max128Text
 | __Data. ReadRefundAccount__ (0..1) | `Data. ReadRefundAccount` | Indicates whether the `RefundAccount` object should be included in the response | Yes No
 | __CreationDateTime__ (1..1)| `Data. CreationDateTime` | Date and time at which the resource was created.|ISODateTime
-| __Status__ (1..1) | `Data. Status` | Specifies the status of resource in code form.  |Authorised AwaitingAuthorisation Rejected
+| __StatusCode__ (0..1) | `Data. Status` | Specifies the status of resource in code form.  |AUTH AWAU RJCT COND
+| __StatusReason__ (0..*) | `Data. StatusReason` | Specifies the status reason.  |OBStatusReason
+| __StatusReasonCode__ (0..1) | `Data. StatusReason. *. StatusReasonCode` | Specifies the status reason in a code form. For a full description see `ExternalStatusReason1Code` [here](https://github.com/OpenBankingUK/External_Interal_CodeSets).  |ExternalStatusReason1Code
+| __StatusReasonDescription__ (0..1) | `Data. StatusReason. *. StatusReasonDescription` | Description supporting the StatusReasonCode.  |String
 | __StatusUpdateDateTime__ (1..1)| `Data. StatusUpdateDateTime` |Date and time at which the resource status was updated.  | ISODateTime  
 | __ControlParameters__ (1..1) | `Data. ControlParameters` | The control parameters under which this VRP must operate | [OBDomesticVRPControlParameters](#OBDomesticVRPControlParameters)
 | __Initiation__ (1..1) | `Data. Initiation` | The parameters of the VRP consent that should remain unchanged for each payment under this VRP |  [OBDomesticVRPInitiation](#OBDomesticVRPInitiation)

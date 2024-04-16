@@ -60,11 +60,11 @@ The API endpoint allows the PISP to ask an ASPSP to create a new **file-payment-
 
 #### Status
 
-The default Status is "AwaitingUpload" immediately after the file-payment-consent has been created.
+The default StatusCode is "AWAU" immediately after the file-payment-consent has been created.
 
 | Status |
 | --- |
-| AwaitingUpload |
+| AWAU |
 
 ### POST /file-payment-consents/{ConsentId}/file
 
@@ -80,11 +80,11 @@ The API endpoint allows the PISP to upload a file to an ASPSP, against a **file-
 
 #### Status
 
-The default Status is "AwaitingAuthorisation" immediately after the file has been uploaded.
+The default StatusCode is "AWAU" immediately after the file has been uploaded.
 
 | Status |
 | --- |
-| AwaitingAuthorisation |
+| AWAU |
 
 ### GET /file-payment-consents/{ConsentId}
 
@@ -92,21 +92,20 @@ A PISP can optionally retrieve a payment consent resource that they have created
 
 #### Status
 
-Once the PSU authorises the payment-consent resource, the Status of the payment-consent resource will be updated with "Authorised".
+Once the PSU authorises the payment-consent resource, the StatusCode of the payment-consent resource will be updated with "Authorised".
 
-If the PSU rejects the consent or the file-payment-consent has failed some other ASPSP validation, the Status will be set to "Rejected".
+If the PSU rejects the consent or the file-payment-consent has failed some other ASPSP validation, the StatusCode will be set to "RJCT".
 
-Once a file-payment has been successfully created using the file-payment-consent, the Status of the file-payment-consent will be set to "Consumed".
+Once a file-payment has been successfully created using the file-payment-consent, the StatusCode of the file-payment-consent will be set to "AUTH".
 
 The available Status codes for the file-payment-consent resource are:
 
 | Status |
 | --- |
-| AwaitingUpload |
-| AwaitingAuthorisation |
-| Rejected |
-| Authorised |
-| Consumed |
+| AUTH |
+| AWAU |
+| RJCT |
+| COND |
 
 ### GET /file-payment-consents/{ConsentId}/file
 
@@ -119,7 +118,7 @@ The API endpoint allows the PISP to download a file (that had been uploaded agai
 
 #### Payment Order Consent
 
-The state model for the file-payment-consent resource follows the generic consent state model. However, does not use the "Revoked" status, as the consent for a file-payment is not a long-lived consent.
+The state model for the file-payment-consent resource follows the generic consent state model. However, does not use the "RCJT" status, as the consent for a file-payment is not a long-lived consent.
 
 ![ image2018-7-5_15-37-22.png ](./images/image2018-7-5_15-37-22.png )
 
@@ -127,11 +126,9 @@ The definitions for the Status:
 
 |  |Status |Status Description |
 | --- |--- |--- |
-| 1 |AwaitingUpload |The file for the consent resource is awaiting upload. |
-| 2 |AwaitingAuthorisation |The consent resource is awaiting PSU authorisation. |
-| 3 |Rejected |The consent resource has been rejected. |
-| 4 |Authorised |The consent resource has been successfully authorised. |
-| 5 |Consumed |The consented action has been successfully completed. This does not reflect the status of the consented action. |
+| 1 |AWAU |The consent resource is awaiting PSU authorisation or The file for the consent resource is awaiting upload. |
+| 2 |RJCT |The consent resource has been rejected. |
+| 3 |AUTH |The consent resource has been successfully authorised. |
 
 ## Data Model
 
@@ -153,7 +150,7 @@ For the OBFile2 Initiation object:
 
 * All elements in the Initiation payload that are specified by the PISP must not be changed via the ASPSP, as this is part of formal consent from the PSU.
 * If the ASPSP is able to establish a problem with payload or any contextual error during the API call, the ASPSP must reject the file-payment-consent request immediately.
-* If the ASPSP establishes a problem with the file-payment-consent after the API call, the ASPSP must set the Status of the file-payment-consent resource to Rejected.
+* If the ASPSP establishes a problem with the file-payment-consent after the API call, the ASPSP must set the Status of the file-payment-consent resource to RJCT.
 * The DebtorAccount is **optional** as the PISP may not know the account identification details for the PSU.
 * If the DebtorAccount is specified by the PISP and is invalid for the PSU - then the file-payment-consent will be set to Rejected after PSU authentication.
 * An ASPSP may choose which fields **must** be populated to process a specified FileType, and may reject the request if the fields are not populated. These ASPSP specific requirements must be documented.
@@ -230,7 +227,7 @@ The file-payment-consent **response** contains the full **original** payload fro
 
 * ConsentId.
 * CreationDateTime the file-payment-consent resource was created.
-* Status and StatusUpdateDateTime of the file-payment-consent resource.
+* StatusCode, StatusReason and StatusUpdateDateTime of the file-payment-consent resource.
 * CutOffDateTime Behaviour is explained in Payment Initiation API Profile, Section - [Payment Restrictions -> CutOffDateTime Behaviour](../../profiles/payment-initiation-api-profile.md#cutoffdatetime-behaviour).
 * Charges array - for the breakdown of applicable ASPSP charges.
 * Post successful PSU Authentication, an ASPSP may provide `Debtor/Name` in the Payment Order Consent Response, even when the Payer didn't provide the Debtor Account via PISP.
@@ -243,7 +240,11 @@ The file-payment-consent **response** contains the full **original** payload fro
 | Data |1..1 |OBWriteFileConsentResponse4/Data | |OBWriteDataFileConsentResponse4 | | |
 | ConsentId |1..1 |OBWriteFileConsentResponse4/Data/ConsentId |OB: Unique identification as assigned by the ASPSP to uniquely identify the consent resource. |Max128Text | | |
 | CreationDateTime |1..1 |OBWriteFileConsentResponse4/Data/CreationDateTime |Date and time at which the resource was created. |ISODateTime | | |
-| Status |1..1 |OBWriteFileConsentResponse4/Data/Status |Specifies the status of consent resource in code form. |OBExternalConsentStatus2Code |Authorised AwaitingAuthorisation AwaitingUpload Consumed Rejected | |
+| StatusCode |0..1 |OBReadConsentResponse1/Data/StatusCode |Specifies the status of consent resource in code form. |
+ExternalStatusReason1Code |AUTH AWAU RJCT COND |
+| StatusReason |0..* |OBReadConsentResponse1/Data/StatusReason |Specifies the status reason. | OBStatusReason |
+| StatusReasonCode |0..1 |OBReadConsentResponse1/Data/StatusReason/*/StatusReasonCode |Specifies the status reason in a code form. For a full description see `ExternalStatusReason1Code` [here](https://github.com/OpenBankingUK/External_Interal_CodeSets). | ExternalStatusReason1Code |
+| StatusReasonDescription |0..1 |OBReadConsentResponse1/Data/StatusReason/*/StatusReasonDescription |Description supporting the StatusReasonCode. |
 | StatusUpdateDateTime |1..1 |OBWriteFileConsentResponse4/Data/StatusUpdateDateTime |Date and time at which the consent resource status was updated. |ISODateTime | | |
 | CutOffDateTime |0..1 |OBWriteFileConsentResponse4/Data/CutOffDateTime |Specified cut-off date and time for the payment consent. |ISODateTime | | |
 | Charges |0..n |OBWriteFileConsentResponse4/Data/Charges |Set of elements used to provide details of a charge for the payment initiation. |OBCharge2 | | |
@@ -301,7 +302,7 @@ Content-Type: application/json
 {
   "Data": {
     "ConsentId" : "512345",
-    "Status": "AwaitingUpload",
+    "StatusCode": "AWAU",
     "CreationDateTime": "2018-06-05T15:15:13+00:00",
     "StatusUpdateDateTime": "2018-06-05T15:15:13+00:00",
     "Initiation": {

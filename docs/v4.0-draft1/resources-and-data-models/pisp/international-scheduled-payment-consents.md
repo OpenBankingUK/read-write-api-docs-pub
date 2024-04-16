@@ -61,11 +61,11 @@ The API endpoint allows the PISP to ask an ASPSP to create a new **international
 
 #### Status
 
-The default Status is "AwaitingAuthorisation" immediately after the international-scheduled-payment-consent has been created.
+The default StatusCode is "AWAU" immediately after the international-scheduled-payment-consent has been created.
 
-| Status |
+| StatusCode |
 | --- |
-| AwaitingAuthorisation |
+| AWAU |
 
 ### GET /international-scheduled-payment-consents/{ConsentId}
 
@@ -73,26 +73,26 @@ A PISP can optionally retrieve a payment consent resource that they have created
 
 #### Status
 
-Once the PSU authorises the payment-consent resource, the Status of the payment-consent resource will be updated with "Authorised".
+Once the PSU authorises the payment-consent resource, the StatusCode of the payment-consent resource will be updated with "AUTH".
 
-If the PSU rejects the consent or the international-scheduled-payment-consent has failed some other ASPSP validation, the Status will be set to "Rejected".
+If the PSU rejects the consent or the international-scheduled-payment-consent has failed some other ASPSP validation, the StatusCode will be set to "RJCT".
 
-Once an international-scheduled-payment has been successfully created using the international-scheduled-payment-consent, the Status of the international-scheduled-payment-consent will be set to "Consumed".
+Once an international-scheduled-payment has been successfully created using the international-scheduled-payment-consent, the StatusCode of the international-scheduled-payment-consent will be set to "AUTH".
 
 The available Status codes for the international-scheduled-payment-consent resource are:
 
-| Status |
+| StatusCode |
 | --- |
-| AwaitingAuthorisation |
-| Rejected |
-| Authorised |
-| Consumed |
+| AWAU |
+| RJCT |
+| AUTH |
+| COND |
 
 ### GET /international-scheduled-payment-consents/{ConsentId}/funds-confirmation
 
 The API endpoint allows the PISP to ask an ASPSP to confirm funds on an **international-scheduled-payment-consent** resource, where the payment is for immediate debit.
 
-* An ASPSP can only respond to a funds confirmation request if the **international-scheduled-payment-consent** resource has an `Authorised` status. If the status is not `Authorised`, an ASPSP **must** respond with a 400 (Bad Request) and a `UK.OBIE.Resource.InvalidConsentStatus` error code.
+* An ASPSP can only respond to a funds confirmation request if the **international-scheduled-payment-consent** resource has an `AUTH` status. If the status is not `AUTH`, an ASPSP **must** respond with a 400 (Bad Request) and a `UK.OBIE.Resource.InvalidConsentStatus` error code.
 * Confirmation of funds requests do not affect the status of the **international-scheduled-payment-consent** resource.
 
 ### State Model
@@ -304,7 +304,7 @@ The international-scheduled-payment-consent **response** contains the full **ori
 
 * ConsentId.
 * CreationDateTime the international-scheduled-payment-consent resource was created.
-* Status and StatusUpdateDateTime of the international-scheduled-payment-consent resource.
+* Status, StatusReason and StatusUpdateDateTime of the international-scheduled-payment-consent resource.
 * Permission field in the original request.
 * CutOffDateTime Behaviour is explained in Payment Initiation API Profile, Section - [Payment Restrictions -> CutOffDateTime Behaviour](../../profiles/payment-initiation-api-profile.md#cutoffdatetime-behaviour).
 * ExpectedExecutionDateTime for the international-scheduled-payment resource, if created before CutOffDateTIme, the expected DateTime the payment is executed against the Debtor Account. If populated, the ASPSP must update the value with any changes (e.g., after PSU authorisation).
@@ -336,7 +336,11 @@ Exchange rate behaviour:
 | Data |1..1 |OBWriteInternationalScheduledConsentResponse6/Data | |OBWriteDataInternationalScheduledConsentResponse6 | | |
 | ConsentId |1..1 |OBWriteInternationalScheduledConsentResponse6/Data/ConsentId |OB: Unique identification as assigned by the ASPSP to uniquely identify the consent resource. |Max128Text | | |
 | CreationDateTime |1..1 |OBWriteInternationalScheduledConsentResponse6/Data/CreationDateTime |Date and time at which the resource was created. |ISODateTime | | |
-| Status |1..1 |OBWriteInternationalScheduledConsentResponse6/Data/Status |Specifies the status of consent resource in code form. |OBExternalConsentStatus1Code |Authorised AwaitingAuthorisation Consumed Rejected | |
+| StatusCode |0..1 |OBReadConsentResponse1/Data/StatusCode |Specifies the status of consent resource in code form. |
+ExternalStatusReason1Code |AUTH AWAU RJCT COND |
+| StatusReason |0..* |OBReadConsentResponse1/Data/StatusReason |Specifies the status reason. | OBStatusReason |
+| StatusReasonCode |0..1 |OBReadConsentResponse1/Data/StatusReason/*/StatusReasonCode |Specifies the status reason in a code form. For a full description see `ExternalStatusReason1Code` [here](https://github.com/OpenBankingUK/External_Interal_CodeSets). | ExternalStatusReason1Code |
+| StatusReasonDescription |0..1 |OBReadConsentResponse1/Data/StatusReason/*/StatusReasonDescription |Description supporting the StatusReasonCode. |
 | StatusUpdateDateTime |1..1 |OBWriteInternationalScheduledConsentResponse6/Data/StatusUpdateDateTime |Date and time at which the resource status was updated. |ISODateTime | | |
 | Permission |1..1 |OBWriteInternationalScheduledConsentResponse6/Data/Permission |Specifies the Open Banking service request types. |OBExternalPermissions2Code |Create | |
 | ReadRefundAccount |0..1 |OBWriteInternationalScheduledConsentResponse6/Data/ReadRefundAccount | Specifies to share the refund account details with PISP |OBReadRefundAccount1Code |Yes No | |
@@ -451,7 +455,7 @@ Content-Type: application/json
 		"Permission": "Create",
 		"ReadRefundAccount": "Yes",
 		"ConsentId": "58923",
-		"Status": "AwaitingAuthorisation",
+		"StatusCode": "AWAU",
 		"CutOffDateTime": "2017-06-05T16:00:13+00:00",
 		"CreationDateTime": "2017-06-05T15:15:13+00:00",
 		"StatusUpdateDateTime": "2017-06-05T15:15:13+00:00",

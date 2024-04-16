@@ -98,7 +98,7 @@ Content-Type: application/json
   "Data": {
     "ConsentId": "fe615446-e53a-45ed-954c-ae5d1f97a93b",
     "CreationDateTime": "2017-06-05T15:15:15+00:00",
-    "Status": "Authorised",
+    "StatusCode": "AUTH",
     "StatusUpdateDateTime": "2017-06-05T15:15:15+05:00",
     "ReadRefundAccount": "Yes",
 
@@ -188,7 +188,7 @@ Content-Type: application/json
   "Data": {
     "ConsentId": "fe615446-e53a-45ed-954c-ae5d1f97a93b",
     "CreationDateTime": "2017-06-05T15:15:15+00:00",
-    "Status": "Authorised",
+    "StatusCode": "AUTH",
     "StatusUpdateDateTime": "2017-06-05T15:15:15+05:00",
     "ReadRefundAccount": "Yes",
 
@@ -456,7 +456,7 @@ Content-Type: application/json
   "Data": {
     "ConsentId": "fe615446-e53a-45ed-954c-ae5d1f97a93b",
     "CreationDateTime": "2017-06-05T15:15:15+00:00",
-    "Status": "AwaitingAuthorisation",
+    "StatusCode": "AWAU",
     "StatusUpdateDateTime": "2017-06-05T15:15:15+00:00",
     "ReadRefundAccount": "Yes",
 
@@ -530,7 +530,7 @@ Content-Type: application/json
   "Data": {
     "ConsentId": "fe615446-e53a-45ed-954c-ae5d1f97a93b",
     "CreationDateTime": "2017-06-05T15:15:15+00:00",
-    "Status": "Authorised",
+    "StatusCode": "AUTH",
     "StatusUpdateDateTime": "2017-06-05T15:15:15+05:00",
     "ReadRefundAccount": "Yes",
 
