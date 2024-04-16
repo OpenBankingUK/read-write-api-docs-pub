@@ -79,7 +79,7 @@ If resource has any other Status, the ASPSP must respond with a 400 (Bad Request
 
 ## State Model - VRP consents
 
-The state model for the VRP consents resource follows the generic consent state model. However, it does not use the `AUTH` StatusCode.
+The state model for the VRP consents resource follows the generic consent state model. However, it does not use the `COND` StatusCode.
 
 !["VRP consents Status"](./images/VRP-State-Diagram.png)
 

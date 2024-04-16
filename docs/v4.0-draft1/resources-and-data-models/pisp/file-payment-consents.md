@@ -92,7 +92,7 @@ A PISP can optionally retrieve a payment consent resource that they have created
 
 #### Status
 
-Once the PSU authorises the payment-consent resource, the StatusCode of the payment-consent resource will be updated with "Authorised".
+Once the PSU authorises the payment-consent resource, the StatusCode of the payment-consent resource will be updated with "AUTH".
 
 If the PSU rejects the consent or the file-payment-consent has failed some other ASPSP validation, the StatusCode will be set to "RJCT".
 
@@ -104,6 +104,7 @@ The available Status codes for the file-payment-consent resource are:
 | --- |
 | AUTH |
 | AWAU |
+| AWUP |
 | RJCT |
 | COND |
 
@@ -126,9 +127,10 @@ The definitions for the Status:
 
 |  |Status |Status Description |
 | --- |--- |--- |
-| 1 |AWAU |The consent resource is awaiting PSU authorisation or The file for the consent resource is awaiting upload. |
-| 2 |RJCT |The consent resource has been rejected. |
-| 3 |AUTH |The consent resource has been successfully authorised. |
+| 1 |AWUP |The file for the consent resource is awaiting upload. |
+| 2 |AWAU |The consent resource is awaiting PSU authorisation. |
+| 3 |RJCT |The consent resource has been rejected. |
+| 4 |AUTH |The consent resource has been successfully authorised. |
 
 ## Data Model
 

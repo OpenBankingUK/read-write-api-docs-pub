@@ -77,7 +77,7 @@ Once the PSU authorises the payment-consent resource, the StatusCode of the paym
 
 If the PSU rejects the consent or the international-scheduled-payment-consent has failed some other ASPSP validation, the StatusCode will be set to "RJCT".
 
-Once an international-scheduled-payment has been successfully created using the international-scheduled-payment-consent, the StatusCode of the international-scheduled-payment-consent will be set to "AUTH".
+Once an international-scheduled-payment has been successfully created using the international-scheduled-payment-consent, the StatusCode of the international-scheduled-payment-consent will be set to "COND".
 
 The available Status codes for the international-scheduled-payment-consent resource are:
 
@@ -107,10 +107,10 @@ The definitions for the Status:
 
 |  |Status |Status Description |
 | --- |--- |--- |
-| 1 |AwaitingAuthorisation |The consent resource is awaiting PSU authorisation. |
-| 2 |Rejected |The consent resource has been rejected. |
-| 3 |Authorised |The consent resource has been successfully authorised. |
-| 4 |Consumed |The consented action has been successfully completed. This does not reflect the status of the consented action. |
+| 1 |AWAU |The consent resource is awaiting PSU authorisation. |
+| 2 |RJCT |The consent resource has been rejected. |
+| 3 |AUTH |The consent resource has been successfully authorised. |
+| 4 |COND |The consented action has been successfully completed. This does not reflect the status of the consented action. |
 
 ## Data Model
 
@@ -132,9 +132,9 @@ For the OBInternationalScheduled3 Initiation object:
 
 * All elements in the Initiation payload, that are specified by the PISP must not be changed via the ASPSP as this is part of formal consent from the PSU.
 * If the ASPSP is able to establish a problem with payload or any contextual error during the API call, the ASPSP must reject the international-scheduled-payment-consent consent request immediately.
-* If the ASPSP establishes a problem with the international-scheduled-payment-consent after the API call, the ASPSP must set the Status of the international-scheduled-payment-consent resource to Rejected.
+* If the ASPSP establishes a problem with the international-scheduled-payment-consent after the API call, the ASPSP must set the Status of the international-scheduled-payment-consent resource to RJCT.
 * DebtorAccount is **optional** as the PISP may not know the account identification details for the PSU.
-* If the DebtorAccount is specified by the PISP and is invalid for the PSU, then the international-scheduled-payment-consent will be set to Rejected after PSU authentication.
+* If the DebtorAccount is specified by the PISP and is invalid for the PSU, then the international-scheduled-payment-consent will be set to RJCT after PSU authentication.
 * CreditorAgent must at least have either of the pairs provided: SchemeName and Identification, or Name and PostalAddress.
 * Account Identification field usage:
   * SchemeName is a free-text field which will be populated with identification schemes an ASPSP accepts.

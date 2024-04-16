@@ -814,7 +814,7 @@ Content-Type: application/json
 {
   "Data": {
     "ConsentId": "7290",
-    "StatusCode": "AUTH",
+    "StatusCode": "COND",
     "CreationDateTime": "2017-06-05T15:15:13+00:00",
     "StatusUpdateDateTime": "2017-06-05T15:15:13+00:00",
     "Initiation": {
