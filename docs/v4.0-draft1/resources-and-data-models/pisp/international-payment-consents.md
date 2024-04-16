@@ -77,7 +77,7 @@ Once the PSU authorises the payment-consent resource, the Status of the payment-
 
 If the PSU rejects the consent or the international-payment-consent has failed some other ASPSP validation, the Status will be set to "RJCT".
 
-Once an international-payment has been successfully created using the international-payment-consent, the Status of the international-payment-consent will be set to "AUTH".
+Once an international-payment has been successfully created using the international-payment-consent, the Status of the international-payment-consent will be set to "COND".
 
 The available Status codes for the international-payment-consent resource are:
 
@@ -92,7 +92,7 @@ The available Status codes for the international-payment-consent resource are:
 
 The API endpoint allows the PISP to ask an ASPSP to confirm funds on an **international-payment-consent** resource.
 
-* An ASPSP can only respond to a funds confirmation request if the **international-payment-consent** resource has an `AUTH` status. If the status is not `AITH`, an ASPSP **must** respond with a 400 (Bad Request) and a `UK.OBIE.Resource.InvalidConsentStatus` error code.
+* An ASPSP can only respond to a funds confirmation request if the **international-payment-consent** resource has an `AUTH` status. If the status is not `AUTH`, an ASPSP **must** respond with a 400 (Bad Request) and a `UK.OBIE.Resource.InvalidConsentStatus` error code.
 * Confirmation of funds requests do not affect the status of the **international-payment-consent** resource.
 
 ### State Model

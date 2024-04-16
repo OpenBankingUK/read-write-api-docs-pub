@@ -60,11 +60,11 @@ The API endpoint allows the PISP to ask an ASPSP to create a new **file-payment-
 
 #### Status
 
-The default StatusCode is "AWAU" immediately after the file-payment-consent has been created.
+The default StatusCode is "AWUP" immediately after the file-payment-consent has been created.
 
 | Status |
 | --- |
-| AWAU |
+| AWUP |
 
 ### POST /file-payment-consents/{ConsentId}/file
 
@@ -96,7 +96,7 @@ Once the PSU authorises the payment-consent resource, the StatusCode of the paym
 
 If the PSU rejects the consent or the file-payment-consent has failed some other ASPSP validation, the StatusCode will be set to "RJCT".
 
-Once a file-payment has been successfully created using the file-payment-consent, the StatusCode of the file-payment-consent will be set to "AWUP".
+Once a file-payment has been successfully created using the file-payment-consent, the StatusCode of the file-payment-consent will be set to "COND".
 
 The available Status codes for the file-payment-consent resource are:
 
@@ -118,8 +118,6 @@ The API endpoint allows the PISP to download a file (that had been uploaded agai
 ### State Model
 
 #### Payment Order Consent
-
-The state model for the file-payment-consent resource follows the generic consent state model. However, does not use the "RCJT" status, as the consent for a file-payment is not a long-lived consent.
 
 ![ image2018-7-5_15-37-22.png ](./images/image2018-7-5_15-37-22.png )
 
@@ -304,7 +302,7 @@ Content-Type: application/json
 {
   "Data": {
     "ConsentId" : "512345",
-    "StatusCode": "AWAU",
+    "StatusCode": "AWUP",
     "CreationDateTime": "2018-06-05T15:15:13+00:00",
     "StatusUpdateDateTime": "2018-06-05T15:15:13+00:00",
     "Initiation": {
