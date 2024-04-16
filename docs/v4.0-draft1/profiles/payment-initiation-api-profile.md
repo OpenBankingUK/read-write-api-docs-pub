@@ -610,6 +610,11 @@ This section describes the OBDomesticRefundAccount1 class which is used in the r
 | Identification |1..1 |OBDomesticRefundAccount1/Account/Identification |Identification assigned by an institution to identify an account. This identification is known by the account owner. |Max256Text | | |
 | Name |1..1 |OBDomesticRefundAccount1/Account/Name |Name of the account, as assigned by the account servicing institution. Usage: The account name is the name or names of the account owner(s) represented at an account level. The account name is not the product name or the nickname of the account. OB: ASPSPs may carry out name validation for Confirmation of Payee, but it is not mandatory. |Max350Text | | |
 | SecondaryIdentification |0..1 |OBDomesticRefundAccount1/Account/SecondaryIdentification |This is secondary identification of the account, as assigned by the account servicing institution. This can be used by building societies to additionally identify accounts with a roll number (in addition to a sort code and account number combination). |Max34Text | | |
+| Proxy |0..1 |OBDomesticRefundAccount1/Account/Proxy |The external proxy account type |OBProxyAccount | | |
+| Identification |1..1 |OBDomesticRefundAccount1/Account/Proxy/Identification| Identification assigned by an institution to identify an account. This identification is known by the account owner. |Max256Text | | |
+| Type |0..1 |OBDomesticRefundAccount1/Account/Proxy/Type| Specifies the external proxy account type |MaxText70 | | |
+| Code |1..1 |OBDomesticRefundAccount1/Account/Proxy/Code| Specifies the external proxy account type code, as published in the proxy account type external code set.<br> For more information see `ExternalProxyAccountType1Code` [here](https://github.com/OpenBankingUK/External_Interal_CodeSets) |OBExternalProxyAccountType1Code | | |
+| Proprietary |1..1 |OBDomesticRefundAccount1/Account/Proxy/Proprietary| The owner of the proxy account |MaxText70 | | |
 
 
 #### OBInternationalRefundAccount1
@@ -672,6 +677,11 @@ This section describes the OBInternationalRefundAccount1 class which is used in 
 | Identification |1..1 |OBInternationalRefundAccount1/Account/Identification |Identification assigned by an institution to identify an account. This identification is known by the account owner. |Max256Text | | |
 | Name |1..1 |OBInternationalRefundAccount1/Account/Name |The account name is the name or names of the account owner(s) represented at an account level. Note, the account name is not the product name or the nickname of the account. OB: ASPSPs may carry out name validation for Confirmation of Payee, but it is not mandatory. |Max350Text | | |
 | SecondaryIdentification |0..1 |OBInternationalRefundAccount1/Account/SecondaryIdentification |This is secondary identification of the account, as assigned by the account servicing institution. This can be used by building societies to additionally identify accounts with a roll number (in addition to a sort code and account number combination). |Max34Text | | |
+| Proxy |0..1 |OBInternationalRefundAccount1/Account/Proxy |The external proxy account type |OBProxyAccount | | |
+| Identification |1..1 |OBInternationalRefundAccount1/Account/Proxy/Identification| Identification assigned by an institution to identify an account. This identification is known by the account owner. |Max256Text | | |
+| Type |0..1 |OBInternationalRefundAccount1/Account/Proxy/Type| Specifies the external proxy account type |MaxText70 | | |
+| Code |1..1 |OBInternationalRefundAccount1/Account/Proxy/Code| Specifies the external proxy account type code, as published in the proxy account type external code set.<br> For more information see `ExternalProxyAccountType1Code` [here](https://github.com/OpenBankingUK/External_Interal_CodeSets) |OBExternalProxyAccountType1Code | | |
+| Proprietary |1..1 |OBInternationalRefundAccount1/Account/Proxy/Proprietary| The owner of the proxy account |MaxText70 | | |
 
 
 #### OBWritePaymentDetails1

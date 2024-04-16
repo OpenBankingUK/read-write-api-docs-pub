@@ -152,7 +152,6 @@ For the OBInternationalStandingOrder4 Initiation object:
 | FirstPaymentDateTime |1..1 |OBInternationalStandingOrder4/FirstPaymentDateTime |The date on which the first payment for a Standing Order schedule will be made. |ISODateTime | | |
 | FinalPaymentDateTime |0..1 |OBInternationalStandingOrder4/FinalPaymentDateTime |The date on which the final payment for a Standing Order schedule will be made. |ISODateTime | | |
 | Purpose |0..1 |OBInternationalStandingOrder4/Purpose |Specifies the external purpose code in the format of character string with a maximum length of 4 characters. The list of valid codes is an external code list published separately. External code sets can be downloaded from www.iso20022.org. |OBExternalPurpose1Code1 | | |
-| ExtendedPurpose |0..1 |OBInternationalStandingOrder4/ExtendedPurpose |Specifies the purpose of an international payment, when there is no corresponding 4 character code available in the ISO20022 list of Purpose Codes. |Max140Text | | |
 | ChargeBearer |0..1 |OBInternationalStandingOrder4/ChargeBearer |Specifies which party/parties will bear the charges associated with the processing of the payment transaction. |OBChargeBearerType1Code |BorneByCreditor BorneByDebtor FollowingServiceLevel Shared | |
 | CurrencyOfTransfer |1..1 |OBInternationalStandingOrder4/CurrencyOfTransfer |Specifies the currency of the to be transferred amount, which is different from the currency of the debtor's account. |ActiveOrHistoricCurrencyCode | |^[A-Z]{3,3}$ |
 | DestinationCountryCode |0..1 |OBInternationalStandingOrder4/DestinationCountryCode |Country in which Credit Account is domiciled. Nation with its own government. |CountryCode | |^[A-Z]{2,2}$ |
@@ -164,6 +163,11 @@ For the OBInternationalStandingOrder4 Initiation object:
 | Identification |1..1 |OBInternationalStandingOrder4/DebtorAccount/Identification |Identification assigned by an institution to identify an account. This identification is known by the account owner. |Max256Text | | |
 | Name |0..1 |OBInternationalStandingOrder4/DebtorAccount/Name |The account name is the name or names of the account owner(s) represented at an account level, as displayed by the ASPSP's online channels. Note, the account name is not the product name or the nickname of the account. |Max350Text | | |
 | SecondaryIdentification |0..1 |OBInternationalStandingOrder4/DebtorAccount/SecondaryIdentification |This is secondary identification of the account, as assigned by the account servicing institution. This can be used by building societies to additionally identify accounts with a roll number (in addition to a sort code and account number combination). |Max34Text | | |
+| Proxy |0..1 |OBInternationalStandingOrder4/DebtorAccount/Proxy |The external proxy account type |OBProxyAccount | | |
+| Identification |1..1 |OBInternationalStandingOrder4/DebtorAccount/Proxy/Identification| Identification assigned by an institution to identify an account. This identification is known by the account owner. |Max256Text | | |
+| Type |0..1 |OBInternationalStandingOrder4/DebtorAccount/Proxy/Type| Specifies the external proxy account type |MaxText70 | | |
+| Code |1..1 |OBInternationalStandingOrder4/DebtorAccount/Proxy/Code| Specifies the external proxy account type code, as published in the proxy account type external code set.<br> For more information see `ExternalProxyAccountType1Code` [here](https:/github.com/OpenBankingUK/External_Interal_CodeSets) |OBExternalProxyAccountType1Code | | |
+| Proprietary |1..1 |OBInternationalStandingOrder4/DebtorAccount/Proxy/Proprietary| The owner of the proxy account |MaxText70 | | |
 | Creditor |0..1 |OBInternationalStandingOrder4/Creditor |Party to which an amount of money is due. |OBPartyIdentification43 | | |
 | Name |0..1 |OBInternationalStandingOrder4/Creditor/Name |Name by which a party is known and which is usually used to identify that party. |Max350Text | | |
 | PostalAddress |0..1 |OBInternationalStandingOrder4/Creditor/PostalAddress |Information that locates and identifies a specific address, as defined by postal services. |OBPostalAddress6 | | |
@@ -211,6 +215,11 @@ For the OBInternationalStandingOrder4 Initiation object:
 | Identification |1..1 |OBInternationalStandingOrder4/CreditorAccount/Identification |Identification assigned by an institution to identify an account. This identification is known by the account owner. |Max256Text | | |
 | Name |1..1 |OBInternationalStandingOrder4/CreditorAccount/Name |The account name is the name or names of the account owner(s) represented at an account level. Note, the account name is not the product name or the nickname of the account. OB: ASPSPs may carry out name validation for Confirmation of Payee, but it is not mandatory. |Max350Text | | |
 | SecondaryIdentification |0..1 |OBInternationalStandingOrder4/CreditorAccount/SecondaryIdentification |This is secondary identification of the account, as assigned by the account servicing institution. This can be used by building societies to additionally identify accounts with a roll number (in addition to a sort code and account number combination). |Max34Text | | |
+| Proxy |0..1 |OBInternationalStandingOrder4/CreditorAccount/Proxy |The external proxy account type |OBProxyAccount | | |
+| Identification |1..1 |OBInternationalStandingOrder4/CreditorAccount/Proxy/Identification| Identification assigned by an institution to identify an account. This identification is known by the account owner. |Max256Text | | |
+| Type |0..1 |OBInternationalStandingOrder4/CreditorAccount/Proxy/Type| Specifies the external proxy account type |MaxText70 | | |
+| Code |1..1 |OBInternationalStandingOrder4/CreditorAccount/Proxy/Code| Specifies the external proxy account type code, as published in the proxy account type external code set.<br> For more information see `ExternalProxyAccountType1Code` [here](https://github.com/OpenBankingUK/External_Interal_CodeSets) |OBExternalProxyAccountType1Code | | |
+| Proprietary |1..1 |OBInternationalStandingOrder4/CreditorAccount/Proxy/Proprietary| The owner of the proxy account |MaxText70 | | |
 | SupplementaryData |0..1 |OBInternationalStandingOrder4/SupplementaryData |Additional information that can not be captured in the structured fields and/or any other specific block. |OBSupplementaryData1 | | |
 
 ### International Standing Order Consent - Request

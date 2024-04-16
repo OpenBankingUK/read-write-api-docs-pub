@@ -135,6 +135,11 @@ The OBFundsConfirmationConsent1 object will be used for the following:
 | Identification |1..1 |OBFundsConfirmationConsent1/Data/DebtorAccount/Identification |Identification assigned by an institution to identify an account. This identification is known by the account owner. |Max256Text | | |
 | Name |0..1 |OBFundsConfirmationConsent1/Data/DebtorAccount/Name |The account name is the name or names of the account owner(s) represented at an account level, as displayed by the ASPSP's online channels. Note, the account name is not the product name or the nickname of the account. |Max350Text | | |
 | SecondaryIdentification |0..1 |OBFundsConfirmationConsent1/Data/DebtorAccount/SecondaryIdentification |This is secondary identification of the account, as assigned by the account servicing institution. This can be used by building societies to additionally identify accounts with a roll number (in addition to a sort code and account number combination). |Max34Text | | |
+| Proxy |0..1 |OBFundsConfirmationConsent1/Data/DebtorAccount/Proxy |The external proxy account type |OBProxyAccount | | |
+| Identification |1..1 |OBFundsConfirmationConsent1/Data/DebtorAccount/Proxy/Identification| Identification assigned by an institution to identify an account. This identification is known by the account owner. |Max256Text | | |
+| Type |0..1 |OBFundsConfirmationConsent1/Data/DebtorAccount/Proxy/Type| Specifies the external proxy account type |MaxText70 | | |
+| Code |1..1 |OBFundsConfirmationConsent1/Data/DebtorAccount/Proxy/Code| Specifies the external proxy account type code, as published in the proxy account type external code set.<br> For more information see `ExternalProxyAccountType1Code` [here](https://github.com/OpenBankingUK/External_Interal_CodeSets) |OBExternalProxyAccountType1Code | | |
+| Proprietary |1..1 |OBFundsConfirmationConsent1/Data/DebtorAccount/Proxy/Proprietary| The owner of the proxy account |MaxText70 | | |
 
 ### Funds Confirmation Consent - Response
 
@@ -177,6 +182,11 @@ ExternalStatusReason1Code |AUTH AWAU RJCT COND |
 | Identification |1..1 |OBFundsConfirmationConsentResponse1/Data/DebtorAccount/Identification |Identification assigned by an institution to identify an account. This identification is known by the account owner. |Max256Text | | |
 | Name |0..1 |OBFundsConfirmationConsentResponse1/Data/DebtorAccount/Name |The account name is the name or names of the account owner(s) represented at an account level, as displayed by the ASPSP's online channels. Note, the account name is not the product name or the nickname of the account. |Max350Text | | |
 | SecondaryIdentification |0..1 |OBFundsConfirmationConsentResponse1/Data/DebtorAccount/SecondaryIdentification |This is secondary identification of the account, as assigned by the account servicing institution. This can be used by building societies to additionally identify accounts with a roll number (in addition to a sort code and account number combination). |Max34Text | | |
+| Proxy |0..1 |OBFundsConfirmationConsentResponse1/Data/DebtorAccount |The external proxy account type |OBProxyAccount | | |
+| Identification |1..1 |OBFundsConfirmationConsentResponse1/Data/DebtorAccount/Identification| Identification assigned by an institution to identify an account. This identification is known by the account owner. |Max256Text | | |
+| Type |0..1 |OBFundsConfirmationConsentResponse1/Data/DebtorAccount/Type| Specifies the external proxy account type |MaxText70 | | |
+| Code |1..1 |OBFundsConfirmationConsentResponse1/Data/DebtorAccount/Code| Specifies the external proxy account type code, as published in the proxy account type external code set.<br> For more information see `ExternalProxyAccountType1Code` [here](https://github.com/OpenBankingUK/External_Interal_CodeSets) |OBExternalProxyAccountType1Code | | |
+| Proprietary |1..1 |OBFundsConfirmationConsentResponse1/Data/DebtorAccount/Proprietary| The owner of the proxy account |MaxText70 | | |
 
 ### Data Payload - Enumerations
 
