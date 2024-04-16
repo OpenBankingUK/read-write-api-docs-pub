@@ -148,16 +148,23 @@ Account Identification field usage:
 | Name |1..1 |OBDomesticScheduled2/CreditorAccount/Name |The account name is the name or names of the account owner(s) represented at an account level. Note, the account name is not the product name or the nickname of the account. OB: ASPSPs may carry out name validation for Confirmation of Payee, but it is not mandatory. |Max350Text | | |
 | SecondaryIdentification |0..1 |OBDomesticScheduled2/CreditorAccount/SecondaryIdentification |This is secondary identification of the account, as assigned by the account servicing institution. This can be used by building societies to additionally identify accounts with a roll number (in addition to a sort code and account number combination). |Max34Text | | |
 | CreditorPostalAddress |0..1 |OBDomesticScheduled2/CreditorPostalAddress |Information that locates and identifies a specific address, as defined by postal services. |OBPostalAddress6 | | |
-| AddressType |0..1 |OBDomesticScheduled2/CreditorPostalAddress/AddressType |Identifies the nature of the postal address. |OBAddressTypeCode |Business Correspondence DeliveryTo MailTo POBox Postal Residential Statement | |
+| AddressType |0..1 |OBDomesticScheduled2/CreditorPostalAddress/AddressType |BIZZ (Business)<br>DLVY (Delivery To)<br>MLTO (Mail To)<br>PBOX (PO Box)<br>ADDR (Postal)<br>HOME (Residential)<br>CORR (Correspondence)<br>STAT (Statement) | ||
 | Department |0..1 |OBDomesticScheduled2/CreditorPostalAddress/Department |Identification of a division of a large organisation or building. |Max70Text | | |
 | SubDepartment |0..1 |OBDomesticScheduled2/CreditorPostalAddress/SubDepartment |Identification of a sub-division of a large organisation or building. |Max70Text | | |
 | StreetName |0..1 |OBDomesticScheduled2/CreditorPostalAddress/StreetName |Name of a street or thoroughfare. |Max70Text | | |
 | BuildingNumber |0..1 |OBDomesticScheduled2/CreditorPostalAddress/BuildingNumber |Number that identifies the position of a building on a street. |Max16Text | | |
+| BuildingName |0..1 |OBDomesticScheduled2/CreditorPostalAddress/BuildingName |Name of a referenced building. |Max70Text | | |
+| Floor |0..1 |OBDomesticScheduled2/CreditorPostalAddress/Floor|Number that identifies the level within a building. |Max16Text | | |
+| UnitNumber|0..1 |OBDomesticScheduled2/CreditorPostalAddress/UnitNumber|Number that identifies the unit of a specific address |Max16Text | | |
+| Room |0..1 |OBDomesticScheduled2/CreditorPostalAddress/Room|Information that locates and identifies a room to form part of an address. |Max70Text | | |
+| TownLocationName |0..1 |OBDomesticScheduled2/CreditorPostalAddress/TownLocationName |Name of a built-up area, with defined boundaries, and a local government. |Max35Text | | |
+| DistrictName |0..1 |OBDomesticScheduled2/CreditorPostalAddress/DistrictName |Number that of the regional area, known as a district, which forms part of an address. |Max35Text | | |
+| CareOf |0..1 |OBDomesticScheduled2/CreditorPostalAddress/CareOf |The 'care of' address is used whenever sending mail to a person or organisation who does not actually live or work at the address. They will receive the mail for the individual. |Max70Text | | |
 | PostCode |0..1 |OBDomesticScheduled2/CreditorPostalAddress/PostCode |Identifier consisting of a group of letters and/or numbers that is added to a postal address to assist the sorting of mail. |Max16Text | | |
 | TownName |0..1 |OBDomesticScheduled2/CreditorPostalAddress/TownName |Name of a built-up area, with defined boundaries, and a local government. |Max35Text | | |
 | CountrySubDivision |0..1 |OBDomesticScheduled2/CreditorPostalAddress/CountrySubDivision |Identifies a subdivision of a country such as state, region, county. |Max35Text | | |
 | Country |0..1 |OBDomesticScheduled2/CreditorPostalAddress/Country |Nation with its own government. |CountryCode | |^[A-Z]{2,2}$ |
-| AddressLine |0..7 |OBDomesticScheduled2/CreditorPostalAddress/AddressLine |Information that locates and identifies a specific address, as defined by postal services, presented in free format text. |Max70Text | | |
+| AddressLine |0..7 |OBDomesticScheduled2/CreditorPostalAddress/AddressLine |Information that locates and identifies a specific address, as defined by postal services, presented in free format text. |Max70Text | | | |
 | RemittanceInformation |0..1 |OBDomesticScheduled2/RemittanceInformation |Information supplied to enable the matching of an entry with the items that the transfer is intended to settle, such as commercial invoices in an accounts' receivable system. |OBRemittanceInformation1 | | |
 | Structured |0..* |OBDomesticScheduled2/RemittanceInformation/Structured |Information supplied to enable the matching/reconciliation of an entry with the items that the payment is intended to settle, such as commercial invoices in an accounts' receivable system, in an structured form. |OBRemittanceInformationStructured | | |
 | ReferredDocumentInformation |0..* |OBDomesticScheduled2/RemittanceInformation/Structured/ReferredDocumentInformation | |OBReferredDocumentInformation | | |
