@@ -464,7 +464,7 @@ In such a situation:
 
 Information for risk scoring and assessment will come via:
 
-- FAPI HTTP headers. These are defined in [Section 6.3](http://openid.net/specs/openid-financial-api-part-1-wd-02.html#client-provisions) of the FAPI specification and in the Headers section above.
+- FAPI HTTP headers. These are defined in [section 6.2.1 and 6.2.2] (https://openid.net/specs/openid-financial-api-part-1-1_0.html#protected-resources-provisions) of the FAPI 1 specification and in the Headers section above.
 - Additional fields identified by the industry as business logic security concerns - which will be passed in the Risk section of the payload in the JSON object.
 
 No fields for business logic security concerns have been identified for the Account Info APIs.
