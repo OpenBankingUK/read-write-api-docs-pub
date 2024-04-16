@@ -74,8 +74,7 @@ For a specific date range, an account (AccountId) may have no transactions booke
 * For CreditCard transactions that are not yet booked, ASPSPs must populate the `BookingDateTime` field with an expected booking date.  
 * Either the BankTransactionCode (which is the ISO transaction code list), **or** ProprietaryBankTransactionCode, **or** **both** may be populated. While the expectation is that at least one of BankTransactionCode. or ProprietaryBankTransactionCode are populated, we have decided not to enforce this behaviour in the payload structure as this would require nesting elements and introducing complex choice elements.
 * The BankTransactionCode (ISO) code-list is documented on the ISO20022 website: [here](https://www.iso20022.org/external_code_list.page); and External Code Sets spreadsheet.
-  * The ISO 20022 BankTransactionCode Code and SubCode are specified as 4 letter codes. However, the principle we have applied for the code lists is to have longer more descriptive codes.
-  * The BankTransactionCode Code and SubCode will be populated with the long form description of the ISO 20022 code, with delimiters removed. E.g., the Family Code "CNTR" has a description of "Counter Transactions" which is populated as "CounterTransactions"
+  * The ISO 20022 BankTransactionCode Code and SubCode are specified as 4 letter codes. 
 * ASPSPs must have the ability to provide transactions through APIs for a period that at least equals the period provided through their online channels.
 
 ### Filtering
