@@ -101,6 +101,8 @@ The API endpoint allows the PISP to ask an ASPSP to confirm funds on an **intern
 
 The state model for the international-scheduled-payment-consent resource follows the generic consent state model. 
 
+![State model](./images/PO_Consent.png)
+
 The definitions for the Status:
 
 |  |Status |Status Description |
@@ -138,10 +140,10 @@ For the OBInternationalScheduled3 Initiation object:
   * SchemeName is a free-text field which will be populated with identification schemes an ASPSP accepts.
   * Identification is a field which is populated with the Identification of the account, using the valid identification scheme provided.
 * Valid UK Account Identification SchemeName values include, but are not restricted to:
-  * "UK.OBIE.SortCodeAccountNumber" - Identification field **must** be populated with the 6 digit Sort Code and 8 digit Account Number (a 14 digit field).
-  * "UK.OBIE.IBAN" - The Identification field **must** be populated with the full IBAN.
-  * "UK.OBIE.PAN" - The Identification field **must** be populated with the full PAN. A PAN may be an instrument (e.g., a debit card) linked to a payment account, and may not be the only PAN linked to the payment account.
-  * "UK.OBIE.Paym" - The Identification field **must** be populated with the Paym proxy value.
+  * "UK.OB.SortCodeAccountNumber" - Identification field **must** be populated with the 6 digit Sort Code and 8 digit Account Number (a 14 digit field).
+  * "UK.OB.IBAN" - The Identification field **must** be populated with the full IBAN.
+  * "UK.OB.PAN" - The Identification field **must** be populated with the full PAN. A PAN may be an instrument (e.g., a debit card) linked to a payment account, and may not be the only PAN linked to the payment account.
+  * "UK.OB.Paym" - The Identification field **must** be populated with the Paym proxy value.
 * LocalInstrument is the requested payment scheme for execution. This is a free-text field.
 * InstructionPrioirty **may** be used by the ASPSP to determine the payment scheme for execution. 
 * The InstructedAmount object **must** be populated with the desired Amount and Currency of transfer, regardless of the currency of the DebtorAccount. I.e., a PSU may wish to transfer 100EUR from a GBP DebtorAccount (the InstructedAmount will be 100EUR), or 100GBP in EUR (the InstructedAmount will be 100GBP).

@@ -109,12 +109,18 @@ The domestic-standing-orders - payment-details must have one of the following Pa
 
 The state model for the domestic-standing-order resource describes the initiation status and the subsequent execution of the domestic-standing-order.
 
-![Payment Order](./images/new-state-model.png)
+![Payment Order Status](./images/PIS_PO_Statuses.png)
 
 
 ##### Multiple Authorisation
-Once the payment is RCVD, it goes in PATC or CANC. If PATC then ACFC (if all authorisers have authorised) and then ACSP
-replace Awaiting Further Authorisation with PATC means partially accepted technically correct
+If the payment-order requires multiple authorisations the status of the multiple authorisations will be updated in the MultiAuthorisation object.
+
+Once the payment is RCVD, the StatusCode should be set to PATC and the MultiAuthorisation object status updated with the AWAU status.  Once all authorisations have been successfully completed the MultiAuthorisation status should be set to AUTH and StatusCode updated to ACSP.
+
+Any rejections in the multiple authorisation process should result in the MultiAuthorisation status and StatusCode being set to RJCT. 
+
+
+![Multi Auth](./images/PO_MultiAuthFlow.png)
 
 
 ## Data Model
@@ -259,7 +265,7 @@ Accept: application/json
         "Currency": "GBP"
 	  },
       "DebtorAccount": {
-        "SchemeName": "UK.OBIE.SortCodeAccountNumber",
+        "SchemeName": "UK.OB.SortCodeAccountNumber",
         "Identification": "11280001234567",
         "Name": "Andrea Smith"
       },

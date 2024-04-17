@@ -52,7 +52,7 @@ Once the international-scheduled-payment-consent has been authorised by the PSU,
 
 #### Status
 
-An international-scheduled-payment can only be created if its corresponding international-scheduled-payment-consent resource has the status of "Authorised". 
+An international-scheduled-payment can only be created if its corresponding international-scheduled-payment-consent resource has the status of "AUTH". 
 
 The international-scheduled-payment resource that is created successfully must have one of the following Status codes:
 
@@ -106,18 +106,17 @@ The international-scheduled-payments - payment-details must have one of the foll
 
 The state model for the international-scheduled-payment resource describes the initiation status and the subsequent execution of the international-scheduled-payment.
 
-The definitions for the Status:
-
-|  |Status |Payment Status Description |
-| --- |--- |--- |
-| 1 |RCVD |The initiation of the payment order is received. |
-| 2 |RJCT |The initiation of the payment order has failed. |
-| 3 |ACSP |The initiation of the payment order is complete. |
-| 4 |CANC |Payment initiation has been successfully cancelled after having received a request for cancellation. |
+![Payment Order Status](./images/PIS_PO_Statuses.png)
 
 ##### Multiple Authorisation
-Once the payment is RCVD, it goes in PATC or CANC. If PATC then ACFC (if all authorisers have authorised) and then ACSP
-replace Awaiting Further Authorisation with PATC means partially accepted technically correct
+If the payment-order requires multiple authorisations the status of the multiple authorisations will be updated in the MultiAuthorisation object.
+
+Once the payment is RCVD, the StatusCode should be set to PATC and the MultiAuthorisation object status updated with the AWAU status.  Once all authorisations have been successfully completed the MultiAuthorisation status should be set to AUTH and StatusCode updated to ACSP.
+
+Any rejections in the multiple authorisation process should result in the MultiAuthorisation status and StatusCode being set to RJCT. 
+
+
+![Multi Auth](./images/PO_MultiAuthFlow.png)
 
 
 The definitions for the Status:

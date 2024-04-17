@@ -103,25 +103,21 @@ The file-payments - payment-details must have one of the following PaymentStatus
 
 The state model for the file-payments resource describes the initiation status and the subsequent execution of the file-payments.
 
-![ image2018-5-18_13-3-8.png ](./images/new-state-model.png )
+![Payment Order Status](./images/PIS_PO_Statuses.png)
 
-The definitions for the Status:
-
-|  |Status |Payment Status Description |
-| --- |--- |--- |
-| 1 |RCVD |The initiation of the payment order is received. |
-| 2 |RJCT |The initiation of the payment order has failed or been rejected. |
-| 3 |ASCP |The initiation of the payment order is complete. |
 
 ##### Multiple Authorisation
-once the payment is RCVD, it goes in PATC or CANC. If PATC then ACFC (if all authorisers have authorised) and then ACSP
-replace Awaiting Further Authorisation with PATC means partially accepted technically correct
+If the payment-order requires multiple authorisations the status of the multiple authorisations will be updated in the MultiAuthorisation object.
+
+Once the payment is RCVD, the StatusCode should be set to PATC and the MultiAuthorisation object status updated with the AWAU status.  Once all authorisations have been successfully completed the MultiAuthorisation status should be set to AUTH and StatusCode updated to ACSP.
+
+Any rejections in the multiple authorisation process should result in the MultiAuthorisation status and StatusCode being set to RJCT. 
 
 
-The definitions for the Status:
+![Multi Auth](./images/PO_MultiAuthFlow.png)
 
-|  |StatusCode |Status Description |
-| --- |--- |--- |
+|  | StatusCode |Status Description |
+| ---| ------ |------------------ |
 | 1 |AWAU |The payment-order resource is awaiting further authorisation. |
 | 2 |RJCT |The payment-order resource has been rejected by an authoriser. |
 | 3 |AUTH |The payment-order resource has been successfully authorised by all required authorisers. |

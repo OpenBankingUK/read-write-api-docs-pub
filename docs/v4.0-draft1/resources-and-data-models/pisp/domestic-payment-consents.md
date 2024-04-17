@@ -71,11 +71,11 @@ A PISP can optionally retrieve a payment consent resource that they have created
 
 #### Status
 
-Once the PSU authorises the payment-consent resource - the Status of the payment-consent resource will be updated with &quot;Authorised&quot;.
+Once the PSU authorises the payment-consent resource - the Status of the payment-consent resource will be updated with &quot;AUTH&quot;.
 
-If the PSU rejects the consent or the domestic-payment-consent has failed some other ASPSP validation, the Status will be set to &quot;Rejected&quot;.
+If the PSU rejects the consent or the domestic-payment-consent has failed some other ASPSP validation, the Status will be set to &quot;RJCT&quot;.
 
-Once a domestic-payment has been successfully created using the domestic-payment-consent, the Status of the domestic-payment-consent will be set to &quot;Consumed&quot;.
+Once a domestic-payment has been successfully created using the domestic-payment-consent, the Status of the domestic-payment-consent will be set to &quot;COND&quot;.
 
 The available status codes for the domestic-payment-consent resource are:
 
@@ -84,7 +84,7 @@ The available status codes for the domestic-payment-consent resource are:
 | AWAU |
 | RJCT |
 | AUTH |
-
+| COND |
 ### GET /domestic-payment-consents/{ConsentId}/funds-confirmation
 
 The API endpoint allows the PISP to ask an ASPSP to confirm funds on a **domestic-payment-consent** resource.
@@ -98,6 +98,8 @@ The API endpoint allows the PISP to ask an ASPSP to confirm funds on a **domesti
 
 The state model for the domestic-payment-consent resource follows the generic consent state model.
 
+![Payment Order Consent](./images/PO_Consent.png)
+
 
 The definitions for the StatusCode:
 
@@ -106,6 +108,7 @@ The definitions for the StatusCode:
 | 1 |AWAU |The consent resource is awaiting PSU authorisation. |
 | 2 |RJCT |The consent resource has been rejected. |
 | 3 |AUTH |The consent resource has been successfully authorised. |
+|4 |COND|The consented action has been successfully completed. This does not reflect the status of the consented action.|
 
 ## Data Model
 
@@ -348,7 +351,7 @@ Accept: application/json
         "Currency": "GBP"
       },
       "CreditorAccount": {
-        "SchemeName": "UK.OBIE.SortCodeAccountNumber",
+        "SchemeName": "UK.OB.SortCodeAccountNumber",
         "Identification": "08080021325698",
         "Name": "ACME Inc",
         "SecondaryIdentification": "0002"
@@ -407,7 +410,7 @@ Content-Type: application/json
         "Currency": "GBP"
       },
       "CreditorAccount": {
-        "SchemeName": "UK.OBIE.SortCodeAccountNumber",
+        "SchemeName": "UK.OB.SortCodeAccountNumber",
         "Identification": "08080021325698",
         "Name": "ACME Inc",
         "SecondaryIdentification": "0002"

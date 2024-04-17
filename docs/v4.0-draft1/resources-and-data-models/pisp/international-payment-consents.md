@@ -101,6 +101,7 @@ The API endpoint allows the PISP to ask an ASPSP to confirm funds on an **intern
 
 The state model for the international-payment-consent resource follows the generic consent state model.
 
+![State model](./images/PO_Consent.png)
 
 The definitions for the Status:
 
@@ -136,8 +137,8 @@ For the OBInternational3 Initiation object:
 * If the DebtorAccount is specified by the PISP and is invalid for the PSU, then the international-payment-consent will be set to RJCT after PSU authentication.
 * CreditorAgent must at least have either of the pairs provided: Scheme Name and Identification or Name and Postal Address.
 * Account Identification field usage:
-  * Where "UK.OBIE.SortCodeAccountNumber" is specified as the SchemeName in the Account Identification Section (either DebtorAccount or CreditorAccount), the Identification field **must** be populated with the 6 digit Sort Code and 8 digit Account Number (a 14 digit field).
-  * Where the "UK.OBIE.IBAN" is specified as the SchemeName in the Account Identification Section (either DebtorAccount or CreditorAccount), the Identification field **must** be populated with the full IBAN.
+  * Where "UK.OB.SortCodeAccountNumber" is specified as the SchemeName in the Account Identification Section (either DebtorAccount or CreditorAccount), the Identification field **must** be populated with the 6 digit Sort Code and 8 digit Account Number (a 14 digit field).
+  * Where the "UK.OB.IBAN" is specified as the SchemeName in the Account Identification Section (either DebtorAccount or CreditorAccount), the Identification field **must** be populated with the full IBAN.
 * LocalInstrument is the requested payment scheme for execution. This is a free-text field.
 * InstructionPrioirty may be used by the ASPSP to determine the payment scheme for execution.
 * The InstructedAmount object must be populated with the desired Amount and Currency of transfer, regardless of the currency of the DebtorAccount or CreditorAccount. I.e., a PSU may wish to transfer 100EUR from a GBP DebtorAccount (InstructedAmount will be 100EUR), or 100GBP to an EUR CreditorAccount (the InstructedAmount will be 100GBP).
