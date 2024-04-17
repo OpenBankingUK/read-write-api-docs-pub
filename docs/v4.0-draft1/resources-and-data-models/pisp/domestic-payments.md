@@ -58,7 +58,7 @@ Once the domestic-payment-consent has been authorised by the PSU, the PISP can p
 
 #### Status
 
-A domestic-payment can only be created if its corresponding domestic-payment-consent resource has the status of "Authorised". 
+A domestic-payment can only be created if its corresponding domestic-payment-consent resource has the status of "AUTH". 
 
 The domestic-payment resource that is created successfully must have one of the following PaymentStatusCode code-set enumerations:
 
@@ -129,11 +129,17 @@ The domestic-payment - payment-details must have one of the following PaymentSta
 
 The state model for the domestic-payment resource follows the behaviour and definitions for the ISO 20022 PaymentStatusCode code-set.
 
-![Payment Order Status](./images/new-state-model.png)
+![Payment Order Status](./images/PIS_PO_Statuses.png)
 
 ##### Multiple Authorisation
-Once the payment is RCVD, it goes in PATC or CANC. If PATC then ACFC (if all authorisers have authorised) and then ACSP
-replace Awaiting Further Authorisation with PATC means partially accepted technically correct
+If the payment-order requires multiple authorisations the status of the multiple authorisations will be updated in the MultiAuthorisation object.
+
+Once the payment is RCVD, the StatusCode should be set to PATC and the MultiAuthorisation object status updated with the AWAU status.  Once all authorisations have been successfully completed the MultiAuthorisation status should be set to AUTH and StatusCode updated to ACSP.
+
+Any rejections in the multiple authorisation process should result in the MultiAuthorisation status and StatusCode being set to RJCT. 
+
+
+![Multi Auth](./images/PO_MultiAuthFlow.png)
 
 ## Data Model
 

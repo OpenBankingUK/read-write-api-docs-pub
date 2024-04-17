@@ -119,6 +119,8 @@ The API endpoint allows the PISP to download a file (that had been uploaded agai
 
 #### Payment Order Consent
 
+![File Upload Consent model](./images/PIS_FileUploadConsent.png)
+
 The definitions for the Status:
 
 |  |Status |Status Description |
@@ -127,6 +129,7 @@ The definitions for the Status:
 | 2 |AWAU |The consent resource is awaiting PSU authorisation. |
 | 3 |RJCT |The consent resource has been rejected. |
 | 4 |AUTH |The consent resource has been successfully authorised. |
+| 5 |COND| The consented action has been successfully completed. This does not reflect the status of the consented action.|
 
 ## Data Model
 
@@ -150,7 +153,7 @@ For the OBFile2 Initiation object:
 * If the ASPSP is able to establish a problem with payload or any contextual error during the API call, the ASPSP must reject the file-payment-consent request immediately.
 * If the ASPSP establishes a problem with the file-payment-consent after the API call, the ASPSP must set the Status of the file-payment-consent resource to RJCT.
 * The DebtorAccount is **optional** as the PISP may not know the account identification details for the PSU.
-* If the DebtorAccount is specified by the PISP and is invalid for the PSU - then the file-payment-consent will be set to Rejected after PSU authentication.
+* If the DebtorAccount is specified by the PISP and is invalid for the PSU - then the file-payment-consent will be set to RJCT after PSU authentication.
 * An ASPSP may choose which fields **must** be populated to process a specified FileType, and may reject the request if the fields are not populated. These ASPSP specific requirements must be documented.
 * An ASPSP may choose which fields **must not** be populated to process a specified FileType, and may reject the request if the fields are populated. These ASPSP specific requirements must be documented.
 

@@ -109,20 +109,18 @@ The international-standing-orders - payment-details must have one of the followi
 
 The state model for the international-standing-orders resource describes the initiation status and the subsequent execution of the international-standing-orders.
 
-![ DomesticScheduledStatusModel ](./images/new-state-model.png )
+![Payment Order Status](./images/PIS_PO_Statuses.png)
 
-The definitions for the Status:
-
-|  |Status |Payment Status Description |
-| --- |--- |--- |
-| 1 |RCVD |The initiation of the payment order is pending. |
-| 2 |RJCT |The initiation of the payment order has failed. |
-| 3 |ACSP |The initiation of the payment order is complete. |
-| 4 |CANC |Payment initiation has been successfully cancelled after having received a request for cancellation. |
 
 ##### Multiple Authorisation
-Once the payment is RCVD, it goes in PATC or CANC. If PATC then ACFC (if all authorisers have authorised) and then ACSP
-replace Awaiting Further Authorisation with PATC means partially accepted technically correct
+If the payment-order requires multiple authorisations the status of the multiple authorisations will be updated in the MultiAuthorisation object.
+
+Once the payment is RCVD, the StatusCode should be set to PATC and the MultiAuthorisation object status updated with the AWAU status.  Once all authorisations have been successfully completed the MultiAuthorisation status should be set to AUTH and StatusCode updated to ACSP.
+
+Any rejections in the multiple authorisation process should result in the MultiAuthorisation status and StatusCode being set to RJCT. 
+
+
+![Multi Auth](./images/PO_MultiAuthFlow.png)
 
 The definitions for the Status:
 
@@ -263,12 +261,12 @@ Accept: application/json
 	  "FirstPaymentDateTime": "2018-06-06T06:06:06+00:00",
 	  "FinalPaymentDateTime": "2020-03-20T06:06:06+00:00",
 	  "DebtorAccount": {
-        "SchemeName": "UK.OBIE.SortCodeAccountNumber",
+        "SchemeName": "UK.OB.SortCodeAccountNumber",
         "Identification": "11280001234567",
         "Name": "Andrea Frost"
       },
       "CreditorAccount": {
-        "SchemeName": "UK.OBIE.IBAN",
+        "SchemeName": "UK.OB.IBAN",
         "Identification": "DE89370400440532013000",
         "Name": "Tom Kirkman"
       },
@@ -322,7 +320,7 @@ Content-Type: application/json
         "Name": "Andrea Frost"
       },
       "CreditorAccount": {
-        "SchemeName": "UK.OBIE.IBAN",
+        "SchemeName": "UK.OB.IBAN",
         "Identification": "DE89370400440532013000",
         "Name": "Tom Kirkman"
       },
