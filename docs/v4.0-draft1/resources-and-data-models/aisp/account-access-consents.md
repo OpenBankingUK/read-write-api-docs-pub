@@ -57,6 +57,7 @@ The API allows the AISP to ask an ASPSP to create a new account-access-consent r
 * An ASPSP creates the account-access-consent resource and responds with a unique ConsentId to refer to the resource.
 * Prior to calling the API, the AISP must have an access token issued by the ASPSP using a client credentials grant.
 
+
 #### Account Access Consent Status
 
 The PSU  **must**  authenticate with the ASPSP and authorise the account-access-consent for the account-access-consent to be successfully setup.
@@ -72,12 +73,14 @@ After authorisation has taken place the account-access-consent resource may have
 | --- |--- |--- |
 | 1 |RJCT |The account access consent has been rejected. |
 | 2 |AUTH |The account access consent has been successfully authorised. |
+| 3| CANC | The account access consent has been cancelled. |
+
 
 #### Status Flow
 
 This is the state diagram for the Status.
 
-![ Consent Authorisation.jpg ](./images/AccountAccessConsents/ConsentAuthorisation.jpg )
+![ Consent Authorisation.jpg ](./images/AIS_Consent.png )
 
 ### GET /account-access-consents/{ConsentId}
 
@@ -98,6 +101,8 @@ The available Status code-list enumerations for the account-access-consent resou
 | 1 |RJCT |The account access consent has been rejected. |
 | 2 |AWAU |The account access consent is awaiting authorisation. |
 | 3 |AUTH |The account access consent has been successfully authorised. |
+| 4| CANC | The account access consent has been cancelled. |
+| 5| EXPD | The account access consent has expired. | 
 
 
 ### DELETE /account-access-consents/{ConsentId}
