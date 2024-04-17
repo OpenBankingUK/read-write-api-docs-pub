@@ -63,7 +63,7 @@ The default Status is &quot;AwaitingAuthorisation&quot; immediately after the do
 
 | Status |
 | ------ |
-| AwaitingAuthorisation |
+| AWAU |
 
 ### GET /domestic-payment-consents/{ConsentId}
 
@@ -81,10 +81,9 @@ The available status codes for the domestic-payment-consent resource are:
 
 | Status |
 | ------ |
-| AwaitingAuthorisation |
-| Rejected |
-| Authorised |
-| Consumed |
+| AWAU |
+| RJCT |
+| AUTH |
 
 ### GET /domestic-payment-consents/{ConsentId}/funds-confirmation
 
@@ -97,18 +96,16 @@ The API endpoint allows the PISP to ask an ASPSP to confirm funds on a **domesti
 
 #### Payment Order Consent
 
-The state model for the domestic-payment-consent resource follows the generic consent state model. However, does not use the Revoked status, as the consent for a domestic-payment is not a long-lived consent.
+The state model for the domestic-payment-consent resource follows the generic consent state model.
 
-!["Payment Order Consent Status"](./images/image2018-5-18_10-24-21.png)
 
-The definitions for the Status:
+The definitions for the StatusCode:
 
-|  | Status |Status Description |
+|  | StatusCode |Status Description |
 | ---| ------ |------------------ |
-| 1 |AwaitingAuthorisation |The consent resource is awaiting PSU authorisation. |
-| 2 |Rejected |The consent resource has been rejected. |
-| 3 |Authorised |The consent resource has been successfully authorised. |
-| 4 |Consumed |The consented action has been successfully completed. This does not reflect the status of the consented action. |
+| 1 |AWAU |The consent resource is awaiting PSU authorisation. |
+| 2 |RJCT |The consent resource has been rejected. |
+| 3 |AUTH |The consent resource has been successfully authorised. |
 
 ## Data Model
 
@@ -130,7 +127,7 @@ For the OBDomestic2 Initiation object:
 
 * All elements in the Initiation payload that are specified by the PISP must not be changed via the ASPSP as this is part of formal consent from the PSU.
 * If the ASPSP is able to establish a problem with payload or any contextual error during the API call, the ASPSP must reject the domestic-payment-consent request immediately.
-* If the ASPSP establishes a problem with the domestic-payment-consent after the API call, the ASPSP must set the status of the domestic-payment-consent resource to Rejected.
+* If the ASPSP establishes a problem with the domestic-payment-consent after the API call, the ASPSP must set the StatusCode of the domestic-payment-consent resource to RJCT.
 * DebtorAccount is **optional** as the PISP may not know the account identification details for the PSU.
 * If the DebtorAccount is specified by the PISP and is invalid for the PSU, then the domestic-payment-consent will be set to Rejected after PSU authentication.
 * Account Identification field usage:
@@ -160,24 +157,49 @@ For the OBDomestic2 Initiation object:
 | Identification |1..1 |OBDomestic2/DebtorAccount/Identification |Identification assigned by an institution to identify an account. This identification is known by the account owner. |Max256Text | | |
 | Name |0..1 |OBDomestic2/DebtorAccount/Name |The account name is the name or names of the account owner(s) represented at an account level, as displayed by the ASPSP's online channels. Note, the account name is not the product name or the nickname of the account. |Max350Text | | |
 | SecondaryIdentification |0..1 |OBDomestic2/DebtorAccount/SecondaryIdentification |This is secondary identification of the account, as assigned by the account servicing institution. This can be used by building societies to additionally identify accounts with a roll number (in addition to a sort code and account number combination). |Max34Text | | |
+| Proxy |0..1 |OBDomestic2/DebtorAccount/Proxy |The external proxy account type |OBProxyAccount | | |
+| Identification |1..1 |OBDomestic2/DebtorAccount/Proxy/Identification| Identification assigned by an institution to identify an account. This identification is known by the account owner. |Max256Text | | |
+| Type |0..1 |OBDomestic2/DebtorAccount/Proxy/Type| Specifies the external proxy account type |MaxText70 | | |
+| Code |1..1 |OBDomestic2/DebtorAccount/Proxy/Code| Specifies the external proxy account type code, as published in the proxy account type external code set.<br> For more information see `ExternalProxyAccountType1Code` [here](https://github.com/OpenBankingUK/External_Interal_CodeSets) |OBExternalProxyAccountType1Code | | |
+| Proprietary |1..1 |OBDomestic2/DebtorAccount/Proxy/Proprietary| The owner of the proxy account |MaxText70 | | |
 | CreditorAccount |1..1 |OBDomestic2/CreditorAccount |Unambiguous identification of the account of the creditor to which a credit entry will be posted as a result of the payment transaction. |OBCashAccountCreditor3 | | |
 | SchemeName |1..1 |OBDomestic2/CreditorAccount/SchemeName |Name of the identification scheme, in a coded form as published in an external list. |OBExternalAccountIdentification4Code | | |
 | Identification |1..1 |OBDomestic2/CreditorAccount/Identification |Identification assigned by an institution to identify an account. This identification is known by the account owner. |Max256Text | | |
 | Name |1..1 |OBDomestic2/CreditorAccount/Name |The account name is the name or names of the account owner(s) represented at an account level. Note, the account name is not the product name or the nickname of the account. OB: ASPSPs may carry out name validation for Confirmation of Payee, but it is not mandatory. |Max350Text | | |
 | SecondaryIdentification |0..1 |OBDomestic2/CreditorAccount/SecondaryIdentification |This is secondary identification of the account, as assigned by the account servicing institution. This can be used by building societies to additionally identify accounts with a roll number (in addition to a sort code and account number combination). |Max34Text | | |
+| Proxy |0..1 |OBDomestic2/CreditorAccount/Proxy |The external proxy account type |OBProxyAccount | | |
+| Identification |1..1 |OBDomestic2/CreditorAccount/Proxy/Identification| Identification assigned by an institution to identify an account. This identification is known by the account owner. |Max256Text | | |
+| Type |0..1 |OBDomestic2/CreditorAccount/Proxy/Type| Specifies the external proxy account type |MaxText70 | | |
+| Code |1..1 |OBDomestic2/CreditorAccount/Proxy/Code| Specifies the external proxy account type code, as published in the proxy account type external code set.<br> For more information see `ExternalProxyAccountType1Code` [here](https://github.com/OpenBankingUK/External_Interal_CodeSets) |OBExternalProxyAccountType1Code | | |
+| Proprietary |1..1 |OBDomestic2/CreditorAccount/Proxy/Proprietary| The owner of the proxy account |MaxText70 | | |
 | CreditorPostalAddress |0..1 |OBDomestic2/CreditorPostalAddress |Information that locates and identifies a specific address, as defined by postal services. |OBPostalAddress6 | | |
-| AddressType |0..1 |OBDomestic2/CreditorPostalAddress/AddressType |Identifies the nature of the postal address. |OBAddressTypeCode |Business Correspondence DeliveryTo MailTo POBox Postal Residential Statement | |
+| AddressType |0..1 |OBDomestic2/CreditorPostalAddress/AddressType |BIZZ (Business)<br>DLVY (Delivery To)<br>MLTO (Mail To)<br>PBOX (PO Box)<br>ADDR (Postal)<br>HOME (Residential)<br>CORR (Correspondence)<br>STAT (Statement) | ||
 | Department |0..1 |OBDomestic2/CreditorPostalAddress/Department |Identification of a division of a large organisation or building. |Max70Text | | |
 | SubDepartment |0..1 |OBDomestic2/CreditorPostalAddress/SubDepartment |Identification of a sub-division of a large organisation or building. |Max70Text | | |
 | StreetName |0..1 |OBDomestic2/CreditorPostalAddress/StreetName |Name of a street or thoroughfare. |Max70Text | | |
 | BuildingNumber |0..1 |OBDomestic2/CreditorPostalAddress/BuildingNumber |Number that identifies the position of a building on a street. |Max16Text | | |
+| BuildingName |0..1 |OBDomestic2/CreditorPostalAddress/BuildingName |Name of a referenced building. |Max70Text | | |
+| Floor |0..1 |OBDomestic2/CreditorPostalAddress/Floor|Number that identifies the level within a building. |Max16Text | | |
+| UnitNumber|0..1 |OBDomestic2/CreditorPostalAddress/UnitNumber|Number that identifies the unit of a specific address |Max16Text | | |
+| Room |0..1 |OBDomestic2/CreditorPostalAddress/Room|Information that locates and identifies a room to form part of an address. |Max70Text | | |
+| TownLocationName |0..1 |OBDomestic2/CreditorPostalAddress/TownLocationName |Name of a built-up area, with defined boundaries, and a local government. |Max35Text | | |
+| DistrictName |0..1 |OBDomestic2/CreditorPostalAddress/DistrictName |Number that of the regional area, known as a district, which forms part of an address. |Max35Text | | |
+| CareOf |0..1 |OBDomestic2/CreditorPostalAddress/CareOf |The 'care of' address is used whenever sending mail to a person or organisation who does not actually live or work at the address. They will receive the mail for the individual. |Max70Text | | |
 | PostCode |0..1 |OBDomestic2/CreditorPostalAddress/PostCode |Identifier consisting of a group of letters and/or numbers that is added to a postal address to assist the sorting of mail. |Max16Text | | |
 | TownName |0..1 |OBDomestic2/CreditorPostalAddress/TownName |Name of a built-up area, with defined boundaries, and a local government. |Max35Text | | |
 | CountrySubDivision |0..1 |OBDomestic2/CreditorPostalAddress/CountrySubDivision |Identifies a subdivision of a country such as state, region, county. |Max35Text | | |
 | Country |0..1 |OBDomestic2/CreditorPostalAddress/Country |Nation with its own government. |CountryCode | |^[A-Z]{2,2}$ |
-| AddressLine |0..7 |OBDomestic2/CreditorPostalAddress/AddressLine |Information that locates and identifies a specific address, as defined by postal services, presented in free format text. |Max70Text | | |
+| AddressLine |0..7 |OBDomestic2/CreditorPostalAddress/AddressLine |Information that locates and identifies a specific address, as defined by postal services, presented in free format text. |Max70Text | | | |
 | RemittanceInformation |0..1 |OBDomestic2/RemittanceInformation |Information supplied to enable the matching of an entry with the items that the transfer is intended to settle, such as commercial invoices in an accounts' receivable system. |OBRemittanceInformation1 | | |
-| Unstructured |0..1 |OBDomestic2/RemittanceInformation/Unstructured |Information supplied to enable the matching/reconciliation of an entry with the items that the payment is intended to settle, such as commercial invoices in an accounts' receivable system, in an unstructured form. |Max140Text | | |
+| Structured |0..* |OBDomestic2/RemittanceInformation/Structured |Information supplied to enable the matching/reconciliation of an entry with the items that the payment is intended to settle, such as commercial invoices in an accounts' receivable system, in an structured form. |OBRemittanceInformationStructured | | |
+| ReferredDocumentInformation |0..* |OBDomestic2/RemittanceInformation/Structured/ReferredDocumentInformation | |OBReferredDocumentInformation | | |
+| ReferredDocumentAmount |0..1 |OBDomestic2/RemittanceInformation/Structured/ReferredDocumentAmount | |OBReferredDocumentAmount| | |
+| CreditorReferenceInformation |0..1 |OBDomestic2/CreditorReferenceInformation/Structured/ReferredDocumentAmount | |OBCreditorReferenceInformation| | |
+| Invoicer |0..1 |OBDomestic2/CreditorReferenceInformation/Structured/Invoicer | |OBInvoicer| | |
+| Invoicee |0..1 |OBDomestic2/CreditorReferenceInformation/Structured/Invoicee | |OBInvoicee| | |
+| TaxRemittance |0..1 |OBDomestic2/CreditorReferenceInformation/Structured/TaxRemittance | |OBTaxRemittance| | |
+| AdditionalRemittanceInformation |0..3|OBDomestic2/CreditorReferenceInformation/Structured/AdditionalRemittanceInformation | |OBAdditionalRemittanceInformation| | |
+| Unstructured |0..* |OBDomestic2/RemittanceInformation/Unstructured |Information supplied to enable the matching/reconciliation of an entry with the items that the payment is intended to settle, such as commercial invoices in an accounts' receivable system, in an unstructured form. |Max140Text | | |
 | Reference |0..1 |OBDomestic2/RemittanceInformation/Reference |Unique reference, as assigned by the creditor, to unambiguously refer to the payment transaction. Usage: If available, the initiating party should provide this reference in the structured remittance information, to enable reconciliation by the creditor upon receipt of the amount of money. If the business context requires the use of a creditor reference or a payment remit identification, and only one identifier can be passed through the end-to-end chain, the creditor's reference or payment remittance identification should be quoted in the end-to-end transaction identification. OB: The Faster Payments Scheme can only accept 18 characters for the ReferenceInformation field - which is where this ISO field will be mapped. |Max35Text | | |
 | SupplementaryData |0..1 |OBDomestic2/SupplementaryData |Additional information that can not be captured in the structured fields and/or any other specific block. |OBSupplementaryData1 | | |
 | UltimateCreditor  |0..1 |OBDomestic2/UltimateCreditor |Party to which an amount of money is due. |OBPartyIdentification43 | | |
@@ -343,7 +365,11 @@ Them domestic-payment-consent **response** contains the full **original** payloa
 | Data |1..1 |OBWriteDomesticConsentResponse5/Data | |OBWriteDataDomesticConsentResponse5 | | |
 | ConsentId |1..1 |OBWriteDomesticConsentResponse5/Data/ConsentId |OB: Unique identification as assigned by the ASPSP to uniquely identify the consent resource. |Max128Text | | |
 | CreationDateTime |1..1 |OBWriteDomesticConsentResponse5/Data/CreationDateTime |Date and time at which the resource was created. |ISODateTime | | |
-| Status |1..1 |OBWriteDomesticConsentResponse5/Data/Status |Specifies the status of consent resource in code form. |OBExternalConsentStatus1Code |Authorised AwaitingAuthorisation Consumed Rejected | |
+| StatusCode |0..1 |OBReadConsentResponse1/Data/StatusCode |Specifies the status of consent resource in code form. |
+ExternalStatusReason1Code |AUTH AWAU RJCT COND |
+| StatusReason |0..* |OBReadConsentResponse1/Data/StatusReason |Specifies the status reason. | OBStatusReason |
+| StatusReasonCode |0..1 |OBReadConsentResponse1/Data/StatusReason/*/StatusReasonCode |Specifies the status reason in a code form. For a full description see `ExternalStatusReason1Code` [here](https://github.com/OpenBankingUK/External_Interal_CodeSets). | ExternalStatusReason1Code |
+| StatusReasonDescription |0..1 |OBReadConsentResponse1/Data/StatusReason/*/StatusReasonDescription |Description supporting the StatusReasonCode. |
 | StatusUpdateDateTime |1..1 |OBWriteDomesticConsentResponse5/Data/StatusUpdateDateTime |Date and time at which the resource status was updated. |ISODateTime | | |
 | ReadRefundAccount |0..1 |OBWriteDomesticConsentResponse5/Data/ReadRefundAccount | Specifies to share the refund account details with PISP |OBReadRefundAccount1Code |Yes No | |
 | CutOffDateTime |0..1 |OBWriteDomesticConsentResponse5/Data/CutOffDateTime |Specified cut-off date and time for the payment consent. |ISODateTime | | |
@@ -358,6 +384,11 @@ Them domestic-payment-consent **response** contains the full **original** payloa
 | Identification |0..1 |OBWriteDomesticConsentResponse5/Data/Debtor/Identification |Identification assigned by an institution to identify an account. This identification is known by the account owner. |Max256Text | | |
 | Name |0..1 |OBWriteDomesticConsentResponse5/Data/Debtor/Name |The account name is the name or names of the account owner(s) represented at an account level, as displayed by the ASPSP's online channels. Note, the account name is not the product name or the nickname of the account. |Max350Text | | |
 | SecondaryIdentification |0..1 |OBWriteDomesticConsentResponse5/Data/Debtor/SecondaryIdentification |This is secondary identification of the account, as assigned by the account servicing institution. This can be used by building societies to additionally identify accounts with a roll number (in addition to a sort code and account number combination). |Max34Text | | |
+| Proxy |0..1 |OBWriteDomesticConsentResponse5/Data/Debtor/Proxy |The external proxy account type |OBProxyAccount | | |
+| Identification |1..1 |OBWriteDomesticConsentResponse5/Data/Debtor/Proxy/Identification| Identification assigned by an institution to identify an account. This identification is known by the account owner. |Max256Text | | |
+| Type |0..1 |OBWriteDomesticConsentResponse5/Data/Debtor/Proxy/Type| Specifies the external proxy account type |MaxText70 | | |
+| Code |1..1 |OBWriteDomesticConsentResponse5/Data/Debtor/Proxy/Code| Specifies the external proxy account type code, as published in the proxy account type external code set.<br> For more information see `ExternalProxyAccountType1Code` [here](https://github.com/OpenBankingUK/External_Interal_CodeSets) |OBExternalProxyAccountType1Code | | |
+| Proprietary |1..1 |OBWriteDomesticConsentResponse5/Data/Debtor/Proxy/Proprietary| The owner of the proxy account |MaxText70 | | |
 | Risk |1..1 |OBWriteDomesticConsentResponse5/Risk |The Risk section is sent by the initiating party to the ASPSP. It is used to specify additional details for risk scoring for Payments. |OBRisk1 | | |
 
 ### Domestic Payment Consent Confirmation of Funds - Response
@@ -464,7 +495,7 @@ Content-Type: application/json
 {
   "Data": {
     "ConsentId": "58923",
-    "Status": "AwaitingAuthorisation",
+    "StatusCode": "AWAU",
     "CreationDateTime": "2017-06-05T15:15:13+00:00",
     "StatusUpdateDateTime": "2017-06-05T15:15:13+00:00",
     "ReadRefundAccount": "Yes",
@@ -540,7 +571,7 @@ Content-Type: application/json
 {
   "Data": {
     "ConsentId": "58923",
-    "Status": "Authorised",
+    "StatusCode": "AUTH",
     "CreationDateTime": "2017-06-05T15:15:13+00:00",
     "StatusUpdateDateTime": "2017-06-05T15:15:22+00:00",
     "ReadRefundAccount": "Yes",
@@ -552,7 +583,7 @@ Content-Type: application/json
         "Currency": "GBP"
       },
       "CreditorAccount": {
-        "SchemeName": "UK.OBIE.SortCodeAccountNumber",
+        "SchemeName": "UK.OB.SortCodeAccountNumber",
         "Identification": "08080021325698",
         "Name": "ACME Inc",
         "SecondaryIdentification": "0002"

@@ -110,15 +110,19 @@ The Party resource contains a set of elements that describes a party. The party 
 | Account |0..1 |OBParty2/Relationships/Account |Relationship to the Account resource. |OBRelationship1 | | |
 | Related |1..1 |OBParty2/Relationships/Account/Related |Absolute URI to the related resource. |xs:anyURI | | |
 | Id |1..1 |OBParty2/Relationships/Account/Id |Unique identification as assigned by the ASPSP to uniquely identify the related resource. |Max40Text | | |
-| Address |0..n |OBParty2/Address |Postal address of a party. |OBPostalAddress8 | | |
-| AddressType |0..1 |OBParty2/Address/AddressType |Identifies the nature of the postal address. |OBAddressTypeCode |Business Correspondence DeliveryTo MailTo POBox Postal Residential Statement | |
-| AddressLine |0..5 |OBParty2/Address/AddressLine |Information that locates and identifies a specific address, as defined by postal services, that is presented in free format text. |Max70Text | | |
+| Address |0..n |OBParty2/Address |Postal address of a party. |OBPostalAddress6 | | |
+| AddressType |0..1 |OBParty2/Address/AddressType |BIZZ (Business)<br>DLVY (Delivery To)<br>MLTO (Mail To)<br>PBOX (PO Box)<br>ADDR (Postal)<br>HOME (Residential)<br>CORR (Correspondence)<br>STAT (Statement) | ||
+| Department |0..1 |OBParty2/Address/Department |Identification of a division of a large organisation or building. |Max70Text | | |
+| SubDepartment |0..1 |OBParty2/Address/SubDepartment |Identification of a sub-division of a large organisation or building. |Max70Text | | |
 | StreetName |0..1 |OBParty2/Address/StreetName |Name of a street or thoroughfare. |Max70Text | | |
 | BuildingNumber |0..1 |OBParty2/Address/BuildingNumber |Number that identifies the position of a building on a street. |Max16Text | | |
-| PostCode |0..1 |OBParty2/Address/PostCode |Identifier consisting of a group of letters and/or numbers that is added to a postal address to assist the sorting of mail. |Max16Text | | |
-| TownName |0..1 |OBParty2/Address/TownName |Name of a built-up area, with defined boundaries, and a local government. |Max35Text | | |
-| CountrySubDivision |0..1 |OBParty2/Address/CountrySubDivision |Identifies a subdivision of a country eg, state, region, county. |Max35Text | | |
-| Country |1..1 |OBParty2/Address/Country |Nation with its own government, occupying a particular territory. |CountryCode | |^[A-Z]{2,2}$ |
+| BuildingName |0..1 |OBParty2/Address/BuildingName |Name of a referenced building. |Max70Text | | |
+| Floor |0..1 |OBParty2/Address/Floor|Number that identifies the level within a building. |Max16Text | | |
+| UnitNumber|0..1 |OBParty2/Address/UnitNumber|Number that identifies the unit of a specific address |Max16Text | | |
+| Room |0..1 |OBParty2/Address/Room|Information that locates and identifies a room to form part of an address. |Max70Text | | |
+| TownLocationName |0..1 |OBParty2/Address/TownLocationName |Name of a built-up area, with defined boundaries, and a local government. |Max35Text | | |
+| DistrictName |0..1 |OBParty2/Address/DistrictName |Number that of the regional area, known as a district, which forms part of an address. |Max35Text | | |
+| CareOf |0..1 |OBParty2/Address/CareOf |The 'care of' address is used whenever sending mail to a person or organisation who does not actually live or work at the address. They will receive the mail for the individual. |Max70Text | | |
 
 ### OBReadParty2
 

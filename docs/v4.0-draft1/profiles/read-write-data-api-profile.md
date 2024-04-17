@@ -57,6 +57,7 @@
       12. [Pagination](#pagination)
       13. [Archiving](#archiving)
       14. [Supplementary Data](#supplementary-data)
+      15. [Errors](#errors)
    3. [Security & Access Control](#security-access-control)
       1. [Scopes & Grant Types](#scopes-grant-types)
       2. [Length of Authorization Code, Access Token and Refresh Token](#length-of-authorization-code-access-token-and-refresh-token)
@@ -773,6 +774,33 @@ Wherever used, an ASPSP **must** define and document (on their developer portal)
 
 An ASPSP **must not** use Supplementary Data if an element already exists in the OBL standard that fulfils the requirement.
 
+### Errors
+
+Errors can occur at several key stages of an Open Banking journey, the following guidance indicates what actions an ASPSP should take and how the error should be returned:
+
+#### API Calls
+Errors generated during an API call, including the initial staging of a consent, should follow the standard API error response pattern of pre-defined HTTP code with the [error response structure](#error-response-structure) for Open Banking Read/Write APIs.
+
+Failures, such as insufficient funds to complete a transaction, should return an API error and also be reflected in the consent endpoint using ISO 20022 reasons and/or OBL Proprietary reasons as appropriate.
+
+A full list of codes can be found in the [External_Internal_Codesets repository](https://github.com/OpenBankingUK/External_Interal_CodeSets)
+
+#### Redirect errors
+Errors that occur when the PSU is redirected to the ASPSP to complete authentication and returned on the query string to the TPP should include an appropriate code from the ExternalStatusReason1Code enumeration in the error_description field. 
+
+The consent payload ReasonCode should also be updated with the same code.
+![Redirect Error Example](./images/redirect-error-example.png)
+
+Note: For Single Immediate Payments the code AM04 may be returned in the error_description to indicate that there are insufficient funds to complete the transaction.  This code must also be updated in the consents ReasonCode field.
+
+#### Token Errors
+Scenarios where an action taken by the PSU or ASPSP which results in a token being expired/suspended or PSU re-authentication is required should return the appropriate code in the token endpoint error_description and the consent payload status should be updated with the same reason code.
+
+Final token expiry should be aligned to the consent end-date, the consent status should be updated after expiry and appropriate token errors returned.
+
+Note: Normal expiry of tokens, such as when a refresh token has been issued and the access token lifetime has been reached, should not result in changes to the Consent endpoint status field.
+
+
 ## Security & Access Control
 
 ### Scopes & Grant Types
@@ -1235,7 +1263,7 @@ The error response structure for Open Banking Read/Write APIs:
 |OBErrorResponse1          |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |OBErrorResponse1|An array of detail error codes, and messages, and URLs to documentation to help remediation.                                                                            |OBErrorResponse1         |     |       |
 |Id                        |0..1                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |OBErrorResponse1/Id|A unique reference for the error instance, for audit purposes, in case of unknown/unclassified errors.                                                                  |Max40Text                |     |       |
 |Errors                    |1..n                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |OBErrorResponse1/Errors|                                                                                                                                                                        |OBError1                 |     |       |
-|ErrorCode                 |1..1 |                                                                                                                                                                             |OBErrorResponse1/Errors/ErrorCode|Low level textual error code, e.g., `"AC17"`<br> for full more information and full list of enumeration values see `ExternalReturnReason1Code` [here](https://github.com/OpenBankingUK/External_Interal_CodeSets)                                                                                                    |ExternalReturnReason1Code|     |       |
+|ErrorCode                 |1..1 |                       OBErrorResponse1/Errors/ErrorCode                                                                                                                                                      |Low level textual error code, e.g., `"AC17"`| For a full list of enumeration values see `ExternalReturnReason1Code` [here](https://github.com/OpenBankingUK/External_Interal_CodeSets)                                                                                                    |ExternalReturnReason1Code|     |       |
 |Message                   |0..1 |OBErrorResponse1/Errors/Message|A description of the error that occurred. e.g., 'A mandatory field isn't supplied' or 'RequestedExecutionDateTime must be in future'<br><br>OBL doesn't standardise this field|Max500Text               |     |       |
 |Path                      |0..1                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |OBErrorResponse1/Errors/Path|Recommended but optional reference to the JSON Path of the field with error, e.g., Data.Initiation.InstructedAmount.Currency                                            |Max500Text               |     |       |
 |Url                       |0..1                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |OBErrorResponse1/Errors/Url|URL to help remediate the problem, or provide more information, or to API Reference, or help etc                                                                        |xs:anyURI                |     |       |

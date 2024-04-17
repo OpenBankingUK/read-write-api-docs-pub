@@ -402,11 +402,10 @@ The AISP **must** be restricted to accessing statements which are **completely**
 
 The Account Access Consent resource may have one of the following status codes after authorisation has taken place:
 
- |  |Status |Description |
+ |  |StatusCode |Description |
 | --- |--- |--- |
-| 1 |Authorised |The account access consent has been successfully authorised. |
-| 2 |Rejected |The account access consent has been rejected. |
-| 3 |Revoked |The account access consent has been revoked via the ASPSP interface. This status is not applicable for the resource created after Ver 3.1.4. |	
+| 1 |AUTH |The account access consent has been successfully authorised. |
+| 2 |RJCT |The account access consent has been rejected. |
 
 #### Consent Re-authentication
 
@@ -414,7 +413,7 @@ Account Access Consents are long-lived consents.
 
 A PSU can re-authenticate an Account Access Consent if:
 
-- The account-access-consent has a status of `Authorised` and
+- The account-access-consent has a StatusCode of `AUTH` and
 - The `ExpirationDateTime` of the account-access-consent, if specified, has not elapsed.
 
 Where there is no change in the consent parameters required, TPPs should perform a re-authentication / refresh upon the original consent using the same intent-id as before, instead of issuing a new, duplicate consent.
@@ -464,7 +463,7 @@ In such a situation:
 
 Information for risk scoring and assessment will come via:
 
-- FAPI HTTP headers. These are defined in [Section 6.3](http://openid.net/specs/openid-financial-api-part-1-wd-02.html#client-provisions) of the FAPI specification and in the Headers section above.
+- FAPI HTTP headers. These are defined in [section 6.2.1 and 6.2.2] (https://openid.net/specs/openid-financial-api-part-1-1_0.html#protected-resources-provisions) of the FAPI 1 specification and in the Headers section above.
 - Additional fields identified by the industry as business logic security concerns - which will be passed in the Risk section of the payload in the JSON object.
 
 No fields for business logic security concerns have been identified for the Account Info APIs.

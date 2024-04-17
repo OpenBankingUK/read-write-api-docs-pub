@@ -58,9 +58,9 @@ The international-scheduled-payment resource that is created successfully must h
 
 | Status |
 | --- |
-| InitiationPending |
-| InitiationFailed |
-| InitiationCompleted |
+| RCVD |
+| RJCT |
+| ASCP |
 
 ### GET /international-scheduled-payments/{InternationalScheduledPaymentId}
 
@@ -72,10 +72,10 @@ The international-scheduled-payment resource must have one of the following Stat
 
 | Status |
 | --- |
-| InitiationPending |
-| InitiationFailed |
-| InitiationCompleted |
-| Cancelled |
+| RCVD |
+| RJCT |
+| ASCP |
+| CANC |
 
 ### GET /international-scheduled-payments/{InternationalScheduledPaymentId}/payment-details
 
@@ -85,59 +85,48 @@ A PISP can retrieve the Details of the underlying payment transaction via this e
 
 The international-scheduled-payments - payment-details must have one of the following PaymentStatusCode code-set enumerations:
 
-| Status |
-| --- |
-| Accepted |
-| AcceptedCancellationRequest |
-| AcceptedTechnicalValidation |
-| AcceptedCustomerProfile |
-| AcceptedFundsChecked |
-| AcceptedWithChange |
-| Pending |
-| Rejected |
-| AcceptedSettlementInProcess |
-| AcceptedSettlementCompleted |
-| AcceptedWithoutPosting |
-| AcceptedCreditSettlementCompleted |
-| Cancelled |
-| NoCancellationProcess |
-| PartiallyAcceptedCancellationRequest |
-| PartiallyAcceptedTechnicalCorrect |
-| PaymentCancelled |
-| PendingCancellationRequest |
-| Received |
-| RejectedCancellationRequest |
+| StatusCode |
+| ------ |
+| PDNG |
+| ACTC |
+| PATC |
+| ACCP |
+| ACFC |
+| ACSP |
+| ACWC |
+| ACSC |
+| ACWP |
+| ACCC |
+| BLCK |
+| RJCT |
 
 ### State Model
 
 #### Payment Order
 
-The state model for the international-scheduled-payment resource describes the initiation status only. I.e., not the subsequent execution of the international-scheduled-payment.
-
-![ ScheduledPaymentOrderStatus ](./images/ScheduledPaymentOrderStatus.png )
+The state model for the international-scheduled-payment resource describes the initiation status and the subsequent execution of the international-scheduled-payment.
 
 The definitions for the Status:
 
 |  |Status |Payment Status Description |
 | --- |--- |--- |
-| 1 |InitiationPending |The initiation of the payment order is pending. |
-| 2 |InitiationFailed |The initiation of the payment order has failed. |
-| 3 |InitiationCompleted |The initiation of the payment order is complete. |
-| 4 |Cancelled |Payment initiation has been successfully cancelled after having received a request for cancellation. |
+| 1 |RCVD |The initiation of the payment order is received. |
+| 2 |RJCT |The initiation of the payment order has failed. |
+| 3 |ACSP |The initiation of the payment order is complete. |
+| 4 |CANC |Payment initiation has been successfully cancelled after having received a request for cancellation. |
 
 ##### Multiple Authorisation
+Once the payment is RCVD, it goes in PATC or CANC. If PATC then ACFC (if all authorisers have authorised) and then ACSP
+replace Awaiting Further Authorisation with PATC means partially accepted technically correct
 
-If the payment-order requires multiple authorisations, the Status of the multiple authorisations will be updated in the MultiAuthorisation object.
-
-![ image2018-6-29_16-36-34 ](./images/image2018-6-29_16-36-34.png )
 
 The definitions for the Status:
 
 |  |Status |Status Description |
 | --- |--- |--- |
-| 1 |AwaitingFurtherAuthorisation |The payment-order resource is awaiting further authorisation. |
-| 2 |Rejected |The payment-order resource has been rejected by an authoriser. |
-| 3 |Authorised |The payment-order resource has been successfully authorised by all required authorisers. |
+| 1 |AWAU |The payment-order resource is awaiting further authorisation. |
+| 2 |RJCT |The payment-order resource has been rejected by an authoriser. |
+| 3 |AUTH |The payment-order resource has been successfully authorised by all required authorisers. |
 
 ## Data Model
 

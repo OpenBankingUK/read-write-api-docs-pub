@@ -64,7 +64,7 @@ Content-Type: application/json
 {
   "Data": {
     "ConsentId" : "512345",
-    "Status": "AwaitingUpload",
+    "StatusCode": "AWUP",
     "CreationDateTime": "2018-06-05T15:15:13+00:00",
     "StatusUpdateDateTime": "2018-06-05T15:15:13+00:00",
     "Initiation": {

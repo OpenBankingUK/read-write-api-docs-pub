@@ -61,11 +61,11 @@ The API endpoint allows the PISP to ask an ASPSP to create a new **international
 
 #### Status
 
-The default Status is "AwaitingAuthorisation" immediately after the international-payment-consent has been created.
+The default Status is "AWAU" immediately after the international-payment-consent has been created.
 
-| Status |
+| StatusCode |
 | --- |
-| AwaitingAuthorisation |
+| AWAU |
 
 ## GET /international-payment-consents/{ConsentId}
 
@@ -73,44 +73,43 @@ A PISP can optionally retrieve a payment consent resource that they have created
 
 #### Status
 
-Once the PSU authorises the payment-consent resource, the Status of the payment-consent resource will be updated with "Authorised".
+Once the PSU authorises the payment-consent resource, the Status of the payment-consent resource will be updated with "AUTH".
 
-If the PSU rejects the consent or the international-payment-consent has failed some other ASPSP validation, the Status will be set to "Rejected".
+If the PSU rejects the consent or the international-payment-consent has failed some other ASPSP validation, the Status will be set to "RJCT".
 
-Once an international-payment has been successfully created using the international-payment-consent, the Status of the international-payment-consent will be set to "Consumed".
+Once an international-payment has been successfully created using the international-payment-consent, the Status of the international-payment-consent will be set to "COND".
 
 The available Status codes for the international-payment-consent resource are:
 
 | Status |
 | --- |
-| AwaitingAuthorisation |
-| Rejected |
-| Authorised |
-| Consumed |
+| AWAU |
+| RJCT |
+| AUTH |
+| COND |
 
 ### GET /international-payment-consents/{ConsentId}/funds-confirmation
 
 The API endpoint allows the PISP to ask an ASPSP to confirm funds on an **international-payment-consent** resource.
 
-* An ASPSP can only respond to a funds confirmation request if the **international-payment-consent** resource has an `Authorised` status. If the status is not `Authorised`, an ASPSP **must** respond with a 400 (Bad Request) and a `UK.OBIE.Resource.InvalidConsentStatus` error code.
+* An ASPSP can only respond to a funds confirmation request if the **international-payment-consent** resource has an `AUTH` status. If the status is not `AUTH`, an ASPSP **must** respond with a 400 (Bad Request) and a `UK.OB.Resource.InvalidConsentStatus` error code.
 * Confirmation of funds requests do not affect the status of the **international-payment-consent** resource.
 
 ### State Model
 
 #### Payment Order Consent
 
-The state model for the international-payment-consent resource follows the generic consent state model. However, does not use the "Revoked" status, as the consent for an international-payment is not a long-lived consent.
+The state model for the international-payment-consent resource follows the generic consent state model.
 
-![Payment Order Consent State Model](./images/image2018-5-18_10-24-21.png)
 
 The definitions for the Status:
 
 | | Status | Status Description |
 | --- |------ |------------------ |
-| 1 |AwaitingAuthorisation |The consent resource is awaiting PSU authorisation. |
-| 2 |Rejected |The consent resource has been rejected. |
-| 3 |Authorised |The consent resource has been successfully authorised. |
-| 4 |Consumed |The consented action has been successfully completed. This does not reflect the status of the consented action. |
+| 1 |AWAU |The consent resource is awaiting PSU authorisation. |
+| 2 |RJCT |The consent resource has been rejected. |
+| 3 |AUTH |The consent resource has been successfully authorised. |
+| 4 |COND |The consented action has been successfully completed. This does not reflect the status of the consented action. |
 
 ## Data Model
 
@@ -132,9 +131,9 @@ For the OBInternational3 Initiation object:
 
 * All elements in the Initiation payload that are specified by the PISP, must not be changed via the ASPSP as this is part of formal consent from the PSU.
 * If the ASPSP is able to establish a problem with payload or any contextual error during the API call, the ASPSP must reject the international-payment-consent request immediately.
-* If the ASPSP establishes a problem with the international-payment-consent after the API call, the ASPSP must set the Status of the international-payment-consent resource to Rejected.
+* If the ASPSP establishes a problem with the international-payment-consent after the API call, the ASPSP must set the Status of the international-payment-consent resource to RJCT.
 * DebtorAccount is **optional** as the PISP may not know the account identification details for the PSU.
-* If the DebtorAccount is specified by the PISP and is invalid for the PSU, then the international-payment-consent will be set to Rejected after PSU authentication.
+* If the DebtorAccount is specified by the PISP and is invalid for the PSU, then the international-payment-consent will be set to RJCT after PSU authentication.
 * CreditorAgent must at least have either of the pairs provided: Scheme Name and Identification or Name and Postal Address.
 * Account Identification field usage:
   * Where "UK.OBIE.SortCodeAccountNumber" is specified as the SchemeName in the Account Identification Section (either DebtorAccount or CreditorAccount), the Identification field **must** be populated with the 6 digit Sort Code and 8 digit Account Number (a 14 digit field).
@@ -168,7 +167,6 @@ The OBInternational3/ExchangeRateInformation object must conform to these behavi
 | LocalInstrument |0..1 |OBInternational3/LocalInstrument |User community specific instrument. Usage: This element is used to specify a local instrument, local clearing option and/or further qualify the service or service level. |OBExternalLocalInstrument1Code | | |
 | InstructionPriority |0..1 |OBInternational3/InstructionPriority |Indicator of the urgency or order of importance that the instructing party would like the instructed party to apply to the processing of the instruction. |OBPriority2Code |Normal Urgent | |
 | Purpose |0..1 |OBInternational3/Purpose |Specifies the external purpose code in the format of character string with a maximum length of 4 characters. The list of valid codes is an external code list published separately. External code sets can be downloaded from www.iso20022.org. |OBExternalPurpose1Code1 | | |
-| ExtendedPurpose |0..1 |OBInternational3/ExtendedPurpose |Specifies the purpose of an international payment, when there is no corresponding 4 character code available in the ISO20022 list of Purpose Codes. |Max140Text | | |
 | ChargeBearer |0..1 |OBInternational3/ChargeBearer |Specifies which party/parties will bear the charges associated with the processing of the payment transaction. |OBChargeBearerType1Code |BorneByCreditor BorneByDebtor FollowingServiceLevel Shared | |
 | CurrencyOfTransfer |1..1 |OBInternational3/CurrencyOfTransfer |Specifies the currency of the to be transferred amount, which is different from the currency of the debtor's account. |ActiveOrHistoricCurrencyCode | |^[A-Z]{3,3}$ |
 | DestinationCountryCode |0..1 |OBInternational3/DestinationCountryCode |Country in which Credit Account is domiciled. Nation with its own government. |CountryCode | |^[A-Z]{2,2}$ |
@@ -290,9 +288,21 @@ The OBInternational3/ExchangeRateInformation object must conform to these behavi
 | Identification |1..1 |OBInternational3/CreditorAccount/Identification |Identification assigned by an institution to identify an account. This identification is known by the account owner. |Max256Text | | |
 | Name |1..1 |OBInternational3/CreditorAccount/Name |The account name is the name or names of the account owner(s) represented at an account level. Note, the account name is not the product name or the nickname of the account. OB: ASPSPs may carry out name validation for Confirmation of Payee, but it is not mandatory. |Max350Text | | |
 | SecondaryIdentification |0..1 |OBInternational3/CreditorAccount/SecondaryIdentification |This is secondary identification of the account, as assigned by the account servicing institution. This can be used by building societies to additionally identify accounts with a roll number (in addition to a sort code and account number combination). |Max34Text | | |
+| Proxy |0..1 |OBInternational3/CreditorAccount/Proxy |The external proxy account type |OBProxyAccount | | |
+| Identification |1..1 |OBInternational3/CreditorAccount/Proxy/Identification| Identification assigned by an institution to identify an account. This identification is known by the account owner. |Max256Text | | |
+| Type |0..1 |OBInternational3/CreditorAccount/Proxy/Type| Specifies the external proxy account type |MaxText70 | | |
+| Code |1..1 |OBInternational3/CreditorAccount/Proxy/Code| Specifies the external proxy account type code, as published in the proxy account type external code set.<br> For more information see `ExternalProxyAccountType1Code` [here](https://github.com/OpenBankingUK/External_Interal_CodeSets) |OBExternalProxyAccountType1Code | | |
+| Proprietary |1..1 |OBInternational3/CreditorAccount/Proxy/Proprietary| The owner of the proxy account |MaxText70 | | |
 | RemittanceInformation |0..1 |OBInternational3/RemittanceInformation |Information supplied to enable the matching of an entry with the items that the transfer is intended to settle, such as commercial invoices in an accounts' receivable system. |OBRemittanceInformation1 | | |
-| Unstructured |0..1 |OBInternational3/RemittanceInformation/Unstructured |Information supplied to enable the matching/reconciliation of an entry with the items that the payment is intended to settle, such as commercial invoices in an accounts' receivable system, in an unstructured form. |Max140Text | | |
-| Reference |0..1 |OBInternational3/RemittanceInformation/Reference |Unique reference, as assigned by the creditor, to unambiguously refer to the payment transaction. Usage: If available, the initiating party should provide this reference in the structured remittance information, to enable reconciliation by the creditor upon receipt of the amount of money. If the business context requires the use of a creditor reference or a payment remit identification, and only one identifier can be passed through the end-to-end chain, the creditor's reference or payment remittance identification should be quoted in the end-to-end transaction identification. OB: The Faster Payments Scheme can only accept 18 characters for the ReferenceInformation field - which is where this ISO field will be mapped. |Max35Text | | |
+| Structured |0..* |OBInternational3/RemittanceInformation/Structured |Information supplied to enable the matching/reconciliation of an entry with the items that the payment is intended to settle, such as commercial invoices in an accounts' receivable system, in an structured form. |OBRemittanceInformationStructured | | |
+| ReferredDocumentInformation |0..* |OBInternational3/RemittanceInformation/Structured/ReferredDocumentInformation | |OBReferredDocumentInformation | | |
+| ReferredDocumentAmount |0..1 |OBInternational3/RemittanceInformation/Structured/ReferredDocumentAmount | |OBReferredDocumentAmount| | |
+| CreditorReferenceInformation |0..1 |OBInternational3/CreditorReferenceInformation/Structured/ReferredDocumentAmount | |OBCreditorReferenceInformation| | |
+| Invoicer |0..1 |OBInternational3/CreditorReferenceInformation/Structured/Invoicer | |OBInvoicer| | |
+| Invoicee |0..1 |OBInternational3/CreditorReferenceInformation/Structured/Invoicee | |OBInvoicee| | |
+| TaxRemittance |0..1 |OBInternational3/CreditorReferenceInformation/Structured/TaxRemittance | |OBTaxRemittance| | |
+| AdditionalRemittanceInformation |0..3|OBInternational3/CreditorReferenceInformation/Structured/AdditionalRemittanceInformation | |OBAdditionalRemittanceInformation| | |
+| Unstructured |0..* |OBInternational3/RemittanceInformation/Unstructured |Information supplied to enable the matching/reconciliation of an entry with the items that the payment is intended to settle, such as commercial invoices in an accounts' receivable system, in an unstructured form. |Max140Text | | |
 | SupplementaryData |0..1 |OBInternational3/SupplementaryData |Additional information that can not be captured in the structured fields and/or any other specific block. |OBSupplementaryData1 | | |
 | UltimateCreditor  |0..1 |OBInternational3/UltimateCreditor |Party to which an amount of money is due. |OBPartyIdentification43 | | |
 | Name |0..1 |OBInternational3/UltimateCreditor/Name |Name by which a party is known and which is usually used to identify that party. |Max350Text | | |
@@ -467,7 +477,7 @@ The international-payment-consent **response** contains the full **original** pa
 
 * ConsentId.
 * CreationDateTime the international-payment-consent resource was created.
-* Status and StatusUpdateDateTime of the international-payment-consent resource.
+* Status, StatusReason and StatusUpdateDateTime of the international-payment-consent resource.
 * CutOffDateTime Behaviour is explained in Payment Initiation API Profile, Section - [Payment Restrictions -> CutOffDateTime Behaviour](../../profiles/payment-initiation-api-profile.md#cutoffdatetime-behaviour).
 * ExpectedExecutionDateTime for the international-payment resource if created before CutOffDateTIme - the expected DateTime the payment is executed against the Debtor Account. If populated, the ASPSP must update the value with any changes (e.g., after PSU authorisation).
 * ExpectedSettlementDateTime for the international-payment resource if created before CutOffDateTIme - the expected DateTime the payment will be received at the Creditor Account. If populated, the ASPSP must update the value with any changes (e.g., after PSU authorisation).
@@ -498,7 +508,11 @@ Exchange rate behaviour:
 | Data |1..1 |OBWriteInternationalConsentResponse6/Data | |OBWriteDataInternationalConsentResponse6 | | |
 | ConsentId |1..1 |OBWriteInternationalConsentResponse6/Data/ConsentId |OB: Unique identification as assigned by the ASPSP to uniquely identify the consent resource. |Max128Text | | |
 | CreationDateTime |1..1 |OBWriteInternationalConsentResponse6/Data/CreationDateTime |Date and time at which the resource was created. |ISODateTime | | |
-| Status |1..1 |OBWriteInternationalConsentResponse6/Data/Status |Specifies the status of consent resource in code form. |OBExternalConsentStatus1Code |Authorised AwaitingAuthorisation Consumed Rejected | |
+| StatusCode |0..1 |OBReadConsentResponse1/Data/StatusCode |Specifies the status of consent resource in code form. |
+ExternalStatusReason1Code |AUTH AWAU RJCT COND |
+| StatusReason |0..* |OBReadConsentResponse1/Data/StatusReason |Specifies the status reason. | OBStatusReason |
+| StatusReasonCode |0..1 |OBReadConsentResponse1/Data/StatusReason/*/StatusReasonCode |Specifies the status reason in a code form. For a full description see `ExternalStatusReason1Code` [here](https://github.com/OpenBankingUK/External_Interal_CodeSets). | ExternalStatusReason1Code |
+| StatusReasonDescription |0..1 |OBReadConsentResponse1/Data/StatusReason/*/StatusReasonDescription |Description supporting the StatusReasonCode. |
 | StatusUpdateDateTime |1..1 |OBWriteInternationalConsentResponse6/Data/StatusUpdateDateTime |Date and time at which the resource status was updated. |ISODateTime | | |
 | ReadRefundAccount |0..1 |OBWriteInternationalConsentResponse6/Data/ReadRefundAccount | Specifies to share the refund account details with PISP |OBReadRefundAccount1Code |Yes No | |
 | CutOffDateTime |0..1 |OBWriteInternationalConsentResponse6/Data/CutOffDateTime |Specified cut-off date and time for the payment consent. |ISODateTime | | |
@@ -573,7 +587,7 @@ Accept: application/json
         "Currency": "GBP"
       },
       "CreditorAccount": {
-        "SchemeName": "UK.OBIE.SortCodeAccountNumber",
+        "SchemeName": "UK.OB.SortCodeAccountNumber",
         "Identification": "08080021325698",
         "Name": "ACME Inc",
         "SecondaryIdentification": "0002"
@@ -607,7 +621,7 @@ Content-Type: application/json
 {
  "Data": {
   "ConsentId": "58923",
-  "Status": "AwaitingAuthorisation",
+  "StatusCode": "AWAU",
   "CutOffDateTime": "2017-06-05T16:00:13+00:00",
   "CreationDateTime": "2017-06-05T15:15:13+00:00",
   "StatusUpdateDateTime": "2017-06-05T15:15:13+00:00",
@@ -622,7 +636,7 @@ Content-Type: application/json
     "Currency": "GBP"
    },
    "CreditorAccount": {
-    "SchemeName": "UK.OBIE.SortCodeAccountNumber",
+    "SchemeName": "UK.OB.SortCodeAccountNumber",
     "Identification": "08080021325698",
     "Name": "ACME Inc",
     "SecondaryIdentification": "0002"

@@ -62,14 +62,20 @@ A domestic-payment can only be created if its corresponding domestic-payment-con
 
 The domestic-payment resource that is created successfully must have one of the following PaymentStatusCode code-set enumerations:
 
-| Status |
+| StatusCode |
 | ------ |
-| Pending |
-| Rejected |
-| AcceptedSettlementInProcess |
-| AcceptedSettlementCompleted |
-| AcceptedWithoutPosting |
-| AcceptedCreditSettlementCompleted |
+| PDNG |
+| ACTC |
+| PATC |
+| ACCP |
+| ACFC |
+| ACSP |
+| ACWC |
+| ACSC |
+| ACWP |
+| ACCC |
+| BLCK |
+| RJCT |
 
 ### GET /domestic-payments/{DomesticPaymentId}
 
@@ -79,14 +85,20 @@ A PISP can retrieve the domestic-payment to check its status.
 
 The domestic-payment resource must have one of the following PaymentStatusCode code-set enumerations:
 
-| Status |
+| StatusCode |
 | ------ |
-| Pending |
-| Rejected |
-| AcceptedSettlementInProcess |
-| AcceptedSettlementCompleted |
-| AcceptedWithoutPosting |
-| AcceptedCreditSettlementCompleted |
+| PDNG |
+| ACTC |
+| PATC |
+| ACCP |
+| ACFC |
+| ACSP |
+| ACWC |
+| ACSC |
+| ACWP |
+| ACCC |
+| BLCK |
+| RJCT |
 
 ### GET /domestic-payments/{DomesticPaymentId}/payment-details
 
@@ -96,28 +108,20 @@ A PISP can retrieve the Details of the underlying payment transaction via this e
 
 The domestic-payment - payment-details must have one of the following PaymentStatusCode code-set enumerations:
 
-| Status |
+| StatusCode |
 | ------ |
-| Accepted |
-| AcceptedCancellationRequest |
-| AcceptedTechnicalValidation |
-| AcceptedCustomerProfile |
-| AcceptedFundsChecked |
-| AcceptedWithChange |
-| Pending |
-| Rejected |
-| AcceptedSettlementInProcess |
-| AcceptedSettlementCompleted |
-| AcceptedWithoutPosting |
-| AcceptedCreditSettlementCompleted |
-| Cancelled |
-| NoCancellationProcess |
-| PartiallyAcceptedCancellationRequest |
-| PartiallyAcceptedTechnicalCorrect |
-| PaymentCancelled |
-| PendingCancellationRequest |
-| Received |
-| RejectedCancellationRequest |
+| PDNG |
+| ACTC |
+| PATC |
+| ACCP |
+| ACFC |
+| ACSP |
+| ACWC |
+| ACSC |
+| ACWP |
+| ACCC |
+| BLCK |
+| RJCT |
 
 ### State Model
 
@@ -125,32 +129,11 @@ The domestic-payment - payment-details must have one of the following PaymentSta
 
 The state model for the domestic-payment resource follows the behaviour and definitions for the ISO 20022 PaymentStatusCode code-set.
 
-![Payment Order Status](./images/PaymentStatusLifeCycle.png)
-
-The definitions for the status:
-
-|  |Status |Payment Status Description |
-|--|------ |-------------------------- |
-| 1 |Pending |Payment initiation or individual transaction included in the payment initiation is pending. Further checks and status update will be performed. |
-| 2 |Rejected |Payment initiation or individual transaction included in the payment initiation has been rejected. |
-| 3 |AcceptedSettlementInProcess |All preceding checks such as technical validation and customer profile were successful and therefore the payment initiation has been accepted for execution. |
-| 4 |AcceptedSettlementCompleted |Settlement on the debtor's account has been completed. |
-| 5 |AcceptedWithoutPosting |Payment instruction included in the credit transfer is accepted without being posted to the creditor customer’s account. |
-| 6 |AcceptedCreditSettlementCompleted |Settlement on the creditor's account has been completed.|
+![Payment Order Status](./images/new-state-model.png)
 
 ##### Multiple Authorisation
-
-If the payment-order requires multiple authorisations - the Status of the multiple authorisations will be updated in the MultiAuthorisation object.
-
-![Multi Authorisation Status](./images/image2018-6-29_16-36-34.png)
-
-The definitions for the status:
-
-|  |Status |Status Description |
-|-- |------ |------------------ |
-| 1 |AwaitingFurtherAuthorisation |The payment-order resource is awaiting further authorisation. |
-| 2 |Rejected |The payment-order resource has been rejected by an authoriser. |
-| 3 |Authorised |The payment-order resource has been successfully authorised by all required authorisers.|
+Once the payment is RCVD, it goes in PATC or CANC. If PATC then ACFC (if all authorisers have authorised) and then ACSP
+replace Awaiting Further Authorisation with PATC means partially accepted technically correct
 
 ## Data Model
 
@@ -291,7 +274,7 @@ Accept: application/json
         "Currency": "GBP"
       },
       "CreditorAccount": {
-        "SchemeName": "UK.OBIE.SortCodeAccountNumber",
+        "SchemeName": "UK.OB.SortCodeAccountNumber",
         "Identification": "08080021325698",
         "Name": "ACME Inc",
         "SecondaryIdentification": "0002"
@@ -339,12 +322,12 @@ Content-Type: application/json
   "Data": {
     "DomesticPaymentId": "58923-001",
     "ConsentId": "58923",
-    "Status": "AcceptedSettlementInProcess",
+    "StatusCode": "ACSP",
     "CreationDateTime": "2017-06-05T15:15:22+00:00",
     "StatusUpdateDateTime": "2017-06-05T15:15:13+00:00",
     "Refund": {
       "Account": {
-        "SchemeName": "UK.OBIE.SortCodeAccountNumber",
+        "SchemeName": "UK.OB.SortCodeAccountNumber",
         "Identification": "08080021325677",
         "Name": "NTPC Inc"
       }
@@ -357,7 +340,7 @@ Content-Type: application/json
         "Currency": "GBP"
       },
       "CreditorAccount": {
-        "SchemeName": "UK.OBIE.SortCodeAccountNumber",
+        "SchemeName": "UK.OB.SortCodeAccountNumber",
         "Identification": "08080021325698",
         "Name": "ACME Inc",
         "SecondaryIdentification": "0002"
@@ -401,7 +384,7 @@ Content-Type: application/json
   "Data": {
     "DomesticPaymentId": "58923-001",
     "ConsentId": "58923",
-    "Status": "AcceptedSettlementInProcess",
+    "StatusCode": "ACSP",
     "CreationDateTime": "2017-06-05T15:15:22+00:00",
     "StatusUpdateDateTime": "2017-06-05T15:15:22+00:00",
     "Initiation": {
@@ -412,7 +395,7 @@ Content-Type: application/json
         "Currency": "GBP"
       },
       "CreditorAccount": {
-        "SchemeName": "UK.OBIE.SortCodeAccountNumber",
+        "SchemeName": "UK.OB.SortCodeAccountNumber",
         "Identification": "08080021325698",
         "Name": "ACME Inc",
         "SecondaryIdentification": "0002"

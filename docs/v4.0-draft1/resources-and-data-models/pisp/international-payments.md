@@ -133,18 +133,17 @@ The definitions for the Status:
 | 6 |AcceptedCreditSettlementCompleted |Settlement on the creditor's account has been completed. |
 
 ##### Multiple Authorisation
+Once the payment is RCVD, it goes in PATC or CANC. If PATC then ACFC (if all authorisers have authorised) and then ACSP
+replace Awaiting Further Authorisation with PATC means partially accepted technically correct
 
-If the payment-order requires multiple authorisations, the Status of the multiple authorisations will be updated in the MultiAuthorisation object.
-
-![Multiple Authorisation Statss](./images/image2018-6-29_16-36-34.png)
 
 The definitions for the Status:
 
 | |Status |Status Description |
 | --- |------ |------------------ |
-| 1 |AwaitingFurtherAuthorisation |The payment-order resource is awaiting further authorisation. |
-| 2 |Rejected |The payment-order resource has been rejected by an authoriser. |
-| 3 |Authorised |The payment-order resource has been successfully authorised by all required authorisers. |
+| 1 |AWAU |The payment-order resource is awaiting further authorisation. |
+| 2 |RJCT |The payment-order resource has been rejected by an authoriser. |
+| 3 |AUTH |The payment-order resource has been successfully authorised by all required authorisers. |
 
 ## Data Model
 

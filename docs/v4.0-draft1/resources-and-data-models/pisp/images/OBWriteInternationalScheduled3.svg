@@ -674,7 +674,6 @@ Description: Specifies the payment context
 Values:
  - BillingGoodsAndServicesInAdvance
  - BillingGoodsAndServicesInArrears
- - PispPayee
  - EcommerceMerchantInitiatedPayment
  - FaceToFacePointOfSale
  - TransferToSelf
