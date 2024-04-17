@@ -1644,7 +1644,7 @@ Accept: application/json
   },
   "Risk": {
     "PaymentContextCode": "EcommerceMerchantInitiatedPayment",
-    "ContractPresentIndicator": false,
+    "ContractPresentInidicator": false,
     "PaymentPurposeCode": "EPAY",
     "BeneficiaryPrepopulatedIndicator": false,
     "BeneficiaryAccountType": "Business",
