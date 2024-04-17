@@ -71,12 +71,13 @@ After consent has been agreed the **funds-confirmation-consent** resource may ha
 | --- |--- |--- |
 | 1 |RJCT |The Funds Confirmation Consent has been rejected. |
 | 2 |AUTH |The Funds Confirmation Consent has been successfully agreed. |
+| 3| COND | The Funds Confirmation Consent has been Consumed |
 
 #### Status Flow
 
 This is the state diagram for the Status.
 
-![CoFStateFlow](./images/CoFStateFlow.png)
+![CoFStateFlow](./images/PO_Consent.png)
 
 ### GET /funds-confirmation-consents/{ConsentId}
 
@@ -94,12 +95,11 @@ Once the PSU agrees the consent outlined in the **funds-confirmation-consent** r
 
 The available Status code-list enumerations for the **funds-confirmation-consent** resource are:
 
-|  |Status |Status Description |
+|  |StatusCode |Status Description |
 | --- |--- |--- |
 | 1 |RJCT |The Funds Confirmation Consent has been rejected. |
 | 2 |AWAU |The Funds Confirmation Consent is awaiting agreement. |
 | 3 |AUTH |The Funds Confirmation Consent has been successfully agreed. |
-| 4 |Revoked |The Funds Confirmation Consent has been revoked via the ASPSP interface. |
 
 
 ### DELETE /funds-confirmation-consents/{ConsentId}
@@ -170,8 +170,7 @@ The OBFundsConfirmationConsentResponse1 object contains the same information as 
 | Data |1..1 |OBFundsConfirmationConsentResponse1/Data | |OBFundsConfirmationConsentDataResponse1 | | |
 | ConsentId |1..1 |OBFundsConfirmationConsentResponse1/Data/ConsentId |Unique identification as assigned to identify the funds confirmation consent resource. |Max128Text | | |
 | CreationDateTime |1..1 |OBFundsConfirmationConsentResponse1/Data/CreationDateTime |Date and time at which the resource was created. |ISODateTime | | |
-| StatusCode |0..1 |OBReadConsentResponse1/Data/StatusCode |Specifies the status of consent resource in code form. |
-ExternalStatusReason1Code |AUTH AWAU RJCT COND |
+| StatusCode |0..1 |OBReadConsentResponse1/Data/StatusCode |Specifies the status of consent resource in code form. |ExternalStatusReason1Code |AUTH AWAU RJCT COND |
 | StatusReason |0..* |OBReadConsentResponse1/Data/StatusReason |Specifies the status reason. | OBStatusReason |
 | StatusReasonCode |0..1 |OBReadConsentResponse1/Data/StatusReason/*/StatusReasonCode |Specifies the status reason in a code form. For a full description see `ExternalStatusReason1Code` [here](https://github.com/OpenBankingUK/External_Interal_CodeSets). | ExternalStatusReason1Code |
 | StatusReasonDescription |0..1 |OBReadConsentResponse1/Data/StatusReason/*/StatusReasonDescription |Description supporting the StatusReasonCode. |
@@ -194,10 +193,10 @@ This section gives the definitions for enumerations used in the Confirmation of 
 
 | Code Class |Name |Definition |
 | --- |--- |--- |
-| OBExternalRequestStatus1Code |Authorised |The funds confirmation consent has been successfully agreed. |
-| OBExternalRequestStatus1Code |AwaitingAuthorisation |The funds confirmation consent is awaiting agreement. |
-| OBExternalRequestStatus1Code |Rejected |The funds confirmation consent has been rejected. |
-| OBExternalRequestStatus1Code |Revoked |The funds confirmation consent has been revoked via the ASPSP interface. |
+| OBExternalRequestStatus1Code |AUTH |The funds confirmation consent has been successfully agreed. |
+| OBExternalRequestStatus1Code |AWAU |The funds confirmation consent is awaiting agreement. |
+| OBExternalRequestStatus1Code |RJCT |The funds confirmation consent has been rejected. |
+
 
 ## Usage Examples
 
@@ -223,7 +222,7 @@ x-fapi-interaction-id: hook5i13-ntIg-4th3-rP41-3ro535touch3
 {
   "Data": {
     "DebtorAccount": {
-      "SchemeName": "UK.OBIE.IBAN",
+      "SchemeName": "UK.OB.IBAN",
       "Identification": "GB76LOYD30949301273801",
       "SecondaryIdentification": "Roll 56988"
     },
@@ -251,7 +250,7 @@ x-fapi-interaction-id: hook5i13-ntIg-4th3-rP41-3ro535touch3
     "StatusUpdateDateTime": "2017-05-02T00:00:00+00:00",
     "ExpirationDateTime": "2017-05-02T00:00:00+00:00",
     "DebtorAccount": {
-      "SchemeName": "UK.OBIE.IBAN",
+      "SchemeName": "UK.OB.IBAN",
       "Identification": "GB76LOYD30949301273801",
       "SecondaryIdentification": "Roll 56988"
     }
@@ -297,7 +296,7 @@ Content-Type: application/json
     "StatusUpdateDateTime": "2017-05-02T00:00:00+00:00",
     "ExpirationDateTime": "2017-05-02T00:00:00+00:00",
     "DebtorAccount": {
-      "SchemeName": "UK.OBIE.IBAN",
+      "SchemeName": "UK.OB.IBAN",
       "Identification": "GB76LOYD30949301273801",
       "SecondaryIdentification": "Roll 56988"
     }
@@ -340,7 +339,7 @@ Content-Type: application/json
     "StatusUpdateDateTime": "2017-05-02T00:00:00+00:00",
     "ExpirationDateTime": "2017-05-02T00:00:00+00:00",
     "DebtorAccount": {
-      "SchemeName": "UK.OBIE.PAN",
+      "SchemeName": "UK.OB.PAN",
       "Identification": "4444********1111"
     }
   },
