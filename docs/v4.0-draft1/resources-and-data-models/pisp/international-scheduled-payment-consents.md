@@ -230,6 +230,106 @@ The ExchangeRateInformation object must conform to these behaviours:
 | Unstructured |0..1 |OBInternationalScheduled3/RemittanceInformation/Unstructured |Information supplied to enable the matching/reconciliation of an entry with the items that the payment is intended to settle, such as commercial invoices in an accounts' receivable system, in an unstructured form. |Max140Text | | |
 | Reference |0..1 |OBInternationalScheduled3/RemittanceInformation/Reference |Unique reference, as assigned by the creditor, to unambiguously refer to the payment transaction. Usage: If available, the initiating party should provide this reference in the structured remittance information, to enable reconciliation by the creditor upon receipt of the amount of money. If the business context requires the use of a creditor reference or a payment remit identification, and only one identifier can be passed through the end-to-end chain, the creditor's reference or payment remittance identification should be quoted in the end-to-end transaction identification. OB: The Faster Payments Scheme can only accept 18 characters for the ReferenceInformation field - which is where this ISO field will be mapped. |Max35Text | | |
 | SupplementaryData |0..1 |OBInternationalScheduled3/SupplementaryData |Additional information that can not be captured in the structured fields and/or any other specific block. |OBSupplementaryData1 | | |
+| UltimateCreditor  |0..1 |OBInternationalScheduled3/UltimateCreditor |Party to which an amount of money is due. |OBPartyIdentification43 | | |
+| Name |0..1 |OBInternationalScheduled3/UltimateCreditor/Name |Name by which a party is known and which is usually used to identify that party. |Max350Text | | |
+| SchemeName |0..1 |OBInternationalScheduled3/UltimateCreditor/SchemeName |Name of the identification scheme, in a coded form as published in an external list. |OBExternalFinancialInstitutionIdentification4Code | | |
+| Identification |0..1 |OBInternationalScheduled3/UltimateCreditor/Identification |Unique and unambiguous identification of a financial institution or a branch of a financial institution. |Max35Text | | |
+| LEI |0..1 |OBInternationalScheduled3/UltimateCreditor/LEI |Name by which a party is known and which is usually used to identify that party. |OBLegalEntityIdentity| | |
+| Account |0..n |OBInternationalScheduled3/UltimateCreditor/LEI/Accounts |Provides the details to identify an account. |OBCashAccount5 | | |
+| SchemeName |1..1 |OBInternationalScheduled3/UltimateCreditor/LEI/Accounts/SchemeName |Name of the identification scheme, in a coded form as published in an external list. |OBExternalAccountIdentification4Code | | |
+| Identification |1..1 |OBInternationalScheduled3/UltimateCreditor/LEI/Accounts/Identification |Identification assigned by an institution to identify an account. This identification is known by the account owner. |Max256Text | | |
+| Name |0..1 |OBInternationalScheduled3/UltimateCreditor/LEI/Accounts/Name |The account name is the name or names of the account owner(s) represented at an account level, as displayed by the ASPSP's online channels. Note, the account name is not the product name or the nickname of the account. |Max350Text | | |
+| SecondaryIdentification |0..1 |OBInternationalScheduled3/UltimateCreditor/LEI/Accounts/SecondaryIdentification |This is secondary identification of the account, as assigned by the account servicing institution. This can be used by building societies to additionally identify accounts with a roll number (in addition to a sort code and account number combination). |Max34Text | | |
+|Beneficiaries |0..* |OBInternationalScheduled3/UltimateCreditor/LEI/Beneficiaries |Financial institution servicing an account for the beneficiaries. |OBBranchAndFinancialInstitutionIdentification6 | | |
+| SchemeName |0..1 |OBInternationalScheduled3/UltimateCreditor/LEI/Beneficiaries/SchemeName |Name of the identification scheme, in a coded form as published in an external list. |OBExternalFinancialInstitutionIdentification4Code | | |
+| Identification |0..1 |OBInternationalScheduled3/UltimateCreditor/LEI/Beneficiaries/Identification |Unique and unambiguous identification of a financial institution or a branch of a financial institution. |Max35Text | | |
+| Name |0..1 |OBInternationalScheduled3/UltimateCreditor/LEI/Beneficiaries/Name |Name by which an agent is known and which is usually used to identify that agent. |Max140Text | | |
+| PostalAddress |0..1 |OBInternationalScheduled3/UltimateCreditor/LEI/Beneficiaries/PostalAddress |Information that locates and identifies a specific address, as defined by postal services. |OBPostalAddress6 | | |
+| AddressType |0..1 |OBInternationalScheduled3/UltimateCreditor/LEI/Beneficiaries/PostalAddress/AddressType |Identifies the nature of the postal address. |OBAddressTypeCode |Business Correspondence DeliveryTo MailTo POBox Postal Residential Statement | |
+| Department |0..1 |OBInternationalScheduled3/UltimateCreditor/LEI/Beneficiaries/PostalAddress/Department |Identification of a division of a large organisation or building. |Max70Text | | |
+| SubDepartment |0..1 |OBInternationalScheduled3/UltimateCreditor/LEI/Beneficiaries/PostalAddress/SubDepartment |Identification of a sub-division of a large organisation or building. |Max70Text | | |
+| StreetName |0..1 |OBInternationalScheduled3/UltimateCreditor/LEI/Beneficiaries/PostalAddress/StreetName |Name of a street or thoroughfare. |Max70Text | | |
+| BuildingNumber |0..1 |OBInternationalScheduled3/UltimateCreditor/LEI/Beneficiaries/PostalAddress/BuildingNumber |Number that identifies the position of a building on a street. |Max16Text | | |
+| PostCode |0..1 |OBInternationalScheduled3/UltimateCreditor/LEI/Beneficiaries/PostalAddress/PostCode |Identifier consisting of a group of letters and/or numbers that is added to a postal address to assist the sorting of mail. |Max16Text | | |
+| TownName |0..1 |OBInternationalScheduled3/UltimateCreditor/LEI/Beneficiaries/PostalAddress/TownName |Name of a built-up area, with defined boundaries, and a local government. |Max35Text | | |
+| CountrySubDivision |0..1 |OBInternationalScheduled3/UltimateCreditor/LEI/Beneficiaries/PostalAddress/CountrySubDivision |Identifies a subdivision of a country such as state, region, county. |Max35Text | | |
+| Country |0..1 |OBInternationalScheduled3/UltimateCreditor/LEI/Beneficiaries/PostalAddress/Country |Nation with its own government. |CountryCode | |^[A-Z]{2,2}$ |
+| AddressLine |0..7 |OBInternationalScheduled3/UltimateCreditor/LEI/Beneficiaries/PostalAddress/AddressLine |Information that locates and identifies a specific address, as defined by postal services, presented in free format text. |Max70Text | | |
+| Parties | 0.* |OBInternationalScheduled3/UltimateCreditor/LEI/Parties | |OBInternationalScheduled3/UltimateCreditor/LEI/Parties | | |
+| PartyId |1..1 |OBInternationalScheduled3/UltimateCreditor/LEI/Parties/PartyId |A unique and immutable identifier used to identify the customer resource. This identifier has no meaning to the account owner. |Max40Text | | |
+| PartyNumber |0..1 |OBInternationalScheduled3/UltimateCreditor/LEI/Parties/PartyNumber |Number assigned by an agent to identify its customer. |Max35Text | | |
+| PartyType |0..1 |OBInternationalScheduled3/UltimateCreditor/LEI/Parties/PartyType |Party type |OBExternalPartyType1Code |Delegate Joint Sole | |
+| Name |0..1 |OBInternationalScheduled3/UltimateCreditor/LEI/Parties/Name |Name by which a party is known and which is usually used to identify that party. |Max350Text | | |
+| FullLegalName |0..1 |OBInternationalScheduled3/UltimateCreditor/LEI/Parties/FullLegalName |The full legal name of the party. |Max350Text | | |
+| LegalStructure |0..1 |OBInternationalScheduled3/UltimateCreditor/LEI/Parties/LegalStructure |Legal standing of the party. |OBExternalLegalStructureType1Code | | |
+| BeneficialOwnership |0..1 |OBInternationalScheduled3/UltimateCreditor/LEI/Parties/BeneficialOwnership |A flag to indicate a party's beneficial ownership of the related account. |xs:boolean | | |
+| AccountRole |0..1 |OBInternationalScheduled3/UltimateCreditor/LEI/Parties/AccountRole |A party's role with respect to the related account. |OBExternalAccountRole1Code | | |
+| EmailAddress |0..1 |OBInternationalScheduled3/UltimateCreditor/LEI/Parties/EmailAddress |Address for electronic mail (e-mail). |Max256Text | | |
+| Phone |0..1 |OBInternationalScheduled3/UltimateCreditor/LEI/Parties/Phone |Collection of information that identifies a phone number as defined by telecom services. |PhoneNumber | |\+[0-9]{1,3}-[0-9()+\-]{1,30} |
+| Mobile |0..1 |OBInternationalScheduled3/UltimateCreditor/LEI/Parties/Mobile |Collection of information that identifies a mobile phone number as defined by telecom services. |PhoneNumber | |\+[0-9]{1,3}-[0-9()+\-]{1,30} |
+| Relationships |0..1 |OBInternationalScheduled3/UltimateCreditor/LEI/Parties/Relationships |The Party's relationships with other resources. |OBPartyRelationships1 | | |
+| Account |0..1 |OBInternationalScheduled3/UltimateCreditor/LEI/Parties/Relationships/Account |Relationship to the Account resource. |OBRelationship1 | | |
+| Related |1..1 |OBInternationalScheduled3/UltimateCreditor/LEI/Parties/Relationships/Account/Related |Absolute URI to the related resource. |xs:anyURI | | |
+| Id |1..1 |OBInternationalScheduled3/UltimateCreditor/LEI/Parties/Relationships/Account/Id |Unique identification as assigned by the ASPSP to uniquely identify the related resource. |Max40Text | | |
+| Address |0..n |OBInternationalScheduled3/UltimateCreditor/LEI/Parties/Address |Postal address of a party. |OBPostalAddress8 | | |
+| AddressType |0..1 |OBInternationalScheduled3/UltimateCreditor/LEI/Parties/Address/AddressType |Identifies the nature of the postal address. |OBAddressTypeCode |Business Correspondence DeliveryTo MailTo POBox Postal Residential Statement | |
+| AddressLine |0..5 |OBInternationalScheduled3/UltimateCreditor/LEI/Parties/Address/AddressLine |Information that locates and identifies a specific address, as defined by postal services, that is presented in free format text. |Max70Text | | |
+| StreetName |0..1 |OBInternationalScheduled3/UltimateCreditor/LEI/Parties/Address/StreetName |Name of a street or thoroughfare. |Max70Text | | |
+| BuildingNumber |0..1 |OBInternationalScheduled3/UltimateCreditor/LEI/Parties/Address/BuildingNumber |Number that identifies the position of a building on a street. |Max16Text | | |
+| PostCode |0..1 |OBInternationalScheduled3/UltimateCreditor/LEI/Parties/Address/PostCode |Identifier consisting of a group of letters and/or numbers that is added to a postal address to assist the sorting of mail. |Max16Text | | |
+| TownName |0..1 |OBInternationalScheduled3/UltimateCreditor/LEI/Parties/Address/TownName |Name of a built-up area, with defined boundaries, and a local government. |Max35Text | | |
+| CountrySubDivision |0..1 |OBInternationalScheduled3/UltimateCreditor/LEI/Parties/Address/CountrySubDivision |Identifies a subdivision of a country eg, state, region, county. |Max35Text | | |
+| Country |1..1 |OBInternationalScheduled3/UltimateCreditor/LEI/Parties/Address/Country |Nation with its own government, occupying a particular territory. |CountryCode | |^[A-Z]{2,2}$ |
+| UltimateDebtor  |0..1 |OBInternationalScheduled3/UltimateDebtor |Party to which an amount of money is due. |OBPartyIdentification43 | | |
+| Name |0..1 |OBInternationalScheduled3/UltimateDebtor/Name |Name by which a party is known and which is usually used to identify that party. |Max350Text | | |
+| SchemeName |0..1 |OBInternationalScheduled3/UltimateDebtor/SchemeName |Name of the identification scheme, in a coded form as published in an external list. |OBExternalFinancialInstitutionIdentification4Code | | |
+| Identification |0..1 |OBInternationalScheduled3/UltimateDebtor/Identification |Unique and unambiguous identification of a financial institution or a branch of a financial institution. |Max35Text | | |
+| LEI |0..1 |OBInternationalScheduled3/UltimateDebtor/LEI |Name by which a party is known and which is usually used to identify that party. |OBLegalEntityIdentity| | |
+| Account |0..n |OBInternationalScheduled3/UltimateDebtor/LEI/Accounts |Provides the details to identify an account. |OBCashAccount5 | | |
+| SchemeName |1..1 |OBInternationalScheduled3/UltimateDebtor/LEI/Accounts/SchemeName |Name of the identification scheme, in a coded form as published in an external list. |OBExternalAccountIdentification4Code | | |
+| Identification |1..1 |OBInternationalScheduled3/UltimateDebtor/LEI/Accounts/Identification |Identification assigned by an institution to identify an account. This identification is known by the account owner. |Max256Text | | |
+| Name |0..1 |OBInternationalScheduled3/UltimateDebtor/LEI/Accounts/Name |The account name is the name or names of the account owner(s) represented at an account level, as displayed by the ASPSP's online channels. Note, the account name is not the product name or the nickname of the account. |Max350Text | | |
+| SecondaryIdentification |0..1 |OBInternationalScheduled3/UltimateDebtor/LEI/Accounts/SecondaryIdentification |This is secondary identification of the account, as assigned by the account servicing institution. This can be used by building societies to additionally identify accounts with a roll number (in addition to a sort code and account number combination). |Max34Text | | |
+|Beneficiaries |0..* |OBInternationalScheduled3/UltimateDebtor/LEI/Beneficiaries |Financial institution servicing an account for the beneficiaries. |OBBranchAndFinancialInstitutionIdentification6 | | |
+| SchemeName |0..1 |OBInternationalScheduled3/UltimateDebtor/LEI/Beneficiaries/SchemeName |Name of the identification scheme, in a coded form as published in an external list. |OBExternalFinancialInstitutionIdentification4Code | | |
+| Identification |0..1 |OBInternationalScheduled3/UltimateDebtor/LEI/Beneficiaries/Identification |Unique and unambiguous identification of a financial institution or a branch of a financial institution. |Max35Text | | |
+| Name |0..1 |OBInternationalScheduled3/UltimateDebtor/LEI/Beneficiaries/Name |Name by which an agent is known and which is usually used to identify that agent. |Max140Text | | |
+| PostalAddress |0..1 |OBInternationalScheduled3/UltimateDebtor/LEI/Beneficiaries/PostalAddress |Information that locates and identifies a specific address, as defined by postal services. |OBPostalAddress6 | | |
+| AddressType |0..1 |OBInternationalScheduled3/UltimateDebtor/LEI/Beneficiaries/PostalAddress/AddressType |Identifies the nature of the postal address. |OBAddressTypeCode |Business Correspondence DeliveryTo MailTo POBox Postal Residential Statement | |
+| Department |0..1 |OBInternationalScheduled3/UltimateDebtor/LEI/Beneficiaries/PostalAddress/Department |Identification of a division of a large organisation or building. |Max70Text | | |
+| SubDepartment |0..1 |OBInternationalScheduled3/UltimateDebtor/LEI/Beneficiaries/PostalAddress/SubDepartment |Identification of a sub-division of a large organisation or building. |Max70Text | | |
+| StreetName |0..1 |OBInternationalScheduled3/UltimateDebtor/LEI/Beneficiaries/PostalAddress/StreetName |Name of a street or thoroughfare. |Max70Text | | |
+| BuildingNumber |0..1 |OBInternationalScheduled3/UltimateDebtor/LEI/Beneficiaries/PostalAddress/BuildingNumber |Number that identifies the position of a building on a street. |Max16Text | | |
+| PostCode |0..1 |OBInternationalScheduled3/UltimateDebtor/LEI/Beneficiaries/PostalAddress/PostCode |Identifier consisting of a group of letters and/or numbers that is added to a postal address to assist the sorting of mail. |Max16Text | | |
+| TownName |0..1 |OBInternationalScheduled3/UltimateDebtor/LEI/Beneficiaries/PostalAddress/TownName |Name of a built-up area, with defined boundaries, and a local government. |Max35Text | | |
+| CountrySubDivision |0..1 |OBInternationalScheduled3/UltimateDebtor/LEI/Beneficiaries/PostalAddress/CountrySubDivision |Identifies a subdivision of a country such as state, region, county. |Max35Text | | |
+| Country |0..1 |OBInternationalScheduled3/UltimateDebtor/LEI/Beneficiaries/PostalAddress/Country |Nation with its own government. |CountryCode | |^[A-Z]{2,2}$ |
+| AddressLine |0..7 |OBInternationalScheduled3/UltimateDebtor/LEI/Beneficiaries/PostalAddress/AddressLine |Information that locates and identifies a specific address, as defined by postal services, presented in free format text. |Max70Text | | |
+| Parties | 0.* |OBInternationalScheduled3/UltimateDebtor/LEI/Parties | |OBInternationalScheduled3/UltimateDebtor/LEI/Parties | | |
+| PartyId |1..1 |OBInternationalScheduled3/UltimateDebtor/LEI/Parties/PartyId |A unique and immutable identifier used to identify the customer resource. This identifier has no meaning to the account owner. |Max40Text | | |
+| PartyNumber |0..1 |OBInternationalScheduled3/UltimateDebtor/LEI/Parties/PartyNumber |Number assigned by an agent to identify its customer. |Max35Text | | |
+| PartyType |0..1 |OBInternationalScheduled3/UltimateDebtor/LEI/Parties/PartyType |Party type |OBExternalPartyType1Code |Delegate Joint Sole | |
+| Name |0..1 |OBInternationalScheduled3/UltimateDebtor/LEI/Parties/Name |Name by which a party is known and which is usually used to identify that party. |Max350Text | | |
+| FullLegalName |0..1 |OBInternationalScheduled3/UltimateDebtor/LEI/Parties/FullLegalName |The full legal name of the party. |Max350Text | | |
+| LegalStructure |0..1 |OBInternationalScheduled3/UltimateDebtor/LEI/Parties/LegalStructure |Legal standing of the party. |OBExternalLegalStructureType1Code | | |
+| BeneficialOwnership |0..1 |OBInternationalScheduled3/UltimateDebtor/LEI/Parties/BeneficialOwnership |A flag to indicate a party's beneficial ownership of the related account. |xs:boolean | | |
+| AccountRole |0..1 |OBInternationalScheduled3/UltimateDebtor/LEI/Parties/AccountRole |A party's role with respect to the related account. |OBExternalAccountRole1Code | | |
+| EmailAddress |0..1 |OBInternationalScheduled3/UltimateDebtor/LEI/Parties/EmailAddress |Address for electronic mail (e-mail). |Max256Text | | |
+| Phone |0..1 |OBInternationalScheduled3/UltimateDebtor/LEI/Parties/Phone |Collection of information that identifies a phone number as defined by telecom services. |PhoneNumber | |\+[0-9]{1,3}-[0-9()+\-]{1,30} |
+| Mobile |0..1 |OBInternationalScheduled3/UltimateDebtor/LEI/Parties/Mobile |Collection of information that identifies a mobile phone number as defined by telecom services. |PhoneNumber | |\+[0-9]{1,3}-[0-9()+\-]{1,30} |
+| Relationships |0..1 |OBInternationalScheduled3/UltimateDebtor/LEI/Parties/Relationships |The Party's relationships with other resources. |OBPartyRelationships1 | | |
+| Account |0..1 |OBInternationalScheduled3/UltimateDebtor/LEI/Parties/Relationships/Account |Relationship to the Account resource. |OBRelationship1 | | |
+| Related |1..1 |OBInternationalScheduled3/UltimateDebtor/LEI/Parties/Relationships/Account/Related |Absolute URI to the related resource. |xs:anyURI | | |
+| Id |1..1 |OBInternationalScheduled3/UltimateDebtor/LEI/Parties/Relationships/Account/Id |Unique identification as assigned by the ASPSP to uniquely identify the related resource. |Max40Text | | |
+| Address |0..n |OBInternationalScheduled3/UltimateDebtor/LEI/Parties/Address |Postal address of a party. |OBPostalAddress8 | | |
+| AddressType |0..1 |OBInternationalScheduled3/UltimateDebtor/LEI/Parties/Address/AddressType |Identifies the nature of the postal address. |OBAddressTypeCode |Business Correspondence DeliveryTo MailTo POBox Postal Residential Statement | |
+| AddressLine |0..5 |OBInternationalScheduled3/UltimateDebtor/LEI/Parties/Address/AddressLine |Information that locates and identifies a specific address, as defined by postal services, that is presented in free format text. |Max70Text | | |
+| StreetName |0..1 |OBInternationalScheduled3/UltimateDebtor/LEI/Parties/Address/StreetName |Name of a street or thoroughfare. |Max70Text | | |
+| BuildingNumber |0..1 |OBInternationalScheduled3/UltimateDebtor/LEI/Parties/Address/BuildingNumber |Number that identifies the position of a building on a street. |Max16Text | | |
+| PostCode |0..1 |OBInternationalScheduled3/UltimateDebtor/LEI/Parties/Address/PostCode |Identifier consisting of a group of letters and/or numbers that is added to a postal address to assist the sorting of mail. |Max16Text | | |
+| TownName |0..1 |OBInternationalScheduled3/UltimateDebtor/LEI/Parties/Address/TownName |Name of a built-up area, with defined boundaries, and a local government. |Max35Text | | |
+| CountrySubDivision |0..1 |OBInternationalScheduled3/UltimateDebtor/LEI/Parties/Address/CountrySubDivision |Identifies a subdivision of a country eg, state, region, county. |Max35Text | | |
+| Country |1..1 |OBInternationalScheduled3/UltimateDebtor/LEI/Parties/Address/Country |Nation with its own government, occupying a particular territory. |CountryCode | |^[A-Z]{2,2}$ |
 
 #### OBExchangeRate2
 
