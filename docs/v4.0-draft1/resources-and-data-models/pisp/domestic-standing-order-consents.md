@@ -85,7 +85,9 @@ The available Status codes for the domestic-standing-order-consent resource are:
 
 #### Payment Order Consent
 
-The state model for the domestic-standing-order-consent resource follows the generic consent state model. 
+The state model for the domestic-standing-order-consent resource follows the generic consent state model.
+
+![State model](./images/PO_Consent.png)
 
 
 The definitions for the Status:
@@ -121,8 +123,8 @@ For the OBDomesticStandingOrder3 Initiation object:
 * DebtorAccount is **optional** as the PISP may not know the account identification details for the PSU.
 * If the DebtorAccount is specified by the PISP and is invalid for the PSU, then the domestic-standing-order-consent will be set to Rejected after PSU authentication.
 * Account Identification field usage:
-  * Where "UK.OBIE.SortCodeAccountNumber" is specified as the SchemeName in the Account identification section (either DebtorAccount or CreditorAccount), the Identification field **must** be populated with the 6 digit Sort Code and 8 digit Account Number (a 14 digit field).
-  * Where the "UK.OBIE.IBAN" is specified as the SchemeName in the Account identification section (either DebtorAccount or CreditorAccount), the Identification field **must** be populated with the full IBAN.
+  * Where "UK.OB.SortCodeAccountNumber" is specified as the SchemeName in the Account identification section (either DebtorAccount or CreditorAccount), the Identification field **must** be populated with the 6 digit Sort Code and 8 digit Account Number (a 14 digit field).
+  * Where the "UK.OB.IBAN" is specified as the SchemeName in the Account identification section (either DebtorAccount or CreditorAccount), the Identification field **must** be populated with the full IBAN.
 * The Permission field is restricted to "Create", however, may be extended to "Update" and "Delete" in a future iteration of the specification.
 * Either the NumberOfPayments or FinalPaymentDateTime must be specified (not both) if the domestic standing order is not open ended.
 * The structure allows a PISP to specify a domestic standing order with a different payment amount and date combinations: for the first payment, the recurring payment, and the final payment. The recurring payment (and date) must only be populated if different from the first payment (and date).
@@ -328,12 +330,12 @@ Accept: application/json
         "Currency": "GBP"
 	  },
       "DebtorAccount": {
-        "SchemeName": "UK.OBIE.SortCodeAccountNumber",
+        "SchemeName": "UK.OB.SortCodeAccountNumber",
         "Identification": "11280001234567",
         "Name": "Andrea Smith"
       },
       "CreditorAccount": {
-        "SchemeName": "UK.OBIE.SortCodeAccountNumber",
+        "SchemeName": "UK.OB.SortCodeAccountNumber",
         "Identification": "08080021325698",
         "Name": "Bob Clements"
       }
@@ -456,12 +458,12 @@ Content-Type: application/json
         "Currency": "GBP"
 	  },
       "DebtorAccount": {
-        "SchemeName": "UK.OBIE.SortCodeAccountNumber",
+        "SchemeName": "UK.OB.SortCodeAccountNumber",
         "Identification": "11280001234567",
         "Name": "Andrea Smith"
       },
       "CreditorAccount": {
-        "SchemeName": "UK.OBIE.SortCodeAccountNumber",
+        "SchemeName": "UK.OB.SortCodeAccountNumber",
         "Identification": "08080021325698",
         "Name": "Bob Clements"
       }

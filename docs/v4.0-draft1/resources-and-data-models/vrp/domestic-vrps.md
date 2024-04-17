@@ -41,7 +41,7 @@ The TPP **must** ensure that the `Initiation` and `Risk` section matches the val
 
 The ASPSP **must** ensure that the payment instruction adheres to the limitations set by the corresponding VRP consent's `ControlParameters`.
 
-When a payment would breach a limitation set by one or more `ControlParameters`, the ASPSP **must** return an error with code `UK.OBIE.Rules.FailsControlParameters` and pass in the control parameter field that caused the error in the `Field` field of the error message.
+When a payment would breach a limitation set by one or more `ControlParameters`, the ASPSP **must** return an error with code `UK.OB.Rules.FailsControlParameters` and pass in the control parameter field that caused the error in the `Field` field of the error message.
 
 If the `CreditorAccount` was not specified in the the consent, the `CreditorAccount` must be specified in the instruction.
 
@@ -118,17 +118,8 @@ The API must return one of the following status codes:
 
 The state model for the `domestic-vrps` resource follows the behavior and definitions for the ISO 20022 PaymentStatusCode code-set.
 
-![Domestic VRP Status](./images/new-state-model.png)
+![Payment Order Status](./images/PIS_PO_Statuses.png)
 
-The definitions for the status:
-|  |Status |Payment Status Description |
-|--|------ |-------------------------- |
-| 1 |PDNG |Payment initiation or individual transaction included in the payment initiation is pending. Further checks and status update will be performed. |
-| 2 |RJCT |Payment initiation or individual transaction included in the payment initiation has been rejected. |
-| 3 |ACSP |All preceding checks such as technical validation and customer profile were successful and therefore the payment initiation has been accepted for execution. |
-| 4 |ACSC |Settlement on the debtor's account has been completed. |
-| 5 |ACWP |Payment instruction included in the credit transfer is accepted without being posted to the creditor customer’s account. |
-| 6 |ACCC |Settlement on the creditor's account has been completed.|
 
 ## Data Model
 

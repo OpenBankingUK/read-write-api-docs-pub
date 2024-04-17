@@ -83,6 +83,16 @@ The available Status codes for the domestic-scheduled-payment-consent resource a
 
 The state model for the domestic-scheduled-payment-consent resource follows the generic consent state model. 
 
+![State model](./images/PO_Consent.png)
+
+The definitions for the Status:
+|  | StatusCode |Status Description |
+| ---| ------ |------------------ |
+| 1 |AWAU |The consent resource is awaiting PSU authorisation. |
+| 2 |RJCT |The consent resource has been rejected. |
+| 3 |AUTH |The consent resource has been successfully authorised. |
+|4 |COND|The consented action has been successfully completed. This does not reflect the status of the consented action.|
+
 
 ## Data Model
 
@@ -299,12 +309,12 @@ Accept: application/json
         "Currency": "GBP"
       },
       "DebtorAccount": {
-        "SchemeName": "UK.OBIE.SortCodeAccountNumber",
+        "SchemeName": "UK.OB.SortCodeAccountNumber",
         "Identification": "11280001234567",
         "Name": "Andrea Frost"
       },
       "CreditorAccount": {
-        "SchemeName": "UK.OBIE.SortCodeAccountNumber",
+        "SchemeName": "UK.OB.SortCodeAccountNumber",
         "Identification": "08080021325698",
         "Name": "Tom Kirkman"
       },
@@ -346,12 +356,12 @@ Content-Type: application/json
         "Currency": "GBP"
       },
       "DebtorAccount": {
-        "SchemeName": "UK.OBIE.SortCodeAccountNumber",
+        "SchemeName": "UK.OB.SortCodeAccountNumber",
         "Identification": "11280001234567",
         "Name": "Andrea Frost"
       },
       "CreditorAccount": {
-        "SchemeName": "UK.OBIE.SortCodeAccountNumber",
+        "SchemeName": "UK.OB.SortCodeAccountNumber",
         "Identification": "08080021325698",
         "Name": "Tom Kirkman"
       },

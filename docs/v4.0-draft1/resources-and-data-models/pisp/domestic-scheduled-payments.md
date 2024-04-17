@@ -110,11 +110,25 @@ The domestic-scheduled-payments - payment-details must have one of the following
 
 The state model for the domestic-scheduled-payment resource describes the initiation and subsequent execution of the domestic-scheduled-payment.
 
-![Payment state model](./images/new-state-model.png)
+![Payment Order Status](./images/PIS_PO_Statuses.png)
+
 
 ##### Multiple Authorisation
-Once the payment is RCVD, it goes in PATC or CANC. If PATC then ACFC (if all authorisers have authorised) and then ACSP
-replace Awaiting Further Authorisation with PATC means partially accepted technically correct
+If the payment-order requires multiple authorisations the status of the multiple authorisations will be updated in the MultiAuthorisation object.
+
+Once the payment is RCVD, the StatusCode should be set to PATC and the MultiAuthorisation object status updated with the AWAU status.  Once all authorisations have been successfully completed the MultiAuthorisation status should be set to AUTH and StatusCode updated to ACSP.
+
+Any rejections in the multiple authorisation process should result in the MultiAuthorisation status and StatusCode being set to RJCT. 
+
+
+![Multi Auth](./images/PO_MultiAuthFlow.png)
+
+|  | Status |Status Description |
+| ---| ------ |------------------ |
+| 1 |AWAU |The consent resource is awaiting further authorisation. |
+| 2 |RJCT |The consent resource has been rejected. |
+| 3 |AUTH |The consent resource has been successfully authorised. |
+
 
 
 ## Data Model

@@ -81,6 +81,8 @@ If resource has any other Status, the ASPSP must respond with a 400 (Bad Request
 
 The state model for the VRP consents resource follows the generic consent state model. However, it does not use the `COND` StatusCode.
 
+![VRP Consent State model](./images/PIS-VRP_PO_Consent.png)
+
 
 All `domestic-vrp-consents` start off with a state of `AWAU`
 
@@ -93,6 +95,8 @@ The available status codes for the VRP consents resource are:
 - AWAU
 - RJCT
 - AUTH
+- CANC
+- EXPD
 
 The definitions for the Status:
 
@@ -100,7 +104,9 @@ The definitions for the Status:
 |-----|-----------------------|-------------------------------------------------------------------------------|
 | 1   | AWAU | The consent resource is awaiting PSU authorisation.                           |
 | 2   | RJCT              | The consent resource has been rejected.                                       |
-| 3   | AUTH            | The consent resource has been successfully authorised.                        |
+| 3   | AUTH            | The consent resource has been successfully authorised.  
+| 4| CANC| The consent resource has been canceled.                      |
+| 5| EXPD| The consent resource has expired.|
 
 ## Data Model
 
