@@ -157,8 +157,6 @@ The definitions for the status:
 | __CreditorAgent__ (0..1) | `CreditorAgent` | Financial institution servicing an account for the creditor.     | OBBranchAndFinancialInstitutionIdentification6
 | __CreditorAccount__ (1..1) | `CreditorAccount`   |Unambiguous identification of the account of the creditor to which a credit entry will be posted as a result of the payment transaction.       |OBCashAccountCreditor3
 | __SupplementaryData__ (0..1) | `SupplementaryData` | Additional information that can not be captured in the structured fields and/or any other specific block  | *
-| __UltimateCreditor__ (0..1) | `UltimateCreditor`   |Unambiguous identification of the account of the creditor to which a credit entry will ultimately be posted as a result of the payment transaction.       |OBPartyIdentification43
-| __UltimateDebtor__ (0..1) | `UltimateCreditor`   |Unambiguous identification of the account of the debtor to which a debit entry will ultimately be made as a result of the transaction. |OBPartyIdentification43
 
 ### OBDomesticVRPRequest
 
@@ -196,8 +194,6 @@ The definitions for the status:
 | __Initiation__ (1..1)                 | `Data. Initiation`                 | The parameters of the VRP consent that should remain unchanged for each payment under this VRP.                                                                                                              | OBDomesticVRPInitiation                                                                                                           |
 | __Instruction__ (1..1)                | `Data. Instruction`                | Specific instructions for this particular payment within the VRP consent                                                                                                                                     | OBDomesticVRPInstruction                                                                                                          |
 | __DebtorAccount__ (0..1)              | `Data.DebtorAccount`               | The approved DebtorAccount that the payment was made from.                                                                                                                                                   | OBCashAccountDebtorWithName                                                                                                       |
-| __UltimateCreditor__ (0..1) | `UltimateCreditor`   |Unambiguous identification of the account of the creditor to which a credit entry will ultimately be posted as a result of the payment transaction.       |OBPartyIdentification43
-| __UltimateDebtor__ (0..1) | `UltimateCreditor`   |Unambiguous identification of the account of the debtor to which a debit entry will ultimately be made as a result of the transaction. |OBPartyIdentification43
 
 ### OBDomesticVRPDetails
 
