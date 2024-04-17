@@ -284,6 +284,7 @@ ExternalStatusReason1Code |AUTH AWAU RJCT COND |
 | Identification |0..1 |OBWriteDomesticStandingOrderConsentResponse6/Data/Debtor/Identification |Identification assigned by an institution to identify an account. This identification is known by the account owner. |Max256Text | | |
 | Name |0..1 |OBWriteDomesticStandingOrderConsentResponse6/Data/Debtor/Name |The account name is the name or names of the account owner(s) represented at an account level, as displayed by the ASPSP's online channels. Note, the account name is not the product name or the nickname of the account. |Max350Text | | |
 | SecondaryIdentification |0..1 |OBWriteDomesticStandingOrderConsentResponse6/Data/Debtor/SecondaryIdentification |This is secondary identification of the account, as assigned by the account servicing institution. This can be used by building societies to additionally identify accounts with a roll number (in addition to a sort code and account number combination). |Max34Text | | |
+| LEI |0..1 | OBWriteDomesticStandingOrderConsentResponse6/Data/Debtor/LEI |Legal Entity Identification by which a party is known and which is usually used to identify that party. |Max20Text | | |
 | Risk |1..1 |OBWriteDomesticStandingOrderConsentResponse6/Risk |The Risk section is sent by the initiating party to the ASPSP. It is used to specify additional details for risk scoring for Payments. |OBRisk1 | | |
 
 ## Usage Examples

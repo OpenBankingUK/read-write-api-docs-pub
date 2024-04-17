@@ -280,6 +280,7 @@ ExternalStatusReason1Code |AUTH AWAU RJCT COND |
 | Authorisation |0..1 |OBWriteDomesticConsentResponse5/Data/Authorisation |The authorisation type request from the TPP. |OBAuthorisation1 | | |
 | SCASupportData |0..1 |OBWriteDomesticConsentResponse5/Data/SCASupportData |Supporting Data provided by TPP, when requesting SCA Exemption. |OBSCASupportData1 | | |
 | Debtor |0..1 |OBWriteDomesticConsentResponse5/Data/Debtor |Set of elements used to identify a person or an organisation. |OBCashAccountDebtor4 | | |
+
 | SchemeName |0..1 |OBWriteDomesticConsentResponse5/Data/Debtor/SchemeName |Name of the identification scheme, in a coded form as published in an external list. |OBExternalAccountIdentification4Code | | |
 | Identification |0..1 |OBWriteDomesticConsentResponse5/Data/Debtor/Identification |Identification assigned by an institution to identify an account. This identification is known by the account owner. |Max256Text | | |
 | Name |0..1 |OBWriteDomesticConsentResponse5/Data/Debtor/Name |The account name is the name or names of the account owner(s) represented at an account level, as displayed by the ASPSP's online channels. Note, the account name is not the product name or the nickname of the account. |Max350Text | | |

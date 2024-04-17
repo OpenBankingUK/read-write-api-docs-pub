@@ -631,7 +631,8 @@ This section describes the OBInternationalRefundAccount1 class which is used in 
 | --- |--- |--- |--- |--- |--- |--- |
 | OBInternationalRefundAccount1 |1..1 |OBInternationalRefundAccount1 |Unambiguous identification of the refund account to which a refund will be made as a result of the transaction. |OBInternationalRefundAccount1 | | |
 | Creditor |0..1 |OBInternationalRefundAccount1/Creditor |Party to which an amount of money is due. |OBPartyIdentification43 | | |
-| Name |0..1 |OBInternationalRefundAccount1/Creditor/Name |Name by which a party is known and which is usually used to identify that party. |Max350Text | | |
+| Name |0..1 |OBInternationalRefundAccount1/Creditor/Name |Legal Entity Identification by which a party is known and which is usually used to identify that party. |Max350Text | | |
+| LEI |0..1 | OBInternationalRefundAccount1/Creditor/LEI |Legal Entity Identification by which a party is known and which is usually used to identify that party. |Max20Text | | |
 | PostalAddress |0..1 |OBInternationalRefundAccount1/Creditor/PostalAddress |Information that locates and identifies a specific address, as defined by postal services. |OBPostalAddress6 | | |
 | AddressType |0..1 |OBInternationalRefundAccount1/Creditor/PostalAddress/AddressType |Identifies the nature of the postal address. |OBAddressTypeCode |Business Correspondence DeliveryTo MailTo POBox Postal Residential Statement | |
 | Department |0..1 |OBInternationalRefundAccount1/Creditor/PostalAddress/Department |Identification of a division of a large organisation or building. |Max70Text | | |
