@@ -791,7 +791,6 @@ Errors that occur when the PSU is redirected to the ASPSP to complete authentica
 The consent payload ReasonCode should also be updated with the same code.
 ![Redirect Error Example](./images/redirect-error-example.png)
 
-Note: For Single Immediate Payments the code AM04 may be returned in the error_description to indicate that there are insufficient funds to complete the transaction.  This code must also be updated in the consents ReasonCode field.
 
 #### Token Errors
 Scenarios where an action taken by the PSU or ASPSP which results in a token being expired/suspended or PSU re-authentication is required should return the appropriate code in the token endpoint error_description and the consent payload status should be updated with the same reason code.

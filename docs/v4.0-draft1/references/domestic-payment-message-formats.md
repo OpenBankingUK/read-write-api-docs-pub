@@ -1,7 +1,7 @@
 # Domestic Payment Message Formats - v4.0-draft1 <!-- omit in toc -->
 
 - [ISO 20022](#iso-20022)
-- [CBRP+ and MX Messages](#cbpr+-and-mx-messages)
+- [CBPR+ and MX Messages](#cbpr+-and-mx-messages)
 - [ISO 8583](#iso-8583)
   - [Mapping](#mapping)
   - [Notes](#notes)
