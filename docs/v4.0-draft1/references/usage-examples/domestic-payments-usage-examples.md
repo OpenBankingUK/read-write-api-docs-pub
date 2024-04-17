@@ -151,7 +151,7 @@ Accept: application/json
         "Currency": "GBP"
       },
       "CreditorAccount": {
-        "SchemeName": "UK.OBIE.SortCodeAccountNumber",
+        "SchemeName": "UK.OB.SortCodeAccountNumber",
         "Identification": "08080021325698",
         "Name": "ACME Inc",
         "SecondaryIdentification": "0002"
@@ -209,7 +209,7 @@ Content-Type: application/json
         "Currency": "GBP"
       },
       "CreditorAccount": {
-        "SchemeName": "UK.OBIE.SortCodeAccountNumber",
+        "SchemeName": "UK.OB.SortCodeAccountNumber",
         "Identification": "08080021325698",
         "Name": "ACME Inc",
         "SecondaryIdentification": "0002"
@@ -312,7 +312,7 @@ Accept: application/json
         "Currency": "GBP"
       },
       "CreditorAccount": {
-        "SchemeName": "UK.OBIE.SortCodeAccountNumber",
+        "SchemeName": "UK.OB.SortCodeAccountNumber",
         "Identification": "08080021325698",
         "Name": "ACME Inc",
         "SecondaryIdentification": "0002"
@@ -360,7 +360,7 @@ Content-Type: application/json
   "Data": {
     "DomesticPaymentId": "58923-001",
     "ConsentId": "58923",
-    "Status": "AcceptedSettlementInProcess",
+    "StatusCode": "ACSP",
     "CreationDateTime": "2017-06-05T15:15:22+00:00",
     "StatusUpdateDateTime": "2017-06-05T15:15:13+00:00",
     "Initiation": {
@@ -371,7 +371,7 @@ Content-Type: application/json
         "Currency": "GBP"
       },
       "CreditorAccount": {
-        "SchemeName": "UK.OBIE.SortCodeAccountNumber",
+        "SchemeName": "UK.OB.SortCodeAccountNumber",
         "Identification": "08080021325698",
         "Name": "ACME Inc",
         "SecondaryIdentification": "0002"
@@ -426,7 +426,7 @@ Content-Type: application/json
         "Currency": "GBP"
       },
       "CreditorAccount": {
-        "SchemeName": "UK.OBIE.SortCodeAccountNumber",
+        "SchemeName": "UK.OB.SortCodeAccountNumber",
         "Identification": "08080021325698",
         "Name": "ACME Inc",
         "SecondaryIdentification": "0002"
@@ -492,7 +492,7 @@ Content-Type: application/json
   "Data": {
     "DomesticPaymentId": "58923-001",
     "ConsentId": "58923",
-    "Status": "AcceptedSettlementInProcess",
+    "StatusCode": "ACSP",
     "CreationDateTime": "2017-06-05T15:15:22+00:00",
     "StatusUpdateDateTime": "2017-06-05T15:15:22+00:00",
     "Initiation": {
@@ -503,7 +503,7 @@ Content-Type: application/json
         "Currency": "GBP"
       },
       "CreditorAccount": {
-        "SchemeName": "UK.OBIE.SortCodeAccountNumber",
+        "SchemeName": "UK.OB.SortCodeAccountNumber",
         "Identification": "08080021325698",
         "Name": "ACME Inc",
         "SecondaryIdentification": "0002"
@@ -622,12 +622,12 @@ Accept: application/json
         "Currency": "GBP"
       },
       "DebtorAccount": {
-        "SchemeName": "UK.OBIE.SortCodeAccountNumber",
+        "SchemeName": "UK.OB.SortCodeAccountNumber",
         "Identification": "11280001234567",
         "Name": "Andrea Smith"
       },
       "CreditorAccount": {
-        "SchemeName": "UK.OBIE.SortCodeAccountNumber",
+        "SchemeName": "UK.OB.SortCodeAccountNumber",
         "Identification": "08080021325698",
         "Name": "Bob Clements"
       },
@@ -667,12 +667,12 @@ Content-Type: application/json
         "Currency": "GBP"
       },
       "DebtorAccount": {
-        "SchemeName": "UK.OBIE.SortCodeAccountNumber",
+        "SchemeName": "UK.OB.SortCodeAccountNumber",
         "Identification": "11280001234567",
         "Name": "Andrea Smith"
       },
       "CreditorAccount": {
-        "SchemeName": "UK.OBIE.SortCodeAccountNumber",
+        "SchemeName": "UK.OB.SortCodeAccountNumber",
         "Identification": "08080021325698",
         "Name": "Bob Clements"
       },
@@ -720,12 +720,12 @@ Accept: application/json
         "Currency": "GBP"
       },
       "DebtorAccount": {
-        "SchemeName": "UK.OBIE.SortCodeAccountNumber",
+        "SchemeName": "UK.OB.SortCodeAccountNumber",
         "Identification": "11280001234567",
         "Name": "Andrea Smith"
       },
       "CreditorAccount": {
-        "SchemeName": "UK.OBIE.SortCodeAccountNumber",
+        "SchemeName": "UK.OB.SortCodeAccountNumber",
         "Identification": "08080021325698",
         "Name": "Bob Clements"
       },
@@ -755,7 +755,7 @@ Content-Type: application/json
   "Data": {
     "DomesticPaymentId": "7290-003",
     "ConsentId": "7290",
-    "Status": "AcceptedSettlementInProcess",
+    "StatusCode": "ACSP",
     "CreationDateTime": "2017-06-05T15:15:22+00:00",
     "StatusUpdateDateTime": "2017-06-05T15:15:22+00:00",
     "Initiation": {
@@ -766,12 +766,12 @@ Content-Type: application/json
         "Currency": "GBP"
       },
       "DebtorAccount": {
-        "SchemeName": "UK.OBIE.SortCodeAccountNumber",
+        "SchemeName": "UK.OB.SortCodeAccountNumber",
         "Identification": "11280001234567",
         "Name": "Andrea Smith"
       },
       "CreditorAccount": {
-        "SchemeName": "UK.OBIE.SortCodeAccountNumber",
+        "SchemeName": "UK.OB.SortCodeAccountNumber",
         "Identification": "08080021325698",
         "Name": "Bob Clements"
       },
@@ -825,12 +825,12 @@ Content-Type: application/json
         "Currency": "GBP"
       },
       "DebtorAccount": {
-        "SchemeName": "UK.OBIE.SortCodeAccountNumber",
+        "SchemeName": "UK.OB.SortCodeAccountNumber",
         "Identification": "11280001234567",
         "Name": "Andrea Smith"
       },
       "CreditorAccount": {
-        "SchemeName": "UK.OBIE.SortCodeAccountNumber",
+        "SchemeName": "UK.OB.SortCodeAccountNumber",
         "Identification": "08080021325698",
         "Name": "Bob Clements"
       },
@@ -877,7 +877,7 @@ Content-Type: application/json
   "Data": {
     "DomesticPaymentId": "7290-003",
     "ConsentId": "7290",
-    "Status": "AcceptedSettlementInProcess",
+    "StatusCode": "ACSP",
     "CreationDateTime": "2017-06-05T15:15:22+00:00",
     "StatusUpdateDateTime": "2017-06-05T15:15:22+00:00",
     "Initiation": {
@@ -888,12 +888,12 @@ Content-Type: application/json
         "Currency": "GBP"
       },
       "DebtorAccount": {
-        "SchemeName": "UK.OBIE.SortCodeAccountNumber",
+        "SchemeName": "UK.OB.SortCodeAccountNumber",
         "Identification": "11280001234567",
         "Name": "Andrea Smith"
       },
       "CreditorAccount": {
-        "SchemeName": "UK.OBIE.SortCodeAccountNumber",
+        "SchemeName": "UK.OB.SortCodeAccountNumber",
         "Identification": "08080021325698",
         "Name": "Bob Clements"
       },
@@ -934,18 +934,18 @@ Accept: application/json
     "Initiation": {
       "InstructionIdentification": "ANSM023",
       "EndToEndIdentification": "FRESCO.21302.GFX.37",
-      "LocalInstrument": "UK.OBIE.BACS",
+      "LocalInstrument": "UK.OB.BACS",
       "InstructedAmount": {
         "Amount": "20.00",
         "Currency": "GBP"
       },
       "DebtorAccount": {
-        "SchemeName": "UK.OBIE.SortCodeAccountNumber",
+        "SchemeName": "UK.OB.SortCodeAccountNumber",
         "Identification": "11280001234567",
         "Name": "Andrea Smith"
       },
       "CreditorAccount": {
-        "SchemeName": "UK.OBIE.SortCodeAccountNumber",
+        "SchemeName": "UK.OB.SortCodeAccountNumber",
         "Identification": "08080021325698",
         "Name": "Bob Clements"
       },
@@ -981,18 +981,18 @@ Content-Type: application/json
     "Initiation": {
       "InstructionIdentification": "ANSM023",
       "EndToEndIdentification": "FRESCO.21302.GFX.37",
-      "LocalInstrument": "UK.OBIE.BACS",
+      "LocalInstrument": "UK.OB.BACS",
       "InstructedAmount": {
         "Amount": "20.00",
         "Currency": "GBP"
       },
       "DebtorAccount": {
-        "SchemeName": "UK.OBIE.SortCodeAccountNumber",
+        "SchemeName": "UK.OB.SortCodeAccountNumber",
         "Identification": "11280001234567",
         "Name": "Andrea Smith"
       },
       "CreditorAccount": {
-        "SchemeName": "UK.OBIE.SortCodeAccountNumber",
+        "SchemeName": "UK.OB.SortCodeAccountNumber",
         "Identification": "08080021325698",
         "Name": "Bob Clements"
       },
@@ -1036,18 +1036,18 @@ Accept: application/json
     "Initiation": {
       "InstructionIdentification": "ANSM023",
       "EndToEndIdentification": "FRESCO.21302.GFX.37",
-      "LocalInstrument": "UK.OBIE.CHAPS",
+      "LocalInstrument": "UK.OB.CHAPS",
       "InstructedAmount": {
         "Amount": "20.00",
         "Currency": "GBP"
       },
       "DebtorAccount": {
-        "SchemeName": "UK.OBIE.SortCodeAccountNumber",
+        "SchemeName": "UK.OB.SortCodeAccountNumber",
         "Identification": "11280001234567",
         "Name": "Andrea Smith"
       },
       "CreditorAccount": {
-        "SchemeName": "UK.OBIE.SortCodeAccountNumber",
+        "SchemeName": "UK.OB.SortCodeAccountNumber",
         "Identification": "08080021325698",
         "Name": "Bob Clements"
       },
@@ -1091,18 +1091,18 @@ Content-Type: application/json
       "Initiation":{
          "InstructionIdentification":"ANSM023",
          "EndToEndIdentification":"FRESCO.21302.GFX.37",
-         "LocalInstrument":"UK.OBIE.CHAPS",
+         "LocalInstrument":"UK.OB.CHAPS",
          "InstructedAmount":{
             "Amount":"20.00",
             "Currency":"GBP"
          },
          "DebtorAccount":{
-            "SchemeName":"UK.OBIE.SortCodeAccountNumber",
+            "SchemeName":"UK.OB.SortCodeAccountNumber",
             "Identification":"11280001234567",
             "Name":"Andrea Smith"
          },
          "CreditorAccount":{
-            "SchemeName":"UK.OBIE.SortCodeAccountNumber",
+            "SchemeName":"UK.OB.SortCodeAccountNumber",
             "Identification":"08080021325698",
             "Name":"Bob Clements"
          },
@@ -1166,18 +1166,18 @@ Accept: application/json
         "Initiation": {
             "InstructionIdentification": "ANSM023",
             "EndToEndIdentification": "FRESCO.21302.GFX.37",
-            "LocalInstrument": "UK.OBIE.BalanceTransfer",
+            "LocalInstrument": "UK.OB.BalanceTransfer",
             "InstructedAmount": {
                 "Amount": "3000.00",
                 "Currency": "GBP"
             },
             "DebtorAccount": {
-                "SchemeName": "UK.OBIE.PAN",
+                "SchemeName": "UK.OB.PAN",
                 "Identification": "5555555555554444",
                 "Name": "Andrea Smith"
             },
             "CreditorAccount": {
-                "SchemeName": "UK.OBIE.PAN",
+                "SchemeName": "UK.OB.PAN",
                 "Identification": "4444333322221111",
                 "Name": "Andrea Smith"
             },
@@ -1213,18 +1213,18 @@ Content-Type: application/json
         "Initiation": {
             "InstructionIdentification": "ANSM023",
             "EndToEndIdentification": "FRESCO.21302.GFX.37",
-            "LocalInstrument": "UK.OBIE.BalanceTransfer",
+            "LocalInstrument": "UK.OB.BalanceTransfer",
             "InstructedAmount": {
                 "Amount": "3000.00",
                 "Currency": "GBP"
             },
             "DebtorAccount": {
-                "SchemeName": "UK.OBIE.PAN",
+                "SchemeName": "UK.OB.PAN",
                 "Identification": "5555555555554444",
                 "Name": "Andrea Smith"
             },
             "CreditorAccount": {
-                "SchemeName": "UK.OBIE.PAN",
+                "SchemeName": "UK.OB.PAN",
                 "Identification": "4444333322221111",
                 "Name": "Andrea Smith"
             },
@@ -1267,18 +1267,18 @@ Accept: application/json
         "Initiation": {
             "InstructionIdentification": "ANSM023",
             "EndToEndIdentification": "FRESCO.21302.GFX.37",
-            "LocalInstrument": "UK.OBIE.MoneyTransfer",
+            "LocalInstrument": "UK.OB.MoneyTransfer",
             "InstructedAmount": {
                 "Amount": "3000.00",
                 "Currency": "GBP"
             },
             "DebtorAccount": {
-                "SchemeName": "UK.OBIE.PAN",
+                "SchemeName": "UK.OB.PAN",
                 "Identification": "5555555555554444",
                 "Name": "Andrea Smith"
             },
             "CreditorAccount": {
-                "SchemeName": "UK.OBIE.SortCodeAccountNumber",
+                "SchemeName": "UK.OB.SortCodeAccountNumber",
                 "Identification": "11280001234567",
                 "Name": "Andrea Smith"
             },
@@ -1314,18 +1314,18 @@ Content-Type: application/json
         "Initiation": {
             "InstructionIdentification": "ANSM023",
             "EndToEndIdentification": "FRESCO.21302.GFX.37",
-            "LocalInstrument": "UK.OBIE.MoneyTransfer",
+            "LocalInstrument": "UK.OB.MoneyTransfer",
             "InstructedAmount": {
                 "Amount": "3000.00",
                 "Currency": "GBP"
             },
             "DebtorAccount": {
-                "SchemeName": "UK.OBIE.PAN",
+                "SchemeName": "UK.OB.PAN",
                 "Identification": "5555555555554444",
                 "Name": "Andrea Smith"
             },
             "CreditorAccount": {
-                "SchemeName": "UK.OBIE.SortCodeAccountNumber",
+                "SchemeName": "UK.OB.SortCodeAccountNumber",
                 "Identification": "11280001234567",
                 "Name": "Andrea Smith"
             },

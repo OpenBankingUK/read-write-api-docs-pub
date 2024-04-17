@@ -50,7 +50,7 @@ Accept: application/json
     "Currency": "GBP"
    },
    "CreditorAccount": {
-    "SchemeName": "UK.OBIE.SortCodeAccountNumber",
+    "SchemeName": "UK.OB.SortCodeAccountNumber",
     "Identification": "08080021325698",
     "Name": "ACME Inc",
     "SecondaryIdentification": "0002"
@@ -98,7 +98,7 @@ Content-Type: application/json
     "Currency": "GBP"
    },
    "CreditorAccount": {
-    "SchemeName": "UK.OBIE.SortCodeAccountNumber",
+    "SchemeName": "UK.OB.SortCodeAccountNumber",
     "Identification": "08080021325698",
     "Name": "ACME Inc",
     "SecondaryIdentification": "0002"
@@ -197,7 +197,7 @@ Accept: application/json
     "Currency": "GBP"
    },
    "CreditorAccount": {
-    "SchemeName": "UK.OBIE.SortCodeAccountNumber",
+    "SchemeName": "UK.OB.SortCodeAccountNumber",
     "Identification": "08080021325698",
     "Name": "ACME Inc",
     "SecondaryIdentification": "0002"
@@ -284,7 +284,7 @@ Accept: application/json
     "Currency": "GBP"
    },
    "CreditorAccount": {
-    "SchemeName": "UK.OBIE.SortCodeAccountNumber",
+    "SchemeName": "UK.OB.SortCodeAccountNumber",
     "Identification": "08080021325698",
     "Name": "ACME Inc",
     "SecondaryIdentification": "0002"
@@ -375,7 +375,7 @@ Accept: application/json
    },
    "CurrencyOfTransfer": "USD",
    "CreditorAccount": {
-    "SchemeName": "UK.OBIE.SortCodeAccountNumber",
+    "SchemeName": "UK.OB.SortCodeAccountNumber",
     "Identification": "08080021325698",
     "Name": "ACME Inc",
     "SecondaryIdentification": "0002"
@@ -423,7 +423,7 @@ Content-Type: application/json
     "Currency": "GBP"
    },
    "CreditorAccount": {
-    "SchemeName": "UK.OBIE.SortCodeAccountNumber",
+    "SchemeName": "UK.OB.SortCodeAccountNumber",
     "Identification": "08080021325698",
     "Name": "ACME Inc",
     "SecondaryIdentification": "0002"
@@ -505,7 +505,7 @@ Content-Type: application/json
 		"Initiation": {},
     "Charges":[{
       "ChargeBearer": "BorneByDebtor",
-      "Type":"UK.OBIE.MoneyTransferOut"
+      "Type":"UK.OB.MoneyTransferOut"
      }],
     "ExchangeRateInformation": {
 			"UnitCurrency": "USD",
