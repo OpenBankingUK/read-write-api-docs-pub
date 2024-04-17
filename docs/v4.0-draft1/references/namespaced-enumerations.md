@@ -54,7 +54,7 @@ These Data Types, in general, are called namespaced enumerations.
 
 Specific API Data Dictionary will define a custom Data Type class, which will help lookup the OBL defined standard set of namespaced enumerations in this specification page as well as respective swagger files.
 
-The namespaced enumeration values specified by Open Banking are documented here and will be prefixed by `UK.OBIE.`
+The namespaced enumeration values specified by Open Banking are documented here and will be prefixed by `UK.OB.`
 
 ### Design Principles
 
@@ -68,7 +68,7 @@ When extending a namespaced enumeration:
 
 Usage of non-namespaced values may be discontinued in a future version of this standard.
 
-As a special case and in order to minimise disruption between versions of the standard, a TPP **may** specify previous non-namespaces values, e.g. IBAN instead of UK.OBIE.IBAN.
+As a special case and in order to minimise disruption between versions of the standard, a TPP **may** specify previous non-namespaces values, e.g. IBAN instead of UK.OB.IBAN.
 
 In ASPSP generated responses, however, an ASPSP **must** always respond with fully namespaced values.
 
@@ -82,12 +82,12 @@ This is Data Type for Account/SchemeName and used to identify the type of Identi
 
 | Code |Description |
 | --- |--- |
-| UK.OBIE.BBAN |Basic Bank Account Number (BBAN) - identifier used nationally by financial institutions, ie, in individual countries, generally as part of a National Account Numbering Scheme(s), to uniquely identify the account of a customer. |
-| UK.OBIE.IBAN |An identifier used internationally by financial institutions to uniquely identify the account of a customer at a financial institution, as described in the latest edition of the international standard ISO 13616. "Banking and related financial services - International Bank Account Number (IBAN)". |
-| UK.OBIE.PAN |Primary Account Number - identifier scheme used to identify a card account. |
-| UK.OBIE.Paym |Paym Scheme to make payments via mobile |
-| UK.OBIE.SortCodeAccountNumber |Sort Code and Account Number - identifier scheme used in the UK by financial institutions to identify the account of a customer. The identifier is the concatenation of the 6 digit UK sort code and 8 digit account number.<br>The regular expression for this identifier is: ^[0-9]{6}[0-9]{8}$ |
-| UK.OBIE.Wallet |A primary and unique account identifier used to identify a wallet.<br>An ASPSP must document on their developer portal, the payment methods that supports this account identifier. |
+| UK.OB.BBAN |Basic Bank Account Number (BBAN) - identifier used nationally by financial institutions, ie, in individual countries, generally as part of a National Account Numbering Scheme(s), to uniquely identify the account of a customer. |
+| UK.OB.IBAN |An identifier used internationally by financial institutions to uniquely identify the account of a customer at a financial institution, as described in the latest edition of the international standard ISO 13616. "Banking and related financial services - International Bank Account Number (IBAN)". |
+| UK.OB.PAN |Primary Account Number - identifier scheme used to identify a card account. |
+| UK.OB.Paym |Paym Scheme to make payments via mobile |
+| UK.OB.SortCodeAccountNumber |Sort Code and Account Number - identifier scheme used in the UK by financial institutions to identify the account of a customer. The identifier is the concatenation of the 6 digit UK sort code and 8 digit account number.<br>The regular expression for this identifier is: ^[0-9]{6}[0-9]{8}$ |
+| UK.OB.Wallet |A primary and unique account identifier used to identify a wallet.<br>An ASPSP must document on their developer portal, the payment methods that supports this account identifier. |
 
 
 ### OBExternalFinancialInstitutionIdentification4Code
@@ -96,8 +96,8 @@ This is the Data Type for Agent/SchemeName and used to identify the type of Iden
 
 | Code |Description |
 | --- |--- |
-| UK.OBIE.BICFI |Valid BICs for financial institutions are registered by the ISO 9362 Registration Authority in the BIC directory, and consist of eight (8) or eleven (11) contiguous characters. |
-| UK.OBIE.NCC.[ISO3166-aplha2-CountryCode] | Valid NCC (National Clearing Code) as an option for the accounts that don't have an IBAN, registered in the country identified by the 2 letter ISO-3166 Country code. For example, transfer to India may have Scheme Name as UK.OBIE.NCC.IN and Identification can be the IFSC code of the bank/branch in India. |
+| UK.OB.BICFI |Valid BICs for financial institutions are registered by the ISO 9362 Registration Authority in the BIC directory, and consist of eight (8) or eleven (11) contiguous characters. |
+| UK.OB.NCC.[ISO3166-aplha2-CountryCode] | Valid NCC (National Clearing Code) as an option for the accounts that don't have an IBAN, registered in the country identified by the 2 letter ISO-3166 Country code. For example, transfer to India may have Scheme Name as UK.OB.NCC.IN and Identification can be the IFSC code of the bank/branch in India. |
 
 ### OBErrorResponseError1Code
 
@@ -107,36 +107,36 @@ This is Data Type gives a low level textual error code to help categorise an err
 
 | Code |HTTP Status Category |Description |
 | --- |--- |--- |
-| UK.OBIE.Field.Expected |400 |For the scenario, when a field-value is not provided in the payload, that is expected in combination with preceding field-value pairs.<br><br>The corresponding path must be populated with the path of the unexpected field.<br><br>E.g.<br><br>ExchangeRate must be specified with Agreed RateType. ExchangeRate should be specified in the path element.<br><br>InstructionPriority must be specified with Agreed RateType. InstructionPriority should be specified in the path element. |
-| UK.OBIE.Field.Invalid |400 |An invalid value is supplied in one of the fields, or the length of value supplied is larger than the corresponding maximum field length in ASPSP's domain. Reference of the invalid field should be provided in the path field, and the URL field may have the link to a website explaining the valid behaviour. The error message should describe the problem in detail. |
-| UK.OBIE.Field.InvalidDate |400 |An invalid date is supplied e.g. when a future date is expected, a date in past or current date is supplied. The message can specify the actual problem with the date. The reference of the invalid field should be provided in the path field, and URL field may have the link to a website explaining the valid behaviour |
-| UK.OBIE.Field.Missing |400 |A mandatory field, required for the API, is missing from the payload. This error code can be used, if it is not already captured under the validation for UK.OBIE.Resource.InvalidFormat.<br><br>Reference of the missing field should be provided in the path field, and URL field may have the link to a website explaining the valid behaviour |
-| UK.OBIE.Field.Unexpected |400 |For the scenario, when a field-value is provided in the payload, that is not expected in combination with preceding field-value pairs. E.g.<br><br>ContractIdentification must not be specified with [Actual/Indicative] RateType.<br><br>ContractIdentification should be specified in the path element ExchangeRate must not be specified with [Actual/Indicative] RateType.<br><br>ExchangeRate should be specified in the path element.<br><br>InstructionPriority must not be specified with LocalInstrument. InstructionPriority should be specified in the path element. |
-| UK.OBIE.Header.Invalid |400 |An invalid value is supplied in the HTTP header. The HTTP Header should be specified in the path element. |
-| UK.OBIE.Header.Missing |400 |A required HTTP header has not been provided. The HTTP Header should be specified in the path element. |
-| UK.OBIE.Resource.ConsentMismatch |400 |{payment-order-consent} and {payment-order} resource mismatch. For example, if an element in the resource’s Initiation or Risk section does not match the consent section. The path element should be populated with the field of the resource that does not match the consent. |
-| UK.OBIE.Resource.InvalidConsentStatus |400 |The resource’s associated consent is not in a status that would allow the resource to be created, or a request to be executed.<br><br>E.g., if a consent resource had a status of AwaitingAuthorisation or Rejected, a resource could not be created against this consent.<br><br>The path element should be populated with the field in the consent resource that is invalid. |
-| UK.OBIE.Resource.InvalidFormat |400 |When the Payload schema does not match to the endpoint, e.g., /domestic-payments endpoint is called with a JSON Payload, which cannot be parsed into a class such as OBWriteDomestic1 |
-| UK.OBIE.Resource.NotFound |400 |Returned when a resource with the specified Id does not exist (and hence could not be operated upon). |
-| UK.OBIE.Rules.AfterCutOffDateTime |400 |{payment-order} consent / resource received after CutOffDateTime |
-| UK.OBIE.Rules.DuplicateReference |400 |A duplicate reference has been used for a CBPII confirmation of funds request. |
-| UK.OBIE.Rules.FailsControlParameters |400 |A payment breaches a limitation set by one or more ControlParameters. |
-| UK.OBIE.Signature.Invalid |400 |The signature header x-jws-signature was parsed and has a valid JOSE header that complies with the specification. However, the signature itself could not be verified. |
-| UK.OBIE.Signature.InvalidClaim |400 |The JOSE header in the x-jws-signature has one or more claims with an invalid value. (e.g. a kid that does not resolve to a valid certificate). The name of the missing claim should be specified in the path field of the error response. |
-| UK.OBIE.Signature.MissingClaim |400 |The JOSE header in the x-jws-signature has one or more mandatory claim(s) that are not specified. The name of the missing claim(s) should be specified in the path field of the error response. |
-| UK.OBIE.Signature.Malformed |400 |The x-jws-signature in the request header was malformed and could not be parsed as a valid JWS. |
-| UK.OBIE.Signature.Missing |400 |The API request expected an x-jws-signature in the header, but it was missing. |
-| UK.OBIE.Signature.Unexpected |400 |The API request was not expecting to receive an x-jws-signature in the header, but the TPP made a request that included an x-jws-signature. |
-| UK.OBIE.Unsupported.AccountIdentifier |400 |The account identifier is unsupported for the given scheme.<br><br>The path element should be populated with the path of the AccountIdentifier. |
-| UK.OBIE.Unsupported.AccountSecondaryIdentifier |400 |The account secondary identifier is unsupported for the given scheme.<br><br>The path element should be populated with the path of the AccountSecondaryIdentifier. |
-| UK.OBIE.Unsupported.Currency |400 |The currency is not supported. Use UK.OBIE.Field.Invalid for invalid Currency.<br><br>The path element should be populated with the path of the Currency.<br><br>The URL should be populated with a link to ASPSP documentation listing out the supported currencies. |
-| UK.OBIE.Unsupported.EventType |400 |Event Type is not supported.<br><br>The path element should be populated with the path of the EventType.<br><br>The URL should be populated with a link to ASPSP documentation listing out the supported Event Types. |
-| UK.OBIE.Unsupported.Frequency |400 |Frequency is not supported.<br><br>The path element should be populated with the path of the Frequency.<br><br>The URL should be populated with a link to ASPSP documentation listing out the supported frequencies. |
-| UK.OBIE.Unsupported.LocalInstrument |400 |LocalInstrument is not supported by the ASPSP.<br><br>The path element should be populated with the path of the LocalInstrument.<br><br>The URL should be populated with a link to ASPSP documentation listing out the supported local instruments. |
-| UK.OBIE.Unsupported.Scheme |400 |Identification scheme is not supported. The path element should be populated with the path of the scheme. The URL should be populated with a link to ASPSP documentation listing out the supported schemes. |
-| UK.OBIE.Reauthenticate |403 |The ASPSP must use this error code in Error Response to indicate that re-authentication by the PSU is required to process the request. |
-| UK.OBIE.Rules.ResourceAlreadyExists |409 |The ASPSP must use this error code in Error Response, to indicate that a resource with same parameters already exists, or in a state that doesn't allow requested operation. |
-| UK.OBIE.UnexpectedError |5xx |An error code that can be used, when an unexpected error occurs.<br><br>The ASPSP must populate the message with a meaningful error description, without revealing sensitive information. |
+| UK.OB.Field.Expected |400 |For the scenario, when a field-value is not provided in the payload, that is expected in combination with preceding field-value pairs.<br><br>The corresponding path must be populated with the path of the unexpected field.<br><br>E.g.<br><br>ExchangeRate must be specified with Agreed RateType. ExchangeRate should be specified in the path element.<br><br>InstructionPriority must be specified with Agreed RateType. InstructionPriority should be specified in the path element. |
+| UK.OB.Field.Invalid |400 |An invalid value is supplied in one of the fields, or the length of value supplied is larger than the corresponding maximum field length in ASPSP's domain. Reference of the invalid field should be provided in the path field, and the URL field may have the link to a website explaining the valid behaviour. The error message should describe the problem in detail. |
+| UK.OB.Field.InvalidDate |400 |An invalid date is supplied e.g. when a future date is expected, a date in past or current date is supplied. The message can specify the actual problem with the date. The reference of the invalid field should be provided in the path field, and URL field may have the link to a website explaining the valid behaviour |
+| UK.OB.Field.Missing |400 |A mandatory field, required for the API, is missing from the payload. This error code can be used, if it is not already captured under the validation for UK.OB.Resource.InvalidFormat.<br><br>Reference of the missing field should be provided in the path field, and URL field may have the link to a website explaining the valid behaviour |
+| UK.OB.Field.Unexpected |400 |For the scenario, when a field-value is provided in the payload, that is not expected in combination with preceding field-value pairs. E.g.<br><br>ContractIdentification must not be specified with [Actual/Indicative] RateType.<br><br>ContractIdentification should be specified in the path element ExchangeRate must not be specified with [Actual/Indicative] RateType.<br><br>ExchangeRate should be specified in the path element.<br><br>InstructionPriority must not be specified with LocalInstrument. InstructionPriority should be specified in the path element. |
+| UK.OB.Header.Invalid |400 |An invalid value is supplied in the HTTP header. The HTTP Header should be specified in the path element. |
+| UK.OB.Header.Missing |400 |A required HTTP header has not been provided. The HTTP Header should be specified in the path element. |
+| UK.OB.Resource.ConsentMismatch |400 |{payment-order-consent} and {payment-order} resource mismatch. For example, if an element in the resource’s Initiation or Risk section does not match the consent section. The path element should be populated with the field of the resource that does not match the consent. |
+| UK.OB.Resource.InvalidConsentStatus |400 |The resource’s associated consent is not in a status that would allow the resource to be created, or a request to be executed.<br><br>E.g., if a consent resource had a status of AwaitingAuthorisation or Rejected, a resource could not be created against this consent.<br><br>The path element should be populated with the field in the consent resource that is invalid. |
+| UK.OB.Resource.InvalidFormat |400 |When the Payload schema does not match to the endpoint, e.g., /domestic-payments endpoint is called with a JSON Payload, which cannot be parsed into a class such as OBWriteDomestic1 |
+| UK.OB.Resource.NotFound |400 |Returned when a resource with the specified Id does not exist (and hence could not be operated upon). |
+| UK.OB.Rules.AfterCutOffDateTime |400 |{payment-order} consent / resource received after CutOffDateTime |
+| UK.OB.Rules.DuplicateReference |400 |A duplicate reference has been used for a CBPII confirmation of funds request. |
+| UK.OB.Rules.FailsControlParameters |400 |A payment breaches a limitation set by one or more ControlParameters. |
+| UK.OB.Signature.Invalid |400 |The signature header x-jws-signature was parsed and has a valid JOSE header that complies with the specification. However, the signature itself could not be verified. |
+| UK.OB.Signature.InvalidClaim |400 |The JOSE header in the x-jws-signature has one or more claims with an invalid value. (e.g. a kid that does not resolve to a valid certificate). The name of the missing claim should be specified in the path field of the error response. |
+| UK.OB.Signature.MissingClaim |400 |The JOSE header in the x-jws-signature has one or more mandatory claim(s) that are not specified. The name of the missing claim(s) should be specified in the path field of the error response. |
+| UK.OB.Signature.Malformed |400 |The x-jws-signature in the request header was malformed and could not be parsed as a valid JWS. |
+| UK.OB.Signature.Missing |400 |The API request expected an x-jws-signature in the header, but it was missing. |
+| UK.OB.Signature.Unexpected |400 |The API request was not expecting to receive an x-jws-signature in the header, but the TPP made a request that included an x-jws-signature. |
+| UK.OB.Unsupported.AccountIdentifier |400 |The account identifier is unsupported for the given scheme.<br><br>The path element should be populated with the path of the AccountIdentifier. |
+| UK.OB.Unsupported.AccountSecondaryIdentifier |400 |The account secondary identifier is unsupported for the given scheme.<br><br>The path element should be populated with the path of the AccountSecondaryIdentifier. |
+| UK.OB.Unsupported.Currency |400 |The currency is not supported. Use UK.OB.Field.Invalid for invalid Currency.<br><br>The path element should be populated with the path of the Currency.<br><br>The URL should be populated with a link to ASPSP documentation listing out the supported currencies. |
+| UK.OB.Unsupported.EventType |400 |Event Type is not supported.<br><br>The path element should be populated with the path of the EventType.<br><br>The URL should be populated with a link to ASPSP documentation listing out the supported Event Types. |
+| UK.OB.Unsupported.Frequency |400 |Frequency is not supported.<br><br>The path element should be populated with the path of the Frequency.<br><br>The URL should be populated with a link to ASPSP documentation listing out the supported frequencies. |
+| UK.OB.Unsupported.LocalInstrument |400 |LocalInstrument is not supported by the ASPSP.<br><br>The path element should be populated with the path of the LocalInstrument.<br><br>The URL should be populated with a link to ASPSP documentation listing out the supported local instruments. |
+| UK.OB.Unsupported.Scheme |400 |Identification scheme is not supported. The path element should be populated with the path of the scheme. The URL should be populated with a link to ASPSP documentation listing out the supported schemes. |
+| UK.OB.Reauthenticate |403 |The ASPSP must use this error code in Error Response to indicate that re-authentication by the PSU is required to process the request. |
+| UK.OB.Rules.ResourceAlreadyExists |409 |The ASPSP must use this error code in Error Response, to indicate that a resource with same parameters already exists, or in a state that doesn't allow requested operation. |
+| UK.OB.UnexpectedError |5xx |An error code that can be used, when an unexpected error occurs.<br><br>The ASPSP must populate the message with a meaningful error description, without revealing sensitive information. |
 
 </details>
 
@@ -146,8 +146,8 @@ Default if not specified is BaseCurrency of the account.
 
 | Code |Description |
 | --- |--- |
-| UK.OBIE.BaseCurrency |Balance representing the amount in the base accounting currency. |
-| UK.OBIE.LocalCurrency | Balance representing the amount in the local market currency for which the asset is held.  |
+| UK.OB.BaseCurrency |Balance representing the amount in the base accounting currency. |
+| UK.OB.LocalCurrency | Balance representing the amount in the local market currency for which the asset is held.  |
 
 ## Account and Transaction API Namespaced Enumerations
 
@@ -157,30 +157,30 @@ Default if not specified is BaseCurrency of the account.
 
 | Code |Description |
 | --- |--- |
-| UK.OBIE.ArrearsClosingBalance |The balance that is in arrears at the end of the statement period. |
-| UK.OBIE.AvailableBalance |The available balance is the difference between the credit limit and the account balance – how much is available to spend. |
-| UK.OBIE.AverageBalanceWhenInCredit |The average daily balance when the account is in credit during the statement period. |
-| UK.OBIE.AverageBalanceWhenInDebit |The average daily balance when the account is in debit during the statement period. |
-| UK.OBIE.AverageDailyBalance |The average daily balance during the statement period. An average daily balance adds the closing balances at the end of each day in a given period of time and divides the sum by the number of calendar days in that period. |
-| UK.OBIE.BalanceTransferClosingBalance |The component of balance that relates to balance transfers at the end of the statement period. |
-| UK.OBIE.CashClosingBalance |The component of balance that relates to cash at the end of the statement period. |
-| UK.OBIE.ClosingBalance |The ending balance or closing balance at the end of the current statement period. |
-| UK.OBIE.CreditLimit |The credit limit is the total amount of credit available to a borrower, including any amount already borrowed. |
-| UK.OBIE.CurrentPayment |The total payments received since the last period. |
-| UK.OBIE.DirectDebitPaymentDue |The total direct debit payments due for current statement period. |
-| UK.OBIE.FSCSInsurance |The amount under which the FSCS scheme will protect consumers when authorised financial services firms fail. |
-| UK.OBIE.MinimumPaymentDue |The minimum payment required for the current statement period. |
-| UK.OBIE.PendingTransactionsBalance |The total pending transactions balance at the end of the statement period. |
-| UK.OBIE.PreviousClosingBalance |The closing balance of the previous statement. |
-| UK.OBIE.PreviousPayment |The previous payment amount in the last statement period. |
-| UK.OBIE.PurchaseClosingBalance |The component of balance that relates to purchases at the end of the statement period. |
-| UK.OBIE.StartingBalance |The new balance or starting balance carried forward since last statement period. |
-| UK.OBIE.TotalAdjustments |Total adjustments to the account during the statement period. |
-| UK.OBIE.TotalCashAdvances |A cash advance is a short-term loan from a bank or alternative lender. The term also refers to a service provided by many credit card issuers allowing cardholders to withdraw a certain amount of cash. |
-| UK.OBIE.TotalCharges |The total charges including interest, late payment fee during the statement period. |
-| UK.OBIE.TotalCredits |Total amount credited in the account during the statement period. |
-| UK.OBIE.TotalDebits |Total amount debited (money taken out from account) from the account during the statement period. |
-| UK.OBIE.TotalPurchases |The total transactions made during that statement period. |
+| UK.OB.ArrearsClosingBalance |The balance that is in arrears at the end of the statement period. |
+| UK.OB.AvailableBalance |The available balance is the difference between the credit limit and the account balance – how much is available to spend. |
+| UK.OB.AverageBalanceWhenInCredit |The average daily balance when the account is in credit during the statement period. |
+| UK.OB.AverageBalanceWhenInDebit |The average daily balance when the account is in debit during the statement period. |
+| UK.OB.AverageDailyBalance |The average daily balance during the statement period. An average daily balance adds the closing balances at the end of each day in a given period of time and divides the sum by the number of calendar days in that period. |
+| UK.OB.BalanceTransferClosingBalance |The component of balance that relates to balance transfers at the end of the statement period. |
+| UK.OB.CashClosingBalance |The component of balance that relates to cash at the end of the statement period. |
+| UK.OB.ClosingBalance |The ending balance or closing balance at the end of the current statement period. |
+| UK.OB.CreditLimit |The credit limit is the total amount of credit available to a borrower, including any amount already borrowed. |
+| UK.OB.CurrentPayment |The total payments received since the last period. |
+| UK.OB.DirectDebitPaymentDue |The total direct debit payments due for current statement period. |
+| UK.OB.FSCSInsurance |The amount under which the FSCS scheme will protect consumers when authorised financial services firms fail. |
+| UK.OB.MinimumPaymentDue |The minimum payment required for the current statement period. |
+| UK.OB.PendingTransactionsBalance |The total pending transactions balance at the end of the statement period. |
+| UK.OB.PreviousClosingBalance |The closing balance of the previous statement. |
+| UK.OB.PreviousPayment |The previous payment amount in the last statement period. |
+| UK.OB.PurchaseClosingBalance |The component of balance that relates to purchases at the end of the statement period. |
+| UK.OB.StartingBalance |The new balance or starting balance carried forward since last statement period. |
+| UK.OB.TotalAdjustments |Total adjustments to the account during the statement period. |
+| UK.OB.TotalCashAdvances |A cash advance is a short-term loan from a bank or alternative lender. The term also refers to a service provided by many credit card issuers allowing cardholders to withdraw a certain amount of cash. |
+| UK.OB.TotalCharges |The total charges including interest, late payment fee during the statement period. |
+| UK.OB.TotalCredits |Total amount credited in the account during the statement period. |
+| UK.OB.TotalDebits |Total amount debited (money taken out from account) from the account during the statement period. |
+| UK.OB.TotalPurchases |The total transactions made during that statement period. |
 
 </details>
 
@@ -190,10 +190,10 @@ Default if not specified is BaseCurrency of the account.
 
 | Code |Description |
 | --- |--- |
-| UK.OBIE.Cashback |Cash back amount received during the statement period. |
-| UK.OBIE.Insurance |Insurance amount during the statement period. |
-| UK.OBIE.TravelDiscount |Travel discount amount received during the statement period. |
-| UK.OBIE.TravelInsurance |Travel insurance amount during the statement period. |
+| UK.OB.Cashback |Cash back amount received during the statement period. |
+| UK.OB.Insurance |Insurance amount during the statement period. |
+| UK.OB.TravelDiscount |Travel discount amount received during the statement period. |
+| UK.OB.TravelInsurance |Travel insurance amount during the statement period. |
 
 </details>
 
@@ -203,14 +203,14 @@ Default if not specified is BaseCurrency of the account.
 
 | Code |Description |
 | --- |--- |
-| UK.OBIE.BalanceTransferPromoEnd |The date the balance transfer promo rate will end. |
-| UK.OBIE.DirectDebitDue |The date that the direct debit payment is due for the current statement. |
-| UK.OBIE.LastPayment |The date that an account holder must make the payment for the previous statement period. |
-| UK.OBIE.LastStatement |The date on which the last statement was made available to account holder. |
-| UK.OBIE.NextStatement |The date on which the next statement will be made available to account holder. |
-| UK.OBIE.PaymentDue |The date that an account holder must make the payment for the current statement period. |
-| UK.OBIE.PurchasePromoEnd |The date the purchase promo rate will end. |
-| UK.OBIE.StatementAvailable |The date on which the current statement was made available to account holder. |
+| UK.OB.BalanceTransferPromoEnd |The date the balance transfer promo rate will end. |
+| UK.OB.DirectDebitDue |The date that the direct debit payment is due for the current statement. |
+| UK.OB.LastPayment |The date that an account holder must make the payment for the previous statement period. |
+| UK.OB.LastStatement |The date on which the last statement was made available to account holder. |
+| UK.OB.NextStatement |The date on which the next statement will be made available to account holder. |
+| UK.OB.PaymentDue |The date that an account holder must make the payment for the current statement period. |
+| UK.OB.PurchasePromoEnd |The date the purchase promo rate will end. |
+| UK.OB.StatementAvailable |The date on which the current statement was made available to account holder. |
 
 </details>
 
@@ -220,21 +220,21 @@ Default if not specified is BaseCurrency of the account.
 
 | Code |Description |
 | --- |--- |
-| UK.OBIE.Annual |Annual fees charged during the statement period. |
-| UK.OBIE.BalanceTransfer |Balance transfer fees charged during the statement period. |
-| UK.OBIE.CashAdvance |Cash advance fees charged during the statement period. |
-| UK.OBIE.CashTransaction |Cash transaction fees charged during the statement period. |
-| UK.OBIE.ForeignCashTransaction |Foreign cash transaction fees charged during the statement period. |
-| UK.OBIE.ForeignTransaction |Foreign transaction fees charged during the statement period. |
-| UK.OBIE.Gambling |Gambling transaction fees charged during the statement period. |
-| UK.OBIE.LatePayment |Late payment fees charged during the statement period. |
-| UK.OBIE.MoneyTransfer |Money transfer fees charged during the statement period. |
-| UK.OBIE.Monthly |Monthly account fees charged during the statement period. |
-| UK.OBIE.Overlimit |Over limit fees charged during the statement period.. |
-| UK.OBIE.PostalOrder |Postal order fees charged during the statement period. |
-| UK.OBIE.PrizeEntry |Prize entry fees charged during the statement period. |
-| UK.OBIE.StatementCopy |Statement copy fees charged during the statement period. |
-| UK.OBIE.Total |Total fees charges during the statement period. |
+| UK.OB.Annual |Annual fees charged during the statement period. |
+| UK.OB.BalanceTransfer |Balance transfer fees charged during the statement period. |
+| UK.OB.CashAdvance |Cash advance fees charged during the statement period. |
+| UK.OB.CashTransaction |Cash transaction fees charged during the statement period. |
+| UK.OB.ForeignCashTransaction |Foreign cash transaction fees charged during the statement period. |
+| UK.OB.ForeignTransaction |Foreign transaction fees charged during the statement period. |
+| UK.OB.Gambling |Gambling transaction fees charged during the statement period. |
+| UK.OB.LatePayment |Late payment fees charged during the statement period. |
+| UK.OB.MoneyTransfer |Money transfer fees charged during the statement period. |
+| UK.OB.Monthly |Monthly account fees charged during the statement period. |
+| UK.OB.Overlimit |Over limit fees charged during the statement period.. |
+| UK.OB.PostalOrder |Postal order fees charged during the statement period. |
+| UK.OB.PrizeEntry |Prize entry fees charged during the statement period. |
+| UK.OB.StatementCopy |Statement copy fees charged during the statement period. |
+| UK.OB.Total |Total fees charges during the statement period. |
 
 </details>
 
@@ -244,11 +244,11 @@ Default if not specified is BaseCurrency of the account.
 
 | Code |Description |
 | --- |--- |
-| UK.OBIE.BalanceTransfer |Interest on balance transfers. |
-| UK.OBIE.Cash |Interest on cash advances. |
-| UK.OBIE.EstimatedNext |The estimated interest that will be charged if the closing balance is not paid in full. |
-| UK.OBIE.Purchase |Interest on purchases. |
-| UK.OBIE.Total |Total interest charges during the statement period. |
+| UK.OB.BalanceTransfer |Interest on balance transfers. |
+| UK.OB.Cash |Interest on cash advances. |
+| UK.OB.EstimatedNext |The estimated interest that will be charged if the closing balance is not paid in full. |
+| UK.OB.Purchase |Interest on purchases. |
+| UK.OB.Total |Total interest charges during the statement period. |
 
 </details>
 
@@ -258,16 +258,16 @@ Default if not specified is BaseCurrency of the account.
 
 | Code |Description |
 | --- |--- |
-| UK.OBIE.AnnualBalanceTransfer |Annual interest rate charged on balance transfer from other service provider. |
-| UK.OBIE.AnnualBalanceTransferAfterPromo |Annual interest rate charged on balance transfer from other service provider after promotional period. |
-| UK.OBIE.AnnualBalanceTransferPromo |Annual interest rate charged on balance transfer from other service provider during promotional period. |
-| UK.OBIE.AnnualCash |Annual interest rate charged on cash advance. |
-| UK.OBIE.AnnualPurchase |Annual interest rate charged on purchases. |
-| UK.OBIE.AnnualPurchaseAfterPromo |Annual interest rate charged on purchases from after promotional period. |
-| UK.OBIE.AnnualPurchasePromo |Annual interest rate charged on purchases from during promotional period. |
-| UK.OBIE.MonthlyBalanceTransfer |Monthly interest rate charged on balance transfer from other service provider. |
-| UK.OBIE.MonthlyCash |Monthly interest rate charged on cash advance. |
-| UK.OBIE.MonthlyPurchase |Monthly interest rate charged on purchases. |
+| UK.OB.AnnualBalanceTransfer |Annual interest rate charged on balance transfer from other service provider. |
+| UK.OB.AnnualBalanceTransferAfterPromo |Annual interest rate charged on balance transfer from other service provider after promotional period. |
+| UK.OB.AnnualBalanceTransferPromo |Annual interest rate charged on balance transfer from other service provider during promotional period. |
+| UK.OB.AnnualCash |Annual interest rate charged on cash advance. |
+| UK.OB.AnnualPurchase |Annual interest rate charged on purchases. |
+| UK.OB.AnnualPurchaseAfterPromo |Annual interest rate charged on purchases from after promotional period. |
+| UK.OB.AnnualPurchasePromo |Annual interest rate charged on purchases from during promotional period. |
+| UK.OB.MonthlyBalanceTransfer |Monthly interest rate charged on balance transfer from other service provider. |
+| UK.OB.MonthlyCash |Monthly interest rate charged on cash advance. |
+| UK.OB.MonthlyPurchase |Monthly interest rate charged on purchases. |
 
 </details>
 
@@ -277,14 +277,14 @@ Default if not specified is BaseCurrency of the account.
 
 | Code |Description |
 | --- |--- |
-| UK.OBIE.AirMilesPoints |Air miles points at the end of the statement period. |
-| UK.OBIE.AirMilesPointsBalance |Air miles points at the end of the statement period. |
-| UK.OBIE.Credits |Total number of credits in statement period. |
-| UK.OBIE.Debits |Total number of debits in statement period. |
-| UK.OBIE.HotelPoints |Hotel points at the end of the statement period. |
-| UK.OBIE.HotelPointsBalance |Hotel points at the end of the statement period. |
-| UK.OBIE.RetailShoppingPoints |Retail shopping points at the end of the statement period. |
-| UK.OBIE.RetailShoppingPointsBalance |Retail shopping points at the end of the statement period. |
+| UK.OB.AirMilesPoints |Air miles points at the end of the statement period. |
+| UK.OB.AirMilesPointsBalance |Air miles points at the end of the statement period. |
+| UK.OB.Credits |Total number of credits in statement period. |
+| UK.OB.Debits |Total number of debits in statement period. |
+| UK.OB.HotelPoints |Hotel points at the end of the statement period. |
+| UK.OB.HotelPointsBalance |Hotel points at the end of the statement period. |
+| UK.OB.RetailShoppingPoints |Retail shopping points at the end of the statement period. |
+| UK.OB.RetailShoppingPointsBalance |Retail shopping points at the end of the statement period. |
 
 </details>
 
@@ -294,8 +294,8 @@ Default if not specified is BaseCurrency of the account.
 
 | Code |Description |
 | --- |--- |
-| UK.OBIE.AER |The annual equivalent rate (AER) is interest that is calculated under the assumption that any interest paid is combined with the original balance and the next interest payment will be based on the slightly higher account balance. Overall, this means that interest can be compounded several times in a year depending on the number of times that interest payments are made. |
-| UK.OBIE.EAR |EAR means Effective Annual Rate and/or Equivalent Annual Rate (frequently used interchangeably), being the actual annual interest rate of an Overdraft. |
+| UK.OB.AER |The annual equivalent rate (AER) is interest that is calculated under the assumption that any interest paid is combined with the original balance and the next interest payment will be based on the slightly higher account balance. Overall, this means that interest can be compounded several times in a year depending on the number of times that interest payments are made. |
+| UK.OB.EAR |EAR means Effective Annual Rate and/or Equivalent Annual Rate (frequently used interchangeably), being the actual annual interest rate of an Overdraft. |
 
 </details>
 
@@ -305,12 +305,12 @@ Default if not specified is BaseCurrency of the account.
 
 | Code |Description |
 | --- |--- |
-| UK.OBIE.ChargingPeriod |This fee is triggered at the end of each charging period. |
-| UK.OBIE.PerTransactionAmount |The amount stated is levied for each transaction processed. |
-| UK.OBIE.PerTransactionPercentage |The fee amount is the given percentage of the transaction processed and is levied for each transaction. |
-| UK.OBIE.StatementMonthly |This fee is triggered based on a monthly statement period. |
-| UK.OBIE.Quarterly |This fee is triggered at the end of every quarter. |
-| UK.OBIE.Weekly |The fee is triggered weekly. |
+| UK.OB.ChargingPeriod |This fee is triggered at the end of each charging period. |
+| UK.OB.PerTransactionAmount |The amount stated is levied for each transaction processed. |
+| UK.OB.PerTransactionPercentage |The fee amount is the given percentage of the transaction processed and is levied for each transaction. |
+| UK.OB.StatementMonthly |This fee is triggered based on a monthly statement period. |
+| UK.OB.Quarterly |This fee is triggered at the end of every quarter. |
+| UK.OB.Weekly |The fee is triggered weekly. |
 
 </details>
 
@@ -320,11 +320,11 @@ Default if not specified is BaseCurrency of the account.
 
 | Code |Description |
 | --- |--- |
-| UK.OBIE.BOEBaseRate |Interest rate shown is linked to the Bank of England Base Rate shown at http://www.bankofengland.co.uk/Pages/home.aspx. Typically defined as a % above the 'Current Bank Rate', but may also be below or equal to bank rate for certain Loan products. |
-| UK.OBIE.FixedRate |Fixed rate. |
-| UK.OBIE.Gross |Interest rate shown is before any tax deducted. |
-| UK.OBIE.LoanProviderBaseRate |Loan provider base rate. |
-| UK.OBIE.Net |Interest rate shown is after tax is deducted. |
+| UK.OB.BOEBaseRate |Interest rate shown is linked to the Bank of England Base Rate shown at http://www.bankofengland.co.uk/Pages/home.aspx. Typically defined as a % above the 'Current Bank Rate', but may also be below or equal to bank rate for certain Loan products. |
+| UK.OB.FixedRate |Fixed rate. |
+| UK.OB.Gross |Interest rate shown is before any tax deducted. |
+| UK.OB.LoanProviderBaseRate |Loan provider base rate. |
+| UK.OB.Net |Interest rate shown is after tax is deducted. |
 
 </details>
 
@@ -334,13 +334,13 @@ Default if not specified is BaseCurrency of the account.
 
 | Code |Description |
 | --- |--- |
-| UK.OBIE.Daily |Calculated and/or applied daily. |
-| UK.OBIE.HalfYearly |Calculated and/or applied half yearly. |
-| UK.OBIE.Monthly |Calculated and/or applied monthly. |
-| UK.OBIE.PerStatementDate |Calculated and/or applied on the statement date. |
-| UK.OBIE.Quarterly |This fee is triggered at the end of every quarter. |
-| UK.OBIE.Weekly |The fee is triggered weekly. |
-| UK.OBIE.Yearly |Calculated and/or applied annually. |
+| UK.OB.Daily |Calculated and/or applied daily. |
+| UK.OB.HalfYearly |Calculated and/or applied half yearly. |
+| UK.OB.Monthly |Calculated and/or applied monthly. |
+| UK.OB.PerStatementDate |Calculated and/or applied on the statement date. |
+| UK.OB.Quarterly |This fee is triggered at the end of every quarter. |
+| UK.OB.Weekly |The fee is triggered weekly. |
+| UK.OB.Yearly |Calculated and/or applied annually. |
 
 </details>
 
@@ -350,18 +350,18 @@ Default if not specified is BaseCurrency of the account.
 
 | Code |Description |
 | --- |--- |
-| UK.OBIE.Individual |Individual |
-| UK.OBIE.CIC |Community Interest Company |
-| UK.OBIE.CIO |Charitable Incorporated Organisation |
-| UK.OBIE.CoOp |Co-operative |
-| UK.OBIE.Charity |Charity |
-| UK.OBIE.GeneralPartnership |General Partnership |
-| UK.OBIE.LimitedLiabilityPartnership |Limited Liability Partnership |
-| UK.OBIE.ScottishLimitedPartnership |Scottish Limited Partnership |
-| UK.OBIE.LimitedPartnership |Limited Partnership |
-| UK.OBIE.PrivateLimitedCompany |Private Limited Company |
-| UK.OBIE.PublicLimitedCompany |Public Limited Company |
-| UK.OBIE.Sole |Sole (sole trader) |
+| UK.OB.Individual |Individual |
+| UK.OB.CIC |Community Interest Company |
+| UK.OB.CIO |Charitable Incorporated Organisation |
+| UK.OB.CoOp |Co-operative |
+| UK.OB.Charity |Charity |
+| UK.OB.GeneralPartnership |General Partnership |
+| UK.OB.LimitedLiabilityPartnership |Limited Liability Partnership |
+| UK.OB.ScottishLimitedPartnership |Scottish Limited Partnership |
+| UK.OB.LimitedPartnership |Limited Partnership |
+| UK.OB.PrivateLimitedCompany |Private Limited Company |
+| UK.OB.PublicLimitedCompany |Public Limited Company |
+| UK.OB.Sole |Sole (sole trader) |
 
 </details>
 
@@ -371,20 +371,20 @@ Default if not specified is BaseCurrency of the account.
 
 | Code |Description |
 | --- |--- |
-| UK.OBIE.Principal |Principal |
-| UK.OBIE.SecondaryOwner |Secondary owner |
-| UK.OBIE.Beneficiary |Beneficiary |
-| UK.OBIE.PowerOfAttorney |Power of attorney |
-| UK.OBIE.LegalGuardian |Legal guardian |
-| UK.OBIE.CustodianForMinor |Custodian for minor |
-| UK.OBIE.SuccessorOnDeath |Successor on death |
-| UK.OBIE.Administrator |Administrator |
-| UK.OBIE.OtherParty |Other party |
-| UK.OBIE.Granter |Granter |
-| UK.OBIE.Settlor |Settlor |
-| UK.OBIE.SeniorManagingOfficial |Senior managing official |
-| UK.OBIE.Protector |Protector |
-| UK.OBIE.RegisteredShareholderName |Registered shareholder name |
+| UK.OB.Principal |Principal |
+| UK.OB.SecondaryOwner |Secondary owner |
+| UK.OB.Beneficiary |Beneficiary |
+| UK.OB.PowerOfAttorney |Power of attorney |
+| UK.OB.LegalGuardian |Legal guardian |
+| UK.OB.CustodianForMinor |Custodian for minor |
+| UK.OB.SuccessorOnDeath |Successor on death |
+| UK.OB.Administrator |Administrator |
+| UK.OB.OtherParty |Other party |
+| UK.OB.Granter |Granter |
+| UK.OB.Settlor |Settlor |
+| UK.OB.SeniorManagingOfficial |Senior managing official |
+| UK.OB.Protector |Protector |
+| UK.OB.RegisteredShareholderName |Registered shareholder name |
 
 </details>
 
@@ -405,14 +405,14 @@ Default if not specified is BaseCurrency of the account.
 
 | Code |Description |
 | --- |--- |
-| UK.OBIE.Monthly |Monthly |
-| UK.OBIE.Quarterly |Quarterly |
-| UK.OBIE.HalfYearly |Half-yearly |
-| UK.OBIE.Weekly |Weekly |
-| UK.OBIE.Annual |Annual |
-| UK.OBIE.Fortnightly |Fortnightly |
-| UK.OBIE.Daily |Daily |
-| UK.OBIE.NotKnown |Not Known |
+| UK.OB.Monthly |Monthly |
+| UK.OB.Quarterly |Quarterly |
+| UK.OB.HalfYearly |Half-yearly |
+| UK.OB.Weekly |Weekly |
+| UK.OB.Annual |Annual |
+| UK.OB.Fortnightly |Fortnightly |
+| UK.OB.Daily |Daily |
+| UK.OB.NotKnown |Not Known |
 
 </details>
 
@@ -427,18 +427,18 @@ This field is used to indicate the ASPSP's payment service to be used for making
 
 | Code |Description |
 | --- |--- |
-| UK.OBIE.BACS |Back Payment Scheme |
-| UK.OBIE.CHAPS |CHAPS Payment Scheme |
-| UK.OBIE.FPS |Faster Payment Scheme |
-| UK.OBIE.SWIFT |Swift Payment Service |
-| UK.OBIE.BalanceTransfer |To indicate Balance Transfer |
-| UK.OBIE.MoneyTransfer |To Indicate Money Transfer |
-| UK.OBIE.Paym |Paym Payment |
-| UK.OBIE.Euro1 |To use Euro1 Payment System |
-| UK.OBIE.SEPACreditTransfer |To indicate SEPA Credit Transfer payment service |
-| UK.OBIE.SEPAInstantCreditTransfer |To indicate SEPA Instant Credit Transfer payment service |
-| UK.OBIE.Link |To indicate Link payment service |
-| UK.OBIE.Target2 |To indicate Target2 payment service |
+| UK.OB.BACS |Back Payment Scheme |
+| UK.OB.CHAPS |CHAPS Payment Scheme |
+| UK.OB.FPS |Faster Payment Scheme |
+| UK.OB.SWIFT |Swift Payment Service |
+| UK.OB.BalanceTransfer |To indicate Balance Transfer |
+| UK.OB.MoneyTransfer |To Indicate Money Transfer |
+| UK.OB.Paym |Paym Payment |
+| UK.OB.Euro1 |To use Euro1 Payment System |
+| UK.OB.SEPACreditTransfer |To indicate SEPA Credit Transfer payment service |
+| UK.OB.SEPAInstantCreditTransfer |To indicate SEPA Instant Credit Transfer payment service |
+| UK.OB.Link |To indicate Link payment service |
+| UK.OB.Target2 |To indicate Target2 payment service |
 
 </details>
 
@@ -454,9 +454,9 @@ This enumeration consists of a subset of the fees and charges identified in the 
 
 | Code |Description |
 | --- |--- |
-| UK.OBIE.CHAPSOut |CHAPS Payment Service fee |
-| UK.OBIE.BalanceTransferOut |Balance Transfer Service fee |
-| UK.OBIE.MoneyTransferOut |Money Transfer Service fee |
+| UK.OB.CHAPSOut |CHAPS Payment Service fee |
+| UK.OB.BalanceTransferOut |Balance Transfer Service fee |
+| UK.OB.MoneyTransferOut |Money Transfer Service fee |
 
 </details>
 
@@ -468,8 +468,8 @@ This field is used to indicate the file-type that is being submitted as part of 
 
 | Code |Description |
 | --- |--- |
-| UK.OBIE.pain.001.001.08 |This is specified when a fully compliant pain.001 XML file is staged for the payment initiation. |
-| UK.OBIE.PaymentInitiation.4.0 |This is specified when an array of payments, which are compliant with the OBL Initiation objects in the v4.0 standard, are staged in a .json file for the payment initiation. |
+| UK.OB.pain.001.001.08 |This is specified when a fully compliant pain.001 XML file is staged for the payment initiation. |
+| UK.OB.PaymentInitiation.4.0 |This is specified when an array of payments, which are compliant with the OBL Initiation objects in the v4.0 standard, are staged in a .json file for the payment initiation. |
 
 </details>
 
@@ -487,10 +487,10 @@ This field is used to indicate the event types a TPP would like to subscribe to 
 
 | Code                                                 | Description                                                                                                          |
 |------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------|
-| UK.OBIE.Resource-Update                              | An event that indicates a resource has been updated.                                                                 |
-| UK.OBIE.Consent-Authorization-Revoked                | An event that indicates a consent resource has had its authorisation revoked. (left for backward compatibility)      |
-| UK.OBIE.Consent-Access-Revoked                       | An event that indicates a consent has its underlying access revoked. The consent itself remains in authorised state. |
-| UK.OBIE.Account-Access-Consent-Linked-Account-Update | An event that indicates an account linked to a consent has move in/out of scope of the consent.                      |
+| UK.OB.Resource-Update                              | An event that indicates a resource has been updated.                                                                 |
+| UK.OB.Consent-Authorization-Revoked                | An event that indicates a consent resource has had its authorisation revoked. (left for backward compatibility)      |
+| UK.OB.Consent-Access-Revoked                       | An event that indicates a consent has its underlying access revoked. The consent itself remains in authorised state. |
+| UK.OB.Account-Access-Consent-Linked-Account-Update | An event that indicates an account linked to a consent has move in/out of scope of the consent.                      |
 
 </details>
 
@@ -512,8 +512,8 @@ This field is used to indicate the reason associated with an Account Access Cons
 
 | Code |Description |
 | --- |--- |
-| UK.OBIE.AccountClosure |An account is no longer associated with the consent as it has been closed. |
-| UK.OBIE.CASS |An account is no longer associated with the consent as it has been switched (using the Current Account Switch Service) to another ASPSP. |
+| UK.OB.AccountClosure |An account is no longer associated with the consent as it has been closed. |
+| UK.OB.CASS |An account is no longer associated with the consent as it has been switched (using the Current Account Switch Service) to another ASPSP. |
 
 </details>
 
@@ -528,8 +528,8 @@ The types of payments that can be made under a VRP consent. This can be used to 
 
 | Code |Description |
 | --- |--- |
-| UK.OBIE.VRPType.Sweeping | Limited to sweeping payments as per definition of sweeping in proposition paper |
-| UK.OBIE.VRPType.Other | Variable recurring payment that does not meet definition of sweeping |
+| UK.OB.VRPType.Sweeping | Limited to sweeping payments as per definition of sweeping in proposition paper |
+| UK.OB.VRPType.Other | Variable recurring payment that does not meet definition of sweeping |
 
 </details>
 
@@ -541,8 +541,8 @@ Indicates a PSU authentication methods supported or used
 
 | Code |Description |
 | --- |--- |
-| UK.OBIE.SCA | Authentication method where the consent is authorised through SCA. |
-| UK.OBIE.SCANotRequired | This indicates that the PSU does not need to authenticate for individual payments and the payments can be made without the PSU being present. |
+| UK.OB.SCA | Authentication method where the consent is authorised through SCA. |
+| UK.OB.SCANotRequired | This indicates that the PSU does not need to authenticate for individual payments and the payments can be made without the PSU being present. |
 
 </details>
 
@@ -552,8 +552,8 @@ Indicates a PSU authentication methods supported or used
 
 | Code |Description |
 | --- |--- |
-| UK.OBIE.ExemptionNotApplied | Reason when exemption could not applied for the status of a VRP. |
-| UK.OBIE.OtherReason | The OtherReason only in scenarios where the actual reason cannot be determined or disclosed.|
+| UK.OB.ExemptionNotApplied | Reason when exemption could not applied for the status of a VRP. |
+| UK.OB.OtherReason | The OtherReason only in scenarios where the actual reason cannot be determined or disclosed.|
 
 Note: ASPSPs may define enumerations that are more appropriate and document in the Developer Portal.
 
