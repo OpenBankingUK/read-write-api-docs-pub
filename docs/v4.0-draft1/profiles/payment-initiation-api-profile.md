@@ -344,7 +344,7 @@ Two strategies for handling behaviour are:
 In this scenario, the behaviour of payment-order execution is explicit to the PISP and PSU.
 
 - An ASPSP **must** reject the payment-order **consent** if the CutOffDateTime for a specific payment-order type has elapsed.
-- An ASPSP **must** reject an authorization request when the underlying intent object is associated with a CutoffDateTime that has elapsed. The ASPSP **must not** issue an access token in such a situation. The ASPSP **must** set the status of the payment-order consent resource to “Rejected”.
+- An ASPSP **must** reject an authorization request when the underlying intent object is associated with a CutoffDateTime that has elapsed. The ASPSP **must not** issue an access token in such a situation. The ASPSP **must** set the status of the payment-order consent resource to “RJCT”.
 - An ASPSP **must** reject the payment-order **resource** if the CutOffDateTime for a specific payment-order type, has been established and has elapsed.
 - A PISP **must** ensure that the PSU consent authorisation is completed and the payment-order resource is created before the CutOffDateTime elapses.
 
@@ -493,7 +493,7 @@ During the design workshops, ASPSPs articulated a need to perform risk scoring o
 
 Information for risk scoring and assessment will come via:
 
-- FAPI HTTP headers. These are defined in [Section 6.3](http://openid.net/specs/openid-financial-api-part-1-wd-02.html#client-provisions) of the FAPI specification and in the Headers section above.
+- FAPI HTTP headers. These are defined in [Section 6.2.2](https://openid.net/specs/openid-financial-api-part-1-1_0.html#client-provisions) of the FAPI specification and in the Headers section above.
 - Additional fields identified by the industry as business logic security concerns which will be passed in the Risk section of the payload in the JSON object as defined `OBRisk*` components.
 
 These fields are documented further in the Data Payload section.
@@ -777,8 +777,8 @@ Key:
 
 #### Static Enumerations
 
-This section gives the definitions for enumerations used in the Payment APIs.
-
+The definitions for enumerations used in the Payment APIs can be found [here](https://github.com/OpenBankingUK/External_Interal_CodeSets)
+<!---
 | Code Class |Name |Definition |
 | --- |--- |--- |
 | OBExternalPaymentContext1Code |BillingGoodsAndServicesInAdvance |The context of the payment initiation is a billing for goods and services in advance. |
@@ -909,7 +909,7 @@ This section gives the definitions for enumerations used in the Payment APIs.
 | OBCategoryPurposeCode |VOST |Crossborder MIPayments|
 | OBCategoryPurposeCode |WHLD |WithHolding|
 | OBCategoryPurposeCode |ZABA |CashManagementZeroBalanceAccount|
-
+-->
 
 #### ISO Enumerations
 
