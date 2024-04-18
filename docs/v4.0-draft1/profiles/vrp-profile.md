@@ -20,6 +20,7 @@
   - [Error Condition](#error-condition)
   - [Consent Re-authentication](#consent-re-authentication)
   - [Risk Scoring Information](#risk-scoring-information)
+  - [Migration of a consent to a new version](#Migration-of-a-consent-to-a-new-version)
 - [Event Notifications](#event-notifications)
   - [Event Notification for changes to DebtorAccount](#event-notification-for-changes-to-debtoraccount)
   - [Event notifications for cancellation of a VRP Consent](#event-notifications-for-cancellation-of-a-vrp-consent)
@@ -233,6 +234,24 @@ ASPSPs may revoke access tokens issued for a VRP consent if they suspect risk or
 ### Risk Scoring Information
 
 The same risk scoring information contained in the `Risk` of other OBL R/W payment resources will be available.
+
+### Migration of a consent to a new version
+New releases of the standard may change the schema and/or enumerations used in VRP payments.  In order to allow successful data validation of payments where the consent was created and authenticated on a previous version of the standard the following features can be used. 
+
+These features __must__ only be used to support migration across Standards versions and __must not__ be used to modify consent data that does not require migration.
+
+#### Payload-version header
+This header can be used to indicate the version of a payload being sent/received. It’s value is the _major.minor.patch_ of the API standard used to create it
+
+TPPs should check ASPSP developer portals for information on whether legacy formats will be accepted.
+
+__Example:__
+`payload-version: 3.1.10`
+
+#### HTTP PUT | PATCH  /domestic-vrp-consents/{consentId}
+Implementation of these endpoints is conditional and TPPs should check the ASPSP developer portal for information on which has been implemented. 
+Additional information on usage is on the **Domestic VRP Consents** page
+
 
 ## Event Notifications
 

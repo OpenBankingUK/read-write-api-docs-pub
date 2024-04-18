@@ -42,6 +42,8 @@ The ASPSP may use the scope to limit to functionality to sweeping or non-sweepin
 |domestic-vrp-consents |GET |GET /domestic-vrp-consents/{ConsentId} |Mandatory | payments |Client Credentials |Signed Response |No |NA |OBDomesticVRPConsentResponse |
 |domestic-vrp-consents |DELETE |DELETE /domestic-vrp-consents/{ConsentId} |Mandatory | payments |Client Credentials | NA |No |NA |None |
 |domestic-vrp-consents |POST |POST /domestic-vrp-consents/{ConsentId}/funds-confirmation |Mandatory | payments |Authorization Code |Signed Request Signed Response |No |OBVRPFundsConfirmationRequest |OBVRPFundsConfirmationResponse |
+| domestic-vrp-consents | PUT | PUT  /domestic-vrp-consents/{ConsentId} | Conditional | payments | Client Credentials | Signed Request Signed Response | Yes |  OBDomesticVRPConsentRequest | OBDomesticVRPConsentResponse |
+| domestic-vrp-consents | PATCH | PATCH /domestic-vrp-consents/{ConsentId} | Conditional | payments | Client Credentials | Signed Request Signed Response | Yes | OBDomesticVRPConsentRequest | OBDomesticVRPConsentResponse |
 
 ### POST /domestic-vrp-consents
 
@@ -75,7 +77,27 @@ This API endpoint allows the TPP to ask an ASPSP to confirm funds on the `Debtor
 
 An ASPSP can only respond to a funds confirmation request if the resource has a StatusCode of `AUTH`.
 
-If resource has any other Status, the ASPSP must respond with a 400 (Bad Request) and a `UK.OBIE.Resource.InvalidConsentStatus` error code.
+If resource has any other Status, the ASPSP must respond with a 400 (Bad Request) and a `UK.OB.Resource.InvalidConsentStatus` error code.
+
+### PUT /domestic-vrp-consents/{consentId}
+This endpoint is only used for migration of consent data across Standard versions. The ASPSP can choose to implement one or both of the PUT/PATCH endpoints and TPPs should refer to the ASPSP dev portal for information on availability.    
+
+This endpoint should not be used to modify content of an existing consent created on the same version.  The ASPSP __must__ reject request if it attempts to modify an existing resource which does not require migration to the new format.
+
+The request body should contain the correct schema for the current version of the API specification with any associated enumeration values that have moved to short code format.  Values originally supplied in the consent such as account information, control parameters, dates or monetary values __must not__ change and the ASPSP __must__ reject any requests which modify these values.
+
+Successful submission must return the updated consent resource body.
+
+### PATCH /domestic-vrp-consents/{consentId}
+This endpoint is only used for migration of consent data across Standard versions. The ASPSP can choose to implement one or both of the PUT/PATCH endpoints and TPPs should refer to the ASPSP dev portal for information on availability.    
+
+This endpoint should not be used to modify content of an existing consent created on the same version.  The ASPSP __must__ reject request if it attempts to modify an existing resource which does not require migration to the new format.
+
+The request body should contain a partial JSON body containing only the changed schema and any associated enumeration values that have moved to short code format, matching the current API specification.  Values originally supplied in the consent such as account information, control parameters, dates or monetary values __must not__ change and the ASPSP __must__ reject any requests which modify these values.
+
+Successful submission must return the full updated consent resource body.
+
+
 
 ## State Model - VRP consents
 
