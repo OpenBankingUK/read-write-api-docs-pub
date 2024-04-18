@@ -348,6 +348,16 @@ The Risk block is a common class used in requests and responses
 | __StatusUpdateDateTime__ (1..1)| `Data. StatusUpdateDateTime` |Date and time at which the resource status was updated.  | ISODateTime  
 | __ControlParameters__ (1..1) | `Data. ControlParameters` | The control parameters under which this VRP must operate | [OBDomesticVRPControlParameters](#OBDomesticVRPControlParameters)
 | __Initiation__ (1..1) | `Data. Initiation` | The parameters of the VRP consent that should remain unchanged for each payment under this VRP |  [OBDomesticVRPInitiation](#OBDomesticVRPInitiation)
+| __UltimateCreditor__ (0..1) | `Data. Initiation. UltimateCreditor` |Set of elements used to identify a person or an organisation. | OBPartyIdentification43 | | |
+| __SchemeName__ (0..1) | `Data. Initiation. UltimateCreditor. SchemaName` |Name of the identification scheme, in a coded form as published in an external list. |OBExternalAccountIdentification4Code | | |
+| __Identification__ (0..1) | `Data. Initiation. UltimateCreditor. Identification` |Identification assigned by an institution to identify an account. This identification is known by the account owner. |Max256Text | | |
+| __Name__ (0..1) | `Data. Initiation. UltimateCreditor. Name` |The account name is the name or names of the account owner(s) represented at an account level, as displayed by the ASPSP's online channels. Note, the account name is not the product name or the nickname of the account. |Max350Text | | |
+| __LEI__ (0..1) | `Data. Initiation. UltimateCreditor. LEI` | Legal Entity Identification by which a party is known and which is usually used to identify that party. |Max20Text | | |
+| __UltimateDebtor__ (0..1) | `Data. Initiation. UltimateDebtor` |Set of elements used to identify a person or an organisation. | OBPartyIdentification43 | | |
+| __SchemeName__ (0..1) | `Data. Initiation. UltimateDebtor. SchemaName` |Name of the identification scheme, in a coded form as published in an external list. |OBExternalAccountIdentification4Code | | |
+| __Identification__ (0..1) | `Data. Initiation. UltimateDebtor. Identification` |Identification assigned by an institution to identify an account. This identification is known by the account owner. |Max256Text | | |
+| __Name__ (0..1) | `Data. Initiation. UltimateDebtor. Name` |The account name is the name or names of the account owner(s) represented at an account level, as displayed by the ASPSP's online channels. Note, the account name is not the product name or the nickname of the account. |Max350Text | | |
+| __LEI__ (0..1) | `Data. Initiation. UltimateDebtor. LEI` | Legal Entity Identification 
 | __DebtorAccount__ (0..1) | `Data.DebtorAccount` | The approved DebtorAccount that the payment can be made from. THe value must be populated for GET responses once the consent is approved. | OBCashAccountDebtorWithName
 | __Risk__ (1..1) | `Risk` | The consent payload is sent by the initiating party to the ASPSP. It is used to request a consent to move funds from the debtor account to a creditor. | OBRisk
 
