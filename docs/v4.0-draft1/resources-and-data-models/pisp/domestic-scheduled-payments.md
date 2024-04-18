@@ -234,6 +234,7 @@ The domestic-scheduled-payment **response** object contains the:
 | Currency |1..1 |OBWriteDomesticScheduledResponse5/RegulatoryReporting/Details/Amount/Currency |A code allocated to a currency by a Maintenance Agency under an international identification scheme, as described in the latest edition of the international standard ISO 4217 "Codes for the representation of currencies and funds". |ActiveOrHistoricCurrencyCode | | ^[A-Z]{3,3}$ |
 | Information |0..* |OBWriteDomesticScheduledResponse5/RegulatoryReporting/Details/Information |Additional details that cater for specific domestic regulatory requirements. |Max35Text | | |
 
+
 ### Domestic Schedule Payment Order - Payment Details - Response
 
 The OBWritePaymentDetailsResponse1 object will be used for a response to a call to:
