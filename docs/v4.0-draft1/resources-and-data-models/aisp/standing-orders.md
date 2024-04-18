@@ -105,7 +105,7 @@ If the ReadPAN permission is granted by the PSU, the ASPSP may choose to populat
 | AccountId |1..1 |OBReadStandingOrder6/Data/StandingOrder/AccountId |A unique and immutable identifier used to identify the account resource. This identifier has no meaning to the account owner. |Max40Text | | |
 | StandingOrderId |0..1 |OBReadStandingOrder6/Data/StandingOrder/StandingOrderId |A unique and immutable identifier used to identify the standing order resource. This identifier has no meaning to the account owner. |Max40Text | | |
 | MandateRelatedInformation | 0..1 |OBReadStandingOrder6/Data/MandateRelatedInformation ||OBMandateRelatedInformation | | |
-| MandateIdentification | 0..1 |OBReadStandingOrder6/Data/MandateRelatedInformation/MandateIdentification ||TODO | | |
+| MandateIdentification | 0..1 |OBReadStandingOrder6/Data/MandateRelatedInformation/MandateIdentification ||MaxText35 | | |
 | Classification | 0..1 |OBReadStandingOrder6/Data/MandateRelatedInformation/Classification|FIXE<br>USGB<br>VARI|OBClassification1Code | | |
 | CategoryPurposeCode | 0..1 |OBReadStandingOrder6/Data/MandateRelatedInformation/CategoryPurposeCode ||OBCategoryPurpose1Code | | |
 | FirstPaymentDate | 0..1 |OBReadStandingOrder6/Data/MandateRelatedInformation/FirstPaymentDate |The date on which the first payment for a Standing Order schedule will be made. |ISODate | | |

@@ -72,7 +72,7 @@ The resource requires the ReadDirectDebits permission. The resource response pay
 | Amount |1..1 |OBReadDirectDebit2/Data/DirectDebit/PreviousPaymentAmount/Amount |A number of monetary units specified in an active currency where the unit of currency is explicit and compliant with ISO 4217. |OBActiveCurrencyAndAmount_SimpleType | |`^\d{1,13}$|^\d{1,13}\.\d{1,5}$` |
 | Currency |1..1 |OBReadDirectDebit2/Data/DirectDebit/PreviousPaymentAmount/Currency |A code allocated to a currency by a Maintenance Agency under an international identification scheme, as described in the latest edition of the international standard ISO 4217 "Codes for the representation of currencies and funds". |ActiveOrHistoricCurrencyCode | |^[A-Z]{3,3}$ |
 | MandateRelatedInformation | 0..1 |OBReadDirectDebit2/Data/DirectDebit/MandateRelatedInformation ||OBMandateRelatedInformation | | |
-| MandateIdentification | 0..1 |OBReadDirectDebit2/Data/DirectDebit/MandateRelatedInformation/MandateIdentification ||TODO | | |
+| MandateIdentification | 0..1 |OBReadDirectDebit2/Data/DirectDebit/MandateRelatedInformation/MandateIdentification ||MaxText35 | | |
 | Classification | 0..1 |OBReadDirectDebit2/Data/DirectDebit/MandateRelatedInformation/Classification|FIXE<br>USGB<br>VARI|OBClassification1Code | | |
 | CategoryPurposeCode | 0..1 |OBReadDirectDebit2/Data/DirectDebit/MandateRelatedInformation/CategoryPurposeCode ||OBCategoryPurpose1Code | | |
 | FirstPaymentDate | 0..1 |OBReadDirectDebit2/Data/DirectDebit/MandateRelatedInformation/FirstPaymentDate |The date on which the first payment for a Standing Order schedule will be made. |ISODate | | |
