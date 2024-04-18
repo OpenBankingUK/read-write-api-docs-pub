@@ -292,6 +292,10 @@ The resource differs depending on the permissions (ReadTransactionsBasic and Rea
 | AuthorisationType |0..1 |OBReadTransaction6/Data/Transaction/CardInstrument/AuthorisationType |The card authorisation type. |OBExternalCardAuthorisationType1Code |ConsumerDevice Contactless None PIN | |
 | Name |0..1 |OBReadTransaction6/Data/Transaction/CardInstrument/Name |Name of the cardholder using the card instrument. |Max70Text | | |
 | Identification |0..1 |OBReadTransaction6/Data/Transaction/CardInstrument/Identification |Identification assigned by an institution to identify the card instrument used in the transaction. This identification is known by the account owner, and may be masked. |Max34Text | | |
+| ExtendedProprietaryBankTransactionCodes |0..* |OBReadTransaction6/Data/Transaction/ExtendedProprietaryBankTransactionCodes |Additional proprietary bank transaction codes used by the ASPSP for the underlying transaction. |OBExtendedProprietaryBankTransactionCode | | |
+| Code |1..1 |OBReadTransaction6/Data/Transaction/ExtendedProprietaryBankTransactionCodes/Code |Proprietary bank transaction code to identify the underlying transaction.|Max35Text | | |
+| Issuer |0..1 |OBReadTransaction6/Data/Transaction/ExtendedProprietaryBankTransactionCodes/Issuer | Identification of the issuer of the proprietary bank transaction code.|Max35Text | | |
+| Description |0..1 |OBReadTransaction6/Data/Transaction/ExtendedProprietaryBankTransactionCodes/Description | Description of the code and its usage on the ASPSP channel|Max500Text | | |
 | SupplementaryData |0..1 |OBReadTransaction6/Data/Transaction/SupplementaryData |Additional information that can not be captured in the structured fields and/or any other specific block. |OBSupplementaryData1 | | |
 | CategoryPurposeCode | 0..1 | OBReadTransaction6/Data/Transaction/CategoryPurposeCode |Enumeration to outline the purpose to the underlying purpose of the payment<br> BONU (BonusPayment)<br>CASH (CashManagementTransfer)<br>CBLK (CardBulkClearing)<br>CCRD (CreditCardPayment)<br>CGWV (CarrierGuardedWholesaleValuables)<br>CIPC (CashInPreCredit)<br>CONC (CashOutNotesCoins)<br>CORT (TradeSettlementPayment)<br>DCRD (DebitCardPayment)<br>DIVI (Dividend)<br>DVPM (DeliverAgainstPayment)<br>EPAY (Epayment)<br>FCDT (ForeignCurrencyDomesticTransfer)<br>FCIN (FeeCollectionAndInterest)<br>FCOL (FeeCollection)<br>GOVT (GovernmentPayment)<br>GP2P (PersontoPersonPayment)<br>HEDG (Hedging)<br>ICCP (IrrevocableCreditCardPayment)<br>IDCP (IrrevocableDebitCardPayment)<br>INTC (IntraCompanyPayment)<br>INTE (Interest)<br>LBOX (LockboxTransactions)<br>LOAN (Loan)<br>MP2B (Commercial)<br>MP2P (Consumer)<br>OTHR (OtherPayment)<br>PENS (PensionPayment)<br>RPRE (Represented)<br>RRCT (ReimbursementReceivedCreditTransfer)<br>RVPM (ReceiveAgainstPayment)<br>SALA (SalaryPayment)<br>SECU (Securities)<br>SSBE (SocialSecurityBenefit)<br>SUPP (SupplierPayment)<br>SWEP (CashManagementSweepAccount)<br>TAXS (TaxPayment)<br>TOPG (CashManagementTopAccount)<br>TRAD (Trade)<br>TREA (TreasuryPayment)<br>VATX (ValueAddedTaxPayment)<br>VOST (Crossborder MIPayments)<br>WHLD (WithHolding)<br>ZABA (CashManagementZeroBalanceAccount)| OBCategoryPurposeCode| | |
 | UltimateCreditor |0..1 |OBReadTransaction6/Data/Transaction/UltimateCreditor|Set of elements used to identify a person or an organisation. | OBPartyIdentification43 | | |
@@ -354,6 +358,17 @@ Content-Type: application/json
           "Code": "Transfer",
           "Issuer": "AlphaBank"
         },
+        "ExtendedProprietaryBankTransactionCodes": [{
+          "Code": "Transfer 2",
+          "Issuer": "AlphaBank",
+          "Description": "Local View"
+          },
+          {
+          "Code": "Transfer 3",
+          "Issuer": "AlphaBank",
+          "Description": "SWIFT View"
+          }
+        ],
         "Balance": {
           "Amount": {
             "Amount": "230.00",
@@ -431,7 +446,18 @@ Content-Type: application/json
           },
           "CreditDebitIndicator": "Credit",
           "Type": "InterimBooked"
-        }
+        },
+        "ExtendedProprietaryBankTransactionCodes": [{
+          "Code": "Transfer 2",
+          "Issuer": "AlphaBank",
+          "Description": "Local View"
+          },
+          {
+          "Code": "Transfer 3",
+          "Issuer": "AlphaBank",
+          "Description": "SWIFT View"
+          }
+        ],
       },
       {
         "AccountId": "31820",
@@ -462,7 +488,18 @@ Content-Type: application/json
           },
           "CreditDebitIndicator": "Debit",
           "Type": "InterimBooked"
-        }
+        },
+        "ExtendedProprietaryBankTransactionCodes": [{
+          "Code": "Transfer 2",
+          "Issuer": "AlphaBank",
+          "Description": "Local View"
+          },
+          {
+          "Code": "Transfer 3",
+          "Issuer": "AlphaBank",
+          "Description": "SWIFT View"
+          }
+        ],
       }
     ]
   },
