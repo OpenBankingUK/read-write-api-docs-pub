@@ -201,4 +201,4 @@ TPPs may have implemented the event-notification resource defined in v3.1 or v3.
 
 - Registering via the callback-url resource, implicitly limiting event types to `urn:uk:org:openbanking:events:resource-update`.
 - Registering via the event-subscription resource with the Version set to 3.1.1, implicitly limiting events to `urn:uk:org:openbanking:events:resource-update`.
-- Registering via the event-subscription resource. The Version element should be set to 3.1.2 and the EventTypes array limited to the value UK.OBIE.Resource-Update, explicitly limiting events to `urn:uk:org:openbanking:events:resource-update`.
+- Registering via the event-subscription resource. The Version element should be set to 3.1.2 and the EventTypes array limited to the value UK.OB.Resource-Update, explicitly limiting events to `urn:uk:org:openbanking:events:resource-update`.

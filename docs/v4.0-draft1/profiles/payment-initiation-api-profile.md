@@ -344,7 +344,7 @@ Two strategies for handling behaviour are:
 In this scenario, the behaviour of payment-order execution is explicit to the PISP and PSU.
 
 - An ASPSP **must** reject the payment-order **consent** if the CutOffDateTime for a specific payment-order type has elapsed.
-- An ASPSP **must** reject an authorization request when the underlying intent object is associated with a CutoffDateTime that has elapsed. The ASPSP **must not** issue an access token in such a situation. The ASPSP **must** set the status of the payment-order consent resource to “Rejected”.
+- An ASPSP **must** reject an authorization request when the underlying intent object is associated with a CutoffDateTime that has elapsed. The ASPSP **must not** issue an access token in such a situation. The ASPSP **must** set the status of the payment-order consent resource to “RJCT”.
 - An ASPSP **must** reject the payment-order **resource** if the CutOffDateTime for a specific payment-order type, has been established and has elapsed.
 - A PISP **must** ensure that the PSU consent authorisation is completed and the payment-order resource is created before the CutOffDateTime elapses.
 
@@ -493,7 +493,7 @@ During the design workshops, ASPSPs articulated a need to perform risk scoring o
 
 Information for risk scoring and assessment will come via:
 
-- FAPI HTTP headers. These are defined in [Section 6.3](http://openid.net/specs/openid-financial-api-part-1-wd-02.html#client-provisions) of the FAPI specification and in the Headers section above.
+- FAPI HTTP headers. These are defined in [Section 6.2.2](https://openid.net/specs/openid-financial-api-part-1-1_0.html#client-provisions) of the FAPI specification and in the Headers section above.
 - Additional fields identified by the industry as business logic security concerns which will be passed in the Risk section of the payload in the JSON object as defined `OBRisk*` components.
 
 These fields are documented further in the Data Payload section.
@@ -521,11 +521,11 @@ This section describes the Risk1 class which is reused in the payment-order cons
 | ContractPresentIndicator       | 0..1       | OBRisk1/ContractPresentIndicator         | Indicates if Payee has a contractual relationship with the PISP.                                                                                                                                                               | Boolean                            |                                                                                                                                                                                                                                                                                                                         |         |
 | BeneficiaryPrepopulatedIndicator | 0..1       | OBRisk1/BeneficiaryPrepopulatedIndicator   | Indicates if PISP has immutably prepopulated payment details in for the PSU.                                                                                                                                                   | Boolean                            |                                                                                                                                                                                                                                                                                                                         |         |
 | PaymentPurposeCode |0..1 |OBRisk1/PaymentPurposeCode | For a full description see `ExternalPurpose1Code` [here](https://github.com/OpenBankingUK/External_Interal_CodeSets) |OBExternalPaymentPurpose1Code | | |
-| CategoryPurposeCode                | 0..1       | OBRisk1/CategoryPurposeCode                  |Enumeration to outline the purpose to the underlying purpose of the payment<br> BONU (BonusPayment)<br>CASH (CashManagementTransfer)<br>CBLK (CardBulkClearing)<br>CCRD (CreditCardPayment)<br>CGWV (CarrierGuardedWholesaleValuables)<br>CIPC (CashInPreCredit)<br>CONC (CashOutNotesCoins)<br>CORT (TradeSettlementPayment)<br>DCRD (DebitCardPayment)<br>DIVI (Dividend)<br>DVPM (DeliverAgainstPayment)<br>EPAY (Epayment)<br>FCDT (ForeignCurrencyDomesticTransfer)<br>FCIN (FeeCollectionAndInterest)<br>FCOL (FeeCollection)<br>GOVT (GovernmentPayment)<br>GP2P (PersontoPersonPayment)<br>HEDG (Hedging)<br>ICCP (IrrevocableCreditCardPayment)<br>IDCP (IrrevocableDebitCardPayment)<br>INTC (IntraCompanyPayment)<br>INTE (Interest)<br>LBOX (LockboxTransactions)<br>LOAN (Loan)<br>MP2B (Commercial)<br>MP2P (Consumer)<br>OTHR (OtherPayment)<br>PENS (PensionPayment)<br>RPRE (Represented)<br>RRCT (ReimbursementReceivedCreditTransfer)<br>RVPM (ReceiveAgainstPayment)<br>SALA (SalaryPayment)<br>SECU (Securities)<br>SSBE (SocialSecurityBenefit)<br>SUPP (SupplierPayment)<br>SWEP (CashManagementSweepAccount)<br>TAXS (TaxPayment)<br>TOPG (CashManagementTopAccount)<br>TRAD (Trade)<br>TREA (TreasuryPayment)<br>VATX (ValueAddedTaxPayment)<br>VOST (Crossborder MIPayments)<br>WHLD (WithHolding)<br>ZABA (CashManagementZeroBalanceAccount)| OBCategoryPurposeCode                       |                                                                                                                                                                                                                                                                                                                         |         |
+| CategoryPurposeCode                | 0..1       | OBRisk1/CategoryPurposeCode                  |Enumeration to outline the purpose to the underlying purpose of the payment<br> BONU<br>CASH<br>CBLK<br>CCRD<br>CGWV<br>CIPC<br>CONC<br>CORT<br>DCRD<br>DIVI<br>DVPM<br>EPAY<br>FCDT<br>FCIN<br>FCOL<br>GOVT<br>GP2P<br>HEDG<br>ICCP<br>IDCP<br>INTC<br>INTE<br>LBOX<br>LOAN<br>MP2B<br>MP2P<br>OTHR<br>PENS<br>RPRE <br>RRCT<br>RVPM<br>SALA<br>SECU<br>SSBE<br>SUPP<br>SWEP<br>TAXS<br>TOPG<br>TRAD<br>TREA<br>VATX<br>VOST<br>WHLD<br>ZABA| OBCategoryPurposeCode                       |                                                                                                                                                                                                                                                                                                                         |         |
 | ExtendedPurpose |0..1 |OBRisk1/ExtendedPurpose |Specifies the purpose of an __international payment__, when there is no corresponding 4 character code available in the ISO20022 list of Purpose Codes. |Max140Text | | |
 | BeneficiaryAccountType           | 0..1       | OBRisk1/BeneficiaryAccountType             | To be provided if the AccountType is known.                                                                                                                                                                                    | OBExternalExtendedAccountType1Code | Personal<br>JointPersonal<br>PersonalSavingsAccount<br>Business<br>BusinessSavingsAccount<br>Charity<br>Collection<br>Corporate<br>Government<br>Ewallet<br>Investment<br>ISA<br>Premier<br>Wealth<br>Pension<br>                                                                                                       |         |
 | DeliveryAddress                  | 0..1       | OBRisk1/DeliveryAddress                    | Information that locates and identifies a specific address, as defined by postal services or in free format text.                                                                                                              | OBPostalAddress6               |                                                                                                                                                                                                                                                                                                                         |    |
-| AddressType |0..1 |OBRisk1/DeliveryAddress AddressType |BIZZ (Business)<br>DLVY (Delivery To)<br>MLTO (Mail To)<br>PBOX (PO Box)<br>ADDR (Postal)<br>HOME (Residential)<br>CORR (Correspondence)<br>STAT (Statement) | ||
+| AddressType |0..1 |OBRisk1/DeliveryAddress AddressType |BIZZ<br>DLVY<br>MLTO<br>PBOX<br>ADDR<br>HOME<br>CORR<br>STAT | ||
 | Department |0..1 |OBRisk1/DeliveryAddress Department |Identification of a division of a large organisation or building. |Max70Text | | |
 | SubDepartment |0..1 |OBRisk1/DeliveryAddress SubDepartment |Identification of a sub-division of a large organisation or building. |Max70Text | | |
 | StreetName |0..1 |OBRisk1/DeliveryAddress StreetName |Name of a street or thoroughfare. |Max70Text | | |
@@ -586,7 +586,7 @@ This section describes the OBMultiAuthorisation1 class which used in the respons
 | Name |Occurrence |XPath |EnhancedDefinition |Class |Codes |Pattern |
 | --- |--- |--- |--- |--- |--- |--- |
 | OBMultiAuthorisation1 | |OBMultiAuthorisation1 |The multiple authorisation flow response from the ASPSP. |OBMultiAuthorisation1 | | |
-| Status |1..1 |OBMultiAuthorisation1/Status |Specifies the status of the authorisation flow in code form. |OBExternalStatus2Code |Authorised<br>AwaitingFurtherAuthorisation<br>Rejected | |
+| Status |1..1 |OBMultiAuthorisation1/Status |Specifies the status of the authorisation flow in code form. |OBExternalStatus2Code |AUTH<br>AWAU<br>RJCT | |
 | NumberRequired |0..1 |OBMultiAuthorisation1/NumberRequired |Number of authorisations required for payment order (total required at the start of the multi authorisation journey). |Number | | |
 | NumberReceived |0..1 |OBMultiAuthorisation1/NumberReceived |Number of authorisations received. |Number | | |
 | LastUpdateDateTime |0..1 |OBMultiAuthorisation1/LastUpdateDateTime |Last date and time at the authorisation flow was updated. |ISODateTime | | |
@@ -778,138 +778,7 @@ Key:
 
 #### Static Enumerations
 
-This section gives the definitions for enumerations used in the Payment APIs.
-
-| Code Class |Name |Definition |
-| --- |--- |--- |
-| OBExternalPaymentContext1Code |BillingGoodsAndServicesInAdvance |The context of the payment initiation is a billing for goods and services in advance. |
-| OBExternalPaymentContext1Code |BillingGoodsAndServicesInArrears |The context of the payment initiation is billing for goods in arrears. |
-| OBExternalPaymentContext1Code |EcommerceMerchantInitiatedPayment |The context of the payment initiation is for services via an ecommerce channel. |
-| OBExternalPaymentContext1Code |FaceToFacePointOfSale |The context of the payment initiation is a face-to-face point of sale payment. |
-| OBExternalPaymentContext1Code |TransferToSelf |The context of the payment initiation is a transfer to another account held by the PSU . |
-| OBExternalPaymentContext1Code |TransferToThirdParty |The context of the payment initiation is a transfer to another account not held by the PSU . |
-| OBTransactionIndividualStatus1Code |AcceptedSettlementCompleted |Settlement on the debtor's account has been completed.<br><br>Usage : this can be used by the first agent to report to the debtor that the transaction has been completed. Warning : this status is provided for transaction status reasons, not for financial information. It can only be used after bilateral agreement.<br><br>PISPs **must not** use this status as confirmation that settlement is complete on the creditor's account. |
-| OBTransactionIndividualStatus1Code |AcceptedSettlementInProcess |All preceding checks such as technical validation and customer profile were successful and therefore the payment initiation has been accepted for execution. |
-| OBTransactionIndividualStatus1Code |Pending |Payment initiation or individual transaction included in the payment initiation is pending. Further checks and status update will be performed. |
-| OBTransactionIndividualStatus1Code |Rejected |Payment initiation or individual transaction included in the payment initiation has been rejected. |
-| OBTransactionIndividualStatus1Code |AcceptedWithoutPosting |Payment instruction included in the credit transfer is accepted without being posted to the creditor customer's account. |
-| OBTransactionIndividualStatus1Code |AcceptedCreditSettlementCompleted |Settlement on the creditor's account has been completed. |
-| OBExternalConsentStatus1Code |AwaitingAuthorisation |The consent resource is awaiting PSU authorisation. |
-| OBExternalConsentStatus1Code |Rejected |The consent resource has been rejected. |
-| OBExternalConsentStatus1Code |Authorised |The consent resource has been successfully authorised. |
-| OBExternalConsentStatus1Code |Consumed |The consented action has been successfully completed. This does not reflect the status of the consented action. |
-| OBChargeBearerType1Code |BorneByCreditor |All transaction charges are to be borne by the creditor. |
-| OBChargeBearerType1Code |BorneByDebtor |All transaction charges are to be borne by the debtor. |
-| OBChargeBearerType1Code |FollowingServiceLevel |Charges are to be applied following the rules agreed in the service level and/or scheme. |
-| OBChargeBearerType1Code |Shared |In a credit transfer context, means that transaction charges on the sender side are to be borne by the debtor, transaction charges on the receiver side are to be borne by the creditor. In a direct debit context, means that transaction charges on the sender side are to be borne by the creditor, transaction charges on the receiver side are to be borne by the debtor. |
-| OBExternalAuthorisation1Code |Any |Any authorisation type is requested. |
-| OBExternalAuthorisation1Code |Multiple |Multiple authorisation type is requested. |
-| OBExternalAuthorisation1Code |Single |Single authorisation type is requested. |
-| OBExternalStatus1Code |InitiationCompleted |The payment-order initiation has been completed. |
-| OBExternalStatus1Code |InitiationFailed |The payment-order initiation has failed. |
-| OBExternalStatus1Code |InitiationPending |The payment-order initiation is pending. |
-| OBExternalStatus2Code |Authorised |The multiple authorisation flow has been fully authorised. |
-| OBExternalStatus2Code |AwaitingFurtherAuthorisation |The multiple authorisation flow is awaiting further authorisation. |
-| OBExternalStatus2Code |Rejected |The multiple authorisation flow has been rejected. |
-| OBExternalStatus3Code |InitiationCompleted |The payment-order initiation has been completed. |
-| OBExternalStatus3Code |InitiationFailed |The payment-order initiation has failed. |
-| OBExternalStatus3Code |InitiationPending |The payment-order initiation is pending. |
-| OBExternalStatus3Code |Cancelled |Payment initiation has been successfully cancelled after having received a request for cancellation. |
-| OBExchangeRateType2Code |Actual |Exchange rate is the actual rate. |
-| OBExchangeRateType2Code |Agreed |Exchange rate is the agreed rate between the parties. |
-| OBExchangeRateType2Code |Indicative |Exchange rate is the indicative rate. |
-| OBPriority2Code |Normal |Priority is normal. |
-| OBPriority2Code |Urgent |Priority is urgent. |
-| OBAddressTypeCode |Business |Address is the business address. |
-| OBAddressTypeCode |Correspondence |Address is the address where correspondence is sent. |
-| OBAddressTypeCode |DeliveryTo |Address is the address to which delivery is to take place. |
-| OBAddressTypeCode |MailTo |Address is the address to which mail is sent. |
-| OBAddressTypeCode |POBox |Address is a postal office (PO) box. |
-| OBAddressTypeCode |Postal |Address is the complete postal address. |
-| OBAddressTypeCode |Residential |Address is the home address. |
-| OBAddressTypeCode |Statement |Address is the address where statements are sent. |
-| OBTransactionIndividualExtendedISOStatus1Code |Accepted |Request is accepted. |
-| OBTransactionIndividualExtendedISOStatus1Code |AcceptedCancellationRequest |Cancellation is accepted. |
-| OBTransactionIndividualExtendedISOStatus1Code |AcceptedCreditSettlementCompleted |Settlement on the creditor's account has been completed. |
-| OBTransactionIndividualExtendedISOStatus1Code |AcceptedCustomerProfile |Preceding check of technical validation was successful. Customer profile check was also successful. |
-| OBTransactionIndividualExtendedISOStatus1Code |AcceptedFundsChecked |Preceding check of technical validation and customer profile was successful and an automatic funds check was positive. |
-| OBTransactionIndividualExtendedISOStatus1Code |AcceptedSettlementCompleted |Settlement on the debtor's account has been completed.<br><br>Usage : this can be used by the first agent to report to the debtor that the transaction has been completed.<br><br>Warning : this status is provided for transaction status reasons, not for financial information. It can only be used after bilateral agreement |
-| OBTransactionIndividualExtendedISOStatus1Code |AcceptedSettlementInProcess |All preceding checks such as technical validation and customer profile were successful and therefore the payment initiation has been accepted for execution. |
-| OBTransactionIndividualExtendedISOStatus1Code |AcceptedTechnicalValidation |Authentication and syntactical and semantical validation are successful |
-| OBTransactionIndividualExtendedISOStatus1Code |AcceptedWithChange |Instruction is accepted but a change will be made, such as date or remittance not sent. |
-| OBTransactionIndividualExtendedISOStatus1Code |AcceptedWithoutPosting |Payment instruction included in the credit transfer is accepted without being posted to the creditor customer’s account. |
-| OBTransactionIndividualExtendedISOStatus1Code |Cancelled |Request is cancelled. |
-| OBTransactionIndividualExtendedISOStatus1Code |NoCancellationProcess |No cancellation process. |
-| OBTransactionIndividualExtendedISOStatus1Code |PartiallyAcceptedCancellationRequest |Cancellation is partially accepted. |
-| OBTransactionIndividualExtendedISOStatus1Code |PartiallyAcceptedTechnicalCorrect |Authentication and syntactical and semantical validation are successful. |
-| OBTransactionIndividualExtendedISOStatus1Code |PaymentCancelled |Transaction has been cancelled. |
-| OBTransactionIndividualExtendedISOStatus1Code |Pending |Payment initiation or individual transaction included in the payment initiation is pending. Further checks and status update will be performed. |
-| OBTransactionIndividualExtendedISOStatus1Code |PendingCancellationRequest |Cancellation request is pending. |
-| OBTransactionIndividualExtendedISOStatus1Code |Received |Payment initiation has been received by the receiving agent. |
-| OBTransactionIndividualExtendedISOStatus1Code |Rejected |Payment initiation or individual transaction included in the payment initiation has been rejected. |
-| OBTransactionIndividualExtendedISOStatus1Code |RejectedCancellationRequest |Cancellation request is rejected |
-| OBTransactionIndividualStatusReason1Code |Cancelled |Reason why the payment status is cancelled |
-| OBTransactionIndividualStatusReason1Code |PendingFailingSettlement |Reason why the payment status is pending (failing settlement). |
-| OBTransactionIndividualStatusReason1Code |PendingSettlement |Reason why the payment status is pending (settlement). |
-| OBTransactionIndividualStatusReason1Code |Proprietary |Defines a free text proprietary reason. |
-| OBTransactionIndividualStatusReason1Code |ProprietaryRejection |Defines the reason that has been used by the Local Instrument system to reject the transaction |
-| OBTransactionIndividualStatusReason1Code |Suspended |Reason why the payment status is suspended. |
-| OBTransactionIndividualStatusReason1Code |Unmatched |Reason why the payment status is unmatched. |
-| OBExternalSCAExemptionType1Code |BillPayment |Bill Payment |
-| OBExternalSCAExemptionType1Code |ContactlessTravel |Contactless Travel |
-| OBExternalSCAExemptionType1Code |EcommerceGoods |Ecommerce Goods |
-| OBExternalSCAExemptionType1Code |EcommerceServices |Ecommerce Services |
-| OBExternalSCAExemptionType1Code |Kiosk |Kisok |
-| OBExternalSCAExemptionType1Code |Parking |Parking |
-| OBExternalSCAExemptionType1Code |PartyToParty |Party To Party |
-| OBExternalAppliedAuthenticationApproach1Code |CA |Single Factor Strong Customer Authentication |
-| OBExternalAppliedAuthenticationApproach1Code |SCA |Multi Factor Strong Customer Authentication |
-| OBReadRefundAccount1Code |Yes |Yes |
-| OBReadRefundAccount1Code |No |No |
-| OBCategoryPurposeCode |BONU |BonusPayment|
-| OBCategoryPurposeCode |CASH |CashManagementTransfer|
-| OBCategoryPurposeCode |CBLK |CardBulkClearing|
-| OBCategoryPurposeCode |CCRD |CreditCardPayment|
-| OBCategoryPurposeCode |CGWV |CarrierGuardedWholesaleValuables|
-| OBCategoryPurposeCode |CIPC |CashInPreCredit|
-| OBCategoryPurposeCode |CONC |CashOutNotesCoins|
-| OBCategoryPurposeCode |CORT |TradeSettlementPayment|
-| OBCategoryPurposeCode |DCRD |DebitCardPayment|
-| OBCategoryPurposeCode |DIVI |Dividend|
-| OBCategoryPurposeCode |DVPM |DeliverAgainstPayment|
-| OBCategoryPurposeCode |EPAY |Epayment|
-| OBCategoryPurposeCode |FCDT |ForeignCurrencyDomesticTransfer|
-| OBCategoryPurposeCode |FCIN |FeeCollectionAndInterest|
-| OBCategoryPurposeCode |FCOL |FeeCollection|
-| OBCategoryPurposeCode |GOVT |GovernmentPayment|
-| OBCategoryPurposeCode |GP2P |PersontoPersonPayment|
-| OBCategoryPurposeCode |HEDG |Hedging|
-| OBCategoryPurposeCode |ICCP |IrrevocableCreditCardPayment|
-| OBCategoryPurposeCode |IDCP |IrrevocableDebitCardPayment|
-| OBCategoryPurposeCode |INTC |IntraCompanyPayment|
-| OBCategoryPurposeCode |INTE |Interest|
-| OBCategoryPurposeCode |LBOX |LockboxTransactions|
-| OBCategoryPurposeCode |LOAN |Loan|
-| OBCategoryPurposeCode |MP2B |Commercial|
-| OBCategoryPurposeCode |MP2P |Consumer|
-| OBCategoryPurposeCode |OTHR |OtherPayment|
-| OBCategoryPurposeCode |PENS |PensionPayment|
-| OBCategoryPurposeCode |RPRE |Represented|
-| OBCategoryPurposeCode |RRCT |ReimbursementReceivedCreditTransfer|
-| OBCategoryPurposeCode |RVPM |ReceiveAgainstPayment|
-| OBCategoryPurposeCode |SALA |SalaryPayment|
-| OBCategoryPurposeCode |SECU |Securities|
-| OBCategoryPurposeCode |SSBE |SocialSecurityBenefit|
-| OBCategoryPurposeCode |SUPP |SupplierPayment|
-| OBCategoryPurposeCode |SWEP |CashManagementSweepAccount|
-| OBCategoryPurposeCode |TAXS |TaxPayment|
-| OBCategoryPurposeCode |TOPG |CashManagementTopAccount|
-| OBCategoryPurposeCode |TRAD |Trade|
-| OBCategoryPurposeCode |TREA |TreasuryPayment|
-| OBCategoryPurposeCode |VATX |ValueAddedTaxPayment|
-| OBCategoryPurposeCode |VOST |Crossborder MIPayments|
-| OBCategoryPurposeCode |WHLD |WithHolding|
-| OBCategoryPurposeCode |ZABA |CashManagementZeroBalanceAccount|
+The definitions for enumerations used in the Payment APIs can be found [here](https://github.com/OpenBankingUK/External_Interal_CodeSets)
 
 
 #### ISO Enumerations
@@ -924,7 +793,7 @@ These following ISO Enumerations are used in the Payment APIs.
 
 #### Namespaced Enumerations
 
-The enumerated values specified by Open Banking are documented in Swagger specification and Namespaced Enumerations page.
+The enumerated values specified by Open Banking are documented in Swagger specification,  Namespaced Enumerations page and [here](https://github.com/OpenBankingUK/External_Interal_CodeSets).
 
 ## Alternative and Error Flows
 
