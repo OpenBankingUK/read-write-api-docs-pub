@@ -138,7 +138,7 @@ Content-Type: application/json
           "Currency": "GBP"
         },
         "CreditorAccount": {
-          "SchemeName": "UK.OBIE.SortCodeAccountNumber",
+          "SchemeName": "UK.OB.SortCodeAccountNumber",
           "Identification": "23605490179017",
           "Name": "Mr Tee"
         }
@@ -189,7 +189,7 @@ Content-Type: application/json
           "Currency": "GBP"
         },
         "CreditorAccount": {
-          "SchemeName": "UK.OBIE.SortCodeAccountNumber",
+          "SchemeName": "UK.OB.SortCodeAccountNumber",
           "Identification": "23605490179017",
           "Name": "Mr Tee"
         }
@@ -204,7 +204,7 @@ Content-Type: application/json
           "Currency": "GBP"
         },
         "CreditorAccount": {
-          "SchemeName": "UK.OBIE.SortCodeAccountNumber",
+          "SchemeName": "UK.OB.SortCodeAccountNumber",
           "Identification": "23605490179017",
           "Name": "Mr Tee"
         }

@@ -77,6 +77,7 @@ The available Status codes for the domestic-scheduled-payment-consent resource a
 | AUTH |
 | COND |
 
+
 ### State Model
 
 #### Payment Order Consent
@@ -93,6 +94,13 @@ The definitions for the Status:
 | 3 |AUTH |The consent resource has been successfully authorised. |
 |4 |COND|The consented action has been successfully completed. This does not reflect the status of the consented action.|
 
+Changes to the StatusCode, such as being rejected, should be captured in `StatusReason`, an array of `StatusReasonCode`, `StatusReasonDescription` and `Path`.  
+
+| Field | Description |
+|---|---|
+| StatusReasonCode | Code directly relating to the reason for the current Status. See [the codelists](https://github.com/OpenBankingUK/External_Interal_CodeSets) for appropriate values. |
+| StatusReasonDescription | Description of why the code was returned |
+|Path| Recommended but optional reference to JSON path if relevant to the code |
 
 ## Data Model
 

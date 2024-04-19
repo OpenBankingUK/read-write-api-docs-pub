@@ -118,11 +118,11 @@ Data Dictionary for Common Payload between PCA, BCA and other product types.
 
 #### PCA & BCA Extensions
 
-[BCA Product Data Model v3.1.2](./BCA Product Data Model.md)
+[BCA Product Data Model v3.1.2](./bca-product-data-model)
 
-[PCA Product Data Model v3.1.2](./PCA Product Data Model.md)
+[PCA Product Data Model v3.1.2](./pca-product-data-model.md)
 
-[Other Product Data Model v3.1.2](./Other Product Data Model.md)
+[Other Product Data Model v3.1.2](./other-product-data-model.md)
 
 
 ## Usage Examples
