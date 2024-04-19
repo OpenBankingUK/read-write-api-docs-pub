@@ -159,7 +159,7 @@ For the OBDomesticStandingOrder3 Initiation object:
 | ---- |---------- |----- |------------------ |----- |----- |------- |
 | OBDomesticStandingOrder3 | |OBDomesticStandingOrder3 |The Initiation payload is sent by the initiating party to the ASPSP. It is used to request movement of funds from the debtor account to a creditor for a domestic standing order. |OBDomesticStandingOrder3 | | |
 | MandateRelatedInformation | 0..1 |OBDomesticStandingOrder3/MandateRelatedInformation ||OBMandateRelatedInformation | | |
-| MandateIdentification | 0..1 |OBDomesticStandingOrder3/MandateRelatedInformation/MandateIdentification ||TODO | | |
+| MandateIdentification | 0..1 |OBDomesticStandingOrder3/MandateRelatedInformation/MandateIdentification ||Max35Text | | |
 | Classification | 0..1 |OBDomesticStandingOrder3/MandateRelatedInformation/Classification|FIXE<br>USGB<br>VARI|OBClassification1Code | | |
 | CategoryPurposeCode | 0..1 |OBDomesticStandingOrder3/MandateRelatedInformation/CategoryPurposeCode ||OBCategoryPurpose1Code | | |
 | FirstPaymentDate | 0..1 |OBDomesticStandingOrder3/MandateRelatedInformation/FirstPaymentDate |The date on which the first payment for a Standing Order schedule will be made. |ISODate | | |
@@ -168,7 +168,7 @@ For the OBDomesticStandingOrder3 Initiation object:
 | PeriodType | 1..1 |OBDomesticStandingOrder3/MandateRelatedInformation/PeriodType |A code indicating the period type for the Standing Order. Values:<br>ADHO<br>YEAR<br>DALI<br>INDA<br>MNTH<br>QURT<br>MIAN<br>WEEK |OBFrequencyPeriodType | | |
 | CountPerPeriod | 1..1 |OBDomesticStandingOrder3/MandateRelatedInformation/CountPerPeriod | |int32 | |
 | PointInTimeType | 1..1 |OBDomesticStandingOrder3/MandateRelatedInformation/PointInTimeType |A code indicating the point in time for payment of the Standing Order. Values:<br>ADHO<br>YEAR<br>DALI<br>INDA<br>MNTH<br>QURT<br>MIAN<br>WEEK |OBFrequencyPeriodType | | |
-| PointInTime | 1..1 |OBDomesticStandingOrder3/MandateRelatedInformation/PointInTime |ISOTime | | |
+| PointInTime | 1..1 |OBDomesticStandingOrder3/MandateRelatedInformation/PointInTime |ISODateTime | | |
 | Reason| 0..1 |OBDomesticStandingOrder3/MandateRelatedInformation/Reason | |Max256Text | |
 | RemittanceInformation |0..1 |OBDomesticStandingOrder3/RemittanceInformation |Information supplied to enable the matching of an entry with the items that the transfer is intended to settle, such as commercial invoices in an accounts' receivable system. |OBRemittanceInformation1 | | |
 | Structured |0..* |OBDomesticStandingOrder3/RemittanceInformation/Structured |Information supplied to enable the matching/reconciliation of an entry with the items that the payment is intended to settle, such as commercial invoices in an accounts' receivable system, in an structured form. |OBRemittanceInformationStructured | | |

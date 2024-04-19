@@ -145,7 +145,7 @@ For the OBInternationalStandingOrder4 Initiation object:
 | --- |--- |--- |--- |--- |--- |--- |
 | OBInternationalStandingOrder4 | |OBInternationalStandingOrder4 |The Initiation payload is sent by the initiating party to the ASPSP. It is used to request movement of funds from the debtor account to a creditor for an international standing order. |OBInternationalStandingOrder4 | | |
 | MandateRelatedInformation | 0..1 |OBInternationalStandingOrder4/MandateRelatedInformation ||OBMandateRelatedInformation | | |
-| MandateIdentification | 0..1 |OBInternationalStandingOrder4/MandateRelatedInformation/MandateIdentification ||TODO | | |
+| MandateIdentification | 0..1 |OBInternationalStandingOrder4/MandateRelatedInformation/MandateIdentification ||Max35Text | | |
 | Classification | 0..1 |OBInternationalStandingOrder4/MandateRelatedInformation/Classification|FIXE<br>USGB<br>VARI|OBClassification1Code | | |
 | CategoryPurposeCode | 0..1 |OBInternationalStandingOrder4/MandateRelatedInformation/CategoryPurposeCode ||OBCategoryPurpose1Code | | |
 | FirstPaymentDate | 0..1 |OBInternationalStandingOrder4/MandateRelatedInformation/FirstPaymentDate |The date on which the first payment for a Standing Order schedule will be made. |ISODate | | |
@@ -154,7 +154,7 @@ For the OBInternationalStandingOrder4 Initiation object:
 | PeriodType | 1..1 |OBInternationalStandingOrder4/MandateRelatedInformation/PeriodType |A code indicating the period type for the Standing Order. Values:<br>ADHO<br>YEAR<br>DALI<br>INDA<br>MNTH<br>QURT<br>MIAN<br>WEEK |OBFrequencyPeriodType | | |
 | CountPerPeriod | 1..1 |OBInternationalStandingOrder4/MandateRelatedInformation/CountPerPeriod | |int32 | |
 | PointInTimeType | 1..1 |OBInternationalStandingOrder4/MandateRelatedInformation/PointInTimeType |A code indicating the point in time for payment of the Standing Order. Values:<br>ADHO<br>YEAR<br>DALI<br>INDA<br>MNTH<br>QURT<br>MIAN<br>WEEK |OBFrequencyPeriodType | | |
-| PointInTime | 1..1 |OBInternationalStandingOrder4/MandateRelatedInformation/PointInTime |ISOTime | | |
+| PointInTime | 1..1 |OBInternationalStandingOrder4/MandateRelatedInformation/PointInTime |ISODateTime | | |
 | Reason| 0..1 |OBInternationalStandingOrder4/MandateRelatedInformation/Reason | |Max256Text | |
 | Reference |0..1 |OBInternationalStandingOrder4/Reference |Unique reference, as assigned by the creditor, to unambiguously refer to the payment transaction. Usage: If available, the initiating party should provide this reference in the structured remittance information, to enable reconciliation by the creditor upon receipt of the amount of money. If the business context requires the use of a creditor reference or a payment remit identification, and only one identifier can be passed through the end-to-end chain, the creditor's reference or payment remittance identification should be quoted in the end-to-end transaction identification. |Max35Text | | |
 | RemittanceInformation |0..1 |OBInternationalStandingOrder4/RemittanceInformation |Information supplied to enable the matching of an entry with the items that the transfer is intended to settle, such as commercial invoices in an accounts' receivable system. |OBRemittanceInformation1 | | |
