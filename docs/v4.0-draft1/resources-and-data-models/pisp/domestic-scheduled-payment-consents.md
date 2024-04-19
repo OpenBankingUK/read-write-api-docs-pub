@@ -185,7 +185,6 @@ Account Identification field usage:
 | TaxRemittance |0..1 |OBDomesticScheduled2/CreditorReferenceInformation/Structured/TaxRemittance | |OBTaxRemittance| | |
 | AdditionalRemittanceInformation |0..3|OBDomesticScheduled2/CreditorReferenceInformation/Structured/AdditionalRemittanceInformation | |OBAdditionalRemittanceInformation| | |
 | Unstructured |0..* |OBDomesticScheduled2/RemittanceInformation/Unstructured |Information supplied to enable the matching/reconciliation of an entry with the items that the payment is intended to settle, such as commercial invoices in an accounts' receivable system, in an unstructured form. |Max140Text | | 
-| Reference |0..1 |OBDomesticScheduled2/RemittanceInformation/Reference |Unique reference, as assigned by the creditor, to unambiguously refer to the payment transaction. Usage: If available, the initiating party should provide this reference in the structured remittance information, to enable reconciliation by the creditor upon receipt of the amount of money. If the business context requires the use of a creditor reference or a payment remit identification, and only one identifier can be passed through the end-to-end chain, the creditor's reference or payment remittance identification should be quoted in the end-to-end transaction identification. OB: The Faster Payments Scheme can only accept 18 characters for the ReferenceInformation field - which is where this ISO field will be mapped. |Max35Text | | |
 | SupplementaryData |0..1 |OBDomesticScheduled2/SupplementaryData |Additional information that can not be captured in the structured fields and/or any other specific block. |OBSupplementaryData1 | | |
 | RegulatoryReporting |0..10 |OBDomesticScheduled2/RegulatoryReporting |Information needed due to regulatory and statutory requirements. |RegulatoryReporting3 | | |
 | DebitCreditReportingIndicator |0..1 |OBDomesticScheduled2/RegulatoryReporting/DebitCreditReportingIndicator | Identifies whether the regulatory reporting information applies to the debit side, to the credit side or to both debit and credit sides of the transaction. |RegulatoryReportingType1Code |CRED DEBT BOTH | |
@@ -343,7 +342,6 @@ Accept: application/json
         "Name": "Tom Kirkman"
       },
       "RemittanceInformation": {
-        "Reference": "DSR-037",
         "Unstructured": "Internal ops code 5120103"
       }
     }
@@ -390,7 +388,6 @@ Content-Type: application/json
         "Name": "Tom Kirkman"
       },
       "RemittanceInformation": {
-        "Reference": "DSR-037",
         "Unstructured": "Internal ops code 5120103"
       }
     }

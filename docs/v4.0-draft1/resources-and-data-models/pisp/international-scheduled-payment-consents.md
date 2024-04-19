@@ -533,7 +533,6 @@ Content-Type: application/json
 				"SecondaryIdentification": "0002"
 			},
 			"RemittanceInformation": {
-				"Reference": "FRESCO-101",
 				"Unstructured": "Internal ops code 5120101"
 			},
 		  	"ExchangeRateInformation": {
