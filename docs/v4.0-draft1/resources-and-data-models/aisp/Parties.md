@@ -101,6 +101,7 @@ The Party resource contains a set of elements that describes a party. The party 
 | Name |0..1 |OBParty2/Name |Name by which a party is known and which is usually used to identify that party. |Max350Text | | |
 | FullLegalName |0..1 |OBParty2/FullLegalName |The full legal name of the party. |Max350Text | | |
 | LegalStructure |0..1 |OBParty2/LegalStructure |Legal standing of the party. |OBExternalLegalStructureType1Code | | |
+| LEI |0..1 | OBParty2/LEI |Legal Entity Identification by which a party is known and which is usually used to identify that party. |Max20Text | | |
 | BeneficialOwnership |0..1 |OBParty2/BeneficialOwnership |A flag to indicate a party's beneficial ownership of the related account. |xs:boolean | | |
 | AccountRole |0..1 |OBParty2/AccountRole |A party's role with respect to the related account. |OBExternalAccountRole1Code | | |
 | EmailAddress |0..1 |OBParty2/EmailAddress |Address for electronic mail (e-mail). |Max256Text | | |
@@ -204,9 +205,9 @@ Content-Type: application/json
                 "PartyType": "Sole",
                 "Name": "Semiotec",
                 "FullLegalName": "Semiotec Limited",
-                "LegalStructure": "UK.OBIE.PrivateLimitedCompany",
+                "LegalStructure": "UK.OB.PrivateLimitedCompany",
                 "BeneficialOwnership": true,
-                "AccountRole": "UK.OBIE.Principal",
+                "AccountRole": "UK.OB.Principal",
                 "EmailAddress": "contact@semiotec.co.jp",
                 "Relationships": {
                     "Account": {
@@ -231,9 +232,9 @@ Content-Type: application/json
                 "PartyType": "Delegate",
                 "Name": "Kevin Atkinson",
                 "FullLegalName": "Mr Kevin Bartholmew Atkinson",
-                "LegalStructure": "UK.OBIE.Individual",
+                "LegalStructure": "UK.OB.Individual",
                 "BeneficialOwnership": false,
-                "AccountRole": "UK.OBIE.Administrator",
+                "AccountRole": "UK.OB.Administrator",
                 "EmailAddress": "kev@semiotec.co.jp",
                 "Relationships": {
                     "Account": {
@@ -286,7 +287,7 @@ Content-Type: application/json
                 "FullLegalName": "Roses and Thorns Limited",
                 "LegalStructure": "UK.OBIE.PrivateLimitedCompany",
                 "BeneficialOwnership": true,
-                "AccountRole": "UK.OBIE.Principal",
+                "AccountRole": "UK.OB.Principal",
                 "EmailAddress": "speakup@rosesandthorns.co.uk",
                 "Phone": "+44-55565411099",
                 "Mobile": "+44-55565411098",
@@ -312,9 +313,9 @@ Content-Type: application/json
                 "PartyNumber": "20202002",
                 "Name": "Neil Example",
                 "FullLegalName": "Mr Neil Paul Example",
-                "LegalStructure": "UK.OBIE.Individual",
+                "LegalStructure": "UK.OB.Individual",
                 "BeneficialOwnership": false,
-                "AccountRole": "UK.OBIE.SeniorManagingOfficial",
+                "AccountRole": "UK.OB.SeniorManagingOfficial",
                 "EmailAddress": "neil@rosesandthorns.co.uk",
                 "Phone": "+44-55565411097",
                 "Mobile": "+44-55565411096",
