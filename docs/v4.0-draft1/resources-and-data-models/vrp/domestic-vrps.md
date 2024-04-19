@@ -41,7 +41,7 @@ The TPP **must** ensure that the `Initiation` and `Risk` section matches the val
 
 The ASPSP **must** ensure that the payment instruction adheres to the limitations set by the corresponding VRP consent's `ControlParameters`.
 
-When a payment would breach a limitation set by one or more `ControlParameters`, the ASPSP **must** return an error with code `UK.OBIE.Rules.FailsControlParameters` and pass in the control parameter field that caused the error in the `Field` field of the error message.
+When a payment would breach a limitation set by one or more `ControlParameters`, the ASPSP **must** return an error with code `UK.OB.Rules.FailsControlParameters` and pass in the control parameter field that caused the error in the `Field` field of the error message.
 
 If the `CreditorAccount` was not specified in the the consent, the `CreditorAccount` must be specified in the instruction.
 
@@ -55,12 +55,20 @@ A `domestic-vrps` can only be created if its corresponding `domestic-vrp-consent
 
 The `domestic-vrps` resource that is created successfully must have one of the following `PaymentStatusCode` values
 
-- Pending
-- Rejected
-- AcceptedSettlementInProcess
-- AcceptedSettlementCompleted
-- AcceptedWithoutPosting
-- AcceptedCreditSettlementCompleted
+| StatusCode |
+| ------ |
+| PDNG |
+| ACTC |
+| PATC |
+| ACCP |
+| ACFC |
+| ACSP |
+| ACWC |
+| ACSC |
+| ACWP |
+| ACCC |
+| BLCK |
+| RJCT |
 
 ### GET /domestic-vrps/{DomesticVRPId}
 
@@ -68,12 +76,20 @@ Once the domestic vrp is created, a TPP can retrieve the `domestic-vrps` to chec
 
 The domestic-vrp resource must have one of the following PaymentStatusCode code-set enumerations:
 
-- Pending
-- Rejected
-- AcceptedSettlementInProcess
-- AcceptedSettlementCompleted
-- AcceptedWithoutPosting
-- AcceptedCreditSettlementCompleted
+| StatusCode |
+| ------ |
+| PDNG |
+| ACTC |
+| PATC |
+| ACCP |
+| ACFC |
+| ACSP |
+| ACWC |
+| ACSC |
+| ACWP |
+| ACCC |
+| BLCK |
+| RJCT |
 
 ### GET /domestic-vrps/{DomesticVRPId}/payment-details
 
@@ -81,26 +97,20 @@ A TPP can retrieve the details of the underlying payment transaction via this en
 
 The API must return one of the following status codes:
 
-- Accepted
-- AcceptedCancellationRequest
-- AcceptedTechnicalValidation
-- AcceptedCustomerProfile
-- AcceptedFundsChecked
-- AcceptedWithChange
-- Pending
-- Rejected
-- AcceptedSettlementInProcess
-- AcceptedSettlementCompleted
-- AcceptedWithoutPosting
-- AcceptedCreditSettlementCompleted
-- Cancelled
-- NoCancellationProcess
-- PartiallyAcceptedCancellationRequest
-- PartiallyAcceptedTechnicalCorrect
-- PaymentCancelled
-- PendingCancellationRequest
-- Received
-- RejectedCancellationRequest
+| StatusCode |
+| ------ |
+| PDNG |
+| ACTC |
+| PATC |
+| ACCP |
+| ACFC |
+| ACSP |
+| ACWC |
+| ACSC |
+| ACWP |
+| ACCC |
+| BLCK |
+| RJCT |
 
 ## State Model
 
@@ -108,17 +118,8 @@ The API must return one of the following status codes:
 
 The state model for the `domestic-vrps` resource follows the behavior and definitions for the ISO 20022 PaymentStatusCode code-set.
 
-![Domestic VRP Status](./images/PaymentStatusLifeCycle.png)
+![Payment Order Status](./images/PIS_PO_Statuses.png)
 
-The definitions for the status:
-|  |Status |Payment Status Description |
-|--|------ |-------------------------- |
-| 1 |Pending |Payment initiation or individual transaction included in the payment initiation is pending. Further checks and status update will be performed. |
-| 2 |Rejected |Payment initiation or individual transaction included in the payment initiation has been rejected. |
-| 3 |AcceptedSettlementInProcess |All preceding checks such as technical validation and customer profile were successful and therefore the payment initiation has been accepted for execution. |
-| 4 |AcceptedSettlementCompleted |Settlement on the debtor's account has been completed. |
-| 5 |AcceptedWithoutPosting |Payment instruction included in the credit transfer is accepted without being posted to the creditor customer’s account. |
-| 6 |AcceptedCreditSettlementCompleted |Settlement on the creditor's account has been completed.|
 
 ## Data Model
 
@@ -161,6 +162,20 @@ The definitions for the status:
 | __ConsentId__ (1..1)               | `Data. ConsentId`               | Identifier for the Domestic VRP Consent that this payment is made under                                     | Max128Text                                            |
 | __Initiation__ (1..1)              | `Data. Initiation`              | The parameters of the VRP consent that should remain unchanged for each payment under this VRP.             | OBDomesticVRPInitiation                               |
 | __Instruction__ (1..1)             | `Data. Instruction`             | Specific instructions for this particular payment within the VRP consent                                    | [OBDomesticVRPInstruction](#OBDomesticVRPInstruction) |
+| __RegulatoryReporting__ (0..10)                    | `Data. RegulatoryReporting`                          | Information needed due to regulatory and statutory requirements. | RegulatoryReporting3                                               |
+| __DebitCreditReportingIndicator__ (0..1)                    | `Data. RegulatoryReporting. DebitCreditReportingIndicator`                          | Identifies whether the regulatory reporting information applies to the debit side, to the credit side or to both debit and credit sides of the transaction. | RegulatoryReportingType1Code                                               |
+| __Authority__ (0..1)                    | `Data. RegulatoryReporting. Authority`                          | Entity requiring the regulatory reporting information. | RegulatoryAuthority2                                               |
+| __Name__ (0..1)                    | `Data. RegulatoryReporting. Authority. Name`                          | Name of the entity requiring the regulatory reporting information. | Max140Text                                               |
+| __Country__ (0..1)                    | `Data. RegulatoryReporting. Authority. Country`                          | Country of the entity that requires the regulatory reporting information. | CountryCode                                               |
+| __Details__ (0..*)                    | `Data. RegulatoryReporting. Authority. Details`                          | Set of elements used to provide details on the regulatory reporting information. | StructuredRegulatoryReporting3                                               |
+| __Type__ (0..1)                    | `Data. RegulatoryReporting. Authority. Details. Type`                          | Specifies the type of the information supplied in the regulatory reporting details. | Max35Text                                               |
+| __Date__ (0..1)                    | `Data. RegulatoryReporting. Authority. Details. Date`                          | Date related to the specified type of regulatory reporting details. | Max35Text                                               |
+| __Country__ (0..1)                    | `Data. RegulatoryReporting. Authority. Details. Country`                          | Country related to the specified type of regulatory reporting details. | CountryCode                                               |
+| __Code__ (0..1)                    | `Data. RegulatoryReporting. Authority. Details. Code`                          | Specifies the nature, purpose, and reason for the transaction to be reported for regulatory and statutory requirements in a coded form. | Max10Text                                               |
+| __Amount__ (0..1)                    | `Data. RegulatoryReporting. Authority. Details. Amount`                          | Amount of money to be reported for regulatory and statutory requirements. | OBActiveOrHistoricCurrencyAndAmount                                               |
+| __Amount__ (1..1)                    | `Data. RegulatoryReporting. Authority. Details. Amount. Amount`                          | A number of monetary units specified in an active currency where the unit of currency is explicit and compliant with ISO 4217. |                                               |
+| __Currency__ (1..1)                    | `Data. RegulatoryReporting. Authority. Details. Amount. Currency`                          | A code allocated to a currency by a Maintenance Agency under an international identification scheme, as described in the latest edition of the international standard ISO 4217 "Codes for the representation of currencies and funds". |ActiveOrHistoricCurrencyCode | ^[A-Z]{3,3}$                                                |
+| __Information__ (0..*)                    | `Data. RegulatoryReporting. Authority. Details.  Information`                          | Additional details that cater for specific domestic regulatory requirements. |ActiveOrHistoricCurrencyCode | Max35Text                                                |
 | __Risk__ (1..1)                    | `Risk`                          | The risk block for this payment. This must match the risk block for the corresponding Domestic VRP consent. | OBRisk1                                               |
 
 ### OBDomesticVRPResponse
@@ -182,7 +197,17 @@ The definitions for the status:
 | __Refund__ (0..1)                     | `Data. Refund`                     | Unambiguous identification of the refund account to which a refund will be made as a result of the transaction. This object is populated only when `Data. ReadRefundAccount` is set to `Yes` in the consent. | OBDomesticRefundAccount1                                                                                                          |
 | __Charges__ (0..n)                    | `Data. Charges`                    | Set of elements used to provide details of a charge for the payment initiation.                                                                                                                              | OBCharge2                                                                                                                         |
 | __Initiation__ (1..1)                 | `Data. Initiation`                 | The parameters of the VRP consent that should remain unchanged for each payment under this VRP.                                                                                                              | OBDomesticVRPInitiation                                                                                                           |
-| __Instruction__ (1..1)                | `Data. Instruction`                | Specific instructions for this particular payment within the VRP consent                                                                                                                                     | OBDomesticVRPInstruction                                                                                                          |
+| __Instruction__ (1..1)                | `Data. Instruction`                | Specific instructions for this particular payment within the VRP consent                                                                                                                                     | OBDomesticVRPInstruction
+  | __UltimateCreditor__ (0..1) | `Data. Instruction. UltimateCreditor` |Set of elements used to identify a person or an organisation. | OBPartyIdentification43 | | |                                                                                                        |
+| __SchemeName__ (0..1) | `Data. Instruction. UltimateCreditor. SchemaName` |Name of the identification scheme, in a coded form as published in an external list. |OBExternalAccountIdentification4Code | | |
+| __Identification__ (0..1) | `Data. Instruction. UltimateCreditor. Identification` |Identification assigned by an institution to identify an account. This identification is known by the account owner. |Max256Text | | |
+| __Name__ (0..1) | `Data. Instruction. UltimateCreditor. Name` |The account name is the name or names of the account owner(s) represented at an account level, as displayed by the ASPSP's online channels. Note, the account name is not the product name or the nickname of the account. |Max350Text | | |
+| __LEI__ (0..1) | `Data. Instruction. UltimateCreditor. LEI` | Legal Entity Identification by which a party is known and which is usually used to identify that party. |Max20Text | | |
+| __UltimateDebtor__ (0..1) | `Data. Instruction. UltimateDebtor` |Set of elements used to identify a person or an organisation. | OBPartyIdentification43 | | |
+| __SchemeName__ (0..1) | `Data. Instruction. UltimateDebtor. SchemaName` |Name of the identification scheme, in a coded form as published in an external list. |OBExternalAccountIdentification4Code | | |
+| __Identification__ (0..1) | `Data. Instruction. UltimateDebtor. Identification` |Identification assigned by an institution to identify an account. This identification is known by the account owner. |Max256Text | | |
+| __Name__ (0..1) | `Data. Instruction. UltimateDebtor. Name` |The account name is the name or names of the account owner(s) represented at an account level, as displayed by the ASPSP's online channels. Note, the account name is not the product name or the nickname of the account. |Max350Text | | |
+| __LEI__ (0..1) | `Data. Instruction. UltimateDebtor. LEI` | Legal Entity Identification by which a party is known and which is usually used to identify that party. |Max20Text | | |
 | __DebtorAccount__ (0..1)              | `Data.DebtorAccount`               | The approved DebtorAccount that the payment was made from.                                                                                                                                                   | OBCashAccountDebtorWithName                                                                                                       |
 
 ### OBDomesticVRPDetails

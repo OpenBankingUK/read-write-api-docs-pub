@@ -59,11 +59,11 @@ A PISP can retrieve the file-payment to check its status.
 
 The file-payments resource must have one of the following Status codes:
 
-| Status |
+| StatusCode |
 | --- |
-| InitiationPending |
-| InitiationFailed |
-| InitiationCompleted |
+| RCVD |
+| RJCT |
+| ASCP |
 
 ### GET /file-payments/{FilePaymentId}/report-file
 
@@ -82,58 +82,45 @@ A PISP can retrieve the Details of the underlying payment transaction(s) via thi
 
 The file-payments - payment-details must have one of the following PaymentStatusCode code-set enumerations:
 
-| Status |
-| --- |
-| Accepted |
-| AcceptedCancellationRequest |
-| AcceptedTechnicalValidation |
-| AcceptedCustomerProfile |
-| AcceptedFundsChecked |
-| AcceptedWithChange |
-| Pending |
-| Rejected |
-| AcceptedSettlementInProcess |
-| AcceptedSettlementCompleted |
-| AcceptedWithoutPosting |
-| AcceptedCreditSettlementCompleted |
-| Cancelled |
-| NoCancellationProcess |
-| PartiallyAcceptedCancellationRequest |
-| PartiallyAcceptedTechnicalCorrect |
-| PaymentCancelled |
-| PendingCancellationRequest |
-| Received |
-| RejectedCancellationRequest |
+| StatusCode |
+| ------ |
+| PDNG |
+| ACTC |
+| PATC |
+| ACCP |
+| ACFC |
+| ACSP |
+| ACWC |
+| ACSC |
+| ACWP |
+| ACCC |
+| BLCK |
+| RJCT |
 
 ### State Model
 
 #### Payment Order
 
-The state model for the file-payments resource describes the initiation status only. I.e., not the subsequent execution of the file-payments.
+The state model for the file-payments resource describes the initiation status and the subsequent execution of the file-payments.
 
-![ image2018-5-18_13-3-8.png ](./images/image2018-5-18_13-3-8.png )
+![Payment Order Status](./images/PIS_PO_Statuses.png)
 
-The definitions for the Status:
 
-|  |Status |Payment Status Description |
-| --- |--- |--- |
-| 1 |InitiationPending |The initiation of the payment order is pending. |
-| 2 |InitiationFailed |The initiation of the payment order has failed. |
-| 3 |InitiationCompleted |The initiation of the payment order is complete. |
+##### Multiple Authorisation
+If the payment-order requires multiple authorisations the status of the multiple authorisations will be updated in the MultiAuthorisation object.
 
-#### Multiple Authorisation
+Once the payment is RCVD, the StatusCode should be set to PATC and the MultiAuthorisation object status updated with the AWAU status.  Once all authorisations have been successfully completed the MultiAuthorisation status should be set to AUTH and StatusCode updated to ACSP.
 
-If the payment-order requires multiple authorisations the Status of the multiple authorisations will be updated in the MultiAuthorisation object.
+Any rejections in the multiple authorisation process should result in the MultiAuthorisation status and StatusCode being set to RJCT. 
 
-![ image2018-6-29_16-36-34.png ](./images/image2018-6-29_16-36-34.png )
 
-The definitions for the Status:
+![Multi Auth](./images/PO_MultiAuthFlow.png)
 
-|  |Status |Status Description |
-| --- |--- |--- |
-| 1 |AwaitingFurtherAuthorisation |The payment-order resource is awaiting further authorisation. |
-| 2 |Rejected |The payment-order resource has been rejected by an authoriser. |
-| 3 |Authorised |The payment-order resource has been successfully authorised by all required authorisers. |
+|  | StatusCode |Status Description |
+| ---| ------ |------------------ |
+| 1 |AWAU |The payment-order resource is awaiting further authorisation. |
+| 2 |RJCT |The payment-order resource has been rejected by an authoriser. |
+| 3 |AUTH |The payment-order resource has been successfully authorised by all required authorisers. |
 
 ## Data Model
 
@@ -258,7 +245,7 @@ Accept: application/json
   "Data": {
     "ConsentId":"512345",
     "Initiation": {
-      "FileType": "UK.OBIE.pain.001.001.08",
+      "FileType": "UK.OB.pain.001.001.08",
       "FileHash": "m5ah/h1UjLvJYMxqAoZmj9dKdjZnsGNm+yMkJp/KuqQ",
       "FileReference": "GB2OK238",
       "NumberOfTransactions": "100",
@@ -282,11 +269,11 @@ Content-Type: application/json
   "Data": {
     "ConsentId" : "512345",
 	"FilePaymentId":"FP1-512345",
-    "Status": "InitiationPending",
+    "StatusCode": "RCVD",
     "CreationDateTime": "2018-06-05T15:15:13+00:00",
     "StatusUpdateDateTime": "2018-06-05T15:15:13+00:00",
     "Initiation": {
-      "FileType": "UK.OBIE.pain.001.001.08",
+      "FileType": "UK.OB.pain.001.001.08",
       "FileHash": "m5ah/h1UjLvJYMxqAoZmj9dKdjZnsGNm+yMkJp/KuqQ",
       "FileReference": "GB2OK238",
       "NumberOfTransactions": "100",

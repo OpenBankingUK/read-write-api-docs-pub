@@ -50,7 +50,7 @@ The API endpoint allows the PISP to ask an ASPSP to create a new **domestic-sche
 
 #### Status
 
-* The default Status is "AwaitingAuthorisation" immediately after the domestic-scheduled-payment-consent has been created.
+* The default Status is "AWAU" immediately after the domestic-scheduled-payment-consent has been created.
 
 | Status |
 | ------ |
@@ -62,11 +62,11 @@ A PISP can optionally retrieve a payment consent resource that they have created
 
 #### Status
 
-Once the PSU authorises the payment-consent resource, the Status of the payment-consent resource will be updated with "Authorised".
+Once the PSU authorises the payment-consent resource, the Status of the payment-consent resource will be updated with "AUTH".
 
-If the PSU rejects the consent or the domestic-scheduled-payment-consent has failed some other ASPSP validation, the Status will be set to "Rejected".
+If the PSU rejects the consent or the domestic-scheduled-payment-consent has failed some other ASPSP validation, the Status will be set to "RJCT".
 
-Once a domestic-scheduled-payment has been successfully created using the domestic-scheduled-payment-consent, the Status of the domestic-scheduled-payment-consent will be set to "Consumed".
+Once a domestic-scheduled-payment has been successfully created using the domestic-scheduled-payment-consent, the Status of the domestic-scheduled-payment-consent will be set to "COND".
 
 The available Status codes for the domestic-scheduled-payment-consent resource are:
 
@@ -81,18 +81,18 @@ The available Status codes for the domestic-scheduled-payment-consent resource a
 
 #### Payment Order Consent
 
-The state model for the domestic-scheduled-payment-consent resource follows the generic consent state model. However, does not use the "Revoked" status, as the consent for a domestic-scheduled-payment is not a long-lived consent.
+The state model for the domestic-scheduled-payment-consent resource follows the generic consent state model. 
 
-![Payment Order Consent](./images/image2018-5-18_10-24-21.png)
+![State model](./images/PO_Consent.png)
 
 The definitions for the Status:
+|  | StatusCode |Status Description |
+| ---| ------ |------------------ |
+| 1 |AWAU |The consent resource is awaiting PSU authorisation. |
+| 2 |RJCT |The consent resource has been rejected. |
+| 3 |AUTH |The consent resource has been successfully authorised. |
+|4 |COND|The consented action has been successfully completed. This does not reflect the status of the consented action.|
 
-|  |Status |Status Description |
-| --- |------ |------------------ |
-| 1 |AwaitingAuthorisation |The consent resource is awaiting PSU authorisation. |
-| 2 |Rejected |The consent resource has been rejected. |
-| 3 |Authorised |The consent resource has been successfully authorised. |
-| 4 |Consumed |The consented action has been successfully completed. This does not reflect the status of the consented action. |
 
 ## Data Model
 
@@ -142,11 +142,21 @@ Account Identification field usage:
 | Identification |1..1 |OBDomesticScheduled2/DebtorAccount/Identification |Identification assigned by an institution to identify an account. This identification is known by the account owner. |Max256Text | | |
 | Name |0..1 |OBDomesticScheduled2/DebtorAccount/Name |The account name is the name or names of the account owner(s) represented at an account level, as displayed by the ASPSP's online channels. Note, the account name is not the product name or the nickname of the account. |Max350Text | | |
 | SecondaryIdentification |0..1 |OBDomesticScheduled2/DebtorAccount/SecondaryIdentification |This is secondary identification of the account, as assigned by the account servicing institution. This can be used by building societies to additionally identify accounts with a roll number (in addition to a sort code and account number combination). |Max34Text | | |
+| Proxy |0..1 |OBDomesticScheduled2/DebtorAccount/Proxy |The external proxy account type |OBProxyAccount | | |
+| Identification |1..1 |OBDomesticScheduled2/DebtorAccount/Proxy/Identification| Identification assigned by an institution to identify an account. This identification is known by the account owner. |Max256Text | | |
+| Type |0..1 |OBDomesticScheduled2/DebtorAccount/Proxy/Type| Specifies the external proxy account type |MaxText70 | | |
+| Code |1..1 |OBDomesticScheduled2/DebtorAccount/Proxy/Code| Specifies the external proxy account type code, as published in the proxy account type external code set.<br> For more information see `ExternalProxyAccountType1Code` [here](https:/github.com/OpenBankingUK/External_Interal_CodeSets) |OBExternalProxyAccountType1Code | | |
+| Proprietary |1..1 |OBDomesticScheduled2/DebtorAccount/Proxy/Proprietary| The owner of the proxy account |MaxText70 | | |
 | CreditorAccount |1..1 |OBDomesticScheduled2/CreditorAccount |Unambiguous identification of the account of the creditor to which a credit entry will be posted as a result of the payment transaction. |OBCashAccountCreditor3 | | |
 | SchemeName |1..1 |OBDomesticScheduled2/CreditorAccount/SchemeName |Name of the identification scheme, in a coded form as published in an external list. |OBExternalAccountIdentification4Code | | |
 | Identification |1..1 |OBDomesticScheduled2/CreditorAccount/Identification |Identification assigned by an institution to identify an account. This identification is known by the account owner. |Max256Text | | |
 | Name |1..1 |OBDomesticScheduled2/CreditorAccount/Name |The account name is the name or names of the account owner(s) represented at an account level. Note, the account name is not the product name or the nickname of the account. OB: ASPSPs may carry out name validation for Confirmation of Payee, but it is not mandatory. |Max350Text | | |
 | SecondaryIdentification |0..1 |OBDomesticScheduled2/CreditorAccount/SecondaryIdentification |This is secondary identification of the account, as assigned by the account servicing institution. This can be used by building societies to additionally identify accounts with a roll number (in addition to a sort code and account number combination). |Max34Text | | |
+| Proxy |0..1 |OBDomesticScheduled2/CreditorAccount/Proxy |The external proxy account type |OBProxyAccount | | |
+| Identification |1..1 |OBDomesticScheduled2/CreditorAccount/Proxy/Identification| Identification assigned by an institution to identify an account. This identification is known by the account owner. |Max256Text | | |
+| Type |0..1 |OBDomesticScheduled2/CreditorAccount/Proxy/Type| Specifies the external proxy account type |MaxText70 | | |
+| Code |1..1 |OBDomesticScheduled2/CreditorAccount/Proxy/Code| Specifies the external proxy account type code, as published in the proxy account type external code set.<br> For more information see `ExternalProxyAccountType1Code` [here](https://github.com/OpenBankingUK/External_Interal_CodeSets) |OBExternalProxyAccountType1Code | | |
+| Proprietary |1..1 |OBDomesticScheduled2/CreditorAccount/Proxy/Proprietary| The owner of the proxy account |MaxText70 | | |
 | CreditorPostalAddress |0..1 |OBDomesticScheduled2/CreditorPostalAddress |Information that locates and identifies a specific address, as defined by postal services. |OBPostalAddress6 | | |
 | AddressType |0..1 |OBDomesticScheduled2/CreditorPostalAddress/AddressType |BIZZ (Business)<br>DLVY (Delivery To)<br>MLTO (Mail To)<br>PBOX (PO Box)<br>ADDR (Postal)<br>HOME (Residential)<br>CORR (Correspondence)<br>STAT (Statement) | ||
 | Department |0..1 |OBDomesticScheduled2/CreditorPostalAddress/Department |Identification of a division of a large organisation or building. |Max70Text | | |
@@ -177,6 +187,30 @@ Account Identification field usage:
 | Unstructured |0..* |OBDomesticScheduled2/RemittanceInformation/Unstructured |Information supplied to enable the matching/reconciliation of an entry with the items that the payment is intended to settle, such as commercial invoices in an accounts' receivable system, in an unstructured form. |Max140Text | | 
 | Reference |0..1 |OBDomesticScheduled2/RemittanceInformation/Reference |Unique reference, as assigned by the creditor, to unambiguously refer to the payment transaction. Usage: If available, the initiating party should provide this reference in the structured remittance information, to enable reconciliation by the creditor upon receipt of the amount of money. If the business context requires the use of a creditor reference or a payment remit identification, and only one identifier can be passed through the end-to-end chain, the creditor's reference or payment remittance identification should be quoted in the end-to-end transaction identification. OB: The Faster Payments Scheme can only accept 18 characters for the ReferenceInformation field - which is where this ISO field will be mapped. |Max35Text | | |
 | SupplementaryData |0..1 |OBDomesticScheduled2/SupplementaryData |Additional information that can not be captured in the structured fields and/or any other specific block. |OBSupplementaryData1 | | |
+| RegulatoryReporting |0..10 |OBDomesticScheduled2/RegulatoryReporting |Information needed due to regulatory and statutory requirements. |RegulatoryReporting3 | | |
+| DebitCreditReportingIndicator |0..1 |OBDomesticScheduled2/RegulatoryReporting/DebitCreditReportingIndicator | Identifies whether the regulatory reporting information applies to the debit side, to the credit side or to both debit and credit sides of the transaction. |RegulatoryReportingType1Code |CRED DEBT BOTH | |
+| Authority |0..1 |OBDomesticScheduled2/RegulatoryReporting/Authority |Entity requiring the regulatory reporting information. |RegulatoryAuthority2 | | |
+| Name |0..1 |OBDomesticScheduled2/RegulatoryReporting/Authority/Name |Name of the entity requiring the regulatory reporting information. |Max140Text | | |
+| Country |0..1 |OBDomesticScheduled2/RegulatoryReporting/Authority/Country |Country of the entity that requires the regulatory reporting information. |CountryCode | | |
+| Details |0..* |OBDomesticScheduled2/RegulatoryReporting/Details |Set of elements used to provide details on the regulatory reporting information. |StructuredRegulatoryReporting3 | | |
+| Type |0..1 |OBDomesticScheduled2/RegulatoryReporting/Details/Type |Specifies the type of the information supplied in the regulatory reporting details. |Max35Text | | |
+| Date |0..1 |OBDomesticScheduled2/RegulatoryReporting/Details/Date |Date related to the specified type of regulatory reporting details. |ISODateTime | | |
+| Country |0..1 |OBDomesticScheduled2/RegulatoryReporting/Details/Country |Country related to the specified type of regulatory reporting details. |CountryCode | | ^[A-Z]{2,2}$ |
+| Code |0..1 |OBDomesticScheduled2/RegulatoryReporting/Details/Code |Specifies the nature, purpose, and reason for the transaction to be reported for regulatory and statutory requirements in a coded form. |Max10Text | | |
+| Amount |0..1 |OBDomesticScheduled2/RegulatoryReporting/Details/Amount |Amount of money to be reported for regulatory and statutory requirements. |OBActiveOrHistoricCurrencyAndAmount | | |
+| Amount |1..1 |OBDomesticScheduled2/RegulatoryReporting/Details/Amount/Amount |A number of monetary units specified in an active currency where the unit of currency is explicit and compliant with ISO 4217. | | | |
+| Currency |1..1 |OBDomesticScheduled2/RegulatoryReporting/Details/Amount/Currency |A code allocated to a currency by a Maintenance Agency under an international identification scheme, as described in the latest edition of the international standard ISO 4217 "Codes for the representation of currencies and funds". |ActiveOrHistoricCurrencyCode | | ^[A-Z]{3,3}$ |
+| Information |0..* |OBDomesticScheduled2/RegulatoryReporting/Details/Information |Additional details that cater for specific domestic regulatory requirements. |Max35Text | | |
+| UltimateCreditor |0..1 |OBDomesticScheduled2/UltimateCreditor|Set of elements used to identify a person or an organisation. | OBPartyIdentification43 | | |
+| SchemeName |0..1 |OBDomesticScheduled2/UltimateCreditor/SchemeName |Name of the identification scheme, in a coded form as published in an external list. |OBExternalAccountIdentification4Code | | |
+| Identification |0..1 |OBDomesticScheduled2/UltimateCreditor/Identification |Identification assigned by an institution to identify an account. This identification is known by the account owner. |Max256Text | | |
+| Name |0..1 |OBDomesticScheduled2/UltimateCreditor/Name |The account name is the name or names of the account owner(s) represented at an account level, as displayed by the ASPSP's online channels. Note, the account name is not the product name or the nickname of the account. |Max350Text | | |
+| LEI |0..1 | OBDomesticScheduled2/UltimateCreditor/LEI |Legal Entity Identification by which a party is known and which is usually used to identify that party. |Max20Text | | |
+| UltimateDebtor |0..1 |OBDomesticScheduled2/UltimateDebtor|Set of elements used to identify a person or an organisation. | | | |
+| SchemeName |0..1 |OBDomesticScheduled2/UltimateDebtor/SchemeName |Name of the identification scheme, in a coded form as published in an external list. |OBExternalAccountIdentification4Code | | |
+| Identification |0..1 |OBDomesticScheduled2/UltimateDebtor/Identification |Identification assigned by an institution to identify an account. This identification is known by the account owner. |Max256Text | | |
+| Name |0..1 |OBDomesticScheduled2/UltimateDebtor/Name |The account name is the name or names of the account owner(s) represented at an account level, as displayed by the ASPSP's online channels. Note, the account name is not the product name or the nickname of the account. |Max350Text | | |
+| LEI |0..1 | OBDomesticScheduled2/UltimateDebtor/LEI |Legal Entity Identification by which a party is known and which is usually used to identify that party. |Max20Text | | |
 
 ### Domestic Scheduled Payment Consent - Request
 
@@ -264,6 +298,7 @@ ExternalStatusReason1Code |AUTH AWAU RJCT COND |
 | Identification |0..1 |OBWriteDomesticScheduledConsentResponse5/Data/Debtor/Identification |Identification assigned by an institution to identify an account. This identification is known by the account owner. |Max256Text | | |
 | Name |0..1 |OBWriteDomesticScheduledConsentResponse5/Data/Debtor/Name |The account name is the name or names of the account owner(s) represented at an account level, as displayed by the ASPSP's online channels. Note, the account name is not the product name or the nickname of the account. |Max350Text | | |
 | SecondaryIdentification |0..1 |OBWriteDomesticScheduledConsentResponse5/Data/Debtor/SecondaryIdentification |This is secondary identification of the account, as assigned by the account servicing institution. This can be used by building societies to additionally identify accounts with a roll number (in addition to a sort code and account number combination). |Max34Text | | |
+| LEI |0..1 | OBWriteDomesticScheduledConsentResponse5/Data/Debtor/LEI |Legal Entity Identification by which a party is known and which is usually used to identify that party. |Max20Text | | |
 | Risk |1..1 |OBWriteDomesticScheduledConsentResponse5/Risk |The Risk section is sent by the initiating party to the ASPSP. It is used to specify additional details for risk scoring for Payments. |OBRisk1 | | |
 
 ## Usage Examples
@@ -298,12 +333,12 @@ Accept: application/json
         "Currency": "GBP"
       },
       "DebtorAccount": {
-        "SchemeName": "UK.OBIE.SortCodeAccountNumber",
+        "SchemeName": "UK.OB.SortCodeAccountNumber",
         "Identification": "11280001234567",
         "Name": "Andrea Frost"
       },
       "CreditorAccount": {
-        "SchemeName": "UK.OBIE.SortCodeAccountNumber",
+        "SchemeName": "UK.OB.SortCodeAccountNumber",
         "Identification": "08080021325698",
         "Name": "Tom Kirkman"
       },
@@ -345,12 +380,12 @@ Content-Type: application/json
         "Currency": "GBP"
       },
       "DebtorAccount": {
-        "SchemeName": "UK.OBIE.SortCodeAccountNumber",
+        "SchemeName": "UK.OB.SortCodeAccountNumber",
         "Identification": "11280001234567",
         "Name": "Andrea Frost"
       },
       "CreditorAccount": {
-        "SchemeName": "UK.OBIE.SortCodeAccountNumber",
+        "SchemeName": "UK.OB.SortCodeAccountNumber",
         "Identification": "08080021325698",
         "Name": "Tom Kirkman"
       },

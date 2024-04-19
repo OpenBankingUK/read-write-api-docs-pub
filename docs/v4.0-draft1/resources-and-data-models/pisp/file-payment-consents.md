@@ -119,7 +119,7 @@ The API endpoint allows the PISP to download a file (that had been uploaded agai
 
 #### Payment Order Consent
 
-![ image2018-7-5_15-37-22.png ](./images/image2018-7-5_15-37-22.png )
+![File Upload Consent model](./images/PIS_FileUploadConsent.png)
 
 The definitions for the Status:
 
@@ -129,6 +129,7 @@ The definitions for the Status:
 | 2 |AWAU |The consent resource is awaiting PSU authorisation. |
 | 3 |RJCT |The consent resource has been rejected. |
 | 4 |AUTH |The consent resource has been successfully authorised. |
+| 5 |COND| The consented action has been successfully completed. This does not reflect the status of the consented action.|
 
 ## Data Model
 
@@ -152,7 +153,7 @@ For the OBFile2 Initiation object:
 * If the ASPSP is able to establish a problem with payload or any contextual error during the API call, the ASPSP must reject the file-payment-consent request immediately.
 * If the ASPSP establishes a problem with the file-payment-consent after the API call, the ASPSP must set the Status of the file-payment-consent resource to RJCT.
 * The DebtorAccount is **optional** as the PISP may not know the account identification details for the PSU.
-* If the DebtorAccount is specified by the PISP and is invalid for the PSU - then the file-payment-consent will be set to Rejected after PSU authentication.
+* If the DebtorAccount is specified by the PISP and is invalid for the PSU - then the file-payment-consent will be set to RJCT after PSU authentication.
 * An ASPSP may choose which fields **must** be populated to process a specified FileType, and may reject the request if the fields are not populated. These ASPSP specific requirements must be documented.
 * An ASPSP may choose which fields **must not** be populated to process a specified FileType, and may reject the request if the fields are populated. These ASPSP specific requirements must be documented.
 
@@ -173,6 +174,11 @@ For the OBFile2 Initiation object:
 | Identification |1..1 |OBFile2/DebtorAccount/Identification |Identification assigned by an institution to identify an account. This identification is known by the account owner. |Max256Text | | |
 | Name |0..1 |OBFile2/DebtorAccount/Name |The account name is the name or names of the account owner(s) represented at an account level, as displayed by the ASPSP's online channels. Note, the account name is not the product name or the nickname of the account. |Max350Text | | |
 | SecondaryIdentification |0..1 |OBFile2/DebtorAccount/SecondaryIdentification |This is secondary identification of the account, as assigned by the account servicing institution. This can be used by building societies to additionally identify accounts with a roll number (in addition to a sort code and account number combination). |Max34Text | | |
+| Proxy |0..1 |OBFile2/DebtorAccount/Proxy |The external proxy account type |OBProxyAccount | | |
+| Identification |1..1 |OBFile2/DebtorAccount/Proxy/Identification| Identification assigned by an institution to identify an account. This identification is known by the account owner. |Max256Text | | |
+| Type |0..1 |OBFile2/DebtorAccount/Proxy/Type| Specifies the external proxy account type |MaxText70 | | |
+| Code |1..1 |OBFile2/DebtorAccount/Proxy/Code| Specifies the external proxy account type code, as published in the proxy account type external code set.<br> For more information see `ExternalProxyAccountType1Code` [here](https:/github.com/OpenBankingUK/External_Interal_CodeSets) |OBExternalProxyAccountType1Code | | |
+| Proprietary |1..1 |OBFile2/DebtorAccount/Proxy/Proprietary| The owner of the proxy account |MaxText70 | | |
 | RemittanceInformation |0..1 |OBFile2/RemittanceInformation |Information supplied to enable the matching of an entry with the items that the transfer is intended to settle, such as commercial invoices in an accounts' receivable system. |OBRemittanceInformation1 | | |
 | Unstructured |0..1 |OBFile2/RemittanceInformation/Unstructured |Information supplied to enable the matching/reconciliation of an entry with the items that the payment is intended to settle, such as commercial invoices in an accounts' receivable system, in an unstructured form. |Max140Text | | |
 | Reference |0..1 |OBFile2/RemittanceInformation/Reference |Unique reference, as assigned by the creditor, to unambiguously refer to the payment transaction. Usage: If available, the initiating party should provide this reference in the structured remittance information, to enable reconciliation by the creditor upon receipt of the amount of money. If the business context requires the use of a creditor reference or a payment remit identification, and only one identifier can be passed through the end-to-end chain, the creditor's reference or payment remittance identification should be quoted in the end-to-end transaction identification. OB: The Faster Payments Scheme can only accept 18 characters for the ReferenceInformation field - which is where this ISO field will be mapped. |Max35Text | | |
@@ -256,6 +262,8 @@ ExternalStatusReason1Code |AUTH AWAU RJCT COND |
 | Identification |0..1 |OBWriteFileConsentResponse4/Data/Debtor/Identification |Identification assigned by an institution to identify an account. This identification is known by the account owner. |Max256Text | | |
 | Name |0..1 |OBWriteFileConsentResponse4/Data/Debtor/Name |The account name is the name or names of the account owner(s) represented at an account level, as displayed by the ASPSP's online channels. Note, the account name is not the product name or the nickname of the account. |Max350Text | | |
 | SecondaryIdentification |0..1 |OBWriteFileConsentResponse4/Data/Debtor/SecondaryIdentification |This is secondary identification of the account, as assigned by the account servicing institution. This can be used by building societies to additionally identify accounts with a roll number (in addition to a sort code and account number combination). |Max34Text | | |
+| LEI |0..1 | OBWriteFileConsentResponse4/Data/Debtor/LEI |Legal Entity Identification by which a party is known and which is usually used to identify that party. |Max20Text | | |
+
 
 ## Usage Examples
 
@@ -279,7 +287,7 @@ Accept: application/json
 {
   "Data": {
     "Initiation": {
-      "FileType": "UK.OBIE.pain.001.001.08",
+      "FileType": "UK.OB.pain.001.001.08",
       "FileHash": "m5ah/h1UjLvJYMxqAoZmj9dKdjZnsGNm+yMkJp/KuqQ",
       "FileReference": "GB2OK238",
       "NumberOfTransactions": "100",
@@ -306,7 +314,7 @@ Content-Type: application/json
     "CreationDateTime": "2018-06-05T15:15:13+00:00",
     "StatusUpdateDateTime": "2018-06-05T15:15:13+00:00",
     "Initiation": {
-      "FileType": "UK.OBIE.pain.001.001.08",
+      "FileType": "UK.OB.pain.001.001.08",
       "FileHash": "m5ah/h1UjLvJYMxqAoZmj9dKdjZnsGNm+yMkJp/KuqQ",
       "FileReference": "GB2OK238",
       "NumberOfTransactions": "100",

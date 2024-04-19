@@ -57,6 +57,7 @@ The API allows the AISP to ask an ASPSP to create a new account-access-consent r
 * An ASPSP creates the account-access-consent resource and responds with a unique ConsentId to refer to the resource.
 * Prior to calling the API, the AISP must have an access token issued by the ASPSP using a client credentials grant.
 
+
 #### Account Access Consent Status
 
 The PSU  **must**  authenticate with the ASPSP and authorise the account-access-consent for the account-access-consent to be successfully setup.
@@ -72,12 +73,14 @@ After authorisation has taken place the account-access-consent resource may have
 | --- |--- |--- |
 | 1 |RJCT |The account access consent has been rejected. |
 | 2 |AUTH |The account access consent has been successfully authorised. |
+| 3| CANC | The account access consent has been cancelled. |
+
 
 #### Status Flow
 
 This is the state diagram for the Status.
 
-![ Consent Authorisation.jpg ](./images/AccountAccessConsents/ConsentAuthorisation.jpg )
+![ Consent Authorisation.jpg ](./images/AIS_Consent.png )
 
 ### GET /account-access-consents/{ConsentId}
 
@@ -98,6 +101,8 @@ The available Status code-list enumerations for the account-access-consent resou
 | 1 |RJCT |The account access consent has been rejected. |
 | 2 |AWAU |The account access consent is awaiting authorisation. |
 | 3 |AUTH |The account access consent has been successfully authorised. |
+| 4| CANC | The account access consent has been cancelled. |
+| 5| EXPD | The account access consent has expired. | 
 
 
 ### DELETE /account-access-consents/{ConsentId}
@@ -172,8 +177,7 @@ And response to:
 | Data |1..1 |OBReadConsentResponse1/Data | |OBReadDataConsentResponse1 | |
 | ConsentId |1..1 |OBReadConsentResponse1/Data/ConsentId |Unique identification as assigned to identify the account access consent resource. |Max128Text | |
 | CreationDateTime |1..1 |OBReadConsentResponse1/Data/CreationDateTime |Date and time at which the resource was created. |ISODateTime | |
-| StatusCode |0..1 |OBReadConsentResponse1/Data/StatusCode |Specifies the status of consent resource in code form. |
-ExternalStatusReason1Code |AUTH AWAU RJCT COND |
+| StatusCode |0..1 |OBReadConsentResponse1/Data/StatusCode |Specifies the status of consent resource in code form. |ExternalStatusReason1Code |AUTH AWAU RJCT COND |
 | StatusReason |0..* |OBReadConsentResponse1/Data/StatusReason |Specifies the status reason. | OBStatusReason |
 | StatusReasonCode |0..1 |OBReadConsentResponse1/Data/StatusReason/*/StatusReasonCode |Specifies the status reason in a code form. For a full description see `ExternalStatusReason1Code` [here](https://github.com/OpenBankingUK/External_Interal_CodeSets). | ExternalStatusReason1Code |
 | StatusReasonDescription |0..1 |OBReadConsentResponse1/Data/StatusReason/*/StatusReasonDescription |Description supporting the StatusReasonCode. |

@@ -104,12 +104,21 @@ If the ReadPAN permission is granted by the PSU, the ASPSP may choose to populat
 | StandingOrder |0..n |OBReadStandingOrder6/Data/StandingOrder | |OBStandingOrder5 | | |
 | AccountId |1..1 |OBReadStandingOrder6/Data/StandingOrder/AccountId |A unique and immutable identifier used to identify the account resource. This identifier has no meaning to the account owner. |Max40Text | | |
 | StandingOrderId |0..1 |OBReadStandingOrder6/Data/StandingOrder/StandingOrderId |A unique and immutable identifier used to identify the standing order resource. This identifier has no meaning to the account owner. |Max40Text | | |
-| Frequency |1..1 |OBReadStandingOrder6/Data/StandingOrder/Frequency |Individual Definitions: <br/>NotKnown - Not known <br/>EvryDay - Every day<br/> EvryWorkgDay - Every working day<br/> IntrvlDay - An interval specified in number of calendar days (02 to 31)<br/> IntrvlWkDay - An interval specified in weeks (01 to 09), and the day within the week (01 to 07)<br/> WkInMnthDay - A monthly interval, specifying the week of the month (01 to 05) and day within the week (01 to 07)<br/> IntrvlMnthDay - An interval specified in months (between 01 to 06, 12, 24), specifying the day within the month (-05 to -01, 01 to 31)<br/> QtrDay - Quarterly (either ENGLISH, SCOTTISH, or RECEIVED)<br/> ENGLISH = Paid on the 25th March, 24th June, 29th September and 25th December.<br/> SCOTTISH = Paid on the 2nd February, 15th May, 1st August and 11th November.<br/> RECEIVED = Paid on the 20th March, 19th June, 24th September and 20th December.  <br/><br/><br/>Individual Patterns: <br/>NotKnown (ScheduleCode)<br/>EvryDay (ScheduleCode)<br/> EvryWorkgDay (ScheduleCode)<br/> IntrvlDay:NoOfDay (ScheduleCode + NoOfDay)<br/> IntrvlWkDay:IntervalInWeeks:DayInWeek (ScheduleCode + IntervalInWeeks + DayInWeek)<br/> WkInMnthDay:WeekInMonth:DayInWeek (ScheduleCode + WeekInMonth + DayInWeek)<br/> IntrvlMnthDay:IntervalInMonths:DayInMonth (ScheduleCode + IntervalInMonths + DayInMonth)<br/> QtrDay: + either (ENGLISH, SCOTTISH or RECEIVED) ScheduleCode + QuarterDay<br/><br/> The regular expression for this element combines five smaller versions for each permitted pattern. To aid legibility - the components are presented individually here:<br/>NotKnown <br/>EvryDay<br/> EvryWorkgDay<br/> IntrvlDay:`((0[2-9])\|([1-2][0-9])\|3[0-1])`<br/> IntrvlWkDay:`0[1-9]:0[1-7]`<br/> WkInMnthDay:`0[1-5]:0[1-7]`<br/> IntrvlMnthDay:`(0[1-6]\|12\|24):(-0[1-5]\|0[1-9]\|[12][0-9]\|3[01])`<br/> QtrDay:`(ENGLISH\|SCOTTISH\|RECEIVED)`<br/><br/><br/> Full Regular Expression:<br/> `^(NotKnown)$\|^(EvryDay)$\|^(EvryWorkgDay)$\|^(IntrvlDay:((0[2-9])\|([1-2][0-9])\|3[0-1]))$\|^(IntrvlWkDay:0[1-9]:0[1-7])$\|^(WkInMnthDay:0[1-5]:0[1-7])$\|^(IntrvlMnthDay:(0[1-6]\|12\|24):(-0[1-5]\|0[1-9]\|[12][0-9]\|3[01]))$\|^(QtrDay:(ENGLISH\|SCOTTISH\|RECEIVED))$` |Max35Text | | `^(NotKnown)$\|^(EvryDay)$\|^(EvryWorkgDay)$\|^(IntrvlWkDay:0[1-9]:0[1-7])$\|^(WkInMnthDay:0[1-5]:0[1-7])$\|^(IntrvlMnthDay:(0[1-6]\|12\|24):(-0[1-5]\|0[1-9]\|[12][0-9]\|3[01]))$\|^(QtrDay:(ENGLISH\|SCOTTISH\|RECEIVED))$` |
+| MandateRelatedInformation | 0..1 |OBReadStandingOrder6/Data/MandateRelatedInformation ||OBMandateRelatedInformation | | |
+| MandateIdentification | 0..1 |OBReadStandingOrder6/Data/MandateRelatedInformation/MandateIdentification ||TODO | | |
+| Classification | 0..1 |OBReadStandingOrder6/Data/MandateRelatedInformation/Classification|FIXE<br>USGB<br>VARI|OBClassification1Code | | |
+| CategoryPurposeCode | 0..1 |OBReadStandingOrder6/Data/MandateRelatedInformation/CategoryPurposeCode ||OBCategoryPurpose1Code | | |
+| FirstPaymentDate | 0..1 |OBReadStandingOrder6/Data/MandateRelatedInformation/FirstPaymentDate |The date on which the first payment for a Standing Order schedule will be made. |ISODate | | |
+| FinalPaymentDate | 0..1 |OBReadStandingOrder6/Data/MandateRelatedInformation/FinalPaymentDate |The date on which the final payment for a Standing Order schedule will be made. |ISODate | | |
+| Frequency | 0..1 |OBReadStandingOrder6/Data/MandateRelatedInformation/Frequency |A code indicating the frequency of payment for the Standing Order. Values:<br>ADHO<br>YEAR<br>DALI<br>INDA<br>MNTH<br>QURT<br>MIAN<br>WEEK |OBFrequencyPeriodType | | |
+| PeriodType | 1..1 |OBReadStandingOrder6/Data/MandateRelatedInformation/PeriodType |A code indicating the period type for the Standing Order. Values:<br>ADHO<br>YEAR<br>DALI<br>INDA<br>MNTH<br>QURT<br>MIAN<br>WEEK |OBFrequencyPeriodType | | |
+| CountPerPeriod | 1..1 |OBReadStandingOrder6/Data/MandateRelatedInformation/CountPerPeriod | |int32 | |
+| PointInTimeType | 1..1 |OBReadStandingOrder6/Data/MandateRelatedInformation/PointInTimeType |A code indicating the point in time for payment of the Standing Order. Values:<br>ADHO<br>YEAR<br>DALI<br>INDA<br>MNTH<br>QURT<br>MIAN<br>WEEK |OBFrequencyPeriodType | | |
+| PointInTime | 1..1 |OBReadStandingOrder6/Data/MandateRelatedInformation/PointInTime |ISOTime | | |
+| Reason| 0..1 |OBReadStandingOrder6/Data/MandateRelatedInformation/Reason | |Max256Text | |
 | Reference |0..1 |OBReadStandingOrder6/Data/StandingOrder/Reference |Unique reference, as assigned by the creditor, to unambiguously refer to the payment transaction. Usage: If available, the initiating party should provide this reference in the structured remittance information, to enable reconciliation by the creditor upon receipt of the amount of money. If the business context requires the use of a creditor reference or a payment remit identification, and only one identifier can be passed through the end-to-end chain, the creditor's reference or payment remittance identification should be quoted in the end-to-end transaction identification. |Max35Text | | |
-| FirstPaymentDateTime |0..1 |OBReadStandingOrder6/Data/StandingOrder/FirstPaymentDateTime |The date on which the first payment for a Standing Order schedule will be made. |ISODateTime | | |
-| NextPaymentDateTime |0..1 |OBReadStandingOrder6/Data/StandingOrder/NextPaymentDateTime |The date on which the next payment for a Standing Order schedule will be made. |ISODateTime | | |
+| NextPaymentDateTime |0..1 |OBReadStandingOrder6/Data/StandingOrder/NextPaymentDateTime |The date on which the next payment for a Standing Order schedule will be made. |ISODate | | |
 |LastPaymentDateTime| 0..1| OBReadStandingOrder6/Data/StandingOrder/LastPaymentDateTime |The date on which the last (most recent) payment for a Standing Order schedule was made. |ISODateTime | | |
-| FinalPaymentDateTime |0..1 |OBReadStandingOrder6/Data/StandingOrder/FinalPaymentDateTime |The date on which the final payment for a Standing Order schedule will be made. |ISODateTime | | |
 | NumberOfPayments |0..1 | OBReadStandingOrder6/Data/StandingOrder/NumberOfPayments| Number of the payments that will be made in completing this frequency sequence including any executed since the sequence start date. |Max35Text | | |
 | StandingOrderStatusCode |0..1 |OBReadStandingOrder6/Data/StandingOrder/StandingOrderStatusCode |Specifies the status of the standing order in code form. |OBExternalStandingOrderStatus1Code |Active Inactive | |
 | FirstPaymentAmount |0..1 |OBReadStandingOrder6/Data/StandingOrder/FirstPaymentAmount |The amount of the first Standing Order |OBActiveOrHistoricCurrencyAndAmount | | |
@@ -125,6 +134,7 @@ If the ReadPAN permission is granted by the PSU, the ASPSP may choose to populat
 | Amount |1..1 |OBReadStandingOrder6/Data/StandingOrder/FinalPaymentAmount/Amount |A number of monetary units specified in an active currency where the unit of currency is explicit and compliant with ISO 4217. |OBActiveCurrencyAndAmount_SimpleType | |`^\d{1,13}$|^\d{1,13}\.\d{1,5}$` |
 | Currency |1..1 |OBReadStandingOrder6/Data/StandingOrder/FinalPaymentAmount/Currency |A code allocated to a currency by a Maintenance Agency under an international identification scheme, as described in the latest edition of the international standard ISO 4217 "Codes for the representation of currencies and funds". |ActiveOrHistoricCurrencyCode | |^[A-Z]{3,3}$ |
 | CreditorAgent |0..1 |OBReadStandingOrder6/Data/StandingOrder/CreditorAgent |Party that manages the account on behalf of the account owner, that is manages the registration and booking of entries on the account, calculates balances on the account and provides information about the account. This is the servicer of the beneficiary account. |OBBranchAndFinancialInstitutionIdentification5 | | |
+| LEI |0..1 | OBReadStandingOrder6/Data/StandingOrder/CreditorAgent/LEI |Legal Entity Identification by which a party is known and which is usually used to identify that party. |Max20Text | | |
 | SchemeName |1..1 |OBReadStandingOrder6/Data/StandingOrder/CreditorAgent/SchemeName |Name of the identification scheme, in a coded form as published in an external list. |OBExternalFinancialInstitutionIdentification4Code | | |
 | Identification |1..1 |OBReadStandingOrder6/Data/StandingOrder/CreditorAgent/Identification |Unique and unambiguous identification of the servicing institution. |Max35Text | | |
 | CreditorAccount |0..1 |OBReadStandingOrder6/Data/StandingOrder/CreditorAccount |Provides the details to identify the beneficiary account. |OBCashAccount5 | | |
@@ -164,9 +174,14 @@ Content-Type: application/json
       {
         "AccountId": "22289",
         "StandingOrderId": "Ben3",
-        "Frequency": "EvryWorkgDay",
+        "MandateRelatedInformation": {
+            "Frequency": "WEEK",
+            "PeriodType": "WEEK",
+            "CountPerPeriod": 1,
+            "PointInTimeType": "WEEK",
+            "PointInTime": "2017-08-13T00:00:00+00:00"
+        },
         "Reference": "Towbar Club 2 - We Love Towbars",
-        "FirstPaymentDateTime": "2017-08-12T00:00:00+00:00",
         "FirstPaymentAmount": {
           "Amount": "0.57",
           "Currency": "GBP"
@@ -176,7 +191,6 @@ Content-Type: application/json
           "Amount": "0.56",
           "Currency": "GBP"
         },
-        "FinalPaymentDateTime": "2027-08-12T00:00:00+00:00",
         "FinalPaymentAmount": {
           "Amount": "0.56",
           "Currency": "GBP"
@@ -227,9 +241,16 @@ Content-Type: application/json
       {
         "AccountId": "22289",
         "StandingOrderId": "Ben3",
-        "Frequency": "EvryWorkgDay",
+        "MandateRelatedInformation": {
+            "Frequency": "DAIL",
+            "PeriodType": "DAIL",
+            "FirstPaymentDate": "2017-08-12",
+            "LastPaymentDate": "2027-08-12",
+            "CountPerPeriod": 1,
+            "PointInTimeType": "DAIL",
+            "PointInTime": "T00:00:00+00:00"
+        },
         "Reference": "Towbar Club 2 - We Love Towbars",
-        "FirstPaymentDateTime": "2017-08-12T00:00:00+00:00",
         "FirstPaymentAmount": {
           "Amount": "0.57",
           "Currency": "GBP"
@@ -239,7 +260,6 @@ Content-Type: application/json
           "Amount": "0.56",
           "Currency": "GBP"
         },
-        "FinalPaymentDateTime": "2027-08-12T00:00:00+00:00",
         "FinalPaymentAmount": {
           "Amount": "0.56",
           "Currency": "GBP"
@@ -254,9 +274,16 @@ Content-Type: application/json
       {
         "AccountId": "22289",
         "StandingOrderId": "Ben5",
-        "Frequency": "WkinMnthDay(2)",
+        "MandateRelatedInformation": {
+            "Frequency": "MNTH",
+            "PeriodType": "MNTH",
+            "FirstPaymentDate": "2017-06-12",
+            "LastPaymentDate": "2018-06-12",
+            "CountPerPeriod": 1,
+            "PointInTimeType": "MNTH",
+            "PointInTime": "T00:00:00+00:00"
+        },
         "Reference": "Golf - We Love Golf",
-        "FirstPaymentDateTime": "2017-06-12T00:00:00+00:00",
         "FirstPaymentAmount": {
           "Amount": "23.00",
           "Currency": "GBP"
@@ -266,7 +293,6 @@ Content-Type: application/json
           "Amount": "23.00",
           "Currency": "GBP"
         },
-        "FinalPaymentDateTime": "2018-06-12T00:00:00+00:00",
         "FinalPaymentAmount": {
           "Amount": "23.00",
           "Currency": "GBP"

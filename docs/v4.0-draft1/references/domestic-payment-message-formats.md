@@ -1,13 +1,14 @@
 # Domestic Payment Message Formats - v4.0-draft1 <!-- omit in toc -->
 
 - [ISO 20022](#iso-20022)
+- [CBPR+ and MX Messages](#cbpr+-and-mx-messages)
 - [ISO 8583](#iso-8583)
   - [Mapping](#mapping)
   - [Notes](#notes)
 - [BACS STD18](#bacs-std18)
   - [Mapping](#mapping-1)
   - [Notes](#notes-1)
-- [MT103](#mt103)
+- [MT103](#mt103-and-iso-20022)
   - [Mapping](#mapping-2)
   - [Notes](#notes-2)
 
@@ -28,6 +29,28 @@ Deviations from the pain.001 XML standard are:
   * InstructionIdentification and EndToEndIdentification moved to the top level (instead of embedding within Payment Order Identification).
   * DebtorAccount and CreditorAccount are simplified to only include the SchemeName and Identification.
 
+Additionally for version 4 the following changes have been made:
+*	Enumerations have been updated to use ISO 20022 code values where they previously used code names.   
+*	Open Banking specific enumerations have been re-coded to 4 character codes, matching the 4 character ISO 20022 code format.  
+*	The address class has been remapped to support additional fields and longer address lines. A unified address class replaces the previous instances which had minor differences. 
+*	Additional data elements such as LEI, Ultimate Creditor and Ultimate Debtor have been introduced to support changes in the CHAPs and cross-border payments.
+  
+## CBPR+ and MX Messages
+CBPR+ provides guidance and standardisation for using ISO 20022 messages for cross-border payments.  
+
+The Open Banking Standard has been updated to accommodate additional ISO 20022 fields and payload values. 
+
+| Name| XPath| Occurence|
+| --- |--- |--- |
+| UltimateCreditor| Initiation/UltimateCreditor| 0..1|
+| UltimateDebtor| Initiation/UltimateDebtor| 0..1|
+| LEI| Initiation/UltimateDebtor/LEI<br>Initiation/UltimateCreditor/LEI<br>Initiation/CreditorAgent/LEI | 0..1|
+| Proxy| Initiation/CreditorAccount/Proxy| 0..1|
+| RegulatoryReporting| Initiation/RegulatoryReporting| 0..10|
+|CategoryPurposeCode| Risk/CategoryPurposeCode| 0..1|
+
+
+
 ## ISO 8583
 
 The ISO 8583 message format is used for the Faster Payments Scheme (FPS).
@@ -38,12 +61,15 @@ Execution:
 * FPS scheme requirements (are not formally part of the Open Banking API Specification, but are included for guidance):
   * The field 61.1 PAYMENT SUB-TYPE will be set by the FPS Institution with a **A** {\**} prefix for any FPS transaction initiated by a PISP. Values within {**} will ordinarily be “00” unless the PISP initiated payment requires usage of other facilities (as indicated by the usage of an FPS sub-type code).
   * There is also a requirement from the FPS scheme to identify the PISP via the field 122 REGULATORY REPORTING
+  * ASPSPs receiving a VRP payment must use the data included in the payload to determine which VRP Marker code to include in the FPS sub-type code.
 
-This is the mapping from the Payment API Initiation section to the relevant FPS scheme fields with the use of the "UK.OBIE.SortCodeAccountNumber" account identification SchemeName.
+This is the mapping from the Payment API Initiation section to the relevant FPS scheme fields with the use of the "UK.OB.SortCodeAccountNumber" account identification SchemeName.
 
 All required fields in the ISO 8583 message can be generated from the Initiation section of the payload or from the ASPSP, for domestic-payments and domestic-scheduled-payments.
 
 In the size column, highlighted in **bold** are the fields which are smaller in size than the corresponding ISO 20022 field.
+
+The 4 character FPS status codes have been included in the ExternalStatusReason1Code enumeration list and can be returned within the API payload for a payment status.
 
 In the case that a PISP sets up a payment-order consent with a larger field size (e.g., EndToEndIdentification, or InstructedAmount) than the eventual scheme field size - it will be up to the ASPSP to decide whether to reject the payment-order consent or truncate the field.
 
@@ -66,8 +92,8 @@ In the case that a PISP sets up a payment-order consent with a larger field size
 * However, if the Initiation/CreditorAccount/SecondaryIdentification is **not** populated then field 120 REFERENCE INFORMATION must be populated with the Initiation/RemittanceInformation/Reference field.
 * If both Initiation/CreditorAccount/SecondaryIdentification and Initiation/RemittanceInformation/Reference are populated by the PISP, only the SecondaryIdentification will be mapped to field 120 REFERENCE INFORMATION. Whether the Initiation/RemittanceInformation/Reference is used in any other ASPSP systems is for the ASPSP to decide.
 * Field 116 ORIGINATING CUSTOMER ACCOUNT NAME must be populated from the ASPSP's system of record
-* Where the Initiation/DebtorAccount/SchemeName field is populated with "UK.OBIE.SortCodeAccountNumber", the Initiation/DebtorAccount/Identification field will be populated with a 14 digit field comprised of a 6 digit Sort Code (mapped to field 42 ORIGINATING CREDIT INSTITUTION) and 8 digit Account Number (mapped to field 43 ORIGINATING CUSTOMER ACCOUNT NUMBER)
-* Where the Initiation/CreditorAccount/SchemeName field is populated with "UK.OBIE.SortCodeAccountNumber", the Initiation/CreditorAccount/Identification field will be populated with a 14 digit field comprised of a 6 digit Sort Code (mapped to field 95 BENEFICIARY CREDIT INSTITUTION) and 8 digit Account Number (mapped to field 35 BENEFICIARY CUSTOMER ACCOUNT NUMBER)
+* Where the Initiation/DebtorAccount/SchemeName field is populated with "UK.OB.SortCodeAccountNumber", the Initiation/DebtorAccount/Identification field will be populated with a 14 digit field comprised of a 6 digit Sort Code (mapped to field 42 ORIGINATING CREDIT INSTITUTION) and 8 digit Account Number (mapped to field 43 ORIGINATING CUSTOMER ACCOUNT NUMBER)
+* Where the Initiation/CreditorAccount/SchemeName field is populated with "UK.OB.SortCodeAccountNumber", the Initiation/CreditorAccount/Identification field will be populated with a 14 digit field comprised of a 6 digit Sort Code (mapped to field 95 BENEFICIARY CREDIT INSTITUTION) and 8 digit Account Number (mapped to field 35 BENEFICIARY CUSTOMER ACCOUNT NUMBER)
 * CreditorPostalAddress is not supported in FPS.
 
 ## BACS STD18
@@ -80,7 +106,7 @@ Execution:
 * Expectation is that a Bank Grade user will be able to bulk up payments generated via the Payment API and create the appropriate file and submission structure (as per usual processing). None of these details will need to be generated via the Payment API.
 * The mapping below uses theBacs Electronic Funds Transfer, File Structures (PN5011) document and the section on 2.6.1 CREDIT AND DEBIT PAYMENT INSTRUCTIONS (BANK GRADE USERS)
 
-This is the mapping from the Payment API Initiation section to the relevant Bacs scheme fields with the use of the "UK.OBIE.SortCodeAccountNumber" account identification SchemeName.
+This is the mapping from the Payment API Initiation section to the relevant Bacs scheme fields with the use of the "UK.OB.SortCodeAccountNumber" account identification SchemeName.
 
 All required fields in the BACS STD18 message can all be generated from the Initiation section of the payload or from the ASPSP for domestic-payments and domestic-scheduled-payments.
 
@@ -105,17 +131,28 @@ In the case that a PISP sets up a payment-order consent with a larger field size
 * However, if the /CreditorAccount/SecondaryIdentification is **not** populated then 10 service user's reference must be populated with the Initiation/RemittanceInformation/Reference field.
 * If both Initiation/CreditorAccount/SecondaryIdentification and Initiation/RemittanceInformation/Reference are populated by the PISP, only the SecondaryIdentification will be mapped to field 10 service user's reference. Whether the Initiation/RemittanceInformation/Reference is used in any other ASPSP systems is for the ASPSP to decide.
 * Field 9 service user's name must be populated from the ASPSP's system of record.
-* Where the Initiation/DebtorAccount/SchemeName field is populated with "UK.OBIE.SortCodeAccountNumber", the Initiation/DebtorAccount/Identification field will be populated with a 14 digit field comprised of a 6 digit Sort Code (mapped to field 5 originating sorting code) and 8 digit Account Number (mapped to field 6 originating account number).
-* Where the Initiation/CreditorAccount/SchemeName field is populated with "UK.OBIE.SortCodeAccountNumber", the Initiation/CreditorAccount/Identification field will be populated with a 14 digit field comprised of a 6 digit Sort Code (mapped to field 1 destination sorting code) and 8 digit Account Number (mapped to field 2 destination a/c number)
+* Where the Initiation/DebtorAccount/SchemeName field is populated with "UK.OB.SortCodeAccountNumber", the Initiation/DebtorAccount/Identification field will be populated with a 14 digit field comprised of a 6 digit Sort Code (mapped to field 5 originating sorting code) and 8 digit Account Number (mapped to field 6 originating account number).
+* Where the Initiation/CreditorAccount/SchemeName field is populated with "UK.OB.SortCodeAccountNumber", the Initiation/CreditorAccount/Identification field will be populated with a 14 digit field comprised of a 6 digit Sort Code (mapped to field 1 destination sorting code) and 8 digit Account Number (mapped to field 2 destination a/c number)
 * CreditorPostalAddress is not supported in BACS.
 
-## MT103
+## MT103 and ISO 20022
 
-The MT103 message format is used for the CHAPS scheme.
+On 19th June 2023 CHAPS migrated to the ISO 20022 message standard. A migration to the new message format is underway and participants should refer to the Bank of England’s [advice on CHAPS and the Real Time Gross Settlement System (RTGS)](https://www.bankofengland.co.uk/payment-and-settlement/rtgs-renewal-programme/iso-20022) for current milestones and dates.
+
+All Direct Participants are able to send and receive enhanced ISO 20022 payment messages. 
+
+The Open Banking payment payloads have been updated with closer alignment to ISO 20022, including elements which will become mandatory in CHAPS payments as the migration progresses. 
+*	Purpose Codes (mandatory for property payments and FI-to-FI payments)
+*	LEI (mandatory for FI-to-FI payments)
+*	Structured Addresses
+*	Remittance Data
+
+All required fields in the CHAPS ISO 20022 message can be generated from the Initiation section of the payload or from the ASPSP for domestic-payments and domestic-scheduled-payments.
+
 Execution:
 * The processing of payments via the CHAPS scheme is business as usual processing - i.e., no change
 
-This is the mapping from the Initiation section to the relevant CHAPS scheme fields with the use of the "UK.OBIE.SortCodeAccountNumber" account identification SchemeName.
+This is the mapping from the Initiation section to the legacy CHAPS scheme fields with the use of the "UK.OB.SortCodeAccountNumber" account identification SchemeName.
 
 All required fields in the CHAPS MT103 message can all be generated from the Initiation section of the payload or from the ASPSP for domestic-payments and domestic-scheduled-payments.
 
@@ -143,8 +180,8 @@ In the case that a PISP sets up a payment-order consent with a larger field size
 
 * The Value Date must be a valid BoE business day. It must be a valid date expressed as YYMMDD and is populated by the ASPSP.
 * Details for field 50K (Ordering Customer) relating to the Debtor's Name and Address must be populated from the ASPSP's system of record.
-* Where the Initiation/DebtorAccount/SchemeName field is populated with "UK.OBIE.SortCodeAccountNumber", the Initiation/DebtorAccount/Identification field will be populated with a 14 digit field comprised of a 6 digit Sort Code (mapped to field 50K Ordering Customer).
-* Where the Initiation/CreditorAccount/SchemeName field is populated with "UK.OBIE.SortCodeAccountNumber", the Initiation/CreditorAccount/Identification field will be populated with a 14 digit field comprised of a 6 digit Sort Code (mapped to field 57 Account With Institution) and 8 digit Account Number (mapped to field 59F Beneficiary Customer).
+* Where the Initiation/DebtorAccount/SchemeName field is populated with "UK.OB.SortCodeAccountNumber", the Initiation/DebtorAccount/Identification field will be populated with a 14 digit field comprised of a 6 digit Sort Code (mapped to field 50K Ordering Customer).
+* Where the Initiation/CreditorAccount/SchemeName field is populated with "UK.OB.SortCodeAccountNumber", the Initiation/CreditorAccount/Identification field will be populated with a 14 digit field comprised of a 6 digit Sort Code (mapped to field 57 Account With Institution) and 8 digit Account Number (mapped to field 59F Beneficiary Customer).
 * Beneficiary Customer Address (59) - there are only 3 fields of length 35 available in the MT103 message for the CreditorPostalAddress these will be mapped from:
   * Initiation/CreditorPostalAddress/StreetName.
   * Initiation/CreditorPostalAddress/BuildingNumber.

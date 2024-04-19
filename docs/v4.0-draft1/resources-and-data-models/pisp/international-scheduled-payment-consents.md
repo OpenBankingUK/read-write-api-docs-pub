@@ -99,9 +99,9 @@ The API endpoint allows the PISP to ask an ASPSP to confirm funds on an **intern
 
 #### Payment Order Consent
 
-The state model for the international-scheduled-payment-consent resource follows the generic consent state model. However, does not use the "Revoked" status, as the consent for an international-scheduled-payment is not a long-lived consent.
+The state model for the international-scheduled-payment-consent resource follows the generic consent state model. 
 
-![image2018-5-18_10-24-21](./images/image2018-5-18_10-24-21.png)
+![State model](./images/PO_Consent.png)
 
 The definitions for the Status:
 
@@ -140,10 +140,10 @@ For the OBInternationalScheduled3 Initiation object:
   * SchemeName is a free-text field which will be populated with identification schemes an ASPSP accepts.
   * Identification is a field which is populated with the Identification of the account, using the valid identification scheme provided.
 * Valid UK Account Identification SchemeName values include, but are not restricted to:
-  * "UK.OBIE.SortCodeAccountNumber" - Identification field **must** be populated with the 6 digit Sort Code and 8 digit Account Number (a 14 digit field).
-  * "UK.OBIE.IBAN" - The Identification field **must** be populated with the full IBAN.
-  * "UK.OBIE.PAN" - The Identification field **must** be populated with the full PAN. A PAN may be an instrument (e.g., a debit card) linked to a payment account, and may not be the only PAN linked to the payment account.
-  * "UK.OBIE.Paym" - The Identification field **must** be populated with the Paym proxy value.
+  * "UK.OB.SortCodeAccountNumber" - Identification field **must** be populated with the 6 digit Sort Code and 8 digit Account Number (a 14 digit field).
+  * "UK.OB.IBAN" - The Identification field **must** be populated with the full IBAN.
+  * "UK.OB.PAN" - The Identification field **must** be populated with the full PAN. A PAN may be an instrument (e.g., a debit card) linked to a payment account, and may not be the only PAN linked to the payment account.
+  * "UK.OB.Paym" - The Identification field **must** be populated with the Paym proxy value.
 * LocalInstrument is the requested payment scheme for execution. This is a free-text field.
 * InstructionPrioirty **may** be used by the ASPSP to determine the payment scheme for execution. 
 * The InstructedAmount object **must** be populated with the desired Amount and Currency of transfer, regardless of the currency of the DebtorAccount. I.e., a PSU may wish to transfer 100EUR from a GBP DebtorAccount (the InstructedAmount will be 100EUR), or 100GBP in EUR (the InstructedAmount will be 100GBP).
@@ -175,7 +175,6 @@ The ExchangeRateInformation object must conform to these behaviours:
 | LocalInstrument |0..1 |OBInternationalScheduled3/LocalInstrument |User community specific instrument. Usage: This element is used to specify a local instrument, local clearing option and/or further qualify the service or service level. |OBExternalLocalInstrument1Code | | |
 | InstructionPriority |0..1 |OBInternationalScheduled3/InstructionPriority |Indicator of the urgency or order of importance that the instructing party would like the instructed party to apply to the processing of the instruction. |OBPriority2Code |Normal Urgent | |
 | Purpose |0..1 |OBInternationalScheduled3/Purpose |Specifies the external purpose code in the format of character string with a maximum length of 4 characters. The list of valid codes is an external code list published separately. External code sets can be downloaded from www.iso20022.org. |OBExternalPurpose1Code1 | | |
-| ExtendedPurpose |0..1 |OBInternationalScheduled3/ExtendedPurpose |Specifies the purpose of an international payment, when there is no corresponding 4 character code available in the ISO20022 list of Purpose Codes. |Max140Text | | |
 | ChargeBearer |0..1 |OBInternationalScheduled3/ChargeBearer |Specifies which party/parties will bear the charges associated with the processing of the payment transaction. |OBChargeBearerType1Code |BorneByCreditor BorneByDebtor FollowingServiceLevel Shared | |
 | RequestedExecutionDateTime |1..1 |OBInternationalScheduled3/RequestedExecutionDateTime |Date at which the initiating party requests the clearing agent to process the payment. Usage: This is the date on which the debtor's account is to be debited. |ISODateTime | | |
 | CurrencyOfTransfer |1..1 |OBInternationalScheduled3/CurrencyOfTransfer |Specifies the currency of the to be transferred amount, which is different from the currency of the debtor's account. |ActiveOrHistoricCurrencyCode | |^[A-Z]{3,3}$ |
@@ -193,8 +192,14 @@ The ExchangeRateInformation object must conform to these behaviours:
 | Identification |1..1 |OBInternationalScheduled3/DebtorAccount/Identification |Identification assigned by an institution to identify an account. This identification is known by the account owner. |Max256Text | | |
 | Name |0..1 |OBInternationalScheduled3/DebtorAccount/Name |The account name is the name or names of the account owner(s) represented at an account level, as displayed by the ASPSP's online channels. Note, the account name is not the product name or the nickname of the account. |Max350Text | | |
 | SecondaryIdentification |0..1 |OBInternationalScheduled3/DebtorAccount/SecondaryIdentification |This is secondary identification of the account, as assigned by the account servicing institution. This can be used by building societies to additionally identify accounts with a roll number (in addition to a sort code and account number combination). |Max34Text | | |
+| Proxy |0..1 |OBInternationalScheduled3/DebtorAccount/Proxy |The external proxy account type |OBProxyAccount | | |
+| Identification |1..1 |OBInternationalScheduled3/DebtorAccount/Proxy/Identification| Identification assigned by an institution to identify an account. This identification is known by the account owner. |Max256Text | | |
+| Type |0..1 |OBInternationalScheduled3/DebtorAccount/Proxy/Type| Specifies the external proxy account type |MaxText70 | | |
+| Code |1..1 |OBInternationalScheduled3/DebtorAccount/Proxy/Code| Specifies the external proxy account type code, as published in the proxy account type external code set.<br> For more information see `ExternalProxyAccountType1Code` [here](https://github.com/OpenBankingUK/External_Interal_CodeSets) |OBExternalProxyAccountType1Code | | |
+| Proprietary |1..1 |OBInternationalScheduled3/DebtorAccount/Proxy/Proprietary| The owner of the proxy account |MaxText70 | | |
 | Creditor |0..1 |OBInternationalScheduled3/Creditor |Party to which an amount of money is due. |OBPartyIdentification43 | | |
 | Name |0..1 |OBInternationalScheduled3/Creditor/Name |Name by which a party is known and which is usually used to identify that party. |Max350Text | | |
+| LEI |0..1 | OBInternationalScheduled3/Creditor/LEI |Legal Entity Identification by which a party is known and which is usually used to identify that party. |Max20Text | | |
 | PostalAddress |0..1 |OBInternationalScheduled3/Creditor/PostalAddress |Information that locates and identifies a specific address, as defined by postal services. |OBPostalAddress6 | | |
 | AddressType |0..1 |OBInternationalScheduled3/Creditor/PostalAddress/AddressType |BIZZ (Business)<br>DLVY (Delivery To)<br>MLTO (Mail To)<br>PBOX (PO Box)<br>ADDR (Postal)<br>HOME (Residential)<br>CORR (Correspondence)<br>STAT (Statement) | ||
 | Department |0..1 |OBInternationalScheduled3/Creditor/PostalAddress/Department |Identification of a division of a large organisation or building. |Max70Text | | |
@@ -240,6 +245,11 @@ The ExchangeRateInformation object must conform to these behaviours:
 | Identification |1..1 |OBInternationalScheduled3/CreditorAccount/Identification |Identification assigned by an institution to identify an account. This identification is known by the account owner. |Max256Text | | |
 | Name |1..1 |OBInternationalScheduled3/CreditorAccount/Name |The account name is the name or names of the account owner(s) represented at an account level. Note, the account name is not the product name or the nickname of the account. OB: ASPSPs may carry out name validation for Confirmation of Payee, but it is not mandatory. |Max350Text | | |
 | SecondaryIdentification |0..1 |OBInternationalScheduled3/CreditorAccount/SecondaryIdentification |This is secondary identification of the account, as assigned by the account servicing institution. This can be used by building societies to additionally identify accounts with a roll number (in addition to a sort code and account number combination). |Max34Text | | |
+| Proxy |0..1 |OBInternationalScheduled3/CreditorAccount/Proxy |The external proxy account type |OBProxyAccount | | |
+| Identification |1..1 |OBInternationalScheduled3/CreditorAccount/Proxy/Identification| Identification assigned by an institution to identify an account. This identification is known by the account owner. |Max256Text | | |
+| Type |0..1 |OBInternationalScheduled3/CreditorAccount/Proxy/Type| Specifies the external proxy account type |MaxText70 | | |
+| Code |1..1 |OBInternationalScheduled3/CreditorAccount/Proxy/Code| Specifies the external proxy account type code, as published in the proxy account type external code set.<br> For more information see `ExternalProxyAccountType1Code` [here](https://github.com/OpenBankingUK/External_Interal_CodeSets) |OBExternalProxyAccountType1Code | | |
+| Proprietary |1..1 |OBInternationalScheduled3/CreditorAccount/Proxy/Proprietary| The owner of the proxy account |MaxText70 | | |
 | RemittanceInformation |0..1 |OBInternationalScheduled3/RemittanceInformation |Information supplied to enable the matching of an entry with the items that the transfer is intended to settle, such as commercial invoices in an accounts' receivable system. |OBRemittanceInformation1 | | |
 | Structured |0..* |OBInternationalScheduled3/RemittanceInformation/Structured |Information supplied to enable the matching/reconciliation of an entry with the items that the payment is intended to settle, such as commercial invoices in an accounts' receivable system, in an structured form. |OBRemittanceInformationStructured | | |
 | ReferredDocumentInformation |0..* |OBInternationalScheduled3/RemittanceInformation/Structured/ReferredDocumentInformation | |OBReferredDocumentInformation | | |
@@ -251,6 +261,30 @@ The ExchangeRateInformation object must conform to these behaviours:
 | AdditionalRemittanceInformation |0..3|OBInternationalScheduled3/CreditorReferenceInformation/Structured/AdditionalRemittanceInformation | |OBAdditionalRemittanceInformation| | |
 | Unstructured |0..* |OBInternationalScheduled3/RemittanceInformation/Unstructured |Information supplied to enable the matching/reconciliation of an entry with the items that the payment is intended to settle, such as commercial invoices in an accounts' receivable system, in an unstructured form. |Max140Text | | |
 | SupplementaryData |0..1 |OBInternationalScheduled3/SupplementaryData |Additional information that can not be captured in the structured fields and/or any other specific block. |OBSupplementaryData1 | | |
+| RegulatoryReporting |0..10 |OBInternationalScheduled3/RegulatoryReporting |Information needed due to regulatory and statutory requirements. |RegulatoryReporting3 | | |
+| DebitCreditReportingIndicator |0..1 |OBInternationalScheduled3/RegulatoryReporting/DebitCreditReportingIndicator | Identifies whether the regulatory reporting information applies to the debit side, to the credit side or to both debit and credit sides of the transaction. |RegulatoryReportingType1Code |CRED DEBT BOTH | |
+| Authority |0..1 |OBInternationalScheduled3/RegulatoryReporting/Authority |Entity requiring the regulatory reporting information. |RegulatoryAuthority2 | | |
+| Name |0..1 |OBInternationalScheduled3/RegulatoryReporting/Authority/Name |Name of the entity requiring the regulatory reporting information. |Max140Text | | |
+| Country |0..1 |OBInternationalScheduled3/RegulatoryReporting/Authority/Country |Country of the entity that requires the regulatory reporting information. |CountryCode | | |
+| Details |0..* |OBInternationalScheduled3/RegulatoryReporting/Details |Set of elements used to provide details on the regulatory reporting information. |StructuredRegulatoryReporting3 | | |
+| Type |0..1 |OBInternationalScheduled3/RegulatoryReporting/Details/Type |Specifies the type of the information supplied in the regulatory reporting details. |Max35Text | | |
+| Date |0..1 |OBInternationalScheduled3/RegulatoryReporting/Details/Date |Date related to the specified type of regulatory reporting details. |ISODateTime | | |
+| Country |0..1 |OBInternationalScheduled3/RegulatoryReporting/Details/Country |Country related to the specified type of regulatory reporting details. |CountryCode | | ^[A-Z]{2,2}$ |
+| Code |0..1 |OBInternationalScheduled3/RegulatoryReporting/Details/Code |Specifies the nature, purpose, and reason for the transaction to be reported for regulatory and statutory requirements in a coded form. |Max10Text | | |
+| Amount |0..1 |OBInternationalScheduled3/RegulatoryReporting/Details/Amount |Amount of money to be reported for regulatory and statutory requirements. |OBActiveOrHistoricCurrencyAndAmount | | |
+| Amount |1..1 |OBInternationalScheduled3/RegulatoryReporting/Details/Amount/Amount |A number of monetary units specified in an active currency where the unit of currency is explicit and compliant with ISO 4217. | | | |
+| Currency |1..1 |OBInternationalScheduled3/RegulatoryReporting/Details/Amount/Currency |A code allocated to a currency by a Maintenance Agency under an international identification scheme, as described in the latest edition of the international standard ISO 4217 "Codes for the representation of currencies and funds". |ActiveOrHistoricCurrencyCode | | ^[A-Z]{3,3}$ |
+| Information |0..* |OBInternationalScheduled3/RegulatoryReporting/Details/Information |Additional details that cater for specific domestic regulatory requirements. |Max35Text | | |
+| UltimateCreditor |0..1 |OBInternationalScheduled3/UltimateCreditor|Set of elements used to identify a person or an organisation. | OBPartyIdentification43 | | |
+| SchemeName |0..1 |OBInternationalScheduled3/UltimateCreditor/SchemeName |Name of the identification scheme, in a coded form as published in an external list. |OBExternalAccountIdentification4Code | | |
+| Identification |0..1 |OBInternationalScheduled3/UltimateCreditor/Identification |Identification assigned by an institution to identify an account. This identification is known by the account owner. |Max256Text | | |
+| Name |0..1 |OBInternationalScheduled3/UltimateCreditor/Name |The account name is the name or names of the account owner(s) represented at an account level, as displayed by the ASPSP's online channels. Note, the account name is not the product name or the nickname of the account. |Max350Text | | |
+| LEI |0..1 | OBInternationalScheduled3/UltimateCreditor/LEI |Legal Entity Identification by which a party is known and which is usually used to identify that party. |Max20Text | | |
+| UltimateDebtor |0..1 |OBInternationalScheduled3/UltimateDebtor|Set of elements used to identify a person or an organisation. | | | |
+| SchemeName |0..1 |OBInternationalScheduled3/UltimateDebtor/SchemeName |Name of the identification scheme, in a coded form as published in an external list. |OBExternalAccountIdentification4Code | | |
+| Identification |0..1 |OBInternationalScheduled3/UltimateDebtor/Identification |Identification assigned by an institution to identify an account. This identification is known by the account owner. |Max256Text | | |
+| Name |0..1 |OBInternationalScheduled3/UltimateDebtor/Name |The account name is the name or names of the account owner(s) represented at an account level, as displayed by the ASPSP's online channels. Note, the account name is not the product name or the nickname of the account. |Max350Text | | |
+| LEI |0..1 | OBInternationalScheduled3/UltimateDebtor/LEI |Legal Entity Identification by which a party is known and which is usually used to identify that party. |Max20Text | | |
 
 #### OBExchangeRate2
 
@@ -378,6 +412,7 @@ ExternalStatusReason1Code |AUTH AWAU RJCT COND |
 | Identification |0..1 |OBWriteInternationalScheduledConsentResponse6/Data/Debtor/Identification |Identification assigned by an institution to identify an account. This identification is known by the account owner. |Max256Text | | |
 | Name |0..1 |OBWriteInternationalScheduledConsentResponse6/Data/Debtor/Name |The account name is the name or names of the account owner(s) represented at an account level, as displayed by the ASPSP's online channels. Note, the account name is not the product name or the nickname of the account. |Max350Text | | |
 | SecondaryIdentification |0..1 |OBWriteInternationalScheduledConsentResponse6/Data/Debtor/SecondaryIdentification |This is secondary identification of the account, as assigned by the account servicing institution. This can be used by building societies to additionally identify accounts with a roll number (in addition to a sort code and account number combination). |Max34Text | | |
+| LEI |0..1 | OBWriteInternationalScheduledConsentResponse6/Data/Debtor/LEI |Legal Entity Identification by which a party is known and which is usually used to identify that party. |Max20Text | | |
 | Risk |1..1 |OBWriteInternationalScheduledConsentResponse6/Risk |The Risk section is sent by the initiating party to the ASPSP. It is used to specify additional details for risk scoring for Payments. |OBRisk1 | | |
 
 ### International Scheduled Payment Consent Confirmation of Funds - Response
@@ -440,7 +475,7 @@ Accept: application/json
       },
       "CurrencyOfTransfer":"USD",
       "CreditorAccount": {
-        "SchemeName": "UK.OBIE.SortCodeAccountNumber",
+        "SchemeName": "UK.OB.SortCodeAccountNumber",
         "Identification": "08080021325698",
         "Name": "ACME Inc",
         "SecondaryIdentification": "0002"
@@ -492,7 +527,7 @@ Content-Type: application/json
 		      },
 			"CurrencyOfTransfer":"USD",
 			"CreditorAccount": {
-				"SchemeName": "UK.OBIE.SortCodeAccountNumber",
+				"SchemeName": "UK.OB.SortCodeAccountNumber",
 				"Identification": "08080021325698",
 				"Name": "ACME Inc",
 				"SecondaryIdentification": "0002"

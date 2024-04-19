@@ -85,13 +85,14 @@ The available Status codes for the domestic-standing-order-consent resource are:
 
 #### Payment Order Consent
 
-The state model for the domestic-standing-order-consent resource follows the generic consent state model. However, does not use the "Revoked" status, as the consent for a domestic-standing-order is not a long-lived consent.
+The state model for the domestic-standing-order-consent resource follows the generic consent state model.
 
-![Payment Order Consent](./images/image2018-5-18_10-24-21.png)
+![State model](./images/PO_Consent.png)
+
 
 The definitions for the Status:
 
-|  |Status |Status Description |
+|  |StatusCode |Status Description |
 | --- |------ |------------------ |
 | 1 |AWAU |The consent resource is awaiting PSU authorisation. |
 | 2 |RJCT |The consent resource has been rejected. |
@@ -122,8 +123,8 @@ For the OBDomesticStandingOrder3 Initiation object:
 * DebtorAccount is **optional** as the PISP may not know the account identification details for the PSU.
 * If the DebtorAccount is specified by the PISP and is invalid for the PSU, then the domestic-standing-order-consent will be set to Rejected after PSU authentication.
 * Account Identification field usage:
-  * Where "UK.OBIE.SortCodeAccountNumber" is specified as the SchemeName in the Account identification section (either DebtorAccount or CreditorAccount), the Identification field **must** be populated with the 6 digit Sort Code and 8 digit Account Number (a 14 digit field).
-  * Where the "UK.OBIE.IBAN" is specified as the SchemeName in the Account identification section (either DebtorAccount or CreditorAccount), the Identification field **must** be populated with the full IBAN.
+  * Where "UK.OB.SortCodeAccountNumber" is specified as the SchemeName in the Account identification section (either DebtorAccount or CreditorAccount), the Identification field **must** be populated with the 6 digit Sort Code and 8 digit Account Number (a 14 digit field).
+  * Where the "UK.OB.IBAN" is specified as the SchemeName in the Account identification section (either DebtorAccount or CreditorAccount), the Identification field **must** be populated with the full IBAN.
 * The Permission field is restricted to "Create", however, may be extended to "Update" and "Delete" in a future iteration of the specification.
 * Either the NumberOfPayments or FinalPaymentDateTime must be specified (not both) if the domestic standing order is not open ended.
 * The structure allows a PISP to specify a domestic standing order with a different payment amount and date combinations: for the first payment, the recurring payment, and the final payment. The recurring payment (and date) must only be populated if different from the first payment (and date).
@@ -148,7 +149,18 @@ For the OBDomesticStandingOrder3 Initiation object:
 | Name |Occurrence |XPath |EnhancedDefinition |Class |Codes |Pattern |
 | ---- |---------- |----- |------------------ |----- |----- |------- |
 | OBDomesticStandingOrder3 | |OBDomesticStandingOrder3 |The Initiation payload is sent by the initiating party to the ASPSP. It is used to request movement of funds from the debtor account to a creditor for a domestic standing order. |OBDomesticStandingOrder3 | | |
-| Frequency |1..1 |OBDomesticStandingOrder3/Frequency |Individual Definitions: EvryDay - Every day EvryWorkgDay - Every working day IntrvlDay - An interval specified in number of calendar days (02 to 31) IntrvlWkDay - An interval specified in weeks (01 to 09), and the day within the week (01 to 07) WkInMnthDay - A monthly interval, specifying the week of the month (01 to 05) and day within the week (01 to 07) IntrvlMnthDay - An interval specified in months (between 01 to 06, 12, 24), specifying the day within the month (-05 to -01, 01 to 31) QtrDay - Quarterly (either ENGLISH, SCOTTISH, or RECEIVED). ENGLISH = Paid on the 25th March, 24th June, 29th September and 25th December. SCOTTISH = Paid on the 2nd February, 15th May, 1st August and 11th November. RECEIVED = Paid on the 20th March, 19th June, 24th September and 20th December. Individual Patterns: EvryDay (ScheduleCode) EvryWorkgDay (ScheduleCode) IntrvlDay:NoOfDay (ScheduleCode + NoOfDay) IntrvlWkDay:IntervalInWeeks:DayInWeek (ScheduleCode + IntervalInWeeks + DayInWeek) WkInMnthDay:WeekInMonth:DayInWeek (ScheduleCode + WeekInMonth + DayInWeek) IntrvlMnthDay:IntervalInMonths:DayInMonth (ScheduleCode + IntervalInMonths + DayInMonth) QtrDay: + either (ENGLISH, SCOTTISH or RECEIVED) ScheduleCode + QuarterDay The regular expression for this element combines five smaller versions for each permitted pattern. To aid legibility - the components are presented individually here: EvryDay EvryWorkgDay IntrvlDay:((0[2-9])|([1-2][0-9])|3[0-1]) IntrvlWkDay:0[1-9]:0[1-7] WkInMnthDay:0[1-5]:0[1-7] IntrvlMnthDay:(0[1-6]|12|24):(-0[1-5]|0[1-9]|[12][0-9]|3[01]) QtrDay:(ENGLISH|SCOTTISH|RECEIVED) Full Regular Expression: ^(EvryDay)$|^(EvryWorkgDay)$|^(IntrvlDay:((0[2-9])|([1-2][0-9])|3[0-1]))$|^(IntrvlWkDay:0[1-9]:0[1-7])$|^(WkInMnthDay:0[1-5]:0[1-7])$|^(IntrvlMnthDay:(0[1-6]|12|24):(-0[1-5]|0[1-9]|[12][0-9]|3[01]))$|^(QtrDay:(ENGLISH|SCOTTISH|RECEIVED))$ |Max35Text | |^(EvryDay)$|^(EvryWorkgDay)$|^(IntrvlWkDay:0[1-9]:0[1-7])$|^(WkInMnthDay:0[1-5]:0[1-7])$|^(IntrvlMnthDay:(0[1-6]|12|24):(-0[1-5]|0[1-9]|[12][0-9]|3[01]))$|^(QtrDay:(ENGLISH|SCOTTISH|RECEIVED))$ |
+| MandateRelatedInformation | 0..1 |OBDomesticStandingOrder3/MandateRelatedInformation ||OBMandateRelatedInformation | | |
+| MandateIdentification | 0..1 |OBDomesticStandingOrder3/MandateRelatedInformation/MandateIdentification ||TODO | | |
+| Classification | 0..1 |OBDomesticStandingOrder3/MandateRelatedInformation/Classification|FIXE<br>USGB<br>VARI|OBClassification1Code | | |
+| CategoryPurposeCode | 0..1 |OBDomesticStandingOrder3/MandateRelatedInformation/CategoryPurposeCode ||OBCategoryPurpose1Code | | |
+| FirstPaymentDate | 0..1 |OBDomesticStandingOrder3/MandateRelatedInformation/FirstPaymentDate |The date on which the first payment for a Standing Order schedule will be made. |ISODate | | |
+| FinalPaymentDate | 0..1 |OBDomesticStandingOrder3/MandateRelatedInformation/FinalPaymentDate |The date on which the final payment for a Standing Order schedule will be made. |ISODate | | |
+| Frequency | 0..1 |OBDomesticStandingOrder3/MandateRelatedInformation/Frequency |A code indicating the frequency of payment for the Standing Order. Values:<br>ADHO<br>YEAR<br>DALI<br>INDA<br>MNTH<br>QURT<br>MIAN<br>WEEK |OBFrequencyPeriodType | | |
+| PeriodType | 1..1 |OBDomesticStandingOrder3/MandateRelatedInformation/PeriodType |A code indicating the period type for the Standing Order. Values:<br>ADHO<br>YEAR<br>DALI<br>INDA<br>MNTH<br>QURT<br>MIAN<br>WEEK |OBFrequencyPeriodType | | |
+| CountPerPeriod | 1..1 |OBDomesticStandingOrder3/MandateRelatedInformation/CountPerPeriod | |int32 | |
+| PointInTimeType | 1..1 |OBDomesticStandingOrder3/MandateRelatedInformation/PointInTimeType |A code indicating the point in time for payment of the Standing Order. Values:<br>ADHO<br>YEAR<br>DALI<br>INDA<br>MNTH<br>QURT<br>MIAN<br>WEEK |OBFrequencyPeriodType | | |
+| PointInTime | 1..1 |OBDomesticStandingOrder3/MandateRelatedInformation/PointInTime |ISOTime | | |
+| Reason| 0..1 |OBDomesticStandingOrder3/MandateRelatedInformation/Reason | |Max256Text | |
 | RemittanceInformation |0..1 |OBDomesticStandingOrder3/RemittanceInformation |Information supplied to enable the matching of an entry with the items that the transfer is intended to settle, such as commercial invoices in an accounts' receivable system. |OBRemittanceInformation1 | | |
 | Structured |0..* |OBDomesticStandingOrder3/RemittanceInformation/Structured |Information supplied to enable the matching/reconciliation of an entry with the items that the payment is intended to settle, such as commercial invoices in an accounts' receivable system, in an structured form. |OBRemittanceInformationStructured | | |
 | ReferredDocumentInformation |0..* |OBDomesticStandingOrder3/RemittanceInformation/Structured/ReferredDocumentInformation | |OBReferredDocumentInformation | | |
@@ -160,10 +172,7 @@ For the OBDomesticStandingOrder3 Initiation object:
 | AdditionalRemittanceInformation |0..3|OBDomesticStandingOrder3/CreditorReferenceInformation/Structured/AdditionalRemittanceInformation | |OBAdditionalRemittanceInformation| | |
 | Unstructured |0..* |OBDomesticStandingOrder3/RemittanceInformation/Unstructured |Information supplied to enable the matching/reconciliation of an entry with the items that the payment is intended to settle, such as commercial invoices in an accounts' receivable system, in an unstructured form. |Max140Text | | |
 | NumberOfPayments |0..1 |OBDomesticStandingOrder3/NumberOfPayments |Number of the payments that will be made in completing this frequency sequence including any executed since the sequence start date. |Max35Text | | |
-| FirstPaymentDateTime |1..1 |OBDomesticStandingOrder3/FirstPaymentDateTime |The date on which the first payment for a Standing Order schedule will be made. |ISODateTime | | |
 | RecurringPaymentDateTime |0..1 |OBDomesticStandingOrder3/RecurringPaymentDateTime |The date on which the first recurring payment for a Standing Order schedule will be made. Usage: This must be populated only if the first recurring date is different to the first payment date. |ISODateTime | | |
-| FinalPaymentDateTime |0..1 |OBDomesticStandingOrder3/FinalPaymentDateTime |The date on which the final payment for a Standing Order schedule will be made. |ISODateTime | | |
-| FirstPaymentAmount |1..1 |OBDomesticStandingOrder3/FirstPaymentAmount |The amount of the first Standing Order |OBActiveOrHistoricCurrencyAndAmount | | |
 | Amount |1..1 |OBDomesticStandingOrder3/FirstPaymentAmount/Amount |A number of monetary units specified in an active currency where the unit of currency is explicit and compliant with ISO 4217. |OBActiveCurrencyAndAmount_SimpleType | |`^\d{1,13}$|^\d{1,13}\.\d{1,5}$` |
 | Currency |1..1 |OBDomesticStandingOrder3/FirstPaymentAmount/Currency |A code allocated to a currency by a Maintenance Agency under an international identification scheme, as described in the latest edition of the international standard ISO 4217 "Codes for the representation of currencies and funds". |ActiveOrHistoricCurrencyCode | |^[A-Z]{3,3}$ |
 | RecurringPaymentAmount |0..1 |OBDomesticStandingOrder3/RecurringPaymentAmount |The amount of the recurring Standing Order |OBActiveOrHistoricCurrencyAndAmount | | |
@@ -177,12 +186,32 @@ For the OBDomesticStandingOrder3 Initiation object:
 | Identification |1..1 |OBDomesticStandingOrder3/DebtorAccount/Identification |Identification assigned by an institution to identify an account. This identification is known by the account owner. |Max256Text | | |
 | Name |0..1 |OBDomesticStandingOrder3/DebtorAccount/Name |The account name is the name or names of the account owner(s) represented at an account level, as displayed by the ASPSP's online channels. Note, the account name is not the product name or the nickname of the account. |Max350Text | | |
 | SecondaryIdentification |0..1 |OBDomesticStandingOrder3/DebtorAccount/SecondaryIdentification |This is secondary identification of the account, as assigned by the account servicing institution. This can be used by building societies to additionally identify accounts with a roll number (in addition to a sort code and account number combination). |Max34Text | | |
+| Proxy |0..1 |OBDomesticStandingOrder3/DebtorAccount/Proxy |The external proxy account type |OBProxyAccount | | |
+| Identification |1..1 |OBDomesticStandingOrder3/DebtorAccount/Proxy/Identification| Identification assigned by an institution to identify an account. This identification is known by the account owner. |Max256Text | | |
+| Type |0..1 |OBDomesticStandingOrder3/DebtorAccount/Proxy/Type| Specifies the external proxy account type |MaxText70 | | |
+| Code |1..1 |OBDomesticStandingOrder3/DebtorAccount/Proxy/Code| Specifies the external proxy account type code, as published in the proxy account type external code set.<br> For more information see `ExternalProxyAccountType1Code` [here](https:/github.com/OpenBankingUK/External_Interal_CodeSets) |OBExternalProxyAccountType1Code | | |
+| Proprietary |1..1 |OBDomesticStandingOrder3/DebtorAccount/Proxy/Proprietary| The owner of the proxy account |MaxText70 | | |
 | CreditorAccount |1..1 |OBDomesticStandingOrder3/CreditorAccount |Identification assigned by an institution to identify an account. This identification is known by the account owner. |OBCashAccountCreditor3 | | |
 | SchemeName |1..1 |OBDomesticStandingOrder3/CreditorAccount/SchemeName |Name of the identification scheme, in a coded form as published in an external list. |OBExternalAccountIdentification4Code | | |
 | Identification |1..1 |OBDomesticStandingOrder3/CreditorAccount/Identification |Identification assigned by an institution to identify an account. This identification is known by the account owner. |Max256Text | | |
 | Name |1..1 |OBDomesticStandingOrder3/CreditorAccount/Name |The account name is the name or names of the account owner(s) represented at an account level. Note, the account name is not the product name or the nickname of the account. OB: ASPSPs may carry out name validation for Confirmation of Payee, but it is not mandatory. |Max350Text | | |
+| Proxy |0..1 |OBDomesticStandingOrder3/CreditorAccount/Proxy |The external proxy account type |OBProxyAccount | | |
+| Identification |1..1 |OBDomesticStandingOrder3/CreditorAccount/Proxy/Identification| Identification assigned by an institution to identify an account. This identification is known by the account owner. |Max256Text | | |
+| Type |0..1 |OBDomesticStandingOrder3/CreditorAccount/Proxy/Type| Specifies the external proxy account type |MaxText70 | | |
+| Code |1..1 |OBDomesticStandingOrder3/CreditorAccount/Proxy/Code| Specifies the external proxy account type code, as published in the proxy account type external code set.<br> For more information see `ExternalProxyAccountType1Code` [here](https://github.com/OpenBankingUK/External_Interal_CodeSets) |OBExternalProxyAccountType1Code | | |
+| Proprietary |1..1 |OBDomesticStandingOrder3/CreditorAccount/Proxy/Proprietary| The owner of the proxy account |MaxText70 | | |
 | SecondaryIdentification |0..1 |OBDomesticStandingOrder3/CreditorAccount/SecondaryIdentification |This is secondary identification of the account, as assigned by the account servicing institution. This can be used by building societies to additionally identify accounts with a roll number (in addition to a sort code and account number combination). |Max34Text | | |
 | SupplementaryData |0..1 |OBDomesticStandingOrder3/SupplementaryData |Additional information that can not be captured in the structured fields and/or any other specific block. |OBSupplementaryData1 | | |
+| UltimateCreditor |0..1 |OBDomesticStandingOrder3/UltimateCreditor|Set of elements used to identify a person or an organisation. | OBPartyIdentification43 | | |
+| SchemeName |0..1 |OBDomesticStandingOrder3/UltimateCreditor/SchemeName |Name of the identification scheme, in a coded form as published in an external list. |OBExternalAccountIdentification4Code | | |
+| Identification |0..1 |OBDomesticStandingOrder3/UltimateCreditor/Identification |Identification assigned by an institution to identify an account. This identification is known by the account owner. |Max256Text | | |
+| Name |0..1 |OBDomesticStandingOrder3/UltimateCreditor/Name |The account name is the name or names of the account owner(s) represented at an account level, as displayed by the ASPSP's online channels. Note, the account name is not the product name or the nickname of the account. |Max350Text | | |
+| LEI |0..1 | OBDomesticStandingOrder3/UltimateCreditor/LEI |Legal Entity Identification by which a party is known and which is usually used to identify that party. |Max20Text | | |
+| UltimateDebtor |0..1 |OBDomesticStandingOrder3/UltimateDebtor|Set of elements used to identify a person or an organisation. | | | |
+| SchemeName |0..1 |OBDomesticStandingOrder3/UltimateDebtor/SchemeName |Name of the identification scheme, in a coded form as published in an external list. |OBExternalAccountIdentification4Code | | |
+| Identification |0..1 |OBDomesticStandingOrder3/UltimateDebtor/Identification |Identification assigned by an institution to identify an account. This identification is known by the account owner. |Max256Text | | |
+| Name |0..1 |OBDomesticStandingOrder3/UltimateDebtor/Name |The account name is the name or names of the account owner(s) represented at an account level, as displayed by the ASPSP's online channels. Note, the account name is not the product name or the nickname of the account. |Max350Text | | |
+| LEI |0..1 | OBDomesticStandingOrder3/UltimateDebtor/LEI |Legal Entity Identification by which a party is known and which is usually used to identify that party. |Max20Text | | |
 
 ### Domestic Standing Order Consent - Request
 
@@ -267,6 +296,7 @@ ExternalStatusReason1Code |AUTH AWAU RJCT COND |
 | Identification |0..1 |OBWriteDomesticStandingOrderConsentResponse6/Data/Debtor/Identification |Identification assigned by an institution to identify an account. This identification is known by the account owner. |Max256Text | | |
 | Name |0..1 |OBWriteDomesticStandingOrderConsentResponse6/Data/Debtor/Name |The account name is the name or names of the account owner(s) represented at an account level, as displayed by the ASPSP's online channels. Note, the account name is not the product name or the nickname of the account. |Max350Text | | |
 | SecondaryIdentification |0..1 |OBWriteDomesticStandingOrderConsentResponse6/Data/Debtor/SecondaryIdentification |This is secondary identification of the account, as assigned by the account servicing institution. This can be used by building societies to additionally identify accounts with a roll number (in addition to a sort code and account number combination). |Max34Text | | |
+| LEI |0..1 | OBWriteDomesticStandingOrderConsentResponse6/Data/Debtor/LEI |Legal Entity Identification by which a party is known and which is usually used to identify that party. |Max20Text | | |
 | Risk |1..1 |OBWriteDomesticStandingOrderConsentResponse6/Risk |The Risk section is sent by the initiating party to the ASPSP. It is used to specify additional details for risk scoring for Payments. |OBRisk1 | | |
 
 ## Usage Examples
@@ -310,12 +340,12 @@ Accept: application/json
         "Currency": "GBP"
 	  },
       "DebtorAccount": {
-        "SchemeName": "UK.OBIE.SortCodeAccountNumber",
+        "SchemeName": "UK.OB.SortCodeAccountNumber",
         "Identification": "11280001234567",
         "Name": "Andrea Smith"
       },
       "CreditorAccount": {
-        "SchemeName": "UK.OBIE.SortCodeAccountNumber",
+        "SchemeName": "UK.OB.SortCodeAccountNumber",
         "Identification": "08080021325698",
         "Name": "Bob Clements"
       }
@@ -363,12 +393,12 @@ Content-Type: application/json
         "Currency": "GBP"
 	  },
       "DebtorAccount": {
-        "SchemeName": "UK.OBIE.SortCodeAccountNumber",
+        "SchemeName": "UK.OB.SortCodeAccountNumber",
         "Identification": "11280001234567",
         "Name": "Andrea Smith"
       },
       "CreditorAccount": {
-        "SchemeName": "UK.OBIE.SortCodeAccountNumber",
+        "SchemeName": "UK.OB.SortCodeAccountNumber",
         "Identification": "08080021325698",
         "Name": "Bob Clements"
       }
@@ -415,9 +445,16 @@ Content-Type: application/json
 	"StatusUpdateDateTime": "1976-06-06T06:06:06+00:00",
 	"Permission": "Create",
     "Initiation": {
-	  "Frequency": "EvryDay",
+      "MandateRelatedInformation": {
+        "Frequency": "DAIL",
+        "PeriodType": "DAIL",
+        "FirstPaymentDate": "1976-06-06",
+        "LastPaymentDate": "1981-03-20",
+        "CountPerPeriod": 1,
+        "PointInTimeType": "DAIL",
+        "PointInTime": "T06:06:06+00:00"
+      },
 	  "Reference": "Pocket money for Damien",
-	  "FirstPaymentDateTime": "1976-06-06T06:06:06+00:00",
 	  "FirstPaymentAmount": {
         "Amount": "6.66",
         "Currency": "GBP"
@@ -426,18 +463,17 @@ Content-Type: application/json
         "Amount": "7.00",
         "Currency": "GBP"
 	  },
-	  "FinalPaymentDateTime": "1981-03-20T06:06:06+00:00",
 	  "FinalPaymentAmount": {
         "Amount": "7.00",
         "Currency": "GBP"
 	  },
       "DebtorAccount": {
-        "SchemeName": "UK.OBIE.SortCodeAccountNumber",
+        "SchemeName": "UK.OB.SortCodeAccountNumber",
         "Identification": "11280001234567",
         "Name": "Andrea Smith"
       },
       "CreditorAccount": {
-        "SchemeName": "UK.OBIE.SortCodeAccountNumber",
+        "SchemeName": "UK.OB.SortCodeAccountNumber",
         "Identification": "08080021325698",
         "Name": "Bob Clements"
       }

@@ -61,9 +61,9 @@ The domestic-scheduled-payment resource that is created successfully must have o
 
 | Status |
 | ------ |
-| InitiationPending |
-| InitiationFailed |
-| InitiationCompleted |
+| RCVD |
+| RJCT |
+| ACSP |
 
 ### GET /domestic-scheduled-payments/{DomesticScheduledPaymentId}
 
@@ -75,10 +75,10 @@ The domestic-scheduled-payment resource must have one of the following Status co
 
 | Status |
 | ------ |
-| InitiationPending |
-| InitiationFailed |
-| InitiationCompleted |
-| Cancelled |
+| RCVD |
+| RJCT |
+| ACSP |
+| CANC |
 
 ### GET /domestic-scheduled-payments/{DomesticScheduledPaymentId}/payment-details
 
@@ -88,59 +88,48 @@ A PISP can retrieve the Details of the underlying payment transaction via this e
 
 The domestic-scheduled-payments - payment-details must have one of the following PaymentStatusCode code-set enumerations:
 
-| Status |
+| StatusCode |
 | ------ |
-| Accepted |
-| AcceptedCancellationRequest |
-| AcceptedTechnicalValidation |
-| AcceptedCustomerProfile |
-| AcceptedFundsChecked |
-| AcceptedWithChange |
-| Pending |
-| Rejected |
-| AcceptedSettlementInProcess |
-| AcceptedSettlementCompleted |
-| AcceptedWithoutPosting |
-| AcceptedCreditSettlementCompleted |
-| Cancelled |
-| NoCancellationProcess |
-| PartiallyAcceptedCancellationRequest |
-| PartiallyAcceptedTechnicalCorrect |
-| PaymentCancelled |
-| PendingCancellationRequest |
-| Received |
-| RejectedCancellationRequest |
+| PDNG |
+| ACTC |
+| PATC |
+| ACCP |
+| ACFC |
+| ACSP |
+| ACWC |
+| ACSC |
+| ACWP |
+| ACCC |
+| BLCK |
+| RJCT |
+
 
 ### State Model
 
 #### Payment Order
 
-The state model for the domestic-scheduled-payment resource describes the initiation status only. I.e., not the subsequent execution of the domestic-scheduled-payment.
+The state model for the domestic-scheduled-payment resource describes the initiation and subsequent execution of the domestic-scheduled-payment.
 
-![Payment Order](./images/DomesticScheduledStatusModel.png)
+![Payment Order Status](./images/PIS_PO_Statuses.png)
 
-The definitions for the Status:
-
-|  |Status |Payment Status Description |
-| --- |------ |-------------------------- |
-| 1 |InitiationPending |The initiation of the payment order is pending. |
-| 2 |InitiationFailed |The initiation of the payment order has failed. |
-| 3 |InitiationCompleted |The initiation of the payment order is complete. |
-| 4 |Cancelled |Payment initiation has been successfully cancelled after having received a request for cancellation. |
 
 ##### Multiple Authorisation
+If the payment-order requires multiple authorisations the status of the multiple authorisations will be updated in the MultiAuthorisation object.
 
-If the payment-order requires multiple authorisations, the Status of the multiple authorisations will be updated in the MultiAuthorisation object.
+Once the payment is RCVD, the StatusCode should be set to PATC and the MultiAuthorisation object status updated with the AWAU status.  Once all authorisations have been successfully completed the MultiAuthorisation status should be set to AUTH and StatusCode updated to ACSP.
 
-![Multi Authorisation](./images/image2018-6-29_16-36-34.png)
+Any rejections in the multiple authorisation process should result in the MultiAuthorisation status and StatusCode being set to RJCT. 
 
-The definitions for the Status:
 
-|  |Status |Status Description |
-| --- |------ |------------------ |
-| 1 |AwaitingFurtherAuthorisation |The payment-order resource is awaiting further authorisation. |
-| 2 |Rejected |The payment-order resource has been rejected by an authoriser. |
-| 3 |Authorised |The payment-order resource has been successfully authorised by all required authorisers. |
+![Multi Auth](./images/PO_MultiAuthFlow.png)
+
+|  | Status |Status Description |
+| ---| ------ |------------------ |
+| 1 |AWAU |The consent resource is awaiting further authorisation. |
+| 2 |RJCT |The consent resource has been rejected. |
+| 3 |AUTH |The consent resource has been successfully authorised. |
+
+
 
 ## Data Model
 
@@ -230,6 +219,21 @@ The domestic-scheduled-payment **response** object contains the:
 | Identification |0..1 |OBWriteDomesticScheduledResponse5/Data/Debtor/Identification |Identification assigned by an institution to identify an account. This identification is known by the account owner. |Max256Text | | |
 | Name |0..1 |OBWriteDomesticScheduledResponse5/Data/Debtor/Name |The account name is the name or names of the account owner(s) represented at an account level, as displayed by the ASPSP's online channels. Note, the account name is not the product name or the nickname of the account. |Max350Text | | |
 | SecondaryIdentification |0..1 |OBWriteDomesticScheduledResponse5/Data/Debtor/SecondaryIdentification |This is secondary identification of the account, as assigned by the account servicing institution. This can be used by building societies to additionally identify accounts with a roll number (in addition to a sort code and account number combination). |Max34Text | | |
+| RegulatoryReporting |0..10 |OBWriteDomesticScheduledResponse5/RegulatoryReporting |Information needed due to regulatory and statutory requirements. |RegulatoryReporting3 | | |
+| DebitCreditReportingIndicator |0..1 |OBWriteDomesticScheduledResponse5/RegulatoryReporting/DebitCreditReportingIndicator | Identifies whether the regulatory reporting information applies to the debit side, to the credit side or to both debit and credit sides of the transaction. |RegulatoryReportingType1Code |CRED DEBT BOTH | |
+| Authority |0..1 |OBWriteDomesticScheduledResponse5/RegulatoryReporting/Authority |Entity requiring the regulatory reporting information. |RegulatoryAuthority2 | | |
+| Name |0..1 |OBWriteDomesticScheduledResponse5/RegulatoryReporting/Authority/Name |Name of the entity requiring the regulatory reporting information. |Max140Text | | |
+| Country |0..1 |OBWriteDomesticScheduledResponse5/RegulatoryReporting/Authority/Country |Country of the entity that requires the regulatory reporting information. |CountryCode | | |
+| Details |0..* |OBWriteDomesticScheduledResponse5/RegulatoryReporting/Details |Set of elements used to provide details on the regulatory reporting information. |StructuredRegulatoryReporting3 | | |
+| Type |0..1 |OBWriteDomesticScheduledResponse5/RegulatoryReporting/Details/Type |Specifies the type of the information supplied in the regulatory reporting details. |Max35Text | | |
+| Date |0..1 |OBWriteDomesticScheduledResponse5/RegulatoryReporting/Details/Date |Date related to the specified type of regulatory reporting details. |ISODateTime | | |
+| Country |0..1 |OBWriteDomesticScheduledResponse5/RegulatoryReporting/Details/Country |Country related to the specified type of regulatory reporting details. |CountryCode | | ^[A-Z]{2,2}$ |
+| Code |0..1 |OBWriteDomesticScheduledResponse5/RegulatoryReporting/Details/Code |Specifies the nature, purpose, and reason for the transaction to be reported for regulatory and statutory requirements in a coded form. |Max10Text | | |
+| Amount |0..1 |OBWriteDomesticScheduledResponse5/RegulatoryReporting/Details/Amount |Amount of money to be reported for regulatory and statutory requirements. |OBActiveOrHistoricCurrencyAndAmount | | |
+| Amount |1..1 |OBWriteDomesticScheduledResponse5/RegulatoryReporting/Details/Amount/Amount |A number of monetary units specified in an active currency where the unit of currency is explicit and compliant with ISO 4217. | | | |
+| Currency |1..1 |OBWriteDomesticScheduledResponse5/RegulatoryReporting/Details/Amount/Currency |A code allocated to a currency by a Maintenance Agency under an international identification scheme, as described in the latest edition of the international standard ISO 4217 "Codes for the representation of currencies and funds". |ActiveOrHistoricCurrencyCode | | ^[A-Z]{3,3}$ |
+| Information |0..* |OBWriteDomesticScheduledResponse5/RegulatoryReporting/Details/Information |Additional details that cater for specific domestic regulatory requirements. |Max35Text | | |
+
 
 ### Domestic Schedule Payment Order - Payment Details - Response
 
@@ -279,12 +283,12 @@ Accept: application/json
         "Currency": "GBP"
       },
       "DebtorAccount": {
-        "SchemeName": "UK.OBIE.SortCodeAccountNumber",
+        "SchemeName": "UK.OB.SortCodeAccountNumber",
         "Identification": "11280001234567",
         "Name": "Andrea Frost"
       },
       "CreditorAccount": {
-        "SchemeName": "UK.OBIE.SortCodeAccountNumber",
+        "SchemeName": "UK.OB.SortCodeAccountNumber",
         "Identification": "08080021325698",
         "Name": "Tom Kirkman"
       },
@@ -314,12 +318,12 @@ Content-Type: application/json
   "Data": {
     "DomesticScheduledPaymentId": "7290-003",
     "ConsentId": "7290",
-    "Status": "InitiationPending",
+    "Status": "RCVD",
     "CreationDateTime": "2018-05-05T15:15:13+00:00",
     "StatusUpdateDateTime": "2018-05-05T15:15:13+00:00",
     "Refund": {
       "Account": {
-        "SchemeName": "UK.OBIE.SortCodeAccountNumber",
+        "SchemeName": "UK.OB.SortCodeAccountNumber",
         "Identification": "08080021325677",
         "Name": "NTPC Inc"
       }
@@ -332,12 +336,12 @@ Content-Type: application/json
         "Currency": "GBP"
       },
       "DebtorAccount": {
-        "SchemeName": "UK.OBIE.SortCodeAccountNumber",
+        "SchemeName": "UK.OB.SortCodeAccountNumber",
         "Identification": "11280001234567",
         "Name": "Andrea Frost"
       },
       "CreditorAccount": {
-        "SchemeName": "UK.OBIE.SortCodeAccountNumber",
+        "SchemeName": "UK.OB.SortCodeAccountNumber",
         "Identification": "08080021325698",
         "Name": "Tom Kirkman"
       },

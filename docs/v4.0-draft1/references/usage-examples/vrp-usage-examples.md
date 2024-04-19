@@ -43,9 +43,9 @@ Accept: application/json
   "Data": {
     "ReadRefundAccount": "Yes",
     "ControlParameters": {
-      "PSUAuthenticationMethods": [ "UK.OBIE.SCA" ],
-      "PSUInteractionTypes": [ "OffSession" ],
-      "VRPType": ["UK.OBIE.VRPType.Sweeping"],
+      "PSUAuthenticationMethods": [ "UK.OB.SCA" ],
+      "PSUInteractionTypes": [ "UK.OB.OffSession" ],
+      "VRPType": ["UK.OB.VRPType.Sweeping"],
       "ValidFromDateTime": "2017-06-05T15:15:13+00:00",
       "ValidToDateTime": "2020-06-05T15:15:13+00:00",
       "MaximumIndividualAmount": {
@@ -63,7 +63,7 @@ Accept: application/json
     },
     "Initiation": {
       "DebtorAccount": {
-        "SchemeName": "UK.OBIE.IBAN",
+        "SchemeName": "UK.OB.IBAN",
         "Identification": "GB76LOYD30949301273801",
         "Name": "Marcus Sweepimus"
       },
@@ -103,9 +103,9 @@ Content-Type: application/json
     "ReadRefundAccount": "Yes",
 
     "ControlParameters": {
-      "PSUAuthenticationMethods": [ "UK.OBIE.SCA" ],
-      "PSUInteractionTypes": [ "OffSession" ],
-      "VRPType": "UK.OBIE.VRPType.Sweeping",
+      "PSUAuthenticationMethods": [ "UK.OB.SCA" ],
+      "PSUInteractionTypes": [ "UK.OB.OffSession" ],
+      "VRPType": "UK.OB.VRPType.Sweeping",
       "ValidFromDateTime": "2017-06-05T15:15:13+00:00",
       "ValidToDateTime": "2020-06-05T15:15:13+00:00",
       "MaximumIndividualAmount": {
@@ -123,14 +123,14 @@ Content-Type: application/json
     },
 
     "DebtorAccount": {
-      "SchemeName": "UK.OBIE.IBAN",
+      "SchemeName": "UK.OB.IBAN",
       "Identification": "GB76LOYD30949301273801",
       "Name": "Marcus Sweepimus"
     },
 
     "Initiation": {
       "DebtorAccount": {
-        "SchemeName": "UK.OBIE.IBAN",
+        "SchemeName": "UK.OB.IBAN",
         "Identification": "GB76LOYD30949301273801",
         "Name": "Marcus Sweepimus"
       },
@@ -193,9 +193,9 @@ Content-Type: application/json
     "ReadRefundAccount": "Yes",
 
     "ControlParameters": {
-      "PSUAuthenticationMethods": [ "UK.OBIE.SCA" ],
-      "PSUInteractionTypes": [ "OffSession" ],
-      "VRPType": "UK.OBIE.VRPType.Sweeping",
+      "PSUAuthenticationMethods": [ "UK.OB.SCA" ],
+      "PSUInteractionTypes": [ "UK.OB.OffSession" ],
+      "VRPType": "UK.OB.VRPType.Sweeping",
       "ValidFromDateTime": "2017-06-05T15:15:13+00:00",
       "ValidToDateTime": "2020-06-05T15:15:13+00:00",
       "MaximumIndividualAmount": {
@@ -213,14 +213,14 @@ Content-Type: application/json
     },
 
     "DebtorAccount": {
-      "SchemeName": "UK.OBIE.IBAN",
+      "SchemeName": "UK.OB.IBAN",
       "Identification": "GB76LOYD30949301273801",
       "Name": "Marcus Sweepimus"
     },
 
     "Initiation": {
       "DebtorAccount": {
-        "SchemeName": "UK.OBIE.IBAN",
+        "SchemeName": "UK.OB.IBAN",
         "Identification": "GB76LOYD30949301273801",
         "Name": "Marcus Sweepimus"
       },
@@ -269,13 +269,13 @@ Accept: application/json
 {
   "Data": {
     "ConsentId": "fe615446-e53a-45ed-954c-ae5d1f97a93b",
-    "PSUAuthenticationMethod": "UK.OBIE.SCA",
-    "PSUInteractionType": "OffSession",
-    "VRPType": "UK.OBIE.VRPType.Sweeping" 
+    "PSUAuthenticationMethod": "UK.OB.SCA",
+    "PSUInteractionType": "UK.OB.OffSession",
+    "VRPType": "UK.OB.VRPType.Sweeping" 
 
     "Initiation": {
       "DebtorAccount": {
-        "SchemeName": "UK.OBIE.IBAN",
+        "SchemeName": "UK.OB.IBAN",
         "Identification": "GB76LOYD30949301273801",
         "Name": "Marcus Sweepimus"
       },
@@ -328,18 +328,18 @@ Content-Type: application/json
     "ConsentId": "fe615446-e53a-45ed-954c-ae5d1f97a93b",
     "CreationDateTime": "2017-06-05T15:15:15+00:00",
     "DomesticVRPId": "OU90210",
-    "Status": "Pending",
+    "StatusCode": "PDNG",
     "StatusUpdateDateTime": "2017-06-05T15:15:15+00:00",
 
     "DebtorAccount": {
-      "SchemeName": "UK.OBIE.IBAN",
+      "SchemeName": "UK.OB.IBAN",
       "Identification": "GB76LOYD30949301273801",
       "Name": "Marcus Sweepimus"
     },
 
     "Initiation": {
       "DebtorAccount": {
-        "SchemeName": "UK.OBIE.IBAN",
+        "SchemeName": "UK.OB.IBAN",
         "Identification": "GB76LOYD30949301273801",
         "Name": "Marcus Sweepimus"
       },
@@ -412,9 +412,9 @@ Accept: application/json
   "Data": {
     "ReadRefundAccount": "Yes",
     "ControlParameters": {
-      "PSUAuthenticationMethods": [ "UK.OBIE.SCA" ],
-      "PSUInteractionTypes": [ "OffSession" ],
-      "VRPType": ["UK.OBIE.VRPType.Sweeping"],
+      "PSUAuthenticationMethods": [ "UK.OB.SCA" ],
+      "PSUInteractionTypes": [ "UK.OB.OffSession" ],
+      "VRPType": ["UK.OB.VRPType.Sweeping"],
       "ValidFromDateTime": "2017-06-05T15:15:13+00:00",
       "ValidToDateTime": "2020-06-05T15:15:13+00:00",
       "MaximumIndividualAmount": {
@@ -461,9 +461,9 @@ Content-Type: application/json
     "ReadRefundAccount": "Yes",
 
     "ControlParameters": {
-      "PSUAuthenticationMethods": [ "UK.OBIE.SCA" ],
-      "PSUInteractionTypes": [ "OffSession" ],
-      "VRPType": "UK.OBIE.VRPType.Sweeping",
+      "PSUAuthenticationMethods": [ "UK.OB.SCA" ],
+      "PSUInteractionTypes": [ "UK.OB.OffSession" ],
+      "VRPType": "UK.OB.VRPType.Sweeping",
       "ValidFromDateTime": "2017-06-05T15:15:13+00:00",
       "ValidToDateTime": "2020-06-05T15:15:13+00:00",
       "MaximumIndividualAmount": {
@@ -535,9 +535,9 @@ Content-Type: application/json
     "ReadRefundAccount": "Yes",
 
     "ControlParameters": {
-      "PSUAuthenticationMethods": [ "UK.OBIE.SCA" ],
-      "PSUInteractionTypes": [ "OffSession" ],
-      "VRPType": "UK.OBIE.VRPType.Sweeping",
+      "PSUAuthenticationMethods": [ "UK.OB.SCA" ],
+      "PSUInteractionTypes": [ "UK.OB.OffSession" ],
+      "VRPType": "UK.OB.VRPType.Sweeping",
       "ValidFromDateTime": "2017-06-05T15:15:13+00:00",
       "ValidToDateTime": "2020-06-05T15:15:13+00:00",
       "MaximumIndividualAmount": {
@@ -555,7 +555,7 @@ Content-Type: application/json
     },
 
     "DebtorAccount": {
-      "SchemeName": "UK.OBIE.IBAN",
+      "SchemeName": "UK.OB.IBAN",
       "Identification": "GB76LOYD30949301273801",
       "Name": "Marcus Sweepimus"
     },
@@ -602,9 +602,9 @@ Accept: application/json
 {
   "Data": {
     "ConsentId": "fe615446-e53a-45ed-954c-ae5d1f97a93b",
-    "PSUAuthenticationMethod": "UK.OBIE.SCA",
-    "PSUInteractionType": "OffSession",
-    "VRPType": "UK.OBIE.VRPType.Sweeping"
+    "PSUAuthenticationMethod": "UK.OB.SCA",
+    "PSUInteractionType": "UK.OB.OffSession",
+    "VRPType": "UK.OB.VRPType.Sweeping"
 
     "Initiation": {
       "RemittanceInformation": {
@@ -650,11 +650,11 @@ Content-Type: application/json
     "ConsentId": "fe615446-e53a-45ed-954c-ae5d1f97a93b",
     "CreationDateTime": "2017-06-05T15:15:15+00:00",
     "DomesticVRPId": "OU90210",
-    "Status": "Pending",
+    "Status": "PDNG",
     "StatusUpdateDateTime": "2017-06-05T15:15:15+00:00",
 
     "DebtorAccount": {
-      "SchemeName": "UK.OBIE.IBAN",
+      "SchemeName": "UK.OB.IBAN",
       "Identification": "GB76LOYD30949301273801",
       "Name": "Marcus Sweepimus"
     },

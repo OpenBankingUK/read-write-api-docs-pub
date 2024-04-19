@@ -52,15 +52,15 @@ Once the international-scheduled-payment-consent has been authorised by the PSU,
 
 #### Status
 
-An international-scheduled-payment can only be created if its corresponding international-scheduled-payment-consent resource has the status of "Authorised". 
+An international-scheduled-payment can only be created if its corresponding international-scheduled-payment-consent resource has the status of "AUTH". 
 
 The international-scheduled-payment resource that is created successfully must have one of the following Status codes:
 
 | Status |
 | --- |
-| InitiationPending |
-| InitiationFailed |
-| InitiationCompleted |
+| RCVD |
+| RJCT |
+| ASCP |
 
 ### GET /international-scheduled-payments/{InternationalScheduledPaymentId}
 
@@ -72,10 +72,10 @@ The international-scheduled-payment resource must have one of the following Stat
 
 | Status |
 | --- |
-| InitiationPending |
-| InitiationFailed |
-| InitiationCompleted |
-| Cancelled |
+| RCVD |
+| RJCT |
+| ASCP |
+| CANC |
 
 ### GET /international-scheduled-payments/{InternationalScheduledPaymentId}/payment-details
 
@@ -85,59 +85,47 @@ A PISP can retrieve the Details of the underlying payment transaction via this e
 
 The international-scheduled-payments - payment-details must have one of the following PaymentStatusCode code-set enumerations:
 
-| Status |
-| --- |
-| Accepted |
-| AcceptedCancellationRequest |
-| AcceptedTechnicalValidation |
-| AcceptedCustomerProfile |
-| AcceptedFundsChecked |
-| AcceptedWithChange |
-| Pending |
-| Rejected |
-| AcceptedSettlementInProcess |
-| AcceptedSettlementCompleted |
-| AcceptedWithoutPosting |
-| AcceptedCreditSettlementCompleted |
-| Cancelled |
-| NoCancellationProcess |
-| PartiallyAcceptedCancellationRequest |
-| PartiallyAcceptedTechnicalCorrect |
-| PaymentCancelled |
-| PendingCancellationRequest |
-| Received |
-| RejectedCancellationRequest |
+| StatusCode |
+| ------ |
+| PDNG |
+| ACTC |
+| PATC |
+| ACCP |
+| ACFC |
+| ACSP |
+| ACWC |
+| ACSC |
+| ACWP |
+| ACCC |
+| BLCK |
+| RJCT |
 
 ### State Model
 
 #### Payment Order
 
-The state model for the international-scheduled-payment resource describes the initiation status only. I.e., not the subsequent execution of the international-scheduled-payment.
+The state model for the international-scheduled-payment resource describes the initiation status and the subsequent execution of the international-scheduled-payment.
 
-![ ScheduledPaymentOrderStatus ](./images/ScheduledPaymentOrderStatus.png )
-
-The definitions for the Status:
-
-|  |Status |Payment Status Description |
-| --- |--- |--- |
-| 1 |InitiationPending |The initiation of the payment order is pending. |
-| 2 |InitiationFailed |The initiation of the payment order has failed. |
-| 3 |InitiationCompleted |The initiation of the payment order is complete. |
-| 4 |Cancelled |Payment initiation has been successfully cancelled after having received a request for cancellation. |
+![Payment Order Status](./images/PIS_PO_Statuses.png)
 
 ##### Multiple Authorisation
+If the payment-order requires multiple authorisations the status of the multiple authorisations will be updated in the MultiAuthorisation object.
 
-If the payment-order requires multiple authorisations, the Status of the multiple authorisations will be updated in the MultiAuthorisation object.
+Once the payment is RCVD, the StatusCode should be set to PATC and the MultiAuthorisation object status updated with the AWAU status.  Once all authorisations have been successfully completed the MultiAuthorisation status should be set to AUTH and StatusCode updated to ACSP.
 
-![ image2018-6-29_16-36-34 ](./images/image2018-6-29_16-36-34.png )
+Any rejections in the multiple authorisation process should result in the MultiAuthorisation status and StatusCode being set to RJCT. 
+
+
+![Multi Auth](./images/PO_MultiAuthFlow.png)
+
 
 The definitions for the Status:
 
 |  |Status |Status Description |
 | --- |--- |--- |
-| 1 |AwaitingFurtherAuthorisation |The payment-order resource is awaiting further authorisation. |
-| 2 |Rejected |The payment-order resource has been rejected by an authoriser. |
-| 3 |Authorised |The payment-order resource has been successfully authorised by all required authorisers. |
+| 1 |AWAU |The payment-order resource is awaiting further authorisation. |
+| 2 |RJCT |The payment-order resource has been rejected by an authoriser. |
+| 3 |AUTH |The payment-order resource has been successfully authorised by all required authorisers. |
 
 ## Data Model
 
@@ -231,6 +219,7 @@ The international-scheduled-payment **response** object contains the:
 | Identification |0..1 |OBWriteInternationalScheduledResponse6/Data/Debtor/Identification |Identification assigned by an institution to identify an account. This identification is known by the account owner. |Max256Text | | |
 | Name |0..1 |OBWriteInternationalScheduledResponse6/Data/Debtor/Name |The account name is the name or names of the account owner(s) represented at an account level, as displayed by the ASPSP's online channels. Note, the account name is not the product name or the nickname of the account. |Max350Text | | |
 | SecondaryIdentification |0..1 |OBWriteInternationalScheduledResponse6/Data/Debtor/SecondaryIdentification |This is secondary identification of the account, as assigned by the account servicing institution. This can be used by building societies to additionally identify accounts with a roll number (in addition to a sort code and account number combination). |Max34Text | | |
+| LEI |0..1 | OBWriteInternationalScheduledResponse6/Data/Debtor/LEI |Legal Entity Identification by which a party is known and which is usually used to identify that party. |Max20Text | | |
 
 ### International Schedule Payment Order - Payment Details - Response
 

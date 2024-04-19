@@ -52,18 +52,24 @@ Once the international-payment-consent has been authorised by the PSU, the PISP 
 
 #### Status
 
-An international-payment can only be created if its corresponding international-payment-consent resource has the status of "Authorised". 
+An international-payment can only be created if its corresponding international-payment-consent resource has the status of "AUTH". 
 
 The international-payment resource that is created successfully must have one of the following PaymentStatusCode code-set enumerations:
 
-| Status |
-| --- |
-| Pending |
-| Rejected |
-| AcceptedSettlementInProcess |
-| AcceptedSettlementCompleted |
-| AcceptedWithoutPosting |
-| AcceptedCreditSettlementCompleted |
+| StatusCode |
+| ------ |
+| PDNG |
+| ACTC |
+| PATC |
+| ACCP |
+| ACFC |
+| ACSP |
+| ACWC |
+| ACSC |
+| ACWP |
+| ACCC |
+| BLCK |
+| RJCT |
 
 ### GET /international-payments/{InternationalPaymentId}
 
@@ -73,14 +79,20 @@ A PISP can retrieve the international-payment to check its status.
 
 The international-payment resource must have one of the following PaymentStatusCode code-set enumerations:
 
-| Status |
-| --- |
-| Pending |
-| Rejected |
-| AcceptedSettlementInProcess |
-| AcceptedSettlementCompleted|
-| AcceptedWithoutPosting |
-| AcceptedCreditSettlementCompleted |
+| StatusCode |
+| ------ |
+| PDNG |
+| ACTC |
+| PATC |
+| ACCP |
+| ACFC |
+| ACSP |
+| ACWC |
+| ACSC |
+| ACWP |
+| ACCC |
+| BLCK |
+| RJCT |
 
 ### GET /international-payments/{InternationalPaymentId}/payment-details
 
@@ -90,28 +102,20 @@ A PISP can retrieve the Details of the underlying payment transaction via this e
 
 The international-payments - payment-details must have one of the following PaymentStatusCode code-set enumerations:
 
-| Status |
+| StatusCode |
 | ------ |
-| Accepted |
-| AcceptedCancellationRequest |
-| AcceptedTechnicalValidation |
-| AcceptedCustomerProfile |
-| AcceptedFundsChecked |
-| AcceptedWithChange |
-| Pending |
-| Rejected |
-| AcceptedSettlementInProcess |
-| AcceptedSettlementCompleted |
-| AcceptedWithoutPosting |
-| AcceptedCreditSettlementCompleted |
-| Cancelled |
-| NoCancellationProcess |
-| PartiallyAcceptedCancellationRequest |
-| PartiallyAcceptedTechnicalCorrect |
-| PaymentCancelled |
-| PendingCancellationRequest |
-| Received |
-| RejectedCancellationRequest |
+| PDNG |
+| ACTC |
+| PATC |
+| ACCP |
+| ACFC |
+| ACSP |
+| ACWC |
+| ACSC |
+| ACWP |
+| ACCC |
+| BLCK |
+| RJCT |
 
 ### State Model
 
@@ -119,32 +123,28 @@ The international-payments - payment-details must have one of the following Paym
 
 The state model for the international-payment resource follows the behaviour and definitions for the ISO 20022 PaymentStatusCode code-set.
 
-![Payment Order Status Lifecycle](./images/PaymentStatusLifeCycle.png)
+![Payment Order Status](./images/PIS_PO_Statuses.png)
 
-The definitions for the Status:
 
-| |Status |Payment Status Description |
-| --- |------ |-------------------------- |
-| 1 |Pending |Payment initiation or individual transaction included in the payment initiation is pending. Further checks and status update will be performed. |
-| 2 |Rejected |Payment initiation or individual transaction included in the payment initiation has been rejected. |
-| 3 |AcceptedSettlementInProcess |All preceding checks such as technical validation and customer profile were successful and therefore the payment initiation has been accepted for execution. |
-| 4 |AcceptedSettlementCompleted |Settlement on the debtor's account has been completed. |
-| 5 |AcceptedWithoutPosting |Payment instruction included in the credit transfer is accepted without being posted to the creditor customer’s account. |
-| 6 |AcceptedCreditSettlementCompleted |Settlement on the creditor's account has been completed. |
 
 ##### Multiple Authorisation
+If the payment-order requires multiple authorisations the status of the multiple authorisations will be updated in the MultiAuthorisation object.
 
-If the payment-order requires multiple authorisations, the Status of the multiple authorisations will be updated in the MultiAuthorisation object.
+Once the payment is RCVD, the StatusCode should be set to PATC and the MultiAuthorisation object status updated with the AWAU status.  Once all authorisations have been successfully completed the MultiAuthorisation status should be set to AUTH and StatusCode updated to ACSP.
 
-![Multiple Authorisation Statss](./images/image2018-6-29_16-36-34.png)
+Any rejections in the multiple authorisation process should result in the MultiAuthorisation status and StatusCode being set to RJCT. 
+
+
+![Multi Auth](./images/PO_MultiAuthFlow.png)
+
 
 The definitions for the Status:
 
 | |Status |Status Description |
 | --- |------ |------------------ |
-| 1 |AwaitingFurtherAuthorisation |The payment-order resource is awaiting further authorisation. |
-| 2 |Rejected |The payment-order resource has been rejected by an authoriser. |
-| 3 |Authorised |The payment-order resource has been successfully authorised by all required authorisers. |
+| 1 |AWAU |The payment-order resource is awaiting further authorisation. |
+| 2 |RJCT |The payment-order resource has been rejected by an authoriser. |
+| 3 |AUTH |The payment-order resource has been successfully authorised by all required authorisers. |
 
 ## Data Model
 

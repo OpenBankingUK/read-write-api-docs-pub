@@ -42,6 +42,8 @@ The ASPSP may use the scope to limit to functionality to sweeping or non-sweepin
 |domestic-vrp-consents |GET |GET /domestic-vrp-consents/{ConsentId} |Mandatory | payments |Client Credentials |Signed Response |No |NA |OBDomesticVRPConsentResponse |
 |domestic-vrp-consents |DELETE |DELETE /domestic-vrp-consents/{ConsentId} |Mandatory | payments |Client Credentials | NA |No |NA |None |
 |domestic-vrp-consents |POST |POST /domestic-vrp-consents/{ConsentId}/funds-confirmation |Mandatory | payments |Authorization Code |Signed Request Signed Response |No |OBVRPFundsConfirmationRequest |OBVRPFundsConfirmationResponse |
+| domestic-vrp-consents | PUT | PUT  /domestic-vrp-consents/{ConsentId} | Conditional | payments | Client Credentials | Signed Request Signed Response | Yes |  OBDomesticVRPConsentRequest | OBDomesticVRPConsentResponse |
+| domestic-vrp-consents | PATCH | PATCH /domestic-vrp-consents/{ConsentId} | Conditional | payments | Client Credentials | Signed Request Signed Response | Yes | OBDomesticVRPConsentRequest | OBDomesticVRPConsentResponse |
 
 ### POST /domestic-vrp-consents
 
@@ -75,17 +77,38 @@ This API endpoint allows the TPP to ask an ASPSP to confirm funds on the `Debtor
 
 An ASPSP can only respond to a funds confirmation request if the resource has a StatusCode of `AUTH`.
 
-If resource has any other Status, the ASPSP must respond with a 400 (Bad Request) and a `UK.OBIE.Resource.InvalidConsentStatus` error code.
+If resource has any other Status, the ASPSP must respond with a 400 (Bad Request) and a `UK.OB.Resource.InvalidConsentStatus` error code.
+
+### PUT /domestic-vrp-consents/{consentId}
+This endpoint is only used for migration of consent data across Standard versions. The ASPSP can choose to implement one or both of the PUT/PATCH endpoints and TPPs should refer to the ASPSP dev portal for information on availability.    
+
+This endpoint should not be used to modify content of an existing consent created on the same version.  The ASPSP __must__ reject request if it attempts to modify an existing resource which does not require migration to the new format.
+
+The request body should contain the correct schema for the current version of the API specification with any associated enumeration values that have moved to short code format.  Values originally supplied in the consent such as account information, control parameters, dates or monetary values __must not__ change and the ASPSP __must__ reject any requests which modify these values.
+
+Successful submission must return the updated consent resource body.
+
+### PATCH /domestic-vrp-consents/{consentId}
+This endpoint is only used for migration of consent data across Standard versions. The ASPSP can choose to implement one or both of the PUT/PATCH endpoints and TPPs should refer to the ASPSP dev portal for information on availability.    
+
+This endpoint should not be used to modify content of an existing consent created on the same version.  The ASPSP __must__ reject request if it attempts to modify an existing resource which does not require migration to the new format.
+
+The request body should contain a partial JSON body containing only the changed schema and any associated enumeration values that have moved to short code format, matching the current API specification.  Values originally supplied in the consent such as account information, control parameters, dates or monetary values __must not__ change and the ASPSP __must__ reject any requests which modify these values.
+
+Successful submission must return the full updated consent resource body.
+
+
 
 ## State Model - VRP consents
 
 The state model for the VRP consents resource follows the generic consent state model. However, it does not use the `COND` StatusCode.
 
-!["VRP consents Status"](./images/VRP-State-Diagram.png)
+![VRP Consent State model](./images/PIS-VRP_PO_Consent.png)
+
 
 All `domestic-vrp-consents` start off with a state of `AWAU`
 
-Once the PSU authorises the resource - the state of the resource will be set to `Authorised`.
+Once the PSU authorises the resource - the state of the resource will be set to `AUTH`.
 
 If the PSU rejects the consent, the state will be set to `RJCT`.
 
@@ -94,6 +117,8 @@ The available status codes for the VRP consents resource are:
 - AWAU
 - RJCT
 - AUTH
+- CANC
+- EXPD
 
 The definitions for the Status:
 
@@ -101,7 +126,9 @@ The definitions for the Status:
 |-----|-----------------------|-------------------------------------------------------------------------------|
 | 1   | AWAU | The consent resource is awaiting PSU authorisation.                           |
 | 2   | RJCT              | The consent resource has been rejected.                                       |
-| 3   | AUTH            | The consent resource has been successfully authorised.                        |
+| 3   | AUTH            | The consent resource has been successfully authorised.  
+| 4| CANC| The consent resource has been canceled.                      |
+| 5| EXPD| The consent resource has expired.|
 
 ## Data Model
 
@@ -128,6 +155,11 @@ The data dictionary section gives the detail on the payload content for the VRP 
 | __Identification__ (1..1) | `Identification` |Identification assigned by an institution to identify an account. This identification is known by the account owner.   |Max256Text
 | __Name__ (1..1) | `Name` |Name of the account, as assigned by the account servicing institution, in consent with the account owner in order to provide an additional means of identification of the account.  Usage: The account name is different from the account owner name. The account name is used in certain user communities to provide a means of identifying the account, in addition to the account owner's identity and the account number. OB: No name validation is expected for confirmation of payee.|Max70Text  
 | __SecondaryIdentification__ (0..1) | `SecondaryIdentification` |This is secondary identification of the account, as assigned by the account servicing institution.  This can be used by building societies to additionally identify accounts with a roll number__ (in addition to a sort code and account number combination).             |Max34Text
+| __Proxy__ (0..1) |OBInternationalStandingOrder4/CreditorAccount/Proxy |The external proxy account type |OBProxyAccount
+| __Identification__ (1..1) |OBInternationalStandingOrder4/CreditorAccount/Proxy/Identification| Identification assigned by an institution to identify an account. This identification is known by the account owner. |Max256Text 
+| __Type__ (0..1) |OBInternationalStandingOrder4/CreditorAccount/Proxy/Type| Specifies the external proxy account type |MaxText70 
+| __Code__ 1..1 |OBInternationalStandingOrder4/CreditorAccount/Proxy/Code| Specifies the external proxy account type code, as published in the proxy account type external code set.<br> For more information see `ExternalProxyAccountType1Code` [here](https://github.com/OpenBankingUK/External_Interal_CodeSets) |OBExternalProxyAccountType1Code 
+| __Proprietary__ (1..1) |OBInternationalStandingOrder4/CreditorAccount/Proxy/Proprietary| The owner of the proxy account |MaxText70 
 
 ### OBBranchAndFinancialInstitutionIdentification6
 
@@ -338,6 +370,16 @@ The Risk block is a common class used in requests and responses
 | __StatusUpdateDateTime__ (1..1)| `Data. StatusUpdateDateTime` |Date and time at which the resource status was updated.  | ISODateTime  
 | __ControlParameters__ (1..1) | `Data. ControlParameters` | The control parameters under which this VRP must operate | [OBDomesticVRPControlParameters](#OBDomesticVRPControlParameters)
 | __Initiation__ (1..1) | `Data. Initiation` | The parameters of the VRP consent that should remain unchanged for each payment under this VRP |  [OBDomesticVRPInitiation](#OBDomesticVRPInitiation)
+| __UltimateCreditor__ (0..1) | `Data. Initiation. UltimateCreditor` |Set of elements used to identify a person or an organisation. | OBPartyIdentification43 | | |
+| __SchemeName__ (0..1) | `Data. Initiation. UltimateCreditor. SchemaName` |Name of the identification scheme, in a coded form as published in an external list. |OBExternalAccountIdentification4Code | | |
+| __Identification__ (0..1) | `Data. Initiation. UltimateCreditor. Identification` |Identification assigned by an institution to identify an account. This identification is known by the account owner. |Max256Text | | |
+| __Name__ (0..1) | `Data. Initiation. UltimateCreditor. Name` |The account name is the name or names of the account owner(s) represented at an account level, as displayed by the ASPSP's online channels. Note, the account name is not the product name or the nickname of the account. |Max350Text | | |
+| __LEI__ (0..1) | `Data. Initiation. UltimateCreditor. LEI` | Legal Entity Identification by which a party is known and which is usually used to identify that party. |Max20Text | | |
+| __UltimateDebtor__ (0..1) | `Data. Initiation. UltimateDebtor` |Set of elements used to identify a person or an organisation. | OBPartyIdentification43 | | |
+| __SchemeName__ (0..1) | `Data. Initiation. UltimateDebtor. SchemaName` |Name of the identification scheme, in a coded form as published in an external list. |OBExternalAccountIdentification4Code | | |
+| __Identification__ (0..1) | `Data. Initiation. UltimateDebtor. Identification` |Identification assigned by an institution to identify an account. This identification is known by the account owner. |Max256Text | | |
+| __Name__ (0..1) | `Data. Initiation. UltimateDebtor. Name` |The account name is the name or names of the account owner(s) represented at an account level, as displayed by the ASPSP's online channels. Note, the account name is not the product name or the nickname of the account. |Max350Text | | |
+| __LEI__ (0..1) | `Data. Initiation. UltimateDebtor. LEI` | Legal Entity Identification 
 | __DebtorAccount__ (0..1) | `Data.DebtorAccount` | The approved DebtorAccount that the payment can be made from. THe value must be populated for GET responses once the consent is approved. | OBCashAccountDebtorWithName
 | __Risk__ (1..1) | `Risk` | The consent payload is sent by the initiating party to the ASPSP. It is used to request a consent to move funds from the debtor account to a creditor. | OBRisk
 
