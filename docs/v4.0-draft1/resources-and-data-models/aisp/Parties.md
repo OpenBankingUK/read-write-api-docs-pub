@@ -285,7 +285,7 @@ Content-Type: application/json
                 "PartyType": "Sole",
                 "Name": "Roses and Thorns Limited",
                 "FullLegalName": "Roses and Thorns Limited",
-                "LegalStructure": "UK.OBIE.PrivateLimitedCompany",
+                "LegalStructure": "UK.OB.PrivateLimitedCompany",
                 "BeneficialOwnership": true,
                 "AccountRole": "UK.OB.Principal",
                 "EmailAddress": "speakup@rosesandthorns.co.uk",
