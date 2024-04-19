@@ -143,7 +143,7 @@ References:
 
 * The highest level Data Description Language used is the JSON Schema : <http://json-schema.org/>
 * Best Practice has also been taken from the Data Description Language for APIs; JSON API : <http://jsonapi.org/>
-* The Interface Description Language used is the Swagger Specification version 2.0 (also known as Open API) : <http://swagger.io/> <https://github.com/OAI/OpenAPI-Specification>
+* The Interface Description Language used is the Open API Specification v3 (previously known as Swagger): <https://www.openapis.org> <https://github.com/OAI/OpenAPI-Specification>
 
 #### Standards
 
@@ -361,6 +361,7 @@ For brevity, the APIs are referred to by their resource names in these documents
 |x-idempotency-key         |Custom HTTP Header; Unique request identifier to support idempotency.<br><br>Mandatory for POST requests to idempotent resource end-points.<br><br>Must not be specified for other requests.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |Optional     |Do not use  |Do not use     |Do not use  |
 |x-jws-signature           |Header containing a detached JWS signature of the body of the payload.<br><br>Refer to resource specific documentation on when this header must be specified.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |API specific |API specific|API specific   |Mandatory   |
 |x-customer-user-agent     |The header indicates the user-agent that the PSU is using.<br><br>The TPP **may** populate this field with the user-agent indicated by the PSU.<br><br>If the PSU is using a TPP mobile app, the TPP **must** ensure that the user-agent string is different from browser based user-agent strings.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |Optional     |Optional    |Optional       |Optional    |
+|payload-version| An optional header included only to assist migration to new versions of the API standard.<br><br>If supported by the ASPSP, the TPP can submit a payload using an older schema.<br><br>`payload-version: 3.1.11`|Optional|Do not use|Do not use| Optional|
 
 
 Whether the PSU is present or not-present is identified via the x-fapi-customer-ip-address header. If the PSU IP address is supplied, it is inferred that the PSU is present during the interaction.
@@ -379,6 +380,7 @@ The implications to this are:
 |x-jws-signature           |Header containing a detached JWS signature of the body of the payload.<br><br>Refer to resource specific documentation on when this header **must** be returned. Where a signed response is indicated in the documentation this header **should** be returned for error responses where a response body is returned.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |API specific|
 |x-fapi-interaction-id     |An RFC4122 UID used as a correlation Id.<br><br>The ASPSP **must** set the response header `x-fapi-interaction-id` to the value received from the corresponding fapi client request header or to a [RFC4122](https://tools.ietf.org/html/rfc4122) UUID value if the request header was not provided to track the interaction. The header **must** be returned for both successful and error responses.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |Mandatory   |
 |Retry-After               |Header indicating the time (in seconds) that the TPP should wait before retrying an operation.<br><br>The ASPSP **should** include this header along with responses with the HTTP status code of 429 (Too Many Requests).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |Optional    |
+|payload-version|An optional header included only to assist migration to new versions of the API standard. Allows the ASPSP to indicate the schema of the payload being returned.<br><br> `payload-version: 3.1.11`|Optional|
 
 
 ### HTTP Status Codes
@@ -443,15 +445,9 @@ The situation could arise when:
 
 #### 401 (Unauthorized)
 
-When the TPP uses an expired access token, the ASPSP **must** return a 401 (Unauthorized) **without** any error response.
+When the TPP uses an expired or suspended access token, the ASPSP should return an error as described in [Token Errors](#token-errors)
 
-The situation could arise when an ASPSP has chosen to expire an Access Token. Here are few reasons:
-
-1. The consent has expired (the Expiration Date Time has lapsed)
-2. Suspicious usage of the Access Token or suspected fraud
-3. SCA is required in permitted circumstances
-
-This error can potentially be remedied by asking the PSU to re-authenticate or authenticate with the right permissions.
+Situations where no token is provided or it is invalid should return 401 (Unauthorised) without an error response.
 
 #### 429 (Too Many Requests)
 
@@ -837,6 +833,9 @@ An access token is bound to a single PSU and an intent.
 #### Error Condition
 
 If the PSU does not complete a successful consent authorisation (e.g. if the PSU is not authenticated successfully), the authorization code grant ends with a redirection to the TPP with an error response as described in OpenID Connect Core Specification [Section 3.1.2.6](https://openid.net/specs/openid-connect-core-1_0.html#AuthError). The PSU is redirected to the TPP with an error parameter indicating the error that occurred.
+The error_description should include an appropriate code from the ExternalStatusReason1Code enumeration. 
+
+The consent payload ReasonCode should also be updated with the same code.
 
 #### Token Expiry Time
 
@@ -886,9 +885,9 @@ The Hybrid Grant (See [Section 3.3. of the OIDC Specification](http://openid.net
 
 Earlier versions of this specification referenced the use of The Authorization Code Grant (see [Section 4.1 of the OAuth 2.0 RFC](https://tools.ietf.org/html/rfc6749#section-4.1) and [Section 3.1 of the OIDC Specification](http://openid.net/specs/openid-connect-core-1_0.html#CodeFlowAuth)) as  another redirect based mechanism for authenticating PSUs. The FAPI security profile states states that the hybrid flow should be used. ASPSPs should not implement this flow, but should use the Hybrid Grant instead.
 
- The [FAPI read & Write API Security Profile](https://openid.net/specs/openid-financial-api-part-2-ID2.html) specify a more stringent set of requirements that ASPSPs and TPPs must adhere to.
+ The [FAPI 1 Advanced Security Profile](https://openid.net/specs/openid-financial-api-part-2-1_0.html) specifies a more stringent set of requirements that ASPSPs and TPPs must adhere to.
 
-Earlier versions of this specification referenced the use of [The UK Open Banking Security Profile](https://bitbucket.org/openid/obuk/src/4630771db004da59992fb201641f5c4ff2c881f1/uk-openbanking-security-profile.md?at=master&fileviewer=file-view-default). It should be noted that the UK Open Banking Security Profile is no longer supported by OBL. ASPSPs should not implement this profile, but should use FAPI instead.
+Earlier versions of this specification referenced the use of [The UK Open Banking Security Profile](https://bitbucket.org/openid/obuk/src/4630771db004da59992fb201641f5c4ff2c881f1/uk-openbanking-security-profile.md?at=master&fileviewer=file-view-default) and FAPI 1 Read/Write profile (FAPI1 ID2). It should be noted that the UK Open Banking Security Profile is no longer supported by OBL and FAPI1 ID2 end-of-support date is December 2024. ASPSPs should not implement either of these profiles, but should use FAPI 1 Advanced instead.
 
 ##### id_token_hint
 
@@ -1173,6 +1172,8 @@ Open Banking Specifications include various fields of Enumerated data types, whe
 
 While Static Enumerations are listed on each API Specification page, Namespaced Enumerations are captured on the Namespaced Enumerations page.
 
+A repository of external and internal enumerations is available [here](https://github.com/OpenBankingUK/External_Interal_CodeSets).
+
 ### Common Payload Structure
 
 This section gives an overview of the top level structure for the API payloads for the Open Banking Read/Write APIs.
@@ -1251,9 +1252,6 @@ The error response structure for Open Banking Read/Write APIs:
 }
 ```
 
-##### UML Diagram
-
-![](./images/OBErrorResponse1.gif)
 
 ##### Data Dictionary
 
@@ -1262,7 +1260,7 @@ The error response structure for Open Banking Read/Write APIs:
 |OBErrorResponse1          |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |OBErrorResponse1|An array of detail error codes, and messages, and URLs to documentation to help remediation.                                                                            |OBErrorResponse1         |     |       |
 |Id                        |0..1                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |OBErrorResponse1/Id|A unique reference for the error instance, for audit purposes, in case of unknown/unclassified errors.                                                                  |Max40Text                |     |       |
 |Errors                    |1..n                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |OBErrorResponse1/Errors|                                                                                                                                                                        |OBError1                 |     |       |
-|ErrorCode                 |1..1 |                       OBErrorResponse1/Errors/ErrorCode                                                                                                                                                      |Low level textual error code, e.g., `"AC17"`| For a full list of enumeration values see `ExternalReturnReason1Code` [here](https://github.com/OpenBankingUK/External_Interal_CodeSets)                                                                                                    |ExternalReturnReason1Code|     |       |
+|ErrorCode                 |1..1 |                       OBErrorResponse1/Errors/ErrorCode                                                                                                                                                      |Low level textual error code, e.g., `"AC17"`| For a full list of enumeration values see `OBInternalErrorResponseError1Code` [here](https://github.com/OpenBankingUK/External_Interal_CodeSets)                                                                                                    |OBInternalErrorResponseError1Code|     |       |
 |Message                   |0..1 |OBErrorResponse1/Errors/Message|A description of the error that occurred. e.g., 'A mandatory field isn't supplied' or 'RequestedExecutionDateTime must be in future'<br><br>OBL doesn't standardise this field|Max500Text               |     |       |
 |Path                      |0..1                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |OBErrorResponse1/Errors/Path|Recommended but optional reference to the JSON Path of the field with error, e.g., Data.Initiation.InstructedAmount.Currency                                            |Max500Text               |     |       |
 |Url                       |0..1                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |OBErrorResponse1/Errors/Url|URL to help remediate the problem, or provide more information, or to API Reference, or help etc                                                                        |xs:anyURI                |     |       |
@@ -1676,19 +1674,17 @@ Content-Type: application/json
 
 ```json
 {
-  "Code": "400 BadRequest",
   "Id": "2b5f0fb2-730b-11e8-adc0-fa7ae01bbebc",
-  "Message": "Invalid request parameters.",
   "Errors": [
     {
-      "ErrorCode": "UK.OB.Field.Missing",
-      "Message": "Instructed identification is missing",
+      "ErrorCode": "U004",
+      "Message": "UK.OB.FieldMissing - Instructed identification is missing",
       "Path": "Data.Initiation.InstructionIdentification",
       "Url": "<url to the api reference for Payment Inititaion API>"
     },
     {
-      "ErrorCode": "UK.OB.Unsupported.Scheme",
-      "Message": "Scheme name supplied is not supported",
+      "ErrorCode": "U027",
+      "Message": "UK.OB.Unsupported.Scheme - Scheme name supplied is not supported",
       "Path": "Data.Initiation.CreditorAccount.SchemeName",
       "Url": "<url to the online documentation referring supported scheme names>"
     }
