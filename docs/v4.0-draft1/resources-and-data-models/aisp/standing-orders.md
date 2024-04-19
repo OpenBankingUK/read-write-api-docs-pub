@@ -105,7 +105,7 @@ If the ReadPAN permission is granted by the PSU, the ASPSP may choose to populat
 | AccountId |1..1 |OBReadStandingOrder6/Data/StandingOrder/AccountId |A unique and immutable identifier used to identify the account resource. This identifier has no meaning to the account owner. |Max40Text | | |
 | StandingOrderId |0..1 |OBReadStandingOrder6/Data/StandingOrder/StandingOrderId |A unique and immutable identifier used to identify the standing order resource. This identifier has no meaning to the account owner. |Max40Text | | |
 | MandateRelatedInformation | 0..1 |OBReadStandingOrder6/Data/MandateRelatedInformation ||OBMandateRelatedInformation | | |
-| MandateIdentification | 0..1 |OBReadStandingOrder6/Data/MandateRelatedInformation/MandateIdentification ||TODO | | |
+| MandateIdentification | 0..1 |OBReadStandingOrder6/Data/MandateRelatedInformation/MandateIdentification ||Max35Text | | |
 | Classification | 0..1 |OBReadStandingOrder6/Data/MandateRelatedInformation/Classification|FIXE<br>USGB<br>VARI|OBClassification1Code | | |
 | CategoryPurposeCode | 0..1 |OBReadStandingOrder6/Data/MandateRelatedInformation/CategoryPurposeCode ||OBCategoryPurpose1Code | | |
 | FirstPaymentDate | 0..1 |OBReadStandingOrder6/Data/MandateRelatedInformation/FirstPaymentDate |The date on which the first payment for a Standing Order schedule will be made. |ISODate | | |
@@ -114,7 +114,7 @@ If the ReadPAN permission is granted by the PSU, the ASPSP may choose to populat
 | PeriodType | 1..1 |OBReadStandingOrder6/Data/MandateRelatedInformation/PeriodType |A code indicating the period type for the Standing Order. Values:<br>ADHO<br>YEAR<br>DALI<br>INDA<br>MNTH<br>QURT<br>MIAN<br>WEEK |OBFrequencyPeriodType | | |
 | CountPerPeriod | 1..1 |OBReadStandingOrder6/Data/MandateRelatedInformation/CountPerPeriod | |int32 | |
 | PointInTimeType | 1..1 |OBReadStandingOrder6/Data/MandateRelatedInformation/PointInTimeType |A code indicating the point in time for payment of the Standing Order. Values:<br>ADHO<br>YEAR<br>DALI<br>INDA<br>MNTH<br>QURT<br>MIAN<br>WEEK |OBFrequencyPeriodType | | |
-| PointInTime | 1..1 |OBReadStandingOrder6/Data/MandateRelatedInformation/PointInTime |ISOTime | | |
+| PointInTime | 1..1 |OBReadStandingOrder6/Data/MandateRelatedInformation/PointInTime |ISODateTime | | |
 | Reason| 0..1 |OBReadStandingOrder6/Data/MandateRelatedInformation/Reason | |Max256Text | |
 | Reference |0..1 |OBReadStandingOrder6/Data/StandingOrder/Reference |Unique reference, as assigned by the creditor, to unambiguously refer to the payment transaction. Usage: If available, the initiating party should provide this reference in the structured remittance information, to enable reconciliation by the creditor upon receipt of the amount of money. If the business context requires the use of a creditor reference or a payment remit identification, and only one identifier can be passed through the end-to-end chain, the creditor's reference or payment remittance identification should be quoted in the end-to-end transaction identification. |Max35Text | | |
 | NextPaymentDateTime |0..1 |OBReadStandingOrder6/Data/StandingOrder/NextPaymentDateTime |The date on which the next payment for a Standing Order schedule will be made. |ISODate | | |

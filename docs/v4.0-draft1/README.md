@@ -24,5 +24,5 @@ The Swagger Specification for R/W APIs can be downloaded from the following GitH
 <!-- ### Version 4.0.0 - DRAFT 1 - Release Candidate 1 -->
 
 ### Version 4.0.0 - Draft 1
-<!-- TODO -->
+<!-- Max35Text -->
 - TBC
