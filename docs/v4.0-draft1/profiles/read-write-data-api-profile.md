@@ -779,7 +779,7 @@ Errors generated during an API call, including the initial staging of a consent,
 
 Failures, such as insufficient funds to complete a transaction, should return an API error and also be reflected in the consent endpoint using ISO 20022 reasons and/or OBL Proprietary reasons as appropriate.
 
-A full list of codes can be found in the [External_Internal_Codesets repository](https://github.com/OpenBankingUK/External_Interal_CodeSets)
+A list of codes can be found in the [External_Internal_Codesets repository](https://github.com/OpenBankingUK/External_Interal_CodeSets)
 
 #### Redirect errors
 Errors that occur when the PSU is redirected to the ASPSP to complete authentication and returned on the query string to the TPP should include an appropriate code from the ExternalStatusReason1Code enumeration in the error_description field. 

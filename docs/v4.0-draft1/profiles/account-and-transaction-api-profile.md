@@ -362,6 +362,8 @@ All other fields (other than these fields listed) are available with the "Basic"
 | ReadTransactionsDetail |CreditorAccount |0..1 |OBReadTransaction4/Data/Transaction/CreditorAccount |
 | ReadTransactionsDetail |DebtorAgent |0..1 |OBReadTransaction4/Data/Transaction/DebtorAgent |
 | ReadTransactionsDetail |DebtorAccount |0..1 |OBReadTransaction4/Data/Transaction/DebtorAccount |
+| ReadTransactionsDetail |UltimateCreditor |0..1 |OBReadTransaction4/Data/Transaction/UltimateCreditor |
+| ReadTransactionsDetail |UltimateDebtor |0..1 |OBReadTransaction4/Data/Transaction/UltimateDebtor |
 | ReadStatementsDetail |StatementAmount |0..* |OBReadStatement1/Data/Statement/StatementAmount |
 | ReadScheduledPaymentsDetail |CreditorAgent |0..1 |OBReadScheduledPayment2/Data/ScheduledPayment/CreditorAgent |
 | ReadScheduledPaymentsDetail |CreditorAccount |0..1 |OBReadScheduledPayment2/Data/ScheduledPayment/CreditorAccount |
@@ -463,7 +465,7 @@ In such a situation:
 
 Information for risk scoring and assessment will come via:
 
-- FAPI HTTP headers. These are defined in [section 6.2.1 and 6.2.2] (https://openid.net/specs/openid-financial-api-part-1-1_0.html#protected-resources-provisions) of the FAPI 1 specification and in the Headers section above.
+- FAPI HTTP headers. These are defined in [section 6.2.1 and 6.2.2](https://openid.net/specs/openid-financial-api-part-1-1_0.html#protected-resources-provisions) of the FAPI 1 specification and in the Headers section above.
 - Additional fields identified by the industry as business logic security concerns - which will be passed in the Risk section of the payload in the JSON object.
 
 No fields for business logic security concerns have been identified for the Account Info APIs.
@@ -535,14 +537,14 @@ Deviations from the camt.052 XML standard are:
 | OBAccountStatus1Code |Deleted |Account cannot be used any longer. |
 | OBAccountStatus1Code |ProForma |Account is temporary and can be partially used for its intended purpose. The account will be fully available for use when the account servicer has received all relevant documents. |
 | OBAccountStatus1Code |Pending |Account change is pending approval. |
-| OBAddressTypeCode |Business |Address is the business address. |
-| OBAddressTypeCode |Correspondence |Address is the address where correspondence is sent. |
-| OBAddressTypeCode |DeliveryTo |Address is the address to which delivery is to take place. |
-| OBAddressTypeCode |MailTo |Address is the address to which mail is sent. |
-| OBAddressTypeCode |POBox |Address is a postal office (PO) box. |
-| OBAddressTypeCode |Postal |Address is the complete postal address. |
-| OBAddressTypeCode |Residential |Address is the home address. |
-| OBAddressTypeCode |Statement |Address is the address where statements are sent. |
+| OBAddressTypeCode |BIZZ |Address is the business address. |
+| OBAddressTypeCode |CORR |Address is the address where correspondence is sent. |
+| OBAddressTypeCode |DLVY |Address is the address to which delivery is to take place. |
+| OBAddressTypeCode |MLTO |Address is the address to which mail is sent. |
+| OBAddressTypeCode |PBOX |Address is a postal office (PO) box. |
+| OBAddressTypeCode |ADDR |Address is the complete postal address. |
+| OBAddressTypeCode |HOME |Address is the home address. |
+| OBAddressTypeCode |STAT |Address is the address where statements are sent. |
 | OBBalanceType1Code |CLAV |ClosingAvailable - Closing balance of amount of money that is at the disposal of the account owner on the date specified. |
 | OBBalanceType1Code |CLBS |ClosingBooked - Balance of the account at the end of the pre-agreed account reporting period. It is the sum of the opening booked balance at the beginning of the period and all entries booked to the account during the pre-agreed account reporting period. |
 | OBBalanceType1Code |XPCH |Expected - Balance, composed of booked entries and pending items known at the time of calculation, which projects the end of day balance if everything is booked on the account and no other entry is posted. |
@@ -651,6 +653,8 @@ These following ISO Enumerations are used in the Accounts APIs.
 #### Namespaced Enumerations
 
 The enumerated values specified by Open Banking are documented in Swagger specification and Namespaced Enumerations page.
+
+A list of codes can be found in the [External_Internal_Codesets repository](https://github.com/OpenBankingUK/External_Interal_CodeSets)
 
 ## Alternative Flows
 
