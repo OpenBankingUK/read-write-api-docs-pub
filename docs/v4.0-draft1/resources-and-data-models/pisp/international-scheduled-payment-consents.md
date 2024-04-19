@@ -92,7 +92,7 @@ The available Status codes for the international-scheduled-payment-consent resou
 
 The API endpoint allows the PISP to ask an ASPSP to confirm funds on an **international-scheduled-payment-consent** resource, where the payment is for immediate debit.
 
-* An ASPSP can only respond to a funds confirmation request if the **international-scheduled-payment-consent** resource has an `AUTH` status. If the status is not `AUTH`, an ASPSP **must** respond with a 400 (Bad Request) and a `UK.OBIE.Resource.InvalidConsentStatus` error code.
+* An ASPSP can only respond to a funds confirmation request if the **international-scheduled-payment-consent** resource has an `AUTH` status. If the status is not `AUTH`, an ASPSP **must** respond with a 400 (Bad Request) and a `UK.OBResource.InvalidConsentStatus` error code.
 * Confirmation of funds requests do not affect the status of the **international-scheduled-payment-consent** resource.
 
 ### State Model
