@@ -116,35 +116,35 @@ Prior to Version 3.1.5, there was no specific flag to indicate the mutability of
 
 Since Version 3.1.5, the mutability for a transaction has been made explicit:
 
-* A transaction with a `Status` of `Pending` is mutable
-* A transaction with a `Status` of `Booked` where the `TransactionMutability` flag is not specified is immutable.
-* A transaction with a `Status` of `Booked` with the `TransactionMutability` flag set to `Immutable` is immutable.
-* A transaction with a `Status` of `Booked` with the `TransactionMutability` flag set to `Mutable` is mutable.
+* A transaction with a `Status` of `PDNG` is mutable
+* A transaction with a `Status` of `BOOK` where the `TransactionMutability` flag is not specified is immutable.
+* A transaction with a `Status` of `BOOK` with the `TransactionMutability` flag set to `Immutable` is immutable.
+* A transaction with a `Status` of `BOOK` with the `TransactionMutability` flag set to `Mutable` is mutable.
 
 #### Examples to illustrate mutability
 
 ```
-// Mutable ( Status is Pending )
+// Mutable ( Status is PDNG )
 {
-  "Status": "Pending",
+  "Status": "PDNG",
   ...
 }
 
-// Immutable (Status is Booked, TransactionMutability is not specified)
+// Immutable (Status is BOOK, TransactionMutability is not specified)
 {
-  "Status": "Booked"
+  "Status": "BOOK"
   ...
 }
 
 // Mutable
 {
-  "Status": "Booked",
+  "Status": "BOOK",
   "TransactionMutability": "Mutable"
 }
 
 // Immutable
 {
-  "Status": "Booked",
+  "Status": "BOOK",
   "TransactionMutability": "Immutable"
 }
 ```
@@ -159,16 +159,20 @@ The resource differs depending on the permissions (ReadTransactionsBasic and Rea
   * OBReadTransaction6/Data/Transaction/MerchantDetails
   * OBReadTransaction6/Data/Transaction/CreditorAgent
   * OBReadTransaction6/Data/Transaction/CreditorAccount
+  * OBReadTransaction6/Data/Transaction/UltimateCreditor
   * OBReadTransaction6/Data/Transaction/DebtorAgent
   * OBReadTransaction6/Data/Transaction/DebtorAccount
+  * OBReadTransaction6/Data/Transaction/UltimateDebtor
 * If the **ReadTransactionsDetail** is granted by the PSU:
   * OBReadTransaction6/Data/Transaction/TransactionInformation **may** be returned if applicable to the transaction and ASPSP (0..1)
   * OBReadTransaction6/Data/Transaction/Balance **may** be returned if applicable to the transaction and ASPSP (0..1)
   * OBReadTransaction6/Data/Transaction/MerchantDetails **may** be returned if applicable to the transaction and ASPSP (0..1)
   * OBReadTransaction6/Data/Transaction/CreditorAgent **may** be returned if applicable to the transaction and ASPSP (0..1)
   * OBReadTransaction6/Data/Transaction/CreditorAccount **may** be returned if applicable to the transaction and ASPSP (0..1)
+  * OBReadTransaction6/Data/Transaction/UltimateCreditor **may** be returned if applicable to the transaction and ASPSP (0..1)
   * OBReadTransaction6/Data/Transaction/DebtorAgent **may** be returned if applicable to the transaction and ASPSP (0..1)
   * OBReadTransaction6/Data/Transaction/DebtorAccount **may** be returned if applicable to the transaction and ASPSP (0..1)
+  * OBReadTransaction6/Data/Transaction/UltimateDebtor **may** be returned if applicable to the transaction and ASPSP (0..1)
 
 * If the ReadPAN permission is granted by the PSU - the ASPSP may choose to populate the unmasked PAN - if the PAN is being populated in the response for these fields:
 
@@ -194,7 +198,7 @@ The resource differs depending on the permissions (ReadTransactionsBasic and Rea
 | TransactionReference |0..1 |OBReadTransaction6/Data/Transaction/TransactionReference |Unique reference for the transaction. This reference is optionally populated, and may as an example be the FPID in the Faster Payments context. |Max210Text | | |
 | StatementReference |0..n |OBReadTransaction6/Data/Transaction/StatementReference |Unique reference for the statement. This reference may be optionally populated if available. |Max35Text | | |
 | CreditDebitIndicator |1..1 |OBReadTransaction6/Data/Transaction/CreditDebitIndicator |Indicates whether the transaction is a credit or a debit entry. |OBCreditDebitCode |Credit Debit | |
-| Status |1..1 |OBReadTransaction6/Data/Transaction/Status |Status of a transaction entry on the books of the account servicer. |OBEntryStatus1Code |BOOK (Booked) <br> FUTR (Future) <br> INFO (Information) <br> PDNG (Pending)| |
+| Status |1..1 |OBReadTransaction6/Data/Transaction/Status |Status of a transaction entry on the books of the account servicer. |OBEntryStatus1Code |BOOK<br> FUTR <br> INFO <br> PDNG| |
 | TransactionMutability |0..1 |OBReadTransaction6/Data/Transaction/TransactionMutability |Specifies the Mutability of the Transaction record. |OBTransactionMutability1Code |Mutable Immutable | |
 | BookingDateTime |1..1 |OBReadTransaction6/Data/Transaction/BookingDateTime |Date and time when a transaction entry is posted to an account on the account servicer's books. Usage: Booking date is the expected booking date, unless the status is booked, in which case it is the actual booking date. |ISODateTime | | |
 | ValueDateTime |0..1 |OBReadTransaction6/Data/Transaction/ValueDateTime |Date and time at which assets become available to the account owner in case of a credit entry, or cease to be available to the account owner in case of a debit transaction entry. Usage: If transaction entry status is pending and value date is present, then the value date refers to an expected/requested value date. For transaction entries subject to availability/float and for which availability information is provided, the value date must not be used. In this case the availability component identifies the number of availability days. |ISODateTime | | |
@@ -225,7 +229,7 @@ The resource differs depending on the permissions (ReadTransactionsBasic and Rea
 | PaymentPurposeCode |0..1 |OBReadTransaction6/Data/Transaction/PaymentPurposeCode | For a full description see `ExternalPurpose1Code` [here](https://github.com/OpenBankingUK/External_Interal_CodeSets) |OBExternalPaymentPurpose1Code | | |
 | Balance |0..1 |OBReadTransaction6/Data/Transaction/Balance |Set of elements used to define the balance as a numerical representation of the net increases and decreases in an account after a transaction entry is applied to the account. |OBTransactionCashBalance | | |
 | CreditDebitIndicator |1..1 |OBReadTransaction6/Data/Transaction/Balance/CreditDebitIndicator |Indicates whether the balance is a credit or a debit balance. Usage: A zero balance is considered to be a credit balance. |OBCreditDebitCode |Credit Debit | |
-| Type |1..1 |OBReadTransaction6/Data/Transaction/Balance/Type |Balance type, in a coded form. |OBBalanceType1Code |CLAV (ClosingAvailable)<br>CLBS <br> XPCH <br>FWAV  <br>INFO <br>ITAV  <br>ITBD <br>OPAV <br>OPBD <br>PRCD  | |
+| Type |1..1 |OBReadTransaction6/Data/Transaction/Balance/Type |Balance type, in a coded form. |OBBalanceType1Code |CLAV <br>CLBS <br> XPCH <br>FWAV  <br>INFO <br>ITAV  <br>ITBD <br>OPAV <br>OPBD <br>PRCD  | |
 | Amount |1..1 |OBReadTransaction6/Data/Transaction/Balance/Amount |Amount of money of the cash balance after a transaction entry is applied to the account.. |OBActiveOrHistoricCurrencyAndAmount | | |
 | Amount |1..1 |OBReadTransaction6/Data/Transaction/Balance/Amount/Amount |A number of monetary units specified in an active currency where the unit of currency is explicit and compliant with ISO 4217. |OBActiveCurrencyAndAmount_SimpleType | |`^\d{1,13}$|^\d{1,13}\.\d{1,5}$` |
 | Currency |1..1 |OBReadTransaction6/Data/Transaction/Balance/Amount/Currency |A code allocated to a currency by a Maintenance Agency under an international identification scheme, as described in the latest edition of the international standard ISO 4217 "Codes for the representation of currencies and funds". |ActiveOrHistoricCurrencyCode | |^[A-Z]{3,3}$ |
@@ -238,7 +242,7 @@ The resource differs depending on the permissions (ReadTransactionsBasic and Rea
 | Identification |0..1 |OBReadTransaction6/Data/Transaction/CreditorAgent/Identification |Unique and unambiguous identification of a financial institution or a branch of a financial institution. |Max35Text | | |
 | Name |0..1 |OBReadTransaction6/Data/Transaction/CreditorAgent/Name |Name by which an agent is known and which is usually used to identify that agent. |Max140Text | | |
 | PostalAddress |0..1 |OBReadTransaction6/Data/Transaction/CreditorAgent/PostalAddress |Information that locates and identifies a specific address, as defined by postal services. |OBPostalAddress6 | | |
-| AddressType |0..1 |OBReadTransaction6/Data/Transaction/CreditorAgent/PostalAddress/AddressType |BIZZ (Business)<br>DLVY (Delivery To)<br>MLTO (Mail To)<br>PBOX (PO Box)<br>ADDR (Postal)<br>HOME (Residential)<br>CORR (Correspondence)<br>STAT (Statement) | ||
+| AddressType |0..1 |OBReadTransaction6/Data/Transaction/CreditorAgent/PostalAddress/AddressType |BIZZ<br>DLVY <br>MLTO<br>PBOX<br>ADDR<br>HOME<br>CORR<br>STAT | ||
 | Department |0..1 |OBReadTransaction6/Data/Transaction/CreditorAgent/PostalAddress/Department |Identification of a division of a large organisation or building. |Max70Text | | |
 | SubDepartment |0..1 |OBReadTransaction6/Data/Transaction/CreditorAgent/PostalAddress/SubDepartment |Identification of a sub-division of a large organisation or building. |Max70Text | | |
 | StreetName |0..1 |OBReadTransaction6/Data/Transaction/CreditorAgent/PostalAddress/StreetName |Name of a street or thoroughfare. |Max70Text | | |
@@ -265,7 +269,7 @@ The resource differs depending on the permissions (ReadTransactionsBasic and Rea
 | Identification |0..1 |OBReadTransaction6/Data/Transaction/DebtorAgent/Identification |Unique and unambiguous identification of a financial institution or a branch of a financial institution. |Max35Text | | |
 | Name |0..1 |OBReadTransaction6/Data/Transaction/DebtorAgent/Name |Name by which an agent is known and which is usually used to identify that agent. |Max140Text | | |
 | PostalAddress |0..1 |OBReadTransaction6/Data/Transaction/DebtorAgent/PostalAddress |Information that locates and identifies a specific address, as defined by postal services. |OBPostalAddress6 | | |
-| AddressType |0..1 |OBReadTransaction6/Data/Transaction/DebtorAgent/PostalAddress/AddressType |BIZZ (Business)<br>DLVY (Delivery To)<br>MLTO (Mail To)<br>PBOX (PO Box)<br>ADDR (Postal)<br>HOME (Residential)<br>CORR (Correspondence)<br>STAT (Statement) | ||
+| AddressType |0..1 |OBReadTransaction6/Data/Transaction/DebtorAgent/PostalAddress/AddressType |BIZZ<br>DLVY<br>MLTO <br>PBOX<br>ADDR<br>HOME<br>CORR<br>STAT | ||
 | Department |0..1 |OBReadTransaction6/Data/Transaction/DebtorAgent/PostalAddress/Department |Identification of a division of a large organisation or building. |Max70Text | | |
 | SubDepartment |0..1 |OBReadTransaction6/Data/Transaction/DebtorAgent/PostalAddress/SubDepartment |Identification of a sub-division of a large organisation or building. |Max70Text | | |
 | StreetName |0..1 |OBReadTransaction6/Data/Transaction/DebtorAgent/PostalAddress/StreetName |Name of a street or thoroughfare. |Max70Text | | |
@@ -297,17 +301,53 @@ The resource differs depending on the permissions (ReadTransactionsBasic and Rea
 | Issuer |0..1 |OBReadTransaction6/Data/Transaction/ExtendedProprietaryBankTransactionCodes/Issuer | Identification of the issuer of the proprietary bank transaction code.|Max35Text | | |
 | Description |0..1 |OBReadTransaction6/Data/Transaction/ExtendedProprietaryBankTransactionCodes/Description | Description of the code and its usage on the ASPSP channel|Max500Text | | |
 | SupplementaryData |0..1 |OBReadTransaction6/Data/Transaction/SupplementaryData |Additional information that can not be captured in the structured fields and/or any other specific block. |OBSupplementaryData1 | | |
-| CategoryPurposeCode | 0..1 | OBReadTransaction6/Data/Transaction/CategoryPurposeCode |Enumeration to outline the purpose to the underlying purpose of the payment<br> BONU (BonusPayment)<br>CASH (CashManagementTransfer)<br>CBLK (CardBulkClearing)<br>CCRD (CreditCardPayment)<br>CGWV (CarrierGuardedWholesaleValuables)<br>CIPC (CashInPreCredit)<br>CONC (CashOutNotesCoins)<br>CORT (TradeSettlementPayment)<br>DCRD (DebitCardPayment)<br>DIVI (Dividend)<br>DVPM (DeliverAgainstPayment)<br>EPAY (Epayment)<br>FCDT (ForeignCurrencyDomesticTransfer)<br>FCIN (FeeCollectionAndInterest)<br>FCOL (FeeCollection)<br>GOVT (GovernmentPayment)<br>GP2P (PersontoPersonPayment)<br>HEDG (Hedging)<br>ICCP (IrrevocableCreditCardPayment)<br>IDCP (IrrevocableDebitCardPayment)<br>INTC (IntraCompanyPayment)<br>INTE (Interest)<br>LBOX (LockboxTransactions)<br>LOAN (Loan)<br>MP2B (Commercial)<br>MP2P (Consumer)<br>OTHR (OtherPayment)<br>PENS (PensionPayment)<br>RPRE (Represented)<br>RRCT (ReimbursementReceivedCreditTransfer)<br>RVPM (ReceiveAgainstPayment)<br>SALA (SalaryPayment)<br>SECU (Securities)<br>SSBE (SocialSecurityBenefit)<br>SUPP (SupplierPayment)<br>SWEP (CashManagementSweepAccount)<br>TAXS (TaxPayment)<br>TOPG (CashManagementTopAccount)<br>TRAD (Trade)<br>TREA (TreasuryPayment)<br>VATX (ValueAddedTaxPayment)<br>VOST (Crossborder MIPayments)<br>WHLD (WithHolding)<br>ZABA (CashManagementZeroBalanceAccount)| OBCategoryPurposeCode| | |
+| CategoryPurposeCode | 0..1 | OBReadTransaction6/Data/Transaction/CategoryPurposeCode |Enumeration to outline the purpose to the underlying purpose of the payment<br> BONU<br>CASH<br>CBLK<br>CCRD<br>CGWV<br>CIPC<br>CONC <br>CORT<br>DCRD<br>DIVI<br>DVPM<br>EPAY<br>FCDT<br>FCIN <br>FCOL<br>GOVT<br>GP2P<br>HEDG<br>ICCP<br>IDCP<br>INTC <br>INTE<br>LBOX<br>LOAN<br>MP2B<br>MP2P<br>OTHR <br>PENS <br>RPRE<br>RRCT<br>RVPM<br>SALA<br>SECU<br>SSBE<br>SUPP<br>SWEP<br>TAXS<br>TOPG<br>TRAD<br>TREA<br>VATX<br>VOST <br>WHLD<br>ZABA| OBCategoryPurposeCode| | |
 | UltimateCreditor |0..1 |OBReadTransaction6/Data/Transaction/UltimateCreditor|Set of elements used to identify a person or an organisation. | OBPartyIdentification43 | | |
 | SchemeName |0..1 |OBReadTransaction6/Data/Transaction/UltimateCreditor/SchemeName |Name of the identification scheme, in a coded form as published in an external list. |OBExternalAccountIdentification4Code | | |
 | Identification |0..1 |OBReadTransaction6/Data/Transaction/UltimateCreditor/Identification |Identification assigned by an institution to identify an account. This identification is known by the account owner. |Max256Text | | |
 | Name |0..1 |OBReadTransaction6/Data/Transaction/UltimateCreditor/Name |The account name is the name or names of the account owner(s) represented at an account level, as displayed by the ASPSP's online channels. Note, the account name is not the product name or the nickname of the account. |Max350Text | | |
 | LEI |0..1 | OBReadTransaction6/Data/Transaction/UltimateCreditor/LEI |Legal Entity Identification by which a party is known and which is usually used to identify that party. |Max20Text | | |
+| PostalAddress |0..1 |OBReadTransaction6/Data/Transaction/UltimateCreditor/PostalAddress |Information that locates and identifies a specific address, as defined by postal services. |OBPostalAddress6 | | |
+| AddressType |0..1 |OBReadTransaction6/Data/Transaction/UltimateCreditor/PostalAddress/AddressType |BIZZ<br>DLVY <br>MLTO<br>PBOX<br>ADDR<br>HOME<br>CORR<br>STAT | ||
+| Department |0..1 |OBReadTransaction6/Data/Transaction/UltimateCreditor/PostalAddress/Department |Identification of a division of a large organisation or building. |Max70Text | | |
+| SubDepartment |0..1 |OBReadTransaction6/Data/Transaction/UltimateCreditor/PostalAddress/SubDepartment |Identification of a sub-division of a large organisation or building. |Max70Text | | |
+| StreetName |0..1 |OBReadTransaction6/Data/Transaction/UltimateCreditor/PostalAddress/StreetName |Name of a street or thoroughfare. |Max70Text | | |
+| BuildingNumber |0..1 |OBReadTransaction6/Data/Transaction/UltimateCreditor/PostalAddress/BuildingNumber |Number that identifies the position of a building on a street. |Max16Text | | |
+| BuildingName |0..1 |OBReadTransaction6/Data/Transaction/UltimateCreditor/PostalAddress/BuildingName |Name of a referenced building. |Max70Text | | |
+| Floor |0..1 |OBReadTransaction6/Data/Transaction/UltimateCreditor/PostalAddress/Floor|Number that identifies the level within a building. |Max16Text | | |
+| UnitNumber|0..1 |OBReadTransaction6/Data/Transaction/UltimateCreditor/PostalAddress/UnitNumber|Number that identifies the unit of a specific address |Max16Text | | |
+| Room |0..1 |OBReadTransaction6/Data/Transaction/UltimateCreditor/PostalAddress/Room|Information that locates and identifies a room to form part of an address. |Max70Text | | |
+| TownLocationName |0..1 |OBReadTransaction6/Data/Transaction/UltimateCreditor/PostalAddress/TownLocationName |Name of a built-up area, with defined boundaries, and a local government. |Max35Text | | |
+| DistrictName |0..1 |OBReadTransaction6/Data/Transaction/UltimateCreditor/PostalAddress/DistrictName |Number that of the regional area, known as a district, which forms part of an address. |Max35Text | | |
+| CareOf |0..1 |OBReadTransaction6/Data/Transaction/UltimateCreditor/PostalAddress/CareOf |The 'care of' address is used whenever sending mail to a person or organisation who does not actually live or work at the address. They will receive the mail for the individual. |Max70Text | | |
+| PostCode |0..1 |OBReadTransaction6/Data/Transaction/UltimateCreditor/PostalAddress/PostCode |Identifier consisting of a group of letters and/or numbers that is added to a postal address to assist the sorting of mail. |Max16Text | | |
+| TownName |0..1 |OBReadTransaction6/Data/Transaction/UltimateCreditor/PostalAddress/TownName |Name of a built-up area, with defined boundaries, and a local government. |Max35Text | | |
+| CountrySubDivision |0..1 |OBReadTransaction6/Data/Transaction/UltimateCreditor/PostalAddress/CountrySubDivision |Identifies a subdivision of a country such as state, region, county. |Max35Text | | |
+| Country |0..1 |OBReadTransaction6/Data/Transaction/UltimateCreditor/PostalAddress/Country |Nation with its own government. |CountryCode | |^[A-Z]{2,2}$ |
+| AddressLine |0..7 |OBReadTransaction6/Data/Transaction/UltimateCreditor/PostalAddress/AddressLine |Information that locates and identifies a specific address, as defined by postal services, presented in free format text. |Max70Text | | | |
 | UltimateDebtor |0..1 |OBReadTransaction6/Data/Transaction/UltimateDebtor|Set of elements used to identify a person or an organisation. | | | |
 | SchemeName |0..1 |OBReadTransaction6/Data/Transaction/UltimateDebtor/SchemeName |Name of the identification scheme, in a coded form as published in an external list. |OBExternalAccountIdentification4Code | | |
 | Identification |0..1 |OBReadTransaction6/Data/Transaction/UltimateDebtor/Identification |Identification assigned by an institution to identify an account. This identification is known by the account owner. |Max256Text | | |
 | Name |0..1 |OBReadTransaction6/Data/Transaction/UltimateDebtor/Name |The account name is the name or names of the account owner(s) represented at an account level, as displayed by the ASPSP's online channels. Note, the account name is not the product name or the nickname of the account. |Max350Text | | |
 | LEI |0..1 | OBReadTransaction6/Data/Transaction/UltimateDebtor/LEI |Legal Entity Identification by which a party is known and which is usually used to identify that party. |Max20Text | | |
+| PostalAddress |0..1 |OBReadTransaction6/Data/Transaction/UltimateDebtor/PostalAddress |Information that locates and identifies a specific address, as defined by postal services. |OBPostalAddress6 | | |
+| AddressType |0..1 |OBReadTransaction6/Data/Transaction/UltimateDebtor/PostalAddress/AddressType |BIZZ<br>DLVY <br>MLTO<br>PBOX<br>ADDR<br>HOME<br>CORR<br>STAT | ||
+| Department |0..1 |OBReadTransaction6/Data/Transaction/UltimateDebtor/PostalAddress/Department |Identification of a division of a large organisation or building. |Max70Text | | |
+| SubDepartment |0..1 |OBReadTransaction6/Data/Transaction/UltimateDebtor/PostalAddress/SubDepartment |Identification of a sub-division of a large organisation or building. |Max70Text | | |
+| StreetName |0..1 |OBReadTransaction6/Data/Transaction/UltimateDebtor/PostalAddress/StreetName |Name of a street or thoroughfare. |Max70Text | | |
+| BuildingNumber |0..1 |OBReadTransaction6/Data/Transaction/UltimateDebtor/PostalAddress/BuildingNumber |Number that identifies the position of a building on a street. |Max16Text | | |
+| BuildingName |0..1 |OBReadTransaction6/Data/Transaction/UltimateDebtor/PostalAddress/BuildingName |Name of a referenced building. |Max70Text | | |
+| Floor |0..1 |OBReadTransaction6/Data/Transaction/UltimateDebtor/PostalAddress/Floor|Number that identifies the level within a building. |Max16Text | | |
+| UnitNumber|0..1 |OBReadTransaction6/Data/Transaction/UltimateDebtor/PostalAddress/UnitNumber|Number that identifies the unit of a specific address |Max16Text | | |
+| Room |0..1 |OBReadTransaction6/Data/Transaction/UltimateDebtor/PostalAddress/Room|Information that locates and identifies a room to form part of an address. |Max70Text | | |
+| TownLocationName |0..1 |OBReadTransaction6/Data/Transaction/UltimateDebtor/PostalAddress/TownLocationName |Name of a built-up area, with defined boundaries, and a local government. |Max35Text | | |
+| DistrictName |0..1 |OBReadTransaction6/Data/Transaction/UltimateDebtor/PostalAddress/DistrictName |Number that of the regional area, known as a district, which forms part of an address. |Max35Text | | |
+| CareOf |0..1 |OBReadTransaction6/Data/Transaction/UltimateDebtor/PostalAddress/CareOf |The 'care of' address is used whenever sending mail to a person or organisation who does not actually live or work at the address. They will receive the mail for the individual. |Max70Text | | |
+| PostCode |0..1 |OBReadTransaction6/Data/Transaction/UltimateDebtor/PostalAddress/PostCode |Identifier consisting of a group of letters and/or numbers that is added to a postal address to assist the sorting of mail. |Max16Text | | |
+| TownName |0..1 |OBReadTransaction6/Data/Transaction/UltimateDebtor/PostalAddress/TownName |Name of a built-up area, with defined boundaries, and a local government. |Max35Text | | |
+| CountrySubDivision |0..1 |OBReadTransaction6/Data/Transaction/UltimateDebtor/PostalAddress/CountrySubDivision |Identifies a subdivision of a country such as state, region, county. |Max35Text | | |
+| Country |0..1 |OBReadTransaction6/Data/Transaction/UltimateDebtor/PostalAddress/Country |Nation with its own government. |CountryCode | |^[A-Z]{2,2}$ |
+| AddressLine |0..7 |OBReadTransaction6/Data/Transaction/UltimateDebtor/PostalAddress/AddressLine |Information that locates and identifies a specific address, as defined by postal services, presented in free format text. |Max70Text | | | |
 
 
 ## Usage Examples
