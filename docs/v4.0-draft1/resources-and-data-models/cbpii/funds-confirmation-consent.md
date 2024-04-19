@@ -73,9 +73,17 @@ After consent has been agreed the **funds-confirmation-consent** resource may ha
 | 2 |AUTH |The Funds Confirmation Consent has been successfully agreed. |
 | 3| COND | The Funds Confirmation Consent has been Consumed |
 
+Changes to the StatusCode, such as being rejected, should be captured in `StatusReason`, an array of `StatusReasonCode`, `StatusReasonDescription` and `Path`.  
+
+| Field | Description |
+|---|---|
+| StatusReasonCode | Code directly relating to the reason for the current Status. See [the codelists](https://github.com/OpenBankingUK/External_Interal_CodeSets) for appropriate values. |
+| StatusReasonDescription | Description of why the code was returned |
+|Path| Recommended but optional reference to JSON path if relevant to the code |
+
 #### Status Flow
 
-This is the state diagram for the Status.
+This is the state diagram for StatusCode.
 
 ![CoFStateFlow](./images/PO_Consent.png)
 
