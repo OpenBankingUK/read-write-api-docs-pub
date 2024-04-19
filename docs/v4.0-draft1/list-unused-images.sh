@@ -6,7 +6,7 @@
 # The script finds the images in the repository and uses ripgrep (rg) to check 
 # if they are referenced / mentioned within any of the markdown files.
 #
-# NOTE: it lists directories too (Max35Text: don't list them)
+# NOTE: it lists directories too (todo: don't list them)
 
 
 # readarray images < <(find . -type f \( -name '*.png' -o -name '*.gif' -o -name '*.jpg' \))
