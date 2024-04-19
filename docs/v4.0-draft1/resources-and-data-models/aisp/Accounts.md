@@ -121,6 +121,7 @@ If the ReadPAN permission is granted by the PSU, the ASPSP may choose to populat
 | Identification |1..1 |OBReadAccount6/Data/Account/Account/Identification |Identification assigned by an institution to identify an account. This identification is known by the account owner. |Max256Text | | |
 | Name |0..1 |OBReadAccount6/Data/Account/Account/Name |The account name is the name or names of the account owner(s) represented at an account level, as displayed by the ASPSP's online channels. Note, the account name is not the product name or the nickname of the account. |Max350Text | | |
 | SecondaryIdentification |0..1 |OBReadAccount6/Data/Account/Account/SecondaryIdentification |This is secondary identification of the account, as assigned by the account servicing institution. This can be used by building societies to additionally identify accounts with a roll number (in addition to a sort code and account number combination). |Max34Text | | |
+| LEI |0..1 | OBReadAccount6/Data/Account/Account/LEI |Legal Entity Identification by which a party is known and which is usually used to identify that party. |Max20Text | | |
 | StatementFrequencyAndFormat |0..* |OBReadAccount6/Data/Account/StatementFrequencyAndFormat |The frequency and format of the statements delivered for the account |StatementFrequencyAndFormat | | |
 | DeliveryAddress |0..1 |OBReadAccount6/Data/Account/StatementFrequencyAndFormat/DeliveryAddress |The address the statement is delivered to| OBPostalAddress6 | |
 | Frequency |0..1 |OBReadAccount6/Data/Account/StatementFrequencyAndFormat/Frequency |YEAR<br>DAIL<br>INDA<br>MNTH<br>QURT<br>MIAN<br>TEND<br>MOVE<br>WEEK |OBFrequency2 | | |
@@ -130,6 +131,7 @@ If the ReadPAN permission is granted by the PSU, the ASPSP may choose to populat
 | Name |0..1 |OBReadAccount6/Data/Account/Servicer/Name |Name of Service User. |Max140Text | | |
 | SchemeName |1..1 |OBReadAccount6/Data/Account/Servicer/SchemeName |Name of the identification scheme, in a coded form as published in an external list. |OBExternalFinancialInstitutionIdentification4Code | | |
 | Identification |1..1 |OBReadAccount6/Data/Account/Servicer/Identification |Unique and unambiguous identification of the servicing institution. |Max35Text | | |
+
 
 ## Usage Examples
 
