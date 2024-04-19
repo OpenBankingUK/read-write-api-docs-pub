@@ -7,8 +7,8 @@
     "ReadRefundAccount": "Yes",
 
     "ControlParameters": {
-      "PSUAuthenticationMethods": [ "UK.OBIE.SCA" ],
-      "VRPType": "UK.OBIE.VRPType.Sweeping",
+      "PSUAuthenticationMethods": [ "UK.OB.SCA" ],
+      "VRPType": "UK.OB.VRPType.Sweeping",
       "ValidFromDateTime": "2017-06-05T15:15:13+00:00",
       "ValidToDateTime": "2020-06-05T15:15:13+00:00",
       "MaximumIndividualAmount": {
@@ -27,7 +27,7 @@
 
     "Initiation": {
       "DebtorAccount": {
-        "SchemeName": "UK.OBIE.IBAN",
+        "SchemeName": "UK.OB.IBAN",
         "Identification": "GB76LOYD30949301273801",
         "Name": "Marcus Sweepimus"
       },

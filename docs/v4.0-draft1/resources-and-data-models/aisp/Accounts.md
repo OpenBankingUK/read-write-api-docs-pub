@@ -70,11 +70,11 @@ Each account resource will have a unique and immutable AccountId.
     * Having a SchemeName for the Account and Servicer blocks means we can be flexible to accommodate multiple types of accounts.
 * For common Domestic UK identification schemes:
     * Account/Account
-        * Where "UK.OBIE.SortCodeAccountNumber" is specified as the SchemeName, the Identification field **must** be populated with the 6 digit Sort Code and 8 digit Account Number (a 14 digit field).
-        * Where "UK.OBIE.IBAN" is specified as the SchemeName, the Identification field must be populated with the full IBAN.
-        * Where "UK.OBIE.PAN" is specified as the SchemeName, the Identification field **must** be populated with the primary PAN linked to the account. An ASPSP **may** choose to mask digits returned in the Identification field.
+        * Where "UK.OB.SortCodeAccountNumber" is specified as the SchemeName, the Identification field **must** be populated with the 6 digit Sort Code and 8 digit Account Number (a 14 digit field).
+        * Where "UK.OB.IBAN" is specified as the SchemeName, the Identification field must be populated with the full IBAN.
+        * Where "UK.OB.PAN" is specified as the SchemeName, the Identification field **must** be populated with the primary PAN linked to the account. An ASPSP **may** choose to mask digits returned in the Identification field.
     * Account/Servicer
-        * Where "UK.OBIE.BICFI" is populated as the SchemeName, the Identification field **must** be populated with the BIC.
+        * Where "UK.OB.BICFI" is populated as the SchemeName, the Identification field **must** be populated with the BIC.
 * The SecondaryIdentification field is used to identify an account in addition to the primary Account/Identification field. SecondaryIdentification may be populated with a roll number for building societies, or a currency code where an account has multiple currency sub-accounts.
 * The `SwitchStatus` field is used to indicate that an account is undergoing an account switch.
   * An ASPSP may populate this field with the value `UK.CASS.NotSwitched` to indicate that the account has not been switched.
@@ -173,7 +173,7 @@ Content-Type: application/json
         "OpeningDate": "01-05-2002",
         "Account": [
 			{
-	          	"SchemeName": "UK.OBIE.SortCodeAccountNumber",
+	          	"SchemeName": "UK.OB.SortCodeAccountNumber",
           		"Identification": "80200110203345",
     	    	"Name": "Mr Kevin",
         	  	"SecondaryIdentification": "00021"
@@ -190,7 +190,7 @@ Content-Type: application/json
         "Nickname": "Household",
         "Account": [
 			{
-          		"SchemeName": "UK.OBIE.SortCodeAccountNumber",
+          		"SchemeName": "UK.OB.SortCodeAccountNumber",
           		"Identification": "80200110203348",
           		"Name": "Mr Kevin"
         	}
@@ -244,7 +244,7 @@ Content-Type: application/json
         "Nickname": "Bills",
         "Account": [
 			{
-          		"SchemeName": "UK.OBIE.SortCodeAccountNumber",
+          		"SchemeName": "UK.OB.SortCodeAccountNumber",
           		"Identification": "80200110203345",
           		"Name": "Mr Kevin",
           		"SecondaryIdentification": "00021"
