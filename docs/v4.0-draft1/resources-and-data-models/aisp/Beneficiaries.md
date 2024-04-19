@@ -76,8 +76,8 @@ This is the expected behaviour of the beneficiaries endpoints, in the case an AS
 
 * The CreditorAccount is used consistently throughout the Account Information APIs to identify an account
 * Due to internationalisation requirements:
-  * The CreditorAgent object may be used to represent either (1) the BIC (with UK.OBBICFI in the SchemeName field and the BIC in the Identification field), or (2) the Name and Address details for the financial institution.
-  * The CreditorAccount/Identification field may be used to represent a non-UK specific branch and account numbering scheme with "UK.OBSortCodeAccountNumber" being populated in the CreditorAccount/SchemeName.
+  * The CreditorAgent object may be used to represent either (1) the BIC (with UK.OBIE.BICFI in the SchemeName field and the BIC in the Identification field), or (2) the Name and Address details for the financial institution.
+  * The CreditorAccount/Identification field may be used to represent a non-UK specific branch and account numbering scheme with "UK.OBIE.SortCodeAccountNumber" being populated in the CreditorAccount/SchemeName.
 * For the /accounts/{AccountId}/beneficiaries endpoint, the CreditorAccount and CreditorAgent blocks represent the account of the beneficiary that is receiving funds (so has been named the CreditorAccount for consistency with the PISP use case).
 * The beneficiaries may be Trusted Beneficiaries as well as other types of beneficiaries as indicated by the BeneficiaryType property. When the BeneficiaryType property is not specified, the consumer should refer to the ASPSP's developer portal.
 
@@ -167,7 +167,7 @@ Content-Type: application/json
         "BeneficiaryId": "Ben1",
         "Reference": "Towbar Club",
         "CreditorAccount": {
-          "SchemeName": "UK.OBSortCodeAccountNumber",
+          "SchemeName": "UK.OBIE.SortCodeAccountNumber",
           "Identification": "80200112345678",
           "Name": "Mrs Juniper"
         }
@@ -213,7 +213,7 @@ Content-Type: application/json
         "BeneficiaryId": "Ben1",
         "Reference": "Towbar Club",
         "CreditorAccount": {
-          "SchemeName": "UK.OBSortCodeAccountNumber",
+          "SchemeName": "UK.OBIE.SortCodeAccountNumber",
           "Identification": "80200112345678",
           "Name": "Mrs Juniper"
         }
@@ -223,7 +223,7 @@ Content-Type: application/json
         "BeneficiaryId": "Ben37",
         "Reference": "Golf Club",
         "CreditorAccount": {
-          "SchemeName": "UK.OBSortCodeAccountNumber",
+          "SchemeName": "UK.OBIE.SortCodeAccountNumber",
           "Identification": "87562298675421",
           "Name": "Mr Large"
         }
@@ -251,7 +251,7 @@ Content-Type: application/json
         "BeneficiaryType": "Ordinary",
         "Reference": "Towbar Club",
         "CreditorAccount": {
-          "SchemeName": "UK.OBSortCodeAccountNumber",
+          "SchemeName": "UK.OBIE.SortCodeAccountNumber",
           "Identification": "80200112345678",
           "Name": "Mrs Juniper"
         }
@@ -262,7 +262,7 @@ Content-Type: application/json
         "BeneficiaryType": "Trusted",
         "Reference": "Champagne Club",
         "CreditorAccount": {
-          "SchemeName": "UK.OBSortCodeAccountNumber",
+          "SchemeName": "UK.OBIE.SortCodeAccountNumber",
           "Identification": "80200112345678",
           "Name": "Mr Tully"
         }
@@ -272,7 +272,7 @@ Content-Type: application/json
         "BeneficiaryId": "Ben3",
         "Reference": "O2-234823781",
         "CreditorAccount": {
-          "SchemeName": "UK.OBSortCodeAccountNumber",
+          "SchemeName": "UK.OBIE.SortCodeAccountNumber",
           "Identification": "80200112345678",
           "Name": "Mr Tully"
         }

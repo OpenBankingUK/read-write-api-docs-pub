@@ -1122,7 +1122,7 @@ Content-Type: application/json
       "Charges":[
          {
             "ChargeBearer":"BorneByDebtor",
-            "Type":"UK.OBChapsOut",
+            "Type":"UK.OBIE.ChapsOut",
             "Amount":{
                "Amount":"30.00",
                "Currency":"GBP"
@@ -1143,7 +1143,7 @@ Content-Type: application/json
 ## Balance Transfer
 Below in an example illustrating a balance transfer offer available on a Card A.
 
-To facilitate a Balance Transfer, a PISP can initiate a Payment from Card B to Card A with LocalInstrument as UK.OBBalanceTransfer, Account SchemeName as UK.OBPAN and if there is an Offer Code/Id provided by Issuer of the Card A, then it can be supplied in the field: RemittanceInformation.Reference.
+To facilitate a Balance Transfer, a PISP can initiate a Payment from Card B to Card A with LocalInstrument as UK.OBIE.BalanceTransfer, Account SchemeName as UK.OBIE.PAN and if there is an Offer Code/Id provided by Issuer of the Card A, then it can be supplied in the field: RemittanceInformation.Reference.
 Example below:
 
 ### POST /domestic-payment-consents request

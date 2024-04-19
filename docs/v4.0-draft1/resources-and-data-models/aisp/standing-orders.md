@@ -197,7 +197,7 @@ Content-Type: application/json
         },
         "StandingOrderStatusCode": "Active",
         "CreditorAccount": {
-          "SchemeName": "UK.OBSortCodeAccountNumber",
+          "SchemeName": "UK.OBIE.SortCodeAccountNumber",
           "Identification": "80200112345678",
           "Name": "Mrs Juniper"
         }
@@ -266,7 +266,7 @@ Content-Type: application/json
         },
         "StandingOrderStatusCode": "Active",
         "CreditorAccount": {
-          "SchemeName": "UK.OBSortCodeAccountNumber",
+          "SchemeName": "UK.OBIE.SortCodeAccountNumber",
           "Identification": "80200112345678",
           "Name": "Mrs Juniper"
         }
@@ -299,7 +299,7 @@ Content-Type: application/json
         },
         "StandingOrderStatusCode": "Active",
         "CreditorAccount": {
-          "SchemeName": "UK.OBSortCodeAccountNumber",
+          "SchemeName": "UK.OBIE.SortCodeAccountNumber",
           "Identification": "23605490179017",
           "Name": "Mr Tee"
         }

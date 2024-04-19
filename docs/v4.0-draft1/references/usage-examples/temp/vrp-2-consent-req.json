@@ -2,8 +2,8 @@
   "Data": {
     "ReadRefundAccount": "Yes",
     "ControlParameters": {
-      "PSUAuthenticationMethods": [ "UK.OBSCA" ],
-      "VRPType": "UK.OBVRPType.Sweeping",
+      "PSUAuthenticationMethods": [ "UK.OBIE.SCA" ],
+      "VRPType": "UK.OBIE.VRPType.Sweeping",
       "ValidFromDateTime": "2017-06-05T15:15:13+00:00",
       "ValidToDateTime": "2020-06-05T15:15:13+00:00",
       "MaximumIndividualAmount": {

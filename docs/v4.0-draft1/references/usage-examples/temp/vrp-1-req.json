@@ -1,11 +1,11 @@
 {
   "Data": {
     "ConsentId": "fe615446-e53a-45ed-954c-ae5d1f97a93b",
-    "PSUAuthenticationMethods": "UK.OBSCA",
+    "PSUAuthenticationMethods": "UK.OBIE.SCA",
 
     "Initiation": {
       "DebtorAccount": {
-        "SchemeName": "UK.OBIBAN",
+        "SchemeName": "UK.OBIE.IBAN",
         "Identification": "GB76LOYD30949301273801",
         "Name": "Marcus Sweepimus"
       },
