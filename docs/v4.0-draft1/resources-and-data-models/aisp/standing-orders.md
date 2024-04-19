@@ -69,18 +69,17 @@ An account (AccountId) may have no standing orders set up, or may have multiple 
   
 ### Frequency Examples
 
-| Frequency |Example |Details |
-| --- |--- |--- |
-| NotKnown |NotKnown |Not known |
-| EvryDay |EvryDay |Every day |
-| EvryWorkgDay |EvryWorkgDay |Every working day |
-| IntrvlDay |IntrvlDay:15 |Every 15 Calendar day. |
-| IntrvlWkDay |IntrvlWkDay:01:03 |Every week, on the 3rd day of the week |
-| IntrvlWkDay |IntrvlWkDay:02:03 |Every 2nd week, on the 3rd day of the week |
-| WkInMnthDay |WkInMnthDay:02:03 |Every month, on the 2nd week of the month, and on the third day of the week |
-| IntrvlMnthDay |IntrvlMnthDay:01:-01 |Every month, on the last day of the month |
-| IntrvlMnthDay |IntrvlMnthDay:06:15 |Every 6th month, on the 15th day of the month |
-| QtrDay |QtrDay:ENGLISH |Paid on the 25th March, 24th June, 29th September and 25th December |
+|Frequency Code | Description |
+|---|---|
+|ADHO|Adhoc|
+|YEAR|Annual|
+|DAIL|Daily|
+|FRTN|Fortnightly|
+|INDA| Intra-day|
+|MNTH| Monthly|
+|QURT| Quarterly|
+|MIAN| Semi-annual|
+|WEEK| Weekly|
 
 ### Permission Codes
 
@@ -116,7 +115,7 @@ If the ReadPAN permission is granted by the PSU, the ASPSP may choose to populat
 | PointInTimeType | 1..1 |OBReadStandingOrder6/Data/MandateRelatedInformation/PointInTimeType |A code indicating the point in time for payment of the Standing Order. Values:<br>ADHO<br>YEAR<br>DALI<br>INDA<br>MNTH<br>QURT<br>MIAN<br>WEEK |OBFrequencyPeriodType | | |
 | PointInTime | 1..1 |OBReadStandingOrder6/Data/MandateRelatedInformation/PointInTime |ISOTime | | |
 | Reason| 0..1 |OBReadStandingOrder6/Data/MandateRelatedInformation/Reason | |Max256Text | |
-| Reference |0..1 |OBReadStandingOrder6/Data/StandingOrder/Reference |Unique reference, as assigned by the creditor, to unambiguously refer to the payment transaction. Usage: If available, the initiating party should provide this reference in the structured remittance information, to enable reconciliation by the creditor upon receipt of the amount of money. If the business context requires the use of a creditor reference or a payment remit identification, and only one identifier can be passed through the end-to-end chain, the creditor's reference or payment remittance identification should be quoted in the end-to-end transaction identification. |Max35Text | | |
+| RemittanceInformation |0..1 |OBReadStandingOrder6/Data/StandingOrder/RemittanceInformation |Information supplied to enable the matching of an entry with the items that the transfer is intended to settle. |Max35Text | | |
 | NextPaymentDateTime |0..1 |OBReadStandingOrder6/Data/StandingOrder/NextPaymentDateTime |The date on which the next payment for a Standing Order schedule will be made. |ISODate | | |
 |LastPaymentDateTime| 0..1| OBReadStandingOrder6/Data/StandingOrder/LastPaymentDateTime |The date on which the last (most recent) payment for a Standing Order schedule was made. |ISODateTime | | |
 | NumberOfPayments |0..1 | OBReadStandingOrder6/Data/StandingOrder/NumberOfPayments| Number of the payments that will be made in completing this frequency sequence including any executed since the sequence start date. |Max35Text | | |

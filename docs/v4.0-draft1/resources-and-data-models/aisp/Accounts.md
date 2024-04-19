@@ -70,11 +70,11 @@ Each account resource will have a unique and immutable AccountId.
     * Having a SchemeName for the Account and Servicer blocks means we can be flexible to accommodate multiple types of accounts.
 * For common Domestic UK identification schemes:
     * Account/Account
-        * Where "UK.OBIE.SortCodeAccountNumber" is specified as the SchemeName, the Identification field **must** be populated with the 6 digit Sort Code and 8 digit Account Number (a 14 digit field).
-        * Where "UK.OBIE.IBAN" is specified as the SchemeName, the Identification field must be populated with the full IBAN.
-        * Where "UK.OBIE.PAN" is specified as the SchemeName, the Identification field **must** be populated with the primary PAN linked to the account. An ASPSP **may** choose to mask digits returned in the Identification field.
+        * Where "UK.OB.SortCodeAccountNumber" is specified as the SchemeName, the Identification field **must** be populated with the 6 digit Sort Code and 8 digit Account Number (a 14 digit field).
+        * Where "UK.OB.IBAN" is specified as the SchemeName, the Identification field must be populated with the full IBAN.
+        * Where "UK.OB.PAN" is specified as the SchemeName, the Identification field **must** be populated with the primary PAN linked to the account. An ASPSP **may** choose to mask digits returned in the Identification field.
     * Account/Servicer
-        * Where "UK.OBIE.BICFI" is populated as the SchemeName, the Identification field **must** be populated with the BIC.
+        * Where "UK.OB.BICFI" is populated as the SchemeName, the Identification field **must** be populated with the BIC.
 * The SecondaryIdentification field is used to identify an account in addition to the primary Account/Identification field. SecondaryIdentification may be populated with a roll number for building societies, or a currency code where an account has multiple currency sub-accounts.
 * The `SwitchStatus` field is used to indicate that an account is undergoing an account switch.
   * An ASPSP may populate this field with the value `UK.CASS.NotSwitched` to indicate that the account has not been switched.
@@ -121,8 +121,9 @@ If the ReadPAN permission is granted by the PSU, the ASPSP may choose to populat
 | Identification |1..1 |OBReadAccount6/Data/Account/Account/Identification |Identification assigned by an institution to identify an account. This identification is known by the account owner. |Max256Text | | |
 | Name |0..1 |OBReadAccount6/Data/Account/Account/Name |The account name is the name or names of the account owner(s) represented at an account level, as displayed by the ASPSP's online channels. Note, the account name is not the product name or the nickname of the account. |Max350Text | | |
 | SecondaryIdentification |0..1 |OBReadAccount6/Data/Account/Account/SecondaryIdentification |This is secondary identification of the account, as assigned by the account servicing institution. This can be used by building societies to additionally identify accounts with a roll number (in addition to a sort code and account number combination). |Max34Text | | |
+| LEI |0..1 | OBReadAccount6/Data/Account/Account/LEI |Legal Entity Identification by which a party is known and which is usually used to identify that party. |Max20Text | | |
 | StatementFrequencyAndFormat |0..* |OBReadAccount6/Data/Account/StatementFrequencyAndFormat |The frequency and format of the statements delivered for the account |StatementFrequencyAndFormat | | |
-| DeliveryAddress |0..1 |OBReadAccount6/Data/Account/StatementFrequencyAndFormat/DeliveryAddress |The address the statement is delivered to| | |
+| DeliveryAddress |0..1 |OBReadAccount6/Data/Account/StatementFrequencyAndFormat/DeliveryAddress |The address the statement is delivered to| OBPostalAddress6 | |
 | Frequency |0..1 |OBReadAccount6/Data/Account/StatementFrequencyAndFormat/Frequency |YEAR<br>DAIL<br>INDA<br>MNTH<br>QURT<br>MIAN<br>TEND<br>MOVE<br>WEEK |OBFrequency2 | | |
 | CommunicationMethod |0..1 |OBReadAccount6/Data/Account/StatementFrequencyAndFormat/CommunicationMethod |EMAL<br>FAXI<br>FILE<br>ONLI<br>POST|OBCommunicationMethod | | |
 | Format |0..1 |OBReadAccount6/Data/Account/StatementFrequencyAndFormat/Format |DPDF<br>DXML<br>SDSH<br>WORD<br>XSLT|OBFileFormat | | |
@@ -130,6 +131,7 @@ If the ReadPAN permission is granted by the PSU, the ASPSP may choose to populat
 | Name |0..1 |OBReadAccount6/Data/Account/Servicer/Name |Name of Service User. |Max140Text | | |
 | SchemeName |1..1 |OBReadAccount6/Data/Account/Servicer/SchemeName |Name of the identification scheme, in a coded form as published in an external list. |OBExternalFinancialInstitutionIdentification4Code | | |
 | Identification |1..1 |OBReadAccount6/Data/Account/Servicer/Identification |Unique and unambiguous identification of the servicing institution. |Max35Text | | |
+
 
 ## Usage Examples
 
@@ -173,7 +175,7 @@ Content-Type: application/json
         "OpeningDate": "01-05-2002",
         "Account": [
 			{
-	          	"SchemeName": "UK.OBIE.SortCodeAccountNumber",
+	          	"SchemeName": "UK.OB.SortCodeAccountNumber",
           		"Identification": "80200110203345",
     	    	"Name": "Mr Kevin",
         	  	"SecondaryIdentification": "00021"
@@ -190,7 +192,7 @@ Content-Type: application/json
         "Nickname": "Household",
         "Account": [
 			{
-          		"SchemeName": "UK.OBIE.SortCodeAccountNumber",
+          		"SchemeName": "UK.OB.SortCodeAccountNumber",
           		"Identification": "80200110203348",
           		"Name": "Mr Kevin"
         	}
@@ -244,7 +246,7 @@ Content-Type: application/json
         "Nickname": "Bills",
         "Account": [
 			{
-          		"SchemeName": "UK.OBIE.SortCodeAccountNumber",
+          		"SchemeName": "UK.OB.SortCodeAccountNumber",
           		"Identification": "80200110203345",
           		"Name": "Mr Kevin",
           		"SecondaryIdentification": "00021"

@@ -92,17 +92,25 @@ The usage of this API endpoint will be subject to an ASPSP's fair usage policies
 
 #### Account Access Consent Status
 
-Once the PSU authorises the account-access-consent resource - the Status of the account-access-consent resource will be updated with "Authorised".
+Once the PSU authorises the account-access-consent resource - the Status of the account-access-consent resource will be updated with "AUTH".
 
 The available Status code-list enumerations for the account-access-consent resource are:
 
-|  |Status |Status Description |
+|  |StatusCode |Status Description |
 | --- |--- |--- |
 | 1 |RJCT |The account access consent has been rejected. |
 | 2 |AWAU |The account access consent is awaiting authorisation. |
 | 3 |AUTH |The account access consent has been successfully authorised. |
 | 4| CANC | The account access consent has been cancelled. |
 | 5| EXPD | The account access consent has expired. | 
+
+Changes to the StatusCode, such as being rejected, should be captured in `StatusReason`, an array of `StatusReasonCode`, `StatusReasonDescription` and `Path`.  
+
+| Field | Description |
+|---|---|
+| StatusReasonCode | Code directly relating to the reason for the current Status. See [the codelists](https://github.com/OpenBankingUK/External_Interal_CodeSets) for appropriate values. |
+| StatusReasonDescription | Description of why the code was returned |
+|Path| Recommended but optional reference to JSON path if relevant to the code |
 
 
 ### DELETE /account-access-consents/{ConsentId}
@@ -181,6 +189,7 @@ And response to:
 | StatusReason |0..* |OBReadConsentResponse1/Data/StatusReason |Specifies the status reason. | OBStatusReason |
 | StatusReasonCode |0..1 |OBReadConsentResponse1/Data/StatusReason/*/StatusReasonCode |Specifies the status reason in a code form. For a full description see `ExternalStatusReason1Code` [here](https://github.com/OpenBankingUK/External_Interal_CodeSets). | ExternalStatusReason1Code |
 | StatusReasonDescription |0..1 |OBReadConsentResponse1/Data/StatusReason/*/StatusReasonDescription |Description supporting the StatusReasonCode. |
+| Path |0..1 |OBReadConsentResponse1/Data/StatusReason/*/Path |Recommended but optional reference to JSON path if relevant to the code. |
 | StatusUpdateDateTime |1..1 |OBReadConsentResponse1/Data/StatusUpdateDateTime |Date and time at which the resource status was updated. |ISODateTime | |
 | Permissions |1..n |OBReadConsentResponse1/Data/Permissions |Specifies the Open Banking account access data types. This is a list of the data clusters being consented by the PSU, and requested for authorisation with the ASPSP. |OBExternalPermissions1Code |ReadAccountsBasic ReadAccountsDetail ReadBalances ReadBeneficiariesBasic ReadBeneficiariesDetail ReadDirectDebits ReadOffers ReadPAN ReadParty ReadPartyPSU ReadProducts ReadScheduledPaymentsBasic ReadScheduledPaymentsDetail ReadStandingOrdersBasic ReadStandingOrdersDetail ReadStatementsBasic ReadStatementsDetail ReadTransactionsBasic ReadTransactionsCredits ReadTransactionsDebits ReadTransactionsDetail |
 | ExpirationDateTime |0..1 |OBReadConsentResponse1/Data/ExpirationDateTime |Specified date and time the permissions will expire. If this is not populated, the permissions will be open ended. |ISODateTime | |
