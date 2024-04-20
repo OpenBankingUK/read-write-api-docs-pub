@@ -45,7 +45,7 @@ PaymentTransactionId [1..1]
 
 <text x="41.2em" y="5.6em" fill="darkslateblue">
 <title>Type: string
-Description: Status of a transfe, as assigned by the transaction administrator.
+Description: Status of a transfer, as assigned by the transaction administrator.
 Values:
  - Accepted
  - AcceptedCancellationRequest
@@ -68,7 +68,7 @@ Values:
  - Rejected
  - RejectedCancellationRequest
 </title>
-Status [1..1]
+StatusCode [1..1]
 </text>
 
 <text x="41.2em" y="6.9em" fill="darkslateblue">
@@ -92,18 +92,18 @@ StatusDetail
 Description: User community specific instrument.
 Usage: This element is used to specify a local instrument, local clearing option and/or further qualify the service or service level.
 Values:
- - UK.OBIE.BACS
- - UK.OBIE.BalanceTransfer
- - UK.OBIE.CHAPS
- - UK.OBIE.Euro1
- - UK.OBIE.FPS
- - UK.OBIE.Link
- - UK.OBIE.MoneyTransfer
- - UK.OBIE.Paym
- - UK.OBIE.SEPACreditTransfer
- - UK.OBIE.SEPAInstantCreditTransfer
- - UK.OBIE.SWIFT
- - UK.OBIE.Target2
+ - UK.OB.BACS
+ - UK.OB.BalanceTransfer
+ - UK.OB.CHAPS
+ - UK.OB.Euro1
+ - UK.OB.FPS
+ - UK.OB.Link
+ - UK.OB.MoneyTransfer
+ - UK.OB.Paym
+ - UK.OB.SEPACreditTransfer
+ - UK.OB.SEPAInstantCreditTransfer
+ - UK.OB.SWIFT
+ - UK.OB.Target2
 </title>
 LocalInstrument [0..1]
 </text>
@@ -114,7 +114,7 @@ MinLength: 1
 MaxLength: 128
 Description: Status of a transfer, as assigned by the transaction administrator.
 </title>
-Status [1..1]
+StatusCode [1..1]
 </text>
 
 <text x="68.80000000000001em" y="6.9em" fill="darkslateblue">
@@ -129,7 +129,7 @@ Values:
  - Suspended
  - Unmatched
 </title>
-StatusReason [0..1]
+StatusReasonCode [0..1]
 </text>
 
 <text x="68.80000000000001em" y="8.2em" fill="darkslateblue">

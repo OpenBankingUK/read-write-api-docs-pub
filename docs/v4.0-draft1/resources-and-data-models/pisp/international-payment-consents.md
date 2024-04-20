@@ -92,7 +92,7 @@ The available Status codes for the international-payment-consent resource are:
 
 The API endpoint allows the PISP to ask an ASPSP to confirm funds on an **international-payment-consent** resource.
 
-* An ASPSP can only respond to a funds confirmation request if the **international-payment-consent** resource has an `AUTH` status. If the status is not `AUTH`, an ASPSP **must** respond with a 400 (Bad Request) and a `UK.OB.Resource.InvalidConsentStatus` error code.
+* An ASPSP can only respond to a funds confirmation request if the **international-payment-consent** resource has an `AUTH` status. If the status is not `AUTH`, an ASPSP **must** respond with a 400 (Bad Request) and a `U009` error code.
 * Confirmation of funds requests do not affect the status of the **international-payment-consent** resource.
 
 ### State Model
@@ -201,7 +201,7 @@ The OBInternational3/ExchangeRateInformation object must conform to these behavi
 | Name |0..1 |OBInternational3/Creditor/Name |Name by which a party is known and which is usually used to identify that party. |Max350Text | | |
 | LEI |0..1 | OBInternational3/Creditor/LEI |Legal Entity Identification by which a party is known and which is usually used to identify that party. |Max20Text | | |
 | PostalAddress |0..1 |OBInternational3/Creditor/PostalAddress |Information that locates and identifies a specific address, as defined by postal services. |OBPostalAddress6 | | |
-| AddressType |0..1 |OBInternational3/Creditor/PostalAddress/AddressType |BIZZ (Business)<br>DLVY (Delivery To)<br>MLTO (Mail To)<br>PBOX (PO Box)<br>ADDR (Postal)<br>HOME (Residential)<br>CORR (Correspondence)<br>STAT (Statement) | ||
+| AddressType |0..1 |OBInternational3/Creditor/PostalAddress/AddressType |BIZZ<br>DLVY<br>MLTO<br>PBOX<br>ADDR<br>HOME<br>CORR<br>STAT | ||
 | Department |0..1 |OBInternational3/Creditor/PostalAddress/Department |Identification of a division of a large organisation or building. |Max70Text | | |
 | SubDepartment |0..1 |OBInternational3/Creditor/PostalAddress/SubDepartment |Identification of a sub-division of a large organisation or building. |Max70Text | | |
 | StreetName |0..1 |OBInternational3/Creditor/PostalAddress/StreetName |Name of a street or thoroughfare. |Max70Text | | |
@@ -390,8 +390,7 @@ Exchange rate behaviour:
 | Data |1..1 |OBWriteInternationalConsentResponse6/Data | |OBWriteDataInternationalConsentResponse6 | | |
 | ConsentId |1..1 |OBWriteInternationalConsentResponse6/Data/ConsentId |OB: Unique identification as assigned by the ASPSP to uniquely identify the consent resource. |Max128Text | | |
 | CreationDateTime |1..1 |OBWriteInternationalConsentResponse6/Data/CreationDateTime |Date and time at which the resource was created. |ISODateTime | | |
-| StatusCode |0..1 |OBReadConsentResponse1/Data/StatusCode |Specifies the status of consent resource in code form. |
-ExternalStatusReason1Code |AUTH AWAU RJCT COND |
+| StatusCode |0..1 |OBReadConsentResponse1/Data/StatusCode |Specifies the status of consent resource in code form. |ExternalStatusReason1Code |AUTH AWAU RJCT COND |
 | StatusReason |0..* |OBReadConsentResponse1/Data/StatusReason |Specifies the status reason. | OBStatusReason |
 | StatusReasonCode |0..1 |OBReadConsentResponse1/Data/StatusReason/*/StatusReasonCode |Specifies the status reason in a code form. For a full description see `ExternalStatusReason1Code` [here](https://github.com/OpenBankingUK/External_Interal_CodeSets). | ExternalStatusReason1Code |
 | StatusReasonDescription |0..1 |OBReadConsentResponse1/Data/StatusReason/*/StatusReasonDescription |Description supporting the StatusReasonCode. |

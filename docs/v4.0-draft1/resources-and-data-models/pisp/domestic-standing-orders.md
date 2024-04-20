@@ -179,7 +179,7 @@ The domestic-standing-order **response** object contains the:
 * DomesticStandingOrderId.
 * ConsentId.
 * CreationDateTime the domestic-standing-order resource was created.
-* Status and StatusUpdateDateTime of the domestic-standing-order resource.
+* StatusCode and StatusUpdateDateTime of the domestic-standing-order resource.
 * Refund account details, if requested by PISP as part of the domestic-payment-consents resource.
 * Charges array - for the breakdown of applicable ASPSP charges.
 * The Initiation object from the domestic-standing-order-consent.
@@ -195,8 +195,12 @@ The domestic-standing-order **response** object contains the:
 | DomesticStandingOrderId |1..1 |OBWriteDomesticStandingOrderResponse6/Data/DomesticStandingOrderId |OB: Unique identification as assigned by the ASPSP to uniquely identify the domestic standing order resource. |Max40Text | | |
 | ConsentId |1..1 |OBWriteDomesticStandingOrderResponse6/Data/ConsentId |OB: Unique identification as assigned by the ASPSP to uniquely identify the consent resource. |Max128Text | | |
 | CreationDateTime |1..1 |OBWriteDomesticStandingOrderResponse6/Data/CreationDateTime |Date and time at which the resource was created. |ISODateTime | | |
-| Status |1..1 |OBWriteDomesticStandingOrderResponse6/Data/Status |Specifies the status of the payment order resource. |OBExternalStatus1Code |InitiationCompleted InitiationFailed InitiationPending Cancelled | |
+| StatusCode |1..1 |OBWriteDomesticStandingOrderResponse6/Data/StatusCode |Specifies the status of the payment order resource. |OBExternalStatus1Code |RCVD RJCT ASCP CANC | |
 | StatusUpdateDateTime |1..1 |OBWriteDomesticStandingOrderResponse6/Data/StatusUpdateDateTime |Date and time at which the resource status was updated. |ISODateTime | | |
+| StatusReason |0..* |OBWriteDomesticStandingOrderResponse6/Data/StatusReason |Specifies the status reason. | OBStatusReason |
+| StatusReasonCode |0..1 |OBWriteDomesticStandingOrderResponse6/Data/StatusReason/*/StatusReasonCode |Specifies the status reason in a code form. For a full description see `ExternalStatusReason1Code` [here](https://github.com/OpenBankingUK/External_Interal_CodeSets). | ExternalStatusReason1Code |
+| StatusReasonDescription |0..1 |OBWriteDomesticStandingOrderResponse6/Data/StatusReason/*/StatusReasonDescription |Description supporting the StatusReasonCode. |
+|Path| 0..1 | OBWriteDomesticStandingOrderResponse6/Data/StatusReason/*/Path| Recommended but optional reference to JSON path if relevant to the StatusReasonCode| Max500Text| | |
 | Refund |0..1 |OBWriteDomesticStandingOrderResponse6/Data/Refund |Unambiguous identification of the refund account to which a refund will be made as a result of the transaction. |OBDomesticRefundAccount1 | | |
 | Charges |0..n |OBWriteDomesticStandingOrderResponse6/Data/Charges |Set of elements used to provide details of a charge for the payment initiation. |OBCharge2 | | |
 | Initiation |1..1 |OBWriteDomesticStandingOrderResponse6/Data/Initiation |The Initiation payload is sent by the initiating party to the ASPSP. It is used to request movement of funds from the debtor account to a creditor for a domestic standing order. |OBDomesticStandingOrder3 | | |

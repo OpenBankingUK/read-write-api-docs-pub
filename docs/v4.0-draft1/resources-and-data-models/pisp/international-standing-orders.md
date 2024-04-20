@@ -55,7 +55,7 @@ Once the international-standing-order-consent has been authorised by the PSU, th
 
 #### Status
 
-An international-standing-orders can only be created if its corresponding international-standing-order-consent resource has the status of "Authorised". 
+An international-standing-orders can only be created if its corresponding international-standing-order-consent resource has the status of "AUTH". 
 
 The international-standing-orders resource that is created successfully must have one of the following Status codes:
 
@@ -126,9 +126,9 @@ The definitions for the Status:
 
 |  |Status |Status Description |
 | --- |--- |--- |
-| 1 |AwaitingFurtherAuthorisation |The payment-order resource is awaiting further authorisation. |
-| 2 |Rejected |The payment-order resource has been rejected by an authoriser. |
-| 3 |Authorised |The payment-order resource has been successfully authorised by all required authorisers. |
+| 1 |AWAU |The payment-order resource is awaiting further authorisation. |
+| 2 |RJCT |The payment-order resource has been rejected by an authoriser. |
+| 3 |AUTH |The payment-order resource has been successfully authorised by all required authorisers. |
 
 
 ## Data Model
@@ -188,7 +188,7 @@ The international-standing-orders **response** object contains the:
 * InternationalStandingOrderPaymentId.
 * ConsentId.
 * CreationDateTime the international-standing-orders resource was created.
-* Status and StatusUpdateDateTime of the international-standing-orders resource.
+* StatusCode and StatusUpdateDateTime of the international-standing-orders resource.
 * The Charges in the international-standing-order-consent response from the ASPSP.
 * Refund account details, if requested by PISP as part of the international-scheduled-payment-consents resource.
 * The Initiation object from the international-standing-order-consent.
@@ -204,8 +204,12 @@ The international-standing-orders **response** object contains the:
 | InternationalStandingOrderId |1..1 |OBWriteInternationalStandingOrderResponse7/Data/InternationalStandingOrderId |OB: Unique identification as assigned by the ASPSP to uniquely identify the international standing order resource. |Max40Text | | |
 | ConsentId |1..1 |OBWriteInternationalStandingOrderResponse7/Data/ConsentId |OB: Unique identification as assigned by the ASPSP to uniquely identify the consent resource. |Max128Text | | |
 | CreationDateTime |1..1 |OBWriteInternationalStandingOrderResponse7/Data/CreationDateTime |Date and time at which the resource was created. |ISODateTime | | |
-| Status |1..1 |OBWriteInternationalStandingOrderResponse7/Data/Status |Specifies the status of resource in code form. |OBExternalStatus1Code |InitiationCompleted InitiationFailed InitiationPending Cancelled | |
+| StatusCode |1..1 |OBWriteInternationalStandingOrderResponse7/Data/StatusCode |Specifies the status of resource in code form. |OBExternalStatus1Code |RCVD RJCT ACSP CANC | |
 | StatusUpdateDateTime |1..1 |OBWriteInternationalStandingOrderResponse7/Data/StatusUpdateDateTime |Date and time at which the resource status was updated. |ISODateTime | | |
+| StatusReason |0..* |OBWriteInternationalStandingOrderResponse7/Data/StatusReason |Specifies the status reason. | OBStatusReason |
+| StatusReasonCode |0..1 |OBWriteInternationalStandingOrderResponse7/Data/StatusReason/*/StatusReasonCode |Specifies the status reason in a code form. For a full description see `ExternalStatusReason1Code` [here](https://github.com/OpenBankingUK/External_Interal_CodeSets). | ExternalStatusReason1Code |
+| StatusReasonDescription |0..1 |OBWriteInternationalStandingOrderResponse7/Data/StatusReason/*/StatusReasonDescription |Description supporting the StatusReasonCode. |
+|Path| 0..1 | OBWriteInternationalStandingOrderResponse7/Data/StatusReason/*/Path| Recommended but optional reference to JSON path if relevant to the StatusReasonCode| Max500Text| | |
 | Refund |0..1 |OBWriteInternationalStandingOrderResponse7/Data/Refund |Unambiguous identification of the refund account to which a refund will be made as a result of the transaction. |OBInternationalRefundAccount1 | | |
 | Charges |0..n |OBWriteInternationalStandingOrderResponse7/Data/Charges |Set of elements used to provide details of a charge for the payment initiation. |OBCharge2 | | |
 | Initiation |1..1 |OBWriteInternationalStandingOrderResponse7/Data/Initiation |The Initiation payload is sent by the initiating party to the ASPSP. It is used to request movement of funds from the debtor account to a creditor for an international standing order. |OBInternationalStandingOrder4 | | |

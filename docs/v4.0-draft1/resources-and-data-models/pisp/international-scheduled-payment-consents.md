@@ -59,7 +59,7 @@ The API endpoint allows the PISP to ask an ASPSP to create a new **international
 * The endpoint allows the PISP to send a copy of the consent (between PSU and PISP) to the ASPSP for the PSU to authorise.
 * The ASPSP creates the **international-scheduled-payment-consent** resource and responds with a unique ConsentId to refer to the resource.
 
-#### Status
+#### StatusCode
 
 The default StatusCode is "AWAU" immediately after the international-scheduled-payment-consent has been created.
 
@@ -71,7 +71,7 @@ The default StatusCode is "AWAU" immediately after the international-scheduled-p
 
 A PISP can optionally retrieve a payment consent resource that they have created to check its status. 
 
-#### Status
+#### StatusCode
 
 Once the PSU authorises the payment-consent resource, the StatusCode of the payment-consent resource will be updated with "AUTH".
 
@@ -92,7 +92,7 @@ The available Status codes for the international-scheduled-payment-consent resou
 
 The API endpoint allows the PISP to ask an ASPSP to confirm funds on an **international-scheduled-payment-consent** resource, where the payment is for immediate debit.
 
-* An ASPSP can only respond to a funds confirmation request if the **international-scheduled-payment-consent** resource has an `AUTH` status. If the status is not `AUTH`, an ASPSP **must** respond with a 400 (Bad Request) and a `UK.OB.Resource.InvalidConsentStatus` error code.
+* An ASPSP can only respond to a funds confirmation request if the **international-scheduled-payment-consent** resource has an `AUTH` status. If the status is not `AUTH`, an ASPSP **must** respond with a 400 (Bad Request) and a `U009` error code.
 * Confirmation of funds requests do not affect the status of the **international-scheduled-payment-consent** resource.
 
 ### State Model
@@ -209,7 +209,7 @@ The ExchangeRateInformation object must conform to these behaviours:
 | Name |0..1 |OBInternationalScheduled3/Creditor/Name |Name by which a party is known and which is usually used to identify that party. |Max350Text | | |
 | LEI |0..1 | OBInternationalScheduled3/Creditor/LEI |Legal Entity Identification by which a party is known and which is usually used to identify that party. |Max20Text | | |
 | PostalAddress |0..1 |OBInternationalScheduled3/Creditor/PostalAddress |Information that locates and identifies a specific address, as defined by postal services. |OBPostalAddress6 | | |
-| AddressType |0..1 |OBInternationalScheduled3/Creditor/PostalAddress/AddressType |BIZZ (Business)<br>DLVY (Delivery To)<br>MLTO (Mail To)<br>PBOX (PO Box)<br>ADDR (Postal)<br>HOME (Residential)<br>CORR (Correspondence)<br>STAT (Statement) | ||
+| AddressType |0..1 |OBInternationalScheduled3/Creditor/PostalAddress/AddressType |BIZZ<br>DLVY<br>MLTO<br>PBOX<br>ADDR<br>HOME<br>CORR<br>STAT| ||
 | Department |0..1 |OBInternationalScheduled3/Creditor/PostalAddress/Department |Identification of a division of a large organisation or building. |Max70Text | | |
 | SubDepartment |0..1 |OBInternationalScheduled3/Creditor/PostalAddress/SubDepartment |Identification of a sub-division of a large organisation or building. |Max70Text | | |
 | StreetName |0..1 |OBInternationalScheduled3/Creditor/PostalAddress/StreetName |Name of a street or thoroughfare. |Max70Text | | |
@@ -231,7 +231,7 @@ The ExchangeRateInformation object must conform to these behaviours:
 | Identification |0..1 |OBInternationalScheduled3/CreditorAgent/Identification |Unique and unambiguous identification of a financial institution or a branch of a financial institution. |Max35Text | | |
 | Name |0..1 |OBInternationalScheduled3/CreditorAgent/Name |Name by which an agent is known and which is usually used to identify that agent. |Max140Text | | |
 | PostalAddress |0..1 |OBInternationalScheduled3/CreditorAgent/PostalAddress |Information that locates and identifies a specific address, as defined by postal services. |OBPostalAddress6 | | |
-| AddressType |0..1 |OBInternationalScheduled3/CreditorAgent/PostalAddress/AddressType |BIZZ (Business)<br>DLVY (Delivery To)<br>MLTO (Mail To)<br>PBOX (PO Box)<br>ADDR (Postal)<br>HOME (Residential)<br>CORR (Correspondence)<br>STAT (Statement) | ||
+| AddressType |0..1 |OBInternationalScheduled3/CreditorAgent/PostalAddress/AddressType |BIZZ<br>DLVY<br>MLTO<br>PBOX<br>ADDR<br>HOME<br>CORR<br>STAT | ||
 | Department |0..1 |OBInternationalScheduled3/CreditorAgent/PostalAddress/Department |Identification of a division of a large organisation or building. |Max70Text | | |
 | SubDepartment |0..1 |OBInternationalScheduled3/CreditorAgent/PostalAddress/SubDepartment |Identification of a sub-division of a large organisation or building. |Max70Text | | |
 | StreetName |0..1 |OBInternationalScheduled3/CreditorAgent/PostalAddress/StreetName |Name of a street or thoroughfare. |Max70Text | | |
@@ -399,8 +399,7 @@ Exchange rate behaviour:
 | Data |1..1 |OBWriteInternationalScheduledConsentResponse6/Data | |OBWriteDataInternationalScheduledConsentResponse6 | | |
 | ConsentId |1..1 |OBWriteInternationalScheduledConsentResponse6/Data/ConsentId |OB: Unique identification as assigned by the ASPSP to uniquely identify the consent resource. |Max128Text | | |
 | CreationDateTime |1..1 |OBWriteInternationalScheduledConsentResponse6/Data/CreationDateTime |Date and time at which the resource was created. |ISODateTime | | |
-| StatusCode |0..1 |OBReadConsentResponse1/Data/StatusCode |Specifies the status of consent resource in code form. |
-ExternalStatusReason1Code |AUTH AWAU RJCT COND |
+| StatusCode |0..1 |OBReadConsentResponse1/Data/StatusCode |Specifies the status of consent resource in code form. |ExternalStatusReason1Code |AUTH AWAU RJCT COND |
 | StatusReason |0..* |OBReadConsentResponse1/Data/StatusReason |Specifies the status reason. | OBStatusReason |
 | StatusReasonCode |0..1 |OBReadConsentResponse1/Data/StatusReason/*/StatusReasonCode |Specifies the status reason in a code form. For a full description see `ExternalStatusReason1Code` [here](https://github.com/OpenBankingUK/External_Interal_CodeSets). | ExternalStatusReason1Code |
 | StatusReasonDescription |0..1 |OBReadConsentResponse1/Data/StatusReason/*/StatusReasonDescription |Description supporting the StatusReasonCode. |

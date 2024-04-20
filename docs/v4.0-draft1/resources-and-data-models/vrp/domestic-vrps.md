@@ -41,7 +41,7 @@ The TPP **must** ensure that the `Initiation` and `Risk` section matches the val
 
 The ASPSP **must** ensure that the payment instruction adheres to the limitations set by the corresponding VRP consent's `ControlParameters`.
 
-When a payment would breach a limitation set by one or more `ControlParameters`, the ASPSP **must** return an error with code `UK.OB.Rules.FailsControlParameters` and pass in the control parameter field that caused the error in the `Field` field of the error message.
+When a payment would breach a limitation set by one or more `ControlParameters`, the ASPSP **must** return an error with code `U014` and pass in the control parameter field that caused the error in the `Field` field of the error message.
 
 If the `CreditorAccount` was not specified in the the consent, the `CreditorAccount` must be specified in the instruction.
 
@@ -49,7 +49,7 @@ The TPP **must** ensure that the end-point is called with the same scope as the 
 
 The ASPSP **must** reject a payment that has `Data.Instruction.SupplementaryData` that it cannot process.
 
-#### Status
+#### StatusCode
 
 A `domestic-vrps` can only be created if its corresponding `domestic-vrp-consents` resource has the StatusCode of `AUTH`.
 
@@ -188,10 +188,12 @@ The state model for the `domestic-vrps` resource follows the behavior and defini
 | __DomesticVRPId__ (1..1)              | `Data. DomesticVRPId`              | OB: Unique identification as assigned by the ASPSP to uniquely identify the domestic payment resource.                                                                                                       | Max40Text                                                                                                                         |
 | __ConsentId__ (1..1)                  | `Data. ConsentId`                  | Identifier for the Domestic VRP Consent that this payment is made under                                                                                                                                      | Max128Text                                                                                                                        |
 | __CreationDateTime__ (1..1)           | `Data. CreationDateTime`           | Date and time at which the message was created.                                                                                                                                                              | ISODateTime                                                                                                                       |
-| __Status__ (1..1)                     | `Data. Status`                     | Specifies the status of the payment information group.                                                                                                                                                       | AcceptedCreditSettlementCompleted AcceptedWithoutPosting AcceptedSettlementCompleted AcceptedSettlementInProcess Pending Rejected |
-| __StatusReason__ (0..1)               | `Data. StatusReason`               | Reason Code provided for the status of a VRP. To be documented in the Developer Portal.                                                                                                                      | OBVRPStatusReasonCode Namespaced enumeration                                                                                      |
-| __StatusReasonDescription__ (0..1)    | `Data. StatusReasonDescription`    | Description related to provided Status/StatusReason.                                                                                                                                                         | Max256Text                                                                                                                        |
-| __StatusUpdateDateTime__ (1..1)       | `Data. StatusUpdateDateTime`       | Date and time at which the resource status was updated.                                                                                                                                                      | ISODateTime                                                                                                                       |
+| __StatusCode__ (1..1)                     | `Data. StatusCode`                     | Specifies the status of the payment information group.                                                                                                                                                       |  PDNG ACTC PATC ACCP ACFC ACSP ACWC ACSC ACWP ACCC BLCK RJCT  |
+| __StatusUpdateDateTime__ (1..1)       | `Data. StatusUpdateDateTime`       | Date and time at which the resource StatusCode was updated.                                                                                                                                                      | ISODateTime                                                                                                                       |
+| __StatusReason__ (0..*)               | `Data. StatusReason`               | Specifies the status reason.                                                                                                                      | Array                                                                                     |
+| __StatusReasonCode__ (0..1)| `Data. StatusReason. *. StatusReasonCode` | Specifies the status reason in a code form. For a full description see `ExternalStatusReason1Code` [here](https://github.com/OpenBankingUK/External_Interal_CodeSets). | ExternalStatusReason1Code |
+| __StatusReasonDescription__ (0..1)    | `Data.StatusReason. *. StatusReasonDescription`    | Description supporting the StatusReasonCode                                                                                                                                                         | Max256Text                                                                                                                        |
+| __Path__ (0..1)| `Data. StatusReason. *. Path` |Recommended but optional reference to JSON path if relevant to the StatusReasonCode| Max500Text| 
 | __ExpectedExecutionDateTime__ (0..1)  | `Data. ExpectedExecutionDateTime`  | Expected execution date and time for the payment resource.                                                                                                                                                   | ISODateTime                                                                                                                       |
 | __ExpectedSettlementDateTime__ (0..1) | `Data. ExpectedSettlementDateTime` | Expected settlement date and time for the payment resource.                                                                                                                                                  | ISODateTime                                                                                                                       |
 | __Refund__ (0..1)                     | `Data. Refund`                     | Unambiguous identification of the refund account to which a refund will be made as a result of the transaction. This object is populated only when `Data. ReadRefundAccount` is set to `Yes` in the consent. | OBDomesticRefundAccount1                                                                                                          |
@@ -219,16 +221,13 @@ The state model for the `domestic-vrps` resource follows the behavior and defini
 | __Data__ (1..1) | `Data`
 | __PaymentStatus__ (0..*) | `Data. PaymentStatus`
 | __PaymentTransactionId__ (1..1) | `Data. PaymentStatus. PaymentTransactionId` |Unique identifier for the transaction within an servicing institution. This identifier is both unique and immutable. |Max210Text|
+| __LocalInstrument__ (0..1) | `Data. PaymentStatus. LocalInstrument` |User community specific instrument.  Usage: This element is used to specify a local instrument, local clearing option and/or further qualify the service or service level. |OBExternalLocalInstrument1Code|
 | __StatusCode__ (1..1) |`Data. PaymentStatus. StatusCode` |Status of a transfer, as assigned by the transaction administrator. |OBTransactionIndividualExtendedISOStatus1Code |Specifies the status reason in a code form. Values:<br>RCVD<br>PDNG<br>ACTC<br>ACFC<br>ACSP<br>ACSC<br>ACWP<br>ACCC<br>BLCK<br>CANC<br>RJCT| Max4Text|
-| __StatusReason__ (0..* )|`Data. PaymentStatus. StatusReason` ||OBPaymentStatusReason | 
-| __StatusReasonCode__ (0..*)|`Data. PaymentStatus. StatusReason. StatusReasonCode` |Specifies the status reason in a code form.<br> For more information and enum values see `ExternalStatusReason1Code`[here](https://github.com/OpenBankingUK/External_Interal_CodeSets) |ExternalStatusReason1Code |
-| __StatusReasonDescription__ (0..*) |`Data. PaymentStatus. StatusReason. StatusReasonDescription`|Description supporting the StatusReasonCode|Max500Text |
-| __StatusUpdateDateTime__ (1..1) | `Data. PaymentStatus. StatusUpdateDateTime` |Date and time at which the status was assigned to the transfer. |ISODateTime
 | __StatusDetail__ (0..1) | `Data. PaymentStatus. StatusDetail` |Payment status details as per underlying Payment Rail.
-| __LocalInstrument__ (0..1) | `Data. PaymentStatus. StatusDetail. LocalInstrument` |User community specific instrument.  Usage: This element is used to specify a local instrument, local clearing option and/or further qualify the service or service level. |OBExternalLocalInstrument1Code|
-| __Status__ (1..1) | `Data. PaymentStatus. StatusDetail. Status` |Status of a transfer, as assigned by the transaction administrator. |Max128Text|
-| __StatusReason__ (0..1) | `Data. PaymentStatus. StatusDetail. StatusReason` |Reason Code provided for the status of a transfer. |Cancelled PendingFailingSettlement PendingSettlement Proprietary ProprietaryRejection Suspended Unmatched|
+| __StatusCode__ (1..1) | `Data. PaymentStatus. StatusDetail. StatusCode` |Status of a transfer, as assigned by the transaction administrator. |Max128Text|
+| __StatusReasonCode__ (0..1) | `Data. PaymentStatus. StatusDetail. StatusReason` |Reason code for the Status Code update| Enum ([See External codeset list](https://github.com/OpenBankingUK/External_Interal_CodeSets))|
 | __StatusReasonDescription__ (0..1) | `Data. PaymentStatus. StatusDetail. StatusReasonDescription` |Reason provided for the status of a transfer. |Max256Text
+| __StatusUpdateDateTime__ (1..1)       | `Data. PaymentStatus. StatusDetail. StatusUpdateDateTime`       | Date and time at which the resource StatusCode was updated.                                                                                                                                                      | ISODateTime                                                                                                                       |
 
 ## Usage Examples
 

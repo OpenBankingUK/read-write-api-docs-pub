@@ -141,17 +141,18 @@ For the OBDomesticStandingOrder3 Initiation object:
 
 ###### Frequency Examples
 
-| Frequency |Example |Details |
-| --------- |------- |------- |
-| EvryDay |EvryDay |Every day. |
-| EvryWorkgDay |EvryWorkgDay |Every working day. |
-| IntrvlDay |IntrvlDay:15 |Every 15 Calendar day. |
-| IntrvlWkDay |IntrvlWkDay:01:03 |Every week, on the 3rd day of the week. |
-| IntrvlWkDay |IntrvlWkDay:02:03 |Every 2nd week, on the 3rd day of the week. |
-| WkInMnthDay |WkInMnthDay:02:03 |Every month, on the 2nd week of the month, and on the third day of the week. |
-| IntrvlMnthDay |IntrvlMnthDay:01:-01 |Every month, on the last day of the month. |
-| IntrvlMnthDay |IntrvlMnthDay:06:15 |Every 6th month, on the 15th day of the month. |
-| QtrDay |QtrDay:ENGLISH |Paid on the 25th March, 24th June, 29th September and 25th December. |
+|Frequency|Detail|
+|---|---|
+|ADHO| Adhoc|
+|INDA| Intra day|
+|DAIL| Daily|
+|WEEK| Weekly|
+|FRTN| Fortnightly|
+|MNTH| Monthy|
+|QURT| Quarterly|
+|MIAN| Semi Annual|
+|YEAR| Annual|
+
 
 ##### Data Dictionary
 
@@ -385,7 +386,9 @@ Content-Type: application/json
 	"Permission": "Create",
   "ReadRefundAccount": "Yes",
     "Initiation": {
-	  "Frequency": "EvryDay",
+	  "MandateRelatedInformation": {
+      "Frequency": "DAIL"
+    }
 	  "Reference": "Pocket money for Damien",
 	  "FirstPaymentDateTime": "1976-06-06T06:06:06+00:00",
 	  "FirstPaymentAmount": {
