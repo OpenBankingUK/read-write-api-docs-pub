@@ -212,7 +212,7 @@ The domestic-payment **response** object contains the:
 * DomesticPaymentId.
 * ConsentId.
 * CreationDateTime the domestic-payment resource was created.
-* Status and StatusUpdateDateTime of the domestic-payment resource.
+* StatusCode and StatusUpdateDateTime of the domestic-payment resource.
 * ExpectedExecutionDateTime for the domestic-payment resource.
 * ExpectedSettlementDateTime for the domestic-payment resource.
 * Refund account details, if requested by PISP as part of the domestic-payment-consents resource.
@@ -230,8 +230,12 @@ The domestic-payment **response** object contains the:
 | DomesticPaymentId |1..1 |OBWriteDomesticResponse5/Data/DomesticPaymentId |OB: Unique identification as assigned by the ASPSP to uniquely identify the domestic payment resource. |Max40Text | | |
 | ConsentId |1..1 |OBWriteDomesticResponse5/Data/ConsentId |OB: Unique identification as assigned by the ASPSP to uniquely identify the consent resource. |Max128Text | | |
 | CreationDateTime |1..1 |OBWriteDomesticResponse5/Data/CreationDateTime |Date and time at which the resource was created. |ISODateTime | | |
-| Status |1..1 |OBWriteDomesticResponse5/Data/Status |Specifies the status of the payment information group. |OBTransactionIndividualStatus1Code |AcceptedCreditSettlementCompleted AcceptedWithoutPosting AcceptedSettlementCompleted AcceptedSettlementInProcess Pending Rejected | |
+| StatusCode |1..1 |OBWriteDomesticResponse5/Data/StatusCode |Specifies the status of the payment information group. |OBTransactionIndividualStatus1Code  |PDNG ACTC PATC ACCP ACFC ACSP ACWC ACSC ACWP ACCC BLCK RJCT | |
 | StatusUpdateDateTime |1..1 |OBWriteDomesticResponse5/Data/StatusUpdateDateTime |Date and time at which the resource status was updated. |ISODateTime | | |
+| StatusReason |0..* |OBWriteDomesticResponse5/Data/StatusReason |Specifies the status reason. | OBStatusReason |
+| StatusReasonCode |0..1 |OBWriteDomesticResponse5/Data/StatusReason/*/StatusReasonCode |Specifies the status reason in a code form. For a full description see `ExternalStatusReason1Code` [here](https://github.com/OpenBankingUK/External_Interal_CodeSets). | ExternalStatusReason1Code |
+| StatusReasonDescription |0..1 |OBWriteDomesticResponse5/Data/StatusReason/*/StatusReasonDescription |Description supporting the StatusReasonCode. |
+|Path| 0..1 | OBWriteDomesticResponse5/Data/StatusReason/*/Path| Recommended but optional reference to JSON path if relevant to the StatusReasonCode| Max500Text| | |
 | ExpectedExecutionDateTime |0..1 |OBWriteDomesticResponse5/Data/ExpectedExecutionDateTime |Expected execution date and time for the payment resource. |ISODateTime | | |
 | ExpectedSettlementDateTime |0..1 |OBWriteDomesticResponse5/Data/ExpectedSettlementDateTime |Expected settlement date and time for the payment resource. |ISODateTime | | |
 | Refund |0..1 |OBWriteDomesticResponse5/Data/Refund |Unambiguous identification of the refund account to which a refund will be made as a result of the transaction. |OBDomesticRefundAccount1 | | |

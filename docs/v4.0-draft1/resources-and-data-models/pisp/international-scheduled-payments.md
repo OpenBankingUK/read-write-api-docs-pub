@@ -50,7 +50,7 @@ Once the international-scheduled-payment-consent has been authorised by the PSU,
 * The PISP **must** ensure that the Initiation and Risk sections of the international-scheduled-payment match the corresponding Initiation and Risk sections of the international-scheduled-payment-consent resource. If the two do not match, the ASPSP **must not** process the request and **must** respond with a 400 (Bad Request).
 * Any operations on the international-scheduled-payment resource will not result in a Status change for the international-scheduled-payment resource.
 
-#### Status
+#### StatusCode
 
 An international-scheduled-payment can only be created if its corresponding international-scheduled-payment-consent resource has the status of "AUTH". 
 
@@ -187,7 +187,7 @@ The international-scheduled-payment **response** object contains the:
 * InternationalScheduledPaymentId.
 * ConsentId.
 * CreationDateTime the international-scheduled-payment resource was created.
-* Status and StatusUpdateDateTime of the international-scheduled-payment resource.
+* StatusCode and StatusUpdateDateTime of the international-scheduled-payment resource.
 * ExpectedExecutionDateTime for the international-scheduled-payment resource.
 * ExpectedSettlementDateTime for the international-scheduled-payment resource.
 * Refund account details, if requested by PISP as part of the international-scheduled-payment-consents resource.
@@ -205,9 +205,13 @@ The international-scheduled-payment **response** object contains the:
 | InternationalScheduledPaymentId |1..1 |OBWriteInternationalScheduledResponse6/Data/InternationalScheduledPaymentId |OB: Unique identification as assigned by the ASPSP to uniquely identify the international scheduled payment resource. |Max40Text | | |
 | ConsentId |1..1 |OBWriteInternationalScheduledResponse6/Data/ConsentId |OB: Unique identification as assigned by the ASPSP to uniquely identify the consent resource. |Max128Text | | |
 | CreationDateTime |1..1 |OBWriteInternationalScheduledResponse6/Data/CreationDateTime |Date and time at which the resource was created. |ISODateTime | | |
-| Status |1..1 |OBWriteInternationalScheduledResponse6/Data/Status |Specifies the status of the payment order resource. |OBExternalStatus1Code |InitiationCompleted InitiationFailed InitiationPending Cancelled | |
+| StatusCode |1..1 |OBWriteInternationalScheduledResponse6/Data/StatusCode |Specifies the status of the payment order resource. |OBExternalStatus1Code |RCVD RJCT ASCP CANC | |
 | StatusUpdateDateTime |1..1 |OBWriteInternationalScheduledResponse6/Data/StatusUpdateDateTime |Date and time at which the resource status was updated. |ISODateTime | | |
 | ExpectedExecutionDateTime |0..1 |OBWriteInternationalScheduledResponse6/Data/ExpectedExecutionDateTime |Expected execution date and time for the payment resource. |ISODateTime | | |
+| StatusReason |0..* |OBWriteInternationalScheduledResponse6/Data/StatusReason |Specifies the status reason. | OBStatusReason |
+| StatusReasonCode |0..1 |OBWriteInternationalScheduledResponse6/Data/StatusReason/*/StatusReasonCode |Specifies the status reason in a code form. For a full description see `ExternalStatusReason1Code` [here](https://github.com/OpenBankingUK/External_Interal_CodeSets). | ExternalStatusReason1Code |
+| StatusReasonDescription |0..1 |OBWriteInternationalScheduledResponse6/Data/StatusReason/*/StatusReasonDescription |Description supporting the StatusReasonCode. |
+|Path| 0..1 | OBWriteInternationalScheduledResponse6/Data/StatusReason/*/Path| Recommended but optional reference to JSON path if relevant to the StatusReasonCode| Max500Text| | |
 | ExpectedSettlementDateTime |0..1 |OBWriteInternationalScheduledResponse6/Data/ExpectedSettlementDateTime |Expected settlement date and time for the payment resource. |ISODateTime | | |
 | Refund |0..1 |OBWriteInternationalScheduledResponse6/Data/Refund |Unambiguous identification of the refund account to which a refund will be made as a result of the transaction. |OBInternationalRefundAccount1 | | |
 | Charges |0..n |OBWriteInternationalScheduledResponse6/Data/Charges |Set of elements used to provide details of a charge for the payment initiation. |OBCharge2 | | |

@@ -80,18 +80,18 @@ An ASPSP can only respond to a funds confirmation request if the resource has a 
 If resource has any other Status, the ASPSP must respond with a 400 (Bad Request) and a `UK.OB.Resource.InvalidConsentStatus` error code.
 
 ### PUT /domestic-vrp-consents/{consentId}
-This endpoint is only used for migration of consent data across Standard versions. The ASPSP can choose to implement one or both of the PUT/PATCH endpoints and TPPs should refer to the ASPSP dev portal for information on availability.    
+This endpoint is only used for migration of consent data across API Standard versions. The ASPSP can choose to implement one or both of the PUT/PATCH endpoints and TPPs should refer to the ASPSP developer portal for information on availability.    
 
-This endpoint should not be used to modify content of an existing consent created on the same version.  The ASPSP __must__ reject request if it attempts to modify an existing resource which does not require migration to the new format.
+This endpoint should not be used to modify content of an existing consent created on the same version.  The ASPSP __must__ reject request if a TPP attempts to modify an existing resource which does not require migration to the new format.
 
 The request body should contain the correct schema for the current version of the API specification with any associated enumeration values that have moved to short code format.  Values originally supplied in the consent such as account information, control parameters, dates or monetary values __must not__ change and the ASPSP __must__ reject any requests which modify these values.
 
 Successful submission must return the updated consent resource body.
 
 ### PATCH /domestic-vrp-consents/{consentId}
-This endpoint is only used for migration of consent data across Standard versions. The ASPSP can choose to implement one or both of the PUT/PATCH endpoints and TPPs should refer to the ASPSP dev portal for information on availability.    
+This endpoint is only used for migration of consent data across Standard versions. The ASPSP can choose to implement one or both of the PUT/PATCH endpoints and TPPs should refer to the ASPSP developer portal for information on availability.    
 
-This endpoint should not be used to modify content of an existing consent created on the same version.  The ASPSP __must__ reject request if it attempts to modify an existing resource which does not require migration to the new format.
+This endpoint should not be used to modify content of an existing consent created on the same version.  The ASPSP __must__ reject request if a TPP attempts to modify an existing resource which does not require migration to the new format.
 
 The request body should contain a partial JSON body containing only the changed schema and any associated enumeration values that have moved to short code format, matching the current API specification.  Values originally supplied in the consent such as account information, control parameters, dates or monetary values __must not__ change and the ASPSP __must__ reject any requests which modify these values.
 
@@ -171,7 +171,7 @@ The data dictionary section gives the detail on the payload content for the VRP 
 | __Identification__ (0..1) | `Identification` |Unique and unambiguous identification of a financial institution or a branch of a financial institution.  | Max35Text  
 | __Name__ (0..1) | `Name` | Name by which an agent is known and which is usually used to identify that agent. | Max140Text
 | __PostalAddress__ (0..1) | `PostalAddress` |Information that locates and identifies a specific address, as defined by postal services.| OBPostalAddress6
-| __AddressType__ (0..1) | `PostalAddress. AddressType` |Identifies the nature of the postal address. |OBAddressTypeCode  |Business Correspondence DeliveryTo MailTo POBox Postal Residential Statement
+| __AddressType__ (0..1) | `PostalAddress. AddressType` |Identifies the nature of the postal address. |OBAddressTypeCode  |BIZZ DLVY MLTO PBOX ADDR HOME CORR STAT |
 | __Department__ (0..1) | `PostalAddress. Department` |Identification of a division of a large organisation or building. | Max70Text  
 | __SubDepartment__ (0..1) | `PostalAddress. SubDepartment` |Identification of a sub-division of a large organisation or building. |Max70Text
 | __StreetName__ (0..1) | `PostalAddress. StreetName`   |Name of a street or thoroughfare.    |Max70Text  
@@ -328,7 +328,7 @@ The Risk block is a common class used in requests and responses
 | PaymentPurposeCode |0..1 |OBRisk1/PaymentPurposeCode | For a full description see `ExternalPurpose1Code` [here](https://github.com/OpenBankingUK/External_Interal_CodeSets) |OBExternalPaymentPurpose1Code | | |
 | BeneficiaryAccountType           | 0..1       | OBRisk1/BeneficiaryAccountType             | To be provided if the AccountType is known.                                                                                                                                                                                    | OBExternalExtendedAccountType1Code | Personal<br>JointPersonal<br>PersonalSavingsAccount<br>Business<br>BusinessSavingsAccount<br>Charity<br>Collection<br>Corporate<br>Government<br>Ewallet<br>Investment<br>ISA<br>Premier<br>Wealth<br>Pension<br>                                                                                                       |         |
 | DeliveryAddress                  | 0..1       | OBRisk1/DeliveryAddress                    | Information that locates and identifies a specific address, as defined by postal services or in free format text.                                                                                                              | OBPostalAddress6               |                                                                                                                                                                                                                                                                                                                         |         |
-| AddressType |0..1 |OBRisk1/DeliveryAddress AddressType |BIZZ (Business)<br>DLVY (Delivery To)<br>MLTO (Mail To)<br>PBOX (PO Box)<br>ADDR (Postal)<br>HOME (Residential)<br>CORR (Correspondence)<br>STAT (Statement) | ||
+| AddressType |0..1 |OBRisk1/DeliveryAddress AddressType |BIZZ<br>DLVY<br>MLTO<br>PBOX<br>ADDR<br>HOME<br>CORR<br>STAT | ||
 | Department |0..1 |OBRisk1/DeliveryAddress Department |Identification of a division of a large organisation or building. |Max70Text | | |
 | SubDepartment |0..1 |OBRisk1/DeliveryAddress SubDepartment |Identification of a sub-division of a large organisation or building. |Max70Text | | |
 | StreetName |0..1 |OBRisk1/DeliveryAddress StreetName |Name of a street or thoroughfare. |Max70Text | | |
@@ -363,11 +363,11 @@ The Risk block is a common class used in requests and responses
 | __ConsentId__  (1..1)| `Data. ConsentId` | Unique identification as assigned by the ASPSP to uniquely identify the consent resource.      | Max128Text
 | __Data. ReadRefundAccount__ (0..1) | `Data. ReadRefundAccount` | Indicates whether the `RefundAccount` object should be included in the response | Yes No
 | __CreationDateTime__ (1..1)| `Data. CreationDateTime` | Date and time at which the resource was created.|ISODateTime
-| __StatusCode__ (0..1) | `Data. Status` | Specifies the status of resource in code form.  |AUTH AWAU RJCT COND
+| __StatusCode__ (0..1) | `Data. StatusCode` | Specifies the status of resource in code form.  |AUTH AWAU RJCT COND
+| __StatusUpdateDateTime__ (1..1)| `Data. StatusUpdateDateTime` |Date and time at which the resource status was updated.  | ISODateTime  
 | __StatusReason__ (0..*) | `Data. StatusReason` | Specifies the status reason.  |OBStatusReason
 | __StatusReasonCode__ (0..1) | `Data. StatusReason. *. StatusReasonCode` | Specifies the status reason in a code form. For a full description see `ExternalStatusReason1Code` [here](https://github.com/OpenBankingUK/External_Interal_CodeSets).  |ExternalStatusReason1Code
 | __StatusReasonDescription__ (0..1) | `Data. StatusReason. *. StatusReasonDescription` | Description supporting the StatusReasonCode.  |String
-| __StatusUpdateDateTime__ (1..1)| `Data. StatusUpdateDateTime` |Date and time at which the resource status was updated.  | ISODateTime  
 | __ControlParameters__ (1..1) | `Data. ControlParameters` | The control parameters under which this VRP must operate | [OBDomesticVRPControlParameters](#OBDomesticVRPControlParameters)
 | __Initiation__ (1..1) | `Data. Initiation` | The parameters of the VRP consent that should remain unchanged for each payment under this VRP |  [OBDomesticVRPInitiation](#OBDomesticVRPInitiation)
 | __UltimateCreditor__ (0..1) | `Data. Initiation. UltimateCreditor` |Set of elements used to identify a person or an organisation. | OBPartyIdentification43 | | |
