@@ -3,11 +3,11 @@
 - [Overview](#overview)
 - [Endpoints](#endpoints)
   - [POST /international-scheduled-payments](#post-international-scheduled-payments)
-    - [Status](#status)
+    - [StatusCode](#statuscode)
   - [GET /international-scheduled-payments/{InternationalScheduledPaymentId}](#get-international-scheduled-payments-internationalscheduledpaymentid)
-    - [Status](#status-2)
+    - [StatusCode](#statuscode-2)
   - [GET /international-scheduled-payments/{InternationalScheduledPaymentId}/payment-details](#get-international-scheduled-payments-internationalscheduledpaymentid-payment-details)
-    - [Status](#status-3)
+    - [StatusCode](#statuscode-3)
   - [State Model](#state-model)
     - [Payment Order](#payment-order)
       - [Multiple Authorisation](#multiple-authorisation)
@@ -52,11 +52,11 @@ Once the international-scheduled-payment-consent has been authorised by the PSU,
 
 #### StatusCode
 
-An international-scheduled-payment can only be created if its corresponding international-scheduled-payment-consent resource has the status of "AUTH". 
+An international-scheduled-payment can only be created if its corresponding international-scheduled-payment-consent resource has the StatusCode of "AUTH". 
 
-The international-scheduled-payment resource that is created successfully must have one of the following Status codes:
+The international-scheduled-payment resource that is created successfully must have one of the following StatusCodes:
 
-| Status |
+| StatusCode |
 | --- |
 | RCVD |
 | RJCT |
@@ -66,11 +66,11 @@ The international-scheduled-payment resource that is created successfully must h
 
 A PISP can retrieve the international-scheduled-payment to check its status.
 
-#### Status
+#### StatusCode
 
-The international-scheduled-payment resource must have one of the following Status codes:
+The international-scheduled-payment resource must have one of the following StatusCodes:
 
-| Status |
+| StatusCode |
 | --- |
 | RCVD |
 | RJCT |
@@ -81,7 +81,7 @@ The international-scheduled-payment resource must have one of the following Stat
 
 A PISP can retrieve the Details of the underlying payment transaction via this endpoint. This resource allows ASPSPs to return richer list of Payment Statuses, and if available payment scheme related statuses.
 
-#### Status
+#### StatusCode
 
 The international-scheduled-payments - payment-details must have one of the following PaymentStatusCode code-set enumerations:
 
@@ -119,7 +119,7 @@ Any rejections in the multiple authorisation process should result in the MultiA
 ![Multi Auth](./images/PO_MultiAuthFlow.png)
 
 
-The definitions for the Status:
+The definitions for the StatusCode:
 
 |  |Status |Status Description |
 | --- |--- |--- |

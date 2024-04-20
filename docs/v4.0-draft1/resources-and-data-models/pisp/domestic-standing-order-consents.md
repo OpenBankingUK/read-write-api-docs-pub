@@ -3,9 +3,9 @@
 - [Overview](#overview)
 - [Endpoints](#endpoints)
   - [POST /domestic-standing-order-consents](#post-domestic-standing-order-consents)
-    - [Status](#status)
+    - [StatusCode](#statuscode)
   - [GET /domestic-standing-order-consents/{ConsentId}](#get-domestic-standing-order-consents-consentid)
-    - [Status](#status-2)
+    - [StatusCode](#statuscode-2)
   - [State Model](#state-model)
     - [Payment Order Consent](#payment-order-consent)
 - [Data Model](#data-model)
@@ -52,11 +52,11 @@ The API endpoint allows the PISP to ask an ASPSP to create a new **domestic-stan
 * The endpoint allows the PISP to send a copy of the consent (between PSU and PISP) to the ASPSP for the PSU to authorise.
 * The ASPSP creates the **domestic-standing-order-consent** resource and responds with a unique ConsentId to refer to the resource.
 
-#### Status
+#### StatusCode
 
-The default Status is "AWAU" immediately after the domestic-standing-order-consent has been created.
+The default StatusCode is "AWAU" immediately after the domestic-standing-order-consent has been created.
 
-| Status |
+| StatusCode |
 | --- |
 | AWAU |
 
@@ -64,15 +64,15 @@ The default Status is "AWAU" immediately after the domestic-standing-order-conse
 
 A PISP can optionally retrieve a payment consent resource that they have created to check its status.
 
-#### Status
+#### StatusCode
 
-Once the PSU authorises the payment-consent resource , the Status of the payment-consent resource will be updated with "AUTH".
+Once the PSU authorises the payment-consent resource, the StatusCode of the payment-consent resource will be updated with "AUTH".
 
-If the PSU rejects the consent or the domestic-standing-order-consent has failed some other ASPSP validation, the Status will be set to "RJCT".
+If the PSU rejects the consent or the domestic-standing-order-consent has failed some other ASPSP validation, the StatusCode will be set to "RJCT".
 
-Once a domestic-standing-order has been successfully created using the domestic-standing-order-consent, the Status of the domestic-standing-order-consent will be set to "COND".
+Once a domestic-standing-order has been successfully created using the domestic-standing-order-consent, the StatusCode of the domestic-standing-order-consent will be set to "COND".
 
-The available Status codes for the domestic-standing-order-consent resource are:
+The available StatusCodes for the domestic-standing-order-consent resource are:
 
 | StatusCode |
 | --- |
@@ -92,7 +92,7 @@ The state model for the domestic-standing-order-consent resource follows the gen
 ![State model](./images/PO_Consent.png)
 
 
-The definitions for the Status:
+The definitions for the StatusCode:
 
 |  |StatusCode |Status Description |
 | --- |------ |------------------ |

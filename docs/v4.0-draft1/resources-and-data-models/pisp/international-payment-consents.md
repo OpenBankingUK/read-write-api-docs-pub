@@ -3,9 +3,9 @@
 - [Overview](#overview)
 - [Endpoints](#endpoints)
   - [POST /international-payment-consents](#post-international-payment-consents)
-    - [Status](#status)
+    - [StatusCode](#statuscode)
 - [GET /international-payment-consents/{ConsentId}](#get-international-payment-consents-consentid)
-    - [Status](#status-2)
+    - [StatusCode](#statuscode-2)
   - [GET /international-payment-consents/{ConsentId}/funds-confirmation](#get-international-payment-consents-consentid-funds-confirmation)
   - [State Model](#state-model)
     - [Payment Order Consent](#payment-order-consent)
@@ -59,9 +59,9 @@ The API endpoint allows the PISP to ask an ASPSP to create a new **international
 * The endpoint allows the PISP to send a copy of the consent (between PSU and PISP) to the ASPSP for the PSU to authorise.
 * The ASPSP creates the **international-payment-consent** resource and responds with a unique ConsentId to refer to the resource.
 
-#### Status
+#### StatusCode
 
-The default Status is "AWAU" immediately after the international-payment-consent has been created.
+The default StatusCode is "AWAU" immediately after the international-payment-consent has been created.
 
 | StatusCode |
 | --- |
@@ -71,17 +71,17 @@ The default Status is "AWAU" immediately after the international-payment-consent
 
 A PISP can optionally retrieve a payment consent resource that they have created to check its status.
 
-#### Status
+#### StatusCode
 
-Once the PSU authorises the payment-consent resource, the Status of the payment-consent resource will be updated with "AUTH".
+Once the PSU authorises the payment-consent resource, the StatusCode of the payment-consent resource will be updated with "AUTH".
 
-If the PSU rejects the consent or the international-payment-consent has failed some other ASPSP validation, the Status will be set to "RJCT".
+If the PSU rejects the consent or the international-payment-consent has failed some other ASPSP validation, the StatusCode will be set to "RJCT".
 
-Once an international-payment has been successfully created using the international-payment-consent, the Status of the international-payment-consent will be set to "COND".
+Once an international-payment has been successfully created using the international-payment-consent, the StatusCode of the international-payment-consent will be set to "COND".
 
-The available Status codes for the international-payment-consent resource are:
+The available StatusCodes for the international-payment-consent resource are:
 
-| Status |
+| StatusCode |
 | --- |
 | AWAU |
 | RJCT |
@@ -103,7 +103,7 @@ The state model for the international-payment-consent resource follows the gener
 
 ![State model](./images/PO_Consent.png)
 
-The definitions for the Status:
+The definitions for the StatusCode:
 
 | | Status | Status Description |
 | --- |------ |------------------ |

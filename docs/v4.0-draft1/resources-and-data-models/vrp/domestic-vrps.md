@@ -3,7 +3,7 @@
 - [Overview](#overview)
 - [Endpoints](#endpoints)
   - [POST /domestic-vrps](#post-domestic-vrps)
-    - [Status](#status)
+    - [StatusCode](#statuscode)
   - [GET /domestic-vrps/{DomesticVRPId}](#get-domestic-vrpsdomesticvrpid)
   - [GET /domestic-vrps/{DomesticVRPId}/payment-details](#get-domestic-vrpsdomesticvrpidpayment-details)
 - [State Model](#state-model)
@@ -95,7 +95,7 @@ The domestic-vrp resource must have one of the following PaymentStatusCode code-
 
 A TPP can retrieve the details of the underlying payment transaction via this endpoint. This resource allows ASPSPs to return a richer list of Payment Statuses, and if available payment scheme related statuses.
 
-The API must return one of the following status codes:
+The API must return one of the following StatusCodes:
 
 | StatusCode |
 | ------ |

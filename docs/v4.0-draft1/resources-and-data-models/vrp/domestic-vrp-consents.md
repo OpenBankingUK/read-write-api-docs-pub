@@ -106,13 +106,13 @@ The state model for the VRP consents resource follows the generic consent state 
 ![VRP Consent State model](./images/PIS-VRP_PO_Consent.png)
 
 
-All `domestic-vrp-consents` start off with a state of `AWAU`
+All `domestic-vrp-consents` start off with a StatusCode of `AWAU`
 
-Once the PSU authorises the resource - the state of the resource will be set to `AUTH`.
+Once the PSU authorises the resource - the StausCode will be set to `AUTH`.
 
-If the PSU rejects the consent, the state will be set to `RJCT`.
+If the PSU rejects the consent, the StautsCode will be set to `RJCT`.
 
-The available status codes for the VRP consents resource are:
+The available StatusCodes for the VRP consents resource are:
 
 - AWAU
 - RJCT
@@ -120,9 +120,9 @@ The available status codes for the VRP consents resource are:
 - CANC
 - EXPD
 
-The definitions for the Status:
+The definitions for the StatusCode:
 
-|     | StatusCode                | Status Description                                                            |
+|     | StatusCode                |  Description                                                            |
 |-----|-----------------------|-------------------------------------------------------------------------------|
 | 1   | AWAU | The consent resource is awaiting PSU authorisation.                           |
 | 2   | RJCT              | The consent resource has been rejected.                                       |

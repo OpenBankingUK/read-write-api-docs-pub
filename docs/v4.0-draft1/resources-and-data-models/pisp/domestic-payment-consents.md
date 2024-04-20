@@ -3,9 +3,9 @@
 - [Overview](#overview)
 - [Endpoints](#endpoints)
   - [POST /domestic-payment-consents](#post-domestic-payment-consents)
-    - [Status](#status)
+    - [StatusCode](#statuscode)
   - [GET /domestic-payment-consents/{ConsentId}](#get-domestic-payment-consents-consentid)
-    - [Status](#status-2)
+    - [StatusCode](#statuscode-2)
   - [GET /domestic-payment-consents/{ConsentId}/funds-confirmation](#get-domestic-payment-consents-consentid-funds-confirmation)
   - [State Model](#state-model)
     - [Payment Order Consent](#payment-order-consent)
@@ -57,11 +57,11 @@ The API endpoint allows the PISP to ask an ASPSP to create a new **domestic-paym
 * The endpoint allows the PISP to send a copy of the consent (between PSU and PISP) to the ASPSP for the PSU to authorise.
 * The ASPSP creates the **domestic-payment-consent** resource and responds with a unique ConsentId to refer to the resource.
 
-#### Status
+#### StatusCode
 
-The default Status is &quot;AwaitingAuthorisation&quot; immediately after the domestic-payment-consent has been created.
+The default StatusCode is &quot;AWAU&quot; immediately after the domestic-payment-consent has been created.
 
-| Status |
+| StatusCode |
 | ------ |
 | AWAU |
 
@@ -69,17 +69,17 @@ The default Status is &quot;AwaitingAuthorisation&quot; immediately after the do
 
 A PISP can optionally retrieve a payment consent resource that they have created to check its status.
 
-#### Status
+#### StatusCode
 
-Once the PSU authorises the payment-consent resource - the Status of the payment-consent resource will be updated with &quot;AUTH&quot;.
+Once the PSU authorises the payment-consent resource - the StatusCode of the payment-consent resource will be updated with &quot;AUTH&quot;.
 
-If the PSU rejects the consent or the domestic-payment-consent has failed some other ASPSP validation, the Status will be set to &quot;RJCT&quot;.
+If the PSU rejects the consent or the domestic-payment-consent has failed some other ASPSP validation, the StatusCode will be set to &quot;RJCT&quot;.
 
-Once a domestic-payment has been successfully created using the domestic-payment-consent, the Status of the domestic-payment-consent will be set to &quot;COND&quot;.
+Once a domestic-payment has been successfully created using the domestic-payment-consent, the StatusCode of the domestic-payment-consent will be set to &quot;COND&quot;.
 
 The available status codes for the domestic-payment-consent resource are:
 
-| Status |
+| StatusCode |
 | ------ |
 | AWAU |
 | RJCT |
@@ -184,7 +184,7 @@ For the OBDomestic2 Initiation object:
 | Code |1..1 |OBDomestic2/CreditorAccount/Proxy/Code| Specifies the external proxy account type code, as published in the proxy account type external code set.<br> For more information see `ExternalProxyAccountType1Code` [here](https://github.com/OpenBankingUK/External_Interal_CodeSets) |OBExternalProxyAccountType1Code | | |
 | Proprietary |1..1 |OBDomestic2/CreditorAccount/Proxy/Proprietary| The owner of the proxy account |MaxText70 | | |
 | CreditorPostalAddress |0..1 |OBDomestic2/CreditorPostalAddress |Information that locates and identifies a specific address, as defined by postal services. |OBPostalAddress6 | | |
-| AddressType |0..1 |OBDomestic2/CreditorPostalAddress/AddressType |BIZZ (Business)<br>DLVY (Delivery To)<br>MLTO (Mail To)<br>PBOX (PO Box)<br>ADDR (Postal)<br>HOME (Residential)<br>CORR (Correspondence)<br>STAT (Statement) | ||
+| AddressType |0..1 |OBDomestic2/CreditorPostalAddress/AddressType |BIZZ<br>DLVY<br>MLTO<br>PBOX<br>ADDR<br>HOME<br>CORR<br>STAT | ||
 | Department |0..1 |OBDomestic2/CreditorPostalAddress/Department |Identification of a division of a large organisation or building. |Max70Text | | |
 | SubDepartment |0..1 |OBDomestic2/CreditorPostalAddress/SubDepartment |Identification of a sub-division of a large organisation or building. |Max70Text | | |
 | StreetName |0..1 |OBDomestic2/CreditorPostalAddress/StreetName |Name of a street or thoroughfare. |Max70Text | | |

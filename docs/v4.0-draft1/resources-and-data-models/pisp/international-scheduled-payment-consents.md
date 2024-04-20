@@ -3,9 +3,9 @@
 - [Overview](#overview)
 - [Endpoints](#endpoints)
   - [POST /international-scheduled-payment-consents](#post-international-scheduled-payment-consents)
-    - [Status](#status)
+    - [StatusCode](#statuscode)
   - [GET /international-scheduled-payment-consents/{ConsentId}](#get-international-scheduled-payment-consents-consentid)
-    - [Status](#status-2)
+    - [StatusCode](#statuscode-2)
   - [GET /international-scheduled-payment-consents/{ConsentId}/funds-confirmation](#get-international-scheduled-payment-consents-consentid-funds-confirmation)
   - [State Model](#state-model)
     - [Payment Order Consent](#payment-order-consent)
@@ -79,7 +79,7 @@ If the PSU rejects the consent or the international-scheduled-payment-consent ha
 
 Once an international-scheduled-payment has been successfully created using the international-scheduled-payment-consent, the StatusCode of the international-scheduled-payment-consent will be set to "COND".
 
-The available Status codes for the international-scheduled-payment-consent resource are:
+The available StatusCodes for the international-scheduled-payment-consent resource are:
 
 | StatusCode |
 | --- |
@@ -92,7 +92,7 @@ The available Status codes for the international-scheduled-payment-consent resou
 
 The API endpoint allows the PISP to ask an ASPSP to confirm funds on an **international-scheduled-payment-consent** resource, where the payment is for immediate debit.
 
-* An ASPSP can only respond to a funds confirmation request if the **international-scheduled-payment-consent** resource has an `AUTH` status. If the status is not `AUTH`, an ASPSP **must** respond with a 400 (Bad Request) and a `U009` error code.
+* An ASPSP can only respond to a funds confirmation request if the **international-scheduled-payment-consent** resource has an `AUTH` StatusCode. If the StatusCode is not `AUTH`, an ASPSP **must** respond with a 400 (Bad Request) and a `U009` error code.
 * Confirmation of funds requests do not affect the status of the **international-scheduled-payment-consent** resource.
 
 ### State Model
@@ -103,9 +103,9 @@ The state model for the international-scheduled-payment-consent resource follows
 
 ![State model](./images/PO_Consent.png)
 
-The definitions for the Status:
+The definitions for the StatusCode:
 
-|  |Status |Status Description |
+|  |StatusCode |Status Description |
 | --- |--- |--- |
 | 1 |AWAU |The consent resource is awaiting PSU authorisation. |
 | 2 |RJCT |The consent resource has been rejected. |

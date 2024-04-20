@@ -3,11 +3,11 @@
 - [Overview](#overview)
 - [Endpoints](#endpoints)
   - [POST /international-standing-orders](#post-international-standing-orders)
-    - [Status](#status)
+    - [StatusCode](#statuscode)
   - [GET /international-standing-orders/{InternationalStandingOrderPaymentId}](#get-international-standing-orders-internationalstandingorderpaymentid)
-    - [Status](#status-2)
+    - [StatusCode](#statuscode-2)
   - [GET /international-standing-orders/{InternationalStandingOrderPaymentId}/payment-details](#get-international-standing-orders-internationalstandingorderpaymentid-payment-details)
-    - [Status](#status-3)
+    - [StatusCode](#statuscode-3)
   - [State Model](#state-model)
     - [Payment Order](#payment-order)
       - [Multiple Authorisation](#multiple-authorisation)
@@ -53,13 +53,13 @@ Once the international-standing-order-consent has been authorised by the PSU, th
 * The PISP **must** ensure that the Initiation and Risk sections of the international-standing-orders match the corresponding Initiation and Risk sections of the international-standing-order-consent resource. If the two do not match, the ASPSP **must not** process the request and **must** respond with a 400 (Bad Request).
 * Any operations on the international-standing-orders resource will not result in a Status change for the international-standing-orders resource.
 
-#### Status
+#### StatusCode
 
-An international-standing-orders can only be created if its corresponding international-standing-order-consent resource has the status of "AUTH". 
+An international-standing-orders can only be created if its corresponding international-standing-order-consent resource has the StatusCode of "AUTH". 
 
-The international-standing-orders resource that is created successfully must have one of the following Status codes:
+The international-standing-orders resource that is created successfully must have one of the following StatusCodes:
 
-| Status |
+| StatusCode |
 | --- |
 | RCVD |
 | RJCT |
@@ -69,11 +69,11 @@ The international-standing-orders resource that is created successfully must hav
 
 A PISP can retrieve the international-standing-orders to check its status.
 
-#### Status
+#### StatusCode
 
-The international-standing-orders resource must have one of the following Status codes:
+The international-standing-orders resource must have one of the following StatusCodes:
 
-| Status |
+| StatusCode |
 | --- |
 | RCVD |
 | RJCT |
@@ -84,7 +84,7 @@ The international-standing-orders resource must have one of the following Status
 
 A PISP can retrieve the Details of the underlying payment transaction via this endpoint. This resource allows ASPSPs to return richer list of Payment Statuses, and if available payment scheme related statuses.
 
-#### Status
+#### StatusCode
 
 The international-standing-orders - payment-details must have one of the following PaymentStatusCode code-set enumerations:
 
@@ -122,9 +122,9 @@ Any rejections in the multiple authorisation process should result in the MultiA
 
 ![Multi Auth](./images/PO_MultiAuthFlow.png)
 
-The definitions for the Status:
+The definitions for the StatusCode:
 
-|  |Status |Status Description |
+|  |StatusCode |Status Description |
 | --- |--- |--- |
 | 1 |AWAU |The payment-order resource is awaiting further authorisation. |
 | 2 |RJCT |The payment-order resource has been rejected by an authoriser. |
