@@ -3,9 +3,9 @@
 - [Overview](#overview)
 - [Endpoints](#endpoints)
   - [POST /international-standing-order-consents](#post-international-standing-order-consents)
-    - [Status](#status)
+    - [StatusCode](#statuscode)
   - [GET /international-standing-order-consents/{ConsentId}](#get-international-standing-order-consents-consentid)
-    - [Status](#status-2)
+    - [StatusCode](#statuscode-2)
   - [State Model](#state-model)
     - [Payment Order Consent](#payment-order-consent)
 - [Data Model](#data-model)
@@ -61,15 +61,15 @@ The default StatusCode is "AWAU" immediately after the international-standing-or
 
 A PISP can optionally retrieve a payment consent resource that they have created to check its status. 
 
-#### Status
+#### StatusCode
 
-Once the PSU authorises the payment-consent resource - the Status of the payment-consent resource will be updated with "AUTH".
+Once the PSU authorises the payment-consent resource - the StatusCode of the payment-consent resource will be updated with "AUTH".
 
-If the PSU rejects the consent or the international-standing-order-consent has failed some other ASPSP validation, the Status will be set to "RJCT".
+If the PSU rejects the consent or the international-standing-order-consent has failed some other ASPSP validation, the StatusCode will be set to "RJCT".
 
-Once an international-standing-orders has been successfully created using the international-standing-order-consent, the Status of the international-standing-order-consent will be set to "COND".
+Once an international-standing-orders has been successfully created using the international-standing-order-consent, the StatusCode of the international-standing-order-consent will be set to "COND".
 
-The available Status codes for the international-standing-order-consent resource are:
+The available StatusCodes for the international-standing-order-consent resource are:
 
 | StatusCode |
 | --- |
@@ -86,9 +86,9 @@ The state model for the international-standing-order-consent resource follows th
 
 ![State model](./images/PO_Consent.png)
 
-The definitions for the Status:
+The definitions for the StatusCode:
 
-|  |Status |Status Description |
+|  |StatusCode |Status Description |
 | --- |--- |--- |
 | 1 |AWAU |The consent resource is awaiting PSU authorisation. |
 | 2 |RJCT |The consent resource has been rejected. |

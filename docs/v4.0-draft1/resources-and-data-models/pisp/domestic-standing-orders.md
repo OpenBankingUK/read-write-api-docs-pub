@@ -3,11 +3,11 @@
 - [Overview](#overview)
 - [Endpoints](#endpoints)
   - [POST /domestic-standing-orders](#post-domestic-standing-orders)
-    - [Status](#status)
+    - [StatusCode](#statuscode)
   - [GET /domestic-standing-orders/{DomesticStandingOrderId}](#get-domestic-standing-orders-domesticstandingorderid)
-    - [Status](#status-2)
+    - [StatusCode](#statuscode-2)
   - [GET /domestic-standing-orders/{DomesticStandingOrderId}/payment-details](#get-domestic-standing-orders-domesticstandingorderid-payment-details)
-    - [Status](#status-3)
+    - [StatusCode](#statuscode-3)
   - [State Model](#state-model)
     - [Payment Order](#payment-order)
       - [Multiple Authorisation](#multiple-authorisation)
@@ -53,13 +53,13 @@ Once the domestic-standing-order-consent has been authorised by the PSU, the PIS
 * The PISP **must** ensure that the Initiation and Risk sections of the domestic-standing-order match the corresponding Initiation and Risk sections of the domestic-standing-order-consent resource. If the two do not match, the ASPSP **must not** process the request and **must** respond with a 400 (Bad Request).
 * Any operations on the domestic-standing-order resource will not result in a Status change for the domestic-standing-order resource.
 
-#### Status
+#### StatusCode
 
-A domestic-standing-order can only be created if its corresponding domestic-standing-order-consent resource has the status of "AUTH". 
+A domestic-standing-order can only be created if its corresponding domestic-standing-order-consent resource has the StatusCode of "AUTH". 
 
-The domestic-standing-order resource that is created successfully must have one of the following Status codes:
+The domestic-standing-order resource that is created successfully must have one of the following StatusCodes:
 
-| Status |
+| StatusCode |
 | --- |
 | RCVD |
 | RJCT |
@@ -69,11 +69,11 @@ The domestic-standing-order resource that is created successfully must have one 
 
 A PISP can retrieve the domestic-standing-order to check its status.
 
-#### Status
+#### StatusCode
 
-The domestic-standing-order resource must have one of the following Status codes:
+The domestic-standing-order resource must have one of the following StatusCodes:
 
-| Status |
+| StatusCode |
 | --- |
 | RCVD |
 | RJCT |
@@ -84,7 +84,7 @@ The domestic-standing-order resource must have one of the following Status codes
 
 A PISP can retrieve the Details of the underlying payment transaction via this endpoint. This resource allows ASPSPs to return richer list of Payment Statuses, and if available payment scheme related statuses.
 
-#### Status
+#### StatusCode
 
 The domestic-standing-orders - payment-details must have one of the following PaymentStatusCode code-set enumerations:
 

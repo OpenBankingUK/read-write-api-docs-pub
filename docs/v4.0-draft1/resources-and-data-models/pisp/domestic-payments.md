@@ -3,11 +3,11 @@
 - [Overview](#overview)
 - [Endpoints](#endpoints)
   - [POST /domestic-payments](#post-domestic-payments)
-    - [Status](#status)
+    - [StatusCode](#statuscode)
   - [GET /domestic-payments/{DomesticPaymentId}](#get-domestic-payments-domesticpaymentid)
-    - [Status](#status-2)
+    - [StatusCode](#statuscode-2)
   - [GET /domestic-payments/{DomesticPaymentId}/payment-details](#get-domestic-payments-domesticpaymentid-payment-details)
-    - [Status](#status-3)
+    - [StatusCode](#statuscode-3)
   - [State Model](#state-model)
     - [Payment Order](#payment-order)
       - [Multiple Authorisation](#multiple-authorisation)
@@ -56,9 +56,9 @@ Once the domestic-payment-consent has been authorised by the PSU, the PISP can p
 * The PISP **must** ensure that the Initiation and Risk sections of the domestic-payment match the corresponding Initiation and Risk sections of the domestic-payment-consent resource. If the two do not match, the ASPSP must not process the request and **must** respond with a 400 (Bad Request).
 * Any operations on the domestic-payment resource will not result in a status change for the domestic-payment resource.
 
-#### Status
+#### StatusCode
 
-A domestic-payment can only be created if its corresponding domestic-payment-consent resource has the status of "AUTH". 
+A domestic-payment can only be created if its corresponding domestic-payment-consent resource has the StatusCode of "AUTH". 
 
 The domestic-payment resource that is created successfully must have one of the following PaymentStatusCode code-set enumerations:
 
@@ -81,7 +81,7 @@ The domestic-payment resource that is created successfully must have one of the 
 
 A PISP can retrieve the domestic-payment to check its status.
 
-#### Status
+#### StatusCode
 
 The domestic-payment resource must have one of the following PaymentStatusCode code-set enumerations:
 
@@ -104,7 +104,7 @@ The domestic-payment resource must have one of the following PaymentStatusCode c
 
 A PISP can retrieve the Details of the underlying payment transaction via this endpoint. This resource allows ASPSPs to return richer list of Payment Statuses, and if available payment scheme related statuses.
 
-#### Status
+#### StatusCode
 
 The domestic-payment - payment-details must have one of the following PaymentStatusCode code-set enumerations:
 

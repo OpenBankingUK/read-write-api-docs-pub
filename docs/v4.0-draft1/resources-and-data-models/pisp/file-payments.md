@@ -4,10 +4,10 @@
 - [Endpoints](#endpoints)
   - [POST /file-payments](#post-file-payments)
   - [GET /file-payments/{FilePaymentId}](#get-file-payments-filepaymentid)
-    - [Status](#status)
+    - [StatusCode](#statuscode)
   - [GET /file-payments/{FilePaymentId}/report-file](#get-file-payments-filepaymentid-report-file)
   - [GET /file-payments/{FilePaymentId}/payment-details](#get-file-payments-filepaymentid-payment-details)
-    - [Status](#status-2)
+    - [StatusCode](#statuscode-2)
   - [State Model](#state-model)
     - [Payment Order](#payment-order)
     - [Multiple Authorisation](#multiple-authorisation)
@@ -55,9 +55,9 @@ Once the file-payment-consent has been authorised by the PSU, the PISP can proce
 
 A PISP can retrieve the file-payment to check its status.
 
-#### Status
+#### StatusCode
 
-The file-payments resource must have one of the following Status codes:
+The file-payments resource must have one of the following StatusCodes:
 
 | StatusCode |
 | --- |
@@ -78,7 +78,7 @@ The API endpoint allows the PISP to download a payment report file from an ASPSP
 
 A PISP can retrieve the Details of the underlying payment transaction(s) via this endpoint. This resource allows ASPSPs to return richer list of Payment Statuses, and if available payment scheme related statuses.
 
-#### Status
+#### StatusCode
 
 The file-payments - payment-details must have one of the following PaymentStatusCode code-set enumerations:
 

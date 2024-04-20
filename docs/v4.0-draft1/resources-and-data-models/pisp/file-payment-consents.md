@@ -3,11 +3,11 @@
 - [Overview](#overview)
 - [Endpoints](#endpoints)
   - [POST /file-payment-consents](#post-file-payment-consents)
-    - [Status](#status)
+    - [StatusCode](#statuscode)
   - [POST /file-payment-consents/{ConsentId}/file](#post-file-payment-consents-consentid-file)
-    - [Status](#status-2)
+    - [StatusCode](#statuscode-2)
   - [GET /file-payment-consents/{ConsentId}](#get-file-payment-consents-consentid)
-    - [Status](#status-3)
+    - [StatusCode](#statuscode-3)
   - [GET /file-payment-consents/{ConsentId}/file](#get-file-payment-consents-consentid-file)
   - [State Model](#state-model)
     - [Payment Order Consent](#payment-order-consent)
@@ -62,7 +62,7 @@ The API endpoint allows the PISP to ask an ASPSP to create a new **file-payment-
 
 The default StatusCode is "AWUP" immediately after the file-payment-consent has been created.
 
-| Status |
+| StatusCode |
 | --- |
 | AWUP |
 
@@ -78,11 +78,11 @@ The API endpoint allows the PISP to upload a file to an ASPSP, against a **file-
 * The file is sent in the HTTP request body.
 * HTTP headers (e.g. Content-Type) are used to describe the file.
 
-#### Status
+#### StatusCode
 
 The default StatusCode is "AWAU" immediately after the file has been uploaded.
 
-| Status |
+| StatusCode |
 | --- |
 | AWAU |
 
@@ -90,7 +90,7 @@ The default StatusCode is "AWAU" immediately after the file has been uploaded.
 
 A PISP can optionally retrieve a payment consent resource that they have created to check its status. 
 
-#### Status
+#### StatusCode
 
 Once the PSU authorises the payment-consent resource, the StatusCode of the payment-consent resource will be updated with "AUTH".
 
@@ -100,7 +100,7 @@ Once a file-payment has been successfully created using the file-payment-consent
 
 The available Status codes for the file-payment-consent resource are:
 
-| Status |
+| StatusCode |
 | --- |
 | AUTH |
 | AWAU |
@@ -122,7 +122,7 @@ The API endpoint allows the PISP to download a file (that had been uploaded agai
 
 ![File Upload Consent model](./images/PIS_FileUploadConsent.png)
 
-The definitions for the Status:
+The definitions for the StatusCode:
 
 |  |Status |Status Description |
 | --- |--- |--- |

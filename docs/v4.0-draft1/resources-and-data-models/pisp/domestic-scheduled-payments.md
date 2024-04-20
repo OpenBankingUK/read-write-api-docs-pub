@@ -3,11 +3,11 @@
 - [Overview](#overview)
 - [Endpoints](#endpoints)
   - [POST /domestic-scheduled-payments](#post-domestic-scheduled-payments)
-    - [Status](#status)
+    - [StatusCode](#statuscode)
   - [GET /domestic-scheduled-payments/{DomesticScheduledPaymentId}](#get-domestic-scheduled-payments-domesticscheduledpaymentid)
-    - [Status](#status-2)
+    - [StatusCode](#statuscode-2)
   - [GET /domestic-scheduled-payments/{DomesticScheduledPaymentId}/payment-details](#get-domestic-scheduled-payments-domesticscheduledpaymentid-payment-details)
-    - [Status](#status-3)
+    - [StatusCode](#statuscode-3)
   - [State Model](#state-model)
     - [Payment Order](#payment-order)
       - [Multiple Authorisation](#multiple-authorisation)
@@ -53,13 +53,13 @@ Once the domestic-scheduled-payment-consent has been authorised by the PSU, the 
 * The PISP **must** ensure that the Initiation and Risk sections of the domestic-scheduled-payment match the corresponding Initiation and Risk sections of the domestic-scheduled-payment-consent resource. If the two do not match, the ASPSP **must not** process the request and **must** respond with a 400 (Bad Request).
 * Any operations on the domestic-scheduled-payment resource will not result in a Status change for the domestic-scheduled-payment resource.
 
-#### Status
+#### StatusCode
 
-A domestic-scheduled-payment can only be created if its corresponding domestic-scheduled-payment-consent resource has the status of "Authorised". 
+A domestic-scheduled-payment can only be created if its corresponding domestic-scheduled-payment-consent resource has the StatusCode of "AUTH". 
 
-The domestic-scheduled-payment resource that is created successfully must have one of the following Status codes:
+The domestic-scheduled-payment resource that is created successfully must have one of the following StatusCodes:
 
-| Status |
+| StatusCode |
 | ------ |
 | RCVD |
 | RJCT |
@@ -69,11 +69,11 @@ The domestic-scheduled-payment resource that is created successfully must have o
 
 A PISP can retrieve the domestic-scheduled-payment to check its status.
 
-#### Status
+#### StatusCode
 
-The domestic-scheduled-payment resource must have one of the following Status codes:
+The domestic-scheduled-payment resource must have one of the following StatusCodes:
 
-| Status |
+| StatusCode |
 | ------ |
 | RCVD |
 | RJCT |
@@ -84,7 +84,7 @@ The domestic-scheduled-payment resource must have one of the following Status co
 
 A PISP can retrieve the Details of the underlying payment transaction via this endpoint. This resource allows ASPSPs to return richer list of Payment Statuses, and if available payment scheme related statuses.
 
-#### Status
+#### StatusCode
 
 The domestic-scheduled-payments - payment-details must have one of the following PaymentStatusCode code-set enumerations:
 
