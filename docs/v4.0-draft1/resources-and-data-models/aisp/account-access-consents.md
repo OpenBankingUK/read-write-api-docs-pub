@@ -78,7 +78,7 @@ After authorisation has taken place the account-access-consent resource may have
 
 #### Status Flow
 
-This is the state diagram for the Status.
+This is the state diagram for the StatusCode.
 
 ![ Consent Authorisation.jpg ](./images/AIS_Consent.png )
 
@@ -92,9 +92,9 @@ The usage of this API endpoint will be subject to an ASPSP's fair usage policies
 
 #### Account Access Consent Status
 
-Once the PSU authorises the account-access-consent resource - the Status of the account-access-consent resource will be updated with "AUTH".
+Once the PSU authorises the account-access-consent resource - the StatusCode of the account-access-consent resource will be updated with "AUTH".
 
-The available Status code-list enumerations for the account-access-consent resource are:
+The available StatusCode code-list enumerations for the account-access-consent resource are:
 
 |  |StatusCode |Status Description |
 | --- |--- |--- |
@@ -288,7 +288,7 @@ Content-Type: application/json
 }
 ```
 
-### Status - AWAU
+### StatusCode - AWAU
 
 This is an example of a GET request which is made  **before**  the account access consent resource is authorised.
 
@@ -348,7 +348,7 @@ Content-Type: application/json
 }
 ```
 
-### Status - AUTH
+### StatusCode - AUTH
 
 This is an example of a GET request which is made  **after**  the account access consent resource is authorised.
 

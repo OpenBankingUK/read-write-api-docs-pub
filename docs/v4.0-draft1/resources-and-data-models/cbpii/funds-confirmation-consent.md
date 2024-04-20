@@ -59,7 +59,7 @@ The API allows the CBPII to ask an ASPSP to create a new **funds-confirmation-co
 
 The PSU **must** authenticate with the ASPSP and agree the **funds-confirmation-consent** with the ASPSP, for the **funds-confirmation-consent** to be successfully setup.
 
-The **funds-confirmation-consent** resource that is created successfully must have one of the following Status code-list enumerations:
+The **funds-confirmation-consent** resource that is created successfully must have one of the following StatusCode code-list enumerations:
 
 |  |StatusCode |Status Description |
 | --- |--- |--- |
@@ -99,9 +99,9 @@ ASPSPs may return masked PAN as per their online system e.g. 5555 **** **** 4444
 
 #### Funds Confirmation Consent Status
 
-Once the PSU agrees the consent outlined in the **funds-confirmation-consent** resource, the Status of the **funds-confirmation-consent** resource will be updated with "Authorised".
+Once the PSU agrees the consent outlined in the **funds-confirmation-consent** resource, the StatusCode of the **funds-confirmation-consent** resource will be updated with "AUTH".
 
-The available Status code-list enumerations for the **funds-confirmation-consent** resource are:
+The available StatusCode code-list enumerations for the **funds-confirmation-consent** resource are:
 
 |  |StatusCode |Status Description |
 | --- |--- |--- |
@@ -178,10 +178,11 @@ The OBFundsConfirmationConsentResponse1 object contains the same information as 
 | Data |1..1 |OBFundsConfirmationConsentResponse1/Data | |OBFundsConfirmationConsentDataResponse1 | | |
 | ConsentId |1..1 |OBFundsConfirmationConsentResponse1/Data/ConsentId |Unique identification as assigned to identify the funds confirmation consent resource. |Max128Text | | |
 | CreationDateTime |1..1 |OBFundsConfirmationConsentResponse1/Data/CreationDateTime |Date and time at which the resource was created. |ISODateTime | | |
-| StatusCode |0..1 |OBReadConsentResponse1/Data/StatusCode |Specifies the status of consent resource in code form. |ExternalStatusReason1Code |AUTH AWAU RJCT COND |
-| StatusReason |0..* |OBReadConsentResponse1/Data/StatusReason |Specifies the status reason. | OBStatusReason |
-| StatusReasonCode |0..1 |OBReadConsentResponse1/Data/StatusReason/*/StatusReasonCode |Specifies the status reason in a code form. For a full description see `ExternalStatusReason1Code` [here](https://github.com/OpenBankingUK/External_Interal_CodeSets). | ExternalStatusReason1Code |
-| StatusReasonDescription |0..1 |OBReadConsentResponse1/Data/StatusReason/*/StatusReasonDescription |Description supporting the StatusReasonCode. |
+| StatusCode |0..1 |OBFundsConfirmationConsentResponse1/Data/StatusCode |Specifies the status of consent resource in code form. |ExternalStatusReason1Code |AUTH AWAU RJCT COND |
+| StatusReason |0..* |OBFundsConfirmationConsentResponse1/Data/StatusReason |Specifies the status reason. | OBStatusReason |
+| StatusReasonCode |0..1 |OBFundsConfirmationConsentResponse1/Data/StatusReason/*/StatusReasonCode |Specifies the status reason in a code form. For a full description see `ExternalStatusReason1Code` [here](https://github.com/OpenBankingUK/External_Interal_CodeSets). | ExternalStatusReason1Code |
+| StatusReasonDescription |0..1 |OBFundsConfirmationConsentResponse1/Data/StatusReason/*/StatusReasonDescription |Description supporting the StatusReasonCode. |
+| Path |0..1 |OBFundsConfirmationConsentResponse1/Data/StatusReason/*/Path |Recommended but optional reference to JSON path if relevant to the code. |
 | StatusUpdateDateTime |1..1 |OBFundsConfirmationConsentResponse1/Data/StatusUpdateDateTime |Date and time at which the resource status was updated. |ISODateTime | | |
 | ExpirationDateTime |0..1 |OBFundsConfirmationConsentResponse1/Data/ExpirationDateTime |Specified date and time the funds confirmation authorisation will expire. If this is not populated, the authorisation will be open ended. |ISODateTime | | |
 | DebtorAccount |1..1 |OBFundsConfirmationConsentResponse1/Data/DebtorAccount |Unambiguous identification of the account of the debtor to which a confirmation of funds consent will be applied. |OBCashAccountDebtor4 | | |
@@ -343,7 +344,7 @@ Content-Type: application/json
   "Data": {
     "ConsentId": "88999",
     "CreationDateTime": "2017-05-02T00:00:00+00:00",
-    "StatusCOde": "AWAU",
+    "StatusCode": "AWAU",
     "StatusUpdateDateTime": "2017-05-02T00:00:00+00:00",
     "ExpirationDateTime": "2017-05-02T00:00:00+00:00",
     "DebtorAccount": {
