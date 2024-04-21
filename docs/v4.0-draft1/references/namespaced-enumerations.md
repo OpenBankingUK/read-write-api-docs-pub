@@ -7,7 +7,6 @@
 - [Common Namespaced Enumerations](#common-namespaced-enumerations)
   - [OBExternalAccountIdentification4Code](#obexternalaccountidentification4code)
   - [OBExternalFinancialInstitutionIdentification4Code](#obexternalfinancialinstitutionidentification4code)
-  - [OBErrorResponseError1Code](#oberrorresponseerror1code)
   - [OBExternalBalanceSubType1Code](#obexternalbalancesubtype1code)
 - [Account and Transaction API Namespaced Enumerations](#account-and-transaction-api-namespaced-enumerations)
   - [OBExternalStatementAmountType1Code](#obexternalstatementamounttype1code)
@@ -37,7 +36,6 @@
 - [Variable Recurring Payments Namespaced Enumerations](#variable-recurring-payments-namespaced-enumerations)
   - [OBVRPConsentType](#obvrpconsenttype)
   - [OBVRPAuthenticationMethods](#obvrpauthenticationmethods)
-  - [OBVRPStatusReasonCode](#OBVRPStatusReasonCode)
   - [OBVRPInteractionTypes](#OBVRPInteractionTypes)
 
 ## Overview
@@ -99,46 +97,6 @@ This is the Data Type for Agent/SchemeName and used to identify the type of Iden
 | UK.OB.BICFI |Valid BICs for financial institutions are registered by the ISO 9362 Registration Authority in the BIC directory, and consist of eight (8) or eleven (11) contiguous characters. |
 | UK.OB.NCC.[ISO3166-aplha2-CountryCode] | Valid NCC (National Clearing Code) as an option for the accounts that don't have an IBAN, registered in the country identified by the 2 letter ISO-3166 Country code. For example, transfer to India may have Scheme Name as UK.OB.NCC.IN and Identification can be the IFSC code of the bank/branch in India. |
 
-### OBErrorResponseError1Code
-
-This is Data Type gives a low level textual error code to help categorise an error response. The applicable HTTP response code is also given.
-
-<details><summary>Show</summary>
-
-| Code |HTTP Status Category |Description |
-| --- |--- |--- |
-| UK.OB.Field.Expected |400 |For the scenario, when a field-value is not provided in the payload, that is expected in combination with preceding field-value pairs.<br><br>The corresponding path must be populated with the path of the unexpected field.<br><br>E.g.<br><br>ExchangeRate must be specified with Agreed RateType. ExchangeRate should be specified in the path element.<br><br>InstructionPriority must be specified with Agreed RateType. InstructionPriority should be specified in the path element. |
-| UK.OB.Field.Invalid |400 |An invalid value is supplied in one of the fields, or the length of value supplied is larger than the corresponding maximum field length in ASPSP's domain. Reference of the invalid field should be provided in the path field, and the URL field may have the link to a website explaining the valid behaviour. The error message should describe the problem in detail. |
-| UK.OB.Field.InvalidDate |400 |An invalid date is supplied e.g. when a future date is expected, a date in past or current date is supplied. The message can specify the actual problem with the date. The reference of the invalid field should be provided in the path field, and URL field may have the link to a website explaining the valid behaviour |
-| UK.OB.Field.Missing |400 |A mandatory field, required for the API, is missing from the payload. This error code can be used, if it is not already captured under the validation for UK.OB.Resource.InvalidFormat.<br><br>Reference of the missing field should be provided in the path field, and URL field may have the link to a website explaining the valid behaviour |
-| UK.OB.Field.Unexpected |400 |For the scenario, when a field-value is provided in the payload, that is not expected in combination with preceding field-value pairs. E.g.<br><br>ContractIdentification must not be specified with [Actual/Indicative] RateType.<br><br>ContractIdentification should be specified in the path element ExchangeRate must not be specified with [Actual/Indicative] RateType.<br><br>ExchangeRate should be specified in the path element.<br><br>InstructionPriority must not be specified with LocalInstrument. InstructionPriority should be specified in the path element. |
-| UK.OB.Header.Invalid |400 |An invalid value is supplied in the HTTP header. The HTTP Header should be specified in the path element. |
-| UK.OB.Header.Missing |400 |A required HTTP header has not been provided. The HTTP Header should be specified in the path element. |
-| UK.OB.Resource.ConsentMismatch |400 |{payment-order-consent} and {payment-order} resource mismatch. For example, if an element in the resource’s Initiation or Risk section does not match the consent section. The path element should be populated with the field of the resource that does not match the consent. |
-| UK.OB.Resource.InvalidConsentStatus |400 |The resource’s associated consent is not in a status that would allow the resource to be created, or a request to be executed.<br><br>E.g., if a consent resource had a status of AwaitingAuthorisation or Rejected, a resource could not be created against this consent.<br><br>The path element should be populated with the field in the consent resource that is invalid. |
-| UK.OB.Resource.InvalidFormat |400 |When the Payload schema does not match to the endpoint, e.g., /domestic-payments endpoint is called with a JSON Payload, which cannot be parsed into a class such as OBWriteDomestic1 |
-| UK.OB.Resource.NotFound |400 |Returned when a resource with the specified Id does not exist (and hence could not be operated upon). |
-| UK.OB.Rules.AfterCutOffDateTime |400 |{payment-order} consent / resource received after CutOffDateTime |
-| UK.OB.Rules.DuplicateReference |400 |A duplicate reference has been used for a CBPII confirmation of funds request. |
-| UK.OB.Rules.FailsControlParameters |400 |A payment breaches a limitation set by one or more ControlParameters. |
-| UK.OB.Signature.Invalid |400 |The signature header x-jws-signature was parsed and has a valid JOSE header that complies with the specification. However, the signature itself could not be verified. |
-| UK.OB.Signature.InvalidClaim |400 |The JOSE header in the x-jws-signature has one or more claims with an invalid value. (e.g. a kid that does not resolve to a valid certificate). The name of the missing claim should be specified in the path field of the error response. |
-| UK.OB.Signature.MissingClaim |400 |The JOSE header in the x-jws-signature has one or more mandatory claim(s) that are not specified. The name of the missing claim(s) should be specified in the path field of the error response. |
-| UK.OB.Signature.Malformed |400 |The x-jws-signature in the request header was malformed and could not be parsed as a valid JWS. |
-| UK.OB.Signature.Missing |400 |The API request expected an x-jws-signature in the header, but it was missing. |
-| UK.OB.Signature.Unexpected |400 |The API request was not expecting to receive an x-jws-signature in the header, but the TPP made a request that included an x-jws-signature. |
-| UK.OB.Unsupported.AccountIdentifier |400 |The account identifier is unsupported for the given scheme.<br><br>The path element should be populated with the path of the AccountIdentifier. |
-| UK.OB.Unsupported.AccountSecondaryIdentifier |400 |The account secondary identifier is unsupported for the given scheme.<br><br>The path element should be populated with the path of the AccountSecondaryIdentifier. |
-| UK.OB.Unsupported.Currency |400 |The currency is not supported. Use UK.OB.Field.Invalid for invalid Currency.<br><br>The path element should be populated with the path of the Currency.<br><br>The URL should be populated with a link to ASPSP documentation listing out the supported currencies. |
-| UK.OB.Unsupported.EventType |400 |Event Type is not supported.<br><br>The path element should be populated with the path of the EventType.<br><br>The URL should be populated with a link to ASPSP documentation listing out the supported Event Types. |
-| UK.OB.Unsupported.Frequency |400 |Frequency is not supported.<br><br>The path element should be populated with the path of the Frequency.<br><br>The URL should be populated with a link to ASPSP documentation listing out the supported frequencies. |
-| UK.OB.Unsupported.LocalInstrument |400 |LocalInstrument is not supported by the ASPSP.<br><br>The path element should be populated with the path of the LocalInstrument.<br><br>The URL should be populated with a link to ASPSP documentation listing out the supported local instruments. |
-| UK.OB.Unsupported.Scheme |400 |Identification scheme is not supported. The path element should be populated with the path of the scheme. The URL should be populated with a link to ASPSP documentation listing out the supported schemes. |
-| UK.OB.Reauthenticate |403 |The ASPSP must use this error code in Error Response to indicate that re-authentication by the PSU is required to process the request. |
-| UK.OB.Rules.ResourceAlreadyExists |409 |The ASPSP must use this error code in Error Response, to indicate that a resource with same parameters already exists, or in a state that doesn't allow requested operation. |
-| UK.OB.UnexpectedError |5xx |An error code that can be used, when an unexpected error occurs.<br><br>The ASPSP must populate the message with a meaningful error description, without revealing sensitive information. |
-
-</details>
 
 ### OBExternalBalanceSubType1Code
 
@@ -543,19 +501,6 @@ Indicates a PSU authentication methods supported or used
 | --- |--- |
 | UK.OB.SCA | Authentication method where the consent is authorised through SCA. |
 | UK.OB.SCANotRequired | This indicates that the PSU does not need to authenticate for individual payments and the payments can be made without the PSU being present. |
-
-</details>
-
-### OBVRPStatusReasonCode
-
-<details><summary>Show</summary>
-
-| Code |Description |
-| --- |--- |
-| UK.OB.ExemptionNotApplied | Reason when exemption could not applied for the status of a VRP. |
-| UK.OB.OtherReason | The OtherReason only in scenarios where the actual reason cannot be determined or disclosed.|
-
-Note: ASPSPs may define enumerations that are more appropriate and document in the Developer Portal.
 
 </details>
 

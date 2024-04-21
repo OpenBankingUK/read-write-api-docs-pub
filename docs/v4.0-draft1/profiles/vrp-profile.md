@@ -119,7 +119,7 @@ Step 6: Check resource status
 
 #### Sequence Diagram
 
-![Payments Flow](./images/Payments-Flow.png)
+![Payments Flow](./images/Payment-Flow.21.04.24.png)
 
 [Diagram source](./images/Payments-Flow.puml)
 

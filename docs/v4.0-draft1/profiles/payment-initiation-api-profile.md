@@ -194,7 +194,7 @@ Step 6: Get Consent/Payment-Order/Payment-Details Status
 
 #### Sequence Diagram
 
-![](./images/Payments-Flow.png)
+![](./images/Payment-Flow.21.04.24.png)
 
 <details>
   <summary>Diagram source</summary>

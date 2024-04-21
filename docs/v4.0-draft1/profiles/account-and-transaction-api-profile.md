@@ -125,7 +125,7 @@ Step 4: Request Data
 
 #### Sequence Diagram
 
-![](./images/AccountsOverviewwithCIBA.png)
+![](./images/AccountsOverviewwithCIBA.21.04.24.png)
 
 <details>
   <summary>Diagram source</summary>
@@ -149,7 +149,7 @@ AISP -> ASPSP Authorisation Server: Initiate Client Credentials Grant
 ASPSP Authorisation Server -> AISP: access-token
 AISP <-> ASPSP Resource Server: Establish TLS 1.2 MA
 AISP -> ASPSP Resource Server: POST /account-access-consents
-state over ASPSP Resource Server: Consent Status: AwaitingAuthorisation
+state over ASPSP Resource Server: Consent Status: AWAU
 ASPSP Resource Server -> AISP: HTTP 201 (Created), ConsentId
 
 note over PSU, ASPSP Resource Server
@@ -161,7 +161,7 @@ alt Redirection (Using Authorization Code Grant)
         PSU <-> ASPSP Authorisation Server: authenticate
         PSU <-> ASPSP Authorisation Server: SCA if required
         PSU <-> ASPSP Authorisation Server: select accounts
-        state over ASPSP Resource Server: Consent Status: Authorised
+        state over ASPSP Resource Server: Consent Status: AUTH
         ASPSP Authorisation Server -> PSU: HTTP 302 (Found), Redirect (authorization-code)
         PSU -> AISP: Follow redirect (authorization-code)
         AISP <-> ASPSP Authorisation Server: Establish TLS 1.2 MA
@@ -175,7 +175,7 @@ alt Redirection (Using Authorization Code Grant)
         PSU <-> ASPSP Authorisation Server: authenticate
         PSU <-> ASPSP Authorisation Server: SCA if required
         PSU <-> ASPSP Authorisation Server: select accounts
-        state over ASPSP Resource Server: Consent Status: Authorised
+        state over ASPSP Resource Server: Consent Status: AUTH
 
         alt Using callback
                 ASPSP Authorisation Server -> AISP: Callback (authorization-code)
@@ -435,8 +435,9 @@ The PSU may request the AISP to revoke consent that it has authorised. If consen
 
 A PSU **may** revoke AISP's access directly with the ASPSP,  via the access dashboard. In such a situation:
 - The ASPSP **must** take the necessary action to revoke access e.g. by revoking/expiring the access token provided to the AISP.
-- The status of the account-access-consent **must** remain unchanged and the AISP **must** be allowed to request PSU to re-authenticate the same account-access-consent resource.
-- Upon successful re-authentication by PSU, an ASPSP **may** issue new authorization code and subsequently new access token to the AISP.
+- The status of the account-access-consent **must** be changed to `CANC` and the AISP **must** be allowed to request PSU to re-authenticate the same account-access-consent resource.
+- The ASPSP must provide the reasons as appropriate when the status is marked to `CANC`. For more guidance refer to CEG.
+- Upon successful re-authentication by PSU, an ASPSP **may** issue new authorization code and subsequently new access token to the AISP. The ASPSP **must** also change the status of the consent back to `AUTH` which means Authorised.
 
 ### Changes to Selected Account(s)
 
@@ -537,14 +538,14 @@ Deviations from the camt.052 XML standard are:
 | OBAccountStatus1Code |Deleted |Account cannot be used any longer. |
 | OBAccountStatus1Code |ProForma |Account is temporary and can be partially used for its intended purpose. The account will be fully available for use when the account servicer has received all relevant documents. |
 | OBAccountStatus1Code |Pending |Account change is pending approval. |
-| OBAddressTypeCode |BIZZ |Address is the business address. |
-| OBAddressTypeCode |CORR |Address is the address where correspondence is sent. |
-| OBAddressTypeCode |DLVY |Address is the address to which delivery is to take place. |
-| OBAddressTypeCode |MLTO |Address is the address to which mail is sent. |
-| OBAddressTypeCode |PBOX |Address is a postal office (PO) box. |
-| OBAddressTypeCode |ADDR |Address is the complete postal address. |
-| OBAddressTypeCode |HOME |Address is the home address. |
-| OBAddressTypeCode |STAT |Address is the address where statements are sent. |
+| OBAddressType2CodeCode |BIZZ |Address is the business address. |
+| OBAddressType2CodeCode |CORR |Address is the address where correspondence is sent. |
+| OBAddressType2CodeCode |DLVY |Address is the address to which delivery is to take place. |
+| OBAddressType2CodeCode |MLTO |Address is the address to which mail is sent. |
+| OBAddressType2CodeCode |PBOX |Address is a postal office (PO) box. |
+| OBAddressType2CodeCode |ADDR |Address is the complete postal address. |
+| OBAddressType2CodeCode |HOME |Address is the home address. |
+| OBAddressType2CodeCode |STAT |Address is the address where statements are sent. |
 | OBBalanceType1Code |CLAV |ClosingAvailable - Closing balance of amount of money that is at the disposal of the account owner on the date specified. |
 | OBBalanceType1Code |CLBS |ClosingBooked - Balance of the account at the end of the pre-agreed account reporting period. It is the sum of the opening booked balance at the beginning of the period and all entries booked to the account during the pre-agreed account reporting period. |
 | OBBalanceType1Code |XPCH |Expected - Balance, composed of booked entries and pending items known at the time of calculation, which projects the end of day balance if everything is booked on the account and no other entry is posted. |
@@ -562,34 +563,34 @@ Deviations from the camt.052 XML standard are:
 | OBCommunicationMethod |POST | Postal communication method. |
 | OBCreditDebitCode |Credit |Operation is a credit |
 | OBCreditDebitCode |Debit |Operation is a debit |
-| OBEntryStatus1Code |BOOK |Booked - Booked means that the transfer of money has been completed between account servicer and account owner Usage: Status Booked does not necessarily imply finality of money as this depends on other factors such as the payment system used, the completion of the end- to-end transaction and the terms agreed between account servicer and owner. Status Booked is the only status that can be reversed. |
-| OBEntryStatus1Code |PDNG |Pending - Booking on the account owner's account in the account servicer's ledger has not been completed. Usage: this can be used for expected items, or for items for which some conditions still need to be fulfilled before they can be booked. If booking takes place, the entry will be included with status Booked in subsequent account report or statement. Status Pending cannot be reversed. |
-| OBEntryStatus1Code |INFO | Information <!-- TODO Get descriptions--> |
-| OBEntryStatus1Code |FUTR | Transaction has is for the future. Typically used for indicating card transactions that will be booked in the future. <!-- TODO Get descriptions--> |
-| OBExternalAccountSubType1Code |CACC |Account sub-type is a Current Account. |
-| OBExternalAccountSubType1Code |CARD |Account sub-type is a Card Account. |
-| OBExternalAccountSubType1Code |CASH |Account sub-type is a Cash Payment Account. |
-| OBExternalAccountSubType1Code |CHAR |Account sub-type is a Charge Account. |
-| OBExternalAccountSubType1Code |CISH |Account sub-type is a Cash Income Account. |
-| OBExternalAccountSubType1Code |COMM |Account sub-type is a Commission Account. |
-| OBExternalAccountSubType1Code |CPAC |Account sub-type is a Clearing Participant Settlement Account. |
-| OBExternalAccountSubType1Code |LLSV |Account sub-type is a Limited Liquidity Savings Account. |
-| OBExternalAccountSubType1Code |LOAN |Account sub-type is a Loan Account. |
-| OBExternalAccountSubType1Code |MGLD |Account sub-type is a Marginal Lending Account. |
-| OBExternalAccountSubType1Code |MORT |Account sub-type is a Mortgage Account. |
-| OBExternalAccountSubType1Code |MOMA |Account sub-type is a Money Market Account. |
-| OBExternalAccountSubType1Code |NFCA |Account sub-type is a Non-Resident Foreign Currency Account. |
-| OBExternalAccountSubType1Code |NREX |Account sub-type is a Non-Resident External Account. |
-| OBExternalAccountSubType1Code |ODFT |Account sub-type is an Overdraft Account. |
-| OBExternalAccountSubType1Code |ONDP |Account sub-type is an Overnight Deposit Account. |
-| OBExternalAccountSubType1Code |OTHR |Account sub-type is other. |
-| OBExternalAccountSubType1Code |SACC |Account sub-type is a Settlement Account. |
-| OBExternalAccountSubType1Code |SLRY |Account sub-type is a Salary Account. |
-| OBExternalAccountSubType1Code |TAXE |Account sub-type is a  Account. |
-| OBExternalAccountSubType1Code |TRAN |Account sub-type is a Transacting Account. |
-| OBExternalAccountSubType1Code |TRAS |Account sub-type is a Cash Trading Account. |
-| OBExternalAccountSubType1Code |VACC |Account sub-type is a Virtual Account. |
-| OBExternalAccountSubType1Code |WALT |Account sub-type is a Wallet Account. |
+| ExternalEntryStatus1Code |BOOK |Booked - Booked means that the transfer of money has been completed between account servicer and account owner Usage: Status Booked does not necessarily imply finality of money as this depends on other factors such as the payment system used, the completion of the end- to-end transaction and the terms agreed between account servicer and owner. Status Booked is the only status that can be reversed. |
+| ExternalEntryStatus1Code |PDNG |Pending - Booking on the account owner's account in the account servicer's ledger has not been completed. Usage: this can be used for expected items, or for items for which some conditions still need to be fulfilled before they can be booked. If booking takes place, the entry will be included with status Booked in subsequent account report or statement. Status Pending cannot be reversed. |
+| ExternalEntryStatus1Code |INFO | Information <!-- TODO Get descriptions--> |
+| ExternalEntryStatus1Code |FUTR | Transaction has is for the future. Typically used for indicating card transactions that will be booked in the future. <!-- TODO Get descriptions--> |
+| ExternalCashAccountType1Code |CACC |Account sub-type is a Current Account. |
+| ExternalCashAccountType1Code |CARD |Account sub-type is a Card Account. |
+| ExternalCashAccountType1Code |CASH |Account sub-type is a Cash Payment Account. |
+| ExternalCashAccountType1Code |CHAR |Account sub-type is a Charge Account. |
+| ExternalCashAccountType1Code |CISH |Account sub-type is a Cash Income Account. |
+| ExternalCashAccountType1Code |COMM |Account sub-type is a Commission Account. |
+| ExternalCashAccountType1Code |CPAC |Account sub-type is a Clearing Participant Settlement Account. |
+| ExternalCashAccountType1Code |LLSV |Account sub-type is a Limited Liquidity Savings Account. |
+| ExternalCashAccountType1Code |LOAN |Account sub-type is a Loan Account. |
+| ExternalCashAccountType1Code |MGLD |Account sub-type is a Marginal Lending Account. |
+| ExternalCashAccountType1Code |MORT |Account sub-type is a Mortgage Account. |
+| ExternalCashAccountType1Code |MOMA |Account sub-type is a Money Market Account. |
+| ExternalCashAccountType1Code |NFCA |Account sub-type is a Non-Resident Foreign Currency Account. |
+| ExternalCashAccountType1Code |NREX |Account sub-type is a Non-Resident External Account. |
+| ExternalCashAccountType1Code |ODFT |Account sub-type is an Overdraft Account. |
+| ExternalCashAccountType1Code |ONDP |Account sub-type is an Overnight Deposit Account. |
+| ExternalCashAccountType1Code |OTHR |Account sub-type is other. |
+| ExternalCashAccountType1Code |SACC |Account sub-type is a Settlement Account. |
+| ExternalCashAccountType1Code |SLRY |Account sub-type is a Salary Account. |
+| ExternalCashAccountType1Code |TAXE |Account sub-type is a  Account. |
+| ExternalCashAccountType1Code |TRAN |Account sub-type is a Transacting Account. |
+| ExternalCashAccountType1Code |TRAS |Account sub-type is a Cash Trading Account. |
+| ExternalCashAccountType1Code |VACC |Account sub-type is a Virtual Account. |
+| ExternalCashAccountType1Code |WALT |Account sub-type is a Wallet Account. |
 | OBExternalAccountType1Code |Business |Account type is for business. |
 | OBExternalAccountType1Code |Personal |Account type is for personal. |
 | OBExternalCardAuthorisationType1Code |ConsumerDevice |Card authorisation was via a Consumer Device Cardholder Verification Method (CDCVM). |
@@ -623,11 +624,11 @@ Deviations from the camt.052 XML standard are:
 | OBExternalStatementType1Code |Annual |Annual statement report. |
 | OBExternalStatementType1Code |Interim |Adhoc or customised statement period. |
 | OBExternalStatementType1Code |RegularPeriodic |Regular pre-agreed reporting statement. |
-| OBFileFormat | DPDF | PDF file format (.pdf). |
-| OBFileFormat | DXML | XML file format (.xml). |
-| OBFileFormat | SDSH | spreadsheet file format (e.g. .csv). |
-| OBFileFormat | WORD | Word file format (.doc/.docx). |
-| OBFileFormat | XSLT | XSLT file format (.xslt). |
+| ExternalDocumentFormat1Code | DPDF | PDF file format (.pdf). |
+| ExternalDocumentFormat1Code | DXML | XML file format (.xml). |
+| ExternalDocumentFormat1Code | SDSH | spreadsheet file format (e.g. .csv). |
+| ExternalDocumentFormat1Code | WORD | Word file format (.doc/.docx). |
+| ExternalDocumentFormat1Code | XSLT | XSLT file format (.xslt). |
 | OBFrequency2 | YEAR | Annual. |
 | OBFrequency2 | DAIL | Daily. |
 | OBFrequency2 | INDA | Intra-day. |
