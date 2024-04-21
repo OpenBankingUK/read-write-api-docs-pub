@@ -119,7 +119,7 @@ Step 6: Get Funds Confirmation Consent Status
 
 #### Sequence Diagram
 
-![](./images/CoFwithCIBA.png)
+![](./images/CoFwithCIBA.21.04.24.png)
 
 <details>
   <summary>Diagram source</summary>

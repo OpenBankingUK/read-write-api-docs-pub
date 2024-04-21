@@ -21,10 +21,10 @@
   - [Setup Account Access Consent - All Permissions Granted](#setup-account-access-consent---all-permissions-granted)
     - [Post Account Access Consents Request](#post-account-access-consents-request)
     - [Post Account Access Consents Response](#post-account-access-consents-response)
-  - [Status - AWAU](#status---awau)
+  - [StatusCode - AWAU](#statuscode---awau)
     - [Get Account Access Consents Request](#get-account-access-consents-request)
     - [Get Account Access Consents Response](#get-account-access-consents-response)
-  - [Status - AUTH](#status---auth)
+  - [StatusCode - AUTH](#statuscode---auth)
     - [Get Account Access Consents Request](#get-account-access-consents-request-1)
     - [Get Account Access Consents Response](#get-account-access-consents-response-1)
   - [Delete Account Access Consent](#delete-account-access-consent)
@@ -73,7 +73,8 @@ After authorisation has taken place the account-access-consent resource may have
 | --- |--- |--- |
 | 1 |RJCT |The account access consent has been rejected. |
 | 2 |AUTH |The account access consent has been successfully authorised. |
-| 3| CANC | The account access consent has been cancelled. |
+| 3| CANC | PSU has cancelled access given to the TPP using the ASPSPs access dashboard.  OR ASPSP has revoked the access token or the token has been suspended.  |
+|4| EXPD| The consent has passed its expiry date. The ASPSP then marks the consent as ‘Expired’ |
 
 
 #### Status Flow
