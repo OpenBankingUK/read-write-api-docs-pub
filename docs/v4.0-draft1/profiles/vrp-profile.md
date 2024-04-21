@@ -249,7 +249,7 @@ __Example:__
 `payload-version: 3.1.10`
 
 #### HTTP PUT | PATCH  /domestic-vrp-consents/{consentId}
-Implementation of these endpoints is conditional and TPPs should check the ASPSP developer portal for information on which has been implemented. 
+Implementation of these endpoints is conditional and TPPs should check the ASPSP developer portal for information on which have been implemented. 
 Additional information on usage is on the **Domestic VRP Consents** page
 
 

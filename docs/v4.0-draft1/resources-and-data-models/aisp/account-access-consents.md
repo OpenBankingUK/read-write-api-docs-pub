@@ -73,8 +73,6 @@ After authorisation has taken place the account-access-consent resource may have
 | --- |--- |--- |
 | 1 |RJCT |The account access consent has been rejected. |
 | 2 |AUTH |The account access consent has been successfully authorised. |
-| 3| CANC | PSU has cancelled access given to the TPP using the ASPSPs access dashboard.  OR ASPSP has revoked the access token or the token has been suspended.  |
-|4| EXPD| The consent has passed its expiry date. The ASPSP then marks the consent as ‘Expired’ |
 
 
 #### Status Flow
@@ -102,8 +100,8 @@ The available StatusCode code-list enumerations for the account-access-consent r
 | 1 |RJCT |The account access consent has been rejected. |
 | 2 |AWAU |The account access consent is awaiting authorisation. |
 | 3 |AUTH |The account access consent has been successfully authorised. |
-| 4| CANC | The account access consent has been cancelled. |
-| 5| EXPD | The account access consent has expired. | 
+| 4| CANC | PSU has cancelled access given to the TPP using the ASPSPs access dashboard.  OR ASPSP has revoked the access token or the token has been suspended. |
+| 5| EXPD | The consent has passed its expiry date. The ASPSP then marks the consent as ‘Expired’ | 
 
 Changes to the StatusCode, such as being rejected, should be captured in `StatusReason`, an array of `StatusReasonCode`, `StatusReasonDescription` and `Path`.  
 

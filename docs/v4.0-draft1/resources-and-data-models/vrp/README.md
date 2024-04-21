@@ -15,10 +15,13 @@ The API endpoints for these resources, and their mandatory/conditional/optional 
 |[domestic-vrp-consents.md](domestic-vrp-consents)  | POST /domestic-vrp-consents                                | Mandatory    |
 |[domestic-vrp-consents.md](domestic-vrp-consents)  | GET /domestic-vrp-consents/{ConsentId}                     | Mandatory    |
 |[domestic-vrp-consents.md](domestic-vrp-consents)  | DELETE /domestic-vrp-consents/{ConsentId}                  | Mandatory    |
+|[domestic-vrp-consents.md](domestic-vrp-consents)  | PUT /domestic-vrp-consents/{ConsentId}                  | Optional    |
+|[domestic-vrp-consents.md](domestic-vrp-consents)  | PATCH /domestic-vrp-consents/{ConsentId}                  | Optional    |
 |[domestic-vrp-consents.md](domestic-vrp-consents)  | POST /domestic-vrp-consents/{ConsentId}/funds-confirmation | Mandatory    |
 |[domestic-vrps.md](domestic-vrps)                  | POST /domestic-vrps                                        | Conditional  |
 |[domestic-vrps.md](domestic-vrp)                   | GET /domestic-vrps/{DomesticVRPId}                         | Conditional  |
 |[domestic-vrps.md](domestic-vrp)                   | GET /domestic-vrps/{DomesticVRPId}/payment-details         | Optional     |
+
 
 
 ### Notes
