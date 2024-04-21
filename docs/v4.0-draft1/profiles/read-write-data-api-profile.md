@@ -451,7 +451,7 @@ Situations where no token is provided or it is invalid should return 401 (Unauth
 
 The situation could arise when an ASPSP has chosen to expire an Access Token:
 1.	The consent has expired (the Expiration Date Time has lapsed) – Status code must be changed to `EXPD` which means Expired. `StatusReasonCode` must be `TKXP`.
-2.	Suspicious usage of the Access Token or suspected fraud - StatusCode must be changed to `CANC` which means Cancelled. `StatusReasonCode must be `TKSP` and if appropriate `U028` also.
+2.	Suspicious usage of the Access Token or suspected fraud - StatusCode must be changed to `CANC` which means Cancelled. `StatusReasonCode` must be `TKSP` and if appropriate `U028` also.
 3.	SCA is required in permitted circumstances - `StatusCode` must be changed to `CANC` which means Cancelled. `StatusReasonCode` must be `TKSP` and `U028`.
 Refer to the [External_Internal_Codesets repository](https://github.com/OpenBankingUK/External_Interal_CodeSets) -> CodeSet 'ExternalStatusReason1Code'
 This error can potentially be remedied by asking the PSU to re-authenticate or authenticate with the right permissions. However, if re-authentication is not permitted then `U028` must not be provided in the error message and `StatusReasonCode`.
@@ -790,18 +790,18 @@ All technical and business validation errors must be returned as an API error an
 A list of codes can be found in the [External_Internal_Codesets repository](https://github.com/OpenBankingUK/External_Interal_CodeSets)
 
 #### Redirect errors
-Errors that occur when the PSU is redirected to the ASPSP to complete authentication and returned on the query string to the TPP should include an appropriate code from the ExternalStatusReason1Code enumeration in the error_description field. 
+Errors that occur when the PSU is redirected to the ASPSP to complete authentication and returned on the query string to the TPP should include an appropriate code from the ExternalStatusReason1Code enumeration in the `error_description` field. 
 
-The consent payload ReasonCode should also be updated with the same code.
+The consent payload `StatusReasonCode` should also be updated with the same code.
 ![Redirect Error Example](./images/redirect-error-example.png)
 
 
 #### Token Errors
-Scenarios where an action taken by the PSU or ASPSP which results in a token being expired/suspended or PSU re-authentication is required should return the appropriate code in the token endpoint error_description and the consent payload status should be updated with the same reason code.
+Scenarios where an action taken by the PSU or ASPSP which results in a token being expired/suspended or PSU re-authentication is required should return the appropriate code in the token endpoint `error_description` and the consent payload `StatusCode` should be updated with the same reason code.
 
 Final token expiry should be aligned to the consent end-date, the consent status should be updated after expiry and appropriate token errors returned.
 
-Note: Normal expiry of tokens, such as when a refresh token has been issued and the access token lifetime has been reached, should not result in changes to the Consent endpoint status field.
+Note: Normal expiry of tokens, such as when a refresh token has been issued and the access token lifetime has been reached, should not result in changes to the Consent endpoint `StatusCode` field.
 
 
 ## Security & Access Control
@@ -840,9 +840,9 @@ An access token is bound to a single PSU and an intent.
 
 #### Error Condition
 
-If the PSU does not complete a successful consent authorisation (e.g. if the PSU is not authenticated successfully), the authorization code grant ends with a redirection to the TPP with an error response as described in OpenID Connect Core Specification [Section 3.1.2.6](https://openid.net/specs/openid-connect-core-1_0.html#AuthError). The PSU is redirected to the TPP with an error parameter indicating the reason for failure. The ASPSP must also update the Consent `StatusCode` using ISO 20022 reason codes and.or OBL Proprietary reason codes as appropriate.
+If the PSU does not complete a successful consent authorisation (e.g. if the PSU is not authenticated successfully), the authorization code grant ends with a redirection to the TPP with an error response as described in OpenID Connect Core Specification [Section 3.1.2.6](https://openid.net/specs/openid-connect-core-1_0.html#AuthError). The PSU is redirected to the TPP with an error parameter indicating the reason for failure. The ASPSP must also update the Consent `StatusCode` using ISO 20022 reason codes and/or OBL Proprietary reason codes as appropriate.
 
-The consent payload ReasonCode should also be updated with the same code.
+The consent payload `StatusReasonCode` should also be updated with the same code.
 
 #### Token Expiry Time
 
