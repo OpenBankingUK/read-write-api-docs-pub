@@ -3,7 +3,6 @@
 - [Overview](#overview)
 - [Endpoints](#endpoints)
   - [POST /domestic-payments](#post-domestic-payments)
-    - [StatusCode](#statuscode)
   - [GET /domestic-payments/{DomesticPaymentId}](#get-domestic-payments-domesticpaymentid)
     - [StatusCode](#statuscode-2)
   - [GET /domestic-payments/{DomesticPaymentId}/payment-details](#get-domestic-payments-domesticpaymentid-payment-details)

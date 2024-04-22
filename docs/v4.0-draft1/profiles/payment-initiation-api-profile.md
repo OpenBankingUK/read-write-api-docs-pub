@@ -53,7 +53,7 @@
     - [OBInternationalRefundAccount1](#obinternationalrefundaccount1)
       - [UML Diagram](#uml-diagram-5)
       - [Data Dictionary](#data-dictionary-6)
-    - [OBWritePaymentDetails1](#obwritepaymentdetails1)
+    - [OBWritePaymentDetailsResponse1](#OBWritePaymentDetailsResponse1)
       - [UML Diagram](#uml-diagram-6)
       - [Data Dictionary](#data-dictionary-7)
     - [OBSCASupportData1](#obscasupportdata1)
@@ -605,7 +605,7 @@ This section describes the OBDomesticRefundAccount1 class which is used in the r
 | Name |Occurrence |XPath |EnhancedDefinition |Class |Codes |Pattern |
 | --- |--- |--- |--- |--- |--- |--- |
 | OBDomesticRefundAccount1 |1..1 |OBDomesticRefundAccount1 |Unambiguous identification of the refund account to which a refund will be made as a result of the transaction. |OBDomesticRefundAccount1 | | |
-| Account |1..1 |OBWritePaymentDetails1/Account |Provides the details to identify an account. |OBCashAccountCreditor3 | | |
+| Account |1..1 |OBDomesticRefundAccount1/Data/Account |Provides the details to identify an account. |OBCashAccountCreditor3 | | |
 | SchemeName |1..1 |OBDomesticRefundAccount1/Account/SchemeName |Name of the identification scheme, in a coded form as published in an external list. |OBExternalAccountIdentification4Code | | |
 | Identification |1..1 |OBDomesticRefundAccount1/Account/Identification |Identification assigned by an institution to identify an account. This identification is known by the account owner. |Max256Text | | |
 | Name |1..1 |OBDomesticRefundAccount1/Account/Name |Name of the account, as assigned by the account servicing institution. Usage: The account name is the name or names of the account owner(s) represented at an account level. The account name is not the product name or the nickname of the account. OB: ASPSPs may carry out name validation for Confirmation of Payee, but it is not mandatory. |Max350Text | | |
@@ -685,30 +685,29 @@ This section describes the OBInternationalRefundAccount1 class which is used in 
 | Proprietary |1..1 |OBInternationalRefundAccount1/Account/Proxy/Proprietary| The owner of the proxy account |MaxText70 | | |
 
 
-#### OBWritePaymentDetails1
+#### OBWritePaymentDetailsResponse1
 
-This section describes the OBWritePaymentDetails1 class which used in the response payloads of payment-detail sub resources.
+This section describes the OBWritePaymentDetailsResponse1 class which used in the response payloads of payment-detail sub resources.
 
 ##### UML Diagram
 
-![](./images/OBWritePaymentDetails1.png)
+![](./images/OBWritePaymentDetailsResponse1.svg)
 
 ##### Data Dictionary
 
 | Name |Occurrence |XPath |EnhancedDefinition |Class |Codes |Pattern |
 | --- |--- |--- |--- |--- |--- |--- |
-| OBWritePaymentDetails1 |1..1 |OBWritePaymentDetails1 |Payment status details. |OBWritePaymentDetails1 | | |
-| PaymentTransactionId |1..1 |OBWritePaymentDetails1/PaymentTransactionId |Unique identifier for the transaction within an servicing institution. This identifier is both unique and immutable. |Max210Text | | |
-| StatusCode |1..1 |OBWritePaymentDetails1/StatusCode |Status of a transfer, as assigned by the transaction administrator. |OBTransactionIndividualExtendedISOStatus1Code |Specifies the status reason in a code form. Values:<br>RCVD<br>PDNG<br>ACTC<br>ACFC<br>ACSP<br>ACSC<br>ACWP<br>ACCC<br>BLCK<br>CANC<br>RJCT| |
-| StatusReason |0..* |OBWritePaymentDetailsResponse1/StatusReason ||OBPaymentStatusReason | | |
-| StatusReasonCode |0..* |OBWritePaymentDetailsResponse1/StatusReason/StatusReasonCode |Specifies the status reason in a code form.<br> For more information and enum values see `ExternalStatusReason1Code`[here](https://github.com/OpenBankingUK/External_Interal_CodeSets) |ExternalStatusReason1Code | | |
-| StatusReasonDescription |0..* |OBWritePaymentDetailsResponse1/StatusReasonDescription |Description supporting the StatusReasonCode|Max500Text | | |
-| StatusUpdateDateTime |1..1 |OBWritePaymentDetails1/StatusUpdateDateTime |Date and time at which the status was assigned to the transfer. |ISODateTime | | |
-| StatusDetail |0..1 |OBWritePaymentDetails1/StatusDetail |Payment status details as per underlying Payment Rail. |OBPaymentStatusDetail1 | | |
-| LocalInstrument |0..1 |OBWritePaymentDetails1/StatusDetail/LocalInstrument |User community specific instrument.<br><br>Usage: This element is used to specify a local instrument, local clearing option and/or further qualify the service or service level. |OBExternalLocalInstrument1Code | | |
-| Status |1..1 |OBWritePaymentDetails1/StatusDetail/Status |Status of a transfer, as assigned by the transaction administrator. |Max128Text | | |
-| StatusReason |0..1 |OBWritePaymentDetails1/StatusDetail/StatusReason |Reason Code provided for the status of a transfer. |OBTransactionIndividualStatusReason1Code |Cancelled<br>PendingFailingSettlement<br>PendingSettlement<br>Proprietary<br>ProprietaryRejection<br>Suspended<br>Unmatched | |
-| StatusReasonDescription |0..1 |OBWritePaymentDetails1/StatusDetail/StatusReasonDescription |Reason provided for the status of a transfer. |Max256Text | | |
+| OBWritePaymentDetailsResponse1 |1..1 |OBWritePaymentDetailsResponse1 |Payment status details. |OBWritePaymentDetailsResponse1 | | |
+| LocalInstrument |0..1 |OBWritePaymentDetailsResponse1/Data/StatusDetail/LocalInstrument |User community specific instrument.<br><br>Usage: This element is used to specify a local instrument, local clearing option and/or further qualify the service or service level. |OBExternalLocalInstrument1Code | | |
+| PaymentTransactionId |1..1 |OBWritePaymentDetailsResponse1/Data/PaymentTransactionId |Unique identifier for the transaction within an servicing institution. This identifier is both unique and immutable. |Max210Text | | |
+| StatusCode |1..1 |OBWritePaymentDetailsResponse1/Data/StatusCode |Status of a transfer, as assigned by the transaction administrator. |OBTransactionIndividualExtendedISOStatus1Code |Specifies the status reason in a code form. Values:<br>RCVD<br>PDNG<br>ACTC<br>ACFC<br>ACSP<br>ACSC<br>ACWP<br>ACCC<br>BLCK<br>CANC<br>RJCT| |
+| StatusUpdateDateTime |1..1 |OBWritePaymentDetailsResponse1/Data/StatusUpdateDateTime |Date and time at which the status was assigned to the transfer. |ISODateTime | | |
+| StatusDetail |0..* |OBWritePaymentDetailsResponse1/Data/StatusDetail |Array of Payment StatusCodes| | | |
+| StatusCode |1..1 |OBWritePaymentDetailsResponse1/Data/StatusDetail/*/StatusCode |Status of a transfer, as assigned by the transaction administrator. |OBTransactionIndividualExtendedISOStatus1Code |Specifies the status reason in a code form. Values:<br>RCVD<br>PDNG<br>ACTC<br>ACFC<br>ACSP<br>ACSC<br>ACWP<br>ACCC<br>BLCK<br>CANC<br>RJCT| |
+| StatusReasonCode |0..1 |OBWritePaymentDetailsResponse1/Data/StatusDetail/*/StatusReasonCode |Specifies the status reason in a code form.<br> For more information and enum values see `ExternalStatusReason1Code`[here](https://github.com/OpenBankingUK/External_Interal_CodeSets) |ExternalStatusReason1Code | | |
+| StatusReasonDescription |0..* |OBWritePaymentDetailsResponse1/Data/StausDetail/*/StatusReasonDescription |Description supporting the StatusReasonCode|Max500Text | | |
+| StatusReasonDescription |0..1 |OBWritePaymentDetailsResponse1/Data/StatusDetail/*/StatusReasonDescription |Reason provided for the status of a transfer. |Max256Text | | |
+| StatusUpdateDateTime |1..1 |OBWritePaymentDetailsResponse1/Data/StatusDetail/*/StatusUpdateDateTime |Date and time at which the status was assigned to the transfer. |ISODateTime | | |
 
 #### OBSCASupportData1
 
@@ -716,16 +715,16 @@ This section describes the OBSCASupportData1 class, which is used across all  _p
 
 ##### UML Diagram
 
-![](./images/OBSCASupportData1.gif)
+![](./images/OBSCASupportData1.svg)
 
 ##### Data Dictionary
 
 | Name |Occurrence |XPath |EnhancedDefinition |Class |Codes |Pattern |
 | --- |--- |--- |--- |--- |--- |--- |
 | OBSCASupportData1 | |SCASupportData |Supporting Data provided by TPP, when requesting SCA Exemption. |OBSCASupportData1 | | |
-| RequestedSCAExemptionType |0..1 |SCASupportData/RequestedSCAExemptionType |This field allows a PISP to request specific SCA Exemption for a Payment Initiation |OBExternalSCAExemptionType1Code |BillPayment<br>ContactlessTravel<br>EcommerceGoods<br>EcommerceServices<br>Kiosk<br>Parking<br>PartyToParty | |
 | AppliedAuthenticationApproach |0..1 |SCASupportData/AppliedAuthenticationApproach |Specifies a character string with a maximum length of 40 characters.<br><br>Usage: This field indicates whether the PSU was subject to SCA performed by the TPP |OBExternalAppliedAuthenticationApproach1Code |CA<br>SCA | |
 | ReferencePaymentOrderId |0..1 |SCASupportData/ReferencePaymentOrderId |If the payment is recurring, then this field is populated with the transaction identifier of the previous payment occurrence so that the ASPSP can verify that the PISP, amount and the payee are the same as the previous occurrence. The value here refers to the payment id e.g. DomesticPaymentId |Max40Text | | |
+| RequestedSCAExemptionType |0..1 |SCASupportData/RequestedSCAExemptionType |This field allows a PISP to request specific SCA Exemption for a Payment Initiation |OBExternalSCAExemptionType1Code |BillPayment<br>ContactlessTravel<br>EcommerceGoods<br>EcommerceServices<br>Kiosk<br>Parking<br>PartyToParty | |
 
 ### Identifier Fields
 

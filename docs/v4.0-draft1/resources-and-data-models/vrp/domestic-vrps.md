@@ -219,15 +219,15 @@ The state model for the `domestic-vrps` resource follows the behavior and defini
 | Name |Path |Definition | Type |
 | ---- |-----|---------- |------|
 | __Data__ (1..1) | `Data`
-| __PaymentStatus__ (0..*) | `Data. PaymentStatus`
-| __PaymentTransactionId__ (1..1) | `Data. PaymentStatus. PaymentTransactionId` |Unique identifier for the transaction within an servicing institution. This identifier is both unique and immutable. |Max210Text|
-| __LocalInstrument__ (0..1) | `Data. PaymentStatus. LocalInstrument` |User community specific instrument.  Usage: This element is used to specify a local instrument, local clearing option and/or further qualify the service or service level. |OBExternalLocalInstrument1Code|
-| __StatusCode__ (1..1) |`Data. PaymentStatus. StatusCode` |Status of a transfer, as assigned by the transaction administrator. |OBTransactionIndividualExtendedISOStatus1Code |Specifies the status reason in a code form. Values:<br>RCVD<br>PDNG<br>ACTC<br>ACFC<br>ACSP<br>ACSC<br>ACWP<br>ACCC<br>BLCK<br>CANC<br>RJCT| Max4Text|
-| __StatusDetail__ (0..1) | `Data. PaymentStatus. StatusDetail` |Payment status details as per underlying Payment Rail.
-| __StatusCode__ (1..1) | `Data. PaymentStatus. StatusDetail. StatusCode` |Status of a transfer, as assigned by the transaction administrator. |Max128Text|
-| __StatusReasonCode__ (0..1) | `Data. PaymentStatus. StatusDetail. StatusReason` |Reason code for the Status Code update| Enum ([See External codeset list](https://github.com/OpenBankingUK/External_Interal_CodeSets))|
-| __StatusReasonDescription__ (0..1) | `Data. PaymentStatus. StatusDetail. StatusReasonDescription` |Reason provided for the status of a transfer. |Max256Text
-| __StatusUpdateDateTime__ (1..1)       | `Data. PaymentStatus. StatusDetail. StatusUpdateDateTime`       | Date and time at which the resource StatusCode was updated.                                                                                                                                                      | ISODateTime                                                                                                                       |
+| __LocalInstrument__ (0..1) | `Data. LocalInstrument` |User community specific instrument.  Usage: This element is used to specify a local instrument, local clearing option and/or further qualify the service or service level. |OBExternalLocalInstrument1Code|
+| __PaymentTransactionId__ (1..1) | `Data. PaymentTransactionId` |Unique identifier for the transaction within an servicing institution. This identifier is both unique and immutable. |Max210Text|
+| __StatusCode__ (1..1) |`Data. StatusCode` |Status of a transfer, as assigned by the transaction administrator. |Values:<br>RCVD<br>PDNG<br>ACTC<br>ACFC<br>ACSP<br>ACSC<br>ACWP<br>ACCC<br>BLCK<br>CANC<br>RJCT<br><br>([See External codeset list](https://github.com/OpenBankingUK/External_Interal_CodeSets))| Max4Text|
+| __StatusUpdateDateTime__ (1..1)       | `Data. StatusUpdateDateTime`       | Date and time at which the resource StatusCode was updated. | ISODateTime |
+| __StatusDetail__ (0..*) | `Data. StatusDetail` |Array of StatusCodes| Array|
+| __StatusCode__ (1..1) | `Data. StatusDetail. StatusCode` |Status of a transfer, as assigned by the transaction administrator. |Max4Text|
+| __StatusReasonCode__ (0..1) | `Data. StatusDetail. StatusReason` |Reason code for the Status Code update| Enum ([See External codeset list](https://github.com/OpenBankingUK/External_Interal_CodeSets))|
+| __StatusReasonDescription__ (0..1) | `Data. StatusDetail. StatusReasonDescription` |Reason provided for the status of a transfer. |Max256Text |
+| __StatusUpdateDateTime__ (1..1)       | `Data. StatusDetail. StatusUpdateDateTime`       | Date and time at which the resource StatusCode was updated. | ISODateTime |
 
 ## Usage Examples
 
