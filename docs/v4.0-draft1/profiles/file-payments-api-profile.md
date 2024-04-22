@@ -66,7 +66,7 @@ Step 5: Get Consent/Payment-Order/Payment-Details Status:
 
 #### Sequence Diagram
 
-![File Payment Initiation - High Level Flow](./images/FilePaymentStatusv4-draft7.png)
+![File Payment Initiation - High Level Flow](./images/FilePaymentStatusv4-draft8.png)
 
 <details>
    <Summary>Diagram source</Summary>
