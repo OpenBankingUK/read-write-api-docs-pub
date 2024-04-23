@@ -206,11 +206,11 @@ For the call toGET /accounts/{AccountId}/statements/{StatementId}/transactions:
 | Amount |1..1 |OBReadStatement2/Data/Statement/StatementAmount/Amount |Amount of money associated with the amount type. |OBActiveOrHistoricCurrencyAndAmount | | |
 | Amount |1..1 |OBReadStatement2/Data/Statement/StatementAmount/Amount/Amount |A number of monetary units specified in an active currency where the unit of currency is explicit and compliant with ISO 4217. |OBActiveCurrencyAndAmount_SimpleType | |`^\d{1,13}$|^\d{1,13}\.\d{1,5}$` |
 | Currency |1..1 |OBReadStatement2/Data/Statement/StatementAmount/Amount/Currency |A code allocated to a currency by a Maintenance Agency under an international identification scheme, as described in the latest edition of the international standard ISO 4217 "Codes for the representation of currencies and funds". |ActiveOrHistoricCurrencyCode | |^[A-Z]{3,3}$ |
-| SubType |0..1 |OBReadStatement2/Data/Statement/StatementAmount/Amount/SubType |Amount sub type, in a coded form.<br>Default if not specified is BaseCurrency of the account |OBExternalBalanceSubType1Code |BaseCurrency LocalCurrency | |
+| SubType |0..1 |OBReadStatement2/Data/Statement/StatementAmount/Amount/SubType |Amount sub type, in a coded form.<br>Default if not specified is BCUR of the account |OBExternalBalanceSubType1Code |BCUR<br>LCUR | |
 | LocalAmount |0..1 |OBReadStatement2/Data/Statement/StatementAmount/LocalAmount |Optional component providing the equivalent of Amount in local currency. | | | |
 | Amount |1..1 |OBReadStatement2/Data/Statement/StatementAmount/LocalAmount/Amount |A number of monetary units specified in an active currency where the unit of currency is explicit and compliant with ISO 4217. |OBActiveCurrencyAndAmount_SimpleType | |`^\d{1,13}$|^\d{1,13}\.\d{1,5}$` |
 | Currency |1..1 |OBReadStatement2/Data/Statement/StatementAmount/LocalAmount/Currency |A code allocated to a currency by a Maintenance Agency under an international identification scheme, as described in the latest edition of the international standard ISO 4217 "Codes for the representation of currencies and funds". |ActiveOrHistoricCurrencyCode | |^[A-Z]{3,3}$ |
-| SubType |0..1 |OBReadStatement2/Data/Statement/StatementAmount/LocalAmount/SubType |Amount sub type, in a coded form.<br>Default if not specified is LocalCurrency of the account |OBExternalBalanceSubType1Code |BaseCurrency LocalCurrency | |
+| SubType |0..1 |OBReadStatement2/Data/Statement/StatementAmount/LocalAmount/SubType |Amount sub type, in a coded form.<br>Default if not specified is LCUR of the account |OBExternalBalanceSubType1Code |BCUR<br>LCUR | |
 | StatementDateTime |0..n |OBReadStatement2/Data/Statement/StatementDateTime |Set of elements used to provide details of a generic date time for the statement resource. |OBStatementDateTime1 | | |
 | DateTime |1..1 |OBReadStatement2/Data/Statement/StatementDateTime/DateTime |Date and time associated with the date time type. |ISODateTime | | |
 | Type |1..1 |OBReadStatement2/Data/Statement/StatementDateTime/Type |Date time type, in a coded form. |OBExternalStatementDateTimeType1Code | | |
@@ -354,12 +354,12 @@ Content-Type: application/json
       "StatementAmount": [
       {
         "Amount": {
-          "SubType": "BaseCurrency",
+          "SubType": "BCUR",
           "Amount": "329.06",
           "Currency": "GBP"
         },
         "LocalAmount": {
-          "SubType": "LocalCurrency",
+          "SubType": "LCUR",
           "Amount": "400.00",
           "Currency": "USD"
         },

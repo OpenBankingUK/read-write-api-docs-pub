@@ -77,12 +77,11 @@ The resource requires the ReadDirectDebits permission. The resource response pay
 | CategoryPurposeCode | 0..1 |OBReadDirectDebit2/Data/DirectDebit/MandateRelatedInformation/CategoryPurposeCode |Specifies the category purpose. For more information see `ExternalCategoryPurpose1Code` [here](https://github.com/OpenBankingUK/External_Interal_CodeSets) |OBCategoryPurpose1Code | | |
 | FirstPaymentDate | 0..1 |OBReadDirectDebit2/Data/DirectDebit/MandateRelatedInformation/FirstPaymentDate |The date on which the first payment for a Standing Order schedule will be made. |ISODate | | |
 | FinalPaymentDate | 0..1 |OBReadDirectDebit2/Data/DirectDebit/MandateRelatedInformation/FinalPaymentDate |The date on which the final payment for a Standing Order schedule will be made. |ISODate | | |
-| Frequency | 0..1 |OBReadDirectDebit2/Data/DirectDebit/MandateRelatedInformation/Frequency |A code indicating the frequency of payment for the Standing Order. |OBFrequencyPeriodType |ADHO<br>YEAR<br>DALI<br>INDA<br>MNTH<br>QURT<br>MIAN<br>WEEK| |
-| PeriodType | 1..1 |OBReadDirectDebit2/Data/DirectDebit/MandateRelatedInformation/PeriodType |A code indicating the period type for the Standing Order. |OBFrequencyPeriodType |ADHO<br>YEAR<br>DALI<br>INDA<br>MNTH<br>QURT<br>MIAN<br>WEEK | |
-| CountPerPeriod | 1..1 |OBReadDirectDebit2/Data/DirectDebit/MandateRelatedInformation/CountPerPeriod | |Int32 | |
-| PointInTimeType | 1..1 |OBReadDirectDebit2/Data/DirectDebit/MandateRelatedInformation/PointInTimeType |A code indicating the point in time for payment of the Standing Order |OBFrequencyPeriodType |ADHO<br>YEAR<br>DALI<br>INDA<br>MNTH<br>QURT<br>MIAN<br>WEEK | |
-| PointInTime | 1..1 |OBReadDirectDebit2/Data/DirectDebit/MandateRelatedInformation/PointInTime |Further information on the exact point in time the event should take place | |Exact2NumericText |
-| Reason| 0..1 |OBReadDirectDebit2/Data/DirectDebit/MandateRelatedInformation/Reason |Reason for the direct debit mandate to allow the user to distinguish between different mandates for the same creditor. |Max70Text | |
+| Frequency | 0..1 |OBReadDirectDebit2/Data/DirectDebit/MandateRelatedInformation/Frequency |A code indicating the frequency of payment for the Standing Order. |OBFrequency6 | | |
+| PeriodType | 1..1 |OBReadDirectDebit2/Data/DirectDebit/MandateRelatedInformation/Frequency/PeriodType |A code indicating the period type for the Standing Order. |OBFrequency6Code |ADHO<br>YEAR<br>DALI<br>FRTN<br>INDA<br>MNTH<br>QURT<br>MIAN<br>WEEK | |
+| CountPerPeriod | 1..1 |OBReadDirectDebit2/Data/DirectDebit/MandateRelatedInformation/Frequency/CountPerPeriod | |Int32 | |
+| PointInTime | 1..1 |OBReadDirectDebit2/Data/DirectDebit/MandateRelatedInformation/Frequency/PointInTime |Further information on the exact point in time the event should take place | |Exact2NumericText |
+| Reason| 0..1 |OBReadDirectDebit2/Data/DirectDebit/MandateRelatedInformation/Reason |Reason for the direct debit mandate to allow the user to distinguish between different mandates for the same creditor. |Max256Text | |
 
 ## Usage Examples
 
@@ -118,7 +117,6 @@ Content-Type: application/json
             "MandateIdentification": "Caravanners",
             "PeriodType": "WEEK",
             "CountPerPeriod": 1,
-            "PointInTimeType": "WEEK",
             "PointInTime": "00"
         },
         "DirectDebitStatusCode": "Active",
@@ -172,7 +170,6 @@ Content-Type: application/json
             "MandateIdentification": "Caravanners",
             "PeriodType": "MNTH",
             "CountPerPeriod": 1,
-            "PointInTimeType": "MNTH",
             "PointInTime": "00"
         },
         "DirectDebitStatusCode": "Active",
@@ -190,7 +187,6 @@ Content-Type: application/json
           "MandateIdentification": "Golfers",
           "PeriodType": "MNTH",
           "CountPerPeriod": 1,
-          "PointInTimeType": "MNTH",
           "PointInTime": "00"
         },
         "DirectDebitStatusCode": "Active",
