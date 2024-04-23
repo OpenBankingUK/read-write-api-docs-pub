@@ -104,17 +104,17 @@ If the ReadPAN permission is granted by the PSU, the ASPSP may choose to populat
 | AccountId |1..1 |OBReadStandingOrder6/Data/StandingOrder/AccountId |A unique and immutable identifier used to identify the account resource. This identifier has no meaning to the account owner. |Max40Text | | |
 | StandingOrderId |0..1 |OBReadStandingOrder6/Data/StandingOrder/StandingOrderId |A unique and immutable identifier used to identify the standing order resource. This identifier has no meaning to the account owner. |Max40Text | | |
 | MandateRelatedInformation | 0..1 |OBReadStandingOrder6/Data/MandateRelatedInformation ||OBMandateRelatedInformation | | |
-| MandateIdentification | 0..1 |OBReadStandingOrder6/Data/MandateRelatedInformation/MandateIdentification ||Max35Text | | |
-| Classification | 0..1 |OBReadStandingOrder6/Data/MandateRelatedInformation/Classification|FIXE<br>USGB<br>VARI|OBClassification1Code | | |
-| CategoryPurposeCode | 0..1 |OBReadStandingOrder6/Data/MandateRelatedInformation/CategoryPurposeCode ||OBCategoryPurpose1Code | | |
+| MandateIdentification | 0..1 |OBReadStandingOrder6/Data/MandateRelatedInformation/MandateIdentification |Name or number assigned by an entity to enable recognition of that entity, for example, account identifier |Max35Text | | |
+| Classification | 0..1 |OBReadStandingOrder6/Data/MandateRelatedInformation/Classification|Specifies the type of direct debit amount, such as fixed or variable. |OBClassification1Code |FIXE<br>USGB<br>VARI| |
+| CategoryPurposeCode | 0..1 |OBReadStandingOrder6/Data/MandateRelatedInformation/CategoryPurposeCode |Specifies the category purpose. For more information see `ExternalCategoryPurpose1Code` [here](https://github.com/OpenBankingUK/External_Interal_CodeSets) |OBCategoryPurpose1Code | | |
 | FirstPaymentDate | 0..1 |OBReadStandingOrder6/Data/MandateRelatedInformation/FirstPaymentDate |The date on which the first payment for a Standing Order schedule will be made. |ISODate | | |
 | FinalPaymentDate | 0..1 |OBReadStandingOrder6/Data/MandateRelatedInformation/FinalPaymentDate |The date on which the final payment for a Standing Order schedule will be made. |ISODate | | |
-| Frequency | 0..1 |OBReadStandingOrder6/Data/MandateRelatedInformation/Frequency |A code indicating the frequency of payment for the Standing Order. Values:<br>ADHO<br>YEAR<br>DALI<br>INDA<br>MNTH<br>QURT<br>MIAN<br>WEEK |OBFrequencyPeriodType | | |
-| PeriodType | 1..1 |OBReadStandingOrder6/Data/MandateRelatedInformation/PeriodType |A code indicating the period type for the Standing Order. Values:<br>ADHO<br>YEAR<br>DALI<br>INDA<br>MNTH<br>QURT<br>MIAN<br>WEEK |OBFrequencyPeriodType | | |
-| CountPerPeriod | 1..1 |OBReadStandingOrder6/Data/MandateRelatedInformation/CountPerPeriod | |int32 | |
-| PointInTimeType | 1..1 |OBReadStandingOrder6/Data/MandateRelatedInformation/PointInTimeType |A code indicating the point in time for payment of the Standing Order. Values:<br>ADHO<br>YEAR<br>DALI<br>INDA<br>MNTH<br>QURT<br>MIAN<br>WEEK |OBFrequencyPeriodType | | |
-| PointInTime | 1..1 |OBReadStandingOrder6/Data/MandateRelatedInformation/PointInTime |ISODateTime | | |
-| Reason| 0..1 |OBReadStandingOrder6/Data/MandateRelatedInformation/Reason | |Max256Text | |
+| Frequency | 0..1 |OBReadStandingOrder6/Data/MandateRelatedInformation/Frequency |A code indicating the frequency of payment for the Standing Order. |OBFrequencyPeriodType | | |
+| PeriodType | 1..1 |OBReadStandingOrder6/Data/MandateRelatedInformation/PeriodType |A code indicating the period type for the Standing Order. |OBFrequencyPeriodType |ADHO<br>YEAR<br>DALI<br>INDA<br>MNTH<br>QURT<br>MIAN<br>WEEK  | |
+| CountPerPeriod | 1..1 |OBReadStandingOrder6/Data/MandateRelatedInformation/CountPerPeriod | |Int32 | |
+| PointInTimeType | 1..1 |OBReadStandingOrder6/Data/MandateRelatedInformation/PointInTimeType |A code indicating the point in time for payment of the Standing Order |OBFrequencyPeriodType |ADHO<br>YEAR<br>DALI<br>INDA<br>MNTH<br>QURT<br>MIAN<br>WEEK | |
+| PointInTime | 1..1 |OBReadStandingOrder6/Data/MandateRelatedInformation/PointInTime |Further information on the exact point in time the event should take place |Exact2NumericText | |
+| Reason| 0..1 |OBReadStandingOrder6/Data/MandateRelatedInformation/Reason |Reason for the direct debit mandate to allow the user to distinguish between different mandates for the same creditor. |Max70Text | |
 | RemittanceInformation |0..1 |OBReadStandingOrder6/Data/StandingOrder/RemittanceInformation |Information supplied to enable the matching of an entry with the items that the transfer is intended to settle. |Max35Text | | |
 | NextPaymentDateTime |0..1 |OBReadStandingOrder6/Data/StandingOrder/NextPaymentDateTime |The date on which the next payment for a Standing Order schedule will be made. |ISODate | | |
 |LastPaymentDateTime| 0..1| OBReadStandingOrder6/Data/StandingOrder/LastPaymentDateTime |The date on which the last (most recent) payment for a Standing Order schedule was made. |ISODateTime | | |
@@ -133,7 +133,7 @@ If the ReadPAN permission is granted by the PSU, the ASPSP may choose to populat
 | Amount |1..1 |OBReadStandingOrder6/Data/StandingOrder/FinalPaymentAmount/Amount |A number of monetary units specified in an active currency where the unit of currency is explicit and compliant with ISO 4217. |OBActiveCurrencyAndAmount_SimpleType | |`^\d{1,13}$|^\d{1,13}\.\d{1,5}$` |
 | Currency |1..1 |OBReadStandingOrder6/Data/StandingOrder/FinalPaymentAmount/Currency |A code allocated to a currency by a Maintenance Agency under an international identification scheme, as described in the latest edition of the international standard ISO 4217 "Codes for the representation of currencies and funds". |ActiveOrHistoricCurrencyCode | |^[A-Z]{3,3}$ |
 | CreditorAgent |0..1 |OBReadStandingOrder6/Data/StandingOrder/CreditorAgent |Party that manages the account on behalf of the account owner, that is manages the registration and booking of entries on the account, calculates balances on the account and provides information about the account. This is the servicer of the beneficiary account. |OBBranchAndFinancialInstitutionIdentification5 | | |
-| LEI |0..1 | OBReadStandingOrder6/Data/StandingOrder/CreditorAgent/LEI |Legal Entity Identification by which a party is known and which is usually used to identify that party. |Max20Text | | |
+| LEI |0..1 | OBReadStandingOrder6/Data/StandingOrder/CreditorAgent/LEI |Legal Entity Identification |Max20Text | | |
 | SchemeName |1..1 |OBReadStandingOrder6/Data/StandingOrder/CreditorAgent/SchemeName |Name of the identification scheme, in a coded form as published in an external list. |OBExternalFinancialInstitutionIdentification4Code | | |
 | Identification |1..1 |OBReadStandingOrder6/Data/StandingOrder/CreditorAgent/Identification |Unique and unambiguous identification of the servicing institution. |Max35Text | | |
 | CreditorAccount |0..1 |OBReadStandingOrder6/Data/StandingOrder/CreditorAccount |Provides the details to identify the beneficiary account. |OBCashAccount5 | | |
@@ -178,7 +178,7 @@ Content-Type: application/json
             "PeriodType": "WEEK",
             "CountPerPeriod": 1,
             "PointInTimeType": "WEEK",
-            "PointInTime": "2017-08-13T00:00:00+00:00"
+            "PointInTime": "10"
         },
         "Reference": "Towbar Club 2 - We Love Towbars",
         "FirstPaymentAmount": {
@@ -247,7 +247,7 @@ Content-Type: application/json
             "LastPaymentDate": "2027-08-12",
             "CountPerPeriod": 1,
             "PointInTimeType": "DAIL",
-            "PointInTime": "T00:00:00+00:00"
+            "PointInTime": "12"
         },
         "Reference": "Towbar Club 2 - We Love Towbars",
         "FirstPaymentAmount": {
@@ -280,7 +280,7 @@ Content-Type: application/json
             "LastPaymentDate": "2018-06-12",
             "CountPerPeriod": 1,
             "PointInTimeType": "MNTH",
-            "PointInTime": "T00:00:00+00:00"
+            "PointInTime": "01"
         },
         "Reference": "Golf - We Love Golf",
         "FirstPaymentAmount": {
