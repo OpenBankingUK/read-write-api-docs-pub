@@ -1,8 +1,7 @@
 #!/usr/bin/env bash
 # install umldiagram from https://bitbucket.org/openbankingteam/uml-generator/src/master/
-# requires access to Github
 
-umldiagram --src=https://raw.githubusercontent.com/OpenBankingUK/read-write-api-specs/v4.0-draft1/dist/openapi/account-info-openapi.yaml --api-version=3 --dir=resources-and-data-models/aisp/images\
+./umldiagram --src=https://raw.githubusercontent.com/OpenBankingUK/read-write-api-specs/v4.0.0-draft1-WIP/dist/openapi/account-info-openapi.yaml --api-version=3 --dir=resources-and-data-models/aisp/images\
 	--schema=OBReadConsent1\
 	--schema=OBReadConsentResponse1\
 	--schema=OBReadAccount6\
@@ -27,8 +26,7 @@ umldiagram --src=https://raw.githubusercontent.com/OpenBankingUK/read-write-api-
 	--schema=OBReadProduct2.properties.Data.properties.Product.items.properties.OtherProductType.properties.LoanInterest:LoanInterest\
 	--schema=OBReadProduct2.properties.Data.properties.Product.items.properties.OtherProductType.properties.Repayment:Repayment\
 
-
-umldiagram --src=https://raw.githubusercontent.com/OpenBankingUK/read-write-api-specs/v4.0-draft1/dist/openapi/payment-initiation-openapi.yaml --api-version=3 --dir=resources-and-data-models/pisp/images\
+./umldiagram --src=https://raw.githubusercontent.com/OpenBankingUK/read-write-api-specs/v4.0.0-draft1-WIP/dist/openapi/payment-initiation-openapi.yaml --api-version=3 --dir=resources-and-data-models/pisp/images\
 	--schema=OBRisk1\
 	--schema=OBSCASupportData1\
 	--schema=OBWriteFundsConfirmationResponse1\
@@ -82,23 +80,43 @@ umldiagram --src=https://raw.githubusercontent.com/OpenBankingUK/read-write-api-
 	--schema=OBWriteDomesticStandingOrderConsent5.properties.Data.properties.Authorisation:OBAuthorisation1\
 	--schema=OBWriteDomesticResponse5.properties.Data.properties.MultiAuthorisation:OBMultiAuthorisation1\
 
-mv resources-and-data-models/pisp/images/OBMultiAuthorisation1.svg profiles/images
-mv resources-and-data-models/pisp/images/OBAuthorisation1.svg profiles/images
-mv resources-and-data-models/pisp/images/OBDomesticRefundAccount1.svg profiles/images
-mv resources-and-data-models/pisp/images/OBInternationalRefundAccount1.svg profiles/images
-mv resources-and-data-models/pisp/images/OBRisk1.svg profiles/images
+./umldiagram --src=https://raw.githubusercontent.com/OpenBankingUK/read-write-api-specs/v4.0.0-draft1-WIP/dist/openapi/vrp-openapi.yaml --api-version=3 --dir=resources-and-data-models/vrp/images\
+	--schema=OBCashAccountDebtorWithName \
+	--schema=OBCashAccountCreditor3 \
+	--schema=OBBranchAndFinancialInstitutionIdentification6 \
+	--schema=OBDomesticVRPInitiation \
+	--schema=OBDomesticVRPControlParameters \
+	--schema=OBRisk2 \
+	--schema=OBDomesticVRPConsentRequest \
+	--schema=OBDomesticVRPConsentResponse \
+	--schema=OBDomesticVRPInstruction \
+	--schema=OBDomesticVRPRequest \
+	--schema=OBDomesticVRPResponse \
+	--schema=OBDomesticVRPDetails \
+	--schema=OBVRPFundsConfirmationRequest \
+	--schema=OBVRPFundsConfirmationResponse \
 
-umldiagram --src=https://raw.githubusercontent.com/OpenBankingUK/read-write-api-specs/v4.0-draft1/dist/openapi/confirmation-funds-openapi.yaml --api-version=3 --dir=resources-and-data-models/cbpii/images\
+./umldiagram --src=https://raw.githubusercontent.com/OpenBankingUK/read-write-api-specs/v4.0.0-draft1-WIP/dist/openapi/confirmation-funds-openapi.yaml --api-version=3 --dir=resources-and-data-models/cbpii/images\
 	--schema=OBFundsConfirmationConsent1\
 	--schema=OBFundsConfirmationConsentResponse1\
 	--schema=OBFundsConfirmation1\
 	--schema=OBFundsConfirmationResponse1\
 
-umldiagram --src=https://raw.githubusercontent.com/OpenBankingUK/read-write-api-specs/v4.0-draft1/dist/openapi/event-notifications-openapi.yaml --api-version=3 --dir=resources-and-data-models/event-notifications/images\
-	--schema=OBEventsSubscription1.properties.Data.properties.CallbackUrl\
-	--schema=OBEventPolling1\
-	--schema=OBEventPollingResponse1\
-	--schema=OBEventSubscription1\
-	--schema=OBEventSubscriptionResponse1\
-	--schema=OBEventResourceUpdate1\
-	--schema=OBEventSubject1\ 
+
+#./umldiagram --src=https://raw.githubusercontent.com/OpenBankingUK/read-write-api-specs/v4.0.0-draft1-WIP/dist/openapi/event-notifications-openapi.yaml --api-version=3 --dir=resources-and-data-models/event-notifications/images\
+#	--schema=OBEventsSubscription1.properties.Data.properties.CallbackUrl\
+#	--schema=OBEventPolling1\
+#	--schema=OBEventPollingResponse1\
+#	--schema=OBEventSubscription1\
+#	--schema=OBEventSubscriptionResponse1\
+#	--schema=OBEventResourceUpdate1\
+#	--schema=OBEventSubject1\ 
+
+
+cp resources-and-data-models/pisp/images/OBMultiAuthorisation1.svg profiles/images
+cp resources-and-data-models/pisp/images/OBAuthorisation1.svg profiles/images
+cp resources-and-data-models/pisp/images/OBDomesticRefundAccount1.svg profiles/images
+cp resources-and-data-models/pisp/images/OBInternationalRefundAccount1.svg profiles/images
+cp resources-and-data-models/pisp/images/OBWritePaymentDetailsResponse1.svg profiles/images
+cp resources-and-data-models/pisp/images/OBRisk1.svg profiles/images
+cp resources-and-data-models/pisp/images/OBSCASupportData1.svg profiles/images
