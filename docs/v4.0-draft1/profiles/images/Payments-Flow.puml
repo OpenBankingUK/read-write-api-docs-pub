@@ -1,105 +1,134 @@
 @startuml vrp-consent-flow
 
-participant PSU
-participant PISP
-participant ASPSP
+participant PSU #lightyellow
+participant PISP #lightblue
+participant ASPSP Authorisation Server #lightcyan
+participant ASPSP Resource Server #lightcyan
 
-note over PSU, PISP
-Step 1: Agree VRP - VRP Consent Initiation
-end note
+note over PSU, ASPSP Resource Server #lightyellow:Step 1: Agree VRP Consent
 
-PSU -> PISP: Agree vrp-consent initiation request
+PSU -> PISP: Agree domestic-vrp-consents request
 
-note over PISP, ASPSP
-Step 2: Setup VRP Consent
-end note
+note over PSU, ASPSP Resource Server #lightyellow:Setup VRP Consent
 
-PISP -> ASPSP: PISP requests access token (Post to OIDC token endpoint with Client Credentials)
-note over ASPSP
-- PISP authentication & validation
-- ASPSP to validate the identity of PISP to establish a secure connection
-end note
-ASPSP -> PISP: ASPSP identifies TPP, establishes TLS, responds with access token
+PISP <-> ASPSP Authorisation Server: Establish TLS 1.2 MA
+PISP -> ASPSP Authorisation Server: Initiate Client Credentials Grant
+ASPSP Authorisation Server -> PISP: access-token
+PISP <-> ASPSP Resource Server: Establish TLS 1.2 MA
+PISP -> ASPSP Resource Server: POST /domestic-vrp-consents
+rbox over ASPSP Resource Server #lightgreen: Consent Status: AWAU 
+ASPSP Resource Server -> PISP: HTTP 201 (Created),  ConsentId
 
-note over PISP
- PISP may chose to request PSU a list of Accounts
- to participate in VRP, e.g. to support sweeping
-end note
+note over PSU, ASPSP Resource Server #lightyellow:Step 3: Authorize VRP Consent
 
-PISP -> ASPSP: Post VRP Consent (e.g. POST /domestic-vrp-consents)
-note over ASPSP
-- Setup payment consent, with or without PSU's Debtor Accounts
-- PISP makes it clear to PSU, that PISP will get Debtor Accounts info from ASPSP,
-- in case a/c selection happens at ASPSP, for the better functioning
-- ASPSP to setup the payment consent and respond with the Consent ID
-end note
-ASPSP -> PISP: ASPSP responds with ConsentID
+alt Redirection (Using authorization code grant)
+        PISP -> PSU: HTTP 302 (Found), Redirect (ConsentId)
+        PSU -> ASPSP Authorisation Server: Follow redirect (ConsentId)
+        PSU <-> ASPSP Authorisation Server: authenticate
+        PSU <-> ASPSP Authorisation Server: SCA if required
+        PSU <-> ASPSP Authorisation Server: Select debtor account if required
+        rbox over ASPSP Resource Server #lightgreen: Consent Status: AUTH
+        ASPSP Authorisation Server -> PSU: HTTP 302 (Found), Redirect (authorization-code)
+        PSU -> PISP: Follow redirect (authorization-code)
+        PISP <-> ASPSP Authorisation Server: Establish TLS 1.2 MA
+        PISP -> ASPSP Authorisation Server: Exchange authorization-code for access token
+        ASPSP Authorisation Server -> PISP: access-token
+else Decoupled (Using CIBA)
+        PISP -> ASPSP Authorisation Server: POST /bc-authorize (login_hint_token)
+        ASPSP Authorisation Server -> PISP: OK
 
-note over PSU, ASPSP
-Step 3: Authorise Consent
-end note
+        PSU -> ASPSP Authorisation Server: Authorise (Consent Id)
+        PSU <-> ASPSP Authorisation Server: authenticate
+        PSU <-> ASPSP Authorisation Server: SCA if required
+        PSU <-> ASPSP Authorisation Server: select accounts
+        rbox over ASPSP Resource Server #lightgreen: Consent Status: AUTH
 
-PSU -> ASPSP: PISP redirects PSU to ASPSP to authenticate
-note over ASPSP
- - PSU Authentication
-end note
-PSU -> ASPSP: PSU completes authentication (may be multiple steps/screens)
+        alt Using callback
+                ASPSP Authorisation Server -> PISP: Callback (authorization-code)
+                PISP <-> ASPSP Authorisation Server: Establish TLS 1.2 MA
+                PISP -> ASPSP Authorisation Server: Exchange authorization-code for access token
+                ASPSP Authorisation Server -> PISP: access-token
+        else Using polling
+                PISP <-> ASPSP Authorisation Server: Establish TLS 1.2 MA
+                PISP -> ASPSP Authorisation Server: Poll at /token using auth-req-id
+                ASPSP Authorisation Server -> PISP: access-token
+        end alt
+end alt
 
-note over ASPSP
-    - PSU Selects Accounts if not provided already to PISP
-    - ASPSP generates Authorisation Code
-end note
 
-ASPSP -> PSU: ASPSP returns authorization-code to the PISP domain
+note over PSU, ASPSP Resource Server #lightyellow:Step 4: Confirm Funds (Domestic VRP Single Immediate Payments Only)
 
-PSU -> PISP: PSU redirected to PISP
+opt
+PISP <-> ASPSP Resource Server: Establish TLS 1.2 MA
+PISP -> ASPSP Resource Server: POST /domestic-vrp-consents/{ConsentId}/funds-confirmation
+ASPSP Resource Server -> PISP: HTTP 200 (OK) funds-confirmation resource
 
-PISP -> ASPSP: PISP requests the Status of VRP Consent
+end opt
 
-ASPSP -> PISP: ASPSP returns the VRP Consent resource
+note over PSU, ASPSP Resource Server #lightyellow:Step 5: Create Domestic VRP Payment Order
 
-note over ASPSP
-    - To support ongoing frictionless payments, and refunds
-    - ASPSP always returns List of Debtor Accounts selected by PSU
-end note
+PISP <-> ASPSP Resource Server: Establish TLS 1.2 MA
+PISP -> ASPSP Resource Server: POST /domestic-vrps
 
-PISP -> ASPSP: PISP requests access tokens (post authorisation code to OIDC token endpoint)
+alt Immediate Payment
+rbox over ASPSP Resource Server #lightgreen: Payment Status: RCVD
+end alt
+ASPSP Resource Server -> PISP: HTTP 201 (Created), Payment-Order Id
 
-ASPSP -> PISP: ASPSP responds with access token
+note over PSU, ASPSP Resource Server #lightyellow:Step 6: Get VRP Payment-Order Consent Status
 
-note over PISP, ASPSP
-Step 4: Confirmation of Funds on the VRP Consent (optional)
-end note
-PISP -> ASPSP: PISP requests Confirmation of Funds
+opt VRP Payment Order
+PISP <-> ASPSP Resource Server: Establish TLS 1.2 MA
+PISP -> ASPSP Resource Server: GET /domestic-vrp-consents
+rbox over ASPSP Resource Server #lightgreen: Consent Status: AWAU 
+rbox over ASPSP Resource Server #lightgreen: Consent Status: AUTH
+rbox over ASPSP Resource Server #lightgreen: Consent Status: RJCT
+rbox over ASPSP Resource Server #lightgreen: Consent Status: CANC
+rbox over ASPSP Resource Server #lightgreen: Consent Status: EXPD
+end opt
 
-note over PISP
- - PISP to chose an account with Available Funds to initiate a payment
- - Option for PISP to specify Debtor Account, otherwise
- - Covers all Debtor Accounts
-end note
-ASPSP -> PISP: ASPSP responds with an array of Funds Availability Result, for each account
+note over PSU, ASPSP Resource Server #lightyellow:Step 7: Get VRP Payment-Order Status or Payment-Order detail Status
 
-note over PISP, ASPSP
-Step 5: Create Payment Order
-end note
+opt VRP Payment Order
+PISP <-> ASPSP Resource Server: Establish TLS 1.2 MA
+PISP -> ASPSP Resource Server: GET /domestic-vrps/{DomesticVRPId}
+alt Immediate
+rbox over ASPSP Resource Server #lightgreen: Payment Status: RCVD
+rbox over ASPSP Resource Server #orange: Payment Status: PDNG
+rbox over ASPSP Resource Server #orange: Payment Status: CANC
+rbox over ASPSP Resource Server #orange: Payment Status: ACTC
+rbox over ASPSP Resource Server #orange: Payment Status: ACCP
+rbox over ASPSP Resource Server #orange: Payment Status: ACFC
+rbox over ASPSP Resource Server #lightgreen: Payment Status: ACSP
+rbox over ASPSP Resource Server #orange: Payment Status: ACWC
+rbox over ASPSP Resource Server #lightgreen: Payment Status: ACSC
+rbox over ASPSP Resource Server #orange: Payment Status: BLCK
+rbox over ASPSP Resource Server #lightgreen: Payment Status: ACWP
+rbox over ASPSP Resource Server #lightgreen: Payment Status: ACCC
+rbox over ASPSP Resource Server #lightgreen: Payment Status: RJCT
+end alt
+ASPSP Resource Server -> PISP: HTTP 200 (OK) vrp-domestic-payment-order resource
+end opt
 
-PISP -> ASPSP: PISP posts Payment Order (e.g. POST /domestic-vrp-consents/{ConsentId}/domestic-payments)
-
-note over PISP
-- PISP prepares Payment Order, with a mandatory Debtor Account
-- Payment Order is within the Consent's Control Parameters
-end note
-
-note over ASPSP
-Payment Order Confirmation
-end note
-ASPSP -> PISP: ASPSP responds with Payment Order ID (e.g. DomesticPaymentID)
-
-note over PISP, ASPSP
-Step 6: Get Status (optional)
-end note
-
-PISP -> ASPSP: PISP gets the status of a consent or payment (e.g. GET /domestic-payments)
-ASPSP -> PISP: ASPSP responds with full payload of payment order, including status
+opt VRP Payment Order Details
+PISP <-> ASPSP Resource Server: Establish TLS 1.2 MA
+PISP -> ASPSP Resource Server: GET /domestic-vrps/{DomesticVRPId}/payment-details
+alt Immediate
+rbox over ASPSP Resource Server #lightgreen: Payment Status: RCVD
+rbox over ASPSP Resource Server #orange: Payment Status: PDNG
+rbox over ASPSP Resource Server #orange: Payment Status: CANC
+rbox over ASPSP Resource Server #orange: Payment Status: ACTC
+rbox over ASPSP Resource Server #orange: Payment Status: ACCP
+rbox over ASPSP Resource Server #orange: Payment Status: ACFC
+rbox over ASPSP Resource Server #lightgreen: Payment Status: ACSP
+rbox over ASPSP Resource Server #orange: Payment Status: ACWC
+rbox over ASPSP Resource Server #lightgreen: Payment Status: ACSC
+rbox over ASPSP Resource Server #orange: Payment Status: BLCK
+rbox over ASPSP Resource Server #lightgreen: Payment Status: ACWP
+rbox over ASPSP Resource Server #lightgreen: Payment Status: ACCC
+rbox over ASPSP Resource Server #lightgreen: Payment Status: RJCT
+end alt
+ASPSP Resource Server -> PISP: HTTP 200 (OK) vrp-domestic-payment-order-details resource
+end opt
 
 @enduml
