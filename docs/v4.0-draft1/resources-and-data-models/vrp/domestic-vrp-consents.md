@@ -174,17 +174,18 @@ The data dictionary section gives the detail on the payload content for the VRP 
 | __AddressType__ (0..1) | `PostalAddress. AddressType` |Identifies the nature of the postal address. |OBAddressTypeCode  |BIZZ DLVY MLTO PBOX ADDR HOME CORR STAT |
 | __Department__ (0..1) | `PostalAddress. Department` |Identification of a division of a large organisation or building. | Max70Text  
 | __SubDepartment__ (0..1) | `PostalAddress. SubDepartment` |Identification of a sub-division of a large organisation or building. |Max70Text
-| __StreetName__ (0..1) | `PostalAddress. StreetName`   |Name of a street or thoroughfare.    |Max70Text  
+| __StreetName__ (0..1) | `PostalAddress. StreetName`   |Name of a street or thoroughfare.    |Max140Text  
 | __BuildingNumber__ (0..1) | `PostalAddress. BuildingNumber` |Number that identifies the position of a building on a street.   |Max16Text  
-| __BuildingName__ (0..1) |`PostalAddress. BuildingName`  |Name of a referenced building. |Max70Text
-| __Floor__ (0..1) |`PostalAddress. Floor`|Number that identifies the level within a building. |Max16Text 
+| __BuildingName__ (0..1) |`PostalAddress. BuildingName`  |Name of a referenced building. |Max140Text
+| __Floor__ (0..1) |`PostalAddress. Floor`|Number that identifies the level within a building. |Max70Text 
 | __UnitNumber__(0..1) |`PostalAddress. UnitNumber`|Number that identifies the unit of a specific address |Max16Text 
-| __Room__ (0..1)| `PostalAddress. Room`|Information that locates and identifies a room to form part of an address. |Max70Text 
-| __TownLocationName__ (0..1)|`PostalAddress. TownLocationName` |Name of a built-up area, with defined boundaries, and a local government. |Max35Text 
-| __DistrictName__ (0..1) |`PostalAddress. DistrictName`|Number that of the regional area, known as a district, which forms part of an address. |Max35Text 
+| __Room__ (0..1)| `PostalAddress. Room`|Information that locates and identifies a room to form part of an address. |Max140Text 
+| __TownLocationName__ (0..1)|`PostalAddress. TownLocationName` |Name of a built-up area, with defined boundaries, and a local government. |Max140Text 
+| __DistrictName__ (0..1) |`PostalAddress. DistrictName`|Number that of the regional area, known as a district, which forms part of an address. |Max140Text 
 | __CareOf__ (0..1 )|`PostalAddress. CareOf` |The 'care of' address is used whenever sending mail to a person or organisation who does not actually live or work at the address. They will receive the mail for the individual. |Max70Text 
 | __PostCode__ (0..1) | `PostalAddress. PostCode` |Identifier consisting of a group of letters and. or numbers that is added to a postal address to assist the sorting of mail.    |Max16Text  
-| __TownName__ (0..1) | `PostalAddress. TownName` |Name of a built-up area, with defined boundaries, and a local government. |Max35Text  
+| __PostBox__ (0..1) |`PostalAddress. PostBOx`  |Numbered box in a post office, assigned to a person or organisation, where letters are kept until called for |Max16Text | | |
+| __TownName__ (0..1) | `PostalAddress. TownName` |Name of a built-up area, with defined boundaries, and a local government. |Max140Text  
 | __CountrySubDivision__ (0..1) | `PostalAddress. CountrySubDivision` |Identifies a subdivision of a country such as state, region, county.      |Max35Text  
 | __Country__ (0..1) | `PostalAddress. Country` | Nation with its own government.      |CountryCode
 | __AddressLine__  (0..7) | `PostalAddress. AddressLine` |Information that locates and identifies a specific address, as defined by postal services, presented in free format text.      |Max70Text  
@@ -328,18 +329,24 @@ The Risk block is a common class used in requests and responses
 | PaymentPurposeCode |0..1 |OBRisk1/PaymentPurposeCode | For a full description see `ExternalPurpose1Code` [here](https://github.com/OpenBankingUK/External_Interal_CodeSets) |OBExternalPaymentPurpose1Code | | |
 | BeneficiaryAccountType           | 0..1       | OBRisk1/BeneficiaryAccountType             | To be provided if the AccountType is known.                                                                                                                                                                                    | OBExternalExtendedAccountType1Code | Personal<br>JointPersonal<br>PersonalSavingsAccount<br>Business<br>BusinessSavingsAccount<br>Charity<br>Collection<br>Corporate<br>Government<br>Ewallet<br>Investment<br>ISA<br>Premier<br>Wealth<br>Pension<br>                                                                                                       |         |
 | DeliveryAddress                  | 0..1       | OBRisk1/DeliveryAddress                    | Information that locates and identifies a specific address, as defined by postal services or in free format text.                                                                                                              | OBPostalAddress6               |                                                                                                                                                                                                                                                                                                                         |         |
-| AddressType |0..1 |OBRisk1/DeliveryAddress AddressType |BIZZ<br>DLVY<br>MLTO<br>PBOX<br>ADDR<br>HOME<br>CORR<br>STAT | ||
-| Department |0..1 |OBRisk1/DeliveryAddress Department |Identification of a division of a large organisation or building. |Max70Text | | |
-| SubDepartment |0..1 |OBRisk1/DeliveryAddress SubDepartment |Identification of a sub-division of a large organisation or building. |Max70Text | | |
-| StreetName |0..1 |OBRisk1/DeliveryAddress StreetName |Name of a street or thoroughfare. |Max70Text | | |
-| BuildingNumber |0..1 |OBRisk1/DeliveryAddress BuildingNumber |Number that identifies the position of a building on a street. |Max16Text | | |
-| BuildingName |0..1 |OBRisk1/DeliveryAddress BuildingName |Name of a referenced building. |Max70Text | | |
-| Floor |0..1 |OBRisk1/DeliveryAddress Floor|Number that identifies the level within a building. |Max16Text | | |
-| UnitNumber|0..1 |OBRisk1/DeliveryAddress UnitNumber|Number that identifies the unit of a specific address |Max16Text | | |
-| Room |0..1 |OBRisk1/DeliveryAddress Room|Information that locates and identifies a room to form part of an address. |Max70Text | | |
-| TownLocationName |0..1 |OBRisk1/DeliveryAddress TownLocationName |Name of a built-up area, with defined boundaries, and a local government. |Max35Text | | |
-| DistrictName |0..1 |OBRisk1/DeliveryAddress DistrictName |Number that of the regional area, known as a district, which forms part of an address. |Max35Text | | |
-| CareOf |0..1 |OBRisk1/DeliveryAddress CareOf |The 'care of' address is used whenever sending mail to a person or organisation who does not actually live or work at the address. They will receive the mail for the individual. |Max70Text | | |
+| AddressType |0..1 |OBRisk1/DeliveryAddress/AddressType |Identifies the nature of the postal address. <br>For a full description see `OBAddressType2Code` [here](https://github.com/OpenBankingUK/External_Interal_CodeSets). | OBAddressType2Code | | |
+| Department |0..1 |OBRisk1/DeliveryAddress/Department |Identification of a division of a large organisation or building. |Max70Text | | |
+| SubDepartment |0..1 |OBRisk1/DeliveryAddress/SubDepartment |Identification of a sub-division of a large organisation or building. |Max70Text | | |
+| StreetName |0..1 |OBRisk1/DeliveryAddress/StreetName |Name of a street or thoroughfare. |Max140Text | | |
+| BuildingNumber |0..1 |OBRisk1/DeliveryAddress/BuildingNumber |Number that identifies the position of a building on a street. |Max16Text | | |
+| BuildingName |0..1 |OBRisk1/DeliveryAddress/BuildingName |Name of a referenced building. |Max140Text | | |
+| Floor |0..1 |OBRisk1/DeliveryAddress/Floor|Number that identifies the level within a building. |Max70Text | | |
+| UnitNumber|0..1 |OBRisk1/DeliveryAddress/UnitNumber|Number that identifies the unit of a specific address |Max16Text | | |
+| Room |0..1 |OBRisk1/DeliveryAddress/Room|Information that locates and identifies a room to form part of an address. |Max70Text | | |
+| TownLocationName |0..1 |OBRisk1/DeliveryAddress/TownLocationName |Name of a built-up area, with defined boundaries, and a local government. |Max140Text | | |
+| DistrictName |0..1 |OBRisk1/DeliveryAddress/DistrictName |Number that of the regional area, known as a district, which forms part of an address. |Max140Text | | |
+| CareOf |0..1 |OBRisk1/DeliveryAddress/CareOf |The 'care of' address is used whenever sending mail to a person or organisation who does not actually live or work at the address. They will receive the mail for the individual. |Max140Text | | |
+| PostCode |0..1 |OBRisk1/DeliveryAddress/PostCode |Identifier consisting of a group of letters and/or numbers that is added to a postal address to assist the sorting of mail. |Max16Text | | |
+| PostBox |0..1 |OBRisk1/DeliveryAddress/PostBox |Numbered box in a post office, assigned to a person or organisation, where letters are kept until called for |Max16Text | | |
+| TownName |0..1 |OBRisk1/DeliveryAddress/TownName |Name of a built-up area, with defined boundaries, and a local government. |Max140Text | | |
+| CountrySubDivision |0..1 |OBRisk1/DeliveryAddress/CountrySubDivision |Identifies a subdivision of a country such as state, region, county. |Max35Text | | |
+| Country |0..1 |OBRisk1/DeliveryAddress/Country |Nation with its own government. |CountryCode | |^[A-Z]{2,2}$ |
+| AddressLine |0..7 |OBRisk1/DeliveryAddress/AddressLine |Information that locates and identifies a specific address, as defined by postal services, presented in free format text. |Max70Text | | | |
 
 ### OBDomesticVRPConsentRequest
 

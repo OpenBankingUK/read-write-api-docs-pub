@@ -101,7 +101,7 @@ The Party resource contains a set of elements that describes a party. The party 
 | Name |0..1 |OBParty2/Name |Name by which a party is known and which is usually used to identify that party. |Max350Text | | |
 | FullLegalName |0..1 |OBParty2/FullLegalName |The full legal name of the party. |Max350Text | | |
 | LegalStructure |0..1 |OBParty2/LegalStructure |Legal standing of the party. |OBExternalLegalStructureType1Code | | |
-| LEI |0..1 | OBParty2/LEI |Legal Entity Identification |Max20Text | | |
+| LEI |0..1 | OBParty2/LEI |Legal entity identification as an alternate identification for a party. Legal Entity Identifier is a code allocated to a party as described in ISO 17442 "Financial Services - Legal Entity Identifier (LEI)".|Max20Text | |[A-Z0-9]{18,18}[0-9]{2,2}|
 | BeneficialOwnership |0..1 |OBParty2/BeneficialOwnership |A flag to indicate a party's beneficial ownership of the related account. |xs:boolean | | |
 | AccountRole |0..1 |OBParty2/AccountRole |A party's role with respect to the related account. |OBExternalAccountRole1Code | | |
 | EmailAddress |0..1 |OBParty2/EmailAddress |Address for electronic mail (e-mail). |Max256Text | | |
@@ -115,15 +115,18 @@ The Party resource contains a set of elements that describes a party. The party 
 | AddressType |0..1 |OBParty2/Address/AddressType | Identifies the nature of the postal address. <br>For a full description see `OBAddressType2Code` [here](https://github.com/OpenBankingUK/External_Interal_CodeSets). | OBAddressType2Code | | |
 | Department |0..1 |OBParty2/Address/Department |Identification of a division of a large organisation or building. |Max70Text | | |
 | SubDepartment |0..1 |OBParty2/Address/SubDepartment |Identification of a sub-division of a large organisation or building. |Max70Text | | |
-| StreetName |0..1 |OBParty2/Address/StreetName |Name of a street or thoroughfare. |Max70Text | | |
+| StreetName |0..1 |OBParty2/Address/StreetName |Name of a street or thoroughfare. |Max140Text | | |
 | BuildingNumber |0..1 |OBParty2/Address/BuildingNumber |Number that identifies the position of a building on a street. |Max16Text | | |
-| BuildingName |0..1 |OBParty2/Address/BuildingName |Name of a referenced building. |Max70Text | | |
-| Floor |0..1 |OBParty2/Address/Floor|Number that identifies the level within a building. |Max16Text | | |
+| BuildingName |0..1 |OBParty2/Address/BuildingName |Name of a referenced building. |Max140Text | | |
+| Floor |0..1 |OBParty2/Address/Floor|Number that identifies the level within a building. |Max70Text | | |
 | UnitNumber|0..1 |OBParty2/Address/UnitNumber|Number that identifies the unit of a specific address |Max16Text | | |
 | Room |0..1 |OBParty2/Address/Room|Information that locates and identifies a room to form part of an address. |Max70Text | | |
-| TownLocationName |0..1 |OBParty2/Address/TownLocationName |Name of a built-up area, with defined boundaries, and a local government. |Max35Text | | |
-| DistrictName |0..1 |OBParty2/Address/DistrictName |Number that of the regional area, known as a district, which forms part of an address. |Max35Text | | |
-| CareOf |0..1 |OBParty2/Address/CareOf |The 'care of' address is used whenever sending mail to a person or organisation who does not actually live or work at the address. They will receive the mail for the individual. |Max70Text | | |
+| TownName |0..1 |OBParty2/Address/Room/TownName |Name of a built-up area, with defined boundaries, and a local government. |Max140Text | | |
+| TownLocationName |0..1 |OBParty2/Address/TownLocationName |Name of a built-up area, with defined boundaries, and a local government. |Max140Text | | |
+| DistrictName |0..1 |OBParty2/Address/DistrictName |Number that of the regional area, known as a district, which forms part of an address. |Max140Text | | |
+| CareOf |0..1 |OBParty2/Address/CareOf |The 'care of' address is used whenever sending mail to a person or organisation who does not actually live or work at the address. They will receive the mail for the individual. |Max140Text | | |
+| PostCode|0..1 |OBParty2/Address/PostCode | Identifier consisting of a group of letters and/or numbers that is added to a postal address to assist the sorting of mail. |Max16Text | | |
+| PostBox |0..1 |OBParty2/Address/PostCode | Numbered box in a post office, assigned to a person or organisation, where letters are keptuntil called for. |Max16Text | | |
 
 ### OBReadParty2
 

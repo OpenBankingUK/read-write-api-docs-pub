@@ -166,20 +166,21 @@ Account Identification field usage:
 | Code |1..1 |OBDomesticScheduled2/CreditorAccount/Proxy/Code| Specifies the external proxy account type code, as published in the proxy account type external code set.<br> For more information see `ExternalProxyAccountType1Code` [here](https://github.com/OpenBankingUK/External_Interal_CodeSets) |OBExternalProxyAccountType1Code | | |
 | Proprietary |1..1 |OBDomesticScheduled2/CreditorAccount/Proxy/Proprietary| The owner of the proxy account |MaxText70 | | |
 | CreditorPostalAddress |0..1 |OBDomesticScheduled2/CreditorPostalAddress |Information that locates and identifies a specific address, as defined by postal services. |OBPostalAddress6 | | |
-| AddressType |0..1 |OBDomesticScheduled2/CreditorPostalAddress/AddressType |BIZZ<br>DLVY<br>MLTO<br>PBOX<br>ADDR<br>HOME<br>CORR<br>STAT | ||
+| AddressType |0..1 |OBDomesticScheduled2/CreditorPostalAddress/AddressType |Identifies the nature of the postal address. <br>For a full description see `OBAddressType2Code` [here](https://github.com/OpenBankingUK/External_Interal_CodeSets). | OBAddressType2Code | | |
 | Department |0..1 |OBDomesticScheduled2/CreditorPostalAddress/Department |Identification of a division of a large organisation or building. |Max70Text | | |
 | SubDepartment |0..1 |OBDomesticScheduled2/CreditorPostalAddress/SubDepartment |Identification of a sub-division of a large organisation or building. |Max70Text | | |
-| StreetName |0..1 |OBDomesticScheduled2/CreditorPostalAddress/StreetName |Name of a street or thoroughfare. |Max70Text | | |
+| StreetName |0..1 |OBDomesticScheduled2/CreditorPostalAddress/StreetName |Name of a street or thoroughfare. |Max140Text | | |
 | BuildingNumber |0..1 |OBDomesticScheduled2/CreditorPostalAddress/BuildingNumber |Number that identifies the position of a building on a street. |Max16Text | | |
-| BuildingName |0..1 |OBDomesticScheduled2/CreditorPostalAddress/BuildingName |Name of a referenced building. |Max70Text | | |
-| Floor |0..1 |OBDomesticScheduled2/CreditorPostalAddress/Floor|Number that identifies the level within a building. |Max16Text | | |
+| BuildingName |0..1 |OBDomesticScheduled2/CreditorPostalAddress/BuildingName |Name of a referenced building. |Max140Text | | |
+| Floor |0..1 |OBDomesticScheduled2/CreditorPostalAddress/Floor|Number that identifies the level within a building. |Max70Text | | |
 | UnitNumber|0..1 |OBDomesticScheduled2/CreditorPostalAddress/UnitNumber|Number that identifies the unit of a specific address |Max16Text | | |
 | Room |0..1 |OBDomesticScheduled2/CreditorPostalAddress/Room|Information that locates and identifies a room to form part of an address. |Max70Text | | |
-| TownLocationName |0..1 |OBDomesticScheduled2/CreditorPostalAddress/TownLocationName |Name of a built-up area, with defined boundaries, and a local government. |Max35Text | | |
-| DistrictName |0..1 |OBDomesticScheduled2/CreditorPostalAddress/DistrictName |Number that of the regional area, known as a district, which forms part of an address. |Max35Text | | |
-| CareOf |0..1 |OBDomesticScheduled2/CreditorPostalAddress/CareOf |The 'care of' address is used whenever sending mail to a person or organisation who does not actually live or work at the address. They will receive the mail for the individual. |Max70Text | | |
+| TownLocationName |0..1 |OBDomesticScheduled2/CreditorPostalAddress/TownLocationName |Name of a built-up area, with defined boundaries, and a local government. |Max140Text | | |
+| DistrictName |0..1 |OBDomesticScheduled2/CreditorPostalAddress/DistrictName |Number that of the regional area, known as a district, which forms part of an address. |Max140Text | | |
+| CareOf |0..1 |OBDomesticScheduled2/CreditorPostalAddress/CareOf |The 'care of' address is used whenever sending mail to a person or organisation who does not actually live or work at the address. They will receive the mail for the individual. |Max140Text | | |
 | PostCode |0..1 |OBDomesticScheduled2/CreditorPostalAddress/PostCode |Identifier consisting of a group of letters and/or numbers that is added to a postal address to assist the sorting of mail. |Max16Text | | |
-| TownName |0..1 |OBDomesticScheduled2/CreditorPostalAddress/TownName |Name of a built-up area, with defined boundaries, and a local government. |Max35Text | | |
+| PostBox |0..1 |OBDomesticScheduled2/CreditorPostalAddress/PostBox |Numbered box in a post office, assigned to a person or organisation, where letters are kept until called for |Max16Text | | |
+| TownName |0..1 |OBDomesticScheduled2/CreditorPostalAddress/TownName |Name of a built-up area, with defined boundaries, and a local government. |Max140Text | | |
 | CountrySubDivision |0..1 |OBDomesticScheduled2/CreditorPostalAddress/CountrySubDivision |Identifies a subdivision of a country such as state, region, county. |Max35Text | | |
 | Country |0..1 |OBDomesticScheduled2/CreditorPostalAddress/Country |Nation with its own government. |CountryCode | |^[A-Z]{2,2}$ |
 | AddressLine |0..7 |OBDomesticScheduled2/CreditorPostalAddress/AddressLine |Information that locates and identifies a specific address, as defined by postal services, presented in free format text. |Max70Text | | | |

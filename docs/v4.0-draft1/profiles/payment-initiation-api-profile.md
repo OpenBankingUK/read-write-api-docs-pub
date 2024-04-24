@@ -527,21 +527,21 @@ This section describes the Risk1 class which is reused in the payment-order cons
 | DeliveryAddress                  | 0..1       | OBRisk1/DeliveryAddress                    | Information that locates and identifies a specific address, as defined by postal services or in free format text.| OBPostalAddress6||    |
 |AddressLine| 0..7| OBRisk1/DeliveryAddress/AddressLine | Information that locates and identifies a specific address, as defined by postal services, that is presented in free format text.| Max70text|
 | AddressType |0..1 |OBRisk1/DeliveryAddress/AddressType |BIZZ<br>DLVY<br>MLTO<br>PBOX<br>ADDR<br>HOME<br>CORR<br>STAT | ||
-| BuildingName |0..1 |OBRisk1/DeliveryAddress/BuildingName |Name of a referenced building. |Max70Text | | |
+| BuildingName |0..1 |OBRisk1/DeliveryAddress/BuildingName |Name of a referenced building. |Max140Text| | |
 | BuildingNumber |0..1 |OBRisk1/DeliveryAddress/BuildingNumber |Number that identifies the position of a building on a street. |Max16Text | | |
-| CareOf |0..1 |OBRisk1/DeliveryAddress/CareOf |The 'care of' address is used whenever sending mail to a person or organisation who does not actually live or work at the address. They will receive the mail for the individual. |Max70Text | | |
+| CareOf |0..1 |OBRisk1/DeliveryAddress/CareOf |The 'care of' address is used whenever sending mail to a person or organisation who does not actually live or work at the address. They will receive the mail for the individual. |Max140Text| | |
 | Country                          | 0..1       | OBRisk1/DeliveryAddress/Country            | Nation with its own government, occupying a particular territory.  | CountryCode | ^[A-Z]{2,2}$  |  |
 |CountrySubDivision| 0..1| OBRisk1/DeliveryAddress/CountrySubDivision | Identifies a subdivision of a country such as state, region, county. | Max35Text|||
 | Department |0..1 |OBRisk1/DeliveryAddress/Department |Identification of a division of a large organisation or building. |Max70Text | | |
-| DistrictName |0..1 |OBRisk1/DeliveryAddress DistrictName |Number that of the regional area, known as a district, which forms part of an address. |Max35Text | | |
-| Floor |0..1 |OBRisk1/DeliveryAddress/Floor|Number that identifies the level within a building. |Max16Text | | |
+| DistrictName |0..1 |OBRisk1/DeliveryAddress DistrictName |Number that of the regional area, known as a district, which forms part of an address. |Max140Text | | |
+| Floor |0..1 |OBRisk1/DeliveryAddress/Floor|Number that identifies the level within a building. |Max70Text | | |
 |PostBox | 0..1 | OBRisk1/DeliveryAddress/PostBox | Numbered box in a post office, assigned to a person or organisation, where letters are kept until called for. | Max16Text |||
 | PostCode                         | 0..1       | OBRisk1/DeliveryAddress/PostCode           | Identifier consisting of a group of letters and/or numbers that is added to a postal address to assist the sorting of mail.  | Max16Text   |     |         |
 | Room |0..1 |OBRisk1/DeliveryAddress/Room|Information that locates and identifies a room to form part of an address. |Max70Text | | |
-| StreetName |0..1 |OBRisk1/DeliveryAddress StreetName |Name of a street or thoroughfare. |Max70Text | | |
+| StreetName |0..1 |OBRisk1/DeliveryAddress StreetName |Name of a street or thoroughfare. |Max140Text | | |
 | SubDepartment |0..1 |OBRisk1/DeliveryAddress/SubDepartment |Identification of a sub-division of a large organisation or building. |Max70Text | | |
-| TownLocationName |0..1 |OBRisk1/DeliveryAddress TownLocationName |Name of a built-up area, with defined boundaries, and a local government. |Max35Text | | |
-| TownName  | 0..1       | OBRisk1/DeliveryAddress/TownName           | Name of a built-up area, with defined boundaries, and a local government. | Max35Text ||  |
+| TownLocationName |0..1 |OBRisk1/DeliveryAddress TownLocationName |Name of a built-up area, with defined boundaries, and a local government. |Max140Text | | |
+| TownName  | 0..1       | OBRisk1/DeliveryAddress/TownName           | Name of a built-up area, with defined boundaries, and a local government. | Max140Text ||  |
 | UnitNumber|0..1 |OBRisk1/DeliveryAddress/UnitNumber|Number that identifies the unit of a specific address |Max16Text | | |
 
 
