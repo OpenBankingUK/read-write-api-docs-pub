@@ -161,14 +161,14 @@ For the OBDomesticStandingOrder3 Initiation object:
 | OBDomesticStandingOrder3 | |OBDomesticStandingOrder3 |The Initiation payload is sent by the initiating party to the ASPSP. It is used to request movement of funds from the debtor account to a creditor for a domestic standing order. |OBDomesticStandingOrder3 | | |
 | MandateRelatedInformation | 0..1 |OBDomesticStandingOrder3/MandateRelatedInformation ||OBMandateRelatedInformation | | |
 | MandateIdentification | 0..1 |OBDomesticStandingOrder3/MandateRelatedInformation/MandateIdentification ||Max35Text | | |
-| Classification | 0..1 |OBDomesticStandingOrder3/MandateRelatedInformation/Classification|FIXE<br>USGB<br>VARI|OBClassification1Code | | |
+| Classification | 0..1 |OBDomesticStandingOrder3/MandateRelatedInformation/Classification| |OBClassification1Code |FIXE<br>USGB<br>VARI | |
 | CategoryPurposeCode | 0..1 |OBDomesticStandingOrder3/MandateRelatedInformation/CategoryPurposeCode ||OBCategoryPurpose1Code | | |
 | FirstPaymentDate | 0..1 |OBDomesticStandingOrder3/MandateRelatedInformation/FirstPaymentDate |The date on which the first payment for a Standing Order schedule will be made. |ISODate | | |
 | FinalPaymentDate | 0..1 |OBDomesticStandingOrder3/MandateRelatedInformation/FinalPaymentDate |The date on which the final payment for a Standing Order schedule will be made. |ISODate | | |
-| Frequency | 0..1 |OBDomesticStandingOrder3/MandateRelatedInformation/Frequency |A code indicating the frequency of payment for the Standing Order. Values:<br>ADHO<br>YEAR<br>DALI<br>INDA<br>MNTH<br>QURT<br>MIAN<br>WEEK |OBFrequencyPeriodType | | |
-| PeriodType | 1..1 |OBDomesticStandingOrder3/MandateRelatedInformation/PeriodType |A code indicating the period type for the Standing Order. Values:<br>ADHO<br>YEAR<br>DALI<br>INDA<br>MNTH<br>QURT<br>MIAN<br>WEEK |OBFrequencyPeriodType | | |
+| Frequency | 0..1 |OBDomesticStandingOrder3/MandateRelatedInformation/Frequency |A code indicating the frequency of payment for the Standing Order. |OBFrequencyPeriodType |ADHO<br>YEAR<br>DALI<br>INDA<br>MNTH<br>QURT<br>MIAN<br>WEEK | |
+| PeriodType | 1..1 |OBDomesticStandingOrder3/MandateRelatedInformation/PeriodType |A code indicating the period type for the Standing Order. |OBFrequencyPeriodType |ADHO<br>YEAR<br>DALI<br>INDA<br>MNTH<br>QURT<br>MIAN<br>WEEK | |
 | CountPerPeriod | 1..1 |OBDomesticStandingOrder3/MandateRelatedInformation/CountPerPeriod | |int32 | |
-| PointInTimeType | 1..1 |OBDomesticStandingOrder3/MandateRelatedInformation/PointInTimeType |A code indicating the point in time for payment of the Standing Order. Values:<br>ADHO<br>YEAR<br>DALI<br>INDA<br>MNTH<br>QURT<br>MIAN<br>WEEK |OBFrequencyPeriodType | | |
+| PointInTimeType | 1..1 |OBDomesticStandingOrder3/MandateRelatedInformation/PointInTimeType |A code indicating the point in time for payment of the Standing Order. |OBFrequencyPeriodType | ADHO<br>YEAR<br>DALI<br>INDA<br>MNTH<br>QURT<br>MIAN<br>WEEK | |
 | PointInTime | 1..1 |OBDomesticStandingOrder3/MandateRelatedInformation/PointInTime |ISODateTime | | |
 | Reason| 0..1 |OBDomesticStandingOrder3/MandateRelatedInformation/Reason | |Max256Text | |
 | RemittanceInformation |0..1 |OBDomesticStandingOrder3/RemittanceInformation |Information supplied to enable the matching of an entry with the items that the transfer is intended to settle, such as commercial invoices in an accounts' receivable system. |OBRemittanceInformation1 | | |
@@ -192,7 +192,7 @@ For the OBDomesticStandingOrder3 Initiation object:
 | Amount |1..1 |OBDomesticStandingOrder3/FinalPaymentAmount/Amount |A number of monetary units specified in an active currency where the unit of currency is explicit and compliant with ISO 4217. |OBActiveCurrencyAndAmount_SimpleType | |`^\d{1,13}$|^\d{1,13}\.\d{1,5}$` |
 | Currency |1..1 |OBDomesticStandingOrder3/FinalPaymentAmount/Currency |A code allocated to a currency by a Maintenance Agency under an international identification scheme, as described in the latest edition of the international standard ISO 4217 "Codes for the representation of currencies and funds". |ActiveOrHistoricCurrencyCode | |^[A-Z]{3,3}$ |
 | DebtorAccount |0..1 |OBDomesticStandingOrder3/DebtorAccount |Provides the details to identify the debtor account. |OBCashAccountDebtor4 | | |
-| SchemeName |1..1 |OBDomesticStandingOrder3/DebtorAccount/SchemeName |Name of the identification scheme, in a coded form as published in an external list. |OBExternalAccountIdentification4Code | | |
+| SchemeName |1..1 |OBDomesticStandingOrder3/DebtorAccount/SchemeName |Name of the identification scheme, in a coded form as published in an external list.  |OBExternalAccountIdentification4Code | | |
 | Identification |1..1 |OBDomesticStandingOrder3/DebtorAccount/Identification |Identification assigned by an institution to identify an account. This identification is known by the account owner. |Max256Text | | |
 | Name |0..1 |OBDomesticStandingOrder3/DebtorAccount/Name |The account name is the name or names of the account owner(s) represented at an account level, as displayed by the ASPSP's online channels. Note, the account name is not the product name or the nickname of the account. |Max350Text | | |
 | SecondaryIdentification |0..1 |OBDomesticStandingOrder3/DebtorAccount/SecondaryIdentification |This is secondary identification of the account, as assigned by the account servicing institution. This can be used by building societies to additionally identify accounts with a roll number (in addition to a sort code and account number combination). |Max34Text | | |
@@ -288,8 +288,7 @@ The domestic-standing-order-consent **response** contains the full **original** 
 | Data |1..1 |OBWriteDomesticStandingOrderConsentResponse6/Data | |OBWriteDataDomesticStandingOrderConsentResponse6 | | |
 | ConsentId |1..1 |OBWriteDomesticStandingOrderConsentResponse6/Data/ConsentId |OB: Unique identification as assigned by the ASPSP to uniquely identify the consent resource. |Max128Text | | |
 | CreationDateTime |1..1 |OBWriteDomesticStandingOrderConsentResponse6/Data/CreationDateTime |Date and time at which the resource was created. |ISODateTime | | |
-| StatusCode |0..1 |OBReadConsentResponse1/Data/StatusCode |Specifies the status of consent resource in code form. |
-ExternalStatusReason1Code |AUTH AWAU RJCT COND |
+| StatusCode |0..1 |OBReadConsentResponse1/Data/StatusCode |Specifies the status of consent resource in code form. For a full description see `ExternalStatusReason1Code` [here](https://github.com/OpenBankingUK/External_Interal_CodeSets). |ExternalStatusReason1Code |AUTH AWAU RJCT COND |
 | StatusReason |0..* |OBReadConsentResponse1/Data/StatusReason |Specifies the status reason. | OBStatusReason |
 | StatusReasonCode |0..1 |OBReadConsentResponse1/Data/StatusReason/*/StatusReasonCode |Specifies the status reason in a code form. For a full description see `ExternalStatusReason1Code` [here](https://github.com/OpenBankingUK/External_Interal_CodeSets). | ExternalStatusReason1Code |
 | StatusReasonDescription |0..1 |OBReadConsentResponse1/Data/StatusReason/*/StatusReasonDescription |Description supporting the StatusReasonCode. |

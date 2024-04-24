@@ -74,13 +74,19 @@ Accept: application/json
         "Name": "Marcus Sweepimus"
       },
       "RemittanceInformation": {
-        "Reference": "Sweepco"
-      }
-    }
+        "Structured": [
+          {
+            "CreditorReferenceInformation": {
+              "Reference": "SweepCo"
+            },
+          },
+        ],
+      },
   },
   "Risk": {
     "PaymentContextCode": "TransferToThirdParty"
   }
+}
 }
 ```
 
@@ -141,9 +147,15 @@ Content-Type: application/json
         "Name": "Marcus Sweepimus"
       },
       "RemittanceInformation": {
-        "Reference": "Sweepco"
-      }
-    }
+        "Structured": [
+          {
+            "CreditorReferenceInformation": {
+              "Reference": "SweepCo"
+            },
+          },
+        ],
+      },
+    },
   },
 
   "Risk": {
@@ -231,8 +243,14 @@ Content-Type: application/json
         "Name": "Marcus Sweepimus"
       },
       "RemittanceInformation": {
-        "Reference": "Sweepco"
-      }
+        "Structured": [
+          {
+            "CreditorReferenceInformation": {
+              "Reference": "SweepCo"
+            },
+          },
+        ],
+      },
     }
   },
 
@@ -285,9 +303,15 @@ Accept: application/json
         "SecondaryIdentification": "Roll 90210",
         "Name": "Marcus Sweepimus"
       },
-      "RemittanceInformation": {
-        "Reference": "Sweepco"
-      }
+     "RemittanceInformation": {
+        "Structured": [
+          {
+            "CreditorReferenceInformation": {
+              "Reference": "SweepCo"
+            },
+          },
+        ],
+      },
     },
 
     "Instruction": {
@@ -302,8 +326,14 @@ Accept: application/json
         "Currency": "GBP"
       },
       "RemittanceInformation": {
-        "Reference": "Sweepco"
-      }
+        "Structured": [
+          {
+            "CreditorReferenceInformation": {
+              "Reference": "SweepCo"
+            },
+          },
+        ],
+      },
     }
   },
 
@@ -350,8 +380,14 @@ Content-Type: application/json
         "Name": "Marcus Sweepimus"
       },
       "RemittanceInformation": {
-        "Reference": "Sweepco"
-      }
+        "Structured": [
+          {
+            "CreditorReferenceInformation": {
+              "Reference": "SweepCo"
+            },
+          },
+        ],
+      },
     },
 
     "Instruction": {
@@ -366,8 +402,14 @@ Content-Type: application/json
         "Currency": "GBP"
       },
       "RemittanceInformation": {
-        "Reference": "Sweepco"
-      }
+        "Structured": [
+          {
+            "CreditorReferenceInformation": {
+              "Reference": "SweepCo"
+            },
+          },
+        ],
+      },
     }
   },
 
@@ -432,8 +474,14 @@ Accept: application/json
     },
     "Initiation": {
       "RemittanceInformation": {
-        "Reference": "Sweepco"
-      }
+        "Structured": [
+          {
+            "CreditorReferenceInformation": {
+              "Reference": "SweepCo"
+            },
+          },
+        ],
+      },
     }
   },
   "Risk": {
@@ -482,8 +530,14 @@ Content-Type: application/json
 
     "Initiation": {
       "RemittanceInformation": {
-        "Reference": "Sweepco"
-      }
+        "Structured": [
+          {
+            "CreditorReferenceInformation": {
+              "Reference": "SweepCo"
+            },
+          },
+        ],
+      },
     }
   },
 
@@ -562,8 +616,14 @@ Content-Type: application/json
 
     "Initiation": {
       "RemittanceInformation": {
-        "Reference": "Sweepco"
-      }
+        "Structured": [
+          {
+            "CreditorReferenceInformation": {
+              "Reference": "SweepCo"
+            },
+          },
+        ],
+      },
     }
   },
 
@@ -624,8 +684,14 @@ Accept: application/json
         "Currency": "GBP"
       },
       "RemittanceInformation": {
-        "Reference": "Sweepco"
-      }
+        "Structured": [
+          {
+            "CreditorReferenceInformation": {
+              "Reference": "SweepCo"
+            },
+          },
+        ],
+      },
     }
   },
 
@@ -661,8 +727,14 @@ Content-Type: application/json
 
     "Initiation": {
       "RemittanceInformation": {
-        "Reference": "Sweepco"
-      }
+        "Structured": [
+          {
+            "CreditorReferenceInformation": {
+              "Reference": "SweepCo"
+            },
+          },
+        ],
+      },
     },
 
     "Instruction": {
@@ -677,8 +749,14 @@ Content-Type: application/json
         "Currency": "GBP"
       },
       "RemittanceInformation": {
-        "Reference": "Sweepco"
-      }
+        "Structured": [
+          {
+            "CreditorReferenceInformation": {
+              "Reference": "SweepCo"
+            },
+          },
+        ],
+      },
     }
   },
 
