@@ -10,15 +10,15 @@
     - [Payment Order Consent](#payment-order-consent)
 - [Data Model](#data-model)
   - [Reused Classes](#reused-classes)
-    - [OBDomesticScheduled2](#obdomesticscheduled2)
-      - [UML Diagram](#uml-diagram)
-      - [Notes](#notes)
-      - [Data Dictionary](#data-dictionary)
     - [OBRemittanceInformation1](#obremittanceinformation1)
     - [OBRegulatoryReporting1](#obregulatoryreporting1)
     - [OBUltimateCreditor1](#obultimatecreditor1)
     - [OBUltimateDebtor1](#obultimatedebtor1)
     - [OBPostalAddress6](#obpostaladdress6)
+    - [OBDomesticScheduled2](#obdomesticscheduled2)
+      - [UML Diagram](#uml-diagram)
+      - [Notes](#notes)
+      - [Data Dictionary](#data-dictionary)
   - [Domestic Scheduled Payment Consent - Request](#domestic-scheduled-payment-consent-request)
     - [UML Diagram](#uml-diagram-2)
     - [Notes](#notes-2)
@@ -113,6 +113,28 @@ The data dictionary section gives the detail on the payload content for the Dome
 
 ### Reused Classes
 
+#### OBRemittanceInformation1
+
+The OBRemittanceInformation1 class is defined in the [payment-initiation-api-profile](../../profiles/payment-initiation-api-profile.md#obremittanceinformation1) page.
+
+#### OBRegulatoryReporting1
+
+The OBRegulatoryReporting1 class is defined in the [payment-initiation-api-profile](../../profiles/payment-initiation-api-profile.md#obregulatoryreporting1) page
+
+#### OBUltimateCreditor1
+
+The OBUltimateCreditor1 class is defined in the [payment-initiation-api-profile](../../profiles/payment-initiation-api-profile.md#obultimatecreditor1) page.
+
+
+#### OBUltimateDebtor1 
+
+The OBUltimateDebtor1 class is defined in the [payment-initiation-api-profile](../../profiles/payment-initiation-api-profile.md#obultimatedebtor1) page.
+
+#### OBPostalAddress6 
+
+The OBPostalAddress6 class is defined in the [payment-initiation-api-profile](../../profiles/payment-initiation-api-profile.md#obpostaladdress6) page.
+
+
 #### OBDomesticScheduled2
 
 This section describes the OBDomesticScheduled2 class which is reused as the Initiation object in the domestic-scheduled-payment-consent resource.
@@ -151,52 +173,13 @@ Account Identification field usage:
 | Amount |1..1 |OBDomesticScheduled2/InstructedAmount/Amount |A number of monetary units specified in an active currency where the unit of currency is explicit and compliant with ISO 4217. |OBActiveCurrencyAndAmount_SimpleType | |`^\d{1,13}$|^\d{1,13}\.\d{1,5}$` |
 | Currency |1..1 |OBDomesticScheduled2/InstructedAmount/Currency |A code allocated to a currency by a Maintenance Agency under an international identification scheme, as described in the latest edition of the international standard ISO 4217 "Codes for the representation of currencies and funds". |ActiveOrHistoricCurrencyCode | |^[A-Z]{3,3}$ |
 | DebtorAccount |0..1 |OBDomesticScheduled2/DebtorAccount |Unambiguous identification of the account of the debtor to which a debit entry will be made as a result of the transaction. |OBCashAccountDebtor4 | | |
-| SchemeName |1..1 |OBDomesticScheduled2/DebtorAccount/SchemeName |Name of the identification scheme, in a coded form as published in an external list. |OBExternalAccountIdentification4Code | | |
-| Identification |1..1 |OBDomesticScheduled2/DebtorAccount/Identification |Identification assigned by an institution to identify an account. This identification is known by the account owner. |Max256Text | | |
-| Name |0..1 |OBDomesticScheduled2/DebtorAccount/Name |The account name is the name or names of the account owner(s) represented at an account level, as displayed by the ASPSP's online channels. Note, the account name is not the product name or the nickname of the account. |Max350Text | | |
-| SecondaryIdentification |0..1 |OBDomesticScheduled2/DebtorAccount/SecondaryIdentification |This is secondary identification of the account, as assigned by the account servicing institution. This can be used by building societies to additionally identify accounts with a roll number (in addition to a sort code and account number combination). |Max34Text | | |
-| Proxy |0..1 |OBDomesticScheduled2/DebtorAccount/Proxy |The external proxy account type |OBProxyAccount | | |
-| Identification |1..1 |OBDomesticScheduled2/DebtorAccount/Proxy/Identification| Identification assigned by an institution to identify an account. This identification is known by the account owner. |Max256Text | | |
-| Type |0..1 |OBDomesticScheduled2/DebtorAccount/Proxy/Type| Specifies the external proxy account type |MaxText70 | | |
-| Code |1..1 |OBDomesticScheduled2/DebtorAccount/Proxy/Code| Specifies the external proxy account type code, as published in the proxy account type external code set.<br> For more information see `ExternalProxyAccountType1Code` [here](https:/github.com/OpenBankingUK/External_Interal_CodeSets) |OBExternalProxyAccountType1Code | | |
-| Proprietary |1..1 |OBDomesticScheduled2/DebtorAccount/Proxy/Proprietary| The owner of the proxy account |MaxText70 | | |
-| CreditorAccount |1..1 |OBDomesticScheduled2/CreditorAccount |Unambiguous identification of the account of the creditor to which a credit entry will be posted as a result of the payment transaction. |OBCashAccountCreditor3 | | |
-| SchemeName |1..1 |OBDomesticScheduled2/CreditorAccount/SchemeName |Name of the identification scheme, in a coded form as published in an external list. |OBExternalAccountIdentification4Code | | |
-| Identification |1..1 |OBDomesticScheduled2/CreditorAccount/Identification |Identification assigned by an institution to identify an account. This identification is known by the account owner. |Max256Text | | |
-| Name |1..1 |OBDomesticScheduled2/CreditorAccount/Name |The account name is the name or names of the account owner(s) represented at an account level. Note, the account name is not the product name or the nickname of the account. OB: ASPSPs may carry out name validation for Confirmation of Payee, but it is not mandatory. |Max350Text | | |
-| SecondaryIdentification |0..1 |OBDomesticScheduled2/CreditorAccount/SecondaryIdentification |This is secondary identification of the account, as assigned by the account servicing institution. This can be used by building societies to additionally identify accounts with a roll number (in addition to a sort code and account number combination). |Max34Text | | |
-| Proxy |0..1 |OBDomesticScheduled2/CreditorAccount/Proxy |The external proxy account type |OBProxyAccount | | |
-| Identification |1..1 |OBDomesticScheduled2/CreditorAccount/Proxy/Identification| Identification assigned by an institution to identify an account. This identification is known by the account owner. |Max256Text | | |
-| Type |0..1 |OBDomesticScheduled2/CreditorAccount/Proxy/Type| Specifies the external proxy account type |MaxText70 | | |
-| Code |1..1 |OBDomesticScheduled2/CreditorAccount/Proxy/Code| Specifies the external proxy account type code, as published in the proxy account type external code set.<br> For more information see `ExternalProxyAccountType1Code` [here](https://github.com/OpenBankingUK/External_Interal_CodeSets) |OBExternalProxyAccountType1Code | | |
-| Proprietary |1..1 |OBDomesticScheduled2/CreditorAccount/Proxy/Proprietary| The owner of the proxy account |MaxText70 | | |
-| CreditorPostalAddress |0..1 |OBDomesticScheduled2/CreditorPostalAddress |Information that locates and identifies a specific address, as defined by postal services. |OBPostalAddress6 | | |
-| RemittanceInformation |0..1 |OBDomesticScheduled2/RemittanceInformation |Information supplied to enable the matching of an entry with the items that the transfer is intended to settle, such as commercial invoices in an accounts' receivable system. |OBRemittanceInformation1 | | |
-| SupplementaryData |0..1 |OBDomesticScheduled2/SupplementaryData |Additional information that can not be captured in the structured fields and/or any other specific block. |OBSupplementaryData1 | | |
-| RegulatoryReporting |0..10 |OBDomesticScheduled2/RegulatoryReporting |Information needed due to regulatory and statutory requirements. |OBRegulatoryReporting1 | | |
-| UltimateCreditor |0..1 |OBDomesticScheduled2/UltimateCreditor|Set of elements used to identify a person or an organisation. | OBUltimateCreditor1 | | |
 | UltimateDebtor |0..1 |OBDomesticScheduled2/UltimateDebtor|Set of elements used to identify a person or an organisation. |OBUltimateDebtor1 | | |
-
-#### OBRemittanceInformation1
-
-The OBRemittanceInformation1 class is defined in the [payment-initiation-api-profile](../../profiles/payment-initiation-api-profile.md#obremittanceinformation1) page.
-
-#### OBRegulatoryReporting1
-
-The OBRegulatoryReporting1 class is defined in the [payment-initiation-api-profile](../../profiles/payment-initiation-api-profile.md#obregulatoryreporting1) page
-
-#### OBUltimateCreditor1
-
-The OBUltimateCreditor1 class is defined in the [payment-initiation-api-profile](../../profiles/payment-initiation-api-profile.md#obultimatecreditor1) page.
-
-
-#### OBUltimateDebtor1 
-
-The OBUltimateDebtor1 class is defined in the [payment-initiation-api-profile](../../profiles/payment-initiation-api-profile.md#obultimatedebtor1) page.
-
-#### OBPostalAddress6 
-
-The OBPostalAddress6 class is defined in the [payment-initiation-api-profile](../../profiles/payment-initiation-api-profile.md#obpostaladdress6) pag
+| CreditorAccount |1..1 |OBDomesticScheduled2/CreditorAccount |Unambiguous identification of the account of the creditor to which a credit entry will be posted as a result of the payment transaction. |OBCashAccountCreditor3 | | |
+| CreditorPostalAddress |0..1 |OBDomesticScheduled2/CreditorPostalAddress |Information that locates and identifies a specific address, as defined by postal services. |OBPostalAddress6 | | |
+| UltimateCreditor |0..1 |OBDomesticScheduled2/UltimateCreditor|Set of elements used to identify a person or an organisation. | OBUltimateCreditor1 | | |
+| RemittanceInformation |0..1 |OBDomesticScheduled2/RemittanceInformation |Information supplied to enable the matching of an entry with the items that the transfer is intended to settle, such as commercial invoices in an accounts' receivable system. |OBRemittanceInformation1 | | |
+| RegulatoryReporting |0..10 |OBDomesticScheduled2/RegulatoryReporting |Information needed due to regulatory and statutory requirements. |OBRegulatoryReporting1 | | |
+| SupplementaryData |0..1 |OBDomesticScheduled2/SupplementaryData |Additional information that can not be captured in the structured fields and/or any other specific block. |OBSupplementaryData1 | | |
 
 ### Domestic Scheduled Payment Consent - Request
 
@@ -264,27 +247,21 @@ The domestic-scheduled-payment-consent **response** contains the full **original
 | Data |1..1 |OBWriteDomesticScheduledConsentResponse5/Data | |OBWriteDataDomesticScheduledConsentResponse5 | | |
 | ConsentId |1..1 |OBWriteDomesticScheduledConsentResponse5/Data/ConsentId |OB: Unique identification as assigned by the ASPSP to uniquely identify the consent resource. |Max128Text | | |
 | CreationDateTime |1..1 |OBWriteDomesticScheduledConsentResponse5/Data/CreationDateTime |Date and time at which the resource was created. |ISODateTime | | |
-| StatusCode |0..1 |OBReadConsentResponse1/Data/StatusCode |Specifies the status of consent resource in code form. |
-ExternalStatusReason1Code |AUTH AWAU RJCT COND |
-| StatusReason |0..* |OBReadConsentResponse1/Data/StatusReason |Specifies the status reason. | OBStatusReason |
-| StatusReasonCode |0..1 |OBReadConsentResponse1/Data/StatusReason/*/StatusReasonCode |Specifies the status reason in a code form. For a full description see `ExternalStatusReason1Code` [here](https://github.com/OpenBankingUK/External_Interal_CodeSets). | ExternalStatusReason1Code |
-| StatusReasonDescription |0..1 |OBReadConsentResponse1/Data/StatusReason/*/StatusReasonDescription |Description supporting the StatusReasonCode. |
+| StatusCode |1..1 |OBWriteDomesticScheduledConsentResponse5/Data/StatusCode |Specifies the status of consent resource in code form. |ExternalStatusReason1Code |AUTH AWAU RJCT COND |
+| StatusReason |0..* |OBWriteDomesticScheduledConsentResponse5/Data/StatusReason |Specifies the status reason. | OBStatusReason |
+| StatusReasonCode |0..1 |OBWriteDomesticScheduledConsentResponse5/Data/StatusReason/StatusReasonCode |Specifies the status reason in a code form. For a full description see `ExternalStatusReason1Code` [here](https://github.com/OpenBankingUK/External_Interal_CodeSets). | ExternalStatusReason1Code |
+| StatusReasonDescription |0..1 |OBWriteDomesticScheduledConsentResponse5/Data/StatusReason/StatusReasonDescription |Description supporting the StatusReasonCode. |
 | StatusUpdateDateTime |1..1 |OBWriteDomesticScheduledConsentResponse5/Data/StatusUpdateDateTime |Date and time at which the consent resource status was updated. |ISODateTime | | |
 | Permission |1..1 |OBWriteDomesticScheduledConsentResponse5/Data/Permission |Specifies the Open Banking service request types. |OBExternalPermissions2Code |Create | |
 | ReadRefundAccount |0..1 |OBWriteDomesticScheduledConsentResponse5/Data/ReadRefundAccount | Specifies to share the refund account details with PISP |OBReadRefundAccount1Code |Yes No | 
 | CutOffDateTime |0..1 |OBWriteDomesticScheduledConsentResponse5/Data/CutOffDateTime |Specified cut-off date and time for the payment consent. |ISODateTime | | |
 | ExpectedExecutionDateTime |0..1 |OBWriteDomesticScheduledConsentResponse5/Data/ExpectedExecutionDateTime |Expected execution date and time for the payment resource. |ISODateTime | | |
 | ExpectedSettlementDateTime |0..1 |OBWriteDomesticScheduledConsentResponse5/Data/ExpectedSettlementDateTime |Expected settlement date and time for the payment resource. |ISODateTime | | |
-| Charges |0..n |OBWriteDomesticScheduledConsentResponse5/Data/Charges |Set of elements used to provide details of a charge for the payment initiation. |OBCharge2 | | |
+| Charges |0..* |OBWriteDomesticScheduledConsentResponse5/Data/Charges |Set of elements used to provide details of a charge for the payment initiation. |OBCharge2 | | |
 | Initiation |1..1 |OBWriteDomesticScheduledConsentResponse5/Data/Initiation |The Initiation payload is sent by the initiating party to the ASPSP. It is used to request movement of funds from the debtor account to a creditor for a single scheduled domestic payment. |OBDomesticScheduled2 | | |
 | Authorisation |0..1 |OBWriteDomesticScheduledConsentResponse5/Data/Authorisation |Type of authorisation flow requested. |OBAuthorisation1 | | |
 | SCASupportData |0..1 |OBWriteDomesticScheduledConsentResponse5/Data/SCASupportData |Supporting Data provided by TPP, when requesting SCA Exemption. |OBSCASupportData1 | | |
-| Debtor |0..1 |OBWriteDomesticScheduledConsentResponse5/Data/Debtor |Set of elements used to identify a person or an organisation. | | | |
-| SchemeName |0..1 |OBWriteDomesticScheduledConsentResponse5/Data/Debtor/SchemeName |Name of the identification scheme, in a coded form as published in an external list. |OBExternalAccountIdentification4Code | | |
-| Identification |0..1 |OBWriteDomesticScheduledConsentResponse5/Data/Debtor/Identification |Identification assigned by an institution to identify an account. This identification is known by the account owner. |Max256Text | | |
-| Name |0..1 |OBWriteDomesticScheduledConsentResponse5/Data/Debtor/Name |The account name is the name or names of the account owner(s) represented at an account level, as displayed by the ASPSP's online channels. Note, the account name is not the product name or the nickname of the account. |Max350Text | | |
-| SecondaryIdentification |0..1 |OBWriteDomesticScheduledConsentResponse5/Data/Debtor/SecondaryIdentification |This is secondary identification of the account, as assigned by the account servicing institution. This can be used by building societies to additionally identify accounts with a roll number (in addition to a sort code and account number combination). |Max34Text | | |
-| LEI |0..1 | OBWriteDomesticScheduledConsentResponse5/Data/Debtor/LEI |Legal Entity Identification by which a party is known and which is usually used to identify that party. |Max20Text | | |
+| Debtor |0..1 |OBWriteDomesticScheduledConsentResponse5/Data/Debtor |Set of elements used to identify a person or an organisation. | OBCashAccountDebtor4| | |
 | Risk |1..1 |OBWriteDomesticScheduledConsentResponse5/Risk |The Risk section is sent by the initiating party to the ASPSP. It is used to specify additional details for risk scoring for Payments. |OBRisk1 | | |
 
 ## Usage Examples
