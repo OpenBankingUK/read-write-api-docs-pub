@@ -218,7 +218,7 @@ PISP -> ASPSP Authorisation Server: Initiate Client Credentials Grant
 ASPSP Authorisation Server -> PISP: access-token
 PISP <-> ASPSP Resource Server: Establish TLS 1.2 MA
 PISP -> ASPSP Resource Server: POST /payment-order-consents
-state over ASPSP Resource Server: Consent Status: AwaitingAuthorisation
+state over ASPSP Resource Server: Consent Status: `AWAU`, which means AwaitingAuthorisation
 ASPSP Resource Server -> PISP: HTTP 201 (Created),  ConsentId
 
 note over PSU, ASPSP Resource Server
@@ -230,7 +230,7 @@ alt Redirection (Using authorization code grant)
         PSU <-> ASPSP Authorisation Server: authenticate
         PSU <-> ASPSP Authorisation Server: SCA if required
         PSU <-> ASPSP Authorisation Server: Select debtor account if required
-        state over ASPSP Resource Server: Consent Status: Authorised
+        state over ASPSP Resource Server: Consent Status: `AUTH`, which means Authorised
         ASPSP Authorisation Server -> PSU: HTTP 302 (Found), Redirect (authorization-code)
         PSU -> PISP: Follow redirect (authorization-code)
         PISP <-> ASPSP Authorisation Server: Establish TLS 1.2 MA
@@ -244,7 +244,7 @@ else Decoupled (Using CIBA)
         PSU <-> ASPSP Authorisation Server: authenticate
         PSU <-> ASPSP Authorisation Server: SCA if required
         PSU <-> ASPSP Authorisation Server: select accounts
-        state over ASPSP Resource Server: Consent Status: Authorised
+        state over ASPSP Resource Server: Consent Status: `AUTH`, which means Authorised
 
         alt Using callback
                 ASPSP Authorisation Server -> PISP: Callback (authorization-code)
@@ -275,14 +275,14 @@ Step 5: Create Payment-Order
 end note
 PISP <-> ASPSP Resource Server: Establish TLS 1.2 MA
 PISP -> ASPSP Resource Server: POST /payment-orders
-state over ASPSP Resource Server: Consent Status: Consumed
+state over ASPSP Resource Server: Consent Status: `COND`, which means  Consumed
 alt Immediate Payment
-state over ASPSP Resource Server: Payment Status: Pending
-state over ASPSP Resource Server: Payment Status: AcceptedSettlementInProcess
-state over ASPSP Resource Server: Payment Status: AcceptedSettlementComplete
+state over ASPSP Resource Server: Payment Status: `PDNG`, which means Pending
+state over ASPSP Resource Server: Payment Status: `ACSP`, which means AcceptedSettlementInProcess
+state over ASPSP Resource Server: Payment Status: `ACCC`, which means AcceptedSettlementComplete
 else Standing Order or Future Dated Payment
-state over ASPSP Resource Server: Payment Status: InitiationPending
-state over ASPSP Resource Server: Payment Status: InitiationCompleted
+state over ASPSP Resource Server: Payment Status: `INPE`, which means InitiationPending
+state over ASPSP Resource Server: Payment Status: `INCO`, which means InitiationCompleted
 end alt
 ASPSP Resource Server -> PISP: HTTP 201 (Created), Payment-Order Id
 
