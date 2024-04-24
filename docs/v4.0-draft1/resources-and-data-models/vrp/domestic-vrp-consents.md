@@ -18,7 +18,7 @@
       - [Example 2](#example-2)
       - [Example 3](#example-3)
       - [Example 4](#example-4)
-  - [OBRisk1](#obrisk1)
+  - [OBRisk2](#OBRisk2)
   - [OBDomesticVRPConsentRequest](#obdomesticvrpconsentrequest)
   - [OBDomesticVRPConsentResponse](#obdomesticvrpconsentresponse)
   - [OBVRPFundsConfirmationRequest](#obvrpfundsconfirmationrequest)
@@ -62,6 +62,21 @@ If the parameters specified by the TPP in this resource are not valid, or fail a
 The ASPSP **must** allow a PSU to have multiple VRP consents for a given account. This could include multiple consents with the same PISP.
 
 The ASPSP **must** reject a consent request that has `Data.ControlParameters.SupplementaryData` that it cannot process.
+
+Remittance Information __MAY__ be provided in the Initiation section when a VRP Consent is setup. This means the same Remittance Information __MUST__ be provided by the PISP in the Initiation and Instruction section of each VRP Payment.
+If each VRP Payment requires dynamic Remittance Information for each VRP Payment then the Remittance Information at the VRP Consent level __MUST NOT__ be captured.
+The Remittance Information in the Initiation section provided at the VRP Payment level __MUST__ match the Initiation section provided at the VRP Consent level.
+
+Examples:
+
+| Remittance Information | Initiation section<br>(VRP Consent) | Initiation section<br>(VRP Payment) | Instruction section<br>(VRP Payment) |
+| --- | --- | --- | --- |
+| Creditor Information/Reference | Credit Card No | Credit Card No| Credit Card No |
+| Creditor Information/Reference | Empty | Empty | Dynamic reference for each payment |
+| Creditor Information/Reference | Empty | Empty | Dynamic Invoice number for each payment |
+
+
+
 
 ### GET /domestic-vrp-consents/{ConsentId}
 
@@ -130,6 +145,15 @@ The definitions for the StatusCode:
 | 4| CANC| The consent resource has been canceled.                      |
 | 5| EXPD| The consent resource has expired.|
 
+
+Changes to the StatusCode, such as being rejected, should be captured in `StatusReason`, an array of `StatusReasonCode`, `StatusReasonDescription` and `Path`.  
+
+| Field | Description |
+|---|---|
+| StatusReasonCode | Code directly relating to the reason for the current Status. See `ExternalStatusReason1Code` in the [the codelists](https://github.com/OpenBankingUK/External_Interal_CodeSets) for appropriate values. |
+| StatusReasonDescription | Description of why the code was returned |
+|Path| Path is optional but relevant when the status reason refers to an object/field and hence conditional to provide JSON path. |
+
 ## Data Model
 
 The data dictionary section gives the detail on the payload content for the VRP consent API flows.
@@ -140,10 +164,14 @@ The data dictionary section gives the detail on the payload content for the VRP 
 
 | Name |Path |Definition | Type |
 | ---- |-----|---------- |------|
-| __SchemeName__ (1..1) | `SchemeName` | Name of the identification scheme, in a coded form as published in an external list. | Namespaced Enumeration OBExternalAccountIdentification4Code
+| __SchemeName__ (1..1) | `SchemeName` | Name of the identification scheme, in a coded form as published in an external list. | Namespaced Enumeration `OBExternalAccountIdentification4Code`<br><br>For more information see `OBExternalAccountIdentification4Code` [here](https://github.com/OpenBankingUK/External_Interal_CodeSets)
 | __Identification__ (1..1) | `Identification` | Identification assigned by an institution to identify an account. This identification is known by the account owner. | Max256Text
 | __Name__ (1..1) | `Name` | Name of the account, as assigned by the account servicing institution.  Usage: The account name is the name or names of the account owner(s) represented at an account level. The account name is not the product name or the nickname of the account. | Max70Text  
 | __SecondaryIdentification__ (0..1) | `SecondaryIdentification` | This is secondary identification of the account, as assigned by the account servicing institution.  This can be used by building societies to additionally identify accounts with a roll number (in addition to a sort code and account number combination) | Max34Text
+| __Proxy__ (0..1) |`Proxy` |Specifies an alternate assumed name for the identification of the account. |OBProxyAccount
+| __Identification__ (1..1) |`Proxy. Identification`| Identification used to indicate the account identification under another specified name. |Max256Text 
+| __Type__ (0..1) |`Proxy. Type`| Type of the proxy identification. |MaxText70 
+| __Code__ 1..1 |`Proxy. Code`| Specifies the external proxy account type code, as published in the proxy account type external code set  |ExternalProxyAccountType1Code <br><br>For more information see `ExternalProxyAccountType1Code` [here](https://github.com/OpenBankingUK/External_Interal_CodeSets)
 
 ### OBCashAccountCreditor3
 
@@ -155,11 +183,10 @@ The data dictionary section gives the detail on the payload content for the VRP 
 | __Identification__ (1..1) | `Identification` |Identification assigned by an institution to identify an account. This identification is known by the account owner.   |Max256Text
 | __Name__ (1..1) | `Name` |Name of the account, as assigned by the account servicing institution, in consent with the account owner in order to provide an additional means of identification of the account.  Usage: The account name is different from the account owner name. The account name is used in certain user communities to provide a means of identifying the account, in addition to the account owner's identity and the account number. OB: No name validation is expected for confirmation of payee.|Max70Text  
 | __SecondaryIdentification__ (0..1) | `SecondaryIdentification` |This is secondary identification of the account, as assigned by the account servicing institution.  This can be used by building societies to additionally identify accounts with a roll number__ (in addition to a sort code and account number combination).             |Max34Text
-| __Proxy__ (0..1) |OBInternationalStandingOrder4/CreditorAccount/Proxy |The external proxy account type |OBProxyAccount
-| __Identification__ (1..1) |OBInternationalStandingOrder4/CreditorAccount/Proxy/Identification| Identification assigned by an institution to identify an account. This identification is known by the account owner. |Max256Text 
-| __Type__ (0..1) |OBInternationalStandingOrder4/CreditorAccount/Proxy/Type| Specifies the external proxy account type |MaxText70 
-| __Code__ 1..1 |OBInternationalStandingOrder4/CreditorAccount/Proxy/Code| Specifies the external proxy account type code, as published in the proxy account type external code set.<br> For more information see `ExternalProxyAccountType1Code` [here](https://github.com/OpenBankingUK/External_Interal_CodeSets) |OBExternalProxyAccountType1Code 
-| __Proprietary__ (1..1) |OBInternationalStandingOrder4/CreditorAccount/Proxy/Proprietary| The owner of the proxy account |MaxText70 
+| __Proxy__ (0..1) |`Proxy` |Specifies an alternate assumed name for the identification of the account. |OBProxyAccount
+| __Identification__ (1..1) |`Proxy. Identification`| Identification used to indicate the account identification under another specified name. |Max256Text 
+| __Type__ (0..1) |`Proxy. Type`| Type of the proxy identification. |MaxText70 
+| __Code__ 1..1 |`Proxy. Code`| Specifies the external proxy account type code, as published in the proxy account type external code set  |ExternalProxyAccountType1Code <br><br>For more information see `ExternalProxyAccountType1Code` [here](https://github.com/OpenBankingUK/External_Interal_CodeSets)
 
 ### OBBranchAndFinancialInstitutionIdentification6
 
@@ -170,25 +197,27 @@ The data dictionary section gives the detail on the payload content for the VRP 
 | __SchemeName__ (0..1) | `SchemeName` |Name of the identification scheme, in a coded form as published in an external list. |OBExternalFinancialInstitutionIdentification4Code
 | __Identification__ (0..1) | `Identification` |Unique and unambiguous identification of a financial institution or a branch of a financial institution.  | Max35Text  
 | __Name__ (0..1) | `Name` | Name by which an agent is known and which is usually used to identify that agent. | Max140Text
-| __PostalAddress__ (0..1) | `PostalAddress` |Information that locates and identifies a specific address, as defined by postal services.| OBPostalAddress6
+| __LEI__ (0..1) | `LEI` | Legal entity identification as an alternate identification for a party. <br>Legal Entity Identifier is a code allocated to a party as described in ISO 17442 "Financial Services - Legal Entity Identifier (LEI)". | Max20Text |
+| __PostalAddress__ (0..1) | `PostalAddress` |Information that locates and identifies a specific address, as defined by postal services.| OBPostalAddress6 |
+| __AddressLine__  (0..7) | `PostalAddress. AddressLine` |Information that locates and identifies a specific address, as defined by postal services, presented in free format text.      |Max70Text  |
 | __AddressType__ (0..1) | `PostalAddress. AddressType` |Identifies the nature of the postal address. |OBAddressTypeCode  |BIZZ DLVY MLTO PBOX ADDR HOME CORR STAT |
-| __Department__ (0..1) | `PostalAddress. Department` |Identification of a division of a large organisation or building. | Max70Text  
-| __SubDepartment__ (0..1) | `PostalAddress. SubDepartment` |Identification of a sub-division of a large organisation or building. |Max70Text
-| __StreetName__ (0..1) | `PostalAddress. StreetName`   |Name of a street or thoroughfare.    |Max140Text  
-| __BuildingNumber__ (0..1) | `PostalAddress. BuildingNumber` |Number that identifies the position of a building on a street.   |Max16Text  
-| __BuildingName__ (0..1) |`PostalAddress. BuildingName`  |Name of a referenced building. |Max140Text
-| __Floor__ (0..1) |`PostalAddress. Floor`|Number that identifies the level within a building. |Max70Text 
-| __UnitNumber__(0..1) |`PostalAddress. UnitNumber`|Number that identifies the unit of a specific address |Max16Text 
-| __Room__ (0..1)| `PostalAddress. Room`|Information that locates and identifies a room to form part of an address. |Max140Text 
-| __TownLocationName__ (0..1)|`PostalAddress. TownLocationName` |Name of a built-up area, with defined boundaries, and a local government. |Max140Text 
-| __DistrictName__ (0..1) |`PostalAddress. DistrictName`|Number that of the regional area, known as a district, which forms part of an address. |Max140Text 
-| __CareOf__ (0..1 )|`PostalAddress. CareOf` |The 'care of' address is used whenever sending mail to a person or organisation who does not actually live or work at the address. They will receive the mail for the individual. |Max70Text 
-| __PostCode__ (0..1) | `PostalAddress. PostCode` |Identifier consisting of a group of letters and. or numbers that is added to a postal address to assist the sorting of mail.    |Max16Text  
-| __PostBox__ (0..1) |`PostalAddress. PostBOx`  |Numbered box in a post office, assigned to a person or organisation, where letters are kept until called for |Max16Text | | |
-| __TownName__ (0..1) | `PostalAddress. TownName` |Name of a built-up area, with defined boundaries, and a local government. |Max140Text  
-| __CountrySubDivision__ (0..1) | `PostalAddress. CountrySubDivision` |Identifies a subdivision of a country such as state, region, county.      |Max35Text  
-| __Country__ (0..1) | `PostalAddress. Country` | Nation with its own government.      |CountryCode
-| __AddressLine__  (0..7) | `PostalAddress. AddressLine` |Information that locates and identifies a specific address, as defined by postal services, presented in free format text.      |Max70Text  
+| __Department__ (0..1) | `PostalAddress. Department` |Identification of a division of a large organisation or building. | Max70Text  |
+| __SubDepartment__ (0..1) | `PostalAddress. SubDepartment` |Identification of a sub-division of a large organisation or building. |Max70Text|
+| __BuildingNumber__ (0..1) | `PostalAddress. BuildingNumber` |Number that identifies the position of a building on a street.   |Max16Text  |
+| __BuildingName__ (0..1) |`PostalAddress. BuildingName`  |Name of a referenced building. |Max140Text|
+| __UnitNumber__ (0..1) |`PostalAddress. UnitNumber`|Number that identifies the unit of a specific address |Max16Text |
+| __Floor__ (0..1) |`PostalAddress. Floor`|Number that identifies the level within a building. |Max70Text |
+| __Room__ (0..1)| `PostalAddress. Room`|Information that locates and identifies a room to form part of an address. |Max70Text |
+| __StreetName__ (0..1) | `PostalAddress. StreetName`   |Name of a street or thoroughfare.    |Max140Text  |
+| __PostBox__ (0..1)| `PostalAddress. PostBox` | Numbered box in a post office, assigned to a person or organisation, where letters are kept until called for. | Max16Text|
+| __TownName__ (0..1) | `PostalAddress. TownName` |Name of a built-up area, with defined boundaries, and a local government. |Max140Text  |
+| __TownLocationName__ (0..1)|`PostalAddress. TownLocationName` |Name of a built-up area, with defined boundaries, and a local government. |Max140Text |
+| __DistrictName__ (0..1) |`PostalAddress. DistrictName`|Number that of the regional area, known as a district, which forms part of an address. |Max140Text |
+| __CareOf__ (0..1 )|`PostalAddress. CareOf` |The 'care of' address is used whenever sending mail to a person or organisation who does not actually live or work at the address. They will receive the mail for the individual. |Max140Text |
+| __PostCode__ (0..1) | `PostalAddress. PostCode` |Identifier consisting of a group of letters and. or numbers that is added to a postal address to assist the sorting of mail.    |Max16Text  |
+| __CountrySubDivision__ (0..1) | `PostalAddress. CountrySubDivision` |Identifies a subdivision of a country such as state, region, county.      |Max35Text  |
+| __Country__ (0..1) | `PostalAddress. Country` | Nation with its own government.      |CountryCode|
+
 
 ### OBDomesticVRPInitiation
 
@@ -196,19 +225,27 @@ The data dictionary section gives the detail on the payload content for the VRP 
 
 | Name |Path |Definition | Type |
 | ---- |-----|---------- |------|
-| __DebtorAccount__ (0..1) | `DebtorAccount` | Unambiguous identification of the account of the debtor to which a debit entry will be made as a result of the transaction. | [OBCashAccountDebtorWithName](#OBCashAccountDebtorWithName)
-| __CreditorAgent__ (0..1) | `CreditorAgent` | Financial institution servicing an account for the creditor.     | OBBranchAndFinancialInstitutionIdentification6
-| __CreditorAccount__ (0..1) | `CreditorAccount`   |Unambiguous identification of the account of the creditor to which a credit entry will be posted as a result of the payment transaction.       |OBCashAccountCreditor3
-| __RemittanceInformation__ (0..1) | `RemittanceInformation`   | Information supplied to enable the matching of an entry with the items that the transfer is intended to settle, such as commercial invoices in an accounts' receivable system. | OBRemittanceInformation1
-| __Structured__ (0..*) |`RemittanceInformation. Structured` |Information supplied to enable the matching/reconciliation of an entry with the items that the payment is intended to settle, such as commercial invoices in an accounts' receivable system, in an structured form. |OBRemittanceInformationStructured
-| __ReferredDocumentInformation__ (0..*) |`RemittanceInformation . Structured. ReferredDocumentInformation` | |OBReferredDocumentInformation
-| __ReferredDocumentAmount__ (0..1) |`RemittanceInformation. . Structured. ReferredDocumentAmount` | |OBReferredDocumentAmount| 
-| __CreditorReferenceInformation__ (0..1) |`RemittanceInformation. Structured. ReferredDocumentAmount`  | |OBCreditorReferenceInformation
-| __Invoicer__ (0..1) |`RemittanceInformation. Structured. Invoicer`  | |OBInvoicer| | |
-| __Invoicer__ (0..1) |`RemittanceInformation. Structured. Invoicee`  | |OBInvoicee| | |
-| __TaxRemittance__ (0..1) |`RemittanceInformation. Structured. TaxRemittance` | |OBTaxRemittance| | |
-| __AdditionalRemittanceInformation__ (0..3)|`RemittanceInformation. Structured. AdditionalRemittanceInformation`|
-| __Unstructured__ |0..* |`RemittanceInformation. Unstructured.` |Information supplied to enable the matching/reconciliation of an entry with the items that the payment is intended to settle, such as commercial invoices in an accounts' receivable system, in an unstructured form. |Max140Text
+| __DebtorAccount__ (0..1) | `DebtorAccount` | Unambiguous identification of the account of the debtor to which a debit entry will be made as a result of the transaction. | [OBCashAccountDebtorWithName](#OBCashAccountDebtorWithName) |
+| __UltimateDebtor__ (0..1) | `UltimateDebtor` | Ultimate party that owes an amount of money to the (ultimate) creditor. ||
+| __SchemeName__ (0..1) | `UltimateDebtor. SchemeName` |Name of the identification scheme, in a coded form as published in an external list. |OBExternalFinancialInstitutionIdentification4Code
+| __Identification__ (0..1) | `UltimateDebtor. Identification` |Unique and unambiguous identification of a financial institution or a branch of a financial institution.  | Max35Text  
+| __Name__ (0..1) | `UltimateDebtor. Name` | Name by which an agent is known and which is usually used to identify that agent. | Max140Text
+| __LEI__ (0..1) | `UltimateDebtor. LEI` | Legal entity identification as an alternate identification for a party. <br>Legal Entity Identifier is a code allocated to a party as described in ISO 17442 "Financial Services - Legal Entity Identifier (LEI)". | Max20Text |
+| __PostalAddress__ (0..1) | `UltimateDebtor. PostalAddress` |Information that locates and identifies a specific address, as defined by postal services.| OBPostalAddress6 |
+| __CreditorAgent__ (0..1) | `CreditorAgent` | Financial institution servicing an account for the creditor.     | OBBranchAndFinancialInstitutionIdentification6 |
+| __CreditorAccount__ (0..1) | `CreditorAccount`   |Unambiguous identification of the account of the creditor to which a credit entry will be posted as a result of the payment transaction.       |OBCashAccountCreditor3 |
+| __CreditorPostalAddress__ | `CreditorPostalAddress` | Information that locates and identifies a specific address, as defined by postal services or in free format text. | OBPostalAddress6|
+| __UltimateCreditor__ (0..1) | `UltimateCreditor` | Ultimate party to which an amount of money is due. | |
+| __SchemeName__ (0..1) | `UltimateCreditor. SchemeName` |Name of the identification scheme, in a coded form as published in an external list. |OBExternalFinancialInstitutionIdentification4Code
+| __Identification__ (0..1) | `UltimateCreditor. Identification` |Unique and unambiguous identification of a financial institution or a branch of a financial institution.  | Max35Text  
+| __Name__ (0..1) | `UltimateCreditor. Name` | Name by which an agent is known and which is usually used to identify that agent. | Max140Text
+| __LEI__ (0..1) | `UltimateCreditor. LEI` | Legal entity identification as an alternate identification for a party. <br>Legal Entity Identifier is a code allocated to a party as described in ISO 17442 "Financial Services - Legal Entity Identifier (LEI)". | Max20Text |
+| __PostalAddress__ (0..1) | `UltimateCreditor. PostalAddress` |Information that locates and identifies a specific address, as defined by postal services.| OBPostalAddress6 |
+| __RemittanceInformation__ (0..1) | `RemittanceInformation`   | Information supplied to enable the matching of an entry with the items that the transfer is intended to settle, such as commercial invoices in an accounts' receivable system. | OBRemittanceInformation1 |
+|__RegulatoryReporting__ (0..10)| `RegulatoryReporting` | Information needed due to regulatory and statutory requirements. | OBRegulatoryReporting3 |
+
+
+
 
 ### OBDomesticVRPControlParameters
 
@@ -230,7 +267,7 @@ The VRP consent is a common class used in `domestic-payment-consents` requests a
 | __Currency__ (1..1)                 | `ControlParameters. PeriodicLimits. Currency`          | A code allocated to a currency by a Maintenance Agency under an international identification scheme, as described in the latest edition of the international standard ISO 4217 "Codes for the representation of currencies and funds".                                           | ActiveOrHistoricCurrencyCode                        |
 | __VRPType__ (1..*)                  | `ControlParameters. VRPType`                           | The types of payments that can be made under this VRP consent. This can be used to indicate whether this include sweeping payment or other ecommerce payments.                                                                                                                   | OBVRPConsentType - Namespaced Enumeration           |
 | __PSUAuthenticationMethods__ (1..M) | `ControlParameters. PSUAuthenticationMethods`          | Indicates that the PSU authentication methods supported.                                                                                                                                                                                                                         | OBVRPAuthenticationMethods - Namespaced Enumeration |
-| __PSUInteractionTypes__ (0..M)      | `ControlParameters. PSUInteractionTypes`               | Indicates interaction type, currently if customer is present or not present.                                                                                                                                                                                                                         | OBVRPInteractionTypes                               |
+| __PSUInteractionTypes__ (0..*)      | `ControlParameters. PSUInteractionTypes`               | Indicates interaction type, currently if customer is present or not present.                                                                                                                                                                                                                         | OBVRPInteractionTypes                               |
 | __SupplementaryData__ (0..1)        | `ControlParameters. SupplementaryData`                 | Additional information that can not be captured in the structured fields and/or any other specific block                                                                                                                                                                         | *                                                   |
 
 #### Examples of Periodic Limits
@@ -308,45 +345,26 @@ The VRP consent is a common class used in `domestic-payment-consents` requests a
 | 3      | 05-Jun-2023 | 04-Jun-2024 | 500.00 GBP |
 
 
-### OBRisk1
+### OBRisk2
 
-The Risk block is a common class used in requests and responses
+The Risk block for VRP does not included `ExtendedPurpose`, used only in International payments, therefore uses `OBRisk2`.
 
-![OBRisk1](./images/OBRisk1.svg)
+![OBRisk2](./images/OBRisk2.svg)
 
 ##### Data Dictionary
 
 | Name                             | Occurrence | XPath                                      | EnhancedDefinition                                                                                                                                                                                                             | Class                              | Codes                                                                                                                                                                                                                                                                                                                   | Pattern |
 |----------------------------------|------------|--------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------|
-| OBRisk1                          |            | OBRisk1                                    | The Risk section is sent by the initiating party to the ASPSP. It is used to specify additional details for risk scoring for Payments.                                                                                         | OBRisk1                            |                                                                                                                                                                                                                                                                                                                         |         |
-| PaymentContextCode               | 0..1       | OBRisk1/PaymentContextCode                 | Specifies the payment context | OBExternalPaymentContext1Code      | <br>BillingGoodsAndServicesInAdvance <br>BillingGoodsAndServicesInArrears <br>EcommerceMerchantInitiatedPayment <br>FaceToFacePointOfSale <br>TransferToSelf <br>TransferToThirdParty |         |
-| CategoryPurposeCode                | 0..1       | OBRisk1/CategoryPurposeCode                  |Enumeration to outline the purpose to the underlying purpose of the payment<br> BONU<br>CASH<br>CBLK<br>CCRD<br>CGWV<br>CIPC <br>CONC<br>CORT<br>DCRD<br>DIVI<br>DVPM<br>EPAY<br>FCDT <br>FCIN<br>FCOL<br>GOVT<br>GP2P<br>HEDG <br>ICCP <br>IDCP <br>INTC<br>INTE<br>LBOX<br>LOAN<br>MP2B<br>MP2P<br>OTHR <br>PENS<br>RPRE<br>RRCT<br>RVPM<br>SALA<br>SECU<br>SSBE <br>SUPP<br>SWEP<br>TAXS<br>TOPG<br>TRAD<br>TREA<br>VATX <br>VOST<br>WHLD<br>ZABA| OBCategoryPurposeCode                       |                                                                                                                                                                                                                                                                                                                         |         |
-| ExtendedPurpose |0..1 |OBRisk1/ExtendedPurpose |Specifies the purpose of an __international payment__, when there is no corresponding 4 character code available in the ISO20022 list of Purpose Codes. |Max140Text | | |
-| MerchantCategoryCode             | 0..1       | OBRisk1/MerchantCategoryCode               | **`@DEPRECATED`** Category code conform to ISO 18245, related to the type of services or goods the merchant provides for the transaction.                                                                                      | Min3Max4Text                       |                                                                                                                                                                                                                                                                                                                         |         |
-| MerchantCustomerIdentification   | 0..1       | OBRisk1/MerchantCustomerIdentification     | The unique customer identifier of the PSU with the merchant.                                                                                                                                                                   | Max70Text                          |                                                                                                                                                                                                                                                                                                                         |         |
-| ContractPresentIndicator        | 0..1       | OBRisk1/ContractPresentIndicator          | Indicates if Payee has a contractual relationship with the PISP.                                                                                                                                                               | Boolean                            |                                                                                                                                                                                                                                                                                                                         |         |
-| BeneficiaryPrepopulatedIndicator | 0..1       | OBRisk1/BeneficiaryPrepopulatedIndicator   | Indicates if PISP has immutably prepopulated payment details in for the PSU.                                                                                                                                                   | Boolean                            |                                                                                                                                                                                                                                                                                                                         |         |
-| PaymentPurposeCode |0..1 |OBRisk1/PaymentPurposeCode | For a full description see `ExternalPurpose1Code` [here](https://github.com/OpenBankingUK/External_Interal_CodeSets) |OBExternalPaymentPurpose1Code | | |
-| BeneficiaryAccountType           | 0..1       | OBRisk1/BeneficiaryAccountType             | To be provided if the AccountType is known.                                                                                                                                                                                    | OBExternalExtendedAccountType1Code | Personal<br>JointPersonal<br>PersonalSavingsAccount<br>Business<br>BusinessSavingsAccount<br>Charity<br>Collection<br>Corporate<br>Government<br>Ewallet<br>Investment<br>ISA<br>Premier<br>Wealth<br>Pension<br>                                                                                                       |         |
-| DeliveryAddress                  | 0..1       | OBRisk1/DeliveryAddress                    | Information that locates and identifies a specific address, as defined by postal services or in free format text.                                                                                                              | OBPostalAddress6               |                                                                                                                                                                                                                                                                                                                         |         |
-| AddressType |0..1 |OBRisk1/DeliveryAddress/AddressType |Identifies the nature of the postal address. <br>For a full description see `OBAddressType2Code` [here](https://github.com/OpenBankingUK/External_Interal_CodeSets). | OBAddressType2Code | | |
-| Department |0..1 |OBRisk1/DeliveryAddress/Department |Identification of a division of a large organisation or building. |Max70Text | | |
-| SubDepartment |0..1 |OBRisk1/DeliveryAddress/SubDepartment |Identification of a sub-division of a large organisation or building. |Max70Text | | |
-| StreetName |0..1 |OBRisk1/DeliveryAddress/StreetName |Name of a street or thoroughfare. |Max140Text | | |
-| BuildingNumber |0..1 |OBRisk1/DeliveryAddress/BuildingNumber |Number that identifies the position of a building on a street. |Max16Text | | |
-| BuildingName |0..1 |OBRisk1/DeliveryAddress/BuildingName |Name of a referenced building. |Max140Text | | |
-| Floor |0..1 |OBRisk1/DeliveryAddress/Floor|Number that identifies the level within a building. |Max70Text | | |
-| UnitNumber|0..1 |OBRisk1/DeliveryAddress/UnitNumber|Number that identifies the unit of a specific address |Max16Text | | |
-| Room |0..1 |OBRisk1/DeliveryAddress/Room|Information that locates and identifies a room to form part of an address. |Max70Text | | |
-| TownLocationName |0..1 |OBRisk1/DeliveryAddress/TownLocationName |Name of a built-up area, with defined boundaries, and a local government. |Max140Text | | |
-| DistrictName |0..1 |OBRisk1/DeliveryAddress/DistrictName |Number that of the regional area, known as a district, which forms part of an address. |Max140Text | | |
-| CareOf |0..1 |OBRisk1/DeliveryAddress/CareOf |The 'care of' address is used whenever sending mail to a person or organisation who does not actually live or work at the address. They will receive the mail for the individual. |Max140Text | | |
-| PostCode |0..1 |OBRisk1/DeliveryAddress/PostCode |Identifier consisting of a group of letters and/or numbers that is added to a postal address to assist the sorting of mail. |Max16Text | | |
-| PostBox |0..1 |OBRisk1/DeliveryAddress/PostBox |Numbered box in a post office, assigned to a person or organisation, where letters are kept until called for |Max16Text | | |
-| TownName |0..1 |OBRisk1/DeliveryAddress/TownName |Name of a built-up area, with defined boundaries, and a local government. |Max140Text | | |
-| CountrySubDivision |0..1 |OBRisk1/DeliveryAddress/CountrySubDivision |Identifies a subdivision of a country such as state, region, county. |Max35Text | | |
-| Country |0..1 |OBRisk1/DeliveryAddress/Country |Nation with its own government. |CountryCode | |^[A-Z]{2,2}$ |
-| AddressLine |0..7 |OBRisk1/DeliveryAddress/AddressLine |Information that locates and identifies a specific address, as defined by postal services, presented in free format text. |Max70Text | | | |
+| OBRisk2                          |            | OBRisk2                                    | The Risk section is sent by the initiating party to the ASPSP. It is used to specify additional details for risk scoring for Payments.                                                                                         | OBRisk2                            |                                                                                                                                                                                                                                                                                                                         |         |
+| PaymentContextCode               | 0..1       | OBRisk2/PaymentContextCode                 | Specifies the payment context | OBExternalPaymentContext1Code      | <br>BillingGoodsAndServicesInAdvance <br>BillingGoodsAndServicesInArrears <br>EcommerceMerchantInitiatedPayment <br>FaceToFacePointOfSale <br>TransferToSelf <br>TransferToThirdParty |         |
+| CategoryPurposeCode                | 0..1       | OBRisk2/CategoryPurposeCode                  |Enumeration to outline the purpose to the underlying purpose of the payment<br> BONU<br>CASH<br>CBLK<br>CCRD<br>CGWV<br>CIPC <br>CONC<br>CORT<br>DCRD<br>DIVI<br>DVPM<br>EPAY<br>FCDT <br>FCIN<br>FCOL<br>GOVT<br>GP2P<br>HEDG <br>ICCP <br>IDCP <br>INTC<br>INTE<br>LBOX<br>LOAN<br>MP2B<br>MP2P<br>OTHR <br>PENS<br>RPRE<br>RRCT<br>RVPM<br>SALA<br>SECU<br>SSBE <br>SUPP<br>SWEP<br>TAXS<br>TOPG<br>TRAD<br>TREA<br>VATX <br>VOST<br>WHLD<br>ZABA| OBCategoryPurposeCode                       |                                                                                                                                                                                                                                                                                                                         |         |
+| MerchantCategoryCode             | 0..1       | OBRisk2/MerchantCategoryCode               | Category code conform to ISO 18245, related to the type of services or goods the merchant provides for the transaction.                                                                                      | Min3Max4Text                       |                                                                                                                                                                                                                                                                                                                         |         |
+| MerchantCustomerIdentification   | 0..1       | OBRisk2/MerchantCustomerIdentification     | The unique customer identifier of the PSU with the merchant.                                                                                                                                                                   | Max70Text                          |                                                                                                                                                                                                                                                                                                                         |         |
+| ContractPresentIndicator        | 0..1       | OBRisk2/ContractPresentIndicator          | Indicates if Payee has a contractual relationship with the PISP.                                                                                                                                                               | Boolean                            |                                                                                                                                                                                                                                                                                                                         |         |
+| BeneficiaryPrepopulatedIndicator | 0..1       | OBRisk2/BeneficiaryPrepopulatedIndicator   | Indicates if PISP has immutably prepopulated payment details in for the PSU.                                                                                                                                                   | Boolean                            |                                                                                                                                                                                                                                                                                                                         |         |
+| PaymentPurposeCode |0..1 |OBRisk2/PaymentPurposeCode | For a full description see `ExternalPurpose1Code` [here](https://github.com/OpenBankingUK/External_Interal_CodeSets) |ExternalPurpose1Code | | |
+| BeneficiaryAccountType           | 0..1       | OBRisk2/BeneficiaryAccountType             | To be provided if the AccountType is known.                                                                                                                                                                                    | ExternalExtendedAccountType1Code | Personal<br>JointPersonal<br>PersonalSavingsAccount<br>Business<br>BusinessSavingsAccount<br>Charity<br>Collection<br>Corporate<br>Government<br>Ewallet<br>Investment<br>ISA<br>Premier<br>Wealth<br>Pension<br>                                                                                                       |         |
+| DeliveryAddress                  | 0..1       | OBRisk2/DeliveryAddress                    | Information that locates and identifies a specific address, as defined by postal services or in free format text.                                                                                                              | OBPostalAddress6               |                                                                                        
 
 ### OBDomesticVRPConsentRequest
 
@@ -354,11 +372,11 @@ The Risk block is a common class used in requests and responses
 
 | Name |Path |Definition | Type |
 | ---- |-----|---------- |------|
-| __Data__ (0..1) | `Data`
-| __Data. ReadRefundAccount__ (0..1) | `Data. ReadRefundAccount` | Indicates whether the `RefundAccount` object should be included in the response | Yes No
-| __ControlParameters__ (1..1) | `Data. ControlParameters` | The control parameters under which this VRP must operate | [OBDomesticVRPControlParameters](#OBDomesticVRPControlParameters)
-| __Initiation__ (1..1) | `Data. Initiation` | The parameters of the VRP consent that should remain unchanged for each payment under this VRP | [OBDomesticVRPInitiation](#OBDomesticVRPInitiation)
-| __Risk__ (1..1) | `Risk` | The consent payload is sent by the initiating party to the ASPSP. It is used to request a consent to move funds from the debtor account to a creditor. | OBRisk
+| __Data__ (0..1) | `Data`|
+| __Data. ReadRefundAccount__ (0..1) | `Data. ReadRefundAccount` | Indicates whether the `RefundAccount` object should be included in the response | Yes No|
+| __ControlParameters__ (1..1) | `Data. ControlParameters` | The control parameters under which this VRP must operate | [OBDomesticVRPControlParameters](#OBDomesticVRPControlParameters)|
+| __Initiation__ (1..1) | `Data. Initiation` | The parameters of the VRP consent that should remain unchanged for each payment under this VRP | [OBDomesticVRPInitiation](#OBDomesticVRPInitiation)|
+| __Risk__ (1..1) | `Risk` | The consent payload is sent by the initiating party to the ASPSP. It is used to request a consent to move funds from the debtor account to a creditor. | [OBRisk2](#obrisk2)|
 
 ### OBDomesticVRPConsentResponse
 
@@ -367,28 +385,20 @@ The Risk block is a common class used in requests and responses
 | Name |Path |Definition | Type |
 | ---- |-----|---------- |------|
 | __Data__ (1..1) | `Data`
-| __ConsentId__  (1..1)| `Data. ConsentId` | Unique identification as assigned by the ASPSP to uniquely identify the consent resource.      | Max128Text
-| __Data. ReadRefundAccount__ (0..1) | `Data. ReadRefundAccount` | Indicates whether the `RefundAccount` object should be included in the response | Yes No
-| __CreationDateTime__ (1..1)| `Data. CreationDateTime` | Date and time at which the resource was created.|ISODateTime
-| __StatusCode__ (0..1) | `Data. StatusCode` | Specifies the status of resource in code form.  |AUTH AWAU RJCT COND
-| __StatusUpdateDateTime__ (1..1)| `Data. StatusUpdateDateTime` |Date and time at which the resource status was updated.  | ISODateTime  
-| __StatusReason__ (0..*) | `Data. StatusReason` | Specifies the status reason.  |OBStatusReason
-| __StatusReasonCode__ (0..1) | `Data. StatusReason. *. StatusReasonCode` | Specifies the status reason in a code form. For a full description see `ExternalStatusReason1Code` [here](https://github.com/OpenBankingUK/External_Interal_CodeSets).  |ExternalStatusReason1Code
-| __StatusReasonDescription__ (0..1) | `Data. StatusReason. *. StatusReasonDescription` | Description supporting the StatusReasonCode.  |String
+| __ConsentId__  (1..1)| `Data. ConsentId` | Unique identification as assigned by the ASPSP to uniquely identify the consent resource.      | Max128Text|
+| __ReadRefundAccount__ (0..1) | `Data. ReadRefundAccount` | Indicates whether the `RefundAccount` object should be included in the response | Yes No|
+| __CreationDateTime__ (1..1)| `Data. CreationDateTime` | Date and time at which the resource was created.|ISODateTime|
+| __StatusCode__ (1..1) | `Data. StatusCode` | Specifies the status of resource in code form.  |AUTH AWAU RJCT CANC EXPD |
+| __StatusUpdateDateTime__ (1..1)| `Data. StatusUpdateDateTime` |Date and time at which the resource status was updated.  | ISODateTime  |
+| __StatusReason__ (0..*) | `Data. StatusReason` | An array of StatusReasonCode |OBStatusReason |
+| __StatusReasonCode__ (0..1) | `Data. StatusReason. StatusReasonCode` | Specifies the status reason in a code form. For a full description see `ExternalStatusReason1Code` [here](https://github.com/OpenBankingUK/External_Interal_CodeSets).  |ExternalStatusReason1Code |
+| __StatusReasonDescription__ (0..1) | `Data. StatusReason. StatusReasonDescription` | Description supporting the StatusReasonCode.  |Max500text|
 | __ControlParameters__ (1..1) | `Data. ControlParameters` | The control parameters under which this VRP must operate | [OBDomesticVRPControlParameters](#OBDomesticVRPControlParameters)
 | __Initiation__ (1..1) | `Data. Initiation` | The parameters of the VRP consent that should remain unchanged for each payment under this VRP |  [OBDomesticVRPInitiation](#OBDomesticVRPInitiation)
-| __UltimateCreditor__ (0..1) | `Data. Initiation. UltimateCreditor` |Set of elements used to identify a person or an organisation. | OBPartyIdentification43 | | |
-| __SchemeName__ (0..1) | `Data. Initiation. UltimateCreditor. SchemaName` |Name of the identification scheme, in a coded form as published in an external list. |OBExternalAccountIdentification4Code | | |
-| __Identification__ (0..1) | `Data. Initiation. UltimateCreditor. Identification` |Identification assigned by an institution to identify an account. This identification is known by the account owner. |Max256Text | | |
-| __Name__ (0..1) | `Data. Initiation. UltimateCreditor. Name` |The account name is the name or names of the account owner(s) represented at an account level, as displayed by the ASPSP's online channels. Note, the account name is not the product name or the nickname of the account. |Max350Text | | |
-| __LEI__ (0..1) | `Data. Initiation. UltimateCreditor. LEI` | Legal Entity Identification by which a party is known and which is usually used to identify that party. |Max20Text | | |
-| __UltimateDebtor__ (0..1) | `Data. Initiation. UltimateDebtor` |Set of elements used to identify a person or an organisation. | OBPartyIdentification43 | | |
-| __SchemeName__ (0..1) | `Data. Initiation. UltimateDebtor. SchemaName` |Name of the identification scheme, in a coded form as published in an external list. |OBExternalAccountIdentification4Code | | |
-| __Identification__ (0..1) | `Data. Initiation. UltimateDebtor. Identification` |Identification assigned by an institution to identify an account. This identification is known by the account owner. |Max256Text | | |
-| __Name__ (0..1) | `Data. Initiation. UltimateDebtor. Name` |The account name is the name or names of the account owner(s) represented at an account level, as displayed by the ASPSP's online channels. Note, the account name is not the product name or the nickname of the account. |Max350Text | | |
-| __LEI__ (0..1) | `Data. Initiation. UltimateDebtor. LEI` | Legal Entity Identification 
-| __DebtorAccount__ (0..1) | `Data.DebtorAccount` | The approved DebtorAccount that the payment can be made from. THe value must be populated for GET responses once the consent is approved. | OBCashAccountDebtorWithName
-| __Risk__ (1..1) | `Risk` | The consent payload is sent by the initiating party to the ASPSP. It is used to request a consent to move funds from the debtor account to a creditor. | OBRisk
+| __DebtorAccount__ (0..1) | `Data.DebtorAccount` | The approved DebtorAccount that the payment can be made from. THe value must be populated for GET responses once the consent is approved. | OBCashAccountDebtorWithName|
+| __Risk__ (1..1) | `Risk` | The consent payload is sent by the initiating party to the ASPSP. It is used to request a consent to move funds from the debtor account to a creditor. | [OBRisk2](#obrisk2)|
+
+
 
 ### OBVRPFundsConfirmationRequest
 

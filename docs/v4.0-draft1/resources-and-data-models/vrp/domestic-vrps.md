@@ -57,17 +57,9 @@ The `domestic-vrps` resource that is created successfully must have one of the f
 
 | StatusCode |
 | ------ |
+| RCVD |
 | PDNG |
 | ACTC |
-| PATC |
-| ACCP |
-| ACFC |
-| ACSP |
-| ACWC |
-| ACSC |
-| ACWP |
-| ACCC |
-| BLCK |
 | RJCT |
 
 ### GET /domestic-vrps/{DomesticVRPId}
@@ -78,9 +70,9 @@ The domestic-vrp resource must have one of the following PaymentStatusCode code-
 
 | StatusCode |
 | ------ |
+| RCVD |
 | PDNG |
 | ACTC |
-| PATC |
 | ACCP |
 | ACFC |
 | ACSP |
@@ -99,9 +91,9 @@ The API must return one of the following StatusCodes:
 
 | StatusCode |
 | ------ |
+| RCVD |
 | PDNG |
 | ACTC |
-| PATC |
 | ACCP |
 | ACFC |
 | ACSP |
@@ -118,6 +110,15 @@ The API must return one of the following StatusCodes:
 
 The state model for the `domestic-vrps` resource follows the behavior and definitions for the ISO 20022 PaymentStatusCode code-set.
 
+__Note: Multi-authorisation is not currently supported in VRP.__
+
+__Payment order state model key:__
+| Colour (Style) | Description |
+| --- | --- |
+| Green (Bold) | Mandatory |
+| Orange (Italic) | Optional, but recommended |
+
+
 ![Payment Order Status](./images/PIS_PO_Statuses.png)
 
 
@@ -129,7 +130,7 @@ The state model for the `domestic-vrps` resource follows the behavior and defini
 
 | Name |Path |Definition | Type |
 | ---- |-----|---------- |------|
-| __InstructionIdentification__ (1..1) | `Initiation. InstructionIdentification` |Unique identification as assigned by an instructing party for an instructed party to unambiguously identify the instruction. Usage: the instruction identification is a point to point reference that can be used between the instructing party and the instructed party to refer to the individual instruction. It can be included in several messages related to the instruction. |Max35Text
+| __InstructionIdentification__ (1..1) | `InstructionIdentification` |Unique identification as assigned by an instructing party for an instructed party to unambiguously identify the instruction. Usage: the instruction identification is a point to point reference that can be used between the instructing party and the instructed party to refer to the individual instruction. It can be included in several messages related to the instruction. |Max35Text
 | __EndToEndIdentification__ (1..1) | `EndToEndIdentification` |Unique identification assigned by the initiating party to unambiguously identify the transaction. This identification is passed on, unchanged, throughout the entire end-to-end chain. Usage: The end-to-end identification can be used for reconciliation or to link tasks relating to the transaction. It can be included in several messages related to the transaction. OB: The Faster Payments Scheme can only access 31 characters for the EndToEndIdentification field. |Max35Text
 | __RemittanceInformation__ (0..1) | `RemittanceInformation` |Information supplied to enable the matching of an entry with the items that the transfer is intended to settle, such as commercial invoices in an accounts' receivable system. | OBRemittanceInformation1 
 | __Structured__ (0..*) |`RemittanceInformation. Structured` |Information supplied to enable the matching/reconciliation of an entry with the items that the payment is intended to settle, such as commercial invoices in an accounts' receivable system, in an structured form. |OBRemittanceInformationStructured
@@ -140,13 +141,20 @@ The state model for the `domestic-vrps` resource follows the behavior and defini
 | __Invoicer__ (0..1) |`RemittanceInformation. Structured. Invoicee`  | |OBInvoicee| | |
 | __TaxRemittance__ (0..1) |`RemittanceInformation. Structured. TaxRemittance` | |OBTaxRemittance| | |
 | __AdditionalRemittanceInformation__ (0..3)|`RemittanceInformation. Structured. AdditionalRemittanceInformation`|
-| __Unstructured__ |0..* |`RemittanceInformation. Unstructured.` |Information supplied to enable the matching/reconciliation of an entry with the items that the payment is intended to settle, such as commercial invoices in an accounts' receivable system, in an unstructured form. |Max140Text
-| __LocalInstrument__ (0..1) | `LocalInstrument` |User community specific instrument. Usage: This element is used to specify a local instrument, local clearing option and/or further qualify the service or service level. |OBExternalLocalInstrument1Code
+| __Unstructured__ |0..* |`RemittanceInformation. Unstructured.` |Information supplied to enable the matching/reconciliation of an entry with the items that the payment is intended to settle, such as commercial invoices in an accounts' receivable system, in an unstructured form. |Max140Text |
+| __LocalInstrument__ (0..1) | `LocalInstrument` |User community specific instrument. Usage: This element is used to specify a local instrument, local clearing option and/or further qualify the service or service level. |OBExternalLocalInstrument1Code |
 | __InstructedAmount__ (1..1) | `InstructedAmount` |Amount of money to be moved between the debtor and creditor, before deduction of charges, expressed in the currency as ordered by the initiating party. Usage: This amount has to be transported unchanged through the transaction chain. | OBActiveOrHistoricCurrencyAndAmount
 | __Amount__ (1..1) |`InstructedAmount. Amount` |A number of monetary units specified in an active currency where the unit of currency is explicit and compliant with ISO 4217. |OBActiveCurrencyAndAmount_SimpleType | `^\d{1,13}$|^\d{1,13}\.\d{1,5}$`
 | __Currency__ (1..1) | `InstructedAmount. Currency` |A code allocated to a currency by a Maintenance Agency under an international identification scheme, as described in the latest edition of the international standard ISO 4217 "Codes for the representation of currencies and funds". |ActiveOrHistoricCurrencyCode | `^[A-Z]{3,3}$`
 | __CreditorAgent__ (0..1) | `CreditorAgent` | Financial institution servicing an account for the creditor.     | OBBranchAndFinancialInstitutionIdentification6
-| __CreditorAccount__ (1..1) | `CreditorAccount`   |Unambiguous identification of the account of the creditor to which a credit entry will be posted as a result of the payment transaction.       |OBCashAccountCreditor3
+| __CreditorAccount__ (1..1) | `CreditorAccount`   |Unambiguous identification of the account of the creditor to which a credit entry will be posted as a result of the payment transaction.       |OBCashAccountCreditor3|
+| __CreditorPostalAddress__ (0..1)| `CreditorPostalAddress` |Information that locates and identifies a specific address, as defined by postal services.| OBPostalAddress6 |
+| __UltimateCreditor__ (0..1)| `UltimateCreditor` | Ultimate party to which an amount of money is due. | |
+| __SchemeName__ (0..1) | `UltimateCreditor. SchemeName` |Name of the identification scheme, in a coded form as published in an external list. |OBExternalFinancialInstitutionIdentification4Code
+| __Identification__ (0..1) | `UltimateCreditor. Identification` |Unique and unambiguous identification of a financial institution or a branch of a financial institution.  | Max35Text  
+| __Name__ (0..1) | `UltimateCreditor. Name` | Name by which an agent is known and which is usually used to identify that agent. | Max140Text
+| __LEI__ (0..1) | `UltimateCreditor. LEI` | Legal entity identification as an alternate identification for a party. <br>Legal Entity Identifier is a code allocated to a party as described in ISO 17442 "Financial Services - Legal Entity Identifier (LEI)". | Max20Text |
+| __PostalAddress__ (0..1) | `UltimateCreditor. PostalAddress` |Information that locates and identifies a specific address, as defined by postal services.| OBPostalAddress6 |
 | __SupplementaryData__ (0..1) | `SupplementaryData` | Additional information that can not be captured in the structured fields and/or any other specific block  | *
 
 ### OBDomesticVRPRequest
@@ -176,7 +184,7 @@ The state model for the `domestic-vrps` resource follows the behavior and defini
 | __Amount__ (1..1)                    | `Data. RegulatoryReporting. Authority. Details. Amount. Amount`                          | A number of monetary units specified in an active currency where the unit of currency is explicit and compliant with ISO 4217. |                                               |
 | __Currency__ (1..1)                    | `Data. RegulatoryReporting. Authority. Details. Amount. Currency`                          | A code allocated to a currency by a Maintenance Agency under an international identification scheme, as described in the latest edition of the international standard ISO 4217 "Codes for the representation of currencies and funds". |ActiveOrHistoricCurrencyCode | ^[A-Z]{3,3}$                                                |
 | __Information__ (0..*)                    | `Data. RegulatoryReporting. Authority. Details.  Information`                          | Additional details that cater for specific domestic regulatory requirements. |ActiveOrHistoricCurrencyCode | Max35Text                                                |
-| __Risk__ (1..1)                    | `Risk`                          | The risk block for this payment. This must match the risk block for the corresponding Domestic VRP consent. | OBRisk1                                               |
+| __Risk__ (1..1)                    | `Risk`                          | The risk block for this payment. This must match the risk block for the corresponding Domestic VRP consent. | OBRisk2                                               |
 
 ### OBDomesticVRPResponse
 
@@ -188,28 +196,18 @@ The state model for the `domestic-vrps` resource follows the behavior and defini
 | __DomesticVRPId__ (1..1)              | `Data. DomesticVRPId`              | OB: Unique identification as assigned by the ASPSP to uniquely identify the domestic payment resource.                                                                                                       | Max40Text                                                                                                                         |
 | __ConsentId__ (1..1)                  | `Data. ConsentId`                  | Identifier for the Domestic VRP Consent that this payment is made under                                                                                                                                      | Max128Text                                                                                                                        |
 | __CreationDateTime__ (1..1)           | `Data. CreationDateTime`           | Date and time at which the message was created.                                                                                                                                                              | ISODateTime                                                                                                                       |
-| __StatusCode__ (1..1)                     | `Data. StatusCode`                     | Specifies the status of the payment information group.                                                                                                                                                       |  PDNG ACTC PATC ACCP ACFC ACSP ACWC ACSC ACWP ACCC BLCK RJCT  |
+| __StatusCode__ (1..1)                     | `Data. StatusCode`                     | Specifies the status of the payment information group.                                                                                                                                                       |  RCVD PDNG ACTC ACCP ACFC ACSP ACWC ACSC ACWP ACCC BLCK RJCT  |
 | __StatusUpdateDateTime__ (1..1)       | `Data. StatusUpdateDateTime`       | Date and time at which the resource StatusCode was updated.                                                                                                                                                      | ISODateTime                                                                                                                       |
-| __StatusReason__ (0..*)               | `Data. StatusReason`               | Specifies the status reason.                                                                                                                      | Array                                                                                     |
-| __StatusReasonCode__ (0..1)| `Data. StatusReason. *. StatusReasonCode` | Specifies the status reason in a code form. For a full description see `ExternalStatusReason1Code` [here](https://github.com/OpenBankingUK/External_Interal_CodeSets). | ExternalStatusReason1Code |
-| __StatusReasonDescription__ (0..1)    | `Data.StatusReason. *. StatusReasonDescription`    | Description supporting the StatusReasonCode                                                                                                                                                         | Max256Text                                                                                                                        |
-| __Path__ (0..1)| `Data. StatusReason. *. Path` |Recommended but optional reference to JSON path if relevant to the StatusReasonCode| Max500Text| 
+| __StatusReason__ (0..*)               | `Data. StatusReason`               | Array of StatusReasonCode.                                                                                                                      | Array                                                                                     |
+| __StatusReasonCode__ (0..1)| `Data. StatusReason. StatusReasonCode` | Specifies the status reason in a code form. For a full description see `ExternalStatusReason1Code` [here](https://github.com/OpenBankingUK/External_Interal_CodeSets). | ExternalStatusReason1Code |
+| __StatusReasonDescription__ (0..1)    | `Data.StatusReason. StatusReasonDescription`    | Description supporting the StatusReasonCode                                                                                                                                                         | Max256Text                                                                                                                        |
+| __Path__ (0..1)| `Data. StatusReason. Path` |Path is optional but relevant when the status reason refers to an object/field and hence conditional to provide JSON path.| Max500Text| 
 | __ExpectedExecutionDateTime__ (0..1)  | `Data. ExpectedExecutionDateTime`  | Expected execution date and time for the payment resource.                                                                                                                                                   | ISODateTime                                                                                                                       |
 | __ExpectedSettlementDateTime__ (0..1) | `Data. ExpectedSettlementDateTime` | Expected settlement date and time for the payment resource.                                                                                                                                                  | ISODateTime                                                                                                                       |
 | __Refund__ (0..1)                     | `Data. Refund`                     | Unambiguous identification of the refund account to which a refund will be made as a result of the transaction. This object is populated only when `Data. ReadRefundAccount` is set to `Yes` in the consent. | OBDomesticRefundAccount1                                                                                                          |
 | __Charges__ (0..n)                    | `Data. Charges`                    | Set of elements used to provide details of a charge for the payment initiation.                                                                                                                              | OBCharge2                                                                                                                         |
 | __Initiation__ (1..1)                 | `Data. Initiation`                 | The parameters of the VRP consent that should remain unchanged for each payment under this VRP.                                                                                                              | OBDomesticVRPInitiation                                                                                                           |
-| __Instruction__ (1..1)                | `Data. Instruction`                | Specific instructions for this particular payment within the VRP consent                                                                                                                                     | OBDomesticVRPInstruction
-  | __UltimateCreditor__ (0..1) | `Data. Instruction. UltimateCreditor` |Set of elements used to identify a person or an organisation. | OBPartyIdentification43 | | |                                                                                                        |
-| __SchemeName__ (0..1) | `Data. Instruction. UltimateCreditor. SchemaName` |Name of the identification scheme, in a coded form as published in an external list. |OBExternalAccountIdentification4Code | | |
-| __Identification__ (0..1) | `Data. Instruction. UltimateCreditor. Identification` |Identification assigned by an institution to identify an account. This identification is known by the account owner. |Max256Text | | |
-| __Name__ (0..1) | `Data. Instruction. UltimateCreditor. Name` |The account name is the name or names of the account owner(s) represented at an account level, as displayed by the ASPSP's online channels. Note, the account name is not the product name or the nickname of the account. |Max350Text | | |
-| __LEI__ (0..1) | `Data. Instruction. UltimateCreditor. LEI` | Legal Entity Identification by which a party is known and which is usually used to identify that party. |Max20Text | | |
-| __UltimateDebtor__ (0..1) | `Data. Instruction. UltimateDebtor` |Set of elements used to identify a person or an organisation. | OBPartyIdentification43 | | |
-| __SchemeName__ (0..1) | `Data. Instruction. UltimateDebtor. SchemaName` |Name of the identification scheme, in a coded form as published in an external list. |OBExternalAccountIdentification4Code | | |
-| __Identification__ (0..1) | `Data. Instruction. UltimateDebtor. Identification` |Identification assigned by an institution to identify an account. This identification is known by the account owner. |Max256Text | | |
-| __Name__ (0..1) | `Data. Instruction. UltimateDebtor. Name` |The account name is the name or names of the account owner(s) represented at an account level, as displayed by the ASPSP's online channels. Note, the account name is not the product name or the nickname of the account. |Max350Text | | |
-| __LEI__ (0..1) | `Data. Instruction. UltimateDebtor. LEI` | Legal Entity Identification by which a party is known and which is usually used to identify that party. |Max20Text | | |
+| __Instruction__ (1..1)                | `Data. Instruction`                | Specific instructions for this particular payment within the VRP consent                                                                                                                                     | OBDomesticVRPInstruction|
 | __DebtorAccount__ (0..1)              | `Data.DebtorAccount`               | The approved DebtorAccount that the payment was made from.                                                                                                                                                   | OBCashAccountDebtorWithName                                                                                                       |
 
 ### OBDomesticVRPDetails
@@ -221,11 +219,11 @@ The state model for the `domestic-vrps` resource follows the behavior and defini
 | __Data__ (1..1) | `Data`
 | __LocalInstrument__ (0..1) | `Data. LocalInstrument` |User community specific instrument.  Usage: This element is used to specify a local instrument, local clearing option and/or further qualify the service or service level. |OBExternalLocalInstrument1Code|
 | __PaymentTransactionId__ (1..1) | `Data. PaymentTransactionId` |Unique identifier for the transaction within an servicing institution. This identifier is both unique and immutable. |Max210Text|
-| __StatusCode__ (1..1) |`Data. StatusCode` |Status of a transfer, as assigned by the transaction administrator. |Values:<br>RCVD<br>PDNG<br>ACTC<br>ACFC<br>ACSP<br>ACSC<br>ACWP<br>ACCC<br>BLCK<br>CANC<br>RJCT<br><br>([See External codeset list](https://github.com/OpenBankingUK/External_Interal_CodeSets))| Max4Text|
+| __StatusCode__ (1..1) |`Data. StatusCode` |Status of a transfer, as assigned by the transaction administrator. |Values:<br>RCVD PDNG ACTC ACCP ACFC ACSP ACWC ACSC ACWP ACCC BLCK RJCT<br><br>(See `ExternalPaymentTransactionStatus1Code` in [External codeset list](https://github.com/OpenBankingUK/External_Interal_CodeSets))| Max4Text|
 | __StatusUpdateDateTime__ (1..1)       | `Data. StatusUpdateDateTime`       | Date and time at which the resource StatusCode was updated. | ISODateTime |
 | __StatusDetail__ (0..*) | `Data. StatusDetail` |Array of StatusCodes| Array|
 | __StatusCode__ (1..1) | `Data. StatusDetail. StatusCode` |Status of a transfer, as assigned by the transaction administrator. |Max4Text|
-| __StatusReasonCode__ (0..1) | `Data. StatusDetail. StatusReason` |Reason code for the Status Code update| Enum ([See External codeset list](https://github.com/OpenBankingUK/External_Interal_CodeSets))|
+| __StatusReasonCode__ (0..1) | `Data. StatusDetail. StatusReason` |Reason code for the Status Code update| Specifies the status reason in a code form. For a full description see `ExternalStatusReason1Code` [here](https://github.com/OpenBankingUK/|
 | __StatusReasonDescription__ (0..1) | `Data. StatusDetail. StatusReasonDescription` |Reason provided for the status of a transfer. |Max256Text |
 | __StatusUpdateDateTime__ (1..1)       | `Data. StatusDetail. StatusUpdateDateTime`       | Date and time at which the resource StatusCode was updated. | ISODateTime |
 
