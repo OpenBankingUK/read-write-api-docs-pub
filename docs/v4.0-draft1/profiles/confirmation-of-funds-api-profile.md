@@ -23,6 +23,8 @@
     - [Funds Confirmation Consent Status](#funds-confirmation-consent-status)
     - [Consent Re-authentication](#consent-re-authentication)
   - [Consent Revocation](#consent-revocation)
+- [Data Model](#data-model)
+  - [Reused Classes](#reused-classes)
 
 ## Overview
 
@@ -366,3 +368,17 @@ The PSU may request the CBPII to revoke consent that it has authorised. If conse
 
 - The CBPII **must** call the **DELETE** operation on the funds-confirmation-consent resource as soon as it practically possible to indicate to the ASPSP that the PSU has revoked consent.
 - The CBPII **must** cease to access the APIs at that point.
+
+## Data Model
+
+### Reused Classes
+
+#### OBProxy1
+
+##### OBProxy1 Data Dictionary
+| Name | Occurrence | XPath | EnhancedDefinition | Class | Codes |
+| --- | --- | --- | --- | --- | --- | 
+| OBProxy1 | | |Specifies an alternate assumed name for the identification of the account. |OBProxy1 | |
+| Identification |1..1 |OBProxy1/Identification|  Identification used to indicate the account identification under another specified name. | Max2048Text| |
+| Type |0..1 |OBProxy1/Type| Type of the proxy identification. |Max35Text | |
+| Code |1..1 |OBProxy1/Code| Specifies the external proxy account type code, as published in the proxy account type external code set. |OBExternalProxyAccountType1Code | For more information see `ExternalProxyAccountType1Code` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets)|
