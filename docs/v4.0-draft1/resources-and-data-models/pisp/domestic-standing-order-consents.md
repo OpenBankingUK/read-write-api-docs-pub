@@ -16,7 +16,7 @@
         - [Frequency Examples](#frequency-examples)
       - [Data Dictionary](#data-dictionary)
     - [OBRemittanceInformation1](#obremittanceinformation1)
-    - [OBMandateRelatedInformation1](#OBMandateRelatedInformation1)
+    - [OBMandateRelatedInformation1](#obmandaterelatedinformation1)
   - [Domestic Standing Order Consent - Request](#domestic-standing-order-consent-request)
     - [UML Diagram](#uml-diagram-2)
     - [Notes](#notes-2)

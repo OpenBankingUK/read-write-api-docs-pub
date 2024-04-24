@@ -12,7 +12,7 @@
   - [Permission Codes](#permission-codes)
   - [Data Dictionary](#data-dictionary)
   - [Reused Classes](#reused-classes)
-    - [OBMandateRelatedInformation1](#OBMandateRelatedInformation1)
+    - [OBMandateRelatedInformation1](#obmandaterelatedinformation1)
 - [Usage Examples](#usage-examples)
   - [Specific Account](#specific-account)
     - [Get Accounts Standing Orders Request](#get-accounts-standing-orders-request)
