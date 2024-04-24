@@ -127,8 +127,8 @@ Further mapping guidance has been provided to ensure that differences are unders
 The API uses two status codes that serve two different purposes:
 
 - The HTTP Status Code reflects the outcome of the API call (the HTTP operation on the resource).
-- The Status field for the payment-order consent reflects the status of the PSU consent authorisation.
-- The Status field for the payment-order resource reflects the status of the payment-order initiation or execution.
+- The Status Code field for the payment-order consent reflects the status of the PSU consent authorisation.
+- The Status Code field for the payment-order resource reflects the status of the payment-order initiation or execution.
 
 ## Basics
 
