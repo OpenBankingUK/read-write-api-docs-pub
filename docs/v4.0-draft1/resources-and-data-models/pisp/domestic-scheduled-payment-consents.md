@@ -166,7 +166,7 @@ Account Identification field usage:
 | Code |1..1 |OBDomesticScheduled2/CreditorAccount/Proxy/Code| Specifies the external proxy account type code, as published in the proxy account type external code set.<br> For more information see `ExternalProxyAccountType1Code` [here](https://github.com/OpenBankingUK/External_Interal_CodeSets) |OBExternalProxyAccountType1Code | | |
 | Proprietary |1..1 |OBDomesticScheduled2/CreditorAccount/Proxy/Proprietary| The owner of the proxy account |MaxText70 | | |
 | CreditorPostalAddress |0..1 |OBDomesticScheduled2/CreditorPostalAddress |Information that locates and identifies a specific address, as defined by postal services. |OBPostalAddress6 | | |
-| AddressType |0..1 |OBDomesticScheduled2/CreditorPostalAddress/AddressType |Identifies the nature of the postal address. <br>For a full description see `OBAddressType2Code` [here](https://github.com/OpenBankingUK/External_Interal_CodeSets). | OBAddressType2Code | | |
+| AddressType |0..1 |OBDomesticScheduled2/CreditorPostalAddress/AddressType |Identifies the nature of the postal address. <br>For a full description see `OBAddressType2Code` [here](https://github.com/OpenBankingUK/External_Interal_CodeSets). |OBAddressType2Code ||
 | Department |0..1 |OBDomesticScheduled2/CreditorPostalAddress/Department |Identification of a division of a large organisation or building. |Max70Text | | |
 | SubDepartment |0..1 |OBDomesticScheduled2/CreditorPostalAddress/SubDepartment |Identification of a sub-division of a large organisation or building. |Max70Text | | |
 | StreetName |0..1 |OBDomesticScheduled2/CreditorPostalAddress/StreetName |Name of a street or thoroughfare. |Max140Text | | |
