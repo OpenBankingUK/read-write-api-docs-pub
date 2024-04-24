@@ -70,6 +70,8 @@ As a special case and in order to minimise disruption between versions of the st
 
 In ASPSP generated responses, however, an ASPSP **must** always respond with fully namespaced values.
 
+A comprehesnive list of enumerations, from both OBL and ISO 20022, have been catalogued and made available [here](https://github.com/OpenBankingUK/External_Interal_CodeSets).  ASPSPs and TPPs should reference this repository for an up-to-date list of enums and values.
+
 ## Common Namespaced Enumerations
 
 The following namespaced enumerations are used across all the standards.

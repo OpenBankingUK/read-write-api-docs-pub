@@ -127,8 +127,8 @@ Further mapping guidance has been provided to ensure that differences are unders
 The API uses two status codes that serve two different purposes:
 
 - The HTTP Status Code reflects the outcome of the API call (the HTTP operation on the resource).
-- The Status field for the payment-order consent reflects the status of the PSU consent authorisation.
-- The Status field for the payment-order resource reflects the status of the payment-order initiation or execution.
+- The Status Code field for the payment-order consent reflects the status of the PSU consent authorisation.
+- The Status Code field for the payment-order resource reflects the status of the payment-order initiation or execution.
 
 ## Basics
 
@@ -194,43 +194,40 @@ Step 6: Get Consent/Payment-Order/Payment-Details Status
 
 #### Sequence Diagram
 
-![](./images/Payment-Flow.21.04.24.png)
+![](./images/DomesticPaymentFlow.png)
 
 <details>
   <summary>Diagram source</summary>
 
 ```
-participant PSU
-participant PISP
-participant ASPSP Authorisation Server
-participant ASPSP Resource Server
+participant PSU #lightyellow
+participant PISP #lightblue
+participant ASPSP Authorisation Server #lightcyan
+participant ASPSP Resource Server #lightcyan
 
-note over PSU, ASPSP Resource Server
-Step 1: Agree Payment-Order Initiation
-end note
+note over PSU, ASPSP Resource Server #lightyellow:Step 1: Agree Payment-Order Initiation
+
 PSU -> PISP: Agree payment-order initiation request
 
-note over PSU, ASPSP Resource Server
- Setup Payment-Order Consent
-end note
+note over PSU, ASPSP Resource Server #lightyellow:Setup Payment-Order Consent
+
 PISP <-> ASPSP Authorisation Server: Establish TLS 1.2 MA
 PISP -> ASPSP Authorisation Server: Initiate Client Credentials Grant
 ASPSP Authorisation Server -> PISP: access-token
 PISP <-> ASPSP Resource Server: Establish TLS 1.2 MA
 PISP -> ASPSP Resource Server: POST /payment-order-consents
-state over ASPSP Resource Server: Consent Status: AwaitingAuthorisation
+rbox over ASPSP Resource Server #lightgreen: Consent Status: AWAU 
 ASPSP Resource Server -> PISP: HTTP 201 (Created),  ConsentId
 
-note over PSU, ASPSP Resource Server
- Step 3: Authorize Consent
-end note
+note over PSU, ASPSP Resource Server #lightyellow:Step 3: Authorize Consent
+
 alt Redirection (Using authorization code grant)
         PISP -> PSU: HTTP 302 (Found), Redirect (ConsentId)
         PSU -> ASPSP Authorisation Server: Follow redirect (ConsentId)
         PSU <-> ASPSP Authorisation Server: authenticate
         PSU <-> ASPSP Authorisation Server: SCA if required
         PSU <-> ASPSP Authorisation Server: Select debtor account if required
-        state over ASPSP Resource Server: Consent Status: Authorised
+        rbox over ASPSP Resource Server #lightgreen: Consent Status: AUTH
         ASPSP Authorisation Server -> PSU: HTTP 302 (Found), Redirect (authorization-code)
         PSU -> PISP: Follow redirect (authorization-code)
         PISP <-> ASPSP Authorisation Server: Establish TLS 1.2 MA
@@ -244,7 +241,7 @@ else Decoupled (Using CIBA)
         PSU <-> ASPSP Authorisation Server: authenticate
         PSU <-> ASPSP Authorisation Server: SCA if required
         PSU <-> ASPSP Authorisation Server: select accounts
-        state over ASPSP Resource Server: Consent Status: Authorised
+        rbox over ASPSP Resource Server #lightgreen: Consent Status: AUTH
 
         alt Using callback
                 ASPSP Authorisation Server -> PISP: Callback (authorization-code)
@@ -259,9 +256,7 @@ else Decoupled (Using CIBA)
 end alt
 
 
-note over PSU, ASPSP Resource Server
-Step 4: Confirm Funds (Domestic and International Single Immediate Payments Only)
-end note
+note over PSU, ASPSP Resource Server #lightyellow:Step 4: Confirm Funds (Domestic and International Single Immediate Payments Only)
 
 opt
 PISP <-> ASPSP Resource Server: Establish TLS 1.2 MA
@@ -270,45 +265,78 @@ ASPSP Resource Server -> PISP: HTTP 200 (OK) funds-confirmation resource
 
 end opt
 
-note over PSU, ASPSP Resource Server
-Step 5: Create Payment-Order
-end note
+note over PSU, ASPSP Resource Server #lightyellow:Step 5: Create Payment-Order
+
 PISP <-> ASPSP Resource Server: Establish TLS 1.2 MA
 PISP -> ASPSP Resource Server: POST /payment-orders
-state over ASPSP Resource Server: Consent Status: Consumed
+alt Multiauthorise Payment Order
+rbox over ASPSP Resource Server #lightgreen: Multiauthoriation Status: AWAF
+rbox over ASPSP Resource Server #lightgreen: Multiauthoriation Status: AUTH
+end alt
+rbox over ASPSP Resource Server #lightgreen: Consent Status: COND
 alt Immediate Payment
-state over ASPSP Resource Server: Payment Status: Pending
-state over ASPSP Resource Server: Payment Status: AcceptedSettlementInProcess
-state over ASPSP Resource Server: Payment Status: AcceptedSettlementComplete
-else Standing Order or Future Dated Payment
-state over ASPSP Resource Server: Payment Status: InitiationPending
-state over ASPSP Resource Server: Payment Status: InitiationCompleted
+rbox over ASPSP Resource Server #lightgreen: Payment Status: RCVD
 end alt
 ASPSP Resource Server -> PISP: HTTP 201 (Created), Payment-Order Id
 
-note over PSU, ASPSP Resource Server
-Step 6: Get Payment-Order-Consent/Payment-Order/Payment-details Status
-end note
+note over PSU, ASPSP Resource Server #lightyellow:Step 6: Get Payment-Order-Consent/Payment-Order/Payment-details Status
 
 opt payment-order-consent
 PISP <-> ASPSP Resource Server: Establish TLS 1.2 MA
 PISP -> ASPSP Resource Server: GET /payment-order-consents/{ConsentId}
+alt Immediate
+rbox over ASPSP Resource Server #lightgreen: Consent Status: AWAU
+rbox over ASPSP Resource Server #lightgreen: Consent Status: AUTH
+rbox over ASPSP Resource Server #lightgreen: Consent Status: RJCT
+end alt
 ASPSP Resource Server -> PISP: HTTP 200 (OK) payment-order-consent resource
 end opt
 
 opt payment-order
 PISP <-> ASPSP Resource Server: Establish TLS 1.2 MA
 PISP -> ASPSP Resource Server: GET /payment-orders/{Payment-Order Id}
+alt Immediate
+rbox over ASPSP Resource Server #lightgreen: Payment Status: RCVD
+rbox over ASPSP Resource Server #orange: Payment Status: PDNG
+rbox over ASPSP Resource Server #orange: Payment Status: ACTC or PATC
+rbox over ASPSP Resource Server #orange: Payment Status: ACCP
+rbox over ASPSP Resource Server #orange: Payment Status: ACFC
+rbox over ASPSP Resource Server #lightgreen: Payment Status: ACSP
+rbox over ASPSP Resource Server #orange: Payment Status: ACWC
+rbox over ASPSP Resource Server #lightgreen: Payment Status: ACSC
+rbox over ASPSP Resource Server #orange: Payment Status: BLCK
+rbox over ASPSP Resource Server #lightgreen: Payment Status: ACWP
+rbox over ASPSP Resource Server #lightgreen: Payment Status: ACCC
+rbox over ASPSP Resource Server #lightgreen: Payment Status: RJCT
+end alt
+alt Additional for FDP and SO 
+rbox over ASPSP Resource Server #orange: Payment Status: CANC
+end alt
 ASPSP Resource Server -> PISP: HTTP 200 (OK) payment-order resource
 end opt
 
 opt payment-details
 PISP <-> ASPSP Resource Server: Establish TLS 1.2 MA
 PISP -> ASPSP Resource Server: GET /payment-orders/{Payment-Order Id}/payment-details
+alt Immediate
+rbox over ASPSP Resource Server #lightgreen: Payment Status: RCVD
+rbox over ASPSP Resource Server #orange: Payment Status: PDNG
+rbox over ASPSP Resource Server #orange: Payment Status: ACTC or PATC
+rbox over ASPSP Resource Server #orange: Payment Status: ACCP
+rbox over ASPSP Resource Server #orange: Payment Status: ACFC
+rbox over ASPSP Resource Server #lightgreen: Payment Status: ACSP
+rbox over ASPSP Resource Server #orange: Payment Status: ACWC
+rbox over ASPSP Resource Server #orange: Payment Status: ACSC
+rbox over ASPSP Resource Server #orange: Payment Status: BLCK
+rbox over ASPSP Resource Server #lightgreen: Payment Status: ACWP
+rbox over ASPSP Resource Server #lightgreen: Payment Status: ACCC
+rbox over ASPSP Resource Server #lightgreen: Payment Status: RJCT
+end alt
+alt Additional for FDP and SO 
+rbox over ASPSP Resource Server #orange: Payment Status: CANC
+end alt
 ASPSP Resource Server -> PISP: HTTP 200 (OK) payment-details resource
 end opt
-
-option footer=bar
 
 ```
 
@@ -344,7 +372,7 @@ Two strategies for handling behaviour are:
 In this scenario, the behaviour of payment-order execution is explicit to the PISP and PSU.
 
 - An ASPSP **must** reject the payment-order **consent** if the CutOffDateTime for a specific payment-order type has elapsed.
-- An ASPSP **must** reject an authorization request when the underlying intent object is associated with a CutoffDateTime that has elapsed. The ASPSP **must not** issue an access token in such a situation. The ASPSP **must** set the status of the payment-order consent resource to “RJCT”.
+- An ASPSP **must** reject an authorization request when the underlying intent object is associated with a CutoffDateTime that has elapsed. The ASPSP **must not** issue an access token in such a situation. The ASPSP **must** set the status of the payment-order consent resource to 'RJCT' which mean 'Rejected'.
 - An ASPSP **must** reject the payment-order **resource** if the CutOffDateTime for a specific payment-order type, has been established and has elapsed.
 - A PISP **must** ensure that the PSU consent authorisation is completed and the payment-order resource is created before the CutOffDateTime elapses.
 
@@ -453,8 +481,8 @@ In the payment-order consent:
 - A PISP **may** request an AuthorisationType for the payment-order (i.e., Single or Any). If a value is not provided, an ASPSP will interpret the AuthorisationType as 'Any'.
 - A PISP **may** request a CompletionDateTime for the payment-order authorisation to be complete. If a value is not provided, an ASPSP will interpret the CompletionDateTime as unbounded.
 - An ASPSP **must** reject the payment-order consent if the AuthorisationType requested by the PISP does not match the DebtorAccount in the request.
-- An ASPSP **must** set the status of the payment-order consent to Rejected, if the AuthorisationType requested by the PISP cannot be satisfied, after PSU Authentication:
-  - The ASPSP must respond back with an OAuth error response fields  _**error**_ specified as invalid_request and _**error_description**_ containing an appropriate message.
+- An ASPSP **must** set the status of the payment-order consent to 'RJCT' which means 'Rejected', if the AuthorisationType requested by the PISP cannot be satisfied, after PSU Authentication:
+  - The ASPSP must respond back with an OAuth error response fields  _**error**_ specified as invalid_request and _**error_description**_ containing an appropriate message. The ASPSP must also provide the same status reason in the payment-order consent.
 - An ASPSP **must** restrict the selection of DebtorAccount (in the ASPSP online channel) to accounts that match the AuthorisationType requested by the PISP.
 
 In the payment-order resource:
@@ -472,6 +500,7 @@ Once the final authorisation is received by the ASPSP, the ASPSP **may** notify 
 #### Error Condition
 
 If the PSU does not complete a successful consent authorisation (e.g., if the PSU has not authenticated successfully), the authorization code grant ends with a redirection to the TPP with an error response as described in [RFC 6749 Section 4.1.2.1](https://tools.ietf.org/html/rfc6749#section-4.1.2.1). The PSU is redirected to the TPP with an error parameter indicating the error that occurred.
+The ASPSP must update the payment-order consent status reason with appropriate reason. Refer to CEG - Common Error Scenarios – [Preferred Status and Reasons](https://consultation.standards.openbanking.org.uk/customer-experience-guidelines/appendices/common-errors/v4-0-draft1/).
 
 #### Consent Revocation
 
@@ -517,32 +546,32 @@ This section describes the Risk1 class which is reused in the payment-order cons
 | OBRisk1                          |            | OBRisk1                                    | The Risk section is sent by the initiating party to the ASPSP. It is used to specify additional details for risk scoring for Payments.                                                                                         | OBRisk1|||
 | BeneficiaryAccountType| 0..1       | OBRisk1/BeneficiaryAccountType             | To be provided if the AccountType is known.| OBExternalExtendedAccountType1Code | Personal<br>JointPersonal<br>PersonalSavingsAccount<br>Business<br>BusinessSavingsAccount<br>Charity<br>Collection<br>Corporate<br>Government<br>Ewallet<br>Investment<br>ISA<br>Premier<br>Wealth<br>Pension<br>| |
 | BeneficiaryPrepopulatedIndicator | 0..1       | OBRisk1/BeneficiaryPrepopulatedIndicator   | Indicates if PISP has immutably prepopulated payment details in for the PSU. |Boolean|||
-| CategoryPurposeCode| 0..1       | OBRisk1/CategoryPurposeCode|Specifies the category purpose, as published in an external category purpose code list.<br> For a full description see `ExternalCategoryPurpose1Code` [here](https://github.com/OpenBankingUK/External_Interal_CodeSets). | ExternalCategoryPurpose1Code |||
+| CategoryPurposeCode| 0..1       | OBRisk1/CategoryPurposeCode|Specifies the category purpose, as published in an external category purpose code list.<br> For a full description see `ExternalCategoryPurpose1Code` [here](https://github.com/OpenBankingUK/External_Interal_CodeSets).<br> For more guidance refer to the [CEGs](https://consultation.standards.openbanking.org.uk/customer-experience-guidelines/appendices/common-errors/v4-0-draft1/). | ExternalCategoryPurpose1Code |||
 | ContractPresentIndicator       | 0..1       | OBRisk1/ContractPresentIndicator         | Indicates if Payee has a contractual relationship with the PISP.| Boolean| | |
 | ExtendedPurpose |0..1 |OBRisk1/ExtendedPurpose |Specifies the purpose of an __international payment__, when there is no corresponding 4 character code available in the ISO20022 list of Purpose Codes. |Max140Text | | |
-| MerchantCategoryCode | 0..1       | OBRisk1/MerchantCategoryCode               | **`@DEPRECATED`** Category code conform to ISO 18245, related to the type of services or goods the merchant provides for the transaction.| Min3Max4Text |  |         |
+| MerchantCategoryCode | 0..1       | OBRisk1/MerchantCategoryCode               | Category code conform to ISO 18245, related to the type of services or goods the merchant provides for the transaction. For more guidance refer to the [CEGs](https://consultation.standards.openbanking.org.uk/customer-experience-guidelines/appendices/common-errors/v4-0-draft1/). | Min3Max4Text |  |         |
 | MerchantCustomerIdentification   | 0..1       | OBRisk1/MerchantCustomerIdentification     | The unique customer identifier of the PSU with the merchant. | Max70Text|| |
 | PaymentContextCode               | 0..1       | OBRisk1/PaymentContextCode                 | Specifies the payment context | OBExternalPaymentContext1Code      | <br>BillingGoodsAndServicesInAdvance <br>BillingGoodsAndServicesInArrears <br>EcommerceMerchantInitiatedPayment <br>FaceToFacePointOfSale <br>TransferToSelf <br>TransferToThirdParty |         |
 | PaymentPurposeCode |0..1 |OBRisk1/PaymentPurposeCode | For a full description see `ExternalPurpose1Code` [here](https://github.com/OpenBankingUK/External_Interal_CodeSets). |ExternalPurpose1Code | | |
 | DeliveryAddress                  | 0..1       | OBRisk1/DeliveryAddress                    | Information that locates and identifies a specific address, as defined by postal services or in free format text.| OBPostalAddress6||    |
 |AddressLine| 0..7| OBRisk1/DeliveryAddress/AddressLine | Information that locates and identifies a specific address, as defined by postal services, that is presented in free format text.| Max70text|
 | AddressType |0..1 |OBRisk1/DeliveryAddress/AddressType | Identifies the nature of the postal address. <br>For a full description see `OBAddressType2Code` [here](https://github.com/OpenBankingUK/External_Interal_CodeSets). | OBAddressType2Code ||
-| BuildingName |0..1 |OBRisk1/DeliveryAddress/BuildingName |Name of the building or house. |Max70Text | | |
+| BuildingName |0..1 |OBRisk1/DeliveryAddress/BuildingName |Name of the building or house. |Max140Text| | |
 | BuildingNumber |0..1 |OBRisk1/DeliveryAddress/BuildingNumber |Number that identifies the position of a building on a street. |Max16Text | | |
 | CareOf |0..1 |OBRisk1/DeliveryAddress/CareOf |Identifies an addressee that is accepting the correspondence for the intended recipient. Using care of ensures the correspondence reaches the right recipient rather than getting returned to the
-sender. |Max70Text | | |
+sender. |Max140Text| | |
 | Country                          | 0..1       | OBRisk1/DeliveryAddress/Country            | Nation with its own government, occupying a particular territory.  | CountryCode | | ^[A-Z]{2,2}$  |
 |CountrySubDivision| 0..1| OBRisk1/DeliveryAddress/CountrySubDivision | Identifies a subdivision of a country such as state, region, county. | Max35Text|||
 | Department |0..1 |OBRisk1/DeliveryAddress/Department |Identification of a division of a large organisation or building. |Max70Text | | |
-| DistrictName |0..1 |OBRisk1/DeliveryAddress DistrictName |Identifies a subdivision within a country sub-division. |Max35Text | | |
-| Floor |0..1 |OBRisk1/DeliveryAddress/Floor|Floor or storey within a building. |Max16Text | | |
+| DistrictName |0..1 |OBRisk1/DeliveryAddress DistrictName |Identifies a subdivision within a country sub-division. |Max140Text | | |
+| Floor |0..1 |OBRisk1/DeliveryAddress/Floor|Floor or storey within a building. |Max70Text | | |
 |PostBox | 0..1 | OBRisk1/DeliveryAddress/PostBox | Numbered box in a post office, assigned to a person or organisation, where letters are kept until called for. | Max16Text |||
 | PostCode                         | 0..1       | OBRisk1/DeliveryAddress/PostCode           | Identifier consisting of a group of letters and/or numbers that is added to a postal address to assist the sorting of mail.  | Max16Text   |     |         |
 | Room |0..1 |OBRisk1/DeliveryAddress/Room|Building room number. |Max70Text | | |
-| StreetName |0..1 |OBRisk1/DeliveryAddress StreetName |Name of a street or thoroughfare. |Max70Text | | |
+| StreetName |0..1 |OBRisk1/DeliveryAddress StreetName |Name of a street or thoroughfare. |Max140Text | | |
 | SubDepartment |0..1 |OBRisk1/DeliveryAddress/SubDepartment |Identification of a sub-division of a large organisation or building. |Max70Text | | |
-| TownLocationName |0..1 |OBRisk1/DeliveryAddress TownLocationName | Specific location name within the town. |Max35Text | | |
-| TownName  | 0..1       | OBRisk1/DeliveryAddress/TownName           | Name of a built-up area, with defined boundaries, and a local government. | Max35Text ||  |
+| TownLocationName |0..1 |OBRisk1/DeliveryAddress TownLocationName | Specific location name within the town. |Max140Text | | |
+| TownName  | 0..1       | OBRisk1/DeliveryAddress/TownName           | Name of a built-up area, with defined boundaries, and a local government. | Max140Text ||  |
 | UnitNumber|0..1 |OBRisk1/DeliveryAddress/UnitNumber|Identifies a flat or dwelling within the building. |Max16Text | | |
 
 
@@ -687,7 +716,7 @@ This section describes the OBInternationalRefundAccount1 class which is used in 
 | Proxy |0..1 |OBInternationalRefundAccount1/Account/Proxy |The external proxy account type |OBProxyAccount | | |
 | Identification |1..1 |OBInternationalRefundAccount1/Account/Proxy/Identification| Identification assigned by an institution to identify an account. This identification is known by the account owner. |Max256Text | | |
 | Type |0..1 |OBInternationalRefundAccount1/Account/Proxy/Type| Specifies the external proxy account type |MaxText70 | | |
-| Code |1..1 |OBInternationalRefundAccount1/Account/Proxy/Code| Specifies the external proxy account type code, as published in the proxy account type external code set.<br> For more information see `ExternalProxyAccountType1Code` [here](https://github.com/OpenBankingUK/External_Interal_CodeSets) |OBExternalProxyAccountType1Code | | |
+| Code |1..1 |OBInternationalRefundAccount1/Account/Proxy/Code| Specifies the external proxy account type code, as published in the proxy account type external code set.<br> For more information see `ExternalProxyAccountType1Code` [here](https://github.com/OpenBankingUK/External_Interal_CodeSets) |ExternalProxyAccountType1Code | | |
 | Proprietary |1..1 |OBInternationalRefundAccount1/Account/Proxy/Proprietary| The owner of the proxy account |MaxText70 | | |
 
 

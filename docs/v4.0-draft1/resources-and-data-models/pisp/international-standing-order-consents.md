@@ -188,20 +188,21 @@ For the OBInternationalStandingOrder4 Initiation object:
 | Name |0..1 |OBInternationalStandingOrder4/Creditor/Name |Name by which a party is known and which is usually used to identify that party. |Max350Text | | |
 | LEI |0..1 | OBInternationalStandingOrder4/Creditor/LEI |Legal Entity Identification by which a party is known and which is usually used to identify that party. |Max20Text | | |
 | PostalAddress |0..1 |OBInternationalStandingOrder4/Creditor/PostalAddress |Information that locates and identifies a specific address, as defined by postal services. |OBPostalAddress6 | | |
-|AddressType |0..1 |OBInternationalStandingOrder4/Creditor/PostalAddress/AddressType |BIZZ<br>DLVY<br>MLTO<br>PBOX<br>ADDR<br>HOME<br>CORR<br>STAT | ||
+| AddressType |0..1 |OBInternationalStandingOrder4/Creditor/PostalAddress/AddressType |Identifies the nature of the postal address. <br>For a full description see `OBAddressType2Code` [here](https://github.com/OpenBankingUK/External_Interal_CodeSets). | OBAddressType2Code | | |
 | Department |0..1 |OBInternationalStandingOrder4/Creditor/PostalAddress/Department |Identification of a division of a large organisation or building. |Max70Text | | |
 | SubDepartment |0..1 |OBInternationalStandingOrder4/Creditor/PostalAddress/SubDepartment |Identification of a sub-division of a large organisation or building. |Max70Text | | |
-| StreetName |0..1 |OBInternationalStandingOrder4/Creditor/PostalAddress/StreetName |Name of a street or thoroughfare. |Max70Text | | |
+| StreetName |0..1 |OBInternationalStandingOrder4/Creditor/PostalAddress/StreetName |Name of a street or thoroughfare. |Max140Text | | |
 | BuildingNumber |0..1 |OBInternationalStandingOrder4/Creditor/PostalAddress/BuildingNumber |Number that identifies the position of a building on a street. |Max16Text | | |
-| BuildingName |0..1 |OBInternationalStandingOrder4/Creditor/PostalAddress/BuildingName |Name of a referenced building. |Max70Text | | |
-| Floor |0..1 |OBInternationalStandingOrder4/Creditor/PostalAddress/Floor|Number that identifies the level within a building. |Max16Text | | |
+| BuildingName |0..1 |OBInternationalStandingOrder4/Creditor/PostalAddress/BuildingName |Name of a referenced building. |Max140Text | | |
+| Floor |0..1 |OBInternationalStandingOrder4/Creditor/PostalAddress/Floor|Number that identifies the level within a building. |Max70Text | | |
 | UnitNumber|0..1 |OBInternationalStandingOrder4/Creditor/PostalAddress/UnitNumber|Number that identifies the unit of a specific address |Max16Text | | |
 | Room |0..1 |OBInternationalStandingOrder4/Creditor/PostalAddress/Room|Information that locates and identifies a room to form part of an address. |Max70Text | | |
-| TownLocationName |0..1 |OBInternationalStandingOrder4/Creditor/PostalAddress/TownLocationName |Name of a built-up area, with defined boundaries, and a local government. |Max35Text | | |
-| DistrictName |0..1 |OBInternationalStandingOrder4/Creditor/PostalAddress/DistrictName |Number that of the regional area, known as a district, which forms part of an address. |Max35Text | | |
-| CareOf |0..1 |OBInternationalStandingOrder4/Creditor/PostalAddress/CareOf |The 'care of' address is used whenever sending mail to a person or organisation who does not actually live or work at the address. They will receive the mail for the individual. |Max70Text | | |
+| TownLocationName |0..1 |OBInternationalStandingOrder4/Creditor/PostalAddress/TownLocationName |Name of a built-up area, with defined boundaries, and a local government. |Max140Text | | |
+| DistrictName |0..1 |OBInternationalStandingOrder4/Creditor/PostalAddress/DistrictName |Number that of the regional area, known as a district, which forms part of an address. |Max140Text | | |
+| CareOf |0..1 |OBInternationalStandingOrder4/Creditor/PostalAddress/CareOf |The 'care of' address is used whenever sending mail to a person or organisation who does not actually live or work at the address. They will receive the mail for the individual. |Max140Text | | |
 | PostCode |0..1 |OBInternationalStandingOrder4/Creditor/PostalAddress/PostCode |Identifier consisting of a group of letters and/or numbers that is added to a postal address to assist the sorting of mail. |Max16Text | | |
-| TownName |0..1 |OBInternationalStandingOrder4/Creditor/PostalAddress/TownName |Name of a built-up area, with defined boundaries, and a local government. |Max35Text | | |
+| PostBox |0..1 |OBInternationalStandingOrder4/Creditor/PostalAddress/PostBox |Numbered box in a post office, assigned to a person or organisation, where letters are kept until called for |Max16Text | | |
+| TownName |0..1 |OBInternationalStandingOrder4/Creditor/PostalAddress/TownName |Name of a built-up area, with defined boundaries, and a local government. |Max140Text | | |
 | CountrySubDivision |0..1 |OBInternationalStandingOrder4/Creditor/PostalAddress/CountrySubDivision |Identifies a subdivision of a country such as state, region, county. |Max35Text | | |
 | Country |0..1 |OBInternationalStandingOrder4/Creditor/PostalAddress/Country |Nation with its own government. |CountryCode | |^[A-Z]{2,2}$ |
 | AddressLine |0..7 |OBInternationalStandingOrder4/Creditor/PostalAddress/AddressLine |Information that locates and identifies a specific address, as defined by postal services, presented in free format text. |Max70Text | | | |
@@ -211,20 +212,21 @@ For the OBInternationalStandingOrder4 Initiation object:
 | Name |0..1 |OBInternationalStandingOrder4/CreditorAgent/Name |Name by which an agent is known and which is usually used to identify that agent. |Max140Text | | |
 | LEI |0..1 | OBInternationalStandingOrder4/CreditorAgent/LEI |Legal Entity Identification by which a party is known and which is usually used to identify that party. |Max20Text | | |
 | PostalAddress |0..1 |OBInternationalStandingOrder4/CreditorAgent/PostalAddress |Information that locates and identifies a specific address, as defined by postal services. |OBPostalAddress6 | | |
-|AddressType |0..1 |OBInternationalStandingOrder4/CreditorAgent/PostalAddress/AddressType |BIZZ<br>DLVY<br>MLTO<br>PBOX<br>ADDR<br>HOME<br>CORR<br>STAT | ||
+| AddressType |0..1 |OBInternationalStandingOrder4/CreditorAgent/PostalAddress/AddressType |Identifies the nature of the postal address. <br>For a full description see `OBAddressType2Code` [here](https://github.com/OpenBankingUK/External_Interal_CodeSets). | OBAddressType2Code | | |
 | Department |0..1 |OBInternationalStandingOrder4/CreditorAgent/PostalAddress/Department |Identification of a division of a large organisation or building. |Max70Text | | |
 | SubDepartment |0..1 |OBInternationalStandingOrder4/CreditorAgent/PostalAddress/SubDepartment |Identification of a sub-division of a large organisation or building. |Max70Text | | |
-| StreetName |0..1 |OBInternationalStandingOrder4/CreditorAgent/PostalAddress/StreetName |Name of a street or thoroughfare. |Max70Text | | |
+| StreetName |0..1 |OBInternationalStandingOrder4/CreditorAgent/PostalAddress/StreetName |Name of a street or thoroughfare. |Max140Text | | |
 | BuildingNumber |0..1 |OBInternationalStandingOrder4/CreditorAgent/PostalAddress/BuildingNumber |Number that identifies the position of a building on a street. |Max16Text | | |
-| BuildingName |0..1 |OBInternationalStandingOrder4/CreditorAgent/PostalAddress/BuildingName |Name of a referenced building. |Max70Text | | |
-| Floor |0..1 |OBInternationalStandingOrder4/CreditorAgent/PostalAddress/Floor|Number that identifies the level within a building. |Max16Text | | |
+| BuildingName |0..1 |OBInternationalStandingOrder4/CreditorAgent/PostalAddress/BuildingName |Name of a referenced building. |Max140Text | | |
+| Floor |0..1 |OBInternationalStandingOrder4/CreditorAgent/PostalAddress/Floor|Number that identifies the level within a building. |Max70Text | | |
 | UnitNumber|0..1 |OBInternationalStandingOrder4/CreditorAgent/PostalAddress/UnitNumber|Number that identifies the unit of a specific address |Max16Text | | |
 | Room |0..1 |OBInternationalStandingOrder4/CreditorAgent/PostalAddress/Room|Information that locates and identifies a room to form part of an address. |Max70Text | | |
-| TownLocationName |0..1 |OBInternationalStandingOrder4/CreditorAgent/PostalAddress/TownLocationName |Name of a built-up area, with defined boundaries, and a local government. |Max35Text | | |
-| DistrictName |0..1 |OBInternationalStandingOrder4/CreditorAgent/PostalAddress/DistrictName |Number that of the regional area, known as a district, which forms part of an address. |Max35Text | | |
-| CareOf |0..1 |OBInternationalStandingOrder4/CreditorAgent/PostalAddress/CareOf |The 'care of' address is used whenever sending mail to a person or organisation who does not actually live or work at the address. They will receive the mail for the individual. |Max70Text | | |
+| TownLocationName |0..1 |OBInternationalStandingOrder4/CreditorAgent/PostalAddress/TownLocationName |Name of a built-up area, with defined boundaries, and a local government. |Max140Text | | |
+| DistrictName |0..1 |OBInternationalStandingOrder4/CreditorAgent/PostalAddress/DistrictName |Number that of the regional area, known as a district, which forms part of an address. |Max140Text | | |
+| CareOf |0..1 |OBInternationalStandingOrder4/CreditorAgent/PostalAddress/CareOf |The 'care of' address is used whenever sending mail to a person or organisation who does not actually live or work at the address. They will receive the mail for the individual. |Max140Text | | |
 | PostCode |0..1 |OBInternationalStandingOrder4/CreditorAgent/PostalAddress/PostCode |Identifier consisting of a group of letters and/or numbers that is added to a postal address to assist the sorting of mail. |Max16Text | | |
-| TownName |0..1 |OBInternationalStandingOrder4/CreditorAgent/PostalAddress/TownName |Name of a built-up area, with defined boundaries, and a local government. |Max35Text | | |
+| PostBox |0..1 |OBInternationalStandingOrder4/CreditorAgent/PostalAddress/PostBox |Numbered box in a post office, assigned to a person or organisation, where letters are kept until called for |Max16Text | | |
+| TownName |0..1 |OBInternationalStandingOrder4/CreditorAgent/PostalAddress/TownName |Name of a built-up area, with defined boundaries, and a local government. |Max140Text | | |
 | CountrySubDivision |0..1 |OBInternationalStandingOrder4/CreditorAgent/PostalAddress/CountrySubDivision |Identifies a subdivision of a country such as state, region, county. |Max35Text | | |
 | Country |0..1 |OBInternationalStandingOrder4/CreditorAgent/PostalAddress/Country |Nation with its own government. |CountryCode | |^[A-Z]{2,2}$ |
 | AddressLine |0..7 |OBInternationalStandingOrder4/CreditorAgent/PostalAddress/AddressLine |Information that locates and identifies a specific address, as defined by postal services, presented in free format text. |Max70Text | | | |
