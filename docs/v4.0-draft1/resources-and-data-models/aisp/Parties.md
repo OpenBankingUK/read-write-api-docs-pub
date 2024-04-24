@@ -18,6 +18,7 @@
   - [OBReadParty3](#obreadparty3)
     - [UML Diagram](#uml-diagram-2)
     - [Data Dictionary](#data-dictionary-2)
+  - [OBPostalAddress6](#OBPostalAddress6)
   - [Permission Codes](#permission-codes)
 - [Usage Examples](#usage-examples)
   - [All Parties](#all-parties)
@@ -159,6 +160,10 @@ The response to GET /accounts/{AccountId}/parties  **may**  contain multiple par
 | OBReadParty3 | |OBReadParty3 | |OBReadParty3 | | |
 | Data |1..1 |OBReadParty3/Data | |OBReadDataParty3 | | |
 | Party |0..n |OBReadParty3/Data/Party | |OBParty2 | | |
+
+### OBPostalAddress6
+
+The OBPostalAddress6 class is defined in the [account-and-transaction-api-profile](../../profiles/account-and-transaction-api-profile.md#OBPostalAddress6) page.
 
 ### Permission Codes
 

@@ -5,6 +5,9 @@
   - [GET /accounts/{AccountId}/scheduled-payments](#get-accountsaccountidscheduled-payments)
   - [GET /scheduled-payments](#get-scheduled-payments)
 - [Data Model](#data-model)
+  - [Reused Classes](#reused-classes)
+    - [OBProxy1](#OBProxy1)
+    - [OBPostalAddress6](#OBPostalAddress6)
   - [Resource Definition](#resource-definition)
   - [UML Diagram](#uml-diagram)
     - [Notes](#notes)
@@ -44,6 +47,14 @@ If an ASPSP has implemented the bulk retrieval endpoints, an AISP may optionally
 This will retrieve the scheduled-payments resources for all authorised accounts linked to the account-request.
 
 ## Data Model
+
+### Reused Classes
+
+#### OBProxy1
+The OBProxy1 class is defined in the [account-and-transaction-api-profile](../../profiles/account-and-transaction-api-profile.md#OBProxy1) page.
+
+#### OBPostalAddress6
+The OBPostalAddress6 class is defined in the [account-and-transaction-api-profile](../../profiles/account-and-transaction-api-profile.md#OBPostalAddress6) page.
 
 ### Resource Definition
 
@@ -93,9 +104,11 @@ If the ReadPAN permission is granted by the PSU - the ASPSP may choose to popula
 | Currency |1..1 |OBReadScheduledPayment3/Data/ScheduledPayment/InstructedAmount/Currency |A code allocated to a currency by a Maintenance Agency under an international identification scheme, as described in the latest edition of the international standard ISO 4217 "Codes for the representation of currencies and funds". |ActiveOrHistoricCurrencyCode | |^[A-Z]{3,3}$ |
 | CreditorAgent |0..1 |OBReadScheduledPayment3/Data/ScheduledPayment/CreditorAgent |Party that manages the account on behalf of the account owner, that is manages the registration and booking of entries on the account, calculates balances on the account and provides information about the account. This is the servicer of the beneficiary account. |OBBranchAndFinancialInstitutionIdentification5 | | |
 | SchemeName |1..1 |OBReadScheduledPayment3/Data/ScheduledPayment/CreditorAgent/SchemeName |Name of the identification scheme, in a coded form as published in an external list. |OBExternalFinancialInstitutionIdentification4Code | | |
+| PostalAddress |1..1 |OBReadScheduledPayment3/Data/ScheduledPayment/CreditorAgent/PostalAddress | Information that locates and identifies a specific address, as defined by postal services. |OBPostalAddress6 | | |
 | LEI |0..1 | OBReadScheduledPayment3/Data/ScheduledPayment/CreditorAgent/LEI |Legal entity identification as an alternate identification for a party. Legal Entity Identifier is a code allocated to a party as described in ISO 17442 "Financial Services - Legal Entity Identifier (LEI)".|Max20Text | |[A-Z0-9]{18,18}[0-9]{2,2}|
 | Identification |1..1 |OBReadScheduledPayment3/Data/ScheduledPayment/CreditorAgent/Identification |Unique and unambiguous identification of the servicing institution. |Max35Text | | |
 | CreditorAccount |0..1 |OBReadScheduledPayment3/Data/ScheduledPayment/CreditorAccount |Provides the details to identify the beneficiary account. |OBCashAccount5 | | |
+| Proxy |0..1 |OBReadScheduledPayment3/Data/ScheduledPayment/CreditorAccount/Proxy | Specifies an alternate assumed name for the identification of the account.  |OBProxy1 | | |
 | SchemeName |1..1 |OBReadScheduledPayment3/Data/ScheduledPayment/CreditorAccount/SchemeName |Name of the identification scheme, in a coded form as published in an external list. |OBExternalAccountIdentification4Code | | |
 | Identification |1..1 |OBReadScheduledPayment3/Data/ScheduledPayment/CreditorAccount/Identification |Beneficiary account identification. |Max256Text | | |
 | Name |0..1 |OBReadScheduledPayment3/Data/ScheduledPayment/CreditorAccount/Name |The account name is the name or names of the account owner(s) represented at an account level, as displayed by the ASPSP's online channels. Note, the account name is not the product name or the nickname of the account. |Max350Text | | |

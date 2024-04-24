@@ -5,6 +5,9 @@
   - [GET /accounts/{AccountId}/beneficiaries](#get-accountsaccountidbeneficiaries)
   - [GET /beneficiaries](#get-beneficiaries)
 - [Data Model](#data-model)
+  - [Reused Classes](#reused-classes)
+    - [OBProxy1 ](#OBProxy1)
+    - [OBPostalAddress6](#OBPostalAddress6)
   - [Resource Definition](#resource-definition)
   - [UML Diagram](#uml-diagram)
   - [Notes](#notes)
@@ -51,6 +54,15 @@ The OBReadBeneficiary5 object will be used for the call to:
 
 * GET /accounts/{AccountId}/beneficiaries
 * GET /beneficiaries
+
+### Reused Classes
+
+#### OBProxy1  
+
+The OBProxy1 class is defined in the [account-and-transaction-api-profile](../../profiles/account-and-transaction-api-profile.md#OBProxy1) page.
+
+#### OBPostalAddress6
+The OBPostalAddress6 class is defined in the [account-and-transaction-api-profile](../../profiles/account-and-transaction-api-profile.md#OBPostalAddress6) page.
 
 ### Resource Definition
 
@@ -119,6 +131,7 @@ If the ReadPAN permission is granted by the PSU, the ASPSP may choose to populat
 | Identification |1..1 |OBReadBeneficiary5/Data/Beneficiary/CreditorAccount/Identification |Identification assigned by an institution to identify an account. This identification is known by the account owner. |Max256Text | | |
 | Name |0..1 |OBReadBeneficiary5/Data/Beneficiary/CreditorAccount/Name |The account name is the name or names of the account owner(s) represented at an account level, as displayed by the ASPSP's online channels. Note, the account name is not the product name or the nickname of the account. |Max350Text | | |
 | SecondaryIdentification |0..1 |OBReadBeneficiary5/Data/Beneficiary/CreditorAccount/SecondaryIdentification |This is secondary identification of the account, as assigned by the account servicing institution. This can be used by building societies to additionally identify accounts with a roll number (in addition to a sort code and account number combination). |Max34Text | | |
+| Proxy |0..1 |OBReadBeneficiary5/Data/Beneficiary/CreditorAccount/Proxy | Specifies an alternate assumed name for the identification of the account.  | OBProxy1 | | |
 
 ### Reused Classes
 
