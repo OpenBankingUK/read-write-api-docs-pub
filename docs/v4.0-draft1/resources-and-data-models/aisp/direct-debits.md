@@ -9,6 +9,8 @@
   - [UML Diagram](#uml-diagram)
   - [Permission Codes](#permission-codes)
   - [Data Dictionary](#data-dictionary)
+  - [Reused Classes](#reused-classes)
+    - [OBMandateRelatedInformation1](#OBMandateRelatedInformation1)
 - [Usage Examples](#usage-examples)
   - [Specific Account](#specific-account)
     - [Get Accounts Direct Debits Request](#get-accounts-direct-debits-request)
@@ -71,18 +73,13 @@ The resource requires the ReadDirectDebits permission. The resource response pay
 | PreviousPaymentAmount |0..1 |OBReadDirectDebit2/Data/DirectDebit/PreviousPaymentAmount |The amount of the most recent direct debit collection. |OBActiveOrHistoricCurrencyAndAmount | | |
 | Amount |1..1 |OBReadDirectDebit2/Data/DirectDebit/PreviousPaymentAmount/Amount |A number of monetary units specified in an active currency where the unit of currency is explicit and compliant with ISO 4217. |OBActiveCurrencyAndAmount_SimpleType | |`^\d{1,13}$|^\d{1,13}\.\d{1,5}$` |
 | Currency |1..1 |OBReadDirectDebit2/Data/DirectDebit/PreviousPaymentAmount/Currency |A code allocated to a currency by a Maintenance Agency under an international identification scheme, as described in the latest edition of the international standard ISO 4217 "Codes for the representation of currencies and funds". |ActiveOrHistoricCurrencyCode | |^[A-Z]{3,3}$ |
-| MandateRelatedInformation | 0..1 |OBReadDirectDebit2/Data/DirectDebit/MandateRelatedInformation ||OBMandateRelatedInformation | | |
-| MandateIdentification | 0..1 |OBReadDirectDebit2/Data/DirectDebit/MandateRelatedInformation/MandateIdentification |<br>Direct Debit reference. For AUDDIS service users provide Core Reference. For non AUDDIS service users provide Core reference if possible or last used reference.
-|Max35Text | | |
-| Classification | 0..1 |OBReadDirectDebit2/Data/DirectDebit/MandateRelatedInformation/Classification|Specifies the type of direct debit amount, such as fixed or variable. |OBClassification1Code |FIXE<br>USGB<br>VARI| |
-| CategoryPurposeCode | 0..1 |OBReadDirectDebit2/Data/DirectDebit/MandateRelatedInformation/CategoryPurposeCode |Specifies the category purpose. For more information see `ExternalCategoryPurpose1Code` [here](https://github.com/OpenBankingUK/External_Interal_CodeSets) |OBCategoryPurpose1Code | | |
-| FirstPaymentDate | 0..1 |OBReadDirectDebit2/Data/DirectDebit/MandateRelatedInformation/FirstPaymentDate |The date on which the first payment for a Direct Debit schedule will be made. |ISODate | | |
-| FinalPaymentDate | 0..1 |OBReadDirectDebit2/Data/DirectDebit/MandateRelatedInformation/FinalPaymentDate |The date on which the final payment for a Direct Debit schedule will be made. |ISODate | | |
-| Frequency | 0..1 |OBReadDirectDebit2/Data/DirectDebit/MandateRelatedInformation/Frequency |A code indicating the frequency of payment for the Direct Debit. |OBFrequency6 | | |
-| Type | 1..1 |OBReadDirectDebit2/Data/DirectDebit/MandateRelatedInformation/Frequency/PeriodType |A code indicating the period type for the Direct Debit. |OBFrequency6Code |ADHO<br>YEAR<br>DALI<br>FRTN<br>INDA<br>MNTH<br>QURT<br>MIAN<br>WEEK | |
-| CountPerPeriod | 0..1 |OBReadDirectDebit2/Data/DirectDebit/MandateRelatedInformation/Frequency/CountPerPeriod | |Int32 | |
-| PointInTime | 0..1 |OBReadDirectDebit2/Data/DirectDebit/MandateRelatedInformation/Frequency/PointInTime |Further information on the exact point in time the event should take place | |Exact2NumericText |
-| Reason| 0..1 |OBReadDirectDebit2/Data/DirectDebit/MandateRelatedInformation/Reason |Reason for the direct debit mandate to allow the user to distinguish between different mandates for the same creditor. |Max256Text | |
+| MandateRelatedInformation | 0..1 |OBReadDirectDebit2/Data/DirectDebit/MandateRelatedInformation ||OBMandateRelatedInformation1 | | |
+
+### Reused Classes
+
+#### OBMandateRelatedInformation1
+
+The OBMandateRelatedInformation1 class is defined in the [payment-initiation-api-profile](../../profiles/payment-initiation-api-profile.md#obmandaterelatedinformation1) page. MandateIdentification contains the Direct Debit reference. For AUDDIS service users provide Core Reference. For non AUDDIS service users provide Core reference if possible or last used reference
 
 ## Usage Examples
 

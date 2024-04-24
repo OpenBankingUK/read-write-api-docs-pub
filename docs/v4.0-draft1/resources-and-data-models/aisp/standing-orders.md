@@ -11,6 +11,8 @@
   - [Frequency Examples](#frequency-examples)
   - [Permission Codes](#permission-codes)
   - [Data Dictionary](#data-dictionary)
+  - [Reused Classes](#reused-classes)
+    - [OBMandateRelatedInformation1](#OBMandateRelatedInformation1)
 - [Usage Examples](#usage-examples)
   - [Specific Account](#specific-account)
     - [Get Accounts Standing Orders Request](#get-accounts-standing-orders-request)
@@ -103,17 +105,7 @@ If the ReadPAN permission is granted by the PSU, the ASPSP may choose to populat
 | StandingOrder |0..n |OBReadStandingOrder6/Data/StandingOrder | |OBStandingOrder5 | | |
 | AccountId |1..1 |OBReadStandingOrder6/Data/StandingOrder/AccountId |A unique and immutable identifier used to identify the account resource. This identifier has no meaning to the account owner. |Max40Text | | |
 | StandingOrderId |0..1 |OBReadStandingOrder6/Data/StandingOrder/StandingOrderId |A unique and immutable identifier used to identify the standing order resource. This identifier has no meaning to the account owner. |Max40Text | | |
-| MandateRelatedInformation | 0..1 |OBReadStandingOrder6/Data/MandateRelatedInformation ||OBMandateRelatedInformation | | |
-| MandateIdentification | 0..1 |OBReadStandingOrder6/Data/MandateRelatedInformation/MandateIdentification |Name or number assigned by an entity to enable recognition of that entity, for example, account identifier |Max35Text | | |
-| Classification | 0..1 |OBReadStandingOrder6/Data/MandateRelatedInformation/Classification|Specifies the type of direct debit amount, such as fixed or variable. |OBClassification1Code |FIXE<br>USGB<br>VARI| |
-| CategoryPurposeCode | 0..1 |OBReadStandingOrder6/Data/MandateRelatedInformation/CategoryPurposeCode |Specifies the category purpose. For more information see `ExternalCategoryPurpose1Code` [here](https://github.com/OpenBankingUK/External_Interal_CodeSets) |OBCategoryPurpose1Code | | |
-| FirstPaymentDate | 0..1 |OBReadStandingOrder6/Data/MandateRelatedInformation/FirstPaymentDate |The date on which the first payment for a Standing Order schedule will be made. |ISODate | | |
-| FinalPaymentDate | 0..1 |OBReadStandingOrder6/Data/MandateRelatedInformation/FinalPaymentDate |The date on which the final payment for a Standing Order schedule will be made. |ISODate | | |
-| Frequency | 0..1 |OBReadStandingOrder6/Data/MandateRelatedInformation/Frequency |A code indicating the frequency of payment for the Standing Order. |OBFrequency6 | | |
-| Type | 1..1 |OBReadStandingOrder6/Data/MandateRelatedInformation/Frequency/Type |A code indicating the period type for the Standing Order. |OBFrequency6Code | | |
-| CountPerPeriod | 0..1 |OBReadStandingOrder6/Data/MandateRelatedInformation/Frequency/CountPerPeriod | |Int32 | |
-| PointInTime | 0..1 |OBReadStandingOrder6/Data/MandateRelatedInformation/Frequency/PointInTime |Further information on the exact point in time the event should take place |Exact2NumericText | |
-| Reason| 0..1 |OBReadStandingOrder6/Data/MandateRelatedInformation/Reason |Reason for the standing order mandate to allow the user to distinguish between different mandates for the same creditor. |Max256Text | |
+| MandateRelatedInformation | 0..1 |OBReadStandingOrder6/Data/MandateRelatedInformation ||OBMandateRelatedInformation1 | | |
 | RemittanceInformation |0..1 |OBReadStandingOrder6/Data/StandingOrder/RemittanceInformation |Information supplied to enable the matching of an entry with the items that the transfer is intended to settle. For full description see [here](../../profiles/payment-initiation-api-profile.md#obremittanceinformation1) |OBRemittanceInformation1 | | |
 | NextPaymentDateTime |0..1 |OBReadStandingOrder6/Data/StandingOrder/NextPaymentDateTime |The date on which the next payment for a Standing Order schedule will be made. |ISODate | | |
 |LastPaymentDateTime| 0..1| OBReadStandingOrder6/Data/StandingOrder/LastPaymentDateTime |The date on which the last (most recent) payment for a Standing Order schedule was made. |ISODateTime | | |
@@ -141,6 +133,12 @@ If the ReadPAN permission is granted by the PSU, the ASPSP may choose to populat
 | Name |0..1 |OBReadStandingOrder6/Data/StandingOrder/CreditorAccount/Name |The account name is the name or names of the account owner(s) represented at an account level, as displayed by the ASPSP's online channels. Note, the account name is not the product name or the nickname of the account. |Max350Text | | |
 | SecondaryIdentification |0..1 |OBReadStandingOrder6/Data/StandingOrder/CreditorAccount/SecondaryIdentification |This is secondary identification of the account, as assigned by the account servicing institution. This can be used by building societies to additionally identify accounts with a roll number (in addition to a sort code and account number combination). |Max34Text | | |
 | SupplementaryData |0..1 |OBReadStandingOrder6/Data/StandingOrder/SupplementaryData |Additional information that can not be captured in the structured fields and/or any other specific block. |OBSupplementaryData1 | | |
+
+### Reused Classes
+
+#### OBMandateRelatedInformation1
+
+The OBMandateRelatedInformation1 class is defined in the [payment-initiation-api-profile](../../profiles/payment-initiation-api-profile.md#obmandaterelatedinformation1) page. xx
 
 ## Usage Examples
 
