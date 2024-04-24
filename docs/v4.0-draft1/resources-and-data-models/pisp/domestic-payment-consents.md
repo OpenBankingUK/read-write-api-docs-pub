@@ -203,13 +203,13 @@ For the OBDomestic2 Initiation object:
 | AddressLine |0..7 |OBDomestic2/CreditorPostalAddress/AddressLine |Information that locates and identifies a specific address, as defined by postal services, presented in free format text. |Max70Text | | | |
 | RemittanceInformation |0..1 |OBDomestic2/RemittanceInformation |Information supplied to enable the matching of an entry with the items that the transfer is intended to settle, such as commercial invoices in an accounts' receivable system. |OBRemittanceInformation1 | | |
 | Structured |0..* |OBDomestic2/RemittanceInformation/Structured |Information supplied to enable the matching/reconciliation of an entry with the items that the payment is intended to settle, such as commercial invoices in an accounts' receivable system, in an structured form. |OBRemittanceInformationStructured | | |
-| ReferredDocumentInformation |0..* |OBDomestic2/RemittanceInformation/Structured/ReferredDocumentInformation | |OBReferredDocumentInformation | | |
-| ReferredDocumentAmount |0..1 |OBDomestic2/RemittanceInformation/Structured/ReferredDocumentAmount | |OBReferredDocumentAmount| | |
-| CreditorReferenceInformation |0..1 |OBDomestic2/CreditorReferenceInformation/Structured/ReferredDocumentAmount | |OBCreditorReferenceInformation| | |
-| Invoicer |0..1 |OBDomestic2/CreditorReferenceInformation/Structured/Invoicer | |OBInvoicer| | |
-| Invoicee |0..1 |OBDomestic2/CreditorReferenceInformation/Structured/Invoicee | |OBInvoicee| | |
-| TaxRemittance |0..1 |OBDomestic2/CreditorReferenceInformation/Structured/TaxRemittance | |OBTaxRemittance| | |
-| AdditionalRemittanceInformation |0..3|OBDomestic2/CreditorReferenceInformation/Structured/AdditionalRemittanceInformation | |OBAdditionalRemittanceInformation| | |
+| ReferredDocumentInformation |0..* |OBDomestic2/RemittanceInformation/Structured/ReferredDocumentInformation |Provides the identification and the content of the referred document |OBReferredDocumentInformation | | |
+| ReferredDocumentAmount |0..1 |OBDomestic2/RemittanceInformation/Structured/ReferredDocumentAmount |Provides details on the amounts of the referred document |OBReferredDocumentAmount |OBReferredDocumentAmount| | |
+| CreditorReferenceInformation |0..1 |OBDomestic2/CreditorReferenceInformation/Structured/ReferredDocumentAmount |Reference information provided by the creditor to allow the identification of the underlying documents |OBCreditorReferenceInformation| | |
+| Invoicer |0..1 |OBDomestic2/CreditorReferenceInformation/Structured/Invoicer |Identification of the organisation issuing the invoice, when it is different from the creditor or ultimate creditor.  |OBInvoicer| | |
+| Invoicee |0..1 |OBDomestic2/CreditorReferenceInformation/Structured/Invoicee |Identification of the party to whom an invoice is issued, when it is different from the debtor or ultimate debtor  |OBInvoicee| | |
+| TaxRemittance |0..1 |OBDomestic2/CreditorReferenceInformation/Structured/TaxRemittance |Provides remittance information about a payment made for tax-related purposes  |OBTaxRemittance| | |
+| AdditionalRemittanceInformation |0..3|OBDomestic2/CreditorReferenceInformation/Structured/AdditionalRemittanceInformation |Additional information, in free text form, to complement the structured remittance information |OBAdditionalRemittanceInformation| | |
 | Unstructured |0..* |OBDomestic2/RemittanceInformation/Unstructured |Information supplied to enable the matching/reconciliation of an entry with the items that the payment is intended to settle, such as commercial invoices in an accounts' receivable system, in an unstructured form. |Max140Text | | |
 | SupplementaryData |0..1 |OBDomestic2/SupplementaryData |Additional information that can not be captured in the structured fields and/or any other specific block. |OBSupplementaryData1 | | |
 | RegulatoryReporting |0..10 |OBDomestic2/RegulatoryReporting |Information needed due to regulatory and statutory requirements. |RegulatoryReporting3 | | |

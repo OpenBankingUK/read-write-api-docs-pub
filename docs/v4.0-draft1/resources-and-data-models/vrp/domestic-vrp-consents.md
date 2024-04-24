@@ -200,13 +200,13 @@ The data dictionary section gives the detail on the payload content for the VRP 
 | __CreditorAccount__ (0..1) | `CreditorAccount`   |Unambiguous identification of the account of the creditor to which a credit entry will be posted as a result of the payment transaction.       |OBCashAccountCreditor3
 | __RemittanceInformation__ (0..1) | `RemittanceInformation`   | Information supplied to enable the matching of an entry with the items that the transfer is intended to settle, such as commercial invoices in an accounts' receivable system. | OBRemittanceInformation1
 | __Structured__ (0..*) |`RemittanceInformation. Structured` |Information supplied to enable the matching/reconciliation of an entry with the items that the payment is intended to settle, such as commercial invoices in an accounts' receivable system, in an structured form. |OBRemittanceInformationStructured
-| __ReferredDocumentInformation__ (0..*) |`RemittanceInformation . Structured. ReferredDocumentInformation` | |OBReferredDocumentInformation
-| __ReferredDocumentAmount__ (0..1) |`RemittanceInformation. . Structured. ReferredDocumentAmount` | |OBReferredDocumentAmount| 
-| __CreditorReferenceInformation__ (0..1) |`RemittanceInformation. Structured. ReferredDocumentAmount`  | |OBCreditorReferenceInformation
-| __Invoicer__ (0..1) |`RemittanceInformation. Structured. Invoicer`  | |OBInvoicer| | |
-| __Invoicer__ (0..1) |`RemittanceInformation. Structured. Invoicee`  | |OBInvoicee| | |
-| __TaxRemittance__ (0..1) |`RemittanceInformation. Structured. TaxRemittance` | |OBTaxRemittance| | |
-| __AdditionalRemittanceInformation__ (0..3)|`RemittanceInformation. Structured. AdditionalRemittanceInformation`|
+| __ReferredDocumentInformation__ (0..*) |`RemittanceInformation . Structured. ReferredDocumentInformation` |Provides the identification and the content of the referred document |OBReferredDocumentInformation
+| __ReferredDocumentAmount__ (0..1) |`RemittanceInformation. . Structured. ReferredDocumentAmount` |Provides details on the amounts of the referred document |OBReferredDocumentAmount| 
+| __CreditorReferenceInformation__ (0..1) |`RemittanceInformation. Structured. ReferredDocumentAmount`  |Reference information provided by the creditor to allow the identification of the underlying documents |OBCreditorReferenceInformation
+| __Invoicer__ (0..1) |`RemittanceInformation. Structured. Invoicer`  |Identification of the organisation issuing the invoice, when it is different from the creditor or ultimate creditor. |OBInvoicer
+| __Invoicee__ (0..1) |`RemittanceInformation. Structured. Invoicee`  |Identification of the party to whom an invoice is issued, when it is different from the debtor or ultimate debtor  |OBInvoicee|
+| __TaxRemittance__ (0..1) |`RemittanceInformation. Structured. TaxRemittance` |Provides remittance information about a payment made for tax-related purposes |OBTaxRemittance|
+| __AdditionalRemittanceInformation__ (0..3)|`RemittanceInformation. Structured. AdditionalRemittanceInformation`|Additional information, in free text form, to complement the structured remittance information |OBAdditionalRemittanceInformation
 | __Unstructured__ |0..* |`RemittanceInformation. Unstructured.` |Information supplied to enable the matching/reconciliation of an entry with the items that the payment is intended to settle, such as commercial invoices in an accounts' receivable system, in an unstructured form. |Max140Text
 
 ### OBDomesticVRPControlParameters
