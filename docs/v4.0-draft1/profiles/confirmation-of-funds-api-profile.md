@@ -261,7 +261,7 @@ If a time-out error occurs, we would expect a CBPII to create a new resource, ra
 
 ### Release Management
 
-This section overviews the release management and versioning strategy for the Account And Transaction API.
+This section overviews the release management and versioning strategy for the Confirmation of Funds API.
 
 #### Funds Confirmation Consent
 
