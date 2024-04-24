@@ -25,6 +25,8 @@
   - [Consent Revocation](#consent-revocation)
 - [Data Model](#data-model)
   - [Reused Classes](#reused-classes)
+    - [OBProxy1](#OBProxy1)
+      - [Data Dictionary](#OBProxy1-data-dictionary)
 
 ## Overview
 

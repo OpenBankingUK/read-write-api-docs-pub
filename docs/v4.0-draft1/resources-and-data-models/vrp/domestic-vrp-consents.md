@@ -8,6 +8,19 @@
   - [POST /domestic-vrp-consents/{ConsentId}/funds-confirmation](#post-domestic-vrp-consentsconsentidfunds-confirmation)
 - [State Model - VRP consents](#state-model---vrp-consents)
 - [Data Model](#data-model)
+- [Reused Classes](#reused-classes)
+    - [OBProxy1 ](#OBProxy1 )
+      - [Data Dictionary](#OBProxy1-data-dictionary)
+    - [OBPostalAddress6](#OBPostalAddress6)
+      - [Data Dictionary](#OBPostalAddress6-data-dictionary)
+    - [OBRemittanceInformation1](#obremittanceinformation1)
+      - [Data Dictionary](#obremittanceinformation1-data-dictionary)
+    - [OBUltimateCreditor1](#OBUltimateCreditor1)
+      - [Data Dictionary](#OBUltimateCreditor1-data-dictionary)
+    - [OBUltimateDebtor1](#OBUltimateDebtor1)
+      - [Data Dictionary](#OBUltimateDebtor1-data-dictionary)  
+    - [OBRegulatoryReporting1](#OBRegulatoryReporting1)
+      - [Data Dictionary](#OBRegulatoryReporting1-data-dictionary)
   - [OBCashAccountDebtorWithName](#obcashaccountdebtorwithname)
   - [OBCashAccountCreditor3](#obcashaccountcreditor3)
   - [OBBranchAndFinancialInstitutionIdentification6](#obbranchandfinancialinstitutionidentification6)
@@ -158,6 +171,32 @@ Changes to the StatusCode, such as being rejected, should be captured in `Status
 
 The data dictionary section gives the detail on the payload content for the VRP consent API flows.
 
+### Reused Classes
+
+#### OBProxy1  
+
+The OBProxy1 class is defined in the [vrp-profile](../../profiles/vrp-profile.md#OBProxy1) page.
+
+#### OBPostalAddress6 
+
+The OBPostalAddress6 class is defined in the [vrp-profile](../../profiles/vrp-profile.md#OBPostalAddress6) page.
+
+#### OBRemittanceInformation1
+
+The OBRemittanceInformation1 class is defined in the [vrp-profile](../../profiles/vrp-profile.md#obremittanceinformation1) page.
+
+#### OBUltimateCreditor1
+
+The OBUltimateCreditor1 class is defined in the [vrp-profile](../../profiles/vrp-profile.md#OBUltimateCreditor1) page.
+
+#### OBUltimateDebtor1 
+
+The OBUltimateDebtor1 class is defined in the [vrp-profile](../../profiles/vrp-profile.md#OBUltimateDebtor1) page.
+
+#### OBRegulatoryReporting1
+
+The OBRegulatoryReporting1 class is defined in the [vrp-profile](../../profiles/vrp-profile.md#OBRegulatoryReporting1) page.
+
 ### OBCashAccountDebtorWithName
 
 ![OBCashAccountDebtorWithName](./images/OBCashAccountDebtorWithName.svg)
@@ -168,10 +207,7 @@ The data dictionary section gives the detail on the payload content for the VRP 
 | __Identification__ (1..1) | `Identification` | Identification assigned by an institution to identify an account. This identification is known by the account owner. | Max256Text
 | __Name__ (1..1) | `Name` | Name of the account, as assigned by the account servicing institution.  Usage: The account name is the name or names of the account owner(s) represented at an account level. The account name is not the product name or the nickname of the account. | Max70Text  
 | __SecondaryIdentification__ (0..1) | `SecondaryIdentification` | This is secondary identification of the account, as assigned by the account servicing institution.  This can be used by building societies to additionally identify accounts with a roll number (in addition to a sort code and account number combination) | Max34Text
-| __Proxy__ (0..1) |`Proxy` |Specifies an alternate assumed name for the identification of the account. |OBProxyAccount
-| __Identification__ (1..1) |`Proxy. Identification`| Identification used to indicate the account identification under another specified name. |Max256Text 
-| __Type__ (0..1) |`Proxy. Type`| Type of the proxy identification. |MaxText70 
-| __Code__ 1..1 |`Proxy. Code`| Specifies the external proxy account type code, as published in the proxy account type external code set  |ExternalProxyAccountType1Code <br><br>For more information see `ExternalProxyAccountType1Code` [here](https://github.com/OpenBankingUK/External_Interal_CodeSets)
+| __Proxy__ (0..1) |`Proxy` |Specifies an alternate assumed name for the identification of the account. |[OBProxy1](../../profiles/vrp-profile.md#obproxy1)|
 
 ### OBCashAccountCreditor3
 
@@ -180,13 +216,10 @@ The data dictionary section gives the detail on the payload content for the VRP 
 | Name |Path |Definition | Type |
 | ---- |-----|---------- |------|
 | __SchemeName__ (1..1) | `SchemeName` | Name of the identification scheme, in a coded form as published | 
-| __Identification__ (1..1) | `Identification` |Identification assigned by an institution to identify an account. This identification is known by the account owner.   |Max256Text
-| __Name__ (1..1) | `Name` |Name of the account, as assigned by the account servicing institution, in consent with the account owner in order to provide an additional means of identification of the account.  Usage: The account name is different from the account owner name. The account name is used in certain user communities to provide a means of identifying the account, in addition to the account owner's identity and the account number. OB: No name validation is expected for confirmation of payee.|Max70Text  
-| __SecondaryIdentification__ (0..1) | `SecondaryIdentification` |This is secondary identification of the account, as assigned by the account servicing institution.  This can be used by building societies to additionally identify accounts with a roll number__ (in addition to a sort code and account number combination).             |Max34Text
-| __Proxy__ (0..1) |`Proxy` |Specifies an alternate assumed name for the identification of the account. |OBProxyAccount
-| __Identification__ (1..1) |`Proxy. Identification`| Identification used to indicate the account identification under another specified name. |Max256Text 
-| __Type__ (0..1) |`Proxy. Type`| Type of the proxy identification. |MaxText70 
-| __Code__ 1..1 |`Proxy. Code`| Specifies the external proxy account type code, as published in the proxy account type external code set  |ExternalProxyAccountType1Code <br><br>For more information see `ExternalProxyAccountType1Code` [here](https://github.com/OpenBankingUK/External_Interal_CodeSets)
+| __Identification__ (1..1) | `Identification` |Identification assigned by an institution to identify an account. This identification is known by the account owner.   |Max256Text|
+| __Name__ (1..1) | `Name` |Name of the account, as assigned by the account servicing institution, in consent with the account owner in order to provide an additional means of identification of the account.  Usage: The account name is different from the account owner name. The account name is used in certain user communities to provide a means of identifying the account, in addition to the account owner's identity and the account number. OB: No name validation is expected for confirmation of payee.|Max70Text  |
+| __SecondaryIdentification__ (0..1) | `SecondaryIdentification` |This is secondary identification of the account, as assigned by the account servicing institution.  This can be used by building societies to additionally identify accounts with a roll number__ (in addition to a sort code and account number combination).             |Max34Text|
+| __Proxy__ (0..1) |`Proxy` |Specifies an alternate assumed name for the identification of the account. |[OBProxy1](../../profiles/vrp-profile.md#obproxy1)|
 
 ### OBBranchAndFinancialInstitutionIdentification6
 
@@ -198,25 +231,7 @@ The data dictionary section gives the detail on the payload content for the VRP 
 | __Identification__ (0..1) | `Identification` |Unique and unambiguous identification of a financial institution or a branch of a financial institution.  | Max35Text  
 | __Name__ (0..1) | `Name` | Name by which an agent is known and which is usually used to identify that agent. | Max140Text
 | __LEI__ (0..1) | `LEI` | Legal entity identification as an alternate identification for a party. <br>Legal Entity Identifier is a code allocated to a party as described in ISO 17442 "Financial Services - Legal Entity Identifier (LEI)". | Max20Text |
-| __PostalAddress__ (0..1) | `PostalAddress` |Information that locates and identifies a specific address, as defined by postal services.| [OBPostalAddress6](../../profiles/payment-initiation-api-profile.md#obpostaladdress6) |
-| __AddressLine__  (0..7) | `PostalAddress. AddressLine` |Information that locates and identifies a specific address, as defined by postal services, presented in free format text.      |Max70Text  |
-| __AddressType__ (0..1) | `PostalAddress. AddressType` |Identifies the nature of the postal address. |OBAddressTypeCode  |BIZZ DLVY MLTO PBOX ADDR HOME CORR STAT |
-| __Department__ (0..1) | `PostalAddress. Department` |Identification of a division of a large organisation or building. | Max70Text  |
-| __SubDepartment__ (0..1) | `PostalAddress. SubDepartment` |Identification of a sub-division of a large organisation or building. |Max70Text|
-| __BuildingNumber__ (0..1) | `PostalAddress. BuildingNumber` |Number that identifies the position of a building on a street.   |Max16Text  |
-| __BuildingName__ (0..1) |`PostalAddress. BuildingName`  |Name of a referenced building. |Max140Text|
-| __UnitNumber__ (0..1) |`PostalAddress. UnitNumber`|Number that identifies the unit of a specific address |Max16Text |
-| __Floor__ (0..1) |`PostalAddress. Floor`|Number that identifies the level within a building. |Max70Text |
-| __Room__ (0..1)| `PostalAddress. Room`|Information that locates and identifies a room to form part of an address. |Max70Text |
-| __StreetName__ (0..1) | `PostalAddress. StreetName`   |Name of a street or thoroughfare.    |Max140Text  |
-| __PostBox__ (0..1)| `PostalAddress. PostBox` | Numbered box in a post office, assigned to a person or organisation, where letters are kept until called for. | Max16Text|
-| __TownName__ (0..1) | `PostalAddress. TownName` |Name of a built-up area, with defined boundaries, and a local government. |Max140Text  |
-| __TownLocationName__ (0..1)|`PostalAddress. TownLocationName` |Name of a built-up area, with defined boundaries, and a local government. |Max140Text |
-| __DistrictName__ (0..1) |`PostalAddress. DistrictName`|Number that of the regional area, known as a district, which forms part of an address. |Max140Text |
-| __CareOf__ (0..1 )|`PostalAddress. CareOf` |The 'care of' address is used whenever sending mail to a person or organisation who does not actually live or work at the address. They will receive the mail for the individual. |Max140Text |
-| __PostCode__ (0..1) | `PostalAddress. PostCode` |Identifier consisting of a group of letters and. or numbers that is added to a postal address to assist the sorting of mail.    |Max16Text  |
-| __CountrySubDivision__ (0..1) | `PostalAddress. CountrySubDivision` |Identifies a subdivision of a country such as state, region, county.      |Max35Text  |
-| __Country__ (0..1) | `PostalAddress. Country` | Nation with its own government.      |CountryCode|
+| __PostalAddress__ (0..1) | `PostalAddress` |Information that locates and identifies a specific address, as defined by postal services.| [OBPostalAddress6](../../profiles/vrp-profile.md#obpostaladdress6) |
 
 
 ### OBDomesticVRPInitiation
@@ -226,13 +241,13 @@ The data dictionary section gives the detail on the payload content for the VRP 
 | Name |Path |Definition | Type |
 | ---- |-----|---------- |------|
 | __DebtorAccount__ (0..1) | `DebtorAccount` | Unambiguous identification of the account of the debtor to which a debit entry will be made as a result of the transaction. | [OBCashAccountDebtorWithName](#OBCashAccountDebtorWithName) |
-| __UltimateDebtor__ (0..1) | `UltimateDebtor` | Ultimate party that owes an amount of money to the (ultimate) creditor. |[OBUltimateDebtor1](../../profiles/payment-initiation-api-profile.md#obultimatedebtor1) |
+| __UltimateDebtor__ (0..1) | `UltimateDebtor` | Ultimate party that owes an amount of money to the (ultimate) creditor. |[OBUltimateDebtor1](../../profiles/vrp-profile.md#obultimatedebtor1) |
 | __CreditorAgent__ (0..1) | `CreditorAgent` | Financial institution servicing an account for the creditor.     | OBBranchAndFinancialInstitutionIdentification6 |
 | __CreditorAccount__ (0..1) | `CreditorAccount`   |Unambiguous identification of the account of the creditor to which a credit entry will be posted as a result of the payment transaction.       |OBCashAccountCreditor3 |
-| __CreditorPostalAddress__ | `CreditorPostalAddress` | Information that locates and identifies a specific address, as defined by postal services or in free format text. | OBPostalAddress6|
-| __UltimateCreditor__ (0..1) | `UltimateCreditor` | Ultimate party to which an amount of money is due. |[OBUltimateCreditor1](../../profiles/payment-initiation-api-profile.md#obultimatecreditor1) |
-| __RemittanceInformation__ (0..1) | `RemittanceInformation`   | Information supplied to enable the matching of an entry with the items that the transfer is intended to settle, such as commercial invoices in an accounts' receivable system. | [OBRemittanceInformation1](../../profiles/payment-initiation-api-profile.md#obremittanceinformation1) |
-|__RegulatoryReporting__ (0..10)| `RegulatoryReporting` | Information needed due to regulatory and statutory requirements. | [OBRegulatoryReporting1](../../profiles/payment-initiation-api-profile.md#obregulatoryreporting1) |
+| __CreditorPostalAddress__ | `CreditorPostalAddress` | Information that locates and identifies a specific address, as defined by postal services or in free format text. | [OBPostalAddress6](../../profiles/vrp-profile.md#obpostaladdress6)|
+| __UltimateCreditor__ (0..1) | `UltimateCreditor` | Ultimate party to which an amount of money is due. |[OBUltimateCreditor1](../../profiles/vrp-profile.md#obultimatecreditor1) |
+| __RemittanceInformation__ (0..1) | `RemittanceInformation`   | Information supplied to enable the matching of an entry with the items that the transfer is intended to settle, such as commercial invoices in an accounts' receivable system. | [OBRemittanceInformation1](../../profiles/vrp-profile.md#obremittanceinformation1) |
+|__RegulatoryReporting__ (0..10)| `RegulatoryReporting` | Information needed due to regulatory and statutory requirements. | [OBRegulatoryReporting1](../../profiles/vrp-profile.md#obregulatoryreporting1) |
 
 
 
@@ -256,7 +271,7 @@ The VRP consent is a common class used in `domestic-payment-consents` requests a
 | __Amount__ (1..1)                   | `ControlParameters. PeriodicLimits. Amount`            | A number of monetary units specified in an active currency where the unit of currency is explicit and compliant with ISO 4217.                                                                                                                                                   |                                                     |
 | __Currency__ (1..1)                 | `ControlParameters. PeriodicLimits. Currency`          | A code allocated to a currency by a Maintenance Agency under an international identification scheme, as described in the latest edition of the international standard ISO 4217 "Codes for the representation of currencies and funds".                                           | ActiveOrHistoricCurrencyCode                        |
 | __VRPType__ (1..*)                  | `ControlParameters. VRPType`                           | The types of payments that can be made under this VRP consent. This can be used to indicate whether this include sweeping payment or other ecommerce payments.                                                                                                                   | OBVRPConsentType - Namespaced Enumeration           |
-| __PSUAuthenticationMethods__ (1..M) | `ControlParameters. PSUAuthenticationMethods`          | Indicates that the PSU authentication methods supported.                                                                                                                                                                                                                         | OBVRPAuthenticationMethods - Namespaced Enumeration |
+| __PSUAuthenticationMethods__ (1..*) | `ControlParameters. PSUAuthenticationMethods`          | Indicates that the PSU authentication methods supported.                                                                                                                                                                                                                         | OBVRPAuthenticationMethods - Namespaced Enumeration |
 | __PSUInteractionTypes__ (0..*)      | `ControlParameters. PSUInteractionTypes`               | Indicates interaction type, currently if customer is present or not present.                                                                                                                                                                                                                         | OBVRPInteractionTypes                               |
 | __SupplementaryData__ (0..1)        | `ControlParameters. SupplementaryData`                 | Additional information that can not be captured in the structured fields and/or any other specific block                                                                                                                                                                         | *                                                   |
 
