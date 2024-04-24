@@ -344,7 +344,7 @@ Two strategies for handling behaviour are:
 In this scenario, the behaviour of payment-order execution is explicit to the PISP and PSU.
 
 - An ASPSP **must** reject the payment-order **consent** if the CutOffDateTime for a specific payment-order type has elapsed.
-- An ASPSP **must** reject an authorization request when the underlying intent object is associated with a CutoffDateTime that has elapsed. The ASPSP **must not** issue an access token in such a situation. The ASPSP **must** set the status of the payment-order consent resource to “RJCT”.
+- An ASPSP **must** reject an authorization request when the underlying intent object is associated with a CutoffDateTime that has elapsed. The ASPSP **must not** issue an access token in such a situation. The ASPSP **must** set the status of the payment-order consent resource to 'RJCT' which mean 'Rejected'.
 - An ASPSP **must** reject the payment-order **resource** if the CutOffDateTime for a specific payment-order type, has been established and has elapsed.
 - A PISP **must** ensure that the PSU consent authorisation is completed and the payment-order resource is created before the CutOffDateTime elapses.
 
@@ -453,7 +453,7 @@ In the payment-order consent:
 - A PISP **may** request an AuthorisationType for the payment-order (i.e., Single or Any). If a value is not provided, an ASPSP will interpret the AuthorisationType as 'Any'.
 - A PISP **may** request a CompletionDateTime for the payment-order authorisation to be complete. If a value is not provided, an ASPSP will interpret the CompletionDateTime as unbounded.
 - An ASPSP **must** reject the payment-order consent if the AuthorisationType requested by the PISP does not match the DebtorAccount in the request.
-- An ASPSP **must** set the status of the payment-order consent to `RJCT` which means Rejected, if the AuthorisationType requested by the PISP cannot be satisfied, after PSU Authentication:
+- An ASPSP **must** set the status of the payment-order consent to 'RJCT' which means 'Rejected', if the AuthorisationType requested by the PISP cannot be satisfied, after PSU Authentication:
   - The ASPSP must respond back with an OAuth error response fields  _**error**_ specified as invalid_request and _**error_description**_ containing an appropriate message. The ASPSP must also provide the same status reason in the payment-order consent.
 - An ASPSP **must** restrict the selection of DebtorAccount (in the ASPSP online channel) to accounts that match the AuthorisationType requested by the PISP.
 
@@ -472,6 +472,7 @@ Once the final authorisation is received by the ASPSP, the ASPSP **may** notify 
 #### Error Condition
 
 If the PSU does not complete a successful consent authorisation (e.g., if the PSU has not authenticated successfully), the authorization code grant ends with a redirection to the TPP with an error response as described in [RFC 6749 Section 4.1.2.1](https://tools.ietf.org/html/rfc6749#section-4.1.2.1). The PSU is redirected to the TPP with an error parameter indicating the error that occurred.
+The ASPSP must update the payment-order consent status reason with appropriate reason. Refer to CEG - Common Error Scenarios – [Preferred Status and Reasons](https://consultation.standards.openbanking.org.uk/customer-experience-guidelines/appendices/common-errors/v4-0-draft1/).
 
 #### Consent Revocation
 
