@@ -109,7 +109,7 @@ The domestic-standing-orders - payment-details must have one of the following Pa
 
 The state model for the domestic-standing-order resource describes the initiation status and the subsequent execution of the domestic-standing-order.
 
-![Payment Order Status](./images/PIS_PO_Statuses.png)
+![Payment Order Status](./images/PIS_PO_SOFlow1Statuses.png)
 
 
 ##### Multiple Authorisation

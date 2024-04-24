@@ -109,7 +109,7 @@ The international-standing-orders - payment-details must have one of the followi
 
 The state model for the international-standing-orders resource describes the initiation status and the subsequent execution of the international-standing-orders.
 
-![Payment Order Status](./images/PIS_PO_Statuses.png)
+![Payment Order Status](./images/PIS_PO_SOFlow1Statuses.png)
 
 
 ##### Multiple Authorisation

@@ -110,7 +110,7 @@ The domestic-scheduled-payments - payment-details must have one of the following
 
 The state model for the domestic-scheduled-payment resource describes the initiation and subsequent execution of the domestic-scheduled-payment.
 
-![Payment Order Status](./images/PIS_PO_Statuses.png)
+![Payment Order Status](./images/PIS_PO_SOFlow1Statuses.png)
 
 
 ##### Multiple Authorisation
