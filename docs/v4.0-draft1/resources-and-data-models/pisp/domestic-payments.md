@@ -14,6 +14,7 @@
   - [Reused Classes](#reused-classes)
     - [OBDomestic2](#obdomestic2)
     - [OBRemittanceInformation1](#obremittanceinformation1)
+    - [OBRegulatoryReporting1](#obregulatoryreporting1)
   - [Domestic Payment - Request](#domestic-payment-request)
     - [UML Diagram](#uml-diagram)
     - [Notes](#notes)
@@ -155,6 +156,11 @@ The OBDomestic2 class is defined in the [domestic-payment-consents](./domestic-p
 
 The OBRemittanceInformation1 class is defined in the [payment-initiation-api-profile](../../profiles/payment-initiation-api-profile.md#obremittanceinformation1) page.
 
+#### OBRegulatoryReporting1
+
+The OBRegulatoryReporting1 class is defined in the [payment-initiation-api-profile](../../profiles/payment-initiation-api-profile.md#obregulatoryreporting1) page.
+
+
 ### Domestic Payment - Request
 
 The OBWriteDomestic2 object will be used for a call to:
@@ -183,20 +189,7 @@ The **Initiation** and **Risk** sections of the domestic-payment request **must*
 | ConsentId |1..1 |OBWriteDomestic2/Data/ConsentId |OB: Unique identification as assigned by the ASPSP to uniquely identify the consent resource. |Max128Text | | |
 | Initiation |1..1 |OBWriteDomestic2/Data/Initiation |The Initiation payload is sent by the initiating party to the ASPSP. It is used to request movement of funds from the debtor account to a creditor for a single domestic payment. |OBDomestic2 | | |
 | Risk |1..1 |OBWriteDomestic2/Risk |The Risk section is sent by the initiating party to the ASPSP. It is used to specify additional details for risk scoring for Payments. |OBRisk1 | | |
-| RegulatoryReporting |0..10 |OBWriteDomestic2/Data/RegulatoryReporting |Information needed due to regulatory and statutory requirements. |RegulatoryReporting3 | | |
-| DebitCreditReportingIndicator |0..1 |OBWriteDomestic2/Data/RegulatoryReporting/DebitCreditReportingIndicator | Identifies whether the regulatory reporting information applies to the debit side, to the credit side or to both debit and credit sides of the transaction. |RegulatoryReportingType1Code |CRED DEBT BOTH | |
-| Authority |0..1 |OBWriteDomestic2/Data/RegulatoryReporting/Authority |Entity requiring the regulatory reporting information. |RegulatoryAuthority2 | | |
-| Name |0..1 |OBWriteDomestic2/Data/RegulatoryReporting/Authority/Name |Name of the entity requiring the regulatory reporting information. |Max140Text | | |
-| Country |0..1 |OBWriteDomestic2/Data/RegulatoryReporting/Authority/Country |Country of the entity that requires the regulatory reporting information. |CountryCode | | |
-| Details |0..* |OBWriteDomestic2/Data/RegulatoryReporting/Details |Set of elements used to provide details on the regulatory reporting information. |StructuredRegulatoryReporting3 | | |
-| Type |0..1 |OBWriteDomestic2/Data/RegulatoryReporting/Details/Type |Specifies the type of the information supplied in the regulatory reporting details. |Max35Text | | |
-| Date |0..1 |OBWriteDomestic2/Data/RegulatoryReporting/Details/Date |Date related to the specified type of regulatory reporting details. |ISODateTime | | |
-| Country |0..1 |OBWriteDomestic2/Data/RegulatoryReporting/Details/Country |Country related to the specified type of regulatory reporting details. |CountryCode | | ^[A-Z]{2,2}$ |
-| Code |0..1 |OBWriteDomestic2/Data/RegulatoryReporting/Details/Code |Specifies the nature, purpose, and reason for the transaction to be reported for regulatory and statutory requirements in a coded form. |Max10Text | | |
-| Amount |0..1 |OBWriteDomestic2/Data/RegulatoryReporting/Details/Amount |Amount of money to be reported for regulatory and statutory requirements. |OBActiveOrHistoricCurrencyAndAmount | | |
-| Amount |1..1 |OBWriteDomestic2/Data/RegulatoryReporting/Details/Amount/Amount |A number of monetary units specified in an active currency where the unit of currency is explicit and compliant with ISO 4217. | | | |
-| Currency |1..1 |OBWriteDomestic2/Data/RegulatoryReporting/Details/Amount/Currency |A code allocated to a currency by a Maintenance Agency under an international identification scheme, as described in the latest edition of the international standard ISO 4217 "Codes for the representation of currencies and funds". |ActiveOrHistoricCurrencyCode | | ^[A-Z]{3,3}$ |
-| Information |0..* |OBWriteDomestic2/Data/RegulatoryReporting/Details/Information |Additional details that cater for specific domestic regulatory requirements. |Max35Text | | |
+| RegulatoryReporting |0..10 |OBWriteDomestic2/Data/RegulatoryReporting |Information needed due to regulatory and statutory requirements. |OBRegulatoryReporting1 | | |
 
 ### Domestic Payment - Response
 

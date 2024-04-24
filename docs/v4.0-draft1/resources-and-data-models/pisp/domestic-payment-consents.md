@@ -16,6 +16,7 @@
       - [Notes](#notes)
       - [Data Dictionary](#data-dictionary)
     - [OBRemittanceInformation1](#obremittanceinformation1)
+    - [OBRegulatoryReporting1](#obregulatoryreporting1)
   - [Domestic Payment Consent - Request](#domestic-payment-consent-request)
     - [UML Diagram](#uml-diagram-2)
     - [Notes](#notes-2)
@@ -205,20 +206,7 @@ For the OBDomestic2 Initiation object:
 | AddressLine |0..7 |OBDomestic2/CreditorPostalAddress/AddressLine |Information that locates and identifies a specific address, as defined by postal services, presented in free format text. |Max70Text | | | |
 | RemittanceInformation |0..1 |OBDomestic2/RemittanceInformation |Information supplied to enable the matching of an entry with the items that the transfer is intended to settle, such as commercial invoices in an accounts' receivable system. |OBRemittanceInformation1 | | |
 | SupplementaryData |0..1 |OBDomestic2/SupplementaryData |Additional information that can not be captured in the structured fields and/or any other specific block. |OBSupplementaryData1 | | |
-| RegulatoryReporting |0..10 |OBDomestic2/RegulatoryReporting |Information needed due to regulatory and statutory requirements. |RegulatoryReporting3 | | |
-| DebitCreditReportingIndicator |0..1 |OBDomestic2/RegulatoryReporting/DebitCreditReportingIndicator | Identifies whether the regulatory reporting information applies to the debit side, to the credit side or to both debit and credit sides of the transaction. |RegulatoryReportingType1Code |CRED DEBT BOTH | |
-| Authority |0..1 |OBDomestic2/RegulatoryReporting/Authority |Entity requiring the regulatory reporting information. |RegulatoryAuthority2 | | |
-| Name |0..1 |OBDomestic2/RegulatoryReporting/Authority/Name |Name of the entity requiring the regulatory reporting information. |Max140Text | | |
-| Country |0..1 |OBDomestic2/RegulatoryReporting/Authority/Country |Country of the entity that requires the regulatory reporting information. |CountryCode | | |
-| Details |0..* |OBDomestic2/RegulatoryReporting/Details |Set of elements used to provide details on the regulatory reporting information. |StructuredRegulatoryReporting3 | | |
-| Type |0..1 |OBDomestic2/RegulatoryReporting/Details/Type |Specifies the type of the information supplied in the regulatory reporting details. |Max35Text | | |
-| Date |0..1 |OBDomestic2/RegulatoryReporting/Details/Date |Date related to the specified type of regulatory reporting details. |ISODateTime | | |
-| Country |0..1 |OBDomestic2/RegulatoryReporting/Details/Country |Country related to the specified type of regulatory reporting details. |CountryCode | | ^[A-Z]{2,2}$ |
-| Code |0..1 |OBDomestic2/RegulatoryReporting/Details/Code |Specifies the nature, purpose, and reason for the transaction to be reported for regulatory and statutory requirements in a coded form. |Max10Text | | |
-| Amount |0..1 |OBDomestic2/RegulatoryReporting/Details/Amount |Amount of money to be reported for regulatory and statutory requirements. |OBActiveOrHistoricCurrencyAndAmount | | |
-| Amount |1..1 |OBDomestic2/RegulatoryReporting/Details/Amount/Amount |A number of monetary units specified in an active currency where the unit of currency is explicit and compliant with ISO 4217. | | | |
-| Currency |1..1 |OBDomestic2/RegulatoryReporting/Details/Amount/Currency |A code allocated to a currency by a Maintenance Agency under an international identification scheme, as described in the latest edition of the international standard ISO 4217 "Codes for the representation of currencies and funds". |ActiveOrHistoricCurrencyCode | | ^[A-Z]{3,3}$ |
-| Information |0..* |OBDomestic2/RegulatoryReporting/Details/Information |Additional details that cater for specific domestic regulatory requirements. |Max35Text | | |
+| RegulatoryReporting |0..10 |OBDomestic2/RegulatoryReporting |Information needed due to regulatory and statutory requirements. |OBRegulatoryReporting1 | | |
 | UltimateCreditor |0..1 |OBDomestic2/UltimateCreditor|Set of elements used to identify a person or an organisation. | OBPartyIdentification43 | | |
 | SchemeName |0..1 |OBDomestic2/UltimateCreditor/SchemeName |Name of the identification scheme, in a coded form as published in an external list. <br>For a full description see `OBExternalAccountIdentification4Code` [here](https://github.com/OpenBankingUK/External_Interal_CodeSets). |OBExternalAccountIdentification4Code | | |
 | Identification |0..1 |OBDomestic2/UltimateCreditor/Identification |Identification assigned by an institution to identify an account. This identification is known by the account owner. |Max256Text | | |
@@ -233,6 +221,11 @@ For the OBDomestic2 Initiation object:
 #### OBRemittanceInformation1
 
 The OBRemittanceInformation1 class is defined in the [payment-initiation-api-profile](../../profiles/payment-initiation-api-profile.md#obremittanceinformation1) page.
+
+#### OBRegulatoryReporting1
+
+The OBRegulatoryReporting1 class is defined in the [payment-initiation-api-profile](../../profiles/payment-initiation-api-profile.md#obregulatoryreporting1) page.
+
 
 ### Domestic Payment Consent - Request
 

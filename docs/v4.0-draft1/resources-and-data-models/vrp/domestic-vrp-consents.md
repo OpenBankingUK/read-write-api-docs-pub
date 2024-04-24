@@ -242,7 +242,7 @@ The data dictionary section gives the detail on the payload content for the VRP 
 | __LEI__ (0..1) | `UltimateCreditor. LEI` | Legal entity identification as an alternate identification for a party. <br>Legal Entity Identifier is a code allocated to a party as described in ISO 17442 "Financial Services - Legal Entity Identifier (LEI)". | Max20Text |
 | __PostalAddress__ (0..1) | `UltimateCreditor. PostalAddress` |Information that locates and identifies a specific address, as defined by postal services.| OBPostalAddress6 |
 | __RemittanceInformation__ (0..1) | `RemittanceInformation`   | Information supplied to enable the matching of an entry with the items that the transfer is intended to settle, such as commercial invoices in an accounts' receivable system. | [OBRemittanceInformation1](../../profiles/payment-initiation-api-profile.md#obremittanceinformation1) |
-|__RegulatoryReporting__ (0..10)| `RegulatoryReporting` | Information needed due to regulatory and statutory requirements. | OBRegulatoryReporting3 |
+|__RegulatoryReporting__ (0..10)| `RegulatoryReporting` | Information needed due to regulatory and statutory requirements. | [OBRegulatoryReporting1](../../profiles/payment-initiation-api-profile.md#obregulatoryreporting1) |
 
 
 

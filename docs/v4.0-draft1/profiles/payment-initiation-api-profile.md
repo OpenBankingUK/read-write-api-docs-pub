@@ -63,6 +63,8 @@
       - [Data Dictionary](#data-dictionary-9)
     - [OBMandateRelatedInformation1](#obmandaterelatedinformation1)
       - [Data Dictionary](#data-dictionary-10)
+    - [OBRegulatoryReporting1](#obregulatoryreporting1)
+      - [Data Dictionary](#data-dictionary-11)
   - [Identifier Fields](#identifier-fields)
     - [Merchant Flow](#merchant-flow)
     - [Party to Party Flow](#party-to-party-flow)
@@ -806,6 +808,25 @@ This section describes the OBSCASupportData1 class, which is used across all  _p
 | Type | 1..1 |OBMandateRelatedInformation1/Frequency/Type |A code indicating the point in time for the credit transfer. |`OBFrequency6Code` | For all enum values see `OBFrequency6Code` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets/)| 
 | Reason| 0..1 |OBMandateRelatedInformation1/Reason | Reason for the setup of the credit transfer mandate. |Max256Text | |
 
+#### OBRegulatoryReporting1
+
+##### data Dictionary
+
+| Name | Occurrence | XPath | EnhancedDefinition | Class | Codes | Pattern|
+| --- | --- | --- | --- | --- | ---| ---|
+| OBRegulatoryReporting1 | | |Information needed due to regulatory and statutory requirements. |OBRegulatoryReporting1 | | |
+| DebitCreditReportingIndicator |0..1 |OBRegulatoryReporting1/DebitCreditReportingIndicator | Identifies whether the regulatory reporting information applies to the debit side, to the credit side or to both debit and credit sides of the transaction. |RegulatoryReportingType1Code |CRED DEBT BOTH | |
+| Authority |0..1 |OBRegulatoryReporting1/Authority |Entity requiring the regulatory reporting information. |OBRegulatoryAuthority2 | | |
+| Name |0..1 |OBRegulatoryReporting1/Authority/Name |Name of the entity requiring the regulatory reporting information. |Max140Text | | |
+| CountryCode |0..1 |OBRegulatoryReporting1/Authority/CountryCode |Country of the entity that requires the regulatory reporting information. |CountryCode | | [A-Z]{2,2}|
+| Details |0..* |OBRegulatoryReporting1/Details |Set of elements used to provide details on the regulatory reporting information. |OBStructuredRegulatoryReporting3 | | |
+| Type |0..1 |OBRegulatoryReporting1/Details/Type |Specifies the type of the information supplied in the regulatory reporting details. |Max35Text | | |
+| Information |0..* |OBRegulatoryReporting1/Details/Information |Additional details that cater for specific domestic regulatory requirements. |Max35Text | | |
+| Date |0..1 |OBRegulatoryReporting1/Details/Date |Date related to the specified type of regulatory reporting details. |ISODateTime | | |
+| Country |0..1 |OBRegulatoryReporting1/Details/Country |Country related to the specified type of regulatory reporting details. |CountryCode | | ^[A-Z]{2,2}$ |
+| Amount |0..1 |OBRegulatoryReporting1/Details/Amount |Amount of money to be reported for regulatory and statutory requirements. |OBActiveOrHistoricCurrencyAndAmount | | |
+| Amount |1..1 |OBRegulatoryReporting1/Details/Amount/Amount |A number of monetary units specified in an active currency where the unit of currency is explicit and compliant with ISO 4217. | OBActiveCurrencyAndAmount_SimpleType | ^\d{1,13}$|^\d{1,13}\.\d{1,5}$ |
+| Currency |1..1 |OBRegulatoryReporting1/Details/Amount/Currency |A code allocated to a currency by a Maintenance Agency under an international identification scheme, as described in the latest edition of the international standard ISO 4217 "Codes for the representation of currencies and funds". |ActiveOrHistoricCurrencyCode | | ^[A-Z]{3,3}$ |
 
 ### Identifier Fields
 

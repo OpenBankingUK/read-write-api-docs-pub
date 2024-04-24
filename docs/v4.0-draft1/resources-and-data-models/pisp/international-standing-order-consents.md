@@ -16,6 +16,7 @@
       - [Data Dictionary](#data-dictionary)
     - [OBRemittanceInformation1](#obremittanceinformation1)
     - [OBMandateRelatedInformation1](#obmandaterelatedinformation1)
+    - [OBRegulatoryReporting1](#obregulatoryreporting1)
   - [International Standing Order Consent - Request](#international-standing-order-consent-request)
     - [UML Diagram](#uml-diagram-2)
     - [Notes](#notes-2)
@@ -256,6 +257,9 @@ The OBRemittanceInformation1 class is defined in the [payment-initiation-api-pro
 
 The OBMandateRelatedInformation1 class is defined in the [payment-initiation-api-profile](../../profiles/payment-initiation-api-profile.md#obmandaterelatedinformation1) page.
 
+#### OBRegulatoryReporting1
+
+The OBRegulatoryReporting1 class is defined in the [payment-initiation-api-profile](../../profiles/payment-initiation-api-profile.md#obregulatoryreporting1) page.
 
 ### International Standing Order Consent - Request
 
