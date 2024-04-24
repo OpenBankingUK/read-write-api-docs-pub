@@ -11,6 +11,7 @@
         - [UML Diagram](#uml-diagram)
         - [Notes](#notes)
         - [Data Dictionary](#data-dictionary)
+    - [OBPostalAddress6](#obpostaladdress6)
   - [OBReadParty2](#obreadparty2)
     - [UML Diagram](#uml-diagram-1)
     - [Data Dictionary](#data-dictionary-1)
@@ -112,21 +113,10 @@ The Party resource contains a set of elements that describes a party. The party 
 | Related |1..1 |OBParty2/Relationships/Account/Related |Absolute URI to the related resource. |xs:anyURI | | |
 | Id |1..1 |OBParty2/Relationships/Account/Id |Unique identification as assigned by the ASPSP to uniquely identify the related resource. |Max40Text | | |
 | Address |0..n |OBParty2/Address |Postal address of a party. |OBPostalAddress6 | | |
-| AddressType |0..1 |OBParty2/Address/AddressType | Identifies the nature of the postal address. <br>For a full description see `OBAddressType2Code` [here](https://github.com/OpenBankingUK/External_Interal_CodeSets). | OBAddressType2Code | | |
-| Department |0..1 |OBParty2/Address/Department |Identification of a division of a large organisation or building. |Max70Text | | |
-| SubDepartment |0..1 |OBParty2/Address/SubDepartment |Identification of a sub-division of a large organisation or building. |Max70Text | | |
-| StreetName |0..1 |OBParty2/Address/StreetName |Name of a street or thoroughfare. |Max140Text | | |
-| BuildingNumber |0..1 |OBParty2/Address/BuildingNumber |Number that identifies the position of a building on a street. |Max16Text | | |
-| BuildingName |0..1 |OBParty2/Address/BuildingName |Name of a referenced building. |Max140Text | | |
-| Floor |0..1 |OBParty2/Address/Floor|Number that identifies the level within a building. |Max70Text | | |
-| UnitNumber|0..1 |OBParty2/Address/UnitNumber|Number that identifies the unit of a specific address |Max16Text | | |
-| Room |0..1 |OBParty2/Address/Room|Information that locates and identifies a room to form part of an address. |Max70Text | | |
-| TownName |0..1 |OBParty2/Address/Room/TownName |Name of a built-up area, with defined boundaries, and a local government. |Max140Text | | |
-| TownLocationName |0..1 |OBParty2/Address/TownLocationName |Name of a built-up area, with defined boundaries, and a local government. |Max140Text | | |
-| DistrictName |0..1 |OBParty2/Address/DistrictName |Number that of the regional area, known as a district, which forms part of an address. |Max140Text | | |
-| CareOf |0..1 |OBParty2/Address/CareOf |The 'care of' address is used whenever sending mail to a person or organisation who does not actually live or work at the address. They will receive the mail for the individual. |Max140Text | | |
-| PostCode|0..1 |OBParty2/Address/PostCode | Identifier consisting of a group of letters and/or numbers that is added to a postal address to assist the sorting of mail. |Max16Text | | |
-| PostBox |0..1 |OBParty2/Address/PostCode | Numbered box in a post office, assigned to a person or organisation, where letters are keptuntil called for. |Max16Text | | |
+
+#### OBPostalAddress6 
+
+The OBPostalAddress6 class is defined in the [payment-initiation-api-profile](../../profiles/payment-initiation-api-profile.md#obpostaladdress6) page
 
 ### OBReadParty2
 

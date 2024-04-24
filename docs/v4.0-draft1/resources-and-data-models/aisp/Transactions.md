@@ -17,6 +17,7 @@
   - [Reused Classes](#reused-classes)
     - [OBUltimateCreditor1](#obultimatecreditor1)
     - [OBUltimateDebtor1](#obultimatedebtor1)
+    - [OBPostalAddress6](#obpostaladdress6)
 - [Usage Examples](#usage-examples)
   - [Specific Account](#specific-account)
     - [Get Account Transactions Request](#get-account-transactions-request)
@@ -322,6 +323,10 @@ The OBUltimateCreditor1 class is defined in the [payment-initiation-api-profile]
 #### OBUltimateDebtor1 
 
 The OBUltimateDebtor1 class is defined in the [payment-initiation-api-profile](../../profiles/payment-initiation-api-profile.md#obultimatedebtor1) page.
+
+#### OBPostalAddress6 
+
+The OBPostalAddress6 class is defined in the [payment-initiation-api-profile](../../profiles/payment-initiation-api-profile.md#obpostaladdress6) page
 
 
 ## Usage Examples
