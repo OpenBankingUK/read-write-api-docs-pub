@@ -85,13 +85,13 @@ In the case that a PISP sets up a payment-order consent with a larger field size
 | Name |Initiation/CreditorAccount/Name |1..1 |Max350Text |118 |BENEFICIARY CUSTOMER ACCOUNT NAME |O |**40** |
 | SecondaryIdentification |Initiation/CreditorAccount/SecondaryIdentification |0..1 |Max34Text |120 |REFERENCE INFORMATION |O |**18** |
 | Unstructured |Initiation/RemittanceInformation/Unstructured |0..1 |Max140Text |121 |REMITTANCE INFORMATION |O |140 |
-| Reference |Initiation/RemittanceInformation/Reference |0..1 |Max35Text |120 |REFERENCE INFORMATION |O |**18** |
+| Reference |Initiation/RemittanceInformation/Structured/CreditorReferenceInformation/Reference |0..1 |Max35Text |120 |REFERENCE INFORMATION |O |**18** |
 
 ### Notes
 
 * If the Initiation/CreditorAccount/SecondaryIdentification field is populated - this field must be mapped to field 120 REFERENCE INFORMATION as this will be used for the Creditor Agent to identify the account (i.e., the roll numbers in the building society context).
-* However, if the Initiation/CreditorAccount/SecondaryIdentification is **not** populated then field 120 REFERENCE INFORMATION must be populated with the Initiation/RemittanceInformation/Reference field.
-* If both Initiation/CreditorAccount/SecondaryIdentification and Initiation/RemittanceInformation/Reference are populated by the PISP, only the SecondaryIdentification will be mapped to field 120 REFERENCE INFORMATION. Whether the Initiation/RemittanceInformation/Reference is used in any other ASPSP systems is for the ASPSP to decide.
+* However, if the Initiation/CreditorAccount/SecondaryIdentification is **not** populated then field 120 REFERENCE INFORMATION must be populated with the Initiation/RemittanceInformation/Structured/CreditorReferenceInformation/Reference field.
+* If both Initiation/CreditorAccount/SecondaryIdentification and Initiation/RemittanceInformation/Structured/CreditorReferenceInformation/Reference are populated by the PISP, only the SecondaryIdentification will be mapped to field 120 REFERENCE INFORMATION. Whether the Initiation/RemittanceInformation/Structured/CreditorReferenceInformation/Reference is used in any other ASPSP systems is for the ASPSP to decide.
 * Field 116 ORIGINATING CUSTOMER ACCOUNT NAME must be populated from the ASPSP's system of record
 * Where the Initiation/DebtorAccount/SchemeName field is populated with "UK.OB.SortCodeAccountNumber", the Initiation/DebtorAccount/Identification field will be populated with a 14 digit field comprised of a 6 digit Sort Code (mapped to field 42 ORIGINATING CREDIT INSTITUTION) and 8 digit Account Number (mapped to field 43 ORIGINATING CUSTOMER ACCOUNT NUMBER)
 * Where the Initiation/CreditorAccount/SchemeName field is populated with "UK.OB.SortCodeAccountNumber", the Initiation/CreditorAccount/Identification field will be populated with a 14 digit field comprised of a 6 digit Sort Code (mapped to field 95 BENEFICIARY CREDIT INSTITUTION) and 8 digit Account Number (mapped to field 35 BENEFICIARY CUSTOMER ACCOUNT NUMBER)
@@ -124,13 +124,13 @@ In the case that a PISP sets up a payment-order consent with a larger field size
 | Identification |Initiation/CreditorAccount/Identification |1..1 |Max256Text |1 2 |destination sorting code <br><br>destination a/c number |M M |**6** <br><br>**8** |
 | Name |Initiation/CreditorAccount/Name |1..1 |Max350Text |11 |destination account name |M |**18** |
 | SecondaryIdentification |Initiation/CreditorAccount/SecondaryIdentification |0..1 |Max34Text |10 |service user’s reference |M |**18** |
-| Reference |Initiation/RemittanceInformation/Reference |0..1 |Max35Text |10 |service user’s reference |M |**18** |
+| Reference |Initiation/RemittanceInformation/Structured/CreditorReferenceInformation/Reference |0..1 |Max35Text |10 |service user’s reference |M |**18** |
 
 ### Notes
 
 * If the Initiation/CreditorAccount/SecondaryIdentification field is populated, this must be mapped to field 10 service user's reference as this will be used for the Creditor Agent to identify the account (i.e., the roll numbers in the building society context).
-* However, if the /CreditorAccount/SecondaryIdentification is **not** populated then 10 service user's reference must be populated with the Initiation/RemittanceInformation/Reference field.
-* If both Initiation/CreditorAccount/SecondaryIdentification and Initiation/RemittanceInformation/Reference are populated by the PISP, only the SecondaryIdentification will be mapped to field 10 service user's reference. Whether the Initiation/RemittanceInformation/Reference is used in any other ASPSP systems is for the ASPSP to decide.
+* However, if the /CreditorAccount/SecondaryIdentification is **not** populated then 10 service user's reference must be populated with the Initiation/RemittanceInformation/Structured/CreditorReferenceInformation/Reference field.
+* If both Initiation/CreditorAccount/SecondaryIdentification and Initiation/RemittanceInformation/Structured/CreditorReferenceInformation/Reference are populated by the PISP, only the SecondaryIdentification will be mapped to field 10 service user's reference. Whether the Initiation/RemittanceInformation/Structured/CreditorReferenceInformation/Reference is used in any other ASPSP systems is for the ASPSP to decide.
 * Field 9 service user's name must be populated from the ASPSP's system of record.
 * Where the Initiation/DebtorAccount/SchemeName field is populated with "UK.OB.SortCodeAccountNumber", the Initiation/DebtorAccount/Identification field will be populated with a 14 digit field comprised of a 6 digit Sort Code (mapped to field 5 originating sorting code) and 8 digit Account Number (mapped to field 6 originating account number).
 * Where the Initiation/CreditorAccount/SchemeName field is populated with "UK.OB.SortCodeAccountNumber", the Initiation/CreditorAccount/Identification field will be populated with a 14 digit field comprised of a 6 digit Sort Code (mapped to field 1 destination sorting code) and 8 digit Account Number (mapped to field 2 destination a/c number)
@@ -163,7 +163,7 @@ In the case that a PISP sets up a payment-order consent with a larger field size
 | BuildingNumber |Initiation/CreditorPostalAddress/BuildingNumber |0..1 |Max16Text |59 |Beneficiary Customer |O |35x |
 | PostCode |Initiation/CreditorPostalAddress/PostCode |0..1 |Max16Text |59 |Beneficiary Customer |O |35x |
 | EndToEndIdentification |Initiation/EndToEndIdentification |1..1 |Max35Text |70 |Beneficiary Reference |M |35x |
-| Reference |Initiation/RemittanceInformation/Reference |0..1 |Max35Text |70 |Beneficiary Reference |O |35x |
+| Reference |Initiation/RemittanceInformation/Structured/CreditorReferenceInformation/Reference |0..1 |Max35Text |70 |Beneficiary Reference |O |35x |
 | Unstructured |Initiation/RemittanceInformation/Unstructured |0..1 |Max140Text |70 |Beneficiary Reference |O |**2*35x** |
 
 ### Notes
@@ -178,5 +178,5 @@ In the case that a PISP sets up a payment-order consent with a larger field size
   * Initiation/CreditorPostalAddress/PostCode.
 * Beneficiary Reference (70) - this MT103 field has 4 fields of length 35 to be mapped with:
   * /ROC/ and EndToEndIndentification
-  * /RFB/ and RemittanceInformation/Reference (only 16 chars supported)
+  * /RFB/ and RemittanceInformation/Structured/CreditorReferenceInformation/Reference (only 16 chars supported)
   * RemittanceInformation/Unstructured
