@@ -13,6 +13,7 @@
 - [Data Model](#data-model)
   - [Reused Classes](#reused-classes)
     - [OBDomestic2](#obdomestic2)
+    - [OBRemittanceInformation1](#obremittanceinformation1)
   - [Domestic Payment - Request](#domestic-payment-request)
     - [UML Diagram](#uml-diagram)
     - [Notes](#notes)
@@ -149,6 +150,10 @@ The data dictionary section gives the detail on the payload content for the Dome
 #### OBDomestic2
 
 The OBDomestic2 class is defined in the [domestic-payment-consents](./domestic-payment-consents.md#obdomestic2) page.
+
+#### OBRemittanceInformation1
+
+The OBRemittanceInformation1 class is defined in the [payment-initiation-api-profile](../../profiles/payment-initiation-api-profile.md#obremittanceinformation1) page.
 
 ### Domestic Payment - Request
 

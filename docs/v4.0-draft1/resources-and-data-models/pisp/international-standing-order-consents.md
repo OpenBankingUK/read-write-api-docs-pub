@@ -14,6 +14,7 @@
       - [UML Diagram](#uml-diagram)
       - [Notes](#notes)
       - [Data Dictionary](#data-dictionary)
+    - [OBRemittanceInformation1](#obremittanceinformation1)
   - [International Standing Order Consent - Request](#international-standing-order-consent-request)
     - [UML Diagram](#uml-diagram-2)
     - [Notes](#notes-2)
@@ -157,15 +158,6 @@ For the OBInternationalStandingOrder4 Initiation object:
 | PointInTime | 1..1 |OBInternationalStandingOrder4/MandateRelatedInformation/PointInTime |ISODateTime | | |
 | Reason| 0..1 |OBInternationalStandingOrder4/MandateRelatedInformation/Reason | |Max256Text | |
 | RemittanceInformation |0..1 |OBInternationalStandingOrder4/RemittanceInformation |Information supplied to enable the matching of an entry with the items that the transfer is intended to settle, such as commercial invoices in an accounts' receivable system. |OBRemittanceInformation1 | | |
-| Structured |0..* |OBInternationalStandingOrder4/RemittanceInformation/Structured |Information supplied to enable the matching/reconciliation of an entry with the items that the payment is intended to settle, such as commercial invoices in an accounts' receivable system, in an structured form. |OBRemittanceInformationStructured | | |
-| ReferredDocumentInformation |0..* |OBInternationalStandingOrder4/RemittanceInformation/Structured/ReferredDocumentInformation | |OBReferredDocumentInformation | | |
-| ReferredDocumentAmount |0..1 |OBInternationalStandingOrder4/RemittanceInformation/Structured/ReferredDocumentAmount | |OBReferredDocumentAmount| | |
-| CreditorReferenceInformation |0..1 |OBInternationalStandingOrder4/CreditorReferenceInformation/Structured/ReferredDocumentAmount | |OBCreditorReferenceInformation| | |
-| Invoicer |0..1 |OBInternationalStandingOrder4/CreditorReferenceInformation/Structured/Invoicer | |OBInvoicer| | |
-| Invoicee |0..1 |OBInternationalStandingOrder4/CreditorReferenceInformation/Structured/Invoicee | |OBInvoicee| | |
-| TaxRemittance |0..1 |OBInternationalStandingOrder4/CreditorReferenceInformation/Structured/TaxRemittance | |OBTaxRemittance| | |
-| AdditionalRemittanceInformation |0..3|OBInternationalStandingOrder4/CreditorReferenceInformation/Structured/AdditionalRemittanceInformation | |OBAdditionalRemittanceInformation| | |
-| Unstructured |0..* |OBInternationalStandingOrder4/RemittanceInformation/Unstructured |Information supplied to enable the matching/reconciliation of an entry with the items that the payment is intended to settle, such as commercial invoices in an accounts' receivable system, in an unstructured form. |Max140Text | | |
 | NumberOfPayments |0..1 |OBInternationalStandingOrder4/NumberOfPayments |Number of the payments that will be made in completing this frequency sequence including any executed since the sequence start date. |Max35Text | | |
 | Purpose |0..1 |OBInternationalStandingOrder4/Purpose |Specifies the external purpose code in the format of character string with a maximum length of 4 characters. The list of valid codes is an external code list published separately. External code sets can be downloaded from www.iso20022.org. |OBExternalPurpose1Code1 | | |
 | ChargeBearer |0..1 |OBInternationalStandingOrder4/ChargeBearer |Specifies which party/parties will bear the charges associated with the processing of the payment transaction. |OBChargeBearerType1Code |BorneByCreditor BorneByDebtor FollowingServiceLevel Shared | |
@@ -265,6 +257,11 @@ For the OBInternationalStandingOrder4 Initiation object:
 | Identification |0..1 |OBInternationalStandingOrder4/UltimateDebtor/Identification |Identification assigned by an institution to identify an account. This identification is known by the account owner. |Max256Text | | |
 | Name |0..1 |OBInternationalStandingOrder4/UltimateDebtor/Name |The account name is the name or names of the account owner(s) represented at an account level, as displayed by the ASPSP's online channels. Note, the account name is not the product name or the nickname of the account. |Max350Text | | |
 | LEI |0..1 | OBInternationalStandingOrder4/UltimateDebtor/LEI |Legal Entity Identification by which a party is known and which is usually used to identify that party. |Max20Text | | |
+
+#### OBRemittanceInformation1
+
+The OBRemittanceInformation1 class is defined in the [payment-initiation-api-profile](../../profiles/payment-initiation-api-profile.md#obremittanceinformation1) page.
+
 
 ### International Standing Order Consent - Request
 

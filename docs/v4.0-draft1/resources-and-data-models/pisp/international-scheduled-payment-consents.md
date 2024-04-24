@@ -17,6 +17,7 @@
       - [Data Dictionary](#data-dictionary)
     - [OBExchangeRate2](#obexchangerate2)
       - [Data Dictionary](#data-dictionary-2)
+    - [OBRemittanceInformation1](#obremittanceinformation1)
   - [International Scheduled Payment Consent - Request](#international-scheduled-payment-consent-request)
     - [UML Diagram](#uml-diagram-2)
     - [Notes](#notes-2)
@@ -261,15 +262,6 @@ The ExchangeRateInformation object must conform to these behaviours:
 | Code |1..1 |OBInternationalScheduled3/CreditorAccount/Proxy/Code| Specifies the external proxy account type code, as published in the proxy account type external code set.<br> For more information see `ExternalProxyAccountType1Code` [here](https://github.com/OpenBankingUK/External_Interal_CodeSets) |OBExternalProxyAccountType1Code | | |
 | Proprietary |1..1 |OBInternationalScheduled3/CreditorAccount/Proxy/Proprietary| The owner of the proxy account |MaxText70 | | |
 | RemittanceInformation |0..1 |OBInternationalScheduled3/RemittanceInformation |Information supplied to enable the matching of an entry with the items that the transfer is intended to settle, such as commercial invoices in an accounts' receivable system. |OBRemittanceInformation1 | | |
-| Structured |0..* |OBInternationalScheduled3/RemittanceInformation/Structured |Information supplied to enable the matching/reconciliation of an entry with the items that the payment is intended to settle, such as commercial invoices in an accounts' receivable system, in an structured form. |OBRemittanceInformationStructured | | |
-| ReferredDocumentInformation |0..* |OBInternationalScheduled3/RemittanceInformation/Structured/ReferredDocumentInformation | |OBReferredDocumentInformation | | |
-| ReferredDocumentAmount |0..1 |OBInternationalScheduled3/RemittanceInformation/Structured/ReferredDocumentAmount | |OBReferredDocumentAmount| | |
-| CreditorReferenceInformation |0..1 |OBInternationalScheduled3/CreditorReferenceInformation/Structured/ReferredDocumentAmount | |OBCreditorReferenceInformation| | |
-| Invoicer |0..1 |OBInternationalScheduled3/CreditorReferenceInformation/Structured/Invoicer | |OBInvoicer| | |
-| Invoicee |0..1 |OBInternationalScheduled3/CreditorReferenceInformation/Structured/Invoicee | |OBInvoicee| | |
-| TaxRemittance |0..1 |OBInternationalScheduled3/CreditorReferenceInformation/Structured/TaxRemittance | |OBTaxRemittance| | |
-| AdditionalRemittanceInformation |0..3|OBInternationalScheduled3/CreditorReferenceInformation/Structured/AdditionalRemittanceInformation | |OBAdditionalRemittanceInformation| | |
-| Unstructured |0..* |OBInternationalScheduled3/RemittanceInformation/Unstructured |Information supplied to enable the matching/reconciliation of an entry with the items that the payment is intended to settle, such as commercial invoices in an accounts' receivable system, in an unstructured form. |Max140Text | | |
 | SupplementaryData |0..1 |OBInternationalScheduled3/SupplementaryData |Additional information that can not be captured in the structured fields and/or any other specific block. |OBSupplementaryData1 | | |
 | RegulatoryReporting |0..10 |OBInternationalScheduled3/RegulatoryReporting |Information needed due to regulatory and statutory requirements. |RegulatoryReporting3 | | |
 | DebitCreditReportingIndicator |0..1 |OBInternationalScheduled3/RegulatoryReporting/DebitCreditReportingIndicator | Identifies whether the regulatory reporting information applies to the debit side, to the credit side or to both debit and credit sides of the transaction. |RegulatoryReportingType1Code |CRED DEBT BOTH | |
@@ -351,6 +343,10 @@ Exchange rate behaviour:
 | Authorisation |0..1 |OBWriteInternationalScheduledConsent5/Data/Authorisation |The authorisation type request from the TPP. |OBAuthorisation1 | | |
 | SCASupportData |0..1 |OBWriteInternationalScheduledConsent5/Data/SCASupportData |Supporting Data provided by TPP, when requesting SCA Exemption. |OBSCASupportData1 | | |
 | Risk |1..1 |OBWriteInternationalScheduledConsent5/Risk |The Risk section is sent by the initiating party to the ASPSP. It is used to specify additional details for risk scoring for Payments. |OBRisk1 | | |
+
+#### OBRemittanceInformation1
+
+The OBRemittanceInformation1 class is defined in the [payment-initiation-api-profile](../../profiles/payment-initiation-api-profile.md#obremittanceinformation1) page
 
 ### International Scheduled Payment Consent - Response
 

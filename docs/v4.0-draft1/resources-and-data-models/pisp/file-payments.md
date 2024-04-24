@@ -14,6 +14,7 @@
 - [Data Model](#data-model)
   - [Reused Classes](#reused-classes)
     - [OBFile2](#obfile2)
+    - [OBRemittanceInformation1](#obremittanceinformation1)
   - [File Payment - Request](#file-payment-request)
     - [UML Diagram](#uml-diagram)
     - [Notes](#notes)
@@ -131,6 +132,10 @@ The data dictionary section gives the detail on the payload content for the File
 #### OBFile2
 
 The OBFile2 class is defined in the [file-payment-consents](./file-payment-consents.md#OBFile2) page.
+
+#### OBRemittanceInformation1
+
+The OBRemittanceInformation1 class is defined in the [payment-initiation-api-profile](../../profiles/payment-initiation-api-profile.md#obremittanceinformation1) page.
 
 ### File Payment - Request
 
