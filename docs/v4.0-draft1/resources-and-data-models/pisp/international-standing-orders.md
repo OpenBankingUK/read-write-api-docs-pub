@@ -207,7 +207,7 @@ The international-standing-orders **response** object contains the:
 | StatusCode |1..1 |OBWriteInternationalStandingOrderResponse7/Data/StatusCode |Specifies the status of resource in code form. |OBExternalStatus1Code |RCVD RJCT ACSP CANC | |
 | StatusUpdateDateTime |1..1 |OBWriteInternationalStandingOrderResponse7/Data/StatusUpdateDateTime |Date and time at which the resource status was updated. |ISODateTime | | |
 | StatusReason |0..* |OBWriteInternationalStandingOrderResponse7/Data/StatusReason |Specifies the status reason. | OBStatusReason |
-| StatusReasonCode |0..1 |OBWriteInternationalStandingOrderResponse7/Data/StatusReason/*/StatusReasonCode |Specifies the status reason in a code form. For a full description see `ExternalStatusReason1Code` [here](https://github.com/OpenBankingUK/External_Interal_CodeSets). | ExternalStatusReason1Code |
+| StatusReasonCode |0..1 |OBWriteInternationalStandingOrderResponse7/Data/StatusReason/*/StatusReasonCode |Specifies the status reason in a code form. For a full description see `ExternalStatusReason1Code` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets). | ExternalStatusReason1Code |
 | StatusReasonDescription |0..1 |OBWriteInternationalStandingOrderResponse7/Data/StatusReason/*/StatusReasonDescription |Description supporting the StatusReasonCode. |
 |Path| 0..1 | OBWriteInternationalStandingOrderResponse7/Data/StatusReason/*/Path| Recommended but optional reference to JSON path if relevant to the StatusReasonCode| Max500Text| | |
 | Refund |0..1 |OBWriteInternationalStandingOrderResponse7/Data/Refund |Unambiguous identification of the refund account to which a refund will be made as a result of the transaction. |OBInternationalRefundAccount1 | | |

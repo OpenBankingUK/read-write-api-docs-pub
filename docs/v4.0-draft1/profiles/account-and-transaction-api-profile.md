@@ -655,7 +655,7 @@ These following ISO Enumerations are used in the Accounts APIs.
 
 The enumerated values specified by Open Banking are documented in Swagger specification and Namespaced Enumerations page.
 
-A list of codes can be found in the [External_Internal_Codesets repository](https://github.com/OpenBankingUK/External_Interal_CodeSets)
+A list of codes can be found in the [External_Internal_Codesets repository](https://github.com/OpenBankingUK/External_Internal_CodeSets)
 
 ## Alternative Flows
 

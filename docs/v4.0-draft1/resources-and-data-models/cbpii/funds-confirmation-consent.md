@@ -78,7 +78,7 @@ Changes to the StatusCode, such as being rejected, should be captured in `Status
 
 | Field | Description |
 |---|---|
-| StatusReasonCode | Code directly relating to the reason for the current Status. See [the codelists](https://github.com/OpenBankingUK/External_Interal_CodeSets) for appropriate values. |
+| StatusReasonCode | Code directly relating to the reason for the current Status. See [the codelists](https://github.com/OpenBankingUK/External_Internal_CodeSets) for appropriate values. |
 | StatusReasonDescription | Description of why the code was returned |
 |Path| Recommended but optional reference to JSON path if relevant to the code |
 
@@ -149,7 +149,7 @@ The OBFundsConfirmationConsent1 object will be used for the following:
 | Proxy |0..1 |OBFundsConfirmationConsent1/Data/DebtorAccount/Proxy |Specifies an alternate assumed name for the identification of the account. |OBProxyAccount | | |
 | Identification |1..1 |OBFundsConfirmationConsent1/Data/DebtorAccount/Proxy/Identification| Identification used to indicate the account identification under another specified name. |Max256Text | | |
 | Type |0..1 |OBFundsConfirmationConsent1/Data/DebtorAccount/Proxy/Type| Type of the proxy identification. |MaxText70 | | |
-| Code |1..1 |OBFundsConfirmationConsent1/Data/DebtorAccount/Proxy/Code| Specifies the external proxy account type code, as published in the proxy account type external code set. |ExternalProxyAccountType1Code | See `ExternalProxyAccountType1Code` [here](https://github.com/OpenBankingUK/External_Interal_CodeSets)| |
+| Code |1..1 |OBFundsConfirmationConsent1/Data/DebtorAccount/Proxy/Code| Specifies the external proxy account type code, as published in the proxy account type external code set. |ExternalProxyAccountType1Code | See `ExternalProxyAccountType1Code` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets)| |
 
 ### Funds Confirmation Consent - Response
 
@@ -183,7 +183,7 @@ The OBFundsConfirmationConsentResponse1 object contains the same information as 
 | ExpirationDateTime |0..1 |OBFundsConfirmationConsentResponse1/Data/ExpirationDateTime |Specified date and time the funds confirmation authorisation will expire. If this is not populated, the authorisation will be open ended. |ISODateTime | | |
 | StatusCode |0..1 |OBFundsConfirmationConsentResponse1/Data/StatusCode |Specifies the status of consent resource in code form. |OBExternalConsentProprietaryCode |AWAU AUTH RJCT CANC EXPD |||
 | StatusReason |0..* |OBFundsConfirmationConsentResponse1/Data/StatusReason |Array of StatusReasonCodes. | OBStatusReason |||
-| StatusReasonCode |0..1 |OBFundsConfirmationConsentResponse1/Data/StatusReason/StatusReasonCode |Specifies the status reason in a code form. | ExternalStatusReason1Code | See `ExternalStatusReason1Code` [here](https://github.com/OpenBankingUK/External_Interal_CodeSets).||
+| StatusReasonCode |0..1 |OBFundsConfirmationConsentResponse1/Data/StatusReason/StatusReasonCode |Specifies the status reason in a code form. | ExternalStatusReason1Code | See `ExternalStatusReason1Code` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets).||
 | StatusReasonDescription |0..1 |OBFundsConfirmationConsentResponse1/Data/StatusReason/StatusReasonDescription |Description supporting the StatusReasonCode. |
 | Path |0..1 |OBFundsConfirmationConsentResponse1/Data/StatusReason/*/Path |Path is optional but relevant when the status reason refers to an object/field and hence conditional to provide JSON path. |||
 | StatusUpdateDateTime |1..1 |OBFundsConfirmationConsentResponse1/Data/StatusUpdateDateTime |Date and time at which the resource status was updated. |ISODateTime | | |
@@ -195,11 +195,11 @@ The OBFundsConfirmationConsentResponse1 object contains the same information as 
 | Proxy |0..1 |OBFundsConfirmationConsentResponse1/Data/DebtorAccount/Proxy |Specifies an alternate assumed name for the identification of the account |OBProxyAccount | | |
 | Identification |1..1 |OBFundsConfirmationConsentResponse1/Data/DebtorAccount/Proxy/Identification| Identification used to indicate the account identification under another specified name. |Max256Text | | |
 | Type |0..1 |OBFundsConfirmationConsentResponse1/Data/DebtorAccount/Proxy/Type| Type of the proxy identification. |MaxText70 | | |
-| Code |1..1 |OBFundsConfirmationConsentResponse1/Data/DebtorAccount/Proxy/Code| Specifies the external proxy account type code, as published in the proxy account type external code set.<br> For more information see `ExternalProxyAccountType1Code` [here](https://github.com/OpenBankingUK/External_Interal_CodeSets) |OBExternalProxyAccountType1Code | | |
+| Code |1..1 |OBFundsConfirmationConsentResponse1/Data/DebtorAccount/Proxy/Code| Specifies the external proxy account type code, as published in the proxy account type external code set.<br> For more information see `ExternalProxyAccountType1Code` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets) |OBExternalProxyAccountType1Code | | |
 
 ### Data Payload - Enumerations
 
-A full list of enumerations for both OBL and ISO 20022 used in the payloads can be found [here](https://github.com/OpenBankingUK/External_Interal_CodeSets)
+A full list of enumerations for both OBL and ISO 20022 used in the payloads can be found [here](https://github.com/OpenBankingUK/External_Internal_CodeSets)
 
 
 ## Usage Examples

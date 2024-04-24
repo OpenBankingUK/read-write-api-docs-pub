@@ -112,7 +112,7 @@ The Party resource contains a set of elements that describes a party. The party 
 | Related |1..1 |OBParty2/Relationships/Account/Related |Absolute URI to the related resource. |xs:anyURI | | |
 | Id |1..1 |OBParty2/Relationships/Account/Id |Unique identification as assigned by the ASPSP to uniquely identify the related resource. |Max40Text | | |
 | Address |0..n |OBParty2/Address |Postal address of a party. |OBPostalAddress6 | | |
-| AddressType |0..1 |OBParty2/Address/AddressType | Identifies the nature of the postal address. <br>For a full description see `OBAddressType2Code` [here](https://github.com/OpenBankingUK/External_Interal_CodeSets). | OBAddressType2Code | | |
+| AddressType |0..1 |OBParty2/Address/AddressType | Identifies the nature of the postal address. <br>For a full description see `OBAddressType2Code` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets). | OBAddressType2Code | | |
 | Department |0..1 |OBParty2/Address/Department |Identification of a division of a large organisation or building. |Max70Text | | |
 | SubDepartment |0..1 |OBParty2/Address/SubDepartment |Identification of a sub-division of a large organisation or building. |Max70Text | | |
 | StreetName |0..1 |OBParty2/Address/StreetName |Name of a street or thoroughfare. |Max70Text | | |
