@@ -14,6 +14,7 @@
 - [Data Model](#data-model)
   - [Reused Classes](#reused-classes)
     - [OBInternationalStandingOrder4](#obinternationalstandingorder4)
+    - [OBRemittanceInformation1](#obremittanceinformation1)
   - [International Standing Order - Request](#international-standing-order-request)
     - [UML Diagram](#uml-diagram)
     - [Notes](#notes)
@@ -140,6 +141,10 @@ The data dictionary section gives the detail on the payload content for the Inte
 #### OBInternationalStandingOrder4
 
 The OBInternationalStandingOrder4 class is defined in the [international-standing-order-consents](./international-standing-order-consents.md#obinternationalstandingOrder4) page.
+
+#### OBRemittanceInformation1
+
+The OBRemittanceInformation1 class is defined in the [payment-initiation-api-profile](../../profiles/payment-initiation-api-profile.md#obremittanceinformation1) page.
 
 ### International Standing Order - Request
 

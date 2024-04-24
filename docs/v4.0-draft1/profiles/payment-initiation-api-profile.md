@@ -59,6 +59,8 @@
     - [OBSCASupportData1](#obscasupportdata1)
       - [UML Diagram](#uml-diagram-7)
       - [Data Dictionary](#data-dictionary-8)
+    - [OBRemittanceInformation1](#obremittanceinformation1)
+      - [Data Dictionary](#obremittanceinformation1-data-dictionary)
   - [Identifier Fields](#identifier-fields)
     - [Merchant Flow](#merchant-flow)
     - [Party to Party Flow](#party-to-party-flow)
@@ -760,6 +762,29 @@ This section describes the OBSCASupportData1 class, which is used across all  _p
 | AppliedAuthenticationApproach |0..1 |SCASupportData/AppliedAuthenticationApproach |Specifies a character string with a maximum length of 40 characters.<br><br>Usage: This field indicates whether the PSU was subject to SCA performed by the TPP |OBExternalAppliedAuthenticationApproach1Code |CA<br>SCA | |
 | ReferencePaymentOrderId |0..1 |SCASupportData/ReferencePaymentOrderId |If the payment is recurring, then this field is populated with the transaction identifier of the previous payment occurrence so that the ASPSP can verify that the PISP, amount and the payee are the same as the previous occurrence. The value here refers to the payment id e.g. DomesticPaymentId |Max40Text | | |
 | RequestedSCAExemptionType |0..1 |SCASupportData/RequestedSCAExemptionType |This field allows a PISP to request specific SCA Exemption for a Payment Initiation |OBExternalSCAExemptionType1Code |BillPayment<br>ContactlessTravel<br>EcommerceGoods<br>EcommerceServices<br>Kiosk<br>Parking<br>PartyToParty | |
+
+### OBRemittanceInformation1
+
+#### OBRemittanceInformation1 Data Dictionary
+| Name | Occurrence | XPath | EnhancedDefinition | Class | Codes |
+| --- | --- | --- | --- | --- | ---|
+| OBRemittanceInformation1 || |Information supplied to enable the matching of an entry with the items that the transfer is intended to settle, such as commercial invoices in an accounts' receivable system. |OBRemittanceInformation1 | |
+| Structured |0..* |OBRemittanceInformation1/Structured |Information supplied to enable the matching/reconciliation of an entry with the items that the payment is intended to settle, such as commercial invoices in an accounts' receivable system, in an structured form. |OBRemittanceInformationStructured1 | |
+| ReferredDocumentAmount |0..1 |OBRemittanceInformation1/Structured/ReferredDocumentAmount | Provides details on the amounts of the referred document. |Int32| | 
+| Invoicer |0..1 |OBRemittanceInformation1/Structured/Invoicer |Identification of the organisation issuing the invoice, when it is different from the creditor or ultimate creditor |Max256Text| | 
+| Invoicee |0..1 |OBRemittanceInformation1/Structured/Invoicee | Identification of the party to whom an invoice is issued, when it is different from the debtor or ultimate debtor.|Max256Text| | 
+| TaxRemittance |0..1 |OBRemittanceInformation1/Structured/TaxRemittance | Provides remittance information about a payment made for tax-related purposes.|Max140Text| | 
+| AdditionalRemittanceInformation |0..3|OBRemittanceInformation1/Structured/AdditionalRemittanceInformation |Additional information, in free text form, to complement the structured remittance information. |Array of Max140Text ||
+| CreditorReferenceInformation |0..1 |OBRemittanceInformation1/Structured/CreditorReferenceInformation | Reference information provided by the creditor to allow the identification of the underlying documents.|OBCreditorReferenceInformation1| | 
+| Code | 0..1| OBRemittanceInformation1/Structured/CreditorReferenceInformation/Code | Specifies the amount type, as published in an external referred amount code set.|`ExternalCreditorReferenceType1Code`| For more information see `ExternalCreditorReferenceType1Code` [here](https:/github.com/OpenBankingUK/External_Interal_CodeSets) ||
+|Issuer | 0..1| OBRemittanceInformation1/Structured/CreditorReferenceInformation/Issuer | Entity that assigns the identification.| Max35Text |||
+|Reference | 0..1| OBRemittanceInformation1/Structured/CreditorReferenceInformation/Reference | Unique reference, as assigned by the creditor, to unambiguously refer to the payment transaction.| Max35Text ||
+| ReferredDocumentInformation |0..* |OBRemittanceInformation1/Structured/ReferredDocumentInformation |Provides the identification and the content of the referred document. |Array ||  
+| Code | 0..1 |OBRemittanceInformation1/Structured/ReferredDocumentInformation/Code |Type of remittance document, as published in an external document type code set. |`ExternalDocumentType1Code` |For more information see `ExternalDocumentType1Code` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets)|  |
+| Issuer | 0..1 | OBRemittanceInformation1/Structured/ReferredDocumentInformation/Issuer | Identification of the issuer of the reference document type. | Max35Text ||
+| LineDetails | 0..* | OBRemittanceInformation1/Structured/ReferredDocumentInformation/LineDetails | Set of elements used to provide the content of the referred document line. | Array of String ||
+| Number | 0..1 | OBRemittanceInformation1/Structured/ReferredDocumentInformation/Number | Identification of the type specified for the referred document line. | Max35Text ||
+| RelatedDate | 0..1 | OBRemittanceInformation1/Structured/ReferredDocumentInformation/RelatedDate | Date associated with the referred document line. | ISODate ||
 
 ### Identifier Fields
 

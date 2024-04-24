@@ -15,6 +15,7 @@
       - [Notes](#notes)
         - [Frequency Examples](#frequency-examples)
       - [Data Dictionary](#data-dictionary)
+    - [OBRemittanceInformation1](#obremittanceinformation1)
   - [Domestic Standing Order Consent - Request](#domestic-standing-order-consent-request)
     - [UML Diagram](#uml-diagram-2)
     - [Notes](#notes-2)
@@ -172,15 +173,6 @@ For the OBDomesticStandingOrder3 Initiation object:
 | PointInTime | 1..1 |OBDomesticStandingOrder3/MandateRelatedInformation/PointInTime |ISODateTime | | |
 | Reason| 0..1 |OBDomesticStandingOrder3/MandateRelatedInformation/Reason | |Max256Text | |
 | RemittanceInformation |0..1 |OBDomesticStandingOrder3/RemittanceInformation |Information supplied to enable the matching of an entry with the items that the transfer is intended to settle, such as commercial invoices in an accounts' receivable system. |OBRemittanceInformation1 | | |
-| Structured |0..* |OBDomesticStandingOrder3/RemittanceInformation/Structured |Information supplied to enable the matching/reconciliation of an entry with the items that the payment is intended to settle, such as commercial invoices in an accounts' receivable system, in an structured form. |OBRemittanceInformationStructured | | |
-| ReferredDocumentInformation |0..* |OBDomesticStandingOrder3/RemittanceInformation/Structured/ReferredDocumentInformation | |OBReferredDocumentInformation | | |
-| ReferredDocumentAmount |0..1 |OBDomesticStandingOrder3/RemittanceInformation/Structured/ReferredDocumentAmount | |OBReferredDocumentAmount| | |
-| CreditorReferenceInformation |0..1 |OBDomesticStandingOrder3/CreditorReferenceInformation/Structured/ReferredDocumentAmount | |OBCreditorReferenceInformation| | |
-| Invoicer |0..1 |OBDomesticStandingOrder3/CreditorReferenceInformation/Structured/Invoicer | |OBInvoicer| | |
-| Invoicee |0..1 |OBDomesticStandingOrder3/CreditorReferenceInformation/Structured/Invoicee | |OBInvoicee| | |
-| TaxRemittance |0..1 |OBDomesticStandingOrder3/CreditorReferenceInformation/Structured/TaxRemittance | |OBTaxRemittance| | |
-| AdditionalRemittanceInformation |0..3|OBDomesticStandingOrder3/CreditorReferenceInformation/Structured/AdditionalRemittanceInformation | |OBAdditionalRemittanceInformation| | |
-| Unstructured |0..* |OBDomesticStandingOrder3/RemittanceInformation/Unstructured |Information supplied to enable the matching/reconciliation of an entry with the items that the payment is intended to settle, such as commercial invoices in an accounts' receivable system, in an unstructured form. |Max140Text | | |
 | NumberOfPayments |0..1 |OBDomesticStandingOrder3/NumberOfPayments |Number of the payments that will be made in completing this frequency sequence including any executed since the sequence start date. |Max35Text | | |
 | RecurringPaymentDateTime |0..1 |OBDomesticStandingOrder3/RecurringPaymentDateTime |The date on which the first recurring payment for a Standing Order schedule will be made. Usage: This must be populated only if the first recurring date is different to the first payment date. |ISODateTime | | |
 | Amount |1..1 |OBDomesticStandingOrder3/FirstPaymentAmount/Amount |A number of monetary units specified in an active currency where the unit of currency is explicit and compliant with ISO 4217. |OBActiveCurrencyAndAmount_SimpleType | |`^\d{1,13}$|^\d{1,13}\.\d{1,5}$` |
@@ -222,6 +214,10 @@ For the OBDomesticStandingOrder3 Initiation object:
 | Identification |0..1 |OBDomesticStandingOrder3/UltimateDebtor/Identification |Identification assigned by an institution to identify an account. This identification is known by the account owner. |Max256Text | | |
 | Name |0..1 |OBDomesticStandingOrder3/UltimateDebtor/Name |The account name is the name or names of the account owner(s) represented at an account level, as displayed by the ASPSP's online channels. Note, the account name is not the product name or the nickname of the account. |Max350Text | | |
 | LEI |0..1 | OBDomesticStandingOrder3/UltimateDebtor/LEI |Legal Entity Identification by which a party is known and which is usually used to identify that party. |Max20Text | | |
+
+#### OBRemittanceInformation1
+
+The OBRemittanceInformation1 class is defined in the [payment-initiation-api-profile](../../profiles/payment-initiation-api-profile.md#obremittanceinformation1) page.
 
 ### Domestic Standing Order Consent - Request
 

@@ -15,6 +15,7 @@
   - [Reused Classes](#reused-classes)
     - [OBInternationalScheduled3](#obinternationalscheduled3)
     - [OBExchangeRate2](#obexchangerate2)
+    - [OBRemittanceInformation1](#obremittanceinformation1)
   - [International Scheduled Payment - Request](#international-scheduled-payment-request)
     - [UML Diagram](#uml-diagram)
     - [Notes](#notes)
@@ -140,6 +141,11 @@ The OBInternationalScheduled3 class is defined in the [international-scheduled-p
 #### OBExchangeRate2
 
 The OBExchangeRate2 class is defined in the [international-scheduled-payment-consents](./international-scheduled-payment-consents.md#obexchangerate2) page.
+
+#### OBRemittanceInformation1
+
+The OBRemittanceInformation1 class is defined in the [payment-initiation-api-profile](../../profiles/payment-initiation-api-profile.md#obremittanceinformation1) page.
+
 
 ### International Scheduled Payment - Request
 

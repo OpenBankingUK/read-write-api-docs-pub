@@ -14,6 +14,7 @@
 - [Data Model](#data-model)
   - [Reused Classes](#reused-classes)
     - [OBDomesticStandingOrder3](#obdomesticstandingorder3)
+    - [OBRemittanceInformation1](#obremittanceinformation1)
   - [Domestic Standing Order - Request](#domestic-standing-order-request)
     - [UML Diagram](#uml-diagram)
     - [Notes](#notes)
@@ -132,6 +133,10 @@ The Data Dictionary section gives the detail on the payload content for the Dome
 #### OBDomesticStandingOrder3
 
 The OBDomesticStandingOrder3 class is defined in the [domestic-standing-order-consents](./domestic-standing-order-consents.md#OBDOBDomesticstandingorder3) page.
+
+#### OBRemittanceInformation1
+
+The OBRemittanceInformation1 class is defined in the [payment-initiation-api-profile](../../profiles/payment-initiation-api-profile.md#obremittanceinformation1) page.
 
 ### Domestic Standing Order - Request
 
