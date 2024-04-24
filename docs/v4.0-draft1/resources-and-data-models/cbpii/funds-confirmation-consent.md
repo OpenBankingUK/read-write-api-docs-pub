@@ -86,7 +86,7 @@ Changes to the StatusCode, such as being rejected, should be captured in `Status
 
 This is the state diagram for StatusCode.
 
-![CoFStateFlow](./images/PO_Consent_No_Reauth.png)
+![CoFStateFlow](./images/PO_Consent.png)
 
 ### GET /funds-confirmation-consents/{ConsentId}
 

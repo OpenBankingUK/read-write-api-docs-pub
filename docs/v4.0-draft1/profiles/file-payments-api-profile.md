@@ -66,149 +66,76 @@ Step 5: Get Consent/Payment-Order/Payment-Details Status:
 
 #### Sequence Diagram
 
-![File Payment Initiation - High Level Flow](./images/FilePaymentStatusv4-draft9.png)
+![File Payment Initiation - High Level Flow](./images/FilePaymentStatusv4-draft8.png)
 
 <details>
    <Summary>Diagram source</Summary>
 
 ```
-participant PSU #lightyellow
-participant PISP #lightblue
-participant ASPSP Authorisation Server #lightcyan
-participant ASPSP Resource Server #lightcyan
+participant PSU
+participant PISP
+participant ASPSP Authorisation Server
+participant ASPSP Resource Server
 
-note over PSU, ASPSP Resource Server #lightyellow:Step 1: Agree File Payment Initiation
+note over PSU, ASPSP Resource Server
+Step 1: Agree File Payment-Order Initiation
+end note
 
-PSU -> PISP: Agree file-payment initiation request
-
-note over PSU, ASPSP Resource Server #lightyellow:Setup Payment-Order Consent
-
-PISP <-> ASPSP Authorisation Server: Establish TLS 1.2 MA
+note over PSU, ASPSP Resource Server
+Step 2: Setup Agree File Payment-Order Consent
+end note
 PISP -> ASPSP Authorisation Server: Initiate Client Credentials Grant
 ASPSP Authorisation Server -> PISP: access-token
-PISP <-> ASPSP Resource Server: Establish TLS 1.2 MA
+note right of PISP
+   Step 2a: Setup File Payment-Order Consent (Metadata, including Hash)
+end note
 PISP -> ASPSP Resource Server: POST /file-payment-consents
-
-rbox over ASPSP Resource Server #lightgreen: Consent Status: AWUP 
+state over ASPSP Resource Server: Consent Status: AwaitingUpload
 ASPSP Resource Server -> PISP: HTTP 201 (Created),  ConsentId
+note right of PISP
+   Step 2b: Upload File using Consent Id
+end note
+PISP -> ASPSP Resource Server: POST /file-payment-consents/{ConsentId}/file
+state over ASPSP Resource Server: Consent Status: AwaitingAuthorisation
+ASPSP Resource Server -> PISP: HTTP 200 (OK)
+PISP -> PSU: HTTP 302 (Found), Redirect (ConsentId)
 
+note over PSU, ASPSP Resource Server
+Step 3: Authorize File Payment-Order Consent
+end note
+note over PSU, ASPSP Resource Server
+Step 4: Create File Payment-Order
+end note
 
-note over PSU, ASPSP Resource Server #lightyellow:Step 3: Authorize Consent
+note over PSU, ASPSP Resource Server
+Step 5: Get File Payment Consent Status/ Payment File/ File Payment Status/ Payment Report File/ File Payment-Payment Details Status
+end note
 
-alt Redirection (Using authorization code grant)
-        PISP -> PSU: HTTP 302 (Found), Redirect (ConsentId)
-        PSU -> ASPSP Authorisation Server: Follow redirect (ConsentId)
-        PSU <-> ASPSP Authorisation Server: authenticate
-        PSU <-> ASPSP Authorisation Server: SCA if required
-        PSU <-> ASPSP Authorisation Server: Select debtor account if required
-        rbox over ASPSP Resource Server #lightgreen: Consent Status: AUTH
-        ASPSP Authorisation Server -> PSU: HTTP 302 (Found), Redirect (authorization-code)
-        PSU -> PISP: Follow redirect (authorization-code)
-        PISP <-> ASPSP Authorisation Server: Establish TLS 1.2 MA
-        PISP -> ASPSP Authorisation Server: Exchange authorization-code for access token
-        ASPSP Authorisation Server -> PISP: access-token
-else Decoupled (Using CIBA)
-        PISP -> ASPSP Authorisation Server: POST /bc-authorize (login_hint_token)
-        ASPSP Authorisation Server -> PISP: OK
-
-        PSU -> ASPSP Authorisation Server: Authorise (Consent Id)
-        PSU <-> ASPSP Authorisation Server: authenticate
-        PSU <-> ASPSP Authorisation Server: SCA if required
-        PSU <-> ASPSP Authorisation Server: select accounts
-        rbox over ASPSP Resource Server #lightgreen: Consent Status: AUTH
-
-        alt Using callback
-                ASPSP Authorisation Server -> PISP: Callback (authorization-code)
-                PISP <-> ASPSP Authorisation Server: Establish TLS 1.2 MA
-                PISP -> ASPSP Authorisation Server: Exchange authorization-code for access token
-                ASPSP Authorisation Server -> PISP: access-token
-        else Using polling
-                PISP <-> ASPSP Authorisation Server: Establish TLS 1.2 MA
-                PISP -> ASPSP Authorisation Server: Poll at /token using auth-req-id
-                ASPSP Authorisation Server -> PISP: access-token
-        end alt
-end alt
-
-
-note over PSU, ASPSP Resource Server #lightyellow:Step 4: Confirm Funds (Domestic and International Single Immediate Payments Only)
-
-opt
-PISP <-> ASPSP Resource Server: Establish TLS 1.2 MA
-PISP -> ASPSP Resource Server: GET /payment-order-consents/{ConsentId}/funds-confirmation
-ASPSP Resource Server -> PISP: HTTP 200 (OK) funds-confirmation resource
-
+opt File Payment consent
+PISP -> ASPSP Resource Server: GET /file-payment-consents/{ConsentId}
+ASPSP Resource Server -> PISP: HTTP 200 (OK) file-payment-consent resource
 end opt
 
-note over PSU, ASPSP Resource Server #lightyellow:Step 5: Create Payment-Order
-
-PISP <-> ASPSP Resource Server: Establish TLS 1.2 MA
-PISP -> ASPSP Resource Server: POST /payment-orders
-rbox over ASPSP Resource Server #lightgreen: Consent Status: COND
-alt Immediate Payment
-rbox over ASPSP Resource Server #lightgreen: Payment Status: RCVD
-end alt
-ASPSP Resource Server -> PISP: HTTP 201 (Created), Payment-Order Id
-
-note over PSU, ASPSP Resource Server #lightyellow:Step 6: Get Payment-Order-Consent/Payment-Order/Payment-details Status
-
-opt payment-order-consent
-PISP <-> ASPSP Resource Server: Establish TLS 1.2 MA
-PISP -> ASPSP Resource Server: GET /payment-order-consents/{ConsentId}
-alt Immediate
-rbox over ASPSP Resource Server #lightgreen: Payment Status: AWAU
-rbox over ASPSP Resource Server #lightgreen: Payment Status: AUTH
-rbox over ASPSP Resource Server #lightgreen: Payment Status: RJCT
-end alt
-ASPSP Resource Server -> PISP: HTTP 200 (OK) payment-order-consent resource
+opt File uloaded with File Payment consent
+PISP -> ASPSP Resource Server: GET file-payment-consents/{ConsentId}/file
+ASPSP Resource Server -> PISP: HTTP 200 (OK) file resource
 end opt
 
-opt payment-order
-PISP <-> ASPSP Resource Server: Establish TLS 1.2 MA
-PISP -> ASPSP Resource Server: GET /payment-orders/{Payment-Order Id}
-alt Immediate
-rbox over ASPSP Resource Server #lightgreen: Payment Status: RCVD
-rbox over ASPSP Resource Server #orange: Payment Status: PDNG
-rbox over ASPSP Resource Server #orange: Payment Status: ACTC or PATC
-rbox over ASPSP Resource Server #orange: Payment Status: ACCP
-rbox over ASPSP Resource Server #orange: Payment Status: ACFC
-rbox over ASPSP Resource Server #lightgreen: Payment Status: ACSP
-rbox over ASPSP Resource Server #orange: Payment Status: ACWC
-rbox over ASPSP Resource Server #lightgreen: Payment Status: ACSC
-rbox over ASPSP Resource Server #orange: Payment Status: BLCK
-rbox over ASPSP Resource Server #lightgreen: Payment Status: ACWP
-rbox over ASPSP Resource Server #lightgreen: Payment Status: ACCC
-rbox over ASPSP Resource Server #lightgreen: Payment Status: RJCT
-end alt
-alt Additional for FDP and SO 
-rbox over ASPSP Resource Server #orange: Payment Status: CANC
-end alt
-ASPSP Resource Server -> PISP: HTTP 200 (OK) payment-order resource
+opt File Payment status
+PISP -> ASPSP Resource Server: GET /file-payments/{FilePaymentId}
+ASPSP Resource Server -> PISP: HTTP 200 (OK) file-payment resource
 end opt
 
-opt payment-details
-PISP <-> ASPSP Resource Server: Establish TLS 1.2 MA
-PISP -> ASPSP Resource Server: GET /payment-orders/{Payment-Order Id}/payment-details
-alt Immediate
-rbox over ASPSP Resource Server #lightgreen: Payment Status: RCVD
-rbox over ASPSP Resource Server #orange: Payment Status: PDNG
-rbox over ASPSP Resource Server #orange: Payment Status: ACTC or PATC
-rbox over ASPSP Resource Server #orange: Payment Status: ACCP
-rbox over ASPSP Resource Server #orange: Payment Status: ACFC
-rbox over ASPSP Resource Server #lightgreen: Payment Status: ACSP
-rbox over ASPSP Resource Server #orange: Payment Status: ACWC
-rbox over ASPSP Resource Server #orange: Payment Status: ACSC
-rbox over ASPSP Resource Server #orange: Payment Status: BLCK
-rbox over ASPSP Resource Server #lightgreen: Payment Status: ACWP
-rbox over ASPSP Resource Server #lightgreen: Payment Status: ACCC
-rbox over ASPSP Resource Server #lightgreen: Payment Status: RJCT
-end alt
-alt Additional for FDP and SO 
-rbox over ASPSP Resource Server #orange: Payment Status: CANC
-end alt
-ASPSP Resource Server -> PISP: HTTP 200 (OK) payment-details resource
+opt File Payment report file
+PISP -> ASPSP Resource Server: GET /file-payments/{FilePaymentId}/report-file
+ASPSP Resource Server -> PISP: HTTP 200 (OK) file resource
 end opt
 
+opt Payment Status File Payment
+PISP -> ASPSP Resource Server: GET /file-payments/{FilePaymentId}/payment-details
+ASPSP Resource Server -> PISP: HTTP 200 (OK) file resource
+end opt
 
-
+option footer=bar
 ```
 </details>
