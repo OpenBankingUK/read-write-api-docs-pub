@@ -119,7 +119,7 @@ __Payment order state model key:__
 | Orange (Italic) | Optional, but recommended |
 
 
-![Payment Order Status](./images/PIS_PO_Statuses.png)
+![Payment Order Status](./images/PIS_VRP_PO_Statuses.png)
 
 
 ## Data Model
