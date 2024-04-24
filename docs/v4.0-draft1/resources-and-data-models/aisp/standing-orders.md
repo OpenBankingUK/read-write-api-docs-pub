@@ -110,10 +110,10 @@ If the ReadPAN permission is granted by the PSU, the ASPSP may choose to populat
 | FirstPaymentDate | 0..1 |OBReadStandingOrder6/Data/MandateRelatedInformation/FirstPaymentDate |The date on which the first payment for a Standing Order schedule will be made. |ISODate | | |
 | FinalPaymentDate | 0..1 |OBReadStandingOrder6/Data/MandateRelatedInformation/FinalPaymentDate |The date on which the final payment for a Standing Order schedule will be made. |ISODate | | |
 | Frequency | 0..1 |OBReadStandingOrder6/Data/MandateRelatedInformation/Frequency |A code indicating the frequency of payment for the Standing Order. |OBFrequency6 | | |
-| PeriodType | 1..1 |OBReadStandingOrder6/Data/MandateRelatedInformation/Frequency/PeriodType |A code indicating the period type for the Standing Order. |OBFrequency6Code |ADHO<br>YEAR<br>DALI<br>INDA<br>FRTN<br>MNTH<br>QURT<br>MIAN<br>WEEK  | |
-| CountPerPeriod | 1..1 |OBReadStandingOrder6/Data/MandateRelatedInformation/Frequency/CountPerPeriod | |Int32 | |
-| PointInTime | 1..1 |OBReadStandingOrder6/Data/MandateRelatedInformation/Frequency/PointInTime |Further information on the exact point in time the event should take place |Exact2NumericText | |
-| Reason| 0..1 |OBReadStandingOrder6/Data/MandateRelatedInformation/Reason |Reason for the direct debit mandate to allow the user to distinguish between different mandates for the same creditor. |Max256Text | |
+| Type | 1..1 |OBReadStandingOrder6/Data/MandateRelatedInformation/Frequency/Type |A code indicating the period type for the Standing Order. |OBFrequency6Code | | |
+| CountPerPeriod | 0..1 |OBReadStandingOrder6/Data/MandateRelatedInformation/Frequency/CountPerPeriod | |Int32 | |
+| PointInTime | 0..1 |OBReadStandingOrder6/Data/MandateRelatedInformation/Frequency/PointInTime |Further information on the exact point in time the event should take place |Exact2NumericText | |
+| Reason| 0..1 |OBReadStandingOrder6/Data/MandateRelatedInformation/Reason |Reason for the standing order mandate to allow the user to distinguish between different mandates for the same creditor. |Max256Text | |
 | RemittanceInformation |0..1 |OBReadStandingOrder6/Data/StandingOrder/RemittanceInformation |Information supplied to enable the matching of an entry with the items that the transfer is intended to settle. |Max35Text | | |
 | NextPaymentDateTime |0..1 |OBReadStandingOrder6/Data/StandingOrder/NextPaymentDateTime |The date on which the next payment for a Standing Order schedule will be made. |ISODate | | |
 |LastPaymentDateTime| 0..1| OBReadStandingOrder6/Data/StandingOrder/LastPaymentDateTime |The date on which the last (most recent) payment for a Standing Order schedule was made. |ISODateTime | | |
@@ -173,10 +173,11 @@ Content-Type: application/json
         "AccountId": "22289",
         "StandingOrderId": "Ben3",
         "MandateRelatedInformation": {
-            "Frequency": "WEEK",
+            "Frequency": {
             "PeriodType": "WEEK",
             "CountPerPeriod": 1,
             "PointInTime": "10"
+          }
         },
         "Reference": "Towbar Club 2 - We Love Towbars",
         "FirstPaymentAmount": {
@@ -239,12 +240,13 @@ Content-Type: application/json
         "AccountId": "22289",
         "StandingOrderId": "Ben3",
         "MandateRelatedInformation": {
-            "Frequency": "DAIL",
-            "PeriodType": "DAIL",
-            "FirstPaymentDate": "2017-08-12",
-            "LastPaymentDate": "2027-08-12",
+          "FirstPaymentDate": "2017-08-12",
+          "LastPaymentDate": "2027-08-12",
+          "Frequency": {
+            "PeriodType": "DAIL",           
             "CountPerPeriod": 1,
             "PointInTime": "12"
+          }
         },
         "Reference": "Towbar Club 2 - We Love Towbars",
         "FirstPaymentAmount": {
@@ -271,12 +273,13 @@ Content-Type: application/json
         "AccountId": "22289",
         "StandingOrderId": "Ben5",
         "MandateRelatedInformation": {
-            "Frequency": "MNTH",
-            "PeriodType": "MNTH",
             "FirstPaymentDate": "2017-06-12",
             "LastPaymentDate": "2018-06-12",
-            "CountPerPeriod": 1,
-            "PointInTime": "01"
+            "Frequency":{
+              "PeriodType": "MNTH",
+              "CountPerPeriod": 1,
+              "PointInTime": "01"
+          }
         },
         "Reference": "Golf - We Love Golf",
         "FirstPaymentAmount": {

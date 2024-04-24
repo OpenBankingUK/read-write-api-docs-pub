@@ -78,9 +78,9 @@ The resource requires the ReadDirectDebits permission. The resource response pay
 | FirstPaymentDate | 0..1 |OBReadDirectDebit2/Data/DirectDebit/MandateRelatedInformation/FirstPaymentDate |The date on which the first payment for a Direct Debit schedule will be made. |ISODate | | |
 | FinalPaymentDate | 0..1 |OBReadDirectDebit2/Data/DirectDebit/MandateRelatedInformation/FinalPaymentDate |The date on which the final payment for a Direct Debit schedule will be made. |ISODate | | |
 | Frequency | 0..1 |OBReadDirectDebit2/Data/DirectDebit/MandateRelatedInformation/Frequency |A code indicating the frequency of payment for the Direct Debit. |OBFrequency6 | | |
-| PeriodType | 1..1 |OBReadDirectDebit2/Data/DirectDebit/MandateRelatedInformation/Frequency/PeriodType |A code indicating the period type for the Direct Debit. |OBFrequency6Code |ADHO<br>YEAR<br>DALI<br>FRTN<br>INDA<br>MNTH<br>QURT<br>MIAN<br>WEEK | |
-| CountPerPeriod | 1..1 |OBReadDirectDebit2/Data/DirectDebit/MandateRelatedInformation/Frequency/CountPerPeriod | |Int32 | |
-| PointInTime | 1..1 |OBReadDirectDebit2/Data/DirectDebit/MandateRelatedInformation/Frequency/PointInTime |Further information on the exact point in time the event should take place | |Exact2NumericText |
+| Type | 1..1 |OBReadDirectDebit2/Data/DirectDebit/MandateRelatedInformation/Frequency/PeriodType |A code indicating the period type for the Direct Debit. |OBFrequency6Code |ADHO<br>YEAR<br>DALI<br>FRTN<br>INDA<br>MNTH<br>QURT<br>MIAN<br>WEEK | |
+| CountPerPeriod | 0..1 |OBReadDirectDebit2/Data/DirectDebit/MandateRelatedInformation/Frequency/CountPerPeriod | |Int32 | |
+| PointInTime | 0..1 |OBReadDirectDebit2/Data/DirectDebit/MandateRelatedInformation/Frequency/PointInTime |Further information on the exact point in time the event should take place | |Exact2NumericText |
 | Reason| 0..1 |OBReadDirectDebit2/Data/DirectDebit/MandateRelatedInformation/Reason |Reason for the direct debit mandate to allow the user to distinguish between different mandates for the same creditor. |Max256Text | |
 
 ## Usage Examples
@@ -115,9 +115,11 @@ Content-Type: application/json
         "DirectDebitId": "DD03",
         "MandateRelatedInformation": {
             "MandateIdentification": "Caravanners",
-            "PeriodType": "WEEK",
-            "CountPerPeriod": 1,
-            "PointInTime": "00"
+            "Frequency": {
+              "PeriodType": "WEEK",
+              "CountPerPeriod": 1,
+              "PointInTime": "00"
+          }
         },
         "DirectDebitStatusCode": "Active",
         "Name": "Towbar Club 3 - We Love Towbars",
@@ -168,9 +170,11 @@ Content-Type: application/json
         "DirectDebitId": "DD03",
         "MandateRelatedInformation": {
             "MandateIdentification": "Caravanners",
-            "PeriodType": "MNTH",
-            "CountPerPeriod": 1,
-            "PointInTime": "00"
+            "Frequency": {
+              "PeriodType": "MNTH",
+              "CountPerPeriod": 1,
+              "PointInTime": "00"
+          }
         },
         "DirectDebitStatusCode": "Active",
         "Name": "Towbar Club 3 - We Love Towbars",
@@ -185,9 +189,11 @@ Content-Type: application/json
         "DirectDebitId": "DD77",
         "MandateRelatedInformation": {
           "MandateIdentification": "Golfers",
-          "PeriodType": "MNTH",
-          "CountPerPeriod": 1,
-          "PointInTime": "00"
+          "Frequency": { 
+            "PeriodType": "MNTH",
+            "CountPerPeriod": 1,
+            "PointInTime": "00"
+          }
         },
         "DirectDebitStatusCode": "Active",
         "Name": "Golf Club",
