@@ -517,32 +517,33 @@ This section describes the Risk1 class which is reused in the payment-order cons
 | OBRisk1                          |            | OBRisk1                                    | The Risk section is sent by the initiating party to the ASPSP. It is used to specify additional details for risk scoring for Payments.                                                                                         | OBRisk1|||
 | BeneficiaryAccountType| 0..1       | OBRisk1/BeneficiaryAccountType             | To be provided if the AccountType is known.| OBExternalExtendedAccountType1Code | Personal<br>JointPersonal<br>PersonalSavingsAccount<br>Business<br>BusinessSavingsAccount<br>Charity<br>Collection<br>Corporate<br>Government<br>Ewallet<br>Investment<br>ISA<br>Premier<br>Wealth<br>Pension<br>| |
 | BeneficiaryPrepopulatedIndicator | 0..1       | OBRisk1/BeneficiaryPrepopulatedIndicator   | Indicates if PISP has immutably prepopulated payment details in for the PSU. |Boolean|||
-| CategoryPurposeCode| 0..1       | OBRisk1/CategoryPurposeCode|Enumeration to outline the purpose to the underlying purpose of the payment<br> BONU<br>CASH<br>CBLK<br>CCRD<br>CGWV<br>CIPC<br>CONC<br>CORT<br>DCRD<br>DIVI<br>DVPM<br>EPAY<br>FCDT<br>FCIN<br>FCOL<br>GOVT<br>GP2P<br>HEDG<br>ICCP<br>IDCP<br>INTC<br>INTE<br>LBOX<br>LOAN<br>MP2B<br>MP2P<br>OTHR<br>PENS<br>RPRE <br>RRCT<br>RVPM<br>SALA<br>SECU<br>SSBE<br>SUPP<br>SWEP<br>TAXS<br>TOPG<br>TRAD<br>TREA<br>VATX<br>VOST<br>WHLD<br>ZABA| OBCategoryPurposeCode |||
+| CategoryPurposeCode| 0..1       | OBRisk1/CategoryPurposeCode|Specifies the category purpose, as published in an external category purpose code list.<br> For a full description see `ExternalCategoryPurpose1Code` [here](https://github.com/OpenBankingUK/External_Interal_CodeSets). | ExternalCategoryPurpose1Code |||
 | ContractPresentIndicator       | 0..1       | OBRisk1/ContractPresentIndicator         | Indicates if Payee has a contractual relationship with the PISP.| Boolean| | |
 | ExtendedPurpose |0..1 |OBRisk1/ExtendedPurpose |Specifies the purpose of an __international payment__, when there is no corresponding 4 character code available in the ISO20022 list of Purpose Codes. |Max140Text | | |
 | MerchantCategoryCode | 0..1       | OBRisk1/MerchantCategoryCode               | **`@DEPRECATED`** Category code conform to ISO 18245, related to the type of services or goods the merchant provides for the transaction.| Min3Max4Text |  |         |
 | MerchantCustomerIdentification   | 0..1       | OBRisk1/MerchantCustomerIdentification     | The unique customer identifier of the PSU with the merchant. | Max70Text|| |
 | PaymentContextCode               | 0..1       | OBRisk1/PaymentContextCode                 | Specifies the payment context | OBExternalPaymentContext1Code      | <br>BillingGoodsAndServicesInAdvance <br>BillingGoodsAndServicesInArrears <br>EcommerceMerchantInitiatedPayment <br>FaceToFacePointOfSale <br>TransferToSelf <br>TransferToThirdParty |         |
-| PaymentPurposeCode |0..1 |OBRisk1/PaymentPurposeCode | For a full description see `ExternalPurpose1Code` [here](https://github.com/OpenBankingUK/External_Interal_CodeSets) |OBExternalPaymentPurpose1Code | | |
+| PaymentPurposeCode |0..1 |OBRisk1/PaymentPurposeCode | For a full description see `ExternalPurpose1Code` [here](https://github.com/OpenBankingUK/External_Interal_CodeSets). |ExternalPurpose1Code | | |
 | DeliveryAddress                  | 0..1       | OBRisk1/DeliveryAddress                    | Information that locates and identifies a specific address, as defined by postal services or in free format text.| OBPostalAddress6||    |
 |AddressLine| 0..7| OBRisk1/DeliveryAddress/AddressLine | Information that locates and identifies a specific address, as defined by postal services, that is presented in free format text.| Max70text|
-| AddressType |0..1 |OBRisk1/DeliveryAddress/AddressType |BIZZ<br>DLVY<br>MLTO<br>PBOX<br>ADDR<br>HOME<br>CORR<br>STAT | ||
-| BuildingName |0..1 |OBRisk1/DeliveryAddress/BuildingName |Name of a referenced building. |Max140Text| | |
+| AddressType |0..1 |OBRisk1/DeliveryAddress/AddressType | Identifies the nature of the postal address. <br>For a full description see `OBAddressType2Code` [here](https://github.com/OpenBankingUK/External_Interal_CodeSets). | OBAddressType2Code ||
+| BuildingName |0..1 |OBRisk1/DeliveryAddress/BuildingName |Name of the building or house. |Max140Text| | |
 | BuildingNumber |0..1 |OBRisk1/DeliveryAddress/BuildingNumber |Number that identifies the position of a building on a street. |Max16Text | | |
-| CareOf |0..1 |OBRisk1/DeliveryAddress/CareOf |The 'care of' address is used whenever sending mail to a person or organisation who does not actually live or work at the address. They will receive the mail for the individual. |Max140Text| | |
-| Country                          | 0..1       | OBRisk1/DeliveryAddress/Country            | Nation with its own government, occupying a particular territory.  | CountryCode | ^[A-Z]{2,2}$  |  |
+| CareOf |0..1 |OBRisk1/DeliveryAddress/CareOf |Identifies an addressee that is accepting the correspondence for the intended recipient. Using care of ensures the correspondence reaches the right recipient rather than getting returned to the
+sender. |Max140Text| | |
+| Country                          | 0..1       | OBRisk1/DeliveryAddress/Country            | Nation with its own government, occupying a particular territory.  | CountryCode | | ^[A-Z]{2,2}$  |
 |CountrySubDivision| 0..1| OBRisk1/DeliveryAddress/CountrySubDivision | Identifies a subdivision of a country such as state, region, county. | Max35Text|||
 | Department |0..1 |OBRisk1/DeliveryAddress/Department |Identification of a division of a large organisation or building. |Max70Text | | |
-| DistrictName |0..1 |OBRisk1/DeliveryAddress DistrictName |Number that of the regional area, known as a district, which forms part of an address. |Max140Text | | |
-| Floor |0..1 |OBRisk1/DeliveryAddress/Floor|Number that identifies the level within a building. |Max70Text | | |
+| DistrictName |0..1 |OBRisk1/DeliveryAddress DistrictName |Identifies a subdivision within a country sub-division. |Max140Text | | |
+| Floor |0..1 |OBRisk1/DeliveryAddress/Floor|Floor or storey within a building. |Max70Text | | |
 |PostBox | 0..1 | OBRisk1/DeliveryAddress/PostBox | Numbered box in a post office, assigned to a person or organisation, where letters are kept until called for. | Max16Text |||
 | PostCode                         | 0..1       | OBRisk1/DeliveryAddress/PostCode           | Identifier consisting of a group of letters and/or numbers that is added to a postal address to assist the sorting of mail.  | Max16Text   |     |         |
-| Room |0..1 |OBRisk1/DeliveryAddress/Room|Information that locates and identifies a room to form part of an address. |Max70Text | | |
+| Room |0..1 |OBRisk1/DeliveryAddress/Room|Building room number. |Max70Text | | |
 | StreetName |0..1 |OBRisk1/DeliveryAddress StreetName |Name of a street or thoroughfare. |Max140Text | | |
 | SubDepartment |0..1 |OBRisk1/DeliveryAddress/SubDepartment |Identification of a sub-division of a large organisation or building. |Max70Text | | |
-| TownLocationName |0..1 |OBRisk1/DeliveryAddress TownLocationName |Name of a built-up area, with defined boundaries, and a local government. |Max140Text | | |
+| TownLocationName |0..1 |OBRisk1/DeliveryAddress TownLocationName | Specific location name within the town. |Max140Text | | |
 | TownName  | 0..1       | OBRisk1/DeliveryAddress/TownName           | Name of a built-up area, with defined boundaries, and a local government. | Max140Text ||  |
-| UnitNumber|0..1 |OBRisk1/DeliveryAddress/UnitNumber|Number that identifies the unit of a specific address |Max16Text | | |
+| UnitNumber|0..1 |OBRisk1/DeliveryAddress/UnitNumber|Identifies a flat or dwelling within the building. |Max16Text | | |
 
 
 
@@ -639,7 +640,7 @@ This section describes the OBInternationalRefundAccount1 class which is used in 
 | Name |0..1 |OBInternationalRefundAccount1/Creditor/Name |Name by which a party is known and which is usually used to identify that party. |Max350Text | | |
 | LEI |0..1 | OBInternationalRefundAccount1/Creditor/LEI |Legal entity identification |Max20Text | |[A-Z0-9]{18,18}[0-9]{2,2} |
 | PostalAddress |0..1 |OBInternationalRefundAccount1/Creditor/PostalAddress |Information that locates and identifies a specific address, as defined by postal services. |OBPostalAddress6 | | |
-| AddressType |0..1 |OBInternationalRefundAccount1/Creditor/PostalAddress/AddressType |BIZZ<br>DLVY<br>MLTO <br>PBOX<br>ADDR<br>HOME<br>CORR<br>STAT  | |
+| AddressType |0..1 |OBInternationalRefundAccount1/Creditor/PostalAddress/AddressType | Identifies the nature of the postal address. <br>For a full description see `OBAddressType2Code` [here](https://github.com/OpenBankingUK/External_Interal_CodeSets). | OBAddressType2Code |
 | Department |0..1 |OBInternationalRefundAccount1/Creditor/PostalAddress/Department |Identification of a division of a large organisation or building. |Max70Text | | |
 | SubDepartment |0..1 |OBInternationalRefundAccount1/Creditor/PostalAddress/SubDepartment |Identification of a sub-division of a large organisation or building. |Max70Text | | |
 | StreetName |0..1 |OBInternationalRefundAccount1/Creditor/PostalAddress/StreetName |Name of a street or thoroughfare. |Max70Text | | |
@@ -661,7 +662,7 @@ This section describes the OBInternationalRefundAccount1 class which is used in 
 | Identification |0..1 |OBInternationalRefundAccount1/Agent/Identification |Unique and unambiguous identification of a financial institution or a branch of a financial institution. |Max35Text | | |
 | Name |0..1 |OBInternationalRefundAccount1/Agent/Name |Name by which an agent is known and which is usually used to identify that agent. |Max140Text | | |
 | PostalAddress |0..1 |OBInternationalRefundAccount1/Agent/PostalAddress |Information that locates and identifies a specific address, as defined by postal services. |OBPostalAddress6 | | |
-| AddressType |0..1 |OBInternationalRefundAccount1/Agent/PostalAddress/AddressType |BIZZ<br>DLVY<br>MLTO<br>PBOX<br>ADDR<br>HOME<br>CORR <br>STAT | |
+| AddressType |0..1 |OBInternationalRefundAccount1/Agent/PostalAddress/AddressType |Identifies the nature of the postal address. <br>For a full description see `OBAddressType2Code` [here](https://github.com/OpenBankingUK/External_Interal_CodeSets). | OBAddressType2Code |
 | Department |0..1 |OBInternationalRefundAccount1/Agent/PostalAddress/Department |Identification of a division of a large organisation or building. |Max70Text | | |
 | SubDepartment |0..1 |OBInternationalRefundAccount1/Agent/PostalAddress/SubDepartment |Identification of a sub-division of a large organisation or building. |Max70Text | | |
 | StreetName |0..1 |OBInternationalRefundAccount1/Agent/PostalAddress/StreetName |Name of a street or thoroughfare. |Max70Text | | |
@@ -705,10 +706,10 @@ This section describes the OBWritePaymentDetailsResponse1 class which used in th
 | OBWritePaymentDetailsResponse1 |1..1 |OBWritePaymentDetailsResponse1 |Payment status details. |OBWritePaymentDetailsResponse1 | | |
 | LocalInstrument |0..1 |OBWritePaymentDetailsResponse1/Data/StatusDetail/LocalInstrument |User community specific instrument.<br><br>Usage: This element is used to specify a local instrument, local clearing option and/or further qualify the service or service level. |OBExternalLocalInstrument1Code | | |
 | PaymentTransactionId |1..1 |OBWritePaymentDetailsResponse1/Data/PaymentTransactionId |Unique identifier for the transaction within an servicing institution. This identifier is both unique and immutable. |Max210Text | | |
-| StatusCode |1..1 |OBWritePaymentDetailsResponse1/Data/StatusCode |Status of a transfer, as assigned by the transaction administrator. |OBTransactionIndividualExtendedISOStatus1Code |Specifies the status reason in a code form. Values:<br>RCVD<br>PDNG<br>ACTC<br>ACFC<br>ACSP<br>ACSC<br>ACWP<br>ACCC<br>BLCK<br>CANC<br>RJCT| |
+| StatusCode |1..1 |OBWritePaymentDetailsResponse1/Data/StatusCode |Status of a transfer, as assigned by the transaction administrator. <br> For more information and enum values see `ExternalPaymentTransactionStatus1Code`[here](https://github.com/OpenBankingUK/External_Interal_CodeSets). |ExternalPaymentTransactionStatus1Code |Specifies the status reason in a code form. Values:<br>RCVD<br>PDNG<br>ACTC<br>ACFC<br>ACSP<br>ACSC<br>ACWP<br>ACCC<br>BLCK<br>CANC<br>RJCT| |
 | StatusUpdateDateTime |1..1 |OBWritePaymentDetailsResponse1/Data/StatusUpdateDateTime |Date and time at which the status was assigned to the transfer. |ISODateTime | | |
 | StatusDetail |0..* |OBWritePaymentDetailsResponse1/Data/StatusDetail |Array of Payment StatusCodes| | | |
-| StatusCode |1..1 |OBWritePaymentDetailsResponse1/Data/StatusDetail/*/StatusCode |Status of a transfer, as assigned by the transaction administrator. |OBTransactionIndividualExtendedISOStatus1Code |Specifies the status reason in a code form. Values:<br>RCVD<br>PDNG<br>ACTC<br>ACFC<br>ACSP<br>ACSC<br>ACWP<br>ACCC<br>BLCK<br>CANC<br>RJCT| |
+| StatusCode |1..1 |OBWritePaymentDetailsResponse1/Data/StatusDetail/*/StatusCode |Status of a transfer, as assigned by the transaction administrator. <br> For more information and enum values see `ExternalPaymentTransactionStatus1Code`[here](https://github.com/OpenBankingUK/External_Interal_CodeSets). |ExternalPaymentTransactionStatus1Code |Specifies the status reason in a code form. Values:<br>RCVD<br>PDNG<br>ACTC<br>ACFC<br>ACSP<br>ACSC<br>ACWP<br>ACCC<br>BLCK<br>CANC<br>RJCT| |
 | StatusReasonCode |0..1 |OBWritePaymentDetailsResponse1/Data/StatusDetail/*/StatusReasonCode |Specifies the status reason in a code form.<br> For more information and enum values see `ExternalStatusReason1Code`[here](https://github.com/OpenBankingUK/External_Interal_CodeSets) |ExternalStatusReason1Code | | |
 | StatusReasonDescription |0..* |OBWritePaymentDetailsResponse1/Data/StausDetail/*/StatusReasonDescription |Description supporting the StatusReasonCode|Max500Text | | |
 | StatusReasonDescription |0..1 |OBWritePaymentDetailsResponse1/Data/StatusDetail/*/StatusReasonDescription |Reason provided for the status of a transfer. |Max256Text | | |

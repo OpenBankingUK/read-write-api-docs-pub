@@ -346,6 +346,8 @@ The funds-confirmation-consent resource may have one of the following status cod
 | --- |--- |--- |
 | 1 |AUTH |The Funds Confirmation Consent has been successfully authorised. |
 | 2 |RJCT |The Funds Confirmation Consent has been rejected. |
+| 3 | CANC | The Funds Confirmation Consent has been cancelled|
+| 3 | EXPD | The Funds Confirmation Consent has  expired|
 
 #### Consent Re-authentication
 
