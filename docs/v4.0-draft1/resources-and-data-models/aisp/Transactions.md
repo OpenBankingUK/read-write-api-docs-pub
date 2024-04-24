@@ -5,6 +5,11 @@
   - [GET /accounts/{AccountId}/transactions](#get-accountsaccountidtransactions)
   - [GET /transactions](#get-transactions)
 - [Data Model](#data-model)
+  - [Reused Classes](#reused-classes)
+    - [OBProxy1](#OBProxy1)
+    - [OBPostalAddress6](#OBPostalAddress6)
+    - [OBUltimateCreditor1](#OBUltimateCreditor1)
+    - [OBUltimateDebtor1](#OBUltimateDebtor1)
   - [Resource Definition](#resource-definition)
   - [UML Diagram](#uml-diagram)
     - [Notes](#notes)
@@ -57,6 +62,20 @@ The OBReadTransaction6 object will be used for the call to:
 * GET /transactions
 * GET /accounts/{AccountId}/statements/{StatementId}transactions
 
+## Reused Classes
+
+#### OBProxy1
+The OBProxy1 class is defined in the [account-and-transaction-api-profile](../../profiles/account-and-transaction-api-profile.md#OBProxy1) page.
+
+#### OBPostalAddress6
+The OBPostalAddress6 class is defined in the [account-and-transaction-api-profile](../../profiles/account-and-transaction-api-profile.md#OBPostalAddress6) page.
+
+#### OBUltimateCreditor1
+The OBUltimateCreditor1 class is defined in the [account-and-transaction-api-profile](../../profiles/account-and-transaction-api-profile.md#OBUltimateCreditor1) page.
+
+#### OBUltimateDebtor1
+The OBUltimateDebtor1 class is defined in the [account-and-transaction-api-profile](../../profiles/account-and-transaction-api-profile.md#OBUltimateDebtor1) page.
+
 ### Resource Definition
 
 A resource that describes a posting to an account that results in an increase or decrease to a balance.
@@ -76,6 +95,7 @@ For a specific date range, an account (AccountId) may have no transactions booke
 * The BankTransactionCode (ISO) code-list is documented on the ISO20022 website: [here](https://www.iso20022.org/external_code_list.page); and External Code Sets spreadsheet.
   * The ISO 20022 BankTransactionCode Code and SubCode are specified as 4 letter codes. 
 * ASPSPs must have the ability to provide transactions through APIs for a period that at least equals the period provided through their online channels.
+* ExtendedProprietaryBankTransactionCodes is a OB Proprietary field (introduced based on TDA 264) to support multiple proprietry Bank Transaction Codes that may be associated with the transaction, in addition to a single default one. The expectation is to capture the default under ProprietaryBankTransactionCode. The ASPSP must publish all the proprietary and extended proprietary bank transaction codes along with usage on their developer portal.
 
 ### Filtering
 
@@ -246,57 +266,26 @@ The resource differs depending on the permissions (ReadTransactionsBasic and Rea
 | Identification |0..1 |OBReadTransaction6/Data/Transaction/CreditorAgent/Identification |Unique and unambiguous identification of a financial institution or a branch of a financial institution. |Max35Text | | |
 | Name |0..1 |OBReadTransaction6/Data/Transaction/CreditorAgent/Name |Name by which an agent is known and which is usually used to identify that agent. |Max140Text | | |
 | PostalAddress |0..1 |OBReadTransaction6/Data/Transaction/CreditorAgent/PostalAddress |Information that locates and identifies a specific address, as defined by postal services. |OBPostalAddress6 | | |
-| AddressType |0..1 |OBReadTransaction6/Data/Transaction/CreditorAgent/PostalAddress/AddressType |Identifies the nature of the postal address. <br>For a full description see `OBAddressType2Code` [here](https://github.com/OpenBankingUK/External_Interal_CodeSets). | OBAddressType2Code | | |
-| Department |0..1 |OBReadTransaction6/Data/Transaction/CreditorAgent/PostalAddress/Department |Identification of a division of a large organisation or building. |Max70Text | | |
-| SubDepartment |0..1 |OBReadTransaction6/Data/Transaction/CreditorAgent/PostalAddress/SubDepartment |Identification of a sub-division of a large organisation or building. |Max70Text | | |
-| StreetName |0..1 |OBReadTransaction6/Data/Transaction/CreditorAgent/PostalAddress/StreetName |Name of a street or thoroughfare. |Max140Text | | |
-| BuildingNumber |0..1 |OBReadTransaction6/Data/Transaction/CreditorAgent/PostalAddress/BuildingNumber |Number that identifies the position of a building on a street. |Max16Text | | |
-| BuildingName |0..1 |OBReadTransaction6/Data/Transaction/CreditorAgent/PostalAddress/BuildingName |Name of a referenced building. |Max140Text | | |
-| Floor |0..1 |OBReadTransaction6/Data/Transaction/CreditorAgent/PostalAddress/Floor|Number that identifies the level within a building. |Max70Text | | |
-| UnitNumber|0..1 |OBReadTransaction6/Data/Transaction/CreditorAgent/PostalAddress/UnitNumber|Number that identifies the unit of a specific address |Max16Text | | |
-| Room |0..1 |OBReadTransaction6/Data/Transaction/CreditorAgent/PostalAddress/Room|Information that locates and identifies a room to form part of an address. |Max70Text | | |
-| TownLocationName |0..1 |OBReadTransaction6/Data/Transaction/CreditorAgent/PostalAddress/TownLocationName |Name of a built-up area, with defined boundaries, and a local government. |Max140Text | | |
-| DistrictName |0..1 |OBReadTransaction6/Data/Transaction/CreditorAgent/PostalAddress/DistrictName |Number that of the regional area, known as a district, which forms part of an address. |Max140Text | | |
-| CareOf |0..1 |OBReadTransaction6/Data/Transaction/CreditorAgent/PostalAddress/CareOf |The 'care of' address is used whenever sending mail to a person or organisation who does not actually live or work at the address. They will receive the mail for the individual. |Max140Text | | |
-| PostCode |0..1 |OBReadTransaction6/Data/Transaction/CreditorAgent/PostalAddress/PostCode |Identifier consisting of a group of letters and/or numbers that is added to a postal address to assist the sorting of mail. |Max16Text | | |
-| PostBox |0..1 |OBReadTransaction6/Data/Transaction/CreditorAgent/PostalAddress/PostBox |Numbered box in a post office, assigned to a person or organisation, where letters are kept until called for |Max16Text | | |
-| TownName |0..1 |OBReadTransaction6/Data/Transaction/CreditorAgent/PostalAddress/TownName |Name of a built-up area, with defined boundaries, and a local government. |Max140Text | | |
-| CountrySubDivision |0..1 |OBReadTransaction6/Data/Transaction/CreditorAgent/PostalAddress/CountrySubDivision |Identifies a subdivision of a country such as state, region, county. |Max35Text | | |
-| Country |0..1 |OBReadTransaction6/Data/Transaction/CreditorAgent/PostalAddress/Country |Nation with its own government. |CountryCode | |^[A-Z]{2,2}$ |
-| AddressLine |0..7 |OBReadTransaction6/Data/Transaction/CreditorAgent/PostalAddress/AddressLine |Information that locates and identifies a specific address, as defined by postal services, presented in free format text. |Max70Text | | | |
 | CreditorAccount |0..1 |OBReadTransaction6/Data/Transaction/CreditorAccount |Unambiguous identification of the account of the creditor, in the case of a debit transaction. |OBCashAccount6 | | |
 | SchemeName |0..1 |OBReadTransaction6/Data/Transaction/CreditorAccount/SchemeName |Name of the identification scheme, in a coded form as published in an external list. |OBExternalAccountIdentification4Code | | |
 | Identification |0..1 |OBReadTransaction6/Data/Transaction/CreditorAccount/Identification |Identification assigned by an institution to identify an account. This identification is known by the account owner. |Max256Text | | |
 | Name |0..1 |OBReadTransaction6/Data/Transaction/CreditorAccount/Name |The account name is the name or names of the account owner(s) represented at an account level, as displayed by the ASPSP's online channels. Note, the account name is not the product name or the nickname of the account. |Max350Text | | |
+| Proxy |0..1 |OBReadTransaction6/Data/Transaction/CreditorAccount/Proxy |Specifies an alternate assumed name for the identification of the account.  |OBProxy1 | | |
 | SecondaryIdentification |0..1 |OBReadTransaction6/Data/Transaction/CreditorAccount/SecondaryIdentification |This is secondary identification of the account, as assigned by the account servicing institution. This can be used by building societies to additionally identify accounts with a roll number (in addition to a sort code and account number combination). |Max34Text | | |
+| UltimateCreditor |0..1 |OBReadTransaction6/Data/Transaction/UltimateCreditor|Ultimate party to which an amount of money is due. | OBUltimateCreditor1 | | |
 | DebtorAgent |0..1 |OBReadTransaction6/Data/Transaction/DebtorAgent |Financial institution servicing an account for the debtor. |OBBranchAndFinancialInstitutionIdentification6 | | |
 | SchemeName |0..1 |OBReadTransaction6/Data/Transaction/DebtorAgent/SchemeName |Name of the identification scheme, in a coded form as published in an external list. |OBExternalFinancialInstitutionIdentification4Code | | |
+| LEI |0..1 | OBReadTransaction6/Data/Transaction/DebtorAgent/LEI |Legal entity identification as an alternate identification for a party. Legal Entity Identifier is a code allocated to a party as described in ISO 17442 "Financial Services - Legal Entity Identifier (LEI)".|Max20Text | |[A-Z0-9]{18,18}[0-9]{2,2}|
 | Identification |0..1 |OBReadTransaction6/Data/Transaction/DebtorAgent/Identification |Unique and unambiguous identification of a financial institution or a branch of a financial institution. |Max35Text | | |
 | Name |0..1 |OBReadTransaction6/Data/Transaction/DebtorAgent/Name |Name by which an agent is known and which is usually used to identify that agent. |Max140Text | | |
 | PostalAddress |0..1 |OBReadTransaction6/Data/Transaction/DebtorAgent/PostalAddress |Information that locates and identifies a specific address, as defined by postal services. |OBPostalAddress6 | | |
-| AddressType |0..1 |OBReadTransaction6/Data/Transaction/DebtorAgent/PostalAddress/AddressType |Identifies the nature of the postal address. <br>For a full description see `OBAddressType2Code` [here](https://github.com/OpenBankingUK/External_Interal_CodeSets). | OBAddressType2Code | | |
-| Department |0..1 |OBReadTransaction6/Data/Transaction/DebtorAgent/PostalAddress/Department |Identification of a division of a large organisation or building. |Max70Text | | |
-| SubDepartment |0..1 |OBReadTransaction6/Data/Transaction/DebtorAgent/PostalAddress/SubDepartment |Identification of a sub-division of a large organisation or building. |Max70Text | | |
-| StreetName |0..1 |OBReadTransaction6/Data/Transaction/DebtorAgent/PostalAddress/StreetName |Name of a street or thoroughfare. |Max140Text | | |
-| BuildingNumber |0..1 |OBReadTransaction6/Data/Transaction/DebtorAgent/PostalAddress/BuildingNumber |Number that identifies the position of a building on a street. |Max16Text | | |
-| BuildingName |0..1 |OBReadTransaction6/Data/Transaction/DebtorAgent/PostalAddress/BuildingName |Name of a referenced building. |Max140Text | | |
-| Floor |0..1 |OBReadTransaction6/Data/Transaction/DebtorAgent/PostalAddress/Floor|Number that identifies the level within a building. |Max70Text | | |
-| UnitNumber|0..1 |OBReadTransaction6/Data/Transaction/DebtorAgent/PostalAddress/UnitNumber|Number that identifies the unit of a specific address |Max16Text | | |
-| Room |0..1 |OBReadTransaction6/Data/Transaction/DebtorAgent/PostalAddress/Room|Information that locates and identifies a room to form part of an address. |Max70Text | | |
-| TownLocationName |0..1 |OBReadTransaction6/Data/Transaction/DebtorAgent/PostalAddress/TownLocationName |Name of a built-up area, with defined boundaries, and a local government. |Max140Text | | |
-| DistrictName |0..1 |OBReadTransaction6/Data/Transaction/DebtorAgent/PostalAddress/DistrictName |Number that of the regional area, known as a district, which forms part of an address. |Max140Text | | |
-| CareOf |0..1 |OBReadTransaction6/Data/Transaction/DebtorAgent/PostalAddress/CareOf |The 'care of' address is used whenever sending mail to a person or organisation who does not actually live or work at the address. They will receive the mail for the individual. |Max140Text | | |
-| PostCode |0..1 |OBReadTransaction6/Data/Transaction/DebtorAgent/PostalAddress/PostCode |Identifier consisting of a group of letters and/or numbers that is added to a postal address to assist the sorting of mail. |Max16Text | | |
-| PostBox |0..1 |OBReadTransaction6/Data/Transaction/DebtorAgent/PostalAddress/PostBox |Numbered box in a post office, assigned to a person or organisation, where letters are kept until called for |Max16Text | | |
-| TownName |0..1 |OBReadTransaction6/Data/Transaction/DebtorAgent/PostalAddress/TownName |Name of a built-up area, with defined boundaries, and a local government. |Max140Text | | |
-| CountrySubDivision |0..1 |OBReadTransaction6/Data/Transaction/DebtorAgent/PostalAddress/CountrySubDivision |Identifies a subdivision of a country such as state, region, county. |Max35Text | | |
-| Country |0..1 |OBReadTransaction6/Data/Transaction/DebtorAgent/PostalAddress/Country |Nation with its own government. |CountryCode | |^[A-Z]{2,2}$ |
-| AddressLine |0..7 |OBReadTransaction6/Data/Transaction/DebtorAgent/PostalAddress/AddressLine |Information that locates and identifies a specific address, as defined by postal services, presented in free format text. |Max70Text | | | |
 | DebtorAccount |0..1 |OBReadTransaction6/Data/Transaction/DebtorAccount |Unambiguous identification of the account of the debtor, in the case of a credit transaction. |OBCashAccount6 | | |
 | SchemeName |0..1 |OBReadTransaction6/Data/Transaction/DebtorAccount/SchemeName |Name of the identification scheme, in a coded form as published in an external list. |OBExternalAccountIdentification4Code | | |
 | Identification |0..1 |OBReadTransaction6/Data/Transaction/DebtorAccount/Identification |Identification assigned by an institution to identify an account. This identification is known by the account owner. |Max256Text | | |
 | Name |0..1 |OBReadTransaction6/Data/Transaction/DebtorAccount/Name |The account name is the name or names of the account owner(s) represented at an account level, as displayed by the ASPSP's online channels. Note, the account name is not the product name or the nickname of the account. |Max350Text | | |
+| Proxy |0..1 |OBReadTransaction6/Data/Transaction/DebtorAccount/Proxy |Specifies an alternate assumed name for the identification of the account.  |OBProxy1 | | |
 | SecondaryIdentification |0..1 |OBReadTransaction6/Data/Transaction/DebtorAccount/SecondaryIdentification |This is secondary identification of the account, as assigned by the account servicing institution. This can be used by building societies to additionally identify accounts with a roll number (in addition to a sort code and account number combination). |Max34Text | | |
+| UltimateDebtor |0..1 |OBReadTransaction6/Data/Transaction/UltimateDebtor|Ultimate party that owes an amount of money to the (ultimate) creditor. | OBUltimateDebtor1| | |
 | CardInstrument |0..1 |OBReadTransaction6/Data/Transaction/CardInstrument |Set of elements to describe the card instrument used in the transaction. |OBTransactionCardInstrument1 | | |
 | CardSchemeName |1..1 |OBReadTransaction6/Data/Transaction/CardInstrument/CardSchemeName |Name of the card scheme. |OBExternalCardSchemeType1Code |AmericanExpress Diners Discover MasterCard VISA | |
 | AuthorisationType |0..1 |OBReadTransaction6/Data/Transaction/CardInstrument/AuthorisationType |The card authorisation type. |OBExternalCardAuthorisationType1Code |ConsumerDevice Contactless None PIN | |
@@ -304,54 +293,8 @@ The resource differs depending on the permissions (ReadTransactionsBasic and Rea
 | Identification |0..1 |OBReadTransaction6/Data/Transaction/CardInstrument/Identification |Identification assigned by an institution to identify the card instrument used in the transaction. This identification is known by the account owner, and may be masked. |Max34Text | | |
 | SupplementaryData |0..1 |OBReadTransaction6/Data/Transaction/SupplementaryData |Additional information that can not be captured in the structured fields and/or any other specific block. |OBSupplementaryData1 | | |
 | CategoryPurposeCode | 0..1 | OBReadTransaction6/Data/Transaction/CategoryPurposeCode |Enumeration to outline the purpose to the underlying purpose of the payment. For more information see `ExternalCategoryPurpose1Code` [here](https://github.com/OpenBankingUK/External_Interal_CodeSets)| OBCategoryPurposeCode| | |
-| UltimateCreditor |0..1 |OBReadTransaction6/Data/Transaction/UltimateCreditor|Set of elements used to identify a person or an organisation. | OBPartyIdentification43 | | |
-| SchemeName |0..1 |OBReadTransaction6/Data/Transaction/UltimateCreditor/SchemeName |Name of the identification scheme, in a coded form as published in an external list. |OBExternalAccountIdentification4Code | | |
-| Identification |0..1 |OBReadTransaction6/Data/Transaction/UltimateCreditor/Identification |Identification assigned by an institution to identify an account. This identification is known by the account owner. |Max256Text | | |
-| Name |0..1 |OBReadTransaction6/Data/Transaction/UltimateCreditor/Name |The account name is the name or names of the account owner(s) represented at an account level, as displayed by the ASPSP's online channels. Note, the account name is not the product name or the nickname of the account. |Max350Text | | |
-| LEI |0..1 | OBReadTransaction6/Data/Transaction/UltimateCreditor/LEI |Legal entity identification as an alternate identification for a party. Legal Entity Identifier is a code allocated to a party as described in ISO 17442 "Financial Services - Legal Entity Identifier (LEI)".|Max20Text | |[A-Z0-9]{18,18}[0-9]{2,2}|
-| PostalAddress |0..1 |OBReadTransaction6/Data/Transaction/UltimateCreditor/PostalAddress |Information that locates and identifies a specific address, as defined by postal services. |OBPostalAddress6 | | |
-| AddressType |0..1 |OBReadTransaction6/Data/Transaction/UltimateCreditor/PostalAddress/AddressType |Identifies the nature of the postal address. <br>For a full description see `OBAddressType2Code` [here](https://github.com/OpenBankingUK/External_Interal_CodeSets). | OBAddressType2Code | | |
-| Department |0..1 |OBReadTransaction6/Data/Transaction/UltimateCreditor/PostalAddress/Department |Identification of a division of a large organisation or building. |Max70Text | | |
-| SubDepartment |0..1 |OBReadTransaction6/Data/Transaction/UltimateCreditor/PostalAddress/SubDepartment |Identification of a sub-division of a large organisation or building. |Max70Text | | |
-| StreetName |0..1 |OBReadTransaction6/Data/Transaction/UltimateCreditor/PostalAddress/StreetName |Name of a street or thoroughfare. |Max140Text | | |
-| BuildingNumber |0..1 |OBReadTransaction6/Data/Transaction/UltimateCreditor/PostalAddress/BuildingNumber |Number that identifies the position of a building on a street. |Max16Text | | |
-| BuildingName |0..1 |OBReadTransaction6/Data/Transaction/UltimateCreditor/PostalAddress/BuildingName |Name of a referenced building. |Max140Text | | |
-| Floor |0..1 |OBReadTransaction6/Data/Transaction/UltimateCreditor/PostalAddress/Floor|Number that identifies the level within a building. |Max70Text | | |
-| UnitNumber|0..1 |OBReadTransaction6/Data/Transaction/UltimateCreditor/PostalAddress/UnitNumber|Number that identifies the unit of a specific address |Max16Text | | |
-| Room |0..1 |OBReadTransaction6/Data/Transaction/UltimateCreditor/PostalAddress/Room|Information that locates and identifies a room to form part of an address. |Max70Text | | |
-| TownLocationName |0..1 |OBReadTransaction6/Data/Transaction/UltimateCreditor/PostalAddress/TownLocationName |Name of a built-up area, with defined boundaries, and a local government. |Max140Text | | |
-| DistrictName |0..1 |OBReadTransaction6/Data/Transaction/UltimateCreditor/PostalAddress/DistrictName |Number that of the regional area, known as a district, which forms part of an address. |Max140Text | | |
-| CareOf |0..1 |OBReadTransaction6/Data/Transaction/UltimateCreditor/PostalAddress/CareOf |The 'care of' address is used whenever sending mail to a person or organisation who does not actually live or work at the address. They will receive the mail for the individual. |Max140Text | | |
-| PostCode |0..1 |OBReadTransaction6/Data/Transaction/UltimateCreditor/PostalAddress/PostCode |Identifier consisting of a group of letters and/or numbers that is added to a postal address to assist the sorting of mail. |Max16Text | | |
-| PostBox |0..1 |OBReadTransaction6/Data/Transaction/UltimateCreditor/PostalAddress/PostBox |Numbered box in a post office, assigned to a person or organisation, where letters are kept until called for |Max16Text | | |
-| TownName |0..1 |OBReadTransaction6/Data/Transaction/UltimateCreditor/PostalAddress/TownName |Name of a built-up area, with defined boundaries, and a local government. |Max140Text | | |
-| CountrySubDivision |0..1 |OBReadTransaction6/Data/Transaction/UltimateCreditor/PostalAddress/CountrySubDivision |Identifies a subdivision of a country such as state, region, county. |Max35Text | | |
-| Country |0..1 |OBReadTransaction6/Data/Transaction/UltimateCreditor/PostalAddress/Country |Nation with its own government. |CountryCode | |^[A-Z]{2,2}$ |
-| AddressLine |0..7 |OBReadTransaction6/Data/Transaction/UltimateCreditor/PostalAddress/AddressLine |Information that locates and identifies a specific address, as defined by postal services, presented in free format text. |Max70Text | | | |
-| UltimateDebtor |0..1 |OBReadTransaction6/Data/Transaction/UltimateDebtor|Set of elements used to identify a person or an organisation. | | | |
-| SchemeName |0..1 |OBReadTransaction6/Data/Transaction/UltimateDebtor/SchemeName |Name of the identification scheme, in a coded form as published in an external list. |OBExternalAccountIdentification4Code | | |
-| Identification |0..1 |OBReadTransaction6/Data/Transaction/UltimateDebtor/Identification |Identification assigned by an institution to identify an account. This identification is known by the account owner. |Max256Text | | |
-| Name |0..1 |OBReadTransaction6/Data/Transaction/UltimateDebtor/Name |The account name is the name or names of the account owner(s) represented at an account level, as displayed by the ASPSP's online channels. Note, the account name is not the product name or the nickname of the account. |Max350Text | | |
-| LEI |0..1 | OBReadTransaction6/Data/Transaction/UltimateDebtor/LEI |Legal entity identification as an alternate identification for a party. Legal Entity Identifier is a code allocated to a party as described in ISO 17442 "Financial Services - Legal Entity Identifier (LEI)".|Max20Text | |[A-Z0-9]{18,18}[0-9]{2,2}|
-| PostalAddress |0..1 |OBReadTransaction6/Data/Transaction/UltimateDebtor/PostalAddress |Information that locates and identifies a specific address, as defined by postal services. |OBPostalAddress6 | | |
-| AddressType |0..1 |OBReadTransaction6/Data/Transaction/UltimateDebtor/PostalAddress/AddressType |Identifies the nature of the postal address. <br>For a full description see `OBAddressType2Code` [here](https://github.com/OpenBankingUK/External_Interal_CodeSets). | OBAddressType2Code | | |
-| Department |0..1 |OBReadTransaction6/Data/Transaction/UltimateDebtor/PostalAddress/Department |Identification of a division of a large organisation or building. |Max70Text | | |
-| SubDepartment |0..1 |OBReadTransaction6/Data/Transaction/UltimateDebtor/PostalAddress/SubDepartment |Identification of a sub-division of a large organisation or building. |Max70Text | | |
-| StreetName |0..1 |OBReadTransaction6/Data/Transaction/UltimateDebtor/PostalAddress/StreetName |Name of a street or thoroughfare. |Max140Text | | |
-| BuildingNumber |0..1 |OBReadTransaction6/Data/Transaction/UltimateDebtor/PostalAddress/BuildingNumber |Number that identifies the position of a building on a street. |Max16Text | | |
-| BuildingName |0..1 |OBReadTransaction6/Data/Transaction/UltimateDebtor/PostalAddress/BuildingName |Name of a referenced building. |Max140Text | | |
-| Floor |0..1 |OBReadTransaction6/Data/Transaction/UltimateDebtor/PostalAddress/Floor|Number that identifies the level within a building. |Max70Text | | |
-| UnitNumber|0..1 |OBReadTransaction6/Data/Transaction/UltimateDebtor/PostalAddress/UnitNumber|Number that identifies the unit of a specific address |Max16Text | | |
-| Room |0..1 |OBReadTransaction6/Data/Transaction/UltimateDebtor/PostalAddress/Room|Information that locates and identifies a room to form part of an address. |Max70Text | | |
-| TownLocationName |0..1 |OBReadTransaction6/Data/Transaction/UltimateDebtor/PostalAddress/TownLocationName |Name of a built-up area, with defined boundaries, and a local government. |Max140Text | | |
-| DistrictName |0..1 |OBReadTransaction6/Data/Transaction/UltimateDebtor/PostalAddress/DistrictName |Number that of the regional area, known as a district, which forms part of an address. |Max140Text | | |
-| CareOf |0..1 |OBReadTransaction6/Data/Transaction/UltimateDebtor/PostalAddress/CareOf |The 'care of' address is used whenever sending mail to a person or organisation who does not actually live or work at the address. They will receive the mail for the individual. |Max140Text | | |
-| PostCode |0..1 |OBReadTransaction6/Data/Transaction/UltimateDebtor/PostalAddress/PostCode |Identifier consisting of a group of letters and/or numbers that is added to a postal address to assist the sorting of mail. |Max16Text | | |
-| PostBox |0..1 |OBReadTransaction6/Data/Transaction/UltimateDebtor/PostalAddress/PostBox |Numbered box in a post office, assigned to a person or organisation, where letters are kept until called for |Max16Text | | |
-| TownName |0..1 |OBReadTransaction6/Data/Transaction/UltimateDebtor/PostalAddress/TownName |Name of a built-up area, with defined boundaries, and a local government. |Max140Text | | |
-| CountrySubDivision |0..1 |OBReadTransaction6/Data/Transaction/UltimateDebtor/PostalAddress/CountrySubDivision |Identifies a subdivision of a country such as state, region, county. |Max35Text | | |
-| Country |0..1 |OBReadTransaction6/Data/Transaction/UltimateDebtor/PostalAddress/Country |Nation with its own government. |CountryCode | |^[A-Z]{2,2}$ |
-| AddressLine |0..7 |OBReadTransaction6/Data/Transaction/UltimateDebtor/PostalAddress/AddressLine |Information that locates and identifies a specific address, as defined by postal services, presented in free format text. |Max70Text | | | |
+
+
 
 
 ## Usage Examples
