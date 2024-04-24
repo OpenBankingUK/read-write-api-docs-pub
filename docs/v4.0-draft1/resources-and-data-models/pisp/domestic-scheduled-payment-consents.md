@@ -103,9 +103,9 @@ Changes to the StatusCode, such as being rejected, should be captured in `Status
 
 | Field | Description |
 |---|---|
-| StatusReasonCode | Code directly relating to the reason for the current Status. See [the codelists](https://github.com/OpenBankingUK/External_Interal_CodeSets) for appropriate values. |
+| StatusReasonCode | Specifies the status reason in a code form. For a full description see `ExternalStatusReason1Code` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets) |
 | StatusReasonDescription | Description of why the code was returned |
-|Path| Recommended but optional reference to JSON path if relevant to the code |
+|Path| Path is optional but relevant when the status reason refers to an object/field and hence conditional to provide JSON path. |
 
 ## Data Model
 
