@@ -226,21 +226,11 @@ The data dictionary section gives the detail on the payload content for the VRP 
 | Name |Path |Definition | Type |
 | ---- |-----|---------- |------|
 | __DebtorAccount__ (0..1) | `DebtorAccount` | Unambiguous identification of the account of the debtor to which a debit entry will be made as a result of the transaction. | [OBCashAccountDebtorWithName](#OBCashAccountDebtorWithName) |
-| __UltimateDebtor__ (0..1) | `UltimateDebtor` | Ultimate party that owes an amount of money to the (ultimate) creditor. ||
-| __SchemeName__ (0..1) | `UltimateDebtor. SchemeName` |Name of the identification scheme, in a coded form as published in an external list. |OBExternalFinancialInstitutionIdentification4Code
-| __Identification__ (0..1) | `UltimateDebtor. Identification` |Unique and unambiguous identification of a financial institution or a branch of a financial institution.  | Max35Text  
-| __Name__ (0..1) | `UltimateDebtor. Name` | Name by which an agent is known and which is usually used to identify that agent. | Max140Text
-| __LEI__ (0..1) | `UltimateDebtor. LEI` | Legal entity identification as an alternate identification for a party. <br>Legal Entity Identifier is a code allocated to a party as described in ISO 17442 "Financial Services - Legal Entity Identifier (LEI)". | Max20Text |
-| __PostalAddress__ (0..1) | `UltimateDebtor. PostalAddress` |Information that locates and identifies a specific address, as defined by postal services.| OBPostalAddress6 |
+| __UltimateDebtor__ (0..1) | `UltimateDebtor` | Ultimate party that owes an amount of money to the (ultimate) creditor. |[OBUltimateDebtor1](../../profiles/payment-initiation-api-profile.md#obultimatedebtor1) |
 | __CreditorAgent__ (0..1) | `CreditorAgent` | Financial institution servicing an account for the creditor.     | OBBranchAndFinancialInstitutionIdentification6 |
 | __CreditorAccount__ (0..1) | `CreditorAccount`   |Unambiguous identification of the account of the creditor to which a credit entry will be posted as a result of the payment transaction.       |OBCashAccountCreditor3 |
 | __CreditorPostalAddress__ | `CreditorPostalAddress` | Information that locates and identifies a specific address, as defined by postal services or in free format text. | OBPostalAddress6|
-| __UltimateCreditor__ (0..1) | `UltimateCreditor` | Ultimate party to which an amount of money is due. | |
-| __SchemeName__ (0..1) | `UltimateCreditor. SchemeName` |Name of the identification scheme, in a coded form as published in an external list. |OBExternalFinancialInstitutionIdentification4Code
-| __Identification__ (0..1) | `UltimateCreditor. Identification` |Unique and unambiguous identification of a financial institution or a branch of a financial institution.  | Max35Text  
-| __Name__ (0..1) | `UltimateCreditor. Name` | Name by which an agent is known and which is usually used to identify that agent. | Max140Text
-| __LEI__ (0..1) | `UltimateCreditor. LEI` | Legal entity identification as an alternate identification for a party. <br>Legal Entity Identifier is a code allocated to a party as described in ISO 17442 "Financial Services - Legal Entity Identifier (LEI)". | Max20Text |
-| __PostalAddress__ (0..1) | `UltimateCreditor. PostalAddress` |Information that locates and identifies a specific address, as defined by postal services.| OBPostalAddress6 |
+| __UltimateCreditor__ (0..1) | `UltimateCreditor` | Ultimate party to which an amount of money is due. |[OBUltimateCreditor1](../../profiles/payment-initiation-api-profile.md#obultimatecreditor1) |
 | __RemittanceInformation__ (0..1) | `RemittanceInformation`   | Information supplied to enable the matching of an entry with the items that the transfer is intended to settle, such as commercial invoices in an accounts' receivable system. | [OBRemittanceInformation1](../../profiles/payment-initiation-api-profile.md#obremittanceinformation1) |
 |__RegulatoryReporting__ (0..10)| `RegulatoryReporting` | Information needed due to regulatory and statutory requirements. | [OBRegulatoryReporting1](../../profiles/payment-initiation-api-profile.md#obregulatoryreporting1) |
 

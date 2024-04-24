@@ -65,6 +65,10 @@
       - [Data Dictionary](#data-dictionary-10)
     - [OBRegulatoryReporting1](#obregulatoryreporting1)
       - [Data Dictionary](#data-dictionary-11)
+    - [OBUltimateCreditor1](#obultimatecreditor1)
+      - [Data Dictionary](#data-dictionary-12)
+    - [OBUltimateDebtor1](#obultimatedebtor1)
+      - [Data Dictionary](#data-dictionary-13)
   - [Identifier Fields](#identifier-fields)
     - [Merchant Flow](#merchant-flow)
     - [Party to Party Flow](#party-to-party-flow)
@@ -827,6 +831,30 @@ This section describes the OBSCASupportData1 class, which is used across all  _p
 | Amount |0..1 |OBRegulatoryReporting1/Details/Amount |Amount of money to be reported for regulatory and statutory requirements. |OBActiveOrHistoricCurrencyAndAmount | | |
 | Amount |1..1 |OBRegulatoryReporting1/Details/Amount/Amount |A number of monetary units specified in an active currency where the unit of currency is explicit and compliant with ISO 4217. | OBActiveCurrencyAndAmount_SimpleType | ^\d{1,13}$|^\d{1,13}\.\d{1,5}$ |
 | Currency |1..1 |OBRegulatoryReporting1/Details/Amount/Currency |A code allocated to a currency by a Maintenance Agency under an international identification scheme, as described in the latest edition of the international standard ISO 4217 "Codes for the representation of currencies and funds". |ActiveOrHistoricCurrencyCode | | ^[A-Z]{3,3}$ |
+
+#### OBUltimateCreditor1
+
+##### Data Dictionary
+| Name | Occurrence | XPath | EnhancedDefinition | Class | Codes | Pattern |
+| --- | --- | --- | --- | --- | --- | --- |
+| OBUltimateCreditor1 | | | Ultimate party to which an amount of money is due.| OBUltimateCreditor1 | | |
+| Name |0..1 |OBUltimateCreditor1/Name |Name by which a party is known and which is usually used to identify that party. |Max140Text | | |
+| Identification |0..1 |OBUltimateCreditor1/Identification |Identification assigned by an institution. |Max256Text | | |
+| LEI |0..1 | OBUltimateCreditor1/LEI |Legal Entity Identification by which a party is known and which is usually used to identify that party. |Max20Text | | ^[A-Z0-9]{18,18}[0-9]{2,2}$|
+| SchemeName |0..1 |OBUltimateCreditor1/SchemeName |Name of the identification scheme, in a coded form as published in an external list. | OBExternalAccountIdentification4Code |For a full description see `OBExternalAccountIdentification4Code` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets).| |
+| PostalAddress | 0..1 | OBUltimateCreditor1/PostalAddress | Information that locates and identifies a specific address, as defined by postal services. | OBPostalAddress6 | | 
+
+#### OBUltimateDebtor1
+
+##### Data Dictionary
+| Name | Occurrence | XPath | EnhancedDefinition | Class | Codes | Pattern |
+| --- | --- | --- | --- | --- | --- | --- |
+| OBUltimateDebtor1 | | | Ultimate party that owes an amount of money to the (ultimate) creditor. | OBUltimateDebtor1 | | |
+| Name |0..1 |OBUltimateDebtor1/Name |Name by which a party is known and which is usually used to identify that party. |Max140Text | | |
+| Identification |0..1 |OBUltimateDebtor1/Identification |Identification assigned by an institution. |Max256Text | | |
+| LEI |0..1 | OBUltimateDebtor1/LEI |Legal Entity Identification by which a party is known and which is usually used to identify that party. |Max20Text | | ^[A-Z0-9]{18,18}[0-9]{2,2}$|
+| SchemeName |0..1 |OBUltimateDebtor1/SchemeName |Name of the identification scheme, in a coded form as published in an external list. | OBExternalAccountIdentification4Code |For a full description see `OBExternalAccountIdentification4Code` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets).| |
+| PostalAddress | 0..1 | OBUltimateDebtor1/PostalAddress | Information that locates and identifies a specific address, as defined by postal services. | OBPostalAddress6 | | 
 
 ### Identifier Fields
 

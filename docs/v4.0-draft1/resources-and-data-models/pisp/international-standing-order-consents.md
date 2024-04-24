@@ -17,6 +17,8 @@
     - [OBRemittanceInformation1](#obremittanceinformation1)
     - [OBMandateRelatedInformation1](#obmandaterelatedinformation1)
     - [OBRegulatoryReporting1](#obregulatoryreporting1)
+    - [OBUltimateCreditor1](#obultimatecreditor1)
+    - [OBUltimateDebtor1](#obultimatedebtor1)
   - [International Standing Order Consent - Request](#international-standing-order-consent-request)
     - [UML Diagram](#uml-diagram-2)
     - [Notes](#notes-2)
@@ -238,16 +240,8 @@ For the OBInternationalStandingOrder4 Initiation object:
 | Amount |1..1 |OBInternationalStandingOrder4/RegulatoryReporting/Details/Amount/Amount |A number of monetary units specified in an active currency where the unit of currency is explicit and compliant with ISO 4217. | | | |
 | Currency |1..1 |OBInternationalStandingOrder4/RegulatoryReporting/Details/Amount/Currency |A code allocated to a currency by a Maintenance Agency under an international identification scheme, as described in the latest edition of the international standard ISO 4217 "Codes for the representation of currencies and funds". |ActiveOrHistoricCurrencyCode | | ^[A-Z]{3,3}$ |
 | Information |0..* |OBInternationalStandingOrder4/RegulatoryReporting/Details/Information |Additional details that cater for specific domestic regulatory requirements. |Max35Text | | |
-| UltimateCreditor |0..1 |OBInternationalStandingOrder4/UltimateCreditor|Set of elements used to identify a person or an organisation. | OBPartyIdentification43 | | |
-| SchemeName |0..1 |OBInternationalStandingOrder4/UltimateCreditor/SchemeName |Name of the identification scheme, in a coded form as published in an external list. |OBExternalAccountIdentification4Code | | |
-| Identification |0..1 |OBInternationalStandingOrder4/UltimateCreditor/Identification |Identification assigned by an institution to identify an account. This identification is known by the account owner. |Max256Text | | |
-| Name |0..1 |OBInternationalStandingOrder4/UltimateCreditor/Name |The account name is the name or names of the account owner(s) represented at an account level, as displayed by the ASPSP's online channels. Note, the account name is not the product name or the nickname of the account. |Max350Text | | |
-| LEI |0..1 | OBInternationalStandingOrder4/UltimateCreditor/LEI |Legal Entity Identification by which a party is known and which is usually used to identify that party. |Max20Text | | |
-| UltimateDebtor |0..1 |OBInternationalStandingOrder4/UltimateDebtor|Set of elements used to identify a person or an organisation. | | | |
-| SchemeName |0..1 |OBInternationalStandingOrder4/UltimateDebtor/SchemeName |Name of the identification scheme, in a coded form as published in an external list. |OBExternalAccountIdentification4Code | | |
-| Identification |0..1 |OBInternationalStandingOrder4/UltimateDebtor/Identification |Identification assigned by an institution to identify an account. This identification is known by the account owner. |Max256Text | | |
-| Name |0..1 |OBInternationalStandingOrder4/UltimateDebtor/Name |The account name is the name or names of the account owner(s) represented at an account level, as displayed by the ASPSP's online channels. Note, the account name is not the product name or the nickname of the account. |Max350Text | | |
-| LEI |0..1 | OBInternationalStandingOrder4/UltimateDebtor/LEI |Legal Entity Identification by which a party is known and which is usually used to identify that party. |Max20Text | | |
+| UltimateCreditor |0..1 |OBInternationalStandingOrder4/UltimateCreditor|Set of elements used to identify a person or an organisation. | OBUltimateCreditor1 | | |
+| UltimateDebtor |0..1 |OBInternationalStandingOrder4/UltimateDebtor|Set of elements used to identify a person or an organisation. |OBUltimateDebtor1 | | |
 
 #### OBRemittanceInformation1
 
@@ -260,6 +254,16 @@ The OBMandateRelatedInformation1 class is defined in the [payment-initiation-api
 #### OBRegulatoryReporting1
 
 The OBRegulatoryReporting1 class is defined in the [payment-initiation-api-profile](../../profiles/payment-initiation-api-profile.md#obregulatoryreporting1) page.
+
+#### OBUltimateCreditor1
+
+The OBUltimateCreditor1 class is defined in the [payment-initiation-api-profile](../../profiles/payment-initiation-api-profile.md#obultimatecreditor1) page.
+
+
+#### OBUltimateDebtor1 
+
+The OBUltimateDebtor1 class is defined in the [payment-initiation-api-profile](../../profiles/payment-initiation-api-profile.md#obultimatedebtor1) page.
+
 
 ### International Standing Order Consent - Request
 

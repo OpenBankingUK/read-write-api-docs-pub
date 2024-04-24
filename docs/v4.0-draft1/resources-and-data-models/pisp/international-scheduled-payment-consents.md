@@ -19,6 +19,8 @@
       - [Data Dictionary](#data-dictionary-2)
     - [OBRemittanceInformation1](#obremittanceinformation1)
     - [OBRegulatoryReporting1](#obregulatoryreporting1)
+    - [OBUltimateCreditor1](#obultimatecreditor1)
+    - [OBUltimateDebtor1](#obultimatedebtor1)
   - [International Scheduled Payment Consent - Request](#international-scheduled-payment-consent-request)
     - [UML Diagram](#uml-diagram-2)
     - [Notes](#notes-2)
@@ -270,11 +272,8 @@ The ExchangeRateInformation object must conform to these behaviours:
 | Identification |0..1 |OBInternationalScheduled3/UltimateCreditor/Identification |Identification assigned by an institution to identify an account. This identification is known by the account owner. |Max256Text | | |
 | Name |0..1 |OBInternationalScheduled3/UltimateCreditor/Name |The account name is the name or names of the account owner(s) represented at an account level, as displayed by the ASPSP's online channels. Note, the account name is not the product name or the nickname of the account. |Max350Text | | |
 | LEI |0..1 | OBInternationalScheduled3/UltimateCreditor/LEI |Legal Entity Identification by which a party is known and which is usually used to identify that party. |Max20Text | | |
-| UltimateDebtor |0..1 |OBInternationalScheduled3/UltimateDebtor|Set of elements used to identify a person or an organisation. | | | |
-| SchemeName |0..1 |OBInternationalScheduled3/UltimateDebtor/SchemeName |Name of the identification scheme, in a coded form as published in an external list. |OBExternalAccountIdentification4Code | | |
-| Identification |0..1 |OBInternationalScheduled3/UltimateDebtor/Identification |Identification assigned by an institution to identify an account. This identification is known by the account owner. |Max256Text | | |
-| Name |0..1 |OBInternationalScheduled3/UltimateDebtor/Name |The account name is the name or names of the account owner(s) represented at an account level, as displayed by the ASPSP's online channels. Note, the account name is not the product name or the nickname of the account. |Max350Text | | |
-| LEI |0..1 | OBInternationalScheduled3/UltimateDebtor/LEI |Legal Entity Identification by which a party is known and which is usually used to identify that party. |Max20Text | | |
+| UltimateDebtor |0..1 |OBInternationalScheduled3/UltimateDebtor|Set of elements used to identify a person or an organisation. |OBUltimateDebtor1 | | |
+
 
 #### OBExchangeRate2
 
@@ -339,6 +338,15 @@ The OBRemittanceInformation1 class is defined in the [payment-initiation-api-pro
 #### OBRegulatoryReporting1
 
 The OBRegulatoryReporting1 class is defined in the [payment-initiation-api-profile](../../profiles/payment-initiation-api-profile.md#obregulatoryreporting1) page.
+
+#### OBUltimateCreditor1
+
+The OBUltimateCreditor1 class is defined in the [payment-initiation-api-profile](../../profiles/payment-initiation-api-profile.md#obultimatecreditor1) page.
+
+
+#### OBUltimateDebtor1 
+
+The OBUltimateDebtor1 class is defined in the [payment-initiation-api-profile](../../profiles/payment-initiation-api-profile.md#obultimatedebtor1) page.
 
 
 ### International Scheduled Payment Consent - Response

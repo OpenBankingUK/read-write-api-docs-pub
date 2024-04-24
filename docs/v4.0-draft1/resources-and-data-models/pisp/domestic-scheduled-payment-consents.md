@@ -16,6 +16,8 @@
       - [Data Dictionary](#data-dictionary)
     - [OBRemittanceInformation1](#obremittanceinformation1)
     - [OBRegulatoryReporting1](#obregulatoryreporting1)
+    - [OBUltimateCreditor1](#obultimatecreditor1)
+    - [OBUltimateDebtor1](#obultimatedebtor1)
   - [Domestic Scheduled Payment Consent - Request](#domestic-scheduled-payment-consent-request)
     - [UML Diagram](#uml-diagram-2)
     - [Notes](#notes-2)
@@ -189,16 +191,8 @@ Account Identification field usage:
 | RemittanceInformation |0..1 |OBDomesticScheduled2/RemittanceInformation |Information supplied to enable the matching of an entry with the items that the transfer is intended to settle, such as commercial invoices in an accounts' receivable system. |OBRemittanceInformation1 | | |
 | SupplementaryData |0..1 |OBDomesticScheduled2/SupplementaryData |Additional information that can not be captured in the structured fields and/or any other specific block. |OBSupplementaryData1 | | |
 | RegulatoryReporting |0..10 |OBDomesticScheduled2/RegulatoryReporting |Information needed due to regulatory and statutory requirements. |OBRegulatoryReporting1 | | |
-| UltimateCreditor |0..1 |OBDomesticScheduled2/UltimateCreditor|Set of elements used to identify a person or an organisation. | OBPartyIdentification43 | | |
-| SchemeName |0..1 |OBDomesticScheduled2/UltimateCreditor/SchemeName |Name of the identification scheme, in a coded form as published in an external list. |OBExternalAccountIdentification4Code | | |
-| Identification |0..1 |OBDomesticScheduled2/UltimateCreditor/Identification |Identification assigned by an institution to identify an account. This identification is known by the account owner. |Max256Text | | |
-| Name |0..1 |OBDomesticScheduled2/UltimateCreditor/Name |The account name is the name or names of the account owner(s) represented at an account level, as displayed by the ASPSP's online channels. Note, the account name is not the product name or the nickname of the account. |Max350Text | | |
-| LEI |0..1 | OBDomesticScheduled2/UltimateCreditor/LEI |Legal Entity Identification by which a party is known and which is usually used to identify that party. |Max20Text | | |
-| UltimateDebtor |0..1 |OBDomesticScheduled2/UltimateDebtor|Set of elements used to identify a person or an organisation. | | | |
-| SchemeName |0..1 |OBDomesticScheduled2/UltimateDebtor/SchemeName |Name of the identification scheme, in a coded form as published in an external list. |OBExternalAccountIdentification4Code | | |
-| Identification |0..1 |OBDomesticScheduled2/UltimateDebtor/Identification |Identification assigned by an institution to identify an account. This identification is known by the account owner. |Max256Text | | |
-| Name |0..1 |OBDomesticScheduled2/UltimateDebtor/Name |The account name is the name or names of the account owner(s) represented at an account level, as displayed by the ASPSP's online channels. Note, the account name is not the product name or the nickname of the account. |Max350Text | | |
-| LEI |0..1 | OBDomesticScheduled2/UltimateDebtor/LEI |Legal Entity Identification by which a party is known and which is usually used to identify that party. |Max20Text | | |
+| UltimateCreditor |0..1 |OBDomesticScheduled2/UltimateCreditor|Set of elements used to identify a person or an organisation. | OBUltimateCreditor1 | | |
+| UltimateDebtor |0..1 |OBDomesticScheduled2/UltimateDebtor|Set of elements used to identify a person or an organisation. |OBUltimateDebtor1 | | |
 
 #### OBRemittanceInformation1
 
@@ -207,6 +201,15 @@ The OBRemittanceInformation1 class is defined in the [payment-initiation-api-pro
 #### OBRegulatoryReporting1
 
 The OBRegulatoryReporting1 class is defined in the [payment-initiation-api-profile](../../profiles/payment-initiation-api-profile.md#obregulatoryreporting1) page
+
+#### OBUltimateCreditor1
+
+The OBUltimateCreditor1 class is defined in the [payment-initiation-api-profile](../../profiles/payment-initiation-api-profile.md#obultimatecreditor1) page.
+
+
+#### OBUltimateDebtor1 
+
+The OBUltimateDebtor1 class is defined in the [payment-initiation-api-profile](../../profiles/payment-initiation-api-profile.md#obultimatedebtor1) page.
 
 ### Domestic Scheduled Payment Consent - Request
 
