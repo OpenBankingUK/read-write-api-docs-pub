@@ -108,11 +108,11 @@ If the ReadPAN permission is granted by the PSU, the ASPSP may choose to populat
 | SupplementaryData |0..1 |OBReadBeneficiary5/Data/Beneficiary/SupplementaryData |Additional information that cannot be captured in the structured fields and/or any other specific block|OBSupplementaryData1 | | |
 | CreditorAgent |0..1 |OBReadBeneficiary5/Data/Beneficiary/CreditorAgent |Party that manages the account on behalf of the account owner, that is manages the registration and booking of entries on the account, calculates balances on the account and provides information about the account. This is the servicer of the beneficiary account. |OBBranchAndFinancialInstitutionIdentification6 | | |
 | SchemeName |0..1 |OBReadBeneficiary5/Data/Beneficiary/CreditorAgent/SchemeName |Name of the identification scheme, in a coded form as published in an external list. |OBExternalFinancialInstitutionIdentification4Code | | |
-| LEI |0..1 | OBReadBeneficiary5/Data/Beneficiary/CreditorAgent/LEI |Legal Entity Identification by which a party is known and which is usually used to identify that party. |Max20Text | | |
+| LEI |0..1 | OBReadBeneficiary5/Data/Beneficiary/CreditorAgent/LEI |Legal Entity Identification |Max20Text | | |
 | Identification |0..1 |OBReadBeneficiary5/Data/Beneficiary/CreditorAgent/Identification |Unique and unambiguous identification of the servicing institution. |Max35Text | | |
 | Name |0..1 |OBReadBeneficiary5/Data/Beneficiary/CreditorAgent/Name |Name by which an agent is known and which is usually used to identify that agent. |Max140Text | | |
 | PostalAddress |0..1 |OBReadBeneficiary5/Data/Beneficiary/CreditorAgent/PostalAddress |Information that locates and identifies a specific address, as defined by postal services. |OBPostalAddress6 | | |
-| AddressType |0..1 |OBReadBeneficiary5/Data/Beneficiary/CreditorAgent/PostalAddress/AddressType |BIZZ<br>DLVY <br>MLTO<br>PBOX<br>ADDR<br>HOME<br>CORR<br>STAT | ||
+| AddressType |0..1 |OBReadBeneficiary5/Data/Beneficiary/CreditorAgent/PostalAddress/AddressType |Identifies the nature of the postal address. <br>For a full description see `OBAddressType2Code` [here](https://github.com/OpenBankingUK/External_Interal_CodeSets). | OBAddressType2Code | | |
 | Department |0..1 |OBReadBeneficiary5/Data/Beneficiary/CreditorAgent/PostalAddress/Department |Identification of a division of a large organisation or building. |Max70Text | | |
 | SubDepartment |0..1 |OBReadBeneficiary5/Data/Beneficiary/CreditorAgent/PostalAddress/SubDepartment |Identification of a sub-division of a large organisation or building. |Max70Text | | |
 | StreetName |0..1 |OBReadBeneficiary5/Data/Beneficiary/CreditorAgent/PostalAddress/StreetName |Name of a street or thoroughfare. |Max70Text | | |

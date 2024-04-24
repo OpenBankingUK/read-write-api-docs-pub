@@ -170,7 +170,7 @@ For the call toGET /accounts/{AccountId}/statements/{StatementId}/transactions:
 | AccountId |1..1 |OBReadStatement2/Data/Statement/AccountId |A unique and immutable identifier used to identify the account resource. This identifier has no meaning to the account owner. |Max40Text | | |
 | StatementId |0..1 |OBReadStatement2/Data/Statement/StatementId |Unique identifier for the statement resource within an servicing institution. This identifier is both unique and immutable. |Max40Text | | |
 | StatementReference |0..1 |OBReadStatement2/Data/Statement/StatementReference |Unique reference for the statement. This reference may be optionally populated if available. |Max35Text | | |
-| Type |1..1 |OBReadStatement2/Data/Statement/Type |Statement type, in a coded form. |OBExternalStatementType1Code |AccountClosure AccountOpening Annual Interim RegularPeriodic | |
+| Type |1..1 |OBReadStatement2/Data/Statement/Type |Statement type, in a coded form. |OBExternalStatementType1Code |AccountClosure<br>AccountOpening<br>Annual<br>Interim<br>RegularPeriodic | |
 | StartDateTime |1..1 |OBReadStatement2/Data/Statement/StartDateTime |Date and time at which the statement period starts. |ISODateTime | | |
 | EndDateTime |1..1 |OBReadStatement2/Data/Statement/EndDateTime |Date and time at which the statement period ends. |ISODateTime | | |
 | CreationDateTime |1..1 |OBReadStatement2/Data/Statement/CreationDateTime |Date and time at which the resource was created. |ISODateTime | | |
@@ -182,17 +182,17 @@ For the call toGET /accounts/{AccountId}/statements/{StatementId}/transactions:
 | Currency |1..1 |OBReadStatement2/Data/Statement/StatementBenefit/Amount/Currency |A code allocated to a currency by a Maintenance Agency under an international identification scheme, as described in the latest edition of the international standard ISO 4217 "Codes for the representation of currencies and funds". |ActiveOrHistoricCurrencyCode | |^[A-Z]{3,3}$ |
 | StatementFee |0..n |OBReadStatement2/Data/Statement/StatementFee |Set of elements used to provide details of a fee for the statement resource. |OBStatementFee2 | | |
 | Description |0..1 |OBReadStatement2/Data/Statement/StatementFee/Description |Description that may be available for the statement fee. |Max128Text | | |
-| CreditDebitIndicator |1..1 |OBReadStatement2/Data/Statement/StatementFee/CreditDebitIndicator |Indicates whether the amount is a credit or a debit. Usage: A zero amount is considered to be a credit amount. |OBCreditDebitCode |Credit Debit | |
+| CreditDebitIndicator |1..1 |OBReadStatement2/Data/Statement/StatementFee/CreditDebitIndicator |Indicates whether the amount is a credit or a debit. Usage: A zero amount is considered to be a credit amount. |OBCreditDebitCode |Credit<br>Debit | |
 | Type |1..1 |OBReadStatement2/Data/Statement/StatementFee/Type |Fee type, in a coded form. |OBExternalStatementFeeType1Code | | |
 | Rate |0..1 |OBReadStatement2/Data/Statement/StatementFee/Rate |Rate charged for Statement Fee (where it is charged in terms of a rate rather than an amount) |OBRate1 | | |
-| RateType |0..1 |OBReadStatement2/Data/Statement/StatementFee/RateType |Description that may be available for the statement fee rate type. |OBExternalStatementFeeRateType1Code |UK.OB.AER UK.OB.EAR | |
-| Frequency |0..1 |OBReadStatement2/Data/Statement/StatementFee/Frequency |How frequently the fee is applied to the Account. |OBExternalStatementFeeFrequency1Code |UK.OB.ChargingPeriod UK.OB.PerTransactionAmount UK.OB.PerTransactionPercentage UK.OB.Quarterly UK.OB.StatementMonthly UK.OB.Weekly | |
+| RateType |0..1 |OBReadStatement2/Data/Statement/StatementFee/RateType |Description that may be available for the statement fee rate type. |OBExternalStatementFeeRateType1Code |UK.OB.AER<br>UK.OB.EAR | |
+| Frequency |0..1 |OBReadStatement2/Data/Statement/StatementFee/Frequency |How frequently the fee is applied to the Account. |OBExternalStatementFeeFrequency1Code |UK.OB.ChargingPeriod<br> UK.OB.PerTransactionAmount<br> UK.OB.PerTransactionPercentage<br> UK.OB.Quarterly<br> UK.OB.StatementMonthly <br>UK.OB.Weekly | |
 | Amount |1..1 |OBReadStatement2/Data/Statement/StatementFee/Amount |Amount of money associated with the statement fee type. |OBActiveOrHistoricCurrencyAndAmount | | |
 | Amount |1..1 |OBReadStatement2/Data/Statement/StatementFee/Amount/Amount |A number of monetary units specified in an active currency where the unit of currency is explicit and compliant with ISO 4217. |OBActiveCurrencyAndAmount_SimpleType | |`^\d{1,13}$|^\d{1,13}\.\d{1,5}$` |
 | Currency |1..1 |OBReadStatement2/Data/Statement/StatementFee/Amount/Currency |A code allocated to a currency by a Maintenance Agency under an international identification scheme, as described in the latest edition of the international standard ISO 4217 "Codes for the representation of currencies and funds". |ActiveOrHistoricCurrencyCode | |^[A-Z]{3,3}$ |
 | StatementInterest |0..n |OBReadStatement2/Data/Statement/StatementInterest |Set of elements used to provide details of a generic interest amount related to the statement resource. |OBStatementInterest2 | | |
 | Description |0..1 |OBReadStatement2/Data/Statement/StatementInterest/Description |Description that may be available for the statement interest. |Max128Text | | |
-| CreditDebitIndicator |1..1 |OBReadStatement2/Data/Statement/StatementInterest/CreditDebitIndicator |Indicates whether the amount is a credit or a debit. Usage: A zero amount is considered to be a credit amount. |OBCreditDebitCode |Credit Debit | |
+| CreditDebitIndicator |1..1 |OBReadStatement2/Data/Statement/StatementInterest/CreditDebitIndicator |Indicates whether the amount is a credit or a debit. Usage: A zero amount is considered to be a credit amount. |OBCreditDebitCode |Credit<br>Debit | |
 | Type |1..1 |OBReadStatement2/Data/Statement/StatementInterest/Type |Interest amount type, in a coded form. |OBExternalStatementInterestType1Code | | |
 | Rate |0..1 |OBReadStatement2/Data/Statement/StatementInterest/Rate |Rate for Statement Interest (where it is applicable in terms of a rate rather than an amount) |OBRate1 | | |
 | RateType |0..1 |OBReadStatement2/Data/Statement/StatementInterest/RateType |Description that may be available for the statement Interest rate type. |OBExternalStatementInterestRateType1Code |UK.OB.BOEBaseRate UK.OB.FixedRate UK.OB.Gross UK.OB.LoanProviderBaseRate UK.OB.Net | |
@@ -201,16 +201,16 @@ For the call toGET /accounts/{AccountId}/statements/{StatementId}/transactions:
 | Amount |1..1 |OBReadStatement2/Data/Statement/StatementInterest/Amount/Amount |A number of monetary units specified in an active currency where the unit of currency is explicit and compliant with ISO 4217. |OBActiveCurrencyAndAmount_SimpleType | |`^\d{1,13}$|^\d{1,13}\.\d{1,5}$` |
 | Currency |1..1 |OBReadStatement2/Data/Statement/StatementInterest/Amount/Currency |A code allocated to a currency by a Maintenance Agency under an international identification scheme, as described in the latest edition of the international standard ISO 4217 "Codes for the representation of currencies and funds". |ActiveOrHistoricCurrencyCode | |^[A-Z]{3,3}$ |
 | StatementAmount |0..n |OBReadStatement2/Data/Statement/StatementAmount |Set of elements used to provide details of a generic amount for the statement resource. |OBStatementAmount1 | | |
-| CreditDebitIndicator |1..1 |OBReadStatement2/Data/Statement/StatementAmount/CreditDebitIndicator |Indicates whether the amount is a credit or a debit. Usage: A zero amount is considered to be a credit amount. |OBCreditDebitCode |Credit Debit | |
+| CreditDebitIndicator |1..1 |OBReadStatement2/Data/Statement/StatementAmount/CreditDebitIndicator |Indicates whether the amount is a credit or a debit. Usage: A zero amount is considered to be a credit amount. |OBCreditDebitCode |Credit<br>Debit | |
 | Type |1..1 |OBReadStatement2/Data/Statement/StatementAmount/Type |Amount type, in a coded form. |OBExternalStatementAmountType1Code | | |
 | Amount |1..1 |OBReadStatement2/Data/Statement/StatementAmount/Amount |Amount of money associated with the amount type. |OBActiveOrHistoricCurrencyAndAmount | | |
 | Amount |1..1 |OBReadStatement2/Data/Statement/StatementAmount/Amount/Amount |A number of monetary units specified in an active currency where the unit of currency is explicit and compliant with ISO 4217. |OBActiveCurrencyAndAmount_SimpleType | |`^\d{1,13}$|^\d{1,13}\.\d{1,5}$` |
 | Currency |1..1 |OBReadStatement2/Data/Statement/StatementAmount/Amount/Currency |A code allocated to a currency by a Maintenance Agency under an international identification scheme, as described in the latest edition of the international standard ISO 4217 "Codes for the representation of currencies and funds". |ActiveOrHistoricCurrencyCode | |^[A-Z]{3,3}$ |
-| SubType |0..1 |OBReadStatement2/Data/Statement/StatementAmount/Amount/SubType |Amount sub type, in a coded form.<br>Default if not specified is BaseCurrency of the account |OBExternalBalanceSubType1Code |BaseCurrency LocalCurrency | |
+| SubType |0..1 |OBReadStatement2/Data/Statement/StatementAmount/Amount/SubType |Amount sub type, in a coded form.<br>Default if not specified is BCUR of the account |OBExternalBalanceSubType1Code |BCUR<br>LCUR | |
 | LocalAmount |0..1 |OBReadStatement2/Data/Statement/StatementAmount/LocalAmount |Optional component providing the equivalent of Amount in local currency. | | | |
 | Amount |1..1 |OBReadStatement2/Data/Statement/StatementAmount/LocalAmount/Amount |A number of monetary units specified in an active currency where the unit of currency is explicit and compliant with ISO 4217. |OBActiveCurrencyAndAmount_SimpleType | |`^\d{1,13}$|^\d{1,13}\.\d{1,5}$` |
 | Currency |1..1 |OBReadStatement2/Data/Statement/StatementAmount/LocalAmount/Currency |A code allocated to a currency by a Maintenance Agency under an international identification scheme, as described in the latest edition of the international standard ISO 4217 "Codes for the representation of currencies and funds". |ActiveOrHistoricCurrencyCode | |^[A-Z]{3,3}$ |
-| SubType |0..1 |OBReadStatement2/Data/Statement/StatementAmount/LocalAmount/SubType |Amount sub type, in a coded form.<br>Default if not specified is LocalCurrency of the account |OBExternalBalanceSubType1Code |BaseCurrency LocalCurrency | |
+| SubType |0..1 |OBReadStatement2/Data/Statement/StatementAmount/LocalAmount/SubType |Amount sub type, in a coded form.<br>Default if not specified is LCUR of the account |OBExternalBalanceSubType1Code |BCUR<br>LCUR | |
 | StatementDateTime |0..n |OBReadStatement2/Data/Statement/StatementDateTime |Set of elements used to provide details of a generic date time for the statement resource. |OBStatementDateTime1 | | |
 | DateTime |1..1 |OBReadStatement2/Data/Statement/StatementDateTime/DateTime |Date and time associated with the date time type. |ISODateTime | | |
 | Type |1..1 |OBReadStatement2/Data/Statement/StatementDateTime/Type |Date time type, in a coded form. |OBExternalStatementDateTimeType1Code | | |
@@ -354,12 +354,12 @@ Content-Type: application/json
       "StatementAmount": [
       {
         "Amount": {
-          "SubType": "BaseCurrency",
+          "SubType": "BCUR",
           "Amount": "329.06",
           "Currency": "GBP"
         },
         "LocalAmount": {
-          "SubType": "LocalCurrency",
+          "SubType": "LCUR",
           "Amount": "400.00",
           "Currency": "USD"
         },

@@ -101,7 +101,7 @@ The Party resource contains a set of elements that describes a party. The party 
 | Name |0..1 |OBParty2/Name |Name by which a party is known and which is usually used to identify that party. |Max350Text | | |
 | FullLegalName |0..1 |OBParty2/FullLegalName |The full legal name of the party. |Max350Text | | |
 | LegalStructure |0..1 |OBParty2/LegalStructure |Legal standing of the party. |OBExternalLegalStructureType1Code | | |
-| LEI |0..1 | OBParty2/LEI |Legal Entity Identification by which a party is known and which is usually used to identify that party. |Max20Text | | |
+| LEI |0..1 | OBParty2/LEI |Legal Entity Identification |Max20Text | | |
 | BeneficialOwnership |0..1 |OBParty2/BeneficialOwnership |A flag to indicate a party's beneficial ownership of the related account. |xs:boolean | | |
 | AccountRole |0..1 |OBParty2/AccountRole |A party's role with respect to the related account. |OBExternalAccountRole1Code | | |
 | EmailAddress |0..1 |OBParty2/EmailAddress |Address for electronic mail (e-mail). |Max256Text | | |
@@ -112,7 +112,7 @@ The Party resource contains a set of elements that describes a party. The party 
 | Related |1..1 |OBParty2/Relationships/Account/Related |Absolute URI to the related resource. |xs:anyURI | | |
 | Id |1..1 |OBParty2/Relationships/Account/Id |Unique identification as assigned by the ASPSP to uniquely identify the related resource. |Max40Text | | |
 | Address |0..n |OBParty2/Address |Postal address of a party. |OBPostalAddress6 | | |
-| AddressType |0..1 |OBParty2/Address/AddressType |BIZZ (Business)<br>DLVY (Delivery To)<br>MLTO (Mail To)<br>PBOX (PO Box)<br>ADDR (Postal)<br>HOME (Residential)<br>CORR (Correspondence)<br>STAT (Statement) | ||
+| AddressType |0..1 |OBParty2/Address/AddressType | Identifies the nature of the postal address. <br>For a full description see `OBAddressType2Code` [here](https://github.com/OpenBankingUK/External_Interal_CodeSets). | OBAddressType2Code | | |
 | Department |0..1 |OBParty2/Address/Department |Identification of a division of a large organisation or building. |Max70Text | | |
 | SubDepartment |0..1 |OBParty2/Address/SubDepartment |Identification of a sub-division of a large organisation or building. |Max70Text | | |
 | StreetName |0..1 |OBParty2/Address/StreetName |Name of a street or thoroughfare. |Max70Text | | |

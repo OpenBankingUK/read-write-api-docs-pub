@@ -85,20 +85,20 @@ The resource requires the ReadBalances permission. The resource response payload
 | Data |1..1 |OBReadBalance1/Data | |OBReadDataBalance1 | | |
 | Balance |1..n |OBReadBalance1/Data/Balance |Set of elements used to define the balance details. |OBCashBalance1 | | |
 | AccountId |1..1 |OBReadBalance1/Data/Balance/AccountId |A unique and immutable identifier used to identify the account resource. This identifier has no meaning to the account owner. |Max40Text | | |
-| CreditDebitIndicator |1..1 |OBReadBalance1/Data/Balance/CreditDebitIndicator |Indicates whether the balance is a credit or a debit balance. Usage: A zero balance is considered to be a credit balance. |OBCreditDebitCode |Credit Debit | |
+| CreditDebitIndicator |1..1 |OBReadBalance1/Data/Balance/CreditDebitIndicator |Indicates whether the balance is a credit or a debit balance. Usage: A zero balance is considered to be a credit balance. |OBCreditDebitCode |Credit<br>Debit | |
 | Type |1..1 |OBReadBalance1/Data/Balance/Type |Balance type, in a coded form. For a full description see `ExternalBalanceType1Code` [here](https://github.com/OpenBankingUK/External_Interal_CodeSets). |ExternalBalanceType1Code | | |
 | DateTime |1..1 |OBReadBalance1/Data/Balance/DateTime |Indicates the date (and time) of the balance. |ISODateTime | | |
 | Amount |1..1 |OBReadBalance1/Data/Balance/Amount |Amount of money of the cash balance. |OBActiveOrHistoricCurrencyAndAmount | | |
 | Amount |1..1 |OBReadBalance1/Data/Balance/Amount/Amount |A number of monetary units specified in an active currency where the unit of currency is explicit and compliant with ISO 4217. |OBActiveCurrencyAndAmount_SimpleType | |`^\d{1,13}$|^\d{1,13}\.\d{1,5}$` |
 | Currency |1..1 |OBReadBalance1/Data/Balance/Amount/Currency |A code allocated to a currency by a Maintenance Agency under an international identification scheme, as described in the latest edition of the international standard ISO 4217 "Codes for the representation of currencies and funds". |ActiveOrHistoricCurrencyCode | |^[A-Z]{3,3}$ |
-| SubType |0..1 |OBReadBalance1/Data/Balance/Amount/SubType |Balance sub type, in a coded form.<br>Default if not specified is BaseCurrency of the account |OBExternalBalanceSubType1Code | |BaseCurrency LocalCurrency |
+| SubType |0..1 |OBReadBalance1/Data/Balance/Amount/SubType |Balance sub type, in a coded form.<br>Default if not specified is BCUR of the account |OBExternalBalanceSubType1Code | |BCUR<BR>LCUR |
 | LocalAmount |0..1 |OBReadBalance1/Data/Balance/LocalAmount |Optional component providing the equivalent of Amount in local currency| | | |
 | Amount |1..1 |OBReadBalance1/Data/Balance/LocalAmount/Amount |A number of monetary units specified in an active currency where the unit of currency is explicit and compliant with ISO 4217. |OBActiveCurrencyAndAmount_SimpleType | |`^\d{1,13}$|^\d{1,13}\.\d{1,5}$` |
 | Currency |1..1 |OBReadBalance1/Data/Balance/LocalAmount/Amount/Currency |A code allocated to a currency by a Maintenance Agency under an international identification scheme, as described in the latest edition of the international standard ISO 4217 "Codes for the representation of currencies and funds". |ActiveOrHistoricCurrencyCode | |^[A-Z]{3,3}$ |
-| SubType |0..1 |OBReadBalance1/Data/Balance/LocalAmount/SubType |Balance sub type, in a coded form.<br>Default if not specified is LocalCurrency of the account |OBExternalBalanceSubType1Code | |BaseCurrency LocalCurrency |
+| SubType |0..1 |OBReadBalance1/Data/Balance/LocalAmount/SubType |Balance sub type, in a coded form.<br>Default if not specified is LCUR of the account |OBExternalBalanceSubType1Code | |BCUR<br>LCUR  |
 | CreditLine |0..n |OBReadBalance1/Data/Balance/CreditLine |Set of elements used to provide details on the credit line. |OBCreditLine1 | | |
 | Included |1..1 |OBReadBalance1/Data/Balance/CreditLine/Included |Indicates whether or not the credit line is included in the balance of the account. Usage: If not present, credit line is not included in the balance amount of the account. |xs:boolean | | |
-| Type |0..1 |OBReadBalance1/Data/Balance/CreditLine/Type |Limit type, in a coded form. |OBExternalLimitType1Code |Available Credit Emergency Pre-Agreed Temporary | |
+| Type |0..1 |OBReadBalance1/Data/Balance/CreditLine/Type |Limit type, in a coded form. For more information see `OBExternalLimitType1Code` [here](https://github.com/OpenBankingUK/External_Interal_CodeSets)|OBExternalLimitType1Code |Available<br>Credit<br>Emergency<br>Pre-Agreed<br>Temporary | |
 | Amount |0..1 |OBReadBalance1/Data/Balance/CreditLine/Amount |Amount of money of the credit line. |OBActiveOrHistoricCurrencyAndAmount | | |
 | Amount |1..1 |OBReadBalance1/Data/Balance/CreditLine/Amount/Amount |A number of monetary units specified in an active currency where the unit of currency is explicit and compliant with ISO 4217. |OBActiveCurrencyAndAmount_SimpleType | |`^\d{1,13}$|^\d{1,13}\.\d{1,5}$` |
 | Currency |1..1 |OBReadBalance1/Data/Balance/CreditLine/Amount/Currency |A code allocated to a currency by a Maintenance Agency under an international identification scheme, as described in the latest edition of the international standard ISO 4217 "Codes for the representation of currencies and funds". |ActiveOrHistoricCurrencyCode | |^[A-Z]{3,3}$ |
@@ -396,12 +396,12 @@ Content-Type: application/json
       "Amount": {
         "Amount": "329.06",
         "Currency": "GBP",
-        "SubType": "BaseCurrency"
+        "SubType": "BCUR"
       },
       "LocalAmount": {
         "Amount": "400.00",
         "Currency": "USD",
-        "SubType": "LocalCurrency"
+        "SubType": "LCUR"
       },
       "CreditDebitIndicator": "Credit",
       "Type": "CLAV",
