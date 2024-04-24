@@ -10,7 +10,7 @@
   - [Permission Codes](#permission-codes)
   - [Data Dictionary](#data-dictionary)
   - [Reused Classes](#reused-classes)
-    - [OBMandateRelatedInformation1](#OBMandateRelatedInformation1)
+    - [OBMandateRelatedInformation1](#obmandaterelatedinformation1)
 - [Usage Examples](#usage-examples)
   - [Specific Account](#specific-account)
     - [Get Accounts Direct Debits Request](#get-accounts-direct-debits-request)
@@ -80,6 +80,7 @@ The resource requires the ReadDirectDebits permission. The resource response pay
 #### OBMandateRelatedInformation1
 
 The OBMandateRelatedInformation1 class is defined in the [payment-initiation-api-profile](../../profiles/payment-initiation-api-profile.md#obmandaterelatedinformation1) page. MandateIdentification contains the Direct Debit reference. For AUDDIS service users provide Core Reference. For non AUDDIS service users provide Core reference if possible or last used reference
+
 
 ## Usage Examples
 

@@ -61,7 +61,7 @@
       - [Data Dictionary](#data-dictionary-8)
     - [OBRemittanceInformation1](#obremittanceinformation1)
       - [Data Dictionary](#data-dictionary-9)
-    - [OBMandateRelatedInformation1](#OBMandateRelatedInformation1)
+    - [OBMandateRelatedInformation1](#obmandaterelatedinformation1)
       - [Data Dictionary](#data-dictionary-10)
   - [Identifier Fields](#identifier-fields)
     - [Merchant Flow](#merchant-flow)

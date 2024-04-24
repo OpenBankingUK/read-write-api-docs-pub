@@ -15,7 +15,7 @@
       - [Notes](#notes)
       - [Data Dictionary](#data-dictionary)
     - [OBRemittanceInformation1](#obremittanceinformation1)
-    - [OBMandateRelatedInformation1](#OBMandateRelatedInformation1)
+    - [OBMandateRelatedInformation1](#obmandaterelatedinformation1)
   - [International Standing Order Consent - Request](#international-standing-order-consent-request)
     - [UML Diagram](#uml-diagram-2)
     - [Notes](#notes-2)
