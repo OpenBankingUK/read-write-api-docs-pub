@@ -61,6 +61,8 @@
       - [Data Dictionary](#data-dictionary-8)
     - [OBRemittanceInformation1](#obremittanceinformation1)
       - [Data Dictionary](#data-dictionary-9)
+    - [OBMandateRelatedInformation1](#OBMandateRelatedInformation1)
+      - [Data Dictionary](#data-dictionary-10)
   - [Identifier Fields](#identifier-fields)
     - [Merchant Flow](#merchant-flow)
     - [Party to Party Flow](#party-to-party-flow)
@@ -785,6 +787,25 @@ This section describes the OBSCASupportData1 class, which is used across all  _p
 | LineDetails | 0..* | OBRemittanceInformation1/Structured/ReferredDocumentInformation/LineDetails | Set of elements used to provide the content of the referred document line. | Array of String ||
 | Number | 0..1 | OBRemittanceInformation1/Structured/ReferredDocumentInformation/Number | Identification of the type specified for the referred document line. | Max35Text ||
 | RelatedDate | 0..1 | OBRemittanceInformation1/Structured/ReferredDocumentInformation/RelatedDate | Date associated with the referred document line. | ISODate ||
+
+#### OBMandateRelatedInformation1
+
+##### Data Dictionary
+| Name | Occurrence | XPath | EnhancedDefinition | Class | Codes |
+| --- | --- | --- | --- | --- | ---|
+| OBMandateRelatedInformation1 |  | | Provides further details of the mandate signed between the creditor and the debtor.| OBMandateRelatedInformation1 | | 
+| MandateIdentification | 0..1 |OBMandateRelatedInformation1/MandateIdentification |Unique identification, as assigned by the creditor, to unambiguously identify the mandate.|Max35Text | | 
+| Classification | 0..1 |OBMandateRelatedInformation1/Classification| Type of mandate instruction.|OBClassification1Code |FIXE<br>USGB<br>VARI | |
+| CategoryPurposeCode | 0..1 |OBMandateRelatedInformation1/CategoryPurposeCode |Specifies the high level purpose of the mandate based on a set of pre-defined categories.|ExternalCategoryPurpose1Code | For all enum values see `ExternalCategoryPurpose1Code` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets/)| 
+| FirstPaymentDateTime | 0..1 |OBMandateRelatedInformation1/FirstPaymentDate |The date on which the first payment for a recurrent credit transfer will be made. |ISODateTime | | 
+| RecurringPaymentDateTime | 0..1 |OBMandateRelatedInformation1/RecurringPaymentDateTime |he date on which the first recurring payment for a Standing Order schedule will be made.<br><br> Usage: This must be populated only if the first recurring date is different to the first payment date. |ISODateTime | |
+| FinalPaymentDateTime | 0..1 |OBMandateRelatedInformation1/FinalPaymentDate |The date on which the final payment for a recurrent credit transfer  will be made. |ISODateTime | | 
+| Frequency | 0..1 |OBMandateRelatedInformation1/Frequency |Regularity with which credit transfer instructions are to be created and processed |OBFrequency6 || |
+| CountPerPeriod | 0..1 |OBMandateRelatedInformation1/Frequency/CountPerPeriod |Number of instructions to be created and processed during the specified period. |Int32 || |
+| PointInTime | 0..1 |OBMandateRelatedInformation1/Frequency/PointInTime |Further information on the exact point in time the event should take place.|Exact2NumericText | | 
+| Type | 1..1 |OBMandateRelatedInformation1/Frequency/Type |A code indicating the point in time for the credit transfer. |`OBFrequency6Code` | For all enum values see `OBFrequency6Code` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets/)| 
+| Reason| 0..1 |OBMandateRelatedInformation1/Reason | Reason for the setup of the credit transfer mandate. |Max256Text | |
+
 
 ### Identifier Fields
 

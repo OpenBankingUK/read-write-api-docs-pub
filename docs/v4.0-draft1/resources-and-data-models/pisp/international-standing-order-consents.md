@@ -15,6 +15,7 @@
       - [Notes](#notes)
       - [Data Dictionary](#data-dictionary)
     - [OBRemittanceInformation1](#obremittanceinformation1)
+    - [OBMandateRelatedInformation1](#OBMandateRelatedInformation1)
   - [International Standing Order Consent - Request](#international-standing-order-consent-request)
     - [UML Diagram](#uml-diagram-2)
     - [Notes](#notes-2)
@@ -145,18 +146,7 @@ For the OBInternationalStandingOrder4 Initiation object:
 | Name |Occurrence |XPath |EnhancedDefinition |Class |Codes |Pattern |
 | --- |--- |--- |--- |--- |--- |--- |
 | OBInternationalStandingOrder4 | |OBInternationalStandingOrder4 |The Initiation payload is sent by the initiating party to the ASPSP. It is used to request movement of funds from the debtor account to a creditor for an international standing order. |OBInternationalStandingOrder4 | | |
-| MandateRelatedInformation | 0..1 |OBInternationalStandingOrder4/MandateRelatedInformation ||OBMandateRelatedInformation | | |
-| MandateIdentification | 0..1 |OBInternationalStandingOrder4/MandateRelatedInformation/MandateIdentification ||Max35Text | | |
-| Classification | 0..1 |OBInternationalStandingOrder4/MandateRelatedInformation/Classification|FIXE<br>USGB<br>VARI|OBClassification1Code | | |
-| CategoryPurposeCode | 0..1 |OBInternationalStandingOrder4/MandateRelatedInformation/CategoryPurposeCode ||OBCategoryPurpose1Code | | |
-| FirstPaymentDate | 0..1 |OBInternationalStandingOrder4/MandateRelatedInformation/FirstPaymentDate |The date on which the first payment for a Standing Order schedule will be made. |ISODate | | |
-| FinalPaymentDate | 0..1 |OBInternationalStandingOrder4/MandateRelatedInformation/FinalPaymentDate |The date on which the final payment for a Standing Order schedule will be made. |ISODate | | |
-| Frequency | 0..1 |OBInternationalStandingOrder4/MandateRelatedInformation/Frequency |A code indicating the frequency of payment for the Standing Order. Values:<br>ADHO<br>YEAR<br>DALI<br>INDA<br>MNTH<br>QURT<br>MIAN<br>WEEK |OBFrequencyPeriodType | | |
-| PeriodType | 1..1 |OBInternationalStandingOrder4/MandateRelatedInformation/PeriodType |A code indicating the period type for the Standing Order. Values:<br>ADHO<br>YEAR<br>DALI<br>INDA<br>MNTH<br>QURT<br>MIAN<br>WEEK |OBFrequencyPeriodType | | |
-| CountPerPeriod | 1..1 |OBInternationalStandingOrder4/MandateRelatedInformation/CountPerPeriod | |int32 | |
-| PointInTimeType | 1..1 |OBInternationalStandingOrder4/MandateRelatedInformation/PointInTimeType |A code indicating the point in time for payment of the Standing Order. Values:<br>ADHO<br>YEAR<br>DALI<br>INDA<br>MNTH<br>QURT<br>MIAN<br>WEEK |OBFrequencyPeriodType | | |
-| PointInTime | 1..1 |OBInternationalStandingOrder4/MandateRelatedInformation/PointInTime |ISODateTime | | |
-| Reason| 0..1 |OBInternationalStandingOrder4/MandateRelatedInformation/Reason | |Max256Text | |
+| MandateRelatedInformation | 0..1 |OBInternationalStandingOrder4/MandateRelatedInformation ||OBMandateRelatedInformation1 | | |
 | RemittanceInformation |0..1 |OBInternationalStandingOrder4/RemittanceInformation |Information supplied to enable the matching of an entry with the items that the transfer is intended to settle, such as commercial invoices in an accounts' receivable system. |OBRemittanceInformation1 | | |
 | NumberOfPayments |0..1 |OBInternationalStandingOrder4/NumberOfPayments |Number of the payments that will be made in completing this frequency sequence including any executed since the sequence start date. |Max35Text | | |
 | Purpose |0..1 |OBInternationalStandingOrder4/Purpose |Specifies the external purpose code in the format of character string with a maximum length of 4 characters. The list of valid codes is an external code list published separately. External code sets can be downloaded from www.iso20022.org. |OBExternalPurpose1Code1 | | |
@@ -261,6 +251,10 @@ For the OBInternationalStandingOrder4 Initiation object:
 #### OBRemittanceInformation1
 
 The OBRemittanceInformation1 class is defined in the [payment-initiation-api-profile](../../profiles/payment-initiation-api-profile.md#obremittanceinformation1) page.
+
+#### OBMandateRelatedInformation1
+
+The OBMandateRelatedInformation1 class is defined in the [payment-initiation-api-profile](../../profiles/payment-initiation-api-profile.md#obmandaterelatedinformation1) page.
 
 
 ### International Standing Order Consent - Request
