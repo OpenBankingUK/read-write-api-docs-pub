@@ -11,6 +11,8 @@
   - [UML Diagram](#uml-diagram)
   - [Permission Codes](#permission-codes)
   - [Data Dictionary](#data-dictionary)
+  - [Reused Classes](#reused-classes)
+    - [OBMandateRelatedInformation1](#obmandaterelatedinformation1)
 - [Usage Examples](#usage-examples)
   - [Specific Account](#specific-account)
     - [Get Accounts Direct Debits Request](#get-accounts-direct-debits-request)
@@ -80,7 +82,13 @@ The resource requires the ReadDirectDebits permission. The resource response pay
 | PreviousPaymentAmount |0..1 |OBReadDirectDebit2/Data/DirectDebit/PreviousPaymentAmount |The amount of the most recent direct debit collection. |OBActiveOrHistoricCurrencyAndAmount | | |
 | Amount |1..1 |OBReadDirectDebit2/Data/DirectDebit/PreviousPaymentAmount/Amount |A number of monetary units specified in an active currency where the unit of currency is explicit and compliant with ISO 4217. |OBActiveCurrencyAndAmount_SimpleType | |`^\d{1,13}$|^\d{1,13}\.\d{1,5}$` |
 | Currency |1..1 |OBReadDirectDebit2/Data/DirectDebit/PreviousPaymentAmount/Currency |A code allocated to a currency by a Maintenance Agency under an international identification scheme, as described in the latest edition of the international standard ISO 4217 "Codes for the representation of currencies and funds". |ActiveOrHistoricCurrencyCode | |^[A-Z]{3,3}$ |
-| MandateRelatedInformation | 0..1 |OBReadDirectDebit2/Data/DirectDebit/MandateRelatedInformation |Provides further details of the mandate signed between the creditor and the debtor.|OBMandateRelatedInformation1 | | |
+| MandateRelatedInformation | 0..1 |OBReadDirectDebit2/Data/DirectDebit/MandateRelatedInformation ||OBMandateRelatedInformation1 | | |
+
+### Reused Classes
+
+#### OBMandateRelatedInformation1
+
+The OBMandateRelatedInformation1 class is defined in the [payment-initiation-api-profile](../../profiles/payment-initiation-api-profile.md#obmandaterelatedinformation1) page. MandateIdentification contains the Direct Debit reference. For AUDDIS service users provide Core Reference. For non AUDDIS service users provide Core reference if possible or last used reference
 
 
 ## Usage Examples

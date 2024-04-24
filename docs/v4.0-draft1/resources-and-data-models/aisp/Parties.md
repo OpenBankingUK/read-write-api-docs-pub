@@ -11,6 +11,7 @@
         - [UML Diagram](#uml-diagram)
         - [Notes](#notes)
         - [Data Dictionary](#data-dictionary)
+    - [OBPostalAddress6](#obpostaladdress6)
   - [OBReadParty2](#obreadparty2)
     - [UML Diagram](#uml-diagram-1)
     - [Data Dictionary](#data-dictionary-1)
@@ -113,6 +114,10 @@ The Party resource contains a set of elements that describes a party. The party 
 | Related |1..1 |OBParty2/Relationships/Account/Related |Absolute URI to the related resource. |xs:anyURI | | |
 | Id |1..1 |OBParty2/Relationships/Account/Id |Unique identification as assigned by the ASPSP to uniquely identify the related resource. |Max40Text | | |
 | Address |0..n |OBParty2/Address |Postal address of a party. |OBPostalAddress6 | | |
+
+#### OBPostalAddress6 
+
+The OBPostalAddress6 class is defined in the [payment-initiation-api-profile](../../profiles/payment-initiation-api-profile.md#obpostaladdress6) page
 
 ### OBReadParty2
 

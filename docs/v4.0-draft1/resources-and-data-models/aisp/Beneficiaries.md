@@ -13,6 +13,8 @@
   - [Notes](#notes)
   - [Permission Codes](#permission-codes)
   - [Data Dictionary](#data-dictionary)
+  - [Reused Classes](#reused-classes)
+    - [OBPostalAddress6](#obpostaladdress6)
 - [Usage Examples](#usage-examples)
   - [Specific Account](#specific-account)
     - [Get Account Beneficiaries Request](#get-account-beneficiaries-request)
@@ -130,6 +132,12 @@ If the ReadPAN permission is granted by the PSU, the ASPSP may choose to populat
 | Name |0..1 |OBReadBeneficiary5/Data/Beneficiary/CreditorAccount/Name |The account name is the name or names of the account owner(s) represented at an account level, as displayed by the ASPSP's online channels. Note, the account name is not the product name or the nickname of the account. |Max350Text | | |
 | SecondaryIdentification |0..1 |OBReadBeneficiary5/Data/Beneficiary/CreditorAccount/SecondaryIdentification |This is secondary identification of the account, as assigned by the account servicing institution. This can be used by building societies to additionally identify accounts with a roll number (in addition to a sort code and account number combination). |Max34Text | | |
 | Proxy |0..1 |OBReadBeneficiary5/Data/Beneficiary/CreditorAccount/Proxy | Specifies an alternate assumed name for the identification of the account.  | OBProxy1 | | |
+
+### Reused Classes
+
+#### OBPostalAddress6 
+
+The OBPostalAddress6 class is defined in the [payment-initiation-api-profile](../../profiles/payment-initiation-api-profile.md#obpostaladdress6) page
 
 ## Usage Examples
 

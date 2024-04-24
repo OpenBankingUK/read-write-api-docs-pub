@@ -15,6 +15,11 @@
       - [Notes](#notes)
       - [Data Dictionary](#data-dictionary)
     - [OBRemittanceInformation1](#obremittanceinformation1)
+    - [OBMandateRelatedInformation1](#obmandaterelatedinformation1)
+    - [OBRegulatoryReporting1](#obregulatoryreporting1)
+    - [OBUltimateCreditor1](#obultimatecreditor1)
+    - [OBUltimateDebtor1](#obultimatedebtor1)
+    - [OBPostalAddress6](#obpostaladdress6)
   - [International Standing Order Consent - Request](#international-standing-order-consent-request)
     - [UML Diagram](#uml-diagram-2)
     - [Notes](#notes-2)
@@ -145,18 +150,7 @@ For the OBInternationalStandingOrder4 Initiation object:
 | Name |Occurrence |XPath |EnhancedDefinition |Class |Codes |Pattern |
 | --- |--- |--- |--- |--- |--- |--- |
 | OBInternationalStandingOrder4 | |OBInternationalStandingOrder4 |The Initiation payload is sent by the initiating party to the ASPSP. It is used to request movement of funds from the debtor account to a creditor for an international standing order. |OBInternationalStandingOrder4 | | |
-| MandateRelatedInformation | 0..1 |OBInternationalStandingOrder4/MandateRelatedInformation ||OBMandateRelatedInformation | | |
-| MandateIdentification | 0..1 |OBInternationalStandingOrder4/MandateRelatedInformation/MandateIdentification ||Max35Text | | |
-| Classification | 0..1 |OBInternationalStandingOrder4/MandateRelatedInformation/Classification|FIXE<br>USGB<br>VARI|OBClassification1Code | | |
-| CategoryPurposeCode | 0..1 |OBInternationalStandingOrder4/MandateRelatedInformation/CategoryPurposeCode ||OBCategoryPurpose1Code | | |
-| FirstPaymentDate | 0..1 |OBInternationalStandingOrder4/MandateRelatedInformation/FirstPaymentDate |The date on which the first payment for a Standing Order schedule will be made. |ISODate | | |
-| FinalPaymentDate | 0..1 |OBInternationalStandingOrder4/MandateRelatedInformation/FinalPaymentDate |The date on which the final payment for a Standing Order schedule will be made. |ISODate | | |
-| Frequency | 0..1 |OBInternationalStandingOrder4/MandateRelatedInformation/Frequency |A code indicating the frequency of payment for the Standing Order. Values:<br>ADHO<br>YEAR<br>DALI<br>INDA<br>MNTH<br>QURT<br>MIAN<br>WEEK |OBFrequencyPeriodType | | |
-| PeriodType | 1..1 |OBInternationalStandingOrder4/MandateRelatedInformation/PeriodType |A code indicating the period type for the Standing Order. Values:<br>ADHO<br>YEAR<br>DALI<br>INDA<br>MNTH<br>QURT<br>MIAN<br>WEEK |OBFrequencyPeriodType | | |
-| CountPerPeriod | 1..1 |OBInternationalStandingOrder4/MandateRelatedInformation/CountPerPeriod | |int32 | |
-| PointInTimeType | 1..1 |OBInternationalStandingOrder4/MandateRelatedInformation/PointInTimeType |A code indicating the point in time for payment of the Standing Order. Values:<br>ADHO<br>YEAR<br>DALI<br>INDA<br>MNTH<br>QURT<br>MIAN<br>WEEK |OBFrequencyPeriodType | | |
-| PointInTime | 1..1 |OBInternationalStandingOrder4/MandateRelatedInformation/PointInTime |ISODateTime | | |
-| Reason| 0..1 |OBInternationalStandingOrder4/MandateRelatedInformation/Reason | |Max256Text | |
+| MandateRelatedInformation | 0..1 |OBInternationalStandingOrder4/MandateRelatedInformation ||OBMandateRelatedInformation1 | | |
 | RemittanceInformation |0..1 |OBInternationalStandingOrder4/RemittanceInformation |Information supplied to enable the matching of an entry with the items that the transfer is intended to settle, such as commercial invoices in an accounts' receivable system. |OBRemittanceInformation1 | | |
 | NumberOfPayments |0..1 |OBInternationalStandingOrder4/NumberOfPayments |Number of the payments that will be made in completing this frequency sequence including any executed since the sequence start date. |Max35Text | | |
 | Purpose |0..1 |OBInternationalStandingOrder4/Purpose |Specifies the external purpose code in the format of character string with a maximum length of 4 characters. The list of valid codes is an external code list published separately. External code sets can be downloaded from www.iso20022.org. |OBExternalPurpose1Code1 | | |
@@ -180,49 +174,12 @@ For the OBInternationalStandingOrder4 Initiation object:
 | Name |0..1 |OBInternationalStandingOrder4/Creditor/Name |Name by which a party is known and which is usually used to identify that party. |Max350Text | | |
 | LEI |0..1 | OBInternationalStandingOrder4/Creditor/LEI |Legal Entity Identification by which a party is known and which is usually used to identify that party. |Max20Text | | |
 | PostalAddress |0..1 |OBInternationalStandingOrder4/Creditor/PostalAddress |Information that locates and identifies a specific address, as defined by postal services. |OBPostalAddress6 | | |
-| AddressType |0..1 |OBInternationalStandingOrder4/Creditor/PostalAddress/AddressType |Identifies the nature of the postal address. <br>For a full description see `OBAddressType2Code` [here](https://github.com/OpenBankingUK/External_Interal_CodeSets). | OBAddressType2Code | | |
-| Department |0..1 |OBInternationalStandingOrder4/Creditor/PostalAddress/Department |Identification of a division of a large organisation or building. |Max70Text | | |
-| SubDepartment |0..1 |OBInternationalStandingOrder4/Creditor/PostalAddress/SubDepartment |Identification of a sub-division of a large organisation or building. |Max70Text | | |
-| StreetName |0..1 |OBInternationalStandingOrder4/Creditor/PostalAddress/StreetName |Name of a street or thoroughfare. |Max140Text | | |
-| BuildingNumber |0..1 |OBInternationalStandingOrder4/Creditor/PostalAddress/BuildingNumber |Number that identifies the position of a building on a street. |Max16Text | | |
-| BuildingName |0..1 |OBInternationalStandingOrder4/Creditor/PostalAddress/BuildingName |Name of a referenced building. |Max140Text | | |
-| Floor |0..1 |OBInternationalStandingOrder4/Creditor/PostalAddress/Floor|Number that identifies the level within a building. |Max70Text | | |
-| UnitNumber|0..1 |OBInternationalStandingOrder4/Creditor/PostalAddress/UnitNumber|Number that identifies the unit of a specific address |Max16Text | | |
-| Room |0..1 |OBInternationalStandingOrder4/Creditor/PostalAddress/Room|Information that locates and identifies a room to form part of an address. |Max70Text | | |
-| TownLocationName |0..1 |OBInternationalStandingOrder4/Creditor/PostalAddress/TownLocationName |Name of a built-up area, with defined boundaries, and a local government. |Max140Text | | |
-| DistrictName |0..1 |OBInternationalStandingOrder4/Creditor/PostalAddress/DistrictName |Number that of the regional area, known as a district, which forms part of an address. |Max140Text | | |
-| CareOf |0..1 |OBInternationalStandingOrder4/Creditor/PostalAddress/CareOf |The 'care of' address is used whenever sending mail to a person or organisation who does not actually live or work at the address. They will receive the mail for the individual. |Max140Text | | |
-| PostCode |0..1 |OBInternationalStandingOrder4/Creditor/PostalAddress/PostCode |Identifier consisting of a group of letters and/or numbers that is added to a postal address to assist the sorting of mail. |Max16Text | | |
-| PostBox |0..1 |OBInternationalStandingOrder4/Creditor/PostalAddress/PostBox |Numbered box in a post office, assigned to a person or organisation, where letters are kept until called for |Max16Text | | |
-| TownName |0..1 |OBInternationalStandingOrder4/Creditor/PostalAddress/TownName |Name of a built-up area, with defined boundaries, and a local government. |Max140Text | | |
-| CountrySubDivision |0..1 |OBInternationalStandingOrder4/Creditor/PostalAddress/CountrySubDivision |Identifies a subdivision of a country such as state, region, county. |Max35Text | | |
-| Country |0..1 |OBInternationalStandingOrder4/Creditor/PostalAddress/Country |Nation with its own government. |CountryCode | |^[A-Z]{2,2}$ |
-| AddressLine |0..7 |OBInternationalStandingOrder4/Creditor/PostalAddress/AddressLine |Information that locates and identifies a specific address, as defined by postal services, presented in free format text. |Max70Text | | | |
 | CreditorAgent |0..1 |OBInternationalStandingOrder4/CreditorAgent |Party that manages the account on behalf of the account owner, that is manages the registration and booking of entries on the account, calculates balances on the account and provides information about the account. This is the servicer of the beneficiary account. |OBBranchAndFinancialInstitutionIdentification6 | | |
 | SchemeName |0..1 |OBInternationalStandingOrder4/CreditorAgent/SchemeName |Name of the identification scheme, in a coded form as published in an external list. |OBExternalFinancialInstitutionIdentification4Code | | |
 | Identification |0..1 |OBInternationalStandingOrder4/CreditorAgent/Identification |Unique and unambiguous identification of the servicing institution. |Max35Text | | |
 | Name |0..1 |OBInternationalStandingOrder4/CreditorAgent/Name |Name by which an agent is known and which is usually used to identify that agent. |Max140Text | | |
 | LEI |0..1 | OBInternationalStandingOrder4/CreditorAgent/LEI |Legal Entity Identification by which a party is known and which is usually used to identify that party. |Max20Text | | |
 | PostalAddress |0..1 |OBInternationalStandingOrder4/CreditorAgent/PostalAddress |Information that locates and identifies a specific address, as defined by postal services. |OBPostalAddress6 | | |
-| AddressType |0..1 |OBInternationalStandingOrder4/CreditorAgent/PostalAddress/AddressType |Identifies the nature of the postal address. <br>For a full description see `OBAddressType2Code` [here](https://github.com/OpenBankingUK/External_Interal_CodeSets). | OBAddressType2Code | | |
-| Department |0..1 |OBInternationalStandingOrder4/CreditorAgent/PostalAddress/Department |Identification of a division of a large organisation or building. |Max70Text | | |
-| SubDepartment |0..1 |OBInternationalStandingOrder4/CreditorAgent/PostalAddress/SubDepartment |Identification of a sub-division of a large organisation or building. |Max70Text | | |
-| StreetName |0..1 |OBInternationalStandingOrder4/CreditorAgent/PostalAddress/StreetName |Name of a street or thoroughfare. |Max140Text | | |
-| BuildingNumber |0..1 |OBInternationalStandingOrder4/CreditorAgent/PostalAddress/BuildingNumber |Number that identifies the position of a building on a street. |Max16Text | | |
-| BuildingName |0..1 |OBInternationalStandingOrder4/CreditorAgent/PostalAddress/BuildingName |Name of a referenced building. |Max140Text | | |
-| Floor |0..1 |OBInternationalStandingOrder4/CreditorAgent/PostalAddress/Floor|Number that identifies the level within a building. |Max70Text | | |
-| UnitNumber|0..1 |OBInternationalStandingOrder4/CreditorAgent/PostalAddress/UnitNumber|Number that identifies the unit of a specific address |Max16Text | | |
-| Room |0..1 |OBInternationalStandingOrder4/CreditorAgent/PostalAddress/Room|Information that locates and identifies a room to form part of an address. |Max70Text | | |
-| TownLocationName |0..1 |OBInternationalStandingOrder4/CreditorAgent/PostalAddress/TownLocationName |Name of a built-up area, with defined boundaries, and a local government. |Max140Text | | |
-| DistrictName |0..1 |OBInternationalStandingOrder4/CreditorAgent/PostalAddress/DistrictName |Number that of the regional area, known as a district, which forms part of an address. |Max140Text | | |
-| CareOf |0..1 |OBInternationalStandingOrder4/CreditorAgent/PostalAddress/CareOf |The 'care of' address is used whenever sending mail to a person or organisation who does not actually live or work at the address. They will receive the mail for the individual. |Max140Text | | |
-| PostCode |0..1 |OBInternationalStandingOrder4/CreditorAgent/PostalAddress/PostCode |Identifier consisting of a group of letters and/or numbers that is added to a postal address to assist the sorting of mail. |Max16Text | | |
-| PostBox |0..1 |OBInternationalStandingOrder4/CreditorAgent/PostalAddress/PostBox |Numbered box in a post office, assigned to a person or organisation, where letters are kept until called for |Max16Text | | |
-| TownName |0..1 |OBInternationalStandingOrder4/CreditorAgent/PostalAddress/TownName |Name of a built-up area, with defined boundaries, and a local government. |Max140Text | | |
-| CountrySubDivision |0..1 |OBInternationalStandingOrder4/CreditorAgent/PostalAddress/CountrySubDivision |Identifies a subdivision of a country such as state, region, county. |Max35Text | | |
-| Country |0..1 |OBInternationalStandingOrder4/CreditorAgent/PostalAddress/Country |Nation with its own government. |CountryCode | |^[A-Z]{2,2}$ |
-| AddressLine |0..7 |OBInternationalStandingOrder4/CreditorAgent/PostalAddress/AddressLine |Information that locates and identifies a specific address, as defined by postal services, presented in free format text. |Max70Text | | | |
-| CreditorAccount |1..1 |OBInternationalStandingOrder4/CreditorAccount |Provides the details to identify the beneficiary account. |OBCashAccountCreditor3 | | |
 | SchemeName |1..1 |OBInternationalStandingOrder4/CreditorAccount/SchemeName |Name of the identification scheme, in a coded form as published in an external list. |OBExternalAccountIdentification4Code | | |
 | Identification |1..1 |OBInternationalStandingOrder4/CreditorAccount/Identification |Identification assigned by an institution to identify an account. This identification is known by the account owner. |Max256Text | | |
 | Name |1..1 |OBInternationalStandingOrder4/CreditorAccount/Name |The account name is the name or names of the account owner(s) represented at an account level. Note, the account name is not the product name or the nickname of the account. OB: ASPSPs may carry out name validation for Confirmation of Payee, but it is not mandatory. |Max350Text | | |
@@ -247,21 +204,33 @@ For the OBInternationalStandingOrder4 Initiation object:
 | Amount |1..1 |OBInternationalStandingOrder4/RegulatoryReporting/Details/Amount/Amount |A number of monetary units specified in an active currency where the unit of currency is explicit and compliant with ISO 4217. | | | |
 | Currency |1..1 |OBInternationalStandingOrder4/RegulatoryReporting/Details/Amount/Currency |A code allocated to a currency by a Maintenance Agency under an international identification scheme, as described in the latest edition of the international standard ISO 4217 "Codes for the representation of currencies and funds". |ActiveOrHistoricCurrencyCode | | ^[A-Z]{3,3}$ |
 | Information |0..* |OBInternationalStandingOrder4/RegulatoryReporting/Details/Information |Additional details that cater for specific domestic regulatory requirements. |Max35Text | | |
-| UltimateCreditor |0..1 |OBInternationalStandingOrder4/UltimateCreditor|Set of elements used to identify a person or an organisation. | OBPartyIdentification43 | | |
-| SchemeName |0..1 |OBInternationalStandingOrder4/UltimateCreditor/SchemeName |Name of the identification scheme, in a coded form as published in an external list. |OBExternalAccountIdentification4Code | | |
-| Identification |0..1 |OBInternationalStandingOrder4/UltimateCreditor/Identification |Identification assigned by an institution to identify an account. This identification is known by the account owner. |Max256Text | | |
-| Name |0..1 |OBInternationalStandingOrder4/UltimateCreditor/Name |The account name is the name or names of the account owner(s) represented at an account level, as displayed by the ASPSP's online channels. Note, the account name is not the product name or the nickname of the account. |Max350Text | | |
-| LEI |0..1 | OBInternationalStandingOrder4/UltimateCreditor/LEI |Legal Entity Identification by which a party is known and which is usually used to identify that party. |Max20Text | | |
-| UltimateDebtor |0..1 |OBInternationalStandingOrder4/UltimateDebtor|Set of elements used to identify a person or an organisation. | | | |
-| SchemeName |0..1 |OBInternationalStandingOrder4/UltimateDebtor/SchemeName |Name of the identification scheme, in a coded form as published in an external list. |OBExternalAccountIdentification4Code | | |
-| Identification |0..1 |OBInternationalStandingOrder4/UltimateDebtor/Identification |Identification assigned by an institution to identify an account. This identification is known by the account owner. |Max256Text | | |
-| Name |0..1 |OBInternationalStandingOrder4/UltimateDebtor/Name |The account name is the name or names of the account owner(s) represented at an account level, as displayed by the ASPSP's online channels. Note, the account name is not the product name or the nickname of the account. |Max350Text | | |
-| LEI |0..1 | OBInternationalStandingOrder4/UltimateDebtor/LEI |Legal Entity Identification by which a party is known and which is usually used to identify that party. |Max20Text | | |
+| UltimateCreditor |0..1 |OBInternationalStandingOrder4/UltimateCreditor|Set of elements used to identify a person or an organisation. | OBUltimateCreditor1 | | |
+| UltimateDebtor |0..1 |OBInternationalStandingOrder4/UltimateDebtor|Set of elements used to identify a person or an organisation. |OBUltimateDebtor1 | | |
 
 #### OBRemittanceInformation1
 
 The OBRemittanceInformation1 class is defined in the [payment-initiation-api-profile](../../profiles/payment-initiation-api-profile.md#obremittanceinformation1) page.
 
+#### OBMandateRelatedInformation1
+
+The OBMandateRelatedInformation1 class is defined in the [payment-initiation-api-profile](../../profiles/payment-initiation-api-profile.md#obmandaterelatedinformation1) page.
+
+#### OBRegulatoryReporting1
+
+The OBRegulatoryReporting1 class is defined in the [payment-initiation-api-profile](../../profiles/payment-initiation-api-profile.md#obregulatoryreporting1) page.
+
+#### OBUltimateCreditor1
+
+The OBUltimateCreditor1 class is defined in the [payment-initiation-api-profile](../../profiles/payment-initiation-api-profile.md#obultimatecreditor1) page.
+
+
+#### OBUltimateDebtor1 
+
+The OBUltimateDebtor1 class is defined in the [payment-initiation-api-profile](../../profiles/payment-initiation-api-profile.md#obultimatedebtor1) page.
+
+#### OBPostalAddress6 
+
+The OBPostalAddress6 class is defined in the [payment-initiation-api-profile](../../profiles/payment-initiation-api-profile.md#obpostaladdress6) page
 
 ### International Standing Order Consent - Request
 

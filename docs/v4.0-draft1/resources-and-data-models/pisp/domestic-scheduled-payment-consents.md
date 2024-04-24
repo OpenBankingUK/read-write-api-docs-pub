@@ -15,6 +15,10 @@
       - [Notes](#notes)
       - [Data Dictionary](#data-dictionary)
     - [OBRemittanceInformation1](#obremittanceinformation1)
+    - [OBRegulatoryReporting1](#obregulatoryreporting1)
+    - [OBUltimateCreditor1](#obultimatecreditor1)
+    - [OBUltimateDebtor1](#obultimatedebtor1)
+    - [OBPostalAddress6](#obpostaladdress6)
   - [Domestic Scheduled Payment Consent - Request](#domestic-scheduled-payment-consent-request)
     - [UML Diagram](#uml-diagram-2)
     - [Notes](#notes-2)
@@ -167,54 +171,32 @@ Account Identification field usage:
 | Code |1..1 |OBDomesticScheduled2/CreditorAccount/Proxy/Code| Specifies the external proxy account type code, as published in the proxy account type external code set.<br> For more information see `ExternalProxyAccountType1Code` [here](https://github.com/OpenBankingUK/External_Interal_CodeSets) |OBExternalProxyAccountType1Code | | |
 | Proprietary |1..1 |OBDomesticScheduled2/CreditorAccount/Proxy/Proprietary| The owner of the proxy account |MaxText70 | | |
 | CreditorPostalAddress |0..1 |OBDomesticScheduled2/CreditorPostalAddress |Information that locates and identifies a specific address, as defined by postal services. |OBPostalAddress6 | | |
-| AddressType |0..1 |OBDomesticScheduled2/CreditorPostalAddress/AddressType |Identifies the nature of the postal address. <br>For a full description see `OBAddressType2Code` [here](https://github.com/OpenBankingUK/External_Interal_CodeSets). |OBAddressType2Code ||
-| Department |0..1 |OBDomesticScheduled2/CreditorPostalAddress/Department |Identification of a division of a large organisation or building. |Max70Text | | |
-| SubDepartment |0..1 |OBDomesticScheduled2/CreditorPostalAddress/SubDepartment |Identification of a sub-division of a large organisation or building. |Max70Text | | |
-| StreetName |0..1 |OBDomesticScheduled2/CreditorPostalAddress/StreetName |Name of a street or thoroughfare. |Max140Text | | |
-| BuildingNumber |0..1 |OBDomesticScheduled2/CreditorPostalAddress/BuildingNumber |Number that identifies the position of a building on a street. |Max16Text | | |
-| BuildingName |0..1 |OBDomesticScheduled2/CreditorPostalAddress/BuildingName |Name of a referenced building. |Max140Text | | |
-| Floor |0..1 |OBDomesticScheduled2/CreditorPostalAddress/Floor|Number that identifies the level within a building. |Max70Text | | |
-| UnitNumber|0..1 |OBDomesticScheduled2/CreditorPostalAddress/UnitNumber|Number that identifies the unit of a specific address |Max16Text | | |
-| Room |0..1 |OBDomesticScheduled2/CreditorPostalAddress/Room|Information that locates and identifies a room to form part of an address. |Max70Text | | |
-| TownLocationName |0..1 |OBDomesticScheduled2/CreditorPostalAddress/TownLocationName |Name of a built-up area, with defined boundaries, and a local government. |Max140Text | | |
-| DistrictName |0..1 |OBDomesticScheduled2/CreditorPostalAddress/DistrictName |Number that of the regional area, known as a district, which forms part of an address. |Max140Text | | |
-| CareOf |0..1 |OBDomesticScheduled2/CreditorPostalAddress/CareOf |The 'care of' address is used whenever sending mail to a person or organisation who does not actually live or work at the address. They will receive the mail for the individual. |Max140Text | | |
-| PostCode |0..1 |OBDomesticScheduled2/CreditorPostalAddress/PostCode |Identifier consisting of a group of letters and/or numbers that is added to a postal address to assist the sorting of mail. |Max16Text | | |
-| PostBox |0..1 |OBDomesticScheduled2/CreditorPostalAddress/PostBox |Numbered box in a post office, assigned to a person or organisation, where letters are kept until called for |Max16Text | | |
-| TownName |0..1 |OBDomesticScheduled2/CreditorPostalAddress/TownName |Name of a built-up area, with defined boundaries, and a local government. |Max140Text | | |
-| CountrySubDivision |0..1 |OBDomesticScheduled2/CreditorPostalAddress/CountrySubDivision |Identifies a subdivision of a country such as state, region, county. |Max35Text | | |
-| Country |0..1 |OBDomesticScheduled2/CreditorPostalAddress/Country |Nation with its own government. |CountryCode | |^[A-Z]{2,2}$ |
-| AddressLine |0..7 |OBDomesticScheduled2/CreditorPostalAddress/AddressLine |Information that locates and identifies a specific address, as defined by postal services, presented in free format text. |Max70Text | | | |
 | RemittanceInformation |0..1 |OBDomesticScheduled2/RemittanceInformation |Information supplied to enable the matching of an entry with the items that the transfer is intended to settle, such as commercial invoices in an accounts' receivable system. |OBRemittanceInformation1 | | |
 | SupplementaryData |0..1 |OBDomesticScheduled2/SupplementaryData |Additional information that can not be captured in the structured fields and/or any other specific block. |OBSupplementaryData1 | | |
-| RegulatoryReporting |0..10 |OBDomesticScheduled2/RegulatoryReporting |Information needed due to regulatory and statutory requirements. |RegulatoryReporting3 | | |
-| DebitCreditReportingIndicator |0..1 |OBDomesticScheduled2/RegulatoryReporting/DebitCreditReportingIndicator | Identifies whether the regulatory reporting information applies to the debit side, to the credit side or to both debit and credit sides of the transaction. |RegulatoryReportingType1Code |CRED DEBT BOTH | |
-| Authority |0..1 |OBDomesticScheduled2/RegulatoryReporting/Authority |Entity requiring the regulatory reporting information. |RegulatoryAuthority2 | | |
-| Name |0..1 |OBDomesticScheduled2/RegulatoryReporting/Authority/Name |Name of the entity requiring the regulatory reporting information. |Max140Text | | |
-| Country |0..1 |OBDomesticScheduled2/RegulatoryReporting/Authority/Country |Country of the entity that requires the regulatory reporting information. |CountryCode | | |
-| Details |0..* |OBDomesticScheduled2/RegulatoryReporting/Details |Set of elements used to provide details on the regulatory reporting information. |StructuredRegulatoryReporting3 | | |
-| Type |0..1 |OBDomesticScheduled2/RegulatoryReporting/Details/Type |Specifies the type of the information supplied in the regulatory reporting details. |Max35Text | | |
-| Date |0..1 |OBDomesticScheduled2/RegulatoryReporting/Details/Date |Date related to the specified type of regulatory reporting details. |ISODateTime | | |
-| Country |0..1 |OBDomesticScheduled2/RegulatoryReporting/Details/Country |Country related to the specified type of regulatory reporting details. |CountryCode | | ^[A-Z]{2,2}$ |
-| Code |0..1 |OBDomesticScheduled2/RegulatoryReporting/Details/Code |Specifies the nature, purpose, and reason for the transaction to be reported for regulatory and statutory requirements in a coded form. |Max10Text | | |
-| Amount |0..1 |OBDomesticScheduled2/RegulatoryReporting/Details/Amount |Amount of money to be reported for regulatory and statutory requirements. |OBActiveOrHistoricCurrencyAndAmount | | |
-| Amount |1..1 |OBDomesticScheduled2/RegulatoryReporting/Details/Amount/Amount |A number of monetary units specified in an active currency where the unit of currency is explicit and compliant with ISO 4217. | | | |
-| Currency |1..1 |OBDomesticScheduled2/RegulatoryReporting/Details/Amount/Currency |A code allocated to a currency by a Maintenance Agency under an international identification scheme, as described in the latest edition of the international standard ISO 4217 "Codes for the representation of currencies and funds". |ActiveOrHistoricCurrencyCode | | ^[A-Z]{3,3}$ |
-| Information |0..* |OBDomesticScheduled2/RegulatoryReporting/Details/Information |Additional details that cater for specific domestic regulatory requirements. |Max35Text | | |
-| UltimateCreditor |0..1 |OBDomesticScheduled2/UltimateCreditor|Set of elements used to identify a person or an organisation. | OBPartyIdentification43 | | |
-| SchemeName |0..1 |OBDomesticScheduled2/UltimateCreditor/SchemeName |Name of the identification scheme, in a coded form as published in an external list. |OBExternalAccountIdentification4Code | | |
-| Identification |0..1 |OBDomesticScheduled2/UltimateCreditor/Identification |Identification assigned by an institution to identify an account. This identification is known by the account owner. |Max256Text | | |
-| Name |0..1 |OBDomesticScheduled2/UltimateCreditor/Name |The account name is the name or names of the account owner(s) represented at an account level, as displayed by the ASPSP's online channels. Note, the account name is not the product name or the nickname of the account. |Max350Text | | |
-| LEI |0..1 | OBDomesticScheduled2/UltimateCreditor/LEI |Legal Entity Identification by which a party is known and which is usually used to identify that party. |Max20Text | | |
-| UltimateDebtor |0..1 |OBDomesticScheduled2/UltimateDebtor|Set of elements used to identify a person or an organisation. | | | |
-| SchemeName |0..1 |OBDomesticScheduled2/UltimateDebtor/SchemeName |Name of the identification scheme, in a coded form as published in an external list. |OBExternalAccountIdentification4Code | | |
-| Identification |0..1 |OBDomesticScheduled2/UltimateDebtor/Identification |Identification assigned by an institution to identify an account. This identification is known by the account owner. |Max256Text | | |
-| Name |0..1 |OBDomesticScheduled2/UltimateDebtor/Name |The account name is the name or names of the account owner(s) represented at an account level, as displayed by the ASPSP's online channels. Note, the account name is not the product name or the nickname of the account. |Max350Text | | |
-| LEI |0..1 | OBDomesticScheduled2/UltimateDebtor/LEI |Legal Entity Identification by which a party is known and which is usually used to identify that party. |Max20Text | | |
+| RegulatoryReporting |0..10 |OBDomesticScheduled2/RegulatoryReporting |Information needed due to regulatory and statutory requirements. |OBRegulatoryReporting1 | | |
+| UltimateCreditor |0..1 |OBDomesticScheduled2/UltimateCreditor|Set of elements used to identify a person or an organisation. | OBUltimateCreditor1 | | |
+| UltimateDebtor |0..1 |OBDomesticScheduled2/UltimateDebtor|Set of elements used to identify a person or an organisation. |OBUltimateDebtor1 | | |
 
 #### OBRemittanceInformation1
 
 The OBRemittanceInformation1 class is defined in the [payment-initiation-api-profile](../../profiles/payment-initiation-api-profile.md#obremittanceinformation1) page.
+
+#### OBRegulatoryReporting1
+
+The OBRegulatoryReporting1 class is defined in the [payment-initiation-api-profile](../../profiles/payment-initiation-api-profile.md#obregulatoryreporting1) page
+
+#### OBUltimateCreditor1
+
+The OBUltimateCreditor1 class is defined in the [payment-initiation-api-profile](../../profiles/payment-initiation-api-profile.md#obultimatecreditor1) page.
+
+
+#### OBUltimateDebtor1 
+
+The OBUltimateDebtor1 class is defined in the [payment-initiation-api-profile](../../profiles/payment-initiation-api-profile.md#obultimatedebtor1) page.
+
+#### OBPostalAddress6 
+
+The OBPostalAddress6 class is defined in the [payment-initiation-api-profile](../../profiles/payment-initiation-api-profile.md#obpostaladdress6) pag
 
 ### Domestic Scheduled Payment Consent - Request
 

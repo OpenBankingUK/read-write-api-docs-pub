@@ -61,6 +61,16 @@
       - [Data Dictionary](#data-dictionary-8)
     - [OBRemittanceInformation1](#obremittanceinformation1)
       - [Data Dictionary](#data-dictionary-9)
+    - [OBMandateRelatedInformation1](#obmandaterelatedinformation1)
+      - [Data Dictionary](#data-dictionary-10)
+    - [OBRegulatoryReporting1](#obregulatoryreporting1)
+      - [Data Dictionary](#data-dictionary-11)
+    - [OBUltimateCreditor1](#obultimatecreditor1)
+      - [Data Dictionary](#data-dictionary-12)
+    - [OBUltimateDebtor1](#obultimatedebtor1)
+      - [Data Dictionary](#data-dictionary-13)
+    - [OBPostalAddress6](#obpostaladdress6)
+      - [Data Dictionary](#data-dictionary-14)
   - [Identifier Fields](#identifier-fields)
     - [Merchant Flow](#merchant-flow)
     - [Party to Party Flow](#party-to-party-flow)
@@ -785,6 +795,93 @@ This section describes the OBSCASupportData1 class, which is used across all  _p
 | LineDetails | 0..* | OBRemittanceInformation1/Structured/ReferredDocumentInformation/LineDetails | Set of elements used to provide the content of the referred document line. | Array of String ||
 | Number | 0..1 | OBRemittanceInformation1/Structured/ReferredDocumentInformation/Number | Identification of the type specified for the referred document line. | Max35Text ||
 | RelatedDate | 0..1 | OBRemittanceInformation1/Structured/ReferredDocumentInformation/RelatedDate | Date associated with the referred document line. | ISODate ||
+
+#### OBMandateRelatedInformation1
+
+##### Data Dictionary
+| Name | Occurrence | XPath | EnhancedDefinition | Class | Codes |
+| --- | --- | --- | --- | --- | ---|
+| OBMandateRelatedInformation1 |  | | Provides further details of the mandate signed between the creditor and the debtor.| OBMandateRelatedInformation1 | | 
+| MandateIdentification | 0..1 |OBMandateRelatedInformation1/MandateIdentification |Unique identification, as assigned by the creditor, to unambiguously identify the mandate.|Max35Text | | 
+| Classification | 0..1 |OBMandateRelatedInformation1/Classification| Type of mandate instruction.|OBClassification1Code |FIXE<br>USGB<br>VARI | |
+| CategoryPurposeCode | 0..1 |OBMandateRelatedInformation1/CategoryPurposeCode |Specifies the high level purpose of the mandate based on a set of pre-defined categories.|ExternalCategoryPurpose1Code | For all enum values see `ExternalCategoryPurpose1Code` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets/)| 
+| FirstPaymentDateTime | 0..1 |OBMandateRelatedInformation1/FirstPaymentDate |The date on which the first payment for a recurrent credit transfer will be made. |ISODateTime | | 
+| RecurringPaymentDateTime | 0..1 |OBMandateRelatedInformation1/RecurringPaymentDateTime |he date on which the first recurring payment for a Standing Order schedule will be made.<br><br> Usage: This must be populated only if the first recurring date is different to the first payment date. |ISODateTime | |
+| FinalPaymentDateTime | 0..1 |OBMandateRelatedInformation1/FinalPaymentDate |The date on which the final payment for a recurrent credit transfer  will be made. |ISODateTime | | 
+| Frequency | 0..1 |OBMandateRelatedInformation1/Frequency |Regularity with which credit transfer instructions are to be created and processed |OBFrequency6 || |
+| CountPerPeriod | 0..1 |OBMandateRelatedInformation1/Frequency/CountPerPeriod |Number of instructions to be created and processed during the specified period. |Int32 || |
+| PointInTime | 0..1 |OBMandateRelatedInformation1/Frequency/PointInTime |Further information on the exact point in time the event should take place.|Exact2NumericText | | 
+| Type | 1..1 |OBMandateRelatedInformation1/Frequency/Type |A code indicating the point in time for the credit transfer. |`OBFrequency6Code` | For all enum values see `OBFrequency6Code` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets/)| 
+| Reason| 0..1 |OBMandateRelatedInformation1/Reason | Reason for the setup of the credit transfer mandate. |Max256Text | |
+
+#### OBRegulatoryReporting1
+
+##### data Dictionary
+
+| Name | Occurrence | XPath | EnhancedDefinition | Class | Codes | Pattern|
+| --- | --- | --- | --- | --- | ---| ---|
+| OBRegulatoryReporting1 | | |Information needed due to regulatory and statutory requirements. |OBRegulatoryReporting1 | | |
+| DebitCreditReportingIndicator |0..1 |OBRegulatoryReporting1/DebitCreditReportingIndicator | Identifies whether the regulatory reporting information applies to the debit side, to the credit side or to both debit and credit sides of the transaction. |RegulatoryReportingType1Code |CRED DEBT BOTH | |
+| Authority |0..1 |OBRegulatoryReporting1/Authority |Entity requiring the regulatory reporting information. |OBRegulatoryAuthority2 | | |
+| Name |0..1 |OBRegulatoryReporting1/Authority/Name |Name of the entity requiring the regulatory reporting information. |Max140Text | | |
+| CountryCode |0..1 |OBRegulatoryReporting1/Authority/CountryCode |Country of the entity that requires the regulatory reporting information. |CountryCode | | [A-Z]{2,2}|
+| Details |0..* |OBRegulatoryReporting1/Details |Set of elements used to provide details on the regulatory reporting information. |OBStructuredRegulatoryReporting3 | | |
+| Type |0..1 |OBRegulatoryReporting1/Details/Type |Specifies the type of the information supplied in the regulatory reporting details. |Max35Text | | |
+| Information |0..* |OBRegulatoryReporting1/Details/Information |Additional details that cater for specific domestic regulatory requirements. |Max35Text | | |
+| Date |0..1 |OBRegulatoryReporting1/Details/Date |Date related to the specified type of regulatory reporting details. |ISODateTime | | |
+| Country |0..1 |OBRegulatoryReporting1/Details/Country |Country related to the specified type of regulatory reporting details. |CountryCode | | ^[A-Z]{2,2}$ |
+| Amount |0..1 |OBRegulatoryReporting1/Details/Amount |Amount of money to be reported for regulatory and statutory requirements. |OBActiveOrHistoricCurrencyAndAmount | | |
+| Amount |1..1 |OBRegulatoryReporting1/Details/Amount/Amount |A number of monetary units specified in an active currency where the unit of currency is explicit and compliant with ISO 4217. | OBActiveCurrencyAndAmount_SimpleType | ^\d{1,13}$|^\d{1,13}\.\d{1,5}$ |
+| Currency |1..1 |OBRegulatoryReporting1/Details/Amount/Currency |A code allocated to a currency by a Maintenance Agency under an international identification scheme, as described in the latest edition of the international standard ISO 4217 "Codes for the representation of currencies and funds". |ActiveOrHistoricCurrencyCode | | ^[A-Z]{3,3}$ |
+
+#### OBUltimateCreditor1
+
+##### Data Dictionary
+| Name | Occurrence | XPath | EnhancedDefinition | Class | Codes | Pattern |
+| --- | --- | --- | --- | --- | --- | --- |
+| OBUltimateCreditor1 | | | Ultimate party to which an amount of money is due.| OBUltimateCreditor1 | | |
+| Name |0..1 |OBUltimateCreditor1/Name |Name by which a party is known and which is usually used to identify that party. |Max140Text | | |
+| Identification |0..1 |OBUltimateCreditor1/Identification |Identification assigned by an institution. |Max256Text | | |
+| LEI |0..1 | OBUltimateCreditor1/LEI |Legal Entity Identification by which a party is known and which is usually used to identify that party. |Max20Text | | ^[A-Z0-9]{18,18}[0-9]{2,2}$|
+| SchemeName |0..1 |OBUltimateCreditor1/SchemeName |Name of the identification scheme, in a coded form as published in an external list. | OBExternalAccountIdentification4Code |For a full description see `OBExternalAccountIdentification4Code` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets).| |
+| PostalAddress | 0..1 | OBUltimateCreditor1/PostalAddress | Information that locates and identifies a specific address, as defined by postal services. | OBPostalAddress6 | | 
+
+#### OBUltimateDebtor1
+
+##### Data Dictionary
+| Name | Occurrence | XPath | EnhancedDefinition | Class | Codes | Pattern |
+| --- | --- | --- | --- | --- | --- | --- |
+| OBUltimateDebtor1 | | | Ultimate party that owes an amount of money to the (ultimate) creditor. | OBUltimateDebtor1 | | |
+| Name |0..1 |OBUltimateDebtor1/Name |Name by which a party is known and which is usually used to identify that party. |Max140Text | | |
+| Identification |0..1 |OBUltimateDebtor1/Identification |Identification assigned by an institution. |Max256Text | | |
+| LEI |0..1 | OBUltimateDebtor1/LEI |Legal Entity Identification by which a party is known and which is usually used to identify that party. |Max20Text | | ^[A-Z0-9]{18,18}[0-9]{2,2}$|
+| SchemeName |0..1 |OBUltimateDebtor1/SchemeName |Name of the identification scheme, in a coded form as published in an external list. | OBExternalAccountIdentification4Code |For a full description see `OBExternalAccountIdentification4Code` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets).| |
+| PostalAddress | 0..1 | OBUltimateDebtor1/PostalAddress | Information that locates and identifies a specific address, as defined by postal services. | OBPostalAddress6 | | 
+
+#### OBPostalAddress6
+
+##### Data Dictionary
+| Name | Occurrence | XPath | EnhancedDefinition | Class | Codes | Pattern |
+| --- | --- | --- | --- | --- | --- | --- |
+| OBPostalAddress6 | | |Information that locates and identifies a specific address, as defined by postal services. |OBPostalAddress6 | | |
+| AddressType |0..1 |OBPostalAddress6/AddressType |Identifies the nature of the postal address. | `OBAddressType2Code` | For a full set of codes see `OBAddressType2Code` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets).| |
+| CareOf |0..1 |OBPostalAddress6/CareOf |The 'care of' address is used whenever sending mail to a person or organisation who does not actually live or work at the address. They will receive the mail for the individual. |Max140Text | | |
+| PostBox |0..1 |OBPostalAddress6/PostBox |Numbered box in a post office, assigned to a person or organisation, where letters are kept until called for |Max16Text | | |
+| BuildingNumber |0..1 |OBPostalAddress6/BuildingNumber |Number that identifies the position of a building on a street. |Max16Text | | |
+| UnitNumber|0..1 |OBPostalAddress6/UnitNumber|Number that identifies the unit of a specific address |Max16Text | | |
+| BuildingName |0..1 |OBPostalAddress6/BuildingName |Name of a referenced building. |Max140Text | | |
+| Department |0..1 |OBPostalAddress6/Department |Identification of a division of a large organisation or building. |Max70Text | | |
+| SubDepartment |0..1 |OBPostalAddress6/SubDepartment |Identification of a sub-division of a large organisation or building. |Max70Text | | |
+| Room |0..1 |OBPostalAddress6/Room|Information that locates and identifies a room to form part of an address. |Max70Text | | |
+| Floor |0..1 |OBPostalAddress6/Floor|Number that identifies the level within a building. |Max70Text | | |
+| StreetName |0..1 |OBPostalAddress6/StreetName |Name of a street or thoroughfare. |Max140Text | | |
+| TownName |0..1 |OBPostalAddress6/TownName |Name of a built-up area, with defined boundaries, and a local government. |Max140Text | | |
+| TownLocationName |0..1 |OBPostalAddress6/TownLocationName |Name of a built-up area, with defined boundaries, and a local government. |Max140Text | | |
+| DistrictName |0..1 |OBPostalAddress6/DistrictName |Number that of the regional area, known as a district, which forms part of an address. |Max140Text | | |
+| PostCode |0..1 |OBPostalAddress6/PostCode |Identifier consisting of a group of letters and/or numbers that is added to a postal address to assist the sorting of mail. |Max16Text | | |
+| CountrySubDivision |0..1 |OBPostalAddress6/CountrySubDivision |Identifies a subdivision of a country such as state, region, county. |Max35Text | | |
+| Country |0..1 |OBPostalAddress6/Country |Nation with its own government. |CountryCode | |^[A-Z]{2,2}$ |
+| AddressLine |0..7 |OBPostalAddress
 
 ### Identifier Fields
 

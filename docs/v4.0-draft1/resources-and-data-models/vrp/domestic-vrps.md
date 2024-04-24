@@ -148,14 +148,8 @@ __Payment order state model key:__
 | __Currency__ (1..1) | `InstructedAmount. Currency` |A code allocated to a currency by a Maintenance Agency under an international identification scheme, as described in the latest edition of the international standard ISO 4217 "Codes for the representation of currencies and funds". |ActiveOrHistoricCurrencyCode | `^[A-Z]{3,3}$`
 | __CreditorAgent__ (0..1) | `CreditorAgent` | Financial institution servicing an account for the creditor.     | OBBranchAndFinancialInstitutionIdentification6
 | __CreditorAccount__ (1..1) | `CreditorAccount`   |Unambiguous identification of the account of the creditor to which a credit entry will be posted as a result of the payment transaction.       |OBCashAccountCreditor3|
-| __CreditorPostalAddress__ (0..1)| `CreditorPostalAddress` |Information that locates and identifies a specific address, as defined by postal services.| OBPostalAddress6 |
-| __UltimateCreditor__ (0..1)| `UltimateCreditor` | Ultimate party to which an amount of money is due. | |
-| __SchemeName__ (0..1) | `UltimateCreditor. SchemeName` |Name of the identification scheme, in a coded form as published in an external list. |OBExternalFinancialInstitutionIdentification4Code
-| __Identification__ (0..1) | `UltimateCreditor. Identification` |Unique and unambiguous identification of a financial institution or a branch of a financial institution.  | Max35Text  
-| __Name__ (0..1) | `UltimateCreditor. Name` | Name by which an agent is known and which is usually used to identify that agent. | Max140Text
-| __LEI__ (0..1) | `UltimateCreditor. LEI` | Legal entity identification as an alternate identification for a party. <br>Legal Entity Identifier is a code allocated to a party as described in ISO 17442 "Financial Services - Legal Entity Identifier (LEI)". | Max20Text |
-| __PostalAddress__ (0..1) | `UltimateCreditor. PostalAddress` |Information that locates and identifies a specific address, as defined by postal services.| OBPostalAddress6 |
-| __SupplementaryData__ (0..1) | `SupplementaryData` | Additional information that can not be captured in the structured fields and/or any other specific block  | *
+| __CreditorPostalAddress__ (0..1)| `CreditorPostalAddress` |Information that locates and identifies a specific address, as defined by postal services.| [OBPostalAddress6](../../profiles/payment-initiation-api-profile.md#obpostaladdress6)  |
+| __UltimateCreditor__ (0..1)| `UltimateCreditor` | Ultimate party to which an amount of money is due. |[OBUltimateCreditor1](../../profiles/payment-initiation-api-profile.md#obultimatecreditor1) |
 
 ### OBDomesticVRPRequest
 
@@ -170,7 +164,7 @@ __Payment order state model key:__
 | __ConsentId__ (1..1)               | `Data. ConsentId`               | Identifier for the Domestic VRP Consent that this payment is made under                                     | Max128Text                                            |
 | __Initiation__ (1..1)              | `Data. Initiation`              | The parameters of the VRP consent that should remain unchanged for each payment under this VRP.             | OBDomesticVRPInitiation                               |
 | __Instruction__ (1..1)             | `Data. Instruction`             | Specific instructions for this particular payment within the VRP consent                                    | [OBDomesticVRPInstruction](#OBDomesticVRPInstruction) |
-| __RegulatoryReporting__ (0..10)                    | `Data. RegulatoryReporting`                          | Information needed due to regulatory and statutory requirements. | RegulatoryReporting3                                               |
+| __RegulatoryReporting__ (0..10)                    | `Data. RegulatoryReporting`                          | Information needed due to regulatory and statutory requirements. | [OBRegulatoryReporting1](../../profiles/payment-initiation-api-profile.md#obregulatoryreporting1)                                               |
 | __DebitCreditReportingIndicator__ (0..1)                    | `Data. RegulatoryReporting. DebitCreditReportingIndicator`                          | Identifies whether the regulatory reporting information applies to the debit side, to the credit side or to both debit and credit sides of the transaction. | RegulatoryReportingType1Code                                               |
 | __Authority__ (0..1)                    | `Data. RegulatoryReporting. Authority`                          | Entity requiring the regulatory reporting information. | RegulatoryAuthority2                                               |
 | __Name__ (0..1)                    | `Data. RegulatoryReporting. Authority. Name`                          | Name of the entity requiring the regulatory reporting information. | Max140Text                                               |

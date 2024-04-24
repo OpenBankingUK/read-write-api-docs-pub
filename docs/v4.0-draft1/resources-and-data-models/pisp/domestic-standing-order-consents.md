@@ -16,6 +16,9 @@
         - [Frequency Examples](#frequency-examples)
       - [Data Dictionary](#data-dictionary)
     - [OBRemittanceInformation1](#obremittanceinformation1)
+    - [OBMandateRelatedInformation1](#obmandaterelatedinformation1)
+    - [OBUltimateCreditor1](#obultimatecreditor1)
+    - [OBUltimateDebtor1](#obultimatedebtor1)
   - [Domestic Standing Order Consent - Request](#domestic-standing-order-consent-request)
     - [UML Diagram](#uml-diagram-2)
     - [Notes](#notes-2)
@@ -160,18 +163,7 @@ For the OBDomesticStandingOrder3 Initiation object:
 | Name |Occurrence |XPath |EnhancedDefinition |Class |Codes |Pattern |
 | ---- |---------- |----- |------------------ |----- |----- |------- |
 | OBDomesticStandingOrder3 | |OBDomesticStandingOrder3 |The Initiation payload is sent by the initiating party to the ASPSP. It is used to request movement of funds from the debtor account to a creditor for a domestic standing order. |OBDomesticStandingOrder3 | | |
-| MandateRelatedInformation | 0..1 |OBDomesticStandingOrder3/MandateRelatedInformation ||OBMandateRelatedInformation | | |
-| MandateIdentification | 0..1 |OBDomesticStandingOrder3/MandateRelatedInformation/MandateIdentification ||Max35Text | | |
-| Classification | 0..1 |OBDomesticStandingOrder3/MandateRelatedInformation/Classification| |OBClassification1Code |FIXE<br>USGB<br>VARI | |
-| CategoryPurposeCode | 0..1 |OBDomesticStandingOrder3/MandateRelatedInformation/CategoryPurposeCode ||OBCategoryPurpose1Code | | |
-| FirstPaymentDate | 0..1 |OBDomesticStandingOrder3/MandateRelatedInformation/FirstPaymentDate |The date on which the first payment for a Standing Order schedule will be made. |ISODate | | |
-| FinalPaymentDate | 0..1 |OBDomesticStandingOrder3/MandateRelatedInformation/FinalPaymentDate |The date on which the final payment for a Standing Order schedule will be made. |ISODate | | |
-| Frequency | 0..1 |OBDomesticStandingOrder3/MandateRelatedInformation/Frequency |A code indicating the frequency of payment for the Standing Order. |OBFrequencyPeriodType |ADHO<br>YEAR<br>DALI<br>INDA<br>MNTH<br>QURT<br>MIAN<br>WEEK | |
-| PeriodType | 1..1 |OBDomesticStandingOrder3/MandateRelatedInformation/PeriodType |A code indicating the period type for the Standing Order. |OBFrequencyPeriodType |ADHO<br>YEAR<br>DALI<br>INDA<br>MNTH<br>QURT<br>MIAN<br>WEEK | |
-| CountPerPeriod | 1..1 |OBDomesticStandingOrder3/MandateRelatedInformation/CountPerPeriod | |int32 | |
-| PointInTimeType | 1..1 |OBDomesticStandingOrder3/MandateRelatedInformation/PointInTimeType |A code indicating the point in time for payment of the Standing Order. |OBFrequencyPeriodType | ADHO<br>YEAR<br>DALI<br>INDA<br>MNTH<br>QURT<br>MIAN<br>WEEK | |
-| PointInTime | 1..1 |OBDomesticStandingOrder3/MandateRelatedInformation/PointInTime |ISODateTime | | |
-| Reason| 0..1 |OBDomesticStandingOrder3/MandateRelatedInformation/Reason | |Max256Text | |
+| MandateRelatedInformation | 0..1 |OBDomesticStandingOrder3/MandateRelatedInformation ||OBMandateRelatedInformation1| | |
 | RemittanceInformation |0..1 |OBDomesticStandingOrder3/RemittanceInformation |Information supplied to enable the matching of an entry with the items that the transfer is intended to settle, such as commercial invoices in an accounts' receivable system. |OBRemittanceInformation1 | | |
 | NumberOfPayments |0..1 |OBDomesticStandingOrder3/NumberOfPayments |Number of the payments that will be made in completing this frequency sequence including any executed since the sequence start date. |Max35Text | | |
 | RecurringPaymentDateTime |0..1 |OBDomesticStandingOrder3/RecurringPaymentDateTime |The date on which the first recurring payment for a Standing Order schedule will be made. Usage: This must be populated only if the first recurring date is different to the first payment date. |ISODateTime | | |
@@ -204,20 +196,26 @@ For the OBDomesticStandingOrder3 Initiation object:
 | Proprietary |1..1 |OBDomesticStandingOrder3/CreditorAccount/Proxy/Proprietary| The owner of the proxy account |MaxText70 | | |
 | SecondaryIdentification |0..1 |OBDomesticStandingOrder3/CreditorAccount/SecondaryIdentification |This is secondary identification of the account, as assigned by the account servicing institution. This can be used by building societies to additionally identify accounts with a roll number (in addition to a sort code and account number combination). |Max34Text | | |
 | SupplementaryData |0..1 |OBDomesticStandingOrder3/SupplementaryData |Additional information that can not be captured in the structured fields and/or any other specific block. |OBSupplementaryData1 | | |
-| UltimateCreditor |0..1 |OBDomesticStandingOrder3/UltimateCreditor|Set of elements used to identify a person or an organisation. | OBPartyIdentification43 | | |
-| SchemeName |0..1 |OBDomesticStandingOrder3/UltimateCreditor/SchemeName |Name of the identification scheme, in a coded form as published in an external list. |OBExternalAccountIdentification4Code | | |
-| Identification |0..1 |OBDomesticStandingOrder3/UltimateCreditor/Identification |Identification assigned by an institution to identify an account. This identification is known by the account owner. |Max256Text | | |
-| Name |0..1 |OBDomesticStandingOrder3/UltimateCreditor/Name |The account name is the name or names of the account owner(s) represented at an account level, as displayed by the ASPSP's online channels. Note, the account name is not the product name or the nickname of the account. |Max350Text | | |
-| LEI |0..1 | OBDomesticStandingOrder3/UltimateCreditor/LEI |Legal Entity Identification by which a party is known and which is usually used to identify that party. |Max20Text | | |
-| UltimateDebtor |0..1 |OBDomesticStandingOrder3/UltimateDebtor|Set of elements used to identify a person or an organisation. | | | |
-| SchemeName |0..1 |OBDomesticStandingOrder3/UltimateDebtor/SchemeName |Name of the identification scheme, in a coded form as published in an external list. |OBExternalAccountIdentification4Code | | |
-| Identification |0..1 |OBDomesticStandingOrder3/UltimateDebtor/Identification |Identification assigned by an institution to identify an account. This identification is known by the account owner. |Max256Text | | |
-| Name |0..1 |OBDomesticStandingOrder3/UltimateDebtor/Name |The account name is the name or names of the account owner(s) represented at an account level, as displayed by the ASPSP's online channels. Note, the account name is not the product name or the nickname of the account. |Max350Text | | |
-| LEI |0..1 | OBDomesticStandingOrder3/UltimateDebtor/LEI |Legal Entity Identification by which a party is known and which is usually used to identify that party. |Max20Text | | |
+| UltimateCreditor |0..1 |OBDomesticStandingOrder3/UltimateCreditor|Set of elements used to identify a person or an organisation. | OBUltimateCreditor1 | | |
+| UltimateDebtor |0..1 |OBDomesticStandingOrder3/UltimateDebtor|Set of elements used to identify a person or an organisation.|OBUltimateDebtor1 | | |
+
 
 #### OBRemittanceInformation1
 
 The OBRemittanceInformation1 class is defined in the [payment-initiation-api-profile](../../profiles/payment-initiation-api-profile.md#obremittanceinformation1) page.
+
+#### OBMandateRelatedInformation1
+
+The OBMandateRelatedInformation1 class is defined in the [payment-initiation-api-profile](../../profiles/payment-initiation-api-profile.md#obmandaterelatedinformation1) page.
+
+#### OBUltimateCreditor1
+
+The OBUltimateCreditor1 class is defined in the [payment-initiation-api-profile](../../profiles/payment-initiation-api-profile.md#obultimatecreditor1) page.
+
+
+#### OBUltimateDebtor1 
+
+The OBUltimateDebtor1 class is defined in the [payment-initiation-api-profile](../../profiles/payment-initiation-api-profile.md#obultimatedebtor1) page.
 
 ### Domestic Standing Order Consent - Request
 
