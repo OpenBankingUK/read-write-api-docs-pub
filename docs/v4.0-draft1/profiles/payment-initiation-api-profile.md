@@ -60,7 +60,7 @@
       - [UML Diagram](#uml-diagram-7)
       - [Data Dictionary](#data-dictionary-8)
     - [OBRemittanceInformation1](#obremittanceinformation1)
-      - [Data Dictionary](#obremittanceinformation1-data-dictionary)
+      - [Data Dictionary](#data-dictionary-9)
   - [Identifier Fields](#identifier-fields)
     - [Merchant Flow](#merchant-flow)
     - [Party to Party Flow](#party-to-party-flow)
@@ -763,9 +763,9 @@ This section describes the OBSCASupportData1 class, which is used across all  _p
 | ReferencePaymentOrderId |0..1 |SCASupportData/ReferencePaymentOrderId |If the payment is recurring, then this field is populated with the transaction identifier of the previous payment occurrence so that the ASPSP can verify that the PISP, amount and the payee are the same as the previous occurrence. The value here refers to the payment id e.g. DomesticPaymentId |Max40Text | | |
 | RequestedSCAExemptionType |0..1 |SCASupportData/RequestedSCAExemptionType |This field allows a PISP to request specific SCA Exemption for a Payment Initiation |OBExternalSCAExemptionType1Code |BillPayment<br>ContactlessTravel<br>EcommerceGoods<br>EcommerceServices<br>Kiosk<br>Parking<br>PartyToParty | |
 
-### OBRemittanceInformation1
+#### OBRemittanceInformation1
 
-#### OBRemittanceInformation1 Data Dictionary
+##### Data Dictionary
 | Name | Occurrence | XPath | EnhancedDefinition | Class | Codes |
 | --- | --- | --- | --- | --- | ---|
 | OBRemittanceInformation1 || |Information supplied to enable the matching of an entry with the items that the transfer is intended to settle, such as commercial invoices in an accounts' receivable system. |OBRemittanceInformation1 | |
