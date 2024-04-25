@@ -163,9 +163,9 @@ For the OBDomesticStandingOrder3 Initiation object:
   * Where "UK.OB.SortCodeAccountNumber" is specified as the SchemeName in the Account identification section (either DebtorAccount or CreditorAccount), the Identification field **must** be populated with the 6 digit Sort Code and 8 digit Account Number (a 14 digit field).
   * Where the "UK.OB.IBAN" is specified as the SchemeName in the Account identification section (either DebtorAccount or CreditorAccount), the Identification field **must** be populated with the full IBAN.
 * The Permission field is restricted to "Create", however, may be extended to "Update" and "Delete" in a future iteration of the specification.
-* Either the NumberOfPayments or FinalPaymentDateTime must be specified (not both) if the domestic standing order is not open ended.
+* Either the CountPerPeriod or FinalPaymentDateTime must be specified (not both) if the domestic standing order is not open ended.
 * The structure allows a PISP to specify a domestic standing order with a different payment amount and date combinations: for the first payment, the recurring payment, and the final payment. The recurring payment (and date) must only be populated if different from the first payment (and date).
-* If the PISP requests a Frequency that is not supported by the ASPSP the ASPSP **must** respond with a 400 HTTP status code.
+* If the PISP requests a Frequency that is not supported by the ASPSP, the ASPSP **must** respond with a 400 HTTP status code and an appropriate ISO reason code. Refer to CEG for more guidance on common errors.  
 
 ###### Frequency Examples
 
@@ -198,9 +198,9 @@ For the OBDomesticStandingOrder3 Initiation object:
 | Amount |1..1 |OBDomesticStandingOrder3/FinalPaymentAmount/Amount |A number of monetary units specified in an active currency where the unit of currency is explicit and compliant with ISO 4217. |OBActiveCurrencyAndAmount_SimpleType | |`^\d{1,13}$|^\d{1,13}\.\d{1,5}$` |
 | Currency |1..1 |OBDomesticStandingOrder3/FinalPaymentAmount/Currency |A code allocated to a currency by a Maintenance Agency under an international identification scheme, as described in the latest edition of the international standard ISO 4217 "Codes for the representation of currencies and funds". |ActiveOrHistoricCurrencyCode | |^[A-Z]{3,3}$ |
 | DebtorAccount |0..1 |OBDomesticStandingOrder3/DebtorAccount |Provides the details to identify the debtor account. |OBCashAccountDebtor4 | | |
-| UltimateDebtor |0..1 |OBDomesticStandingOrder3/UltimateDebtor|Set of elements used to identify a person or an organisation.|OBUltimateDebtor1 | | |
+| UltimateDebtor |0..1 |OBDomesticStandingOrder3/UltimateDebtor|Ultimate party that owes an amount of money to the (ultimate) creditor.|OBUltimateDebtor1 | | |
 | CreditorAccount |1..1 |OBDomesticStandingOrder3/CreditorAccount |Identification assigned by an institution to identify an account. This identification is known by the account owner. |OBCashAccountCreditor3 | | |
-| UltimateCreditor |0..1 |OBDomesticStandingOrder3/UltimateCreditor|Set of elements used to identify a person or an organisation. | OBUltimateCreditor1 | | |
+| UltimateCreditor |0..1 |OBDomesticStandingOrder3/UltimateCreditor|Ultimate party to which an amount of money is due. | OBUltimateCreditor1 | | |
 | RegulatoryReporting |0..10 |OBDomesticStandingOrder3/RegulatoryReporting |Information needed due to regulatory and statutory requirements. |OBRegulatoryReporting1 | | |
 | SupplementaryData |0..1 |OBDomesticStandingOrder3/SupplementaryData |Additional information that can not be captured in the structured fields and/or any other specific block. |OBSupplementaryData1 | | |
 

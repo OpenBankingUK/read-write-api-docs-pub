@@ -91,7 +91,7 @@ A PISP can retrieve the Details of the underlying payment transaction via this e
 
 #### StatusCode
 
-The domestic-standing-orders - payment-details must have one of the following PaymentStatusCode code-set enumerations:
+The domestic-standing-orders - payment-details must have one of the following ExternalPaymentTransactionStatus1Code code-set enumerations (for more information see `ExternalPaymentTransactionStatus1Code` [here](https://github.com/OpenBankingUK/External_Interal_CodeSets)) :
 
 | StatusCode |
 | ------ |
@@ -109,6 +109,7 @@ The domestic-standing-orders - payment-details must have one of the following Pa
 | ACCC |
 | BLCK |
 | RJCT |
+| RCVD |
 
 For full flow refer to state 2 diagram bellow.
 

@@ -92,7 +92,7 @@ A PISP can retrieve the Details of the underlying payment transaction via this e
 
 #### StatusCode
 
-The international-scheduled-payments - payment-details must have one of the following PaymentStatusCode code-set enumerations:
+The international-scheduled-payments - payment-details must have one of the following ExternalPaymentTransactionStatus1Code code-set enumerations (for more information see `ExternalPaymentTransactionStatus1Code` [here](https://github.com/OpenBankingUK/External_Interal_CodeSets)) :
 
 | StatusCode |
 | ------ |
@@ -110,6 +110,7 @@ The international-scheduled-payments - payment-details must have one of the foll
 | ACCC |
 | BLCK |
 | RJCT |
+| RCVD |
 
 Refer to [External_Internal_CodeSets](https://github.com/OpenBankingUK/External_Internal_CodeSets) -> ISO_External_CodeSet -> `ExternalPaymentTransactionStatus1Code`.
 

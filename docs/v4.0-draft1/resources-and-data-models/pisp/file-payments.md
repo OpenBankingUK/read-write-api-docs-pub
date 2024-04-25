@@ -88,7 +88,7 @@ A PISP can retrieve the Details of the underlying payment transaction(s) via thi
 
 #### StatusCode
 
-The file-payments - payment-details must have one of the following PaymentStatusCode code-set enumerations:
+The file-payments - payment-details must have one of the following ExternalPaymentGroupStatus1Code code-set enumerations (for more information see `ExternalPaymentGroupStatus1Code` [here](https://github.com/OpenBankingUK/External_Interal_CodeSets)) :
 
 | StatusCode |
 | ------ |

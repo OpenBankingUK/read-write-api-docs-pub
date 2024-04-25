@@ -66,13 +66,13 @@ The `domestic-vrps` resource that is created successfully must have one of the f
 
 Once the domestic vrp is created, a TPP can retrieve the `domestic-vrps` to check its status by using this endpoint.
 
-The domestic-vrp resource must have one of the following PaymentStatusCode code-set enumerations:
+The domestic-vrp resource must have one of the following ExternalPaymentTransactionStatus1Code code-set enumerations (for more information see `ExternalPaymentTransactionStatus1Code` [here](https://github.com/OpenBankingUK/External_Interal_CodeSets)) :
 
 | StatusCode |
 | ------ |
-| RCVD |
 | PDNG |
 | ACTC |
+| PATC |
 | ACCP |
 | ACFC |
 | ACSP |
@@ -82,6 +82,7 @@ The domestic-vrp resource must have one of the following PaymentStatusCode code-
 | ACCC |
 | BLCK |
 | RJCT |
+| RCVD |
 
 ### GET /domestic-vrps/{DomesticVRPId}/payment-details
 

@@ -67,6 +67,7 @@ The domestic-payment resource that is created successfully must have one of the 
 | ------ |
 | RCVD |
 | RJCT |
+| RCVD |
 
 ### GET /domestic-payments/{DomesticPaymentId}
 
@@ -74,7 +75,7 @@ A PISP can retrieve the domestic-payment to check its status.
 
 #### StatusCode
 
-The domestic-payment resource must have one of the following PaymentStatusCode code-set enumerations:
+The domestic-payment resource must have one of the following ExternalPaymentTransactionStatus1Code code-set enumerations (for more information see `ExternalPaymentTransactionStatus1Code` [here](https://github.com/OpenBankingUK/External_Interal_CodeSets)) :
 
 | StatusCode |
 | ------ |
@@ -91,6 +92,7 @@ The domestic-payment resource must have one of the following PaymentStatusCode c
 | ACCC |
 | BLCK |
 | RJCT |
+| RCVD |
 
 ### GET /domestic-payments/{DomesticPaymentId}/payment-details
 
@@ -98,7 +100,7 @@ A PISP can retrieve the Details of the underlying payment transaction via this e
 
 #### StatusCode
 
-The domestic-payment - payment-details must have one of the following PaymentStatusCode code-set enumerations:
+The domestic-payment - payment-details must have one of the following ExternalPaymentTransactionStatus1Code code-set enumerations (for more information see `ExternalPaymentTransactionStatus1Code` [here](https://github.com/OpenBankingUK/External_Interal_CodeSets)) :
 
 | StatusCode |
 | ------ |
@@ -115,6 +117,7 @@ The domestic-payment - payment-details must have one of the following PaymentSta
 | ACCC |
 | BLCK |
 | RJCT |
+| RCVD |
 
 Refer to [External_Internal_CodeSets](https://github.com/OpenBankingUK/External_Internal_CodeSets) -> ISO_External_CodeSet -> `ExternalPaymentTransactionStatus1Code`.
 
