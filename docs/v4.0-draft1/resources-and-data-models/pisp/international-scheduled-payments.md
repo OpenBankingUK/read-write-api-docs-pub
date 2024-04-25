@@ -54,13 +54,12 @@ Once the international-scheduled-payment-consent has been authorised by the PSU,
 
 An international-scheduled-payment can only be created if its corresponding international-scheduled-payment-consent resource has the StatusCode of "AUTH". 
 
-The international-scheduled-payment resource that is created successfully must have one of the following StatusCodes:
+The international-scheduled-payment resource that is created successfully must have one of the following initial StatusCodes:
 
 | StatusCode |
 | --- |
 | RCVD |
 | RJCT |
-| ASCP |
 
 ### GET /international-scheduled-payments/{InternationalScheduledPaymentId}
 
@@ -73,9 +72,19 @@ The international-scheduled-payment resource must have one of the following Stat
 | StatusCode |
 | --- |
 | RCVD |
-| RJCT |
-| ASCP |
 | CANC |
+| PDNG |
+| ACTC |
+| PATC |
+| ACCP |
+| ACFC |
+| ACSP |
+| ACWC |
+| ACSC |
+| ACWP |
+| ACCC |
+| BLCK |
+| RJCT |
 
 ### GET /international-scheduled-payments/{InternationalScheduledPaymentId}/payment-details
 
@@ -87,6 +96,8 @@ The international-scheduled-payments - payment-details must have one of the foll
 
 | StatusCode |
 | ------ |
+| RCVD |
+| CANC |
 | PDNG |
 | ACTC |
 | PATC |
@@ -101,6 +112,8 @@ The international-scheduled-payments - payment-details must have one of the foll
 | RJCT |
 | RCVD |
 
+Refer to [External_Internal_CodeSets](https://github.com/OpenBankingUK/External_Internal_CodeSets) -> ISO_External_CodeSet -> `ExternalPaymentTransactionStatus1Code`.
+
 ### State Model
 
 #### Payment Order
@@ -112,7 +125,7 @@ The state model for the international-scheduled-payment resource describes the i
 ##### Multiple Authorisation
 If the payment-order requires multiple authorisations the status of the multiple authorisations will be updated in the MultiAuthorisation object.
 
-Once the payment is RCVD, the StatusCode should be set to PATC and the MultiAuthorisation object status updated with the AWAU status.  Once all authorisations have been successfully completed the MultiAuthorisation status should be set to AUTH and StatusCode updated to ACSP.
+Once the payment is RCVD, the international-scheduled-payment StatusCode must be set to PATC and the MultiAuthorisation object status updated with the AWAF status. Once all authorisations have been successfully completed the MultiAuthorisation status must be set to AUTH and international-scheduled-payment StatusCode updated to ACSP if any intermediate status are not supported.
 
 Any rejections in the multiple authorisation process should result in the MultiAuthorisation status and StatusCode being set to RJCT. 
 

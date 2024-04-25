@@ -118,6 +118,8 @@ The API endpoint allows the PISP to download a file (that had been uploaded agai
 * The file is sent in the HTTP response body.
 * HTTP headers (e.g. Content-Type) are used to describe the file.
 
+Refer to [External_Internal_CodeSets](https://github.com/OpenBankingUK/External_Internal_CodeSets) -> OB_Internal_CodeSet -> `OBExternalConsentProprietaryCode`.
+
 ### State Model
 
 #### Payment Order Consent

@@ -51,19 +51,27 @@ Once the file-payment-consent has been authorised by the PSU, the PISP can proce
 
 - This is done by making a POST request to the **file-payments** endpoint.
 
+#### StatusCode
+
+The file-payments resource must have one of the following initial StatusCodes:
+
+| StatusCode |
+| --- |
+| RCVD |
+| RJCT |
+
 ### GET /file-payments/{FilePaymentId}
 
 A PISP can retrieve the file-payment to check its status.
 
 #### StatusCode
 
-The file-payments resource must have one of the following StatusCodes:
+The file-payments resource must have one of the following initial StatusCodes:
 
 | StatusCode |
 | --- |
 | RCVD |
 | RJCT |
-| ASCP |
 
 ### GET /file-payments/{FilePaymentId}/report-file
 
@@ -84,16 +92,19 @@ The file-payments - payment-details must have one of the following ExternalPayme
 
 | StatusCode |
 | ------ |
-| ACCP  |
-| ACCC  |
-| ACSC  |
-| ACSP  |
-| ACTC  |
-| ACWC  |
-| PART  |
-| PDNG  |
-| RCVD  |
-| RJCT  |
+| RCVD |
+| PDNG |
+| ACTC |
+| PART |
+| ACCP |
+| ACFC |
+| ACSP |
+| ACWC |
+| ACSC |
+| ACCC |
+| RJCT |
+
+Refer to [External_Internal_CodeSets](https://github.com/OpenBankingUK/External_Internal_CodeSets) -> ISO_External_CodeSet -> `ExternalPaymentGroupStatus1Code`.
 
 ### State Model
 
@@ -107,7 +118,7 @@ The state model for the file-payments resource describes the initiation status a
 ##### Multiple Authorisation
 If the payment-order requires multiple authorisations the status of the multiple authorisations will be updated in the MultiAuthorisation object.
 
-Once the payment is RCVD, the StatusCode should be set to PATC and the MultiAuthorisation object status updated with the AWAU status.  Once all authorisations have been successfully completed the MultiAuthorisation status should be set to AUTH and StatusCode updated to ACSP.
+Once the payment is RCVD, the file-payments StatusCode must be set to PATC and the MultiAuthorisation object status updated with the AWAF status. Once all authorisations have been successfully completed the MultiAuthorisation status must be set to AUTH and file-payments StatusCode updated to ACSP if any intermediate status are not supported.
 
 Any rejections in the multiple authorisation process should result in the MultiAuthorisation status and StatusCode being set to RJCT. 
 
