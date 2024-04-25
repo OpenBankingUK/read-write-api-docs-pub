@@ -172,16 +172,16 @@ Content-Type: application/json
 {
   "Data": {
     "Account": [
-    {
-      "AccountId": "22289",
-      "Status": "Enabled",
-      "StatusUpdateDateTime": "2019-01-01T06:06:06+00:00",
-      "Currency": "GBP",
-      "AccountCategory": "Personal",
-      "AccountTypeCode": "CACC",
-      "Nickname": "Bills",
-      "OpeningDate": "01-05-2002",
-      "StatementFrequencyAndFormat": [
+      {
+        "AccountId": "22289",
+        "Status": "Enabled",
+        "StatusUpdateDateTime": "2019-01-01T06:06:06+00:00",
+        "Currency": "GBP",
+        "AccountCategory": "Personal",
+        "AccountTypeCode": "CACC",
+        "Nickname": "Bills",
+        "OpeningDate": "01-05-2002",
+        "StatementFrequencyAndFormat": [
           {
             "Frequency": "YEAR",
             "CommunicationMethod": "EMAL",
@@ -202,31 +202,31 @@ Content-Type: application/json
           "Identification": "8020441910203345",
           "Name": "ServicerName"
         },
-      "Account": [
-			  {
-          "SchemeName": "UK.OB.SortCodeAccountNumber",
-          "Identification": "80200110203345",
-          "Name": "Mr Kevin",
-          "SecondaryIdentification": "00021",
-          "LEI": "9193001QZMP2PQT4AK86",
-        }
-		  ]
+        "Account": [
+          {
+            "SchemeName": "UK.OB.SortCodeAccountNumber",
+            "Identification": "80200110203345",
+            "Name": "Mr Kevin",
+            "SecondaryIdentification": "00021",
+            "LEI": "9193001QZMP2PQT4AK86"
+          }
+        ]
       },
       {
         "AccountId": "31820",
-		"Status": "Enabled",
-		"StatusUpdateDateTime": "2018-01-01T06:06:06+00:00",
+        "Status": "Enabled",
+        "StatusUpdateDateTime": "2018-01-01T06:06:06+00:00",
         "Currency": "GBP",
         "AccountCategory": "Personal",
         "AccountTypeCode": "CACC",
         "Nickname": "Household",
         "Account": [
-			{
-          		"SchemeName": "UK.OB.SortCodeAccountNumber",
-          		"Identification": "80200110203348",
-          		"Name": "Mr Kevin"
-        	}
-		]
+          {
+            "SchemeName": "UK.OB.SortCodeAccountNumber",
+            "Identification": "80200110203348",
+            "Name": "Mr Kevin"
+          }
+        ]
       }
     ]
   },
@@ -267,9 +267,9 @@ Content-Type: application/json
   "Data": {
     "Account": [
       {
-    "AccountId": "22289",
-		"Status": "Enabled",
-		"StatusUpdateDateTime": "2019-01-01T06:06:06+00:00",
+        "AccountId": "22289",
+        "Status": "Enabled",
+        "StatusUpdateDateTime": "2019-01-01T06:06:06+00:00",
         "Currency": "GBP",
         "AccountCategory": "Personal",
         "AccountTypeCode": "CACC",
@@ -296,14 +296,14 @@ Content-Type: application/json
           "Name": "ServicerName"
         },
         "Account": [
-			  {
-          		"SchemeName": "UK.OB.SortCodeAccountNumber",
-          		"Identification": "80200110203345",
-          		"Name": "Mr Kevin",
-          		"SecondaryIdentification": "00021",
-               "LEI": "9193001QZMP2PQT4AK86",
-        	}
-		]
+          {
+            "SchemeName": "UK.OB.SortCodeAccountNumber",
+            "Identification": "80200110203345",
+            "Name": "Mr Kevin",
+            "SecondaryIdentification": "00021",
+            "LEI": "9193001QZMP2PQT4AK86"
+          }
+        ]
       }
     ]
   },
@@ -345,8 +345,8 @@ Content-Type: application/json
     "Account": [
       {
         "AccountId": "22289",
-		"Status": "Enabled",
-		"StatusUpdateDateTime": "2019-01-01T06:06:06+00:00",
+        "Status": "Enabled",
+        "StatusUpdateDateTime": "2019-01-01T06:06:06+00:00",
         "Currency": "GBP",
         "AccountCategory": "Personal",
         "AccountTypeCode": "CACC",
@@ -354,8 +354,8 @@ Content-Type: application/json
       },
       {
         "AccountId": "31820",
-		"Status": "Enabled",
-		"StatusUpdateDateTime": "2018-01-01T06:06:06+00:00",
+        "Status": "Enabled",
+        "StatusUpdateDateTime": "2018-01-01T06:06:06+00:00",
         "Currency": "GBP",
         "AccountCategory": "Personal",
         "AccountTypeCode": "CACC",
