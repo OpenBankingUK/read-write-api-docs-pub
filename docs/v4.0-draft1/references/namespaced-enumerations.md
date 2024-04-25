@@ -460,7 +460,7 @@ This field is used to indicate the event types a TPP would like to subscribe to 
 
 This field is used to indicate the reason associated with a Consent Authorization Revoked event.
 
-No UK.OBIE codes have been defined for this event.
+No UK.OB codes have been defined for this event.
 
 </details>
 
