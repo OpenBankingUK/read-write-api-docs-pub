@@ -61,21 +61,11 @@ Once the domestic-payment-consent has been authorised by the PSU, the PISP can p
 
 A domestic-payment can only be created if its corresponding domestic-payment-consent resource has the StatusCode of "AUTH". 
 
-The domestic-payment resource that is created successfully must have one of the following PaymentStatusCode code-set enumerations:
+The domestic-payment resource that is created successfully must have one of the following initial PaymentStatusCode code-set enumerations:
 
 | StatusCode |
 | ------ |
-| PDNG |
-| ACTC |
-| PATC |
-| ACCP |
-| ACFC |
-| ACSP |
-| ACWC |
-| ACSC |
-| ACWP |
-| ACCC |
-| BLCK |
+| RCVD |
 | RJCT |
 
 ### GET /domestic-payments/{DomesticPaymentId}
@@ -88,6 +78,7 @@ The domestic-payment resource must have one of the following PaymentStatusCode c
 
 | StatusCode |
 | ------ |
+| RCVD |
 | PDNG |
 | ACTC |
 | PATC |
@@ -111,6 +102,7 @@ The domestic-payment - payment-details must have one of the following PaymentSta
 
 | StatusCode |
 | ------ |
+| RCVD |
 | PDNG |
 | ACTC |
 | PATC |
@@ -124,6 +116,8 @@ The domestic-payment - payment-details must have one of the following PaymentSta
 | BLCK |
 | RJCT |
 
+Refer to [External_Internal_CodeSets](https://github.com/OpenBankingUK/External_Internal_CodeSets) -> ISO_External_CodeSet -> `ExternalPaymentTransactionStatus1Code`.
+
 ### State Model
 
 #### Payment Order
@@ -135,12 +129,21 @@ The state model for the domestic-payment resource follows the behaviour and defi
 ##### Multiple Authorisation
 If the payment-order requires multiple authorisations the status of the multiple authorisations will be updated in the MultiAuthorisation object.
 
-Once the payment is RCVD, the StatusCode should be set to PATC and the MultiAuthorisation object status updated with the AWAU status.  Once all authorisations have been successfully completed the MultiAuthorisation status should be set to AUTH and StatusCode updated to ACSP.
+Once the payment is RCVD, the payment-order StatusCode must be set to PATC and the MultiAuthorisation object status updated with the AWAF status. Once all authorisations have been successfully completed the MultiAuthorisation status must be set to AUTH and payment-order StatusCode updated to ACSP if any intermediate status are not supported.
 
 Any rejections in the multiple authorisation process should result in the MultiAuthorisation status and StatusCode being set to RJCT. 
 
 
 ![Multi Auth](./images/PO_MultiAuthFlow.png)
+
+|  | Status |Status Description |
+| ---| ------ |------------------ |
+| 1 |AWAF |The consent resource is awaiting further authorisation. |
+| 2 |RJCT |The consent resource has been rejected. |
+| 3 |AUTH |The consent resource has been successfully authorised. |
+
+Refer to [External_Internal_CodeSets](https://github.com/OpenBankingUK/External_Internal_CodeSets) -> OB_Internal_CodeSet -> `OBInternalStatus2Code`.
+
 
 ## Data Model
 
