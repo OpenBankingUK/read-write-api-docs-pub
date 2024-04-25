@@ -68,7 +68,7 @@ Accept: application/json
         "Name": "Marcus Sweepimus"
       },
       "CreditorAccount": {
-        "SchemeName": "SortCodeAccountNumber",
+        "SchemeName": "UK.OB.SortCodeAccountNumber",
         "Identification": "30949330000010",
         "SecondaryIdentification": "Roll 90210",
         "Name": "Marcus Sweepimus"
@@ -141,7 +141,7 @@ Content-Type: application/json
         "Name": "Marcus Sweepimus"
       },
       "CreditorAccount": {
-        "SchemeName": "SortCodeAccountNumber",
+        "SchemeName": "UK.OB.SortCodeAccountNumber",
         "Identification": "30949330000010",
         "SecondaryIdentification": "Roll 90210",
         "Name": "Marcus Sweepimus"
@@ -237,7 +237,7 @@ Content-Type: application/json
         "Name": "Marcus Sweepimus"
       },
       "CreditorAccount": {
-        "SchemeName": "SortCodeAccountNumber",
+        "SchemeName": "UK.OB.SortCodeAccountNumber",
         "Identification": "30949330000010",
         "SecondaryIdentification": "Roll 90210",
         "Name": "Marcus Sweepimus"
@@ -289,7 +289,7 @@ Accept: application/json
     "ConsentId": "fe615446-e53a-45ed-954c-ae5d1f97a93b",
     "PSUAuthenticationMethod": "UK.OB.SCA",
     "PSUInteractionType": "UK.OB.OffSession",
-    "VRPType": "UK.OB.VRPType.Sweeping" 
+    "VRPType": "UK.OB.VRPType.Sweeping" ,
 
     "Initiation": {
       "DebtorAccount": {
@@ -298,7 +298,7 @@ Accept: application/json
         "Name": "Marcus Sweepimus"
       },
       "CreditorAccount": {
-        "SchemeName": "SortCodeAccountNumber",
+        "SchemeName": "UK.OB.SortCodeAccountNumber",
         "Identification": "30949330000010",
         "SecondaryIdentification": "Roll 90210",
         "Name": "Marcus Sweepimus"
@@ -315,6 +315,8 @@ Accept: application/json
     },
 
     "Instruction": {
+      "InstructionIdentification": "fe655556-e53a-45ed-954c-ae5d1f97a93b",
+      "EndToEndIdentification": "fe699996-e53a-45ed-954c-ae5d1f97a93a",
       "CreditorAccount": {
         "SchemeName": "SortCodeAccountNumber",
         "Identification": "30949330000010",
@@ -391,6 +393,8 @@ Content-Type: application/json
     },
 
     "Instruction": {
+      "InstructionIdentification": "fe655556-e53a-45ed-954c-ae5d1f97a93b",
+      "EndToEndIdentification": "fe699996-e53a-45ed-954c-ae5d1f97a93a",
       "CreditorAccount": {
         "SchemeName": "SortCodeAccountNumber",
         "Identification": "30949330000010",
@@ -673,6 +677,8 @@ Accept: application/json
     },
 
     "Instruction": {
+      "InstructionIdentification": "fe655556-e53a-45ed-954c-ae5d1f97a93b",
+      "EndToEndIdentification": "fe699996-e53a-45ed-954c-ae5d1f97a93a",
       "CreditorAccount": {
         "SchemeName": "SortCodeAccountNumber",
         "Identification": "30949330000010",
@@ -738,6 +744,8 @@ Content-Type: application/json
     },
 
     "Instruction": {
+      "InstructionIdentification": "fe655556-e53a-45ed-954c-ae5d1f97a93b",
+      "EndToEndIdentification": "fe699996-e53a-45ed-954c-ae5d1f97a93a",
       "CreditorAccount": {
         "SchemeName": "SortCodeAccountNumber",
         "Identification": "30949330000010",
