@@ -297,8 +297,8 @@ The resource differs depending on the permissions (ReadTransactionsBasic and Rea
 | Identification |0..1 |OBReadTransaction6/Data/Transaction/CardInstrument/Identification |Identification assigned by an institution to identify the card instrument used in the transaction. This identification is known by the account owner, and may be masked. |Max34Text | | |
 | SupplementaryData |0..1 |OBReadTransaction6/Data/Transaction/SupplementaryData |Additional information that can not be captured in the structured fields and/or any other specific block. |OBSupplementaryData1 | | |
 | CategoryPurposeCode | 0..1 | OBReadTransaction6/Data/Transaction/CategoryPurposeCode |Enumeration to outline the purpose to the underlying purpose of the payment. For more information see `ExternalCategoryPurpose1Code` [here](https://github.com/OpenBankingUK/External_Interal_CodeSets)| OBCategoryPurposeCode| | |
-| UltimateCreditor |0..1 |OBReadTransaction6/Data/Transaction/UltimateCreditor|Set of elements used to identify a person or an organisation. | OBUltimateCreditor1| | |
-| UltimateDebtor |0..1 |OBReadTransaction6/Data/Transaction/UltimateDebtor|Set of elements used to identify a person or an organisation. |OBUltimateDebtor1 | | |
+| UltimateCreditor |0..1 |OBReadTransaction6/Data/Transaction/UltimateCreditor|Ultimate party to which an amount of money is due. | OBUltimateCreditor1| | |
+| UltimateDebtor |0..1 |OBReadTransaction6/Data/Transaction/UltimateDebtor|Ultimate party that owes an amount of money to the (ultimate) creditor. |OBUltimateDebtor1 | | |
 
 
 ### Reused Classes 

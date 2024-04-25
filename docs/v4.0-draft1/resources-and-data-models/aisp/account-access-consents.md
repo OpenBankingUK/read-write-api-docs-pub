@@ -107,9 +107,9 @@ Changes to the StatusCode, such as being rejected, should be captured in `Status
 
 | Field | Description |
 |---|---|
-| StatusReasonCode | Code directly relating to the reason for the current Status. See [the codelists](https://github.com/OpenBankingUK/External_Interal_CodeSets) for appropriate values. |
+| StatusReasonCode | Specifies the status reason in a code form. For a full description see `ExternalStatusReason1Code` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets)  |
 | StatusReasonDescription | Description of why the code was returned |
-|Path| Recommended but optional reference to JSON path if relevant to the code |
+|Path| Path is optional but relevant when the status reason refers to an object/field and hence conditional to provide JSON path.  |
 
 
 ### DELETE /account-access-consents/{ConsentId}
@@ -138,7 +138,7 @@ The OBReadConsent1 object will be used for the call to:
 #### Notes
 
 * The fields in the OBReadConsent1 object are described in the Consent Elements section.
-* No fields have been identified for the Risk section.
+* No fields have been identified for the Risk section and it has been removed from v4 onwards.
 
 #### Data Dictionary
 
@@ -150,7 +150,6 @@ The OBReadConsent1 object will be used for the call to:
 | ExpirationDateTime |0..1 |OBReadConsent1/Data/ExpirationDateTime |Specified date and time the permissions will expire. If this is not populated, the permissions will be open ended. |ISODateTime | |
 | TransactionFromDateTime |0..1 |OBReadConsent1/Data/TransactionFromDateTime |Specified start date and time for the transaction query period. If this is not populated, the start date will be open ended, and data will be returned from the earliest available transaction. |ISODateTime | |
 | TransactionToDateTime |0..1 |OBReadConsent1/Data/TransactionToDateTime |Specified end date and time for the transaction query period. If this is not populated, the end date will be open ended, and data will be returned to the latest available transaction. |ISODateTime | |
-| Risk |1..1 |OBReadConsent1/Risk |The Risk section is sent by the initiating party to the ASPSP. It is used to specify additional details for risk scoring for Account Info. |OBRisk2 | |
 
 ### Account Access Consents - Response
 
@@ -174,7 +173,7 @@ And response to:
     * StatusReason.
     * CreationDateTime.
     * StatusUpdateDateTime.
-* No fields have been identified for the Risk section.
+* No fields have been identified for the Risk section and it has been removed from v4 onwards.
 
 #### Data Dictionary
 
@@ -186,15 +185,14 @@ And response to:
 | CreationDateTime |1..1 |OBReadConsentResponse1/Data/CreationDateTime |Date and time at which the resource was created. |ISODateTime | |
 | StatusCode |0..1 |OBReadConsentResponse1/Data/StatusCode |Specifies the status of consent resource in code form. For a full description see `OBExternalConsentProprietaryCode` [here](https://github.com/OpenBankingUK/External_Interal_CodeSets). |OBExternalConsentProprietaryCode | |
 | StatusReason |0..* |OBReadConsentResponse1/Data/StatusReason |Specifies the status reason. | OBStatusReason |
-| StatusReasonCode |0..1 |OBReadConsentResponse1/Data/StatusReason/*/StatusReasonCode |Specifies the status reason in a code form. For a full description see `ExternalStatusReason1Code` [here](https://github.com/OpenBankingUK/External_Interal_CodeSets). | ExternalStatusReason1Code |
-| StatusReasonDescription |0..1 |OBReadConsentResponse1/Data/StatusReason/*/StatusReasonDescription |Description supporting the StatusReasonCode. |Max500Text | |
-| Path |0..1 |OBReadConsentResponse1/Data/StatusReason/*/Path |Recommended but optional reference to JSON path if relevant to the code. |Max500Text | |
+| StatusReasonCode |0..1 |OBReadConsentResponse1/Data/StatusReason/StatusReasonCode |Specifies the status reason in a code form. For a full description see `ExternalStatusReason1Code` [here](https://github.com/OpenBankingUK/External_Interal_CodeSets). | ExternalStatusReason1Code |
+| StatusReasonDescription |0..1 |OBReadConsentResponse1/Data/StatusReason/StatusReasonDescription |Description supporting the StatusReasonCode. |Max500Text | |
+| Path |0..1 |OBReadConsentResponse1/Data/StatusReason/Path |Path is optional but relevant when the status reason refers to an object/field and hence conditional to provide JSON path.  |Max500Text | |
 | StatusUpdateDateTime |1..1 |OBReadConsentResponse1/Data/StatusUpdateDateTime |Date and time at which the resource status was updated. |ISODateTime | |
 | Permissions |1..n |OBReadConsentResponse1/Data/Permissions |Specifies the Open Banking account access data types. This is a list of the data clusters being consented by the PSU, and requested for authorisation with the ASPSP. |OBExternalPermissions1Code | |
 | ExpirationDateTime |0..1 |OBReadConsentResponse1/Data/ExpirationDateTime |Specified date and time the permissions will expire. If this is not populated, the permissions will be open ended. |ISODateTime | |
 | TransactionFromDateTime |0..1 |OBReadConsentResponse1/Data/TransactionFromDateTime |Specified start date and time for the transaction query period. If this is not populated, the start date will be open ended, and data will be returned from the earliest available transaction. |ISODateTime | |
 | TransactionToDateTime |0..1 |OBReadConsentResponse1/Data/TransactionToDateTime |Specified end date and time for the transaction query period. If this is not populated, the end date will be open ended, and data will be returned to the latest available transaction. |ISODateTime | |
-| Risk |1..1 |OBReadConsentResponse1/Risk |The Risk section is sent by the initiating party to the ASPSP. It is used to specify additional details for risk scoring for Account Info. |OBRisk2 | |
 
 ## Usage Examples
 
@@ -235,8 +233,7 @@ Accept: application/json
     "ExpirationDateTime": "2017-05-02T00:00:00+00:00",
     "TransactionFromDateTime": "2017-05-03T00:00:00+00:00",
     "TransactionToDateTime": "2017-12-03T00:00:00+00:00"
-  },
-  "Risk": {}
+  }
 }
 ```
 
@@ -276,8 +273,7 @@ Content-Type: application/json
     "TransactionFromDateTime": "2017-05-03T00:00:00+00:00",
     "TransactionToDateTime": "2017-12-03T00:00:00+00:00"
 
-  },
-  "Risk": {},
+  }
   "Links": {
     "Self": "https://api.alphabank.com/open-banking/v3.1/aisp/account-access-consents/urn-alphabank-intent-88379"
   },
@@ -336,8 +332,7 @@ Content-Type: application/json
     "ExpirationDateTime": "2017-08-02T00:00:00+00:00",
     "TransactionFromDateTime": "2017-05-03T00:00:00+00:00",
     "TransactionToDateTime": "2017-12-03T00:00:00+00:00"
-  },
-  "Risk": {},
+  }
   "Links": {
     "Self": "https://api.alphabank.com/open-banking/v3.1/aisp/account-access-consents/urn-alphabank-intent-88379"
   },
@@ -396,8 +391,7 @@ Content-Type: application/json
     "ExpirationDateTime": "2017-08-02T00:00:00+00:00",
     "TransactionFromDateTime": "2017-05-03T00:00:00+00:00",
     "TransactionToDateTime": "2017-12-03T00:00:00+00:00"
-  },
-  "Risk": {},
+  }
   "Links": {
     "Self": "https://api.alphabank.com/open-banking/v3.1/aisp/account-access-consents/urn-alphabank-intent-88379"
   },
@@ -454,8 +448,7 @@ Accept: application/json
     "ExpirationDateTime": "2017-05-02T00:00:00+00:00",
     "TransactionFromDateTime": "2017-05-03T00:00:00+00:00",
     "TransactionToDateTime": "2017-12-03T00:00:00+00:00"
-  },
-  "Risk": {}
+  }
 }
 ```
 
@@ -480,8 +473,7 @@ Content-Type: application/json
     "ExpirationDateTime": "2017-08-02T00:00:00+00:00",
     "TransactionFromDateTime": "2017-05-03T00:00:00+00:00",
     "TransactionToDateTime": "2017-12-03T00:00:00+00:00"
-  },
-  "Risk": {},
+  }
   "Links": {
     "Self": "https://api.alphabank.com/open-banking/v3.1/aisp/account-access-consents/urn-alphabank-intent-88379"
   },
