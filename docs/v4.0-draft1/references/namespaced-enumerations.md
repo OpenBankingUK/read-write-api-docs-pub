@@ -512,8 +512,8 @@ Indicates a PSU authentication methods supported or used
 
 | Code |Description |
 | --- |--- |
-| UK.OB.InSeason | Indicates the customer is present for interaction type. |
-| UK.OB.OffSeason | Indicates the customer is not present for interaction type.|
+| UK.OB.InSession | Indicates the customer is present for interaction type. |
+| UK.OB.OffSession | Indicates the customer is not present for interaction type.|
 
 Note: ASPSPs may define enumerations that are more appropriate and document in the Developer Portal.
 
