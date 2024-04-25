@@ -170,7 +170,7 @@ Content-Type: application/json
         "AccountId": "22289",
         "BeneficiaryId": "Ben1",
         "Reference": "Towbar Club",
-        "CreditAgent": { 
+        "CreditorAgent": { 
           "LEI": "IZ9Q00LZEVUKWCQY6X15"
         },
         "CreditorAccount": {
@@ -219,7 +219,7 @@ Content-Type: application/json
         "AccountId": "22289",
         "BeneficiaryId": "Ben1",
         "Reference": "Towbar Club",
-        "CreditAgent": { 
+        "CreditorAgent": { 
           "LEI": "IZ9Q00LZEVUKWCQY6X15"
         },
         "CreditorAccount": {
@@ -232,7 +232,7 @@ Content-Type: application/json
         "AccountId": "31820",
         "BeneficiaryId": "Ben37",
         "Reference": "Golf Club",
-        "CreditAgent": { 
+        "CreditorAgent": { 
           "LEI": "F3U700ZEAVDJI2QSCN10"
         },
         "CreditorAccount": {
@@ -263,7 +263,7 @@ Content-Type: application/json
         "BeneficiaryId": "Ben1",
         "BeneficiaryType": "Ordinary",
         "Reference": "Towbar Club",
-        "CreditAgent": { 
+        "CreditorAgent": { 
           "LEI": "IZ9Q00LZEVUKWCQY6X15"
         },
         "CreditorAccount": {
@@ -277,7 +277,7 @@ Content-Type: application/json
         "BeneficiaryId": "Ben2",
         "BeneficiaryType": "Trusted",
         "Reference": "Champagne Club",
-        "CreditAgent": { 
+        "CreditorAgent": { 
           "LEI": "6PLS00H77T87PEZOTK71"
         },
         "CreditorAccount": {
@@ -290,7 +290,7 @@ Content-Type: application/json
         "AccountId": "22289",
         "BeneficiaryId": "Ben3",
         "Reference": "O2-234823781",
-        "CreditAgent": { 
+        "CreditorAgent": { 
           "LEI": "X3F8005BLKBSWLCX4E37"
         },
         "CreditorAccount": {
