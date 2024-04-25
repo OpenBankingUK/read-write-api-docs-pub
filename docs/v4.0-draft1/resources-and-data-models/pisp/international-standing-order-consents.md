@@ -330,15 +330,6 @@ Accept: application/json
 	"Permission": "Create",
   "ReadRefundAccount": "Yes",
     "Initiation": {
-	  "MandateRelatedInformation": {
-        "Frequency": "DAIL",
-        "PeriodType": "DAIL",
-        "FirstPaymentDate": "2018-06-06",
-        "LastPaymentDate": "2020-03-20",
-        "CountPerPeriod": 1,
-        "PointInTimeType": "DAIL",
-        "PointInTime": "T06:06:06+00:00"
-      },
 	  "DebtorAccount": {
         "SchemeName": "UK.OB.SortCodeAccountNumber",
         "Identification": "11280001234567",
@@ -353,7 +344,94 @@ Accept: application/json
         "Amount": "20",
         "Currency": "EUR"
 	  },
-	  "CurrencyOfTansfer":"EUR"
+	  "CurrencyOfTansfer":"EUR",
+    "MandateRelatedInformation": {
+        "MandateIdentification": "Golfers",
+        "Classification": "FIXE",
+        "CategoryPurposeCode": "BONU",
+        "FirstPaymentDateTime": "2024-04-25T12:46:49.425Z",
+        "RecurringPaymentDateTime": "2024-04-25T12:46:49.425Z",
+        "FinalPaymentDateTime": "2024-04-25T12:46:49.425Z",
+        "Frequency": { 
+          "Type": "MNTH",
+          "CountPerPeriod": 1,
+          "PointInTime": "00"
+        }
+      },
+      "UltimateDebtor": {
+        "SchemeName": "UK.OB.BICFI",
+        "Identification": "2360549017905161589",
+        "Name": "Ultimate Debtor",
+        "LEI": "8200007YHFDMEODY1965",
+        "PostalAddress": {
+            "AddressType": "BIZZ",
+            "StreetName": "Bank Street",
+            "BuildingNumber": "11",
+            "Floor": "6",
+            "PostCode": "Z78 4TY",
+            "TownName": "London",
+            "Country": "UK"
+        }
+      },
+      "UltimateCreditor": {
+        "SchemeName": "UK.OB.BICFI",
+        "Identification": "2360549017905161589",
+        "Name": "Ultimate Creditor",
+        "LEI": "60450004FECVJV7YN339",
+        "PostalAddress": {
+            "AddressType": "BIZZ",
+            "StreetName": "Bank Street",
+            "BuildingNumber": "11",
+            "Floor": "6",
+            "PostCode": "Z78 4TY",
+            "TownName": "London",
+            "Country": "UK"
+            }
+        },
+      "RegulatoryReporting": [
+          {
+            "DebitCreditReportingIndicator": "CRED",
+            "Authority": {
+              "Name": "string",
+              "CountryCode": "UG"
+            },
+            "Details": [
+              {
+                "Date": "2024-04-25T13:26:41.911Z",
+                "Country": "QG",
+                "Amount": {
+                  "Amount": "4.68702",
+                  "Currency": "JGM"
+                }
+              }
+          ]
+        }
+      ],
+      "RemittanceInformation": {
+          "Structured": [
+            {
+              "ReferredDocumentInformation": [
+                {
+                  "Code": "CINV",
+                  "Issuer": "Issuer01",
+                  "Number": "Number_01",
+                  "RelatedDate": "2024-04-25T13:26:41.911Z",
+                  "LineDetails": [
+                    "string"
+                  ]
+                }
+              ],
+              "ReferredDocumentAmount": 1,
+              "CreditorReferenceInformation": {
+                "Code": "DISP",
+                "Issuer": "Issuer01",
+                "Reference": "REF_26518"
+              },
+              "Invoicer": "INVR51856",
+              "Invoicee": "INVE5161856"
+            }
+          ]
+        }
     }
   },
   "Risk": {
