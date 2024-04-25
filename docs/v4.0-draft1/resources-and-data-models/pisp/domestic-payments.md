@@ -61,7 +61,7 @@ Once the domestic-payment-consent has been authorised by the PSU, the PISP can p
 
 A domestic-payment can only be created if its corresponding domestic-payment-consent resource has the StatusCode of "AUTH". 
 
-The domestic-payment resource that is created successfully must have one of the following PaymentStatusCode code-set enumerations:
+The domestic-payment resource that is created successfully must have one of the following ExternalPaymentTransactionStatus1Code code-set enumerations (for more information see `ExternalPaymentTransactionStatus1Code` [here](https://github.com/OpenBankingUK/External_Interal_CodeSets)) :
 
 | StatusCode |
 | ------ |
@@ -77,6 +77,7 @@ The domestic-payment resource that is created successfully must have one of the 
 | ACCC |
 | BLCK |
 | RJCT |
+| RCVD |
 
 ### GET /domestic-payments/{DomesticPaymentId}
 
@@ -84,7 +85,7 @@ A PISP can retrieve the domestic-payment to check its status.
 
 #### StatusCode
 
-The domestic-payment resource must have one of the following PaymentStatusCode code-set enumerations:
+The domestic-payment resource must have one of the following ExternalPaymentTransactionStatus1Code code-set enumerations (for more information see `ExternalPaymentTransactionStatus1Code` [here](https://github.com/OpenBankingUK/External_Interal_CodeSets)) :
 
 | StatusCode |
 | ------ |
@@ -100,6 +101,7 @@ The domestic-payment resource must have one of the following PaymentStatusCode c
 | ACCC |
 | BLCK |
 | RJCT |
+| RCVD |
 
 ### GET /domestic-payments/{DomesticPaymentId}/payment-details
 
@@ -107,7 +109,7 @@ A PISP can retrieve the Details of the underlying payment transaction via this e
 
 #### StatusCode
 
-The domestic-payment - payment-details must have one of the following PaymentStatusCode code-set enumerations:
+The domestic-payment - payment-details must have one of the following ExternalPaymentTransactionStatus1Code code-set enumerations (for more information see `ExternalPaymentTransactionStatus1Code` [here](https://github.com/OpenBankingUK/External_Interal_CodeSets)) :
 
 | StatusCode |
 | ------ |
@@ -123,6 +125,7 @@ The domestic-payment - payment-details must have one of the following PaymentSta
 | ACCC |
 | BLCK |
 | RJCT |
+| RCVD |
 
 ### State Model
 
@@ -135,7 +138,7 @@ The state model for the domestic-payment resource follows the behaviour and defi
 ##### Multiple Authorisation
 If the payment-order requires multiple authorisations the status of the multiple authorisations will be updated in the MultiAuthorisation object.
 
-Once the payment is RCVD, the StatusCode should be set to PATC and the MultiAuthorisation object status updated with the AWAU status.  Once all authorisations have been successfully completed the MultiAuthorisation status should be set to AUTH and StatusCode updated to ACSP.
+Once the payment is RCVD, the StatusCode should be set to PATC and the MultiAuthorisation object status updated with the AWAU status. Once all authorisations have been successfully completed the MultiAuthorisation status should be set to AUTH and the payment-order resource StatusCode must be updated to ACSP. 
 
 Any rejections in the multiple authorisation process should result in the MultiAuthorisation status and StatusCode being set to RJCT. 
 

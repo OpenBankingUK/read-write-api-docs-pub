@@ -59,18 +59,20 @@ The international-payment resource that is created successfully must have one of
 
 | StatusCode |
 | ------ |
-| PDNG |
-| ACTC |
-| PATC |
-| ACCP |
-| ACFC |
-| ACSP |
-| ACWC |
-| ACSC |
-| ACWP |
-| ACCC |
-| BLCK |
-| RJCT |
+|RCVD|
+|CANC|
+|PDNG|
+|ACTC|
+|PATC|
+|ACCP|
+|ACFC|
+|ACSP|
+|ACWC|
+|ACSC|
+|BLCK|
+|ACWP|
+|ACCC|
+|RJCT|
 
 ### GET /international-payments/{InternationalPaymentId}
 
@@ -82,18 +84,20 @@ The international-payment resource must have one of the following PaymentStatusC
 
 | StatusCode |
 | ------ |
-| PDNG |
-| ACTC |
-| PATC |
-| ACCP |
-| ACFC |
-| ACSP |
-| ACWC |
-| ACSC |
-| ACWP |
-| ACCC |
-| BLCK |
-| RJCT |
+|RCVD|
+|CANC|
+|PDNG|
+|ACTC|
+|PATC|
+|ACCP|
+|ACFC|
+|ACSP|
+|ACWC|
+|ACSC|
+|BLCK|
+|ACWP|
+|ACCC|
+|RJCT|
 
 ### GET /international-payments/{InternationalPaymentId}/payment-details
 
@@ -105,18 +109,20 @@ The international-payments - payment-details must have one of the following Paym
 
 | StatusCode |
 | ------ |
-| PDNG |
-| ACTC |
-| PATC |
-| ACCP |
-| ACFC |
-| ACSP |
-| ACWC |
-| ACSC |
-| ACWP |
-| ACCC |
-| BLCK |
-| RJCT |
+|RCVD|
+|CANC|
+|PDNG|
+|ACTC|
+|PATC|
+|ACCP|
+|ACFC|
+|ACSP|
+|ACWC|
+|ACSC|
+|BLCK|
+|ACWP|
+|ACCC|
+|RJCT|
 
 ### State Model
 
