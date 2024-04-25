@@ -232,7 +232,7 @@ The international-payment **response** object contains the:
 | StatusCode |1..1 |OBWriteInternationalResponse5/Data/StatusCode |Specifies the status of the payment information group. |OBTransactionIndividualStatus1Code |PDNG ACTC PATC ACCP ACFC ACSP ACWC ACSC ACWP ACCC BLCK RJCT | |
 | StatusUpdateDateTime |1..1 |OBWriteInternationalResponse5/Data/StatusUpdateDateTime |Date and time at which the resource status was updated. |ISODateTime | | |
 | StatusReason |0..* |OBWriteInternationalResponse5/Data/StatusReason |Specifies the status reason. | OBStatusReason |
-| StatusReasonCode |0..1 |OBWriteInternationalResponse5/Data/StatusReason/StatusReasonCode |Specifies the status reason in a code form. For a full description see `ExternalStatusReason1Code` [here](https://github.com/OpenBankingUK/External_Interal_CodeSets). | ExternalStatusReason1Code |
+| StatusReasonCode |0..1 |OBWriteInternationalResponse5/Data/StatusReason/StatusReasonCode |Specifies the status reason in a code form. For a full description see `ExternalStatusReason1Code` [here](https://github.com/OpenBankingUK/External_internal_CodeSets). | ExternalStatusReason1Code |
 | StatusReasonDescription |0..1 |OBWriteInternationalResponse5/Data/StatusReason/StatusReasonDescription |Description supporting the StatusReasonCode. | Max500Text |
 |Path| 0..1 | OBWriteInternationalResponse5/Data/StatusReason/Path| Path is optional but relevant when the status reason refers to an object/field and hence conditional to provide JSON path.| Max500Text| | |
 | ExpectedExecutionDateTime |0..1 |OBWriteInternationalResponse5/Data/ExpectedExecutionDateTime |Expected execution date and time for the payment resource. |ISODateTime | | |
