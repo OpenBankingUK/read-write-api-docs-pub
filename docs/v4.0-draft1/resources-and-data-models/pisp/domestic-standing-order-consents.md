@@ -165,7 +165,7 @@ For the OBDomesticStandingOrder3 Initiation object:
 * The Permission field is restricted to "Create", however, may be extended to "Update" and "Delete" in a future iteration of the specification.
 * Either the CountPerPeriod or FinalPaymentDateTime must be specified (not both) if the domestic standing order is not open ended.
 * The structure allows a PISP to specify a domestic standing order with a different payment amount and date combinations: for the first payment, the recurring payment, and the final payment. The recurring payment (and date) must only be populated if different from the first payment (and date).
-* If the PISP requests a Frequency that is not supported by the ASPSP, the ASPSP **must** respond with a 400 HTTP status code  and an appropriate ISO reason code. Refer to CEG for more guidance on common errors.  
+* If the PISP requests a Frequency that is not supported by the ASPSP, the ASPSP **must** respond with a 400 HTTP status code and an appropriate ISO reason code. Refer to CEG for more guidance on common errors.  
 
 ###### Frequency Examples
 
