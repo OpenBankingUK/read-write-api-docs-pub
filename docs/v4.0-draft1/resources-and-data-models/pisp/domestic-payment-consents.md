@@ -164,7 +164,7 @@ For the OBDomestic2 Initiation object:
 
 * All elements in the Initiation payload that are specified by the PISP must not be changed via the ASPSP as this is part of formal consent from the PSU.
 * If the ASPSP is able to establish a problem with payload or any contextual error during the API call, the ASPSP must reject the domestic-payment-consent request immediately.
-* If the ASPSP establishes a problem with the domestic-payment-consent after the API call, the ASPSP must set the StatusCode of the domestic-payment-consent resource to RJCT.
+* If the ASPSP establishes a problem with the domestic-payment-consent after the API call, the ASPSP must set the StatusCode of the domestic-payment-consent resource to 'RJCT' (Rejected).
 * DebtorAccount is **optional** as the PISP may not know the account identification details for the PSU.
 * If the DebtorAccount is specified by the PISP and is invalid for the PSU, then the domestic-payment-consent will be set to Rejected after PSU authentication.
 * Account Identification field usage:

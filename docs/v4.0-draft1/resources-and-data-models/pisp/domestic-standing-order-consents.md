@@ -163,9 +163,9 @@ For the OBDomesticStandingOrder3 Initiation object:
   * Where "UK.OB.SortCodeAccountNumber" is specified as the SchemeName in the Account identification section (either DebtorAccount or CreditorAccount), the Identification field **must** be populated with the 6 digit Sort Code and 8 digit Account Number (a 14 digit field).
   * Where the "UK.OB.IBAN" is specified as the SchemeName in the Account identification section (either DebtorAccount or CreditorAccount), the Identification field **must** be populated with the full IBAN.
 * The Permission field is restricted to "Create", however, may be extended to "Update" and "Delete" in a future iteration of the specification.
-* Either the NumberOfPayments or FinalPaymentDateTime must be specified (not both) if the domestic standing order is not open ended.
+* Either the CountPerPeriod or FinalPaymentDateTime must be specified (not both) if the domestic standing order is not open ended.
 * The structure allows a PISP to specify a domestic standing order with a different payment amount and date combinations: for the first payment, the recurring payment, and the final payment. The recurring payment (and date) must only be populated if different from the first payment (and date).
-* If the PISP requests a Frequency that is not supported by the ASPSP the ASPSP **must** respond with a 400 HTTP status code.
+* If the PISP requests a Frequency that is not supported by the ASPSP, the ASPSP **must** respond with a 400 HTTP status code  and an appropriate ISO reason code. Refer to CEG for more guidance on common errors.  
 
 ###### Frequency Examples
 

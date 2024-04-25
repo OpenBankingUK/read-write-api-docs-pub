@@ -254,10 +254,10 @@ The resource differs depending on the permissions (ReadTransactionsBasic and Rea
 | Code |1..1 |OBReadTransaction6/Data/Transaction/ExtendedProprietaryBankTransactionCodes/Code |Proprietary bank transaction code to identify the underlying transaction.|Max35Text | | |
 | Issuer |0..1 |OBReadTransaction6/Data/Transaction/ExtendedProprietaryBankTransactionCodes/Issuer | Identification of the issuer of the proprietary bank transaction code.|Max35Text | | |
 | Description |0..1 |OBReadTransaction6/Data/Transaction/ExtendedProprietaryBankTransactionCodes/Description | Description of the code and its usage on the ASPSP channel|Max500Text | | |
-| PaymentPurposeCode |0..1 |OBReadTransaction6/Data/Transaction/PaymentPurposeCode | For a full description see `ExternalPurpose1Code` [here](https://github.com/OpenBankingUK/External_Interal_CodeSets) |OBExternalPaymentPurpose1Code | | |
+| PaymentPurposeCode |0..1 |OBReadTransaction6/Data/Transaction/PaymentPurposeCode | For a full description see `ExternalPurpose1Code` [here](https://github.com/OpenBankingUK/External_Interal_CodeSets) |ExternalPurpose1Code  | | |
 | Balance |0..1 |OBReadTransaction6/Data/Transaction/Balance |Set of elements used to define the balance as a numerical representation of the net increases and decreases in an account after a transaction entry is applied to the account. |OBTransactionCashBalance | | |
 | CreditDebitIndicator |1..1 |OBReadTransaction6/Data/Transaction/Balance/CreditDebitIndicator |Indicates whether the balance is a credit or a debit balance. Usage: A zero balance is considered to be a credit balance. |OBCreditDebitCode |Credit<br>Debit | |
-| Type |1..1 |OBReadTransaction6/Data/Transaction/Balance/Type |Balance type, in a coded form. For more information see `ExternalBalanceType1Code` [here](https://github.com/OpenBankingUK/External_Interal_CodeSets)|OBBalanceType1Code |CLAV <br>CLBS <br> XPCH <br>FWAV  <br>INFO <br>ITAV  <br>ITBD <br>OPAV <br>OPBD <br>PRCD  | |
+| Type |1..1 |OBReadTransaction6/Data/Transaction/Balance/Type |Balance type, in a coded form. For more information see `ExternalBalanceType1Code` [here](https://github.com/OpenBankingUK/External_Interal_CodeSets)|ExternalBalanceType1Code |CLAV <br>CLBS <br> XPCH <br>FWAV  <br>INFO <br>ITAV  <br>ITBD <br>OPAV <br>OPBD <br>PRCD  | |
 | Amount |1..1 |OBReadTransaction6/Data/Transaction/Balance/Amount |Amount of money of the cash balance after a transaction entry is applied to the account.. |OBActiveOrHistoricCurrencyAndAmount | | |
 | Amount |1..1 |OBReadTransaction6/Data/Transaction/Balance/Amount/Amount |A number of monetary units specified in an active currency where the unit of currency is explicit and compliant with ISO 4217. |OBActiveCurrencyAndAmount_SimpleType | |`^\d{1,13}$|^\d{1,13}\.\d{1,5}$` |
 | Currency |1..1 |OBReadTransaction6/Data/Transaction/Balance/Amount/Currency |A code allocated to a currency by a Maintenance Agency under an international identification scheme, as described in the latest edition of the international standard ISO 4217 "Codes for the representation of currencies and funds". |ActiveOrHistoricCurrencyCode | |^[A-Z]{3,3}$ |
@@ -296,7 +296,7 @@ The resource differs depending on the permissions (ReadTransactionsBasic and Rea
 | Name |0..1 |OBReadTransaction6/Data/Transaction/CardInstrument/Name |Name of the cardholder using the card instrument. |Max70Text | | |
 | Identification |0..1 |OBReadTransaction6/Data/Transaction/CardInstrument/Identification |Identification assigned by an institution to identify the card instrument used in the transaction. This identification is known by the account owner, and may be masked. |Max34Text | | |
 | SupplementaryData |0..1 |OBReadTransaction6/Data/Transaction/SupplementaryData |Additional information that can not be captured in the structured fields and/or any other specific block. |OBSupplementaryData1 | | |
-| CategoryPurposeCode | 0..1 | OBReadTransaction6/Data/Transaction/CategoryPurposeCode |Enumeration to outline the purpose to the underlying purpose of the payment. For more information see `ExternalCategoryPurpose1Code` [here](https://github.com/OpenBankingUK/External_Interal_CodeSets)| OBCategoryPurposeCode| | |
+| CategoryPurposeCode | 0..1 | OBReadTransaction6/Data/Transaction/CategoryPurposeCode |Enumeration to outline the purpose to the underlying purpose of the payment. For more information see `ExternalCategoryPurpose1Code` [here](https://github.com/OpenBankingUK/External_Interal_CodeSets)| ExternalCategoryPurpose1Code | | |
 | UltimateCreditor |0..1 |OBReadTransaction6/Data/Transaction/UltimateCreditor|Set of elements used to identify a person or an organisation. | OBUltimateCreditor1| | |
 | UltimateDebtor |0..1 |OBReadTransaction6/Data/Transaction/UltimateDebtor|Set of elements used to identify a person or an organisation. |OBUltimateDebtor1 | | |
 
@@ -435,7 +435,7 @@ Content-Type: application/json
           "Currency": "GBP"
         },
         "CreditDebitIndicator": "Credit",
-        "Status": "Booked",
+        "Status": "BOOK",
         "BookingDateTime": "2017-04-05T10:43:07+00:00",
         "ValueDateTime": "2017-04-05T10:45:22+00:00",
         "TransactionInformation": "Cash from Aubrey",
@@ -453,7 +453,7 @@ Content-Type: application/json
             "Currency": "GBP"
           },
           "CreditDebitIndicator": "Credit",
-          "Type": "InterimBooked"
+          "Type": "ITBD"
         },
         "ExtendedProprietaryBankTransactionCodes": [{
           "Code": "Transfer 2",

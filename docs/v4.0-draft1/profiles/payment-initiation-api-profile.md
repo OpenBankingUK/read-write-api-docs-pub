@@ -384,7 +384,7 @@ Two strategies for handling behaviour are:
 In this scenario, the behaviour of payment-order execution is explicit to the PISP and PSU.
 
 - An ASPSP **must** reject the payment-order **consent** if the CutOffDateTime for a specific payment-order type has elapsed.
-- An ASPSP **must** reject an authorization request when the underlying intent object is associated with a CutoffDateTime that has elapsed. The ASPSP **must not** issue an access token in such a situation. The ASPSP **must** set the status of the payment-order consent resource to 'RJCT' which mean 'Rejected'.
+- An ASPSP **must** reject an authorization request when the underlying intent object is associated with a CutoffDateTime that has elapsed. The ASPSP **must not** issue an access token in such a situation. The ASPSP **must** set the status of the payment-order consent resource to 'RJCT' which means 'Rejected'.
 - An ASPSP **must** reject the payment-order **resource** if the CutOffDateTime for a specific payment-order type, has been established and has elapsed.
 - A PISP **must** ensure that the PSU consent authorisation is completed and the payment-order resource is created before the CutOffDateTime elapses.
 
@@ -681,45 +681,11 @@ This section describes the OBInternationalRefundAccount1 class which is used in 
 | Name |0..1 |OBInternationalRefundAccount1/Creditor/Name |Name by which a party is known and which is usually used to identify that party. |Max350Text | | |
 | LEI |0..1 | OBInternationalRefundAccount1/Creditor/LEI |Legal entity identification |Max20Text | |[A-Z0-9]{18,18}[0-9]{2,2} |
 | PostalAddress |0..1 |OBInternationalRefundAccount1/Creditor/PostalAddress |Information that locates and identifies a specific address, as defined by postal services. |OBPostalAddress6 | | |
-| AddressType |0..1 |OBInternationalRefundAccount1/Creditor/PostalAddress/AddressType | Identifies the nature of the postal address. <br>For a full description see `OBAddressType2Code` [here](https://github.com/OpenBankingUK/External_Interal_CodeSets). | OBAddressType2Code |
-| Department |0..1 |OBInternationalRefundAccount1/Creditor/PostalAddress/Department |Identification of a division of a large organisation or building. |Max70Text | | |
-| SubDepartment |0..1 |OBInternationalRefundAccount1/Creditor/PostalAddress/SubDepartment |Identification of a sub-division of a large organisation or building. |Max70Text | | |
-| StreetName |0..1 |OBInternationalRefundAccount1/Creditor/PostalAddress/StreetName |Name of a street or thoroughfare. |Max70Text | | |
-| BuildingNumber |0..1 |OBInternationalRefundAccount1/Creditor/PostalAddress/BuildingNumber |Number that identifies the position of a building on a street. |Max16Text | | |
-| BuildingName |0..1 |OBInternationalRefundAccount1/Creditor/PostalAddress/BuildingName |Name of a referenced building. |Max70Text | | |
-| Floor |0..1 |OBInternationalRefundAccount1/Creditor/PostalAddress/Floor|Number that identifies the level within a building. |Max16Text | | |
-| UnitNumber|0..1 |OBInternationalRefundAccount1/Creditor/PostalAddress/UnitNumber|Number that identifies the unit of a specific address |Max16Text | | |
-| Room |0..1 |OBInternationalRefundAccount1/Creditor/PostalAddress/Room|Information that locates and identifies a room to form part of an address. |Max70Text | | |
-| TownLocationName |0..1 |OBInternationalRefundAccount1/Creditor/PostalAddress/TownLocationName |Name of a built-up area, with defined boundaries, and a local government. |Max35Text | | |
-| DistrictName |0..1 |OBInternationalRefundAccount1/Creditor/PostalAddress/DistrictName |Number that of the regional area, known as a district, which forms part of an address. |Max35Text | | |
-| CareOf |0..1 |OBInternationalRefundAccount1/Creditor/PostalAddress/CareOf |The 'care of' address is used whenever sending mail to a person or organisation who does not actually live or work at the address. They will receive the mail for the individual. |Max70Text | | |
-| PostCode |0..1 |OBInternationalRefundAccount1/Creditor/PostalAddress/PostCode |Identifier consisting of a group of letters and/or numbers that is added to a postal address to assist the sorting of mail. |Max16Text | | |
-| TownName |0..1 |OBInternationalRefundAccount1/Creditor/PostalAddress/TownName |Name of a built-up area, with defined boundaries, and a local government. |Max35Text | | |
-| CountrySubDivision |0..1 |OBInternationalRefundAccount1/Creditor/PostalAddress/CountrySubDivision |Identifies a subdivision of a country such as state, region, county. |Max35Text | | |
-| Country |0..1 |OBInternationalRefundAccount1/Creditor/PostalAddress/Country |Nation with its own government. |CountryCode | |^[A-Z]{2,2}$ |
-| AddressLine |0..7 |OBInternationalRefundAccount1/Creditor/PostalAddress/AddressLine |Information that locates and identifies a specific address, as defined by postal services, presented in free format text. |Max70Text | | |
 | Agent |0..1 |OBInternationalRefundAccount1/Agent |Financial institution servicing an account for the creditor. |OBBranchAndFinancialInstitutionIdentification6 | | |
 | SchemeName |0..1 |OBInternationalRefundAccount1/Agent/SchemeName |Name of the identification scheme, in a coded form as published in an external list. |OBExternalFinancialInstitutionIdentification4Code | | |
 | Identification |0..1 |OBInternationalRefundAccount1/Agent/Identification |Unique and unambiguous identification of a financial institution or a branch of a financial institution. |Max35Text | | |
 | Name |0..1 |OBInternationalRefundAccount1/Agent/Name |Name by which an agent is known and which is usually used to identify that agent. |Max140Text | | |
 | PostalAddress |0..1 |OBInternationalRefundAccount1/Agent/PostalAddress |Information that locates and identifies a specific address, as defined by postal services. |OBPostalAddress6 | | |
-| AddressType |0..1 |OBInternationalRefundAccount1/Agent/PostalAddress/AddressType |Identifies the nature of the postal address. <br>For a full description see `OBAddressType2Code` [here](https://github.com/OpenBankingUK/External_Interal_CodeSets). | OBAddressType2Code |
-| Department |0..1 |OBInternationalRefundAccount1/Agent/PostalAddress/Department |Identification of a division of a large organisation or building. |Max70Text | | |
-| SubDepartment |0..1 |OBInternationalRefundAccount1/Agent/PostalAddress/SubDepartment |Identification of a sub-division of a large organisation or building. |Max70Text | | |
-| StreetName |0..1 |OBInternationalRefundAccount1/Agent/PostalAddress/StreetName |Name of a street or thoroughfare. |Max70Text | | |
-| BuildingNumber |0..1 |OBInternationalRefundAccount1/Agent/PostalAddress/BuildingNumber |Number that identifies the position of a building on a street. |Max16Text | | |
-| BuildingName |0..1 |OBInternationalRefundAccount1/Agent/PostalAddress/BuildingName |Name of a referenced building. |Max70Text | | |
-| Floor |0..1 |OBInternationalRefundAccount1/Agent/PostalAddress/Floor|Number that identifies the level within a building. |Max16Text | | |
-| UnitNumber|0..1 |OBInternationalRefundAccount1/Agent/PostalAddress/UnitNumber|Number that identifies the unit of a specific address |Max16Text | | |
-| Room |0..1 |OBInternationalRefundAccount1/Agent/PostalAddress/Room|Information that locates and identifies a room to form part of an address. |Max70Text | | |
-| TownLocationName |0..1 |OBInternationalRefundAccount1/Agent/PostalAddress/TownLocationName |Name of a built-up area, with defined boundaries, and a local government. |Max35Text | | |
-| DistrictName |0..1 |OBInternationalRefundAccount1/Agent/PostalAddress/DistrictName |Number that of the regional area, known as a district, which forms part of an address. |Max35Text | | |
-| CareOf |0..1 |OBInternationalRefundAccount1/Agent/PostalAddress/CareOf |The 'care of' address is used whenever sending mail to a person or organisation who does not actually live or work at the address. They will receive the mail for the individual. |Max70Text | | |
-| PostCode |0..1 |OBInternationalRefundAccount1/Agent/PostalAddress/PostCode |Identifier consisting of a group of letters and/or numbers that is added to a postal address to assist the sorting of mail. |Max16Text | | |
-| TownName |0..1 |OBInternationalRefundAccount1/Agent/PostalAddress/TownName |Name of a built-up area, with defined boundaries, and a local government. |Max35Text | | |
-| CountrySubDivision |0..1 |OBInternationalRefundAccount1/Agent/PostalAddress/CountrySubDivision |Identifies a subdivision of a country such as state, region, county. |Max35Text | | |
-| Country |0..1 |OBInternationalRefundAccount1/Agent/PostalAddress/Country |Nation with its own government. |CountryCode | |^[A-Z]{2,2}$ |
-| AddressLine |0..7 |OBInternationalRefundAccount1/Agent/PostalAddress/AddressLine |Information that locates and identifies a specific address, as defined by postal services, presented in free format text. |Max70Text | | |
 | Account |1..1 |OBInternationalRefundAccount1/Account |Unambiguous identification of the account of the creditor to which a credit entry will be posted as a result of the payment transaction. |OBCashAccountCreditor3 | | |
 | SchemeName |1..1 |OBInternationalRefundAccount1/Account/SchemeName |Name of the identification scheme, in a coded form as published in an external list. |OBExternalAccountIdentification4Code | | |
 | Identification |1..1 |OBInternationalRefundAccount1/Account/Identification |Identification assigned by an institution to identify an account. This identification is known by the account owner. |Max256Text | | |
@@ -750,11 +716,11 @@ This section describes the OBWritePaymentDetailsResponse1 class which used in th
 | StatusCode |1..1 |OBWritePaymentDetailsResponse1/Data/StatusCode |Status of a transfer, as assigned by the transaction administrator. <br> For more information and enum values see `ExternalPaymentTransactionStatus1Code`[here](https://github.com/OpenBankingUK/External_Interal_CodeSets). |ExternalPaymentTransactionStatus1Code |Specifies the status reason in a code form. Values:<br>RCVD<br>PDNG<br>ACTC<br>ACFC<br>ACSP<br>ACSC<br>ACWP<br>ACCC<br>BLCK<br>CANC<br>RJCT| |
 | StatusUpdateDateTime |1..1 |OBWritePaymentDetailsResponse1/Data/StatusUpdateDateTime |Date and time at which the status was assigned to the transfer. |ISODateTime | | |
 | StatusDetail |0..* |OBWritePaymentDetailsResponse1/Data/StatusDetail |Array of Payment StatusCodes| | | |
-| StatusCode |1..1 |OBWritePaymentDetailsResponse1/Data/StatusDetail/*/StatusCode |Status of a transfer, as assigned by the transaction administrator. <br> For more information and enum values see `ExternalPaymentTransactionStatus1Code`[here](https://github.com/OpenBankingUK/External_Interal_CodeSets). |ExternalPaymentTransactionStatus1Code |Specifies the status reason in a code form. Values:<br>RCVD<br>PDNG<br>ACTC<br>ACFC<br>ACSP<br>ACSC<br>ACWP<br>ACCC<br>BLCK<br>CANC<br>RJCT| |
-| StatusReasonCode |0..1 |OBWritePaymentDetailsResponse1/Data/StatusDetail/*/StatusReasonCode |Specifies the status reason in a code form.<br> For more information and enum values see `ExternalStatusReason1Code`[here](https://github.com/OpenBankingUK/External_Interal_CodeSets) |ExternalStatusReason1Code | | |
-| StatusReasonDescription |0..* |OBWritePaymentDetailsResponse1/Data/StausDetail/*/StatusReasonDescription |Description supporting the StatusReasonCode|Max500Text | | |
-| StatusReasonDescription |0..1 |OBWritePaymentDetailsResponse1/Data/StatusDetail/*/StatusReasonDescription |Reason provided for the status of a transfer. |Max256Text | | |
-| StatusUpdateDateTime |1..1 |OBWritePaymentDetailsResponse1/Data/StatusDetail/*/StatusUpdateDateTime |Date and time at which the status was assigned to the transfer. |ISODateTime | | |
+| StatusCode |1..1 |OBWritePaymentDetailsResponse1/Data/StatusDetail/StatusCode |Status of a transfer, as assigned by the transaction administrator. <br> For more information and enum values see `ExternalPaymentTransactionStatus1Code`[here](https://github.com/OpenBankingUK/External_Interal_CodeSets). |ExternalPaymentTransactionStatus1Code |Specifies the status reason in a code form. Values:<br>RCVD<br>PDNG<br>ACTC<br>ACFC<br>ACSP<br>ACSC<br>ACWP<br>ACCC<br>BLCK<br>CANC<br>RJCT| |
+| StatusReasonCode |0..1 |OBWritePaymentDetailsResponse1/Data/StatusDetail/StatusReasonCode |Specifies the status reason in a code form.<br> For more information and enum values see `OB Internal Code Set. OBExternalStatusReason1Code`[here](https://github.com/OpenBankingUK/External_Interal_CodeSets) |OBExternalStatusReason1Code | | |
+| StatusReasonDescription |0..* |OBWritePaymentDetailsResponse1/Data/StausDetail/StatusReasonDescription |Description supporting the StatusReasonCode|Max500Text | | |
+| StatusReasonDescription |0..1 |OBWritePaymentDetailsResponse1/Data/StatusDetail/StatusReasonDescription |Reason provided for the status of a transfer. |Max256Text | | |
+| StatusUpdateDateTime |1..1 |OBWritePaymentDetailsResponse1/Data/StatusDetail/StatusUpdateDateTime |Date and time at which the status was assigned to the transfer. |ISODateTime | | |
 
 #### OBSCASupportData1
 

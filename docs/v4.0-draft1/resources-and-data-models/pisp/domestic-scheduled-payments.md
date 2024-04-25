@@ -63,9 +63,20 @@ The domestic-scheduled-payment resource that is created successfully must have o
 
 | StatusCode |
 | ------ |
-| RCVD |
-| RJCT |
-| ACSP |
+|RCVD|
+|CANC|
+|PDNG|
+|ACTC|
+|PATC|
+|ACCP|
+|ACFC|
+|ACSP|
+|ACWC|
+|ACSC|
+|BLCK|
+|ACWP|
+|ACCC|
+|RJCT|
 
 ### GET /domestic-scheduled-payments/{DomesticScheduledPaymentId}
 
@@ -77,10 +88,20 @@ The domestic-scheduled-payment resource must have one of the following StatusCod
 
 | StatusCode |
 | ------ |
-| RCVD |
-| RJCT |
-| ACSP |
-| CANC |
+|RCVD|
+|CANC|
+|PDNG|
+|ACTC|
+|PATC|
+|ACCP|
+|ACFC|
+|ACSP|
+|ACWC|
+|ACSC|
+|BLCK|
+|ACWP|
+|ACCC|
+|RJCT|
 
 ### GET /domestic-scheduled-payments/{DomesticScheduledPaymentId}/payment-details
 
@@ -92,18 +113,20 @@ The domestic-scheduled-payments - payment-details must have one of the following
 
 | StatusCode |
 | ------ |
-| PDNG |
-| ACTC |
-| PATC |
-| ACCP |
-| ACFC |
-| ACSP |
-| ACWC |
-| ACSC |
-| ACWP |
-| ACCC |
-| BLCK |
-| RJCT |
+|RCVD|
+|CANC|
+|PDNG|
+|ACTC|
+|PATC|
+|ACCP|
+|ACFC|
+|ACSP|
+|ACWC|
+|ACSC|
+|BLCK|
+|ACWP|
+|ACCC|
+|RJCT|
 
 
 ### State Model

@@ -87,7 +87,7 @@ A PISP can retrieve the Details of the underlying payment transaction via this e
 
 #### StatusCode
 
-The international-standing-orders - payment-details must have one of the following PaymentStatusCode code-set enumerations:
+The international-standing-orders - payment-details must have one of the following ExternalPaymentTransactionStatus1Code code-set enumerations (for more information see `ExternalPaymentTransactionStatus1Code` [here](https://github.com/OpenBankingUK/External_Interal_CodeSets)) :
 
 | StatusCode |
 | ------ |
@@ -103,14 +103,14 @@ The international-standing-orders - payment-details must have one of the followi
 | ACCC |
 | BLCK |
 | RJCT |
-
+| RCVD |
 ### State Model
 
 #### Payment Order
 
 The state model for the international-standing-orders resource describes the initiation status and the subsequent execution of the international-standing-orders.
 
-![Payment Order Status](./images/PIS_PO_SOFlow1Statuses.png)
+![Payment Order Status](./images/PIS_PO_SOFlow1Status.png)
 
 
 ##### Multiple Authorisation
