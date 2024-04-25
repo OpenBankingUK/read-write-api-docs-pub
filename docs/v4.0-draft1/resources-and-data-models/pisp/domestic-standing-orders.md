@@ -121,6 +121,12 @@ Refer to [External_Internal_CodeSets](https://github.com/OpenBankingUK/External_
 
 The state model for the domestic-standing-order resource describes the initiation status and the subsequent execution of the domestic-standing-order.
 
+__Payment order state model key:__
+| Colour (Style) | Description |
+| --- | --- |
+| Green (Bold) | Mandatory |
+| Orange (Italic) | Optional, but recommended |
+
 ##### State 1
 ![Payment Order Status](./images/PIS_PO_SOFlow1Statuses.png)
 

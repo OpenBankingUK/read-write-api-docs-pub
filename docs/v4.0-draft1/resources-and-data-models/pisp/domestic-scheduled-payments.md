@@ -124,6 +124,12 @@ Refer to [External_Internal_CodeSets](https://github.com/OpenBankingUK/External_
 
 The state model for the domestic-scheduled-payment resource describes the initiation and subsequent execution of the domestic-scheduled-payment.
 
+__Payment order state model key:__
+| Colour (Style) | Description |
+| --- | --- |
+| Green (Bold) | Mandatory |
+| Orange (Italic) | Optional, but recommended |
+
 ![Payment Order Status](./images/PIS_PO_FDPStatuses.png)
 
 
