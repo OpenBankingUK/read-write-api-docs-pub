@@ -10,8 +10,6 @@
   - [Notes](#notes)
   - [Permission Codes](#permission-codes)
   - [Data Dictionary](#data-dictionary)
-  - [Reused Classes](#reused-classes)
-    - [OBPostalAddress6](#obpostaladdress6)
 - [Usage Examples](#usage-examples)
   - [Bulk - Detail Permission](#bulk---detail-permission)
     - [Get Accounts Request](#get-accounts-request)
@@ -134,12 +132,6 @@ If the ReadPAN permission is granted by the PSU, the ASPSP may choose to populat
 | SchemeName |1..1 |OBReadAccount6/Data/Account/Servicer/SchemeName |Name of the identification scheme, in a coded form as published in an external list. |OBExternalFinancialInstitutionIdentification4Code | | |
 | Identification |1..1 |OBReadAccount6/Data/Account/Servicer/Identification |Unique and unambiguous identification of the servicing institution. |Max35Text | | |
 
-### Reused Classes
-
-#### OBPostalAddress6 
-
-The OBPostalAddress6 class is defined in the [payment-initiation-api-profile](../../profiles/payment-initiation-api-profile.md#obpostaladdress6) page
-
 
 ## Usage Examples
 
@@ -172,23 +164,45 @@ Content-Type: application/json
 {
   "Data": {
     "Account": [
-      {
-        "AccountId": "22289",
-		"Status": "Enabled",
-		"StatusUpdateDateTime": "2019-01-01T06:06:06+00:00",
-        "Currency": "GBP",
-        "AccountCategory": "Personal",
-        "AccountTypeCode": "CACC",
-        "Nickname": "Bills",
-        "OpeningDate": "01-05-2002",
-        "Account": [
-			{
-	          	"SchemeName": "UK.OB.SortCodeAccountNumber",
-          		"Identification": "80200110203345",
-    	    	"Name": "Mr Kevin",
-        	  	"SecondaryIdentification": "00021"
-        	}
-		]
+    {
+      "AccountId": "22289",
+      "Status": "Enabled",
+      "StatusUpdateDateTime": "2019-01-01T06:06:06+00:00",
+      "Currency": "GBP",
+      "AccountCategory": "Personal",
+      "AccountTypeCode": "CACC",
+      "Nickname": "Bills",
+      "OpeningDate": "01-05-2002",
+      "StatementFrequencyAndFormat": [
+          {
+            "Frequency": "YEAR",
+            "CommunicationMethod": "EMAL",
+            "Format": "DPDF",
+            "DeliveryAdress": {
+              "AddressType": "BIZZ",
+              "StreetName": "Bank Street",
+              "BuildingNumber": "11",
+              "Floor": "6",
+              "PostCode": "Z78 4TY",
+              "TownName": "London",
+              "Country": "UK"
+            }
+          }
+        ],
+        "Servicer": {
+          "SchemeName": "UK.OB.BICFI",
+          "Identification": "8020441910203345",
+          "Name": "ServicerName"
+        },
+      "Account": [
+			  {
+          "SchemeName": "UK.OB.SortCodeAccountNumber",
+          "Identification": "80200110203345",
+          "Name": "Mr Kevin",
+          "SecondaryIdentification": "00021",
+          "LEI": "9193001QZMP2PQT4AK86",
+        }
+		  ]
       },
       {
         "AccountId": "31820",
@@ -245,19 +259,41 @@ Content-Type: application/json
   "Data": {
     "Account": [
       {
-        "AccountId": "22289",
+    "AccountId": "22289",
 		"Status": "Enabled",
 		"StatusUpdateDateTime": "2019-01-01T06:06:06+00:00",
         "Currency": "GBP",
         "AccountCategory": "Personal",
         "AccountTypeCode": "CACC",
         "Nickname": "Bills",
+        "StatementFrequencyAndFormat": [
+          {
+            "Frequency": "YEAR",
+            "CommunicationMethod": "EMAL",
+            "Format": "DPDF",
+            "DeliveryAddress": {
+              "AddressType": "BIZZ",
+              "StreetName": "Bank Street",
+              "BuildingNumber": "11",
+              "Floor": "6",
+              "PostCode": "Z78 4TY",
+              "TownName": "London",
+              "Country": "UK"
+            }
+          }
+        ],
+        "Servicer": {
+          "SchemeName": "UK.OB.BICFI",
+          "Identification": "8020441910203345",
+          "Name": "ServicerName"
+        },
         "Account": [
-			{
+			  {
           		"SchemeName": "UK.OB.SortCodeAccountNumber",
           		"Identification": "80200110203345",
           		"Name": "Mr Kevin",
-          		"SecondaryIdentification": "00021"
+          		"SecondaryIdentification": "00021",
+               "LEI": "9193001QZMP2PQT4AK86",
         	}
 		]
       }
