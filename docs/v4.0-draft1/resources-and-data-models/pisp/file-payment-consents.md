@@ -13,11 +13,12 @@
     - [Payment Order Consent](#payment-order-consent)
 - [Data Model](#data-model)
   - [Reused Classes](#reused-classes)
+	- [OBRemittanceInformation1](#obremittanceinformation1)
+	- [OBUltimateDebtor1](#obultimatedebtor1)
     - [OBFile2](#obfile2)
       - [UML Diagram](#uml-diagram)
       - [Notes](#notes)
       - [Data Dictionary](#data-dictionary)
-	- [OBRemittanceInformation1](#obremittanceinformation1)
   - [File Payment Consent - Request](#file-payment-consent-request)
     - [UML Diagram](#uml-diagram-2)
     - [Notes](#notes-2)
@@ -137,15 +138,23 @@ Changes to the StatusCode, such as being rejected, should be captured in `Status
 
 | Field | Description |
 |---|---|
-| StatusReasonCode | Code directly relating to the reason for the current Status. See [the codelists](https://github.com/OpenBankingUK/External_Interal_CodeSets) for appropriate values. |
+| StatusReasonCode | Specifies the status reason in a code form. For a full description see `ExternalStatusReason1Code` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets) |
 | StatusReasonDescription | Description of why the code was returned |
-|Path| Recommended but optional reference to JSON path if relevant to the code |
+|Path| Path is optional but relevant when the status reason refers to an object/field and hence conditional to provide JSON path. |
 
 ## Data Model
 
 The data dictionary section gives the detail on the payload content for the File Payment API flows.
 
 ### Reused Classes
+
+#### OBRemittanceInformation1
+
+The OBRemittanceInformation1 class is defined in the [payment-initiation-api-profile](../../profiles/payment-initiation-api-profile.md#obremittanceinformation1) page.
+
+#### OBUltimateDebtor1 
+
+The OBUltimateDebtor1 class is defined in the [payment-initiation-api-profile](../../profiles/payment-initiation-api-profile.md#obultimatedebtor1) page.
 
 #### OBFile2
 
@@ -180,21 +189,9 @@ For the OBFile2 Initiation object:
 | RequestedExecutionDateTime |0..1 |OBFile2/RequestedExecutionDateTime |Date at which the initiating party requests the clearing agent to process the payment. Usage: This is the date on which the debtor's account is to be debited. |ISODateTime | | |
 | LocalInstrument |0..1 |OBFile2/LocalInstrument |User community specific instrument. Usage: This element is used to specify a local instrument, local clearing option and/or further qualify the service or service level. |OBExternalLocalInstrument1Code | | |
 | DebtorAccount |0..1 |OBFile2/DebtorAccount |Unambiguous identification of the account of the debtor to which a debit entry will be made as a result of the transaction. |OBCashAccountDebtor4 | | |
-| SchemeName |1..1 |OBFile2/DebtorAccount/SchemeName |Name of the identification scheme, in a coded form as published in an external list. |OBExternalAccountIdentification4Code | | |
-| Identification |1..1 |OBFile2/DebtorAccount/Identification |Identification assigned by an institution to identify an account. This identification is known by the account owner. |Max256Text | | |
-| Name |0..1 |OBFile2/DebtorAccount/Name |The account name is the name or names of the account owner(s) represented at an account level, as displayed by the ASPSP's online channels. Note, the account name is not the product name or the nickname of the account. |Max350Text | | |
-| SecondaryIdentification |0..1 |OBFile2/DebtorAccount/SecondaryIdentification |This is secondary identification of the account, as assigned by the account servicing institution. This can be used by building societies to additionally identify accounts with a roll number (in addition to a sort code and account number combination). |Max34Text | | |
-| Proxy |0..1 |OBFile2/DebtorAccount/Proxy |The external proxy account type |OBProxyAccount | | |
-| Identification |1..1 |OBFile2/DebtorAccount/Proxy/Identification| Identification assigned by an institution to identify an account. This identification is known by the account owner. |Max256Text | | |
-| Type |0..1 |OBFile2/DebtorAccount/Proxy/Type| Specifies the external proxy account type |MaxText70 | | |
-| Code |1..1 |OBFile2/DebtorAccount/Proxy/Code| Specifies the external proxy account type code, as published in the proxy account type external code set.<br> For more information see `ExternalProxyAccountType1Code` [here](https:/github.com/OpenBankingUK/External_Interal_CodeSets) |OBExternalProxyAccountType1Code | | |
-| Proprietary |1..1 |OBFile2/DebtorAccount/Proxy/Proprietary| The owner of the proxy account |MaxText70 | | |
+| UltimateDebtor |0..1 |OBFile2/UltimateDebtor|Set of elements used to identify a person or an organisation.|OBUltimateDebtor1 | | |
 | RemittanceInformation |0..1 |OBFile2/RemittanceInformation |Information supplied to enable the matching of an entry with the items that the transfer is intended to settle, such as commercial invoices in an accounts' receivable system. |OBRemittanceInformation1 | | |
 | SupplementaryData |0..1 |OBFile2/SupplementaryData |Additional information that can not be captured in the structured fields and/or any other specific block. |OBSupplementaryData1 | | |
-
-#### OBRemittanceInformation1
-
-The OBRemittanceInformation1 class is defined in the [payment-initiation-api-profile](../../profiles/payment-initiation-api-profile.md#obremittanceinformation1) page.
 
 ### File Payment Consent - Request
 
@@ -258,22 +255,18 @@ The file-payment-consent **response** contains the full **original** payload fro
 | Data |1..1 |OBWriteFileConsentResponse4/Data | |OBWriteDataFileConsentResponse4 | | |
 | ConsentId |1..1 |OBWriteFileConsentResponse4/Data/ConsentId |OB: Unique identification as assigned by the ASPSP to uniquely identify the consent resource. |Max128Text | | |
 | CreationDateTime |1..1 |OBWriteFileConsentResponse4/Data/CreationDateTime |Date and time at which the resource was created. |ISODateTime | | |
-| StatusCode |0..1 |OBReadConsentResponse1/Data/StatusCode |Specifies the status of consent resource in code form. |ExternalStatusReason1Code |AUTH AWAU RJCT COND |
-| StatusReason |0..* |OBReadConsentResponse1/Data/StatusReason |Specifies the status reason. | OBStatusReason |
-| StatusReasonCode |0..1 |OBReadConsentResponse1/Data/StatusReason/*/StatusReasonCode |Specifies the status reason in a code form. For a full description see `ExternalStatusReason1Code` [here](https://github.com/OpenBankingUK/External_Interal_CodeSets). | ExternalStatusReason1Code |
-| StatusReasonDescription |0..1 |OBReadConsentResponse1/Data/StatusReason/*/StatusReasonDescription |Description supporting the StatusReasonCode. |
+| StatusCode |1..1 |OBWriteFileConsentResponse4/Data/StatusCode |Specifies the status of consent resource in code form. |ExternalStatusReason1Code |AUTH AWAU RJCT COND |
 | StatusUpdateDateTime |1..1 |OBWriteFileConsentResponse4/Data/StatusUpdateDateTime |Date and time at which the consent resource status was updated. |ISODateTime | | |
+| StatusReason |0..* |OBWriteFileConsentResponse4/Data/StatusReason |An array of StatusReasonCode | OBStatusReason |
+| StatusReasonCode |0..1 |OBWriteFileConsentResponse4/Data/StatusReason/StatusReasonCode |Specifies the status reason in a code form. For a full description see `ExternalStatusReason1Code` [here](https://github.com/OpenBankingUK/External_Interal_CodeSets). | ExternalStatusReason1Code |
+| StatusReasonDescription |0..1 |OBWriteFileConsentResponse4/Data/StatusReason/StatusReasonDescription |Description supporting the StatusReasonCode. |Max500Text|
+|Path| 0..1 | OBWriteFileConsentResponse4/Data/StatusReason/Path| Path is optional but relevant when the status reason refers to an object/field and hence conditional to provide JSON path.| Max500Text| | |
 | CutOffDateTime |0..1 |OBWriteFileConsentResponse4/Data/CutOffDateTime |Specified cut-off date and time for the payment consent. |ISODateTime | | |
-| Charges |0..n |OBWriteFileConsentResponse4/Data/Charges |Set of elements used to provide details of a charge for the payment initiation. |OBCharge2 | | |
+| Charges |0..* |OBWriteFileConsentResponse4/Data/Charges |Set of elements used to provide details of a charge for the payment initiation. |OBCharge2 | | |
 | Initiation |1..1 |OBWriteFileConsentResponse4/Data/Initiation |The Initiation payload is sent by the initiating party to the ASPSP. It is used to request movement of funds using a payment file. |OBFile2 | | |
 | Authorisation |0..1 |OBWriteFileConsentResponse4/Data/Authorisation |The authorisation type request from the TPP. |OBAuthorisation1 | | |
 | SCASupportData |0..1 |OBWriteFileConsentResponse4/Data/SCASupportData |Supporting Data provided by TPP, when requesting SCA Exemption. |OBSCASupportData1 | | |
-| Debtor |0..1 |OBWriteFileConsentResponse4/Data/Debtor |Set of elements used to identify a person or an organisation. | | | |
-| SchemeName |0..1 |OBWriteFileConsentResponse4/Data/Debtor/SchemeName |Name of the identification scheme, in a coded form as published in an external list. |OBExternalAccountIdentification4Code | | |
-| Identification |0..1 |OBWriteFileConsentResponse4/Data/Debtor/Identification |Identification assigned by an institution to identify an account. This identification is known by the account owner. |Max256Text | | |
-| Name |0..1 |OBWriteFileConsentResponse4/Data/Debtor/Name |The account name is the name or names of the account owner(s) represented at an account level, as displayed by the ASPSP's online channels. Note, the account name is not the product name or the nickname of the account. |Max350Text | | |
-| SecondaryIdentification |0..1 |OBWriteFileConsentResponse4/Data/Debtor/SecondaryIdentification |This is secondary identification of the account, as assigned by the account servicing institution. This can be used by building societies to additionally identify accounts with a roll number (in addition to a sort code and account number combination). |Max34Text | | |
-| LEI |0..1 | OBWriteFileConsentResponse4/Data/Debtor/LEI |Legal Entity Identification by which a party is known and which is usually used to identify that party. |Max20Text | | |
+| Debtor |0..1 |OBWriteFileConsentResponse4/Data/Debtor |Set of elements used to identify a person or an organisation. |OBCashAccountDebtor4 | | |
 
 
 ## Usage Examples
