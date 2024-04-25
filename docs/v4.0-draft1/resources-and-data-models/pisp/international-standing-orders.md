@@ -302,7 +302,81 @@ Accept: application/json
         "Amount": "20",
         "Currency": "EUR"
 	  },
-	  "CurrencyOfTansfer":"EUR"
+	  "CurrencyOfTansfer":"EUR",
+    "UltimateDebtor": {
+        "SchemeName": "UK.OB.BICFI",
+        "Identification": "2360549017905161589",
+        "Name": "Ultimate Debtor",
+        "LEI": "8200007YHFDMEODY1965",
+        "PostalAddress": {
+            "AddressType": "BIZZ",
+            "StreetName": "Bank Street",
+            "BuildingNumber": "11",
+            "Floor": "6",
+            "PostCode": "Z78 4TY",
+            "TownName": "London",
+            "Country": "UK"
+        }
+      },
+      "UltimateCreditor": {
+        "SchemeName": "UK.OB.BICFI",
+        "Identification": "2360549017905161589",
+        "Name": "Ultimate Creditor",
+        "LEI": "60450004FECVJV7YN339",
+        "PostalAddress": {
+            "AddressType": "BIZZ",
+            "StreetName": "Bank Street",
+            "BuildingNumber": "11",
+            "Floor": "6",
+            "PostCode": "Z78 4TY",
+            "TownName": "London",
+            "Country": "UK"
+            }
+        },
+      "RegulatoryReporting": [
+          {
+            "DebitCreditReportingIndicator": "CRED",
+            "Authority": {
+              "Name": "string",
+              "CountryCode": "UG"
+            },
+            "Details": [
+              {
+                "Date": "2024-04-25T13:26:41.911Z",
+                "Country": "QG",
+                "Amount": {
+                  "Amount": "4.68702",
+                  "Currency": "JGM"
+                }
+              }
+          ]
+        }
+      ],
+      "RemittanceInformation": {
+          "Structured": [
+            {
+              "ReferredDocumentInformation": [
+                {
+                  "Code": "CINV",
+                  "Issuer": "Issuer01",
+                  "Number": "Number_01",
+                  "RelatedDate": "2024-04-25T13:26:41.911Z",
+                  "LineDetails": [
+                    "string"
+                  ]
+                }
+              ],
+              "ReferredDocumentAmount": 1,
+              "CreditorReferenceInformation": {
+                "Code": "DISP",
+                "Issuer": "Issuer01",
+                "Reference": "REF_26518"
+              },
+              "Invoicer": "INVR51856",
+              "Invoicee": "INVE5161856"
+            }
+          ]
+        }
     }
   },
   "Risk": {
@@ -356,7 +430,81 @@ Content-Type: application/json
         "Amount": "20",
         "Currency": "EUR"
       },
-      "CurrencyOfTansfer":"EUR"
+      "CurrencyOfTansfer":"EUR",
+      "UltimateDebtor": {
+        "SchemeName": "UK.OB.BICFI",
+        "Identification": "2360549017905161589",
+        "Name": "Ultimate Debtor",
+        "LEI": "8200007YHFDMEODY1965",
+        "PostalAddress": {
+            "AddressType": "BIZZ",
+            "StreetName": "Bank Street",
+            "BuildingNumber": "11",
+            "Floor": "6",
+            "PostCode": "Z78 4TY",
+            "TownName": "London",
+            "Country": "UK"
+        }
+      },
+      "UltimateCreditor": {
+        "SchemeName": "UK.OB.BICFI",
+        "Identification": "2360549017905161589",
+        "Name": "Ultimate Creditor",
+        "LEI": "60450004FECVJV7YN339",
+        "PostalAddress": {
+            "AddressType": "BIZZ",
+            "StreetName": "Bank Street",
+            "BuildingNumber": "11",
+            "Floor": "6",
+            "PostCode": "Z78 4TY",
+            "TownName": "London",
+            "Country": "UK"
+            }
+        },
+      "RegulatoryReporting": [
+          {
+            "DebitCreditReportingIndicator": "CRED",
+            "Authority": {
+              "Name": "string",
+              "CountryCode": "UG"
+            },
+            "Details": [
+              {
+                "Date": "2024-04-25T13:26:41.911Z",
+                "Country": "QG",
+                "Amount": {
+                  "Amount": "4.68702",
+                  "Currency": "JGM"
+                }
+              }
+          ]
+        }
+      ],
+      "RemittanceInformation": {
+          "Structured": [
+            {
+              "ReferredDocumentInformation": [
+                {
+                  "Code": "CINV",
+                  "Issuer": "Issuer01",
+                  "Number": "Number_01",
+                  "RelatedDate": "2024-04-25T13:26:41.911Z",
+                  "LineDetails": [
+                    "string"
+                  ]
+                }
+              ],
+              "ReferredDocumentAmount": 1,
+              "CreditorReferenceInformation": {
+                "Code": "DISP",
+                "Issuer": "Issuer01",
+                "Reference": "REF_26518"
+              },
+              "Invoicer": "INVR51856",
+              "Invoicee": "INVE5161856"
+            }
+          ]
+        }
     }
   },
   "Risk": {
