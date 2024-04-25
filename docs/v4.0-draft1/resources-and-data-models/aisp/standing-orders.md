@@ -208,11 +208,43 @@ Content-Type: application/json
           "Amount": "0.56",
           "Currency": "GBP"
         },
+        "CreditAgent": {  
+          "LEI": "IZ9Q00LZEVUKWCQY6X15",
+          "SchemeName": "UK.OB.BICFI",
+          "Identification": "80200112344562",
+          "Name": "The Credit Agent", 
+          "PostalAddress": { 
+            "AddressType": "BIZZ",
+            "StreetName": "Bank Street",
+            "BuildingNumber": "11",
+            "Floor": "6",
+            "PostCode": "Z78 4TY",
+            "TownName": "London",
+            "Country": "UK"
+          }
+        },
+        "MandateRelatedInformation": {
+          "MandateIdentification": "Golfers",
+          "Classification": "FIXE",
+          "CategoryPurposeCode": "BONU",
+          "FirstPaymentDateTime": "2024-04-25T12:46:49.425Z",
+          "RecurringPaymentDateTime": "2024-04-25T12:46:49.425Z",
+          "FinalPaymentDateTime": "2024-04-25T12:46:49.425Z",
+          "Frequency": { 
+            "Type": "MNTH",
+            "CountPerPeriod": 1,
+            "PointInTime": "00"
+          }
+        },
         "StandingOrderStatusCode": "Active",
         "CreditorAccount": {
           "SchemeName": "UK.OB.SortCodeAccountNumber",
           "Identification": "80200112345678",
-          "Name": "Mrs Juniper"
+          "Name": "Mrs Juniper",
+          "Proxy": {
+            "Identification": "2360549017905188",
+            "Code": "TELE"
+          }
         }
       }
     ]
@@ -277,11 +309,43 @@ Content-Type: application/json
           "Amount": "0.56",
           "Currency": "GBP"
         },
+        "CreditAgent": {  
+          "LEI": "IZ9Q00LZEVUKWCQY6X15",
+          "SchemeName": "UK.OB.BICFI",
+          "Identification": "80200112344562",
+          "Name": "The Credit Agent", 
+          "PostalAddress": { 
+            "AddressType": "BIZZ",
+            "StreetName": "Bank Street",
+            "BuildingNumber": "11",
+            "Floor": "6",
+            "PostCode": "Z78 4TY",
+            "TownName": "London",
+            "Country": "UK"
+          }
+        },
+        "MandateRelatedInformation": {
+          "MandateIdentification": "Golfers",
+          "Classification": "FIXE",
+          "CategoryPurposeCode": "BONU",
+          "FirstPaymentDateTime": "2024-04-25T12:46:49.425Z",
+          "RecurringPaymentDateTime": "2024-04-25T12:46:49.425Z",
+          "FinalPaymentDateTime": "2024-04-25T12:46:49.425Z",
+          "Frequency": { 
+            "Type": "MNTH",
+            "CountPerPeriod": 1,
+            "PointInTime": "00"
+          }
+        },
         "StandingOrderStatusCode": "Active",
         "CreditorAccount": {
           "SchemeName": "UK.OB.SortCodeAccountNumber",
           "Identification": "80200112345678",
-          "Name": "Mrs Juniper"
+          "Name": "Mrs Juniper",
+          "Proxy": {
+            "Identification": "2360549017905188",
+            "Code": "TELE"
+          }
         }
       },
       {

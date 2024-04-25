@@ -237,7 +237,11 @@ Content-Type: application/json
         "CreditorAccount": {
           "SchemeName": "UK.OB.SortCodeAccountNumber",
           "Identification": "80200112345678",
-          "Name": "Mrs Juniper"
+          "Name": "Mrs Juniper",
+          "Proxy": {
+            "Identification": "2360549017905188",
+            "Code": "TELE"
+          }
         }
       },
       {
@@ -262,7 +266,11 @@ Content-Type: application/json
         "CreditorAccount": {
           "SchemeName": "UK.OB.SortCodeAccountNumber",
           "Identification": "87562298675421",
-          "Name": "Mr Large"
+          "Name": "Mr Large",
+          "Proxy": {
+            "Identification": "2360549017905188",
+            "Code": "TELE"
+          }
         }
       }
     ]
@@ -332,7 +340,11 @@ Content-Type: application/json
         "CreditorAccount": {
           "SchemeName": "UK.OB.SortCodeAccountNumber",
           "Identification": "80200112345678",
-          "Name": "Mr Tully"
+          "Name": "Mr Tully",
+          "Proxy": {
+            "Identification": "2360549017905188",
+            "Code": "TELE"
+          }
         }
       }
     ]
