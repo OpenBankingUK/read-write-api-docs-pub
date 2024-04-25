@@ -207,6 +207,7 @@ Content-Type: application/json
                 "BeneficialOwnership": true,
                 "AccountRole": "UK.OB.Principal",
                 "EmailAddress": "contact@semiotec.co.jp",
+                "LEI": "068700IA8DVYPS77MD05",
                 "Relationships": {
                     "Account": {
                         "Related": "https://api.alphabank.com/open-banking/v4.0/aisp/accounts/22289",
@@ -232,6 +233,7 @@ Content-Type: application/json
                 "FullLegalName": "Mr Kevin Bartholmew Atkinson",
                 "LegalStructure": "UK.OB.Individual",
                 "BeneficialOwnership": false,
+                "LEI": "068700IA8DVHGY77MD85",
                 "AccountRole": "UK.OB.Administrator",
                 "EmailAddress": "kev@semiotec.co.jp",
                 "Relationships": {
@@ -284,6 +286,7 @@ Content-Type: application/json
                 "Name": "Roses and Thorns Limited",
                 "FullLegalName": "Roses and Thorns Limited",
                 "LegalStructure": "UK.OB.PrivateLimitedCompany",
+                "LEI": "068700IA8DVYPS77MD05",
                 "BeneficialOwnership": true,
                 "AccountRole": "UK.OB.Principal",
                 "EmailAddress": "speakup@rosesandthorns.co.uk",
@@ -313,6 +316,7 @@ Content-Type: application/json
                 "FullLegalName": "Mr Neil Paul Example",
                 "LegalStructure": "UK.OB.Individual",
                 "BeneficialOwnership": false,
+                "LEI": "068700IA8DVHGY77MD85",
                 "AccountRole": "UK.OB.SeniorManagingOfficial",
                 "EmailAddress": "neil@rosesandthorns.co.uk",
                 "Phone": "+44-55565411097",
@@ -374,6 +378,7 @@ Content-Type: application/json
       "PartyType": "Sole",
       "Name": "Semiotec",
       "EmailAddress": "contact@semiotec.co.jp",
+       "LEI": "068700IA8DVYPS77MD05",
 	  "Address": {
 		"AddressType": "Business",
 		"StreetName": "Street",
@@ -421,6 +426,7 @@ Content-Type: application/json
       "PartyId": "PXSIF023",
       "PartyType": "Delegate",
       "Name": "Mr D User",
+      "LEI": "713200JVLXQKY2R7XS50",
       "EmailAddress": "d.user@semiotec.co.jp"
     }
   },

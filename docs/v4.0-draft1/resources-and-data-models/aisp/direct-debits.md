@@ -123,8 +123,13 @@ Content-Type: application/json
         "DirectDebitId": "DD03",
         "MandateRelatedInformation": {
             "MandateIdentification": "Caravanners",
+            "Classification": "FIXE",
+            "CategoryPurposeCode": "BONU",
+            "FirstPaymentDateTime": "2024-04-25T12:46:49.425Z",
+            "RecurringPaymentDateTime": "2024-04-25T12:46:49.425Z",
+            "FinalPaymentDateTime": "2024-04-25T12:46:49.425Z",
             "Frequency": {
-              "PeriodType": "WEEK",
+              "Type": "WEEK",
               "CountPerPeriod": 1,
               "PointInTime": "00"
           }
@@ -178,8 +183,13 @@ Content-Type: application/json
         "DirectDebitId": "DD03",
         "MandateRelatedInformation": {
             "MandateIdentification": "Caravanners",
+            "Classification": "FIXE",
+            "CategoryPurposeCode": "BONU",
+            "FirstPaymentDateTime": "2024-04-25T12:46:49.425Z",
+            "RecurringPaymentDateTime": "2024-04-25T12:46:49.425Z",
+            "FinalPaymentDateTime": "2024-04-25T12:46:49.425Z",
             "Frequency": {
-              "PeriodType": "MNTH",
+              "Type": "MNTH",
               "CountPerPeriod": 1,
               "PointInTime": "00"
           }
@@ -197,8 +207,13 @@ Content-Type: application/json
         "DirectDebitId": "DD77",
         "MandateRelatedInformation": {
           "MandateIdentification": "Golfers",
+          "Classification": "FIXE",
+          "CategoryPurposeCode": "BONU",
+          "FirstPaymentDateTime": "2024-04-25T12:46:49.425Z",
+          "RecurringPaymentDateTime": "2024-04-25T12:46:49.425Z",
+          "FinalPaymentDateTime": "2024-04-25T12:46:49.425Z",
           "Frequency": { 
-            "PeriodType": "MNTH",
+            "Type": "MNTH",
             "CountPerPeriod": 1,
             "PointInTime": "00"
           }

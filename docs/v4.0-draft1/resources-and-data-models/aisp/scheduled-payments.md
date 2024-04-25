@@ -150,10 +150,29 @@ Content-Type: application/json
           "Amount": "10.00",
           "Currency": "GBP"
         },
+        "CreditAgent": {  
+          "LEI": "IZ9Q00LZEVUKWCQY6X15",
+          "SchemeName": "UK.OB.BICFI",
+          "Identification": "80200112344562",
+          "Name": "The Credit Agent", 
+          "PostalAddress": { 
+            "AddressType": "BIZZ",
+            "StreetName": "Bank Street",
+            "BuildingNumber": "11",
+            "Floor": "6",
+            "PostCode": "Z78 4TY",
+            "TownName": "London",
+            "Country": "UK"
+          }
+        },
         "CreditorAccount": {
           "SchemeName": "UK.OB.SortCodeAccountNumber",
           "Identification": "23605490179017",
-          "Name": "Mr Tee"
+          "Name": "Mr Tee",
+          "Proxy": {
+            "Identification": "441234012345",
+            "Code": "TELE",
+          }
         }
       }
     ]
@@ -201,10 +220,28 @@ Content-Type: application/json
           "Amount": "10.00",
           "Currency": "GBP"
         },
+        "CreditAgent": {  
+          "LEI": "IZ9Q00LZEVUKWCQY6X15",
+          "SchemeName": "UK.OB.BICFI",
+          "Identification": "80200112344562",
+          "Name": "The Credit Agent", 
+          "PostalAddress": { 
+            "AddressType": "BIZZ",
+            "StreetName": "Bank Street",
+            "BuildingNumber": "11",
+            "Floor": "6",
+            "PostCode": "Z78 4TY",
+            "TownName": "London",
+            "Country": "UK"
+        },
         "CreditorAccount": {
           "SchemeName": "UK.OB.SortCodeAccountNumber",
           "Identification": "23605490179017",
-          "Name": "Mr Tee"
+          "Name": "Mr Tee",
+          "Proxy": {
+            "Identification": "441234012345",
+            "Code": "TELE",
+          }
         }
       },
       {
@@ -219,7 +256,11 @@ Content-Type: application/json
         "CreditorAccount": {
           "SchemeName": "UK.OB.SortCodeAccountNumber",
           "Identification": "23605490179017",
-          "Name": "Mr Tee"
+          "Name": "Mr Tee",
+          "Proxy": {
+            "Identification": "441234012345",
+            "Code": "TELE",
+          }
         }
       }
     ]

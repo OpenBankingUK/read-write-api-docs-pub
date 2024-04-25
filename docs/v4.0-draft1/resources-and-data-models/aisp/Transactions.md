@@ -466,6 +466,36 @@ Content-Type: application/json
           "Description": "SWIFT View"
           }
         ],
+        "UltimateDebtor": {
+          "SchemeName": "UK.OB.BICFI",
+          "Identification": "2360549017905161589",
+          "Name": "Ultimate Debtor",
+          "LEI": "8200007YHFDMEODY1965",
+          "PostalAddress": {
+            "AddressType": "BIZZ",
+            "StreetName": "Bank Street",
+            "BuildingNumber": "11",
+            "Floor": "6",
+            "PostCode": "Z78 4TY",
+            "TownName": "London",
+            "Country": "UK"
+          }
+        },
+        "UltimateCreditor": {
+          "SchemeName": "UK.OB.BICFI",
+          "Identification": "2360549017905161589",
+          "Name": "Ultimate Creditor",
+          "LEI": "60450004FECVJV7YN339",
+          "PostalAddress": {
+            "AddressType": "BIZZ",
+            "StreetName": "Bank Street",
+            "BuildingNumber": "11",
+            "Floor": "6",
+            "PostCode": "Z78 4TY",
+            "TownName": "London",
+            "Country": "UK"
+          }
+        }
       },
       {
         "AccountId": "31820",
@@ -508,6 +538,36 @@ Content-Type: application/json
           "Description": "SWIFT View"
           }
         ],
+        "UltimateDebtor": {
+          "SchemeName": "UK.OB.BICFI",
+          "Identification": "2360549017905161589",
+          "Name": "Ultimate Debtor",
+          "LEI": "8200007YHFDMEODY1965",
+          "PostalAddress": {
+            "AddressType": "BIZZ",
+            "StreetName": "Bank Street",
+            "BuildingNumber": "11",
+            "Floor": "6",
+            "PostCode": "Z78 4TY",
+            "TownName": "London",
+            "Country": "UK"
+          }
+        },
+        "UltimateCreditor": {
+          "SchemeName": "UK.OB.BICFI",
+          "Identification": "2360549017905161589",
+          "Name": "Ultimate Creditor",
+          "LEI": "60450004FECVJV7YN339",
+          "PostalAddress": {
+            "AddressType": "BIZZ",
+            "StreetName": "Bank Street",
+            "BuildingNumber": "11",
+            "Floor": "6",
+            "PostCode": "Z78 4TY",
+            "TownName": "London",
+            "Country": "UK"
+          }
+        }
       }
     ]
   },
