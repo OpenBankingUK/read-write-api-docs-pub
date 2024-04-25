@@ -10,6 +10,8 @@
   - [Notes](#notes)
   - [Permission Codes](#permission-codes)
   - [Data Dictionary](#data-dictionary)
+  - [Reused Classes](#reused-classes)
+    - [OBPostalAddress6](#obpostaladdress6)
 - [Usage Examples](#usage-examples)
   - [Bulk - Detail Permission](#bulk---detail-permission)
     - [Get Accounts Request](#get-accounts-request)
@@ -132,6 +134,12 @@ If the ReadPAN permission is granted by the PSU, the ASPSP may choose to populat
 | SchemeName |1..1 |OBReadAccount6/Data/Account/Servicer/SchemeName |Name of the identification scheme, in a coded form as published in an external list. |OBExternalFinancialInstitutionIdentification4Code | | |
 | Identification |1..1 |OBReadAccount6/Data/Account/Servicer/Identification |Unique and unambiguous identification of the servicing institution. |Max35Text | | |
 
+
+### Reused Classes
+
+#### OBPostalAddress6 
+
+The OBPostalAddress6 class is defined in the [payment-initiation-api-profile](../../profiles/payment-initiation-api-profile.md#obpostaladdress6) page
 
 ## Usage Examples
 
