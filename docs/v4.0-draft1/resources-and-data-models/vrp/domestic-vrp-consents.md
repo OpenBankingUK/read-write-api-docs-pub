@@ -400,7 +400,7 @@ The Risk block for VRP does not included `ExtendedPurpose`, used only in Interna
 | __StatusReasonDescription__ (0..1) | `Data. StatusReason. StatusReasonDescription` | Description supporting the StatusReasonCode.  |Max500text|
 | __ControlParameters__ (1..1) | `Data. ControlParameters` | The control parameters under which this VRP must operate | [OBDomesticVRPControlParameters](#OBDomesticVRPControlParameters)
 | __Initiation__ (1..1) | `Data. Initiation` | The parameters of the VRP consent that should remain unchanged for each payment under this VRP |  [OBDomesticVRPInitiation](#OBDomesticVRPInitiation)
-| __DebtorAccount__ (0..1) | `Data.DebtorAccount` | The approved DebtorAccount that the payment can be made from. THe value must be populated for GET responses once the consent is approved. | OBCashAccountDebtorWithName|
+| __DebtorAccount__ (0..1) | `Data.DebtorAccount` | The DebtorAccount details as specified by the PSU when account selection happens at the ASPSP.<br><br>__Note:__  The details must be provided in the consent response (OBDomesticVRPConsentResponse) by the ASPSP to enable the PISP to associate it with future VRP payments that are made using the VRP Consent. | OBCashAccountDebtorWithName|
 | __Risk__ (1..1) | `Risk` | The consent payload is sent by the initiating party to the ASPSP. It is used to request a consent to move funds from the debtor account to a creditor. | [OBRisk2](#obrisk2)|
 
 
