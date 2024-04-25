@@ -91,7 +91,7 @@ A PISP can retrieve the Details of the underlying payment transaction via this e
 
 #### StatusCode
 
-The domestic-standing-orders - payment-details must have one of the following ExternalPaymentTransactionStatus1Code code-set enumerations (for more information see `ExternalPaymentTransactionStatus1Code` [here](https://github.com/OpenBankingUK/External_Interal_CodeSets)) :
+The domestic-standing-orders - payment-details must have one of the following ExternalPaymentTransactionStatus1Code code-set enumerations (for more information see `ExternalPaymentTransactionStatus1Code` [here](https://github.com/OpenBankingUK/External_internal_CodeSets)) :
 
 | StatusCode |
 | ------ |
@@ -228,7 +228,7 @@ The domestic-standing-order **response** object contains the:
 | StatusCode |1..1 |OBWriteDomesticStandingOrderResponse6/Data/StatusCode |Specifies the status of the payment order resource. |OBExternalStatus1Code |RCVD RJCT ASCP CANC | |
 | StatusUpdateDateTime |1..1 |OBWriteDomesticStandingOrderResponse6/Data/StatusUpdateDateTime |Date and time at which the resource status was updated. |ISODateTime | | |
 | StatusReason |0..* |OBWriteDomesticStandingOrderResponse6/Data/StatusReason |An array of StatusReasonCode | OBStatusReason |
-| StatusReasonCode |0..1 |OBWriteDomesticStandingOrderResponse6/Data/StatusReason/StatusReasonCode |Specifies the status reason in a code form. For a full description see `ExternalStatusReason1Code` [here](https://github.com/OpenBankingUK/External_Interal_CodeSets). | ExternalStatusReason1Code |
+| StatusReasonCode |0..1 |OBWriteDomesticStandingOrderResponse6/Data/StatusReason/StatusReasonCode |Specifies the status reason in a code form. For a full description see `ExternalStatusReason1Code` [here](https://github.com/OpenBankingUK/External_internal_CodeSets). | ExternalStatusReason1Code |
 | StatusReasonDescription |0..1 |OBWriteDomesticStandingOrderResponse6/Data/StatusReason/StatusReasonDescription |Description supporting the StatusReasonCode. |Max500Text|
 |Path| 0..1 | OBWriteDomesticStandingOrderResponse6/Data/StatusReason/Path| Path is optional but relevant when the status reason refers to an object/field and hence conditional to provide JSON path| Max500Text| | |
 | Refund |0..1 |OBWriteDomesticStandingOrderResponse6/Data/Refund |Unambiguous identification of the refund account to which a refund will be made as a result of the transaction. |OBDomesticRefundAccount1 | | |
