@@ -258,12 +258,21 @@ x-fapi-interaction-id: hook5i13-ntIg-4th3-rP41-3ro535touch3
     "ConsentId": "88379",
     "CreationDateTime": "2017-05-02T00:00:00+00:00",
     "StatusCode": "AWAU",
+    "StatusReason": [
+      {
+        "StatusReasonCode": "ERIN",
+      }
+    ],
     "StatusUpdateDateTime": "2017-05-02T00:00:00+00:00",
     "ExpirationDateTime": "2017-05-02T00:00:00+00:00",
     "DebtorAccount": {
       "SchemeName": "UK.OB.IBAN",
       "Identification": "GB76LOYD30949301273801",
-      "SecondaryIdentification": "Roll 56988"
+      "SecondaryIdentification": "Roll 56988",
+      "Proxy": {
+        "Identification": "+441632960540",
+        "Code": "TELE"
+      },
     }
   },
   "Links": {
@@ -309,8 +318,12 @@ Content-Type: application/json
     "DebtorAccount": {
       "SchemeName": "UK.OB.IBAN",
       "Identification": "GB76LOYD30949301273801",
-      "SecondaryIdentification": "Roll 56988"
-    }
+      "SecondaryIdentification": "Roll 56988",
+      "Proxy": {
+        "Identification": "+441632960540",
+        "Code": "TELE"
+      },
+    },
   },
   "Links": {
     "Self": "https://api.alphabank.com/open-banking/v3.1/cbpii/funds-confirmation-consents/88379"
