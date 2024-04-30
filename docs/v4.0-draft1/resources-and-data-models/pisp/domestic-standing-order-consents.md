@@ -14,7 +14,7 @@
     - [OBMandateRelatedInformation1](#obmandaterelatedinformation1)
     - [OBUltimateCreditor1](#obultimatecreditor1)
     - [OBUltimateDebtor1](#obultimatedebtor1)
-    - [OBRegulatoryReporting1](#OBRegulatoryReporting1)
+    - [OBRegulatoryReporting1](#obregulatoryreporting1)
     - [OBDomesticStandingOrder3](#obdomesticstandingorder3)
       - [UML Diagram](#uml-diagram)
       - [Notes](#notes)
@@ -138,7 +138,7 @@ The OBUltimateDebtor1 class is defined in the [payment-initiation-api-profile](.
 
 #### OBRegulatoryReporting1
 
-The OBRegulatoryReporting1 class is defined in the [payment-initiation-api-profile](../../profiles/payment-initiation-api-profile.md#OBRegulatoryReporting1) page.
+The OBRegulatoryReporting1 class is defined in the [payment-initiation-api-profile](../../profiles/payment-initiation-api-profile.md#obregulatoryreporting1) page.
 
 
 

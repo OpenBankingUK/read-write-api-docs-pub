@@ -6,7 +6,7 @@
   - [GET /direct-debits](#get-direct-debits)
 - [Data Model](#data-model)
   - [Reused Classes](#reused-classes)
-    - [OBMandateRelatedInformation1](#OBMandateRelatedInformation1)
+    - [OBMandateRelatedInformation1](#obmandaterelatedinformation1)
   - [Resource Definition](#resource-definition)
   - [UML Diagram](#uml-diagram)
   - [Permission Codes](#permission-codes)

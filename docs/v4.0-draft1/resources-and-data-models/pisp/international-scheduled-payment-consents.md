@@ -16,7 +16,7 @@
     - [OBUltimateCreditor1](#obultimatecreditor1)
     - [OBUltimateDebtor1](#obultimatedebtor1)
     - [OBPostalAddress6](#obpostaladdress6)
-    - [OBProxy1](#OBProxy1)
+    - [OBProxy1](#obproxy1)
     - [OBInternationalScheduled3](#obinternationalscheduled3)
       - [UML Diagram](#uml-diagram)
       - [Notes](#notes)
@@ -157,7 +157,7 @@ The OBPostalAddress6 class is defined in the [payment-initiation-api-profile](..
 
 #### OBProxy1
 
-The OBProxy1 class is defined in the [payment-initiation-api-profile](../../profiles/payment-initiation-api-profile.md#OBProxy1) page.
+The OBProxy1 class is defined in the [payment-initiation-api-profile](../../profiles/payment-initiation-api-profile.md#obproxy1) page.
 
 #### OBInternationalScheduled3
 

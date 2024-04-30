@@ -10,8 +10,7 @@
   - [DELETE /funds-confirmation-consents/{ConsentId}](#delete-funds-confirmation-consentsconsentid)
 - [Data Model](#data-model)
   - [Reused Classes](#reused-classes)
-    - [OBProxy1](#OBProxy1)
-    - [Data Dictionary](#OBProxy1-data-dictionary)
+    - [OBProxy1](#obproxy1)
   - [Funds Confirmation Consent - Request](#funds-confirmation-consent---request)
     - [UML Diagram](#uml-diagram)
     - [Data Dictionary](#data-dictionary)
@@ -132,7 +131,7 @@ This data dictionary section gives the detail on the payload content.
 
 #### OBProxy1  
 
-The OBProxy1 class is defined in the [confirmation-of-funds-api-profile](../../profiles/confirmation-of-funds-api-profile.md#OBProxy1) page.
+The OBProxy1 class is defined in the [confirmation-of-funds-api-profile](../../profiles/confirmation-of-funds-api-profile.md#obproxy1) page.
 
 ### Funds Confirmation Consent - Request
 
