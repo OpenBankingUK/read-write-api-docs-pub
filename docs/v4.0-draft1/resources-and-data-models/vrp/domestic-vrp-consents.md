@@ -9,18 +9,12 @@
 - [State Model - VRP consents](#state-model---vrp-consents)
 - [Data Model](#data-model)
 - [Reused Classes](#reused-classes)
-    - [OBProxy1 ](#OBProxy1 )
-      - [Data Dictionary](#OBProxy1-data-dictionary)
-    - [OBPostalAddress6](#OBPostalAddress6)
-      - [Data Dictionary](#OBPostalAddress6-data-dictionary)
+    - [OBProxy1 ](#obproxy1 )
+    - [OBPostalAddress6](#obpostaladdress6)
     - [OBRemittanceInformation1](#obremittanceinformation1)
-      - [Data Dictionary](#obremittanceinformation1-data-dictionary)
-    - [OBUltimateCreditor1](#OBUltimateCreditor1)
-      - [Data Dictionary](#OBUltimateCreditor1-data-dictionary)
-    - [OBUltimateDebtor1](#OBUltimateDebtor1)
-      - [Data Dictionary](#OBUltimateDebtor1-data-dictionary)  
-    - [OBRegulatoryReporting1](#OBRegulatoryReporting1)
-      - [Data Dictionary](#OBRegulatoryReporting1-data-dictionary)
+    - [OBUltimateCreditor1](#obultimatecreditor1)
+    - [OBUltimateDebtor1](#obultimatedebtor1)
+    - [OBRegulatoryReporting1](#obregulatoryreporting1)
   - [OBCashAccountDebtorWithName](#obcashaccountdebtorwithname)
   - [OBCashAccountCreditor3](#obcashaccountcreditor3)
   - [OBBranchAndFinancialInstitutionIdentification6](#obbranchandfinancialinstitutionidentification6)
@@ -31,7 +25,7 @@
       - [Example 2](#example-2)
       - [Example 3](#example-3)
       - [Example 4](#example-4)
-  - [OBRisk2](#OBRisk2)
+  - [OBRisk2](#obrisk2)
   - [OBDomesticVRPConsentRequest](#obdomesticvrpconsentrequest)
   - [OBDomesticVRPConsentResponse](#obdomesticvrpconsentresponse)
   - [OBVRPFundsConfirmationRequest](#obvrpfundsconfirmationrequest)
@@ -175,11 +169,11 @@ The data dictionary section gives the detail on the payload content for the VRP 
 
 #### OBProxy1  
 
-The OBProxy1 class is defined in the [vrp-profile](../../profiles/vrp-profile.md#OBProxy1) page.
+The OBProxy1 class is defined in the [vrp-profile](../../profiles/vrp-profile.md#obproxy1) page.
 
 #### OBPostalAddress6 
 
-The OBPostalAddress6 class is defined in the [vrp-profile](../../profiles/vrp-profile.md#OBPostalAddress6) page.
+The OBPostalAddress6 class is defined in the [vrp-profile](../../profiles/vrp-profile.md#obpostaladdress6) page.
 
 #### OBRemittanceInformation1
 
@@ -187,15 +181,15 @@ The OBRemittanceInformation1 class is defined in the [vrp-profile](../../profile
 
 #### OBUltimateCreditor1
 
-The OBUltimateCreditor1 class is defined in the [vrp-profile](../../profiles/vrp-profile.md#OBUltimateCreditor1) page.
+The OBUltimateCreditor1 class is defined in the [vrp-profile](../../profiles/vrp-profile.md#obultimatecreditor1) page.
 
 #### OBUltimateDebtor1 
 
-The OBUltimateDebtor1 class is defined in the [vrp-profile](../../profiles/vrp-profile.md#OBUltimateDebtor1) page.
+The OBUltimateDebtor1 class is defined in the [vrp-profile](../../profiles/vrp-profile.md#obultimatedebtor1) page.
 
 #### OBRegulatoryReporting1
 
-The OBRegulatoryReporting1 class is defined in the [vrp-profile](../../profiles/vrp-profile.md#OBRegulatoryReporting1) page.
+The OBRegulatoryReporting1 class is defined in the [vrp-profile](../../profiles/vrp-profile.md#obregulatoryreporting1) page.
 
 ### OBCashAccountDebtorWithName
 

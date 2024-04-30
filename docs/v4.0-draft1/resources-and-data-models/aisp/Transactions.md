@@ -6,10 +6,10 @@
   - [GET /transactions](#get-transactions)
 - [Data Model](#data-model)
   - [Reused Classes](#reused-classes)
-    - [OBProxy1](#OBProxy1)
-    - [OBPostalAddress6](#OBPostalAddress6)
-    - [OBUltimateCreditor1](#OBUltimateCreditor1)
-    - [OBUltimateDebtor1](#OBUltimateDebtor1)
+    - [OBProxy1](#obproxy1)
+    - [OBPostalAddress6](#obpostaladdress6)
+    - [OBUltimateCreditor1](#obultimatecreditor1)
+    - [OBUltimateDebtor1](#obultimatedebtor1)
   - [Resource Definition](#resource-definition)
   - [UML Diagram](#uml-diagram)
     - [Notes](#notes)
@@ -69,16 +69,16 @@ The OBReadTransaction6 object will be used for the call to:
 ## Reused Classes
 
 #### OBProxy1
-The OBProxy1 class is defined in the [account-and-transaction-api-profile](../../profiles/account-and-transaction-api-profile.md#OBProxy1) page.
+The OBProxy1 class is defined in the [account-and-transaction-api-profile](../../profiles/account-and-transaction-api-profile.md#obproxy1) page.
 
 #### OBPostalAddress6
-The OBPostalAddress6 class is defined in the [account-and-transaction-api-profile](../../profiles/account-and-transaction-api-profile.md#OBPostalAddress6) page.
+The OBPostalAddress6 class is defined in the [account-and-transaction-api-profile](../../profiles/account-and-transaction-api-profile.md#obpostaladdress6) page.
 
 #### OBUltimateCreditor1
-The OBUltimateCreditor1 class is defined in the [account-and-transaction-api-profile](../../profiles/account-and-transaction-api-profile.md#OBUltimateCreditor1) page.
+The OBUltimateCreditor1 class is defined in the [account-and-transaction-api-profile](../../profiles/account-and-transaction-api-profile.md#obultimatecreditor1) page.
 
 #### OBUltimateDebtor1
-The OBUltimateDebtor1 class is defined in the [account-and-transaction-api-profile](../../profiles/account-and-transaction-api-profile.md#OBUltimateDebtor1) page.
+The OBUltimateDebtor1 class is defined in the [account-and-transaction-api-profile](../../profiles/account-and-transaction-api-profile.md#obultimatedebtor1) page.
 
 ### Resource Definition
 

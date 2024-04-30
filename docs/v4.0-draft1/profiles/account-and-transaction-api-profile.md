@@ -34,16 +34,16 @@
   - [Risk Scoring Information](#risk-scoring-information)
 - [Data Model](#data-model)
   - [Reused Classes](#reused-classes)
-    - [OBProxy1 ](#OBProxy1 )
-      - [Data Dictionary](#OBProxy1-data-dictionary)
-    - [OBPostalAddress6](#OBPostalAddress6)
-      - [Data Dictionary](#OBPostalAddress6-data-dictionary)
-    - [OBMandateRelatedInformation1](#OBMandateRelatedInformation1)
-      - [Data Dictionary](#OBMandateRelatedInformation1-data-dictionary)
-    - [OBUltimateCreditor1](#OBUltimateCreditor1)
-      - [Data Dictionary](#OBUltimateCreditor1-data-dictionary)
-    - [OBUltimateDebtor1](#OBUltimateDebtor1)
-      - [Data Dictionary](#OBUltimateDebtor1-data-dictionary)
+    - [OBProxy1 ](#obproxy1)
+      - [Data Dictionary](#obproxy1-data-dictionary)
+    - [OBPostalAddress6](#obpostaladdress6)
+      - [Data Dictionary](#obpostaladdress6-data-dictionary)
+    - [OBMandateRelatedInformation1](#obmandaterelatedinformation1)
+      - [Data Dictionary](#obmandaterelatedinformation1-data-dictionary)
+    - [OBUltimateCreditor1](#obultimatecreditor1)
+      - [Data Dictionary](#obultimatecreditor1-data-dictionary)
+    - [OBUltimateDebtor1](#obultimatedebtor1)
+      - [Data Dictionary](#obultimatedebtor1-data-dictionary)
   - [Using Meta to identify Available Transaction Period](#using-meta-to-identify-available-transaction-period)
   - [Mapping to Schemes & Standards](#mapping-to-schemes-standards)
   - [Enumerations](#enumerations)
@@ -558,7 +558,8 @@ No fields for business logic security concerns have been identified for the Acco
 | --- | --- | --- | --- | --- | --- | --- |
 | OBUltimateDebtor1 | | | Ultimate party that owes an amount of money to the (ultimate) creditor. | OBUltimateDebtor1 | | |
 | Name |0..1 |OBUltimateDebtor1/Name |Name by which a party is known and which is usually used to identify that party. |Max140Text | | |
-| Identification |0..1 |OBUltimateDebtor1/Identification |Legal Entity Identifier is a code allocated to a party as described in ISO 17442 "Financial Services - Legal Entity Identifier (LEI)". |Legal Entity Identification by which a party is known and which is usually used to identify that party. |Max20Text | | ^[A-Z0-9]{18,18}[0-9]{2,2}$|
+| Identification |0..1 |OBUltimateDebtor1/Identification |Identification assigned by an institution. |Max256Text | | |
+| LEI |0..1 | OBUltimateDebtor1/LEI |Legal entity identification as an alternate identification for a party. Legal Entity Identifier is a code allocated to a party as described in ISO 17442 "Financial Services - Legal Entity Identifier (LEI)".|Max20Text | | ^[A-Z0-9]{18,18}[0-9]{2,2}$|
 | SchemeName |0..1 |OBUltimateDebtor1/SchemeName |Name of the identification scheme, in a coded form as published in an external list. | OBExternalAccountIdentification4Code |For a full description see `OBExternalAccountIdentification4Code` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets).| |
 | PostalAddress | 0..1 | OBUltimateDebtor1/PostalAddress | Information that locates and identifies a specific address, as defined by postal services. | OBPostalAddress6 | | 
 
