@@ -337,12 +337,12 @@ An ASPSP must use the same participant-path-prefix and host name for all its res
 
 Examples:
 
-* <https://superbank.com/apis/open-banking/v3.1/pisp/domestic-payments>
-* <https://superbank.com/apis/open-banking/v3.1/aisp/account-access-consents>
-* <https://superbank.com/apis/open-banking/v3.1/aisp/accounts>
-* <https://superbank.com/apis/open-banking/v3.1/aisp/accounts/1234>
-* <https://superbank.com/apis/open-banking/v3.1/aisp/accounts/1234/transactions>
-* <https://superbank.com/apis/open-banking/v3.1/cbpii/funds-confirmation-consents>
+* <https://superbank.com/apis/open-banking/v4.0/pisp/domestic-payments>
+* <https://superbank.com/apis/open-banking/v4.0/aisp/account-access-consents>
+* <https://superbank.com/apis/open-banking/v4.0/aisp/accounts>
+* <https://superbank.com/apis/open-banking/v4.0/aisp/accounts/1234>
+* <https://superbank.com/apis/open-banking/v4.0/aisp/accounts/1234/transactions>
+* <https://superbank.com/apis/open-banking/v4.0/cbpii/funds-confirmation-consents>
 
 For brevity, the APIs are referred to by their resource names in these documents and in all examples.
 
@@ -428,7 +428,7 @@ The table below illustrates some examples of expected behaviour:
 |A TPP attempts to retrieve a payment with a DomesticPaymentId that does not exist|GET /domestic-payments/1001                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |400 (Bad Request)|
 |A TPP attempts to retrieve a resource that is not defined|GET /bulk                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |404 (Not Found)|
 |A TPP attempts to retrieve a resource that is in the specification, but not implemented by the ASPSP. e.g., an ASPSP has chosen not to implement the status API endpoint for domestic-scheduled-payments|GET /domestic-scheduled-payments/1002                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |404 (Not Found)|
-|A TPP attempts to retrieve standing orders for an AccountId that exists, but does not have any standing orders|GET /accounts/1000/standing-orders                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |<pre>200 OK<br>{<br> "Data": {<br>     "StandingOrder": []<br>   },<br>   "Links": {<br>     "Self": "https://api.alphabank.com/open-banking/v3.1/aisp/accounts/1000/standing-orders/"<br>   },<br>   "Meta": {<br>     "TotalPages": 1<br>   }<br>}</pre>|
+|A TPP attempts to retrieve standing orders for an AccountId that exists, but does not have any standing orders|GET /accounts/1000/standing-orders                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |<pre>200 OK<br>{<br> "Data": {<br>     "StandingOrder": []<br>   },<br>   "Links": {<br>     "Self": "https://api.alphabank.com/open-banking/v4.0/aisp/accounts/1000/standing-orders/"<br>   },<br>   "Meta": {<br>     "TotalPages": 1<br>   }<br>}</pre>|
 
 
 #### 403 (Forbidden)
@@ -1296,7 +1296,7 @@ For example:
 
 ```json
   "Links": {
-    "Self": "https://api.alphabank.com/open-banking/v3.1/pisp/domestic-payments/58923"
+    "Self": "https://api.alphabank.com/open-banking/v4.0/pisp/domestic-payments/58923"
   }
 ```
 
@@ -1361,10 +1361,10 @@ Content-Type: application/json
     ...
   },
   "Links": {
-    "Self": "https://api.alphabank.com/open-banking/v3.1/aisp/accounts/22289/transactions/",
-    "Last": "https://api.alphabank.com/open-banking/v3.1/aisp/accounts/22289/transactions?pg=20",    
-	"First": "https://api.alphabank.com/open-banking/v3.1/aisp/accounts/22289/transactions/",    
-	"Next": "https://api.alphabank.com/open-banking/v3.1/aisp/accounts/22289/transactions?pg=2"
+    "Self": "https://api.alphabank.com/open-banking/v4.0/aisp/accounts/22289/transactions/",
+    "Last": "https://api.alphabank.com/open-banking/v4.0/aisp/accounts/22289/transactions?pg=20",    
+	"First": "https://api.alphabank.com/open-banking/v4.0/aisp/accounts/22289/transactions/",    
+	"Next": "https://api.alphabank.com/open-banking/v4.0/aisp/accounts/22289/transactions?pg=2"
   },
   "Meta": {
     "TotalPages": 20,
@@ -1400,11 +1400,11 @@ Content-Type: application/json
     ...
   },
   "Links": {
-    "Self": "https://api.alphabank.com/open-banking/v3.1/aisp/accounts/22289/transactions?pg=2",
-    "Last": "https://api.alphabank.com/open-banking/v3.1/aisp/accounts/22289/transactions?pg=20",    
-	"First": "https://api.alphabank.com/open-banking/v3.1/aisp/accounts/22289/transactions/",    
-	"Next": "https://api.alphabank.com/open-banking/v3.1/aisp/accounts/22289/transactions?pg=3",
-	"Prev": "https://api.alphabank.com/open-banking/v3.1/aisp/accounts/22289/transactions?pg=1"
+    "Self": "https://api.alphabank.com/open-banking/v4.0/aisp/accounts/22289/transactions?pg=2",
+    "Last": "https://api.alphabank.com/open-banking/v4.0/aisp/accounts/22289/transactions?pg=20",    
+	"First": "https://api.alphabank.com/open-banking/v4.0/aisp/accounts/22289/transactions/",    
+	"Next": "https://api.alphabank.com/open-banking/v4.0/aisp/accounts/22289/transactions?pg=3",
+	"Prev": "https://api.alphabank.com/open-banking/v4.0/aisp/accounts/22289/transactions?pg=1"
   },
   "Meta": {
     "TotalPages": 20,

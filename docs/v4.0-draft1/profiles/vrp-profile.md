@@ -20,7 +20,7 @@
   - [Error Condition](#error-condition)
   - [Consent Re-authentication](#consent-re-authentication)
   - [Risk Scoring Information](#risk-scoring-information)
-  - [Migration of a consent to a new version](#Migration-of-a-consent-to-a-new-version)
+  - [Migration of a consent to a new version](#migration-of-a-consent-to-a-new-version)
 - [Data Model](#data-model)
   - [Reused Classes](#reused-classes)
     - [OBProxy1 ](#obproxy1)

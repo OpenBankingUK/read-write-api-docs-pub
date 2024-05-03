@@ -71,6 +71,8 @@
       - [Data Dictionary](#data-dictionary-13)
     - [OBPostalAddress6](#obpostaladdress6)
       - [Data Dictionary](#data-dictionary-14)
+    - [OBProxy1 ](#obproxy1)
+      - [Data Dictionary](#obproxy1-data-dictionary)
   - [Identifier Fields](#identifier-fields)
     - [Merchant Flow](#merchant-flow)
     - [Party to Party Flow](#party-to-party-flow)
@@ -691,11 +693,7 @@ This section describes the OBInternationalRefundAccount1 class which is used in 
 | Identification |1..1 |OBInternationalRefundAccount1/Account/Identification |Identification assigned by an institution to identify an account. This identification is known by the account owner. |Max256Text | | |
 | Name |1..1 |OBInternationalRefundAccount1/Account/Name |The account name is the name or names of the account owner(s) represented at an account level. Note, the account name is not the product name or the nickname of the account. OB: ASPSPs may carry out name validation for Confirmation of Payee, but it is not mandatory. |Max350Text | | |
 | SecondaryIdentification |0..1 |OBInternationalRefundAccount1/Account/SecondaryIdentification |This is secondary identification of the account, as assigned by the account servicing institution. This can be used by building societies to additionally identify accounts with a roll number (in addition to a sort code and account number combination). |Max34Text | | |
-| Proxy |0..1 |OBInternationalRefundAccount1/Account/Proxy |The external proxy account type |OBProxyAccount | | |
-| Identification |1..1 |OBInternationalRefundAccount1/Account/Proxy/Identification| Identification assigned by an institution to identify an account. This identification is known by the account owner. |Max256Text | | |
-| Type |0..1 |OBInternationalRefundAccount1/Account/Proxy/Type| Specifies the external proxy account type |MaxText70 | | |
-| Code |1..1 |OBInternationalRefundAccount1/Account/Proxy/Code| Specifies the external proxy account type code, as published in the proxy account type external code set.<br> For more information see `ExternalProxyAccountType1Code` [here](https://github.com/OpenBankingUK/External_internal_CodeSets) |ExternalProxyAccountType1Code | | |
-| Proprietary |1..1 |OBInternationalRefundAccount1/Account/Proxy/Proprietary| The owner of the proxy account |MaxText70 | | |
+| Proxy |0..1 |OBInternationalRefundAccount1/Account/Proxy |Specifies an alternate assumed name for the identification of the account. |OBProxy1 | | |
 
 
 #### OBWritePaymentDetailsResponse1
@@ -848,6 +846,16 @@ This section describes the OBSCASupportData1 class, which is used across all  _p
 | CountrySubDivision |0..1 |OBPostalAddress6/CountrySubDivision |Identifies a subdivision of a country such as state, region, county. |Max35Text | | |
 | Country |0..1 |OBPostalAddress6/Country |Nation with its own government. |CountryCode | |^[A-Z]{2,2}$ |
 | AddressLine |0..7 |OBPostalAddress6/AddressLine |Information that locates and identifies a specific address, as defined by postal services, presented in free format text. |Array of Max70Text | | | |
+
+#### OBProxy1
+
+##### OBProxy1 Data Dictionary
+| Name | Occurrence | XPath | EnhancedDefinition | Class | Codes |
+| --- | --- | --- | --- | --- | --- | 
+| OBProxy1 | | |Specifies an alternate assumed name for the identification of the account. |OBProxy1 | |
+| Identification |1..1 |OBProxy1/Identification|  Identification used to indicate the account identification under another specified name. | Max2048Text| |
+| Type |0..1 |OBProxy1/Type| Type of the proxy identification. |Max35Text | |
+| Code |1..1 |OBProxy1/Code| Specifies the external proxy account type code, as published in the proxy account type external code set. |OBExternalProxyAccountType1Code | For more information see `ExternalProxyAccountType1Code` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets)|
 
 ### Identifier Fields
 
