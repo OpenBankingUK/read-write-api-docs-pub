@@ -60,8 +60,8 @@ Execution:
 
 * The processing of payments via the FPS scheme is business as usual processing - i.e., no change.
 * FPS scheme requirements (are not formally part of the Open Banking API Specification, but are included for guidance):
-  * The field 61.1 PAYMENT SUB-TYPE will be set by the FPS Institution with an **A** {\**} prefix for any FPS transaction initiated by a PISP. Values within {**} will ordinarily be “00” unless the PISP initiated payment requires usage of other facilities (as indicated by the usage of an FPS sub-type code).
-  * The field 61.1 PAYMENT SUB-TYPE will be set by the FPS Institution with a **V** {**} prefix for any FPS transaction initiated by a PISP for both sVRP and cVRP only. Values within {**} will ordinarily be “01” to “0x” as provided by FPS. Please refer to FPS documentation or FAQs for more guidance. 
+  * The field 61.1 PAYMENT SUB-TYPE will be set by the FPS Institution with an **A** {\*\*} prefix for any FPS transaction initiated by a PISP. Values within {**} will ordinarily be “00” unless the PISP initiated payment requires usage of other facilities (as indicated by the usage of an FPS sub-type code).
+  * The field 61.1 PAYMENT SUB-TYPE will be set by the FPS Institution with a **V** {\*\*} prefix for any FPS transaction initiated by a PISP for both sVRP and cVRP only. Values within {\*\*} will ordinarily be “01” to “0x” as provided by FPS. Please refer to FPS documentation or FAQs for more guidance. 
   * There is also a requirement from the FPS scheme to identify the PISP via the field 122 REGULATORY REPORTING
 
 This is the mapping from the Payment API Initiation section to the relevant FPS scheme fields with the use of the "UK.OB.SortCodeAccountNumber" account identification SchemeName.
