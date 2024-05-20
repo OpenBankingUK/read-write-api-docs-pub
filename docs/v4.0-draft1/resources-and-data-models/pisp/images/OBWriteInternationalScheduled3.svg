@@ -155,7 +155,7 @@ Creditor
 <title>Type: string
 MinLength: 1
 MaxLength: 20
-Description: Legal Entity Identification by which a party is known and which is usually used to identify that party.
+Description: Legal entity identification as an alternate identification for a party. Legal Entity Identifier is a code allocated to a party as described in ISO 17442 &#34;Financial Services - Legal Entity Identifier (LEI)&#34;.
 Pattern: ^[0-9]{4}[0]{2}[A-Z0-9]{12}[0-9]{2}
 </title>
 LEI [0..1]
@@ -187,7 +187,7 @@ AddressLine [0..7]
 
 <text x="98em" y="5.6em" fill="darkslateblue">
 <title>Type: string
-Description: Identifies the nature of the postal address.
+Description: Identifies the nature of the postal address. For a full set of codes see `OBAddressType2Code` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets).
 Values:
  - BIZZ
  - DLVY
@@ -204,7 +204,7 @@ AddressType [0..1]
 <text x="98em" y="6.9em" fill="darkslateblue">
 <title>Type: string
 MinLength: 1
-MaxLength: 70
+MaxLength: 140
 Description: Name of a referenced building.
 </title>
 BuildingName [0..1]
@@ -222,7 +222,7 @@ BuildingNumber [0..1]
 <text x="98em" y="9.5em" fill="darkslateblue">
 <title>Type: string
 MinLength: 1
-MaxLength: 70
+MaxLength: 140
 Description: The &#39;care of&#39; address is used whenever sending mail to a person or organisation who does not actually live or work at the address. They will receive the mail for the individual.
 </title>
 CareOf [0..1]
@@ -257,7 +257,7 @@ Department [0..1]
 <text x="98em" y="14.7em" fill="darkslateblue">
 <title>Type: string
 MinLength: 1
-MaxLength: 70
+MaxLength: 140
 Description: Number that of the regional area, known as a district, which forms part of an address
 </title>
 DistrictName [0..1]
@@ -266,15 +266,16 @@ DistrictName [0..1]
 <text x="98em" y="16em" fill="darkslateblue">
 <title>Type: string
 MinLength: 1
-MaxLength: 16
+MaxLength: 70
 Description: Number that identifies the level within a building
 </title>
 Floor [0..1]
 </text>
 
 <text x="98em" y="17.3em" fill="darkslateblue">
-<title>MinLength: 1
-MaxLength: 70
+<title>Type: string
+MinLength: 1
+MaxLength: 16
 Description: Information that locates and identifies a box in a post office assigned to a person or organization, where letters for them are kept until called for.
 </title>
 PostBox [0..1]
@@ -290,7 +291,8 @@ PostCode [0..1]
 </text>
 
 <text x="98em" y="19.900000000000002em" fill="darkslateblue">
-<title>MinLength: 1
+<title>Type: string
+MinLength: 1
 MaxLength: 70
 Description: Information that locates and identifies a room to form part of an address
 </title>
@@ -300,7 +302,7 @@ Room [0..1]
 <text x="98em" y="21.200000000000003em" fill="darkslateblue">
 <title>Type: string
 MinLength: 1
-MaxLength: 70
+MaxLength: 140
 Description: Name of a street or thoroughfare.
 </title>
 StreetName [0..1]
@@ -318,7 +320,7 @@ SubDepartment [0..1]
 <text x="98em" y="23.8em" fill="darkslateblue">
 <title>Type: string
 MinLength: 1
-MaxLength: 35
+MaxLength: 140
 Description: Name of a built-up area, with defined boundaries, and a local government.
 </title>
 TownLocationName [0..1]
@@ -327,7 +329,7 @@ TownLocationName [0..1]
 <text x="98em" y="25.1em" fill="darkslateblue">
 <title>Type: string
 MinLength: 1
-MaxLength: 35
+MaxLength: 140
 Description: Name of a built-up area, with defined boundaries, and a local government.
 </title>
 TownName [0..1]
@@ -394,13 +396,13 @@ SecondaryIdentification [0..1]
 
 <rect x="112.2em" y="28.400000000000002em" width="16.8em" height="6.9em" fill="beige" stroke="black" stroke-width="2"/>
 <text style="font-weight:bold" text-anchor="middle" x="120.60000000000001em" y="29.700000000000003em" fill="black">
-<title></title>
+<title>Specifies an alternate assumed name for the identification of the account.</title>
 Proxy
 </text>
 
 <text x="113.2em" y="31.700000000000003em" fill="darkslateblue">
 <title>Type: string
-Description: Specifies the external proxy account type code, as published in the proxy account type external code set.&lt;br&gt; For more information see `ExternalProxyAccountType1Code` here - https://github.com/OpenBankingUK/External_Interal_CodeSets
+Description: Specifies the external proxy account type code, as published in the proxy account type external code set.&lt;br&gt; For more information and a full list of values see `ExternalProxyAccountType1Code` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets)
 Values:
  - TELE
  - EMAL
@@ -430,8 +432,8 @@ Code [1..1]
 <text x="113.2em" y="33em" fill="darkslateblue">
 <title>Type: string
 MinLength: 1
-MaxLength: 256
-Description: Identification assigned by an institution to identify an account. This identification is known by the account owner.
+MaxLength: 2048
+Description: Identification used to indicate the account identification under another specified name.
 </title>
 Identification [1..1]
 </text>
@@ -439,8 +441,8 @@ Identification [1..1]
 <text x="113.2em" y="34.300000000000004em" fill="darkslateblue">
 <title>Type: string
 MinLength: 1
-MaxLength: 70
-Description: Specifies the external proxy account type
+MaxLength: 35
+Description: Type of the proxy identification.
 </title>
 Type [0..1]
 </text>
@@ -464,7 +466,7 @@ Identification [0..1]
 <title>Type: string
 MinLength: 1
 MaxLength: 20
-Description: Legal Entity Identification by which a party is known and which is usually used to identify that party.
+Description: Legal entity identification as an alternate identification for a party. Legal Entity Identifier is a code allocated to a party as described in ISO 17442 &#34;Financial Services - Legal Entity Identifier (LEI)&#34;.
 Pattern: ^[0-9]{4}[0]{2}[A-Z0-9]{12}[0-9]{2}
 </title>
 LEI [0..1]
@@ -505,7 +507,7 @@ AddressLine [0..7]
 
 <text x="106em" y="42.199999999999996em" fill="darkslateblue">
 <title>Type: string
-Description: Identifies the nature of the postal address.
+Description: Identifies the nature of the postal address. For a full set of codes see `OBAddressType2Code` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets).
 Values:
  - BIZZ
  - DLVY
@@ -522,7 +524,7 @@ AddressType [0..1]
 <text x="106em" y="43.5em" fill="darkslateblue">
 <title>Type: string
 MinLength: 1
-MaxLength: 70
+MaxLength: 140
 Description: Name of a referenced building.
 </title>
 BuildingName [0..1]
@@ -540,7 +542,7 @@ BuildingNumber [0..1]
 <text x="106em" y="46.1em" fill="darkslateblue">
 <title>Type: string
 MinLength: 1
-MaxLength: 70
+MaxLength: 140
 Description: The &#39;care of&#39; address is used whenever sending mail to a person or organisation who does not actually live or work at the address. They will receive the mail for the individual.
 </title>
 CareOf [0..1]
@@ -575,7 +577,7 @@ Department [0..1]
 <text x="106em" y="51.3em" fill="darkslateblue">
 <title>Type: string
 MinLength: 1
-MaxLength: 70
+MaxLength: 140
 Description: Number that of the regional area, known as a district, which forms part of an address
 </title>
 DistrictName [0..1]
@@ -584,15 +586,16 @@ DistrictName [0..1]
 <text x="106em" y="52.6em" fill="darkslateblue">
 <title>Type: string
 MinLength: 1
-MaxLength: 16
+MaxLength: 70
 Description: Number that identifies the level within a building
 </title>
 Floor [0..1]
 </text>
 
 <text x="106em" y="53.9em" fill="darkslateblue">
-<title>MinLength: 1
-MaxLength: 70
+<title>Type: string
+MinLength: 1
+MaxLength: 16
 Description: Information that locates and identifies a box in a post office assigned to a person or organization, where letters for them are kept until called for.
 </title>
 PostBox [0..1]
@@ -608,7 +611,8 @@ PostCode [0..1]
 </text>
 
 <text x="106em" y="56.5em" fill="darkslateblue">
-<title>MinLength: 1
+<title>Type: string
+MinLength: 1
 MaxLength: 70
 Description: Information that locates and identifies a room to form part of an address
 </title>
@@ -618,7 +622,7 @@ Room [0..1]
 <text x="106em" y="57.8em" fill="darkslateblue">
 <title>Type: string
 MinLength: 1
-MaxLength: 70
+MaxLength: 140
 Description: Name of a street or thoroughfare.
 </title>
 StreetName [0..1]
@@ -636,7 +640,7 @@ SubDepartment [0..1]
 <text x="106em" y="60.4em" fill="darkslateblue">
 <title>Type: string
 MinLength: 1
-MaxLength: 35
+MaxLength: 140
 Description: Name of a built-up area, with defined boundaries, and a local government.
 </title>
 TownLocationName [0..1]
@@ -645,7 +649,7 @@ TownLocationName [0..1]
 <text x="106em" y="61.7em" fill="darkslateblue">
 <title>Type: string
 MinLength: 1
-MaxLength: 35
+MaxLength: 140
 Description: Name of a built-up area, with defined boundaries, and a local government.
 </title>
 TownName [0..1]
@@ -711,13 +715,13 @@ SecondaryIdentification [0..1]
 
 <rect x="112.2em" y="65em" width="16.8em" height="6.9em" fill="beige" stroke="black" stroke-width="2"/>
 <text style="font-weight:bold" text-anchor="middle" x="120.60000000000001em" y="66.3em" fill="black">
-<title></title>
+<title>Specifies an alternate assumed name for the identification of the account.</title>
 Proxy
 </text>
 
 <text x="113.2em" y="68.3em" fill="darkslateblue">
 <title>Type: string
-Description: Specifies the external proxy account type code, as published in the proxy account type external code set.&lt;br&gt; For more information see `ExternalProxyAccountType1Code` here - https://github.com/OpenBankingUK/External_Interal_CodeSets
+Description: Specifies the external proxy account type code, as published in the proxy account type external code set.&lt;br&gt; For more information and a full list of values see `ExternalProxyAccountType1Code` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets)
 Values:
  - TELE
  - EMAL
@@ -747,8 +751,8 @@ Code [1..1]
 <text x="113.2em" y="69.6em" fill="darkslateblue">
 <title>Type: string
 MinLength: 1
-MaxLength: 256
-Description: Identification assigned by an institution to identify an account. This identification is known by the account owner.
+MaxLength: 2048
+Description: Identification used to indicate the account identification under another specified name.
 </title>
 Identification [1..1]
 </text>
@@ -756,8 +760,8 @@ Identification [1..1]
 <text x="113.2em" y="70.89999999999999em" fill="darkslateblue">
 <title>Type: string
 MinLength: 1
-MaxLength: 70
-Description: Specifies the external proxy account type
+MaxLength: 35
+Description: Type of the proxy identification.
 </title>
 Type [0..1]
 </text>
@@ -952,7 +956,7 @@ Structured
 <text x="106em" y="109.1em" fill="darkslateblue">
 <title>Type: string
 MinLength: 1
-MaxLength: 500
+MaxLength: 140
 </title>
 AdditionalRemittanceInformation [0..3]
 </text>
@@ -1045,7 +1049,7 @@ ReferredDocumentInformation
 <title>Type: string
 MinLength: 1
 MaxLength: 4
-Description: Specifies the document type as published in an external document type code list. For more information see `ExternalDocumentType1Code` here - https://github.com/OpenBankingUK/External_Interal_CodeSets
+Description: Specifies the document type as published in an external document type code list. For more information see `ExternalDocumentType1Code` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets)
 Values:
  - CINV
  - CNFA
@@ -1107,16 +1111,15 @@ SupplementaryData
 
 <rect x="82.2em" y="128.2em" width="16.8em" height="8.2em" fill="beige" stroke="black" stroke-width="2"/>
 <text style="font-weight:bold" text-anchor="middle" x="90.60000000000001em" y="129.5em" fill="black">
-<title>Party that manages the account on behalf of the account owner, that is manages the registration and booking of entries on the account, calculates balances on the account and provides information about the account.
-This is the servicer of the beneficiary account.</title>
+<title>Ultimate party to which an amount of money is due.</title>
 UltimateCreditor
 </text>
 
 <text x="83.2em" y="131.5em" fill="darkslateblue">
 <title>Type: string
 MinLength: 1
-MaxLength: 35
-Description: Unique and unambiguous identification of a financial institution or a branch of a financial institution.
+MaxLength: 256
+Description: Identification assigned by an institution.
 </title>
 Identification [0..1]
 </text>
@@ -1125,7 +1128,7 @@ Identification [0..1]
 <title>Type: string
 MinLength: 1
 MaxLength: 20
-Description: Legal Entity Identification by which a party is known and which is usually used to identify that party.
+Description: Legal entity identification as an alternate identification for a party. Legal Entity Identifier is a code allocated to a party as described in ISO 17442 &#34;Financial Services - Legal Entity Identifier (LEI)&#34;.
 Pattern: ^[0-9]{4}[0]{2}[A-Z0-9]{12}[0-9]{2}
 </title>
 LEI [0..1]
@@ -1135,7 +1138,7 @@ LEI [0..1]
 <title>Type: string
 MinLength: 1
 MaxLength: 140
-Description: Name by which an agent is known and which is usually used to identify that agent.
+Description: Name by which a party is known and which is usually used to identify that party.
 </title>
 Name [0..1]
 </text>
@@ -1144,7 +1147,12 @@ Name [0..1]
 <title>Type: string
 Description: Name of the identification scheme, in a coded form as published in an external list.
 Values:
- - UK.OB.BICFI
+ - UK.OB.BBAN
+ - UK.OB.IBAN
+ - UK.OB.PAN
+ - UK.OB.Paym
+ - UK.OB.SortCodeAccountNumber
+ - UK.OB.Wallet
 </title>
 SchemeName [0..1]
 </text>
@@ -1166,7 +1174,7 @@ AddressLine [0..7]
 
 <text x="106em" y="132.8em" fill="darkslateblue">
 <title>Type: string
-Description: Identifies the nature of the postal address.
+Description: Identifies the nature of the postal address. For a full set of codes see `OBAddressType2Code` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets).
 Values:
  - BIZZ
  - DLVY
@@ -1183,7 +1191,7 @@ AddressType [0..1]
 <text x="106em" y="134.1em" fill="darkslateblue">
 <title>Type: string
 MinLength: 1
-MaxLength: 70
+MaxLength: 140
 Description: Name of a referenced building.
 </title>
 BuildingName [0..1]
@@ -1201,7 +1209,7 @@ BuildingNumber [0..1]
 <text x="106em" y="136.7em" fill="darkslateblue">
 <title>Type: string
 MinLength: 1
-MaxLength: 70
+MaxLength: 140
 Description: The &#39;care of&#39; address is used whenever sending mail to a person or organisation who does not actually live or work at the address. They will receive the mail for the individual.
 </title>
 CareOf [0..1]
@@ -1236,7 +1244,7 @@ Department [0..1]
 <text x="106em" y="141.9em" fill="darkslateblue">
 <title>Type: string
 MinLength: 1
-MaxLength: 70
+MaxLength: 140
 Description: Number that of the regional area, known as a district, which forms part of an address
 </title>
 DistrictName [0..1]
@@ -1245,15 +1253,16 @@ DistrictName [0..1]
 <text x="106em" y="143.2em" fill="darkslateblue">
 <title>Type: string
 MinLength: 1
-MaxLength: 16
+MaxLength: 70
 Description: Number that identifies the level within a building
 </title>
 Floor [0..1]
 </text>
 
 <text x="106em" y="144.5em" fill="darkslateblue">
-<title>MinLength: 1
-MaxLength: 70
+<title>Type: string
+MinLength: 1
+MaxLength: 16
 Description: Information that locates and identifies a box in a post office assigned to a person or organization, where letters for them are kept until called for.
 </title>
 PostBox [0..1]
@@ -1269,7 +1278,8 @@ PostCode [0..1]
 </text>
 
 <text x="106em" y="147.1em" fill="darkslateblue">
-<title>MinLength: 1
+<title>Type: string
+MinLength: 1
 MaxLength: 70
 Description: Information that locates and identifies a room to form part of an address
 </title>
@@ -1279,7 +1289,7 @@ Room [0..1]
 <text x="106em" y="148.4em" fill="darkslateblue">
 <title>Type: string
 MinLength: 1
-MaxLength: 70
+MaxLength: 140
 Description: Name of a street or thoroughfare.
 </title>
 StreetName [0..1]
@@ -1297,7 +1307,7 @@ SubDepartment [0..1]
 <text x="106em" y="151em" fill="darkslateblue">
 <title>Type: string
 MinLength: 1
-MaxLength: 35
+MaxLength: 140
 Description: Name of a built-up area, with defined boundaries, and a local government.
 </title>
 TownLocationName [0..1]
@@ -1306,7 +1316,7 @@ TownLocationName [0..1]
 <text x="106em" y="152.3em" fill="darkslateblue">
 <title>Type: string
 MinLength: 1
-MaxLength: 35
+MaxLength: 140
 Description: Name of a built-up area, with defined boundaries, and a local government.
 </title>
 TownName [0..1]
@@ -1323,16 +1333,15 @@ UnitNumber [0..1]
 
 <rect x="82.2em" y="155.6em" width="16.8em" height="8.2em" fill="beige" stroke="black" stroke-width="2"/>
 <text style="font-weight:bold" text-anchor="middle" x="90.60000000000001em" y="156.9em" fill="black">
-<title>Party that manages the account on behalf of the account owner, that is manages the registration and booking of entries on the account, calculates balances on the account and provides information about the account.
-This is the servicer of the beneficiary account.</title>
+<title>Ultimate party that owes an amount of money to the (ultimate) creditor.</title>
 UltimateDebtor
 </text>
 
 <text x="83.2em" y="158.9em" fill="darkslateblue">
 <title>Type: string
 MinLength: 1
-MaxLength: 35
-Description: Unique and unambiguous identification of a financial institution or a branch of a financial institution.
+MaxLength: 256
+Description: Identification assigned by an institution.
 </title>
 Identification [0..1]
 </text>
@@ -1341,7 +1350,7 @@ Identification [0..1]
 <title>Type: string
 MinLength: 1
 MaxLength: 20
-Description: Legal Entity Identification by which a party is known and which is usually used to identify that party.
+Description: Legal entity identification as an alternate identification for a party. Legal Entity Identifier is a code allocated to a party as described in ISO 17442 &#34;Financial Services - Legal Entity Identifier (LEI)&#34;.
 Pattern: ^[0-9]{4}[0]{2}[A-Z0-9]{12}[0-9]{2}
 </title>
 LEI [0..1]
@@ -1351,7 +1360,7 @@ LEI [0..1]
 <title>Type: string
 MinLength: 1
 MaxLength: 140
-Description: Name by which an agent is known and which is usually used to identify that agent.
+Description: Name by which a party is known and which is usually used to identify that party.
 </title>
 Name [0..1]
 </text>
@@ -1360,7 +1369,12 @@ Name [0..1]
 <title>Type: string
 Description: Name of the identification scheme, in a coded form as published in an external list.
 Values:
- - UK.OB.BICFI
+ - UK.OB.BBAN
+ - UK.OB.IBAN
+ - UK.OB.PAN
+ - UK.OB.Paym
+ - UK.OB.SortCodeAccountNumber
+ - UK.OB.Wallet
 </title>
 SchemeName [0..1]
 </text>
@@ -1382,7 +1396,7 @@ AddressLine [0..7]
 
 <text x="106em" y="160.20000000000002em" fill="darkslateblue">
 <title>Type: string
-Description: Identifies the nature of the postal address.
+Description: Identifies the nature of the postal address. For a full set of codes see `OBAddressType2Code` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets).
 Values:
  - BIZZ
  - DLVY
@@ -1399,7 +1413,7 @@ AddressType [0..1]
 <text x="106em" y="161.5em" fill="darkslateblue">
 <title>Type: string
 MinLength: 1
-MaxLength: 70
+MaxLength: 140
 Description: Name of a referenced building.
 </title>
 BuildingName [0..1]
@@ -1417,7 +1431,7 @@ BuildingNumber [0..1]
 <text x="106em" y="164.1em" fill="darkslateblue">
 <title>Type: string
 MinLength: 1
-MaxLength: 70
+MaxLength: 140
 Description: The &#39;care of&#39; address is used whenever sending mail to a person or organisation who does not actually live or work at the address. They will receive the mail for the individual.
 </title>
 CareOf [0..1]
@@ -1452,7 +1466,7 @@ Department [0..1]
 <text x="106em" y="169.3em" fill="darkslateblue">
 <title>Type: string
 MinLength: 1
-MaxLength: 70
+MaxLength: 140
 Description: Number that of the regional area, known as a district, which forms part of an address
 </title>
 DistrictName [0..1]
@@ -1461,15 +1475,16 @@ DistrictName [0..1]
 <text x="106em" y="170.6em" fill="darkslateblue">
 <title>Type: string
 MinLength: 1
-MaxLength: 16
+MaxLength: 70
 Description: Number that identifies the level within a building
 </title>
 Floor [0..1]
 </text>
 
 <text x="106em" y="171.9em" fill="darkslateblue">
-<title>MinLength: 1
-MaxLength: 70
+<title>Type: string
+MinLength: 1
+MaxLength: 16
 Description: Information that locates and identifies a box in a post office assigned to a person or organization, where letters for them are kept until called for.
 </title>
 PostBox [0..1]
@@ -1485,7 +1500,8 @@ PostCode [0..1]
 </text>
 
 <text x="106em" y="174.5em" fill="darkslateblue">
-<title>MinLength: 1
+<title>Type: string
+MinLength: 1
 MaxLength: 70
 Description: Information that locates and identifies a room to form part of an address
 </title>
@@ -1495,7 +1511,7 @@ Room [0..1]
 <text x="106em" y="175.8em" fill="darkslateblue">
 <title>Type: string
 MinLength: 1
-MaxLength: 70
+MaxLength: 140
 Description: Name of a street or thoroughfare.
 </title>
 StreetName [0..1]
@@ -1513,7 +1529,7 @@ SubDepartment [0..1]
 <text x="106em" y="178.4em" fill="darkslateblue">
 <title>Type: string
 MinLength: 1
-MaxLength: 35
+MaxLength: 140
 Description: Name of a built-up area, with defined boundaries, and a local government.
 </title>
 TownLocationName [0..1]
@@ -1522,7 +1538,7 @@ TownLocationName [0..1]
 <text x="106em" y="179.70000000000002em" fill="darkslateblue">
 <title>Type: string
 MinLength: 1
-MaxLength: 35
+MaxLength: 140
 Description: Name of a built-up area, with defined boundaries, and a local government.
 </title>
 TownName [0..1]
@@ -1577,7 +1593,7 @@ BeneficiaryPrepopulatedIndicator [0..1]
 <text x="32em" y="188.9em" fill="darkslateblue">
 <title>Type: string
 Description: Enumeration of codes that outlines the type of purpose behind a transaction, payment or risk. 
- For all enum values see `ExternalCategoryPurpose1Code` here - https://github.com/OpenBankingUK/External_Interal_CodeSets/
+ For all enum values see `ExternalCategoryPurpose1Code` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets)
 Values:
  - BONU
  - CASH
@@ -1680,7 +1696,7 @@ PaymentContextCode [0..1]
 <title>Type: string
 MinLength: 1
 MaxLength: 4
-Description: This is a partial list, For a full list see `ExternalPurpose1Code` here https://github.com/OpenBankingUK/External_Interal_CodeSets
+Description: This is a partial list, For a full list see `ExternalPurpose1Code` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets)
 Values:
  - BKDF
  - BKFE
@@ -2031,7 +2047,7 @@ AddressLine [0..7]
 
 <text x="69.2em" y="187.60000000000002em" fill="darkslateblue">
 <title>Type: string
-Description: Identifies the nature of the postal address.
+Description: Identifies the nature of the postal address. For a full set of codes see `OBAddressType2Code` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets).
 Values:
  - BIZZ
  - DLVY
@@ -2048,7 +2064,7 @@ AddressType [0..1]
 <text x="69.2em" y="188.9em" fill="darkslateblue">
 <title>Type: string
 MinLength: 1
-MaxLength: 70
+MaxLength: 140
 Description: Name of a referenced building.
 </title>
 BuildingName [0..1]
@@ -2066,7 +2082,7 @@ BuildingNumber [0..1]
 <text x="69.2em" y="191.5em" fill="darkslateblue">
 <title>Type: string
 MinLength: 1
-MaxLength: 70
+MaxLength: 140
 Description: The &#39;care of&#39; address is used whenever sending mail to a person or organisation who does not actually live or work at the address. They will receive the mail for the individual.
 </title>
 CareOf [0..1]
@@ -2101,7 +2117,7 @@ Department [0..1]
 <text x="69.2em" y="196.70000000000002em" fill="darkslateblue">
 <title>Type: string
 MinLength: 1
-MaxLength: 70
+MaxLength: 140
 Description: Number that of the regional area, known as a district, which forms part of an address
 </title>
 DistrictName [0..1]
@@ -2110,15 +2126,16 @@ DistrictName [0..1]
 <text x="69.2em" y="198em" fill="darkslateblue">
 <title>Type: string
 MinLength: 1
-MaxLength: 16
+MaxLength: 70
 Description: Number that identifies the level within a building
 </title>
 Floor [0..1]
 </text>
 
 <text x="69.2em" y="199.3em" fill="darkslateblue">
-<title>MinLength: 1
-MaxLength: 70
+<title>Type: string
+MinLength: 1
+MaxLength: 16
 Description: Information that locates and identifies a box in a post office assigned to a person or organization, where letters for them are kept until called for.
 </title>
 PostBox [0..1]
@@ -2134,7 +2151,8 @@ PostCode [0..1]
 </text>
 
 <text x="69.2em" y="201.9em" fill="darkslateblue">
-<title>MinLength: 1
+<title>Type: string
+MinLength: 1
 MaxLength: 70
 Description: Information that locates and identifies a room to form part of an address
 </title>
@@ -2144,7 +2162,7 @@ Room [0..1]
 <text x="69.2em" y="203.20000000000002em" fill="darkslateblue">
 <title>Type: string
 MinLength: 1
-MaxLength: 70
+MaxLength: 140
 Description: Name of a street or thoroughfare.
 </title>
 StreetName [0..1]
@@ -2162,7 +2180,7 @@ SubDepartment [0..1]
 <text x="69.2em" y="205.8em" fill="darkslateblue">
 <title>Type: string
 MinLength: 1
-MaxLength: 35
+MaxLength: 140
 Description: Name of a built-up area, with defined boundaries, and a local government.
 </title>
 TownLocationName [0..1]
@@ -2171,7 +2189,7 @@ TownLocationName [0..1]
 <text x="69.2em" y="207.10000000000002em" fill="darkslateblue">
 <title>Type: string
 MinLength: 1
-MaxLength: 35
+MaxLength: 140
 Description: Name of a built-up area, with defined boundaries, and a local government.
 </title>
 TownName [0..1]
