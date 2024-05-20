@@ -155,7 +155,7 @@ If the ReadPAN permission is granted by the PSU, the ASPSP may choose to populat
 
 #### OBMandateRelatedInformation1
 
-The OBMandateRelatedInformation1 class is defined in the [payment-initiation-api-profile](../../profiles/payment-initiation-api-profile.md#obmandaterelatedinformation1) page. xx
+The OBMandateRelatedInformation1 class is defined in the [payment-initiation-api-profile](../../profiles/payment-initiation-api-profile.md#obmandaterelatedinformation1) page.
 
 ## Usage Examples
 
