@@ -67,7 +67,6 @@ The domestic-payment resource that is created successfully must have one of the 
 | ------ |
 | RCVD |
 | RJCT |
-| RCVD |
 
 ### GET /domestic-payments/{DomesticPaymentId}
 
@@ -92,7 +91,6 @@ The domestic-payment resource must have one of the following ExternalPaymentTran
 | ACCC |
 | BLCK |
 | RJCT |
-| RCVD |
 
 ### GET /domestic-payments/{DomesticPaymentId}/payment-details
 
@@ -117,7 +115,6 @@ The domestic-payment - payment-details must have one of the following ExternalPa
 | ACCC |
 | BLCK |
 | RJCT |
-| RCVD |
 
 Refer to [External_Internal_CodeSets](https://github.com/OpenBankingUK/External_Internal_CodeSets) -> ISO_External_CodeSet -> `ExternalPaymentTransactionStatus1Code`.
 
