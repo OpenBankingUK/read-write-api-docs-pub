@@ -716,7 +716,7 @@ This section describes the OBWritePaymentDetailsResponse1 class which used in th
 | StatusDetail |0..* |OBWritePaymentDetailsResponse1/Data/StatusDetail |Array of Payment StatusCodes| | | |
 | StatusCode |1..1 |OBWritePaymentDetailsResponse1/Data/StatusDetail/StatusCode |Status of a transfer, as assigned by the transaction administrator. <br> For more information and enum values see `ExternalPaymentTransactionStatus1Code`[here](https://github.com/OpenBankingUK/External_internal_CodeSets). |ExternalPaymentTransactionStatus1Code |Specifies the status reason in a code form. Values:<br>RCVD<br>PDNG<br>ACTC<br>ACFC<br>ACSP<br>ACSC<br>ACWP<br>ACCC<br>BLCK<br>CANC<br>RJCT| |
 | StatusReasonCode |0..1 |OBWritePaymentDetailsResponse1/Data/StatusDetail/StatusReasonCode |Specifies the status reason in a code form.<br> For more information and enum values see `OB Internal Code Set. OBExternalStatusReason1Code`[here](https://github.com/OpenBankingUK/External_internal_CodeSets) |OBExternalStatusReason1Code | | ||
-| StatusReasonDescription |0..1 |OBWritePaymentDetailsResponse1/Data/StatusDetail/StatusReasonDescription |Reason provided for the status of a transfer. |Max256Text | | |
+| StatusReasonDescription |0..1 |OBWritePaymentDetailsResponse1/Data/StatusDetail/StatusReasonDescription |Reason provided for the status of a transfer. |Max500Text | | |
 | StatusUpdateDateTime |1..1 |OBWritePaymentDetailsResponse1/Data/StatusDetail/StatusUpdateDateTime |Date and time at which the status was assigned to the transfer. |ISODateTime | | |
 
 #### OBSCASupportData1
