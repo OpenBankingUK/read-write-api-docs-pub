@@ -159,7 +159,7 @@ Changes to the StatusCode, such as being rejected, should be captured in `Status
 
 | Field | Description |
 |---|---|
-| StatusReasonCode | Code directly relating to the reason for the current Status. See `ExternalStatusReason1Code` in the [the codelists](https://github.com/OpenBankingUK/External_internal_CodeSets) for appropriate values. |
+| StatusReasonCode | Code directly relating to the reason for the current Status. See `OBExternalStatusReason1Code` in [OB_Internal_CodeSet](https://github.com/OpenBankingUK/External_internal_CodeSets) for appropriate values. |
 | StatusReasonDescription | Description of why the code was returned |
 |Path| Path is optional but relevant when the status reason refers to an object/field and hence conditional to provide JSON path. |
 
@@ -199,7 +199,7 @@ The OBRegulatoryReporting1 class is defined in the [vrp-profile](../../profiles/
 
 | Name |Path |Definition | Type |
 | ---- |-----|---------- |------|
-| __SchemeName__ (1..1) | `SchemeName` | Name of the identification scheme, in a coded form as published in an external list. | Namespaced Enumeration `OBExternalAccountIdentification4Code`<br><br>For more information see `OBExternalAccountIdentification4Code` [here](https://github.com/OpenBankingUK/External_internal_CodeSets)
+| __SchemeName__ (1..1) | `SchemeName` | Name of the identification scheme, in a coded form as published in an external list. | Namespaced Enumeration `OBInternalAccountIdentification4Code`<br><br>For more information see `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_internal_CodeSets)
 | __Identification__ (1..1) | `Identification` | Identification assigned by an institution to identify an account. This identification is known by the account owner. | Max256Text
 | __Name__ (1..1) | `Name` | Name of the account, as assigned by the account servicing institution.  Usage: The account name is the name or names of the account owner(s) represented at an account level. The account name is not the product name or the nickname of the account. | Max70Text  
 | __SecondaryIdentification__ (0..1) | `SecondaryIdentification` | This is secondary identification of the account, as assigned by the account servicing institution.  This can be used by building societies to additionally identify accounts with a roll number (in addition to a sort code and account number combination) | Max34Text
@@ -223,7 +223,7 @@ The OBRegulatoryReporting1 class is defined in the [vrp-profile](../../profiles/
 
 | Name |Path |Definition | Type |
 | ---- |-----|---------- |------|
-| __SchemeName__ (0..1) | `SchemeName` |Name of the identification scheme, in a coded form as published in an external list. |OBExternalFinancialInstitutionIdentification4Code
+| __SchemeName__ (0..1) | `SchemeName` |Name of the identification scheme, in a coded form as published in an external list. |OBInternalFinancialInstitutionIdentification4Code
 | __Identification__ (0..1) | `Identification` |Unique and unambiguous identification of a financial institution or a branch of a financial institution.  | Max35Text  
 | __Name__ (0..1) | `Name` | Name by which an agent is known and which is usually used to identify that agent. | Max140Text
 | __LEI__ (0..1) | `LEI` | Legal entity identification as an alternate identification for a party. <br>Legal Entity Identifier is a code allocated to a party as described in ISO 17442 "Financial Services - Legal Entity Identifier (LEI)". | Max20Text |
@@ -392,7 +392,7 @@ The Risk block for VRP does not included `ExtendedPurpose`, used only in Interna
 | __StatusCode__ (1..1) | `Data. StatusCode` | Specifies the status of resource in code form.  |AUTH AWAU RJCT CANC EXPD |
 | __StatusUpdateDateTime__ (1..1)| `Data. StatusUpdateDateTime` |Date and time at which the resource status was updated.  | ISODateTime  |
 | __StatusReason__ (0..*) | `Data. StatusReason` | An array of StatusReasonCode |OBStatusReason |
-| __StatusReasonCode__ (0..1) | `Data. StatusReason. StatusReasonCode` | Specifies the status reason in a code form. For a full description see `ExternalStatusReason1Code` [here](https://github.com/OpenBankingUK/External_internal_CodeSets).  |ExternalStatusReason1Code |
+| __StatusReasonCode__ (0..1) | `Data. StatusReason. StatusReasonCode` | Specifies the status reason in a code form. For a full description see ` OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_internal_CodeSets).  |OBExternalStatusReason1Code |
 | __StatusReasonDescription__ (0..1) | `Data. StatusReason. StatusReasonDescription` | Description supporting the StatusReasonCode.  |Max500text|
 | __ControlParameters__ (1..1) | `Data. ControlParameters` | The control parameters under which this VRP must operate | [OBDomesticVRPControlParameters](#OBDomesticVRPControlParameters)
 | __Initiation__ (1..1) | `Data. Initiation` | The parameters of the VRP consent that should remain unchanged for each payment under this VRP |  [OBDomesticVRPInitiation](#OBDomesticVRPInitiation)

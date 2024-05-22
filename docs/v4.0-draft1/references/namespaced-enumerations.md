@@ -5,9 +5,9 @@
   - [Design Principles](#design-principles)
   - [Release Management](#release-management)
 - [Common Namespaced Enumerations](#common-namespaced-enumerations)
-  - [OBExternalAccountIdentification4Code](#obexternalaccountidentification4code)
-  - [OBExternalFinancialInstitutionIdentification4Code](#obexternalfinancialinstitutionidentification4code)
-  - [OBExternalBalanceSubType1Code](#obexternalbalancesubtype1code)
+  - [OBInternalAccountIdentification4Code](#obinternalaccountidentification4code)
+  - [OBInternalFinancialInstitutionIdentification4Code	](#obinternalfinancialinstitutionidentification4code)
+  - [ExternalBalanceSubType1Code](#externalbalancesubtype1code)
 - [Account and Transaction API Namespaced Enumerations](#account-and-transaction-api-namespaced-enumerations)
   - [OBExternalStatementAmountType1Code](#obexternalstatementamounttype1code)
   - [OBExternalStatementBenefitType1Code](#obexternalstatementbenefittype1code)
@@ -22,7 +22,7 @@
   - [OBExternalStatementInterestFrequency1Code](#obexternalstatementinterestfrequency1code)
   - [OBExternalLegalStructureType1Code](#obexternallegalstructuretype1code)
   - [OBExternalAccountRole1Code](#obexternalaccountrole1code)
-  - [OBExternalSwitchStatusCode](#obexternalswitchstatuscode)
+  - [OBInternalSwitchStatusCode](#obinternalswitchstatuscode)
   - [OBExternalDirectDebitFrequency1Code](#obexternaldirectdebitfrequency1code)
 - [Payment Initiation API Namespaced Enumerations](#payment-initiation-api-namespaced-enumerations)
   - [OBExternalLocalInstrument1Code](#obexternallocalinstrument1code)
@@ -76,7 +76,7 @@ A comprehesnive list of enumerations, from both OBL and ISO 20022, have been cat
 
 The following namespaced enumerations are used across all the standards.
 
-### OBExternalAccountIdentification4Code
+### OBInternalAccountIdentification4Code
 
 This is Data Type for Account/SchemeName and used to identify the type of Identification used to identify an account.
 
@@ -90,7 +90,7 @@ This is Data Type for Account/SchemeName and used to identify the type of Identi
 | UK.OB.Wallet |A primary and unique account identifier used to identify a wallet.<br>An ASPSP must document on their developer portal, the payment methods that supports this account identifier. |
 
 
-### OBExternalFinancialInstitutionIdentification4Code
+### OBInternalFinancialInstitutionIdentification4Code
 
 This is the Data Type for Agent/SchemeName and used to identify the type of Identification used to identify an agent.
 
@@ -100,7 +100,7 @@ This is the Data Type for Agent/SchemeName and used to identify the type of Iden
 | UK.OB.NCC.[ISO3166-aplha2-CountryCode] | Valid NCC (National Clearing Code) as an option for the accounts that don't have an IBAN, registered in the country identified by the 2 letter ISO-3166 Country code. For example, transfer to India may have Scheme Name as UK.OB.NCC.IN and Identification can be the IFSC code of the bank/branch in India. |
 
 
-### OBExternalBalanceSubType1Code
+### ExternalBalanceSubType1Code
 
 Default if not specified is BaseCurrency of the account.
 
@@ -348,7 +348,7 @@ Default if not specified is BaseCurrency of the account.
 
 </details>
 
-### OBExternalSwitchStatusCode
+### OBInternalSwitchStatusCode
 
 <details><summary>Show</summary>
 
