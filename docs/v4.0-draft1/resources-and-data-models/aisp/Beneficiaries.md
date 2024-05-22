@@ -219,7 +219,7 @@ Content-Type: application/json
         "AccountId": "22289",
         "BeneficiaryId": "Ben1",
         "Reference": "Towbar Club",
-        "CreditAgent": { 
+        "CreditorAgent": { 
           "LEI": "IZ9Q00LZEVUKWCQY6X15",
           "SchemeName": "UK.OB.BICFI",
           "Identification": "80200112344562",
@@ -248,7 +248,7 @@ Content-Type: application/json
         "AccountId": "31820",
         "BeneficiaryId": "Ben37",
         "Reference": "Golf Club",
-        "CreditAgent": { 
+        "CreditorAgent": { 
           "LEI": "IZ9Q00LZEVUKWCQY6X15",
           "SchemeName": "UK.OB.BICFI",
           "Identification": "80200112344562",
@@ -295,7 +295,7 @@ Content-Type: application/json
         "BeneficiaryId": "Ben1",
         "BeneficiaryType": "Ordinary",
         "Reference": "Towbar Club",
-        "CreditAgent": { 
+        "CreditorAgent": { 
           "LEI": "IZ9Q00LZEVUKWCQY6X15",
           "SchemeName": "UK.OB.BICFI",
           "Identification": "80200112344562",

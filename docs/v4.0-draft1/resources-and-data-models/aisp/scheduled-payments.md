@@ -150,7 +150,7 @@ Content-Type: application/json
           "Amount": "10.00",
           "Currency": "GBP"
         },
-        "CreditAgent": {  
+        "CreditorAgent": {  
           "LEI": "IZ9Q00LZEVUKWCQY6X15",
           "SchemeName": "UK.OB.BICFI",
           "Identification": "80200112344562",
@@ -220,7 +220,7 @@ Content-Type: application/json
           "Amount": "10.00",
           "Currency": "GBP"
         },
-        "CreditAgent": {  
+        "CreditorAgent": {  
           "LEI": "IZ9Q00LZEVUKWCQY6X15",
           "SchemeName": "UK.OB.BICFI",
           "Identification": "80200112344562",
