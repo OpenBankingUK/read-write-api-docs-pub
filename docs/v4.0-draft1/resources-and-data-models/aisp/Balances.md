@@ -136,8 +136,18 @@ Content-Type: application/json
         "AccountId": "22289",
         "Amount": {
           "Amount": "1230.00",
-          "Currency": "GBP"
+          "Currency": "GBP",
+          "SubType": "BCUR",
         },
+        "LocalAmount":  {
+          "Amount": "1230.00",
+          "Currency": "GBP",
+          "SubType": "BCUR",
+        }, 
+        "TotalAmount": { 
+            "Amount": "1230.00",
+            "Currency": "GBP",
+        }, 
         "CreditDebitIndicator": "Credit",
         "Type": "ITAV",
         "DateTime": "2017-04-05T10:43:07+00:00",
@@ -203,8 +213,18 @@ Content-Type: application/json
       "AccountId": "22289",
       "Amount": {
         "Amount": "300.00",
-        "Currency": "GBP"
-      },
+        "Currency": "GBP",
+          "SubType": "BCUR",
+        },
+        "LocalAmount":  {
+          "Amount": "1230.00",
+          "Currency": "GBP",
+          "SubType": "BCUR",
+        }, 
+        "TotalAmount": { 
+            "Amount": "1230.00",
+            "Currency": "GBP",
+        }, 
       "CreditDebitIndicator": "Credit",
       "Type": "ITAV",
       "DateTime": "2017-04-05T10:43:07+00:00",
@@ -267,8 +287,18 @@ Content-Type: application/json
       "AccountId": "22289",
       "Amount": {
         "Amount": "800.00",
-        "Currency": "GBP"
-      },
+        "Currency": "GBP",
+          "SubType": "BCUR",
+        },
+        "LocalAmount":  {
+          "Amount": "1230.00",
+          "Currency": "GBP",
+          "SubType": "BCUR",
+        }, 
+        "TotalAmount": { 
+            "Amount": "1230.00",
+            "Currency": "GBP",
+        }, 
       "CreditDebitIndicator": "Credit",
       "Type": "ITAV",
       "DateTime": "2017-04-05T10:43:07+00:00",
@@ -331,8 +361,18 @@ Content-Type: application/json
       "AccountId": "22289",
       "Amount": {
         "Amount": "100.00",
-        "Currency": "GBP"
-      },
+        "Currency": "GBP",
+          "SubType": "BCUR",
+        },
+        "LocalAmount":  {
+          "Amount": "1230.00",
+          "Currency": "GBP",
+          "SubType": "BCUR",
+        }, 
+        "TotalAmount": { 
+            "Amount": "1230.00",
+            "Currency": "GBP",
+        }, 
       "CreditDebitIndicator": "Debit",
       "Type": "ITAV",
       "DateTime": "2017-04-05T10:43:07+00:00",
@@ -410,7 +450,25 @@ Content-Type: application/json
     "TotalValue": {
       "Amount": "720.39",
       "Currency": "GBP"
-    }
+    },
+    "CreditLine": [
+        {
+          "Included": false,
+          "Amount": {
+            "Amount": "400.00",
+            "Currency": "GBP"
+          },
+          "Type": "Available"
+        },
+        {
+          "Included": false,
+          "Amount": {
+            "Amount": "500.00",
+            "Currency": "GBP"
+          },
+          "Type": "Pre-Agreed"
+        }
+      ]
   },
   "Links": {
     "Self": "https://api.alphabank.com/open-banking/v3.1/aisp/accounts/22289/balances/"
