@@ -179,15 +179,17 @@ Content-Type: application/json
         "Currency": "GBP",
         "AccountCategory": "Personal",
         "AccountTypeCode": "CACC",
+        "Description" :  "For paying bills",
         "Nickname": "Bills",
         "OpeningDate": "01-05-2002",
+        "SwitchStatus": "UK.CASS.NotSwitched",
         "StatementFrequencyAndFormat": [
           {
             "Frequency": "YEAR",
             "CommunicationMethod": "EMAL",
             "Format": "DPDF",
-            "DeliveryAdress": {
-              "AddressType": "BIZZ",
+            "DeliveryAddress": {
+              "AddressType": "HOME",
               "StreetName": "Bank Street",
               "BuildingNumber": "11",
               "Floor": "6",
@@ -272,7 +274,10 @@ Content-Type: application/json
         "StatusUpdateDateTime": "2019-01-01T06:06:06+00:00",
         "Currency": "GBP",
         "AccountCategory": "Personal",
-        "AccountTypeCode": "CACC",
+        "Description" :  "For paying bills",
+        "Nickname": "Bills",
+        "OpeningDate": "01-05-2002",
+        "SwitchStatus": "UK.CASS.NotSwitched",
         "Nickname": "Bills",
         "StatementFrequencyAndFormat": [
           {
@@ -350,7 +355,40 @@ Content-Type: application/json
         "Currency": "GBP",
         "AccountCategory": "Personal",
         "AccountTypeCode": "CACC",
-        "Nickname": "Bills"
+        "Description" :  "For paying bills",
+        "Nickname": "Bills",
+        "OpeningDate": "01-05-2002",
+        "SwitchStatus": "UK.CASS.NotSwitched",
+        "StatementFrequencyAndFormat": [
+          {
+            "Frequency": "YEAR",
+            "CommunicationMethod": "EMAL",
+            "Format": "DPDF",
+            "DeliveryAddress": {
+              "AddressType": "HOME",
+              "StreetName": "Bank Street",
+              "BuildingNumber": "11",
+              "Floor": "6",
+              "PostCode": "Z78 4TY",
+              "TownName": "London",
+              "Country": "UK"
+            }
+          }
+        ],
+        "Servicer": {
+          "SchemeName": "UK.OB.BICFI",
+          "Identification": "8020441910203345",
+          "Name": "ServicerName"
+        },
+        "Account": [
+          {
+            "SchemeName": "UK.OB.SortCodeAccountNumber",
+            "Identification": "80200110203345",
+            "Name": "Mr Kevin",
+            "SecondaryIdentification": "00021",
+            "LEI": "9193001QZMP2PQT4AK86"
+          }
+        ]
       },
       {
         "AccountId": "31820",
