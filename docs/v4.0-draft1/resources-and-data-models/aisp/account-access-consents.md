@@ -252,6 +252,10 @@ Content-Type: application/json
     "StatusCode": "AWAU",
     "StatusUpdateDateTime": "2017-05-02T00:00:00+00:00",
     "CreationDateTime": "2017-05-02T00:00:00+00:00",
+    "StatusReason": {
+      "StatusReasonCode": "U036", 
+      "StatusReasonDescription":"Waiting for completion of consent authorisation to be completed by user",
+    },
     "Permissions": [
       "ReadAccountsDetail",
       "ReadBalances",
@@ -272,8 +276,7 @@ Content-Type: application/json
     "ExpirationDateTime": "2017-08-02T00:00:00+00:00",
     "TransactionFromDateTime": "2017-05-03T00:00:00+00:00",
     "TransactionToDateTime": "2017-12-03T00:00:00+00:00"
-
-  }
+  },
   "Links": {
     "Self": "https://api.alphabank.com/open-banking/v3.1/aisp/account-access-consents/urn-alphabank-intent-88379"
   },
@@ -310,6 +313,11 @@ Content-Type: application/json
   "Data": {
     "ConsentId": "urn-alphabank-intent-88379",
     "StatusCode": "AWAU",
+   "StatusReason": {
+      "StatusReasonCode": "U036", 
+      "StatusReasonDescription":"Waiting for completion of consent authorisation to be completed by user",
+    },
+    "StatusReasonDescription":"Waiting for completion of consent authorisation to be completed by user",
     "StatusUpdateDateTime": "2017-05-02T00:00:00+00:00",
     "CreationDateTime": "2017-05-02T00:00:00+00:00",
     "Permissions": [
@@ -332,7 +340,7 @@ Content-Type: application/json
     "ExpirationDateTime": "2017-08-02T00:00:00+00:00",
     "TransactionFromDateTime": "2017-05-03T00:00:00+00:00",
     "TransactionToDateTime": "2017-12-03T00:00:00+00:00"
-  }
+  },
   "Links": {
     "Self": "https://api.alphabank.com/open-banking/v3.1/aisp/account-access-consents/urn-alphabank-intent-88379"
   },
@@ -369,6 +377,10 @@ Content-Type: application/json
   "Data": {
     "ConsentId": "urn-alphabank-intent-88379",
     "StatusCode": "AUTH",
+    "StatusReason": {
+      "StatusReasonCode": "U038", 
+      "StatusReasonDescription":"Consent has been completed successfully"
+    },
     "StatusUpdateDateTime": "2017-05-02T00:05:00+00:00",
     "CreationDateTime": "2017-05-02T00:00:00+00:00",
     "Permissions": [
@@ -391,7 +403,71 @@ Content-Type: application/json
     "ExpirationDateTime": "2017-08-02T00:00:00+00:00",
     "TransactionFromDateTime": "2017-05-03T00:00:00+00:00",
     "TransactionToDateTime": "2017-12-03T00:00:00+00:00"
+  },
+  "Links": {
+    "Self": "https://api.alphabank.com/open-banking/v3.1/aisp/account-access-consents/urn-alphabank-intent-88379"
+  },
+  "Meta": {
+    "TotalPages": 1
   }
+}
+```
+
+### StatusCode - RJCT
+
+This is an example of a GET request which is made  **after**  the account access consent resource has been rejected.
+
+#### Get Account Access Consents Request
+
+```
+GET /account-access-consents/urn-alphabank-intent-88379 HTTP/1.1
+Authorization: Bearer 2YotnFZFEjr1zCsicMWpAA
+x-fapi-auth-date: Sun, 10 Sep 2017 19:43:31 GMT
+x-fapi-customer-ip-address: 104.25.212.99
+x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
+Accept: application/json
+```
+
+#### Get Account Access Consents Response
+
+```
+HTTP/1.1 200 OK
+x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
+Content-Type: application/json
+```
+```json
+{
+  "Data": {
+    "ConsentId": "urn-alphabank-intent-88379",
+    "StatusCode": "REJT",
+    "StatusReason": {
+      "StatusReasonCode": "U038", 
+      "StatusReasonDescription":"Data.LocalInstrument is invalid.  Expected ExternalLocalInstrument1Code value, received SEPE",
+      "Path": "Data.LocalInstrument"
+    },
+    "StatusUpdateDateTime": "2017-05-02T00:05:00+00:00",
+    "CreationDateTime": "2017-05-02T00:00:00+00:00",
+    "Permissions": [
+      "ReadAccountsDetail",
+      "ReadBalances",
+      "ReadBeneficiariesDetail",
+      "ReadDirectDebits",
+      "ReadProducts",
+      "ReadStandingOrdersDetail",
+      "ReadTransactionsCredits",
+      "ReadTransactionsDebits",
+      "ReadTransactionsDetail",
+      "ReadOffers",
+      "ReadPAN",
+      "ReadParty",
+      "ReadPartyPSU",
+      "ReadScheduledPaymentsDetail",
+      "ReadStatementsDetail"
+    ],
+    "ExpirationDateTime": "2017-08-02T00:00:00+00:00",
+    "TransactionFromDateTime": "2017-05-03T00:00:00+00:00",
+    "TransactionToDateTime": "2017-12-03T00:00:00+00:00"
+  },
   "Links": {
     "Self": "https://api.alphabank.com/open-banking/v3.1/aisp/account-access-consents/urn-alphabank-intent-88379"
   },
@@ -466,6 +542,11 @@ Content-Type: application/json
     "StatusCode": "AWAU",
     "StatusUpdateDateTime": "2017-05-02T00:00:00+00:00",
     "CreationDateTime": "2017-05-02T00:00:00+00:00",
+    "StatusCode": "AWAU",
+    "StatusReason": {
+      "StatusReasonCode": "U036", 
+      "StatusReasonDescription":"Waiting for completion of consent authorisation to be completed by user",
+    },
     "Permissions": [
       "ReadAccountsBasic",
       "ReadBalances"
@@ -473,7 +554,7 @@ Content-Type: application/json
     "ExpirationDateTime": "2017-08-02T00:00:00+00:00",
     "TransactionFromDateTime": "2017-05-03T00:00:00+00:00",
     "TransactionToDateTime": "2017-12-03T00:00:00+00:00"
-  }
+  },
   "Links": {
     "Self": "https://api.alphabank.com/open-banking/v3.1/aisp/account-access-consents/urn-alphabank-intent-88379"
   },
