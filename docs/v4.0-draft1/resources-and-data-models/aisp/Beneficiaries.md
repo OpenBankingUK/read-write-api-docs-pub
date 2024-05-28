@@ -169,9 +169,22 @@ Content-Type: application/json
       {
         "AccountId": "22289",
         "BeneficiaryId": "Ben1",
+        "BeneficiaryType": "Ordinary",
         "Reference": "Towbar Club",
         "CreditorAgent": { 
-          "LEI": "IZ9Q00LZEVUKWCQY6X15"
+          "LEI": "IZ9Q00LZEVUKWCQY6X15",
+          "SchemeName": "UK.OB.BICFI",
+          "Identification": "80200112344562",
+          "Name": "The Credit Agent", 
+          "PostalAddress": { 
+            "AddressType": "BIZZ",
+            "StreetName": "Bank Street",
+            "BuildingNumber": "11",
+            "Floor": "6",
+            "PostCode": "Z78 4TY",
+            "TownName": "London",
+            "Country": "UK"
+          }
         },
         "CreditorAccount": {
           "SchemeName": "UK.OB.SortCodeAccountNumber",
@@ -219,6 +232,7 @@ Content-Type: application/json
         "AccountId": "22289",
         "BeneficiaryId": "Ben1",
         "Reference": "Towbar Club",
+        "BeneficiaryType": "Ordinary",
         "CreditAgent": { 
           "LEI": "IZ9Q00LZEVUKWCQY6X15",
           "SchemeName": "UK.OB.BICFI",
@@ -248,6 +262,7 @@ Content-Type: application/json
         "AccountId": "31820",
         "BeneficiaryId": "Ben37",
         "Reference": "Golf Club",
+        "BeneficiaryType": "Ordinary",
         "CreditAgent": { 
           "LEI": "IZ9Q00LZEVUKWCQY6X15",
           "SchemeName": "UK.OB.BICFI",
@@ -267,6 +282,7 @@ Content-Type: application/json
           "SchemeName": "UK.OB.SortCodeAccountNumber",
           "Identification": "87562298675421",
           "Name": "Mr Large",
+          "SecondaryIdentification": "87562298675897", 
           "Proxy": {
             "Identification": "2360549017905188",
             "Code": "TELE"
@@ -295,6 +311,7 @@ Content-Type: application/json
         "BeneficiaryId": "Ben1",
         "BeneficiaryType": "Ordinary",
         "Reference": "Towbar Club",
+        "BeneficiaryType": "Ordinary",
         "CreditAgent": { 
           "LEI": "IZ9Q00LZEVUKWCQY6X15",
           "SchemeName": "UK.OB.BICFI",
@@ -327,6 +344,7 @@ Content-Type: application/json
         "CreditorAccount": {
           "SchemeName": "UK.OB.SortCodeAccountNumber",
           "Identification": "80200112345678",
+          "SecondaryIdentification": "87562298675897",
           "Name": "Mr Tully"
         }
       },
