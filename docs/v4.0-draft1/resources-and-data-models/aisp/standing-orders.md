@@ -208,6 +208,11 @@ Content-Type: application/json
           "Amount": "0.56",
           "Currency": "GBP"
         },
+        "LastPaymentDateTime": "2017-07-13T00:00:00+00:00", 
+        "LastPaymentAmount": {
+          "Amount": "0.56",
+          "Currency": "GBP"
+        },
         "CreditAgent": {  
           "LEI": "IZ9Q00LZEVUKWCQY6X15",
           "SchemeName": "UK.OB.BICFI",
@@ -240,6 +245,7 @@ Content-Type: application/json
         "CreditorAccount": {
           "SchemeName": "UK.OB.SortCodeAccountNumber",
           "Identification": "80200112345678",
+          "SecondaryIdentification": "80200112895462",
           "Name": "Mrs Juniper",
           "Proxy": {
             "Identification": "441234012345",
@@ -306,6 +312,11 @@ Content-Type: application/json
           "Currency": "GBP"
         },
         "FinalPaymentAmount": {
+          "Amount": "0.56",
+          "Currency": "GBP"
+        },
+        "LastPaymentDateTime": "2017-07-13T00:00:00+00:00", 
+        "LastPaymentAmount": {
           "Amount": "0.56",
           "Currency": "GBP"
         },
@@ -377,6 +388,7 @@ Content-Type: application/json
         "StandingOrderStatusCode": "Active",
         "CreditorAccount": {
           "SchemeName": "UK.OB.SortCodeAccountNumber",
+          "SecondaryIdentification": "80200112895462",
           "Identification": "23605490179017",
           "Name": "Mr Tee"
         }
