@@ -214,6 +214,8 @@ Content-Type: application/json
                         "Id": "22289"
                     }
                 },
+                "Phone": "+442079460000", 
+                "Mobile": "+447700900000",
                 "Address": [
                     {
                         "AddressType": "Business",
@@ -292,11 +294,11 @@ Content-Type: application/json
                 "EmailAddress": "speakup@rosesandthorns.co.uk",
                 "Phone": "+44-55565411099",
                 "Mobile": "+44-55565411098",
-                "Relationships": [
-                    {
+                "Relationships": [{
+                    "Account": {
                         "Related": "https://api.alphabank.com/open-banking/v4.0/aisp/accounts/89019",
                         "Id": "89019"
-                    }
+                    }}
                 ],
                 "Address": [
                     {
@@ -321,12 +323,12 @@ Content-Type: application/json
                 "EmailAddress": "neil@rosesandthorns.co.uk",
                 "Phone": "+44-55565411097",
                 "Mobile": "+44-55565411096",
-                "Relationships": [
-                    {
+                "Relationships": [{
+                  "Account": {
                         "Related": "https://api.alphabank.com/open-banking/v4.0/aisp/accounts/89019",
                         "Id": "89019"
-                    }
-                ],
+                      }
+                  }],
                 "Address": [
                     {
                         "AddressType": "Residential",
@@ -376,18 +378,30 @@ Content-Type: application/json
     "Party": {
       "PartyId": "PABC123",
       "PartyType": "Sole",
+      "PartyNumber": "20202002",
       "Name": "Semiotec",
       "EmailAddress": "contact@semiotec.co.jp",
-       "LEI": "068700IA8DVYPS77MD05",
-	  "Address": {
-		"AddressType": "Business",
-		"StreetName": "Street",
-		"BuildingNumber": "15",
-		"PostCode": "NW1 1AB",
-		"TownName": "London",
-		"Country": "GB"
-      }
-    }
+      "FullLegalName": "Mr Neil Paul Example",
+      "LegalStructure": "UK.OB.Individual",
+      "BeneficialOwnership": false,
+      "AccountRole": "UK.OB.SeniorManagingOfficial",
+      "LEI": "068700IA8DVYPS77MD05",
+      "Phone": "+442079460000", 
+      "Mobile": "+447700900000",
+      "Address": {
+        "AddressType": "Business",
+        "StreetName": "Street",
+        "BuildingNumber": "15",
+        "PostCode": "NW1 1AB",
+        "TownName": "London",
+        "Country": "GB"
+        },
+       "Relationships": [{
+          "Account": {
+            "Related": "https://api.alphabank.com/open-banking/v4.0/aisp/accounts/89019",
+            "Id": "89019"
+          }
+     }],
   },
   "Links": {
     "Self": "https://api.alphabank.com/open-banking/v4.0/aisp/accounts/22289/party/"
@@ -424,10 +438,31 @@ Content-Type: application/json
   "Data": {
     "Party": {
       "PartyId": "PXSIF023",
+      "PartyNumber": "20202002",
       "PartyType": "Delegate",
       "Name": "Mr D User",
+      "FullLegalName": "Mr Neil Paul Example",
+      "LegalStructure": "UK.OB.Individual",
+      "BeneficialOwnership": false,
+      "AccountRole": "UK.OB.SeniorManagingOfficial",
       "LEI": "713200JVLXQKY2R7XS50",
-      "EmailAddress": "d.user@semiotec.co.jp"
+      "EmailAddress": "d.user@semiotec.co.jp",
+      "Phone": "+442079460000", 
+      "Mobile": "+447700900000",
+      "Address": {
+        "AddressType": "Business",
+        "StreetName": "Street",
+        "BuildingNumber": "15",
+        "PostCode": "NW1 1AB",
+        "TownName": "London",
+        "Country": "GB"
+        },
+      "Relationships": [{
+          "Account": {
+            "Related": "https://api.alphabank.com/open-banking/v4.0/aisp/accounts/89019",
+            "Id": "89019"
+          }
+     }],
     }
   },
   "Links": {
