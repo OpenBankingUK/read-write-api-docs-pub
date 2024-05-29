@@ -157,11 +157,12 @@ Content-Type: application/json
       {
         "AccountId": "22289",
         "ProductId": "51B",
+        "SecondaryProductId": "CA78",
+        "MarketingStateId": "22878123", 
         "ProductType": "PersonalCurrentAccount",
         "ProductName": "321 Product",
-        "PCA": {
-         ....
-		    }
+        "PCA": { .. },
+        "BCA": { .. }
 	    }
     ]
   },
@@ -203,14 +204,22 @@ Content-Type: application/json
         "AccountId": "22289",
         "ProductId": "51B",
         "ProductType": "PersonalCurrentAccount",
+        "SecondaryProductId": "CA78",
+        "MarketingStateId": "22878123", 
         "ProductName": "321 Product",
         "PCA": { .. }
       },
       {
         "AccountId": "31820",
         "ProductId": "001",
-        "ProductType": "BusinessCurrentAccount",
+        "SecondaryProductId": "OTH453",
+        "ProductType": "Other",
+        "OtherProductType":{
+          "Type": "e-Wallet", 
+          "Description": "Virtual wallet",
+        },
         "ProductName": "123 Product",
+        "MarketingStateId": "22878123",
         "BCA": { .. }
       }
     ]
