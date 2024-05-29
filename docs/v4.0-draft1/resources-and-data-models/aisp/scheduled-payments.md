@@ -168,12 +168,15 @@ Content-Type: application/json
         "CreditorAccount": {
           "SchemeName": "UK.OB.SortCodeAccountNumber",
           "Identification": "23605490179017",
+          "SecondaryIdentification": "23605445279017",
           "Name": "Mr Tee",
           "Proxy": {
             "Identification": "441234012345",
             "Code": "TELE",
           }
-        }
+        },
+        "Reference": "REF561988",
+        "DebtorReference" : "REF51561806",
       }
     ]
   },
@@ -237,12 +240,16 @@ Content-Type: application/json
         "CreditorAccount": {
           "SchemeName": "UK.OB.SortCodeAccountNumber",
           "Identification": "23605490179017",
+          "SecondaryIdentification": "23605445279017",
           "Name": "Mr Tee",
           "Proxy": {
             "Identification": "441234012345",
             "Code": "TELE",
           }
-        }
+        },
+        "Reference": "REF561988",
+        "DebtorReference" : "51561899806",
+      }
       },
       {
         "AccountId": "39570",
