@@ -294,6 +294,7 @@ Accept: application/json
     "Initiation": {
       "InstructionIdentification": "ACME412",
       "EndToEndIdentification": "FRESCO.21302.GFX.20",
+      "LocalInstrument": "UK.OB.Paym",
       "InstructedAmount": {
         "Amount": "165.88",
         "Currency": "GBP"
@@ -308,88 +309,102 @@ Accept: application/json
           "Code": "TELE"
         },
       },
-    "UltimateDebtor": {
-    "SchemeName": "UK.OB.BICFI",
-    "Identification": "2360549017905161589",
-    "Name": "Ultimate Debtor",
-    "LEI": "8200007YHFDMEODY1965",
-    "PostalAddress": {
-        "AddressType": "BIZZ",
-        "StreetName": "Bank Street",
-        "BuildingNumber": "11",
-        "Floor": "6",
-        "PostCode": "Z78 4TY",
-        "TownName": "London",
-        "Country": "UK"
-    }
-  },
-  "UltimateCreditor": {
-    "SchemeName": "UK.OB.BICFI",
-    "Identification": "2360549017905161589",
-    "Name": "Ultimate Creditor",
-    "LEI": "60450004FECVJV7YN339",
-    "PostalAddress": {
-        "AddressType": "BIZZ",
-        "StreetName": "Bank Street",
-        "BuildingNumber": "11",
-        "Floor": "6",
-        "PostCode": "Z78 4TY",
-        "TownName": "London",
-        "Country": "UK"
-        }
+      "DebtorAccount": {
+        "SchemeName": "UK.OB.SortCodeAccountNumber",
+        "Identification": "08080025612489",
+        "SecondaryIdentification": "080801562314789",
+        "Name": "Jane Smith",
+        "Proxy": {
+          "Identification": "441234012345",
+          "Code": "TELE",
+        },
+      },
+      "UltimateDebtor": {
+      "SchemeName": "UK.OB.BICFI",
+      "Identification": "2360549017905161589",
+      "Name": "Ultimate Debtor",
+      "LEI": "8200007YHFDMEODY1965",
+      "PostalAddress": {
+          "AddressType": "BIZZ",
+          "StreetName": "Bank Street",
+          "BuildingNumber": "11",
+          "Floor": "6",
+          "PostCode": "Z78 4TY",
+          "TownName": "London",
+          "Country": "UK"
+      }
     },
-    "RegulatoryReporting": [
-        {
-          "DebitCreditReportingIndicator": "CRED",
-          "Authority": {
-            "Name": "string",
-            "CountryCode": "UG"
-          },
-          "Details": [
-            {
+      "UltimateCreditor": {
+      "SchemeName": "UK.OB.BICFI",
+      "Identification": "2360549017905161589",
+      "Name": "Ultimate Creditor",
+      "LEI": "60450004FECVJV7YN339",
+      "PostalAddress": {
+          "AddressType": "BIZZ",
+          "StreetName": "Bank Street",
+          "BuildingNumber": "11",
+          "Floor": "6",
+          "PostCode": "Z78 4TY",
+          "TownName": "London",
+          "Country": "UK"
+          }
+      },
+      "RegulatoryReporting": [
+          {
+            "DebitCreditReportingIndicator": "CRED",
+            "Authority": {
+              "Name": "string",
+              "CountryCode": "UG"
+            },
+            "Details": [
+              {
+              "Type": "CRED",
               "Date": "2024-04-25T13:26:41.911Z",
+              "Information": ["Reg info1", "Reg info2"],
               "Country": "QG",
               "Amount": {
                 "Amount": "4.68702",
                 "Currency": "JGM"
               }
             }
-        ]
-        }
-    ],
-    "RemittanceInformation": {
-        "Structured": [
-          {
-            "ReferredDocumentInformation": [
-              {
-                "Code": "CINV",
+          ]
+          }
+      ],
+      "RemittanceInformation": {
+          "Structured": [
+            {
+              "ReferredDocumentInformation": [
+                {
+                  "Code": "CINV",
+                  "Issuer": "Issuer01",
+                  "Number": "Number_01",
+                  "RelatedDate": "2024-04-25T13:26:41.911Z",
+                  "LineDetails": [
+                    "string"
+                  ]
+                }
+              ],
+              "ReferredDocumentAmount": 1,
+              "CreditorReferenceInformation": {
+                "Code": "DISP",
                 "Issuer": "Issuer01",
-                "Number": "Number_01",
-                "RelatedDate": "2024-04-25T13:26:41.911Z",
-                "LineDetails": [
-                  "string"
-                ]
-              }
-            ],
-            "ReferredDocumentAmount": 1,
-            "CreditorReferenceInformation": {
-              "Code": "DISP",
-              "Issuer": "Issuer01",
-              "Reference": "REF_26518"
-            },
-            "Invoicer": "INVR51856",
-            "Invoicee": "INVE5161856"
+                "Reference": "REF_26518"
+              },
+              "Invoicer": "INVR51856",
+              "Invoicee": "INVE5161856"
           }
         ]
-    }
+      }
     }
   },
   "Risk": {
     "PaymentContextCode": "EcommerceMerchantInitiatedPayment",
     "ContractPresentIndicator": false,
     "PaymentPurposeCode": "EPAY",
+    "CategoryPurposeCode": "CASH", 
     "BeneficiaryPaymentDetailsPrepopulatedIndicator": false,
     "BeneficiaryAccountType": "Business",
+    "MerchantCategoryCode": "7300", 
     "MerchantCustomerIdentification": "053598653254",
     "DeliveryAddress": {
       "AddressLine": [
@@ -424,6 +439,8 @@ Content-Type: application/json
     "StatusCode": "ACSP",
     "CreationDateTime": "2017-06-05T15:15:22+00:00",
     "StatusUpdateDateTime": "2017-06-05T15:15:13+00:00",
+    "ExpectedExecutionDateTime": "2017-06-05T15:15:22+00:00",
+    "ExpectedSettlementDateTime": "2017-06-06T15:15:22+00:00",
     "Refund": {
       "Account": {
         "SchemeName": "UK.OB.SortCodeAccountNumber",
@@ -431,18 +448,64 @@ Content-Type: application/json
         "Name": "NTPC Inc"
       }
     },
+    "Debtor"{
+      "SchemeName": "UK.OB.SortCodeAccountNumber",
+      "Identification": "08080021325698",
+      "Name": "ACME Inc",
+      "SecondaryIdentification": "0002",
+      "LEI": "8200007YHFDMEODY1965",
+    },
+    "Charges": [{
+       "ChargeBearer": "Shared",
+       "Type": "UK.OB.CHAPSOut",
+       "Amount"  {
+        "Amount": "0.88",
+        "Currency": "GBP"
+      },
+    }],
+    "MultiAuthorisation": { 
+      "StatusCode": "AUTH", 
+      "NumberRequired": 2,
+      "NumberReceived": 2,
+      "LastUpdateDateTime": "2017-06-05T15:15:13+00:00",
+      "ExpirationDateTime": "2017-06-06T15:15:13+00:00",
+    },
     "Initiation": {
       "InstructionIdentification": "ACME412",
       "EndToEndIdentification": "FRESCO.21302.GFX.20",
+      "LocalInstrument": "UK.OB.CHAPS", 
       "InstructedAmount": {
         "Amount": "165.88",
         "Currency": "GBP"
+      },
+      "DebtorAccount": {
+        "SchemeName": "UK.OB.SortCodeAccountNumber",
+        "Identification": "08080025612489",
+        "SecondaryIdentification": "080801562314789",
+        "Name": "Jane Smith",
+        "Proxy": {
+          "Identification": "441234012345",
+          "Code": "TELE",
+        }
       },
       "CreditorAccount": {
         "SchemeName": "UK.OB.SortCodeAccountNumber",
         "Identification": "08080021325698",
         "Name": "ACME Inc",
-        "SecondaryIdentification": "0002"
+        "SecondaryIdentification": "0002",
+         "Proxy": {
+          "Identification": "441234012345",
+          "Code": "TELE",
+        }
+      },
+      "CreditorPostalAddress":{
+        "AddressType": "BIZZ",
+        "StreetName": "Bank Street",
+        "BuildingNumber": "11",
+        "Floor": "6",
+        "PostCode": "Z78 4TY",
+        "TownName": "London",
+        "Country": "UK"
       },
      "UltimateDebtor": {
         "SchemeName": "UK.OB.BICFI",
@@ -483,7 +546,9 @@ Content-Type: application/json
           },
           "Details": [
             {
+             "Type": "CRED",
               "Date": "2024-04-25T13:26:41.911Z",
+              "Information": ["Reg info1", "Reg info2"],
               "Country": "QG",
               "Amount": {
                 "Amount": "4.68702",
