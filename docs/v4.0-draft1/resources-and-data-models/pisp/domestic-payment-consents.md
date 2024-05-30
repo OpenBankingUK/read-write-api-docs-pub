@@ -342,6 +342,7 @@ Accept: application/json
     "Initiation": {
       "InstructionIdentification": "ACME412",
       "EndToEndIdentification": "FRESCO.21302.GFX.20",
+      "LocalInstrument": "UK.OB.Paym",
       "InstructedAmount": {
         "Amount": "165.88",
         "Currency": "GBP"
@@ -349,6 +350,7 @@ Accept: application/json
       "CreditorAccount": {
         "SchemeName": "UK.OB.SortCodeAccountNumber",
         "Identification": "08080021325698",
+        "SecondaryIdentification": "08080021325641",
         "Name": "ACME Inc",
         "SecondaryIdentification": "0002",
         "Proxy": {
@@ -361,11 +363,21 @@ Accept: application/json
       },
       "CreditorPostalAddress":{
         "AddressType": "BIZZ",
+        "Department": "Finance",
+        "SubDepartment": "Payroll",
         "StreetName": "Bank Street",
         "BuildingNumber": "11",
+        "BuildingName": "Tower Bridges",
         "Floor": "6",
+        "UnitNumber": "UNIT591",
+        "Room": "844",
+        "PostBox": "PO Box 123456",
         "PostCode": "Z78 4TY",
+        "TownLocationName":"Bank",
         "TownName": "London",
+        "DistrictName": "Greater London",
+        "CareOf": "Ms Jane Smith",
+        "CountrySubDivision": "England",
         "Country": "UK"
       },
       "UltimateDebtor": {
@@ -405,12 +417,14 @@ Accept: application/json
             "CountryCode": "UG"
           },
           "Details": [{
-            "Date": "2024-04-25T13:26:41.911Z",
-            "Country": "QG",
-            "Amount": {
-              "Amount": "4.68702",
-              "Currency": "JGM"
-            }
+              "Type": "CRED",
+              "Date": "2024-04-25T13:26:41.911Z",
+              "Information": ["Reg info1", "Reg info2"],
+              "Country": "QG",
+              "Amount": {
+                "Amount": "4.68702",
+                "Currency": "JGM"
+              }
             }]
         }],
       "RemittanceInformation": {
@@ -421,7 +435,7 @@ Accept: application/json
                 "Number": "Number_01",
                 "RelatedDate": "2024-04-25T13:26:41.911Z",
                 "LineDetails": [
-                  "string"
+                  "LineDetail"
                 ]
               }],
             "ReferredDocumentAmount": 1,
@@ -435,26 +449,38 @@ Accept: application/json
           }
         ]
        }
-    }
-  },
-  "Risk": {
-    "PaymentContextCode": "EcommerceMerchantInitiatedPayment",
-    "ContractPresentIndicator": false,
-    "PaymentPurposeCode": "EPAY",
-    "BeneficiaryPaymentDetailsPrepopulatedIndicator": false,
-    "BeneficiaryAccountType": "Business",
-    "MerchantCustomerIdentification": "053598653254",
-    "DeliveryAddress": {
-      "AddressLine": [
-        "Flat 7",
-        "Acacia Lodge"
-      ],
-      "StreetName": "Acacia Avenue",
-      "BuildingNumber": "27",
-      "PostCode": "GU31 2ZZ",
-      "TownName": "Sparsholt",
-      "CountrySubDivision": "Wessex",
-      "Country": "UK"
+    },
+    "Authorisation": {
+      "AuthorisationType": "Any", 
+      "CompletionDateTime": "2025-05-30T10:35:27Z",
+    },
+    "SCASupportData": {
+        "Type": "EcommerceServices",
+        "AppliedAuthenticationApproach": "SCA",
+        "ReferencePaymentOrderId": "O-611265",
+        "Description": "Order number O-611256 payment"
+    },
+    "Risk": {
+      "PaymentContextCode": "EcommerceMerchantInitiatedPayment",
+      "ContractPresentIndicator": false,
+      "PaymentPurposeCode": "EPAY",
+      "CategoryPurposeCode": "CASH", 
+      "BeneficiaryPaymentDetailsPrepopulatedIndicator": false,
+      "BeneficiaryAccountType": "Business",
+      "MerchantCategoryCode": "7300", 
+      "MerchantCustomerIdentification": "053598653254",
+      "DeliveryAddress": {
+        "AddressLine": [
+          "Flat 7",
+          "Acacia Lodge"
+        ],
+        "StreetName": "Acacia Avenue",
+        "BuildingNumber": "27",
+        "PostCode": "GU31 2ZZ",
+        "TownName": "Sparsholt",
+        "CountrySubDivision": "Wessex",
+        "Country": "UK"
+      }
     }
   }
 }
@@ -474,15 +500,45 @@ Content-Type: application/json
   "Data": {
     "ConsentId": "58923",
     "StatusCode": "AWAU",
+    "LocalInstrument": "UK.OB.CHAPS", 
+    "StatusReason": {
+      "StatusReasonCode": "U036", 
+      "StatusReasonDescription":"Waiting for completion of consent authorisation to be completed by user",
+    },
+    "CutOffDateTime": "2017-07-05T15:15:22+00:00",
+    "ExpectedExecutionDateTime": "2017-06-05T15:15:22+00:00",
+    "ExpectedSettlementDateTime": "2017-06-06T15:15:22+00:00",
     "CreationDateTime": "2017-06-05T15:15:13+00:00",
     "StatusUpdateDateTime": "2017-06-05T15:15:13+00:00",
     "ReadRefundAccount": "Yes",
+     "Authorisation": {
+      "Type": "Any",
+      "CompletionDateTime": "2024-05-30T10:35:27Z"
+    },
+    "Charges": [{
+       "ChargeBearer": "Shared",
+       "Type": "UK.OB.CHAPSOut",
+       "Amount"  {
+        "Amount": "0.88",
+        "Currency": "GBP"
+      },
+    }],
     "Initiation": {
       "InstructionIdentification": "ACME412",
       "EndToEndIdentification": "FRESCO.21302.GFX.20",
       "InstructedAmount": {
         "Amount": "165.88",
         "Currency": "GBP"
+      },
+       "DebtorAccount": {
+        "SchemeName": "UK.OB.SortCodeAccountNumber",
+        "Identification": "08080025612489",
+        "SecondaryIdentification": "080801562314789",
+        "Name": "Jane Smith",
+        "Proxy": {
+          "Identification": "441234012345",
+          "Code": "TELE",
+        },
       },
       "CreditorAccount": {
         "SchemeName": "UK.OB.SortCodeAccountNumber",
@@ -536,12 +592,14 @@ Content-Type: application/json
             "CountryCode": "UG"
           },
           "Details": [{
-            "Date": "2024-04-25T13:26:41.911Z",
-            "Country": "QG",
-            "Amount": {
-              "Amount": "4.68702",
-              "Currency": "JGM"
-            }
+              "Type": "CRED",
+              "Date": "2024-04-25T13:26:41.911Z",
+              "Information": ["Reg info1", "Reg info2"],
+              "Country": "QG",
+              "Amount": {
+                "Amount": "4.68702",
+                "Currency": "JGM"
+              }
             }]
         }],
       "RemittanceInformation": {
@@ -571,8 +629,10 @@ Content-Type: application/json
     "PaymentContextCode": "EcommerceMerchantInitiatedPayment",
     "ContractPresentIndicator": false,
     "PaymentPurposeCode": "EPAY",
+    "CategoryPurposeCode": "CASH", 
     "BeneficiaryPaymentDetailsPrepopulatedIndicator": false,
     "BeneficiaryAccountType": "Business",
+    "MerchantCategoryCode": "7300", 
     "MerchantCustomerIdentification": "053598653254",
     "DeliveryAddress": {
       "AddressLine": [
@@ -630,7 +690,7 @@ Content-Type: application/json
       "InstructedAmount": {
         "Amount": "165.88",
         "Currency": "GBP"
-      },
+      },  
       "CreditorAccount": {
         "SchemeName": "UK.OB.SortCodeAccountNumber",
         "Identification": "08080021325698",
@@ -717,6 +777,12 @@ Content-Type: application/json
     "Debtor": {
       "Name": "D Jones"
     }
+  },
+  "SCASupportData": {
+    "Type": "EcommerceServices",
+    "AppliedAuthenticationApproach": "SCA",
+    "ReferencePaymentOrderId": "O-611265",
+    "Description": "Order number O-611256 payment"
   },
   "Risk": {
     "PaymentContextCode": "EcommerceMerchantInitiatedPayment",

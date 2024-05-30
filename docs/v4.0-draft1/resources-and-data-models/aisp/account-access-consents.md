@@ -473,7 +473,7 @@ Content-Type: application/json
     "ExpirationDateTime": "2017-08-02T00:00:00+00:00",
     "TransactionFromDateTime": "2017-05-03T00:00:00+00:00",
     "TransactionToDateTime": "2017-12-03T00:00:00+00:00"
-  }
+  },
   "Links": {
     "Self": "https://api.alphabank.com/open-banking/v3.1/aisp/account-access-consents/urn-alphabank-intent-88379"
   },
