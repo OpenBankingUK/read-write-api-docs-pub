@@ -715,9 +715,8 @@ This section describes the OBWritePaymentDetailsResponse1 class which used in th
 | StatusUpdateDateTime |1..1 |OBWritePaymentDetailsResponse1/Data/StatusUpdateDateTime |Date and time at which the status was assigned to the transfer. |ISODateTime | | |
 | StatusDetail |0..* |OBWritePaymentDetailsResponse1/Data/StatusDetail |Array of Payment StatusCodes| | | |
 | StatusCode |1..1 |OBWritePaymentDetailsResponse1/Data/StatusDetail/StatusCode |Status of a transfer, as assigned by the transaction administrator. <br> For more information and enum values see `ExternalPaymentTransactionStatus1Code`[here](https://github.com/OpenBankingUK/External_internal_CodeSets). |ExternalPaymentTransactionStatus1Code |Specifies the status reason in a code form. Values:<br>RCVD<br>PDNG<br>ACTC<br>ACFC<br>ACSP<br>ACSC<br>ACWP<br>ACCC<br>BLCK<br>CANC<br>RJCT| |
-| StatusReasonCode |0..1 |OBWritePaymentDetailsResponse1/Data/StatusDetail/StatusReasonCode |Specifies the status reason in a code form.<br> For more information and enum values see `OB Internal Code Set. OBExternalStatusReason1Code`[here](https://github.com/OpenBankingUK/External_internal_CodeSets) |OBExternalStatusReason1Code | | |
-| StatusReasonDescription |0..* |OBWritePaymentDetailsResponse1/Data/StausDetail/StatusReasonDescription |Description supporting the StatusReasonCode|Max500Text | | |
-| StatusReasonDescription |0..1 |OBWritePaymentDetailsResponse1/Data/StatusDetail/StatusReasonDescription |Reason provided for the status of a transfer. |Max256Text | | |
+| StatusReasonCode |0..1 |OBWritePaymentDetailsResponse1/Data/StatusDetail/StatusReasonCode |Specifies the status reason in a code form.<br> For more information and enum values see `OB Internal Code Set. OBExternalStatusReason1Code`[here](https://github.com/OpenBankingUK/External_internal_CodeSets) |OBExternalStatusReason1Code | | ||
+| StatusReasonDescription |0..1 |OBWritePaymentDetailsResponse1/Data/StatusDetail/StatusReasonDescription |Reason provided for the status of a transfer. |Max500Text | | |
 | StatusUpdateDateTime |1..1 |OBWritePaymentDetailsResponse1/Data/StatusDetail/StatusUpdateDateTime |Date and time at which the status was assigned to the transfer. |ISODateTime | | |
 
 #### OBSCASupportData1
@@ -759,6 +758,7 @@ This section describes the OBSCASupportData1 class, which is used across all  _p
 | LineDetails | 0..* | OBRemittanceInformation1/Structured/ReferredDocumentInformation/LineDetails | Set of elements used to provide the content of the referred document line. | Array of String ||
 | Number | 0..1 | OBRemittanceInformation1/Structured/ReferredDocumentInformation/Number | Identification of the type specified for the referred document line. | Max35Text ||
 | RelatedDate | 0..1 | OBRemittanceInformation1/Structured/ReferredDocumentInformation/RelatedDate | Date associated with the referred document line. | ISODate ||
+| Unstructured |0..* |OBRemittanceInformation1/Unstructured |Information supplied to enable the matching/reconciliation of an entry with the items that the payment is intended to settle, such as commercial invoices in an accounts' receivable system, in an unstructured form. |Max140Text | |
 
 #### OBMandateRelatedInformation1
 
