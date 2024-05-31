@@ -308,11 +308,28 @@ Accept: application/json
 {
   "Data": {
 	"Permission": "Create",
+  "Authorisation": {
+      "AuthorisationType": "Any", 
+      "CompletionDateTime": "2025-05-30T10:35:27Z",
+    },
   "ReadRefundAccount": "Yes",
-    "Initiation": {
+  "Initiation": {
 	  "Frequency": "EvryDay",
 	  "Reference": "Pocket money for Damien",
 	  "FirstPaymentDateTime": "1976-06-06T06:06:06+00:00",
+    "MandateRelatedInformation": {
+            "MandateIdentification": "Caravanners",
+            "Classification": "FIXE",
+            "CategoryPurposeCode": "BONU",
+            "FirstPaymentDateTime": "2024-04-25T12:46:49.425Z",
+            "RecurringPaymentDateTime": "2024-04-25T12:46:49.425Z",
+            "FinalPaymentDateTime": "2024-04-25T12:46:49.425Z",
+            "Frequency": {
+              "Type": "WEEK",
+              "CountPerPeriod": 1,
+              "PointInTime": "00"
+        }
+      },
 	  "FirstPaymentAmount": {
         "Amount": "6.66",
         "Currency": "GBP"
@@ -328,19 +345,93 @@ Accept: application/json
 	  },
       "DebtorAccount": {
         "SchemeName": "UK.OB.SortCodeAccountNumber",
+        "SecondaryIdentification": "0002",
         "Identification": "11280001234567",
-        "Name": "Andrea Smith"
+        "Name": "Andrea Smith",
+        "Proxy": {
+          "Identification": "07700900000",
+          "Code": "TELE"
+        },
       },
       "CreditorAccount": {
         "SchemeName": "UK.OB.SortCodeAccountNumber",
+        "SecondaryIdentification": "0002",
         "Identification": "08080021325698",
-        "Name": "Bob Clements"
-      }
+        "Name": "Bob Clements",
+         "Proxy": {
+          "Identification": "07700900999",
+          "Code": "TELE"
+        },
+      },
+      "RemittanceInformation": {
+        "Structured": [{
+            "ReferredDocumentInformation": [{
+                "Code": "CINV",
+                "Issuer": "Issuer01",
+                "Number": "Number_01",
+                "RelatedDate": "2024-04-25T13:26:41.911Z",
+                "LineDetails": [
+                  "LineDetail"
+                ]
+              }],
+            "ReferredDocumentAmount": 1,
+            "CreditorReferenceInformation": {
+              "Code": "DISP",
+              "Issuer": "Issuer01",
+              "Reference": "REF_26518"
+            },
+            "Invoicer": "INVR51856",
+            "Invoicee": "INVE5161856"
+          }
+        ]
+       },
+      "RegulatoryReporting": [{
+          "DebitCreditReportingIndicator": "CRED",
+          "Authority": {
+            "Name": "string",
+            "CountryCode": "UG"
+          },
+          "Details": [{
+              "Type": "CRED",
+              "Date": "2024-04-25T13:26:41.911Z",
+              "Information": ["Reg info1", "Reg info2"],
+              "Country": "QG",
+              "Amount": {
+                "Amount": "4.68702",
+                "Currency": "JGM"
+              }
+            }]
+      }],
     }
   },
+  "SCASupportData": {
+        "Type": "EcommerceServices",
+        "AppliedAuthenticationApproach": "SCA",
+        "ReferencePaymentOrderId": "O-611265",
+        "Description": "Order number O-611256 payment"
+    },
   "Risk": {
-    "PaymentContextCode": "TransferToThirdParty"
-  }
+    "PaymentContextCode": "TransferToThirdParty",
+    "ContractPresentIndicator": false,
+      "PaymentPurposeCode": "EPAY",
+      "CategoryPurposeCode": "CASH", 
+      "BeneficiaryPaymentDetailsPrepopulatedIndicator": false,
+      "BeneficiaryAccountType": "Business",
+      "MerchantCategoryCode": "7300", 
+      "MerchantCustomerIdentification": "053598653254",
+      "DeliveryAddress": {
+        "AddressLine": [
+          "Flat 7",
+          "Acacia Lodge"
+        ],
+        "StreetName": "Acacia Avenue",
+        "BuildingNumber": "27",
+        "PostCode": "GU31 2ZZ",
+        "TownName": "Sparsholt",
+        "CountrySubDivision": "Wessex",
+        "Country": "UK"
+      }
+  },
 }
 ```
 
@@ -359,8 +450,23 @@ Content-Type: application/json
 	"ConsentId": "SOC-100",
 	"CreationDateTime": "1976-01-01T06:06:06+00:00",
 	"StatusCode": "AWAU",
+  "StatusReason": {
+      "StatusReasonCode": "U036", 
+      "StatusReasonDescription":"Waiting for completion of consent authorisation to be completed by user",
+    },
 	"StatusUpdateDateTime": "1976-06-06T06:06:06+00:00",
 	"Permission": "Create",
+   "Authorisation": {
+      "Type": "Any",
+      "CompletionDateTime": "2024-05-30T10:35:27Z"
+    },
+  "Debtor":{
+      "SchemeName": "UK.OB.SortCodeAccountNumber",
+      "Identification": "08080021325698",
+      "Name": "ACME Inc",
+      "SecondaryIdentification": "0002",
+      "LEI": "8200007YHFDMEODY1965",
+    },
   "ReadRefundAccount": "Yes",
     "Initiation": {
 	  "MandateRelatedInformation": {
@@ -394,13 +500,69 @@ Content-Type: application/json
       "DebtorAccount": {
         "SchemeName": "UK.OB.SortCodeAccountNumber",
         "Identification": "11280001234567",
-        "Name": "Andrea Smith"
+        "Name": "Andrea Smith",
+        "SecondaryIdentification": "0002",
+         "Proxy": {
+          "Identification": "441234012345",
+          "Code": "TELE",
+        }
       },
       "CreditorAccount": {
         "SchemeName": "UK.OB.SortCodeAccountNumber",
         "Identification": "08080021325698",
-        "Name": "Bob Clements"
+        "Name": "Bob Clements",
+        "SecondaryIdentification": "0002",
+         "Proxy": {
+          "Identification": "441234012346",
+          "Code": "TELE",
+        }
+      },
+      "RemittanceInformation": {
+        "Structured": [
+          {
+            "ReferredDocumentInformation": [
+              {
+                "Code": "CINV",
+                "Issuer": "Issuer01",
+                "Number": "Number_01",
+                "RelatedDate": "2024-04-25T13:26:41.911Z",
+                "LineDetails": [
+                  "string"
+                ]
+              }
+            ],
+            "ReferredDocumentAmount": 1,
+            "CreditorReferenceInformation": {
+              "Code": "DISP",
+              "Issuer": "Issuer01",
+              "Reference": "REF_26518"
+            },
+            "Invoicer": "INVR51856",
+            "Invoicee": "INVE5161856"
+          }
+        ]
       }
+      "RegulatoryReporting": [
+        {
+          "DebitCreditReportingIndicator": "CRED",
+          "Authority": {
+            "Name": "string",
+            "CountryCode": "UG"
+          },
+          "Details": [
+            {
+             "Type": "CRED",
+              "Date": "2024-04-25T13:26:41.911Z",
+              "Information": ["Reg info1", "Reg info2"],
+              "Country": "QG",
+              "Amount": {
+                "Amount": "4.68702",
+                "Currency": "JGM"
+              }
+            }
+        ]
+      }
+    ],
     }
   },
   "Risk": {
@@ -564,6 +726,12 @@ Content-Type: application/json
           ]
         }
       }
+    },
+  "SCASupportData": {
+      "Type": "EcommerceServices",
+      "AppliedAuthenticationApproach": "SCA",
+      "ReferencePaymentOrderId": "O-611265",
+      "Description": "Order number O-611256 payment"
     },
   "Risk": {
     "PaymentContextCode": "TransferToThirdParty"

@@ -510,7 +510,7 @@ Content-Type: application/json
     "CreationDateTime": "2017-06-05T15:15:13+00:00",
     "StatusUpdateDateTime": "2017-06-05T15:15:13+00:00",
     "ReadRefundAccount": "Yes",
-     "Authorisation": {
+    "Authorisation": {
       "Type": "Any",
       "CompletionDateTime": "2024-05-30T10:35:27Z"
     },
