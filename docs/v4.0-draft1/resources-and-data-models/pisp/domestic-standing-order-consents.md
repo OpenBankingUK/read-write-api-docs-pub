@@ -318,18 +318,18 @@ Accept: application/json
 	  "Reference": "Pocket money for Damien",
 	  "FirstPaymentDateTime": "1976-06-06T06:06:06+00:00",
     "MandateRelatedInformation": {
-            "MandateIdentification": "Caravanners",
-            "Classification": "FIXE",
-            "CategoryPurposeCode": "BONU",
-            "FirstPaymentDateTime": "2024-04-25T12:46:49.425Z",
-            "RecurringPaymentDateTime": "2024-04-25T12:46:49.425Z",
-            "FinalPaymentDateTime": "2024-04-25T12:46:49.425Z",
-            "Frequency": {
-              "Type": "WEEK",
-              "CountPerPeriod": 1,
-              "PointInTime": "00"
-        }
-      },
+      "MandateIdentification": "Caravanners",
+      "Classification": "FIXE",
+      "CategoryPurposeCode": "BONU",
+      "FirstPaymentDateTime": "2024-04-25T12:46:49.425Z",
+      "RecurringPaymentDateTime": "2024-04-25T12:46:49.425Z",
+      "FinalPaymentDateTime": "2024-04-25T12:46:49.425Z",
+      "Frequency": {
+        "Type": "WEEK",
+        "CountPerPeriod": 1,
+        "PointInTime": "00"
+      }
+    },
 	  "FirstPaymentAmount": {
         "Amount": "6.66",
         "Currency": "GBP"
@@ -382,8 +382,9 @@ Accept: application/json
             },
             "Invoicer": "INVR51856",
             "Invoicee": "INVE5161856"
-          }
-        ]
+          },
+        ],
+        "Unstructured": "Internal ops code 5120101"
        },
       "RegulatoryReporting": [{
           "DebitCreditReportingIndicator": "CRED",
