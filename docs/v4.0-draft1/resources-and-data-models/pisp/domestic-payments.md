@@ -448,7 +448,7 @@ Content-Type: application/json
         "Name": "NTPC Inc"
       }
     },
-    "Debtor"{
+    "Debtor":{
       "SchemeName": "UK.OB.SortCodeAccountNumber",
       "Identification": "08080021325698",
       "Name": "ACME Inc",

@@ -305,12 +305,71 @@ Accept: application/json
       "DebtorAccount": {
         "SchemeName": "UK.OB.SortCodeAccountNumber",
         "Identification": "11280001234567",
-        "Name": "Andrea Frost"
+        "SecondaryIdentification": "080801562314789",
+        "Name": "Andrea Frost",
+        "Proxy": {
+          "Identification": "441234012345",
+          "Code": "TELE",
+        },
       },
       "CreditorAccount": {
         "SchemeName": "UK.OB.SortCodeAccountNumber",
         "Identification": "08080021325698",
-        "Name": "Tom Kirkman"
+        "Name": "Tom Kirkman",
+        "SecondaryIdentification": "0002",
+        "Proxy": {
+          "Identification": "+441632960540",
+          "Code": "TELE"
+        },
+      },
+      "CreditorPostalAddress":{
+        "AddressType": "BIZZ",
+        "Department": "Finance",
+        "SubDepartment": "Payroll",
+        "StreetName": "Bank Street",
+        "BuildingNumber": "11",
+        "BuildingName": "Tower Bridges",
+        "Floor": "6",
+        "UnitNumber": "UNIT591",
+        "Room": "844",
+        "PostBox": "PO Box 123456",
+        "PostCode": "Z78 4TY",
+        "TownLocationName":"Bank",
+        "TownName": "London",
+        "DistrictName": "Greater London",
+        "CareOf": "Ms Jane Smith",
+        "CountrySubDivision": "England",
+        "Country": "UK"
+      },
+      "UltimateDebtor": {
+      "SchemeName": "UK.OB.BICFI",
+      "Identification": "2360549017905161589",
+      "Name": "Ultimate Debtor",
+      "LEI": "8200007YHFDMEODY1965",
+      "PostalAddress": {
+          "AddressType": "BIZZ",
+          "StreetName": "Bank Street",
+          "BuildingNumber": "11",
+          "Floor": "6",
+          "PostCode": "Z78 4TY",
+          "TownName": "London",
+          "Country": "UK"
+        }
+      },
+      "UltimateCreditor": {
+        "SchemeName": "UK.OB.BICFI",
+        "Identification": "2360549017905161589",
+        "Name": "Ultimate Creditor",
+        "LEI": "60450004FECVJV7YN339",
+        "PostalAddress": {
+            "AddressType": "BIZZ",
+            "StreetName": "Bank Street",
+            "BuildingNumber": "11",
+            "Floor": "6",
+            "PostCode": "Z78 4TY",
+            "TownName": "London",
+            "Country": "UK"
+          }
       },
      "RemittanceInformation": {
           "Structured": [
@@ -336,11 +395,30 @@ Accept: application/json
               "Invoicee": "INVE5161856"
             }
           ]
-        }
+        },
+        "Unstructured": "Internal ops code 5120101"
     }
   },
   "Risk": {
-    "PaymentContextCode": "TransferToThirdParty"
+    "PaymentContextCode": "TransferToThirdParty",
+    "ContractPresentIndicator": false,
+    "PaymentPurposeCode": "EPAY",
+    "CategoryPurposeCode": "CASH", 
+    "BeneficiaryPaymentDetailsPrepopulatedIndicator": false,
+    "BeneficiaryAccountType": "Business",
+    "MerchantCategoryCode": "7300", 
+    "MerchantCustomerIdentification": "053598653254",
+    "DeliveryAddress": {
+      "AddressLine": [
+        "Flat 7",
+        "Acacia Lodge"
+      ],
+      "StreetName": "Acacia Avenue",
+      "BuildingNumber": "27",
+      "PostCode": "GU31 2ZZ",
+      "TownName": "Sparsholt",
+      "CountrySubDivision": "Wessex",
+      "Country": "UK"
   }
 }
 ```
@@ -360,12 +438,41 @@ Content-Type: application/json
     "DomesticScheduledPaymentId": "7290-003",
     "ConsentId": "7290",
     "StatusCode": "RCVD",
+    "StatusReason": {
+      "StatusReasonCode": "U030", 
+      "StatusReasonDescription":"Payment order successfully received",
+    },
     "CreationDateTime": "2018-05-05T15:15:13+00:00",
     "StatusUpdateDateTime": "2018-05-05T15:15:13+00:00",
+    "ExpectedExecutionDateTime": "2018-06-05T15:15:22+00:00",
+    "ExpectedSettlementDateTime": "2018-06-06T15:15:22+00:00",
+    "Charges": [{
+       "ChargeBearer": "Shared",
+       "Type": "UK.OB.CHAPSOut",
+       "Amount"  {
+        "Amount": "0.88",
+        "Currency": "GBP"
+      },
+    }],
+    "Debtor":{
+      "SchemeName": "UK.OB.SortCodeAccountNumber",
+      "Identification": "08080021325698",
+      "Name": "ACME Inc",
+      "SecondaryIdentification": "0002",
+      "LEI": "8200007YHFDMEODY1965",
+    },
+    "MultiAuthorisation": { 
+      "StatusCode": "AUTH", 
+      "NumberRequired": 2,
+      "NumberReceived": 2,
+      "LastUpdateDateTime": "2018-06-05T15:15:13+00:00",
+      "ExpirationDateTime": "2018-06-06T15:15:13+00:00",
+    },
     "Refund": {
       "Account": {
         "SchemeName": "UK.OB.SortCodeAccountNumber",
         "Identification": "08080021325677",
+        "SecondaryIdentification": "0002",
         "Name": "NTPC Inc"
       }
     },
@@ -389,6 +496,25 @@ Content-Type: application/json
           "Identification": "+441632960540",
           "Code": "TELE"
         },
+      },
+      "CreditorPostalAddress":{
+        "AddressType": "BIZZ",
+        "Department": "Finance",
+        "SubDepartment": "Payroll",
+        "StreetName": "Bank Street",
+        "BuildingNumber": "11",
+        "BuildingName": "Tower Bridges",
+        "Floor": "6",
+        "UnitNumber": "UNIT591",
+        "Room": "844",
+        "PostBox": "PO Box 123456",
+        "PostCode": "Z78 4TY",
+        "TownLocationName":"Bank",
+        "TownName": "London",
+        "DistrictName": "Greater London",
+        "CareOf": "Ms Jane Smith",
+        "CountrySubDivision": "England",
+        "Country": "UK"
       },
       "UltimateDebtor": {
         "SchemeName": "UK.OB.BICFI",
@@ -429,13 +555,15 @@ Content-Type: application/json
             },
             "Details": [
               {
-                "Date": "2024-04-25T13:26:41.911Z",
-                "Country": "QG",
-                "Amount": {
-                  "Amount": "4.68702",
-                  "Currency": "JGM"
+              "Type": "CRED",
+              "Date": "2024-04-25T13:26:41.911Z",
+              "Information": ["Reg info1", "Reg info2"],
+              "Country": "QG",
+              "Amount": {
+                "Amount": "4.68702",
+                "Currency": "JGM"
                 }
-              }
+            }
           ]
         }
       ],
@@ -464,6 +592,27 @@ Content-Type: application/json
             }
           ]
         }
+    },
+  "Risk": {
+    "PaymentContextCode": "EcommerceMerchantInitiatedPayment",
+    "ContractPresentIndicator": false,
+    "PaymentPurposeCode": "EPAY",
+    "CategoryPurposeCode": "CASH", 
+    "BeneficiaryPaymentDetailsPrepopulatedIndicator": false,
+    "BeneficiaryAccountType": "Business",
+    "MerchantCategoryCode": "7300", 
+    "MerchantCustomerIdentification": "053598653254",
+    "DeliveryAddress": {
+      "AddressLine": [
+        "Flat 7",
+        "Acacia Lodge"
+      ],
+      "StreetName": "Acacia Avenue",
+      "BuildingNumber": "27",
+      "PostCode": "GU31 2ZZ",
+      "TownName": "Sparsholt",
+      "CountrySubDivision": "Wessex",
+      "Country": "UK"
     }
   },
   "Links": {
