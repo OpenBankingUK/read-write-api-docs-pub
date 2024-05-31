@@ -97,7 +97,7 @@ The API endpoint allows the PISP to ask an ASPSP to confirm funds on a **domesti
 * An ASPSP can only respond to a funds confirmation request if the **domestic-payment-consent** resource has an Authorised status. If the status is not Authorised, an ASPSP must respond with a 400 (Bad Request) and a ```U009``` error code.
 * Confirmation of funds requests do not affect the status of the **domestic-payment-consent** resource.
 
-Refer to [External_Internal_CodeSets](https://github.com/OpenBankingUK/External_Internal_CodeSets) -> OB_Internal_CodeSet -> `OBExternalConsentProprietaryCode`.
+Refer to [External_Internal_CodeSets](https://github.com/OpenBankingUK/External_Internal_CodeSets) -> OB_Internal_CodeSet -> `OBInternalPermissions1Code`.
 
 ### State Model
 
@@ -121,7 +121,7 @@ Changes to the StatusCode, such as being rejected, should be captured in `Status
 
 | Field | Description |
 |---|---|
-| StatusReasonCode | Specifies the status reason in a code form. For a full description see `ExternalStatusReason1Code` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets) |
+| StatusReasonCode | Specifies the status reason in a code form. For a full description see `OBExternalStatusReason1Code` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets) |
 | StatusReasonDescription | Description of why the code was returned |
 |Path| Path is optional but relevant when the status reason refers to an object/field and hence conditional to provide JSON path. |
 
@@ -192,14 +192,14 @@ For the OBDomestic2 Initiation object:
 | Amount |1..1 |OBDomestic2/InstructedAmount/Amount |A number of monetary units specified in an active currency where the unit of currency is explicit and compliant with ISO 4217. |OBActiveCurrencyAndAmount_SimpleType | |`^\d{1,13}$|^\d{1,13}\.\d{1,5}$` |
 | Currency |1..1 |OBDomestic2/InstructedAmount/Currency |A code allocated to a currency by a Maintenance Agency under an international identification scheme, as described in the latest edition of the international standard ISO 4217 "Codes for the representation of currencies and funds". |ActiveOrHistoricCurrencyCode | |^[A-Z]{3,3}$ |
 | DebtorAccount |0..1 |OBDomestic2/DebtorAccount |Unambiguous identification of the account of the debtor to which a debit entry will be made as a result of the transaction. |OBCashAccountDebtor4 | | |
-| SchemeName |1..1 |OBDomestic2/DebtorAccount/SchemeName |Name of the identification scheme, in a coded form as published in an external list. |OBExternalAccountIdentification4Code | | |
+| SchemeName |1..1 |OBDomestic2/DebtorAccount/SchemeName |Name of the identification scheme, in a coded form as published in an external list. | For a full description see `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets). |OBInternalAccountIdentification4Code | 
 | Identification |1..1 |OBDomestic2/DebtorAccount/Identification |Identification assigned by an institution to identify an account. This identification is known by the account owner. |Max256Text | | |
 | Name |0..1 |OBDomestic2/DebtorAccount/Name |The account name is the name or names of the account owner(s) represented at an account level, as displayed by the ASPSP's online channels. Note, the account name is not the product name or the nickname of the account. |Max350Text | | |
 | SecondaryIdentification |0..1 |OBDomestic2/DebtorAccount/SecondaryIdentification |This is secondary identification of the account, as assigned by the account servicing institution. This can be used by building societies to additionally identify accounts with a roll number (in addition to a sort code and account number combination). |Max34Text | | |
 | Proxy |0..1 |OBDomestic2/DebtorAccount/Proxy |Specifies an alternate assumed name for the identification of the account.|OBProxy1 | | |
 | UltimateDebtor |0..1 |OBDomestic2/UltimateDebtor|Ultimate party that owes an amount of money to the (ultimate) creditor. |OBUltimateDebtor1 | | |
 | CreditorAccount |1..1 |OBDomestic2/CreditorAccount |Unambiguous identification of the account of the creditor to which a credit entry will be posted as a result of the payment transaction. |OBCashAccountCreditor3 | | |
-| SchemeName |1..1 |OBDomestic2/CreditorAccount/SchemeName |Name of the identification scheme, in a coded form as published in an external list. |OBExternalAccountIdentification4Code | | |
+| SchemeName |1..1 |OBDomestic2/CreditorAccount/SchemeName |Name of the identification scheme, in a coded form as published in an external list. | For a full description see `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets). |OBInternalAccountIdentification4Code | 
 | Identification |1..1 |OBDomestic2/CreditorAccount/Identification |Identification assigned by an institution to identify an account. This identification is known by the account owner. |Max256Text | | |
 | Name |1..1 |OBDomestic2/CreditorAccount/Name |The account name is the name or names of the account owner(s) represented at an account level. Note, the account name is not the product name or the nickname of the account. OB: ASPSPs may carry out name validation for Confirmation of Payee, but it is not mandatory. |Max350Text | | |
 | SecondaryIdentification |0..1 |OBDomestic2/CreditorAccount/SecondaryIdentification |This is secondary identification of the account, as assigned by the account servicing institution. This can be used by building societies to additionally identify accounts with a roll number (in addition to a sort code and account number combination). |Max34Text | | |
@@ -275,7 +275,7 @@ Them domestic-payment-consent **response** contains the full **original** payloa
 | CreationDateTime |1..1 |OBWriteDomesticConsentResponse5/Data/CreationDateTime |Date and time at which the resource was created. |ISODateTime | | |
 | StatusCode |1..1 |OBWriteDomesticConsentResponse5/Data/StatusCode |Specifies the status of consent resource in code form. |ExternalStatusReason1Code |AUTH AWAU RJCT COND |
 | StatusReason |0..* |OBWriteDomesticConsentResponse5/Data/StatusReason | An array of StatusReasonCode | OBStatusReason |
-| StatusReasonCode |0..1 |OBWriteDomesticConsentResponse5/Data/StatusReason/StatusReasonCode |Specifies the status reason in a code form. For a full description see `ExternalStatusReason1Code` [here](https://github.com/OpenBankingUK/External_internal_CodeSets). | ExternalStatusReason1Code |
+| StatusReasonCode |0..1 |OBWriteDomesticConsentResponse5/Data/StatusReason/StatusReasonCode |Specifies the status reason in a code form. |For a full list of enumeration values refer to `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_internal_CodeSets)|OBInternalPermissions1Code |
 | StatusReasonDescription |0..1 |OBWriteDomesticConsentResponse5/Data/StatusReason/StatusReasonDescription |Description supporting the StatusReasonCode. | Max500Text|
 |Path| 0..1 | OBWriteDomesticConsentResponse5/Data/StatusReason/Path| Path is optional but relevant when the status reason refers to an object/field and hence conditional to provide JSON path.| Max500Text| | |
 | StatusUpdateDateTime |1..1 |OBWriteDomesticConsentResponse5/Data/StatusUpdateDateTime |Date and time at which the resource status was updated. |ISODateTime | | |
@@ -342,6 +342,7 @@ Accept: application/json
     "Initiation": {
       "InstructionIdentification": "ACME412",
       "EndToEndIdentification": "FRESCO.21302.GFX.20",
+      "LocalInstrument": "UK.OB.Paym",
       "InstructedAmount": {
         "Amount": "165.88",
         "Currency": "GBP"
@@ -361,11 +362,21 @@ Accept: application/json
       },
       "CreditorPostalAddress":{
         "AddressType": "BIZZ",
+        "Department": "Finance",
+        "SubDepartment": "Payroll",
         "StreetName": "Bank Street",
         "BuildingNumber": "11",
+        "BuildingName": "Tower Bridges",
         "Floor": "6",
+        "UnitNumber": "UNIT591",
+        "Room": "844",
+        "PostBox": "PO Box 123456",
         "PostCode": "Z78 4TY",
+        "TownLocationName":"Bank",
         "TownName": "London",
+        "DistrictName": "Greater London",
+        "CareOf": "Ms Jane Smith",
+        "CountrySubDivision": "England",
         "Country": "UK"
       },
       "UltimateDebtor": {
@@ -405,12 +416,14 @@ Accept: application/json
             "CountryCode": "UG"
           },
           "Details": [{
-            "Date": "2024-04-25T13:26:41.911Z",
-            "Country": "QG",
-            "Amount": {
-              "Amount": "4.68702",
-              "Currency": "JGM"
-            }
+              "Type": "CRED",
+              "Date": "2024-04-25T13:26:41.911Z",
+              "Information": ["Reg info1", "Reg info2"],
+              "Country": "QG",
+              "Amount": {
+                "Amount": "4.68702",
+                "Currency": "JGM"
+              }
             }]
         }],
       "RemittanceInformation": {
@@ -421,7 +434,7 @@ Accept: application/json
                 "Number": "Number_01",
                 "RelatedDate": "2024-04-25T13:26:41.911Z",
                 "LineDetails": [
-                  "string"
+                  "LineDetail"
                 ]
               }],
             "ReferredDocumentAmount": 1,
@@ -435,26 +448,38 @@ Accept: application/json
           }
         ]
        }
-    }
-  },
-  "Risk": {
-    "PaymentContextCode": "EcommerceMerchantInitiatedPayment",
-    "ContractPresentIndicator": false,
-    "PaymentPurposeCode": "EPAY",
-    "BeneficiaryPaymentDetailsPrepopulatedIndicator": false,
-    "BeneficiaryAccountType": "Business",
-    "MerchantCustomerIdentification": "053598653254",
-    "DeliveryAddress": {
-      "AddressLine": [
-        "Flat 7",
-        "Acacia Lodge"
-      ],
-      "StreetName": "Acacia Avenue",
-      "BuildingNumber": "27",
-      "PostCode": "GU31 2ZZ",
-      "TownName": "Sparsholt",
-      "CountrySubDivision": "Wessex",
-      "Country": "UK"
+    },
+    "Authorisation": {
+      "AuthorisationType": "Any", 
+      "CompletionDateTime": "2025-05-30T10:35:27Z",
+    },
+    "SCASupportData": {
+        "Type": "EcommerceServices",
+        "AppliedAuthenticationApproach": "SCA",
+        "ReferencePaymentOrderId": "O-611265",
+        "Description": "Order number O-611256 payment"
+    },
+    "Risk": {
+      "PaymentContextCode": "EcommerceMerchantInitiatedPayment",
+      "ContractPresentIndicator": false,
+      "PaymentPurposeCode": "EPAY",
+      "CategoryPurposeCode": "CASH", 
+      "BeneficiaryPaymentDetailsPrepopulatedIndicator": false,
+      "BeneficiaryAccountType": "Business",
+      "MerchantCategoryCode": "7300", 
+      "MerchantCustomerIdentification": "053598653254",
+      "DeliveryAddress": {
+        "AddressLine": [
+          "Flat 7",
+          "Acacia Lodge"
+        ],
+        "StreetName": "Acacia Avenue",
+        "BuildingNumber": "27",
+        "PostCode": "GU31 2ZZ",
+        "TownName": "Sparsholt",
+        "CountrySubDivision": "Wessex",
+        "Country": "UK"
+      }
     }
   }
 }
@@ -474,15 +499,45 @@ Content-Type: application/json
   "Data": {
     "ConsentId": "58923",
     "StatusCode": "AWAU",
+    "LocalInstrument": "UK.OB.CHAPS", 
+    "StatusReason": {
+      "StatusReasonCode": "U036", 
+      "StatusReasonDescription":"Waiting for completion of consent authorisation to be completed by user",
+    },
+    "CutOffDateTime": "2017-07-05T15:15:22+00:00",
+    "ExpectedExecutionDateTime": "2017-06-05T15:15:22+00:00",
+    "ExpectedSettlementDateTime": "2017-06-06T15:15:22+00:00",
     "CreationDateTime": "2017-06-05T15:15:13+00:00",
     "StatusUpdateDateTime": "2017-06-05T15:15:13+00:00",
     "ReadRefundAccount": "Yes",
+    "Authorisation": {
+      "Type": "Any",
+      "CompletionDateTime": "2024-05-30T10:35:27Z"
+    },
+    "Charges": [{
+       "ChargeBearer": "Shared",
+       "Type": "UK.OB.CHAPSOut",
+       "Amount"  {
+        "Amount": "0.88",
+        "Currency": "GBP"
+      },
+    }],
     "Initiation": {
       "InstructionIdentification": "ACME412",
       "EndToEndIdentification": "FRESCO.21302.GFX.20",
       "InstructedAmount": {
         "Amount": "165.88",
         "Currency": "GBP"
+      },
+       "DebtorAccount": {
+        "SchemeName": "UK.OB.SortCodeAccountNumber",
+        "Identification": "08080025612489",
+        "SecondaryIdentification": "080801562314789",
+        "Name": "Jane Smith",
+        "Proxy": {
+          "Identification": "441234012345",
+          "Code": "TELE",
+        },
       },
       "CreditorAccount": {
         "SchemeName": "UK.OB.SortCodeAccountNumber",
@@ -536,12 +591,14 @@ Content-Type: application/json
             "CountryCode": "UG"
           },
           "Details": [{
-            "Date": "2024-04-25T13:26:41.911Z",
-            "Country": "QG",
-            "Amount": {
-              "Amount": "4.68702",
-              "Currency": "JGM"
-            }
+              "Type": "CRED",
+              "Date": "2024-04-25T13:26:41.911Z",
+              "Information": ["Reg info1", "Reg info2"],
+              "Country": "QG",
+              "Amount": {
+                "Amount": "4.68702",
+                "Currency": "JGM"
+              }
             }]
         }],
       "RemittanceInformation": {
@@ -571,8 +628,10 @@ Content-Type: application/json
     "PaymentContextCode": "EcommerceMerchantInitiatedPayment",
     "ContractPresentIndicator": false,
     "PaymentPurposeCode": "EPAY",
+    "CategoryPurposeCode": "CASH", 
     "BeneficiaryPaymentDetailsPrepopulatedIndicator": false,
     "BeneficiaryAccountType": "Business",
+    "MerchantCategoryCode": "7300", 
     "MerchantCustomerIdentification": "053598653254",
     "DeliveryAddress": {
       "AddressLine": [
@@ -630,7 +689,7 @@ Content-Type: application/json
       "InstructedAmount": {
         "Amount": "165.88",
         "Currency": "GBP"
-      },
+      },  
       "CreditorAccount": {
         "SchemeName": "UK.OB.SortCodeAccountNumber",
         "Identification": "08080021325698",
@@ -717,6 +776,12 @@ Content-Type: application/json
     "Debtor": {
       "Name": "D Jones"
     }
+  },
+  "SCASupportData": {
+    "Type": "EcommerceServices",
+    "AppliedAuthenticationApproach": "SCA",
+    "ReferencePaymentOrderId": "O-611265",
+    "Description": "Order number O-611256 payment"
   },
   "Risk": {
     "PaymentContextCode": "EcommerceMerchantInitiatedPayment",

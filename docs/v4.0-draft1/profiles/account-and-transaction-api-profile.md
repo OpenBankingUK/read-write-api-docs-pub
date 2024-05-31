@@ -548,7 +548,7 @@ No fields for business logic security concerns have been identified for the Acco
 | Name |0..1 |OBUltimateCreditor1/Name |Name by which a party is known and which is usually used to identify that party. |Max140Text | | |
 | Identification |0..1 |OBUltimateCreditor1/Identification |Identification assigned by an institution. |Max256Text | | |
 | LEI |0..1 | OBUltimateCreditor1/LEI |Legal entity identification as an alternate identification for a party. Legal Entity Identifier is a code allocated to a party as described in ISO 17442 "Financial Services - Legal Entity Identifier (LEI)".|Max20Text | | ^[A-Z0-9]{18,18}[0-9]{2,2}$|
-| SchemeName |0..1 |OBUltimateCreditor1/SchemeName |Name of the identification scheme, in a coded form as published in an external list. | OBExternalAccountIdentification4Code |For a full description see `OBExternalAccountIdentification4Code` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets).| |
+| SchemeName |0..1 |OBUltimateCreditor1/SchemeName |Name of the identification scheme, in a coded form as published in an external list. | For a full description see `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets). |OBInternalAccountIdentification4Code |
 | PostalAddress | 0..1 | OBUltimateCreditor1/PostalAddress | Information that locates and identifies a specific address, as defined by postal services. | OBPostalAddress6 | | 
 
 #### OBUltimateDebtor1
@@ -560,7 +560,7 @@ No fields for business logic security concerns have been identified for the Acco
 | Name |0..1 |OBUltimateDebtor1/Name |Name by which a party is known and which is usually used to identify that party. |Max140Text | | |
 | Identification |0..1 |OBUltimateDebtor1/Identification |Identification assigned by an institution. |Max256Text | | |
 | LEI |0..1 | OBUltimateDebtor1/LEI |Legal entity identification as an alternate identification for a party. Legal Entity Identifier is a code allocated to a party as described in ISO 17442 "Financial Services - Legal Entity Identifier (LEI)".|Max20Text | | ^[A-Z0-9]{18,18}[0-9]{2,2}$|
-| SchemeName |0..1 |OBUltimateDebtor1/SchemeName |Name of the identification scheme, in a coded form as published in an external list. | OBExternalAccountIdentification4Code |For a full description see `OBExternalAccountIdentification4Code` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets).| |
+| SchemeName |0..1 |OBUltimateDebtor1/SchemeName |Name of the identification scheme, in a coded form as published in an external list. | For a full description see `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets). |OBInternalAccountIdentification4Code | 
 | PostalAddress | 0..1 | OBUltimateDebtor1/PostalAddress | Information that locates and identifies a specific address, as defined by postal services. | OBPostalAddress6 | | 
 
 ### Using Meta to identify Available Transaction Period
@@ -623,11 +623,11 @@ Deviations from the camt.052 XML standard are:
 
 | Code Class |Name |Definition |
 | --- |--- |--- |
-| OBAccountStatus1Code |Enabled |Account can be used for its intended purpose. |
-| OBAccountStatus1Code |Disabled |Account cannot be used for its intended purpose, either temporarily or permanently. |
-| OBAccountStatus1Code |Deleted |Account cannot be used any longer. |
-| OBAccountStatus1Code |ProForma |Account is temporary and can be partially used for its intended purpose. The account will be fully available for use when the account servicer has received all relevant documents. |
-| OBAccountStatus1Code |Pending |Account change is pending approval. |
+| OBInternalAccountStatus1Code |Enabled |Account can be used for its intended purpose. |
+| OBInternalAccountStatus1Code |Disabled |Account cannot be used for its intended purpose, either temporarily or permanently. |
+| OBInternalAccountStatus1Code |Deleted |Account cannot be used any longer. |
+| OBInternalAccountStatus1Code |ProForma |Account is temporary and can be partially used for its intended purpose. The account will be fully available for use when the account servicer has received all relevant documents. |
+| OBInternalAccountStatus1Code |Pending |Account change is pending approval. |
 | OBAddressType2CodeCode |BIZZ |Address is the business address. |
 | OBAddressType2CodeCode |CORR |Address is the address where correspondence is sent. |
 | OBAddressType2CodeCode |DLVY |Address is the address to which delivery is to take place. |
@@ -636,23 +636,23 @@ Deviations from the camt.052 XML standard are:
 | OBAddressType2CodeCode |ADDR |Address is the complete postal address. |
 | OBAddressType2CodeCode |HOME |Address is the home address. |
 | OBAddressType2CodeCode |STAT |Address is the address where statements are sent. |
-| OBBalanceType1Code |CLAV |ClosingAvailable - Closing balance of amount of money that is at the disposal of the account owner on the date specified. |
-| OBBalanceType1Code |CLBS |ClosingBooked - Balance of the account at the end of the pre-agreed account reporting period. It is the sum of the opening booked balance at the beginning of the period and all entries booked to the account during the pre-agreed account reporting period. |
-| OBBalanceType1Code |XPCH |Expected - Balance, composed of booked entries and pending items known at the time of calculation, which projects the end of day balance if everything is booked on the account and no other entry is posted. |
-| OBBalanceType1Code |FWAV |ForwardAvailable - Forward available balance of money that is at the disposal of the account owner on the date specified. |
-| OBBalanceType1Code |INFO |Information - Balance for informational purposes. |
-| OBBalanceType1Code |ITAV |InterimAvailable - Available balance calculated in the course of the account servicer's business day, at the time specified, and subject to further changes during the business day. The interim balance is calculated on the basis of booked credit and debit items during the calculation time/period specified. |
-| OBBalanceType1Code |ITBD |InterimBooked - Balance calculated in the course of the account servicer's business day, at the time specified, and subject to further changes during the business day. The interim balance is calculated on the basis of booked credit and debit items during the calculation time/period specified. |
-| OBBalanceType1Code |OPAV |OpeningAvailable - Opening balance of amount of money that is at the disposal of the account owner on the date specified. |
-| OBBalanceType1Code |OPBD |OpeningBooked - Book balance of the account at the beginning of the account reporting period. It always equals the closing book balance from the previous report. |
-| OBBalanceType1Code |PRCD |PreviouslyClosedBooked - Balance of the account at the previously closed account reporting period. The opening booked balance for the new period has to be equal to this balance. Usage: the previously booked closing balance should equal (inclusive date) the booked closing balance of the date it references and equal the actual booked opening balance of the current date. |
+| ExternalBalanceType1Code |CLAV |ClosingAvailable - Closing balance of amount of money that is at the disposal of the account owner on the date specified. |
+| ExternalBalanceType1Code |CLBS |ClosingBooked - Balance of the account at the end of the pre-agreed account reporting period. It is the sum of the opening booked balance at the beginning of the period and all entries booked to the account during the pre-agreed account reporting period. |
+| ExternalBalanceType1Code |XPCH |Expected - Balance, composed of booked entries and pending items known at the time of calculation, which projects the end of day balance if everything is booked on the account and no other entry is posted. |
+| ExternalBalanceType1Code |FWAV |ForwardAvailable - Forward available balance of money that is at the disposal of the account owner on the date specified. |
+| ExternalBalanceType1Code |INFO |Information - Balance for informational purposes. |
+| ExternalBalanceType1Code |ITAV |InterimAvailable - Available balance calculated in the course of the account servicer's business day, at the time specified, and subject to further changes during the business day. The interim balance is calculated on the basis of booked credit and debit items during the calculation time/period specified. |
+| ExternalBalanceType1Code |ITBD |InterimBooked - Balance calculated in the course of the account servicer's business day, at the time specified, and subject to further changes during the business day. The interim balance is calculated on the basis of booked credit and debit items during the calculation time/period specified. |
+| ExternalBalanceType1Code |OPAV |OpeningAvailable - Opening balance of amount of money that is at the disposal of the account owner on the date specified. |
+| ExternalBalanceType1Code |OPBD |OpeningBooked - Book balance of the account at the beginning of the account reporting period. It always equals the closing book balance from the previous report. |
+| ExternalBalanceType1Code |PRCD |PreviouslyClosedBooked - Balance of the account at the previously closed account reporting period. The opening booked balance for the new period has to be equal to this balance. Usage: the previously booked closing balance should equal (inclusive date) the booked closing balance of the date it references and equal the actual booked opening balance of the current date. |
 | OBCommunicationMethod |EMAL | Email communication method. |
 | OBCommunicationMethod |FAXI | Fax communication method. |
 | OBCommunicationMethod |FILE | File communication method. |
 | OBCommunicationMethod |ONLI | Online communication method. |
 | OBCommunicationMethod |POST | Postal communication method. |
-| OBCreditDebitCode |Credit |Operation is a credit |
-| OBCreditDebitCode |Debit |Operation is a debit |
+| OBInternalCreditDebitCode |Credit |Operation is a credit |
+| OBInternalCreditDebitCode |Debit |Operation is a debit |
 | ExternalEntryStatus1Code |BOOK |Booked - Booked means that the transfer of money has been completed between account servicer and account owner Usage: Status Booked does not necessarily imply finality of money as this depends on other factors such as the payment system used, the completion of the end- to-end transaction and the terms agreed between account servicer and owner. Status Booked is the only status that can be reversed. |
 | ExternalEntryStatus1Code |PDNG |Pending - Booking on the account owner's account in the account servicer's ledger has not been completed. Usage: this can be used for expected items, or for items for which some conditions still need to be fulfilled before they can be booked. If booking takes place, the entry will be included with status Booked in subsequent account report or statement. Status Pending cannot be reversed. |
 | ExternalEntryStatus1Code |INFO | Information <!-- TODO Get descriptions--> |
@@ -692,11 +692,11 @@ Deviations from the camt.052 XML standard are:
 | OBExternalCardSchemeType1Code |Discover |Discover scheme. |
 | OBExternalCardSchemeType1Code |MasterCard |MasterCard scheme. |
 | OBExternalCardSchemeType1Code |VISA |VISA scheme. |
-| OBExternalLimitType1Code |Available |The amount of credit limit available to the account holder |
-| OBExternalLimitType1Code |Credit |The amount of a credit limit that has been agreed with the account holder |
-| OBExternalLimitType1Code |Emergency |The amount of an arranged lending limit that can be borrowed on top of pre-agreed lending, that has been agreed with the account holder |
-| OBExternalLimitType1Code |Pre-Agreed |The amount of an arranged lending limit that has been agreed with the account holder |
-| OBExternalLimitType1Code |Temporary |The amount of a temporary lending limit that has been agreed with the account holder |
+| OBInternalLimitType1Code |Available |The amount of credit limit available to the account holder |
+| OBInternalLimitType1Code |Credit |The amount of a credit limit that has been agreed with the account holder |
+| OBInternalLimitType1Code |Emergency |The amount of an arranged lending limit that can be borrowed on top of pre-agreed lending, that has been agreed with the account holder |
+| OBInternalLimitType1Code |Pre-Agreed |The amount of an arranged lending limit that has been agreed with the account holder |
+| OBInternalLimitType1Code |Temporary |The amount of a temporary lending limit that has been agreed with the account holder |
 | OBExternalOfferType1Code |BalanceTransfer |Offer is a balance transfer. |
 | OBExternalOfferType1Code |LimitIncrease |Offer is a limit increase. |
 | OBExternalOfferType1Code |MoneyTransfer |Offer is a money transfer. |
