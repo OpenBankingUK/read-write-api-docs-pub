@@ -350,7 +350,6 @@ Accept: application/json
       "CreditorAccount": {
         "SchemeName": "UK.OB.SortCodeAccountNumber",
         "Identification": "08080021325698",
-        "SecondaryIdentification": "08080021325641",
         "Name": "ACME Inc",
         "SecondaryIdentification": "0002",
         "Proxy": {
