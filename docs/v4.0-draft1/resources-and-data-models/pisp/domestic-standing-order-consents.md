@@ -413,24 +413,24 @@ Accept: application/json
   "Risk": {
     "PaymentContextCode": "TransferToThirdParty",
     "ContractPresentIndicator": false,
-      "PaymentPurposeCode": "EPAY",
-      "CategoryPurposeCode": "CASH", 
-      "BeneficiaryPaymentDetailsPrepopulatedIndicator": false,
-      "BeneficiaryAccountType": "Business",
-      "MerchantCategoryCode": "7300", 
-      "MerchantCustomerIdentification": "053598653254",
-      "DeliveryAddress": {
-        "AddressLine": [
-          "Flat 7",
-          "Acacia Lodge"
-        ],
-        "StreetName": "Acacia Avenue",
-        "BuildingNumber": "27",
-        "PostCode": "GU31 2ZZ",
-        "TownName": "Sparsholt",
-        "CountrySubDivision": "Wessex",
-        "Country": "UK"
-      }
+    "PaymentPurposeCode": "EPAY",
+    "CategoryPurposeCode": "CASH", 
+    "BeneficiaryPaymentDetailsPrepopulatedIndicator": false,
+    "BeneficiaryAccountType": "Business",
+    "MerchantCategoryCode": "7300", 
+    "MerchantCustomerIdentification": "053598653254",
+    "DeliveryAddress": {
+      "AddressLine": [
+        "Flat 7",
+        "Acacia Lodge"
+      ],
+      "StreetName": "Acacia Avenue",
+      "BuildingNumber": "27",
+      "PostCode": "GU31 2ZZ",
+      "TownName": "Sparsholt",
+      "CountrySubDivision": "Wessex",
+      "Country": "UK"
+    }
   },
 }
 ```
@@ -476,6 +476,7 @@ Content-Type: application/json
         "FirstPaymentDateTime": "2024-04-25T12:46:49.425Z",
         "RecurringPaymentDateTime": "2024-04-25T12:46:49.425Z",
         "FinalPaymentDateTime": "2024-04-25T12:46:49.425Z",
+        "Reason": "Golf membership fees", 
         "Frequency": { 
           "Type": "MNTH",
           "CountPerPeriod": 1,
@@ -541,7 +542,7 @@ Content-Type: application/json
             "Invoicee": "INVE5161856"
           }
         ]
-      }
+      },
       "RegulatoryReporting": [
         {
           "DebitCreditReportingIndicator": "CRED",
@@ -566,7 +567,25 @@ Content-Type: application/json
     }
   },
   "Risk": {
-    "PaymentContextCode": "TransferToThirdParty"
+    "PaymentContextCode": "TransferToThirdParty",
+    "PaymentPurposeCode": "EPAY",
+    "CategoryPurposeCode": "CASH", 
+    "BeneficiaryPaymentDetailsPrepopulatedIndicator": false,
+    "BeneficiaryAccountType": "Business",
+    "MerchantCategoryCode": "7300", 
+    "MerchantCustomerIdentification": "053598653254",
+    "DeliveryAddress": {
+      "AddressLine": [
+        "Flat 7",
+        "Acacia Lodge"
+      ],
+      "StreetName": "Acacia Avenue",
+      "BuildingNumber": "27",
+      "PostCode": "GU31 2ZZ",
+      "TownName": "Sparsholt",
+      "CountrySubDivision": "Wessex",
+      "Country": "UK"
+    }
   },
   "Links": {
     "Self": "https://api.alphabank.com/open-banking/v3.1/pisp/domestic-standing-order-consents/SOC-100"

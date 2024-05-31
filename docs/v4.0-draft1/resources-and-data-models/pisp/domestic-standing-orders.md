@@ -277,7 +277,7 @@ Accept: application/json
 {
   "Data": {
 	"ConsentId": "SOC-100",
-    "Initiation": {
+  "Initiation": {
 	  "Frequency": "EvryDay",
 	  "Reference": "Pocket money for Damien",
 	  "FirstPaymentDateTime": "1976-06-06T06:06:06+00:00",
@@ -306,7 +306,12 @@ Accept: application/json
       "CreditorAccount": {
         "SchemeName": "UK.OB.SortCodeAccountNumber",
         "Identification": "08080021325698",
-        "Name": "Bob Clements"
+        "Name": "Bob Clements",
+        "SecondaryIdentification": "0002",
+         "Proxy": {
+          "Identification": "441234012345",
+          "Code": "TELE",
+        }
       },
       "MandateRelatedInformation": {
         "MandateIdentification": "Golfers",
@@ -315,6 +320,7 @@ Accept: application/json
         "FirstPaymentDateTime": "2024-04-25T12:46:49.425Z",
         "RecurringPaymentDateTime": "2024-04-25T12:46:49.425Z",
         "FinalPaymentDateTime": "2024-04-25T12:46:49.425Z",
+        "Reason": "Golf membership fees", 
         "Frequency": { 
           "Type": "MNTH",
           "CountPerPeriod": 1,
@@ -360,9 +366,9 @@ Accept: application/json
             },
             "Details": [
               {
-                "Type": "CRED",
-                "Date": "2024-04-25T13:26:41.911Z",
-                "Information": ["Reg info1", "Reg info2"],
+                "Tyte": "2024-04-25T13:26:41.911Z",
+                "Ipe": "CRED",
+                "Danformation": ["Reg info1", "Reg info2"],
                 "Country": "QG",
                 "Amount": {
                   "Amount": "4.68702",
@@ -400,8 +406,27 @@ Accept: application/json
     }
   },
   "Risk": {
-    "PaymentContextCode": "TransferToThirdParty"
-  }
+    "PaymentContextCode": "TransferToThirdParty",
+    "ContractPresentIndicator": false,
+    "PaymentPurposeCode": "EPAY",
+    "CategoryPurposeCode": "CASH",   
+    "BeneficiaryPaymentDetailsPrepopulatedIndicator": false,
+    "BeneficiaryAccountType": "Business",
+    "MerchantCategoryCode": "7300", 
+    "MerchantCustomerIdentification": "053598653254",
+    "DeliveryAddress": {
+      "AddressLine": [
+        "Flat 7",
+        "Acacia Lodge"
+        ],
+      "StreetName": "Acacia Avenue",
+      "BuildingNumber": "27",
+      "PostCode": "GU31 2ZZ",
+      "TownName": "Sparsholt",
+      "CountrySubDivision": "Wessex",
+      "Country": "UK"
+      }
+  },
 }
 
 ```
@@ -422,15 +447,40 @@ Content-Type: application/json
 	"ConsentId": "SOC-100",
 	"CreationDateTime": "1976-01-01T06:06:06+00:00",
 	"StatusCode": "ASCP",
-	"StatusUpdateDateTime": "1976-06-06T06:06:06+00:00",
-   "Refund": {
-      "Account": {
-        "SchemeName": "UK.OB.SortCodeAccountNumber",
-        "Identification": "08080021325677",
-        "Name": "NTPC Inc"
-      }
+  "StatusReason":{
+    "StatusReasonCode": "U30",
+    "Description": "	Payment order successfully received"
+  },
+  "Refund": {
+    "Account": {
+      "SchemeName": "UK.OB.SortCodeAccountNumber",
+      "Identification": "08080021325677",
+      "Name": "NTPC Inc"
+    }
+  },
+  "Debtor":{
+    "SchemeName": "UK.OB.SortCodeAccountNumber",
+    "Identification": "08080021325698",
+    "Name": "ACME Inc",
+    "SecondaryIdentification": "0002",
+    "LEI": "8200007YHFDMEODY1965",
+  },
+  "Charges": [{
+      "ChargeBearer": "Shared",
+      "Type": "UK.OB.CHAPSOut",
+      "Amount"  {
+      "Amount": "0.88",
+      "Currency": "GBP"
     },
-    "Initiation": {
+  }],
+  "MultiAuthorisation": { 
+      "StatusCode": "AUTH", 
+      "NumberRequired": 2,
+      "NumberReceived": 2,
+      "LastUpdateDateTime": "2017-06-05T15:15:13+00:00",
+      "ExpirationDateTime": "2017-06-06T15:15:13+00:00",
+    },
+  "Initiation": {
 	  "Frequency": "EvryDay",
 	  "Reference": "Pocket money for Damien",
 	  "FirstPaymentDateTime": "1976-06-06T06:06:06+00:00",
@@ -447,20 +497,98 @@ Content-Type: application/json
         "Amount": "7.00",
         "Currency": "GBP"
 	  },
-      "DebtorAccount": {
-        "SchemeName": "UK.OB.SortCodeAccountNumber",
-        "Identification": "11280001234567",
-        "Name": "Andrea Smith"
-      },
-      "CreditorAccount": {
-        "SchemeName": "UK.OB.SortCodeAccountNumber",
-        "Identification": "08080021325698",
-        "Name": "Bob Clements"
+    "DebtorAccount": {
+      "SchemeName": "UK.OB.SortCodeAccountNumber",
+      "Identification": "11280001234567",
+      "Name": "Andrea Smith",
+      "SecondaryIdentification": "080801562314789",
+        "Proxy": {
+        "Identification": "441234012345",
+        "Code": "TELE",
       }
+    },
+    "CreditorAccount": {
+      "SchemeName": "UK.OB.SortCodeAccountNumber",
+      "Identification": "08080021325698",
+      "Name": "Bob Clements",
+      "SecondaryIdentification": "080801562314778",
+      "Proxy": {
+      "Identification": "441234012385",
+      "Code": "TELE",
+      }
+    },
+    "UltimateDebtor": {
+      "SchemeName": "UK.OB.BICFI",
+      "Identification": "2360549017905161589",
+      "Name": "Ultimate Debtor",
+      "LEI": "8200007YHFDMEODY1965",
+      "PostalAddress": {
+          "AddressType": "BIZZ",
+          "StreetName": "Bank Street",
+          "BuildingNumber": "11",
+          "Floor": "6",
+          "PostCode": "Z78 4TY",
+          "TownName": "London",
+          "Country": "UK"
+      }
+    },
+    "UltimateCreditor": {
+      "SchemeName": "UK.OB.BICFI",
+      "Identification": "2360549017905161589",
+      "Name": "Ultimate Creditor",
+      "LEI": "60450004FECVJV7YN339",
+      "PostalAddress": {
+          "AddressType": "BIZZ",
+          "StreetName": "Bank Street",
+          "BuildingNumber": "11",
+          "Floor": "6",
+          "PostCode": "Z78 4TY",
+          "TownName": "London",
+          "Country": "UK"
+          }
+      },
+    "RegulatoryReporting": [
+      {
+        "DebitCreditReportingIndicator": "CRED",
+        "Authority": {
+          "Name": "string",
+          "CountryCode": "UG"
+        },
+        "Details": [
+          {
+            "Type": "CRED",
+            "Date": "2024-04-25T13:26:41.911Z",
+            "Information": ["Reg info1", "Reg info2"],
+            "Country": "QG",
+            "Amount": {
+              "Amount": "4.68702",
+              "Currency": "JGM"
+            }
+          }
+        ]
+     }]
     }
   },
   "Risk": {
-    "PaymentContextCode": "TransferToThirdParty"
+    "PaymentContextCode": "TransferToThirdParty",
+    "PaymentPurposeCode": "EPAY",
+    "CategoryPurposeCode": "CASH", 
+    "BeneficiaryPaymentDetailsPrepopulatedIndicator": false,
+    "BeneficiaryAccountType": "Business",
+    "MerchantCategoryCode": "7300", 
+    "MerchantCustomerIdentification": "053598653254",
+    "DeliveryAddress": {
+      "AddressLine": [
+        "Flat 7",
+        "Acacia Lodge"
+      ],
+      "StreetName": "Acacia Avenue",
+      "BuildingNumber": "27",
+      "PostCode": "GU31 2ZZ",
+      "TownName": "Sparsholt",
+      "CountrySubDivision": "Wessex",
+      "Country": "UK"
+    }
   },
   "Links": {
     "Self": "https://api.alphabank.com/open-banking/v3.1/pisp/domestic-standing-orders/SO-SOC-100"
