@@ -734,7 +734,26 @@ Content-Type: application/json
       "Description": "Order number O-611256 payment"
     },
   "Risk": {
-    "PaymentContextCode": "TransferToThirdParty"
+    "PaymentContextCode": "TransferToThirdParty",
+    "ContractPresentIndicator": false,
+    "PaymentPurposeCode": "EPAY",
+    "CategoryPurposeCode": "CASH", 
+    "BeneficiaryPaymentDetailsPrepopulatedIndicator": false,
+    "BeneficiaryAccountType": "Business",
+    "MerchantCategoryCode": "7300", 
+    "MerchantCustomerIdentification": "053598653254",
+    "DeliveryAddress": {
+      "AddressLine": [
+        "Flat 7",
+        "Acacia Lodge"
+      ],
+      "StreetName": "Acacia Avenue",
+      "BuildingNumber": "27",
+      "PostCode": "GU31 2ZZ",
+      "TownName": "Sparsholt",
+      "CountrySubDivision": "Wessex",
+      "Country": "UK"
+    }
   },
   "Links": {
     "Self": "https://api.alphabank.com/open-banking/v3.1/pisp/domestic-standing-order-consents/SOC-100"
