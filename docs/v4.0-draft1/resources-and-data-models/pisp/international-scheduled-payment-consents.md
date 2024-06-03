@@ -742,7 +742,7 @@ Content-Type: application/json
             "CountryCode": "UG"
           },
           "Details": [{
-           "Type": "CRED",
+            "Type": "CRED",
             "Date": "2024-04-25T13:26:41.911Z",
             "Information": ["Reg info1", "Reg info2"],
             "Country": "QG",

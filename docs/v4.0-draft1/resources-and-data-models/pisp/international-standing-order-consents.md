@@ -329,22 +329,75 @@ Accept: application/json
   "Data": {
 	"Permission": "Create",
   "ReadRefundAccount": "Yes",
-    "Initiation": {
-	  "DebtorAccount": {
+  "Authorisation": {
+	  "AuthorisationType": "Any", 
+      "CompletionDateTime": "2025-05-30T10:35:27Z",
+  },
+  "Initiation": {
+    "ChargeBearer": "Shared",
+    "Purpose": "CCRD",
+    "CurrencyOfTransfer": "USD",
+    "DestinationCountryCode": "GB",
+    "MandateRelatedInformation": {
+      "MandateIdentification": "Caravanners",
+      "Classification": "FIXE",
+      "CategoryPurposeCode": "BONU",
+      "FirstPaymentDateTime": "2024-04-25T12:46:49.425Z",
+      "RecurringPaymentDateTime": "2024-04-25T12:46:49.425Z",
+      "FinalPaymentDateTime": "2024-04-25T12:46:49.425Z",
+      "Frequency": {
+        "Type": "WEEK",
+        "CountPerPeriod": 1,
+        "PointInTime": "00"
+      }
+    },
+    "Creditor": {
+      "Name": "ACME Inc",
+      "LEI": "8200007YHFDMEODY1965",
+      "PostalAddress": {
+        "AddressType": "BIZZ",
+        "StreetName": "Bank Street",
+        "BuildingNumber": "11",
+        "Floor": "6",
+        "PostCode": "Z78 4TY",
+        "TownName": "London",
+        "Country": "UK"
+      }
+    },
+    "CreditorAccount": {
+      "SchemeName": "UK.OB.IBAN",
+      "Identification": "DE89370400440532013000",
+      "SecondaryIdentification": "0002",
+      "Name": "Tom Kirkman",
+      "Proxy": {
+        "Identification": "07700900000",
+        "Code": "TELE"
+      },
+    },
+    "CreditAgent": {
+      "SchemeName": "UK.OB.IBAN",
+      "Identification": "DE89370400440532013000",
+      "SecondaryIdentification": "0002",
+      "Name": "Tom Kirkman",
+      "PostalAddress": {
+        "AddressType": "BIZZ",
+        "StreetName": "Bank Street",
+        "BuildingNumber": "11",
+        "Floor": "6",
+        "PostCode": "Z78 4TY",
+        "TownName": "London",
+        "Country": "UK"
+      }
+    },
+    "DebtorAccount": {
         "SchemeName": "UK.OB.SortCodeAccountNumber",
         "Identification": "11280001234567",
         "Name": "Andrea Frost"
-      },
-      "CreditorAccount": {
-        "SchemeName": "UK.OB.IBAN",
-        "Identification": "DE89370400440532013000",
-        "Name": "Tom Kirkman"
       },
 	  "InstructedAmount": {
         "Amount": "20",
         "Currency": "EUR"
 	  },
-	  "CurrencyOfTansfer":"EUR",
     "MandateRelatedInformation": {
         "MandateIdentification": "Golfers",
         "Classification": "FIXE",
@@ -397,11 +450,13 @@ Accept: application/json
             },
             "Details": [
               {
-                "Date": "2024-04-25T13:26:41.911Z",
-                "Country": "QG",
-                "Amount": {
-                  "Amount": "4.68702",
-                  "Currency": "JGM"
+              "Type": "CRED",
+              "Date": "2024-04-25T13:26:41.911Z",
+              "Information": ["Reg info1", "Reg info2"],
+              "Country": "QG",
+              "Amount": {
+                "Amount": "4.68702",
+                "Currency": "JGM"
                 }
               }
           ]
@@ -430,12 +485,37 @@ Accept: application/json
               "Invoicer": "INVR51856",
               "Invoicee": "INVE5161856"
             }
-          ]
+          ],
+          "Unstructured": "Internal ops code 5120101"
         }
     }
   },
+  "SCASupportData": {
+    "Type": "EcommerceServices",
+    "AppliedAuthenticationApproach": "SCA",
+    "ReferencePaymentOrderId": "O-611265",
+    "Description": "Order number O-611256 payment"
+  },
   "Risk": {
-    "PaymentContextCode": "TransferToThirdParty"
+    "PaymentContextCode": "TransferToThirdParty",
+    "PaymentPurposeCode": "EPAY",
+    "CategoryPurposeCode": "CASH", 
+    "BeneficiaryPaymentDetailsPrepopulatedIndicator": false,
+    "BeneficiaryAccountType": "Business",
+    "MerchantCategoryCode": "7300", 
+    "MerchantCustomerIdentification": "053598653254",
+    "DeliveryAddress": {
+      "AddressLine": [
+        "Flat 7",
+        "Acacia Lodge"
+      ],
+      "StreetName": "Acacia Avenue",
+      "BuildingNumber": "27",
+      "PostCode": "GU31 2ZZ",
+      "TownName": "Sparsholt",
+      "CountrySubDivision": "Wessex",
+      "Country": "UK"
+    }
   }
 }
 ```
@@ -451,39 +531,172 @@ Content-Type: application/json
 
 ```json
 {
-  "Data": {
+"Data": {
 	"ConsentId": "ISOC-100",
 	"CreationDateTime": "2018-01-01T06:06:06+00:00",
-	"StatusCode": "AWAU",
-	"StatusUpdateDateTime": "2018-01-01T06:06:06+00:00",
+  "CutOffDateTime": "2017-06-05T16:00:13+00:00",
+	"StatusUpdateDateTime": "2017-06-05T15:15:13+00:00",
+  "ExpectedExecutionDateTime": "2018-06-05T15:15:22+00:00",
+  "ExpectedSettlementDateTime": "2018-06-06T15:15:22+00:00",
 	"Permission": "Create",
   "ReadRefundAccount": "Yes",
-    "Initiation": {
-	  "MandateRelatedInformation": {
-        "Frequency": "DAIL",
-        "PeriodType": "DAIL",
-        "FirstPaymentDate": "2018-06-06",
-        "LastPaymentDate": "2020-03-20",
+	"StatusCode": "AWAU",
+  "StatusReason": {
+    "StatusReasonCode": "U036", 
+    "StatusReasonDescription":"Waiting for completion of consent authorisation to be completed by user",
+  },
+  "Debtor":{
+      "SchemeName": "UK.OB.SortCodeAccountNumber",
+      "Identification": "08080021325698",
+      "Name": "ACME Inc",
+      "SecondaryIdentification": "0002",
+      "LEI": "8200007YHFDMEODY1965",
+  },
+  "Charges": [{
+       "ChargeBearer": "Shared",
+       "Type": "UK.OB.CHAPSOut",
+       "Amount"  {
+        "Amount": "0.88",
+        "Currency": "GBP"
+      }
+  }],
+  "Initiation": {
+    "ChargeBearer": "Shared",   
+    "Purpose": "CCRD",
+    "CurrencyOfTransfer": "USD",
+    "DestinationCountryCode": "GB",
+    "InstructedAmount": {
+      "Amount": {
+          "Amount": "165.88",
+          "Currency": "USD"
+        }
+    },
+    "ExchangeRateInformation": {
+      "UnitCurrency": "GBP",
+      "ContractIdentification": "0591968098186",
+      "ExchangeRate": 1.22,
+      "RateType": "Actual"
+    },
+    "Creditor": {
+      "SchemeName": "UK.OB.SortCodeAccountNumber",
+        "LEI": "8200007YHFDMEODY8412",
+        "PostalAddress": {
+        "AddressType": "BIZZ",
+        "StreetName": "Bank Street",
+        "BuildingNumber": "11",
+        "Floor": "6",
+        "PostCode": "Z78 4TY",
+        "TownName": "London",
+        "Country": "UK"
+      }
+    },
+    "CreditorAccount": {
+      "SchemeName": "UK.OB.SortCodeAccountNumber",
+      "Identification": "08080021325698",
+      "Name": "ACME Inc",
+      "SecondaryIdentification": "0002",
+      "Proxy": {
+        "Identification": "+441632960540",
+        "Code": "TELE"
+      },
+    },
+    "CreditorAgent": {  
+      "LEI": "IZ9Q00LZEVUKWCQY6X15",
+      "SchemeName": "UK.OB.BICFI",
+      "Identification": "80200112344562",
+      "Name": "The Credit Agent", 
+      "PostalAddress": { 
+        "AddressType": "BIZZ",
+        "StreetName": "Bank Street",
+        "BuildingNumber": "11",
+        "Floor": "6",
+        "PostCode": "Z78 4TY",
+        "TownName": "London",
+        "Country": "UK"
+    },
+    "DebtorAccount":{
+      "SchemeName": "UK.OB.SortCodeAccountNumber",
+      "Identification": "08080021325698",
+      "Name": "ACME Inc",
+      "SecondaryIdentification": "0002",
+      "LEI": "8200007YHFDMEODY1965",
+      "Proxy": {
+        "Identification": "07700900000",
+        "Code": "TELE"
+      },
+    },
+    "RegulatoryReporting": [{
+      "DebitCreditReportingIndicator": "CRED",
+      "Authority": {
+        "Name": "string",
+        "CountryCode": "UG"
+      },
+      "Details": [{
+        "Type": "CRED",
+        "Date": "2024-04-25T13:26:41.911Z",
+        "Information": ["Reg info1", "Reg info2"],
+        "Country": "QG",
+        "Amount": {
+          "Amount": "4.68702",
+          "Currency": "JGM"
+        }
+      }]
+    }],
+   "RemittanceInformation": {
+      "Structured": [{
+          "ReferredDocumentInformation": [{
+              "Code": "CINV",
+              "Issuer": "Issuer01",
+              "Number": "Number_01",
+              "RelatedDate": "2024-04-25T13:26:41.911Z",
+              "LineDetails": [
+                "string"
+              ]
+            }],
+          "ReferredDocumentAmount": 1,
+          "CreditorReferenceInformation": {
+            "Code": "DISP",
+            "Issuer": "Issuer01",
+            "Reference": "REF_26518"
+          },
+          "Invoicer": "INVR51856",
+          "Invoicee": "INVE5161856"
+        }
+      ],
+      "Unstructured": "Internal ops code 5120101"
+    },
+	 "MandateRelatedInformation": {
+      "MandateIdentification": "Golfers",
+      "Classification": "FIXE",
+      "CategoryPurposeCode": "BONU",
+      "FirstPaymentDateTime": "2024-04-25T12:46:49.425Z",
+      "RecurringPaymentDateTime": "2024-04-25T12:46:49.425Z",
+      "FinalPaymentDateTime": "2024-04-25T12:46:49.425Z",
+      "Reason": "Golf membership fees", 
+      "Frequency": { 
+        "Type": "MNTH",
         "CountPerPeriod": 1,
-        "PointInTimeType": "DAIL",
-        "PointInTime": "T06:06:06+00:00"
-      },
-      "DebtorAccount": {
-        "SchemeName": "UK.OB.SortCodeAccountNumber",
-        "Identification": "11280001234567",
-        "Name": "Andrea Frost"
-      },
-      "CreditorAccount": {
-        "SchemeName": "UK.OB.IBAN",
-        "Identification": "DE89370400440532013000",
-        "Name": "Tom Kirkman"
-      },
-	  "InstructedAmount": {
-        "Amount": "20",
-        "Currency": "EUR"
-	  },
-	  "CurrencyOfTansfer":"EUR"
-    }
+        "PointInTime": "00"
+      }
+    },
+    "DebtorAccount": {
+      "SchemeName": "UK.OB.SortCodeAccountNumber",
+      "Identification": "11280001234567",
+      "Name": "Andrea Frost"
+    },
+    "CreditorAccount": {
+      "SchemeName": "UK.OB.IBAN",
+      "Identification": "DE89370400440532013000",
+      "Name": "Tom Kirkman"
+    },
+  }
+  },
+  "SCASupportData": {
+    "Type": "EcommerceServices",
+    "AppliedAuthenticationApproach": "SCA",
+    "ReferencePaymentOrderId": "O-611265",
+    "Description": "Order number O-611256 payment"
+  },  
   },
   "Risk": {
     "PaymentContextCode": "TransferToThirdParty"
