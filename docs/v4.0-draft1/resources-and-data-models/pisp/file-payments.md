@@ -265,9 +265,60 @@ Accept: application/json
       "FileHash": "m5ah/h1UjLvJYMxqAoZmj9dKdjZnsGNm+yMkJp/KuqQ",
       "FileReference": "GB2OK238",
       "NumberOfTransactions": "100",
-      "ControlSum": 3459.30
-    }
-  }
+      "ControlSum": 3459.30,
+      "DebtorAccount": {
+        "SchemeName": "UK.OB.SortCodeAccountNumber",
+        "Identification": "11280001234567",
+        "Name": "Andrea Smith",
+        "SecondaryIdentification": "0002",
+        "Proxy": {
+          "Identification": "441234012345",
+          "Code": "TELE",
+          }
+      	},
+      "UltimateDebtor": {
+        "SchemeName": "UK.OB.BICFI",
+        "Identification": "2360549017905161589",
+        "Name": "Ultimate Debtor",
+        "LEI": "8200007YHFDMEODY1965",
+        "PostalAddress": {
+          "AddressType": "BIZZ",
+          "StreetName": "Bank Street",
+          "BuildingNumber": "11",
+          "Floor": "6",
+          "PostCode": "Z78 4TY",
+          "TownName": "London",
+          "Country": "UK"
+        }
+  		},
+	   "RemittanceInformation": {
+        "Structured": [
+          {
+            "ReferredDocumentInformation": [
+              {
+                "Code": "CINV",
+                "Issuer": "Issuer01",
+                "Number": "Number_01",
+                "RelatedDate": "2024-04-25T13:26:41.911Z",
+                "LineDetails": [
+                  "string"
+                ]
+              }
+            ],
+            "ReferredDocumentAmount": 1,
+            "CreditorReferenceInformation": {
+              "Code": "DISP",
+              "Issuer": "Issuer01",
+              "Reference": "REF_26518"
+            },
+            "Invoicer": "INVR51856",
+            "Invoicee": "INVE5161856"
+          }
+        ],
+		"Unstructured": "Internal ops code 5120101"
+   	  }
+    },
+  },
 }
 ```
 
@@ -284,16 +335,53 @@ Content-Type: application/json
 {
   "Data": {
     "ConsentId" : "512345",
-	"FilePaymentId":"FP1-512345",
+	  "FilePaymentId":"FP1-512345",
     "StatusCode": "RCVD",
     "CreationDateTime": "2018-06-05T15:15:13+00:00",
     "StatusUpdateDateTime": "2018-06-05T15:15:13+00:00",
+    "StatusReason": { 
+      "StatusReasonCode": "U030",
+      "StatusReasonDescription": "Payment order successfully received"
+    },
+    "Charges": [{
+      "ChargeBearer": "Shared",
+      "Type": "UK.OB.CHAPSOut",
+      "Amount"  {
+        "Amount": "0.88",
+        "Currency": "GBP"
+      },
+    }],
+    "Debtor": { 
+	 	  "SchemeName": "UK.OB.SortCodeAccountNumber",
+        "Identification": "11280001234567",
+        "Name": "Andrea Smith",
+        "SecondaryIdentification": "0002",	
+	  },
+     "MultiAuthorisation": { 
+      "StatusCode": "AUTH", 
+      "NumberRequired": 2,
+      "NumberReceived": 2,
+      "LastUpdateDateTime": "2017-06-05T15:15:13+00:00",
+      "ExpirationDateTime": "2017-06-06T15:15:13+00:00",
+    },
     "Initiation": {
       "FileType": "UK.OB.pain.001.001.08",
       "FileHash": "m5ah/h1UjLvJYMxqAoZmj9dKdjZnsGNm+yMkJp/KuqQ",
       "FileReference": "GB2OK238",
       "NumberOfTransactions": "100",
       "ControlSum": 3459.30,
+      "LocalInstrument": "UK.OB.CHAPS",
+      "RequestedExecutionDateTime": "2024-06-03T00:00:00Z",
+      "DebtorAccount": {
+        "SchemeName": "UK.OB.SortCodeAccountNumber",
+        "Identification": "11280001234567",
+        "Name": "Andrea Smith",
+        "SecondaryIdentification": "0002",
+         "Proxy": {
+          "Identification": "441234012345",
+          "Code": "TELE",
+        }
+      },
       "UltimateDebtor": {
         "SchemeName": "UK.OB.BICFI",
         "Identification": "2360549017905161589",
@@ -332,7 +420,8 @@ Content-Type: application/json
             "Invoicer": "INVR51856",
             "Invoicee": "INVE5161856"
           }
-        ]
+        ],
+	      "Unstructured": "Internal ops code 5120101"
    	  }
     }
   },
