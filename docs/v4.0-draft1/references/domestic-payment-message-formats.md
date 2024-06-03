@@ -70,7 +70,7 @@ All required fields in the ISO 8583 message can be generated from the Initiation
 
 In the size column, highlighted in **bold** are the fields which are smaller in size than the corresponding ISO 20022 field.
 
-The 4 character FPS status codes have been included in the ExternalStatusReason1Code enumeration list and can be returned within the API payload for a payment status.
+The 4 character FPS status codes have been included in the OBExternalStatusReason1Code enumeration list and can be returned within the API payload for a payment status.
 
 In the case that a PISP sets up a payment-order consent with a larger field size (e.g., EndToEndIdentification, or InstructedAmount) than the eventual scheme field size - it will be up to the ASPSP to decide whether to reject the payment-order consent or truncate the field.
 

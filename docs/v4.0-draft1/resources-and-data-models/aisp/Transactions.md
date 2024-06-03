@@ -221,9 +221,9 @@ The resource differs depending on the permissions (ReadTransactionsBasic and Rea
 | TransactionId |0..1 |OBReadTransaction6/Data/Transaction/TransactionId |Unique identifier for the transaction within an servicing institution. This identifier is both unique and immutable. |Max210Text | | |
 | TransactionReference |0..1 |OBReadTransaction6/Data/Transaction/TransactionReference |Unique reference for the transaction. This reference is optionally populated, and may as an example be the FPID in the Faster Payments context. |Max210Text | | |
 | StatementReference |0..n |OBReadTransaction6/Data/Transaction/StatementReference |Unique reference for the statement. This reference may be optionally populated if available. |Max35Text | | |
-| CreditDebitIndicator |1..1 |OBReadTransaction6/Data/Transaction/CreditDebitIndicator |Indicates whether the transaction is a credit or a debit entry. |OBCreditDebitCode |Credit<br>Debit | |
-| Status |1..1 |OBReadTransaction6/Data/Transaction/Status |Status of a transaction entry on the books of the account servicer. |OBEntryStatus1Code |BOOK<br> FUTR <br> INFO <br> PDNG| |
-| TransactionMutability |0..1 |OBReadTransaction6/Data/Transaction/TransactionMutability |Specifies the Mutability of the Transaction record. |OBTransactionMutability1Code |Mutable<br>Immutable | |
+| CreditDebitIndicator |1..1 |OBReadTransaction6/Data/Transaction/CreditDebitIndicator |Indicates whether the transaction is a credit or a debit entry. |For a full list of enumeration values refer to `External_CodeSet` [here](https://github.com/OpenBankingUK/External_internal_CodeSets). |OBInternalCreditDebitCode | |
+| Status |1..1 |OBReadTransaction6/Data/Transaction/Status |Status of a transaction entry on the books of the account servicer. |For a full list of enumeration values refer to `External_CodeSet` [here](https://github.com/OpenBankingUK/External_internal_CodeSets) |ExternalEntryStatus1Code
+| TransactionMutability |0..1 |OBReadTransaction6/Data/Transaction/TransactionMutability |Specifies the Mutability of the Transaction record. |For a full list of enumeration values refer to `Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_internal_CodeSets) |OBInternalTransactionMutability1Code
 | BookingDateTime |1..1 |OBReadTransaction6/Data/Transaction/BookingDateTime |Date and time when a transaction entry is posted to an account on the account servicer's books. Usage: Booking date is the expected booking date, unless the status is booked, in which case it is the actual booking date. |ISODateTime | | |
 | ValueDateTime |0..1 |OBReadTransaction6/Data/Transaction/ValueDateTime |Date and time at which assets become available to the account owner in case of a credit entry, or cease to be available to the account owner in case of a debit transaction entry. Usage: If transaction entry status is pending and value date is present, then the value date refers to an expected/requested value date. For transaction entries subject to availability/float and for which availability information is provided, the value date must not be used. In this case the availability component identifies the number of availability days. |ISODateTime | | |
 | TransactionInformation |0..1 |OBReadTransaction6/Data/Transaction/TransactionInformation |Further details of the transaction. This is the transaction narrative, which is unstructured text. |Max500Text | | |
@@ -254,9 +254,9 @@ The resource differs depending on the permissions (ReadTransactionsBasic and Rea
 | Code |1..1 |OBReadTransaction6/Data/Transaction/ExtendedProprietaryBankTransactionCodes/Code |Proprietary bank transaction code to identify the underlying transaction.|Max35Text | | |
 | Issuer |0..1 |OBReadTransaction6/Data/Transaction/ExtendedProprietaryBankTransactionCodes/Issuer | Identification of the issuer of the proprietary bank transaction code.|Max35Text | | |
 | Description |0..1 |OBReadTransaction6/Data/Transaction/ExtendedProprietaryBankTransactionCodes/Description | Description of the code and its usage on the ASPSP channel|Max500Text | | |
-| PaymentPurposeCode |0..1 |OBReadTransaction6/Data/Transaction/PaymentPurposeCode | For a full description see `ExternalPurpose1Code` [here](https://github.com/OpenBankingUK/External_internal_CodeSets) |ExternalPurpose1Code  | | |
+| PaymentPurposeCode |0..1 |OBReadTransaction6/Data/Transaction/PaymentPurposeCode | For a full description see `ExternalPurpose1Code` [here](https://github.com/OpenBankingUK/External_internal_CodeSets) | For a full list of enumeration values refer to `External_CodeSet` [here].  |ExternalPurpose1Code | |
 | Balance |0..1 |OBReadTransaction6/Data/Transaction/Balance |Set of elements used to define the balance as a numerical representation of the net increases and decreases in an account after a transaction entry is applied to the account. |OBTransactionCashBalance | | |
-| CreditDebitIndicator |1..1 |OBReadTransaction6/Data/Transaction/Balance/CreditDebitIndicator |Indicates whether the balance is a credit or a debit balance. Usage: A zero balance is considered to be a credit balance. |OBCreditDebitCode |Credit<br>Debit | |
+| CreditDebitIndicator |1..1 |OBReadTransaction6/Data/Transaction/Balance/CreditDebitIndicator |Indicates whether the balance is a credit or a debit balance. Usage: A zero balance is considered to be a credit balance. |For a full list of enumeration values refer to `External_CodeSet` [here](https://github.com/OpenBankingUK/External_internal_CodeSets). |OBInternalCreditDebitCode | |
 | Type |1..1 |OBReadTransaction6/Data/Transaction/Balance/Type |Balance type, in a coded form. For more information see `ExternalBalanceType1Code` [here](https://github.com/OpenBankingUK/External_internal_CodeSets)|ExternalBalanceType1Code |CLAV <br>CLBS <br> XPCH <br>FWAV  <br>INFO <br>ITAV  <br>ITBD <br>OPAV <br>OPBD <br>PRCD  | |
 | Amount |1..1 |OBReadTransaction6/Data/Transaction/Balance/Amount |Amount of money of the cash balance after a transaction entry is applied to the account.. |OBActiveOrHistoricCurrencyAndAmount | | |
 | Amount |1..1 |OBReadTransaction6/Data/Transaction/Balance/Amount/Amount |A number of monetary units specified in an active currency where the unit of currency is explicit and compliant with ISO 4217. |OBActiveCurrencyAndAmount_SimpleType | |`^\d{1,13}$|^\d{1,13}\.\d{1,5}$` |
@@ -265,26 +265,26 @@ The resource differs depending on the permissions (ReadTransactionsBasic and Rea
 | MerchantName |0..1 |OBReadTransaction6/Data/Transaction/MerchantDetails/MerchantName |Name by which the merchant is known. |Max350Text | | |
 | MerchantCategoryCode |0..1 |OBReadTransaction6/Data/Transaction/MerchantDetails/MerchantCategoryCode |Category code conform to ISO 18245, related to the type of services or goods the merchant provides for the transaction. |Min3Max4Text | | |
 | CreditorAgent |0..1 |OBReadTransaction6/Data/Transaction/CreditorAgent |Financial institution servicing an account for the creditor. |OBBranchAndFinancialInstitutionIdentification6 | | |
-| SchemeName |0..1 |OBReadTransaction6/Data/Transaction/CreditorAgent/SchemeName |Name of the identification scheme, in a coded form as published in an external list. |OBExternalFinancialInstitutionIdentification4Code | | |
+| SchemeName |0..1 |OBReadTransaction6/Data/Transaction/CreditorAgent/SchemeName |Name of the identification scheme, in a coded form as published in an external list. |For a full list of enumeration values refer to `Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_internal_CodeSets)|OBInternalFinancialInstitutionIdentification4Co
 | LEI |0..1 | OBReadTransaction6/Data/Transaction/CreditorAgent/LEI |Legal entity identification as an alternate identification for a party. Legal Entity Identifier is a code allocated to a party as described in ISO 17442 "Financial Services - Legal Entity Identifier (LEI)".|Max20Text | |[A-Z0-9]{18,18}[0-9]{2,2}|
 | Identification |0..1 |OBReadTransaction6/Data/Transaction/CreditorAgent/Identification |Unique and unambiguous identification of a financial institution or a branch of a financial institution. |Max35Text | | |
 | Name |0..1 |OBReadTransaction6/Data/Transaction/CreditorAgent/Name |Name by which an agent is known and which is usually used to identify that agent. |Max140Text | | |
 | PostalAddress |0..1 |OBReadTransaction6/Data/Transaction/CreditorAgent/PostalAddress |Information that locates and identifies a specific address, as defined by postal services. |OBPostalAddress6 | | |
 | CreditorAccount |0..1 |OBReadTransaction6/Data/Transaction/CreditorAccount |Unambiguous identification of the account of the creditor, in the case of a debit transaction. |OBCashAccount6 | | |
-| SchemeName |0..1 |OBReadTransaction6/Data/Transaction/CreditorAccount/SchemeName |Name of the identification scheme, in a coded form as published in an external list. |OBExternalAccountIdentification4Code | | |
+| SchemeName |0..1 |OBReadTransaction6/Data/Transaction/CreditorAccount/SchemeName |Name of the identification scheme, in a coded form as published in an external list. | For a full description see `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets). |OBInternalAccountIdentification4Code | 
 | Identification |0..1 |OBReadTransaction6/Data/Transaction/CreditorAccount/Identification |Identification assigned by an institution to identify an account. This identification is known by the account owner. |Max256Text | | |
 | Name |0..1 |OBReadTransaction6/Data/Transaction/CreditorAccount/Name |The account name is the name or names of the account owner(s) represented at an account level, as displayed by the ASPSP's online channels. Note, the account name is not the product name or the nickname of the account. |Max350Text | | |
 | Proxy |0..1 |OBReadTransaction6/Data/Transaction/CreditorAccount/Proxy |Specifies an alternate assumed name for the identification of the account.  |OBProxy1 | | |
 | SecondaryIdentification |0..1 |OBReadTransaction6/Data/Transaction/CreditorAccount/SecondaryIdentification |This is secondary identification of the account, as assigned by the account servicing institution. This can be used by building societies to additionally identify accounts with a roll number (in addition to a sort code and account number combination). |Max34Text | | |
 | UltimateCreditor |0..1 |OBReadTransaction6/Data/Transaction/UltimateCreditor|Ultimate party to which an amount of money is due. | OBUltimateCreditor1 | | |
 | DebtorAgent |0..1 |OBReadTransaction6/Data/Transaction/DebtorAgent |Financial institution servicing an account for the debtor. |OBBranchAndFinancialInstitutionIdentification6 | | |
-| SchemeName |0..1 |OBReadTransaction6/Data/Transaction/DebtorAgent/SchemeName |Name of the identification scheme, in a coded form as published in an external list. |OBExternalFinancialInstitutionIdentification4Code | | |
+| SchemeName |0..1 |OBReadTransaction6/Data/Transaction/DebtorAgent/SchemeName |Name of the identification scheme, in a coded form as published in an external list. |For a full list of enumeration values refer to `Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_internal_CodeSets)|OBInternalFinancialInstitutionIdentification4Co
 | LEI |0..1 | OBReadTransaction6/Data/Transaction/DebtorAgent/LEI |Legal entity identification as an alternate identification for a party. Legal Entity Identifier is a code allocated to a party as described in ISO 17442 "Financial Services - Legal Entity Identifier (LEI)".|Max20Text | |[A-Z0-9]{18,18}[0-9]{2,2}|
 | Identification |0..1 |OBReadTransaction6/Data/Transaction/DebtorAgent/Identification |Unique and unambiguous identification of a financial institution or a branch of a financial institution. |Max35Text | | |
 | Name |0..1 |OBReadTransaction6/Data/Transaction/DebtorAgent/Name |Name by which an agent is known and which is usually used to identify that agent. |Max140Text | | |
 | PostalAddress |0..1 |OBReadTransaction6/Data/Transaction/DebtorAgent/PostalAddress |Information that locates and identifies a specific address, as defined by postal services. |OBPostalAddress6 | | |
 | DebtorAccount |0..1 |OBReadTransaction6/Data/Transaction/DebtorAccount |Unambiguous identification of the account of the debtor, in the case of a credit transaction. |OBCashAccount6 | | |
-| SchemeName |0..1 |OBReadTransaction6/Data/Transaction/DebtorAccount/SchemeName |Name of the identification scheme, in a coded form as published in an external list. |OBExternalAccountIdentification4Code | | |
+| SchemeName |0..1 |OBReadTransaction6/Data/Transaction/DebtorAccount/SchemeName |Name of the identification scheme, in a coded form as published in an external list. | For a full description see `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets). |OBInternalAccountIdentification4Code | 
 | Identification |0..1 |OBReadTransaction6/Data/Transaction/DebtorAccount/Identification |Identification assigned by an institution to identify an account. This identification is known by the account owner. |Max256Text | | |
 | Name |0..1 |OBReadTransaction6/Data/Transaction/DebtorAccount/Name |The account name is the name or names of the account owner(s) represented at an account level, as displayed by the ASPSP's online channels. Note, the account name is not the product name or the nickname of the account. |Max350Text | | |
 | Proxy |0..1 |OBReadTransaction6/Data/Transaction/DebtorAccount/Proxy |Specifies an alternate assumed name for the identification of the account.  |OBProxy1 | | |
@@ -350,6 +350,97 @@ Content-Type: application/json
         "Amount": {
           "Amount": "10.00",
           "Currency": "GBP"
+        },
+        "ChargeAmount": {
+          "Amount": "0.01",
+          "Currency": "GBP"
+        },
+        "CurrencyExchange": {
+          "SourceCurrency": "GBP", 
+          "TargetCurrency": "GBP", 
+          "UnitCurrency": "GBP"
+        },
+        "InstructedAmount": {
+           "Amount": "10.00",
+          "Currency": "GBP"
+        },
+        "PaymentPurposeCode":"RETL",
+        "CategoryPurposeCode": "RETL",
+        "MerchantDetails": {
+          "MerchantName": "Merchant's Name",
+          "MerchantCategoryCode": "5874"
+        },
+        "StatementReference": "003",
+        "AddressLine": "Floor 5, 5 Dawson House",
+        "CreditorAgent": {
+         "LEI": "IZ9Q00LZEVUKWCQY6X15",
+          "SchemeName": "UK.OB.BICFI",
+          "Identification": "80200112344562",
+          "Name": "The Credit Agent", 
+          "PostalAddress": { 
+            "AddressType": "BIZZ",
+            "StreetName": "Bank Street",
+            "BuildingNumber": "11",
+            "Floor": "6",
+            "PostCode": "Z78 4TY",
+            "TownName": "London",
+            "Country": "UK"
+          }
+        },
+         "DebtorAccount": {
+          "SchemeName": "UK.OB.SortCodeAccountNumber",
+          "Identification": "80200112345784",
+          "Name": "Mr Juniper",
+          "SecondaryIdentification": "80200112378745",
+          "Proxy": {
+            "Identification": "2360549017904577",
+            "Code": "TELE"
+          }
+        },
+        "CreditorAccount": {
+          "SchemeName": "UK.OB.SortCodeAccountNumber",
+          "Identification": "80200112345678",
+          "Name": "Mrs Juniper",
+          "SecondaryIdentification": "80200112374165",
+          "Proxy": {
+            "Identification": "2360549017905188",
+            "Code": "TELE"
+          }
+        },
+        "UltimateDebtor": {
+          "SchemeName": "UK.OB.BICFI",
+          "Identification": "2360549017905161589",
+          "Name": "Ultimate Debtor",
+          "LEI": "8200007YHFDMEODY1965",
+          "PostalAddress": {
+            "AddressType": "BIZZ",
+            "StreetName": "Bank Street",
+            "BuildingNumber": "11",
+            "Floor": "6",
+            "PostCode": "Z78 4TY",
+            "TownName": "London",
+            "Country": "UK"
+          }
+        },
+        "UltimateCreditor": {
+          "SchemeName": "UK.OB.BICFI",
+          "Identification": "2360549017905161589",
+          "Name": "Ultimate Creditor",
+          "LEI": "60450004FECVJV7YN339",
+          "PostalAddress": {
+            "AddressType": "BIZZ",
+            "StreetName": "Bank Street",
+            "BuildingNumber": "11",
+            "Floor": "6",
+            "PostCode": "Z78 4TY",
+            "TownName": "London",
+            "Country": "UK"
+          }
+        },
+        "CardInstrument": {
+          "CardSchemeName": "	VISA", 
+          "AuthorisationType": "Contactless",
+          "Name": "Mr Juniper"
         },
         "CreditDebitIndicator": "Credit",
         "Status": "BOOK",

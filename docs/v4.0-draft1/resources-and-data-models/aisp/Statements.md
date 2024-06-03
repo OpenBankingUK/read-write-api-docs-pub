@@ -182,7 +182,7 @@ For the call toGET /accounts/{AccountId}/statements/{StatementId}/transactions:
 | Currency |1..1 |OBReadStatement2/Data/Statement/StatementBenefit/Amount/Currency |A code allocated to a currency by a Maintenance Agency under an international identification scheme, as described in the latest edition of the international standard ISO 4217 "Codes for the representation of currencies and funds". |ActiveOrHistoricCurrencyCode | |^[A-Z]{3,3}$ |
 | StatementFee |0..n |OBReadStatement2/Data/Statement/StatementFee |Set of elements used to provide details of a fee for the statement resource. |OBStatementFee2 | | |
 | Description |0..1 |OBReadStatement2/Data/Statement/StatementFee/Description |Description that may be available for the statement fee. |Max128Text | | |
-| CreditDebitIndicator |1..1 |OBReadStatement2/Data/Statement/StatementFee/CreditDebitIndicator |Indicates whether the amount is a credit or a debit. Usage: A zero amount is considered to be a credit amount. |OBCreditDebitCode |Credit<br>Debit | |
+| CreditDebitIndicator |1..1 |OBReadStatement2/Data/Statement/StatementFee/CreditDebitIndicator |Indicates whether the amount is a credit or a debit. Usage: A zero amount is considered to be a credit amount. |For a full list of enumeration values refer to `External_CodeSet` [here](https://github.com/OpenBankingUK/External_internal_CodeSets). |OBInternalCreditDebitCode | |
 | Type |1..1 |OBReadStatement2/Data/Statement/StatementFee/Type |Fee type, in a coded form. |OBExternalStatementFeeType1Code | | |
 | Rate |0..1 |OBReadStatement2/Data/Statement/StatementFee/Rate |Rate charged for Statement Fee (where it is charged in terms of a rate rather than an amount) |OBRate1 | | |
 | RateType |0..1 |OBReadStatement2/Data/Statement/StatementFee/RateType |Description that may be available for the statement fee rate type. |OBExternalStatementFeeRateType1Code |UK.OB.AER<br>UK.OB.EAR | |
@@ -192,7 +192,7 @@ For the call toGET /accounts/{AccountId}/statements/{StatementId}/transactions:
 | Currency |1..1 |OBReadStatement2/Data/Statement/StatementFee/Amount/Currency |A code allocated to a currency by a Maintenance Agency under an international identification scheme, as described in the latest edition of the international standard ISO 4217 "Codes for the representation of currencies and funds". |ActiveOrHistoricCurrencyCode | |^[A-Z]{3,3}$ |
 | StatementInterest |0..n |OBReadStatement2/Data/Statement/StatementInterest |Set of elements used to provide details of a generic interest amount related to the statement resource. |OBStatementInterest2 | | |
 | Description |0..1 |OBReadStatement2/Data/Statement/StatementInterest/Description |Description that may be available for the statement interest. |Max128Text | | |
-| CreditDebitIndicator |1..1 |OBReadStatement2/Data/Statement/StatementInterest/CreditDebitIndicator |Indicates whether the amount is a credit or a debit. Usage: A zero amount is considered to be a credit amount. |OBCreditDebitCode |Credit<br>Debit | |
+| CreditDebitIndicator |1..1 |OBReadStatement2/Data/Statement/StatementInterest/CreditDebitIndicator |Indicates whether the amount is a credit or a debit. Usage: A zero amount is considered to be a credit amount. |For a full list of enumeration values refer to `External_CodeSet` [here](https://github.com/OpenBankingUK/External_internal_CodeSets). |OBInternalCreditDebitCode | |
 | Type |1..1 |OBReadStatement2/Data/Statement/StatementInterest/Type |Interest amount type, in a coded form. |OBExternalStatementInterestType1Code | | |
 | Rate |0..1 |OBReadStatement2/Data/Statement/StatementInterest/Rate |Rate for Statement Interest (where it is applicable in terms of a rate rather than an amount) |OBRate1 | | |
 | RateType |0..1 |OBReadStatement2/Data/Statement/StatementInterest/RateType |Description that may be available for the statement Interest rate type. |OBExternalStatementInterestRateType1Code |UK.OB.BOEBaseRate UK.OB.FixedRate UK.OB.Gross UK.OB.LoanProviderBaseRate UK.OB.Net | |
@@ -201,16 +201,16 @@ For the call toGET /accounts/{AccountId}/statements/{StatementId}/transactions:
 | Amount |1..1 |OBReadStatement2/Data/Statement/StatementInterest/Amount/Amount |A number of monetary units specified in an active currency where the unit of currency is explicit and compliant with ISO 4217. |OBActiveCurrencyAndAmount_SimpleType | |`^\d{1,13}$|^\d{1,13}\.\d{1,5}$` |
 | Currency |1..1 |OBReadStatement2/Data/Statement/StatementInterest/Amount/Currency |A code allocated to a currency by a Maintenance Agency under an international identification scheme, as described in the latest edition of the international standard ISO 4217 "Codes for the representation of currencies and funds". |ActiveOrHistoricCurrencyCode | |^[A-Z]{3,3}$ |
 | StatementAmount |0..n |OBReadStatement2/Data/Statement/StatementAmount |Set of elements used to provide details of a generic amount for the statement resource. |OBStatementAmount1 | | |
-| CreditDebitIndicator |1..1 |OBReadStatement2/Data/Statement/StatementAmount/CreditDebitIndicator |Indicates whether the amount is a credit or a debit. Usage: A zero amount is considered to be a credit amount. |OBCreditDebitCode |Credit<br>Debit | |
+| CreditDebitIndicator |1..1 |OBReadStatement2/Data/Statement/StatementAmount/CreditDebitIndicator |Indicates whether the amount is a credit or a debit. Usage: A zero amount is considered to be a credit amount. |For a full list of enumeration values refer to `External_CodeSet` [here](https://github.com/OpenBankingUK/External_internal_CodeSets). |OBInternalCreditDebitCode | |
 | Type |1..1 |OBReadStatement2/Data/Statement/StatementAmount/Type |Amount type, in a coded form. |OBExternalStatementAmountType1Code | | |
 | Amount |1..1 |OBReadStatement2/Data/Statement/StatementAmount/Amount |Amount of money associated with the amount type. |OBActiveOrHistoricCurrencyAndAmount | | |
 | Amount |1..1 |OBReadStatement2/Data/Statement/StatementAmount/Amount/Amount |A number of monetary units specified in an active currency where the unit of currency is explicit and compliant with ISO 4217. |OBActiveCurrencyAndAmount_SimpleType | |`^\d{1,13}$|^\d{1,13}\.\d{1,5}$` |
 | Currency |1..1 |OBReadStatement2/Data/Statement/StatementAmount/Amount/Currency |A code allocated to a currency by a Maintenance Agency under an international identification scheme, as described in the latest edition of the international standard ISO 4217 "Codes for the representation of currencies and funds". |ActiveOrHistoricCurrencyCode | |^[A-Z]{3,3}$ |
-| SubType |0..1 |OBReadStatement2/Data/Statement/StatementAmount/Amount/SubType |Amount sub type, in a coded form.<br>Default if not specified is BCUR of the account |OBExternalBalanceSubType1Code |BCUR<br>LCUR | |
+| SubType |0..1 |OBReadStatement2/Data/Statement/StatementAmount/Amount/SubType |Amount sub type, in a coded form.<br>Default if not specified is BCUR of the account |For a full list of enumeration values refer to `External_CodeSet` [here](https://github.com/OpenBankingUK/External_internal_CodeSets).|ExternalBalanceSubType1Code |x
 | LocalAmount |0..1 |OBReadStatement2/Data/Statement/StatementAmount/LocalAmount |Optional component providing the equivalent of Amount in local currency. | | | |
 | Amount |1..1 |OBReadStatement2/Data/Statement/StatementAmount/LocalAmount/Amount |A number of monetary units specified in an active currency where the unit of currency is explicit and compliant with ISO 4217. |OBActiveCurrencyAndAmount_SimpleType | |`^\d{1,13}$|^\d{1,13}\.\d{1,5}$` |
 | Currency |1..1 |OBReadStatement2/Data/Statement/StatementAmount/LocalAmount/Currency |A code allocated to a currency by a Maintenance Agency under an international identification scheme, as described in the latest edition of the international standard ISO 4217 "Codes for the representation of currencies and funds". |ActiveOrHistoricCurrencyCode | |^[A-Z]{3,3}$ |
-| SubType |0..1 |OBReadStatement2/Data/Statement/StatementAmount/LocalAmount/SubType |Amount sub type, in a coded form.<br>Default if not specified is LCUR of the account |OBExternalBalanceSubType1Code |BCUR<br>LCUR | |
+| SubType |0..1 |OBReadStatement2/Data/Statement/StatementAmount/LocalAmount/SubType |Amount sub type, in a coded form.<br>Default if not specified is LCUR of the account |For a full list of enumeration values refer to `External_CodeSet` [here](https://github.com/OpenBankingUK/External_internal_CodeSets).|ExternalBalanceSubType1Code |
 | StatementDateTime |0..n |OBReadStatement2/Data/Statement/StatementDateTime |Set of elements used to provide details of a generic date time for the statement resource. |OBStatementDateTime1 | | |
 | DateTime |1..1 |OBReadStatement2/Data/Statement/StatementDateTime/DateTime |Date and time associated with the date time type. |ISODateTime | | |
 | Type |1..1 |OBReadStatement2/Data/Statement/StatementDateTime/Type |Date time type, in a coded form. |OBExternalStatementDateTimeType1Code | | |
@@ -259,15 +259,29 @@ Content-Type: application/json
       "StartDateTime": "2017-08-01T00:00:00+00:00",
       "EndDateTime": "2017-08-31T23:59:59+00:00",
       "CreationDateTime": "2017-09-01T00:00:00+00:00",
+      "StatementDateTime": {
+        "DateTime": "2017-08-01T00:00:00+00:00",
+        "Type": "UK.OB.DirectDebitDue",
+      },
+      "TotalValue": {
+         "Amount": "1024.00",
+          "Currency": "GBP",
+      },
       "StatementDescription": ["August 2017 Statement", "One Free Uber Ride"],
       "StatementAmount": [
       {
         "Amount": {
           "Amount": "400.00",
-          "Currency": "GBP"
+          "Currency": "GBP",
+          "SubType": "BCUR"
         },
-		"CreditDebitIndicator": "Credit",        
-		"Type": "ClosingBalance"        
+        "LocalAmount": { 
+          "Amount": "400.00",
+          "Currency": "GBP",
+          "SubType": "BCUR"
+        },
+        "CreditDebitIndicator": "Credit",        
+        "Type": "ClosingBalance"        
       },
       {
         "Amount": {
@@ -277,7 +291,42 @@ Content-Type: application/json
         "CreditDebitIndicator": "Credit",
         "Type": "PreviousClosingBalance"
       }
-      ]
+      ],
+     "StatementBenefit": [{ 
+      "Type": "UK.OB.Cashback",
+      "Amount": {
+        "Amount": "5.00",
+        "Currency": "GBP"
+      },
+     }],
+     "StatementFee": [{ 
+      "Description": "International usage charge",
+      "Type": "UK.OB.ForeignTransaction",
+      "Rate": 0.229,
+      "CreditDebitIndicator": "Credit",        
+      "RateType": "	UK.OB.AER",
+      "Frequency": "UK.OB.StatementMonthly",
+      "Amount": {
+        "Amount": "03.75",
+        "Currency": "GBP"
+      }
+     }],
+     "StatementInterest": [{
+      "Description": "Interest occurred over statement duration",
+      "Type": "UK.OB.Total", 
+      "Rate": 0.229,
+      "CreditDebitIndicator": "Credit",        
+      "RateType": "	UK.OB.FixedRate",
+      "Frequency": "UK.OB.StatementMonthly",
+      "Amount": {
+        "Amount": "20.25",
+        "Currency": "GBP"
+      }
+     }],
+     "StatementRate": [{ 
+        "Rate": 0.229,
+        "UK.OB.MonthlyPurchase"
+     }],
     },
     {
       "AccountId": "22289",
@@ -350,6 +399,33 @@ Content-Type: application/json
       "StartDateTime": "2023-08-01T00:00:00+00:00",
       "EndDateTime": "2023-08-31T23:59:59+00:00",
       "CreationDateTime": "2023-09-01T00:00:00+00:00",
+      "StatementDateTime": {
+        "DateTime": "2017-08-01T00:00:00+00:00",
+        "Type": "UK.OB.DirectDebitDue",
+      },
+      "StatementBenefit": [{ 
+        "Type": "UK.OB.Cashback",
+        "Amount": {
+          "Amount": "5.00",
+          "Currency": "GBP"
+          },
+      }],
+       "StatementFee": [{ 
+          "Description": "International usage charge",
+          "Type": "UK.OB.ForeignTransaction",
+          "Rate": 0.229,
+          "CreditDebitIndicator": "Credit",        
+          "RateType": "	UK.OB.AER",
+          "Frequency": "UK.OB.StatementMonthly",
+          "Amount": {
+            "Amount": "03.75",
+            "Currency": "GBP", 
+          }
+      }],
+      "StatementRate": [{ 
+        "Rate": 0.229,
+        "UK.OB.MonthlyPurchase"
+      }],
       "StatementDescription": ["August 2023 Statement", "One Free Uber Ride"],
       "StatementAmount": [
       {
@@ -372,6 +448,7 @@ Content-Type: application/json
         "Currency": "GBP"
       }
     },
+    ],
     "Links": {
       "Self": "https://api.alphabank.com/open-banking/v3.1/aisp/accounts/22289/statements/"
     },
@@ -415,7 +492,38 @@ Content-Type: application/json
       "StartDateTime": "2017-08-01T00:00:00+00:00",
       "EndDateTime": "2017-08-31T23:59:59+00:00",
       "CreationDateTime": "2017-09-01T00:00:00+00:00",
+       "TotalValue": {
+         "Amount": "1024.00",
+          "Currency": "GBP",
+      },
       "StatementDescription": ["August 2017 Statement", "One Free Uber Ride"],
+      "StatementDateTime": {
+        "DateTime": "2017-08-01T00:00:00+00:00",
+        "Type": "UK.OB.DirectDebitDue",
+      },
+      "StatementBenefit": [{ 
+        "Type": "UK.OB.Cashback",
+        "Amount": {
+          "Amount": "5.00",
+          "Currency": "GBP"
+          },
+      }],
+       "StatementFee": [{ 
+          "Description": "International usage charge",
+          "Type": "UK.OB.ForeignTransaction",
+          "Rate": 0.229,
+          "CreditDebitIndicator": "Credit",        
+          "RateType": "	UK.OB.AER",
+          "Frequency": "UK.OB.StatementMonthly",
+          "Amount": {
+            "Amount": "03.75",
+            "Currency": "GBP", 
+          }
+      }],
+      "StatementRate": [{ 
+        "Rate": 0.229,
+        "UK.OB.MonthlyPurchase"
+      }],
       "StatementAmount": [
       {
         "Amount": {
@@ -489,7 +597,7 @@ Content-Type: application/json
         "Type": "PreviousClosingBalance"
       }
       ]
-    }
+    },
     ],
     "Links": {
       "Self": "https://api.alphabank.com/open-banking/v3.1/aisp/statements/"

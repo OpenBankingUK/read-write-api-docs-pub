@@ -140,11 +140,11 @@ If the ReadPAN permission is granted by the PSU, the ASPSP may choose to populat
 | Currency |1..1 |OBReadStandingOrder6/Data/StandingOrder/FinalPaymentAmount/Currency |A code allocated to a currency by a Maintenance Agency under an international identification scheme, as described in the latest edition of the international standard ISO 4217 "Codes for the representation of currencies and funds". |ActiveOrHistoricCurrencyCode | |^[A-Z]{3,3}$ |
 | CreditorAgent |0..1 |OBReadStandingOrder6/Data/StandingOrder/CreditorAgent |Party that manages the account on behalf of the account owner, that is manages the registration and booking of entries on the account, calculates balances on the account and provides information about the account. This is the servicer of the beneficiary account. |OBBranchAndFinancialInstitutionIdentification5 | | |
 | LEI |0..1 | OBReadStandingOrder6/Data/StandingOrder/CreditorAgent/LEI |Legal entity identification as an alternate identification for a party. Legal Entity Identifier is a code allocated to a party as described in ISO 17442 "Financial Services - Legal Entity Identifier (LEI)".|Max20Text | |[A-Z0-9]{18,18}[0-9]{2,2}|
-| SchemeName |1..1 |OBReadStandingOrder6/Data/StandingOrder/CreditorAgent/SchemeName |Name of the identification scheme, in a coded form as published in an external list. |OBExternalFinancialInstitutionIdentification4Code | | |
+| SchemeName |1..1 |OBReadStandingOrder6/Data/StandingOrder/CreditorAgent/SchemeName |Name of the identification scheme, in a coded form as published in an external list. |For a full list of enumeration values refer to `Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_internal_CodeSets)|OBInternalFinancialInstitutionIdentification4Co
 | Identification |1..1 |OBReadStandingOrder6/Data/StandingOrder/CreditorAgent/Identification |Unique and unambiguous identification of the servicing institution. |Max35Text | | |
 | PostalAddress |0..1 |OBReadStandingOrder6/Data/StandingOrder/CreditorAgent/PostalAddress | Information that locates and identifies a specific address, as defined by postal services. |OBPostalAddress6 | | |
 | CreditorAccount |0..1 |OBReadStandingOrder6/Data/StandingOrder/CreditorAccount |Provides the details to identify the beneficiary account. |OBCashAccount5 | | |
-| SchemeName |1..1 |OBReadStandingOrder6/Data/StandingOrder/CreditorAccount/SchemeName |Name of the identification scheme, in a coded form as published in an external list. |OBExternalAccountIdentification4Code | | |
+| SchemeName |1..1 |OBReadStandingOrder6/Data/StandingOrder/CreditorAccount/SchemeName |Name of the identification scheme, in a coded form as published in an external list. | For a full description see `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets). |OBInternalAccountIdentification4Code | 
 | Identification |1..1 |OBReadStandingOrder6/Data/StandingOrder/CreditorAccount/Identification |Beneficiary account identification. |Max256Text | | |
 | Name |0..1 |OBReadStandingOrder6/Data/StandingOrder/CreditorAccount/Name |The account name is the name or names of the account owner(s) represented at an account level, as displayed by the ASPSP's online channels. Note, the account name is not the product name or the nickname of the account. |Max350Text | | |
 | Proxy |0..1 |OBReadStandingOrder6/Data/StandingOrder/CreditorAccount/Proxy |Specifies an alternate assumed name for the identification of the account. |OBProxy1 | | |
@@ -208,6 +208,12 @@ Content-Type: application/json
           "Amount": "0.56",
           "Currency": "GBP"
         },
+        "CreditorAgent": {  
+        "LastPaymentDateTime": "2017-07-13T00:00:00+00:00", 
+        "LastPaymentAmount": {
+          "Amount": "0.56",
+          "Currency": "GBP"
+        },
         "CreditAgent": {  
           "LEI": "IZ9Q00LZEVUKWCQY6X15",
           "SchemeName": "UK.OB.BICFI",
@@ -240,6 +246,7 @@ Content-Type: application/json
         "CreditorAccount": {
           "SchemeName": "UK.OB.SortCodeAccountNumber",
           "Identification": "80200112345678",
+          "SecondaryIdentification": "80200112895462",
           "Name": "Mrs Juniper",
           "Proxy": {
             "Identification": "441234012345",
@@ -309,7 +316,12 @@ Content-Type: application/json
           "Amount": "0.56",
           "Currency": "GBP"
         },
-        "CreditAgent": {  
+        "LastPaymentDateTime": "2017-07-13T00:00:00+00:00", 
+        "LastPaymentAmount": {
+          "Amount": "0.56",
+          "Currency": "GBP"
+        },
+        "CreditorAgent": {  
           "LEI": "IZ9Q00LZEVUKWCQY6X15",
           "SchemeName": "UK.OB.BICFI",
           "Identification": "80200112344562",
@@ -377,6 +389,7 @@ Content-Type: application/json
         "StandingOrderStatusCode": "Active",
         "CreditorAccount": {
           "SchemeName": "UK.OB.SortCodeAccountNumber",
+          "SecondaryIdentification": "80200112895462",
           "Identification": "23605490179017",
           "Name": "Mr Tee"
         }
