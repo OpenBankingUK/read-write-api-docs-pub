@@ -440,9 +440,9 @@ Accept: application/json
       "ExchangeRateInformation": {
         "UnitCurrency": "GBP",
         "ExchangeRate": 1.22,
-        "RateType": "Actual"
+        "RateType": "Actual",
+        "ContractIdentification": "0591968098186",
       },
-      "ContractIdentification": "0591968098186",
       "DebtorAccount": {
         "SchemeName": "UK.OB.SortCodeAccountNumber",
         "SecondaryIdentification": "0002",
@@ -563,24 +563,24 @@ Accept: application/json
   "Risk": {
     "PaymentContextCode": "TransferToThirdParty",
     "ContractPresentIndicator": false,
-  "PaymentPurposeCode": "EPAY",
-  "CategoryPurposeCode": "CASH", 
-  "BeneficiaryPaymentDetailsPrepopulatedIndicator": false,
-  "BeneficiaryAccountType": "Business",
-  "MerchantCategoryCode": "7300", 
-  "MerchantCustomerIdentification": "053598653254",
-  "DeliveryAddress": {
-    "AddressLine": [
-      "Flat 7",
-      "Acacia Lodge"
-    ],
-    "StreetName": "Acacia Avenue",
-    "BuildingNumber": "27",
-    "PostCode": "GU31 2ZZ",
-    "TownName": "Sparsholt",
-    "CountrySubDivision": "Wessex", 
-    "Country": "UK"
-  }
+    "PaymentPurposeCode": "EPAY",
+    "CategoryPurposeCode": "CASH", 
+    "BeneficiaryPaymentDetailsPrepopulatedIndicator": false,
+    "BeneficiaryAccountType": "Business",
+    "MerchantCategoryCode": "7300", 
+    "MerchantCustomerIdentification": "053598653254",
+    "DeliveryAddress": {
+      "AddressLine": [
+        "Flat 7",
+        "Acacia Lodge"
+      ],
+      "StreetName": "Acacia Avenue",
+      "BuildingNumber": "27",
+      "PostCode": "GU31 2ZZ",
+      "TownName": "Sparsholt",
+      "CountrySubDivision": "Wessex", 
+      "Country": "UK"
+    }
  },
  "SCASupportData": {
   "Type": "EcommerceServices",
