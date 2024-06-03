@@ -292,13 +292,76 @@ Accept: application/json
 ```json
 {
   "Data": {
+	"Authorisation": {
+	  "AuthorisationType": "Any", 
+      "CompletionDateTime": "2025-05-30T10:35:27Z",
+   	},
     "Initiation": {
       "FileType": "UK.OB.pain.001.001.08",
       "FileHash": "m5ah/h1UjLvJYMxqAoZmj9dKdjZnsGNm+yMkJp/KuqQ",
       "FileReference": "GB2OK238",
       "NumberOfTransactions": "100",
-      "ControlSum": 3459.30
-    }
+      "ControlSum": 3459.30,
+	  "RequestedExecutionDateTime": "2024-06-03T00:00:00Z",
+	  "LocalInstrument": "UK.OB.CHAPS",
+	  "DebtorAccount": {
+        "SchemeName": "UK.OB.SortCodeAccountNumber",
+        "Identification": "11280001234567",
+        "Name": "Andrea Smith",
+        "SecondaryIdentification": "0002",
+         "Proxy": {
+          "Identification": "441234012345",
+          "Code": "TELE",
+          }
+      	},
+		"UltimateDebtor": {
+          "SchemeName": "UK.OB.BICFI",
+          "Identification": "2360549017905161589",
+          "Name": "Ultimate Debtor",
+          "LEI": "8200007YHFDMEODY1965",
+          "PostalAddress": {
+            "AddressType": "BIZZ",
+            "StreetName": "Bank Street",
+            "BuildingNumber": "11",
+            "Floor": "6",
+            "PostCode": "Z78 4TY",
+            "TownName": "London",
+            "Country": "UK"
+          }
+        },
+	    "RemittanceInformation": {
+          "Structured": [
+          {
+            "ReferredDocumentInformation": [
+              {
+                "Code": "CINV",
+                "Issuer": "Issuer01",
+                "Number": "Number_01",
+                "RelatedDate": "2024-04-25T13:26:41.911Z",
+                "LineDetails": [
+                  "string"
+                ]
+              }
+            ],
+            "ReferredDocumentAmount": 1,
+            "CreditorReferenceInformation": {
+              "Code": "DISP",
+              "Issuer": "Issuer01",
+              "Reference": "REF_26518"
+            },
+            "Invoicer": "INVR51856",
+            "Invoicee": "INVE5161856"
+          }
+        ],
+	     "Unstructured": "Internal ops code 5120101"
+      }
+	},
+	"SCASupportData": {
+	  "Type": "EcommerceServices",
+	  "AppliedAuthenticationApproach": "SCA",
+	  "ReferencePaymentOrderId": "O-611265",
+	  "Description": "Order number O-611256 payment"
+    },
   }
 }
 ```
@@ -319,12 +382,45 @@ Content-Type: application/json
     "StatusCode": "AWUP",
     "CreationDateTime": "2018-06-05T15:15:13+00:00",
     "StatusUpdateDateTime": "2018-06-05T15:15:13+00:00",
+	"CutOffDateTime": "2018-07-05T15:15:22+00:00",
+	"StatusReason": { 
+		"StatusReasonCode": "U036",
+		"StatusReasonDescription": "Authorisation not completed. Awaiting file upload"
+	},
+	"Charges": [{
+		"ChargeBearer": "Shared",
+		"Type": "UK.OB.CHAPSOut",
+		"Amount"  {
+			"Amount": "0.88",
+			"Currency": "GBP"
+		},
+    }],
+	"Authorisation": {
+    	"Type": "Any",
+    	"CompletionDateTime": "2019-05-30T10:35:27Z"
+    },
+	"Debtor": { 
+	 	"SchemeName": "UK.OB.SortCodeAccountNumber",
+        "Identification": "11280001234567",
+        "Name": "Andrea Smith",
+        "SecondaryIdentification": "0002",	
+	},
     "Initiation": {
       "FileType": "UK.OB.pain.001.001.08",
       "FileHash": "m5ah/h1UjLvJYMxqAoZmj9dKdjZnsGNm+yMkJp/KuqQ",
       "FileReference": "GB2OK238",
       "NumberOfTransactions": "100",
       "ControlSum": 3459.30,
+	  "DebtorAccount": {
+        "SchemeName": "UK.OB.SortCodeAccountNumber",
+        "Identification": "11280001234567",
+        "Name": "Andrea Smith",
+        "SecondaryIdentification": "0002",
+        "Proxy": {
+          "Identification": "441234012345",
+          "Code": "TELE",
+          }
+      	},
 	  "UltimateDebtor": {
 		"SchemeName": "UK.OB.BICFI",
 		"Identification": "2360549017905161589",
@@ -363,9 +459,16 @@ Content-Type: application/json
             "Invoicer": "INVR51856",
             "Invoicee": "INVE5161856"
           }
-        ]
+        ],
+		"Unstructured": "Internal ops code 5120101"
    	  }
-    }
+    },
+	"SCASupportData": {
+	  "Type": "EcommerceServices",
+	  "AppliedAuthenticationApproach": "SCA",
+	  "ReferencePaymentOrderId": "O-611265",
+	  "Description": "Order number O-611256 payment"
+    },
   },
   "Links":{
     "Self":"https://api.alphabank.com/open-banking/v4.0/pisp/file-payment-consents/512345"
