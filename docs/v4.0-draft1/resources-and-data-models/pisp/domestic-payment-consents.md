@@ -357,9 +357,6 @@ Accept: application/json
           "Code": "TELE"
         },
       },
-      "RemittanceInformation": {
-        "Unstructured": "Internal ops code 5120101"
-      },
       "CreditorPostalAddress":{
         "AddressType": "BIZZ",
         "Department": "Finance",
@@ -445,8 +442,9 @@ Accept: application/json
             },
             "Invoicer": "INVR51856",
             "Invoicee": "INVE5161856"
-          }
-        ]
+          },
+        ],
+        "Unstructured": "Internal ops code 5120101"
        }
     },
     "Authorisation": {
