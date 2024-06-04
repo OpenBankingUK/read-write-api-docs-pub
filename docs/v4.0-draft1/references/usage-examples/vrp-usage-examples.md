@@ -65,26 +65,135 @@ Accept: application/json
       "DebtorAccount": {
         "SchemeName": "UK.OB.IBAN",
         "Identification": "GB76LOYD30949301273801",
-        "Name": "Marcus Sweepimus"
+        "SecondaryIdentification": "008419",
+        "Name": "Marcus Sweepimus",
+        "Proxy": {
+          "Identification": "441234012345",
+          "Code": "TELE",
+        }
       },
       "CreditorAccount": {
         "SchemeName": "UK.OB.SortCodeAccountNumber",
         "Identification": "30949330000010",
         "SecondaryIdentification": "Roll 90210",
-        "Name": "Marcus Sweepimus"
+        "Name": "Marcus Sweepimus",
+        "Proxy": {
+          "Identification": "441234012346",
+          "Code": "TELE",
+        }
       },
+      "UltimateDebtor": {
+        "SchemeName": "UK.OB.BICFI",
+        "Identification": "2360549017905161589",
+        "Name": "Ultimate Debtor",
+        "LEI": "8200007YHFDMEODY1965",
+        "PostalAddress": {
+          "AddressType": "BIZZ",
+          "StreetName": "Bank Street",
+          "BuildingNumber": "11",
+          "Floor": "6",
+          "PostCode": "Z78 4TY",
+          "TownName": "London",
+          "Country": "UK"
+        }
+      },
+      "UltimateCreditor": {
+        "SchemeName": "UK.OB.BICFI",
+        "Identification": "2360549017905161589",
+        "Name": "Ultimate Creditor",
+        "LEI": "60450004FECVJV7YN339",
+        "PostalAddress": {
+          "AddressType": "BIZZ",
+          "StreetName": "Bank Street",
+          "BuildingNumber": "11",
+          "Floor": "6",
+          "PostCode": "Z78 4TY",
+          "TownName": "London",
+          "Country": "UK"
+          }
+        },
+      "CreditorPostalAddress": {
+        "AddressType": "BIZZ",
+        "Department": "Finance",
+        "SubDepartment": "Payroll",
+        "StreetName": "Bank Street",
+        "BuildingNumber": "11",
+        "BuildingName": "Tower Bridges",
+        "Floor": "6",
+        "UnitNumber": "UNIT591",
+        "Room": "844",
+        "PostBox": "PO Box 123456",
+        "PostCode": "Z78 4TY",
+        "TownLocationName":"Bank",
+        "TownName": "London",
+        "DistrictName": "Greater London",
+        "CareOf": "Ms Jane Smith",
+        "CountrySubDivision": "England",
+        "Country": "UK"
+      },
+      "RegulatoryReporting": [{
+          "DebitCreditReportingIndicator": "CRED",
+          "Authority": {
+            "Name": "string",
+            "CountryCode": "UG"
+          },
+          "Details": [{
+              "Type": "CRED",
+              "Date": "2024-04-25T13:26:41.911Z",
+              "Information": ["Reg info1", "Reg info2"],
+              "Country": "QG",
+              "Amount": {
+                "Amount": "4.68702",
+                "Currency": "JGM"
+            }
+          }]
+      }],
       "RemittanceInformation": {
         "Structured": [
           {
-            "CreditorReferenceInformation": {
-              "Reference": "SweepCo"
+          "ReferredDocumentInformation": [{
+              "Code": "CINV",
+              "Issuer": "Issuer01",
+              "Number": "Number_01",
+              "RelatedDate": "2024-04-25T13:26:41.911Z",
+              "LineDetails": [
+                "LineDetail"
+              ]
+            }],
+          "ReferredDocumentAmount": 1,
+          "CreditorReferenceInformation": {
+            "Reference": "SweepCo",
+            "Code": "DISP",
+            "Issuer": "Issuer01",
             },
+          "Invoicer": "INVR51856",
+          "Invoicee": "INVE5161856"
           },
         ],
+        "Unstructured": "Internal ops code 5120101"
       },
   },
   "Risk": {
-    "PaymentContextCode": "TransferToThirdParty"
+    "PaymentContextCode": "TransferToThirdParty",
+    "ContractPresentIndicator": false,
+    "PaymentPurposeCode": "EPAY",
+    "CategoryPurposeCode": "CASH", 
+    "BeneficiaryPaymentDetailsPrepopulatedIndicator": false,
+    "BeneficiaryAccountType": "Business",
+    "MerchantCategoryCode": "7300", 
+    "MerchantCustomerIdentification": "053598653254",
+    "DeliveryAddress": {
+      "AddressLine": [
+        "Flat 7",
+        "Acacia Lodge"
+      ],
+      "StreetName": "Acacia Avenue",
+      "BuildingNumber": "27",
+      "PostCode": "GU31 2ZZ",
+      "TownName": "Sparsholt",
+      "CountrySubDivision": "Wessex",
+      "Country": "UK"
+    }
   }
 }
 }
@@ -105,9 +214,12 @@ Content-Type: application/json
     "ConsentId": "fe615446-e53a-45ed-954c-ae5d1f97a93b",
     "CreationDateTime": "2017-06-05T15:15:15+00:00",
     "StatusCode": "AUTH",
+    "StatusReason": {
+      "StatusReasonCode": "U038", 
+      "StatusReasonDescription":"Consent consumed successfully",
+    },
     "StatusUpdateDateTime": "2017-06-05T15:15:15+05:00",
     "ReadRefundAccount": "Yes",
-
     "ControlParameters": {
       "PSUAuthenticationMethods": [ "UK.OB.SCA" ],
       "PSUInteractionTypes": [ "UK.OB.OffSession" ],
@@ -127,42 +239,152 @@ Content-Type: application/json
         }
       ]
     },
-
     "DebtorAccount": {
       "SchemeName": "UK.OB.IBAN",
       "Identification": "GB76LOYD30949301273801",
-      "Name": "Marcus Sweepimus"
+      "SecondaryIdentification": "008419",
+      "Name": "Marcus Sweepimus",
+      "Proxy": {
+          "Identification": "441234012345",
+          "Code": "TELE",
+      }
     },
-
     "Initiation": {
       "DebtorAccount": {
-        "SchemeName": "UK.OB.IBAN",
-        "Identification": "GB76LOYD30949301273801",
-        "Name": "Marcus Sweepimus"
+       "SchemeName": "UK.OB.IBAN",
+       "Identification": "GB76LOYD30949301273801",
+       "SecondaryIdentification": "008419",
+       "Name": "Marcus Sweepimus",
+       "Proxy": {
+          "Identification": "441234012345",
+          "Code": "TELE",
+        }
       },
       "CreditorAccount": {
         "SchemeName": "UK.OB.SortCodeAccountNumber",
         "Identification": "30949330000010",
         "SecondaryIdentification": "Roll 90210",
-        "Name": "Marcus Sweepimus"
+        "Name": "Marcus Sweepimus",
+        "Proxy": {
+          "Identification": "441234012348",
+          "Code": "TELE",
+        }
       },
+      "CreditorPostalAddress": {
+        "AddressType": "BIZZ",
+        "Department": "Finance",
+        "SubDepartment": "Payroll",
+        "StreetName": "Bank Street",
+        "BuildingNumber": "11",
+        "BuildingName": "Tower Bridges",
+        "Floor": "6",
+        "UnitNumber": "UNIT591",
+        "Room": "844",
+        "PostBox": "PO Box 123456",
+        "PostCode": "Z78 4TY",
+        "TownLocationName":"Bank",
+        "TownName": "London",
+        "DistrictName": "Greater London",
+        "CareOf": "Ms Jane Smith",
+        "CountrySubDivision": "England",
+        "Country": "UK"
+      },
+      "UltimateDebtor": {
+        "SchemeName": "UK.OB.BICFI",
+        "Identification": "2360549017905161589",
+        "Name": "Ultimate Debtor",
+        "LEI": "8200007YHFDMEODY1965",
+        "PostalAddress": {
+          "AddressType": "BIZZ",
+          "StreetName": "Bank Street",
+          "BuildingNumber": "11",
+          "Floor": "6",
+          "PostCode": "Z78 4TY",
+          "TownName": "London",
+          "Country": "UK"
+        }
+      },
+      "UltimateCreditor": {
+        "SchemeName": "UK.OB.BICFI",
+        "Identification": "2360549017905161589",
+        "Name": "Ultimate Creditor",
+        "LEI": "60450004FECVJV7YN339",
+        "PostalAddress": {
+          "AddressType": "BIZZ",
+          "StreetName": "Bank Street",
+          "BuildingNumber": "11",
+          "Floor": "6",
+          "PostCode": "Z78 4TY",
+          "TownName": "London",
+          "Country": "UK"
+          }
+        },
+      "RegulatoryReporting": [{
+          "DebitCreditReportingIndicator": "CRED",
+          "Authority": {
+            "Name": "string",
+            "CountryCode": "UG"
+          },
+          "Details": [{
+              "Type": "CRED",
+              "Date": "2024-04-25T13:26:41.911Z",
+              "Information": ["Reg info1", "Reg info2"],
+              "Country": "QG",
+              "Amount": {
+                "Amount": "4.68702",
+                "Currency": "JGM"
+              }
+            }]
+        }],
       "RemittanceInformation": {
         "Structured": [
           {
+          "ReferredDocumentInformation": [{
+              "Code": "CINV",
+              "Issuer": "Issuer01",
+              "Number": "Number_01",
+              "RelatedDate": "2024-04-25T13:26:41.911Z",
+              "LineDetails": [
+                "LineDetail"
+              ]
+            }],
             "CreditorReferenceInformation": {
-              "Reference": "SweepCo"
+              "Reference": "SweepCo",
+              "Code": "DISP",
+              "Issuer": "Issuer01",
             },
+            "ReferredDocumentAmount": 1,
+            "Invoicer": "INVR51856",
+            "Invoicee": "INVE5161856"
           },
         ],
+        "Unstructured": "Internal ops code 5120101"
       },
     },
   },
 
   "Risk": {
-    "PaymentContextCode": "TransferToThirdParty"
+    "PaymentContextCode": "TransferToThirdParty",
+    "ContractPresentIndicator": false,
+    "PaymentPurposeCode": "EPAY",
+    "CategoryPurposeCode": "CASH", 
+    "BeneficiaryPaymentDetailsPrepopulatedIndicator": false,
+    "BeneficiaryAccountType": "Business",
+    "MerchantCategoryCode": "7300", 
+    "MerchantCustomerIdentification": "053598653254",
+    "DeliveryAddress": {
+      "AddressLine": [
+        "Flat 7",
+        "Acacia Lodge"
+      ],
+      "StreetName": "Acacia Avenue",
+      "BuildingNumber": "27",
+      "PostCode": "GU31 2ZZ",
+      "TownName": "Sparsholt",
+      "CountrySubDivision": "Wessex",
+      "Country": "UK"
+    }
   },
-
-  
   "Links": {
     "Self": "https://api.alphabank.com/open-banking/v3.1/pisp/domestic-vrp-consents/fe615446-e53a-45ed-954c-ae5d1f97a93b"
   },
@@ -203,7 +425,10 @@ Content-Type: application/json
     "StatusCode": "AUTH",
     "StatusUpdateDateTime": "2017-06-05T15:15:15+05:00",
     "ReadRefundAccount": "Yes",
-
+    "StatusReason": {
+      "StatusReasonCode": "U038", 
+      "StatusReasonDescription":"Consent consumed successfully",
+    },
     "ControlParameters": {
       "PSUAuthenticationMethods": [ "UK.OB.SCA" ],
       "PSUInteractionTypes": [ "UK.OB.OffSession" ],
@@ -227,42 +452,152 @@ Content-Type: application/json
     "DebtorAccount": {
       "SchemeName": "UK.OB.IBAN",
       "Identification": "GB76LOYD30949301273801",
-      "Name": "Marcus Sweepimus"
+      "Name": "Marcus Sweepimus",
+      "SecondaryIdentification": "008419",
+      "Name": "Marcus Sweepimus",
+      "Proxy": {
+          "Identification": "441234012345",
+          "Code": "TELE",
+      }
     },
-
     "Initiation": {
       "DebtorAccount": {
         "SchemeName": "UK.OB.IBAN",
         "Identification": "GB76LOYD30949301273801",
-        "Name": "Marcus Sweepimus"
+        "Name": "Marcus Sweepimus",
+        "SecondaryIdentification": "008419",
+        "Name": "Marcus Sweepimus",
+        "Proxy": {
+            "Identification": "441234012345",
+            "Code": "TELE",
+        }
       },
       "CreditorAccount": {
         "SchemeName": "UK.OB.SortCodeAccountNumber",
         "Identification": "30949330000010",
         "SecondaryIdentification": "Roll 90210",
-        "Name": "Marcus Sweepimus"
+        "Name": "Marcus Sweepimus",
+        "Proxy": {
+          "Identification": "441234012348",
+          "Code": "TELE",
+        }
       },
+      "CreditorPostalAddress": {
+        "AddressType": "BIZZ",
+        "Department": "Finance",
+        "SubDepartment": "Payroll",
+        "StreetName": "Bank Street",
+        "BuildingNumber": "11",
+        "BuildingName": "Tower Bridges",
+        "Floor": "6",
+        "UnitNumber": "UNIT591",
+        "Room": "844",
+        "PostBox": "PO Box 123456",
+        "PostCode": "Z78 4TY",
+        "TownLocationName":"Bank",
+        "TownName": "London",
+        "DistrictName": "Greater London",
+        "CareOf": "Ms Jane Smith",
+        "CountrySubDivision": "England",
+        "Country": "UK"
+      },
+      "UltimateDebtor": {
+        "SchemeName": "UK.OB.BICFI",
+        "Identification": "2360549017905161589",
+        "Name": "Ultimate Debtor",
+        "LEI": "8200007YHFDMEODY1965",
+        "PostalAddress": {
+          "AddressType": "BIZZ",
+          "StreetName": "Bank Street",
+          "BuildingNumber": "11",
+          "Floor": "6",
+          "PostCode": "Z78 4TY",
+          "TownName": "London",
+          "Country": "UK"
+        }
+      },
+      "UltimateCreditor": {
+        "SchemeName": "UK.OB.BICFI",
+        "Identification": "2360549017905161589",
+        "Name": "Ultimate Creditor",
+        "LEI": "60450004FECVJV7YN339",
+        "PostalAddress": {
+          "AddressType": "BIZZ",
+          "StreetName": "Bank Street",
+          "BuildingNumber": "11",
+          "Floor": "6",
+          "PostCode": "Z78 4TY",
+          "TownName": "London",
+          "Country": "UK"
+          }
+        },
+      "RegulatoryReporting": [{
+          "DebitCreditReportingIndicator": "CRED",
+          "Authority": {
+            "Name": "string",
+            "CountryCode": "UG"
+          },
+          "Details": [{
+              "Type": "CRED",
+              "Date": "2024-04-25T13:26:41.911Z",
+              "Information": ["Reg info1", "Reg info2"],
+              "Country": "QG",
+              "Amount": {
+                "Amount": "4.68702",
+                "Currency": "JGM"
+              }
+            }]
+        }],
       "RemittanceInformation": {
-        "Structured": [
-          {
+        "Structured": [{
+          "ReferredDocumentInformation": [{
+              "Code": "CINV",
+              "Issuer": "Issuer01",
+              "Number": "Number_01",
+              "RelatedDate": "2024-04-25T13:26:41.911Z",
+              "LineDetails": [
+                "LineDetail"
+              ]
+            }],
+            "ReferredDocumentAmount": 1,
             "CreditorReferenceInformation": {
-              "Reference": "SweepCo"
+              "Reference": "SweepCo",
+              "Code": "DISP",
+              "Issuer": "Issuer01",
             },
+            "Invoicer": "INVR51856",
+            "Invoicee": "INVE5161856"
           },
         ],
+        "Unstructured": "Internal ops code 5120101"
       },
     }
   },
-
   "Risk": {
-    "PaymentContextCode": "TransferToThirdParty"
+    "PaymentContextCode": "TransferToThirdParty",
+    "ContractPresentIndicator": false,
+    "PaymentPurposeCode": "EPAY",
+    "CategoryPurposeCode": "CASH", 
+    "BeneficiaryPaymentDetailsPrepopulatedIndicator": false,
+    "BeneficiaryAccountType": "Business",
+    "MerchantCategoryCode": "7300", 
+    "MerchantCustomerIdentification": "053598653254",
+    "DeliveryAddress": {
+      "AddressLine": [
+        "Flat 7",
+        "Acacia Lodge"
+      ],
+      "StreetName": "Acacia Avenue",
+      "BuildingNumber": "27",
+      "PostCode": "GU31 2ZZ",
+      "TownName": "Sparsholt",
+      "CountrySubDivision": "Wessex",
+      "Country": "UK"
+    }
   },
-
-  
   "Links": {
     "Self": "https://api.alphabank.com/open-banking/v3.1/pisp/domestic-vrp-consents/fe615446-e53a-45ed-954c-ae5d1f97a93b"
   },
-  
   "Meta": {}
 }
 ```
@@ -295,52 +630,214 @@ Accept: application/json
       "DebtorAccount": {
         "SchemeName": "UK.OB.IBAN",
         "Identification": "GB76LOYD30949301273801",
-        "Name": "Marcus Sweepimus"
+        "Name": "Marcus Sweepimus",
+        "SecondaryIdentification": "008419",
+        "Proxy": {
+          "Identification": "441234012345",
+          "Code": "TELE",
+        }
       },
       "CreditorAccount": {
         "SchemeName": "UK.OB.SortCodeAccountNumber",
         "Identification": "30949330000010",
         "SecondaryIdentification": "Roll 90210",
-        "Name": "Marcus Sweepimus"
+        "Name": "Marcus Sweepimus",
+        "Proxy": {
+          "Identification": "441234012348",
+          "Code": "TELE",
+        }
       },
+      "UltimateDebtor": {
+        "SchemeName": "UK.OB.BICFI",
+        "Identification": "2360549017905161589",
+        "Name": "Ultimate Debtor",
+        "LEI": "8200007YHFDMEODY1965",
+        "PostalAddress": {
+          "AddressType": "BIZZ",
+          "StreetName": "Bank Street",
+          "BuildingNumber": "11",
+          "Floor": "6",
+          "PostCode": "Z78 4TY",
+          "TownName": "London",
+          "Country": "UK"
+        }
+      },
+      "UltimateCreditor": {
+        "SchemeName": "UK.OB.BICFI",
+        "Identification": "2360549017905161589",
+        "Name": "Ultimate Creditor",
+        "LEI": "60450004FECVJV7YN339",
+        "PostalAddress": {
+          "AddressType": "BIZZ",
+          "StreetName": "Bank Street",
+          "BuildingNumber": "11",
+          "Floor": "6",
+          "PostCode": "Z78 4TY",
+          "TownName": "London",
+          "Country": "UK"
+          }
+        },
+      "CreditorPostalAddress": {
+        "AddressType": "BIZZ",
+        "Department": "Finance",
+        "SubDepartment": "Payroll",
+        "StreetName": "Bank Street",
+        "BuildingNumber": "11",
+        "BuildingName": "Tower Bridges",
+        "Floor": "6",
+        "UnitNumber": "UNIT591",
+        "Room": "844",
+        "PostBox": "PO Box 123456",
+        "PostCode": "Z78 4TY",
+        "TownLocationName":"Bank",
+        "TownName": "London",
+        "DistrictName": "Greater London",
+        "CareOf": "Ms Jane Smith",
+        "CountrySubDivision": "England",
+        "Country": "UK"
+      },
+      "RegulatoryReporting": [{
+          "DebitCreditReportingIndicator": "CRED",
+          "Authority": {
+            "Name": "string",
+            "CountryCode": "UG"
+          },
+          "Details": [{
+              "Type": "CRED",
+              "Date": "2024-04-25T13:26:41.911Z",
+              "Information": ["Reg info1", "Reg info2"],
+              "Country": "QG",
+              "Amount": {
+                "Amount": "4.68702",
+                "Currency": "JGM"
+              }
+            }]
+        }],
      "RemittanceInformation": {
         "Structured": [
           {
+            "ReferredDocumentInformation": [{
+              "Code": "CINV",
+              "Issuer": "Issuer01",
+              "Number": "Number_01",
+              "RelatedDate": "2024-04-25T13:26:41.911Z",
+              "LineDetails": [
+                "LineDetail"
+              ]
+            }],
+            "ReferredDocumentAmount": 1,
             "CreditorReferenceInformation": {
-              "Reference": "SweepCo"
+              "Reference": "SweepCo",
+              "Code": "DISP",
+              "Issuer": "Issuer01",
             },
+            "Invoicer": "INVR51856",
+            "Invoicee": "INVE5161856"
           },
         ],
+        "Unstructured": "Internal ops code 5120101"
       },
     },
 
     "Instruction": {
       "InstructionIdentification": "fe655556-e53a-45ed-954c-ae5d1f97a93b",
       "EndToEndIdentification": "fe699996-e53a-45ed-954c-ae5d1f97a93a",
+      "LocalInstrument": "UK.OB.Paym",
       "CreditorAccount": {
         "SchemeName": "SortCodeAccountNumber",
         "Identification": "30949330000010",
         "SecondaryIdentification": "Roll 90210",
-        "Name": "Marcus Sweepimus"
+        "Name": "Marcus Sweepimus",
+        "Proxy":{
+          "Identification": "441234012348",
+          "Code": "TELE",
+        }
       },
       "InstructedAmount": {
         "Amount": "10.00",
         "Currency": "GBP"
       },
+      "CreditorPostalAddress": {
+        "AddressType": "BIZZ",
+        "Department": "Finance",
+        "SubDepartment": "Payroll",
+        "StreetName": "Bank Street",
+        "BuildingNumber": "11",
+        "BuildingName": "Tower Bridges",
+        "Floor": "6",
+        "UnitNumber": "UNIT591",
+        "Room": "844",
+        "PostBox": "PO Box 123456",
+        "PostCode": "Z78 4TY",
+        "TownLocationName":"Bank",
+        "TownName": "London",
+        "DistrictName": "Greater London",
+        "CareOf": "Ms Jane Smith",
+        "CountrySubDivision": "England",
+        "Country": "UK"
+      },
+      "UltimateCreditor": {
+        "SchemeName": "UK.OB.BICFI",
+        "Identification": "2360549017905161589",
+        "Name": "Ultimate Creditor",
+        "LEI": "60450004FECVJV7YN339",
+        "PostalAddress": {
+          "AddressType": "BIZZ",
+          "StreetName": "Bank Street",
+          "BuildingNumber": "11",
+          "Floor": "6",
+          "PostCode": "Z78 4TY",
+          "TownName": "London",
+          "Country": "UK"
+          }
+        },
       "RemittanceInformation": {
         "Structured": [
           {
+            "ReferredDocumentInformation": [{
+              "Code": "CINV",
+              "Issuer": "Issuer01",
+              "Number": "Number_01",
+              "RelatedDate": "2024-04-25T13:26:41.911Z",
+              "LineDetails": [
+                "LineDetail"
+              ]
+            }],
             "CreditorReferenceInformation": {
-              "Reference": "SweepCo"
+              "Reference": "SweepCo",
+              "Code": "DISP",
+              "Issuer": "Issuer01",
             },
+            "ReferredDocumentAmount": 1,
+            "Invoicer": "INVR51856",
+            "Invoicee": "INVE5161856"
           },
         ],
+        "Unstructured": "Internal ops code 5120101"
       },
     }
   },
-
   "Risk": {
-    "PaymentContextCode": "TransferToThirdParty"
+    "PaymentContextCode": "TransferToThirdParty",
+    "ContractPresentIndicator": false,
+    "PaymentPurposeCode": "EPAY",
+    "CategoryPurposeCode": "CASH", 
+    "BeneficiaryPaymentDetailsPrepopulatedIndicator": false,
+    "BeneficiaryAccountType": "Business",
+    "MerchantCategoryCode": "7300", 
+    "MerchantCustomerIdentification": "053598653254",
+    "DeliveryAddress": {
+      "AddressLine": [
+        "Flat 7",
+        "Acacia Lodge"
+      ],
+      "StreetName": "Acacia Avenue",
+      "BuildingNumber": "27",
+      "PostCode": "GU31 2ZZ",
+      "TownName": "Sparsholt",
+      "CountrySubDivision": "Wessex",
+      "Country": "UK"
+    }
   }
 }
 ```
@@ -361,64 +858,244 @@ Content-Type: application/json
     "CreationDateTime": "2017-06-05T15:15:15+00:00",
     "DomesticVRPId": "OU90210",
     "StatusCode": "PDNG",
+    "StatusReason": {
+      "StatusReasonCode": "83",
+      "StatusReasonDescription":"Pending completion next working day",
+    },
     "StatusUpdateDateTime": "2017-06-05T15:15:15+00:00",
-
+    "ExpectedExecutionDateTime": "2017-06-05T15:15:15+00:00",
+    "ExpectedSettlementDateTime": "2017-06-06T15:15:15+00:00",
     "DebtorAccount": {
       "SchemeName": "UK.OB.IBAN",
       "Identification": "GB76LOYD30949301273801",
-      "Name": "Marcus Sweepimus"
+      "Name": "Marcus Sweepimus",
+      "SecondaryIdentification": "008419",
+      "Proxy":{
+          "Identification": "441234012348",
+          "Code": "TELE",
+        }
     },
-
+    "Refund" : "Yes", 
+    "Charges": [{
+       "ChargeBearer": "Shared",
+       "Type": "UK.OB.CHAPSOut",
+       "Amount"  {
+        "Amount": "0.88",
+        "Currency": "GBP"
+      },
+    }],
     "Initiation": {
       "DebtorAccount": {
         "SchemeName": "UK.OB.IBAN",
         "Identification": "GB76LOYD30949301273801",
-        "Name": "Marcus Sweepimus"
+        "Name": "Marcus Sweepimus",
+        "SecondaryIdentification": "008419",
+        "Proxy": {
+          "Identification": "441234012345",
+          "Code": "TELE",
+        }
       },
       "CreditorAccount": {
         "SchemeName": "SortCodeAccountNumber",
         "Identification": "30949330000010",
         "SecondaryIdentification": "Roll 90210",
-        "Name": "Marcus Sweepimus"
+        "Name": "Marcus Sweepimus",
+        "Proxy": {
+          "Identification": "441234012385",
+          "Code": "TELE",
+        }
       },
+      "CreditorPostalAddress": {
+        "AddressType": "BIZZ",
+        "Department": "Finance",
+        "SubDepartment": "Payroll",
+        "StreetName": "Bank Street",
+        "BuildingNumber": "11",
+        "BuildingName": "Tower Bridges",
+        "Floor": "6",
+        "UnitNumber": "UNIT591",
+        "Room": "844",
+        "PostBox": "PO Box 123456",
+        "PostCode": "Z78 4TY",
+        "TownLocationName":"Bank",
+        "TownName": "London",
+        "DistrictName": "Greater London",
+        "CareOf": "Ms Jane Smith",
+        "CountrySubDivision": "England",
+        "Country": "UK"
+      },
+      "UltimateDebtor": {
+        "SchemeName": "UK.OB.BICFI",
+        "Identification": "2360549017905161589",
+        "Name": "Ultimate Debtor",
+        "LEI": "8200007YHFDMEODY1965",
+        "PostalAddress": {
+          "AddressType": "BIZZ",
+          "StreetName": "Bank Street",
+          "BuildingNumber": "11",
+          "Floor": "6",
+          "PostCode": "Z78 4TY",
+          "TownName": "London",
+          "Country": "UK"
+        }
+      },
+      "UltimateCreditor": {
+        "SchemeName": "UK.OB.BICFI",
+        "Identification": "2360549017905161589",
+        "Name": "Ultimate Creditor",
+        "LEI": "60450004FECVJV7YN339",
+        "PostalAddress": {
+          "AddressType": "BIZZ",
+          "StreetName": "Bank Street",
+          "BuildingNumber": "11",
+          "Floor": "6",
+          "PostCode": "Z78 4TY",
+          "TownName": "London",
+          "Country": "UK"
+          }
+        },
+      "RegulatoryReporting": [{
+          "DebitCreditReportingIndicator": "CRED",
+          "Authority": {
+            "Name": "string",
+            "CountryCode": "UG"
+          },
+          "Details": [{
+              "Type": "CRED",
+              "Date": "2024-04-25T13:26:41.911Z",
+              "Information": ["Reg info1", "Reg info2"],
+              "Country": "QG",
+              "Amount": {
+                "Amount": "4.68702",
+                "Currency": "JGM"
+              }
+            }]
+      }],
       "RemittanceInformation": {
         "Structured": [
           {
             "CreditorReferenceInformation": {
-              "Reference": "SweepCo"
+              "Reference": "SweepCo",
+              "Code": "DISP",
+              "Issuer": "Issuer01",
             },
+            "ReferredDocumentAmount": 1,
+            "ReferredDocumentInformation": [{
+              "Code": "CINV",
+              "Issuer": "Issuer01",
+              "Number": "Number_01",
+              "RelatedDate": "2024-04-25T13:26:41.911Z",
+              "LineDetails": [
+                "LineDetail"
+              ]
+            }],
+            "Invoicer": "INVR51856",
+            "Invoicee": "INVE5161856"
           },
         ],
+        "Unstructured": "Internal ops code 5120101"
       },
     },
 
     "Instruction": {
       "InstructionIdentification": "fe655556-e53a-45ed-954c-ae5d1f97a93b",
       "EndToEndIdentification": "fe699996-e53a-45ed-954c-ae5d1f97a93a",
+      "LocalInstrument": "UK.OB.Paym",
       "CreditorAccount": {
         "SchemeName": "SortCodeAccountNumber",
         "Identification": "30949330000010",
         "SecondaryIdentification": "Roll 90210",
-        "Name": "Marcus Sweepimus"
+        "Name": "Marcus Sweepimus",
+        "Proxy": {
+          "Identification": "441234012385",
+          "Code": "TELE",
+        }
+      },
+      "CreditorPostalAddress": {
+        "AddressType": "BIZZ",
+        "Department": "Finance",
+        "SubDepartment": "Payroll",
+        "StreetName": "Bank Street",
+        "BuildingNumber": "11",
+        "BuildingName": "Tower Bridges",
+        "Floor": "6",
+        "UnitNumber": "UNIT591",
+        "Room": "844",
+        "PostBox": "PO Box 123456",
+        "PostCode": "Z78 4TY",
+        "TownLocationName":"Bank",
+        "TownName": "London",
+        "DistrictName": "Greater London",
+        "CareOf": "Ms Jane Smith",
+        "CountrySubDivision": "England",
+        "Country": "UK"
       },
       "InstructedAmount": {
         "Amount": "10.00",
         "Currency": "GBP"
       },
+      "UltimateCreditor": {
+        "SchemeName": "UK.OB.BICFI",
+        "Identification": "2360549017905161589",
+        "Name": "Ultimate Creditor",
+        "LEI": "60450004FECVJV7YN339",
+        "PostalAddress": {
+          "AddressType": "BIZZ",
+          "StreetName": "Bank Street",
+          "BuildingNumber": "11",
+          "Floor": "6",
+          "PostCode": "Z78 4TY",
+          "TownName": "London",
+          "Country": "UK"
+          }
+        },
       "RemittanceInformation": {
         "Structured": [
           {
+            "ReferredDocumentInformation": [{
+              "Code": "CINV",
+              "Issuer": "Issuer01",
+              "Number": "Number_01",
+              "RelatedDate": "2024-04-25T13:26:41.911Z",
+              "LineDetails": [
+                "LineDetail"
+              ]
+            }],
             "CreditorReferenceInformation": {
-              "Reference": "SweepCo"
+              "Reference": "SweepCo",
+              "Code": "DISP",
+              "Issuer": "Issuer01",
             },
+            "Invoicer": "INVR51856",
+            "Invoicee": "INVE5161856"
           },
         ],
+        "Unstructured": "Internal ops code 5120101"
       },
     }
   },
 
   "Risk": {
-    "PaymentContextCode": "TransferToThirdParty"
+    "PaymentContextCode": "TransferToThirdParty",
+    "ContractPresentIndicator": false,
+    "PaymentPurposeCode": "EPAY",
+    "CategoryPurposeCode": "CASH", 
+    "BeneficiaryPaymentDetailsPrepopulatedIndicator": false,
+    "BeneficiaryAccountType": "Business",
+    "MerchantCategoryCode": "7300", 
+    "MerchantCustomerIdentification": "053598653254",
+    "DeliveryAddress": {
+      "AddressLine": [
+        "Flat 7",
+        "Acacia Lodge"
+      ],
+      "StreetName": "Acacia Avenue",
+      "BuildingNumber": "27",
+      "PostCode": "GU31 2ZZ",
+      "TownName": "Sparsholt",
+      "CountrySubDivision": "Wessex",
+      "Country": "UK"
+    }
   },
 
   
@@ -477,19 +1154,70 @@ Accept: application/json
       ]
     },
     "Initiation": {
+      "RegulatoryReporting": [{
+          "DebitCreditReportingIndicator": "CRED",
+          "Authority": {
+            "Name": "string",
+            "CountryCode": "UG"
+          },
+          "Details": [{
+              "Type": "CRED",
+              "Date": "2024-04-25T13:26:41.911Z",
+              "Information": ["Reg info1", "Reg info2"],
+              "Country": "QG",
+              "Amount": {
+                "Amount": "4.68702",
+                "Currency": "JGM"
+            }
+          }]
+      }],
       "RemittanceInformation": {
         "Structured": [
           {
+             "ReferredDocumentInformation": [{
+              "Code": "CINV",
+              "Issuer": "Issuer01",
+              "Number": "Number_01",
+              "RelatedDate": "2024-04-25T13:26:41.911Z",
+              "LineDetails": [
+                "LineDetail"
+              ]
+            }],
+            "ReferredDocumentAmount": 1,
             "CreditorReferenceInformation": {
-              "Reference": "SweepCo"
+              "Reference": "SweepCo",
+              "Code": "DISP",
+              "Issuer": "Issuer01",
             },
+            "Invoicer": "INVR51856",
+            "Invoicee": "INVE5161856"
           },
         ],
+        "Unstructured": "Internal ops code 5120101"
       },
     }
   },
   "Risk": {
-    "PaymentContextCode": "TransferToThirdParty"
+    "PaymentContextCode": "TransferToThirdParty",
+    "ContractPresentIndicator": false,
+    "PaymentPurposeCode": "EPAY",
+    "CategoryPurposeCode": "CASH", 
+    "BeneficiaryPaymentDetailsPrepopulatedIndicator": false,
+    "BeneficiaryAccountType": "Business",
+    "MerchantCategoryCode": "7300", 
+    "MerchantCustomerIdentification": "053598653254",
+    "DeliveryAddress": {
+      "AddressLine": [
+        "Flat 7",
+        "Acacia Lodge"
+      ],
+      "StreetName": "Acacia Avenue",
+      "BuildingNumber": "27",
+      "PostCode": "GU31 2ZZ",
+      "TownName": "Sparsholt",
+      "CountrySubDivision": "Wessex",
+      "Country": "UK"
+    }
   }
 }
 ```
@@ -509,9 +1237,14 @@ Content-Type: application/json
     "ConsentId": "fe615446-e53a-45ed-954c-ae5d1f97a93b",
     "CreationDateTime": "2017-06-05T15:15:15+00:00",
     "StatusCode": "AWAU",
+    "StatusReason": {
+      "StatusReasonCode": "U031", 
+      "StatusReasonDescription":"All checks yet to start",
+    },
     "StatusUpdateDateTime": "2017-06-05T15:15:15+00:00",
     "ReadRefundAccount": "Yes",
-
+    "ExpectedExecutionDateTime": "2017-06-05T15:15:15+00:00",
+    "ExpectedSettlementDateTime": "2017-06-06T15:15:15+00:00",
     "ControlParameters": {
       "PSUAuthenticationMethods": [ "UK.OB.SCA" ],
       "PSUInteractionTypes": [ "UK.OB.OffSession" ],
@@ -531,22 +1264,141 @@ Content-Type: application/json
         }
       ]
     },
-
     "Initiation": {
+      "CreditorAccount": {
+        "SchemeName": "SortCodeAccountNumber",
+        "Identification": "30949330000010",
+        "SecondaryIdentification": "Roll 90210",
+        "Name": "Marcus Sweepimus",
+        "Proxy": {
+          "Identification": "441234012385",
+          "Code": "TELE",
+        }
+      },
+      "DebtorAccount": {
+        "SchemeName": "UK.OB.IBAN",
+        "Identification": "GB76LOYD30949301273801",
+        "Name": "Marcus Sweepimus",
+        "SecondaryIdentification": "008419",
+        "Proxy": {
+          "Identification": "441234012345",
+          "Code": "TELE",
+        }
+      },
+      "CreditorPostalAddress": {
+        "AddressType": "BIZZ",
+        "Department": "Finance",
+        "SubDepartment": "Payroll",
+        "StreetName": "Bank Street",
+        "BuildingNumber": "11",
+        "BuildingName": "Tower Bridges",
+        "Floor": "6",
+        "UnitNumber": "UNIT591",
+        "Room": "844",
+        "PostBox": "PO Box 123456",
+        "PostCode": "Z78 4TY",
+        "TownLocationName":"Bank",
+        "TownName": "London",
+        "DistrictName": "Greater London",
+        "CareOf": "Ms Jane Smith",
+        "CountrySubDivision": "England",
+        "Country": "UK"
+      },
+      "UltimateDebtor": {
+        "SchemeName": "UK.OB.BICFI",
+        "Identification": "2360549017905161589",
+        "Name": "Ultimate Debtor",
+        "LEI": "8200007YHFDMEODY1965",
+        "PostalAddress": {
+          "AddressType": "BIZZ",
+          "StreetName": "Bank Street",
+          "BuildingNumber": "11",
+          "Floor": "6",
+          "PostCode": "Z78 4TY",
+          "TownName": "London",
+          "Country": "UK"
+        }
+      },
+      "UltimateCreditor": {
+        "SchemeName": "UK.OB.BICFI",
+        "Identification": "2360549017905161589",
+        "Name": "Ultimate Creditor",
+        "LEI": "60450004FECVJV7YN339",
+        "PostalAddress": {
+          "AddressType": "BIZZ",
+          "StreetName": "Bank Street",
+          "BuildingNumber": "11",
+          "Floor": "6",
+          "PostCode": "Z78 4TY",
+          "TownName": "London",
+          "Country": "UK"
+          }
+        },
+      "RegulatoryReporting": [{
+          "DebitCreditReportingIndicator": "CRED",
+          "Authority": {
+            "Name": "string",
+            "CountryCode": "UG"
+          },
+          "Details": [{
+              "Type": "CRED",
+              "Date": "2024-04-25T13:26:41.911Z",
+              "Information": ["Reg info1", "Reg info2"],
+              "Country": "QG",
+              "Amount": {
+                "Amount": "4.68702",
+                "Currency": "JGM"
+              }
+            }]
+      }],
       "RemittanceInformation": {
         "Structured": [
           {
             "CreditorReferenceInformation": {
-              "Reference": "SweepCo"
+              "Reference": "SweepCo",
+              "Code": "DISP",
+              "Issuer": "Issuer01",
             },
+            "ReferredDocumentAmount": 1,
+            "ReferredDocumentInformation": [{
+              "Code": "CINV",
+              "Issuer": "Issuer01",
+              "Number": "Number_01",
+              "RelatedDate": "2024-04-25T13:26:41.911Z",
+              "LineDetails": [
+                "LineDetail"
+              ]
+            }],
+            "Invoicer": "INVR51856",
+            "Invoicee": "INVE5161856"
           },
         ],
+        "Unstructured": "Internal ops code 5120101"
       },
     }
   },
 
   "Risk": {
-    "PaymentContextCode": "TransferToThirdParty"
+    "PaymentContextCode": "TransferToThirdParty",
+    "ContractPresentIndicator": false,
+    "PaymentPurposeCode": "EPAY",
+    "CategoryPurposeCode": "CASH", 
+    "BeneficiaryPaymentDetailsPrepopulatedIndicator": false,
+    "BeneficiaryAccountType": "Business",
+    "MerchantCategoryCode": "7300", 
+    "MerchantCustomerIdentification": "053598653254",
+    "DeliveryAddress": {
+      "AddressLine": [
+        "Flat 7",
+        "Acacia Lodge"
+      ],
+      "StreetName": "Acacia Avenue",
+      "BuildingNumber": "27",
+      "PostCode": "GU31 2ZZ",
+      "TownName": "Sparsholt",
+      "CountrySubDivision": "Wessex",
+      "Country": "UK"
+    }
   },
 
   
@@ -611,22 +1463,109 @@ Content-Type: application/json
         }
       ]
     },
-
     "DebtorAccount": {
-      "SchemeName": "UK.OB.IBAN",
-      "Identification": "GB76LOYD30949301273801",
-      "Name": "Marcus Sweepimus"
-    },
-
+        "SchemeName": "UK.OB.IBAN",
+        "Identification": "GB76LOYD30949301273801",
+        "Name": "Marcus Sweepimus",
+        "SecondaryIdentification": "008419",
+          "Proxy": {
+            "Identification": "441234012345",
+            "Code": "TELE",
+          }
+      },
     "Initiation": {
+      "DebtorAccount": {
+        "SchemeName": "UK.OB.IBAN",
+        "Identification": "GB76LOYD30949301273801",
+        "Name": "Marcus Sweepimus",
+        "SecondaryIdentification": "008419",
+          "Proxy": {
+            "Identification": "441234012345",
+            "Code": "TELE",
+          }
+      },
+      "CreditorPostalAddress": {
+        "AddressType": "BIZZ",
+        "Department": "Finance",
+        "SubDepartment": "Payroll",
+        "StreetName": "Bank Street",
+        "BuildingNumber": "11",
+        "BuildingName": "Tower Bridges",
+        "Floor": "6",
+        "UnitNumber": "UNIT591",
+        "Room": "844",
+        "PostBox": "PO Box 123456",
+        "PostCode": "Z78 4TY",
+        "TownLocationName":"Bank",
+        "TownName": "London",
+        "DistrictName": "Greater London",
+        "CareOf": "Ms Jane Smith",
+        "CountrySubDivision": "England",
+        "Country": "UK"
+      },
+      "CreditorAccount": {
+        "SchemeName": "SortCodeAccountNumber",
+        "Identification": "30949330000010",
+        "SecondaryIdentification": "Roll 90210",
+        "Name": "Marcus Sweepimus",
+        "Proxy": {
+          "Identification": "441234012385",
+          "Code": "TELE",
+        }
+      },
+      "UltimateDebtor": {
+        "SchemeName": "UK.OB.BICFI",
+        "Identification": "2360549017905161589",
+        "Name": "Ultimate Debtor",
+        "LEI": "8200007YHFDMEODY1965",
+        "PostalAddress": {
+          "AddressType": "BIZZ",
+          "StreetName": "Bank Street",
+          "BuildingNumber": "11",
+          "Floor": "6",
+          "PostCode": "Z78 4TY",
+          "TownName": "London",
+          "Country": "UK"
+        }
+      },
+      "UltimateCreditor": {
+        "SchemeName": "UK.OB.BICFI",
+        "Identification": "2360549017905161589",
+        "Name": "Ultimate Creditor",
+        "LEI": "60450004FECVJV7YN339",
+        "PostalAddress": {
+          "AddressType": "BIZZ",
+          "StreetName": "Bank Street",
+          "BuildingNumber": "11",
+          "Floor": "6",
+          "PostCode": "Z78 4TY",
+          "TownName": "London",
+          "Country": "UK"
+          }
+        },
       "RemittanceInformation": {
         "Structured": [
           {
             "CreditorReferenceInformation": {
-              "Reference": "SweepCo"
+              "Reference": "SweepCo",
+              "Code": "DISP",
+              "Issuer": "Issuer01",
             },
+            "ReferredDocumentAmount": 1,
+            "ReferredDocumentInformation": [{
+              "Code": "CINV",
+              "Issuer": "Issuer01",
+              "Number": "Number_01",
+              "RelatedDate": "2024-04-25T13:26:41.911Z",
+              "LineDetails": [
+                "LineDetail"
+              ]
+            }],
+            "Invoicer": "INVR51856",
+            "Invoicee": "INVE5161856"
           },
         ],
+        "Unstructured": "Internal ops code 5120101"
       },
     }
   },
@@ -668,22 +1607,161 @@ Accept: application/json
     "ConsentId": "fe615446-e53a-45ed-954c-ae5d1f97a93b",
     "PSUAuthenticationMethod": "UK.OB.SCA",
     "PSUInteractionType": "UK.OB.OffSession",
-    "VRPType": "UK.OB.VRPType.Sweeping"
-
+    "VRPType": "UK.OB.VRPType.Sweeping",
+    "Refund" : "Yes", 
+    "Charges": [{
+       "ChargeBearer": "Shared",
+       "Type": "UK.OB.CHAPSOut",
+       "Amount"  {
+        "Amount": "0.88",
+        "Currency": "GBP"
+      },
+    }],
     "Initiation": {
+      "DebtorAccount": {
+        "SchemeName": "UK.OB.IBAN",
+        "Identification": "GB76LOYD30949301273801",
+        "Name": "Marcus Sweepimus",
+        "SecondaryIdentification": "008419",
+        "Proxy": {
+          "Identification": "441234012345",
+          "Code": "TELE",
+        }
+      },
+      "CreditorAccount": {
+        "SchemeName": "SortCodeAccountNumber",
+        "Identification": "30949330000010",
+        "SecondaryIdentification": "Roll 90210",
+        "Name": "Marcus Sweepimus",
+        "Proxy": {
+          "Identification": "441234012385",
+          "Code": "TELE",
+        }
+      },
+      "CreditorPostalAddress": {
+        "AddressType": "BIZZ",
+        "Department": "Finance",
+        "SubDepartment": "Payroll",
+        "StreetName": "Bank Street",
+        "BuildingNumber": "11",
+        "BuildingName": "Tower Bridges",
+        "Floor": "6",
+        "UnitNumber": "UNIT591",
+        "Room": "844",
+        "PostBox": "PO Box 123456",
+        "PostCode": "Z78 4TY",
+        "TownLocationName":"Bank",
+        "TownName": "London",
+        "DistrictName": "Greater London",
+        "CareOf": "Ms Jane Smith",
+        "CountrySubDivision": "England",
+        "Country": "UK"
+      },
+      "UltimateDebtor": {
+        "SchemeName": "UK.OB.BICFI",
+        "Identification": "2360549017905161589",
+        "Name": "Ultimate Debtor",
+        "LEI": "8200007YHFDMEODY1965",
+        "PostalAddress": {
+          "AddressType": "BIZZ",
+          "StreetName": "Bank Street",
+          "BuildingNumber": "11",
+          "Floor": "6",
+          "PostCode": "Z78 4TY",
+          "TownName": "London",
+          "Country": "UK"
+        }
+      },
+      "UltimateCreditor": {
+        "SchemeName": "UK.OB.BICFI",
+        "Identification": "2360549017905161589",
+        "Name": "Ultimate Creditor",
+        "LEI": "60450004FECVJV7YN339",
+        "PostalAddress": {
+          "AddressType": "BIZZ",
+          "StreetName": "Bank Street",
+          "BuildingNumber": "11",
+          "Floor": "6",
+          "PostCode": "Z78 4TY",
+          "TownName": "London",
+          "Country": "UK"
+          }
+        },
+      "RegulatoryReporting": [{
+          "DebitCreditReportingIndicator": "CRED",
+          "Authority": {
+            "Name": "string",
+            "CountryCode": "UG"
+          },
+          "Details": [{
+              "Type": "CRED",
+              "Date": "2024-04-25T13:26:41.911Z",
+              "Information": ["Reg info1", "Reg info2"],
+              "Country": "QG",
+              "Amount": {
+                "Amount": "4.68702",
+                "Currency": "JGM"
+              }
+            }]
+      }],
       "RemittanceInformation": {
-        "Reference": "Sweepco"
-      }
+        "Structured": [
+          {
+            "CreditorReferenceInformation": {
+              "Reference": "SweepCo",
+              "Code": "DISP",
+              "Issuer": "Issuer01",
+            },
+            "ReferredDocumentAmount": 1,
+            "ReferredDocumentInformation": [{
+              "Code": "CINV",
+              "Issuer": "Issuer01",
+              "Number": "Number_01",
+              "RelatedDate": "2024-04-25T13:26:41.911Z",
+              "LineDetails": [
+                "LineDetail"
+              ]
+            }],
+            "Invoicer": "INVR51856",
+            "Invoicee": "INVE5161856"
+          },
+        ],
+        "Unstructured": "Internal ops code 5120101"
+      },
     },
 
     "Instruction": {
       "InstructionIdentification": "fe655556-e53a-45ed-954c-ae5d1f97a93b",
       "EndToEndIdentification": "fe699996-e53a-45ed-954c-ae5d1f97a93a",
+      "LocalInstrument": "UK.OB.Paym",
       "CreditorAccount": {
         "SchemeName": "SortCodeAccountNumber",
         "Identification": "30949330000010",
         "SecondaryIdentification": "Roll 90210",
-        "Name": "Marcus Sweepimus"
+        "Name": "Marcus Sweepimus",
+        "Proxy": {
+          "Identification": "441234012385",
+          "Code": "TELE",
+        }
+      },
+      "CreditorPostalAddress": {
+        "AddressType": "BIZZ",
+        "Department": "Finance",
+        "SubDepartment": "Payroll",
+        "StreetName": "Bank Street",
+        "BuildingNumber": "11",
+        "BuildingName": "Tower Bridges",
+        "Floor": "6",
+        "UnitNumber": "UNIT591",
+        "Room": "844",
+        "PostBox": "PO Box 123456",
+        "PostCode": "Z78 4TY",
+        "TownLocationName":"Bank",
+        "TownName": "London",
+        "DistrictName": "Greater London",
+        "CareOf": "Ms Jane Smith",
+        "CountrySubDivision": "England",
+        "Country": "UK"
       },
       "InstructedAmount": {
         "Amount": "10.00",
@@ -692,17 +1770,49 @@ Accept: application/json
       "RemittanceInformation": {
         "Structured": [
           {
+            "ReferredDocumentInformation": [{
+              "Code": "CINV",
+              "Issuer": "Issuer01",
+              "Number": "Number_01",
+              "RelatedDate": "2024-04-25T13:26:41.911Z",
+              "LineDetails": [
+                "LineDetail"
+              ]
+            }],
             "CreditorReferenceInformation": {
-              "Reference": "SweepCo"
+              "Reference": "SweepCo",
+              "Code": "DISP",
+              "Issuer": "Issuer01",
             },
+            "Invoicer": "INVR51856",
+            "Invoicee": "INVE5161856"
           },
         ],
+        "Unstructured": "Internal ops code 5120101"
       },
     }
   },
 
   "Risk": {
-    "PaymentContextCode": "TransferToThirdParty"
+    "PaymentContextCode": "TransferToThirdParty",
+    "ContractPresentIndicator": false,
+    "PaymentPurposeCode": "EPAY",
+    "CategoryPurposeCode": "CASH", 
+    "BeneficiaryPaymentDetailsPrepopulatedIndicator": false,
+    "BeneficiaryAccountType": "Business",
+    "MerchantCategoryCode": "7300", 
+    "MerchantCustomerIdentification": "053598653254",
+    "DeliveryAddress": {
+      "AddressLine": [
+        "Flat 7",
+        "Acacia Lodge"
+      ],
+      "StreetName": "Acacia Avenue",
+      "BuildingNumber": "27",
+      "PostCode": "GU31 2ZZ",
+      "TownName": "Sparsholt",
+      "CountrySubDivision": "Wessex",
+      "Country": "UK"
   }
 }
 ```
@@ -723,53 +1833,244 @@ Content-Type: application/json
     "CreationDateTime": "2017-06-05T15:15:15+00:00",
     "DomesticVRPId": "OU90210",
     "Status": "PDNG",
+    "StatusReason": {
+      "StatusReasonCode": "83",
+      "StatusReasonDescription":"Pending completion next working day",
+    },
     "StatusUpdateDateTime": "2017-06-05T15:15:15+00:00",
-
+    "ExpectedExecutionDateTime": "2017-06-05T15:15:15+00:00",
+    "ExpectedSettlementDateTime": "2017-06-06T15:15:15+00:00",
     "DebtorAccount": {
       "SchemeName": "UK.OB.IBAN",
       "Identification": "GB76LOYD30949301273801",
-      "Name": "Marcus Sweepimus"
+      "Name": "Marcus Sweepimus",
+      "SecondaryIdentification": "008419",
+      "Proxy":{
+          "Identification": "441234012348",
+          "Code": "TELE",
+        }
     },
-
+    "Refund" : "Yes", 
+    "Charges": [{
+       "ChargeBearer": "Shared",
+       "Type": "UK.OB.CHAPSOut",
+       "Amount"  {
+        "Amount": "0.88",
+        "Currency": "GBP"
+      },
+    }],
     "Initiation": {
+      "DebtorAccount": {
+        "SchemeName": "UK.OB.IBAN",
+        "Identification": "GB76LOYD30949301273801",
+        "Name": "Marcus Sweepimus",
+        "SecondaryIdentification": "008419",
+        "Proxy": {
+          "Identification": "441234012345",
+          "Code": "TELE",
+        }
+      },
+      "CreditorAccount": {
+        "SchemeName": "SortCodeAccountNumber",
+        "Identification": "30949330000010",
+        "SecondaryIdentification": "Roll 90210",
+        "Name": "Marcus Sweepimus",
+        "Proxy": {
+          "Identification": "441234012385",
+          "Code": "TELE",
+        }
+      },
+      "CreditorPostalAddress": {
+        "AddressType": "BIZZ",
+        "Department": "Finance",
+        "SubDepartment": "Payroll",
+        "StreetName": "Bank Street",
+        "BuildingNumber": "11",
+        "BuildingName": "Tower Bridges",
+        "Floor": "6",
+        "UnitNumber": "UNIT591",
+        "Room": "844",
+        "PostBox": "PO Box 123456",
+        "PostCode": "Z78 4TY",
+        "TownLocationName":"Bank",
+        "TownName": "London",
+        "DistrictName": "Greater London",
+        "CareOf": "Ms Jane Smith",
+        "CountrySubDivision": "England",
+        "Country": "UK"
+      },
+      "UltimateDebtor": {
+        "SchemeName": "UK.OB.BICFI",
+        "Identification": "2360549017905161589",
+        "Name": "Ultimate Debtor",
+        "LEI": "8200007YHFDMEODY1965",
+        "PostalAddress": {
+          "AddressType": "BIZZ",
+          "StreetName": "Bank Street",
+          "BuildingNumber": "11",
+          "Floor": "6",
+          "PostCode": "Z78 4TY",
+          "TownName": "London",
+          "Country": "UK"
+        }
+      },
+      "UltimateCreditor": {
+        "SchemeName": "UK.OB.BICFI",
+        "Identification": "2360549017905161589",
+        "Name": "Ultimate Creditor",
+        "LEI": "60450004FECVJV7YN339",
+        "PostalAddress": {
+          "AddressType": "BIZZ",
+          "StreetName": "Bank Street",
+          "BuildingNumber": "11",
+          "Floor": "6",
+          "PostCode": "Z78 4TY",
+          "TownName": "London",
+          "Country": "UK"
+          }
+        },
+      "RegulatoryReporting": [{
+          "DebitCreditReportingIndicator": "CRED",
+          "Authority": {
+            "Name": "string",
+            "CountryCode": "UG"
+          },
+          "Details": [{
+              "Type": "CRED",
+              "Date": "2024-04-25T13:26:41.911Z",
+              "Information": ["Reg info1", "Reg info2"],
+              "Country": "QG",
+              "Amount": {
+                "Amount": "4.68702",
+                "Currency": "JGM"
+              }
+            }]
+      }],
       "RemittanceInformation": {
         "Structured": [
           {
             "CreditorReferenceInformation": {
-              "Reference": "SweepCo"
+              "Reference": "SweepCo",
+              "Code": "DISP",
+              "Issuer": "Issuer01",
             },
+            "ReferredDocumentAmount": 1,
+            "ReferredDocumentInformation": [{
+              "Code": "CINV",
+              "Issuer": "Issuer01",
+              "Number": "Number_01",
+              "RelatedDate": "2024-04-25T13:26:41.911Z",
+              "LineDetails": [
+                "LineDetail"
+              ]
+            }],
+            "Invoicer": "INVR51856",
+            "Invoicee": "INVE5161856"
           },
         ],
+        "Unstructured": "Internal ops code 5120101"
       },
     },
 
     "Instruction": {
       "InstructionIdentification": "fe655556-e53a-45ed-954c-ae5d1f97a93b",
       "EndToEndIdentification": "fe699996-e53a-45ed-954c-ae5d1f97a93a",
+      "LocalInstrument": "UK.OB.Paym",
       "CreditorAccount": {
         "SchemeName": "SortCodeAccountNumber",
         "Identification": "30949330000010",
         "SecondaryIdentification": "Roll 90210",
-        "Name": "Marcus Sweepimus"
+        "Name": "Marcus Sweepimus",
+        "Proxy": {
+          "Identification": "441234012385",
+          "Code": "TELE",
+        }
+      },
+      "CreditorPostalAddress": {
+        "AddressType": "BIZZ",
+        "Department": "Finance",
+        "SubDepartment": "Payroll",
+        "StreetName": "Bank Street",
+        "BuildingNumber": "11",
+        "BuildingName": "Tower Bridges",
+        "Floor": "6",
+        "UnitNumber": "UNIT591",
+        "Room": "844",
+        "PostBox": "PO Box 123456",
+        "PostCode": "Z78 4TY",
+        "TownLocationName":"Bank",
+        "TownName": "London",
+        "DistrictName": "Greater London",
+        "CareOf": "Ms Jane Smith",
+        "CountrySubDivision": "England",
+        "Country": "UK"
       },
       "InstructedAmount": {
         "Amount": "10.00",
         "Currency": "GBP"
       },
+      "UltimateCreditor": {
+        "SchemeName": "UK.OB.BICFI",
+        "Identification": "2360549017905161589",
+        "Name": "Ultimate Creditor",
+        "LEI": "60450004FECVJV7YN339",
+        "PostalAddress": {
+          "AddressType": "BIZZ",
+          "StreetName": "Bank Street",
+          "BuildingNumber": "11",
+          "Floor": "6",
+          "PostCode": "Z78 4TY",
+          "TownName": "London",
+          "Country": "UK"
+          }
+        },
       "RemittanceInformation": {
         "Structured": [
           {
+            "ReferredDocumentInformation": [{
+              "Code": "CINV",
+              "Issuer": "Issuer01",
+              "Number": "Number_01",
+              "RelatedDate": "2024-04-25T13:26:41.911Z",
+              "LineDetails": [
+                "LineDetail"
+              ]
+            }],
             "CreditorReferenceInformation": {
-              "Reference": "SweepCo"
+              "Reference": "SweepCo",
+              "Code": "DISP",
+              "Issuer": "Issuer01",
             },
+            "Invoicer": "INVR51856",
+            "Invoicee": "INVE5161856"
           },
         ],
+        "Unstructured": "Internal ops code 5120101"
       },
     }
   },
 
   "Risk": {
-    "PaymentContextCode": "TransferToThirdParty"
+    "PaymentContextCode": "TransferToThirdParty",
+    "ContractPresentIndicator": false,
+    "PaymentPurposeCode": "EPAY",
+    "CategoryPurposeCode": "CASH", 
+    "BeneficiaryPaymentDetailsPrepopulatedIndicator": false,
+    "BeneficiaryAccountType": "Business",
+    "MerchantCategoryCode": "7300", 
+    "MerchantCustomerIdentification": "053598653254",
+    "DeliveryAddress": {
+      "AddressLine": [
+        "Flat 7",
+        "Acacia Lodge"
+      ],
+      "StreetName": "Acacia Avenue",
+      "BuildingNumber": "27",
+      "PostCode": "GU31 2ZZ",
+      "TownName": "Sparsholt",
+      "CountrySubDivision": "Wessex",
+      "Country": "UK"
+    }
   },
 
   
