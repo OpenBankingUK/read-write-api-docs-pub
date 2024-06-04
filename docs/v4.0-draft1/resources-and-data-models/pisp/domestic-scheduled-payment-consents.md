@@ -419,6 +419,7 @@ Accept: application/json
           "Unstructured": "Internal ops code 5120101"
       }
     },
+  },
   "SCASupportData": {
         "Type": "EcommerceServices",
         "AppliedAuthenticationApproach": "SCA",
@@ -445,6 +446,7 @@ Accept: application/json
       "TownName": "Sparsholt",
       "CountrySubDivision": "Wessex",
       "Country": "UK"
+    }
   }
 }
 ```
@@ -491,7 +493,7 @@ Content-Type: application/json
        "Amount"  {
         "Amount": "0.88",
         "Currency": "GBP"
-      },
+      }
     }],
     "Initiation": {
       "InstructionIdentification": "89f0a53a91ee47f6a383536f851d6b5a",

@@ -437,6 +437,10 @@ Content-Type: application/json
     "DomesticPaymentId": "58923-001",
     "ConsentId": "58923",
     "StatusCode": "ACSP",
+    "StatusReason":{
+      "StatusReasonCode": "U30",
+      "Description": "	Payment order successfully received"
+    },
     "CreationDateTime": "2017-06-05T15:15:22+00:00",
     "StatusUpdateDateTime": "2017-06-05T15:15:13+00:00",
     "ExpectedExecutionDateTime": "2017-06-05T15:15:22+00:00",

@@ -318,18 +318,18 @@ Accept: application/json
 	  "Reference": "Pocket money for Damien",
 	  "FirstPaymentDateTime": "1976-06-06T06:06:06+00:00",
     "MandateRelatedInformation": {
-            "MandateIdentification": "Caravanners",
-            "Classification": "FIXE",
-            "CategoryPurposeCode": "BONU",
-            "FirstPaymentDateTime": "2024-04-25T12:46:49.425Z",
-            "RecurringPaymentDateTime": "2024-04-25T12:46:49.425Z",
-            "FinalPaymentDateTime": "2024-04-25T12:46:49.425Z",
-            "Frequency": {
-              "Type": "WEEK",
-              "CountPerPeriod": 1,
-              "PointInTime": "00"
-        }
-      },
+      "MandateIdentification": "Caravanners",
+      "Classification": "FIXE",
+      "CategoryPurposeCode": "BONU",
+      "FirstPaymentDateTime": "2024-04-25T12:46:49.425Z",
+      "RecurringPaymentDateTime": "2024-04-25T12:46:49.425Z",
+      "FinalPaymentDateTime": "2024-04-25T12:46:49.425Z",
+      "Frequency": {
+        "Type": "WEEK",
+        "CountPerPeriod": 1,
+        "PointInTime": "00"
+      }
+    },
 	  "FirstPaymentAmount": {
         "Amount": "6.66",
         "Currency": "GBP"
@@ -382,8 +382,9 @@ Accept: application/json
             },
             "Invoicer": "INVR51856",
             "Invoicee": "INVE5161856"
-          }
-        ]
+          },
+        ],
+        "Unstructured": "Internal ops code 5120101"
        },
       "RegulatoryReporting": [{
           "DebitCreditReportingIndicator": "CRED",
@@ -413,24 +414,24 @@ Accept: application/json
   "Risk": {
     "PaymentContextCode": "TransferToThirdParty",
     "ContractPresentIndicator": false,
-      "PaymentPurposeCode": "EPAY",
-      "CategoryPurposeCode": "CASH", 
-      "BeneficiaryPaymentDetailsPrepopulatedIndicator": false,
-      "BeneficiaryAccountType": "Business",
-      "MerchantCategoryCode": "7300", 
-      "MerchantCustomerIdentification": "053598653254",
-      "DeliveryAddress": {
-        "AddressLine": [
-          "Flat 7",
-          "Acacia Lodge"
-        ],
-        "StreetName": "Acacia Avenue",
-        "BuildingNumber": "27",
-        "PostCode": "GU31 2ZZ",
-        "TownName": "Sparsholt",
-        "CountrySubDivision": "Wessex",
-        "Country": "UK"
-      }
+    "PaymentPurposeCode": "EPAY",
+    "CategoryPurposeCode": "CASH", 
+    "BeneficiaryPaymentDetailsPrepopulatedIndicator": false,
+    "BeneficiaryAccountType": "Business",
+    "MerchantCategoryCode": "7300", 
+    "MerchantCustomerIdentification": "053598653254",
+    "DeliveryAddress": {
+      "AddressLine": [
+        "Flat 7",
+        "Acacia Lodge"
+      ],
+      "StreetName": "Acacia Avenue",
+      "BuildingNumber": "27",
+      "PostCode": "GU31 2ZZ",
+      "TownName": "Sparsholt",
+      "CountrySubDivision": "Wessex",
+      "Country": "UK"
+    }
   },
 }
 ```
@@ -476,6 +477,7 @@ Content-Type: application/json
         "FirstPaymentDateTime": "2024-04-25T12:46:49.425Z",
         "RecurringPaymentDateTime": "2024-04-25T12:46:49.425Z",
         "FinalPaymentDateTime": "2024-04-25T12:46:49.425Z",
+        "Reason": "Golf membership fees", 
         "Frequency": { 
           "Type": "MNTH",
           "CountPerPeriod": 1,
@@ -541,7 +543,7 @@ Content-Type: application/json
             "Invoicee": "INVE5161856"
           }
         ]
-      }
+      },
       "RegulatoryReporting": [
         {
           "DebitCreditReportingIndicator": "CRED",
@@ -566,7 +568,25 @@ Content-Type: application/json
     }
   },
   "Risk": {
-    "PaymentContextCode": "TransferToThirdParty"
+    "PaymentContextCode": "TransferToThirdParty",
+    "PaymentPurposeCode": "EPAY",
+    "CategoryPurposeCode": "CASH", 
+    "BeneficiaryPaymentDetailsPrepopulatedIndicator": false,
+    "BeneficiaryAccountType": "Business",
+    "MerchantCategoryCode": "7300", 
+    "MerchantCustomerIdentification": "053598653254",
+    "DeliveryAddress": {
+      "AddressLine": [
+        "Flat 7",
+        "Acacia Lodge"
+      ],
+      "StreetName": "Acacia Avenue",
+      "BuildingNumber": "27",
+      "PostCode": "GU31 2ZZ",
+      "TownName": "Sparsholt",
+      "CountrySubDivision": "Wessex",
+      "Country": "UK"
+    }
   },
   "Links": {
     "Self": "https://api.alphabank.com/open-banking/v3.1/pisp/domestic-standing-order-consents/SOC-100"
