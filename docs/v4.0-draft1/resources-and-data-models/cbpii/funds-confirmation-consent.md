@@ -231,7 +231,12 @@ x-fapi-interaction-id: hook5i13-ntIg-4th3-rP41-3ro535touch3
     "DebtorAccount": {
       "SchemeName": "UK.OB.IBAN",
       "Identification": "GB76LOYD30949301273801",
-      "SecondaryIdentification": "Roll 56988"
+      "SecondaryIdentification": "Roll 56988",
+      "Name": "Jane Smith",
+      "Proxy": {
+          "Identification": "+441632960540",
+          "Code": "TELE",
+        }
     },
     "ExpirationDateTime": "2017-05-02T00:00:00+00:00"
   }
@@ -256,7 +261,8 @@ x-fapi-interaction-id: hook5i13-ntIg-4th3-rP41-3ro535touch3
     "StatusCode": "AWAU",
     "StatusReason": [
       {
-        "StatusReasonCode": "ERIN",
+      "StatusReasonCode": "83",
+      "StatusReasonDescription":"Pending completion next working day",
       }
     ],
     "StatusUpdateDateTime": "2017-05-02T00:00:00+00:00",
@@ -265,6 +271,7 @@ x-fapi-interaction-id: hook5i13-ntIg-4th3-rP41-3ro535touch3
       "SchemeName": "UK.OB.IBAN",
       "Identification": "GB76LOYD30949301273801",
       "SecondaryIdentification": "Roll 56988",
+      "Name": "Jane Smith",
       "Proxy": {
         "Identification": "+441632960540",
         "Code": "TELE"
@@ -315,6 +322,7 @@ Content-Type: application/json
       "SchemeName": "UK.OB.IBAN",
       "Identification": "GB76LOYD30949301273801",
       "SecondaryIdentification": "Roll 56988",
+      "Name": "Jane Smith",
       "Proxy": {
         "Identification": "+441632960540",
         "Code": "TELE"
@@ -356,11 +364,23 @@ Content-Type: application/json
     "ConsentId": "88999",
     "CreationDateTime": "2017-05-02T00:00:00+00:00",
     "StatusCode": "AWAU",
+    "StatusReason": [
+      {
+      "StatusReasonCode": "83",
+      "StatusReasonDescription":"Pending completion next working day",
+      }
+    ],
     "StatusUpdateDateTime": "2017-05-02T00:00:00+00:00",
     "ExpirationDateTime": "2017-05-02T00:00:00+00:00",
     "DebtorAccount": {
+      "Name": "Jane Smith",
       "SchemeName": "UK.OB.PAN",
-      "Identification": "4444********1111"
+      "SecondaryIdentification": "008419",
+      "Identification": "4444********1111",
+      "Proxy":{
+          "Identification": "441234012348",
+          "Code": "TELE",
+        }
     }
   },
   "Links": {
