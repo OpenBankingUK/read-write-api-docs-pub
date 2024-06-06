@@ -528,8 +528,8 @@ No fields for business logic security concerns have been identified for the Acco
 | --- | --- | --- | --- | --- | ---|
 | OBMandateRelatedInformation1 |  | | Provides further details of the mandate signed between the creditor and the debtor.| OBMandateRelatedInformation1 | | 
 | MandateIdentification | 0..1 |OBMandateRelatedInformation1/MandateIdentification |Unique identification, as assigned by the creditor, to unambiguously identify the mandate.|Max35Text | | 
-| Classification | 0..1 |OBMandateRelatedInformation1/Classification| Type of mandate instruction.|OBClassification1Code |FIXE<br>USGB<br>VARI | |
-| CategoryPurposeCode | 0..1 |OBMandateRelatedInformation1/CategoryPurposeCode |Specifies the high level purpose of the mandate based on a set of pre-defined categories.|ExternalCategoryPurpose1Code | For all enum values see `ExternalCategoryPurpose1Code` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets/)| 
+| Classification | 0..1 |OBMandateRelatedInformation1/Classification| Type of direct debit instruction.|For a full list of enumeration values refer to `OB_Internal_CodeSet`[here](https://github.com/OpenBankingUK/External_Internal_CodeSets/). |OBExternalMandateClassification1Code | |
+| CategoryPurposeCode | 0..1 |OBMandateRelatedInformation1/CategoryPurposeCode |Specifies the high level purpose of the mandate based on a set of pre-defined categories.| For a full list of enumeration values refer to `OB_EXternal_CodeSet`[here](https://github.com/OpenBankingUK/External_Internal_CodeSets/). |ExternalCategoryPurpose1Code | 
 | FirstPaymentDateTime | 0..1 |OBMandateRelatedInformation1/FirstPaymentDate |The date on which the first payment for a recurrent credit transfer will be made. |ISODateTime | | 
 | RecurringPaymentDateTime | 0..1 |OBMandateRelatedInformation1/RecurringPaymentDateTime |he date on which the first recurring payment for a Standing Order schedule will be made.<br><br> Usage: This must be populated only if the first recurring date is different to the first payment date. |ISODateTime | |
 | FinalPaymentDateTime | 0..1 |OBMandateRelatedInformation1/FinalPaymentDate |The date on which the final payment for a recurrent credit transfer  will be made. |ISODateTime | | 
@@ -683,37 +683,37 @@ Deviations from the camt.052 XML standard are:
 | ExternalCashAccountType1Code |WALT |Account sub-type is a Wallet Account. |
 | OBExternalAccountType1Code |Business |Account type is for business. |
 | OBExternalAccountType1Code |Personal |Account type is for personal. |
-| OBExternalCardAuthorisationType1Code |ConsumerDevice |Card authorisation was via a Consumer Device Cardholder Verification Method (CDCVM). |
-| OBExternalCardAuthorisationType1Code |Contactless |Card authorisation was via Contactless. |
-| OBExternalCardAuthorisationType1Code |None |No card authorisation was used. |
-| OBExternalCardAuthorisationType1Code |PIN |Card authorisation was via PIN. |
-| OBExternalCardSchemeType1Code |AmericanExpress |AmericanExpress scheme. |
-| OBExternalCardSchemeType1Code |Diners |Diners scheme. |
-| OBExternalCardSchemeType1Code |Discover |Discover scheme. |
-| OBExternalCardSchemeType1Code |MasterCard |MasterCard scheme. |
-| OBExternalCardSchemeType1Code |VISA |VISA scheme. |
+| OBInternalCardAuthorisationType1Code |ConsumerDevice |Card authorisation was via a Consumer Device Cardholder Verification Method (CDCVM). |
+| OBInternalCardAuthorisationType1Code |Contactless |Card authorisation was via Contactless. |
+| OBInternalCardAuthorisationType1Code |None |No card authorisation was used. |
+| OBInternalCardAuthorisationType1Code |PIN |Card authorisation was via PIN. |
+| OBInternalCardSchemeType1Code |AmericanExpress |AmericanExpress scheme. |
+| OBInternalCardSchemeType1Code |Diners |Diners scheme. |
+| OBInternalCardSchemeType1Code |Discover |Discover scheme. |
+| OBInternalCardSchemeType1Code |MasterCard |MasterCard scheme. |
+| OBInternalCardSchemeType1Code |VISA |VISA scheme. |
 | OBInternalLimitType1Code |Available |The amount of credit limit available to the account holder |
 | OBInternalLimitType1Code |Credit |The amount of a credit limit that has been agreed with the account holder |
 | OBInternalLimitType1Code |Emergency |The amount of an arranged lending limit that can be borrowed on top of pre-agreed lending, that has been agreed with the account holder |
 | OBInternalLimitType1Code |Pre-Agreed |The amount of an arranged lending limit that has been agreed with the account holder |
 | OBInternalLimitType1Code |Temporary |The amount of a temporary lending limit that has been agreed with the account holder |
-| OBExternalOfferType1Code |BalanceTransfer |Offer is a balance transfer. |
-| OBExternalOfferType1Code |LimitIncrease |Offer is a limit increase. |
-| OBExternalOfferType1Code |MoneyTransfer |Offer is a money transfer. |
-| OBExternalOfferType1Code |Other |Offer is of an other type. |
-| OBExternalOfferType1Code |PromotionalRate |Offer is a promotional rate. |
-| OBExternalPartyType1Code |Delegate |Party that has delegated access. |
-| OBExternalPartyType1Code |Joint |Party is a joint owner of the account. |
-| OBExternalPartyType1Code |Sole |Party is a sole owner of the account. |
-| OBExternalScheduleType1Code |Arrival |Scheduled payment date is specified as the arrival date for the recipient. |
-| OBExternalScheduleType1Code |Execution |Scheduled payment date is specified as the execution date. |
-| OBExternalStandingOrderStatus1Code |Active |The standing order is active. |
-| OBExternalStandingOrderStatus1Code |Inactive |The standing order is inactive. |
-| OBExternalStatementType1Code |AccountClosure |Final account closure statement. |
-| OBExternalStatementType1Code |AccountOpening |First statement provided for an account. |
-| OBExternalStatementType1Code |Annual |Annual statement report. |
-| OBExternalStatementType1Code |Interim |Adhoc or customised statement period. |
-| OBExternalStatementType1Code |RegularPeriodic |Regular pre-agreed reporting statement. |
+| OBInternalProductType1Code |BalanceTransfer |Offer is a balance transfer. |
+| OBInternalProductType1Code |LimitIncrease |Offer is a limit increase. |
+| OBInternalProductType1Code |MoneyTransfer |Offer is a money transfer. |
+| OBInternalProductType1Code |Other |Offer is of an other type. |
+| OBInternalProductType1Code |PromotionalRate |Offer is a promotional rate. |
+| OBInternalPartyType1Code |Delegate |Party that has delegated access. |
+| OBInternalPartyType1Code |Joint |Party is a joint owner of the account. |
+| OBInternalPartyType1Code |Sole |Party is a sole owner of the account. |
+| OBInternalScheduleType1Code |Arrival |Scheduled payment date is specified as the arrival date for the recipient. |
+| OBInternalScheduleType1Code |Execution |Scheduled payment date is specified as the execution date. |
+| ExternalMandateStatus1Code |Active |The standing order is active. |
+| ExternalMandateStatus1Code |Inactive |The standing order is inactive. |
+| OBInternalStatementType1Code |AccountClosure |Final account closure statement. |
+| OBInternalStatementType1Code |AccountOpening |First statement provided for an account. |
+| OBInternalStatementType1Code |Annual |Annual statement report. |
+| OBInternalStatementType1Code |Interim |Adhoc or customised statement period. |
+| OBInternalStatementType1Code |RegularPeriodic |Regular pre-agreed reporting statement. |
 | ExternalDocumentFormat1Code | DPDF | PDF file format (.pdf). |
 | ExternalDocumentFormat1Code | DXML | XML file format (.xml). |
 | ExternalDocumentFormat1Code | SDSH | spreadsheet file format (e.g. .csv). |
