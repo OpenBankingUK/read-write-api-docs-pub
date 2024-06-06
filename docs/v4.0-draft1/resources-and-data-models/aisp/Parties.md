@@ -99,13 +99,13 @@ The Party resource contains a set of elements that describes a party. The party 
 | OBParty2 | |OBParty2 | |OBParty2 | | |
 | PartyId |1..1 |OBParty2/PartyId |A unique and immutable identifier used to identify the customer resource. This identifier has no meaning to the account owner. |Max40Text | | |
 | PartyNumber |0..1 |OBParty2/PartyNumber |Number assigned by an agent to identify its customer. |Max35Text | | |
-| PartyType |0..1 |OBParty2/PartyType |Party type |OBExternalPartyType1Code |Delegate Joint Sole | |
+| PartyType |0..1 |OBParty2/PartyType |Party type |For a full list of enumeration values refer to `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_internal_CodeSets). |OBInternalPartyType1Code | |
 | Name |0..1 |OBParty2/Name |Name by which a party is known and which is usually used to identify that party. |Max350Text | | |
 | FullLegalName |0..1 |OBParty2/FullLegalName |The full legal name of the party. |Max350Text | | |
-| LegalStructure |0..1 |OBParty2/LegalStructure |Legal standing of the party. |OBExternalLegalStructureType1Code | | |
+| LegalStructure |0..1 |OBParty2/LegalStructure |Legal standing of the party. | For a full list of enumeration values refer to `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_internal_CodeSets). |OBInternalLegalStructureType1Code |
 | LEI |0..1 | OBParty2/LEI |Legal entity identification as an alternate identification for a party. Legal Entity Identifier is a code allocated to a party as described in ISO 17442 "Financial Services - Legal Entity Identifier (LEI)".|Max20Text | |[A-Z0-9]{18,18}[0-9]{2,2}|
 | BeneficialOwnership |0..1 |OBParty2/BeneficialOwnership |A flag to indicate a party's beneficial ownership of the related account. |xs:boolean | | |
-| AccountRole |0..1 |OBParty2/AccountRole |A party's role with respect to the related account. |OBExternalAccountRole1Code | | |
+| AccountRole |0..1 |OBParty2/AccountRole |A party's role with respect to the related account. |For a full list of enumeration values refer to `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_internal_CodeSets). |OBInternalAccountRole1Code |
 | EmailAddress |0..1 |OBParty2/EmailAddress |Address for electronic mail (e-mail). |Max256Text | | |
 | Phone |0..1 |OBParty2/Phone |Collection of information that identifies a phone number as defined by telecom services. |PhoneNumber | |\+[0-9]{1,3}-[0-9()+\-]{1,30} |
 | Mobile |0..1 |OBParty2/Mobile |Collection of information that identifies a mobile phone number as defined by telecom services. |PhoneNumber | |\+[0-9]{1,3}-[0-9()+\-]{1,30} |

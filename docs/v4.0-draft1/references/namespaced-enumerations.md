@@ -10,20 +10,20 @@
   - [ExternalBalanceSubType1Code](#externalbalancesubtype1code)
 - [Account and Transaction API Namespaced Enumerations](#account-and-transaction-api-namespaced-enumerations)
   - [OBExternalStatementAmountType1Code](#obexternalstatementamounttype1code)
-  - [OBExternalStatementBenefitType1Code](#obexternalstatementbenefittype1code)
+  - [OBInternalStatementBenefitType1Code](#obinternalstatementbenefittype1code)
   - [OBExternalStatementDateTimeType1Code](#obexternalstatementdatetimetype1code)
-  - [OBExternalStatementFeeType1Code](#obexternalstatementfeetype1code)
-  - [OBExternalStatementInterestType1Code](#obexternalstatementinteresttype1code)
+  - [OBInternalStatementFeeType1Code](#obinternalstatementfeetype1code)
+  - [OBInternalStatementInterestType1Code](#obinternalstatementinteresttype1code)
   - [OBExternalStatementRateType1Code](#obexternalstatementratetype1code)
   - [OBExternalStatementValueType1Code](#obexternalstatementvaluetype1code)
-  - [OBExternalStatementFeeRateType1Code](#obexternalstatementfeeratetype1code)
-  - [OBExternalStatementFeeFrequency1Code](#obexternalstatementfeefrequency1code)
+  - [OBInternalStatementFeeRateType1Code](#obinternalstatementfeeratetype1code)
+  - [OBinternalStatementFeeFrequency1Code](#obinternalstatementfeefrequency1code)
   - [OBExternalStatementInterestRateType1Code](#obexternalstatementinterestratetype1code)
   - [OBExternalStatementInterestFrequency1Code](#obexternalstatementinterestfrequency1code)
-  - [OBExternalLegalStructureType1Code](#obexternallegalstructuretype1code)
-  - [OBExternalAccountRole1Code](#obexternalaccountrole1code)
+  - [OBInternalLegalStructureType1Code](#obinternallegalstructuretype1code)
+  - [OBInternalAccountRole1Code](#obinternalaccountrole1code)
   - [OBInternalSwitchStatusCode](#obinternalswitchstatuscode)
-  - [OBExternalDirectDebitFrequency1Code](#obexternaldirectdebitfrequency1code)
+  - [OBInternalCardSchemeType1Code	](#obinternalcardschemetype1code)
 - [Payment Initiation API Namespaced Enumerations](#payment-initiation-api-namespaced-enumerations)
   - [OBExternalLocalInstrument1Code](#obexternallocalinstrument1code)
   - [OBExternalPaymentChargeType1Code](#obexternalpaymentchargetype1code)
@@ -144,7 +144,7 @@ Default if not specified is BaseCurrency of the account.
 
 </details>
 
-### OBExternalStatementBenefitType1Code
+### OBInternalStatementBenefitType1Code
 
 <details><summary>Show</summary>
 
@@ -174,7 +174,7 @@ Default if not specified is BaseCurrency of the account.
 
 </details>
 
-### OBExternalStatementFeeType1Code
+### OOBInternalStatementFeeType1Code
 
 <details><summary>Show</summary>
 
@@ -198,7 +198,7 @@ Default if not specified is BaseCurrency of the account.
 
 </details>
 
-### OBExternalStatementInterestType1Code
+### OBInternalStatementInterestType1Code
 
 <details><summary>Show</summary>
 
@@ -248,7 +248,7 @@ Default if not specified is BaseCurrency of the account.
 
 </details>
 
-### OBExternalStatementFeeRateType1Code
+### OBInternalStatementFeeRateType1Code
 
 <details><summary>Show</summary>
 
@@ -259,7 +259,7 @@ Default if not specified is BaseCurrency of the account.
 
 </details>
 
-### OBExternalStatementFeeFrequency1Code
+### OBInternalStatementFeeFrequency1Code
 
 <details><summary>Show</summary>
 
@@ -304,7 +304,7 @@ Default if not specified is BaseCurrency of the account.
 
 </details>
 
-### OBExternalLegalStructureType1Code
+### OBInternalLegalStructureType1Code
 
 <details><summary>Show</summary>
 
@@ -325,7 +325,7 @@ Default if not specified is BaseCurrency of the account.
 
 </details>
 
-### OBExternalAccountRole1Code
+### OBInternalAccountRole1Code
 
 <details><summary>Show</summary>
 
@@ -359,7 +359,7 @@ Default if not specified is BaseCurrency of the account.
 
 </details>
 
-### OBExternalDirectDebitFrequency1Code
+### OBInternalCardSchemeType1Code	
 
 <details><summary>Show</summary>
 

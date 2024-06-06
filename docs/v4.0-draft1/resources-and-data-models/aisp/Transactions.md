@@ -291,12 +291,12 @@ The resource differs depending on the permissions (ReadTransactionsBasic and Rea
 | SecondaryIdentification |0..1 |OBReadTransaction6/Data/Transaction/DebtorAccount/SecondaryIdentification |This is secondary identification of the account, as assigned by the account servicing institution. This can be used by building societies to additionally identify accounts with a roll number (in addition to a sort code and account number combination). |Max34Text | | |
 | UltimateDebtor |0..1 |OBReadTransaction6/Data/Transaction/UltimateDebtor|Ultimate party that owes an amount of money to the (ultimate) creditor. | OBUltimateDebtor1| | |
 | CardInstrument |0..1 |OBReadTransaction6/Data/Transaction/CardInstrument |Set of elements to describe the card instrument used in the transaction. |OBTransactionCardInstrument1 | | |
-| CardSchemeName |1..1 |OBReadTransaction6/Data/Transaction/CardInstrument/CardSchemeName |Name of the card scheme. |OBExternalCardSchemeType1Code |AmericanExpress Diners Discover MasterCard VISA | |
-| AuthorisationType |0..1 |OBReadTransaction6/Data/Transaction/CardInstrument/AuthorisationType |The card authorisation type. |OBExternalCardAuthorisationType1Code |ConsumerDevice Contactless None PIN | |
+| CardSchemeName |1..1 |OBReadTransaction6/Data/Transaction/CardInstrument/CardSchemeName |Name of the card scheme. |For a full list of enumeration values refer to `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets). |OBInternalCardSchemeType1Code	 | |
+| AuthorisationType |0..1 |OBReadTransaction6/Data/Transaction/CardInstrument/AuthorisationType |The card authorisation type. |For a full list of enumeration values refer to `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets). |OBInternalCardAuthorisationType1Code	 | |
 | Name |0..1 |OBReadTransaction6/Data/Transaction/CardInstrument/Name |Name of the cardholder using the card instrument. |Max70Text | | |
 | Identification |0..1 |OBReadTransaction6/Data/Transaction/CardInstrument/Identification |Identification assigned by an institution to identify the card instrument used in the transaction. This identification is known by the account owner, and may be masked. |Max34Text | | |
 | SupplementaryData |0..1 |OBReadTransaction6/Data/Transaction/SupplementaryData |Additional information that can not be captured in the structured fields and/or any other specific block. |OBSupplementaryData1 | | |
-| CategoryPurposeCode | 0..1 | OBReadTransaction6/Data/Transaction/CategoryPurposeCode |Enumeration to outline the purpose to the underlying purpose of the payment. For more information see `ExternalCategoryPurpose1Code` [here](https://github.com/OpenBankingUK/External_internal_CodeSets)| ExternalCategoryPurpose1Code | | |
+| CategoryPurposeCode | 0..1 | OBReadTransaction6/Data/Transaction/CategoryPurposeCode |Enumeration to outline the purpose to the underlying purpose of the payment|  For a full list of enumeration values refer to `OB_EXternal_CodeSet`[here](https://github.com/OpenBankingUK/External_Internal_CodeSets/). |ExternalCategoryPurpose1Code | 
 
 
 ### Reused Classes 
