@@ -780,7 +780,7 @@ This section describes the OBSCASupportData1 class, which is used across all  _p
 
 #### OBRegulatoryReporting1
 
-##### data Dictionary
+##### Data Dictionary
 
 | Name | Occurrence | XPath | EnhancedDefinition | Class | Codes | Pattern|
 | --- | --- | --- | --- | --- | ---| ---|
