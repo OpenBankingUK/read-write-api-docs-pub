@@ -297,15 +297,15 @@ Accept: application/json
       "CompletionDateTime": "2025-05-30T10:35:27Z",
    	},
     "Initiation": {
-      "FileType": "UK.OB.pain.001.001.08",
+      "FileType": "UK.OBIE.pain.001.001.08",
       "FileHash": "m5ah/h1UjLvJYMxqAoZmj9dKdjZnsGNm+yMkJp/KuqQ",
       "FileReference": "GB2OK238",
       "NumberOfTransactions": "100",
       "ControlSum": 3459.30,
 	  "RequestedExecutionDateTime": "2024-06-03T00:00:00Z",
-	  "LocalInstrument": "UK.OB.CHAPS",
+	  "LocalInstrument": "UK.OBIE.CHAPS",
 	  "DebtorAccount": {
-        "SchemeName": "UK.OB.SortCodeAccountNumber",
+        "SchemeName": "UK.OBIE.SortCodeAccountNumber",
         "Identification": "11280001234567",
         "Name": "Andrea Smith",
         "SecondaryIdentification": "0002",
@@ -315,7 +315,7 @@ Accept: application/json
           }
       	},
 		"UltimateDebtor": {
-          "SchemeName": "UK.OB.BICFI",
+          "SchemeName": "UK.OBIE.BICFI",
           "Identification": "2360549017905161589",
           "Name": "Ultimate Debtor",
           "LEI": "8200007YHFDMEODY1965",
@@ -389,7 +389,7 @@ Content-Type: application/json
 	},
 	"Charges": [{
 		"ChargeBearer": "Shared",
-		"Type": "UK.OB.CHAPSOut",
+		"Type": "UK.OBIE.CHAPSOut",
 		"Amount"  {
 			"Amount": "0.88",
 			"Currency": "GBP"
@@ -400,19 +400,19 @@ Content-Type: application/json
     	"CompletionDateTime": "2019-05-30T10:35:27Z"
     },
 	"Debtor": { 
-	 	"SchemeName": "UK.OB.SortCodeAccountNumber",
+	 	"SchemeName": "UK.OBIE.SortCodeAccountNumber",
         "Identification": "11280001234567",
         "Name": "Andrea Smith",
         "SecondaryIdentification": "0002",	
 	},
     "Initiation": {
-      "FileType": "UK.OB.pain.001.001.08",
+      "FileType": "UK.OBIE.pain.001.001.08",
       "FileHash": "m5ah/h1UjLvJYMxqAoZmj9dKdjZnsGNm+yMkJp/KuqQ",
       "FileReference": "GB2OK238",
       "NumberOfTransactions": "100",
       "ControlSum": 3459.30,
 	  "DebtorAccount": {
-        "SchemeName": "UK.OB.SortCodeAccountNumber",
+        "SchemeName": "UK.OBIE.SortCodeAccountNumber",
         "Identification": "11280001234567",
         "Name": "Andrea Smith",
         "SecondaryIdentification": "0002",
@@ -422,7 +422,7 @@ Content-Type: application/json
           }
       	},
 	  "UltimateDebtor": {
-		"SchemeName": "UK.OB.BICFI",
+		"SchemeName": "UK.OBIE.BICFI",
 		"Identification": "2360549017905161589",
 		"Name": "Ultimate Debtor",
 		"LEI": "8200007YHFDMEODY1965",

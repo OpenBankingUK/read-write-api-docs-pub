@@ -317,7 +317,7 @@ All dates in the JWT claims are expressed as a JSON number, representing the nu
 1518446700
 ```
 
-When an ASPSP receives a request with an incorrectly formatted date, it **may** respond with a status code of `400 Bad Request` and an error code of `UK.OB.Field.InvalidDate`
+When an ASPSP receives a request with an incorrectly formatted date, it **may** respond with a status code of `400 Bad Request` and an error code of `UK.OBIE.Field.InvalidDate`
 
 ### Resource URI Path Structure
 
@@ -1683,13 +1683,13 @@ Content-Type: application/json
   "Errors": [
     {
       "ErrorCode": "U004",
-      "Message": "UK.OB.Field.Missing - Instructed identification is missing",
+      "Message": "UK.OBIE.Field.Missing - Instructed identification is missing",
       "Path": "Data.Initiation.InstructionIdentification",
       "Url": "<url to the api reference for Payment Inititaion API>"
     },
     {
       "ErrorCode": "U027",
-      "Message": "UK.OB.Unsupported.Scheme - Scheme name supplied is not supported",
+      "Message": "UK.OBIE.Unsupported.Scheme - Scheme name supplied is not supported",
       "Path": "Data.Initiation.CreditorAccount.SchemeName",
       "Url": "<url to the online documentation referring supported scheme names>"
     }

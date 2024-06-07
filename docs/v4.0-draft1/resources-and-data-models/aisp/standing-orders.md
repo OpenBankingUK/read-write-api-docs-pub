@@ -216,7 +216,7 @@ Content-Type: application/json
         },
         "CreditAgent": {  
           "LEI": "IZ9Q00LZEVUKWCQY6X15",
-          "SchemeName": "UK.OB.BICFI",
+          "SchemeName": "UK.OBIE.BICFI",
           "Identification": "80200112344562",
           "Name": "The Credit Agent", 
           "PostalAddress": { 
@@ -244,7 +244,7 @@ Content-Type: application/json
         },
         "StandingOrderStatusCode": "Active",
         "CreditorAccount": {
-          "SchemeName": "UK.OB.SortCodeAccountNumber",
+          "SchemeName": "UK.OBIE.SortCodeAccountNumber",
           "Identification": "80200112345678",
           "SecondaryIdentification": "80200112895462",
           "Name": "Mrs Juniper",
@@ -323,7 +323,7 @@ Content-Type: application/json
         },
         "CreditorAgent": {  
           "LEI": "IZ9Q00LZEVUKWCQY6X15",
-          "SchemeName": "UK.OB.BICFI",
+          "SchemeName": "UK.OBIE.BICFI",
           "Identification": "80200112344562",
           "Name": "The Credit Agent", 
           "PostalAddress": { 
@@ -351,7 +351,7 @@ Content-Type: application/json
         },
         "StandingOrderStatusCode": "Active",
         "CreditorAccount": {
-          "SchemeName": "UK.OB.SortCodeAccountNumber",
+          "SchemeName": "UK.OBIE.SortCodeAccountNumber",
           "Identification": "80200112345678",
           "Name": "Mrs Juniper",
           "Proxy": {
@@ -388,7 +388,7 @@ Content-Type: application/json
         },
         "StandingOrderStatusCode": "Active",
         "CreditorAccount": {
-          "SchemeName": "UK.OB.SortCodeAccountNumber",
+          "SchemeName": "UK.OBIE.SortCodeAccountNumber",
           "SecondaryIdentification": "80200112895462",
           "Identification": "23605490179017",
           "Name": "Mr Tee"

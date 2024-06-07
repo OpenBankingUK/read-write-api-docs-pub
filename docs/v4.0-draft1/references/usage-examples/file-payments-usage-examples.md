@@ -12,7 +12,7 @@
   - [POST /file-payments](#post-file-payments)
     - [Request](#request-2)
     - [Response](#response-2)
-- [Upload File in the UK.OB.PaymentInitiation.4.0 format to the File Payment Consent](#upload-file-in-the-ukobiepaymentinitiation40-format-to-the-file-payment-consent)
+- [Upload File in the UK.OBIE.PaymentInitiation.4.0 format to the File Payment Consent](#upload-file-in-the-ukobiepaymentinitiation40-format-to-the-file-payment-consent)
   - [POST /file-payment-consents/{ConsentId}/file](#post-file-payment-consentsconsentidfile-1)
     - [Request](#request-3)
     - [Response](#response-3)
@@ -41,7 +41,7 @@ Accept: application/json
 {
   "Data": {
     "Initiation": {
-      "FileType": "UK.OB.pain.001.001.08",
+      "FileType": "UK.OBIE.pain.001.001.08",
       "FileHash": "m5ah/h1UjLvJYMxqAoZmj9dKdjZnsGNm+yMkJp/KuqQ",
       "FileReference": "GB2OK238",
       "NumberOfTransactions": "100",
@@ -68,7 +68,7 @@ Content-Type: application/json
     "CreationDateTime": "2018-06-05T15:15:13+00:00",
     "StatusUpdateDateTime": "2018-06-05T15:15:13+00:00",
     "Initiation": {
-      "FileType": "UK.OB.pain.001.001.08",
+      "FileType": "UK.OBIE.pain.001.001.08",
       "FileHash": "m5ah/h1UjLvJYMxqAoZmj9dKdjZnsGNm+yMkJp/KuqQ",
       "FileReference": "GB2OK238",
       "NumberOfTransactions": "100",
@@ -347,7 +347,7 @@ Accept: application/json
   "Data": {
     "ConsentId":"512345",
     "Initiation": {
-      "FileType": "UK.OB.pain.001.001.08",
+      "FileType": "UK.OBIE.pain.001.001.08",
       "FileHash": "m5ah/h1UjLvJYMxqAoZmj9dKdjZnsGNm+yMkJp/KuqQ",
       "FileReference": "GB2OK238",
       "NumberOfTransactions": "100",
@@ -375,7 +375,7 @@ Content-Type: application/json
     "CreationDateTime": "2018-06-05T15:15:13+00:00",
     "StatusUpdateDateTime": "2018-06-05T15:15:13+00:00",
     "Initiation": {
-      "FileType": "UK.OB.pain.001.001.08",
+      "FileType": "UK.OBIE.pain.001.001.08",
       "FileHash": "m5ah/h1UjLvJYMxqAoZmj9dKdjZnsGNm+yMkJp/KuqQ",
       "FileReference": "GB2OK238",
       "NumberOfTransactions": "100",
@@ -389,12 +389,12 @@ Content-Type: application/json
 }
 ```
 
-## Upload File in the UK.OB.PaymentInitiation.4.0 format to the File Payment Consent
+## Upload File in the UK.OBIE.PaymentInitiation.4.0 format to the File Payment Consent
 
 Steps:
 
-* Stage the File Payment Consent with  "FileType": "UK.OB.PaymentInitiation.4.0".
-* Upload the File with payments in UK.OB.PaymentInitiation.v4.0 format, as described below.
+* Stage the File Payment Consent with  "FileType": "UK.OBIE.PaymentInitiation.4.0".
+* Upload the File with payments in UK.OBIE.PaymentInitiation.v4.0 format, as described below.
 
 ### POST /file-payment-consents/{ConsentId}/file
 
@@ -425,18 +425,18 @@ A sample file with 3 Domestic Payments - CHAPS, BACS and one unspecified is prov
 		"DomesticPayments": [{
 			"InstructionIdentification": "ANSM020",
 			"EndToEndIdentification": "FRESCO.21302.GFX.01",
-			"LocalInstrument": "UK.OB.CHAPS",
+			"LocalInstrument": "UK.OBIE.CHAPS",
 			"InstructedAmount": {
 				"Amount": "21.00",
 				"Currency": "GBP"
 			},
 			"DebtorAccount": {
-				"SchemeName": "UK.OB.SortCodeAccountNumber",
+				"SchemeName": "UK.OBIE.SortCodeAccountNumber",
 				"Identification": "11280001234567",
 				"Name": "Andrea Smith"
 			},
 			"CreditorAccount": {
-				"SchemeName": "UK.OB.SortCodeAccountNumber",
+				"SchemeName": "UK.OBIE.SortCodeAccountNumber",
 				"Identification": "08080021325698",
 				"Name": "Bob Clements"
 			},
@@ -455,18 +455,18 @@ A sample file with 3 Domestic Payments - CHAPS, BACS and one unspecified is prov
 		}, {
 			"InstructionIdentification": "ANSM021",
 			"EndToEndIdentification": "FRESCO.21302.GFX.02",
-			"LocalInstrument": "UK.OB.BACS",
+			"LocalInstrument": "UK.OBIE.BACS",
 			"InstructedAmount": {
 				"Amount": "22.00",
 				"Currency": "GBP"
 			},
 			"DebtorAccount": {
-				"SchemeName": "UK.OB.SortCodeAccountNumber",
+				"SchemeName": "UK.OBIE.SortCodeAccountNumber",
 				"Identification": "11280001234567",
 				"Name": "Andrea Smith"
 			},
 			"CreditorAccount": {
-				"SchemeName": "UK.OB.SortCodeAccountNumber",
+				"SchemeName": "UK.OBIE.SortCodeAccountNumber",
 				"Identification": "08080021325698",
 				"Name": "Bob Clements"
 			},
@@ -482,12 +482,12 @@ A sample file with 3 Domestic Payments - CHAPS, BACS and one unspecified is prov
 				"Currency": "GBP"
 			},
 			"DebtorAccount": {
-				"SchemeName": "UK.OB.SortCodeAccountNumber",
+				"SchemeName": "UK.OBIE.SortCodeAccountNumber",
 				"Identification": "11280001234567",
 				"Name": "Andrea Smith"
 			},
 			"CreditorAccount": {
-				"SchemeName": "UK.OB.SortCodeAccountNumber",
+				"SchemeName": "UK.OBIE.SortCodeAccountNumber",
 				"Identification": "08080021325698",
 				"Name": "Bob Clements"
 			},

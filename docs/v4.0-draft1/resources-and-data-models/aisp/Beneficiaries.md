@@ -90,8 +90,8 @@ This is the expected behaviour of the beneficiaries endpoints, in the case an AS
 
 * The CreditorAccount is used consistently throughout the Account Information APIs to identify an account
 * Due to internationalisation requirements:
-  * The CreditorAgent object may be used to represent either (1) the BIC (with UK.OB.BICFI in the SchemeName field and the BIC in the Identification field), or (2) the Name and Address details for the financial institution.
-  * The CreditorAccount/Identification field may be used to represent a non-UK specific branch and account numbering scheme with "UK.OB.SortCodeAccountNumber" being populated in the CreditorAccount/SchemeName.
+  * The CreditorAgent object may be used to represent either (1) the BIC (with UK.OBIE.BICFI in the SchemeName field and the BIC in the Identification field), or (2) the Name and Address details for the financial institution.
+  * The CreditorAccount/Identification field may be used to represent a non-UK specific branch and account numbering scheme with "UK.OBIE.SortCodeAccountNumber" being populated in the CreditorAccount/SchemeName.
 * For the /accounts/{AccountId}/beneficiaries endpoint, the CreditorAccount and CreditorAgent blocks represent the account of the beneficiary that is receiving funds (so has been named the CreditorAccount for consistency with the PISP use case).
 * The beneficiaries may be Trusted Beneficiaries as well as other types of beneficiaries as indicated by the BeneficiaryType property. When the BeneficiaryType property is not specified, the consumer should refer to the ASPSP's developer portal.
 
@@ -173,7 +173,7 @@ Content-Type: application/json
         "Reference": "Towbar Club",
         "CreditorAgent": { 
           "LEI": "IZ9Q00LZEVUKWCQY6X15",
-          "SchemeName": "UK.OB.BICFI",
+          "SchemeName": "UK.OBIE.BICFI",
           "Identification": "80200112344562",
           "Name": "The Credit Agent", 
           "PostalAddress": { 
@@ -187,7 +187,7 @@ Content-Type: application/json
           }
         },
         "CreditorAccount": {
-          "SchemeName": "UK.OB.SortCodeAccountNumber",
+          "SchemeName": "UK.OBIE.SortCodeAccountNumber",
           "Identification": "80200112345678",
           "Name": "Mrs Juniper"
         }
@@ -234,7 +234,7 @@ Content-Type: application/json
         "Reference": "Towbar Club",
         "CreditorAgent": { 
           "LEI": "IZ9Q00LZEVUKWCQY6X15",
-          "SchemeName": "UK.OB.BICFI",
+          "SchemeName": "UK.OBIE.BICFI",
           "Identification": "80200112344562",
           "Name": "The Credit Agent", 
           "PostalAddress": { 
@@ -248,7 +248,7 @@ Content-Type: application/json
           }
         },
         "CreditorAccount": {
-          "SchemeName": "UK.OB.SortCodeAccountNumber",
+          "SchemeName": "UK.OBIE.SortCodeAccountNumber",
           "Identification": "80200112345678",
           "Name": "Mrs Juniper",
           "Proxy": {
@@ -263,7 +263,7 @@ Content-Type: application/json
         "Reference": "Golf Club",
         "CreditorAgent": { 
           "LEI": "IZ9Q00LZEVUKWCQY6X15",
-          "SchemeName": "UK.OB.BICFI",
+          "SchemeName": "UK.OBIE.BICFI",
           "Identification": "80200112344562",
           "Name": "The Credit Agent", 
           "PostalAddress": { 
@@ -277,7 +277,7 @@ Content-Type: application/json
           }
         },
         "CreditorAccount": {
-          "SchemeName": "UK.OB.SortCodeAccountNumber",
+          "SchemeName": "UK.OBIE.SortCodeAccountNumber",
           "Identification": "87562298675421",
           "Name": "Mr Large",
           "SecondaryIdentification": "87562298675897", 
@@ -311,7 +311,7 @@ Content-Type: application/json
         "Reference": "Towbar Club",
         "CreditorAgent": { 
           "LEI": "IZ9Q00LZEVUKWCQY6X15",
-          "SchemeName": "UK.OB.BICFI",
+          "SchemeName": "UK.OBIE.BICFI",
           "Identification": "80200112344562",
           "Name": "The Credit Agent", 
           "PostalAddress": { 
@@ -325,7 +325,7 @@ Content-Type: application/json
           }
         },
         "CreditorAccount": {
-          "SchemeName": "UK.OB.SortCodeAccountNumber",
+          "SchemeName": "UK.OBIE.SortCodeAccountNumber",
           "Identification": "80200112345678",
           "Name": "Mrs Juniper"
         }
@@ -339,7 +339,7 @@ Content-Type: application/json
           "LEI": "6PLS00H77T87PEZOTK71"
         },
         "CreditorAccount": {
-          "SchemeName": "UK.OB.SortCodeAccountNumber",
+          "SchemeName": "UK.OBIE.SortCodeAccountNumber",
           "Identification": "80200112345678",
           "SecondaryIdentification": "87562298675897",
           "Name": "Mr Tully"
@@ -353,7 +353,7 @@ Content-Type: application/json
           "LEI": "X3F8005BLKBSWLCX4E37"
         },
         "CreditorAccount": {
-          "SchemeName": "UK.OB.SortCodeAccountNumber",
+          "SchemeName": "UK.OBIE.SortCodeAccountNumber",
           "Identification": "80200112345678",
           "Name": "Mr Tully",
           "Proxy": {

@@ -160,8 +160,8 @@ For the OBDomesticStandingOrder3 Initiation object:
 * DebtorAccount is **optional** as the PISP may not know the account identification details for the PSU.
 * If the DebtorAccount is specified by the PISP and is invalid for the PSU, then the domestic-standing-order-consent will be set to Rejected after PSU authentication.
 * Account Identification field usage:
-  * Where "UK.OB.SortCodeAccountNumber" is specified as the SchemeName in the Account identification section (either DebtorAccount or CreditorAccount), the Identification field **must** be populated with the 6 digit Sort Code and 8 digit Account Number (a 14 digit field).
-  * Where the "UK.OB.IBAN" is specified as the SchemeName in the Account identification section (either DebtorAccount or CreditorAccount), the Identification field **must** be populated with the full IBAN.
+  * Where "UK.OBIE.SortCodeAccountNumber" is specified as the SchemeName in the Account identification section (either DebtorAccount or CreditorAccount), the Identification field **must** be populated with the 6 digit Sort Code and 8 digit Account Number (a 14 digit field).
+  * Where the "UK.OBIE.IBAN" is specified as the SchemeName in the Account identification section (either DebtorAccount or CreditorAccount), the Identification field **must** be populated with the full IBAN.
 * The Permission field is restricted to "Create", however, may be extended to "Update" and "Delete" in a future iteration of the specification.
 * Either the CountPerPeriod or FinalPaymentDateTime must be specified (not both) if the domestic standing order is not open ended.
 * The structure allows a PISP to specify a domestic standing order with a different payment amount and date combinations: for the first payment, the recurring payment, and the final payment. The recurring payment (and date) must only be populated if different from the first payment (and date).
@@ -344,7 +344,7 @@ Accept: application/json
         "Currency": "GBP"
 	  },
       "DebtorAccount": {
-        "SchemeName": "UK.OB.SortCodeAccountNumber",
+        "SchemeName": "UK.OBIE.SortCodeAccountNumber",
         "SecondaryIdentification": "0002",
         "Identification": "11280001234567",
         "Name": "Andrea Smith",
@@ -354,7 +354,7 @@ Accept: application/json
         },
       },
       "CreditorAccount": {
-        "SchemeName": "UK.OB.SortCodeAccountNumber",
+        "SchemeName": "UK.OBIE.SortCodeAccountNumber",
         "SecondaryIdentification": "0002",
         "Identification": "08080021325698",
         "Name": "Bob Clements",
@@ -462,7 +462,7 @@ Content-Type: application/json
       "CompletionDateTime": "2024-05-30T10:35:27Z"
     },
   "Debtor":{
-      "SchemeName": "UK.OB.SortCodeAccountNumber",
+      "SchemeName": "UK.OBIE.SortCodeAccountNumber",
       "Identification": "08080021325698",
       "Name": "ACME Inc",
       "SecondaryIdentification": "0002",
@@ -500,7 +500,7 @@ Content-Type: application/json
         "Currency": "GBP"
 	  },
       "DebtorAccount": {
-        "SchemeName": "UK.OB.SortCodeAccountNumber",
+        "SchemeName": "UK.OBIE.SortCodeAccountNumber",
         "Identification": "11280001234567",
         "Name": "Andrea Smith",
         "SecondaryIdentification": "0002",
@@ -510,7 +510,7 @@ Content-Type: application/json
         }
       },
       "CreditorAccount": {
-        "SchemeName": "UK.OB.SortCodeAccountNumber",
+        "SchemeName": "UK.OBIE.SortCodeAccountNumber",
         "Identification": "08080021325698",
         "Name": "Bob Clements",
         "SecondaryIdentification": "0002",
@@ -649,12 +649,12 @@ Content-Type: application/json
         "Currency": "GBP"
 	  },
       "DebtorAccount": {
-        "SchemeName": "UK.OB.SortCodeAccountNumber",
+        "SchemeName": "UK.OBIE.SortCodeAccountNumber",
         "Identification": "11280001234567",
         "Name": "Andrea Smith"
       },
       "CreditorAccount": {
-        "SchemeName": "UK.OB.SortCodeAccountNumber",
+        "SchemeName": "UK.OBIE.SortCodeAccountNumber",
         "Identification": "08080021325698",
         "Name": "Bob Clements"
       },
@@ -672,7 +672,7 @@ Content-Type: application/json
         }
       },
       "UltimateDebtor": {
-        "SchemeName": "UK.OB.BICFI",
+        "SchemeName": "UK.OBIE.BICFI",
         "Identification": "2360549017905161589",
         "Name": "Ultimate Debtor",
         "LEI": "8200007YHFDMEODY1965",
@@ -687,7 +687,7 @@ Content-Type: application/json
         }
       },
       "UltimateCreditor": {
-        "SchemeName": "UK.OB.BICFI",
+        "SchemeName": "UK.OBIE.BICFI",
         "Identification": "2360549017905161589",
         "Name": "Ultimate Creditor",
         "LEI": "60450004FECVJV7YN339",

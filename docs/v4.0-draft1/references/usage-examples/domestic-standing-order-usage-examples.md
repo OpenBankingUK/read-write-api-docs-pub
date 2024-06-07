@@ -110,12 +110,12 @@ Accept: application/json
         "Currency": "GBP"
 	  },
       "DebtorAccount": {
-        "SchemeName": "UK.OB.SortCodeAccountNumber",
+        "SchemeName": "UK.OBIE.SortCodeAccountNumber",
         "Identification": "11280001234567",
         "Name": "Andrea Smith"
       },
       "CreditorAccount": {
-        "SchemeName": "UK.OB.SortCodeAccountNumber",
+        "SchemeName": "UK.OBIE.SortCodeAccountNumber",
         "Identification": "08080021325698",
         "Name": "Bob Clements"
       }
@@ -162,12 +162,12 @@ Content-Type: application/json
         "Currency": "GBP"
 	  },
       "DebtorAccount": {
-        "SchemeName": "UK.OB.SortCodeAccountNumber",
+        "SchemeName": "UK.OBIE.SortCodeAccountNumber",
         "Identification": "11280001234567",
         "Name": "Andrea Smith"
       },
       "CreditorAccount": {
-        "SchemeName": "UK.OB.SortCodeAccountNumber",
+        "SchemeName": "UK.OBIE.SortCodeAccountNumber",
         "Identification": "08080021325698",
         "Name": "Bob Clements"
       }
@@ -221,12 +221,12 @@ Accept: application/json
         "Currency": "GBP"
 	  },
       "DebtorAccount": {
-        "SchemeName": "UK.OB.SortCodeAccountNumber",
+        "SchemeName": "UK.OBIE.SortCodeAccountNumber",
         "Identification": "11280001234567",
         "Name": "Andrea Smith"
       },
       "CreditorAccount": {
-        "SchemeName": "UK.OB.SortCodeAccountNumber",
+        "SchemeName": "UK.OBIE.SortCodeAccountNumber",
         "Identification": "08080021325698",
         "Name": "Bob Clements"
       }
@@ -274,12 +274,12 @@ Content-Type: application/json
         "Currency": "GBP"
 	  },
       "DebtorAccount": {
-        "SchemeName": "UK.OB.SortCodeAccountNumber",
+        "SchemeName": "UK.OBIE.SortCodeAccountNumber",
         "Identification": "11280001234567",
         "Name": "Andrea Smith"
       },
       "CreditorAccount": {
-        "SchemeName": "UK.OB.SortCodeAccountNumber",
+        "SchemeName": "UK.OBIE.SortCodeAccountNumber",
         "Identification": "08080021325698",
         "Name": "Bob Clements"
       }
@@ -342,12 +342,12 @@ Content-Type: application/json
         "Currency": "GBP"
 	  },
       "DebtorAccount": {
-        "SchemeName": "UK.OB.SortCodeAccountNumber",
+        "SchemeName": "UK.OBIE.SortCodeAccountNumber",
         "Identification": "11280001234567",
         "Name": "Andrea Smith"
       },
       "CreditorAccount": {
-        "SchemeName": "UK.OB.SortCodeAccountNumber",
+        "SchemeName": "UK.OBIE.SortCodeAccountNumber",
         "Identification": "08080021325698",
         "Name": "Bob Clements"
       }

@@ -178,8 +178,8 @@ For the OBInternational3 Initiation object:
 * If the DebtorAccount is specified by the PISP and is invalid for the PSU, then the international-payment-consent will be set to RJCT after PSU authentication.
 * CreditorAgent must at least have either of the pairs provided: Scheme Name and Identification or Name and Postal Address.
 * Account Identification field usage:
-  * Where "UK.OB.SortCodeAccountNumber" is specified as the SchemeName in the Account Identification Section (either DebtorAccount or CreditorAccount), the Identification field **must** be populated with the 6 digit Sort Code and 8 digit Account Number (a 14 digit field).
-  * Where the "UK.OB.IBAN" is specified as the SchemeName in the Account Identification Section (either DebtorAccount or CreditorAccount), the Identification field **must** be populated with the full IBAN.
+  * Where "UK.OBIE.SortCodeAccountNumber" is specified as the SchemeName in the Account Identification Section (either DebtorAccount or CreditorAccount), the Identification field **must** be populated with the 6 digit Sort Code and 8 digit Account Number (a 14 digit field).
+  * Where the "UK.OBIE.IBAN" is specified as the SchemeName in the Account Identification Section (either DebtorAccount or CreditorAccount), the Identification field **must** be populated with the full IBAN.
 * LocalInstrument is the requested payment scheme for execution. This is a free-text field.
 * InstructionPrioirty may be used by the ASPSP to determine the payment scheme for execution.
 * The InstructedAmount object must be populated with the desired Amount and Currency of transfer, regardless of the currency of the DebtorAccount or CreditorAccount. I.e., a PSU may wish to transfer 100EUR from a GBP DebtorAccount (InstructedAmount will be 100EUR), or 100GBP to an EUR CreditorAccount (the InstructedAmount will be 100GBP).
@@ -428,7 +428,7 @@ Accept: application/json
     "Initiation": {
       "InstructionIdentification": "ACME412",
       "EndToEndIdentification": "FRESCO.21302.GFX.20",
-      "LocalInstrument": "UK.OB.Paym",
+      "LocalInstrument": "UK.OBIE.Paym",
       "InstructionPriority": "Normal",
       "Purpose": "CCRD",
       "CurrencyOfTransfer": "USD",
@@ -444,7 +444,7 @@ Accept: application/json
         "ContractIdentification": "0591968098186",
       },
       "DebtorAccount": {
-        "SchemeName": "UK.OB.SortCodeAccountNumber",
+        "SchemeName": "UK.OBIE.SortCodeAccountNumber",
         "SecondaryIdentification": "0002",
         "Identification": "11280001234567",
         "Name": "Andrea Smith",
@@ -455,7 +455,7 @@ Accept: application/json
       },
       "CreditorAgent": { 
         "LEI": "X3F8005BLKBSWLCX4E37",
-        "SchemeName": "UK.OB.BICF",
+        "SchemeName": "UK.OBIE.BICF",
         "Name": "ACED Inc",
         "Identification": "08080021325698",
         "PostalAddress": {
@@ -479,7 +479,7 @@ Accept: application/json
         }
        },
       "CreditorAccount": {
-        "SchemeName": "UK.OB.SortCodeAccountNumber",
+        "SchemeName": "UK.OBIE.SortCodeAccountNumber",
         "Identification": "08080021325698",
         "Name": "ACME Inc",
         "SecondaryIdentification": "0002",
@@ -489,7 +489,7 @@ Accept: application/json
         },
       },
       "UltimateDebtor": {
-        "SchemeName": "UK.OB.BICFI",
+        "SchemeName": "UK.OBIE.BICFI",
         "Identification": "2360549017905161589",
         "Name": "Ultimate Debtor",
         "LEI": "8200007YHFDMEODY1965",
@@ -504,7 +504,7 @@ Accept: application/json
         }
       },
       "UltimateCreditor": {
-        "SchemeName": "UK.OB.BICFI",
+        "SchemeName": "UK.OBIE.BICFI",
         "Identification": "2360549017905161589",
         "Name": "Ultimate Creditor",
         "LEI": "60450004FECVJV7YN339",
@@ -616,7 +616,7 @@ Content-Type: application/json
   "StatusUpdateDateTime": "2017-06-05T15:15:13+00:00",
   "ReadRefundAccount": "Yes",
   "Debtor":{
-      "SchemeName": "UK.OB.SortCodeAccountNumber",
+      "SchemeName": "UK.OBIE.SortCodeAccountNumber",
       "Identification": "08080021325698",
       "Name": "ACME Inc",
       "SecondaryIdentification": "0002",
@@ -633,7 +633,7 @@ Content-Type: application/json
   },
   "Charges": [{
       "ChargeBearer": "Shared",
-      "Type": "UK.OB.CHAPSOut",
+      "Type": "UK.OBIE.CHAPSOut",
       "Amount"  {
       "Amount": "0.88",
       "Currency": "GBP"
@@ -646,7 +646,7 @@ Content-Type: application/json
    "InstructionPriority": "Normal",
    "CurrencyOfTransfer": "USD",
    "DestinationCountryCode": "GB",
-   "LocalInstrument": "UK.OB.Paym",
+   "LocalInstrument": "UK.OBIE.Paym",
    "InstructionPriority": "Normal",
    "Purpose": "CCRD",
    "InstructedAmount": {
@@ -654,7 +654,7 @@ Content-Type: application/json
     "Currency": "GBP"
    },
   "Creditor": {
-    "SchemeName": "UK.OB.SortCodeAccountNumber",
+    "SchemeName": "UK.OBIE.SortCodeAccountNumber",
     "Identification": "08080021325688",
     "SecondaryIdentification": "0002",
     "Proxy": {
@@ -663,7 +663,7 @@ Content-Type: application/json
     },
   },
   "CreditorAccount": {
-    "SchemeName": "UK.OB.SortCodeAccountNumber",
+    "SchemeName": "UK.OBIE.SortCodeAccountNumber",
     "Identification": "08080021325698",
     "Name": "ACME Inc",
     "SecondaryIdentification": "0002",
@@ -674,7 +674,7 @@ Content-Type: application/json
    },
    "CreditorAgent": { 
     "LEI": "X3F8005BLKBSWLCX4E37",
-    "SchemeName": "UK.OB.BICF",
+    "SchemeName": "UK.OBIE.BICF",
     "Name": "ACED Inc",
     "Identification": "08080021325698",
     "PostalAddress": {
@@ -703,7 +703,7 @@ Content-Type: application/json
     "RateType": "Actual"
   },
     "UltimateDebtor": {
-      "SchemeName": "UK.OB.BICFI",
+      "SchemeName": "UK.OBIE.BICFI",
       "Identification": "2360549017905161589",
       "Name": "Ultimate Debtor",
       "LEI": "8200007YHFDMEODY1965",
@@ -718,7 +718,7 @@ Content-Type: application/json
       }
     },
   "UltimateCreditor": {
-    "SchemeName": "UK.OB.BICFI",
+    "SchemeName": "UK.OBIE.BICFI",
     "Identification": "2360549017905161589",
     "Name": "Ultimate Creditor",
     "LEI": "60450004FECVJV7YN339",

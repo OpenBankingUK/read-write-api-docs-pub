@@ -1,7 +1,7 @@
 {
   "Data": {
     "ConsentId": "fe615446-e53a-45ed-954c-ae5d1f97a93b",
-    "PSUAuthenticationMethods": "UK.OB.SCA",
+    "PSUAuthenticationMethods": "UK.OBIE.SCA",
 
     "Initiation": {
       "RemittanceInformation": {

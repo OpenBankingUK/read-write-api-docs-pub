@@ -43,9 +43,9 @@ Accept: application/json
   "Data": {
     "ReadRefundAccount": "Yes",
     "ControlParameters": {
-      "PSUAuthenticationMethods": [ "UK.OB.SCA" ],
-      "PSUInteractionTypes": [ "UK.OB.OffSession" ],
-      "VRPType": ["UK.OB.VRPType.Sweeping"],
+      "PSUAuthenticationMethods": [ "UK.OBIE.SCA" ],
+      "PSUInteractionTypes": [ "OffSession" ],
+      "VRPType": ["UK.OBIE.VRPType.Sweeping"],
       "ValidFromDateTime": "2017-06-05T15:15:13+00:00",
       "ValidToDateTime": "2020-06-05T15:15:13+00:00",
       "MaximumIndividualAmount": {
@@ -63,7 +63,7 @@ Accept: application/json
     },
     "Initiation": {
       "DebtorAccount": {
-        "SchemeName": "UK.OB.IBAN",
+        "SchemeName": "UK.OBIE.IBAN",
         "Identification": "GB76LOYD30949301273801",
         "SecondaryIdentification": "008419",
         "Name": "Marcus Sweepimus",
@@ -73,7 +73,7 @@ Accept: application/json
         }
       },
       "CreditorAccount": {
-        "SchemeName": "UK.OB.SortCodeAccountNumber",
+        "SchemeName": "UK.OBIE.SortCodeAccountNumber",
         "Identification": "30949330000010",
         "SecondaryIdentification": "Roll 90210",
         "Name": "Marcus Sweepimus",
@@ -83,7 +83,7 @@ Accept: application/json
         }
       },
       "UltimateDebtor": {
-        "SchemeName": "UK.OB.BICFI",
+        "SchemeName": "UK.OBIE.BICFI",
         "Identification": "2360549017905161589",
         "Name": "Ultimate Debtor",
         "LEI": "8200007YHFDMEODY1965",
@@ -98,7 +98,7 @@ Accept: application/json
         }
       },
       "UltimateCreditor": {
-        "SchemeName": "UK.OB.BICFI",
+        "SchemeName": "UK.OBIE.BICFI",
         "Identification": "2360549017905161589",
         "Name": "Ultimate Creditor",
         "LEI": "60450004FECVJV7YN339",
@@ -221,9 +221,9 @@ Content-Type: application/json
     "StatusUpdateDateTime": "2017-06-05T15:15:15+05:00",
     "ReadRefundAccount": "Yes",
     "ControlParameters": {
-      "PSUAuthenticationMethods": [ "UK.OB.SCA" ],
-      "PSUInteractionTypes": [ "UK.OB.OffSession" ],
-      "VRPType": "UK.OB.VRPType.Sweeping",
+      "PSUAuthenticationMethods": [ "UK.OBIE.SCA" ],
+      "PSUInteractionTypes": [ "OffSession" ],
+      "VRPType": "UK.OBIE.VRPType.Sweeping",
       "ValidFromDateTime": "2017-06-05T15:15:13+00:00",
       "ValidToDateTime": "2020-06-05T15:15:13+00:00",
       "MaximumIndividualAmount": {
@@ -240,7 +240,7 @@ Content-Type: application/json
       ]
     },
     "DebtorAccount": {
-      "SchemeName": "UK.OB.IBAN",
+      "SchemeName": "UK.OBIE.IBAN",
       "Identification": "GB76LOYD30949301273801",
       "SecondaryIdentification": "008419",
       "Name": "Marcus Sweepimus",
@@ -251,7 +251,7 @@ Content-Type: application/json
     },
     "Initiation": {
       "DebtorAccount": {
-       "SchemeName": "UK.OB.IBAN",
+       "SchemeName": "UK.OBIE.IBAN",
        "Identification": "GB76LOYD30949301273801",
        "SecondaryIdentification": "008419",
        "Name": "Marcus Sweepimus",
@@ -261,7 +261,7 @@ Content-Type: application/json
         }
       },
       "CreditorAccount": {
-        "SchemeName": "UK.OB.SortCodeAccountNumber",
+        "SchemeName": "UK.OBIE.SortCodeAccountNumber",
         "Identification": "30949330000010",
         "SecondaryIdentification": "Roll 90210",
         "Name": "Marcus Sweepimus",
@@ -290,7 +290,7 @@ Content-Type: application/json
         "Country": "UK"
       },
       "UltimateDebtor": {
-        "SchemeName": "UK.OB.BICFI",
+        "SchemeName": "UK.OBIE.BICFI",
         "Identification": "2360549017905161589",
         "Name": "Ultimate Debtor",
         "LEI": "8200007YHFDMEODY1965",
@@ -305,7 +305,7 @@ Content-Type: application/json
         }
       },
       "UltimateCreditor": {
-        "SchemeName": "UK.OB.BICFI",
+        "SchemeName": "UK.OBIE.BICFI",
         "Identification": "2360549017905161589",
         "Name": "Ultimate Creditor",
         "LEI": "60450004FECVJV7YN339",
@@ -430,9 +430,9 @@ Content-Type: application/json
       "StatusReasonDescription":"Consent consumed successfully",
     },
     "ControlParameters": {
-      "PSUAuthenticationMethods": [ "UK.OB.SCA" ],
-      "PSUInteractionTypes": [ "UK.OB.OffSession" ],
-      "VRPType": "UK.OB.VRPType.Sweeping",
+      "PSUAuthenticationMethods": [ "UK.OBIE.SCA" ],
+      "PSUInteractionTypes": [ "OffSession" ],
+      "VRPType": "UK.OBIE.VRPType.Sweeping",
       "ValidFromDateTime": "2017-06-05T15:15:13+00:00",
       "ValidToDateTime": "2020-06-05T15:15:13+00:00",
       "MaximumIndividualAmount": {
@@ -450,7 +450,7 @@ Content-Type: application/json
     },
 
     "DebtorAccount": {
-      "SchemeName": "UK.OB.IBAN",
+      "SchemeName": "UK.OBIE.IBAN",
       "Identification": "GB76LOYD30949301273801",
       "Name": "Marcus Sweepimus",
       "SecondaryIdentification": "008419",
@@ -462,7 +462,7 @@ Content-Type: application/json
     },
     "Initiation": {
       "DebtorAccount": {
-        "SchemeName": "UK.OB.IBAN",
+        "SchemeName": "UK.OBIE.IBAN",
         "Identification": "GB76LOYD30949301273801",
         "Name": "Marcus Sweepimus",
         "SecondaryIdentification": "008419",
@@ -473,7 +473,7 @@ Content-Type: application/json
         }
       },
       "CreditorAccount": {
-        "SchemeName": "UK.OB.SortCodeAccountNumber",
+        "SchemeName": "UK.OBIE.SortCodeAccountNumber",
         "Identification": "30949330000010",
         "SecondaryIdentification": "Roll 90210",
         "Name": "Marcus Sweepimus",
@@ -502,7 +502,7 @@ Content-Type: application/json
         "Country": "UK"
       },
       "UltimateDebtor": {
-        "SchemeName": "UK.OB.BICFI",
+        "SchemeName": "UK.OBIE.BICFI",
         "Identification": "2360549017905161589",
         "Name": "Ultimate Debtor",
         "LEI": "8200007YHFDMEODY1965",
@@ -517,7 +517,7 @@ Content-Type: application/json
         }
       },
       "UltimateCreditor": {
-        "SchemeName": "UK.OB.BICFI",
+        "SchemeName": "UK.OBIE.BICFI",
         "Identification": "2360549017905161589",
         "Name": "Ultimate Creditor",
         "LEI": "60450004FECVJV7YN339",
@@ -622,13 +622,13 @@ Accept: application/json
 {
   "Data": {
     "ConsentId": "fe615446-e53a-45ed-954c-ae5d1f97a93b",
-    "PSUAuthenticationMethod": "UK.OB.SCA",
-    "PSUInteractionType": "UK.OB.OffSession",
-    "VRPType": "UK.OB.VRPType.Sweeping" ,
+    "PSUAuthenticationMethod": "UK.OBIE.SCA",
+    "PSUInteractionType": "OffSession",
+    "VRPType": "UK.OBIE.VRPType.Sweeping" ,
 
     "Initiation": {
       "DebtorAccount": {
-        "SchemeName": "UK.OB.IBAN",
+        "SchemeName": "UK.OBIE.IBAN",
         "Identification": "GB76LOYD30949301273801",
         "Name": "Marcus Sweepimus",
         "SecondaryIdentification": "008419",
@@ -638,7 +638,7 @@ Accept: application/json
         }
       },
       "CreditorAccount": {
-        "SchemeName": "UK.OB.SortCodeAccountNumber",
+        "SchemeName": "UK.OBIE.SortCodeAccountNumber",
         "Identification": "30949330000010",
         "SecondaryIdentification": "Roll 90210",
         "Name": "Marcus Sweepimus",
@@ -648,7 +648,7 @@ Accept: application/json
         }
       },
       "UltimateDebtor": {
-        "SchemeName": "UK.OB.BICFI",
+        "SchemeName": "UK.OBIE.BICFI",
         "Identification": "2360549017905161589",
         "Name": "Ultimate Debtor",
         "LEI": "8200007YHFDMEODY1965",
@@ -663,7 +663,7 @@ Accept: application/json
         }
       },
       "UltimateCreditor": {
-        "SchemeName": "UK.OB.BICFI",
+        "SchemeName": "UK.OBIE.BICFI",
         "Identification": "2360549017905161589",
         "Name": "Ultimate Creditor",
         "LEI": "60450004FECVJV7YN339",
@@ -742,7 +742,7 @@ Accept: application/json
     "Instruction": {
       "InstructionIdentification": "fe655556-e53a-45ed-954c-ae5d1f97a93b",
       "EndToEndIdentification": "fe699996-e53a-45ed-954c-ae5d1f97a93a",
-      "LocalInstrument": "UK.OB.Paym",
+      "LocalInstrument": "UK.OBIE.Paym",
       "CreditorAccount": {
         "SchemeName": "SortCodeAccountNumber",
         "Identification": "30949330000010",
@@ -777,7 +777,7 @@ Accept: application/json
         "Country": "UK"
       },
       "UltimateCreditor": {
-        "SchemeName": "UK.OB.BICFI",
+        "SchemeName": "UK.OBIE.BICFI",
         "Identification": "2360549017905161589",
         "Name": "Ultimate Creditor",
         "LEI": "60450004FECVJV7YN339",
@@ -866,7 +866,7 @@ Content-Type: application/json
     "ExpectedExecutionDateTime": "2017-06-05T15:15:15+00:00",
     "ExpectedSettlementDateTime": "2017-06-06T15:15:15+00:00",
     "DebtorAccount": {
-      "SchemeName": "UK.OB.IBAN",
+      "SchemeName": "UK.OBIE.IBAN",
       "Identification": "GB76LOYD30949301273801",
       "Name": "Marcus Sweepimus",
       "SecondaryIdentification": "008419",
@@ -878,7 +878,7 @@ Content-Type: application/json
     "Refund" : "Yes", 
     "Charges": [{
        "ChargeBearer": "Shared",
-       "Type": "UK.OB.CHAPSOut",
+       "Type": "UK.OBIE.CHAPSOut",
        "Amount"  {
         "Amount": "0.88",
         "Currency": "GBP"
@@ -886,7 +886,7 @@ Content-Type: application/json
     }],
     "Initiation": {
       "DebtorAccount": {
-        "SchemeName": "UK.OB.IBAN",
+        "SchemeName": "UK.OBIE.IBAN",
         "Identification": "GB76LOYD30949301273801",
         "Name": "Marcus Sweepimus",
         "SecondaryIdentification": "008419",
@@ -925,7 +925,7 @@ Content-Type: application/json
         "Country": "UK"
       },
       "UltimateDebtor": {
-        "SchemeName": "UK.OB.BICFI",
+        "SchemeName": "UK.OBIE.BICFI",
         "Identification": "2360549017905161589",
         "Name": "Ultimate Debtor",
         "LEI": "8200007YHFDMEODY1965",
@@ -940,7 +940,7 @@ Content-Type: application/json
         }
       },
       "UltimateCreditor": {
-        "SchemeName": "UK.OB.BICFI",
+        "SchemeName": "UK.OBIE.BICFI",
         "Identification": "2360549017905161589",
         "Name": "Ultimate Creditor",
         "LEI": "60450004FECVJV7YN339",
@@ -1000,7 +1000,7 @@ Content-Type: application/json
     "Instruction": {
       "InstructionIdentification": "fe655556-e53a-45ed-954c-ae5d1f97a93b",
       "EndToEndIdentification": "fe699996-e53a-45ed-954c-ae5d1f97a93a",
-      "LocalInstrument": "UK.OB.Paym",
+      "LocalInstrument": "UK.OBIE.Paym",
       "CreditorAccount": {
         "SchemeName": "SortCodeAccountNumber",
         "Identification": "30949330000010",
@@ -1035,7 +1035,7 @@ Content-Type: application/json
         "Currency": "GBP"
       },
       "UltimateCreditor": {
-        "SchemeName": "UK.OB.BICFI",
+        "SchemeName": "UK.OBIE.BICFI",
         "Identification": "2360549017905161589",
         "Name": "Ultimate Creditor",
         "LEI": "60450004FECVJV7YN339",
@@ -1135,9 +1135,9 @@ Accept: application/json
   "Data": {
     "ReadRefundAccount": "Yes",
     "ControlParameters": {
-      "PSUAuthenticationMethods": [ "UK.OB.SCA" ],
-      "PSUInteractionTypes": [ "UK.OB.OffSession" ],
-      "VRPType": ["UK.OB.VRPType.Sweeping"],
+      "PSUAuthenticationMethods": [ "UK.OBIE.SCA" ],
+      "PSUInteractionTypes": [ "OffSession" ],
+      "VRPType": ["UK.OBIE.VRPType.Sweeping"],
       "ValidFromDateTime": "2017-06-05T15:15:13+00:00",
       "ValidToDateTime": "2020-06-05T15:15:13+00:00",
       "MaximumIndividualAmount": {
@@ -1246,9 +1246,9 @@ Content-Type: application/json
     "ExpectedExecutionDateTime": "2017-06-05T15:15:15+00:00",
     "ExpectedSettlementDateTime": "2017-06-06T15:15:15+00:00",
     "ControlParameters": {
-      "PSUAuthenticationMethods": [ "UK.OB.SCA" ],
-      "PSUInteractionTypes": [ "UK.OB.OffSession" ],
-      "VRPType": "UK.OB.VRPType.Sweeping",
+      "PSUAuthenticationMethods": [ "UK.OBIE.SCA" ],
+      "PSUInteractionTypes": [ "OffSession" ],
+      "VRPType": "UK.OBIE.VRPType.Sweeping",
       "ValidFromDateTime": "2017-06-05T15:15:13+00:00",
       "ValidToDateTime": "2020-06-05T15:15:13+00:00",
       "MaximumIndividualAmount": {
@@ -1276,7 +1276,7 @@ Content-Type: application/json
         }
       },
       "DebtorAccount": {
-        "SchemeName": "UK.OB.IBAN",
+        "SchemeName": "UK.OBIE.IBAN",
         "Identification": "GB76LOYD30949301273801",
         "Name": "Marcus Sweepimus",
         "SecondaryIdentification": "008419",
@@ -1305,7 +1305,7 @@ Content-Type: application/json
         "Country": "UK"
       },
       "UltimateDebtor": {
-        "SchemeName": "UK.OB.BICFI",
+        "SchemeName": "UK.OBIE.BICFI",
         "Identification": "2360549017905161589",
         "Name": "Ultimate Debtor",
         "LEI": "8200007YHFDMEODY1965",
@@ -1320,7 +1320,7 @@ Content-Type: application/json
         }
       },
       "UltimateCreditor": {
-        "SchemeName": "UK.OB.BICFI",
+        "SchemeName": "UK.OBIE.BICFI",
         "Identification": "2360549017905161589",
         "Name": "Ultimate Creditor",
         "LEI": "60450004FECVJV7YN339",
@@ -1445,9 +1445,9 @@ Content-Type: application/json
     "ReadRefundAccount": "Yes",
 
     "ControlParameters": {
-      "PSUAuthenticationMethods": [ "UK.OB.SCA" ],
-      "PSUInteractionTypes": [ "UK.OB.OffSession" ],
-      "VRPType": "UK.OB.VRPType.Sweeping",
+      "PSUAuthenticationMethods": [ "UK.OBIE.SCA" ],
+      "PSUInteractionTypes": [ "OffSession" ],
+      "VRPType": "UK.OBIE.VRPType.Sweeping",
       "ValidFromDateTime": "2017-06-05T15:15:13+00:00",
       "ValidToDateTime": "2020-06-05T15:15:13+00:00",
       "MaximumIndividualAmount": {
@@ -1464,7 +1464,7 @@ Content-Type: application/json
       ]
     },
     "DebtorAccount": {
-        "SchemeName": "UK.OB.IBAN",
+        "SchemeName": "UK.OBIE.IBAN",
         "Identification": "GB76LOYD30949301273801",
         "Name": "Marcus Sweepimus",
         "SecondaryIdentification": "008419",
@@ -1475,7 +1475,7 @@ Content-Type: application/json
       },
     "Initiation": {
       "DebtorAccount": {
-        "SchemeName": "UK.OB.IBAN",
+        "SchemeName": "UK.OBIE.IBAN",
         "Identification": "GB76LOYD30949301273801",
         "Name": "Marcus Sweepimus",
         "SecondaryIdentification": "008419",
@@ -1514,7 +1514,7 @@ Content-Type: application/json
         }
       },
       "UltimateDebtor": {
-        "SchemeName": "UK.OB.BICFI",
+        "SchemeName": "UK.OBIE.BICFI",
         "Identification": "2360549017905161589",
         "Name": "Ultimate Debtor",
         "LEI": "8200007YHFDMEODY1965",
@@ -1529,7 +1529,7 @@ Content-Type: application/json
         }
       },
       "UltimateCreditor": {
-        "SchemeName": "UK.OB.BICFI",
+        "SchemeName": "UK.OBIE.BICFI",
         "Identification": "2360549017905161589",
         "Name": "Ultimate Creditor",
         "LEI": "60450004FECVJV7YN339",
@@ -1605,13 +1605,13 @@ Accept: application/json
 {
   "Data": {
     "ConsentId": "fe615446-e53a-45ed-954c-ae5d1f97a93b",
-    "PSUAuthenticationMethod": "UK.OB.SCA",
-    "PSUInteractionType": "UK.OB.OffSession",
-    "VRPType": "UK.OB.VRPType.Sweeping",
+    "PSUAuthenticationMethod": "UK.OBIE.SCA",
+    "PSUInteractionType": "OffSession",
+    "VRPType": "UK.OBIE.VRPType.Sweeping",
     "Refund" : "Yes", 
     "Charges": [{
        "ChargeBearer": "Shared",
-       "Type": "UK.OB.CHAPSOut",
+       "Type": "UK.OBIE.CHAPSOut",
        "Amount"  {
         "Amount": "0.88",
         "Currency": "GBP"
@@ -1619,7 +1619,7 @@ Accept: application/json
     }],
     "Initiation": {
       "DebtorAccount": {
-        "SchemeName": "UK.OB.IBAN",
+        "SchemeName": "UK.OBIE.IBAN",
         "Identification": "GB76LOYD30949301273801",
         "Name": "Marcus Sweepimus",
         "SecondaryIdentification": "008419",
@@ -1658,7 +1658,7 @@ Accept: application/json
         "Country": "UK"
       },
       "UltimateDebtor": {
-        "SchemeName": "UK.OB.BICFI",
+        "SchemeName": "UK.OBIE.BICFI",
         "Identification": "2360549017905161589",
         "Name": "Ultimate Debtor",
         "LEI": "8200007YHFDMEODY1965",
@@ -1673,7 +1673,7 @@ Accept: application/json
         }
       },
       "UltimateCreditor": {
-        "SchemeName": "UK.OB.BICFI",
+        "SchemeName": "UK.OBIE.BICFI",
         "Identification": "2360549017905161589",
         "Name": "Ultimate Creditor",
         "LEI": "60450004FECVJV7YN339",
@@ -1733,7 +1733,7 @@ Accept: application/json
     "Instruction": {
       "InstructionIdentification": "fe655556-e53a-45ed-954c-ae5d1f97a93b",
       "EndToEndIdentification": "fe699996-e53a-45ed-954c-ae5d1f97a93a",
-      "LocalInstrument": "UK.OB.Paym",
+      "LocalInstrument": "UK.OBIE.Paym",
       "CreditorAccount": {
         "SchemeName": "SortCodeAccountNumber",
         "Identification": "30949330000010",
@@ -1841,7 +1841,7 @@ Content-Type: application/json
     "ExpectedExecutionDateTime": "2017-06-05T15:15:15+00:00",
     "ExpectedSettlementDateTime": "2017-06-06T15:15:15+00:00",
     "DebtorAccount": {
-      "SchemeName": "UK.OB.IBAN",
+      "SchemeName": "UK.OBIE.IBAN",
       "Identification": "GB76LOYD30949301273801",
       "Name": "Marcus Sweepimus",
       "SecondaryIdentification": "008419",
@@ -1853,7 +1853,7 @@ Content-Type: application/json
     "Refund" : "Yes", 
     "Charges": [{
        "ChargeBearer": "Shared",
-       "Type": "UK.OB.CHAPSOut",
+       "Type": "UK.OBIE.CHAPSOut",
        "Amount"  {
         "Amount": "0.88",
         "Currency": "GBP"
@@ -1861,7 +1861,7 @@ Content-Type: application/json
     }],
     "Initiation": {
       "DebtorAccount": {
-        "SchemeName": "UK.OB.IBAN",
+        "SchemeName": "UK.OBIE.IBAN",
         "Identification": "GB76LOYD30949301273801",
         "Name": "Marcus Sweepimus",
         "SecondaryIdentification": "008419",
@@ -1900,7 +1900,7 @@ Content-Type: application/json
         "Country": "UK"
       },
       "UltimateDebtor": {
-        "SchemeName": "UK.OB.BICFI",
+        "SchemeName": "UK.OBIE.BICFI",
         "Identification": "2360549017905161589",
         "Name": "Ultimate Debtor",
         "LEI": "8200007YHFDMEODY1965",
@@ -1915,7 +1915,7 @@ Content-Type: application/json
         }
       },
       "UltimateCreditor": {
-        "SchemeName": "UK.OB.BICFI",
+        "SchemeName": "UK.OBIE.BICFI",
         "Identification": "2360549017905161589",
         "Name": "Ultimate Creditor",
         "LEI": "60450004FECVJV7YN339",
@@ -1975,7 +1975,7 @@ Content-Type: application/json
     "Instruction": {
       "InstructionIdentification": "fe655556-e53a-45ed-954c-ae5d1f97a93b",
       "EndToEndIdentification": "fe699996-e53a-45ed-954c-ae5d1f97a93a",
-      "LocalInstrument": "UK.OB.Paym",
+      "LocalInstrument": "UK.OBIE.Paym",
       "CreditorAccount": {
         "SchemeName": "SortCodeAccountNumber",
         "Identification": "30949330000010",
@@ -2010,7 +2010,7 @@ Content-Type: application/json
         "Currency": "GBP"
       },
       "UltimateCreditor": {
-        "SchemeName": "UK.OB.BICFI",
+        "SchemeName": "UK.OBIE.BICFI",
         "Identification": "2360549017905161589",
         "Name": "Ultimate Creditor",
         "LEI": "60450004FECVJV7YN339",

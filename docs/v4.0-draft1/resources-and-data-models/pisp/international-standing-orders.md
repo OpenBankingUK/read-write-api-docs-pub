@@ -289,12 +289,12 @@ Accept: application/json
 	  "FirstPaymentDateTime": "2018-06-06T06:06:06+00:00",
 	  "FinalPaymentDateTime": "2020-03-20T06:06:06+00:00",
 	  "DebtorAccount": {
-        "SchemeName": "UK.OB.SortCodeAccountNumber",
+        "SchemeName": "UK.OBIE.SortCodeAccountNumber",
         "Identification": "11280001234567",
         "Name": "Andrea Frost"
       },
       "CreditorAccount": {
-        "SchemeName": "UK.OB.IBAN",
+        "SchemeName": "UK.OBIE.IBAN",
         "Identification": "DE89370400440532013000",
         "Name": "Tom Kirkman"
       },
@@ -304,7 +304,7 @@ Accept: application/json
 	  },
 	  "CurrencyOfTansfer":"EUR",
     "UltimateDebtor": {
-        "SchemeName": "UK.OB.BICFI",
+        "SchemeName": "UK.OBIE.BICFI",
         "Identification": "2360549017905161589",
         "Name": "Ultimate Debtor",
         "LEI": "8200007YHFDMEODY1965",
@@ -319,7 +319,7 @@ Accept: application/json
         }
       },
       "UltimateCreditor": {
-        "SchemeName": "UK.OB.BICFI",
+        "SchemeName": "UK.OBIE.BICFI",
         "Identification": "2360549017905161589",
         "Name": "Ultimate Creditor",
         "LEI": "60450004FECVJV7YN339",
@@ -407,7 +407,7 @@ Content-Type: application/json
         "Name":"NTPC Ltd"
       },
       "Account": {
-        "SchemeName": "UK.OB.SortCodeAccountNumber",
+        "SchemeName": "UK.OBIE.SortCodeAccountNumber",
         "Identification": "08080021325677",
         "Name": "NTPC Inc"
       }
@@ -417,12 +417,12 @@ Content-Type: application/json
       "FirstPaymentDateTime": "2018-06-06T06:06:06+00:00",
       "FinalPaymentDateTime": "2020-03-20T06:06:06+00:00",
       "DebtorAccount": {
-        "SchemeName": "UK.OB.SortCodeAccountNumber",
+        "SchemeName": "UK.OBIE.SortCodeAccountNumber",
         "Identification": "11280001234567",
         "Name": "Andrea Frost"
       },
       "CreditorAccount": {
-        "SchemeName": "UK.OB.IBAN",
+        "SchemeName": "UK.OBIE.IBAN",
         "Identification": "DE89370400440532013000",
         "Name": "Tom Kirkman"
       },
@@ -432,7 +432,7 @@ Content-Type: application/json
       },
       "CurrencyOfTansfer":"EUR",
       "UltimateDebtor": {
-        "SchemeName": "UK.OB.BICFI",
+        "SchemeName": "UK.OBIE.BICFI",
         "Identification": "2360549017905161589",
         "Name": "Ultimate Debtor",
         "LEI": "8200007YHFDMEODY1965",
@@ -447,7 +447,7 @@ Content-Type: application/json
         }
       },
       "UltimateCreditor": {
-        "SchemeName": "UK.OB.BICFI",
+        "SchemeName": "UK.OBIE.BICFI",
         "Identification": "2360549017905161589",
         "Name": "Ultimate Creditor",
         "LEI": "60450004FECVJV7YN339",
