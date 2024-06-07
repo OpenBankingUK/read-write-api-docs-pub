@@ -152,7 +152,7 @@ Content-Type: application/json
         },
         "CreditorAgent": {  
           "LEI": "IZ9Q00LZEVUKWCQY6X15",
-          "SchemeName": "UK.OB.BICFI",
+          "SchemeName": "UK.OBIE.BICFI",
           "Identification": "80200112344562",
           "Name": "The Credit Agent", 
           "PostalAddress": { 
@@ -166,7 +166,7 @@ Content-Type: application/json
           }
         },
         "CreditorAccount": {
-          "SchemeName": "UK.OB.SortCodeAccountNumber",
+          "SchemeName": "UK.OBIE.SortCodeAccountNumber",
           "Identification": "23605490179017",
           "SecondaryIdentification": "23605445279017",
           "Name": "Mr Tee",
@@ -225,7 +225,7 @@ Content-Type: application/json
         },
         "CreditorAgent": {  
           "LEI": "IZ9Q00LZEVUKWCQY6X15",
-          "SchemeName": "UK.OB.BICFI",
+          "SchemeName": "UK.OBIE.BICFI",
           "Identification": "80200112344562",
           "Name": "The Credit Agent", 
           "PostalAddress": { 
@@ -238,7 +238,7 @@ Content-Type: application/json
             "Country": "UK"
         },
         "CreditorAccount": {
-          "SchemeName": "UK.OB.SortCodeAccountNumber",
+          "SchemeName": "UK.OBIE.SortCodeAccountNumber",
           "Identification": "23605490179017",
           "SecondaryIdentification": "23605445279017",
           "Name": "Mr Tee",
@@ -261,7 +261,7 @@ Content-Type: application/json
           "Currency": "GBP"
         },
         "CreditorAccount": {
-          "SchemeName": "UK.OB.SortCodeAccountNumber",
+          "SchemeName": "UK.OBIE.SortCodeAccountNumber",
           "Identification": "23605490179017",
           "Name": "Mr Tee",
           "Proxy": {

@@ -303,7 +303,7 @@ Accept: application/json
         "Currency": "GBP"
       },
       "DebtorAccount": {
-        "SchemeName": "UK.OB.SortCodeAccountNumber",
+        "SchemeName": "UK.OBIE.SortCodeAccountNumber",
         "Identification": "11280001234567",
         "SecondaryIdentification": "080801562314789",
         "Name": "Andrea Frost",
@@ -313,7 +313,7 @@ Accept: application/json
         },
       },
       "CreditorAccount": {
-        "SchemeName": "UK.OB.SortCodeAccountNumber",
+        "SchemeName": "UK.OBIE.SortCodeAccountNumber",
         "Identification": "08080021325698",
         "Name": "Tom Kirkman",
         "SecondaryIdentification": "0002",
@@ -342,7 +342,7 @@ Accept: application/json
         "Country": "UK"
       },
       "UltimateDebtor": {
-      "SchemeName": "UK.OB.BICFI",
+      "SchemeName": "UK.OBIE.BICFI",
       "Identification": "2360549017905161589",
       "Name": "Ultimate Debtor",
       "LEI": "8200007YHFDMEODY1965",
@@ -357,7 +357,7 @@ Accept: application/json
         }
       },
       "UltimateCreditor": {
-        "SchemeName": "UK.OB.BICFI",
+        "SchemeName": "UK.OBIE.BICFI",
         "Identification": "2360549017905161589",
         "Name": "Ultimate Creditor",
         "LEI": "60450004FECVJV7YN339",
@@ -448,14 +448,14 @@ Content-Type: application/json
     "ExpectedSettlementDateTime": "2018-06-06T15:15:22+00:00",
     "Charges": [{
        "ChargeBearer": "Shared",
-       "Type": "UK.OB.CHAPSOut",
+       "Type": "UK.OBIE.CHAPSOut",
        "Amount"  {
         "Amount": "0.88",
         "Currency": "GBP"
       },
     }],
     "Debtor":{
-      "SchemeName": "UK.OB.SortCodeAccountNumber",
+      "SchemeName": "UK.OBIE.SortCodeAccountNumber",
       "Identification": "08080021325698",
       "Name": "ACME Inc",
       "SecondaryIdentification": "0002",
@@ -470,7 +470,7 @@ Content-Type: application/json
     },
     "Refund": {
       "Account": {
-        "SchemeName": "UK.OB.SortCodeAccountNumber",
+        "SchemeName": "UK.OBIE.SortCodeAccountNumber",
         "Identification": "08080021325677",
         "SecondaryIdentification": "0002",
         "Name": "NTPC Inc"
@@ -484,12 +484,12 @@ Content-Type: application/json
         "Currency": "GBP"
       },
       "DebtorAccount": {
-        "SchemeName": "UK.OB.SortCodeAccountNumber",
+        "SchemeName": "UK.OBIE.SortCodeAccountNumber",
         "Identification": "11280001234567",
         "Name": "Andrea Frost"
       },
       "CreditorAccount": {
-        "SchemeName": "UK.OB.SortCodeAccountNumber",
+        "SchemeName": "UK.OBIE.SortCodeAccountNumber",
         "Identification": "08080021325698",
         "Name": "Tom Kirkman",
           "Proxy": {
@@ -517,7 +517,7 @@ Content-Type: application/json
         "Country": "UK"
       },
       "UltimateDebtor": {
-        "SchemeName": "UK.OB.BICFI",
+        "SchemeName": "UK.OBIE.BICFI",
         "Identification": "2360549017905161589",
         "Name": "Ultimate Debtor",
         "LEI": "8200007YHFDMEODY1965",
@@ -532,7 +532,7 @@ Content-Type: application/json
         }
       },
       "UltimateCreditor": {
-        "SchemeName": "UK.OB.BICFI",
+        "SchemeName": "UK.OBIE.BICFI",
         "Identification": "2360549017905161589",
         "Name": "Ultimate Creditor",
         "LEI": "60450004FECVJV7YN339",

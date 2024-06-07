@@ -195,8 +195,8 @@ For the call toGET /accounts/{AccountId}/statements/{StatementId}/transactions:
 | CreditDebitIndicator |1..1 |OBReadStatement2/Data/Statement/StatementInterest/CreditDebitIndicator |Indicates whether the amount is a credit or a debit. Usage: A zero amount is considered to be a credit amount. |For a full list of enumeration values refer to `External_CodeSet` [here](https://github.com/OpenBankingUK/External_internal_CodeSets). |OBInternalCreditDebitCode | |
 | Type |1..1 |OBReadStatement2/Data/Statement/StatementInterest/Type |Interest amount type, in a coded form. |For a full list of enumeration values refer to `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_internal_CodeSets). |OBInternalStatementInterestType1Code| |
 | Rate |0..1 |OBReadStatement2/Data/Statement/StatementInterest/Rate |Rate for Statement Interest (where it is applicable in terms of a rate rather than an amount) |OBRate1 | | |
-| RateType |0..1 |OBReadStatement2/Data/Statement/StatementInterest/RateType |Description that may be available for the statement Interest rate type. |OBExternalStatementInterestRateType1Code |UK.OB.BOEBaseRate UK.OB.FixedRate UK.OB.Gross UK.OB.LoanProviderBaseRate UK.OB.Net | |
-| Frequency |0..1 |OBReadStatement2/Data/Statement/StatementInterest/Frequency |How frequently the Interest Rate is applied to the Account. |OBExternalStatementInterestFrequency1Code |UK.OB.Daily UK.OB.HalfYearly UK.OB.Monthly UK.OB.PerStatementDate UK.OB.Quarterly UK.OB.Weekly UK.OB.Yearly | |
+| RateType |0..1 |OBReadStatement2/Data/Statement/StatementInterest/RateType |Description that may be available for the statement Interest rate type. |OBExternalStatementInterestRateType1Code |UK.OBIE.BOEBaseRate UK.OBIE.FixedRate UK.OBIE.Gross UK.OBIE.LoanProviderBaseRate UK.OBIE.Net | |
+| Frequency |0..1 |OBReadStatement2/Data/Statement/StatementInterest/Frequency |How frequently the Interest Rate is applied to the Account. |OBExternalStatementInterestFrequency1Code |UK.OBIE.Daily UK.OBIE.HalfYearly UK.OBIE.Monthly UK.OBIE.PerStatementDate UK.OBIE.Quarterly UK.OBIE.Weekly UK.OBIE.Yearly | |
 | Amount |1..1 |OBReadStatement2/Data/Statement/StatementInterest/Amount |Amount of money associated with the statement interest amount type. |OBActiveOrHistoricCurrencyAndAmount | | |
 | Amount |1..1 |OBReadStatement2/Data/Statement/StatementInterest/Amount/Amount |A number of monetary units specified in an active currency where the unit of currency is explicit and compliant with ISO 4217. |OBActiveCurrencyAndAmount_SimpleType | |`^\d{1,13}$|^\d{1,13}\.\d{1,5}$` |
 | Currency |1..1 |OBReadStatement2/Data/Statement/StatementInterest/Amount/Currency |A code allocated to a currency by a Maintenance Agency under an international identification scheme, as described in the latest edition of the international standard ISO 4217 "Codes for the representation of currencies and funds". |ActiveOrHistoricCurrencyCode | |^[A-Z]{3,3}$ |
@@ -261,7 +261,7 @@ Content-Type: application/json
       "CreationDateTime": "2017-09-01T00:00:00+00:00",
       "StatementDateTime": {
         "DateTime": "2017-08-01T00:00:00+00:00",
-        "Type": "UK.OB.DirectDebitDue",
+        "Type": "UK.OBIE.DirectDebitDue",
       },
       "TotalValue": {
          "Amount": "1024.00",
@@ -293,7 +293,7 @@ Content-Type: application/json
       }
       ],
      "StatementBenefit": [{ 
-      "Type": "UK.OB.Cashback",
+      "Type": "UK.OBIE.Cashback",
       "Amount": {
         "Amount": "5.00",
         "Currency": "GBP"
@@ -301,11 +301,11 @@ Content-Type: application/json
      }],
      "StatementFee": [{ 
       "Description": "International usage charge",
-      "Type": "UK.OB.ForeignTransaction",
+      "Type": "UK.OBIE.ForeignTransaction",
       "Rate": 0.229,
       "CreditDebitIndicator": "Credit",        
-      "RateType": "	UK.OB.AER",
-      "Frequency": "UK.OB.StatementMonthly",
+      "RateType": "	UK.OBIE.AER",
+      "Frequency": "UK.OBIE.StatementMonthly",
       "Amount": {
         "Amount": "03.75",
         "Currency": "GBP"
@@ -313,11 +313,11 @@ Content-Type: application/json
      }],
      "StatementInterest": [{
       "Description": "Interest occurred over statement duration",
-      "Type": "UK.OB.Total", 
+      "Type": "UK.OBIE.Total", 
       "Rate": 0.229,
       "CreditDebitIndicator": "Credit",        
-      "RateType": "	UK.OB.FixedRate",
-      "Frequency": "UK.OB.StatementMonthly",
+      "RateType": "	UK.OBIE.FixedRate",
+      "Frequency": "UK.OBIE.StatementMonthly",
       "Amount": {
         "Amount": "20.25",
         "Currency": "GBP"
@@ -325,7 +325,7 @@ Content-Type: application/json
      }],
      "StatementRate": [{ 
         "Rate": 0.229,
-        "UK.OB.MonthlyPurchase"
+        "UK.OBIE.MonthlyPurchase"
      }],
     },
     {
@@ -401,10 +401,10 @@ Content-Type: application/json
       "CreationDateTime": "2023-09-01T00:00:00+00:00",
       "StatementDateTime": {
         "DateTime": "2017-08-01T00:00:00+00:00",
-        "Type": "UK.OB.DirectDebitDue",
+        "Type": "UK.OBIE.DirectDebitDue",
       },
       "StatementBenefit": [{ 
-        "Type": "UK.OB.Cashback",
+        "Type": "UK.OBIE.Cashback",
         "Amount": {
           "Amount": "5.00",
           "Currency": "GBP"
@@ -412,11 +412,11 @@ Content-Type: application/json
       }],
        "StatementFee": [{ 
           "Description": "International usage charge",
-          "Type": "UK.OB.ForeignTransaction",
+          "Type": "UK.OBIE.ForeignTransaction",
           "Rate": 0.229,
           "CreditDebitIndicator": "Credit",        
-          "RateType": "	UK.OB.AER",
-          "Frequency": "UK.OB.StatementMonthly",
+          "RateType": "	UK.OBIE.AER",
+          "Frequency": "UK.OBIE.StatementMonthly",
           "Amount": {
             "Amount": "03.75",
             "Currency": "GBP", 
@@ -424,7 +424,7 @@ Content-Type: application/json
       }],
       "StatementRate": [{ 
         "Rate": 0.229,
-        "UK.OB.MonthlyPurchase"
+        "UK.OBIE.MonthlyPurchase"
       }],
       "StatementDescription": ["August 2023 Statement", "One Free Uber Ride"],
       "StatementAmount": [
@@ -499,10 +499,10 @@ Content-Type: application/json
       "StatementDescription": ["August 2017 Statement", "One Free Uber Ride"],
       "StatementDateTime": {
         "DateTime": "2017-08-01T00:00:00+00:00",
-        "Type": "UK.OB.DirectDebitDue",
+        "Type": "UK.OBIE.DirectDebitDue",
       },
       "StatementBenefit": [{ 
-        "Type": "UK.OB.Cashback",
+        "Type": "UK.OBIE.Cashback",
         "Amount": {
           "Amount": "5.00",
           "Currency": "GBP"
@@ -510,11 +510,11 @@ Content-Type: application/json
       }],
        "StatementFee": [{ 
           "Description": "International usage charge",
-          "Type": "UK.OB.ForeignTransaction",
+          "Type": "UK.OBIE.ForeignTransaction",
           "Rate": 0.229,
           "CreditDebitIndicator": "Credit",        
-          "RateType": "	UK.OB.AER",
-          "Frequency": "UK.OB.StatementMonthly",
+          "RateType": "	UK.OBIE.AER",
+          "Frequency": "UK.OBIE.StatementMonthly",
           "Amount": {
             "Amount": "03.75",
             "Currency": "GBP", 
@@ -522,7 +522,7 @@ Content-Type: application/json
       }],
       "StatementRate": [{ 
         "Rate": 0.229,
-        "UK.OB.MonthlyPurchase"
+        "UK.OBIE.MonthlyPurchase"
       }],
       "StatementAmount": [
       {

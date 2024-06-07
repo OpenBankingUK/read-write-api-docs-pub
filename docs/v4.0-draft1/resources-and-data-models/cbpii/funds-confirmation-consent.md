@@ -229,7 +229,7 @@ x-fapi-interaction-id: hook5i13-ntIg-4th3-rP41-3ro535touch3
 {
   "Data": {
     "DebtorAccount": {
-      "SchemeName": "UK.OB.IBAN",
+      "SchemeName": "UK.OBIE.IBAN",
       "Identification": "GB76LOYD30949301273801",
       "SecondaryIdentification": "Roll 56988",
       "Name": "Jane Smith",
@@ -268,7 +268,7 @@ x-fapi-interaction-id: hook5i13-ntIg-4th3-rP41-3ro535touch3
     "StatusUpdateDateTime": "2017-05-02T00:00:00+00:00",
     "ExpirationDateTime": "2017-05-02T00:00:00+00:00",
     "DebtorAccount": {
-      "SchemeName": "UK.OB.IBAN",
+      "SchemeName": "UK.OBIE.IBAN",
       "Identification": "GB76LOYD30949301273801",
       "SecondaryIdentification": "Roll 56988",
       "Name": "Jane Smith",
@@ -319,7 +319,7 @@ Content-Type: application/json
     "StatusUpdateDateTime": "2017-05-02T00:00:00+00:00",
     "ExpirationDateTime": "2017-05-02T00:00:00+00:00",
     "DebtorAccount": {
-      "SchemeName": "UK.OB.IBAN",
+      "SchemeName": "UK.OBIE.IBAN",
       "Identification": "GB76LOYD30949301273801",
       "SecondaryIdentification": "Roll 56988",
       "Name": "Jane Smith",
@@ -374,7 +374,7 @@ Content-Type: application/json
     "ExpirationDateTime": "2017-05-02T00:00:00+00:00",
     "DebtorAccount": {
       "Name": "Jane Smith",
-      "SchemeName": "UK.OB.PAN",
+      "SchemeName": "UK.OBIE.PAN",
       "SecondaryIdentification": "008419",
       "Identification": "4444********1111",
       "Proxy":{

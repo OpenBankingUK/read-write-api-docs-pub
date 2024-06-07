@@ -169,9 +169,9 @@ For the OBInternationalStandingOrder4 Initiation object:
   * SchemeName is a free-text field which will be populated with identification schemes an ASPSP accepts.
   * Identification is a field which is populated with the Identification of the account, using the valid identification scheme provided.
 * Valid UK Account Identification SchemeName values include, but are not restricted to:
-  * "UK.OB.SortCodeAccountNumber" - The Identification field **must** be populated with the 6 digit Sort Code and 8 digit Account Number (a 14 digit field).
-  * "UK.OB.IBAN" - The Identification field **must** be populated with the full IBAN.
-  * "UK.OB.PAN" - The Identification field **must** be populated with the full PAN. A PAN may be an instrument (e.g., a debit card) linked to a payment account, and may not be the only PAN linked to the payment account.
+  * "UK.OBIE.SortCodeAccountNumber" - The Identification field **must** be populated with the 6 digit Sort Code and 8 digit Account Number (a 14 digit field).
+  * "UK.OBIE.IBAN" - The Identification field **must** be populated with the full IBAN.
+  * "UK.OBIE.PAN" - The Identification field **must** be populated with the full PAN. A PAN may be an instrument (e.g., a debit card) linked to a payment account, and may not be the only PAN linked to the payment account.
 * The InstructedAmount object **must** be populated with the desired Amount and Currency of transfer, regardless of the currency of the DebtorAccount. I.e., a PSU may wish to transfer 100EUR from a GBP DebtorAccount (InstructedAmount will be 100EUR), or 100GBP in EUR (the InstructedAmount will be 100GBP).
 * The CurrencyOfTransfer **must** be used to specify the currency the funds will be transferred. I.e., a PSU may wish to transfer 100USD from a GBP DebtorAccount to a Rupee INR CreditorAccount in India.
 * The ChargeBearer field is used by the PISP to indicate the bearer of charges. An ASPSP must Reject the Initiation request if the requested charge allocation cannot be fulfilled.
@@ -365,7 +365,7 @@ Accept: application/json
       }
     },
     "CreditorAccount": {
-      "SchemeName": "UK.OB.IBAN",
+      "SchemeName": "UK.OBIE.IBAN",
       "Identification": "DE89370400440532013000",
       "SecondaryIdentification": "0002",
       "Name": "Tom Kirkman",
@@ -375,7 +375,7 @@ Accept: application/json
       },
     },
     "CreditAgent": {
-      "SchemeName": "UK.OB.IBAN",
+      "SchemeName": "UK.OBIE.IBAN",
       "Identification": "DE89370400440532013000",
       "SecondaryIdentification": "0002",
       "Name": "Tom Kirkman",
@@ -390,7 +390,7 @@ Accept: application/json
       }
     },
     "DebtorAccount": {
-        "SchemeName": "UK.OB.SortCodeAccountNumber",
+        "SchemeName": "UK.OBIE.SortCodeAccountNumber",
         "Identification": "11280001234567",
         "Name": "Andrea Frost"
       },
@@ -412,7 +412,7 @@ Accept: application/json
         }
       },
       "UltimateDebtor": {
-        "SchemeName": "UK.OB.BICFI",
+        "SchemeName": "UK.OBIE.BICFI",
         "Identification": "2360549017905161589",
         "Name": "Ultimate Debtor",
         "LEI": "8200007YHFDMEODY1965",
@@ -427,7 +427,7 @@ Accept: application/json
         }
       },
       "UltimateCreditor": {
-        "SchemeName": "UK.OB.BICFI",
+        "SchemeName": "UK.OBIE.BICFI",
         "Identification": "2360549017905161589",
         "Name": "Ultimate Creditor",
         "LEI": "60450004FECVJV7YN339",
@@ -546,7 +546,7 @@ Content-Type: application/json
     "StatusReasonDescription":"Waiting for completion of consent authorisation to be completed by user",
   },
   "Debtor":{
-      "SchemeName": "UK.OB.SortCodeAccountNumber",
+      "SchemeName": "UK.OBIE.SortCodeAccountNumber",
       "Identification": "08080021325698",
       "Name": "ACME Inc",
       "SecondaryIdentification": "0002",
@@ -554,7 +554,7 @@ Content-Type: application/json
   },
   "Charges": [{
        "ChargeBearer": "Shared",
-       "Type": "UK.OB.CHAPSOut",
+       "Type": "UK.OBIE.CHAPSOut",
        "Amount"  {
         "Amount": "0.88",
         "Currency": "GBP"
@@ -578,7 +578,7 @@ Content-Type: application/json
       "RateType": "Actual"
     },
     "Creditor": {
-      "SchemeName": "UK.OB.SortCodeAccountNumber",
+      "SchemeName": "UK.OBIE.SortCodeAccountNumber",
         "LEI": "8200007YHFDMEODY8412",
         "PostalAddress": {
         "AddressType": "BIZZ",
@@ -591,7 +591,7 @@ Content-Type: application/json
       }
     },
     "CreditorAccount": {
-      "SchemeName": "UK.OB.SortCodeAccountNumber",
+      "SchemeName": "UK.OBIE.SortCodeAccountNumber",
       "Identification": "08080021325698",
       "Name": "ACME Inc",
       "SecondaryIdentification": "0002",
@@ -602,7 +602,7 @@ Content-Type: application/json
     },
     "CreditorAgent": {  
       "LEI": "IZ9Q00LZEVUKWCQY6X15",
-      "SchemeName": "UK.OB.BICFI",
+      "SchemeName": "UK.OBIE.BICFI",
       "Identification": "80200112344562",
       "Name": "The Credit Agent", 
       "PostalAddress": { 
@@ -615,7 +615,7 @@ Content-Type: application/json
         "Country": "UK"
     },
     "DebtorAccount":{
-      "SchemeName": "UK.OB.SortCodeAccountNumber",
+      "SchemeName": "UK.OBIE.SortCodeAccountNumber",
       "Identification": "08080021325698",
       "Name": "ACME Inc",
       "SecondaryIdentification": "0002",
@@ -680,12 +680,12 @@ Content-Type: application/json
       }
     },
     "DebtorAccount": {
-      "SchemeName": "UK.OB.SortCodeAccountNumber",
+      "SchemeName": "UK.OBIE.SortCodeAccountNumber",
       "Identification": "11280001234567",
       "Name": "Andrea Frost"
     },
     "CreditorAccount": {
-      "SchemeName": "UK.OB.IBAN",
+      "SchemeName": "UK.OBIE.IBAN",
       "Identification": "DE89370400440532013000",
       "Name": "Tom Kirkman"
     },

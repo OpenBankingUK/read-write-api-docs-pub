@@ -295,7 +295,7 @@ Accept: application/json
         "Currency": "GBP"
 	  },
       "DebtorAccount": {
-        "SchemeName": "UK.OB.SortCodeAccountNumber",
+        "SchemeName": "UK.OBIE.SortCodeAccountNumber",
         "Identification": "11280001234567",
         "Name": "Andrea Smith",
         "Proxy": {
@@ -304,7 +304,7 @@ Accept: application/json
         },
       },
       "CreditorAccount": {
-        "SchemeName": "UK.OB.SortCodeAccountNumber",
+        "SchemeName": "UK.OBIE.SortCodeAccountNumber",
         "Identification": "08080021325698",
         "Name": "Bob Clements",
         "SecondaryIdentification": "0002",
@@ -328,7 +328,7 @@ Accept: application/json
         }
       },
       "UltimateDebtor": {
-        "SchemeName": "UK.OB.BICFI",
+        "SchemeName": "UK.OBIE.BICFI",
         "Identification": "2360549017905161589",
         "Name": "Ultimate Debtor",
         "LEI": "8200007YHFDMEODY1965",
@@ -343,7 +343,7 @@ Accept: application/json
         }
       },
       "UltimateCreditor": {
-        "SchemeName": "UK.OB.BICFI",
+        "SchemeName": "UK.OBIE.BICFI",
         "Identification": "2360549017905161589",
         "Name": "Ultimate Creditor",
         "LEI": "60450004FECVJV7YN339",
@@ -453,13 +453,13 @@ Content-Type: application/json
   },
   "Refund": {
     "Account": {
-      "SchemeName": "UK.OB.SortCodeAccountNumber",
+      "SchemeName": "UK.OBIE.SortCodeAccountNumber",
       "Identification": "08080021325677",
       "Name": "NTPC Inc"
     }
   },
   "Debtor":{
-    "SchemeName": "UK.OB.SortCodeAccountNumber",
+    "SchemeName": "UK.OBIE.SortCodeAccountNumber",
     "Identification": "08080021325698",
     "Name": "ACME Inc",
     "SecondaryIdentification": "0002",
@@ -467,7 +467,7 @@ Content-Type: application/json
   },
   "Charges": [{
       "ChargeBearer": "Shared",
-      "Type": "UK.OB.CHAPSOut",
+      "Type": "UK.OBIE.CHAPSOut",
       "Amount"  {
       "Amount": "0.88",
       "Currency": "GBP"
@@ -498,7 +498,7 @@ Content-Type: application/json
         "Currency": "GBP"
 	  },
     "DebtorAccount": {
-      "SchemeName": "UK.OB.SortCodeAccountNumber",
+      "SchemeName": "UK.OBIE.SortCodeAccountNumber",
       "Identification": "11280001234567",
       "Name": "Andrea Smith",
       "SecondaryIdentification": "080801562314789",
@@ -508,7 +508,7 @@ Content-Type: application/json
       }
     },
     "CreditorAccount": {
-      "SchemeName": "UK.OB.SortCodeAccountNumber",
+      "SchemeName": "UK.OBIE.SortCodeAccountNumber",
       "Identification": "08080021325698",
       "Name": "Bob Clements",
       "SecondaryIdentification": "080801562314778",
@@ -518,7 +518,7 @@ Content-Type: application/json
       }
     },
     "UltimateDebtor": {
-      "SchemeName": "UK.OB.BICFI",
+      "SchemeName": "UK.OBIE.BICFI",
       "Identification": "2360549017905161589",
       "Name": "Ultimate Debtor",
       "LEI": "8200007YHFDMEODY1965",
@@ -533,7 +533,7 @@ Content-Type: application/json
       }
     },
     "UltimateCreditor": {
-      "SchemeName": "UK.OB.BICFI",
+      "SchemeName": "UK.OBIE.BICFI",
       "Identification": "2360549017905161589",
       "Name": "Ultimate Creditor",
       "LEI": "60450004FECVJV7YN339",

@@ -374,7 +374,7 @@ Content-Type: application/json
         "AddressLine": "Floor 5, 5 Dawson House",
         "CreditorAgent": {
          "LEI": "IZ9Q00LZEVUKWCQY6X15",
-          "SchemeName": "UK.OB.BICFI",
+          "SchemeName": "UK.OBIE.BICFI",
           "Identification": "80200112344562",
           "Name": "The Credit Agent", 
           "PostalAddress": { 
@@ -388,7 +388,7 @@ Content-Type: application/json
           }
         },
          "DebtorAccount": {
-          "SchemeName": "UK.OB.SortCodeAccountNumber",
+          "SchemeName": "UK.OBIE.SortCodeAccountNumber",
           "Identification": "80200112345784",
           "Name": "Mr Juniper",
           "SecondaryIdentification": "80200112378745",
@@ -398,7 +398,7 @@ Content-Type: application/json
           }
         },
         "CreditorAccount": {
-          "SchemeName": "UK.OB.SortCodeAccountNumber",
+          "SchemeName": "UK.OBIE.SortCodeAccountNumber",
           "Identification": "80200112345678",
           "Name": "Mrs Juniper",
           "SecondaryIdentification": "80200112374165",
@@ -408,7 +408,7 @@ Content-Type: application/json
           }
         },
         "UltimateDebtor": {
-          "SchemeName": "UK.OB.BICFI",
+          "SchemeName": "UK.OBIE.BICFI",
           "Identification": "2360549017905161589",
           "Name": "Ultimate Debtor",
           "LEI": "8200007YHFDMEODY1965",
@@ -423,7 +423,7 @@ Content-Type: application/json
           }
         },
         "UltimateCreditor": {
-          "SchemeName": "UK.OB.BICFI",
+          "SchemeName": "UK.OBIE.BICFI",
           "Identification": "2360549017905161589",
           "Name": "Ultimate Creditor",
           "LEI": "60450004FECVJV7YN339",
@@ -556,7 +556,7 @@ Content-Type: application/json
           }
         ],
         "UltimateDebtor": {
-          "SchemeName": "UK.OB.BICFI",
+          "SchemeName": "UK.OBIE.BICFI",
           "Identification": "2360549017905161589",
           "Name": "Ultimate Debtor",
           "LEI": "8200007YHFDMEODY1965",
@@ -571,7 +571,7 @@ Content-Type: application/json
           }
         },
         "UltimateCreditor": {
-          "SchemeName": "UK.OB.BICFI",
+          "SchemeName": "UK.OBIE.BICFI",
           "Identification": "2360549017905161589",
           "Name": "Ultimate Creditor",
           "LEI": "60450004FECVJV7YN339",
@@ -628,7 +628,7 @@ Content-Type: application/json
           }
         ],
         "UltimateDebtor": {
-          "SchemeName": "UK.OB.BICFI",
+          "SchemeName": "UK.OBIE.BICFI",
           "Identification": "2360549017905161589",
           "Name": "Ultimate Debtor",
           "LEI": "8200007YHFDMEODY1965",
@@ -643,7 +643,7 @@ Content-Type: application/json
           }
         },
         "UltimateCreditor": {
-          "SchemeName": "UK.OB.BICFI",
+          "SchemeName": "UK.OBIE.BICFI",
           "Identification": "2360549017905161589",
           "Name": "Ultimate Creditor",
           "LEI": "60450004FECVJV7YN339",

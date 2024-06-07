@@ -51,7 +51,7 @@ Accept: application/json
       },
       "CurrencyOfTransfer":"USD",
       "CreditorAccount": {
-        "SchemeName": "UK.OB.SortCodeAccountNumber",
+        "SchemeName": "UK.OBIE.SortCodeAccountNumber",
         "Identification": "08080021325698",
         "Name": "ACME Inc",
         "SecondaryIdentification": "0002"
@@ -102,7 +102,7 @@ Content-Type: application/json
 		      },
 			"CurrencyOfTransfer":"USD",
 			"CreditorAccount": {
-				"SchemeName": "UK.OB.SortCodeAccountNumber",
+				"SchemeName": "UK.OBIE.SortCodeAccountNumber",
 				"Identification": "08080021325698",
 				"Name": "ACME Inc",
 				"SecondaryIdentification": "0002"
@@ -172,7 +172,7 @@ Accept: application/json
       },
       "CurrencyOfTransfer":"USD",
       "CreditorAccount": {
-        "SchemeName": "UK.OB.SortCodeAccountNumber",
+        "SchemeName": "UK.OBIE.SortCodeAccountNumber",
         "Identification": "08080021325698",
         "Name": "ACME Inc",
         "SecondaryIdentification": "0002"
@@ -224,7 +224,7 @@ Content-Type: application/json
 		      },
 			"CurrencyOfTransfer":"USD",
 			"CreditorAccount": {
-				"SchemeName": "UK.OB.SortCodeAccountNumber",
+				"SchemeName": "UK.OBIE.SortCodeAccountNumber",
 				"Identification": "08080021325698",
 				"Name": "ACME Inc",
 				"SecondaryIdentification": "0002"
