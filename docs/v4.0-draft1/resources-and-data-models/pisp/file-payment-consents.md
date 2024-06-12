@@ -3,11 +3,11 @@
 - [Overview](#overview)
 - [Endpoints](#endpoints)
   - [POST /file-payment-consents](#post-file-payment-consents)
-    - [StatusCode](#statuscode)
+    - [Status](#Status)
   - [POST /file-payment-consents/{ConsentId}/file](#post-file-payment-consents-consentid-file)
-    - [StatusCode](#statuscode-2)
+    - [Status](#Status-2)
   - [GET /file-payment-consents/{ConsentId}](#get-file-payment-consents-consentid)
-    - [StatusCode](#statuscode-3)
+    - [Status](#Status-3)
   - [GET /file-payment-consents/{ConsentId}/file](#get-file-payment-consents-consentid-file)
   - [State Model](#state-model)
     - [Payment Order Consent](#payment-order-consent)
@@ -60,11 +60,11 @@ The API endpoint allows the PISP to ask an ASPSP to create a new **file-payment-
 * The metadata of the consent must include the FileHash, which is a base64 encoding of a SHA256 hash of the file to be uploaded.
 * The ASPSP creates the **file-payment-consent** resource and responds with a unique ConsentId to refer to the resource.
 
-#### StatusCode
+#### Status
 
-The default StatusCode is "AWUP" immediately after the file-payment-consent has been created.
+The default Status is "AWUP" immediately after the file-payment-consent has been created.
 
-| StatusCode |
+| Status |
 | --- |
 | AWUP |
 
@@ -80,11 +80,11 @@ The API endpoint allows the PISP to upload a file to an ASPSP, against a **file-
 * The file is sent in the HTTP request body.
 * HTTP headers (e.g. Content-Type) are used to describe the file.
 
-#### StatusCode
+#### Status
 
-The default StatusCode is "AWAU" immediately after the file has been uploaded.
+The default Status is "AWAU" immediately after the file has been uploaded.
 
-| StatusCode |
+| Status |
 | --- |
 | AWAU |
 
@@ -92,17 +92,17 @@ The default StatusCode is "AWAU" immediately after the file has been uploaded.
 
 A PISP can optionally retrieve a payment consent resource that they have created to check its status. 
 
-#### StatusCode
+#### Status
 
-Once the PSU authorises the payment-consent resource, the StatusCode of the payment-consent resource will be updated with "AUTH".
+Once the PSU authorises the payment-consent resource, the Status of the payment-consent resource will be updated with "AUTH".
 
-If the PSU rejects the consent or the file-payment-consent has failed some other ASPSP validation, the StatusCode will be set to "RJCT".
+If the PSU rejects the consent or the file-payment-consent has failed some other ASPSP validation, the Status will be set to "RJCT".
 
-Once a file-payment has been successfully created using the file-payment-consent, the StatusCode of the file-payment-consent will be set to "COND".
+Once a file-payment has been successfully created using the file-payment-consent, the Status of the file-payment-consent will be set to "COND".
 
 The available Status codes for the file-payment-consent resource are:
 
-| StatusCode |
+| Status |
 | --- |
 | AUTH |
 | AWAU |
@@ -126,7 +126,7 @@ Refer to [External_Internal_CodeSets](https://github.com/OpenBankingUK/External_
 
 ![File Upload Consent model](./images/PIS_FileUploadConsent.png)
 
-The definitions for the StatusCode:
+The definitions for the Status:
 
 |  |Status |Status Description |
 | --- |--- |--- |
@@ -136,7 +136,7 @@ The definitions for the StatusCode:
 | 4 |AUTH |The consent resource has been successfully authorised. |
 | 5 |COND| The consented action has been successfully completed. This does not reflect the status of the consented action.|
 
-Changes to the StatusCode, such as being rejected, should be captured in `StatusReason`, an array of `StatusReasonCode`, `StatusReasonDescription` and `Path`.  
+Changes to the Status, such as being rejected, should be captured in `StatusReason`, an array of `StatusReasonCode`, `StatusReasonDescription` and `Path`.  
 
 | Field | Description |
 |---|---|
@@ -244,7 +244,7 @@ The file-payment-consent **response** contains the full **original** payload fro
 
 * ConsentId.
 * CreationDateTime the file-payment-consent resource was created.
-* StatusCode, StatusReason and StatusUpdateDateTime of the file-payment-consent resource.
+* Status, StatusReason and StatusUpdateDateTime of the file-payment-consent resource.
 * CutOffDateTime Behaviour is explained in Payment Initiation API Profile, Section - [Payment Restrictions -> CutOffDateTime Behaviour](../../profiles/payment-initiation-api-profile.md#cutoffdatetime-behaviour).
 * Charges array - for the breakdown of applicable ASPSP charges.
 * Post successful PSU Authentication, an ASPSP may provide `Debtor/Name` in the Payment Order Consent Response, even when the Payer didn't provide the Debtor Account via PISP.
@@ -257,7 +257,7 @@ The file-payment-consent **response** contains the full **original** payload fro
 | Data |1..1 |OBWriteFileConsentResponse4/Data | |OBWriteDataFileConsentResponse4 | | |
 | ConsentId |1..1 |OBWriteFileConsentResponse4/Data/ConsentId |OB: Unique identification as assigned by the ASPSP to uniquely identify the consent resource. |Max128Text | | |
 | CreationDateTime |1..1 |OBWriteFileConsentResponse4/Data/CreationDateTime |Date and time at which the resource was created. |ISODateTime | | |
-| StatusCode |1..1 |OBWriteFileConsentResponse4/Data/StatusCode |Specifies the status of consent resource in code form. |ExternalStatusReason1Code |AUTH AWAU RJCT COND |
+| Status |1..1 |OBWriteFileConsentResponse4/Data/Status |Specifies the status of consent resource in code form. |ExternalStatusReason1Code |AUTH AWAU RJCT COND |
 | StatusUpdateDateTime |1..1 |OBWriteFileConsentResponse4/Data/StatusUpdateDateTime |Date and time at which the consent resource status was updated. |ISODateTime | | |
 | StatusReason |0..* |OBWriteFileConsentResponse4/Data/StatusReason |An array of StatusReasonCode | OBStatusReason |
 | StatusReasonCode |0..1 |OBWriteFileConsentResponse4/Data/StatusReason/StatusReasonCode |Specifies the status reason in a code form. |For a full list of enumeration values refer to `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_internal_CodeSets)| OBInternalPermissions1Code |
@@ -379,7 +379,7 @@ Content-Type: application/json
 {
   "Data": {
     "ConsentId" : "512345",
-    "StatusCode": "AWUP",
+    "Status": "AWUP",
     "CreationDateTime": "2018-06-05T15:15:13+00:00",
     "StatusUpdateDateTime": "2018-06-05T15:15:13+00:00",
 	"CutOffDateTime": "2018-07-05T15:15:22+00:00",

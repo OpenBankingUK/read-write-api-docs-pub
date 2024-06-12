@@ -3,9 +3,9 @@
 - [Overview](#overview)
 - [Endpoints](#endpoints)
   - [POST /international-payment-consents](#post-international-payment-consents)
-    - [StatusCode](#statuscode)
+    - [Status](#Status)
 - [GET /international-payment-consents/{ConsentId}](#get-international-payment-consents-consentid)
-    - [StatusCode](#statuscode-2)
+    - [Status](#Status-2)
   - [GET /international-payment-consents/{ConsentId}/funds-confirmation](#get-international-payment-consents-consentid-funds-confirmation)
   - [State Model](#state-model)
     - [Payment Order Consent](#payment-order-consent)
@@ -65,11 +65,11 @@ The API endpoint allows the PISP to ask an ASPSP to create a new **international
 * The endpoint allows the PISP to send a copy of the consent (between PSU and PISP) to the ASPSP for the PSU to authorise.
 * The ASPSP creates the **international-payment-consent** resource and responds with a unique ConsentId to refer to the resource.
 
-#### StatusCode
+#### Status
 
-The default StatusCode is "AWAU" immediately after the international-payment-consent has been created.
+The default Status is "AWAU" immediately after the international-payment-consent has been created.
 
-| StatusCode |
+| Status |
 | --- |
 | AWAU |
 
@@ -77,17 +77,17 @@ The default StatusCode is "AWAU" immediately after the international-payment-con
 
 A PISP can optionally retrieve a international-payment-consent resource that they have created to check its status.
 
-#### StatusCode
+#### Status
 
-Once the PSU authorises the international-payment-consent resource, the StatusCode of the international-payment-consent resource will be updated with "AUTH".
+Once the PSU authorises the international-payment-consent resource, the Status of the international-payment-consent resource will be updated with "AUTH".
 
-If the PSU rejects the consent or the international-payment-consent has failed some other ASPSP validation, the StatusCode will be set to "RJCT".
+If the PSU rejects the consent or the international-payment-consent has failed some other ASPSP validation, the Status will be set to "RJCT".
 
-Once an international-payment has been successfully created using the international-payment-consent, the StatusCode of the international-payment-consent will be set to "COND".
+Once an international-payment has been successfully created using the international-payment-consent, the Status of the international-payment-consent will be set to "COND".
 
 The available StatusCodes for the international-payment-consent resource are:
 
-| StatusCode |
+| Status |
 | --- |
 | AWAU |
 | RJCT |
@@ -111,7 +111,7 @@ The state model for the international-payment-consent resource follows the gener
 
 ![State model](./images/PO_Consent.png)
 
-The definitions for the StatusCode:
+The definitions for the Status:
 
 | | Status | Status Description |
 | --- |------ |------------------ |
@@ -120,7 +120,7 @@ The definitions for the StatusCode:
 | 3 |AUTH |The consent resource has been successfully authorised. |
 | 4 |COND |The consented action has been successfully completed. This does not reflect the status of the consented action. |
 
-Changes to the StatusCode, such as being rejected, should be captured in `StatusReason`, an array of `StatusReasonCode`, `StatusReasonDescription` and `Path`.  
+Changes to the Status, such as being rejected, should be captured in `StatusReason`, an array of `StatusReasonCode`, `StatusReasonDescription` and `Path`.  
 
 | Field | Description |
 |---|---|
@@ -352,7 +352,7 @@ Exchange rate behaviour:
 | Data |1..1 |OBWriteInternationalConsentResponse6/Data | |OBWriteDataInternationalConsentResponse6 | | |
 | ConsentId |1..1 |OBWriteInternationalConsentResponse6/Data/ConsentId |OB: Unique identification as assigned by the ASPSP to uniquely identify the consent resource. |Max128Text | | |
 | CreationDateTime |1..1 |OBWriteInternationalConsentResponse6/Data/CreationDateTime |Date and time at which the resource was created. |ISODateTime | | |
-| StatusCode |1..1 |OBWriteInternationalConsentResponse6/Data/StatusCode |Specifies the status of consent resource in code form. |ExternalStatusReason1Code |AUTH AWAU RJCT COND |
+| Status |1..1 |OBWriteInternationalConsentResponse6/Data/Status |Specifies the status of consent resource in code form. |ExternalStatusReason1Code |AUTH AWAU RJCT COND |
 | StatusReason |0..* |OBWriteInternationalConsentResponse6/Data/StatusReason |An array of StatusReasonCode| OBStatusReason |
 | StatusReasonCode |0..1 |OBWriteInternationalConsentResponse6/Data/StatusReason/StatusReasonCode |Specifies the status reason in a code form. |For a full list of enumeration values refer to `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_internal_CodeSets)| OBInternalPermissions1Code |
 | StatusReasonDescription |0..1 |OBWriteInternationalConsentResponse6/Data/StatusReason/StatusReasonDescription |Description supporting the StatusReasonCode. | Max500Text|
@@ -604,7 +604,7 @@ Content-Type: application/json
 {
  "Data": {
   "ConsentId": "58923",
-  "StatusCode": "AWAU",
+  "Status": "AWAU",
   "StatusReason": {
     "StatusReasonCode": "U036", 
     "StatusReasonDescription":"Waiting for completion of consent authorisation to be completed by user",

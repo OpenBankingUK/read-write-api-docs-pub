@@ -4,10 +4,10 @@
 - [Endpoints](#endpoints)
   - [POST /file-payments](#post-file-payments)
   - [GET /file-payments/{FilePaymentId}](#get-file-payments-filepaymentid)
-    - [StatusCode](#statuscode)
+    - [Status](#Status)
   - [GET /file-payments/{FilePaymentId}/report-file](#get-file-payments-filepaymentid-report-file)
   - [GET /file-payments/{FilePaymentId}/payment-details](#get-file-payments-filepaymentid-payment-details)
-    - [StatusCode](#statuscode-2)
+    - [Status](#Status-2)
   - [State Model](#state-model)
     - [Payment Order](#payment-order)
     - [Multiple Authorisation](#multiple-authorisation)
@@ -51,11 +51,11 @@ Once the file-payment-consent has been authorised by the PSU, the PISP can proce
 
 - This is done by making a POST request to the **file-payments** endpoint.
 
-#### StatusCode
+#### Status
 
 The file-payments resource must have one of the following initial StatusCodes:
 
-| StatusCode |
+| Status |
 | --- |
 | RCVD |
 | RJCT |
@@ -64,11 +64,11 @@ The file-payments resource must have one of the following initial StatusCodes:
 
 A PISP can retrieve the file-payment to check its status.
 
-#### StatusCode
+#### Status
 
 The file-payments resource must have one of the following initial StatusCodes:
 
-| StatusCode |
+| Status |
 | --- |
 | RCVD |
 | RJCT |
@@ -86,11 +86,11 @@ The API endpoint allows the PISP to download a payment report file from an ASPSP
 
 A PISP can retrieve the Details of the underlying payment transaction(s) via this endpoint. This resource allows ASPSPs to return richer list of Payment Statuses, and if available payment scheme related statuses.
 
-#### StatusCode
+#### Status
 
 The file-payments - payment-details must have one of the following ExternalPaymentGroupStatus1Code code-set enumerations (for more information see `ExternalPaymentGroupStatus1Code` [here](https://github.com/OpenBankingUK/External_internal_CodeSets)) :
 
-| StatusCode |
+| Status |
 | ------ |
 | RCVD |
 | PDNG |
@@ -124,14 +124,14 @@ __Payment order state model key:__
 ##### Multiple Authorisation
 If the payment-order requires multiple authorisations the status of the multiple authorisations will be updated in the MultiAuthorisation object.
 
-Once the payment is RCVD, the file-payments StatusCode must be set to PATC and the MultiAuthorisation object status updated with the AWAF status. Once all authorisations have been successfully completed the MultiAuthorisation status must be set to AUTH and file-payments StatusCode updated to ACSP if any intermediate status are not supported.
+Once the payment is RCVD, the file-payments Status must be set to PATC and the MultiAuthorisation object status updated with the AWAF status. Once all authorisations have been successfully completed the MultiAuthorisation status must be set to AUTH and file-payments Status updated to ACSP if any intermediate status are not supported.
 
-Any rejections in the multiple authorisation process should result in the MultiAuthorisation status and StatusCode being set to RJCT. 
+Any rejections in the multiple authorisation process should result in the MultiAuthorisation status and Status being set to RJCT. 
 
 
 ![Multi Auth](./images/PO_MultiAuthFlow.png)
 
-|  | StatusCode |Status Description |
+|  | Status |Status Description |
 | ---| ------ |------------------ |
 | 1 |AWAU |The payment-order resource is awaiting further authorisation. |
 | 2 |RJCT |The payment-order resource has been rejected by an authoriser. |
@@ -194,7 +194,7 @@ The file-payment **response** object contains the:
 * FilePaymentId.
 * ConsentId.
 * CreationDateTime the file-payment resource was created.
-* StatusCode and StatusUpdateDateTime of the file-payment resource.
+* Status and StatusUpdateDateTime of the file-payment resource.
 * Charges array is used for the breakdown of applicable ASPSP charges.
 * The Initiation object from the file-payment-consent.
 * The MultiAuthorisation object if the file-payment resource requires multiple authorisations.
@@ -209,7 +209,7 @@ The file-payment **response** object contains the:
 | FilePaymentId |1..1 |OBWriteFileResponse3/Data/FilePaymentId |OB: Unique identification as assigned by the ASPSP to uniquely identify the file payment resource. |Max40Text | | |
 | ConsentId |1..1 |OBWriteFileResponse3/Data/ConsentId |OB: Unique identification as assigned by the ASPSP to uniquely identify the consent resource. |Max128Text | | |
 | CreationDateTime |1..1 |OBWriteFileResponse3/Data/CreationDateTime |Date and time at which the resource was created. |ISODateTime | | |
-| StatusCode |1..1 |OBWriteFileResponse3/Data/StatusCode |Specifies the status of the payment order resource. |OBExternalStatus1Code |RCVD RJCT ASCP | |
+| Status |1..1 |OBWriteFileResponse3/Data/Status |Specifies the status of the payment order resource. |OBExternalStatus1Code |RCVD RJCT ASCP | |
 | StatusUpdateDateTime |1..1 |OBWriteFileResponse3/Data/StatusUpdateDateTime |Date and time at which the resource status was updated. |ISODateTime | | |
 | StatusReason |0..* |OBWriteFileResponse3/Data/StatusReason |Specifies the status reason. | OBStatusReason |
 | StatusReasonCode |0..1 |OBWriteFileResponse3/Data/StatusReason/StatusReasonCode |Specifies the status reason in a code form. |For a full list of enumeration values refer to `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_internal_CodeSets)| OBInternalPermissions1Code |
@@ -336,7 +336,7 @@ Content-Type: application/json
   "Data": {
     "ConsentId" : "512345",
 	  "FilePaymentId":"FP1-512345",
-    "StatusCode": "RCVD",
+    "Status": "RCVD",
     "CreationDateTime": "2018-06-05T15:15:13+00:00",
     "StatusUpdateDateTime": "2018-06-05T15:15:13+00:00",
     "StatusReason": { 
@@ -358,7 +358,7 @@ Content-Type: application/json
         "SecondaryIdentification": "0002",	
 	  },
      "MultiAuthorisation": { 
-      "StatusCode": "AUTH", 
+      "Status": "AUTH", 
       "NumberRequired": 2,
       "NumberReceived": 2,
       "LastUpdateDateTime": "2017-06-05T15:15:13+00:00",

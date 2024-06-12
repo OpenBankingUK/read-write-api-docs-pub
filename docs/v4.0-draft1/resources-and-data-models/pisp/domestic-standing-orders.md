@@ -3,11 +3,11 @@
 - [Overview](#overview)
 - [Endpoints](#endpoints)
   - [POST /domestic-standing-orders](#post-domestic-standing-orders)
-    - [StatusCode](#statuscode)
+    - [Status](#Status)
   - [GET /domestic-standing-orders/{DomesticStandingOrderId}](#get-domestic-standing-orders-domesticstandingorderid)
-    - [StatusCode](#statuscode-2)
+    - [Status](#Status-2)
   - [GET /domestic-standing-orders/{DomesticStandingOrderId}/payment-details](#get-domestic-standing-orders-domesticstandingorderid-payment-details)
-    - [StatusCode](#statuscode-3)
+    - [Status](#Status-3)
   - [State Model](#state-model)
     - [Payment Order](#payment-order)
       - [Multiple Authorisation](#multiple-authorisation)
@@ -53,13 +53,13 @@ Once the domestic-standing-order-consent has been authorised by the PSU, the PIS
 * The PISP **must** ensure that the Initiation and Risk sections of the domestic-standing-order match the corresponding Initiation and Risk sections of the domestic-standing-order-consent resource. If the two do not match, the ASPSP **must not** process the request and **must** respond with a 400 (Bad Request).
 * Any operations on the domestic-standing-order resource will not result in a Status change for the domestic-standing-order resource.
 
-#### StatusCode
+#### Status
 
-A domestic-standing-order can only be created if its corresponding domestic-standing-order-consent resource has the StatusCode of "AUTH". 
+A domestic-standing-order can only be created if its corresponding domestic-standing-order-consent resource has the Status of "AUTH". 
 
 The domestic-standing-order resource that is created successfully must have one of the following initial StatusCodes:
 
-| StatusCode |
+| Status |
 | --- |
 | RCVD |
 | RJCT |
@@ -68,11 +68,11 @@ The domestic-standing-order resource that is created successfully must have one 
 
 A PISP can retrieve the domestic-standing-order to check its status.
 
-#### StatusCode
+#### Status
 
 The domestic-standing-order resource must have one of the following StatusCodes:
 
-| StatusCode |
+| Status |
 | --- |
 | RCVD |
 | CANC |
@@ -89,11 +89,11 @@ For full flow refer to state 1 diagram bellow.
 
 A PISP can retrieve the Details of the underlying payment transaction via this endpoint. This resource allows ASPSPs to return richer list of Payment Statuses, and if available payment scheme related statuses.
 
-#### StatusCode
+#### Status
 
 The domestic-standing-orders - payment-details must have one of the following ExternalPaymentTransactionStatus1Code code-set enumerations (for more information see `ExternalPaymentTransactionStatus1Code` [here](https://github.com/OpenBankingUK/External_internal_CodeSets)) :
 
-| StatusCode |
+| Status |
 | ------ |
 | INCO |
 | CANC |
@@ -136,9 +136,9 @@ __Payment order state model key:__
 ##### Multiple Authorisation
 If the payment-order requires multiple authorisations the status of the multiple authorisations will be updated in the MultiAuthorisation object.
 
-Once the payment is RCVD, the domestic-standing-order StatusCode must be set to PATC and the MultiAuthorisation object status updated with the AWAF status. Once all authorisations have been successfully completed the MultiAuthorisation status must be set to AUTH and domestic-standing-order StatusCode updated to ACSP if any intermediate status are not supported.
+Once the payment is RCVD, the domestic-standing-order Status must be set to PATC and the MultiAuthorisation object status updated with the AWAF status. Once all authorisations have been successfully completed the MultiAuthorisation status must be set to AUTH and domestic-standing-order Status updated to ACSP if any intermediate status are not supported.
 
-Any rejections in the multiple authorisation process should result in the MultiAuthorisation status and StatusCode being set to RJCT. 
+Any rejections in the multiple authorisation process should result in the MultiAuthorisation status and Status being set to RJCT. 
 
 
 ![Multi Auth](./images/PO_MultiAuthFlow.png)
@@ -209,7 +209,7 @@ The domestic-standing-order **response** object contains the:
 * DomesticStandingOrderId.
 * ConsentId.
 * CreationDateTime the domestic-standing-order resource was created.
-* StatusCode and StatusUpdateDateTime of the domestic-standing-order resource.
+* Status and StatusUpdateDateTime of the domestic-standing-order resource.
 * Refund account details, if requested by PISP as part of the domestic-payment-consents resource.
 * Charges array - for the breakdown of applicable ASPSP charges.
 * The Initiation object from the domestic-standing-order-consent.
@@ -225,7 +225,7 @@ The domestic-standing-order **response** object contains the:
 | DomesticStandingOrderId |1..1 |OBWriteDomesticStandingOrderResponse6/Data/DomesticStandingOrderId |OB: Unique identification as assigned by the ASPSP to uniquely identify the domestic standing order resource. |Max40Text | | |
 | ConsentId |1..1 |OBWriteDomesticStandingOrderResponse6/Data/ConsentId |OB: Unique identification as assigned by the ASPSP to uniquely identify the consent resource. |Max128Text | | |
 | CreationDateTime |1..1 |OBWriteDomesticStandingOrderResponse6/Data/CreationDateTime |Date and time at which the resource was created. |ISODateTime | | |
-| StatusCode |1..1 |OBWriteDomesticStandingOrderResponse6/Data/StatusCode |Specifies the status of the payment order resource. |OBExternalStatus1Code |RCVD RJCT ASCP CANC | |
+| Status |1..1 |OBWriteDomesticStandingOrderResponse6/Data/Status |Specifies the status of the payment order resource. |OBExternalStatus1Code |RCVD RJCT ASCP CANC | |
 | StatusUpdateDateTime |1..1 |OBWriteDomesticStandingOrderResponse6/Data/StatusUpdateDateTime |Date and time at which the resource status was updated. |ISODateTime | | |
 | StatusReason |0..* |OBWriteDomesticStandingOrderResponse6/Data/StatusReason |An array of StatusReasonCode | OBStatusReason |
 | StatusReasonCode |0..1 |OBWriteDomesticStandingOrderResponse6/Data/StatusReason/StatusReasonCode |Specifies the status reason in a code form. |For a full list of enumeration values refer to `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_internal_CodeSets)| OBInternalPermissions1Code |
@@ -446,7 +446,7 @@ Content-Type: application/json
 	"DomesticStandingOrderId": "SO-SOC-100",
 	"ConsentId": "SOC-100",
 	"CreationDateTime": "1976-01-01T06:06:06+00:00",
-	"StatusCode": "ASCP",
+	"Status": "ASCP",
   "StatusReason":{
     "StatusReasonCode": "U30",
     "Description": "	Payment order successfully received"
@@ -474,7 +474,7 @@ Content-Type: application/json
     },
   }],
   "MultiAuthorisation": { 
-      "StatusCode": "AUTH", 
+      "Status": "AUTH", 
       "NumberRequired": 2,
       "NumberReceived": 2,
       "LastUpdateDateTime": "2017-06-05T15:15:13+00:00",

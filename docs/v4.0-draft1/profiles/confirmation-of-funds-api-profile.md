@@ -357,7 +357,7 @@ The funds-confirmation-consent resource may have one of the following status cod
 
 The funds-confirmation-consent resource is a long lived consent. A funds-confirmation-consent can be re-authenticated if:
 
-- the funds-confirmation-consent resource has a StatusCode of `AUTH` and
+- the funds-confirmation-consent resource has a Status of `AUTH` and
 - The `ExpirationDateTime`, if specified, has not elapsed
 
 ### Consent Revocation

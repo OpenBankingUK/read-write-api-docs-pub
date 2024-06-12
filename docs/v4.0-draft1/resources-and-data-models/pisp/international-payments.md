@@ -3,11 +3,11 @@
 - [Overview](#overview)
 - [Endpoints](#endpoints)
   - [POST /international-payments](#post-international-payments)
-    - [StatusCode](#statuscode)
+    - [Status](#Status)
   - [GET /international-payments/{InternationalPaymentId}](#get-international-payments-internationalpaymentid)
-    - [StatusCode](#statuscode-2)
+    - [Status](#Status-2)
   - [GET /international-payments/{InternationalPaymentId}/payment-details](#get-international-payments-internationalpaymentid-payment-details)
-    - [StatusCode](#statuscode-3)
+    - [Status](#Status-3)
   - [State Model](#state-model)
     - [Payment Order](#payment-order)
       - [Multiple Authorisation](#multiple-authorisation)
@@ -51,13 +51,13 @@ Once the international-payment-consent has been authorised by the PSU, the PISP 
 * The PISP **must** ensure that the Initiation and Risk sections of the international-payment match the corresponding Initiation and Risk sections of the international-payment-consent resource. If the two do not match, the ASPSP **must not** process the request and **must** respond with a 400 (Bad Request).
 * Any operations on the international-payment resource will not result in a Status change for the international-payment resource.
 
-#### StatusCode
+#### Status
 
-An international-payment can only be created if its corresponding international-payment-consent resource has the StatusCode of "AUTH". 
+An international-payment can only be created if its corresponding international-payment-consent resource has the Status of "AUTH". 
 
-The international-payment resource that is created successfully must have one of the following initial StatusCode code-set enumerations:
+The international-payment resource that is created successfully must have one of the following initial Status code-set enumerations:
 
-| StatusCode |
+| Status |
 | ------ |
 | RCVD |
 | RJCT |
@@ -66,11 +66,11 @@ The international-payment resource that is created successfully must have one of
 
 A PISP can retrieve the international-payment to check its status.
 
-#### StatusCode
+#### Status
 
-The international-payment resource must have one of the following StatusCode code-set enumerations:
+The international-payment resource must have one of the following Status code-set enumerations:
 
-| StatusCode |
+| Status |
 | ------ |
 | RCVD |
 | PDNG |
@@ -90,11 +90,11 @@ The international-payment resource must have one of the following StatusCode cod
 
 A PISP can retrieve the Details of the underlying payment transaction via this endpoint. This resource allows ASPSPs to return richer list of Payment Statuses, and if available payment scheme related statuses.
 
-#### StatusCode
+#### Status
 
 The international-payments - payment-details must have one of the following PaymentStatusCode code-set enumerations:
 
-| StatusCode |
+| Status |
 | ------ |
 | RCVD |
 | PDNG |
@@ -131,15 +131,15 @@ __Payment order state model key:__
 ##### Multiple Authorisation
 If the payment-order requires multiple authorisations the status of the multiple authorisations will be updated in the MultiAuthorisation object.
 
-Once the payment is RCVD, the international-payment StatusCode must be set to PATC and the MultiAuthorisation object status updated with the AWAF status. Once all authorisations have been successfully completed the MultiAuthorisation status must be set to AUTH and international-payment StatusCode updated to ACSP if any intermediate status are not supported.
+Once the payment is RCVD, the international-payment Status must be set to PATC and the MultiAuthorisation object status updated with the AWAF status. Once all authorisations have been successfully completed the MultiAuthorisation status must be set to AUTH and international-payment Status updated to ACSP if any intermediate status are not supported.
 
-Any rejections in the multiple authorisation process should result in the MultiAuthorisation status and StatusCode being set to RJCT. 
+Any rejections in the multiple authorisation process should result in the MultiAuthorisation status and Status being set to RJCT. 
 
 
 ![Multi Auth](./images/PO_MultiAuthFlow.png)
 
 
-The definitions for the StatusCode:
+The definitions for the Status:
 
 | |Status |Status Description |
 | --- |------ |------------------ |
@@ -211,7 +211,7 @@ The international-payment **response** object contains the:
 * InternationalPaymentId.
 * ConsentId.
 * CreationDateTime of the international-payment resource.
-* StatusCode and StatusUpdateDateTime of the international-payment resource.
+* Status and StatusUpdateDateTime of the international-payment resource.
 * ExpectedExecutionDateTime for the international-payment resource.
 * ExpectedSettlementDateTime for the international-payment resource.
 * Refund account details, if requested by PISP as part of the international-payment-consents resource.
@@ -229,7 +229,7 @@ The international-payment **response** object contains the:
 | InternationalPaymentId |1..1 |OBWriteInternationalResponse5/Data/InternationalPaymentId |OB: Unique identification as assigned by the ASPSP to uniquely identify the international payment resource. |Max40Text | | |
 | ConsentId |1..1 |OBWriteInternationalResponse5/Data/ConsentId |OB: Unique identification as assigned by the ASPSP to uniquely identify the consent resource. |Max128Text | | |
 | CreationDateTime |1..1 |OBWriteInternationalResponse5/Data/CreationDateTime |Date and time at which the resource was created. |ISODateTime | | |
-| StatusCode |1..1 |OBWriteInternationalResponse5/Data/StatusCode |Specifies the status of the payment information group. |OBTransactionIndividualStatus1Code |PDNG ACTC PATC ACCP ACFC ACSP ACWC ACSC ACWP ACCC BLCK RJCT | |
+| Status |1..1 |OBWriteInternationalResponse5/Data/Status |Specifies the status of the payment information group. |OBTransactionIndividualStatus1Code |PDNG ACTC PATC ACCP ACFC ACSP ACWC ACSC ACWP ACCC BLCK RJCT | |
 | StatusUpdateDateTime |1..1 |OBWriteInternationalResponse5/Data/StatusUpdateDateTime |Date and time at which the resource status was updated. |ISODateTime | | |
 | StatusReason |0..* |OBWriteInternationalResponse5/Data/StatusReason |Specifies the status reason. | OBStatusReason |
 | StatusReasonCode |0..1 |OBWriteInternationalResponse5/Data/StatusReason/StatusReasonCode |Specifies the status reason in a code form. |For a full list of enumeration values refer to `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_internal_CodeSets)| OBInternalPermissions1Code |

@@ -213,7 +213,7 @@ Content-Type: application/json
   "Data": {
     "ConsentId": "fe615446-e53a-45ed-954c-ae5d1f97a93b",
     "CreationDateTime": "2017-06-05T15:15:15+00:00",
-    "StatusCode": "AUTH",
+    "Status": "AUTH",
     "StatusReason": {
       "StatusReasonCode": "U038", 
       "StatusReasonDescription":"Consent consumed successfully",
@@ -422,7 +422,7 @@ Content-Type: application/json
   "Data": {
     "ConsentId": "fe615446-e53a-45ed-954c-ae5d1f97a93b",
     "CreationDateTime": "2017-06-05T15:15:15+00:00",
-    "StatusCode": "AUTH",
+    "Status": "AUTH",
     "StatusUpdateDateTime": "2017-06-05T15:15:15+05:00",
     "ReadRefundAccount": "Yes",
     "StatusReason": {
@@ -857,7 +857,7 @@ Content-Type: application/json
     "ConsentId": "fe615446-e53a-45ed-954c-ae5d1f97a93b",
     "CreationDateTime": "2017-06-05T15:15:15+00:00",
     "DomesticVRPId": "OU90210",
-    "StatusCode": "PDNG",
+    "Status": "PDNG",
     "StatusReason": {
       "StatusReasonCode": "83",
       "StatusReasonDescription":"Pending completion next working day",
@@ -1236,7 +1236,7 @@ Content-Type: application/json
   "Data": {
     "ConsentId": "fe615446-e53a-45ed-954c-ae5d1f97a93b",
     "CreationDateTime": "2017-06-05T15:15:15+00:00",
-    "StatusCode": "AWAU",
+    "Status": "AWAU",
     "StatusReason": {
       "StatusReasonCode": "U031", 
       "StatusReasonDescription":"All checks yet to start",
@@ -1440,7 +1440,7 @@ Content-Type: application/json
   "Data": {
     "ConsentId": "fe615446-e53a-45ed-954c-ae5d1f97a93b",
     "CreationDateTime": "2017-06-05T15:15:15+00:00",
-    "StatusCode": "AUTH",
+    "Status": "AUTH",
     "StatusUpdateDateTime": "2017-06-05T15:15:15+05:00",
     "ReadRefundAccount": "Yes",
 
