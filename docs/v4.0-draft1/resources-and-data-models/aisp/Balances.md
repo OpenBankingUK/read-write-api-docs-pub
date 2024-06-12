@@ -172,7 +172,11 @@ Content-Type: application/json
         "Type": "ITBD",
         "DateTime": "2017-05-02T14:22:09+00:00"
       }
-    ]
+    ],
+    "TotalValue": {
+      "Amount": "720.39",
+      "Currency": "GBP"
+    },
   },
   "Links": {
     "Self": "https://api.alphabank.com/open-banking/v3.1/aisp/balances/"
@@ -246,7 +250,11 @@ Content-Type: application/json
           "Type": "Pre-Agreed"
         }
       ]
-    }
+    },
+    "TotalValue": {
+      "Amount": "720.39",
+      "Currency": "GBP"
+    },
   },
   "Links": {
     "Self": "https://api.alphabank.com/open-banking/v3.1/aisp/accounts/22289/balances/"
@@ -320,7 +328,11 @@ Content-Type: application/json
           "Type": "Temporary"
         }
       ]
-    }
+    },
+    "TotalValue": {
+      "Amount": "720.39",
+      "Currency": "GBP"
+    },
   },
   "Links": {
     "Self": "https://api.alphabank.com/open-banking/v3.1/aisp/accounts/22289/balances/"
@@ -394,7 +406,11 @@ Content-Type: application/json
           "Type": "Pre-Agreed"
         }
       ]
-    }
+    },
+    "TotalValue": {
+      "Amount": "720.39",
+      "Currency": "GBP"
+    },
   },
   "Links": {
     "Self": "https://api.alphabank.com/open-banking/v3.1/aisp/accounts/22289/balances/"

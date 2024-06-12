@@ -387,6 +387,21 @@ Content-Type: application/json
             "Country": "UK"
           }
         },
+        "DebtorAgent": {
+         "LEI": "IZ9Q00LZEVUKWCQY8i14",
+          "SchemeName": "UK.OBIE.BICFI",
+          "Identification": "8020011234487",
+          "Name": "The Debtor Agent", 
+          "PostalAddress": { 
+            "AddressType": "BIZZ",
+            "StreetName": "Bank Street",
+            "BuildingNumber": "11",
+            "Floor": "6",
+            "PostCode": "Z78 4TY",
+            "TownName": "London",
+            "Country": "UK"
+          }
+        },
          "DebtorAccount": {
           "SchemeName": "UK.OBIE.SortCodeAccountNumber",
           "Identification": "80200112345784",
@@ -523,6 +538,10 @@ Content-Type: application/json
           "Amount": "10.00",
           "Currency": "GBP"
         },
+         "ChargeAmount": {
+          "Amount": "0.01",
+          "Currency": "GBP"
+        },
         "CreditDebitIndicator": "Credit",
         "Status": "BOOK",
         "BookingDateTime": "2017-04-05T10:43:07+00:00",
@@ -544,6 +563,36 @@ Content-Type: application/json
           "CreditDebitIndicator": "Credit",
           "Type": "ITBD"
         },
+        "CreditorAgent": {
+         "LEI": "IZ9Q00LZEVUKWCQY6X15",
+          "SchemeName": "UK.OBIE.BICFI",
+          "Identification": "80200112344562",
+          "Name": "The Credit Agent", 
+          "PostalAddress": { 
+            "AddressType": "BIZZ",
+            "StreetName": "Bank Street",
+            "BuildingNumber": "11",
+            "Floor": "6",
+            "PostCode": "Z78 4TY",
+            "TownName": "London",
+            "Country": "UK"
+          }
+        },
+        "DebtorAgent": {
+         "LEI": "IZ9Q00LZEVUKWCQY8i14",
+          "SchemeName": "UK.OBIE.BICFI",
+          "Identification": "8020011234487",
+          "Name": "The Debtor Agent", 
+          "PostalAddress": { 
+            "AddressType": "BIZZ",
+            "StreetName": "Bank Street",
+            "BuildingNumber": "11",
+            "Floor": "6",
+            "PostCode": "Z78 4TY",
+            "TownName": "London",
+            "Country": "UK"
+          }
+        },
         "ExtendedProprietaryBankTransactionCodes": [{
           "Code": "Transfer 2",
           "Issuer": "AlphaBank",
@@ -555,6 +604,30 @@ Content-Type: application/json
           "Description": "SWIFT View"
           }
         ],
+        "MerchantDetails": {
+          "MerchantName": "Merchant's Name",
+          "MerchantCategoryCode": "5874"
+        },
+         "DebtorAccount": {
+          "SchemeName": "UK.OBIE.SortCodeAccountNumber",
+          "Identification": "80200112345784",
+          "Name": "Mr Juniper",
+          "SecondaryIdentification": "80200112378745",
+          "Proxy": {
+            "Identification": "2360549017904577",
+            "Code": "TELE"
+          }
+        },
+        "CreditorAccount": {
+          "SchemeName": "UK.OBIE.SortCodeAccountNumber",
+          "Identification": "80200112345678",
+          "Name": "Mrs Juniper",
+          "SecondaryIdentification": "80200112374165",
+          "Proxy": {
+            "Identification": "2360549017905188",
+            "Code": "TELE"
+          }
+        },
         "UltimateDebtor": {
           "SchemeName": "UK.OBIE.BICFI",
           "Identification": "2360549017905161589",
@@ -569,6 +642,16 @@ Content-Type: application/json
             "TownName": "London",
             "Country": "UK"
           }
+        },
+        "CardInstrument": {
+          "CardSchemeName": "	VISA", 
+          "AuthorisationType": "Contactless",
+          "Name": "Mr Juniper"
+        },
+        "CurrencyExchange": {
+          "SourceCurrency": "GBP", 
+          "TargetCurrency": "GBP", 
+          "UnitCurrency": "GBP"
         },
         "UltimateCreditor": {
           "SchemeName": "UK.OBIE.BICFI",

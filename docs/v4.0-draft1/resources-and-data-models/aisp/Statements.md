@@ -299,6 +299,10 @@ Content-Type: application/json
         "Currency": "GBP"
       },
      }],
+     "StatementValue" : {
+      "Type": "UK.OBIE.AirMilesPoints",
+      "Value": 100         
+     },
      "StatementFee": [{ 
       "Description": "International usage charge",
       "Type": "UK.OBIE.ForeignTransaction",
@@ -325,7 +329,7 @@ Content-Type: application/json
      }],
      "StatementRate": [{ 
         "Rate": 0.229,
-        "UK.OBIE.MonthlyPurchase"
+        "Type": "UK.OBIE.MonthlyPurchase"
      }],
     },
     {
@@ -410,7 +414,23 @@ Content-Type: application/json
           "Currency": "GBP"
           },
       }],
-       "StatementFee": [{ 
+      "StatementValue" : {
+      "Type": "UK.OBIE.AirMilesPoints",
+      "Value": 100         
+     },
+      "StatementInterest": [{
+        "Description": "Interest occurred over statement duration",
+        "Type": "UK.OBIE.Total", 
+        "Rate": 0.229,
+        "CreditDebitIndicator": "Credit",        
+        "RateType": "	UK.OBIE.FixedRate",
+        "Frequency": "UK.OBIE.StatementMonthly",
+        "Amount": {
+          "Amount": "20.25",
+          "Currency": "GBP"
+        }
+      }],
+      "StatementFee": [{ 
           "Description": "International usage charge",
           "Type": "UK.OBIE.ForeignTransaction",
           "Rate": 0.229,
@@ -424,7 +444,7 @@ Content-Type: application/json
       }],
       "StatementRate": [{ 
         "Rate": 0.229,
-        "UK.OBIE.MonthlyPurchase"
+        "Type": "UK.OBIE.MonthlyPurchase"
       }],
       "StatementDescription": ["August 2023 Statement", "One Free Uber Ride"],
       "StatementAmount": [
@@ -508,6 +528,10 @@ Content-Type: application/json
           "Currency": "GBP"
           },
       }],
+      "StatementValue" : {
+        "Type": "UK.OBIE.AirMilesPoints",
+        "Value": 100         
+      },
        "StatementFee": [{ 
           "Description": "International usage charge",
           "Type": "UK.OBIE.ForeignTransaction",
@@ -522,13 +546,18 @@ Content-Type: application/json
       }],
       "StatementRate": [{ 
         "Rate": 0.229,
-        "UK.OBIE.MonthlyPurchase"
+        "Type": "UK.OBIE.MonthlyPurchase"
       }],
       "StatementAmount": [
       {
         "Amount": {
           "Amount": "400.00",
           "Currency": "GBP"
+        },
+        "LocalAmount": {
+          "SubType": "LCUR",
+          "Amount": "400.00",
+          "Currency": "USD"
         },
 		"CreditDebitIndicator": "Credit",        
 		"Type": "ClosingBalance"        

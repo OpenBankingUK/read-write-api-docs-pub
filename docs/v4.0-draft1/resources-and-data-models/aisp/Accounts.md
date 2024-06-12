@@ -175,6 +175,7 @@ Content-Type: application/json
       {
         "AccountId": "22289",
         "Status": "Enabled",
+        "MaturityDate": "2019-01-01T06:06:06+00:00",
         "StatusUpdateDateTime": "2019-01-01T06:06:06+00:00",
         "Currency": "GBP",
         "AccountCategory": "Personal",
@@ -271,14 +272,15 @@ Content-Type: application/json
       {
         "AccountId": "22289",
         "Status": "Enabled",
+        "MaturityDate": "2019-01-01T06:06:06+00:00",
         "StatusUpdateDateTime": "2019-01-01T06:06:06+00:00",
         "Currency": "GBP",
         "AccountCategory": "Personal",
         "Description" :  "For paying bills",
+        "AccountTypeCode": "CACC",
         "Nickname": "Bills",
         "OpeningDate": "01-05-2002",
         "SwitchStatus": "UK.CASS.NotSwitched",
-        "Nickname": "Bills",
         "StatementFrequencyAndFormat": [
           {
             "Frequency": "YEAR",
@@ -351,6 +353,7 @@ Content-Type: application/json
       {
         "AccountId": "22289",
         "Status": "Enabled",
+        "MaturityDate": "2019-01-01T06:06:06+00:00",
         "StatusUpdateDateTime": "2019-01-01T06:06:06+00:00",
         "Currency": "GBP",
         "AccountCategory": "Personal",

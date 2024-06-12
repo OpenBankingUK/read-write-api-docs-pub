@@ -173,6 +173,7 @@ Content-Type: application/json
           "Proxy": {
             "Identification": "441234012345",
             "Code": "TELE",
+            "Type":"Telephone"
           }
         },
         "Reference": "REF561988",
@@ -245,6 +246,7 @@ Content-Type: application/json
           "Proxy": {
             "Identification": "441234012345",
             "Code": "TELE",
+            "Type":"Telephone"
           }
         },
         "Reference": "REF561988",
@@ -267,6 +269,7 @@ Content-Type: application/json
           "Proxy": {
             "Identification": "441234012345",
             "Code": "TELE",
+            "Type":"Telephone"
           }
         }
       }
