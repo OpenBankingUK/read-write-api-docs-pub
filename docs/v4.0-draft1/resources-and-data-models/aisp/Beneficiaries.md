@@ -189,7 +189,12 @@ Content-Type: application/json
         "CreditorAccount": {
           "SchemeName": "UK.OBIE.SortCodeAccountNumber",
           "Identification": "80200112345678",
-          "Name": "Mrs Juniper"
+          "SecondaryIdentification": "ID_0002",
+          "Name": "Mrs Juniper",
+          "Proxy": {
+            "Identification": "2360549017905188",
+            "Code": "TELE"
+          }
         }
       }
     ]
@@ -231,6 +236,7 @@ Content-Type: application/json
       {
         "AccountId": "22289",
         "BeneficiaryId": "Ben1",
+        "BeneficiaryType": "Ordinary",
         "Reference": "Towbar Club",
         "CreditorAgent": { 
           "LEI": "IZ9Q00LZEVUKWCQY6X15",
@@ -250,6 +256,7 @@ Content-Type: application/json
         "CreditorAccount": {
           "SchemeName": "UK.OBIE.SortCodeAccountNumber",
           "Identification": "80200112345678",
+          "SecondaryIdentification": "ID_0002",
           "Name": "Mrs Juniper",
           "Proxy": {
             "Identification": "2360549017905188",
@@ -283,7 +290,8 @@ Content-Type: application/json
           "SecondaryIdentification": "87562298675897", 
           "Proxy": {
             "Identification": "2360549017905188",
-            "Code": "TELE"
+            "Code": "TELE",
+            "Type": "Telephone", 
           }
         }
       }
@@ -342,7 +350,12 @@ Content-Type: application/json
           "SchemeName": "UK.OBIE.SortCodeAccountNumber",
           "Identification": "80200112345678",
           "SecondaryIdentification": "87562298675897",
-          "Name": "Mr Tully"
+          "Name": "Mr Tully",
+          "Proxy": {
+            "Identification": "2360549017905188",
+            "Code": "TELE",
+            "Type": "Telephone", 
+          }
         }
       },
       {
@@ -354,11 +367,13 @@ Content-Type: application/json
         },
         "CreditorAccount": {
           "SchemeName": "UK.OBIE.SortCodeAccountNumber",
+          "SecondaryIdentification": "ID_0002",
           "Identification": "80200112345678",
           "Name": "Mr Tully",
           "Proxy": {
             "Identification": "2360549017905188",
-            "Code": "TELE"
+            "Code": "TELE",
+            "Type": "Telephone", 
           }
         }
       }

@@ -213,12 +213,13 @@ Content-Type: application/json
         "LastPaymentAmount": {
           "Amount": "0.56",
           "Currency": "GBP"
+          }
         },
         "CreditAgent": {  
           "LEI": "IZ9Q00LZEVUKWCQY6X15",
           "SchemeName": "UK.OBIE.BICFI",
           "Identification": "80200112344562",
-          "Name": "The Credit Agent", 
+          "Name": "The Creditor Agent", 
           "PostalAddress": { 
             "AddressType": "BIZZ",
             "StreetName": "Bank Street",
@@ -236,6 +237,7 @@ Content-Type: application/json
           "FirstPaymentDateTime": "2024-04-25T12:46:49.425Z",
           "RecurringPaymentDateTime": "2024-04-25T12:46:49.425Z",
           "FinalPaymentDateTime": "2024-04-25T12:46:49.425Z",
+          "Reason": "To pay monthly membership",
           "Frequency": { 
             "Type": "MNTH",
             "CountPerPeriod": 1,
@@ -250,7 +252,8 @@ Content-Type: application/json
           "Name": "Mrs Juniper",
           "Proxy": {
             "Identification": "441234012345",
-            "Code": "TELE"
+            "Code": "TELE",
+            "Type": "Telephone"
           }
         }
       }
@@ -325,7 +328,7 @@ Content-Type: application/json
           "LEI": "IZ9Q00LZEVUKWCQY6X15",
           "SchemeName": "UK.OBIE.BICFI",
           "Identification": "80200112344562",
-          "Name": "The Credit Agent", 
+          "Name": "The Creditor Agent", 
           "PostalAddress": { 
             "AddressType": "BIZZ",
             "StreetName": "Bank Street",
@@ -343,6 +346,7 @@ Content-Type: application/json
           "FirstPaymentDateTime": "2024-04-25T12:46:49.425Z",
           "RecurringPaymentDateTime": "2024-04-25T12:46:49.425Z",
           "FinalPaymentDateTime": "2024-04-25T12:46:49.425Z",
+          "Reason": "To pay monthly membership",
           "Frequency": { 
             "Type": "MNTH",
             "CountPerPeriod": 1,
@@ -353,10 +357,12 @@ Content-Type: application/json
         "CreditorAccount": {
           "SchemeName": "UK.OBIE.SortCodeAccountNumber",
           "Identification": "80200112345678",
+          "SecondaryIdentification": "80200112895462",
           "Name": "Mrs Juniper",
           "Proxy": {
             "Identification": "441234012345",
-            "Code": "TELE"
+            "Code": "TELE",
+            "Type": "Telephone", 
           }
         }
       },

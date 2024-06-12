@@ -126,8 +126,8 @@ Content-Type: application/json
         "OfferId": "Offer1",
         "OfferType": "LimitIncrease",
         "Description": "Credit limit increase for the account up to £10000.00",
-        "StartTime": "2024-05-29T00:00:00Z",
-        "EndTime": "2024-06-29T00:00:00Z",
+        "StartDateTime": "2024-05-29T00:00:00Z",
+        "EndDateime": "2024-06-29T00:00:00Z",
         "Rate": "100.00",
         "Value": 10,
         "Term": "Starting first of the month and ending at the end of year",
@@ -145,8 +145,8 @@ Content-Type: application/json
         "AccountId": "22289",
         "OfferId": "Offer2",
         "OfferType": "BalanceTransfer",
-        "StartTime": "2024-05-29T00:00:00Z",
-        "EndTime": "2024-06-29T00:00:00Z",
+        "StartDateTime": "2024-05-29T00:00:00Z",
+        "EndDateTime": "2024-06-29T00:00:00Z",
         "Description": "Balance transfer offer up to £2000",
         "Amount": {
           "Amount": "2000.00",
@@ -194,8 +194,8 @@ Content-Type: application/json
         "OfferId": "Offer1",
         "OfferType": "LimitIncrease",
         "Description": "Credit limit increase for the account up to £10000.00",
-        "StartTime": "2024-05-29T00:00:00Z",
-        "EndTime": "2024-06-29T00:00:00Z",
+        "StartDateTime": "2024-05-29T00:00:00Z",
+        "EndDateTime": "2024-06-29T00:00:00Z",
         "Rate": "100.00",
         "Value": 10,
         "Term": "Limit increase",
@@ -207,7 +207,7 @@ Content-Type: application/json
         "Amount": {
           "Amount": "10000.00",
           "Currency": "GBP"
-        }
+        },
         "Amount": {
           "Amount": "10000.00",
           "Currency": "GBP"
