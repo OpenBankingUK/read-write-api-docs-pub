@@ -236,6 +236,7 @@ x-fapi-interaction-id: hook5i13-ntIg-4th3-rP41-3ro535touch3
       "Proxy": {
           "Identification": "+441632960540",
           "Code": "TELE",
+          "Type": "Telephone"
         }
     },
     "ExpirationDateTime": "2017-05-02T00:00:00+00:00"
@@ -274,7 +275,8 @@ x-fapi-interaction-id: hook5i13-ntIg-4th3-rP41-3ro535touch3
       "Name": "Jane Smith",
       "Proxy": {
         "Identification": "+441632960540",
-        "Code": "TELE"
+        "Code": "TELE",
+        "Type": "Telephone"
       },
     }
   },
@@ -316,6 +318,12 @@ Content-Type: application/json
     "ConsentId": "88379",
     "CreationDateTime": "2017-05-02T00:00:00+00:00",
     "StatusCode": "AWAU",
+    "StatusReason": [
+      {
+      "StatusReasonCode": "83",
+      "StatusReasonDescription":"Pending completion next working day",
+      }
+    ],
     "StatusUpdateDateTime": "2017-05-02T00:00:00+00:00",
     "ExpirationDateTime": "2017-05-02T00:00:00+00:00",
     "DebtorAccount": {
@@ -325,7 +333,8 @@ Content-Type: application/json
       "Name": "Jane Smith",
       "Proxy": {
         "Identification": "+441632960540",
-        "Code": "TELE"
+        "Code": "TELE",
+        "Type": "Telephone"
       },
     },
   },
@@ -380,6 +389,7 @@ Content-Type: application/json
       "Proxy":{
           "Identification": "441234012348",
           "Code": "TELE",
+          "Type": "Telephone"
         }
     }
   },
