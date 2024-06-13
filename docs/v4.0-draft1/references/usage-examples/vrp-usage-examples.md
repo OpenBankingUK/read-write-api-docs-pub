@@ -876,14 +876,6 @@ Content-Type: application/json
         }
     },
     "Refund" : "Yes", 
-    "Charges": [{
-       "ChargeBearer": "Shared",
-       "Type": "UK.OBIE.CHAPSOut",
-       "Amount"  {
-        "Amount": "0.88",
-        "Currency": "GBP"
-      },
-    }],
     "Initiation": {
       "DebtorAccount": {
         "SchemeName": "UK.OBIE.IBAN",
@@ -1609,14 +1601,6 @@ Accept: application/json
     "PSUInteractionType": "OffSession",
     "VRPType": "UK.OBIE.VRPType.Sweeping",
     "Refund" : "Yes", 
-    "Charges": [{
-       "ChargeBearer": "Shared",
-       "Type": "UK.OBIE.CHAPSOut",
-       "Amount"  {
-        "Amount": "0.88",
-        "Currency": "GBP"
-      },
-    }],
     "Initiation": {
       "DebtorAccount": {
         "SchemeName": "UK.OBIE.IBAN",
@@ -1851,14 +1835,6 @@ Content-Type: application/json
         }
     },
     "Refund" : "Yes", 
-    "Charges": [{
-       "ChargeBearer": "Shared",
-       "Type": "UK.OBIE.CHAPSOut",
-       "Amount"  {
-        "Amount": "0.88",
-        "Currency": "GBP"
-      },
-    }],
     "Initiation": {
       "DebtorAccount": {
         "SchemeName": "UK.OBIE.IBAN",

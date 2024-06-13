@@ -230,9 +230,8 @@ The domestic-standing-consent **request** contains these objects:
 | ---- |---------- |----- |------------------ |----- |----- |------- |
 | OBWriteDomesticStandingOrderConsent5 | |OBWriteDomesticStandingOrderConsent5 | |OBWriteDomesticStandingOrderConsent5 | | |
 | Data |1..1 |OBWriteDomesticStandingOrderConsent5/Data | |OBWriteDataDomesticStandingOrderConsent5 | | |
-| Permission |1..1 |OBWriteDomesticStandingOrderConsent5/Data/Permission |Specifies the Open Banking service request types. 
-| ReadRefundAccount |0..1 |OBWriteDomesticStandingOrderConsent5/Data/ReadRefundAccount | Specifies to share the refund account details with PISP |OBReadRefundAccount1Code |Yes No | |
-|OBExternalPermissions2Code |Create | |
+| Permission |1..1 |OBWriteDomesticStandingOrderConsent5/Data/Permission |Specifies the Open Banking service request types.|For a full list of enumeration values refer to `OB_Internal_CodeSet` [here].(https://github.com/OpenBankingUK/External_Internal_CodeSets)  |OBInternalPermissions2Code||
+| ReadRefundAccount |0..1 |OBWriteDomesticStandingOrderConsent5/Data/ReadRefundAccount | Specifies to share the refund account details with PISP |For a full list of enumeration values refer to `OB_Internal_CodeSet` [here].(https://github.com/OpenBankingUK/External_Internal_CodeSets). |OBInternalReadRefundAccount1Code| |
 | Initiation |1..1 |OBWriteDomesticStandingOrderConsent5/Data/Initiation |The Initiation payload is sent by the initiating party to the ASPSP. It is used to request movement of funds from the debtor account to a creditor for a domestic standing order. |OBDomesticStandingOrder3 | | |
 | Authorisation |0..1 |OBWriteDomesticStandingOrderConsent5/Data/Authorisation |The authorisation type request from the TPP. |OBAuthorisation1 | | |
 | SCASupportData |0..1 |OBWriteDomesticStandingOrderConsent5/Data/SCASupportData |Supporting Data provided by TPP, when requesting SCA Exemption. |OBSCASupportData1 | | |
@@ -270,14 +269,14 @@ The domestic-standing-order-consent **response** contains the full **original** 
 | Data |1..1 |OBWriteDomesticStandingOrderConsentResponse6/Data | |OBWriteDataDomesticStandingOrderConsentResponse6 | | |
 | ConsentId |1..1 |OBWriteDomesticStandingOrderConsentResponse6/Data/ConsentId |OB: Unique identification as assigned by the ASPSP to uniquely identify the consent resource. |Max128Text | | |
 | CreationDateTime |1..1 |OBWriteDomesticStandingOrderConsentResponse6/Data/CreationDateTime |Date and time at which the resource was created. |ISODateTime | | |
-| StatusCode |1..1 |OBWriteDomesticStandingOrderConsentResponse6/Data/StatusCode |Specifies the status of consent resource in code form. For a full description see `ExternalStatusReason1Code` [here](https://github.com/OpenBankingUK/External_internal_CodeSets). |ExternalStatusReason1Code |AUTH AWAU RJCT COND |
+| StatusCode |1..1 |OBWriteDomesticStandingOrderConsentResponse6/Data/StatusCode |Specifies the status of consent resource in code form |For a full list of enumeration values refer to `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_internal_CodeSets)|OBExternalStatusReason1Code |
 | StatusUpdateDateTime |1..1 |OBWriteDomesticStandingOrderConsentResponse6/Data/StatusUpdateDateTime |Date and time at which the resource status was updated. |ISODateTime | | |
 | StatusReason |0..* |OBWriteDomesticStandingOrderConsentResponse6/Data/StatusReason |Specifies the status reason. | OBStatusReason |
 | StatusReasonCode |0..1 |OBWriteDomesticStandingOrderConsentResponse6/Data/StatusReason/StatusReasonCode |Specifies the status reason in a code form. |For a full list of enumeration values refer to `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_internal_CodeSets)| OBInternalPermissions1Code |
 | StatusReasonDescription |0..1 |OBWriteDomesticStandingOrderConsentResponse6/Data/StatusReason/StatusReasonDescription |Description supporting the StatusReasonCode. | Max500Text|
 |Path| 0..1 | OBWriteDomesticStandingOrderConsentResponse6/Data/StatusReason/Path| Path is optional but relevant when the status reason refers to an object/field and hence conditional to provide JSON path.| Max500Text| | |
-| Permission |1..1 |OBWriteDomesticStandingOrderConsentResponse6/Data/Permission |Specifies the Open Banking service request types. |OBExternalPermissions2Code |Create | |
-| ReadRefundAccount |0..1 |OBWriteDomesticStandingOrderConsentResponse6/Data/ReadRefundAccount | Specifies to share the refund account details with PISP |OBReadRefundAccount1Code |Yes No | |
+| Permission |1..1 |OBWriteDomesticStandingOrderConsentResponse6/Data/Permission |Specifies the Open Banking service request types. |For a full list of enumeration values refer to `OB_Internal_CodeSet` [here].(https://github.com/OpenBankingUK/External_Internal_CodeSets)  |OBInternalPermissions2Code | |
+| ReadRefundAccount |0..1 |OBWriteDomesticStandingOrderConsentResponse6/Data/ReadRefundAccount | Specifies to share the refund account details with PISP |For a full list of enumeration values refer to `OB_Internal_CodeSet` [here].(https://github.com/OpenBankingUK/External_Internal_CodeSets). |OBInternalReadRefundAccount1Code| | |
 | CutOffDateTime |0..1 |OBWriteDomesticStandingOrderConsentResponse6/Data/CutOffDateTime |Specified cut-off date and time for the payment consent. |ISODateTime | | |
 | Charges |0..* |OBWriteDomesticStandingOrderConsentResponse6/Data/Charges |Set of elements used to provide details of a charge for the payment initiation. |OBCharge2 | | |
 | Initiation |1..1 |OBWriteDomesticStandingOrderConsentResponse6/Data/Initiation |The Initiation payload is sent by the initiating party to the ASPSP. It is used to request movement of funds from the debtor account to a creditor for a domestic standing order. |OBDomesticStandingOrder3 | | |

@@ -209,7 +209,7 @@ The file-payment **response** object contains the:
 | FilePaymentId |1..1 |OBWriteFileResponse3/Data/FilePaymentId |OB: Unique identification as assigned by the ASPSP to uniquely identify the file payment resource. |Max40Text | | |
 | ConsentId |1..1 |OBWriteFileResponse3/Data/ConsentId |OB: Unique identification as assigned by the ASPSP to uniquely identify the consent resource. |Max128Text | | |
 | CreationDateTime |1..1 |OBWriteFileResponse3/Data/CreationDateTime |Date and time at which the resource was created. |ISODateTime | | |
-| StatusCode |1..1 |OBWriteFileResponse3/Data/StatusCode |Specifies the status of the payment order resource. |OBExternalStatus1Code |RCVD RJCT ASCP | |
+| StatusCode |1..1 |OBWriteFileResponse3/Data/StatusCode |Specifies the status of the payment order resource. |For a full list of enumeration values refer to `External_CodeSet` [here].(https://github.com/OpenBankingUK/External_Internal_CodeSets). |ExternalPaymentTransactionStatus1Code | |
 | StatusUpdateDateTime |1..1 |OBWriteFileResponse3/Data/StatusUpdateDateTime |Date and time at which the resource status was updated. |ISODateTime | | |
 | StatusReason |0..* |OBWriteFileResponse3/Data/StatusReason |Specifies the status reason. | OBStatusReason |
 | StatusReasonCode |0..1 |OBWriteFileResponse3/Data/StatusReason/StatusReasonCode |Specifies the status reason in a code form. |For a full list of enumeration values refer to `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_internal_CodeSets)| OBInternalPermissions1Code |
