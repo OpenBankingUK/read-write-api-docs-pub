@@ -347,6 +347,17 @@ Accept: application/json
         "Amount": "165.88",
         "Currency": "GBP"
       },
+      "DebtorAccount": {
+        "SchemeName": "UK.OBIE.SortCodeAccountNumber",
+        "Identification": "08080025612489",
+        "SecondaryIdentification": "080801562314789",
+        "Name": "Jane Smith",
+        "Proxy": {
+          "Identification": "441234012345",
+          "Code": "TELE",
+          "Type": "Telephone"
+        },
+      },
       "CreditorAccount": {
         "SchemeName": "UK.OBIE.SortCodeAccountNumber",
         "Identification": "08080021325698",
@@ -354,7 +365,8 @@ Accept: application/json
         "SecondaryIdentification": "0002",
         "Proxy": {
           "Identification": "2360549017905188",
-          "Code": "TELE"
+          "Code": "TELE",
+          "Type": "Telephone"
         },
       },
       "CreditorPostalAddress":{
@@ -441,10 +453,11 @@ Accept: application/json
               "Reference": "REF_26518"
             },
             "Invoicer": "INVR51856",
-            "Invoicee": "INVE5161856"
-          },
-        ],
-        "Unstructured": "Internal ops code 5120101"
+            "Invoicee": "INVE5161856",
+            "TaxRemittance": "Tax Remittance related information",
+            "AdditionalRemittanceInformation": ["Free text for additional information"],
+          }],
+          "Unstructured": "Internal ops code 5120101"
        }
     },
     "Authorisation": {
@@ -452,10 +465,9 @@ Accept: application/json
       "CompletionDateTime": "2025-05-30T10:35:27Z",
     },
     "SCASupportData": {
-        "Type": "EcommerceServices",
+        "RequestedSCAExemptionType": "EcommerceGoods",
         "AppliedAuthenticationApproach": "SCA",
         "ReferencePaymentOrderId": "O-611265",
-        "Description": "Order number O-611256 payment"
     },
     "Risk": {
       "PaymentContextCode": "EcommerceMerchantInitiatedPayment",
@@ -497,7 +509,6 @@ Content-Type: application/json
   "Data": {
     "ConsentId": "58923",
     "StatusCode": "AWAU",
-    "LocalInstrument": "UK.OBIE.CHAPS", 
     "StatusReason": {
       "StatusReasonCode": "U036", 
       "StatusReasonDescription":"Waiting for completion of consent authorisation to be completed by user",
@@ -523,6 +534,7 @@ Content-Type: application/json
     "Initiation": {
       "InstructionIdentification": "ACME412",
       "EndToEndIdentification": "FRESCO.21302.GFX.20",
+      "LocalInstrument": "UK.OBIE.Paym",
       "InstructedAmount": {
         "Amount": "165.88",
         "Currency": "GBP"
@@ -535,13 +547,19 @@ Content-Type: application/json
         "Proxy": {
           "Identification": "441234012345",
           "Code": "TELE",
+          "Type": "Telephone"
         },
       },
       "CreditorAccount": {
         "SchemeName": "UK.OBIE.SortCodeAccountNumber",
         "Identification": "08080021325698",
         "Name": "ACME Inc",
-        "SecondaryIdentification": "0002"
+        "SecondaryIdentification": "0002",
+        "Proxy": {
+          "Identification": "441234012885",
+          "Code": "TELE",
+          "Type": "Telephone"
+        },
       },
       "CreditorPostalAddress":{
         "AddressType": "BIZZ",
@@ -582,6 +600,13 @@ Content-Type: application/json
           "Country": "UK"
           }
         },
+      "Debtor": {
+        "Name": "D Jones",
+        "SchemeName": "UK.OBIE.SortCodeAccountNumber",
+        "Identification": "08080021325698",
+        "SecondaryIdentification": "0002",
+        "LEI": "8200007YHFDMEODY1965",
+      },
       "RegulatoryReporting": [{
           "DebitCreditReportingIndicator": "CRED",
           "Authority": {
@@ -617,10 +642,18 @@ Content-Type: application/json
               "Reference": "REF_26518"
             },
             "Invoicer": "INVR51856",
-            "Invoicee": "INVE5161856"
-          }]
+            "Invoicee": "INVE5161856",
+            "TaxRemittance": "Tax Remittance related information",
+            "AdditionalRemittanceInformation": ["Free text for additional information"],
+          }],
+          "Unstructured": "Internal ops code 5120101"
         }
       }
+  },
+  "SCASupportData": {
+    "RequestedSCAExemptionType": "EcommerceGoods",
+    "AppliedAuthenticationApproach": "SCA",
+    "ReferencePaymentOrderId": "O-611265",
   },
   "Risk": {
     "PaymentContextCode": "EcommerceMerchantInitiatedPayment",
@@ -692,7 +725,12 @@ Content-Type: application/json
         "SchemeName": "UK.OBIE.SortCodeAccountNumber",
         "Identification": "08080021325698",
         "Name": "ACME Inc",
-        "SecondaryIdentification": "0002"
+        "SecondaryIdentification": "0002",
+        "Proxy": {
+          "Identification": "441234012885",
+          "Code": "TELE",
+          "Type": "Telephone"
+        },
       },
       "CreditorPostalAddress":{
         "AddressType": "BIZZ",
@@ -766,20 +804,26 @@ Content-Type: application/json
               "Reference": "REF_26518"
             },
             "Invoicer": "INVR51856",
-            "Invoicee": "INVE5161856"
+            "Invoicee": "INVE5161856",
+            "TaxRemittance": "Tax Remittance related information",
+            "AdditionalRemittanceInformation": ["Free text for additional information"],  
           }
-        ]
+        ],
+        "Unstructured": "Internal ops code 5120101"
        }
     },
     "Debtor": {
-      "Name": "D Jones"
+      "Name": "D Jones",
+      "SchemeName": "UK.OBIE.SortCodeAccountNumber",
+      "Identification": "08080021325698",
+      "SecondaryIdentification": "0002",
+      "LEI": "8200007YHFDMEODY1965",
     }
   },
   "SCASupportData": {
-    "Type": "EcommerceServices",
+   "RequestedSCAExemptionType": "EcommerceGoods",
     "AppliedAuthenticationApproach": "SCA",
     "ReferencePaymentOrderId": "O-611265",
-    "Description": "Order number O-611256 payment"
   },
   "Risk": {
     "PaymentContextCode": "EcommerceMerchantInitiatedPayment",

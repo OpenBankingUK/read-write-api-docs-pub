@@ -312,6 +312,7 @@ Accept: application/json
          "Proxy": {
           "Identification": "441234012345",
           "Code": "TELE",
+		  "Type": "Telephone"
           }
       	},
 		"UltimateDebtor": {
@@ -350,17 +351,18 @@ Accept: application/json
               "Reference": "REF_26518"
             },
             "Invoicer": "INVR51856",
-            "Invoicee": "INVE5161856"
+            "Invoicee": "INVE5161856",
+			"TaxRemittance": "Tax Remittance related information",
+          	"AdditionalRemittanceInformation": ["Free text for additional information"],
           }
         ],
 	     "Unstructured": "Internal ops code 5120101"
       }
 	},
 	"SCASupportData": {
-	  "Type": "EcommerceServices",
-	  "AppliedAuthenticationApproach": "SCA",
-	  "ReferencePaymentOrderId": "O-611265",
-	  "Description": "Order number O-611256 payment"
+	    "RequestedSCAExemptionType": "EcommerceGoods",
+		"AppliedAuthenticationApproach": "SCA",
+		"ReferencePaymentOrderId": "O-611265",
     },
   }
 }
@@ -402,10 +404,13 @@ Content-Type: application/json
 	"Debtor": { 
 	 	"SchemeName": "UK.OBIE.SortCodeAccountNumber",
         "Identification": "11280001234567",
+		"LEI": "8200007YHFDMEODY1965",
         "Name": "Andrea Smith",
         "SecondaryIdentification": "0002",	
 	},
     "Initiation": {
+	  "LocalInstrument": "UK.OBIE.Paym",
+	  "RequestedExecutionDateTime": "2017-06-05T15:15:22+00:00",
       "FileType": "UK.OBIE.pain.001.001.08",
       "FileHash": "m5ah/h1UjLvJYMxqAoZmj9dKdjZnsGNm+yMkJp/KuqQ",
       "FileReference": "GB2OK238",
@@ -419,6 +424,7 @@ Content-Type: application/json
         "Proxy": {
           "Identification": "441234012345",
           "Code": "TELE",
+		  "Type": "Telephone"
           }
       	},
 	  "UltimateDebtor": {
@@ -457,17 +463,18 @@ Content-Type: application/json
               "Reference": "REF_26518"
             },
             "Invoicer": "INVR51856",
-            "Invoicee": "INVE5161856"
+            "Invoicee": "INVE5161856",
+			"TaxRemittance": "Tax Remittance related information",
+          	"AdditionalRemittanceInformation": ["Free text for additional information"],
           }
         ],
 		"Unstructured": "Internal ops code 5120101"
    	  }
     },
 	"SCASupportData": {
-	  "Type": "EcommerceServices",
-	  "AppliedAuthenticationApproach": "SCA",
-	  "ReferencePaymentOrderId": "O-611265",
-	  "Description": "Order number O-611256 payment"
+	  	"RequestedSCAExemptionType": "EcommerceGoods",
+		"AppliedAuthenticationApproach": "SCA",
+		"ReferencePaymentOrderId": "O-611265",
     },
   },
   "Links":{

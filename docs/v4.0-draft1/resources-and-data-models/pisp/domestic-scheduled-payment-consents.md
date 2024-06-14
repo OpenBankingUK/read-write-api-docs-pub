@@ -309,7 +309,8 @@ Accept: application/json
         "Name": "Andrea Frost",
         "Proxy": {
           "Identification": "+441632960540",
-          "Code": "TELE"
+          "Code": "TELE",
+          "Type": "Telephone"
         },
       },
       "CreditorAccount": {
@@ -319,7 +320,8 @@ Accept: application/json
         "Name": "Tom Kirkman",
         "Proxy": {
           "Identification": "2360549017905188",
-          "Code": "TELE"
+          "Code": "TELE",
+          "Type": "Telephone"
         },
       },
       "CreditorPostalAddress":{
@@ -413,7 +415,9 @@ Accept: application/json
                 "Reference": "REF_26518"
               },
               "Invoicer": "INVR51856",
-              "Invoicee": "INVE5161856"
+              "Invoicee": "INVE5161856",
+              "TaxRemittance": "Tax Remittance related information",
+              "AdditionalRemittanceInformation": ["Free text for additional information"],  
             }
           ],
           "Unstructured": "Internal ops code 5120101"
@@ -421,33 +425,10 @@ Accept: application/json
     },
   },
   "SCASupportData": {
-        "Type": "EcommerceServices",
+        "RequestedSCAExemptionType": "EcommerceGoods",
         "AppliedAuthenticationApproach": "SCA",
         "ReferencePaymentOrderId": "O-611265",
-        "Description": "Order number O-611256 payment"
     },
-  "Risk": {
-    "PaymentContextCode": "TransferToThirdParty",
-    "ContractPresentIndicator": false,
-    "PaymentPurposeCode": "EPAY",
-    "CategoryPurposeCode": "CASH", 
-    "BeneficiaryPaymentDetailsPrepopulatedIndicator": false,
-    "BeneficiaryAccountType": "Business",
-    "MerchantCategoryCode": "7300", 
-    "MerchantCustomerIdentification": "053598653254",
-    "DeliveryAddress": {
-      "AddressLine": [
-        "Flat 7",
-        "Acacia Lodge"
-      ],
-      "StreetName": "Acacia Avenue",
-      "BuildingNumber": "27",
-      "PostCode": "GU31 2ZZ",
-      "TownName": "Sparsholt",
-      "CountrySubDivision": "Wessex",
-      "Country": "UK"
-    }
-  }
 }
 ```
 
@@ -508,16 +489,36 @@ Content-Type: application/json
         "SchemeName": "UK.OBIE.SortCodeAccountNumber",
         "Identification": "11280001234567",
         "Name": "Andrea Frost",
-         "SecondaryIdentification": "0002",
+        "SecondaryIdentification": "0002",
         "Proxy": {
           "Identification": "2360549017905188",
-          "Code": "TELE"
+          "Code": "TELE",
+          "Type": "Telephone"
         },
       },
       "CreditorAccount": {
         "SchemeName": "UK.OBIE.SortCodeAccountNumber",
         "Identification": "08080021325698",
         "Name": "Tom Kirkman"
+      },
+      "CreditorPostalAddress":{
+        "AddressType": "BIZZ",
+        "Department": "Finance",
+        "SubDepartment": "Payroll",
+        "StreetName": "Bank Street",
+        "BuildingNumber": "11",
+        "BuildingName": "Tower Bridges",
+        "Floor": "6",
+        "UnitNumber": "UNIT591",
+        "Room": "844",
+        "PostBox": "PO Box 123456",
+        "PostCode": "Z78 4TY",
+        "TownLocationName":"Bank",
+        "TownName": "London",
+        "DistrictName": "Greater London",
+        "CareOf": "Ms Jane Smith",
+        "CountrySubDivision": "England",
+        "Country": "UK"
       },
       "UltimateDebtor": {
         "SchemeName": "UK.OBIE.BICFI",
@@ -566,6 +567,13 @@ Content-Type: application/json
               }
           }]
       }],
+      "Debtor": { 
+        "Name": "D Jones",
+        "SchemeName": "UK.OBIE.SortCodeAccountNumber",
+        "Identification": "08080021325698",
+        "SecondaryIdentification": "0002",
+        "LEI": "8200007YHFDMEODY1965",
+      },
      "RemittanceInformation": {
         "Structured": [
           {
@@ -587,7 +595,9 @@ Content-Type: application/json
               "Reference": "REF_26518"
             },
             "Invoicer": "INVR51856",
-            "Invoicee": "INVE5161856"
+            "Invoicee": "INVE5161856",
+            "TaxRemittance": "Tax Remittance related information",
+            "AdditionalRemittanceInformation": ["Free text for additional information"],  
           }
         ],
         "Unstructured": "Internal ops code 5120101"
@@ -595,10 +605,9 @@ Content-Type: application/json
     }
   },
   "SCASupportData": {
-    "Type": "EcommerceServices",
+    "RequestedSCAExemptionType": "EcommerceGoods",
     "AppliedAuthenticationApproach": "SCA",
     "ReferencePaymentOrderId": "O-611265",
-    "Description": "Order number O-611256 payment"
   },
   "Risk": {
     "PaymentContextCode": "TransferToThirdParty",
