@@ -310,6 +310,7 @@ Accept: application/json
         "Proxy": {
           "Identification": "441234012345",
           "Code": "TELE",
+          "Type": "Telephone"
         },
       },
       "CreditorAccount": {
@@ -319,7 +320,8 @@ Accept: application/json
         "SecondaryIdentification": "0002",
         "Proxy": {
           "Identification": "+441632960540",
-          "Code": "TELE"
+          "Code": "TELE",
+          "Type": "Telephone"
         },
       },
       "CreditorPostalAddress":{
@@ -392,7 +394,9 @@ Accept: application/json
                 "Reference": "REF_26518"
               },
               "Invoicer": "INVR51856",
-              "Invoicee": "INVE5161856"
+              "Invoicee": "INVE5161856",
+              "TaxRemittance": "Tax Remittance related information",
+              "AdditionalRemittanceInformation": ["Free text for additional information"], 
             }
           ]
         },
@@ -419,6 +423,7 @@ Accept: application/json
       "TownName": "Sparsholt",
       "CountrySubDivision": "Wessex",
       "Country": "UK"
+    }
   }
 }
 ```
@@ -454,7 +459,7 @@ Content-Type: application/json
         "Currency": "GBP"
       },
     }],
-    "Debtor":{
+    "Debtor": {
       "SchemeName": "UK.OBIE.SortCodeAccountNumber",
       "Identification": "08080021325698",
       "Name": "ACME Inc",
@@ -479,6 +484,8 @@ Content-Type: application/json
     "Initiation": {
       "InstructionIdentification": "89f0a53a91ee47f6a383536f851d6b5a",
       "RequestedExecutionDateTime": "2018-08-06T00:00:00+00:00",
+      "EndToEndIdentification": "FRESCO.21302.GFX.20",
+      "LocalInstrument": "UK.OBIE.Paym",
       "InstructedAmount": {
         "Amount": "200.00",
         "Currency": "GBP"
@@ -486,15 +493,23 @@ Content-Type: application/json
       "DebtorAccount": {
         "SchemeName": "UK.OBIE.SortCodeAccountNumber",
         "Identification": "11280001234567",
-        "Name": "Andrea Frost"
+        "SecondaryIdentification": "0002",
+        "Name": "Andrea Frost",
+        "Proxy": {
+          "Identification": "+441632960540",
+          "Code": "TELE",
+          "Type": "Telephone"
+        },
       },
       "CreditorAccount": {
         "SchemeName": "UK.OBIE.SortCodeAccountNumber",
         "Identification": "08080021325698",
+        "SecondaryIdentification": "08098",
         "Name": "Tom Kirkman",
-          "Proxy": {
+        "Proxy": {
           "Identification": "+441632960540",
-          "Code": "TELE"
+          "Code": "TELE",
+          "Type": "Telephone"
         },
       },
       "CreditorPostalAddress":{
@@ -588,32 +603,13 @@ Content-Type: application/json
                 "Reference": "REF_26518"
               },
               "Invoicer": "INVR51856",
-              "Invoicee": "INVE5161856"
+              "Invoicee": "INVE5161856",
+              "TaxRemittance": "Tax Remittance related information",
+              "AdditionalRemittanceInformation": ["Free text for additional information"], 
             }
           ]
         }
     },
-  "Risk": {
-    "PaymentContextCode": "EcommerceMerchantInitiatedPayment",
-    "ContractPresentIndicator": false,
-    "PaymentPurposeCode": "EPAY",
-    "CategoryPurposeCode": "CASH", 
-    "BeneficiaryPaymentDetailsPrepopulatedIndicator": false,
-    "BeneficiaryAccountType": "Business",
-    "MerchantCategoryCode": "7300", 
-    "MerchantCustomerIdentification": "053598653254",
-    "DeliveryAddress": {
-      "AddressLine": [
-        "Flat 7",
-        "Acacia Lodge"
-      ],
-      "StreetName": "Acacia Avenue",
-      "BuildingNumber": "27",
-      "PostCode": "GU31 2ZZ",
-      "TownName": "Sparsholt",
-      "CountrySubDivision": "Wessex",
-      "Country": "UK"
-    }
   },
   "Links": {
     "Self": "https://api.alphabank.com/open-banking/v3.1/pisp/domestic-scheduled-payments/7290-003"

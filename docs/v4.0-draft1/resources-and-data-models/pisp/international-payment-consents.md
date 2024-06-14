@@ -425,6 +425,14 @@ Accept: application/json
       "AuthorisationType": "Any", 
       "CompletionDateTime": "2025-05-30T10:35:27Z",
     },
+    "Charges": [{
+      "ChargeBearer": "Shared",
+      "Type": "UK.OBIE.CHAPSOut",
+      "Amount"  {
+      "Amount": "0.88",
+      "Currency": "GBP"
+    },
+  }],
     "Initiation": {
       "InstructionIdentification": "ACME412",
       "EndToEndIdentification": "FRESCO.21302.GFX.20",
@@ -450,7 +458,8 @@ Accept: application/json
         "Name": "Andrea Smith",
         "Proxy": {
           "Identification": "07700900000",
-          "Code": "TELE"
+          "Code": "TELE",
+          "Type": "Telephone"
         },
       },
       "CreditorAgent": { 
@@ -478,6 +487,19 @@ Accept: application/json
           "Country": "UK"
         }
        },
+       "Creditor": {
+        "Name": "Mr Joe Creditor",
+        "LEI": "8200007YHFDMEODY1965",
+        "PostalAddress": {
+            "AddressType": "BIZZ",
+            "StreetName": "Bank Street",
+            "BuildingNumber": "11",
+            "Floor": "6",
+            "PostCode": "Z78 4TY",
+            "TownName": "London",
+            "Country": "UK"
+            }
+        },
       "CreditorAccount": {
         "SchemeName": "UK.OBIE.SortCodeAccountNumber",
         "Identification": "08080021325698",
@@ -485,7 +507,19 @@ Accept: application/json
         "SecondaryIdentification": "0002",
         "Proxy": {
           "Identification": "+441632960540",
-          "Code": "TELE"
+          "Code": "TELE",
+          "Type": "Telephone"
+        },
+      },
+      "DebtorAccount": {
+        "SchemeName": "UK.OBIE.SortCodeAccountNumber",
+        "SecondaryIdentification": "0002",
+        "Identification": "11280001234567",
+        "Name": "Andrea Smith",
+        "Proxy": {
+          "Identification": "07700900000",
+          "Code": "TELE",
+          "Type": "Telephone"
         },
       },
       "UltimateDebtor": {
@@ -553,7 +587,9 @@ Accept: application/json
               "Reference": "REF_26518"
             },
             "Invoicer": "INVR51856",
-            "Invoicee": "INVE5161856"
+            "Invoicee": "INVE5161856",
+            "TaxRemittance": "Tax Remittance related information",
+            "AdditionalRemittanceInformation": ["Free text for additional information"],
           }
         ],
         "Unstructured": "Internal ops code 5120101"
@@ -565,6 +601,7 @@ Accept: application/json
     "ContractPresentIndicator": false,
     "PaymentPurposeCode": "EPAY",
     "CategoryPurposeCode": "CASH", 
+   
     "BeneficiaryPaymentDetailsPrepopulatedIndicator": false,
     "BeneficiaryAccountType": "Business",
     "MerchantCategoryCode": "7300", 
@@ -583,10 +620,9 @@ Accept: application/json
     }
  },
  "SCASupportData": {
-  "Type": "EcommerceServices",
-  "AppliedAuthenticationApproach": "SCA",
-  "ReferencePaymentOrderId": "O-611265",
-  "Description": "Order number O-611256 payment"
+    "RequestedSCAExemptionType": "EcommerceGoods",
+    "AppliedAuthenticationApproach": "SCA",
+    "ReferencePaymentOrderId": "O-611265",
   },
 }
 ```
@@ -653,14 +689,19 @@ Content-Type: application/json
     "Amount": "165.88",
     "Currency": "GBP"
    },
-  "Creditor": {
-    "SchemeName": "UK.OBIE.SortCodeAccountNumber",
-    "Identification": "08080021325688",
-    "SecondaryIdentification": "0002",
-    "Proxy": {
-      "Identification": "07700900090",
-      "Code": "TELE"
-    },
+   "Creditor": {
+        "Name": "Mr Joe Creditor",
+        "LEI": "8200007YHFDMEODY1965",
+        "PostalAddress": {
+            "AddressType": "BIZZ",
+            "StreetName": "Bank Street",
+            "BuildingNumber": "11",
+            "Floor": "6",
+            "PostCode": "Z78 4TY",
+            "TownName": "London",
+            "Country": "UK"
+            }
+      },
   },
   "CreditorAccount": {
     "SchemeName": "UK.OBIE.SortCodeAccountNumber",
@@ -669,7 +710,8 @@ Content-Type: application/json
     "SecondaryIdentification": "0002",
     "Proxy": {
       "Identification": "07700900000",
-      "Code": "TELE"
+      "Code": "TELE",
+      "Type": "Telephone"
     },
    },
    "CreditorAgent": { 
@@ -698,10 +740,12 @@ Content-Type: application/json
      }
     },
     "ExchangeRateInformation": {
-    "UnitCurrency": "GBP",
-    "ExchangeRate": 1.22,
-    "RateType": "Actual"
-  },
+      "UnitCurrency": "GBP",
+      "ExchangeRate": 1.22,
+      "RateType": "Actual",
+      "ContractIdentification": "19854961984",
+      "ExpirationDateTime": "2017-06-05T15:45:13+00:00"
+    },
     "UltimateDebtor": {
       "SchemeName": "UK.OBIE.BICFI",
       "Identification": "2360549017905161589",
@@ -765,7 +809,9 @@ Content-Type: application/json
               "Reference": "REF_26518"
             },
             "Invoicer": "INVR51856",
-            "Invoicee": "INVE5161856"
+            "Invoicee": "INVE5161856",
+            "TaxRemittance": "Tax Remittance related information",
+            "AdditionalRemittanceInformation": ["Free text for additional information"],
           }
         ],
         "Unstructured": "Internal ops code 5120101"
@@ -786,6 +832,7 @@ Content-Type: application/json
   "PaymentContextCode": "TransferToThirdParty",
   "ContractPresentIndicator": false,
   "PaymentPurposeCode": "EPAY",
+  "ExtendedPurpose": "Required when no 4 character code fits the purpose",
   "CategoryPurposeCode": "CASH", 
   "BeneficiaryPaymentDetailsPrepopulatedIndicator": false,
   "BeneficiaryAccountType": "Business",
@@ -805,10 +852,9 @@ Content-Type: application/json
   }
  },
  "SCASupportData": {
-        "Type": "EcommerceServices",
-        "AppliedAuthenticationApproach": "SCA",
-        "ReferencePaymentOrderId": "O-611265",
-        "Description": "Order number O-611256 payment"
+    "RequestedSCAExemptionType": "EcommerceGoods",
+    "AppliedAuthenticationApproach": "SCA",
+    "ReferencePaymentOrderId": "O-611265",
     },
  "Links": {
   "Self": "https://api.alphabank.com/open-banking/v3.1/pisp/international-payment-consents/58923"

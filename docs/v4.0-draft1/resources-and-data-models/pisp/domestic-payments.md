@@ -306,7 +306,8 @@ Accept: application/json
         "SecondaryIdentification": "0002",
         "Proxy": {
           "Identification": "+441632960540",
-          "Code": "TELE"
+          "Code": "TELE",
+          "Type": "Telephone"
         },
       },
       "DebtorAccount": {
@@ -317,6 +318,7 @@ Accept: application/json
         "Proxy": {
           "Identification": "441234012345",
           "Code": "TELE",
+          "Type": "Telephone"
         },
       },
       "UltimateDebtor": {
@@ -391,9 +393,12 @@ Accept: application/json
                 "Reference": "REF_26518"
               },
               "Invoicer": "INVR51856",
-              "Invoicee": "INVE5161856"
+              "Invoicee": "INVE5161856",
+              "TaxRemittance": "Tax Remittance related information",
+              "AdditionalRemittanceInformation": ["Free text for additional information"],  
           }
-        ]
+        ],
+        "Unstructured": "Internal ops code 5120101"
       }
     }
   },
@@ -449,6 +454,7 @@ Content-Type: application/json
       "Account": {
         "SchemeName": "UK.OBIE.SortCodeAccountNumber",
         "Identification": "08080021325677",
+        "SecondaryIdentification": "0002",
         "Name": "NTPC Inc"
       }
     },
@@ -490,6 +496,7 @@ Content-Type: application/json
         "Proxy": {
           "Identification": "441234012345",
           "Code": "TELE",
+          "Type": "Telephone"
         }
       },
       "CreditorAccount": {
@@ -497,10 +504,20 @@ Content-Type: application/json
         "Identification": "08080021325698",
         "Name": "ACME Inc",
         "SecondaryIdentification": "0002",
-         "Proxy": {
+        "Proxy": {
           "Identification": "441234012345",
           "Code": "TELE",
+          "Type": "Telephone"
         }
+      },
+      "CreditorPostalAddress":{
+        "AddressType": "BIZZ",
+        "StreetName": "Bank Street",
+        "BuildingNumber": "11",
+        "Floor": "6",
+        "PostCode": "Z78 4TY",
+        "TownName": "London",
+        "Country": "UK"
       },
       "CreditorPostalAddress":{
         "AddressType": "BIZZ",
@@ -583,9 +600,12 @@ Content-Type: application/json
               "Reference": "REF_26518"
             },
             "Invoicer": "INVR51856",
-            "Invoicee": "INVE5161856"
+            "Invoicee": "INVE5161856",
+            "TaxRemittance": "Tax Remittance related information",
+            "AdditionalRemittanceInformation": ["Free text for additional information"],  
           }
-        ]
+        ],
+        "Unstructured": "Internal ops code 5120101"
       }
     }
   },
@@ -637,6 +657,11 @@ Content-Type: application/json
         "Identification": "08080021325698",
         "Name": "ACME Inc",
         "SecondaryIdentification": "0002",
+        "Proxy": {
+          "Identification": "441234012345",
+          "Code": "TELE",
+          "Type": "Telephone"
+        }
       },
       "RemittanceInformation": {
         "Structured": [
@@ -659,13 +684,20 @@ Content-Type: application/json
               "Reference": "REF_26518"
             },
             "Invoicer": "INVR51856",
-            "Invoicee": "INVE5161856"
+            "Invoicee": "INVE5161856",
+            "TaxRemittance": "Tax Remittance related information",
+            "AdditionalRemittanceInformation": ["Free text for additional information"],  
           }
-        ]
+        ],
+        "Unstructured": "Internal ops code 5120101"
+      },
+    "Debtor": { 
+      "Name": "D Jones",
+      "SchemeName": "UK.OBIE.SortCodeAccountNumber",
+      "Identification": "08080021325698",
+      "SecondaryIdentification": "0002",
+      "LEI": "8200007YHFDMEODY1965",
       }
-    },
-    "Debtor": {
-      "Name": "D Jones"
     }
   },
   "Links": {

@@ -261,6 +261,8 @@ Accept: application/json
   "Data": {
     "ConsentId":"512345",
     "Initiation": {
+      "LocalInstrument": "UK.OBIE.Paym",
+	    "RequestedExecutionDateTime": "2017-06-05T15:15:22+00:00",
       "FileType": "UK.OBIE.pain.001.001.08",
       "FileHash": "m5ah/h1UjLvJYMxqAoZmj9dKdjZnsGNm+yMkJp/KuqQ",
       "FileReference": "GB2OK238",
@@ -274,6 +276,7 @@ Accept: application/json
         "Proxy": {
           "Identification": "441234012345",
           "Code": "TELE",
+          "Type": "Telephone"
           }
       	},
       "UltimateDebtor": {
@@ -312,7 +315,9 @@ Accept: application/json
               "Reference": "REF_26518"
             },
             "Invoicer": "INVR51856",
-            "Invoicee": "INVE5161856"
+            "Invoicee": "INVE5161856",
+            "TaxRemittance": "Tax Remittance related information",
+            "AdditionalRemittanceInformation": ["Free text for additional information"], 
           }
         ],
 		"Unstructured": "Internal ops code 5120101"
@@ -356,6 +361,7 @@ Content-Type: application/json
         "Identification": "11280001234567",
         "Name": "Andrea Smith",
         "SecondaryIdentification": "0002",	
+        "LEI": "8200007YHFDMEODY1965",
 	  },
      "MultiAuthorisation": { 
       "StatusCode": "AUTH", 
@@ -377,9 +383,10 @@ Content-Type: application/json
         "Identification": "11280001234567",
         "Name": "Andrea Smith",
         "SecondaryIdentification": "0002",
-         "Proxy": {
+        "Proxy": {
           "Identification": "441234012345",
           "Code": "TELE",
+          "Type": "Telephone"
         }
       },
       "UltimateDebtor": {
@@ -418,10 +425,12 @@ Content-Type: application/json
               "Reference": "REF_26518"
             },
             "Invoicer": "INVR51856",
-            "Invoicee": "INVE5161856"
+            "Invoicee": "INVE5161856",
+            "TaxRemittance": "Tax Remittance related information",
+            "AdditionalRemittanceInformation": ["Free text for additional information"],
           }
         ],
-	      "Unstructured": "Internal ops code 5120101"
+	      "Unstructured": "Internal ops code 5120101",
    	  }
     }
   },

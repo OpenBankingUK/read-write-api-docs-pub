@@ -370,13 +370,14 @@ Accept: application/json
       "Name": "Tom Kirkman",
       "Proxy": {
         "Identification": "07700900000",
-        "Code": "TELE"
+        "Code": "TELE",
+        "Type": "Telephone"
       },
     },
     "CreditAgent": {
       "SchemeName": "UK.OBIE.IBAN",
       "Identification": "DE89370400440532013000",
-      "SecondaryIdentification": "0002",
+      "LEI": "8200007YHFDMEODY1965",
       "Name": "Tom Kirkman",
       "PostalAddress": {
         "AddressType": "BIZZ",
@@ -404,6 +405,7 @@ Accept: application/json
         "FirstPaymentDateTime": "2024-04-25T12:46:49.425Z",
         "RecurringPaymentDateTime": "2024-04-25T12:46:49.425Z",
         "FinalPaymentDateTime": "2024-04-25T12:46:49.425Z",
+        "Reason": "Membership fees",
         "Frequency": { 
           "Type": "MNTH",
           "CountPerPeriod": 1,
@@ -482,7 +484,9 @@ Accept: application/json
                 "Reference": "REF_26518"
               },
               "Invoicer": "INVR51856",
-              "Invoicee": "INVE5161856"
+              "Invoicee": "INVE5161856",
+              "TaxRemittance": "Tax Remittance related information",
+              "AdditionalRemittanceInformation": ["Free text for additional information"],
             }
           ],
           "Unstructured": "Internal ops code 5120101"
@@ -490,15 +494,15 @@ Accept: application/json
     }
   },
   "SCASupportData": {
-    "Type": "EcommerceServices",
+    "RequestedSCAExemptionType": "EcommerceGoods",
     "AppliedAuthenticationApproach": "SCA",
     "ReferencePaymentOrderId": "O-611265",
-    "Description": "Order number O-611256 payment"
   },
   "Risk": {
     "PaymentContextCode": "TransferToThirdParty",
     "PaymentPurposeCode": "EPAY",
     "CategoryPurposeCode": "CASH", 
+    "ExtendedPurpose": "Required when no 4 character code fits the purpose",
     "BeneficiaryPaymentDetailsPrepopulatedIndicator": false,
     "BeneficiaryAccountType": "Business",
     "MerchantCategoryCode": "7300", 
@@ -559,6 +563,10 @@ Content-Type: application/json
         "Currency": "GBP"
       }
   }],
+  "Authorisation": {
+    "AuthorisationType": "Any", 
+    "CompletionDateTime": "2025-05-30T10:35:27Z",
+  },
   "Initiation": {
     "ChargeBearer": "Shared",   
     "Purpose": "CCRD",
@@ -578,15 +586,15 @@ Content-Type: application/json
     },
     "Creditor": {
       "SchemeName": "UK.OBIE.SortCodeAccountNumber",
-        "LEI": "8200007YHFDMEODY8412",
+      "LEI": "8200007YHFDMEODY8412",
         "PostalAddress": {
-        "AddressType": "BIZZ",
-        "StreetName": "Bank Street",
-        "BuildingNumber": "11",
-        "Floor": "6",
-        "PostCode": "Z78 4TY",
-        "TownName": "London",
-        "Country": "UK"
+          "AddressType": "BIZZ",
+          "StreetName": "Bank Street",
+          "BuildingNumber": "11",
+          "Floor": "6",
+          "PostCode": "Z78 4TY",
+          "TownName": "London",
+          "Country": "UK"
       }
     },
     "CreditorAccount": {
@@ -596,7 +604,8 @@ Content-Type: application/json
       "SecondaryIdentification": "0002",
       "Proxy": {
         "Identification": "+441632960540",
-        "Code": "TELE"
+        "Code": "TELE",
+        "Type": "Telephone"
       },
     },
     "CreditorAgent": {  
@@ -621,9 +630,40 @@ Content-Type: application/json
       "LEI": "8200007YHFDMEODY1965",
       "Proxy": {
         "Identification": "07700900000",
-        "Code": "TELE"
+        "Code": "TELE",
+        "Type": "Telephone"
       },
     },
+    "UltimateDebtor": {
+        "SchemeName": "UK.OBIE.BICFI",
+        "Identification": "2360549017905161589",
+        "Name": "Ultimate Debtor",
+        "LEI": "8200007YHFDMEODY1965",
+        "PostalAddress": {
+          "AddressType": "BIZZ",
+          "StreetName": "Bank Street",
+          "BuildingNumber": "11",
+          "Floor": "6",
+          "PostCode": "Z78 4TY",
+          "TownName": "London",
+          "Country": "UK"
+        }
+      },
+      "UltimateCreditor": {
+        "SchemeName": "UK.OBIE.BICFI",
+        "Identification": "2360549017905161589",
+        "Name": "Ultimate Creditor",
+        "LEI": "60450004FECVJV7YN339",
+        "PostalAddress": {
+          "AddressType": "BIZZ",
+          "StreetName": "Bank Street",
+          "BuildingNumber": "11",
+          "Floor": "6",
+          "PostCode": "Z78 4TY",
+          "TownName": "London",
+          "Country": "UK"
+          }
+        },
     "RegulatoryReporting": [{
       "DebitCreditReportingIndicator": "CRED",
       "Authority": {
@@ -659,7 +699,9 @@ Content-Type: application/json
             "Reference": "REF_26518"
           },
           "Invoicer": "INVR51856",
-          "Invoicee": "INVE5161856"
+          "Invoicee": "INVE5161856",
+          "TaxRemittance": "Tax Remittance related information",
+          "AdditionalRemittanceInformation": ["Free text for additional information"],
         }
       ],
       "Unstructured": "Internal ops code 5120101"
@@ -691,10 +733,9 @@ Content-Type: application/json
   }
   },
   "SCASupportData": {
-    "Type": "EcommerceServices",
+    "RequestedSCAExemptionType": "EcommerceGoods",
     "AppliedAuthenticationApproach": "SCA",
     "ReferencePaymentOrderId": "O-611265",
-    "Description": "Order number O-611256 payment"
   },  
   },
   "Risk": {

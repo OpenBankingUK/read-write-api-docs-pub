@@ -442,6 +442,7 @@ Accept: application/json
       "InstructionIdentification": "ACME412",
       "EndToEndIdentification": "FRESCO.21302.GFX.20",
       "LocalInstrument": "UK.OBIE.Paym",
+      "ChargeBearer": "Shared",
       "RequestedExecutionDate": "2018-08-06T00:00:00+00:00",
       "InstructionPriority": "Normal",
       "Purpose": "CCRD",
@@ -456,14 +457,20 @@ Accept: application/json
       "ExchangeRateInformation": {
         "UnitCurrency": "GBP",
         "ExchangeRate": 1.22,
-        "RateType": "Actual"
+        "RateType": "Actual",
+        "ContractIdentification": "415621656"
       },
       "CurrencyOfTransfer":"USD",
       "CreditorAccount": {
         "SchemeName": "UK.OBIE.SortCodeAccountNumber",
         "Identification": "08080021325698",
         "Name": "ACME Inc",
-        "SecondaryIdentification": "0002"
+        "SecondaryIdentification": "0002",
+        "Proxy": {
+          "Identification": "2360549017905188",
+          "Code": "TELE",
+          "Type": "Telephone"
+        },
       },
       "DebtorAccount": {
         "SchemeName": "UK.OBIE.SortCodeAccountNumber",
@@ -471,19 +478,35 @@ Accept: application/json
         "Identification": "11280001234567",
         "Name": "Andrea Smith",
         "Proxy": {
-          "Identification": "07700900000",
-          "Code": "TELE"
+          "Identification": "2360549017905188",
+          "Code": "TELE",
+          "Type": "Telephone"
         },
       },
-      "CreditorAccount": {
-        "SchemeName": "UK.OBIE.SortCodeAccountNumber",
+      "CreditorAgent": { 
+        "LEI": "X3F8005BLKBSWLCX4E37",
+        "SchemeName": "UK.OBIE.BICF",
+        "Name": "ACED Inc",
         "Identification": "08080021325698",
-        "Name": "ACME Inc",
-        "SecondaryIdentification": "0002",
-        "Proxy": {
-          "Identification": "+441632960540",
-          "Code": "TELE"
-        },
+        "PostalAddress": {
+          "AddressType": "BIZZ",
+          "Department": "Finance",
+          "SubDepartment": "Payroll",
+          "StreetName": "Bank Street",
+          "BuildingNumber": "11",
+          "BuildingName": "Tower Bridges",
+          "Floor": "6",
+          "UnitNumber": "UNIT591",
+          "Room": "844",
+          "PostBox": "PO Box 123456",
+          "PostCode": "Z78 4TY",
+          "TownLocationName":"Bank",
+          "TownName": "London",
+          "DistrictName": "Greater London",
+          "CareOf": "Ms Jane Smith",
+          "CountrySubDivision": "England",
+          "Country": "UK"
+        }
       },
       "UltimateDebtor": {
         "SchemeName": "UK.OBIE.BICFI",
@@ -533,8 +556,10 @@ Accept: application/json
           }]
         }],
       "RemittanceInformation": {
-        "Structured": [{
-            "ReferredDocumentInformation": [{
+        "Structured": [
+          {
+            "ReferredDocumentInformation": [
+              {
                 "Code": "CINV",
                 "Issuer": "Issuer01",
                 "Number": "Number_01",
@@ -542,7 +567,8 @@ Accept: application/json
                 "LineDetails": [
                   "string"
                 ]
-              }],
+              }
+            ],
             "ReferredDocumentAmount": 1,
             "CreditorReferenceInformation": {
               "Code": "DISP",
@@ -550,11 +576,13 @@ Accept: application/json
               "Reference": "REF_26518"
             },
             "Invoicer": "INVR51856",
-            "Invoicee": "INVE5161856"
+            "Invoicee": "INVE5161856",
+            "TaxRemittance": "Tax Remittance related information",
+            "AdditionalRemittanceInformation": ["Free text for additional information"],  
           }
         ],
         "Unstructured": "Internal ops code 5120101"
-       },
+      },
 	  "ExchangeRateInformation": {
 		"UnitCurrency": "GBP",
 	  	"RateType": "Actual"
@@ -562,16 +590,16 @@ Accept: application/json
     }
   },
   "SCASupportData": {
-    "Type": "EcommerceServices",
+    "RequestedSCAExemptionType": "EcommerceGoods",
     "AppliedAuthenticationApproach": "SCA",
     "ReferencePaymentOrderId": "O-611265",
-    "Description": "Order number O-611256 payment"
   },
   "Risk": {
     "PaymentContextCode": "TransferToThirdParty",
     "ContractPresentIndicator": false,
     "PaymentPurposeCode": "EPAY",
     "CategoryPurposeCode": "CASH", 
+    "ExtendedPurpose": "Required when no 4 character code fits the purpose",
     "BeneficiaryPaymentDetailsPrepopulatedIndicator": false,
     "BeneficiaryAccountType": "Business",
     "MerchantCategoryCode": "7300", 
@@ -641,6 +669,7 @@ Content-Type: application/json
         "ExchangeRate": 1.22,
         "RateType": "Actual",
         "ContractIdentification": "0591968098186",
+        "ExpirationDate": "2018-06-06T15:15:22+00:00"
       },
 		"Initiation": {
 			"InstructionIdentification": "ACME412",
@@ -664,6 +693,31 @@ Content-Type: application/json
         "ExchangeRate": 1.22,
         "RateType": "Actual"
       },
+      "CreditorAgent": { 
+        "LEI": "X3F8005BLKBSWLCX4E37",
+        "SchemeName": "UK.OBIE.BICF",
+        "Name": "ACED Inc",
+        "Identification": "08080021325698",
+        "PostalAddress": {
+          "AddressType": "BIZZ",
+          "Department": "Finance",
+          "SubDepartment": "Payroll",
+          "StreetName": "Bank Street",
+          "BuildingNumber": "11",
+          "BuildingName": "Tower Bridges",
+          "Floor": "6",
+          "UnitNumber": "UNIT591",
+          "Room": "844",
+          "PostBox": "PO Box 123456",
+          "PostCode": "Z78 4TY",
+          "TownLocationName":"Bank",
+          "TownName": "London",
+          "DistrictName": "Greater London",
+          "CareOf": "Ms Jane Smith",
+          "CountrySubDivision": "England",
+          "Country": "UK"
+        }
+      },
       "Creditor": {
         "SchemeName": "UK.OBIE.SortCodeAccountNumber",
          "LEI": "8200007YHFDMEODY8412",
@@ -684,7 +738,8 @@ Content-Type: application/json
         "SecondaryIdentification": "0002",
         "Proxy": {
           "Identification": "+441632960540",
-          "Code": "TELE"
+          "Code": "TELE",
+          "Type": "Telephone"
         },
       },
       "DebtorAccount":{
@@ -770,7 +825,9 @@ Content-Type: application/json
               "Reference": "REF_26518"
             },
             "Invoicer": "INVR51856",
-            "Invoicee": "INVE5161856"
+            "Invoicee": "INVE5161856",
+            "TaxRemittance": "Tax Remittance related information",
+            "AdditionalRemittanceInformation": ["Free text for additional information"],
           }
         ],
         "Unstructured": "Internal ops code 5120101"
@@ -778,16 +835,16 @@ Content-Type: application/json
 		},
 	},
   "SCASupportData": {
-    "Type": "EcommerceServices",
+    "RequestedSCAExemptionType": "EcommerceGoods",
     "AppliedAuthenticationApproach": "SCA",
     "ReferencePaymentOrderId": "O-611265",
-    "Description": "Order number O-611256 payment"
   },
 	"Risk": {
 		"PaymentContextCode": "TransferToThirdParty",
     "ContractPresentIndicator": false,
     "PaymentPurposeCode": "EPAY",
     "CategoryPurposeCode": "CASH", 
+    "ExtendedPurpose": "Required when no 4 character code fits the purpose",
     "BeneficiaryPaymentDetailsPrepopulatedIndicator": false,
     "BeneficiaryAccountType": "Business",
     "MerchantCategoryCode": "7300", 

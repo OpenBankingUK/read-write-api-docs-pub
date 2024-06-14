@@ -300,7 +300,8 @@ Accept: application/json
         "Name": "Andrea Smith",
         "Proxy": {
           "Identification": "+441632960540",
-          "Code": "TELE"
+          "Code": "TELE",
+          "Type": "Telephone"
         },
       },
       "CreditorAccount": {
@@ -311,6 +312,7 @@ Accept: application/json
          "Proxy": {
           "Identification": "441234012345",
           "Code": "TELE",
+          "Type": "Telephone"
         }
       },
       "MandateRelatedInformation": {
@@ -379,30 +381,33 @@ Accept: application/json
         }
       ],
       "RemittanceInformation": {
-          "Structured": [
-            {
-              "ReferredDocumentInformation": [
-                {
-                  "Code": "CINV",
-                  "Issuer": "Issuer01",
-                  "Number": "Number_01",
-                  "RelatedDate": "2024-04-25T13:26:41.911Z",
-                  "LineDetails": [
-                    "string"
-                  ]
-                }
-              ],
-              "ReferredDocumentAmount": 1,
-              "CreditorReferenceInformation": {
-                "Code": "DISP",
+        "Structured": [
+          {
+            "ReferredDocumentInformation": [
+              {
+                "Code": "CINV",
                 "Issuer": "Issuer01",
-                "Reference": "REF_26518"
-              },
-              "Invoicer": "INVR51856",
-              "Invoicee": "INVE5161856"
-            }
-          ]
-        }
+                "Number": "Number_01",
+                "RelatedDate": "2024-04-25T13:26:41.911Z",
+                "LineDetails": [
+                  "string"
+                ]
+              }
+            ],
+            "ReferredDocumentAmount": 1,
+            "CreditorReferenceInformation": {
+              "Code": "DISP",
+              "Issuer": "Issuer01",
+              "Reference": "REF_26518"
+            },
+            "Invoicer": "INVR51856",
+            "Invoicee": "INVE5161856",
+            "TaxRemittance": "Tax Remittance related information",
+            "AdditionalRemittanceInformation": ["Free text for additional information"],  
+          }
+        ],
+        "Unstructured": "Internal ops code 5120101"
+      }
     }
   },
   "Risk": {
@@ -446,10 +451,11 @@ Content-Type: application/json
 	"DomesticStandingOrderId": "SO-SOC-100",
 	"ConsentId": "SOC-100",
 	"CreationDateTime": "1976-01-01T06:06:06+00:00",
+  "StatusUpdateDateTime": "1976-01-01T06:06:06+00:00",
 	"StatusCode": "ASCP",
   "StatusReason":{
     "StatusReasonCode": "U30",
-    "Description": "	Payment order successfully received"
+    "Description": "Payment order successfully received"
   },
   "Refund": {
     "Account": {
@@ -505,6 +511,7 @@ Content-Type: application/json
         "Proxy": {
         "Identification": "441234012345",
         "Code": "TELE",
+        "Type": "Telephone"
       }
     },
     "CreditorAccount": {
@@ -566,28 +573,35 @@ Content-Type: application/json
             }
           }
         ]
-     }]
-    }
-  },
-  "Risk": {
-    "PaymentContextCode": "TransferToThirdParty",
-    "PaymentPurposeCode": "EPAY",
-    "CategoryPurposeCode": "CASH", 
-    "BeneficiaryPaymentDetailsPrepopulatedIndicator": false,
-    "BeneficiaryAccountType": "Business",
-    "MerchantCategoryCode": "7300", 
-    "MerchantCustomerIdentification": "053598653254",
-    "DeliveryAddress": {
-      "AddressLine": [
-        "Flat 7",
-        "Acacia Lodge"
-      ],
-      "StreetName": "Acacia Avenue",
-      "BuildingNumber": "27",
-      "PostCode": "GU31 2ZZ",
-      "TownName": "Sparsholt",
-      "CountrySubDivision": "Wessex",
-      "Country": "UK"
+     }],
+     "RemittanceInformation": {
+        "Structured": [
+          {
+            "ReferredDocumentInformation": [
+              {
+                "Code": "CINV",
+                "Issuer": "Issuer01",
+                "Number": "Number_01",
+                "RelatedDate": "2024-04-25T13:26:41.911Z",
+                "LineDetails": [
+                  "string"
+                ]
+              }
+            ],
+            "ReferredDocumentAmount": 1,
+            "CreditorReferenceInformation": {
+              "Code": "DISP",
+              "Issuer": "Issuer01",
+              "Reference": "REF_26518"
+            },
+            "Invoicer": "INVR51856",
+            "Invoicee": "INVE5161856",
+            "TaxRemittance": "Tax Remittance related information",
+            "AdditionalRemittanceInformation": ["Free text for additional information"],  
+          }
+        ],
+        "Unstructured": "Internal ops code 5120101"
+      }
     }
   },
   "Links": {
