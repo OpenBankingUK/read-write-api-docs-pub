@@ -1721,6 +1721,64 @@ Content-Type: application/json
 }
 ```
 
+
+### POST /domestic-vrp-consents/{ConsentId}/funds-confirmation
+
+The CBPII connects to the ASPSP that services the PSU's account(s) and creates a **funds-confirmation-consent** resource
+
+#### Request
+
+```
+POST /domestic-vrp-consents/fe615446-e53a-45ed-954c-ae5d1f97a93b/funds-confirmation HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9
+x-fapi-auth-date: Sun, 10 Sep 2017 19:43:31 GMT
+x-fapi-customer-ip-address: 104.25.212.99
+x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
+Accept: application/json
+```
+
+```json
+{
+  "Data" :{
+     "ConsentId": "fe615446-e53a-45ed-954c-ae5d1f97a93b",
+     "Reference": "SweepCo",
+     "InstructedAmount": {
+        "Amount": "22.89",
+        "Currency": "GBP"
+     }
+  }
+}
+```
+
+#### Response
+
+```
+HTTP/1.1 201 Created
+x-jws-signature: V2hhdCB3ZSBnb3QgaGVyZQ0K..aXMgZmFpbHVyZSB0byBjb21tdW5pY2F0ZQ0K
+x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
+Content-Type: application/json
+```
+
+```json
+{
+  "Data": {
+    "FundsConfirmationId" : "1561818651681",
+    "ConsentId": "fe615446-e53a-45ed-954c-ae5d1f97a93b",
+    "CreationDateTime": "2024-04-25T13:26:41.911Z",
+    "Reference": "SweepCo",
+    "FundsAvailableResult":{
+      "FundsAvailableDateTime": "2024-04-25T13:26:41.911Z",
+      "FundsAvailable" : "Available"
+    },
+    "InstructedAmount": {
+        "Amount": "22.89",
+        "Currency": "GBP"
+     }
+  }
+}
+
+```
+
 ### POST /domestic-vrps
 
 Finally, when the PISP initiates the payment, it specifies the CreditorAccount to be used.
