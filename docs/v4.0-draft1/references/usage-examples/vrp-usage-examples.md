@@ -178,8 +178,8 @@ Accept: application/json
       },
   },
   "Risk": {
-    "PaymentContextCode": "TransferToThirdParty",
-    "ContractPresentIndicator": false,
+    "PaymentContextCode": "TransferToSell",
+    "ContractPresentIndicator": true,
     "PaymentPurposeCode": "EPAY",
     "CategoryPurposeCode": "CASH", 
     "BeneficiaryPaymentDetailsPrepopulatedIndicator": false,
@@ -373,8 +373,8 @@ Content-Type: application/json
   },
 
   "Risk": {
-    "PaymentContextCode": "TransferToThirdParty",
-    "ContractPresentIndicator": false,
+    "PaymentContextCode": "TransferToSell",
+    "ContractPresentIndicator": true,
     "PaymentPurposeCode": "EPAY",
     "CategoryPurposeCode": "CASH", 
     "BeneficiaryPaymentDetailsPrepopulatedIndicator": false,
@@ -588,8 +588,8 @@ Content-Type: application/json
     }
   },
   "Risk": {
-    "PaymentContextCode": "TransferToThirdParty",
-    "ContractPresentIndicator": false,
+    "PaymentContextCode": "TransferToSell",
+    "ContractPresentIndicator": true,
     "PaymentPurposeCode": "EPAY",
     "CategoryPurposeCode": "CASH", 
     "BeneficiaryPaymentDetailsPrepopulatedIndicator": false,
@@ -840,8 +840,8 @@ Accept: application/json
     }
   },
   "Risk": {
-    "PaymentContextCode": "TransferToThirdParty",
-    "ContractPresentIndicator": false,
+    "PaymentContextCode": "TransferToSell",
+    "ContractPresentIndicator": true,
     "PaymentPurposeCode": "EPAY",
     "CategoryPurposeCode": "CASH", 
     "BeneficiaryPaymentDetailsPrepopulatedIndicator": false,
@@ -1108,8 +1108,8 @@ Content-Type: application/json
     }
   },
   "Risk": {
-    "PaymentContextCode": "TransferToThirdParty",
-    "ContractPresentIndicator": false,
+    "PaymentContextCode": "TransferToSell",
+    "ContractPresentIndicator": true,
     "PaymentPurposeCode": "EPAY",
     "CategoryPurposeCode": "CASH", 
     "BeneficiaryPaymentDetailsPrepopulatedIndicator": false,
@@ -1292,8 +1292,8 @@ Accept: application/json
     }
   },
   "Risk": {
-    "PaymentContextCode": "TransferToThirdParty",
-    "ContractPresentIndicator": false,
+    "PaymentContextCode": "TransferToSell",
+    "ContractPresentIndicator": true,
     "PaymentPurposeCode": "EPAY",
     "CategoryPurposeCode": "CASH", 
     "BeneficiaryPaymentDetailsPrepopulatedIndicator": false,
@@ -1476,8 +1476,8 @@ Content-Type: application/json
     }
   },
   "Risk": {
-    "PaymentContextCode": "TransferToThirdParty",
-    "ContractPresentIndicator": false,
+    "PaymentContextCode": "TransferToSell",
+    "ContractPresentIndicator": true,
     "PaymentPurposeCode": "EPAY",
     "CategoryPurposeCode": "CASH", 
     "BeneficiaryPaymentDetailsPrepopulatedIndicator": false,
@@ -1690,8 +1690,8 @@ Content-Type: application/json
   },
 
   "Risk": {
-    "PaymentContextCode": "TransferToThirdParty",
-    "ContractPresentIndicator": false,
+    "PaymentContextCode": "TransferToSell",
+    "ContractPresentIndicator": true,
     "PaymentPurposeCode": "EPAY",
     "CategoryPurposeCode": "CASH", 
     "BeneficiaryPaymentDetailsPrepopulatedIndicator": false,
@@ -1946,8 +1946,8 @@ Accept: application/json
   },
 
   "Risk": {
-    "PaymentContextCode": "TransferToThirdParty",
-    "ContractPresentIndicator": false,
+    "PaymentContextCode": "TransferToSell",
+    "ContractPresentIndicator": true,
     "PaymentPurposeCode": "EPAY",
     "CategoryPurposeCode": "CASH", 
     "BeneficiaryPaymentDetailsPrepopulatedIndicator": false,
@@ -2215,8 +2215,8 @@ Content-Type: application/json
   },
 
   "Risk": {
-    "PaymentContextCode": "TransferToThirdParty",
-    "ContractPresentIndicator": false,
+    "PaymentContextCode": "TransferToSell",
+    "ContractPresentIndicator": true,
     "PaymentPurposeCode": "EPAY",
     "CategoryPurposeCode": "CASH", 
     "BeneficiaryPaymentDetailsPrepopulatedIndicator": false,
