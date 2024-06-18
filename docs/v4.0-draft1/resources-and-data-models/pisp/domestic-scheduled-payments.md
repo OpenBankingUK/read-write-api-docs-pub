@@ -14,7 +14,7 @@
 - [Data Model](#data-model)
   - [Reused Classes](#reused-classes)
     - [OBDomesticScheduled2](#obdomesticscheduled2)
-    - [OBRemittanceInformation1](#obremittanceinformation1)
+    - [OBRemittanceInformation2](#obremittanceinformation2)
   - [Domestic Scheduled Payment - Request](#domestic-scheduled-payment-request)
     - [UML Diagram](#uml-diagram)
     - [Notes](#notes)
@@ -162,9 +162,9 @@ The data dictionary section gives the detail on the payload content for the Dome
 
 The OBDomesticScheduled2 class is defined in the [domestic-scheduled-payment-consents](./domestic-scheduled-payment-consents.md#obdomesticscheduled2) page.
 
-#### OBRemittanceInformation1
+#### OBRemittanceInformation2
 
-The OBRemittanceInformation1 class is defined in the [payment-initiation-api-profile](../../profiles/payment-initiation-api-profile.md#obremittanceinformation1) page.
+The OBRemittanceInformation2 class is defined in the [payment-initiation-api-profile](../../profiles/payment-initiation-api-profile.md#obremittanceinformation2) page.
 
 ### Domestic Scheduled Payment - Request
 
