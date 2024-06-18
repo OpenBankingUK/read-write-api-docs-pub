@@ -916,11 +916,6 @@ Content-Type: application/json
         "Identification": "30949330000010",
         "SecondaryIdentification": "Roll 90210",
         "Name": "Marcus Sweepimus",
-        "Proxy": {
-          "Identification": "441234012385",
-          "Code": "TELE",
-          "Type": "Telephone"
-        }
       },
       "CreditorAccount": {
         "SchemeName": "SortCodeAccountNumber",
@@ -2022,11 +2017,6 @@ Content-Type: application/json
         "Identification": "30949330000010",
         "SecondaryIdentification": "Roll 90210",
         "Name": "Marcus Sweepimus",
-        "Proxy": {
-          "Identification": "441234012385",
-          "Code": "TELE",
-          "Type": "Telephone"
-        }
       },
       "CreditorAccount": {
         "SchemeName": "SortCodeAccountNumber",
