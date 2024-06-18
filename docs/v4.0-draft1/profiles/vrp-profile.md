@@ -25,10 +25,10 @@
   - [Reused Classes](#reused-classes)
     - [OBProxy1 ](#obproxy1)
       - [Data Dictionary](#obproxy1-data-dictionary)
-    - [OBPostalAddress6](#obpostaladdress6)
-      - [Data Dictionary](#obpostaladdress6-data-dictionary)
-    - [OBRemittanceInformation1](#obremittanceinformation1)
-      - [Data Dictionary](#obremittanceinformation1-data-dictionary)
+    - [OBPostalAddress7](#obpostaladdress7)
+      - [Data Dictionary](#obpostaladdress7-data-dictionary)
+    - [OBRemittanceInformation2](#obremittanceinformation2)
+      - [Data Dictionary](#obremittanceinformation2-data-dictionary)
     - [OBUltimateCreditor1](#obultimatecreditor1)
       - [Data Dictionary](#obultimatecreditor1-data-dictionary)
     - [OBUltimateDebtor1](#obultimatedebtor1)
@@ -418,54 +418,54 @@ Additional information on usage is on the **Domestic VRP Consents** page
 | Type |0..1 |OBProxy1/Type| Type of the proxy identification. |Max35Text | |
 | Code |1..1 |OBProxy1/Code| Specifies the external proxy account type code, as published in the proxy account type external code set. |OBExternalProxyAccountType1Code | For more information see `ExternalProxyAccountType1Code` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets)|
 
-#### OBPostalAddress6
+#### OBPostalAddress7
 
-##### OBPostalAddress6 Data Dictionary
+##### OBPostalAddress7 Data Dictionary
 | Name | Occurrence | XPath | EnhancedDefinition | Class | Codes | Pattern |
 | --- | --- | --- | --- | --- | --- | --- |
-| OBPostalAddress6 | | |Information that locates and identifies a specific address, as defined by postal services. |OBPostalAddress6 | | |
-| AddressType |0..1 |OBPostalAddress6/AddressType |Identifies the nature of the postal address. | `OBAddressType2Code` | For a full set of codes see `OBAddressType2Code` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets).| |
-| CareOf |0..1 |OBPostalAddress6/CareOf |The 'care of' address is used whenever sending mail to a person or organisation who does not actually live or work at the address. They will receive the mail for the individual. |Max140Text | | |
-| PostBox |0..1 |OBPostalAddress6/PostBox |Numbered box in a post office, assigned to a person or organisation, where letters are kept until called for |Max16Text | | |
-| BuildingNumber |0..1 |OBPostalAddress6/BuildingNumber |Number that identifies the position of a building on a street. |Max16Text | | |
-| UnitNumber|0..1 |OBPostalAddress6/UnitNumber|Number that identifies the unit of a specific address |Max16Text | | |
-| BuildingName |0..1 |OBPostalAddress6/BuildingName |Name of a referenced building. |Max140Text | | |
-| Department |0..1 |OBPostalAddress6/Department |Identification of a division of a large organisation or building. |Max70Text | | |
-| SubDepartment |0..1 |OBPostalAddress6/SubDepartment |Identification of a sub-division of a large organisation or building. |Max70Text | | |
-| Room |0..1 |OBPostalAddress6/Room|Information that locates and identifies a room to form part of an address. |Max70Text | | |
-| Floor |0..1 |OBPostalAddress6/Floor|Number that identifies the level within a building. |Max70Text | | |
-| StreetName |0..1 |OBPostalAddress6/StreetName |Name of a street or thoroughfare. |Max140Text | | |
-| TownName |0..1 |OBPostalAddress6/TownName |Name of a built-up area, with defined boundaries, and a local government. |Max140Text | | |
-| TownLocationName |0..1 |OBPostalAddress6/TownLocationName |Name of a built-up area, with defined boundaries, and a local government. |Max140Text | | |
-| DistrictName |0..1 |OBPostalAddress6/DistrictName |Number that of the regional area, known as a district, which forms part of an address. |Max140Text | | |
-| PostCode |0..1 |OBPostalAddress6/PostCode |Identifier consisting of a group of letters and/or numbers that is added to a postal address to assist the sorting of mail. |Max16Text | | |
-| CountrySubDivision |0..1 |OBPostalAddress6/CountrySubDivision |Identifies a subdivision of a country such as state, region, county. |Max35Text | | |
-| Country |0..1 |OBPostalAddress6/Country |Nation with its own government. |CountryCode | |^[A-Z]{2,2}$ |
-| AddressLine |0..7 |OBPostalAddress6/AddressLine |Information that locates and identifies a specific address, as defined by postal services, presented in free format text. |Array of Max70Text | | | |
+| OBPostalAddress7 | | |Information that locates and identifies a specific address, as defined by postal services. |OBPostalAddress7 | | |
+| AddressType |0..1 |OBPostalAddress7/AddressType |Identifies the nature of the postal address. | `OBAddressType2Code` | For a full set of codes see `OBAddressType2Code` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets).| |
+| CareOf |0..1 |OBPostalAddress7/CareOf |The 'care of' address is used whenever sending mail to a person or organisation who does not actually live or work at the address. They will receive the mail for the individual. |Max140Text | | |
+| PostBox |0..1 |OBPostalAddress7/PostBox |Numbered box in a post office, assigned to a person or organisation, where letters are kept until called for |Max16Text | | |
+| BuildingNumber |0..1 |OBPostalAddress7/BuildingNumber |Number that identifies the position of a building on a street. |Max16Text | | |
+| UnitNumber|0..1 |OBPostalAddress7/UnitNumber|Number that identifies the unit of a specific address |Max16Text | | |
+| BuildingName |0..1 |OBPostalAddress7/BuildingName |Name of a referenced building. |Max140Text | | |
+| Department |0..1 |OBPostalAddress7/Department |Identification of a division of a large organisation or building. |Max70Text | | |
+| SubDepartment |0..1 |OBPostalAddress7/SubDepartment |Identification of a sub-division of a large organisation or building. |Max70Text | | |
+| Room |0..1 |OBPostalAddress7/Room|Information that locates and identifies a room to form part of an address. |Max70Text | | |
+| Floor |0..1 |OBPostalAddress7/Floor|Number that identifies the level within a building. |Max70Text | | |
+| StreetName |0..1 |OBPostalAddress7/StreetName |Name of a street or thoroughfare. |Max140Text | | |
+| TownName |0..1 |OBPostalAddress7/TownName |Name of a built-up area, with defined boundaries, and a local government. |Max140Text | | |
+| TownLocationName |0..1 |OBPostalAddress7/TownLocationName |Name of a built-up area, with defined boundaries, and a local government. |Max140Text | | |
+| DistrictName |0..1 |OBPostalAddress7/DistrictName |Number that of the regional area, known as a district, which forms part of an address. |Max140Text | | |
+| PostCode |0..1 |OBPostalAddress7/PostCode |Identifier consisting of a group of letters and/or numbers that is added to a postal address to assist the sorting of mail. |Max16Text | | |
+| CountrySubDivision |0..1 |OBPostalAddress7/CountrySubDivision |Identifies a subdivision of a country such as state, region, county. |Max35Text | | |
+| Country |0..1 |OBPostalAddress7/Country |Nation with its own government. |CountryCode | |^[A-Z]{2,2}$ |
+| AddressLine |0..7 |OBPostalAddress7/AddressLine |Information that locates and identifies a specific address, as defined by postal services, presented in free format text. |Array of Max70Text | | | |
 
-#### OBRemittanceInformation1
+#### OBRemittanceInformation2
 
-##### OBRemittanceInformation1 Data Dictionary
+##### OBRemittanceInformation2 Data Dictionary
 | Name | Occurrence | XPath | EnhancedDefinition | Class | Codes |
 | --- | --- | --- | --- | --- | ---|
-| OBRemittanceInformation1 || |Information supplied to enable the matching of an entry with the items that the transfer is intended to settle, such as commercial invoices in an accounts' receivable system. |OBRemittanceInformation1 | |
-| Structured |0..* |OBRemittanceInformation1/Structured |Information supplied to enable the matching/reconciliation of an entry with the items that the payment is intended to settle, such as commercial invoices in an accounts' receivable system, in an structured form. |OBRemittanceInformationStructured1 | |
-| ReferredDocumentAmount |0..1 |OBRemittanceInformation1/Structured/ReferredDocumentAmount | Provides details on the amounts of the referred document. |Int32| | 
-| Invoicer |0..1 |OBRemittanceInformation1/Structured/Invoicer |Identification of the organisation issuing the invoice, when it is different from the creditor or ultimate creditor |Max256Text| | 
-| Invoicee |0..1 |OBRemittanceInformation1/Structured/Invoicee | Identification of the party to whom an invoice is issued, when it is different from the debtor or ultimate debtor.|Max256Text| | 
-| TaxRemittance |0..1 |OBRemittanceInformation1/Structured/TaxRemittance | Provides remittance information about a payment made for tax-related purposes.|Max140Text| | 
-| AdditionalRemittanceInformation |0..3|OBRemittanceInformation1/Structured/AdditionalRemittanceInformation |Additional information, in free text form, to complement the structured remittance information. |Array of Max140Text ||
-| CreditorReferenceInformation |0..1 |OBRemittanceInformation1/Structured/CreditorReferenceInformation | Reference information provided by the creditor to allow the identification of the underlying documents.|OBCreditorReferenceInformation1| | 
-| Code | 0..1| OBRemittanceInformation1/Structured/CreditorReferenceInformation/Code | Specifies the amount type, as published in an external referred amount code set.|`ExternalCreditorReferenceType1Code`| For more information see `ExternalCreditorReferenceType1Code` [here](https:/github.com/OpenBankingUK/External_internal_CodeSets) ||
-|Issuer | 0..1| OBRemittanceInformation1/Structured/CreditorReferenceInformation/Issuer | Entity that assigns the identification.| Max35Text |||
-|Reference | 0..1| OBRemittanceInformation1/Structured/CreditorReferenceInformation/Reference | Unique reference, as assigned by the creditor, to unambiguously refer to the payment transaction.| Max35Text ||
-| ReferredDocumentInformation |0..* |OBRemittanceInformation1/Structured/ReferredDocumentInformation |Provides the identification and the content of the referred document. |Array ||  
-| Code | 0..1 |OBRemittanceInformation1/Structured/ReferredDocumentInformation/Code |Type of remittance document, as published in an external document type code set. |`ExternalDocumentType1Code` |For more information see `ExternalDocumentType1Code` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets)|  |
-| Issuer | 0..1 | OBRemittanceInformation1/Structured/ReferredDocumentInformation/Issuer | Identification of the issuer of the reference document type. | Max35Text ||
-| LineDetails | 0..* | OBRemittanceInformation1/Structured/ReferredDocumentInformation/LineDetails | Set of elements used to provide the content of the referred document line. | Array of String ||
-| Number | 0..1 | OBRemittanceInformation1/Structured/ReferredDocumentInformation/Number | Identification of the type specified for the referred document line. | Max35Text ||
-| RelatedDate | 0..1 | OBRemittanceInformation1/Structured/ReferredDocumentInformation/RelatedDate | Date associated with the referred document line. | ISODate ||
-| Unstructured |0..* |OBRemittanceInformation1/Unstructured |Information supplied to enable the matching/reconciliation of an entry with the items that the payment is intended to settle, such as commercial invoices in an accounts' receivable system, in an unstructured form. |Max140Text | |
+| OBRemittanceInformation2 || |Information supplied to enable the matching of an entry with the items that the transfer is intended to settle, such as commercial invoices in an accounts' receivable system. |OBRemittanceInformation2 | |
+| Structured |0..* |OBRemittanceInformation2/Structured |Information supplied to enable the matching/reconciliation of an entry with the items that the payment is intended to settle, such as commercial invoices in an accounts' receivable system, in an structured form. |OBRemittanceInformationStructured1 | |
+| ReferredDocumentAmount |0..1 |OBRemittanceInformation2/Structured/ReferredDocumentAmount | Provides details on the amounts of the referred document. |Int32| | 
+| Invoicer |0..1 |OBRemittanceInformation2/Structured/Invoicer |Identification of the organisation issuing the invoice, when it is different from the creditor or ultimate creditor |Max256Text| | 
+| Invoicee |0..1 |OBRemittanceInformation2/Structured/Invoicee | Identification of the party to whom an invoice is issued, when it is different from the debtor or ultimate debtor.|Max256Text| | 
+| TaxRemittance |0..1 |OBRemittanceInformation2/Structured/TaxRemittance | Provides remittance information about a payment made for tax-related purposes.|Max140Text| | 
+| AdditionalRemittanceInformation |0..3|OBRemittanceInformation2/Structured/AdditionalRemittanceInformation |Additional information, in free text form, to complement the structured remittance information. |Array of Max140Text ||
+| CreditorReferenceInformation |0..1 |OBRemittanceInformation2/Structured/CreditorReferenceInformation | Reference information provided by the creditor to allow the identification of the underlying documents.|OBCreditorReferenceInformation1| | 
+| Code | 0..1| OBRemittanceInformation2/Structured/CreditorReferenceInformation/Code | Specifies the amount type, as published in an external referred amount code set.|`ExternalCreditorReferenceType1Code`| For more information see `ExternalCreditorReferenceType1Code` [here](https:/github.com/OpenBankingUK/External_internal_CodeSets) ||
+|Issuer | 0..1| OBRemittanceInformation2/Structured/CreditorReferenceInformation/Issuer | Entity that assigns the identification.| Max35Text |||
+|Reference | 0..1| OBRemittanceInformation2/Structured/CreditorReferenceInformation/Reference | Unique reference, as assigned by the creditor, to unambiguously refer to the payment transaction.| Max35Text ||
+| ReferredDocumentInformation |0..* |OBRemittanceInformation2/Structured/ReferredDocumentInformation |Provides the identification and the content of the referred document. |Array ||  
+| Code | 0..1 |OBRemittanceInformation2/Structured/ReferredDocumentInformation/Code |Type of remittance document, as published in an external document type code set. |`ExternalDocumentType1Code` |For more information see `ExternalDocumentType1Code` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets)|  |
+| Issuer | 0..1 | OBRemittanceInformation2/Structured/ReferredDocumentInformation/Issuer | Identification of the issuer of the reference document type. | Max35Text ||
+| LineDetails | 0..* | OBRemittanceInformation2/Structured/ReferredDocumentInformation/LineDetails | Set of elements used to provide the content of the referred document line. | Array of String ||
+| Number | 0..1 | OBRemittanceInformation2/Structured/ReferredDocumentInformation/Number | Identification of the type specified for the referred document line. | Max35Text ||
+| RelatedDate | 0..1 | OBRemittanceInformation2/Structured/ReferredDocumentInformation/RelatedDate | Date associated with the referred document line. | ISODate ||
+| Unstructured |0..* |OBRemittanceInformation2/Unstructured |Information supplied to enable the matching/reconciliation of an entry with the items that the payment is intended to settle, such as commercial invoices in an accounts' receivable system, in an unstructured form. |Max140Text | |
 
 #### OBUltimateCreditor1
 
@@ -477,7 +477,7 @@ Additional information on usage is on the **Domestic VRP Consents** page
 | Identification |0..1 |OBUltimateCreditor1/Identification |Identification assigned by an institution. |Max256Text | | |
 | LEI |0..1 | OBUltimateCreditor1/LEI |Legal entity identification as an alternate identification for a party. Legal Entity Identifier is a code allocated to a party as described in ISO 17442 "Financial Services - Legal Entity Identifier (LEI)".|Max20Text | | ^[A-Z0-9]{18,18}[0-9]{2,2}$|
 | SchemeName |0..1 |OBUltimateCreditor1/SchemeName |Name of the identification scheme, in a coded form as published in an external list. |For a full description see `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets). |OBInternalAccountIdentification4Code | 
-| PostalAddress | 0..1 | OBUltimateCreditor1/PostalAddress | Information that locates and identifies a specific address, as defined by postal services. | OBPostalAddress6 | | 
+| PostalAddress | 0..1 | OBUltimateCreditor1/PostalAddress | Information that locates and identifies a specific address, as defined by postal services. | OBPostalAddress7 | | 
 
 #### OBUltimateDebtor1
 
@@ -489,7 +489,7 @@ Additional information on usage is on the **Domestic VRP Consents** page
 | Identification |0..1 |OBUltimateDebtor1/Identification |Identification assigned by an institution. |Max256Text | | |
 | LEI |0..1 | OBUltimateDebtor1/LEI |Legal entity identification as an alternate identification for a party. Legal Entity Identifier is a code allocated to a party as described in ISO 17442 "Financial Services - Legal Entity Identifier (LEI)".|Max20Text | | ^[A-Z0-9]{18,18}[0-9]{2,2}$|
 | SchemeName |0..1 |OBUltimateDebtor1/SchemeName |Name of the identification scheme, in a coded form as published in an external list. | For a full description see `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets). |OBInternalAccountIdentification4Code | 
-| PostalAddress | 0..1 | OBUltimateDebtor1/PostalAddress | Information that locates and identifies a specific address, as defined by postal services. | OBPostalAddress6 | | 
+| PostalAddress | 0..1 | OBUltimateDebtor1/PostalAddress | Information that locates and identifies a specific address, as defined by postal services. | OBPostalAddress7 | | 
 
 #### OBRegulatoryReporting1
 

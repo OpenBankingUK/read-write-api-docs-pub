@@ -10,12 +10,12 @@
     - [Payment Order Consent](#payment-order-consent)
 - [Data Model](#data-model)
   - [Reused Classes](#reused-classes)
-    - [OBRemittanceInformation1](#obremittanceinformation1)
+    - [OBRemittanceInformation2](#obremittanceinformation2)
     - [OBMandateRelatedInformation1](#obmandaterelatedinformation1)
     - [OBRegulatoryReporting1](#obregulatoryreporting1)
     - [OBUltimateCreditor1](#obultimatecreditor1)
     - [OBUltimateDebtor1](#obultimatedebtor1)
-    - [OBPostalAddress6](#obpostaladdress6)
+    - [OBPostalAddress7](#obpostaladdress7)
     - [OBProxy1](#obproxy1)
     - [OBInternationalStandingOrder4](#obinternationalstandingorder4)
       - [UML Diagram](#uml-diagram)
@@ -118,9 +118,9 @@ The data dictionary section gives the detail on the payload content for the Inte
 
 ### Reused Classes
 
-#### OBRemittanceInformation1
+#### OBRemittanceInformation2
 
-The OBRemittanceInformation1 class is defined in the [payment-initiation-api-profile](../../profiles/payment-initiation-api-profile.md#obremittanceinformation1) page.
+The OBRemittanceInformation2 class is defined in the [payment-initiation-api-profile](../../profiles/payment-initiation-api-profile.md#obremittanceinformation2) page.
 
 #### OBMandateRelatedInformation1
 
@@ -139,9 +139,9 @@ The OBUltimateCreditor1 class is defined in the [payment-initiation-api-profile]
 
 The OBUltimateDebtor1 class is defined in the [payment-initiation-api-profile](../../profiles/payment-initiation-api-profile.md#obultimatedebtor1) page.
 
-#### OBPostalAddress6 
+#### OBPostalAddress7 
 
-The OBPostalAddress6 class is defined in the [payment-initiation-api-profile](../../profiles/payment-initiation-api-profile.md#obpostaladdress6) page
+The OBPostalAddress7 class is defined in the [payment-initiation-api-profile](../../profiles/payment-initiation-api-profile.md#obpostaladdress7) page
 
 #### OBProxy1
 
@@ -183,7 +183,7 @@ For the OBInternationalStandingOrder4 Initiation object:
 | --- |--- |--- |--- |--- |--- |--- |
 | OBInternationalStandingOrder4 | |OBInternationalStandingOrder4 |The Initiation payload is sent by the initiating party to the ASPSP. It is used to request movement of funds from the debtor account to a creditor for an international standing order. |OBInternationalStandingOrder4 | | |
 | MandateRelatedInformation | 0..1 |OBInternationalStandingOrder4/MandateRelatedInformation ||OBMandateRelatedInformation1 | | |
-| RemittanceInformation |0..1 |OBInternationalStandingOrder4/RemittanceInformation |Information supplied to enable the matching of an entry with the items that the transfer is intended to settle, such as commercial invoices in an accounts' receivable system. |OBRemittanceInformation1 | | |
+| RemittanceInformation |0..1 |OBInternationalStandingOrder4/RemittanceInformation |Information supplied to enable the matching of an entry with the items that the transfer is intended to settle, such as commercial invoices in an accounts' receivable system. |OBRemittanceInformation2 | | |
 | Purpose |0..1 |OBInternationalStandingOrder4/Purpose |Specifies the external purpose code in the format of character string with a maximum length of 4 characters. The list of valid codes is an external code list published separately. External code sets can be downloaded from www.iso20022.org. |OBExternalPurpose1Code1 | | |
 | ChargeBearer |0..1 |OBInternationalStandingOrder4/ChargeBearer |Specifies which party/parties will bear the charges associated with the processing of the payment transaction. |OBChargeBearerType1Code |BorneByCreditor BorneByDebtor FollowingServiceLevel Shared | |
 | CurrencyOfTransfer |1..1 |OBInternationalStandingOrder4/CurrencyOfTransfer |Specifies the currency of the to be transferred amount, which is different from the currency of the debtor's account. |ActiveOrHistoricCurrencyCode | |^[A-Z]{3,3}$ |
@@ -201,14 +201,14 @@ For the OBInternationalStandingOrder4 Initiation object:
 | Creditor |0..1 |OBInternationalStandingOrder4/Creditor |Party to which an amount of money is due. |OBPartyIdentification43 | | |
 | Name |0..1 |OBInternationalStandingOrder4/Creditor/Name |Name by which a party is known and which is usually used to identify that party. |Max350Text | | |
 | LEI |0..1 | OBInternationalStandingOrder4/Creditor/LEI |Legal Entity Identification Legal entity identification as an alternate identification for a party. Legal Entity Identifier is a code allocated to a party as described in ISO 17442 "Financial Services - Legal Entity Identifier (LEI)". |Max20Text | |^[A-Z0-9]{18,18}[0-9]{2,2}$ |
-| PostalAddress |0..1 |OBInternationalStandingOrder4/Creditor/PostalAddress |Information that locates and identifies a specific address, as defined by postal services. |OBPostalAddress6 | | |
+| PostalAddress |0..1 |OBInternationalStandingOrder4/Creditor/PostalAddress |Information that locates and identifies a specific address, as defined by postal services. |OBPostalAddress7 | | |
 | UltimateCreditor |0..1 |OBInternationalStandingOrder4/UltimateCreditor|Ultimate party to which an amount of money is due. | OBUltimateCreditor1 | | |
 | CreditorAgent |0..1 |OBInternationalStandingOrder4/CreditorAgent |Party that manages the account on behalf of the account owner, that is manages the registration and booking of entries on the account, calculates balances on the account and provides information about the account. This is the servicer of the beneficiary account. |OBBranchAndFinancialInstitutionIdentification6 | | |
 | SchemeName |0..1 |OBInternationalStandingOrder4/CreditorAgent/SchemeName |Name of the identification scheme, in a coded form as published in an external list. |For a full list of enumeration values refer to `Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_internal_CodeSets)|OBInternalFinancialInstitutionIdentification4Co
 | Identification |0..1 |OBInternationalStandingOrder4/CreditorAgent/Identification |Unique and unambiguous identification of the servicing institution. |Max35Text | | |
 | Name |0..1 |OBInternationalStandingOrder4/CreditorAgent/Name |Name by which an agent is known and which is usually used to identify that agent. |Max140Text | | |
 | LEI |0..1 | OBInternationalStandingOrder4/CreditorAgent/LEI |Legal Entity Identification Legal entity identification as an alternate identification for a party. Legal Entity Identifier is a code allocated to a party as described in ISO 17442 "Financial Services - Legal Entity Identifier (LEI)". |Max20Text | |^[A-Z0-9]{18,18}[0-9]{2,2}$ |
-| PostalAddress |0..1 |OBInternationalStandingOrder4/CreditorAgent/PostalAddress |Information that locates and identifies a specific address, as defined by postal services. |OBPostalAddress6 | | |
+| PostalAddress |0..1 |OBInternationalStandingOrder4/CreditorAgent/PostalAddress |Information that locates and identifies a specific address, as defined by postal services. |OBPostalAddress7 | | |
 | CreditorAccount |1..1 |OBInternationalStandingOrder4/CreditorAccount |Provides the details to identify the beneficiary account. |OBCashAccountCreditor3 | | |
 | SchemeName |1..1 |OBInternationalStandingOrder4/CreditorAccount/SchemeName |Name of the identification scheme, in a coded form as published in an external list. | For a full description see `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets). |OBInternalAccountIdentification4Code | 
 | Identification |1..1 |OBInternationalStandingOrder4/CreditorAccount/Identification |Identification assigned by an institution to identify an account. This identification is known by the account owner. |Max256Text | | |

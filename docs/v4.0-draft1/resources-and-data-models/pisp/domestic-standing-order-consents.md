@@ -10,7 +10,7 @@
     - [Payment Order Consent](#payment-order-consent)
 - [Data Model](#data-model)
   - [Reused Classes](#reused-classes)
-    - [OBRemittanceInformation1](#obremittanceinformation1)
+    - [OBRemittanceInformation2](#obremittanceinformation2)
     - [OBMandateRelatedInformation1](#obmandaterelatedinformation1)
     - [OBUltimateCreditor1](#obultimatecreditor1)
     - [OBUltimateDebtor1](#obultimatedebtor1)
@@ -119,9 +119,9 @@ The Data Dictionary section gives the detail on the payload content for the Dome
 
 ### Reused Classes
 
-#### OBRemittanceInformation1
+#### OBRemittanceInformation2
 
-The OBRemittanceInformation1 class is defined in the [payment-initiation-api-profile](../../profiles/payment-initiation-api-profile.md#obremittanceinformation1) page.
+The OBRemittanceInformation2 class is defined in the [payment-initiation-api-profile](../../profiles/payment-initiation-api-profile.md#obremittanceinformation2) page.
 
 #### OBMandateRelatedInformation1
 
@@ -188,7 +188,7 @@ For the OBDomesticStandingOrder3 Initiation object:
 | ---- |---------- |----- |------------------ |----- |----- |------- |
 | OBDomesticStandingOrder3 | |OBDomesticStandingOrder3 |The Initiation payload is sent by the initiating party to the ASPSP. It is used to request movement of funds from the debtor account to a creditor for a domestic standing order. |OBDomesticStandingOrder3 | | |
 | MandateRelatedInformation | 0..1 |OBDomesticStandingOrder3/MandateRelatedInformation |Provides further details of the mandate signed between the creditor and the debtor.|OBMandateRelatedInformation1| | |
-| RemittanceInformation |0..1 |OBDomesticStandingOrder3/RemittanceInformation |Information supplied to enable the matching of an entry with the items that the transfer is intended to settle, such as commercial invoices in an accounts' receivable system. |OBRemittanceInformation1 | | |
+| RemittanceInformation |0..1 |OBDomesticStandingOrder3/RemittanceInformation |Information supplied to enable the matching of an entry with the items that the transfer is intended to settle, such as commercial invoices in an accounts' receivable system. |OBRemittanceInformation2 | | |
 | Amount |1..1 |OBDomesticStandingOrder3/FirstPaymentAmount/Amount |A number of monetary units specified in an active currency where the unit of currency is explicit and compliant with ISO 4217. |OBActiveCurrencyAndAmount_SimpleType | |`^\d{1,13}$|^\d{1,13}\.\d{1,5}$` |
 | Currency |1..1 |OBDomesticStandingOrder3/FirstPaymentAmount/Currency |A code allocated to a currency by a Maintenance Agency under an international identification scheme, as described in the latest edition of the international standard ISO 4217 "Codes for the representation of currencies and funds". |ActiveOrHistoricCurrencyCode | |^[A-Z]{3,3}$ |
 | RecurringPaymentAmount |0..1 |OBDomesticStandingOrder3/RecurringPaymentAmount |The amount of the recurring Standing Order |OBActiveOrHistoricCurrencyAndAmount | | |
