@@ -244,7 +244,7 @@ The account-access-consent resource is referred to as an account-request resourc
 - An ASPSP **must** allow a Consent to be accessed in a newer version.
 - An ASPSP **must** ensure Permissions set associated with a Consent are unchanged when accessed in a different version:
   - E.g., An account-request created in v2 will have the same details when accessed via v2 and v3 (as an account-access-consent).
-- An ASPSP **must** ensure a Consent's fields are unchanged when accessed in a different version.
+- An ASPSP **must** ensure a Consent's fields are representative of the version being accessed. e.g. using v4 fields and enums when accessing a consent create don 3.1 on v4.0 endpoints
 - An ASPSP **may** allow expired Consents to be accessed in a newer version.
 - An ASPSP **may** choose to populate new fields introduced in a resource from previous version sensible defaults (if mandatory) or not populate at all (if not mandatory):
   - E.g., OBReadResponse1/Data/StatusUpdateDateTime introduced in v2 accessed with v1 AccountRequestId can be populated with Last accessed date time, if not already available in the system of records.
