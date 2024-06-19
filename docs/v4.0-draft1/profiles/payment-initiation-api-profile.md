@@ -908,7 +908,7 @@ Key:
 
 #### Static Enumerations
 
-The definitions for enumerations used in the Payment APIs can be found [here](https://github.com/OpenBankingUK/External_internal_CodeSets)
+The definitions and values for enumerations used in the Payment APIs can be found [here](https://github.com/OpenBankingUK/External_internal_CodeSets)
 
 
 #### ISO Enumerations
@@ -920,6 +920,8 @@ These following ISO Enumerations are used in the Payment APIs.
 | Min3Max4Text |MerchantCategoryCode |https://www.iso.org/standard/33365.html |
 | ActiveOrHistoricCurrencyCode |Currency |https://www.iso20022.org/external_code_list.page |
 | CountryCode |Country |https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2#Officially_assigned_code_elements |
+
+The definitions and values for ISO enumerations in the Payment APIs can be found [here](https://github.com/OpenBankingUK/External_internal_CodeSets)
 
 #### Namespaced Enumerations
 
