@@ -1053,7 +1053,7 @@ A `login_hint_token` **must not** be included in the request.
 
 A PSU may revoke any of their long-lived consents through the TPP, and only Funds Confirmation Consent through the ASPSP. This only applies to long-lived consents:
 
-* When a PSU does not complete the consent-authorisation flow, the ASPSP must mark the consent as `Rejected`.
+* When a PSU does not complete the consent-authorisation flow, the ASPSP must mark the consent as `RJCT` (Rejected).
 * When the PSU revokes their consent with the TPP, the TPP must make a `DELETE` request to the consent resource. The ASPSP **must** delete the resource (possibly as a "soft" delete) and respond to subsequent `GET` requests with an Http Status of `400`.
 
 In each of the above cases, the consent states are terminal i.e. the ASPSP **must not** allow any further state changes. The ASPSP **must not** permit any authorisation code grants to be initiated with such a consent.
@@ -1066,7 +1066,7 @@ An ASPSP may issue an access token and refresh token for a long-lived consent. T
 
 #### Ability to re-authenticate an Authorised consent at any point of time
 
-A TPP **may** request a PSU to re-authenticate a consent at *any point of time* for a long-lived consent that is in the `Authorised` state. This includes before and after the underlying tokens have expired.
+A TPP **may** request a PSU to re-authenticate a consent at *any point of time* for a long-lived consent that is in the `AUTH` (Authorised) state. This includes before and after the underlying tokens have expired.
 
 An ASPSP **must** accept a request from a TPP to re-authenticate a consent at any point of time for a long-lived consent that is in the Authorised state. This includes before and after the underlying tokens have expired.
 
