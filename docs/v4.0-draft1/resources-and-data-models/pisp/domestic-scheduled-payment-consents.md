@@ -10,11 +10,11 @@
     - [Payment Order Consent](#payment-order-consent)
 - [Data Model](#data-model)
   - [Reused Classes](#reused-classes)
-    - [OBRemittanceInformation1](#obremittanceinformation1)
+    - [OBRemittanceInformation2](#obremittanceinformation2)
     - [OBRegulatoryReporting1](#obregulatoryreporting1)
     - [OBUltimateCreditor1](#obultimatecreditor1)
     - [OBUltimateDebtor1](#obultimatedebtor1)
-    - [OBPostalAddress6](#obpostaladdress6)
+    - [OBPostalAddress7](#obpostaladdress7)
     - [OBDomesticScheduled2](#obdomesticscheduled2)
       - [UML Diagram](#uml-diagram)
       - [Notes](#notes)
@@ -115,9 +115,9 @@ The data dictionary section gives the detail on the payload content for the Dome
 
 ### Reused Classes
 
-#### OBRemittanceInformation1
+#### OBRemittanceInformation2
 
-The OBRemittanceInformation1 class is defined in the [payment-initiation-api-profile](../../profiles/payment-initiation-api-profile.md#obremittanceinformation1) page.
+The OBRemittanceInformation2 class is defined in the [payment-initiation-api-profile](../../profiles/payment-initiation-api-profile.md#obremittanceinformation2) page.
 
 #### OBRegulatoryReporting1
 
@@ -132,9 +132,9 @@ The OBUltimateCreditor1 class is defined in the [payment-initiation-api-profile]
 
 The OBUltimateDebtor1 class is defined in the [payment-initiation-api-profile](../../profiles/payment-initiation-api-profile.md#obultimatedebtor1) page.
 
-#### OBPostalAddress6 
+#### OBPostalAddress7 
 
-The OBPostalAddress6 class is defined in the [payment-initiation-api-profile](../../profiles/payment-initiation-api-profile.md#obpostaladdress6) page.
+The OBPostalAddress7 class is defined in the [payment-initiation-api-profile](../../profiles/payment-initiation-api-profile.md#obpostaladdress7) page.
 
 
 #### OBDomesticScheduled2
@@ -177,9 +177,9 @@ Account Identification field usage:
 | DebtorAccount |0..1 |OBDomesticScheduled2/DebtorAccount |Unambiguous identification of the account of the debtor to which a debit entry will be made as a result of the transaction. |OBCashAccountDebtor4 | | |
 | UltimateDebtor |0..1 |OBDomesticScheduled2/UltimateDebtor|Ultimate party that owes an amount of money to the (ultimate) creditor. |OBUltimateDebtor1 | | |
 | CreditorAccount |1..1 |OBDomesticScheduled2/CreditorAccount |Unambiguous identification of the account of the creditor to which a credit entry will be posted as a result of the payment transaction. |OBCashAccountCreditor3 | | |
-| CreditorPostalAddress |0..1 |OBDomesticScheduled2/CreditorPostalAddress |Information that locates and identifies a specific address, as defined by postal services. |OBPostalAddress6 | | |
+| CreditorPostalAddress |0..1 |OBDomesticScheduled2/CreditorPostalAddress |Information that locates and identifies a specific address, as defined by postal services. |OBPostalAddress7 | | |
 | UltimateCreditor |0..1 |OBDomesticScheduled2/UltimateCreditor|Ultimate party to which an amount of money is due. | OBUltimateCreditor1 | | |
-| RemittanceInformation |0..1 |OBDomesticScheduled2/RemittanceInformation |Information supplied to enable the matching of an entry with the items that the transfer is intended to settle, such as commercial invoices in an accounts' receivable system. |OBRemittanceInformation1 | | |
+| RemittanceInformation |0..1 |OBDomesticScheduled2/RemittanceInformation |Information supplied to enable the matching of an entry with the items that the transfer is intended to settle, such as commercial invoices in an accounts' receivable system. |OBRemittanceInformation2 | | |
 | RegulatoryReporting |0..10 |OBDomesticScheduled2/RegulatoryReporting |Information needed due to regulatory and statutory requirements. |OBRegulatoryReporting1 | | |
 | SupplementaryData |0..1 |OBDomesticScheduled2/SupplementaryData |Additional information that can not be captured in the structured fields and/or any other specific block. |OBSupplementaryData1 | | |
 
@@ -309,7 +309,8 @@ Accept: application/json
         "Name": "Andrea Frost",
         "Proxy": {
           "Identification": "+441632960540",
-          "Code": "TELE"
+          "Code": "TELE",
+          "Type": "Telephone"
         },
       },
       "CreditorAccount": {
@@ -319,7 +320,8 @@ Accept: application/json
         "Name": "Tom Kirkman",
         "Proxy": {
           "Identification": "2360549017905188",
-          "Code": "TELE"
+          "Code": "TELE",
+          "Type": "Telephone"
         },
       },
       "CreditorPostalAddress":{
@@ -413,7 +415,9 @@ Accept: application/json
                 "Reference": "REF_26518"
               },
               "Invoicer": "INVR51856",
-              "Invoicee": "INVE5161856"
+              "Invoicee": "INVE5161856",
+              "TaxRemittance": "Tax Remittance related information",
+              "AdditionalRemittanceInformation": ["Free text for additional information"],  
             }
           ],
           "Unstructured": "Internal ops code 5120101"
@@ -421,33 +425,10 @@ Accept: application/json
     },
   },
   "SCASupportData": {
-        "Type": "EcommerceServices",
+        "RequestedSCAExemptionType": "EcommerceGoods",
         "AppliedAuthenticationApproach": "SCA",
         "ReferencePaymentOrderId": "O-611265",
-        "Description": "Order number O-611256 payment"
     },
-  "Risk": {
-    "PaymentContextCode": "TransferToThirdParty",
-    "ContractPresentIndicator": false,
-    "PaymentPurposeCode": "EPAY",
-    "CategoryPurposeCode": "CASH", 
-    "BeneficiaryPaymentDetailsPrepopulatedIndicator": false,
-    "BeneficiaryAccountType": "Business",
-    "MerchantCategoryCode": "7300", 
-    "MerchantCustomerIdentification": "053598653254",
-    "DeliveryAddress": {
-      "AddressLine": [
-        "Flat 7",
-        "Acacia Lodge"
-      ],
-      "StreetName": "Acacia Avenue",
-      "BuildingNumber": "27",
-      "PostCode": "GU31 2ZZ",
-      "TownName": "Sparsholt",
-      "CountrySubDivision": "Wessex",
-      "Country": "UK"
-    }
-  }
 }
 ```
 
@@ -508,16 +489,36 @@ Content-Type: application/json
         "SchemeName": "UK.OBIE.SortCodeAccountNumber",
         "Identification": "11280001234567",
         "Name": "Andrea Frost",
-         "SecondaryIdentification": "0002",
+        "SecondaryIdentification": "0002",
         "Proxy": {
           "Identification": "2360549017905188",
-          "Code": "TELE"
+          "Code": "TELE",
+          "Type": "Telephone"
         },
       },
       "CreditorAccount": {
         "SchemeName": "UK.OBIE.SortCodeAccountNumber",
         "Identification": "08080021325698",
         "Name": "Tom Kirkman"
+      },
+      "CreditorPostalAddress":{
+        "AddressType": "BIZZ",
+        "Department": "Finance",
+        "SubDepartment": "Payroll",
+        "StreetName": "Bank Street",
+        "BuildingNumber": "11",
+        "BuildingName": "Tower Bridges",
+        "Floor": "6",
+        "UnitNumber": "UNIT591",
+        "Room": "844",
+        "PostBox": "PO Box 123456",
+        "PostCode": "Z78 4TY",
+        "TownLocationName":"Bank",
+        "TownName": "London",
+        "DistrictName": "Greater London",
+        "CareOf": "Ms Jane Smith",
+        "CountrySubDivision": "England",
+        "Country": "UK"
       },
       "UltimateDebtor": {
         "SchemeName": "UK.OBIE.BICFI",
@@ -566,6 +567,13 @@ Content-Type: application/json
               }
           }]
       }],
+      "Debtor": { 
+        "Name": "D Jones",
+        "SchemeName": "UK.OBIE.SortCodeAccountNumber",
+        "Identification": "08080021325698",
+        "SecondaryIdentification": "0002",
+        "LEI": "8200007YHFDMEODY1965",
+      },
      "RemittanceInformation": {
         "Structured": [
           {
@@ -587,7 +595,9 @@ Content-Type: application/json
               "Reference": "REF_26518"
             },
             "Invoicer": "INVR51856",
-            "Invoicee": "INVE5161856"
+            "Invoicee": "INVE5161856",
+            "TaxRemittance": "Tax Remittance related information",
+            "AdditionalRemittanceInformation": ["Free text for additional information"],  
           }
         ],
         "Unstructured": "Internal ops code 5120101"
@@ -595,10 +605,9 @@ Content-Type: application/json
     }
   },
   "SCASupportData": {
-    "Type": "EcommerceServices",
+    "RequestedSCAExemptionType": "EcommerceGoods",
     "AppliedAuthenticationApproach": "SCA",
     "ReferencePaymentOrderId": "O-611265",
-    "Description": "Order number O-611256 payment"
   },
   "Risk": {
     "PaymentContextCode": "TransferToThirdParty",

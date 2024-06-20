@@ -10,12 +10,12 @@
     - [Payment Order Consent](#payment-order-consent)
 - [Data Model](#data-model)
   - [Reused Classes](#reused-classes)
-    - [OBRemittanceInformation1](#obremittanceinformation1)
+    - [OBRemittanceInformation2](#obremittanceinformation2)
     - [OBMandateRelatedInformation1](#obmandaterelatedinformation1)
     - [OBRegulatoryReporting1](#obregulatoryreporting1)
     - [OBUltimateCreditor1](#obultimatecreditor1)
     - [OBUltimateDebtor1](#obultimatedebtor1)
-    - [OBPostalAddress6](#obpostaladdress6)
+    - [OBPostalAddress7](#obpostaladdress7)
     - [OBProxy1](#obproxy1)
     - [OBInternationalStandingOrder4](#obinternationalstandingorder4)
       - [UML Diagram](#uml-diagram)
@@ -118,9 +118,9 @@ The data dictionary section gives the detail on the payload content for the Inte
 
 ### Reused Classes
 
-#### OBRemittanceInformation1
+#### OBRemittanceInformation2
 
-The OBRemittanceInformation1 class is defined in the [payment-initiation-api-profile](../../profiles/payment-initiation-api-profile.md#obremittanceinformation1) page.
+The OBRemittanceInformation2 class is defined in the [payment-initiation-api-profile](../../profiles/payment-initiation-api-profile.md#obremittanceinformation2) page.
 
 #### OBMandateRelatedInformation1
 
@@ -139,9 +139,9 @@ The OBUltimateCreditor1 class is defined in the [payment-initiation-api-profile]
 
 The OBUltimateDebtor1 class is defined in the [payment-initiation-api-profile](../../profiles/payment-initiation-api-profile.md#obultimatedebtor1) page.
 
-#### OBPostalAddress6 
+#### OBPostalAddress7 
 
-The OBPostalAddress6 class is defined in the [payment-initiation-api-profile](../../profiles/payment-initiation-api-profile.md#obpostaladdress6) page
+The OBPostalAddress7 class is defined in the [payment-initiation-api-profile](../../profiles/payment-initiation-api-profile.md#obpostaladdress7) page
 
 #### OBProxy1
 
@@ -183,7 +183,7 @@ For the OBInternationalStandingOrder4 Initiation object:
 | --- |--- |--- |--- |--- |--- |--- |
 | OBInternationalStandingOrder4 | |OBInternationalStandingOrder4 |The Initiation payload is sent by the initiating party to the ASPSP. It is used to request movement of funds from the debtor account to a creditor for an international standing order. |OBInternationalStandingOrder4 | | |
 | MandateRelatedInformation | 0..1 |OBInternationalStandingOrder4/MandateRelatedInformation ||OBMandateRelatedInformation1 | | |
-| RemittanceInformation |0..1 |OBInternationalStandingOrder4/RemittanceInformation |Information supplied to enable the matching of an entry with the items that the transfer is intended to settle, such as commercial invoices in an accounts' receivable system. |OBRemittanceInformation1 | | |
+| RemittanceInformation |0..1 |OBInternationalStandingOrder4/RemittanceInformation |Information supplied to enable the matching of an entry with the items that the transfer is intended to settle, such as commercial invoices in an accounts' receivable system. |OBRemittanceInformation2 | | |
 | Purpose |0..1 |OBInternationalStandingOrder4/Purpose |Specifies the external purpose code in the format of character string with a maximum length of 4 characters. The list of valid codes is an external code list published separately. External code sets can be downloaded from www.iso20022.org. |OBExternalPurpose1Code1 | | |
 | ChargeBearer |0..1 |OBInternationalStandingOrder4/ChargeBearer |Specifies which party/parties will bear the charges associated with the processing of the payment transaction. |For a full list of enumeration values refer to `OB_Internal_CodeSet` [here].(https://github.com/OpenBankingUK/External_Internal_CodeSets). |OBInternalChargeBearerType1Code| |
 | CurrencyOfTransfer |1..1 |OBInternationalStandingOrder4/CurrencyOfTransfer |Specifies the currency of the to be transferred amount, which is different from the currency of the debtor's account. |ActiveOrHistoricCurrencyCode | |^[A-Z]{3,3}$ |
@@ -201,14 +201,14 @@ For the OBInternationalStandingOrder4 Initiation object:
 | Creditor |0..1 |OBInternationalStandingOrder4/Creditor |Party to which an amount of money is due. |OBPartyIdentification43 | | |
 | Name |0..1 |OBInternationalStandingOrder4/Creditor/Name |Name by which a party is known and which is usually used to identify that party. |Max350Text | | |
 | LEI |0..1 | OBInternationalStandingOrder4/Creditor/LEI |Legal Entity Identification Legal entity identification as an alternate identification for a party. Legal Entity Identifier is a code allocated to a party as described in ISO 17442 "Financial Services - Legal Entity Identifier (LEI)". |Max20Text | |^[A-Z0-9]{18,18}[0-9]{2,2}$ |
-| PostalAddress |0..1 |OBInternationalStandingOrder4/Creditor/PostalAddress |Information that locates and identifies a specific address, as defined by postal services. |OBPostalAddress6 | | |
+| PostalAddress |0..1 |OBInternationalStandingOrder4/Creditor/PostalAddress |Information that locates and identifies a specific address, as defined by postal services. |OBPostalAddress7 | | |
 | UltimateCreditor |0..1 |OBInternationalStandingOrder4/UltimateCreditor|Ultimate party to which an amount of money is due. | OBUltimateCreditor1 | | |
 | CreditorAgent |0..1 |OBInternationalStandingOrder4/CreditorAgent |Party that manages the account on behalf of the account owner, that is manages the registration and booking of entries on the account, calculates balances on the account and provides information about the account. This is the servicer of the beneficiary account. |OBBranchAndFinancialInstitutionIdentification6 | | |
 | SchemeName |0..1 |OBInternationalStandingOrder4/CreditorAgent/SchemeName |Name of the identification scheme, in a coded form as published in an external list. |For a full list of enumeration values refer to `Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_internal_CodeSets)|OBInternalFinancialInstitutionIdentification4Co
 | Identification |0..1 |OBInternationalStandingOrder4/CreditorAgent/Identification |Unique and unambiguous identification of the servicing institution. |Max35Text | | |
 | Name |0..1 |OBInternationalStandingOrder4/CreditorAgent/Name |Name by which an agent is known and which is usually used to identify that agent. |Max140Text | | |
 | LEI |0..1 | OBInternationalStandingOrder4/CreditorAgent/LEI |Legal Entity Identification Legal entity identification as an alternate identification for a party. Legal Entity Identifier is a code allocated to a party as described in ISO 17442 "Financial Services - Legal Entity Identifier (LEI)". |Max20Text | |^[A-Z0-9]{18,18}[0-9]{2,2}$ |
-| PostalAddress |0..1 |OBInternationalStandingOrder4/CreditorAgent/PostalAddress |Information that locates and identifies a specific address, as defined by postal services. |OBPostalAddress6 | | |
+| PostalAddress |0..1 |OBInternationalStandingOrder4/CreditorAgent/PostalAddress |Information that locates and identifies a specific address, as defined by postal services. |OBPostalAddress7 | | |
 | CreditorAccount |1..1 |OBInternationalStandingOrder4/CreditorAccount |Provides the details to identify the beneficiary account. |OBCashAccountCreditor3 | | |
 | SchemeName |1..1 |OBInternationalStandingOrder4/CreditorAccount/SchemeName |Name of the identification scheme, in a coded form as published in an external list. | For a full list of enumeration values refer to `OB_Internal_CodeSet` [here].(https://github.com/OpenBankingUK/External_Internal_CodeSets). |OBInternalAccountIdentification4Code | 
 | Identification |1..1 |OBInternationalStandingOrder4/CreditorAccount/Identification |Identification assigned by an institution to identify an account. This identification is known by the account owner. |Max256Text | | |
@@ -370,13 +370,14 @@ Accept: application/json
       "Name": "Tom Kirkman",
       "Proxy": {
         "Identification": "07700900000",
-        "Code": "TELE"
+        "Code": "TELE",
+        "Type": "Telephone"
       },
     },
     "CreditAgent": {
       "SchemeName": "UK.OBIE.IBAN",
       "Identification": "DE89370400440532013000",
-      "SecondaryIdentification": "0002",
+      "LEI": "8200007YHFDMEODY1965",
       "Name": "Tom Kirkman",
       "PostalAddress": {
         "AddressType": "BIZZ",
@@ -404,6 +405,7 @@ Accept: application/json
         "FirstPaymentDateTime": "2024-04-25T12:46:49.425Z",
         "RecurringPaymentDateTime": "2024-04-25T12:46:49.425Z",
         "FinalPaymentDateTime": "2024-04-25T12:46:49.425Z",
+        "Reason": "Membership fees",
         "Frequency": { 
           "Type": "MNTH",
           "CountPerPeriod": 1,
@@ -482,7 +484,9 @@ Accept: application/json
                 "Reference": "REF_26518"
               },
               "Invoicer": "INVR51856",
-              "Invoicee": "INVE5161856"
+              "Invoicee": "INVE5161856",
+              "TaxRemittance": "Tax Remittance related information",
+              "AdditionalRemittanceInformation": ["Free text for additional information"],
             }
           ],
           "Unstructured": "Internal ops code 5120101"
@@ -490,15 +494,15 @@ Accept: application/json
     }
   },
   "SCASupportData": {
-    "Type": "EcommerceServices",
+    "RequestedSCAExemptionType": "EcommerceGoods",
     "AppliedAuthenticationApproach": "SCA",
     "ReferencePaymentOrderId": "O-611265",
-    "Description": "Order number O-611256 payment"
   },
   "Risk": {
     "PaymentContextCode": "TransferToThirdParty",
     "PaymentPurposeCode": "EPAY",
     "CategoryPurposeCode": "CASH", 
+    "ExtendedPurpose": "Required when no 4 character code fits the purpose",
     "BeneficiaryPaymentDetailsPrepopulatedIndicator": false,
     "BeneficiaryAccountType": "Business",
     "MerchantCategoryCode": "7300", 
@@ -559,6 +563,10 @@ Content-Type: application/json
         "Currency": "GBP"
       }
   }],
+  "Authorisation": {
+    "AuthorisationType": "Any", 
+    "CompletionDateTime": "2025-05-30T10:35:27Z",
+  },
   "Initiation": {
     "ChargeBearer": "Shared",   
     "Purpose": "CCRD",
@@ -578,15 +586,15 @@ Content-Type: application/json
     },
     "Creditor": {
       "SchemeName": "UK.OBIE.SortCodeAccountNumber",
-        "LEI": "8200007YHFDMEODY8412",
+      "LEI": "8200007YHFDMEODY8412",
         "PostalAddress": {
-        "AddressType": "BIZZ",
-        "StreetName": "Bank Street",
-        "BuildingNumber": "11",
-        "Floor": "6",
-        "PostCode": "Z78 4TY",
-        "TownName": "London",
-        "Country": "UK"
+          "AddressType": "BIZZ",
+          "StreetName": "Bank Street",
+          "BuildingNumber": "11",
+          "Floor": "6",
+          "PostCode": "Z78 4TY",
+          "TownName": "London",
+          "Country": "UK"
       }
     },
     "CreditorAccount": {
@@ -596,7 +604,8 @@ Content-Type: application/json
       "SecondaryIdentification": "0002",
       "Proxy": {
         "Identification": "+441632960540",
-        "Code": "TELE"
+        "Code": "TELE",
+        "Type": "Telephone"
       },
     },
     "CreditorAgent": {  
@@ -621,9 +630,40 @@ Content-Type: application/json
       "LEI": "8200007YHFDMEODY1965",
       "Proxy": {
         "Identification": "07700900000",
-        "Code": "TELE"
+        "Code": "TELE",
+        "Type": "Telephone"
       },
     },
+    "UltimateDebtor": {
+        "SchemeName": "UK.OBIE.BICFI",
+        "Identification": "2360549017905161589",
+        "Name": "Ultimate Debtor",
+        "LEI": "8200007YHFDMEODY1965",
+        "PostalAddress": {
+          "AddressType": "BIZZ",
+          "StreetName": "Bank Street",
+          "BuildingNumber": "11",
+          "Floor": "6",
+          "PostCode": "Z78 4TY",
+          "TownName": "London",
+          "Country": "UK"
+        }
+      },
+      "UltimateCreditor": {
+        "SchemeName": "UK.OBIE.BICFI",
+        "Identification": "2360549017905161589",
+        "Name": "Ultimate Creditor",
+        "LEI": "60450004FECVJV7YN339",
+        "PostalAddress": {
+          "AddressType": "BIZZ",
+          "StreetName": "Bank Street",
+          "BuildingNumber": "11",
+          "Floor": "6",
+          "PostCode": "Z78 4TY",
+          "TownName": "London",
+          "Country": "UK"
+          }
+        },
     "RegulatoryReporting": [{
       "DebitCreditReportingIndicator": "CRED",
       "Authority": {
@@ -659,7 +699,9 @@ Content-Type: application/json
             "Reference": "REF_26518"
           },
           "Invoicer": "INVR51856",
-          "Invoicee": "INVE5161856"
+          "Invoicee": "INVE5161856",
+          "TaxRemittance": "Tax Remittance related information",
+          "AdditionalRemittanceInformation": ["Free text for additional information"],
         }
       ],
       "Unstructured": "Internal ops code 5120101"
@@ -691,10 +733,9 @@ Content-Type: application/json
   }
   },
   "SCASupportData": {
-    "Type": "EcommerceServices",
+    "RequestedSCAExemptionType": "EcommerceGoods",
     "AppliedAuthenticationApproach": "SCA",
     "ReferencePaymentOrderId": "O-611265",
-    "Description": "Order number O-611256 payment"
   },  
   },
   "Risk": {

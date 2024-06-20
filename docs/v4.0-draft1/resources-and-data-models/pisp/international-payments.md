@@ -15,7 +15,7 @@
   - [Reused Classes](#reused-classes)
     - [OBInternational3](#obinternational3)
     - [OBExchangeRate2](#obexchangerate2)
-    - [OBRemittanceInformation1](#obremittanceinformation1)
+    - [OBRemittanceInformation2](#obremittanceinformation2)
   - [International Payment - Request](#international-payment-request)
     - [UML Diagram](#uml-diagram)
     - [Notes](#notes)
@@ -161,9 +161,9 @@ The OBInternational3 class is defined in the [international-payment-consents](./
 
 The OBExchangeRate2 class is defined in the [international-payment-consents](./international-payment-consents.md#obexchangerate2) page.
 
-#### OBRemittanceInformation1
+#### OBRemittanceInformation2
 
-The OBRemittanceInformation1 class is defined in the [payment-initiation-api-profile](../../profiles/payment-initiation-api-profile.md#obremittanceinformation1) page.
+The OBRemittanceInformation2 class is defined in the [payment-initiation-api-profile](../../profiles/payment-initiation-api-profile.md#obremittanceinformation2) page.
 
 ### International Payment - Request
 
@@ -264,4 +264,4 @@ The OBWritePaymentDetailsResponse1 object will be used for a response to a call 
 | ---- |---------- |----- |------------------ |----- |----- |------- |
 | OBWritePaymentDetailsResponse1 | |OBWritePaymentDetailsResponse1 | |OBWritePaymentDetailsResponse1 | | |
 | Data |1..1 |OBWritePaymentDetailsResponse1/Data | |OBWriteDataPaymentOrderStatusResponse1 | | |
-| StatusDetail |0..unbounded |OBWritePaymentDetailsResponse1/Data/StatusDetail |An array of payment status details. |OBWritePaymentDetails1 | | |
+| PaymentStatus |0..*|OBWritePaymentDetailsResponse1/Data/PaymentStatus |Payment status details. |OBWritePaymentDetails1 | | |

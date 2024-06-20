@@ -13,7 +13,7 @@
     - [Payment Order Consent](#payment-order-consent)
 - [Data Model](#data-model)
   - [Reused Classes](#reused-classes)
-	- [OBRemittanceInformation1](#obremittanceinformation1)
+	- [OBRemittanceInformation2](#obremittanceinformation2)
 	- [OBUltimateDebtor1](#obultimatedebtor1)
     - [OBFile2](#obfile2)
       - [UML Diagram](#uml-diagram)
@@ -150,9 +150,9 @@ The data dictionary section gives the detail on the payload content for the File
 
 ### Reused Classes
 
-#### OBRemittanceInformation1
+#### OBRemittanceInformation2
 
-The OBRemittanceInformation1 class is defined in the [payment-initiation-api-profile](../../profiles/payment-initiation-api-profile.md#obremittanceinformation1) page.
+The OBRemittanceInformation2 class is defined in the [payment-initiation-api-profile](../../profiles/payment-initiation-api-profile.md#obremittanceinformation2) page.
 
 #### OBUltimateDebtor1 
 
@@ -192,7 +192,7 @@ For the OBFile2 Initiation object:
 | LocalInstrument |0..1 |OBFile2/LocalInstrument |User community specific instrument. Usage: This element is used to specify a local instrument, local clearing option and/or further qualify the service or service level. |For a full list of enumeration values refer to `OB_Internal_CodeSet` [here].(https://github.com/OpenBankingUK/External_Internal_CodeSets) |OBInternalLocalInstrument1Code | |
 | DebtorAccount |0..1 |OBFile2/DebtorAccount |Unambiguous identification of the account of the debtor to which a debit entry will be made as a result of the transaction. |OBCashAccountDebtor4 | | |
 | UltimateDebtor |0..1 |OBFile2/UltimateDebtor|Ultimate party that owes an amount of money to the (ultimate) creditor.|OBUltimateDebtor1 | | |
-| RemittanceInformation |0..1 |OBFile2/RemittanceInformation |Information supplied to enable the matching of an entry with the items that the transfer is intended to settle, such as commercial invoices in an accounts' receivable system. |OBRemittanceInformation1 | | |
+| RemittanceInformation |0..1 |OBFile2/RemittanceInformation |Information supplied to enable the matching of an entry with the items that the transfer is intended to settle, such as commercial invoices in an accounts' receivable system. |OBRemittanceInformation2 | | |
 | SupplementaryData |0..1 |OBFile2/SupplementaryData |Additional information that can not be captured in the structured fields and/or any other specific block. |OBSupplementaryData1 | | |
 
 ### File Payment Consent - Request
@@ -312,6 +312,7 @@ Accept: application/json
          "Proxy": {
           "Identification": "441234012345",
           "Code": "TELE",
+		  "Type": "Telephone"
           }
       	},
 		"UltimateDebtor": {
@@ -350,17 +351,18 @@ Accept: application/json
               "Reference": "REF_26518"
             },
             "Invoicer": "INVR51856",
-            "Invoicee": "INVE5161856"
+            "Invoicee": "INVE5161856",
+			"TaxRemittance": "Tax Remittance related information",
+          	"AdditionalRemittanceInformation": ["Free text for additional information"],
           }
         ],
 	     "Unstructured": "Internal ops code 5120101"
       }
 	},
 	"SCASupportData": {
-	  "Type": "EcommerceServices",
-	  "AppliedAuthenticationApproach": "SCA",
-	  "ReferencePaymentOrderId": "O-611265",
-	  "Description": "Order number O-611256 payment"
+	    "RequestedSCAExemptionType": "EcommerceGoods",
+		"AppliedAuthenticationApproach": "SCA",
+		"ReferencePaymentOrderId": "O-611265",
     },
   }
 }
@@ -402,10 +404,13 @@ Content-Type: application/json
 	"Debtor": { 
 	 	"SchemeName": "UK.OBIE.SortCodeAccountNumber",
         "Identification": "11280001234567",
+		"LEI": "8200007YHFDMEODY1965",
         "Name": "Andrea Smith",
         "SecondaryIdentification": "0002",	
 	},
     "Initiation": {
+	  "LocalInstrument": "UK.OBIE.Paym",
+	  "RequestedExecutionDateTime": "2017-06-05T15:15:22+00:00",
       "FileType": "UK.OBIE.pain.001.001.08",
       "FileHash": "m5ah/h1UjLvJYMxqAoZmj9dKdjZnsGNm+yMkJp/KuqQ",
       "FileReference": "GB2OK238",
@@ -419,6 +424,7 @@ Content-Type: application/json
         "Proxy": {
           "Identification": "441234012345",
           "Code": "TELE",
+		  "Type": "Telephone"
           }
       	},
 	  "UltimateDebtor": {
@@ -457,17 +463,18 @@ Content-Type: application/json
               "Reference": "REF_26518"
             },
             "Invoicer": "INVR51856",
-            "Invoicee": "INVE5161856"
+            "Invoicee": "INVE5161856",
+			"TaxRemittance": "Tax Remittance related information",
+          	"AdditionalRemittanceInformation": ["Free text for additional information"],
           }
         ],
 		"Unstructured": "Internal ops code 5120101"
    	  }
     },
 	"SCASupportData": {
-	  "Type": "EcommerceServices",
-	  "AppliedAuthenticationApproach": "SCA",
-	  "ReferencePaymentOrderId": "O-611265",
-	  "Description": "Order number O-611256 payment"
+	  	"RequestedSCAExemptionType": "EcommerceGoods",
+		"AppliedAuthenticationApproach": "SCA",
+		"ReferencePaymentOrderId": "O-611265",
     },
   },
   "Links":{

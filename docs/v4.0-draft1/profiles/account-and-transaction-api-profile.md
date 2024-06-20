@@ -36,8 +36,8 @@
   - [Reused Classes](#reused-classes)
     - [OBProxy1 ](#obproxy1)
       - [Data Dictionary](#obproxy1-data-dictionary)
-    - [OBPostalAddress6](#obpostaladdress6)
-      - [Data Dictionary](#obpostaladdress6-data-dictionary)
+    - [OBPostalAddress7](#obpostaladdress7)
+      - [Data Dictionary](#obpostaladdress7-data-dictionary)
     - [OBMandateRelatedInformation1](#obmandaterelatedinformation1)
       - [Data Dictionary](#obmandaterelatedinformation1-data-dictionary)
     - [OBUltimateCreditor1](#obultimatecreditor1)
@@ -244,7 +244,7 @@ The account-access-consent resource is referred to as an account-request resourc
 - An ASPSP **must** allow a Consent to be accessed in a newer version.
 - An ASPSP **must** ensure Permissions set associated with a Consent are unchanged when accessed in a different version:
   - E.g., An account-request created in v2 will have the same details when accessed via v2 and v3 (as an account-access-consent).
-- An ASPSP **must** ensure a Consent's fields are unchanged when accessed in a different version.
+- An ASPSP **must** ensure a Consent's fields are representative of the version being accessed. e.g. using v4 fields and enums when accessing a consent create don 3.1 on v4.0 endpoints
 - An ASPSP **may** allow expired Consents to be accessed in a newer version.
 - An ASPSP **may** choose to populate new fields introduced in a resource from previous version sensible defaults (if mandatory) or not populate at all (if not mandatory):
   - E.g., OBReadResponse1/Data/StatusUpdateDateTime introduced in v2 accessed with v1 AccountRequestId can be populated with Last accessed date time, if not already available in the system of records.
@@ -496,30 +496,30 @@ No fields for business logic security concerns have been identified for the Acco
 | Type |0..1 |OBProxy1/Type| Type of the proxy identification. |Max35Text | |
 | Code |1..1 |OBProxy1/Code| Specifies the external proxy account type code, as published in the proxy account type external code set. |For a full list of enumeration values refer `to External_CodeSet`[here](https://github.com/OpenBankingUK/External_Internal_CodeSets) |ExternalProxyAccountType1Code|
 
-#### OBPostalAddress6
+#### OBPostalAddress7
 
-##### OBPostalAddress6 Data Dictionary
+##### OBPostalAddress7 Data Dictionary
 | Name | Occurrence | XPath | EnhancedDefinition | Class | Codes | Pattern |
 | --- | --- | --- | --- | --- | --- | --- |
-| OBPostalAddress6 | | |Information that locates and identifies a specific address, as defined by postal services. |OBPostalAddress6 | | |
-| AddressType |0..1 |OBPostalAddress6/AddressType |Identifies the nature of the postal address. | `OBAddressType2Code` | For a full set of codes see `OBAddressType2Code` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets).| |
-| CareOf |0..1 |OBPostalAddress6/CareOf |The 'care of' address is used whenever sending mail to a person or organisation who does not actually live or work at the address. They will receive the mail for the individual. |Max140Text | | |
-| PostBox |0..1 |OBPostalAddress6/PostBox |Numbered box in a post office, assigned to a person or organisation, where letters are kept until called for |Max16Text | | |
-| BuildingNumber |0..1 |OBPostalAddress6/BuildingNumber |Number that identifies the position of a building on a street. |Max16Text | | |
-| UnitNumber|0..1 |OBPostalAddress6/UnitNumber|Number that identifies the unit of a specific address |Max16Text | | |
-| BuildingName |0..1 |OBPostalAddress6/BuildingName |Name of a referenced building. |Max140Text | | |
-| Department |0..1 |OBPostalAddress6/Department |Identification of a division of a large organisation or building. |Max70Text | | |
-| SubDepartment |0..1 |OBPostalAddress6/SubDepartment |Identification of a sub-division of a large organisation or building. |Max70Text | | |
-| Room |0..1 |OBPostalAddress6/Room|Information that locates and identifies a room to form part of an address. |Max70Text | | |
-| Floor |0..1 |OBPostalAddress6/Floor|Number that identifies the level within a building. |Max70Text | | |
-| StreetName |0..1 |OBPostalAddress6/StreetName |Name of a street or thoroughfare. |Max140Text | | |
-| TownName |0..1 |OBPostalAddress6/TownName |Name of a built-up area, with defined boundaries, and a local government. |Max140Text | | |
-| TownLocationName |0..1 |OBPostalAddress6/TownLocationName |Name of a built-up area, with defined boundaries, and a local government. |Max140Text | | |
-| DistrictName |0..1 |OBPostalAddress6/DistrictName |Number that of the regional area, known as a district, which forms part of an address. |Max140Text | | |
-| PostCode |0..1 |OBPostalAddress6/PostCode |Identifier consisting of a group of letters and/or numbers that is added to a postal address to assist the sorting of mail. |Max16Text | | |
-| CountrySubDivision |0..1 |OBPostalAddress6/CountrySubDivision |Identifies a subdivision of a country such as state, region, county. |Max35Text | | |
-| Country |0..1 |OBPostalAddress6/Country |Nation with its own government. |CountryCode | |^[A-Z]{2,2}$ |
-| AddressLine |0..7 |OBPostalAddress6/AddressLine |Information that locates and identifies a specific address, as defined by postal services, presented in free format text. |Array of Max70Text | | | |
+| OBPostalAddress7 | | |Information that locates and identifies a specific address, as defined by postal services. |OBPostalAddress7 | | |
+| AddressType |0..1 |OBPostalAddress7/AddressType |Identifies the nature of the postal address. | `OBAddressType2Code` | For a full set of codes see `OBAddressType2Code` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets).| |
+| CareOf |0..1 |OBPostalAddress7/CareOf |The 'care of' address is used whenever sending mail to a person or organisation who does not actually live or work at the address. They will receive the mail for the individual. |Max140Text | | |
+| PostBox |0..1 |OBPostalAddress7/PostBox |Numbered box in a post office, assigned to a person or organisation, where letters are kept until called for |Max16Text | | |
+| BuildingNumber |0..1 |OBPostalAddress7/BuildingNumber |Number that identifies the position of a building on a street. |Max16Text | | |
+| UnitNumber|0..1 |OBPostalAddress7/UnitNumber|Number that identifies the unit of a specific address |Max16Text | | |
+| BuildingName |0..1 |OBPostalAddress7/BuildingName |Name of a referenced building. |Max140Text | | |
+| Department |0..1 |OBPostalAddress7/Department |Identification of a division of a large organisation or building. |Max70Text | | |
+| SubDepartment |0..1 |OBPostalAddress7/SubDepartment |Identification of a sub-division of a large organisation or building. |Max70Text | | |
+| Room |0..1 |OBPostalAddress7/Room|Information that locates and identifies a room to form part of an address. |Max70Text | | |
+| Floor |0..1 |OBPostalAddress7/Floor|Number that identifies the level within a building. |Max70Text | | |
+| StreetName |0..1 |OBPostalAddress7/StreetName |Name of a street or thoroughfare. |Max140Text | | |
+| TownName |0..1 |OBPostalAddress7/TownName |Name of a built-up area, with defined boundaries, and a local government. |Max140Text | | |
+| TownLocationName |0..1 |OBPostalAddress7/TownLocationName |Name of a built-up area, with defined boundaries, and a local government. |Max140Text | | |
+| DistrictName |0..1 |OBPostalAddress7/DistrictName |Number that of the regional area, known as a district, which forms part of an address. |Max140Text | | |
+| PostCode |0..1 |OBPostalAddress7/PostCode |Identifier consisting of a group of letters and/or numbers that is added to a postal address to assist the sorting of mail. |Max16Text | | |
+| CountrySubDivision |0..1 |OBPostalAddress7/CountrySubDivision |Identifies a subdivision of a country such as state, region, county. |Max35Text | | |
+| Country |0..1 |OBPostalAddress7/Country |Nation with its own government. |CountryCode | |^[A-Z]{2,2}$ |
+| AddressLine |0..7 |OBPostalAddress7/AddressLine |Information that locates and identifies a specific address, as defined by postal services, presented in free format text. |Array of Max70Text | | | |
 
 #### OBMandateRelatedInformation1
 
@@ -621,113 +621,7 @@ Deviations from the camt.052 XML standard are:
 
 #### Static Enumerations
 
-| Code Class |Name |Definition |
-| --- |--- |--- |
-| OBInternalAccountStatus1Code |Enabled |Account can be used for its intended purpose. |
-| OBInternalAccountStatus1Code |Disabled |Account cannot be used for its intended purpose, either temporarily or permanently. |
-| OBInternalAccountStatus1Code |Deleted |Account cannot be used any longer. |
-| OBInternalAccountStatus1Code |ProForma |Account is temporary and can be partially used for its intended purpose. The account will be fully available for use when the account servicer has received all relevant documents. |
-| OBInternalAccountStatus1Code |Pending |Account change is pending approval. |
-| OBAddressType2CodeCode |BIZZ |Address is the business address. |
-| OBAddressType2CodeCode |CORR |Address is the address where correspondence is sent. |
-| OBAddressType2CodeCode |DLVY |Address is the address to which delivery is to take place. |
-| OBAddressType2CodeCode |MLTO |Address is the address to which mail is sent. |
-| OBAddressType2CodeCode |PBOX |Address is a postal office (PO) box. |
-| OBAddressType2CodeCode |ADDR |Address is the complete postal address. |
-| OBAddressType2CodeCode |HOME |Address is the home address. |
-| OBAddressType2CodeCode |STAT |Address is the address where statements are sent. |
-| ExternalBalanceType1Code |CLAV |ClosingAvailable - Closing balance of amount of money that is at the disposal of the account owner on the date specified. |
-| ExternalBalanceType1Code |CLBS |ClosingBooked - Balance of the account at the end of the pre-agreed account reporting period. It is the sum of the opening booked balance at the beginning of the period and all entries booked to the account during the pre-agreed account reporting period. |
-| ExternalBalanceType1Code |XPCH |Expected - Balance, composed of booked entries and pending items known at the time of calculation, which projects the end of day balance if everything is booked on the account and no other entry is posted. |
-| ExternalBalanceType1Code |FWAV |ForwardAvailable - Forward available balance of money that is at the disposal of the account owner on the date specified. |
-| ExternalBalanceType1Code |INFO |Information - Balance for informational purposes. |
-| ExternalBalanceType1Code |ITAV |InterimAvailable - Available balance calculated in the course of the account servicer's business day, at the time specified, and subject to further changes during the business day. The interim balance is calculated on the basis of booked credit and debit items during the calculation time/period specified. |
-| ExternalBalanceType1Code |ITBD |InterimBooked - Balance calculated in the course of the account servicer's business day, at the time specified, and subject to further changes during the business day. The interim balance is calculated on the basis of booked credit and debit items during the calculation time/period specified. |
-| ExternalBalanceType1Code |OPAV |OpeningAvailable - Opening balance of amount of money that is at the disposal of the account owner on the date specified. |
-| ExternalBalanceType1Code |OPBD |OpeningBooked - Book balance of the account at the beginning of the account reporting period. It always equals the closing book balance from the previous report. |
-| ExternalBalanceType1Code |PRCD |PreviouslyClosedBooked - Balance of the account at the previously closed account reporting period. The opening booked balance for the new period has to be equal to this balance. Usage: the previously booked closing balance should equal (inclusive date) the booked closing balance of the date it references and equal the actual booked opening balance of the current date. |
-| OBCommunicationMethod |EMAL | Email communication method. |
-| OBCommunicationMethod |FAXI | Fax communication method. |
-| OBCommunicationMethod |FILE | File communication method. |
-| OBCommunicationMethod |ONLI | Online communication method. |
-| OBCommunicationMethod |POST | Postal communication method. |
-| OBInternalCreditDebitCode |Credit |Operation is a credit |
-| OBInternalCreditDebitCode |Debit |Operation is a debit |
-| ExternalEntryStatus1Code |BOOK |Booked - Booked means that the transfer of money has been completed between account servicer and account owner Usage: Status Booked does not necessarily imply finality of money as this depends on other factors such as the payment system used, the completion of the end- to-end transaction and the terms agreed between account servicer and owner. Status Booked is the only status that can be reversed. |
-| ExternalEntryStatus1Code |PDNG |Pending - Booking on the account owner's account in the account servicer's ledger has not been completed. Usage: this can be used for expected items, or for items for which some conditions still need to be fulfilled before they can be booked. If booking takes place, the entry will be included with status Booked in subsequent account report or statement. Status Pending cannot be reversed. |
-| ExternalEntryStatus1Code |INFO | Information <!-- TODO Get descriptions--> |
-| ExternalEntryStatus1Code |FUTR | Transaction has is for the future. Typically used for indicating card transactions that will be booked in the future. <!-- TODO Get descriptions--> |
-| ExternalCashAccountType1Code |CACC |Account sub-type is a Current Account. |
-| ExternalCashAccountType1Code |CARD |Account sub-type is a Card Account. |
-| ExternalCashAccountType1Code |CASH |Account sub-type is a Cash Payment Account. |
-| ExternalCashAccountType1Code |CHAR |Account sub-type is a Charge Account. |
-| ExternalCashAccountType1Code |CISH |Account sub-type is a Cash Income Account. |
-| ExternalCashAccountType1Code |COMM |Account sub-type is a Commission Account. |
-| ExternalCashAccountType1Code |CPAC |Account sub-type is a Clearing Participant Settlement Account. |
-| ExternalCashAccountType1Code |LLSV |Account sub-type is a Limited Liquidity Savings Account. |
-| ExternalCashAccountType1Code |LOAN |Account sub-type is a Loan Account. |
-| ExternalCashAccountType1Code |MGLD |Account sub-type is a Marginal Lending Account. |
-| ExternalCashAccountType1Code |MORT |Account sub-type is a Mortgage Account. |
-| ExternalCashAccountType1Code |MOMA |Account sub-type is a Money Market Account. |
-| ExternalCashAccountType1Code |NFCA |Account sub-type is a Non-Resident Foreign Currency Account. |
-| ExternalCashAccountType1Code |NREX |Account sub-type is a Non-Resident External Account. |
-| ExternalCashAccountType1Code |ODFT |Account sub-type is an Overdraft Account. |
-| ExternalCashAccountType1Code |ONDP |Account sub-type is an Overnight Deposit Account. |
-| ExternalCashAccountType1Code |OTHR |Account sub-type is other. |
-| ExternalCashAccountType1Code |SACC |Account sub-type is a Settlement Account. |
-| ExternalCashAccountType1Code |SLRY |Account sub-type is a Salary Account. |
-| ExternalCashAccountType1Code |TAXE |Account sub-type is a  Account. |
-| ExternalCashAccountType1Code |TRAN |Account sub-type is a Transacting Account. |
-| ExternalCashAccountType1Code |TRAS |Account sub-type is a Cash Trading Account. |
-| ExternalCashAccountType1Code |VACC |Account sub-type is a Virtual Account. |
-| ExternalCashAccountType1Code |WALT |Account sub-type is a Wallet Account. |
-| OBExternalAccountType1Code |Business |Account type is for business. |
-| OBExternalAccountType1Code |Personal |Account type is for personal. |
-| OBInternalCardAuthorisationType1Code |ConsumerDevice |Card authorisation was via a Consumer Device Cardholder Verification Method (CDCVM). |
-| OBInternalCardAuthorisationType1Code |Contactless |Card authorisation was via Contactless. |
-| OBInternalCardAuthorisationType1Code |None |No card authorisation was used. |
-| OBInternalCardAuthorisationType1Code |PIN |Card authorisation was via PIN. |
-| OBInternalCardSchemeType1Code |AmericanExpress |AmericanExpress scheme. |
-| OBInternalCardSchemeType1Code |Diners |Diners scheme. |
-| OBInternalCardSchemeType1Code |Discover |Discover scheme. |
-| OBInternalCardSchemeType1Code |MasterCard |MasterCard scheme. |
-| OBInternalCardSchemeType1Code |VISA |VISA scheme. |
-| OBInternalLimitType1Code |Available |The amount of credit limit available to the account holder |
-| OBInternalLimitType1Code |Credit |The amount of a credit limit that has been agreed with the account holder |
-| OBInternalLimitType1Code |Emergency |The amount of an arranged lending limit that can be borrowed on top of pre-agreed lending, that has been agreed with the account holder |
-| OBInternalLimitType1Code |Pre-Agreed |The amount of an arranged lending limit that has been agreed with the account holder |
-| OBInternalLimitType1Code |Temporary |The amount of a temporary lending limit that has been agreed with the account holder |
-| OBInternalProductType1Code |BalanceTransfer |Offer is a balance transfer. |
-| OBInternalProductType1Code |LimitIncrease |Offer is a limit increase. |
-| OBInternalProductType1Code |MoneyTransfer |Offer is a money transfer. |
-| OBInternalProductType1Code |Other |Offer is of an other type. |
-| OBInternalProductType1Code |PromotionalRate |Offer is a promotional rate. |
-| OBInternalPartyType1Code |Delegate |Party that has delegated access. |
-| OBInternalPartyType1Code |Joint |Party is a joint owner of the account. |
-| OBInternalPartyType1Code |Sole |Party is a sole owner of the account. |
-| OBInternalScheduleType1Code |Arrival |Scheduled payment date is specified as the arrival date for the recipient. |
-| OBInternalScheduleType1Code |Execution |Scheduled payment date is specified as the execution date. |
-| ExternalMandateStatus1Code |Active |The standing order is active. |
-| ExternalMandateStatus1Code |Inactive |The standing order is inactive. |
-| OBInternalStatementType1Code |AccountClosure |Final account closure statement. |
-| OBInternalStatementType1Code |AccountOpening |First statement provided for an account. |
-| OBInternalStatementType1Code |Annual |Annual statement report. |
-| OBInternalStatementType1Code |Interim |Adhoc or customised statement period. |
-| OBInternalStatementType1Code |RegularPeriodic |Regular pre-agreed reporting statement. |
-| ExternalDocumentFormat1Code | DPDF | PDF file format (.pdf). |
-| ExternalDocumentFormat1Code | DXML | XML file format (.xml). |
-| ExternalDocumentFormat1Code | SDSH | spreadsheet file format (e.g. .csv). |
-| ExternalDocumentFormat1Code | WORD | Word file format (.doc/.docx). |
-| ExternalDocumentFormat1Code | XSLT | XSLT file format (.xslt). |
-| OBFrequency2 | YEAR | Annual. |
-| OBFrequency2 | DAIL | Daily. |
-| OBFrequency2 | INDA | Intra-day. |
-| OBFrequency2 | MNTH | Monthly. |
-| OBFrequency2 | QURT | Quarterly. |
-| OBFrequency2 | MIAN | Semi-annual. |
-| OBFrequency2 | TEND | Ten days. |
-| OBFrequency2 | MOVE | Triggered by Movement. |
-| OBFrequency2 | WEEK | Weekly. |
+The definitions and values for enumerations used in the Account and Transaction APIs can be found [here](https://github.com/OpenBankingUK/External_internal_CodeSets)
 
 #### ISO Enumerations
 
@@ -740,6 +634,8 @@ These following ISO Enumerations are used in the Accounts APIs.
 | CountryCode |Country |https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2#Officially_assigned_code_elements |
 | ExternalBankTransactionFamily1Code |BankTransactionCode/Code |https://www.iso20022.org/external_code_list.page |
 | ExternalBankTransactionSubFamily1Code |BankTransactionCode/SubCode |https://www.iso20022.org/external_code_list.page |
+
+The definitions and values for ISO enumerations in the Account and Transaction APIs can also be found [here](https://github.com/OpenBankingUK/External_internal_CodeSets)
 
 #### Namespaced Enumerations
 

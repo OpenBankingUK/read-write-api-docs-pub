@@ -140,7 +140,7 @@ __Payment order state model key:__
 | __Currency__ (1..1) | `InstructedAmount. Currency` |A code allocated to a currency by a Maintenance Agency under an international identification scheme, as described in the latest edition of the international standard ISO 4217 "Codes for the representation of currencies and funds". |ActiveOrHistoricCurrencyCode | `^[A-Z]{3,3}$`
 | __CreditorAgent__ (0..1) | `CreditorAgent` | Financial institution servicing an account for the creditor.     | OBBranchAndFinancialInstitutionIdentification6
 | __CreditorAccount__ (1..1) | `CreditorAccount`   |Unambiguous identification of the account of the creditor to which a credit entry will be posted as a result of the payment transaction.       |OBCashAccountCreditor3|
-| __CreditorPostalAddress__ (0..1)| `CreditorPostalAddress` |Information that locates and identifies a specific address, as defined by postal services.| [OBPostalAddress6](../../profiles/vrp-profile.md#obpostaladdress6)  |
+| __CreditorPostalAddress__ (0..1)| `CreditorPostalAddress` |Information that locates and identifies a specific address, as defined by postal services.| [OBPostalAddress7](../../profiles/vrp-profile.md#obpostaladdress7)  |
 | __UltimateCreditor__ (0..1)| `UltimateCreditor` | Ultimate party to which an amount of money is due. |[OBUltimateCreditor1](../../profiles/vrp-profile.md#obultimatecreditor1) |
 | __SupplementaryData__ (0..1)        | `SupplementaryData`                 | Additional information that can not be captured in the structured fields and/or any other specific block     
 

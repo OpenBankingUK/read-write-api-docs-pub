@@ -11,14 +11,14 @@
         - [UML Diagram](#uml-diagram)
         - [Notes](#notes)
         - [Data Dictionary](#data-dictionary)
-    - [OBPostalAddress6](#obpostaladdress6)
+    - [OBPostalAddress7](#obpostaladdress7)
   - [OBReadParty2](#obreadparty2)
     - [UML Diagram](#uml-diagram-1)
     - [Data Dictionary](#data-dictionary-1)
   - [OBReadParty3](#obreadparty3)
     - [UML Diagram](#uml-diagram-2)
     - [Data Dictionary](#data-dictionary-2)
-  - [OBPostalAddress6](#obpostaladdress6)
+  - [OBPostalAddress7](#obpostaladdress7)
   - [Permission Codes](#permission-codes)
 - [Usage Examples](#usage-examples)
   - [All Parties](#all-parties)
@@ -113,11 +113,11 @@ The Party resource contains a set of elements that describes a party. The party 
 | Account |0..1 |OBParty2/Relationships/Account |Relationship to the Account resource. |OBRelationship1 | | |
 | Related |1..1 |OBParty2/Relationships/Account/Related |Absolute URI to the related resource. |xs:anyURI | | |
 | Id |1..1 |OBParty2/Relationships/Account/Id |Unique identification as assigned by the ASPSP to uniquely identify the related resource. |Max40Text | | |
-| Address |0..n |OBParty2/Address |Postal address of a party. |OBPostalAddress6 | | |
+| Address |0..n |OBParty2/Address |Postal address of a party. |OBPostalAddress7 | | |
 
-#### OBPostalAddress6 
+#### OBPostalAddress7 
 
-The OBPostalAddress6 class is defined in the [payment-initiation-api-profile](../../profiles/payment-initiation-api-profile.md#obpostaladdress6) page
+The OBPostalAddress7 class is defined in the [payment-initiation-api-profile](../../profiles/payment-initiation-api-profile.md#obpostaladdress7) page
 
 ### OBReadParty2
 
@@ -161,9 +161,9 @@ The response to GET /accounts/{AccountId}/parties  **may**  contain multiple par
 | Data |1..1 |OBReadParty3/Data | |OBReadDataParty3 | | |
 | Party |0..n |OBReadParty3/Data/Party | |OBParty2 | | |
 
-### OBPostalAddress6
+### OBPostalAddress7
 
-The OBPostalAddress6 class is defined in the [account-and-transaction-api-profile](../../profiles/account-and-transaction-api-profile.md#obpostaladdress6) page.
+The OBPostalAddress7 class is defined in the [account-and-transaction-api-profile](../../profiles/account-and-transaction-api-profile.md#obpostaladdress7) page.
 
 ### Permission Codes
 

@@ -70,6 +70,7 @@ Accept: application/json
         "Proxy": {
           "Identification": "441234012345",
           "Code": "TELE",
+          "Type": "Telephone"
         }
       },
       "CreditorAccount": {
@@ -80,6 +81,7 @@ Accept: application/json
         "Proxy": {
           "Identification": "441234012346",
           "Code": "TELE",
+          "Type": "Telephone"
         }
       },
       "UltimateDebtor": {
@@ -167,15 +169,17 @@ Accept: application/json
             "Issuer": "Issuer01",
             },
           "Invoicer": "INVR51856",
-          "Invoicee": "INVE5161856"
+          "Invoicee": "INVE5161856",
+          "TaxRemittance": "Tax Remittance related information",
+          "AdditionalRemittanceInformation": ["Free text for additional information"],
           },
         ],
         "Unstructured": "Internal ops code 5120101"
       },
   },
   "Risk": {
-    "PaymentContextCode": "TransferToThirdParty",
-    "ContractPresentIndicator": false,
+    "PaymentContextCode": "TransferToSell",
+    "ContractPresentIndicator": true,
     "PaymentPurposeCode": "EPAY",
     "CategoryPurposeCode": "CASH", 
     "BeneficiaryPaymentDetailsPrepopulatedIndicator": false,
@@ -247,6 +251,7 @@ Content-Type: application/json
       "Proxy": {
           "Identification": "441234012345",
           "Code": "TELE",
+          "Type": "Telephone"
       }
     },
     "Initiation": {
@@ -258,6 +263,7 @@ Content-Type: application/json
        "Proxy": {
           "Identification": "441234012345",
           "Code": "TELE",
+          "Type": "Telephone"
         }
       },
       "CreditorAccount": {
@@ -268,6 +274,7 @@ Content-Type: application/json
         "Proxy": {
           "Identification": "441234012348",
           "Code": "TELE",
+          "Type": "Telephone"
         }
       },
       "CreditorPostalAddress": {
@@ -355,7 +362,9 @@ Content-Type: application/json
             },
             "ReferredDocumentAmount": 1,
             "Invoicer": "INVR51856",
-            "Invoicee": "INVE5161856"
+            "Invoicee": "INVE5161856",
+            "TaxRemittance": "Tax Remittance related information",
+            "AdditionalRemittanceInformation": ["Free text for additional information"],
           },
         ],
         "Unstructured": "Internal ops code 5120101"
@@ -364,8 +373,8 @@ Content-Type: application/json
   },
 
   "Risk": {
-    "PaymentContextCode": "TransferToThirdParty",
-    "ContractPresentIndicator": false,
+    "PaymentContextCode": "TransferToSell",
+    "ContractPresentIndicator": true,
     "PaymentPurposeCode": "EPAY",
     "CategoryPurposeCode": "CASH", 
     "BeneficiaryPaymentDetailsPrepopulatedIndicator": false,
@@ -458,6 +467,7 @@ Content-Type: application/json
       "Proxy": {
           "Identification": "441234012345",
           "Code": "TELE",
+          "Type": "Telephone"
       }
     },
     "Initiation": {
@@ -470,6 +480,7 @@ Content-Type: application/json
         "Proxy": {
             "Identification": "441234012345",
             "Code": "TELE",
+            "Type": "Telephone"
         }
       },
       "CreditorAccount": {
@@ -480,6 +491,7 @@ Content-Type: application/json
         "Proxy": {
           "Identification": "441234012348",
           "Code": "TELE",
+          "Type": "Telephone"
         }
       },
       "CreditorPostalAddress": {
@@ -566,7 +578,9 @@ Content-Type: application/json
               "Issuer": "Issuer01",
             },
             "Invoicer": "INVR51856",
-            "Invoicee": "INVE5161856"
+            "Invoicee": "INVE5161856",
+            "TaxRemittance": "Tax Remittance related information",
+            "AdditionalRemittanceInformation": ["Free text for additional information"],
           },
         ],
         "Unstructured": "Internal ops code 5120101"
@@ -574,8 +588,8 @@ Content-Type: application/json
     }
   },
   "Risk": {
-    "PaymentContextCode": "TransferToThirdParty",
-    "ContractPresentIndicator": false,
+    "PaymentContextCode": "TransferToSell",
+    "ContractPresentIndicator": true,
     "PaymentPurposeCode": "EPAY",
     "CategoryPurposeCode": "CASH", 
     "BeneficiaryPaymentDetailsPrepopulatedIndicator": false,
@@ -635,6 +649,7 @@ Accept: application/json
         "Proxy": {
           "Identification": "441234012345",
           "Code": "TELE",
+          "Type": "Telephone"
         }
       },
       "CreditorAccount": {
@@ -645,6 +660,7 @@ Accept: application/json
         "Proxy": {
           "Identification": "441234012348",
           "Code": "TELE",
+          "Type": "Telephone"
         }
       },
       "UltimateDebtor": {
@@ -707,6 +723,7 @@ Accept: application/json
               "Date": "2024-04-25T13:26:41.911Z",
               "Information": ["Reg info1", "Reg info2"],
               "Country": "QG",
+              
               "Amount": {
                 "Amount": "4.68702",
                 "Currency": "JGM"
@@ -732,7 +749,9 @@ Accept: application/json
               "Issuer": "Issuer01",
             },
             "Invoicer": "INVR51856",
-            "Invoicee": "INVE5161856"
+            "Invoicee": "INVE5161856",
+            "TaxRemittance": "Tax Remittance related information",
+            "AdditionalRemittanceInformation": ["Free text for additional information"],
           },
         ],
         "Unstructured": "Internal ops code 5120101"
@@ -751,6 +770,7 @@ Accept: application/json
         "Proxy":{
           "Identification": "441234012348",
           "Code": "TELE",
+          "Type": "Telephone"
         }
       },
       "InstructedAmount": {
@@ -810,7 +830,9 @@ Accept: application/json
             },
             "ReferredDocumentAmount": 1,
             "Invoicer": "INVR51856",
-            "Invoicee": "INVE5161856"
+            "Invoicee": "INVE5161856",
+            "TaxRemittance": "Tax Remittance related information",
+            "AdditionalRemittanceInformation": ["Free text for additional information"],
           },
         ],
         "Unstructured": "Internal ops code 5120101"
@@ -818,8 +840,8 @@ Accept: application/json
     }
   },
   "Risk": {
-    "PaymentContextCode": "TransferToThirdParty",
-    "ContractPresentIndicator": false,
+    "PaymentContextCode": "TransferToSell",
+    "ContractPresentIndicator": true,
     "PaymentPurposeCode": "EPAY",
     "CategoryPurposeCode": "CASH", 
     "BeneficiaryPaymentDetailsPrepopulatedIndicator": false,
@@ -873,6 +895,7 @@ Content-Type: application/json
       "Proxy":{
           "Identification": "441234012348",
           "Code": "TELE",
+          "Type": "Telephone"
         }
     },
     "Refund" : "Yes", 
@@ -885,7 +908,14 @@ Content-Type: application/json
         "Proxy": {
           "Identification": "441234012345",
           "Code": "TELE",
+          "Type": "Telephone"
         }
+      },
+      "Refund":{
+        "SchemeName": "SortCodeAccountNumber",
+        "Identification": "30949330000010",
+        "SecondaryIdentification": "Roll 90210",
+        "Name": "Marcus Sweepimus",
       },
       "CreditorAccount": {
         "SchemeName": "SortCodeAccountNumber",
@@ -895,6 +925,7 @@ Content-Type: application/json
         "Proxy": {
           "Identification": "441234012385",
           "Code": "TELE",
+          "Type": "Telephone"
         }
       },
       "CreditorPostalAddress": {
@@ -982,7 +1013,9 @@ Content-Type: application/json
               ]
             }],
             "Invoicer": "INVR51856",
-            "Invoicee": "INVE5161856"
+            "Invoicee": "INVE5161856",
+            "TaxRemittance": "Tax Remittance related information",
+            "AdditionalRemittanceInformation": ["Free text for additional information"]
           },
         ],
         "Unstructured": "Internal ops code 5120101"
@@ -1001,6 +1034,7 @@ Content-Type: application/json
         "Proxy": {
           "Identification": "441234012385",
           "Code": "TELE",
+          "Type": "Telephone"
         }
       },
       "CreditorPostalAddress": {
@@ -1059,17 +1093,18 @@ Content-Type: application/json
               "Issuer": "Issuer01",
             },
             "Invoicer": "INVR51856",
-            "Invoicee": "INVE5161856"
+            "Invoicee": "INVE5161856",
+            "TaxRemittance": "Tax Remittance related information",
+            "AdditionalRemittanceInformation": ["Free text for additional information"]
           },
         ],
         "Unstructured": "Internal ops code 5120101"
       },
     }
   },
-
   "Risk": {
-    "PaymentContextCode": "TransferToThirdParty",
-    "ContractPresentIndicator": false,
+    "PaymentContextCode": "TransferToSell",
+    "ContractPresentIndicator": true,
     "PaymentPurposeCode": "EPAY",
     "CategoryPurposeCode": "CASH", 
     "BeneficiaryPaymentDetailsPrepopulatedIndicator": false,
@@ -1163,6 +1198,66 @@ Accept: application/json
             }
           }]
       }],
+      "CreditorAccount": {
+        "SchemeName": "SortCodeAccountNumber",
+        "Identification": "30949330000010",
+        "SecondaryIdentification": "Roll 90210",
+        "Name": "Marcus Sweepimus",
+        "Proxy": {
+          "Identification": "441234012385",
+          "Code": "TELE",
+          "Type": "Telephone"
+        }
+      },
+      "CreditorPostalAddress": {
+        "AddressType": "BIZZ",
+        "Department": "Finance",
+        "SubDepartment": "Payroll",
+        "StreetName": "Bank Street",
+        "BuildingNumber": "11",
+        "BuildingName": "Tower Bridges",
+        "Floor": "6",
+        "UnitNumber": "UNIT591",
+        "Room": "844",
+        "PostBox": "PO Box 123456",
+        "PostCode": "Z78 4TY",
+        "TownLocationName":"Bank",
+        "TownName": "London",
+        "DistrictName": "Greater London",
+        "CareOf": "Ms Jane Smith",
+        "CountrySubDivision": "England",
+        "Country": "UK"
+      },
+      "UltimateCreditor": {
+        "SchemeName": "UK.OBIE.BICFI",
+        "Identification": "2360549017905161589",
+        "Name": "Ultimate Creditor",
+        "LEI": "60450004FECVJV7YN339",
+        "PostalAddress": {
+          "AddressType": "BIZZ",
+          "StreetName": "Bank Street",
+          "BuildingNumber": "11",
+          "Floor": "6",
+          "PostCode": "Z78 4TY",
+          "TownName": "London",
+          "Country": "UK"
+          }
+        },
+        "UltimateDebtor": {
+        "SchemeName": "UK.OBIE.BICFI",
+        "Identification": "2360549017905161589",
+        "Name": "Ultimate Debtor",
+        "LEI": "8200007YHFDMEODY1965",
+        "PostalAddress": {
+          "AddressType": "BIZZ",
+          "StreetName": "Bank Street",
+          "BuildingNumber": "11",
+          "Floor": "6",
+          "PostCode": "Z78 4TY",
+          "TownName": "London",
+          "Country": "UK"
+        }
+      },
       "RemittanceInformation": {
         "Structured": [
           {
@@ -1182,7 +1277,9 @@ Accept: application/json
               "Issuer": "Issuer01",
             },
             "Invoicer": "INVR51856",
-            "Invoicee": "INVE5161856"
+            "Invoicee": "INVE5161856",
+            "TaxRemittance": "Tax Remittance related information",
+            "AdditionalRemittanceInformation": ["Free text for additional information"]
           },
         ],
         "Unstructured": "Internal ops code 5120101"
@@ -1190,8 +1287,8 @@ Accept: application/json
     }
   },
   "Risk": {
-    "PaymentContextCode": "TransferToThirdParty",
-    "ContractPresentIndicator": false,
+    "PaymentContextCode": "TransferToSell",
+    "ContractPresentIndicator": true,
     "PaymentPurposeCode": "EPAY",
     "CategoryPurposeCode": "CASH", 
     "BeneficiaryPaymentDetailsPrepopulatedIndicator": false,
@@ -1265,6 +1362,7 @@ Content-Type: application/json
         "Proxy": {
           "Identification": "441234012385",
           "Code": "TELE",
+          "Type": "Telephone"
         }
       },
       "DebtorAccount": {
@@ -1275,6 +1373,7 @@ Content-Type: application/json
         "Proxy": {
           "Identification": "441234012345",
           "Code": "TELE",
+          "Type": "Telephone"
         }
       },
       "CreditorPostalAddress": {
@@ -1362,17 +1461,18 @@ Content-Type: application/json
               ]
             }],
             "Invoicer": "INVR51856",
-            "Invoicee": "INVE5161856"
+            "Invoicee": "INVE5161856",
+            "TaxRemittance": "Tax Remittance related information",
+            "AdditionalRemittanceInformation": ["Free text for additional information"]
           },
         ],
         "Unstructured": "Internal ops code 5120101"
       },
     }
   },
-
   "Risk": {
-    "PaymentContextCode": "TransferToThirdParty",
-    "ContractPresentIndicator": false,
+    "PaymentContextCode": "TransferToSell",
+    "ContractPresentIndicator": true,
     "PaymentPurposeCode": "EPAY",
     "CategoryPurposeCode": "CASH", 
     "BeneficiaryPaymentDetailsPrepopulatedIndicator": false,
@@ -1463,6 +1563,7 @@ Content-Type: application/json
           "Proxy": {
             "Identification": "441234012345",
             "Code": "TELE",
+            "Type": "Telephone"
           }
       },
     "Initiation": {
@@ -1474,6 +1575,7 @@ Content-Type: application/json
           "Proxy": {
             "Identification": "441234012345",
             "Code": "TELE",
+            "Type": "Telephone"
           }
       },
       "CreditorPostalAddress": {
@@ -1503,6 +1605,7 @@ Content-Type: application/json
         "Proxy": {
           "Identification": "441234012385",
           "Code": "TELE",
+          "Type": "Telephone"
         }
       },
       "UltimateDebtor": {
@@ -1535,6 +1638,23 @@ Content-Type: application/json
           "Country": "UK"
           }
         },
+        "RegulatoryReporting": [{
+          "DebitCreditReportingIndicator": "CRED",
+          "Authority": {
+            "Name": "string",
+            "CountryCode": "UG"
+          },
+          "Details": [{
+              "Type": "CRED",
+              "Date": "2024-04-25T13:26:41.911Z",
+              "Information": ["Reg info1", "Reg info2"],
+              "Country": "QG",
+              "Amount": {
+                "Amount": "4.68702",
+                "Currency": "JGM"
+            }
+          }]
+      }],
       "RemittanceInformation": {
         "Structured": [
           {
@@ -1554,7 +1674,9 @@ Content-Type: application/json
               ]
             }],
             "Invoicer": "INVR51856",
-            "Invoicee": "INVE5161856"
+            "Invoicee": "INVE5161856",
+            "TaxRemittance": "Tax Remittance related information",
+            "AdditionalRemittanceInformation": ["Free text for additional information"]
           },
         ],
         "Unstructured": "Internal ops code 5120101"
@@ -1563,7 +1685,26 @@ Content-Type: application/json
   },
 
   "Risk": {
-    "PaymentContextCode": "TransferToThirdParty"
+    "PaymentContextCode": "TransferToSell",
+    "ContractPresentIndicator": true,
+    "PaymentPurposeCode": "EPAY",
+    "CategoryPurposeCode": "CASH", 
+    "BeneficiaryPaymentDetailsPrepopulatedIndicator": false,
+    "BeneficiaryAccountType": "Business",
+    "MerchantCategoryCode": "7300", 
+    "MerchantCustomerIdentification": "053598653254",
+    "DeliveryAddress": {
+      "AddressLine": [
+        "Flat 7",
+        "Acacia Lodge"
+      ],
+      "StreetName": "Acacia Avenue",
+      "BuildingNumber": "27",
+      "PostCode": "GU31 2ZZ",
+      "TownName": "Sparsholt",
+      "CountrySubDivision": "Wessex",
+      "Country": "UK"
+    }
   },
 
   
@@ -1610,6 +1751,7 @@ Accept: application/json
         "Proxy": {
           "Identification": "441234012345",
           "Code": "TELE",
+          "Type": "Telephone"
         }
       },
       "CreditorAccount": {
@@ -1620,6 +1762,7 @@ Accept: application/json
         "Proxy": {
           "Identification": "441234012385",
           "Code": "TELE",
+          "Type": "Telephone"
         }
       },
       "CreditorPostalAddress": {
@@ -1641,6 +1784,21 @@ Accept: application/json
         "CountrySubDivision": "England",
         "Country": "UK"
       },
+      "UltimateCreditor": {
+        "SchemeName": "UK.OBIE.BICFI",
+        "Identification": "2360549017905161589",
+        "Name": "Ultimate Creditor",
+        "LEI": "60450004FECVJV7YN339",
+        "PostalAddress": {
+          "AddressType": "BIZZ",
+          "StreetName": "Bank Street",
+          "BuildingNumber": "11",
+          "Floor": "6",
+          "PostCode": "Z78 4TY",
+          "TownName": "London",
+          "Country": "UK"
+          }
+        },
       "UltimateDebtor": {
         "SchemeName": "UK.OBIE.BICFI",
         "Identification": "2360549017905161589",
@@ -1707,7 +1865,9 @@ Accept: application/json
               ]
             }],
             "Invoicer": "INVR51856",
-            "Invoicee": "INVE5161856"
+            "Invoicee": "INVE5161856",
+            "TaxRemittance": "Tax Remittance related information",
+            "AdditionalRemittanceInformation": ["Free text for additional information"]
           },
         ],
         "Unstructured": "Internal ops code 5120101"
@@ -1726,6 +1886,7 @@ Accept: application/json
         "Proxy": {
           "Identification": "441234012385",
           "Code": "TELE",
+          "Type": "Telephone"
         }
       },
       "CreditorPostalAddress": {
@@ -1769,7 +1930,9 @@ Accept: application/json
               "Issuer": "Issuer01",
             },
             "Invoicer": "INVR51856",
-            "Invoicee": "INVE5161856"
+            "Invoicee": "INVE5161856",
+            "TaxRemittance": "Tax Remittance related information",
+            "AdditionalRemittanceInformation": ["Free text for additional information"]
           },
         ],
         "Unstructured": "Internal ops code 5120101"
@@ -1778,8 +1941,8 @@ Accept: application/json
   },
 
   "Risk": {
-    "PaymentContextCode": "TransferToThirdParty",
-    "ContractPresentIndicator": false,
+    "PaymentContextCode": "TransferToSell",
+    "ContractPresentIndicator": true,
     "PaymentPurposeCode": "EPAY",
     "CategoryPurposeCode": "CASH", 
     "BeneficiaryPaymentDetailsPrepopulatedIndicator": false,
@@ -1797,6 +1960,7 @@ Accept: application/json
       "TownName": "Sparsholt",
       "CountrySubDivision": "Wessex",
       "Country": "UK"
+    }
   }
 }
 ```
@@ -1816,7 +1980,7 @@ Content-Type: application/json
     "ConsentId": "fe615446-e53a-45ed-954c-ae5d1f97a93b",
     "CreationDateTime": "2017-06-05T15:15:15+00:00",
     "DomesticVRPId": "OU90210",
-    "Status": "PDNG",
+    "StatusCode": "PDNG",
     "StatusReason": {
       "StatusReasonCode": "83",
       "StatusReasonDescription":"Pending completion next working day",
@@ -1832,6 +1996,7 @@ Content-Type: application/json
       "Proxy":{
           "Identification": "441234012348",
           "Code": "TELE",
+          "Type": "Telephone"
         }
     },
     "Refund" : "Yes", 
@@ -1844,7 +2009,14 @@ Content-Type: application/json
         "Proxy": {
           "Identification": "441234012345",
           "Code": "TELE",
+          "Type": "Telephone"
         }
+      },
+      "Refund":{
+        "SchemeName": "SortCodeAccountNumber",
+        "Identification": "30949330000010",
+        "SecondaryIdentification": "Roll 90210",
+        "Name": "Marcus Sweepimus",
       },
       "CreditorAccount": {
         "SchemeName": "SortCodeAccountNumber",
@@ -1854,6 +2026,7 @@ Content-Type: application/json
         "Proxy": {
           "Identification": "441234012385",
           "Code": "TELE",
+          "Type": "Telephone"
         }
       },
       "CreditorPostalAddress": {
@@ -1941,7 +2114,9 @@ Content-Type: application/json
               ]
             }],
             "Invoicer": "INVR51856",
-            "Invoicee": "INVE5161856"
+            "Invoicee": "INVE5161856",
+            "TaxRemittance": "Tax Remittance related information",
+            "AdditionalRemittanceInformation": ["Free text for additional information"]
           },
         ],
         "Unstructured": "Internal ops code 5120101"
@@ -1960,6 +2135,7 @@ Content-Type: application/json
         "Proxy": {
           "Identification": "441234012385",
           "Code": "TELE",
+          "Type": "Telephone"
         }
       },
       "CreditorPostalAddress": {
@@ -2018,7 +2194,9 @@ Content-Type: application/json
               "Issuer": "Issuer01",
             },
             "Invoicer": "INVR51856",
-            "Invoicee": "INVE5161856"
+            "Invoicee": "INVE5161856",
+            "TaxRemittance": "Tax Remittance related information",
+            "AdditionalRemittanceInformation": ["Free text for additional information"]
           },
         ],
         "Unstructured": "Internal ops code 5120101"
@@ -2027,8 +2205,8 @@ Content-Type: application/json
   },
 
   "Risk": {
-    "PaymentContextCode": "TransferToThirdParty",
-    "ContractPresentIndicator": false,
+    "PaymentContextCode": "TransferToSell",
+    "ContractPresentIndicator": true,
     "PaymentPurposeCode": "EPAY",
     "CategoryPurposeCode": "CASH", 
     "BeneficiaryPaymentDetailsPrepopulatedIndicator": false,

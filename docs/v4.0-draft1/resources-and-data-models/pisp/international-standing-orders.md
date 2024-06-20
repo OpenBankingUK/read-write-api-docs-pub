@@ -260,7 +260,7 @@ The OBWritePaymentDetailsResponse1 object will be used for a response to a call 
 | --- |--- |--- |--- |--- |--- |--- |
 | OBWritePaymentDetailsResponse1 | |OBWritePaymentDetailsResponse1 | |OBWritePaymentDetailsResponse1 | | |
 | Data |1..1 |OBWritePaymentDetailsResponse1/Data | |OBWriteDataPaymentOrderStatusResponse1 | | |
-| StatusDetail |0..unbounded |OBWritePaymentDetailsResponse1/Data/StatusDetail |An array of payment status details. |OBWritePaymentDetails1 | | |
+| PaymentStatus |0..*|OBWritePaymentDetailsResponse1/Data/PaymentStatus |Payment status details. |OBWritePaymentDetails1 | | |
 
 ## Usage Examples
 
@@ -286,22 +286,66 @@ Accept: application/json
 	"ConsentId": "ISOC-100",
     "Initiation": {
 	  "Frequency": "EvryWorkgDay",
+    "ChargeBearer": "Shared", 
+    "Purpose": "CCRD",
+    "DestinationCountryCode": "GB",  
 	  "FirstPaymentDateTime": "2018-06-06T06:06:06+00:00",
 	  "FinalPaymentDateTime": "2020-03-20T06:06:06+00:00",
-	  "DebtorAccount": {
-        "SchemeName": "UK.OBIE.SortCodeAccountNumber",
-        "Identification": "11280001234567",
-        "Name": "Andrea Frost"
+	  "DebtorAccount":{
+      "SchemeName": "UK.OBIE.SortCodeAccountNumber",
+      "Identification": "08080021325698",
+      "Name": "ACME Inc",
+      "SecondaryIdentification": "0002",
+      "LEI": "8200007YHFDMEODY1965",
+      "Proxy": {
+        "Identification": "07700900000",
+        "Code": "TELE",
+        "Type": "Telephone"
       },
-      "CreditorAccount": {
-        "SchemeName": "UK.OBIE.IBAN",
-        "Identification": "DE89370400440532013000",
-        "Name": "Tom Kirkman"
+    },
+    "CreditorAccount": {
+      "SchemeName": "UK.OBIE.SortCodeAccountNumber",
+      "Identification": "08080021325698",
+      "Name": "ACME Inc",
+      "SecondaryIdentification": "0002",
+      "Proxy": {
+        "Identification": "+441632960540",
+        "Code": "TELE",
+        "Type": "Telephone"
       },
+    },
 	  "InstructedAmount": {
         "Amount": "20",
         "Currency": "EUR"
 	  },
+    "Creditor": {
+      "SchemeName": "UK.OBIE.SortCodeAccountNumber",
+        "LEI": "8200007YHFDMEODY8412",
+        "PostalAddress": {
+          "AddressType": "BIZZ",
+          "StreetName": "Bank Street",
+          "BuildingNumber": "11",
+          "Floor": "6",
+          "PostCode": "Z78 4TY",
+          "TownName": "London",
+          "Country": "UK"
+      }
+    },
+    "CreditorAgent": {  
+      "LEI": "IZ9Q00LZEVUKWCQY6X15",
+      "SchemeName": "UK.OBIE.BICFI",
+      "Identification": "80200112344562",
+      "Name": "The Credit Agent", 
+      "PostalAddress": { 
+        "AddressType": "BIZZ",
+        "StreetName": "Bank Street",
+        "BuildingNumber": "11",
+        "Floor": "6",
+        "PostCode": "Z78 4TY",
+        "TownName": "London",
+        "Country": "UK"
+      }
+    },
 	  "CurrencyOfTansfer":"EUR",
     "UltimateDebtor": {
         "SchemeName": "UK.OBIE.BICFI",
@@ -373,14 +417,36 @@ Accept: application/json
                 "Reference": "REF_26518"
               },
               "Invoicer": "INVR51856",
-              "Invoicee": "INVE5161856"
+              "Invoicee": "INVE5161856",
+              "TaxRemittance": "Tax Remittance related information",
+              "AdditionalRemittanceInformation": ["Free text for additional information"],
             }
-          ]
+          ],
+          "Unstructured": "Internal ops code 5120101"
         }
     }
   },
   "Risk": {
-    "PaymentContextCode": "TransferToThirdParty"
+    "PaymentContextCode": "TransferToThirdParty",
+    "PaymentPurposeCode": "EPAY",
+    "CategoryPurposeCode": "CASH", 
+    "ExtendedPurpose": "Required when no 4 character code fits the purpose",
+    "BeneficiaryPaymentDetailsPrepopulatedIndicator": false,
+    "BeneficiaryAccountType": "Business",
+    "MerchantCategoryCode": "7300", 
+    "MerchantCustomerIdentification": "053598653254",
+    "DeliveryAddress": {
+      "AddressLine": [
+        "Flat 7",
+        "Acacia Lodge"
+      ],
+      "StreetName": "Acacia Avenue",
+      "BuildingNumber": "27",
+      "PostCode": "GU31 2ZZ",
+      "TownName": "Sparsholt",
+      "CountrySubDivision": "Wessex",
+      "Country": "UK"
+    }
   }
 }
 ```
@@ -412,19 +478,66 @@ Content-Type: application/json
         "Name": "NTPC Inc"
       }
     },
+    "MultiAuthorisation": { 
+      "StatusCode": "AUTH", 
+      "NumberRequired": 2,
+      "NumberReceived": 2,
+      "LastUpdateDateTime": "2017-06-05T15:15:13+00:00",
+      "ExpirationDateTime": "2017-06-06T15:15:13+00:00",
+    },
     "Initiation": {
+      "ChargeBearer": "Shared",   
+      "Purpose": "CCRD",
       "Frequency": "EvryWorkgDay",
+      "DestinationCountryCode": "GB",
       "FirstPaymentDateTime": "2018-06-06T06:06:06+00:00",
       "FinalPaymentDateTime": "2020-03-20T06:06:06+00:00",
-      "DebtorAccount": {
+      "DebtorAccount":{
         "SchemeName": "UK.OBIE.SortCodeAccountNumber",
-        "Identification": "11280001234567",
-        "Name": "Andrea Frost"
+        "Identification": "08080021325698",
+        "Name": "ACME Inc",
+        "SecondaryIdentification": "0002",
+        "LEI": "8200007YHFDMEODY1965",
+        "Proxy": {
+          "Identification": "07700900000",
+          "Code": "TELE",
+          "Type": "Telephone"
+          },
+      },
+      "Refund":{
+        "SchemeName": "SortCodeAccountNumber",
+        "Identification": "30949330000010",
+        "SecondaryIdentification": "Roll 90210",
+        "Name": "Marcus Sweepimus",
+        "Proxy": {
+          "Identification": "441234012385",
+          "Code": "TELE",
+          "Type": "Telephone"
+        }
+      },
+      "Creditor": {
+        "SchemeName": "UK.OBIE.SortCodeAccountNumber",
+        "LEI": "8200007YHFDMEODY8412",
+          "PostalAddress": {
+            "AddressType": "BIZZ",
+            "StreetName": "Bank Street",
+            "BuildingNumber": "11",
+            "Floor": "6",
+            "PostCode": "Z78 4TY",
+            "TownName": "London",
+            "Country": "UK"
+        }
       },
       "CreditorAccount": {
-        "SchemeName": "UK.OBIE.IBAN",
-        "Identification": "DE89370400440532013000",
-        "Name": "Tom Kirkman"
+        "SchemeName": "UK.OBIE.SortCodeAccountNumber",
+        "Identification": "08080021325698",
+        "Name": "ACME Inc",
+        "SecondaryIdentification": "0002",
+        "Proxy": {
+          "Identification": "+441632960540",
+          "Code": "TELE",
+          "Type": "Telephone"
+        },
       },
       "InstructedAmount": {
         "Amount": "20",
@@ -501,15 +614,37 @@ Content-Type: application/json
                 "Reference": "REF_26518"
               },
               "Invoicer": "INVR51856",
-              "Invoicee": "INVE5161856"
+              "Invoicee": "INVE5161856",
+              "TaxRemittance": "Tax Remittance related information",
+              "AdditionalRemittanceInformation": ["Free text for additional information"],
             }
-          ]
+          ],
+          "Unstructured": "Internal ops code 5120101"
         }
     }
   },
   "Risk": {
-    "PaymentContextCode": "TransferToThirdParty"
-  },
+    "PaymentContextCode": "TransferToThirdParty",
+    "PaymentPurposeCode": "EPAY",
+    "CategoryPurposeCode": "CASH", 
+    "ExtendedPurpose": "Required when no 4 character code fits the purpose",
+    "BeneficiaryPaymentDetailsPrepopulatedIndicator": false,
+    "BeneficiaryAccountType": "Business",
+    "MerchantCategoryCode": "7300", 
+    "MerchantCustomerIdentification": "053598653254",
+    "DeliveryAddress": {
+      "AddressLine": [
+        "Flat 7",
+        "Acacia Lodge"
+      ],
+      "StreetName": "Acacia Avenue",
+      "BuildingNumber": "27",
+      "PostCode": "GU31 2ZZ",
+      "TownName": "Sparsholt",
+      "CountrySubDivision": "Wessex",
+      "Country": "UK"
+    }
+  }
   "Links": {
     "Self": "https://api.alphabank.com/open-banking/v3.1/pisp/international-standing-orders/SO-ISOC-100"
   },
