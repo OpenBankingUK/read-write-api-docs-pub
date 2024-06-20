@@ -21,10 +21,10 @@
   - [Setup Account Access Consent - All Permissions Granted](#setup-account-access-consent---all-permissions-granted)
     - [Post Account Access Consents Request](#post-account-access-consents-request)
     - [Post Account Access Consents Response](#post-account-access-consents-response)
-  - [StatusCode - AWAU](#statuscode---awau)
+  - [Status - AWAU](#status---awau)
     - [Get Account Access Consents Request](#get-account-access-consents-request)
     - [Get Account Access Consents Response](#get-account-access-consents-response)
-  - [StatusCode - AUTH](#statuscode---auth)
+  - [Status - AUTH](#status---auth)
     - [Get Account Access Consents Request](#get-account-access-consents-request-1)
     - [Get Account Access Consents Response](#get-account-access-consents-response-1)
   - [Delete Account Access Consent](#delete-account-access-consent)
@@ -63,13 +63,13 @@ The API allows the AISP to ask an ASPSP to create a new account-access-consent r
 The PSU  **must**  authenticate with the ASPSP and authorise the account-access-consent for the account-access-consent to be successfully setup.
 The account-access-consent resource that is created successfully must have the following Status code-list enumeration:
 
-|  |StatusCode |Status Description |
+|  |Status |Status Description |
 | --- |--- |--- |
 | 1 |AWAU |The account access consent is awaiting authorisation. |
 
 After authorisation has taken place the account-access-consent resource may have these following statuses.
 
-|  |StatusCode |Status Description |
+|  |Status |Status Description |
 | --- |--- |--- |
 | 1 |RJCT |The account access consent has been rejected. |
 | 2 |AUTH |The account access consent has been successfully authorised. |
@@ -77,7 +77,7 @@ After authorisation has taken place the account-access-consent resource may have
 
 #### Status Flow
 
-This is the state diagram for the StatusCode.
+This is the state diagram for the Status.
 
 ![ Consent Authorisation.jpg ](./images/AIS_Consent.png )
 
@@ -91,11 +91,11 @@ The usage of this API endpoint will be subject to an ASPSP's fair usage policies
 
 #### Account Access Consent Status
 
-Once the PSU authorises the account-access-consent resource - the StatusCode of the account-access-consent resource will be updated with "AUTH".
+Once the PSU authorises the account-access-consent resource - the Status of the account-access-consent resource will be updated with "AUTH".
 
-The available StatusCode code-list enumerations for the account-access-consent resource are:
+The available Status code-list enumerations for the account-access-consent resource are:
 
-|  |StatusCode |Status Description |
+|  |Status |Status Description |
 | --- |--- |--- |
 | 1 |RJCT |The account access consent has been rejected. |
 | 2 |AWAU |The account access consent is awaiting authorisation. |
@@ -103,7 +103,7 @@ The available StatusCode code-list enumerations for the account-access-consent r
 | 4| CANC | PSU has cancelled access given to the TPP using the ASPSPs access dashboard.  OR ASPSP has revoked the access token or the token has been suspended. |
 | 5| EXPD | The consent has passed its expiry date. The ASPSP then marks the consent as ‘Expired’ | 
 
-Changes to the StatusCode, such as being rejected, should be captured in `StatusReason`, an array of `StatusReasonCode`, `StatusReasonDescription` and `Path`.  
+Changes to the Status, such as being rejected, should be captured in `StatusReason`, an array of `StatusReasonCode`, `StatusReasonDescription` and `Path`.  
 
 | Field | Description |
 |---|---|
@@ -169,7 +169,7 @@ And response to:
 
 * The OBReadConsentResponse1 object contains the same information as the OBReadConsent1, but with additional fields:
     * ConsentId - to uniquely identify the account-access-consent resource.
-    * StatusCode.
+    * Status.
     * StatusReason.
     * CreationDateTime.
     * StatusUpdateDateTime.
@@ -183,7 +183,7 @@ And response to:
 | Data |1..1 |OBReadConsentResponse1/Data | |OBReadDataConsentResponse1 | |
 | ConsentId |1..1 |OBReadConsentResponse1/Data/ConsentId |Unique identification as assigned to identify the account access consent resource. |Max128Text | |
 | CreationDateTime |1..1 |OBReadConsentResponse1/Data/CreationDateTime |Date and time at which the resource was created. |ISODateTime | |
-| StatusCode |0..1 |OBReadConsentResponse1/Data/StatusCode |Specifies the status of consent resource in code form. | For a full list of enumeration values refer to `OB_Internal_CodeSet` [here].(https://github.com/OpenBankingUK/External_internal_CodeSets). |OBInternalPermissions1Code |
+| Status |0..1 |OBReadConsentResponse1/Data/Status |Specifies the status of consent resource in code form. | For a full list of enumeration values refer to `OB_Internal_CodeSet` [here].(https://github.com/OpenBankingUK/External_internal_CodeSets). |OBInternalPermissions1Code |
 | StatusReason |0..* |OBReadConsentResponse1/Data/StatusReason |Specifies the status reason. | OBStatusReason |
 | StatusReasonCode |0..1 |OBReadConsentResponse1/Data/StatusReason/StatusReasonCode |Specifies the status reason in a code form| For a full list of enumeration values refer to `OB_Internal_CodeSet` [here].(https://github.com/OpenBankingUK/External_internal_CodeSets). | OBExternalStatusReason1Code |
 | StatusReasonDescription |0..1 |OBReadConsentResponse1/Data/StatusReason/StatusReasonDescription |Description supporting the StatusReasonCode. |Max500Text | |
@@ -249,7 +249,7 @@ Content-Type: application/json
 {
   "Data": {
     "ConsentId": "urn-alphabank-intent-88379",
-    "StatusCode": "AWAU",
+    "Status": "AWAU",
     "StatusUpdateDateTime": "2017-05-02T00:00:00+00:00",
     "CreationDateTime": "2017-05-02T00:00:00+00:00",
     "StatusReason": {
@@ -286,7 +286,7 @@ Content-Type: application/json
 }
 ```
 
-### StatusCode - AWAU
+### Status - AWAU
 
 This is an example of a GET request which is made  **before**  the account access consent resource is authorised.
 
@@ -312,7 +312,7 @@ Content-Type: application/json
 {
   "Data": {
     "ConsentId": "urn-alphabank-intent-88379",
-    "StatusCode": "AWAU",
+    "Status": "AWAU",
    "StatusReason": {
       "StatusReasonCode": "U036", 
       "StatusReasonDescription":"Waiting for completion of consent authorisation to be completed by user",
@@ -350,7 +350,7 @@ Content-Type: application/json
 }
 ```
 
-### StatusCode - AUTH
+### Status - AUTH
 
 This is an example of a GET request which is made  **after**  the account access consent resource is authorised.
 
@@ -376,7 +376,7 @@ Content-Type: application/json
 {
   "Data": {
     "ConsentId": "urn-alphabank-intent-88379",
-    "StatusCode": "AUTH",
+    "Status": "AUTH",
     "StatusReason": {
       "StatusReasonCode": "U038", 
       "StatusReasonDescription":"Consent has been completed successfully"
@@ -413,7 +413,7 @@ Content-Type: application/json
 }
 ```
 
-### StatusCode - RJCT
+### Status - RJCT
 
 This is an example of a GET request which is made  **after**  the account access consent resource has been rejected.
 
@@ -439,7 +439,7 @@ Content-Type: application/json
 {
   "Data": {
     "ConsentId": "urn-alphabank-intent-88379",
-    "StatusCode": "REJT",
+    "Status": "REJT",
     "StatusReason": {
       "StatusReasonCode": "U038", 
       "StatusReasonDescription":"Data.LocalInstrument is invalid.  Expected ExternalLocalInstrument1Code value, received SEPE",
@@ -539,10 +539,10 @@ Content-Type: application/json
 {
   "Data": {
     "ConsentId": "urn-alphabank-intent-88379",
-    "StatusCode": "AWAU",
+    "Status": "AWAU",
     "StatusUpdateDateTime": "2017-05-02T00:00:00+00:00",
     "CreationDateTime": "2017-05-02T00:00:00+00:00",
-    "StatusCode": "AWAU",
+    "Status": "AWAU",
     "StatusReason": {
       "StatusReasonCode": "U036", 
       "StatusReasonDescription":"Waiting for completion of consent authorisation to be completed by user",

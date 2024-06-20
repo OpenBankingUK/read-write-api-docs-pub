@@ -415,7 +415,7 @@ The AISP **must** be restricted to accessing statements which are **completely**
 
 The Account Access Consent resource may have one of the following status codes after authorisation has taken place:
 
- |  |StatusCode |Description |
+ |  |Status |Description |
 | --- |--- |--- |
 | 1 |AUTH |The account access consent has been successfully authorised. |
 | 2 |RJCT |The account access consent has been rejected. |
@@ -426,7 +426,7 @@ Account Access Consents are long-lived consents.
 
 A PSU can re-authenticate an Account Access Consent if:
 
-- The account-access-consent has a StatusCode of `AUTH` and
+- The account-access-consent has a Status of `AUTH` and
 - The `ExpirationDateTime` of the account-access-consent, if specified, has not elapsed.
 
 Where there is no change in the consent parameters required, TPPs should perform a re-authentication / refresh upon the original consent using the same intent-id as before, instead of issuing a new, duplicate consent.

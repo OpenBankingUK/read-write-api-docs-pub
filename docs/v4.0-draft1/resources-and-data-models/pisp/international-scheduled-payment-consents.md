@@ -3,9 +3,9 @@
 - [Overview](#overview)
 - [Endpoints](#endpoints)
   - [POST /international-scheduled-payment-consents](#post-international-scheduled-payment-consents)
-    - [StatusCode](#statuscode)
+    - [Status](#status)
   - [GET /international-scheduled-payment-consents/{ConsentId}](#get-international-scheduled-payment-consents-consentid)
-    - [StatusCode](#statuscode-2)
+    - [Status](#status-2)
   - [GET /international-scheduled-payment-consents/{ConsentId}/funds-confirmation](#get-international-scheduled-payment-consents-consentid-funds-confirmation)
   - [State Model](#state-model)
     - [Payment Order Consent](#payment-order-consent)
@@ -65,11 +65,11 @@ The API endpoint allows the PISP to ask an ASPSP to create a new **international
 * The endpoint allows the PISP to send a copy of the consent (between PSU and PISP) to the ASPSP for the PSU to authorise.
 * The ASPSP creates the **international-scheduled-payment-consent** resource and responds with a unique ConsentId to refer to the resource.
 
-#### StatusCode
+#### Status
 
-The default StatusCode is "AWAU" immediately after the international-scheduled-payment-consent has been created.
+The default Status is "AWAU" immediately after the international-scheduled-payment-consent has been created.
 
-| StatusCode |
+| Status |
 | --- |
 | AWAU |
 
@@ -77,17 +77,17 @@ The default StatusCode is "AWAU" immediately after the international-scheduled-p
 
 A PISP can optionally retrieve a payment consent resource that they have created to check its status. 
 
-#### StatusCode
+#### Status
 
-Once the PSU authorises the payment-consent resource, the StatusCode of the payment-consent resource will be updated with "AUTH".
+Once the PSU authorises the payment-consent resource, the Status of the payment-consent resource will be updated with "AUTH".
 
-If the PSU rejects the consent or the international-scheduled-payment-consent has failed some other ASPSP validation, the StatusCode will be set to "RJCT".
+If the PSU rejects the consent or the international-scheduled-payment-consent has failed some other ASPSP validation, the Status will be set to "RJCT".
 
-Once an international-scheduled-payment has been successfully created using the international-scheduled-payment-consent, the StatusCode of the international-scheduled-payment-consent will be set to "COND".
+Once an international-scheduled-payment has been successfully created using the international-scheduled-payment-consent, the Status of the international-scheduled-payment-consent will be set to "COND".
 
 The available StatusCodes for the international-scheduled-payment-consent resource are:
 
-| StatusCode |
+| Status |
 | --- |
 | AWAU |
 | RJCT |
@@ -98,7 +98,7 @@ The available StatusCodes for the international-scheduled-payment-consent resour
 
 The API endpoint allows the PISP to ask an ASPSP to confirm funds on an **international-scheduled-payment-consent** resource, where the payment is for immediate debit.
 
-* An ASPSP can only respond to a funds confirmation request if the **international-scheduled-payment-consent** resource has an `AUTH` StatusCode. If the StatusCode is not `AUTH`, an ASPSP **must** respond with a 400 (Bad Request) and a `U009` error code.
+* An ASPSP can only respond to a funds confirmation request if the **international-scheduled-payment-consent** resource has an `AUTH` Status. If the Status is not `AUTH`, an ASPSP **must** respond with a 400 (Bad Request) and a `U009` error code.
 * Confirmation of funds requests do not affect the status of the **international-scheduled-payment-consent** resource.
 
 Refer to [External_Internal_CodeSets](https://github.com/OpenBankingUK/External_Internal_CodeSets) -> OB_Internal_CodeSet -> `OBInternalPermissions1Code`.
@@ -111,16 +111,16 @@ The state model for the international-scheduled-payment-consent resource follows
 
 ![State model](./images/PO_Consent.png)
 
-The definitions for the StatusCode:
+The definitions for the Status:
 
-|  |StatusCode |Status Description |
+|  |Status |Status Description |
 | --- |--- |--- |
 | 1 |AWAU |The consent resource is awaiting PSU authorisation. |
 | 2 |RJCT |The consent resource has been rejected. |
 | 3 |AUTH |The consent resource has been successfully authorised. |
 | 4 |COND |The consented action has been successfully completed. This does not reflect the status of the consented action. |
 
-Changes to the StatusCode, such as being rejected, should be captured in `StatusReason`, an array of `StatusReasonCode`, `StatusReasonDescription` and `Path`.  
+Changes to the Status, such as being rejected, should be captured in `StatusReason`, an array of `StatusReasonCode`, `StatusReasonDescription` and `Path`.  
 
 | Field | Description |
 |---|---|
@@ -363,7 +363,7 @@ Exchange rate behaviour:
 | Data |1..1 |OBWriteInternationalScheduledConsentResponse6/Data | |OBWriteDataInternationalScheduledConsentResponse6 | | |
 | ConsentId |1..1 |OBWriteInternationalScheduledConsentResponse6/Data/ConsentId |OB: Unique identification as assigned by the ASPSP to uniquely identify the consent resource. |Max128Text | | |
 | CreationDateTime |1..1 |OBWriteInternationalScheduledConsentResponse6/Data/CreationDateTime |Date and time at which the resource was created. |ISODateTime | | |
-| StatusCode |1..1 |OBWriteInternationalScheduledConsentResponse6/Data/StatusCode |Specifies the status of consent resource in code form. |For a full list of enumeration values refer to `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_internal_CodeSets)|OBExternalStatusReason1Code |
+| Status |1..1 |OBWriteInternationalScheduledConsentResponse6/Data/Status |Specifies the status of consent resource in code form. |For a full list of enumeration values refer to `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_internal_CodeSets)|OBExternalStatusReason1Code |
 | StatusReason |0..* |OBWriteInternationalScheduledConsentResponse6/Data/StatusReason |Specifies the status reason. | OBStatusReason |
 | StatusReasonCode |0..1 |OBWriteInternationalScheduledConsentResponse6/Data/StatusReason/StatusReasonCode |Specifies the status reason in a code form. |For a full list of enumeration values refer to `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_internal_CodeSets)| OBInternalPermissions1Code |
 | StatusReasonDescription |0..1 |OBWriteInternationalScheduledConsentResponse6/Data/StatusReason/StatusReasonDescription |Description supporting the StatusReasonCode. | Max500Text |
@@ -635,7 +635,7 @@ Content-Type: application/json
 		"Permission": "Create",
 		"ReadRefundAccount": "Yes",
 		"ConsentId": "58923",
-		"StatusCode": "AWAU",
+		"Status": "AWAU",
     "StatusReason": {
       "StatusReasonCode": "U036", 
       "StatusReasonDescription":"Waiting for completion of consent authorisation to be completed by user",

@@ -3,11 +3,11 @@
 - [Overview](#overview)
 - [Endpoints](#endpoints)
   - [POST /domestic-scheduled-payments](#post-domestic-scheduled-payments)
-    - [StatusCode](#statuscode)
+    - [Status](#status)
   - [GET /domestic-scheduled-payments/{DomesticScheduledPaymentId}](#get-domestic-scheduled-payments-domesticscheduledpaymentid)
-    - [StatusCode](#statuscode-2)
+    - [Status](#status-2)
   - [GET /domestic-scheduled-payments/{DomesticScheduledPaymentId}/payment-details](#get-domestic-scheduled-payments-domesticscheduledpaymentid-payment-details)
-    - [StatusCode](#statuscode-3)
+    - [Status](#status-3)
   - [State Model](#state-model)
     - [Payment Order](#payment-order)
       - [Multiple Authorisation](#multiple-authorisation)
@@ -55,13 +55,13 @@ Once the domestic-scheduled-payment-consent has been authorised by the PSU, the 
 * The PISP **must** ensure that the Initiation and Risk sections of the domestic-scheduled-payment match the corresponding Initiation and Risk sections of the domestic-scheduled-payment-consent resource. If the two do not match, the ASPSP **must not** process the request and **must** respond with a 400 (Bad Request).
 * Any operations on the domestic-scheduled-payment resource will not result in a Status change for the domestic-scheduled-payment resource.
 
-#### StatusCode
+#### Status
 
-A domestic-scheduled-payment can only be created if its corresponding domestic-scheduled-payment-consent resource has the StatusCode of "AUTH". 
+A domestic-scheduled-payment can only be created if its corresponding domestic-scheduled-payment-consent resource has the Status of "AUTH". 
 
 The domestic-scheduled-payment resource that is created successfully must have one of the following initial StatusCodes:
 
-| StatusCode |
+| Status |
 | ------ |
 | RCVD |
 | RJCT |
@@ -70,11 +70,11 @@ The domestic-scheduled-payment resource that is created successfully must have o
 
 A PISP can retrieve the domestic-scheduled-payment to check its status.
 
-#### StatusCode
+#### Status
 
 The domestic-scheduled-payment resource must have one of the following StatusCodes:
 
-| StatusCode |
+| Status |
 | ------ |
 | RCVD |
 | CANC |
@@ -95,11 +95,11 @@ The domestic-scheduled-payment resource must have one of the following StatusCod
 
 A PISP can retrieve the Details of the underlying payment transaction via this endpoint. This resource allows ASPSPs to return richer list of Payment Statuses, and if available payment scheme related statuses.
 
-#### StatusCode
+#### Status
 
 The domestic-scheduled-payments - payment-details must have one of the following PaymentStatusCode code-set enumerations:
 
-| StatusCode |
+| Status |
 | ------ |
 | RCVD |
 | CANC |
@@ -136,9 +136,9 @@ __Payment order state model key:__
 ##### Multiple Authorisation
 If the payment-order requires multiple authorisations the status of the multiple authorisations will be updated in the MultiAuthorisation object.
 
-Once the payment is RCVD, the domestic-scheduled-payment StatusCode must be set to PATC and the MultiAuthorisation object status updated with the AWAF status. Once all authorisations have been successfully completed the MultiAuthorisation status must be set to AUTH and domestic-scheduled-payment StatusCode updated to ACSP if any intermediate status are not supported.
+Once the payment is RCVD, the domestic-scheduled-payment Status must be set to PATC and the MultiAuthorisation object status updated with the AWAF status. Once all authorisations have been successfully completed the MultiAuthorisation status must be set to AUTH and domestic-scheduled-payment Status updated to ACSP if any intermediate status are not supported.
 
-Any rejections in the multiple authorisation process should result in the MultiAuthorisation status and StatusCode being set to RJCT. 
+Any rejections in the multiple authorisation process should result in the MultiAuthorisation status and Status being set to RJCT. 
 
 
 ![Multi Auth](./images/PO_MultiAuthFlow.png)
@@ -231,7 +231,7 @@ The domestic-scheduled-payment **response** object contains the:
 | DomesticScheduledPaymentId |1..1 |OBWriteDomesticScheduledResponse5/Data/DomesticScheduledPaymentId |OB: Unique identification as assigned by the ASPSP to uniquely identify the domestic schedule payment resource. |Max40Text | | |
 | ConsentId |1..1 |OBWriteDomesticScheduledResponse5/Data/ConsentId |OB: Unique identification as assigned by the ASPSP to uniquely identify the consent resource. |Max128Text | | |
 | CreationDateTime |1..1 |OBWriteDomesticScheduledResponse5/Data/CreationDateTime |Date and time at which the resource was created. |ISODateTime | | |
-| StatusCode |1..1 |OBWriteDomesticScheduledResponse5/Data/StatusCode |Specifies the status of the payment order resource. |OBExternalStatus3Code |RCVD RJCT ACSP CANC | |
+| Status |1..1 |OBWriteDomesticScheduledResponse5/Data/Status |Specifies the status of the payment order resource. |OBExternalStatus3Code |RCVD RJCT ACSP CANC | |
 | StatusUpdateDateTime |1..1 |OBWriteDomesticScheduledResponse5/Data/StatusUpdateDateTime |Date and time at which the resource status was updated. |ISODateTime | | |
 | StatusReason |0..* |OBWriteDomesticScheduledResponse5/Data/StatusReason |Specifies the status reason. | OBStatusReason |
 | StatusReasonCode |0..1 |OBWriteDomesticScheduledResponse5/Data/StatusReason/StatusReasonCode |Specifies the status reason in a code form. |For a full list of enumeration values refer to `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_internal_CodeSets)| OBInternalPermissions1Code |
@@ -442,7 +442,7 @@ Content-Type: application/json
   "Data": {
     "DomesticScheduledPaymentId": "7290-003",
     "ConsentId": "7290",
-    "StatusCode": "RCVD",
+    "Status": "RCVD",
     "StatusReason": {
       "StatusReasonCode": "U030", 
       "StatusReasonDescription":"Payment order successfully received",
@@ -467,7 +467,7 @@ Content-Type: application/json
       "LEI": "8200007YHFDMEODY1965",
     },
     "MultiAuthorisation": { 
-      "StatusCode": "AUTH", 
+      "Status": "AUTH", 
       "NumberRequired": 2,
       "NumberReceived": 2,
       "LastUpdateDateTime": "2018-06-05T15:15:13+00:00",

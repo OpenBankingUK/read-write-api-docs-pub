@@ -64,7 +64,7 @@ The endpoint allows the TPP to send a copy of the consent (between PSU and TPP) 
 
 The ASPSP creates the resource and responds with a unique ConsentId to refer to the resource.
 
-The default/initial StatusCode of the resource is set to `AWAU`.
+The default/initial Status of the resource is set to `AWAU`.
 
 If the parameters specified by the TPP in this resource are not valid, or fail any rules, the ASPSP must return a 400 Bad Request. In such a situation a resource is not created.
 
@@ -99,7 +99,7 @@ A TPP can delete a VRP consent resource that they have created by calling this A
 
 This API endpoint allows the TPP to ask an ASPSP to confirm funds on the `DebtorAccount` associated with the `domestic-vrp-consent`.
 
-An ASPSP can only respond to a funds confirmation request if the resource has a StatusCode of `AUTH`.
+An ASPSP can only respond to a funds confirmation request if the resource has a Status of `AUTH`.
 
 If resource has any other Status, the ASPSP must respond with a 400 (Bad Request) and a `UK.OBIE.Resource.InvalidConsentStatus` error code.
 
@@ -125,12 +125,12 @@ Successful submission must return the full updated consent resource body.
 
 ## State Model - VRP consents
 
-The state model for the VRP consents resource follows the generic consent state model. However, it does not use the `COND` StatusCode.
+The state model for the VRP consents resource follows the generic consent state model. However, it does not use the `COND` Status.
 
 ![VRP Consent State model](./images/PIS-VRP_PO_Consent.png)
 
 
-All `domestic-vrp-consents` start off with a StatusCode of `AWAU`
+All `domestic-vrp-consents` start off with a Status of `AWAU`
 
 Once the PSU authorises the resource - the StausCode will be set to `AUTH`.
 
@@ -144,9 +144,9 @@ The available StatusCodes for the VRP consents resource are:
 - CANC
 - EXPD
 
-The definitions for the StatusCode:
+The definitions for the Status:
 
-|     | StatusCode                |  Description                                                            |
+|     | Status                |  Description                                                            |
 |-----|-----------------------|-------------------------------------------------------------------------------|
 | 1   | AWAU | The consent resource is awaiting PSU authorisation.                           |
 | 2   | RJCT              | The consent resource has been rejected.                                       |
@@ -155,7 +155,7 @@ The definitions for the StatusCode:
 | 5| EXPD| The consent resource has expired.|
 
 
-Changes to the StatusCode, such as being rejected, should be captured in `StatusReason`, an array of `StatusReasonCode`, `StatusReasonDescription` and `Path`.  
+Changes to the Status, such as being rejected, should be captured in `StatusReason`, an array of `StatusReasonCode`, `StatusReasonDescription` and `Path`.  
 
 | Field | Description |
 |---|---|
@@ -389,7 +389,7 @@ The Risk block for VRP does not included `ExtendedPurpose`, used only in Interna
 | __ConsentId__  (1..1)| `Data. ConsentId` | Unique identification as assigned by the ASPSP to uniquely identify the consent resource.      | Max128Text|
 | __ReadRefundAccount__ (0..1) | `Data. ReadRefundAccount` | Indicates whether the `RefundAccount` object should be included in the response | Yes No|
 | __CreationDateTime__ (1..1)| `Data. CreationDateTime` | Date and time at which the resource was created.|ISODateTime|
-| __StatusCode__ (1..1) | `Data. StatusCode` | Specifies the status of resource in code form.  |AUTH AWAU RJCT CANC EXPD |
+| __StatusCode__ (1..1) | `Data. Status` | Specifies the status of resource in code form.  |AUTH AWAU RJCT CANC EXPD |
 | __StatusUpdateDateTime__ (1..1)| `Data. StatusUpdateDateTime` |Date and time at which the resource status was updated.  | ISODateTime  |
 | __StatusReason__ (0..*) | `Data. StatusReason` | An array of StatusReasonCode |OBStatusReason |
 | __StatusReasonCode__ (0..1) | `Data. StatusReason. StatusReasonCode` | Specifies the status reason in a code form. For a full description see ` OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_internal_CodeSets).  |OBExternalStatusReason1Code |
