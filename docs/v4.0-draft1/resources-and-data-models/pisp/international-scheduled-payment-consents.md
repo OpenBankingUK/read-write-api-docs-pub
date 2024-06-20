@@ -11,11 +11,11 @@
     - [Payment Order Consent](#payment-order-consent)
 - [Data Model](#data-model)
   - [Reused Classes](#reused-classes)
-    - [OBRemittanceInformation1](#obremittanceinformation1)
+    - [OBRemittanceInformation2](#obremittanceinformation2)
     - [OBRegulatoryReporting1](#obregulatoryreporting1)
     - [OBUltimateCreditor1](#obultimatecreditor1)
     - [OBUltimateDebtor1](#obultimatedebtor1)
-    - [OBPostalAddress6](#obpostaladdress6)
+    - [OBPostalAddress7](#obpostaladdress7)
     - [OBProxy1](#obproxy1)
     - [OBInternationalScheduled3](#obinternationalscheduled3)
       - [UML Diagram](#uml-diagram)
@@ -134,9 +134,9 @@ The data dictionary section gives the detail on the payload content for the Inte
 
 ### Reused Classes
 
-#### OBRemittanceInformation1
+#### OBRemittanceInformation2
 
-The OBRemittanceInformation1 class is defined in the [payment-initiation-api-profile](../../profiles/payment-initiation-api-profile.md#obremittanceinformation1) page
+The OBRemittanceInformation2 class is defined in the [payment-initiation-api-profile](../../profiles/payment-initiation-api-profile.md#obremittanceinformation2) page
 
 #### OBRegulatoryReporting1
 
@@ -151,9 +151,9 @@ The OBUltimateCreditor1 class is defined in the [payment-initiation-api-profile]
 
 The OBUltimateDebtor1 class is defined in the [payment-initiation-api-profile](../../profiles/payment-initiation-api-profile.md#obultimatedebtor1) page.
 
-#### OBPostalAddress6 
+#### OBPostalAddress7 
 
-The OBPostalAddress6 class is defined in the [payment-initiation-api-profile](../../profiles/payment-initiation-api-profile.md#obpostaladdress6) page.
+The OBPostalAddress7 class is defined in the [payment-initiation-api-profile](../../profiles/payment-initiation-api-profile.md#obpostaladdress7) page.
 
 #### OBProxy1
 
@@ -213,10 +213,10 @@ The ExchangeRateInformation object must conform to these behaviours:
 | OBInternationalScheduled3 | |OBInternationalScheduled3 |The Initiation payload is sent by the initiating party to the ASPSP. It is used to request movement of funds from the debtor account to a creditor for a single scheduled international payment. |OBInternationalScheduled3 | | |
 | InstructionIdentification |1..1 |OBInternationalScheduled3/InstructionIdentification |Unique identification as assigned by an instructing party for an instructed party to unambiguously identify the instruction. Usage: the instruction identification is a point to point reference that can be used between the instructing party and the instructed party to refer to the individual instruction. It can be included in several messages related to the instruction. |Max35Text | | |
 | EndToEndIdentification |0..1 |OBInternationalScheduled3/EndToEndIdentification |Unique identification assigned by the initiating party to unambiguously identify the transaction. This identification is passed on, unchanged, throughout the entire end-to-end chain. Usage: The end-to-end identification can be used for reconciliation or to link tasks relating to the transaction. It can be included in several messages related to the transaction. OB: The Faster Payments Scheme can only access 31 characters for the EndToEndIdentification field. |Max35Text | | |
-| LocalInstrument |0..1 |OBInternationalScheduled3/LocalInstrument |User community specific instrument. Usage: This element is used to specify a local instrument, local clearing option and/or further qualify the service or service level. |OBExternalLocalInstrument1Code | | |
-| InstructionPriority |0..1 |OBInternationalScheduled3/InstructionPriority |Indicator of the urgency or order of importance that the instructing party would like the instructed party to apply to the processing of the instruction. |OBPriority2Code |Normal Urgent | |
+| LocalInstrument |0..1 |OBInternationalScheduled3/LocalInstrument |User community specific instrument. Usage: This element is used to specify a local instrument, local clearing option and/or further qualify the service or service level. |For a full list of enumeration values refer to `OB_Internal_CodeSet` [here].(https://github.com/OpenBankingUK/External_Internal_CodeSets) |OBInternalLocalInstrument1Code | |
+| InstructionPriority |0..1 |OBInternationalScheduled3/InstructionPriority |Indicator of the urgency or order of importance that the instructing party would like the instructed party to apply to the processing of the instruction. |For a full list of enumeration values refer to `OB_Internal_CodeSet` [here].(https://github.com/OpenBankingUK/External_Internal_CodeSets) |OBInternalPriority2Code | |
 | Purpose |0..1 |OBInternationalScheduled3/Purpose |Specifies the external purpose code in the format of character string with a maximum length of 4 characters. The list of valid codes is an external code list published separately. External code sets can be downloaded from www.iso20022.org. |OBExternalPurpose1Code1 | | |
-| ChargeBearer |0..1 |OBInternationalScheduled3/ChargeBearer |Specifies which party/parties will bear the charges associated with the processing of the payment transaction. |OBChargeBearerType1Code |BorneByCreditor BorneByDebtor FollowingServiceLevel Shared | |
+| ChargeBearer |0..1 |OBInternationalScheduled3/ChargeBearer |Specifies which party/parties will bear the charges associated with the processing of the payment transaction. |For a full list of enumeration values refer to `OB_Internal_CodeSet` [here].(https://github.com/OpenBankingUK/External_Internal_CodeSets). |OBInternalChargeBearerType1Code| |
 | RequestedExecutionDateTime |1..1 |OBInternationalScheduled3/RequestedExecutionDateTime |Date at which the initiating party requests the clearing agent to process the payment. Usage: This is the date on which the debtor's account is to be debited. |ISODateTime | | |
 | CurrencyOfTransfer |1..1 |OBInternationalScheduled3/CurrencyOfTransfer |Specifies the currency of the to be transferred amount, which is different from the currency of the debtor's account. |ActiveOrHistoricCurrencyCode | |^[A-Z]{3,3}$ |
 | DestinationCountryCode |0..1 |OBInternationalScheduled3/DestinationCountryCode |Country in which Credit Account is domiciled. Nation with its own government. |CountryCode | |^[A-Z]{2,2}$ |
@@ -226,10 +226,10 @@ The ExchangeRateInformation object must conform to these behaviours:
 | ExchangeRateInformation |0..1 |OBInternationalScheduled3/ExchangeRateInformation |Provides details on the currency exchange rate and contract. |OBExchangeRate1 | | |
 | UnitCurrency |1..1 |OBInternationalScheduled3/ExchangeRateInformation/UnitCurrency |Currency in which the rate of exchange is expressed in a currency exchange. In the example 1GBP = xxxCUR, the unit currency is GBP. |ActiveOrHistoricCurrencyCode | |^[A-Z]{3,3}$ |
 | ExchangeRate |0..1 |OBInternationalScheduled3/ExchangeRateInformation/ExchangeRate |The factor used for conversion of an amount from one currency to another. This reflects the price at which one currency was bought with another currency. |BaseOneRate | | |
-| RateType |1..1 |OBInternationalScheduled3/ExchangeRateInformation/RateType |Specifies the type used to complete the currency exchange. |OBExchangeRateType2Code |Actual Agreed Indicative | |
+| RateType |1..1 |OBInternationalScheduled3/ExchangeRateInformation/RateType |Specifies the type used to complete the currency exchange. |For a full list of enumeration values refer to `OB_Internal_CodeSet` [here].(https://github.com/OpenBankingUK/External_Internal_CodeSets). |OBInternalExchangeRateType2Code | |
 | ContractIdentification |0..1 |OBInternationalScheduled3/ExchangeRateInformation/ContractIdentification |Unique and unambiguous reference to the foreign exchange contract agreed between the initiating party/creditor and the debtor agent. |Max256Text | | |
 | DebtorAccount |0..1 |OBInternationalScheduled3/DebtorAccount |Unambiguous identification of the account of the debtor to which a debit entry will be made as a result of the transaction. |OBCashAccountDebtor4 | | |
-| SchemeName |1..1 |OBInternationalScheduled3/DebtorAccount/SchemeName |Name of the identification scheme, in a coded form as published in an external list. | For a full description see `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets). |OBInternalAccountIdentification4Code | 
+| SchemeName |1..1 |OBInternationalScheduled3/DebtorAccount/SchemeName |Name of the identification scheme, in a coded form as published in an external list. | For a full list of enumeration values refer to `OB_Internal_CodeSet` [here].(https://github.com/OpenBankingUK/External_Internal_CodeSets). |OBInternalAccountIdentification4Code | 
 | Identification |1..1 |OBInternationalScheduled3/DebtorAccount/Identification |Identification assigned by an institution to identify an account. This identification is known by the account owner. |Max256Text | | |
 | Name |0..1 |OBInternationalScheduled3/DebtorAccount/Name |The account name is the name or names of the account owner(s) represented at an account level, as displayed by the ASPSP's online channels. Note, the account name is not the product name or the nickname of the account. |Max350Text | | |
 | SecondaryIdentification |0..1 |OBInternationalScheduled3/DebtorAccount/SecondaryIdentification |This is secondary identification of the account, as assigned by the account servicing institution. This can be used by building societies to additionally identify accounts with a roll number (in addition to a sort code and account number combination). |Max34Text | | |
@@ -238,20 +238,20 @@ The ExchangeRateInformation object must conform to these behaviours:
 | Creditor |0..1 |OBInternationalScheduled3/Creditor |Party to which an amount of money is due. |OBPartyIdentification43 | | |
 | Name |0..1 |OBInternationalScheduled3/Creditor/Name |Name by which a party is known and which is usually used to identify that party. |Max350Text | | |
 | LEI |0..1 | OBInternationalScheduled3/Creditor/LEI |Legal Entity Identification Legal entity identification as an alternate identification for a party. Legal Entity Identifier is a code allocated to a party as described in ISO 17442 "Financial Services - Legal Entity Identifier (LEI)". |Max20Text | |^[A-Z0-9]{18,18}[0-9]{2,2}$ |
-| PostalAddress |0..1 |OBInternationalScheduled3/Creditor/PostalAddress |Information that locates and identifies a specific address, as defined by postal services. |OBPostalAddress6 | | |
+| PostalAddress |0..1 |OBInternationalScheduled3/Creditor/PostalAddress |Information that locates and identifies a specific address, as defined by postal services. |OBPostalAddress7 | | |
 | UltimateCreditor |0..1 |OBInternationalScheduled3/UltimateCreditor|Ultimate party to which an amount of money is due. | OBUltimateCreditor1 | | |
 | CreditorAgent |0..1 |OBInternationalScheduled3/CreditorAgent |Financial institution servicing an account for the creditor. |OBBranchAndFinancialInstitutionIdentification6 | | |
 | SchemeName |0..1 |OBInternationalScheduled3/CreditorAgent/SchemeName |Name of the identification scheme, in a coded form as published in an external list. |For a full list of enumeration values refer to `Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_internal_CodeSets)|OBInternalFinancialInstitutionIdentification4Co
 | Identification |0..1 |OBInternationalScheduled3/CreditorAgent/Identification |Unique and unambiguous identification of a financial institution or a branch of a financial institution. |Max35Text | | |
 | Name |0..1 |OBInternationalScheduled3/CreditorAgent/Name |Name by which an agent is known and which is usually used to identify that agent. |Max140Text | | |
-| PostalAddress |0..1 |OBInternationalScheduled3/CreditorAgent/PostalAddress |Information that locates and identifies a specific address, as defined by postal services. |OBPostalAddress6 | | |
+| PostalAddress |0..1 |OBInternationalScheduled3/CreditorAgent/PostalAddress |Information that locates and identifies a specific address, as defined by postal services. |OBPostalAddress7 | | |
 | CreditorAccount |1..1 |OBInternationalScheduled3/CreditorAccount |Unambiguous identification of the account of the creditor to which a credit entry will be posted as a result of the payment transaction. |OBCashAccountCreditor3 | | |
-| SchemeName |1..1 |OBInternationalScheduled3/CreditorAccount/SchemeName |Name of the identification scheme, in a coded form as published in an external list. | For a full description see `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets). |OBInternalAccountIdentification4Code | 
+| SchemeName |1..1 |OBInternationalScheduled3/CreditorAccount/SchemeName |Name of the identification scheme, in a coded form as published in an external list. | For a full list of enumeration values refer to `OB_Internal_CodeSet` [here].(https://github.com/OpenBankingUK/External_Internal_CodeSets). |OBInternalAccountIdentification4Code | 
 | Identification |1..1 |OBInternationalScheduled3/CreditorAccount/Identification |Identification assigned by an institution to identify an account. This identification is known by the account owner. |Max256Text | | |
 | Name |1..1 |OBInternationalScheduled3/CreditorAccount/Name |The account name is the name or names of the account owner(s) represented at an account level. Note, the account name is not the product name or the nickname of the account. OB: ASPSPs may carry out name validation for Confirmation of Payee, but it is not mandatory. |Max350Text | | |
 | SecondaryIdentification |0..1 |OBInternationalScheduled3/CreditorAccount/SecondaryIdentification |This is secondary identification of the account, as assigned by the account servicing institution. This can be used by building societies to additionally identify accounts with a roll number (in addition to a sort code and account number combination). |Max34Text | | |
 | Proxy |0..1 |OBInternationalScheduled3/CreditorAccount/Proxy |Specifies an alternate assumed name for the identification of the account.  |OBProxy1 | | |
-| RemittanceInformation |0..1 |OBInternationalScheduled3/RemittanceInformation |Information supplied to enable the matching of an entry with the items that the transfer is intended to settle, such as commercial invoices in an accounts' receivable system. |OBRemittanceInformation1 | | |
+| RemittanceInformation |0..1 |OBInternationalScheduled3/RemittanceInformation |Information supplied to enable the matching of an entry with the items that the transfer is intended to settle, such as commercial invoices in an accounts' receivable system. |OBRemittanceInformation2 | | |
 | RegulatoryReporting |0..10 |OBInternationalScheduled3/RegulatoryReporting |Information needed due to regulatory and statutory requirements. |OBRegulatoryReporting1 | | |
 | SupplementaryData |0..1 |OBInternationalScheduled3/SupplementaryData |Additional information that can not be captured in the structured fields and/or any other specific block. |OBSupplementaryData1 | | |
 
@@ -271,7 +271,7 @@ This section describes the OBExchangeRate2 class which is reused in the response
 | OBExchangeRate2 | |OBExchangeRate2 |Further detailed information on the exchange rate that has been used in the payment transaction. |OBExchangeRate2 | | |
 | UnitCurrency |1..1 |OBExchangeRate2/UnitCurrency |Currency in which the rate of exchange is expressed in a currency exchange. In the example 1GBP = xxxCUR, the unit currency is GBP. |ActiveOrHistoricCurrencyCode |^[A-Z]{3,3}$ | |
 | ExchangeRate |1..1 |OBExchangeRate2/ExchangeRate |The factor used for conversion of an amount from one currency to another. This reflects the price at which one currency was bought with another currency. |BaseOneRate | | |
-| RateType |1..1 |OBExchangeRate2/RateType |Specifies the type used to complete the currency exchange. |OBExchangeRateType2Code |Actual Agreed Indicative | |
+| RateType |1..1 |OBExchangeRate2/RateType |Specifies the type used to complete the currency exchange. |For a full list of enumeration values refer to `OB_Internal_CodeSet` [here].(https://github.com/OpenBankingUK/External_Internal_CodeSets). |OBInternalExchangeRateType2Code | |
 | ContractIdentification |0..1 |OBExchangeRate2/ContractIdentification |Unique and unambiguous reference to the foreign exchange contract agreed between the initiating party/creditor and the debtor agent. |Max256Text | | |
 | ExpirationDateTime |0..1 |OBExchangeRate2/ExpirationDateTime |Specified date and time the exchange rate agreement will expire. |ISODateTime | | |
 
@@ -307,8 +307,8 @@ Exchange rate behaviour:
 | --- |--- |--- |--- |--- |--- |--- |
 | OBWriteInternationalScheduledConsent5 | |OBWriteInternationalScheduledConsent5 | |OBWriteInternationalScheduledConsent5 | | |
 | Data |1..1 |OBWriteInternationalScheduledConsent5/Data | |OBWriteDataInternationalScheduledConsent5 | | |
-| Permission |1..1 |OBWriteInternationalScheduledConsent5/Data/Permission |Specifies the Open Banking service request types. |OBExternalPermissions2Code |Create | |
-| ReadRefundAccount |0..1 |OBWriteInternationalScheduledConsent5/Data/ReadRefundAccount | Specifies to share the refund account details with PISP |OBReadRefundAccount1Code |Yes No | |
+| Permission |1..1 |OBWriteInternationalScheduledConsent5/Data/Permission |Specifies the Open Banking service request types. |For a full list of enumeration values refer to `OB_Internal_CodeSet` [here].(https://github.com/OpenBankingUK/External_Internal_CodeSets)  |OBInternalPermissions2Code| |
+| ReadRefundAccount |0..1 |OBWriteInternationalScheduledConsent5/Data/ReadRefundAccount | Specifies to share the refund account details with PISP |For a full list of enumeration values refer to `OB_Internal_CodeSet` [here].(https://github.com/OpenBankingUK/External_Internal_CodeSets). |OBInternalReadRefundAccount1Code | |
 | Initiation |1..1 |OBWriteInternationalScheduledConsent5/Data/Initiation |The Initiation payload is sent by the initiating party to the ASPSP. It is used to request movement of funds from the debtor account to a creditor for a single scheduled international payment. |OBInternationalScheduled3 | | |
 | Authorisation |0..1 |OBWriteInternationalScheduledConsent5/Data/Authorisation |The authorisation type request from the TPP. |OBAuthorisation1 | | |
 | SCASupportData |0..1 |OBWriteInternationalScheduledConsent5/Data/SCASupportData |Supporting Data provided by TPP, when requesting SCA Exemption. |OBSCASupportData1 | | |
@@ -363,13 +363,13 @@ Exchange rate behaviour:
 | Data |1..1 |OBWriteInternationalScheduledConsentResponse6/Data | |OBWriteDataInternationalScheduledConsentResponse6 | | |
 | ConsentId |1..1 |OBWriteInternationalScheduledConsentResponse6/Data/ConsentId |OB: Unique identification as assigned by the ASPSP to uniquely identify the consent resource. |Max128Text | | |
 | CreationDateTime |1..1 |OBWriteInternationalScheduledConsentResponse6/Data/CreationDateTime |Date and time at which the resource was created. |ISODateTime | | |
-| Status |1..1 |OBWriteInternationalScheduledConsentResponse6/Data/Status |Specifies the status of consent resource in code form. |ExternalStatusReason1Code |AUTH AWAU RJCT COND |
+| Status |1..1 |OBWriteInternationalScheduledConsentResponse6/Data/Status |Specifies the status of consent resource in code form. |For a full list of enumeration values refer to `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_internal_CodeSets)|OBExternalStatusReason1Code |
 | StatusReason |0..* |OBWriteInternationalScheduledConsentResponse6/Data/StatusReason |Specifies the status reason. | OBStatusReason |
 | StatusReasonCode |0..1 |OBWriteInternationalScheduledConsentResponse6/Data/StatusReason/StatusReasonCode |Specifies the status reason in a code form. |For a full list of enumeration values refer to `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_internal_CodeSets)| OBInternalPermissions1Code |
 | StatusReasonDescription |0..1 |OBWriteInternationalScheduledConsentResponse6/Data/StatusReason/StatusReasonDescription |Description supporting the StatusReasonCode. | Max500Text |
 | StatusUpdateDateTime |1..1 |OBWriteInternationalScheduledConsentResponse6/Data/StatusUpdateDateTime |Date and time at which the resource status was updated. |ISODateTime | | |
-| Permission |1..1 |OBWriteInternationalScheduledConsentResponse6/Data/Permission |Specifies the Open Banking service request types. |OBExternalPermissions2Code |Create | |
-| ReadRefundAccount |0..1 |OBWriteInternationalScheduledConsentResponse6/Data/ReadRefundAccount | Specifies to share the refund account details with PISP |OBReadRefundAccount1Code |Yes No | |
+| Permission |1..1 |OBWriteInternationalScheduledConsentResponse6/Data/Permission |Specifies the Open Banking service request types. |For a full list of enumeration values refer to `OB_Internal_CodeSet` [here].(https://github.com/OpenBankingUK/External_Internal_CodeSets)  |OBInternalPermissions2Code| |
+| ReadRefundAccount |0..1 |OBWriteInternationalScheduledConsentResponse6/Data/ReadRefundAccount | Specifies to share the refund account details with PISP |For a full list of enumeration values refer to `OB_Internal_CodeSet` [here].(https://github.com/OpenBankingUK/External_Internal_CodeSets). |OBInternalReadRefundAccount1Code | |
 | CutOffDateTime |0..1 |OBWriteInternationalScheduledConsentResponse6/Data/CutOffDateTime |Specified cut-off date and time for the payment consent. |ISODateTime | | |
 | ExpectedExecutionDateTime |0..1 |OBWriteInternationalScheduledConsentResponse6/Data/ExpectedExecutionDateTime |Expected execution date and time for the payment resource. |ISODateTime | | |
 | ExpectedSettlementDateTime |0..1 |OBWriteInternationalScheduledConsentResponse6/Data/ExpectedSettlementDateTime |Expected settlement date and time for the payment resource. |ISODateTime | | |
@@ -379,7 +379,7 @@ Exchange rate behaviour:
 | Authorisation |0..1 |OBWriteInternationalScheduledConsentResponse6/Data/Authorisation |The multiple authorisation flow response from the ASPSP. |OBAuthorisation1 | | |
 | SCASupportData |0..1 |OBWriteInternationalScheduledConsentResponse6/Data/SCASupportData |Supporting Data provided by TPP, when requesting SCA Exemption. |OBSCASupportData1 | | |
 | Debtor |0..1 |OBWriteInternationalScheduledConsentResponse6/Data/Debtor |Set of elements used to identify a person or an organisation. | | | |
-| SchemeName |0..1 |OBWriteInternationalScheduledConsentResponse6/Data/Debtor/SchemeName |Name of the identification scheme, in a coded form as published in an external list. | For a full description see `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets). |OBInternalAccountIdentification4Code | 
+| SchemeName |0..1 |OBWriteInternationalScheduledConsentResponse6/Data/Debtor/SchemeName |Name of the identification scheme, in a coded form as published in an external list. | For a full list of enumeration values refer to `OB_Internal_CodeSet` [here].(https://github.com/OpenBankingUK/External_Internal_CodeSets). |OBInternalAccountIdentification4Code | 
 | Identification |0..1 |OBWriteInternationalScheduledConsentResponse6/Data/Debtor/Identification |Identification assigned by an institution to identify an account. This identification is known by the account owner. |Max256Text | | |
 | Name |0..1 |OBWriteInternationalScheduledConsentResponse6/Data/Debtor/Name |The account name is the name or names of the account owner(s) represented at an account level, as displayed by the ASPSP's online channels. Note, the account name is not the product name or the nickname of the account. |Max350Text | | |
 | SecondaryIdentification |0..1 |OBWriteInternationalScheduledConsentResponse6/Data/Debtor/SecondaryIdentification |This is secondary identification of the account, as assigned by the account servicing institution. This can be used by building societies to additionally identify accounts with a roll number (in addition to a sort code and account number combination). |Max34Text | | |
@@ -442,6 +442,7 @@ Accept: application/json
       "InstructionIdentification": "ACME412",
       "EndToEndIdentification": "FRESCO.21302.GFX.20",
       "LocalInstrument": "UK.OBIE.Paym",
+      "ChargeBearer": "Shared",
       "RequestedExecutionDate": "2018-08-06T00:00:00+00:00",
       "InstructionPriority": "Normal",
       "Purpose": "CCRD",
@@ -456,14 +457,20 @@ Accept: application/json
       "ExchangeRateInformation": {
         "UnitCurrency": "GBP",
         "ExchangeRate": 1.22,
-        "RateType": "Actual"
+        "RateType": "Actual",
+        "ContractIdentification": "415621656"
       },
       "CurrencyOfTransfer":"USD",
       "CreditorAccount": {
         "SchemeName": "UK.OBIE.SortCodeAccountNumber",
         "Identification": "08080021325698",
         "Name": "ACME Inc",
-        "SecondaryIdentification": "0002"
+        "SecondaryIdentification": "0002",
+        "Proxy": {
+          "Identification": "2360549017905188",
+          "Code": "TELE",
+          "Type": "Telephone"
+        },
       },
       "DebtorAccount": {
         "SchemeName": "UK.OBIE.SortCodeAccountNumber",
@@ -471,19 +478,35 @@ Accept: application/json
         "Identification": "11280001234567",
         "Name": "Andrea Smith",
         "Proxy": {
-          "Identification": "07700900000",
-          "Code": "TELE"
+          "Identification": "2360549017905188",
+          "Code": "TELE",
+          "Type": "Telephone"
         },
       },
-      "CreditorAccount": {
-        "SchemeName": "UK.OBIE.SortCodeAccountNumber",
+      "CreditorAgent": { 
+        "LEI": "X3F8005BLKBSWLCX4E37",
+        "SchemeName": "UK.OBIE.BICF",
+        "Name": "ACED Inc",
         "Identification": "08080021325698",
-        "Name": "ACME Inc",
-        "SecondaryIdentification": "0002",
-        "Proxy": {
-          "Identification": "+441632960540",
-          "Code": "TELE"
-        },
+        "PostalAddress": {
+          "AddressType": "BIZZ",
+          "Department": "Finance",
+          "SubDepartment": "Payroll",
+          "StreetName": "Bank Street",
+          "BuildingNumber": "11",
+          "BuildingName": "Tower Bridges",
+          "Floor": "6",
+          "UnitNumber": "UNIT591",
+          "Room": "844",
+          "PostBox": "PO Box 123456",
+          "PostCode": "Z78 4TY",
+          "TownLocationName":"Bank",
+          "TownName": "London",
+          "DistrictName": "Greater London",
+          "CareOf": "Ms Jane Smith",
+          "CountrySubDivision": "England",
+          "Country": "UK"
+        }
       },
       "UltimateDebtor": {
         "SchemeName": "UK.OBIE.BICFI",
@@ -533,8 +556,10 @@ Accept: application/json
           }]
         }],
       "RemittanceInformation": {
-        "Structured": [{
-            "ReferredDocumentInformation": [{
+        "Structured": [
+          {
+            "ReferredDocumentInformation": [
+              {
                 "Code": "CINV",
                 "Issuer": "Issuer01",
                 "Number": "Number_01",
@@ -542,7 +567,8 @@ Accept: application/json
                 "LineDetails": [
                   "string"
                 ]
-              }],
+              }
+            ],
             "ReferredDocumentAmount": 1,
             "CreditorReferenceInformation": {
               "Code": "DISP",
@@ -550,11 +576,13 @@ Accept: application/json
               "Reference": "REF_26518"
             },
             "Invoicer": "INVR51856",
-            "Invoicee": "INVE5161856"
+            "Invoicee": "INVE5161856",
+            "TaxRemittance": "Tax Remittance related information",
+            "AdditionalRemittanceInformation": ["Free text for additional information"],  
           }
         ],
         "Unstructured": "Internal ops code 5120101"
-       },
+      },
 	  "ExchangeRateInformation": {
 		"UnitCurrency": "GBP",
 	  	"RateType": "Actual"
@@ -562,16 +590,16 @@ Accept: application/json
     }
   },
   "SCASupportData": {
-    "Type": "EcommerceServices",
+    "RequestedSCAExemptionType": "EcommerceGoods",
     "AppliedAuthenticationApproach": "SCA",
     "ReferencePaymentOrderId": "O-611265",
-    "Description": "Order number O-611256 payment"
   },
   "Risk": {
     "PaymentContextCode": "TransferToThirdParty",
     "ContractPresentIndicator": false,
     "PaymentPurposeCode": "EPAY",
     "CategoryPurposeCode": "CASH", 
+    "ExtendedPurpose": "Required when no 4 character code fits the purpose",
     "BeneficiaryPaymentDetailsPrepopulatedIndicator": false,
     "BeneficiaryAccountType": "Business",
     "MerchantCategoryCode": "7300", 
@@ -641,6 +669,7 @@ Content-Type: application/json
         "ExchangeRate": 1.22,
         "RateType": "Actual",
         "ContractIdentification": "0591968098186",
+        "ExpirationDate": "2018-06-06T15:15:22+00:00"
       },
 		"Initiation": {
 			"InstructionIdentification": "ACME412",
@@ -664,6 +693,31 @@ Content-Type: application/json
         "ExchangeRate": 1.22,
         "RateType": "Actual"
       },
+      "CreditorAgent": { 
+        "LEI": "X3F8005BLKBSWLCX4E37",
+        "SchemeName": "UK.OBIE.BICF",
+        "Name": "ACED Inc",
+        "Identification": "08080021325698",
+        "PostalAddress": {
+          "AddressType": "BIZZ",
+          "Department": "Finance",
+          "SubDepartment": "Payroll",
+          "StreetName": "Bank Street",
+          "BuildingNumber": "11",
+          "BuildingName": "Tower Bridges",
+          "Floor": "6",
+          "UnitNumber": "UNIT591",
+          "Room": "844",
+          "PostBox": "PO Box 123456",
+          "PostCode": "Z78 4TY",
+          "TownLocationName":"Bank",
+          "TownName": "London",
+          "DistrictName": "Greater London",
+          "CareOf": "Ms Jane Smith",
+          "CountrySubDivision": "England",
+          "Country": "UK"
+        }
+      },
       "Creditor": {
         "SchemeName": "UK.OBIE.SortCodeAccountNumber",
          "LEI": "8200007YHFDMEODY8412",
@@ -684,7 +738,8 @@ Content-Type: application/json
         "SecondaryIdentification": "0002",
         "Proxy": {
           "Identification": "+441632960540",
-          "Code": "TELE"
+          "Code": "TELE",
+          "Type": "Telephone"
         },
       },
       "DebtorAccount":{
@@ -770,7 +825,9 @@ Content-Type: application/json
               "Reference": "REF_26518"
             },
             "Invoicer": "INVR51856",
-            "Invoicee": "INVE5161856"
+            "Invoicee": "INVE5161856",
+            "TaxRemittance": "Tax Remittance related information",
+            "AdditionalRemittanceInformation": ["Free text for additional information"],
           }
         ],
         "Unstructured": "Internal ops code 5120101"
@@ -778,16 +835,16 @@ Content-Type: application/json
 		},
 	},
   "SCASupportData": {
-    "Type": "EcommerceServices",
+    "RequestedSCAExemptionType": "EcommerceGoods",
     "AppliedAuthenticationApproach": "SCA",
     "ReferencePaymentOrderId": "O-611265",
-    "Description": "Order number O-611256 payment"
   },
 	"Risk": {
 		"PaymentContextCode": "TransferToThirdParty",
     "ContractPresentIndicator": false,
     "PaymentPurposeCode": "EPAY",
     "CategoryPurposeCode": "CASH", 
+    "ExtendedPurpose": "Required when no 4 character code fits the purpose",
     "BeneficiaryPaymentDetailsPrepopulatedIndicator": false,
     "BeneficiaryAccountType": "Business",
     "MerchantCategoryCode": "7300", 

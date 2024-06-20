@@ -12,8 +12,8 @@
 - [Data Model](#data-model)
 - [Reused Classes](#reused-classes)
     - [OBProxy1](#obproxy1)
-    - [OBPostalAddress6](#obpostaladdress6)
-    - [OBRemittanceInformation1](#obremittanceinformation1)
+    - [OBPostalAddress7](#obpostaladdress7)
+    - [OBRemittanceInformation2](#obremittanceinformation2)
     - [OBUltimateCreditor1](#obultimatecreditor1)
     - [OBUltimateDebtor1](#obultimatedebtor1)
     - [OBRegulatoryReporting1](#obregulatoryreporting1)
@@ -173,13 +173,13 @@ The data dictionary section gives the detail on the payload content for the VRP 
 
 The OBProxy1 class is defined in the [vrp-profile](../../profiles/vrp-profile.md#obproxy1) page.
 
-#### OBPostalAddress6 
+#### OBPostalAddress7 
 
-The OBPostalAddress6 class is defined in the [vrp-profile](../../profiles/vrp-profile.md#obpostaladdress6) page.
+The OBPostalAddress7 class is defined in the [vrp-profile](../../profiles/vrp-profile.md#obpostaladdress7) page.
 
-#### OBRemittanceInformation1
+#### OBRemittanceInformation2
 
-The OBRemittanceInformation1 class is defined in the [vrp-profile](../../profiles/vrp-profile.md#obremittanceinformation1) page.
+The OBRemittanceInformation2 class is defined in the [vrp-profile](../../profiles/vrp-profile.md#obremittanceinformation2) page.
 
 #### OBUltimateCreditor1
 
@@ -227,7 +227,7 @@ The OBRegulatoryReporting1 class is defined in the [vrp-profile](../../profiles/
 | __Identification__ (0..1) | `Identification` |Unique and unambiguous identification of a financial institution or a branch of a financial institution.  | Max35Text  
 | __Name__ (0..1) | `Name` | Name by which an agent is known and which is usually used to identify that agent. | Max140Text
 | __LEI__ (0..1) | `LEI` | Legal entity identification as an alternate identification for a party. <br>Legal Entity Identifier is a code allocated to a party as described in ISO 17442 "Financial Services - Legal Entity Identifier (LEI)". | Max20Text |
-| __PostalAddress__ (0..1) | `PostalAddress` |Information that locates and identifies a specific address, as defined by postal services.| [OBPostalAddress6](../../profiles/vrp-profile.md#obpostaladdress6) |
+| __PostalAddress__ (0..1) | `PostalAddress` |Information that locates and identifies a specific address, as defined by postal services.| [OBPostalAddress7](../../profiles/vrp-profile.md#obpostaladdress7) |
 
 
 ### OBDomesticVRPInitiation
@@ -240,9 +240,9 @@ The OBRegulatoryReporting1 class is defined in the [vrp-profile](../../profiles/
 | __UltimateDebtor__ (0..1) | `UltimateDebtor` | Ultimate party that owes an amount of money to the (ultimate) creditor. |[OBUltimateDebtor1](../../profiles/vrp-profile.md#obultimatedebtor1) |
 | __CreditorAgent__ (0..1) | `CreditorAgent` | Financial institution servicing an account for the creditor.     | OBBranchAndFinancialInstitutionIdentification6 |
 | __CreditorAccount__ (0..1) | `CreditorAccount`   |Unambiguous identification of the account of the creditor to which a credit entry will be posted as a result of the payment transaction.       |OBCashAccountCreditor3 |
-| __CreditorPostalAddress__ | `CreditorPostalAddress` | Information that locates and identifies a specific address, as defined by postal services or in free format text. | [OBPostalAddress6](../../profiles/vrp-profile.md#obpostaladdress6)|
+| __CreditorPostalAddress__ | `CreditorPostalAddress` | Information that locates and identifies a specific address, as defined by postal services or in free format text. | [OBPostalAddress7](../../profiles/vrp-profile.md#obpostaladdress7)|
 | __UltimateCreditor__ (0..1) | `UltimateCreditor` | Ultimate party to which an amount of money is due. |[OBUltimateCreditor1](../../profiles/vrp-profile.md#obultimatecreditor1) |
-| __RemittanceInformation__ (0..1) | `RemittanceInformation`   | Information supplied to enable the matching of an entry with the items that the transfer is intended to settle, such as commercial invoices in an accounts' receivable system. | [OBRemittanceInformation1](../../profiles/vrp-profile.md#obremittanceinformation1) |
+| __RemittanceInformation__ (0..1) | `RemittanceInformation`   | Information supplied to enable the matching of an entry with the items that the transfer is intended to settle, such as commercial invoices in an accounts' receivable system. | [OBRemittanceInformation2](../../profiles/vrp-profile.md#obremittanceinformation2) |
 |__RegulatoryReporting__ (0..10)| `RegulatoryReporting` | Information needed due to regulatory and statutory requirements. | [OBRegulatoryReporting1](../../profiles/vrp-profile.md#obregulatoryreporting1) |
 
 
@@ -357,14 +357,14 @@ The Risk block for VRP does not included `ExtendedPurpose`, used only in Interna
 | Name                             | Occurrence | XPath                                      | EnhancedDefinition                                                                                                                                                                                                             | Class                              | Codes                                                                                                                                                                                                                                                                                                                   | Pattern |
 |----------------------------------|------------|--------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------|
 | OBRisk2                          |            | OBRisk2                                    | The Risk section is sent by the initiating party to the ASPSP. It is used to specify additional details for risk scoring for Payments.                                                                                         | OBRisk2                            |                                                                                                                                                                                                                                                                                                                         |         |
-| PaymentContextCode               | 0..1       | OBRisk2/PaymentContextCode                 | Specifies the payment context | OBExternalPaymentContext1Code      | <br>BillingGoodsAndServicesInAdvance <br>BillingGoodsAndServicesInArrears <br>EcommerceMerchantInitiatedPayment <br>FaceToFacePointOfSale <br>TransferToSelf <br>TransferToThirdParty |         |
+| PaymentContextCode               | 0..1       | OBRisk2/PaymentContextCode                 | Specifies the payment context |Specifies the payment context | For a full list of enumeration values refer to `OB_Internal_CodeSet`[here](https://github.com/OpenBankingUK/External_Internal_CodeSets/).   |OBInternalPaymentContext1Code |         |
 | CategoryPurposeCode                | 0..1       | OBRisk2/CategoryPurposeCode                  | For a full list of enumeration values refer to `OB_EXternal_CodeSet`[here](https://github.com/OpenBankingUK/External_Internal_CodeSets/). |ExternalCategoryPurpose1Code |                                                                                                                                                                                                     |         |
 | MerchantCategoryCode             | 0..1       | OBRisk2/MerchantCategoryCode               | Category code conform to ISO 18245, related to the type of services or goods the merchant provides for the transaction.                                                                                      | Min3Max4Text                       |                                                                                                                                                                                                                                                                                                                         |         |
 | MerchantCustomerIdentification   | 0..1       | OBRisk2/MerchantCustomerIdentification     | The unique customer identifier of the PSU with the merchant.                                                                                                                                                                   | Max70Text                          |                                                                                                                                                                                                                                                                                                                         |         |
 | ContractPresentIndicator        | 0..1       | OBRisk2/ContractPresentIndicator          | Indicates if Payee has a contractual relationship with the PISP.                                                                                                                                                               | Boolean                            |                                                                                                                                                                                                                                                                                                                         |         |
 | BeneficiaryPrepopulatedIndicator | 0..1       | OBRisk2/BeneficiaryPrepopulatedIndicator   | Indicates if PISP has immutably prepopulated payment details in for the PSU.                                                                                                                                                   | Boolean                            |                                                                                                                                                                                                                                                                                                                         |         |
 | PaymentPurposeCode |0..1 |OBRisk2/PaymentPurposeCode | For a full description see `ExternalPurpose1Code` [here](https://github.com/OpenBankingUK/External_internal_CodeSets) |For a full list of enumeration values refer to `External_CodeSet` [here].  |ExternalPurpose1Code | |
-| BeneficiaryAccountType           | 0..1       | OBRisk2/BeneficiaryAccountType             | To be provided if the AccountType is known.                                                                                                                                                                                    | ExternalExtendedAccountType1Code | Personal<br>JointPersonal<br>PersonalSavingsAccount<br>Business<br>BusinessSavingsAccount<br>Charity<br>Collection<br>Corporate<br>Government<br>Ewallet<br>Investment<br>ISA<br>Premier<br>Wealth<br>Pension<br>                                                                                                       |         |
+| BeneficiaryAccountType           | 0..1       | OBRisk2/BeneficiaryAccountType             | To be provided if the AccountType is known.                                                                                                                                                                                    | For a full list of enumeration values refer to `OB_Internal_CodeSet`[here](https://github.com/OpenBankingUK/External_Internal_CodeSets/). | OBInternalExtendedAccountType1Code                                                                                                      |         |
 | DeliveryAddress                  | 0..1       | OBRisk2/DeliveryAddress                    | Information that locates and identifies a specific address, as defined by postal services or in free format text.                                                                                                              | OBPostalAddress6               |                                                                                        
 
 ### OBDomesticVRPConsentRequest

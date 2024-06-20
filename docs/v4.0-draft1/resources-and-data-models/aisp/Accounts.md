@@ -11,7 +11,7 @@
   - [Permission Codes](#permission-codes)
   - [Data Dictionary](#data-dictionary)
   - [Reused Classes](#reused-classes)
-    - [OBPostalAddress6](#obpostaladdress6)
+    - [OBPostalAddress7](#obpostaladdress7)
 - [Usage Examples](#usage-examples)
   - [Bulk - Detail Permission](#bulk---detail-permission)
     - [Get Accounts Request](#get-accounts-request)
@@ -119,13 +119,13 @@ If the ReadPAN permission is granted by the PSU, the ASPSP may choose to populat
 | MaturityDate |0..1 |OBReadAccount6/Data/Account/MaturityDate | Maturity date for the account. | ISODate | | |
 | SwitchStatus |0..1 |OBReadAccount6/Data/Account/SwitchStatus | The switch status for the account. |For a full list of enumeration values refer to `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_internal_CodeSets)|OBInternalSwitchStatusCode | |
 | Account |0..n |OBReadAccount6/Data/Account/Account |Provides the details to identify an account. |OBCashAccount5 | | |
-| SchemeName |1..1 |OBReadAccount6/Data/Account/Account/SchemeName |Name of the identification scheme, in a coded form as published in an external list. | For a full description see `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets). |OBInternalAccountIdentification4Code | 
+| SchemeName |1..1 |OBReadAccount6/Data/Account/Account/SchemeName |Name of the identification scheme, in a coded form as published in an external list. | For a full list of enumeration values refer to `OB_Internal_CodeSet` [here].(https://github.com/OpenBankingUK/External_Internal_CodeSets). |OBInternalAccountIdentification4Code | 
 | Identification |1..1 |OBReadAccount6/Data/Account/Account/Identification |Identification assigned by an institution to identify an account. This identification is known by the account owner. |Max256Text | | |
 | Name |0..1 |OBReadAccount6/Data/Account/Account/Name |The account name is the name or names of the account owner(s) represented at an account level, as displayed by the ASPSP's online channels. Note, the account name is not the product name or the nickname of the account. |Max350Text | | |
 | SecondaryIdentification |0..1 |OBReadAccount6/Data/Account/Account/SecondaryIdentification |This is secondary identification of the account, as assigned by the account servicing institution. This can be used by building societies to additionally identify accounts with a roll number (in addition to a sort code and account number combination). |Max34Text | | |
 | LEI |0..1 | OBReadAccount6/Data/Account/Account/LEI |Legal entity identification as an alternate identification for a party. Legal Entity Identifier is a code allocated to a party as described in ISO 17442 "Financial Services - Legal Entity Identifier (LEI)".|Max20Text | |[A-Z0-9]{18,18}[0-9]{2,2}|
 | StatementFrequencyAndFormat |0..* |OBReadAccount6/Data/Account/StatementFrequencyAndFormat |The frequency and format of the statements delivered for the account |StatementFrequencyAndFormat | | |
-| DeliveryAddress |0..1 |OBReadAccount6/Data/Account/StatementFrequencyAndFormat/DeliveryAddress |The address the statement is delivered to| OBPostalAddress6 | |
+| DeliveryAddress |0..1 |OBReadAccount6/Data/Account/StatementFrequencyAndFormat/DeliveryAddress |The address the statement is delivered to| OBPostalAddress7 | |
 | Frequency |0..1 |OBReadAccount6/Data/Account/StatementFrequencyAndFormat/Frequency ||For a full list of enumeration values refer to `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_internal_CodeSets) |OBFrequency2Code | | |
 | CommunicationMethod |0..1 |OBReadAccount6/Data/Account/StatementFrequencyAndFormat/CommunicationMethod ||For a full list of enumeration values refer to `External_CodeSet` [here](https://github.com/OpenBankingUK/External_internal_CodeSets)|ExternalDocumentFormat1Code | |
 | Format |0..1 |OBReadAccount6/Data/Account/StatementFrequencyAndFormat/Format ||  For a full list of enumeration values refer to `External_CodeSet` [here](https://github.com/OpenBankingUK/External_internal_CodeSets)|ExternalDocumentFormat1Code | | |
@@ -137,9 +137,9 @@ If the ReadPAN permission is granted by the PSU, the ASPSP may choose to populat
 
 ### Reused Classes
 
-#### OBPostalAddress6 
+#### OBPostalAddress7 
 
-The OBPostalAddress6 class is defined in the [payment-initiation-api-profile](../../profiles/payment-initiation-api-profile.md#obpostaladdress6) page
+The OBPostalAddress7 class is defined in the [payment-initiation-api-profile](../../profiles/payment-initiation-api-profile.md#obpostaladdress7) page
 
 ## Usage Examples
 

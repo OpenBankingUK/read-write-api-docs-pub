@@ -18,6 +18,9 @@ v4.0-Draft 1 - 25th April 2024
 | Various|`Frequency` in `OBMandateRelatedInformation1` object made mandatory |
 |All | OBL enums removed from namespaced enumeration page.  Particpants should refer to the [external codeset](https://github.com/OpenBankingUK/External_Internal_CodeSets) for enum values |
 | Payments | `StatusCode` reverted back to `Status`</li></ul></li><li>|
+| All | `OBPostalAddress6` object replaced by `OBPostalAddress7`|
+| All | `OBRemittanceInformation1` object replaced by `OBRemittanceInformation2`|
+
 
 
 

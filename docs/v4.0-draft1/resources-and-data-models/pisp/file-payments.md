@@ -209,7 +209,7 @@ The file-payment **response** object contains the:
 | FilePaymentId |1..1 |OBWriteFileResponse3/Data/FilePaymentId |OB: Unique identification as assigned by the ASPSP to uniquely identify the file payment resource. |Max40Text | | |
 | ConsentId |1..1 |OBWriteFileResponse3/Data/ConsentId |OB: Unique identification as assigned by the ASPSP to uniquely identify the consent resource. |Max128Text | | |
 | CreationDateTime |1..1 |OBWriteFileResponse3/Data/CreationDateTime |Date and time at which the resource was created. |ISODateTime | | |
-| Status |1..1 |OBWriteFileResponse3/Data/Status |Specifies the status of the payment order resource. |OBExternalStatus1Code |RCVD RJCT ASCP | |
+| Status |1..1 |OBWriteFileResponse3/Data/Status |Specifies the status of the payment order resource. |For a full list of enumeration values refer to `External_CodeSet` [here].(https://github.com/OpenBankingUK/External_Internal_CodeSets). |ExternalPaymentTransactionStatus1Code | |
 | StatusUpdateDateTime |1..1 |OBWriteFileResponse3/Data/StatusUpdateDateTime |Date and time at which the resource status was updated. |ISODateTime | | |
 | StatusReason |0..* |OBWriteFileResponse3/Data/StatusReason |Specifies the status reason. | OBStatusReason |
 | StatusReasonCode |0..1 |OBWriteFileResponse3/Data/StatusReason/StatusReasonCode |Specifies the status reason in a code form. |For a full list of enumeration values refer to `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_internal_CodeSets)| OBInternalPermissions1Code |
@@ -236,7 +236,7 @@ The OBWritePaymentDetailsResponse1 object will be used for a response to a call 
 | --- |--- |--- |--- |--- |--- |--- |
 | OBWritePaymentDetailsResponse1 | |OBWritePaymentDetailsResponse1 | |OBWritePaymentDetailsResponse1 | | |
 | Data |1..1 |OBWritePaymentDetailsResponse1/Data | |OBWriteDataPaymentOrderStatusResponse1 | | |
-| StatusDetail |0..unbounded |OBWritePaymentDetailsResponse1/Data/StatusDetail |An array of Payment status details. |OBWritePaymentDetails1 | | |
+| PaymentStatus |0..*|OBWritePaymentDetailsResponse1/Data/PaymentStatus |Payment status details. |OBWritePaymentDetails1 | | |
 
 ## Usage Examples
 
@@ -261,6 +261,8 @@ Accept: application/json
   "Data": {
     "ConsentId":"512345",
     "Initiation": {
+      "LocalInstrument": "UK.OBIE.Paym",
+	    "RequestedExecutionDateTime": "2017-06-05T15:15:22+00:00",
       "FileType": "UK.OBIE.pain.001.001.08",
       "FileHash": "m5ah/h1UjLvJYMxqAoZmj9dKdjZnsGNm+yMkJp/KuqQ",
       "FileReference": "GB2OK238",
@@ -274,6 +276,7 @@ Accept: application/json
         "Proxy": {
           "Identification": "441234012345",
           "Code": "TELE",
+          "Type": "Telephone"
           }
       	},
       "UltimateDebtor": {
@@ -312,7 +315,9 @@ Accept: application/json
               "Reference": "REF_26518"
             },
             "Invoicer": "INVR51856",
-            "Invoicee": "INVE5161856"
+            "Invoicee": "INVE5161856",
+            "TaxRemittance": "Tax Remittance related information",
+            "AdditionalRemittanceInformation": ["Free text for additional information"], 
           }
         ],
 		"Unstructured": "Internal ops code 5120101"
@@ -356,6 +361,7 @@ Content-Type: application/json
         "Identification": "11280001234567",
         "Name": "Andrea Smith",
         "SecondaryIdentification": "0002",	
+        "LEI": "8200007YHFDMEODY1965",
 	  },
      "MultiAuthorisation": { 
       "Status": "AUTH", 
@@ -377,9 +383,10 @@ Content-Type: application/json
         "Identification": "11280001234567",
         "Name": "Andrea Smith",
         "SecondaryIdentification": "0002",
-         "Proxy": {
+        "Proxy": {
           "Identification": "441234012345",
           "Code": "TELE",
+          "Type": "Telephone"
         }
       },
       "UltimateDebtor": {
@@ -418,10 +425,12 @@ Content-Type: application/json
               "Reference": "REF_26518"
             },
             "Invoicer": "INVR51856",
-            "Invoicee": "INVE5161856"
+            "Invoicee": "INVE5161856",
+            "TaxRemittance": "Tax Remittance related information",
+            "AdditionalRemittanceInformation": ["Free text for additional information"],
           }
         ],
-	      "Unstructured": "Internal ops code 5120101"
+	      "Unstructured": "Internal ops code 5120101",
    	  }
     }
   },

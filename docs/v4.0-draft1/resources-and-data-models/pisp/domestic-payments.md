@@ -13,7 +13,7 @@
 - [Data Model](#data-model)
   - [Reused Classes](#reused-classes)
     - [OBDomestic2](#obdomestic2)
-    - [OBRemittanceInformation1](#obremittanceinformation1)
+    - [OBRemittanceInformation2](#obremittanceinformation2)
     - [OBRegulatoryReporting1](#obregulatoryreporting1)
   - [Domestic Payment - Request](#domestic-payment-request)
     - [UML Diagram](#uml-diagram)
@@ -161,9 +161,9 @@ The data dictionary section gives the detail on the payload content for the Dome
 
 The OBDomestic2 class is defined in the [domestic-payment-consents](./domestic-payment-consents.md#obdomestic2) page.
 
-#### OBRemittanceInformation1
+#### OBRemittanceInformation2
 
-The OBRemittanceInformation1 class is defined in the [payment-initiation-api-profile](../../profiles/payment-initiation-api-profile.md#obremittanceinformation1) page.
+The OBRemittanceInformation2 class is defined in the [payment-initiation-api-profile](../../profiles/payment-initiation-api-profile.md#obremittanceinformation2) page.
 
 #### OBRegulatoryReporting1
 
@@ -235,7 +235,7 @@ The domestic-payment **response** object contains the:
 | DomesticPaymentId |1..1 |OBWriteDomesticResponse5/Data/DomesticPaymentId |OB: Unique identification as assigned by the ASPSP to uniquely identify the domestic payment resource. |Max40Text | | |
 | ConsentId |1..1 |OBWriteDomesticResponse5/Data/ConsentId |OB: Unique identification as assigned by the ASPSP to uniquely identify the consent resource. |Max128Text | | |
 | CreationDateTime |1..1 |OBWriteDomesticResponse5/Data/CreationDateTime |Date and time at which the resource was created. |ISODateTime | | |
-| Status |1..1 |OBWriteDomesticResponse5/Data/Status |Specifies the status of the payment information group. |OBTransactionIndividualStatus1Code  |PDNG ACTC PATC ACCP ACFC ACSP ACWC ACSC ACWP ACCC BLCK RJCT | |
+| Status |1..1 |OBWriteDomesticResponse5/Data/Status |Specifies the status of the payment information group. |For a full list of enumeration values refer to `OB_External_CodeSet` [here](https://github.com/OpenBankingUK/External_internal_CodeSets) |ExternalPaymentTransactionStatus1Code | |
 | StatusUpdateDateTime |1..1 |OBWriteDomesticResponse5/Data/StatusUpdateDateTime |Date and time at which the resource status was updated. |ISODateTime | | |
 | StatusReason |0..* |OBWriteDomesticResponse5/Data/StatusReason |An array of StatusReasonCode | OBStatusReason |
 | StatusReasonCode |0..1 |OBWriteDomesticResponse5/Data/StatusReason/StatusReasonCode |Specifies the status reason in a code form. |For a full list of enumeration values refer to `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_internal_CodeSets)|OBInternalPermissions1Code |
@@ -265,7 +265,7 @@ The OBWritePaymentDetailsResponse1 object will be used for a response to a call 
 | ---- |---------- |----- |------------------ |----- |----- |------- |
 | OBWritePaymentDetailsResponse1 | |OBWritePaymentDetailsResponse1 | |OBWritePaymentDetailsResponse1 | | |
 | Data |1..1 |OBWritePaymentDetailsResponse1/Data | |OBWriteDataPaymentOrderStatusResponse1 | | |
-| StatusDetail |0..* |OBWritePaymentDetailsResponse1/Data/StatusDetail |An array of Payment status details. |Array | | |
+| PaymentStatus |0..*|OBWritePaymentDetailsResponse1/Data/PaymentStatus |Payment status details. |OBWritePaymentDetails1 | | |
 
 ## Usage Examples
 
@@ -306,7 +306,8 @@ Accept: application/json
         "SecondaryIdentification": "0002",
         "Proxy": {
           "Identification": "+441632960540",
-          "Code": "TELE"
+          "Code": "TELE",
+          "Type": "Telephone"
         },
       },
       "DebtorAccount": {
@@ -317,6 +318,7 @@ Accept: application/json
         "Proxy": {
           "Identification": "441234012345",
           "Code": "TELE",
+          "Type": "Telephone"
         },
       },
       "UltimateDebtor": {
@@ -391,9 +393,12 @@ Accept: application/json
                 "Reference": "REF_26518"
               },
               "Invoicer": "INVR51856",
-              "Invoicee": "INVE5161856"
+              "Invoicee": "INVE5161856",
+              "TaxRemittance": "Tax Remittance related information",
+              "AdditionalRemittanceInformation": ["Free text for additional information"],  
           }
-        ]
+        ],
+        "Unstructured": "Internal ops code 5120101"
       }
     }
   },
@@ -449,6 +454,7 @@ Content-Type: application/json
       "Account": {
         "SchemeName": "UK.OBIE.SortCodeAccountNumber",
         "Identification": "08080021325677",
+        "SecondaryIdentification": "0002",
         "Name": "NTPC Inc"
       }
     },
@@ -490,6 +496,7 @@ Content-Type: application/json
         "Proxy": {
           "Identification": "441234012345",
           "Code": "TELE",
+          "Type": "Telephone"
         }
       },
       "CreditorAccount": {
@@ -497,10 +504,20 @@ Content-Type: application/json
         "Identification": "08080021325698",
         "Name": "ACME Inc",
         "SecondaryIdentification": "0002",
-         "Proxy": {
+        "Proxy": {
           "Identification": "441234012345",
           "Code": "TELE",
+          "Type": "Telephone"
         }
+      },
+      "CreditorPostalAddress":{
+        "AddressType": "BIZZ",
+        "StreetName": "Bank Street",
+        "BuildingNumber": "11",
+        "Floor": "6",
+        "PostCode": "Z78 4TY",
+        "TownName": "London",
+        "Country": "UK"
       },
       "CreditorPostalAddress":{
         "AddressType": "BIZZ",
@@ -583,9 +600,12 @@ Content-Type: application/json
               "Reference": "REF_26518"
             },
             "Invoicer": "INVR51856",
-            "Invoicee": "INVE5161856"
+            "Invoicee": "INVE5161856",
+            "TaxRemittance": "Tax Remittance related information",
+            "AdditionalRemittanceInformation": ["Free text for additional information"],  
           }
-        ]
+        ],
+        "Unstructured": "Internal ops code 5120101"
       }
     }
   },
@@ -637,6 +657,11 @@ Content-Type: application/json
         "Identification": "08080021325698",
         "Name": "ACME Inc",
         "SecondaryIdentification": "0002",
+        "Proxy": {
+          "Identification": "441234012345",
+          "Code": "TELE",
+          "Type": "Telephone"
+        }
       },
       "RemittanceInformation": {
         "Structured": [
@@ -659,13 +684,20 @@ Content-Type: application/json
               "Reference": "REF_26518"
             },
             "Invoicer": "INVR51856",
-            "Invoicee": "INVE5161856"
+            "Invoicee": "INVE5161856",
+            "TaxRemittance": "Tax Remittance related information",
+            "AdditionalRemittanceInformation": ["Free text for additional information"],  
           }
-        ]
+        ],
+        "Unstructured": "Internal ops code 5120101"
+      },
+    "Debtor": { 
+      "Name": "D Jones",
+      "SchemeName": "UK.OBIE.SortCodeAccountNumber",
+      "Identification": "08080021325698",
+      "SecondaryIdentification": "0002",
+      "LEI": "8200007YHFDMEODY1965",
       }
-    },
-    "Debtor": {
-      "Name": "D Jones"
     }
   },
   "Links": {

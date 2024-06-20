@@ -227,7 +227,7 @@ The international-standing-orders **response** object contains the:
 | InternationalStandingOrderId |1..1 |OBWriteInternationalStandingOrderResponse7/Data/InternationalStandingOrderId |OB: Unique identification as assigned by the ASPSP to uniquely identify the international standing order resource. |Max40Text | | |
 | ConsentId |1..1 |OBWriteInternationalStandingOrderResponse7/Data/ConsentId |OB: Unique identification as assigned by the ASPSP to uniquely identify the consent resource. |Max128Text | | |
 | CreationDateTime |1..1 |OBWriteInternationalStandingOrderResponse7/Data/CreationDateTime |Date and time at which the resource was created. |ISODateTime | | |
-| Status |1..1 |OBWriteInternationalStandingOrderResponse7/Data/Status |Specifies the status of resource in code form. |OBExternalStatus1Code |RCVD RJCT ACSP CANC | |
+| Status |1..1 |OBWriteInternationalStandingOrderResponse7/Data/Status |Specifies the status of resource in code form. |For a full list of enumeration values refer to `External_CodeSet` [here].(https://github.com/OpenBankingUK/External_Internal_CodeSets). |ExternalPaymentTransactionStatus1Code | |
 | StatusUpdateDateTime |1..1 |OBWriteInternationalStandingOrderResponse7/Data/StatusUpdateDateTime |Date and time at which the resource status was updated. |ISODateTime | | |
 | StatusReason |0..* |OBWriteInternationalStandingOrderResponse7/Data/StatusReason |Specifies the status reason. | OBStatusReason |
 | StatusReasonCode |0..1 |OBWriteInternationalStandingOrderResponse7/Data/StatusReason/StatusReasonCode |Specifies the status reason in a code form. |For a full list of enumeration values refer to `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_internal_CodeSets)| OBInternalPermissions1Code |
@@ -238,7 +238,7 @@ The international-standing-orders **response** object contains the:
 | Initiation |1..1 |OBWriteInternationalStandingOrderResponse7/Data/Initiation |The Initiation payload is sent by the initiating party to the ASPSP. It is used to request movement of funds from the debtor account to a creditor for an international standing order. |OBInternationalStandingOrder4 | | |
 | MultiAuthorisation |0..1 |OBWriteInternationalStandingOrderResponse7/Data/MultiAuthorisation | |OBMultiAuthorisation1 | | |
 | Debtor |0..1 |OBWriteInternationalStandingOrderResponse7/Data/Debtor |Set of elements used to identify a person or an organisation. | | | |
-| SchemeName |0..1 |OBWriteInternationalStandingOrderResponse7/Data/Debtor/SchemeName |Name of the identification scheme, in a coded form as published in an external list. | For a full description see `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets). |OBInternalAccountIdentification4Code | 
+| SchemeName |0..1 |OBWriteInternationalStandingOrderResponse7/Data/Debtor/SchemeName |Name of the identification scheme, in a coded form as published in an external list. | For a full list of enumeration values refer to `OB_Internal_CodeSet` [here].(https://github.com/OpenBankingUK/External_Internal_CodeSets). |OBInternalAccountIdentification4Code | 
 | Identification |0..1 |OBWriteInternationalStandingOrderResponse7/Data/Debtor/Identification |Identification assigned by an institution to identify an account. This identification is known by the account owner. |Max256Text | | |
 | Name |0..1 |OBWriteInternationalStandingOrderResponse7/Data/Debtor/Name |The account name is the name or names of the account owner(s) represented at an account level, as displayed by the ASPSP's online channels. Note, the account name is not the product name or the nickname of the account. |Max350Text | | |
 | SecondaryIdentification |0..1 |OBWriteInternationalStandingOrderResponse7/Data/Debtor/SecondaryIdentification |This is secondary identification of the account, as assigned by the account servicing institution. This can be used by building societies to additionally identify accounts with a roll number (in addition to a sort code and account number combination). |Max34Text | | |
@@ -260,7 +260,7 @@ The OBWritePaymentDetailsResponse1 object will be used for a response to a call 
 | --- |--- |--- |--- |--- |--- |--- |
 | OBWritePaymentDetailsResponse1 | |OBWritePaymentDetailsResponse1 | |OBWritePaymentDetailsResponse1 | | |
 | Data |1..1 |OBWritePaymentDetailsResponse1/Data | |OBWriteDataPaymentOrderStatusResponse1 | | |
-| StatusDetail |0..unbounded |OBWritePaymentDetailsResponse1/Data/StatusDetail |An array of payment status details. |OBWritePaymentDetails1 | | |
+| PaymentStatus |0..*|OBWritePaymentDetailsResponse1/Data/PaymentStatus |Payment status details. |OBWritePaymentDetails1 | | |
 
 ## Usage Examples
 
@@ -286,22 +286,66 @@ Accept: application/json
 	"ConsentId": "ISOC-100",
     "Initiation": {
 	  "Frequency": "EvryWorkgDay",
+    "ChargeBearer": "Shared", 
+    "Purpose": "CCRD",
+    "DestinationCountryCode": "GB",  
 	  "FirstPaymentDateTime": "2018-06-06T06:06:06+00:00",
 	  "FinalPaymentDateTime": "2020-03-20T06:06:06+00:00",
-	  "DebtorAccount": {
-        "SchemeName": "UK.OBIE.SortCodeAccountNumber",
-        "Identification": "11280001234567",
-        "Name": "Andrea Frost"
+	  "DebtorAccount":{
+      "SchemeName": "UK.OBIE.SortCodeAccountNumber",
+      "Identification": "08080021325698",
+      "Name": "ACME Inc",
+      "SecondaryIdentification": "0002",
+      "LEI": "8200007YHFDMEODY1965",
+      "Proxy": {
+        "Identification": "07700900000",
+        "Code": "TELE",
+        "Type": "Telephone"
       },
-      "CreditorAccount": {
-        "SchemeName": "UK.OBIE.IBAN",
-        "Identification": "DE89370400440532013000",
-        "Name": "Tom Kirkman"
+    },
+    "CreditorAccount": {
+      "SchemeName": "UK.OBIE.SortCodeAccountNumber",
+      "Identification": "08080021325698",
+      "Name": "ACME Inc",
+      "SecondaryIdentification": "0002",
+      "Proxy": {
+        "Identification": "+441632960540",
+        "Code": "TELE",
+        "Type": "Telephone"
       },
+    },
 	  "InstructedAmount": {
         "Amount": "20",
         "Currency": "EUR"
 	  },
+    "Creditor": {
+      "SchemeName": "UK.OBIE.SortCodeAccountNumber",
+        "LEI": "8200007YHFDMEODY8412",
+        "PostalAddress": {
+          "AddressType": "BIZZ",
+          "StreetName": "Bank Street",
+          "BuildingNumber": "11",
+          "Floor": "6",
+          "PostCode": "Z78 4TY",
+          "TownName": "London",
+          "Country": "UK"
+      }
+    },
+    "CreditorAgent": {  
+      "LEI": "IZ9Q00LZEVUKWCQY6X15",
+      "SchemeName": "UK.OBIE.BICFI",
+      "Identification": "80200112344562",
+      "Name": "The Credit Agent", 
+      "PostalAddress": { 
+        "AddressType": "BIZZ",
+        "StreetName": "Bank Street",
+        "BuildingNumber": "11",
+        "Floor": "6",
+        "PostCode": "Z78 4TY",
+        "TownName": "London",
+        "Country": "UK"
+      }
+    },
 	  "CurrencyOfTansfer":"EUR",
     "UltimateDebtor": {
         "SchemeName": "UK.OBIE.BICFI",
@@ -373,14 +417,36 @@ Accept: application/json
                 "Reference": "REF_26518"
               },
               "Invoicer": "INVR51856",
-              "Invoicee": "INVE5161856"
+              "Invoicee": "INVE5161856",
+              "TaxRemittance": "Tax Remittance related information",
+              "AdditionalRemittanceInformation": ["Free text for additional information"],
             }
-          ]
+          ],
+          "Unstructured": "Internal ops code 5120101"
         }
     }
   },
   "Risk": {
-    "PaymentContextCode": "TransferToThirdParty"
+    "PaymentContextCode": "TransferToThirdParty",
+    "PaymentPurposeCode": "EPAY",
+    "CategoryPurposeCode": "CASH", 
+    "ExtendedPurpose": "Required when no 4 character code fits the purpose",
+    "BeneficiaryPaymentDetailsPrepopulatedIndicator": false,
+    "BeneficiaryAccountType": "Business",
+    "MerchantCategoryCode": "7300", 
+    "MerchantCustomerIdentification": "053598653254",
+    "DeliveryAddress": {
+      "AddressLine": [
+        "Flat 7",
+        "Acacia Lodge"
+      ],
+      "StreetName": "Acacia Avenue",
+      "BuildingNumber": "27",
+      "PostCode": "GU31 2ZZ",
+      "TownName": "Sparsholt",
+      "CountrySubDivision": "Wessex",
+      "Country": "UK"
+    }
   }
 }
 ```
@@ -412,19 +478,66 @@ Content-Type: application/json
         "Name": "NTPC Inc"
       }
     },
+    "MultiAuthorisation": { 
+      "StatusCode": "AUTH", 
+      "NumberRequired": 2,
+      "NumberReceived": 2,
+      "LastUpdateDateTime": "2017-06-05T15:15:13+00:00",
+      "ExpirationDateTime": "2017-06-06T15:15:13+00:00",
+    },
     "Initiation": {
+      "ChargeBearer": "Shared",   
+      "Purpose": "CCRD",
       "Frequency": "EvryWorkgDay",
+      "DestinationCountryCode": "GB",
       "FirstPaymentDateTime": "2018-06-06T06:06:06+00:00",
       "FinalPaymentDateTime": "2020-03-20T06:06:06+00:00",
-      "DebtorAccount": {
+      "DebtorAccount":{
         "SchemeName": "UK.OBIE.SortCodeAccountNumber",
-        "Identification": "11280001234567",
-        "Name": "Andrea Frost"
+        "Identification": "08080021325698",
+        "Name": "ACME Inc",
+        "SecondaryIdentification": "0002",
+        "LEI": "8200007YHFDMEODY1965",
+        "Proxy": {
+          "Identification": "07700900000",
+          "Code": "TELE",
+          "Type": "Telephone"
+          },
+      },
+      "Refund":{
+        "SchemeName": "SortCodeAccountNumber",
+        "Identification": "30949330000010",
+        "SecondaryIdentification": "Roll 90210",
+        "Name": "Marcus Sweepimus",
+        "Proxy": {
+          "Identification": "441234012385",
+          "Code": "TELE",
+          "Type": "Telephone"
+        }
+      },
+      "Creditor": {
+        "SchemeName": "UK.OBIE.SortCodeAccountNumber",
+        "LEI": "8200007YHFDMEODY8412",
+          "PostalAddress": {
+            "AddressType": "BIZZ",
+            "StreetName": "Bank Street",
+            "BuildingNumber": "11",
+            "Floor": "6",
+            "PostCode": "Z78 4TY",
+            "TownName": "London",
+            "Country": "UK"
+        }
       },
       "CreditorAccount": {
-        "SchemeName": "UK.OBIE.IBAN",
-        "Identification": "DE89370400440532013000",
-        "Name": "Tom Kirkman"
+        "SchemeName": "UK.OBIE.SortCodeAccountNumber",
+        "Identification": "08080021325698",
+        "Name": "ACME Inc",
+        "SecondaryIdentification": "0002",
+        "Proxy": {
+          "Identification": "+441632960540",
+          "Code": "TELE",
+          "Type": "Telephone"
+        },
       },
       "InstructedAmount": {
         "Amount": "20",
@@ -501,15 +614,37 @@ Content-Type: application/json
                 "Reference": "REF_26518"
               },
               "Invoicer": "INVR51856",
-              "Invoicee": "INVE5161856"
+              "Invoicee": "INVE5161856",
+              "TaxRemittance": "Tax Remittance related information",
+              "AdditionalRemittanceInformation": ["Free text for additional information"],
             }
-          ]
+          ],
+          "Unstructured": "Internal ops code 5120101"
         }
     }
   },
   "Risk": {
-    "PaymentContextCode": "TransferToThirdParty"
-  },
+    "PaymentContextCode": "TransferToThirdParty",
+    "PaymentPurposeCode": "EPAY",
+    "CategoryPurposeCode": "CASH", 
+    "ExtendedPurpose": "Required when no 4 character code fits the purpose",
+    "BeneficiaryPaymentDetailsPrepopulatedIndicator": false,
+    "BeneficiaryAccountType": "Business",
+    "MerchantCategoryCode": "7300", 
+    "MerchantCustomerIdentification": "053598653254",
+    "DeliveryAddress": {
+      "AddressLine": [
+        "Flat 7",
+        "Acacia Lodge"
+      ],
+      "StreetName": "Acacia Avenue",
+      "BuildingNumber": "27",
+      "PostCode": "GU31 2ZZ",
+      "TownName": "Sparsholt",
+      "CountrySubDivision": "Wessex",
+      "Country": "UK"
+    }
+  }
   "Links": {
     "Self": "https://api.alphabank.com/open-banking/v3.1/pisp/international-standing-orders/SO-ISOC-100"
   },

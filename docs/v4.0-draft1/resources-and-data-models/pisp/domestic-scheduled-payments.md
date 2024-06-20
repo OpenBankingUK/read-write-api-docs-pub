@@ -14,7 +14,7 @@
 - [Data Model](#data-model)
   - [Reused Classes](#reused-classes)
     - [OBDomesticScheduled2](#obdomesticscheduled2)
-    - [OBRemittanceInformation1](#obremittanceinformation1)
+    - [OBRemittanceInformation2](#obremittanceinformation2)
   - [Domestic Scheduled Payment - Request](#domestic-scheduled-payment-request)
     - [UML Diagram](#uml-diagram)
     - [Notes](#notes)
@@ -162,9 +162,9 @@ The data dictionary section gives the detail on the payload content for the Dome
 
 The OBDomesticScheduled2 class is defined in the [domestic-scheduled-payment-consents](./domestic-scheduled-payment-consents.md#obdomesticscheduled2) page.
 
-#### OBRemittanceInformation1
+#### OBRemittanceInformation2
 
-The OBRemittanceInformation1 class is defined in the [payment-initiation-api-profile](../../profiles/payment-initiation-api-profile.md#obremittanceinformation1) page.
+The OBRemittanceInformation2 class is defined in the [payment-initiation-api-profile](../../profiles/payment-initiation-api-profile.md#obremittanceinformation2) page.
 
 ### Domestic Scheduled Payment - Request
 
@@ -244,7 +244,7 @@ The domestic-scheduled-payment **response** object contains the:
 | Initiation |1..1 |OBWriteDomesticScheduledResponse5/Data/Initiation |The Initiation payload is sent by the initiating party to the ASPSP. It is used to request movement of funds from the debtor account to a creditor for a single scheduled domestic payment. |OBDomesticScheduled2 | | |
 | MultiAuthorisation |0..1 |OBWriteDomesticScheduledResponse5/Data/MultiAuthorisation |The multiple authorisation flow response from the ASPSP. |OBMultiAuthorisation1 | | |
 | Debtor |0..1 |OBWriteDomesticScheduledResponse5/Data/Debtor |Set of elements used to identify a person or an organisation. | | | |
-| SchemeName |0..1 |OBWriteDomesticScheduledResponse5/Data/Debtor/SchemeName |Name of the identification scheme, in a coded form as published in an external list. | For a full description see `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets). |OBInternalAccountIdentification4Code | 
+| SchemeName |0..1 |OBWriteDomesticScheduledResponse5/Data/Debtor/SchemeName |Name of the identification scheme, in a coded form as published in an external list. | For a full list of enumeration values refer to `OB_Internal_CodeSet` [here].(https://github.com/OpenBankingUK/External_Internal_CodeSets). |OBInternalAccountIdentification4Code | 
 | Identification |0..1 |OBWriteDomesticScheduledResponse5/Data/Debtor/Identification |Identification assigned by an institution to identify an account. This identification is known by the account owner. |Max256Text | | |
 | Name |0..1 |OBWriteDomesticScheduledResponse5/Data/Debtor/Name |The account name is the name or names of the account owner(s) represented at an account level, as displayed by the ASPSP's online channels. Note, the account name is not the product name or the nickname of the account. |Max350Text | | |
 | SecondaryIdentification |0..1 |OBWriteDomesticScheduledResponse5/Data/Debtor/SecondaryIdentification |This is secondary identification of the account, as assigned by the account servicing institution. This can be used by building societies to additionally identify accounts with a roll number (in addition to a sort code and account number combination). |Max34Text | | |
@@ -267,7 +267,7 @@ The OBWritePaymentDetailsResponse1 object will be used for a response to a call 
 | ---- |---------- |----- |------------------ |----- |----- |------- |
 | OBWritePaymentDetailsResponse1 | |OBWritePaymentDetailsResponse1 | |OBWritePaymentDetailsResponse1 | | |
 | Data |1..1 |OBWritePaymentDetailsResponse1/Data | |OBWriteDataPaymentOrderStatusResponse1 | | |
-| StatusDetail |0..* |OBWritePaymentDetailsResponse1/Data/StatusDetail |Array of payment status details. |OBWritePaymentDetails1 | | |
+| PaymentStatus |0..*|OBWritePaymentDetailsResponse1/Data/PaymentStatus |Payment status details. |OBWritePaymentDetails1 | | |
 
 #### OBRegulatoryReporting1
 
@@ -310,6 +310,7 @@ Accept: application/json
         "Proxy": {
           "Identification": "441234012345",
           "Code": "TELE",
+          "Type": "Telephone"
         },
       },
       "CreditorAccount": {
@@ -319,7 +320,8 @@ Accept: application/json
         "SecondaryIdentification": "0002",
         "Proxy": {
           "Identification": "+441632960540",
-          "Code": "TELE"
+          "Code": "TELE",
+          "Type": "Telephone"
         },
       },
       "CreditorPostalAddress":{
@@ -392,7 +394,9 @@ Accept: application/json
                 "Reference": "REF_26518"
               },
               "Invoicer": "INVR51856",
-              "Invoicee": "INVE5161856"
+              "Invoicee": "INVE5161856",
+              "TaxRemittance": "Tax Remittance related information",
+              "AdditionalRemittanceInformation": ["Free text for additional information"], 
             }
           ]
         },
@@ -419,6 +423,7 @@ Accept: application/json
       "TownName": "Sparsholt",
       "CountrySubDivision": "Wessex",
       "Country": "UK"
+    }
   }
 }
 ```
@@ -454,7 +459,7 @@ Content-Type: application/json
         "Currency": "GBP"
       },
     }],
-    "Debtor":{
+    "Debtor": {
       "SchemeName": "UK.OBIE.SortCodeAccountNumber",
       "Identification": "08080021325698",
       "Name": "ACME Inc",
@@ -479,6 +484,8 @@ Content-Type: application/json
     "Initiation": {
       "InstructionIdentification": "89f0a53a91ee47f6a383536f851d6b5a",
       "RequestedExecutionDateTime": "2018-08-06T00:00:00+00:00",
+      "EndToEndIdentification": "FRESCO.21302.GFX.20",
+      "LocalInstrument": "UK.OBIE.Paym",
       "InstructedAmount": {
         "Amount": "200.00",
         "Currency": "GBP"
@@ -486,15 +493,23 @@ Content-Type: application/json
       "DebtorAccount": {
         "SchemeName": "UK.OBIE.SortCodeAccountNumber",
         "Identification": "11280001234567",
-        "Name": "Andrea Frost"
+        "SecondaryIdentification": "0002",
+        "Name": "Andrea Frost",
+        "Proxy": {
+          "Identification": "+441632960540",
+          "Code": "TELE",
+          "Type": "Telephone"
+        },
       },
       "CreditorAccount": {
         "SchemeName": "UK.OBIE.SortCodeAccountNumber",
         "Identification": "08080021325698",
+        "SecondaryIdentification": "08098",
         "Name": "Tom Kirkman",
-          "Proxy": {
+        "Proxy": {
           "Identification": "+441632960540",
-          "Code": "TELE"
+          "Code": "TELE",
+          "Type": "Telephone"
         },
       },
       "CreditorPostalAddress":{
@@ -588,32 +603,13 @@ Content-Type: application/json
                 "Reference": "REF_26518"
               },
               "Invoicer": "INVR51856",
-              "Invoicee": "INVE5161856"
+              "Invoicee": "INVE5161856",
+              "TaxRemittance": "Tax Remittance related information",
+              "AdditionalRemittanceInformation": ["Free text for additional information"], 
             }
           ]
         }
     },
-  "Risk": {
-    "PaymentContextCode": "EcommerceMerchantInitiatedPayment",
-    "ContractPresentIndicator": false,
-    "PaymentPurposeCode": "EPAY",
-    "CategoryPurposeCode": "CASH", 
-    "BeneficiaryPaymentDetailsPrepopulatedIndicator": false,
-    "BeneficiaryAccountType": "Business",
-    "MerchantCategoryCode": "7300", 
-    "MerchantCustomerIdentification": "053598653254",
-    "DeliveryAddress": {
-      "AddressLine": [
-        "Flat 7",
-        "Acacia Lodge"
-      ],
-      "StreetName": "Acacia Avenue",
-      "BuildingNumber": "27",
-      "PostCode": "GU31 2ZZ",
-      "TownName": "Sparsholt",
-      "CountrySubDivision": "Wessex",
-      "Country": "UK"
-    }
   },
   "Links": {
     "Self": "https://api.alphabank.com/open-banking/v3.1/pisp/domestic-scheduled-payments/7290-003"

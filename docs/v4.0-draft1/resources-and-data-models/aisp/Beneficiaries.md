@@ -7,14 +7,14 @@
 - [Data Model](#data-model)
   - [Reused Classes](#reused-classes)
     - [OBProxy1 ](#obproxy1)
-    - [OBPostalAddress6](#obpostaladdress6)
+    - [OBPostalAddress7](#obpostaladdress7)
   - [Resource Definition](#resource-definition)
   - [UML Diagram](#uml-diagram)
   - [Notes](#notes)
   - [Permission Codes](#permission-codes)
   - [Data Dictionary](#data-dictionary)
   - [Reused Classes](#reused-classes)
-    - [OBPostalAddress6](#obpostaladdress6)
+    - [OBPostalAddress7](#obpostaladdress7)
 - [Usage Examples](#usage-examples)
   - [Specific Account](#specific-account)
     - [Get Account Beneficiaries Request](#get-account-beneficiaries-request)
@@ -61,8 +61,8 @@ The OBReadBeneficiary5 object will be used for the call to:
 
 The OBProxy1 class is defined in the [account-and-transaction-api-profile](../../profiles/account-and-transaction-api-profile.md#obproxy1) page.
 
-#### OBPostalAddress6
-The OBPostalAddress6 class is defined in the [account-and-transaction-api-profile](../../profiles/account-and-transaction-api-profile.md#obpostaladdress6) page.
+#### OBPostalAddress7
+The OBPostalAddress7 class is defined in the [account-and-transaction-api-profile](../../profiles/account-and-transaction-api-profile.md#obpostaladdress7) page.
 
 ### Resource Definition
 
@@ -125,9 +125,9 @@ If the ReadPAN permission is granted by the PSU, the ASPSP may choose to populat
 | LEI |0..1 | OBReadBeneficiary5/Data/Beneficiary/CreditorAgent/LEI |Legal entity identification as an alternate identification for a party. Legal Entity Identifier is a code allocated to a party as described in ISO 17442 "Financial Services - Legal Entity Identifier (LEI)".|Max20Text | |[A-Z0-9]{18,18}[0-9]{2,2}|
 | Identification |0..1 |OBReadBeneficiary5/Data/Beneficiary/CreditorAgent/Identification |Unique and unambiguous identification of the servicing institution. |Max35Text | | |
 | Name |0..1 |OBReadBeneficiary5/Data/Beneficiary/CreditorAgent/Name |Name by which an agent is known and which is usually used to identify that agent. |Max140Text | | |
-| PostalAddress |0..1 |OBReadBeneficiary5/Data/Beneficiary/CreditorAgent/PostalAddress |Information that locates and identifies a specific address, as defined by postal services. |OBPostalAddress6 | | |
+| PostalAddress |0..1 |OBReadBeneficiary5/Data/Beneficiary/CreditorAgent/PostalAddress |Information that locates and identifies a specific address, as defined by postal services. |OBPostalAddress7 | | |
 | CreditorAccount |0..1 |OBReadBeneficiary5/Data/Beneficiary/CreditorAccount |Provides the details to identify the beneficiary account. |OBCashAccount5 | | |
-| SchemeName |1..1 |OBReadBeneficiary5/Data/Beneficiary/CreditorAccount/SchemeName |Name of the identification scheme, in a coded form as published in an external list. | For a full description see `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets). |OBInternalAccountIdentification4Code | 
+| SchemeName |1..1 |OBReadBeneficiary5/Data/Beneficiary/CreditorAccount/SchemeName |Name of the identification scheme, in a coded form as published in an external list. | For a full list of enumeration values refer to `OB_Internal_CodeSet` [here].(https://github.com/OpenBankingUK/External_Internal_CodeSets). |OBInternalAccountIdentification4Code | 
 | Identification |1..1 |OBReadBeneficiary5/Data/Beneficiary/CreditorAccount/Identification |Identification assigned by an institution to identify an account. This identification is known by the account owner. |Max256Text | | |
 | Name |0..1 |OBReadBeneficiary5/Data/Beneficiary/CreditorAccount/Name |The account name is the name or names of the account owner(s) represented at an account level, as displayed by the ASPSP's online channels. Note, the account name is not the product name or the nickname of the account. |Max350Text | | |
 | SecondaryIdentification |0..1 |OBReadBeneficiary5/Data/Beneficiary/CreditorAccount/SecondaryIdentification |This is secondary identification of the account, as assigned by the account servicing institution. This can be used by building societies to additionally identify accounts with a roll number (in addition to a sort code and account number combination). |Max34Text | | |
@@ -135,9 +135,9 @@ If the ReadPAN permission is granted by the PSU, the ASPSP may choose to populat
 
 ### Reused Classes
 
-#### OBPostalAddress6 
+#### OBPostalAddress7 
 
-The OBPostalAddress6 class is defined in the [payment-initiation-api-profile](../../profiles/payment-initiation-api-profile.md#obpostaladdress6) page
+The OBPostalAddress7 class is defined in the [payment-initiation-api-profile](../../profiles/payment-initiation-api-profile.md#obpostaladdress7) page
 
 ## Usage Examples
 
