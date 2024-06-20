@@ -189,7 +189,7 @@ For the OBFile2 Initiation object:
 | NumberOfTransactions |0..1 |OBFile2/NumberOfTransactions |Number of individual transactions contained in the payment information group. |Max15NumericText | |[0-9]{1,15} |
 | ControlSum |0..1 |OBFile2/ControlSum |Total of all individual amounts included in the group, irrespective of currencies. |DecimalNumber | | |
 | RequestedExecutionDateTime |0..1 |OBFile2/RequestedExecutionDateTime |Date at which the initiating party requests the clearing agent to process the payment. Usage: This is the date on which the debtor's account is to be debited. |ISODateTime | | |
-| LocalInstrument |0..1 |OBFile2/LocalInstrument |User community specific instrument. Usage: This element is used to specify a local instrument, local clearing option and/or further qualify the service or service level. |OBExternalLocalInstrument1Code | | |
+| LocalInstrument |0..1 |OBFile2/LocalInstrument |User community specific instrument. Usage: This element is used to specify a local instrument, local clearing option and/or further qualify the service or service level. |For a full list of enumeration values refer to `OB_Internal_CodeSet` [here].(https://github.com/OpenBankingUK/External_Internal_CodeSets) |OBInternalLocalInstrument1Code | |
 | DebtorAccount |0..1 |OBFile2/DebtorAccount |Unambiguous identification of the account of the debtor to which a debit entry will be made as a result of the transaction. |OBCashAccountDebtor4 | | |
 | UltimateDebtor |0..1 |OBFile2/UltimateDebtor|Ultimate party that owes an amount of money to the (ultimate) creditor.|OBUltimateDebtor1 | | |
 | RemittanceInformation |0..1 |OBFile2/RemittanceInformation |Information supplied to enable the matching of an entry with the items that the transfer is intended to settle, such as commercial invoices in an accounts' receivable system. |OBRemittanceInformation2 | | |
@@ -257,7 +257,7 @@ The file-payment-consent **response** contains the full **original** payload fro
 | Data |1..1 |OBWriteFileConsentResponse4/Data | |OBWriteDataFileConsentResponse4 | | |
 | ConsentId |1..1 |OBWriteFileConsentResponse4/Data/ConsentId |OB: Unique identification as assigned by the ASPSP to uniquely identify the consent resource. |Max128Text | | |
 | CreationDateTime |1..1 |OBWriteFileConsentResponse4/Data/CreationDateTime |Date and time at which the resource was created. |ISODateTime | | |
-| StatusCode |1..1 |OBWriteFileConsentResponse4/Data/StatusCode |Specifies the status of consent resource in code form. |ExternalStatusReason1Code |AUTH AWAU RJCT COND |
+| StatusCode |1..1 |OBWriteFileConsentResponse4/Data/StatusCode |Specifies the status of consent resource in code form. |For a full list of enumeration values refer to `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_internal_CodeSets)|OBExternalStatusReason1Code |
 | StatusUpdateDateTime |1..1 |OBWriteFileConsentResponse4/Data/StatusUpdateDateTime |Date and time at which the consent resource status was updated. |ISODateTime | | |
 | StatusReason |0..* |OBWriteFileConsentResponse4/Data/StatusReason |An array of StatusReasonCode | OBStatusReason |
 | StatusReasonCode |0..1 |OBWriteFileConsentResponse4/Data/StatusReason/StatusReasonCode |Specifies the status reason in a code form. |For a full list of enumeration values refer to `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_internal_CodeSets)| OBInternalPermissions1Code |

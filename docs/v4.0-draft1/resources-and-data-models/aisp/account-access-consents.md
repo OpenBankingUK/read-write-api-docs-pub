@@ -183,9 +183,9 @@ And response to:
 | Data |1..1 |OBReadConsentResponse1/Data | |OBReadDataConsentResponse1 | |
 | ConsentId |1..1 |OBReadConsentResponse1/Data/ConsentId |Unique identification as assigned to identify the account access consent resource. |Max128Text | |
 | CreationDateTime |1..1 |OBReadConsentResponse1/Data/CreationDateTime |Date and time at which the resource was created. |ISODateTime | |
-| StatusCode |0..1 |OBReadConsentResponse1/Data/StatusCode |Specifies the status of consent resource in code form. | For a full description see `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_internal_CodeSets). |OBInternalPermissions1Code |
+| StatusCode |0..1 |OBReadConsentResponse1/Data/StatusCode |Specifies the status of consent resource in code form. | For a full list of enumeration values refer to `OB_Internal_CodeSet` [here].(https://github.com/OpenBankingUK/External_internal_CodeSets). |OBInternalPermissions1Code |
 | StatusReason |0..* |OBReadConsentResponse1/Data/StatusReason |Specifies the status reason. | OBStatusReason |
-| StatusReasonCode |0..1 |OBReadConsentResponse1/Data/StatusReason/StatusReasonCode |Specifies the status reason in a code form| For a full description see `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_internal_CodeSets). | OBExternalStatusReason1Code |
+| StatusReasonCode |0..1 |OBReadConsentResponse1/Data/StatusReason/StatusReasonCode |Specifies the status reason in a code form| For a full list of enumeration values refer to `OB_Internal_CodeSet` [here].(https://github.com/OpenBankingUK/External_internal_CodeSets). | OBExternalStatusReason1Code |
 | StatusReasonDescription |0..1 |OBReadConsentResponse1/Data/StatusReason/StatusReasonDescription |Description supporting the StatusReasonCode. |Max500Text | |
 | Path |0..1 |OBReadConsentResponse1/Data/StatusReason/Path |Path is optional but relevant when the status reason refers to an object/field and hence conditional to provide JSON path.  |Max500Text | |
 | StatusUpdateDateTime |1..1 |OBReadConsentResponse1/Data/StatusUpdateDateTime |Date and time at which the resource status was updated. |ISODateTime | |

@@ -235,7 +235,7 @@ The domestic-payment **response** object contains the:
 | DomesticPaymentId |1..1 |OBWriteDomesticResponse5/Data/DomesticPaymentId |OB: Unique identification as assigned by the ASPSP to uniquely identify the domestic payment resource. |Max40Text | | |
 | ConsentId |1..1 |OBWriteDomesticResponse5/Data/ConsentId |OB: Unique identification as assigned by the ASPSP to uniquely identify the consent resource. |Max128Text | | |
 | CreationDateTime |1..1 |OBWriteDomesticResponse5/Data/CreationDateTime |Date and time at which the resource was created. |ISODateTime | | |
-| StatusCode |1..1 |OBWriteDomesticResponse5/Data/StatusCode |Specifies the status of the payment information group. |OBTransactionIndividualStatus1Code  |PDNG ACTC PATC ACCP ACFC ACSP ACWC ACSC ACWP ACCC BLCK RJCT | |
+| StatusCode |1..1 |OBWriteDomesticResponse5/Data/StatusCode |Specifies the status of the payment information group. |For a full list of enumeration values refer to `OB_External_CodeSet` [here](https://github.com/OpenBankingUK/External_internal_CodeSets) |ExternalPaymentTransactionStatus1Code | |
 | StatusUpdateDateTime |1..1 |OBWriteDomesticResponse5/Data/StatusUpdateDateTime |Date and time at which the resource status was updated. |ISODateTime | | |
 | StatusReason |0..* |OBWriteDomesticResponse5/Data/StatusReason |An array of StatusReasonCode | OBStatusReason |
 | StatusReasonCode |0..1 |OBWriteDomesticResponse5/Data/StatusReason/StatusReasonCode |Specifies the status reason in a code form. |For a full list of enumeration values refer to `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_internal_CodeSets)|OBInternalPermissions1Code |
