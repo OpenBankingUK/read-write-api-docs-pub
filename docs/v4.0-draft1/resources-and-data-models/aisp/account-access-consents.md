@@ -138,7 +138,7 @@ The OBReadConsent1 object will be used for the call to:
 #### Notes
 
 * The fields in the OBReadConsent1 object are described in the Consent Elements section.
-* No fields have been identified for the Risk section and it has been removed from v4 onwards.
+* No fields have been identified for the Risk section.
 
 #### Data Dictionary
 
@@ -173,7 +173,7 @@ And response to:
     * StatusReason.
     * CreationDateTime.
     * StatusUpdateDateTime.
-* No fields have been identified for the Risk section and it has been removed from v4 onwards.
+* No fields have been identified for the Risk section.
 
 #### Data Dictionary
 
@@ -193,6 +193,7 @@ And response to:
 | ExpirationDateTime |0..1 |OBReadConsentResponse1/Data/ExpirationDateTime |Specified date and time the permissions will expire. If this is not populated, the permissions will be open ended. |ISODateTime | |
 | TransactionFromDateTime |0..1 |OBReadConsentResponse1/Data/TransactionFromDateTime |Specified start date and time for the transaction query period. If this is not populated, the start date will be open ended, and data will be returned from the earliest available transaction. |ISODateTime | |
 | TransactionToDateTime |0..1 |OBReadConsentResponse1/Data/TransactionToDateTime |Specified end date and time for the transaction query period. If this is not populated, the end date will be open ended, and data will be returned to the latest available transaction. |ISODateTime | |
+| Risk |1..1 |OBReadConsentResponse1/Risk |The Risk section is sent by the initiating party to the ASPSP. It is used to specify additional details for risk scoring for Account Info. |OBRisk2 | |
 
 ## Usage Examples
 
@@ -277,6 +278,7 @@ Content-Type: application/json
     "TransactionFromDateTime": "2017-05-03T00:00:00+00:00",
     "TransactionToDateTime": "2017-12-03T00:00:00+00:00"
   },
+  "Risk": {},
   "Links": {
     "Self": "https://api.alphabank.com/open-banking/v3.1/aisp/account-access-consents/urn-alphabank-intent-88379"
   },
@@ -341,6 +343,7 @@ Content-Type: application/json
     "TransactionFromDateTime": "2017-05-03T00:00:00+00:00",
     "TransactionToDateTime": "2017-12-03T00:00:00+00:00"
   },
+  "Risk": {},
   "Links": {
     "Self": "https://api.alphabank.com/open-banking/v3.1/aisp/account-access-consents/urn-alphabank-intent-88379"
   },
@@ -404,6 +407,7 @@ Content-Type: application/json
     "TransactionFromDateTime": "2017-05-03T00:00:00+00:00",
     "TransactionToDateTime": "2017-12-03T00:00:00+00:00"
   },
+  "Risk": {},
   "Links": {
     "Self": "https://api.alphabank.com/open-banking/v3.1/aisp/account-access-consents/urn-alphabank-intent-88379"
   },
@@ -468,6 +472,7 @@ Content-Type: application/json
     "TransactionFromDateTime": "2017-05-03T00:00:00+00:00",
     "TransactionToDateTime": "2017-12-03T00:00:00+00:00"
   },
+  "Risk": {},
   "Links": {
     "Self": "https://api.alphabank.com/open-banking/v3.1/aisp/account-access-consents/urn-alphabank-intent-88379"
   },
@@ -555,6 +560,7 @@ Content-Type: application/json
     "TransactionFromDateTime": "2017-05-03T00:00:00+00:00",
     "TransactionToDateTime": "2017-12-03T00:00:00+00:00"
   },
+  "Risk": {},
   "Links": {
     "Self": "https://api.alphabank.com/open-banking/v3.1/aisp/account-access-consents/urn-alphabank-intent-88379"
   },
