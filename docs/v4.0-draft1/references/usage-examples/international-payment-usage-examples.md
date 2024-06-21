@@ -86,7 +86,7 @@ Content-Type: application/json
 	"Data": {
 		"Permission": "Create",
 		"ConsentId": "58923",
-		"StatusCode": "AWAU",
+		"Status": "AWAU",
 		"CutOffDateTime": "2017-06-05T16:00:13+00:00",
 		"CreationDateTime": "2017-06-05T15:15:13+00:00",
 		"StatusUpdateDateTime": "2017-06-05T15:15:13+00:00",
@@ -208,7 +208,7 @@ Content-Type: application/json
 	"Data": {
 		"Permission": "Create",
 		"ConsentId": "58923",
-		"StatusCode": "AWAU",
+		"Status": "AWAU",
 		"CutOffDateTime": "2017-06-05T16:00:13+00:00",
 		"CreationDateTime": "2017-06-05T15:15:13+00:00",
 		"StatusUpdateDateTime": "2017-06-05T15:15:13+00:00",

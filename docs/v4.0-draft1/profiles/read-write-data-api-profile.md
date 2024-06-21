@@ -441,18 +441,18 @@ The situation could arise when:
 * The TPP attempted to access a resource with an Id that it does not have access to. e.g., an attempt to access GET /domestic-payments/1001 where a payment resource with Id 1001 belongs to another TPP.
 * The TPP tries to access an account/transaction resource and the TPP does not have a consent authorisation with the right Permissions to access the requested resource. e.g., an attempt to access GET /standing-orders when the ReadStandingOrdersBasic permission was not included in the consent authorisation.
 * The TPP tries to access an account/transaction resource and the TPP does not have a consent authorisation for the AccountId. e.g., an attempt to access GET /accounts/2001 or GET /accounts/2001/transactions when the PSU has not selected AccountId 2001 for authorisation.
-* The TPP attempts to access a Resource and the ASPSP decides to re-authenticate the PSU. The ASPSP must respond back with an appropriate error code to indicate re-authentication is required and also update the Consent `StatusCode` with `CANC` and appropriate `StatusReasonCode`. For more guidance refer to the [CEGs](https://consultation.standards.openbanking.org.uk/customer-experience-guidelines/appendices/common-errors/v4-0-draft1/).
+* The TPP attempts to access a Resource and the ASPSP decides to re-authenticate the PSU. The ASPSP must respond back with an appropriate error code to indicate re-authentication is required and also update the Consent `Status` with `CANC` and appropriate `StatusReasonCode`. For more guidance refer to the [CEGs](https://consultation.standards.openbanking.org.uk/customer-experience-guidelines/appendices/common-errors/v4-0-draft1/).
 
 #### 401 (Unauthorized)
 
-When the TPP uses an expired access token, the ASPSP must return a 401 (Unauthorized) with an error response as per ISO or OB proprietary reason codes in the `ErrorCode` and update the respective Consent `StatusCode`. For more guidance refer to the [CEGs](https://consultation.standards.openbanking.org.uk/customer-experience-guidelines/appendices/common-errors/v4-0-draft1/). 
+When the TPP uses an expired access token, the ASPSP must return a 401 (Unauthorized) with an error response as per ISO or OB proprietary reason codes in the `ErrorCode` and update the respective Consent `Status`. For more guidance refer to the [CEGs](https://consultation.standards.openbanking.org.uk/customer-experience-guidelines/appendices/common-errors/v4-0-draft1/). 
 
 Situations where no token is provided or it is invalid should return 401 (Unauthorised) without an error response.
 
 The situation could arise when an ASPSP has chosen to expire an Access Token:
 1.	The consent has expired (the Expiration Date Time has lapsed) – Status code must be changed to `EXPD` which means Expired. `StatusReasonCode` must be `TKXP`.
-2.	Suspicious usage of the Access Token or suspected fraud - StatusCode must be changed to `CANC` which means Cancelled. `StatusReasonCode` must be `TKSP` and if appropriate `U028` also.
-3.	SCA is required in permitted circumstances - `StatusCode` must be changed to `CANC` which means Cancelled. `StatusReasonCode` must be `TKSP` and `U028`.
+2.	Suspicious usage of the Access Token or suspected fraud - Status must be changed to `CANC` which means Cancelled. `StatusReasonCode` must be `TKSP` and if appropriate `U028` also.
+3.	SCA is required in permitted circumstances - `Status` must be changed to `CANC` which means Cancelled. `StatusReasonCode` must be `TKSP` and `U028`.
 Refer to the [External_Internal_Codesets repository](https://github.com/OpenBankingUK/External_internal_CodeSets) -> CodeSet 'OBExternalStatusReason1Code'
 This error can potentially be remedied by asking the PSU to re-authenticate or authenticate with the right permissions. However, if re-authentication is not permitted then `U028` must not be provided in the error message and `StatusReasonCode`.
 
@@ -797,11 +797,11 @@ The consent payload `StatusReasonCode` should also be updated with the same code
 
 
 #### Token Errors
-Scenarios where an action taken by the PSU or ASPSP which results in a token being expired/suspended or PSU re-authentication is required should return the appropriate code in the token endpoint `error_description` and the consent payload `StatusCode` should be updated with the same reason code.
+Scenarios where an action taken by the PSU or ASPSP which results in a token being expired/suspended or PSU re-authentication is required should return the appropriate code in the token endpoint `error_description` and the consent payload `Status` should be updated with the same reason code.
 
 Final token expiry should be aligned to the consent end-date, the consent status should be updated after expiry and appropriate token errors returned.
 
-Note: Normal expiry of tokens, such as when a refresh token has been issued and the access token lifetime has been reached, should not result in changes to the Consent endpoint `StatusCode` field.
+Note: Normal expiry of tokens, such as when a refresh token has been issued and the access token lifetime has been reached, should not result in changes to the Consent endpoint `Status` field.
 
 
 ## Security & Access Control
@@ -840,7 +840,7 @@ An access token is bound to a single PSU and an intent.
 
 #### Error Condition
 
-If the PSU does not complete a successful consent authorisation (e.g. if the PSU is not authenticated successfully), the authorization code grant ends with a redirection to the TPP with an error response as described in OpenID Connect Core Specification [Section 3.1.2.6](https://openid.net/specs/openid-connect-core-1_0.html#AuthError). The PSU is redirected to the TPP with an error parameter indicating the reason for failure. The ASPSP must also update the Consent `StatusCode` using ISO 20022 reason codes and/or OBL Proprietary reason codes as appropriate.
+If the PSU does not complete a successful consent authorisation (e.g. if the PSU is not authenticated successfully), the authorization code grant ends with a redirection to the TPP with an error response as described in OpenID Connect Core Specification [Section 3.1.2.6](https://openid.net/specs/openid-connect-core-1_0.html#AuthError). The PSU is redirected to the TPP with an error parameter indicating the reason for failure. The ASPSP must also update the Consent `Status` using ISO 20022 reason codes and/or OBL Proprietary reason codes as appropriate.
 
 The consent payload `StatusReasonCode` should also be updated with the same code.
 
@@ -1053,7 +1053,7 @@ A `login_hint_token` **must not** be included in the request.
 
 A PSU may revoke any of their long-lived consents through the TPP, and only Funds Confirmation Consent through the ASPSP. This only applies to long-lived consents:
 
-* When a PSU does not complete the consent-authorisation flow, the ASPSP must mark the consent as `Rejected`.
+* When a PSU does not complete the consent-authorisation flow, the ASPSP must mark the consent as `RJCT` (Rejected).
 * When the PSU revokes their consent with the TPP, the TPP must make a `DELETE` request to the consent resource. The ASPSP **must** delete the resource (possibly as a "soft" delete) and respond to subsequent `GET` requests with an Http Status of `400`.
 
 In each of the above cases, the consent states are terminal i.e. the ASPSP **must not** allow any further state changes. The ASPSP **must not** permit any authorisation code grants to be initiated with such a consent.
@@ -1066,7 +1066,7 @@ An ASPSP may issue an access token and refresh token for a long-lived consent. T
 
 #### Ability to re-authenticate an Authorised consent at any point of time
 
-A TPP **may** request a PSU to re-authenticate a consent at *any point of time* for a long-lived consent that is in the `Authorised` state. This includes before and after the underlying tokens have expired.
+A TPP **may** request a PSU to re-authenticate a consent at *any point of time* for a long-lived consent that is in the `AUTH` (Authorised) state. This includes before and after the underlying tokens have expired.
 
 An ASPSP **must** accept a request from a TPP to re-authenticate a consent at any point of time for a long-lived consent that is in the Authorised state. This includes before and after the underlying tokens have expired.
 
@@ -1264,6 +1264,8 @@ The error response structure for Open Banking Read/Write APIs:
 |--------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------|-----|-------|
 |OBErrorResponse1          |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |OBErrorResponse1|An array of detail error codes, and messages, and URLs to documentation to help remediation.                                                                            |OBErrorResponse1         |     |       |
 |Id                        |0..1                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |OBErrorResponse1/Id|A unique reference for the error instance, for audit purposes, in case of unknown/unclassified errors.                                                                  |Max40Text                |     |       |
+|Code                      |0..1                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |OBErrorResponse1/Code|**Deprecated**<br>High level textual error code, to help categorise the errors.                                                                                                      |Max40Text                |     |       |
+|Message                   |0..1                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |OBErrorResponse1/Message|**Deprecated** <br>Brief Error message, e.g., 'There is something wrong with the request parameters provided'                                                                              |Max500Text               |     |       |
 |Errors                    |1..n                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |OBErrorResponse1/Errors|                                                                                                                                                                        |OBError1                 |     |       |
 |ErrorCode                 |1..1 |                       OBErrorResponse1/Errors/ErrorCode                                                                                                                                                      |Low level textual error code, e.g., `"AC17"`| For a full list of enumeration values see `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_internal_CodeSets)                                                                                                    |OBExternalStatusReason1Code|     |       |
 |Message                   |0..1 |OBErrorResponse1/Errors/Message|A description of the error that occurred. e.g., 'A mandatory field isn't supplied' or 'RequestedExecutionDateTime must be in future'<br><br>OBL doesn't standardise this field|Max500Text               |     |       |
@@ -1680,6 +1682,8 @@ Content-Type: application/json
 ```json
 {
   "Id": "2b5f0fb2-730b-11e8-adc0-fa7ae01bbebc",
+  "Code": "400 BadRequest",
+  "Message": "Invalid request parameters.",
   "Errors": [
     {
       "ErrorCode": "U004",

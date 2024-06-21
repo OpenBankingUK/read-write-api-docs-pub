@@ -3,19 +3,19 @@
 - [Overview](#overview)
 - [Endpoints](#endpoints)
   - [POST /international-standing-order-consents](#post-international-standing-order-consents)
-    - [StatusCode](#statuscode)
+    - [Status](#status)
   - [GET /international-standing-order-consents/{ConsentId}](#get-international-standing-order-consents-consentid)
-    - [StatusCode](#statuscode-2)
+    - [Status](#status-2)
   - [State Model](#state-model)
     - [Payment Order Consent](#payment-order-consent)
 - [Data Model](#data-model)
   - [Reused Classes](#reused-classes)
-    - [OBRemittanceInformation1](#obremittanceinformation1)
+    - [OBRemittanceInformation2](#obremittanceinformation2)
     - [OBMandateRelatedInformation1](#obmandaterelatedinformation1)
     - [OBRegulatoryReporting1](#obregulatoryreporting1)
     - [OBUltimateCreditor1](#obultimatecreditor1)
     - [OBUltimateDebtor1](#obultimatedebtor1)
-    - [OBPostalAddress6](#obpostaladdress6)
+    - [OBPostalAddress7](#obpostaladdress7)
     - [OBProxy1](#obproxy1)
     - [OBInternationalStandingOrder4](#obinternationalstandingorder4)
       - [UML Diagram](#uml-diagram)
@@ -55,11 +55,11 @@ The API endpoint allows the PISP to ask an ASPSP to create a new **international
 * The endpoint allows the PISP to send a copy of the consent (between PSU and PISP) to the ASPSP for the PSU to authorise.
 * The ASPSP creates the **international-standing-order-consent** resource and responds with a unique ConsentId to refer to the resource.
 
-#### StatusCode
+#### Status
 
-The default StatusCode is "AWAU" immediately after the international-standing-order-consent has been created.
+The default Status is "AWAU" immediately after the international-standing-order-consent has been created.
 
-| StatusCode |
+| Status |
 | --- |
 | AWAU |
 
@@ -70,17 +70,17 @@ A PISP can optionally retrieve a payment consent resource that they have created
 
 Refer to [External_Internal_CodeSets](https://github.com/OpenBankingUK/External_Internal_CodeSets) -> OB_Internal_CodeSet -> `OBInternalPermissions1Code`.
 
-#### StatusCode
+#### Status
 
-Once the PSU authorises the payment-consent resource - the StatusCode of the payment-consent resource will be updated with "AUTH".
+Once the PSU authorises the payment-consent resource - the Status of the payment-consent resource will be updated with "AUTH".
 
-If the PSU rejects the consent or the international-standing-order-consent has failed some other ASPSP validation, the StatusCode will be set to "RJCT".
+If the PSU rejects the consent or the international-standing-order-consent has failed some other ASPSP validation, the Status will be set to "RJCT".
 
-Once an international-standing-orders has been successfully created using the international-standing-order-consent, the StatusCode of the international-standing-order-consent will be set to "COND".
+Once an international-standing-orders has been successfully created using the international-standing-order-consent, the Status of the international-standing-order-consent will be set to "COND".
 
 The available StatusCodes for the international-standing-order-consent resource are:
 
-| StatusCode |
+| Status |
 | --- |
 | AWAU |
 | RJCT |
@@ -95,16 +95,16 @@ The state model for the international-standing-order-consent resource follows th
 
 ![State model](./images/PO_Consent.png)
 
-The definitions for the StatusCode:
+The definitions for the Status:
 
-|  |StatusCode |Status Description |
+|  |Status |Status Description |
 | --- |--- |--- |
 | 1 |AWAU |The consent resource is awaiting PSU authorisation. |
 | 2 |RJCT |The consent resource has been rejected. |
 | 3 |AUTH |The consent resource has been successfully authorised. |
 | 4 |COND |The consented action has been successfully completed. This does not reflect the status of the consented action. |
 
-Changes to the StatusCode, such as being rejected, should be captured in `StatusReason`, an array of `StatusReasonCode`, `StatusReasonDescription` and `Path`.  
+Changes to the Status, such as being rejected, should be captured in `StatusReason`, an array of `StatusReasonCode`, `StatusReasonDescription` and `Path`.  
 
 | Field | Description |
 |---|---|
@@ -118,9 +118,9 @@ The data dictionary section gives the detail on the payload content for the Inte
 
 ### Reused Classes
 
-#### OBRemittanceInformation1
+#### OBRemittanceInformation2
 
-The OBRemittanceInformation1 class is defined in the [payment-initiation-api-profile](../../profiles/payment-initiation-api-profile.md#obremittanceinformation1) page.
+The OBRemittanceInformation2 class is defined in the [payment-initiation-api-profile](../../profiles/payment-initiation-api-profile.md#obremittanceinformation2) page.
 
 #### OBMandateRelatedInformation1
 
@@ -139,9 +139,9 @@ The OBUltimateCreditor1 class is defined in the [payment-initiation-api-profile]
 
 The OBUltimateDebtor1 class is defined in the [payment-initiation-api-profile](../../profiles/payment-initiation-api-profile.md#obultimatedebtor1) page.
 
-#### OBPostalAddress6 
+#### OBPostalAddress7 
 
-The OBPostalAddress6 class is defined in the [payment-initiation-api-profile](../../profiles/payment-initiation-api-profile.md#obpostaladdress6) page
+The OBPostalAddress7 class is defined in the [payment-initiation-api-profile](../../profiles/payment-initiation-api-profile.md#obpostaladdress7) page
 
 #### OBProxy1
 
@@ -183,16 +183,16 @@ For the OBInternationalStandingOrder4 Initiation object:
 | --- |--- |--- |--- |--- |--- |--- |
 | OBInternationalStandingOrder4 | |OBInternationalStandingOrder4 |The Initiation payload is sent by the initiating party to the ASPSP. It is used to request movement of funds from the debtor account to a creditor for an international standing order. |OBInternationalStandingOrder4 | | |
 | MandateRelatedInformation | 0..1 |OBInternationalStandingOrder4/MandateRelatedInformation ||OBMandateRelatedInformation1 | | |
-| RemittanceInformation |0..1 |OBInternationalStandingOrder4/RemittanceInformation |Information supplied to enable the matching of an entry with the items that the transfer is intended to settle, such as commercial invoices in an accounts' receivable system. |OBRemittanceInformation1 | | |
+| RemittanceInformation |0..1 |OBInternationalStandingOrder4/RemittanceInformation |Information supplied to enable the matching of an entry with the items that the transfer is intended to settle, such as commercial invoices in an accounts' receivable system. |OBRemittanceInformation2 | | |
 | Purpose |0..1 |OBInternationalStandingOrder4/Purpose |Specifies the external purpose code in the format of character string with a maximum length of 4 characters. The list of valid codes is an external code list published separately. External code sets can be downloaded from www.iso20022.org. |OBExternalPurpose1Code1 | | |
-| ChargeBearer |0..1 |OBInternationalStandingOrder4/ChargeBearer |Specifies which party/parties will bear the charges associated with the processing of the payment transaction. |OBChargeBearerType1Code |BorneByCreditor BorneByDebtor FollowingServiceLevel Shared | |
+| ChargeBearer |0..1 |OBInternationalStandingOrder4/ChargeBearer |Specifies which party/parties will bear the charges associated with the processing of the payment transaction. |For a full list of enumeration values refer to `OB_Internal_CodeSet` [here].(https://github.com/OpenBankingUK/External_Internal_CodeSets). |OBInternalChargeBearerType1Code| |
 | CurrencyOfTransfer |1..1 |OBInternationalStandingOrder4/CurrencyOfTransfer |Specifies the currency of the to be transferred amount, which is different from the currency of the debtor's account. |ActiveOrHistoricCurrencyCode | |^[A-Z]{3,3}$ |
 | DestinationCountryCode |0..1 |OBInternationalStandingOrder4/DestinationCountryCode |Country in which Credit Account is domiciled. Nation with its own government. |CountryCode | |^[A-Z]{2,2}$ |
 | InstructedAmount |1..1 |OBInternationalStandingOrder4/InstructedAmount |Amount of money to be moved between the debtor and creditor, before deduction of charges, expressed in the currency as ordered by the initiating party. Usage: This amount has to be transported unchanged through the transaction chain. |OBActiveOrHistoricCurrencyAndAmount | | |
 | Amount |1..1 |OBInternationalStandingOrder4/InstructedAmount/Amount |A number of monetary units specified in an active currency where the unit of currency is explicit and compliant with ISO 4217. |OBActiveCurrencyAndAmount_SimpleType | |`^\d{1,13}$|^\d{1,13}\.\d{1,5}$` |
 | Currency |1..1 |OBInternationalStandingOrder4/InstructedAmount/Currency |A code allocated to a currency by a Maintenance Agency under an international identification scheme, as described in the latest edition of the international standard ISO 4217 "Codes for the representation of currencies and funds". |ActiveOrHistoricCurrencyCode | |^[A-Z]{3,3}$ |
 | DebtorAccount |0..1 |OBInternationalStandingOrder4/DebtorAccount |Provides the details to identify the debtor account. |OBCashAccountDebtor4 | | |
-| SchemeName |1..1 |OBInternationalStandingOrder4/DebtorAccount/SchemeName |Name of the identification scheme, in a coded form as published in an external list. | For a full description see `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets). |OBInternalAccountIdentification4Code | 
+| SchemeName |1..1 |OBInternationalStandingOrder4/DebtorAccount/SchemeName |Name of the identification scheme, in a coded form as published in an external list. | For a full list of enumeration values refer to `OB_Internal_CodeSet` [here].(https://github.com/OpenBankingUK/External_Internal_CodeSets). |OBInternalAccountIdentification4Code | 
 | Identification |1..1 |OBInternationalStandingOrder4/DebtorAccount/Identification |Identification assigned by an institution to identify an account. This identification is known by the account owner. |Max256Text | | |
 | Name |0..1 |OBInternationalStandingOrder4/DebtorAccount/Name |The account name is the name or names of the account owner(s) represented at an account level, as displayed by the ASPSP's online channels. Note, the account name is not the product name or the nickname of the account. |Max350Text | | |
 | SecondaryIdentification |0..1 |OBInternationalStandingOrder4/DebtorAccount/SecondaryIdentification |This is secondary identification of the account, as assigned by the account servicing institution. This can be used by building societies to additionally identify accounts with a roll number (in addition to a sort code and account number combination). |Max34Text | | |
@@ -201,16 +201,16 @@ For the OBInternationalStandingOrder4 Initiation object:
 | Creditor |0..1 |OBInternationalStandingOrder4/Creditor |Party to which an amount of money is due. |OBPartyIdentification43 | | |
 | Name |0..1 |OBInternationalStandingOrder4/Creditor/Name |Name by which a party is known and which is usually used to identify that party. |Max350Text | | |
 | LEI |0..1 | OBInternationalStandingOrder4/Creditor/LEI |Legal Entity Identification Legal entity identification as an alternate identification for a party. Legal Entity Identifier is a code allocated to a party as described in ISO 17442 "Financial Services - Legal Entity Identifier (LEI)". |Max20Text | |^[A-Z0-9]{18,18}[0-9]{2,2}$ |
-| PostalAddress |0..1 |OBInternationalStandingOrder4/Creditor/PostalAddress |Information that locates and identifies a specific address, as defined by postal services. |OBPostalAddress6 | | |
+| PostalAddress |0..1 |OBInternationalStandingOrder4/Creditor/PostalAddress |Information that locates and identifies a specific address, as defined by postal services. |OBPostalAddress7 | | |
 | UltimateCreditor |0..1 |OBInternationalStandingOrder4/UltimateCreditor|Ultimate party to which an amount of money is due. | OBUltimateCreditor1 | | |
 | CreditorAgent |0..1 |OBInternationalStandingOrder4/CreditorAgent |Party that manages the account on behalf of the account owner, that is manages the registration and booking of entries on the account, calculates balances on the account and provides information about the account. This is the servicer of the beneficiary account. |OBBranchAndFinancialInstitutionIdentification6 | | |
 | SchemeName |0..1 |OBInternationalStandingOrder4/CreditorAgent/SchemeName |Name of the identification scheme, in a coded form as published in an external list. |For a full list of enumeration values refer to `Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_internal_CodeSets)|OBInternalFinancialInstitutionIdentification4Co
 | Identification |0..1 |OBInternationalStandingOrder4/CreditorAgent/Identification |Unique and unambiguous identification of the servicing institution. |Max35Text | | |
 | Name |0..1 |OBInternationalStandingOrder4/CreditorAgent/Name |Name by which an agent is known and which is usually used to identify that agent. |Max140Text | | |
 | LEI |0..1 | OBInternationalStandingOrder4/CreditorAgent/LEI |Legal Entity Identification Legal entity identification as an alternate identification for a party. Legal Entity Identifier is a code allocated to a party as described in ISO 17442 "Financial Services - Legal Entity Identifier (LEI)". |Max20Text | |^[A-Z0-9]{18,18}[0-9]{2,2}$ |
-| PostalAddress |0..1 |OBInternationalStandingOrder4/CreditorAgent/PostalAddress |Information that locates and identifies a specific address, as defined by postal services. |OBPostalAddress6 | | |
+| PostalAddress |0..1 |OBInternationalStandingOrder4/CreditorAgent/PostalAddress |Information that locates and identifies a specific address, as defined by postal services. |OBPostalAddress7 | | |
 | CreditorAccount |1..1 |OBInternationalStandingOrder4/CreditorAccount |Provides the details to identify the beneficiary account. |OBCashAccountCreditor3 | | |
-| SchemeName |1..1 |OBInternationalStandingOrder4/CreditorAccount/SchemeName |Name of the identification scheme, in a coded form as published in an external list. | For a full description see `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets). |OBInternalAccountIdentification4Code | 
+| SchemeName |1..1 |OBInternationalStandingOrder4/CreditorAccount/SchemeName |Name of the identification scheme, in a coded form as published in an external list. | For a full list of enumeration values refer to `OB_Internal_CodeSet` [here].(https://github.com/OpenBankingUK/External_Internal_CodeSets). |OBInternalAccountIdentification4Code | 
 | Identification |1..1 |OBInternationalStandingOrder4/CreditorAccount/Identification |Identification assigned by an institution to identify an account. This identification is known by the account owner. |Max256Text | | |
 | Name |1..1 |OBInternationalStandingOrder4/CreditorAccount/Name |The account name is the name or names of the account owner(s) represented at an account level. Note, the account name is not the product name or the nickname of the account. OB: ASPSPs may carry out name validation for Confirmation of Payee, but it is not mandatory. |Max350Text | | |
 | SecondaryIdentification |0..1 |OBInternationalStandingOrder4/CreditorAccount/SecondaryIdentification |This is secondary identification of the account, as assigned by the account servicing institution. This can be used by building societies to additionally identify accounts with a roll number (in addition to a sort code and account number combination). |Max34Text | | |
@@ -245,8 +245,8 @@ The international-standing-order-consent **request** contains these objects:
 | --- |--- |--- |--- |--- |--- |--- |
 | OBWriteInternationalStandingOrderConsent6 | |OBWriteInternationalStandingOrderConsent6 | |OBWriteInternationalStandingOrderConsent6 | | |
 | Data |1..1 |OBWriteInternationalStandingOrderConsent6/Data | |OBWriteDataInternationalStandingOrderConsent6 | | |
-| Permission |1..1 |OBWriteInternationalStandingOrderConsent6/Data/Permission |Specifies the Open Banking service request types. |OBExternalPermissions2Code |Create | |
-| ReadRefundAccount |0..1 |OBWriteInternationalStandingOrderConsent6/Data/ReadRefundAccount | Specifies to share the refund account details with PISP |OBReadRefundAccount1Code |Yes No | |
+| Permission |1..1 |OBWriteInternationalStandingOrderConsent6/Data/Permission |Specifies the Open Banking service request types. |For a full list of enumeration values refer to `OB_Internal_CodeSet` [here].(https://github.com/OpenBankingUK/External_Internal_CodeSets)  |OBInternalPermissions2Code| |
+| ReadRefundAccount |0..1 |OBWriteInternationalStandingOrderConsent6/Data/ReadRefundAccount | Specifies to share the refund account details with PISP |For a full list of enumeration values refer to `OB_Internal_CodeSet` [here].(https://github.com/OpenBankingUK/External_Internal_CodeSets). |OBInternalReadRefundAccount1Code | |
 | Initiation |1..1 |OBWriteInternationalStandingOrderConsent6/Data/Initiation |The Initiation payload is sent by the initiating party to the ASPSP. It is used to request movement of funds from the debtor account to a creditor for an international standing order. |OBInternationalStandingOrder4 | | |
 | Authorisation |0..1 |OBWriteInternationalStandingOrderConsent6/Data/Authorisation | |OBAuthorisation1 | | |
 | SCASupportData |0..1 |OBWriteInternationalStandingOrderConsent6/Data/SCASupportData |Supporting Data provided by TPP, when requesting SCA Exemption. |OBSCASupportData1 | | |
@@ -270,7 +270,7 @@ The international-standing-order-consent **response** contains the full **origin
 
 * ConsentId.
 * CreationDateTime the international-standing-order-consent resource was created.
-* StatusCode, StatusReason and StatusUpdateDateTime of the international-standing-order-consent resource.
+* Status, StatusReason and StatusUpdateDateTime of the international-standing-order-consent resource.
 * Permission field in the original request.
 * ReadRefundAccount field in the original request.
 * CutOffDateTime Behaviour is explained in Payment Initiation API Profile, Section - [Payment Restrictions -> CutOffDateTime Behaviour](../../profiles/payment-initiation-api-profile.md#cutoffdatetime-behaviour).
@@ -285,20 +285,20 @@ The international-standing-order-consent **response** contains the full **origin
 | Data |1..1 |OBWriteInternationalStandingOrderConsentResponse7/Data | |OBWriteDataInternationalStandingOrderConsentResponse7 | | |
 | ConsentId |1..1 |OBWriteInternationalStandingOrderConsentResponse7/Data/ConsentId |OB: Unique identification as assigned by the ASPSP to uniquely identify the consent resource. |Max128Text | | |
 | CreationDateTime |1..1 |OBWriteInternationalStandingOrderConsentResponse7/Data/CreationDateTime |Date and time at which the resource was created. |ISODateTime | | |
-| StatusCode |1..1 |OBWriteInternationalStandingOrderConsentResponse7/Data/StatusCode |Specifies the status of consent resource in code form. |ExternalStatusReason1Code |AUTH AWAU RJCT COND |
+| Status |1..1 |OBWriteInternationalStandingOrderConsentResponse7/Data/Status |Specifies the status of consent resource in code form. |For a full list of enumeration values refer to `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_internal_CodeSets)|OBExternalStatusReason1Code |
 | StatusReason |0..* |OBWriteInternationalStandingOrderConsentResponse7/Data/StatusReason |An array of StatusReasonCode | OBStatusReason |
 | StatusReasonCode |0..1 |OBWriteInternationalStandingOrderConsentResponse7/Data/StatusReason/StatusReasonCode |Specifies the status reason in a code form. |For a full list of enumeration values refer to `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_internal_CodeSets)| OBInternalPermissions1Code |
 | StatusReasonDescription |0..1 |OBWriteInternationalStandingOrderConsentResponse7/Data/StatusReason/StatusReasonDescription |Description supporting the StatusReasonCode. | Max500Text |
 | StatusUpdateDateTime |1..1 |OBWriteInternationalStandingOrderConsentResponse7/Data/StatusUpdateDateTime |Date and time at which the resource status was updated. |ISODateTime | | |
-| Permission |1..1 |OBWriteInternationalStandingOrderConsentResponse7/Data/Permission |Specifies the Open Banking service request types. |OBExternalPermissions2Code |Create | |
-| ReadRefundAccount |0..1 |OBWriteInternationalStandingOrderConsentResponse7/Data/ReadRefundAccount | Specifies to share the refund account details with PISP |OBReadRefundAccount1Code |Yes No | |
+| Permission |1..1 |OBWriteInternationalStandingOrderConsentResponse7/Data/Permission |Specifies the Open Banking service request types. |For a full list of enumeration values refer to `OB_Internal_CodeSet` [here].(https://github.com/OpenBankingUK/External_Internal_CodeSets)  |OBInternalPermissions2Code | |
+| ReadRefundAccount |0..1 |OBWriteInternationalStandingOrderConsentResponse7/Data/ReadRefundAccount | Specifies to share the refund account details with PISP |For a full list of enumeration values refer to `OB_Internal_CodeSet` [here].(https://github.com/OpenBankingUK/External_Internal_CodeSets). |OBInternalReadRefundAccount1Code | |
 | CutOffDateTime |0..1 |OBWriteInternationalStandingOrderConsentResponse7/Data/CutOffDateTime |Specified cut-off date and time for the payment consent. |ISODateTime | | |
 | Charges |0..* |OBWriteInternationalStandingOrderConsentResponse7/Data/Charges |Set of elements used to provide details of a charge for the payment initiation. |OBCharge2 | | |
 | Initiation |1..1 |OBWriteInternationalStandingOrderConsentResponse7/Data/Initiation |The Initiation payload is sent by the initiating party to the ASPSP. It is used to request movement of funds from the debtor account to a creditor for an international standing order. |OBInternationalStandingOrder4 | | |
 | Authorisation |0..1 |OBWriteInternationalStandingOrderConsentResponse7/Data/Authorisation | |OBAuthorisation1 | | |
 | SCASupportData |0..1 |OBWriteInternationalStandingOrderConsentResponse7/Data/SCASupportData |Supporting Data provided by TPP, when requesting SCA Exemption. |OBSCASupportData1 | | |
 | Debtor |0..1 |OBWriteInternationalStandingOrderConsentResponse7/Data/Debtor |Set of elements used to identify a person or an organisation. | | | |
-| SchemeName |0..1 |OBWriteInternationalStandingOrderConsentResponse7/Data/Debtor/SchemeName |Name of the identification scheme, in a coded form as published in an external list. | For a full description see `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets). |OBInternalAccountIdentification4Code | 
+| SchemeName |0..1 |OBWriteInternationalStandingOrderConsentResponse7/Data/Debtor/SchemeName |Name of the identification scheme, in a coded form as published in an external list. | For a full list of enumeration values refer to `OB_Internal_CodeSet` [here].(https://github.com/OpenBankingUK/External_Internal_CodeSets). |OBInternalAccountIdentification4Code | 
 | Identification |0..1 |OBWriteInternationalStandingOrderConsentResponse7/Data/Debtor/Identification |Identification assigned by an institution to identify an account. This identification is known by the account owner. |Max256Text | | |
 | Name |0..1 |OBWriteInternationalStandingOrderConsentResponse7/Data/Debtor/Name |The account name is the name or names of the account owner(s) represented at an account level, as displayed by the ASPSP's online channels. Note, the account name is not the product name or the nickname of the account. |Max350Text | | |
 | SecondaryIdentification |0..1 |OBWriteInternationalStandingOrderConsentResponse7/Data/Debtor/SecondaryIdentification |This is secondary identification of the account, as assigned by the account servicing institution. This can be used by building societies to additionally identify accounts with a roll number (in addition to a sort code and account number combination). |Max34Text | | |
@@ -543,7 +543,7 @@ Content-Type: application/json
   "ExpectedSettlementDateTime": "2018-06-06T15:15:22+00:00",
 	"Permission": "Create",
   "ReadRefundAccount": "Yes",
-	"StatusCode": "AWAU",
+	"Status": "AWAU",
   "StatusReason": {
     "StatusReasonCode": "U036", 
     "StatusReasonDescription":"Waiting for completion of consent authorisation to be completed by user",

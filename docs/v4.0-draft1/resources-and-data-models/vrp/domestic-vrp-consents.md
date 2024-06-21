@@ -12,8 +12,8 @@
 - [Data Model](#data-model)
 - [Reused Classes](#reused-classes)
     - [OBProxy1](#obproxy1)
-    - [OBPostalAddress6](#obpostaladdress6)
-    - [OBRemittanceInformation1](#obremittanceinformation1)
+    - [OBPostalAddress7](#obpostaladdress7)
+    - [OBRemittanceInformation2](#obremittanceinformation2)
     - [OBUltimateCreditor1](#obultimatecreditor1)
     - [OBUltimateDebtor1](#obultimatedebtor1)
     - [OBRegulatoryReporting1](#obregulatoryreporting1)
@@ -64,7 +64,7 @@ The endpoint allows the TPP to send a copy of the consent (between PSU and TPP) 
 
 The ASPSP creates the resource and responds with a unique ConsentId to refer to the resource.
 
-The default/initial StatusCode of the resource is set to `AWAU`.
+The default/initial Status of the resource is set to `AWAU`.
 
 If the parameters specified by the TPP in this resource are not valid, or fail any rules, the ASPSP must return a 400 Bad Request. In such a situation a resource is not created.
 
@@ -99,7 +99,7 @@ A TPP can delete a VRP consent resource that they have created by calling this A
 
 This API endpoint allows the TPP to ask an ASPSP to confirm funds on the `DebtorAccount` associated with the `domestic-vrp-consent`.
 
-An ASPSP can only respond to a funds confirmation request if the resource has a StatusCode of `AUTH`.
+An ASPSP can only respond to a funds confirmation request if the resource has a Status of `AUTH`.
 
 If resource has any other Status, the ASPSP must respond with a 400 (Bad Request) and a `UK.OBIE.Resource.InvalidConsentStatus` error code.
 
@@ -125,12 +125,12 @@ Successful submission must return the full updated consent resource body.
 
 ## State Model - VRP consents
 
-The state model for the VRP consents resource follows the generic consent state model. However, it does not use the `COND` StatusCode.
+The state model for the VRP consents resource follows the generic consent state model. However, it does not use the `COND` Status.
 
 ![VRP Consent State model](./images/PIS-VRP_PO_Consent.png)
 
 
-All `domestic-vrp-consents` start off with a StatusCode of `AWAU`
+All `domestic-vrp-consents` start off with a Status of `AWAU`
 
 Once the PSU authorises the resource - the StausCode will be set to `AUTH`.
 
@@ -144,9 +144,9 @@ The available StatusCodes for the VRP consents resource are:
 - CANC
 - EXPD
 
-The definitions for the StatusCode:
+The definitions for the Status:
 
-|     | StatusCode                |  Description                                                            |
+|     | Status                |  Description                                                            |
 |-----|-----------------------|-------------------------------------------------------------------------------|
 | 1   | AWAU | The consent resource is awaiting PSU authorisation.                           |
 | 2   | RJCT              | The consent resource has been rejected.                                       |
@@ -155,7 +155,7 @@ The definitions for the StatusCode:
 | 5| EXPD| The consent resource has expired.|
 
 
-Changes to the StatusCode, such as being rejected, should be captured in `StatusReason`, an array of `StatusReasonCode`, `StatusReasonDescription` and `Path`.  
+Changes to the Status, such as being rejected, should be captured in `StatusReason`, an array of `StatusReasonCode`, `StatusReasonDescription` and `Path`.  
 
 | Field | Description |
 |---|---|
@@ -173,13 +173,13 @@ The data dictionary section gives the detail on the payload content for the VRP 
 
 The OBProxy1 class is defined in the [vrp-profile](../../profiles/vrp-profile.md#obproxy1) page.
 
-#### OBPostalAddress6 
+#### OBPostalAddress7 
 
-The OBPostalAddress6 class is defined in the [vrp-profile](../../profiles/vrp-profile.md#obpostaladdress6) page.
+The OBPostalAddress7 class is defined in the [vrp-profile](../../profiles/vrp-profile.md#obpostaladdress7) page.
 
-#### OBRemittanceInformation1
+#### OBRemittanceInformation2
 
-The OBRemittanceInformation1 class is defined in the [vrp-profile](../../profiles/vrp-profile.md#obremittanceinformation1) page.
+The OBRemittanceInformation2 class is defined in the [vrp-profile](../../profiles/vrp-profile.md#obremittanceinformation2) page.
 
 #### OBUltimateCreditor1
 
@@ -227,7 +227,7 @@ The OBRegulatoryReporting1 class is defined in the [vrp-profile](../../profiles/
 | __Identification__ (0..1) | `Identification` |Unique and unambiguous identification of a financial institution or a branch of a financial institution.  | Max35Text  
 | __Name__ (0..1) | `Name` | Name by which an agent is known and which is usually used to identify that agent. | Max140Text
 | __LEI__ (0..1) | `LEI` | Legal entity identification as an alternate identification for a party. <br>Legal Entity Identifier is a code allocated to a party as described in ISO 17442 "Financial Services - Legal Entity Identifier (LEI)". | Max20Text |
-| __PostalAddress__ (0..1) | `PostalAddress` |Information that locates and identifies a specific address, as defined by postal services.| [OBPostalAddress6](../../profiles/vrp-profile.md#obpostaladdress6) |
+| __PostalAddress__ (0..1) | `PostalAddress` |Information that locates and identifies a specific address, as defined by postal services.| [OBPostalAddress7](../../profiles/vrp-profile.md#obpostaladdress7) |
 
 
 ### OBDomesticVRPInitiation
@@ -240,9 +240,9 @@ The OBRegulatoryReporting1 class is defined in the [vrp-profile](../../profiles/
 | __UltimateDebtor__ (0..1) | `UltimateDebtor` | Ultimate party that owes an amount of money to the (ultimate) creditor. |[OBUltimateDebtor1](../../profiles/vrp-profile.md#obultimatedebtor1) |
 | __CreditorAgent__ (0..1) | `CreditorAgent` | Financial institution servicing an account for the creditor.     | OBBranchAndFinancialInstitutionIdentification6 |
 | __CreditorAccount__ (0..1) | `CreditorAccount`   |Unambiguous identification of the account of the creditor to which a credit entry will be posted as a result of the payment transaction.       |OBCashAccountCreditor3 |
-| __CreditorPostalAddress__ | `CreditorPostalAddress` | Information that locates and identifies a specific address, as defined by postal services or in free format text. | [OBPostalAddress6](../../profiles/vrp-profile.md#obpostaladdress6)|
+| __CreditorPostalAddress__ | `CreditorPostalAddress` | Information that locates and identifies a specific address, as defined by postal services or in free format text. | [OBPostalAddress7](../../profiles/vrp-profile.md#obpostaladdress7)|
 | __UltimateCreditor__ (0..1) | `UltimateCreditor` | Ultimate party to which an amount of money is due. |[OBUltimateCreditor1](../../profiles/vrp-profile.md#obultimatecreditor1) |
-| __RemittanceInformation__ (0..1) | `RemittanceInformation`   | Information supplied to enable the matching of an entry with the items that the transfer is intended to settle, such as commercial invoices in an accounts' receivable system. | [OBRemittanceInformation1](../../profiles/vrp-profile.md#obremittanceinformation1) |
+| __RemittanceInformation__ (0..1) | `RemittanceInformation`   | Information supplied to enable the matching of an entry with the items that the transfer is intended to settle, such as commercial invoices in an accounts' receivable system. | [OBRemittanceInformation2](../../profiles/vrp-profile.md#obremittanceinformation2) |
 |__RegulatoryReporting__ (0..10)| `RegulatoryReporting` | Information needed due to regulatory and statutory requirements. | [OBRegulatoryReporting1](../../profiles/vrp-profile.md#obregulatoryreporting1) |
 
 
@@ -357,14 +357,14 @@ The Risk block for VRP does not included `ExtendedPurpose`, used only in Interna
 | Name                             | Occurrence | XPath                                      | EnhancedDefinition                                                                                                                                                                                                             | Class                              | Codes                                                                                                                                                                                                                                                                                                                   | Pattern |
 |----------------------------------|------------|--------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------|
 | OBRisk2                          |            | OBRisk2                                    | The Risk section is sent by the initiating party to the ASPSP. It is used to specify additional details for risk scoring for Payments.                                                                                         | OBRisk2                            |                                                                                                                                                                                                                                                                                                                         |         |
-| PaymentContextCode               | 0..1       | OBRisk2/PaymentContextCode                 | Specifies the payment context | OBExternalPaymentContext1Code      | <br>BillingGoodsAndServicesInAdvance <br>BillingGoodsAndServicesInArrears <br>EcommerceMerchantInitiatedPayment <br>FaceToFacePointOfSale <br>TransferToSelf <br>TransferToThirdParty |         |
+| PaymentContextCode               | 0..1       | OBRisk2/PaymentContextCode                 | Specifies the payment context |Specifies the payment context | For a full list of enumeration values refer to `OB_Internal_CodeSet`[here](https://github.com/OpenBankingUK/External_Internal_CodeSets/).   |OBInternalPaymentContext1Code |         |
 | CategoryPurposeCode                | 0..1       | OBRisk2/CategoryPurposeCode                  | For a full list of enumeration values refer to `OB_EXternal_CodeSet`[here](https://github.com/OpenBankingUK/External_Internal_CodeSets/). |ExternalCategoryPurpose1Code |                                                                                                                                                                                                     |         |
 | MerchantCategoryCode             | 0..1       | OBRisk2/MerchantCategoryCode               | Category code conform to ISO 18245, related to the type of services or goods the merchant provides for the transaction.                                                                                      | Min3Max4Text                       |                                                                                                                                                                                                                                                                                                                         |         |
 | MerchantCustomerIdentification   | 0..1       | OBRisk2/MerchantCustomerIdentification     | The unique customer identifier of the PSU with the merchant.                                                                                                                                                                   | Max70Text                          |                                                                                                                                                                                                                                                                                                                         |         |
 | ContractPresentIndicator        | 0..1       | OBRisk2/ContractPresentIndicator          | Indicates if Payee has a contractual relationship with the PISP.                                                                                                                                                               | Boolean                            |                                                                                                                                                                                                                                                                                                                         |         |
 | BeneficiaryPrepopulatedIndicator | 0..1       | OBRisk2/BeneficiaryPrepopulatedIndicator   | Indicates if PISP has immutably prepopulated payment details in for the PSU.                                                                                                                                                   | Boolean                            |                                                                                                                                                                                                                                                                                                                         |         |
 | PaymentPurposeCode |0..1 |OBRisk2/PaymentPurposeCode | For a full description see `ExternalPurpose1Code` [here](https://github.com/OpenBankingUK/External_internal_CodeSets) |For a full list of enumeration values refer to `External_CodeSet` [here].  |ExternalPurpose1Code | |
-| BeneficiaryAccountType           | 0..1       | OBRisk2/BeneficiaryAccountType             | To be provided if the AccountType is known.                                                                                                                                                                                    | ExternalExtendedAccountType1Code | Personal<br>JointPersonal<br>PersonalSavingsAccount<br>Business<br>BusinessSavingsAccount<br>Charity<br>Collection<br>Corporate<br>Government<br>Ewallet<br>Investment<br>ISA<br>Premier<br>Wealth<br>Pension<br>                                                                                                       |         |
+| BeneficiaryAccountType           | 0..1       | OBRisk2/BeneficiaryAccountType             | To be provided if the AccountType is known.                                                                                                                                                                                    | For a full list of enumeration values refer to `OB_Internal_CodeSet`[here](https://github.com/OpenBankingUK/External_Internal_CodeSets/). | OBInternalExtendedAccountType1Code                                                                                                      |         |
 | DeliveryAddress                  | 0..1       | OBRisk2/DeliveryAddress                    | Information that locates and identifies a specific address, as defined by postal services or in free format text.                                                                                                              | OBPostalAddress6               |                                                                                        
 
 ### OBDomesticVRPConsentRequest
@@ -389,7 +389,7 @@ The Risk block for VRP does not included `ExtendedPurpose`, used only in Interna
 | __ConsentId__  (1..1)| `Data. ConsentId` | Unique identification as assigned by the ASPSP to uniquely identify the consent resource.      | Max128Text|
 | __ReadRefundAccount__ (0..1) | `Data. ReadRefundAccount` | Indicates whether the `RefundAccount` object should be included in the response | Yes No|
 | __CreationDateTime__ (1..1)| `Data. CreationDateTime` | Date and time at which the resource was created.|ISODateTime|
-| __StatusCode__ (1..1) | `Data. StatusCode` | Specifies the status of resource in code form.  |AUTH AWAU RJCT CANC EXPD |
+| __StatusCode__ (1..1) | `Data. Status` | Specifies the status of resource in code form.  |AUTH AWAU RJCT CANC EXPD |
 | __StatusUpdateDateTime__ (1..1)| `Data. StatusUpdateDateTime` |Date and time at which the resource status was updated.  | ISODateTime  |
 | __StatusReason__ (0..*) | `Data. StatusReason` | An array of StatusReasonCode |OBStatusReason |
 | __StatusReasonCode__ (0..1) | `Data. StatusReason. StatusReasonCode` | Specifies the status reason in a code form. For a full description see ` OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_internal_CodeSets).  |OBExternalStatusReason1Code |

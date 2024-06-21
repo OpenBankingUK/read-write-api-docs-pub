@@ -141,7 +141,7 @@ Content-Type: application/json
   "Data": {
 	"ConsentId": "SOC-100",
 	"CreationDateTime": "1976-01-01T06:06:06+00:00",
-	"StatusCode": "AWAU",
+	"Status": "AWAU",
 	"StatusUpdateDateTime": "1976-06-06T06:06:06+00:00",
 	"Permission": "Create",
     "Initiation": {
@@ -254,7 +254,7 @@ Content-Type: application/json
 	"DomesticStandingOrderId": "SO-SOC-100",
 	"ConsentId": "SOC-100",
 	"CreationDateTime": "1976-01-01T06:06:06+00:00",
-	"StatusCode": "RCVD",
+	"Status": "RCVD",
 	"StatusUpdateDateTime": "1976-06-06T06:06:06+00:00",
     "Initiation": {
 	  "Frequency": "EvryDay",
@@ -321,7 +321,7 @@ Content-Type: application/json
   "Data": {
 	"ConsentId": "SOC-100",
 	"CreationDateTime": "1976-01-01T06:06:06+00:00",
-	"StatusCode": "AUTH",
+	"Status": "AUTH",
 	"StatusUpdateDateTime": "1976-06-06T06:06:06+00:00",
 	"Permission": "Create",
     "Initiation": {

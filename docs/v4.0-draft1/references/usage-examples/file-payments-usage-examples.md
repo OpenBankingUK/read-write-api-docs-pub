@@ -64,7 +64,7 @@ Content-Type: application/json
 {
   "Data": {
     "ConsentId" : "512345",
-    "StatusCode": "AWUP",
+    "Status": "AWUP",
     "CreationDateTime": "2018-06-05T15:15:13+00:00",
     "StatusUpdateDateTime": "2018-06-05T15:15:13+00:00",
     "Initiation": {
@@ -371,7 +371,7 @@ Content-Type: application/json
   "Data": {
     "ConsentId" : "512345",
 	"FilePaymentId":"FP1-512345",
-    "StatusCode": "PDNG",
+    "Status": "PDNG",
     "CreationDateTime": "2018-06-05T15:15:13+00:00",
     "StatusUpdateDateTime": "2018-06-05T15:15:13+00:00",
     "Initiation": {

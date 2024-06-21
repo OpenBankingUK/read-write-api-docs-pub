@@ -198,7 +198,7 @@ Content-Type: application/json
 {
   "Data": {
     "ConsentId": "58923",
-    "StatusCode": "AWAU",
+    "Status": "AWAU",
     "CreationDateTime": "2017-06-05T15:15:13+00:00",
     "StatusUpdateDateTime": "2017-06-05T15:15:13+00:00",
     "Initiation": {
@@ -360,7 +360,7 @@ Content-Type: application/json
   "Data": {
     "DomesticPaymentId": "58923-001",
     "ConsentId": "58923",
-    "StatusCode": "ACSP",
+    "Status": "ACSP",
     "CreationDateTime": "2017-06-05T15:15:22+00:00",
     "StatusUpdateDateTime": "2017-06-05T15:15:13+00:00",
     "Initiation": {
@@ -415,7 +415,7 @@ Content-Type: application/json
 {
   "Data": {
     "ConsentId": "58923",
-    "StatusCode": "AUTH",
+    "Status": "AUTH",
     "CreationDateTime": "2017-06-05T15:15:13+00:00",
     "StatusUpdateDateTime": "2017-06-05T15:15:22+00:00",
     "Initiation": {
@@ -492,7 +492,7 @@ Content-Type: application/json
   "Data": {
     "DomesticPaymentId": "58923-001",
     "ConsentId": "58923",
-    "StatusCode": "ACSP",
+    "Status": "ACSP",
     "CreationDateTime": "2017-06-05T15:15:22+00:00",
     "StatusUpdateDateTime": "2017-06-05T15:15:22+00:00",
     "Initiation": {
@@ -656,7 +656,7 @@ Content-Type: application/json
 {
   "Data": {
     "ConsentId": "7290",
-    "StatusCode": "AWAU",
+    "Status": "AWAU",
     "CreationDateTime": "2017-06-05T15:15:13+00:00",
     "StatusUpdateDateTime": "2017-06-05T15:15:13+00:00",
     "Initiation": {
@@ -755,7 +755,7 @@ Content-Type: application/json
   "Data": {
     "DomesticPaymentId": "7290-003",
     "ConsentId": "7290",
-    "StatusCode": "ACSP",
+    "Status": "ACSP",
     "CreationDateTime": "2017-06-05T15:15:22+00:00",
     "StatusUpdateDateTime": "2017-06-05T15:15:22+00:00",
     "Initiation": {
@@ -814,7 +814,7 @@ Content-Type: application/json
 {
   "Data": {
     "ConsentId": "7290",
-    "StatusCode": "COND",
+    "Status": "COND",
     "CreationDateTime": "2017-06-05T15:15:13+00:00",
     "StatusUpdateDateTime": "2017-06-05T15:15:13+00:00",
     "Initiation": {
@@ -877,7 +877,7 @@ Content-Type: application/json
   "Data": {
     "DomesticPaymentId": "7290-003",
     "ConsentId": "7290",
-    "StatusCode": "ACSP",
+    "Status": "ACSP",
     "CreationDateTime": "2017-06-05T15:15:22+00:00",
     "StatusUpdateDateTime": "2017-06-05T15:15:22+00:00",
     "Initiation": {
@@ -974,7 +974,7 @@ Content-Type: application/json
 {
   "Data": {
     "ConsentId": "7290",
-    "StatusCode": "AWAU",
+    "Status": "AWAU",
     "CreationDateTime": "2017-06-05T15:15:13+00:00",
     "StatusUpdateDateTime": "2017-06-05T15:15:13+00:00",
     "CutOffDateTime":"2017-06-05T17:30:00+00:00",
@@ -1084,7 +1084,7 @@ Content-Type: application/json
 {
    "Data":{
       "ConsentId":"7290",
-      "StatusCode":"AWAU",
+      "Status":"AWAU",
       "CreationDateTime":"2017-06-05T15:15:13+00:00",
       "StatusUpdateDateTime":"2017-06-05T15:15:13+00:00",
       "CutOffDateTime":"2017-06-05T17:30:00+00:00",
@@ -1206,7 +1206,7 @@ Content-Type: application/json
 {
     "Data": {
         "ConsentId": "7290",
-        "StatusCode": "AWAU",
+        "Status": "AWAU",
         "CreationDateTime": "2017-06-05T15:15:13+00:00",
         "StatusUpdateDateTime": "2017-06-05T15:15:13+00:00",
         "CutOffDateTime": "2017-06-05T17:30:00+00:00",
@@ -1307,7 +1307,7 @@ Content-Type: application/json
 {
     "Data": {
         "ConsentId": "7290",
-        "StatusCode": "AWAU",
+        "Status": "AWAU",
         "CreationDateTime": "2017-06-05T15:15:13+00:00",
         "StatusUpdateDateTime": "2017-06-05T15:15:13+00:00",
         "CutOffDateTime": "2017-06-05T17:30:00+00:00",

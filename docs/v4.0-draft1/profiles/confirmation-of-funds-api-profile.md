@@ -357,7 +357,7 @@ The funds-confirmation-consent resource may have one of the following status cod
 
 The funds-confirmation-consent resource is a long lived consent. A funds-confirmation-consent can be re-authenticated if:
 
-- the funds-confirmation-consent resource has a StatusCode of `AUTH` and
+- the funds-confirmation-consent resource has a Status of `AUTH` and
 - The `ExpirationDateTime`, if specified, has not elapsed
 
 ### Consent Revocation
@@ -383,4 +383,4 @@ The PSU may request the CBPII to revoke consent that it has authorised. If conse
 | OBProxy1 | | |Specifies an alternate assumed name for the identification of the account. |OBProxy1 | |
 | Identification |1..1 |OBProxy1/Identification|  Identification used to indicate the account identification under another specified name. | Max2048Text| |
 | Type |0..1 |OBProxy1/Type| Type of the proxy identification. |Max35Text | |
-| Code |1..1 |OBProxy1/Code| Specifies the external proxy account type code, as published in the proxy account type external code set. |OBExternalProxyAccountType1Code | For more information see `ExternalProxyAccountType1Code` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets)|
+| Code |1..1 |OBProxy1/Code| Specifies the external proxy account type code, as published in the proxy account type external code set. |For a full list of enumeration values refer `to External_CodeSet`[here](https://github.com/OpenBankingUK/External_Internal_CodeSets) |ExternalProxyAccountType1Code|

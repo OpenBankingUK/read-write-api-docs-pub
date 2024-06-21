@@ -3,14 +3,14 @@
 - [Overview](#overview)
 - [Endpoints](#endpoints)
   - [POST /domestic-standing-order-consents](#post-domestic-standing-order-consents)
-    - [StatusCode](#statuscode)
+    - [Status](#status)
   - [GET /domestic-standing-order-consents/{ConsentId}](#get-domestic-standing-order-consents-consentid)
-    - [StatusCode](#statuscode-2)
+    - [Status](#status-2)
   - [State Model](#state-model)
     - [Payment Order Consent](#payment-order-consent)
 - [Data Model](#data-model)
   - [Reused Classes](#reused-classes)
-    - [OBRemittanceInformation1](#obremittanceinformation1)
+    - [OBRemittanceInformation2](#obremittanceinformation2)
     - [OBMandateRelatedInformation1](#obmandaterelatedinformation1)
     - [OBUltimateCreditor1](#obultimatecreditor1)
     - [OBUltimateDebtor1](#obultimatedebtor1)
@@ -57,11 +57,11 @@ The API endpoint allows the PISP to ask an ASPSP to create a new **domestic-stan
 * The endpoint allows the PISP to send a copy of the consent (between PSU and PISP) to the ASPSP for the PSU to authorise.
 * The ASPSP creates the **domestic-standing-order-consent** resource and responds with a unique ConsentId to refer to the resource.
 
-#### StatusCode
+#### Status
 
-The default StatusCode is "AWAU" immediately after the domestic-standing-order-consent has been created.
+The default Status is "AWAU" immediately after the domestic-standing-order-consent has been created.
 
-| StatusCode |
+| Status |
 | --- |
 | AWAU |
 
@@ -69,17 +69,17 @@ The default StatusCode is "AWAU" immediately after the domestic-standing-order-c
 
 A PISP can optionally retrieve a payment consent resource that they have created to check its status.
 
-#### StatusCode
+#### Status
 
-Once the PSU authorises the payment-consent resource, the StatusCode of the payment-consent resource will be updated with "AUTH".
+Once the PSU authorises the payment-consent resource, the Status of the payment-consent resource will be updated with "AUTH".
 
-If the PSU rejects the consent or the domestic-standing-order-consent has failed some other ASPSP validation, the StatusCode will be set to "RJCT".
+If the PSU rejects the consent or the domestic-standing-order-consent has failed some other ASPSP validation, the Status will be set to "RJCT".
 
-Once a domestic-standing-order has been successfully created using the domestic-standing-order-consent, the StatusCode of the domestic-standing-order-consent will be set to "COND".
+Once a domestic-standing-order has been successfully created using the domestic-standing-order-consent, the Status of the domestic-standing-order-consent will be set to "COND".
 
 The available StatusCodes for the domestic-standing-order-consent resource are:
 
-| StatusCode |
+| Status |
 | --- |
 | AWAU |
 | RJCT |
@@ -97,16 +97,16 @@ The state model for the domestic-standing-order-consent resource follows the gen
 ![State model](./images/PO_Consent.png)
 
 
-The definitions for the StatusCode:
+The definitions for the Status:
 
-|  |StatusCode |Status Description |
+|  |Status |Status Description |
 | --- |------ |------------------ |
 | 1 |AWAU |The consent resource is awaiting PSU authorisation. |
 | 2 |RJCT |The consent resource has been rejected. |
 | 3 |AUTH |The consent resource has been successfully authorised. |
 | 4 |COND |The consented action has been successfully completed. This does not reflect the status of the consented action. |
 
-Changes to the StatusCode, such as being rejected, should be captured in `StatusReason`, an array of `StatusReasonCode`, `StatusReasonDescription` and `Path`.  
+Changes to the Status, such as being rejected, should be captured in `StatusReason`, an array of `StatusReasonCode`, `StatusReasonDescription` and `Path`.  
 
 | Field | Description |
 |---|---|
@@ -119,9 +119,9 @@ The Data Dictionary section gives the detail on the payload content for the Dome
 
 ### Reused Classes
 
-#### OBRemittanceInformation1
+#### OBRemittanceInformation2
 
-The OBRemittanceInformation1 class is defined in the [payment-initiation-api-profile](../../profiles/payment-initiation-api-profile.md#obremittanceinformation1) page.
+The OBRemittanceInformation2 class is defined in the [payment-initiation-api-profile](../../profiles/payment-initiation-api-profile.md#obremittanceinformation2) page.
 
 #### OBMandateRelatedInformation1
 
@@ -188,7 +188,7 @@ For the OBDomesticStandingOrder3 Initiation object:
 | ---- |---------- |----- |------------------ |----- |----- |------- |
 | OBDomesticStandingOrder3 | |OBDomesticStandingOrder3 |The Initiation payload is sent by the initiating party to the ASPSP. It is used to request movement of funds from the debtor account to a creditor for a domestic standing order. |OBDomesticStandingOrder3 | | |
 | MandateRelatedInformation | 0..1 |OBDomesticStandingOrder3/MandateRelatedInformation |Provides further details of the mandate signed between the creditor and the debtor.|OBMandateRelatedInformation1| | |
-| RemittanceInformation |0..1 |OBDomesticStandingOrder3/RemittanceInformation |Information supplied to enable the matching of an entry with the items that the transfer is intended to settle, such as commercial invoices in an accounts' receivable system. |OBRemittanceInformation1 | | |
+| RemittanceInformation |0..1 |OBDomesticStandingOrder3/RemittanceInformation |Information supplied to enable the matching of an entry with the items that the transfer is intended to settle, such as commercial invoices in an accounts' receivable system. |OBRemittanceInformation2 | | |
 | Amount |1..1 |OBDomesticStandingOrder3/FirstPaymentAmount/Amount |A number of monetary units specified in an active currency where the unit of currency is explicit and compliant with ISO 4217. |OBActiveCurrencyAndAmount_SimpleType | |`^\d{1,13}$|^\d{1,13}\.\d{1,5}$` |
 | Currency |1..1 |OBDomesticStandingOrder3/FirstPaymentAmount/Currency |A code allocated to a currency by a Maintenance Agency under an international identification scheme, as described in the latest edition of the international standard ISO 4217 "Codes for the representation of currencies and funds". |ActiveOrHistoricCurrencyCode | |^[A-Z]{3,3}$ |
 | RecurringPaymentAmount |0..1 |OBDomesticStandingOrder3/RecurringPaymentAmount |The amount of the recurring Standing Order |OBActiveOrHistoricCurrencyAndAmount | | |
@@ -230,9 +230,8 @@ The domestic-standing-consent **request** contains these objects:
 | ---- |---------- |----- |------------------ |----- |----- |------- |
 | OBWriteDomesticStandingOrderConsent5 | |OBWriteDomesticStandingOrderConsent5 | |OBWriteDomesticStandingOrderConsent5 | | |
 | Data |1..1 |OBWriteDomesticStandingOrderConsent5/Data | |OBWriteDataDomesticStandingOrderConsent5 | | |
-| Permission |1..1 |OBWriteDomesticStandingOrderConsent5/Data/Permission |Specifies the Open Banking service request types. 
-| ReadRefundAccount |0..1 |OBWriteDomesticStandingOrderConsent5/Data/ReadRefundAccount | Specifies to share the refund account details with PISP |OBReadRefundAccount1Code |Yes No | |
-|OBExternalPermissions2Code |Create | |
+| Permission |1..1 |OBWriteDomesticStandingOrderConsent5/Data/Permission |Specifies the Open Banking service request types.|For a full list of enumeration values refer to `OB_Internal_CodeSet` [here].(https://github.com/OpenBankingUK/External_Internal_CodeSets)  |OBInternalPermissions2Code||
+| ReadRefundAccount |0..1 |OBWriteDomesticStandingOrderConsent5/Data/ReadRefundAccount | Specifies to share the refund account details with PISP |For a full list of enumeration values refer to `OB_Internal_CodeSet` [here].(https://github.com/OpenBankingUK/External_Internal_CodeSets). |OBInternalReadRefundAccount1Code| |
 | Initiation |1..1 |OBWriteDomesticStandingOrderConsent5/Data/Initiation |The Initiation payload is sent by the initiating party to the ASPSP. It is used to request movement of funds from the debtor account to a creditor for a domestic standing order. |OBDomesticStandingOrder3 | | |
 | Authorisation |0..1 |OBWriteDomesticStandingOrderConsent5/Data/Authorisation |The authorisation type request from the TPP. |OBAuthorisation1 | | |
 | SCASupportData |0..1 |OBWriteDomesticStandingOrderConsent5/Data/SCASupportData |Supporting Data provided by TPP, when requesting SCA Exemption. |OBSCASupportData1 | | |
@@ -270,14 +269,14 @@ The domestic-standing-order-consent **response** contains the full **original** 
 | Data |1..1 |OBWriteDomesticStandingOrderConsentResponse6/Data | |OBWriteDataDomesticStandingOrderConsentResponse6 | | |
 | ConsentId |1..1 |OBWriteDomesticStandingOrderConsentResponse6/Data/ConsentId |OB: Unique identification as assigned by the ASPSP to uniquely identify the consent resource. |Max128Text | | |
 | CreationDateTime |1..1 |OBWriteDomesticStandingOrderConsentResponse6/Data/CreationDateTime |Date and time at which the resource was created. |ISODateTime | | |
-| StatusCode |1..1 |OBWriteDomesticStandingOrderConsentResponse6/Data/StatusCode |Specifies the status of consent resource in code form. For a full description see `ExternalStatusReason1Code` [here](https://github.com/OpenBankingUK/External_internal_CodeSets). |ExternalStatusReason1Code |AUTH AWAU RJCT COND |
+| Status |1..1 |OBWriteDomesticStandingOrderConsentResponse6/Data/Status |Specifies the status of consent resource in code form |For a full list of enumeration values refer to `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_internal_CodeSets)|OBExternalStatusReason1Code |
 | StatusUpdateDateTime |1..1 |OBWriteDomesticStandingOrderConsentResponse6/Data/StatusUpdateDateTime |Date and time at which the resource status was updated. |ISODateTime | | |
 | StatusReason |0..* |OBWriteDomesticStandingOrderConsentResponse6/Data/StatusReason |Specifies the status reason. | OBStatusReason |
 | StatusReasonCode |0..1 |OBWriteDomesticStandingOrderConsentResponse6/Data/StatusReason/StatusReasonCode |Specifies the status reason in a code form. |For a full list of enumeration values refer to `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_internal_CodeSets)| OBInternalPermissions1Code |
 | StatusReasonDescription |0..1 |OBWriteDomesticStandingOrderConsentResponse6/Data/StatusReason/StatusReasonDescription |Description supporting the StatusReasonCode. | Max500Text|
 |Path| 0..1 | OBWriteDomesticStandingOrderConsentResponse6/Data/StatusReason/Path| Path is optional but relevant when the status reason refers to an object/field and hence conditional to provide JSON path.| Max500Text| | |
-| Permission |1..1 |OBWriteDomesticStandingOrderConsentResponse6/Data/Permission |Specifies the Open Banking service request types. |OBExternalPermissions2Code |Create | |
-| ReadRefundAccount |0..1 |OBWriteDomesticStandingOrderConsentResponse6/Data/ReadRefundAccount | Specifies to share the refund account details with PISP |OBReadRefundAccount1Code |Yes No | |
+| Permission |1..1 |OBWriteDomesticStandingOrderConsentResponse6/Data/Permission |Specifies the Open Banking service request types. |For a full list of enumeration values refer to `OB_Internal_CodeSet` [here].(https://github.com/OpenBankingUK/External_Internal_CodeSets)  |OBInternalPermissions2Code | |
+| ReadRefundAccount |0..1 |OBWriteDomesticStandingOrderConsentResponse6/Data/ReadRefundAccount | Specifies to share the refund account details with PISP |For a full list of enumeration values refer to `OB_Internal_CodeSet` [here].(https://github.com/OpenBankingUK/External_Internal_CodeSets). |OBInternalReadRefundAccount1Code| | |
 | CutOffDateTime |0..1 |OBWriteDomesticStandingOrderConsentResponse6/Data/CutOffDateTime |Specified cut-off date and time for the payment consent. |ISODateTime | | |
 | Charges |0..* |OBWriteDomesticStandingOrderConsentResponse6/Data/Charges |Set of elements used to provide details of a charge for the payment initiation. |OBCharge2 | | |
 | Initiation |1..1 |OBWriteDomesticStandingOrderConsentResponse6/Data/Initiation |The Initiation payload is sent by the initiating party to the ASPSP. It is used to request movement of funds from the debtor account to a creditor for a domestic standing order. |OBDomesticStandingOrder3 | | |
@@ -484,8 +483,7 @@ Content-Type: application/json
   "Data": {
 	"ConsentId": "SOC-100",
 	"CreationDateTime": "1976-01-01T06:06:06+00:00",
-  "CutOffTime": "1976-01-01T06:06:06+00:00",
-	"StatusCode": "AWAU",
+	"Status": "AWAU",
   "StatusReason": {
       "StatusReasonCode": "U036", 
       "StatusReasonDescription":"Waiting for completion of consent authorisation to be completed by user",
@@ -697,7 +695,7 @@ Content-Type: application/json
   "Data": {
 	"ConsentId": "SOC-100",
 	"CreationDateTime": "1976-01-01T06:06:06+00:00",
-	"StatusCode": "AUTH",
+	"Status": "AUTH",
 	"StatusUpdateDateTime": "1976-06-06T06:06:06+00:00",
 	"Permission": "Create",
     "Initiation": {

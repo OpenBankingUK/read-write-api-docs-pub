@@ -61,22 +61,22 @@ The API allows the CBPII to ask an ASPSP to create a new **funds-confirmation-co
 
 The PSU **must** authenticate with the ASPSP and agree the **funds-confirmation-consent** with the ASPSP, for the **funds-confirmation-consent** to be successfully setup.
 
-The **funds-confirmation-consent** resource that is created successfully must have one of the following StatusCode code-list enumerations:
+The **funds-confirmation-consent** resource that is created successfully must have one of the following Status code-list enumerations:
 
-|  |StatusCode |Status Description |
+|  |Status |Status Description |
 | --- |--- |--- |
 | 1 |AWAU |The Funds Confirmation Consent is awaiting agreement. |
 
 After consent has been agreed the **funds-confirmation-consent** resource may have these following statuses.
 
-|  |StatusCode |Status Description |
+|  |Status |Status Description |
 | --- |--- |--- |
 | 1 |RJCT |The Funds Confirmation Consent has been rejected. |
 | 2 |AUTH |The Funds Confirmation Consent has been successfully agreed. |
 | 3| CANC | The Funds Confirmation Consent has been cancelled |
 | 4| EXPD | The Funds Confirmation Consent has expired |
 
-Changes to the StatusCode, such as being rejected, should be captured in `StatusReason`, an array of `StatusReasonCode`, `StatusReasonDescription` and `Path`.  
+Changes to the Status, such as being rejected, should be captured in `StatusReason`, an array of `StatusReasonCode`, `StatusReasonDescription` and `Path`.  
 
 | Field | Description |
 |---|---|
@@ -86,7 +86,7 @@ Changes to the StatusCode, such as being rejected, should be captured in `Status
 
 #### Status Flow
 
-This is the state diagram for StatusCode.
+This is the state diagram for Status.
 
 ![CoFStateFlow](./images/PO_Consent_No_Reauth.png)
 
@@ -102,11 +102,11 @@ ASPSPs may return masked PAN as per their online system e.g. 5555 **** **** 4444
 
 #### Funds Confirmation Consent Status
 
-Once the PSU agrees the consent outlined in the **funds-confirmation-consent** resource, the StatusCode of the **funds-confirmation-consent** resource will be updated with "AUTH".
+Once the PSU agrees the consent outlined in the **funds-confirmation-consent** resource, the Status of the **funds-confirmation-consent** resource will be updated with "AUTH".
 
-The available StatusCode code-list enumerations for the **funds-confirmation-consent** resource are:
+The available Status code-list enumerations for the **funds-confirmation-consent** resource are:
 
-|  |StatusCode |Status Description |
+|  |Status |Status Description |
 | --- |--- |--- |
 | 1 |AWAU |The Funds Confirmation Consent is awaiting agreement. |
 | 2 |RJCT |The Funds Confirmation Consent has been rejected. |
@@ -151,7 +151,7 @@ The OBFundsConfirmationConsent1 object will be used for the following:
 | Data |1..1 |OBFundsConfirmationConsent1/Data | |OBFundsConfirmationConsentData1 | | |
 | ExpirationDateTime |0..1 |OBFundsConfirmationConsent1/Data/ExpirationDateTime |Specified date and time the funds confirmation authorisation will expire. If this is not populated, the authorisation will be open ended. |ISODateTime | | |
 | DebtorAccount |1..1 |OBFundsConfirmationConsent1/Data/DebtorAccount |Unambiguous identification of the account of the debtor to which a confirmation of funds consent will be applied. |OBCashAccountDebtor4 | | |
-| SchemeName |1..1 |OBFundsConfirmationConsent1/Data/DebtorAccount/SchemeName |Name of the identification scheme, in a coded form as published in an external list. | For a full description see `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets). |OBInternalAccountIdentification4Code | 
+| SchemeName |1..1 |OBFundsConfirmationConsent1/Data/DebtorAccount/SchemeName |Name of the identification scheme, in a coded form as published in an external list. | For a full list of enumeration values refer to `OB_Internal_CodeSet` [here].(https://github.com/OpenBankingUK/External_Internal_CodeSets). |OBInternalAccountIdentification4Code | 
 | Identification |1..1 |OBFundsConfirmationConsent1/Data/DebtorAccount/Identification |Identification assigned by an institution to identify an account. This identification is known by the account owner. |Max256Text | | |
 | Name |0..1 |OBFundsConfirmationConsent1/Data/DebtorAccount/Name |The account name is the name or names of the account owner(s) represented at an account level, as displayed by the ASPSP's online channels. Note, the account name is not the product name or the nickname of the account. |Max350Text | | |
 | SecondaryIdentification |0..1 |OBFundsConfirmationConsent1/Data/DebtorAccount/SecondaryIdentification |This is secondary identification of the account, as assigned by the account servicing institution. This can be used by building societies to additionally identify accounts with a roll number (in addition to a sort code and account number combination). |Max34Text | | |
@@ -173,7 +173,7 @@ Notes:
 The OBFundsConfirmationConsentResponse1 object contains the same information as the OBFundsConfirmation1, but with additional fields:
 
 * ConsentId - to uniquely identify the funds-confirmation-consent resource.
-* StatusCode.
+* Status.
 * StatusReason
 * StatusUpdateDateTime.
 * CreationDateTime.
@@ -187,14 +187,14 @@ The OBFundsConfirmationConsentResponse1 object contains the same information as 
 | ConsentId |1..1 |OBFundsConfirmationConsentResponse1/Data/ConsentId |Unique identification as assigned to identify the funds confirmation consent resource. |Max128Text | | |
 | CreationDateTime |1..1 |OBFundsConfirmationConsentResponse1/Data/CreationDateTime |Date and time at which the resource was created. |ISODateTime | | |
 | ExpirationDateTime |0..1 |OBFundsConfirmationConsentResponse1/Data/ExpirationDateTime |Specified date and time the funds confirmation authorisation will expire. If this is not populated, the authorisation will be open ended. |ISODateTime | | |
-| StatusCode |0..1 |OBFundsConfirmationConsentResponse1/Data/StatusCode |Specifies the status of consent resource in code form. | For a full description see `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_internal_CodeSets). |OBInternalPermissions1Code |
+| Status |0..1 |OBFundsConfirmationConsentResponse1/Data/Status |Specifies the status of consent resource in code form. | For a full list of enumeration values refer to `OB_Internal_CodeSet` [here].(https://github.com/OpenBankingUK/External_internal_CodeSets). |OBInternalPermissions1Code |
 | StatusReason |0..* |OBFundsConfirmationConsentResponse1/Data/StatusReason |Array of StatusReasonCodes. | OBStatusReason |||
 | StatusReasonCode |0..1 |OBFundsConfirmationConsentResponse1/Data/StatusReason/StatusReasonCode |Specifies the status reason in a code form. |For a full list of enumeration values refer to `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_internal_CodeSets)|OBInternalPermissions1Code||
 | StatusReasonDescription |0..1 |OBFundsConfirmationConsentResponse1/Data/StatusReason/StatusReasonDescription |Description supporting the StatusReasonCode. |
 | Path |0..1 |OBFundsConfirmationConsentResponse1/Data/StatusReason/Path |Path is optional but relevant when the status reason refers to an object/field and hence conditional to provide JSON path. |||
 | StatusUpdateDateTime |1..1 |OBFundsConfirmationConsentResponse1/Data/StatusUpdateDateTime |Date and time at which the resource status was updated. |ISODateTime | | |
 | DebtorAccount |1..1 |OBFundsConfirmationConsentResponse1/Data/DebtorAccount |Unambiguous identification of the account of the debtor to which a confirmation of funds consent will be applied. |OBCashAccountDebtor4 | | |
-| SchemeName |1..1 |OBFundsConfirmationConsentResponse1/Data/DebtorAccount/SchemeName |Name of the identification scheme, in a coded form as published in an external list. | For a full description see `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets). |OBInternalAccountIdentification4Code | 
+| SchemeName |1..1 |OBFundsConfirmationConsentResponse1/Data/DebtorAccount/SchemeName |Name of the identification scheme, in a coded form as published in an external list. | For a full list of enumeration values refer to `OB_Internal_CodeSet` [here].(https://github.com/OpenBankingUK/External_Internal_CodeSets). |OBInternalAccountIdentification4Code | 
 | Identification |1..1 |OBFundsConfirmationConsentResponse1/Data/DebtorAccount/Identification |Identification assigned by an institution to identify an account. This identification is known by the account owner. |Max256Text | | |
 | Name |0..1 |OBFundsConfirmationConsentResponse1/Data/DebtorAccount/Name |The account name is the name or names of the account owner(s) represented at an account level, as displayed by the ASPSP's online channels. Note, the account name is not the product name or the nickname of the account. |Max350Text | | |
 | SecondaryIdentification |0..1 |OBFundsConfirmationConsentResponse1/Data/DebtorAccount/SecondaryIdentification |This is secondary identification of the account, as assigned by the account servicing institution. This can be used by building societies to additionally identify accounts with a roll number (in addition to a sort code and account number combination). |Max34Text | | |
@@ -259,7 +259,7 @@ x-fapi-interaction-id: hook5i13-ntIg-4th3-rP41-3ro535touch3
   "Data": {
     "ConsentId": "88379",
     "CreationDateTime": "2017-05-02T00:00:00+00:00",
-    "StatusCode": "AWAU",
+    "Status": "AWAU",
     "StatusReason": [
       {
       "StatusReasonCode": "83",
@@ -317,13 +317,7 @@ Content-Type: application/json
   "Data": {
     "ConsentId": "88379",
     "CreationDateTime": "2017-05-02T00:00:00+00:00",
-    "StatusCode": "AWAU",
-    "StatusReason": [
-      {
-      "StatusReasonCode": "83",
-      "StatusReasonDescription":"Pending completion next working day",
-      }
-    ],
+    "Status": "AWAU",
     "StatusUpdateDateTime": "2017-05-02T00:00:00+00:00",
     "ExpirationDateTime": "2017-05-02T00:00:00+00:00",
     "DebtorAccount": {
@@ -372,7 +366,7 @@ Content-Type: application/json
   "Data": {
     "ConsentId": "88999",
     "CreationDateTime": "2017-05-02T00:00:00+00:00",
-    "StatusCode": "AWAU",
+    "Status": "AWAU",
     "StatusReason": [
       {
       "StatusReasonCode": "83",

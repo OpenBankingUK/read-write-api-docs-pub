@@ -3,11 +3,11 @@
 - [Overview](#overview)
 - [Endpoints](#endpoints)
   - [POST /international-standing-orders](#post-international-standing-orders)
-    - [StatusCode](#statuscode)
+    - [Status](#status)
   - [GET /international-standing-orders/{InternationalStandingOrderPaymentId}](#get-international-standing-orders-internationalstandingorderpaymentid)
-    - [StatusCode](#statuscode-2)
+    - [Status](#status-2)
   - [GET /international-standing-orders/{InternationalStandingOrderPaymentId}/payment-details](#get-international-standing-orders-internationalstandingorderpaymentid-payment-details)
-    - [StatusCode](#statuscode-3)
+    - [Status](#status-3)
   - [State Model](#state-model)
     - [Payment Order](#payment-order)
       - [Multiple Authorisation](#multiple-authorisation)
@@ -53,13 +53,13 @@ Once the international-standing-order-consent has been authorised by the PSU, th
 * The PISP **must** ensure that the Initiation and Risk sections of the international-standing-orders match the corresponding Initiation and Risk sections of the international-standing-order-consent resource. If the two do not match, the ASPSP **must not** process the request and **must** respond with a 400 (Bad Request).
 * Any operations on the international-standing-orders resource will not result in a Status change for the international-standing-orders resource.
 
-#### StatusCode
+#### Status
 
-An international-standing-orders can only be created if its corresponding international-standing-order-consent resource has the StatusCode of "AUTH". 
+An international-standing-orders can only be created if its corresponding international-standing-order-consent resource has the Status of "AUTH". 
 
 The international-standing-orders resource that is created successfully must have one of the following initial StatusCodes:
 
-| StatusCode |
+| Status |
 | --- |
 | RCVD |
 | RJCT |
@@ -68,11 +68,11 @@ The international-standing-orders resource that is created successfully must hav
 
 A PISP can retrieve the international-standing-orders to check its status.
 
-#### StatusCode
+#### Status
 
 The international-standing-orders resource must have one of the following StatusCodes:
 
-| StatusCode |
+| Status |
 | --- |
 | RCVD |
 | CANC |
@@ -91,11 +91,11 @@ Refer to [External_Internal_CodeSets](https://github.com/OpenBankingUK/External_
 
 A PISP can retrieve the Details of the underlying payment transaction via this endpoint. This resource allows ASPSPs to return richer list of Payment Statuses, and if available payment scheme related statuses.
 
-#### StatusCode
+#### Status
 
 The international-standing-orders - payment-details must have one of the following ExternalPaymentTransactionStatus1Code code-set enumerations (for more information see `ExternalPaymentTransactionStatus1Code` [here](https://github.com/OpenBankingUK/External_internal_CodeSets)) :
 
-| StatusCode |
+| Status |
 | ------ |
 | INCO |
 | CANC |
@@ -137,16 +137,16 @@ __Payment order state model key:__
 ##### Multiple Authorisation
 If the payment-order requires multiple authorisations the status of the multiple authorisations will be updated in the MultiAuthorisation object.
 
-Once the payment is RCVD, the international-standing-orders StatusCode must be set to PATC and the MultiAuthorisation object status updated with the AWAF status. Once all authorisations have been successfully completed the MultiAuthorisation status must be set to AUTH and international-standing-orders StatusCode updated to ACSP if any intermediate status are not supported.
+Once the payment is RCVD, the international-standing-orders Status must be set to PATC and the MultiAuthorisation object status updated with the AWAF status. Once all authorisations have been successfully completed the MultiAuthorisation status must be set to AUTH and international-standing-orders Status updated to ACSP if any intermediate status are not supported.
 
-Any rejections in the multiple authorisation process should result in the MultiAuthorisation status and StatusCode being set to RJCT. 
+Any rejections in the multiple authorisation process should result in the MultiAuthorisation status and Status being set to RJCT. 
 
 
 ![Multi Auth](./images/PO_MultiAuthFlow.png)
 
-The definitions for the StatusCode:
+The definitions for the Status:
 
-|  |StatusCode |Status Description |
+|  |Status |Status Description |
 | --- |--- |--- |
 | 1 |AWAU |The payment-order resource is awaiting further authorisation. |
 | 2 |RJCT |The payment-order resource has been rejected by an authoriser. |
@@ -211,7 +211,7 @@ The international-standing-orders **response** object contains the:
 * InternationalStandingOrderPaymentId.
 * ConsentId.
 * CreationDateTime the international-standing-orders resource was created.
-* StatusCode and StatusUpdateDateTime of the international-standing-orders resource.
+* Status and StatusUpdateDateTime of the international-standing-orders resource.
 * The Charges in the international-standing-order-consent response from the ASPSP.
 * Refund account details, if requested by PISP as part of the international-scheduled-payment-consents resource.
 * The Initiation object from the international-standing-order-consent.
@@ -227,7 +227,7 @@ The international-standing-orders **response** object contains the:
 | InternationalStandingOrderId |1..1 |OBWriteInternationalStandingOrderResponse7/Data/InternationalStandingOrderId |OB: Unique identification as assigned by the ASPSP to uniquely identify the international standing order resource. |Max40Text | | |
 | ConsentId |1..1 |OBWriteInternationalStandingOrderResponse7/Data/ConsentId |OB: Unique identification as assigned by the ASPSP to uniquely identify the consent resource. |Max128Text | | |
 | CreationDateTime |1..1 |OBWriteInternationalStandingOrderResponse7/Data/CreationDateTime |Date and time at which the resource was created. |ISODateTime | | |
-| StatusCode |1..1 |OBWriteInternationalStandingOrderResponse7/Data/StatusCode |Specifies the status of resource in code form. |OBExternalStatus1Code |RCVD RJCT ACSP CANC | |
+| Status |1..1 |OBWriteInternationalStandingOrderResponse7/Data/Status |Specifies the status of resource in code form. |For a full list of enumeration values refer to `External_CodeSet` [here].(https://github.com/OpenBankingUK/External_Internal_CodeSets). |ExternalPaymentTransactionStatus1Code | |
 | StatusUpdateDateTime |1..1 |OBWriteInternationalStandingOrderResponse7/Data/StatusUpdateDateTime |Date and time at which the resource status was updated. |ISODateTime | | |
 | StatusReason |0..* |OBWriteInternationalStandingOrderResponse7/Data/StatusReason |Specifies the status reason. | OBStatusReason |
 | StatusReasonCode |0..1 |OBWriteInternationalStandingOrderResponse7/Data/StatusReason/StatusReasonCode |Specifies the status reason in a code form. |For a full list of enumeration values refer to `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_internal_CodeSets)| OBInternalPermissions1Code |
@@ -238,7 +238,7 @@ The international-standing-orders **response** object contains the:
 | Initiation |1..1 |OBWriteInternationalStandingOrderResponse7/Data/Initiation |The Initiation payload is sent by the initiating party to the ASPSP. It is used to request movement of funds from the debtor account to a creditor for an international standing order. |OBInternationalStandingOrder4 | | |
 | MultiAuthorisation |0..1 |OBWriteInternationalStandingOrderResponse7/Data/MultiAuthorisation | |OBMultiAuthorisation1 | | |
 | Debtor |0..1 |OBWriteInternationalStandingOrderResponse7/Data/Debtor |Set of elements used to identify a person or an organisation. | | | |
-| SchemeName |0..1 |OBWriteInternationalStandingOrderResponse7/Data/Debtor/SchemeName |Name of the identification scheme, in a coded form as published in an external list. | For a full description see `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets). |OBInternalAccountIdentification4Code | 
+| SchemeName |0..1 |OBWriteInternationalStandingOrderResponse7/Data/Debtor/SchemeName |Name of the identification scheme, in a coded form as published in an external list. | For a full list of enumeration values refer to `OB_Internal_CodeSet` [here].(https://github.com/OpenBankingUK/External_Internal_CodeSets). |OBInternalAccountIdentification4Code | 
 | Identification |0..1 |OBWriteInternationalStandingOrderResponse7/Data/Debtor/Identification |Identification assigned by an institution to identify an account. This identification is known by the account owner. |Max256Text | | |
 | Name |0..1 |OBWriteInternationalStandingOrderResponse7/Data/Debtor/Name |The account name is the name or names of the account owner(s) represented at an account level, as displayed by the ASPSP's online channels. Note, the account name is not the product name or the nickname of the account. |Max350Text | | |
 | SecondaryIdentification |0..1 |OBWriteInternationalStandingOrderResponse7/Data/Debtor/SecondaryIdentification |This is secondary identification of the account, as assigned by the account servicing institution. This can be used by building societies to additionally identify accounts with a roll number (in addition to a sort code and account number combination). |Max34Text | | |
@@ -260,7 +260,7 @@ The OBWritePaymentDetailsResponse1 object will be used for a response to a call 
 | --- |--- |--- |--- |--- |--- |--- |
 | OBWritePaymentDetailsResponse1 | |OBWritePaymentDetailsResponse1 | |OBWritePaymentDetailsResponse1 | | |
 | Data |1..1 |OBWritePaymentDetailsResponse1/Data | |OBWriteDataPaymentOrderStatusResponse1 | | |
-| StatusDetail |0..unbounded |OBWritePaymentDetailsResponse1/Data/StatusDetail |An array of payment status details. |OBWritePaymentDetails1 | | |
+| PaymentStatus |0..*|OBWritePaymentDetailsResponse1/Data/PaymentStatus |Payment status details. |OBWritePaymentDetails1 | | |
 
 ## Usage Examples
 
@@ -466,7 +466,7 @@ Content-Type: application/json
     "InternationalStandingOrderId": "SO-ISOC-100",
     "ConsentId": "ISOC-100",
     "CreationDateTime": "2018-01-01T06:06:36+00:00",
-    "StatusCode": "ACSP",
+    "Status": "ACSP",
     "StatusUpdateDateTime": "2018-01-01T06:36:06+00:00",
     "Refund": {
       "Creditor" : {

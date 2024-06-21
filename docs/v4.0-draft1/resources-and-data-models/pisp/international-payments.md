@@ -3,11 +3,11 @@
 - [Overview](#overview)
 - [Endpoints](#endpoints)
   - [POST /international-payments](#post-international-payments)
-    - [StatusCode](#statuscode)
+    - [Status](#status)
   - [GET /international-payments/{InternationalPaymentId}](#get-international-payments-internationalpaymentid)
-    - [StatusCode](#statuscode-2)
+    - [Status](#status-2)
   - [GET /international-payments/{InternationalPaymentId}/payment-details](#get-international-payments-internationalpaymentid-payment-details)
-    - [StatusCode](#statuscode-3)
+    - [Status](#status-3)
   - [State Model](#state-model)
     - [Payment Order](#payment-order)
       - [Multiple Authorisation](#multiple-authorisation)
@@ -15,7 +15,7 @@
   - [Reused Classes](#reused-classes)
     - [OBInternational3](#obinternational3)
     - [OBExchangeRate2](#obexchangerate2)
-    - [OBRemittanceInformation1](#obremittanceinformation1)
+    - [OBRemittanceInformation2](#obremittanceinformation2)
   - [International Payment - Request](#international-payment-request)
     - [UML Diagram](#uml-diagram)
     - [Notes](#notes)
@@ -51,13 +51,13 @@ Once the international-payment-consent has been authorised by the PSU, the PISP 
 * The PISP **must** ensure that the Initiation and Risk sections of the international-payment match the corresponding Initiation and Risk sections of the international-payment-consent resource. If the two do not match, the ASPSP **must not** process the request and **must** respond with a 400 (Bad Request).
 * Any operations on the international-payment resource will not result in a Status change for the international-payment resource.
 
-#### StatusCode
+#### Status
 
-An international-payment can only be created if its corresponding international-payment-consent resource has the StatusCode of "AUTH". 
+An international-payment can only be created if its corresponding international-payment-consent resource has the Status of "AUTH". 
 
-The international-payment resource that is created successfully must have one of the following initial StatusCode code-set enumerations:
+The international-payment resource that is created successfully must have one of the following initial Status code-set enumerations:
 
-| StatusCode |
+| Status |
 | ------ |
 | RCVD |
 | RJCT |
@@ -66,11 +66,11 @@ The international-payment resource that is created successfully must have one of
 
 A PISP can retrieve the international-payment to check its status.
 
-#### StatusCode
+#### Status
 
-The international-payment resource must have one of the following StatusCode code-set enumerations:
+The international-payment resource must have one of the following Status code-set enumerations:
 
-| StatusCode |
+| Status |
 | ------ |
 | RCVD |
 | PDNG |
@@ -90,11 +90,11 @@ The international-payment resource must have one of the following StatusCode cod
 
 A PISP can retrieve the Details of the underlying payment transaction via this endpoint. This resource allows ASPSPs to return richer list of Payment Statuses, and if available payment scheme related statuses.
 
-#### StatusCode
+#### Status
 
 The international-payments - payment-details must have one of the following PaymentStatusCode code-set enumerations:
 
-| StatusCode |
+| Status |
 | ------ |
 | RCVD |
 | PDNG |
@@ -131,15 +131,15 @@ __Payment order state model key:__
 ##### Multiple Authorisation
 If the payment-order requires multiple authorisations the status of the multiple authorisations will be updated in the MultiAuthorisation object.
 
-Once the payment is RCVD, the international-payment StatusCode must be set to PATC and the MultiAuthorisation object status updated with the AWAF status. Once all authorisations have been successfully completed the MultiAuthorisation status must be set to AUTH and international-payment StatusCode updated to ACSP if any intermediate status are not supported.
+Once the payment is RCVD, the international-payment Status must be set to PATC and the MultiAuthorisation object status updated with the AWAF status. Once all authorisations have been successfully completed the MultiAuthorisation status must be set to AUTH and international-payment Status updated to ACSP if any intermediate status are not supported.
 
-Any rejections in the multiple authorisation process should result in the MultiAuthorisation status and StatusCode being set to RJCT. 
+Any rejections in the multiple authorisation process should result in the MultiAuthorisation status and Status being set to RJCT. 
 
 
 ![Multi Auth](./images/PO_MultiAuthFlow.png)
 
 
-The definitions for the StatusCode:
+The definitions for the Status:
 
 | |Status |Status Description |
 | --- |------ |------------------ |
@@ -161,9 +161,9 @@ The OBInternational3 class is defined in the [international-payment-consents](./
 
 The OBExchangeRate2 class is defined in the [international-payment-consents](./international-payment-consents.md#obexchangerate2) page.
 
-#### OBRemittanceInformation1
+#### OBRemittanceInformation2
 
-The OBRemittanceInformation1 class is defined in the [payment-initiation-api-profile](../../profiles/payment-initiation-api-profile.md#obremittanceinformation1) page.
+The OBRemittanceInformation2 class is defined in the [payment-initiation-api-profile](../../profiles/payment-initiation-api-profile.md#obremittanceinformation2) page.
 
 ### International Payment - Request
 
@@ -211,7 +211,7 @@ The international-payment **response** object contains the:
 * InternationalPaymentId.
 * ConsentId.
 * CreationDateTime of the international-payment resource.
-* StatusCode and StatusUpdateDateTime of the international-payment resource.
+* Status and StatusUpdateDateTime of the international-payment resource.
 * ExpectedExecutionDateTime for the international-payment resource.
 * ExpectedSettlementDateTime for the international-payment resource.
 * Refund account details, if requested by PISP as part of the international-payment-consents resource.
@@ -229,7 +229,7 @@ The international-payment **response** object contains the:
 | InternationalPaymentId |1..1 |OBWriteInternationalResponse5/Data/InternationalPaymentId |OB: Unique identification as assigned by the ASPSP to uniquely identify the international payment resource. |Max40Text | | |
 | ConsentId |1..1 |OBWriteInternationalResponse5/Data/ConsentId |OB: Unique identification as assigned by the ASPSP to uniquely identify the consent resource. |Max128Text | | |
 | CreationDateTime |1..1 |OBWriteInternationalResponse5/Data/CreationDateTime |Date and time at which the resource was created. |ISODateTime | | |
-| StatusCode |1..1 |OBWriteInternationalResponse5/Data/StatusCode |Specifies the status of the payment information group. |OBTransactionIndividualStatus1Code |PDNG ACTC PATC ACCP ACFC ACSP ACWC ACSC ACWP ACCC BLCK RJCT | |
+| Status |1..1 |OBWriteInternationalResponse5/Data/Status |Specifies the status of the payment information group. |For a full list of enumeration values refer to `OB_External_CodeSet` [here](https://github.com/OpenBankingUK/External_internal_CodeSets) |ExternalPaymentTransactionStatus1Code | |
 | StatusUpdateDateTime |1..1 |OBWriteInternationalResponse5/Data/StatusUpdateDateTime |Date and time at which the resource status was updated. |ISODateTime | | |
 | StatusReason |0..* |OBWriteInternationalResponse5/Data/StatusReason |Specifies the status reason. | OBStatusReason |
 | StatusReasonCode |0..1 |OBWriteInternationalResponse5/Data/StatusReason/StatusReasonCode |Specifies the status reason in a code form. |For a full list of enumeration values refer to `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_internal_CodeSets)| OBInternalPermissions1Code |
@@ -243,7 +243,7 @@ The international-payment **response** object contains the:
 | Initiation |1..1 |OBWriteInternationalResponse5/Data/Initiation |The Initiation payload is sent by the initiating party to the ASPSP. It is used to request movement of funds from the debtor account to a creditor for a single international payment. |OBInternational3 | | |
 | MultiAuthorisation |0..1 |OBWriteInternationalResponse5/Data/MultiAuthorisation |The multiple authorisation flow response from the ASPSP. |OBMultiAuthorisation1 | | |
 | Debtor |0..1 |OBWriteInternationalResponse5/Data/Debtor |Set of elements used to identify a person or an organisation. | | | |
-| SchemeName |0..1 |OBWriteInternationalResponse5/Data/Debtor/SchemeName |Name of the identification scheme, in a coded form as published in an external list. | For a full description see `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets). |OBInternalAccountIdentification4Code | 
+| SchemeName |0..1 |OBWriteInternationalResponse5/Data/Debtor/SchemeName |Name of the identification scheme, in a coded form as published in an external list. | For a full list of enumeration values refer to `OB_Internal_CodeSet` [here].(https://github.com/OpenBankingUK/External_Internal_CodeSets). |OBInternalAccountIdentification4Code | 
 | Identification |0..1 |OBWriteInternationalResponse5/Data/Debtor/Identification |Identification assigned by an institution to identify an account. This identification is known by the account owner. |Max256Text | | |
 | Name |0..1 |OBWriteInternationalResponse5/Data/Debtor/Name |The account name is the name or names of the account owner(s) represented at an account level, as displayed by the ASPSP's online channels. Note, the account name is not the product name or the nickname of the account. |Max350Text | | |
 | SecondaryIdentification |0..1 |OBWriteInternationalResponse5/Data/Debtor/SecondaryIdentification |This is secondary identification of the account, as assigned by the account servicing institution. This can be used by building societies to additionally identify accounts with a roll number (in addition to a sort code and account number combination). |Max34Text | | |
@@ -264,4 +264,4 @@ The OBWritePaymentDetailsResponse1 object will be used for a response to a call 
 | ---- |---------- |----- |------------------ |----- |----- |------- |
 | OBWritePaymentDetailsResponse1 | |OBWritePaymentDetailsResponse1 | |OBWritePaymentDetailsResponse1 | | |
 | Data |1..1 |OBWritePaymentDetailsResponse1/Data | |OBWriteDataPaymentOrderStatusResponse1 | | |
-| StatusDetail |0..unbounded |OBWritePaymentDetailsResponse1/Data/StatusDetail |An array of payment status details. |OBWritePaymentDetails1 | | |
+| PaymentStatus |0..*|OBWritePaymentDetailsResponse1/Data/PaymentStatus |Payment status details. |OBWritePaymentDetails1 | | |

@@ -3,19 +3,19 @@
 - [Overview](#overview)
 - [Endpoints](#endpoints)
   - [POST /domestic-payment-consents](#post-domestic-payment-consents)
-    - [StatusCode](#statuscode)
+    - [Status](#status)
   - [GET /domestic-payment-consents/{ConsentId}](#get-domestic-payment-consents-consentid)
-    - [StatusCode](#statuscode-2)
+    - [Status](#status-2)
   - [GET /domestic-payment-consents/{ConsentId}/funds-confirmation](#get-domestic-payment-consents-consentid-funds-confirmation)
   - [State Model](#state-model)
     - [Payment Order Consent](#payment-order-consent)
 - [Data Model](#data-model)
   - [Reused Classes](#reused-classes)
-    - [OBRemittanceInformation1](#obremittanceinformation1)
+    - [OBRemittanceInformation2](#obremittanceinformation2)
     - [OBRegulatoryReporting1](#obregulatoryreporting1)
     - [OBUltimateCreditor1](#obultimatecreditor1)
     - [OBUltimateDebtor1](#obultimatedebtor1)
-    - [OBPostalAddress6](#obpostaladdress6)
+    - [OBPostalAddress7](#obpostaladdress7)
     - [OBDomestic2](#obdomestic2)
       - [UML Diagram](#uml-diagram)
       - [Notes](#notes)
@@ -62,11 +62,11 @@ The API endpoint allows the PISP to ask an ASPSP to create a new **domestic-paym
 * The endpoint allows the PISP to send a copy of the consent (between PSU and PISP) to the ASPSP for the PSU to authorise.
 * The ASPSP creates the **domestic-payment-consent** resource and responds with a unique ConsentId to refer to the resource.
 
-#### StatusCode
+#### Status
 
-The default StatusCode is &quot;AWAU&quot; immediately after the domestic-payment-consent has been created.
+The default Status is &quot;AWAU&quot; immediately after the domestic-payment-consent has been created.
 
-| StatusCode |
+| Status |
 | ------ |
 | AWAU |
 
@@ -74,17 +74,17 @@ The default StatusCode is &quot;AWAU&quot; immediately after the domestic-paymen
 
 A PISP can optionally retrieve a payment consent resource that they have created to check its status.
 
-#### StatusCode
+#### Status
 
-Once the PSU authorises the payment-consent resource - the StatusCode of the payment-consent resource will be updated with &quot;AUTH&quot;.
+Once the PSU authorises the payment-consent resource - the Status of the payment-consent resource will be updated with &quot;AUTH&quot;.
 
-If the PSU rejects the consent or the domestic-payment-consent has failed some other ASPSP validation, the StatusCode will be set to &quot;RJCT&quot;.
+If the PSU rejects the consent or the domestic-payment-consent has failed some other ASPSP validation, the Status will be set to &quot;RJCT&quot;.
 
-Once a domestic-payment has been successfully created using the domestic-payment-consent, the StatusCode of the domestic-payment-consent will be set to &quot;COND&quot;.
+Once a domestic-payment has been successfully created using the domestic-payment-consent, the Status of the domestic-payment-consent will be set to &quot;COND&quot;.
 
 The available status codes for the domestic-payment-consent resource are:
 
-| StatusCode |
+| Status |
 | ------ |
 | AWAU |
 | RJCT |
@@ -108,16 +108,16 @@ The state model for the domestic-payment-consent resource follows the generic co
 ![Payment Order Consent](./images/PO_Consent.png)
 
 
-The definitions for the StatusCode:
+The definitions for the Status:
 
-|  | StatusCode |Status Description |
+|  | Status |Status Description |
 | ---| ------ |------------------ |
 | 1 |AWAU |The consent resource is awaiting PSU authorisation. |
 | 2 |RJCT |The consent resource has been rejected. |
 | 3 |AUTH |The consent resource has been successfully authorised. |
 |4 |COND|The consented action has been successfully completed. This does not reflect the status of the consented action.|
 
-Changes to the StatusCode, such as being rejected, should be captured in `StatusReason`, an array of `StatusReasonCode`, `StatusReasonDescription` and `Path`.  
+Changes to the Status, such as being rejected, should be captured in `StatusReason`, an array of `StatusReasonCode`, `StatusReasonDescription` and `Path`.  
 
 | Field | Description |
 |---|---|
@@ -131,9 +131,9 @@ The data dictionary section gives the detail on the payload content for the Dome
 
 ### Reused Classes
 
-#### OBRemittanceInformation1
+#### OBRemittanceInformation2
 
-The OBRemittanceInformation1 class is defined in the [payment-initiation-api-profile](../../profiles/payment-initiation-api-profile.md#obremittanceinformation1) page.
+The OBRemittanceInformation2 class is defined in the [payment-initiation-api-profile](../../profiles/payment-initiation-api-profile.md#obremittanceinformation2) page.
 
 #### OBRegulatoryReporting1
 
@@ -148,9 +148,9 @@ The OBUltimateCreditor1 class is defined in the [payment-initiation-api-profile]
 
 The OBUltimateDebtor1 class is defined in the [payment-initiation-api-profile](../../profiles/payment-initiation-api-profile.md#obultimatedebtor1) page.
 
-#### OBPostalAddress6 
+#### OBPostalAddress7 
 
-The OBPostalAddress6 class is defined in the [payment-initiation-api-profile](../../profiles/payment-initiation-api-profile.md#obpostaladdress6) page
+The OBPostalAddress7 class is defined in the [payment-initiation-api-profile](../../profiles/payment-initiation-api-profile.md#obpostaladdress7) page
 
 #### OBDomestic2
 
@@ -166,7 +166,7 @@ For the OBDomestic2 Initiation object:
 
 * All elements in the Initiation payload that are specified by the PISP must not be changed via the ASPSP as this is part of formal consent from the PSU.
 * If the ASPSP is able to establish a problem with payload or any contextual error during the API call, the ASPSP must reject the domestic-payment-consent request immediately.
-* If the ASPSP establishes a problem with the domestic-payment-consent after the API call, the ASPSP must set the StatusCode of the domestic-payment-consent resource to 'RJCT' (Rejected).
+* If the ASPSP establishes a problem with the domestic-payment-consent after the API call, the ASPSP must set the Status of the domestic-payment-consent resource to 'RJCT' (Rejected).
 * DebtorAccount is **optional** as the PISP may not know the account identification details for the PSU.
 * If the DebtorAccount is specified by the PISP and is invalid for the PSU, then the domestic-payment-consent will be set to Rejected after PSU authentication.
 * Account Identification field usage:
@@ -187,25 +187,25 @@ For the OBDomestic2 Initiation object:
 | OBDomestic2 | |OBDomestic2 |The Initiation payload is sent by the initiating party to the ASPSP. It is used to request movement of funds from the debtor account to a creditor for a single domestic payment. |OBDomestic2 | | |
 | InstructionIdentification |1..1 |OBDomestic2/InstructionIdentification |Unique identification as assigned by an instructing party for an instructed party to unambiguously identify the instruction. Usage: the instruction identification is a point to point reference that can be used between the instructing party and the instructed party to refer to the individual instruction. It can be included in several messages related to the instruction. |Max35Text | | |
 | EndToEndIdentification |1..1 |OBDomestic2/EndToEndIdentification |Unique identification assigned by the initiating party to unambiguously identify the transaction. This identification is passed on, unchanged, throughout the entire end-to-end chain. Usage: The end-to-end identification can be used for reconciliation or to link tasks relating to the transaction. It can be included in several messages related to the transaction. OB: The Faster Payments Scheme can only access 31 characters for the EndToEndIdentification field. |Max35Text | | |
-| LocalInstrument |0..1 |OBDomestic2/LocalInstrument |User community specific instrument. Usage: This element is used to specify a local instrument, local clearing option and/or further qualify the service or service level. |OBExternalLocalInstrument1Code | | |
+| LocalInstrument |0..1 |OBDomestic2/LocalInstrument |User community specific instrument. Usage: This element is used to specify a local instrument, local clearing option and/or further qualify the service or service level. |For a full list of enumeration values refer to `OB_Internal_CodeSet` [here].(https://github.com/OpenBankingUK/External_Internal_CodeSets) |OBInternalLocalInstrument1Code | |
 | InstructedAmount |1..1 |OBDomestic2/InstructedAmount |Amount of money to be moved between the debtor and creditor, before deduction of charges, expressed in the currency as ordered by the initiating party. Usage: This amount has to be transported unchanged through the transaction chain. |OBActiveOrHistoricCurrencyAndAmount | | |
 | Amount |1..1 |OBDomestic2/InstructedAmount/Amount |A number of monetary units specified in an active currency where the unit of currency is explicit and compliant with ISO 4217. |OBActiveCurrencyAndAmount_SimpleType | |`^\d{1,13}$|^\d{1,13}\.\d{1,5}$` |
 | Currency |1..1 |OBDomestic2/InstructedAmount/Currency |A code allocated to a currency by a Maintenance Agency under an international identification scheme, as described in the latest edition of the international standard ISO 4217 "Codes for the representation of currencies and funds". |ActiveOrHistoricCurrencyCode | |^[A-Z]{3,3}$ |
 | DebtorAccount |0..1 |OBDomestic2/DebtorAccount |Unambiguous identification of the account of the debtor to which a debit entry will be made as a result of the transaction. |OBCashAccountDebtor4 | | |
-| SchemeName |1..1 |OBDomestic2/DebtorAccount/SchemeName |Name of the identification scheme, in a coded form as published in an external list. | For a full description see `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets). |OBInternalAccountIdentification4Code | 
+| SchemeName |1..1 |OBDomestic2/DebtorAccount/SchemeName |Name of the identification scheme, in a coded form as published in an external list. | For a full list of enumeration values refer to `OB_Internal_CodeSet` [here].(https://github.com/OpenBankingUK/External_Internal_CodeSets). |OBInternalAccountIdentification4Code | 
 | Identification |1..1 |OBDomestic2/DebtorAccount/Identification |Identification assigned by an institution to identify an account. This identification is known by the account owner. |Max256Text | | |
 | Name |0..1 |OBDomestic2/DebtorAccount/Name |The account name is the name or names of the account owner(s) represented at an account level, as displayed by the ASPSP's online channels. Note, the account name is not the product name or the nickname of the account. |Max350Text | | |
 | SecondaryIdentification |0..1 |OBDomestic2/DebtorAccount/SecondaryIdentification |This is secondary identification of the account, as assigned by the account servicing institution. This can be used by building societies to additionally identify accounts with a roll number (in addition to a sort code and account number combination). |Max34Text | | |
 | Proxy |0..1 |OBDomestic2/DebtorAccount/Proxy |Specifies an alternate assumed name for the identification of the account.|OBProxy1 | | |
 | UltimateDebtor |0..1 |OBDomestic2/UltimateDebtor|Ultimate party that owes an amount of money to the (ultimate) creditor. |OBUltimateDebtor1 | | |
 | CreditorAccount |1..1 |OBDomestic2/CreditorAccount |Unambiguous identification of the account of the creditor to which a credit entry will be posted as a result of the payment transaction. |OBCashAccountCreditor3 | | |
-| SchemeName |1..1 |OBDomestic2/CreditorAccount/SchemeName |Name of the identification scheme, in a coded form as published in an external list. | For a full description see `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets). |OBInternalAccountIdentification4Code | 
+| SchemeName |1..1 |OBDomestic2/CreditorAccount/SchemeName |Name of the identification scheme, in a coded form as published in an external list. | For a full list of enumeration values refer to `OB_Internal_CodeSet` [here].(https://github.com/OpenBankingUK/External_Internal_CodeSets). |OBInternalAccountIdentification4Code | 
 | Identification |1..1 |OBDomestic2/CreditorAccount/Identification |Identification assigned by an institution to identify an account. This identification is known by the account owner. |Max256Text | | |
 | Name |1..1 |OBDomestic2/CreditorAccount/Name |The account name is the name or names of the account owner(s) represented at an account level. Note, the account name is not the product name or the nickname of the account. OB: ASPSPs may carry out name validation for Confirmation of Payee, but it is not mandatory. |Max350Text | | |
 | SecondaryIdentification |0..1 |OBDomestic2/CreditorAccount/SecondaryIdentification |This is secondary identification of the account, as assigned by the account servicing institution. This can be used by building societies to additionally identify accounts with a roll number (in addition to a sort code and account number combination). |Max34Text | | |
 | UltimateCreditor |0..1 |OBDomestic2/UltimateCreditor|Ultimate party to which an amount of money is due. | OBUltimateCreditor1 | | |
-| CreditorPostalAddress |0..1 |OBDomestic2/CreditorPostalAddress |Information that locates and identifies a specific address, as defined by postal services. |OBPostalAddress6 | | |
-| RemittanceInformation |0..1 |OBDomestic2/RemittanceInformation |Information supplied to enable the matching of an entry with the items that the transfer is intended to settle, such as commercial invoices in an accounts' receivable system. |OBRemittanceInformation1 | | |
+| CreditorPostalAddress |0..1 |OBDomestic2/CreditorPostalAddress |Information that locates and identifies a specific address, as defined by postal services. |OBPostalAddress7 | | |
+| RemittanceInformation |0..1 |OBDomestic2/RemittanceInformation |Information supplied to enable the matching of an entry with the items that the transfer is intended to settle, such as commercial invoices in an accounts' receivable system. |OBRemittanceInformation2 | | |
 | RegulatoryReporting |0..10 |OBDomestic2/RegulatoryReporting |Information needed due to regulatory and statutory requirements. |OBRegulatoryReporting1 | | |
 | SupplementaryData |0..1 |OBDomestic2/SupplementaryData |Additional information that can not be captured in the structured fields and/or any other specific block. |OBSupplementaryData1 | | |
 
@@ -235,7 +235,7 @@ The domestic-payment-consent **request** contains these objects:
 | ---- |---------- |----- |------------------ |----- |----- |------- |
 | OBWriteDomesticConsent4 |OBWriteDomesticConsent4 | | |OBWriteDomesticConsent4 | | |
 | Data |1..1 |OBWriteDomesticConsent4/Data | |OBWriteDataDomesticConsent4 | | |
-| ReadRefundAccount |0..1 |OBWriteDomesticConsent4/Data/ReadRefundAccount | Specifies to share the refund account details with PISP |OBReadRefundAccount1Code |Yes No | |
+| ReadRefundAccount |0..1 |OBWriteDomesticConsent4/Data/ReadRefundAccount | Specifies to share the refund account details with PISP |For a full list of enumeration values refer to `OB_Internal_CodeSet` [here].(https://github.com/OpenBankingUK/External_Internal_CodeSets). |OBInternalReadRefundAccount1Code| |
 | Initiation |1..1 |OBWriteDomesticConsent4/Data/Initiation |The Initiation payload is sent by the initiating party to the ASPSP. It is used to request movement of funds from the debtor account to a creditor for a single domestic payment. |OBDomestic2 | | |
 | Authorisation |0..1 |OBWriteDomesticConsent4/Data/Authorisation |The authorisation type request from the TPP. |OBAuthorisation1 | | |
 | SCASupportData |0..1 |OBWriteDomesticConsent4/Data/SCASupportData |Supporting Data provided by TPP, when requesting SCA Exemption. |OBSCASupportData1 | | |
@@ -273,13 +273,13 @@ Them domestic-payment-consent **response** contains the full **original** payloa
 | Data |1..1 |OBWriteDomesticConsentResponse5/Data | |OBWriteDataDomesticConsentResponse5 | | |
 | ConsentId |1..1 |OBWriteDomesticConsentResponse5/Data/ConsentId |OB: Unique identification as assigned by the ASPSP to uniquely identify the consent resource. |Max128Text | | |
 | CreationDateTime |1..1 |OBWriteDomesticConsentResponse5/Data/CreationDateTime |Date and time at which the resource was created. |ISODateTime | | |
-| StatusCode |1..1 |OBWriteDomesticConsentResponse5/Data/StatusCode |Specifies the status of consent resource in code form. |ExternalStatusReason1Code |AUTH AWAU RJCT COND |
+| Status |1..1 |OBWriteDomesticConsentResponse5/Data/Status |Specifies the status of consent resource in code form. |For a full list of enumeration values refer to `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_internal_CodeSets)|OBExternalStatusReason1Code |
 | StatusReason |0..* |OBWriteDomesticConsentResponse5/Data/StatusReason | An array of StatusReasonCode | OBStatusReason |
 | StatusReasonCode |0..1 |OBWriteDomesticConsentResponse5/Data/StatusReason/StatusReasonCode |Specifies the status reason in a code form. |For a full list of enumeration values refer to `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_internal_CodeSets)|OBInternalPermissions1Code |
 | StatusReasonDescription |0..1 |OBWriteDomesticConsentResponse5/Data/StatusReason/StatusReasonDescription |Description supporting the StatusReasonCode. | Max500Text|
 |Path| 0..1 | OBWriteDomesticConsentResponse5/Data/StatusReason/Path| Path is optional but relevant when the status reason refers to an object/field and hence conditional to provide JSON path.| Max500Text| | |
 | StatusUpdateDateTime |1..1 |OBWriteDomesticConsentResponse5/Data/StatusUpdateDateTime |Date and time at which the resource status was updated. |ISODateTime | | |
-| ReadRefundAccount |0..1 |OBWriteDomesticConsentResponse5/Data/ReadRefundAccount | Specifies to share the refund account details with PISP |OBReadRefundAccount1Code |Yes No | |
+| ReadRefundAccount |0..1 |OBWriteDomesticConsentResponse5/Data/ReadRefundAccount | Specifies to share the refund account details with PISP |For a full list of enumeration values refer to `OB_Internal_CodeSet` [here].(https://github.com/OpenBankingUK/External_Internal_CodeSets). |OBInternalReadRefundAccount1Code | |
 | CutOffDateTime |0..1 |OBWriteDomesticConsentResponse5/Data/CutOffDateTime |Specified cut-off date and time for the payment consent. |ISODateTime | | |
 | ExpectedExecutionDateTime |0..1 |OBWriteDomesticConsentResponse5/Data/ExpectedExecutionDateTime |Expected execution date and time for the payment resource. |ISODateTime | | |
 | ExpectedSettlementDateTime |0..1 |OBWriteDomesticConsentResponse5/Data/ExpectedSettlementDateTime |Expected settlement date and time for the payment resource. |ISODateTime | | |
@@ -508,7 +508,8 @@ Content-Type: application/json
 {
   "Data": {
     "ConsentId": "58923",
-    "StatusCode": "AWAU",
+    "Status": "AWAU",
+    "LocalInstrument": "UK.OBIE.CHAPS", 
     "StatusReason": {
       "StatusReasonCode": "U036", 
       "StatusReasonDescription":"Waiting for completion of consent authorisation to be completed by user",
@@ -710,7 +711,7 @@ Content-Type: application/json
 {
   "Data": {
     "ConsentId": "58923",
-    "StatusCode": "AUTH",
+    "Status": "AUTH",
     "CreationDateTime": "2017-06-05T15:15:13+00:00",
     "StatusUpdateDateTime": "2017-06-05T15:15:22+00:00",
     "ReadRefundAccount": "Yes",

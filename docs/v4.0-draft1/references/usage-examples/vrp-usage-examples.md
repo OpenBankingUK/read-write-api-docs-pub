@@ -178,8 +178,8 @@ Accept: application/json
       },
   },
   "Risk": {
-    "PaymentContextCode": "TransferToThirdParty",
-    "ContractPresentIndicator": false,
+    "PaymentContextCode": "TransferToSell",
+    "ContractPresentIndicator": true,
     "PaymentPurposeCode": "EPAY",
     "CategoryPurposeCode": "CASH", 
     "BeneficiaryPaymentDetailsPrepopulatedIndicator": false,
@@ -217,7 +217,7 @@ Content-Type: application/json
   "Data": {
     "ConsentId": "fe615446-e53a-45ed-954c-ae5d1f97a93b",
     "CreationDateTime": "2017-06-05T15:15:15+00:00",
-    "StatusCode": "AUTH",
+    "Status": "AUTH",
     "StatusReason": {
       "StatusReasonCode": "U038", 
       "StatusReasonDescription":"Consent consumed successfully",
@@ -373,8 +373,8 @@ Content-Type: application/json
   },
 
   "Risk": {
-    "PaymentContextCode": "TransferToThirdParty",
-    "ContractPresentIndicator": false,
+    "PaymentContextCode": "TransferToSell",
+    "ContractPresentIndicator": true,
     "PaymentPurposeCode": "EPAY",
     "CategoryPurposeCode": "CASH", 
     "BeneficiaryPaymentDetailsPrepopulatedIndicator": false,
@@ -431,7 +431,7 @@ Content-Type: application/json
   "Data": {
     "ConsentId": "fe615446-e53a-45ed-954c-ae5d1f97a93b",
     "CreationDateTime": "2017-06-05T15:15:15+00:00",
-    "StatusCode": "AUTH",
+    "Status": "AUTH",
     "StatusUpdateDateTime": "2017-06-05T15:15:15+05:00",
     "ReadRefundAccount": "Yes",
     "StatusReason": {
@@ -588,8 +588,8 @@ Content-Type: application/json
     }
   },
   "Risk": {
-    "PaymentContextCode": "TransferToThirdParty",
-    "ContractPresentIndicator": false,
+    "PaymentContextCode": "TransferToSell",
+    "ContractPresentIndicator": true,
     "PaymentPurposeCode": "EPAY",
     "CategoryPurposeCode": "CASH", 
     "BeneficiaryPaymentDetailsPrepopulatedIndicator": false,
@@ -840,8 +840,8 @@ Accept: application/json
     }
   },
   "Risk": {
-    "PaymentContextCode": "TransferToThirdParty",
-    "ContractPresentIndicator": false,
+    "PaymentContextCode": "TransferToSell",
+    "ContractPresentIndicator": true,
     "PaymentPurposeCode": "EPAY",
     "CategoryPurposeCode": "CASH", 
     "BeneficiaryPaymentDetailsPrepopulatedIndicator": false,
@@ -879,7 +879,7 @@ Content-Type: application/json
     "ConsentId": "fe615446-e53a-45ed-954c-ae5d1f97a93b",
     "CreationDateTime": "2017-06-05T15:15:15+00:00",
     "DomesticVRPId": "OU90210",
-    "StatusCode": "PDNG",
+    "Status": "PDNG",
     "StatusReason": {
       "StatusReasonCode": "83",
       "StatusReasonDescription":"Pending completion next working day",
@@ -916,11 +916,6 @@ Content-Type: application/json
         "Identification": "30949330000010",
         "SecondaryIdentification": "Roll 90210",
         "Name": "Marcus Sweepimus",
-        "Proxy": {
-          "Identification": "441234012385",
-          "Code": "TELE",
-          "Type": "Telephone"
-        }
       },
       "CreditorAccount": {
         "SchemeName": "SortCodeAccountNumber",
@@ -1108,8 +1103,8 @@ Content-Type: application/json
     }
   },
   "Risk": {
-    "PaymentContextCode": "TransferToThirdParty",
-    "ContractPresentIndicator": false,
+    "PaymentContextCode": "TransferToSell",
+    "ContractPresentIndicator": true,
     "PaymentPurposeCode": "EPAY",
     "CategoryPurposeCode": "CASH", 
     "BeneficiaryPaymentDetailsPrepopulatedIndicator": false,
@@ -1292,8 +1287,8 @@ Accept: application/json
     }
   },
   "Risk": {
-    "PaymentContextCode": "TransferToThirdParty",
-    "ContractPresentIndicator": false,
+    "PaymentContextCode": "TransferToSell",
+    "ContractPresentIndicator": true,
     "PaymentPurposeCode": "EPAY",
     "CategoryPurposeCode": "CASH", 
     "BeneficiaryPaymentDetailsPrepopulatedIndicator": false,
@@ -1330,7 +1325,7 @@ Content-Type: application/json
   "Data": {
     "ConsentId": "fe615446-e53a-45ed-954c-ae5d1f97a93b",
     "CreationDateTime": "2017-06-05T15:15:15+00:00",
-    "StatusCode": "AWAU",
+    "Status": "AWAU",
     "StatusReason": {
       "StatusReasonCode": "U031", 
       "StatusReasonDescription":"All checks yet to start",
@@ -1476,8 +1471,8 @@ Content-Type: application/json
     }
   },
   "Risk": {
-    "PaymentContextCode": "TransferToThirdParty",
-    "ContractPresentIndicator": false,
+    "PaymentContextCode": "TransferToSell",
+    "ContractPresentIndicator": true,
     "PaymentPurposeCode": "EPAY",
     "CategoryPurposeCode": "CASH", 
     "BeneficiaryPaymentDetailsPrepopulatedIndicator": false,
@@ -1537,7 +1532,7 @@ Content-Type: application/json
   "Data": {
     "ConsentId": "fe615446-e53a-45ed-954c-ae5d1f97a93b",
     "CreationDateTime": "2017-06-05T15:15:15+00:00",
-    "StatusCode": "AUTH",
+    "Status": "AUTH",
     "StatusUpdateDateTime": "2017-06-05T15:15:15+05:00",
     "ReadRefundAccount": "Yes",
 
@@ -1690,8 +1685,8 @@ Content-Type: application/json
   },
 
   "Risk": {
-    "PaymentContextCode": "TransferToThirdParty",
-    "ContractPresentIndicator": false,
+    "PaymentContextCode": "TransferToSell",
+    "ContractPresentIndicator": true,
     "PaymentPurposeCode": "EPAY",
     "CategoryPurposeCode": "CASH", 
     "BeneficiaryPaymentDetailsPrepopulatedIndicator": false,
@@ -2004,8 +1999,8 @@ Accept: application/json
   },
 
   "Risk": {
-    "PaymentContextCode": "TransferToThirdParty",
-    "ContractPresentIndicator": false,
+    "PaymentContextCode": "TransferToSell",
+    "ContractPresentIndicator": true,
     "PaymentPurposeCode": "EPAY",
     "CategoryPurposeCode": "CASH", 
     "BeneficiaryPaymentDetailsPrepopulatedIndicator": false,
@@ -2080,11 +2075,6 @@ Content-Type: application/json
         "Identification": "30949330000010",
         "SecondaryIdentification": "Roll 90210",
         "Name": "Marcus Sweepimus",
-        "Proxy": {
-          "Identification": "441234012385",
-          "Code": "TELE",
-          "Type": "Telephone"
-        }
       },
       "CreditorAccount": {
         "SchemeName": "SortCodeAccountNumber",
@@ -2273,8 +2263,8 @@ Content-Type: application/json
   },
 
   "Risk": {
-    "PaymentContextCode": "TransferToThirdParty",
-    "ContractPresentIndicator": false,
+    "PaymentContextCode": "TransferToSell",
+    "ContractPresentIndicator": true,
     "PaymentPurposeCode": "EPAY",
     "CategoryPurposeCode": "CASH", 
     "BeneficiaryPaymentDetailsPrepopulatedIndicator": false,
