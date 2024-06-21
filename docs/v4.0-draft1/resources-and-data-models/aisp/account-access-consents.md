@@ -138,7 +138,7 @@ The OBReadConsent1 object will be used for the call to:
 #### Notes
 
 * The fields in the OBReadConsent1 object are described in the Consent Elements section.
-* No fields have been identified for the Risk section and it has been removed from v4 onwards.
+* No fields have been identified for the Risk section.
 
 #### Data Dictionary
 
@@ -173,7 +173,7 @@ And response to:
     * StatusReason.
     * CreationDateTime.
     * StatusUpdateDateTime.
-* No fields have been identified for the Risk section and it has been removed from v4 onwards.
+* No fields have been identified for the Risk section.
 
 #### Data Dictionary
 
@@ -278,28 +278,7 @@ Content-Type: application/json
     "TransactionFromDateTime": "2017-05-03T00:00:00+00:00",
     "TransactionToDateTime": "2017-12-03T00:00:00+00:00"
   },
-  "Risk": {
-      "PaymentContextCode": "EcommerceMerchantInitiatedPayment",
-      "ContractPresentIndicator": false,
-      "PaymentPurposeCode": "EPAY",
-      "CategoryPurposeCode": "CASH", 
-      "BeneficiaryPaymentDetailsPrepopulatedIndicator": false,
-      "BeneficiaryAccountType": "Business",
-      "MerchantCategoryCode": "7300", 
-      "MerchantCustomerIdentification": "053598653254",
-      "DeliveryAddress": {
-        "AddressLine": [
-          "Flat 7",
-          "Acacia Lodge"
-        ],
-        "StreetName": "Acacia Avenue",
-        "BuildingNumber": "27",
-        "PostCode": "GU31 2ZZ",
-        "TownName": "Sparsholt",
-        "CountrySubDivision": "Wessex",
-        "Country": "UK"
-      }
-    },
+  "Risk": {},
   "Links": {
     "Self": "https://api.alphabank.com/open-banking/v3.1/aisp/account-access-consents/urn-alphabank-intent-88379"
   },
@@ -364,28 +343,7 @@ Content-Type: application/json
     "TransactionFromDateTime": "2017-05-03T00:00:00+00:00",
     "TransactionToDateTime": "2017-12-03T00:00:00+00:00"
   },
-  "Risk": {
-      "PaymentContextCode": "EcommerceMerchantInitiatedPayment",
-      "ContractPresentIndicator": false,
-      "PaymentPurposeCode": "EPAY",
-      "CategoryPurposeCode": "CASH", 
-      "BeneficiaryPaymentDetailsPrepopulatedIndicator": false,
-      "BeneficiaryAccountType": "Business",
-      "MerchantCategoryCode": "7300", 
-      "MerchantCustomerIdentification": "053598653254",
-      "DeliveryAddress": {
-        "AddressLine": [
-          "Flat 7",
-          "Acacia Lodge"
-        ],
-        "StreetName": "Acacia Avenue",
-        "BuildingNumber": "27",
-        "PostCode": "GU31 2ZZ",
-        "TownName": "Sparsholt",
-        "CountrySubDivision": "Wessex",
-        "Country": "UK"
-      }
-    },
+  "Risk": {},
   "Links": {
     "Self": "https://api.alphabank.com/open-banking/v3.1/aisp/account-access-consents/urn-alphabank-intent-88379"
   },
@@ -449,28 +407,7 @@ Content-Type: application/json
     "TransactionFromDateTime": "2017-05-03T00:00:00+00:00",
     "TransactionToDateTime": "2017-12-03T00:00:00+00:00"
   },
-  "Risk": {
-      "PaymentContextCode": "EcommerceMerchantInitiatedPayment",
-      "ContractPresentIndicator": false,
-      "PaymentPurposeCode": "EPAY",
-      "CategoryPurposeCode": "CASH", 
-      "BeneficiaryPaymentDetailsPrepopulatedIndicator": false,
-      "BeneficiaryAccountType": "Business",
-      "MerchantCategoryCode": "7300", 
-      "MerchantCustomerIdentification": "053598653254",
-      "DeliveryAddress": {
-        "AddressLine": [
-          "Flat 7",
-          "Acacia Lodge"
-        ],
-        "StreetName": "Acacia Avenue",
-        "BuildingNumber": "27",
-        "PostCode": "GU31 2ZZ",
-        "TownName": "Sparsholt",
-        "CountrySubDivision": "Wessex",
-        "Country": "UK"
-      }
-    },
+  "Risk": {},
   "Links": {
     "Self": "https://api.alphabank.com/open-banking/v3.1/aisp/account-access-consents/urn-alphabank-intent-88379"
   },
@@ -535,28 +472,7 @@ Content-Type: application/json
     "TransactionFromDateTime": "2017-05-03T00:00:00+00:00",
     "TransactionToDateTime": "2017-12-03T00:00:00+00:00"
   },
-  "Risk": {
-      "PaymentContextCode": "EcommerceMerchantInitiatedPayment",
-      "ContractPresentIndicator": false,
-      "PaymentPurposeCode": "EPAY",
-      "CategoryPurposeCode": "CASH", 
-      "BeneficiaryPaymentDetailsPrepopulatedIndicator": false,
-      "BeneficiaryAccountType": "Business",
-      "MerchantCategoryCode": "7300", 
-      "MerchantCustomerIdentification": "053598653254",
-      "DeliveryAddress": {
-        "AddressLine": [
-          "Flat 7",
-          "Acacia Lodge"
-        ],
-        "StreetName": "Acacia Avenue",
-        "BuildingNumber": "27",
-        "PostCode": "GU31 2ZZ",
-        "TownName": "Sparsholt",
-        "CountrySubDivision": "Wessex",
-        "Country": "UK"
-      }
-    },
+  "Risk": {},
   "Links": {
     "Self": "https://api.alphabank.com/open-banking/v3.1/aisp/account-access-consents/urn-alphabank-intent-88379"
   },
@@ -644,28 +560,7 @@ Content-Type: application/json
     "TransactionFromDateTime": "2017-05-03T00:00:00+00:00",
     "TransactionToDateTime": "2017-12-03T00:00:00+00:00"
   },
-  "Risk": {
-      "PaymentContextCode": "EcommerceMerchantInitiatedPayment",
-      "ContractPresentIndicator": false,
-      "PaymentPurposeCode": "EPAY",
-      "CategoryPurposeCode": "CASH", 
-      "BeneficiaryPaymentDetailsPrepopulatedIndicator": false,
-      "BeneficiaryAccountType": "Business",
-      "MerchantCategoryCode": "7300", 
-      "MerchantCustomerIdentification": "053598653254",
-      "DeliveryAddress": {
-        "AddressLine": [
-          "Flat 7",
-          "Acacia Lodge"
-        ],
-        "StreetName": "Acacia Avenue",
-        "BuildingNumber": "27",
-        "PostCode": "GU31 2ZZ",
-        "TownName": "Sparsholt",
-        "CountrySubDivision": "Wessex",
-        "Country": "UK"
-      }
-    },
+  "Risk": {},
   "Links": {
     "Self": "https://api.alphabank.com/open-banking/v3.1/aisp/account-access-consents/urn-alphabank-intent-88379"
   },
