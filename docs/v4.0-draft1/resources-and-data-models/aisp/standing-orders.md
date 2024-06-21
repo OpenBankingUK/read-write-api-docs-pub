@@ -190,8 +190,7 @@ Content-Type: application/json
         "MandateRelatedInformation": {
             "Frequency": {
             "PeriodType": "WEEK",
-            "CountPerPeriod": 1,
-            "PointInTime": "10"
+            "CountPerPeriod": 1
           }
         },
         "Reference": "Towbar Club 2 - We Love Towbars",
@@ -240,8 +239,7 @@ Content-Type: application/json
           "Reason": "To pay monthly membership",
           "Frequency": { 
             "Type": "MNTH",
-            "CountPerPeriod": 1,
-            "PointInTime": "00"
+            "CountPerPeriod": 1
           }
         },
         "StandingOrderStatusCode": "Active",
@@ -301,8 +299,7 @@ Content-Type: application/json
           "LastPaymentDate": "2027-08-12",
           "Frequency": {
             "PeriodType": "DAIL",           
-            "CountPerPeriod": 1,
-            "PointInTime": "12"
+            "CountPerPeriod": 1
           }
         },
         "Reference": "Towbar Club 2 - We Love Towbars",
@@ -349,8 +346,7 @@ Content-Type: application/json
           "Reason": "To pay monthly membership",
           "Frequency": { 
             "Type": "MNTH",
-            "CountPerPeriod": 1,
-            "PointInTime": "00"
+            "CountPerPeriod": 1
           }
         },
         "StandingOrderStatusCode": "Active",
@@ -374,8 +370,7 @@ Content-Type: application/json
             "LastPaymentDate": "2018-06-12",
             "Frequency":{
               "PeriodType": "MNTH",
-              "CountPerPeriod": 1,
-              "PointInTime": "01"
+              "CountPerPeriod": 1
           }
         },
         "Reference": "Golf - We Love Golf",

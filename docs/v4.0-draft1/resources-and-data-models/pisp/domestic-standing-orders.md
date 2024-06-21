@@ -325,8 +325,7 @@ Accept: application/json
         "Reason": "Golf membership fees", 
         "Frequency": { 
           "Type": "MNTH",
-          "CountPerPeriod": 1,
-          "PointInTime": "00"
+          "CountPerPeriod": 1
         }
       },
       "UltimateDebtor": {

@@ -326,8 +326,7 @@ Accept: application/json
       "Reason": "Membership fees", 
       "Frequency": {
         "Type": "WEEK",
-        "CountPerPeriod": 1,
-        "PointInTime": "00"
+        "CountPerPeriod": 1
       }
     },
 	  "FirstPaymentAmount": {
@@ -513,8 +512,7 @@ Content-Type: application/json
         "Reason": "Golf membership fees", 
         "Frequency": { 
           "Type": "MNTH",
-          "CountPerPeriod": 1,
-          "PointInTime": "00"
+          "CountPerPeriod": 1
         }
       },
 	  "Reference": "Pocket money for Damien",
@@ -700,14 +698,16 @@ Content-Type: application/json
 	"Permission": "Create",
     "Initiation": {
       "MandateRelatedInformation": {
-        "Frequency": "DAIL",
-        "PeriodType": "DAIL",
-        "FirstPaymentDate": "1976-06-06",
-        "LastPaymentDate": "1981-03-20",
-        "CountPerPeriod": 1,
-        "PointInTimeType": "DAIL",
-        "PointInTime": "T06:06:06+00:00"
-      },
+        "MandateIdentification": "Golfers",
+        "Classification": "FIXE",
+        "CategoryPurposeCode": "BONU",
+        "FirstPaymentDateTime": "2024-04-25T12:46:49.425Z",
+        "RecurringPaymentDateTime": "2024-04-25T12:46:49.425Z",
+        "FinalPaymentDateTime": "2024-04-25T12:46:49.425Z",
+        "Frequency": { 
+          "Type": "MNTH",
+          "CountPerPeriod": 1
+        },
 	  "Reference": "Pocket money for Damien",
 	  "FirstPaymentAmount": {
         "Amount": "6.66",
@@ -752,8 +752,7 @@ Content-Type: application/json
         "FinalPaymentDateTime": "2024-04-25T12:46:49.425Z",
         "Frequency": { 
           "Type": "MNTH",
-          "CountPerPeriod": 1,
-          "PointInTime": "00"
+          "CountPerPeriod": 1
         }
       },
       "UltimateDebtor": {
