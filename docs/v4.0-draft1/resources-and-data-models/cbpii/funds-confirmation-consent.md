@@ -88,7 +88,8 @@ Changes to the Status, such as being rejected, should be captured in `StatusReas
 
 This is the state diagram for Status.
 
-![CoFStateFlow](./images/PO_Consent_No_Reauth.png)
+![ Consent Authorisation.jpg ](./images/AIS_Consent.png)
+
 
 ### GET /funds-confirmation-consents/{ConsentId}
 
