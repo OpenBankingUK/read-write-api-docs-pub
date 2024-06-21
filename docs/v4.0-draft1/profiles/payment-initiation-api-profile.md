@@ -62,6 +62,7 @@
     - [OBRemittanceInformation2](#obremittanceinformation2)
       - [Data Dictionary](#data-dictionary-9)
     - [OBMandateRelatedInformation1](#obmandaterelatedinformation1)
+      - [Notes ](#notes)
       - [Data Dictionary](#data-dictionary-10)
     - [OBRegulatoryReporting1](#obregulatoryreporting1)
       - [Data Dictionary](#data-dictionary-11)
@@ -762,6 +763,10 @@ This section describes the OBSCASupportData1 class, which is used across all  _p
 
 #### OBMandateRelatedInformation1
 
+##### Notes 
+
+* Please note, within in the `Frequency` object either the `CountPerPeriod` __or__ the `PointInTime` field should be provided. It should __never__ be the case that both are used together.  
+
 ##### Data Dictionary
 | Name | Occurrence | XPath | EnhancedDefinition | Class | Codes |
 | --- | --- | --- | --- | --- | ---|
@@ -773,8 +778,8 @@ This section describes the OBSCASupportData1 class, which is used across all  _p
 | RecurringPaymentDateTime | 0..1 |OBMandateRelatedInformation1/RecurringPaymentDateTime |he date on which the first recurring payment for a Standing Order schedule will be made.<br><br> Usage: This must be populated only if the first recurring date is different to the first payment date. |ISODateTime | |
 | FinalPaymentDateTime | 0..1 |OBMandateRelatedInformation1/FinalPaymentDate |The date on which the final payment for a recurrent credit transfer  will be made. |ISODateTime | | 
 | Frequency | 1..1 |OBMandateRelatedInformation1/Frequency |Regularity with which credit transfer instructions are to be created and processed |OBFrequency6 || |
-| CountPerPeriod | 0..1 |OBMandateRelatedInformation1/Frequency/CountPerPeriod |Number of instructions to be created and processed during the specified period. |Int32 || |
-| PointInTime | 0..1 |OBMandateRelatedInformation1/Frequency/PointInTime |Further information on the exact point in time the event should take place.|Exact2NumericText | | 
+| CountPerPeriod | 0..1 |OBMandateRelatedInformation1/Frequency/CountPerPeriod |Number of instructions to be created and processed during the specified period. Specifies a frequency in terms of a count per period within a specified frequency type. |Int32 || |
+| PointInTime | 0..1 |OBMandateRelatedInformation1/Frequency/PointInTime |Further information on the exact point in time the event should take place. Specifies a frequency in terms of an exact point in time or moment within a specified frequency type.|Exact2NumericText | | 
 | Type | 1..1 |OBMandateRelatedInformation1/Frequency/Type |A code indicating the point in time for the credit transfer. |`OBFrequency6Code` | For all enum values see `OBFrequency6Code` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets/)| 
 | Reason| 0..1 |OBMandateRelatedInformation1/Reason | Reason for the setup of the credit transfer mandate. |Max256Text | |
 

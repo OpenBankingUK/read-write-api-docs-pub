@@ -346,8 +346,7 @@ Accept: application/json
       "FinalPaymentDateTime": "2024-04-25T12:46:49.425Z",
       "Frequency": {
         "Type": "WEEK",
-        "CountPerPeriod": 1,
-        "PointInTime": "00"
+        "CountPerPeriod": 1
       }
     },
     "Creditor": {
@@ -408,8 +407,7 @@ Accept: application/json
         "Reason": "Membership fees",
         "Frequency": { 
           "Type": "MNTH",
-          "CountPerPeriod": 1,
-          "PointInTime": "00"
+          "CountPerPeriod": 1
         }
       },
       "UltimateDebtor": {
@@ -716,8 +714,7 @@ Content-Type: application/json
       "Reason": "Golf membership fees", 
       "Frequency": { 
         "Type": "MNTH",
-        "CountPerPeriod": 1,
-        "PointInTime": "00"
+        "CountPerPeriod": 1
       }
     },
     "DebtorAccount": {

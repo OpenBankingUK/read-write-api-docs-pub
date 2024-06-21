@@ -39,6 +39,7 @@
     - [OBPostalAddress7](#obpostaladdress7)
       - [Data Dictionary](#obpostaladdress7-data-dictionary)
     - [OBMandateRelatedInformation1](#obmandaterelatedinformation1)
+      - [Notes ](#notes)
       - [Data Dictionary](#obmandaterelatedinformation1-data-dictionary)
     - [OBUltimateCreditor1](#obultimatecreditor1)
       - [Data Dictionary](#obultimatecreditor1-data-dictionary)
@@ -522,6 +523,11 @@ No fields for business logic security concerns have been identified for the Acco
 | AddressLine |0..7 |OBPostalAddress7/AddressLine |Information that locates and identifies a specific address, as defined by postal services, presented in free format text. |Array of Max70Text | | | |
 
 #### OBMandateRelatedInformation1
+
+##### Notes 
+
+* Please note, within in the `Frequency` object either the `CountPerPeriod` __or__ the `PointInTime` field should be provided. It should __never__ be the case that both are used together.  
+
 
 ##### OBMandateRelatedInformation1 Data Dictionary
 | Name | Occurrence | XPath | EnhancedDefinition | Class | Codes |

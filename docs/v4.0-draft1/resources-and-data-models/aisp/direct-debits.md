@@ -131,8 +131,7 @@ Content-Type: application/json
             "Reason": "To pay monthly membership",
             "Frequency": {
               "Type": "WEEK",
-              "CountPerPeriod": 1,
-              "PointInTime": "00"
+              "CountPerPeriod": 1
           }
         },
         "DirectDebitStatusCode": "Active",
@@ -192,8 +191,7 @@ Content-Type: application/json
             "Reason": "To pay monthly membership",
             "Frequency": {
               "Type": "MNTH",
-              "CountPerPeriod": 1,
-              "PointInTime": "00"
+              "CountPerPeriod": 1
           }
         },
         "DirectDebitStatusCode": "Active",
@@ -216,8 +214,7 @@ Content-Type: application/json
           "FinalPaymentDateTime": "2024-04-25T12:46:49.425Z",
           "Frequency": { 
             "Type": "MNTH",
-            "CountPerPeriod": 1,
-            "PointInTime": "00"
+            "CountPerPeriod": 1
           }
         },
         "DirectDebitStatusCode": "Active",
