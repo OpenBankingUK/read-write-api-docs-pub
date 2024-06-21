@@ -1724,7 +1724,7 @@ Content-Type: application/json
 
 ### POST /domestic-vrp-consents/{ConsentId}/funds-confirmation
 
-The CBPII connects to the ASPSP that services the PSU's account(s) and creates a **funds-confirmation-consent** resource
+The TPP connects to the ASPSP that services the PSU's account(s) and creates a **funds-confirmation-consent** resource
 
 #### Request
 
