@@ -118,7 +118,7 @@ __Payment order state model key:__
 | Green (Bold) | Mandatory |
 | Orange (Italic) | Optional, but recommended |
 
-![Payment Order Status](./images/PIS_PO_Statuses.png)
+![Payment Order Status](./images/PIS_PO_Statuses_1.png)
 
 
 ##### Multiple Authorisation
