@@ -785,21 +785,21 @@ Errors can occur at several key stages of an Open Banking journey, the following
 #### API Calls
 Errors generated during an API call, including the initial staging of a consent, should follow the standard API error response pattern of pre-defined HTTP code with the [error response structure](#error-response-structure) for Open Banking Read/Write APIs.
 
-All technical and business validation errors must be returned as an API error and also be reflected in the consent endpoint using ISO 20022 reasons and/or OBL Proprietary reason codes as appropriate.
+All technical and business validation errors must be returned as an API error and may optionally also be reflected in the consent endpoint using ISO 20022 reasons and/or OBL Proprietary reason codes as appropriate.
 
 A list of codes can be found in the [External_Internal_Codesets repository](https://github.com/OpenBankingUK/External_internal_CodeSets)
 
 #### Redirect errors
-Errors that occur when the PSU is redirected to the ASPSP to complete authentication and returned on the query string to the TPP should include an appropriate code from the OBExternalStatusReason1Code enumeration in the `error_description` field. 
+Errors that occur when the PSU is redirected to the ASPSP to complete authentication and returned on the query string to the TPP may optionally include an appropriate code from the OBExternalStatusReason1Code enumeration in the `error_description` field. 
 
-The consent payload `StatusReasonCode` should also be updated with the same code.
+The consent payload `StatusReasonCode` may also be updated with the same code.
 ![Redirect Error Example](./images/redirect-error-example.png)
 
 
 #### Token Errors
-Scenarios where an action taken by the PSU or ASPSP which results in a token being expired/suspended or PSU re-authentication is required should return the appropriate code in the token endpoint `error_description` and the consent payload `Status` should be updated with the same reason code.
+Scenarios where an action taken by the PSU or ASPSP which results in a token being expired/suspended or PSU re-authentication is required may return an appropriate code in the token endpoint `error_description` and may optionally update the consent payload `Status`.
 
-Final token expiry should be aligned to the consent end-date, the consent status should be updated after expiry and appropriate token errors returned.
+Final token expiry should be aligned to the consent end-date. Where this is done the consent status may optionally be updated after expiry and appropriate token errors returned.
 
 Note: Normal expiry of tokens, such as when a refresh token has been issued and the access token lifetime has been reached, should not result in changes to the Consent endpoint `Status` field.
 
@@ -840,9 +840,9 @@ An access token is bound to a single PSU and an intent.
 
 #### Error Condition
 
-If the PSU does not complete a successful consent authorisation (e.g. if the PSU is not authenticated successfully), the authorization code grant ends with a redirection to the TPP with an error response as described in OpenID Connect Core Specification [Section 3.1.2.6](https://openid.net/specs/openid-connect-core-1_0.html#AuthError). The PSU is redirected to the TPP with an error parameter indicating the reason for failure. The ASPSP must also update the Consent `Status` using ISO 20022 reason codes and/or OBL Proprietary reason codes as appropriate.
+If the PSU does not complete a successful consent authorisation (e.g. if the PSU is not authenticated successfully), the authorization code grant ends with a redirection to the TPP with an error response as described in OpenID Connect Core Specification [Section 3.1.2.6](https://openid.net/specs/openid-connect-core-1_0.html#AuthError). The PSU is redirected to the TPP with an error parameter indicating the reason for failure. The ASPSP may also update the Consent `Status` using ISO 20022 reason codes and/or OBL Proprietary reason codes as appropriate.
 
-The consent payload `StatusReasonCode` should also be updated with the same code.
+The consent payload `StatusReasonCode` may also be updated with the same code.
 
 #### Token Expiry Time
 
