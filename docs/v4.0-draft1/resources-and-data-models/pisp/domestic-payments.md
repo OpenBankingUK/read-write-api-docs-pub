@@ -144,9 +144,9 @@ Any rejections in the multiple authorisation process should result in the MultiA
 
 |  | Status |Status Description |
 | ---| ------ |------------------ |
-| 1 |AWAF |The consent resource is awaiting further authorisation. |
-| 2 |RJCT |The consent resource has been rejected. |
-| 3 |AUTH |The consent resource has been successfully authorised. |
+| 1 |AWAF |The payment-order resource is awaiting further authorisation. |
+| 2 |RJCT |The payment-order resource has been rejected. |
+| 3 |AUTH |The payment-order resource has been successfully authorised. |
 
 Refer to [External_Internal_CodeSets](https://github.com/OpenBankingUK/External_Internal_CodeSets) -> OB_Internal_CodeSet -> `OBInternalStatus2Code`.
 
