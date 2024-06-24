@@ -73,6 +73,21 @@ Accept: application/json
           "Type": "Telephone"
         }
       },
+      "CreditorAgent": {  
+          "LEI": "IZ9Q00LZEVUKWCQY6X15",
+          "SchemeName": "UK.OBIE.BICFI",
+          "Identification": "80200112344562",
+          "Name": "The Credit Agent", 
+          "PostalAddress": { 
+            "AddressType": "BIZZ",
+            "StreetName": "Bank Street",
+            "BuildingNumber": "11",
+            "Floor": "6",
+            "PostCode": "Z78 4TY",
+            "TownName": "London",
+            "Country": "UK"
+        }
+      },
       "CreditorAccount": {
         "SchemeName": "UK.OBIE.SortCodeAccountNumber",
         "Identification": "30949330000010",
@@ -275,6 +290,21 @@ Content-Type: application/json
           "Identification": "441234012348",
           "Code": "TELE",
           "Type": "Telephone"
+        }
+      },
+      "CreditorAgent": {  
+          "LEI": "IZ9Q00LZEVUKWCQY6X15",
+          "SchemeName": "UK.OBIE.BICFI",
+          "Identification": "80200112344562",
+          "Name": "The Credit Agent", 
+          "PostalAddress": { 
+            "AddressType": "BIZZ",
+            "StreetName": "Bank Street",
+            "BuildingNumber": "11",
+            "Floor": "6",
+            "PostCode": "Z78 4TY",
+            "TownName": "London",
+            "Country": "UK"
         }
       },
       "CreditorPostalAddress": {
@@ -494,6 +524,21 @@ Content-Type: application/json
           "Type": "Telephone"
         }
       },
+      "CreditorAgent": {  
+          "LEI": "IZ9Q00LZEVUKWCQY6X15",
+          "SchemeName": "UK.OBIE.BICFI",
+          "Identification": "80200112344562",
+          "Name": "The Credit Agent", 
+          "PostalAddress": { 
+            "AddressType": "BIZZ",
+            "StreetName": "Bank Street",
+            "BuildingNumber": "11",
+            "Floor": "6",
+            "PostCode": "Z78 4TY",
+            "TownName": "London",
+            "Country": "UK"
+        }
+      },
       "CreditorPostalAddress": {
         "AddressType": "BIZZ",
         "Department": "Finance",
@@ -652,6 +697,21 @@ Accept: application/json
           "Type": "Telephone"
         }
       },
+      "CreditorAgent": {  
+          "LEI": "IZ9Q00LZEVUKWCQY6X15",
+          "SchemeName": "UK.OBIE.BICFI",
+          "Identification": "80200112344562",
+          "Name": "The Credit Agent", 
+          "PostalAddress": { 
+            "AddressType": "BIZZ",
+            "StreetName": "Bank Street",
+            "BuildingNumber": "11",
+            "Floor": "6",
+            "PostCode": "Z78 4TY",
+            "TownName": "London",
+            "Country": "UK"
+        }
+      },
       "CreditorAccount": {
         "SchemeName": "UK.OBIE.SortCodeAccountNumber",
         "Identification": "30949330000010",
@@ -776,6 +836,21 @@ Accept: application/json
       "InstructedAmount": {
         "Amount": "10.00",
         "Currency": "GBP"
+      },
+      "CreditorAgent": {  
+          "LEI": "IZ9Q00LZEVUKWCQY6X15",
+          "SchemeName": "UK.OBIE.BICFI",
+          "Identification": "80200112344562",
+          "Name": "The Credit Agent", 
+          "PostalAddress": { 
+            "AddressType": "BIZZ",
+            "StreetName": "Bank Street",
+            "BuildingNumber": "11",
+            "Floor": "6",
+            "PostCode": "Z78 4TY",
+            "TownName": "London",
+            "Country": "UK"
+        }
       },
       "CreditorPostalAddress": {
         "AddressType": "BIZZ",
@@ -917,6 +992,21 @@ Content-Type: application/json
         "SecondaryIdentification": "Roll 90210",
         "Name": "Marcus Sweepimus",
       },
+      "CreditorAgent": {  
+          "LEI": "IZ9Q00LZEVUKWCQY6X15",
+          "SchemeName": "UK.OBIE.BICFI",
+          "Identification": "80200112344562",
+          "Name": "The Credit Agent", 
+          "PostalAddress": { 
+            "AddressType": "BIZZ",
+            "StreetName": "Bank Street",
+            "BuildingNumber": "11",
+            "Floor": "6",
+            "PostCode": "Z78 4TY",
+            "TownName": "London",
+            "Country": "UK"
+        }
+      },
       "CreditorAccount": {
         "SchemeName": "SortCodeAccountNumber",
         "Identification": "30949330000010",
@@ -1035,6 +1125,21 @@ Content-Type: application/json
           "Identification": "441234012385",
           "Code": "TELE",
           "Type": "Telephone"
+        }
+      },
+      "CreditorAgent": {  
+          "LEI": "IZ9Q00LZEVUKWCQY6X15",
+          "SchemeName": "UK.OBIE.BICFI",
+          "Identification": "80200112344562",
+          "Name": "The Credit Agent", 
+          "PostalAddress": { 
+            "AddressType": "BIZZ",
+            "StreetName": "Bank Street",
+            "BuildingNumber": "11",
+            "Floor": "6",
+            "PostCode": "Z78 4TY",
+            "TownName": "London",
+            "Country": "UK"
         }
       },
       "CreditorPostalAddress": {
@@ -1198,6 +1303,21 @@ Accept: application/json
             }
           }]
       }],
+      "CreditorAgent": {  
+          "LEI": "IZ9Q00LZEVUKWCQY6X15",
+          "SchemeName": "UK.OBIE.BICFI",
+          "Identification": "80200112344562",
+          "Name": "The Credit Agent", 
+          "PostalAddress": { 
+            "AddressType": "BIZZ",
+            "StreetName": "Bank Street",
+            "BuildingNumber": "11",
+            "Floor": "6",
+            "PostCode": "Z78 4TY",
+            "TownName": "London",
+            "Country": "UK"
+        }
+      },
       "CreditorAccount": {
         "SchemeName": "SortCodeAccountNumber",
         "Identification": "30949330000010",
@@ -1374,6 +1494,21 @@ Content-Type: application/json
           "Identification": "441234012345",
           "Code": "TELE",
           "Type": "Telephone"
+        }
+      },
+      "CreditorAgent": {  
+          "LEI": "IZ9Q00LZEVUKWCQY6X15",
+          "SchemeName": "UK.OBIE.BICFI",
+          "Identification": "80200112344562",
+          "Name": "The Credit Agent", 
+          "PostalAddress": { 
+            "AddressType": "BIZZ",
+            "StreetName": "Bank Street",
+            "BuildingNumber": "11",
+            "Floor": "6",
+            "PostCode": "Z78 4TY",
+            "TownName": "London",
+            "Country": "UK"
         }
       },
       "CreditorPostalAddress": {
@@ -1596,6 +1731,21 @@ Content-Type: application/json
         "CareOf": "Ms Jane Smith",
         "CountrySubDivision": "England",
         "Country": "UK"
+      },
+      "CreditorAgent": {  
+          "LEI": "IZ9Q00LZEVUKWCQY6X15",
+          "SchemeName": "UK.OBIE.BICFI",
+          "Identification": "80200112344562",
+          "Name": "The Credit Agent", 
+          "PostalAddress": { 
+            "AddressType": "BIZZ",
+            "StreetName": "Bank Street",
+            "BuildingNumber": "11",
+            "Floor": "6",
+            "PostCode": "Z78 4TY",
+            "TownName": "London",
+            "Country": "UK"
+        }
       },
       "CreditorAccount": {
         "SchemeName": "SortCodeAccountNumber",
@@ -1823,6 +1973,21 @@ Accept: application/json
           "Type": "Telephone"
         }
       },
+      "CreditorAgent": {  
+          "LEI": "IZ9Q00LZEVUKWCQY6X15",
+          "SchemeName": "UK.OBIE.BICFI",
+          "Identification": "80200112344562",
+          "Name": "The Credit Agent", 
+          "PostalAddress": { 
+            "AddressType": "BIZZ",
+            "StreetName": "Bank Street",
+            "BuildingNumber": "11",
+            "Floor": "6",
+            "PostCode": "Z78 4TY",
+            "TownName": "London",
+            "Country": "UK"
+        }
+      },
       "CreditorPostalAddress": {
         "AddressType": "BIZZ",
         "Department": "Finance",
@@ -1945,6 +2110,21 @@ Accept: application/json
           "Identification": "441234012385",
           "Code": "TELE",
           "Type": "Telephone"
+        }
+      },
+      "CreditorAgent": {  
+          "LEI": "IZ9Q00LZEVUKWCQY6X15",
+          "SchemeName": "UK.OBIE.BICFI",
+          "Identification": "80200112344562",
+          "Name": "The Credit Agent", 
+          "PostalAddress": { 
+            "AddressType": "BIZZ",
+            "StreetName": "Bank Street",
+            "BuildingNumber": "11",
+            "Floor": "6",
+            "PostCode": "Z78 4TY",
+            "TownName": "London",
+            "Country": "UK"
         }
       },
       "CreditorPostalAddress": {
@@ -2087,6 +2267,21 @@ Content-Type: application/json
           "Type": "Telephone"
         }
       },
+      "CreditorAgent": {  
+          "LEI": "IZ9Q00LZEVUKWCQY6X15",
+          "SchemeName": "UK.OBIE.BICFI",
+          "Identification": "80200112344562",
+          "Name": "The Credit Agent", 
+          "PostalAddress": { 
+            "AddressType": "BIZZ",
+            "StreetName": "Bank Street",
+            "BuildingNumber": "11",
+            "Floor": "6",
+            "PostCode": "Z78 4TY",
+            "TownName": "London",
+            "Country": "UK"
+        }
+      },
       "CreditorPostalAddress": {
         "AddressType": "BIZZ",
         "Department": "Finance",
@@ -2194,6 +2389,21 @@ Content-Type: application/json
           "Identification": "441234012385",
           "Code": "TELE",
           "Type": "Telephone"
+        }
+      },
+      "CreditorAgent": {  
+          "LEI": "IZ9Q00LZEVUKWCQY6X15",
+          "SchemeName": "UK.OBIE.BICFI",
+          "Identification": "80200112344562",
+          "Name": "The Credit Agent", 
+          "PostalAddress": { 
+            "AddressType": "BIZZ",
+            "StreetName": "Bank Street",
+            "BuildingNumber": "11",
+            "Floor": "6",
+            "PostCode": "Z78 4TY",
+            "TownName": "London",
+            "Country": "UK"
         }
       },
       "CreditorPostalAddress": {
