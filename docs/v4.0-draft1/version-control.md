@@ -20,6 +20,7 @@ v4.0-Draft 1 - 25th April 2024
 | Payments | `StatusCode` reverted back to `Status`</li></ul></li><li>|
 | All | `OBPostalAddress6` object replaced by `OBPostalAddress7`|
 | All | `OBRemittanceInformation1` object replaced by `OBRemittanceInformation2`|
+| All | `CreditorAgent` fields consolidated into one object - `OBBranchAndFinancialInstitutionIdentification6`|
 
 
 
