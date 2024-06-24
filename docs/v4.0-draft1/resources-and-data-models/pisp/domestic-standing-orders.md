@@ -131,7 +131,7 @@ __Payment order state model key:__
 ![Payment Order Status](./images/PIS_PO_SOFlow1Statuses.png)
 
 ##### State 2
-![Payment Order Status](./images/PIS_PO_SOFlow2Statuses_2.png)
+![Payment Order Status](./images/PIS_PO_SOFlow2Statuses_1.png)
 
 ##### Multiple Authorisation
 If the payment-order requires multiple authorisations the status of the multiple authorisations will be updated in the MultiAuthorisation object.
