@@ -117,7 +117,19 @@ This endpoint is only used for migration of consent data across Standard version
 
 This endpoint should not be used to modify content of an existing consent created on the same version.  The ASPSP __must__ reject request if a TPP attempts to modify an existing resource which does not require migration to the new format.
 
-The request body should contain a partial JSON body containing only the changed schema and any associated enumeration values that have moved to short code format, matching the current API specification.  Values originally supplied in the consent such as account information, control parameters, dates or monetary values __must not__ change and the ASPSP __must__ reject any requests which modify these values.
+The request body should contain an array of JSON Patch operations, as per [RFC 6902](https://datatracker.ietf.org/doc/html/rfc6902), adressing only the changed schema and any associated enumeration values that have moved to short code format, matching the current API specification.  Values originally supplied in the consent such as account information, control parameters, dates or monetary values __must not__ change and the ASPSP __must__ reject any requests which modify these values.
+
+PATCH operations are atomic, all requested changes are successfully applied or none are. Errors should reflect the underlying cause and indicate which field caused the failure if relevant.
+
+The following examples shows a series of patch operations that updates the ContractPresentIndicator field name and updates the AddressType value to the ISO code value.
+``` json
+[
+ { "op": "remove", "path": "/Risk/ContractPresentInidicator" },
+ { "op": "add", "path": "/Risk/ContractPresentIndicator", "value": "true" },
+ { "op": "replace", "path": "/Data/Initiation/CreditorPostalAddress/AddressType", "value": "HOME" }
+ { "op": "replace", "path": "/Risk/DeliveryAddress/AddressType", "value": "HOME" }
+]
+```
 
 Successful submission must return the full updated consent resource body.
 
