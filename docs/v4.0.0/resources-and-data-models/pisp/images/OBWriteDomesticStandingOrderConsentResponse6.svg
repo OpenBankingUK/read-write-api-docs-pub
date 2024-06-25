@@ -146,7 +146,7 @@ ChargeBearer [1..1]
 <title>Type: string
 Description: Charge type, in a coded form.
 Values:
- - UK.OB.CHAPSOut
+ - UK.OBIE.CHAPSOut
 </title>
 Type [1..1]
 </text>
@@ -205,7 +205,7 @@ Name [0..1]
 
 <text x="70.80000000000001em" y="21.4em" fill="darkslateblue">
 <title>Type: string
-Description: ^ Name of the identification scheme, in a coded form as published in an external list. | Namespaced Enumeration OBExternalAccountIdentification4Code
+Description: ^ Name of the identification scheme, in a coded form as published in an external list. | Namespaced Enumeration OBInternalAccountIdentification4Code
 </title>
 SchemeName [0..1]
 </text>
@@ -253,12 +253,12 @@ Name [1..1]
 <title>Type: string
 Description: Name of the identification scheme, in a coded form as published in an external list.
 Values:
- - UK.OB.BBAN
- - UK.OB.IBAN
- - UK.OB.PAN
- - UK.OB.Paym
- - UK.OB.SortCodeAccountNumber
- - UK.OB.Wallet
+ - UK.OBIE.BBAN
+ - UK.OBIE.IBAN
+ - UK.OBIE.PAN
+ - UK.OBIE.Paym
+ - UK.OBIE.SortCodeAccountNumber
+ - UK.OBIE.Wallet
 </title>
 SchemeName [1..1]
 </text>
@@ -355,12 +355,12 @@ Name [0..1]
 <title>Type: string
 Description: Name of the identification scheme, in a coded form as published in an external list.
 Values:
- - UK.OB.BBAN
- - UK.OB.IBAN
- - UK.OB.PAN
- - UK.OB.Paym
- - UK.OB.SortCodeAccountNumber
- - UK.OB.Wallet
+ - UK.OBIE.BBAN
+ - UK.OBIE.IBAN
+ - UK.OBIE.PAN
+ - UK.OBIE.Paym
+ - UK.OBIE.SortCodeAccountNumber
+ - UK.OBIE.Wallet
 </title>
 SchemeName [1..1]
 </text>
@@ -593,6 +593,7 @@ Frequency
 <text x="115.60000000000001em" y="59.599999999999994em" fill="darkslateblue">
 <title>Type: integer
 Format: int32
+Description: Number of instructions to be created and processed during the specified period .Specifies a frequency in terms of a count per period within a specified frequency type. Note: should not be used alongside `PointInTime`
 </title>
 CountPerPeriod [0..1]
 </text>
@@ -600,7 +601,7 @@ CountPerPeriod [0..1]
 <text x="115.60000000000001em" y="60.89999999999999em" fill="darkslateblue">
 <title>Type: string
 MaxLength: 2
-Description: Exact2NumericText - Further information on the exact point in time the event should take place
+Description: Exact2NumericText - Further information on the exact point in time the event should take place. Specifies a frequency in terms of an exact point in time or moment within a specified frequency type. Note: should not be used alongside `CountPerSide`
 </title>
 PointInTime [0..1]
 </text>
@@ -961,12 +962,12 @@ Name [0..1]
 <title>Type: string
 Description: Name of the identification scheme, in a coded form as published in an external list.
 Values:
- - UK.OB.BBAN
- - UK.OB.IBAN
- - UK.OB.PAN
- - UK.OB.Paym
- - UK.OB.SortCodeAccountNumber
- - UK.OB.Wallet
+ - UK.OBIE.BBAN
+ - UK.OBIE.IBAN
+ - UK.OBIE.PAN
+ - UK.OBIE.Paym
+ - UK.OBIE.SortCodeAccountNumber
+ - UK.OBIE.Wallet
 </title>
 SchemeName [0..1]
 </text>
@@ -1183,12 +1184,12 @@ Name [0..1]
 <title>Type: string
 Description: Name of the identification scheme, in a coded form as published in an external list.
 Values:
- - UK.OB.BBAN
- - UK.OB.IBAN
- - UK.OB.PAN
- - UK.OB.Paym
- - UK.OB.SortCodeAccountNumber
- - UK.OB.Wallet
+ - UK.OBIE.BBAN
+ - UK.OBIE.IBAN
+ - UK.OBIE.PAN
+ - UK.OBIE.Paym
+ - UK.OBIE.SortCodeAccountNumber
+ - UK.OBIE.Wallet
 </title>
 SchemeName [0..1]
 </text>
@@ -1429,7 +1430,7 @@ Path [0..1]
 MinLength: 1
 MaxLength: 4
 Description: Specifies the status reason in a code form. 
- For a full description see `ExternalStatusReason1Code` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets)
+ For a full description see `OBExternalStatusReason1Code` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets)
 </title>
 StatusReasonCode [0..1]
 </text>
@@ -2223,7 +2224,7 @@ UnitNumber [0..1]
 <line x1="108.60000000000001em" y1="57.3em" x2="110.60000000000001em" y2="57.3em" stroke="black" marker-start="url(#Diamond)"/>
 <line x1="110.60000000000001em" y1="57.3em" x2="110.60000000000001em" y2="57.3em" stroke="black" />
 <line x1="110.60000000000001em" y1="57.3em" x2="113.80000000000001em" y2="57.3em" stroke="black" marker-end="url(#Triangle)"/>
-<text x="111.10000000000001em" y="56.8em">0..1</text>
+<text x="111.10000000000001em" y="56.8em">1..1</text>
 <line x1="77.80000000000001em" y1="25.7em" x2="79.80000000000001em" y2="25.7em" stroke="black" marker-start="url(#Diamond)"/>
 <line x1="79.80000000000001em" y1="25.7em" x2="79.80000000000001em" y2="70.39999999999999em" stroke="black" />
 <line x1="79.80000000000001em" y1="70.39999999999999em" x2="83.00000000000001em" y2="70.39999999999999em" stroke="black" marker-end="url(#Triangle)"/>

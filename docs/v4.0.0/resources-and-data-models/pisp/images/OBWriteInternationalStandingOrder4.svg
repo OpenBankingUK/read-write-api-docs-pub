@@ -37,7 +37,7 @@ Description: OB: Unique identification as assigned by the ASPSP to uniquely iden
 ConsentId [1..1]
 </text>
 
-<rect x="53em" y="1em" width="23.200000000000003em" height="8.2em" fill="beige" stroke="black" stroke-width="2"/>
+<rect x="53em" y="1em" width="23.200000000000003em" height="9.5em" fill="beige" stroke="black" stroke-width="2"/>
 <text style="font-weight:bold" text-anchor="middle" x="64.6em" y="2.3em" fill="black">
 <title>The Initiation payload is sent by the initiating party to the ASPSP. It is used to request movement of funds from the debtor account to a creditor for an international standing order.</title>
 Initiation
@@ -72,6 +72,15 @@ DestinationCountryCode [0..1]
 </text>
 
 <text x="54em" y="8.2em" fill="darkslateblue">
+<title>Type: string
+MinLength: 1
+MaxLength: 140
+Description: Specifies the purpose of an international payment, when there is no corresponding 4 character code available in the ISO20022 list of Purpose Codes.
+</title>
+ExtendedPurpose [0..1]
+</text>
+
+<text x="54em" y="9.5em" fill="darkslateblue">
 <title>Type: string
 MinLength: 1
 MaxLength: 4
@@ -311,12 +320,12 @@ Name [1..1]
 <title>Type: string
 Description: Name of the identification scheme, in a coded form as published in an external list.
 Values:
- - UK.OB.BBAN
- - UK.OB.IBAN
- - UK.OB.PAN
- - UK.OB.Paym
- - UK.OB.SortCodeAccountNumber
- - UK.OB.Wallet
+ - UK.OBIE.BBAN
+ - UK.OBIE.IBAN
+ - UK.OBIE.PAN
+ - UK.OBIE.Paym
+ - UK.OBIE.SortCodeAccountNumber
+ - UK.OBIE.Wallet
 </title>
 SchemeName [1..1]
 </text>
@@ -423,7 +432,7 @@ Name [0..1]
 <title>Type: string
 Description: Name of the identification scheme, in a coded form as published in an external list.
 Values:
- - UK.OB.BICFI
+ - UK.OBIE.BICFI
 </title>
 SchemeName [0..1]
 </text>
@@ -631,12 +640,12 @@ Name [0..1]
 <title>Type: string
 Description: Name of the identification scheme, in a coded form as published in an external list.
 Values:
- - UK.OB.BBAN
- - UK.OB.IBAN
- - UK.OB.PAN
- - UK.OB.Paym
- - UK.OB.SortCodeAccountNumber
- - UK.OB.Wallet
+ - UK.OBIE.BBAN
+ - UK.OBIE.IBAN
+ - UK.OBIE.PAN
+ - UK.OBIE.Paym
+ - UK.OBIE.SortCodeAccountNumber
+ - UK.OBIE.Wallet
 </title>
 SchemeName [1..1]
 </text>
@@ -1044,12 +1053,12 @@ Name [0..1]
 <title>Type: string
 Description: Name of the identification scheme, in a coded form as published in an external list.
 Values:
- - UK.OB.BBAN
- - UK.OB.IBAN
- - UK.OB.PAN
- - UK.OB.Paym
- - UK.OB.SortCodeAccountNumber
- - UK.OB.Wallet
+ - UK.OBIE.BBAN
+ - UK.OBIE.IBAN
+ - UK.OBIE.PAN
+ - UK.OBIE.Paym
+ - UK.OBIE.SortCodeAccountNumber
+ - UK.OBIE.Wallet
 </title>
 SchemeName [0..1]
 </text>
@@ -1266,12 +1275,12 @@ Name [0..1]
 <title>Type: string
 Description: Name of the identification scheme, in a coded form as published in an external list.
 Values:
- - UK.OB.BBAN
- - UK.OB.IBAN
- - UK.OB.PAN
- - UK.OB.Paym
- - UK.OB.SortCodeAccountNumber
- - UK.OB.Wallet
+ - UK.OBIE.BBAN
+ - UK.OBIE.IBAN
+ - UK.OBIE.PAN
+ - UK.OBIE.Paym
+ - UK.OBIE.SortCodeAccountNumber
+ - UK.OBIE.Wallet
 </title>
 SchemeName [0..1]
 </text>

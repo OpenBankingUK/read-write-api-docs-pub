@@ -109,14 +109,17 @@ Name [0..1]
 
 <text x="63.2em" y="6.9em" fill="darkslateblue">
 <title>Type: string
-Description: Name of the identification scheme, in a coded form as published in an external list.
+Description: Balance type, in a coded form.
 Values:
- - UK.OB.BBAN
- - UK.OB.IBAN
- - UK.OB.PAN
- - UK.OB.Paym
- - UK.OB.SortCodeAccountNumber
- - UK.OB.Wallet
+ - CLAV
+ - XPCH
+ - FWAV
+ - INFO
+ - ITAV
+ - ITBD
+ - OPAV
+ - OPBD
+ - PRCD
 </title>
 SchemeName [1..1]
 </text>
@@ -223,7 +226,7 @@ Name [0..1]
 <title>Type: string
 Description: Name of the identification scheme, in a coded form as published in an external list.
 Values:
- - UK.OB.BICFI
+ - UK.OBIE.BICFI
 </title>
 SchemeName [0..1]
 </text>
@@ -592,7 +595,9 @@ Frequency
 <text x="94em" y="60.7em" fill="darkslateblue">
 <title>Type: integer
 Format: int32
-Description: Number of instructions to be created and processed during the specified period.
+Description: Number of instructions to be created and processed during the specified period. 
+Specifies a frequency in terms of a count per period within a specified frequency type. 
+ Note: should not be used alongside `PointInTime`
 </title>
 CountPerPeriod [0..1]
 </text>
@@ -600,7 +605,9 @@ CountPerPeriod [0..1]
 <text x="94em" y="62em" fill="darkslateblue">
 <title>Type: string
 MaxLength: 2
-Description: Exact2NumericText - Further information on the exact point in time the event should take place
+Description: Exact2NumericText - Further information on the exact point in time the event should take place.
+Specifies a frequency in terms of an exact point in time or moment within a specified frequency type. 
+ Note: should not be used alongside `CountPerSide`
 </title>
 PointInTime [0..1]
 </text>
@@ -767,7 +774,7 @@ TotalPages [0..1]
 <line x1="87em" y1="58.400000000000006em" x2="89em" y2="58.400000000000006em" stroke="black" marker-start="url(#Diamond)"/>
 <line x1="89em" y1="58.400000000000006em" x2="89em" y2="58.400000000000006em" stroke="black" />
 <line x1="89em" y1="58.400000000000006em" x2="92.2em" y2="58.400000000000006em" stroke="black" marker-end="url(#Triangle)"/>
-<text x="89.5em" y="57.900000000000006em">0..1</text>
+<text x="89.5em" y="57.900000000000006em">1..1</text>
 <line x1="56.2em" y1="2em" x2="58.2em" y2="2em" stroke="black" marker-start="url(#Diamond)"/>
 <line x1="58.2em" y1="2em" x2="58.2em" y2="71.5em" stroke="black" />
 <line x1="58.2em" y1="71.5em" x2="61.400000000000006em" y2="71.5em" stroke="black" marker-end="url(#Triangle)"/>

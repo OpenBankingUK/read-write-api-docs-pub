@@ -16,7 +16,7 @@
 		<path d="M 0 5 L 8 10 L 16 5 L 8 0 z" />
 	</marker>   
 </defs>
-<rect x="1em" y="1em" width="23.200000000000003em" height="8.2em" fill="beige" stroke="black" stroke-width="2"/>
+<rect x="1em" y="1em" width="23.200000000000003em" height="9.5em" fill="beige" stroke="black" stroke-width="2"/>
 <text style="font-weight:bold" text-anchor="middle" x="12.600000000000001em" y="2.3em" fill="black">
 <title>The Initiation payload is sent by the initiating party to the ASPSP. It is used to request movement of funds from the debtor account to a creditor for an international standing order.</title>
 OBInternationalStandingOrder4
@@ -51,6 +51,15 @@ DestinationCountryCode [0..1]
 </text>
 
 <text x="2em" y="8.2em" fill="darkslateblue">
+<title>Type: string
+MinLength: 1
+MaxLength: 140
+Description: Specifies the purpose of an international payment, when there is no corresponding 4 character code available in the ISO20022 list of Purpose Codes.
+</title>
+ExtendedPurpose [0..1]
+</text>
+
+<text x="2em" y="9.5em" fill="darkslateblue">
 <title>Type: string
 MinLength: 1
 MaxLength: 4
@@ -290,12 +299,12 @@ Name [1..1]
 <title>Type: string
 Description: Name of the identification scheme, in a coded form as published in an external list.
 Values:
- - UK.OB.BBAN
- - UK.OB.IBAN
- - UK.OB.PAN
- - UK.OB.Paym
- - UK.OB.SortCodeAccountNumber
- - UK.OB.Wallet
+ - UK.OBIE.BBAN
+ - UK.OBIE.IBAN
+ - UK.OBIE.PAN
+ - UK.OBIE.Paym
+ - UK.OBIE.SortCodeAccountNumber
+ - UK.OBIE.Wallet
 </title>
 SchemeName [1..1]
 </text>
@@ -402,7 +411,7 @@ Name [0..1]
 <title>Type: string
 Description: Name of the identification scheme, in a coded form as published in an external list.
 Values:
- - UK.OB.BICFI
+ - UK.OBIE.BICFI
 </title>
 SchemeName [0..1]
 </text>
@@ -610,12 +619,12 @@ Name [0..1]
 <title>Type: string
 Description: Name of the identification scheme, in a coded form as published in an external list.
 Values:
- - UK.OB.BBAN
- - UK.OB.IBAN
- - UK.OB.PAN
- - UK.OB.Paym
- - UK.OB.SortCodeAccountNumber
- - UK.OB.Wallet
+ - UK.OBIE.BBAN
+ - UK.OBIE.IBAN
+ - UK.OBIE.PAN
+ - UK.OBIE.Paym
+ - UK.OBIE.SortCodeAccountNumber
+ - UK.OBIE.Wallet
 </title>
 SchemeName [1..1]
 </text>
@@ -827,6 +836,7 @@ Frequency
 <text x="62em" y="84.1em" fill="darkslateblue">
 <title>Type: integer
 Format: int32
+Description: Number of instructions to be created and processed during the specified period .Specifies a frequency in terms of a count per period within a specified frequency type. Note: should not be used alongside `PointInTime`
 </title>
 CountPerPeriod [0..1]
 </text>
@@ -834,7 +844,7 @@ CountPerPeriod [0..1]
 <text x="62em" y="85.39999999999999em" fill="darkslateblue">
 <title>Type: string
 MaxLength: 2
-Description: Exact2NumericText - Further information on the exact point in time the event should take place
+Description: Exact2NumericText - Further information on the exact point in time the event should take place. Specifies a frequency in terms of an exact point in time or moment within a specified frequency type. Note: should not be used alongside `CountPerSide`
 </title>
 PointInTime [0..1]
 </text>
@@ -1173,12 +1183,12 @@ Name [0..1]
 <title>Type: string
 Description: Name of the identification scheme, in a coded form as published in an external list.
 Values:
- - UK.OB.BBAN
- - UK.OB.IBAN
- - UK.OB.PAN
- - UK.OB.Paym
- - UK.OB.SortCodeAccountNumber
- - UK.OB.Wallet
+ - UK.OBIE.BBAN
+ - UK.OBIE.IBAN
+ - UK.OBIE.PAN
+ - UK.OBIE.Paym
+ - UK.OBIE.SortCodeAccountNumber
+ - UK.OBIE.Wallet
 </title>
 SchemeName [0..1]
 </text>
@@ -1395,12 +1405,12 @@ Name [0..1]
 <title>Type: string
 Description: Name of the identification scheme, in a coded form as published in an external list.
 Values:
- - UK.OB.BBAN
- - UK.OB.IBAN
- - UK.OB.PAN
- - UK.OB.Paym
- - UK.OB.SortCodeAccountNumber
- - UK.OB.Wallet
+ - UK.OBIE.BBAN
+ - UK.OBIE.IBAN
+ - UK.OBIE.PAN
+ - UK.OBIE.Paym
+ - UK.OBIE.SortCodeAccountNumber
+ - UK.OBIE.Wallet
 </title>
 SchemeName [0..1]
 </text>
@@ -1622,7 +1632,7 @@ UnitNumber [0..1]
 <line x1="55em" y1="81.8em" x2="57em" y2="81.8em" stroke="black" marker-start="url(#Diamond)"/>
 <line x1="57em" y1="81.8em" x2="57em" y2="81.8em" stroke="black" />
 <line x1="57em" y1="81.8em" x2="60.2em" y2="81.8em" stroke="black" marker-end="url(#Triangle)"/>
-<text x="57.5em" y="81.3em">0..1</text>
+<text x="57.5em" y="81.3em">1..1</text>
 <line x1="24.200000000000003em" y1="2em" x2="26.200000000000003em" y2="2em" stroke="black" marker-start="url(#Diamond)"/>
 <line x1="26.200000000000003em" y1="2em" x2="26.200000000000003em" y2="94.89999999999999em" stroke="black" />
 <line x1="26.200000000000003em" y1="94.89999999999999em" x2="29.400000000000002em" y2="94.89999999999999em" stroke="black" marker-end="url(#Triangle)"/>

@@ -54,7 +54,7 @@ DirectDebitId [0..1]
 
 <text x="31.599999999999998em" y="6.9em" fill="darkslateblue">
 <title>Type: string
-Description: Specifies the status of the direct debit in code form.
+Description: Specifies the status of the standing order in code form.
 Values:
  - Active
  - Inactive
@@ -65,7 +65,7 @@ DirectDebitStatusCode [0..1]
 <text x="31.599999999999998em" y="8.2em" fill="darkslateblue">
 <title>Type: string
 MinLength: 1
-MaxLength: 70
+MaxLength: 140
 Description: Name of Service User.
 </title>
 Name [1..1]
@@ -205,7 +205,9 @@ Frequency
 <text x="92.39999999999999em" y="4.3em" fill="darkslateblue">
 <title>Type: integer
 Format: int32
-Description: Number of instructions to be created and processed during the specified period.
+Description: Number of instructions to be created and processed during the specified period. 
+Specifies a frequency in terms of a count per period within a specified frequency type. 
+ Note: should not be used alongside `PointInTime`
 </title>
 CountPerPeriod [0..1]
 </text>
@@ -213,7 +215,9 @@ CountPerPeriod [0..1]
 <text x="92.39999999999999em" y="5.6em" fill="darkslateblue">
 <title>Type: string
 MaxLength: 2
-Description: Exact2NumericText - Further information on the exact point in time the event should take place
+Description: Exact2NumericText - Further information on the exact point in time the event should take place.
+Specifies a frequency in terms of an exact point in time or moment within a specified frequency type. 
+ Note: should not be used alongside `CountPerSide`
 </title>
 PointInTime [0..1]
 </text>
@@ -346,7 +350,7 @@ TotalPages [0..1]
 <line x1="85.39999999999999em" y1="2em" x2="87.39999999999999em" y2="2em" stroke="black" marker-start="url(#Diamond)"/>
 <line x1="87.39999999999999em" y1="2em" x2="87.39999999999999em" y2="2em" stroke="black" />
 <line x1="87.39999999999999em" y1="2em" x2="90.6em" y2="2em" stroke="black" marker-end="url(#Triangle)"/>
-<text x="87.89999999999999em" y="1.5em">0..1</text>
+<text x="87.89999999999999em" y="1.5em">1..1</text>
 <line x1="54.599999999999994em" y1="2em" x2="56.599999999999994em" y2="2em" stroke="black" marker-start="url(#Diamond)"/>
 <line x1="56.599999999999994em" y1="2em" x2="56.599999999999994em" y2="15.1em" stroke="black" />
 <line x1="56.599999999999994em" y1="15.1em" x2="59.8em" y2="15.1em" stroke="black" marker-end="url(#Triangle)"/>

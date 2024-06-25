@@ -26,6 +26,8 @@
 	--schema=OBReadProduct2.properties.Data.properties.Product.items.properties.OtherProductType.properties.LoanInterest:LoanInterest\
 	--schema=OBReadProduct2.properties.Data.properties.Product.items.properties.OtherProductType.properties.Repayment:Repayment\
 
+echo "AISP done"
+
 ./umldiagram --src=https://raw.githubusercontent.com/OpenBankingUK/read-write-api-specs/v4.0.0-draft1-WIP/dist/openapi/payment-initiation-openapi.yaml --api-version=3 --dir=resources-and-data-models/pisp/images\
 	--schema=OBRisk1\
 	--schema=OBSCASupportData1\
@@ -80,6 +82,8 @@
 	--schema=OBWriteDomesticStandingOrderConsent5.properties.Data.properties.Authorisation:OBAuthorisation1\
 	--schema=OBWriteDomesticResponse5.properties.Data.properties.MultiAuthorisation:OBMultiAuthorisation1\
 
+echo "PISP done"
+
 ./umldiagram --src=https://raw.githubusercontent.com/OpenBankingUK/read-write-api-specs/v4.0.0-draft1-WIP/dist/openapi/vrp-openapi.yaml --api-version=3 --dir=resources-and-data-models/vrp/images\
 	--schema=OBCashAccountDebtorWithName \
 	--schema=OBCashAccountCreditor3 \
@@ -96,11 +100,15 @@
 	--schema=OBVRPFundsConfirmationRequest \
 	--schema=OBVRPFundsConfirmationResponse \
 
+echo "VRP done"
+
 ./umldiagram --src=https://raw.githubusercontent.com/OpenBankingUK/read-write-api-specs/v4.0.0-draft1-WIP/dist/openapi/confirmation-funds-openapi.yaml --api-version=3 --dir=resources-and-data-models/cbpii/images\
-	--schema=OBFundsConfirmationConsent1\
-	--schema=OBFundsConfirmationConsentResponse1\
-	--schema=OBFundsConfirmation1\
-	--schema=OBFundsConfirmationResponse1\
+	--schema=OBFundsConfirmationConsent1 \
+	--schema=OBFundsConfirmationConsentResponse1 \
+	--schema=OBFundsConfirmation1 \
+	--schema=OBFundsConfirmationResponse1 \
+
+echo "CBPII done"
 
 
 #./umldiagram --src=https://raw.githubusercontent.com/OpenBankingUK/read-write-api-specs/v4.0.0-draft1-WIP/dist/openapi/event-notifications-openapi.yaml --api-version=3 --dir=resources-and-data-models/event-notifications/images\
@@ -120,3 +128,5 @@ cp resources-and-data-models/pisp/images/OBInternationalRefundAccount1.svg profi
 cp resources-and-data-models/pisp/images/OBWritePaymentDetailsResponse1.svg profiles/images
 cp resources-and-data-models/pisp/images/OBRisk1.svg profiles/images
 cp resources-and-data-models/pisp/images/OBSCASupportData1.svg profiles/images
+
+echo "Copying done"

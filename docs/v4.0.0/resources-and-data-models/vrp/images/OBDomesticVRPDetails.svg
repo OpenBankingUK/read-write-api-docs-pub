@@ -33,18 +33,18 @@ Data
 Description: User community specific instrument.
 Usage: This element is used to specify a local instrument, local clearing option and/or further qualify the service or service level.
 Values:
- - UK.OB.BACS
- - UK.OB.BalanceTransfer
- - UK.OB.CHAPS
- - UK.OB.Euro1
- - UK.OB.FPS
- - UK.OB.Link
- - UK.OB.MoneyTransfer
- - UK.OB.Paym
- - UK.OB.SEPACreditTransfer
- - UK.OB.SEPAInstantCreditTransfer
- - UK.OB.SWIFT
- - UK.OB.Target2
+ - UK.OBIE.BACS
+ - UK.OBIE.BalanceTransfer
+ - UK.OBIE.CHAPS
+ - UK.OBIE.Euro1
+ - UK.OBIE.FPS
+ - UK.OBIE.Link
+ - UK.OBIE.MoneyTransfer
+ - UK.OBIE.Paym
+ - UK.OBIE.SEPACreditTransfer
+ - UK.OBIE.SEPAInstantCreditTransfer
+ - UK.OBIE.SWIFT
+ - UK.OBIE.Target2
 </title>
 LocalInstrument [0..1]
 </text>
@@ -125,7 +125,7 @@ StatusCode [1..1]
 <title>Type: string
 MinLength: 1
 MaxLength: 4
-Description: Reason Code provided for the status of a transfer. For a full description see `ExternalStatusReason1Code` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets)
+Description: Reason Code provided for the status of a transfer. For a full description see `OBExternalStatusReason1Code` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets)
 </title>
 StatusReasonCode [0..1]
 </text>

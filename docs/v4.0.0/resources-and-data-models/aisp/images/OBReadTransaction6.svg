@@ -731,14 +731,17 @@ Name [0..1]
 
 <text x="60.8em" y="42.49999999999999em" fill="darkslateblue">
 <title>Type: string
-Description: Name of the identification scheme, in a coded form as published in an external list.
+Description: Balance type, in a coded form.
 Values:
- - UK.OB.BBAN
- - UK.OB.IBAN
- - UK.OB.PAN
- - UK.OB.Paym
- - UK.OB.SortCodeAccountNumber
- - UK.OB.Wallet
+ - CLAV
+ - XPCH
+ - FWAV
+ - INFO
+ - ITAV
+ - ITBD
+ - OPAV
+ - OPBD
+ - PRCD
 </title>
 SchemeName [0..1]
 </text>
@@ -845,7 +848,7 @@ Name [0..1]
 <title>Type: string
 Description: Name of the identification scheme, in a coded form as published in an external list.
 Values:
- - UK.OB.BICFI
+ - UK.OBIE.BICFI
 </title>
 SchemeName [0..1]
 </text>
@@ -1130,14 +1133,17 @@ Name [0..1]
 
 <text x="60.8em" y="90.89999999999999em" fill="darkslateblue">
 <title>Type: string
-Description: Name of the identification scheme, in a coded form as published in an external list.
+Description: Balance type, in a coded form.
 Values:
- - UK.OB.BBAN
- - UK.OB.IBAN
- - UK.OB.PAN
- - UK.OB.Paym
- - UK.OB.SortCodeAccountNumber
- - UK.OB.Wallet
+ - CLAV
+ - XPCH
+ - FWAV
+ - INFO
+ - ITAV
+ - ITBD
+ - OPAV
+ - OPBD
+ - PRCD
 </title>
 SchemeName [0..1]
 </text>
@@ -1243,7 +1249,7 @@ Name [0..1]
 <title>Type: string
 Description: Name of the identification scheme, in a coded form as published in an external list.
 Values:
- - UK.OB.BICFI
+ - UK.OBIE.BICFI
 </title>
 SchemeName [0..1]
 </text>
@@ -1545,14 +1551,17 @@ Name [0..1]
 
 <text x="60.8em" y="153.9em" fill="darkslateblue">
 <title>Type: string
-Description: Name of the identification scheme, in a coded form as published in an external list.
+Description: Balance type, in a coded form.
 Values:
- - UK.OB.BBAN
- - UK.OB.IBAN
- - UK.OB.PAN
- - UK.OB.Paym
- - UK.OB.SortCodeAccountNumber
- - UK.OB.Wallet
+ - CLAV
+ - XPCH
+ - FWAV
+ - INFO
+ - ITAV
+ - ITBD
+ - OPAV
+ - OPBD
+ - PRCD
 </title>
 SchemeName [0..1]
 </text>
@@ -1767,14 +1776,17 @@ Name [0..1]
 
 <text x="60.8em" y="181.3em" fill="darkslateblue">
 <title>Type: string
-Description: Name of the identification scheme, in a coded form as published in an external list.
+Description: Balance type, in a coded form.
 Values:
- - UK.OB.BBAN
- - UK.OB.IBAN
- - UK.OB.PAN
- - UK.OB.Paym
- - UK.OB.SortCodeAccountNumber
- - UK.OB.Wallet
+ - CLAV
+ - XPCH
+ - FWAV
+ - INFO
+ - ITAV
+ - ITBD
+ - OPAV
+ - OPBD
+ - PRCD
 </title>
 SchemeName [0..1]
 </text>

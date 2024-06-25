@@ -166,7 +166,7 @@ ChargeBearer [1..1]
 <title>Type: string
 Description: Charge type, in a coded form.
 Values:
- - UK.OB.CHAPSOut
+ - UK.OBIE.CHAPSOut
 </title>
 Type [1..1]
 </text>
@@ -225,7 +225,7 @@ Name [0..1]
 
 <text x="72.4em" y="21.4em" fill="darkslateblue">
 <title>Type: string
-Description: ^ Name of the identification scheme, in a coded form as published in an external list. | Namespaced Enumeration OBExternalAccountIdentification4Code
+Description: ^ Name of the identification scheme, in a coded form as published in an external list. | Namespaced Enumeration OBInternalAccountIdentification4Code
 </title>
 SchemeName [0..1]
 </text>
@@ -269,18 +269,18 @@ InstructionIdentification [1..1]
 Description: User community specific instrument.
 Usage: This element is used to specify a local instrument, local clearing option and/or further qualify the service or service level.
 Values:
- - UK.OB.BACS
- - UK.OB.BalanceTransfer
- - UK.OB.CHAPS
- - UK.OB.Euro1
- - UK.OB.FPS
- - UK.OB.Link
- - UK.OB.MoneyTransfer
- - UK.OB.Paym
- - UK.OB.SEPACreditTransfer
- - UK.OB.SEPAInstantCreditTransfer
- - UK.OB.SWIFT
- - UK.OB.Target2
+ - UK.OBIE.BACS
+ - UK.OBIE.BalanceTransfer
+ - UK.OBIE.CHAPS
+ - UK.OBIE.Euro1
+ - UK.OBIE.FPS
+ - UK.OBIE.Link
+ - UK.OBIE.MoneyTransfer
+ - UK.OBIE.Paym
+ - UK.OBIE.SEPACreditTransfer
+ - UK.OBIE.SEPAInstantCreditTransfer
+ - UK.OBIE.SWIFT
+ - UK.OBIE.Target2
 </title>
 LocalInstrument [0..1]
 </text>
@@ -326,12 +326,12 @@ Name [1..1]
 <title>Type: string
 Description: Name of the identification scheme, in a coded form as published in an external list.
 Values:
- - UK.OB.BBAN
- - UK.OB.IBAN
- - UK.OB.PAN
- - UK.OB.Paym
- - UK.OB.SortCodeAccountNumber
- - UK.OB.Wallet
+ - UK.OBIE.BBAN
+ - UK.OBIE.IBAN
+ - UK.OBIE.PAN
+ - UK.OBIE.Paym
+ - UK.OBIE.SortCodeAccountNumber
+ - UK.OBIE.Wallet
 </title>
 SchemeName [1..1]
 </text>
@@ -602,12 +602,12 @@ Name [0..1]
 <title>Type: string
 Description: Name of the identification scheme, in a coded form as published in an external list.
 Values:
- - UK.OB.BBAN
- - UK.OB.IBAN
- - UK.OB.PAN
- - UK.OB.Paym
- - UK.OB.SortCodeAccountNumber
- - UK.OB.Wallet
+ - UK.OBIE.BBAN
+ - UK.OBIE.IBAN
+ - UK.OBIE.PAN
+ - UK.OBIE.Paym
+ - UK.OBIE.SortCodeAccountNumber
+ - UK.OBIE.Wallet
 </title>
 SchemeName [1..1]
 </text>
@@ -1015,12 +1015,12 @@ Name [0..1]
 <title>Type: string
 Description: Name of the identification scheme, in a coded form as published in an external list.
 Values:
- - UK.OB.BBAN
- - UK.OB.IBAN
- - UK.OB.PAN
- - UK.OB.Paym
- - UK.OB.SortCodeAccountNumber
- - UK.OB.Wallet
+ - UK.OBIE.BBAN
+ - UK.OBIE.IBAN
+ - UK.OBIE.PAN
+ - UK.OBIE.Paym
+ - UK.OBIE.SortCodeAccountNumber
+ - UK.OBIE.Wallet
 </title>
 SchemeName [0..1]
 </text>
@@ -1237,12 +1237,12 @@ Name [0..1]
 <title>Type: string
 Description: Name of the identification scheme, in a coded form as published in an external list.
 Values:
- - UK.OB.BBAN
- - UK.OB.IBAN
- - UK.OB.PAN
- - UK.OB.Paym
- - UK.OB.SortCodeAccountNumber
- - UK.OB.Wallet
+ - UK.OBIE.BBAN
+ - UK.OBIE.IBAN
+ - UK.OBIE.PAN
+ - UK.OBIE.Paym
+ - UK.OBIE.SortCodeAccountNumber
+ - UK.OBIE.Wallet
 </title>
 SchemeName [0..1]
 </text>
@@ -1483,7 +1483,7 @@ Path [0..1]
 MinLength: 1
 MaxLength: 4
 Description: Specifies the status reason in a code form. 
- For a full description see `ExternalStatusReason1Code` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets)
+ For a full description see `OBExternalStatusReason1Code` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets)
 </title>
 StatusReasonCode [0..1]
 </text>
