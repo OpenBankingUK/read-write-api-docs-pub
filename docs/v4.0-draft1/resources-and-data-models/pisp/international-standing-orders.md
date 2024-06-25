@@ -528,6 +528,21 @@ Content-Type: application/json
             "Country": "UK"
         }
       },
+      "CreditorAgent": {  
+      "LEI": "IZ9Q00LZEVUKWCQY6X15",
+      "SchemeName": "UK.OBIE.BICFI",
+      "Identification": "80200112344562",
+      "Name": "The Credit Agent", 
+      "PostalAddress": { 
+        "AddressType": "BIZZ",
+        "StreetName": "Bank Street",
+        "BuildingNumber": "11",
+        "Floor": "6",
+        "PostCode": "Z78 4TY",
+        "TownName": "London",
+        "Country": "UK"
+      }
+    },
       "CreditorAccount": {
         "SchemeName": "UK.OBIE.SortCodeAccountNumber",
         "Identification": "08080021325698",

@@ -99,36 +99,6 @@ Accept: application/json
           "Type": "Telephone"
         }
       },
-      "UltimateDebtor": {
-        "SchemeName": "UK.OBIE.BICFI",
-        "Identification": "2360549017905161589",
-        "Name": "Ultimate Debtor",
-        "LEI": "8200007YHFDMEODY1965",
-        "PostalAddress": {
-          "AddressType": "BIZZ",
-          "StreetName": "Bank Street",
-          "BuildingNumber": "11",
-          "Floor": "6",
-          "PostCode": "Z78 4TY",
-          "TownName": "London",
-          "Country": "UK"
-        }
-      },
-      "UltimateCreditor": {
-        "SchemeName": "UK.OBIE.BICFI",
-        "Identification": "2360549017905161589",
-        "Name": "Ultimate Creditor",
-        "LEI": "60450004FECVJV7YN339",
-        "PostalAddress": {
-          "AddressType": "BIZZ",
-          "StreetName": "Bank Street",
-          "BuildingNumber": "11",
-          "Floor": "6",
-          "PostCode": "Z78 4TY",
-          "TownName": "London",
-          "Country": "UK"
-          }
-        },
       "CreditorPostalAddress": {
         "AddressType": "BIZZ",
         "Department": "Finance",
@@ -148,48 +118,16 @@ Accept: application/json
         "CountrySubDivision": "England",
         "Country": "UK"
       },
-      "RegulatoryReporting": [{
-          "DebitCreditReportingIndicator": "CRED",
-          "Authority": {
-            "Name": "string",
-            "CountryCode": "UG"
-          },
-          "Details": [{
-              "Type": "CRED",
-              "Date": "2024-04-25T13:26:41.911Z",
-              "Information": ["Reg info1", "Reg info2"],
-              "Country": "QG",
-              "Amount": {
-                "Amount": "4.68702",
-                "Currency": "JGM"
-            }
-          }]
-      }],
       "RemittanceInformation": {
         "Structured": [
           {
-          "ReferredDocumentInformation": [{
-              "Code": "CINV",
-              "Issuer": "Issuer01",
-              "Number": "Number_01",
-              "RelatedDate": "2024-04-25T13:26:41.911Z",
-              "LineDetails": [
-                "LineDetail"
-              ]
-            }],
           "ReferredDocumentAmount": 1,
           "CreditorReferenceInformation": {
             "Reference": "SweepCo",
-            "Code": "DISP",
-            "Issuer": "Issuer01",
             },
-          "Invoicer": "INVR51856",
-          "Invoicee": "INVE5161856",
-          "TaxRemittance": "Tax Remittance related information",
-          "AdditionalRemittanceInformation": ["Free text for additional information"],
+        "AdditionalRemittanceInformation": ["Rose's pocket money"],
           },
         ],
-        "Unstructured": "Internal ops code 5120101"
       },
   },
   "Risk": {
@@ -197,22 +135,8 @@ Accept: application/json
     "ContractPresentIndicator": true,
     "PaymentPurposeCode": "EPAY",
     "CategoryPurposeCode": "CASH", 
-    "BeneficiaryPaymentDetailsPrepopulatedIndicator": false,
-    "BeneficiaryAccountType": "Business",
-    "MerchantCategoryCode": "7300", 
-    "MerchantCustomerIdentification": "053598653254",
-    "DeliveryAddress": {
-      "AddressLine": [
-        "Flat 7",
-        "Acacia Lodge"
-      ],
-      "StreetName": "Acacia Avenue",
-      "BuildingNumber": "27",
-      "PostCode": "GU31 2ZZ",
-      "TownName": "Sparsholt",
-      "CountrySubDivision": "Wessex",
-      "Country": "UK"
-    }
+    "BeneficiaryPaymentDetailsPrepopulatedIndicator": true,
+    "BeneficiaryAccountType": "Personal",
   }
 }
 }
@@ -326,103 +250,28 @@ Content-Type: application/json
         "CountrySubDivision": "England",
         "Country": "UK"
       },
-      "UltimateDebtor": {
-        "SchemeName": "UK.OBIE.BICFI",
-        "Identification": "2360549017905161589",
-        "Name": "Ultimate Debtor",
-        "LEI": "8200007YHFDMEODY1965",
-        "PostalAddress": {
-          "AddressType": "BIZZ",
-          "StreetName": "Bank Street",
-          "BuildingNumber": "11",
-          "Floor": "6",
-          "PostCode": "Z78 4TY",
-          "TownName": "London",
-          "Country": "UK"
-        }
-      },
-      "UltimateCreditor": {
-        "SchemeName": "UK.OBIE.BICFI",
-        "Identification": "2360549017905161589",
-        "Name": "Ultimate Creditor",
-        "LEI": "60450004FECVJV7YN339",
-        "PostalAddress": {
-          "AddressType": "BIZZ",
-          "StreetName": "Bank Street",
-          "BuildingNumber": "11",
-          "Floor": "6",
-          "PostCode": "Z78 4TY",
-          "TownName": "London",
-          "Country": "UK"
-          }
-        },
-      "RegulatoryReporting": [{
-          "DebitCreditReportingIndicator": "CRED",
-          "Authority": {
-            "Name": "string",
-            "CountryCode": "UG"
-          },
-          "Details": [{
-              "Type": "CRED",
-              "Date": "2024-04-25T13:26:41.911Z",
-              "Information": ["Reg info1", "Reg info2"],
-              "Country": "QG",
-              "Amount": {
-                "Amount": "4.68702",
-                "Currency": "JGM"
-              }
-            }]
-        }],
       "RemittanceInformation": {
         "Structured": [
           {
           "ReferredDocumentInformation": [{
-              "Code": "CINV",
-              "Issuer": "Issuer01",
-              "Number": "Number_01",
-              "RelatedDate": "2024-04-25T13:26:41.911Z",
-              "LineDetails": [
-                "LineDetail"
-              ]
-            }],
             "CreditorReferenceInformation": {
               "Reference": "SweepCo",
-              "Code": "DISP",
-              "Issuer": "Issuer01",
             },
-            "ReferredDocumentAmount": 1,
-            "Invoicer": "INVR51856",
-            "Invoicee": "INVE5161856",
-            "TaxRemittance": "Tax Remittance related information",
-            "AdditionalRemittanceInformation": ["Free text for additional information"],
+          "AdditionalRemittanceInformation": ["Rose's pocket money"],
           },
-        ],
-        "Unstructured": "Internal ops code 5120101"
-      },
+        ]
+      }
+      ]
     },
   },
-
   "Risk": {
     "PaymentContextCode": "TransferToSell",
     "ContractPresentIndicator": true,
     "PaymentPurposeCode": "EPAY",
     "CategoryPurposeCode": "CASH", 
-    "BeneficiaryPaymentDetailsPrepopulatedIndicator": false,
-    "BeneficiaryAccountType": "Business",
-    "MerchantCategoryCode": "7300", 
-    "MerchantCustomerIdentification": "053598653254",
-    "DeliveryAddress": {
-      "AddressLine": [
-        "Flat 7",
-        "Acacia Lodge"
-      ],
-      "StreetName": "Acacia Avenue",
-      "BuildingNumber": "27",
-      "PostCode": "GU31 2ZZ",
-      "TownName": "Sparsholt",
-      "CountrySubDivision": "Wessex",
-      "Country": "UK"
-    }
+    "BeneficiaryPaymentDetailsPrepopulatedIndicator": true,
+    "BeneficiaryAccountType": "Personal",
+  },
   },
   "Links": {
     "Self": "https://api.alphabank.com/open-banking/v3.1/pisp/domestic-vrp-consents/fe615446-e53a-45ed-954c-ae5d1f97a93b"
@@ -558,102 +407,27 @@ Content-Type: application/json
         "CountrySubDivision": "England",
         "Country": "UK"
       },
-      "UltimateDebtor": {
-        "SchemeName": "UK.OBIE.BICFI",
-        "Identification": "2360549017905161589",
-        "Name": "Ultimate Debtor",
-        "LEI": "8200007YHFDMEODY1965",
-        "PostalAddress": {
-          "AddressType": "BIZZ",
-          "StreetName": "Bank Street",
-          "BuildingNumber": "11",
-          "Floor": "6",
-          "PostCode": "Z78 4TY",
-          "TownName": "London",
-          "Country": "UK"
-        }
-      },
-      "UltimateCreditor": {
-        "SchemeName": "UK.OBIE.BICFI",
-        "Identification": "2360549017905161589",
-        "Name": "Ultimate Creditor",
-        "LEI": "60450004FECVJV7YN339",
-        "PostalAddress": {
-          "AddressType": "BIZZ",
-          "StreetName": "Bank Street",
-          "BuildingNumber": "11",
-          "Floor": "6",
-          "PostCode": "Z78 4TY",
-          "TownName": "London",
-          "Country": "UK"
-          }
-        },
-      "RegulatoryReporting": [{
-          "DebitCreditReportingIndicator": "CRED",
-          "Authority": {
-            "Name": "string",
-            "CountryCode": "UG"
-          },
-          "Details": [{
-              "Type": "CRED",
-              "Date": "2024-04-25T13:26:41.911Z",
-              "Information": ["Reg info1", "Reg info2"],
-              "Country": "QG",
-              "Amount": {
-                "Amount": "4.68702",
-                "Currency": "JGM"
-              }
-            }]
-        }],
       "RemittanceInformation": {
-        "Structured": [{
-          "ReferredDocumentInformation": [{
-              "Code": "CINV",
-              "Issuer": "Issuer01",
-              "Number": "Number_01",
-              "RelatedDate": "2024-04-25T13:26:41.911Z",
-              "LineDetails": [
-                "LineDetail"
-              ]
-            }],
-            "ReferredDocumentAmount": 1,
-            "CreditorReferenceInformation": {
-              "Reference": "SweepCo",
-              "Code": "DISP",
-              "Issuer": "Issuer01",
+        "Structured": [
+          {
+          "ReferredDocumentAmount": 1,
+          "CreditorReferenceInformation": {
+            "Reference": "SweepCo",
             },
-            "Invoicer": "INVR51856",
-            "Invoicee": "INVE5161856",
-            "TaxRemittance": "Tax Remittance related information",
-            "AdditionalRemittanceInformation": ["Free text for additional information"],
+        "AdditionalRemittanceInformation": ["Rose's pocket money"],
           },
         ],
-        "Unstructured": "Internal ops code 5120101"
       },
-    }
+  },
   },
   "Risk": {
     "PaymentContextCode": "TransferToSell",
     "ContractPresentIndicator": true,
     "PaymentPurposeCode": "EPAY",
     "CategoryPurposeCode": "CASH", 
-    "BeneficiaryPaymentDetailsPrepopulatedIndicator": false,
-    "BeneficiaryAccountType": "Business",
-    "MerchantCategoryCode": "7300", 
-    "MerchantCustomerIdentification": "053598653254",
-    "DeliveryAddress": {
-      "AddressLine": [
-        "Flat 7",
-        "Acacia Lodge"
-      ],
-      "StreetName": "Acacia Avenue",
-      "BuildingNumber": "27",
-      "PostCode": "GU31 2ZZ",
-      "TownName": "Sparsholt",
-      "CountrySubDivision": "Wessex",
-      "Country": "UK"
-    }
-  },
+    "BeneficiaryPaymentDetailsPrepopulatedIndicator": true,
+    "BeneficiaryAccountType": "Personal",
+}
   "Links": {
     "Self": "https://api.alphabank.com/open-banking/v3.1/pisp/domestic-vrp-consents/fe615446-e53a-45ed-954c-ae5d1f97a93b"
   },
@@ -723,36 +497,6 @@ Accept: application/json
           "Type": "Telephone"
         }
       },
-      "UltimateDebtor": {
-        "SchemeName": "UK.OBIE.BICFI",
-        "Identification": "2360549017905161589",
-        "Name": "Ultimate Debtor",
-        "LEI": "8200007YHFDMEODY1965",
-        "PostalAddress": {
-          "AddressType": "BIZZ",
-          "StreetName": "Bank Street",
-          "BuildingNumber": "11",
-          "Floor": "6",
-          "PostCode": "Z78 4TY",
-          "TownName": "London",
-          "Country": "UK"
-        }
-      },
-      "UltimateCreditor": {
-        "SchemeName": "UK.OBIE.BICFI",
-        "Identification": "2360549017905161589",
-        "Name": "Ultimate Creditor",
-        "LEI": "60450004FECVJV7YN339",
-        "PostalAddress": {
-          "AddressType": "BIZZ",
-          "StreetName": "Bank Street",
-          "BuildingNumber": "11",
-          "Floor": "6",
-          "PostCode": "Z78 4TY",
-          "TownName": "London",
-          "Country": "UK"
-          }
-        },
       "CreditorPostalAddress": {
         "AddressType": "BIZZ",
         "Department": "Finance",
@@ -772,52 +516,18 @@ Accept: application/json
         "CountrySubDivision": "England",
         "Country": "UK"
       },
-      "RegulatoryReporting": [{
-          "DebitCreditReportingIndicator": "CRED",
-          "Authority": {
-            "Name": "string",
-            "CountryCode": "UG"
-          },
-          "Details": [{
-              "Type": "CRED",
-              "Date": "2024-04-25T13:26:41.911Z",
-              "Information": ["Reg info1", "Reg info2"],
-              "Country": "QG",
-              
-              "Amount": {
-                "Amount": "4.68702",
-                "Currency": "JGM"
-              }
-            }]
-        }],
-     "RemittanceInformation": {
+    "RemittanceInformation": {
         "Structured": [
           {
-            "ReferredDocumentInformation": [{
-              "Code": "CINV",
-              "Issuer": "Issuer01",
-              "Number": "Number_01",
-              "RelatedDate": "2024-04-25T13:26:41.911Z",
-              "LineDetails": [
-                "LineDetail"
-              ]
-            }],
-            "ReferredDocumentAmount": 1,
-            "CreditorReferenceInformation": {
-              "Reference": "SweepCo",
-              "Code": "DISP",
-              "Issuer": "Issuer01",
+          "ReferredDocumentAmount": 1,
+          "CreditorReferenceInformation": {
+            "Reference": "SweepCo",
             },
-            "Invoicer": "INVR51856",
-            "Invoicee": "INVE5161856",
-            "TaxRemittance": "Tax Remittance related information",
-            "AdditionalRemittanceInformation": ["Free text for additional information"],
+        "AdditionalRemittanceInformation": ["Rose's pocket money"],
           },
         ],
-        "Unstructured": "Internal ops code 5120101"
-      },
-    },
-
+      }
+  },
     "Instruction": {
       "InstructionIdentification": "fe655556-e53a-45ed-954c-ae5d1f97a93b",
       "EndToEndIdentification": "fe699996-e53a-45ed-954c-ae5d1f97a93a",
@@ -871,47 +581,17 @@ Accept: application/json
         "CountrySubDivision": "England",
         "Country": "UK"
       },
-      "UltimateCreditor": {
-        "SchemeName": "UK.OBIE.BICFI",
-        "Identification": "2360549017905161589",
-        "Name": "Ultimate Creditor",
-        "LEI": "60450004FECVJV7YN339",
-        "PostalAddress": {
-          "AddressType": "BIZZ",
-          "StreetName": "Bank Street",
-          "BuildingNumber": "11",
-          "Floor": "6",
-          "PostCode": "Z78 4TY",
-          "TownName": "London",
-          "Country": "UK"
-          }
-        },
       "RemittanceInformation": {
         "Structured": [
           {
-            "ReferredDocumentInformation": [{
-              "Code": "CINV",
-              "Issuer": "Issuer01",
-              "Number": "Number_01",
-              "RelatedDate": "2024-04-25T13:26:41.911Z",
-              "LineDetails": [
-                "LineDetail"
-              ]
-            }],
-            "CreditorReferenceInformation": {
-              "Reference": "SweepCo",
-              "Code": "DISP",
-              "Issuer": "Issuer01",
+          "ReferredDocumentAmount": 1,
+          "CreditorReferenceInformation": {
+            "Reference": "SweepCo",
             },
-            "ReferredDocumentAmount": 1,
-            "Invoicer": "INVR51856",
-            "Invoicee": "INVE5161856",
-            "TaxRemittance": "Tax Remittance related information",
-            "AdditionalRemittanceInformation": ["Free text for additional information"],
+        "AdditionalRemittanceInformation": ["Rose's pocket money"],
           },
         ],
-        "Unstructured": "Internal ops code 5120101"
-      },
+      }
     }
   },
   "Risk": {
@@ -919,23 +599,9 @@ Accept: application/json
     "ContractPresentIndicator": true,
     "PaymentPurposeCode": "EPAY",
     "CategoryPurposeCode": "CASH", 
-    "BeneficiaryPaymentDetailsPrepopulatedIndicator": false,
-    "BeneficiaryAccountType": "Business",
-    "MerchantCategoryCode": "7300", 
-    "MerchantCustomerIdentification": "053598653254",
-    "DeliveryAddress": {
-      "AddressLine": [
-        "Flat 7",
-        "Acacia Lodge"
-      ],
-      "StreetName": "Acacia Avenue",
-      "BuildingNumber": "27",
-      "PostCode": "GU31 2ZZ",
-      "TownName": "Sparsholt",
-      "CountrySubDivision": "Wessex",
-      "Country": "UK"
+    "BeneficiaryPaymentDetailsPrepopulatedIndicator": true,
+    "BeneficiaryAccountType": "Personal",
     }
-  }
 }
 ```
 
@@ -1037,79 +703,17 @@ Content-Type: application/json
         "CountrySubDivision": "England",
         "Country": "UK"
       },
-      "UltimateDebtor": {
-        "SchemeName": "UK.OBIE.BICFI",
-        "Identification": "2360549017905161589",
-        "Name": "Ultimate Debtor",
-        "LEI": "8200007YHFDMEODY1965",
-        "PostalAddress": {
-          "AddressType": "BIZZ",
-          "StreetName": "Bank Street",
-          "BuildingNumber": "11",
-          "Floor": "6",
-          "PostCode": "Z78 4TY",
-          "TownName": "London",
-          "Country": "UK"
-        }
-      },
-      "UltimateCreditor": {
-        "SchemeName": "UK.OBIE.BICFI",
-        "Identification": "2360549017905161589",
-        "Name": "Ultimate Creditor",
-        "LEI": "60450004FECVJV7YN339",
-        "PostalAddress": {
-          "AddressType": "BIZZ",
-          "StreetName": "Bank Street",
-          "BuildingNumber": "11",
-          "Floor": "6",
-          "PostCode": "Z78 4TY",
-          "TownName": "London",
-          "Country": "UK"
-          }
-        },
-      "RegulatoryReporting": [{
-          "DebitCreditReportingIndicator": "CRED",
-          "Authority": {
-            "Name": "string",
-            "CountryCode": "UG"
-          },
-          "Details": [{
-              "Type": "CRED",
-              "Date": "2024-04-25T13:26:41.911Z",
-              "Information": ["Reg info1", "Reg info2"],
-              "Country": "QG",
-              "Amount": {
-                "Amount": "4.68702",
-                "Currency": "JGM"
-              }
-            }]
-      }],
-      "RemittanceInformation": {
+     "RemittanceInformation": {
         "Structured": [
           {
-            "CreditorReferenceInformation": {
-              "Reference": "SweepCo",
-              "Code": "DISP",
-              "Issuer": "Issuer01",
+          "ReferredDocumentAmount": 1,
+          "CreditorReferenceInformation": {
+            "Reference": "SweepCo",
             },
-            "ReferredDocumentAmount": 1,
-            "ReferredDocumentInformation": [{
-              "Code": "CINV",
-              "Issuer": "Issuer01",
-              "Number": "Number_01",
-              "RelatedDate": "2024-04-25T13:26:41.911Z",
-              "LineDetails": [
-                "LineDetail"
-              ]
-            }],
-            "Invoicer": "INVR51856",
-            "Invoicee": "INVE5161856",
-            "TaxRemittance": "Tax Remittance related information",
-            "AdditionalRemittanceInformation": ["Free text for additional information"]
+        "AdditionalRemittanceInformation": ["Rose's pocket money"],
           },
         ],
-        "Unstructured": "Internal ops code 5120101"
-      },
+      }
     },
 
     "Instruction": {
@@ -1183,51 +787,22 @@ Content-Type: application/json
       "RemittanceInformation": {
         "Structured": [
           {
-            "ReferredDocumentInformation": [{
-              "Code": "CINV",
-              "Issuer": "Issuer01",
-              "Number": "Number_01",
-              "RelatedDate": "2024-04-25T13:26:41.911Z",
-              "LineDetails": [
-                "LineDetail"
-              ]
-            }],
-            "CreditorReferenceInformation": {
-              "Reference": "SweepCo",
-              "Code": "DISP",
-              "Issuer": "Issuer01",
+          "ReferredDocumentAmount": 1,
+          "CreditorReferenceInformation": {
+            "Reference": "SweepCo",
             },
-            "Invoicer": "INVR51856",
-            "Invoicee": "INVE5161856",
-            "TaxRemittance": "Tax Remittance related information",
-            "AdditionalRemittanceInformation": ["Free text for additional information"]
+        "AdditionalRemittanceInformation": ["Rose's pocket money"],
           },
         ],
-        "Unstructured": "Internal ops code 5120101"
-      },
-    }
-  },
+      }
+    }},
   "Risk": {
     "PaymentContextCode": "TransferToSell",
     "ContractPresentIndicator": true,
     "PaymentPurposeCode": "EPAY",
     "CategoryPurposeCode": "CASH", 
-    "BeneficiaryPaymentDetailsPrepopulatedIndicator": false,
-    "BeneficiaryAccountType": "Business",
-    "MerchantCategoryCode": "7300", 
-    "MerchantCustomerIdentification": "053598653254",
-    "DeliveryAddress": {
-      "AddressLine": [
-        "Flat 7",
-        "Acacia Lodge"
-      ],
-      "StreetName": "Acacia Avenue",
-      "BuildingNumber": "27",
-      "PostCode": "GU31 2ZZ",
-      "TownName": "Sparsholt",
-      "CountrySubDivision": "Wessex",
-      "Country": "UK"
-    }
+    "BeneficiaryPaymentDetailsPrepopulatedIndicator": true,
+    "BeneficiaryAccountType": "Personal",
   },
 
   
@@ -1285,148 +860,15 @@ Accept: application/json
         }
       ]
     },
-    "Initiation": {
-      "RegulatoryReporting": [{
-          "DebitCreditReportingIndicator": "CRED",
-          "Authority": {
-            "Name": "string",
-            "CountryCode": "UG"
-          },
-          "Details": [{
-              "Type": "CRED",
-              "Date": "2024-04-25T13:26:41.911Z",
-              "Information": ["Reg info1", "Reg info2"],
-              "Country": "QG",
-              "Amount": {
-                "Amount": "4.68702",
-                "Currency": "JGM"
-            }
-          }]
-      }],
-      "CreditorAgent": {  
-          "LEI": "IZ9Q00LZEVUKWCQY6X15",
-          "SchemeName": "UK.OBIE.BICFI",
-          "Identification": "80200112344562",
-          "Name": "The Credit Agent", 
-          "PostalAddress": { 
-            "AddressType": "BIZZ",
-            "StreetName": "Bank Street",
-            "BuildingNumber": "11",
-            "Floor": "6",
-            "PostCode": "Z78 4TY",
-            "TownName": "London",
-            "Country": "UK"
-        }
-      },
-      "CreditorAccount": {
-        "SchemeName": "SortCodeAccountNumber",
-        "Identification": "30949330000010",
-        "SecondaryIdentification": "Roll 90210",
-        "Name": "Marcus Sweepimus",
-        "Proxy": {
-          "Identification": "441234012385",
-          "Code": "TELE",
-          "Type": "Telephone"
-        }
-      },
-      "CreditorPostalAddress": {
-        "AddressType": "BIZZ",
-        "Department": "Finance",
-        "SubDepartment": "Payroll",
-        "StreetName": "Bank Street",
-        "BuildingNumber": "11",
-        "BuildingName": "Tower Bridges",
-        "Floor": "6",
-        "UnitNumber": "UNIT591",
-        "Room": "844",
-        "PostBox": "PO Box 123456",
-        "PostCode": "Z78 4TY",
-        "TownLocationName":"Bank",
-        "TownName": "London",
-        "DistrictName": "Greater London",
-        "CareOf": "Ms Jane Smith",
-        "CountrySubDivision": "England",
-        "Country": "UK"
-      },
-      "UltimateCreditor": {
-        "SchemeName": "UK.OBIE.BICFI",
-        "Identification": "2360549017905161589",
-        "Name": "Ultimate Creditor",
-        "LEI": "60450004FECVJV7YN339",
-        "PostalAddress": {
-          "AddressType": "BIZZ",
-          "StreetName": "Bank Street",
-          "BuildingNumber": "11",
-          "Floor": "6",
-          "PostCode": "Z78 4TY",
-          "TownName": "London",
-          "Country": "UK"
-          }
-        },
-        "UltimateDebtor": {
-        "SchemeName": "UK.OBIE.BICFI",
-        "Identification": "2360549017905161589",
-        "Name": "Ultimate Debtor",
-        "LEI": "8200007YHFDMEODY1965",
-        "PostalAddress": {
-          "AddressType": "BIZZ",
-          "StreetName": "Bank Street",
-          "BuildingNumber": "11",
-          "Floor": "6",
-          "PostCode": "Z78 4TY",
-          "TownName": "London",
-          "Country": "UK"
-        }
-      },
-      "RemittanceInformation": {
-        "Structured": [
-          {
-             "ReferredDocumentInformation": [{
-              "Code": "CINV",
-              "Issuer": "Issuer01",
-              "Number": "Number_01",
-              "RelatedDate": "2024-04-25T13:26:41.911Z",
-              "LineDetails": [
-                "LineDetail"
-              ]
-            }],
-            "ReferredDocumentAmount": 1,
-            "CreditorReferenceInformation": {
-              "Reference": "SweepCo",
-              "Code": "DISP",
-              "Issuer": "Issuer01",
-            },
-            "Invoicer": "INVR51856",
-            "Invoicee": "INVE5161856",
-            "TaxRemittance": "Tax Remittance related information",
-            "AdditionalRemittanceInformation": ["Free text for additional information"]
-          },
-        ],
-        "Unstructured": "Internal ops code 5120101"
-      },
-    }
+    "Initiation": {}
   },
   "Risk": {
     "PaymentContextCode": "TransferToSell",
     "ContractPresentIndicator": true,
     "PaymentPurposeCode": "EPAY",
     "CategoryPurposeCode": "CASH", 
-    "BeneficiaryPaymentDetailsPrepopulatedIndicator": false,
-    "BeneficiaryAccountType": "Business",
-    "MerchantCategoryCode": "7300", 
-    "MerchantCustomerIdentification": "053598653254",
-    "DeliveryAddress": {
-      "AddressLine": [
-        "Flat 7",
-        "Acacia Lodge"
-      ],
-      "StreetName": "Acacia Avenue",
-      "BuildingNumber": "27",
-      "PostCode": "GU31 2ZZ",
-      "TownName": "Sparsholt",
-      "CountrySubDivision": "Wessex",
-      "Country": "UK"
-    }
+    "BeneficiaryPaymentDetailsPrepopulatedIndicator": true,
+    "BeneficiaryAccountType": "Personal",
   }
 }
 ```
@@ -1443,21 +885,11 @@ Content-Type: application/json
 ```json
 {
   "Data": {
-    "ConsentId": "fe615446-e53a-45ed-954c-ae5d1f97a93b",
-    "CreationDateTime": "2017-06-05T15:15:15+00:00",
-    "Status": "AWAU",
-    "StatusReason": {
-      "StatusReasonCode": "U031", 
-      "StatusReasonDescription":"All checks yet to start",
-    },
-    "StatusUpdateDateTime": "2017-06-05T15:15:15+00:00",
     "ReadRefundAccount": "Yes",
-    "ExpectedExecutionDateTime": "2017-06-05T15:15:15+00:00",
-    "ExpectedSettlementDateTime": "2017-06-06T15:15:15+00:00",
     "ControlParameters": {
       "PSUAuthenticationMethods": [ "UK.OBIE.SCA" ],
       "PSUInteractionTypes": [ "OffSession" ],
-      "VRPType": "UK.OBIE.VRPType.Sweeping",
+      "VRPType": ["UK.OBIE.VRPType.Sweeping"],
       "ValidFromDateTime": "2017-06-05T15:15:13+00:00",
       "ValidToDateTime": "2020-06-05T15:15:13+00:00",
       "MaximumIndividualAmount": {
@@ -1473,167 +905,16 @@ Content-Type: application/json
         }
       ]
     },
-    "Initiation": {
-      "CreditorAccount": {
-        "SchemeName": "SortCodeAccountNumber",
-        "Identification": "30949330000010",
-        "SecondaryIdentification": "Roll 90210",
-        "Name": "Marcus Sweepimus",
-        "Proxy": {
-          "Identification": "441234012385",
-          "Code": "TELE",
-          "Type": "Telephone"
-        }
-      },
-      "DebtorAccount": {
-        "SchemeName": "UK.OBIE.IBAN",
-        "Identification": "GB76LOYD30949301273801",
-        "Name": "Marcus Sweepimus",
-        "SecondaryIdentification": "008419",
-        "Proxy": {
-          "Identification": "441234012345",
-          "Code": "TELE",
-          "Type": "Telephone"
-        }
-      },
-      "CreditorAgent": {  
-          "LEI": "IZ9Q00LZEVUKWCQY6X15",
-          "SchemeName": "UK.OBIE.BICFI",
-          "Identification": "80200112344562",
-          "Name": "The Credit Agent", 
-          "PostalAddress": { 
-            "AddressType": "BIZZ",
-            "StreetName": "Bank Street",
-            "BuildingNumber": "11",
-            "Floor": "6",
-            "PostCode": "Z78 4TY",
-            "TownName": "London",
-            "Country": "UK"
-        }
-      },
-      "CreditorPostalAddress": {
-        "AddressType": "BIZZ",
-        "Department": "Finance",
-        "SubDepartment": "Payroll",
-        "StreetName": "Bank Street",
-        "BuildingNumber": "11",
-        "BuildingName": "Tower Bridges",
-        "Floor": "6",
-        "UnitNumber": "UNIT591",
-        "Room": "844",
-        "PostBox": "PO Box 123456",
-        "PostCode": "Z78 4TY",
-        "TownLocationName":"Bank",
-        "TownName": "London",
-        "DistrictName": "Greater London",
-        "CareOf": "Ms Jane Smith",
-        "CountrySubDivision": "England",
-        "Country": "UK"
-      },
-      "UltimateDebtor": {
-        "SchemeName": "UK.OBIE.BICFI",
-        "Identification": "2360549017905161589",
-        "Name": "Ultimate Debtor",
-        "LEI": "8200007YHFDMEODY1965",
-        "PostalAddress": {
-          "AddressType": "BIZZ",
-          "StreetName": "Bank Street",
-          "BuildingNumber": "11",
-          "Floor": "6",
-          "PostCode": "Z78 4TY",
-          "TownName": "London",
-          "Country": "UK"
-        }
-      },
-      "UltimateCreditor": {
-        "SchemeName": "UK.OBIE.BICFI",
-        "Identification": "2360549017905161589",
-        "Name": "Ultimate Creditor",
-        "LEI": "60450004FECVJV7YN339",
-        "PostalAddress": {
-          "AddressType": "BIZZ",
-          "StreetName": "Bank Street",
-          "BuildingNumber": "11",
-          "Floor": "6",
-          "PostCode": "Z78 4TY",
-          "TownName": "London",
-          "Country": "UK"
-          }
-        },
-      "RegulatoryReporting": [{
-          "DebitCreditReportingIndicator": "CRED",
-          "Authority": {
-            "Name": "string",
-            "CountryCode": "UG"
-          },
-          "Details": [{
-              "Type": "CRED",
-              "Date": "2024-04-25T13:26:41.911Z",
-              "Information": ["Reg info1", "Reg info2"],
-              "Country": "QG",
-              "Amount": {
-                "Amount": "4.68702",
-                "Currency": "JGM"
-              }
-            }]
-      }],
-      "RemittanceInformation": {
-        "Structured": [
-          {
-            "CreditorReferenceInformation": {
-              "Reference": "SweepCo",
-              "Code": "DISP",
-              "Issuer": "Issuer01",
-            },
-            "ReferredDocumentAmount": 1,
-            "ReferredDocumentInformation": [{
-              "Code": "CINV",
-              "Issuer": "Issuer01",
-              "Number": "Number_01",
-              "RelatedDate": "2024-04-25T13:26:41.911Z",
-              "LineDetails": [
-                "LineDetail"
-              ]
-            }],
-            "Invoicer": "INVR51856",
-            "Invoicee": "INVE5161856",
-            "TaxRemittance": "Tax Remittance related information",
-            "AdditionalRemittanceInformation": ["Free text for additional information"]
-          },
-        ],
-        "Unstructured": "Internal ops code 5120101"
-      },
-    }
+    "Initiation": {}
   },
   "Risk": {
     "PaymentContextCode": "TransferToSell",
     "ContractPresentIndicator": true,
     "PaymentPurposeCode": "EPAY",
     "CategoryPurposeCode": "CASH", 
-    "BeneficiaryPaymentDetailsPrepopulatedIndicator": false,
-    "BeneficiaryAccountType": "Business",
-    "MerchantCategoryCode": "7300", 
-    "MerchantCustomerIdentification": "053598653254",
-    "DeliveryAddress": {
-      "AddressLine": [
-        "Flat 7",
-        "Acacia Lodge"
-      ],
-      "StreetName": "Acacia Avenue",
-      "BuildingNumber": "27",
-      "PostCode": "GU31 2ZZ",
-      "TownName": "Sparsholt",
-      "CountrySubDivision": "Wessex",
-      "Country": "UK"
-    }
-  },
-
-  
-  "Links": {
-    "Self": "https://api.alphabank.com/open-banking/v3.1/pisp/domestic-vrp-consents/fe615446-e53a-45ed-954c-ae5d1f97a93b"
-  },
-  
-  "Meta": {}
+    "BeneficiaryPaymentDetailsPrepopulatedIndicator": true,
+    "BeneficiaryAccountType": "Personal",
+  }
 }
 ```
 
@@ -1758,79 +1039,17 @@ Content-Type: application/json
           "Type": "Telephone"
         }
       },
-      "UltimateDebtor": {
-        "SchemeName": "UK.OBIE.BICFI",
-        "Identification": "2360549017905161589",
-        "Name": "Ultimate Debtor",
-        "LEI": "8200007YHFDMEODY1965",
-        "PostalAddress": {
-          "AddressType": "BIZZ",
-          "StreetName": "Bank Street",
-          "BuildingNumber": "11",
-          "Floor": "6",
-          "PostCode": "Z78 4TY",
-          "TownName": "London",
-          "Country": "UK"
-        }
-      },
-      "UltimateCreditor": {
-        "SchemeName": "UK.OBIE.BICFI",
-        "Identification": "2360549017905161589",
-        "Name": "Ultimate Creditor",
-        "LEI": "60450004FECVJV7YN339",
-        "PostalAddress": {
-          "AddressType": "BIZZ",
-          "StreetName": "Bank Street",
-          "BuildingNumber": "11",
-          "Floor": "6",
-          "PostCode": "Z78 4TY",
-          "TownName": "London",
-          "Country": "UK"
-          }
-        },
-        "RegulatoryReporting": [{
-          "DebitCreditReportingIndicator": "CRED",
-          "Authority": {
-            "Name": "string",
-            "CountryCode": "UG"
-          },
-          "Details": [{
-              "Type": "CRED",
-              "Date": "2024-04-25T13:26:41.911Z",
-              "Information": ["Reg info1", "Reg info2"],
-              "Country": "QG",
-              "Amount": {
-                "Amount": "4.68702",
-                "Currency": "JGM"
-            }
-          }]
-      }],
       "RemittanceInformation": {
         "Structured": [
           {
-            "CreditorReferenceInformation": {
-              "Reference": "SweepCo",
-              "Code": "DISP",
-              "Issuer": "Issuer01",
+          "ReferredDocumentAmount": 1,
+          "CreditorReferenceInformation": {
+            "Reference": "SweepCo",
             },
-            "ReferredDocumentAmount": 1,
-            "ReferredDocumentInformation": [{
-              "Code": "CINV",
-              "Issuer": "Issuer01",
-              "Number": "Number_01",
-              "RelatedDate": "2024-04-25T13:26:41.911Z",
-              "LineDetails": [
-                "LineDetail"
-              ]
-            }],
-            "Invoicer": "INVR51856",
-            "Invoicee": "INVE5161856",
-            "TaxRemittance": "Tax Remittance related information",
-            "AdditionalRemittanceInformation": ["Free text for additional information"]
+        "AdditionalRemittanceInformation": ["Rose's pocket money"],
           },
         ],
-        "Unstructured": "Internal ops code 5120101"
-      },
+      }
     }
   },
 
@@ -1839,24 +1058,9 @@ Content-Type: application/json
     "ContractPresentIndicator": true,
     "PaymentPurposeCode": "EPAY",
     "CategoryPurposeCode": "CASH", 
-    "BeneficiaryPaymentDetailsPrepopulatedIndicator": false,
-    "BeneficiaryAccountType": "Business",
-    "MerchantCategoryCode": "7300", 
-    "MerchantCustomerIdentification": "053598653254",
-    "DeliveryAddress": {
-      "AddressLine": [
-        "Flat 7",
-        "Acacia Lodge"
-      ],
-      "StreetName": "Acacia Avenue",
-      "BuildingNumber": "27",
-      "PostCode": "GU31 2ZZ",
-      "TownName": "Sparsholt",
-      "CountrySubDivision": "Wessex",
-      "Country": "UK"
-    }
-  },
-
+    "BeneficiaryPaymentDetailsPrepopulatedIndicator": true,
+    "BeneficiaryAccountType": "Personal",
+},
   
   "Links": {
     "Self": "https://api.alphabank.com/open-banking/v3.1/pisp/domestic-vrp-consents/fe615446-e53a-45ed-954c-ae5d1f97a93b"
@@ -2052,49 +1256,17 @@ Accept: application/json
           "Country": "UK"
           }
         },
-      "RegulatoryReporting": [{
-          "DebitCreditReportingIndicator": "CRED",
-          "Authority": {
-            "Name": "string",
-            "CountryCode": "UG"
-          },
-          "Details": [{
-              "Type": "CRED",
-              "Date": "2024-04-25T13:26:41.911Z",
-              "Information": ["Reg info1", "Reg info2"],
-              "Country": "QG",
-              "Amount": {
-                "Amount": "4.68702",
-                "Currency": "JGM"
-              }
-            }]
-      }],
       "RemittanceInformation": {
         "Structured": [
           {
-            "CreditorReferenceInformation": {
-              "Reference": "SweepCo",
-              "Code": "DISP",
-              "Issuer": "Issuer01",
+          "ReferredDocumentAmount": 1,
+          "CreditorReferenceInformation": {
+            "Reference": "SweepCo",
             },
-            "ReferredDocumentAmount": 1,
-            "ReferredDocumentInformation": [{
-              "Code": "CINV",
-              "Issuer": "Issuer01",
-              "Number": "Number_01",
-              "RelatedDate": "2024-04-25T13:26:41.911Z",
-              "LineDetails": [
-                "LineDetail"
-              ]
-            }],
-            "Invoicer": "INVR51856",
-            "Invoicee": "INVE5161856",
-            "TaxRemittance": "Tax Remittance related information",
-            "AdditionalRemittanceInformation": ["Free text for additional information"]
+        "AdditionalRemittanceInformation": ["Rose's pocket money"],
           },
         ],
-        "Unstructured": "Internal ops code 5120101"
-      },
+      }
     },
 
     "Instruction": {
@@ -2150,31 +1322,17 @@ Accept: application/json
         "Amount": "10.00",
         "Currency": "GBP"
       },
-      "RemittanceInformation": {
+     "RemittanceInformation": {
         "Structured": [
           {
-            "ReferredDocumentInformation": [{
-              "Code": "CINV",
-              "Issuer": "Issuer01",
-              "Number": "Number_01",
-              "RelatedDate": "2024-04-25T13:26:41.911Z",
-              "LineDetails": [
-                "LineDetail"
-              ]
-            }],
-            "CreditorReferenceInformation": {
-              "Reference": "SweepCo",
-              "Code": "DISP",
-              "Issuer": "Issuer01",
+          "ReferredDocumentAmount": 1,
+          "CreditorReferenceInformation": {
+            "Reference": "SweepCo",
             },
-            "Invoicer": "INVR51856",
-            "Invoicee": "INVE5161856",
-            "TaxRemittance": "Tax Remittance related information",
-            "AdditionalRemittanceInformation": ["Free text for additional information"]
+        "AdditionalRemittanceInformation": ["Rose's pocket money"],
           },
         ],
-        "Unstructured": "Internal ops code 5120101"
-      },
+      }
     }
   },
 
@@ -2183,23 +1341,8 @@ Accept: application/json
     "ContractPresentIndicator": true,
     "PaymentPurposeCode": "EPAY",
     "CategoryPurposeCode": "CASH", 
-    "BeneficiaryPaymentDetailsPrepopulatedIndicator": false,
-    "BeneficiaryAccountType": "Business",
-    "MerchantCategoryCode": "7300", 
-    "MerchantCustomerIdentification": "053598653254",
-    "DeliveryAddress": {
-      "AddressLine": [
-        "Flat 7",
-        "Acacia Lodge"
-      ],
-      "StreetName": "Acacia Avenue",
-      "BuildingNumber": "27",
-      "PostCode": "GU31 2ZZ",
-      "TownName": "Sparsholt",
-      "CountrySubDivision": "Wessex",
-      "Country": "UK"
-    }
-  }
+    "BeneficiaryPaymentDetailsPrepopulatedIndicator": true,
+    "BeneficiaryAccountType": "Personal",
 }
 ```
 
@@ -2218,11 +1361,7 @@ Content-Type: application/json
     "ConsentId": "fe615446-e53a-45ed-954c-ae5d1f97a93b",
     "CreationDateTime": "2017-06-05T15:15:15+00:00",
     "DomesticVRPId": "OU90210",
-    "StatusCode": "PDNG",
-    "StatusReason": {
-      "StatusReasonCode": "83",
-      "StatusReasonDescription":"Pending completion next working day",
-    },
+    "StatusCode": "RCVD",
     "StatusUpdateDateTime": "2017-06-05T15:15:15+00:00",
     "ExpectedExecutionDateTime": "2017-06-05T15:15:15+00:00",
     "ExpectedSettlementDateTime": "2017-06-06T15:15:15+00:00",
@@ -2301,79 +1440,17 @@ Content-Type: application/json
         "CountrySubDivision": "England",
         "Country": "UK"
       },
-      "UltimateDebtor": {
-        "SchemeName": "UK.OBIE.BICFI",
-        "Identification": "2360549017905161589",
-        "Name": "Ultimate Debtor",
-        "LEI": "8200007YHFDMEODY1965",
-        "PostalAddress": {
-          "AddressType": "BIZZ",
-          "StreetName": "Bank Street",
-          "BuildingNumber": "11",
-          "Floor": "6",
-          "PostCode": "Z78 4TY",
-          "TownName": "London",
-          "Country": "UK"
-        }
-      },
-      "UltimateCreditor": {
-        "SchemeName": "UK.OBIE.BICFI",
-        "Identification": "2360549017905161589",
-        "Name": "Ultimate Creditor",
-        "LEI": "60450004FECVJV7YN339",
-        "PostalAddress": {
-          "AddressType": "BIZZ",
-          "StreetName": "Bank Street",
-          "BuildingNumber": "11",
-          "Floor": "6",
-          "PostCode": "Z78 4TY",
-          "TownName": "London",
-          "Country": "UK"
-          }
-        },
-      "RegulatoryReporting": [{
-          "DebitCreditReportingIndicator": "CRED",
-          "Authority": {
-            "Name": "string",
-            "CountryCode": "UG"
-          },
-          "Details": [{
-              "Type": "CRED",
-              "Date": "2024-04-25T13:26:41.911Z",
-              "Information": ["Reg info1", "Reg info2"],
-              "Country": "QG",
-              "Amount": {
-                "Amount": "4.68702",
-                "Currency": "JGM"
-              }
-            }]
-      }],
       "RemittanceInformation": {
         "Structured": [
           {
-            "CreditorReferenceInformation": {
-              "Reference": "SweepCo",
-              "Code": "DISP",
-              "Issuer": "Issuer01",
+          "ReferredDocumentAmount": 1,
+          "CreditorReferenceInformation": {
+            "Reference": "SweepCo",
             },
-            "ReferredDocumentAmount": 1,
-            "ReferredDocumentInformation": [{
-              "Code": "CINV",
-              "Issuer": "Issuer01",
-              "Number": "Number_01",
-              "RelatedDate": "2024-04-25T13:26:41.911Z",
-              "LineDetails": [
-                "LineDetail"
-              ]
-            }],
-            "Invoicer": "INVR51856",
-            "Invoicee": "INVE5161856",
-            "TaxRemittance": "Tax Remittance related information",
-            "AdditionalRemittanceInformation": ["Free text for additional information"]
+        "AdditionalRemittanceInformation": ["Rose's pocket money"],
           },
         ],
-        "Unstructured": "Internal ops code 5120101"
-      },
+      }
     },
 
     "Instruction": {
@@ -2429,46 +1506,17 @@ Content-Type: application/json
         "Amount": "10.00",
         "Currency": "GBP"
       },
-      "UltimateCreditor": {
-        "SchemeName": "UK.OBIE.BICFI",
-        "Identification": "2360549017905161589",
-        "Name": "Ultimate Creditor",
-        "LEI": "60450004FECVJV7YN339",
-        "PostalAddress": {
-          "AddressType": "BIZZ",
-          "StreetName": "Bank Street",
-          "BuildingNumber": "11",
-          "Floor": "6",
-          "PostCode": "Z78 4TY",
-          "TownName": "London",
-          "Country": "UK"
-          }
-        },
       "RemittanceInformation": {
         "Structured": [
           {
-            "ReferredDocumentInformation": [{
-              "Code": "CINV",
-              "Issuer": "Issuer01",
-              "Number": "Number_01",
-              "RelatedDate": "2024-04-25T13:26:41.911Z",
-              "LineDetails": [
-                "LineDetail"
-              ]
-            }],
-            "CreditorReferenceInformation": {
-              "Reference": "SweepCo",
-              "Code": "DISP",
-              "Issuer": "Issuer01",
+          "ReferredDocumentAmount": 1,
+          "CreditorReferenceInformation": {
+            "Reference": "SweepCo",
             },
-            "Invoicer": "INVR51856",
-            "Invoicee": "INVE5161856",
-            "TaxRemittance": "Tax Remittance related information",
-            "AdditionalRemittanceInformation": ["Free text for additional information"]
+          "AdditionalRemittanceInformation": ["Rose's pocket money"],
           },
         ],
-        "Unstructured": "Internal ops code 5120101"
-      },
+      }
     }
   },
 
@@ -2477,24 +1525,9 @@ Content-Type: application/json
     "ContractPresentIndicator": true,
     "PaymentPurposeCode": "EPAY",
     "CategoryPurposeCode": "CASH", 
-    "BeneficiaryPaymentDetailsPrepopulatedIndicator": false,
-    "BeneficiaryAccountType": "Business",
-    "MerchantCategoryCode": "7300", 
-    "MerchantCustomerIdentification": "053598653254",
-    "DeliveryAddress": {
-      "AddressLine": [
-        "Flat 7",
-        "Acacia Lodge"
-      ],
-      "StreetName": "Acacia Avenue",
-      "BuildingNumber": "27",
-      "PostCode": "GU31 2ZZ",
-      "TownName": "Sparsholt",
-      "CountrySubDivision": "Wessex",
-      "Country": "UK"
-    }
-  },
-
+    "BeneficiaryPaymentDetailsPrepopulatedIndicator": true,
+    "BeneficiaryAccountType": "Personal",
+},
   
   "Links": {
     "Self": "https://api.alphabank.com/open-banking/v3.1/pisp/domestic-vrps/OU90210"
