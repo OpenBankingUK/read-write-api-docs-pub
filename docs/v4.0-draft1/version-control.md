@@ -22,6 +22,9 @@ v4.0-Draft 1 - 25th April 2024
 | All | `OBRemittanceInformation1` object replaced by `OBRemittanceInformation2`|
 | All | `CreditorAgent` fields consolidated into one object - `OBBranchAndFinancialInstitutionIdentification6`|
 | PSIP| `CreditorAgent` added to Domestic Payment Consent/Domestic Payment/File payment Consents/File payment |
+| Errors | <ul><li>Top level `Code` and `Message` restored. However, this is optional and marked as __Deprecated__</ul> |
+
+
 
 
 
