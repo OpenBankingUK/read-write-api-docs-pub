@@ -73,6 +73,8 @@ The ASPSP **must** allow a PSU to have multiple VRP consents for a given account
 The ASPSP **must** reject a consent request that has `Data.ControlParameters.SupplementaryData` that it cannot process.
 
 Remittance Information __MAY__ be provided in the Initiation section when a VRP Consent is setup. This means the same Remittance Information __MUST__ be provided by the PISP in the Initiation and Instruction section of each VRP Payment.
+
+An ASPSP may choose to support Dynamic references for VRP, in which case the following guidance should be used:
 If each VRP Payment requires dynamic Remittance Information for each VRP Payment then the Remittance Information at the VRP Consent level __MUST NOT__ be captured.
 The Remittance Information in the Initiation section provided at the VRP Payment level __MUST__ match the Initiation section provided at the VRP Consent level.
 
