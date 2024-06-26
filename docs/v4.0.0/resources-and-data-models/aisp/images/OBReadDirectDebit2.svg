@@ -205,9 +205,7 @@ Frequency
 <text x="92.39999999999999em" y="4.3em" fill="darkslateblue">
 <title>Type: integer
 Format: int32
-Description: Number of instructions to be created and processed during the specified period. 
-Specifies a frequency in terms of a count per period within a specified frequency type. 
- Note: should not be used alongside `PointInTime`
+Description: Number of instructions to be created and processed during the specified period .Specifies a frequency in terms of a count per period within a specified frequency type. Note: should not be used alongside `PointInTime`
 </title>
 CountPerPeriod [0..1]
 </text>
@@ -215,9 +213,7 @@ CountPerPeriod [0..1]
 <text x="92.39999999999999em" y="5.6em" fill="darkslateblue">
 <title>Type: string
 MaxLength: 2
-Description: Exact2NumericText - Further information on the exact point in time the event should take place.
-Specifies a frequency in terms of an exact point in time or moment within a specified frequency type. 
- Note: should not be used alongside `CountPerSide`
+Description: Exact2NumericText - Further information on the exact point in time the event should take place. Specifies a frequency in terms of an exact point in time or moment within a specified frequency type. Note: should not be used alongside `CountPerSide`
 </title>
 PointInTime [0..1]
 </text>

@@ -105,7 +105,7 @@ Values:
  - COND
  - RJCT
 </title>
-StatusCode [1..1]
+Status [1..1]
 </text>
 
 <text x="40em" y="14.7em" fill="darkslateblue">

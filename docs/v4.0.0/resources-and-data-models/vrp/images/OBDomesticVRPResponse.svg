@@ -94,7 +94,7 @@ Values:
  - ACCC
  - BLCK
 </title>
-StatusCode [1..1]
+Status [1..1]
 </text>
 
 <text x="24.8em" y="12.100000000000001em" fill="darkslateblue">

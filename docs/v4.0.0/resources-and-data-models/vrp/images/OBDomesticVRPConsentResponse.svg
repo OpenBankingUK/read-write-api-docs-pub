@@ -72,7 +72,7 @@ Values:
  - AUTH
  - COND
 </title>
-StatusCode [1..1]
+Status [1..1]
 </text>
 
 <text x="30.400000000000002em" y="10.8em" fill="darkslateblue">

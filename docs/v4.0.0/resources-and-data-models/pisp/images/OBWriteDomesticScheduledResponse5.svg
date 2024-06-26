@@ -84,7 +84,7 @@ Values:
  - RJCT
  - ACSP
 </title>
-StatusCode [1..1]
+Status [1..1]
 </text>
 
 <text x="34.400000000000006em" y="12.100000000000001em" fill="darkslateblue">
@@ -1422,7 +1422,7 @@ Values:
  - AWAU
  - RJCT
 </title>
-StatusCode [1..1]
+Status [1..1]
 </text>
 
 <rect x="65.80000000000001em" y="174em" width="4.800000000000001em" height="3em" fill="beige" stroke="black" stroke-width="2"/>

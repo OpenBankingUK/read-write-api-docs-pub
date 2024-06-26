@@ -78,7 +78,7 @@ Values:
  - ACCC
  - BLCK
 </title>
-StatusCode [1..1]
+Status [1..1]
 </text>
 
 <text x="24em" y="8.2em" fill="darkslateblue">
@@ -118,7 +118,7 @@ Values:
  - ACCC
  - BLCK
 </title>
-StatusCode [1..1]
+Status [1..1]
 </text>
 
 <text x="51.6em" y="5.6em" fill="darkslateblue">
