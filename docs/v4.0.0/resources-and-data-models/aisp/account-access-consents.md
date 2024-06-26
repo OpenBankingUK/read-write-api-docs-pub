@@ -150,6 +150,7 @@ The OBReadConsent1 object will be used for the call to:
 | ExpirationDateTime |0..1 |OBReadConsent1/Data/ExpirationDateTime |Specified date and time the permissions will expire. If this is not populated, the permissions will be open ended. |ISODateTime | |
 | TransactionFromDateTime |0..1 |OBReadConsent1/Data/TransactionFromDateTime |Specified start date and time for the transaction query period. If this is not populated, the start date will be open ended, and data will be returned from the earliest available transaction. |ISODateTime | |
 | TransactionToDateTime |0..1 |OBReadConsent1/Data/TransactionToDateTime |Specified end date and time for the transaction query period. If this is not populated, the end date will be open ended, and data will be returned to the latest available transaction. |ISODateTime | |
+| Risk | 1..1 | OBReadConsent1/Risk | The Risk section is sent by the initiating party to the ASPSP. It is used to specify additional details for risk scoring for Account Info. | OBRisk2||
 
 ### Account Access Consents - Response
 
