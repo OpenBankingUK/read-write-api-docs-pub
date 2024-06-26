@@ -720,7 +720,14 @@ Content-Type: application/json
     "DebtorAccount": {
       "SchemeName": "UK.OBIE.SortCodeAccountNumber",
       "Identification": "11280001234567",
-      "Name": "Andrea Frost"
+      "Name": "Andrea Frost",
+      "SecondaryIdentification": "0002",
+      "LEI": "8200007YHFDMEODY1965",
+      "Proxy": {
+        "Identification": "07700900000",
+        "Code": "TELE",
+        "Type": "Telephone"
+      },
     },
     "CreditorAccount": {
       "SchemeName": "UK.OBIE.IBAN",
@@ -736,8 +743,27 @@ Content-Type: application/json
   },  
   },
   "Risk": {
-    "PaymentContextCode": "TransferToThirdParty"
-  },
+    "PaymentContextCode": "TransferToThirdParty",
+    "PaymentPurposeCode": "EPAY",
+    "CategoryPurposeCode": "CASH", 
+    "ExtendedPurpose": "Required when no 4 character code fits the purpose",
+    "BeneficiaryPaymentDetailsPrepopulatedIndicator": false,
+    "BeneficiaryAccountType": "Business",
+    "MerchantCategoryCode": "7300", 
+    "MerchantCustomerIdentification": "053598653254",
+    "DeliveryAddress": {
+      "AddressLine": [
+        "Flat 7",
+        "Acacia Lodge"
+      ],
+      "StreetName": "Acacia Avenue",
+      "BuildingNumber": "27",
+      "PostCode": "GU31 2ZZ",
+      "TownName": "Sparsholt",
+      "CountrySubDivision": "Wessex",
+      "Country": "UK"
+    }
+  }
   "Links": {
     "Self": "https://api.alphabank.com/open-banking/v3.1/pisp/international-standing-order-consents/ISOC-100"
   },

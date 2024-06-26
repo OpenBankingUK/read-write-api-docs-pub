@@ -508,6 +508,19 @@ Accept: application/json
           "Country": "UK"
         }
       },
+       "Creditor": {
+        "SchemeName": "UK.OBIE.SortCodeAccountNumber",
+         "LEI": "8200007YHFDMEODY8412",
+         "PostalAddress": {
+          "AddressType": "BIZZ",
+          "StreetName": "Bank Street",
+          "BuildingNumber": "11",
+          "Floor": "6",
+          "PostCode": "Z78 4TY",
+          "TownName": "London",
+          "Country": "UK"
+        }
+      },
       "UltimateDebtor": {
         "SchemeName": "UK.OBIE.BICFI",
         "Identification": "2360549017905161589",
@@ -750,7 +763,8 @@ Content-Type: application/json
         "LEI": "8200007YHFDMEODY1965",
         "Proxy": {
           "Identification": "07700900000",
-          "Code": "TELE"
+          "Code": "TELE",
+          "Type": "Telephone"
         },
       },
 			"CurrencyOfTransfer":"USD",

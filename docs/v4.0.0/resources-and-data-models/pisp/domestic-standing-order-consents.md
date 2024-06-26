@@ -488,6 +488,15 @@ Content-Type: application/json
       "StatusReasonDescription":"Waiting for completion of consent authorisation to be completed by user",
     },
 	"StatusUpdateDateTime": "1976-06-06T06:06:06+00:00",
+  "CutOffTime": "2018-05-06T15:15:13+00:00",
+  "Charges": [{
+       "ChargeBearer": "Shared",
+       "Type": "UK.OBIE.CHAPSOut",
+       "Amount"  {
+        "Amount": "0.88",
+        "Currency": "GBP"
+      }
+    }],
 	"Permission": "Create",
    "Authorisation": {
       "Type": "Any",
@@ -696,6 +705,15 @@ Content-Type: application/json
 	"Status": "AUTH",
 	"StatusUpdateDateTime": "1976-06-06T06:06:06+00:00",
 	"Permission": "Create",
+  "CutOffTime": "2018-05-06T15:15:13+00:00",
+  "Charges": [{
+       "ChargeBearer": "Shared",
+       "Type": "UK.OBIE.CHAPSOut",
+       "Amount"  {
+        "Amount": "0.88",
+        "Currency": "GBP"
+      }
+    }],
     "Initiation": {
       "MandateRelatedInformation": {
         "MandateIdentification": "Golfers",
@@ -833,7 +851,8 @@ Content-Type: application/json
         "Unstructured": "Internal ops code 5120101"
         }
       }
-    },
+    }
+  },
   "SCASupportData": {
     "RequestedSCAExemptionType": "EcommerceGoods",
     "AppliedAuthenticationApproach": "SCA",

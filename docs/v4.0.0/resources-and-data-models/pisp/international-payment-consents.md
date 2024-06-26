@@ -511,17 +511,6 @@ Accept: application/json
           "Type": "Telephone"
         },
       },
-      "DebtorAccount": {
-        "SchemeName": "UK.OBIE.SortCodeAccountNumber",
-        "SecondaryIdentification": "0002",
-        "Identification": "11280001234567",
-        "Name": "Andrea Smith",
-        "Proxy": {
-          "Identification": "07700900000",
-          "Code": "TELE",
-          "Type": "Telephone"
-        },
-      },
       "UltimateDebtor": {
         "SchemeName": "UK.OBIE.BICFI",
         "Identification": "2360549017905161589",
@@ -601,7 +590,7 @@ Accept: application/json
     "ContractPresentIndicator": false,
     "PaymentPurposeCode": "EPAY",
     "CategoryPurposeCode": "CASH", 
-   
+    "ExtendedPurpose": "Required when no 4 character code fits the purpose",
     "BeneficiaryPaymentDetailsPrepopulatedIndicator": false,
     "BeneficiaryAccountType": "Business",
     "MerchantCategoryCode": "7300", 
@@ -700,9 +689,8 @@ Content-Type: application/json
             "PostCode": "Z78 4TY",
             "TownName": "London",
             "Country": "UK"
-            }
-      },
-  },
+        }
+    },
   "CreditorAccount": {
     "SchemeName": "UK.OBIE.SortCodeAccountNumber",
     "Identification": "08080021325698",
@@ -761,6 +749,17 @@ Content-Type: application/json
         "Country": "UK"
       }
     },
+     "DebtorAccount": {
+        "SchemeName": "UK.OBIE.SortCodeAccountNumber",
+        "SecondaryIdentification": "0002",
+        "Identification": "11280001234567",
+        "Name": "Andrea Smith",
+        "Proxy": {
+          "Identification": "07700900000",
+          "Code": "TELE",
+          "Type": "Telephone"
+        },
+      },
   "UltimateCreditor": {
     "SchemeName": "UK.OBIE.BICFI",
     "Identification": "2360549017905161589",
