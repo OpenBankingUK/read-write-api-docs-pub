@@ -104,4 +104,4 @@ Risk
 <line x1="12.200000000000001em" y1="2em" x2="14.200000000000001em" y2="2em" stroke="black" marker-start="url(#Diamond)"/>
 <line x1="14.200000000000001em" y1="2em" x2="14.200000000000001em" y2="11.2em" stroke="black" />
 <line x1="14.200000000000001em" y1="11.2em" x2="17.400000000000002em" y2="11.2em" stroke="black" marker-end="url(#Triangle)"/>
-<text x="14.700000000000003em" y="10.7em">0..1</text></svg>
+<text x="14.700000000000003em" y="10.7em">1..1</text></svg>
