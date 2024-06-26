@@ -363,6 +363,7 @@ All other fields (other than these fields listed) are available with the "Basic"
 | --- |--- |--- |--- |
 | ReadAccountsDetail |Account |0..1 |OBReadAccount3/Data/Account/Account |
 | ReadAccountsDetail |Servicer |0..1 |OBReadAccount3/Data/Account/Servicer |
+| ReadAccountsDetail |Servicer |0..* |OBReadAccount3/Data/Account/StatementFrequencyAndFormat |
 | ReadBeneficiariesDetail |CreditorAgent |0..1 |OBReadBeneficiary3/Data/Beneficiary/CreditorAgent |
 | ReadBeneficiariesDetail |CreditorAccount |0..1 |OBReadBeneficiary3/Data/Beneficiary/CreditorAccount |
 | ReadStandingOrdersDetail |CreditorAgent |0..1 |OBReadStandingOrder6/Data/StandingOrder/CreditorAgent |

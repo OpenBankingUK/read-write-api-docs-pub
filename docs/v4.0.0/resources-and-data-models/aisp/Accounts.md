@@ -94,9 +94,11 @@ The resource differs depending on the permissions (ReadAccountsBasic and ReadAcc
 * These objects **must not** be returned **without** the **ReadAccountsDetail** permission:
     * OBReadAccount6/Data/Account/Account
     * OBReadAccount6/Data/Account/Servicer
+    * OBReadAccount6/Data/Account/StatementFrequencyAndFormat
 * If the **ReadAccountsDetail** is granted by the PSU:
-    * OBReadAccount6/Data/Account/Account **must** be returned (1..n)
+    * OBReadAccount6/Data/Account/Account **must** be returned (1..*)
     * OBReadAccount6/Data/Account/Servicer **may** be returned if applicable to the account and ASPSP (0..1)
+    * OBReadAccount6/Data/Account/StatementFrequencyAndFormat **may** be returned (0..*)
 
 If the ReadPAN permission is granted by the PSU, the ASPSP may choose to populate the OBReadAccount6/Data/Account/Account/Identification with the unmasked PAN (if the PAN is being populated in the response).
 
