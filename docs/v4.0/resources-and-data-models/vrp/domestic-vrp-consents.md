@@ -103,7 +103,7 @@ This API endpoint allows the TPP to ask an ASPSP to confirm funds on the `Debtor
 
 An ASPSP can only respond to a funds confirmation request if the resource has a Status of `AUTH`.
 
-If resource has any other Status, the ASPSP must respond with a 400 (Bad Request) and a `U009` (UK.OB.Resource.InvalidConsentStatus) error code.
+If resource has any other Status, the ASPSP must respond with a 400 (Bad Request) and a `U009` (UK.OBIE.Resource.InvalidConsentStatus) error code.
 
 ### PUT /domestic-vrp-consents/{consentId}
 This endpoint is only used for migration of consent data across API Standard versions. The ASPSP can choose to implement one or both of the PUT/PATCH endpoints and TPPs should refer to the ASPSP developer portal for information on availability.    

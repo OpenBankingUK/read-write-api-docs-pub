@@ -40,13 +40,4 @@ A comprehensive list of enumerations, from both OBL and ISO 20022, have been cat
 
 ASPSPs and TPPs should reference this repository for an up-to-date list of enums and values.
 
-<details><summary>Show</summary>
-
-| Code |Description |
-| --- |--- |
-| UK.OB.InSession | Indicates the customer is present for interaction type. |
-| UK.OB.OffSession | Indicates the customer is not present for interaction type.|
-
 Note: ASPSPs may define enumerations that are more appropriate and document in the Developer Portal.
-
-</details>
