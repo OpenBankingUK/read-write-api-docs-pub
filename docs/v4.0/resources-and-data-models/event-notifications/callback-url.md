@@ -142,7 +142,7 @@ The OBCallbackUrlsResponse1 object will be used for a response to a call to:
 | --- |--- |--- |--- |--- |--- |--- |
 | OBCallbackUrlsResponse1 |OBCallbackUrlsResponse1 |OBCallbackUrlsResponse1 | | | | |
 | Data |1..1 |OBCallbackUrlsResponse1/Data |OBCallbackUrlsResponseData1 | | | |
-| CallbackUrl |0..n |OBCallbackUrlsResponse1/Data/CallbackUrl |OBCallbackUrlResponseData1 | | | |
+| CallbackUrl |0..* |OBCallbackUrlsResponse1/Data/CallbackUrl |OBCallbackUrlResponseData1 | | | |
 | CallbackUrlId |1..1 |OBCallbackUrlsResponse1/Data/CallbackUrl/CallbackUrlId |Unique identification as assigned by the ASPSP to uniquely identify the callback url resource. |Max40Text | | |
 | Url |1..1 |OBCallbackUrlsResponse1/Data/CallbackUrl/Url |Callback URL for a TPP hosted service. Will be used by ASPSPs, in conjunction with the resource name, to construct a URL to send event notifications to. |xs:anyURI | | |
 | Version |1..1 |OBCallbackUrlsResponse1/Data/CallbackUrl/Version |Version for the event notification. |Max10Text | | |

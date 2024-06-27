@@ -73,7 +73,7 @@ The resource requires the ReadDirectDebits permission. The resource response pay
 | --- |--- |--- |--- |--- |--- |--- |
 | OBReadDirectDebit2 | |OBReadDirectDebit2 | |OBReadDirectDebit2 | | |
 | Data |1..1 |OBReadDirectDebit2/Data | |OBReadDataDirectDebit2 | | |
-| DirectDebit |0..n |OBReadDirectDebit2/Data/DirectDebit |Account to or from which a cash entry is made. |OBDirectDebit2| | |
+| DirectDebit |0..* |OBReadDirectDebit2/Data/DirectDebit |Account to or from which a cash entry is made. |OBDirectDebit2| | |
 | AccountId |1..1 |OBReadDirectDebit2/Data/DirectDebit/AccountId |A unique and immutable identifier used to identify the account resource. This identifier has no meaning to the account owner. |Max40Text | | |
 | DirectDebitId |0..1 |OBReadDirectDebit2/Data/DirectDebit/DirectDebitId |A unique and immutable identifier used to identify the direct debit resource. This identifier has no meaning to the account owner. |Max40Text | | |
 | DirectDebitStatusCode |0..1 |OBReadDirectDebit2/Data/DirectDebit/DirectDebitStatusCode |Specifies the status of the direct debit in code form. |For a full list of enumeration values refer to `External_CodeSet` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets) |ExternalMandateStatus1Code| |

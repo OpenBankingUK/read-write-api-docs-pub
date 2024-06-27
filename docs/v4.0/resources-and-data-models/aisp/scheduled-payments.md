@@ -92,7 +92,7 @@ If the ReadPAN permission is granted by the PSU - the ASPSP may choose to popula
 | --- |--- |--- |--- |--- |--- |--- |
 | OBReadScheduledPayment3 | |OBReadScheduledPayment3 | |OBReadScheduledPayment3 | | |
 | Data |1..1 |OBReadScheduledPayment3/Data | |OBReadDataScheduledPayment3 | | |
-| ScheduledPayment |0..n |OBReadScheduledPayment3/Data/ScheduledPayment | |OBScheduledPayment3 | | |
+| ScheduledPayment |0..* |OBReadScheduledPayment3/Data/ScheduledPayment | |OBScheduledPayment3 | | |
 | AccountId |1..1 |OBReadScheduledPayment3/Data/ScheduledPayment/AccountId |A unique and immutable identifier used to identify the account resource. This identifier has no meaning to the account owner. |Max40Text | | |
 | ScheduledPaymentId |0..1 |OBReadScheduledPayment3/Data/ScheduledPayment/ScheduledPaymentId |A unique and immutable identifier used to identify the scheduled payment resource. This identifier has no meaning to the account owner. |Max40Text | | |
 | ScheduledPaymentDateTime |1..1 |OBReadScheduledPayment3/Data/ScheduledPayment/ScheduledPaymentDateTime |The date on which the scheduled payment will be made. |ISODateTime | | |

@@ -1277,7 +1277,7 @@ The error response structure for Open Banking Read/Write APIs:
 
 In objects where the value for an optional field is not specified, the field **must** be excluded from the JSON payload.
 
-In objects where an array field is defined as having 0..n values, the array field **must be** included in the payload with an empty array.
+In objects where an array field is defined as having 0..* values, the array field **must be** included in the payload with an empty array.
 
 ```
 {

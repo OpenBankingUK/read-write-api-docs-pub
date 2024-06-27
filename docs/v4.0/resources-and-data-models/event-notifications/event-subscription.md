@@ -110,7 +110,7 @@ For the OBEventSubscription1 object:
 | Data |1..1 |OBEventSubscription1/Data | |OBEventSubscriptionData1 | | |
 | CallbackUrl |0..1 |OBEventSubscription1/Data/CallbackUrl |Callback URL for a TPP hosted service. Will be used by ASPSPs, in conjunction with the resource name, to construct a URL to send event notifications to. |xs:anyURI | | |
 | Version |1..1 |OBEventSubscription1/Data/Version |Version for the event notification. |Max10Text | | |
-| EventTypes |0..n |OBEventSubscription1/Data/EventTypes |Array of event types the subscription applies to. |OBEventType1Code | | |
+| EventTypes |0..* |OBEventSubscription1/Data/EventTypes |Array of event types the subscription applies to. |OBEventType1Code | | |
 
 
 ### Event Subscription - Response
@@ -137,7 +137,7 @@ The OBEventSubscriptionResponse1 object will also be used for the call to:
 | EventSubscriptionId |1..1 |OBEventSubscriptionResponse1/Data/EventSubscriptionId |Unique identification as assigned by the ASPSP to uniquely identify the callback URL resource. |Max40Text | | |
 | CallbackUrl |0..1 |OBEventSubscriptionResponse1/Data/CallbackUrl |Callback URL for a TPP hosted service. Will be used by ASPSPs, in conjunction with the resource name, to construct a URL to send event notifications to. |xs:anyURI | | |
 | Version |1..1 |OBEventSubscriptionResponse1/Data/Version |Version for the event notification. |Max10Text | | |
-| EventTypes |0..n |OBEventSubscriptionResponse1/Data/EventTypes |Array of event types the subscription applies to. |OBEventType1Code | | |
+| EventTypes |0..* |OBEventSubscriptionResponse1/Data/EventTypes |Array of event types the subscription applies to. |OBEventType1Code | | |
 
 ### Event Subscriptions - Response
 
@@ -155,11 +155,11 @@ The OBEventSubscriptionsResponse1 object will be used for a response to a call t
 | --- |--- |--- |--- |--- |--- |--- |
 | OBEventSubscriptionsResponse1 | |OBEventSubscriptionsResponse1 | |OBEventSubscriptionsResponse1 | | |
 | Data |1..1 |OBEventSubscriptionsResponse1/Data | |OBEventSubscriptionsResponseData1 | | |
-| EventSubscription |0..n |OBEventSubscriptionsResponse1/Data/EventSubscription | |OBEventSubscriptionResponseData1 | | |
+| EventSubscription |0..* |OBEventSubscriptionsResponse1/Data/EventSubscription | |OBEventSubscriptionResponseData1 | | |
 | EventSubscriptionId |1..1 |OBEventSubscriptionsResponse1/Data/EventSubscription/EventSubscriptionId |Unique identification as assigned by the ASPSP to uniquely identify the callback url resource. |Max40Text | | |
 | Url |0..1 |OBEventSubscriptionsResponse1/Data/EventSubscription/Url |Callback URL for a TPP hosted service. Will be used by ASPSPs, in conjunction with the resource name, to construct a URL to send event notifications to. |xs:anyURI | | |
 | Version |1..1 |OBEventSubscriptionsResponse1/Data/EventSubscription/Version |Version for the event notification. |Max10Text | | |
-| EventTypes |0..n |OBEventSubscriptionsResponse1/Data/EventSubscription/EventTypes |Array of event types the subscription applies to. |OBEventType1Code | | |
+| EventTypes |0..* |OBEventSubscriptionsResponse1/Data/EventSubscription/EventTypes |Array of event types the subscription applies to. |OBEventType1Code | | |
 
 
 ## Usage Examples

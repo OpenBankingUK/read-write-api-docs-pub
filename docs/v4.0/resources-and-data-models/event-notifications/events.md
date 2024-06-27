@@ -78,9 +78,9 @@ The `OBEventPolling1` will be used as the request payload for:
 | OBEventPolling1 |1..1 |OBEventPolling1 | |OBEventPolling1 | | |
 | maxEvents |0..1 |OBEventPolling1/maxEvents |Maximum number of events to be returned. A value of zero indicates the ASPSP should not return events even if available |xs:int | | |
 | returnImmediately |0..1 |OBEventPolling1/returnImmediately |Indicates whether an ASPSP should return a response immediately or provide a long poll |xs:boolean | | |
-| ack |0..n |OBEventPolling1/ack |An array of `jti` values indicating event notifications positively acknowledged by the TPP |Max128Text | | |
+| ack |0..* |OBEventPolling1/ack |An array of `jti` values indicating event notifications positively acknowledged by the TPP |Max128Text | | |
 | setErrs |0..1 |OBEventPolling1/setErrs |An object that encapsulates all negative acknowledgements transmitted by the TPP |xs:anyType | | |
-| `<jti>` |0..n |`OBEventPolling1/setErrs/<jti>` |A event notification error object entitled using the `jti` of the event notification |OBEventError1 | | |
+| `<jti>` |0..* |`OBEventPolling1/setErrs/<jti>` |A event notification error object entitled using the `jti` of the event notification |OBEventError1 | | |
 | err |1..1 |`OBEventPolling1/setErrs/<jti>/err` |A value from the IANA "Security Event Token Delivery Error Codes" registry that identifies the error as defined [here](https://tools.ietf.org/id/draft-ietf-secevent-http-push-03.html#error_codes) |Max40Text | | |
 | description |1..1 |`OBEventPolling1/setErrs/<jti>/description` |A human-readable string that provides additional diagnostic information |Max256Text | | |
 
@@ -102,7 +102,7 @@ The `OBEventPollingResponse1` will be used as the response payload for:
 | OBEventPollingResponse1 |1..1 |OBEventPollingResponse1 | |OBEventPollingResponse1 | | |
 | moreAvailable |1..1 |OBEventPollingResponse1/moreAvailable |A JSON boolean value that indicates if more unacknowledged event notifications are available to be returned. |xs:boolean | | |
 | sets |1..1 |OBEventPollingResponse1/sets |A JSON object that contains zero or more nested JSON attributes. If there are no outstanding event notifications to be transmitted, the JSON object SHALL be empty. |xs:anyType | | |
-| `<jti>` |0..n |`OBEventPollingResponse1/sets/<jti>` |An object named with the `jti` of the event notification to be delivered. The value is the event notification, expressed as a `string`. The payload of the event should be defined in the `OBEventNotification2` format. |xs:string | | |
+| `<jti>` |0..* |`OBEventPollingResponse1/sets/<jti>` |An object named with the `jti` of the event notification to be delivered. The value is the event notification, expressed as a `string`. The payload of the event should be defined in the `OBEventNotification2` format. |xs:string | | |
 
 ### OBEventNotification2
 

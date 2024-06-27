@@ -119,7 +119,7 @@ If the ReadPAN permission is granted by the PSU, the ASPSP may choose to populat
 | --- |--- |--- |--- |--- |--- |--- |
 | OBReadStandingOrder6 | |OBReadStandingOrder6 | |OBReadStandingOrder6 | | |
 | Data |1..1 |OBReadStandingOrder6/Data | |OBReadDataStandingOrder5 | | |
-| StandingOrder |0..n |OBReadStandingOrder6/Data/StandingOrder | |OBStandingOrder5 | | |
+| StandingOrder |0..* |OBReadStandingOrder6/Data/StandingOrder | |OBStandingOrder5 | | |
 | AccountId |1..1 |OBReadStandingOrder6/Data/StandingOrder/AccountId |A unique and immutable identifier used to identify the account resource. This identifier has no meaning to the account owner. |Max40Text | | |
 | StandingOrderId |0..1 |OBReadStandingOrder6/Data/StandingOrder/StandingOrderId |A unique and immutable identifier used to identify the standing order resource. This identifier has no meaning to the account owner. |Max40Text | | |
 | NextPaymentDateTime |0..1 |OBReadStandingOrder6/Data/StandingOrder/NextPaymentDateTime |The date on which the next payment for a Standing Order schedule will be made. |ISODate | | |

@@ -108,7 +108,7 @@ If the ReadPAN permission is granted by the PSU, the ASPSP may choose to populat
 | --- |--- |--- |--- |--- |--- |--- |
 | OBReadAccount6 | |OBReadAccount6 | |OBReadAccount6 | | |
 | Data |1..1 |OBReadAccount6/Data | |OBReadDataAccount5 | | |
-| Account |0..n |OBReadAccount6/Data/Account |Unambiguous identification of the account to which credit and debit entries are made. |OBAccount6 | | |
+| Account |0..* |OBReadAccount6/Data/Account |Unambiguous identification of the account to which credit and debit entries are made. |OBAccount6 | | |
 | AccountId |1..1 |OBReadAccount6/Data/Account/AccountId |A unique and immutable identifier used to identify the account resource. This identifier has no meaning to the account owner. |Max40Text | | |
 | Status |0..1 |OBReadAccount6/Data/Account/Status |Specifies the status of account resource in code form. |For a full list of enumeration values refer to `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_internal_CodeSets). |OBInternalAccountStatus1Code | |
 | StatusUpdateDateTime |0..1 |OBReadAccount6/Data/Account/StatusUpdateDateTime |Date and time at which the resource status was updated. |ISODateTime | | |
@@ -120,7 +120,7 @@ If the ReadPAN permission is granted by the PSU, the ASPSP may choose to populat
 | OpeningDate |0..1 |OBReadAccount6/Data/Account/OpeningDate | Date on which the account and related basic services are effectively operational for the account owner. | ISODate | | |
 | MaturityDate |0..1 |OBReadAccount6/Data/Account/MaturityDate | Maturity date for the account. | ISODate | | |
 | SwitchStatus |0..1 |OBReadAccount6/Data/Account/SwitchStatus | The switch status for the account. |For a full list of enumeration values refer to `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_internal_CodeSets)|OBInternalSwitchStatusCode | |
-| Account |0..n |OBReadAccount6/Data/Account/Account |Provides the details to identify an account. |OBCashAccount5 | | |
+| Account |0..* |OBReadAccount6/Data/Account/Account |Provides the details to identify an account. |OBCashAccount5 | | |
 | SchemeName |1..1 |OBReadAccount6/Data/Account/Account/SchemeName |Name of the identification scheme, in a coded form as published in an external list. | For a full list of enumeration values refer to `OB_Internal_CodeSet` [here].(https://github.com/OpenBankingUK/External_Internal_CodeSets). |OBInternalAccountIdentification4Code | 
 | Identification |1..1 |OBReadAccount6/Data/Account/Account/Identification |Identification assigned by an institution to identify an account. This identification is known by the account owner. |Max256Text | | |
 | Name |0..1 |OBReadAccount6/Data/Account/Account/Name |The account name is the name or names of the account owner(s) represented at an account level, as displayed by the ASPSP's online channels. Note, the account name is not the product name or the nickname of the account. |Max350Text | | |
