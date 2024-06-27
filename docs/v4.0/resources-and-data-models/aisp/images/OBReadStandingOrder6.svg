@@ -200,7 +200,7 @@ MinLength: 1
 MaxLength: 35
 Description: Unique and unambiguous identification of the servicing institution.
 </title>
-Identification [0..1]
+Identification [1..1]
 </text>
 
 <text x="63.2em" y="14.8em" fill="darkslateblue">
@@ -228,7 +228,7 @@ Description: Name of the identification scheme, in a coded form as published in 
 Values:
  - UK.OBIE.BICFI
 </title>
-SchemeName [0..1]
+SchemeName [1..1]
 </text>
 
 <rect x="85em" y="10.2em" width="20em" height="26.400000000000002em" fill="beige" stroke="black" stroke-width="2"/>

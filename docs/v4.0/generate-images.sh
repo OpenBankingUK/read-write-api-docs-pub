@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # install umldiagram from https://bitbucket.org/openbankingteam/uml-generator/src/master/
 
-./umldiagram --src=https://raw.githubusercontent.com/OpenBankingUK/read-write-api-specs/v4.0.0-draft1-WIP/dist/openapi/account-info-openapi.yaml --api-version=3 --dir=resources-and-data-models/aisp/images\
+./umldiagram --src=https://raw.githubusercontent.com/OpenBankingUK/read-write-api-specs/v4.0.0-rc/dist/openapi/account-info-openapi.yaml --api-version=3 --dir=resources-and-data-models/aisp/images\
 	--schema=OBReadConsent1\
 	--schema=OBReadConsentResponse1\
 	--schema=OBReadAccount6\
@@ -28,7 +28,7 @@
 
 echo "AISP done"
 
-./umldiagram --src=https://raw.githubusercontent.com/OpenBankingUK/read-write-api-specs/v4.0.0-draft1-WIP/dist/openapi/payment-initiation-openapi.yaml --api-version=3 --dir=resources-and-data-models/pisp/images\
+./umldiagram --src=https://raw.githubusercontent.com/OpenBankingUK/read-write-api-specs/v4.0.0-rc/dist/openapi/payment-initiation-openapi.yaml --api-version=3 --dir=resources-and-data-models/pisp/images\
 	--schema=OBRisk1\
 	--schema=OBSCASupportData1\
 	--schema=OBWriteFundsConfirmationResponse1\
@@ -84,7 +84,7 @@ echo "AISP done"
 
 echo "PISP done"
 
-./umldiagram --src=https://raw.githubusercontent.com/OpenBankingUK/read-write-api-specs/v4.0.0-draft1-WIP/dist/openapi/vrp-openapi.yaml --api-version=3 --dir=resources-and-data-models/vrp/images\
+./umldiagram --src=https://raw.githubusercontent.com/OpenBankingUK/read-write-api-specs/v4.0.0-rc/dist/openapi/vrp-openapi.yaml --api-version=3 --dir=resources-and-data-models/vrp/images\
 	--schema=OBCashAccountDebtorWithName \
 	--schema=OBCashAccountCreditor3 \
 	--schema=OBBranchAndFinancialInstitutionIdentification6 \
@@ -102,7 +102,7 @@ echo "PISP done"
 
 echo "VRP done"
 
-./umldiagram --src=https://raw.githubusercontent.com/OpenBankingUK/read-write-api-specs/v4.0.0-draft1-WIP/dist/openapi/confirmation-funds-openapi.yaml --api-version=3 --dir=resources-and-data-models/cbpii/images\
+./umldiagram --src=https://raw.githubusercontent.com/OpenBankingUK/read-write-api-specs/v4.0.0-rc/dist/openapi/confirmation-funds-openapi.yaml --api-version=3 --dir=resources-and-data-models/cbpii/images\
 	--schema=OBFundsConfirmationConsent1 \
 	--schema=OBFundsConfirmationConsentResponse1 \
 	--schema=OBFundsConfirmation1 \
@@ -111,7 +111,7 @@ echo "VRP done"
 echo "CBPII done"
 
 
-#./umldiagram --src=https://raw.githubusercontent.com/OpenBankingUK/read-write-api-specs/v4.0.0-draft1-WIP/dist/openapi/event-notifications-openapi.yaml --api-version=3 --dir=resources-and-data-models/event-notifications/images\
+#./umldiagram --src=https://raw.githubusercontent.com/OpenBankingUK/read-write-api-specs/v4.0.0-rc/dist/openapi/event-notifications-openapi.yaml --api-version=3 --dir=resources-and-data-models/event-notifications/images\
 #	--schema=OBEventsSubscription1.properties.Data.properties.CallbackUrl\
 #	--schema=OBEventPolling1\
 #	--schema=OBEventPollingResponse1\
