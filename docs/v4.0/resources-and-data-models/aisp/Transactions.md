@@ -216,11 +216,11 @@ The resource differs depending on the permissions (ReadTransactionsBasic and Rea
 | --- |--- |--- |--- |--- |--- |--- |
 | OBReadTransaction6 | |OBReadTransaction6 | |OBReadTransaction6 | | |
 | Data |1..1 |OBReadTransaction6/Data | |OBReadDataTransaction6 | | |
-| Transaction |0..n |OBReadTransaction6/Data/Transaction |Provides further details on an entry in the report. |OBTransaction6 | | |
+| Transaction |0..* |OBReadTransaction6/Data/Transaction |Provides further details on an entry in the report. |OBTransaction6 | | |
 | AccountId |1..1 |OBReadTransaction6/Data/Transaction/AccountId |A unique and immutable identifier used to identify the account resource. This identifier has no meaning to the account owner. |Max40Text | | |
 | TransactionId |0..1 |OBReadTransaction6/Data/Transaction/TransactionId |Unique identifier for the transaction within an servicing institution. This identifier is both unique and immutable. |Max210Text | | |
 | TransactionReference |0..1 |OBReadTransaction6/Data/Transaction/TransactionReference |Unique reference for the transaction. This reference is optionally populated, and may as an example be the FPID in the Faster Payments context. |Max210Text | | |
-| StatementReference |0..n |OBReadTransaction6/Data/Transaction/StatementReference |Unique reference for the statement. This reference may be optionally populated if available. |Max35Text | | |
+| StatementReference |0..* |OBReadTransaction6/Data/Transaction/StatementReference |Unique reference for the statement. This reference may be optionally populated if available. |Max35Text | | |
 | CreditDebitIndicator |1..1 |OBReadTransaction6/Data/Transaction/CreditDebitIndicator |Indicates whether the transaction is a credit or a debit entry. |For a full list of enumeration values refer to `External_CodeSet` [here](https://github.com/OpenBankingUK/External_internal_CodeSets). |OBInternalCreditDebitCode | |
 | Status |1..1 |OBReadTransaction6/Data/Transaction/Status |Status of a transaction entry on the books of the account servicer. |For a full list of enumeration values refer to `External_CodeSet` [here](https://github.com/OpenBankingUK/External_internal_CodeSets) |ExternalEntryStatus1Code
 | TransactionMutability |0..1 |OBReadTransaction6/Data/Transaction/TransactionMutability |Specifies the Mutability of the Transaction record. |For a full list of enumeration values refer to `Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_internal_CodeSets) |OBInternalTransactionMutability1Code

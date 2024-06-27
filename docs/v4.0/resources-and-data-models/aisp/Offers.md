@@ -76,7 +76,7 @@ The resource requires the ReadOffers permission. The resource response payload d
 | --- |--- |--- |--- |--- |--- |--- |
 | OBReadOffer1 | |OBReadOffer1 | |OBReadOffer1 | | |
 | Data |1..1 |OBReadOffer1/Data | |OBReadDataOffer1 | | |
-| Offer |0..n |OBReadOffer1/Data/Offer | |OBOffer1 | | |
+| Offer |0..* |OBReadOffer1/Data/Offer | |OBOffer1 | | |
 | AccountId |1..1 |OBReadOffer1/Data/Offer/AccountId |A unique and immutable identifier used to identify the account resource. This identifier has no meaning to the account owner. |Max40Text | | |
 | OfferId |0..1 |OBReadOffer1/Data/Offer/OfferId |A unique and immutable identifier used to identify the offer resource. This identifier has no meaning to the account owner. |Max40Text | | |
 | OfferType |0..1 |OBReadOffer1/Data/Offer/OfferType |Offer type, in a coded form.| For a full list of enumeration values refer to `OB_Internal_CodeSet`[here](https://github.com/OpenBankingUK/External_internal_CodeSets)  |OBInternalProductType1Code| |

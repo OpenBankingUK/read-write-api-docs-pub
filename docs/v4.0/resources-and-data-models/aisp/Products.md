@@ -102,7 +102,7 @@ Data Dictionary for Common Payload between PCA, BCA and other product types.
 | --- |--- |--- |--- |--- |--- |--- |
 | OBReadProduct2 | |OBReadProduct2 | |OBReadProduct2 | | |
 | Data |1..1 |OBReadProduct2/Data | |OBReadDataProduct2 | | |
-| Product |0..n |OBReadProduct2/Data/Product | |OBProduct2 | | |
+| Product |0..* |OBReadProduct2/Data/Product | |OBProduct2 | | |
 | ProductName |0..1 |OBReadProduct2/Data/Product/ProductName |The name of the product used for marketing purposes from a customer perspective. I.e. what the customer would recognise. |Max350Text | | |
 | ProductId |0..1 |OBReadProduct2/Data/Product/ProductId |Identifier within the parent organisation for the product. Must be unique in the organisation. |Max40Text | | |
 | AccountId |1..1 |OBReadProduct2/Data/Product/AccountId |A unique and immutable identifier used to identify the account resource. This identifier has no meaning to the account owner. |Max40Text | | |

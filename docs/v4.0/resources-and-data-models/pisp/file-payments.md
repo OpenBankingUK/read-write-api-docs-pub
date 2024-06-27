@@ -215,7 +215,7 @@ The file-payment **response** object contains the:
 | StatusReasonCode |0..1 |OBWriteFileResponse3/Data/StatusReason/StatusReasonCode |Specifies the status reason in a code form. |For a full list of enumeration values refer to `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_internal_CodeSets)| OBInternalPermissions1Code |
 | StatusReasonDescription |0..1 |OBWriteFileResponse3/Data/StatusReason/StatusReasonDescription |Description supporting the StatusReasonCode. |Max500Text|
 |Path| 0..1 | OBWriteFileResponse3/Data/StatusReason/Path| Path is optional but relevant when the status reason refers to an object/field and hence conditional to provide JSON path| Max500Text| | |
-| Charges |0..n |OBWriteFileResponse3/Data/Charges |Set of elements used to provide details of a charge for the payment initiation. |OBCharge2 | | |
+| Charges |0..* |OBWriteFileResponse3/Data/Charges |Set of elements used to provide details of a charge for the payment initiation. |OBCharge2 | | |
 | Initiation |1..1 |OBWriteFileResponse3/Data/Initiation |The Initiation payload is sent by the initiating party to the ASPSP. It is used to request movement of funds using a payment file. |OBFile2 | | |
 | MultiAuthorisation |0..1 |OBWriteFileResponse3/Data/MultiAuthorisation |The multiple authorisation flow response from the ASPSP. |OBMultiAuthorisation1 | | |
 | Debtor |0..1 |OBWriteFileResponse3/Data/Debtor |Set of elements used to identify a person or an organisation. | OBCashAccountDebtor4| | |

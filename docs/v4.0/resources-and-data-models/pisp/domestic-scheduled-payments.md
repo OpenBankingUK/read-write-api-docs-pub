@@ -240,7 +240,7 @@ The domestic-scheduled-payment **response** object contains the:
 | ExpectedExecutionDateTime |0..1 |OBWriteDomesticScheduledResponse5/Data/ExpectedExecutionDateTime |Expected execution date and time for the payment resource. |ISODateTime | | |
 | ExpectedSettlementDateTime |0..1 |OBWriteDomesticScheduledResponse5/Data/ExpectedSettlementDateTime |Expected settlement date and time for the payment resource. |ISODateTime | | |
 | Refund |0..1 |OBWriteDomesticScheduledResponse5/Data/Refund |Unambiguous identification of the refund account to which a refund will be made as a result of the transaction. |OBDomesticRefundAccount1 | | |
-| Charges |0..n |OBWriteDomesticScheduledResponse5/Data/Charges |Set of elements used to provide details of a charge for the payment initiation. |OBCharge2 | | |
+| Charges |0..* |OBWriteDomesticScheduledResponse5/Data/Charges |Set of elements used to provide details of a charge for the payment initiation. |OBCharge2 | | |
 | Initiation |1..1 |OBWriteDomesticScheduledResponse5/Data/Initiation |The Initiation payload is sent by the initiating party to the ASPSP. It is used to request movement of funds from the debtor account to a creditor for a single scheduled domestic payment. |OBDomesticScheduled2 | | |
 | MultiAuthorisation |0..1 |OBWriteDomesticScheduledResponse5/Data/MultiAuthorisation |The multiple authorisation flow response from the ASPSP. |OBMultiAuthorisation1 | | |
 | Debtor |0..1 |OBWriteDomesticScheduledResponse5/Data/Debtor |Set of elements used to identify a person or an organisation. | | | |

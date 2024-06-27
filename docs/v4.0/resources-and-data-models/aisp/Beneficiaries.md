@@ -114,7 +114,7 @@ If the ReadPAN permission is granted by the PSU, the ASPSP may choose to populat
 | --- |--- |--- |--- |--- |--- |--- |
 | OBReadBeneficiary5 | |OBReadBeneficiary5 | |OBReadBeneficiary5 | | |
 | Data |1..1 |OBReadBeneficiary5/Data | |OBReadDataBeneficiary5 | | |
-| Beneficiary |0..n |OBReadBeneficiary5/Data/Beneficiary | |OBBeneficiary5 | | |
+| Beneficiary |0..* |OBReadBeneficiary5/Data/Beneficiary | |OBBeneficiary5 | | |
 | AccountId |0..1 |OBReadBeneficiary5/Data/Beneficiary/AccountId |A unique and immutable identifier used to identify the account resource. This identifier has no meaning to the account owner. |Max40Text | | |
 | BeneficiaryId |0..1 |OBReadBeneficiary5/Data/Beneficiary/BeneficiaryId |A unique and immutable identifier used to identify the beneficiary resource. This identifier has no meaning to the account owner. |Max40Text | | |
 | BeneficiaryType |0..1 |OBReadBeneficiary5/Data/Beneficiary/BeneficiaryType ||For a full list of enumeration values refer to `Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_internal_CodeSets) |OBInternalBeneficiaryType1Code | |

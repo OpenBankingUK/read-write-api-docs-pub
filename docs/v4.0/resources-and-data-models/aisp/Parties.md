@@ -113,7 +113,7 @@ The Party resource contains a set of elements that describes a party. The party 
 | Account |0..1 |OBParty2/Relationships/Account |Relationship to the Account resource. |OBRelationship1 | | |
 | Related |1..1 |OBParty2/Relationships/Account/Related |Absolute URI to the related resource. |xs:anyURI | | |
 | Id |1..1 |OBParty2/Relationships/Account/Id |Unique identification as assigned by the ASPSP to uniquely identify the related resource. |Max40Text | | |
-| Address |0..n |OBParty2/Address |Postal address of a party. |OBPostalAddress7 | | |
+| Address |0..* |OBParty2/Address |Postal address of a party. |OBPostalAddress7 | | |
 
 #### OBPostalAddress7 
 
@@ -159,7 +159,7 @@ The response to GET /accounts/{AccountId}/parties  **may**  contain multiple par
 | --- |--- |--- |--- |--- |--- |--- |
 | OBReadParty3 | |OBReadParty3 | |OBReadParty3 | | |
 | Data |1..1 |OBReadParty3/Data | |OBReadDataParty3 | | |
-| Party |0..n |OBReadParty3/Data/Party | |OBParty2 | | |
+| Party |0..* |OBReadParty3/Data/Party | |OBParty2 | | |
 
 ### OBPostalAddress7
 

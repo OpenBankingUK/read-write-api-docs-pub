@@ -374,7 +374,7 @@ Exchange rate behaviour:
 | CutOffDateTime |0..1 |OBWriteInternationalScheduledConsentResponse6/Data/CutOffDateTime |Specified cut-off date and time for the payment consent. |ISODateTime | | |
 | ExpectedExecutionDateTime |0..1 |OBWriteInternationalScheduledConsentResponse6/Data/ExpectedExecutionDateTime |Expected execution date and time for the payment resource. |ISODateTime | | |
 | ExpectedSettlementDateTime |0..1 |OBWriteInternationalScheduledConsentResponse6/Data/ExpectedSettlementDateTime |Expected settlement date and time for the payment resource. |ISODateTime | | |
-| Charges |0..n |OBWriteInternationalScheduledConsentResponse6/Data/Charges |Set of elements used to provide details of a charge for the payment initiation. |OBCharge2 | | |
+| Charges |0..* |OBWriteInternationalScheduledConsentResponse6/Data/Charges |Set of elements used to provide details of a charge for the payment initiation. |OBCharge2 | | |
 | ExchangeRateInformation |0..1 |OBWriteInternationalScheduledConsentResponse6/Data/ExchangeRateInformation |Further detailed information on the exchange rate that has been used in the payment transaction. |OBExchangeRate2 | | |
 | Initiation |1..1 |OBWriteInternationalScheduledConsentResponse6/Data/Initiation |The Initiation payload is sent by the initiating party to the ASPSP. It is used to request movement of funds from the debtor account to a creditor for a single scheduled international payment. |OBInternationalScheduled3 | | |
 | Authorisation |0..1 |OBWriteInternationalScheduledConsentResponse6/Data/Authorisation |The multiple authorisation flow response from the ASPSP. |OBAuthorisation1 | | |

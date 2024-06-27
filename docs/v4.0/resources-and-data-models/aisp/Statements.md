@@ -148,7 +148,7 @@ The resource differs depending on the permissions (ReadStatementsBasic and ReadS
 
 * If the **ReadStatementsDetail** is granted by the PSU:
 
-  * OBReadStatement2/Data/Statement/StatementAmount **may** be returned if applicable to the statement and ASPSP (0..n)
+  * OBReadStatement2/Data/Statement/StatementAmount **may** be returned if applicable to the statement and ASPSP (0..*)
 
 For the call toGET /accounts/{AccountId}/statements/{StatementId}/transactions:
 
@@ -166,7 +166,7 @@ For the call toGET /accounts/{AccountId}/statements/{StatementId}/transactions:
 | --- |--- |--- |--- |--- |--- |--- |
 | OBReadStatement2 | |OBReadStatement2 | |OBReadStatement2 | | |
 | Data |1..1 |OBReadStatement2/Data | |OBReadDataStatement2 | | |
-| Statement |0..n |OBReadStatement2/Data/Statement |Provides further details on a statement resource. |OBStatement2 | | |
+| Statement |0..* |OBReadStatement2/Data/Statement |Provides further details on a statement resource. |OBStatement2 | | |
 | AccountId |1..1 |OBReadStatement2/Data/Statement/AccountId |A unique and immutable identifier used to identify the account resource. This identifier has no meaning to the account owner. |Max40Text | | |
 | StatementId |0..1 |OBReadStatement2/Data/Statement/StatementId |Unique identifier for the statement resource within an servicing institution. This identifier is both unique and immutable. |Max40Text | | |
 | StatementReference |0..1 |OBReadStatement2/Data/Statement/StatementReference |Unique reference for the statement. This reference may be optionally populated if available. |Max35Text | | |
@@ -174,13 +174,13 @@ For the call toGET /accounts/{AccountId}/statements/{StatementId}/transactions:
 | StartDateTime |1..1 |OBReadStatement2/Data/Statement/StartDateTime |Date and time at which the statement period starts. |ISODateTime | | |
 | EndDateTime |1..1 |OBReadStatement2/Data/Statement/EndDateTime |Date and time at which the statement period ends. |ISODateTime | | |
 | CreationDateTime |1..1 |OBReadStatement2/Data/Statement/CreationDateTime |Date and time at which the resource was created. |ISODateTime | | |
-| StatementDescription |0..n |OBReadStatement2/Data/Statement/StatementDescription |Other descriptions that may be available for the statement resource. |Max500Text | | |
-| StatementBenefit |0..n |OBReadStatement2/Data/Statement/StatementBenefit |Set of elements used to provide details of a benefit or reward amount for the statement resource. |OBStatementBenefit1 | | |
+| StatementDescription |0..* |OBReadStatement2/Data/Statement/StatementDescription |Other descriptions that may be available for the statement resource. |Max500Text | | |
+| StatementBenefit |0..* |OBReadStatement2/Data/Statement/StatementBenefit |Set of elements used to provide details of a benefit or reward amount for the statement resource. |OBStatementBenefit1 | | |
 | Type |1..1 |OBReadStatement2/Data/Statement/StatementBenefit/Type |Benefit type, in a coded form. |For a full list of enumeration values refer to `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_internal_CodeSets). |OBInternalStatementBenefitType1Code| |
 | Amount |1..1 |OBReadStatement2/Data/Statement/StatementBenefit/Amount |Amount of money associated with the statement benefit type. |OBActiveOrHistoricCurrencyAndAmount | | |
 | Amount |1..1 |OBReadStatement2/Data/Statement/StatementBenefit/Amount/Amount |A number of monetary units specified in an active currency where the unit of currency is explicit and compliant with ISO 4217. |OBActiveCurrencyAndAmount_SimpleType | |`^\d{1,13}$|^\d{1,13}\.\d{1,5}$` |
 | Currency |1..1 |OBReadStatement2/Data/Statement/StatementBenefit/Amount/Currency |A code allocated to a currency by a Maintenance Agency under an international identification scheme, as described in the latest edition of the international standard ISO 4217 "Codes for the representation of currencies and funds". |ActiveOrHistoricCurrencyCode | |^[A-Z]{3,3}$ |
-| StatementFee |0..n |OBReadStatement2/Data/Statement/StatementFee |Set of elements used to provide details of a fee for the statement resource. |OBStatementFee2 | | |
+| StatementFee |0..* |OBReadStatement2/Data/Statement/StatementFee |Set of elements used to provide details of a fee for the statement resource. |OBStatementFee2 | | |
 | Description |0..1 |OBReadStatement2/Data/Statement/StatementFee/Description |Description that may be available for the statement fee. |Max128Text | | |
 | CreditDebitIndicator |1..1 |OBReadStatement2/Data/Statement/StatementFee/CreditDebitIndicator |Indicates whether the amount is a credit or a debit. Usage: A zero amount is considered to be a credit amount. |For a full list of enumeration values refer to `External_CodeSet` [here](https://github.com/OpenBankingUK/External_internal_CodeSets). |OBInternalCreditDebitCode | |
 | Type |1..1 |OBReadStatement2/Data/Statement/StatementFee/Type |Fee type, in a coded form. |For a full list of enumeration values refer to `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_internal_CodeSets). |OBInternalStatementFeeType1Code | |
@@ -190,7 +190,7 @@ For the call toGET /accounts/{AccountId}/statements/{StatementId}/transactions:
 | Amount |1..1 |OBReadStatement2/Data/Statement/StatementFee/Amount |Amount of money associated with the statement fee type. |OBActiveOrHistoricCurrencyAndAmount | | |
 | Amount |1..1 |OBReadStatement2/Data/Statement/StatementFee/Amount/Amount |A number of monetary units specified in an active currency where the unit of currency is explicit and compliant with ISO 4217. |OBActiveCurrencyAndAmount_SimpleType | |`^\d{1,13}$|^\d{1,13}\.\d{1,5}$` |
 | Currency |1..1 |OBReadStatement2/Data/Statement/StatementFee/Amount/Currency |A code allocated to a currency by a Maintenance Agency under an international identification scheme, as described in the latest edition of the international standard ISO 4217 "Codes for the representation of currencies and funds". |ActiveOrHistoricCurrencyCode | |^[A-Z]{3,3}$ |
-| StatementInterest |0..n |OBReadStatement2/Data/Statement/StatementInterest |Set of elements used to provide details of a generic interest amount related to the statement resource. |OBStatementInterest2 | | |
+| StatementInterest |0..* |OBReadStatement2/Data/Statement/StatementInterest |Set of elements used to provide details of a generic interest amount related to the statement resource. |OBStatementInterest2 | | |
 | Description |0..1 |OBReadStatement2/Data/Statement/StatementInterest/Description |Description that may be available for the statement interest. |Max128Text | | |
 | CreditDebitIndicator |1..1 |OBReadStatement2/Data/Statement/StatementInterest/CreditDebitIndicator |Indicates whether the amount is a credit or a debit. Usage: A zero amount is considered to be a credit amount. |For a full list of enumeration values refer to `External_CodeSet` [here](https://github.com/OpenBankingUK/External_internal_CodeSets). |OBInternalCreditDebitCode | |
 | Type |1..1 |OBReadStatement2/Data/Statement/StatementInterest/Type |Interest amount type, in a coded form. |For a full list of enumeration values refer to `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_internal_CodeSets). |OBInternalStatementInterestType1Code| |
@@ -200,7 +200,7 @@ For the call toGET /accounts/{AccountId}/statements/{StatementId}/transactions:
 | Amount |1..1 |OBReadStatement2/Data/Statement/StatementInterest/Amount |Amount of money associated with the statement interest amount type. |OBActiveOrHistoricCurrencyAndAmount | | |
 | Amount |1..1 |OBReadStatement2/Data/Statement/StatementInterest/Amount/Amount |A number of monetary units specified in an active currency where the unit of currency is explicit and compliant with ISO 4217. |OBActiveCurrencyAndAmount_SimpleType | |`^\d{1,13}$|^\d{1,13}\.\d{1,5}$` |
 | Currency |1..1 |OBReadStatement2/Data/Statement/StatementInterest/Amount/Currency |A code allocated to a currency by a Maintenance Agency under an international identification scheme, as described in the latest edition of the international standard ISO 4217 "Codes for the representation of currencies and funds". |ActiveOrHistoricCurrencyCode | |^[A-Z]{3,3}$ |
-| StatementAmount |0..n |OBReadStatement2/Data/Statement/StatementAmount |Set of elements used to provide details of a generic amount for the statement resource. |OBStatementAmount1 | | |
+| StatementAmount |0..* |OBReadStatement2/Data/Statement/StatementAmount |Set of elements used to provide details of a generic amount for the statement resource. |OBStatementAmount1 | | |
 | CreditDebitIndicator |1..1 |OBReadStatement2/Data/Statement/StatementAmount/CreditDebitIndicator |Indicates whether the amount is a credit or a debit. Usage: A zero amount is considered to be a credit amount. |For a full list of enumeration values refer to `External_CodeSet` [here](https://github.com/OpenBankingUK/External_internal_CodeSets). |OBInternalCreditDebitCode | |
 | Type |1..1 |OBReadStatement2/Data/Statement/StatementAmount/Type |Amount type, in a coded form. |For a full list of enumeration values refer to `OB_Internal_CodeSet`[here] (https://github.com/OpenBankingUK/External_internal_CodeSets). |OBInternalStatementAmountType1Code | |
 | Amount |1..1 |OBReadStatement2/Data/Statement/StatementAmount/Amount |Amount of money associated with the amount type. |OBActiveOrHistoricCurrencyAndAmount | | |
@@ -211,13 +211,13 @@ For the call toGET /accounts/{AccountId}/statements/{StatementId}/transactions:
 | Amount |1..1 |OBReadStatement2/Data/Statement/StatementAmount/LocalAmount/Amount |A number of monetary units specified in an active currency where the unit of currency is explicit and compliant with ISO 4217. |OBActiveCurrencyAndAmount_SimpleType | |`^\d{1,13}$|^\d{1,13}\.\d{1,5}$` |
 | Currency |1..1 |OBReadStatement2/Data/Statement/StatementAmount/LocalAmount/Currency |A code allocated to a currency by a Maintenance Agency under an international identification scheme, as described in the latest edition of the international standard ISO 4217 "Codes for the representation of currencies and funds". |ActiveOrHistoricCurrencyCode | |^[A-Z]{3,3}$ |
 | SubType |0..1 |OBReadStatement2/Data/Statement/StatementAmount/LocalAmount/SubType |Amount sub type, in a coded form.<br>Default if not specified is LCUR of the account |For a full list of enumeration values refer to `External_CodeSet` [here](https://github.com/OpenBankingUK/External_internal_CodeSets).|ExternalBalanceSubType1Code |
-| StatementDateTime |0..n |OBReadStatement2/Data/Statement/StatementDateTime |Set of elements used to provide details of a generic date time for the statement resource. |OBStatementDateTime1 | | |
+| StatementDateTime |0..* |OBReadStatement2/Data/Statement/StatementDateTime |Set of elements used to provide details of a generic date time for the statement resource. |OBStatementDateTime1 | | |
 | DateTime |1..1 |OBReadStatement2/Data/Statement/StatementDateTime/DateTime |Date and time associated with the date time type. |ISODateTime | | |
 | Type |1..1 |OBReadStatement2/Data/Statement/StatementDateTime/Type |Date time type, in a coded form. |For a full list of enumeration values refer to `OB_Internal_CodeSet`[here] (https://github.com/OpenBankingUK/External_internal_CodeSets).  |OBInternalStatementDateTimeType1Code | |
-| StatementRate |0..n |OBReadStatement2/Data/Statement/StatementRate |Set of elements used to provide details of a generic rate related to the statement resource. |OBStatementRate1 | | |
+| StatementRate |0..* |OBReadStatement2/Data/Statement/StatementRate |Set of elements used to provide details of a generic rate related to the statement resource. |OBStatementRate1 | | |
 | Rate |1..1 |OBReadStatement2/Data/Statement/StatementRate/Rate |Rate associated with the statement rate type. |Max40Text | |^(-?\d{1,3}){1}(\.\d{1,4}){0,1}$ |
 | Type |1..1 |OBReadStatement2/Data/Statement/StatementRate/Type |Statement rate type, in a coded form. |For a full list of enumeration values refer to `OB_Internal_CodeSet`[here] (https://github.com/OpenBankingUK/External_internal_CodeSets). |OBInternalStatementRateType1Code | |
-| StatementValue |0..n |OBReadStatement2/Data/Statement/StatementValue |Set of elements used to provide details of a generic number value related to the statement resource. |OBStatementValue1 | | |
+| StatementValue |0..* |OBReadStatement2/Data/Statement/StatementValue |Set of elements used to provide details of a generic number value related to the statement resource. |OBStatementValue1 | | |
 | Value |1..1 |OBReadStatement2/Data/Statement/StatementValue/Value |Value associated with the statement value type. |Max40Text | | |
 | Type |1..1 |OBReadStatement2/Data/Statement/StatementValue/Type |Statement value type, in a coded form. |For a full list of enumeration values refer to `OB_Internal_CodeSet`[here] (https://github.com/OpenBankingUK/External_internal_CodeSets).|OBInternalStatementValueType1Code | |
 | TotalValue |0..1 |OBReadStatement2/Data/Statement/TotalValue |Combined sum of all Amounts in the accounts base currency. | | | |
