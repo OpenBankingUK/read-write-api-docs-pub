@@ -54,7 +54,7 @@ Once the international-scheduled-payment-consent has been authorised by the PSU,
 
 An international-scheduled-payment can only be created if its corresponding international-scheduled-payment-consent resource has the Status of "AUTH". 
 
-The international-scheduled-payment resource that is created successfully must have one of the following initial StatusCodes:
+The international-scheduled-payment resource that is created successfully must have one of the following initial status codes:
 
 | Status |
 | --- |
@@ -67,7 +67,7 @@ A PISP can retrieve the international-scheduled-payment to check its status.
 
 #### Status
 
-The international-scheduled-payment resource must have one of the following StatusCodes:
+The international-scheduled-payment resource must have one of the following status codes:
 
 | Status |
 | --- |

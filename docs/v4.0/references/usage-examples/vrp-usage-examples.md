@@ -1361,7 +1361,7 @@ Content-Type: application/json
     "ConsentId": "fe615446-e53a-45ed-954c-ae5d1f97a93b",
     "CreationDateTime": "2017-06-05T15:15:15+00:00",
     "DomesticVRPId": "OU90210",
-    "StatusCode": "RCVD",
+    "Status": "RCVD",
     "StatusUpdateDateTime": "2017-06-05T15:15:15+00:00",
     "ExpectedExecutionDateTime": "2017-06-05T15:15:15+00:00",
     "ExpectedSettlementDateTime": "2017-06-06T15:15:15+00:00",

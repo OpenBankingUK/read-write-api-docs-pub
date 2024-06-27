@@ -78,7 +78,7 @@ If the PSU rejects the consent or the international-standing-order-consent has f
 
 Once an international-standing-orders has been successfully created using the international-standing-order-consent, the Status of the international-standing-order-consent will be set to "COND".
 
-The available StatusCodes for the international-standing-order-consent resource are:
+The available status codes for the international-standing-order-consent resource are:
 
 | Status |
 | --- |

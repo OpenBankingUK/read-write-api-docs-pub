@@ -88,7 +88,7 @@ The domestic-vrp resource must have one of the following ExternalPaymentTransact
 
 A TPP can retrieve the details of the underlying payment transaction via this endpoint. This resource allows ASPSPs to return a richer list of Payment Statuses, and if available payment scheme related statuses.
 
-The API must return one of the following StatusCodes:
+The API must return one of the following status codes:
 
 | Status |
 | ------ |

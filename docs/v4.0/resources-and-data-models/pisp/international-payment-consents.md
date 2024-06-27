@@ -85,7 +85,7 @@ If the PSU rejects the consent or the international-payment-consent has failed s
 
 Once an international-payment has been successfully created using the international-payment-consent, the Status of the international-payment-consent will be set to "COND".
 
-The available StatusCodes for the international-payment-consent resource are:
+The available status codes for the international-payment-consent resource are:
 
 | Status |
 | --- |

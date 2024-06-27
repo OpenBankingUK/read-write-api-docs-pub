@@ -150,7 +150,7 @@ Once the PSU authorises the resource - the StausCode will be set to `AUTH`.
 
 If the PSU rejects the consent, the StautsCode will be set to `RJCT`.
 
-The available StatusCodes for the VRP consents resource are:
+The available status codes for the VRP consents resource are:
 
 - AWAU
 - RJCT
@@ -403,7 +403,7 @@ The Risk block is a common class used in requests and responses
 | __ConsentId__  (1..1)| `Data. ConsentId` | Unique identification as assigned by the ASPSP to uniquely identify the consent resource.      | Max128Text|
 | __ReadRefundAccount__ (0..1) | `Data. ReadRefundAccount` | Indicates whether the `RefundAccount` object should be included in the response | Yes No|
 | __CreationDateTime__ (1..1)| `Data. CreationDateTime` | Date and time at which the resource was created.|ISODateTime|
-| __StatusCode__ (1..1) | `Data. Status` | Specifies the status of resource in code form.  |AUTH AWAU RJCT CANC EXPD |
+| __Status__ (1..1) | `Data. Status` | Specifies the status of resource in code form.  |AUTH AWAU RJCT CANC EXPD |
 | __StatusUpdateDateTime__ (1..1)| `Data. StatusUpdateDateTime` |Date and time at which the resource status was updated.  | ISODateTime  |
 | __StatusReason__ (0..*) | `Data. StatusReason` | An array of StatusReasonCode |OBStatusReason |
 | __StatusReasonCode__ (0..1) | `Data. StatusReason. StatusReasonCode` | Specifies the status reason in a code form. For a full description see ` OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_internal_CodeSets).  |OBExternalStatusReason1Code |

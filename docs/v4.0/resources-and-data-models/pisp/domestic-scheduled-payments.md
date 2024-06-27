@@ -59,7 +59,7 @@ Once the domestic-scheduled-payment-consent has been authorised by the PSU, the 
 
 A domestic-scheduled-payment can only be created if its corresponding domestic-scheduled-payment-consent resource has the Status of "AUTH". 
 
-The domestic-scheduled-payment resource that is created successfully must have one of the following initial StatusCodes:
+The domestic-scheduled-payment resource that is created successfully must have one of the following initial status codes:
 
 | Status |
 | ------ |
@@ -72,7 +72,7 @@ A PISP can retrieve the domestic-scheduled-payment to check its status.
 
 #### Status
 
-The domestic-scheduled-payment resource must have one of the following StatusCodes:
+The domestic-scheduled-payment resource must have one of the following status codes:
 
 | Status |
 | ------ |

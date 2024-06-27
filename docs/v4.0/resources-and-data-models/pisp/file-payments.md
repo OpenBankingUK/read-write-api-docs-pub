@@ -53,7 +53,7 @@ Once the file-payment-consent has been authorised by the PSU, the PISP can proce
 
 #### Status
 
-The file-payments resource must have one of the following initial StatusCodes:
+The file-payments resource must have one of the following initial status codes:
 
 | Status |
 | --- |
@@ -66,7 +66,7 @@ A PISP can retrieve the file-payment to check its status.
 
 #### Status
 
-The file-payments resource must have one of the following initial StatusCodes:
+The file-payments resource must have one of the following initial status codes:
 
 | Status |
 | --- |
