@@ -15,8 +15,6 @@
   - [Frequency Examples](#frequency-examples)
   - [Permission Codes](#permission-codes)
   - [Data Dictionary](#data-dictionary)
-  - [Reused Classes](#reused-classes)
-    - [OBMandateRelatedInformation1](#obmandaterelatedinformation1)
 - [Usage Examples](#usage-examples)
   - [Specific Account](#specific-account)
     - [Get Accounts Standing Orders Request](#get-accounts-standing-orders-request)
@@ -66,7 +64,7 @@ The OBPostalAddress7 class is defined in the [account-and-transaction-api-profil
 
 #### OBMandateRelatedInformation1
 
-The OBMandateRelatedInformation1 class is defined in the [account-and-transaction-api-profile](../../profiles/account-and-transaction-api-profile.md#OBMandateRelatedInformation1) page.
+The OBMandateRelatedInformation1 class is defined in the [account-and-transaction-api-profile](../../profiles/account-and-transaction-api-profile.md#obmandateRelatedinformation1) page.
 
 
 ### Resource Definition
@@ -148,14 +146,8 @@ If the ReadPAN permission is granted by the PSU, the ASPSP may choose to populat
 | Name |0..1 |OBReadStandingOrder6/Data/StandingOrder/CreditorAccount/Name |The account name is the name or names of the account owner(s) represented at an account level, as displayed by the ASPSP's online channels. Note, the account name is not the product name or the nickname of the account. |Max350Text | | |
 | Proxy |0..1 |OBReadStandingOrder6/Data/StandingOrder/CreditorAccount/Proxy |Specifies an alternate assumed name for the identification of the account. |OBProxy1 | | |
 | SecondaryIdentification |0..1 |OBReadStandingOrder6/Data/StandingOrder/CreditorAccount/SecondaryIdentification |This is secondary identification of the account, as assigned by the account servicing institution. This can be used by building societies to additionally identify accounts with a roll number (in addition to a sort code and account number combination). |Max34Text | | |
-
 | SupplementaryData |0..1 |OBReadStandingOrder6/Data/StandingOrder/SupplementaryData |Additional information that can not be captured in the structured fields and/or any other specific block. |OBSupplementaryData1 | | |
 
-### Reused Classes
-
-#### OBMandateRelatedInformation1
-
-The OBMandateRelatedInformation1 class is defined in the [payment-initiation-api-profile](../../profiles/payment-initiation-api-profile.md#obmandaterelatedinformation1) page.
 
 ## Usage Examples
 
