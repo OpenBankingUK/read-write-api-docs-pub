@@ -87,7 +87,7 @@ echo "PISP done"
 ./umldiagram --src=https://raw.githubusercontent.com/OpenBankingUK/read-write-api-specs/v4.0.0-rc/dist/openapi/vrp-openapi.yaml --api-version=3 --dir=resources-and-data-models/vrp/images\
 	--schema=OBCashAccountDebtorWithName \
 	--schema=OBCashAccountCreditor3 \
-	--schema=OBBranchAndFinancialInstitutionIdentification6 \
+	--schema=OBBranchAndFinancialInstitutionIdentification6_0 \
 	--schema=OBDomesticVRPInitiation \
 	--schema=OBDomesticVRPControlParameters \
 	--schema=OBRisk1 \

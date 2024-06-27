@@ -233,7 +233,7 @@ The OBRegulatoryReporting1 class is defined in the [vrp-profile](../../profiles/
 
 ### OBBranchAndFinancialInstitutionIdentification6
 
-![OBBranchAndFinancialInstitutionIdentification6](./images/OBBranchAndFinancialInstitutionIdentification6.svg)
+![OBBranchAndFinancialInstitutionIdentification6](./images/OBBranchAndFinancialInstitutionIdentification6_0.svg)
 
 | Name |Path |Definition | Type |
 | ---- |-----|---------- |------|
