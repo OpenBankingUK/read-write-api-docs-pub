@@ -166,7 +166,7 @@ Accept: application/json
 {
   "Data": {
 	"Url": "https://tpp.com/open-banking/v4.0/event-notifications",
-	"Version": "3.1"
+	"Version": "4.0"
   }
 }
 ```
@@ -185,7 +185,7 @@ Content-Type: application/json
 	"Data": {
 		"CallbackUrlId": "CB-101",
 		"Url": "https://tpp.com/open-banking/v4.0/event-notifications",
-		"Version": "3.1"
+		"Version": "4.0"
 	},
 	"Links": {
 		"Self": "https://api.alphabank.com/open-banking/v4.0/callback-urls/CB-101"
@@ -220,7 +220,7 @@ Content-Type: application/json
 		"CallbackUrl": [{
 			"CallbackUrlId": "CB-101",
 			"Url": "https://tpp.com/open-banking/v4.0/event-notifications",
-			"Version": "3.1"
+			"Version": "4.0"
 		}]
 	},
 	"Links": {
