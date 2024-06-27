@@ -274,7 +274,7 @@ Content-Type: application/json
   },
   },
   "Links": {
-    "Self": "https://api.alphabank.com/open-banking/v3.1/pisp/domestic-vrp-consents/fe615446-e53a-45ed-954c-ae5d1f97a93b"
+    "Self": "https://api.alphabank.com/open-banking/v4.0/pisp/domestic-vrp-consents/fe615446-e53a-45ed-954c-ae5d1f97a93b"
   },
   
   "Meta": {}  
@@ -429,7 +429,7 @@ Content-Type: application/json
     "BeneficiaryAccountType": "Personal",
 }
   "Links": {
-    "Self": "https://api.alphabank.com/open-banking/v3.1/pisp/domestic-vrp-consents/fe615446-e53a-45ed-954c-ae5d1f97a93b"
+    "Self": "https://api.alphabank.com/open-banking/v4.0/pisp/domestic-vrp-consents/fe615446-e53a-45ed-954c-ae5d1f97a93b"
   },
   "Meta": {}
 }
@@ -807,7 +807,7 @@ Content-Type: application/json
 
   
   "Links": {
-    "Self": "https://api.alphabank.com/open-banking/v3.1/pisp/domestic-vrps/OU90210"
+    "Self": "https://api.alphabank.com/open-banking/v4.0/pisp/domestic-vrps/OU90210"
   },
   
   "Meta": {}  
@@ -1063,7 +1063,7 @@ Content-Type: application/json
 },
   
   "Links": {
-    "Self": "https://api.alphabank.com/open-banking/v3.1/pisp/domestic-vrp-consents/fe615446-e53a-45ed-954c-ae5d1f97a93b"
+    "Self": "https://api.alphabank.com/open-banking/v4.0/pisp/domestic-vrp-consents/fe615446-e53a-45ed-954c-ae5d1f97a93b"
   },
   
   "Meta": {}
@@ -1530,7 +1530,7 @@ Content-Type: application/json
 },
   
   "Links": {
-    "Self": "https://api.alphabank.com/open-banking/v3.1/pisp/domestic-vrps/OU90210"
+    "Self": "https://api.alphabank.com/open-banking/v4.0/pisp/domestic-vrps/OU90210"
   },
   
   "Meta": {}  

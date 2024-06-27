@@ -661,7 +661,7 @@ Content-Type: application/json
     }
   },
   "Links": {
-    "Self": "https://api.alphabank.com/open-banking/v3.1/pisp/domestic-payments/58923-001"
+    "Self": "https://api.alphabank.com/open-banking/v4.0/pisp/domestic-payments/58923-001"
   },
   "Meta": {}
 }
@@ -767,7 +767,7 @@ Content-Type: application/json
     }
   },
   "Links": {
-    "Self": "https://api.alphabank.com/open-banking/v3.1/pisp/domestic-payments/58923-001"
+    "Self": "https://api.alphabank.com/open-banking/v4.0/pisp/domestic-payments/58923-001"
   },
   "Meta": {}
 }

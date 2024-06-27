@@ -128,7 +128,7 @@ Content-Type: application/json
 
 	},
 	"Links": {
-		"Self": "https://api.alphabank.com/open-banking/v3.1/pisp/international-scheduled-payment-consents/58923"
+		"Self": "https://api.alphabank.com/open-banking/v4.0/pisp/international-scheduled-payment-consents/58923"
 	},
 	"Meta": {}
 }
@@ -244,7 +244,7 @@ Content-Type: application/json
 
 	},
 	"Links": {
-		"Self": "https://api.alphabank.com/open-banking/v3.1/pisp/international-scheduled-payment-consents/58923"
+		"Self": "https://api.alphabank.com/open-banking/v4.0/pisp/international-scheduled-payment-consents/58923"
 	},
 	"Meta": {}
 }
@@ -283,7 +283,7 @@ Content-Type: application/json
 		}
 	},
 	"Links": {
-		"Self": "https://api.alphabank.com/open-banking/v3.1/pisp/international-scheduled-payment-consents/58923/funds-confirmation"
+		"Self": "https://api.alphabank.com/open-banking/v4.0/pisp/international-scheduled-payment-consents/58923/funds-confirmation"
 	},
 	"Meta": {}
 }

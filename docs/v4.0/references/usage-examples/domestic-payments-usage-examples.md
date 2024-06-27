@@ -241,7 +241,7 @@ Content-Type: application/json
     }
   },
   "Links": {
-    "Self": "https://api.alphabank.com/open-banking/v3.1/pisp/domestic-payment-consents/58923"
+    "Self": "https://api.alphabank.com/open-banking/v4.0/pisp/domestic-payment-consents/58923"
   },
   "Meta": {}
 }
@@ -278,7 +278,7 @@ Content-Type: application/json
         }
     },
     "Links": {
-        "Self": "https://api.alphabank.com/open-banking/v3.1/pisp/domestic-payment-consents/58923/funds-confirmation"
+        "Self": "https://api.alphabank.com/open-banking/v4.0/pisp/domestic-payment-consents/58923/funds-confirmation"
     },
     "Meta": {}
 }
@@ -383,7 +383,7 @@ Content-Type: application/json
     }
   },
   "Links": {
-    "Self": "https://api.alphabank.com/open-banking/v3.1/pisp/domestic-payments/58923-001"
+    "Self": "https://api.alphabank.com/open-banking/v4.0/pisp/domestic-payments/58923-001"
   },
   "Meta": {}
 }
@@ -458,7 +458,7 @@ Content-Type: application/json
     }
   },
   "Links": {
-    "Self": "https://api.alphabank.com/open-banking/v3.1/pisp/domestic-payment-consents/58923"
+    "Self": "https://api.alphabank.com/open-banking/v4.0/pisp/domestic-payment-consents/58923"
   },
   "Meta": {}
 }
@@ -515,7 +515,7 @@ Content-Type: application/json
     }
   },
   "Links": {
-    "Self": "https://api.alphabank.com/open-banking/v3.1/pisp/domestic-payments/58923-001"
+    "Self": "https://api.alphabank.com/open-banking/v4.0/pisp/domestic-payments/58923-001"
   },
   "Meta": {}
 }
@@ -686,7 +686,7 @@ Content-Type: application/json
     "PaymentContextCode": "TransferToThirdParty"
   },
   "Links": {
-    "Self": "https://api.alphabank.com/open-banking/v3.1/pisp/domestic-payment-consents/7290"
+    "Self": "https://api.alphabank.com/open-banking/v4.0/pisp/domestic-payment-consents/7290"
   },
   "Meta": {}
 }
@@ -782,7 +782,7 @@ Content-Type: application/json
     }
   },
   "Links": {
-    "Self": "https://api.alphabank.com/open-banking/v3.1/pisp/domestic-payments/7290-003"
+    "Self": "https://api.alphabank.com/open-banking/v4.0/pisp/domestic-payments/7290-003"
   },
   "Meta": {}
 }
@@ -844,7 +844,7 @@ Content-Type: application/json
     "PaymentContextCode": "TransferToThirdParty"
   },
   "Links": {
-    "Self": "https://api.alphabank.com/open-banking/v3.1/pisp/domestic-payment-consents/7290"
+    "Self": "https://api.alphabank.com/open-banking/v4.0/pisp/domestic-payment-consents/7290"
   },
   "Meta": {}
 }
@@ -904,7 +904,7 @@ Content-Type: application/json
     }
   },
   "Links": {
-    "Self": "https://api.alphabank.com/open-banking/v3.1/pisp/domestic-payments/7290-003"
+    "Self": "https://api.alphabank.com/open-banking/v4.0/pisp/domestic-payments/7290-003"
   },
   "Meta": {}
 }
@@ -1006,7 +1006,7 @@ Content-Type: application/json
     "PaymentContextCode": "TransferToThirdParty"
   },
   "Links": {
-    "Self": "https://api.alphabank.com/open-banking/v3.1/pisp/domestic-payment-consents/7290"
+    "Self": "https://api.alphabank.com/open-banking/v4.0/pisp/domestic-payment-consents/7290"
   },
   "Meta": {}
 }
@@ -1134,7 +1134,7 @@ Content-Type: application/json
       "PaymentContextCode":"TransferToThirdParty"
    },
    "Links":{
-      "Self":"https://api.alphabank.com/open-banking/v3.1/pisp/domestic-payment-consents/7290"
+      "Self":"https://api.alphabank.com/open-banking/v4.0/pisp/domestic-payment-consents/7290"
    },
    "Meta":{}
 }
@@ -1238,7 +1238,7 @@ Content-Type: application/json
         "PaymentContextCode": "TransferToThirdParty"
     },
     "Links": {
-        "Self": "https://api.alphabank.com/open-banking/v3.1/pisp/domestic-payment-consents/7290"
+        "Self": "https://api.alphabank.com/open-banking/v4.0/pisp/domestic-payment-consents/7290"
     },
     "Meta": {}
 }
@@ -1339,7 +1339,7 @@ Content-Type: application/json
         "PaymentContextCode": "TransferToThirdParty"
     },
     "Links": {
-        "Self": "https://api.alphabank.com/open-banking/v3.1/pisp/domestic-payment-consents/7290"
+        "Self": "https://api.alphabank.com/open-banking/v4.0/pisp/domestic-payment-consents/7290"
     },
     "Meta": {}
 }

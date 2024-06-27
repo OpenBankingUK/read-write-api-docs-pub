@@ -165,7 +165,7 @@ Accept: application/json
 ```json
 {
   "Data": {
-	"Url": "https://tpp.com/open-banking/v3.1/event-notifications",
+	"Url": "https://tpp.com/open-banking/v4.0/event-notifications",
 	"Version": "3.1"
   }
 }
@@ -184,11 +184,11 @@ Content-Type: application/json
 {
 	"Data": {
 		"CallbackUrlId": "CB-101",
-		"Url": "https://tpp.com/open-banking/v3.1/event-notifications",
+		"Url": "https://tpp.com/open-banking/v4.0/event-notifications",
 		"Version": "3.1"
 	},
 	"Links": {
-		"Self": "https://api.alphabank.com/open-banking/v3.1/callback-urls/CB-101"
+		"Self": "https://api.alphabank.com/open-banking/v4.0/callback-urls/CB-101"
 	},
 	"Meta": {}
 }
@@ -219,12 +219,12 @@ Content-Type: application/json
 	"Data": {
 		"CallbackUrl": [{
 			"CallbackUrlId": "CB-101",
-			"Url": "https://tpp.com/open-banking/v3.1/event-notifications",
+			"Url": "https://tpp.com/open-banking/v4.0/event-notifications",
 			"Version": "3.1"
 		}]
 	},
 	"Links": {
-		"Self": "https://api.alphabank.com/open-banking/v3.1/callback-urls/"
+		"Self": "https://api.alphabank.com/open-banking/v4.0/callback-urls/"
 	},
 	"Meta": {}
 }

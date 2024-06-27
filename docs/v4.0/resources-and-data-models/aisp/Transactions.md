@@ -493,7 +493,7 @@ Content-Type: application/json
     ]
   },
   "Links": {
-    "Self": "https://api.alphabank.com/open-banking/v3.1/aisp/accounts/22289/transactions/"
+    "Self": "https://api.alphabank.com/open-banking/v4.0/aisp/accounts/22289/transactions/"
   },
   "Meta": {
     "TotalPages": 1,
@@ -744,7 +744,7 @@ Content-Type: application/json
     ]
   },
   "Links": {
-    "Self": "https://api.alphabank.com/open-banking/v3.1/aisp/transactions"
+    "Self": "https://api.alphabank.com/open-banking/v4.0/aisp/transactions"
   },
   "Meta": {
     "TotalPages": 1,

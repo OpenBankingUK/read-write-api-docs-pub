@@ -633,7 +633,7 @@ Content-Type: application/json
     }
   },
   "Links": {
-    "Self": "https://api.alphabank.com/open-banking/v3.1/pisp/domestic-scheduled-payment-consents/7290"
+    "Self": "https://api.alphabank.com/open-banking/v4.0/pisp/domestic-scheduled-payment-consents/7290"
   },
   "Meta": {}
 }

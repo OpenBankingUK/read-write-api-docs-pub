@@ -200,7 +200,7 @@ Content-Type: application/json
     ]
   },
   "Links": {
-    "Self": "https://api.alphabank.com/open-banking/v3.1/aisp/accounts/22289/beneficiaries/"
+    "Self": "https://api.alphabank.com/open-banking/v4.0/aisp/accounts/22289/beneficiaries/"
   },
   "Meta": {
     "TotalPages": 1
@@ -298,7 +298,7 @@ Content-Type: application/json
     ]
   },
   "Links": {
-    "Self": "https://api.alphabank.com/open-banking/v3.1/aisp/beneficiaries/"
+    "Self": "https://api.alphabank.com/open-banking/v4.0/aisp/beneficiaries/"
   },
   "Meta": {
     "TotalPages": 1
@@ -380,7 +380,7 @@ Content-Type: application/json
     ]
   },
   "Links": {
-    "Self": "https://api.alphabank.com/open-banking/v3.1/aisp/accounts/22289/beneficiaries/"
+    "Self": "https://api.alphabank.com/open-banking/v4.0/aisp/accounts/22289/beneficiaries/"
   },
   "Meta": {
     "TotalPages": 1

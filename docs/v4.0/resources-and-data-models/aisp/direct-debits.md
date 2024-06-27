@@ -145,7 +145,7 @@ Content-Type: application/json
     ]
   },
   "Links": {
-    "Self": "https://api.alphabank.com/open-banking/v3.1/aisp/accounts/22289/direct-debits/"
+    "Self": "https://api.alphabank.com/open-banking/v4.0/aisp/accounts/22289/direct-debits/"
   },
   "Meta": {
     "TotalPages": 1
@@ -228,7 +228,7 @@ Content-Type: application/json
     ]
   },
   "Links": {
-    "Self": "https://api.alphabank.com/open-banking/v3.1/aisp/direct-debits/"
+    "Self": "https://api.alphabank.com/open-banking/v4.0/aisp/direct-debits/"
   },
   "Meta": {
     "TotalPages": 1

@@ -182,7 +182,7 @@ Content-Type: application/json
     ]
   },
   "Links": {
-    "Self": "https://api.alphabank.com/open-banking/v3.1/aisp/accounts/22289/scheduled-payments/"
+    "Self": "https://api.alphabank.com/open-banking/v4.0/aisp/accounts/22289/scheduled-payments/"
   },
   "Meta": {
     "TotalPages": 1
@@ -276,7 +276,7 @@ Content-Type: application/json
     ]
   },
   "Links": {
-    "Self": "https://api.alphabank.com/open-banking/v3.1/aisp/scheduled-payments/"
+    "Self": "https://api.alphabank.com/open-banking/v4.0/aisp/scheduled-payments/"
   },
   "Meta": {
     "TotalPages": 1

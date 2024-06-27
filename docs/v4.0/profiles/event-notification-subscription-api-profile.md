@@ -102,7 +102,7 @@ The CallbackUrl **must** end with the Event Notification API specification versi
 
 For example:
 
-* URL: https://tpp.com/open-banking/v3.1/event-notifications
+* URL: https://tpp.com/open-banking/v4.0/event-notifications
 
 #### Aggregated Polling
 

@@ -134,7 +134,7 @@ TPPs must register a URL for TPP hosted services to receive event notifications 
 
 For example:
 
-* URL: https://tpp.com/open-banking/v3.1/event-notifications
+* URL: https://tpp.com/open-banking/v4.0/event-notifications
 
 ### Release Management
 

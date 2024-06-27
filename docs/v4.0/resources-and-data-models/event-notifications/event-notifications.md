@@ -228,7 +228,7 @@ Decoded JWT Body - Event Notification Payload
   "iss": "https://examplebank.com/",
   "iat": 1516239022,
   "jti": "b460a07c-4962-43d1-85ee-9dc10fbb8f6c",
-  "sub": "https://examplebank.com/api/open-banking/v3.1/aisp/account-access-consents/aac-1234-007",
+  "sub": "https://examplebank.com/api/open-banking/v4.0/aisp/account-access-consents/aac-1234-007",
   "aud": "7umx5nTR33811QyQfi",
   "events": {
     "urn:uk:org:openbanking:events:resource-update": {
@@ -238,7 +238,7 @@ Decoded JWT Body - Event Notification Payload
         "http://openbanking.org.uk/rty": "account-access-consent",
         "http://openbanking.org.uk/rlk": [{
             "version": "v3.1",
-            "link": "https://examplebank.com/api/open-banking/v3.1/aisp/account-access-consents/aac-1234-007"
+            "link": "https://examplebank.com/api/open-banking/v4.0/aisp/account-access-consents/aac-1234-007"
           }
         ]
       }
@@ -280,7 +280,7 @@ Decoded JWT Body - Event Notification Payload
   "iss": "https://examplebank.com/",
   "iat": 1516239022,
   "jti": "b460a07c-4962-43d1-85ee-9dc10fbb8f6c",
-  "sub": "https://examplebank.com/api/open-banking/v3.1/cbpii/funds-confirmation-consents/88379",
+  "sub": "https://examplebank.com/api/open-banking/v4.0/cbpii/funds-confirmation-consents/88379",
   "aud": "7umx5nTR33811QyQfi",
   "events": {
     "urn:uk:org:openbanking:events:resource-update": {
@@ -291,7 +291,7 @@ Decoded JWT Body - Event Notification Payload
         "http://openbanking.org.uk/rlk": [
           {
             "version": "v3.1",
-            "link": "https://examplebank.com/api/open-banking/v3.1/cbpii/funds-confirmation-consents/88379"
+            "link": "https://examplebank.com/api/open-banking/v4.0/cbpii/funds-confirmation-consents/88379"
           }
         ]
       }
@@ -333,7 +333,7 @@ Decoded JWT Body - Event Notification Payload
 	"iss": "https://examplebank.com/",
 	"iat": 1516239022,
 	"jti": "b460a07c-4962-43d1-85ee-9dc10fbb8f6c",
-	"sub": "https://examplebank.com/api/open-banking/v3.1/aisp/account-access-consents/aac-1234-007",
+	"sub": "https://examplebank.com/api/open-banking/v4.0/aisp/account-access-consents/aac-1234-007",
 	"aud": "7umx5nTR33811QyQfi",
 	"events": {
 		"urn:uk:org:openbanking:events:consent-authorization-revoked": {
@@ -343,7 +343,7 @@ Decoded JWT Body - Event Notification Payload
 				"http://openbanking.org.uk/rty": "account-access-consents",
 				"http://openbanking.org.uk/rlk": [{
 						"version": "v3.1",
-						"link": "https://examplebank.com/api/open-banking/v3.1/aisp/account-access-consents/aac-1234-007"
+						"link": "https://examplebank.com/api/open-banking/v4.0/aisp/account-access-consents/aac-1234-007"
 					}
 				]
 			}

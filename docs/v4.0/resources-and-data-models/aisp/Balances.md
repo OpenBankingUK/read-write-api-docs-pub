@@ -179,7 +179,7 @@ Content-Type: application/json
     },
   },
   "Links": {
-    "Self": "https://api.alphabank.com/open-banking/v3.1/aisp/balances/"
+    "Self": "https://api.alphabank.com/open-banking/v4.0/aisp/balances/"
   },
   "Meta": {
     "TotalPages": 1
@@ -257,7 +257,7 @@ Content-Type: application/json
     },
   },
   "Links": {
-    "Self": "https://api.alphabank.com/open-banking/v3.1/aisp/accounts/22289/balances/"
+    "Self": "https://api.alphabank.com/open-banking/v4.0/aisp/accounts/22289/balances/"
   },
   "Meta": {
     "TotalPages": 1
@@ -335,7 +335,7 @@ Content-Type: application/json
     },
   },
   "Links": {
-    "Self": "https://api.alphabank.com/open-banking/v3.1/aisp/accounts/22289/balances/"
+    "Self": "https://api.alphabank.com/open-banking/v4.0/aisp/accounts/22289/balances/"
   },
   "Meta": {
     "TotalPages": 1
@@ -413,7 +413,7 @@ Content-Type: application/json
     },
   },
   "Links": {
-    "Self": "https://api.alphabank.com/open-banking/v3.1/aisp/accounts/22289/balances/"
+    "Self": "https://api.alphabank.com/open-banking/v4.0/aisp/accounts/22289/balances/"
   },
   "Meta": {
     "TotalPages": 1
@@ -487,7 +487,7 @@ Content-Type: application/json
       ]
   },
   "Links": {
-    "Self": "https://api.alphabank.com/open-banking/v3.1/aisp/accounts/22289/balances/"
+    "Self": "https://api.alphabank.com/open-banking/v4.0/aisp/accounts/22289/balances/"
   },
   "Meta": {
     "TotalPages": 1

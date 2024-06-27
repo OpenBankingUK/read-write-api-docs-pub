@@ -538,7 +538,7 @@ The TPP can then use the GET operation to retrieve the `vrp-consent`
   "iss": "https://examplebank.com/",
   "iat": 1516239022,
   "jti": "b460a07c-4962-43d1-85ee-9dc10fbb8f6c",
-  "sub": "https://examplebank.com/api/open-banking/v3.1/pisp/domestic-vrp-consents/aac-1234-007",
+  "sub": "https://examplebank.com/api/open-banking/v4.0/pisp/domestic-vrp-consents/aac-1234-007",
   "aud": "7umx5nTR33811QyQfi",
   "events": {
     "urn:uk:org:openbanking:events:domestic-vrp-consent-linked-account-update": {
@@ -548,7 +548,7 @@ The TPP can then use the GET operation to retrieve the `vrp-consent`
         "http://openbanking.org.uk/rty": "domestic-vrp-consents",
         "http://openbanking.org.uk/rlk": [{
             "version": "v3.1",
-            "link": "https://examplebank.com/api/open-banking/v3.1/pisp/domestic-vrp-consents/aac-1234-007"
+            "link": "https://examplebank.com/api/open-banking/v4.0/pisp/domestic-vrp-consents/aac-1234-007"
           }
         ]
       }
@@ -574,7 +574,7 @@ The TPP can then use the GET operation to retrieve the consent.
   "iss": "https://examplebank.com/",
   "iat": 1516239022,
   "jti": "b460a07c-4962-43d1-85ee-9dc10fbb8f6c",
-  "sub": "https://examplebank.com/api/open-banking/v3.1/pisp/domestic-vrp-consents/88379",
+  "sub": "https://examplebank.com/api/open-banking/v4.0/pisp/domestic-vrp-consents/88379",
   "aud": "7umx5nTR33811QyQfi",
   "events": {
     "urn:uk:org:openbanking:events:consent-authorization-revoked": {
@@ -585,7 +585,7 @@ The TPP can then use the GET operation to retrieve the consent.
         "http://openbanking.org.uk/rlk": [
           {
             "version": "v3.1",
-            "link": "https://examplebank.com/api/open-banking/v3.1/vtp/domestic-vrp-consents/88379"
+            "link": "https://examplebank.com/api/open-banking/v4.0/vtp/domestic-vrp-consents/88379"
           }
         ]
       }

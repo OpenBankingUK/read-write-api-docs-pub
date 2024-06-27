@@ -190,7 +190,7 @@ Content-Type: application/json
     ]
   },
   "Links": {
-    "Self": "https://api.alphabank.com/open-banking/v3.1/aisp/accounts/22289/product"
+    "Self": "https://api.alphabank.com/open-banking/v4.0/aisp/accounts/22289/product"
   },
   "Meta": {
     "TotalPages": 1
@@ -251,7 +251,7 @@ Content-Type: application/json
     ]
   },
   "Links": {
-    "Self": "https://api.alphabank.com/open-banking/v3.1/aisp/accounts/22299/product"
+    "Self": "https://api.alphabank.com/open-banking/v4.0/aisp/accounts/22299/product"
   },
   "Meta": {
     "TotalPages": 1
@@ -294,7 +294,7 @@ Content-Type: application/json
     ]
   },
   "Links": {
-    "Self": "https://api.alphabank.com/open-banking/v3.1/aisp/accounts/22305/product"
+    "Self": "https://api.alphabank.com/open-banking/v4.0/aisp/accounts/22305/product"
   },
   "Meta": {
     "TotalPages": 1
@@ -345,7 +345,7 @@ Content-Type: application/json
     ]
   },
   "Links": {
-    "Self": "https://api.alphabank.com/open-banking/v3.1/aisp/accounts/22306/product"
+    "Self": "https://api.alphabank.com/open-banking/v4.0/aisp/accounts/22306/product"
   },
   "Meta": {
     "TotalPages": 1
@@ -436,7 +436,7 @@ Content-Type: application/json
     ]
   },
   "Links": {
-    "Self": "https://api.alphabank.com/open-banking/v3.1/aisp/accounts/22307/product"
+    "Self": "https://api.alphabank.com/open-banking/v4.0/aisp/accounts/22307/product"
   },
   "Meta": {
     "TotalPages": 1
@@ -505,7 +505,7 @@ Content-Type: application/json
     ]
   },
   "Links": {
-    "Self": "https://api.alphabank.com/open-banking/v3.1/aisp/accounts/22308/product"
+    "Self": "https://api.alphabank.com/open-banking/v4.0/aisp/accounts/22308/product"
   },
   "Meta": {
     "TotalPages": 1
@@ -600,7 +600,7 @@ Content-Type: application/json
     ]
   },
   "Links": {
-    "Self": "https://api.alphabank.com/open-banking/v3.1/aisp/accounts/22309/product"
+    "Self": "https://api.alphabank.com/open-banking/v4.0/aisp/accounts/22309/product"
   },
   "Meta": {
     "TotalPages": 1
@@ -701,7 +701,7 @@ Content-Type: application/json
     ]
   },
   "Links": {
-    "Self": "https://api.alphabank.com/open-banking/v3.1/aisp/accounts/22310/product"
+    "Self": "https://api.alphabank.com/open-banking/v4.0/aisp/accounts/22310/product"
   },
   "Meta": {
     "TotalPages": 1
@@ -788,7 +788,7 @@ Content-Type: application/json
     ]
   },
   "Links": {
-    "Self": "https://api.alphabank.com/open-banking/v3.1/aisp/accounts/22310/product"
+    "Self": "https://api.alphabank.com/open-banking/v4.0/aisp/accounts/22310/product"
   },
   "Meta": {
     "TotalPages": 1

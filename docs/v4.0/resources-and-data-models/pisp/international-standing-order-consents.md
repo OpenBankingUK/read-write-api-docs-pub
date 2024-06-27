@@ -766,7 +766,7 @@ Content-Type: application/json
     }
   }
   "Links": {
-    "Self": "https://api.alphabank.com/open-banking/v3.1/pisp/international-standing-order-consents/ISOC-100"
+    "Self": "https://api.alphabank.com/open-banking/v4.0/pisp/international-standing-order-consents/ISOC-100"
   },
   "Meta": {}
 }

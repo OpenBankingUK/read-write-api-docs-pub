@@ -52,7 +52,7 @@
 
   
   "Links": {
-    "Self": "https://api.alphabank.com/open-banking/v3.1/vrp/domestic-vrps/OU90210"
+    "Self": "https://api.alphabank.com/open-banking/v4.0/vrp/domestic-vrps/OU90210"
   },
   
   "Meta": {}  

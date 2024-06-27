@@ -281,7 +281,7 @@ Content-Type: application/json
   },
   "Risk": {},
   "Links": {
-    "Self": "https://api.alphabank.com/open-banking/v3.1/aisp/account-access-consents/urn-alphabank-intent-88379"
+    "Self": "https://api.alphabank.com/open-banking/v4.0/aisp/account-access-consents/urn-alphabank-intent-88379"
   },
   "Meta": {
     "TotalPages": 1
@@ -346,7 +346,7 @@ Content-Type: application/json
   },
   "Risk": {},
   "Links": {
-    "Self": "https://api.alphabank.com/open-banking/v3.1/aisp/account-access-consents/urn-alphabank-intent-88379"
+    "Self": "https://api.alphabank.com/open-banking/v4.0/aisp/account-access-consents/urn-alphabank-intent-88379"
   },
   "Meta": {
     "TotalPages": 1
@@ -410,7 +410,7 @@ Content-Type: application/json
   },
   "Risk": {},
   "Links": {
-    "Self": "https://api.alphabank.com/open-banking/v3.1/aisp/account-access-consents/urn-alphabank-intent-88379"
+    "Self": "https://api.alphabank.com/open-banking/v4.0/aisp/account-access-consents/urn-alphabank-intent-88379"
   },
   "Meta": {
     "TotalPages": 1
@@ -475,7 +475,7 @@ Content-Type: application/json
   },
   "Risk": {},
   "Links": {
-    "Self": "https://api.alphabank.com/open-banking/v3.1/aisp/account-access-consents/urn-alphabank-intent-88379"
+    "Self": "https://api.alphabank.com/open-banking/v4.0/aisp/account-access-consents/urn-alphabank-intent-88379"
   },
   "Meta": {
     "TotalPages": 1
@@ -563,7 +563,7 @@ Content-Type: application/json
   },
   "Risk": {},
   "Links": {
-    "Self": "https://api.alphabank.com/open-banking/v3.1/aisp/account-access-consents/urn-alphabank-intent-88379"
+    "Self": "https://api.alphabank.com/open-banking/v4.0/aisp/account-access-consents/urn-alphabank-intent-88379"
   },
   "Meta": {
     "TotalPages": 1

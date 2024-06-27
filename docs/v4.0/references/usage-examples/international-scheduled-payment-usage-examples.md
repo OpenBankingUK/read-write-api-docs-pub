@@ -123,7 +123,7 @@ Content-Type: application/json
   "PaymentContextCode": "TransferToThirdParty"
  },
  "Links": {
-  "Self": "https://api.alphabank.com/open-banking/v3.1/pisp/international-payment-consents/58923"
+  "Self": "https://api.alphabank.com/open-banking/v4.0/pisp/international-payment-consents/58923"
  },
  "Meta": {}
 }
@@ -160,7 +160,7 @@ Content-Type: application/json
 		}
 	},
 	"Links": {
-		"Self": "https://api.alphabank.com/open-banking/v3.1/pisp/international-payment-consents/58923/funds-confirmation"
+		"Self": "https://api.alphabank.com/open-banking/v4.0/pisp/international-payment-consents/58923/funds-confirmation"
 	},
 	"Meta": {}
 }
@@ -247,7 +247,7 @@ Content-Type: application/json
 
 	},
 	"Links": {
-		"Self": "https://api.alphabank.com/open-banking/v3.1/pisp/international-payment-consents/58923"
+		"Self": "https://api.alphabank.com/open-banking/v4.0/pisp/international-payment-consents/58923"
 	},
 	"Meta": {}
 }
@@ -337,7 +337,7 @@ Content-Type: application/json
 
 	},
 	"Links": {
-		"Self": "https://api.alphabank.com/open-banking/v3.1/pisp/international-payment-consents/58923"
+		"Self": "https://api.alphabank.com/open-banking/v4.0/pisp/international-payment-consents/58923"
 	},
 	"Meta": {}
 }
@@ -518,7 +518,7 @@ Content-Type: application/json
 
 	},
 	"Links": {
-		"Self": "https://api.alphabank.com/open-banking/v3.1/pisp/international-payment-consents/58923"
+		"Self": "https://api.alphabank.com/open-banking/v4.0/pisp/international-payment-consents/58923"
 	},
 	"Meta": {}
 }

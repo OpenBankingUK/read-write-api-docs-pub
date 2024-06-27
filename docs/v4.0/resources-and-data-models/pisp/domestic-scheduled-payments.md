@@ -612,7 +612,7 @@ Content-Type: application/json
     },
   },
   "Links": {
-    "Self": "https://api.alphabank.com/open-banking/v3.1/pisp/domestic-scheduled-payments/7290-003"
+    "Self": "https://api.alphabank.com/open-banking/v4.0/pisp/domestic-scheduled-payments/7290-003"
   },
   "Meta": {}
 }

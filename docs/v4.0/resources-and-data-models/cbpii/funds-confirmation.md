@@ -156,7 +156,7 @@ x-fapi-interaction-id: hook5i13-ntIg-4th3-rP41-3ro535touch3
     }
   },
   "Links": {
-    "Self": "https://api.alphabank.com/open-banking/v3.1/cbpii/funds-confirmations/123456"
+    "Self": "https://api.alphabank.com/open-banking/v4.0/cbpii/funds-confirmations/123456"
   },
   "Meta": {}
 }
@@ -217,7 +217,7 @@ x-fapi-interaction-id: hook5i13-ntIg-4th3-rP41-3ro535touch3
     }
   },
   "Links": {
-    "Self": "https://api.alphabank.com/open-banking/v3.1/cbpii/funds-confirmations/836403"
+    "Self": "https://api.alphabank.com/open-banking/v4.0/cbpii/funds-confirmations/836403"
   },
   "Meta": {}
 }

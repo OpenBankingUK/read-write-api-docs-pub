@@ -282,7 +282,7 @@ x-fapi-interaction-id: hook5i13-ntIg-4th3-rP41-3ro535touch3
     }
   },
   "Links": {
-    "Self": "https://api.alphabank.com/open-banking/v3.1/cbpii/funds-confirmation-consents/88379"
+    "Self": "https://api.alphabank.com/open-banking/v4.0/cbpii/funds-confirmation-consents/88379"
   },
   "Meta": {}
 }
@@ -334,7 +334,7 @@ Content-Type: application/json
     },
   },
   "Links": {
-    "Self": "https://api.alphabank.com/open-banking/v3.1/cbpii/funds-confirmation-consents/88379"
+    "Self": "https://api.alphabank.com/open-banking/v4.0/cbpii/funds-confirmation-consents/88379"
   },
   "Meta": {}
 }
@@ -389,7 +389,7 @@ Content-Type: application/json
     }
   },
   "Links": {
-    "Self": "https://api.alphabank.com/open-banking/v3.1/cbpii/funds-confirmation-consents/88999"
+    "Self": "https://api.alphabank.com/open-banking/v4.0/cbpii/funds-confirmation-consents/88999"
   },
   "Meta": {}
 }
