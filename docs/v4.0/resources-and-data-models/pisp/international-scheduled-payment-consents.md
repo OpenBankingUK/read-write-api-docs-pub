@@ -85,7 +85,7 @@ If the PSU rejects the consent or the international-scheduled-payment-consent ha
 
 Once an international-scheduled-payment has been successfully created using the international-scheduled-payment-consent, the Status of the international-scheduled-payment-consent will be set to "COND".
 
-The available StatusCodes for the international-scheduled-payment-consent resource are:
+The available status codes for the international-scheduled-payment-consent resource are:
 
 | Status |
 | --- |

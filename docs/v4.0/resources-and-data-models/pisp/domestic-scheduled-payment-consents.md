@@ -73,7 +73,7 @@ If the PSU rejects the consent or the domestic-scheduled-payment-consent has fai
 
 Once a domestic-scheduled-payment has been successfully created using the domestic-scheduled-payment-consent, the Status of the domestic-scheduled-payment-consent will be set to "COND".
 
-The available StatusCodes for the domestic-scheduled-payment-consent resource are:
+The available status codes for the domestic-scheduled-payment-consent resource are:
 
 | Status |
 | ------ |

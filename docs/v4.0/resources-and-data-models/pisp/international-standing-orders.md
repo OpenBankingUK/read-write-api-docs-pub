@@ -57,7 +57,7 @@ Once the international-standing-order-consent has been authorised by the PSU, th
 
 An international-standing-orders can only be created if its corresponding international-standing-order-consent resource has the Status of "AUTH". 
 
-The international-standing-orders resource that is created successfully must have one of the following initial StatusCodes:
+The international-standing-orders resource that is created successfully must have one of the following initial status codes:
 
 | Status |
 | --- |
@@ -70,7 +70,7 @@ A PISP can retrieve the international-standing-orders to check its status.
 
 #### Status
 
-The international-standing-orders resource must have one of the following StatusCodes:
+The international-standing-orders resource must have one of the following status codes:
 
 | Status |
 | --- |
@@ -479,7 +479,7 @@ Content-Type: application/json
       }
     },
     "MultiAuthorisation": { 
-      "StatusCode": "AUTH", 
+      "Status": "AUTH", 
       "NumberRequired": 2,
       "NumberReceived": 2,
       "LastUpdateDateTime": "2017-06-05T15:15:13+00:00",

@@ -57,7 +57,7 @@ Once the domestic-standing-order-consent has been authorised by the PSU, the PIS
 
 A domestic-standing-order can only be created if its corresponding domestic-standing-order-consent resource has the Status of "AUTH". 
 
-The domestic-standing-order resource that is created successfully must have one of the following initial StatusCodes:
+The domestic-standing-order resource that is created successfully must have one of the following initial status codes:
 
 | Status |
 | --- |
@@ -70,7 +70,7 @@ A PISP can retrieve the domestic-standing-order to check its status.
 
 #### Status
 
-The domestic-standing-order resource must have one of the following StatusCodes:
+The domestic-standing-order resource must have one of the following status codes:
 
 | Status |
 | --- |
