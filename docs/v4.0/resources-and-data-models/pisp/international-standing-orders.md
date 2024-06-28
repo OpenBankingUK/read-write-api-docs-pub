@@ -430,7 +430,6 @@ Accept: application/json
     "PaymentContextCode": "TransferToThirdParty",
     "PaymentPurposeCode": "EPAY",
     "CategoryPurposeCode": "CASH", 
-    "ExtendedPurpose": "Required when no 4 character code fits the purpose",
     "BeneficiaryPaymentDetailsPrepopulatedIndicator": false,
     "BeneficiaryAccountType": "Business",
     "MerchantCategoryCode": "7300", 
@@ -642,7 +641,6 @@ Content-Type: application/json
     "PaymentContextCode": "TransferToThirdParty",
     "PaymentPurposeCode": "EPAY",
     "CategoryPurposeCode": "CASH", 
-    "ExtendedPurpose": "Required when no 4 character code fits the purpose",
     "BeneficiaryPaymentDetailsPrepopulatedIndicator": false,
     "BeneficiaryAccountType": "Business",
     "MerchantCategoryCode": "7300", 
@@ -659,7 +657,7 @@ Content-Type: application/json
       "CountrySubDivision": "Wessex",
       "Country": "UK"
     }
-  }
+  },
   "Links": {
     "Self": "https://api.alphabank.com/open-banking/v4.0/pisp/international-standing-orders/SO-ISOC-100"
   },

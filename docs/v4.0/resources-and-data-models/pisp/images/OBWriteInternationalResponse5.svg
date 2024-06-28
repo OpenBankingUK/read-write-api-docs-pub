@@ -1871,6 +1871,59 @@ This can be used by building societies to additionally identify accounts with a 
 SecondaryIdentification [0..1]
 </text>
 
+<rect x="103.4em" y="221.1em" width="16.8em" height="6.9em" fill="beige" stroke="black" stroke-width="2"/>
+<text style="font-weight:bold" text-anchor="middle" x="111.80000000000001em" y="222.4em" fill="black">
+<title>Specifies an alternate assumed name for the identification of the account.</title>
+Proxy
+</text>
+
+<text x="104.4em" y="224.4em" fill="darkslateblue">
+<title>Type: string
+Description: Specifies the external proxy account type code, as published in the proxy account type external code set.&lt;br&gt; For more information and a full list of values see `ExternalProxyAccountType1Code` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets)
+Values:
+ - TELE
+ - EMAL
+ - DNAM
+ - CINC
+ - COTX
+ - COID
+ - CUST
+ - DRLC
+ - EIDN
+ - EWAL
+ - PVTX
+ - LEIC
+ - MBNO
+ - NIDN
+ - CCPT
+ - SHID
+ - SOSE
+ - TOKN
+ - UBIL
+ - VIPN
+ - BIID
+</title>
+Code [1..1]
+</text>
+
+<text x="104.4em" y="225.70000000000002em" fill="darkslateblue">
+<title>Type: string
+MinLength: 1
+MaxLength: 2048
+Description: Identification used to indicate the account identification under another specified name.
+</title>
+Identification [1..1]
+</text>
+
+<text x="104.4em" y="227em" fill="darkslateblue">
+<title>Type: string
+MinLength: 1
+MaxLength: 35
+Description: Type of the proxy identification.
+</title>
+Type [0..1]
+</text>
+
 <rect x="73.4em" y="230.29999999999998em" width="16.8em" height="6.9em" fill="beige" stroke="black" stroke-width="2"/>
 <text style="font-weight:bold" text-anchor="middle" x="81.80000000000001em" y="231.6em" fill="black">
 <title>Set of elements used to uniquely and unambiguously identify a financial institution or a branch of a financial institution.</title>
@@ -2513,6 +2566,10 @@ TotalPages [0..1]
 <line x1="69.4em" y1="222.1em" x2="69.4em" y2="222.1em" stroke="black" />
 <line x1="69.4em" y1="222.1em" x2="72.60000000000001em" y2="222.1em" stroke="black" marker-end="url(#Triangle)"/>
 <text x="69.9em" y="221.6em">1..1</text>
+<line x1="97.4em" y1="222.1em" x2="99.4em" y2="222.1em" stroke="black" marker-start="url(#Diamond)"/>
+<line x1="99.4em" y1="222.1em" x2="99.4em" y2="222.1em" stroke="black" />
+<line x1="99.4em" y1="222.1em" x2="102.60000000000001em" y2="222.1em" stroke="black" marker-end="url(#Triangle)"/>
+<text x="99.9em" y="221.6em">0..1</text>
 <line x1="67.4em" y1="222.1em" x2="69.4em" y2="222.1em" stroke="black" marker-start="url(#Diamond)"/>
 <line x1="69.4em" y1="222.1em" x2="69.4em" y2="231.29999999999998em" stroke="black" />
 <line x1="69.4em" y1="231.29999999999998em" x2="72.60000000000001em" y2="231.29999999999998em" stroke="black" marker-end="url(#Triangle)"/>

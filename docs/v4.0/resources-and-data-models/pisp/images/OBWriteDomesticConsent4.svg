@@ -1496,7 +1496,7 @@ Values:
 RequestedSCAExemptionType [0..1]
 </text>
 
-<rect x="25.400000000000002em" y="188.3em" width="31.200000000000003em" height="14.700000000000001em" fill="beige" stroke="black" stroke-width="2"/>
+<rect x="25.400000000000002em" y="188.3em" width="31.200000000000003em" height="13.4em" fill="beige" stroke="black" stroke-width="2"/>
 <text style="font-weight:bold" text-anchor="middle" x="41em" y="189.60000000000002em" fill="black">
 <title>The Risk section is sent by the initiating party to the ASPSP.
 It is used to specify additional details for risk scoring for Payments.</title>
@@ -1595,15 +1595,6 @@ ContractPresentIndicator [0..1]
 
 <text x="26.400000000000002em" y="196.8em" fill="darkslateblue">
 <title>Type: string
-MinLength: 1
-MaxLength: 140
-Description: Specifies the purpose of an international payment, when there is no corresponding 4 character code available in the ISO20022 list of Purpose Codes.
-</title>
-ExtendedPurpose [0..1]
-</text>
-
-<text x="26.400000000000002em" y="198.10000000000002em" fill="darkslateblue">
-<title>Type: string
 MinLength: 3
 MaxLength: 4
 Description: Category code conform to ISO 18245, related to the type of services or goods the merchant provides for the transaction.
@@ -1611,7 +1602,7 @@ Description: Category code conform to ISO 18245, related to the type of services
 MerchantCategoryCode [0..1]
 </text>
 
-<text x="26.400000000000002em" y="199.40000000000003em" fill="darkslateblue">
+<text x="26.400000000000002em" y="198.10000000000002em" fill="darkslateblue">
 <title>Type: string
 MinLength: 1
 MaxLength: 70
@@ -1620,7 +1611,7 @@ Description: The unique customer identifier of the PSU with the merchant.
 MerchantCustomerIdentification [0..1]
 </text>
 
-<text x="26.400000000000002em" y="200.70000000000002em" fill="darkslateblue">
+<text x="26.400000000000002em" y="199.40000000000003em" fill="darkslateblue">
 <title>Type: string
 Description: Specifies the payment context, `OBInternalPaymentContext1Code`
 
@@ -1635,7 +1626,7 @@ Values:
 PaymentContextCode [0..1]
 </text>
 
-<text x="26.400000000000002em" y="202.00000000000003em" fill="darkslateblue">
+<text x="26.400000000000002em" y="200.70000000000002em" fill="darkslateblue">
 <title>Type: string
 MinLength: 1
 MaxLength: 4

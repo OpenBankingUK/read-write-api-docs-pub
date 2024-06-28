@@ -1768,7 +1768,7 @@ Format: int32
 TotalPages [0..1]
 </text>
 
-<rect x="31.8em" y="231.70000000000002em" width="31.200000000000003em" height="14.700000000000001em" fill="beige" stroke="black" stroke-width="2"/>
+<rect x="31.8em" y="231.70000000000002em" width="31.200000000000003em" height="13.4em" fill="beige" stroke="black" stroke-width="2"/>
 <text style="font-weight:bold" text-anchor="middle" x="47.400000000000006em" y="233.00000000000003em" fill="black">
 <title>The Risk section is sent by the initiating party to the ASPSP.
 It is used to specify additional details for risk scoring for Payments.</title>
@@ -1867,15 +1867,6 @@ ContractPresentIndicator [0..1]
 
 <text x="32.8em" y="240.20000000000002em" fill="darkslateblue">
 <title>Type: string
-MinLength: 1
-MaxLength: 140
-Description: Specifies the purpose of an international payment, when there is no corresponding 4 character code available in the ISO20022 list of Purpose Codes.
-</title>
-ExtendedPurpose [0..1]
-</text>
-
-<text x="32.8em" y="241.50000000000003em" fill="darkslateblue">
-<title>Type: string
 MinLength: 3
 MaxLength: 4
 Description: Category code conform to ISO 18245, related to the type of services or goods the merchant provides for the transaction.
@@ -1883,7 +1874,7 @@ Description: Category code conform to ISO 18245, related to the type of services
 MerchantCategoryCode [0..1]
 </text>
 
-<text x="32.8em" y="242.80000000000004em" fill="darkslateblue">
+<text x="32.8em" y="241.50000000000003em" fill="darkslateblue">
 <title>Type: string
 MinLength: 1
 MaxLength: 70
@@ -1892,7 +1883,7 @@ Description: The unique customer identifier of the PSU with the merchant.
 MerchantCustomerIdentification [0..1]
 </text>
 
-<text x="32.8em" y="244.10000000000002em" fill="darkslateblue">
+<text x="32.8em" y="242.80000000000004em" fill="darkslateblue">
 <title>Type: string
 Description: Specifies the payment context, `OBInternalPaymentContext1Code`
 
@@ -1907,7 +1898,7 @@ Values:
 PaymentContextCode [0..1]
 </text>
 
-<text x="32.8em" y="245.40000000000003em" fill="darkslateblue">
+<text x="32.8em" y="244.10000000000002em" fill="darkslateblue">
 <title>Type: string
 MinLength: 1
 MaxLength: 4
