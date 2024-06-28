@@ -1034,54 +1034,46 @@ participant PISP
 participant ASPSP Authorisation Server
 participant ASPSP Resource Server
 
-note over PSU Initial Authoriser, ASPSP Resource Server
-Step 1: Agree domestic payment Initiation
-end note
+note over PSU Initial Authoriser: ASPSP Resource Server \nStep 1: Agree domestic payment Initiation
+
 PSU Initial Authoriser -> PISP: Agree domestic payment initiation request
 
-note over PSU Initial Authoriser, ASPSP Resource Server
- Step 2: Setup Payment-Order Consent
-end note
+note over PSU Initial Authoriser: ASPSP Resource Server \nStep 2: Setup Payment-Order Consent
+
 PISP <-> ASPSP Authorisation Server: Establish TLS 1.2 MA
 PISP -> ASPSP Authorisation Server: Initiate Client Credential Grant
 ASPSP Authorisation Server -> PISP: access-token
 PISP <-> ASPSP Resource Server: Establish TLS 1.2 MA
 PISP -> ASPSP Resource Server: POST /domestic-payment-consents
-state over ASPSP Resource Server: Consent Status: AwaitingAuthorisation
+note over ASPSP Resource Server:Consent Status: AWAU
 ASPSP Resource Server -> PISP: HTTP 201 (Created),ConsentId
 PISP -> PSU Initial Authoriser: HTTP 302 (Found),Redirect (ConsentId)
 
-note over PSU Initial Authoriser, ASPSP Resource Server
- Step 3: Authorize Consent - Initial Authoriser
-end note
+note over PSU Initial Authoriser: ASPSP Resource Server \nStep 3: Authorize Consent - Initial Authoriser
 PSU Initial Authoriser -> ASPSP Authorisation Server: Follow redirect (ConsentId)
 PSU Initial Authoriser <-> ASPSP Authorisation Server: Authenticate (SCA if required) and Authorise consent
-state over ASPSP Resource Server: Consent Status: Authorised
+note over ASPSP Resource Server: Consent Status: AUTH
 ASPSP Authorisation Server -> PSU Initial Authoriser: HTTP 302 (Found), Redirect (authorization-code)
 PSU Initial Authoriser -> PISP: Follow redirect (authorization-code)
 PISP <-> ASPSP Authorisation Server: Establish TLS 1.2 MA
 PISP -> ASPSP Authorisation Server: Exchange authorization-code for access token
 ASPSP Authorisation Server -> PISP: access-token
 
-note over PSU Initial Authoriser, ASPSP Resource Server
-Step 4: Create Payment-Order
-end note
+note over PSU Initial Authoriser: ASPSP Resource Server \nStep 4: Create Payment-Order
 PISP <-> ASPSP Resource Server: Establish TLS 1.2 MA
 PISP -> ASPSP Resource Server: POST /domestic-payments
 ASPSP Resource Server -> PISP: HTTP 201 (Created) DomesticPaymentId
-state over ASPSP Resource Server: Consent Status: Consumed
-state over ASPSP Resource Server: Payment Status: Pending
-state over ASPSP Resource Server: MultiAuthorisation Status: AwaitingFurtherAuthorisation
+note over ASPSP Resource Server: Consent Status: COND
+note over ASPSP Resource Server:Payment Status: PDNG
+note over ASPSP Resource Server:MultiAuthorisation Status: AWAU
 
-note over PSU Initial Authoriser, ASPSP Resource Server
- Step 5: Authorize Consent - Final Authoriser
-end note
+note over PSU Initial Authoriser: ASPSP Resource Server \nStep 5: Authorize Consent - Final Authoriser
 
 PSU Final Authoriser -> ASPSP Authorisation Server: Authenticate (SCA if required) and Authorise consent
 
-state over ASPSP Resource Server: MultiAuthorisation Status: Authorised
-state over ASPSP Resource Server: Payment Status: AcceptedSettlementInProcess
-state over ASPSP Resource Server: Payment Status: AcceptedSettlementComplete
+note over ASPSP Resource Server: MultiAuthorisation Status: AUTH
+note over ASPSP Resource Server:Payment Status: ACCC
+note over ASPSP Resource Server:Payment Status: ACSC
 
     alt If PISP has registered a URL for event notification
         ASPSP Resource Server -> PISP: POST /event-notifications
@@ -1094,8 +1086,6 @@ state over ASPSP Resource Server: Payment Status: AcceptedSettlementComplete
             ASPSP Resource Server -> PISP: HTTP 200 (OK) domestic-payment resource
         end
     end
-
-option footer=bar
 ```
 </details>
 
