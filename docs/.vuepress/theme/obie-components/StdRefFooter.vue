@@ -25,7 +25,7 @@
             </a>
             
             <p>
-              © Copyright Open Banking Limited 2023.
+              © Copyright Open Banking Limited 2024.
               <br><br>
               Unless otherwise stated, all specifications, documentation, articles, and downloadable reference applications are subject to the MIT Licence.
               <br><br>
@@ -36,7 +36,7 @@
           </div>
 
           <div class="g02__social">
-            <a href="https://www.facebook.com/UKOpenBanking/" target="_blank" class="g02__social-link g02__social-link--facebook" title="facebook">
+            <a href="https://www.facebook.com/UKOpenBanking/" tar g="_blank" class="g02__social-link g02__social-link--facebook" title="facebook">
               <svg aria-hidden="true" focusable="false" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path fill="currentColor" d="M279.14 288l14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S260.43 0 225.36 0c-73.22 0-121.08 44.38-121.08 124.72v70.62H22.89V288h81.39v224h100.17V288z"></path></svg>
             </a>
             <a href="https://twitter.com/UKOpenBanking" target="_blank" class="g02__social-link g02__social-link--twitter" title="twitter">
@@ -56,12 +56,13 @@
             <li id="menu-item-965" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-965">
               <a rel="noopener" tabindex="-1">About us</a>
               <ul class="sub-menu">
-                <li id="menu-item-966" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-966"><a target="_blank" rel="noopener" href="https://www.openbanking.org.uk/about-us/">About OBL</a></li>
+                <li id="menu-item-966" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-966"><a target="_blank" rel="noopener" href="https://www.openbanking.org.uk/about-us/">About the OBL</a></li>
+                <li id="menu-item-967" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-967"><a target="_blank" rel="noopener" href="https://www.openbanking.org.uk/obl-leadership-team/">OBL leadership team</a></li>
+                <li id="menu-item-968" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-968"><a target="_blank" rel="noopener" href="https://www.openbanking.org.uk/careers/">Careers</a></li>
                 <li id="menu-item-1048" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1048"><a target="_blank" rel="noopener" href="https://www.openbanking.org.uk/delivering-the-roadmap/">Delivering the Roadmap</a></li>
                 <li id="menu-item-1049" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1049"><a target="_blank" rel="noopener" href="https://www.openbanking.org.uk/external-engagement/">External engagement</a></li>
-                <li id="menu-item-1051" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1051"><a target="_blank" rel="noopener" href="https://www.openbanking.org.uk/faqs/">FAQs</a></li>
-                <li id="menu-item-1053" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1053"><a target="_blank" rel="noopener" href="https://www.openbanking.org.uk/what-is-open-banking/">What is open banking?</a></li>
-                <li id="menu-item-1052" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1052"><a target="_blank" rel="noopener" href="https://www.openbanking.org.uk/glossary/">Glossary of open banking terms</a></li>
+                <li id="menu-item-1052" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1052"><a target="_blank" rel="noopener" href="https://www.openbanking.org.uk/what-is-open-banking/">What is open banking?</a></li>
+                <li id="menu-item-1053" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1053"><a target="_blank" rel="noopener" href="https://www.openbanking.org.uk/open-finance/">Open finance</a></li>
               </ul>
             </li>
 
@@ -89,9 +90,9 @@
               <ul class="sub-menu">
                 <li id="menu-item-1065" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1065"><a target="_blank" rel="noopener" href="https://www.openbanking.org.uk/news/">News and press releases</a></li>
                 <li id="menu-item-1066" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1066"><a target="_blank" rel="noopener" href="https://www.openbanking.org.uk/insights/">Insights</a></li>
-                <li id="menu-item-1067" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1067"><a target="_blank" rel="noopener" href="https://www.openbanking.org.uk/events/">Open banking events</a></li>
-                <li id="menu-item-1068" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1068"><a target="_blank" rel="noopener" href="https://www.openbanking.org.uk/media-kit/">Media kit</a></li>
-                <li id="menu-item-1069" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1069"><a target="_blank" rel="noopener" href="https://www.openbanking.org.uk/glossary/">Glossary</a></li>
+                <li id="menu-item-1067" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1067"><a target="_blank" rel="noopener" href="https://www.openbanking.org.uk/events/">Open banking events archive</a></li>
+                <li id="menu-item-1068" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1068"><a target="_blank" rel="noopener" href="https://www.openbanking.org.uk/glossary/">Glossary</a></li>
+                <li id="menu-item-1069" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1069"><a target="_blank" rel="noopener" href="https://www.openbanking.org.uk/faqs/">FAQs</a></li>
                 <li id="menu-item-1070" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1070"><a target="_blank" rel="noopener" href="https://www.openbanking.org.uk/documents/">Document library</a></li>
               </ul>
             </li>
@@ -100,8 +101,9 @@
               <a tabindex="-1">Solutions</a>
               <ul class="sub-menu">
                 <li id="menu-item-1072" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1072"><a target="_blank" rel="noopener" href="https://www.openbanking.org.uk/directory/">Directory</a></li>
-                <li id="menu-item-1074" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1074"><a target="_blank" rel="noopener" href="https://www.openbanking.org.uk/cyber-security-and-counter-fraud/">Security and counter fraud</a></li>
-                <li id="menu-item-1075" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1075"><a target="_blank" rel="noopener" href="https://www.openbanking.org.uk/confirmation-of-payee/">Confirmation of Payee (CoP)</a></li>
+                <li id="menu-item-1073" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1073"><a target="_blank" rel="noopener" href="https://www.openbanking.org.uk/crown-dependencies-directory/">Crown Dependencies Directory</a></li>
+                <li id="menu-item-1074" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1074"><a target="_blank" rel="noopener" href="https://www.openbanking.org.uk/confirmation-of-payee/">Confirmation of Payee (CoP)</a></li>
+                <li id="menu-item-1075" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1075"><a target="_blank" rel="noopener" href="https://www.openbanking.org.uk/variable-recurring-payments-vrps/">Variable Recurring Payments (VRPs)</a></li>
               </ul>
             </li>
 
@@ -110,16 +112,24 @@
               <ul class="sub-menu">
                 <li id="menu-item-1077" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1077"><a target="_blank" rel="noopener" href="https://directory.openbanking.org.uk/s/login/">Directory enrolment</a></li>
                 <li id="menu-item-1078" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1078"><a target="_blank" rel="noopener" href="https://directory.openbanking.org.uk/opendata/reg_apiproviderregistration">Open data API provider enrolment</a></li>
+                <li id="menu-item-1079" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1079"><a target="_blank" rel="noopener" href="https://www.openbanking.org.uk/ethics-and-transparency/">Ethics and transparency</a></li>
+                
               </ul>
+            </li>
+            <li id="menu-item-1080" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-1080">
+              <a target="_blank" rel="noopener" href="https://www.openbanking.org.uk/jroc/">JROC and the future entity</a>
+            </li>
+            <li id="menu-item-1081" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-1081">
+              <a target="_blank" rel="noopener" href="https://www.openbanking.org.uk/swg/">Strategic Working Group</a>
             </li>
           </ul>
 
           <ul id="menu-footer-secondary-menu" class="g02__footer-menu">
-            <li id="menu-item-967" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-967"><a target="_blank" rel="noopener" href="https://www.openbanking.org.uk/terms-conditions/">Terms &amp; Conditions</a></li>
-            <li id="menu-item-1079" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1079"><a target="_blank" rel="noopener" href="https://www.openbanking.org.uk/privacy-policy/">Privacy Policy</a></li>
-            <li id="menu-item-1080" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1080"><a target="_blank" rel="noopener" href="https://www.openbanking.org.uk/cookie-policy/">Cookies</a></li>
-            <li id="menu-item-1081" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1081"><a target="_blank" rel="noopener" href="https://www.openbanking.org.uk/accessibility/">Accessibility</a></li>
-            <li id="menu-item-1082" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1082"><a target="_blank" rel="noopener" href="https://www.openbanking.org.uk/open-licence/">Open licence</a></li>
+            <li id="menu-item-1085" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1085"><a target="_blank" rel="noopener" href="https://www.openbanking.org.uk/terms-conditions/">Terms &amp; Conditions</a></li>
+            <li id="menu-item-1086" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1086"><a target="_blank" rel="noopener" href="https://www.openbanking.org.uk/privacy-policy/">Privacy Policy</a></li>
+            <li id="menu-item-1087" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1087"><a target="_blank" rel="noopener" href="https://www.openbanking.org.uk/cookie-policy/">Cookies</a></li>
+            <li id="menu-item-1088" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1088"><a target="_blank" rel="noopener" href="https://www.openbanking.org.uk/accessibility/">Accessibility</a></li>
+            <li id="menu-item-1089" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1089"><a target="_blank" rel="noopener" href="https://www.openbanking.org.uk/open-licence/">Open licence</a></li>
           </ul>
         </div>
       </div>
