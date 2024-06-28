@@ -1,0 +1,134 @@
+@startuml vrp-consent-flow
+
+participant PSU #lightyellow
+participant PISP #lightblue
+participant ASPSP Authorisation Server #lightcyan
+participant ASPSP Resource Server #lightcyan
+
+note over PSU, ASPSP Resource Server #lightyellow:Step 1: Agree VRP Consent
+
+PSU -> PISP: Agree domestic-vrp-consents request
+
+note over PSU, ASPSP Resource Server #lightyellow:Setup VRP Consent
+
+PISP <-> ASPSP Authorisation Server: Establish TLS 1.2 MA
+PISP -> ASPSP Authorisation Server: Initiate Client Credentials Grant
+ASPSP Authorisation Server -> PISP: access-token
+PISP <-> ASPSP Resource Server: Establish TLS 1.2 MA
+PISP -> ASPSP Resource Server: POST /domestic-vrp-consents
+rbox over ASPSP Resource Server #lightgreen: Consent Status: AWAU 
+ASPSP Resource Server -> PISP: HTTP 201 (Created),  ConsentId
+
+note over PSU, ASPSP Resource Server #lightyellow:Step 3: Authorize VRP Consent
+
+alt Redirection (Using authorization code grant)
+        PISP -> PSU: HTTP 302 (Found), Redirect (ConsentId)
+        PSU -> ASPSP Authorisation Server: Follow redirect (ConsentId)
+        PSU <-> ASPSP Authorisation Server: authenticate
+        PSU <-> ASPSP Authorisation Server: SCA if required
+        PSU <-> ASPSP Authorisation Server: Select debtor account if required
+        rbox over ASPSP Resource Server #lightgreen: Consent Status: AUTH
+        ASPSP Authorisation Server -> PSU: HTTP 302 (Found), Redirect (authorization-code)
+        PSU -> PISP: Follow redirect (authorization-code)
+        PISP <-> ASPSP Authorisation Server: Establish TLS 1.2 MA
+        PISP -> ASPSP Authorisation Server: Exchange authorization-code for access token
+        ASPSP Authorisation Server -> PISP: access-token
+else Decoupled (Using CIBA)
+        PISP -> ASPSP Authorisation Server: POST /bc-authorize (login_hint_token)
+        ASPSP Authorisation Server -> PISP: OK
+
+        PSU -> ASPSP Authorisation Server: Authorise (Consent Id)
+        PSU <-> ASPSP Authorisation Server: authenticate
+        PSU <-> ASPSP Authorisation Server: SCA if required
+        PSU <-> ASPSP Authorisation Server: select accounts
+        rbox over ASPSP Resource Server #lightgreen: Consent Status: AUTH
+
+        alt Using callback
+                ASPSP Authorisation Server -> PISP: Callback (authorization-code)
+                PISP <-> ASPSP Authorisation Server: Establish TLS 1.2 MA
+                PISP -> ASPSP Authorisation Server: Exchange authorization-code for access token
+                ASPSP Authorisation Server -> PISP: access-token
+        else Using polling
+                PISP <-> ASPSP Authorisation Server: Establish TLS 1.2 MA
+                PISP -> ASPSP Authorisation Server: Poll at /token using auth-req-id
+                ASPSP Authorisation Server -> PISP: access-token
+        end alt
+end alt
+
+
+note over PSU, ASPSP Resource Server #lightyellow:Step 4: Confirm Funds (Domestic VRP Single Immediate Payments Only)
+
+opt
+PISP <-> ASPSP Resource Server: Establish TLS 1.2 MA
+PISP -> ASPSP Resource Server: POST /domestic-vrp-consents/{ConsentId}/funds-confirmation
+ASPSP Resource Server -> PISP: HTTP 200 (OK) funds-confirmation resource
+
+end opt
+
+note over PSU, ASPSP Resource Server #lightyellow:Step 5: Create Domestic VRP Payment Order
+
+PISP <-> ASPSP Resource Server: Establish TLS 1.2 MA
+PISP -> ASPSP Resource Server: POST /domestic-vrps
+
+alt Immediate Payment
+rbox over ASPSP Resource Server #lightgreen: Payment Status: RCVD
+end alt
+ASPSP Resource Server -> PISP: HTTP 201 (Created), Payment-Order Id
+
+note over PSU, ASPSP Resource Server #lightyellow:Step 6: Get VRP Payment-Order Consent Status
+
+opt VRP Payment Order
+PISP <-> ASPSP Resource Server: Establish TLS 1.2 MA
+PISP -> ASPSP Resource Server: GET /domestic-vrp-consents
+rbox over ASPSP Resource Server #lightgreen: Consent Status: AWAU 
+rbox over ASPSP Resource Server #lightgreen: Consent Status: AUTH
+rbox over ASPSP Resource Server #lightgreen: Consent Status: RJCT
+rbox over ASPSP Resource Server #lightgreen: Consent Status: CANC
+rbox over ASPSP Resource Server #lightgreen: Consent Status: EXPD
+end opt
+
+note over PSU, ASPSP Resource Server #lightyellow:Step 7: Get VRP Payment-Order Status or Payment-Order detail Status
+
+opt VRP Payment Order
+PISP <-> ASPSP Resource Server: Establish TLS 1.2 MA
+PISP -> ASPSP Resource Server: GET /domestic-vrps/{DomesticVRPId}
+alt Immediate
+rbox over ASPSP Resource Server #lightgreen: Payment Status: RCVD
+rbox over ASPSP Resource Server #orange: Payment Status: PDNG
+rbox over ASPSP Resource Server #orange: Payment Status: CANC
+rbox over ASPSP Resource Server #orange: Payment Status: ACTC
+rbox over ASPSP Resource Server #orange: Payment Status: ACCP
+rbox over ASPSP Resource Server #orange: Payment Status: ACFC
+rbox over ASPSP Resource Server #lightgreen: Payment Status: ACSP
+rbox over ASPSP Resource Server #orange: Payment Status: ACWC
+rbox over ASPSP Resource Server #lightgreen: Payment Status: ACSC
+rbox over ASPSP Resource Server #orange: Payment Status: BLCK
+rbox over ASPSP Resource Server #lightgreen: Payment Status: ACWP
+rbox over ASPSP Resource Server #lightgreen: Payment Status: ACCC
+rbox over ASPSP Resource Server #lightgreen: Payment Status: RJCT
+end alt
+ASPSP Resource Server -> PISP: HTTP 200 (OK) vrp-domestic-payment-order resource
+end opt
+
+opt VRP Payment Order Details
+PISP <-> ASPSP Resource Server: Establish TLS 1.2 MA
+PISP -> ASPSP Resource Server: GET /domestic-vrps/{DomesticVRPId}/payment-details
+alt Immediate
+rbox over ASPSP Resource Server #lightgreen: Payment Status: RCVD
+rbox over ASPSP Resource Server #orange: Payment Status: PDNG
+rbox over ASPSP Resource Server #orange: Payment Status: CANC
+rbox over ASPSP Resource Server #orange: Payment Status: ACTC
+rbox over ASPSP Resource Server #orange: Payment Status: ACCP
+rbox over ASPSP Resource Server #orange: Payment Status: ACFC
+rbox over ASPSP Resource Server #lightgreen: Payment Status: ACSP
+rbox over ASPSP Resource Server #orange: Payment Status: ACWC
+rbox over ASPSP Resource Server #lightgreen: Payment Status: ACSC
+rbox over ASPSP Resource Server #orange: Payment Status: BLCK
+rbox over ASPSP Resource Server #lightgreen: Payment Status: ACWP
+rbox over ASPSP Resource Server #lightgreen: Payment Status: ACCC
+rbox over ASPSP Resource Server #lightgreen: Payment Status: RJCT
+end alt
+ASPSP Resource Server -> PISP: HTTP 200 (OK) vrp-domestic-payment-order-details resource
+end opt
+
+@enduml

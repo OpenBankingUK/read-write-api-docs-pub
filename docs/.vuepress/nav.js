@@ -10,7 +10,7 @@ module.exports = [
                 link: 'https://standards.openbanking.org.uk/guidance-when-implementing-the-standard/',
                 items: [
                     { text: 'Reading the Standard', link: 'https://standards.openbanking.org.uk/guidance-when-implementing-the-standard/' },
-                    { text: 'Common Language', link: 'https://standards.openbanking.org.uk/customer-experience-guidelines/appendices/common-terminology/v3-1-9/' }
+                    { text: 'Common Language', link: 'https://standards.openbanking.org.uk/customer-experience-guidelines/appendices/common-terminology/latest/' }
                 ]
             },
             {
@@ -31,14 +31,14 @@ module.exports = [
         items: [
             {
                 text: 'API Specifications',
-                link: 'https://standards.openbanking.org.uk/api-specifications/v3-1-10/',
+                link: 'https://openbankinguk.github.io/read-write-api-site3/v4.0/',
                 items: [
-                    { text: 'Read/Write API Specifications', link: 'https://openbankinguk.github.io/read-write-api-site3/v3.1.10/profiles/read-write-data-api-profile.html' },
+                    { text: 'Read/Write API Specifications', link: 'https://openbankinguk.github.io/read-write-api-site3/v4.0/profiles/read-write-data-api-profile.html' },
                     { text: 'Open Data API Specifications', link: 'https://openbankinguk.github.io/opendata-api-docs-pub/' },
-                    { text: 'Directory Specifications', link: 'https://openbanking.atlassian.net/wiki/spaces/DZ/pages/1150124033/Directory+2.0+Technical+Overview+v1.5' },
+                    { text: 'Directory Specifications', link: 'https://openbanking.atlassian.net/wiki/spaces/DZ/pages/1150124033/Directory+2.0+Technical+Overview+v1.6' },
                     { text: 'Dynamic Client Registration (DCR) Specifications', link: 'https://openbankinguk.github.io/dcr-docs-pub/' },
-                    { text: 'MI Reporting / ASPSP', link: 'https://openbankinguk.github.io/mi-docs-pub/v3.1.10-aspsp/specification/mi-data-reporting-api-specification.html' },
-                    { text: 'MI Reporting / TPP', link: 'https://openbankinguk.github.io/mi-docs-pub/v3.1.10-TPP/logical-data-dictionary.html' },
+                    { text: 'MI Reporting / ASPSP', link: 'https://openbankinguk.github.io/mi-docs-pub/v3.1.11-aspsp/specification/mi-data-reporting-api-specification.html' },
+                    { text: 'MI Reporting / TPP', link: 'https://openbankinguk.github.io/mi-docs-pub/v3.1.11-TPP/logical-data-dictionary.html' },
                 ]
             },
             {
@@ -67,7 +67,7 @@ module.exports = [
                     { text: 'Card Based Payment Instrument Issuers', link: 'https://standards.openbanking.org.uk/customer-experience-guidelines/card-based-payment-instrument-issuers-cbpiis/latest/' },
                     { text: 'Dashboards', link: 'https://standards.openbanking.org.uk/customer-experience-guidelines/dashboards/latest/' },
                     { text: 'Customer Experience Checklist', link: 'https://standards.openbanking.org.uk/customer-experience-guidelines/customer-experience-checklist/latest/' },
-                    { text: 'Appendices', link: 'https://standards.openbanking.org.uk/customer-experience-guidelines/appendices/v3-1-10/' },
+                    { text: 'Appendices', link: 'https://standards.openbanking.org.uk/customer-experience-guidelines/appendices/latest/' },
                     { text: 'Change Log', link: 'https://standards.openbanking.org.uk/customer-experience-guidelines/change-log/latest/' }
                 ]
             },
@@ -122,7 +122,7 @@ module.exports = [
                 text: 'Reference Library',
                 link: 'https://standards.openbanking.org.uk/reference/',
                 items: [
-                    { text: 'Security & Counter Fraud', link: 'https://www.openbanking.org.uk/wp-content/uploads/OBIE-Security-Counter-Fraud-GUIDE.pdf' },
+                    { text: 'External Internal CodeSets', link: 'https://github.com/OpenBankingUK/External_Internal_CodeSets' },
                     { text: 'Confirmation of Payee / Contingent Liability Model', link: 'https://www.openbanking.org.uk/wp-content/uploads/CoP-CRM-Draft-Standards-070721.pdf' }
                 ]
             }

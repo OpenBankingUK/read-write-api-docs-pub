@@ -1,3 +1,4 @@
 node_modules
 docs/.vuepress/dist
 .DS_Store
+docs/v4.0/umldiagram
