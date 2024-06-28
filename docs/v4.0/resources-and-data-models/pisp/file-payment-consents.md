@@ -15,6 +15,7 @@
   - [Reused Classes](#reused-classes)
 	- [OBRemittanceInformation2](#obremittanceinformation2)
 	- [OBUltimateDebtor1](#obultimatedebtor1)
+	- [OBPostalAddress7](#obpostaladdress7)
     - [OBFile2](#obfile2)
       - [UML Diagram](#uml-diagram)
       - [Notes](#notes)
@@ -158,6 +159,10 @@ The OBRemittanceInformation2 class is defined in the [payment-initiation-api-pro
 
 The OBUltimateDebtor1 class is defined in the [payment-initiation-api-profile](../../profiles/payment-initiation-api-profile.md#obultimatedebtor1) page.
 
+#### OBPostalAddress7 
+
+The OBPostalAddress7 class is defined in the [payment-initiation-api-profile](../../profiles/payment-initiation-api-profile.md#obpostaladdress7) page
+
 #### OBFile2
 
 This section describes the OBFile2 class, which is reused as the Initiation object in the file-payment-consent resource.
@@ -189,7 +194,7 @@ For the OBFile2 Initiation object:
 | NumberOfTransactions |0..1 |OBFile2/NumberOfTransactions |Number of individual transactions contained in the payment information group. |Max15NumericText | |[0-9]{1,15} |
 | ControlSum |0..1 |OBFile2/ControlSum |Total of all individual amounts included in the group, irrespective of currencies. |DecimalNumber | | |
 | RequestedExecutionDateTime |0..1 |OBFile2/RequestedExecutionDateTime |Date at which the initiating party requests the clearing agent to process the payment. Usage: This is the date on which the debtor's account is to be debited. |ISODateTime | | |
-| LocalInstrument |0..1 |OBFile2/LocalInstrument |User community specific instrument. Usage: This element is used to specify a local instrument, local clearing option and/or further qualify the service or service level. |For a full list of enumeration values refer to `OB_Internal_CodeSet` [here].(https://github.com/OpenBankingUK/External_Internal_CodeSets) |OBInternalLocalInstrument1Code | |
+| LocalInstrument |0..1 |OBFile2/LocalInstrument |User community specific instrument. Usage: This element is used to specify a local instrument, local clearing option and/or further qualify the service or service level. |For a full list of enumeration values refer to `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets) |OBInternalLocalInstrument1Code | |
 | DebtorAccount |0..1 |OBFile2/DebtorAccount |Unambiguous identification of the account of the debtor to which a debit entry will be made as a result of the transaction. |OBCashAccountDebtor4 | | |
 | UltimateDebtor |0..1 |OBFile2/UltimateDebtor|Ultimate party that owes an amount of money to the (ultimate) creditor.|OBUltimateDebtor1 | | |
 | RemittanceInformation |0..1 |OBFile2/RemittanceInformation |Information supplied to enable the matching of an entry with the items that the transfer is intended to settle, such as commercial invoices in an accounts' receivable system. |OBRemittanceInformation2 | | |
@@ -199,16 +204,6 @@ For the OBFile2 Initiation object:
 | Identification |0..1 |OBFile2/CreditorAgent/Identification |Unique and unambiguous identification of a financial institution or a branch of a financial institution. |Max35Text | | |
 | Name |0..1 |OBFile2/CreditorAgent/Name |Name by which an agent is known and which is usually used to identify that agent. |Max140Text | | |
 | PostalAddress |0..1 |OBFile2/CreditorAgent/PostalAddress |Information that locates and identifies a specific address, as defined by postal services. |OBPostalAddress7 | | |
-| AddressType |0..1 |OBFile2/CreditorAgent/PostalAddress/AddressType |Identifies the nature of the postal address. |OBAddressTypeCode |Business Correspondence DeliveryTo MailTo POBox Postal Residential Statement | |
-| Department |0..1 |OBFile2/CreditorAgent/PostalAddress/Department |Identification of a division of a large organisation or building. |Max70Text | | |
-| SubDepartment |0..1 |OBFile2/CreditorAgent/PostalAddress/SubDepartment |Identification of a sub-division of a large organisation or building. |Max70Text | | |
-| StreetName |0..1 |OBFile2/CreditorAgent/PostalAddress/StreetName |Name of a street or thoroughfare. |Max70Text | | |
-| BuildingNumber |0..1 |OBFile2/CreditorAgent/PostalAddress/BuildingNumber |Number that identifies the position of a building on a street. |Max16Text | | |
-| PostCode |0..1 |OBFile2/CreditorAgent/PostalAddress/PostCode |Identifier consisting of a group of letters and/or numbers that is added to a postal address to assist the sorting of mail. |Max16Text | | |
-| TownName |0..1 |OBFile2/CreditorAgent/PostalAddress/TownName |Name of a built-up area, with defined boundaries, and a local government. |Max35Text | | |
-| CountrySubDivision |0..1 |OBFile2/CreditorAgent/PostalAddress/CountrySubDivision |Identifies a subdivision of a country such as state, region, county. |Max35Text | | |
-| Country |0..1 |OBFile2/CreditorAgent/PostalAddress/Country |Nation with its own government. |CountryCode | |^[A-Z]{2,2}$ |
-| AddressLine |0..7 |OBFile2/CreditorAgent/PostalAddress/AddressLine |Information that locates and identifies a specific address, as defined by postal services, presented in free format text. |Max70Text | | |
 
 ### File Payment Consent - Request
 
