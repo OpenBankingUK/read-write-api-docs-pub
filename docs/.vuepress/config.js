@@ -4,7 +4,7 @@ const head = require('./head.js');
 const devServer = require('./devServer.js');
 
 module.exports = {
-    base: '/spec-pages-preview/',
+    base: '/read-write-api-site3/',
     title: '',
     description: 'OBL Read/Write API Standards',
     head: [
