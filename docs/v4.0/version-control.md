@@ -16,6 +16,7 @@ v4.0 - 27th June 2024
 | AISP | <ul><li>Added new `ExtendedProprietaryBankTransactionCodes` array to Transactions (TDA decision 264)</li><li>Permission code table updated with `UltimateCreditor`, `UltimateDebtor` and `StatementFrequencyAndFormat`</li></ul> |
 | Various|`Frequency` in `OBMandateRelatedInformation1` object made mandatory |
 | PISP| `CreditorAgent` added to <ul><li>Domestic Payment Consent</li><li>Domestic Payment</li><li>File payment Consents</li><li>File payment</li></ul> | 
+| Security Profile | The Security Profile has been updated to [FAPI 1 Advanced](https://openid.net/specs/openid-financial-api-part-2-1_0.html) |
 
 
 
