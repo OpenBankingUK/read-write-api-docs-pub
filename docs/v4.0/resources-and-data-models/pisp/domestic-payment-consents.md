@@ -292,7 +292,7 @@ Them domestic-payment-consent **response** contains the full **original** payloa
 | Initiation |1..1 |OBWriteDomesticConsentResponse5/Data/Initiation |The Initiation payload is sent by the initiating party to the ASPSP. It is used to request movement of funds from the debtor account to a creditor for a single domestic payment. |OBDomestic2 | | |
 | Authorisation |0..1 |OBWriteDomesticConsentResponse5/Data/Authorisation |The authorisation type request from the TPP. |OBAuthorisation1 | | |
 | SCASupportData |0..1 |OBWriteDomesticConsentResponse5/Data/SCASupportData |Supporting Data provided by TPP, when requesting SCA Exemption. |OBSCASupportData1 | | |
-| Debtor |0..1 |OBWriteDomesticConsentResponse5/Data/Debtor |Set of elements used to identify a person or an organisation. |OBCashAccountDebtor4 | | |
+| Debtor |0..1 |OBWriteDomesticConsentResponse5/Data/Debtor |Set of elements used to identify a person or an organisation. |OBCashAccountDebtorWithName | | |
 | Risk |1..1 |OBWriteDomesticConsentResponse5/Risk |The Risk section is sent by the initiating party to the ASPSP. It is used to specify additional details for risk scoring for Payments. |OBRisk1 | | |
 
 ### Domestic Payment Consent Confirmation of Funds - Response
