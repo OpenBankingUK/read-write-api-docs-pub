@@ -158,7 +158,7 @@ Accept: application/json
       },
       "RemittanceInformation": {
         "Reference": "FRESCO-101",
-        "Unstructured": "Internal ops code 5120101"
+        "Unstructured": ["Internal ops code 5120101"]
       }
     }
   },
@@ -216,7 +216,7 @@ Content-Type: application/json
       },
       "RemittanceInformation": {
         "Reference": "FRESCO-101",
-        "Unstructured": "Internal ops code 5120101"
+        "Unstructured": ["Internal ops code 5120101"]
       }
     }
   },
@@ -319,7 +319,7 @@ Accept: application/json
       },
       "RemittanceInformation": {
         "Reference": "FRESCO-101",
-        "Unstructured": "Internal ops code 5120101"
+        "Unstructured": ["Internal ops code 5120101"]
       }
     }
   },
@@ -378,7 +378,7 @@ Content-Type: application/json
       },
       "RemittanceInformation": {
         "Reference": "FRESCO-101",
-        "Unstructured": "Internal ops code 5120101"
+        "Unstructured": ["Internal ops code 5120101"]
       }
     }
   },
@@ -433,7 +433,7 @@ Content-Type: application/json
       },
       "RemittanceInformation": {
         "Reference": "FRESCO-101",
-        "Unstructured": "Internal ops code 5120101"
+        "Unstructured": ["Internal ops code 5120101"]
       }
     }
   },
@@ -510,7 +510,7 @@ Content-Type: application/json
       },
       "RemittanceInformation": {
         "Reference": "FRESCO-101",
-        "Unstructured": "Internal ops code 5120101"
+        "Unstructured": ["Internal ops code 5120101"]
       }
     }
   },

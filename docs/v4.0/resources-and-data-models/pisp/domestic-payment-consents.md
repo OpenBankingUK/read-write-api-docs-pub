@@ -477,7 +477,7 @@ Accept: application/json
             "TaxRemittance": "Tax Remittance related information",
             "AdditionalRemittanceInformation": ["Free text for additional information"],
           }],
-          "Unstructured": "Internal ops code 5120101"
+          "Unstructured": [["Internal ops code 5120101"]]
        }
     },
     "Authorisation": {
@@ -682,7 +682,7 @@ Content-Type: application/json
             "TaxRemittance": "Tax Remittance related information",
             "AdditionalRemittanceInformation": ["Free text for additional information"],
           }],
-          "Unstructured": "Internal ops code 5120101"
+          "Unstructured": ["Internal ops code 5120101"]
         }
       }
   },
@@ -860,7 +860,7 @@ Content-Type: application/json
             "AdditionalRemittanceInformation": ["Free text for additional information"],  
           }
         ],
-        "Unstructured": "Internal ops code 5120101"
+        "Unstructured": ["Internal ops code 5120101"]
        }
     },
     "Debtor": {
