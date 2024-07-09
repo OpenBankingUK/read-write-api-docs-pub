@@ -221,6 +221,7 @@ The OBRegulatoryReporting1 class is defined in the [vrp-profile](../../profiles/
 
 ### OBCashAccountCreditor3
 
+__Please note__: this is the same for `OBCashAccountDebtor3`, but references to 'Creditor' replaced by 'Debtor'
 ![OBCashAccountCreditor3](./images/OBCashAccountCreditor3.svg)
 
 | Name |Path |Definition | Type |
@@ -410,7 +411,7 @@ The Risk block is a common class used in requests and responses
 | __StatusReasonDescription__ (0..1) | `Data. StatusReason. StatusReasonDescription` | Description supporting the StatusReasonCode.  |Max500text|
 | __ControlParameters__ (1..1) | `Data. ControlParameters` | The control parameters under which this VRP must operate | [OBDomesticVRPControlParameters](#OBDomesticVRPControlParameters)
 | __Initiation__ (1..1) | `Data. Initiation` | The parameters of the VRP consent that should remain unchanged for each payment under this VRP |  [OBDomesticVRPInitiation](#OBDomesticVRPInitiation)
-| __DebtorAccount__ (0..1) | `Data.DebtorAccount` | The DebtorAccount details as specified by the PSU when account selection happens at the ASPSP.<br><br>__Note:__  The details must be provided in the consent response (OBDomesticVRPConsentResponse) by the ASPSP to enable the PISP to associate it with future VRP payments that are made using the VRP Consent. | OBCashAccountDebtorWithName|
+| __DebtorAccount__ (0..1) | `Data.DebtorAccount` | The DebtorAccount details as specified by the PSU when account selection happens at the ASPSP.<br><br>__Note:__  The details must be provided in the consent response (OBDomesticVRPConsentResponse) by the ASPSP to enable the PISP to associate it with future VRP payments that are made using the VRP Consent. | OBCashAccountDebtor3|
 | __Risk__ (1..1) | `Risk` | The consent payload is sent by the initiating party to the ASPSP. It is used to request a consent to move funds from the debtor account to a creditor. | [OBRisk1](#OBRisk1)|
 
 
