@@ -94,7 +94,7 @@ The available status codes for the domestic-payment-consent resource are:
 
 The API endpoint allows the PISP to ask an ASPSP to confirm funds on a **domestic-payment-consent** resource.
 
-* An ASPSP can only respond to a funds confirmation request if the **domestic-payment-consent** resource has an Authorised status. If the status is not Authorised, an ASPSP must respond with a 400 (Bad Request) and a ```U009``` error code.
+* An ASPSP can only respond to a funds confirmation request if the **domestic-payment-consent** resource has an AUTH status. If the status is not AUTH, an ASPSP must respond with a 400 (Bad Request) and a ```U009``` error code.
 * Confirmation of funds requests do not affect the status of the **domestic-payment-consent** resource.
 
 Refer to [External_Internal_CodeSets](https://github.com/OpenBankingUK/External_Internal_CodeSets) -> OB_Internal_CodeSet -> `OBInternalPermissions1Code`.
