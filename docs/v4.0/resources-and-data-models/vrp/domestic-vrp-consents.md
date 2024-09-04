@@ -146,9 +146,9 @@ The state model for the VRP consents resource follows the generic consent state 
 
 All `domestic-vrp-consents` start off with a Status of `AWAU`
 
-Once the PSU authorises the resource - the StausCode will be set to `AUTH`.
+Once the PSU authorises the resource - the Status will be set to `AUTH`.
 
-If the PSU rejects the consent, the StautsCode will be set to `RJCT`.
+If the PSU rejects the consent, the Status will be set to `RJCT`.
 
 The available status codes for the VRP consents resource are:
 
