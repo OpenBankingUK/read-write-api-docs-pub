@@ -184,7 +184,7 @@ And response to:
 | Data |1..1 |OBReadConsentResponse1/Data | |OBReadDataConsentResponse1 | |
 | ConsentId |1..1 |OBReadConsentResponse1/Data/ConsentId |Unique identification as assigned to identify the account access consent resource. |Max128Text | |
 | CreationDateTime |1..1 |OBReadConsentResponse1/Data/CreationDateTime |Date and time at which the resource was created. |ISODateTime | |
-| Status |0..1 |OBReadConsentResponse1/Data/Status |Specifies the status of consent resource in code form. | For a full list of enumeration values refer to `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_internal_CodeSets). |OBInternalPermissions1Code |
+| Status |1..1 |OBReadConsentResponse1/Data/Status |Specifies the status of consent resource in code form. | For a full list of enumeration values refer to `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_internal_CodeSets). |OBInternalPermissions1Code |
 | StatusReason |0..* |OBReadConsentResponse1/Data/StatusReason |Specifies the status reason. | OBStatusReason |
 | StatusReasonCode |0..1 |OBReadConsentResponse1/Data/StatusReason/StatusReasonCode |Specifies the status reason in a code form| For a full list of enumeration values refer to `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_internal_CodeSets). | OBExternalStatusReason1Code |
 | StatusReasonDescription |0..1 |OBReadConsentResponse1/Data/StatusReason/StatusReasonDescription |Description supporting the StatusReasonCode. |Max500Text | |
