@@ -147,7 +147,7 @@ If the ReadPAN permission is granted by the PSU, the ASPSP may choose to populat
 | Proxy |0..1 |OBReadStandingOrder6/Data/StandingOrder/CreditorAccount/Proxy |Specifies an alternate assumed name for the identification of the account. |OBProxy1 | | |
 | SecondaryIdentification |0..1 |OBReadStandingOrder6/Data/StandingOrder/CreditorAccount/SecondaryIdentification |This is secondary identification of the account, as assigned by the account servicing institution. This can be used by building societies to additionally identify accounts with a roll number (in addition to a sort code and account number combination). |Max34Text | | |
 | MandateRelatedInformation | 0..1 | OBReadStandingOrder6/Data/StandingOrder/MandateRelatedInformation | Provides further details of the mandate signed between the creditor and the debtor.|OBMandateRelatedInformation1| | |
-| RemittanceInformation |0..1 |OBReadStandingOrder6/RemittanceInformation |Information supplied to enable the matching of an entry with the items that the transfer is intended to settle, such as commercial invoices in an accounts' receivable system. |OBRemittanceInformation2 | | |
+| RemittanceInformation |0..1 |OBReadStandingOrder6/Data/RemittanceInformation |Information supplied to enable the matching of an entry with the items that the transfer is intended to settle, such as commercial invoices in an accounts' receivable system. |OBRemittanceInformation2 | | |
 | SupplementaryData |0..1 |OBReadStandingOrder6/Data/StandingOrder/SupplementaryData |Additional information that can not be captured in the structured fields and/or any other specific block. |OBSupplementaryData1 | | |
 
 
