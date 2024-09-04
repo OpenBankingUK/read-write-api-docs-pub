@@ -252,7 +252,6 @@ The OBRegulatoryReporting1 class is defined in the [vrp-profile](../../profiles/
 | ---- |-----|---------- |------|
 | __DebtorAccount__ (0..1) | `DebtorAccount` | Unambiguous identification of the account of the debtor to which a debit entry will be made as a result of the transaction. | [OBCashAccountDebtorWithName](#OBCashAccountDebtorWithName) |
 | __UltimateDebtor__ (0..1) | `UltimateDebtor` | Ultimate party that owes an amount of money to the (ultimate) creditor. |[OBUltimateDebtor1](../../profiles/vrp-profile.md#obultimatedebtor1) |
-| __CreditorAgent__ (0..1) | `CreditorAgent` | Financial institution servicing an account for the creditor.     | OBBranchAndFinancialInstitutionIdentification6 |
 | __CreditorAccount__ (0..1) | `CreditorAccount`   |Unambiguous identification of the account of the creditor to which a credit entry will be posted as a result of the payment transaction.       |OBCashAccountCreditor3 |
 | __CreditorPostalAddress__ | `CreditorPostalAddress` | Information that locates and identifies a specific address, as defined by postal services or in free format text. | [OBPostalAddress7](../../profiles/vrp-profile.md#obpostaladdress7)|
 | __UltimateCreditor__ (0..1) | `UltimateCreditor` | Ultimate party to which an amount of money is due. |[OBUltimateCreditor1](../../profiles/vrp-profile.md#obultimatecreditor1) |
