@@ -387,7 +387,7 @@ The Risk block is a common class used in requests and responses
 
 | Name |Path |Definition | Type |
 | ---- |-----|---------- |------|
-| __Data__ (0..1) | `Data`|
+| __Data__ (1..1) | `Data`|
 | __Data. ReadRefundAccount__ (0..1) | `Data. ReadRefundAccount` | Indicates whether the `RefundAccount` object should be included in the response | Yes No|
 | __ControlParameters__ (1..1) | `Data. ControlParameters` | The control parameters under which this VRP must operate | [OBDomesticVRPControlParameters](#OBDomesticVRPControlParameters)|
 | __Initiation__ (1..1) | `Data. Initiation` | The parameters of the VRP consent that should remain unchanged for each payment under this VRP | [OBDomesticVRPInitiation](#OBDomesticVRPInitiation)|
