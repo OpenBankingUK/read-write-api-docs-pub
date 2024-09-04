@@ -212,6 +212,7 @@ For the OBDomestic2 Initiation object:
 | SchemeName |0..1 |OBDomestic2/CreditorAgent/SchemeName |Name of the identification scheme, in a coded form as published in an external list. |For a full list of enumeration values refer to `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets). | OBExternalFinancialInstitutionIdentification4Code | |
 | Identification |0..1 |OBDomestic2/CreditorAgent/Identification |Unique and unambiguous identification of a financial institution or a branch of a financial institution. |Max35Text | | |
 | Name |0..1 |OBDomestic2/CreditorAgent/Name |Name by which an agent is known and which is usually used to identify that agent. |Max140Text | | |
+| LEI | 0..1 | OBDomestic2/CreditorAgent/LEI | Legal Entity Identifier is a code allocated to a party as described in ISO 17442 "Financial Services - Legal Entity Identifier (LEI)". |Max20Text | |^[A-Z0-9]{18,18}[0-9]{2,2}$ |
 | PostalAddress |0..1 |OBDomestic2/CreditorAgent/PostalAddress |Information that locates and identifies a specific address, as defined by postal services. |OBPostalAddress7 | | |
 
 
