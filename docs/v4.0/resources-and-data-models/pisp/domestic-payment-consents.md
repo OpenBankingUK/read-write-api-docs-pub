@@ -362,7 +362,7 @@ Accept: application/json
           "Identification": "441234012345",
           "Code": "TELE",
           "Type": "Telephone"
-        },
+        }
       },
       "CreditorAccount": {
         "SchemeName": "UK.OBIE.SortCodeAccountNumber",
@@ -373,9 +373,9 @@ Accept: application/json
           "Identification": "2360549017905188",
           "Code": "TELE",
           "Type": "Telephone"
-        },
+        }
       },
-      "CreditorPostalAddress":{
+      "CreditorPostalAddress": {
         "AddressType": "BIZZ",
         "Department": "Finance",
         "SubDepartment": "Payroll",
@@ -387,7 +387,7 @@ Accept: application/json
         "Room": "844",
         "PostBox": "PO Box 123456",
         "PostCode": "Z78 4TY",
-        "TownLocationName":"Bank",
+        "TownLocationName": "Bank",
         "TownName": "London",
         "DistrictName": "Greater London",
         "CareOf": "Ms Jane Smith",
@@ -409,19 +409,19 @@ Accept: application/json
           "Country": "UK"
         }
       },
-       "CreditorAgent": {  
-          "LEI": "IZ9Q00LZEVUKWCQY6X15",
-          "SchemeName": "UK.OBIE.BICFI",
-          "Identification": "80200112344562",
-          "Name": "The Credit Agent", 
-          "PostalAddress": { 
-            "AddressType": "BIZZ",
-            "StreetName": "Bank Street",
-            "BuildingNumber": "11",
-            "Floor": "6",
-            "PostCode": "Z78 4TY",
-            "TownName": "London",
-            "Country": "UK"
+      "CreditorAgent": {
+        "LEI": "IZ9Q00LZEVUKWCQY6X15",
+        "SchemeName": "UK.OBIE.BICFI",
+        "Identification": "80200112344562",
+        "Name": "The Credit Agent",
+        "PostalAddress": {
+          "AddressType": "BIZZ",
+          "StreetName": "Bank Street",
+          "BuildingNumber": "11",
+          "Floor": "6",
+          "PostCode": "Z78 4TY",
+          "TownName": "London",
+          "Country": "UK"
         }
       },
       "UltimateCreditor": {
@@ -437,28 +437,37 @@ Accept: application/json
           "PostCode": "Z78 4TY",
           "TownName": "London",
           "Country": "UK"
-          }
-        },
-      "RegulatoryReporting": [{
+        }
+      },
+      "RegulatoryReporting": [
+        {
           "DebitCreditReportingIndicator": "CRED",
           "Authority": {
             "Name": "string",
             "CountryCode": "UG"
           },
-          "Details": [{
+          "Details": [
+            {
               "Type": "CRED",
               "Date": "2024-04-25T13:26:41.911Z",
-              "Information": ["Reg info1", "Reg info2"],
+              "Information": [
+                "Reg info1",
+                "Reg info2"
+              ],
               "Country": "QG",
               "Amount": {
                 "Amount": "4.68702",
                 "Currency": "JGM"
               }
-            }]
-        }],
+            }
+          ]
+        }
+      ],
       "RemittanceInformation": {
-        "Structured": [{
-            "ReferredDocumentInformation": [{
+        "Structured": [
+          {
+            "ReferredDocumentInformation": [
+              {
                 "Code": "CINV",
                 "Issuer": "Issuer01",
                 "Number": "Number_01",
@@ -466,7 +475,8 @@ Accept: application/json
                 "LineDetails": [
                   "LineDetail"
                 ]
-              }],
+              }
+            ],
             "ReferredDocumentAmount": 1,
             "CreditorReferenceInformation": {
               "Code": "DISP",
@@ -476,28 +486,31 @@ Accept: application/json
             "Invoicer": "INVR51856",
             "Invoicee": "INVE5161856",
             "TaxRemittance": "Tax Remittance related information",
-            "AdditionalRemittanceInformation": ["Free text for additional information"],
-          }],
-          "Unstructured": "Internal ops code 5120101"
-       }
+            "AdditionalRemittanceInformation": [
+              "Free text for additional information"
+            ]
+          }
+        ],
+        "Unstructured": "Internal ops code 5120101"
+      }
     },
     "Authorisation": {
-      "AuthorisationType": "Any", 
-      "CompletionDateTime": "2025-05-30T10:35:27Z",
+      "AuthorisationType": "Any",
+      "CompletionDateTime": "2025-05-30T10:35:27Z"
     },
     "SCASupportData": {
-        "RequestedSCAExemptionType": "EcommerceGoods",
-        "AppliedAuthenticationApproach": "SCA",
-        "ReferencePaymentOrderId": "O-611265",
+      "RequestedSCAExemptionType": "EcommerceGoods",
+      "AppliedAuthenticationApproach": "SCA",
+      "ReferencePaymentOrderId": "O-611265"
     },
     "Risk": {
       "PaymentContextCode": "EcommerceMerchantInitiatedPayment",
       "ContractPresentIndicator": false,
       "PaymentPurposeCode": "EPAY",
-      "CategoryPurposeCode": "CASH", 
+      "CategoryPurposeCode": "CASH",
       "BeneficiaryPaymentDetailsPrepopulatedIndicator": false,
       "BeneficiaryAccountType": "Business",
-      "MerchantCategoryCode": "7300", 
+      "MerchantCategoryCode": "7300",
       "MerchantCustomerIdentification": "053598653254",
       "DeliveryAddress": {
         "AddressLine": [
