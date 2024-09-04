@@ -25,7 +25,7 @@ OBRisk1
 
 <text x="2em" y="4.3em" fill="darkslateblue">
 <title>Type: string
-Description: Specifies the extended type of account.
+Description: Specifies the extended type of account if known. For a full set of values refer to `OBInternalExtendedAccountType1Code` in *OB_Internal_CodeSet* [here](https://github.com/OpenBankingUK/External_Internal_CodeSets)
 Values:
  - Business
  - BusinessSavingsAccount
@@ -55,7 +55,7 @@ BeneficiaryPrepopulatedIndicator [0..1]
 
 <text x="2em" y="6.9em" fill="darkslateblue">
 <title>Type: string
-Description: Enumeration of codes that outlines the type of purpose behind a transaction, payment or risk.
+Description: Enumeration of codes that outlines the type of purpose behind a transaction, payment or risk. For a full list of values refer to `ExternalCategoryPurpose1Code` in *ISO_External_CodeSet* [here](https://github.com/OpenBankingUK/External_Internal_CodeSets)
 Values:
  - BONU
  - CASH
@@ -132,7 +132,7 @@ MerchantCustomerIdentification [0..1]
 
 <text x="2em" y="12.100000000000001em" fill="darkslateblue">
 <title>Type: string
-Description: Specifies the payment context, `OBInternalPaymentContext1Code`
+Description: Specifies the payment context, for a full list of values refer to `OBInternalPaymentContext1Code` in *OB_Internal_CodeSet* [here](https://github.com/OpenBankingUK/External_Internal_CodeSets)
 
 Values:
  - BillingGoodsAndServicesInAdvance
@@ -149,7 +149,7 @@ PaymentContextCode [0..1]
 <title>Type: string
 MinLength: 1
 MaxLength: 4
-Description: For a full description see `ExternalPurpose1Code` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets)
+Description: For a full set of values refer to `ExternalPurpose1Code` in *ISO_External_CodeSet* [here](https://github.com/OpenBankingUK/External_Internal_CodeSets)
 Values:
  - BKDF
  - BKFE
@@ -500,7 +500,7 @@ AddressLine [0..7]
 
 <text x="39.2em" y="5.6em" fill="darkslateblue">
 <title>Type: string
-Description: Identifies the nature of the postal address. For a full set of codes see `OBAddressType2Code` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets).
+Description: Identifies the nature of the postal address. For a full set of codes see `OBAddressType2Code` in *OB_Internal_CodeSet* [here](https://github.com/OpenBankingUK/External_Internal_CodeSets).
 Values:
  - BIZZ
  - DLVY

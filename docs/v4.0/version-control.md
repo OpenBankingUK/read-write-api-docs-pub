@@ -20,9 +20,321 @@ v4.0 - 27th June 2024
 
 
 
+v4.0 - 4th September 2024
 
-
-
+<table>
+ <tr>
+  <td>
+  <p><b>Path/Area</b></p>
+  </td>
+  <td>
+  <p><b>Issue</b></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:1'>
+  <td>
+  <p><a
+  href="https://openbankinguk.github.io/spec-preview-268/v4.0/resources-and-data-models/aisp/account-access-consents.html#data-dictionary-2">OBReadConsentResponse1</a></p>
+  </td>
+  <td>
+  <p>Status is listed as <span class=3DGramE>0..</span>1 in data
+  dictionary but correctly shown as 1..1 in UML</p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:2'>
+  <td>
+  <p><a
+  href="https://openbankinguk.github.io/spec-preview-268/v4.0/resources-and-data-models/aisp/account-access-consents.html#data-dictionary-2">OBReadConsentResponse1</a></p>
+  </td>
+  <td>
+  <p>Codeset class listed as OBInternalPermissions1Code instead
+  of OBInternalConsentStatus1Code</p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:3'>
+  <td>
+  <p><a
+  href="https://openbankinguk.github.io/spec-preview-268/v4.0/resources-and-data-models/aisp/Accounts.html#data-dictionary">OBReadAccount6/Data/Account/StatementFrequencyAndFormat/Format</a></p>
+  </td>
+  <td>
+  <p>Codeset repo value from row above has duplicated down</p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:4'>
+  <td>
+  <p><a
+  href="https://openbankinguk.github.io/spec-preview-268/v4.0/resources-and-data-models/aisp/Transactions.html#data-dictionary">OBReadTransaction6/Data/Transaction/PaymentPurposeCode</a></p>
+  </td>
+  <td>
+  <p>Codeset repo link has duplicated across rows and link is
+  unclickable</p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:5'>
+  <td>
+  <p><a
+  href="https://openbankinguk.github.io/spec-preview-268/v4.0/resources-and-data-models/aisp/standing-orders.html#data-dictionary">OBReadStandingOrder6/Data/StandingOrder/NextPaymentDateTime</a></p>
+  </td>
+  <td>
+  <p>Class type text has truncated and is showing as ISODate</p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:6'>
+  <td>
+  <p><a
+  href="https://openbankinguk.github.io/spec-preview-268/v4.0/resources-and-data-models/aisp/standing-orders.html#data-dictionary">OBReadStandingOrder6</a></p>
+  </td>
+  <td>
+  <p>RemittanceInformation missing from AISP Standing Order
+  Data Dictionary</p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:7'>
+  <td>
+  <p><a
+  href="https://openbankinguk.github.io/spec-preview-268/v4.0/resources-and-data-models/aisp/Offers.html#data-dictionary">OBReadOffer1/Data/Offer/OfferType</a></p>
+  </td>
+  <td>
+  <p>Codeset should be OBExternalOfferType1Code in data
+  dictionary</p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:8'>
+  <td>
+  <p><a
+  href="https://openbankinguk.github.io/spec-preview-268/v4.0/resources-and-data-models/cbpii/funds-confirmation-consent.html#data-dictionary-2">OBFundsConfirmationConsentResponse1/Data/Status</a></p>
+  </td>
+  <td>
+  <p>Status is listed as <span class=3DGramE>0..</span>1 in data
+  dictionary</p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:9'>
+  <td>
+  <p><a
+  href="https://openbankinguk.github.io/spec-preview-268/v4.0/resources-and-data-models/cbpii/funds-confirmation-consent.html#uml-diagram-2">OBFundsConfirmationConsentResponse1</a></p>
+  </td>
+  <td>
+  <p>UML diagram showing cached version with ‘StatusCode’ from
+  original draft release</p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:10'>
+  <td>
+  <p><a
+  href="https://openbankinguk.github.io/spec-preview-268/v4.0/resources-and-data-models/cbpii/funds-confirmation-consent.html#data-dictionary-2">OBFundsConfirmationConsentResponse1</a></p>
+  </td>
+  <td>
+  <p>OBInternalPermissions1Code has duplicated across rows</p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:11'>
+  <td>
+  <p><a
+  href="https://openbankinguk.github.io/spec-preview-268/v4.0/resources-and-data-models/cbpii/funds-confirmation-consent.html#data-dictionary-2">OBFundsConfirmationConsentResponse1/Data/StatusReason/StatusReasonDescription</a></p>
+  </td>
+  <td>
+  <p>Field length is missing from table</p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:12'>
+  <td>
+  <p><a
+  href="https://openbankinguk.github.io/spec-preview-268/v4.0/resources-and-data-models/vrp/domestic-vrp-consents.html#obdomesticvrpconsentrequest">OBDomesticVRPConsentRequest</a></p>
+  </td>
+  <td>
+  <p>Data element occurrence showing as <span class=3DGramE>0..</span>1
+  in data dictionary but correctly shown as 1..1 in UML</p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:13'>
+  <td>
+  <p><a
+  href="https://openbankinguk.github.io/spec-preview-268/v4.0/resources-and-data-models/vrp/domestic-vrp-consents.html#obdomesticvrpconsentresponse">OBDomesticVRPConsentResponse</a></p>
+  </td>
+  <td>
+  <p>StatusReason/Path not showing in data dictionary<o:p></o:p></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:14'>
+  <td>
+  <p><a
+  href="https://openbankinguk.github.io/spec-preview-268/v4.0/resources-and-data-models/vrp/domestic-vrps.html#obdomesticvrpresponse">OBDomesticVRPResponse</a></p>
+  </td>
+  <td>
+  <p>Data.StatusReason. StatusReasonDescription max length is
+  listed as 256 instead of 500.</p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:15'>
+  <td>
+  <p><a
+  href="https://openbankinguk.github.io/spec-preview-268/v4.0/resources-and-data-models/pisp/domestic-payment-consents.html#data-dictionary">OBDomestic2/CreditorAgent/SchemeName</a></p>
+  </td>
+  <td>
+  <p>Table is missing link to codeset repo</p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:16'>
+  <td>
+  <p><a
+  href="https://openbankinguk.github.io/spec-preview-268/v4.0/resources-and-data-models/pisp/domestic-payment-consents.html#data-dictionary">OBDomestic2/CreditorAgent/LEI</a></p>
+  </td>
+  <td>
+  <p>Missing from table but present in UML</p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:17'>
+  <td>
+  <p><a
+  href="https://openbankinguk.github.io/spec-preview-268/v4.0/resources-and-data-models/pisp/domestic-payment-consents.html#data-dictionary-3">OBWriteDomesticConsentResponse5/Data/Status</a></p>
+  </td>
+  <td>
+  <p>Codeset listed is legacy value</p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:18'>
+  <td>
+  <p><a
+  href="https://openbankinguk.github.io/spec-preview-268/v4.0/resources-and-data-models/pisp/domestic-payment-consents.html#data-dictionary-3">OBWriteDomesticConsentResponse5/Data/StatusReason/StatusReasonCode</a><o:p></o:p></p>
+  </td>
+  <td>
+  <p>Codeset should be OBExternalStatusReason1Code in data
+  dictionary</p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:19'>
+  <td>
+  <p><a
+  href="https://openbankinguk.github.io/spec-preview-268/v4.0/profiles/payment-initiation-api-profile.html#data-dictionary-8">SCASupportData/RequestedSCAExemptionType</a></p>
+  </td>
+  <td>
+  <p>Description should be “This field allows a PISP to request
+  specific SCA Exemption for a Payment Initiation”</p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:20'>
+  <td>
+  <p><a
+  href="https://openbankinguk.github.io/spec-preview-268/v4.0/resources-and-data-models/pisp/domestic-payment-consents.html#get-domestic-payment-consents-consentid-funds-confirmation">GET
+  /domestic-payment-consents/{ConsentId}/funds-confirmation description</a><o:p></o:p></p>
+  </td>
+  <td>
+  <p>Paragraph refers to ‘Authorised’ and for consistency
+  should be be updated to ‘AUTH’</p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:21'>
+  <td>
+  <p><a
+  href="https://openbankinguk.github.io/spec-preview-268/v4.0/resources-and-data-models/pisp/domestic-payments.html#data-dictionary-2">OBWriteDomesticResponse5/Data/StatusReason/StatusReasonCode</a></p>
+  </td>
+  <td>
+  <p>Codeset should point to OBExternalStatusReason1Code<o:p></o:p></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:22'>
+  <td>
+  <p><a
+  href="https://openbankinguk.github.io/spec-preview-268/v4.0/profiles/payment-initiation-api-profile.html#data-dictionary-4">OBMultiAuthorisation1/Status</a></p>
+  </td>
+  <td>
+  <p>Codeset should point to OBExternalStatus2Code<o:p></o:p></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:23'>
+  <td>
+  <p><a
+  href="https://openbankinguk.github.io/spec-preview-268/v4.0/profiles/vrp-profile.html#consent-re-authentication">domestic-vrp-consents</a><o:p></o:p></p>
+  </td>
+  <td>
+  <p>Wording needs updating to clarify use of CANC<o:p></o:p></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:24'>
+  <td>
+  <p><a
+  href="https://openbankinguk.github.io/spec-preview-268/v4.0/resources-and-data-models/pisp/domestic-standing-order-consents.html#post-domestic-standing-order-consents-2">Create
+  Domestic Standing Order Consent example</a></p>
+  </td>
+  <td>
+  <p>JSON example frequency information needs updating <o:p></o:p></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:25'>
+  <td>
+  <p><a
+  href="https://openbankinguk.github.io/spec-preview-268/v4.0/resources-and-data-models/pisp/domestic-payment-consents.html#data-dictionary">OBDomestic2
+  DebtorAccount and Debtor share base class</a></p>
+  </td>
+  <td>
+  <p>Class definitions need updating to reflect different
+  fields, swaggers have in-line definitions</p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:26'>
+  <td>
+  <p><a
+  href="https://openbankinguk.github.io/spec-preview-268/v4.0/resources-and-data-models/vrp/domestic-vrp-consents.html#obdomesticvrpinitiation">OBDomesticVRPInitiation
+  and&nbsp;OBDomesticVRPInstruction contain CreditorAgent</a></p>
+  </td>
+  <td>
+  <p>This was removed in KI v319_KI9 but was not removed from
+  spec pages.</p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:27'>
+  <td>
+  <p><a
+  href="https://openbankinguk.github.io/spec-preview-268/v4.0/profiles/payment-initiation-api-profile.html#data-dictionary-9">OBRemittanceInformation2/Unstructured&nbsp;</a></p>
+  </td>
+  <td>
+  <p>Data dictionary class column should be updated to clarify
+  this is an array of Max140Text values.&nbsp;</p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:28'>
+  <td>
+  <p><a
+  href="https://openbankinguk.github.io/spec-preview-268/v4.0/resources-and-data-models/pisp/domestic-payments.html#uml-diagram-3">OBWritePaymentDetails1</a>
+  </p>
+  </td>
+  <td>
+  <p>UML shows incorrect cardinality for Data and
+  PaymentDetails.</p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:29'>
+  <td>
+  <p><a
+  href="https://openbankinguk.github.io/spec-preview-268/v4.0/resources-and-data-models/pisp/file-payments.html#get-file-payments-filepaymentid">GET
+  /file-payments/{FilePaymentId}</a></p>
+  </td>
+  <td>
+  <p>Table for POST /file-payments has duplicated <span
+  class=3DGramE>down, and</span> is showing instead of the correct table.<o:p></o:p></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:30'>
+  <td>
+  <p><a
+  href="https://openbankinguk.github.io/spec-preview-268/v4.0/resources-and-data-models/vrp/domestic-vrp-consents.html#state-model-vrp-consents">VRP
+  State model description</a></p>
+  </td>
+  <td>
+  <p>StatusCode is misspelled</p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:31;mso-yfti-lastrow:yes'>
+  <td>
+  <p>ToC links - various</p>
+  </td>
+  <td>
+  <p>Some links are not taking you to relevant section on the
+  page when clicked (note, these have been broken since v3)</p>
+  </td>
+ </tr>
+</table>
 
 
 

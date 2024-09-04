@@ -54,10 +54,12 @@ DirectDebitId [0..1]
 
 <text x="31.599999999999998em" y="6.9em" fill="darkslateblue">
 <title>Type: string
-Description: Specifies the status of the standing order in code form.
+Description: Specifies the status of the standing order in code form. For a full list of enumeration values refer to &#39;ExternalMandateStatus1Code&#39; in *ISO_External_Codeset* [here](https://github.com/OpenBankingUK/External_Internal_CodeSets)
 Values:
- - Active
- - Inactive
+ - ACTV
+ - CANC
+ - EXPI
+ - SUSP
 </title>
 DirectDebitStatusCode [0..1]
 </text>
@@ -65,7 +67,7 @@ DirectDebitStatusCode [0..1]
 <text x="31.599999999999998em" y="8.2em" fill="darkslateblue">
 <title>Type: string
 MinLength: 1
-MaxLength: 140
+MaxLength: 70
 Description: Name of Service User.
 </title>
 Name [1..1]
@@ -74,7 +76,7 @@ Name [1..1]
 <text x="31.599999999999998em" y="9.5em" fill="darkslateblue">
 <title>Type: string
 Format: date-time
-Description: Date of most recent direct debit collection.All dates in the JSON payloads are represented in ISO 8601 date-time format. 
+Description: Date of most recent direct debit collection. All dates in the JSON payloads are represented in ISO 8601 date-time format. 
 All date-time fields in responses must include the timezone. An example is below:
 2017-04-05T10:43:07&#43;00:00
 </title>
@@ -89,8 +91,7 @@ MandateRelatedInformation
 
 <text x="61.599999999999994em" y="4.3em" fill="darkslateblue">
 <title>Type: string
-Description: Enumeration of codes that outlines the type of purpose behind a transaction, payment or risk. 
- For all enum values see `ExternalCategoryPurpose1Code` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets)
+Description: Enumeration of codes that outlines the type of purpose behind a transaction, payment or risk.  For all enum values see `ExternalCategoryPurpose1Code` in *ISO_External_CodeSet* [here](https://github.com/OpenBankingUK/External_Internal_CodeSets)
 Values:
  - BONU
  - CASH
@@ -142,7 +143,7 @@ CategoryPurposeCode [0..1]
 
 <text x="61.599999999999994em" y="5.6em" fill="darkslateblue">
 <title>Type: string
-Description: Type of mandate instruction.
+Description: Type of mandate instruction. For a full list of values see `OBExternalClassification1Code` in *OB_Internal_CodeSet* [here](https://github.com/OpenBankingUK/External_Internal_CodeSets)
 Values:
  - FIXE
  - USGB
@@ -189,7 +190,7 @@ Reason [0..1]
 <title>Type: string
 Format: date-time
 Description: The date on which the first recurring payment for a Standing Order schedule will be made. 
-Usage: This must be populated only if the first recurring date is different to the first payment date.All dates in the JSON payloads are represented in ISO 8601 date-time format. 
+Usage: This must be populated only if the first recurring date is different to the first payment date. All dates in the JSON payloads are represented in ISO 8601 date-time format. 
 All date-time fields in responses must include the timezone. An example is below:
 2017-04-05T10:43:07&#43;00:00
 </title>
@@ -205,7 +206,7 @@ Frequency
 <text x="92.39999999999999em" y="4.3em" fill="darkslateblue">
 <title>Type: integer
 Format: int32
-Description: Number of instructions to be created and processed during the specified period .Specifies a frequency in terms of a count per period within a specified frequency type. Note: should not be used alongside `PointInTime`
+Description: Number of instructions to be created and processed during the specified period. Specifies a frequency in terms of a count per period within a specified frequency type. Note: should not be used alongside `PointInTime`
 </title>
 CountPerPeriod [0..1]
 </text>
@@ -213,14 +214,14 @@ CountPerPeriod [0..1]
 <text x="92.39999999999999em" y="5.6em" fill="darkslateblue">
 <title>Type: string
 MaxLength: 2
-Description: Exact2NumericText - Further information on the exact point in time the event should take place. Specifies a frequency in terms of an exact point in time or moment within a specified frequency type. Note: should not be used alongside `CountPerSide`
+Description: Exact2NumericText - Further information on the exact point in time the event should take place. Specifies a frequency in terms of an exact point in time or moment within a specified frequency type. Note: should not be used alongside `CountPerPeriod`.
 </title>
 PointInTime [0..1]
 </text>
 
 <text x="92.39999999999999em" y="6.9em" fill="darkslateblue">
 <title>Type: string
-Description: `OBFrequency6Code` on External Codeset Repo
+Description: For a full list of values see `OBFrequency6Code` in *OB_Internal_CodeSet* [here](https://github.com/OpenBankingUK/External_Internal_CodeSets)
 Values:
  - ADHO
  - YEAR

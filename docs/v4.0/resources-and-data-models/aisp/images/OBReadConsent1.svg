@@ -32,7 +32,7 @@ Data
 <title>Type: string
 Format: date-time
 Description: Specified date and time the permissions will expire.
-If this is not populated, the permissions will be open ended.All dates in the JSON payloads are represented in ISO 8601 date-time format. 
+If this is not populated, the permissions will be open ended. All dates in the JSON payloads are represented in ISO 8601 date-time format. 
 All date-time fields in responses must include the timezone. An example is below:
 2017-04-05T10:43:07&#43;00:00
 </title>
@@ -41,7 +41,7 @@ ExpirationDateTime [0..1]
 
 <text x="19.200000000000003em" y="5.6em" fill="darkslateblue">
 <title>Type: string
-Description: Specifies the Open Banking account access data types. This is a list of the data clusters being consented by the PSU, and requested for authorisation with the ASPSP.
+Description: Specifies the Open Banking account access data types. &lt;br /&gt; This is a list of the data clusters being consented by the PSU, and requested for authorisation with the ASPSP. &lt;br /&gt; For a full list of enumeration values refer to `OBInternalPermissions1Code` in *OB_Internal_CodeSet* [here](https://github.com/OpenBankingUK/External_internal_CodeSets)
 Values:
  - ReadAccountsBasic
  - ReadAccountsDetail
@@ -72,7 +72,7 @@ Permissions [1..*]
 <title>Type: string
 Format: date-time
 Description: Specified start date and time for the transaction query period.
-If this is not populated, the start date will be open ended, and data will be returned from the earliest available transaction.All dates in the JSON payloads are represented in ISO 8601 date-time format. 
+If this is not populated, the start date will be open ended, and data will be returned from the earliest available transaction. All dates in the JSON payloads are represented in ISO 8601 date-time format. 
 All date-time fields in responses must include the timezone. An example is below:
 2017-04-05T10:43:07&#43;00:00
 </title>
@@ -83,7 +83,7 @@ TransactionFromDateTime [0..1]
 <title>Type: string
 Format: date-time
 Description: Specified end date and time for the transaction query period.
-If this is not populated, the end date will be open ended, and data will be returned to the latest available transaction.All dates in the JSON payloads are represented in ISO 8601 date-time format. 
+If this is not populated, the end date will be open ended, and data will be returned to the latest available transaction. All dates in the JSON payloads are represented in ISO 8601 date-time format. 
 All date-time fields in responses must include the timezone. An example is below:
 2017-04-05T10:43:07&#43;00:00
 </title>
@@ -92,8 +92,8 @@ TransactionToDateTime [0..1]
 
 <rect x="18.200000000000003em" y="10.2em" width="3.2em" height="3em" fill="beige" stroke="black" stroke-width="2"/>
 <text style="font-weight:bold" text-anchor="middle" x="19.800000000000004em" y="11.5em" fill="black">
-<title>The Risk section is sent by the initiating party to the ASPSP.
-It is used to specify additional details for risk scoring for Payments.</title>
+<title>The Risk section is sent by the initiating party to the ASPSP. &lt;br /&gt;
+It is used to specify additional details for risk scoring for Account Info.</title>
 Risk
 </text>
 

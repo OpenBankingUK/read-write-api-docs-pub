@@ -40,7 +40,7 @@ ConsentId [1..1]
 <text x="27.200000000000003em" y="5.6em" fill="darkslateblue">
 <title>Type: string
 Format: date-time
-Description: Date and time at which the message was created.All dates in the JSON payloads are represented in ISO 8601 date-time format. 
+Description: Date and time at which the message was created. All dates in the JSON payloads are represented in ISO 8601 date-time format. 
 All date-time fields in responses must include the timezone. An example is below:
 2017-04-05T10:43:07&#43;00:00
 </title>
@@ -59,7 +59,7 @@ DomesticPaymentId [1..1]
 <text x="27.200000000000003em" y="8.2em" fill="darkslateblue">
 <title>Type: string
 Format: date-time
-Description: Expected execution date and time for the payment resource.All dates in the JSON payloads are represented in ISO 8601 date-time format. 
+Description: Expected execution date and time for the payment resource. All dates in the JSON payloads are represented in ISO 8601 date-time format. 
 All date-time fields in responses must include the timezone. An example is below:
 2017-04-05T10:43:07&#43;00:00
 </title>
@@ -69,7 +69,7 @@ ExpectedExecutionDateTime [0..1]
 <text x="27.200000000000003em" y="9.5em" fill="darkslateblue">
 <title>Type: string
 Format: date-time
-Description: Expected settlement date and time for the payment resource.All dates in the JSON payloads are represented in ISO 8601 date-time format. 
+Description: Expected settlement date and time for the payment resource. All dates in the JSON payloads are represented in ISO 8601 date-time format. 
 All date-time fields in responses must include the timezone. An example is below:
 2017-04-05T10:43:07&#43;00:00
 </title>
@@ -78,7 +78,7 @@ ExpectedSettlementDateTime [0..1]
 
 <text x="27.200000000000003em" y="10.8em" fill="darkslateblue">
 <title>Type: string
-Description: Specifies the status of the payment information group.
+Description: Specifies the status of the payment information group. For a full list of values refer to `ExternalPaymentTransactionStatus1Code` in *ISO_External_CodeSet* [here](https://github.com/OpenBankingUK/External_Internal_CodeSets)
 Values:
  - PDNG
  - ACTC
@@ -99,7 +99,7 @@ Status [1..1]
 <text x="27.200000000000003em" y="12.100000000000001em" fill="darkslateblue">
 <title>Type: string
 Format: date-time
-Description: Date and time at which the resource status was updated.All dates in the JSON payloads are represented in ISO 8601 date-time format. 
+Description: Date and time at which the resource status was updated. All dates in the JSON payloads are represented in ISO 8601 date-time format. 
 All date-time fields in responses must include the timezone. An example is below:
 2017-04-05T10:43:07&#43;00:00
 </title>
@@ -114,7 +114,7 @@ Charges
 
 <text x="59.60000000000001em" y="4.3em" fill="darkslateblue">
 <title>Type: string
-Description: Specifies which party/parties will bear the charges associated with the processing of the payment transaction.
+Description: Specifies which party/parties will bear the charges associated with the processing of the payment transaction. For a full list of values refer to `OBInternalChargeBearerType1Code` in *OB_Internal_CodeSet* [here](https://github.com/OpenBankingUK/External_Internal_CodeSets)
 Values:
  - BorneByCreditor
  - BorneByDebtor
@@ -126,7 +126,7 @@ ChargeBearer [1..1]
 
 <text x="59.60000000000001em" y="5.6em" fill="darkslateblue">
 <title>Type: string
-Description: Charge type, in a coded form.
+Description: Charge type, in a coded form. For a full list of values refer to `OBInternalPaymentChargeType1Code` in *OB_Internal_CodeSet* [here](https://github.com/OpenBankingUK/External_Internal_CodeSets)
 Values:
  - UK.OBIE.CHAPSOut
 </title>
@@ -157,7 +157,7 @@ Currency [1..1]
 
 <rect x="58.60000000000001em" y="7.6em" width="24em" height="9.5em" fill="beige" stroke="black" stroke-width="2"/>
 <text style="font-weight:bold" text-anchor="middle" x="70.60000000000001em" y="8.9em" fill="black">
-<title>^ Only incuded in the response if `Data. ReadRefundAccount` is set to `Yes` in the consent.</title>
+<title>^ Only included in the response if `Data. ReadRefundAccount` is set to `Yes` in the consent.</title>
 Debtor
 </text>
 
@@ -229,7 +229,7 @@ InstructionIdentification [1..1]
 <text x="59.60000000000001em" y="24.000000000000004em" fill="darkslateblue">
 <title>Type: string
 Description: User community specific instrument.
-Usage: This element is used to specify a local instrument, local clearing option and/or further qualify the service or service level.
+Usage: This element is used to specify a local instrument, local clearing option and/or further qualify the service or service level. For a full list of values refer to `OBInternalLocalInstrument1Code` in *OB_Internal_CodeSet* [here](https://github.com/OpenBankingUK/External_Internal_CodeSets)
 Values:
  - UK.OBIE.BACS
  - UK.OBIE.BalanceTransfer
@@ -275,7 +275,7 @@ Name [1..1]
 
 <text x="91.20000000000002em" y="24.000000000000004em" fill="darkslateblue">
 <title>Type: string
-Description: Name of the identification scheme, in a coded form as published in an external list.
+Description: Name of the identification scheme, in a coded form as published in an external list. For a full list of values refer to `OBInternalAccountIdentification4Code` in *OB_Internal_CodeSet* [here](https://github.com/OpenBankingUK/External_Internal_CodeSets)
 Values:
  - UK.OBIE.BBAN
  - UK.OBIE.IBAN
@@ -305,7 +305,7 @@ Proxy
 
 <text x="121.20000000000002em" y="21.400000000000002em" fill="darkslateblue">
 <title>Type: string
-Description: Specifies the external proxy account type code, as published in the proxy account type external code set.&lt;br&gt; For more information and a full list of values see `ExternalProxyAccountType1Code` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets)
+Description: Specifies the external proxy account type code, as published in the proxy account type external code set.&lt;br /&gt; For a full list of values see `ExternalProxyAccountType1Code` in *ISO_External_CodeSet* [here](https://github.com/OpenBankingUK/External_Internal_CodeSets)
 Values:
  - TELE
  - EMAL
@@ -768,7 +768,7 @@ Name [0..1]
 
 <text x="91.20000000000002em" y="88em" fill="darkslateblue">
 <title>Type: string
-Description: Name of the identification scheme, in a coded form as published in an external list.
+Description: Name of the identification scheme, in a coded form as published in an external list. For a full list of values refer to `OBInternalAccountIdentification4Code` in *OB_Internal_CodeSet* [here](https://github.com/OpenBankingUK/External_Internal_CodeSets)
 Values:
  - UK.OBIE.BBAN
  - UK.OBIE.IBAN
@@ -798,7 +798,7 @@ Proxy
 
 <text x="121.20000000000002em" y="85.4em" fill="darkslateblue">
 <title>Type: string
-Description: Specifies the external proxy account type code, as published in the proxy account type external code set.&lt;br&gt; For more information and a full list of values see `ExternalProxyAccountType1Code` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets)
+Description: Specifies the external proxy account type code, as published in the proxy account type external code set.&lt;br /&gt; For a full list of values see `ExternalProxyAccountType1Code` in *ISO_External_CodeSet* [here](https://github.com/OpenBankingUK/External_Internal_CodeSets)
 Values:
  - TELE
  - EMAL
@@ -874,7 +874,7 @@ RegulatoryReporting
 
 <text x="91.20000000000002em" y="101.2em" fill="darkslateblue">
 <title>Type: string
-Description: Identifies whether the regulatory reporting information applies to the debit side, to the credit side or to both debit and credit sides of the transaction. 
+Description: Identifies whether the regulatory reporting information applies to the debit side, to the credit side or to both debit and credit sides of the transaction.  For a full list of values reefer to `OBExternalRegulatoryReportingType1Code` in *OB_Internal_CodeSet* [here](https://github.com/OpenBankingUK/External_Internal_CodeSets)
 Values:
  - CRED
  - DEBT
@@ -978,7 +978,7 @@ RemittanceInformation
 <text x="91.20000000000002em" y="117em" fill="darkslateblue">
 <title>Type: string
 MinLength: 1
-MaxLength: 256
+MaxLength: 140
 </title>
 Unstructured [0..*]
 </text>
@@ -1001,7 +1001,7 @@ AdditionalRemittanceInformation [0..3]
 <title>Type: string
 MinLength: 1
 MaxLength: 256
-Description: Identification assigned by an institution to identify an account. This identification is known by the account owner.
+Description: Identification of the party to whom an invoice is issued, when it is different from the debtor or ultimate debtor.
 </title>
 Invoicee [0..1]
 </text>
@@ -1010,7 +1010,7 @@ Invoicee [0..1]
 <title>Type: string
 MinLength: 1
 MaxLength: 256
-Description: Identification assigned by an institution to identify an account. This identification is known by the account owner.
+Description: Identification of the organisation issuing the invoice, when it is different from the creditor or ultimate creditor
 </title>
 Invoicer [0..1]
 </text>
@@ -1018,6 +1018,7 @@ Invoicer [0..1]
 <text x="114.00000000000001em" y="120.9em" fill="darkslateblue">
 <title>Type: integer
 Format: int32
+Description: Provides details on the amounts of the referred document.
 </title>
 ReferredDocumentAmount [0..1]
 </text>
@@ -1026,13 +1027,14 @@ ReferredDocumentAmount [0..1]
 <title>Type: string
 MinLength: 1
 MaxLength: 140
+Description: Provides remittance information about a payment made for tax-related purposes.
 </title>
 TaxRemittance [0..1]
 </text>
 
 <rect x="149.4em" y="113.7em" width="22.400000000000002em" height="6.9em" fill="beige" stroke="black" stroke-width="2"/>
 <text style="font-weight:bold" text-anchor="middle" x="160.6em" y="115em" fill="black">
-<title></title>
+<title>Reference information provided by the creditor to allow the identification of the underlying documents.</title>
 CreditorReferenceInformation
 </text>
 
@@ -1040,14 +1042,7 @@ CreditorReferenceInformation
 <title>Type: string
 MinLength: 1
 MaxLength: 4
-Description: Specifies the type of creditor reference as published in an external creditor reference type code set.
-External code sets can be downloaded from www.iso20022.org.
-*`DISP`-Document is a dispatch advice.
-*`FXDR`-Document is a pre-agreed or pre-arranged foreign exchange transaction to which the payment transaction refers.
-*`PUOR`-Document is a purchase order.
-*`RPIN`-Document is a linked payment instruction to which the current payment instruction is related, for example, in a cover scenario.
-*`RADM`-Document is a remittance advice sent separately from the current transaction.
-*`SCOR`-Document is a structured communication reference provided by the creditor to identify the referred transaction.
+Description: Specifies the type of creditor reference as published in an external creditor reference type code set. For more information see `ExternalCreditorReferenceType1Code` in *ISO_External_CodeSet* [here](https://github.com/OpenBankingUK/External_Internal_CodeSets)
 Values:
  - DISP
  - FXDR
@@ -1063,6 +1058,7 @@ Code [0..1]
 <title>Type: string
 MinLength: 1
 MaxLength: 35
+Description: Entity that assigns the identification.
 </title>
 Issuer [0..1]
 </text>
@@ -1071,6 +1067,7 @@ Issuer [0..1]
 <title>Type: string
 MinLength: 1
 MaxLength: 35
+Description: Unique reference, as assigned by the creditor, to unambiguously refer to the payment transaction.
 </title>
 Reference [0..1]
 </text>
@@ -1085,7 +1082,7 @@ ReferredDocumentInformation
 <title>Type: string
 MinLength: 1
 MaxLength: 4
-Description: Specifies the document type as published in an external document type code list. For more information see `ExternalDocumentType1Code` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets)
+Description: Specifies the document type as published in an external document type code list. For more information see `ExternalDocumentType1Code` in *ISO_External_CodeSet* [here](https://github.com/OpenBankingUK/External_Internal_CodeSets)
 Values:
  - CINV
  - CNFA
@@ -1110,7 +1107,8 @@ Code [0..1]
 <text x="150.4em" y="126.2em" fill="darkslateblue">
 <title>Type: string
 MinLength: 1
-MaxLength: 140
+MaxLength: 35
+Description: Identification of the issuer of the reference document type.
 </title>
 Issuer [0..1]
 </text>
@@ -1124,7 +1122,8 @@ LineDetails [0..*]
 <text x="150.4em" y="128.8em" fill="darkslateblue">
 <title>Type: string
 MinLength: 1
-MaxLength: 140
+MaxLength: 35
+Description: Identification of the type specified for the referred document line.
 </title>
 Number [0..1]
 </text>
@@ -1132,9 +1131,7 @@ Number [0..1]
 <text x="150.4em" y="130.1em" fill="darkslateblue">
 <title>Type: string
 Format: date-time
-Description: All dates in the JSON payloads are represented in ISO 8601 date-time format. 
-All date-time fields in responses must include the timezone. An example is below:
-2017-04-05T10:43:07&#43;00:00
+Description: Date associated with the referred document line.
 </title>
 RelatedDate [0..1]
 </text>
@@ -1181,7 +1178,7 @@ Name [0..1]
 
 <text x="91.20000000000002em" y="143.3em" fill="darkslateblue">
 <title>Type: string
-Description: Name of the identification scheme, in a coded form as published in an external list.
+Description: Name of the identification scheme, in a coded form as published in an external list. For a full list of values refer to `OBInternalAccountIdentification4Code` in *OB_Internal_CodeSet* [here](https://github.com/OpenBankingUK/External_Internal_CodeSets)
 Values:
  - UK.OBIE.BBAN
  - UK.OBIE.IBAN
@@ -1403,7 +1400,7 @@ Name [0..1]
 
 <text x="91.20000000000002em" y="170.70000000000002em" fill="darkslateblue">
 <title>Type: string
-Description: Name of the identification scheme, in a coded form as published in an external list.
+Description: Name of the identification scheme, in a coded form as published in an external list. For a full list of values refer to `OBInternalAccountIdentification4Code` in *OB_Internal_CodeSet* [here](https://github.com/OpenBankingUK/External_Internal_CodeSets)
 Values:
  - UK.OBIE.BBAN
  - UK.OBIE.IBAN
@@ -1598,7 +1595,7 @@ MultiAuthorisation
 <text x="59.60000000000001em" y="194.20000000000002em" fill="darkslateblue">
 <title>Type: string
 Format: date-time
-Description: Date and time at which the requested authorisation flow must be completed.All dates in the JSON payloads are represented in ISO 8601 date-time format. 
+Description: Date and time at which the requested authorisation flow must be completed. All dates in the JSON payloads are represented in ISO 8601 date-time format. 
 All date-time fields in responses must include the timezone. An example is below:
 2017-04-05T10:43:07&#43;00:00
 </title>
@@ -1608,7 +1605,7 @@ ExpirationDateTime [0..1]
 <text x="59.60000000000001em" y="195.50000000000003em" fill="darkslateblue">
 <title>Type: string
 Format: date-time
-Description: Last date and time at the authorisation flow was updated.All dates in the JSON payloads are represented in ISO 8601 date-time format. 
+Description: Last date and time at the authorisation flow was updated. All dates in the JSON payloads are represented in ISO 8601 date-time format. 
 All date-time fields in responses must include the timezone. An example is below:
 2017-04-05T10:43:07&#43;00:00
 </title>
@@ -1631,7 +1628,7 @@ NumberRequired [0..1]
 
 <text x="59.60000000000001em" y="199.4em" fill="darkslateblue">
 <title>Type: string
-Description: Specifies the status of the authorisation flow in code form.
+Description: Specifies the status of the authorisation flow in code form. For a full list of values refer to `OBInternalStatus2Code` in *OB_Internal_CodeSet* [here](https://github.com/OpenBankingUK/External_Internal_CodeSets)
 Values:
  - AUTH
  - AWAU
@@ -1674,7 +1671,7 @@ Name [1..1]
 
 <text x="70.4em" y="207.3em" fill="darkslateblue">
 <title>Type: string
-Description: Name of the identification scheme, in a coded form as published in an external list.
+Description: Name of the identification scheme, in a coded form as published in an external list. For a full list of values refer to `OBInternalAccountIdentification4Code` in *OB_Internal_CodeSet* [here](https://github.com/OpenBankingUK/External_Internal_CodeSets)
 Values:
  - UK.OBIE.BBAN
  - UK.OBIE.IBAN
@@ -1706,7 +1703,7 @@ StatusReason
 <title>Type: string
 MinLength: 1
 MaxLength: 500
-Description: Recommended but optional reference to the JSON Path of the field with error, e.g., Data.Initiation.InstructedAmount.Currency
+Description: Path is optional but relevant when the status reason refers to an object/field and hence conditional to provide JSON path.
 </title>
 Path [0..1]
 </text>
@@ -1716,7 +1713,7 @@ Path [0..1]
 MinLength: 1
 MaxLength: 4
 Description: Specifies the status reason in a code form. 
- For a full description see `OBExternalStatusReason1Code` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets)
+For a full list of values refer to `OBExternalStatusReason1Code` in *OB_Internal_CodeSet* [here](https://github.com/OpenBankingUK/External_Internal_CodeSets)
 </title>
 StatusReasonCode [0..1]
 </text>
