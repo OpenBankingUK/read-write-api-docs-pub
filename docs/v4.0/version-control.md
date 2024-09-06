@@ -64,3 +64,4 @@ v4.0 - 4th September 2024
 | [OBRisk1](https://openbankinguk.github.io/read-write-api-site3/v4.0/profiles/payment-initiation-api-profile.html#data-dictionary) | Addressed missing `/` in `OBRisk1/DeliveryAddress StreetName` XPath entry |
 | [OBRisk1](https://openbankinguk.github.io/read-write-api-site3/v4.0/profiles/payment-initiation-api-profile.html#data-dictionary) | Addressed missing `/` in `OBRisk1/DeliveryAddress/TownLocationName` XPath entry |
 | [OBRisk1](https://openbankinguk.github.io/read-write-api-site3/v4.0/profiles/payment-initiation-api-profile.html#data-dictionary) | Restored truncated text from `OBRisk1/PaymentContextCode` class description entry (link to codeset repo) |
+| [OBRisk1](https://openbankinguk.github.io/read-write-api-site3/v4.0/profiles/payment-initiation-api-profile.html#data-dictionary) | Restored definition for `OBRisk1/PaymentPurposeCode` and fixed link to codeset repo |
