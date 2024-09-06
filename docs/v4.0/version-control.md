@@ -248,7 +248,7 @@ v4.0 - 4th September 2024
   href="https://openbankinguk.github.io/spec-preview-268/v4.0/profiles/vrp-profile.html#consent-re-authentication">domestic-vrp-consents</a><o:p></o:p></p>
   </td>
   <td>
-  <p>Wording needs updating to clarify use of CANC<o:p></o:p></p>
+  <p><s>Wording needs updating to clarify use of CANC</s><o:p></o:p></p>
   </td>
  </tr>
  <tr style='mso-yfti-irow:24'>
@@ -311,8 +311,7 @@ v4.0 - 4th September 2024
   /file-payments/{FilePaymentId}</a></p>
   </td>
   <td>
-  <p>Table for POST /file-payments has duplicated <span
-  class=3DGramE>down, and</span> is showing instead of the correct table.<o:p></o:p></p>
+  <p><s>Table for POST /file-payments has duplicated down, and is showing instead of the correct table.</s></p>
   </td>
  </tr>
  <tr style='mso-yfti-irow:30'>
