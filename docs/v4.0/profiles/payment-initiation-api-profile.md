@@ -716,7 +716,6 @@ This section describes the OBWritePaymentDetailsResponse1 class which used in th
 | Status |1..1 |OBWritePaymentDetailsResponse1/Data/StatusDetail/Status |Status of a transfer, as assigned by the transaction administrator|For a full description see `External_CodeSet` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets) |ExternalPaymentTransactionStatus1Code | |
 | StatusReasonCode |0..1 |OBWritePaymentDetailsResponse1/Data/StatusDetail/StatusReasonCode |Specifies the status reason|For a full list of enumeration values refer to `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets)  |OBInternalConsentStatus1Code | |
 | StatusReasonDescription |0..1 |OBWritePaymentDetailsResponse1/Data/StatusDetail/StatusReasonDescription |Reason provided for the status of a transfer. |Max500Text | | |
-| StatusUpdateDateTime |1..1 |OBWritePaymentDetailsResponse1/Data/StatusDetail/StatusUpdateDateTime |Date and time at which the status was assigned to the transfer. |ISODateTime | | |
 
 #### OBSCASupportData1
 
