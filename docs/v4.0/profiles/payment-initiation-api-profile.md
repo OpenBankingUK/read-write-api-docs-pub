@@ -583,7 +583,7 @@ This section describes the Risk1 class which is reused in the payment-order cons
 | Room |0..1 |OBRisk1/DeliveryAddress/Room|Building room number. |Max70Text | | |
 | StreetName |0..1 |OBRisk1/DeliveryAddress/StreetName |Name of a street or thoroughfare. |Max140Text | | |
 | SubDepartment |0..1 |OBRisk1/DeliveryAddress/SubDepartment |Identification of a sub-division of a large organisation or building. |Max70Text | | |
-| TownLocationName |0..1 |OBRisk1/DeliveryAddress TownLocationName | Specific location name within the town. |Max140Text | | |
+| TownLocationName |0..1 |OBRisk1/DeliveryAddress/TownLocationName | Specific location name within the town. |Max140Text | | |
 | TownName  | 0..1       | OBRisk1/DeliveryAddress/TownName           | Name of a built-up area, with defined boundaries, and a local government. | Max140Text ||  |
 | UnitNumber|0..1 |OBRisk1/DeliveryAddress/UnitNumber|Identifies a flat or dwelling within the building. |Max16Text | | |
 

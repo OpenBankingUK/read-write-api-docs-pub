@@ -62,5 +62,5 @@ v4.0 - 4th September 2024
 | [OBRisk1](https://openbankinguk.github.io/read-write-api-site3/v4.0/profiles/payment-initiation-api-profile.html#data-dictionary) | Fixed `CareOf` entry in the data dictionary which had split across multiple lines |
 | [OBRisk1](https://openbankinguk.github.io/read-write-api-site3/v4.0/profiles/payment-initiation-api-profile.html#data-dictionary) | Addressed missing `/` in `OBRisk1/DeliveryAddress/DistrictName` XPath entry |
 | [OBRisk1](https://openbankinguk.github.io/read-write-api-site3/v4.0/profiles/payment-initiation-api-profile.html#data-dictionary) | Addressed missing `/` in `OBRisk1/DeliveryAddress StreetName` XPath entry |
-
+| [OBRisk1](https://openbankinguk.github.io/read-write-api-site3/v4.0/profiles/payment-initiation-api-profile.html#data-dictionary) | Addressed missing `/` in `OBRisk1/DeliveryAddress/TownLocationName` XPath entry |
 
