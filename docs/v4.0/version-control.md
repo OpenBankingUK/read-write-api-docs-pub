@@ -66,4 +66,4 @@ v4.0 - 4th September 2024
 | [OBRisk1](https://openbankinguk.github.io/read-write-api-site3/v4.0/profiles/payment-initiation-api-profile.html#data-dictionary) | Restored truncated text from `OBRisk1/PaymentContextCode` class description entry (link to codeset repo) |
 | [OBRisk1](https://openbankinguk.github.io/read-write-api-site3/v4.0/profiles/payment-initiation-api-profile.html#data-dictionary) | Restored definition for `OBRisk1/PaymentPurposeCode` and fixed link to codeset repo |
 | [OBWritePaymentDetailsResponse1](https://openbankinguk.github.io/read-write-api-site3/v4.0/profiles/payment-initiation-api-profile.html#data-dictionary-7) | Removed `OBWritePaymentDetailsResponse1/Data/StatusDetail/StatusUpdateDateTime` entry from data dictionary |
-|  
+| [OBWritePaymentDetailsResponse1](https://openbankinguk.github.io/read-write-api-site3/v4.0/profiles/payment-initiation-api-profile.html#data-dictionary-7) | Restored field size listing for `OBWritePaymentDetails1/StatusDetail/StatusReasonDescription` to `Max256Text` |
