@@ -56,3 +56,9 @@ v4.0 - 4th September 2024
 | [VRP State model description](https://openbankinguk.github.io/spec-preview-268/v4.0/resources-and-data-models/vrp/domestic-vrp-consents.html#state-model-vrp-consents) | StatusCode is misspelled |
 | ToC links - various  | Some links are not taking you to relevant section on the
   page when clicked (note, these have been broken since v3) |
+
+
+| Area | Changes |
+| [OBRisk1](https://openbankinguk.github.io/read-write-api-site3/v4.0/profiles/payment-initiation-api-profile.html#data-dictionary) | Fixed `CareOf` entry in the data dictionary which had split across multiple lines |
+
+

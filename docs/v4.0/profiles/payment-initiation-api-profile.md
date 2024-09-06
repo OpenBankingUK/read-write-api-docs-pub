@@ -572,8 +572,7 @@ This section describes the Risk1 class which is reused in the payment-order cons
 | AddressType |0..1 |OBRisk1/DeliveryAddress/AddressType | Identifies the nature of the postal address. <br>For a full description see `OBAddressType2Code` [here](https://github.com/OpenBankingUK/External_internal_CodeSets). | OBAddressType2Code ||
 | BuildingName |0..1 |OBRisk1/DeliveryAddress/BuildingName |Name of the building or house. |Max140Text| | |
 | BuildingNumber |0..1 |OBRisk1/DeliveryAddress/BuildingNumber |Number that identifies the position of a building on a street. |Max16Text | | |
-| CareOf |0..1 |OBRisk1/DeliveryAddress/CareOf |Identifies an addressee that is accepting the correspondence for the intended recipient. Using care of ensures the correspondence reaches the right recipient rather than getting returned to the
-sender. |Max140Text| | |
+| CareOf |0..1 |OBRisk1/DeliveryAddress/CareOf |Identifies an addressee that is accepting the correspondence for the intended recipient. Using care of ensures the correspondence reaches the right recipient rather than getting returned to the sender. |Max140Text| | |
 | Country                          | 0..1       | OBRisk1/DeliveryAddress/Country            | Nation with its own government, occupying a particular territory.  | CountryCode | | ^[A-Z]{2,2}$  |
 |CountrySubDivision| 0..1| OBRisk1/DeliveryAddress/CountrySubDivision | Identifies a subdivision of a country such as state, region, county. | Max35Text|||
 | Department |0..1 |OBRisk1/DeliveryAddress/Department |Identification of a division of a large organisation or building. |Max70Text | | |
