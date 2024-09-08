@@ -249,7 +249,7 @@ The domestic-scheduled-payment-consent **response** contains the full **original
 | Data |1..1 |OBWriteDomesticScheduledConsentResponse5/Data | |OBWriteDataDomesticScheduledConsentResponse5 | | |
 | ConsentId |1..1 |OBWriteDomesticScheduledConsentResponse5/Data/ConsentId |OB: Unique identification as assigned by the ASPSP to uniquely identify the consent resource. |Max128Text | | |
 | CreationDateTime |1..1 |OBWriteDomesticScheduledConsentResponse5/Data/CreationDateTime |Date and time at which the resource was created. |ISODateTime | | |
-| Status |1..1 |OBWriteDomesticScheduledConsentResponse5/Data/Status |Specifies the status of consent resource in code form. |For a full list of enumeration values refer to `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_internal_CodeSets)|OBExternalStatusReason1Code |
+| Status |1..1 |OBWriteDomesticScheduledConsentResponse5/Data/Status |Specifies the status of consent resource in code form. |For a full list of enumeration values refer to `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_internal_CodeSets)|OBInternalConsentStatus1Code |
 | StatusReason |0..* |OBWriteDomesticScheduledConsentResponse5/Data/StatusReason |Specifies the status reason. | OBStatusReason |
 | StatusReasonCode |0..1 |OBWriteDomesticScheduledConsentResponse5/Data/StatusReason/StatusReasonCode |Specifies the status reason in a code form. |For a full list of enumeration values refer to `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_internal_CodeSets)|OBInternalPermissions1Code
 | StatusReasonDescription |0..1 |OBWriteDomesticScheduledConsentResponse5/Data/StatusReason/StatusReasonDescription |Description supporting the StatusReasonCode. |Max500Text|
