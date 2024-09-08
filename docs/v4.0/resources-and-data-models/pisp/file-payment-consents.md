@@ -270,7 +270,7 @@ The file-payment-consent **response** contains the full **original** payload fro
 | Status |1..1 |OBWriteFileConsentResponse4/Data/Status |Specifies the status of consent resource in code form. |For a full list of enumeration values refer to `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_internal_CodeSets)|OBInternalConsentStatus1Code ||
 | StatusUpdateDateTime |1..1 |OBWriteFileConsentResponse4/Data/StatusUpdateDateTime |Date and time at which the consent resource status was updated. |ISODateTime | | |
 | StatusReason |0..* |OBWriteFileConsentResponse4/Data/StatusReason |An array of StatusReasonCode | OBStatusReason |
-| StatusReasonCode |0..1 |OBWriteFileConsentResponse4/Data/StatusReason/StatusReasonCode |Specifies the status reason in a code form. |For a full list of enumeration values refer to `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_internal_CodeSets)| OBInternalPermissions1Code |
+| StatusReasonCode |0..1 |OBWriteFileConsentResponse4/Data/StatusReason/StatusReasonCode |Specifies the status reason in a code form. |For a full list of enumeration values refer to `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_internal_CodeSets)| OBExternalStatusReason1Code ||
 | StatusReasonDescription |0..1 |OBWriteFileConsentResponse4/Data/StatusReason/StatusReasonDescription |Description supporting the StatusReasonCode. |Max500Text|
 |Path| 0..1 | OBWriteFileConsentResponse4/Data/StatusReason/Path| Path is optional but relevant when the status reason refers to an object/field and hence conditional to provide JSON path.| Max500Text| | |
 | CutOffDateTime |0..1 |OBWriteFileConsentResponse4/Data/CutOffDateTime |Specified cut-off date and time for the payment consent. |ISODateTime | | |
