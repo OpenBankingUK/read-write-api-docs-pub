@@ -51,15 +51,6 @@ Once the file-payment-consent has been authorised by the PSU, the PISP can proce
 
 - This is done by making a POST request to the **file-payments** endpoint.
 
-#### Status
-
-The file-payments resource must have one of the following initial status codes:
-
-| Status |
-| --- |
-| RCVD |
-| RJCT |
-
 ### GET /file-payments/{FilePaymentId}
 
 A PISP can retrieve the file-payment to check its status.

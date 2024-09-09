@@ -52,7 +52,7 @@ v4.0 - 4th September 2024
 | [OBDomesticVRPInitiation and OBDomesticVRPInstruction contain CreditorAgent](https://openbankinguk.github.io/spec-preview-268/v4.0/resources-and-data-models/vrp/domestic-vrp-consents.html#obdomesticvrpinitiation) | This was removed in KI v319_KI9 but was not removed from spec pages. |
 | [OBRemittanceInformation2/Unstructured](https://openbankinguk.github.io/spec-preview-268/v4.0/profiles/payment-initiation-api-profile.html#data-dictionary-9)  | Data dictionary class column should be updated to clarify this is an array of Max140Text values. |
 | [OBWritePaymentDetails1](https://openbankinguk.github.io/spec-preview-268/v4.0/resources-and-data-models/pisp/domestic-payments.html#uml-diagram-3) | UML shows incorrect cardinality for Data and PaymentDetails. |
-| [GET /file-payments/{FilePaymentId}](https://openbankinguk.github.io/spec-preview-268/v4.0/resources-and-data-models/pisp/file-payments.html#get-file-payments-filepaymentid) | <s>Table for POST /file-payments has duplicated down, and is showing instead of the correct table.</s> |
+| [GET /file-payments/{FilePaymentId}](https://openbankinguk.github.io/spec-preview-268/v4.0/resources-and-data-models/pisp/file-payments.html#get-file-payments-filepaymentid) | Table for POST /file-payments has duplicated down, and is showing instead of the correct table. |
 | [VRP State model description](https://openbankinguk.github.io/spec-preview-268/v4.0/resources-and-data-models/vrp/domestic-vrp-consents.html#state-model-vrp-consents) | StatusCode is misspelled |
 | ToC links - various  | Some links are not taking you to relevant section on the page when clicked (note, these have been broken since v3) |
 
