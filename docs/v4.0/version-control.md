@@ -23,6 +23,7 @@ v4.0 - 27th June 2024
 v4.0 - 4th September 2024
 
 | Path/Area | Issue |
+| --- | --- |
 | [OBReadConsentResponse1](https://openbankinguk.github.io/spec-preview-268/v4.0/resources-and-data-models/aisp/account-access-consents.html#data-dictionary-2) | Status is listed as 0..</span>1 in datadictionary but correctly shown as 1..1 in UML |
 | [OBReadConsentResponse1](https://openbankinguk.github.io/spec-preview-268/v4.0/resources-and-data-models/aisp/account-access-consents.html#data-dictionary-2) | Codeset class listed as OBInternalPermissions1Code instead of OBInternalConsentStatus1Code |
 | [OBReadAccount6/Data/Account/StatementFrequencyAndFormat/Format](https://openbankinguk.github.io/spec-preview-268/v4.0/resources-and-data-models/aisp/Accounts.html#data-dictionary) | Codeset repo value from row above has duplicated down |
@@ -58,6 +59,7 @@ v4.0 - 4th September 2024
 
 
 | Area | Changes |
+| --- | --- |
 | [OBRisk1](https://openbankinguk.github.io/read-write-api-site3/v4.0/profiles/payment-initiation-api-profile.html#data-dictionary) | Fixed `CareOf` entry in the data dictionary which had split across multiple lines |
 | [OBRisk1](https://openbankinguk.github.io/read-write-api-site3/v4.0/profiles/payment-initiation-api-profile.html#data-dictionary) | Addressed missing `/` in `OBRisk1/DeliveryAddress/DistrictName` XPath entry |
 | [OBRisk1](https://openbankinguk.github.io/read-write-api-site3/v4.0/profiles/payment-initiation-api-profile.html#data-dictionary) | Addressed missing `/` in `OBRisk1/DeliveryAddress StreetName` XPath entry |
