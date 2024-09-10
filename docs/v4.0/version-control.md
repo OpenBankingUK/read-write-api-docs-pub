@@ -90,7 +90,7 @@ v4.0 - 4th September 2024
 | [OBWriteFileResponse3](https://openbankinguk.github.io/spec-preview-268/v4.0/resources-and-data-models/pisp/file-payments.html#data-dictionary-2) | `OBWriteFileResponse3/Data/StatusReason/StatusReasonCode` codeset updated to `OBExternalStatusReason1Code` |
 | [OBDomesticStandingOrder3](https://openbankinguk.github.io/spec-preview-268/v4.0/resources-and-data-models/pisp/domestic-standing-order-consents.html#data-dictionary) | `OBDomesticStandingOrder3/FirstPaymentAmount` fields were present but top level entry had merged. |
 | [File paymnets state model](https://openbankinguk.github.io/spec-preview-268/v4.0/resources-and-data-models/pisp/file-payments.html#state-model) | Initiation state model was not present |
-| [Date format description](https://openbankinguk.github.io/read-write-api-site3/v4.0/profiles/read-write-data-api-profile.html#date-formats) | Description was showing old error enum value |
+| [Date format description](https://openbankinguk.github.io/spec-preview-268/v4.0/profiles/read-write-data-api-profile.html#date-formats) | Description was showing old error enum value |
 | CEG links | Some CEG links were not working |
 | [Codeset repo link](https://openbankinguk.github.io/spec-preview-268/v4.0/profiles/read-write-data-api-profile.html#enumerations) | Corrected spelling of 'repository' |
 
