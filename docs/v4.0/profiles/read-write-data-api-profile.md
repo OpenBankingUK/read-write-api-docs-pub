@@ -182,7 +182,7 @@ APIs have been defined to be idempotent, where not doing so would cause a poor P
 
 Digital signatures will facilitate non-repudiation for Open Banking APIs.
 
-The approach for message signing is documented in [Basics / Message Signing](#message-signing-1).
+The approach for message signing is documented in [Basics / Message Signing](#message-signing-2).
 
 The applicability of signatures to individual requests and responses is documented on the page for each of the resources. However, implementers of the standards can **optionally** add signatures to all response and request payloads.
 
@@ -190,7 +190,7 @@ The applicability of signatures to individual requests and responses is document
 
 Message Encryption is an **optional** feature of the Open Banking APIs to facilitate additional protection of inflight data.
 
-The approach for message encryption is documented in [Basics / Message Encryption](#message-encryption-1).
+The approach for message encryption is documented in [Basics / Message Encryption](#message-encryption-2).
 
 Applicability to individual requests and responses is not defined in the standards. Application will be based on agreement between implementors of the standards.
 
