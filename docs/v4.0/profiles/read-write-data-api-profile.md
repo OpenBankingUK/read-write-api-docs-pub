@@ -441,11 +441,11 @@ The situation could arise when:
 * The TPP attempted to access a resource with an Id that it does not have access to. e.g., an attempt to access GET /domestic-payments/1001 where a payment resource with Id 1001 belongs to another TPP.
 * The TPP tries to access an account/transaction resource and the TPP does not have a consent authorisation with the right Permissions to access the requested resource. e.g., an attempt to access GET /standing-orders when the ReadStandingOrdersBasic permission was not included in the consent authorisation.
 * The TPP tries to access an account/transaction resource and the TPP does not have a consent authorisation for the AccountId. e.g., an attempt to access GET /accounts/2001 or GET /accounts/2001/transactions when the PSU has not selected AccountId 2001 for authorisation.
-* The TPP attempts to access a Resource and the ASPSP decides to re-authenticate the PSU. The ASPSP must respond back with an appropriate error code to indicate re-authentication is required and also update the Consent `Status` with `CANC` and appropriate `StatusReasonCode`. For more guidance refer to the [CEGs](https://consultation.standards.openbanking.org.uk/customer-experience-guidelines/appendices/common-errors/v4-0-draft1/).
+* The TPP attempts to access a Resource and the ASPSP decides to re-authenticate the PSU. The ASPSP must respond back with an appropriate error code to indicate re-authentication is required and also update the Consent `Status` with `CANC` and appropriate `StatusReasonCode`. For more guidance refer to the [CEGs](https://standards.openbanking.org.uk/customer-experience-guidelines/appendices/common-errors/v4-0/).
 
 #### 401 (Unauthorized)
 
-When the TPP uses an expired access token, the ASPSP must return a 401 (Unauthorized) with an error response as per ISO or OB proprietary reason codes in the `ErrorCode` and update the respective Consent `Status`. For more guidance refer to the [CEGs](https://consultation.standards.openbanking.org.uk/customer-experience-guidelines/appendices/common-errors/v4-0-draft1/). 
+When the TPP uses an expired access token, the ASPSP must return a 401 (Unauthorized) with an error response as per ISO or OB proprietary reason codes in the `ErrorCode` and update the respective Consent `Status`. For more guidance refer to the [CEGs](https://standards.openbanking.org.uk/customer-experience-guidelines/appendices/common-errors/v4-0/). 
 
 Situations where no token is provided or it is invalid should return 401 (Unauthorised) without an error response.
 
