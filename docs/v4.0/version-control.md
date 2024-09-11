@@ -95,6 +95,7 @@ v4.0 - 4th September 2024
 | [AISP Consent](https://openbankinguk.github.io/spec-preview-268/v4.0/profiles/account-and-transaction-api-profile.html#consent-re-authentication) | Clarified use of `CANC` in AISP Consent Re-authentication |
 | [OBWritePaymentDetailsResponse1](https://openbankinguk.github.io/spec-preview-268/v4.0/profiles/payment-initiation-api-profile.html#data-dictionary-7) | Payment-details codesets updated |
 | [OBDomesticVRPConsentResponse](https://openbankinguk.github.io/spec-preview-268/v4.0/resources-and-data-models/vrp/domestic-vrp-consents.html#obdomesticvrpconsentresponse) | Updated data dictionary with codeset name for `Status` and link to codeset repository |
-
+| [OBDomesticVRPResponse](https://openbankinguk.github.io/spec-preview-268/v4.0/resources-and-data-models/vrp/domestic-vrps.html#obdomesticvrpresponse) | Updated data dictionary with codeset name for `Status` and link to codeset repository |
+| [OBDomesticVRPResponse](https://openbankinguk.github.io/spec-preview-268/v4.0/resources-and-data-models/vrp/domestic-vrps.html#obdomesticvrpresponse) | Aligned 'Type' of `StatusReason` to `OBStatusReason`, consistent with other entries in spec |
 
 
