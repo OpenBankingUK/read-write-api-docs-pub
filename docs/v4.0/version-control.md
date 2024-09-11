@@ -103,3 +103,4 @@ v4.0 - 4th September 2024
 | [domestic-vrps](https://openbankinguk.github.io/spec-preview-268/v4.0/resources-and-data-models/vrp/domestic-vrps.html#get-domestic-vrps-domesticvrpid) | `PATC` was incorrectly included in payment status list |
 | [OBDomesticVRPDetails](https://openbankinguk.github.io/spec-preview-268/v4.0/resources-and-data-models/vrp/domestic-vrps.html#obdomesticvrpdetails) | Some elements of VRP payment-details had not been restored fully in the data dictionary |
 | [OBRisk1](https://openbankinguk.github.io/spec-preview-268/v4.0/profiles/payment-initiation-api-profile.html#data-dictionary) | `OBRisk1/DeliveryAddress/AddressType` description and class columns contained merged data |
+| [OBInternationalRefundAccount1](https://openbankinguk.github.io/spec-preview-268/v4.0/profiles/payment-initiation-api-profile.html#data-dictionary-6) | `OBInternationalRefundAccount1/Account/SchemeName` description was missing from data dictionary |
