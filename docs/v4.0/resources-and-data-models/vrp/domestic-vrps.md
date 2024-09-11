@@ -72,7 +72,6 @@ The domestic-vrp resource must have one of the following ExternalPaymentTransact
 | ------ |
 | PDNG |
 | ACTC |
-| PATC |
 | ACCP |
 | ACFC |
 | ACSP |
