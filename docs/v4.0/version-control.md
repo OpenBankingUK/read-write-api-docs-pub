@@ -94,6 +94,7 @@ v4.0 - 4th September 2024
 | [Codeset repo link](https://openbankinguk.github.io/spec-preview-268/v4.0/profiles/read-write-data-api-profile.html#enumerations) | Corrected spelling of 'repository' |
 | [AISP Consent](https://openbankinguk.github.io/spec-preview-268/v4.0/profiles/account-and-transaction-api-profile.html#consent-re-authentication) | Clarified use of `CANC` in AISP Consent Re-authentication |
 | [OBWritePaymentDetailsResponse1](https://openbankinguk.github.io/spec-preview-268/v4.0/profiles/payment-initiation-api-profile.html#data-dictionary-7) | Payment-details codesets updated |
+| [OBDomesticVRPConsentResponse](https://openbankinguk.github.io/spec-preview-268/v4.0/resources-and-data-models/vrp/domestic-vrp-consents.html#obdomesticvrpconsentresponse) | Updated data dictionary with codeset name for `Status` and link to codeset repository |
 
 
 
