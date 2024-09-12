@@ -89,3 +89,5 @@ v4.0 - 4th September 2024
 | [SCASupportData](https://openbankinguk.github.io/spec-preview-268/v4.0/profiles/payment-initiation-api-profile.html#data-dictionary-8) | Class and description colummn entries were swapped for `SCASupportData/RequestedSCAExemptionType` |
 | [domestic-vrps](https://openbankinguk.github.io/spec-preview-268/v4.0/resources-and-data-models/vrp/domestic-vrps.html#get-domestic-vrps-domesticvrpid) | `PATC` was incorrectly included in payment status list |
 | [OBInternationalRefundAccount1](https://openbankinguk.github.io/spec-preview-268/v4.0/profiles/payment-initiation-api-profile.html#data-dictionary-6) | `OBInternationalRefundAccount1/Account/SchemeName` description was missing from data dictionary |
+| Example JSON | A number of example JSON have been updated |
+ 

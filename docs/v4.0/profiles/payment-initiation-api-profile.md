@@ -701,7 +701,7 @@ This section describes the OBWritePaymentDetailsResponse1 class which used in th
 
 ##### UML Diagram
 
-![](./images/OBWritePaymentDetailsResponse1.svg)
+![](./images/OBWritePaymentDetails1.png)
 
 ##### Data Dictionary
 
