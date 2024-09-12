@@ -9,7 +9,7 @@
   - [GET /file-payments/{FilePaymentId}/payment-details](#get-file-payments-filepaymentid-payment-details)
     - [Status](#status-2)
   - [State Model](#state-model)
-    - [Payment Order](#payment-order)
+    - [Initiation](#initiation)
     - [Multiple Authorisation](#multiple-authorisation)
 - [Data Model](#data-model)
   - [Reused Classes](#reused-classes)
@@ -104,18 +104,6 @@ Refer to [External_Internal_CodeSets](https://github.com/OpenBankingUK/External_
 The state model describes the initiation status only
 
 ![File Initiation Status](./images/FilePaymentInitiationModel.png)
-
-#### Payment Order
-
-The state model for the file-payments resource describes the subsequent execution of the file-payments.
-
-__Payment order state model key:__
-| Colour (Style) | Description |
-| --- | --- |
-| Green (Bold) | Mandatory |
-| Orange (Italic) | Optional, but recommended |
-
-![Payment Order Status](./images/PIS_PO_Statuses_1.png)
 
 
 ##### Multiple Authorisation
