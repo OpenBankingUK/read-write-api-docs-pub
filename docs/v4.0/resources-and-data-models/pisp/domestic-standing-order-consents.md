@@ -478,10 +478,10 @@ Content-Type: application/json
     "Charges": [
       {
         "ChargeBearer": "BorneByCreditor",
-        "Type": "string",
+        "Type": "UK.OBIE.CHAPSOut",
         "Amount": {
-          "Amount": "3244",
-          "Currency": "OQH"
+          "Amount": "0.50",
+          "Currency": "GBP"
         }
       }
     ],
@@ -664,10 +664,10 @@ Content-Type: application/json
     "Charges": [
       {
         "ChargeBearer": "BorneByCreditor",
-        "Type": "string",
+        "Type": "UK.OBIE.CHAPSOut",
         "Amount": {
-          "Amount": "3244",
-          "Currency": "OQH"
+          "Amount": "0.50",
+          "Currency": "GBP"
         }
       }
     ],
