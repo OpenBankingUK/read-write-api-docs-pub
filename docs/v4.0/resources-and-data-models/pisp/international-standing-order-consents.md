@@ -487,7 +487,7 @@ Accept: application/json
               "AdditionalRemittanceInformation": ["Free text for additional information"],
             }
           ],
-          "Unstructured": "Internal ops code 5120101"
+          "Unstructured": ["Internal ops code 5120101"]
         }
     }
   },
@@ -701,7 +701,7 @@ Content-Type: application/json
           "AdditionalRemittanceInformation": ["Free text for additional information"],
         }
       ],
-      "Unstructured": "Internal ops code 5120101"
+      "Unstructured": ["Internal ops code 5120101"]
     },
 	 "MandateRelatedInformation": {
       "MandateIdentification": "Golfers",
