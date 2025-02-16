@@ -122,8 +122,7 @@ module.exports = [
                 text: 'Reference Library',
                 link: 'https://standards.openbanking.org.uk/reference/',
                 items: [
-                    { text: 'External Internal CodeSets', link: 'https://github.com/OpenBankingUK/External_Internal_CodeSets' },
-                    { text: 'Confirmation of Payee / Contingent Liability Model', link: 'https://www.openbanking.org.uk/wp-content/uploads/CoP-CRM-Draft-Standards-070721.pdf' }
+                    { text: 'External Internal CodeSets', link: 'https://github.com/OpenBankingUK/External_Internal_CodeSets' }
                 ]
             }
         ]
