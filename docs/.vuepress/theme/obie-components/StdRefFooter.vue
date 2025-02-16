@@ -102,7 +102,6 @@
               <ul class="sub-menu">
                 <li id="menu-item-1072" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1072"><a target="_blank" rel="noopener" href="https://www.openbanking.org.uk/directory/">Directory</a></li>
                 <li id="menu-item-1073" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1073"><a target="_blank" rel="noopener" href="https://www.openbanking.org.uk/crown-dependencies-directory/">Crown Dependencies Directory</a></li>
-                <li id="menu-item-1074" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1074"><a target="_blank" rel="noopener" href="https://www.openbanking.org.uk/confirmation-of-payee/">Confirmation of Payee (CoP)</a></li>
                 <li id="menu-item-1075" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1075"><a target="_blank" rel="noopener" href="https://www.openbanking.org.uk/variable-recurring-payments-vrps/">Variable Recurring Payments (VRPs)</a></li>
               </ul>
             </li>
