@@ -101,8 +101,6 @@ The API endpoint allows the PISP to ask an ASPSP to confirm funds on an **intern
 * An ASPSP can only respond to a funds confirmation request if the **international-payment-consent** resource has an `AUTH` status. If the status is not `AUTH`, an ASPSP **must** respond with a 400 (Bad Request) and a `U009` error code.
 * Confirmation of funds requests do not affect the status of the **international-payment-consent** resource.
 
-Refer to [External_Internal_CodeSets](https://github.com/OpenBankingUK/External_Internal_CodeSets) -> OB_Internal_CodeSet -> `OBInternalPermissions1Code`.
-
 ### State Model
 
 #### Payment Order Consent
@@ -208,7 +206,6 @@ The OBInternational3/ExchangeRateInformation object must conform to these behavi
 | EndToEndIdentification |1..1 |OBInternational3/EndToEndIdentification |Unique identification assigned by the initiating party to unambiguously identify the transaction. This identification is passed on, unchanged, throughout the entire end-to-end chain. Usage: The end-to-end identification can be used for reconciliation or to link tasks relating to the transaction. It can be included in several messages related to the transaction. OB: The Faster Payments Scheme can only access 31 characters for the EndToEndIdentification field. |Max35Text | | |
 | LocalInstrument |0..1 |OBInternational3/LocalInstrument |User community specific instrument. Usage: This element is used to specify a local instrument, local clearing option and/or further qualify the service or service level. |For a full list of enumeration values refer to `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets) |OBInternalLocalInstrument1Code | |
 | InstructionPriority |0..1 |OBInternational3/InstructionPriority |Indicator of the urgency or order of importance that the instructing party would like the instructed party to apply to the processing of the instruction. |For a full list of enumeration values refer to `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets) |OBInternalPriority2Code | |
-| Purpose |0..1 |OBInternational3/Purpose |Specifies the external purpose code in the format of character string with a maximum length of 4 characters. The list of valid codes is an external code list published separately. External code sets can be downloaded from www.iso20022.org. |OBExternalPurpose1Code1 | | |
 | ExtendedPurpose | 0..1 | 	OBInternational3/ExtendedPurpose | Specifies the purpose of an international payment, when there is no corresponding 4 character code available in the ISO20022 list of Purpose Codes. | Max140Text | |
 | ChargeBearer |0..1 |OBInternational3/ChargeBearer |Specifies which party/parties will bear the charges associated with the processing of the payment transaction. |For a full list of enumeration values refer to `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets). |OBInternalChargeBearerType1Code	 | |
 | CurrencyOfTransfer |1..1 |OBInternational3/CurrencyOfTransfer |Specifies the currency of the to be transferred amount, which is different from the currency of the debtor's account. |ActiveOrHistoricCurrencyCode | |^[A-Z]{3,3}$ |
@@ -221,7 +218,7 @@ The OBInternational3/ExchangeRateInformation object must conform to these behavi
 | ExchangeRate |0..1 |OBInternational3/ExchangeRateInformation/ExchangeRate |The factor used for conversion of an amount from one currency to another. This reflects the price at which one currency was bought with another currency. |BaseOneRate | | |
 | RateType |1..1 |OBInternational3/ExchangeRateInformation/RateType |Specifies the type used to complete the currency exchange. |For a full list of enumeration values refer to `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets). |OBInternalExchangeRateType2Code | |
 | ContractIdentification |0..1 |OBInternational3/ExchangeRateInformation/ContractIdentification |Unique and unambiguous reference to the foreign exchange contract agreed between the initiating party/creditor and the debtor agent. |Max256Text | | |
-| DebtorAccount |0..1 |OBInternational3/DebtorAccount |Unambiguous identification of the account of the debtor to which a debit entry will be made as a result of the transaction. |OBCashAccountDebtor4 | | |
+| DebtorAccount |0..1 |OBInternational3/DebtorAccount |Unambiguous identification of the account of the debtor to which a debit entry will be made as a result of the transaction. | | | |
 | SchemeName |1..1 |OBInternational3/DebtorAccount/SchemeName |Name of the identification scheme, in a coded form as published in an external list. | For a full list of enumeration values refer to `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets). |OBInternalAccountIdentification4Code | 
 | Identification |1..1 |OBInternational3/DebtorAccount/Identification |Identification assigned by an institution to identify an account. This identification is known by the account owner. |Max256Text | | |
 | Name |0..1 |OBInternational3/DebtorAccount/Name |The account name is the name or names of the account owner(s) represented at an account level, as displayed by the ASPSP's online channels. Note, the account name is not the product name or the nickname of the account. |Max350Text | | |
@@ -233,7 +230,7 @@ The OBInternational3/ExchangeRateInformation object must conform to these behavi
 | LEI |0..1 | OBInternational3/Creditor/LEI |Legal Entity Identification Legal entity identification as an alternate identification for a party. Legal Entity Identifier is a code allocated to a party as described in ISO 17442 "Financial Services - Legal Entity Identifier (LEI)". |Max20Text | |^[A-Z0-9]{18,18}[0-9]{2,2}$ |
 | PostalAddress |0..1 |OBInternational3/Creditor/PostalAddress |Information that locates and identifies a specific address, as defined by postal services. |OBPostalAddress7 | | |
 | CreditorAgent |0..1 |OBInternational3/CreditorAgent |Financial institution servicing an account for the creditor. |OBBranchAndFinancialInstitutionIdentification6 | | |
-| SchemeName |0..1 |OBInternational3/CreditorAgent/SchemeName |Name of the identification scheme, in a coded form as published in an external list. |For a full list of enumeration values refer to `Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_internal_CodeSets)|OBInternalFinancialInstitutionIdentification4Co
+| SchemeName |0..1 |OBInternational3/CreditorAgent/SchemeName |Name of the identification scheme, in a coded form as published in an external list. |For a full list of enumeration values refer to `Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_internal_CodeSets)|OBInternalFinancialInstitutionIdentification4Code
 | LEI |0..1 | OBInternational3/CreditorAgent/LEI |Legal Entity Identification Legal entity identification as an alternate identification for a party. Legal Entity Identifier is a code allocated to a party as described in ISO 17442 "Financial Services - Legal Entity Identifier (LEI)". |Max20Text | |^[A-Z0-9]{18,18}[0-9]{2,2}$ |
 | Identification |0..1 |OBInternational3/CreditorAgent/Identification |Unique and unambiguous identification of a financial institution or a branch of a financial institution. |Max35Text | | |
 | Name |0..1 |OBInternational3/CreditorAgent/Name |Name by which an agent is known and which is usually used to identify that agent. |Max140Text | | |
@@ -353,9 +350,9 @@ Exchange rate behaviour:
 | Data |1..1 |OBWriteInternationalConsentResponse6/Data | |OBWriteDataInternationalConsentResponse6 | | |
 | ConsentId |1..1 |OBWriteInternationalConsentResponse6/Data/ConsentId |OB: Unique identification as assigned by the ASPSP to uniquely identify the consent resource. |Max128Text | | |
 | CreationDateTime |1..1 |OBWriteInternationalConsentResponse6/Data/CreationDateTime |Date and time at which the resource was created. |ISODateTime | | |
-| Status |1..1 |OBWriteInternationalConsentResponse6/Data/Status |Specifies the status of consent resource in code form. |For a full list of enumeration values refer to `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_internal_CodeSets)|OBExternalStatusReason1Code |
+| Status |1..1 |OBWriteInternationalConsentResponse6/Data/Status |Specifies the status of consent resource in code form. |For a full list of enumeration values refer to `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_internal_CodeSets)|OBInternalConsentStatus1Code |
 | StatusReason |0..* |OBWriteInternationalConsentResponse6/Data/StatusReason |An array of StatusReasonCode| OBStatusReason |
-| StatusReasonCode |0..1 |OBWriteInternationalConsentResponse6/Data/StatusReason/StatusReasonCode |Specifies the status reason in a code form. |For a full list of enumeration values refer to `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_internal_CodeSets)| OBInternalPermissions1Code |
+| StatusReasonCode |0..1 |OBWriteInternationalConsentResponse6/Data/StatusReason/StatusReasonCode |Specifies the status reason in a code form. |For a full list of enumeration values refer to `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_internal_CodeSets)| OBExternalStatusReason1Code ||
 | StatusReasonDescription |0..1 |OBWriteInternationalConsentResponse6/Data/StatusReason/StatusReasonDescription |Description supporting the StatusReasonCode. | Max500Text|
 | StatusUpdateDateTime |1..1 |OBWriteInternationalConsentResponse6/Data/StatusUpdateDateTime |Date and time at which the resource status was updated. |ISODateTime | | |
 | ReadRefundAccount |0..1 |OBWriteInternationalConsentResponse6/Data/ReadRefundAccount | Specifies to share the refund account details with PISP |For a full list of enumeration values refer to `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets). |OBInternalReadRefundAccount1Code| |
@@ -371,8 +368,8 @@ Exchange rate behaviour:
 | SchemeName |0..1 |OBWriteInternationalConsentResponse6/Data/Debtor/SchemeName |Name of the identification scheme, in a coded form as published in an external list. | For a full list of enumeration values refer to `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets). |OBInternalAccountIdentification4Code | 
 | Identification |0..1 |OBWriteInternationalConsentResponse6/Data/Debtor/Identification |Identification assigned by an institution to identify an account. This identification is known by the account owner. |Max256Text | | |
 | Name |0..1 |OBWriteInternationalConsentResponse6/Data/Debtor/Name |The account name is the name or names of the account owner(s) represented at an account level, as displayed by the ASPSP's online channels. Note, the account name is not the product name or the nickname of the account. |Max350Text | | |
-| SecondaryIdentification |0..1 |OBWriteInternationalConsentResponse6/Data/Debtor/SecondaryIdentification |This is secondary identification of the account, as assigned by the account servicing institution. This can be used by building societies to additionally identify accounts with a roll number (in addition to a sort code and account number combination). |Max34Text | | |
-| LEI |0..1 | OBWriteInternationalConsentResponse6/Data/Debtor/Legal Entity Identification Legal entity identification as an alternate identification for a party. Legal Entity Identifier is a code allocated to a party as described in ISO 17442 "Financial Services - Legal Entity Identifier (LEI)". |Max20Text | |^[A-Z0-9]{18,18}[0-9]{2,2}$ |
+| SecondaryIdentification |0..1 |OBWriteInternationalConsentResponse6/Data/Debtor/SecondaryIdentification | This is secondary identification of the account, as assigned by the account servicing institution. This can be used by building societies to additionally identify accounts with a roll number (in addition to a sort code and account number combination). |Max34Text | | |
+| LEI |0..1 | OBWriteInternationalConsentResponse6/Data/Debtor/LEI | Legal entity identification as an alternate identification for a party. Legal Entity Identifier is a code allocated to a party as described in ISO 17442 "Financial Services - Legal Entity Identifier (LEI)". |Max20Text | |^[A-Z0-9]{18,18}[0-9]{2,2}$ |
 | Risk |1..1 |OBWriteInternationalConsentResponse6/Risk |The Risk section is sent by the initiating party to the ASPSP. It is used to specify additional details for risk scoring for Payments. |OBRisk1 | | |
 
 ### International Payment Consent Confirmation of Funds - Response
@@ -582,7 +579,7 @@ Accept: application/json
             "AdditionalRemittanceInformation": ["Free text for additional information"],
           }
         ],
-        "Unstructured": "Internal ops code 5120101"
+        "Unstructured": ["Internal ops code 5120101"]
        },
     }
   },
@@ -813,7 +810,7 @@ Content-Type: application/json
             "AdditionalRemittanceInformation": ["Free text for additional information"],
           }
         ],
-        "Unstructured": "Internal ops code 5120101"
+        "Unstructured": ["Internal ops code 5120101"]
        },
    "ExchangeRateInformation": {
     "UnitCurrency": "GBP",

@@ -75,7 +75,7 @@ AddressLine [0..7]
 
 <text x="46.400000000000006em" y="5.6em" fill="darkslateblue">
 <title>Type: string
-Description: Identifies the nature of the postal address. For a full set of codes see `OBAddressType2Code` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets).
+Description: Identifies the nature of the postal address. For a full set of codes see `OBAddressType2Code` in *OB_Internal_CodeSet* [here](https://github.com/OpenBankingUK/External_Internal_CodeSets).
 Values:
  - BIZZ
  - DLVY

@@ -33,7 +33,7 @@ PSUAuthenticationMethods [1..*]
 
 <text x="2em" y="5.6em" fill="darkslateblue">
 <title>Type: string
-Description: Indicates interaction type, currently if customer is present or not present. If not provided the default is `&#39;OffSession&#39;` (customer is not present) when the individual VRP payment is made. 
+Description: Indicates interaction type, currently if customer is present or not present. If not provided the default is `OffSession` (customer is not present) when the individual VRP payment is made. 
 Values:
  - InSession
  - OffSession
@@ -116,7 +116,7 @@ Currency [1..1]
 
 <text x="32.8em" y="13.5em" fill="darkslateblue">
 <title>Type: string
-Description: ^ Specifies whether the period starts on the date of consent creation or lines up with a calendar
+Description: Specifies whether the period starts on the date of consent creation or lines up with a calendar. As the ISO calendar does not support or provide any guidance on when a fortnight should start, a `PeriodType` of `Fortnight` the `PeriodAlignment` must be `Consent`.
 Values:
  - Consent
  - Calendar

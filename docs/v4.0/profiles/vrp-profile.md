@@ -353,8 +353,9 @@ The PSU may revoke the VRP access via ASPSP's online channel. If the access is r
 - The ASPSP must fail any future payment order request using the ConsentId.
 - The ASPSP must make a Notification Event available for the TPP to poll/deliver Real Time Event Notification for the event - `consent-access-revoked`.
 - The ASPSP must take the necessary action to revoke access e.g. by revoking/expiring the access token provided to the PISP.
-- The status of the `domestic-vrp-consents` resource must remain unchanged and the PISP must be allowed to request PSU to re-authenticate the same `domestic-vrp-consents` resource.
-- Upon successful re-authentication by the PSU, an ASPSP may issue new authorization code and subsequently new access token to the PISP.
+- The status of the domestic-vrp-consents resource must be changed to `CANC` and the PISP must be allowed to request PSU to re-authenticate the same domestic-vrp-consents resource.
+- The ASPSP must provide the reasons as appropriate when the status is marked to `CANC`. For more guidance refer to the [Customer Experience Guidelines](https://standards.openbanking.org.uk/get-started/)
+- Upon successful re-authentication by the PSU, an ASPSP may issue a new authorization code and subsequently a new access token to the PISP. The ASPSP must also change the status of the consent back to `AUTH` which means Authorised.
 
 ### Multiple Authorisation
 
@@ -378,7 +379,7 @@ ASPSPs may revoke access tokens associated with a VRP consent for fraud and risk
 
 A PSU may re-authenticate a VRP Consent where:
 
-- the resource has a status of `AUTH` and
+- the resource has a status of `AUTH` or `CANC` and
 - the consent has not expired as determined through the `ValidToDate` in the control parameters.
 
 ASPSPs may revoke access tokens issued for a VRP consent if they suspect risk or fraud situations. However, unlike AIS consents, VRP access tokens should not be set to expire at 90 days.
@@ -465,7 +466,7 @@ Additional information on usage is on the **Domestic VRP Consents** page
 | LineDetails | 0..* | OBRemittanceInformation2/Structured/ReferredDocumentInformation/LineDetails | Set of elements used to provide the content of the referred document line. | Array of String ||
 | Number | 0..1 | OBRemittanceInformation2/Structured/ReferredDocumentInformation/Number | Identification of the type specified for the referred document line. | Max35Text ||
 | RelatedDate | 0..1 | OBRemittanceInformation2/Structured/ReferredDocumentInformation/RelatedDate | Date associated with the referred document line. | ISODate ||
-| Unstructured |0..* |OBRemittanceInformation2/Unstructured |Information supplied to enable the matching/reconciliation of an entry with the items that the payment is intended to settle, such as commercial invoices in an accounts' receivable system, in an unstructured form. |Max140Text | |
+| Unstructured |0..* |OBRemittanceInformation2/Unstructured |Information supplied to enable the matching/reconciliation of an entry with the items that the payment is intended to settle, such as commercial invoices in an accounts' receivable system, in an unstructured form. |Array of Max140Text | |
 
 #### OBUltimateCreditor1
 

@@ -238,8 +238,8 @@ The domestic-payment **response** object contains the:
 | Status |1..1 |OBWriteDomesticResponse5/Data/Status |Specifies the status of the payment information group. |For a full list of enumeration values refer to `OB_External_CodeSet` [here](https://github.com/OpenBankingUK/External_internal_CodeSets) |ExternalPaymentTransactionStatus1Code | |
 | StatusUpdateDateTime |1..1 |OBWriteDomesticResponse5/Data/StatusUpdateDateTime |Date and time at which the resource status was updated. |ISODateTime | | |
 | StatusReason |0..* |OBWriteDomesticResponse5/Data/StatusReason |An array of StatusReasonCode | OBStatusReason |
-| StatusReasonCode |0..1 |OBWriteDomesticResponse5/Data/StatusReason/StatusReasonCode |Specifies the status reason in a code form. |For a full list of enumeration values refer to `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_internal_CodeSets)|OBInternalPermissions1Code |
-| StatusReasonDescription |0..1 |OBWriteDomesticResponse5/Data/StatusReason/StatusReasonDescription |Description supporting the StatusReasonCode. |Max500Text|
+| StatusReasonCode |0..1 |OBWriteDomesticResponse5/Data/StatusReason/StatusReasonCode |Specifies the status reason in a code form. |For a full list of enumeration values refer to `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_internal_CodeSets)|OBExternalStatusReason1Code ||
+| StatusReasonDescription |0..1 |OBWriteDomesticResponse5/Data/StatusReason/StatusReasonDescription |Description supporting the StatusReasonCode. |Max500Text|||
 |Path| 0..1 | OBWriteDomesticResponse5/Data/StatusReason/Path| Path is optional but relevant when the status reason refers to an object/field and hence conditional to provide JSON path.| Max500Text| | |
 | ExpectedExecutionDateTime |0..1 |OBWriteDomesticResponse5/Data/ExpectedExecutionDateTime |Expected execution date and time for the payment resource. |ISODateTime | | |
 | ExpectedSettlementDateTime |0..1 |OBWriteDomesticResponse5/Data/ExpectedSettlementDateTime |Expected settlement date and time for the payment resource. |ISODateTime | | |
@@ -434,7 +434,7 @@ Accept: application/json
               "AdditionalRemittanceInformation": ["Free text for additional information"],  
           }
         ],
-        "Unstructured": "Internal ops code 5120101"
+        "Unstructured": ["Internal ops code 5120101"]
       }
     }
   },
@@ -656,7 +656,7 @@ Content-Type: application/json
             "AdditionalRemittanceInformation": ["Free text for additional information"],  
           }
         ],
-        "Unstructured": "Internal ops code 5120101"
+        "Unstructured": ["Internal ops code 5120101"]
       }
     }
   },
@@ -755,7 +755,7 @@ Content-Type: application/json
             "AdditionalRemittanceInformation": ["Free text for additional information"],  
           }
         ],
-        "Unstructured": "Internal ops code 5120101"
+        "Unstructured": ["Internal ops code 5120101"]
       },
     "Debtor": { 
       "Name": "D Jones",

@@ -515,7 +515,7 @@ Once the final authorisation is received by the ASPSP, the ASPSP **may** notify 
 #### Error Condition
 
 If the PSU does not complete a successful consent authorisation (e.g., if the PSU has not authenticated successfully), the authorization code grant ends with a redirection to the TPP with an error response as described in [RFC 6749 Section 4.1.2.1](https://tools.ietf.org/html/rfc6749#section-4.1.2.1). The PSU is redirected to the TPP with an error parameter indicating the error that occurred.
-The ASPSP must update the payment-order consent status reason with appropriate reason. Refer to CEG - Common Error Scenarios – [Preferred Status and Reasons](https://consultation.standards.openbanking.org.uk/customer-experience-guidelines/appendices/common-errors/v4-0-draft1/).
+The ASPSP must update the payment-order consent status reason with appropriate reason. Refer to CEG - Common Error Scenarios – [Preferred Status and Reasons](https://standards.openbanking.org.uk/customer-experience-guidelines/appendices/common-errors/v4-0/).
 
 #### Consent Revocation
 
@@ -563,28 +563,27 @@ This section describes the Risk1 class which is reused in the payment-order cons
 | BeneficiaryPrepopulatedIndicator | 0..1       | OBRisk1/BeneficiaryPrepopulatedIndicator   | Indicates if PISP has immutably prepopulated payment details in for the PSU. |Boolean|||
 | CategoryPurposeCode| 0..1       | OBRisk1/CategoryPurposeCode|Specifies the category purpose, as published in an external category purpose code list|  For a full list of enumeration values refer to `OB_External_CodeSet`[here](https://github.com/OpenBankingUK/External_Internal_CodeSets/). |ExternalCategoryPurpose1Code | 
 | ContractPresentIndicator       | 0..1       | OBRisk1/ContractPresentIndicator         | Indicates if Payee has a contractual relationship with the PISP.| Boolean| | |
-| MerchantCategoryCode | 0..1       | OBRisk1/MerchantCategoryCode               | Category code conform to ISO 18245, related to the type of services or goods the merchant provides for the transaction. For more guidance refer to the [CEGs](https://consultation.standards.openbanking.org.uk/customer-experience-guidelines/appendices/common-errors/v4-0-draft1/). | Min3Max4Text |  |         |
+| MerchantCategoryCode | 0..1       | OBRisk1/MerchantCategoryCode               | Category code conform to ISO 18245, related to the type of services or goods the merchant provides for the transaction. For more guidance refer to the [CEGs](https://standards.openbanking.org.uk/customer-experience-guidelines/appendices/common-errors/v4-0/). | Min3Max4Text |  |         |
 | MerchantCustomerIdentification   | 0..1       | OBRisk1/MerchantCustomerIdentification     | The unique customer identifier of the PSU with the merchant. | Max70Text|| |
-| PaymentContextCode               | 0..1       | OBRisk1/PaymentContextCode                 | Specifies the payment context | r a full list of enumeration values refer to `OB_Internal_CodeSet`[here](https://github.com/OpenBankingUK/External_Internal_CodeSets/).   |OBInternalPaymentContext1Code |         |
-| PaymentPurposeCode |0..1 |OBRisk1/PaymentPurposeCode | For a full description see `ExternalPurpose1Code` [here](https://github.com/OpenBankingUK/External_internal_CodeSets). |For a full list of enumeration values refer to `External_CodeSet` [here]  |ExternalPurpose1Code | |
+| PaymentContextCode               | 0..1       | OBRisk1/PaymentContextCode                 | Specifies the payment context | For a full list of enumeration values refer to `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets/).   |OBInternalPaymentContext1Code |         |
+| PaymentPurposeCode |0..1 |OBRisk1/PaymentPurposeCode | Category code, related to the type of services or goods that corresponds to the underlying purpose of the payment that conforms to Recommended UK Purpose Code in ISO 20022 Payment Messaging List. |For a full list of enumeration values refer to `External_CodeSet` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets/)  |ExternalPurpose1Code | |
 | DeliveryAddress                  | 0..1       | OBRisk1/DeliveryAddress                    | Information that locates and identifies a specific address, as defined by postal services or in free format text.| OBPostalAddress7||    |
 |AddressLine| 0..7| OBRisk1/DeliveryAddress/AddressLine | Information that locates and identifies a specific address, as defined by postal services, that is presented in free format text.| Max70text|
-| AddressType |0..1 |OBRisk1/DeliveryAddress/AddressType | Identifies the nature of the postal address. <br>For a full description see `OBAddressType2Code` [here](https://github.com/OpenBankingUK/External_internal_CodeSets). | OBAddressType2Code ||
+| AddressType |0..1 |OBRisk1/DeliveryAddress/AddressType | Identifies the nature of the postal address. | For a full set of enumeration  values refer to `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_internal_CodeSets). | OBAddressType2Code ||
 | BuildingName |0..1 |OBRisk1/DeliveryAddress/BuildingName |Name of the building or house. |Max140Text| | |
 | BuildingNumber |0..1 |OBRisk1/DeliveryAddress/BuildingNumber |Number that identifies the position of a building on a street. |Max16Text | | |
-| CareOf |0..1 |OBRisk1/DeliveryAddress/CareOf |Identifies an addressee that is accepting the correspondence for the intended recipient. Using care of ensures the correspondence reaches the right recipient rather than getting returned to the
-sender. |Max140Text| | |
+| CareOf |0..1 |OBRisk1/DeliveryAddress/CareOf |Identifies an addressee that is accepting the correspondence for the intended recipient. Using care of ensures the correspondence reaches the right recipient rather than getting returned to the sender. |Max140Text| | |
 | Country                          | 0..1       | OBRisk1/DeliveryAddress/Country            | Nation with its own government, occupying a particular territory.  | CountryCode | | ^[A-Z]{2,2}$  |
 |CountrySubDivision| 0..1| OBRisk1/DeliveryAddress/CountrySubDivision | Identifies a subdivision of a country such as state, region, county. | Max35Text|||
 | Department |0..1 |OBRisk1/DeliveryAddress/Department |Identification of a division of a large organisation or building. |Max70Text | | |
-| DistrictName |0..1 |OBRisk1/DeliveryAddress DistrictName |Identifies a subdivision within a country sub-division. |Max140Text | | |
+| DistrictName |0..1 |OBRisk1/DeliveryAddress/DistrictName |Identifies a subdivision within a country sub-division. |Max140Text | | |
 | Floor |0..1 |OBRisk1/DeliveryAddress/Floor|Floor or storey within a building. |Max70Text | | |
 |PostBox | 0..1 | OBRisk1/DeliveryAddress/PostBox | Numbered box in a post office, assigned to a person or organisation, where letters are kept until called for. | Max16Text |||
 | PostCode                         | 0..1       | OBRisk1/DeliveryAddress/PostCode           | Identifier consisting of a group of letters and/or numbers that is added to a postal address to assist the sorting of mail.  | Max16Text   |     |         |
 | Room |0..1 |OBRisk1/DeliveryAddress/Room|Building room number. |Max70Text | | |
-| StreetName |0..1 |OBRisk1/DeliveryAddress StreetName |Name of a street or thoroughfare. |Max140Text | | |
+| StreetName |0..1 |OBRisk1/DeliveryAddress/StreetName |Name of a street or thoroughfare. |Max140Text | | |
 | SubDepartment |0..1 |OBRisk1/DeliveryAddress/SubDepartment |Identification of a sub-division of a large organisation or building. |Max70Text | | |
-| TownLocationName |0..1 |OBRisk1/DeliveryAddress TownLocationName | Specific location name within the town. |Max140Text | | |
+| TownLocationName |0..1 |OBRisk1/DeliveryAddress/TownLocationName | Specific location name within the town. |Max140Text | | |
 | TownName  | 0..1       | OBRisk1/DeliveryAddress/TownName           | Name of a built-up area, with defined boundaries, and a local government. | Max140Text ||  |
 | UnitNumber|0..1 |OBRisk1/DeliveryAddress/UnitNumber|Identifies a flat or dwelling within the building. |Max16Text | | |
 
@@ -640,7 +639,7 @@ This section describes the OBMultiAuthorisation1 class which used in the respons
 | Name |Occurrence |XPath |EnhancedDefinition |Class |Codes |Pattern |
 | --- |--- |--- |--- |--- |--- |--- |
 | OBMultiAuthorisation1 | |OBMultiAuthorisation1 |The multiple authorisation flow response from the ASPSP. |OBMultiAuthorisation1 | | |
-| Status |1..1 |OBMultiAuthorisation1/Status |Specifies the status of the authorisation flow in code form. |For a full list of enumeration values refer to `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets). |OBInternalChargeBearerType1Code| |
+| Status |1..1 |OBMultiAuthorisation1/Status |Specifies the status of the authorisation flow in code form. |For a full list of enumeration values refer to `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets). |OBExternalStatus2Code| |
 | NumberRequired |0..1 |OBMultiAuthorisation1/NumberRequired |Number of authorisations required for payment order (total required at the start of the multi authorisation journey). |Number | | |
 | NumberReceived |0..1 |OBMultiAuthorisation1/NumberReceived |Number of authorisations received. |Number | | |
 | LastUpdateDateTime |0..1 |OBMultiAuthorisation1/LastUpdateDateTime |Last date and time at the authorisation flow was updated. |ISODateTime | | |
@@ -681,7 +680,7 @@ This section describes the OBInternationalRefundAccount1 class which is used in 
 | OBInternationalRefundAccount1 |1..1 |OBInternationalRefundAccount1 |Unambiguous identification of the refund account to which a refund will be made as a result of the transaction. |OBInternationalRefundAccount1 | | |
 | Creditor |0..1 |OBInternationalRefundAccount1/Creditor |Party to which an amount of money is due. |OBPartyIdentification43 | | |
 | Name |0..1 |OBInternationalRefundAccount1/Creditor/Name |Name by which a party is known and which is usually used to identify that party. |Max350Text | | |
-| LEI |0..1 | OBInternationalRefundAccount1/Creditor/LEI |Legal entity identification |Max20Text | |[A-Z0-9]{18,18}[0-9]{2,2} |
+| LEI |0..1 | OBInternationalRefundAccount1/Creditor/LEI |Legal entity identification as an alternate identification for a party. Legal Entity Identifier is a code allocated to a party as described in ISO 17442 "Financial Services - Legal Entity Identifier (LEI)". |Max20Text | |[A-Z0-9]{18,18}[0-9]{2,2} |
 | PostalAddress |0..1 |OBInternationalRefundAccount1/Creditor/PostalAddress |Information that locates and identifies a specific address, as defined by postal services. |OBPostalAddress7 | | |
 | Agent |0..1 |OBInternationalRefundAccount1/Agent |Financial institution servicing an account for the creditor. |OBBranchAndFinancialInstitutionIdentification6 | | |
 | SchemeName |0..1 |OBInternationalRefundAccount1/Agent/SchemeName |Name of the identification scheme, in a coded form as published in an external list. |For a full list of enumeration values refer to `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets).|OBInternalAccountIdentification4Code | |
@@ -689,7 +688,7 @@ This section describes the OBInternationalRefundAccount1 class which is used in 
 | Name |0..1 |OBInternationalRefundAccount1/Agent/Name |Name by which an agent is known and which is usually used to identify that agent. |Max140Text | | |
 | PostalAddress |0..1 |OBInternationalRefundAccount1/Agent/PostalAddress |Information that locates and identifies a specific address, as defined by postal services. |OBPostalAddress7 | | |
 | Account |1..1 |OBInternationalRefundAccount1/Account |Unambiguous identification of the account of the creditor to which a credit entry will be posted as a result of the payment transaction. |OBCashAccountCreditor3 | | |
-| SchemeName |1..1 |OBInternationalRefundAccount1/Account/SchemeName |For a full list of enumeration values refer to `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets). |OBInternalAccountIdentification4Code | 
+| SchemeName |1..1 |OBInternationalRefundAccount1/Account/SchemeName | Name of the identification scheme, in a coded form as published in an external list. |For a full list of enumeration values refer to `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets). |OBInternalAccountIdentification4Code ||
 | Identification |1..1 |OBInternationalRefundAccount1/Account/Identification |Identification assigned by an institution to identify an account. This identification is known by the account owner. |Max256Text | | |
 | Name |1..1 |OBInternationalRefundAccount1/Account/Name |The account name is the name or names of the account owner(s) represented at an account level. Note, the account name is not the product name or the nickname of the account. OB: ASPSPs may carry out name validation for Confirmation of Payee, but it is not mandatory. |Max350Text | | |
 | SecondaryIdentification |0..1 |OBInternationalRefundAccount1/Account/SecondaryIdentification |This is secondary identification of the account, as assigned by the account servicing institution. This can be used by building societies to additionally identify accounts with a roll number (in addition to a sort code and account number combination). |Max34Text | | |
@@ -702,7 +701,7 @@ This section describes the OBWritePaymentDetailsResponse1 class which used in th
 
 ##### UML Diagram
 
-![](./images/OBWritePaymentDetailsResponse1.svg)
+![](./images/OBWritePaymentDetails1.png)
 
 ##### Data Dictionary
 
@@ -715,9 +714,8 @@ This section describes the OBWritePaymentDetailsResponse1 class which used in th
 | StatusUpdateDateTime |1..1 |OBWritePaymentDetailsResponse1/Data/StatusUpdateDateTime |Date and time at which the status was assigned to the transfer. |ISODateTime | | |
 | StatusDetail |0..* |OBWritePaymentDetailsResponse1/Data/StatusDetail |Array of Payment StatusCodes| | | |
 | Status |1..1 |OBWritePaymentDetailsResponse1/Data/StatusDetail/Status |Status of a transfer, as assigned by the transaction administrator|For a full description see `External_CodeSet` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets) |ExternalPaymentTransactionStatus1Code | |
-| StatusReasonCode |0..1 |OBWritePaymentDetailsResponse1/Data/StatusDetail/StatusReasonCode |Specifies the status reason|For a full list of enumeration values refer to `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets)  |OBInternalConsentStatus1Code | |
-| StatusReasonDescription |0..1 |OBWritePaymentDetailsResponse1/Data/StatusDetail/StatusReasonDescription |Reason provided for the status of a transfer. |Max500Text | | |
-| StatusUpdateDateTime |1..1 |OBWritePaymentDetailsResponse1/Data/StatusDetail/StatusUpdateDateTime |Date and time at which the status was assigned to the transfer. |ISODateTime | | |
+| StatusReason |0..1 |OBWritePaymentDetailsResponse1/Data/StatusDetail/StatusReason |Specifies the status reason|For a full list of enumeration values refer to `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets)  |OBExternalStatusReason1Code - Code Value | |
+| StatusReasonDescription |0..1 |OBWritePaymentDetailsResponse1/Data/StatusDetail/StatusReasonDescription |Reason provided for the status of a transfer. |Max256Text | OBExternalStatusReason1Code - Code Name| |
 
 #### OBSCASupportData1
 
@@ -732,9 +730,9 @@ This section describes the OBSCASupportData1 class, which is used across all  _p
 | Name |Occurrence |XPath |EnhancedDefinition |Class |Codes |Pattern |
 | --- |--- |--- |--- |--- |--- |--- |
 | OBSCASupportData1 | |SCASupportData |Supporting Data provided by TPP, when requesting SCA Exemption. |OBSCASupportData1 | | |
-| AppliedAuthenticationApproach |0..1 |SCASupportData/AppliedAuthenticationApproach |Specifies a character string with a maximum length of 40 characters.<br><br>Usage: This field indicates whether the PSU was subject to SCA performed by the TPP |Status of a transfer, as assigned by the transaction administrator|For a full list of enumeration values refer to `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets)|OBInternalAppliedAuthenticationApproach1Code | |
+| AppliedAuthenticationApproach |0..1 |SCASupportData/AppliedAuthenticationApproach |Specifies a character string with a maximum length of 40 characters.<br><br>Usage: This field indicates whether the PSU was subject to SCA performed by the TPP |OBInternalAppliedAuthenticationApproach1Code|For a full list of enumeration values refer to `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets)| |
 | ReferencePaymentOrderId |0..1 |SCASupportData/ReferencePaymentOrderId |If the payment is recurring, then this field is populated with the transaction identifier of the previous payment occurrence so that the ASPSP can verify that the PISP, amount and the payee are the same as the previous occurrence. The value here refers to the payment id e.g. DomesticPaymentId |Max40Text | | |
-| RequestedSCAExemptionType |0..1 |SCASupportData/RequestedSCAExemptionType |Specifies the status reason.|For a full list of enumeration values refer to `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets) |OBInternalSCAExemptionType1Code | |
+| RequestedSCAExemptionType |0..1 |SCASupportData/RequestedSCAExemptionType |This field allows a PISP to request specific SCA Exemption for a Payment Initiation.| OBInternalSCAExemptionType1Code |For a full list of enumeration values refer to `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets) | |
 
 #### OBRemittanceInformation2
 
@@ -757,8 +755,8 @@ This section describes the OBSCASupportData1 class, which is used across all  _p
 | Issuer | 0..1 | OBRemittanceInformation2/Structured/ReferredDocumentInformation/Issuer | Identification of the issuer of the reference document type. | Max35Text ||
 | LineDetails | 0..* | OBRemittanceInformation2/Structured/ReferredDocumentInformation/LineDetails | Set of elements used to provide the content of the referred document line. | Array of String ||
 | Number | 0..1 | OBRemittanceInformation2/Structured/ReferredDocumentInformation/Number | Identification of the type specified for the referred document line. | Max35Text ||
-| RelatedDate | 0..1 | OBRemittanceInformation2/Structured/ReferredDocumentInformation/RelatedDate | Date associated with the referred document line. | ISODate ||
-| Unstructured |0..* |OBRemittanceInformation2/Unstructured |Information supplied to enable the matching/reconciliation of an entry with the items that the payment is intended to settle, such as commercial invoices in an accounts' receivable system, in an unstructured form. |Max140Text | |
+| RelatedDate | 0..1 | OBRemittanceInformation2/Structured/ReferredDocumentInformation/RelatedDate | Date associated with the referred document line. | ISODateTime ||
+| Unstructured |0..* |OBRemittanceInformation2/Unstructured |Information supplied to enable the matching/reconciliation of an entry with the items that the payment is intended to settle, such as commercial invoices in an accounts' receivable system, in an unstructured form. | Array of Max140Text | |
 
 #### OBMandateRelatedInformation1
 

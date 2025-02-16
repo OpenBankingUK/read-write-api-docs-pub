@@ -231,10 +231,10 @@ The domestic-scheduled-payment **response** object contains the:
 | DomesticScheduledPaymentId |1..1 |OBWriteDomesticScheduledResponse5/Data/DomesticScheduledPaymentId |OB: Unique identification as assigned by the ASPSP to uniquely identify the domestic schedule payment resource. |Max40Text | | |
 | ConsentId |1..1 |OBWriteDomesticScheduledResponse5/Data/ConsentId |OB: Unique identification as assigned by the ASPSP to uniquely identify the consent resource. |Max128Text | | |
 | CreationDateTime |1..1 |OBWriteDomesticScheduledResponse5/Data/CreationDateTime |Date and time at which the resource was created. |ISODateTime | | |
-| Status |1..1 |OBWriteDomesticScheduledResponse5/Data/Status |Specifies the status of the payment order resource. |OBExternalStatus3Code |RCVD RJCT ACSP CANC | |
+| Status |1..1 |OBWriteDomesticScheduledResponse5/Data/Status |Specifies the status of the payment order resource. |For a full list of enumeration values refer to `ISO_External_CodeSet` [here](https://github.com/OpenBankingUK/External_internal_CodeSets) | ExternalPaymentTransactionStatus1Code  | |
 | StatusUpdateDateTime |1..1 |OBWriteDomesticScheduledResponse5/Data/StatusUpdateDateTime |Date and time at which the resource status was updated. |ISODateTime | | |
 | StatusReason |0..* |OBWriteDomesticScheduledResponse5/Data/StatusReason |Specifies the status reason. | OBStatusReason |
-| StatusReasonCode |0..1 |OBWriteDomesticScheduledResponse5/Data/StatusReason/StatusReasonCode |Specifies the status reason in a code form. |For a full list of enumeration values refer to `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_internal_CodeSets)| OBInternalPermissions1Code |
+| StatusReasonCode |0..1 |OBWriteDomesticScheduledResponse5/Data/StatusReason/StatusReasonCode |Specifies the status reason in a code form. |For a full list of enumeration values refer to `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_internal_CodeSets)| OBExternalStatusReason1Code |
 | StatusReasonDescription |0..1 |OBWriteDomesticScheduledResponse5/Data/StatusReason/StatusReasonDescription |Description supporting the StatusReasonCode. |Max500Text|
 |Path| 0..1 | OBWriteDomesticScheduledResponse5/Data/StatusReason/Path| Recommended but optional reference to JSON path if relevant to the StatusReasonCode| Max500Text| | |
 | ExpectedExecutionDateTime |0..1 |OBWriteDomesticScheduledResponse5/Data/ExpectedExecutionDateTime |Expected execution date and time for the payment resource. |ISODateTime | | |
@@ -400,7 +400,7 @@ Accept: application/json
             }
           ]
         },
-        "Unstructured": "Internal ops code 5120101"
+        "Unstructured": ["Internal ops code 5120101"]
     }
   },
   "Risk": {

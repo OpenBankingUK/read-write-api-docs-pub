@@ -428,7 +428,7 @@ Account Access Consents are long-lived consents.
 
 A PSU can re-authenticate an Account Access Consent if:
 
-- The account-access-consent has a Status of `AUTH` and
+- The account-access-consent has a Status of `AUTH` or `CANC` and
 - The `ExpirationDateTime` of the account-access-consent, if specified, has not elapsed.
 
 Where there is no change in the consent parameters required, TPPs should perform a re-authentication / refresh upon the original consent using the same intent-id as before, instead of issuing a new, duplicate consent.

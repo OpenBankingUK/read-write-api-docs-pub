@@ -182,7 +182,7 @@ APIs have been defined to be idempotent, where not doing so would cause a poor P
 
 Digital signatures will facilitate non-repudiation for Open Banking APIs.
 
-The approach for message signing is documented in [Basics / Message Signing](#message-signing-1).
+The approach for message signing is documented in [Basics / Message Signing](#message-signing-2).
 
 The applicability of signatures to individual requests and responses is documented on the page for each of the resources. However, implementers of the standards can **optionally** add signatures to all response and request payloads.
 
@@ -190,7 +190,7 @@ The applicability of signatures to individual requests and responses is document
 
 Message Encryption is an **optional** feature of the Open Banking APIs to facilitate additional protection of inflight data.
 
-The approach for message encryption is documented in [Basics / Message Encryption](#message-encryption-1).
+The approach for message encryption is documented in [Basics / Message Encryption](#message-encryption-2).
 
 Applicability to individual requests and responses is not defined in the standards. Application will be based on agreement between implementors of the standards.
 
@@ -317,7 +317,7 @@ All dates in the JWT claims are expressed as a JSON number, representing the nu
 1518446700
 ```
 
-When an ASPSP receives a request with an incorrectly formatted date, it **may** respond with a status code of `400 Bad Request` and an error code of `UK.OBIE.Field.InvalidDate`
+When an ASPSP receives a request with an incorrectly formatted date, it **may** respond with a status code of `400 Bad Request` and an error code of `U003`
 
 ### Resource URI Path Structure
 
@@ -441,11 +441,11 @@ The situation could arise when:
 * The TPP attempted to access a resource with an Id that it does not have access to. e.g., an attempt to access GET /domestic-payments/1001 where a payment resource with Id 1001 belongs to another TPP.
 * The TPP tries to access an account/transaction resource and the TPP does not have a consent authorisation with the right Permissions to access the requested resource. e.g., an attempt to access GET /standing-orders when the ReadStandingOrdersBasic permission was not included in the consent authorisation.
 * The TPP tries to access an account/transaction resource and the TPP does not have a consent authorisation for the AccountId. e.g., an attempt to access GET /accounts/2001 or GET /accounts/2001/transactions when the PSU has not selected AccountId 2001 for authorisation.
-* The TPP attempts to access a Resource and the ASPSP decides to re-authenticate the PSU. The ASPSP must respond back with an appropriate error code to indicate re-authentication is required and also update the Consent `Status` with `CANC` and appropriate `StatusReasonCode`. For more guidance refer to the [CEGs](https://consultation.standards.openbanking.org.uk/customer-experience-guidelines/appendices/common-errors/v4-0-draft1/).
+* The TPP attempts to access a Resource and the ASPSP decides to re-authenticate the PSU. The ASPSP must respond back with an appropriate error code to indicate re-authentication is required and also update the Consent `Status` with `CANC` and appropriate `StatusReasonCode`. For more guidance refer to the [CEGs](https://standards.openbanking.org.uk/customer-experience-guidelines/appendices/common-errors/v4-0/).
 
 #### 401 (Unauthorized)
 
-When the TPP uses an expired access token, the ASPSP must return a 401 (Unauthorized) with an error response as per ISO or OB proprietary reason codes in the `ErrorCode` and update the respective Consent `Status`. For more guidance refer to the [CEGs](https://consultation.standards.openbanking.org.uk/customer-experience-guidelines/appendices/common-errors/v4-0-draft1/). 
+When the TPP uses an expired access token, the ASPSP must return a 401 (Unauthorized) with an error response as per ISO or OB proprietary reason codes in the `ErrorCode` and update the respective Consent `Status`. For more guidance refer to the [CEGs](https://standards.openbanking.org.uk/customer-experience-guidelines/appendices/common-errors/v4-0/). 
 
 Situations where no token is provided or it is invalid should return 401 (Unauthorised) without an error response.
 
@@ -1177,7 +1177,7 @@ where the `assertion` is a JWS of the format
 
 Open Banking Specifications include various fields of Enumerated data types, where either the values are fixed to a OBL defined set of alternatives (i.e. Static Enumerations), or flexible with an initial OBL defined set of alternatives, and ASPSPs can use/extend these alternatives (i.e. Namespaced Enumerations).
 
-While Static Enumerations are listed on each API Specification page, Namespaced Enumerations are captured on the Namespaced Enumerations page and the [External_External_codesets reporsitory](https://github.com/OpenBankingUK/External_internal_CodeSets).
+While Static Enumerations are listed on each API Specification page, Namespaced Enumerations are captured on the Namespaced Enumerations page and the [External_External_codesets repository](https://github.com/OpenBankingUK/External_internal_CodeSets).
 
 ### Common Payload Structure
 
@@ -1643,7 +1643,7 @@ Accept: application/json
       },
       "RemittanceInformation": {
         "Reference": "FRESCO-101",
-        "Unstructured": "Internal ops code 5120101"
+        "Unstructured": ["Internal ops code 5120101"]
       }
     }
   },

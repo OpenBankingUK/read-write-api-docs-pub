@@ -57,7 +57,7 @@ Accept: application/json
    },
    "RemittanceInformation": {
     "Reference": "FRESCO-101",
-    "Unstructured": "Internal ops code 5120101"
+    "Unstructured": ["Internal ops code 5120101"]
    },
    "ExchangeRateInformation": {
     "UnitCurrency": "GBP",
@@ -105,7 +105,7 @@ Content-Type: application/json
    },
    "RemittanceInformation": {
     "Reference": "FRESCO-101",
-    "Unstructured": "Internal ops code 5120101"
+    "Unstructured": ["Internal ops code 5120101"]
    },
    "ExchangeRateInformation": {
     "UnitCurrency": "GBP",
@@ -204,7 +204,7 @@ Accept: application/json
    },
    "RemittanceInformation": {
     "Reference": "FRESCO-101",
-    "Unstructured": "Internal ops code 5120101"
+    "Unstructured": ["Internal ops code 5120101"]
    },
    "ExchangeRateInformation": {
     "UnitCurrency": "GBP",
@@ -291,7 +291,7 @@ Accept: application/json
    },
    "RemittanceInformation": {
     "Reference": "FRESCO-101",
-    "Unstructured": "Internal ops code 5120101"
+    "Unstructured": ["Internal ops code 5120101"]
    },
    "ExchangeRateInformation": {
     "UnitCurrency": "GBP",
@@ -382,7 +382,7 @@ Accept: application/json
    },
    "RemittanceInformation": {
     "Reference": "FRESCO-101",
-    "Unstructured": "Internal ops code 5120101"
+    "Unstructured": ["Internal ops code 5120101"]
    },
    "ExchangeRateInformation": {
     "UnitCurrency": "GBP",
@@ -430,7 +430,7 @@ Content-Type: application/json
    },
    "RemittanceInformation": {
     "Reference": "FRESCO-101",
-    "Unstructured": "Internal ops code 5120101"
+    "Unstructured": ["Internal ops code 5120101"]
    },
    "ExchangeRateInformation": {
     "UnitCurrency": "GBP",
@@ -471,7 +471,7 @@ Accept: application/json
    "ChargeBearer": "BorneByDebtor",
    "RemittanceInformation": {
     "Reference": "FRESCO-101",
-    "Unstructured": "Internal ops code 5120101"
+    "Unstructured": ["Internal ops code 5120101"]
    },
 	 "ExchangeRateInformation": {
 		"UnitCurrency": "USD",

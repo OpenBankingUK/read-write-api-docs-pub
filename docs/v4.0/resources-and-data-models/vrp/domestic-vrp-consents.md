@@ -146,9 +146,9 @@ The state model for the VRP consents resource follows the generic consent state 
 
 All `domestic-vrp-consents` start off with a Status of `AWAU`
 
-Once the PSU authorises the resource - the StausCode will be set to `AUTH`.
+Once the PSU authorises the resource - the Status will be set to `AUTH`.
 
-If the PSU rejects the consent, the StautsCode will be set to `RJCT`.
+If the PSU rejects the consent, the Status will be set to `RJCT`.
 
 The available status codes for the VRP consents resource are:
 
@@ -252,7 +252,6 @@ The OBRegulatoryReporting1 class is defined in the [vrp-profile](../../profiles/
 | ---- |-----|---------- |------|
 | __DebtorAccount__ (0..1) | `DebtorAccount` | Unambiguous identification of the account of the debtor to which a debit entry will be made as a result of the transaction. | [OBCashAccountDebtorWithName](#OBCashAccountDebtorWithName) |
 | __UltimateDebtor__ (0..1) | `UltimateDebtor` | Ultimate party that owes an amount of money to the (ultimate) creditor. |[OBUltimateDebtor1](../../profiles/vrp-profile.md#obultimatedebtor1) |
-| __CreditorAgent__ (0..1) | `CreditorAgent` | Financial institution servicing an account for the creditor.     | OBBranchAndFinancialInstitutionIdentification6 |
 | __CreditorAccount__ (0..1) | `CreditorAccount`   |Unambiguous identification of the account of the creditor to which a credit entry will be posted as a result of the payment transaction.       |OBCashAccountCreditor3 |
 | __CreditorPostalAddress__ | `CreditorPostalAddress` | Information that locates and identifies a specific address, as defined by postal services or in free format text. | [OBPostalAddress7](../../profiles/vrp-profile.md#obpostaladdress7)|
 | __UltimateCreditor__ (0..1) | `UltimateCreditor` | Ultimate party to which an amount of money is due. |[OBUltimateCreditor1](../../profiles/vrp-profile.md#obultimatecreditor1) |
@@ -387,7 +386,7 @@ The Risk block is a common class used in requests and responses
 
 | Name |Path |Definition | Type |
 | ---- |-----|---------- |------|
-| __Data__ (0..1) | `Data`|
+| __Data__ (1..1) | `Data`|
 | __Data. ReadRefundAccount__ (0..1) | `Data. ReadRefundAccount` | Indicates whether the `RefundAccount` object should be included in the response | Yes No|
 | __ControlParameters__ (1..1) | `Data. ControlParameters` | The control parameters under which this VRP must operate | [OBDomesticVRPControlParameters](#OBDomesticVRPControlParameters)|
 | __Initiation__ (1..1) | `Data. Initiation` | The parameters of the VRP consent that should remain unchanged for each payment under this VRP | [OBDomesticVRPInitiation](#OBDomesticVRPInitiation)|
@@ -403,11 +402,12 @@ The Risk block is a common class used in requests and responses
 | __ConsentId__  (1..1)| `Data. ConsentId` | Unique identification as assigned by the ASPSP to uniquely identify the consent resource.      | Max128Text|
 | __ReadRefundAccount__ (0..1) | `Data. ReadRefundAccount` | Indicates whether the `RefundAccount` object should be included in the response | Yes No|
 | __CreationDateTime__ (1..1)| `Data. CreationDateTime` | Date and time at which the resource was created.|ISODateTime|
-| __Status__ (1..1) | `Data. Status` | Specifies the status of resource in code form.  |AUTH AWAU RJCT CANC EXPD |
+| __Status__ (1..1) | `Data. Status` | Specifies the status of resource in code form.  |For a full list of values see `OBInternalConsentStatus1Code` [here](https://github.com/OpenBankingUK/External_internal_CodeSets) |
 | __StatusUpdateDateTime__ (1..1)| `Data. StatusUpdateDateTime` |Date and time at which the resource status was updated.  | ISODateTime  |
 | __StatusReason__ (0..*) | `Data. StatusReason` | An array of StatusReasonCode |OBStatusReason |
 | __StatusReasonCode__ (0..1) | `Data. StatusReason. StatusReasonCode` | Specifies the status reason in a code form. For a full description see ` OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_internal_CodeSets).  |OBExternalStatusReason1Code |
 | __StatusReasonDescription__ (0..1) | `Data. StatusReason. StatusReasonDescription` | Description supporting the StatusReasonCode.  |Max500text|
+| __Path__ (0..1) | `Data. StatusReason. Path` | Path is optional but relevant when the status reason refers to an object/field and hence conditional to provide JSON path.  |Max500Text |
 | __ControlParameters__ (1..1) | `Data. ControlParameters` | The control parameters under which this VRP must operate | [OBDomesticVRPControlParameters](#OBDomesticVRPControlParameters)
 | __Initiation__ (1..1) | `Data. Initiation` | The parameters of the VRP consent that should remain unchanged for each payment under this VRP |  [OBDomesticVRPInitiation](#OBDomesticVRPInitiation)
 | __DebtorAccount__ (0..1) | `Data.DebtorAccount` | The DebtorAccount details as specified by the PSU when account selection happens at the ASPSP.<br><br>__Note:__  The details must be provided in the consent response (OBDomesticVRPConsentResponse) by the ASPSP to enable the PISP to associate it with future VRP payments that are made using the VRP Consent. | OBCashAccountDebtorWithName|

@@ -94,7 +94,7 @@ The available status codes for the domestic-payment-consent resource are:
 
 The API endpoint allows the PISP to ask an ASPSP to confirm funds on a **domestic-payment-consent** resource.
 
-* An ASPSP can only respond to a funds confirmation request if the **domestic-payment-consent** resource has an Authorised status. If the status is not Authorised, an ASPSP must respond with a 400 (Bad Request) and a ```U009``` error code.
+* An ASPSP can only respond to a funds confirmation request if the **domestic-payment-consent** resource has an AUTH status. If the status is not AUTH, an ASPSP must respond with a 400 (Bad Request) and a ```U009``` error code.
 * Confirmation of funds requests do not affect the status of the **domestic-payment-consent** resource.
 
 Refer to [External_Internal_CodeSets](https://github.com/OpenBankingUK/External_Internal_CodeSets) -> OB_Internal_CodeSet -> `OBInternalPermissions1Code`.
@@ -191,7 +191,7 @@ For the OBDomestic2 Initiation object:
 | InstructedAmount |1..1 |OBDomestic2/InstructedAmount |Amount of money to be moved between the debtor and creditor, before deduction of charges, expressed in the currency as ordered by the initiating party. Usage: This amount has to be transported unchanged through the transaction chain. |OBActiveOrHistoricCurrencyAndAmount | | |
 | Amount |1..1 |OBDomestic2/InstructedAmount/Amount |A number of monetary units specified in an active currency where the unit of currency is explicit and compliant with ISO 4217. |OBActiveCurrencyAndAmount_SimpleType | |`^\d{1,13}$|^\d{1,13}\.\d{1,5}$` |
 | Currency |1..1 |OBDomestic2/InstructedAmount/Currency |A code allocated to a currency by a Maintenance Agency under an international identification scheme, as described in the latest edition of the international standard ISO 4217 "Codes for the representation of currencies and funds". |ActiveOrHistoricCurrencyCode | |^[A-Z]{3,3}$ |
-| DebtorAccount |0..1 |OBDomestic2/DebtorAccount |Unambiguous identification of the account of the debtor to which a debit entry will be made as a result of the transaction. |OBCashAccountDebtor4 | | |
+| DebtorAccount |0..1 |OBDomestic2/DebtorAccount |Unambiguous identification of the account of the debtor to which a debit entry will be made as a result of the transaction. | | | |
 | SchemeName |1..1 |OBDomestic2/DebtorAccount/SchemeName |Name of the identification scheme, in a coded form as published in an external list. | For a full list of enumeration values refer to `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets). |OBInternalAccountIdentification4Code | 
 | Identification |1..1 |OBDomestic2/DebtorAccount/Identification |Identification assigned by an institution to identify an account. This identification is known by the account owner. |Max256Text | | |
 | Name |0..1 |OBDomestic2/DebtorAccount/Name |The account name is the name or names of the account owner(s) represented at an account level, as displayed by the ASPSP's online channels. Note, the account name is not the product name or the nickname of the account. |Max350Text | | |
@@ -203,15 +203,17 @@ For the OBDomestic2 Initiation object:
 | Identification |1..1 |OBDomestic2/CreditorAccount/Identification |Identification assigned by an institution to identify an account. This identification is known by the account owner. |Max256Text | | |
 | Name |1..1 |OBDomestic2/CreditorAccount/Name |The account name is the name or names of the account owner(s) represented at an account level. Note, the account name is not the product name or the nickname of the account. OB: ASPSPs may carry out name validation for Confirmation of Payee, but it is not mandatory. |Max350Text | | |
 | SecondaryIdentification |0..1 |OBDomestic2/CreditorAccount/SecondaryIdentification |This is secondary identification of the account, as assigned by the account servicing institution. This can be used by building societies to additionally identify accounts with a roll number (in addition to a sort code and account number combination). |Max34Text | | |
+| Proxy |0..1 |OBDomestic2/CreditorAccount/Proxy |Specifies an alternate assumed name for the identification of the account.|OBProxy1 | | |
 | UltimateCreditor |0..1 |OBDomestic2/UltimateCreditor|Ultimate party to which an amount of money is due. | OBUltimateCreditor1 | | |
 | CreditorPostalAddress |0..1 |OBDomestic2/CreditorPostalAddress |Information that locates and identifies a specific address, as defined by postal services. |OBPostalAddress7 | | |
 | RemittanceInformation |0..1 |OBDomestic2/RemittanceInformation |Information supplied to enable the matching of an entry with the items that the transfer is intended to settle, such as commercial invoices in an accounts' receivable system. |OBRemittanceInformation2 | | |
 | RegulatoryReporting |0..10 |OBDomestic2/RegulatoryReporting |Information needed due to regulatory and statutory requirements. |OBRegulatoryReporting1 | | |
 | SupplementaryData |0..1 |OBDomestic2/SupplementaryData |Additional information that can not be captured in the structured fields and/or any other specific block. |OBSupplementaryData1 | | |
 | CreditorAgent |0..1 |OBDomestic2/CreditorAgent |Financial institution servicing an account for the creditor. |OBBranchAndFinancialInstitutionIdentification6 | | |
-| SchemeName |0..1 |OBDomestic2/CreditorAgent/SchemeName |Name of the identification scheme, in a coded form as published in an external list. |OBExternalFinancialInstitutionIdentification4Code | | |
+| SchemeName |0..1 |OBDomestic2/CreditorAgent/SchemeName |Name of the identification scheme, in a coded form as published in an external list. |For a full list of enumeration values refer to `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets). | OBExternalFinancialInstitutionIdentification4Code | |
 | Identification |0..1 |OBDomestic2/CreditorAgent/Identification |Unique and unambiguous identification of a financial institution or a branch of a financial institution. |Max35Text | | |
 | Name |0..1 |OBDomestic2/CreditorAgent/Name |Name by which an agent is known and which is usually used to identify that agent. |Max140Text | | |
+| LEI | 0..1 | OBDomestic2/CreditorAgent/LEI | Legal Entity Identifier is a code allocated to a party as described in ISO 17442 "Financial Services - Legal Entity Identifier (LEI)". |Max20Text | |^[A-Z0-9]{18,18}[0-9]{2,2}$ |
 | PostalAddress |0..1 |OBDomestic2/CreditorAgent/PostalAddress |Information that locates and identifies a specific address, as defined by postal services. |OBPostalAddress7 | | |
 
 
@@ -278,9 +280,9 @@ Them domestic-payment-consent **response** contains the full **original** payloa
 | Data |1..1 |OBWriteDomesticConsentResponse5/Data | |OBWriteDataDomesticConsentResponse5 | | |
 | ConsentId |1..1 |OBWriteDomesticConsentResponse5/Data/ConsentId |OB: Unique identification as assigned by the ASPSP to uniquely identify the consent resource. |Max128Text | | |
 | CreationDateTime |1..1 |OBWriteDomesticConsentResponse5/Data/CreationDateTime |Date and time at which the resource was created. |ISODateTime | | |
-| Status |1..1 |OBWriteDomesticConsentResponse5/Data/Status |Specifies the status of consent resource in code form. |For a full list of enumeration values refer to `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_internal_CodeSets)|OBExternalStatusReason1Code |
+| Status |1..1 |OBWriteDomesticConsentResponse5/Data/Status |Specifies the status of consent resource in code form. |For a full list of enumeration values refer to `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_internal_CodeSets)|OBInternalConsentStatus1Code |
 | StatusReason |0..* |OBWriteDomesticConsentResponse5/Data/StatusReason | An array of StatusReasonCode | OBStatusReason |
-| StatusReasonCode |0..1 |OBWriteDomesticConsentResponse5/Data/StatusReason/StatusReasonCode |Specifies the status reason in a code form. |For a full list of enumeration values refer to `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_internal_CodeSets)|OBInternalPermissions1Code |
+| StatusReasonCode |0..1 |OBWriteDomesticConsentResponse5/Data/StatusReason/StatusReasonCode |Specifies the status reason in a code form. |For a full list of enumeration values refer to `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_internal_CodeSets)| OBExternalStatusReason1Code ||
 | StatusReasonDescription |0..1 |OBWriteDomesticConsentResponse5/Data/StatusReason/StatusReasonDescription |Description supporting the StatusReasonCode. | Max500Text|
 |Path| 0..1 | OBWriteDomesticConsentResponse5/Data/StatusReason/Path| Path is optional but relevant when the status reason refers to an object/field and hence conditional to provide JSON path.| Max500Text| | |
 | StatusUpdateDateTime |1..1 |OBWriteDomesticConsentResponse5/Data/StatusUpdateDateTime |Date and time at which the resource status was updated. |ISODateTime | | |
@@ -361,7 +363,7 @@ Accept: application/json
           "Identification": "441234012345",
           "Code": "TELE",
           "Type": "Telephone"
-        },
+        }
       },
       "CreditorAccount": {
         "SchemeName": "UK.OBIE.SortCodeAccountNumber",
@@ -372,9 +374,9 @@ Accept: application/json
           "Identification": "2360549017905188",
           "Code": "TELE",
           "Type": "Telephone"
-        },
+        }
       },
-      "CreditorPostalAddress":{
+      "CreditorPostalAddress": {
         "AddressType": "BIZZ",
         "Department": "Finance",
         "SubDepartment": "Payroll",
@@ -386,7 +388,7 @@ Accept: application/json
         "Room": "844",
         "PostBox": "PO Box 123456",
         "PostCode": "Z78 4TY",
-        "TownLocationName":"Bank",
+        "TownLocationName": "Bank",
         "TownName": "London",
         "DistrictName": "Greater London",
         "CareOf": "Ms Jane Smith",
@@ -408,19 +410,19 @@ Accept: application/json
           "Country": "UK"
         }
       },
-       "CreditorAgent": {  
-          "LEI": "IZ9Q00LZEVUKWCQY6X15",
-          "SchemeName": "UK.OBIE.BICFI",
-          "Identification": "80200112344562",
-          "Name": "The Credit Agent", 
-          "PostalAddress": { 
-            "AddressType": "BIZZ",
-            "StreetName": "Bank Street",
-            "BuildingNumber": "11",
-            "Floor": "6",
-            "PostCode": "Z78 4TY",
-            "TownName": "London",
-            "Country": "UK"
+      "CreditorAgent": {
+        "LEI": "IZ9Q00LZEVUKWCQY6X15",
+        "SchemeName": "UK.OBIE.BICFI",
+        "Identification": "80200112344562",
+        "Name": "The Credit Agent",
+        "PostalAddress": {
+          "AddressType": "BIZZ",
+          "StreetName": "Bank Street",
+          "BuildingNumber": "11",
+          "Floor": "6",
+          "PostCode": "Z78 4TY",
+          "TownName": "London",
+          "Country": "UK"
         }
       },
       "UltimateCreditor": {
@@ -436,28 +438,37 @@ Accept: application/json
           "PostCode": "Z78 4TY",
           "TownName": "London",
           "Country": "UK"
-          }
-        },
-      "RegulatoryReporting": [{
+        }
+      },
+      "RegulatoryReporting": [
+        {
           "DebitCreditReportingIndicator": "CRED",
           "Authority": {
             "Name": "string",
             "CountryCode": "UG"
           },
-          "Details": [{
+          "Details": [
+            {
               "Type": "CRED",
               "Date": "2024-04-25T13:26:41.911Z",
-              "Information": ["Reg info1", "Reg info2"],
+              "Information": [
+                "Reg info1",
+                "Reg info2"
+              ],
               "Country": "QG",
               "Amount": {
                 "Amount": "4.68702",
                 "Currency": "JGM"
               }
-            }]
-        }],
+            }
+          ]
+        }
+      ],
       "RemittanceInformation": {
-        "Structured": [{
-            "ReferredDocumentInformation": [{
+        "Structured": [
+          {
+            "ReferredDocumentInformation": [
+              {
                 "Code": "CINV",
                 "Issuer": "Issuer01",
                 "Number": "Number_01",
@@ -465,7 +476,8 @@ Accept: application/json
                 "LineDetails": [
                   "LineDetail"
                 ]
-              }],
+              }
+            ],
             "ReferredDocumentAmount": 1,
             "CreditorReferenceInformation": {
               "Code": "DISP",
@@ -475,28 +487,31 @@ Accept: application/json
             "Invoicer": "INVR51856",
             "Invoicee": "INVE5161856",
             "TaxRemittance": "Tax Remittance related information",
-            "AdditionalRemittanceInformation": ["Free text for additional information"],
-          }],
-          "Unstructured": "Internal ops code 5120101"
-       }
+            "AdditionalRemittanceInformation": [
+              "Free text for additional information"
+            ]
+          }
+        ],
+        "Unstructured": ["Internal ops code 5120101"]
+      }
     },
     "Authorisation": {
-      "AuthorisationType": "Any", 
-      "CompletionDateTime": "2025-05-30T10:35:27Z",
+      "AuthorisationType": "Any",
+      "CompletionDateTime": "2025-05-30T10:35:27Z"
     },
     "SCASupportData": {
-        "RequestedSCAExemptionType": "EcommerceGoods",
-        "AppliedAuthenticationApproach": "SCA",
-        "ReferencePaymentOrderId": "O-611265",
+      "RequestedSCAExemptionType": "EcommerceGoods",
+      "AppliedAuthenticationApproach": "SCA",
+      "ReferencePaymentOrderId": "O-611265"
     },
     "Risk": {
       "PaymentContextCode": "EcommerceMerchantInitiatedPayment",
       "ContractPresentIndicator": false,
       "PaymentPurposeCode": "EPAY",
-      "CategoryPurposeCode": "CASH", 
+      "CategoryPurposeCode": "CASH",
       "BeneficiaryPaymentDetailsPrepopulatedIndicator": false,
       "BeneficiaryAccountType": "Business",
-      "MerchantCategoryCode": "7300", 
+      "MerchantCategoryCode": "7300",
       "MerchantCustomerIdentification": "053598653254",
       "DeliveryAddress": {
         "AddressLine": [
@@ -682,7 +697,7 @@ Content-Type: application/json
             "TaxRemittance": "Tax Remittance related information",
             "AdditionalRemittanceInformation": ["Free text for additional information"],
           }],
-          "Unstructured": "Internal ops code 5120101"
+          "Unstructured": ["Internal ops code 5120101"]
         }
       }
   },
@@ -860,7 +875,7 @@ Content-Type: application/json
             "AdditionalRemittanceInformation": ["Free text for additional information"],  
           }
         ],
-        "Unstructured": "Internal ops code 5120101"
+        "Unstructured": ["Internal ops code 5120101"]
        }
     },
     "Debtor": {

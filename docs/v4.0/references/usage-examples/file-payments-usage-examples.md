@@ -450,7 +450,7 @@ A sample file with 3 Domestic Payments - CHAPS, BACS and one unspecified is prov
 			},
 			"RemittanceInformation": {
 				"Reference": "FRESCO-037",
-				"Unstructured": "Internal ops code 5120103"
+				"Unstructured": ["Internal ops code 5120103"]
 			}
 		}, {
 			"InstructionIdentification": "ANSM021",
@@ -472,7 +472,7 @@ A sample file with 3 Domestic Payments - CHAPS, BACS and one unspecified is prov
 			},
 			"RemittanceInformation": {
 				"Reference": "FRESCO-037",
-				"Unstructured": "Internal ops code 5120103"
+				"Unstructured": ["Internal ops code 5120103"]
 			}
 		}, {
 			"InstructionIdentification": "ANSM022",
@@ -493,7 +493,7 @@ A sample file with 3 Domestic Payments - CHAPS, BACS and one unspecified is prov
 			},
 			"RemittanceInformation": {
 				"Reference": "FRESCO-037",
-				"Unstructured": "Internal ops code 5120103"
+				"Unstructured": ["Internal ops code 5120103"]
 			}
 		}]
 	}
