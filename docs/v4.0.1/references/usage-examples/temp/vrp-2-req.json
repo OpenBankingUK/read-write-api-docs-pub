@@ -1,0 +1,32 @@
+{
+  "Data": {
+    "ConsentId": "fe615446-e53a-45ed-954c-ae5d1f97a93b",
+    "PSUAuthenticationMethods": "UK.OBIE.SCA",
+
+    "Initiation": {
+      "RemittanceInformation": {
+        "Reference": "Sweepco"
+      }
+    },
+
+    "Instruction": {
+      "CreditorAccount": {
+        "SchemeName": "SortCodeAccountNumber",
+        "Identification": "30949330000010",
+        "SecondaryIdentification": "Roll 90210",
+        "Name": "Marcus Sweepimus"
+      },
+      "InstructedAmount": {
+        "Amount": "10.00",
+        "Currency": "GBP"
+      },
+      "RemittanceInformation": {
+        "Reference": "Sweepco"
+      }
+    }
+  },
+
+  "Risk": {
+    "PaymentContextCode": "PartyToParty"
+  }
+}
