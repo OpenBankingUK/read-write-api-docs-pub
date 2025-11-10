@@ -121,6 +121,14 @@ This endpoint should not be used to modify content of an existing consent create
 
 The request body should contain an array of JSON Patch operations, as per [RFC 6902](https://datatracker.ietf.org/doc/html/rfc6902), adressing only the changed schema and any associated enumeration values that have moved to short code format, matching the current API specification.  Values originally supplied in the consent such as account information, control parameters, dates or monetary values __must not__ change and the ASPSP __must__ reject any requests which modify these values.
 
+When accessing a v3 payment consent on v4 endpoints, the ASPSP must map fields to the v4 equivalents,  For example;
+
+In v3, OBDomestic2/RemittanceInformation/Unstructured is a string.  In v4, this field is an array of strings and is located in OBRemittanceInformation2/Unstructured. This should be represented as an array containing a single string: "Unstructured":["Unstructured Information"]
+
+In v3, the reference field was located in OBDomestic2/RemittanceInformation/Reference.  In v4 it is now located in OBRemittanceInformation2/Structured/CreditorReferenceInformation/Reference
+
+There have been no changes to the length or schema of the Reference field.
+
 PATCH operations are atomic, all requested changes are successfully applied or none are. Errors should reflect the underlying cause and indicate which field caused the failure if relevant.
 
 The following examples shows a series of patch operations that updates the ContractPresentIndicator field name and updates the AddressType value to the ISO code value.
