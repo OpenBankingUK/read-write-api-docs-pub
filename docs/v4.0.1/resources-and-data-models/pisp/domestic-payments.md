@@ -74,7 +74,7 @@ A PISP can retrieve the domestic-payment to check its status.
 
 #### Status
 
-The domestic-payment resource must have one of the following ExternalPaymentTransactionStatus1Code code-set enumerations (for more information see `ExternalPaymentTransactionStatus1Code` [here](https://github.com/OpenBankingUK/External_internal_CodeSets)) :
+The domestic-payment resource must have one of the following ExternalPaymentTransactionStatus1Code code-set enumerations (for more information see `ExternalPaymentTransactionStatus1Code` [here](https://github.com/OpenBankingUK/External_internal_CodeSets))  Note; as at November 2025 not all ASPSPs are able to return all mandatory payment status codes. Please check individual ASPSP developer portals to understand what you will see from each ASPSP :
 
 | Status |
 | ------ |
