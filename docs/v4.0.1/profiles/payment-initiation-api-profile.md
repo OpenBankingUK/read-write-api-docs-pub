@@ -1063,7 +1063,7 @@ PISP -> ASPSP Resource Server: POST /domestic-payments
 ASPSP Resource Server -> PISP: HTTP 201 (Created) DomesticPaymentId
 note over ASPSP Resource Server: Consent Status: COND
 note over ASPSP Resource Server:Payment Status: PDNG
-note over ASPSP Resource Server:MultiAuthorisation Status: AWAU
+note over ASPSP Resource Server:MultiAuthorisation Status: AWAF
 
 note over PSU Initial Authoriser: ASPSP Resource Server \nStep 5: Authorize Consent - Final Authoriser
 
