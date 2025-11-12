@@ -197,7 +197,7 @@ It is **MANDATORY** to include the ReadTransactionDetail permission to return an
   * OBReadTransaction6/Data/Transaction/DebtorAccount
   * OBReadTransaction6/Data/Transaction/UltimateDebtor
 
-* If the **ReadTransactionsDetail** is granted by the PSU it is **CONDITIONAL** to return the following, conditionality being based on the information being applicatble to the transaction and ASPSP:
+* If the **ReadTransactionsDetail** is granted by the PSU it is **CONDITIONAL** to return the following, conditionality being based on the information being applicable to the transaction and ASPSP:
   * OBReadTransaction6/Data/Transaction/TransactionInformation (0..1)
   * OBReadTransaction6/Data/Transaction/Balance (0..1)
   * OBReadTransaction6/Data/Transaction/MerchantDetails (0..1)
