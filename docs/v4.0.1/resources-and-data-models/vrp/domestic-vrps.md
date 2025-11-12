@@ -1,4 +1,4 @@
-# Domestic VRPS - v4.0 <!-- omit in toc -->
+# Domestic VRPS - v4.0.1 <!-- omit in toc -->
 
 - [Overview](#overview)
 - [Endpoints](#endpoints)
@@ -190,7 +190,7 @@ __Payment order state model key:__
 | __Data__ (1..1) | `Data`| | |
 | __PaymentStatus__ (0..*) | | |
 | __PaymentTransactionId__ (1..1) | `Data. PaymentTransactionId` |Unique identifier for the transaction within an servicing institution. This identifier is both unique and immutable. |Max210Text|
-| __Status__ (1..1) |`Data. Status` |Status of a transfer, as assigned by the transaction administrator. | See `ExternalPaymentTransactionStatus1Code` in [External codeset list](https://github.com/OpenBankingUK/External_internal_CodeSets)| ExternalPaymentTransactionStatus1Code|
+| __Status__ (1..1) |`Data. Status` |Status of a transfer, as assigned by the transaction administrator. | See `ExternalPaymentTransactionStatus1Code` in [Internal codeset list](https://github.com/OpenBankingUK/External_internal_CodeSets)| ExternalPaymentTransactionStatus1Code|
 | __StatusUpdateDateTime__ (1..1)       | `Data. StatusUpdateDateTime`       | Date and time at which the resource Status was updated. | ISODateTime |
 | __StatusDetail__ (0..*) | `Data. StatusDetail` |Payment status details as per underlying Payment Rail.| |
 | __LocalInstrument__ (0..1) | `Data. PaymentStatus. StatusDetail. LocalInstrument` |User community specific instrument.  Usage: This element is used to specify a local instrument, local clearing option and/or further qualify the service or service level. | For a full list of values see `OBInternalLocalInstrument1Code` in `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets) |
