@@ -89,7 +89,7 @@ Each account resource will have a unique and immutable AccountId.
 
 ### Permission Codes
 
-The resource differs depending on the permissions (ReadAccountsBasic and ReadAccountsDetail) used to access the resource. When the resource is accessed with ReadAccountsDetail it implies that acces is also granted to the ReadAccountBasics permissions.  Whilst it is duplication for a TPP to request both permission codes, it is not a malformed request, and the ASPSP must not reject solely on the basis of duplication.
+The resource differs depending on the permissions (ReadAccountsBasic and ReadAccountsDetail) used to access the resource. When the resource is accessed with ReadAccountsDetail it implies that access is also granted to the ReadAccountBasics permissions.  Whilst it is duplication for a TPP to request both permission codes, it is not a malformed request, and the ASPSP must not reject solely on the basis of duplication.
 
 Where both ReadAccountsBasic and ReadAccountsDetail are present, the most detailed level (ReadAccountsDetail) must be used.
 
