@@ -185,7 +185,7 @@ The following combinations of permissions are not allowed, and it is **MANDATORY
 	* Permissions array that contains **ReadTransactionsCredits** but does not contain at least one of **ReadTransactionsBasic**		and **ReadTransactionsDetail** 
 	* Permissions array that contains **ReadTransactionsDebits** but does not contain at least one of **ReadTransactionsBasic**		and **ReadTransactionsDetail**	
 
-It is **MANDATORY** to incliude the ReadTransactionDetail permission to return any of the following objects:
+It is **MANDATORY** to include the ReadTransactionDetail permission to return any of the following objects:
 
   * OBReadTransaction6/Data/Transaction/TransactionInformation
   * OBReadTransaction6/Data/Transaction/Balance
