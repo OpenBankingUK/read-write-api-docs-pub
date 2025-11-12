@@ -175,9 +175,18 @@ Since Version 3.1.5, the mutability for a transaction has been made explicit:
 
 ### Permission Codes
 
-The resource differs depending on the permissions (ReadTransactionsBasic and ReadTransactionsDetail in addition to the appropriate ReadTransactionsCredits and/or ReadTransactionsDebits) used to access resource. In the event the resource is accessed with both ReadTransactionsBasic and ReadTransactionsDetail, the most detailed level (ReadTransactionsDetail) must be used.
+The resource differs depending on the permissions (ReadTransactionsBasic and ReadTransactionsDetail in addition to the appropriate ReadTransactionsCredits and/or ReadTransactionsDebits) used to access resource. When the resource is accessed with ReadTransactionsDetail it implies that access is also granted to the ReadTransactionsBasic permissions.  Whilst it is duplicaton for a TPP to request both permission codes, it is not a malformed request, and the ASPSP must not reject solely on the basis of duplication.
 
-* These objects **must not** be returned **without** the **ReadTransactionsDetail** permission:
+Where both ReadTransactionsBasic and ReadTransactionsDetail are present, the most detailed level (ReadTransactionsDetail) must be used.  The permissions array **must** contain at least ReadAccountsBasic or ReadAccountsDetail.
+
+The following combinations of permissions are not allowed, and it is **MANDATORY** that the ASPSP rejects these account-access-consents with a 400 response code:
+	* Permissions array that contains **ReadTransactionsBasic** but does not contain at least one of **ReadTransactionsCredits**		and **ReadTransactionsDebits** 
+	* Permissions array that contains **ReadTransactionsDetail** but does not contain at least one of **ReadTransactionsCredits**		and **ReadTransactionsDebits** 
+	* Permissions array that contains **ReadTransactionsCredits** but does not contain at least one of **ReadTransactionsBasic**		and **ReadTransactionsDetail** 
+	* Permissions array that contains **ReadTransactionsDebits** but does not contain at least one of **ReadTransactionsBasic**		and **ReadTransactionsDetail**	
+
+It is **MANDATORY** to include the ReadTransactionDetail permission to return any of the following objects:
+
   * OBReadTransaction6/Data/Transaction/TransactionInformation
   * OBReadTransaction6/Data/Transaction/Balance
   * OBReadTransaction6/Data/Transaction/MerchantDetails
@@ -187,28 +196,29 @@ The resource differs depending on the permissions (ReadTransactionsBasic and Rea
   * OBReadTransaction6/Data/Transaction/DebtorAgent
   * OBReadTransaction6/Data/Transaction/DebtorAccount
   * OBReadTransaction6/Data/Transaction/UltimateDebtor
-* If the **ReadTransactionsDetail** is granted by the PSU:
-  * OBReadTransaction6/Data/Transaction/TransactionInformation **may** be returned if applicable to the transaction and ASPSP (0..1)
-  * OBReadTransaction6/Data/Transaction/Balance **may** be returned if applicable to the transaction and ASPSP (0..1)
-  * OBReadTransaction6/Data/Transaction/MerchantDetails **may** be returned if applicable to the transaction and ASPSP (0..1)
-  * OBReadTransaction6/Data/Transaction/CreditorAgent **may** be returned if applicable to the transaction and ASPSP (0..1)
-  * OBReadTransaction6/Data/Transaction/CreditorAccount **may** be returned if applicable to the transaction and ASPSP (0..1)
-  * OBReadTransaction6/Data/Transaction/UltimateCreditor **may** be returned if applicable to the transaction and ASPSP (0..1)
-  * OBReadTransaction6/Data/Transaction/DebtorAgent **may** be returned if applicable to the transaction and ASPSP (0..1)
-  * OBReadTransaction6/Data/Transaction/DebtorAccount **may** be returned if applicable to the transaction and ASPSP (0..1)
-  * OBReadTransaction6/Data/Transaction/UltimateDebtor **may** be returned if applicable to the transaction and ASPSP (0..1)
 
-* If the ReadPAN permission is granted by the PSU - the ASPSP may choose to populate the unmasked PAN - if the PAN is being populated in the response for these fields:
+* If the **ReadTransactionsDetail** is granted by the PSU it is **CONDITIONAL** to return the following, conditionality being based on the information being applicable to the transaction and ASPSP:
+  * OBReadTransaction6/Data/Transaction/TransactionInformation (0..1)
+  * OBReadTransaction6/Data/Transaction/Balance (0..1)
+  * OBReadTransaction6/Data/Transaction/MerchantDetails (0..1)
+  * OBReadTransaction6/Data/Transaction/CreditorAgent (0..1)
+  * OBReadTransaction6/Data/Transaction/CreditorAccount (0..1)
+  * OBReadTransaction6/Data/Transaction/UltimateCreditor (0..1)
+  * OBReadTransaction6/Data/Transaction/DebtorAgent (0..1)
+  * OBReadTransaction6/Data/Transaction/DebtorAccount (0..1)
+  * OBReadTransaction6/Data/Transaction/UltimateDebtor (0..1)
+
+* If the ReadPAN permission is granted by the PSU - the ASPSP may **OPTIONALLY** choose to populate the unmasked PAN - if the PAN is being populated in the response for these fields:
 
   * OBReadTransaction6/Data/Transaction/CreditorAccount/Identification
   * OBReadTransaction6/Data/Transaction/DebtorAccount/Identification
   * OBReadTransaction6/Data/Transaction/CardInstrument/Identification
 
-* If the `ReadTransactionDebits` permission is granted by the PSU, the data returned should include debit transactions.
-* If the `ReadTransactionCredits` permission is granted by the PSU, the data returned should include credit transactions.
-* If the `ReadTransactionCredits` and `ReadTransactionDebits` permission is granted by the PSU, the data returned should include debit and credit transactions.
+* If the `ReadTransactionDebits` permission is granted by the PSU, it is **MANDATORY** that the data returned includes debit transactions.
+* If the `ReadTransactionCredits` permission is granted by the PSU, it is **MANDATORY** that the data returned includes credit transactions.
+* If the `ReadTransactionCredits` and `ReadTransactionDebits` permission is granted by the PSU, it is **MANDATORY** that the data returned includes debit and credit transactions.
 
-
+Further information can be found at [Account and Transaction Permissions](../../profiles/account-and-transaction-api-profile.md#permissions)
 
 ### Data Dictionary
 
