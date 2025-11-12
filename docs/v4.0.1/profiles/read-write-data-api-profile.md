@@ -1,4 +1,4 @@
-# Open Banking Read-Write API Profile  - v4.0 <!-- omit in toc -->
+# Open Banking Read-Write API Profile  - v4.0.1 <!-- omit in toc -->
 
    1. [Overview](#overview)
       1. [Document Structure](#document-structure)
@@ -236,6 +236,7 @@ For fields:
 * A TPP **must** specify the value of a Mandatory field.
 * An ASPSP **must** process a Mandatory field when provided by the TPP in an API request.
 * An ASPSP **must** include meaningful values for Mandatory fields in an API response.
+* Mandantory fields are represented as `1..1` or `1..*` in the Data Dictionary Occurrence column.
 
 ##### Conditional
 
@@ -251,6 +252,7 @@ For fields:
 * A TPP **may** specify the value of a Conditional field.
 * An ASPSP **must** process a Conditional field when provided by the TPP in an API request, and **must** respond with an error if it cannot support a particular value of a Conditional field.
 * An ASPSP **must** include meaningful values for Conditional fields in an API response if these are required for regulatory compliance.
+* Conditional fields are represented as `0..1` or `0..*` in the Data Dictionary Occurrence column.
 
 ##### Optional
 
