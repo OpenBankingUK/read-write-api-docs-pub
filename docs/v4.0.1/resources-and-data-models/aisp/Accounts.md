@@ -93,7 +93,7 @@ The resource differs depending on the permissions (ReadAccountsBasic and ReadAcc
 
 Where both ReadAccountsBasic and ReadAccountsDetail are present, the most detailed level (ReadAccountsDetail) must be used.
 
-The following combinations of permissions are not allowed, and it is **MANDATORY** that the ASPSP rejects these account-access-consents with a 400 response code:
+The following combinations of permissions are not allowed, and it is **MANDATORY** that the ASPSP rejects these account-access-consents with a HTTP 400 response code:
 * Account Access Consents with an empty Permissions array
 * Account Access Consents with a permission code thart is not supported by the ASPSP (ASPSPs are expected to publish which API endpoints arte supported in their developer documentation).
 
