@@ -100,6 +100,7 @@ For a specific date range, an account (AccountId) may have no transactions booke
   * The ISO 20022 BankTransactionCode Code and SubCode are specified as 4 letter codes. 
 * ASPSPs must have the ability to provide transactions through APIs for a period that at least equals the period provided through their online channels.
 * ExtendedProprietaryBankTransactionCodes is a OB Proprietary field (introduced by TDA decision 264) to support multiple proprietry Bank Transaction Codes that may be associated with the transaction, in addition to a single default one. The expectation is to capture the default under ProprietaryBankTransactionCode. The ASPSP must publish all the proprietary and extended proprietary bank transaction codes along with usage on their developer portal.
+* TPPs should refer to ASPSP developer portals for information on whether individual BACs transactions are available in the Transactions endpoint.
 
 ### Filtering
 

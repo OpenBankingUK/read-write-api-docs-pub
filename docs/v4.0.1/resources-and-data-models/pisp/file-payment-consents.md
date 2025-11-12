@@ -171,7 +171,9 @@ This section describes the OBFile2 class, which is reused as the Initiation obje
 
 ![OBFile2](./images/OBFile2.svg )
 
-##### Notes 
+##### Notes
+
+* TPPs should refer to ASPSP developer portals for information on which File Payment endpoints are available, specification of accepted file format(s) and information on File Payment statuses.
 
 For the OBFile2 Initiation object: 
 
