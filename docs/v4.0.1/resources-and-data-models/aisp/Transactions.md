@@ -218,7 +218,7 @@ It is **MANDATORY** to include the ReadTransactionDetail permission to return an
 * If the `ReadTransactionCredits` permission is granted by the PSU, it is **MANDATORY** that the data returned includes credit transactions.
 * If the `ReadTransactionCredits` and `ReadTransactionDebits` permission is granted by the PSU, it is **MANDATORY** that the data returned includes debit and credit transactions.
 
-Further information can be found at https://openbankinguk.github.io/read-write-api-site3/v4.0/profiles/account-and-transaction-api-profile.html#permissions
+Further information can be found at [https://openbankinguk.github.io/read-write-api-site3/v4.0/profiles/account-and-transaction-api-profile.html#permissions](https://openbankinguk.github.io/read-write-api-site3/v4.0/profiles/account-and-transaction-api-profile.html#permissions)
 
 ### Data Dictionary
 
