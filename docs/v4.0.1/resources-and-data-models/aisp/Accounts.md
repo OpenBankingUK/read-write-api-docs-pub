@@ -95,7 +95,7 @@ Where both ReadAccountsBasic and ReadAccountsDetail are present, the most detail
 
 The following combinations of permissions are not allowed, and it is **MANDATORY** that the ASPSP rejects these account-access-consents with a HTTP 400 response code:
 * Account Access Consents with an empty Permissions array
-* Account Access Consents with a permission code that is not supported by the ASPSP (ASPSPs are expected to publish which API endpoints arte supported in their developer documentation).
+* Account Access Consents with a permission code that is not supported by the ASPSP (ASPSPs are expected to publish which API endpoints are supported in their developer documentation).
 
 It is **MANDATORY** to include the ReadAccountsDetail permission to return any of the following objects:
 
@@ -110,7 +110,7 @@ It is **MANDATORY** to include the ReadAccountsDetail permission to return any o
 
 If the ReadPAN permission is granted by the PSU, the ASPSP may **OPTIONALLY** choose to populate the OBReadAccount6/Data/Account/Account/Identification with the unmasked PAN (if the PAN is being populated in the response).
 
-Further information can be found at [https://openbankinguk.github.io/read-write-api-site3/v4.0/profiles/account-and-transaction-api-profile.html#permissions](https://openbankinguk.github.io/read-write-api-site3/v4.0/profiles/account-and-transaction-api-profile.html#permissions)
+Further information can be found at [Account and Transaction Permissions](../../profiles/account-and-transaction-api-profile.md#permissions)
 
 ### Data Dictionary
 
