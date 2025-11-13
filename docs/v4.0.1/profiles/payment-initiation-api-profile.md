@@ -709,7 +709,7 @@ This section describes the OBWritePaymentDetails1 class which used in the respon
 | --- |--- |--- |--- |--- |--- |--- |
 | OBWritePaymentDetails1 |1..1 |OBWritePaymentDetails1 |Payment status details. |OBWritePaymentDetails1 | | |
 | LocalInstrument |0..1 |OBWritePaymentDetails1/Data/StatusDetail/LocalInstrument |User community specific instrument.<br><br>Usage: This element is used to specify a local instrument, local clearing option and/or further qualify the service or service level. |For a full list of enumeration values refer to `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets) |OBInternalLocalInstrument1Code| |
-| PaymentTransactionId |1..1 |OBWritePaymentDetailsRespon1/Data/PaymentTransactionId |Unique identifier for the transaction within an servicing institution. This identifier is both unique and immutable. |Max210Text | | |
+| PaymentTransactionId |1..1 |OBWritePaymentDetails1/Data/PaymentTransactionId |Unique identifier for the transaction within an servicing institution. This identifier is both unique and immutable. |Max210Text | | |
 | Status |1..1 |OBWritePaymentDetails1/Data/Status |Status of a transfer, as assigned by the transaction administrator|For a full description see `External_CodeSet` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets) |ExternalPaymentTransactionStatus1Code | |
 | StatusUpdateDateTime |1..1 |OBWritePaymentDetails1/Data/StatusUpdateDateTime |Date and time at which the status was assigned to the transfer. |ISODateTime | | |
 | StatusDetail |0..* |OBWritePaymentDetailsResponse1/Data/StatusDetail |Array of Payment StatusCodes| | | |
