@@ -215,7 +215,7 @@ The OBRegulatoryReporting1 class is defined in the [vrp-profile](../../profiles/
 | ---- |-----|---------- |------|
 | __SchemeName__ (1..1) | `SchemeName` | Name of the identification scheme, in a coded form as published in an external list. | Namespaced Enumeration `OBInternalAccountIdentification4Code`<br><br>For more information see `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_internal_CodeSets)
 | __Identification__ (1..1) | `Identification` | Identification assigned by an institution to identify an account. This identification is known by the account owner. | Max256Text
-| __Name__ (1..1) | `Name` | Name of the account, as assigned by the account servicing institution.  Usage: The account name is the name or names of the account owner(s) represented at an account level. The account name is not the product name or the nickname of the account. | Max70Text  
+| __Name__ (0..1) | `Name` | Name of the account, as assigned by the account servicing institution.  Usage: The account name is the name or names of the account owner(s) represented at an account level. The account name is not the product name or the nickname of the account. | Max70Text  
 | __SecondaryIdentification__ (0..1) | `SecondaryIdentification` | This is secondary identification of the account, as assigned by the account servicing institution.  This can be used by building societies to additionally identify accounts with a roll number (in addition to a sort code and account number combination) | Max34Text
 | __Proxy__ (0..1) |`Proxy` |Specifies an alternate assumed name for the identification of the account. |[OBProxy1](../../profiles/vrp-profile.md#obproxy1)|
 
