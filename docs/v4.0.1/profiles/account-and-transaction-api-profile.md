@@ -45,6 +45,8 @@
       - [Data Dictionary](#obultimatecreditor1-data-dictionary)
     - [OBUltimateDebtor1](#obultimatedebtor1)
       - [Data Dictionary](#obultimatedebtor1-data-dictionary)
+    - [OBCashAccountDebtorWithName](#obcashaccountdebtorwithname)
+      - [Data Dictionary](#obcashaccountdebtorwithname-data-dictionary)
   - [Using Meta to identify Available Transaction Period](#using-meta-to-identify-available-transaction-period)
   - [Mapping to Schemes & Standards](#mapping-to-schemes-standards)
   - [Enumerations](#enumerations)
@@ -568,7 +570,22 @@ No fields for business logic security concerns have been identified for the Acco
 | Identification |0..1 |OBUltimateDebtor1/Identification |Identification assigned by an institution. |Max256Text | | |
 | LEI |0..1 | OBUltimateDebtor1/LEI |Legal entity identification as an alternate identification for a party. Legal Entity Identifier is a code allocated to a party as described in ISO 17442 "Financial Services - Legal Entity Identifier (LEI)".|Max20Text | | ^[A-Z0-9]{18,18}[0-9]{2,2}$|
 | SchemeName |0..1 |OBUltimateDebtor1/SchemeName |Name of the identification scheme, in a coded form as published in an external list. | For a full list of enumeration values refer to `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets). |OBInternalAccountIdentification4Code | 
-| PostalAddress | 0..1 | OBUltimateDebtor1/PostalAddress | Information that locates and identifies a specific address, as defined by postal services. | OBPostalAddress7 | | 
+| PostalAddress | 0..1 | OBUltimateDebtor1/PostalAddress | Information that locates and identifies a specific address, as defined by postal services. | OBPostalAddress7 | |
+
+#### OBCashAccountDebtorWithName
+
+![OBCashAccountDebtorWithName](../resources-and-data-models/vrp/images/OBCashAccountDebtorWithName.svg)
+
+##### OBCashAccountDebtorWithName Data Dictionary
+
+| Name | Occurence | XPath | EnhancedDefinition | Class | Codes |
+| --- | --- | --- | --- | --- | --- |
+| OBCashAccountDebtorWithName | | | Unambiguous identification of the account of the debtor to which a debit entry will be made as a result of the transaction. | OBCashAccountDebtorWithName| |
+| SchemeName | 1..1 | OBCashAccountDebtorWithName/SchemeName | Name of the identification scheme, in a coded form as published in an external list. | For a full list of enumeration values refer to `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_internal_CodeSets)| `OBInternalAccountIdentification4Code` |
+| Identification | 1..1 | OBCashAccountDebtorWithName/Identification | Identification assigned by an institution to identify an account. This identification is known by the account owner. | Max256Text | |
+| Name | 0..1 | OBCashAccountDebtorWithName/Name | Name of the account, as assigned by the account servicing institution.  Usage: The account name is the name or names of the account owner(s) represented at an account level. The account name is not the product name or the nickname of the account. | Max350Text | |
+| SecondaryIdentification | 0..1 | OBCashAccountDebtorWithName/SecondaryIdentification | This is secondary identification of the account, as assigned by the account servicing institution.  This can be used by building societies to additionally identify accounts with a roll number (in addition to a sort code and account number combination) | Max34Text | |
+| Proxy | (0..1) | OBCashAccountDebtorWithName/Proxy | Specifies an alternate assumed name for the identification of the account. | [OBProxy1](#obproxy1) | |
 
 ### Using Meta to identify Available Transaction Period
 
