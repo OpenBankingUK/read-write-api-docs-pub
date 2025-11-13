@@ -539,11 +539,11 @@ The TPP **must** sign the HTTP body of each API request that requires message 
 
 The ASPSP **must** sign the HTTP body of each API response that requires message signing.
 
-The ASPSP **should** verify the signature of API requests that it receives before carrying out the request. If the signature fails validation, the ASPSP **must** respond with a 400 (Bad Request).
+The ASPSP **must** verify the signature of API requests that it receives before carrying out the request. If the signature fails validation, the ASPSP **must** respond with a 400 (Bad Request).
 
 The ASPSP **must** reject any API requests that should be signed but do not contain a signature in the HTTP header with a 400 (Bad Request) error.
 
-The TPP **should** verify the signature of API responses that it receives.
+The TPP **must** verify the signature of API responses that it receives and immediately inform the ASPSP if it receives a payload with an invalid or missing mandatory signature.
 
 The signer **must** sign the message with PS256.
 
