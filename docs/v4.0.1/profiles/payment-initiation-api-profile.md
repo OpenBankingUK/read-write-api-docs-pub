@@ -760,7 +760,7 @@ This section describes the OBSCASupportData1 class, which is used across all  _p
 
 #### OBMandateRelatedInformation1
 
-##### Notes 
+##### Notes
 
 * Please note, within in the `Frequency` object either the `CountPerPeriod` __or__ the `PointInTime` field should be provided. It should __never__ be the case that both are used together.  
 
