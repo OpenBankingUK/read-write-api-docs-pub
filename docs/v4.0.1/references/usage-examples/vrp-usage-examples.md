@@ -797,7 +797,7 @@ Content-Type: application/json
       }
     }},
   "Risk": {
-    "PaymentContextCode": "",
+    "PaymentContextCode": "TransferToSelf",
     "ContractPresentIndicator": true,
     "PaymentPurposeCode": "EPAY",
     "CategoryPurposeCode": "GP2P", 
@@ -908,7 +908,7 @@ Content-Type: application/json
     "Initiation": {}
   },
   "Risk": {
-    "PaymentContextCode": "",
+    "PaymentContextCode": "TransferToSelf",
     "ContractPresentIndicator": true,
     "PaymentPurposeCode": "EPAY",
     "CategoryPurposeCode": "GP2P", 
