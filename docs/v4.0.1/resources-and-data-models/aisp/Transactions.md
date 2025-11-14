@@ -473,8 +473,8 @@ Content-Type: application/json
         "ValueDateTime": "2017-04-05T10:45:22+00:00",
         "TransactionInformation": "Cash from Aubrey",
         "BankTransactionCode": {
-          "Code": "ReceivedCreditTransfer",
-          "SubCode": "DomesticCreditTransfer"
+          "Code": "RCDT",
+          "SubCode": "DMCT"
         },
         "ProprietaryBankTransactionCode": {
           "Code": "Transfer",
@@ -558,8 +558,8 @@ Content-Type: application/json
         "ValueDateTime": "2017-04-05T10:45:22+00:00",
         "TransactionInformation": "Cash from Aubrey",
         "BankTransactionCode": {
-          "Code": "ReceivedCreditTransfer",
-          "SubCode": "DomesticCreditTransfer"
+          "Code": "RCDT",
+          "SubCode": "DMCT"
         },
         "ProprietaryBankTransactionCode": {
           "Code": "Transfer",
