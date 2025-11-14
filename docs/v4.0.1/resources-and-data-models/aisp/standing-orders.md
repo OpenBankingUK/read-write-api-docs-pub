@@ -66,7 +66,6 @@ The OBPostalAddress7 class is defined in the [account-and-transaction-api-profil
 
 The OBMandateRelatedInformation1 class is defined in the [account-and-transaction-api-profile](../../profiles/account-and-transaction-api-profile.md#obmandateRelatedinformation1) page.
 
-
 ### Resource Definition
 
 A resource that contains a set of elements that describes the list of standing-orders that have been set up on a specific account (AccountId).
