@@ -61,8 +61,9 @@
       - [Data Dictionary](#data-dictionary-8)
     - [OBRemittanceInformation2](#obremittanceinformation2)
       - [Data Dictionary](#data-dictionary-9)
+    - [OBReferredDocumentInformation](#obreferreddocumentinformation)
     - [OBMandateRelatedInformation1](#obmandaterelatedinformation1)
-      - [Notes ](#notes)
+      - [Notes](#notes)
       - [Data Dictionary](#data-dictionary-10)
     - [OBRegulatoryReporting1](#obregulatoryreporting1)
       - [Data Dictionary](#data-dictionary-11)
@@ -750,13 +751,19 @@ This section describes the OBSCASupportData1 class, which is used across all  _p
 | Code                            | 0..1       | OBRemittanceInformation2/Structured/CreditorReferenceInformation/Code       | Specifies the amount type, as published in an external referred amount code set.                                                                                                                                      | `ExternalCreditorReferenceType1Code` | For more information see `ExternalCreditorReferenceType1Code` [here](https:/github.com/OpenBankingUK/External_internal_CodeSets) |         |
 | Issuer                          | 0..1       | OBRemittanceInformation2/Structured/CreditorReferenceInformation/Issuer     | Entity that assigns the identification.                                                                                                                                                                               | Max35Text                            |                                                                                                                                  |         |
 | Reference                       | 0..1       | OBRemittanceInformation2/Structured/CreditorReferenceInformation/Reference  | Unique reference, as assigned by the creditor, to unambiguously refer to the payment transaction.                                                                                                                     | Max35Text                            |                                                                                                                                  |         |
-| ReferredDocumentInformation     | 0..*       | OBRemittanceInformation2/Structured/ReferredDocumentInformation             | Provides the identification and the content of the referred document.                                                                                                                                                 | Array                                |                                                                                                                                  |         |  
-| Code                            | 0..1       | OBRemittanceInformation2/Structured/ReferredDocumentInformation/Code        | Type of remittance document, as published in an external document type code set.                                                                                                                                      | `ExternalDocumentType1Code`          | For more information see `ExternalDocumentType1Code` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets)         |         |
-| Issuer                          | 0..1       | OBRemittanceInformation2/Structured/ReferredDocumentInformation/Issuer      | Identification of the issuer of the reference document type.                                                                                                                                                          | Max35Text                            |                                                                                                                                  |         |
-| LineDetails                     | 0..*       | OBRemittanceInformation2/Structured/ReferredDocumentInformation/LineDetails | Set of elements used to provide the content of the referred document line.                                                                                                                                            | Array of String                      |                                                                                                                                  |         |
-| Number                          | 0..1       | OBRemittanceInformation2/Structured/ReferredDocumentInformation/Number      | Identification of the type specified for the referred document line.                                                                                                                                                  | Max35Text                            |                                                                                                                                  |         |
-| RelatedDate                     | 0..1       | OBRemittanceInformation2/Structured/ReferredDocumentInformation/RelatedDate | Date associated with the referred document line.                                                                                                                                                                      | ISODateTime                          |                                                                                                                                  |         |
+| ReferredDocumentInformation     | 0..*       | OBRemittanceInformation2/Structured/ReferredDocumentInformation             | Provides the identification and the content of the referred document. | Array of OBReferredDocumentInformation | | |  
 | Unstructured                    | 0..*       | OBRemittanceInformation2/Unstructured                                       | Information supplied to enable the matching/reconciliation of an entry with the items that the payment is intended to settle, such as commercial invoices in an accounts' receivable system, in an unstructured form. | Array of Max140Text                  |                                                                                                                                  |         |
+
+#### OBReferredDocumentInformation
+
+| Name | Occurrence | XPath | EnhancedDefinition | Class | Codes |
+| --- | --- | --- | --- | --- | ---|
+| OBReferredDocumentInformation |  |OBReferredDocumentInformation | Provides the identification and the content of the referred document| | |
+| Code | 0..1 |OBReferredDocumentInformation/Code |Type of remittance document, as published in an external document type code set. | ExternalDocumentType1Code |For more information see `ExternalDocumentType1Code` in ISO_External_CodeSet [here](https://github.com/OpenBankingUK/External_Internal_CodeSets) |
+| Issuer | 0..1 | OBReferredDocumentInformation/Issuer | Identification of the issuer of the reference document type. | Max35Text | |
+| LineDetails | 0..* | OBReferredDocumentInformation/LineDetails | Set of elements used to provide the content of the referred document line. | Array of Max2048Text | |
+| Number | 0..1 | OBReferredDocumentInformation/Number | Identification of the type specified for the referred document line. | Max35Text | |
+| RelatedDate | 0..1 | OBReferredDocumentInformation/RelatedDate | Date associated with the referred document line. | ISODateTime | |
 
 #### OBMandateRelatedInformation1
 
