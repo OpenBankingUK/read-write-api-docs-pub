@@ -57,12 +57,7 @@ A PISP can retrieve the file-payment to check its status.
 
 #### Status
 
-The file-payments resource must have one of the following initial status codes:
-
-| Status |
-| --- |
-| RCVD |
-| RJCT |
+The initial file-payments resource status **must** be `PDNG`
 
 ### GET /file-payments/{FilePaymentId}/report-file
 
