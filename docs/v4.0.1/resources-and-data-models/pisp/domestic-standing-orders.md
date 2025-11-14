@@ -51,7 +51,7 @@ Once the domestic-standing-order-consent has been authorised by the PSU, the PIS
 * This is done by making a POST request to the **domestic-standing-orders** endpoint.
 * This request is an instruction to the ASPSP to begin the domestic standing order journey. The PISP must submit the domestic standing order immediately, however, there are some scenarios where the ASPSP may not warehouse the domestic standing order immediately (e.g. busy periods at the ASPSP).
 * The PISP **must** ensure that the Initiation and Risk sections of the domestic-standing-order match the corresponding Initiation and Risk sections of the domestic-standing-order-consent resource. If the two do not match, the ASPSP **must not** process the request and **must** respond with a 400 (Bad Request).
-* Any further operations on the domestic-standing-order resource will not result in a Status change for the domestic-standing-order resource.
+* Any further HTTP operations on the domestic-standing-order resource will not result in a Status change for the domestic-standing-order resource.
 * The Status will be updated by the ASPSP in line with payment processing.
 
 #### Status
