@@ -155,7 +155,7 @@ opt payment-order-consent
 PISP <-> ASPSP Resource Server: Establish TLS 1.2 MA
 PISP -> ASPSP Resource Server: GET /payment-order-consents/{ConsentId}
 alt Immediate
-rbox over ASPSP Resource Server #lightgreen: Payment Status: AWAU
+rbox over ASPSP Resource Server #lightgreen: Payment Status: AWAF
 rbox over ASPSP Resource Server #lightgreen: Payment Status: AUTH
 rbox over ASPSP Resource Server #lightgreen: Payment Status: RJCT
 end alt
