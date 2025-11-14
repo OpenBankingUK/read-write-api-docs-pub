@@ -80,6 +80,9 @@ The API endpoint allows the PISP to upload a file to an ASPSP, against a **file-
     * If the content of the metadata does not match the content of the file, the ASPSP **must** reject the file-payment-consent.
 * The file is sent in the HTTP request body.
 * HTTP headers (e.g. Content-Type) are used to describe the file.
+* ASPSPs should document accepted file types on their developer portal.
+* ASPSPs who accept the `UK.OBIE.PaymentInitiation.4.0` file type should specify which payload schemas they accept as payload structures vary across paymennt types.
+	* E.g.  An ASPSP accepting domestic, international and domestic standing orders via file payment should explicitly specify support for these 3 payload schemas on their developer portal.
 
 #### Status
 
