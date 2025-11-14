@@ -1290,7 +1290,7 @@ In objects where an array field is defined as having 0..* values, the array fiel
 
 #### Links
 
-The Links section is mandatory and will always contain absolute URIs to related resources, 
+The Links section is Conditional and will always contain absolute URIs to related resources,
 
 The "Self" member is mandatory.
 
@@ -1318,7 +1318,7 @@ For example:
 
 #### Meta
 
-The Meta section is mandatory, but may be empty.  An optional member is "TotalPages" which is specified as an integer (int32) and shows how many pages of results (for pagination) are available.
+The Meta section is Conditional, but may be empty.  An optional member is "TotalPages" which is specified as an integer (int32) and shows how many pages of results (for pagination) are available.
 
 For example:
 
