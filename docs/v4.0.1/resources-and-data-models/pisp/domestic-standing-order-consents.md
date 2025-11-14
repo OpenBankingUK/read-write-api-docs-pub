@@ -86,8 +86,6 @@ The available status codes for the domestic-standing-order-consent resource are:
 | AUTH |
 | COND |
 
-Refer to [External_Internal_CodeSets](https://github.com/OpenBankingUK/External_Internal_CodeSets) -> OB_Internal_CodeSet -> `OBInternalPermissions1Code`.
-
 ### State Model
 
 #### Payment Order Consent
