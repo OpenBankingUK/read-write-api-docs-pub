@@ -55,7 +55,7 @@ Once the domestic-payment-consent has been authorised by the PSU, the PISP can p
 * This is done by making a POST request to the **domestic-payments** endpoint.
 * This request is an instruction to the ASPSP to begin the domestic single immediate payment journey. The domestic payment must be submitted immediately, however, there are some scenarios where the domestic payment may not be executed immediately (e.g., busy periods at the ASPSP).
 * The PISP **must** ensure that the Initiation and Risk sections of the domestic-payment match the corresponding Initiation and Risk sections of the domestic-payment-consent resource. If the two do not match, the ASPSP must not process the request and **must** respond with a 400 (Bad Request).
-* Any further operations on the domestic-payment HTTP resource will not result in a status change for the domestic-payment resource.
+* Any further HTTP operations on the domestic-payment resource will not result in a status change for the domestic-payment resource.
 * The Status will be updated by the ASPSP in line with payment processing.
 
 #### Status
