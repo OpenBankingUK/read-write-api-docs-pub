@@ -717,6 +717,10 @@ This section describes the OBWritePaymentDetailsResponse1 class which used in th
 | StatusReason |0..1 |OBWritePaymentDetailsResponse1/Data/StatusDetail/StatusReason |Specifies the status reason|For a full list of enumeration values refer to `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets)  |OBExternalStatusReason1Code - Code Value | |
 | StatusReasonDescription |0..1 |OBWritePaymentDetailsResponse1/Data/StatusDetail/StatusReasonDescription |Reason provided for the status of a transfer. |Max256Text | OBExternalStatusReason1Code - Code Name| |
 
+> **Note**: `OBWritePaymentDetailsResponse1/Data/Status` & `OBWritePaymentDetailsResponse1/Data/StatusDetail/Status`
+> point to the `ExternalPaymentTransactionStatus1Code` codeset. However, each endpoint should only use the relevant
+> subset of status codes for each endpoint.  
+
 #### OBSCASupportData1
 
 This section describes the OBSCASupportData1 class, which is used across all  _payment order consent_  request resources, enabling PISPs to provide Supporting Data when requesting ASPSP for SCA Exemption.
