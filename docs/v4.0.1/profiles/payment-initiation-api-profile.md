@@ -718,8 +718,8 @@ This section describes the OBWritePaymentDetailsResponse1 class which used in th
 | StatusReasonDescription |0..1 |OBWritePaymentDetailsResponse1/Data/StatusDetail/StatusReasonDescription |Reason provided for the status of a transfer. |Max256Text | OBExternalStatusReason1Code - Code Name| |
 
 > **Note**: `OBWritePaymentDetailsResponse1/Data/Status` & `OBWritePaymentDetailsResponse1/Data/StatusDetail/Status`
-> point to the `ExternalPaymentTransactionStatus1Code` codeset. However, each endpoint should only use the relevant
-> subset of status codes for each endpoint.  
+> point to the `ExternalPaymentTransactionStatus1Code` codeset. Please ensure you are aware of the relevant codes for 
+> each endpoint.
 
 #### OBSCASupportData1
 
