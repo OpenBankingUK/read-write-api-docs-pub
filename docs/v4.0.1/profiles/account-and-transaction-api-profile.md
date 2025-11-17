@@ -1,4 +1,4 @@
-# Account and Transaction API Profile - v4.0  <!-- omit in toc -->
+# Account and Transaction API Profile - v4.0.1  <!-- omit in toc -->
 
 - [Overview](#overview)
   - [Document Structure](#document-structure)
@@ -45,6 +45,8 @@
       - [Data Dictionary](#obultimatecreditor1-data-dictionary)
     - [OBUltimateDebtor1](#obultimatedebtor1)
       - [Data Dictionary](#obultimatedebtor1-data-dictionary)
+    - [OBIntermediaryAgent1](#obintermediaryagent1)
+      - [Data Dictionary](#obintermediaryagent1-data-dictionary)
   - [Using Meta to identify Available Transaction Period](#using-meta-to-identify-available-transaction-period)
   - [Mapping to Schemes & Standards](#mapping-to-schemes-standards)
   - [Enumerations](#enumerations)
@@ -569,6 +571,20 @@ No fields for business logic security concerns have been identified for the Acco
 | LEI |0..1 | OBUltimateDebtor1/LEI |Legal entity identification as an alternate identification for a party. Legal Entity Identifier is a code allocated to a party as described in ISO 17442 "Financial Services - Legal Entity Identifier (LEI)".|Max20Text | | ^[A-Z0-9]{18,18}[0-9]{2,2}$|
 | SchemeName |0..1 |OBUltimateDebtor1/SchemeName |Name of the identification scheme, in a coded form as published in an external list. | For a full list of enumeration values refer to `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets). |OBInternalAccountIdentification4Code | 
 | PostalAddress | 0..1 | OBUltimateDebtor1/PostalAddress | Information that locates and identifies a specific address, as defined by postal services. | OBPostalAddress7 | | 
+
+#### OBIntermediaryAgent1
+
+##### OBIntermediaryAgent1 Data Dictionary
+
+| Name | Occurrence | XPath | EnhancedDefinition | Class | Codes | Pattern |
+| --- | --- | --- | --- | --- | --- | --- |
+| OBIntermediaryAgent1 | | | The intermediary agent associated with this transaction. | OBIntermediaryAgent1 | | |
+| Name |0..1 |OBIntermediaryAgent1/Name |Name by which an agent is known and which is usually used to identify that agent. |Max140Text | | |
+| SchemeName |0..1 |OBIntermediaryAgent1/SchemeName |Name of the identification scheme, in a coded form as published in an external list. | For a full list of enumeration values refer to `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets). |OBInternalFinancialInstitutionIdentification4Code | |
+| Identification |0..1 |OBIntermediaryAgent1/Identification |Unique and unambiguous identification of a financial institution or a branch of a financial institution. |Max35Text | | |
+| LEI |0..1 | OBIntermediaryAgent1/LEI |Legal entity identification as an alternate identification for a party. Legal Entity Identifier is a code allocated to a party as described in ISO 17442 "Financial Services - Legal Entity Identifier (LEI)".|Max20Text | | ^[A-Z0-9]{18,18}[0-9]{2,2}$|
+| PostalAddress | 0..1 | OBIntermediaryAgent1/PostalAddress | Information that locates and identifies a specific address, as defined by postal services. | OBPostalAddress7 | | |
+| ProcessingStatus| 0..1 | OBIntermediaryAgent1/ProcessingStatus | Status of the payment at the Intermediary Agent. | For a full list of enumeration values refer to `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets) | OBIntermediaryAgentStatus1Code ||
 
 ### Using Meta to identify Available Transaction Period
 

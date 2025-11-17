@@ -1,4 +1,4 @@
-# Transactions - v4.0 <!-- omit in toc -->
+# Transactions - v4.0.1 <!-- omit in toc -->
 
 - [Overview](#overview)
 - [Endpoints](#endpoints)
@@ -10,6 +10,7 @@
     - [OBPostalAddress7](#obpostaladdress7)
     - [OBUltimateCreditor1](#obultimatecreditor1)
     - [OBUltimateDebtor1](#obultimatedebtor1)
+    - [OBIntermediaryAgent1](#obintermediaryagent1)
   - [Resource Definition](#resource-definition)
   - [UML Diagram](#uml-diagram)
     - [Notes](#notes)
@@ -79,6 +80,10 @@ The OBUltimateCreditor1 class is defined in the [account-and-transaction-api-pro
 
 #### OBUltimateDebtor1
 The OBUltimateDebtor1 class is defined in the [account-and-transaction-api-profile](../../profiles/account-and-transaction-api-profile.md#obultimatedebtor1) page.
+
+#### OBIntermediaryAgent1
+
+The OBIntermediaryAgent1 class is defined in the [account-and-transaction-api-profile](../../profiles/account-and-transaction-api-profile.md#obintermediaryagent1) page.
 
 ### Resource Definition
 
@@ -196,6 +201,9 @@ It is **MANDATORY** to include the ReadTransactionDetail permission to return an
   * OBReadTransaction6/Data/Transaction/DebtorAgent
   * OBReadTransaction6/Data/Transaction/DebtorAccount
   * OBReadTransaction6/Data/Transaction/UltimateDebtor
+  * OBReadTransaction6/Data/Transaction/IntermediaryAgent1
+  * OBReadTransaction6/Data/Transaction/IntermediaryAgent2
+  * OBReadTransaction6/Data/Transaction/IntermediaryAgent3
 
 * If the **ReadTransactionsDetail** is granted by the PSU it is **CONDITIONAL** to return the following, conditionality being based on the information being applicable to the transaction and ASPSP:
   * OBReadTransaction6/Data/Transaction/TransactionInformation (0..1)
@@ -207,6 +215,9 @@ It is **MANDATORY** to include the ReadTransactionDetail permission to return an
   * OBReadTransaction6/Data/Transaction/DebtorAgent (0..1)
   * OBReadTransaction6/Data/Transaction/DebtorAccount (0..1)
   * OBReadTransaction6/Data/Transaction/UltimateDebtor (0..1)
+  * OBReadTransaction6/Data/Transaction/IntermediaryAgent1 (0..1)
+  * OBReadTransaction6/Data/Transaction/IntermediaryAgent2 (0..1)
+  * OBReadTransaction6/Data/Transaction/IntermediaryAgent3 (0..1)
 
 * If the ReadPAN permission is granted by the PSU - the ASPSP may **OPTIONALLY** choose to populate the unmasked PAN - if the PAN is being populated in the response for these fields:
 
@@ -280,6 +291,9 @@ Further information can be found at [Account and Transaction Permissions](../../
 | Identification |0..1 |OBReadTransaction6/Data/Transaction/CreditorAgent/Identification |Unique and unambiguous identification of a financial institution or a branch of a financial institution. |Max35Text | | |
 | Name |0..1 |OBReadTransaction6/Data/Transaction/CreditorAgent/Name |Name by which an agent is known and which is usually used to identify that agent. |Max140Text | | |
 | PostalAddress |0..1 |OBReadTransaction6/Data/Transaction/CreditorAgent/PostalAddress |Information that locates and identifies a specific address, as defined by postal services. |OBPostalAddress7 | | |
+| IntermediaryAgent1 | 0..1 | OBReadTransaction6/Data/Transaction/IntermediaryAgent1 | The first intermediary agent associated with this transaction. | OBIntermediaryAgent1 |||
+| IntermediaryAgent2 | 0..1 | OBReadTransaction6/Data/Transaction/IntermediaryAgent2 | The second intermediary agent associated with this transaction. | OBIntermediaryAgent1 |||
+| IntermediaryAgent3 | 0..1 | OBReadTransaction6/Data/Transaction/IntermediaryAgent3 | The third intermediary agent associated with this transaction. | OBIntermediaryAgent1 |||
 | CreditorAccount |0..1 |OBReadTransaction6/Data/Transaction/CreditorAccount |Unambiguous identification of the account of the creditor, in the case of a debit transaction. |OBCashAccount6 | | |
 | SchemeName |0..1 |OBReadTransaction6/Data/Transaction/CreditorAccount/SchemeName |Name of the identification scheme, in a coded form as published in an external list. | For a full list of enumeration values refer to `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets). |OBInternalAccountIdentification4Code | 
 | Identification |0..1 |OBReadTransaction6/Data/Transaction/CreditorAccount/Identification |Identification assigned by an institution to identify an account. This identification is known by the account owner. |Max256Text | | |
@@ -307,24 +321,6 @@ Further information can be found at [Account and Transaction Permissions](../../
 | Identification |0..1 |OBReadTransaction6/Data/Transaction/CardInstrument/Identification |Identification assigned by an institution to identify the card instrument used in the transaction. This identification is known by the account owner, and may be masked. |Max34Text | | |
 | SupplementaryData |0..1 |OBReadTransaction6/Data/Transaction/SupplementaryData |Additional information that can not be captured in the structured fields and/or any other specific block. |OBSupplementaryData1 | | |
 | CategoryPurposeCode | 0..1 | OBReadTransaction6/Data/Transaction/CategoryPurposeCode |Enumeration to outline the purpose to the underlying purpose of the payment|  For a full list of enumeration values refer to `OB_EXternal_CodeSet`[here](https://github.com/OpenBankingUK/External_Internal_CodeSets/). |ExternalCategoryPurpose1Code | 
-
-
-### Reused Classes 
-
-
-#### OBUltimateCreditor1
-
-The OBUltimateCreditor1 class is defined in the [payment-initiation-api-profile](../../profiles/payment-initiation-api-profile.md#obultimatecreditor1) page.
-
-
-#### OBUltimateDebtor1 
-
-The OBUltimateDebtor1 class is defined in the [payment-initiation-api-profile](../../profiles/payment-initiation-api-profile.md#obultimatedebtor1) page.
-
-#### OBPostalAddress7 
-
-The OBPostalAddress7 class is defined in the [payment-initiation-api-profile](../../profiles/payment-initiation-api-profile.md#obpostaladdress7) page
-
 
 ## Usage Examples
 
