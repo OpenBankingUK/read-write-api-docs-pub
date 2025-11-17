@@ -110,7 +110,7 @@ The international-payments - payment-details must have one of the following Paym
 | BLCK |
 | RJCT |
 
-Refer to [External_Internal_CodeSets](https://github.com/OpenBankingUK/External_Internal_CodeSets) -> ISO_External_CodeSet -> `ExternalPaymentTransactionStatus1Code`.
+Refer to [External_Internal_CodeSets](https://github.com/OpenBankingUK/External_Internal_CodeSets) -> OB_External_CodeSet -> `ExternalPaymentTransactionStatus1Code`.
 
 ### State Model
 

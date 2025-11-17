@@ -116,7 +116,7 @@ The domestic-payment - payment-details must have one of the following ExternalPa
 | BLCK |
 | RJCT |
 
-Refer to [External_Internal_CodeSets](https://github.com/OpenBankingUK/External_Internal_CodeSets) -> ISO_Internal_CodeSet -> `ExternalPaymentTransactionStatus1Code`.
+Refer to [External_Internal_CodeSets](https://github.com/OpenBankingUK/External_Internal_CodeSets) -> OB_Internal_CodeSet -> `ExternalPaymentTransactionStatus1Code`.
 
 ### State Model
 
