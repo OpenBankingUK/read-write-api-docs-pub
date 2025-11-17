@@ -1,4 +1,4 @@
-# Beneficiaries - v4.0 <!-- omit in toc -->
+# Beneficiaries - v4.0.1 <!-- omit in toc -->
 
 - [Overview](#overview)
 - [Endpoints](#endpoints)
