@@ -53,7 +53,7 @@
     - [OBInternationalRefundAccount1](#obinternationalrefundaccount1)
       - [UML Diagram](#uml-diagram-5)
       - [Data Dictionary](#data-dictionary-6)
-    - [OBWritePaymentDetailsResponse1](#OBWritePaymentDetailsResponse1)
+    - [OBWritePaymentDetails1](#OBWritePaymentDetails1)
       - [UML Diagram](#uml-diagram-6)
       - [Data Dictionary](#data-dictionary-7)
     - [OBSCASupportData1](#obscasupportdata1)
