@@ -493,7 +493,7 @@ In a multiple authorisation context, the same consent authorisation steps are fo
 
 In the payment-order consent:
 
-- A PISP **may** request an AuthorisationType for the payment-order (i.e., Single or Any). If a value is not provided, an ASPSP will interpret the AuthorisationType as 'Any'.
+- A PISP **may** request an AuthorisationType for the payment-order (i.e., Single, Multiple or Any). If a value is not provided, an ASPSP will interpret the AuthorisationType as 'Any'.
 - A PISP **may** request a CompletionDateTime for the payment-order authorisation to be complete. If a value is not provided, an ASPSP will interpret the CompletionDateTime as unbounded.
 - An ASPSP **must** reject the payment-order consent if the AuthorisationType requested by the PISP does not match the DebtorAccount in the request.
 - An ASPSP **must** set the status of the payment-order consent to 'RJCT' which means 'Rejected', if the AuthorisationType requested by the PISP cannot be satisfied, after PSU Authentication:
