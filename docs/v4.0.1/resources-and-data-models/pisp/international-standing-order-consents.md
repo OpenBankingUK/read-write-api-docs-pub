@@ -68,8 +68,6 @@ The default Status is "AWAU" immediately after the international-standing-order-
 
 A PISP can optionally retrieve a payment consent resource that they have created to check its status. 
 
-Refer to [External_Internal_CodeSets](https://github.com/OpenBankingUK/External_Internal_CodeSets) -> OB_Internal_CodeSet -> `OBInternalPermissions1Code`.
-
 #### Status
 
 Once the PSU authorises the payment-consent resource - the Status of the payment-consent resource will be updated with "AUTH".
