@@ -156,9 +156,9 @@ The OBL principles for developing API standards:
 
 #### ISO 20022
 
-The CMA Order requires the CMA9 Banks to be aligned with the Regulatory and Technical Standards (RTS) under PSD2.
+The CMA Order requires the OBL Standard to include features and elements necessary to enable the CMA9 to comply with the requirements to provide access to accounts under PSD2.
 
-A previous draft of the EBA RTS required that the interface "shall use ISO 20022 elements, components or approved message definitions". In keeping with that requirement, the API payloads are designed using the ISO 20022 message elements and components where available.
+Article 30(3) of the FCA’s Regulatory Technical Standards on strong customer authentication and common and secure methods of communication (FCA’s SCA-RTS) require ASPSPs to ensure that their interfaces follow standards of communication which are issued by international standardisation organisations. In keeping with that requirement, the API payloads are designed using the ISO 20022 message elements and components where available.
 
 The principles we have applied to re-use of ISO message elements and components are:
 
