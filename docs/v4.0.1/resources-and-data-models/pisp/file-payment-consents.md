@@ -119,8 +119,6 @@ The API endpoint allows the PISP to download a file (that had been uploaded agai
 * The file is sent in the HTTP response body.
 * HTTP headers (e.g. Content-Type) are used to describe the file.
 
-Refer to [External_Internal_CodeSets](https://github.com/OpenBankingUK/External_Internal_CodeSets) -> OB_Internal_CodeSet -> `OBInternalPermissions1Code`.
-
 ### State Model
 
 #### Payment Order Consent
@@ -171,7 +169,9 @@ This section describes the OBFile2 class, which is reused as the Initiation obje
 
 ![OBFile2](./images/OBFile2.svg )
 
-##### Notes 
+##### Notes
+
+* TPPs should refer to ASPSP developer portals for information on which File Payment endpoints are available, specification of accepted file format(s) and information on File Payment statuses.
 
 For the OBFile2 Initiation object: 
 

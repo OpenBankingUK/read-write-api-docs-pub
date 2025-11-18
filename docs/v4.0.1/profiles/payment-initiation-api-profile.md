@@ -1,4 +1,4 @@
-# Payment Initiation API Profile - v4.0 <!-- omit in toc -->
+# Payment Initiation API Profile - v4.0.1 <!-- omit in toc -->
 
 - [Overview](#overview)
   - [Document Overview](#document-overview)
@@ -707,15 +707,15 @@ This section describes the OBWritePaymentDetailsResponse1 class which used in th
 
 | Name |Occurrence |XPath |EnhancedDefinition |Class |Codes |Pattern |
 | --- |--- |--- |--- |--- |--- |--- |
-| OBWritePaymentDetailsResponse1 |1..1 |OBWritePaymentDetailsResponse1 |Payment status details. |OBWritePaymentDetailsResponse1 | | |
-| LocalInstrument |0..1 |OBWritePaymentDetailsResponse1/Data/StatusDetail/LocalInstrument |User community specific instrument.<br><br>Usage: This element is used to specify a local instrument, local clearing option and/or further qualify the service or service level. |For a full list of enumeration values refer to `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets) |OBInternalLocalInstrument1Code| |
-| PaymentTransactionId |1..1 |OBWritePaymentDetailsResponse1/Data/PaymentTransactionId |Unique identifier for the transaction within an servicing institution. This identifier is both unique and immutable. |Max210Text | | |
-| Status |1..1 |OBWritePaymentDetailsResponse1/Data/Status |Status of a transfer, as assigned by the transaction administrator|For a full description see `Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets) |ExternalPaymentTransactionStatus1Code | |
-| StatusUpdateDateTime |1..1 |OBWritePaymentDetailsResponse1/Data/StatusUpdateDateTime |Date and time at which the status was assigned to the transfer. |ISODateTime | | |
-| StatusDetail |0..* |OBWritePaymentDetailsResponse1/Data/StatusDetail |Array of Payment StatusCodes| | | |
-| Status |1..1 |OBWritePaymentDetailsResponse1/Data/StatusDetail/Status |Status of a transfer, as assigned by the transaction administrator|For a full description see 'External_CodeSet` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets) |ExternalPaymentTransactionStatus1Code | |
-| StatusReason |0..1 |OBWritePaymentDetailsResponse1/Data/StatusDetail/StatusReason |Specifies the status reason|For a full list of enumeration values refer to `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets)  |OBExternalStatusReason1Code - Code Value | |
-| StatusReasonDescription |0..1 |OBWritePaymentDetailsResponse1/Data/StatusDetail/StatusReasonDescription |Reason provided for the status of a transfer. |Max256Text | OBExternalStatusReason1Code - Code Name| |
+| OBWritePaymentDetails1 |1..1 |OBWritePaymentDetails1 |Payment status details. |OBWritePaymentDetails1 | | |
+| LocalInstrument |0..1 |OBWritePaymentDetails1/Data/StatusDetail/LocalInstrument |User community specific instrument.<br><br>Usage: This element is used to specify a local instrument, local clearing option and/or further qualify the service or service level. |For a full list of enumeration values refer to `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets) |OBInternalLocalInstrument1Code| |
+| PaymentTransactionId |1..1 |OBWritePaymentDetails1/Data/PaymentTransactionId |Unique identifier for the transaction within an servicing institution. This identifier is both unique and immutable. |Max210Text | | |
+| Status |1..1 |OBWritePaymentDetails1/Data/Status |Status of a transfer, as assigned by the transaction administrator|For a full description see `Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets) |ExternalPaymentTransactionStatus1Code | |
+| StatusUpdateDateTime |1..1 |OBWritePaymentDetails1/Data/StatusUpdateDateTime |Date and time at which the status was assigned to the transfer. |ISODateTime | | |
+| StatusDetail |0..* |OBWritePaymentDetails1/Data/StatusDetail |Array of Payment StatusCodes| | | |
+| Status |1..1 |OBWritePaymentDetails1/Data/StatusDetail/Status |Status of a transfer, as assigned by the transaction administrator|For a full description see `Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets) |ExternalPaymentTransactionStatus1Code | |
+| StatusReason |0..1 |OBWritePaymentDetails1/Data/StatusDetail/StatusReason |Specifies the status reason|For a full list of enumeration values refer to `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets)  |OBExternalStatusReason1Code - Code Value | |
+| StatusReasonDescription |0..1 |OBWritePaymentDetails1/Data/StatusDetail/StatusReasonDescription |Reason provided for the status of a transfer. |Max256Text | OBExternalStatusReason1Code - Code Name| |
 
 #### OBSCASupportData1
 

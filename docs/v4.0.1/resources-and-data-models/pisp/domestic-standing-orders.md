@@ -51,7 +51,8 @@ Once the domestic-standing-order-consent has been authorised by the PSU, the PIS
 * This is done by making a POST request to the **domestic-standing-orders** endpoint.
 * This request is an instruction to the ASPSP to begin the domestic standing order journey. The PISP must submit the domestic standing order immediately, however, there are some scenarios where the ASPSP may not warehouse the domestic standing order immediately (e.g. busy periods at the ASPSP).
 * The PISP **must** ensure that the Initiation and Risk sections of the domestic-standing-order match the corresponding Initiation and Risk sections of the domestic-standing-order-consent resource. If the two do not match, the ASPSP **must not** process the request and **must** respond with a 400 (Bad Request).
-* Any operations on the domestic-standing-order resource will not result in a Status change for the domestic-standing-order resource.
+* Any further HTTP operations on the domestic-standing-order resource will not result in a Status change for the domestic-standing-order resource.
+* The Status will be updated by the ASPSP in line with payment processing.
 
 #### Status
 
@@ -113,7 +114,7 @@ The domestic-standing-orders - payment-details must have one of the following Ex
 
 For full flow refer to state 2 diagram bellow.
 
-Refer to [External_Internal_CodeSets](https://github.com/OpenBankingUK/External_Internal_CodeSets) -> ISO_External_CodeSet -> `ExternalPaymentTransactionStatus1Code`.
+Refer to [External_Internal_CodeSets](https://github.com/OpenBankingUK/External_Internal_CodeSets) -> OB_Internal_CodeSet -> `ExternalPaymentTransactionStatus1Code`.
 
 ### State Model
 
@@ -225,7 +226,7 @@ The domestic-standing-order **response** object contains the:
 | DomesticStandingOrderId |1..1 |OBWriteDomesticStandingOrderResponse6/Data/DomesticStandingOrderId |OB: Unique identification as assigned by the ASPSP to uniquely identify the domestic standing order resource. |Max40Text | | |
 | ConsentId |1..1 |OBWriteDomesticStandingOrderResponse6/Data/ConsentId |OB: Unique identification as assigned by the ASPSP to uniquely identify the consent resource. |Max128Text | | |
 | CreationDateTime |1..1 |OBWriteDomesticStandingOrderResponse6/Data/CreationDateTime |Date and time at which the resource was created. |ISODateTime | | |
-| Status |1..1 |OBWriteDomesticStandingOrderResponse6/Data/Status |Specifies the status of the payment order resource. |For a full list of enumeration values refer to `External_CodeSet` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets). |ExternalPaymentTransactionStatus1Code | |
+| Status |1..1 |OBWriteDomesticStandingOrderResponse6/Data/Status |Specifies the status of the payment order resource. |For a full list of enumeration values refer to `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets). |ExternalPaymentTransactionStatus1Code | |
 | StatusUpdateDateTime |1..1 |OBWriteDomesticStandingOrderResponse6/Data/StatusUpdateDateTime |Date and time at which the resource status was updated. |ISODateTime | | |
 | StatusReason |0..* |OBWriteDomesticStandingOrderResponse6/Data/StatusReason |An array of StatusReasonCode | OBStatusReason |
 | StatusReasonCode |0..1 |OBWriteDomesticStandingOrderResponse6/Data/StatusReason/StatusReasonCode |Specifies the status reason in a code form. |For a full list of enumeration values refer to `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_internal_CodeSets)| OBInternalPermissions1Code |

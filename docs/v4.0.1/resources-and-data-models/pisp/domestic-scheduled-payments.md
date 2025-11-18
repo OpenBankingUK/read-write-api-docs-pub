@@ -53,7 +53,8 @@ Once the domestic-scheduled-payment-consent has been authorised by the PSU, the 
 * This is done by making a POST request to the **domestic-scheduled-payments** endpoint.
 * This request is an instruction to the ASPSP to begin the domestic scheduled payment journey. The PISP must submit the domestic scheduled payment immediately, however, there are some scenarios where the ASPSP may not warehouse the domestic scheduled payment immediately (e.g., busy periods at the ASPSP)
 * The PISP **must** ensure that the Initiation and Risk sections of the domestic-scheduled-payment match the corresponding Initiation and Risk sections of the domestic-scheduled-payment-consent resource. If the two do not match, the ASPSP **must not** process the request and **must** respond with a 400 (Bad Request).
-* Any operations on the domestic-scheduled-payment resource will not result in a Status change for the domestic-scheduled-payment resource.
+* Any further HTTP operations on the domestic-scheduled-payment resource will not result in a Status change for the domestic-scheduled-payment resource.
+* The Status will be updated by the ASPSP in line with payment processing.
 
 #### Status
 
@@ -116,7 +117,7 @@ The domestic-scheduled-payments - payment-details must have one of the following
 | BLCK |
 | RJCT |
 
-Refer to [External_Internal_CodeSets](https://github.com/OpenBankingUK/External_Internal_CodeSets) -> ISO_External_CodeSet -> `ExternalPaymentTransactionStatus1Code`.
+Refer to [External_Internal_CodeSets](https://github.com/OpenBankingUK/External_Internal_CodeSets) -> OB_Internal_CodeSet -> `ExternalPaymentTransactionStatus1Code`.
 
 ### State Model
 
@@ -231,7 +232,7 @@ The domestic-scheduled-payment **response** object contains the:
 | DomesticScheduledPaymentId |1..1 |OBWriteDomesticScheduledResponse5/Data/DomesticScheduledPaymentId |OB: Unique identification as assigned by the ASPSP to uniquely identify the domestic schedule payment resource. |Max40Text | | |
 | ConsentId |1..1 |OBWriteDomesticScheduledResponse5/Data/ConsentId |OB: Unique identification as assigned by the ASPSP to uniquely identify the consent resource. |Max128Text | | |
 | CreationDateTime |1..1 |OBWriteDomesticScheduledResponse5/Data/CreationDateTime |Date and time at which the resource was created. |ISODateTime | | |
-| Status |1..1 |OBWriteDomesticScheduledResponse5/Data/Status |Specifies the status of the payment order resource. |For a full list of enumeration values refer to `ISO_External_CodeSet` [here](https://github.com/OpenBankingUK/External_internal_CodeSets) | ExternalPaymentTransactionStatus1Code  | |
+| Status |1..1 |OBWriteDomesticScheduledResponse5/Data/Status |Specifies the status of the payment order resource. |For a full list of enumeration values refer to `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_internal_CodeSets) | ExternalPaymentTransactionStatus1Code  | |
 | StatusUpdateDateTime |1..1 |OBWriteDomesticScheduledResponse5/Data/StatusUpdateDateTime |Date and time at which the resource status was updated. |ISODateTime | | |
 | StatusReason |0..* |OBWriteDomesticScheduledResponse5/Data/StatusReason |Specifies the status reason. | OBStatusReason |
 | StatusReasonCode |0..1 |OBWriteDomesticScheduledResponse5/Data/StatusReason/StatusReasonCode |Specifies the status reason in a code form. |For a full list of enumeration values refer to `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_internal_CodeSets)| OBExternalStatusReason1Code |
