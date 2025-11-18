@@ -157,7 +157,13 @@ Accept: application/json
         "SecondaryIdentification": "0002"
       },
       "RemittanceInformation": {
-        "Reference": "FRESCO-101",
+        "Structured": [
+          {
+            "CreditorReferenceInformation": {
+              "Reference": "FRESCO-101"
+            }
+          }
+        ],
         "Unstructured": ["Internal ops code 5120101"]
       }
     }
@@ -215,7 +221,13 @@ Content-Type: application/json
         "SecondaryIdentification": "0002"
       },
       "RemittanceInformation": {
-        "Reference": "FRESCO-101",
+        "Structured": [
+          {
+            "CreditorReferenceInformation": {
+              "Reference": "FRESCO-101"
+            }
+          }
+        ],
         "Unstructured": ["Internal ops code 5120101"]
       }
     }
@@ -318,7 +330,13 @@ Accept: application/json
         "SecondaryIdentification": "0002"
       },
       "RemittanceInformation": {
-        "Reference": "FRESCO-101",
+        "Structured": [
+          {
+            "CreditorReferenceInformation": {
+              "Reference": "FRESCO-101"
+            }
+          }
+        ],
         "Unstructured": ["Internal ops code 5120101"]
       }
     }
@@ -377,7 +395,13 @@ Content-Type: application/json
         "SecondaryIdentification": "0002"
       },
       "RemittanceInformation": {
-        "Reference": "FRESCO-101",
+        "Structured": [
+          {
+            "CreditorReferenceInformation": {
+              "Reference": "FRESCO-101"
+            }
+          }
+        ],
         "Unstructured": ["Internal ops code 5120101"]
       }
     }
@@ -432,7 +456,13 @@ Content-Type: application/json
         "SecondaryIdentification": "0002"
       },
       "RemittanceInformation": {
-        "Reference": "FRESCO-101",
+        "Structured": [
+          {
+            "CreditorReferenceInformation": {
+              "Reference": "FRESCO-101"
+            }
+          }
+        ],
         "Unstructured": ["Internal ops code 5120101"]
       }
     }
@@ -509,7 +539,13 @@ Content-Type: application/json
         "SecondaryIdentification": "0002"
       },
       "RemittanceInformation": {
-        "Reference": "FRESCO-101",
+        "Structured": [
+          {
+            "CreditorReferenceInformation": {
+              "Reference": "FRESCO-101"
+            }
+          }
+        ],
         "Unstructured": ["Internal ops code 5120101"]
       }
     }
@@ -632,7 +668,13 @@ Accept: application/json
         "Name": "Bob Clements"
       },
       "RemittanceInformation": {
-        "Reference": "FRESCO-037",
+        "Structured": [
+          {
+            "CreditorReferenceInformation": {
+              "Reference": "FRESCO-037"
+            }
+          }
+        ],
         "Unstructured": ["Internal ops code 5120103"]
       }
     }
@@ -677,7 +719,13 @@ Content-Type: application/json
         "Name": "Bob Clements"
       },
       "RemittanceInformation": {
-        "Reference": "FRESCO-037",
+        "Structured": [
+          {
+            "CreditorReferenceInformation": {
+              "Reference": "FRESCO-037"
+            }
+          }
+        ],
         "Unstructured": ["Internal ops code 5120103"]
       }
     }
@@ -730,7 +778,13 @@ Accept: application/json
         "Name": "Bob Clements"
       },
       "RemittanceInformation": {
-        "Reference": "FRESCO-037",
+        "Structured": [
+          {
+            "CreditorReferenceInformation": {
+              "Reference": "FRESCO-037"
+            }
+          }
+        ],
         "Unstructured": ["Internal ops code 5120103"]
       }
     }
@@ -776,7 +830,13 @@ Content-Type: application/json
         "Name": "Bob Clements"
       },
       "RemittanceInformation": {
-        "Reference": "FRESCO-037",
+        "Structured": [
+          {
+            "CreditorReferenceInformation": {
+              "Reference": "FRESCO-037"
+            }
+          }
+        ],
         "Unstructured": ["Internal ops code 5120103"]
       }
     }
@@ -835,7 +895,13 @@ Content-Type: application/json
         "Name": "Bob Clements"
       },
       "RemittanceInformation": {
-        "Reference": "FRESCO-037",
+        "Structured": [
+          {
+            "CreditorReferenceInformation": {
+              "Reference": "FRESCO-037"
+            }
+          }
+        ],
         "Unstructured": ["Internal ops code 5120103"]
       }
     }
@@ -898,7 +964,13 @@ Content-Type: application/json
         "Name": "Bob Clements"
       },
       "RemittanceInformation": {
-        "Reference": "FRESCO-037",
+        "Structured": [
+          {
+            "CreditorReferenceInformation": {
+              "Reference": "FRESCO-037"
+            }
+          }
+        ],
         "Unstructured": ["Internal ops code 5120103"]
       }
     }
@@ -950,7 +1022,13 @@ Accept: application/json
         "Name": "Bob Clements"
       },
       "RemittanceInformation": {
-        "Reference": "FRESCO-037",
+        "Structured": [
+          {
+            "CreditorReferenceInformation": {
+              "Reference": "FRESCO-037"
+            }
+          }
+        ],
         "Unstructured": ["Internal ops code 5120103"]
       }
     }
@@ -997,7 +1075,13 @@ Content-Type: application/json
         "Name": "Bob Clements"
       },
       "RemittanceInformation": {
-        "Reference": "FRESCO-037",
+        "Structured": [
+          {
+            "CreditorReferenceInformation": {
+              "Reference": "FRESCO-037"
+            }
+          }
+        ],
         "Unstructured": ["Internal ops code 5120103"]
       }
     }
@@ -1060,7 +1144,13 @@ Accept: application/json
         "Country":"UK"
       },
       "RemittanceInformation": {
-        "Reference": "FRESCO-037",
+        "Structured": [
+          {
+            "CreditorReferenceInformation": {
+              "Reference": "FRESCO-037"
+            }
+          }
+        ],
         "Unstructured": ["Internal ops code 5120103"]
       }
     }
@@ -1082,68 +1172,74 @@ Content-Type: application/json
 
 ```json
 {
-   "Data":{
-      "ConsentId":"7290",
-      "Status":"AWAU",
-      "CreationDateTime":"2017-06-05T15:15:13+00:00",
-      "StatusUpdateDateTime":"2017-06-05T15:15:13+00:00",
-      "CutOffDateTime":"2017-06-05T17:30:00+00:00",
-      "Initiation":{
-         "InstructionIdentification":"ANSM023",
-         "EndToEndIdentification":"FRESCO.21302.GFX.37",
-         "LocalInstrument":"UK.OBIE.CHAPS",
-         "InstructedAmount":{
-            "Amount":"20.00",
-            "Currency":"GBP"
-         },
-         "DebtorAccount":{
-            "SchemeName":"UK.OBIE.SortCodeAccountNumber",
-            "Identification":"11280001234567",
-            "Name":"Andrea Smith"
-         },
-         "CreditorAccount":{
-            "SchemeName":"UK.OBIE.SortCodeAccountNumber",
-            "Identification":"08080021325698",
-            "Name":"Bob Clements"
-         },
-        "CreditorPostalAddress": {
-            "AddressType": "Correspondence",
-            "StreetName": "Liberty",
-            "BuildingNumber":"1",
-            "PostCode":"AB1 2CD",
-            "TownName":"London",
-            "Country":"UK"
-         },
-         "RemittanceInformation":{
-            "Reference":"FRESCO-037",
-            "Unstructured": ["Internal ops code 5120103"]
-         }
+  "Data":{
+    "ConsentId":"7290",
+    "Status":"AWAU",
+    "CreationDateTime":"2017-06-05T15:15:13+00:00",
+    "StatusUpdateDateTime":"2017-06-05T15:15:13+00:00",
+    "CutOffDateTime":"2017-06-05T17:30:00+00:00",
+    "Initiation":{
+      "InstructionIdentification":"ANSM023",
+      "EndToEndIdentification":"FRESCO.21302.GFX.37",
+      "LocalInstrument":"UK.OBIE.CHAPS",
+      "InstructedAmount":{
+        "Amount":"20.00",
+        "Currency":"GBP"
       },
-      "Charges":[
-         {
-            "ChargeBearer":"BorneByDebtor",
-            "Type":"UK.OBIE.ChapsOut",
-            "Amount":{
-               "Amount":"30.00",
-               "Currency":"GBP"
+      "DebtorAccount":{
+        "SchemeName":"UK.OBIE.SortCodeAccountNumber",
+        "Identification":"11280001234567",
+        "Name":"Andrea Smith"
+      },
+      "CreditorAccount":{
+        "SchemeName":"UK.OBIE.SortCodeAccountNumber",
+        "Identification":"08080021325698",
+        "Name":"Bob Clements"
+      },
+      "CreditorPostalAddress": {
+        "AddressType": "Correspondence",
+        "StreetName": "Liberty",
+        "BuildingNumber":"1",
+        "PostCode":"AB1 2CD",
+        "TownName":"London",
+        "Country":"UK"
+      },
+      "RemittanceInformation":{
+        "Structured": [
+          {
+            "CreditorReferenceInformation": {
+              "Reference": "FRESCO-037"
             }
-         }
-      ]
-   },
-   "Risk":{
-      "PaymentContextCode":"TransferToThirdParty"
-   },
-   "Links":{
-      "Self":"https://api.alphabank.com/open-banking/v4.0/pisp/domestic-payment-consents/7290"
-   },
-   "Meta":{}
+          }
+        ],
+        "Unstructured": ["Internal ops code 5120103"]
+      }
+    },
+    "Charges":[
+      {
+        "ChargeBearer":"BorneByDebtor",
+        "Type":"UK.OBIE.ChapsOut",
+        "Amount":{
+          "Amount":"30.00",
+          "Currency":"GBP"
+        }
+      }
+    ]
+  },
+  "Risk":{
+    "PaymentContextCode":"TransferToThirdParty"
+  },
+  "Links":{
+    "Self":"https://api.alphabank.com/open-banking/v4.0/pisp/domestic-payment-consents/7290"
+  },
+  "Meta":{}
 }
 ```
 
 ## Balance Transfer
 Below in an example illustrating a balance transfer offer available on a Card A.
 
-To facilitate a Balance Transfer, a PISP can initiate a Payment from Card B to Card A with LocalInstrument as UK.OBIE.BalanceTransfer, Account SchemeName as UK.OBIE.PAN and if there is an Offer Code/Id provided by Issuer of the Card A, then it can be supplied in the field: RemittanceInformation.Reference.
+To facilitate a Balance Transfer, a PISP can initiate a Payment from Card B to Card A with LocalInstrument as UK.OBIE.BalanceTransfer, Account SchemeName as UK.OBIE.PAN and if there is an Offer Code/Id provided by Issuer of the Card A, then it can be supplied in the field: `RemittanceInformation.Structured.0.CreditorReferenceInformation.Reference`.
 Example below:
 
 ### POST /domestic-payment-consents request
@@ -1182,7 +1278,13 @@ Accept: application/json
                 "Name": "Andrea Smith"
             },
             "RemittanceInformation": {
-                "Reference": "BT-OfferCode-12",
+                "Structured": [
+                    {
+                        "CreditorReferenceInformation": {
+                            "Reference": "BT-OfferCode-12"
+                        }
+                    }
+                ],
                 "Unstructured": ["Internal ops code 5120103"]
             }
         }
@@ -1229,7 +1331,13 @@ Content-Type: application/json
                 "Name": "Andrea Smith"
             },
             "RemittanceInformation": {
-                "Reference": "BT-OfferCode-12",
+                "Structured": [
+                    {
+                        "CreditorReferenceInformation": {
+                            "Reference": "BT-OfferCode-12"
+                        }
+                    }
+                ],
                 "Unstructured": ["Internal ops code 5120103"]
             }
         }
@@ -1283,7 +1391,13 @@ Accept: application/json
                 "Name": "Andrea Smith"
             },
             "RemittanceInformation": {
-                "Reference": "MT-OfferCode-24",
+                "Structured": [
+                    {
+                        "CreditorReferenceInformation": {
+                            "Reference": "BT-OfferCode-24"
+                        }
+                    }
+                ],
                 "Unstructured": ["Internal ops code 5120103"]
             }
         }
@@ -1330,7 +1444,13 @@ Content-Type: application/json
                 "Name": "Andrea Smith"
             },
             "RemittanceInformation": {
-                "Reference": "MT-OfferCode-24",
+                "Structured": [
+                    {
+                        "CreditorReferenceInformation": {
+                            "Reference": "BT-OfferCode-24"
+                        }
+                    }
+                ],
                 "Unstructured": ["Internal ops code 5120103"]
             }
         }
