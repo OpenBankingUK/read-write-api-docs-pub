@@ -53,7 +53,7 @@
     - [OBInternationalRefundAccount1](#obinternationalrefundaccount1)
       - [UML Diagram](#uml-diagram-5)
       - [Data Dictionary](#data-dictionary-6)
-    - [OBWritePaymentDetailsResponse1](#OBWritePaymentDetailsResponse1)
+    - [OBWritePaymentDetails1](#OBWritePaymentDetails1)
       - [UML Diagram](#uml-diagram-6)
       - [Data Dictionary](#data-dictionary-7)
     - [OBSCASupportData1](#obscasupportdata1)
@@ -695,9 +695,9 @@ This section describes the OBInternationalRefundAccount1 class which is used in 
 | Proxy |0..1 |OBInternationalRefundAccount1/Account/Proxy |Specifies an alternate assumed name for the identification of the account. |OBProxy1 | | |
 
 
-#### OBWritePaymentDetailsResponse1
+#### OBWritePaymentDetails1
 
-This section describes the OBWritePaymentDetailsResponse1 class which used in the response payloads of payment-detail sub resources.
+This section describes the OBWritePaymentDetails1 class which used in the response payloads of payment-detail sub resources.
 
 ##### UML Diagram
 
@@ -707,15 +707,15 @@ This section describes the OBWritePaymentDetailsResponse1 class which used in th
 
 | Name |Occurrence |XPath |EnhancedDefinition |Class |Codes |Pattern |
 | --- |--- |--- |--- |--- |--- |--- |
-| OBWritePaymentDetailsResponse1 |1..1 |OBWritePaymentDetailsResponse1 |Payment status details. |OBWritePaymentDetailsResponse1 | | |
-| LocalInstrument |0..1 |OBWritePaymentDetailsResponse1/Data/StatusDetail/LocalInstrument |User community specific instrument.<br><br>Usage: This element is used to specify a local instrument, local clearing option and/or further qualify the service or service level. |For a full list of enumeration values refer to `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets) |OBInternalLocalInstrument1Code| |
-| PaymentTransactionId |1..1 |OBWritePaymentDetailsResponse1/Data/PaymentTransactionId |Unique identifier for the transaction within an servicing institution. This identifier is both unique and immutable. |Max210Text | | |
-| Status |1..1 |OBWritePaymentDetailsResponse1/Data/Status |Status of a transfer, as assigned by the transaction administrator|For a full description see `Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets) |ExternalPaymentTransactionStatus1Code | |
-| StatusUpdateDateTime |1..1 |OBWritePaymentDetailsResponse1/Data/StatusUpdateDateTime |Date and time at which the status was assigned to the transfer. |ISODateTime | | |
-| StatusDetail |0..* |OBWritePaymentDetailsResponse1/Data/StatusDetail |Array of Payment StatusCodes| | | |
-| Status |1..1 |OBWritePaymentDetailsResponse1/Data/StatusDetail/Status |Status of a transfer, as assigned by the transaction administrator|For a full description see 'External_CodeSet` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets) |ExternalPaymentTransactionStatus1Code | |
-| StatusReason |0..1 |OBWritePaymentDetailsResponse1/Data/StatusDetail/StatusReason |Specifies the status reason|For a full list of enumeration values refer to `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets)  |OBExternalStatusReason1Code - Code Value | |
-| StatusReasonDescription |0..1 |OBWritePaymentDetailsResponse1/Data/StatusDetail/StatusReasonDescription |Reason provided for the status of a transfer. |Max256Text | OBExternalStatusReason1Code - Code Name| |
+| OBWritePaymentDetails1 |1..1 |OBWritePaymentDetails1 |Payment status details. |OBWritePaymentDetails1 | | |
+| LocalInstrument |0..1 |OBWritePaymentDetails1/Data/StatusDetail/LocalInstrument |User community specific instrument.<br><br>Usage: This element is used to specify a local instrument, local clearing option and/or further qualify the service or service level. |For a full list of enumeration values refer to `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets) |OBInternalLocalInstrument1Code| |
+| PaymentTransactionId |1..1 |OBWritePaymentDetails1/Data/PaymentTransactionId |Unique identifier for the transaction within an servicing institution. This identifier is both unique and immutable. |Max210Text | | |
+| Status |1..1 |OBWritePaymentDetails1/Data/Status |Status of a transfer, as assigned by the transaction administrator|For a full description see `Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets) |ExternalPaymentTransactionStatus1Code | |
+| StatusUpdateDateTime |1..1 |OBWritePaymentDetails1/Data/StatusUpdateDateTime |Date and time at which the status was assigned to the transfer. |ISODateTime | | |
+| StatusDetail |0..* |OBWritePaymentDetails1/Data/StatusDetail |Array of Payment StatusCodes| | | |
+| Status |1..1 |OBWritePaymentDetails1/Data/StatusDetail/Status |Status of a transfer, as assigned by the transaction administrator|For a full description see `External_CodeSet` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets) |ExternalPaymentTransactionStatus1Code | |
+| StatusReason |0..1 |OBWritePaymentDetails1/Data/StatusDetail/StatusReason |Specifies the status reason|For a full list of enumeration values refer to `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets)  |OBExternalStatusReason1Code - Code Value | |
+| StatusReasonDescription |0..1 |OBWritePaymentDetails1/Data/StatusDetail/StatusReasonDescription |Reason provided for the status of a transfer. |Max256Text | OBExternalStatusReason1Code - Code Name| |
 
 #### OBSCASupportData1
 
@@ -797,7 +797,7 @@ This section describes the OBSCASupportData1 class, which is used across all  _p
 | Date |0..1 |OBRegulatoryReporting1/Details/Date |Date related to the specified type of regulatory reporting details. |ISODateTime | | |
 | Country |0..1 |OBRegulatoryReporting1/Details/Country |Country related to the specified type of regulatory reporting details. |CountryCode | | ^[A-Z]{2,2}$ |
 | Amount |0..1 |OBRegulatoryReporting1/Details/Amount |Amount of money to be reported for regulatory and statutory requirements. |OBActiveOrHistoricCurrencyAndAmount | | |
-| Amount |1..1 |OBRegulatoryReporting1/Details/Amount/Amount |A number of monetary units specified in an active currency where the unit of currency is explicit and compliant with ISO 4217. | OBActiveCurrencyAndAmount_SimpleType | `^\d{1,13}$|^\d{1,13}\.\d{1,5}$` |
+| Amount |1..1 |OBRegulatoryReporting1/Details/Amount/Amount |A number of monetary units specified in an active currency where the unit of currency is explicit and compliant with ISO 4217. | OBActiveCurrencyAndAmount_SimpleType | ^\d{1,13}$|^\d{1,13}\.\d{1,5}$ |
 | Currency |1..1 |OBRegulatoryReporting1/Details/Amount/Currency |A code allocated to a currency by a Maintenance Agency under an international identification scheme, as described in the latest edition of the international standard ISO 4217 "Codes for the representation of currencies and funds". |ActiveOrHistoricCurrencyCode | | ^[A-Z]{3,3}$ |
 
 #### OBUltimateCreditor1
@@ -1063,7 +1063,7 @@ PISP -> ASPSP Resource Server: POST /domestic-payments
 ASPSP Resource Server -> PISP: HTTP 201 (Created) DomesticPaymentId
 note over ASPSP Resource Server: Consent Status: COND
 note over ASPSP Resource Server:Payment Status: PDNG
-note over ASPSP Resource Server:MultiAuthorisation Status: AWAF
+note over ASPSP Resource Server:MultiAuthorisation Status: AWAU
 
 note over PSU Initial Authoriser: ASPSP Resource Server \nStep 5: Authorize Consent - Final Authoriser
 
