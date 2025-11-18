@@ -48,7 +48,8 @@ Once the international-scheduled-payment-consent has been authorised by the PSU,
 * This is done by making a POST request to the **international-scheduled-payments** endpoint.
 * This request is an instruction to the ASPSP to begin the international scheduled payment journey. The PISP must submit the international scheduled payment immediately, however, there are some scenarios where the ASPSP may not warehouse the international scheduled payment immediately (e.g. busy periods at the ASPSP).
 * The PISP **must** ensure that the Initiation and Risk sections of the international-scheduled-payment match the corresponding Initiation and Risk sections of the international-scheduled-payment-consent resource. If the two do not match, the ASPSP **must not** process the request and **must** respond with a 400 (Bad Request).
-* Any operations on the international-scheduled-payment resource will not result in a Status change for the international-scheduled-payment resource.
+* Any further HTTP operations on the international-scheduled-payment resource will not result in a Status change for the international-scheduled-payment resource.
+* The Status will be updated by the ASPSP in line with payment processing.
 
 #### Status
 

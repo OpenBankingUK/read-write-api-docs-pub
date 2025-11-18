@@ -1,4 +1,4 @@
-# Account and Transaction API Profile - v4.0  <!-- omit in toc -->
+# Account and Transaction API Profile - v4.0.1  <!-- omit in toc -->
 
 - [Overview](#overview)
   - [Document Structure](#document-structure)
@@ -45,6 +45,8 @@
       - [Data Dictionary](#obultimatecreditor1-data-dictionary)
     - [OBUltimateDebtor1](#obultimatedebtor1)
       - [Data Dictionary](#obultimatedebtor1-data-dictionary)
+    - [OBIntermediaryAgent1](#obintermediaryagent1)
+      - [Data Dictionary](#obintermediaryagent1-data-dictionary)
   - [Using Meta to identify Available Transaction Period](#using-meta-to-identify-available-transaction-period)
   - [Mapping to Schemes & Standards](#mapping-to-schemes-standards)
   - [Enumerations](#enumerations)
@@ -245,9 +247,9 @@ The account-access-consent resource is referred to as an account-request resourc
 - An ASPSP **must** allow a Consent to be accessed in a newer version.
 - An ASPSP **must** ensure Permissions set associated with a Consent are unchanged when accessed in a different version:
   - E.g., An account-request created in v2 will have the same details when accessed via v2 and v3 (as an account-access-consent).
-- An ASPSP **must** ensure a Consent's fields are representative of the version being accessed. e.g. using v4 fields and enums when accessing a consent create don 3.1 on v4.0 endpoints
+- An ASPSP **must** ensure a Consent's fields are representative of the version being accessed. e.g. using v4 fields and enums when accessing a consent created on 3.1 on v4.0 endpoints
 - An ASPSP **may** allow expired Consents to be accessed in a newer version.
-- An ASPSP **may** choose to populate new fields introduced in a resource from previous version sensible defaults (if mandatory) or not populate at all (if not mandatory):
+- An ASPSP **may** choose to populate new fields introduced in a resource from previous version with sensible defaults (if mandatory) or not populate at all (if not mandatory):
   - E.g., OBReadResponse1/Data/StatusUpdateDateTime introduced in v2 accessed with v1 AccountRequestId can be populated with Last accessed date time, if not already available in the system of records.
 
 ##### DELETE
@@ -314,7 +316,7 @@ The Account Access Consent resource consists of the following fields, which toge
 
 ##### Permissions
 
-Permissions codes will be used to limit the data that is returned in response to a resource request.
+Permissions codes are used to limit the data that is returned in response to a resource request.
 
 When a permission is granted for a "Detail" permission code (e.g., ReadAccountsDetail) it implies that access is also granted to the corresponding "Basic" permission code (e.g., ReadAccountsBasic).
 
@@ -351,7 +353,7 @@ The following combinations of permissions are not allowed, and the ASPSP **must*
 | ReadParty**PSU** |/party | |Ability to read party information on the PSU logged in. |
 | ReadScheduledPayments**Basic** |/scheduled-payments<br>/accounts/{AccountId}/scheduled-payments | |Ability to read basic statement details |
 | ReadScheduledPayments**Detail** |/scheduled-payments<br>/accounts/{AccountId}/scheduled-payments |Access to additional elements in the payload | |
-| ReadPAN |All API endpoints where PAN is available as a structured field |Request to access to PAN in the clear |Request to access **PAN** in the clear across the available endpoints.<br><br>If this permission code is not in the account-access-consent, the AISP will receive a masked PAN.<br><br>While an AISP may request to access PAN in the clear, an ASPSP may still respond with a masked PAN if:<br><br><li>The ASPSP does not display PAN in the clear in existing online channels</li><li>The ASPSP takes a legal view to respond with only the masked PAN</li><li> ASPSP should return last 4 digits unmasked, **or** </li><li>ASPSP should return at max first 6 and last 4 digits unmasked. e.g. 5555 **** **** 4444, **** **** **** 4444 etc</li>|
+| ReadPAN |All API endpoints where PAN is available as a structured field |Request to access to PAN in the clear |Request to access **PAN** in the clear across the available endpoints.<br><br>If this permission code is not in the account-access-consent, the AISP will receive a masked PAN.<br><br>While an AISP may request to access PAN in the clear, an ASPSP may still respond with a masked PAN if:<br><br></li><li>The ASPSP does not display PAN in the clear in existing online channels</li><li>The ASPSP takes a legal view to respond with only the masked PAN<br><br>If returning a masked PAN the ASPSP should</li><li> return last 4 digits unmasked, **or** </li><li> return at max first 6 and last 4 digits unmasked, e.g. 5555 **** **** 4444, **** **** **** 4444 etc</li>|
 
 ###### Detail Permissions
 
@@ -448,8 +450,8 @@ The PSU may request the AISP to revoke consent that it has authorised. If consen
 
 A PSU **may** revoke AISP's access directly with the ASPSP,  via the access dashboard. In such a situation:
 - The ASPSP **must** take the necessary action to revoke access e.g. by revoking/expiring the access token provided to the AISP.
-- The status of the account-access-consent **must** be changed to `CANC` and the AISP **must** be allowed to request PSU to re-authenticate the same account-access-consent resource.
-- The ASPSP must provide the reasons as appropriate when the status is marked to `CANC`. For more guidance refer to CEG.
+- The status of the account-access-consent **should** be changed to `CANC`. If the status of the consent is updated then an appropriate reason **must** be provided in StatusReason. The AISP **must** be allowed to request PSU to re-authenticate the same account-access-consent resource.
+- The ASPSP **must** provide the reasons as appropriate when the status is marked to `CANC`. For more guidance refer to CEG.
 - Upon successful re-authentication by PSU, an ASPSP **may** issue new authorization code and subsequently new access token to the AISP. The ASPSP **must** also change the status of the consent back to `AUTH` which means Authorised.
 
 ### Changes to Selected Account(s)
@@ -569,6 +571,20 @@ No fields for business logic security concerns have been identified for the Acco
 | LEI |0..1 | OBUltimateDebtor1/LEI |Legal entity identification as an alternate identification for a party. Legal Entity Identifier is a code allocated to a party as described in ISO 17442 "Financial Services - Legal Entity Identifier (LEI)".|Max20Text | | ^[A-Z0-9]{18,18}[0-9]{2,2}$|
 | SchemeName |0..1 |OBUltimateDebtor1/SchemeName |Name of the identification scheme, in a coded form as published in an external list. | For a full list of enumeration values refer to `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets). |OBInternalAccountIdentification4Code | 
 | PostalAddress | 0..1 | OBUltimateDebtor1/PostalAddress | Information that locates and identifies a specific address, as defined by postal services. | OBPostalAddress7 | | 
+
+#### OBIntermediaryAgent1
+
+##### OBIntermediaryAgent1 Data Dictionary
+
+| Name | Occurrence | XPath | EnhancedDefinition | Class | Codes | Pattern |
+| --- | --- | --- | --- | --- | --- | --- |
+| OBIntermediaryAgent1 | | | The intermediary agent associated with this transaction. | OBIntermediaryAgent1 | | |
+| Name |0..1 |OBIntermediaryAgent1/Name |Name by which an agent is known and which is usually used to identify that agent. |Max140Text | | |
+| SchemeName |0..1 |OBIntermediaryAgent1/SchemeName |Name of the identification scheme, in a coded form as published in an external list. | For a full list of enumeration values refer to `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets). |OBInternalFinancialInstitutionIdentification4Code | |
+| Identification |0..1 |OBIntermediaryAgent1/Identification |Unique and unambiguous identification of a financial institution or a branch of a financial institution. |Max35Text | | |
+| LEI |0..1 | OBIntermediaryAgent1/LEI |Legal entity identification as an alternate identification for a party. Legal Entity Identifier is a code allocated to a party as described in ISO 17442 "Financial Services - Legal Entity Identifier (LEI)".|Max20Text | | ^[A-Z0-9]{18,18}[0-9]{2,2}$|
+| PostalAddress | 0..1 | OBIntermediaryAgent1/PostalAddress | Information that locates and identifies a specific address, as defined by postal services. | OBPostalAddress7 | | |
+| ProcessingStatus| 0..1 | OBIntermediaryAgent1/ProcessingStatus | Status of the payment at the Intermediary Agent. | For a full list of enumeration values refer to `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets) | OBIntermediaryAgentStatus1Code ||
 
 ### Using Meta to identify Available Transaction Period
 
