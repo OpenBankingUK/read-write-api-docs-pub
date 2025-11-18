@@ -389,7 +389,7 @@ In some circumstances it **may** be appropriate for an ASPSP to use rate limit h
 
 Some ASPSPs may require the TPP Client ID to be present in the request headers, this is listed in the table below but may not be required for all implementations.
 
-TPPs **must** refer to ASPSP developer portals for further information on any rate limit policies, if the headers are supported and any addtional requirements.
+TPPs **must** refer to ASPSP developer portals for further information on any rate limit policies, if the headers are supported and any additional requirements.
 
 ##### Request Header
 
