@@ -57,12 +57,7 @@ A PISP can retrieve the file-payment to check its status.
 
 #### Status
 
-The file-payments resource must have one of the following initial status codes:
-
-| Status |
-| --- |
-| RCVD |
-| RJCT |
+The initial file-payments resource status **must** be `PDNG`
 
 ### GET /file-payments/{FilePaymentId}/report-file
 
@@ -105,14 +100,13 @@ The state model describes the initiation status only
 
 ![File Initiation Status](./images/FilePaymentInitiationModel.png)
 
-
 ##### Multiple Authorisation
+
 If the payment-order requires multiple authorisations the status of the multiple authorisations will be updated in the MultiAuthorisation object.
 
-Once the payment is RCVD, the file-payments Status must be set to PATC and the MultiAuthorisation object status updated with the AWAF status. Once all authorisations have been successfully completed the MultiAuthorisation status must be set to AUTH and file-payments Status updated to ACSP if any intermediate status are not supported.
+Once the payment is received, the file-payments Status must be set to PDNG and the MultiAuthorisation object status updated with the AWAF status. Once all authorisations have been successfully completed the MultiAuthorisation status must be set to AUTH and file-payments Status updated to INCO.
 
-Any rejections in the multiple authorisation process should result in the MultiAuthorisation status and Status being set to RJCT. 
-
+Any rejections in the multiple authorisation process should result in the MultiAuthorisation status being set to RJCT and file-payments Status being set to INFA.
 
 ![Multi Auth](./images/PO_MultiAuthFlow.png)
 
