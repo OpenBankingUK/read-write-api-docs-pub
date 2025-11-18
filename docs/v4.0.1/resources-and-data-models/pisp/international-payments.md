@@ -49,7 +49,8 @@ Once the international-payment-consent has been authorised by the PSU, the PISP 
 * This is done by making a POST request to the **international-payments** endpoint.
 * This request is an instruction to the ASPSP to begin the international single immediate payment journey. The international payment must be submitted immediately, however, there are some scenarios where the international payment may not be executed immediately (e.g. busy periods at the ASPSP).
 * The PISP **must** ensure that the Initiation and Risk sections of the international-payment match the corresponding Initiation and Risk sections of the international-payment-consent resource. If the two do not match, the ASPSP **must not** process the request and **must** respond with a 400 (Bad Request).
-* Any operations on the international-payment resource will not result in a Status change for the international-payment resource.
+* Any further HTTP operations on the international-payment resource will not result in a Status change for the international-payment resource.
+* The Status will be updated by the ASPSP in line with payment processing.
 
 #### Status
 

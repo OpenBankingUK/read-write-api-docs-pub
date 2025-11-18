@@ -89,18 +89,28 @@ Each account resource will have a unique and immutable AccountId.
 
 ### Permission Codes
 
-The resource differs depending on the permissions (ReadAccountsBasic and ReadAccountsDetail) used to access the resource. In the event that the resource is accessed with both ReadAccountsBasic and ReadAccountsDetail, the most detailed level (ReadAccountsDetail) must be used.
+The resource differs depending on the permissions (ReadAccountsBasic and ReadAccountsDetail) used to access the resource. When the resource is accessed with ReadAccountsDetail it implies that access is also granted to the ReadAccountBasics permissions.  Whilst it is duplication for a TPP to request both permission codes, it is not a malformed request, and the ASPSP must not reject solely on the basis of duplication.
 
-* These objects **must not** be returned **without** the **ReadAccountsDetail** permission:
+Where both ReadAccountsBasic and ReadAccountsDetail are present, the most detailed level (ReadAccountsDetail) must be used.
+
+The following combinations of permissions are not allowed, and it is **MANDATORY** that the ASPSP rejects these account-access-consents with a HTTP 400 response code:
+* Account Access Consents with an empty Permissions array
+* Account Access Consents with a permission code that is not supported by the ASPSP (ASPSPs are expected to publish which API endpoints are supported in their developer documentation).
+
+It is **MANDATORY** to include the ReadAccountsDetail permission to return any of the following objects:
+
     * OBReadAccount6/Data/Account/Account
     * OBReadAccount6/Data/Account/Servicer
     * OBReadAccount6/Data/Account/StatementFrequencyAndFormat
-* If the **ReadAccountsDetail** is granted by the PSU:
+* If the **ReadAccountsDetail** is granted by the PSU it is **MANDATORY** to return the following:
     * OBReadAccount6/Data/Account/Account **must** be returned (1..*)
-    * OBReadAccount6/Data/Account/Servicer **may** be returned if applicable to the account and ASPSP (0..1)
-    * OBReadAccount6/Data/Account/StatementFrequencyAndFormat **may** be returned (0..*)
+* If the **ReadAccountsDetail** is granted by the PSU it is **CONDITIONAL** to return the following, conditionality being baed on the information being applicable to the account and ASPSP:
+    * OBReadAccount6/Data/Account/Servicer (0..1)
+    * OBReadAccount6/Data/Account/StatementFrequencyAndFormat (0..*)
 
-If the ReadPAN permission is granted by the PSU, the ASPSP may choose to populate the OBReadAccount6/Data/Account/Account/Identification with the unmasked PAN (if the PAN is being populated in the response).
+If the ReadPAN permission is granted by the PSU, the ASPSP may **OPTIONALLY** choose to populate the OBReadAccount6/Data/Account/Account/Identification with the unmasked PAN (if the PAN is being populated in the response).
+
+Further information can be found at [Account and Transaction Permissions](../../profiles/account-and-transaction-api-profile.md#permissions)
 
 ### Data Dictionary
 
