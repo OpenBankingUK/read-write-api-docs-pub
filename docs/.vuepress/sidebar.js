@@ -182,6 +182,10 @@ module.exports = [
                         title: 'Aggregated Polling API',
                         path: '/v4.0.1/profiles/aggregated-polling-api-profile',
                     },
+                                      {
+                        path: '/v4.0.1/resources-and-data-models/event-notifications/',
+                        title: 'Event Notification Resources'
+                    },
                 ],
             },
             {
@@ -192,10 +196,6 @@ module.exports = [
                     {path: '/v4.0.1/resources-and-data-models/pisp/', title: 'PIS Resources'},
                     {path: '/v4.0.1/resources-and-data-models/cbpii/', title: 'CBPII Resources'},
                     {path: '/v4.0.1/resources-and-data-models/vrp/', title: 'VRP Resources'},
-                    {
-                        path: '/v4.0.1/resources-and-data-models/event-notifications/',
-                        title: 'Event Notification Resources'
-                    },
                 ]
             },
             {
