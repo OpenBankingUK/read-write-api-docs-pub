@@ -82,9 +82,6 @@ The available status codes for the domestic-scheduled-payment-consent resource a
 | AUTH |
 | COND |
 
-Refer to [External_Internal_CodeSets](https://github.com/OpenBankingUK/External_Internal_CodeSets) -> OB_Internal_CodeSet -> `OBExternalConsentProprietaryCode`.
-
-
 ### State Model
 
 #### Payment Order Consent
