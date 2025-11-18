@@ -1,4 +1,4 @@
-# Domestic VRPS - v4.0.1 <!-- omit in toc -->
+# Domestic VRPs - v4.0.1 <!-- omit in toc -->
 
 - [Overview](#overview)
 - [Endpoints](#endpoints)
@@ -190,11 +190,11 @@ __Payment order state model key:__
 | __Data__ (1..1) | `Data`| | |
 | __PaymentStatus__ (0..*) | | |
 | __PaymentTransactionId__ (1..1) | `Data. PaymentTransactionId` |Unique identifier for the transaction within an servicing institution. This identifier is both unique and immutable. |Max210Text|
-| __Status__ (1..1) |`Data. Status` |Status of a transfer, as assigned by the transaction administrator. | See `ExternalPaymentTransactionStatus1Code` in [External codeset list](https://github.com/OpenBankingUK/External_internal_CodeSets)| ExternalPaymentTransactionStatus1Code|
+| __Status__ (1..1) |`Data. Status` |Status of a transfer, as assigned by the transaction administrator. | See `ExternalPaymentTransactionStatus1Code` in [OB_Internal codeset list](https://github.com/OpenBankingUK/External_internal_CodeSets)| ExternalPaymentTransactionStatus1Code|
 | __StatusUpdateDateTime__ (1..1)       | `Data. StatusUpdateDateTime`       | Date and time at which the resource Status was updated. | ISODateTime |
 | __StatusDetail__ (0..*) | `Data. StatusDetail` |Payment status details as per underlying Payment Rail.| |
 | __LocalInstrument__ (0..1) | `Data. PaymentStatus. StatusDetail. LocalInstrument` |User community specific instrument.  Usage: This element is used to specify a local instrument, local clearing option and/or further qualify the service or service level. | For a full list of values see `OBInternalLocalInstrument1Code` in `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets) |
-| __Status__ (1..1) | `Data. StatusDetail. Status` |Status of a transfer, as assigned by the transaction administrator. |`ExternalPaymentTransactionStatus1Code` For a full list of values see `External_CodeSet` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets) |
+| __Status__ (1..1) | `Data. StatusDetail. Status` |Status of a transfer, as assigned by the transaction administrator. |`ExternalPaymentTransactionStatus1Code` For a full list of values see `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets) |
 | __StatusReason__ (0..1) | `Data. StatusDetail. StatusReason` |Reason code for the Status Code update. Specifies the status reason using the Code Value of `OBExternalStatusReason1Code`. | For a full list of values see `OBExternalStatusReason1Code` in `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets)|
 | __StatusReasonDescription__ (0..1) | `Data. StatusDetail. StatusReasonDescription` |Reason provided for the status of a transfer using the Code Name of `OBExternalStatusReason1Code`  |For a full list of values see `OBExternalStatusReason1Code` in `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets) |
 
