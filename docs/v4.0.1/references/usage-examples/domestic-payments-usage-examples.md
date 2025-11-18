@@ -1279,11 +1279,11 @@ Accept: application/json
             },
             "RemittanceInformation": {
                 "Structured": [
-                  {
-                    "CreditorReferenceInformation": {
-                      "Reference": "BT-OfferCode-12",
+                    {
+                        "CreditorReferenceInformation": {
+                            "Reference": "BT-OfferCode-12"
+                        }
                     }
-                  }
                 ],
                 "Unstructured": ["Internal ops code 5120103"]
             }
@@ -1332,11 +1332,11 @@ Content-Type: application/json
             },
             "RemittanceInformation": {
                 "Structured": [
-                  {
-                    "CreditorReferenceInformation": {
-                      "Reference": "BT-OfferCode-12",
+                    {
+                        "CreditorReferenceInformation": {
+                            "Reference": "BT-OfferCode-12"
+                        }
                     }
-                  }
                 ],
                 "Unstructured": ["Internal ops code 5120103"]
             }
@@ -1392,11 +1392,11 @@ Accept: application/json
             },
             "RemittanceInformation": {
                 "Structured": [
-                  {
-                    "CreditorReferenceInformation": {
-                      "Reference": "BT-OfferCode-24",
+                    {
+                        "CreditorReferenceInformation": {
+                            "Reference": "BT-OfferCode-24"
+                        }
                     }
-                  }
                 ],
                 "Unstructured": ["Internal ops code 5120103"]
             }
@@ -1445,11 +1445,11 @@ Content-Type: application/json
             },
             "RemittanceInformation": {
                 "Structured": [
-                  {
-                    "CreditorReferenceInformation": {
-                      "Reference": "BT-OfferCode-24",
+                    {
+                        "CreditorReferenceInformation": {
+                            "Reference": "BT-OfferCode-24"
+                        }
                     }
-                  }
                 ],
                 "Unstructured": ["Internal ops code 5120103"]
             }
