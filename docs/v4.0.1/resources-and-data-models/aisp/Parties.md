@@ -107,8 +107,8 @@ The Party resource contains a set of elements that describes a party. The party 
 | BeneficialOwnership |0..1 |OBParty2/BeneficialOwnership |A flag to indicate a party's beneficial ownership of the related account. |xs:boolean | | |
 | AccountRole |0..1 |OBParty2/AccountRole |A party's role with respect to the related account. |For a full list of enumeration values refer to `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_internal_CodeSets). |OBInternalAccountRole1Code |
 | EmailAddress |0..1 |OBParty2/EmailAddress |Address for electronic mail (e-mail). |Max256Text | | |
-| Phone |0..1 |OBParty2/Phone |Collection of information that identifies a phone number as defined by telecom services. |PhoneNumber | |\\+[0-9]{1,3}-[0-9()+\-]{1,30} |
-| Mobile |0..1 |OBParty2/Mobile |Collection of information that identifies a mobile phone number as defined by telecom services. |PhoneNumber | |\\+[0-9]{1,3}-[0-9()+\-]{1,30} |
+| Phone |0..1 |OBParty2/Phone |Collection of information that identifies a phone number as defined by telecom services. |PhoneNumber | |`\+[0-9]{1,3}-[0-9()+\-]{1,30}` |
+| Mobile |0..1 |OBParty2/Mobile |Collection of information that identifies a mobile phone number as defined by telecom services. |PhoneNumber | |`\+[0-9]{1,3}-[0-9()+\-]{1,30}` |
 | Relationships |0..1 |OBParty2/Relationships |The Party's relationships with other resources. |OBPartyRelationships1 | | |
 | Account |0..1 |OBParty2/Relationships/Account |Relationship to the Account resource. |OBRelationship1 | | |
 | Related |1..1 |OBParty2/Relationships/Account/Related |Absolute URI to the related resource. |xs:anyURI | | |
