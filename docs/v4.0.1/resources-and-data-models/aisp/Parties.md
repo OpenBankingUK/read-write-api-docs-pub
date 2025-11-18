@@ -43,6 +43,8 @@ The party resource is used by an AISP to retrieve the details on the account own
 * In the case of a business, this will be the details of the business
 * In the case of a joint account, this will be the party that has given authorisation to the AISP to view the account.  
 
+TPPs should refer to ASPSP developer portals to understand the approach they have taken for the conditional Parties endpoints and what conditional fields are supported. ASPSPs should ensure they support the provision of any data available through their direct channel, such as full legal name, email address, address or mobile.
+
 This resource description should be read in conjunction with a compatible Account Information Services API Profile.
 
 ## Endpoints
