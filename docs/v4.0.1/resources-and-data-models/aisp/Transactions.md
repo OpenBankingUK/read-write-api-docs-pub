@@ -105,6 +105,11 @@ For a specific date range, an account (AccountId) may have no transactions booke
   * The ISO 20022 BankTransactionCode Code and SubCode are specified as 4 letter codes. 
 * ASPSPs must have the ability to provide transactions through APIs for a period that at least equals the period provided through their online channels.
 * ExtendedProprietaryBankTransactionCodes is a OB Proprietary field (introduced by TDA decision 264) to support multiple proprietry Bank Transaction Codes that may be associated with the transaction, in addition to a single default one. The expectation is to capture the default under ProprietaryBankTransactionCode. The ASPSP must publish all the proprietary and extended proprietary bank transaction codes along with usage on their developer portal.
+* Counterparty information may be returned in the TransactionInformation field.
+  * ASPSPs should document how counterparty information is returned on their developer portals and include guidance on processing the information.
+  * For example, if the payload string contains location information ASPSPs should provide information on how that can be separated from the counterparty name, such as a pre-defined delimitator.
+  * TPPs should refer to ASPSP developer portals for clarification on how this information is returned and any parsing considerations.
+* TPPs should refer to ASPSP developer portals for information on whether individual Bacs transactions are available in the Transactions endpoint.
 
 ### Filtering
 
@@ -307,12 +312,7 @@ Further information can be found at [Account and Transaction Permissions](../../
 | Identification |0..1 |OBReadTransaction6/Data/Transaction/DebtorAgent/Identification |Unique and unambiguous identification of a financial institution or a branch of a financial institution. |Max35Text | | |
 | Name |0..1 |OBReadTransaction6/Data/Transaction/DebtorAgent/Name |Name by which an agent is known and which is usually used to identify that agent. |Max140Text | | |
 | PostalAddress |0..1 |OBReadTransaction6/Data/Transaction/DebtorAgent/PostalAddress |Information that locates and identifies a specific address, as defined by postal services. |OBPostalAddress7 | | |
-| DebtorAccount |0..1 |OBReadTransaction6/Data/Transaction/DebtorAccount |Unambiguous identification of the account of the debtor, in the case of a credit transaction. |OBCashAccount6 | | |
-| SchemeName |0..1 |OBReadTransaction6/Data/Transaction/DebtorAccount/SchemeName |Name of the identification scheme, in a coded form as published in an external list. | For a full list of enumeration values refer to `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets). |OBInternalAccountIdentification4Code | 
-| Identification |0..1 |OBReadTransaction6/Data/Transaction/DebtorAccount/Identification |Identification assigned by an institution to identify an account. This identification is known by the account owner. |Max256Text | | |
-| Name |0..1 |OBReadTransaction6/Data/Transaction/DebtorAccount/Name |The account name is the name or names of the account owner(s) represented at an account level, as displayed by the ASPSP's online channels. Note, the account name is not the product name or the nickname of the account. |Max350Text | | |
-| Proxy |0..1 |OBReadTransaction6/Data/Transaction/DebtorAccount/Proxy |Specifies an alternate assumed name for the identification of the account.  |OBProxy1 | | |
-| SecondaryIdentification |0..1 |OBReadTransaction6/Data/Transaction/DebtorAccount/SecondaryIdentification |This is secondary identification of the account, as assigned by the account servicing institution. This can be used by building societies to additionally identify accounts with a roll number (in addition to a sort code and account number combination). |Max34Text | | |
+| DebtorAccount |0..1 |OBReadTransaction6/Data/Transaction/DebtorAccount |Unambiguous identification of the account of the debtor, in the case of a credit transaction. |OBCashAccountDebtorWithName | | |
 | UltimateDebtor |0..1 |OBReadTransaction6/Data/Transaction/UltimateDebtor|Ultimate party that owes an amount of money to the (ultimate) creditor. | OBUltimateDebtor1| | |
 | CardInstrument |0..1 |OBReadTransaction6/Data/Transaction/CardInstrument |Set of elements to describe the card instrument used in the transaction. |OBTransactionCardInstrument1 | | |
 | CardSchemeName |1..1 |OBReadTransaction6/Data/Transaction/CardInstrument/CardSchemeName |Name of the card scheme. |For a full list of enumeration values refer to `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets). |OBInternalCardSchemeType1Code	 | |
@@ -469,8 +469,8 @@ Content-Type: application/json
         "ValueDateTime": "2017-04-05T10:45:22+00:00",
         "TransactionInformation": "Cash from Aubrey",
         "BankTransactionCode": {
-          "Code": "ReceivedCreditTransfer",
-          "SubCode": "DomesticCreditTransfer"
+          "Code": "RCDT",
+          "SubCode": "DMCT"
         },
         "ProprietaryBankTransactionCode": {
           "Code": "Transfer",
@@ -554,8 +554,8 @@ Content-Type: application/json
         "ValueDateTime": "2017-04-05T10:45:22+00:00",
         "TransactionInformation": "Cash from Aubrey",
         "BankTransactionCode": {
-          "Code": "ReceivedCreditTransfer",
-          "SubCode": "DomesticCreditTransfer"
+          "Code": "RCDT",
+          "SubCode": "DMCT"
         },
         "ProprietaryBankTransactionCode": {
           "Code": "Transfer",

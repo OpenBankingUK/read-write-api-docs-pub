@@ -1,4 +1,4 @@
-# Open Banking Read-Write API Profile  - v4.0 <!-- omit in toc -->
+# Open Banking Read-Write API Profile  - v4.0.1 <!-- omit in toc -->
 
    1. [Overview](#overview)
       1. [Document Structure](#document-structure)
@@ -96,7 +96,7 @@
          3. [Error Response Structure](#error-response-structure)
             1. [UML Diagram](#uml-diagram)
             2. [Data Dictionary](#data-dictionary)
-         4. [Optional Fields](#optional-fields)
+         4. [Conditional Fields](#conditional-fields)
          5. [Links](#links)
          6. [Meta](#meta)
    5. [Usage Examples](#usage-examples)
@@ -156,9 +156,9 @@ The OBL principles for developing API standards:
 
 #### ISO 20022
 
-The CMA Order requires the CMA9 Banks to be aligned with the Regulatory and Technical Standards (RTS) under PSD2.
+The CMA Order requires the OBL Standard to include features and elements necessary to enable the CMA9 to comply with the requirements to provide access to accounts under PSD2.
 
-A previous draft of the EBA RTS required that the interface "shall use ISO 20022 elements, components or approved message definitions". In keeping with that requirement, the API payloads are designed using the ISO 20022 message elements and components where available.
+Article 30(3) of the FCA’s Regulatory Technical Standards on strong customer authentication and common and secure methods of communication (FCA’s SCA-RTS) require ASPSPs to ensure that their interfaces follow standards of communication which are issued by international standardisation organisations. In keeping with that requirement, the API payloads are designed using the ISO 20022 message elements and components where available.
 
 The principles we have applied to re-use of ISO message elements and components are:
 
@@ -236,6 +236,7 @@ For fields:
 * A TPP **must** specify the value of a Mandatory field.
 * An ASPSP **must** process a Mandatory field when provided by the TPP in an API request.
 * An ASPSP **must** include meaningful values for Mandatory fields in an API response.
+* Mandantory fields are represented as `1..1` or `1..*` in the Data Dictionary Occurrence column and UML diagrams.
 
 ##### Conditional
 
@@ -251,6 +252,7 @@ For fields:
 * A TPP **may** specify the value of a Conditional field.
 * An ASPSP **must** process a Conditional field when provided by the TPP in an API request, and **must** respond with an error if it cannot support a particular value of a Conditional field.
 * An ASPSP **must** include meaningful values for Conditional fields in an API response if these are required for regulatory compliance.
+* Conditional fields are represented as `0..1` or `0..*` in the Data Dictionary Occurrence column and UML diagrams.
 
 ##### Optional
 
@@ -265,6 +267,8 @@ For fields:
 
 * There are no Optional fields.
 * For any endpoints which are implemented by an ASPSP, the fields are either Mandatory or Conditional.
+* TPPs may not need to supply data for a Conditional field in a request payload and should refer to the ASPSPs documentation for clarity on usage.
+* References to *Optional fields* in supporting documentation should be understood as being **Conditional** fields.
 
 ## Basics
 
@@ -539,11 +543,11 @@ The TPP **must** sign the HTTP body of each API request that requires message 
 
 The ASPSP **must** sign the HTTP body of each API response that requires message signing.
 
-The ASPSP **should** verify the signature of API requests that it receives before carrying out the request. If the signature fails validation, the ASPSP **must** respond with a 400 (Bad Request).
+The ASPSP **must** verify the signature of API requests that it receives before carrying out the request. If the signature fails validation, the ASPSP **must** respond with a 400 (Bad Request).
 
 The ASPSP **must** reject any API requests that should be signed but do not contain a signature in the HTTP header with a 400 (Bad Request) error.
 
-The TPP **should** verify the signature of API responses that it receives.
+The TPP **must** verify the signature of API responses that it receives and immediately inform the ASPSP if it receives a payload with an invalid or missing mandatory signature.
 
 The signer **must** sign the message with PS256.
 
@@ -1273,9 +1277,9 @@ The error response structure for Open Banking Read/Write APIs:
 |Url                       |0..1                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |OBErrorResponse1/Errors/Url|URL to help remediate the problem, or provide more information, or to API Reference, or help etc                                                                        |xs:anyURI                |     |       |
 
 
-#### Optional Fields
+#### Conditional Fields
 
-In objects where the value for an optional field is not specified, the field **must** be excluded from the JSON payload.
+In objects where the value for a conditional field is not specified, the field **must** be excluded from the JSON payload.
 
 In objects where an array field is defined as having 0..* values, the array field **must be** included in the payload with an empty array.
 
@@ -1290,9 +1294,9 @@ In objects where an array field is defined as having 0..* values, the array fiel
 
 #### Links
 
-The Links section is mandatory and will always contain absolute URIs to related resources, 
+The Links section is **Conditional** and will always contain absolute URIs to related resources.
 
-The "Self" member is mandatory.
+The "Self" member is **Mandatory**.
 
 For example:
 
@@ -1318,7 +1322,7 @@ For example:
 
 #### Meta
 
-The Meta section is mandatory, but may be empty.  An optional member is "TotalPages" which is specified as an integer (int32) and shows how many pages of results (for pagination) are available.
+The Meta section is **Conditional**, but may be empty.  An optional member is "TotalPages" which is specified as an integer (int32) and shows how many pages of results (for pagination) are available.
 
 For example:
 

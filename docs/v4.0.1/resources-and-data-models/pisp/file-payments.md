@@ -1,4 +1,4 @@
-# File Payments - v4.0 <!-- omit in toc -->
+# File Payments - v4.0.1 <!-- omit in toc -->
 
 - [Overview](#overview)
 - [Endpoints](#endpoints)
@@ -57,12 +57,7 @@ A PISP can retrieve the file-payment to check its status.
 
 #### Status
 
-The file-payments resource must have one of the following initial status codes:
-
-| Status |
-| --- |
-| RCVD |
-| RJCT |
+The initial file-payments resource status **must** be `PDNG`
 
 ### GET /file-payments/{FilePaymentId}/report-file
 
@@ -105,20 +100,19 @@ The state model describes the initiation status only
 
 ![File Initiation Status](./images/FilePaymentInitiationModel.png)
 
-
 ##### Multiple Authorisation
+
 If the payment-order requires multiple authorisations the status of the multiple authorisations will be updated in the MultiAuthorisation object.
 
-Once the payment is RCVD, the file-payments Status must be set to PATC and the MultiAuthorisation object status updated with the AWAF status. Once all authorisations have been successfully completed the MultiAuthorisation status must be set to AUTH and file-payments Status updated to ACSP if any intermediate status are not supported.
+Once the payment is received, the file-payments Status must be set to PDNG and the MultiAuthorisation object status updated with the AWAF status. Once all authorisations have been successfully completed the MultiAuthorisation status must be set to AUTH and file-payments Status updated to INCO.
 
-Any rejections in the multiple authorisation process should result in the MultiAuthorisation status and Status being set to RJCT. 
-
+Any rejections in the multiple authorisation process should result in the MultiAuthorisation status being set to RJCT and file-payments Status being set to INFA.
 
 ![Multi Auth](./images/PO_MultiAuthFlow.png)
 
 |  | Status |Status Description |
 | ---| ------ |------------------ |
-| 1 |AWAU |The payment-order resource is awaiting further authorisation. |
+| 1 |AWAF |The payment-order resource is awaiting further authorisation. |
 | 2 |RJCT |The payment-order resource has been rejected by an authoriser. |
 | 3 |AUTH |The payment-order resource has been successfully authorised by all required authorisers. |
 
@@ -187,23 +181,23 @@ The file-payment **response** object contains the:
 
 #### Data Dictionary
 
-| Name                    | Occurrence | XPath                                                          | EnhancedDefinition                                                                                                                 | Class                                                                                                                                    | Codes                                   | Pattern |
-|-------------------------|------------|----------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------|---------|
-| OBWriteFileResponse3    |            | OBWriteFileResponse3                                           |                                                                                                                                    | OBWriteFileResponse3                                                                                                                     |                                         |         |
-| Data                    | 1..1       | OBWriteFileResponse3/Data                                      |                                                                                                                                    | OBWriteDataFileResponse3                                                                                                                 |                                         |         |
-| FilePaymentId           | 1..1       | OBWriteFileResponse3/Data/FilePaymentId                        | OB: Unique identification as assigned by the ASPSP to uniquely identify the file payment resource.                                 | Max40Text                                                                                                                                |                                         |         |
-| ConsentId               | 1..1       | OBWriteFileResponse3/Data/ConsentId                            | OB: Unique identification as assigned by the ASPSP to uniquely identify the consent resource.                                      | Max128Text                                                                                                                               |                                         |         |
-| CreationDateTime        | 1..1       | OBWriteFileResponse3/Data/CreationDateTime                     | Date and time at which the resource was created.                                                                                   | ISODateTime                                                                                                                              |                                         |         |
-| Status                  | 1..1       | OBWriteFileResponse3/Data/Status                               | Specifies the status of the payment order resource.                                                                                | For a full list of enumeration values refer to `External_CodeSet` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets).   | `ExternalPaymentTransactionStatus4Code` |         |
-| StatusUpdateDateTime    | 1..1       | OBWriteFileResponse3/Data/StatusUpdateDateTime                 | Date and time at which the resource status was updated.                                                                            | ISODateTime                                                                                                                              |                                         |         |
-| StatusReason            | 0..*       | OBWriteFileResponse3/Data/StatusReason                         | Specifies the status reason.                                                                                                       | OBStatusReason                                                                                                                           |                                         |         |
-| StatusReasonCode        | 0..1       | OBWriteFileResponse3/Data/StatusReason/StatusReasonCode        | Specifies the status reason in a code form.                                                                                        | For a full list of enumeration values refer to `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_internal_CodeSets) | `OBExternalStatusReason1Code`           |         |
-| StatusReasonDescription | 0..1       | OBWriteFileResponse3/Data/StatusReason/StatusReasonDescription | Description supporting the StatusReasonCode.                                                                                       | Max500Text                                                                                                                               |                                         |         |
-| Path                    | 0..1       | OBWriteFileResponse3/Data/StatusReason/Path                    | Path is optional but relevant when the status reason refers to an object/field and hence conditional to provide JSON path          | Max500Text                                                                                                                               |                                         |         |
-| Charges                 | 0..*       | OBWriteFileResponse3/Data/Charges                              | Set of elements used to provide details of a charge for the payment initiation.                                                    | OBCharge2                                                                                                                                |                                         |         |
-| Initiation              | 1..1       | OBWriteFileResponse3/Data/Initiation                           | The Initiation payload is sent by the initiating party to the ASPSP. It is used to request movement of funds using a payment file. | OBFile2                                                                                                                                  |                                         |         |
-| MultiAuthorisation      | 0..1       | OBWriteFileResponse3/Data/MultiAuthorisation                   | The multiple authorisation flow response from the ASPSP.                                                                           | OBMultiAuthorisation1                                                                                                                    |                                         |         |
-| Debtor                  | 0..1       | OBWriteFileResponse3/Data/Debtor                               | Set of elements used to identify a person or an organisation.                                                                      | OBCashAccountDebtor4                                                                                                                     |                                         |         |
+| Name |Occurrence |XPath |EnhancedDefinition |Class |Codes |Pattern |
+| --- |--- |--- |--- |--- |--- |--- |
+| OBWriteFileResponse3 | |OBWriteFileResponse3 | |OBWriteFileResponse3 | | |
+| Data |1..1 |OBWriteFileResponse3/Data | |OBWriteDataFileResponse3 | | |
+| FilePaymentId |1..1 |OBWriteFileResponse3/Data/FilePaymentId |OB: Unique identification as assigned by the ASPSP to uniquely identify the file payment resource. |Max40Text | | |
+| ConsentId |1..1 |OBWriteFileResponse3/Data/ConsentId |OB: Unique identification as assigned by the ASPSP to uniquely identify the consent resource. |Max128Text | | |
+| CreationDateTime |1..1 |OBWriteFileResponse3/Data/CreationDateTime |Date and time at which the resource was created. |ISODateTime | | |
+| Status |1..1 |OBWriteFileResponse3/Data/Status |Specifies the status of the payment order resource. |For a full list of enumeration values refer to `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets). |ExternalPaymentTransactionStatus4Code | |
+| StatusUpdateDateTime |1..1 |OBWriteFileResponse3/Data/StatusUpdateDateTime |Date and time at which the resource status was updated. |ISODateTime | | |
+| StatusReason |0..* |OBWriteFileResponse3/Data/StatusReason |Specifies the status reason. | OBStatusReason |
+| StatusReasonCode |0..1 |OBWriteFileResponse3/Data/StatusReason/StatusReasonCode |Specifies the status reason in a code form. |For a full list of enumeration values refer to `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_internal_CodeSets)| OBExternalStatusReason1Code |
+| StatusReasonDescription |0..1 |OBWriteFileResponse3/Data/StatusReason/StatusReasonDescription |Description supporting the StatusReasonCode. |Max500Text|
+|Path| 0..1 | OBWriteFileResponse3/Data/StatusReason/Path| Path is optional but relevant when the status reason refers to an object/field and hence conditional to provide JSON path| Max500Text| | |
+| Charges |0..* |OBWriteFileResponse3/Data/Charges |Set of elements used to provide details of a charge for the payment initiation. |OBCharge2 | | |
+| Initiation |1..1 |OBWriteFileResponse3/Data/Initiation |The Initiation payload is sent by the initiating party to the ASPSP. It is used to request movement of funds using a payment file. |OBFile2 | | |
+| MultiAuthorisation |0..1 |OBWriteFileResponse3/Data/MultiAuthorisation |The multiple authorisation flow response from the ASPSP. |OBMultiAuthorisation1 | | |
+| Debtor |0..1 |OBWriteFileResponse3/Data/Debtor |Set of elements used to identify a person or an organisation. | OBCashAccountDebtor4| | |
 
 ### File Payment - Payment Details - Response
 
