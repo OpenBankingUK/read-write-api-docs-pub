@@ -316,7 +316,7 @@ The Account Access Consent resource consists of the following fields, which toge
 
 ##### Permissions
 
-Permissions codes will be used to limit the data that is returned in response to a resource request.
+Permissions codes are used to limit the data that is returned in response to a resource request.
 
 When a permission is granted for a "Detail" permission code (e.g., ReadAccountsDetail) it implies that access is also granted to the corresponding "Basic" permission code (e.g., ReadAccountsBasic).
 
