@@ -120,8 +120,6 @@ The domestic-payment - payment-details must have one of the following `ExternalP
 | ACCC   |
 | ACWP   |
 
-Refer to [External_Internal_CodeSets](https://github.com/OpenBankingUK/External_Internal_CodeSets) -> OB_Internal_CodeSet -> `ExternalPaymentTransactionStatus3Code`.
-
 ### State Model
 
 #### Payment Order
