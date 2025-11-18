@@ -47,7 +47,7 @@ This resource description should be read in conjunction with a compatible Paymen
 | Resource |HTTP Operation |Endpoint |Mandatory ? |Scope |Grant Type |Message Signing |Idempotency Key |Request Object |Response Object |
 | --- |--- |--- |--- |--- |--- |--- |--- |--- |--- |
 | file-payment-consents |POST |POST /file-payment-consents |Conditional |payments |Client Credentials |Signed Request Signed Response |Yes |OBWriteFileConsent3 |OBWriteFileConsentResponse4 |
-| file-payment-consents |POST |POST /file-payment-consents/{ConsentId}/file |Conditional |payments |Client Credentials |Signed Request Signed Response |Yes |File |NA |
+| file-payment-consents |POST |POST /file-payment-consents/{ConsentId}/file |Conditional |payments |Client Credentials |Signed Request |Yes |File |NA |
 | file-payment-consents |GET |GET /file-payment-consents/{ConsentId} |Mandatory (if resource POST implemented) |payments |Client Credentials |Signed Response |No |NA |OBWriteFileConsentResponse4 |
 | file-payment-consents |GET |GET /file-payment-consents/{ConsentId}/file |Conditional |payments |Client Credentials |Signed Response |No |NA |File |
 
