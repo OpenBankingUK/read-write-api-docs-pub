@@ -51,7 +51,8 @@ Once the international-standing-order-consent has been authorised by the PSU, th
 * This is done by making a POST request to the **international-standing-orders** endpoint.
 * This request is an instruction to the ASPSP to begin the international standing order journey. The PISP must submit the international standing order immediately, however, there are some scenarios where the ASPSP may not warehouse the international standing order immediately (e.g. busy periods at the ASPSP).
 * The PISP **must** ensure that the Initiation and Risk sections of the international-standing-orders match the corresponding Initiation and Risk sections of the international-standing-order-consent resource. If the two do not match, the ASPSP **must not** process the request and **must** respond with a 400 (Bad Request).
-* Any operations on the international-standing-orders resource will not result in a Status change for the international-standing-orders resource.
+* Any further HTTP operations on the international-standing-orders resource will not result in a Status change for the international-standing-orders resource.
+* The Status will be updated by the ASPSP in line with payment processing.
 
 #### Status
 

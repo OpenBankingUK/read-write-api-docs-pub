@@ -53,7 +53,8 @@ Once the domestic-scheduled-payment-consent has been authorised by the PSU, the 
 * This is done by making a POST request to the **domestic-scheduled-payments** endpoint.
 * This request is an instruction to the ASPSP to begin the domestic scheduled payment journey. The PISP must submit the domestic scheduled payment immediately, however, there are some scenarios where the ASPSP may not warehouse the domestic scheduled payment immediately (e.g., busy periods at the ASPSP)
 * The PISP **must** ensure that the Initiation and Risk sections of the domestic-scheduled-payment match the corresponding Initiation and Risk sections of the domestic-scheduled-payment-consent resource. If the two do not match, the ASPSP **must not** process the request and **must** respond with a 400 (Bad Request).
-* Any operations on the domestic-scheduled-payment resource will not result in a Status change for the domestic-scheduled-payment resource.
+* Any further HTTP operations on the domestic-scheduled-payment resource will not result in a Status change for the domestic-scheduled-payment resource.
+* The Status will be updated by the ASPSP in line with payment processing.
 
 #### Status
 
