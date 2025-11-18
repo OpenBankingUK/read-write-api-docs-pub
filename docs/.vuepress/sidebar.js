@@ -1,7 +1,7 @@
 module.exports = [
     {
-        title: 'Version 4.0',
-        path: '/v4.0/profiles/read-write-data-api-profile',
+        title: 'Version 4.0.1',
+        path: '/v4.0.1/profiles/read-write-data-api-profile',
         children: [
                        {
                 title: 'Account and Transaction API',
