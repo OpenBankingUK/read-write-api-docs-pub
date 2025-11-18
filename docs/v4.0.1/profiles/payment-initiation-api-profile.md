@@ -72,8 +72,10 @@
       - [Data Dictionary](#data-dictionary-13)
     - [OBPostalAddress7](#obpostaladdress7)
       - [Data Dictionary](#data-dictionary-14)
-    - [OBProxy1 ](#obproxy1)
+    - [OBProxy1](#obproxy1)
       - [Data Dictionary](#obproxy1-data-dictionary)
+    - [OBCashAccountDebtorWithName](#obcashaccountdebtorwithname)
+      - [Data Dictionary](#obcashaccountdebtorwithname-data-dictionary)
   - [Identifier Fields](#identifier-fields)
     - [Merchant Flow](#merchant-flow)
     - [Party to Party Flow](#party-to-party-flow)
@@ -859,6 +861,21 @@ This section describes the OBSCASupportData1 class, which is used across all  _p
 | Identification |1..1 |OBProxy1/Identification|  Identification used to indicate the account identification under another specified name. | Max2048Text| |
 | Type |0..1 |OBProxy1/Type| Type of the proxy identification. |Max35Text | |
 | Code |1..1 |OBProxy1/Code| Specifies the external proxy account type code, as published in the proxy account type external code set. |For a full list of enumeration values refer `to External_CodeSet`[here](https://github.com/OpenBankingUK/External_Internal_CodeSets) |ExternalProxyAccountType1Code |
+
+#### OBCashAccountDebtorWithName
+
+![OBCashAccountDebtorWithName](../resources-and-data-models/vrp/images/OBCashAccountDebtorWithName.svg)
+
+##### OBCashAccountDebtorWithName Data Dictionary
+
+| Name | Occurence | XPath | EnhancedDefinition | Class | Codes |
+| --- | --- | --- | --- | --- | --- |
+| OBCashAccountDebtorWithName | | | Unambiguous identification of the account of the debtor to which a debit entry will be made as a result of the transaction. | OBCashAccountDebtorWithName| |
+| SchemeName | 1..1 | OBCashAccountDebtorWithName/SchemeName | Name of the identification scheme, in a coded form as published in an external list. | For a full list of enumeration values refer to `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_internal_CodeSets)| `OBInternalAccountIdentification4Code` |
+| Identification | 1..1 | OBCashAccountDebtorWithName/Identification | Identification assigned by an institution to identify an account. This identification is known by the account owner. | Max256Text | |
+| Name | 0..1 | OBCashAccountDebtorWithName/Name | Name of the account, as assigned by the account servicing institution.  Usage: The account name is the name or names of the account owner(s) represented at an account level. The account name is not the product name or the nickname of the account. | Max350Text | |
+| SecondaryIdentification | 0..1 | OBCashAccountDebtorWithName/SecondaryIdentification | This is secondary identification of the account, as assigned by the account servicing institution.  This can be used by building societies to additionally identify accounts with a roll number (in addition to a sort code and account number combination) | Max34Text | |
+| Proxy | (0..1) | OBCashAccountDebtorWithName/Proxy | Specifies an alternate assumed name for the identification of the account. | [OBProxy1](#obproxy1) | |
 
 ### Identifier Fields
 
