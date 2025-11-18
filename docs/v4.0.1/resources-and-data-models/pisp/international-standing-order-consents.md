@@ -68,8 +68,6 @@ The default Status is "AWAU" immediately after the international-standing-order-
 
 A PISP can optionally retrieve a payment consent resource that they have created to check its status. 
 
-Refer to [External_Internal_CodeSets](https://github.com/OpenBankingUK/External_Internal_CodeSets) -> OB_Internal_CodeSet -> `OBInternalPermissions1Code`.
-
 #### Status
 
 Once the PSU authorises the payment-consent resource - the Status of the payment-consent resource will be updated with "AUTH".
@@ -176,6 +174,7 @@ For the OBInternationalStandingOrder4 Initiation object:
 * The CurrencyOfTransfer **must** be used to specify the currency the funds will be transferred. I.e., a PSU may wish to transfer 100USD from a GBP DebtorAccount to a Rupee INR CreditorAccount in India.
 * The ChargeBearer field is used by the PISP to indicate the bearer of charges. An ASPSP must Reject the Initiation request if the requested charge allocation cannot be fulfilled.
 * Permission field is restricted to "Create", however, may be extended to "Update" and "Delete" in a future iteration of the specification.
+* TPPs should refer to ASPSP developer portals for further information on whether NumberOfPayments is supported.
 
 ##### Data Dictionary
 
@@ -184,6 +183,7 @@ For the OBInternationalStandingOrder4 Initiation object:
 | OBInternationalStandingOrder4 | |OBInternationalStandingOrder4 |The Initiation payload is sent by the initiating party to the ASPSP. It is used to request movement of funds from the debtor account to a creditor for an international standing order. |OBInternationalStandingOrder4 | | |
 | MandateRelatedInformation | 0..1 |OBInternationalStandingOrder4/MandateRelatedInformation ||OBMandateRelatedInformation1 | | |
 | RemittanceInformation |0..1 |OBInternationalStandingOrder4/RemittanceInformation |Information supplied to enable the matching of an entry with the items that the transfer is intended to settle, such as commercial invoices in an accounts' receivable system. |OBRemittanceInformation2 | | |
+| NumberOfPayments | 0..1 | OBInternationalStandingOrder4/NumberOfPayments | Number of the payments that will be made in completing this frequency sequence including any executed since the sequence start date. | Max35Text |||
 | ExtendedPurpose | 0..1 | OBInternationalScheduled3/ExtendedPurpose | Specifies the purpose of an international payment, when there is no corresponding 4 character code available in the ISO20022 list of Purpose Codes. | Max140Text | | |
 | ChargeBearer |0..1 |OBInternationalStandingOrder4/ChargeBearer |Specifies which party/parties will bear the charges associated with the processing of the payment transaction. |For a full list of enumeration values refer to `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets). |OBInternalChargeBearerType1Code| |
 | CurrencyOfTransfer |1..1 |OBInternationalStandingOrder4/CurrencyOfTransfer |Specifies the currency of the to be transferred amount, which is different from the currency of the debtor's account. |ActiveOrHistoricCurrencyCode | |^[A-Z]{3,3}$ |

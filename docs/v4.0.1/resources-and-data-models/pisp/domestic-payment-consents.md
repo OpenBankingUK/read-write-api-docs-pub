@@ -90,14 +90,13 @@ The available status codes for the domestic-payment-consent resource are:
 | RJCT |
 | AUTH |
 | COND |
+
 ### GET /domestic-payment-consents/{ConsentId}/funds-confirmation
 
 The API endpoint allows the PISP to ask an ASPSP to confirm funds on a **domestic-payment-consent** resource.
 
 * An ASPSP can only respond to a funds confirmation request if the **domestic-payment-consent** resource has an AUTH status. If the status is not AUTH, an ASPSP must respond with a 400 (Bad Request) and a ```U009``` error code.
 * Confirmation of funds requests do not affect the status of the **domestic-payment-consent** resource.
-
-Refer to [External_Internal_CodeSets](https://github.com/OpenBankingUK/External_Internal_CodeSets) -> OB_Internal_CodeSet -> `OBInternalPermissions1Code`.
 
 ### State Model
 
@@ -106,7 +105,6 @@ Refer to [External_Internal_CodeSets](https://github.com/OpenBankingUK/External_
 The state model for the domestic-payment-consent resource follows the generic consent state model.
 
 ![Payment Order Consent](./images/PO_Consent.png)
-
 
 The definitions for the Status:
 
@@ -229,7 +227,6 @@ The domestic-payment-consent **request** contains these objects:
 * Initiation
 * Authorisation
 * SCASupportData
-* Risk
 
 #### Data Dictionary
 
@@ -241,7 +238,6 @@ The domestic-payment-consent **request** contains these objects:
 | Initiation |1..1 |OBWriteDomesticConsent4/Data/Initiation |The Initiation payload is sent by the initiating party to the ASPSP. It is used to request movement of funds from the debtor account to a creditor for a single domestic payment. |OBDomestic2 | | |
 | Authorisation |0..1 |OBWriteDomesticConsent4/Data/Authorisation |The authorisation type request from the TPP. |OBAuthorisation1 | | |
 | SCASupportData |0..1 |OBWriteDomesticConsent4/Data/SCASupportData |Supporting Data provided by TPP, when requesting SCA Exemption. |OBSCASupportData1 | | |
-| Risk |1..1 |OBWriteDomesticConsent4/Data/Risk |The Risk section is sent by the initiating party to the ASPSP. It is used to specify additional details for risk scoring for Payments. |OBRisk1 | | |
 
 ### Domestic Payment Consent - Response
 
