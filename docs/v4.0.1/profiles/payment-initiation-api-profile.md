@@ -73,8 +73,10 @@
       - [Data Dictionary](#data-dictionary-13)
     - [OBPostalAddress7](#obpostaladdress7)
       - [Data Dictionary](#data-dictionary-14)
-    - [OBProxy1 ](#obproxy1)
+    - [OBProxy1](#obproxy1)
       - [Data Dictionary](#obproxy1-data-dictionary)
+    - [OBCashAccountDebtorWithName](#obcashaccountdebtorwithname)
+      - [Data Dictionary](#obcashaccountdebtorwithname-data-dictionary)
   - [Identifier Fields](#identifier-fields)
     - [Merchant Flow](#merchant-flow)
     - [Party to Party Flow](#party-to-party-flow)
@@ -708,15 +710,15 @@ This section describes the OBWritePaymentDetailsResponse1 class which used in th
 
 | Name |Occurrence |XPath |EnhancedDefinition |Class |Codes |Pattern |
 | --- |--- |--- |--- |--- |--- |--- |
-| OBWritePaymentDetailsResponse1 |1..1 |OBWritePaymentDetailsResponse1 |Payment status details. |OBWritePaymentDetailsResponse1 | | |
-| LocalInstrument |0..1 |OBWritePaymentDetailsResponse1/Data/StatusDetail/LocalInstrument |User community specific instrument.<br><br>Usage: This element is used to specify a local instrument, local clearing option and/or further qualify the service or service level. |For a full list of enumeration values refer to `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets) |OBInternalLocalInstrument1Code| |
-| PaymentTransactionId |1..1 |OBWritePaymentDetailsResponse1/Data/PaymentTransactionId |Unique identifier for the transaction within an servicing institution. This identifier is both unique and immutable. |Max210Text | | |
-| Status |1..1 |OBWritePaymentDetailsResponse1/Data/Status |Status of a transfer, as assigned by the transaction administrator|For a full description see `Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets) |ExternalPaymentTransactionStatus1Code | |
-| StatusUpdateDateTime |1..1 |OBWritePaymentDetailsResponse1/Data/StatusUpdateDateTime |Date and time at which the status was assigned to the transfer. |ISODateTime | | |
-| StatusDetail |0..* |OBWritePaymentDetailsResponse1/Data/StatusDetail |Array of Payment StatusCodes| | | |
-| Status |1..1 |OBWritePaymentDetailsResponse1/Data/StatusDetail/Status |Status of a transfer, as assigned by the transaction administrator|For a full description see 'External_CodeSet` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets) |ExternalPaymentTransactionStatus1Code | |
-| StatusReason |0..1 |OBWritePaymentDetailsResponse1/Data/StatusDetail/StatusReason |Specifies the status reason|For a full list of enumeration values refer to `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets)  |OBExternalStatusReason1Code - Code Value | |
-| StatusReasonDescription |0..1 |OBWritePaymentDetailsResponse1/Data/StatusDetail/StatusReasonDescription |Reason provided for the status of a transfer. |Max256Text | OBExternalStatusReason1Code - Code Name| |
+| OBWritePaymentDetails1 |1..1 |OBWritePaymentDetails1 |Payment status details. |OBWritePaymentDetails1 | | |
+| LocalInstrument |0..1 |OBWritePaymentDetails1/Data/StatusDetail/LocalInstrument |User community specific instrument.<br><br>Usage: This element is used to specify a local instrument, local clearing option and/or further qualify the service or service level. |For a full list of enumeration values refer to `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets) |OBInternalLocalInstrument1Code| |
+| PaymentTransactionId |1..1 |OBWritePaymentDetails1/Data/PaymentTransactionId |Unique identifier for the transaction within an servicing institution. This identifier is both unique and immutable. |Max210Text | | |
+| Status |1..1 |OBWritePaymentDetails1/Data/Status |Status of a transfer, as assigned by the transaction administrator|For a full description see `Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets) |ExternalPaymentTransactionStatus1Code | |
+| StatusUpdateDateTime |1..1 |OBWritePaymentDetails1/Data/StatusUpdateDateTime |Date and time at which the status was assigned to the transfer. |ISODateTime | | |
+| StatusDetail |0..* |OBWritePaymentDetails1/Data/StatusDetail |Array of Payment StatusCodes| | | |
+| Status |1..1 |OBWritePaymentDetails1/Data/StatusDetail/Status |Status of a transfer, as assigned by the transaction administrator|For a full description see `Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets) |ExternalPaymentTransactionStatus1Code | |
+| StatusReason |0..1 |OBWritePaymentDetails1/Data/StatusDetail/StatusReason |Specifies the status reason|For a full list of enumeration values refer to `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets)  |OBExternalStatusReason1Code - Code Value | |
+| StatusReasonDescription |0..1 |OBWritePaymentDetails1/Data/StatusDetail/StatusReasonDescription |Reason provided for the status of a transfer. |Max256Text | OBExternalStatusReason1Code - Code Name| |
 
 #### OBSCASupportData1
 
@@ -767,24 +769,25 @@ This section describes the OBSCASupportData1 class, which is used across all  _p
 
 #### OBMandateRelatedInformation1
 
-##### Notes 
+##### Notes
 
 * Please note, within in the `Frequency` object either the `CountPerPeriod` __or__ the `PointInTime` field should be provided. It should __never__ be the case that both are used together.  
 
 ##### Data Dictionary
+
 | Name | Occurrence | XPath | EnhancedDefinition | Class | Codes |
 | --- | --- | --- | --- | --- | ---|
-| OBMandateRelatedInformation1 |  | | Provides further details of the mandate signed between the creditor and the debtor.| OBMandateRelatedInformation1 | | 
-| MandateIdentification | 0..1 |OBMandateRelatedInformation1/MandateIdentification |Unique identification, as assigned by the creditor, to unambiguously identify the mandate.|Max35Text | | 
+| OBMandateRelatedInformation1 |  | | Provides further details of the mandate signed between the creditor and the debtor.| OBMandateRelatedInformation1 | |
+| MandateIdentification | 0..1 |OBMandateRelatedInformation1/MandateIdentification |Unique identification, as assigned by the creditor, to unambiguously identify the mandate.|Max35Text | |
 | Classification | 0..1 |OBMandateRelatedInformation1/Classification| Type of direct debit instruction.|For a full list of enumeration values refer to `OB_Internal_CodeSet`[here](https://github.com/OpenBankingUK/External_Internal_CodeSets/). |OBExternalMandateClassification1Code | |
-| CategoryPurposeCode | 0..1 |OBMandateRelatedInformation1/CategoryPurposeCode |Specifies the high level purpose of the mandate based on a set of pre-defined categories.| For a full list of enumeration values refer to `OB_EXternal_CodeSet`[here](https://github.com/OpenBankingUK/External_Internal_CodeSets/). |ExternalCategoryPurpose1Code | 
-| FirstPaymentDateTime | 0..1 |OBMandateRelatedInformation1/FirstPaymentDate |The date on which the first payment for a recurrent credit transfer will be made. |ISODateTime | | 
+| CategoryPurposeCode | 0..1 |OBMandateRelatedInformation1/CategoryPurposeCode |Specifies the high level purpose of the mandate based on a set of pre-defined categories.| For a full list of enumeration values refer to `OB_EXternal_CodeSet`[here](https://github.com/OpenBankingUK/External_Internal_CodeSets/). |ExternalCategoryPurpose1Code |
+| FirstPaymentDateTime | 0..1 |OBMandateRelatedInformation1/FirstPaymentDate |The date on which the first payment for a recurrent credit transfer will be made. |ISODateTime | |
 | RecurringPaymentDateTime | 0..1 |OBMandateRelatedInformation1/RecurringPaymentDateTime |he date on which the first recurring payment for a Standing Order schedule will be made.<br><br> Usage: This must be populated only if the first recurring date is different to the first payment date. |ISODateTime | |
-| FinalPaymentDateTime | 0..1 |OBMandateRelatedInformation1/FinalPaymentDate |The date on which the final payment for a recurrent credit transfer  will be made. |ISODateTime | | 
-| Frequency | 1..1 |OBMandateRelatedInformation1/Frequency |Regularity with which credit transfer instructions are to be created and processed |OBFrequency6 || |
-| CountPerPeriod | 0..1 |OBMandateRelatedInformation1/Frequency/CountPerPeriod |Number of instructions to be created and processed during the specified period. Specifies a frequency in terms of a count per period within a specified frequency type. |Int32 || |
-| PointInTime | 0..1 |OBMandateRelatedInformation1/Frequency/PointInTime |Further information on the exact point in time the event should take place. Specifies a frequency in terms of an exact point in time or moment within a specified frequency type.|Exact2NumericText | | 
-| Type | 1..1 |OBMandateRelatedInformation1/Frequency/Type |A code indicating the point in time for the credit transfer. |`OBFrequency6Code` | For all enum values see `OBFrequency6Code` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets/)| 
+| FinalPaymentDateTime | 0..1 |OBMandateRelatedInformation1/FinalPaymentDate |The date on which the final payment for a recurrent credit transfer  will be made. |ISODateTime | |
+| Frequency | 1..1 |OBMandateRelatedInformation1/Frequency |Regularity with which credit transfer instructions are to be created and processed |OBFrequency6 ||
+| CountPerPeriod | 0..1 |OBMandateRelatedInformation1/Frequency/CountPerPeriod |Number of instructions to be created and processed during the specified period. Specifies a frequency in terms of a count per period within a specified frequency type. |Int32 ||
+| PointInTime | 0..1 |OBMandateRelatedInformation1/Frequency/PointInTime |Further information on the exact point in time the event should take place. Specifies a frequency in terms of an exact point in time or moment within a specified frequency type.|Exact2NumericText | |
+| Type | 1..1 |OBMandateRelatedInformation1/Frequency/Type |A code indicating the point in time for the credit transfer. |`OBFrequency6Code` | For all enum values see `OBFrequency6Code` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets/).<br><br>For compatibility with v3 an ASPSP may choose to optionally support legacy v3 regex patterns in this field.<br>TPPs should refer to ASPSP developer portals for further information on whether legacy values are supported, alongside any additional information relevant to MandateRelatedInformation usage |
 | Reason| 0..1 |OBMandateRelatedInformation1/Reason | Reason for the setup of the credit transfer mandate. |Max256Text | |
 
 #### OBRegulatoryReporting1
@@ -804,7 +807,7 @@ This section describes the OBSCASupportData1 class, which is used across all  _p
 | Date |0..1 |OBRegulatoryReporting1/Details/Date |Date related to the specified type of regulatory reporting details. |ISODateTime | | |
 | Country |0..1 |OBRegulatoryReporting1/Details/Country |Country related to the specified type of regulatory reporting details. |CountryCode | | ^[A-Z]{2,2}$ |
 | Amount |0..1 |OBRegulatoryReporting1/Details/Amount |Amount of money to be reported for regulatory and statutory requirements. |OBActiveOrHistoricCurrencyAndAmount | | |
-| Amount |1..1 |OBRegulatoryReporting1/Details/Amount/Amount |A number of monetary units specified in an active currency where the unit of currency is explicit and compliant with ISO 4217. | OBActiveCurrencyAndAmount_SimpleType | `^\d{1,13}$|^\d{1,13}\.\d{1,5}$` |
+| Amount |1..1 |OBRegulatoryReporting1/Details/Amount/Amount |A number of monetary units specified in an active currency where the unit of currency is explicit and compliant with ISO 4217. | OBActiveCurrencyAndAmount_SimpleType | ^\d{1,13}$|^\d{1,13}\.\d{1,5}$ |
 | Currency |1..1 |OBRegulatoryReporting1/Details/Amount/Currency |A code allocated to a currency by a Maintenance Agency under an international identification scheme, as described in the latest edition of the international standard ISO 4217 "Codes for the representation of currencies and funds". |ActiveOrHistoricCurrencyCode | | ^[A-Z]{3,3}$ |
 
 #### OBUltimateCreditor1
@@ -865,6 +868,21 @@ This section describes the OBSCASupportData1 class, which is used across all  _p
 | Identification |1..1 |OBProxy1/Identification|  Identification used to indicate the account identification under another specified name. | Max2048Text| |
 | Type |0..1 |OBProxy1/Type| Type of the proxy identification. |Max35Text | |
 | Code |1..1 |OBProxy1/Code| Specifies the external proxy account type code, as published in the proxy account type external code set. |For a full list of enumeration values refer `to External_CodeSet`[here](https://github.com/OpenBankingUK/External_Internal_CodeSets) |ExternalProxyAccountType1Code |
+
+#### OBCashAccountDebtorWithName
+
+![OBCashAccountDebtorWithName](../resources-and-data-models/vrp/images/OBCashAccountDebtorWithName.svg)
+
+##### OBCashAccountDebtorWithName Data Dictionary
+
+| Name | Occurence | XPath | EnhancedDefinition | Class | Codes |
+| --- | --- | --- | --- | --- | --- |
+| OBCashAccountDebtorWithName | | | Unambiguous identification of the account of the debtor to which a debit entry will be made as a result of the transaction. | OBCashAccountDebtorWithName| |
+| SchemeName | 1..1 | OBCashAccountDebtorWithName/SchemeName | Name of the identification scheme, in a coded form as published in an external list. | For a full list of enumeration values refer to `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_internal_CodeSets)| `OBInternalAccountIdentification4Code` |
+| Identification | 1..1 | OBCashAccountDebtorWithName/Identification | Identification assigned by an institution to identify an account. This identification is known by the account owner. | Max256Text | |
+| Name | 0..1 | OBCashAccountDebtorWithName/Name | Name of the account, as assigned by the account servicing institution.  Usage: The account name is the name or names of the account owner(s) represented at an account level. The account name is not the product name or the nickname of the account. | Max350Text | |
+| SecondaryIdentification | 0..1 | OBCashAccountDebtorWithName/SecondaryIdentification | This is secondary identification of the account, as assigned by the account servicing institution.  This can be used by building societies to additionally identify accounts with a roll number (in addition to a sort code and account number combination) | Max34Text | |
+| Proxy | (0..1) | OBCashAccountDebtorWithName/Proxy | Specifies an alternate assumed name for the identification of the account. | [OBProxy1](#obproxy1) | |
 
 ### Identifier Fields
 

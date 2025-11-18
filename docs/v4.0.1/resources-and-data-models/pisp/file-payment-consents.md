@@ -80,6 +80,9 @@ The API endpoint allows the PISP to upload a file to an ASPSP, against a **file-
     * If the content of the metadata does not match the content of the file, the ASPSP **must** reject the file-payment-consent.
 * The file is sent in the HTTP request body.
 * HTTP headers (e.g. Content-Type) are used to describe the file.
+* ASPSPs should document accepted file types on their developer portal.
+* ASPSPs who accept the `UK.OBIE.PaymentInitiation.4.0` file type should specify which payload schemas they accept as payload structures vary across paymennt types.
+	* E.g.  An ASPSP accepting domestic, international and domestic standing orders via file payment should explicitly specify support for these 3 payload schemas on their developer portal.
 
 #### Status
 
@@ -118,8 +121,6 @@ The API endpoint allows the PISP to download a file (that had been uploaded agai
 
 * The file is sent in the HTTP response body.
 * HTTP headers (e.g. Content-Type) are used to describe the file.
-
-Refer to [External_Internal_CodeSets](https://github.com/OpenBankingUK/External_Internal_CodeSets) -> OB_Internal_CodeSet -> `OBInternalPermissions1Code`.
 
 ### State Model
 
@@ -171,7 +172,9 @@ This section describes the OBFile2 class, which is reused as the Initiation obje
 
 ![OBFile2](./images/OBFile2.svg )
 
-##### Notes 
+##### Notes
+
+* TPPs should refer to ASPSP developer portals for information on which File Payment endpoints are available, specification of accepted file format(s) and information on File Payment statuses.
 
 For the OBFile2 Initiation object: 
 
@@ -195,7 +198,7 @@ For the OBFile2 Initiation object:
 | ControlSum |0..1 |OBFile2/ControlSum |Total of all individual amounts included in the group, irrespective of currencies. |DecimalNumber | | |
 | RequestedExecutionDateTime |0..1 |OBFile2/RequestedExecutionDateTime |Date at which the initiating party requests the clearing agent to process the payment. Usage: This is the date on which the debtor's account is to be debited. |ISODateTime | | |
 | LocalInstrument |0..1 |OBFile2/LocalInstrument |User community specific instrument. Usage: This element is used to specify a local instrument, local clearing option and/or further qualify the service or service level. |For a full list of enumeration values refer to `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets) |OBInternalLocalInstrument1Code | |
-| DebtorAccount |0..1 |OBFile2/DebtorAccount |Unambiguous identification of the account of the debtor to which a debit entry will be made as a result of the transaction. | | | |
+| DebtorAccount |0..1 |OBFile2/DebtorAccount |Unambiguous identification of the account of the debtor to which a debit entry will be made as a result of the transaction. | OBCashAccountDebtorWithName | | |
 | UltimateDebtor |0..1 |OBFile2/UltimateDebtor|Ultimate party that owes an amount of money to the (ultimate) creditor.|OBUltimateDebtor1 | | |
 | RemittanceInformation |0..1 |OBFile2/RemittanceInformation |Information supplied to enable the matching of an entry with the items that the transfer is intended to settle, such as commercial invoices in an accounts' receivable system. |OBRemittanceInformation2 | | |
 | SupplementaryData |0..1 |OBFile2/SupplementaryData |Additional information that can not be captured in the structured fields and/or any other specific block. |OBSupplementaryData1 | | |

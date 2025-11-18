@@ -134,6 +134,10 @@ This data dictionary section gives the detail on the payload content.
 
 The OBProxy1 class is defined in the [confirmation-of-funds-api-profile](../../profiles/confirmation-of-funds-api-profile.md#obproxy1) page.
 
+#### OBCashAccountDebtorWithName  
+
+The OBCashAccountDebtorWithName class is defined in the [confirmation-of-funds-api-profile](../../profiles/confirmation-of-funds-api-profile.md#obcashaccountdebtorwithname) page.
+
 ### Funds Confirmation Consent - Request
 
 The OBFundsConfirmationConsent1 object will be used for the following:
@@ -151,12 +155,7 @@ The OBFundsConfirmationConsent1 object will be used for the following:
 | OBFundsConfirmationConsent1 | |OBFundsConfirmationConsent1 | |OBFundsConfirmationConsent1 | | |
 | Data |1..1 |OBFundsConfirmationConsent1/Data | |OBFundsConfirmationConsentData1 | | |
 | ExpirationDateTime |0..1 |OBFundsConfirmationConsent1/Data/ExpirationDateTime |Specified date and time the funds confirmation authorisation will expire. If this is not populated, the authorisation will be open ended. |ISODateTime | | |
-| DebtorAccount |1..1 |OBFundsConfirmationConsent1/Data/DebtorAccount |Unambiguous identification of the account of the debtor to which a confirmation of funds consent will be applied. |OBCashAccountDebtor4 | | |
-| SchemeName |1..1 |OBFundsConfirmationConsent1/Data/DebtorAccount/SchemeName |Name of the identification scheme, in a coded form as published in an external list. | For a full list of enumeration values refer to `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets). |OBInternalAccountIdentification4Code | 
-| Identification |1..1 |OBFundsConfirmationConsent1/Data/DebtorAccount/Identification |Identification assigned by an institution to identify an account. This identification is known by the account owner. |Max256Text | | |
-| Name |0..1 |OBFundsConfirmationConsent1/Data/DebtorAccount/Name |The account name is the name or names of the account owner(s) represented at an account level, as displayed by the ASPSP's online channels. Note, the account name is not the product name or the nickname of the account. |Max350Text | | |
-| SecondaryIdentification |0..1 |OBFundsConfirmationConsent1/Data/DebtorAccount/SecondaryIdentification |This is secondary identification of the account, as assigned by the account servicing institution. This can be used by building societies to additionally identify accounts with a roll number (in addition to a sort code and account number combination). |Max34Text | | |
-| Proxy |0..1 |OBFundsConfirmationConsent1/Data/DebtorAccount/Proxy |Specifies an alternate assumed name for the identification of the account. |OBProxy1 | | |
+| DebtorAccount |1..1 |OBFundsConfirmationConsent1/Data/DebtorAccount |Unambiguous identification of the account of the debtor to which a confirmation of funds consent will be applied. | OBCashAccountDebtorWithName | | |
 
 ### Funds Confirmation Consent - Response
 
@@ -194,12 +193,7 @@ The OBFundsConfirmationConsentResponse1 object contains the same information as 
 | StatusReasonDescription |0..1 |OBFundsConfirmationConsentResponse1/Data/StatusReason/StatusReasonDescription |Description supporting the StatusReasonCode. | Max500text|||
 | Path |0..1 |OBFundsConfirmationConsentResponse1/Data/StatusReason/Path |Path is optional but relevant when the status reason refers to an object/field and hence conditional to provide JSON path. |Max500text|||
 | StatusUpdateDateTime |1..1 |OBFundsConfirmationConsentResponse1/Data/StatusUpdateDateTime |Date and time at which the resource status was updated. |ISODateTime | | |
-| DebtorAccount |1..1 |OBFundsConfirmationConsentResponse1/Data/DebtorAccount |Unambiguous identification of the account of the debtor to which a confirmation of funds consent will be applied. |OBCashAccountDebtor4 | | |
-| SchemeName |1..1 |OBFundsConfirmationConsentResponse1/Data/DebtorAccount/SchemeName |Name of the identification scheme, in a coded form as published in an external list. | For a full list of enumeration values refer to `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets). |OBInternalAccountIdentification4Code | 
-| Identification |1..1 |OBFundsConfirmationConsentResponse1/Data/DebtorAccount/Identification |Identification assigned by an institution to identify an account. This identification is known by the account owner. |Max256Text | | |
-| Name |0..1 |OBFundsConfirmationConsentResponse1/Data/DebtorAccount/Name |The account name is the name or names of the account owner(s) represented at an account level, as displayed by the ASPSP's online channels. Note, the account name is not the product name or the nickname of the account. |Max350Text | | |
-| SecondaryIdentification |0..1 |OBFundsConfirmationConsentResponse1/Data/DebtorAccount/SecondaryIdentification |This is secondary identification of the account, as assigned by the account servicing institution. This can be used by building societies to additionally identify accounts with a roll number (in addition to a sort code and account number combination). |Max34Text | | |
-| Proxy |0..1 |OBFundsConfirmationConsentResponse1/Data/DebtorAccount/Proxy |Specifies an alternate assumed name for the identification of the account. |OBProxy1 | | |
+| DebtorAccount |1..1 |OBFundsConfirmationConsentResponse1/Data/DebtorAccount |Unambiguous identification of the account of the debtor to which a confirmation of funds consent will be applied. | OBCashAccountDebtorWithName | | |
 
 ### Data Payload - Enumerations
 

@@ -131,7 +131,7 @@ Accept: application/json
       },
   },
   "Risk": {
-    "PaymentContextCode": "TransferToSell",
+    "PaymentContextCode": "TransferToSelf",
     "ContractPresentIndicator": true,
     "PaymentPurposeCode": "EPAY",
     "CategoryPurposeCode": "GP2P", 
@@ -265,7 +265,7 @@ Content-Type: application/json
     },
   },
   "Risk": {
-    "PaymentContextCode": "TransferToSell",
+    "PaymentContextCode": "TransferToSelf",
     "ContractPresentIndicator": true,
     "PaymentPurposeCode": "EPAY",
     "CategoryPurposeCode": "GP2P", 
@@ -421,7 +421,7 @@ Content-Type: application/json
   },
   },
   "Risk": {
-    "PaymentContextCode": "TransferToSell",
+    "PaymentContextCode": "TransferToSelf",
     "ContractPresentIndicator": true,
     "PaymentPurposeCode": "EPAY",
     "CategoryPurposeCode": "GP2P", 
@@ -595,7 +595,7 @@ Accept: application/json
     }
   },
   "Risk": {
-    "PaymentContextCode": "TransferToSell",
+    "PaymentContextCode": "TransferToSelf",
     "ContractPresentIndicator": true,
     "PaymentPurposeCode": "EPAY",
     "CategoryPurposeCode": "GP2P", 
@@ -797,7 +797,7 @@ Content-Type: application/json
       }
     }},
   "Risk": {
-    "PaymentContextCode": "TransferToSell",
+    "PaymentContextCode": "TransferToSelf",
     "ContractPresentIndicator": true,
     "PaymentPurposeCode": "EPAY",
     "CategoryPurposeCode": "GP2P", 
@@ -863,7 +863,7 @@ Accept: application/json
     "Initiation": {}
   },
   "Risk": {
-    "PaymentContextCode": "TransferToSell",
+    "PaymentContextCode": "TransferToSelf",
     "ContractPresentIndicator": true,
     "PaymentPurposeCode": "EPAY",
     "CategoryPurposeCode": "GP2P", 
@@ -908,7 +908,7 @@ Content-Type: application/json
     "Initiation": {}
   },
   "Risk": {
-    "PaymentContextCode": "TransferToSell",
+    "PaymentContextCode": "TransferToSelf",
     "ContractPresentIndicator": true,
     "PaymentPurposeCode": "EPAY",
     "CategoryPurposeCode": "GP2P", 
@@ -1054,7 +1054,7 @@ Content-Type: application/json
   },
 
   "Risk": {
-    "PaymentContextCode": "TransferToSell",
+    "PaymentContextCode": "TransferToSelf",
     "ContractPresentIndicator": true,
     "PaymentPurposeCode": "EPAY",
     "CategoryPurposeCode": "GP2P", 
@@ -1337,7 +1337,7 @@ Accept: application/json
   },
 
   "Risk": {
-    "PaymentContextCode": "TransferToSell",
+    "PaymentContextCode": "TransferToSelf",
     "ContractPresentIndicator": true,
     "PaymentPurposeCode": "EPAY",
     "CategoryPurposeCode": "GP2P", 
@@ -1521,7 +1521,7 @@ Content-Type: application/json
   },
 
   "Risk": {
-    "PaymentContextCode": "TransferToSell",
+    "PaymentContextCode": "TransferToSelf",
     "ContractPresentIndicator": true,
     "PaymentPurposeCode": "EPAY",
     "CategoryPurposeCode": "GP2P", 

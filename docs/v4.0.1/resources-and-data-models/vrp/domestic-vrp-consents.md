@@ -211,13 +211,13 @@ The OBRegulatoryReporting1 class is defined in the [vrp-profile](../../profiles/
 
 ![OBCashAccountDebtorWithName](./images/OBCashAccountDebtorWithName.svg)
 
-| Name |Path |Definition | Type |
-| ---- |-----|---------- |------|
-| __SchemeName__ (1..1) | `SchemeName` | Name of the identification scheme, in a coded form as published in an external list. | Namespaced Enumeration `OBInternalAccountIdentification4Code`<br><br>For more information see `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_internal_CodeSets)
-| __Identification__ (1..1) | `Identification` | Identification assigned by an institution to identify an account. This identification is known by the account owner. | Max256Text
-| __Name__ (1..1) | `Name` | Name of the account, as assigned by the account servicing institution.  Usage: The account name is the name or names of the account owner(s) represented at an account level. The account name is not the product name or the nickname of the account. | Max70Text  
-| __SecondaryIdentification__ (0..1) | `SecondaryIdentification` | This is secondary identification of the account, as assigned by the account servicing institution.  This can be used by building societies to additionally identify accounts with a roll number (in addition to a sort code and account number combination) | Max34Text
-| __Proxy__ (0..1) |`Proxy` |Specifies an alternate assumed name for the identification of the account. |[OBProxy1](../../profiles/vrp-profile.md#obproxy1)|
+| Name | Path | Definition | Type |
+| --- | --- | --- | --- |
+| __SchemeName__ (1..1) | `SchemeName` | Name of the identification scheme, in a coded form as published in an external list. | Namespaced Enumeration `OBInternalAccountIdentification4Code`<br><br>For a full list of enumeration values refer to `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_internal_CodeSets) |
+| __Identification__ (1..1) | `Identification` | Identification assigned by an institution to identify an account. This identification is known by the account owner. | Max256Text |
+| __Name__ (0..1) | `Name` | Name of the account, as assigned by the account servicing institution.  Usage: The account name is the name or names of the account owner(s) represented at an account level. The account name is not the product name or the nickname of the account. | Max350Text |
+| __SecondaryIdentification__ (0..1) | `SecondaryIdentification` | This is secondary identification of the account, as assigned by the account servicing institution.  This can be used by building societies to additionally identify accounts with a roll number (in addition to a sort code and account number combination) | Max34Text |
+| __Proxy__ (0..1) | `Proxy` | Specifies an alternate assumed name for the identification of the account. | [OBProxy1](../../profiles/vrp-profile.md#obproxy1) |
 
 ### OBCashAccountCreditor3
 
@@ -319,7 +319,7 @@ The VRP consent is a common class used in `domestic-payment-consents` requests a
 | Period | Start | End | Applicable Limit
 |--------|-------|------|----|
 | 1      | 05-Jun-2021 | 04-Jul-2021 | 500.00 GBP |
-| 2      | 05-Jul-2021 | 04-Jul-2021 | 500.00 GBP |
+| 2      | 05-Jul-2021 | 04-Aug-2021 | 500.00 GBP |
 | 3      | 05-Aug-2021 | 04-Sep-2021 | 500.00 GBP |
 
 ##### Example 3
@@ -336,7 +336,7 @@ The VRP consent is a common class used in `domestic-payment-consents` requests a
 
 | Period | Start | End | Applicable Limit
 |--------|-------|------|-----|
-| 1      | 06-Jun-2021 | 31-Dec-2021 | 286.30 GBP (500 x 209 / 365) |
+| 1      | 05-Jun-2021 | 31-Dec-2021 | 287.67 GBP (500 x 210 / 365) |
 | 2      | 01-Jan-2022 | 31-Dec-2022 | 500.00 GBP |
 | 3      | 01-Jan-2023 | 31-Dec-2023 | 500.00 GBP |
 
