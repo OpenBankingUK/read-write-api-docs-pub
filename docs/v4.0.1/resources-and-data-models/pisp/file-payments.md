@@ -118,7 +118,7 @@ Any rejections in the multiple authorisation process should result in the MultiA
 
 |  | Status |Status Description |
 | ---| ------ |------------------ |
-| 1 |AWAU |The payment-order resource is awaiting further authorisation. |
+| 1 |AWAF |The payment-order resource is awaiting further authorisation. |
 | 2 |RJCT |The payment-order resource has been rejected by an authoriser. |
 | 3 |AUTH |The payment-order resource has been successfully authorised by all required authorisers. |
 

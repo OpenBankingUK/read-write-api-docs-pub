@@ -57,18 +57,18 @@ Endpoints for the resource and available methods.
 
 ### GET /accounts/{AccountId}/parties
 
-If the ASPSP has chosen to implement the /accounts/{AccountId}/parties endpoint, the ASPSP may return details on the account owner(s)/holder(s) and operator(s).
+If the ASPSP has implemented the /accounts/{AccountId}/parties endpoint, the ASPSP **must** return details on the account owner(s)/holder(s) and operator(s).
 
 ### GET /accounts/{AccountId}/party
 
-If the ASPSP has chosen to implement the /accounts/{AccountId}/party endpoint, the ASPSP  **must**  return details on the account owner/holder:
+If the ASPSP has implemented the /accounts/{AccountId}/party endpoint, the ASPSP  **must**  return details on the account owner/holder:
 
 * In the case of a business, this will be the details of the business
 * In the case of a joint account, this will be the party that has given authorisation to the AISP to view the account.
 
 ### GET /party
 
-If the ASPSP has chosen to implement the /party endpoint, the ASPSP  **must**  return details on the user that has authorised the account-access-consent with the ASPSP:
+If the ASPSP has implemented the /party endpoint, the ASPSP  **must**  return details on the user that has authorised the account-access-consent with the ASPSP:
 
 * In the case of a business account, this will be the details of the party that has given authorisation to the AISP to view the account.
 * In the case of a joint account, this will be the party that has given authorisation to the AISP to view the account.
