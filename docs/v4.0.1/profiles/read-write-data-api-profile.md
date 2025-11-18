@@ -96,7 +96,7 @@
          3. [Error Response Structure](#error-response-structure)
             1. [UML Diagram](#uml-diagram)
             2. [Data Dictionary](#data-dictionary)
-         4. [Optional Fields](#optional-fields)
+         4. [Conditional Fields](#conditional-fields)
          5. [Links](#links)
          6. [Meta](#meta)
    5. [Usage Examples](#usage-examples)
@@ -267,6 +267,8 @@ For fields:
 
 * There are no Optional fields.
 * For any endpoints which are implemented by an ASPSP, the fields are either Mandatory or Conditional.
+* TPPs may not need to supply data for a Conditional field in a request payload and should refer to the ASPSPs documentation for clarity on usage.
+* References to *Optional fields* in supporting documentation should be understood as being **Conditional** fields.
 
 ## Basics
 
@@ -1275,9 +1277,9 @@ The error response structure for Open Banking Read/Write APIs:
 |Url                       |0..1                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |OBErrorResponse1/Errors/Url|URL to help remediate the problem, or provide more information, or to API Reference, or help etc                                                                        |xs:anyURI                |     |       |
 
 
-#### Optional Fields
+#### Conditional Fields
 
-In objects where the value for an optional field is not specified, the field **must** be excluded from the JSON payload.
+In objects where the value for a conditional field is not specified, the field **must** be excluded from the JSON payload.
 
 In objects where an array field is defined as having 0..* values, the array field **must be** included in the payload with an empty array.
 
