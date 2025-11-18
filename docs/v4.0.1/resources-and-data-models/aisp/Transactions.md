@@ -1,4 +1,4 @@
-# Transactions - v4.0 <!-- omit in toc -->
+# Transactions - v4.0.1 <!-- omit in toc -->
 
 - [Overview](#overview)
 - [Endpoints](#endpoints)
@@ -10,6 +10,7 @@
     - [OBPostalAddress7](#obpostaladdress7)
     - [OBUltimateCreditor1](#obultimatecreditor1)
     - [OBUltimateDebtor1](#obultimatedebtor1)
+    - [OBIntermediaryAgent1](#obintermediaryagent1)
   - [Resource Definition](#resource-definition)
   - [UML Diagram](#uml-diagram)
     - [Notes](#notes)
@@ -80,6 +81,10 @@ The OBUltimateCreditor1 class is defined in the [account-and-transaction-api-pro
 #### OBUltimateDebtor1
 The OBUltimateDebtor1 class is defined in the [account-and-transaction-api-profile](../../profiles/account-and-transaction-api-profile.md#obultimatedebtor1) page.
 
+#### OBIntermediaryAgent1
+
+The OBIntermediaryAgent1 class is defined in the [account-and-transaction-api-profile](../../profiles/account-and-transaction-api-profile.md#obintermediaryagent1) page.
+
 ### Resource Definition
 
 A resource that describes a posting to an account that results in an increase or decrease to a balance.
@@ -99,7 +104,8 @@ For a specific date range, an account (AccountId) may have no transactions booke
 * The BankTransactionCode (ISO) code-list is documented on the ISO20022 website: [here](https://www.iso20022.org/external_code_list.page); and External Code Sets spreadsheet.
   * The ISO 20022 BankTransactionCode Code and SubCode are specified as 4 letter codes. 
 * ASPSPs must have the ability to provide transactions through APIs for a period that at least equals the period provided through their online channels.
-* ExtendedProprietaryBankTransactionCodes is a OB Proprietary field (introduced by TDA decision 264) to support multiple proprietry Bank Transaction Codes that may be associated with the transaction, in addition to a single default one. The expectation is to capture the default under ProprietaryBankTransactionCode. The ASPSP must publish all the proprietary and extended proprietary bank transaction codes along with usage on their developer portal.
+* ExtendedProprietaryBankTransactionCodes is an OB Proprietary field (introduced by TDA decision 264) to support multiple proprietry Bank Transaction Codes that may be associated with the transaction, in addition to a single default one. The expectation is to capture the default under ProprietaryBankTransactionCode. The ASPSP must publish all the proprietary and extended proprietary bank transaction codes along with usage on their developer portal.
+* TPPs should refer to ASPSP developer portals for information on whether individual Bacs transactions are available in the Transactions endpoint.
 
 ### Filtering
 
@@ -175,9 +181,18 @@ Since Version 3.1.5, the mutability for a transaction has been made explicit:
 
 ### Permission Codes
 
-The resource differs depending on the permissions (ReadTransactionsBasic and ReadTransactionsDetail in addition to the appropriate ReadTransactionsCredits and/or ReadTransactionsDebits) used to access resource. In the event the resource is accessed with both ReadTransactionsBasic and ReadTransactionsDetail, the most detailed level (ReadTransactionsDetail) must be used.
+The resource differs depending on the permissions (ReadTransactionsBasic and ReadTransactionsDetail in addition to the appropriate ReadTransactionsCredits and/or ReadTransactionsDebits) used to access resource. When the resource is accessed with ReadTransactionsDetail it implies that access is also granted to the ReadTransactionsBasic permissions.  Whilst it is duplicaton for a TPP to request both permission codes, it is not a malformed request, and the ASPSP must not reject solely on the basis of duplication.
 
-* These objects **must not** be returned **without** the **ReadTransactionsDetail** permission:
+Where both ReadTransactionsBasic and ReadTransactionsDetail are present, the most detailed level (ReadTransactionsDetail) must be used.  The permissions array **must** contain at least ReadAccountsBasic or ReadAccountsDetail.
+
+The following combinations of permissions are not allowed, and it is **MANDATORY** that the ASPSP rejects these account-access-consents with a 400 response code:
+	* Permissions array that contains **ReadTransactionsBasic** but does not contain at least one of **ReadTransactionsCredits**		and **ReadTransactionsDebits** 
+	* Permissions array that contains **ReadTransactionsDetail** but does not contain at least one of **ReadTransactionsCredits**		and **ReadTransactionsDebits** 
+	* Permissions array that contains **ReadTransactionsCredits** but does not contain at least one of **ReadTransactionsBasic**		and **ReadTransactionsDetail** 
+	* Permissions array that contains **ReadTransactionsDebits** but does not contain at least one of **ReadTransactionsBasic**		and **ReadTransactionsDetail**	
+
+It is **MANDATORY** to include the ReadTransactionDetail permission to return any of the following objects:
+
   * OBReadTransaction6/Data/Transaction/TransactionInformation
   * OBReadTransaction6/Data/Transaction/Balance
   * OBReadTransaction6/Data/Transaction/MerchantDetails
@@ -187,28 +202,35 @@ The resource differs depending on the permissions (ReadTransactionsBasic and Rea
   * OBReadTransaction6/Data/Transaction/DebtorAgent
   * OBReadTransaction6/Data/Transaction/DebtorAccount
   * OBReadTransaction6/Data/Transaction/UltimateDebtor
-* If the **ReadTransactionsDetail** is granted by the PSU:
-  * OBReadTransaction6/Data/Transaction/TransactionInformation **may** be returned if applicable to the transaction and ASPSP (0..1)
-  * OBReadTransaction6/Data/Transaction/Balance **may** be returned if applicable to the transaction and ASPSP (0..1)
-  * OBReadTransaction6/Data/Transaction/MerchantDetails **may** be returned if applicable to the transaction and ASPSP (0..1)
-  * OBReadTransaction6/Data/Transaction/CreditorAgent **may** be returned if applicable to the transaction and ASPSP (0..1)
-  * OBReadTransaction6/Data/Transaction/CreditorAccount **may** be returned if applicable to the transaction and ASPSP (0..1)
-  * OBReadTransaction6/Data/Transaction/UltimateCreditor **may** be returned if applicable to the transaction and ASPSP (0..1)
-  * OBReadTransaction6/Data/Transaction/DebtorAgent **may** be returned if applicable to the transaction and ASPSP (0..1)
-  * OBReadTransaction6/Data/Transaction/DebtorAccount **may** be returned if applicable to the transaction and ASPSP (0..1)
-  * OBReadTransaction6/Data/Transaction/UltimateDebtor **may** be returned if applicable to the transaction and ASPSP (0..1)
+  * OBReadTransaction6/Data/Transaction/IntermediaryAgent1
+  * OBReadTransaction6/Data/Transaction/IntermediaryAgent2
+  * OBReadTransaction6/Data/Transaction/IntermediaryAgent3
 
-* If the ReadPAN permission is granted by the PSU - the ASPSP may choose to populate the unmasked PAN - if the PAN is being populated in the response for these fields:
+* If the **ReadTransactionsDetail** is granted by the PSU it is **CONDITIONAL** to return the following, conditionality being based on the information being applicable to the transaction and ASPSP:
+  * OBReadTransaction6/Data/Transaction/TransactionInformation (0..1)
+  * OBReadTransaction6/Data/Transaction/Balance (0..1)
+  * OBReadTransaction6/Data/Transaction/MerchantDetails (0..1)
+  * OBReadTransaction6/Data/Transaction/CreditorAgent (0..1)
+  * OBReadTransaction6/Data/Transaction/CreditorAccount (0..1)
+  * OBReadTransaction6/Data/Transaction/UltimateCreditor (0..1)
+  * OBReadTransaction6/Data/Transaction/DebtorAgent (0..1)
+  * OBReadTransaction6/Data/Transaction/DebtorAccount (0..1)
+  * OBReadTransaction6/Data/Transaction/UltimateDebtor (0..1)
+  * OBReadTransaction6/Data/Transaction/IntermediaryAgent1 (0..1)
+  * OBReadTransaction6/Data/Transaction/IntermediaryAgent2 (0..1)
+  * OBReadTransaction6/Data/Transaction/IntermediaryAgent3 (0..1)
+
+* If the ReadPAN permission is granted by the PSU - the ASPSP may **OPTIONALLY** choose to populate the unmasked PAN - if the PAN is being populated in the response for these fields:
 
   * OBReadTransaction6/Data/Transaction/CreditorAccount/Identification
   * OBReadTransaction6/Data/Transaction/DebtorAccount/Identification
   * OBReadTransaction6/Data/Transaction/CardInstrument/Identification
 
-* If the `ReadTransactionDebits` permission is granted by the PSU, the data returned should include debit transactions.
-* If the `ReadTransactionCredits` permission is granted by the PSU, the data returned should include credit transactions.
-* If the `ReadTransactionCredits` and `ReadTransactionDebits` permission is granted by the PSU, the data returned should include debit and credit transactions.
+* If the `ReadTransactionDebits` permission is granted by the PSU, it is **MANDATORY** that the data returned includes debit transactions.
+* If the `ReadTransactionCredits` permission is granted by the PSU, it is **MANDATORY** that the data returned includes credit transactions.
+* If the `ReadTransactionCredits` and `ReadTransactionDebits` permission is granted by the PSU, it is **MANDATORY** that the data returned includes debit and credit transactions.
 
-
+Further information can be found at [Account and Transaction Permissions](../../profiles/account-and-transaction-api-profile.md#permissions)
 
 ### Data Dictionary
 
@@ -270,6 +292,9 @@ The resource differs depending on the permissions (ReadTransactionsBasic and Rea
 | Identification |0..1 |OBReadTransaction6/Data/Transaction/CreditorAgent/Identification |Unique and unambiguous identification of a financial institution or a branch of a financial institution. |Max35Text | | |
 | Name |0..1 |OBReadTransaction6/Data/Transaction/CreditorAgent/Name |Name by which an agent is known and which is usually used to identify that agent. |Max140Text | | |
 | PostalAddress |0..1 |OBReadTransaction6/Data/Transaction/CreditorAgent/PostalAddress |Information that locates and identifies a specific address, as defined by postal services. |OBPostalAddress7 | | |
+| IntermediaryAgent1 | 0..1 | OBReadTransaction6/Data/Transaction/IntermediaryAgent1 | The first intermediary agent associated with this transaction. | OBIntermediaryAgent1 |||
+| IntermediaryAgent2 | 0..1 | OBReadTransaction6/Data/Transaction/IntermediaryAgent2 | The second intermediary agent associated with this transaction. | OBIntermediaryAgent1 |||
+| IntermediaryAgent3 | 0..1 | OBReadTransaction6/Data/Transaction/IntermediaryAgent3 | The third intermediary agent associated with this transaction. | OBIntermediaryAgent1 |||
 | CreditorAccount |0..1 |OBReadTransaction6/Data/Transaction/CreditorAccount |Unambiguous identification of the account of the creditor, in the case of a debit transaction. |OBCashAccount6 | | |
 | SchemeName |0..1 |OBReadTransaction6/Data/Transaction/CreditorAccount/SchemeName |Name of the identification scheme, in a coded form as published in an external list. | For a full list of enumeration values refer to `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets). |OBInternalAccountIdentification4Code | 
 | Identification |0..1 |OBReadTransaction6/Data/Transaction/CreditorAccount/Identification |Identification assigned by an institution to identify an account. This identification is known by the account owner. |Max256Text | | |
@@ -297,24 +322,6 @@ The resource differs depending on the permissions (ReadTransactionsBasic and Rea
 | Identification |0..1 |OBReadTransaction6/Data/Transaction/CardInstrument/Identification |Identification assigned by an institution to identify the card instrument used in the transaction. This identification is known by the account owner, and may be masked. |Max34Text | | |
 | SupplementaryData |0..1 |OBReadTransaction6/Data/Transaction/SupplementaryData |Additional information that can not be captured in the structured fields and/or any other specific block. |OBSupplementaryData1 | | |
 | CategoryPurposeCode | 0..1 | OBReadTransaction6/Data/Transaction/CategoryPurposeCode |Enumeration to outline the purpose to the underlying purpose of the payment|  For a full list of enumeration values refer to `OB_EXternal_CodeSet`[here](https://github.com/OpenBankingUK/External_Internal_CodeSets/). |ExternalCategoryPurpose1Code | 
-
-
-### Reused Classes 
-
-
-#### OBUltimateCreditor1
-
-The OBUltimateCreditor1 class is defined in the [payment-initiation-api-profile](../../profiles/payment-initiation-api-profile.md#obultimatecreditor1) page.
-
-
-#### OBUltimateDebtor1 
-
-The OBUltimateDebtor1 class is defined in the [payment-initiation-api-profile](../../profiles/payment-initiation-api-profile.md#obultimatedebtor1) page.
-
-#### OBPostalAddress7 
-
-The OBPostalAddress7 class is defined in the [payment-initiation-api-profile](../../profiles/payment-initiation-api-profile.md#obpostaladdress7) page
-
 
 ## Usage Examples
 
