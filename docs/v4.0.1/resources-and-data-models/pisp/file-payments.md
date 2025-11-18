@@ -1,4 +1,4 @@
-# File Payments - v4.0.1<!-- omit in toc -->
+# File Payments - v4.0.1 <!-- omit in toc -->
 
 - [Overview](#overview)
 - [Endpoints](#endpoints)

@@ -1,4 +1,4 @@
-# PCA Product Data Model - v4.0 <!-- omit in toc -->
+# PCA Product Data Model - v4.0.1 <!-- omit in toc -->
 
 - [Overview](#overview)
     - [Fields to include in PCA Product](#fields-to-include-in-pca-product)
