@@ -1,4 +1,4 @@
-# File Payments API Profile - v4.0 <!-- omit in toc -->
+# File Payments API Profile - v4.0.1 <!-- omit in toc -->
 
 - [Overview](#overview)
   - [Document Overview](#document-overview)

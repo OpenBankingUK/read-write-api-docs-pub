@@ -1,4 +1,4 @@
-# Domestic Payment Message Formats - v4.0 <!-- omit in toc -->
+# Domestic Payment Message Formats - v4.0.1 <!-- omit in toc -->
 
 - [ISO 20022](#iso-20022)
 - [CBPR+ and MX Messages](#cbpr+-and-mx-messages)
