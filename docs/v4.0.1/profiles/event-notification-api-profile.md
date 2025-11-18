@@ -214,36 +214,36 @@ TPPs may have implemented the event-notification resource defined in v3.1 or v3.
 
 #### Event-Subscription Resource
 
-TPPs must register for event-subscriptions with the version of Event Notification API they have implemented. The version field of the event-subscription resource is used for this purpose.
+TPPs **must** register for event-subscriptions with the version of Event Notification API they have implemented. The version field of the event-subscription resource is used for this purpose.
 
 ##### POST
 
-- A TPP must only create one event-subscription per environment (Prod, Sandbox, etc)
-- An ASPSP must maintain an existing event-subscription across releases
-- An ASPSP must reject an event-subscription in an environment if the TPP already has an existing registration for that environment.
-- An ASPSP must treat the Version field in an event notification registration as a minimum version 
+- A TPP **must only** create one event-subscription per environment (Prod, Sandbox, etc).
+- An ASPSP **must** maintain an existing event-subscription across releases.
+- An ASPSP **must** reject an event-subscription in an environment if the TPP already has an existing registration for that environment.
+- An ASPSP **must** treat the Version field in an event notification registration as a minimum version.
   - E.g., an event registration created in v3 should continue to be available in v4 and return events for resources created in v3 and v4.
 
 ##### GET
 
-- A TPP must not access an event-subscription on an older version, via the EventSubscriptionId for an event-subscription created in a newer version.
+- A TPP **must not** access an event-subscription on an older version, via the EventSubscriptionId for an event-subscription created in a newer version.
   - E.g., an event-subscription created in v4, accessed via v3.
-- An ASPSP must allow an event-subscription resource to be accessed in a newer version.
-- Where new fields have been introduced an ASPSP must ensure sensible default values are used in a newer version.
-- If values have been updated across versions an ASPSP must ensure the new values are returned in newer versions and document this on their developer portal.  This must include any approach to migration that may be required
+- An ASPSP **must** allow an event-subscription resource to be accessed in a newer version.
+- Where new fields have been introduced an ASPSP **must** ensure sensible default values are used in a newer version.
+- If values have been updated across versions an ASPSP **must** ensure the new values are returned in newer versions and document this on their developer portal.  This **must** include any approach to migration that may be required.
 
 ##### PUT
 
-- A TPP must not update an event-subscription on an older version via a EventSubscriptionId created in a newer version.
+- A TPP **must not** update an event-subscription on an older version via a EventSubscriptionId created in a newer version.
   - E.g., an event-subscription is created in v4, and a PUT request on v3.
-- An ASPSP must support updating an event-subscription from a previous version via a EventSubscriptionId created in a newer version.
+- An ASPSP **must** support updating an event-subscription from a previous version via a EventSubscriptionId created in a newer version.
   - E.g., an event-subscription is created in v3, and a PUT request on v4.
 
 ##### DELETE
 
-- A TPP must not delete an event-subscription on an older version via a EventSubscriptionId created in a newer version.
+- A TPP **must not** delete an event-subscription on an older version via a EventSubscriptionId created in a newer version.
   - E.g. an event-subscription is created in v4, and request DELETE on v3.
-- An ASPSP must support deleting an event-subscription from a previous version via a EventSubscriptionId created in a newer version.
+- An ASPSP **must** support deleting an event-subscription from a previous version via a EventSubscriptionId created in a newer version.
   - E.g., an event-subscription is created in v3, and request DELETE on v4.
 
 #### Event-Subscription per TPP
