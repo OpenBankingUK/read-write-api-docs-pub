@@ -237,7 +237,7 @@ For fields:
 * A TPP **must** specify the value of a Mandatory field.
 * An ASPSP **must** process a Mandatory field when provided by the TPP in an API request.
 * An ASPSP **must** include meaningful values for Mandatory fields in an API response.
-* Mandantory fields are represented as `1..1` or `1..*` in the Data Dictionary Occurrence column and UML diagrams.
+* Mandatory fields are represented as `1..1` or `1..*` in the Data Dictionary Occurrence column and UML diagrams.
 
 ##### Conditional
 
