@@ -22,7 +22,6 @@
   located in [PIS](https://openbankinguk.github.io/spec-pages-preview/v4.0.1/profiles/payment-initiation-api-profile.html#data-dictionary-9),
   [VRP](https://openbankinguk.github.io/spec-pages-preview/v4.0.1/profiles/vrp-profile.html#obremittanceinformation2-data-dictionary),
   and [AIS (Standing Orders)](https://openbankinguk.github.io/spec-pages-preview/v4.0.1/resources-and-data-models/aisp/standing-orders.html#data-dictionary)
-   
 
 ### Removed
 
