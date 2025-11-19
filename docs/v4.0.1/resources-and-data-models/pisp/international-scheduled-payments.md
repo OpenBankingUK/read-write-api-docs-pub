@@ -98,21 +98,21 @@ ExternalPaymentTransactionStatus2Code code-set enumerations (for more informatio
 `ExternalPaymentTransactionStatus2Code` [here](https://github.com/OpenBankingUK/External_internal_CodeSets)) :
 
 | Status |
-|--------|
-| RCVD   |
-| CANC   |
-| PDNG   |
-| ACTC   |
-| PATC   |
-| ACCP   |
-| ACFC   |
-| ACSP   |
-| ACWC   |
-| ACSC   |
-| ACWP   |
-| ACCC   |
-| BLCK   |
-| RJCT   |
+| ------ |
+| RCVD |
+| CANC |
+| PDNG |
+| ACTC |
+| PATC |
+| ACCP |
+| ACFC |
+| ACSP |
+| ACWC |
+| ACSC |
+| ACWP |
+| ACCC |
+| BLCK |
+| RJCT |
 
 Refer to [External_Internal_CodeSets](https://github.com/OpenBankingUK/External_Internal_CodeSets) -> OB_Internal_CodeSet -> `ExternalPaymentTransactionStatus2Code`.
 
