@@ -1,4 +1,4 @@
-# File Payment Consents - v4.0 <!-- omit in toc -->
+# File Payment Consents - v4.0.1 <!-- omit in toc -->
 
 - [Overview](#overview)
 - [Endpoints](#endpoints)
@@ -47,7 +47,7 @@ This resource description should be read in conjunction with a compatible Paymen
 | Resource |HTTP Operation |Endpoint |Mandatory ? |Scope |Grant Type |Message Signing |Idempotency Key |Request Object |Response Object |
 | --- |--- |--- |--- |--- |--- |--- |--- |--- |--- |
 | file-payment-consents |POST |POST /file-payment-consents |Conditional |payments |Client Credentials |Signed Request Signed Response |Yes |OBWriteFileConsent3 |OBWriteFileConsentResponse4 |
-| file-payment-consents |POST |POST /file-payment-consents/{ConsentId}/file |Conditional |payments |Client Credentials |Signed Request Signed Response |Yes |File |NA |
+| file-payment-consents |POST |POST /file-payment-consents/{ConsentId}/file |Conditional |payments |Client Credentials |Signed Request |Yes |File |NA |
 | file-payment-consents |GET |GET /file-payment-consents/{ConsentId} |Mandatory (if resource POST implemented) |payments |Client Credentials |Signed Response |No |NA |OBWriteFileConsentResponse4 |
 | file-payment-consents |GET |GET /file-payment-consents/{ConsentId}/file |Conditional |payments |Client Credentials |Signed Response |No |NA |File |
 
@@ -80,6 +80,9 @@ The API endpoint allows the PISP to upload a file to an ASPSP, against a **file-
     * If the content of the metadata does not match the content of the file, the ASPSP **must** reject the file-payment-consent.
 * The file is sent in the HTTP request body.
 * HTTP headers (e.g. Content-Type) are used to describe the file.
+* ASPSPs should document accepted file types on their developer portal.
+* ASPSPs who accept the `UK.OBIE.PaymentInitiation.4.0` file type should specify which payload schemas they accept as payload structures vary across paymennt types.
+	* E.g.  An ASPSP accepting domestic, international and domestic standing orders via file payment should explicitly specify support for these 3 payload schemas on their developer portal.
 
 #### Status
 
@@ -118,8 +121,6 @@ The API endpoint allows the PISP to download a file (that had been uploaded agai
 
 * The file is sent in the HTTP response body.
 * HTTP headers (e.g. Content-Type) are used to describe the file.
-
-Refer to [External_Internal_CodeSets](https://github.com/OpenBankingUK/External_Internal_CodeSets) -> OB_Internal_CodeSet -> `OBInternalPermissions1Code`.
 
 ### State Model
 
@@ -171,7 +172,9 @@ This section describes the OBFile2 class, which is reused as the Initiation obje
 
 ![OBFile2](./images/OBFile2.svg )
 
-##### Notes 
+##### Notes
+
+* TPPs should refer to ASPSP developer portals for information on which File Payment endpoints are available, specification of accepted file format(s) and information on File Payment statuses.
 
 For the OBFile2 Initiation object: 
 
@@ -195,7 +198,7 @@ For the OBFile2 Initiation object:
 | ControlSum |0..1 |OBFile2/ControlSum |Total of all individual amounts included in the group, irrespective of currencies. |DecimalNumber | | |
 | RequestedExecutionDateTime |0..1 |OBFile2/RequestedExecutionDateTime |Date at which the initiating party requests the clearing agent to process the payment. Usage: This is the date on which the debtor's account is to be debited. |ISODateTime | | |
 | LocalInstrument |0..1 |OBFile2/LocalInstrument |User community specific instrument. Usage: This element is used to specify a local instrument, local clearing option and/or further qualify the service or service level. |For a full list of enumeration values refer to `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets) |OBInternalLocalInstrument1Code | |
-| DebtorAccount |0..1 |OBFile2/DebtorAccount |Unambiguous identification of the account of the debtor to which a debit entry will be made as a result of the transaction. | | | |
+| DebtorAccount |0..1 |OBFile2/DebtorAccount |Unambiguous identification of the account of the debtor to which a debit entry will be made as a result of the transaction. | OBCashAccountDebtorWithName | | |
 | UltimateDebtor |0..1 |OBFile2/UltimateDebtor|Ultimate party that owes an amount of money to the (ultimate) creditor.|OBUltimateDebtor1 | | |
 | RemittanceInformation |0..1 |OBFile2/RemittanceInformation |Information supplied to enable the matching of an entry with the items that the transfer is intended to settle, such as commercial invoices in an accounts' receivable system. |OBRemittanceInformation2 | | |
 | SupplementaryData |0..1 |OBFile2/SupplementaryData |Additional information that can not be captured in the structured fields and/or any other specific block. |OBSupplementaryData1 | | |
@@ -261,24 +264,24 @@ The file-payment-consent **response** contains the full **original** payload fro
 
 #### Data Dictionary
 
-| Name |Occurrence |XPath |EnhancedDefinition |Class |Codes |Pattern |
-| --- |--- |--- |--- |--- |--- |--- |
-| OBWriteFileConsentResponse4 | |OBWriteFileConsentResponse4 | |OBWriteFileConsentResponse4 | | |
-| Data |1..1 |OBWriteFileConsentResponse4/Data | |OBWriteDataFileConsentResponse4 | | |
-| ConsentId |1..1 |OBWriteFileConsentResponse4/Data/ConsentId |OB: Unique identification as assigned by the ASPSP to uniquely identify the consent resource. |Max128Text | | |
-| CreationDateTime |1..1 |OBWriteFileConsentResponse4/Data/CreationDateTime |Date and time at which the resource was created. |ISODateTime | | |
-| Status |1..1 |OBWriteFileConsentResponse4/Data/Status |Specifies the status of consent resource in code form. |For a full list of enumeration values refer to `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_internal_CodeSets)|OBInternalConsentStatus1Code ||
-| StatusUpdateDateTime |1..1 |OBWriteFileConsentResponse4/Data/StatusUpdateDateTime |Date and time at which the consent resource status was updated. |ISODateTime | | |
+| Name |Occurrence |XPath |EnhancedDefinition |Class | Codes                        |Pattern |
+| --- |--- |--- |--- |--- |------------------------------|--- |
+| OBWriteFileConsentResponse4 | |OBWriteFileConsentResponse4 | |OBWriteFileConsentResponse4 |                              | |
+| Data |1..1 |OBWriteFileConsentResponse4/Data | |OBWriteDataFileConsentResponse4 |                              | |
+| ConsentId |1..1 |OBWriteFileConsentResponse4/Data/ConsentId |OB: Unique identification as assigned by the ASPSP to uniquely identify the consent resource. |Max128Text |                              | |
+| CreationDateTime |1..1 |OBWriteFileConsentResponse4/Data/CreationDateTime |Date and time at which the resource was created. |ISODateTime |                              | |
+| Status |1..1 |OBWriteFileConsentResponse4/Data/Status |Specifies the status of consent resource in code form. |For a full list of enumeration values refer to `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_internal_CodeSets)| OBInternalConsentStatus3Code ||
+| StatusUpdateDateTime |1..1 |OBWriteFileConsentResponse4/Data/StatusUpdateDateTime |Date and time at which the consent resource status was updated. |ISODateTime |                              | |
 | StatusReason |0..* |OBWriteFileConsentResponse4/Data/StatusReason |An array of StatusReasonCode | OBStatusReason |
-| StatusReasonCode |0..1 |OBWriteFileConsentResponse4/Data/StatusReason/StatusReasonCode |Specifies the status reason in a code form. |For a full list of enumeration values refer to `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_internal_CodeSets)| OBExternalStatusReason1Code ||
+| StatusReasonCode |0..1 |OBWriteFileConsentResponse4/Data/StatusReason/StatusReasonCode |Specifies the status reason in a code form. |For a full list of enumeration values refer to `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_internal_CodeSets)| OBExternalStatusReason1Code  ||
 | StatusReasonDescription |0..1 |OBWriteFileConsentResponse4/Data/StatusReason/StatusReasonDescription |Description supporting the StatusReasonCode. |Max500Text|
-|Path| 0..1 | OBWriteFileConsentResponse4/Data/StatusReason/Path| Path is optional but relevant when the status reason refers to an object/field and hence conditional to provide JSON path.| Max500Text| | |
-| CutOffDateTime |0..1 |OBWriteFileConsentResponse4/Data/CutOffDateTime |Specified cut-off date and time for the payment consent. |ISODateTime | | |
-| Charges |0..* |OBWriteFileConsentResponse4/Data/Charges |Set of elements used to provide details of a charge for the payment initiation. |OBCharge2 | | |
-| Initiation |1..1 |OBWriteFileConsentResponse4/Data/Initiation |The Initiation payload is sent by the initiating party to the ASPSP. It is used to request movement of funds using a payment file. |OBFile2 | | |
-| Authorisation |0..1 |OBWriteFileConsentResponse4/Data/Authorisation |The authorisation type request from the TPP. |OBAuthorisation1 | | |
-| SCASupportData |0..1 |OBWriteFileConsentResponse4/Data/SCASupportData |Supporting Data provided by TPP, when requesting SCA Exemption. |OBSCASupportData1 | | |
-| Debtor |0..1 |OBWriteFileConsentResponse4/Data/Debtor |Set of elements used to identify a person or an organisation. |OBCashAccountDebtor4 | | |
+|Path| 0..1 | OBWriteFileConsentResponse4/Data/StatusReason/Path| Path is optional but relevant when the status reason refers to an object/field and hence conditional to provide JSON path.| Max500Text|                              | |
+| CutOffDateTime |0..1 |OBWriteFileConsentResponse4/Data/CutOffDateTime |Specified cut-off date and time for the payment consent. |ISODateTime |                              | |
+| Charges |0..* |OBWriteFileConsentResponse4/Data/Charges |Set of elements used to provide details of a charge for the payment initiation. |OBCharge2 |                              | |
+| Initiation |1..1 |OBWriteFileConsentResponse4/Data/Initiation |The Initiation payload is sent by the initiating party to the ASPSP. It is used to request movement of funds using a payment file. |OBFile2 |                              | |
+| Authorisation |0..1 |OBWriteFileConsentResponse4/Data/Authorisation |The authorisation type request from the TPP. |OBAuthorisation1 |                              | |
+| SCASupportData |0..1 |OBWriteFileConsentResponse4/Data/SCASupportData |Supporting Data provided by TPP, when requesting SCA Exemption. |OBSCASupportData1 |                              | |
+| Debtor |0..1 |OBWriteFileConsentResponse4/Data/Debtor |Set of elements used to identify a person or an organisation. |OBCashAccountDebtor4 |                              | |
 
 
 ## Usage Examples

@@ -1,4 +1,4 @@
-# Callback URL API Profile - v4.0 <!-- omit in toc -->
+# Callback URL API Profile - v4.0.1 <!-- omit in toc -->
 
 - [Overview](#overview)
 - [Basics](#basics)
@@ -6,13 +6,6 @@
     - [Steps](#steps)
     - [Sequence Diagram](#sequence-diagram)
   - [Callback URL](#callback-url)
-  - [Release Management](#release-management)
-    - [Callback-URL Resource](#callback-url-resource)
-      - [POST](#post)
-      - [GET](#get)
-      - [PUT](#put)
-      - [DELETE](#delete)
-  - [Callback-URL per TPP](#callback-url-per-tpp)
 
 ## Overview
 
@@ -135,40 +128,3 @@ TPPs must register a URL for TPP hosted services to receive event notifications 
 For example:
 
 * URL: https://tpp.com/open-banking/v4.0/event-notifications
-
-### Release Management
-
-This section overviews the release management and versioning strategy for the Callback URL API.
-
-#### Callback-URL Resource
-
-TPPs **must** register for event-notification callbacks with the version of Event Notification API they have implemented. The version element of the Callback-URL resource is used for this purpose.
-
-##### POST
-
-* A TPP **must only** create a callback-url on one version
-
-##### GET
-
-* A TPP **must not** access a callback-url on an older version, via the CallbackUrlId for a callback-url created in a newer version.
-  * E.g., a callback-url created in v4, accessed via v3.
-* An ASPSP **must** allow a callback-url resource to be accessed in a newer version.
-* An ASPSP **must** ensure callback-url fields are unchanged when accessed in a different version.
-
-##### PUT
-
-* A TPP **must not** update a callback-url on an older version via a CallbackUrlId created in a newer version.
-  * E.g., A callback-url is created in v4, and a PUT request on v3.
-* An ASPSP **must** support updating a callback-url from a previous version via a CallbackUrlId created in a newer version.
-  * E.g., A callback-url is created in v3, and a PUT request on v4.
-
-##### DELETE
-
-* A TPP **must not** delete a callback-url on an older version via a CallbackUrlId created in a newer version.
-  * E.g. A callback-url is created in v4, and request DELETE on v3.
-* An ASPSP **must** support deleting a callback-url from a previous version via a CallbackUrlId created in a newer version.
-  * E.g., A callback-url is created in v3, and request DELETE on v4.
-
-### Callback-URL per TPP
-
-An ASPSP will maintain at most, a single Callback-URL resource per TPP.

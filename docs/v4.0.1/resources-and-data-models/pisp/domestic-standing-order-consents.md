@@ -1,4 +1,4 @@
-# Domestic Standing Order Consents - v4.0 <!-- omit in toc -->
+# Domestic Standing Order Consents - v4.0.1 <!-- omit in toc -->
 
 - [Overview](#overview)
 - [Endpoints](#endpoints)
@@ -86,8 +86,6 @@ The available status codes for the domestic-standing-order-consent resource are:
 | AUTH |
 | COND |
 
-Refer to [External_Internal_CodeSets](https://github.com/OpenBankingUK/External_Internal_CodeSets) -> OB_Internal_CodeSet -> `OBInternalPermissions1Code`.
-
 ### State Model
 
 #### Payment Order Consent
@@ -166,6 +164,7 @@ For the OBDomesticStandingOrder3 Initiation object:
 * Either the CountPerPeriod or FinalPaymentDateTime must be specified (not both) if the domestic standing order is not open ended.
 * The structure allows a PISP to specify a domestic standing order with a different payment amount and date combinations: for the first payment, the recurring payment, and the final payment. The recurring payment (and date) must only be populated if different from the first payment (and date).
 * If the PISP requests a Frequency that is not supported by the ASPSP, the ASPSP **must** respond with a 400 HTTP status code and an appropriate ISO reason code. Refer to CEG for more guidance on common errors.  
+* TPPs should refer to ASPSP developer portals for further information on whether NumberOfPayments is supported.
 
 ###### Frequency Examples
 
@@ -187,8 +186,9 @@ For the OBDomesticStandingOrder3 Initiation object:
 | Name |Occurrence |XPath |EnhancedDefinition |Class |Codes |Pattern |
 | ---- |---------- |----- |------------------ |----- |----- |------- |
 | OBDomesticStandingOrder3 | |OBDomesticStandingOrder3 |The Initiation payload is sent by the initiating party to the ASPSP. It is used to request movement of funds from the debtor account to a creditor for a domestic standing order. |OBDomesticStandingOrder3 | | |
-| MandateRelatedInformation | 0..1 |OBDomesticStandingOrder3/MandateRelatedInformation |Provides further details of the mandate signed between the creditor and the debtor.|OBMandateRelatedInformation1| | |
+| MandateRelatedInformation | 1..1 |OBDomesticStandingOrder3/MandateRelatedInformation |Provides further details of the mandate signed between the creditor and the debtor.|OBMandateRelatedInformation1| | |
 | RemittanceInformation |0..1 |OBDomesticStandingOrder3/RemittanceInformation |Information supplied to enable the matching of an entry with the items that the transfer is intended to settle, such as commercial invoices in an accounts' receivable system. |OBRemittanceInformation2 | | |
+| NumberOfPayments | 0..1 | OBDomesticStandingOrder3/NumberOfPayments | Number of the payments that will be made in completing this frequency sequence including any executed since the sequence start date. | Max35Text |||
 | FirstPaymentAmount | 1..1 | OBDomesticStandingOrder3/FirstPaymentAmount | The amount of the first Standing Order | OBActiveOrHistoricCurrencyAndAmount | | |
 | Amount |1..1 |OBDomesticStandingOrder3/FirstPaymentAmount/Amount |A number of monetary units specified in an active currency where the unit of currency is explicit and compliant with ISO 4217. |OBActiveCurrencyAndAmount_SimpleType | |`^\d{1,13}$|^\d{1,13}\.\d{1,5}$` |
 | Currency |1..1 |OBDomesticStandingOrder3/FirstPaymentAmount/Currency |A code allocated to a currency by a Maintenance Agency under an international identification scheme, as described in the latest edition of the international standard ISO 4217 "Codes for the representation of currencies and funds". |ActiveOrHistoricCurrencyCode | |^[A-Z]{3,3}$ |
@@ -198,7 +198,7 @@ For the OBDomesticStandingOrder3 Initiation object:
 | FinalPaymentAmount |0..1 |OBDomesticStandingOrder3/FinalPaymentAmount |The amount of the final Standing Order |OBActiveOrHistoricCurrencyAndAmount | | |
 | Amount |1..1 |OBDomesticStandingOrder3/FinalPaymentAmount/Amount |A number of monetary units specified in an active currency where the unit of currency is explicit and compliant with ISO 4217. |OBActiveCurrencyAndAmount_SimpleType | |`^\d{1,13}$|^\d{1,13}\.\d{1,5}$` |
 | Currency |1..1 |OBDomesticStandingOrder3/FinalPaymentAmount/Currency |A code allocated to a currency by a Maintenance Agency under an international identification scheme, as described in the latest edition of the international standard ISO 4217 "Codes for the representation of currencies and funds". |ActiveOrHistoricCurrencyCode | |^[A-Z]{3,3}$ |
-| DebtorAccount |0..1 |OBDomesticStandingOrder3/DebtorAccount |Provides the details to identify the debtor account. | | | |
+| DebtorAccount |0..1 |OBDomesticStandingOrder3/DebtorAccount |Provides the details to identify the debtor account. | OBCashAccountDebtorWithName | | |
 | UltimateDebtor |0..1 |OBDomesticStandingOrder3/UltimateDebtor|Ultimate party that owes an amount of money to the (ultimate) creditor.|OBUltimateDebtor1 | | |
 | CreditorAccount |1..1 |OBDomesticStandingOrder3/CreditorAccount |Identification assigned by an institution to identify an account. This identification is known by the account owner. |OBCashAccountCreditor3 | | |
 | UltimateCreditor |0..1 |OBDomesticStandingOrder3/UltimateCreditor|Ultimate party to which an amount of money is due. | OBUltimateCreditor1 | | |
@@ -270,7 +270,7 @@ The domestic-standing-order-consent **response** contains the full **original** 
 | Data |1..1 |OBWriteDomesticStandingOrderConsentResponse6/Data | |OBWriteDataDomesticStandingOrderConsentResponse6 | | |
 | ConsentId |1..1 |OBWriteDomesticStandingOrderConsentResponse6/Data/ConsentId |OB: Unique identification as assigned by the ASPSP to uniquely identify the consent resource. |Max128Text | | |
 | CreationDateTime |1..1 |OBWriteDomesticStandingOrderConsentResponse6/Data/CreationDateTime |Date and time at which the resource was created. |ISODateTime | | |
-| Status |1..1 |OBWriteDomesticStandingOrderConsentResponse6/Data/Status |Specifies the status of consent resource in code form |For a full list of enumeration values refer to `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_internal_CodeSets)|OBInternalConsentStatus1Code ||
+| Status |1..1 |OBWriteDomesticStandingOrderConsentResponse6/Data/Status |Specifies the status of consent resource in code form |For a full list of enumeration values refer to `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_internal_CodeSets)|OBInternalConsentStatus2Code ||
 | StatusUpdateDateTime |1..1 |OBWriteDomesticStandingOrderConsentResponse6/Data/StatusUpdateDateTime |Date and time at which the resource status was updated. |ISODateTime | | |
 | StatusReason |0..* |OBWriteDomesticStandingOrderConsentResponse6/Data/StatusReason |Specifies the status reason. | OBStatusReason |
 | StatusReasonCode |0..1 |OBWriteDomesticStandingOrderConsentResponse6/Data/StatusReason/StatusReasonCode |Specifies the status reason in a code form. |For a full list of enumeration values refer to `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_internal_CodeSets)| OBExternalStatusReason1Code ||

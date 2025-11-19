@@ -1,4 +1,4 @@
-# Domestic Payments - v4.0 <!-- omit in toc -->
+# Domestic Payments - v4.0.1 <!-- omit in toc -->
 
 - [Overview](#overview)
 - [Endpoints](#endpoints)
@@ -55,7 +55,8 @@ Once the domestic-payment-consent has been authorised by the PSU, the PISP can p
 * This is done by making a POST request to the **domestic-payments** endpoint.
 * This request is an instruction to the ASPSP to begin the domestic single immediate payment journey. The domestic payment must be submitted immediately, however, there are some scenarios where the domestic payment may not be executed immediately (e.g., busy periods at the ASPSP).
 * The PISP **must** ensure that the Initiation and Risk sections of the domestic-payment match the corresponding Initiation and Risk sections of the domestic-payment-consent resource. If the two do not match, the ASPSP must not process the request and **must** respond with a 400 (Bad Request).
-* Any operations on the domestic-payment resource will not result in a status change for the domestic-payment resource.
+* Any further HTTP operations on the domestic-payment resource will not result in a status change for the domestic-payment resource.
+* The Status will be updated by the ASPSP in line with payment processing.
 
 #### Status
 
@@ -74,7 +75,7 @@ A PISP can retrieve the domestic-payment to check its status.
 
 #### Status
 
-The domestic-payment resource must have one of the following ExternalPaymentTransactionStatus1Code code-set enumerations (for more information see `ExternalPaymentTransactionStatus1Code` [here](https://github.com/OpenBankingUK/External_internal_CodeSets)) :
+The domestic-payment resource must have one of the following `ExternalPaymentTransactionStatus3Code` code-set enumerations (for more information see `ExternalPaymentTransactionStatus3Code` [here](https://github.com/OpenBankingUK/External_internal_CodeSets)) :
 
 | Status |
 | ------ |
@@ -98,7 +99,7 @@ A PISP can retrieve the Details of the underlying payment transaction via this e
 
 #### Status
 
-The domestic-payment - payment-details must have one of the following ExternalPaymentTransactionStatus1Code code-set enumerations (for more information see `ExternalPaymentTransactionStatus1Code` [here](https://github.com/OpenBankingUK/External_internal_CodeSets)) :
+The domestic-payment - payment-details must have one of the following `ExternalPaymentTransactionStatus1Code` code-set enumerations (for more information see `ExternalPaymentTransactionStatus1Code` [here](https://github.com/OpenBankingUK/External_internal_CodeSets)) :
 
 | Status |
 | ------ |
@@ -115,8 +116,6 @@ The domestic-payment - payment-details must have one of the following ExternalPa
 | ACCC |
 | BLCK |
 | RJCT |
-
-Refer to [External_Internal_CodeSets](https://github.com/OpenBankingUK/External_Internal_CodeSets) -> ISO_External_CodeSet -> `ExternalPaymentTransactionStatus1Code`.
 
 ### State Model
 
@@ -235,7 +234,7 @@ The domestic-payment **response** object contains the:
 | DomesticPaymentId |1..1 |OBWriteDomesticResponse5/Data/DomesticPaymentId |OB: Unique identification as assigned by the ASPSP to uniquely identify the domestic payment resource. |Max40Text | | |
 | ConsentId |1..1 |OBWriteDomesticResponse5/Data/ConsentId |OB: Unique identification as assigned by the ASPSP to uniquely identify the consent resource. |Max128Text | | |
 | CreationDateTime |1..1 |OBWriteDomesticResponse5/Data/CreationDateTime |Date and time at which the resource was created. |ISODateTime | | |
-| Status |1..1 |OBWriteDomesticResponse5/Data/Status |Specifies the status of the payment information group. |For a full list of enumeration values refer to `OB_External_CodeSet` [here](https://github.com/OpenBankingUK/External_internal_CodeSets) |ExternalPaymentTransactionStatus1Code | |
+| Status |1..1 |OBWriteDomesticResponse5/Data/Status |Specifies the status of the payment information group. |For a full list of enumeration values refer to `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_internal_CodeSets) |ExternalPaymentTransactionStatus3Code | |
 | StatusUpdateDateTime |1..1 |OBWriteDomesticResponse5/Data/StatusUpdateDateTime |Date and time at which the resource status was updated. |ISODateTime | | |
 | StatusReason |0..* |OBWriteDomesticResponse5/Data/StatusReason |An array of StatusReasonCode | OBStatusReason |
 | StatusReasonCode |0..1 |OBWriteDomesticResponse5/Data/StatusReason/StatusReasonCode |Specifies the status reason in a code form. |For a full list of enumeration values refer to `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_internal_CodeSets)|OBExternalStatusReason1Code ||

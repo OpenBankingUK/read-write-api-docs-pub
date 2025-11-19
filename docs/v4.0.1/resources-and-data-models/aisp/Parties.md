@@ -1,4 +1,4 @@
-# Parties - v4.0 <!-- omit in toc -->
+# Parties - v4.0.1 <!-- omit in toc -->
 
 - [Overview](#overview)
 - [Endpoints](#endpoints)
@@ -43,6 +43,10 @@ The party resource is used by an AISP to retrieve the details on the account own
 * In the case of a business, this will be the details of the business
 * In the case of a joint account, this will be the party that has given authorisation to the AISP to view the account.  
 
+TPPs should refer to ASPSP developer portals to understand the approach they have taken for the conditional Parties endpoints and what conditional fields are supported. 
+
+ASPSPs should ensure they support the provision of any data available through their direct channel, such as full legal name.
+
 This resource description should be read in conjunction with a compatible Account Information Services API Profile.
 
 ## Endpoints
@@ -57,18 +61,18 @@ Endpoints for the resource and available methods.
 
 ### GET /accounts/{AccountId}/parties
 
-If the ASPSP has chosen to implement the /accounts/{AccountId}/parties endpoint, the ASPSP may return details on the account owner(s)/holder(s) and operator(s).
+If the ASPSP has implemented the /accounts/{AccountId}/parties endpoint, the ASPSP **must** return details on the account owner(s)/holder(s) and operator(s).
 
 ### GET /accounts/{AccountId}/party
 
-If the ASPSP has chosen to implement the /accounts/{AccountId}/party endpoint, the ASPSP  **must**  return details on the account owner/holder:
+If the ASPSP has implemented the /accounts/{AccountId}/party endpoint, the ASPSP  **must**  return details on the account owner/holder:
 
 * In the case of a business, this will be the details of the business
 * In the case of a joint account, this will be the party that has given authorisation to the AISP to view the account.
 
 ### GET /party
 
-If the ASPSP has chosen to implement the /party endpoint, the ASPSP  **must**  return details on the user that has authorised the account-access-consent with the ASPSP:
+If the ASPSP has implemented the /party endpoint, the ASPSP  **must**  return details on the user that has authorised the account-access-consent with the ASPSP:
 
 * In the case of a business account, this will be the details of the party that has given authorisation to the AISP to view the account.
 * In the case of a joint account, this will be the party that has given authorisation to the AISP to view the account.
@@ -107,8 +111,8 @@ The Party resource contains a set of elements that describes a party. The party 
 | BeneficialOwnership |0..1 |OBParty2/BeneficialOwnership |A flag to indicate a party's beneficial ownership of the related account. |xs:boolean | | |
 | AccountRole |0..1 |OBParty2/AccountRole |A party's role with respect to the related account. |For a full list of enumeration values refer to `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_internal_CodeSets). |OBInternalAccountRole1Code |
 | EmailAddress |0..1 |OBParty2/EmailAddress |Address for electronic mail (e-mail). |Max256Text | | |
-| Phone |0..1 |OBParty2/Phone |Collection of information that identifies a phone number as defined by telecom services. |PhoneNumber | |\+[0-9]{1,3}-[0-9()+\-]{1,30} |
-| Mobile |0..1 |OBParty2/Mobile |Collection of information that identifies a mobile phone number as defined by telecom services. |PhoneNumber | |\+[0-9]{1,3}-[0-9()+\-]{1,30} |
+| Phone |0..1 |OBParty2/Phone |Collection of information that identifies a phone number as defined by telecom services. |PhoneNumber | |`\+[0-9]{1,3}-[0-9()+\-]{1,30}` |
+| Mobile |0..1 |OBParty2/Mobile |Collection of information that identifies a mobile phone number as defined by telecom services. |PhoneNumber | |`\+[0-9]{1,3}-[0-9()+\-]{1,30}` |
 | Relationships |0..1 |OBParty2/Relationships |The Party's relationships with other resources. |OBPartyRelationships1 | | |
 | Account |0..1 |OBParty2/Relationships/Account |Relationship to the Account resource. |OBRelationship1 | | |
 | Related |1..1 |OBParty2/Relationships/Account/Related |Absolute URI to the related resource. |xs:anyURI | | |

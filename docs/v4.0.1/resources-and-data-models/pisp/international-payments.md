@@ -1,4 +1,4 @@
-# International Payments - v4.0 <!-- omit in toc -->
+# International Payments - v4.0.1 <!-- omit in toc -->
 
 - [Overview](#overview)
 - [Endpoints](#endpoints)
@@ -49,7 +49,8 @@ Once the international-payment-consent has been authorised by the PSU, the PISP 
 * This is done by making a POST request to the **international-payments** endpoint.
 * This request is an instruction to the ASPSP to begin the international single immediate payment journey. The international payment must be submitted immediately, however, there are some scenarios where the international payment may not be executed immediately (e.g. busy periods at the ASPSP).
 * The PISP **must** ensure that the Initiation and Risk sections of the international-payment match the corresponding Initiation and Risk sections of the international-payment-consent resource. If the two do not match, the ASPSP **must not** process the request and **must** respond with a 400 (Bad Request).
-* Any operations on the international-payment resource will not result in a Status change for the international-payment resource.
+* Any further HTTP operations on the international-payment resource will not result in a Status change for the international-payment resource.
+* The Status will be updated by the ASPSP in line with payment processing.
 
 #### Status
 
@@ -110,7 +111,7 @@ The international-payments - payment-details must have one of the following Paym
 | BLCK |
 | RJCT |
 
-Refer to [External_Internal_CodeSets](https://github.com/OpenBankingUK/External_Internal_CodeSets) -> ISO_External_CodeSet -> `ExternalPaymentTransactionStatus1Code`.
+Refer to [External_Internal_CodeSets](https://github.com/OpenBankingUK/External_Internal_CodeSets) -> OB_External_CodeSet -> `ExternalPaymentTransactionStatus1Code`.
 
 ### State Model
 
@@ -229,7 +230,7 @@ The international-payment **response** object contains the:
 | InternationalPaymentId |1..1 |OBWriteInternationalResponse5/Data/InternationalPaymentId |OB: Unique identification as assigned by the ASPSP to uniquely identify the international payment resource. |Max40Text | | |
 | ConsentId |1..1 |OBWriteInternationalResponse5/Data/ConsentId |OB: Unique identification as assigned by the ASPSP to uniquely identify the consent resource. |Max128Text | | |
 | CreationDateTime |1..1 |OBWriteInternationalResponse5/Data/CreationDateTime |Date and time at which the resource was created. |ISODateTime | | |
-| Status |1..1 |OBWriteInternationalResponse5/Data/Status |Specifies the status of the payment information group. |For a full list of enumeration values refer to `OB_External_CodeSet` [here](https://github.com/OpenBankingUK/External_internal_CodeSets) |ExternalPaymentTransactionStatus1Code | |
+| Status |1..1 |OBWriteInternationalResponse5/Data/Status |Specifies the status of the payment information group. |For a full list of enumeration values refer to `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_internal_CodeSets) |ExternalPaymentTransactionStatus3Code | |
 | StatusUpdateDateTime |1..1 |OBWriteInternationalResponse5/Data/StatusUpdateDateTime |Date and time at which the resource status was updated. |ISODateTime | | |
 | StatusReason |0..* |OBWriteInternationalResponse5/Data/StatusReason |Specifies the status reason. | OBStatusReason |
 | StatusReasonCode |0..1 |OBWriteInternationalResponse5/Data/StatusReason/StatusReasonCode |Specifies the status reason in a code form. |For a full list of enumeration values refer to `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_internal_CodeSets)| OBInternalPermissions1Code |
