@@ -8,13 +8,6 @@
   - [Subscriptions for Real Time Event Notifications and Aggregated Polling](#subscriptions-for-real-time-event-notifications-and-aggregated-polling)
     - [Real Time Event Notifications](#real-time-event-notifications)
     - [Aggregated Polling](#aggregated-polling)
-  - [Release Management](#release-management)
-    - [Event-Subscription Resource](#event-subscription-resource)
-      - [POST](#post)
-      - [GET](#get)
-      - [PUT](#put)
-      - [DELETE](#delete)
-  - [Event-Subscription per TPP](#event-subscription-per-tpp)
 
 ## Overview
 
@@ -107,40 +100,3 @@ For example:
 #### Aggregated Polling
 
 TPPs must register an event subscription to enable aggregated polling on an ASPSP (providing an ASPSP supports this functionality).
-
-### Release Management
-
-This section overviews the release management and versioning strategy for the Event Notification API.
-
-#### Event-Subscription Resource
-
-TPPs **must** register for event-subscriptions with the version of Event Notification API they have implemented. The version field of the **event-subscription** resource is used for this purpose.
-
-##### POST
-
-* A TPP **must only** create an **event-subscription** on one version
-
-##### GET
-
-* A TPP **must not** access a event-subscription on an older version, via the EventSubscriptionId for an event-subscription created in a newer version.
-  * E.g., a event-subscription created in v4, accessed via v3.
-* An ASPSP **must** allow an event-subscription resource to be accessed in a newer version.
-* An ASPSP **must** ensure event-subscription fields are unchanged when accessed in a different version.
-
-##### PUT
-
-* A TPP **must not** update an event-subscription on an older version via a EventSubscriptionId created in a newer version.
-  * E.g., A event-subscription is created in v4, and a PUT request on v3.
-* An ASPSP **must** support updating an event-subscription from a previous version via a EventSubscriptionId created in a newer version.
-  * E.g., A event-subscription is created in v3, and a PUT request on v4.
-
-##### DELETE
-
-* A TPP **must not** delete an event-subscription on an older version via a EventSubscriptionId created in a newer version.
-  * E.g. An event-subscription is created in v4, and request DELETE on v3.
-* An ASPSP **must** support deleting an event-subscription from a previous version via a EventSubscriptionId created in a newer version.
-  * E.g., An event-subscription is created in v3, and request DELETE on v4.
-
-### Event-Subscription per TPP
-
-An ASPSP will maintain at most, a single **event-subscription** resource per TPP.
