@@ -12,7 +12,7 @@
 ### Changed
 
 - Updated the relevant `OBInternalConsentStatus1Code` codeset references throughout PIS response data dictionaries, to
-  use the new `OBInternalConsentStatus2Code` or `OBInternalConsentStatus3Code` codesets. Find the PIS data dictionaries
+  use the `OBInternalConsentStatus2Code` or `OBInternalConsentStatus3Code` codesets. Find the PIS data dictionaries
   updated below:
   - [Domestic Payment Consent](https://openbankinguk.github.io/spec-pages-preview/v4.0.1/resources-and-data-models/pisp/domestic-payment-consents.html#data-dictionary-3)
   - [Domestic Scheduled Payment Consent](https://openbankinguk.github.io/spec-pages-preview/v4.0.1/resources-and-data-models/pisp/domestic-scheduled-payment-consents.html#data-dictionary-3)
