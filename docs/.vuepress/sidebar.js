@@ -1,9 +1,9 @@
 module.exports = [
     {
-        title: 'Version 4.0.1',
+        title: 'Version 4.0',
         path: '/v4.0.1/profiles/read-write-data-api-profile',
         children: [
-                       {
+            {
                 title: 'Account and Transaction API',
                 path: '/v4.0.1/profiles/account-and-transaction-api-profile',
                 children: [
@@ -68,6 +68,157 @@ module.exports = [
                     },
                 ],
             },
+            {
+                title: 'Payment Initiation API ',
+                path: '/v4.0.1/profiles/payment-initiation-api-profile',
+                children: [
+                    {
+                        title: 'Domestic Payments Consents',
+                        path: '/v4.0.1/resources-and-data-models/pisp/domestic-payment-consents',
+                    },
+                    {
+                        title: 'Domestic Payments',
+                        path: '/v4.0.1/resources-and-data-models/pisp/domestic-payments',
+                    },
+                    {
+                        title: 'Domestic Scheduled Payment Consents',
+                        path: '/v4.0.1/resources-and-data-models/pisp/domestic-scheduled-payment-consents',
+                    },
+                    {
+                        title: 'Domestic Scheduled Payment',
+                        path: '/v4.0.1/resources-and-data-models/pisp/domestic-scheduled-payments',
+                    },
+                    {
+                        title: 'Domestic Standing Order Consents',
+                        path: '/v4.0.1/resources-and-data-models/pisp/domestic-standing-order-consents',
+                    },
+                    {
+                        title: 'Domestic Standing Orders',
+                        path: '/v4.0.1/resources-and-data-models/pisp/domestic-standing-orders',
+                    },
+                    {
+                        title: 'International Payment Consents',
+                        path: '/v4.0.1/resources-and-data-models/pisp/international-payment-consents',
+                    },
+                    {
+                        title: 'International Payments',
+                        path: '/v4.0.1/resources-and-data-models/pisp/international-payments',
+                    },
+                    {
+                        title: 'International Scheduled Payment Consents',
+                        path: '/v4.0.1/resources-and-data-models/pisp/international-scheduled-payment-consents',
+                    },
+                    {
+                        title: 'International Scheduled Payments',
+                        path: '/v4.0.1/resources-and-data-models/pisp/international-scheduled-payments',
+                    },
+                    {
+                        title: 'International Standing Order Consents',
+                        path: '/v4.0.1/resources-and-data-models/pisp/international-standing-order-consents',
+                    },
+                    {
+                        title: 'International Standing Orders ',
+                        path: '/v4.0.1/resources-and-data-models/pisp/international-standing-orders',
+                    },
+                    {
+                        title: 'File Payment Consents',
+                        path: '/v4.0.1/resources-and-data-models/pisp/file-payment-consents',
+                    },
+                    {
+                        title: 'File Payments',
+                        path: '/v4.0.1/resources-and-data-models/pisp/file-payments',
+                    },
+                ],
+            },
+            {
+                title: 'Confirmation of Funds API Profile',
+                path: '/v4.0.1/profiles/confirmation-of-funds-api-profile',
+                children: [
+                    {
+                        title: 'Funds Confirmation Consent',
+                        path: '/v4.0.1/resources-and-data-models/cbpii/funds-confirmation-consent',
+                    },
+                    {
+                        title: 'Funds Confirmation',
+                        path: '/v4.0.1/resources-and-data-models/cbpii/funds-confirmation',
+                    },
+                ],
+            },
+            {
+                title: 'Variable Recurring Payments',
+                path: '/v4.0.1/profiles/vrp-profile',
+                children: [
+                    {
+                        title: 'Domestic VRP Consents',
+                        path: '/v4.0.1/resources-and-data-models/vrp/domestic-vrp-consents',
+                    },
+                    {
+                        title: 'Domestic VRPs',
+                        path: '/v4.0.1/resources-and-data-models/vrp/domestic-vrps',
+                    },
+                    {
+                        title: 'Usage Examples',
+                        path: '/v4.0.1/references/usage-examples/vrp-usage-examples',
+                    }
+                ],
+            },
+            {
+                title: 'Event Notification API',
+                path: '/v4.0.1/profiles/event-notification-api-profile',
+                children: [
+                    {
+                        title: 'Event Notification Subscription API',
+                        path: '/v4.0.1/profiles/event-notification-subscription-api-profile',
+                    },
+                    {
+                        title: 'Callback URL API',
+                        path: '/v4.0.1/profiles/callback-url-api-profile',
+                    },
+                    {
+                        title: 'Real Time Event Notification API',
+                        path: '/v4.0.1/profiles/real-time-event-notification-api-profile',
+                    },
+                    {
+                        title: 'Aggregated Polling API',
+                        path: '/v4.0.1/profiles/aggregated-polling-api-profile',
+                    },
+                                      {
+                        path: '/v4.0.1/resources-and-data-models/event-notifications/',
+                        title: 'Event Notification Resources'
+                    },
+                ],
+            },
+            {
+                title: 'Resources and Data Models',
+                path: '/v4.0.1/resources-and-data-models/',
+                children: [
+                    {path: '/v4.0.1/resources-and-data-models/aisp/', title: 'AIS Resources'},
+                    {path: '/v4.0.1/resources-and-data-models/pisp/', title: 'PIS Resources'},
+                    {path: '/v4.0.1/resources-and-data-models/cbpii/', title: 'CBPII Resources'},
+                    {path: '/v4.0.1/resources-and-data-models/vrp/', title: 'VRP Resources'},
+                ]
+            },
+            {
+                title: 'References',
+                path: '/v4.0.1/references/',
+                children: [
+                    {
+                        path: '/v4.0.1/references/domestic-payment-message-formats',
+                        title: 'Domestic Payment Message Formats'
+                    },
+                    {path: '/v4.0.1/references/namespaced-enumerations', title: 'Namespaced Enumerations'},
+                ]
+            },
+            {
+                title: 'Version Control',
+                path: '/v4.0.1/version-control'
+            },
+        ]
+    },
+    {
+        title: 'Version 4.0',
+        path: '/v4.0/profiles/read-write-data-api-profile',
+        children: [
             {
                 title: 'Account and Transaction API',
                 path: '/v4.0/profiles/account-and-transaction-api-profile',
