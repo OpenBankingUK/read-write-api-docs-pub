@@ -1,5 +1,7 @@
 # Open Banking Read-Write API
 
+[v4.0.1 Read-Write API](./v4.0.1/profiles/README.md)
+
 [v4.0 Read-Write API](./v4.0/profiles/README.md)
 
 [v3.1.11 Read-Write API](./v3.1.11/profiles/README.md)
