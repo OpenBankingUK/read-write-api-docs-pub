@@ -5,6 +5,9 @@
 ### Added
 
 - Add `OBRemittanceInformation2` definition and Data Dictionary to [AIS Standing Orders page](https://openbankinguk.github.io/spec-pages-preview/v4.0.1/resources-and-data-models/aisp/standing-orders.html#obremittanceinformation2)
+- Added a note regarding the use of `ExternalPaymentTransactionStatus1Code` values in `payment-details` endpoints in
+  [PIS](https://openbankinguk.github.io/spec-pages-preview/v4.0.1/profiles/payment-initiation-api-profile.html#data-dictionary-7)
+  and [Domestic VRPs](https://openbankinguk.github.io/spec-pages-preview/v4.0.1/resources-and-data-models/vrp/domestic-vrps.html#obdomesticvrpdetails)
 
 ### Changed
 
@@ -22,6 +25,17 @@
   located in [PIS](https://openbankinguk.github.io/spec-pages-preview/v4.0.1/profiles/payment-initiation-api-profile.html#data-dictionary-9),
   [VRP](https://openbankinguk.github.io/spec-pages-preview/v4.0.1/profiles/vrp-profile.html#obremittanceinformation2-data-dictionary),
   and [AIS (Standing Orders)](https://openbankinguk.github.io/spec-pages-preview/v4.0.1/resources-and-data-models/aisp/standing-orders.html#data-dictionary)
+- Updated the relevant `ExternalPaymentTransactionStatus1Code` codeset references to use seperated codesets:
+  - Changed to `ExternalPaymentTransactionStatus2Code` in:
+    - [Domestic Scheduled Payments](https://openbankinguk.github.io/spec-pages-preview/v4.0.1/resources-and-data-models/pisp/domestic-scheduled-payments.html#data-dictionary-2)
+    - [International Scheduled Payments](https://openbankinguk.github.io/spec-pages-preview/v4.0.1/resources-and-data-models/pisp/international-scheduled-payments.html#data-dictionary-2)
+  - Changed to `ExternalPaymentTransactionStatus3Code` in:
+    - [Domestic Payments](https://openbankinguk.github.io/spec-pages-preview/v4.0.1/resources-and-data-models/pisp/domestic-payments.html#data-dictionary-2)
+    - [Internation Payments](https://openbankinguk.github.io/spec-pages-preview/v4.0.1/resources-and-data-models/pisp/international-payments.html#data-dictionary-2)
+  - Changed to `ExternalPaymentTransactionStatus4Code` in:
+    - [File Payments](https://openbankinguk.github.io/spec-pages-preview/v4.0.1/resources-and-data-models/pisp/file-payments.html#data-dictionary-2)
+  - Changed to `ExternalPaymentTransactionStatus5Code` in:
+    - [Domestic VRPs](https://openbankinguk.github.io/spec-pages-preview/v4.0.1/resources-and-data-models/vrp/domestic-vrps.html#obdomesticvrpdetails)
 
 ### Removed
 
