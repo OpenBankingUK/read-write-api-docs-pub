@@ -74,7 +74,7 @@ A PISP can retrieve the Details of the underlying payment transaction(s) via thi
 
 #### Status
 
-The file-payments - payment-details must have one of the following ExternalPaymentGroupStatus1Code code-set enumerations (for more information see `ExternalPaymentGroupStatus1Code` [here](https://github.com/OpenBankingUK/External_internal_CodeSets)) :
+The file-payments - payment-details must have one of the following ExternalPaymentTransactionStatus1Code code-set enumerations (for more information see `ExternalPaymentTransactionStatus1Code` [here](https://github.com/OpenBankingUK/External_internal_CodeSets)) :
 
 | Status |
 | ------ |
@@ -90,7 +90,7 @@ The file-payments - payment-details must have one of the following ExternalPayme
 | ACCC |
 | RJCT |
 
-Refer to [External_Internal_CodeSets](https://github.com/OpenBankingUK/External_Internal_CodeSets) -> ISO_External_CodeSet -> `ExternalPaymentGroupStatus1Code`.
+Refer to [External_Internal_CodeSets](https://github.com/OpenBankingUK/External_Internal_CodeSets) -> ISO_External_CodeSet -> `ExternalPaymentTransactionStatus1Code`.
 
 ### State Model
 
