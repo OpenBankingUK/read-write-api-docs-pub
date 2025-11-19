@@ -264,24 +264,24 @@ The file-payment-consent **response** contains the full **original** payload fro
 
 #### Data Dictionary
 
-| Name |Occurrence |XPath |EnhancedDefinition |Class |Codes |Pattern |
-| --- |--- |--- |--- |--- |--- |--- |
-| OBWriteFileConsentResponse4 | |OBWriteFileConsentResponse4 | |OBWriteFileConsentResponse4 | | |
-| Data |1..1 |OBWriteFileConsentResponse4/Data | |OBWriteDataFileConsentResponse4 | | |
-| ConsentId |1..1 |OBWriteFileConsentResponse4/Data/ConsentId |OB: Unique identification as assigned by the ASPSP to uniquely identify the consent resource. |Max128Text | | |
-| CreationDateTime |1..1 |OBWriteFileConsentResponse4/Data/CreationDateTime |Date and time at which the resource was created. |ISODateTime | | |
-| Status |1..1 |OBWriteFileConsentResponse4/Data/Status |Specifies the status of consent resource in code form. |For a full list of enumeration values refer to `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_internal_CodeSets)|OBInternalConsentStatus1Code ||
-| StatusUpdateDateTime |1..1 |OBWriteFileConsentResponse4/Data/StatusUpdateDateTime |Date and time at which the consent resource status was updated. |ISODateTime | | |
+| Name |Occurrence |XPath |EnhancedDefinition |Class | Codes                        |Pattern |
+| --- |--- |--- |--- |--- |------------------------------|--- |
+| OBWriteFileConsentResponse4 | |OBWriteFileConsentResponse4 | |OBWriteFileConsentResponse4 |                              | |
+| Data |1..1 |OBWriteFileConsentResponse4/Data | |OBWriteDataFileConsentResponse4 |                              | |
+| ConsentId |1..1 |OBWriteFileConsentResponse4/Data/ConsentId |OB: Unique identification as assigned by the ASPSP to uniquely identify the consent resource. |Max128Text |                              | |
+| CreationDateTime |1..1 |OBWriteFileConsentResponse4/Data/CreationDateTime |Date and time at which the resource was created. |ISODateTime |                              | |
+| Status |1..1 |OBWriteFileConsentResponse4/Data/Status |Specifies the status of consent resource in code form. |For a full list of enumeration values refer to `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_internal_CodeSets)| OBInternalConsentStatus3Code ||
+| StatusUpdateDateTime |1..1 |OBWriteFileConsentResponse4/Data/StatusUpdateDateTime |Date and time at which the consent resource status was updated. |ISODateTime |                              | |
 | StatusReason |0..* |OBWriteFileConsentResponse4/Data/StatusReason |An array of StatusReasonCode | OBStatusReason |
-| StatusReasonCode |0..1 |OBWriteFileConsentResponse4/Data/StatusReason/StatusReasonCode |Specifies the status reason in a code form. |For a full list of enumeration values refer to `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_internal_CodeSets)| OBExternalStatusReason1Code ||
+| StatusReasonCode |0..1 |OBWriteFileConsentResponse4/Data/StatusReason/StatusReasonCode |Specifies the status reason in a code form. |For a full list of enumeration values refer to `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_internal_CodeSets)| OBExternalStatusReason1Code  ||
 | StatusReasonDescription |0..1 |OBWriteFileConsentResponse4/Data/StatusReason/StatusReasonDescription |Description supporting the StatusReasonCode. |Max500Text|
-|Path| 0..1 | OBWriteFileConsentResponse4/Data/StatusReason/Path| Path is optional but relevant when the status reason refers to an object/field and hence conditional to provide JSON path.| Max500Text| | |
-| CutOffDateTime |0..1 |OBWriteFileConsentResponse4/Data/CutOffDateTime |Specified cut-off date and time for the payment consent. |ISODateTime | | |
-| Charges |0..* |OBWriteFileConsentResponse4/Data/Charges |Set of elements used to provide details of a charge for the payment initiation. |OBCharge2 | | |
-| Initiation |1..1 |OBWriteFileConsentResponse4/Data/Initiation |The Initiation payload is sent by the initiating party to the ASPSP. It is used to request movement of funds using a payment file. |OBFile2 | | |
-| Authorisation |0..1 |OBWriteFileConsentResponse4/Data/Authorisation |The authorisation type request from the TPP. |OBAuthorisation1 | | |
-| SCASupportData |0..1 |OBWriteFileConsentResponse4/Data/SCASupportData |Supporting Data provided by TPP, when requesting SCA Exemption. |OBSCASupportData1 | | |
-| Debtor |0..1 |OBWriteFileConsentResponse4/Data/Debtor |Set of elements used to identify a person or an organisation. |OBCashAccountDebtor4 | | |
+|Path| 0..1 | OBWriteFileConsentResponse4/Data/StatusReason/Path| Path is optional but relevant when the status reason refers to an object/field and hence conditional to provide JSON path.| Max500Text|                              | |
+| CutOffDateTime |0..1 |OBWriteFileConsentResponse4/Data/CutOffDateTime |Specified cut-off date and time for the payment consent. |ISODateTime |                              | |
+| Charges |0..* |OBWriteFileConsentResponse4/Data/Charges |Set of elements used to provide details of a charge for the payment initiation. |OBCharge2 |                              | |
+| Initiation |1..1 |OBWriteFileConsentResponse4/Data/Initiation |The Initiation payload is sent by the initiating party to the ASPSP. It is used to request movement of funds using a payment file. |OBFile2 |                              | |
+| Authorisation |0..1 |OBWriteFileConsentResponse4/Data/Authorisation |The authorisation type request from the TPP. |OBAuthorisation1 |                              | |
+| SCASupportData |0..1 |OBWriteFileConsentResponse4/Data/SCASupportData |Supporting Data provided by TPP, when requesting SCA Exemption. |OBSCASupportData1 |                              | |
+| Debtor |0..1 |OBWriteFileConsentResponse4/Data/Debtor |Set of elements used to identify a person or an organisation. |OBCashAccountDebtor4 |                              | |
 
 
 ## Usage Examples
