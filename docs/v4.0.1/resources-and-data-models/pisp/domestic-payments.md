@@ -102,23 +102,20 @@ A PISP can retrieve the Details of the underlying payment transaction via this e
 The domestic-payment - payment-details must have one of the following `ExternalPaymentTransactionStatus1Code` code-set enumerations (for more information see `ExternalPaymentTransactionStatus1Code` [here](https://github.com/OpenBankingUK/External_internal_CodeSets)) :
 
 | Status |
-|--------|
-| CANC   |
-| RCVD   |
-| ACTC   |
-| PATC   |
-| PDNG   |
-| RJCT   |
-| INFA   |
-| INCO   |
-| ACCP   |
-| ACFC   |
-| ACSP   |
-| ACWC   |
-| ACSC   |
-| BLCK   |
-| ACCC   |
-| ACWP   |
+| ------ |
+| RCVD |
+| PDNG |
+| ACTC |
+| PATC |
+| ACCP |
+| ACFC |
+| ACSP |
+| ACWC |
+| ACSC |
+| ACWP |
+| ACCC |
+| BLCK |
+| RJCT |
 
 ### State Model
 
