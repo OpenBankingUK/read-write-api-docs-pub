@@ -118,7 +118,7 @@ The domestic-scheduled-payments - payment-details must have one of the following
 | RJCT   |
 
 Refer to [External_Internal_CodeSets](https://github.com/OpenBankingUK/External_Internal_CodeSets) ->
-OB_Internal_CodeSet -> `ExternalPaymentTransactionStatus2Code`.
+OB_Internal_CodeSet -> `ExternalPaymentTransactionStatus1Code`.
 
 ### State Model
 
