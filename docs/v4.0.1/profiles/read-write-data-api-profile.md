@@ -25,6 +25,7 @@
       5. [Headers](#headers)
          1. [Request Headers](#request-headers)
          2. [Response Headers](#response-headers)
+         3. [Rate Limit Headers](#rate-limit-headers)
       6. [HTTP Status Codes](#http-status-codes)
          1. [400 (Bad Request) v/s 404 (Not Found)](#_400-bad-request-v-s-404-not-found)
          2. [403 (Forbidden)](#_403-forbidden)
@@ -386,6 +387,28 @@ The implications to this are:
 |Retry-After               |Header indicating the time (in seconds) that the TPP should wait before retrying an operation.<br><br>The ASPSP **should** include this header along with responses with the HTTP status code of 429 (Too Many Requests).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |Optional    |
 |payload-version|An optional header included only to assist migration to new versions of the API standard. Allows the ASPSP to indicate the schema of the payload being returned.<br><br> `payload-version: 3.1.11`|Optional|
 
+#### Rate Limit Headers
+
+In some circumstances it **may** be appropriate for an ASPSP to use rate limit headers to inform a TPP that a rate limit is being applied.  The following rate limit headers have been sourced from the draft [IETF RateLimit header fields for HTTP](https://datatracker.ietf.org/doc/html/draft-ietf-httpapi-ratelimit-headers) RFC.
+
+Some ASPSPs may require the TPP Client ID to be present in the request headers, this is listed in the table below but may not be required for all implementations.
+
+TPPs **must** refer to ASPSP developer portals for further information on any rate limit policies, if the headers are supported and any additional requirements.
+
+##### Request Header
+
+| Header Value | Notes | Mandatory? |
+| --- | ---| --- |
+| x-client-id | Only used if an ASPSP requires the client ID in order to return rate limit headers.<br><br>Example:<br>`x-client-id: abd3d028-4a23-45c9-baa5-b341a922e460`<br><br>This header **must not** be used for client authentication | Optional |
+
+##### Response Headers
+
+| Header Value | Notes | Mandatory? |
+| --- | ---| --- |
+| RateLimit-Policy | A non-empty list of Quota Policy Items. The Item value **MUST** be a String.<br><br>Example:<br>RateLimit-Policy: `RateLimit-Policy: "default";q=100;w=10`<br><br><ul><li>The **REQUIRED** "q" parameter indicates the quota allocated by this policy measured in quota units.</li><li>The **OPTIONAL** "w" parameter value conveys a time window.</li></ul> | Optional |
+| RateLimit | A server uses the "RateLimit" response header field to communicate the current service limit for a quota policy for a particular partition key.<br><br>Example: <br>`RateLimit: "default";r=50;t=30`<br><br><ul><li>The **REQUIRED** “r” parameter value conveys the remaining quota units for the identified policy.</li><li>The **OPTIONAL** “t” parameter value conveys the time window reset time for the identified policy.</li></ul> | Optional |
+
+The examples above are not exhaustive, ASPSPs and TPPs should refer to the draft [IETF RateLimit header fields for HTTP](https://datatracker.ietf.org/doc/html/draft-ietf-httpapi-ratelimit-headers) RFC for additional information on usage.
 
 ### HTTP Status Codes
 
