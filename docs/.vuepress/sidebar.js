@@ -1,8 +1,73 @@
 module.exports = [
     {
-        title: 'Version 4.0',
-        path: '/v4.0/profiles/read-write-data-api-profile',
+        title: 'Version 4.0.1',
+        path: '/v4.0.1/profiles/read-write-data-api-profile',
         children: [
+                       {
+                title: 'Account and Transaction API',
+                path: '/v4.0.1/profiles/account-and-transaction-api-profile',
+                children: [
+                    ['/v4.0.1/resources-and-data-models/aisp/account-access-consents', 'Account Access Consents'],
+                    {
+                        title: 'Accounts',
+                        path: '/v4.0.1/resources-and-data-models/aisp/Accounts',
+                    },
+                    {
+                        title: 'Balances',
+                        path: '/v4.0.1/resources-and-data-models/aisp/Balances',
+                    },
+                    {
+                        title: 'Transactions',
+                        path: '/v4.0.1/resources-and-data-models/aisp/Transactions',
+                    },
+                    {
+                        title: 'Beneficiaries',
+                        path: '/v4.0.1/resources-and-data-models/aisp/Beneficiaries',
+                    },
+                    {
+                        title: 'Direct Debits',
+                        path: '/v4.0.1/resources-and-data-models/aisp/direct-debits',
+                    },
+                    {
+                        title: 'Standing Orders',
+                        path: '/v4.0.1/resources-and-data-models/aisp/standing-orders',
+                    },
+                    {
+                        title: 'Products',
+                        path: '/v4.0.1/resources-and-data-models/aisp/Products',
+                        children: [
+                            {
+                                title: 'BCA Product Data Model',
+                                path: '/v4.0.1/resources-and-data-models/aisp/bca-product-data-model',
+                            },
+                            {
+                                title: 'PCA Product Data Model',
+                                path: '/v4.0.1/resources-and-data-models/aisp/pca-product-data-model',
+                            },
+                            {
+                                title: 'Other Product Data Model',
+                                path: '/v4.0.1/resources-and-data-models/aisp/other-product-data-model',
+                            },
+                        ],
+                    },
+                    {
+                        title: 'Offers',
+                        path: '/v4.0.1/resources-and-data-models/aisp/Offers',
+                    },
+                    {
+                        title: 'Parties',
+                        path: '/v4.0.1/resources-and-data-models/aisp/Parties',
+                    },
+                    {
+                        title: 'Scheduled Payments',
+                        path: '/v4.0.1/resources-and-data-models/aisp/scheduled-payments',
+                    },
+                    {
+                        title: 'Statements',
+                        path: '/v4.0.1/resources-and-data-models/aisp/Statements',
+                    },
+                ],
+            },
             {
                 title: 'Account and Transaction API',
                 path: '/v4.0/profiles/account-and-transaction-api-profile',

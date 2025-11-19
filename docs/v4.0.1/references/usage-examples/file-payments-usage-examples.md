@@ -1,4 +1,4 @@
-# File Payment Usage Examples - v4.0 <!-- omit in toc -->
+# File Payment Usage Examples - v4.0.1 <!-- omit in toc -->
 
 - [Setup File Payment Consent](#setup-file-payment-consent)
   - [POST /file-payment-consents](#post-file-payment-consents)
@@ -421,82 +421,110 @@ A sample file with 3 Domestic Payments - CHAPS, BACS and one unspecified is prov
 
 ```json
 {
-	"Data": {
-		"DomesticPayments": [{
-			"InstructionIdentification": "ANSM020",
-			"EndToEndIdentification": "FRESCO.21302.GFX.01",
-			"LocalInstrument": "UK.OBIE.CHAPS",
-			"InstructedAmount": {
-				"Amount": "21.00",
-				"Currency": "GBP"
-			},
-			"DebtorAccount": {
-				"SchemeName": "UK.OBIE.SortCodeAccountNumber",
-				"Identification": "11280001234567",
-				"Name": "Andrea Smith"
-			},
-			"CreditorAccount": {
-				"SchemeName": "UK.OBIE.SortCodeAccountNumber",
-				"Identification": "08080021325698",
-				"Name": "Bob Clements"
-			},
-			"CreditorPostalAddress": {
-				"AddressType": "Correspondence",
-				"StreetName": "Liberty",
-				"BuildingNumber": "1",
-				"PostCode": "AB1 2CD",
-				"TownName": "London",
-				"Country": "UK"
-			},
-			"RemittanceInformation": {
-				"Reference": "FRESCO-037",
-				"Unstructured": ["Internal ops code 5120103"]
-			}
-		}, {
-			"InstructionIdentification": "ANSM021",
-			"EndToEndIdentification": "FRESCO.21302.GFX.02",
-			"LocalInstrument": "UK.OBIE.BACS",
-			"InstructedAmount": {
-				"Amount": "22.00",
-				"Currency": "GBP"
-			},
-			"DebtorAccount": {
-				"SchemeName": "UK.OBIE.SortCodeAccountNumber",
-				"Identification": "11280001234567",
-				"Name": "Andrea Smith"
-			},
-			"CreditorAccount": {
-				"SchemeName": "UK.OBIE.SortCodeAccountNumber",
-				"Identification": "08080021325698",
-				"Name": "Bob Clements"
-			},
-			"RemittanceInformation": {
-				"Reference": "FRESCO-037",
-				"Unstructured": ["Internal ops code 5120103"]
-			}
-		}, {
-			"InstructionIdentification": "ANSM022",
-			"EndToEndIdentification": "FRESCO.21302.GFX.03",
-			"InstructedAmount": {
-				"Amount": "23.00",
-				"Currency": "GBP"
-			},
-			"DebtorAccount": {
-				"SchemeName": "UK.OBIE.SortCodeAccountNumber",
-				"Identification": "11280001234567",
-				"Name": "Andrea Smith"
-			},
-			"CreditorAccount": {
-				"SchemeName": "UK.OBIE.SortCodeAccountNumber",
-				"Identification": "08080021325698",
-				"Name": "Bob Clements"
-			},
-			"RemittanceInformation": {
-				"Reference": "FRESCO-037",
-				"Unstructured": ["Internal ops code 5120103"]
-			}
-		}]
-	}
+  "Data": {
+    "DomesticPayments": [
+      {
+        "InstructionIdentification": "ANSM020",
+        "EndToEndIdentification": "FRESCO.21302.GFX.01",
+        "LocalInstrument": "UK.OBIE.CHAPS",
+        "InstructedAmount": {
+          "Amount": "21.00",
+          "Currency": "GBP"
+        },
+        "DebtorAccount": {
+          "SchemeName": "UK.OBIE.SortCodeAccountNumber",
+          "Identification": "11280001234567",
+          "Name": "Andrea Smith"
+        },
+        "CreditorAccount": {
+          "SchemeName": "UK.OBIE.SortCodeAccountNumber",
+          "Identification": "08080021325698",
+          "Name": "Bob Clements"
+        },
+        "CreditorPostalAddress": {
+          "AddressType": "CORR",
+          "StreetName": "Liberty Street",
+          "BuildingNumber": "1",
+          "PostCode": "AB1 2CD",
+          "TownName": "London",
+          "Country": "UK"
+        },
+        "RemittanceInformation": {
+          "Structured": [
+            {
+              "CreditorReferenceInformation": {
+                "Reference": "FRESCO-037"
+              }
+            }
+          ],
+          "Unstructured": [
+            "Internal ops code 5120103"
+          ]
+        }
+      },
+      {
+        "InstructionIdentification": "ANSM021",
+        "EndToEndIdentification": "FRESCO.21302.GFX.02",
+        "LocalInstrument": "UK.OBIE.BACS",
+        "InstructedAmount": {
+          "Amount": "22.00",
+          "Currency": "GBP"
+        },
+        "DebtorAccount": {
+          "SchemeName": "UK.OBIE.SortCodeAccountNumber",
+          "Identification": "11280001234567",
+          "Name": "Andrea Smith"
+        },
+        "CreditorAccount": {
+          "SchemeName": "UK.OBIE.SortCodeAccountNumber",
+          "Identification": "08080021325698",
+          "Name": "Bob Clements"
+        },
+        "RemittanceInformation": {
+          "Structured": [
+            {
+              "CreditorReferenceInformation": {
+                "Reference": "FRESCO-037"
+              }
+            }
+          ],
+          "Unstructured": [
+            "Internal ops code 5120103"
+          ]
+        }
+      },
+      {
+        "InstructionIdentification": "ANSM022",
+        "EndToEndIdentification": "FRESCO.21302.GFX.03",
+        "InstructedAmount": {
+          "Amount": "23.00",
+          "Currency": "GBP"
+        },
+        "DebtorAccount": {
+          "SchemeName": "UK.OBIE.SortCodeAccountNumber",
+          "Identification": "11280001234567",
+          "Name": "Andrea Smith"
+        },
+        "CreditorAccount": {
+          "SchemeName": "UK.OBIE.SortCodeAccountNumber",
+          "Identification": "08080021325698",
+          "Name": "Bob Clements"
+        },
+        "RemittanceInformation": {
+          "Structured": [
+            {
+              "CreditorReferenceInformation": {
+                "Reference": "FRESCO-037"
+              }
+            }
+          ],
+          "Unstructured": [
+            "Internal ops code 5120103"
+          ]
+        }
+      }
+    ]
+  }
 }
 ```
 

@@ -1,4 +1,4 @@
-# International Scheduled Payment Consents - v4.0 <!-- omit in toc -->
+# International Scheduled Payment Consents - v4.0.1 <!-- omit in toc -->
 
 - [Overview](#overview)
 - [Endpoints](#endpoints)
@@ -100,8 +100,6 @@ The API endpoint allows the PISP to ask an ASPSP to confirm funds on an **intern
 
 * An ASPSP can only respond to a funds confirmation request if the **international-scheduled-payment-consent** resource has an `AUTH` Status. If the Status is not `AUTH`, an ASPSP **must** respond with a 400 (Bad Request) and a `U009` error code.
 * Confirmation of funds requests do not affect the status of the **international-scheduled-payment-consent** resource.
-
-Refer to [External_Internal_CodeSets](https://github.com/OpenBankingUK/External_Internal_CodeSets) -> OB_Internal_CodeSet -> `OBInternalPermissions1Code`.
 
 ### State Model
 
@@ -228,12 +226,7 @@ The ExchangeRateInformation object must conform to these behaviours:
 | ExchangeRate |0..1 |OBInternationalScheduled3/ExchangeRateInformation/ExchangeRate |The factor used for conversion of an amount from one currency to another. This reflects the price at which one currency was bought with another currency. |BaseOneRate | | |
 | RateType |1..1 |OBInternationalScheduled3/ExchangeRateInformation/RateType |Specifies the type used to complete the currency exchange. |For a full list of enumeration values refer to `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets). |OBInternalExchangeRateType2Code | |
 | ContractIdentification |0..1 |OBInternationalScheduled3/ExchangeRateInformation/ContractIdentification |Unique and unambiguous reference to the foreign exchange contract agreed between the initiating party/creditor and the debtor agent. |Max256Text | | |
-| DebtorAccount |0..1 |OBInternationalScheduled3/DebtorAccount |Unambiguous identification of the account of the debtor to which a debit entry will be made as a result of the transaction. | | | |
-| SchemeName |1..1 |OBInternationalScheduled3/DebtorAccount/SchemeName |Name of the identification scheme, in a coded form as published in an external list. | For a full list of enumeration values refer to `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets). |OBInternalAccountIdentification4Code | 
-| Identification |1..1 |OBInternationalScheduled3/DebtorAccount/Identification |Identification assigned by an institution to identify an account. This identification is known by the account owner. |Max256Text | | |
-| Name |0..1 |OBInternationalScheduled3/DebtorAccount/Name |The account name is the name or names of the account owner(s) represented at an account level, as displayed by the ASPSP's online channels. Note, the account name is not the product name or the nickname of the account. |Max350Text | | |
-| SecondaryIdentification |0..1 |OBInternationalScheduled3/DebtorAccount/SecondaryIdentification |This is secondary identification of the account, as assigned by the account servicing institution. This can be used by building societies to additionally identify accounts with a roll number (in addition to a sort code and account number combination). |Max34Text | | |
-| Proxy |0..1 |OBInternationalScheduled3/DebtorAccount/Proxy |Specifies an alternate assumed name for the identification of the account.  |OBProxy1 | | |
+| DebtorAccount |0..1 |OBInternationalScheduled3/DebtorAccount |Unambiguous identification of the account of the debtor to which a debit entry will be made as a result of the transaction. | OBCashAccountDebtorWithName | | |
 | UltimateDebtor |0..1 |OBInternationalScheduled3/UltimateDebtor|Ultimate party that owes an amount of money to the (ultimate) creditor. |OBUltimateDebtor1 | | |
 | Creditor |0..1 |OBInternationalScheduled3/Creditor |Party to which an amount of money is due. |OBPartyIdentification43 | | |
 | Name |0..1 |OBInternationalScheduled3/Creditor/Name |Name by which a party is known and which is usually used to identify that party. |Max350Text | | |
@@ -365,7 +358,7 @@ Exchange rate behaviour:
 | CreationDateTime |1..1 |OBWriteInternationalScheduledConsentResponse6/Data/CreationDateTime |Date and time at which the resource was created. |ISODateTime | | |
 | Status |1..1 |OBWriteInternationalScheduledConsentResponse6/Data/Status |Specifies the status of consent resource in code form. |For a full list of enumeration values refer to `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_internal_CodeSets)|OBInternalConsentStatus2Code |
 | StatusReason |0..* |OBWriteInternationalScheduledConsentResponse6/Data/StatusReason |Specifies the status reason. | OBStatusReason |
-| StatusReasonCode |0..1 |OBWriteInternationalScheduledConsentResponse6/Data/StatusReason/StatusReasonCode |Specifies the status reason in a code form. |For a full list of enumeration values refer to `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_internal_CodeSets)| OBInternalPermissions1Code |
+| StatusReasonCode |0..1 |OBWriteInternationalScheduledConsentResponse6/Data/StatusReason/StatusReasonCode |Specifies the status reason in a code form. |For a full list of enumeration values refer to `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_internal_CodeSets)| OBExternalStatusReason1Code |
 | StatusReasonDescription |0..1 |OBWriteInternationalScheduledConsentResponse6/Data/StatusReason/StatusReasonDescription |Description supporting the StatusReasonCode. | Max500Text |
 | StatusUpdateDateTime |1..1 |OBWriteInternationalScheduledConsentResponse6/Data/StatusUpdateDateTime |Date and time at which the resource status was updated. |ISODateTime | | |
 | Permission |1..1 |OBWriteInternationalScheduledConsentResponse6/Data/Permission |Specifies the Open Banking service request types. |For a full list of enumeration values refer to `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets)  |OBInternalPermissions2Code| |

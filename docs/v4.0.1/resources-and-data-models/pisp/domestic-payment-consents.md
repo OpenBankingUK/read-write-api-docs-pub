@@ -1,4 +1,4 @@
-# Domestic Payments Consents - v4.0 <!-- omit in toc -->
+# Domestic Payments Consents - v4.0.1 <!-- omit in toc -->
 
 - [Overview](#overview)
 - [Endpoints](#endpoints)
@@ -90,14 +90,13 @@ The available status codes for the domestic-payment-consent resource are:
 | RJCT |
 | AUTH |
 | COND |
+
 ### GET /domestic-payment-consents/{ConsentId}/funds-confirmation
 
 The API endpoint allows the PISP to ask an ASPSP to confirm funds on a **domestic-payment-consent** resource.
 
 * An ASPSP can only respond to a funds confirmation request if the **domestic-payment-consent** resource has an AUTH status. If the status is not AUTH, an ASPSP must respond with a 400 (Bad Request) and a ```U009``` error code.
 * Confirmation of funds requests do not affect the status of the **domestic-payment-consent** resource.
-
-Refer to [External_Internal_CodeSets](https://github.com/OpenBankingUK/External_Internal_CodeSets) -> OB_Internal_CodeSet -> `OBInternalPermissions1Code`.
 
 ### State Model
 
@@ -106,7 +105,6 @@ Refer to [External_Internal_CodeSets](https://github.com/OpenBankingUK/External_
 The state model for the domestic-payment-consent resource follows the generic consent state model.
 
 ![Payment Order Consent](./images/PO_Consent.png)
-
 
 The definitions for the Status:
 
@@ -191,12 +189,7 @@ For the OBDomestic2 Initiation object:
 | InstructedAmount |1..1 |OBDomestic2/InstructedAmount |Amount of money to be moved between the debtor and creditor, before deduction of charges, expressed in the currency as ordered by the initiating party. Usage: This amount has to be transported unchanged through the transaction chain. |OBActiveOrHistoricCurrencyAndAmount | | |
 | Amount |1..1 |OBDomestic2/InstructedAmount/Amount |A number of monetary units specified in an active currency where the unit of currency is explicit and compliant with ISO 4217. |OBActiveCurrencyAndAmount_SimpleType | |`^\d{1,13}$|^\d{1,13}\.\d{1,5}$` |
 | Currency |1..1 |OBDomestic2/InstructedAmount/Currency |A code allocated to a currency by a Maintenance Agency under an international identification scheme, as described in the latest edition of the international standard ISO 4217 "Codes for the representation of currencies and funds". |ActiveOrHistoricCurrencyCode | |^[A-Z]{3,3}$ |
-| DebtorAccount |0..1 |OBDomestic2/DebtorAccount |Unambiguous identification of the account of the debtor to which a debit entry will be made as a result of the transaction. | | | |
-| SchemeName |1..1 |OBDomestic2/DebtorAccount/SchemeName |Name of the identification scheme, in a coded form as published in an external list. | For a full list of enumeration values refer to `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets). |OBInternalAccountIdentification4Code | 
-| Identification |1..1 |OBDomestic2/DebtorAccount/Identification |Identification assigned by an institution to identify an account. This identification is known by the account owner. |Max256Text | | |
-| Name |0..1 |OBDomestic2/DebtorAccount/Name |The account name is the name or names of the account owner(s) represented at an account level, as displayed by the ASPSP's online channels. Note, the account name is not the product name or the nickname of the account. |Max350Text | | |
-| SecondaryIdentification |0..1 |OBDomestic2/DebtorAccount/SecondaryIdentification |This is secondary identification of the account, as assigned by the account servicing institution. This can be used by building societies to additionally identify accounts with a roll number (in addition to a sort code and account number combination). |Max34Text | | |
-| Proxy |0..1 |OBDomestic2/DebtorAccount/Proxy |Specifies an alternate assumed name for the identification of the account.|OBProxy1 | | |
+| DebtorAccount |0..1 |OBDomestic2/DebtorAccount |Unambiguous identification of the account of the debtor to which a debit entry will be made as a result of the transaction. | OBCashAccountDebtorWithName | | |
 | UltimateDebtor |0..1 |OBDomestic2/UltimateDebtor|Ultimate party that owes an amount of money to the (ultimate) creditor. |OBUltimateDebtor1 | | |
 | CreditorAccount |1..1 |OBDomestic2/CreditorAccount |Unambiguous identification of the account of the creditor to which a credit entry will be posted as a result of the payment transaction. |OBCashAccountCreditor3 | | |
 | SchemeName |1..1 |OBDomestic2/CreditorAccount/SchemeName |Name of the identification scheme, in a coded form as published in an external list. | For a full list of enumeration values refer to `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets). |OBInternalAccountIdentification4Code | 
@@ -234,7 +227,6 @@ The domestic-payment-consent **request** contains these objects:
 * Initiation
 * Authorisation
 * SCASupportData
-* Risk
 
 #### Data Dictionary
 
@@ -246,7 +238,6 @@ The domestic-payment-consent **request** contains these objects:
 | Initiation |1..1 |OBWriteDomesticConsent4/Data/Initiation |The Initiation payload is sent by the initiating party to the ASPSP. It is used to request movement of funds from the debtor account to a creditor for a single domestic payment. |OBDomestic2 | | |
 | Authorisation |0..1 |OBWriteDomesticConsent4/Data/Authorisation |The authorisation type request from the TPP. |OBAuthorisation1 | | |
 | SCASupportData |0..1 |OBWriteDomesticConsent4/Data/SCASupportData |Supporting Data provided by TPP, when requesting SCA Exemption. |OBSCASupportData1 | | |
-| Risk |1..1 |OBWriteDomesticConsent4/Data/Risk |The Risk section is sent by the initiating party to the ASPSP. It is used to specify additional details for risk scoring for Payments. |OBRisk1 | | |
 
 ### Domestic Payment Consent - Response
 
