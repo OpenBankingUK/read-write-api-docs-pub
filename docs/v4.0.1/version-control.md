@@ -121,7 +121,7 @@
   - [AIS - Standing Orders](https://openbankinguk.github.io/spec-pages-preview/v4.0.1/resources-and-data-models/aisp/standing-orders.html#obremittanceinformation2)
   - [Variable Recurring Payments API Profile](https://openbankinguk.github.io/spec-pages-preview/v4.0.1/profiles/vrp-profile.html#obremittanceinformation2)
 - `OBReferredDocumentInformation/LineDetails` (previously displayed as part of the `OBRemittanceInformation2` class)
-- has been updated to have a maximum string length of 2048 characters on the following pages:
+  has been updated to have a maximum string length of 2048 characters on the following pages:
   - [Payment Initiation API Profile](https://openbankinguk.github.io/spec-pages-preview/v4.0.1/profiles/payment-initiation-api-profile.html#obreferreddocumentinformation)
   - [AIS - Standing Orders](https://openbankinguk.github.io/spec-pages-preview/v4.0.1/resources-and-data-models/aisp/standing-orders.html#obreferreddocumentinformation)
   - [Variable Recurring Payments API Profile](https://openbankinguk.github.io/spec-pages-preview/v4.0.1/profiles/vrp-profile.html#obreferreddocumentinformation)
