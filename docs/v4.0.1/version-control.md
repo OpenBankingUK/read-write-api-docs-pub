@@ -177,14 +177,12 @@
     endpoint [Overview](https://openbankinguk.github.io/spec-pages-preview/v4.0.1/resources-and-data-models/aisp/Parties.html#overview)
   - Corrected typo in Release Management from 'create don' to 'created on' [Release Management](https://openbankinguk.github.io/spec-pages-preview/v4.0.1/profiles/account-and-transaction-api-profile.html#get)
   - Corrected typo (missing a 'with') on Release Management [Release Management](https://openbankinguk.github.io/spec-pages-preview/v4.0.1/profiles/account-and-transaction-api-profile.html#get)
-- [Domestic Payments - v4.0.1](https://openbankinguk.github.io/spec-pages-preview/v4.0.1/resources-and-data-models/pisp/domestic-payments.html)
-  - Corrected class from OBWritePaymentDetailsResponse1 to OBWritePaymentDetails1
-  - Corrected Codeset for ExternalPaymentTransactionStatus1Code from ISO_External_CodeSet to OB_Internal_CodeSet
-- Fixed PaymentContextCode in 2 examples from 'TransferToSell' to 'TransferToSelf'
-  ([Domestic Payment Usage Examples - v4.0.1](https://openbankinguk.github.io/spec-pages-preview/v4.0.1/references/usage-examples/domestic-payments-usage-examples.html))
-- Fixed the link to Permissions information across Transactions, Accounts and Accounts & Transactions
+  - Corrected class from OBWritePaymentDetailsResponse1 to OBWritePaymentDetails1 [OBWritePaymentDetails1](https://openbankinguk.github.io/spec-pages-preview/v4.0.1/profiles/payment-initiation-api-profile.html#obwritepaymentdetails1)
+  - Corrected Codeset for ExternalPaymentTransactionStatus1Code from ISO_External_CodeSet to OB_Internal_CodeSet [Data Dictionary](https://openbankinguk.github.io/spec-pages-preview/v4.0.1/resources-and-data-models/pisp/domestic-payments.html#data-dictionary-2)
+- Fixed PaymentContextCode in 2 examples from 'TransferToSell' to 'TransferToSelf' [USage Examples](https://openbankinguk.github.io/spec-pages-preview/v4.0.1/references/usage-examples/vrp-usage-examples.html#response-7)
+- Fixed the link to Permissions information across [Transactions](https://openbankinguk.github.io/spec-pages-preview/v4.0.1/resources-and-data-models/aisp/Transactions.html#permission-codes), [Accounts](https://openbankinguk.github.io/spec-pages-preview/v4.0.1/resources-and-data-models/aisp/Accounts.html#permission-codes) and [Accounts & Transactions](https://openbankinguk.github.io/spec-pages-preview/v4.0.1/profiles/account-and-transaction-api-profile.html#permissions)
   ([AISP Resources and Data Models - v4.0.1](https://openbankinguk.github.io/spec-pages-preview/v4.0.1/resources-and-data-models/aisp/))
-- Corrected the wording in the Permissions table re ReadPAN ([Account and Transaction API Profile - v4.0.1](https://openbankinguk.github.io/spec-pages-preview/v4.0.1/profiles/account-and-transaction-api-profile.html#permissions))
+- Corrected the wording in the Permissions table re ReadPAN [Permissions Table](https://openbankinguk.github.io/spec-pages-preview/v4.0.1/profiles/account-and-transaction-api-profile.html#permissions)
 - Added additional text to POST/domestic-payments to clarify the approach to status changes (applied to Domestic 
   Payments, Domestic Scheduled Payments, Domestic Standing Orders, International Payments, International Scheduled
   Payments, International Standing Orders ([Domestic Payments - v4.0.1](https://openbankinguk.github.io/spec-pages-preview/v4.0.1/resources-and-data-models/pisp/domestic-payments.html))
