@@ -149,7 +149,7 @@
   for `POST /file-payment-consents/{ConsentId}/file`.
 - The Release Management section has been removed from both [Callback URL API Profile](https://openbankinguk.github.io/spec-pages-preview/v4.0.1/profiles/callback-url-api-profile.html)
   and [Event Notification Subscription API Profile](https://openbankinguk.github.io/spec-pages-preview/v4.0.1/profiles/event-notification-subscription-api-profile.html).
-  The top level [Event Notification API Profile Relase Management](https://openbankinguk.github.io/spec-pages-preview/v4.0.1/profiles/event-notification-api-profile.html#release-management)
+  The top level [Event Notification API Profile Release Management](https://openbankinguk.github.io/spec-pages-preview/v4.0.1/profiles/event-notification-api-profile.html#release-management)
   should be used instead.
 - Removed Risk from the DomesticConsent Data Dictionary ([Domestic Payments Consents - v4.0.1](https://openbankinguk.github.io/spec-pages-preview/v4.0.1/resources-and-data-models/pisp/domestic-payment-consents.html#data-dictionary-2))
 
@@ -178,8 +178,8 @@
   - Corrected typo in Release Management from 'create don' to 'created on'
   - Corrected typo (missing a 'with') on Release Management
 - [Domestic Payments - v4.0.1](https://openbankinguk.github.io/spec-pages-preview/v4.0.1/resources-and-data-models/pisp/domestic-payments.html)
-  - Corrected class from OBWritePaymentDetailsResponse1 to OBWritePamentDetails1
-  - Corrected Codeset for ExternalPaymentTrasnsactionStatus1Code from ISO_External_CodeSet to OB_Internal_CodeSet
+  - Corrected class from OBWritePaymentDetailsResponse1 to OBWritePaymentDetails1
+  - Corrected Codeset for ExternalPaymentTransactionStatus1Code from ISO_External_CodeSet to OB_Internal_CodeSet
 - Fixed PaymentContextCode in 2 examples from 'TransferToSell' to 'TransferToSelf'
   ([Domestic Payment Usage Examples - v4.0.1](https://openbankinguk.github.io/spec-pages-preview/v4.0.1/references/usage-examples/domestic-payments-usage-examples.html))
 - Fixed the link to Permissions information across Transactions, Accounts and Accounts & Transactions
