@@ -173,7 +173,7 @@
   - Corrected text re conditional endpoints to say, 'If ASPSP has implemented the /accounts/{AccountId}/parties'
     endpoint, the ASPSP must return details on the account owner(s)/holder(s) and operator(s)
 - [Account and Transaction API Profile - v4.0.1](https://openbankinguk.github.io/spec-pages-preview/v4.0.1/profiles/account-and-transaction-api-profile.html#access-revocation):
-  - Corrected Access Revocation text to reflect that the status of account-access-consent should be changed, not must 
+  - Corrected Access Revocation text to reflect that the status of account-access-consent **should** be changed, not **~~must~~** 
     be changed
   - Corrected typo in Release Management from 'create don' to 'created on'
   - Corrected typo (missing a 'with') on Release Management
