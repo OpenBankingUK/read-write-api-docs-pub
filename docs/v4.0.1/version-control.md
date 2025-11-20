@@ -173,12 +173,10 @@
 - Corrected the dates shown in the Examples of Periodic Limits (Examples 2 and 3) [VRP Example 2](https://openbankinguk.github.io/spec-pages-preview/v4.0.1/resources-and-data-models/vrp/domestic-vrp-consents.html#example-2) and [VRP Example 3](https://openbankinguk.github.io/spec-pages-preview/v4.0.1/resources-and-data-models/vrp/domestic-vrp-consents.html#example-3)
 - [Parties - v4.0.1](https://openbankinguk.github.io/spec-pages-preview/v4.0.1/resources-and-data-models/aisp/Parties.html#data-dictionary-2):
   - Added \ to the Pattern for Phone and Mobile in the [Data Dictionary](https://openbankinguk.github.io/spec-pages-preview/v4.0.1/resources-and-data-models/aisp/Parties.html#data-dictionary)
-  - Added text to Overview re conditional Parties endpoints and fields [Overview](https://openbankinguk.github.io/spec-pages-preview/v4.0.1/resources-and-data-models/aisp/Parties.html#overview)
-  - TODO: Add quotes here
-  - Corrected text re conditional endpoints to say, 'If ASPSP has implemented the /accounts/{AccountId}/parties'
-    endpoint, the ASPSP must return details on the account owner(s)/holder(s) and operator(s)
-  - Corrected typo in Release Management from 'create don' to 'created on'
-  - Corrected typo (missing a 'with') on Release Management
+  - Added text to Overview re conditional Parties endpoints and fields, explaining what ASPSPs **must** do if they have implemented the /accounts/{AccountId}/parties'
+    endpoint [Overview](https://openbankinguk.github.io/spec-pages-preview/v4.0.1/resources-and-data-models/aisp/Parties.html#overview)
+  - Corrected typo in Release Management from 'create don' to 'created on' [Release Management](https://openbankinguk.github.io/spec-pages-preview/v4.0.1/profiles/account-and-transaction-api-profile.html#get)
+  - Corrected typo (missing a 'with') on Release Management [Release Management](https://openbankinguk.github.io/spec-pages-preview/v4.0.1/profiles/account-and-transaction-api-profile.html#get)
 - [Domestic Payments - v4.0.1](https://openbankinguk.github.io/spec-pages-preview/v4.0.1/resources-and-data-models/pisp/domestic-payments.html)
   - Corrected class from OBWritePaymentDetailsResponse1 to OBWritePaymentDetails1
   - Corrected Codeset for ExternalPaymentTransactionStatus1Code from ISO_External_CodeSet to OB_Internal_CodeSet
