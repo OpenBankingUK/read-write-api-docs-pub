@@ -170,7 +170,7 @@
   - OBCharge2/Amount/Amount
   - OBRemittanceInformation2/Structured/ReferredDocumentAmount
   - OBRegulatoryReporting1/Details/Amount/Amount
-- Corrected the dates shown in the Examples of Periodic Limits (Examples 2 and 3) ([Domestic VRP consents - v4.0.1](https://openbankinguk.github.io/spec-pages-preview/v4.0.1/resources-and-data-models/vrp/domestic-vrp-consents.html))
+- Corrected the dates shown in the Examples of Periodic Limits (Examples 2 and 3) [[Domestic VRP consents - v4.0.1](https://openbankinguk.github.io/spec-pages-preview/v4.0.1/resources-and-data-models/vrp/domestic-vrp-consents.html](https://openbankinguk.github.io/spec-pages-preview/v4.0.1/resources-and-data-models/vrp/domestic-vrp-consents.html#example-2))] and [https://openbankinguk.github.io/spec-pages-preview/v4.0.1/resources-and-data-models/vrp/domestic-vrp-consents.html#example-3]
 - [Parties - v4.0.1](https://openbankinguk.github.io/spec-pages-preview/v4.0.1/resources-and-data-models/aisp/Parties.html#data-dictionary-2):
   - Added \ to the Pattern for Phone and Mobile in the Data Dictionary
   - Added text to Overview re conditional Parties endpoints and fields
