@@ -157,9 +157,13 @@
 ### Fixed
 
 - Fixed incorrect codeset reference for `StatusReasonCode` from `OBInternalPermissions1Code` to 
-  `OBExternalStatusReason1Code` in the response data dictionaries for
-  [International Scheduled Payment Consents](https://openbankinguk.github.io/spec-pages-preview/v4.0.1/resources-and-data-models/pisp/international-scheduled-payment-consents.html#data-dictionary-4)
-  and [International Standing Order Consents](https://openbankinguk.github.io/spec-pages-preview/v4.0.1/resources-and-data-models/pisp/international-standing-order-consents.html#data-dictionary-3)
+  `OBExternalStatusReason1Code` in the response data dictionaries for the following locations:
+  - [Domestic Standing Orders](https://openbankinguk.github.io/spec-pages-preview/v4.0.1/resources-and-data-models/pisp/domestic-standing-orders.html#data-dictionary-2)
+  - [International Payments](https://openbankinguk.github.io/spec-pages-preview/v4.0.1/resources-and-data-models/pisp/international-payments.html#data-dictionary-2)
+  - [International Scheduled Payment Consents](https://openbankinguk.github.io/spec-pages-preview/v4.0.1/resources-and-data-models/pisp/international-scheduled-payment-consents.html#data-dictionary-4)
+  - [International Scheduled Payments](https://openbankinguk.github.io/spec-pages-preview/v4.0.1/resources-and-data-models/pisp/international-scheduled-payments.html#data-dictionary-2)
+  - [International Standing Order Consents](https://openbankinguk.github.io/spec-pages-preview/v4.0.1/resources-and-data-models/pisp/international-standing-order-consents.html#data-dictionary-3)
+  - [International Standing Orders](https://openbankinguk.github.io/spec-pages-preview/v4.0.1/resources-and-data-models/pisp/international-standing-orders.html#data-dictionary-2)
 - `OBActiveCurrencyAndAmount_SimpleType` regex pattern was not displaying correctly for the following fields on
   [Payment Initiation API Profile](https://openbankinguk.github.io/spec-pages-preview/v4.0.1/profiles/payment-initiation-api-profile)
   and [Variable Recurring Payments API Profile](https://openbankinguk.github.io/spec-pages-preview/v4.0.1/profiles/vrp-profile).
