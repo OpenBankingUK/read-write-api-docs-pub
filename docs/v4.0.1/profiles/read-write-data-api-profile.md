@@ -405,7 +405,7 @@ TPPs **must** refer to ASPSP developer portals for further information on any ra
 
 | Header Value | Notes | Mandatory? |
 | --- | ---| --- |
-| RateLimit-Policy | A non-empty list of Quota Policy Items. The Item value **MUST** be a String.<br><br>Example:<br>RateLimit-Policy: `RateLimit-Policy: "default";q=100;w=10`<br><br><ul><li>The **REQUIRED** "q" parameter indicates the quota allocated by this policy measured in quota units.</li><li>The **OPTIONAL** "w" parameter value conveys a time window.</li></ul> | Optional |
+| RateLimit-Policy | A non-empty list of Quota Policy Items. The Item value **MUST** be a String.<br><br>Example:<br>`RateLimit-Policy: "default";q=100;w=10`<br><br><ul><li>The **REQUIRED** "q" parameter indicates the quota allocated by this policy measured in quota units.</li><li>The **OPTIONAL** "w" parameter value conveys a time window.</li></ul> | Optional |
 | RateLimit | A server uses the "RateLimit" response header field to communicate the current service limit for a quota policy for a particular partition key.<br><br>Example: <br>`RateLimit: "default";r=50;t=30`<br><br><ul><li>The **REQUIRED** “r” parameter value conveys the remaining quota units for the identified policy.</li><li>The **OPTIONAL** “t” parameter value conveys the time window reset time for the identified policy.</li></ul> | Optional |
 
 The examples above are not exhaustive, ASPSPs and TPPs should refer to the draft [IETF RateLimit header fields for HTTP](https://datatracker.ietf.org/doc/html/draft-ietf-httpapi-ratelimit-headers) RFC for additional information on usage.
