@@ -47,8 +47,8 @@
       - [Data Dictionary](#obultimatedebtor1-data-dictionary)
     - [OBCashAccountDebtorWithName](#obcashaccountdebtorwithname)
       - [Data Dictionary](#obcashaccountdebtorwithname-data-dictionary)
-    - [OBIntermediaryAgent1](#obintermediaryagent1)
-      - [Data Dictionary](#obintermediaryagent1-data-dictionary)
+    - [OBIntermediaryAgent](#obintermediaryagent)
+      - [Data Dictionary](#obintermediaryagent-data-dictionary)
   - [Using Meta to identify Available Transaction Period](#using-meta-to-identify-available-transaction-period)
   - [Mapping to Schemes & Standards](#mapping-to-schemes-standards)
   - [Enumerations](#enumerations)
@@ -251,7 +251,7 @@ The account-access-consent resource is referred to as an account-request resourc
   - E.g., An account-request created in v2 will have the same details when accessed via v2 and v3 (as an account-access-consent).
 - An ASPSP **must** ensure a Consent's fields are representative of the version being accessed. e.g. using v4 fields and enums when accessing a consent created on 3.1 on v4.0 endpoints
 - An ASPSP **may** allow expired Consents to be accessed in a newer version.
-- An ASPSP **may** choose to populate new fields introduced in a resource from previous version with sensible defaults (if mandatory) or not populate at all (if not mandatory):
+- An ASPSP **may** choose to populate new fields introduced in a resource from a previous version with sensible defaults (if mandatory) or not populate at all (if not mandatory):
   - E.g., OBReadResponse1/Data/StatusUpdateDateTime introduced in v2 accessed with v1 AccountRequestId can be populated with Last accessed date time, if not already available in the system of records.
 
 ##### DELETE
@@ -274,7 +274,7 @@ The account-access-consent resource is referred to as an account-request resourc
 - An ASPSP **must** allow an AISP to use an Id for a Consent from a previous version to access Account Information resource endpoints in a newer version:
   - E.g., AccountRequestId created in v2 must be allowed to access Account Information resource endpoints in v3.
 - An ASPSP **must** reject the request to access a resource, for which a Consent's Permissions set does not permit.
-- An ASPSP **may** choose to populate new fields introduced in a resource from previous version sensible defaults (if mandatory) or not populate at all:
+- An ASPSP **may** choose to populate new fields introduced in a resource from a previous version with sensible defaults (if mandatory) or not populate at all:
   - E.g., OBReadResponse1/Data/StatusUpdateDateTime introduced in Version2 accessed with V1 AccountRequestId can be populated with Last accessed date time, if not already available in the system of records.
 
 ## Security & Access Control
@@ -347,8 +347,8 @@ The following combinations of permissions are not allowed, and the ASPSP **must*
 | ReadTransactions**Detail** |/transactions<br>/accounts/{AccountId}/transactions<br>/accounts/{AccountId}/statements/{StatementId}/transactions |Access to additional elements in the payload<br><br>Permissions must also include at least one of:<br><br><li>ReadTransactions**Credits**</li><li>ReadTransactions**Debits**</li> |Ability to read transaction data elements which may hold silent party details |
 | ReadTransactions**Credits** |/transactions<br>/accounts/{AccountId}/transactions<br>/accounts/{AccountId}/statements/{StatementId}/transactions |Access to credit transactions.<br><br>Permissions must also include one of:<br><br><li>ReadTransactions**Basic**</li><li>ReadTransactions**Detail**</li> |Ability to read **only** credit transactions |
 | ReadTransactions**Debits** |/transactions<br>/accounts/{AccountId}/transactions<br>/accounts/{AccountId}/statements/{StatementId}/transactions |Access to debit transactions.<br><br>Permissions must also include one of:<br><br><li>ReadTransactions**Basic**</li><li>ReadTransactions**Detail**</li> |Ability to read **only** debit transactions |
-| ReadStandingOrders**Basic** | | /accounts/{AccountId}/standing-orders<br>/standing-orders | Ability to read basic standing order details |
-| ReadStandingOrders**Detail** | | /accounts/{AccountId}/standing-orders<br>/standing-orders | Ability to read additonal standing order details such as CreditorAccount and CreditorAgent |
+| ReadStandingOrders**Basic** | /accounts/{AccountId}/standing-orders<br>/standing-orders | | Ability to read basic standing order details |
+| ReadStandingOrders**Detail** | /accounts/{AccountId}/standing-orders<br>/standing-orders | | Ability to read additonal standing order details such as CreditorAccount and CreditorAgent |
 | ReadStatements**Basic** |/statements<br>/accounts/{AccountId}/statements | |Ability to read basic statement details |
 | ReadStatements**Detail** |/statements<br>/accounts/{AccountId}/statements<br>/accounts/{AccountId}/statements/{StatementId}/file |Access to additional elements in the payload<br><br>Access to download the statement file (if the ASPSP makes this available). |Ability to read statement data elements which may leak other information about the account |
 | ReadProducts |/products<br>/accounts/{AccountId}/product | |Ability to read **all** product information relating to the account |
@@ -590,19 +590,19 @@ No fields for business logic security concerns have been identified for the Acco
 | SecondaryIdentification | 0..1 | OBCashAccountDebtorWithName/SecondaryIdentification | This is secondary identification of the account, as assigned by the account servicing institution.  This can be used by building societies to additionally identify accounts with a roll number (in addition to a sort code and account number combination) | Max34Text | |
 | Proxy | (0..1) | OBCashAccountDebtorWithName/Proxy | Specifies an alternate assumed name for the identification of the account. | [OBProxy1](#obproxy1) | |
 
-#### OBIntermediaryAgent1
+#### OBIntermediaryAgent
 
-##### OBIntermediaryAgent1 Data Dictionary
+##### OBIntermediaryAgent Data Dictionary
 
 | Name | Occurrence | XPath | EnhancedDefinition | Class | Codes | Pattern |
 | --- | --- | --- | --- | --- | --- | --- |
-| OBIntermediaryAgent1 | | | The intermediary agent associated with this transaction. | OBIntermediaryAgent1 | | |
-| Name |0..1 |OBIntermediaryAgent1/Name |Name by which an agent is known and which is usually used to identify that agent. |Max140Text | | |
-| SchemeName |0..1 |OBIntermediaryAgent1/SchemeName |Name of the identification scheme, in a coded form as published in an external list. | For a full list of enumeration values refer to `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets). |OBInternalFinancialInstitutionIdentification4Code | |
-| Identification |0..1 |OBIntermediaryAgent1/Identification |Unique and unambiguous identification of a financial institution or a branch of a financial institution. |Max35Text | | |
-| LEI |0..1 | OBIntermediaryAgent1/LEI |Legal entity identification as an alternate identification for a party. Legal Entity Identifier is a code allocated to a party as described in ISO 17442 "Financial Services - Legal Entity Identifier (LEI)".|Max20Text | | ^[A-Z0-9]{18,18}[0-9]{2,2}$|
-| PostalAddress | 0..1 | OBIntermediaryAgent1/PostalAddress | Information that locates and identifies a specific address, as defined by postal services. | OBPostalAddress7 | | |
-| ProcessingStatus| 0..1 | OBIntermediaryAgent1/ProcessingStatus | Status of the payment at the Intermediary Agent. | For a full list of enumeration values refer to `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets) | OBIntermediaryAgentStatus1Code ||
+| OBIntermediaryAgent | | | The intermediary agent associated with this transaction. | OBIntermediaryAgent | | |
+| Name |0..1 |OBIntermediaryAgent/Name |Name by which an agent is known and which is usually used to identify that agent. |Max140Text | | |
+| SchemeName |0..1 |OBIntermediaryAgent/SchemeName |Name of the identification scheme, in a coded form as published in an external list. | For a full list of enumeration values refer to `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets). |OBInternalFinancialInstitutionIdentification4Code | |
+| Identification |0..1 |OBIntermediaryAgent/Identification |Unique and unambiguous identification of a financial institution or a branch of a financial institution. |Max35Text | | |
+| LEI |0..1 | OBIntermediaryAgent/LEI |Legal entity identification as an alternate identification for a party. Legal Entity Identifier is a code allocated to a party as described in ISO 17442 "Financial Services - Legal Entity Identifier (LEI)".|Max20Text | | `^[A-Z0-9]{18,18}[0-9]{2,2}$`|
+| PostalAddress | 0..1 | OBIntermediaryAgent/PostalAddress | Information that locates and identifies a specific address, as defined by postal services. | OBPostalAddress7 | | |
+| ProcessingStatus| 0..1 | OBIntermediaryAgent/ProcessingStatus | Status of the payment at the Intermediary Agent. | For a full list of enumeration values refer to `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets) | OBIntermediaryAgentStatus1Code ||
 
 ### Using Meta to identify Available Transaction Period
 

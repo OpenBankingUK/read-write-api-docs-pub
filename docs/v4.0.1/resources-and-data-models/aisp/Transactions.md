@@ -10,7 +10,7 @@
     - [OBPostalAddress7](#obpostaladdress7)
     - [OBUltimateCreditor1](#obultimatecreditor1)
     - [OBUltimateDebtor1](#obultimatedebtor1)
-    - [OBIntermediaryAgent1](#obintermediaryagent1)
+    - [OBIntermediaryAgent](#obintermediaryagent)
   - [Resource Definition](#resource-definition)
   - [UML Diagram](#uml-diagram)
     - [Notes](#notes)
@@ -81,9 +81,9 @@ The OBUltimateCreditor1 class is defined in the [account-and-transaction-api-pro
 #### OBUltimateDebtor1
 The OBUltimateDebtor1 class is defined in the [account-and-transaction-api-profile](../../profiles/account-and-transaction-api-profile.md#obultimatedebtor1) page.
 
-#### OBIntermediaryAgent1
+#### OBIntermediaryAgent
 
-The OBIntermediaryAgent1 class is defined in the [account-and-transaction-api-profile](../../profiles/account-and-transaction-api-profile.md#obintermediaryagent1) page.
+The OBIntermediaryAgent class is defined in the [account-and-transaction-api-profile](../../profiles/account-and-transaction-api-profile.md#obintermediaryagent) page.
 
 ### Resource Definition
 
@@ -296,9 +296,9 @@ Further information can be found at [Account and Transaction Permissions](../../
 | Identification |0..1 |OBReadTransaction6/Data/Transaction/CreditorAgent/Identification |Unique and unambiguous identification of a financial institution or a branch of a financial institution. |Max35Text | | |
 | Name |0..1 |OBReadTransaction6/Data/Transaction/CreditorAgent/Name |Name by which an agent is known and which is usually used to identify that agent. |Max140Text | | |
 | PostalAddress |0..1 |OBReadTransaction6/Data/Transaction/CreditorAgent/PostalAddress |Information that locates and identifies a specific address, as defined by postal services. |OBPostalAddress7 | | |
-| IntermediaryAgent1 | 0..1 | OBReadTransaction6/Data/Transaction/IntermediaryAgent1 | The first intermediary agent associated with this transaction. | OBIntermediaryAgent1 |||
-| IntermediaryAgent2 | 0..1 | OBReadTransaction6/Data/Transaction/IntermediaryAgent2 | The second intermediary agent associated with this transaction. | OBIntermediaryAgent1 |||
-| IntermediaryAgent3 | 0..1 | OBReadTransaction6/Data/Transaction/IntermediaryAgent3 | The third intermediary agent associated with this transaction. | OBIntermediaryAgent1 |||
+| IntermediaryAgent1 | 0..1 | OBReadTransaction6/Data/Transaction/IntermediaryAgent1 | The first intermediary agent associated with this transaction. | OBIntermediaryAgent |||
+| IntermediaryAgent2 | 0..1 | OBReadTransaction6/Data/Transaction/IntermediaryAgent2 | The second intermediary agent associated with this transaction. | OBIntermediaryAgent |||
+| IntermediaryAgent3 | 0..1 | OBReadTransaction6/Data/Transaction/IntermediaryAgent3 | The third intermediary agent associated with this transaction. | OBIntermediaryAgent |||
 | CreditorAccount |0..1 |OBReadTransaction6/Data/Transaction/CreditorAccount |Unambiguous identification of the account of the creditor, in the case of a debit transaction. |OBCashAccount6 | | |
 | SchemeName |0..1 |OBReadTransaction6/Data/Transaction/CreditorAccount/SchemeName |Name of the identification scheme, in a coded form as published in an external list. | For a full list of enumeration values refer to `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets). |OBInternalAccountIdentification4Code | 
 | Identification |0..1 |OBReadTransaction6/Data/Transaction/CreditorAccount/Identification |Identification assigned by an institution to identify an account. This identification is known by the account owner. |Max256Text | | |
