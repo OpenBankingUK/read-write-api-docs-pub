@@ -185,5 +185,5 @@
 - Corrected the wording in the Permissions table re ReadPAN [Permissions Table](https://openbankinguk.github.io/spec-pages-preview/v4.0.1/profiles/account-and-transaction-api-profile.html#permissions)
 - Added additional text to POST/domestic-payments to clarify the approach to status changes (applied to Domestic 
   Payments, Domestic Scheduled Payments, Domestic Standing Orders, International Payments, International Scheduled
-  Payments, International Standing Orders ([Domestic Payments - v4.0.1](https://openbankinguk.github.io/spec-pages-preview/v4.0.1/resources-and-data-models/pisp/domestic-payments.html))
+  Payments, International Standing Orders [Post/domestic-payments](https://openbankinguk.github.io/spec-pages-preview/v4.0.1/resources-and-data-models/pisp/domestic-payments.html#post-domestic-payments) Same amendment made in all 6 areas.
 - Corrected MandateRelatedInformation to be 1..1 and confirm that frequency detail is mandatory ([Domestic Standing Order Consents - v4.0.1](https://openbankinguk.github.io/spec-pages-preview/v4.0.1/resources-and-data-models/pisp/domestic-standing-order-consents.html))
