@@ -35,7 +35,7 @@
   - [Variable Recurring Payments API Profile](https://openbankinguk.github.io/spec-pages-preview/v4.0.1/profiles/vrp-profile.html#obreferreddocumentinformation)
 - Added additional guidance to [POST /file-payment-consents/{ConsentId}/file](https://openbankinguk.github.io/spec-pages-preview/v4.0.1/resources-and-data-models/pisp/file-payment-consents.html#post-file-payment-consents-consentid-file):
   - ASPSPs should document accepted file types on their developer portal.
-  - ASPSPs, who accept the UK.OBIE.PaymentInitiation.4.0 file type, should specify which payload schemas they accept as 
+  - ASPSPs who accept the UK.OBIE.PaymentInitiation.4.0 file type should specify which payload schemas they accept as 
     payload structures vary across payment types.
     - E.g. An ASPSP accepting domestic, international and domestic standing orders via file payment should explicitly
       specify support for these 3 payload schemas on their developer portal.
