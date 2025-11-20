@@ -1,5 +1,5 @@
 # Version control
-
+s
 ## v4.0.1 - 2025-11-20
 
 ### Added
@@ -18,7 +18,7 @@
   - [OBInternationalStandingOrder4/NumberOfPayments](https://openbankinguk.github.io/spec-pages-preview/v4.0.1/resources-and-data-models/pisp/international-standing-order-consents.html#data-dictionary)
 - The following text has been added to `OBMandateRelatedInformation1/Frequency/Type` on the
   [Account and Transaction API Profile](https://openbankinguk.github.io/spec-pages-preview/v4.0.1/profiles/account-and-transaction-api-profile) and [Payment Initiation API Profile](https://openbankinguk.github.io/spec-pages-preview/v4.0.1/profiles/payment-initiation-api-profile) pages:<br>
-  > For compatibility with v3 an ASPSP may choose to optionally support legacy v3 regex patterns in this field.
+  > For compatibility with v3, an ASPSP may choose to optionally support legacy v3 regex patterns in this field.
   >
   > TPPs should refer to ASPSP developer portals for further information on whether legacy values are supported, 
   > alongside any additional information relevant to MandateRelatedInformation usage.
@@ -65,7 +65,7 @@
 ### Changed
 
 - Updated the relevant `OBInternalConsentStatus1Code` codeset references throughout PIS response data dictionaries, to
-  use seperated codesets:
+  use separated codesets:
   - Changed to `OBInternalConsentStatus2Code` in:
     - [Domestic Payment Consent](https://openbankinguk.github.io/spec-pages-preview/v4.0.1/resources-and-data-models/pisp/domestic-payment-consents.html#data-dictionary-3)
     - [Domestic Scheduled Payment Consent](https://openbankinguk.github.io/spec-pages-preview/v4.0.1/resources-and-data-models/pisp/domestic-scheduled-payment-consents.html#data-dictionary-3)
@@ -79,13 +79,13 @@
   located in [PIS](https://openbankinguk.github.io/spec-pages-preview/v4.0.1/profiles/payment-initiation-api-profile.html#data-dictionary-9),
   [VRP](https://openbankinguk.github.io/spec-pages-preview/v4.0.1/profiles/vrp-profile.html#obremittanceinformation2-data-dictionary),
   and [AIS (Standing Orders)](https://openbankinguk.github.io/spec-pages-preview/v4.0.1/resources-and-data-models/aisp/standing-orders.html#data-dictionary)
-- Updated the relevant `ExternalPaymentTransactionStatus1Code` codeset references to use seperated codesets:
+- Updated the relevant `ExternalPaymentTransactionStatus1Code` codeset references to use separate codesets:
   - Changed to `ExternalPaymentTransactionStatus2Code` in:
     - [Domestic Scheduled Payments](https://openbankinguk.github.io/spec-pages-preview/v4.0.1/resources-and-data-models/pisp/domestic-scheduled-payments.html#data-dictionary-2)
     - [International Scheduled Payments](https://openbankinguk.github.io/spec-pages-preview/v4.0.1/resources-and-data-models/pisp/international-scheduled-payments.html#data-dictionary-2)
   - Changed to `ExternalPaymentTransactionStatus3Code` in:
     - [Domestic Payments](https://openbankinguk.github.io/spec-pages-preview/v4.0.1/resources-and-data-models/pisp/domestic-payments.html#data-dictionary-2)
-    - [Internation Payments](https://openbankinguk.github.io/spec-pages-preview/v4.0.1/resources-and-data-models/pisp/international-payments.html#data-dictionary-2)
+    - [International Payments](https://openbankinguk.github.io/spec-pages-preview/v4.0.1/resources-and-data-models/pisp/international-payments.html#data-dictionary-2)
   - Changed to `ExternalPaymentTransactionStatus4Code` in:
     - [File Payments](https://openbankinguk.github.io/spec-pages-preview/v4.0.1/resources-and-data-models/pisp/file-payments.html#data-dictionary-2)
   - Changed to `ExternalPaymentTransactionStatus5Code` in:
@@ -120,7 +120,7 @@
   - [Payment Initiation API Profile](https://openbankinguk.github.io/spec-pages-preview/v4.0.1/profiles/payment-initiation-api-profile.html#obremittanceinformation2)
   - [AIS - Standing Orders](https://openbankinguk.github.io/spec-pages-preview/v4.0.1/resources-and-data-models/aisp/standing-orders.html#obremittanceinformation2)
   - [Variable Recurring Payments API Profile](https://openbankinguk.github.io/spec-pages-preview/v4.0.1/profiles/vrp-profile.html#obremittanceinformation2)
-- `OBReferredDocumentInformation/LineDetails` (previously displayed as part for the `OBRemittanceInformation2` class)
+- `OBReferredDocumentInformation/LineDetails` (previously displayed as part of the `OBRemittanceInformation2` class)
 - has been updated to have a maximum string length of 2048 characters on the following pages:
   - [Payment Initiation API Profile](https://openbankinguk.github.io/spec-pages-preview/v4.0.1/profiles/payment-initiation-api-profile.html#obreferreddocumentinformation)
   - [AIS - Standing Orders](https://openbankinguk.github.io/spec-pages-preview/v4.0.1/resources-and-data-models/aisp/standing-orders.html#obreferreddocumentinformation)
@@ -134,7 +134,7 @@
 - Replaced 'ReceivedCreditTransfer' and 'DomesticCreditTransfer' with 'RCDT' and 'DMCT' in usage examples 
   ([Transactions - v4.0.1](https://openbankinguk.github.io/spec-pages-preview/v4.0.1/resources-and-data-models/aisp/Transactions.html#get-account-transactions-response-1))
 - Replaced AWAU with AWAF for Multiple Authorisation in File Payments ([File Payments - v4.0.1](https://openbankinguk.github.io/spec-pages-preview/v4.0.1/resources-and-data-models/pisp/file-payments.html#uml-diagram))
-- Added clarification to PointInTime in Data Dictionary to note that negative numbers are permitted
+- Added clarification to PointInTime in the Data Dictionary to note that negative numbers are permitted
   ([Payment Initiation API Profile - v4.0.1](https://openbankinguk.github.io/spec-pages-preview/v4.0.1/profiles/payment-initiation-api-profile.html#data-dictionary-10))
 
 ### Removed
@@ -172,7 +172,7 @@
   - OBRegulatoryReporting1/Details/Amount/Amount
 - Corrected the dates shown in the Examples of Periodic Limits (Examples 2 and 3) ([Domestic VRP consents - v4.0.1](https://openbankinguk.github.io/spec-pages-preview/v4.0.1/resources-and-data-models/vrp/domestic-vrp-consents.html))
 - [Parties - v4.0.1](https://openbankinguk.github.io/spec-pages-preview/v4.0.1/resources-and-data-models/aisp/Parties.html#data-dictionary-2):
-  - Added \ to the Pattern for Phone and Mobile in Data Dictionary
+  - Added \ to the Pattern for Phone and Mobile in the Data Dictionary
   - Added text to Overview re conditional Parties endpoints and fields
   - TODO: Add quotes here
   - Corrected text re conditional endpoints to say, 'If ASPSP has implemented the /accounts/{AccountId}/parties'
