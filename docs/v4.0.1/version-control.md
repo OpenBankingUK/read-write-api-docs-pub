@@ -102,6 +102,9 @@
 - Updated [Multiple Authorisation state model guidance](https://openbankinguk.github.io/spec-pages-preview/v4.0.1/resources-and-data-models/pisp/file-payments.html#multiple-authorisation) to use correct status codes.
 - Corrected both the [Domestic](https://openbankinguk.github.io/spec-pages-preview/v4.0.1/resources-and-data-models/pisp/domestic-scheduled-payments.html#payment-order) and [International](https://openbankinguk.github.io/spec-pages-preview/v4.0.1/resources-and-data-models/pisp/international-scheduled-payments.html#payment-order) Scheduled Payment state diagrams.
 - Updated [ISO 20022 text](https://openbankinguk.github.io/spec-pages-preview/v4.0.1/profiles/read-write-data-api-profile.html#iso-20022) to replace references to draft standards with final standards such as the `Regulatory Technical Standards on strong customer authentication`
+- Replaced ‘ReceivedCreditTransfer’ and ‘DomesticCreditTransfer’ with ‘RCDT’ and ‘DMCT’ in usage examples ([Transactions - v4.0.1](https://openbankinguk.github.io/spec-pages-preview/v4.0.1/resources-and-data-models/aisp/Transactions.html#get-account-transactions-response-1))
+- Replaced AWAU with AWAF for Multiple Authorisation in File Payments ([File Payments - v4.0.1](https://openbankinguk.github.io/spec-pages-preview/v4.0.1/resources-and-data-models/pisp/file-payments.html#uml-diagram))
+- Added clarification to PointInTime in Data Dictionary to note that negative numbers are permitted ([Payment Initiation API Profile - v4.0.1](https://openbankinguk.github.io/spec-pages-preview/v4.0.1/profiles/payment-initiation-api-profile.html))
 
 ### Removed
 
@@ -114,6 +117,7 @@
 - Removed invalid reference to `OBExternalConsentProprietaryCode` codeset in [GET /domestic-standing-order-consents/{ConsentId}](https://openbankinguk.github.io/spec-pages-preview/v4.0.1/resources-and-data-models/pisp/domestic-standing-order-consents.html#get-domestic-standing-order-consents-consentid)
 - Removed `Signed Response` from the [Endpoints Table](https://openbankinguk.github.io/spec-pages-preview/v4.0.1/resources-and-data-models/pisp/file-payment-consents.html#endpoints) for `POST /file-payment-consents/{ConsentId}/file`.
 - The Release Management section has been removed from both [Callback URL API Profile](https://openbankinguk.github.io/spec-pages-preview/v4.0.1/profiles/callback-url-api-profile.html) and [Event Notification Subscription API Profile](https://openbankinguk.github.io/spec-pages-preview/v4.0.1/profiles/event-notification-subscription-api-profile.html). The top level [Event Notification API Profile Relase Management](https://openbankinguk.github.io/spec-pages-preview/v4.0.1/profiles/event-notification-api-profile.html#release-management) should be used instead.
+- Removed Risk from the DomesticConsent Data Dictionary ([Domestic Payments Consents - v4.0.1](https://openbankinguk.github.io/spec-pages-preview/v4.0.1/resources-and-data-models/pisp/domestic-payment-consents.html#data-dictionary-2))
 
 ### Fixed
 
@@ -125,3 +129,20 @@
   - OBCharge2/Amount/Amount
   - OBRemittanceInformation2/Structured/ReferredDocumentAmount
   - OBRegulatoryReporting1/Details/Amount/Amount
+- Corrected the dates shown in the Examples of Periodic Limits (Examples 2 and 3) ([Domestic VRP consents - v4.0.1](https://openbankinguk.github.io/spec-pages-preview/v4.0.1/resources-and-data-models/vrp/domestic-vrp-consents.html))
+- [Parties - v4.0.1](https://openbankinguk.github.io/spec-pages-preview/v4.0.1/resources-and-data-models/aisp/Parties.html#data-dictionary-2):
+  - Added \ to the Pattern for Phone and Mobile in Data Dictionary
+  - Added text to Overview re conditional Parties endpoints and fields
+  - Corrected text re conditional endpoints to say ‘If ASPSP has implemented the /accounts/{AccountId]/parties endpoint, the APSP must return details on the account owner(s)/holder(s) and operator(s)
+- [Account and Transaction API Profile - v4.0.1](https://openbankinguk.github.io/spec-pages-preview/v4.0.1/profiles/account-and-transaction-api-profile.html#access-revocation):
+  - Corrected Access Revocation text to reflect that status of account-access-consent should be changed, not must be changed
+  - Corrected typo in Release Management from ‘create don’ to ‘created on’
+  - Corrected typo (missing a ‘with’) on Release Management
+- [Domestic Payments - v4.0.1](https://openbankinguk.github.io/spec-pages-preview/v4.0.1/resources-and-data-models/pisp/domestic-payments.html)
+  - Corrected class from OBWritePaymentDetailsResponse1 to OBWritePamentDetails1
+  - Corrected Codeset for ExternalPaymentTrasnsactionStatus1Code from ISO_External_CodeSet to OB_Internal_CodeSet
+- Fixed PaymentContextCode in 2 examples from ‘TransferToSell’ to ‘TransferToSelf’ ([Domestic Payment Usage Examples - v4.0.1](https://openbankinguk.github.io/spec-pages-preview/v4.0.1/references/usage-examples/domestic-payments-usage-examples.html))
+- Fixed link to Permissions information across Transactions, Accounts and Accounts & Transactions ([AISP Resources and Data Models - v4.0.1](https://openbankinguk.github.io/spec-pages-preview/v4.0.1/resources-and-data-models/aisp/))
+- Corrected the wording in Permissions table re ReadPAN ([Account and Transaction API Profile - v4.0.1](https://openbankinguk.github.io/spec-pages-preview/v4.0.1/profiles/account-and-transaction-api-profile.html#permissions))
+- Added additional text to POST/domestic-payments to clarify approach to status changes (applied to Domestic Payments, Domestic Scheduled Payments, Domestic Standing Orders, International Payments, International Scheduled Payments, International Standing Orders ([Domestic Payments - v4.0.1](https://openbankinguk.github.io/spec-pages-preview/v4.0.1/resources-and-data-models/pisp/domestic-payments.html))
+- Corrected MandateRelatedInformation to be 1..1 and confirm that frequency detail is mandatory ([Domestic Standing Order Consents - v4.0.1](https://openbankinguk.github.io/spec-pages-preview/v4.0.1/resources-and-data-models/pisp/domestic-standing-order-consents.html))
