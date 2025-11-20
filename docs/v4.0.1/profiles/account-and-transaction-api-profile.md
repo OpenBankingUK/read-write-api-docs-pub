@@ -454,9 +454,8 @@ The PSU may request the AISP to revoke consent that it has authorised. If consen
 
 A PSU **may** revoke AISP's access directly with the ASPSP,  via the access dashboard. In such a situation:
 - The ASPSP **must** take the necessary action to revoke access e.g. by revoking/expiring the access token provided to the AISP.
-- The status of the account-access-consent **should** be changed to `CANC`. If the status of the consent is updated then an appropriate reason **must** be provided in StatusReason. The AISP **must** be allowed to request PSU to re-authenticate the same account-access-consent resource.
-- The ASPSP **must** provide the reasons as appropriate when the status is marked to `CANC`. For more guidance refer to CEG.
-- Upon successful re-authentication by PSU, an ASPSP **may** issue new authorization code and subsequently new access token to the AISP. The ASPSP **must** also change the status of the consent back to `AUTH` which means Authorised.
+- The status of the account-access-consent **must** remain unchanged and the AISP **must** be allowed to request PSU to re-authenticate the same account-access-consent resource. account-access-consent resource.
+- Upon successful re-authentication by PSU, an ASPSP **may** issue new authorization code and subsequently new access token to the AISP.
 
 ### Changes to Selected Account(s)
 
