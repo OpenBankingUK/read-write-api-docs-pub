@@ -171,7 +171,7 @@
   - OBRemittanceInformation2/Structured/ReferredDocumentAmount
   - OBRegulatoryReporting1/Details/Amount/Amount
 - Corrected the dates shown in the Examples of Periodic Limits (Examples 2 and 3) [VRP Example 2](https://openbankinguk.github.io/spec-pages-preview/v4.0.1/resources-and-data-models/vrp/domestic-vrp-consents.html#example-2) and [VRP Example 3](https://openbankinguk.github.io/spec-pages-preview/v4.0.1/resources-and-data-models/vrp/domestic-vrp-consents.html#example-3)
-- [Parties - v4.0.1](https://openbankinguk.github.io/spec-pages-preview/v4.0.1/resources-and-data-models/aisp/Parties.html#data-dictionary-2):
+- Addressed various typos:
   - Added \ to the Pattern for Phone and Mobile in the [Data Dictionary](https://openbankinguk.github.io/spec-pages-preview/v4.0.1/resources-and-data-models/aisp/Parties.html#data-dictionary)
   - Added text to Overview re conditional Parties endpoints and fields, explaining what ASPSPs **must** do if they have implemented the /accounts/{AccountId}/parties'
     endpoint [Overview](https://openbankinguk.github.io/spec-pages-preview/v4.0.1/resources-and-data-models/aisp/Parties.html#overview)
