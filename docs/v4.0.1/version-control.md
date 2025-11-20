@@ -102,8 +102,8 @@
 - TPPs and ASPSPs __must__ now verify [payload signatures](https://openbankinguk.github.io/spec-pages-preview/v4.0.1/profiles/read-write-data-api-profile.html#specification) -
   previously this was _should_.
 - VRP instance of `OBCashAccountDebtorWithName/Name` max size has increased from 70 to 350 to align with other areas of
-  the spec and is no longer `mandatory`. The following classes have been updated to use `OBCashAccountDebtorWithName`
-  instead of `OBCashAccount6`:
+  the spec and is no longer `mandatory`.
+- The following classes have been updated to use `OBCashAccountDebtorWithName` instead of `OBCashAccount6`:
   - [OBReadTransaction6/Data/Transaction/DebtorAccount](https://openbankinguk.github.io/spec-pages-preview/v4.0.1/resources-and-data-models/aisp/Transactions.html#data-dictionary)
   - [OBFundsConfirmationConsent1/Data/DebtorAccount](https://openbankinguk.github.io/spec-pages-preview/v4.0.1/resources-and-data-models/cbpii/funds-confirmation-consent.html#data-dictionary-2)
   - [OBDomestic2/DebtorAccount](https://openbankinguk.github.io/spec-pages-preview/v4.0.1/resources-and-data-models/pisp/domestic-payment-consents.html#data-dictionary)
