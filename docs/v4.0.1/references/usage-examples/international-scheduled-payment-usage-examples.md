@@ -39,35 +39,260 @@ Accept: application/json
 
 ```json
 {
- "Data": {
-  "Initiation": {
-   "InstructionIdentification": "ACME412",
-   "EndToEndIdentification": "FRESCO.21302.GFX.20",
-   "InstructionPriority": "Normal",
-   "CurrencyOfTransfer": "USD",
-   "InstructedAmount": {
-    "Amount": "165.88",
-    "Currency": "GBP"
-   },
-   "CreditorAccount": {
-    "SchemeName": "UK.OBIE.SortCodeAccountNumber",
-    "Identification": "08080021325698",
-    "Name": "ACME Inc",
-    "SecondaryIdentification": "0002"
-   },
-   "RemittanceInformation": {
-    "Reference": "FRESCO-101",
-    "Unstructured": ["Internal ops code 5120101"]
-   },
-   "ExchangeRateInformation": {
-    "UnitCurrency": "GBP",
-    "RateType": "Actual"
-   }
+  "Data": {
+    "ReadRefundAccount": "No",
+    "Initiation": {
+      "InstructionIdentification": "string",
+      "EndToEndIdentification": "string",
+      "LocalInstrument": "string",
+      "InstructionPriority": "Normal",
+      "ExtendedPurpose": "string",
+      "ChargeBearer": "BorneByCreditor",
+      "CurrencyOfTransfer": "KTV",
+      "DestinationCountryCode": "IH",
+      "InstructedAmount": {
+        "Amount": "293",
+        "Currency": "ALE"
+      },
+      "ExchangeRateInformation": {
+        "UnitCurrency": "JTD",
+        "ExchangeRate": 0,
+        "RateType": "Actual",
+        "ContractIdentification": "string"
+      },
+      "DebtorAccount": {
+        "SchemeName": "string",
+        "Identification": "string",
+        "Name": "string",
+        "SecondaryIdentification": "string",
+        "Proxy": {
+          "Identification": "string",
+          "Code": "TELE",
+          "Type": "string"
+        }
+      },
+      "Creditor": {
+        "Name": "string",
+        "LEI": "IZ9Q00LZEVUKWCQY6X15",
+        "PostalAddress": {
+          "AddressType": "BIZZ",
+          "Department": "string",
+          "SubDepartment": "string",
+          "StreetName": "string",
+          "BuildingNumber": "string",
+          "BuildingName": "string",
+          "Floor": "string",
+          "UnitNumber": "string",
+          "Room": "string",
+          "PostBox": "string",
+          "TownLocationName": "string",
+          "DistrictName": "string",
+          "CareOf": "string",
+          "PostCode": "string",
+          "TownName": "string",
+          "CountrySubDivision": "string",
+          "Country": "MW",
+          "AddressLine": [
+            "string"
+          ]
+        }
+      },
+      "CreditorAgent": {
+        "SchemeName": "string",
+        "Identification": "string",
+        "Name": "string",
+        "LEI": "IZ9Q00LZEVUKWCQY6X15",
+        "PostalAddress": {
+          "AddressType": "BIZZ",
+          "Department": "string",
+          "SubDepartment": "string",
+          "StreetName": "string",
+          "BuildingNumber": "string",
+          "BuildingName": "string",
+          "Floor": "string",
+          "UnitNumber": "string",
+          "Room": "string",
+          "PostBox": "string",
+          "TownLocationName": "string",
+          "DistrictName": "string",
+          "CareOf": "string",
+          "PostCode": "string",
+          "TownName": "string",
+          "CountrySubDivision": "string",
+          "Country": "FE",
+          "AddressLine": [
+            "string"
+          ]
+        }
+      },
+      "CreditorAccount": {
+        "SchemeName": "string",
+        "Identification": "string",
+        "Name": "string",
+        "SecondaryIdentification": "string",
+        "Proxy": {
+          "Identification": "string",
+          "Code": "TELE",
+          "Type": "string"
+        }
+      },
+      "UltimateCreditor": {
+        "Name": "string",
+        "Identification": "string",
+        "LEI": "IZ9Q00LZEVUKWCQY6X15",
+        "SchemeName": "string",
+        "PostalAddress": {
+          "AddressType": "BIZZ",
+          "Department": "string",
+          "SubDepartment": "string",
+          "StreetName": "string",
+          "BuildingNumber": "string",
+          "BuildingName": "string",
+          "Floor": "string",
+          "UnitNumber": "string",
+          "Room": "string",
+          "PostBox": "string",
+          "TownLocationName": "string",
+          "DistrictName": "string",
+          "CareOf": "string",
+          "PostCode": "string",
+          "TownName": "string",
+          "CountrySubDivision": "string",
+          "Country": "PY",
+          "AddressLine": [
+            "string"
+          ]
+        }
+      },
+      "UltimateDebtor": {
+        "Name": "string",
+        "Identification": "string",
+        "LEI": "IZ9Q00LZEVUKWCQY6X15",
+        "SchemeName": "string",
+        "PostalAddress": {
+          "AddressType": "BIZZ",
+          "Department": "string",
+          "SubDepartment": "string",
+          "StreetName": "string",
+          "BuildingNumber": "string",
+          "BuildingName": "string",
+          "Floor": "string",
+          "UnitNumber": "string",
+          "Room": "string",
+          "PostBox": "string",
+          "TownLocationName": "string",
+          "DistrictName": "string",
+          "CareOf": "string",
+          "PostCode": "string",
+          "TownName": "string",
+          "CountrySubDivision": "string",
+          "Country": "XJ",
+          "AddressLine": [
+            "string"
+          ]
+        }
+      },
+      "RegulatoryReporting": [
+        {
+          "DebitCreditReportingIndicator": "CRED",
+          "Authority": {
+            "Name": "string",
+            "CountryCode": "HB"
+          },
+          "Details": [
+            {
+              "Type": "string",
+              "Date": "2025-11-21T16:45:02.550Z",
+              "Country": "NP",
+              "Amount": {
+                "Amount": "78030.03",
+                "Currency": "YUY"
+              },
+              "Information": [
+                "string"
+              ]
+            }
+          ]
+        }
+      ],
+      "RemittanceInformation": {
+        "Structured": [
+          {
+            "ReferredDocumentInformation": [
+              {
+                "Code": "CINV",
+                "Issuer": "string",
+                "Number": "string",
+                "RelatedDate": "2025-11-21T16:45:02.550Z",
+                "LineDetails": [
+                  "string"
+                ]
+              }
+            ],
+            "ReferredDocumentAmount": "67.34",
+            "CreditorReferenceInformation": {
+              "Code": "DISP",
+              "Issuer": "string",
+              "Reference": "string"
+            },
+            "Invoicer": "80200112344562",
+            "Invoicee": "80200112344562",
+            "TaxRemittance": "string",
+            "AdditionalRemittanceInformation": [
+              "string"
+            ]
+          }
+        ],
+        "Unstructured": [
+          "string"
+        ]
+      },
+      "SupplementaryData": {
+        "additionalProp1": {}
+      }
+    },
+    "Authorisation": {
+      "AuthorisationType": "Any",
+      "CompletionDateTime": "2025-11-21T16:45:02.550Z"
+    },
+    "SCASupportData": {
+      "RequestedSCAExemptionType": "BillPayment",
+      "AppliedAuthenticationApproach": "CA",
+      "ReferencePaymentOrderId": "string"
+    }
+  },
+  "Risk": {
+    "PaymentContextCode": "BillingGoodsAndServicesInAdvance",
+    "MerchantCategoryCode": "stri",
+    "MerchantCustomerIdentification": "string",
+    "ContractPresentIndicator": true,
+    "BeneficiaryPrepopulatedIndicator": true,
+    "PaymentPurposeCode": "BKDF",
+    "CategoryPurposeCode": "BONU",
+    "BeneficiaryAccountType": "Business",
+    "DeliveryAddress": {
+      "AddressType": "BIZZ",
+      "Department": "string",
+      "SubDepartment": "string",
+      "StreetName": "string",
+      "BuildingNumber": "string",
+      "BuildingName": "string",
+      "Floor": "string",
+      "UnitNumber": "string",
+      "Room": "string",
+      "PostBox": "string",
+      "TownLocationName": "string",
+      "DistrictName": "string",
+      "CareOf": "string",
+      "PostCode": "string",
+      "TownName": "string",
+      "CountrySubDivision": "string",
+      "Country": "GP",
+      "AddressLine": [
+        "string"
+      ]
+    }
   }
- },
- "Risk": {
-  "PaymentContextCode": "TransferToThirdParty"
- }
 }
 ```
 
@@ -82,50 +307,310 @@ Content-Type: application/json
 
 ```json
 {
- "Data": {
-  "ConsentId": "58923",
-  "Status": "AWAU",
-  "CutOffDateTime": "2017-06-05T16:00:13+00:00",
-  "CreationDateTime": "2017-06-05T15:15:13+00:00",
-  "StatusUpdateDateTime": "2017-06-05T15:15:13+00:00",
-  "Initiation": {
-   "InstructionIdentification": "ACME412",
-   "EndToEndIdentification": "FRESCO.21302.GFX.20",
-   "InstructionPriority": "Normal",
-   "CurrencyOfTransfer": "USD",
-   "InstructedAmount": {
-    "Amount": "165.88",
-    "Currency": "GBP"
-   },
-   "CreditorAccount": {
-    "SchemeName": "UK.OBIE.SortCodeAccountNumber",
-    "Identification": "08080021325698",
-    "Name": "ACME Inc",
-    "SecondaryIdentification": "0002"
-   },
-   "RemittanceInformation": {
-    "Reference": "FRESCO-101",
-    "Unstructured": ["Internal ops code 5120101"]
-   },
-   "ExchangeRateInformation": {
-    "UnitCurrency": "GBP",
-    "RateType": "Actual"
-   }
+  "Data": {
+    "ConsentId": "string",
+    "CreationDateTime": "2025-11-21T16:45:02.554Z",
+    "Status": "AWAU",
+    "StatusReason": [
+      {
+        "StatusReasonCode": "ERIN",
+        "StatusReasonDescription": "string",
+        "Path": "string"
+      }
+    ],
+    "StatusUpdateDateTime": "2025-11-21T16:45:02.554Z",
+    "ReadRefundAccount": "No",
+    "CutOffDateTime": "2025-11-21T16:45:02.554Z",
+    "ExpectedExecutionDateTime": "2025-11-21T16:45:02.554Z",
+    "ExpectedSettlementDateTime": "2025-11-21T16:45:02.554Z",
+    "Charges": [
+      {
+        "ChargeBearer": "BorneByCreditor",
+        "Type": "string",
+        "Amount": {
+          "Amount": "942860",
+          "Currency": "BLB"
+        }
+      }
+    ],
+    "ExchangeRateInformation": {
+      "UnitCurrency": "OAR",
+      "ExchangeRate": 0,
+      "RateType": "Actual",
+      "ContractIdentification": "string",
+      "ExpirationDateTime": "2025-11-21T16:45:02.554Z"
+    },
+    "Initiation": {
+      "InstructionIdentification": "string",
+      "EndToEndIdentification": "string",
+      "LocalInstrument": "string",
+      "InstructionPriority": "Normal",
+      "ExtendedPurpose": "string",
+      "ChargeBearer": "BorneByCreditor",
+      "CurrencyOfTransfer": "ZZW",
+      "DestinationCountryCode": "DF",
+      "InstructedAmount": {
+        "Amount": "672",
+        "Currency": "IOH"
+      },
+      "ExchangeRateInformation": {
+        "UnitCurrency": "HLV",
+        "ExchangeRate": 0,
+        "RateType": "Actual",
+        "ContractIdentification": "string"
+      },
+      "DebtorAccount": {
+        "SchemeName": "string",
+        "Identification": "string",
+        "Name": "string",
+        "SecondaryIdentification": "string",
+        "Proxy": {
+          "Identification": "string",
+          "Code": "TELE",
+          "Type": "string"
+        }
+      },
+      "Creditor": {
+        "Name": "string",
+        "LEI": "IZ9Q00LZEVUKWCQY6X15",
+        "PostalAddress": {
+          "AddressType": "BIZZ",
+          "Department": "string",
+          "SubDepartment": "string",
+          "StreetName": "string",
+          "BuildingNumber": "string",
+          "BuildingName": "string",
+          "Floor": "string",
+          "UnitNumber": "string",
+          "Room": "string",
+          "PostBox": "string",
+          "TownLocationName": "string",
+          "DistrictName": "string",
+          "CareOf": "string",
+          "PostCode": "string",
+          "TownName": "string",
+          "CountrySubDivision": "string",
+          "Country": "MN",
+          "AddressLine": [
+            "string"
+          ]
+        }
+      },
+      "CreditorAgent": {
+        "SchemeName": "string",
+        "Identification": "string",
+        "Name": "string",
+        "LEI": "IZ9Q00LZEVUKWCQY6X15",
+        "PostalAddress": {
+          "AddressType": "BIZZ",
+          "Department": "string",
+          "SubDepartment": "string",
+          "StreetName": "string",
+          "BuildingNumber": "string",
+          "BuildingName": "string",
+          "Floor": "string",
+          "UnitNumber": "string",
+          "Room": "string",
+          "PostBox": "string",
+          "TownLocationName": "string",
+          "DistrictName": "string",
+          "CareOf": "string",
+          "PostCode": "string",
+          "TownName": "string",
+          "CountrySubDivision": "string",
+          "Country": "WY",
+          "AddressLine": [
+            "string"
+          ]
+        }
+      },
+      "CreditorAccount": {
+        "SchemeName": "string",
+        "Identification": "string",
+        "Name": "string",
+        "SecondaryIdentification": "string",
+        "Proxy": {
+          "Identification": "string",
+          "Code": "TELE",
+          "Type": "string"
+        }
+      },
+      "UltimateCreditor": {
+        "Name": "string",
+        "Identification": "string",
+        "LEI": "IZ9Q00LZEVUKWCQY6X15",
+        "SchemeName": "string",
+        "PostalAddress": {
+          "AddressType": "BIZZ",
+          "Department": "string",
+          "SubDepartment": "string",
+          "StreetName": "string",
+          "BuildingNumber": "string",
+          "BuildingName": "string",
+          "Floor": "string",
+          "UnitNumber": "string",
+          "Room": "string",
+          "PostBox": "string",
+          "TownLocationName": "string",
+          "DistrictName": "string",
+          "CareOf": "string",
+          "PostCode": "string",
+          "TownName": "string",
+          "CountrySubDivision": "string",
+          "Country": "FA",
+          "AddressLine": [
+            "string"
+          ]
+        }
+      },
+      "UltimateDebtor": {
+        "Name": "string",
+        "Identification": "string",
+        "LEI": "IZ9Q00LZEVUKWCQY6X15",
+        "SchemeName": "string",
+        "PostalAddress": {
+          "AddressType": "BIZZ",
+          "Department": "string",
+          "SubDepartment": "string",
+          "StreetName": "string",
+          "BuildingNumber": "string",
+          "BuildingName": "string",
+          "Floor": "string",
+          "UnitNumber": "string",
+          "Room": "string",
+          "PostBox": "string",
+          "TownLocationName": "string",
+          "DistrictName": "string",
+          "CareOf": "string",
+          "PostCode": "string",
+          "TownName": "string",
+          "CountrySubDivision": "string",
+          "Country": "TA",
+          "AddressLine": [
+            "string"
+          ]
+        }
+      },
+      "RegulatoryReporting": [
+        {
+          "DebitCreditReportingIndicator": "CRED",
+          "Authority": {
+            "Name": "string",
+            "CountryCode": "KK"
+          },
+          "Details": [
+            {
+              "Type": "string",
+              "Date": "2025-11-21T16:45:02.554Z",
+              "Country": "OQ",
+              "Amount": {
+                "Amount": "9.74",
+                "Currency": "KJP"
+              },
+              "Information": [
+                "string"
+              ]
+            }
+          ]
+        }
+      ],
+      "RemittanceInformation": {
+        "Structured": [
+          {
+            "ReferredDocumentInformation": [
+              {
+                "Code": "CINV",
+                "Issuer": "string",
+                "Number": "string",
+                "RelatedDate": "2025-11-21T16:45:02.554Z",
+                "LineDetails": [
+                  "string"
+                ]
+              }
+            ],
+            "ReferredDocumentAmount": "4811793047509.8",
+            "CreditorReferenceInformation": {
+              "Code": "DISP",
+              "Issuer": "string",
+              "Reference": "string"
+            },
+            "Invoicer": "80200112344562",
+            "Invoicee": "80200112344562",
+            "TaxRemittance": "string",
+            "AdditionalRemittanceInformation": [
+              "string"
+            ]
+          }
+        ],
+        "Unstructured": [
+          "string"
+        ]
+      },
+      "SupplementaryData": {
+        "additionalProp1": {}
+      }
+    },
+    "Authorisation": {
+      "AuthorisationType": "Any",
+      "CompletionDateTime": "2025-11-21T16:45:02.554Z"
+    },
+    "SCASupportData": {
+      "RequestedSCAExemptionType": "BillPayment",
+      "AppliedAuthenticationApproach": "CA",
+      "ReferencePaymentOrderId": "string"
+    },
+    "Debtor": {
+      "SchemeName": "string",
+      "Identification": "string",
+      "Name": "string",
+      "SecondaryIdentification": "string",
+      "LEI": "IZ9Q00LZEVUKWCQY6X15"
+    }
   },
-  "ExchangeRateInformation": {
-   "UnitCurrency": "GBP",
-   "ExchangeRate": 1.1,
-   "RateType": "Actual",
-   "ExpirationDateTime": "2017-06-05T15:45:13+00:00"
+  "Risk": {
+    "PaymentContextCode": "BillingGoodsAndServicesInAdvance",
+    "MerchantCategoryCode": "stri",
+    "MerchantCustomerIdentification": "string",
+    "ContractPresentIndicator": true,
+    "BeneficiaryPrepopulatedIndicator": true,
+    "PaymentPurposeCode": "BKDF",
+    "CategoryPurposeCode": "BONU",
+    "BeneficiaryAccountType": "Business",
+    "DeliveryAddress": {
+      "AddressType": "BIZZ",
+      "Department": "string",
+      "SubDepartment": "string",
+      "StreetName": "string",
+      "BuildingNumber": "string",
+      "BuildingName": "string",
+      "Floor": "string",
+      "UnitNumber": "string",
+      "Room": "string",
+      "PostBox": "string",
+      "TownLocationName": "string",
+      "DistrictName": "string",
+      "CareOf": "string",
+      "PostCode": "string",
+      "TownName": "string",
+      "CountrySubDivision": "string",
+      "Country": "GT",
+      "AddressLine": [
+        "string"
+      ]
+    }
+  },
+  "Links": {
+    "Self": "string",
+    "First": "string",
+    "Prev": "string",
+    "Next": "string",
+    "Last": "string"
+  },
+  "Meta": {
+    "TotalPages": 0,
+    "FirstAvailableDateTime": "2025-11-21T16:45:02.554Z",
+    "LastAvailableDateTime": "2025-11-21T16:45:02.554Z"
   }
- },
- "Risk": {
-  "PaymentContextCode": "TransferToThirdParty"
- },
- "Links": {
-  "Self": "https://api.alphabank.com/open-banking/v4.0/pisp/international-payment-consents/58923"
- },
- "Meta": {}
 }
 ```
 
@@ -153,16 +638,27 @@ Content-Type: application/json
 
 ```json
 {
-	"Data": {
-		"FundsAvailableResult": {
-			"FundsAvailableDateTime": "2017-06-05T15:15:23+00:00",
-			"FundsAvailable": true
-		}
-	},
-	"Links": {
-		"Self": "https://api.alphabank.com/open-banking/v4.0/pisp/international-payment-consents/58923/funds-confirmation"
-	},
-	"Meta": {}
+  "Data": {
+    "FundsAvailableResult": {
+      "FundsAvailableDateTime": "2025-11-21T16:53:16.692Z",
+      "FundsAvailable": true
+    },
+    "SupplementaryData": {
+      "additionalProp1": {}
+    }
+  },
+  "Links": {
+    "Self": "string",
+    "First": "string",
+    "Prev": "string",
+    "Next": "string",
+    "Last": "string"
+  },
+  "Meta": {
+    "TotalPages": 0,
+    "FirstAvailableDateTime": "2025-11-21T16:53:16.692Z",
+    "LastAvailableDateTime": "2025-11-21T16:53:16.692Z"
+  }
 }
 ```
 
@@ -186,35 +682,260 @@ Accept: application/json
 
 ```json
 {
- "Data": {
-  "Initiation": {
-   "InstructionIdentification": "ACME412",
-   "EndToEndIdentification": "FRESCO.21302.GFX.20",
-   "InstructionPriority": "Normal",
-   "CurrencyOfTransfer": "USD",
-   "InstructedAmount": {
-    "Amount": "165.88",
-    "Currency": "GBP"
-   },
-   "CreditorAccount": {
-    "SchemeName": "UK.OBIE.SortCodeAccountNumber",
-    "Identification": "08080021325698",
-    "Name": "ACME Inc",
-    "SecondaryIdentification": "0002"
-   },
-   "RemittanceInformation": {
-    "Reference": "FRESCO-101",
-    "Unstructured": ["Internal ops code 5120101"]
-   },
-   "ExchangeRateInformation": {
-    "UnitCurrency": "GBP",
-    "RateType": "Indicative"
-   }
+  "Data": {
+    "ReadRefundAccount": "No",
+    "Initiation": {
+      "InstructionIdentification": "string",
+      "EndToEndIdentification": "string",
+      "LocalInstrument": "string",
+      "InstructionPriority": "Normal",
+      "ExtendedPurpose": "string",
+      "ChargeBearer": "BorneByCreditor",
+      "CurrencyOfTransfer": "KTV",
+      "DestinationCountryCode": "IH",
+      "InstructedAmount": {
+        "Amount": "293",
+        "Currency": "ALE"
+      },
+      "ExchangeRateInformation": {
+        "UnitCurrency": "JTD",
+        "ExchangeRate": 0,
+        "RateType": "Actual",
+        "ContractIdentification": "string"
+      },
+      "DebtorAccount": {
+        "SchemeName": "string",
+        "Identification": "string",
+        "Name": "string",
+        "SecondaryIdentification": "string",
+        "Proxy": {
+          "Identification": "string",
+          "Code": "TELE",
+          "Type": "string"
+        }
+      },
+      "Creditor": {
+        "Name": "string",
+        "LEI": "IZ9Q00LZEVUKWCQY6X15",
+        "PostalAddress": {
+          "AddressType": "BIZZ",
+          "Department": "string",
+          "SubDepartment": "string",
+          "StreetName": "string",
+          "BuildingNumber": "string",
+          "BuildingName": "string",
+          "Floor": "string",
+          "UnitNumber": "string",
+          "Room": "string",
+          "PostBox": "string",
+          "TownLocationName": "string",
+          "DistrictName": "string",
+          "CareOf": "string",
+          "PostCode": "string",
+          "TownName": "string",
+          "CountrySubDivision": "string",
+          "Country": "MW",
+          "AddressLine": [
+            "string"
+          ]
+        }
+      },
+      "CreditorAgent": {
+        "SchemeName": "string",
+        "Identification": "string",
+        "Name": "string",
+        "LEI": "IZ9Q00LZEVUKWCQY6X15",
+        "PostalAddress": {
+          "AddressType": "BIZZ",
+          "Department": "string",
+          "SubDepartment": "string",
+          "StreetName": "string",
+          "BuildingNumber": "string",
+          "BuildingName": "string",
+          "Floor": "string",
+          "UnitNumber": "string",
+          "Room": "string",
+          "PostBox": "string",
+          "TownLocationName": "string",
+          "DistrictName": "string",
+          "CareOf": "string",
+          "PostCode": "string",
+          "TownName": "string",
+          "CountrySubDivision": "string",
+          "Country": "FE",
+          "AddressLine": [
+            "string"
+          ]
+        }
+      },
+      "CreditorAccount": {
+        "SchemeName": "string",
+        "Identification": "string",
+        "Name": "string",
+        "SecondaryIdentification": "string",
+        "Proxy": {
+          "Identification": "string",
+          "Code": "TELE",
+          "Type": "string"
+        }
+      },
+      "UltimateCreditor": {
+        "Name": "string",
+        "Identification": "string",
+        "LEI": "IZ9Q00LZEVUKWCQY6X15",
+        "SchemeName": "string",
+        "PostalAddress": {
+          "AddressType": "BIZZ",
+          "Department": "string",
+          "SubDepartment": "string",
+          "StreetName": "string",
+          "BuildingNumber": "string",
+          "BuildingName": "string",
+          "Floor": "string",
+          "UnitNumber": "string",
+          "Room": "string",
+          "PostBox": "string",
+          "TownLocationName": "string",
+          "DistrictName": "string",
+          "CareOf": "string",
+          "PostCode": "string",
+          "TownName": "string",
+          "CountrySubDivision": "string",
+          "Country": "PY",
+          "AddressLine": [
+            "string"
+          ]
+        }
+      },
+      "UltimateDebtor": {
+        "Name": "string",
+        "Identification": "string",
+        "LEI": "IZ9Q00LZEVUKWCQY6X15",
+        "SchemeName": "string",
+        "PostalAddress": {
+          "AddressType": "BIZZ",
+          "Department": "string",
+          "SubDepartment": "string",
+          "StreetName": "string",
+          "BuildingNumber": "string",
+          "BuildingName": "string",
+          "Floor": "string",
+          "UnitNumber": "string",
+          "Room": "string",
+          "PostBox": "string",
+          "TownLocationName": "string",
+          "DistrictName": "string",
+          "CareOf": "string",
+          "PostCode": "string",
+          "TownName": "string",
+          "CountrySubDivision": "string",
+          "Country": "XJ",
+          "AddressLine": [
+            "string"
+          ]
+        }
+      },
+      "RegulatoryReporting": [
+        {
+          "DebitCreditReportingIndicator": "CRED",
+          "Authority": {
+            "Name": "string",
+            "CountryCode": "HB"
+          },
+          "Details": [
+            {
+              "Type": "string",
+              "Date": "2025-11-21T16:45:02.550Z",
+              "Country": "NP",
+              "Amount": {
+                "Amount": "78030.03",
+                "Currency": "YUY"
+              },
+              "Information": [
+                "string"
+              ]
+            }
+          ]
+        }
+      ],
+      "RemittanceInformation": {
+        "Structured": [
+          {
+            "ReferredDocumentInformation": [
+              {
+                "Code": "CINV",
+                "Issuer": "string",
+                "Number": "string",
+                "RelatedDate": "2025-11-21T16:45:02.550Z",
+                "LineDetails": [
+                  "string"
+                ]
+              }
+            ],
+            "ReferredDocumentAmount": "67.34",
+            "CreditorReferenceInformation": {
+              "Code": "DISP",
+              "Issuer": "string",
+              "Reference": "string"
+            },
+            "Invoicer": "80200112344562",
+            "Invoicee": "80200112344562",
+            "TaxRemittance": "string",
+            "AdditionalRemittanceInformation": [
+              "string"
+            ]
+          }
+        ],
+        "Unstructured": [
+          "string"
+        ]
+      },
+      "SupplementaryData": {
+        "additionalProp1": {}
+      }
+    },
+    "Authorisation": {
+      "AuthorisationType": "Any",
+      "CompletionDateTime": "2025-11-21T16:45:02.550Z"
+    },
+    "SCASupportData": {
+      "RequestedSCAExemptionType": "BillPayment",
+      "AppliedAuthenticationApproach": "CA",
+      "ReferencePaymentOrderId": "string"
+    }
+  },
+  "Risk": {
+    "PaymentContextCode": "BillingGoodsAndServicesInAdvance",
+    "MerchantCategoryCode": "stri",
+    "MerchantCustomerIdentification": "string",
+    "ContractPresentIndicator": true,
+    "BeneficiaryPrepopulatedIndicator": true,
+    "PaymentPurposeCode": "BKDF",
+    "CategoryPurposeCode": "BONU",
+    "BeneficiaryAccountType": "Business",
+    "DeliveryAddress": {
+      "AddressType": "BIZZ",
+      "Department": "string",
+      "SubDepartment": "string",
+      "StreetName": "string",
+      "BuildingNumber": "string",
+      "BuildingName": "string",
+      "Floor": "string",
+      "UnitNumber": "string",
+      "Room": "string",
+      "PostBox": "string",
+      "TownLocationName": "string",
+      "DistrictName": "string",
+      "CareOf": "string",
+      "PostCode": "string",
+      "TownName": "string",
+      "CountrySubDivision": "string",
+      "Country": "GP",
+      "AddressLine": [
+        "string"
+      ]
+    }
   }
- },
- "Risk": {
-  "PaymentContextCode": "TransferToThirdParty"
- }
 }
 ```
 
@@ -229,27 +950,310 @@ Content-Type: application/json
 
 ```json
 {
-	"Data": {
-		"ConsentId": "58923",
-		"Status": "AWAU",
-		"CutOffDateTime": "2017-06-05T16:00:13+00:00",
-		"CreationDateTime": "2017-06-05T15:15:13+00:00",
-		"StatusUpdateDateTime": "2017-06-05T15:15:13+00:00",
-		"Initiation": {},
-		"ExchangeRateInformation": {
-			"UnitCurrency": "GBP",
-			"ExchangeRate": 1.10,
-			"RateType": "Indicative"
-		},
-	},
-	"Risk": {
-		"PaymentContextCode": "TransferToThirdParty"
-
-	},
-	"Links": {
-		"Self": "https://api.alphabank.com/open-banking/v4.0/pisp/international-payment-consents/58923"
-	},
-	"Meta": {}
+  "Data": {
+    "ConsentId": "string",
+    "CreationDateTime": "2025-11-21T16:45:02.554Z",
+    "Status": "AWAU",
+    "StatusReason": [
+      {
+        "StatusReasonCode": "ERIN",
+        "StatusReasonDescription": "string",
+        "Path": "string"
+      }
+    ],
+    "StatusUpdateDateTime": "2025-11-21T16:45:02.554Z",
+    "ReadRefundAccount": "No",
+    "CutOffDateTime": "2025-11-21T16:45:02.554Z",
+    "ExpectedExecutionDateTime": "2025-11-21T16:45:02.554Z",
+    "ExpectedSettlementDateTime": "2025-11-21T16:45:02.554Z",
+    "Charges": [
+      {
+        "ChargeBearer": "BorneByCreditor",
+        "Type": "string",
+        "Amount": {
+          "Amount": "942860",
+          "Currency": "BLB"
+        }
+      }
+    ],
+    "ExchangeRateInformation": {
+      "UnitCurrency": "OAR",
+      "ExchangeRate": 0,
+      "RateType": "Actual",
+      "ContractIdentification": "string",
+      "ExpirationDateTime": "2025-11-21T16:45:02.554Z"
+    },
+    "Initiation": {
+      "InstructionIdentification": "string",
+      "EndToEndIdentification": "string",
+      "LocalInstrument": "string",
+      "InstructionPriority": "Normal",
+      "ExtendedPurpose": "string",
+      "ChargeBearer": "BorneByCreditor",
+      "CurrencyOfTransfer": "ZZW",
+      "DestinationCountryCode": "DF",
+      "InstructedAmount": {
+        "Amount": "672",
+        "Currency": "IOH"
+      },
+      "ExchangeRateInformation": {
+        "UnitCurrency": "HLV",
+        "ExchangeRate": 0,
+        "RateType": "Actual",
+        "ContractIdentification": "string"
+      },
+      "DebtorAccount": {
+        "SchemeName": "string",
+        "Identification": "string",
+        "Name": "string",
+        "SecondaryIdentification": "string",
+        "Proxy": {
+          "Identification": "string",
+          "Code": "TELE",
+          "Type": "string"
+        }
+      },
+      "Creditor": {
+        "Name": "string",
+        "LEI": "IZ9Q00LZEVUKWCQY6X15",
+        "PostalAddress": {
+          "AddressType": "BIZZ",
+          "Department": "string",
+          "SubDepartment": "string",
+          "StreetName": "string",
+          "BuildingNumber": "string",
+          "BuildingName": "string",
+          "Floor": "string",
+          "UnitNumber": "string",
+          "Room": "string",
+          "PostBox": "string",
+          "TownLocationName": "string",
+          "DistrictName": "string",
+          "CareOf": "string",
+          "PostCode": "string",
+          "TownName": "string",
+          "CountrySubDivision": "string",
+          "Country": "MN",
+          "AddressLine": [
+            "string"
+          ]
+        }
+      },
+      "CreditorAgent": {
+        "SchemeName": "string",
+        "Identification": "string",
+        "Name": "string",
+        "LEI": "IZ9Q00LZEVUKWCQY6X15",
+        "PostalAddress": {
+          "AddressType": "BIZZ",
+          "Department": "string",
+          "SubDepartment": "string",
+          "StreetName": "string",
+          "BuildingNumber": "string",
+          "BuildingName": "string",
+          "Floor": "string",
+          "UnitNumber": "string",
+          "Room": "string",
+          "PostBox": "string",
+          "TownLocationName": "string",
+          "DistrictName": "string",
+          "CareOf": "string",
+          "PostCode": "string",
+          "TownName": "string",
+          "CountrySubDivision": "string",
+          "Country": "WY",
+          "AddressLine": [
+            "string"
+          ]
+        }
+      },
+      "CreditorAccount": {
+        "SchemeName": "string",
+        "Identification": "string",
+        "Name": "string",
+        "SecondaryIdentification": "string",
+        "Proxy": {
+          "Identification": "string",
+          "Code": "TELE",
+          "Type": "string"
+        }
+      },
+      "UltimateCreditor": {
+        "Name": "string",
+        "Identification": "string",
+        "LEI": "IZ9Q00LZEVUKWCQY6X15",
+        "SchemeName": "string",
+        "PostalAddress": {
+          "AddressType": "BIZZ",
+          "Department": "string",
+          "SubDepartment": "string",
+          "StreetName": "string",
+          "BuildingNumber": "string",
+          "BuildingName": "string",
+          "Floor": "string",
+          "UnitNumber": "string",
+          "Room": "string",
+          "PostBox": "string",
+          "TownLocationName": "string",
+          "DistrictName": "string",
+          "CareOf": "string",
+          "PostCode": "string",
+          "TownName": "string",
+          "CountrySubDivision": "string",
+          "Country": "FA",
+          "AddressLine": [
+            "string"
+          ]
+        }
+      },
+      "UltimateDebtor": {
+        "Name": "string",
+        "Identification": "string",
+        "LEI": "IZ9Q00LZEVUKWCQY6X15",
+        "SchemeName": "string",
+        "PostalAddress": {
+          "AddressType": "BIZZ",
+          "Department": "string",
+          "SubDepartment": "string",
+          "StreetName": "string",
+          "BuildingNumber": "string",
+          "BuildingName": "string",
+          "Floor": "string",
+          "UnitNumber": "string",
+          "Room": "string",
+          "PostBox": "string",
+          "TownLocationName": "string",
+          "DistrictName": "string",
+          "CareOf": "string",
+          "PostCode": "string",
+          "TownName": "string",
+          "CountrySubDivision": "string",
+          "Country": "TA",
+          "AddressLine": [
+            "string"
+          ]
+        }
+      },
+      "RegulatoryReporting": [
+        {
+          "DebitCreditReportingIndicator": "CRED",
+          "Authority": {
+            "Name": "string",
+            "CountryCode": "KK"
+          },
+          "Details": [
+            {
+              "Type": "string",
+              "Date": "2025-11-21T16:45:02.554Z",
+              "Country": "OQ",
+              "Amount": {
+                "Amount": "9.74",
+                "Currency": "KJP"
+              },
+              "Information": [
+                "string"
+              ]
+            }
+          ]
+        }
+      ],
+      "RemittanceInformation": {
+        "Structured": [
+          {
+            "ReferredDocumentInformation": [
+              {
+                "Code": "CINV",
+                "Issuer": "string",
+                "Number": "string",
+                "RelatedDate": "2025-11-21T16:45:02.554Z",
+                "LineDetails": [
+                  "string"
+                ]
+              }
+            ],
+            "ReferredDocumentAmount": "4811793047509.8",
+            "CreditorReferenceInformation": {
+              "Code": "DISP",
+              "Issuer": "string",
+              "Reference": "string"
+            },
+            "Invoicer": "80200112344562",
+            "Invoicee": "80200112344562",
+            "TaxRemittance": "string",
+            "AdditionalRemittanceInformation": [
+              "string"
+            ]
+          }
+        ],
+        "Unstructured": [
+          "string"
+        ]
+      },
+      "SupplementaryData": {
+        "additionalProp1": {}
+      }
+    },
+    "Authorisation": {
+      "AuthorisationType": "Any",
+      "CompletionDateTime": "2025-11-21T16:45:02.554Z"
+    },
+    "SCASupportData": {
+      "RequestedSCAExemptionType": "BillPayment",
+      "AppliedAuthenticationApproach": "CA",
+      "ReferencePaymentOrderId": "string"
+    },
+    "Debtor": {
+      "SchemeName": "string",
+      "Identification": "string",
+      "Name": "string",
+      "SecondaryIdentification": "string",
+      "LEI": "IZ9Q00LZEVUKWCQY6X15"
+    }
+  },
+  "Risk": {
+    "PaymentContextCode": "BillingGoodsAndServicesInAdvance",
+    "MerchantCategoryCode": "stri",
+    "MerchantCustomerIdentification": "string",
+    "ContractPresentIndicator": true,
+    "BeneficiaryPrepopulatedIndicator": true,
+    "PaymentPurposeCode": "BKDF",
+    "CategoryPurposeCode": "BONU",
+    "BeneficiaryAccountType": "Business",
+    "DeliveryAddress": {
+      "AddressType": "BIZZ",
+      "Department": "string",
+      "SubDepartment": "string",
+      "StreetName": "string",
+      "BuildingNumber": "string",
+      "BuildingName": "string",
+      "Floor": "string",
+      "UnitNumber": "string",
+      "Room": "string",
+      "PostBox": "string",
+      "TownLocationName": "string",
+      "DistrictName": "string",
+      "CareOf": "string",
+      "PostCode": "string",
+      "TownName": "string",
+      "CountrySubDivision": "string",
+      "Country": "GT",
+      "AddressLine": [
+        "string"
+      ]
+    }
+  },
+  "Links": {
+    "Self": "string",
+    "First": "string",
+    "Prev": "string",
+    "Next": "string",
+    "Last": "string"
+  },
+  "Meta": {
+    "TotalPages": 0,
+    "FirstAvailableDateTime": "2025-11-21T16:45:02.554Z",
+    "LastAvailableDateTime": "2025-11-21T16:45:02.554Z"
+  }
 }
 ```
 
@@ -273,37 +1277,260 @@ Accept: application/json
 
 ```json
 {
- "Data": {
-  "Initiation": {
-   "InstructionIdentification": "ACME412",
-   "EndToEndIdentification": "FRESCO.21302.GFX.20",
-   "InstructionPriority": "Normal",
-   "CurrencyOfTransfer": "USD",
-   "InstructedAmount": {
-    "Amount": "165.88",
-    "Currency": "GBP"
-   },
-   "CreditorAccount": {
-    "SchemeName": "UK.OBIE.SortCodeAccountNumber",
-    "Identification": "08080021325698",
-    "Name": "ACME Inc",
-    "SecondaryIdentification": "0002"
-   },
-   "RemittanceInformation": {
-    "Reference": "FRESCO-101",
-    "Unstructured": ["Internal ops code 5120101"]
-   },
-   "ExchangeRateInformation": {
-    "UnitCurrency": "GBP",
-    "RateType": "Agreed",
-    "ExchangeRate": 1.09,
-    "ContractIdentification": "/tbill/2018/T102993"
-   }
+  "Data": {
+    "ReadRefundAccount": "No",
+    "Initiation": {
+      "InstructionIdentification": "string",
+      "EndToEndIdentification": "string",
+      "LocalInstrument": "string",
+      "InstructionPriority": "Normal",
+      "ExtendedPurpose": "string",
+      "ChargeBearer": "BorneByCreditor",
+      "CurrencyOfTransfer": "KTV",
+      "DestinationCountryCode": "IH",
+      "InstructedAmount": {
+        "Amount": "293",
+        "Currency": "ALE"
+      },
+      "ExchangeRateInformation": {
+        "UnitCurrency": "JTD",
+        "ExchangeRate": 0,
+        "RateType": "Actual",
+        "ContractIdentification": "string"
+      },
+      "DebtorAccount": {
+        "SchemeName": "string",
+        "Identification": "string",
+        "Name": "string",
+        "SecondaryIdentification": "string",
+        "Proxy": {
+          "Identification": "string",
+          "Code": "TELE",
+          "Type": "string"
+        }
+      },
+      "Creditor": {
+        "Name": "string",
+        "LEI": "IZ9Q00LZEVUKWCQY6X15",
+        "PostalAddress": {
+          "AddressType": "BIZZ",
+          "Department": "string",
+          "SubDepartment": "string",
+          "StreetName": "string",
+          "BuildingNumber": "string",
+          "BuildingName": "string",
+          "Floor": "string",
+          "UnitNumber": "string",
+          "Room": "string",
+          "PostBox": "string",
+          "TownLocationName": "string",
+          "DistrictName": "string",
+          "CareOf": "string",
+          "PostCode": "string",
+          "TownName": "string",
+          "CountrySubDivision": "string",
+          "Country": "MW",
+          "AddressLine": [
+            "string"
+          ]
+        }
+      },
+      "CreditorAgent": {
+        "SchemeName": "string",
+        "Identification": "string",
+        "Name": "string",
+        "LEI": "IZ9Q00LZEVUKWCQY6X15",
+        "PostalAddress": {
+          "AddressType": "BIZZ",
+          "Department": "string",
+          "SubDepartment": "string",
+          "StreetName": "string",
+          "BuildingNumber": "string",
+          "BuildingName": "string",
+          "Floor": "string",
+          "UnitNumber": "string",
+          "Room": "string",
+          "PostBox": "string",
+          "TownLocationName": "string",
+          "DistrictName": "string",
+          "CareOf": "string",
+          "PostCode": "string",
+          "TownName": "string",
+          "CountrySubDivision": "string",
+          "Country": "FE",
+          "AddressLine": [
+            "string"
+          ]
+        }
+      },
+      "CreditorAccount": {
+        "SchemeName": "string",
+        "Identification": "string",
+        "Name": "string",
+        "SecondaryIdentification": "string",
+        "Proxy": {
+          "Identification": "string",
+          "Code": "TELE",
+          "Type": "string"
+        }
+      },
+      "UltimateCreditor": {
+        "Name": "string",
+        "Identification": "string",
+        "LEI": "IZ9Q00LZEVUKWCQY6X15",
+        "SchemeName": "string",
+        "PostalAddress": {
+          "AddressType": "BIZZ",
+          "Department": "string",
+          "SubDepartment": "string",
+          "StreetName": "string",
+          "BuildingNumber": "string",
+          "BuildingName": "string",
+          "Floor": "string",
+          "UnitNumber": "string",
+          "Room": "string",
+          "PostBox": "string",
+          "TownLocationName": "string",
+          "DistrictName": "string",
+          "CareOf": "string",
+          "PostCode": "string",
+          "TownName": "string",
+          "CountrySubDivision": "string",
+          "Country": "PY",
+          "AddressLine": [
+            "string"
+          ]
+        }
+      },
+      "UltimateDebtor": {
+        "Name": "string",
+        "Identification": "string",
+        "LEI": "IZ9Q00LZEVUKWCQY6X15",
+        "SchemeName": "string",
+        "PostalAddress": {
+          "AddressType": "BIZZ",
+          "Department": "string",
+          "SubDepartment": "string",
+          "StreetName": "string",
+          "BuildingNumber": "string",
+          "BuildingName": "string",
+          "Floor": "string",
+          "UnitNumber": "string",
+          "Room": "string",
+          "PostBox": "string",
+          "TownLocationName": "string",
+          "DistrictName": "string",
+          "CareOf": "string",
+          "PostCode": "string",
+          "TownName": "string",
+          "CountrySubDivision": "string",
+          "Country": "XJ",
+          "AddressLine": [
+            "string"
+          ]
+        }
+      },
+      "RegulatoryReporting": [
+        {
+          "DebitCreditReportingIndicator": "CRED",
+          "Authority": {
+            "Name": "string",
+            "CountryCode": "HB"
+          },
+          "Details": [
+            {
+              "Type": "string",
+              "Date": "2025-11-21T16:45:02.550Z",
+              "Country": "NP",
+              "Amount": {
+                "Amount": "78030.03",
+                "Currency": "YUY"
+              },
+              "Information": [
+                "string"
+              ]
+            }
+          ]
+        }
+      ],
+      "RemittanceInformation": {
+        "Structured": [
+          {
+            "ReferredDocumentInformation": [
+              {
+                "Code": "CINV",
+                "Issuer": "string",
+                "Number": "string",
+                "RelatedDate": "2025-11-21T16:45:02.550Z",
+                "LineDetails": [
+                  "string"
+                ]
+              }
+            ],
+            "ReferredDocumentAmount": "67.34",
+            "CreditorReferenceInformation": {
+              "Code": "DISP",
+              "Issuer": "string",
+              "Reference": "string"
+            },
+            "Invoicer": "80200112344562",
+            "Invoicee": "80200112344562",
+            "TaxRemittance": "string",
+            "AdditionalRemittanceInformation": [
+              "string"
+            ]
+          }
+        ],
+        "Unstructured": [
+          "string"
+        ]
+      },
+      "SupplementaryData": {
+        "additionalProp1": {}
+      }
+    },
+    "Authorisation": {
+      "AuthorisationType": "Any",
+      "CompletionDateTime": "2025-11-21T16:45:02.550Z"
+    },
+    "SCASupportData": {
+      "RequestedSCAExemptionType": "BillPayment",
+      "AppliedAuthenticationApproach": "CA",
+      "ReferencePaymentOrderId": "string"
+    }
+  },
+  "Risk": {
+    "PaymentContextCode": "BillingGoodsAndServicesInAdvance",
+    "MerchantCategoryCode": "stri",
+    "MerchantCustomerIdentification": "string",
+    "ContractPresentIndicator": true,
+    "BeneficiaryPrepopulatedIndicator": true,
+    "PaymentPurposeCode": "BKDF",
+    "CategoryPurposeCode": "BONU",
+    "BeneficiaryAccountType": "Business",
+    "DeliveryAddress": {
+      "AddressType": "BIZZ",
+      "Department": "string",
+      "SubDepartment": "string",
+      "StreetName": "string",
+      "BuildingNumber": "string",
+      "BuildingName": "string",
+      "Floor": "string",
+      "UnitNumber": "string",
+      "Room": "string",
+      "PostBox": "string",
+      "TownLocationName": "string",
+      "DistrictName": "string",
+      "CareOf": "string",
+      "PostCode": "string",
+      "TownName": "string",
+      "CountrySubDivision": "string",
+      "Country": "GP",
+      "AddressLine": [
+        "string"
+      ]
+    }
   }
- },
- "Risk": {
-  "PaymentContextCode": "TransferToThirdParty"
- }
 }
 ```
 
@@ -318,28 +1545,310 @@ Content-Type: application/json
 
 ```json
 {
-	"Data": {
-		"ConsentId": "58923",
-		"Status": "AWAU",
-		"CutOffDateTime": "2017-06-05T16:00:13+00:00",
-		"CreationDateTime": "2017-06-05T15:15:13+00:00",
-		"StatusUpdateDateTime": "2017-06-05T15:15:13+00:00",
-		"Initiation": {},
-		"ExchangeRateInformation": {
-			"UnitCurrency": "GBP",
-	 		"RateType": "Agreed",
-			"ExchangeRate": 1.09,
-			"ContractIdentification": "/tbill/2018/T102993"
-	 	}
-	},
-	"Risk": {
-		"PaymentContextCode": "TransferToThirdParty"
-
-	},
-	"Links": {
-		"Self": "https://api.alphabank.com/open-banking/v4.0/pisp/international-payment-consents/58923"
-	},
-	"Meta": {}
+  "Data": {
+    "ConsentId": "string",
+    "CreationDateTime": "2025-11-21T16:45:02.554Z",
+    "Status": "AWAU",
+    "StatusReason": [
+      {
+        "StatusReasonCode": "ERIN",
+        "StatusReasonDescription": "string",
+        "Path": "string"
+      }
+    ],
+    "StatusUpdateDateTime": "2025-11-21T16:45:02.554Z",
+    "ReadRefundAccount": "No",
+    "CutOffDateTime": "2025-11-21T16:45:02.554Z",
+    "ExpectedExecutionDateTime": "2025-11-21T16:45:02.554Z",
+    "ExpectedSettlementDateTime": "2025-11-21T16:45:02.554Z",
+    "Charges": [
+      {
+        "ChargeBearer": "BorneByCreditor",
+        "Type": "string",
+        "Amount": {
+          "Amount": "942860",
+          "Currency": "BLB"
+        }
+      }
+    ],
+    "ExchangeRateInformation": {
+      "UnitCurrency": "OAR",
+      "ExchangeRate": 0,
+      "RateType": "Actual",
+      "ContractIdentification": "string",
+      "ExpirationDateTime": "2025-11-21T16:45:02.554Z"
+    },
+    "Initiation": {
+      "InstructionIdentification": "string",
+      "EndToEndIdentification": "string",
+      "LocalInstrument": "string",
+      "InstructionPriority": "Normal",
+      "ExtendedPurpose": "string",
+      "ChargeBearer": "BorneByCreditor",
+      "CurrencyOfTransfer": "ZZW",
+      "DestinationCountryCode": "DF",
+      "InstructedAmount": {
+        "Amount": "672",
+        "Currency": "IOH"
+      },
+      "ExchangeRateInformation": {
+        "UnitCurrency": "HLV",
+        "ExchangeRate": 0,
+        "RateType": "Actual",
+        "ContractIdentification": "string"
+      },
+      "DebtorAccount": {
+        "SchemeName": "string",
+        "Identification": "string",
+        "Name": "string",
+        "SecondaryIdentification": "string",
+        "Proxy": {
+          "Identification": "string",
+          "Code": "TELE",
+          "Type": "string"
+        }
+      },
+      "Creditor": {
+        "Name": "string",
+        "LEI": "IZ9Q00LZEVUKWCQY6X15",
+        "PostalAddress": {
+          "AddressType": "BIZZ",
+          "Department": "string",
+          "SubDepartment": "string",
+          "StreetName": "string",
+          "BuildingNumber": "string",
+          "BuildingName": "string",
+          "Floor": "string",
+          "UnitNumber": "string",
+          "Room": "string",
+          "PostBox": "string",
+          "TownLocationName": "string",
+          "DistrictName": "string",
+          "CareOf": "string",
+          "PostCode": "string",
+          "TownName": "string",
+          "CountrySubDivision": "string",
+          "Country": "MN",
+          "AddressLine": [
+            "string"
+          ]
+        }
+      },
+      "CreditorAgent": {
+        "SchemeName": "string",
+        "Identification": "string",
+        "Name": "string",
+        "LEI": "IZ9Q00LZEVUKWCQY6X15",
+        "PostalAddress": {
+          "AddressType": "BIZZ",
+          "Department": "string",
+          "SubDepartment": "string",
+          "StreetName": "string",
+          "BuildingNumber": "string",
+          "BuildingName": "string",
+          "Floor": "string",
+          "UnitNumber": "string",
+          "Room": "string",
+          "PostBox": "string",
+          "TownLocationName": "string",
+          "DistrictName": "string",
+          "CareOf": "string",
+          "PostCode": "string",
+          "TownName": "string",
+          "CountrySubDivision": "string",
+          "Country": "WY",
+          "AddressLine": [
+            "string"
+          ]
+        }
+      },
+      "CreditorAccount": {
+        "SchemeName": "string",
+        "Identification": "string",
+        "Name": "string",
+        "SecondaryIdentification": "string",
+        "Proxy": {
+          "Identification": "string",
+          "Code": "TELE",
+          "Type": "string"
+        }
+      },
+      "UltimateCreditor": {
+        "Name": "string",
+        "Identification": "string",
+        "LEI": "IZ9Q00LZEVUKWCQY6X15",
+        "SchemeName": "string",
+        "PostalAddress": {
+          "AddressType": "BIZZ",
+          "Department": "string",
+          "SubDepartment": "string",
+          "StreetName": "string",
+          "BuildingNumber": "string",
+          "BuildingName": "string",
+          "Floor": "string",
+          "UnitNumber": "string",
+          "Room": "string",
+          "PostBox": "string",
+          "TownLocationName": "string",
+          "DistrictName": "string",
+          "CareOf": "string",
+          "PostCode": "string",
+          "TownName": "string",
+          "CountrySubDivision": "string",
+          "Country": "FA",
+          "AddressLine": [
+            "string"
+          ]
+        }
+      },
+      "UltimateDebtor": {
+        "Name": "string",
+        "Identification": "string",
+        "LEI": "IZ9Q00LZEVUKWCQY6X15",
+        "SchemeName": "string",
+        "PostalAddress": {
+          "AddressType": "BIZZ",
+          "Department": "string",
+          "SubDepartment": "string",
+          "StreetName": "string",
+          "BuildingNumber": "string",
+          "BuildingName": "string",
+          "Floor": "string",
+          "UnitNumber": "string",
+          "Room": "string",
+          "PostBox": "string",
+          "TownLocationName": "string",
+          "DistrictName": "string",
+          "CareOf": "string",
+          "PostCode": "string",
+          "TownName": "string",
+          "CountrySubDivision": "string",
+          "Country": "TA",
+          "AddressLine": [
+            "string"
+          ]
+        }
+      },
+      "RegulatoryReporting": [
+        {
+          "DebitCreditReportingIndicator": "CRED",
+          "Authority": {
+            "Name": "string",
+            "CountryCode": "KK"
+          },
+          "Details": [
+            {
+              "Type": "string",
+              "Date": "2025-11-21T16:45:02.554Z",
+              "Country": "OQ",
+              "Amount": {
+                "Amount": "9.74",
+                "Currency": "KJP"
+              },
+              "Information": [
+                "string"
+              ]
+            }
+          ]
+        }
+      ],
+      "RemittanceInformation": {
+        "Structured": [
+          {
+            "ReferredDocumentInformation": [
+              {
+                "Code": "CINV",
+                "Issuer": "string",
+                "Number": "string",
+                "RelatedDate": "2025-11-21T16:45:02.554Z",
+                "LineDetails": [
+                  "string"
+                ]
+              }
+            ],
+            "ReferredDocumentAmount": "4811793047509.8",
+            "CreditorReferenceInformation": {
+              "Code": "DISP",
+              "Issuer": "string",
+              "Reference": "string"
+            },
+            "Invoicer": "80200112344562",
+            "Invoicee": "80200112344562",
+            "TaxRemittance": "string",
+            "AdditionalRemittanceInformation": [
+              "string"
+            ]
+          }
+        ],
+        "Unstructured": [
+          "string"
+        ]
+      },
+      "SupplementaryData": {
+        "additionalProp1": {}
+      }
+    },
+    "Authorisation": {
+      "AuthorisationType": "Any",
+      "CompletionDateTime": "2025-11-21T16:45:02.554Z"
+    },
+    "SCASupportData": {
+      "RequestedSCAExemptionType": "BillPayment",
+      "AppliedAuthenticationApproach": "CA",
+      "ReferencePaymentOrderId": "string"
+    },
+    "Debtor": {
+      "SchemeName": "string",
+      "Identification": "string",
+      "Name": "string",
+      "SecondaryIdentification": "string",
+      "LEI": "IZ9Q00LZEVUKWCQY6X15"
+    }
+  },
+  "Risk": {
+    "PaymentContextCode": "BillingGoodsAndServicesInAdvance",
+    "MerchantCategoryCode": "stri",
+    "MerchantCustomerIdentification": "string",
+    "ContractPresentIndicator": true,
+    "BeneficiaryPrepopulatedIndicator": true,
+    "PaymentPurposeCode": "BKDF",
+    "CategoryPurposeCode": "BONU",
+    "BeneficiaryAccountType": "Business",
+    "DeliveryAddress": {
+      "AddressType": "BIZZ",
+      "Department": "string",
+      "SubDepartment": "string",
+      "StreetName": "string",
+      "BuildingNumber": "string",
+      "BuildingName": "string",
+      "Floor": "string",
+      "UnitNumber": "string",
+      "Room": "string",
+      "PostBox": "string",
+      "TownLocationName": "string",
+      "DistrictName": "string",
+      "CareOf": "string",
+      "PostCode": "string",
+      "TownName": "string",
+      "CountrySubDivision": "string",
+      "Country": "GT",
+      "AddressLine": [
+        "string"
+      ]
+    }
+  },
+  "Links": {
+    "Self": "string",
+    "First": "string",
+    "Prev": "string",
+    "Next": "string",
+    "Last": "string"
+  },
+  "Meta": {
+    "TotalPages": 0,
+    "FirstAvailableDateTime": "2025-11-21T16:45:02.554Z",
+    "LastAvailableDateTime": "2025-11-21T16:45:02.554Z"
+  }
 }
 ```
 
@@ -365,34 +1874,260 @@ Accept: application/json
 
 ```json
 {
- "Data": {
-  "Initiation": {
-   "InstructionIdentification": "ACME412",
-   "EndToEndIdentification": "FRESCO.21302.GFX.20",
-   "InstructedAmount": {
-    "Amount": "165.88",
-    "Currency": "USD"
-   },
-   "CurrencyOfTransfer": "USD",
-   "CreditorAccount": {
-    "SchemeName": "UK.OBIE.SortCodeAccountNumber",
-    "Identification": "08080021325698",
-    "Name": "ACME Inc",
-    "SecondaryIdentification": "0002"
-   },
-   "RemittanceInformation": {
-    "Reference": "FRESCO-101",
-    "Unstructured": ["Internal ops code 5120101"]
-   },
-   "ExchangeRateInformation": {
-    "UnitCurrency": "GBP",
-    "RateType": "Actual"
-   }
+  "Data": {
+    "ReadRefundAccount": "No",
+    "Initiation": {
+      "InstructionIdentification": "string",
+      "EndToEndIdentification": "string",
+      "LocalInstrument": "string",
+      "InstructionPriority": "Normal",
+      "ExtendedPurpose": "string",
+      "ChargeBearer": "BorneByCreditor",
+      "CurrencyOfTransfer": "KTV",
+      "DestinationCountryCode": "IH",
+      "InstructedAmount": {
+        "Amount": "293",
+        "Currency": "ALE"
+      },
+      "ExchangeRateInformation": {
+        "UnitCurrency": "JTD",
+        "ExchangeRate": 0,
+        "RateType": "Actual",
+        "ContractIdentification": "string"
+      },
+      "DebtorAccount": {
+        "SchemeName": "string",
+        "Identification": "string",
+        "Name": "string",
+        "SecondaryIdentification": "string",
+        "Proxy": {
+          "Identification": "string",
+          "Code": "TELE",
+          "Type": "string"
+        }
+      },
+      "Creditor": {
+        "Name": "string",
+        "LEI": "IZ9Q00LZEVUKWCQY6X15",
+        "PostalAddress": {
+          "AddressType": "BIZZ",
+          "Department": "string",
+          "SubDepartment": "string",
+          "StreetName": "string",
+          "BuildingNumber": "string",
+          "BuildingName": "string",
+          "Floor": "string",
+          "UnitNumber": "string",
+          "Room": "string",
+          "PostBox": "string",
+          "TownLocationName": "string",
+          "DistrictName": "string",
+          "CareOf": "string",
+          "PostCode": "string",
+          "TownName": "string",
+          "CountrySubDivision": "string",
+          "Country": "MW",
+          "AddressLine": [
+            "string"
+          ]
+        }
+      },
+      "CreditorAgent": {
+        "SchemeName": "string",
+        "Identification": "string",
+        "Name": "string",
+        "LEI": "IZ9Q00LZEVUKWCQY6X15",
+        "PostalAddress": {
+          "AddressType": "BIZZ",
+          "Department": "string",
+          "SubDepartment": "string",
+          "StreetName": "string",
+          "BuildingNumber": "string",
+          "BuildingName": "string",
+          "Floor": "string",
+          "UnitNumber": "string",
+          "Room": "string",
+          "PostBox": "string",
+          "TownLocationName": "string",
+          "DistrictName": "string",
+          "CareOf": "string",
+          "PostCode": "string",
+          "TownName": "string",
+          "CountrySubDivision": "string",
+          "Country": "FE",
+          "AddressLine": [
+            "string"
+          ]
+        }
+      },
+      "CreditorAccount": {
+        "SchemeName": "string",
+        "Identification": "string",
+        "Name": "string",
+        "SecondaryIdentification": "string",
+        "Proxy": {
+          "Identification": "string",
+          "Code": "TELE",
+          "Type": "string"
+        }
+      },
+      "UltimateCreditor": {
+        "Name": "string",
+        "Identification": "string",
+        "LEI": "IZ9Q00LZEVUKWCQY6X15",
+        "SchemeName": "string",
+        "PostalAddress": {
+          "AddressType": "BIZZ",
+          "Department": "string",
+          "SubDepartment": "string",
+          "StreetName": "string",
+          "BuildingNumber": "string",
+          "BuildingName": "string",
+          "Floor": "string",
+          "UnitNumber": "string",
+          "Room": "string",
+          "PostBox": "string",
+          "TownLocationName": "string",
+          "DistrictName": "string",
+          "CareOf": "string",
+          "PostCode": "string",
+          "TownName": "string",
+          "CountrySubDivision": "string",
+          "Country": "PY",
+          "AddressLine": [
+            "string"
+          ]
+        }
+      },
+      "UltimateDebtor": {
+        "Name": "string",
+        "Identification": "string",
+        "LEI": "IZ9Q00LZEVUKWCQY6X15",
+        "SchemeName": "string",
+        "PostalAddress": {
+          "AddressType": "BIZZ",
+          "Department": "string",
+          "SubDepartment": "string",
+          "StreetName": "string",
+          "BuildingNumber": "string",
+          "BuildingName": "string",
+          "Floor": "string",
+          "UnitNumber": "string",
+          "Room": "string",
+          "PostBox": "string",
+          "TownLocationName": "string",
+          "DistrictName": "string",
+          "CareOf": "string",
+          "PostCode": "string",
+          "TownName": "string",
+          "CountrySubDivision": "string",
+          "Country": "XJ",
+          "AddressLine": [
+            "string"
+          ]
+        }
+      },
+      "RegulatoryReporting": [
+        {
+          "DebitCreditReportingIndicator": "CRED",
+          "Authority": {
+            "Name": "string",
+            "CountryCode": "HB"
+          },
+          "Details": [
+            {
+              "Type": "string",
+              "Date": "2025-11-21T16:45:02.550Z",
+              "Country": "NP",
+              "Amount": {
+                "Amount": "78030.03",
+                "Currency": "YUY"
+              },
+              "Information": [
+                "string"
+              ]
+            }
+          ]
+        }
+      ],
+      "RemittanceInformation": {
+        "Structured": [
+          {
+            "ReferredDocumentInformation": [
+              {
+                "Code": "CINV",
+                "Issuer": "string",
+                "Number": "string",
+                "RelatedDate": "2025-11-21T16:45:02.550Z",
+                "LineDetails": [
+                  "string"
+                ]
+              }
+            ],
+            "ReferredDocumentAmount": "67.34",
+            "CreditorReferenceInformation": {
+              "Code": "DISP",
+              "Issuer": "string",
+              "Reference": "string"
+            },
+            "Invoicer": "80200112344562",
+            "Invoicee": "80200112344562",
+            "TaxRemittance": "string",
+            "AdditionalRemittanceInformation": [
+              "string"
+            ]
+          }
+        ],
+        "Unstructured": [
+          "string"
+        ]
+      },
+      "SupplementaryData": {
+        "additionalProp1": {}
+      }
+    },
+    "Authorisation": {
+      "AuthorisationType": "Any",
+      "CompletionDateTime": "2025-11-21T16:45:02.550Z"
+    },
+    "SCASupportData": {
+      "RequestedSCAExemptionType": "BillPayment",
+      "AppliedAuthenticationApproach": "CA",
+      "ReferencePaymentOrderId": "string"
+    }
+  },
+  "Risk": {
+    "PaymentContextCode": "BillingGoodsAndServicesInAdvance",
+    "MerchantCategoryCode": "stri",
+    "MerchantCustomerIdentification": "string",
+    "ContractPresentIndicator": true,
+    "BeneficiaryPrepopulatedIndicator": true,
+    "PaymentPurposeCode": "BKDF",
+    "CategoryPurposeCode": "BONU",
+    "BeneficiaryAccountType": "Business",
+    "DeliveryAddress": {
+      "AddressType": "BIZZ",
+      "Department": "string",
+      "SubDepartment": "string",
+      "StreetName": "string",
+      "BuildingNumber": "string",
+      "BuildingName": "string",
+      "Floor": "string",
+      "UnitNumber": "string",
+      "Room": "string",
+      "PostBox": "string",
+      "TownLocationName": "string",
+      "DistrictName": "string",
+      "CareOf": "string",
+      "PostCode": "string",
+      "TownName": "string",
+      "CountrySubDivision": "string",
+      "Country": "GP",
+      "AddressLine": [
+        "string"
+      ]
+    }
   }
- },
- "Risk": {
-  "PaymentContextCode": "TransferToThirdParty"
- }
 }
 ```
 
@@ -407,40 +2142,310 @@ Content-Type: application/json
 
 ```json
 {
- "Data": {
-  "ConsentId": "58923",
-  "Status": "AWAU",
-  "CutOffDateTime": "2017-06-05T16:00:13+00:00",
-  "CreationDateTime": "2017-06-05T15:15:13+00:00",
-  "StatusUpdateDateTime": "2017-06-05T15:15:13+00:00",
-  "Initiation": {
-   "InstructionIdentification": "ACME412",
-   "EndToEndIdentification": "FRESCO.21302.GFX.20",
-   "InstructionPriority": "Normal",
-   "CurrencyOfTransfer": "USD",
-   "InstructedAmount": {
-    "Amount": "165.88",
-    "Currency": "GBP"
-   },
-   "CreditorAccount": {
-    "SchemeName": "UK.OBIE.SortCodeAccountNumber",
-    "Identification": "08080021325698",
-    "Name": "ACME Inc",
-    "SecondaryIdentification": "0002"
-   },
-   "RemittanceInformation": {
-    "Reference": "FRESCO-101",
-    "Unstructured": ["Internal ops code 5120101"]
-   },
-   "ExchangeRateInformation": {
-    "UnitCurrency": "GBP",
-    "RateType": "Actual"
-   }
+  "Data": {
+    "ConsentId": "string",
+    "CreationDateTime": "2025-11-21T16:45:02.554Z",
+    "Status": "AWAU",
+    "StatusReason": [
+      {
+        "StatusReasonCode": "ERIN",
+        "StatusReasonDescription": "string",
+        "Path": "string"
+      }
+    ],
+    "StatusUpdateDateTime": "2025-11-21T16:45:02.554Z",
+    "ReadRefundAccount": "No",
+    "CutOffDateTime": "2025-11-21T16:45:02.554Z",
+    "ExpectedExecutionDateTime": "2025-11-21T16:45:02.554Z",
+    "ExpectedSettlementDateTime": "2025-11-21T16:45:02.554Z",
+    "Charges": [
+      {
+        "ChargeBearer": "BorneByCreditor",
+        "Type": "string",
+        "Amount": {
+          "Amount": "942860",
+          "Currency": "BLB"
+        }
+      }
+    ],
+    "ExchangeRateInformation": {
+      "UnitCurrency": "OAR",
+      "ExchangeRate": 0,
+      "RateType": "Actual",
+      "ContractIdentification": "string",
+      "ExpirationDateTime": "2025-11-21T16:45:02.554Z"
+    },
+    "Initiation": {
+      "InstructionIdentification": "string",
+      "EndToEndIdentification": "string",
+      "LocalInstrument": "string",
+      "InstructionPriority": "Normal",
+      "ExtendedPurpose": "string",
+      "ChargeBearer": "BorneByCreditor",
+      "CurrencyOfTransfer": "ZZW",
+      "DestinationCountryCode": "DF",
+      "InstructedAmount": {
+        "Amount": "672",
+        "Currency": "IOH"
+      },
+      "ExchangeRateInformation": {
+        "UnitCurrency": "HLV",
+        "ExchangeRate": 0,
+        "RateType": "Actual",
+        "ContractIdentification": "string"
+      },
+      "DebtorAccount": {
+        "SchemeName": "string",
+        "Identification": "string",
+        "Name": "string",
+        "SecondaryIdentification": "string",
+        "Proxy": {
+          "Identification": "string",
+          "Code": "TELE",
+          "Type": "string"
+        }
+      },
+      "Creditor": {
+        "Name": "string",
+        "LEI": "IZ9Q00LZEVUKWCQY6X15",
+        "PostalAddress": {
+          "AddressType": "BIZZ",
+          "Department": "string",
+          "SubDepartment": "string",
+          "StreetName": "string",
+          "BuildingNumber": "string",
+          "BuildingName": "string",
+          "Floor": "string",
+          "UnitNumber": "string",
+          "Room": "string",
+          "PostBox": "string",
+          "TownLocationName": "string",
+          "DistrictName": "string",
+          "CareOf": "string",
+          "PostCode": "string",
+          "TownName": "string",
+          "CountrySubDivision": "string",
+          "Country": "MN",
+          "AddressLine": [
+            "string"
+          ]
+        }
+      },
+      "CreditorAgent": {
+        "SchemeName": "string",
+        "Identification": "string",
+        "Name": "string",
+        "LEI": "IZ9Q00LZEVUKWCQY6X15",
+        "PostalAddress": {
+          "AddressType": "BIZZ",
+          "Department": "string",
+          "SubDepartment": "string",
+          "StreetName": "string",
+          "BuildingNumber": "string",
+          "BuildingName": "string",
+          "Floor": "string",
+          "UnitNumber": "string",
+          "Room": "string",
+          "PostBox": "string",
+          "TownLocationName": "string",
+          "DistrictName": "string",
+          "CareOf": "string",
+          "PostCode": "string",
+          "TownName": "string",
+          "CountrySubDivision": "string",
+          "Country": "WY",
+          "AddressLine": [
+            "string"
+          ]
+        }
+      },
+      "CreditorAccount": {
+        "SchemeName": "string",
+        "Identification": "string",
+        "Name": "string",
+        "SecondaryIdentification": "string",
+        "Proxy": {
+          "Identification": "string",
+          "Code": "TELE",
+          "Type": "string"
+        }
+      },
+      "UltimateCreditor": {
+        "Name": "string",
+        "Identification": "string",
+        "LEI": "IZ9Q00LZEVUKWCQY6X15",
+        "SchemeName": "string",
+        "PostalAddress": {
+          "AddressType": "BIZZ",
+          "Department": "string",
+          "SubDepartment": "string",
+          "StreetName": "string",
+          "BuildingNumber": "string",
+          "BuildingName": "string",
+          "Floor": "string",
+          "UnitNumber": "string",
+          "Room": "string",
+          "PostBox": "string",
+          "TownLocationName": "string",
+          "DistrictName": "string",
+          "CareOf": "string",
+          "PostCode": "string",
+          "TownName": "string",
+          "CountrySubDivision": "string",
+          "Country": "FA",
+          "AddressLine": [
+            "string"
+          ]
+        }
+      },
+      "UltimateDebtor": {
+        "Name": "string",
+        "Identification": "string",
+        "LEI": "IZ9Q00LZEVUKWCQY6X15",
+        "SchemeName": "string",
+        "PostalAddress": {
+          "AddressType": "BIZZ",
+          "Department": "string",
+          "SubDepartment": "string",
+          "StreetName": "string",
+          "BuildingNumber": "string",
+          "BuildingName": "string",
+          "Floor": "string",
+          "UnitNumber": "string",
+          "Room": "string",
+          "PostBox": "string",
+          "TownLocationName": "string",
+          "DistrictName": "string",
+          "CareOf": "string",
+          "PostCode": "string",
+          "TownName": "string",
+          "CountrySubDivision": "string",
+          "Country": "TA",
+          "AddressLine": [
+            "string"
+          ]
+        }
+      },
+      "RegulatoryReporting": [
+        {
+          "DebitCreditReportingIndicator": "CRED",
+          "Authority": {
+            "Name": "string",
+            "CountryCode": "KK"
+          },
+          "Details": [
+            {
+              "Type": "string",
+              "Date": "2025-11-21T16:45:02.554Z",
+              "Country": "OQ",
+              "Amount": {
+                "Amount": "9.74",
+                "Currency": "KJP"
+              },
+              "Information": [
+                "string"
+              ]
+            }
+          ]
+        }
+      ],
+      "RemittanceInformation": {
+        "Structured": [
+          {
+            "ReferredDocumentInformation": [
+              {
+                "Code": "CINV",
+                "Issuer": "string",
+                "Number": "string",
+                "RelatedDate": "2025-11-21T16:45:02.554Z",
+                "LineDetails": [
+                  "string"
+                ]
+              }
+            ],
+            "ReferredDocumentAmount": "4811793047509.8",
+            "CreditorReferenceInformation": {
+              "Code": "DISP",
+              "Issuer": "string",
+              "Reference": "string"
+            },
+            "Invoicer": "80200112344562",
+            "Invoicee": "80200112344562",
+            "TaxRemittance": "string",
+            "AdditionalRemittanceInformation": [
+              "string"
+            ]
+          }
+        ],
+        "Unstructured": [
+          "string"
+        ]
+      },
+      "SupplementaryData": {
+        "additionalProp1": {}
+      }
+    },
+    "Authorisation": {
+      "AuthorisationType": "Any",
+      "CompletionDateTime": "2025-11-21T16:45:02.554Z"
+    },
+    "SCASupportData": {
+      "RequestedSCAExemptionType": "BillPayment",
+      "AppliedAuthenticationApproach": "CA",
+      "ReferencePaymentOrderId": "string"
+    },
+    "Debtor": {
+      "SchemeName": "string",
+      "Identification": "string",
+      "Name": "string",
+      "SecondaryIdentification": "string",
+      "LEI": "IZ9Q00LZEVUKWCQY6X15"
+    }
+  },
+  "Risk": {
+    "PaymentContextCode": "BillingGoodsAndServicesInAdvance",
+    "MerchantCategoryCode": "stri",
+    "MerchantCustomerIdentification": "string",
+    "ContractPresentIndicator": true,
+    "BeneficiaryPrepopulatedIndicator": true,
+    "PaymentPurposeCode": "BKDF",
+    "CategoryPurposeCode": "BONU",
+    "BeneficiaryAccountType": "Business",
+    "DeliveryAddress": {
+      "AddressType": "BIZZ",
+      "Department": "string",
+      "SubDepartment": "string",
+      "StreetName": "string",
+      "BuildingNumber": "string",
+      "BuildingName": "string",
+      "Floor": "string",
+      "UnitNumber": "string",
+      "Room": "string",
+      "PostBox": "string",
+      "TownLocationName": "string",
+      "DistrictName": "string",
+      "CareOf": "string",
+      "PostCode": "string",
+      "TownName": "string",
+      "CountrySubDivision": "string",
+      "Country": "GT",
+      "AddressLine": [
+        "string"
+      ]
+    }
+  },
+  "Links": {
+    "Self": "string",
+    "First": "string",
+    "Prev": "string",
+    "Next": "string",
+    "Last": "string"
+  },
+  "Meta": {
+    "TotalPages": 0,
+    "FirstAvailableDateTime": "2025-11-21T16:45:02.554Z",
+    "LastAvailableDateTime": "2025-11-21T16:45:02.554Z"
   }
- },
- "Risk": {
-  "PaymentContextCode": "TransferToThirdParty"
- }
 }
 ```
 
@@ -464,24 +2469,260 @@ Accept: application/json
 
 ```json
 {
- "Data": {
-  "Initiation": {
-   "InstructionIdentification": "ACME412",
-   "EndToEndIdentification": "FRESCO.21302.GFX.20",
-   "ChargeBearer": "BorneByDebtor",
-   "RemittanceInformation": {
-    "Reference": "FRESCO-101",
-    "Unstructured": ["Internal ops code 5120101"]
-   },
-	 "ExchangeRateInformation": {
-		"UnitCurrency": "USD",
-	 	"RateType": "Indicative"
-	 }
+  "Data": {
+    "ReadRefundAccount": "No",
+    "Initiation": {
+      "InstructionIdentification": "string",
+      "EndToEndIdentification": "string",
+      "LocalInstrument": "string",
+      "InstructionPriority": "Normal",
+      "ExtendedPurpose": "string",
+      "ChargeBearer": "BorneByCreditor",
+      "CurrencyOfTransfer": "KTV",
+      "DestinationCountryCode": "IH",
+      "InstructedAmount": {
+        "Amount": "293",
+        "Currency": "ALE"
+      },
+      "ExchangeRateInformation": {
+        "UnitCurrency": "JTD",
+        "ExchangeRate": 0,
+        "RateType": "Actual",
+        "ContractIdentification": "string"
+      },
+      "DebtorAccount": {
+        "SchemeName": "string",
+        "Identification": "string",
+        "Name": "string",
+        "SecondaryIdentification": "string",
+        "Proxy": {
+          "Identification": "string",
+          "Code": "TELE",
+          "Type": "string"
+        }
+      },
+      "Creditor": {
+        "Name": "string",
+        "LEI": "IZ9Q00LZEVUKWCQY6X15",
+        "PostalAddress": {
+          "AddressType": "BIZZ",
+          "Department": "string",
+          "SubDepartment": "string",
+          "StreetName": "string",
+          "BuildingNumber": "string",
+          "BuildingName": "string",
+          "Floor": "string",
+          "UnitNumber": "string",
+          "Room": "string",
+          "PostBox": "string",
+          "TownLocationName": "string",
+          "DistrictName": "string",
+          "CareOf": "string",
+          "PostCode": "string",
+          "TownName": "string",
+          "CountrySubDivision": "string",
+          "Country": "MW",
+          "AddressLine": [
+            "string"
+          ]
+        }
+      },
+      "CreditorAgent": {
+        "SchemeName": "string",
+        "Identification": "string",
+        "Name": "string",
+        "LEI": "IZ9Q00LZEVUKWCQY6X15",
+        "PostalAddress": {
+          "AddressType": "BIZZ",
+          "Department": "string",
+          "SubDepartment": "string",
+          "StreetName": "string",
+          "BuildingNumber": "string",
+          "BuildingName": "string",
+          "Floor": "string",
+          "UnitNumber": "string",
+          "Room": "string",
+          "PostBox": "string",
+          "TownLocationName": "string",
+          "DistrictName": "string",
+          "CareOf": "string",
+          "PostCode": "string",
+          "TownName": "string",
+          "CountrySubDivision": "string",
+          "Country": "FE",
+          "AddressLine": [
+            "string"
+          ]
+        }
+      },
+      "CreditorAccount": {
+        "SchemeName": "string",
+        "Identification": "string",
+        "Name": "string",
+        "SecondaryIdentification": "string",
+        "Proxy": {
+          "Identification": "string",
+          "Code": "TELE",
+          "Type": "string"
+        }
+      },
+      "UltimateCreditor": {
+        "Name": "string",
+        "Identification": "string",
+        "LEI": "IZ9Q00LZEVUKWCQY6X15",
+        "SchemeName": "string",
+        "PostalAddress": {
+          "AddressType": "BIZZ",
+          "Department": "string",
+          "SubDepartment": "string",
+          "StreetName": "string",
+          "BuildingNumber": "string",
+          "BuildingName": "string",
+          "Floor": "string",
+          "UnitNumber": "string",
+          "Room": "string",
+          "PostBox": "string",
+          "TownLocationName": "string",
+          "DistrictName": "string",
+          "CareOf": "string",
+          "PostCode": "string",
+          "TownName": "string",
+          "CountrySubDivision": "string",
+          "Country": "PY",
+          "AddressLine": [
+            "string"
+          ]
+        }
+      },
+      "UltimateDebtor": {
+        "Name": "string",
+        "Identification": "string",
+        "LEI": "IZ9Q00LZEVUKWCQY6X15",
+        "SchemeName": "string",
+        "PostalAddress": {
+          "AddressType": "BIZZ",
+          "Department": "string",
+          "SubDepartment": "string",
+          "StreetName": "string",
+          "BuildingNumber": "string",
+          "BuildingName": "string",
+          "Floor": "string",
+          "UnitNumber": "string",
+          "Room": "string",
+          "PostBox": "string",
+          "TownLocationName": "string",
+          "DistrictName": "string",
+          "CareOf": "string",
+          "PostCode": "string",
+          "TownName": "string",
+          "CountrySubDivision": "string",
+          "Country": "XJ",
+          "AddressLine": [
+            "string"
+          ]
+        }
+      },
+      "RegulatoryReporting": [
+        {
+          "DebitCreditReportingIndicator": "CRED",
+          "Authority": {
+            "Name": "string",
+            "CountryCode": "HB"
+          },
+          "Details": [
+            {
+              "Type": "string",
+              "Date": "2025-11-21T16:45:02.550Z",
+              "Country": "NP",
+              "Amount": {
+                "Amount": "78030.03",
+                "Currency": "YUY"
+              },
+              "Information": [
+                "string"
+              ]
+            }
+          ]
+        }
+      ],
+      "RemittanceInformation": {
+        "Structured": [
+          {
+            "ReferredDocumentInformation": [
+              {
+                "Code": "CINV",
+                "Issuer": "string",
+                "Number": "string",
+                "RelatedDate": "2025-11-21T16:45:02.550Z",
+                "LineDetails": [
+                  "string"
+                ]
+              }
+            ],
+            "ReferredDocumentAmount": "67.34",
+            "CreditorReferenceInformation": {
+              "Code": "DISP",
+              "Issuer": "string",
+              "Reference": "string"
+            },
+            "Invoicer": "80200112344562",
+            "Invoicee": "80200112344562",
+            "TaxRemittance": "string",
+            "AdditionalRemittanceInformation": [
+              "string"
+            ]
+          }
+        ],
+        "Unstructured": [
+          "string"
+        ]
+      },
+      "SupplementaryData": {
+        "additionalProp1": {}
+      }
+    },
+    "Authorisation": {
+      "AuthorisationType": "Any",
+      "CompletionDateTime": "2025-11-21T16:45:02.550Z"
+    },
+    "SCASupportData": {
+      "RequestedSCAExemptionType": "BillPayment",
+      "AppliedAuthenticationApproach": "CA",
+      "ReferencePaymentOrderId": "string"
+    }
+  },
+  "Risk": {
+    "PaymentContextCode": "BillingGoodsAndServicesInAdvance",
+    "MerchantCategoryCode": "stri",
+    "MerchantCustomerIdentification": "string",
+    "ContractPresentIndicator": true,
+    "BeneficiaryPrepopulatedIndicator": true,
+    "PaymentPurposeCode": "BKDF",
+    "CategoryPurposeCode": "BONU",
+    "BeneficiaryAccountType": "Business",
+    "DeliveryAddress": {
+      "AddressType": "BIZZ",
+      "Department": "string",
+      "SubDepartment": "string",
+      "StreetName": "string",
+      "BuildingNumber": "string",
+      "BuildingName": "string",
+      "Floor": "string",
+      "UnitNumber": "string",
+      "Room": "string",
+      "PostBox": "string",
+      "TownLocationName": "string",
+      "DistrictName": "string",
+      "CareOf": "string",
+      "PostCode": "string",
+      "TownName": "string",
+      "CountrySubDivision": "string",
+      "Country": "GP",
+      "AddressLine": [
+        "string"
+      ]
+    }
   }
- },
- "Risk": {
-  "PaymentContextCode": "TransferToThirdParty"
- }
 }
 ```
 
@@ -496,31 +2737,309 @@ Content-Type: application/json
 
 ```json
 {
-	"Data": {
-		"ConsentId": "58923",
-		"Status": "AWAU",
-		"CutOffDateTime": "2017-06-05T16:00:13+00:00",
-		"CreationDateTime": "2017-06-05T15:15:13+00:00",
-		"StatusUpdateDateTime": "2017-06-05T15:15:13+00:00",
-		"Initiation": {},
-    "Charges":[{
-      "ChargeBearer": "BorneByDebtor",
-      "Type":"UK.OBIE.MoneyTransferOut"
-     }],
+  "Data": {
+    "ConsentId": "string",
+    "CreationDateTime": "2025-11-21T16:45:02.554Z",
+    "Status": "AWAU",
+    "StatusReason": [
+      {
+        "StatusReasonCode": "ERIN",
+        "StatusReasonDescription": "string",
+        "Path": "string"
+      }
+    ],
+    "StatusUpdateDateTime": "2025-11-21T16:45:02.554Z",
+    "ReadRefundAccount": "No",
+    "CutOffDateTime": "2025-11-21T16:45:02.554Z",
+    "ExpectedExecutionDateTime": "2025-11-21T16:45:02.554Z",
+    "ExpectedSettlementDateTime": "2025-11-21T16:45:02.554Z",
+    "Charges": [
+      {
+        "ChargeBearer": "BorneByCreditor",
+        "Type": "string",
+        "Amount": {
+          "Amount": "942860",
+          "Currency": "BLB"
+        }
+      }
+    ],
     "ExchangeRateInformation": {
-			"UnitCurrency": "USD",
-			"ExchangeRate": 0.9090,
-			"RateType": "Indicative"
-		}
-	},
-	"Risk": {
-		"PaymentContextCode": "TransferToThirdParty"
-
-	},
-	"Links": {
-		"Self": "https://api.alphabank.com/open-banking/v4.0/pisp/international-payment-consents/58923"
-	},
-	"Meta": {}
+      "UnitCurrency": "OAR",
+      "ExchangeRate": 0,
+      "RateType": "Actual",
+      "ContractIdentification": "string",
+      "ExpirationDateTime": "2025-11-21T16:45:02.554Z"
+    },
+    "Initiation": {
+      "InstructionIdentification": "string",
+      "EndToEndIdentification": "string",
+      "LocalInstrument": "string",
+      "InstructionPriority": "Normal",
+      "ExtendedPurpose": "string",
+      "ChargeBearer": "BorneByCreditor",
+      "CurrencyOfTransfer": "ZZW",
+      "DestinationCountryCode": "DF",
+      "InstructedAmount": {
+        "Amount": "672",
+        "Currency": "IOH"
+      },
+      "ExchangeRateInformation": {
+        "UnitCurrency": "HLV",
+        "ExchangeRate": 0,
+        "RateType": "Actual",
+        "ContractIdentification": "string"
+      },
+      "DebtorAccount": {
+        "SchemeName": "string",
+        "Identification": "string",
+        "Name": "string",
+        "SecondaryIdentification": "string",
+        "Proxy": {
+          "Identification": "string",
+          "Code": "TELE",
+          "Type": "string"
+        }
+      },
+      "Creditor": {
+        "Name": "string",
+        "LEI": "IZ9Q00LZEVUKWCQY6X15",
+        "PostalAddress": {
+          "AddressType": "BIZZ",
+          "Department": "string",
+          "SubDepartment": "string",
+          "StreetName": "string",
+          "BuildingNumber": "string",
+          "BuildingName": "string",
+          "Floor": "string",
+          "UnitNumber": "string",
+          "Room": "string",
+          "PostBox": "string",
+          "TownLocationName": "string",
+          "DistrictName": "string",
+          "CareOf": "string",
+          "PostCode": "string",
+          "TownName": "string",
+          "CountrySubDivision": "string",
+          "Country": "MN",
+          "AddressLine": [
+            "string"
+          ]
+        }
+      },
+      "CreditorAgent": {
+        "SchemeName": "string",
+        "Identification": "string",
+        "Name": "string",
+        "LEI": "IZ9Q00LZEVUKWCQY6X15",
+        "PostalAddress": {
+          "AddressType": "BIZZ",
+          "Department": "string",
+          "SubDepartment": "string",
+          "StreetName": "string",
+          "BuildingNumber": "string",
+          "BuildingName": "string",
+          "Floor": "string",
+          "UnitNumber": "string",
+          "Room": "string",
+          "PostBox": "string",
+          "TownLocationName": "string",
+          "DistrictName": "string",
+          "CareOf": "string",
+          "PostCode": "string",
+          "TownName": "string",
+          "CountrySubDivision": "string",
+          "Country": "WY",
+          "AddressLine": [
+            "string"
+          ]
+        }
+      },
+      "CreditorAccount": {
+        "SchemeName": "string",
+        "Identification": "string",
+        "Name": "string",
+        "SecondaryIdentification": "string",
+        "Proxy": {
+          "Identification": "string",
+          "Code": "TELE",
+          "Type": "string"
+        }
+      },
+      "UltimateCreditor": {
+        "Name": "string",
+        "Identification": "string",
+        "LEI": "IZ9Q00LZEVUKWCQY6X15",
+        "SchemeName": "string",
+        "PostalAddress": {
+          "AddressType": "BIZZ",
+          "Department": "string",
+          "SubDepartment": "string",
+          "StreetName": "string",
+          "BuildingNumber": "string",
+          "BuildingName": "string",
+          "Floor": "string",
+          "UnitNumber": "string",
+          "Room": "string",
+          "PostBox": "string",
+          "TownLocationName": "string",
+          "DistrictName": "string",
+          "CareOf": "string",
+          "PostCode": "string",
+          "TownName": "string",
+          "CountrySubDivision": "string",
+          "Country": "FA",
+          "AddressLine": [
+            "string"
+          ]
+        }
+      },
+      "UltimateDebtor": {
+        "Name": "string",
+        "Identification": "string",
+        "LEI": "IZ9Q00LZEVUKWCQY6X15",
+        "SchemeName": "string",
+        "PostalAddress": {
+          "AddressType": "BIZZ",
+          "Department": "string",
+          "SubDepartment": "string",
+          "StreetName": "string",
+          "BuildingNumber": "string",
+          "BuildingName": "string",
+          "Floor": "string",
+          "UnitNumber": "string",
+          "Room": "string",
+          "PostBox": "string",
+          "TownLocationName": "string",
+          "DistrictName": "string",
+          "CareOf": "string",
+          "PostCode": "string",
+          "TownName": "string",
+          "CountrySubDivision": "string",
+          "Country": "TA",
+          "AddressLine": [
+            "string"
+          ]
+        }
+      },
+      "RegulatoryReporting": [
+        {
+          "DebitCreditReportingIndicator": "CRED",
+          "Authority": {
+            "Name": "string",
+            "CountryCode": "KK"
+          },
+          "Details": [
+            {
+              "Type": "string",
+              "Date": "2025-11-21T16:45:02.554Z",
+              "Country": "OQ",
+              "Amount": {
+                "Amount": "9.74",
+                "Currency": "KJP"
+              },
+              "Information": [
+                "string"
+              ]
+            }
+          ]
+        }
+      ],
+      "RemittanceInformation": {
+        "Structured": [
+          {
+            "ReferredDocumentInformation": [
+              {
+                "Code": "CINV",
+                "Issuer": "string",
+                "Number": "string",
+                "RelatedDate": "2025-11-21T16:45:02.554Z",
+                "LineDetails": [
+                  "string"
+                ]
+              }
+            ],
+            "ReferredDocumentAmount": "4811793047509.8",
+            "CreditorReferenceInformation": {
+              "Code": "DISP",
+              "Issuer": "string",
+              "Reference": "string"
+            },
+            "Invoicer": "80200112344562",
+            "Invoicee": "80200112344562",
+            "TaxRemittance": "string",
+            "AdditionalRemittanceInformation": [
+              "string"
+            ]
+          }
+        ],
+        "Unstructured": [
+          "string"
+        ]
+      },
+      "SupplementaryData": {
+        "additionalProp1": {}
+      }
+    },
+    "Authorisation": {
+      "AuthorisationType": "Any",
+      "CompletionDateTime": "2025-11-21T16:45:02.554Z"
+    },
+    "SCASupportData": {
+      "RequestedSCAExemptionType": "BillPayment",
+      "AppliedAuthenticationApproach": "CA",
+      "ReferencePaymentOrderId": "string"
+    },
+    "Debtor": {
+      "SchemeName": "string",
+      "Identification": "string",
+      "Name": "string",
+      "SecondaryIdentification": "string",
+      "LEI": "IZ9Q00LZEVUKWCQY6X15"
+    }
+  },
+  "Risk": {
+    "PaymentContextCode": "BillingGoodsAndServicesInAdvance",
+    "MerchantCategoryCode": "stri",
+    "MerchantCustomerIdentification": "string",
+    "ContractPresentIndicator": true,
+    "BeneficiaryPrepopulatedIndicator": true,
+    "PaymentPurposeCode": "BKDF",
+    "CategoryPurposeCode": "BONU",
+    "BeneficiaryAccountType": "Business",
+    "DeliveryAddress": {
+      "AddressType": "BIZZ",
+      "Department": "string",
+      "SubDepartment": "string",
+      "StreetName": "string",
+      "BuildingNumber": "string",
+      "BuildingName": "string",
+      "Floor": "string",
+      "UnitNumber": "string",
+      "Room": "string",
+      "PostBox": "string",
+      "TownLocationName": "string",
+      "DistrictName": "string",
+      "CareOf": "string",
+      "PostCode": "string",
+      "TownName": "string",
+      "CountrySubDivision": "string",
+      "Country": "GT",
+      "AddressLine": [
+        "string"
+      ]
+    }
+  },
+  "Links": {
+    "Self": "string",
+    "First": "string",
+    "Prev": "string",
+    "Next": "string",
+    "Last": "string"
+  },
+  "Meta": {
+    "TotalPages": 0,
+    "FirstAvailableDateTime": "2025-11-21T16:45:02.554Z",
+    "LastAvailableDateTime": "2025-11-21T16:45:02.554Z"
+  }
 }
-
 ```
