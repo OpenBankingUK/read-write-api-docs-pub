@@ -41,11 +41,124 @@ Accept: application/json
 {
   "Data": {
     "Initiation": {
-      "FileType": "UK.OBIE.pain.001.001.08",
-      "FileHash": "m5ah/h1UjLvJYMxqAoZmj9dKdjZnsGNm+yMkJp/KuqQ",
-      "FileReference": "GB2OK238",
-      "NumberOfTransactions": "100",
-      "ControlSum": 3459.30
+      "FileType": "string",
+      "FileHash": "string",
+      "FileReference": "string",
+      "NumberOfTransactions": "0522238",
+      "ControlSum": 0,
+      "RequestedExecutionDateTime": "2025-11-21T16:27:32.072Z",
+      "LocalInstrument": "string",
+      "CreditorAgent": {
+        "SchemeName": "string",
+        "Identification": "string",
+        "Name": "string",
+        "LEI": "IZ9Q00LZEVUKWCQY6X15",
+        "PostalAddress": {
+          "AddressType": "BIZZ",
+          "Department": "string",
+          "SubDepartment": "string",
+          "StreetName": "string",
+          "BuildingNumber": "string",
+          "BuildingName": "string",
+          "Floor": "string",
+          "UnitNumber": "string",
+          "Room": "string",
+          "PostBox": "string",
+          "TownLocationName": "string",
+          "DistrictName": "string",
+          "CareOf": "string",
+          "PostCode": "string",
+          "TownName": "string",
+          "CountrySubDivision": "string",
+          "Country": "NW",
+          "AddressLine": [
+            "string"
+          ]
+        }
+      },
+      "DebtorAccount": {
+        "SchemeName": "string",
+        "Identification": "string",
+        "Name": "string",
+        "SecondaryIdentification": "string",
+        "Proxy": {
+          "Identification": "string",
+          "Code": "TELE",
+          "Type": "string"
+        }
+      },
+      "UltimateDebtor": {
+        "Name": "string",
+        "Identification": "string",
+        "LEI": "IZ9Q00LZEVUKWCQY6X15",
+        "SchemeName": "string",
+        "PostalAddress": {
+          "AddressType": "BIZZ",
+          "Department": "string",
+          "SubDepartment": "string",
+          "StreetName": "string",
+          "BuildingNumber": "string",
+          "BuildingName": "string",
+          "Floor": "string",
+          "UnitNumber": "string",
+          "Room": "string",
+          "PostBox": "string",
+          "TownLocationName": "string",
+          "DistrictName": "string",
+          "CareOf": "string",
+          "PostCode": "string",
+          "TownName": "string",
+          "CountrySubDivision": "string",
+          "Country": "SK",
+          "AddressLine": [
+            "string"
+          ]
+        }
+      },
+      "RemittanceInformation": {
+        "Structured": [
+          {
+            "ReferredDocumentInformation": [
+              {
+                "Code": "CINV",
+                "Issuer": "string",
+                "Number": "string",
+                "RelatedDate": "2025-11-21T16:27:32.072Z",
+                "LineDetails": [
+                  "string"
+                ]
+              }
+            ],
+            "ReferredDocumentAmount": "859677981",
+            "CreditorReferenceInformation": {
+              "Code": "DISP",
+              "Issuer": "string",
+              "Reference": "string"
+            },
+            "Invoicer": "80200112344562",
+            "Invoicee": "80200112344562",
+            "TaxRemittance": "string",
+            "AdditionalRemittanceInformation": [
+              "string"
+            ]
+          }
+        ],
+        "Unstructured": [
+          "string"
+        ]
+      },
+      "SupplementaryData": {
+        "additionalProp1": {}
+      }
+    },
+    "Authorisation": {
+      "AuthorisationType": "Any",
+      "CompletionDateTime": "2025-11-21T16:27:32.072Z"
+    },
+    "SCASupportData": {
+      "RequestedSCAExemptionType": "BillPayment",
+      "AppliedAuthenticationApproach": "CA",
+      "ReferencePaymentOrderId": "string"
     }
   }
 }
@@ -63,22 +176,168 @@ Content-Type: application/json
 ```json
 {
   "Data": {
-    "ConsentId" : "512345",
-    "Status": "AWUP",
-    "CreationDateTime": "2018-06-05T15:15:13+00:00",
-    "StatusUpdateDateTime": "2018-06-05T15:15:13+00:00",
+    "ConsentId": "string",
+    "CreationDateTime": "2025-11-21T16:27:32.075Z",
+    "Status": "AWAU",
+    "StatusReason": [
+      {
+        "StatusReasonCode": "ERIN",
+        "StatusReasonDescription": "string",
+        "Path": "string"
+      }
+    ],
+    "StatusUpdateDateTime": "2025-11-21T16:27:32.075Z",
+    "CutOffDateTime": "2025-11-21T16:27:32.075Z",
+    "Charges": [
+      {
+        "ChargeBearer": "BorneByCreditor",
+        "Type": "string",
+        "Amount": {
+          "Amount": "81",
+          "Currency": "NTU"
+        }
+      }
+    ],
     "Initiation": {
-      "FileType": "UK.OBIE.pain.001.001.08",
-      "FileHash": "m5ah/h1UjLvJYMxqAoZmj9dKdjZnsGNm+yMkJp/KuqQ",
-      "FileReference": "GB2OK238",
-      "NumberOfTransactions": "100",
-      "ControlSum": 3459.30
+      "FileType": "string",
+      "FileHash": "string",
+      "FileReference": "string",
+      "NumberOfTransactions": "97569387839568",
+      "ControlSum": 0,
+      "RequestedExecutionDateTime": "2025-11-21T16:27:32.075Z",
+      "LocalInstrument": "string",
+      "CreditorAgent": {
+        "SchemeName": "string",
+        "Identification": "string",
+        "Name": "string",
+        "LEI": "IZ9Q00LZEVUKWCQY6X15",
+        "PostalAddress": {
+          "AddressType": "BIZZ",
+          "Department": "string",
+          "SubDepartment": "string",
+          "StreetName": "string",
+          "BuildingNumber": "string",
+          "BuildingName": "string",
+          "Floor": "string",
+          "UnitNumber": "string",
+          "Room": "string",
+          "PostBox": "string",
+          "TownLocationName": "string",
+          "DistrictName": "string",
+          "CareOf": "string",
+          "PostCode": "string",
+          "TownName": "string",
+          "CountrySubDivision": "string",
+          "Country": "AP",
+          "AddressLine": [
+            "string"
+          ]
+        }
+      },
+      "DebtorAccount": {
+        "SchemeName": "string",
+        "Identification": "string",
+        "Name": "string",
+        "SecondaryIdentification": "string",
+        "Proxy": {
+          "Identification": "string",
+          "Code": "TELE",
+          "Type": "string"
+        }
+      },
+      "UltimateDebtor": {
+        "Name": "string",
+        "Identification": "string",
+        "LEI": "IZ9Q00LZEVUKWCQY6X15",
+        "SchemeName": "string",
+        "PostalAddress": {
+          "AddressType": "BIZZ",
+          "Department": "string",
+          "SubDepartment": "string",
+          "StreetName": "string",
+          "BuildingNumber": "string",
+          "BuildingName": "string",
+          "Floor": "string",
+          "UnitNumber": "string",
+          "Room": "string",
+          "PostBox": "string",
+          "TownLocationName": "string",
+          "DistrictName": "string",
+          "CareOf": "string",
+          "PostCode": "string",
+          "TownName": "string",
+          "CountrySubDivision": "string",
+          "Country": "MN",
+          "AddressLine": [
+            "string"
+          ]
+        }
+      },
+      "RemittanceInformation": {
+        "Structured": [
+          {
+            "ReferredDocumentInformation": [
+              {
+                "Code": "CINV",
+                "Issuer": "string",
+                "Number": "string",
+                "RelatedDate": "2025-11-21T16:27:32.075Z",
+                "LineDetails": [
+                  "string"
+                ]
+              }
+            ],
+            "ReferredDocumentAmount": "519894596",
+            "CreditorReferenceInformation": {
+              "Code": "DISP",
+              "Issuer": "string",
+              "Reference": "string"
+            },
+            "Invoicer": "80200112344562",
+            "Invoicee": "80200112344562",
+            "TaxRemittance": "string",
+            "AdditionalRemittanceInformation": [
+              "string"
+            ]
+          }
+        ],
+        "Unstructured": [
+          "string"
+        ]
+      },
+      "SupplementaryData": {
+        "additionalProp1": {}
+      }
+    },
+    "Authorisation": {
+      "AuthorisationType": "Any",
+      "CompletionDateTime": "2025-11-21T16:27:32.075Z"
+    },
+    "SCASupportData": {
+      "RequestedSCAExemptionType": "BillPayment",
+      "AppliedAuthenticationApproach": "CA",
+      "ReferencePaymentOrderId": "string"
+    },
+    "Debtor": {
+      "SchemeName": "string",
+      "Identification": "string",
+      "Name": "string",
+      "SecondaryIdentification": "string",
+      "LEI": "IZ9Q00LZEVUKWCQY6X15"
     }
   },
-  "Links":{
-    "Self":"https://api.alphabank.com/open-banking/v4.0/pisp/file-payment-consents/512345"
+  "Links": {
+    "Self": "string",
+    "First": "string",
+    "Prev": "string",
+    "Next": "string",
+    "Last": "string"
   },
-  "Meta":{}
+  "Meta": {
+    "TotalPages": 0,
+    "FirstAvailableDateTime": "2025-11-21T16:27:32.075Z",
+    "LastAvailableDateTime": "2025-11-21T16:27:32.075Z"
+  }
 }
 ```
 
@@ -345,13 +604,117 @@ Accept: application/json
 ```json
 {
   "Data": {
-    "ConsentId":"512345",
+    "ConsentId": "string",
     "Initiation": {
-      "FileType": "UK.OBIE.pain.001.001.08",
-      "FileHash": "m5ah/h1UjLvJYMxqAoZmj9dKdjZnsGNm+yMkJp/KuqQ",
-      "FileReference": "GB2OK238",
-      "NumberOfTransactions": "100",
-      "ControlSum": 3459.30
+      "FileType": "string",
+      "FileHash": "string",
+      "FileReference": "string",
+      "NumberOfTransactions": "03086585698",
+      "ControlSum": 0,
+      "RequestedExecutionDateTime": "2025-11-21T16:28:17.905Z",
+      "LocalInstrument": "string",
+      "CreditorAgent": {
+        "SchemeName": "string",
+        "Identification": "string",
+        "Name": "string",
+        "LEI": "IZ9Q00LZEVUKWCQY6X15",
+        "PostalAddress": {
+          "AddressType": "BIZZ",
+          "Department": "string",
+          "SubDepartment": "string",
+          "StreetName": "string",
+          "BuildingNumber": "string",
+          "BuildingName": "string",
+          "Floor": "string",
+          "UnitNumber": "string",
+          "Room": "string",
+          "PostBox": "string",
+          "TownLocationName": "string",
+          "DistrictName": "string",
+          "CareOf": "string",
+          "PostCode": "string",
+          "TownName": "string",
+          "CountrySubDivision": "string",
+          "Country": "MI",
+          "AddressLine": [
+            "string"
+          ]
+        }
+      },
+      "DebtorAccount": {
+        "SchemeName": "string",
+        "Identification": "string",
+        "Name": "string",
+        "SecondaryIdentification": "string",
+        "Proxy": {
+          "Identification": "string",
+          "Code": "TELE",
+          "Type": "string"
+        }
+      },
+      "UltimateDebtor": {
+        "Name": "string",
+        "Identification": "string",
+        "LEI": "IZ9Q00LZEVUKWCQY6X15",
+        "SchemeName": "string",
+        "PostalAddress": {
+          "AddressType": "BIZZ",
+          "Department": "string",
+          "SubDepartment": "string",
+          "StreetName": "string",
+          "BuildingNumber": "string",
+          "BuildingName": "string",
+          "Floor": "string",
+          "UnitNumber": "string",
+          "Room": "string",
+          "PostBox": "string",
+          "TownLocationName": "string",
+          "DistrictName": "string",
+          "CareOf": "string",
+          "PostCode": "string",
+          "TownName": "string",
+          "CountrySubDivision": "string",
+          "Country": "DY",
+          "AddressLine": [
+            "string"
+          ]
+        }
+      },
+      "RemittanceInformation": {
+        "Structured": [
+          {
+            "ReferredDocumentInformation": [
+              {
+                "Code": "CINV",
+                "Issuer": "string",
+                "Number": "string",
+                "RelatedDate": "2025-11-21T16:28:17.905Z",
+                "LineDetails": [
+                  "string"
+                ]
+              }
+            ],
+            "ReferredDocumentAmount": "3",
+            "CreditorReferenceInformation": {
+              "Code": "DISP",
+              "Issuer": "string",
+              "Reference": "string"
+            },
+            "Invoicer": "80200112344562",
+            "Invoicee": "80200112344562",
+            "TaxRemittance": "string",
+            "AdditionalRemittanceInformation": [
+              "string"
+            ]
+          }
+        ],
+        "Unstructured": [
+          "string"
+        ]
+      },
+      "SupplementaryData": {
+        "additionalProp1": {}
+      }
     }
   }
 }
@@ -369,23 +732,166 @@ Content-Type: application/json
 ```json
 {
   "Data": {
-    "ConsentId" : "512345",
-	"FilePaymentId":"FP1-512345",
+    "FilePaymentId": "string",
+    "ConsentId": "string",
+    "CreationDateTime": "2025-11-21T16:28:17.906Z",
     "Status": "PDNG",
-    "CreationDateTime": "2018-06-05T15:15:13+00:00",
-    "StatusUpdateDateTime": "2018-06-05T15:15:13+00:00",
+    "StatusUpdateDateTime": "2025-11-21T16:28:17.906Z",
+    "StatusReason": [
+      {
+        "StatusReasonCode": "ERIN",
+        "StatusReasonDescription": "string",
+        "Path": "string"
+      }
+    ],
+    "Charges": [
+      {
+        "ChargeBearer": "BorneByCreditor",
+        "Type": "string",
+        "Amount": {
+          "Amount": "4",
+          "Currency": "OFI"
+        }
+      }
+    ],
     "Initiation": {
-      "FileType": "UK.OBIE.pain.001.001.08",
-      "FileHash": "m5ah/h1UjLvJYMxqAoZmj9dKdjZnsGNm+yMkJp/KuqQ",
-      "FileReference": "GB2OK238",
-      "NumberOfTransactions": "100",
-      "ControlSum": 3459.30
+      "FileType": "string",
+      "FileHash": "string",
+      "FileReference": "string",
+      "NumberOfTransactions": "8927620322691",
+      "ControlSum": 0,
+      "RequestedExecutionDateTime": "2025-11-21T16:28:17.906Z",
+      "LocalInstrument": "string",
+      "DebtorAccount": {
+        "SchemeName": "string",
+        "Identification": "string",
+        "Name": "string",
+        "SecondaryIdentification": "string",
+        "Proxy": {
+          "Identification": "string",
+          "Code": "TELE",
+          "Type": "string"
+        }
+      },
+      "CreditorAgent": {
+        "SchemeName": "string",
+        "Identification": "string",
+        "Name": "string",
+        "LEI": "IZ9Q00LZEVUKWCQY6X15",
+        "PostalAddress": {
+          "AddressType": "BIZZ",
+          "Department": "string",
+          "SubDepartment": "string",
+          "StreetName": "string",
+          "BuildingNumber": "string",
+          "BuildingName": "string",
+          "Floor": "string",
+          "UnitNumber": "string",
+          "Room": "string",
+          "PostBox": "string",
+          "TownLocationName": "string",
+          "DistrictName": "string",
+          "CareOf": "string",
+          "PostCode": "string",
+          "TownName": "string",
+          "CountrySubDivision": "string",
+          "Country": "AL",
+          "AddressLine": [
+            "string"
+          ]
+        }
+      },
+      "UltimateDebtor": {
+        "Name": "string",
+        "Identification": "string",
+        "LEI": "IZ9Q00LZEVUKWCQY6X15",
+        "SchemeName": "string",
+        "PostalAddress": {
+          "AddressType": "BIZZ",
+          "Department": "string",
+          "SubDepartment": "string",
+          "StreetName": "string",
+          "BuildingNumber": "string",
+          "BuildingName": "string",
+          "Floor": "string",
+          "UnitNumber": "string",
+          "Room": "string",
+          "PostBox": "string",
+          "TownLocationName": "string",
+          "DistrictName": "string",
+          "CareOf": "string",
+          "PostCode": "string",
+          "TownName": "string",
+          "CountrySubDivision": "string",
+          "Country": "AI",
+          "AddressLine": [
+            "string"
+          ]
+        }
+      },
+      "RemittanceInformation": {
+        "Structured": [
+          {
+            "ReferredDocumentInformation": [
+              {
+                "Code": "CINV",
+                "Issuer": "string",
+                "Number": "string",
+                "RelatedDate": "2025-11-21T16:28:17.906Z",
+                "LineDetails": [
+                  "string"
+                ]
+              }
+            ],
+            "ReferredDocumentAmount": "909",
+            "CreditorReferenceInformation": {
+              "Code": "DISP",
+              "Issuer": "string",
+              "Reference": "string"
+            },
+            "Invoicer": "80200112344562",
+            "Invoicee": "80200112344562",
+            "TaxRemittance": "string",
+            "AdditionalRemittanceInformation": [
+              "string"
+            ]
+          }
+        ],
+        "Unstructured": [
+          "string"
+        ]
+      },
+      "SupplementaryData": {
+        "additionalProp1": {}
+      }
+    },
+    "MultiAuthorisation": {
+      "Status": "AUTH",
+      "NumberRequired": 0,
+      "NumberReceived": 0,
+      "LastUpdateDateTime": "2025-11-21T16:28:17.906Z",
+      "ExpirationDateTime": "2025-11-21T16:28:17.906Z"
+    },
+    "Debtor": {
+      "SchemeName": "string",
+      "Identification": "string",
+      "Name": "string",
+      "SecondaryIdentification": "string",
+      "LEI": "IZ9Q00LZEVUKWCQY6X15"
     }
   },
-  "Links":{
-     "Self":"https://api.alphabank.com/open-banking/v4.0/pisp/file-payments/FP1-512345"
+  "Links": {
+    "Self": "string",
+    "First": "string",
+    "Prev": "string",
+    "Next": "string",
+    "Last": "string"
   },
-  "Meta":{}
+  "Meta": {
+    "TotalPages": 0,
+    "FirstAvailableDateTime": "2025-11-21T16:28:17.906Z",
+    "LastAvailableDateTime": "2025-11-21T16:28:17.906Z"
+  }
 }
 ```
 
