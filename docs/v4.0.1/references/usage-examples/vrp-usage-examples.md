@@ -43,102 +43,221 @@ Accept: application/json
   "Data": {
     "ReadRefundAccount": "Yes",
     "ControlParameters": {
-      "PSUAuthenticationMethods": [ "UK.OBIE.SCA" ],
-      "PSUInteractionTypes": [ "OffSession" ],
-      "VRPType": ["UK.OBIE.VRPType.Sweeping"],
-      "ValidFromDateTime": "2017-06-05T15:15:13+00:00",
-      "ValidToDateTime": "2020-06-05T15:15:13+00:00",
+      "ValidFromDateTime": "2025-11-21T17:02:20.397Z",
+      "ValidToDateTime": "2025-11-21T17:02:20.397Z",
       "MaximumIndividualAmount": {
-        "Amount": "100.00",
-        "Currency": "GBP"
+        "Amount": "58805.79393",
+        "Currency": "KNZ"
       },
       "PeriodicLimits": [
         {
-          "Amount": "200.00",
-          "Currency": "GBP",
+          "PeriodType": "Day",
           "PeriodAlignment": "Consent",
-          "PeriodType": "Week"
+          "Amount": "716269187",
+          "Currency": "JNB"
         }
-      ]
+      ],
+      "VRPType": [
+        "string"
+      ],
+      "PSUAuthenticationMethods": [
+        "string"
+      ],
+      "PSUInteractionTypes": [
+        "InSession"
+      ],
+      "SupplementaryData": {}
     },
     "Initiation": {
       "DebtorAccount": {
-        "SchemeName": "UK.OBIE.IBAN",
-        "Identification": "GB76LOYD30949301273801",
-        "SecondaryIdentification": "008419",
-        "Name": "Marcus Sweepimus",
+        "SchemeName": "string",
+        "Identification": "string",
+        "Name": "string",
+        "SecondaryIdentification": "string",
         "Proxy": {
-          "Identification": "441234012345",
+          "Identification": "string",
           "Code": "TELE",
-          "Type": "Telephone"
-        }
-      },
-      "CreditorAgent": {  
-          "LEI": "IZ9Q00LZEVUKWCQY6X15",
-          "SchemeName": "UK.OBIE.BICFI",
-          "Identification": "80200112344562",
-          "Name": "The Credit Agent", 
-          "PostalAddress": { 
-            "AddressType": "BIZZ",
-            "StreetName": "Bank Street",
-            "BuildingNumber": "11",
-            "Floor": "6",
-            "PostCode": "Z78 4TY",
-            "TownName": "London",
-            "Country": "UK"
+          "Type": "string"
         }
       },
       "CreditorAccount": {
-        "SchemeName": "UK.OBIE.SortCodeAccountNumber",
-        "Identification": "30949330000010",
-        "SecondaryIdentification": "Roll 90210",
-        "Name": "Marcus Sweepimus",
+        "SchemeName": "string",
+        "Identification": "string",
+        "Name": "string",
+        "SecondaryIdentification": "string",
         "Proxy": {
-          "Identification": "441234012346",
+          "Identification": "string",
           "Code": "TELE",
-          "Type": "Telephone"
+          "Type": "string"
         }
       },
       "CreditorPostalAddress": {
         "AddressType": "BIZZ",
-        "Department": "Finance",
-        "SubDepartment": "Payroll",
-        "StreetName": "Bank Street",
-        "BuildingNumber": "11",
-        "BuildingName": "Tower Bridges",
-        "Floor": "6",
-        "UnitNumber": "UNIT591",
-        "Room": "844",
-        "PostBox": "PO Box 123456",
-        "PostCode": "Z78 4TY",
-        "TownLocationName":"Bank",
-        "TownName": "London",
-        "DistrictName": "Greater London",
-        "CareOf": "Ms Jane Smith",
-        "CountrySubDivision": "England",
-        "Country": "UK"
+        "Department": "string",
+        "SubDepartment": "string",
+        "StreetName": "string",
+        "BuildingNumber": "string",
+        "BuildingName": "string",
+        "Floor": "string",
+        "UnitNumber": "string",
+        "Room": "string",
+        "PostBox": "string",
+        "TownLocationName": "string",
+        "DistrictName": "string",
+        "CareOf": "string",
+        "PostCode": "string",
+        "TownName": "string",
+        "CountrySubDivision": "string",
+        "Country": "AH",
+        "AddressLine": [
+          "string"
+        ]
+      },
+      "UltimateCreditor": {
+        "Name": "string",
+        "Identification": "string",
+        "LEI": "IZ9Q00LZEVUKWCQY6X15",
+        "SchemeName": "string",
+        "PostalAddress": {
+          "AddressType": "BIZZ",
+          "Department": "string",
+          "SubDepartment": "string",
+          "StreetName": "string",
+          "BuildingNumber": "string",
+          "BuildingName": "string",
+          "Floor": "string",
+          "UnitNumber": "string",
+          "Room": "string",
+          "PostBox": "string",
+          "TownLocationName": "string",
+          "DistrictName": "string",
+          "CareOf": "string",
+          "PostCode": "string",
+          "TownName": "string",
+          "CountrySubDivision": "string",
+          "Country": "DV",
+          "AddressLine": [
+            "string"
+          ]
+        }
+      },
+      "UltimateDebtor": {
+        "Name": "string",
+        "Identification": "string",
+        "LEI": "IZ9Q00LZEVUKWCQY6X15",
+        "SchemeName": "string",
+        "PostalAddress": {
+          "AddressType": "BIZZ",
+          "Department": "string",
+          "SubDepartment": "string",
+          "StreetName": "string",
+          "BuildingNumber": "string",
+          "BuildingName": "string",
+          "Floor": "string",
+          "UnitNumber": "string",
+          "Room": "string",
+          "PostBox": "string",
+          "TownLocationName": "string",
+          "DistrictName": "string",
+          "CareOf": "string",
+          "PostCode": "string",
+          "TownName": "string",
+          "CountrySubDivision": "string",
+          "Country": "VG",
+          "AddressLine": [
+            "string"
+          ]
+        }
       },
       "RemittanceInformation": {
         "Structured": [
           {
-          "ReferredDocumentAmount": 1,
-          "CreditorReferenceInformation": {
-            "Reference": "SweepCo",
+            "ReferredDocumentInformation": [
+              {
+                "Code": "CINV",
+                "Issuer": "string",
+                "Number": "string",
+                "RelatedDate": "2025-11-21T17:02:20.397Z",
+                "LineDetails": [
+                  "string"
+                ]
+              }
+            ],
+            "ReferredDocumentAmount": "0272463200.64",
+            "CreditorReferenceInformation": {
+              "Code": "DISP",
+              "Issuer": "string",
+              "Reference": "string"
             },
-        "AdditionalRemittanceInformation": ["Rose's pocket money"],
-          },
+            "Invoicer": "string",
+            "Invoicee": "string",
+            "TaxRemittance": "string",
+            "AdditionalRemittanceInformation": [
+              "string"
+            ]
+          }
         ],
+        "Unstructured": [
+          "string"
+        ]
       },
+      "RegulatoryReporting": [
+        {
+          "DebitCreditReportingIndicator": "CRED",
+          "Authority": {
+            "Name": "string",
+            "CountryCode": "CJ"
+          },
+          "Details": [
+            {
+              "Type": "string",
+              "Date": "2025-11-21T17:02:20.397Z",
+              "Country": "VV",
+              "Amount": {
+                "Amount": "067115392820.10",
+                "Currency": "YSH"
+              },
+              "Information": [
+                "string"
+              ]
+            }
+          ]
+        }
+      ]
+    }
   },
   "Risk": {
-    "PaymentContextCode": "TransferToSelf",
+    "PaymentContextCode": "BillingGoodsAndServicesInAdvance",
+    "MerchantCategoryCode": "stri",
+    "MerchantCustomerIdentification": "string",
     "ContractPresentIndicator": true,
-    "PaymentPurposeCode": "EPAY",
-    "CategoryPurposeCode": "GP2P", 
-    "BeneficiaryPaymentDetailsPrepopulatedIndicator": true,
-    "BeneficiaryAccountType": "Personal",
+    "BeneficiaryPrepopulatedIndicator": true,
+    "PaymentPurposeCode": "BKDF",
+    "CategoryPurposeCode": "BONU",
+    "BeneficiaryAccountType": "Business",
+    "DeliveryAddress": {
+      "AddressType": "BIZZ",
+      "Department": "string",
+      "SubDepartment": "string",
+      "StreetName": "string",
+      "BuildingNumber": "string",
+      "BuildingName": "string",
+      "Floor": "string",
+      "UnitNumber": "string",
+      "Room": "string",
+      "PostBox": "string",
+      "TownLocationName": "string",
+      "DistrictName": "string",
+      "CareOf": "string",
+      "PostCode": "string",
+      "TownName": "string",
+      "CountrySubDivision": "string",
+      "Country": "SD",
+      "AddressLine": [
+        "string"
+      ]
+    }
   }
-}
 }
 ```
 
@@ -154,130 +273,253 @@ Content-Type: application/json
 ```json
 {
   "Data": {
-    "ConsentId": "fe615446-e53a-45ed-954c-ae5d1f97a93b",
-    "CreationDateTime": "2017-06-05T15:15:15+00:00",
-    "Status": "AUTH",
-    "StatusReason": {
-      "StatusReasonCode": "U038", 
-      "StatusReasonDescription":"Consent consumed successfully",
-    },
-    "StatusUpdateDateTime": "2017-06-05T15:15:15+05:00",
     "ReadRefundAccount": "Yes",
+    "ConsentId": "string",
+    "CreationDateTime": "2025-11-21T17:02:20.401Z",
+    "Status": "AWAU",
+    "StatusReason": [
+      {
+        "StatusReasonCode": "ERIN",
+        "StatusReasonDescription": "string",
+        "Path": "string"
+      }
+    ],
+    "StatusUpdateDateTime": "2025-11-21T17:02:20.401Z",
     "ControlParameters": {
-      "PSUAuthenticationMethods": [ "UK.OBIE.SCA" ],
-      "PSUInteractionTypes": [ "OffSession" ],
-      "VRPType": "UK.OBIE.VRPType.Sweeping",
-      "ValidFromDateTime": "2017-06-05T15:15:13+00:00",
-      "ValidToDateTime": "2020-06-05T15:15:13+00:00",
+      "ValidFromDateTime": "2025-11-21T17:02:20.401Z",
+      "ValidToDateTime": "2025-11-21T17:02:20.401Z",
       "MaximumIndividualAmount": {
-        "Amount": "100.00",
-        "Currency": "GBP"
+        "Amount": "60667320819.66600",
+        "Currency": "IQQ"
       },
       "PeriodicLimits": [
         {
-          "Amount": "200.00",
-          "Currency": "GBP",
+          "PeriodType": "Day",
           "PeriodAlignment": "Consent",
-          "PeriodType": "Week"
+          "Amount": "2327747854",
+          "Currency": "QXE"
         }
-      ]
-    },
-    "DebtorAccount": {
-      "SchemeName": "UK.OBIE.IBAN",
-      "Identification": "GB76LOYD30949301273801",
-      "SecondaryIdentification": "008419",
-      "Name": "Marcus Sweepimus",
-      "Proxy": {
-          "Identification": "441234012345",
-          "Code": "TELE",
-          "Type": "Telephone"
-      }
+      ],
+      "VRPType": [
+        "string"
+      ],
+      "PSUAuthenticationMethods": [
+        "string"
+      ],
+      "PSUInteractionTypes": [
+        "InSession"
+      ],
+      "SupplementaryData": {}
     },
     "Initiation": {
       "DebtorAccount": {
-       "SchemeName": "UK.OBIE.IBAN",
-       "Identification": "GB76LOYD30949301273801",
-       "SecondaryIdentification": "008419",
-       "Name": "Marcus Sweepimus",
-       "Proxy": {
-          "Identification": "441234012345",
+        "SchemeName": "string",
+        "Identification": "string",
+        "Name": "string",
+        "SecondaryIdentification": "string",
+        "Proxy": {
+          "Identification": "string",
           "Code": "TELE",
-          "Type": "Telephone"
+          "Type": "string"
         }
       },
       "CreditorAccount": {
-        "SchemeName": "UK.OBIE.SortCodeAccountNumber",
-        "Identification": "30949330000010",
-        "SecondaryIdentification": "Roll 90210",
-        "Name": "Marcus Sweepimus",
+        "SchemeName": "string",
+        "Identification": "string",
+        "Name": "string",
+        "SecondaryIdentification": "string",
         "Proxy": {
-          "Identification": "441234012348",
+          "Identification": "string",
           "Code": "TELE",
-          "Type": "Telephone"
-        }
-      },
-      "CreditorAgent": {  
-          "LEI": "IZ9Q00LZEVUKWCQY6X15",
-          "SchemeName": "UK.OBIE.BICFI",
-          "Identification": "80200112344562",
-          "Name": "The Credit Agent", 
-          "PostalAddress": { 
-            "AddressType": "BIZZ",
-            "StreetName": "Bank Street",
-            "BuildingNumber": "11",
-            "Floor": "6",
-            "PostCode": "Z78 4TY",
-            "TownName": "London",
-            "Country": "UK"
+          "Type": "string"
         }
       },
       "CreditorPostalAddress": {
         "AddressType": "BIZZ",
-        "Department": "Finance",
-        "SubDepartment": "Payroll",
-        "StreetName": "Bank Street",
-        "BuildingNumber": "11",
-        "BuildingName": "Tower Bridges",
-        "Floor": "6",
-        "UnitNumber": "UNIT591",
-        "Room": "844",
-        "PostBox": "PO Box 123456",
-        "PostCode": "Z78 4TY",
-        "TownLocationName":"Bank",
-        "TownName": "London",
-        "DistrictName": "Greater London",
-        "CareOf": "Ms Jane Smith",
-        "CountrySubDivision": "England",
-        "Country": "UK"
+        "Department": "string",
+        "SubDepartment": "string",
+        "StreetName": "string",
+        "BuildingNumber": "string",
+        "BuildingName": "string",
+        "Floor": "string",
+        "UnitNumber": "string",
+        "Room": "string",
+        "PostBox": "string",
+        "TownLocationName": "string",
+        "DistrictName": "string",
+        "CareOf": "string",
+        "PostCode": "string",
+        "TownName": "string",
+        "CountrySubDivision": "string",
+        "Country": "XA",
+        "AddressLine": [
+          "string"
+        ]
+      },
+      "UltimateCreditor": {
+        "Name": "string",
+        "Identification": "string",
+        "LEI": "IZ9Q00LZEVUKWCQY6X15",
+        "SchemeName": "string",
+        "PostalAddress": {
+          "AddressType": "BIZZ",
+          "Department": "string",
+          "SubDepartment": "string",
+          "StreetName": "string",
+          "BuildingNumber": "string",
+          "BuildingName": "string",
+          "Floor": "string",
+          "UnitNumber": "string",
+          "Room": "string",
+          "PostBox": "string",
+          "TownLocationName": "string",
+          "DistrictName": "string",
+          "CareOf": "string",
+          "PostCode": "string",
+          "TownName": "string",
+          "CountrySubDivision": "string",
+          "Country": "NO",
+          "AddressLine": [
+            "string"
+          ]
+        }
+      },
+      "UltimateDebtor": {
+        "Name": "string",
+        "Identification": "string",
+        "LEI": "IZ9Q00LZEVUKWCQY6X15",
+        "SchemeName": "string",
+        "PostalAddress": {
+          "AddressType": "BIZZ",
+          "Department": "string",
+          "SubDepartment": "string",
+          "StreetName": "string",
+          "BuildingNumber": "string",
+          "BuildingName": "string",
+          "Floor": "string",
+          "UnitNumber": "string",
+          "Room": "string",
+          "PostBox": "string",
+          "TownLocationName": "string",
+          "DistrictName": "string",
+          "CareOf": "string",
+          "PostCode": "string",
+          "TownName": "string",
+          "CountrySubDivision": "string",
+          "Country": "CN",
+          "AddressLine": [
+            "string"
+          ]
+        }
       },
       "RemittanceInformation": {
         "Structured": [
           {
-          "ReferredDocumentInformation": [{
+            "ReferredDocumentInformation": [
+              {
+                "Code": "CINV",
+                "Issuer": "string",
+                "Number": "string",
+                "RelatedDate": "2025-11-21T17:02:20.401Z",
+                "LineDetails": [
+                  "string"
+                ]
+              }
+            ],
+            "ReferredDocumentAmount": "756032288.8",
             "CreditorReferenceInformation": {
-              "Reference": "SweepCo",
+              "Code": "DISP",
+              "Issuer": "string",
+              "Reference": "string"
             },
-          "AdditionalRemittanceInformation": ["Rose's pocket money"],
-          },
+            "Invoicer": "string",
+            "Invoicee": "string",
+            "TaxRemittance": "string",
+            "AdditionalRemittanceInformation": [
+              "string"
+            ]
+          }
+        ],
+        "Unstructured": [
+          "string"
         ]
-      }
+      },
+      "RegulatoryReporting": [
+        {
+          "DebitCreditReportingIndicator": "CRED",
+          "Authority": {
+            "Name": "string",
+            "CountryCode": "YP"
+          },
+          "Details": [
+            {
+              "Type": "string",
+              "Date": "2025-11-21T17:02:20.401Z",
+              "Country": "ZF",
+              "Amount": {
+                "Amount": "7611531.95",
+                "Currency": "HUN"
+              },
+              "Information": [
+                "string"
+              ]
+            }
+          ]
+        }
       ]
     },
+    "DebtorAccount": {
+      "SchemeName": "string",
+      "Identification": "string",
+      "Name": "string",
+      "SecondaryIdentification": "string",
+      "Proxy": {
+        "Identification": "string",
+        "Code": "TELE",
+        "Type": "string"
+      }
+    }
   },
   "Risk": {
-    "PaymentContextCode": "TransferToSelf",
+    "PaymentContextCode": "BillingGoodsAndServicesInAdvance",
+    "MerchantCategoryCode": "stri",
+    "MerchantCustomerIdentification": "string",
     "ContractPresentIndicator": true,
-    "PaymentPurposeCode": "EPAY",
-    "CategoryPurposeCode": "GP2P", 
-    "BeneficiaryPaymentDetailsPrepopulatedIndicator": true,
-    "BeneficiaryAccountType": "Personal",
-  },
+    "BeneficiaryPrepopulatedIndicator": true,
+    "PaymentPurposeCode": "BKDF",
+    "CategoryPurposeCode": "BONU",
+    "BeneficiaryAccountType": "Business",
+    "DeliveryAddress": {
+      "AddressType": "BIZZ",
+      "Department": "string",
+      "SubDepartment": "string",
+      "StreetName": "string",
+      "BuildingNumber": "string",
+      "BuildingName": "string",
+      "Floor": "string",
+      "UnitNumber": "string",
+      "Room": "string",
+      "PostBox": "string",
+      "TownLocationName": "string",
+      "DistrictName": "string",
+      "CareOf": "string",
+      "PostCode": "string",
+      "TownName": "string",
+      "CountrySubDivision": "string",
+      "Country": "GK",
+      "AddressLine": [
+        "string"
+      ]
+    }
   },
   "Links": {
-    "Self": "https://api.alphabank.com/open-banking/v4.0/pisp/domestic-vrp-consents/fe615446-e53a-45ed-954c-ae5d1f97a93b"
+    "Self": "string",
+    "First": "string",
+    "Prev": "string",
+    "Next": "string",
+    "Last": "string"
   },
-  
-  "Meta": {}  
+  "Meta": {}
 }
 ```
 
@@ -308,128 +550,251 @@ Content-Type: application/json
 ```json
 {
   "Data": {
-    "ConsentId": "fe615446-e53a-45ed-954c-ae5d1f97a93b",
-    "CreationDateTime": "2017-06-05T15:15:15+00:00",
-    "Status": "AUTH",
-    "StatusUpdateDateTime": "2017-06-05T15:15:15+05:00",
     "ReadRefundAccount": "Yes",
-    "StatusReason": {
-      "StatusReasonCode": "U038", 
-      "StatusReasonDescription":"Consent consumed successfully",
-    },
+    "ConsentId": "string",
+    "CreationDateTime": "2025-11-21T17:03:46.889Z",
+    "Status": "AWAU",
+    "StatusReason": [
+      {
+        "StatusReasonCode": "ERIN",
+        "StatusReasonDescription": "string",
+        "Path": "string"
+      }
+    ],
+    "StatusUpdateDateTime": "2025-11-21T17:03:46.889Z",
     "ControlParameters": {
-      "PSUAuthenticationMethods": [ "UK.OBIE.SCA" ],
-      "PSUInteractionTypes": [ "OffSession" ],
-      "VRPType": "UK.OBIE.VRPType.Sweeping",
-      "ValidFromDateTime": "2017-06-05T15:15:13+00:00",
-      "ValidToDateTime": "2020-06-05T15:15:13+00:00",
+      "ValidFromDateTime": "2025-11-21T17:03:46.889Z",
+      "ValidToDateTime": "2025-11-21T17:03:46.889Z",
       "MaximumIndividualAmount": {
-        "Amount": "100.00",
-        "Currency": "GBP"
+        "Amount": "6",
+        "Currency": "UMN"
       },
       "PeriodicLimits": [
         {
-          "Amount": "200.00",
-          "Currency": "GBP",
+          "PeriodType": "Day",
           "PeriodAlignment": "Consent",
-          "PeriodType": "Week"
+          "Amount": "4",
+          "Currency": "GIP"
         }
-      ]
-    },
-
-    "DebtorAccount": {
-      "SchemeName": "UK.OBIE.IBAN",
-      "Identification": "GB76LOYD30949301273801",
-      "Name": "Marcus Sweepimus",
-      "SecondaryIdentification": "008419",
-      "Name": "Marcus Sweepimus",
-      "Proxy": {
-          "Identification": "441234012345",
-          "Code": "TELE",
-          "Type": "Telephone"
-      }
+      ],
+      "VRPType": [
+        "string"
+      ],
+      "PSUAuthenticationMethods": [
+        "string"
+      ],
+      "PSUInteractionTypes": [
+        "InSession"
+      ],
+      "SupplementaryData": {}
     },
     "Initiation": {
       "DebtorAccount": {
-        "SchemeName": "UK.OBIE.IBAN",
-        "Identification": "GB76LOYD30949301273801",
-        "Name": "Marcus Sweepimus",
-        "SecondaryIdentification": "008419",
-        "Name": "Marcus Sweepimus",
+        "SchemeName": "string",
+        "Identification": "string",
+        "Name": "string",
+        "SecondaryIdentification": "string",
         "Proxy": {
-            "Identification": "441234012345",
-            "Code": "TELE",
-            "Type": "Telephone"
+          "Identification": "string",
+          "Code": "TELE",
+          "Type": "string"
         }
       },
       "CreditorAccount": {
-        "SchemeName": "UK.OBIE.SortCodeAccountNumber",
-        "Identification": "30949330000010",
-        "SecondaryIdentification": "Roll 90210",
-        "Name": "Marcus Sweepimus",
+        "SchemeName": "string",
+        "Identification": "string",
+        "Name": "string",
+        "SecondaryIdentification": "string",
         "Proxy": {
-          "Identification": "441234012348",
+          "Identification": "string",
           "Code": "TELE",
-          "Type": "Telephone"
-        }
-      },
-      "CreditorAgent": {  
-          "LEI": "IZ9Q00LZEVUKWCQY6X15",
-          "SchemeName": "UK.OBIE.BICFI",
-          "Identification": "80200112344562",
-          "Name": "The Credit Agent", 
-          "PostalAddress": { 
-            "AddressType": "BIZZ",
-            "StreetName": "Bank Street",
-            "BuildingNumber": "11",
-            "Floor": "6",
-            "PostCode": "Z78 4TY",
-            "TownName": "London",
-            "Country": "UK"
+          "Type": "string"
         }
       },
       "CreditorPostalAddress": {
         "AddressType": "BIZZ",
-        "Department": "Finance",
-        "SubDepartment": "Payroll",
-        "StreetName": "Bank Street",
-        "BuildingNumber": "11",
-        "BuildingName": "Tower Bridges",
-        "Floor": "6",
-        "UnitNumber": "UNIT591",
-        "Room": "844",
-        "PostBox": "PO Box 123456",
-        "PostCode": "Z78 4TY",
-        "TownLocationName":"Bank",
-        "TownName": "London",
-        "DistrictName": "Greater London",
-        "CareOf": "Ms Jane Smith",
-        "CountrySubDivision": "England",
-        "Country": "UK"
+        "Department": "string",
+        "SubDepartment": "string",
+        "StreetName": "string",
+        "BuildingNumber": "string",
+        "BuildingName": "string",
+        "Floor": "string",
+        "UnitNumber": "string",
+        "Room": "string",
+        "PostBox": "string",
+        "TownLocationName": "string",
+        "DistrictName": "string",
+        "CareOf": "string",
+        "PostCode": "string",
+        "TownName": "string",
+        "CountrySubDivision": "string",
+        "Country": "EJ",
+        "AddressLine": [
+          "string"
+        ]
+      },
+      "UltimateCreditor": {
+        "Name": "string",
+        "Identification": "string",
+        "LEI": "IZ9Q00LZEVUKWCQY6X15",
+        "SchemeName": "string",
+        "PostalAddress": {
+          "AddressType": "BIZZ",
+          "Department": "string",
+          "SubDepartment": "string",
+          "StreetName": "string",
+          "BuildingNumber": "string",
+          "BuildingName": "string",
+          "Floor": "string",
+          "UnitNumber": "string",
+          "Room": "string",
+          "PostBox": "string",
+          "TownLocationName": "string",
+          "DistrictName": "string",
+          "CareOf": "string",
+          "PostCode": "string",
+          "TownName": "string",
+          "CountrySubDivision": "string",
+          "Country": "JN",
+          "AddressLine": [
+            "string"
+          ]
+        }
+      },
+      "UltimateDebtor": {
+        "Name": "string",
+        "Identification": "string",
+        "LEI": "IZ9Q00LZEVUKWCQY6X15",
+        "SchemeName": "string",
+        "PostalAddress": {
+          "AddressType": "BIZZ",
+          "Department": "string",
+          "SubDepartment": "string",
+          "StreetName": "string",
+          "BuildingNumber": "string",
+          "BuildingName": "string",
+          "Floor": "string",
+          "UnitNumber": "string",
+          "Room": "string",
+          "PostBox": "string",
+          "TownLocationName": "string",
+          "DistrictName": "string",
+          "CareOf": "string",
+          "PostCode": "string",
+          "TownName": "string",
+          "CountrySubDivision": "string",
+          "Country": "YE",
+          "AddressLine": [
+            "string"
+          ]
+        }
       },
       "RemittanceInformation": {
         "Structured": [
           {
-          "ReferredDocumentAmount": 1,
-          "CreditorReferenceInformation": {
-            "Reference": "SweepCo",
+            "ReferredDocumentInformation": [
+              {
+                "Code": "CINV",
+                "Issuer": "string",
+                "Number": "string",
+                "RelatedDate": "2025-11-21T17:03:46.889Z",
+                "LineDetails": [
+                  "string"
+                ]
+              }
+            ],
+            "ReferredDocumentAmount": "5353666.1",
+            "CreditorReferenceInformation": {
+              "Code": "DISP",
+              "Issuer": "string",
+              "Reference": "string"
             },
-        "AdditionalRemittanceInformation": ["Rose's pocket money"],
-          },
+            "Invoicer": "string",
+            "Invoicee": "string",
+            "TaxRemittance": "string",
+            "AdditionalRemittanceInformation": [
+              "string"
+            ]
+          }
         ],
+        "Unstructured": [
+          "string"
+        ]
       },
-  },
+      "RegulatoryReporting": [
+        {
+          "DebitCreditReportingIndicator": "CRED",
+          "Authority": {
+            "Name": "string",
+            "CountryCode": "LN"
+          },
+          "Details": [
+            {
+              "Type": "string",
+              "Date": "2025-11-21T17:03:46.889Z",
+              "Country": "FZ",
+              "Amount": {
+                "Amount": "5758357",
+                "Currency": "IZC"
+              },
+              "Information": [
+                "string"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "DebtorAccount": {
+      "SchemeName": "string",
+      "Identification": "string",
+      "Name": "string",
+      "SecondaryIdentification": "string",
+      "Proxy": {
+        "Identification": "string",
+        "Code": "TELE",
+        "Type": "string"
+      }
+    }
   },
   "Risk": {
-    "PaymentContextCode": "TransferToSelf",
+    "PaymentContextCode": "BillingGoodsAndServicesInAdvance",
+    "MerchantCategoryCode": "stri",
+    "MerchantCustomerIdentification": "string",
     "ContractPresentIndicator": true,
-    "PaymentPurposeCode": "EPAY",
-    "CategoryPurposeCode": "GP2P", 
-    "BeneficiaryPaymentDetailsPrepopulatedIndicator": true,
-    "BeneficiaryAccountType": "Personal",
-}
+    "BeneficiaryPrepopulatedIndicator": true,
+    "PaymentPurposeCode": "BKDF",
+    "CategoryPurposeCode": "BONU",
+    "BeneficiaryAccountType": "Business",
+    "DeliveryAddress": {
+      "AddressType": "BIZZ",
+      "Department": "string",
+      "SubDepartment": "string",
+      "StreetName": "string",
+      "BuildingNumber": "string",
+      "BuildingName": "string",
+      "Floor": "string",
+      "UnitNumber": "string",
+      "Room": "string",
+      "PostBox": "string",
+      "TownLocationName": "string",
+      "DistrictName": "string",
+      "CareOf": "string",
+      "PostCode": "string",
+      "TownName": "string",
+      "CountrySubDivision": "string",
+      "Country": "HX",
+      "AddressLine": [
+        "string"
+      ]
+    }
+  },
   "Links": {
-    "Self": "https://api.alphabank.com/open-banking/v4.0/pisp/domestic-vrp-consents/fe615446-e53a-45ed-954c-ae5d1f97a93b"
+    "Self": "string",
+    "First": "string",
+    "Prev": "string",
+    "Next": "string",
+    "Last": "string"
   },
   "Meta": {}
 }
@@ -454,154 +819,303 @@ Accept: application/json
 ```json
 {
   "Data": {
-    "ConsentId": "fe615446-e53a-45ed-954c-ae5d1f97a93b",
-    "PSUAuthenticationMethod": "UK.OBIE.SCA",
-    "PSUInteractionType": "OffSession",
-    "VRPType": "UK.OBIE.VRPType.Sweeping" ,
-
+    "ConsentId": "string",
+    "PSUAuthenticationMethod": "string",
+    "PSUInteractionType": "InSession",
+    "VRPType": "string",
     "Initiation": {
       "DebtorAccount": {
-        "SchemeName": "UK.OBIE.IBAN",
-        "Identification": "GB76LOYD30949301273801",
-        "Name": "Marcus Sweepimus",
-        "SecondaryIdentification": "008419",
+        "SchemeName": "string",
+        "Identification": "string",
+        "Name": "string",
+        "SecondaryIdentification": "string",
         "Proxy": {
-          "Identification": "441234012345",
+          "Identification": "string",
           "Code": "TELE",
-          "Type": "Telephone"
-        }
-      },
-      "CreditorAgent": {  
-          "LEI": "IZ9Q00LZEVUKWCQY6X15",
-          "SchemeName": "UK.OBIE.BICFI",
-          "Identification": "80200112344562",
-          "Name": "The Credit Agent", 
-          "PostalAddress": { 
-            "AddressType": "BIZZ",
-            "StreetName": "Bank Street",
-            "BuildingNumber": "11",
-            "Floor": "6",
-            "PostCode": "Z78 4TY",
-            "TownName": "London",
-            "Country": "UK"
+          "Type": "string"
         }
       },
       "CreditorAccount": {
-        "SchemeName": "UK.OBIE.SortCodeAccountNumber",
-        "Identification": "30949330000010",
-        "SecondaryIdentification": "Roll 90210",
-        "Name": "Marcus Sweepimus",
+        "SchemeName": "string",
+        "Identification": "string",
+        "Name": "string",
+        "SecondaryIdentification": "string",
         "Proxy": {
-          "Identification": "441234012348",
+          "Identification": "string",
           "Code": "TELE",
-          "Type": "Telephone"
+          "Type": "string"
         }
       },
       "CreditorPostalAddress": {
         "AddressType": "BIZZ",
-        "Department": "Finance",
-        "SubDepartment": "Payroll",
-        "StreetName": "Bank Street",
-        "BuildingNumber": "11",
-        "BuildingName": "Tower Bridges",
-        "Floor": "6",
-        "UnitNumber": "UNIT591",
-        "Room": "844",
-        "PostBox": "PO Box 123456",
-        "PostCode": "Z78 4TY",
-        "TownLocationName":"Bank",
-        "TownName": "London",
-        "DistrictName": "Greater London",
-        "CareOf": "Ms Jane Smith",
-        "CountrySubDivision": "England",
-        "Country": "UK"
+        "Department": "string",
+        "SubDepartment": "string",
+        "StreetName": "string",
+        "BuildingNumber": "string",
+        "BuildingName": "string",
+        "Floor": "string",
+        "UnitNumber": "string",
+        "Room": "string",
+        "PostBox": "string",
+        "TownLocationName": "string",
+        "DistrictName": "string",
+        "CareOf": "string",
+        "PostCode": "string",
+        "TownName": "string",
+        "CountrySubDivision": "string",
+        "Country": "PK",
+        "AddressLine": [
+          "string"
+        ]
       },
-    "RemittanceInformation": {
-        "Structured": [
-          {
-          "ReferredDocumentAmount": 1,
-          "CreditorReferenceInformation": {
-            "Reference": "SweepCo",
-            },
-        "AdditionalRemittanceInformation": ["Rose's pocket money"],
-          },
-        ],
-      }
-  },
-    "Instruction": {
-      "InstructionIdentification": "fe655556-e53a-45ed-954c-ae5d1f97a93b",
-      "EndToEndIdentification": "fe699996-e53a-45ed-954c-ae5d1f97a93a",
-      "LocalInstrument": "UK.OBIE.Paym",
-      "CreditorAccount": {
-        "SchemeName": "SortCodeAccountNumber",
-        "Identification": "30949330000010",
-        "SecondaryIdentification": "Roll 90210",
-        "Name": "Marcus Sweepimus",
-        "Proxy":{
-          "Identification": "441234012348",
-          "Code": "TELE",
-          "Type": "Telephone"
+      "UltimateCreditor": {
+        "Name": "string",
+        "Identification": "string",
+        "LEI": "IZ9Q00LZEVUKWCQY6X15",
+        "SchemeName": "string",
+        "PostalAddress": {
+          "AddressType": "BIZZ",
+          "Department": "string",
+          "SubDepartment": "string",
+          "StreetName": "string",
+          "BuildingNumber": "string",
+          "BuildingName": "string",
+          "Floor": "string",
+          "UnitNumber": "string",
+          "Room": "string",
+          "PostBox": "string",
+          "TownLocationName": "string",
+          "DistrictName": "string",
+          "CareOf": "string",
+          "PostCode": "string",
+          "TownName": "string",
+          "CountrySubDivision": "string",
+          "Country": "LW",
+          "AddressLine": [
+            "string"
+          ]
         }
       },
-      "InstructedAmount": {
-        "Amount": "10.00",
-        "Currency": "GBP"
-      },
-      "CreditorAgent": {  
-          "LEI": "IZ9Q00LZEVUKWCQY6X15",
-          "SchemeName": "UK.OBIE.BICFI",
-          "Identification": "80200112344562",
-          "Name": "The Credit Agent", 
-          "PostalAddress": { 
-            "AddressType": "BIZZ",
-            "StreetName": "Bank Street",
-            "BuildingNumber": "11",
-            "Floor": "6",
-            "PostCode": "Z78 4TY",
-            "TownName": "London",
-            "Country": "UK"
+      "UltimateDebtor": {
+        "Name": "string",
+        "Identification": "string",
+        "LEI": "IZ9Q00LZEVUKWCQY6X15",
+        "SchemeName": "string",
+        "PostalAddress": {
+          "AddressType": "BIZZ",
+          "Department": "string",
+          "SubDepartment": "string",
+          "StreetName": "string",
+          "BuildingNumber": "string",
+          "BuildingName": "string",
+          "Floor": "string",
+          "UnitNumber": "string",
+          "Room": "string",
+          "PostBox": "string",
+          "TownLocationName": "string",
+          "DistrictName": "string",
+          "CareOf": "string",
+          "PostCode": "string",
+          "TownName": "string",
+          "CountrySubDivision": "string",
+          "Country": "AH",
+          "AddressLine": [
+            "string"
+          ]
         }
-      },
-      "CreditorPostalAddress": {
-        "AddressType": "BIZZ",
-        "Department": "Finance",
-        "SubDepartment": "Payroll",
-        "StreetName": "Bank Street",
-        "BuildingNumber": "11",
-        "BuildingName": "Tower Bridges",
-        "Floor": "6",
-        "UnitNumber": "UNIT591",
-        "Room": "844",
-        "PostBox": "PO Box 123456",
-        "PostCode": "Z78 4TY",
-        "TownLocationName":"Bank",
-        "TownName": "London",
-        "DistrictName": "Greater London",
-        "CareOf": "Ms Jane Smith",
-        "CountrySubDivision": "England",
-        "Country": "UK"
       },
       "RemittanceInformation": {
         "Structured": [
           {
-          "ReferredDocumentAmount": 1,
-          "CreditorReferenceInformation": {
-            "Reference": "SweepCo",
+            "ReferredDocumentInformation": [
+              {
+                "Code": "CINV",
+                "Issuer": "string",
+                "Number": "string",
+                "RelatedDate": "2025-11-21T17:04:23.514Z",
+                "LineDetails": [
+                  "string"
+                ]
+              }
+            ],
+            "ReferredDocumentAmount": "895843.7",
+            "CreditorReferenceInformation": {
+              "Code": "DISP",
+              "Issuer": "string",
+              "Reference": "string"
             },
-        "AdditionalRemittanceInformation": ["Rose's pocket money"],
-          },
+            "Invoicer": "string",
+            "Invoicee": "string",
+            "TaxRemittance": "string",
+            "AdditionalRemittanceInformation": [
+              "string"
+            ]
+          }
         ],
-      }
+        "Unstructured": [
+          "string"
+        ]
+      },
+      "RegulatoryReporting": [
+        {
+          "DebitCreditReportingIndicator": "CRED",
+          "Authority": {
+            "Name": "string",
+            "CountryCode": "ID"
+          },
+          "Details": [
+            {
+              "Type": "string",
+              "Date": "2025-11-21T17:04:23.514Z",
+              "Country": "KX",
+              "Amount": {
+                "Amount": "4102168.186",
+                "Currency": "AMY"
+              },
+              "Information": [
+                "string"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "Instruction": {
+      "InstructionIdentification": "string",
+      "EndToEndIdentification": "string",
+      "RemittanceInformation": {
+        "Structured": [
+          {
+            "ReferredDocumentInformation": [
+              {
+                "Code": "CINV",
+                "Issuer": "string",
+                "Number": "string",
+                "RelatedDate": "2025-11-21T17:04:23.514Z",
+                "LineDetails": [
+                  "string"
+                ]
+              }
+            ],
+            "ReferredDocumentAmount": "76930427487.04160",
+            "CreditorReferenceInformation": {
+              "Code": "DISP",
+              "Issuer": "string",
+              "Reference": "string"
+            },
+            "Invoicer": "string",
+            "Invoicee": "string",
+            "TaxRemittance": "string",
+            "AdditionalRemittanceInformation": [
+              "string"
+            ]
+          }
+        ],
+        "Unstructured": [
+          "string"
+        ]
+      },
+      "LocalInstrument": "string",
+      "InstructedAmount": {
+        "Amount": "7540.64",
+        "Currency": "LCN"
+      },
+      "CreditorPostalAddress": {
+        "AddressType": "BIZZ",
+        "Department": "string",
+        "SubDepartment": "string",
+        "StreetName": "string",
+        "BuildingNumber": "string",
+        "BuildingName": "string",
+        "Floor": "string",
+        "UnitNumber": "string",
+        "Room": "string",
+        "PostBox": "string",
+        "TownLocationName": "string",
+        "DistrictName": "string",
+        "CareOf": "string",
+        "PostCode": "string",
+        "TownName": "string",
+        "CountrySubDivision": "string",
+        "Country": "DE",
+        "AddressLine": [
+          "string"
+        ]
+      },
+      "CreditorAccount": {
+        "SchemeName": "string",
+        "Identification": "string",
+        "Name": "string",
+        "SecondaryIdentification": "string",
+        "Proxy": {
+          "Identification": "string",
+          "Code": "TELE",
+          "Type": "string"
+        }
+      },
+      "UltimateCreditor": {
+        "Name": "string",
+        "Identification": "string",
+        "LEI": "IZ9Q00LZEVUKWCQY6X15",
+        "SchemeName": "string",
+        "PostalAddress": {
+          "AddressType": "BIZZ",
+          "Department": "string",
+          "SubDepartment": "string",
+          "StreetName": "string",
+          "BuildingNumber": "string",
+          "BuildingName": "string",
+          "Floor": "string",
+          "UnitNumber": "string",
+          "Room": "string",
+          "PostBox": "string",
+          "TownLocationName": "string",
+          "DistrictName": "string",
+          "CareOf": "string",
+          "PostCode": "string",
+          "TownName": "string",
+          "CountrySubDivision": "string",
+          "Country": "DL",
+          "AddressLine": [
+            "string"
+          ]
+        }
+      },
+      "SupplementaryData": {}
     }
   },
   "Risk": {
-    "PaymentContextCode": "TransferToSelf",
+    "PaymentContextCode": "BillingGoodsAndServicesInAdvance",
+    "MerchantCategoryCode": "stri",
+    "MerchantCustomerIdentification": "string",
     "ContractPresentIndicator": true,
-    "PaymentPurposeCode": "EPAY",
-    "CategoryPurposeCode": "GP2P", 
-    "BeneficiaryPaymentDetailsPrepopulatedIndicator": true,
-    "BeneficiaryAccountType": "Personal",
+    "BeneficiaryPrepopulatedIndicator": true,
+    "PaymentPurposeCode": "BKDF",
+    "CategoryPurposeCode": "BONU",
+    "BeneficiaryAccountType": "Business",
+    "DeliveryAddress": {
+      "AddressType": "BIZZ",
+      "Department": "string",
+      "SubDepartment": "string",
+      "StreetName": "string",
+      "BuildingNumber": "string",
+      "BuildingName": "string",
+      "Floor": "string",
+      "UnitNumber": "string",
+      "Room": "string",
+      "PostBox": "string",
+      "TownLocationName": "string",
+      "DistrictName": "string",
+      "CareOf": "string",
+      "PostCode": "string",
+      "TownName": "string",
+      "CountrySubDivision": "string",
+      "Country": "UL",
+      "AddressLine": [
+        "string"
+      ]
     }
+  }
 }
 ```
 
@@ -617,200 +1131,350 @@ Content-Type: application/json
 ```json
 {
   "Data": {
-    "ConsentId": "fe615446-e53a-45ed-954c-ae5d1f97a93b",
-    "CreationDateTime": "2017-06-05T15:15:15+00:00",
-    "DomesticVRPId": "OU90210",
-    "Status": "PDNG",
-    "StatusReason": {
-      "StatusReasonCode": "83",
-      "StatusReasonDescription":"Pending completion next working day",
-    },
-    "StatusUpdateDateTime": "2017-06-05T15:15:15+00:00",
-    "ExpectedExecutionDateTime": "2017-06-05T15:15:15+00:00",
-    "ExpectedSettlementDateTime": "2017-06-06T15:15:15+00:00",
-    "DebtorAccount": {
-      "SchemeName": "UK.OBIE.IBAN",
-      "Identification": "GB76LOYD30949301273801",
-      "Name": "Marcus Sweepimus",
-      "SecondaryIdentification": "008419",
-      "Proxy":{
-          "Identification": "441234012348",
-          "Code": "TELE",
-          "Type": "Telephone"
-        }
-    },
-    "Refund" : "Yes", 
-    "Initiation": {
-      "DebtorAccount": {
-        "SchemeName": "UK.OBIE.IBAN",
-        "Identification": "GB76LOYD30949301273801",
-        "Name": "Marcus Sweepimus",
-        "SecondaryIdentification": "008419",
-        "Proxy": {
-          "Identification": "441234012345",
-          "Code": "TELE",
-          "Type": "Telephone"
-        }
-      },
-      "Refund":{
-        "SchemeName": "SortCodeAccountNumber",
-        "Identification": "30949330000010",
-        "SecondaryIdentification": "Roll 90210",
-        "Name": "Marcus Sweepimus",
-      },
-      "CreditorAgent": {  
-          "LEI": "IZ9Q00LZEVUKWCQY6X15",
-          "SchemeName": "UK.OBIE.BICFI",
-          "Identification": "80200112344562",
-          "Name": "The Credit Agent", 
-          "PostalAddress": { 
-            "AddressType": "BIZZ",
-            "StreetName": "Bank Street",
-            "BuildingNumber": "11",
-            "Floor": "6",
-            "PostCode": "Z78 4TY",
-            "TownName": "London",
-            "Country": "UK"
-        }
-      },
-      "CreditorAccount": {
-        "SchemeName": "SortCodeAccountNumber",
-        "Identification": "30949330000010",
-        "SecondaryIdentification": "Roll 90210",
-        "Name": "Marcus Sweepimus",
-        "Proxy": {
-          "Identification": "441234012385",
-          "Code": "TELE",
-          "Type": "Telephone"
-        }
-      },
-      "CreditorPostalAddress": {
-        "AddressType": "BIZZ",
-        "Department": "Finance",
-        "SubDepartment": "Payroll",
-        "StreetName": "Bank Street",
-        "BuildingNumber": "11",
-        "BuildingName": "Tower Bridges",
-        "Floor": "6",
-        "UnitNumber": "UNIT591",
-        "Room": "844",
-        "PostBox": "PO Box 123456",
-        "PostCode": "Z78 4TY",
-        "TownLocationName":"Bank",
-        "TownName": "London",
-        "DistrictName": "Greater London",
-        "CareOf": "Ms Jane Smith",
-        "CountrySubDivision": "England",
-        "Country": "UK"
-      },
-     "RemittanceInformation": {
-        "Structured": [
-          {
-          "ReferredDocumentAmount": 1,
-          "CreditorReferenceInformation": {
-            "Reference": "SweepCo",
-            },
-        "AdditionalRemittanceInformation": ["Rose's pocket money"],
-          },
-        ],
+    "DomesticVRPId": "string",
+    "ConsentId": "string",
+    "CreationDateTime": "2025-11-21T17:04:23.519Z",
+    "Status": "RCVD",
+    "StatusReason": [
+      {
+        "StatusReasonCode": "ERIN",
+        "StatusReasonDescription": "string",
+        "Path": "string"
+      }
+    ],
+    "StatusUpdateDateTime": "2025-11-21T17:04:23.519Z",
+    "ExpectedExecutionDateTime": "2025-11-21T17:04:23.519Z",
+    "ExpectedSettlementDateTime": "2025-11-21T17:04:23.519Z",
+    "Refund": {
+      "Account": {
+        "SchemeName": "string",
+        "Identification": "string",
+        "Name": "string",
+        "SecondaryIdentification": "string"
       }
     },
-
-    "Instruction": {
-      "InstructionIdentification": "fe655556-e53a-45ed-954c-ae5d1f97a93b",
-      "EndToEndIdentification": "fe699996-e53a-45ed-954c-ae5d1f97a93a",
-      "LocalInstrument": "UK.OBIE.Paym",
-      "CreditorAccount": {
-        "SchemeName": "SortCodeAccountNumber",
-        "Identification": "30949330000010",
-        "SecondaryIdentification": "Roll 90210",
-        "Name": "Marcus Sweepimus",
+    "Charges": [
+      {
+        "ChargeBearer": "BorneByCreditor",
+        "Type": "UK.OBIE.CHAPSOut",
+        "Amount": {
+          "Amount": "221080213.5665",
+          "Currency": "VZG"
+        }
+      }
+    ],
+    "Initiation": {
+      "DebtorAccount": {
+        "SchemeName": "string",
+        "Identification": "string",
+        "Name": "string",
+        "SecondaryIdentification": "string",
         "Proxy": {
-          "Identification": "441234012385",
+          "Identification": "string",
           "Code": "TELE",
-          "Type": "Telephone"
+          "Type": "string"
         }
       },
-      "CreditorAgent": {  
-          "LEI": "IZ9Q00LZEVUKWCQY6X15",
-          "SchemeName": "UK.OBIE.BICFI",
-          "Identification": "80200112344562",
-          "Name": "The Credit Agent", 
-          "PostalAddress": { 
-            "AddressType": "BIZZ",
-            "StreetName": "Bank Street",
-            "BuildingNumber": "11",
-            "Floor": "6",
-            "PostCode": "Z78 4TY",
-            "TownName": "London",
-            "Country": "UK"
+      "CreditorAccount": {
+        "SchemeName": "string",
+        "Identification": "string",
+        "Name": "string",
+        "SecondaryIdentification": "string",
+        "Proxy": {
+          "Identification": "string",
+          "Code": "TELE",
+          "Type": "string"
         }
       },
       "CreditorPostalAddress": {
         "AddressType": "BIZZ",
-        "Department": "Finance",
-        "SubDepartment": "Payroll",
-        "StreetName": "Bank Street",
-        "BuildingNumber": "11",
-        "BuildingName": "Tower Bridges",
-        "Floor": "6",
-        "UnitNumber": "UNIT591",
-        "Room": "844",
-        "PostBox": "PO Box 123456",
-        "PostCode": "Z78 4TY",
-        "TownLocationName":"Bank",
-        "TownName": "London",
-        "DistrictName": "Greater London",
-        "CareOf": "Ms Jane Smith",
-        "CountrySubDivision": "England",
-        "Country": "UK"
-      },
-      "InstructedAmount": {
-        "Amount": "10.00",
-        "Currency": "GBP"
+        "Department": "string",
+        "SubDepartment": "string",
+        "StreetName": "string",
+        "BuildingNumber": "string",
+        "BuildingName": "string",
+        "Floor": "string",
+        "UnitNumber": "string",
+        "Room": "string",
+        "PostBox": "string",
+        "TownLocationName": "string",
+        "DistrictName": "string",
+        "CareOf": "string",
+        "PostCode": "string",
+        "TownName": "string",
+        "CountrySubDivision": "string",
+        "Country": "VI",
+        "AddressLine": [
+          "string"
+        ]
       },
       "UltimateCreditor": {
-        "SchemeName": "UK.OBIE.BICFI",
-        "Identification": "2360549017905161589",
-        "Name": "Ultimate Creditor",
-        "LEI": "60450004FECVJV7YN339",
+        "Name": "string",
+        "Identification": "string",
+        "LEI": "IZ9Q00LZEVUKWCQY6X15",
+        "SchemeName": "string",
         "PostalAddress": {
           "AddressType": "BIZZ",
-          "StreetName": "Bank Street",
-          "BuildingNumber": "11",
-          "Floor": "6",
-          "PostCode": "Z78 4TY",
-          "TownName": "London",
-          "Country": "UK"
-          }
-        },
+          "Department": "string",
+          "SubDepartment": "string",
+          "StreetName": "string",
+          "BuildingNumber": "string",
+          "BuildingName": "string",
+          "Floor": "string",
+          "UnitNumber": "string",
+          "Room": "string",
+          "PostBox": "string",
+          "TownLocationName": "string",
+          "DistrictName": "string",
+          "CareOf": "string",
+          "PostCode": "string",
+          "TownName": "string",
+          "CountrySubDivision": "string",
+          "Country": "WQ",
+          "AddressLine": [
+            "string"
+          ]
+        }
+      },
+      "UltimateDebtor": {
+        "Name": "string",
+        "Identification": "string",
+        "LEI": "IZ9Q00LZEVUKWCQY6X15",
+        "SchemeName": "string",
+        "PostalAddress": {
+          "AddressType": "BIZZ",
+          "Department": "string",
+          "SubDepartment": "string",
+          "StreetName": "string",
+          "BuildingNumber": "string",
+          "BuildingName": "string",
+          "Floor": "string",
+          "UnitNumber": "string",
+          "Room": "string",
+          "PostBox": "string",
+          "TownLocationName": "string",
+          "DistrictName": "string",
+          "CareOf": "string",
+          "PostCode": "string",
+          "TownName": "string",
+          "CountrySubDivision": "string",
+          "Country": "OO",
+          "AddressLine": [
+            "string"
+          ]
+        }
+      },
       "RemittanceInformation": {
         "Structured": [
           {
-          "ReferredDocumentAmount": 1,
-          "CreditorReferenceInformation": {
-            "Reference": "SweepCo",
+            "ReferredDocumentInformation": [
+              {
+                "Code": "CINV",
+                "Issuer": "string",
+                "Number": "string",
+                "RelatedDate": "2025-11-21T17:04:23.519Z",
+                "LineDetails": [
+                  "string"
+                ]
+              }
+            ],
+            "ReferredDocumentAmount": "700.6",
+            "CreditorReferenceInformation": {
+              "Code": "DISP",
+              "Issuer": "string",
+              "Reference": "string"
             },
-        "AdditionalRemittanceInformation": ["Rose's pocket money"],
-          },
+            "Invoicer": "string",
+            "Invoicee": "string",
+            "TaxRemittance": "string",
+            "AdditionalRemittanceInformation": [
+              "string"
+            ]
+          }
         ],
+        "Unstructured": [
+          "string"
+        ]
+      },
+      "RegulatoryReporting": [
+        {
+          "DebitCreditReportingIndicator": "CRED",
+          "Authority": {
+            "Name": "string",
+            "CountryCode": "VW"
+          },
+          "Details": [
+            {
+              "Type": "string",
+              "Date": "2025-11-21T17:04:23.519Z",
+              "Country": "OA",
+              "Amount": {
+                "Amount": "39432190",
+                "Currency": "JTY"
+              },
+              "Information": [
+                "string"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "Instruction": {
+      "InstructionIdentification": "string",
+      "EndToEndIdentification": "string",
+      "RemittanceInformation": {
+        "Structured": [
+          {
+            "ReferredDocumentInformation": [
+              {
+                "Code": "CINV",
+                "Issuer": "string",
+                "Number": "string",
+                "RelatedDate": "2025-11-21T17:04:23.519Z",
+                "LineDetails": [
+                  "string"
+                ]
+              }
+            ],
+            "ReferredDocumentAmount": "9758555",
+            "CreditorReferenceInformation": {
+              "Code": "DISP",
+              "Issuer": "string",
+              "Reference": "string"
+            },
+            "Invoicer": "string",
+            "Invoicee": "string",
+            "TaxRemittance": "string",
+            "AdditionalRemittanceInformation": [
+              "string"
+            ]
+          }
+        ],
+        "Unstructured": [
+          "string"
+        ]
+      },
+      "LocalInstrument": "string",
+      "InstructedAmount": {
+        "Amount": "8752024082856.13104",
+        "Currency": "YZQ"
+      },
+      "CreditorPostalAddress": {
+        "AddressType": "BIZZ",
+        "Department": "string",
+        "SubDepartment": "string",
+        "StreetName": "string",
+        "BuildingNumber": "string",
+        "BuildingName": "string",
+        "Floor": "string",
+        "UnitNumber": "string",
+        "Room": "string",
+        "PostBox": "string",
+        "TownLocationName": "string",
+        "DistrictName": "string",
+        "CareOf": "string",
+        "PostCode": "string",
+        "TownName": "string",
+        "CountrySubDivision": "string",
+        "Country": "AU",
+        "AddressLine": [
+          "string"
+        ]
+      },
+      "CreditorAccount": {
+        "SchemeName": "string",
+        "Identification": "string",
+        "Name": "string",
+        "SecondaryIdentification": "string",
+        "Proxy": {
+          "Identification": "string",
+          "Code": "TELE",
+          "Type": "string"
+        }
+      },
+      "UltimateCreditor": {
+        "Name": "string",
+        "Identification": "string",
+        "LEI": "IZ9Q00LZEVUKWCQY6X15",
+        "SchemeName": "string",
+        "PostalAddress": {
+          "AddressType": "BIZZ",
+          "Department": "string",
+          "SubDepartment": "string",
+          "StreetName": "string",
+          "BuildingNumber": "string",
+          "BuildingName": "string",
+          "Floor": "string",
+          "UnitNumber": "string",
+          "Room": "string",
+          "PostBox": "string",
+          "TownLocationName": "string",
+          "DistrictName": "string",
+          "CareOf": "string",
+          "PostCode": "string",
+          "TownName": "string",
+          "CountrySubDivision": "string",
+          "Country": "BH",
+          "AddressLine": [
+            "string"
+          ]
+        }
+      },
+      "SupplementaryData": {}
+    },
+    "DebtorAccount": {
+      "SchemeName": "string",
+      "Identification": "string",
+      "Name": "string",
+      "SecondaryIdentification": "string",
+      "Proxy": {
+        "Identification": "string",
+        "Code": "TELE",
+        "Type": "string"
       }
-    }},
+    }
+  },
   "Risk": {
-    "PaymentContextCode": "TransferToSelf",
+    "PaymentContextCode": "BillingGoodsAndServicesInAdvance",
+    "MerchantCategoryCode": "stri",
+    "MerchantCustomerIdentification": "string",
     "ContractPresentIndicator": true,
-    "PaymentPurposeCode": "EPAY",
-    "CategoryPurposeCode": "GP2P", 
-    "BeneficiaryPaymentDetailsPrepopulatedIndicator": true,
-    "BeneficiaryAccountType": "Personal",
+    "BeneficiaryPrepopulatedIndicator": true,
+    "PaymentPurposeCode": "BKDF",
+    "CategoryPurposeCode": "BONU",
+    "BeneficiaryAccountType": "Business",
+    "DeliveryAddress": {
+      "AddressType": "BIZZ",
+      "Department": "string",
+      "SubDepartment": "string",
+      "StreetName": "string",
+      "BuildingNumber": "string",
+      "BuildingName": "string",
+      "Floor": "string",
+      "UnitNumber": "string",
+      "Room": "string",
+      "PostBox": "string",
+      "TownLocationName": "string",
+      "DistrictName": "string",
+      "CareOf": "string",
+      "PostCode": "string",
+      "TownName": "string",
+      "CountrySubDivision": "string",
+      "Country": "HI",
+      "AddressLine": [
+        "string"
+      ]
+    }
   },
-
-  
   "Links": {
-    "Self": "https://api.alphabank.com/open-banking/v4.0/pisp/domestic-vrps/OU90210"
+    "Self": "string",
+    "First": "string",
+    "Prev": "string",
+    "Next": "string",
+    "Last": "string"
   },
-  
-  "Meta": {}  
+  "Meta": {}
 }
 ```
 
@@ -842,33 +1506,220 @@ Accept: application/json
   "Data": {
     "ReadRefundAccount": "Yes",
     "ControlParameters": {
-      "PSUAuthenticationMethods": [ "UK.OBIE.SCA" ],
-      "PSUInteractionTypes": [ "OffSession" ],
-      "VRPType": ["UK.OBIE.VRPType.Sweeping"],
-      "ValidFromDateTime": "2017-06-05T15:15:13+00:00",
-      "ValidToDateTime": "2020-06-05T15:15:13+00:00",
+      "ValidFromDateTime": "2025-11-21T17:02:20.397Z",
+      "ValidToDateTime": "2025-11-21T17:02:20.397Z",
       "MaximumIndividualAmount": {
-        "Amount": "100.00",
-        "Currency": "GBP"
+        "Amount": "58805.79393",
+        "Currency": "KNZ"
       },
       "PeriodicLimits": [
         {
-          "Amount": "200.00",
-          "Currency": "GBP",
+          "PeriodType": "Day",
           "PeriodAlignment": "Consent",
-          "PeriodType": "Week"
+          "Amount": "716269187",
+          "Currency": "JNB"
+        }
+      ],
+      "VRPType": [
+        "string"
+      ],
+      "PSUAuthenticationMethods": [
+        "string"
+      ],
+      "PSUInteractionTypes": [
+        "InSession"
+      ],
+      "SupplementaryData": {}
+    },
+    "Initiation": {
+      "DebtorAccount": {
+        "SchemeName": "string",
+        "Identification": "string",
+        "Name": "string",
+        "SecondaryIdentification": "string",
+        "Proxy": {
+          "Identification": "string",
+          "Code": "TELE",
+          "Type": "string"
+        }
+      },
+      "CreditorAccount": {
+        "SchemeName": "string",
+        "Identification": "string",
+        "Name": "string",
+        "SecondaryIdentification": "string",
+        "Proxy": {
+          "Identification": "string",
+          "Code": "TELE",
+          "Type": "string"
+        }
+      },
+      "CreditorPostalAddress": {
+        "AddressType": "BIZZ",
+        "Department": "string",
+        "SubDepartment": "string",
+        "StreetName": "string",
+        "BuildingNumber": "string",
+        "BuildingName": "string",
+        "Floor": "string",
+        "UnitNumber": "string",
+        "Room": "string",
+        "PostBox": "string",
+        "TownLocationName": "string",
+        "DistrictName": "string",
+        "CareOf": "string",
+        "PostCode": "string",
+        "TownName": "string",
+        "CountrySubDivision": "string",
+        "Country": "AH",
+        "AddressLine": [
+          "string"
+        ]
+      },
+      "UltimateCreditor": {
+        "Name": "string",
+        "Identification": "string",
+        "LEI": "IZ9Q00LZEVUKWCQY6X15",
+        "SchemeName": "string",
+        "PostalAddress": {
+          "AddressType": "BIZZ",
+          "Department": "string",
+          "SubDepartment": "string",
+          "StreetName": "string",
+          "BuildingNumber": "string",
+          "BuildingName": "string",
+          "Floor": "string",
+          "UnitNumber": "string",
+          "Room": "string",
+          "PostBox": "string",
+          "TownLocationName": "string",
+          "DistrictName": "string",
+          "CareOf": "string",
+          "PostCode": "string",
+          "TownName": "string",
+          "CountrySubDivision": "string",
+          "Country": "DV",
+          "AddressLine": [
+            "string"
+          ]
+        }
+      },
+      "UltimateDebtor": {
+        "Name": "string",
+        "Identification": "string",
+        "LEI": "IZ9Q00LZEVUKWCQY6X15",
+        "SchemeName": "string",
+        "PostalAddress": {
+          "AddressType": "BIZZ",
+          "Department": "string",
+          "SubDepartment": "string",
+          "StreetName": "string",
+          "BuildingNumber": "string",
+          "BuildingName": "string",
+          "Floor": "string",
+          "UnitNumber": "string",
+          "Room": "string",
+          "PostBox": "string",
+          "TownLocationName": "string",
+          "DistrictName": "string",
+          "CareOf": "string",
+          "PostCode": "string",
+          "TownName": "string",
+          "CountrySubDivision": "string",
+          "Country": "VG",
+          "AddressLine": [
+            "string"
+          ]
+        }
+      },
+      "RemittanceInformation": {
+        "Structured": [
+          {
+            "ReferredDocumentInformation": [
+              {
+                "Code": "CINV",
+                "Issuer": "string",
+                "Number": "string",
+                "RelatedDate": "2025-11-21T17:02:20.397Z",
+                "LineDetails": [
+                  "string"
+                ]
+              }
+            ],
+            "ReferredDocumentAmount": "0272463200.64",
+            "CreditorReferenceInformation": {
+              "Code": "DISP",
+              "Issuer": "string",
+              "Reference": "string"
+            },
+            "Invoicer": "string",
+            "Invoicee": "string",
+            "TaxRemittance": "string",
+            "AdditionalRemittanceInformation": [
+              "string"
+            ]
+          }
+        ],
+        "Unstructured": [
+          "string"
+        ]
+      },
+      "RegulatoryReporting": [
+        {
+          "DebitCreditReportingIndicator": "CRED",
+          "Authority": {
+            "Name": "string",
+            "CountryCode": "CJ"
+          },
+          "Details": [
+            {
+              "Type": "string",
+              "Date": "2025-11-21T17:02:20.397Z",
+              "Country": "VV",
+              "Amount": {
+                "Amount": "067115392820.10",
+                "Currency": "YSH"
+              },
+              "Information": [
+                "string"
+              ]
+            }
+          ]
         }
       ]
-    },
-    "Initiation": {}
+    }
   },
   "Risk": {
-    "PaymentContextCode": "TransferToSelf",
+    "PaymentContextCode": "BillingGoodsAndServicesInAdvance",
+    "MerchantCategoryCode": "stri",
+    "MerchantCustomerIdentification": "string",
     "ContractPresentIndicator": true,
-    "PaymentPurposeCode": "EPAY",
-    "CategoryPurposeCode": "GP2P", 
-    "BeneficiaryPaymentDetailsPrepopulatedIndicator": true,
-    "BeneficiaryAccountType": "Personal",
+    "BeneficiaryPrepopulatedIndicator": true,
+    "PaymentPurposeCode": "BKDF",
+    "CategoryPurposeCode": "BONU",
+    "BeneficiaryAccountType": "Business",
+    "DeliveryAddress": {
+      "AddressType": "BIZZ",
+      "Department": "string",
+      "SubDepartment": "string",
+      "StreetName": "string",
+      "BuildingNumber": "string",
+      "BuildingName": "string",
+      "Floor": "string",
+      "UnitNumber": "string",
+      "Room": "string",
+      "PostBox": "string",
+      "TownLocationName": "string",
+      "DistrictName": "string",
+      "CareOf": "string",
+      "PostCode": "string",
+      "TownName": "string",
+      "CountrySubDivision": "string",
+      "Country": "SD",
+      "AddressLine": [
+        "string"
+      ]
+    }
   }
 }
 ```
@@ -886,35 +1737,252 @@ Content-Type: application/json
 {
   "Data": {
     "ReadRefundAccount": "Yes",
+    "ConsentId": "string",
+    "CreationDateTime": "2025-11-21T17:02:20.401Z",
+    "Status": "AWAU",
+    "StatusReason": [
+      {
+        "StatusReasonCode": "ERIN",
+        "StatusReasonDescription": "string",
+        "Path": "string"
+      }
+    ],
+    "StatusUpdateDateTime": "2025-11-21T17:02:20.401Z",
     "ControlParameters": {
-      "PSUAuthenticationMethods": [ "UK.OBIE.SCA" ],
-      "PSUInteractionTypes": [ "OffSession" ],
-      "VRPType": ["UK.OBIE.VRPType.Sweeping"],
-      "ValidFromDateTime": "2017-06-05T15:15:13+00:00",
-      "ValidToDateTime": "2020-06-05T15:15:13+00:00",
+      "ValidFromDateTime": "2025-11-21T17:02:20.401Z",
+      "ValidToDateTime": "2025-11-21T17:02:20.401Z",
       "MaximumIndividualAmount": {
-        "Amount": "100.00",
-        "Currency": "GBP"
+        "Amount": "60667320819.66600",
+        "Currency": "IQQ"
       },
       "PeriodicLimits": [
         {
-          "Amount": "200.00",
-          "Currency": "GBP",
+          "PeriodType": "Day",
           "PeriodAlignment": "Consent",
-          "PeriodType": "Week"
+          "Amount": "2327747854",
+          "Currency": "QXE"
+        }
+      ],
+      "VRPType": [
+        "string"
+      ],
+      "PSUAuthenticationMethods": [
+        "string"
+      ],
+      "PSUInteractionTypes": [
+        "InSession"
+      ],
+      "SupplementaryData": {}
+    },
+    "Initiation": {
+      "DebtorAccount": {
+        "SchemeName": "string",
+        "Identification": "string",
+        "Name": "string",
+        "SecondaryIdentification": "string",
+        "Proxy": {
+          "Identification": "string",
+          "Code": "TELE",
+          "Type": "string"
+        }
+      },
+      "CreditorAccount": {
+        "SchemeName": "string",
+        "Identification": "string",
+        "Name": "string",
+        "SecondaryIdentification": "string",
+        "Proxy": {
+          "Identification": "string",
+          "Code": "TELE",
+          "Type": "string"
+        }
+      },
+      "CreditorPostalAddress": {
+        "AddressType": "BIZZ",
+        "Department": "string",
+        "SubDepartment": "string",
+        "StreetName": "string",
+        "BuildingNumber": "string",
+        "BuildingName": "string",
+        "Floor": "string",
+        "UnitNumber": "string",
+        "Room": "string",
+        "PostBox": "string",
+        "TownLocationName": "string",
+        "DistrictName": "string",
+        "CareOf": "string",
+        "PostCode": "string",
+        "TownName": "string",
+        "CountrySubDivision": "string",
+        "Country": "XA",
+        "AddressLine": [
+          "string"
+        ]
+      },
+      "UltimateCreditor": {
+        "Name": "string",
+        "Identification": "string",
+        "LEI": "IZ9Q00LZEVUKWCQY6X15",
+        "SchemeName": "string",
+        "PostalAddress": {
+          "AddressType": "BIZZ",
+          "Department": "string",
+          "SubDepartment": "string",
+          "StreetName": "string",
+          "BuildingNumber": "string",
+          "BuildingName": "string",
+          "Floor": "string",
+          "UnitNumber": "string",
+          "Room": "string",
+          "PostBox": "string",
+          "TownLocationName": "string",
+          "DistrictName": "string",
+          "CareOf": "string",
+          "PostCode": "string",
+          "TownName": "string",
+          "CountrySubDivision": "string",
+          "Country": "NO",
+          "AddressLine": [
+            "string"
+          ]
+        }
+      },
+      "UltimateDebtor": {
+        "Name": "string",
+        "Identification": "string",
+        "LEI": "IZ9Q00LZEVUKWCQY6X15",
+        "SchemeName": "string",
+        "PostalAddress": {
+          "AddressType": "BIZZ",
+          "Department": "string",
+          "SubDepartment": "string",
+          "StreetName": "string",
+          "BuildingNumber": "string",
+          "BuildingName": "string",
+          "Floor": "string",
+          "UnitNumber": "string",
+          "Room": "string",
+          "PostBox": "string",
+          "TownLocationName": "string",
+          "DistrictName": "string",
+          "CareOf": "string",
+          "PostCode": "string",
+          "TownName": "string",
+          "CountrySubDivision": "string",
+          "Country": "CN",
+          "AddressLine": [
+            "string"
+          ]
+        }
+      },
+      "RemittanceInformation": {
+        "Structured": [
+          {
+            "ReferredDocumentInformation": [
+              {
+                "Code": "CINV",
+                "Issuer": "string",
+                "Number": "string",
+                "RelatedDate": "2025-11-21T17:02:20.401Z",
+                "LineDetails": [
+                  "string"
+                ]
+              }
+            ],
+            "ReferredDocumentAmount": "756032288.8",
+            "CreditorReferenceInformation": {
+              "Code": "DISP",
+              "Issuer": "string",
+              "Reference": "string"
+            },
+            "Invoicer": "string",
+            "Invoicee": "string",
+            "TaxRemittance": "string",
+            "AdditionalRemittanceInformation": [
+              "string"
+            ]
+          }
+        ],
+        "Unstructured": [
+          "string"
+        ]
+      },
+      "RegulatoryReporting": [
+        {
+          "DebitCreditReportingIndicator": "CRED",
+          "Authority": {
+            "Name": "string",
+            "CountryCode": "YP"
+          },
+          "Details": [
+            {
+              "Type": "string",
+              "Date": "2025-11-21T17:02:20.401Z",
+              "Country": "ZF",
+              "Amount": {
+                "Amount": "7611531.95",
+                "Currency": "HUN"
+              },
+              "Information": [
+                "string"
+              ]
+            }
+          ]
         }
       ]
     },
-    "Initiation": {}
+    "DebtorAccount": {
+      "SchemeName": "string",
+      "Identification": "string",
+      "Name": "string",
+      "SecondaryIdentification": "string",
+      "Proxy": {
+        "Identification": "string",
+        "Code": "TELE",
+        "Type": "string"
+      }
+    }
   },
   "Risk": {
-    "PaymentContextCode": "TransferToSelf",
+    "PaymentContextCode": "BillingGoodsAndServicesInAdvance",
+    "MerchantCategoryCode": "stri",
+    "MerchantCustomerIdentification": "string",
     "ContractPresentIndicator": true,
-    "PaymentPurposeCode": "EPAY",
-    "CategoryPurposeCode": "GP2P", 
-    "BeneficiaryPaymentDetailsPrepopulatedIndicator": true,
-    "BeneficiaryAccountType": "Personal",
-  }
+    "BeneficiaryPrepopulatedIndicator": true,
+    "PaymentPurposeCode": "BKDF",
+    "CategoryPurposeCode": "BONU",
+    "BeneficiaryAccountType": "Business",
+    "DeliveryAddress": {
+      "AddressType": "BIZZ",
+      "Department": "string",
+      "SubDepartment": "string",
+      "StreetName": "string",
+      "BuildingNumber": "string",
+      "BuildingName": "string",
+      "Floor": "string",
+      "UnitNumber": "string",
+      "Room": "string",
+      "PostBox": "string",
+      "TownLocationName": "string",
+      "DistrictName": "string",
+      "CareOf": "string",
+      "PostCode": "string",
+      "TownName": "string",
+      "CountrySubDivision": "string",
+      "Country": "GK",
+      "AddressLine": [
+        "string"
+      ]
+    }
+  },
+  "Links": {
+    "Self": "string",
+    "First": "string",
+    "Prev": "string",
+    "Next": "string",
+    "Last": "string"
+  },
+  "Meta": {}
 }
 ```
 
@@ -946,130 +2014,255 @@ Content-Type: application/json
 ```json
 {
   "Data": {
-    "ConsentId": "fe615446-e53a-45ed-954c-ae5d1f97a93b",
-    "CreationDateTime": "2017-06-05T15:15:15+00:00",
-    "Status": "AUTH",
-    "StatusUpdateDateTime": "2017-06-05T15:15:15+05:00",
     "ReadRefundAccount": "Yes",
-
+    "ConsentId": "string",
+    "CreationDateTime": "2025-11-21T17:03:46.889Z",
+    "Status": "AWAU",
+    "StatusReason": [
+      {
+        "StatusReasonCode": "ERIN",
+        "StatusReasonDescription": "string",
+        "Path": "string"
+      }
+    ],
+    "StatusUpdateDateTime": "2025-11-21T17:03:46.889Z",
     "ControlParameters": {
-      "PSUAuthenticationMethods": [ "UK.OBIE.SCA" ],
-      "PSUInteractionTypes": [ "OffSession" ],
-      "VRPType": "UK.OBIE.VRPType.Sweeping",
-      "ValidFromDateTime": "2017-06-05T15:15:13+00:00",
-      "ValidToDateTime": "2020-06-05T15:15:13+00:00",
+      "ValidFromDateTime": "2025-11-21T17:03:46.889Z",
+      "ValidToDateTime": "2025-11-21T17:03:46.889Z",
       "MaximumIndividualAmount": {
-        "Amount": "100.00",
-        "Currency": "GBP"
+        "Amount": "6",
+        "Currency": "UMN"
       },
       "PeriodicLimits": [
         {
-          "Amount": "200.00",
-          "Currency": "GBP",
+          "PeriodType": "Day",
           "PeriodAlignment": "Consent",
-          "PeriodType": "Week"
+          "Amount": "4",
+          "Currency": "GIP"
         }
-      ]
+      ],
+      "VRPType": [
+        "string"
+      ],
+      "PSUAuthenticationMethods": [
+        "string"
+      ],
+      "PSUInteractionTypes": [
+        "InSession"
+      ],
+      "SupplementaryData": {}
     },
-    "DebtorAccount": {
-        "SchemeName": "UK.OBIE.IBAN",
-        "Identification": "GB76LOYD30949301273801",
-        "Name": "Marcus Sweepimus",
-        "SecondaryIdentification": "008419",
-          "Proxy": {
-            "Identification": "441234012345",
-            "Code": "TELE",
-            "Type": "Telephone"
-          }
-      },
     "Initiation": {
       "DebtorAccount": {
-        "SchemeName": "UK.OBIE.IBAN",
-        "Identification": "GB76LOYD30949301273801",
-        "Name": "Marcus Sweepimus",
-        "SecondaryIdentification": "008419",
-          "Proxy": {
-            "Identification": "441234012345",
-            "Code": "TELE",
-            "Type": "Telephone"
-          }
-      },
-      "CreditorPostalAddress": {
-        "AddressType": "BIZZ",
-        "Department": "Finance",
-        "SubDepartment": "Payroll",
-        "StreetName": "Bank Street",
-        "BuildingNumber": "11",
-        "BuildingName": "Tower Bridges",
-        "Floor": "6",
-        "UnitNumber": "UNIT591",
-        "Room": "844",
-        "PostBox": "PO Box 123456",
-        "PostCode": "Z78 4TY",
-        "TownLocationName":"Bank",
-        "TownName": "London",
-        "DistrictName": "Greater London",
-        "CareOf": "Ms Jane Smith",
-        "CountrySubDivision": "England",
-        "Country": "UK"
-      },
-      "CreditorAgent": {  
-          "LEI": "IZ9Q00LZEVUKWCQY6X15",
-          "SchemeName": "UK.OBIE.BICFI",
-          "Identification": "80200112344562",
-          "Name": "The Credit Agent", 
-          "PostalAddress": { 
-            "AddressType": "BIZZ",
-            "StreetName": "Bank Street",
-            "BuildingNumber": "11",
-            "Floor": "6",
-            "PostCode": "Z78 4TY",
-            "TownName": "London",
-            "Country": "UK"
+        "SchemeName": "string",
+        "Identification": "string",
+        "Name": "string",
+        "SecondaryIdentification": "string",
+        "Proxy": {
+          "Identification": "string",
+          "Code": "TELE",
+          "Type": "string"
         }
       },
       "CreditorAccount": {
-        "SchemeName": "SortCodeAccountNumber",
-        "Identification": "30949330000010",
-        "SecondaryIdentification": "Roll 90210",
-        "Name": "Marcus Sweepimus",
+        "SchemeName": "string",
+        "Identification": "string",
+        "Name": "string",
+        "SecondaryIdentification": "string",
         "Proxy": {
-          "Identification": "441234012385",
+          "Identification": "string",
           "Code": "TELE",
-          "Type": "Telephone"
+          "Type": "string"
+        }
+      },
+      "CreditorPostalAddress": {
+        "AddressType": "BIZZ",
+        "Department": "string",
+        "SubDepartment": "string",
+        "StreetName": "string",
+        "BuildingNumber": "string",
+        "BuildingName": "string",
+        "Floor": "string",
+        "UnitNumber": "string",
+        "Room": "string",
+        "PostBox": "string",
+        "TownLocationName": "string",
+        "DistrictName": "string",
+        "CareOf": "string",
+        "PostCode": "string",
+        "TownName": "string",
+        "CountrySubDivision": "string",
+        "Country": "EJ",
+        "AddressLine": [
+          "string"
+        ]
+      },
+      "UltimateCreditor": {
+        "Name": "string",
+        "Identification": "string",
+        "LEI": "IZ9Q00LZEVUKWCQY6X15",
+        "SchemeName": "string",
+        "PostalAddress": {
+          "AddressType": "BIZZ",
+          "Department": "string",
+          "SubDepartment": "string",
+          "StreetName": "string",
+          "BuildingNumber": "string",
+          "BuildingName": "string",
+          "Floor": "string",
+          "UnitNumber": "string",
+          "Room": "string",
+          "PostBox": "string",
+          "TownLocationName": "string",
+          "DistrictName": "string",
+          "CareOf": "string",
+          "PostCode": "string",
+          "TownName": "string",
+          "CountrySubDivision": "string",
+          "Country": "JN",
+          "AddressLine": [
+            "string"
+          ]
+        }
+      },
+      "UltimateDebtor": {
+        "Name": "string",
+        "Identification": "string",
+        "LEI": "IZ9Q00LZEVUKWCQY6X15",
+        "SchemeName": "string",
+        "PostalAddress": {
+          "AddressType": "BIZZ",
+          "Department": "string",
+          "SubDepartment": "string",
+          "StreetName": "string",
+          "BuildingNumber": "string",
+          "BuildingName": "string",
+          "Floor": "string",
+          "UnitNumber": "string",
+          "Room": "string",
+          "PostBox": "string",
+          "TownLocationName": "string",
+          "DistrictName": "string",
+          "CareOf": "string",
+          "PostCode": "string",
+          "TownName": "string",
+          "CountrySubDivision": "string",
+          "Country": "YE",
+          "AddressLine": [
+            "string"
+          ]
         }
       },
       "RemittanceInformation": {
         "Structured": [
           {
-          "ReferredDocumentAmount": 1,
-          "CreditorReferenceInformation": {
-            "Reference": "SweepCo",
+            "ReferredDocumentInformation": [
+              {
+                "Code": "CINV",
+                "Issuer": "string",
+                "Number": "string",
+                "RelatedDate": "2025-11-21T17:03:46.889Z",
+                "LineDetails": [
+                  "string"
+                ]
+              }
+            ],
+            "ReferredDocumentAmount": "5353666.1",
+            "CreditorReferenceInformation": {
+              "Code": "DISP",
+              "Issuer": "string",
+              "Reference": "string"
             },
-        "AdditionalRemittanceInformation": ["Rose's pocket money"],
-          },
+            "Invoicer": "string",
+            "Invoicee": "string",
+            "TaxRemittance": "string",
+            "AdditionalRemittanceInformation": [
+              "string"
+            ]
+          }
         ],
+        "Unstructured": [
+          "string"
+        ]
+      },
+      "RegulatoryReporting": [
+        {
+          "DebitCreditReportingIndicator": "CRED",
+          "Authority": {
+            "Name": "string",
+            "CountryCode": "LN"
+          },
+          "Details": [
+            {
+              "Type": "string",
+              "Date": "2025-11-21T17:03:46.889Z",
+              "Country": "FZ",
+              "Amount": {
+                "Amount": "5758357",
+                "Currency": "IZC"
+              },
+              "Information": [
+                "string"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "DebtorAccount": {
+      "SchemeName": "string",
+      "Identification": "string",
+      "Name": "string",
+      "SecondaryIdentification": "string",
+      "Proxy": {
+        "Identification": "string",
+        "Code": "TELE",
+        "Type": "string"
       }
     }
   },
-
   "Risk": {
-    "PaymentContextCode": "TransferToSelf",
+    "PaymentContextCode": "BillingGoodsAndServicesInAdvance",
+    "MerchantCategoryCode": "stri",
+    "MerchantCustomerIdentification": "string",
     "ContractPresentIndicator": true,
-    "PaymentPurposeCode": "EPAY",
-    "CategoryPurposeCode": "GP2P", 
-    "BeneficiaryPaymentDetailsPrepopulatedIndicator": true,
-    "BeneficiaryAccountType": "Personal",
-},
-  
-  "Links": {
-    "Self": "https://api.alphabank.com/open-banking/v4.0/pisp/domestic-vrp-consents/fe615446-e53a-45ed-954c-ae5d1f97a93b"
+    "BeneficiaryPrepopulatedIndicator": true,
+    "PaymentPurposeCode": "BKDF",
+    "CategoryPurposeCode": "BONU",
+    "BeneficiaryAccountType": "Business",
+    "DeliveryAddress": {
+      "AddressType": "BIZZ",
+      "Department": "string",
+      "SubDepartment": "string",
+      "StreetName": "string",
+      "BuildingNumber": "string",
+      "BuildingName": "string",
+      "Floor": "string",
+      "UnitNumber": "string",
+      "Room": "string",
+      "PostBox": "string",
+      "TownLocationName": "string",
+      "DistrictName": "string",
+      "CareOf": "string",
+      "PostCode": "string",
+      "TownName": "string",
+      "CountrySubDivision": "string",
+      "Country": "HX",
+      "AddressLine": [
+        "string"
+      ]
+    }
   },
-  
+  "Links": {
+    "Self": "string",
+    "First": "string",
+    "Prev": "string",
+    "Next": "string",
+    "Last": "string"
+  },
   "Meta": {}
 }
 ```
-
 
 ### POST /domestic-vrp-consents/{ConsentId}/funds-confirmation
 
@@ -1088,13 +2281,13 @@ Accept: application/json
 
 ```json
 {
-  "Data" :{
-     "ConsentId": "fe615446-e53a-45ed-954c-ae5d1f97a93b",
-     "Reference": "SweepCo",
-     "InstructedAmount": {
-        "Amount": "22.89",
-        "Currency": "GBP"
-     }
+  "Data": {
+    "ConsentId": "string",
+    "Reference": "string",
+    "InstructedAmount": {
+      "Amount": "019",
+      "Currency": "KRC"
+    }
   }
 }
 ```
@@ -1111,21 +2304,20 @@ Content-Type: application/json
 ```json
 {
   "Data": {
-    "FundsConfirmationId" : "1561818651681",
-    "ConsentId": "fe615446-e53a-45ed-954c-ae5d1f97a93b",
-    "CreationDateTime": "2024-04-25T13:26:41.911Z",
-    "Reference": "SweepCo",
-    "FundsAvailableResult":{
-      "FundsAvailableDateTime": "2024-04-25T13:26:41.911Z",
-      "FundsAvailable" : "Available"
+    "FundsConfirmationId": "string",
+    "ConsentId": "string",
+    "CreationDateTime": "2025-11-21T17:09:01.954Z",
+    "Reference": "string",
+    "FundsAvailableResult": {
+      "FundsAvailableDateTime": "2025-11-21T17:09:01.954Z",
+      "FundsAvailable": "Available"
     },
     "InstructedAmount": {
-        "Amount": "22.89",
-        "Currency": "GBP"
-     }
+      "Amount": "49718359",
+      "Currency": "DJA"
+    }
   }
 }
-
 ```
 
 ### POST /domestic-vrps
@@ -1149,200 +2341,303 @@ Accept: application/json
 ```json
 {
   "Data": {
-    "ConsentId": "fe615446-e53a-45ed-954c-ae5d1f97a93b",
-    "PSUAuthenticationMethod": "UK.OBIE.SCA",
-    "PSUInteractionType": "OffSession",
-    "VRPType": "UK.OBIE.VRPType.Sweeping",
-    "Refund" : "Yes", 
+    "ConsentId": "string",
+    "PSUAuthenticationMethod": "string",
+    "PSUInteractionType": "InSession",
+    "VRPType": "string",
     "Initiation": {
       "DebtorAccount": {
-        "SchemeName": "UK.OBIE.IBAN",
-        "Identification": "GB76LOYD30949301273801",
-        "Name": "Marcus Sweepimus",
-        "SecondaryIdentification": "008419",
+        "SchemeName": "string",
+        "Identification": "string",
+        "Name": "string",
+        "SecondaryIdentification": "string",
         "Proxy": {
-          "Identification": "441234012345",
+          "Identification": "string",
           "Code": "TELE",
-          "Type": "Telephone"
+          "Type": "string"
         }
       },
       "CreditorAccount": {
-        "SchemeName": "SortCodeAccountNumber",
-        "Identification": "30949330000010",
-        "SecondaryIdentification": "Roll 90210",
-        "Name": "Marcus Sweepimus",
+        "SchemeName": "string",
+        "Identification": "string",
+        "Name": "string",
+        "SecondaryIdentification": "string",
         "Proxy": {
-          "Identification": "441234012385",
+          "Identification": "string",
           "Code": "TELE",
-          "Type": "Telephone"
-        }
-      },
-      "CreditorAgent": {  
-          "LEI": "IZ9Q00LZEVUKWCQY6X15",
-          "SchemeName": "UK.OBIE.BICFI",
-          "Identification": "80200112344562",
-          "Name": "The Credit Agent", 
-          "PostalAddress": { 
-            "AddressType": "BIZZ",
-            "StreetName": "Bank Street",
-            "BuildingNumber": "11",
-            "Floor": "6",
-            "PostCode": "Z78 4TY",
-            "TownName": "London",
-            "Country": "UK"
+          "Type": "string"
         }
       },
       "CreditorPostalAddress": {
         "AddressType": "BIZZ",
-        "Department": "Finance",
-        "SubDepartment": "Payroll",
-        "StreetName": "Bank Street",
-        "BuildingNumber": "11",
-        "BuildingName": "Tower Bridges",
-        "Floor": "6",
-        "UnitNumber": "UNIT591",
-        "Room": "844",
-        "PostBox": "PO Box 123456",
-        "PostCode": "Z78 4TY",
-        "TownLocationName":"Bank",
-        "TownName": "London",
-        "DistrictName": "Greater London",
-        "CareOf": "Ms Jane Smith",
-        "CountrySubDivision": "England",
-        "Country": "UK"
+        "Department": "string",
+        "SubDepartment": "string",
+        "StreetName": "string",
+        "BuildingNumber": "string",
+        "BuildingName": "string",
+        "Floor": "string",
+        "UnitNumber": "string",
+        "Room": "string",
+        "PostBox": "string",
+        "TownLocationName": "string",
+        "DistrictName": "string",
+        "CareOf": "string",
+        "PostCode": "string",
+        "TownName": "string",
+        "CountrySubDivision": "string",
+        "Country": "PK",
+        "AddressLine": [
+          "string"
+        ]
       },
       "UltimateCreditor": {
-        "SchemeName": "UK.OBIE.BICFI",
-        "Identification": "2360549017905161589",
-        "Name": "Ultimate Creditor",
-        "LEI": "60450004FECVJV7YN339",
+        "Name": "string",
+        "Identification": "string",
+        "LEI": "IZ9Q00LZEVUKWCQY6X15",
+        "SchemeName": "string",
         "PostalAddress": {
           "AddressType": "BIZZ",
-          "StreetName": "Bank Street",
-          "BuildingNumber": "11",
-          "Floor": "6",
-          "PostCode": "Z78 4TY",
-          "TownName": "London",
-          "Country": "UK"
-          }
-        },
-      "UltimateDebtor": {
-        "SchemeName": "UK.OBIE.BICFI",
-        "Identification": "2360549017905161589",
-        "Name": "Ultimate Debtor",
-        "LEI": "8200007YHFDMEODY1965",
-        "PostalAddress": {
-          "AddressType": "BIZZ",
-          "StreetName": "Bank Street",
-          "BuildingNumber": "11",
-          "Floor": "6",
-          "PostCode": "Z78 4TY",
-          "TownName": "London",
-          "Country": "UK"
+          "Department": "string",
+          "SubDepartment": "string",
+          "StreetName": "string",
+          "BuildingNumber": "string",
+          "BuildingName": "string",
+          "Floor": "string",
+          "UnitNumber": "string",
+          "Room": "string",
+          "PostBox": "string",
+          "TownLocationName": "string",
+          "DistrictName": "string",
+          "CareOf": "string",
+          "PostCode": "string",
+          "TownName": "string",
+          "CountrySubDivision": "string",
+          "Country": "LW",
+          "AddressLine": [
+            "string"
+          ]
         }
       },
-      "UltimateCreditor": {
-        "SchemeName": "UK.OBIE.BICFI",
-        "Identification": "2360549017905161589",
-        "Name": "Ultimate Creditor",
-        "LEI": "60450004FECVJV7YN339",
+      "UltimateDebtor": {
+        "Name": "string",
+        "Identification": "string",
+        "LEI": "IZ9Q00LZEVUKWCQY6X15",
+        "SchemeName": "string",
         "PostalAddress": {
           "AddressType": "BIZZ",
-          "StreetName": "Bank Street",
-          "BuildingNumber": "11",
-          "Floor": "6",
-          "PostCode": "Z78 4TY",
-          "TownName": "London",
-          "Country": "UK"
-          }
-        },
+          "Department": "string",
+          "SubDepartment": "string",
+          "StreetName": "string",
+          "BuildingNumber": "string",
+          "BuildingName": "string",
+          "Floor": "string",
+          "UnitNumber": "string",
+          "Room": "string",
+          "PostBox": "string",
+          "TownLocationName": "string",
+          "DistrictName": "string",
+          "CareOf": "string",
+          "PostCode": "string",
+          "TownName": "string",
+          "CountrySubDivision": "string",
+          "Country": "AH",
+          "AddressLine": [
+            "string"
+          ]
+        }
+      },
       "RemittanceInformation": {
         "Structured": [
           {
-          "ReferredDocumentAmount": 1,
-          "CreditorReferenceInformation": {
-            "Reference": "SweepCo",
+            "ReferredDocumentInformation": [
+              {
+                "Code": "CINV",
+                "Issuer": "string",
+                "Number": "string",
+                "RelatedDate": "2025-11-21T17:04:23.514Z",
+                "LineDetails": [
+                  "string"
+                ]
+              }
+            ],
+            "ReferredDocumentAmount": "895843.7",
+            "CreditorReferenceInformation": {
+              "Code": "DISP",
+              "Issuer": "string",
+              "Reference": "string"
             },
-        "AdditionalRemittanceInformation": ["Rose's pocket money"],
-          },
+            "Invoicer": "string",
+            "Invoicee": "string",
+            "TaxRemittance": "string",
+            "AdditionalRemittanceInformation": [
+              "string"
+            ]
+          }
         ],
-      }
-    },
-
-    "Instruction": {
-      "InstructionIdentification": "fe655556-e53a-45ed-954c-ae5d1f97a93b",
-      "EndToEndIdentification": "fe699996-e53a-45ed-954c-ae5d1f97a93a",
-      "LocalInstrument": "UK.OBIE.Paym",
-      "CreditorAccount": {
-        "SchemeName": "SortCodeAccountNumber",
-        "Identification": "30949330000010",
-        "SecondaryIdentification": "Roll 90210",
-        "Name": "Marcus Sweepimus",
-        "Proxy": {
-          "Identification": "441234012385",
-          "Code": "TELE",
-          "Type": "Telephone"
-        }
+        "Unstructured": [
+          "string"
+        ]
       },
-      "CreditorAgent": {  
-          "LEI": "IZ9Q00LZEVUKWCQY6X15",
-          "SchemeName": "UK.OBIE.BICFI",
-          "Identification": "80200112344562",
-          "Name": "The Credit Agent", 
-          "PostalAddress": { 
-            "AddressType": "BIZZ",
-            "StreetName": "Bank Street",
-            "BuildingNumber": "11",
-            "Floor": "6",
-            "PostCode": "Z78 4TY",
-            "TownName": "London",
-            "Country": "UK"
+      "RegulatoryReporting": [
+        {
+          "DebitCreditReportingIndicator": "CRED",
+          "Authority": {
+            "Name": "string",
+            "CountryCode": "ID"
+          },
+          "Details": [
+            {
+              "Type": "string",
+              "Date": "2025-11-21T17:04:23.514Z",
+              "Country": "KX",
+              "Amount": {
+                "Amount": "4102168.186",
+                "Currency": "AMY"
+              },
+              "Information": [
+                "string"
+              ]
+            }
+          ]
         }
+      ]
+    },
+    "Instruction": {
+      "InstructionIdentification": "string",
+      "EndToEndIdentification": "string",
+      "RemittanceInformation": {
+        "Structured": [
+          {
+            "ReferredDocumentInformation": [
+              {
+                "Code": "CINV",
+                "Issuer": "string",
+                "Number": "string",
+                "RelatedDate": "2025-11-21T17:04:23.514Z",
+                "LineDetails": [
+                  "string"
+                ]
+              }
+            ],
+            "ReferredDocumentAmount": "76930427487.04160",
+            "CreditorReferenceInformation": {
+              "Code": "DISP",
+              "Issuer": "string",
+              "Reference": "string"
+            },
+            "Invoicer": "string",
+            "Invoicee": "string",
+            "TaxRemittance": "string",
+            "AdditionalRemittanceInformation": [
+              "string"
+            ]
+          }
+        ],
+        "Unstructured": [
+          "string"
+        ]
+      },
+      "LocalInstrument": "string",
+      "InstructedAmount": {
+        "Amount": "7540.64",
+        "Currency": "LCN"
       },
       "CreditorPostalAddress": {
         "AddressType": "BIZZ",
-        "Department": "Finance",
-        "SubDepartment": "Payroll",
-        "StreetName": "Bank Street",
-        "BuildingNumber": "11",
-        "BuildingName": "Tower Bridges",
-        "Floor": "6",
-        "UnitNumber": "UNIT591",
-        "Room": "844",
-        "PostBox": "PO Box 123456",
-        "PostCode": "Z78 4TY",
-        "TownLocationName":"Bank",
-        "TownName": "London",
-        "DistrictName": "Greater London",
-        "CareOf": "Ms Jane Smith",
-        "CountrySubDivision": "England",
-        "Country": "UK"
+        "Department": "string",
+        "SubDepartment": "string",
+        "StreetName": "string",
+        "BuildingNumber": "string",
+        "BuildingName": "string",
+        "Floor": "string",
+        "UnitNumber": "string",
+        "Room": "string",
+        "PostBox": "string",
+        "TownLocationName": "string",
+        "DistrictName": "string",
+        "CareOf": "string",
+        "PostCode": "string",
+        "TownName": "string",
+        "CountrySubDivision": "string",
+        "Country": "DE",
+        "AddressLine": [
+          "string"
+        ]
       },
-      "InstructedAmount": {
-        "Amount": "10.00",
-        "Currency": "GBP"
+      "CreditorAccount": {
+        "SchemeName": "string",
+        "Identification": "string",
+        "Name": "string",
+        "SecondaryIdentification": "string",
+        "Proxy": {
+          "Identification": "string",
+          "Code": "TELE",
+          "Type": "string"
+        }
       },
-     "RemittanceInformation": {
-        "Structured": [
-          {
-          "ReferredDocumentAmount": 1,
-          "CreditorReferenceInformation": {
-            "Reference": "SweepCo",
-            },
-        "AdditionalRemittanceInformation": ["Rose's pocket money"],
-          },
-        ],
-      }
+      "UltimateCreditor": {
+        "Name": "string",
+        "Identification": "string",
+        "LEI": "IZ9Q00LZEVUKWCQY6X15",
+        "SchemeName": "string",
+        "PostalAddress": {
+          "AddressType": "BIZZ",
+          "Department": "string",
+          "SubDepartment": "string",
+          "StreetName": "string",
+          "BuildingNumber": "string",
+          "BuildingName": "string",
+          "Floor": "string",
+          "UnitNumber": "string",
+          "Room": "string",
+          "PostBox": "string",
+          "TownLocationName": "string",
+          "DistrictName": "string",
+          "CareOf": "string",
+          "PostCode": "string",
+          "TownName": "string",
+          "CountrySubDivision": "string",
+          "Country": "DL",
+          "AddressLine": [
+            "string"
+          ]
+        }
+      },
+      "SupplementaryData": {}
     }
   },
-
   "Risk": {
-    "PaymentContextCode": "TransferToSelf",
+    "PaymentContextCode": "BillingGoodsAndServicesInAdvance",
+    "MerchantCategoryCode": "stri",
+    "MerchantCustomerIdentification": "string",
     "ContractPresentIndicator": true,
-    "PaymentPurposeCode": "EPAY",
-    "CategoryPurposeCode": "GP2P", 
-    "BeneficiaryPaymentDetailsPrepopulatedIndicator": true,
-    "BeneficiaryAccountType": "Personal",
+    "BeneficiaryPrepopulatedIndicator": true,
+    "PaymentPurposeCode": "BKDF",
+    "CategoryPurposeCode": "BONU",
+    "BeneficiaryAccountType": "Business",
+    "DeliveryAddress": {
+      "AddressType": "BIZZ",
+      "Department": "string",
+      "SubDepartment": "string",
+      "StreetName": "string",
+      "BuildingNumber": "string",
+      "BuildingName": "string",
+      "Floor": "string",
+      "UnitNumber": "string",
+      "Room": "string",
+      "PostBox": "string",
+      "TownLocationName": "string",
+      "DistrictName": "string",
+      "CareOf": "string",
+      "PostCode": "string",
+      "TownName": "string",
+      "CountrySubDivision": "string",
+      "Country": "UL",
+      "AddressLine": [
+        "string"
+      ]
+    }
+  }
 }
 ```
 
@@ -1358,181 +2653,349 @@ Content-Type: application/json
 ```json
 {
   "Data": {
-    "ConsentId": "fe615446-e53a-45ed-954c-ae5d1f97a93b",
-    "CreationDateTime": "2017-06-05T15:15:15+00:00",
-    "DomesticVRPId": "OU90210",
+    "DomesticVRPId": "string",
+    "ConsentId": "string",
+    "CreationDateTime": "2025-11-21T17:04:23.519Z",
     "Status": "RCVD",
-    "StatusUpdateDateTime": "2017-06-05T15:15:15+00:00",
-    "ExpectedExecutionDateTime": "2017-06-05T15:15:15+00:00",
-    "ExpectedSettlementDateTime": "2017-06-06T15:15:15+00:00",
-    "DebtorAccount": {
-      "SchemeName": "UK.OBIE.IBAN",
-      "Identification": "GB76LOYD30949301273801",
-      "Name": "Marcus Sweepimus",
-      "SecondaryIdentification": "008419",
-      "Proxy":{
-          "Identification": "441234012348",
-          "Code": "TELE",
-          "Type": "Telephone"
-        }
-    },
-    "Refund" : "Yes", 
-    "Initiation": {
-      "DebtorAccount": {
-        "SchemeName": "UK.OBIE.IBAN",
-        "Identification": "GB76LOYD30949301273801",
-        "Name": "Marcus Sweepimus",
-        "SecondaryIdentification": "008419",
-        "Proxy": {
-          "Identification": "441234012345",
-          "Code": "TELE",
-          "Type": "Telephone"
-        }
-      },
-      "Refund":{
-        "SchemeName": "SortCodeAccountNumber",
-        "Identification": "30949330000010",
-        "SecondaryIdentification": "Roll 90210",
-        "Name": "Marcus Sweepimus",
-      },
-      "CreditorAccount": {
-        "SchemeName": "SortCodeAccountNumber",
-        "Identification": "30949330000010",
-        "SecondaryIdentification": "Roll 90210",
-        "Name": "Marcus Sweepimus",
-        "Proxy": {
-          "Identification": "441234012385",
-          "Code": "TELE",
-          "Type": "Telephone"
-        }
-      },
-      "CreditorAgent": {  
-          "LEI": "IZ9Q00LZEVUKWCQY6X15",
-          "SchemeName": "UK.OBIE.BICFI",
-          "Identification": "80200112344562",
-          "Name": "The Credit Agent", 
-          "PostalAddress": { 
-            "AddressType": "BIZZ",
-            "StreetName": "Bank Street",
-            "BuildingNumber": "11",
-            "Floor": "6",
-            "PostCode": "Z78 4TY",
-            "TownName": "London",
-            "Country": "UK"
-        }
-      },
-      "CreditorPostalAddress": {
-        "AddressType": "BIZZ",
-        "Department": "Finance",
-        "SubDepartment": "Payroll",
-        "StreetName": "Bank Street",
-        "BuildingNumber": "11",
-        "BuildingName": "Tower Bridges",
-        "Floor": "6",
-        "UnitNumber": "UNIT591",
-        "Room": "844",
-        "PostBox": "PO Box 123456",
-        "PostCode": "Z78 4TY",
-        "TownLocationName":"Bank",
-        "TownName": "London",
-        "DistrictName": "Greater London",
-        "CareOf": "Ms Jane Smith",
-        "CountrySubDivision": "England",
-        "Country": "UK"
-      },
-      "RemittanceInformation": {
-        "Structured": [
-          {
-          "ReferredDocumentAmount": 1,
-          "CreditorReferenceInformation": {
-            "Reference": "SweepCo",
-            },
-        "AdditionalRemittanceInformation": ["Rose's pocket money"],
-          },
-        ],
+    "StatusReason": [
+      {
+        "StatusReasonCode": "ERIN",
+        "StatusReasonDescription": "string",
+        "Path": "string"
+      }
+    ],
+    "StatusUpdateDateTime": "2025-11-21T17:04:23.519Z",
+    "ExpectedExecutionDateTime": "2025-11-21T17:04:23.519Z",
+    "ExpectedSettlementDateTime": "2025-11-21T17:04:23.519Z",
+    "Refund": {
+      "Account": {
+        "SchemeName": "string",
+        "Identification": "string",
+        "Name": "string",
+        "SecondaryIdentification": "string"
       }
     },
-
-    "Instruction": {
-      "InstructionIdentification": "fe655556-e53a-45ed-954c-ae5d1f97a93b",
-      "EndToEndIdentification": "fe699996-e53a-45ed-954c-ae5d1f97a93a",
-      "LocalInstrument": "UK.OBIE.Paym",
-      "CreditorAccount": {
-        "SchemeName": "SortCodeAccountNumber",
-        "Identification": "30949330000010",
-        "SecondaryIdentification": "Roll 90210",
-        "Name": "Marcus Sweepimus",
+    "Charges": [
+      {
+        "ChargeBearer": "BorneByCreditor",
+        "Type": "UK.OBIE.CHAPSOut",
+        "Amount": {
+          "Amount": "221080213.5665",
+          "Currency": "VZG"
+        }
+      }
+    ],
+    "Initiation": {
+      "DebtorAccount": {
+        "SchemeName": "string",
+        "Identification": "string",
+        "Name": "string",
+        "SecondaryIdentification": "string",
         "Proxy": {
-          "Identification": "441234012385",
+          "Identification": "string",
           "Code": "TELE",
-          "Type": "Telephone"
+          "Type": "string"
         }
       },
-      "CreditorAgent": {  
-          "LEI": "IZ9Q00LZEVUKWCQY6X15",
-          "SchemeName": "UK.OBIE.BICFI",
-          "Identification": "80200112344562",
-          "Name": "The Credit Agent", 
-          "PostalAddress": { 
-            "AddressType": "BIZZ",
-            "StreetName": "Bank Street",
-            "BuildingNumber": "11",
-            "Floor": "6",
-            "PostCode": "Z78 4TY",
-            "TownName": "London",
-            "Country": "UK"
+      "CreditorAccount": {
+        "SchemeName": "string",
+        "Identification": "string",
+        "Name": "string",
+        "SecondaryIdentification": "string",
+        "Proxy": {
+          "Identification": "string",
+          "Code": "TELE",
+          "Type": "string"
         }
       },
       "CreditorPostalAddress": {
         "AddressType": "BIZZ",
-        "Department": "Finance",
-        "SubDepartment": "Payroll",
-        "StreetName": "Bank Street",
-        "BuildingNumber": "11",
-        "BuildingName": "Tower Bridges",
-        "Floor": "6",
-        "UnitNumber": "UNIT591",
-        "Room": "844",
-        "PostBox": "PO Box 123456",
-        "PostCode": "Z78 4TY",
-        "TownLocationName":"Bank",
-        "TownName": "London",
-        "DistrictName": "Greater London",
-        "CareOf": "Ms Jane Smith",
-        "CountrySubDivision": "England",
-        "Country": "UK"
+        "Department": "string",
+        "SubDepartment": "string",
+        "StreetName": "string",
+        "BuildingNumber": "string",
+        "BuildingName": "string",
+        "Floor": "string",
+        "UnitNumber": "string",
+        "Room": "string",
+        "PostBox": "string",
+        "TownLocationName": "string",
+        "DistrictName": "string",
+        "CareOf": "string",
+        "PostCode": "string",
+        "TownName": "string",
+        "CountrySubDivision": "string",
+        "Country": "VI",
+        "AddressLine": [
+          "string"
+        ]
       },
-      "InstructedAmount": {
-        "Amount": "10.00",
-        "Currency": "GBP"
+      "UltimateCreditor": {
+        "Name": "string",
+        "Identification": "string",
+        "LEI": "IZ9Q00LZEVUKWCQY6X15",
+        "SchemeName": "string",
+        "PostalAddress": {
+          "AddressType": "BIZZ",
+          "Department": "string",
+          "SubDepartment": "string",
+          "StreetName": "string",
+          "BuildingNumber": "string",
+          "BuildingName": "string",
+          "Floor": "string",
+          "UnitNumber": "string",
+          "Room": "string",
+          "PostBox": "string",
+          "TownLocationName": "string",
+          "DistrictName": "string",
+          "CareOf": "string",
+          "PostCode": "string",
+          "TownName": "string",
+          "CountrySubDivision": "string",
+          "Country": "WQ",
+          "AddressLine": [
+            "string"
+          ]
+        }
+      },
+      "UltimateDebtor": {
+        "Name": "string",
+        "Identification": "string",
+        "LEI": "IZ9Q00LZEVUKWCQY6X15",
+        "SchemeName": "string",
+        "PostalAddress": {
+          "AddressType": "BIZZ",
+          "Department": "string",
+          "SubDepartment": "string",
+          "StreetName": "string",
+          "BuildingNumber": "string",
+          "BuildingName": "string",
+          "Floor": "string",
+          "UnitNumber": "string",
+          "Room": "string",
+          "PostBox": "string",
+          "TownLocationName": "string",
+          "DistrictName": "string",
+          "CareOf": "string",
+          "PostCode": "string",
+          "TownName": "string",
+          "CountrySubDivision": "string",
+          "Country": "OO",
+          "AddressLine": [
+            "string"
+          ]
+        }
       },
       "RemittanceInformation": {
         "Structured": [
           {
-          "ReferredDocumentAmount": 1,
-          "CreditorReferenceInformation": {
-            "Reference": "SweepCo",
+            "ReferredDocumentInformation": [
+              {
+                "Code": "CINV",
+                "Issuer": "string",
+                "Number": "string",
+                "RelatedDate": "2025-11-21T17:04:23.519Z",
+                "LineDetails": [
+                  "string"
+                ]
+              }
+            ],
+            "ReferredDocumentAmount": "700.6",
+            "CreditorReferenceInformation": {
+              "Code": "DISP",
+              "Issuer": "string",
+              "Reference": "string"
             },
-          "AdditionalRemittanceInformation": ["Rose's pocket money"],
-          },
+            "Invoicer": "string",
+            "Invoicee": "string",
+            "TaxRemittance": "string",
+            "AdditionalRemittanceInformation": [
+              "string"
+            ]
+          }
         ],
+        "Unstructured": [
+          "string"
+        ]
+      },
+      "RegulatoryReporting": [
+        {
+          "DebitCreditReportingIndicator": "CRED",
+          "Authority": {
+            "Name": "string",
+            "CountryCode": "VW"
+          },
+          "Details": [
+            {
+              "Type": "string",
+              "Date": "2025-11-21T17:04:23.519Z",
+              "Country": "OA",
+              "Amount": {
+                "Amount": "39432190",
+                "Currency": "JTY"
+              },
+              "Information": [
+                "string"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "Instruction": {
+      "InstructionIdentification": "string",
+      "EndToEndIdentification": "string",
+      "RemittanceInformation": {
+        "Structured": [
+          {
+            "ReferredDocumentInformation": [
+              {
+                "Code": "CINV",
+                "Issuer": "string",
+                "Number": "string",
+                "RelatedDate": "2025-11-21T17:04:23.519Z",
+                "LineDetails": [
+                  "string"
+                ]
+              }
+            ],
+            "ReferredDocumentAmount": "9758555",
+            "CreditorReferenceInformation": {
+              "Code": "DISP",
+              "Issuer": "string",
+              "Reference": "string"
+            },
+            "Invoicer": "string",
+            "Invoicee": "string",
+            "TaxRemittance": "string",
+            "AdditionalRemittanceInformation": [
+              "string"
+            ]
+          }
+        ],
+        "Unstructured": [
+          "string"
+        ]
+      },
+      "LocalInstrument": "string",
+      "InstructedAmount": {
+        "Amount": "8752024082856.13104",
+        "Currency": "YZQ"
+      },
+      "CreditorPostalAddress": {
+        "AddressType": "BIZZ",
+        "Department": "string",
+        "SubDepartment": "string",
+        "StreetName": "string",
+        "BuildingNumber": "string",
+        "BuildingName": "string",
+        "Floor": "string",
+        "UnitNumber": "string",
+        "Room": "string",
+        "PostBox": "string",
+        "TownLocationName": "string",
+        "DistrictName": "string",
+        "CareOf": "string",
+        "PostCode": "string",
+        "TownName": "string",
+        "CountrySubDivision": "string",
+        "Country": "AU",
+        "AddressLine": [
+          "string"
+        ]
+      },
+      "CreditorAccount": {
+        "SchemeName": "string",
+        "Identification": "string",
+        "Name": "string",
+        "SecondaryIdentification": "string",
+        "Proxy": {
+          "Identification": "string",
+          "Code": "TELE",
+          "Type": "string"
+        }
+      },
+      "UltimateCreditor": {
+        "Name": "string",
+        "Identification": "string",
+        "LEI": "IZ9Q00LZEVUKWCQY6X15",
+        "SchemeName": "string",
+        "PostalAddress": {
+          "AddressType": "BIZZ",
+          "Department": "string",
+          "SubDepartment": "string",
+          "StreetName": "string",
+          "BuildingNumber": "string",
+          "BuildingName": "string",
+          "Floor": "string",
+          "UnitNumber": "string",
+          "Room": "string",
+          "PostBox": "string",
+          "TownLocationName": "string",
+          "DistrictName": "string",
+          "CareOf": "string",
+          "PostCode": "string",
+          "TownName": "string",
+          "CountrySubDivision": "string",
+          "Country": "BH",
+          "AddressLine": [
+            "string"
+          ]
+        }
+      },
+      "SupplementaryData": {}
+    },
+    "DebtorAccount": {
+      "SchemeName": "string",
+      "Identification": "string",
+      "Name": "string",
+      "SecondaryIdentification": "string",
+      "Proxy": {
+        "Identification": "string",
+        "Code": "TELE",
+        "Type": "string"
       }
     }
   },
-
   "Risk": {
-    "PaymentContextCode": "TransferToSelf",
+    "PaymentContextCode": "BillingGoodsAndServicesInAdvance",
+    "MerchantCategoryCode": "stri",
+    "MerchantCustomerIdentification": "string",
     "ContractPresentIndicator": true,
-    "PaymentPurposeCode": "EPAY",
-    "CategoryPurposeCode": "GP2P", 
-    "BeneficiaryPaymentDetailsPrepopulatedIndicator": true,
-    "BeneficiaryAccountType": "Personal",
-},
-  
-  "Links": {
-    "Self": "https://api.alphabank.com/open-banking/v4.0/pisp/domestic-vrps/OU90210"
+    "BeneficiaryPrepopulatedIndicator": true,
+    "PaymentPurposeCode": "BKDF",
+    "CategoryPurposeCode": "BONU",
+    "BeneficiaryAccountType": "Business",
+    "DeliveryAddress": {
+      "AddressType": "BIZZ",
+      "Department": "string",
+      "SubDepartment": "string",
+      "StreetName": "string",
+      "BuildingNumber": "string",
+      "BuildingName": "string",
+      "Floor": "string",
+      "UnitNumber": "string",
+      "Room": "string",
+      "PostBox": "string",
+      "TownLocationName": "string",
+      "DistrictName": "string",
+      "CareOf": "string",
+      "PostCode": "string",
+      "TownName": "string",
+      "CountrySubDivision": "string",
+      "Country": "HI",
+      "AddressLine": [
+        "string"
+      ]
+    }
   },
-  
-  "Meta": {}  
+  "Links": {
+    "Self": "string",
+    "First": "string",
+    "Prev": "string",
+    "Next": "string",
+    "Last": "string"
+  },
+  "Meta": {}
 }
 ```
