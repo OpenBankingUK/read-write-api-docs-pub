@@ -38,16 +38,19 @@ Accept: application/json
 ```json
 {
   "Data": {
-    "Permission":"Create",
+    "Permission": "Create",
+    "ReadRefundAccount": "No",
     "Initiation": {
-      "InstructionIdentification": "ACME412",
-      "EndToEndIdentification": "FRESCO.21302.GFX.20",
-      "RequestedExecutionDate": "2018-08-06T00:00:00+00:00",
+      "LocalInstrument": "string",
+      "InstructionPriority": "Normal",
+      "ExtendedPurpose": "string",
+      "ChargeBearer": "BorneByCreditor",
+      "CurrencyOfTransfer": "UTK",
+      "DestinationCountryCode": "MU",
       "InstructedAmount": {
         "Amount": {
-           "Amount": "165.88",
-           "Currency": "USD"
          }
+      },
       },
       "CurrencyOfTransfer":"USD",
       "CreditorAccount": {
