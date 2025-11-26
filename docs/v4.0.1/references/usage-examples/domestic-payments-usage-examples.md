@@ -287,16 +287,16 @@ Content-Type: application/json
 
 ```json
 {
-    "Data": {
-        "FundsAvailableResult": {
-            "FundsAvailableDateTime": "2017-06-05T15:15:23+00:00",
-            "FundsAvailable": true
-        }
-    },
-    "Links": {
-        "Self": "https://api.alphabank.com/open-banking/v4.0/pisp/domestic-payment-consents/58923/funds-confirmation"
-    },
-    "Meta": {}
+  "Data": {
+    "FundsAvailableResult": {
+      "FundsAvailableDateTime": "2017-06-05T15:15:23+00:00",
+      "FundsAvailable": true
+    }
+  },
+  "Links": {
+    "Self": "https://api.alphabank.com/open-banking/v4.0/pisp/domestic-payment-consents/58923/funds-confirmation"
+  },
+  "Meta": {}
 }
 ```
 
