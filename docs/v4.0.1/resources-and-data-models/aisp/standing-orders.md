@@ -212,10 +212,6 @@ Content-Type: application/json
       {
         "AccountId": "22289",
         "StandingOrderId": "Ben3",
-        "MandateRelatedInformation": {
-            "Frequency": {
-            "PeriodType": "WEEK",
-            "CountPerPeriod": 1
           }
         },
         "Reference": "Towbar Club 2 - We Love Towbars",
