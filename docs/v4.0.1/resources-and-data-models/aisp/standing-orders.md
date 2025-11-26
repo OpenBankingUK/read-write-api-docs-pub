@@ -383,7 +383,7 @@ Content-Type: application/json
           "Proxy": {
             "Identification": "441234012345",
             "Code": "TELE",
-            "Type": "Telephone", 
+            "Type": "Telephone"
           }
         }
       },
