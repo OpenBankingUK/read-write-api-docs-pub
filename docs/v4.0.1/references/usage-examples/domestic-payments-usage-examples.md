@@ -187,7 +187,7 @@ Accept: application/json
       "AddressLine": [
         "Flat 7",
         "Acacia Lodge"
-      ],
+      ]
     }
   }
 }
