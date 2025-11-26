@@ -1142,10 +1142,10 @@ Accept: application/json
       "CreditorPostalAddress": {
         "AddressType": "CORR",
         "StreetName": "Liberty",
-        "BuildingNumber":"1",
-        "PostCode":"AB1 2CD",
-        "TownName":"London",
-        "Country":"UK"
+        "BuildingNumber": "1",
+        "PostCode": "AB1 2CD",
+        "TownName": "London",
+        "Country": "UK"
       },
       "RemittanceInformation": {
         "Structured": [
@@ -1203,12 +1203,12 @@ Content-Type: application/json
       "CreditorPostalAddress": {
         "AddressType": "CORR",
         "StreetName": "Liberty",
-        "BuildingNumber":"1",
-        "PostCode":"AB1 2CD",
-        "TownName":"London",
-        "Country":"UK"
+        "BuildingNumber": "1",
+        "PostCode": "AB1 2CD",
+        "TownName": "London",
+        "Country": "UK"
       },
-      "RemittanceInformation":{
+      "RemittanceInformation": {
         "Structured": [
           {
             "CreditorReferenceInformation": {
