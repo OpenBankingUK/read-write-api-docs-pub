@@ -1136,7 +1136,7 @@ Accept: application/json
         "Name": "Bob Clements"
       },
       "CreditorPostalAddress": {
-        "AddressType": "Correspondence",
+        "AddressType": "CORR",
         "StreetName": "Liberty",
         "BuildingNumber":"1",
         "PostCode":"AB1 2CD",
@@ -1197,7 +1197,7 @@ Content-Type: application/json
         "Name":"Bob Clements"
       },
       "CreditorPostalAddress": {
-        "AddressType": "Correspondence",
+        "AddressType": "CORR",
         "StreetName": "Liberty",
         "BuildingNumber":"1",
         "PostCode":"AB1 2CD",
