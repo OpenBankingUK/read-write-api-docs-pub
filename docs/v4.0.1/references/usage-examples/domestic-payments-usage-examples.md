@@ -206,8 +206,8 @@ Content-Type: application/json
 {
   "Data": {
     "ConsentId": "58923",
-    "Status": "AWAU",
     "CreationDateTime": "2017-06-05T15:15:13+00:00",
+    "Status": "AWAU",
     "StatusUpdateDateTime": "2017-06-05T15:15:13+00:00",
     "Initiation": {
       "InstructionIdentification": "ACME412",
@@ -230,28 +230,30 @@ Content-Type: application/json
             }
           }
         ],
-        "Unstructured": ["Internal ops code 5120101"]
+        "Unstructured": [
+          "Internal ops code 5120101"
+        ]
       }
     }
   },
   "Risk": {
     "PaymentContextCode": "EcommerceMerchantInitiatedPayment",
-    "ContractPresentIndicator": false,
-    "PaymentPurposeCode": "EPAY",
-    "BeneficiaryPaymentDetailsPrepopulatedIndicator": false,
-    "BeneficiaryAccountType": "Business",
     "MerchantCustomerIdentification": "053598653254",
+    "ContractPresentIndicator": false,
+    "BeneficiaryPrepopulatedIndicator": false,
+    "PaymentPurposeCode": "EPAY",
+    "BeneficiaryAccountType": "Business",
     "DeliveryAddress": {
-      "AddressLine": [
-        "Flat 7",
-        "Acacia Lodge"
-      ],
       "StreetName": "Acacia Avenue",
       "BuildingNumber": "27",
       "PostCode": "GU31 2ZZ",
       "TownName": "Sparsholt",
       "CountrySubDivision": "Wessex",
-      "Country": "UK"
+      "Country": "UK",
+      "AddressLine": [
+        "Flat 7",
+        "Acacia Lodge"
+      ]
     }
   },
   "Links": {
