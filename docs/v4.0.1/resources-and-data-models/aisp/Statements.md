@@ -261,11 +261,11 @@ Content-Type: application/json
       "CreationDateTime": "2017-09-01T00:00:00+00:00",
       "StatementDateTime": {
         "DateTime": "2017-08-01T00:00:00+00:00",
-        "Type": "UK.OBIE.DirectDebitDue",
+        "Type": "UK.OBIE.DirectDebitDue"
       },
       "TotalValue": {
          "Amount": "1024.00",
-          "Currency": "GBP",
+          "Currency": "GBP"
       },
       "StatementDescription": ["August 2017 Statement", "One Free Uber Ride"],
       "StatementAmount": [
@@ -297,7 +297,7 @@ Content-Type: application/json
       "Amount": {
         "Amount": "5.00",
         "Currency": "GBP"
-      },
+      }
      }],
      "StatementValue" : {
       "Type": "UK.OBIE.AirMilesPoints",
@@ -308,7 +308,7 @@ Content-Type: application/json
       "Type": "UK.OBIE.ForeignTransaction",
       "Rate": 0.229,
       "CreditDebitIndicator": "Credit",        
-      "RateType": "	UK.OBIE.AER",
+      "RateType": "UK.OBIE.AER",
       "Frequency": "UK.OBIE.StatementMonthly",
       "Amount": {
         "Amount": "03.75",
@@ -320,7 +320,7 @@ Content-Type: application/json
       "Type": "UK.OBIE.Total", 
       "Rate": 0.229,
       "CreditDebitIndicator": "Credit",        
-      "RateType": "	UK.OBIE.FixedRate",
+      "RateType": "UK.OBIE.FixedRate",
       "Frequency": "UK.OBIE.StatementMonthly",
       "Amount": {
         "Amount": "20.25",
@@ -330,7 +330,7 @@ Content-Type: application/json
      "StatementRate": [{ 
         "Rate": 0.229,
         "Type": "UK.OBIE.MonthlyPurchase"
-     }],
+     }]
     },
     {
       "AccountId": "22289",
@@ -405,14 +405,14 @@ Content-Type: application/json
       "CreationDateTime": "2023-09-01T00:00:00+00:00",
       "StatementDateTime": {
         "DateTime": "2017-08-01T00:00:00+00:00",
-        "Type": "UK.OBIE.DirectDebitDue",
+        "Type": "UK.OBIE.DirectDebitDue"
       },
       "StatementBenefit": [{ 
         "Type": "UK.OBIE.Cashback",
         "Amount": {
           "Amount": "5.00",
           "Currency": "GBP"
-          },
+          }
       }],
       "StatementValue" : {
       "Type": "UK.OBIE.AirMilesPoints",
@@ -423,7 +423,7 @@ Content-Type: application/json
         "Type": "UK.OBIE.Total", 
         "Rate": 0.229,
         "CreditDebitIndicator": "Credit",        
-        "RateType": "	UK.OBIE.FixedRate",
+        "RateType": "UK.OBIE.FixedRate",
         "Frequency": "UK.OBIE.StatementMonthly",
         "Amount": {
           "Amount": "20.25",
@@ -435,11 +435,11 @@ Content-Type: application/json
           "Type": "UK.OBIE.ForeignTransaction",
           "Rate": 0.229,
           "CreditDebitIndicator": "Credit",        
-          "RateType": "	UK.OBIE.AER",
+          "RateType": "UK.OBIE.AER",
           "Frequency": "UK.OBIE.StatementMonthly",
           "Amount": {
             "Amount": "03.75",
-            "Currency": "GBP", 
+            "Currency": "GBP"
           }
       }],
       "StatementRate": [{ 
@@ -461,13 +461,13 @@ Content-Type: application/json
         },
 		"CreditDebitIndicator": "Credit",        
 		"Type": "ClosingBalance"        
-      },
+      }
       ],
       "TotalValue": {
         "Amount": "720.39",
         "Currency": "GBP"
       }
-    },
+    }
     ],
     "Links": {
       "Self": "https://api.alphabank.com/open-banking/v4.0/aisp/accounts/22289/statements/"
@@ -514,19 +514,19 @@ Content-Type: application/json
       "CreationDateTime": "2017-09-01T00:00:00+00:00",
        "TotalValue": {
          "Amount": "1024.00",
-          "Currency": "GBP",
+          "Currency": "GBP"
       },
       "StatementDescription": ["August 2017 Statement", "One Free Uber Ride"],
       "StatementDateTime": {
         "DateTime": "2017-08-01T00:00:00+00:00",
-        "Type": "UK.OBIE.DirectDebitDue",
+        "Type": "UK.OBIE.DirectDebitDue"
       },
       "StatementBenefit": [{ 
         "Type": "UK.OBIE.Cashback",
         "Amount": {
           "Amount": "5.00",
           "Currency": "GBP"
-          },
+          }
       }],
       "StatementValue" : {
         "Type": "UK.OBIE.AirMilesPoints",
@@ -537,11 +537,11 @@ Content-Type: application/json
           "Type": "UK.OBIE.ForeignTransaction",
           "Rate": 0.229,
           "CreditDebitIndicator": "Credit",        
-          "RateType": "	UK.OBIE.AER",
+          "RateType": "UK.OBIE.AER",
           "Frequency": "UK.OBIE.StatementMonthly",
           "Amount": {
             "Amount": "03.75",
-            "Currency": "GBP", 
+            "Currency": "GBP"
           }
       }],
       "StatementRate": [{ 
@@ -626,7 +626,7 @@ Content-Type: application/json
         "Type": "PreviousClosingBalance"
       }
       ]
-    },
+    }
     ],
     "Links": {
       "Self": "https://api.alphabank.com/open-banking/v4.0/aisp/statements/"
