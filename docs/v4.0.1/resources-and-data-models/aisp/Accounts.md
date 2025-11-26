@@ -194,7 +194,7 @@ Content-Type: application/json
         "AccountTypeCode": "CACC",
         "Description" :  "For paying bills",
         "Nickname": "Bills",
-        "OpeningDate": "01-05-2002",
+        "OpeningDate": "01-05-2002T10:43:07+00:00",
         "SwitchStatus": "UK.CASS.NotSwitched",
         "StatementFrequencyAndFormat": [
           {
@@ -291,7 +291,7 @@ Content-Type: application/json
         "Description" :  "For paying bills",
         "AccountTypeCode": "CACC",
         "Nickname": "Bills",
-        "OpeningDate": "01-05-2002",
+        "OpeningDate": "01-05-2002T10:43:07+00:00",
         "SwitchStatus": "UK.CASS.NotSwitched",
         "StatementFrequencyAndFormat": [
           {
@@ -372,7 +372,7 @@ Content-Type: application/json
         "AccountTypeCode": "CACC",
         "Description" :  "For paying bills",
         "Nickname": "Bills",
-        "OpeningDate": "01-05-2002",
+        "OpeningDate": "01-05-2002T10:43:07+00:00",
         "SwitchStatus": "UK.CASS.NotSwitched",
         "StatementFrequencyAndFormat": [
           {
