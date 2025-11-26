@@ -1669,7 +1669,13 @@ Accept: application/json
         "SecondaryIdentification": "0002"
       },
       "RemittanceInformation": {
-        "Reference": "FRESCO-101",
+        "Structured": [
+          {
+            "CreditorReferenceInformation": {
+              "Reference": "FRESCO-101"
+            }
+          }
+        ],
         "Unstructured": ["Internal ops code 5120101"]
       }
     }
