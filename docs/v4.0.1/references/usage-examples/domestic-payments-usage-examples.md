@@ -347,22 +347,22 @@ Accept: application/json
   },
   "Risk": {
     "PaymentContextCode": "EcommerceMerchantInitiatedPayment",
-    "ContractPresentIndicator": false,
-    "PaymentPurposeCode": "EPAY",
-    "BeneficiaryPrepopulatedIndicator": false,
-    "BeneficiaryAccountType": "Business",
     "MerchantCustomerIdentification": "053598653254",
+    "ContractPresentIndicator": false,
+    "BeneficiaryPrepopulatedIndicator": false,
+    "PaymentPurposeCode": "EPAY",
+    "BeneficiaryAccountType": "Business",
     "DeliveryAddress": {
-      "AddressLine": [
-        "Flat 7",
-        "Acacia Lodge"
-      ],
       "StreetName": "Acacia Avenue",
       "BuildingNumber": "27",
       "PostCode": "GU31 2ZZ",
       "TownName": "Sparsholt",
       "CountrySubDivision": "Wessex",
-      "Country": "UK"
+      "Country": "UK",
+      "AddressLine": [
+        "Flat 7",
+        "Acacia Lodge"
+      ]
     }
   }
 }
