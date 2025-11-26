@@ -477,7 +477,7 @@ Accept: application/json
           "DistrictName": "Greater London",
           "CareOf": "Ms Jane Smith",
           "CountrySubDivision": "England",
-          "Country": "UK"
+          "Country": "GB"
         }
        },
        "Creditor": {
@@ -490,7 +490,7 @@ Accept: application/json
             "Floor": "6",
             "PostCode": "Z78 4TY",
             "TownName": "London",
-            "Country": "UK"
+            "Country": "GB"
             }
         },
       "CreditorAccount": {
@@ -516,7 +516,7 @@ Accept: application/json
           "Floor": "6",
           "PostCode": "Z78 4TY",
           "TownName": "London",
-          "Country": "UK"
+          "Country": "GB"
         }
       },
       "UltimateCreditor": {
@@ -531,7 +531,7 @@ Accept: application/json
           "Floor": "6",
           "PostCode": "Z78 4TY",
           "TownName": "London",
-          "Country": "UK"
+          "Country": "GB"
           }
         },
       "RegulatoryReporting": [{
@@ -597,7 +597,7 @@ Accept: application/json
       "PostCode": "GU31 2ZZ",
       "TownName": "Sparsholt",
       "CountrySubDivision": "Wessex", 
-      "Country": "UK"
+      "Country": "GB"
     }
  },
  "SCASupportData": {
@@ -680,7 +680,7 @@ Content-Type: application/json
             "Floor": "6",
             "PostCode": "Z78 4TY",
             "TownName": "London",
-            "Country": "UK"
+            "Country": "GB"
         }
     },
   "CreditorAccount": {
@@ -716,7 +716,7 @@ Content-Type: application/json
       "DistrictName": "Greater London",
       "CareOf": "Ms Jane Smith",
       "CountrySubDivision": "England",
-      "Country": "UK"
+      "Country": "GB"
      }
     },
     "ExchangeRateInformation": {
@@ -738,7 +738,7 @@ Content-Type: application/json
         "Floor": "6",
         "PostCode": "Z78 4TY",
         "TownName": "London",
-        "Country": "UK"
+        "Country": "GB"
       }
     },
      "DebtorAccount": {
@@ -764,7 +764,7 @@ Content-Type: application/json
       "Floor": "6",
       "PostCode": "Z78 4TY",
       "TownName": "London",
-      "Country": "UK"
+      "Country": "GB"
       }
     },
   "RegulatoryReporting": [{
@@ -838,7 +838,7 @@ Content-Type: application/json
     "PostCode": "GU31 2ZZ",
     "TownName": "Sparsholt",
     "CountrySubDivision": "Wessex",
-    "Country": "UK"
+    "Country": "GB"
   }
  },
  "SCASupportData": {

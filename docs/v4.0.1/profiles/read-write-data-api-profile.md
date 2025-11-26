@@ -1697,7 +1697,7 @@ Accept: application/json
       "PostCode": "GU31 2ZZ",
       "TownName": "Sparsholt",
       "CountrySubDivision": "Wessex",
-      "Country": "UK"
+      "Country": "GB"
     }
   }
 }

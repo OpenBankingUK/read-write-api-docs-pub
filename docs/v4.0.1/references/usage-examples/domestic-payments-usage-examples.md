@@ -185,7 +185,7 @@ Accept: application/json
       "PostCode": "GU31 2ZZ",
       "TownName": "Sparsholt",
       "CountrySubDivision": "Wessex",
-      "Country": "UK"
+      "Country": "GB"
     }
   }
 }
@@ -249,7 +249,7 @@ Content-Type: application/json
       "PostCode": "GU31 2ZZ",
       "TownName": "Sparsholt",
       "CountrySubDivision": "Wessex",
-      "Country": "UK"
+      "Country": "GB"
     }
   },
   "Links": {
@@ -358,7 +358,7 @@ Accept: application/json
       "PostCode": "GU31 2ZZ",
       "TownName": "Sparsholt",
       "CountrySubDivision": "Wessex",
-      "Country": "UK"
+      "Country": "GB"
     }
   }
 }
@@ -484,7 +484,7 @@ Content-Type: application/json
       "PostCode": "GU31 2ZZ",
       "TownName": "Sparsholt",
       "CountrySubDivision": "Wessex",
-      "Country": "UK"
+      "Country": "GB"
     }
   },
   "Links": {
@@ -1138,10 +1138,10 @@ Accept: application/json
       "CreditorPostalAddress": {
         "AddressType": "CORR",
         "StreetName": "Liberty",
-        "BuildingNumber":"1",
-        "PostCode":"AB1 2CD",
-        "TownName":"London",
-        "Country":"UK"
+        "BuildingNumber": "1",
+        "PostCode": "AB1 2CD",
+        "TownName": "London",
+        "Country": "GB"
       },
       "RemittanceInformation": {
         "Structured": [
@@ -1199,10 +1199,10 @@ Content-Type: application/json
       "CreditorPostalAddress": {
         "AddressType": "CORR",
         "StreetName": "Liberty",
-        "BuildingNumber":"1",
-        "PostCode":"AB1 2CD",
-        "TownName":"London",
-        "Country":"UK"
+        "BuildingNumber": "1",
+        "PostCode": "AB1 2CD",
+        "TownName": "London",
+        "Country": "GB"
       },
       "RemittanceInformation":{
         "Structured": [

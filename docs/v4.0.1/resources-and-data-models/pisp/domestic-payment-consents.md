@@ -384,7 +384,7 @@ Accept: application/json
         "DistrictName": "Greater London",
         "CareOf": "Ms Jane Smith",
         "CountrySubDivision": "England",
-        "Country": "UK"
+        "Country": "GB"
       },
       "UltimateDebtor": {
         "SchemeName": "UK.OBIE.BICFI",
@@ -398,7 +398,7 @@ Accept: application/json
           "Floor": "6",
           "PostCode": "Z78 4TY",
           "TownName": "London",
-          "Country": "UK"
+          "Country": "GB"
         }
       },
       "CreditorAgent": {
@@ -413,7 +413,7 @@ Accept: application/json
           "Floor": "6",
           "PostCode": "Z78 4TY",
           "TownName": "London",
-          "Country": "UK"
+          "Country": "GB"
         }
       },
       "UltimateCreditor": {
@@ -428,7 +428,7 @@ Accept: application/json
           "Floor": "6",
           "PostCode": "Z78 4TY",
           "TownName": "London",
-          "Country": "UK"
+          "Country": "GB"
         }
       },
       "RegulatoryReporting": [
@@ -514,7 +514,7 @@ Accept: application/json
         "PostCode": "GU31 2ZZ",
         "TownName": "Sparsholt",
         "CountrySubDivision": "Wessex",
-        "Country": "UK"
+        "Country": "GB"
       }
     }
   }
@@ -600,7 +600,7 @@ Content-Type: application/json
             "Floor": "6",
             "PostCode": "Z78 4TY",
             "TownName": "London",
-            "Country": "UK"
+            "Country": "GB"
         }
       },
       "CreditorPostalAddress":{
@@ -610,7 +610,7 @@ Content-Type: application/json
         "Floor": "6",
         "PostCode": "Z78 4TY",
         "TownName": "London",
-        "Country": "UK"
+        "Country": "GB"
       },
       "UltimateDebtor": {
         "SchemeName": "UK.OBIE.BICFI",
@@ -624,7 +624,7 @@ Content-Type: application/json
           "Floor": "6",
           "PostCode": "Z78 4TY",
           "TownName": "London",
-          "Country": "UK"
+          "Country": "GB"
         }
       },
       "UltimateCreditor": {
@@ -639,7 +639,7 @@ Content-Type: application/json
           "Floor": "6",
           "PostCode": "Z78 4TY",
           "TownName": "London",
-          "Country": "UK"
+          "Country": "GB"
           }
         },
       "Debtor": {
@@ -716,7 +716,7 @@ Content-Type: application/json
       "PostCode": "GU31 2ZZ",
       "TownName": "Sparsholt",
       "CountrySubDivision": "Wessex",
-      "Country": "UK"
+      "Country": "GB"
     }
   },
   "Links": {
@@ -781,7 +781,7 @@ Content-Type: application/json
         "Floor": "6",
         "PostCode": "Z78 4TY",
         "TownName": "London",
-        "Country": "UK"
+        "Country": "GB"
       },
       "CreditorAgent": {  
           "LEI": "IZ9Q00LZEVUKWCQY6X15",
@@ -795,7 +795,7 @@ Content-Type: application/json
             "Floor": "6",
             "PostCode": "Z78 4TY",
             "TownName": "London",
-            "Country": "UK"
+            "Country": "GB"
         }
       },
       "UltimateDebtor": {
@@ -810,7 +810,7 @@ Content-Type: application/json
           "Floor": "6",
           "PostCode": "Z78 4TY",
           "TownName": "London",
-          "Country": "UK"
+          "Country": "GB"
         }
       },
       "UltimateCreditor": {
@@ -825,7 +825,7 @@ Content-Type: application/json
           "Floor": "6",
           "PostCode": "Z78 4TY",
           "TownName": "London",
-          "Country": "UK"
+          "Country": "GB"
           }
         },
       "RegulatoryReporting": [{
@@ -899,7 +899,7 @@ Content-Type: application/json
       "PostCode": "GU31 2ZZ",
       "TownName": "Sparsholt",
       "CountrySubDivision": "Wessex",
-      "Country": "UK"
+      "Country": "GB"
     }
   },
   "Links": {
