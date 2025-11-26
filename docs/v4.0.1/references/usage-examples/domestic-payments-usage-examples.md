@@ -349,7 +349,7 @@ Accept: application/json
     "PaymentContextCode": "EcommerceMerchantInitiatedPayment",
     "ContractPresentIndicator": false,
     "PaymentPurposeCode": "EPAY",
-    "BeneficiaryPaymentDetailsPrepopulatedIndicator": false,
+    "BeneficiaryPrepopulatedIndicator": false,
     "BeneficiaryAccountType": "Business",
     "MerchantCustomerIdentification": "053598653254",
     "DeliveryAddress": {
@@ -475,7 +475,7 @@ Content-Type: application/json
     "PaymentContextCode": "EcommerceMerchantInitiatedPayment",
     "ContractPresentIndicator": false,
     "PaymentPurposeCode": "EPAY",
-    "BeneficiaryPaymentDetailsPrepopulatedIndicator": false,
+    "BeneficiaryPrepopulatedIndicator": false,
     "BeneficiaryAccountType": "Business",
     "MerchantCustomerIdentification": "053598653254",
     "DeliveryAddress": {

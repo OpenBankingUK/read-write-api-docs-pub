@@ -135,7 +135,7 @@ Accept: application/json
     "ContractPresentIndicator": true,
     "PaymentPurposeCode": "EPAY",
     "CategoryPurposeCode": "GP2P", 
-    "BeneficiaryPaymentDetailsPrepopulatedIndicator": true,
+    "BeneficiaryPrepopulatedIndicator": true,
     "BeneficiaryAccountType": "Personal",
   }
 }
@@ -269,7 +269,7 @@ Content-Type: application/json
     "ContractPresentIndicator": true,
     "PaymentPurposeCode": "EPAY",
     "CategoryPurposeCode": "GP2P", 
-    "BeneficiaryPaymentDetailsPrepopulatedIndicator": true,
+    "BeneficiaryPrepopulatedIndicator": true,
     "BeneficiaryAccountType": "Personal",
   },
   },
@@ -425,7 +425,7 @@ Content-Type: application/json
     "ContractPresentIndicator": true,
     "PaymentPurposeCode": "EPAY",
     "CategoryPurposeCode": "GP2P", 
-    "BeneficiaryPaymentDetailsPrepopulatedIndicator": true,
+    "BeneficiaryPrepopulatedIndicator": true,
     "BeneficiaryAccountType": "Personal",
 }
   "Links": {
@@ -599,7 +599,7 @@ Accept: application/json
     "ContractPresentIndicator": true,
     "PaymentPurposeCode": "EPAY",
     "CategoryPurposeCode": "GP2P", 
-    "BeneficiaryPaymentDetailsPrepopulatedIndicator": true,
+    "BeneficiaryPrepopulatedIndicator": true,
     "BeneficiaryAccountType": "Personal",
     }
 }
@@ -801,7 +801,7 @@ Content-Type: application/json
     "ContractPresentIndicator": true,
     "PaymentPurposeCode": "EPAY",
     "CategoryPurposeCode": "GP2P", 
-    "BeneficiaryPaymentDetailsPrepopulatedIndicator": true,
+    "BeneficiaryPrepopulatedIndicator": true,
     "BeneficiaryAccountType": "Personal",
   },
 
@@ -867,7 +867,7 @@ Accept: application/json
     "ContractPresentIndicator": true,
     "PaymentPurposeCode": "EPAY",
     "CategoryPurposeCode": "GP2P", 
-    "BeneficiaryPaymentDetailsPrepopulatedIndicator": true,
+    "BeneficiaryPrepopulatedIndicator": true,
     "BeneficiaryAccountType": "Personal",
   }
 }
@@ -912,7 +912,7 @@ Content-Type: application/json
     "ContractPresentIndicator": true,
     "PaymentPurposeCode": "EPAY",
     "CategoryPurposeCode": "GP2P", 
-    "BeneficiaryPaymentDetailsPrepopulatedIndicator": true,
+    "BeneficiaryPrepopulatedIndicator": true,
     "BeneficiaryAccountType": "Personal",
   }
 }
@@ -1058,7 +1058,7 @@ Content-Type: application/json
     "ContractPresentIndicator": true,
     "PaymentPurposeCode": "EPAY",
     "CategoryPurposeCode": "GP2P", 
-    "BeneficiaryPaymentDetailsPrepopulatedIndicator": true,
+    "BeneficiaryPrepopulatedIndicator": true,
     "BeneficiaryAccountType": "Personal",
 },
   
@@ -1341,7 +1341,7 @@ Accept: application/json
     "ContractPresentIndicator": true,
     "PaymentPurposeCode": "EPAY",
     "CategoryPurposeCode": "GP2P", 
-    "BeneficiaryPaymentDetailsPrepopulatedIndicator": true,
+    "BeneficiaryPrepopulatedIndicator": true,
     "BeneficiaryAccountType": "Personal",
 }
 ```
@@ -1525,7 +1525,7 @@ Content-Type: application/json
     "ContractPresentIndicator": true,
     "PaymentPurposeCode": "EPAY",
     "CategoryPurposeCode": "GP2P", 
-    "BeneficiaryPaymentDetailsPrepopulatedIndicator": true,
+    "BeneficiaryPrepopulatedIndicator": true,
     "BeneficiaryAccountType": "Personal",
 },
   
