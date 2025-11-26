@@ -214,7 +214,6 @@ Content-Type: application/json
         "StandingOrderId": "Ben3",
           }
         },
-        "Reference": "Towbar Club 2 - We Love Towbars",
         "FirstPaymentAmount": {
           "Amount": "0.57",
           "Currency": "GBP"
