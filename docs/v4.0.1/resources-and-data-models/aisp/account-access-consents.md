@@ -548,7 +548,6 @@ Content-Type: application/json
     "Status": "AWAU",
     "StatusUpdateDateTime": "2017-05-02T00:00:00+00:00",
     "CreationDateTime": "2017-05-02T00:00:00+00:00",
-    "Status": "AWAU",
     "StatusReason": {
       "StatusReasonCode": "U036", 
       "StatusReasonDescription":"Waiting for completion of consent authorisation to be completed by user",
