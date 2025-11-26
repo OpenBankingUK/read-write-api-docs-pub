@@ -234,21 +234,6 @@ Content-Type: application/json
           "Currency": "GBP"
           }
         },
-        "CreditAgent": {  
-          "LEI": "IZ9Q00LZEVUKWCQY6X15",
-          "SchemeName": "UK.OBIE.BICFI",
-          "Identification": "80200112344562",
-          "Name": "The Creditor Agent", 
-          "PostalAddress": { 
-            "AddressType": "BIZZ",
-            "StreetName": "Bank Street",
-            "BuildingNumber": "11",
-            "Floor": "6",
-            "PostCode": "Z78 4TY",
-            "TownName": "London",
-            "Country": "UK"
-          }
-        },
         "MandateRelatedInformation": {
           "MandateIdentification": "Golfers",
           "Classification": "FIXE",
@@ -262,7 +247,7 @@ Content-Type: application/json
             "CountPerPeriod": 1
           }
         },
-        "StandingOrderStatusCode": "Active",
+        "StandingOrderStatusCode": "ACTV",
         "CreditorAccount": {
           "SchemeName": "UK.OBIE.SortCodeAccountNumber",
           "Identification": "80200112345678",
