@@ -213,44 +213,46 @@ Content-Type: application/json
 ```json
 {
   "Data": {
-    "Balance": {
-      "AccountId": "22289",
-      "Amount": {
-        "Amount": "300.00",
-        "Currency": "GBP",
-          "SubType": "BCUR",
-        },
-        "LocalAmount":  {
-          "Amount": "1230.00",
+    "Balance": [
+      {
+        "AccountId": "22289",
+        "Amount": {
+          "Amount": "300.00",
           "Currency": "GBP",
-          "SubType": "BCUR",
-        }, 
-        "TotalAmount": { 
+            "SubType": "BCUR",
+          },
+          "LocalAmount":  {
             "Amount": "1230.00",
             "Currency": "GBP",
-        }, 
-      "CreditDebitIndicator": "Credit",
-      "Type": "ITAV",
-      "DateTime": "2017-04-05T10:43:07+00:00",
-      "CreditLine": [
-        {
-          "Included": false,
-          "Amount": {
-            "Amount": "500.00",
-            "Currency": "GBP"
+            "SubType": "BCUR",
+          }, 
+          "TotalAmount": { 
+              "Amount": "1230.00",
+              "Currency": "GBP",
+          }, 
+        "CreditDebitIndicator": "Credit",
+        "Type": "ITAV",
+        "DateTime": "2017-04-05T10:43:07+00:00",
+        "CreditLine": [
+          {
+            "Included": false,
+            "Amount": {
+              "Amount": "500.00",
+              "Currency": "GBP"
+            },
+            "Type": "Available"
           },
-          "Type": "Available"
-        },
-        {
-          "Included": false,
-          "Amount": {
-            "Amount": "500.00",
-            "Currency": "GBP"
-          },
-          "Type": "Pre-Agreed"
-        }
-      ]
-    },
+          {
+            "Included": false,
+            "Amount": {
+              "Amount": "500.00",
+              "Currency": "GBP"
+            },
+            "Type": "Pre-Agreed"
+          }
+        ]
+      }
+    ],
     "TotalValue": {
       "Amount": "720.39",
       "Currency": "GBP"
@@ -291,44 +293,46 @@ Content-Type: application/json
 ```json
 {
   "Data": {
-    "Balance": {
-      "AccountId": "22289",
-      "Amount": {
-        "Amount": "800.00",
-        "Currency": "GBP",
-          "SubType": "BCUR",
-        },
-        "LocalAmount":  {
-          "Amount": "1230.00",
+    "Balance": [
+      {
+        "AccountId": "22289",
+        "Amount": {
+          "Amount": "800.00",
           "Currency": "GBP",
-          "SubType": "BCUR",
-        }, 
-        "TotalAmount": { 
+            "SubType": "BCUR",
+          },
+          "LocalAmount":  {
             "Amount": "1230.00",
             "Currency": "GBP",
-        }, 
-      "CreditDebitIndicator": "Credit",
-      "Type": "ITAV",
-      "DateTime": "2017-04-05T10:43:07+00:00",
-      "CreditLine": [
-        {
-          "Included": false,
-          "Amount": {
-            "Amount": "500.00",
-            "Currency": "GBP"
+            "SubType": "BCUR",
+          }, 
+          "TotalAmount": { 
+              "Amount": "1230.00",
+              "Currency": "GBP",
+          }, 
+        "CreditDebitIndicator": "Credit",
+        "Type": "ITAV",
+        "DateTime": "2017-04-05T10:43:07+00:00",
+        "CreditLine": [
+          {
+            "Included": false,
+            "Amount": {
+              "Amount": "500.00",
+              "Currency": "GBP"
+            },
+            "Type": "Available"
           },
-          "Type": "Available"
-        },
-        {
-          "Included": true,
-          "Amount": {
-            "Amount": "500.00",
-            "Currency": "GBP"
-          },
-          "Type": "Temporary"
-        }
-      ]
-    },
+          {
+            "Included": true,
+            "Amount": {
+              "Amount": "500.00",
+              "Currency": "GBP"
+            },
+            "Type": "Temporary"
+          }
+        ]
+      }
+    ],
     "TotalValue": {
       "Amount": "720.39",
       "Currency": "GBP"
@@ -369,44 +373,46 @@ Content-Type: application/json
 ```json
 {
   "Data": {
-    "Balance": {
-      "AccountId": "22289",
-      "Amount": {
-        "Amount": "100.00",
-        "Currency": "GBP",
-          "SubType": "BCUR",
-        },
-        "LocalAmount":  {
-          "Amount": "1230.00",
+    "Balance": [ 
+      {
+        "AccountId": "22289",
+        "Amount": {
+          "Amount": "100.00",
           "Currency": "GBP",
-          "SubType": "BCUR",
-        }, 
-        "TotalAmount": { 
+            "SubType": "BCUR",
+          },
+          "LocalAmount":  {
             "Amount": "1230.00",
             "Currency": "GBP",
-        }, 
-      "CreditDebitIndicator": "Debit",
-      "Type": "ITAV",
-      "DateTime": "2017-04-05T10:43:07+00:00",
-      "CreditLine": [
-        {
-          "Included": false,
-          "Amount": {
-            "Amount": "400.00",
-            "Currency": "GBP"
+            "SubType": "BCUR",
+          }, 
+          "TotalAmount": { 
+              "Amount": "1230.00",
+              "Currency": "GBP",
+          }, 
+        "CreditDebitIndicator": "Debit",
+        "Type": "ITAV",
+        "DateTime": "2017-04-05T10:43:07+00:00",
+        "CreditLine": [
+          {
+            "Included": false,
+            "Amount": {
+              "Amount": "400.00",
+              "Currency": "GBP"
+            },
+            "Type": "Available"
           },
-          "Type": "Available"
-        },
-        {
-          "Included": false,
-          "Amount": {
-            "Amount": "500.00",
-            "Currency": "GBP"
-          },
-          "Type": "Pre-Agreed"
-        }
-      ]
-    },
+          {
+            "Included": false,
+            "Amount": {
+              "Amount": "500.00",
+              "Currency": "GBP"
+            },
+            "Type": "Pre-Agreed"
+          }
+        ]
+      }
+    ],
     "TotalValue": {
       "Amount": "720.39",
       "Currency": "GBP"
@@ -447,22 +453,24 @@ Content-Type: application/json
 ```json
 {
   "Data": {
-    "Balance": {
-      "AccountId": "22289",
-      "Amount": {
-        "Amount": "329.06",
-        "Currency": "GBP",
-        "SubType": "BCUR"
-      },
-      "LocalAmount": {
-        "Amount": "400.00",
-        "Currency": "USD",
-        "SubType": "LCUR"
-      },
-      "CreditDebitIndicator": "Credit",
-      "Type": "CLAV",
-      "DateTime": "2023-04-05T10:43:07+00:00"
-    },
+    "Balance": [ 
+      {
+        "AccountId": "22289",
+        "Amount": {
+          "Amount": "329.06",
+          "Currency": "GBP",
+          "SubType": "BCUR"
+        },
+        "LocalAmount": {
+          "Amount": "400.00",
+          "Currency": "USD",
+          "SubType": "LCUR"
+        },
+        "CreditDebitIndicator": "Credit",
+        "Type": "CLAV",
+        "DateTime": "2023-04-05T10:43:07+00:00"
+      }
+    ],
     "TotalValue": {
       "Amount": "720.39",
       "Currency": "GBP"
