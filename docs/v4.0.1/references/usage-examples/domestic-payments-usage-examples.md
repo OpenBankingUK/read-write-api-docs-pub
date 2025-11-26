@@ -1258,40 +1258,42 @@ Accept: application/json
 
 ```json
 {
-    "Data": {
-        "Initiation": {
-            "InstructionIdentification": "ANSM023",
-            "EndToEndIdentification": "FRESCO.21302.GFX.37",
-            "LocalInstrument": "UK.OBIE.BalanceTransfer",
-            "InstructedAmount": {
-                "Amount": "3000.00",
-                "Currency": "GBP"
-            },
-            "DebtorAccount": {
-                "SchemeName": "UK.OBIE.PAN",
-                "Identification": "5555555555554444",
-                "Name": "Andrea Smith"
-            },
-            "CreditorAccount": {
-                "SchemeName": "UK.OBIE.PAN",
-                "Identification": "4444333322221111",
-                "Name": "Andrea Smith"
-            },
-            "RemittanceInformation": {
-                "Structured": [
-                    {
-                        "CreditorReferenceInformation": {
-                            "Reference": "BT-OfferCode-12"
-                        }
-                    }
-                ],
-                "Unstructured": ["Internal ops code 5120103"]
+  "Data": {
+    "Initiation": {
+      "InstructionIdentification": "ANSM023",
+      "EndToEndIdentification": "FRESCO.21302.GFX.37",
+      "LocalInstrument": "UK.OBIE.BalanceTransfer",
+      "InstructedAmount": {
+        "Amount": "3000.00",
+        "Currency": "GBP"
+      },
+      "DebtorAccount": {
+        "SchemeName": "UK.OBIE.PAN",
+        "Identification": "5555555555554444",
+        "Name": "Andrea Smith"
+      },
+      "CreditorAccount": {
+        "SchemeName": "UK.OBIE.PAN",
+        "Identification": "4444333322221111",
+        "Name": "Andrea Smith"
+      },
+      "RemittanceInformation": {
+        "Structured": [
+          {
+            "CreditorReferenceInformation": {
+              "Reference": "BT-OfferCode-12"
             }
-        }
-    },
-    "Risk": {
-        "PaymentContextCode": "TransferToThirdParty"
+          }
+        ],
+        "Unstructured": [
+          "Internal ops code 5120103"
+        ]
+      }
     }
+  },
+  "Risk": {
+    "PaymentContextCode": "TransferToThirdParty"
+  }
 }
 ```
 
