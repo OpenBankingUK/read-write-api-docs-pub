@@ -8,9 +8,9 @@
 - [Data Model](#data-model)
   - [Reused Classes](#reused-classes)
     - [OBParty2](#obparty2)
-        - [UML Diagram](#uml-diagram)
-        - [Notes](#notes)
-        - [Data Dictionary](#data-dictionary)
+      - [UML Diagram](#uml-diagram)
+      - [Notes](#notes)
+      - [Data Dictionary](#data-dictionary)
     - [OBPostalAddress7](#obpostaladdress7)
   - [OBReadParty2](#obreadparty2)
     - [UML Diagram](#uml-diagram-1)
@@ -36,14 +36,14 @@
 
 ## Overview
 
-The parties resource is used by an AISP to retrieve the details on the account owner(s)/holder(s) and operator(s) for a specific account identified by AccountId. 
+The parties resource is used by an AISP to retrieve the details on the account owner(s)/holder(s) and operator(s) for a specific account identified by AccountId.
 
 The party resource is used by an AISP to retrieve the details on the account owner/holder for a specific account identified by AccountId:
 
 * In the case of a business, this will be the details of the business
-* In the case of a joint account, this will be the party that has given authorisation to the AISP to view the account.  
+* In the case of a joint account, this will be the party that has given authorisation to the AISP to view the account.
 
-TPPs should refer to ASPSP developer portals to understand the approach they have taken for the conditional Parties endpoints and what conditional fields are supported. 
+TPPs should refer to ASPSP developer portals to understand the approach they have taken for the conditional Parties endpoints and what conditional fields are supported.
 
 ASPSPs should ensure they support the provision of any data available through their direct channel, such as full legal name.
 
@@ -119,13 +119,13 @@ The Party resource contains a set of elements that describes a party. The party 
 | Id |1..1 |OBParty2/Relationships/Account/Id |Unique identification as assigned by the ASPSP to uniquely identify the related resource. |Max40Text | | |
 | Address |0..* |OBParty2/Address |Postal address of a party. |OBPostalAddress7 | | |
 
-#### OBPostalAddress7 
+#### OBPostalAddress7
 
 The OBPostalAddress7 class is defined in the [payment-initiation-api-profile](../../profiles/payment-initiation-api-profile.md#obpostaladdress7) page
 
 ### OBReadParty2
 
-The OBReadParty2 object will be used for the call to: 
+The OBReadParty2 object will be used for the call to:
 
 * GET /accounts/{AccountId}/party
 * GET /party
@@ -144,10 +144,9 @@ The response to GET /accounts/{AccountId}/party and GET /party (if available)  *
 | Data |1..1 |OBReadParty2/Data | |OBReadDataParty2 | | |
 | Party |0..1 |OBReadParty2/Data/Party | |OBParty2 | | |
 
-
 ### OBReadParty3
 
-The OBReadParty3 object will be used for the call to: 
+The OBReadParty3 object will be used for the call to:
 
 * GET /accounts/{AccountId}/parties
 
@@ -200,63 +199,63 @@ Content-Type: application/json
 
 ```json
 {
-    "Data": {
-        "Party": [
-            {
-                "PartyId": "PABC123",
-                "PartyType": "Sole",
-                "Name": "Semiotec",
-                "FullLegalName": "Semiotec Limited",
-                "LegalStructure": "UK.OBIE.PrivateLimitedCompany",
-                "BeneficialOwnership": true,
-                "AccountRole": "UK.OBIE.Principal",
-                "EmailAddress": "contact@semiotec.co.jp",
-                "LEI": "068700IA8DVYPS77MD05",
-                "Relationships": {
-                    "Account": {
-                        "Related": "https://api.alphabank.com/open-banking/v4.0/aisp/accounts/22289",
-                        "Id": "22289"
-                    }
-                },
-                "Phone": "+44-2079460000", 
-                "Mobile": "+44-7700900000",
-                "Address": [
-                    {
-                        "AddressType": "BIZZ",
-                        "StreetName": "Street",
-                        "BuildingNumber": "15",
-                        "PostCode": "NW1 1AB",
-                        "TownName": "London",
-                        "Country": "GB"
-                    }
-                ]
-            },
-            {
-                "PartyId": "PXSIF023",
-                "PartyNumber": "0000007456",
-                "PartyType": "Delegate",
-                "Name": "Kevin Atkinson",
-                "FullLegalName": "Mr Kevin Bartholmew Atkinson",
-                "LegalStructure": "UK.OBIE.Individual",
-                "BeneficialOwnership": false,
-                "LEI": "068700IA8DVHGY77MD85",
-                "AccountRole": "UK.OBIE.Administrator",
-                "EmailAddress": "kev@semiotec.co.jp",
-                "Relationships": {
-                    "Account": {
-                        "Related": "https://api.alphabank.com/open-banking/v4.0/aisp/accounts/22289",
-                        "Id": "22289"
-                    }
-                }
-            }
+  "Data": {
+    "Party": [
+      {
+        "PartyId": "PABC123",
+        "PartyType": "Sole",
+        "Name": "Semiotec",
+        "FullLegalName": "Semiotec Limited",
+        "LegalStructure": "UK.OBIE.PrivateLimitedCompany",
+        "BeneficialOwnership": true,
+        "AccountRole": "UK.OBIE.Principal",
+        "EmailAddress": "contact@semiotec.co.jp",
+        "LEI": "068700IA8DVYPS77MD05",
+        "Relationships": {
+          "Account": {
+            "Related": "https://api.alphabank.com/open-banking/v4.0/aisp/accounts/22289",
+            "Id": "22289"
+          }
+        },
+        "Phone": "+44-2079460000",
+        "Mobile": "+44-7700900000",
+        "Address": [
+          {
+            "AddressType": "BIZZ",
+            "StreetName": "Street",
+            "BuildingNumber": "15",
+            "PostCode": "NW1 1AB",
+            "TownName": "London",
+            "Country": "GB"
+          }
         ]
-    },
-    "Links": {
-        "Self": "https://api.alphabank.com/open-banking/v4.0/aisp/accounts/22289/parties"
-    },
-    "Meta": {
-        "TotalPages": 1
-    }
+      },
+      {
+        "PartyId": "PXSIF023",
+        "PartyNumber": "0000007456",
+        "PartyType": "Delegate",
+        "Name": "Kevin Atkinson",
+        "FullLegalName": "Mr Kevin Bartholmew Atkinson",
+        "LegalStructure": "UK.OBIE.Individual",
+        "BeneficialOwnership": false,
+        "LEI": "068700IA8DVHGY77MD85",
+        "AccountRole": "UK.OBIE.Administrator",
+        "EmailAddress": "kev@semiotec.co.jp",
+        "Relationships": {
+          "Account": {
+            "Related": "https://api.alphabank.com/open-banking/v4.0/aisp/accounts/22289",
+            "Id": "22289"
+          }
+        }
+      }
+    ]
+  },
+  "Links": {
+    "Self": "https://api.alphabank.com/open-banking/v4.0/aisp/accounts/22289/parties"
+  },
+  "Meta": {
+    "TotalPages": 1
+  }
 }
 ```
 
@@ -283,75 +282,79 @@ Content-Type: application/json
 
 ```json
 {
-    "Data": {
-        "Party": [
-            {
-                "PartyId": "1982001",
-                "PartyNumber": "20202001",
-                "PartyType": "Sole",
-                "Name": "Roses and Thorns Limited",
-                "FullLegalName": "Roses and Thorns Limited",
-                "LegalStructure": "UK.OBIE.PrivateLimitedCompany",
-                "LEI": "068700IA8DVYPS77MD05",
-                "BeneficialOwnership": true,
-                "AccountRole": "UK.OBIE.Principal",
-                "EmailAddress": "speakup@rosesandthorns.co.uk",
-                "Phone": "+44-55565411099",
-                "Mobile": "+44-55565411098",
-                "Relationships": [{
-                    "Account": {
-                        "Related": "https://api.alphabank.com/open-banking/v4.0/aisp/accounts/89019",
-                        "Id": "89019"
-                    }}
-                ],
-                "Address": [
-                    {
-                        "AddressType": "BIZZ",
-                        "StreetName": "Thomas More Square",
-                        "BuildingNumber": "2",
-                        "PostCode": "E1W 1YN",
-                        "TownName": "London",
-                        "Country": "GB"
-                    }
-                ]
-            },
-            {
-                "PartyId": "1982002",
-                "PartyNumber": "20202002",
-                "Name": "Neil Example",
-                "FullLegalName": "Mr Neil Paul Example",
-                "LegalStructure": "UK.OBIE.Individual",
-                "BeneficialOwnership": false,
-                "LEI": "068700IA8DVHGY77MD85",
-                "AccountRole": "UK.OBIE.SeniorManagingOfficial",
-                "EmailAddress": "neil@rosesandthorns.co.uk",
-                "Phone": "+44-55565411097",
-                "Mobile": "+44-55565411096",
-                "Relationships": [{
-                  "Account": {
-                        "Related": "https://api.alphabank.com/open-banking/v4.0/aisp/accounts/89019",
-                        "Id": "89019"
-                      }
-                  }],
-                "Address": [
-                    {
-                        "AddressType": "HOME",
-                        "StreetName": "Thomas More Square",
-                        "BuildingNumber": "1",
-                        "PostCode": "E1W 1YN",
-                        "TownName": "London",
-                        "Country": "GB"
-                    }
-                ]
+  "Data": {
+    "Party": [
+      {
+        "PartyId": "1982001",
+        "PartyNumber": "20202001",
+        "PartyType": "Sole",
+        "Name": "Roses and Thorns Limited",
+        "FullLegalName": "Roses and Thorns Limited",
+        "LegalStructure": "UK.OBIE.PrivateLimitedCompany",
+        "LEI": "068700IA8DVYPS77MD05",
+        "BeneficialOwnership": true,
+        "AccountRole": "UK.OBIE.Principal",
+        "EmailAddress": "speakup@rosesandthorns.co.uk",
+        "Phone": "+44-55565411099",
+        "Mobile": "+44-55565411098",
+        "Relationships": [
+          {
+            "Account": {
+              "Related": "https://api.alphabank.com/open-banking/v4.0/aisp/accounts/89019",
+              "Id": "89019"
             }
+          }
+        ],
+        "Address": [
+          {
+            "AddressType": "BIZZ",
+            "StreetName": "Thomas More Square",
+            "BuildingNumber": "2",
+            "PostCode": "E1W 1YN",
+            "TownName": "London",
+            "Country": "GB"
+          }
         ]
-    },
-    "Links": {
-        "Self": "https://api.alphabank.com/open-banking/v4.0/aisp/accounts/89019/parties"
-    },
-    "Meta": {
-        "TotalPages": 1
-    }
+      },
+      {
+        "PartyId": "1982002",
+        "PartyNumber": "20202002",
+        "Name": "Neil Example",
+        "FullLegalName": "Mr Neil Paul Example",
+        "LegalStructure": "UK.OBIE.Individual",
+        "BeneficialOwnership": false,
+        "LEI": "068700IA8DVHGY77MD85",
+        "AccountRole": "UK.OBIE.SeniorManagingOfficial",
+        "EmailAddress": "neil@rosesandthorns.co.uk",
+        "Phone": "+44-55565411097",
+        "Mobile": "+44-55565411096",
+        "Relationships": [
+          {
+            "Account": {
+              "Related": "https://api.alphabank.com/open-banking/v4.0/aisp/accounts/89019",
+              "Id": "89019"
+            }
+          }
+        ],
+        "Address": [
+          {
+            "AddressType": "HOME",
+            "StreetName": "Thomas More Square",
+            "BuildingNumber": "1",
+            "PostCode": "E1W 1YN",
+            "TownName": "London",
+            "Country": "GB"
+          }
+        ]
+      }
+    ]
+  },
+  "Links": {
+    "Self": "https://api.alphabank.com/open-banking/v4.0/aisp/accounts/89019/parties"
+  },
+  "Meta": {
+    "TotalPages": 1
+  }
 }
 ```
 
@@ -368,7 +371,7 @@ x-fapi-interaction-id: 7f570e68-c7f0-44e2-a934-a854d2ca8cca
 Accept: application/json
 ```
 
- #### Get Account Party Response
+#### Get Account Party Response
 
 ```
 HTTP/1.1 200 OK
@@ -390,7 +393,7 @@ Content-Type: application/json
       "BeneficialOwnership": false,
       "AccountRole": "UK.OBIE.SeniorManagingOfficial",
       "LEI": "068700IA8DVYPS77MD05",
-      "Phone": "+44-2079460000", 
+      "Phone": "+44-2079460000",
       "Mobile": "+44-7700900000",
       "Address": {
         "AddressType": "BIZZ",
@@ -399,21 +402,23 @@ Content-Type: application/json
         "PostCode": "NW1 1AB",
         "TownName": "London",
         "Country": "GB"
-        },
-       "Relationships": [{
+      },
+      "Relationships": [
+        {
           "Account": {
             "Related": "https://api.alphabank.com/open-banking/v4.0/aisp/accounts/89019",
             "Id": "89019"
           }
-     }],
-  },
-  "Links": {
-    "Self": "https://api.alphabank.com/open-banking/v4.0/aisp/accounts/22289/party/"
-  },
-  "Meta": {
-    "TotalPages": 1
+        }
+      ]
+    },
+    "Links": {
+      "Self": "https://api.alphabank.com/open-banking/v4.0/aisp/accounts/22289/party/"
+    },
+    "Meta": {
+      "TotalPages": 1
+    }
   }
-}
 ```
 
 ### Authorised User
@@ -429,7 +434,7 @@ x-fapi-interaction-id: 7903ae4f-bbdf-4291-bb23-bd44daf7bc24
 Accept: application/json
 ```
 
- #### Get Party Response
+#### Get Party Response
 
 ```
 HTTP/1.1 200 OK
@@ -451,7 +456,7 @@ Content-Type: application/json
       "AccountRole": "UK.OBIE.SeniorManagingOfficial",
       "LEI": "713200JVLXQKY2R7XS50",
       "EmailAddress": "d.user@semiotec.co.jp",
-      "Phone": "+44-2079460000", 
+      "Phone": "+44-2079460000",
       "Mobile": "+44-7700900000",
       "Address": {
         "AddressType": "BIZZ",
@@ -460,13 +465,15 @@ Content-Type: application/json
         "PostCode": "NW1 1AB",
         "TownName": "London",
         "Country": "GB"
-        },
-      "Relationships": [{
+      },
+      "Relationships": [
+        {
           "Account": {
             "Related": "https://api.alphabank.com/open-banking/v4.0/aisp/accounts/89019",
             "Id": "89019"
           }
-     }],
+        }
+      ]
     }
   },
   "Links": {
