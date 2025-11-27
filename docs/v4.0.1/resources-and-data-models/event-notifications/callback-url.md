@@ -124,8 +124,6 @@ The OBCallbackUrlResponse1 object will also be used for the call to:
 | Url |1..1 |OBCallbackUrlResponse1/Data/Url |Callback URL for a TPP hosted service. Will be used by ASPSPs, in conjunction with the resource name, to construct a URL to send event notifications to. |xs:anyURI | | |
 | Version |1..1 |OBCallbackUrlResponse1/Data/Version |Version for the event notification. |Max10Text | | |
 
-
-
 ### Callback Urls - Response
 
 The OBCallbackUrlsResponse1 object will be used for a response to a call to:
@@ -165,8 +163,8 @@ Accept: application/json
 ```json
 {
   "Data": {
-	"Url": "https://tpp.com/open-banking/v4.0/event-notifications",
-	"Version": "4.0"
+    "Url": "https://tpp.com/open-banking/v4.0/event-notifications",
+    "Version": "4.0"
   }
 }
 ```
@@ -182,15 +180,15 @@ Content-Type: application/json
 
 ```json
 {
-	"Data": {
-		"CallbackUrlId": "CB-101",
-		"Url": "https://tpp.com/open-banking/v4.0/event-notifications",
-		"Version": "4.0"
-	},
-	"Links": {
-		"Self": "https://api.alphabank.com/open-banking/v4.0/callback-urls/CB-101"
-	},
-	"Meta": {}
+  "Data": {
+    "CallbackUrlId": "CB-101",
+    "Url": "https://tpp.com/open-banking/v4.0/event-notifications",
+    "Version": "4.0"
+  },
+  "Links": {
+    "Self": "https://api.alphabank.com/open-banking/v4.0/callback-urls/CB-101"
+  },
+  "Meta": {}
 }
 ```
 
@@ -216,16 +214,18 @@ Content-Type: application/json
 
 ```json
 {
-	"Data": {
-		"CallbackUrl": [{
-			"CallbackUrlId": "CB-101",
-			"Url": "https://tpp.com/open-banking/v4.0/event-notifications",
-			"Version": "4.0"
-		}]
-	},
-	"Links": {
-		"Self": "https://api.alphabank.com/open-banking/v4.0/callback-urls/"
-	},
-	"Meta": {}
+  "Data": {
+    "CallbackUrl": [
+      {
+        "CallbackUrlId": "CB-101",
+        "Url": "https://tpp.com/open-banking/v4.0/event-notifications",
+        "Version": "4.0"
+      }
+    ]
+  },
+  "Links": {
+    "Self": "https://api.alphabank.com/open-banking/v4.0/callback-urls/"
+  },
+  "Meta": {}
 }
 ```
