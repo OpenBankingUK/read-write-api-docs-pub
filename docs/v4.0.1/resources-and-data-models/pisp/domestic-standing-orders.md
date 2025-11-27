@@ -56,7 +56,7 @@ Once the domestic-standing-order-consent has been authorised by the PSU, the PIS
 
 #### Status
 
-A domestic-standing-order can only be created if its corresponding domestic-standing-order-consent resource has the Status of "AUTH". 
+A domestic-standing-order can only be created if its corresponding domestic-standing-order-consent resource has the Status of "AUTH".
 
 The domestic-standing-order resource that is created successfully must have one of the following initial status codes:
 
@@ -129,18 +129,20 @@ __Payment order state model key:__
 | Orange (Italic) | Optional, but recommended |
 
 ##### State 1
+
 ![Payment Order Status](./images/PIS_PO_SOFlow1Statuses.png)
 
 ##### State 2
+
 ![Payment Order Status](./images/PIS_PO_SOFlow2Statuses_1.png)
 
 ##### Multiple Authorisation
+
 If the payment-order requires multiple authorisations the status of the multiple authorisations will be updated in the MultiAuthorisation object.
 
 Once the payment is RCVD, the domestic-standing-order Status must be set to PATC and the MultiAuthorisation object status updated with the AWAF status. Once all authorisations have been successfully completed the MultiAuthorisation status must be set to AUTH and domestic-standing-order Status updated to ACSP if any intermediate status are not supported.
 
-Any rejections in the multiple authorisation process should result in the MultiAuthorisation status and Status being set to RJCT. 
-
+Any rejections in the multiple authorisation process should result in the MultiAuthorisation status and Status being set to RJCT.
 
 ![Multi Auth](./images/PO_MultiAuthFlow.png)
 
@@ -162,7 +164,6 @@ The Data Dictionary section gives the detail on the payload content for the Dome
 #### OBDomesticStandingOrder3
 
 The OBDomesticStandingOrder3 class is defined in the [domestic-standing-order-consents](./domestic-standing-order-consents.md#OBDOBDomesticstandingorder3) page.
-
 
 ### Domestic Standing Order - Request
 
