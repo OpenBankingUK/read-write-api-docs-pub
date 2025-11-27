@@ -612,7 +612,7 @@ Content-Type: application/json
     "ContractPresentIndicator": false,
     "PaymentPurposeCode": "EPAY",
     "CategoryPurposeCode": "CASH", 
-    "BeneficiaryPaymentDetailsPrepopulatedIndicator": false,
+    "BeneficiaryPrepopulatedIndicator": false,
     "BeneficiaryAccountType": "Business",
     "MerchantCategoryCode": "7300", 
     "MerchantCustomerIdentification": "053598653254",
