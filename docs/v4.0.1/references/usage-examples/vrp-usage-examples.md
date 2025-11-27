@@ -473,7 +473,7 @@ Accept: application/json
       "EndToEndIdentification": "fe699996-e53a-45ed-954c-ae5d1f97a93a",
       "LocalInstrument": "UK.OBIE.Paym",
       "CreditorAccount": {
-        "SchemeName": "SortCodeAccountNumber",
+        "SchemeName": "UK.OBIE.SortCodeAccountNumber",
         "Identification": "30949330000010",
         "SecondaryIdentification": "Roll 90210",
         "Name": "Marcus Sweepimus",
@@ -584,7 +584,7 @@ Content-Type: application/json
         "Name": "Marcus Sweepimus"
       },
       "CreditorAccount": {
-        "SchemeName": "SortCodeAccountNumber",
+        "SchemeName": "UK.OBIE.SortCodeAccountNumber",
         "Identification": "30949330000010",
         "SecondaryIdentification": "Roll 90210",
         "Name": "Marcus Sweepimus",
@@ -631,7 +631,7 @@ Content-Type: application/json
       "EndToEndIdentification": "fe699996-e53a-45ed-954c-ae5d1f97a93a",
       "LocalInstrument": "UK.OBIE.Paym",
       "CreditorAccount": {
-        "SchemeName": "SortCodeAccountNumber",
+        "SchemeName": "UK.OBIE.SortCodeAccountNumber",
         "Identification": "30949330000010",
         "SecondaryIdentification": "Roll 90210",
         "Name": "Marcus Sweepimus",
@@ -909,7 +909,7 @@ Content-Type: application/json
         "Country": "UK"
       },
       "CreditorAccount": {
-        "SchemeName": "SortCodeAccountNumber",
+        "SchemeName": "UK.OBIE.SortCodeAccountNumber",
         "Identification": "30949330000010",
         "SecondaryIdentification": "Roll 90210",
         "Name": "Marcus Sweepimus",
@@ -1047,7 +1047,7 @@ Accept: application/json
         }
       },
       "CreditorAccount": {
-        "SchemeName": "SortCodeAccountNumber",
+        "SchemeName": "UK.OBIE.SortCodeAccountNumber",
         "Identification": "30949330000010",
         "SecondaryIdentification": "Roll 90210",
         "Name": "Marcus Sweepimus",
@@ -1125,7 +1125,7 @@ Accept: application/json
       "EndToEndIdentification": "fe699996-e53a-45ed-954c-ae5d1f97a93a",
       "LocalInstrument": "UK.OBIE.Paym",
       "CreditorAccount": {
-        "SchemeName": "SortCodeAccountNumber",
+        "SchemeName": "UK.OBIE.SortCodeAccountNumber",
         "Identification": "30949330000010",
         "SecondaryIdentification": "Roll 90210",
         "Name": "Marcus Sweepimus",
@@ -1234,7 +1234,7 @@ Content-Type: application/json
         "Name": "Marcus Sweepimus"
       },
       "CreditorAccount": {
-        "SchemeName": "SortCodeAccountNumber",
+        "SchemeName": "UK.OBIE.SortCodeAccountNumber",
         "Identification": "30949330000010",
         "SecondaryIdentification": "Roll 90210",
         "Name": "Marcus Sweepimus",
@@ -1281,7 +1281,7 @@ Content-Type: application/json
       "EndToEndIdentification": "fe699996-e53a-45ed-954c-ae5d1f97a93a",
       "LocalInstrument": "UK.OBIE.Paym",
       "CreditorAccount": {
-        "SchemeName": "SortCodeAccountNumber",
+        "SchemeName": "UK.OBIE.SortCodeAccountNumber",
         "Identification": "30949330000010",
         "SecondaryIdentification": "Roll 90210",
         "Name": "Marcus Sweepimus",
