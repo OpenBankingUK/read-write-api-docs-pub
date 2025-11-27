@@ -37,7 +37,7 @@
 
 ## Overview
 
-The transactions resource is used by an AISP to retrieve the  transactions for a specific AccountId or to retrieve the transactions in bulk for account(s) that the PSU has authorised to access.
+The transactions resource is used by an AISP to retrieve the transactions for a specific AccountId or to retrieve the transactions in bulk for account(s) that the PSU has authorised to access.
 
 This resource description should be read in conjunction with a compatible Account Information Services API Profile.
 
@@ -70,15 +70,19 @@ The OBReadTransaction6 object will be used for the call to:
 ## Reused Classes
 
 #### OBProxy1
+
 The OBProxy1 class is defined in the [account-and-transaction-api-profile](../../profiles/account-and-transaction-api-profile.md#obproxy1) page.
 
 #### OBPostalAddress7
+
 The OBPostalAddress7 class is defined in the [account-and-transaction-api-profile](../../profiles/account-and-transaction-api-profile.md#obpostaladdress7) page.
 
 #### OBUltimateCreditor1
+
 The OBUltimateCreditor1 class is defined in the [account-and-transaction-api-profile](../../profiles/account-and-transaction-api-profile.md#obultimatecreditor1) page.
 
 #### OBUltimateDebtor1
+
 The OBUltimateDebtor1 class is defined in the [account-and-transaction-api-profile](../../profiles/account-and-transaction-api-profile.md#obultimatedebtor1) page.
 
 #### OBIntermediaryAgent
@@ -102,7 +106,7 @@ For a specific date range, an account (AccountId) may have no transactions booke
 * For CreditCard transactions that are not yet booked, ASPSPs must populate the `BookingDateTime` field with an expected booking date.  
 * Either the BankTransactionCode (which is the ISO transaction code list), **or** ProprietaryBankTransactionCode, **or** **both** may be populated. While the expectation is that at least one of BankTransactionCode. or ProprietaryBankTransactionCode are populated, we have decided not to enforce this behaviour in the payload structure as this would require nesting elements and introducing complex choice elements.
 * The BankTransactionCode (ISO) code-list is documented on the ISO20022 website: [here](https://www.iso20022.org/external_code_list.page); and External Code Sets spreadsheet.
-  * The ISO 20022 BankTransactionCode Code and SubCode are specified as 4 letter codes. 
+  * The ISO 20022 BankTransactionCode Code and SubCode are specified as 4 letter codes.
 * ASPSPs must have the ability to provide transactions through APIs for a period that at least equals the period provided through their online channels.
 * ExtendedProprietaryBankTransactionCodes is a OB Proprietary field (introduced by TDA decision 264) to support multiple proprietry Bank Transaction Codes that may be associated with the transaction, in addition to a single default one. The expectation is to capture the default under ProprietaryBankTransactionCode. The ASPSP must publish all the proprietary and extended proprietary bank transaction codes along with usage on their developer portal.
 * Counterparty information may be returned in the TransactionInformation field.
@@ -185,7 +189,7 @@ Since Version 3.1.5, the mutability for a transaction has been made explicit:
 
 ### Permission Codes
 
-The resource differs depending on the permissions (ReadTransactionsBasic and ReadTransactionsDetail in addition to the appropriate ReadTransactionsCredits and/or ReadTransactionsDebits) used to access resource. When the resource is accessed with ReadTransactionsDetail it implies that access is also granted to the ReadTransactionsBasic permissions.  Whilst it is duplicaton for a TPP to request both permission codes, it is not a malformed request, and the ASPSP must not reject solely on the basis of duplication.
+The resource differs depending on the permissions (ReadTransactionsBasic and ReadTransactionsDetail in addition to the appropriate ReadTransactionsCredits and/or ReadTransactionsDebits) used to access resource. When the resource is accessed with ReadTransactionsDetail it implies that access is also granted to the ReadTransactionsBasic permissions. Whilst it is duplicaton for a TPP to request both permission codes, it is not a malformed request, and the ASPSP must not reject solely on the basis of duplication.
 
 Where both ReadTransactionsBasic and ReadTransactionsDetail are present, the most detailed level (ReadTransactionsDetail) must be used.  The permissions array **must** contain at least ReadAccountsBasic or ReadAccountsDetail.
 
@@ -300,7 +304,7 @@ Further information can be found at [Account and Transaction Permissions](../../
 | IntermediaryAgent2 | 0..1 | OBReadTransaction6/Data/Transaction/IntermediaryAgent2 | The second intermediary agent associated with this transaction. | OBIntermediaryAgent |||
 | IntermediaryAgent3 | 0..1 | OBReadTransaction6/Data/Transaction/IntermediaryAgent3 | The third intermediary agent associated with this transaction. | OBIntermediaryAgent |||
 | CreditorAccount |0..1 |OBReadTransaction6/Data/Transaction/CreditorAccount |Unambiguous identification of the account of the creditor, in the case of a debit transaction. |OBCashAccount6 | | |
-| SchemeName |0..1 |OBReadTransaction6/Data/Transaction/CreditorAccount/SchemeName |Name of the identification scheme, in a coded form as published in an external list. | For a full list of enumeration values refer to `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets). |OBInternalAccountIdentification4Code | 
+| SchemeName |0..1 |OBReadTransaction6/Data/Transaction/CreditorAccount/SchemeName |Name of the identification scheme, in a coded form as published in an external list. | For a full list of enumeration values refer to `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets). |OBInternalAccountIdentification4Code |
 | Identification |0..1 |OBReadTransaction6/Data/Transaction/CreditorAccount/Identification |Identification assigned by an institution to identify an account. This identification is known by the account owner. |Max256Text | | |
 | Name |0..1 |OBReadTransaction6/Data/Transaction/CreditorAccount/Name |The account name is the name or names of the account owner(s) represented at an account level, as displayed by the ASPSP's online channels. Note, the account name is not the product name or the nickname of the account. |Max350Text | | |
 | Proxy |0..1 |OBReadTransaction6/Data/Transaction/CreditorAccount/Proxy |Specifies an alternate assumed name for the identification of the account.  |OBProxy1 | | |
@@ -320,7 +324,7 @@ Further information can be found at [Account and Transaction Permissions](../../
 | Name |0..1 |OBReadTransaction6/Data/Transaction/CardInstrument/Name |Name of the cardholder using the card instrument. |Max70Text | | |
 | Identification |0..1 |OBReadTransaction6/Data/Transaction/CardInstrument/Identification |Identification assigned by an institution to identify the card instrument used in the transaction. This identification is known by the account owner, and may be masked. |Max34Text | | |
 | SupplementaryData |0..1 |OBReadTransaction6/Data/Transaction/SupplementaryData |Additional information that can not be captured in the structured fields and/or any other specific block. |OBSupplementaryData1 | | |
-| CategoryPurposeCode | 0..1 | OBReadTransaction6/Data/Transaction/CategoryPurposeCode |Enumeration to outline the purpose to the underlying purpose of the payment|  For a full list of enumeration values refer to `OB_EXternal_CodeSet`[here](https://github.com/OpenBankingUK/External_Internal_CodeSets/). |ExternalCategoryPurpose1Code | 
+| CategoryPurposeCode | 0..1 | OBReadTransaction6/Data/Transaction/CategoryPurposeCode |Enumeration to outline the purpose to the underlying purpose of the payment|  For a full list of enumeration values refer to `OB_EXternal_CodeSet`[here](https://github.com/OpenBankingUK/External_Internal_CodeSets/). |ExternalCategoryPurpose1Code |
 
 ## Usage Examples
 
@@ -362,15 +366,15 @@ Content-Type: application/json
           "Currency": "GBP"
         },
         "CurrencyExchange": {
-          "SourceCurrency": "GBP", 
-          "TargetCurrency": "GBP", 
+          "SourceCurrency": "GBP",
+          "TargetCurrency": "GBP",
           "UnitCurrency": "GBP"
         },
         "InstructedAmount": {
-           "Amount": "10.00",
+          "Amount": "10.00",
           "Currency": "GBP"
         },
-        "PaymentPurposeCode":"RETL",
+        "PaymentPurposeCode": "RETL",
         "CategoryPurposeCode": "RETL",
         "MerchantDetails": {
           "MerchantName": "Merchant's Name",
@@ -379,11 +383,11 @@ Content-Type: application/json
         "StatementReference": "003",
         "AddressLine": "Floor 5, 5 Dawson House",
         "CreditorAgent": {
-         "LEI": "IZ9Q00LZEVUKWCQY6X15",
+          "LEI": "IZ9Q00LZEVUKWCQY6X15",
           "SchemeName": "UK.OBIE.BICFI",
           "Identification": "80200112344562",
-          "Name": "The Credit Agent", 
-          "PostalAddress": { 
+          "Name": "The Credit Agent",
+          "PostalAddress": {
             "AddressType": "BIZZ",
             "StreetName": "Bank Street",
             "BuildingNumber": "11",
@@ -394,11 +398,11 @@ Content-Type: application/json
           }
         },
         "DebtorAgent": {
-         "LEI": "IZ9Q00LZEVUKWCQY8i14",
+          "LEI": "IZ9Q00LZEVUKWCQY8i14",
           "SchemeName": "UK.OBIE.BICFI",
           "Identification": "8020011234487",
-          "Name": "The Debtor Agent", 
-          "PostalAddress": { 
+          "Name": "The Debtor Agent",
+          "PostalAddress": {
             "AddressType": "BIZZ",
             "StreetName": "Bank Street",
             "BuildingNumber": "11",
@@ -408,7 +412,7 @@ Content-Type: application/json
             "Country": "UK"
           }
         },
-         "DebtorAccount": {
+        "DebtorAccount": {
           "SchemeName": "UK.OBIE.SortCodeAccountNumber",
           "Identification": "80200112345784",
           "Name": "Mr Juniper",
@@ -459,7 +463,7 @@ Content-Type: application/json
           }
         },
         "CardInstrument": {
-          "CardSchemeName": "	VISA", 
+          "CardSchemeName": "	VISA",
           "AuthorisationType": "Contactless",
           "Name": "Mr Juniper"
         },
@@ -476,15 +480,16 @@ Content-Type: application/json
           "Code": "Transfer",
           "Issuer": "AlphaBank"
         },
-        "ExtendedProprietaryBankTransactionCodes": [{
-          "Code": "Transfer 2",
-          "Issuer": "AlphaBank",
-          "Description": "Local View"
+        "ExtendedProprietaryBankTransactionCodes": [
+          {
+            "Code": "Transfer 2",
+            "Issuer": "AlphaBank",
+            "Description": "Local View"
           },
           {
-          "Code": "Transfer 3",
-          "Issuer": "AlphaBank",
-          "Description": "SWIFT View"
+            "Code": "Transfer 3",
+            "Issuer": "AlphaBank",
+            "Description": "SWIFT View"
           }
         ],
         "Balance": {
@@ -503,8 +508,8 @@ Content-Type: application/json
   },
   "Meta": {
     "TotalPages": 1,
-	"FirstAvailableDateTime": "2017-05-03T00:00:00+00:00",
-	"LastAvailableDateTime": "2017-12-03T00:00:00+00:00"
+    "FirstAvailableDateTime": "2017-05-03T00:00:00+00:00",
+    "LastAvailableDateTime": "2017-12-03T00:00:00+00:00"
   }
 }
 ```
@@ -544,7 +549,7 @@ Content-Type: application/json
           "Amount": "10.00",
           "Currency": "GBP"
         },
-         "ChargeAmount": {
+        "ChargeAmount": {
           "Amount": "0.01",
           "Currency": "GBP"
         },
@@ -570,11 +575,11 @@ Content-Type: application/json
           "Type": "ITBD"
         },
         "CreditorAgent": {
-         "LEI": "IZ9Q00LZEVUKWCQY6X15",
+          "LEI": "IZ9Q00LZEVUKWCQY6X15",
           "SchemeName": "UK.OBIE.BICFI",
           "Identification": "80200112344562",
-          "Name": "The Credit Agent", 
-          "PostalAddress": { 
+          "Name": "The Credit Agent",
+          "PostalAddress": {
             "AddressType": "BIZZ",
             "StreetName": "Bank Street",
             "BuildingNumber": "11",
@@ -585,11 +590,11 @@ Content-Type: application/json
           }
         },
         "DebtorAgent": {
-         "LEI": "IZ9Q00LZEVUKWCQY8i14",
+          "LEI": "IZ9Q00LZEVUKWCQY8i14",
           "SchemeName": "UK.OBIE.BICFI",
           "Identification": "8020011234487",
-          "Name": "The Debtor Agent", 
-          "PostalAddress": { 
+          "Name": "The Debtor Agent",
+          "PostalAddress": {
             "AddressType": "BIZZ",
             "StreetName": "Bank Street",
             "BuildingNumber": "11",
@@ -599,22 +604,23 @@ Content-Type: application/json
             "Country": "UK"
           }
         },
-        "ExtendedProprietaryBankTransactionCodes": [{
-          "Code": "Transfer 2",
-          "Issuer": "AlphaBank",
-          "Description": "Local View"
+        "ExtendedProprietaryBankTransactionCodes": [
+          {
+            "Code": "Transfer 2",
+            "Issuer": "AlphaBank",
+            "Description": "Local View"
           },
           {
-          "Code": "Transfer 3",
-          "Issuer": "AlphaBank",
-          "Description": "SWIFT View"
+            "Code": "Transfer 3",
+            "Issuer": "AlphaBank",
+            "Description": "SWIFT View"
           }
         ],
         "MerchantDetails": {
           "MerchantName": "Merchant's Name",
           "MerchantCategoryCode": "5874"
         },
-         "DebtorAccount": {
+        "DebtorAccount": {
           "SchemeName": "UK.OBIE.SortCodeAccountNumber",
           "Identification": "80200112345784",
           "Name": "Mr Juniper",
@@ -650,13 +656,13 @@ Content-Type: application/json
           }
         },
         "CardInstrument": {
-          "CardSchemeName": "	VISA", 
+          "CardSchemeName": "	VISA",
           "AuthorisationType": "Contactless",
           "Name": "Mr Juniper"
         },
         "CurrencyExchange": {
-          "SourceCurrency": "GBP", 
-          "TargetCurrency": "GBP", 
+          "SourceCurrency": "GBP",
+          "TargetCurrency": "GBP",
           "UnitCurrency": "GBP"
         },
         "UltimateCreditor": {
@@ -705,15 +711,16 @@ Content-Type: application/json
           "CreditDebitIndicator": "Debit",
           "Type": "InterimBooked"
         },
-        "ExtendedProprietaryBankTransactionCodes": [{
-          "Code": "Transfer 2",
-          "Issuer": "AlphaBank",
-          "Description": "Local View"
+        "ExtendedProprietaryBankTransactionCodes": [
+          {
+            "Code": "Transfer 2",
+            "Issuer": "AlphaBank",
+            "Description": "Local View"
           },
           {
-          "Code": "Transfer 3",
-          "Issuer": "AlphaBank",
-          "Description": "SWIFT View"
+            "Code": "Transfer 3",
+            "Issuer": "AlphaBank",
+            "Description": "SWIFT View"
           }
         ],
         "UltimateDebtor": {
@@ -754,8 +761,8 @@ Content-Type: application/json
   },
   "Meta": {
     "TotalPages": 1,
-	"FirstAvailableDateTime": "2017-05-03T00:00:00+00:00",
-	"LastAvailableDateTime": "2017-12-03T00:00:00+00:00"
+    "FirstAvailableDateTime": "2017-05-03T00:00:00+00:00",
+    "LastAvailableDateTime": "2017-12-03T00:00:00+00:00"
   }
 }
 ```
