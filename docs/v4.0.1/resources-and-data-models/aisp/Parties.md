@@ -222,7 +222,7 @@ Content-Type: application/json
                 "Mobile": "+447700900000",
                 "Address": [
                     {
-                        "AddressType": "Business",
+                        "AddressType": "BIZZ",
                         "StreetName": "Street",
                         "BuildingNumber": "15",
                         "PostCode": "NW1 1AB",
@@ -306,7 +306,7 @@ Content-Type: application/json
                 ],
                 "Address": [
                     {
-                        "AddressType": "Business",
+                        "AddressType": "BIZZ",
                         "StreetName": "Thomas More Square",
                         "BuildingNumber": "2",
                         "PostCode": "E1W 1YN",
@@ -335,7 +335,7 @@ Content-Type: application/json
                   }],
                 "Address": [
                     {
-                        "AddressType": "Residential",
+                        "AddressType": "HOME",
                         "StreetName": "Thomas More Square",
                         "BuildingNumber": "1",
                         "PostCode": "E1W 1YN",
@@ -393,7 +393,7 @@ Content-Type: application/json
       "Phone": "+442079460000", 
       "Mobile": "+447700900000",
       "Address": {
-        "AddressType": "Business",
+        "AddressType": "BIZZ",
         "StreetName": "Street",
         "BuildingNumber": "15",
         "PostCode": "NW1 1AB",
@@ -454,7 +454,7 @@ Content-Type: application/json
       "Phone": "+442079460000", 
       "Mobile": "+447700900000",
       "Address": {
-        "AddressType": "Business",
+        "AddressType": "BIZZ",
         "StreetName": "Street",
         "BuildingNumber": "15",
         "PostCode": "NW1 1AB",
