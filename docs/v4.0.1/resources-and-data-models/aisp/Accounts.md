@@ -86,10 +86,9 @@ Each account resource will have a unique and immutable AccountId.
   * Data.AccountCategory
   * Data.AccountTypeCode
 
-
 ### Permission Codes
 
-The resource differs depending on the permissions (ReadAccountsBasic and ReadAccountsDetail) used to access the resource. When the resource is accessed with ReadAccountsDetail it implies that access is also granted to the ReadAccountBasics permissions.  Whilst it is duplication for a TPP to request both permission codes, it is not a malformed request, and the ASPSP must not reject solely on the basis of duplication.
+The resource differs depending on the permissions (ReadAccountsBasic and ReadAccountsDetail) used to access the resource. When the resource is accessed with ReadAccountsDetail it implies that access is also granted to the ReadAccountBasics permissions. Whilst it is duplication for a TPP to request both permission codes, it is not a malformed request, and the ASPSP must not reject solely on the basis of duplication.
 
 Where both ReadAccountsBasic and ReadAccountsDetail are present, the most detailed level (ReadAccountsDetail) must be used.
 
@@ -102,6 +101,7 @@ It is **MANDATORY** to include the ReadAccountsDetail permission to return any o
     * OBReadAccount6/Data/Account/Account
     * OBReadAccount6/Data/Account/Servicer
     * OBReadAccount6/Data/Account/StatementFrequencyAndFormat
+
 * If the **ReadAccountsDetail** is granted by the PSU it is **MANDATORY** to return the following:
     * OBReadAccount6/Data/Account/Account **must** be returned (1..*)
 * If the **ReadAccountsDetail** is granted by the PSU it is **CONDITIONAL** to return the following, conditionality being baed on the information being applicable to the account and ASPSP:
@@ -131,7 +131,7 @@ Further information can be found at [Account and Transaction Permissions](../../
 | MaturityDate |0..1 |OBReadAccount6/Data/Account/MaturityDate | Maturity date for the account. | ISODate | | |
 | SwitchStatus |0..1 |OBReadAccount6/Data/Account/SwitchStatus | The switch status for the account. |For a full list of enumeration values refer to `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_internal_CodeSets)|OBInternalSwitchStatusCode | |
 | Account |0..* |OBReadAccount6/Data/Account/Account |Provides the details to identify an account. |OBCashAccount5 | | |
-| SchemeName |1..1 |OBReadAccount6/Data/Account/Account/SchemeName |Name of the identification scheme, in a coded form as published in an external list. | For a full list of enumeration values refer to `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets). |OBInternalAccountIdentification4Code | 
+| SchemeName |1..1 |OBReadAccount6/Data/Account/Account/SchemeName |Name of the identification scheme, in a coded form as published in an external list. | For a full list of enumeration values refer to `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets). |OBInternalAccountIdentification4Code |
 | Identification |1..1 |OBReadAccount6/Data/Account/Account/Identification |Identification assigned by an institution to identify an account. This identification is known by the account owner. |Max256Text | | |
 | Name |0..1 |OBReadAccount6/Data/Account/Account/Name |The account name is the name or names of the account owner(s) represented at an account level, as displayed by the ASPSP's online channels. Note, the account name is not the product name or the nickname of the account. |Max350Text | | |
 | SecondaryIdentification |0..1 |OBReadAccount6/Data/Account/Account/SecondaryIdentification |This is secondary identification of the account, as assigned by the account servicing institution. This can be used by building societies to additionally identify accounts with a roll number (in addition to a sort code and account number combination). |Max34Text | | |
@@ -146,10 +146,9 @@ Further information can be found at [Account and Transaction Permissions](../../
 | SchemeName |1..1 |OBReadAccount6/Data/Account/Servicer/SchemeName |Name of the identification scheme, in a coded form as published in an external list. |For a full list of enumeration values refer to `Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_internal_CodeSets)|OBInternalFinancialInstitutionIdentification4Code | |
 | Identification |1..1 |OBReadAccount6/Data/Account/Servicer/Identification |Unique and unambiguous identification of the servicing institution. |Max35Text | | |
 
-
 ### Reused Classes
 
-#### OBPostalAddress7 
+#### OBPostalAddress7
 
 The OBPostalAddress7 class is defined in the [payment-initiation-api-profile](../../profiles/payment-initiation-api-profile.md#obpostaladdress7) page
 
@@ -192,7 +191,7 @@ Content-Type: application/json
         "Currency": "GBP",
         "AccountCategory": "Personal",
         "AccountTypeCode": "CACC",
-        "Description" :  "For paying bills",
+        "Description": "For paying bills",
         "Nickname": "Bills",
         "OpeningDate": "01-05-2002T10:43:07+00:00",
         "SwitchStatus": "UK.CASS.NotSwitched",
@@ -277,6 +276,7 @@ HTTP/1.1 200 OK
 x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Content-Type: application/json
 ```
+
 ```json
 {
   "Data": {
@@ -288,7 +288,7 @@ Content-Type: application/json
         "StatusUpdateDateTime": "2019-01-01T06:06:06+00:00",
         "Currency": "GBP",
         "AccountCategory": "Personal",
-        "Description" :  "For paying bills",
+        "Description": "For paying bills",
         "AccountTypeCode": "CACC",
         "Nickname": "Bills",
         "OpeningDate": "01-05-2002T10:43:07+00:00",
@@ -370,7 +370,7 @@ Content-Type: application/json
         "Currency": "GBP",
         "AccountCategory": "Personal",
         "AccountTypeCode": "CACC",
-        "Description" :  "For paying bills",
+        "Description": "For paying bills",
         "Nickname": "Bills",
         "OpeningDate": "01-05-2002T10:43:07+00:00",
         "SwitchStatus": "UK.CASS.NotSwitched",
