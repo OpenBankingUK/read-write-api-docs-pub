@@ -123,12 +123,12 @@ Accept: application/json
           {
           "ReferredDocumentAmount": 1,
           "CreditorReferenceInformation": {
-            "Reference": "SweepCo",
+            "Reference": "SweepCo"
             },
-        "AdditionalRemittanceInformation": ["Rose's pocket money"],
-          },
-        ],
-      },
+        "AdditionalRemittanceInformation": ["Rose's pocket money"]
+          }
+        ]
+      }
   },
   "Risk": {
     "PaymentContextCode": "TransferToSelf",
@@ -136,7 +136,7 @@ Accept: application/json
     "PaymentPurposeCode": "EPAY",
     "CategoryPurposeCode": "GP2P", 
     "BeneficiaryPaymentDetailsPrepopulatedIndicator": true,
-    "BeneficiaryAccountType": "Personal",
+    "BeneficiaryAccountType": "Personal"
   }
 }
 }
@@ -159,7 +159,7 @@ Content-Type: application/json
     "Status": "AUTH",
     "StatusReason": {
       "StatusReasonCode": "U038", 
-      "StatusReasonDescription":"Consent consumed successfully",
+      "StatusReasonDescription":"Consent consumed successfully"
     },
     "StatusUpdateDateTime": "2017-06-05T15:15:15+05:00",
     "ReadRefundAccount": "Yes",
@@ -255,14 +255,14 @@ Content-Type: application/json
           {
           "ReferredDocumentInformation": [{
             "CreditorReferenceInformation": {
-              "Reference": "SweepCo",
+              "Reference": "SweepCo"
             },
-          "AdditionalRemittanceInformation": ["Rose's pocket money"],
-          },
+          "AdditionalRemittanceInformation": ["Rose's pocket money"]
+          }
         ]
       }
       ]
-    },
+    }
   },
   "Risk": {
     "PaymentContextCode": "TransferToSelf",
@@ -270,8 +270,8 @@ Content-Type: application/json
     "PaymentPurposeCode": "EPAY",
     "CategoryPurposeCode": "GP2P", 
     "BeneficiaryPaymentDetailsPrepopulatedIndicator": true,
-    "BeneficiaryAccountType": "Personal",
-  },
+    "BeneficiaryAccountType": "Personal"
+  }
   },
   "Links": {
     "Self": "https://api.alphabank.com/open-banking/v4.0/pisp/domestic-vrp-consents/fe615446-e53a-45ed-954c-ae5d1f97a93b"
@@ -315,7 +315,7 @@ Content-Type: application/json
     "ReadRefundAccount": "Yes",
     "StatusReason": {
       "StatusReasonCode": "U038", 
-      "StatusReasonDescription":"Consent consumed successfully",
+      "StatusReasonDescription":"Consent consumed successfully"
     },
     "ControlParameters": {
       "PSUAuthenticationMethods": [ "UK.OBIE.SCA" ],
@@ -412,13 +412,13 @@ Content-Type: application/json
           {
           "ReferredDocumentAmount": 1,
           "CreditorReferenceInformation": {
-            "Reference": "SweepCo",
+            "Reference": "SweepCo"
             },
-        "AdditionalRemittanceInformation": ["Rose's pocket money"],
-          },
-        ],
-      },
-  },
+        "AdditionalRemittanceInformation": ["Rose's pocket money"]
+          }
+        ]
+      }
+  }
   },
   "Risk": {
     "PaymentContextCode": "TransferToSelf",
@@ -426,8 +426,8 @@ Content-Type: application/json
     "PaymentPurposeCode": "EPAY",
     "CategoryPurposeCode": "GP2P", 
     "BeneficiaryPaymentDetailsPrepopulatedIndicator": true,
-    "BeneficiaryAccountType": "Personal",
-}
+    "BeneficiaryAccountType": "Personal"
+},
   "Links": {
     "Self": "https://api.alphabank.com/open-banking/v4.0/pisp/domestic-vrp-consents/fe615446-e53a-45ed-954c-ae5d1f97a93b"
   },
@@ -521,11 +521,11 @@ Accept: application/json
           {
           "ReferredDocumentAmount": 1,
           "CreditorReferenceInformation": {
-            "Reference": "SweepCo",
+            "Reference": "SweepCo"
             },
-        "AdditionalRemittanceInformation": ["Rose's pocket money"],
-          },
-        ],
+        "AdditionalRemittanceInformation": ["Rose's pocket money"]
+          }
+        ]
       }
   },
     "Instruction": {
@@ -586,11 +586,11 @@ Accept: application/json
           {
           "ReferredDocumentAmount": 1,
           "CreditorReferenceInformation": {
-            "Reference": "SweepCo",
+            "Reference": "SweepCo"
             },
-        "AdditionalRemittanceInformation": ["Rose's pocket money"],
-          },
-        ],
+        "AdditionalRemittanceInformation": ["Rose's pocket money"]
+          }
+        ]
       }
     }
   },
@@ -600,7 +600,7 @@ Accept: application/json
     "PaymentPurposeCode": "EPAY",
     "CategoryPurposeCode": "GP2P", 
     "BeneficiaryPaymentDetailsPrepopulatedIndicator": true,
-    "BeneficiaryAccountType": "Personal",
+    "BeneficiaryAccountType": "Personal"
     }
 }
 ```
@@ -623,7 +623,7 @@ Content-Type: application/json
     "Status": "PDNG",
     "StatusReason": {
       "StatusReasonCode": "83",
-      "StatusReasonDescription":"Pending completion next working day",
+      "StatusReasonDescription":"Pending completion next working day"
     },
     "StatusUpdateDateTime": "2017-06-05T15:15:15+00:00",
     "ExpectedExecutionDateTime": "2017-06-05T15:15:15+00:00",
@@ -656,7 +656,7 @@ Content-Type: application/json
         "SchemeName": "SortCodeAccountNumber",
         "Identification": "30949330000010",
         "SecondaryIdentification": "Roll 90210",
-        "Name": "Marcus Sweepimus",
+        "Name": "Marcus Sweepimus"
       },
       "CreditorAgent": {  
           "LEI": "IZ9Q00LZEVUKWCQY6X15",
@@ -708,11 +708,11 @@ Content-Type: application/json
           {
           "ReferredDocumentAmount": 1,
           "CreditorReferenceInformation": {
-            "Reference": "SweepCo",
+            "Reference": "SweepCo"
             },
-        "AdditionalRemittanceInformation": ["Rose's pocket money"],
-          },
-        ],
+        "AdditionalRemittanceInformation": ["Rose's pocket money"]
+          }
+        ]
       }
     },
 
@@ -789,11 +789,11 @@ Content-Type: application/json
           {
           "ReferredDocumentAmount": 1,
           "CreditorReferenceInformation": {
-            "Reference": "SweepCo",
+            "Reference": "SweepCo"
             },
-        "AdditionalRemittanceInformation": ["Rose's pocket money"],
-          },
-        ],
+        "AdditionalRemittanceInformation": ["Rose's pocket money"]
+          }
+        ]
       }
     }},
   "Risk": {
@@ -802,7 +802,7 @@ Content-Type: application/json
     "PaymentPurposeCode": "EPAY",
     "CategoryPurposeCode": "GP2P", 
     "BeneficiaryPaymentDetailsPrepopulatedIndicator": true,
-    "BeneficiaryAccountType": "Personal",
+    "BeneficiaryAccountType": "Personal"
   },
 
   
@@ -868,7 +868,7 @@ Accept: application/json
     "PaymentPurposeCode": "EPAY",
     "CategoryPurposeCode": "GP2P", 
     "BeneficiaryPaymentDetailsPrepopulatedIndicator": true,
-    "BeneficiaryAccountType": "Personal",
+    "BeneficiaryAccountType": "Personal"
   }
 }
 ```
@@ -913,7 +913,7 @@ Content-Type: application/json
     "PaymentPurposeCode": "EPAY",
     "CategoryPurposeCode": "GP2P", 
     "BeneficiaryPaymentDetailsPrepopulatedIndicator": true,
-    "BeneficiaryAccountType": "Personal",
+    "BeneficiaryAccountType": "Personal"
   }
 }
 ```
@@ -1044,11 +1044,11 @@ Content-Type: application/json
           {
           "ReferredDocumentAmount": 1,
           "CreditorReferenceInformation": {
-            "Reference": "SweepCo",
+            "Reference": "SweepCo"
             },
-        "AdditionalRemittanceInformation": ["Rose's pocket money"],
-          },
-        ],
+        "AdditionalRemittanceInformation": ["Rose's pocket money"]
+          }
+        ]
       }
     }
   },
@@ -1059,7 +1059,7 @@ Content-Type: application/json
     "PaymentPurposeCode": "EPAY",
     "CategoryPurposeCode": "GP2P", 
     "BeneficiaryPaymentDetailsPrepopulatedIndicator": true,
-    "BeneficiaryAccountType": "Personal",
+    "BeneficiaryAccountType": "Personal"
 },
   
   "Links": {
@@ -1153,7 +1153,7 @@ Accept: application/json
     "PSUAuthenticationMethod": "UK.OBIE.SCA",
     "PSUInteractionType": "OffSession",
     "VRPType": "UK.OBIE.VRPType.Sweeping",
-    "Refund" : "Yes", 
+    "Refund": "Yes",
     "Initiation": {
       "DebtorAccount": {
         "SchemeName": "UK.OBIE.IBAN",
@@ -1177,19 +1177,19 @@ Accept: application/json
           "Type": "Telephone"
         }
       },
-      "CreditorAgent": {  
-          "LEI": "IZ9Q00LZEVUKWCQY6X15",
-          "SchemeName": "UK.OBIE.BICFI",
-          "Identification": "80200112344562",
-          "Name": "The Credit Agent", 
-          "PostalAddress": { 
-            "AddressType": "BIZZ",
-            "StreetName": "Bank Street",
-            "BuildingNumber": "11",
-            "Floor": "6",
-            "PostCode": "Z78 4TY",
-            "TownName": "London",
-            "Country": "UK"
+      "CreditorAgent": {
+        "LEI": "IZ9Q00LZEVUKWCQY6X15",
+        "SchemeName": "UK.OBIE.BICFI",
+        "Identification": "80200112344562",
+        "Name": "The Credit Agent",
+        "PostalAddress": {
+          "AddressType": "BIZZ",
+          "StreetName": "Bank Street",
+          "BuildingNumber": "11",
+          "Floor": "6",
+          "PostCode": "Z78 4TY",
+          "TownName": "London",
+          "Country": "UK"
         }
       },
       "CreditorPostalAddress": {
@@ -1204,7 +1204,7 @@ Accept: application/json
         "Room": "844",
         "PostBox": "PO Box 123456",
         "PostCode": "Z78 4TY",
-        "TownLocationName":"Bank",
+        "TownLocationName": "Bank",
         "TownName": "London",
         "DistrictName": "Greater London",
         "CareOf": "Ms Jane Smith",
@@ -1224,8 +1224,8 @@ Accept: application/json
           "PostCode": "Z78 4TY",
           "TownName": "London",
           "Country": "UK"
-          }
-        },
+        }
+      },
       "UltimateDebtor": {
         "SchemeName": "UK.OBIE.BICFI",
         "Identification": "2360549017905161589",
@@ -1254,21 +1254,22 @@ Accept: application/json
           "PostCode": "Z78 4TY",
           "TownName": "London",
           "Country": "UK"
-          }
-        },
+        }
+      },
       "RemittanceInformation": {
         "Structured": [
           {
-          "ReferredDocumentAmount": 1,
-          "CreditorReferenceInformation": {
-            "Reference": "SweepCo",
+            "ReferredDocumentAmount": 1,
+            "CreditorReferenceInformation": {
+              "Reference": "SweepCo"
             },
-        "AdditionalRemittanceInformation": ["Rose's pocket money"],
-          },
-        ],
+            "AdditionalRemittanceInformation": [
+              "Rose's pocket money"
+            ]
+          }
+        ]
       }
     },
-
     "Instruction": {
       "InstructionIdentification": "fe655556-e53a-45ed-954c-ae5d1f97a93b",
       "EndToEndIdentification": "fe699996-e53a-45ed-954c-ae5d1f97a93a",
@@ -1284,19 +1285,19 @@ Accept: application/json
           "Type": "Telephone"
         }
       },
-      "CreditorAgent": {  
-          "LEI": "IZ9Q00LZEVUKWCQY6X15",
-          "SchemeName": "UK.OBIE.BICFI",
-          "Identification": "80200112344562",
-          "Name": "The Credit Agent", 
-          "PostalAddress": { 
-            "AddressType": "BIZZ",
-            "StreetName": "Bank Street",
-            "BuildingNumber": "11",
-            "Floor": "6",
-            "PostCode": "Z78 4TY",
-            "TownName": "London",
-            "Country": "UK"
+      "CreditorAgent": {
+        "LEI": "IZ9Q00LZEVUKWCQY6X15",
+        "SchemeName": "UK.OBIE.BICFI",
+        "Identification": "80200112344562",
+        "Name": "The Credit Agent",
+        "PostalAddress": {
+          "AddressType": "BIZZ",
+          "StreetName": "Bank Street",
+          "BuildingNumber": "11",
+          "Floor": "6",
+          "PostCode": "Z78 4TY",
+          "TownName": "London",
+          "Country": "UK"
         }
       },
       "CreditorPostalAddress": {
@@ -1311,7 +1312,7 @@ Accept: application/json
         "Room": "844",
         "PostBox": "PO Box 123456",
         "PostCode": "Z78 4TY",
-        "TownLocationName":"Bank",
+        "TownLocationName": "Bank",
         "TownName": "London",
         "DistrictName": "Greater London",
         "CareOf": "Ms Jane Smith",
@@ -1322,27 +1323,29 @@ Accept: application/json
         "Amount": "10.00",
         "Currency": "GBP"
       },
-     "RemittanceInformation": {
+      "RemittanceInformation": {
         "Structured": [
           {
-          "ReferredDocumentAmount": 1,
-          "CreditorReferenceInformation": {
-            "Reference": "SweepCo",
+            "ReferredDocumentAmount": 1,
+            "CreditorReferenceInformation": {
+              "Reference": "SweepCo"
             },
-        "AdditionalRemittanceInformation": ["Rose's pocket money"],
-          },
-        ],
+            "AdditionalRemittanceInformation": [
+              "Rose's pocket money"
+            ]
+          }
+        ]
       }
     }
   },
-
   "Risk": {
     "PaymentContextCode": "TransferToSelf",
     "ContractPresentIndicator": true,
     "PaymentPurposeCode": "EPAY",
-    "CategoryPurposeCode": "GP2P", 
+    "CategoryPurposeCode": "GP2P",
     "BeneficiaryPaymentDetailsPrepopulatedIndicator": true,
-    "BeneficiaryAccountType": "Personal",
+    "BeneficiaryAccountType": "Personal"
+  }
 }
 ```
 
@@ -1393,7 +1396,7 @@ Content-Type: application/json
         "SchemeName": "SortCodeAccountNumber",
         "Identification": "30949330000010",
         "SecondaryIdentification": "Roll 90210",
-        "Name": "Marcus Sweepimus",
+        "Name": "Marcus Sweepimus"
       },
       "CreditorAccount": {
         "SchemeName": "SortCodeAccountNumber",
@@ -1445,11 +1448,11 @@ Content-Type: application/json
           {
           "ReferredDocumentAmount": 1,
           "CreditorReferenceInformation": {
-            "Reference": "SweepCo",
+            "Reference": "SweepCo"
             },
-        "AdditionalRemittanceInformation": ["Rose's pocket money"],
-          },
-        ],
+        "AdditionalRemittanceInformation": ["Rose's pocket money"]
+          }
+        ]
       }
     },
 
@@ -1511,11 +1514,11 @@ Content-Type: application/json
           {
           "ReferredDocumentAmount": 1,
           "CreditorReferenceInformation": {
-            "Reference": "SweepCo",
+            "Reference": "SweepCo"
             },
-          "AdditionalRemittanceInformation": ["Rose's pocket money"],
-          },
-        ],
+          "AdditionalRemittanceInformation": ["Rose's pocket money"]
+          }
+        ]
       }
     }
   },
@@ -1526,7 +1529,7 @@ Content-Type: application/json
     "PaymentPurposeCode": "EPAY",
     "CategoryPurposeCode": "GP2P", 
     "BeneficiaryPaymentDetailsPrepopulatedIndicator": true,
-    "BeneficiaryAccountType": "Personal",
+    "BeneficiaryAccountType": "Personal"
 },
   
   "Links": {
