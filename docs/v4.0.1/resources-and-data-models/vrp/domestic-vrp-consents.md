@@ -11,12 +11,12 @@
 - [State Model - VRP consents](#state-model---vrp-consents)
 - [Data Model](#data-model)
 - [Reused Classes](#reused-classes)
-    - [OBProxy1](#obproxy1)
-    - [OBPostalAddress7](#obpostaladdress7)
-    - [OBRemittanceInformation2](#obremittanceinformation2)
-    - [OBUltimateCreditor1](#obultimatecreditor1)
-    - [OBUltimateDebtor1](#obultimatedebtor1)
-    - [OBRegulatoryReporting1](#obregulatoryreporting1)
+  - [OBProxy1](#obproxy1)
+  - [OBPostalAddress7](#obpostaladdress7)
+  - [OBRemittanceInformation2](#obremittanceinformation2)
+  - [OBUltimateCreditor1](#obultimatecreditor1)
+  - [OBUltimateDebtor1](#obultimatedebtor1)
+  - [OBRegulatoryReporting1](#obregulatoryreporting1)
   - [OBCashAccountDebtorWithName](#obcashaccountdebtorwithname)
   - [OBCashAccountCreditor3](#obcashaccountcreditor3)
   - [OBBranchAndFinancialInstitutionIdentification6](#obbranchandfinancialinstitutionidentification6)
@@ -33,7 +33,7 @@
   - [OBVRPFundsConfirmationRequest](#obvrpfundsconfirmationrequest)
   - [OBVRPFundsConfirmationResponse](#obvrpfundsconfirmationresponse)
 - [Usage Examples](#usage-examples)
-  
+
 ## Overview
 
 The Domestic VRP Consents resource is used by a TPP to register a consent to initiate one or more of domestic payments within the control parameters agreed with the PSU.
@@ -86,9 +86,6 @@ Examples:
 | Creditor Information/Reference | Empty | Empty | Dynamic reference for each payment |
 | Creditor Information/Reference | Empty | Empty | Dynamic Invoice number for each payment |
 
-
-
-
 ### GET /domestic-vrp-consents/{ConsentId}
 
 A TPP can retrieve a VRP consent resource that they have created to check its status at any point of time using this API.
@@ -124,6 +121,7 @@ The request body should contain an array of JSON Patch operations, as per [RFC 6
 PATCH operations are atomic, all requested changes are successfully applied or none are. Errors should reflect the underlying cause and indicate which field caused the failure if relevant.
 
 The following examples shows a series of patch operations that updates the ContractPresentIndicator field name and updates the AddressType value to the ISO code value.
+
 ``` json
 [
  { "op": "remove", "path": "/Risk/ContractPresentInidicator" },
@@ -135,14 +133,11 @@ The following examples shows a series of patch operations that updates the Contr
 
 Successful submission must return the full updated consent resource body.
 
-
-
 ## State Model - VRP consents
 
 The state model for the VRP consents resource follows the generic consent state model. However, it does not use the `COND` Status.
 
 ![VRP Consent State model](./images/PIS-VRP_PO_Consent.png)
-
 
 All `domestic-vrp-consents` start off with a Status of `AWAU`
 
@@ -168,8 +163,8 @@ The definitions for the Status:
 | 4| CANC| The consent resource has been canceled.                      |
 | 5| EXPD| The consent resource has expired.|
 
-
-Changes to the Status, such as being rejected, should be captured in `StatusReason`, an array of `StatusReasonCode`, `StatusReasonDescription` and `Path`.  
+Changes to the Status, such as being rejected, should be captured in `StatusReason`, an array of `StatusReasonCode`,
+`StatusReasonDescription` and `Path`.
 
 | Field | Description |
 |---|---|
@@ -183,11 +178,11 @@ The data dictionary section gives the detail on the payload content for the VRP 
 
 ### Reused Classes
 
-#### OBProxy1  
+#### OBProxy1
 
 The OBProxy1 class is defined in the [vrp-profile](../../profiles/vrp-profile.md#obproxy1) page.
 
-#### OBPostalAddress7 
+#### OBPostalAddress7
 
 The OBPostalAddress7 class is defined in the [vrp-profile](../../profiles/vrp-profile.md#obpostaladdress7) page.
 
@@ -199,7 +194,7 @@ The OBRemittanceInformation2 class is defined in the [vrp-profile](../../profile
 
 The OBUltimateCreditor1 class is defined in the [vrp-profile](../../profiles/vrp-profile.md#obultimatecreditor1) page.
 
-#### OBUltimateDebtor1 
+#### OBUltimateDebtor1
 
 The OBUltimateDebtor1 class is defined in the [vrp-profile](../../profiles/vrp-profile.md#obultimatedebtor1) page.
 
@@ -225,7 +220,7 @@ The OBRegulatoryReporting1 class is defined in the [vrp-profile](../../profiles/
 
 | Name |Path |Definition | Type |
 | ---- |-----|---------- |------|
-| __SchemeName__ (1..1) | `SchemeName` | Name of the identification scheme, in a coded form as published | 
+| __SchemeName__ (1..1) | `SchemeName` | Name of the identification scheme, in a coded form as published |
 | __Identification__ (1..1) | `Identification` |Identification assigned by an institution to identify an account. This identification is known by the account owner.   |Max256Text|
 | __Name__ (1..1) | `Name` |Name of the account, as assigned by the account servicing institution, in consent with the account owner in order to provide an additional means of identification of the account.  Usage: The account name is different from the account owner name. The account name is used in certain user communities to provide a means of identifying the account, in addition to the account owner's identity and the account number. OB: No name validation is expected for confirmation of payee.|Max70Text  |
 | __SecondaryIdentification__ (0..1) | `SecondaryIdentification` |This is secondary identification of the account, as assigned by the account servicing institution.  This can be used by building societies to additionally identify accounts with a roll number__ (in addition to a sort code and account number combination).             |Max34Text|
@@ -243,7 +238,6 @@ The OBRegulatoryReporting1 class is defined in the [vrp-profile](../../profiles/
 | __LEI__ (0..1) | `LEI` | Legal entity identification as an alternate identification for a party. <br>Legal Entity Identifier is a code allocated to a party as described in ISO 17442 "Financial Services - Legal Entity Identifier (LEI)". | Max20Text |
 | __PostalAddress__ (0..1) | `PostalAddress` |Information that locates and identifies a specific address, as defined by postal services.| [OBPostalAddress7](../../profiles/vrp-profile.md#obpostaladdress7) |
 
-
 ### OBDomesticVRPInitiation
 
 ![OBDomesticVRPInitiation](./images/OBDomesticVRPInitiation.svg)
@@ -257,9 +251,6 @@ The OBRegulatoryReporting1 class is defined in the [vrp-profile](../../profiles/
 | __UltimateCreditor__ (0..1) | `UltimateCreditor` | Ultimate party to which an amount of money is due. |[OBUltimateCreditor1](../../profiles/vrp-profile.md#obultimatecreditor1) |
 | __RemittanceInformation__ (0..1) | `RemittanceInformation`   | Information supplied to enable the matching of an entry with the items that the transfer is intended to settle, such as commercial invoices in an accounts' receivable system. | [OBRemittanceInformation2](../../profiles/vrp-profile.md#obremittanceinformation2) |
 |__RegulatoryReporting__ (0..10)| `RegulatoryReporting` | Information needed due to regulatory and statutory requirements. | [OBRegulatoryReporting1](../../profiles/vrp-profile.md#obregulatoryreporting1) |
-
-
-
 
 ### OBDomesticVRPControlParameters
 
@@ -287,6 +278,7 @@ The VRP consent is a common class used in `domestic-payment-consents` requests a
 #### Examples of Periodic Limits
 
 ##### Example 1
+
 ``` json
 
 // created on 06-Jun-2021
@@ -358,7 +350,6 @@ The VRP consent is a common class used in `domestic-payment-consents` requests a
 | 2      | 05-Jun-2022 | 04-Jun-2023 | 500.00 GBP |
 | 3      | 05-Jun-2023 | 04-Jun-2024 | 500.00 GBP |
 
-
 ### OBRisk1
 
 The Risk block is a common class used in requests and responses
@@ -378,7 +369,7 @@ The Risk block is a common class used in requests and responses
 | BeneficiaryPrepopulatedIndicator | 0..1       | OBRisk1/BeneficiaryPrepopulatedIndicator   | Indicates if PISP has immutably prepopulated payment details in for the PSU.                                                                                                                                                   | Boolean                            |                                                                                                                                                                                                                                                                                                                         |         |
 | PaymentPurposeCode |0..1 |OBRisk1/PaymentPurposeCode | For a full description see `ExternalPurpose1Code` [here](https://github.com/OpenBankingUK/External_internal_CodeSets) |For a full list of enumeration values refer to `External_CodeSet` [here]  |ExternalPurpose1Code | |
 | BeneficiaryAccountType           | 0..1       | OBRisk1/BeneficiaryAccountType             | To be provided if the AccountType is known.                                                                                                                                                                                    | For a full list of enumeration values refer to `OB_Internal_CodeSet`[here](https://github.com/OpenBankingUK/External_Internal_CodeSets/). | OBInternalExtendedAccountType1Code                                                                                                      |         |
-| DeliveryAddress                  | 0..1       | OBRisk1/DeliveryAddress                    | Information that locates and identifies a specific address, as defined by postal services or in free format text.                                                                                                              | OBPostalAddress7               |                                                                                        
+| DeliveryAddress                  | 0..1       | OBRisk1/DeliveryAddress                    | Information that locates and identifies a specific address, as defined by postal services or in free format text.                                                                                                              | OBPostalAddress7               |
 
 ### OBDomesticVRPConsentRequest
 
@@ -412,8 +403,6 @@ The Risk block is a common class used in requests and responses
 | __Initiation__ (1..1) | `Data. Initiation` | The parameters of the VRP consent that should remain unchanged for each payment under this VRP |  [OBDomesticVRPInitiation](#OBDomesticVRPInitiation)
 | __DebtorAccount__ (0..1) | `Data.DebtorAccount` | The DebtorAccount details as specified by the PSU when account selection happens at the ASPSP.<br><br>__Note:__  The details must be provided in the consent response (OBDomesticVRPConsentResponse) by the ASPSP to enable the PISP to associate it with future VRP payments that are made using the VRP Consent. | OBCashAccountDebtorWithName|
 | __Risk__ (1..1) | `Risk` | The consent payload is sent by the initiating party to the ASPSP. It is used to request a consent to move funds from the debtor account to a creditor. | [OBRisk1](#OBRisk1)|
-
-
 
 ### OBVRPFundsConfirmationRequest
 
