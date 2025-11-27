@@ -154,11 +154,10 @@ For the call toGET /accounts/{AccountId}/statements/{StatementId}/transactions:
 
 * The **ReadTransactionsBasic or** **ReadTransactionsDetail** (in addition to the appropriate **ReadTransactionsCredits** and/or **ReadTransactionsDebits** ) permission codes will be required. The ASPSP must apply the same access to GET /accounts/{AccountId}/statements/{StatementId}/transactions as GET /accounts/{AccountId}/transactions
 * If the ReadPAN permission is granted by the PSU - the ASPSP may choose to populate the unmasked PAN - if the PAN is being populated in the response for these fields:
-  
+
   * OBReadTransaction6/Data/Transaction/CreditorAgent/Identification
   * OBReadTransaction6/Data/Transaction/DebtorAccount/Identification
   * OBReadTransaction6/Data/Transaction/CardInstrument/Identification
-
 
 ### Data Dictionary
 
@@ -251,115 +250,133 @@ Content-Type: application/json
 {
   "Data": {
     "Statement": [
-    {
-      "AccountId": "22289",
-      "StatementId": "8sfhke-sifhkeuf-97813",
-      "StatementReference": "002",
-      "Type": "RegularPeriodic",
-      "StartDateTime": "2017-08-01T00:00:00+00:00",
-      "EndDateTime": "2017-08-31T23:59:59+00:00",
-      "CreationDateTime": "2017-09-01T00:00:00+00:00",
-      "StatementDateTime": [{
-        "DateTime": "2017-08-01T00:00:00+00:00",
-        "Type": "UK.OBIE.DirectDebitDue"
-      }],
-      "TotalValue": {
-         "Amount": "1024.00",
-          "Currency": "GBP"
-      },
-      "StatementDescription": ["August 2017 Statement", "One Free Uber Ride"],
-      "StatementAmount": [
       {
-        "Amount": {
-          "Amount": "400.00",
-          "Currency": "GBP",
-          "SubType": "BCUR"
-        },
-        "LocalAmount": { 
-          "Amount": "400.00",
-          "Currency": "GBP",
-          "SubType": "BCUR"
-        },
-        "CreditDebitIndicator": "Credit",        
-        "Type": "ClosingBalance"        
-      },
-      {
-        "Amount": {
-          "Amount": "600.00",
+        "AccountId": "22289",
+        "StatementId": "8sfhke-sifhkeuf-97813",
+        "StatementReference": "002",
+        "Type": "RegularPeriodic",
+        "StartDateTime": "2017-08-01T00:00:00+00:00",
+        "EndDateTime": "2017-08-31T23:59:59+00:00",
+        "CreationDateTime": "2017-09-01T00:00:00+00:00",
+        "StatementDateTime": [
+          {
+            "DateTime": "2017-08-01T00:00:00+00:00",
+            "Type": "UK.OBIE.DirectDebitDue"
+          }
+        ],
+        "TotalValue": {
+          "Amount": "1024.00",
           "Currency": "GBP"
         },
-        "CreditDebitIndicator": "Credit",
-        "Type": "PreviousClosingBalance"
-      }
-      ],
-     "StatementBenefit": [{ 
-      "Type": "UK.OBIE.Cashback",
-      "Amount": {
-        "Amount": "5.00",
-        "Currency": "GBP"
-      }
-     }],
-     "StatementValue": [{
-      "Type": "UK.OBIE.AirMilesPoints",
-      "Value": "100"         
-     }],
-     "StatementFee": [{ 
-      "Description": "International usage charge",
-      "Type": "UK.OBIE.ForeignTransaction",
-      "Rate": "0.229",
-      "CreditDebitIndicator": "Credit",        
-      "RateType": "UK.OBIE.AER",
-      "Frequency": "UK.OBIE.StatementMonthly",
-      "Amount": {
-        "Amount": "03.75",
-        "Currency": "GBP"
-      }
-     }],
-     "StatementInterest": [{
-      "Description": "Interest occurred over statement duration",
-      "Type": "UK.OBIE.Total", 
-      "Rate": "0.229",
-      "CreditDebitIndicator": "Credit",        
-      "RateType": "UK.OBIE.FixedRate",
-      "Frequency": "UK.OBIE.StatementMonthly",
-      "Amount": {
-        "Amount": "20.25",
-        "Currency": "GBP"
-      }
-     }],
-     "StatementRate": [{ 
-        "Rate": "0.229",
-        "Type": "UK.OBIE.MonthlyPurchase"
-     }]
-    },
-    {
-      "AccountId": "22289",
-      "StatementId": "34hj24u-324h33-31i3p4",
-      "StatementReference": "003",
-      "Type": "RegularPeriodic",
-      "StartDateTime": "2017-09-01T00:00:00+00:00",
-      "EndDateTime": "2017-09-30T23:59:59+00:00",
-      "CreationDateTime": "2017-10-01T00:00:00+00:00",
-      "StatementDescription": ["September 2017 Statement"],
-      "StatementAmount": [
-      {
-        "Amount": {
-          "Amount": "200.00",
-          "Currency": "GBP"
-        },
-        "CreditDebitIndicator": "Credit",
-        "Type": "PreviousClosingBalance"
+        "StatementDescription": [
+          "August 2017 Statement",
+          "One Free Uber Ride"
+        ],
+        "StatementAmount": [
+          {
+            "Amount": {
+              "Amount": "400.00",
+              "Currency": "GBP",
+              "SubType": "BCUR"
+            },
+            "LocalAmount": {
+              "Amount": "400.00",
+              "Currency": "GBP",
+              "SubType": "BCUR"
+            },
+            "CreditDebitIndicator": "Credit",
+            "Type": "ClosingBalance"
+          },
+          {
+            "Amount": {
+              "Amount": "600.00",
+              "Currency": "GBP"
+            },
+            "CreditDebitIndicator": "Credit",
+            "Type": "PreviousClosingBalance"
+          }
+        ],
+        "StatementBenefit": [
+          {
+            "Type": "UK.OBIE.Cashback",
+            "Amount": {
+              "Amount": "5.00",
+              "Currency": "GBP"
+            }
+          }
+        ],
+        "StatementValue": [
+          {
+            "Type": "UK.OBIE.AirMilesPoints",
+            "Value": "100"
+          }
+        ],
+        "StatementFee": [
+          {
+            "Description": "International usage charge",
+            "Type": "UK.OBIE.ForeignTransaction",
+            "Rate": "0.229",
+            "CreditDebitIndicator": "Credit",
+            "RateType": "UK.OBIE.AER",
+            "Frequency": "UK.OBIE.StatementMonthly",
+            "Amount": {
+              "Amount": "03.75",
+              "Currency": "GBP"
+            }
+          }
+        ],
+        "StatementInterest": [
+          {
+            "Description": "Interest occurred over statement duration",
+            "Type": "UK.OBIE.Total",
+            "Rate": "0.229",
+            "CreditDebitIndicator": "Credit",
+            "RateType": "UK.OBIE.FixedRate",
+            "Frequency": "UK.OBIE.StatementMonthly",
+            "Amount": {
+              "Amount": "20.25",
+              "Currency": "GBP"
+            }
+          }
+        ],
+        "StatementRate": [
+          {
+            "Rate": "0.229",
+            "Type": "UK.OBIE.MonthlyPurchase"
+          }
+        ]
       },
       {
-        "Amount": {
-          "Amount": "400.00",
-          "Currency": "GBP"
-        },
-        "CreditDebitIndicator": "Credit",
-        "Type": "PreviousClosingBalance"
+        "AccountId": "22289",
+        "StatementId": "34hj24u-324h33-31i3p4",
+        "StatementReference": "003",
+        "Type": "RegularPeriodic",
+        "StartDateTime": "2017-09-01T00:00:00+00:00",
+        "EndDateTime": "2017-09-30T23:59:59+00:00",
+        "CreationDateTime": "2017-10-01T00:00:00+00:00",
+        "StatementDescription": [
+          "September 2017 Statement"
+        ],
+        "StatementAmount": [
+          {
+            "Amount": {
+              "Amount": "200.00",
+              "Currency": "GBP"
+            },
+            "CreditDebitIndicator": "Credit",
+            "Type": "PreviousClosingBalance"
+          },
+          {
+            "Amount": {
+              "Amount": "400.00",
+              "Currency": "GBP"
+            },
+            "CreditDebitIndicator": "Credit",
+            "Type": "PreviousClosingBalance"
+          }
+        ]
       }
-      ]
-    }],
+    ],
     "Links": {
       "Self": "https://api.alphabank.com/open-banking/v4.0/aisp/accounts/22289/statements/"
     },
@@ -395,79 +412,94 @@ Content-Type: application/json
 {
   "Data": {
     "Statement": [
-    {
-      "AccountId": "22289",
-      "StatementId": "8sfhke-sifhkeuf-97813",
-      "StatementReference": "002",
-      "Type": "RegularPeriodic",
-      "StartDateTime": "2023-08-01T00:00:00+00:00",
-      "EndDateTime": "2023-08-31T23:59:59+00:00",
-      "CreationDateTime": "2023-09-01T00:00:00+00:00",
-      "StatementDateTime": [{
-        "DateTime": "2017-08-01T00:00:00+00:00",
-        "Type": "UK.OBIE.DirectDebitDue"
-      }],
-      "StatementBenefit": [{ 
-        "Type": "UK.OBIE.Cashback",
-        "Amount": {
-          "Amount": "5.00",
-          "Currency": "GBP"
+      {
+        "AccountId": "22289",
+        "StatementId": "8sfhke-sifhkeuf-97813",
+        "StatementReference": "002",
+        "Type": "RegularPeriodic",
+        "StartDateTime": "2023-08-01T00:00:00+00:00",
+        "EndDateTime": "2023-08-31T23:59:59+00:00",
+        "CreationDateTime": "2023-09-01T00:00:00+00:00",
+        "StatementDateTime": [
+          {
+            "DateTime": "2017-08-01T00:00:00+00:00",
+            "Type": "UK.OBIE.DirectDebitDue"
           }
-      }],
-      "StatementValue": [{
-      "Type": "UK.OBIE.AirMilesPoints",
-      "Value": "100"         
-     }],
-      "StatementInterest": [{
-        "Description": "Interest occurred over statement duration",
-        "Type": "UK.OBIE.Total", 
-        "Rate": "0.229",
-        "CreditDebitIndicator": "Credit",        
-        "RateType": "UK.OBIE.FixedRate",
-        "Frequency": "UK.OBIE.StatementMonthly",
-        "Amount": {
-          "Amount": "20.25",
+        ],
+        "StatementBenefit": [
+          {
+            "Type": "UK.OBIE.Cashback",
+            "Amount": {
+              "Amount": "5.00",
+              "Currency": "GBP"
+            }
+          }
+        ],
+        "StatementValue": [
+          {
+            "Type": "UK.OBIE.AirMilesPoints",
+            "Value": "100"
+          }
+        ],
+        "StatementInterest": [
+          {
+            "Description": "Interest occurred over statement duration",
+            "Type": "UK.OBIE.Total",
+            "Rate": "0.229",
+            "CreditDebitIndicator": "Credit",
+            "RateType": "UK.OBIE.FixedRate",
+            "Frequency": "UK.OBIE.StatementMonthly",
+            "Amount": {
+              "Amount": "20.25",
+              "Currency": "GBP"
+            }
+          }
+        ],
+        "StatementFee": [
+          {
+            "Description": "International usage charge",
+            "Type": "UK.OBIE.ForeignTransaction",
+            "Rate": "0.229",
+            "CreditDebitIndicator": "Credit",
+            "RateType": "UK.OBIE.AER",
+            "Frequency": "UK.OBIE.StatementMonthly",
+            "Amount": {
+              "Amount": "03.75",
+              "Currency": "GBP"
+            }
+          }
+        ],
+        "StatementRate": [
+          {
+            "Rate": "0.229",
+            "Type": "UK.OBIE.MonthlyPurchase"
+          }
+        ],
+        "StatementDescription": [
+          "August 2023 Statement",
+          "One Free Uber Ride"
+        ],
+        "StatementAmount": [
+          {
+            "Amount": {
+              "SubType": "BCUR",
+              "Amount": "329.06",
+              "Currency": "GBP"
+            },
+            "LocalAmount": {
+              "SubType": "LCUR",
+              "Amount": "400.00",
+              "Currency": "USD"
+            },
+            "CreditDebitIndicator": "Credit",
+            "Type": "ClosingBalance"
+          }
+        ],
+        "TotalValue": {
+          "Amount": "720.39",
           "Currency": "GBP"
         }
-      }],
-      "StatementFee": [{ 
-          "Description": "International usage charge",
-          "Type": "UK.OBIE.ForeignTransaction",
-          "Rate": "0.229",
-          "CreditDebitIndicator": "Credit",        
-          "RateType": "UK.OBIE.AER",
-          "Frequency": "UK.OBIE.StatementMonthly",
-          "Amount": {
-            "Amount": "03.75",
-            "Currency": "GBP"
-          }
-      }],
-      "StatementRate": [{ 
-        "Rate": "0.229",
-        "Type": "UK.OBIE.MonthlyPurchase"
-      }],
-      "StatementDescription": ["August 2023 Statement", "One Free Uber Ride"],
-      "StatementAmount": [
-      {
-        "Amount": {
-          "SubType": "BCUR",
-          "Amount": "329.06",
-          "Currency": "GBP"
-        },
-        "LocalAmount": {
-          "SubType": "LCUR",
-          "Amount": "400.00",
-          "Currency": "USD"
-        },
-		"CreditDebitIndicator": "Credit",        
-		"Type": "ClosingBalance"        
       }
-      ],
-      "TotalValue": {
-        "Amount": "720.39",
-        "Currency": "GBP"
-      }
-    }
     ],
     "Links": {
       "Self": "https://api.alphabank.com/open-banking/v4.0/aisp/accounts/22289/statements/"
@@ -504,129 +536,144 @@ Content-Type: application/json
 {
   "Data": {
     "Statement": [
-    {
-      "AccountId": "22289",
-      "StatementId": "8sfhke-sifhkeuf-97813",
-      "StatementReference": "002",
-      "Type": "RegularPeriodic",
-      "StartDateTime": "2017-08-01T00:00:00+00:00",
-      "EndDateTime": "2017-08-31T23:59:59+00:00",
-      "CreationDateTime": "2017-09-01T00:00:00+00:00",
-       "TotalValue": {
-         "Amount": "1024.00",
+      {
+        "AccountId": "22289",
+        "StatementId": "8sfhke-sifhkeuf-97813",
+        "StatementReference": "002",
+        "Type": "RegularPeriodic",
+        "StartDateTime": "2017-08-01T00:00:00+00:00",
+        "EndDateTime": "2017-08-31T23:59:59+00:00",
+        "CreationDateTime": "2017-09-01T00:00:00+00:00",
+        "TotalValue": {
+          "Amount": "1024.00",
           "Currency": "GBP"
-      },
-      "StatementDescription": ["August 2017 Statement", "One Free Uber Ride"],
-      "StatementDateTime": [{
-        "DateTime": "2017-08-01T00:00:00+00:00",
-        "Type": "UK.OBIE.DirectDebitDue"
-      }],
-      "StatementBenefit": [{ 
-        "Type": "UK.OBIE.Cashback",
-        "Amount": {
-          "Amount": "5.00",
-          "Currency": "GBP"
+        },
+        "StatementDescription": [
+          "August 2017 Statement",
+          "One Free Uber Ride"
+        ],
+        "StatementDateTime": [
+          {
+            "DateTime": "2017-08-01T00:00:00+00:00",
+            "Type": "UK.OBIE.DirectDebitDue"
           }
-      }],
-      "StatementValue": [{
-        "Type": "UK.OBIE.AirMilesPoints",
-        "Value": "100"         
-      }],
-       "StatementFee": [{ 
-          "Description": "International usage charge",
-          "Type": "UK.OBIE.ForeignTransaction",
-          "Rate": "0.229",
-          "CreditDebitIndicator": "Credit",        
-          "RateType": "UK.OBIE.AER",
-          "Frequency": "UK.OBIE.StatementMonthly",
-          "Amount": {
-            "Amount": "03.75",
-            "Currency": "GBP"
+        ],
+        "StatementBenefit": [
+          {
+            "Type": "UK.OBIE.Cashback",
+            "Amount": {
+              "Amount": "5.00",
+              "Currency": "GBP"
+            }
           }
-      }],
-      "StatementRate": [{ 
-        "Rate": "0.229",
-        "Type": "UK.OBIE.MonthlyPurchase"
-      }],
-      "StatementAmount": [
-      {
-        "Amount": {
-          "Amount": "400.00",
-          "Currency": "GBP"
-        },
-        "LocalAmount": {
-          "SubType": "LCUR",
-          "Amount": "400.00",
-          "Currency": "USD"
-        },
-		"CreditDebitIndicator": "Credit",        
-		"Type": "ClosingBalance"        
+        ],
+        "StatementValue": [
+          {
+            "Type": "UK.OBIE.AirMilesPoints",
+            "Value": "100"
+          }
+        ],
+        "StatementFee": [
+          {
+            "Description": "International usage charge",
+            "Type": "UK.OBIE.ForeignTransaction",
+            "Rate": "0.229",
+            "CreditDebitIndicator": "Credit",
+            "RateType": "UK.OBIE.AER",
+            "Frequency": "UK.OBIE.StatementMonthly",
+            "Amount": {
+              "Amount": "03.75",
+              "Currency": "GBP"
+            }
+          }
+        ],
+        "StatementRate": [
+          {
+            "Rate": "0.229",
+            "Type": "UK.OBIE.MonthlyPurchase"
+          }
+        ],
+        "StatementAmount": [
+          {
+            "Amount": {
+              "Amount": "400.00",
+              "Currency": "GBP"
+            },
+            "LocalAmount": {
+              "SubType": "LCUR",
+              "Amount": "400.00",
+              "Currency": "USD"
+            },
+            "CreditDebitIndicator": "Credit",
+            "Type": "ClosingBalance"
+          },
+          {
+            "Amount": {
+              "Amount": "600.00",
+              "Currency": "GBP"
+            },
+            "CreditDebitIndicator": "Credit",
+            "Type": "PreviousClosingBalance"
+          }
+        ]
       },
       {
-        "Amount": {
-          "Amount": "600.00",
-          "Currency": "GBP"
-        },
-        "CreditDebitIndicator": "Credit",
-        "Type": "PreviousClosingBalance"
-      }
-      ]
-    },
-    {
-      "AccountId": "22289",
-      "StatementId": "34hj24u-324h33-31i3p4",
-      "StatementReference": "003",
-      "Type": "RegularPeriodic",
-      "StartDateTime": "2017-09-01T00:00:00+00:00",
-      "EndDateTime": "2017-09-30T23:59:59+00:00",
-      "CreationDateTime": "2017-10-01T00:00:00+00:00",
-      "StatementDescription": ["September 2017 Statement"],
-      "StatementAmount": [
-      {
-        "Amount": {
-          "Amount": "200.00",
-          "Currency": "GBP"
-        },
-		"CreditDebitIndicator": "Credit",        
-		"Type": "ClosingBalance"        
+        "AccountId": "22289",
+        "StatementId": "34hj24u-324h33-31i3p4",
+        "StatementReference": "003",
+        "Type": "RegularPeriodic",
+        "StartDateTime": "2017-09-01T00:00:00+00:00",
+        "EndDateTime": "2017-09-30T23:59:59+00:00",
+        "CreationDateTime": "2017-10-01T00:00:00+00:00",
+        "StatementDescription": [
+          "September 2017 Statement"
+        ],
+        "StatementAmount": [
+          {
+            "Amount": {
+              "Amount": "200.00",
+              "Currency": "GBP"
+            },
+            "CreditDebitIndicator": "Credit",
+            "Type": "ClosingBalance"
+          },
+          {
+            "Amount": {
+              "Amount": "400.00",
+              "Currency": "GBP"
+            },
+            "CreditDebitIndicator": "Credit",
+            "Type": "PreviousClosingBalance"
+          }
+        ]
       },
       {
-        "Amount": {
-          "Amount": "400.00",
-          "Currency": "GBP"
-        },
-        "CreditDebitIndicator": "Credit",
-        "Type": "PreviousClosingBalance"
+        "AccountId": "32389",
+        "StatementId": "9034ee-4ewa4e-342er6",
+        "StatementReference": "002",
+        "Type": "RegularPeriodic",
+        "StartDateTime": "2017-09-01T00:00:00+00:00",
+        "EndDateTime": "2017-09-30T23:59:59+00:00",
+        "CreationDateTime": "2017-10-01T00:00:00+00:00",
+        "StatementAmount": [
+          {
+            "Amount": {
+              "Amount": "2700.00",
+              "Currency": "GBP"
+            },
+            "CreditDebitIndicator": "Credit",
+            "Type": "ClosingBalance"
+          },
+          {
+            "Amount": {
+              "Amount": "4060.00",
+              "Currency": "GBP"
+            },
+            "CreditDebitIndicator": "Credit",
+            "Type": "PreviousClosingBalance"
+          }
+        ]
       }
-      ]
-    },
-    {
-      "AccountId": "32389",
-      "StatementId": "9034ee-4ewa4e-342er6",
-      "StatementReference": "002",
-      "Type": "RegularPeriodic",
-      "StartDateTime": "2017-09-01T00:00:00+00:00",
-      "EndDateTime": "2017-09-30T23:59:59+00:00",
-      "CreationDateTime": "2017-10-01T00:00:00+00:00",
-      "StatementAmount": [
-      {
-        "Amount": {
-          "Amount": "2700.00",
-          "Currency": "GBP"
-        },
-		"CreditDebitIndicator": "Credit",        
-		"Type": "ClosingBalance"        
-      },
-      {
-        "Amount": {
-          "Amount": "4060.00",
-          "Currency": "GBP"
-        },
-        "CreditDebitIndicator": "Credit",
-        "Type": "PreviousClosingBalance"
-      }
-      ]
-    }
     ],
     "Links": {
       "Self": "https://api.alphabank.com/open-banking/v4.0/aisp/statements/"
