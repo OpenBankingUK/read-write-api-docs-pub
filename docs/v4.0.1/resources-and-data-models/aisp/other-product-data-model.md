@@ -97,7 +97,6 @@ Wherever used, an ASPSP **must** define and document (on their developer portal)
 
 * [Other Product Type Data Definition](./productdatafiles/OtherProductInfo.v3.1.2.DD.xlsx )
 
-
 ### Data Payload - Enumerations
 
 * [Other Product Type Code List](./productdatafiles/OtherProduct.v3.1.2.CodeList.xlsx )
