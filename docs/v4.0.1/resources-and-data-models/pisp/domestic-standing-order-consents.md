@@ -29,9 +29,9 @@
     - [Notes](#notes-3)
     - [Data Dictionary](#data-dictionary-3)
 - [Usage Examples](#usage-examples)
-    - [Create Domestic Standing Order Consent](#create-domestic-standing-order-consent)
-      - [POST /domestic-standing-order-consents](#post-domestic-standing-order-consents-2)
-      - [POST /domestic-standing-order-consents response](#post-domestic-standing-order-consents-response)
+  - [Create Domestic Standing Order Consent](#create-domestic-standing-order-consent)
+    - [POST /domestic-standing-order-consents](#post-domestic-standing-order-consents-2)
+    - [POST /domestic-standing-order-consents response](#post-domestic-standing-order-consents-response)
   - [Get a Domestic Standing Order Consent](#get-a-domestic-standing-order-consent)
     - [GET /domestic-standing-order-consents/{ConsentId}](#get-domestic-standing-order-consents-consentid-2)
     - [GET /domestic-standing-order-consents response](#get-domestic-standing-order-consents-response)
@@ -94,7 +94,6 @@ The state model for the domestic-standing-order-consent resource follows the gen
 
 ![State model](./images/PO_Consent.png)
 
-
 The definitions for the Status:
 
 |  |Status |Status Description |
@@ -111,6 +110,7 @@ Changes to the Status, such as being rejected, should be captured in `StatusReas
 | StatusReasonCode | Specifies the status reason in a code form. For a full description see `OBExternalStatusReason1Code` in `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets) |
 | StatusReasonDescription | Description of why the code was returned |
 |Path| Path is optional but relevant when the status reason refers to an object/field and hence conditional to provide JSON path. |
+
 ## Data Model
 
 The Data Dictionary section gives the detail on the payload content for the Domestic Standing Order API flows.
@@ -129,16 +129,13 @@ The OBMandateRelatedInformation1 class is defined in the [payment-initiation-api
 
 The OBUltimateCreditor1 class is defined in the [payment-initiation-api-profile](../../profiles/payment-initiation-api-profile.md#obultimatecreditor1) page.
 
-
-#### OBUltimateDebtor1 
+#### OBUltimateDebtor1
 
 The OBUltimateDebtor1 class is defined in the [payment-initiation-api-profile](../../profiles/payment-initiation-api-profile.md#obultimatedebtor1) page.
 
 #### OBRegulatoryReporting1
 
 The OBRegulatoryReporting1 class is defined in the [payment-initiation-api-profile](../../profiles/payment-initiation-api-profile.md#obregulatoryreporting1) page.
-
-
 
 #### OBDomesticStandingOrder3
 
@@ -150,7 +147,7 @@ This section describes the OBDomesticStandingOrder3 class, which is reused as th
 
 ##### Notes
 
-For the OBDomesticStandingOrder3 Initiation object: 
+For the OBDomesticStandingOrder3 Initiation object:
 
 * All elements in the Initiation payload that are specified by the PISP must not be changed via the ASPSP, as this is part of formal consent from the PSU.
 * If the ASPSP is able to establish a problem with payload or any contextual error during the API call, the ASPSP must reject the domestic-standing-order-consent request immediately.
@@ -180,7 +177,6 @@ For the OBDomesticStandingOrder3 Initiation object:
 |MIAN| Semi Annual|
 |YEAR| Annual|
 
-
 ##### Data Dictionary
 
 | Name |Occurrence |XPath |EnhancedDefinition |Class |Codes |Pattern |
@@ -204,7 +200,6 @@ For the OBDomesticStandingOrder3 Initiation object:
 | UltimateCreditor |0..1 |OBDomesticStandingOrder3/UltimateCreditor|Ultimate party to which an amount of money is due. | OBUltimateCreditor1 | | |
 | RegulatoryReporting |0..10 |OBDomesticStandingOrder3/RegulatoryReporting |Information needed due to regulatory and statutory requirements. |OBRegulatoryReporting1 | | |
 | SupplementaryData |0..1 |OBDomesticStandingOrder3/SupplementaryData |Additional information that can not be captured in the structured fields and/or any other specific block. |OBSupplementaryData1 | | |
-
 
 ### Domestic Standing Order Consent - Request
 
@@ -389,8 +384,8 @@ Accept: application/json
           "PostCode": "Z78 4TY",
           "TownName": "London",
           "Country": "UK"
-          }
-        },
+        }
+      },
       "UltimateDebtor": {
         "SchemeName": "UK.OBIE.BICFI",
         "Identification": "2360549017905161589",
@@ -423,7 +418,7 @@ Accept: application/json
                 "Currency": "GBP"
               },
               "Information": [
-                "Reg info1", 
+                "Reg info1",
                 "Reg info2"
               ]
             }
@@ -565,8 +560,8 @@ Content-Type: application/json
           "PostCode": "Z78 4TY",
           "TownName": "London",
           "Country": "UK"
-          }
-        },
+        }
+      },
       "UltimateDebtor": {
         "SchemeName": "UK.OBIE.BICFI",
         "Identification": "2360549017905161589",
@@ -599,7 +594,7 @@ Content-Type: application/json
                 "Currency": "GBP"
               },
               "Information": [
-                "Reg info1", 
+                "Reg info1",
                 "Reg info2"
               ]
             }
@@ -751,8 +746,8 @@ Content-Type: application/json
           "PostCode": "Z78 4TY",
           "TownName": "London",
           "Country": "UK"
-          }
-        },
+        }
+      },
       "UltimateDebtor": {
         "SchemeName": "UK.OBIE.BICFI",
         "Identification": "2360549017905161589",
@@ -785,7 +780,7 @@ Content-Type: application/json
                 "Currency": "GBP"
               },
               "Information": [
-                "Reg info1", 
+                "Reg info1",
                 "Reg info2"
               ]
             }
