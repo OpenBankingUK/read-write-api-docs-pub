@@ -299,10 +299,10 @@ Content-Type: application/json
         "Currency": "GBP"
       }
      }],
-     "StatementValue" : {
+     "StatementValue": [{
       "Type": "UK.OBIE.AirMilesPoints",
       "Value": 100         
-     },
+     }],
      "StatementFee": [{ 
       "Description": "International usage charge",
       "Type": "UK.OBIE.ForeignTransaction",
@@ -414,10 +414,10 @@ Content-Type: application/json
           "Currency": "GBP"
           }
       }],
-      "StatementValue" : {
+      "StatementValue": [{
       "Type": "UK.OBIE.AirMilesPoints",
       "Value": 100         
-     },
+     }],
       "StatementInterest": [{
         "Description": "Interest occurred over statement duration",
         "Type": "UK.OBIE.Total", 
@@ -528,10 +528,10 @@ Content-Type: application/json
           "Currency": "GBP"
           }
       }],
-      "StatementValue" : {
+      "StatementValue": [{
         "Type": "UK.OBIE.AirMilesPoints",
         "Value": 100         
-      },
+      }],
        "StatementFee": [{ 
           "Description": "International usage charge",
           "Type": "UK.OBIE.ForeignTransaction",
