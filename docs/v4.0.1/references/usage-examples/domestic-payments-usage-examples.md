@@ -164,28 +164,30 @@ Accept: application/json
             }
           }
         ],
-        "Unstructured": ["Internal ops code 5120101"]
+        "Unstructured": [
+          "Internal ops code 5120101"
+        ]
       }
     }
   },
   "Risk": {
     "PaymentContextCode": "EcommerceMerchantInitiatedPayment",
-    "ContractPresentIndicator": false,
-    "PaymentPurposeCode": "EPAY",
-    "BeneficiaryPaymentDetailsPrepopulatedIndicator": false,
-    "BeneficiaryAccountType": "Business",
     "MerchantCustomerIdentification": "053598653254",
+    "ContractPresentIndicator": false,
+    "BeneficiaryPrepopulatedIndicator": false,
+    "PaymentPurposeCode": "EPAY",
+    "BeneficiaryAccountType": "Business",
     "DeliveryAddress": {
-      "AddressLine": [
-        "Flat 7",
-        "Acacia Lodge"
-      ],
       "StreetName": "Acacia Avenue",
       "BuildingNumber": "27",
       "PostCode": "GU31 2ZZ",
       "TownName": "Sparsholt",
       "CountrySubDivision": "Wessex",
-      "Country": "UK"
+      "Country": "UK",
+      "AddressLine": [
+        "Flat 7",
+        "Acacia Lodge"
+      ]
     }
   }
 }
@@ -204,8 +206,8 @@ Content-Type: application/json
 {
   "Data": {
     "ConsentId": "58923",
-    "Status": "AWAU",
     "CreationDateTime": "2017-06-05T15:15:13+00:00",
+    "Status": "AWAU",
     "StatusUpdateDateTime": "2017-06-05T15:15:13+00:00",
     "Initiation": {
       "InstructionIdentification": "ACME412",
@@ -228,28 +230,30 @@ Content-Type: application/json
             }
           }
         ],
-        "Unstructured": ["Internal ops code 5120101"]
+        "Unstructured": [
+          "Internal ops code 5120101"
+        ]
       }
     }
   },
   "Risk": {
     "PaymentContextCode": "EcommerceMerchantInitiatedPayment",
-    "ContractPresentIndicator": false,
-    "PaymentPurposeCode": "EPAY",
-    "BeneficiaryPaymentDetailsPrepopulatedIndicator": false,
-    "BeneficiaryAccountType": "Business",
     "MerchantCustomerIdentification": "053598653254",
+    "ContractPresentIndicator": false,
+    "BeneficiaryPrepopulatedIndicator": false,
+    "PaymentPurposeCode": "EPAY",
+    "BeneficiaryAccountType": "Business",
     "DeliveryAddress": {
-      "AddressLine": [
-        "Flat 7",
-        "Acacia Lodge"
-      ],
       "StreetName": "Acacia Avenue",
       "BuildingNumber": "27",
       "PostCode": "GU31 2ZZ",
       "TownName": "Sparsholt",
       "CountrySubDivision": "Wessex",
-      "Country": "UK"
+      "Country": "UK",
+      "AddressLine": [
+        "Flat 7",
+        "Acacia Lodge"
+      ]
     }
   },
   "Links": {
@@ -283,16 +287,16 @@ Content-Type: application/json
 
 ```json
 {
-    "Data": {
-        "FundsAvailableResult": {
-            "FundsAvailableDateTime": "2017-06-05T15:15:23+00:00",
-            "FundsAvailable": true
-        }
-    },
-    "Links": {
-        "Self": "https://api.alphabank.com/open-banking/v4.0/pisp/domestic-payment-consents/58923/funds-confirmation"
-    },
-    "Meta": {}
+  "Data": {
+    "FundsAvailableResult": {
+      "FundsAvailableDateTime": "2017-06-05T15:15:23+00:00",
+      "FundsAvailable": true
+    }
+  },
+  "Links": {
+    "Self": "https://api.alphabank.com/open-banking/v4.0/pisp/domestic-payment-consents/58923/funds-confirmation"
+  },
+  "Meta": {}
 }
 ```
 
@@ -343,22 +347,22 @@ Accept: application/json
   },
   "Risk": {
     "PaymentContextCode": "EcommerceMerchantInitiatedPayment",
-    "ContractPresentIndicator": false,
-    "PaymentPurposeCode": "EPAY",
-    "BeneficiaryPaymentDetailsPrepopulatedIndicator": false,
-    "BeneficiaryAccountType": "Business",
     "MerchantCustomerIdentification": "053598653254",
+    "ContractPresentIndicator": false,
+    "BeneficiaryPrepopulatedIndicator": false,
+    "PaymentPurposeCode": "EPAY",
+    "BeneficiaryAccountType": "Business",
     "DeliveryAddress": {
-      "AddressLine": [
-        "Flat 7",
-        "Acacia Lodge"
-      ],
       "StreetName": "Acacia Avenue",
       "BuildingNumber": "27",
       "PostCode": "GU31 2ZZ",
       "TownName": "Sparsholt",
       "CountrySubDivision": "Wessex",
-      "Country": "UK"
+      "Country": "UK",
+      "AddressLine": [
+        "Flat 7",
+        "Acacia Lodge"
+      ]
     }
   }
 }
@@ -471,7 +475,7 @@ Content-Type: application/json
     "PaymentContextCode": "EcommerceMerchantInitiatedPayment",
     "ContractPresentIndicator": false,
     "PaymentPurposeCode": "EPAY",
-    "BeneficiaryPaymentDetailsPrepopulatedIndicator": false,
+    "BeneficiaryPrepopulatedIndicator": false,
     "BeneficiaryAccountType": "Business",
     "MerchantCustomerIdentification": "053598653254",
     "DeliveryAddress": {
@@ -675,7 +679,7 @@ Accept: application/json
             }
           }
         ],
-        "Unstructured": ["Internal ops code 5120103"]
+        "Unstructured": [ "Internal ops code 5120103" ]
       }
     }
   },
@@ -1138,10 +1142,10 @@ Accept: application/json
       "CreditorPostalAddress": {
         "AddressType": "CORR",
         "StreetName": "Liberty",
-        "BuildingNumber":"1",
-        "PostCode":"AB1 2CD",
-        "TownName":"London",
-        "Country":"UK"
+        "BuildingNumber": "1",
+        "PostCode": "AB1 2CD",
+        "TownName": "London",
+        "Country": "UK"
       },
       "RemittanceInformation": {
         "Structured": [
@@ -1199,12 +1203,12 @@ Content-Type: application/json
       "CreditorPostalAddress": {
         "AddressType": "CORR",
         "StreetName": "Liberty",
-        "BuildingNumber":"1",
-        "PostCode":"AB1 2CD",
-        "TownName":"London",
-        "Country":"UK"
+        "BuildingNumber": "1",
+        "PostCode": "AB1 2CD",
+        "TownName": "London",
+        "Country": "UK"
       },
-      "RemittanceInformation":{
+      "RemittanceInformation": {
         "Structured": [
           {
             "CreditorReferenceInformation": {
@@ -1258,40 +1262,42 @@ Accept: application/json
 
 ```json
 {
-    "Data": {
-        "Initiation": {
-            "InstructionIdentification": "ANSM023",
-            "EndToEndIdentification": "FRESCO.21302.GFX.37",
-            "LocalInstrument": "UK.OBIE.BalanceTransfer",
-            "InstructedAmount": {
-                "Amount": "3000.00",
-                "Currency": "GBP"
-            },
-            "DebtorAccount": {
-                "SchemeName": "UK.OBIE.PAN",
-                "Identification": "5555555555554444",
-                "Name": "Andrea Smith"
-            },
-            "CreditorAccount": {
-                "SchemeName": "UK.OBIE.PAN",
-                "Identification": "4444333322221111",
-                "Name": "Andrea Smith"
-            },
-            "RemittanceInformation": {
-                "Structured": [
-                    {
-                        "CreditorReferenceInformation": {
-                            "Reference": "BT-OfferCode-12"
-                        }
-                    }
-                ],
-                "Unstructured": ["Internal ops code 5120103"]
+  "Data": {
+    "Initiation": {
+      "InstructionIdentification": "ANSM023",
+      "EndToEndIdentification": "FRESCO.21302.GFX.37",
+      "LocalInstrument": "UK.OBIE.BalanceTransfer",
+      "InstructedAmount": {
+        "Amount": "3000.00",
+        "Currency": "GBP"
+      },
+      "DebtorAccount": {
+        "SchemeName": "UK.OBIE.PAN",
+        "Identification": "5555555555554444",
+        "Name": "Andrea Smith"
+      },
+      "CreditorAccount": {
+        "SchemeName": "UK.OBIE.PAN",
+        "Identification": "4444333322221111",
+        "Name": "Andrea Smith"
+      },
+      "RemittanceInformation": {
+        "Structured": [
+          {
+            "CreditorReferenceInformation": {
+              "Reference": "BT-OfferCode-12"
             }
-        }
-    },
-    "Risk": {
-        "PaymentContextCode": "TransferToThirdParty"
+          }
+        ],
+        "Unstructured": [
+          "Internal ops code 5120103"
+        ]
+      }
     }
+  },
+  "Risk": {
+    "PaymentContextCode": "TransferToThirdParty"
+  }
 }
 ```
 
