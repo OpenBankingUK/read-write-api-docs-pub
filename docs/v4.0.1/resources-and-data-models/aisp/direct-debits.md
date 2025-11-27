@@ -113,16 +113,16 @@ Content-Type: application/json
         "AccountId": "22289",
         "DirectDebitId": "DD03",
         "MandateRelatedInformation": {
-            "MandateIdentification": "Caravanners",
-            "Classification": "FIXE",
-            "CategoryPurposeCode": "BONU",
-            "FirstPaymentDateTime": "2024-04-25T12:46:49.425Z",
-            "RecurringPaymentDateTime": "2024-04-25T12:46:49.425Z",
-            "FinalPaymentDateTime": "2024-04-25T12:46:49.425Z",
-            "Reason": "To pay monthly membership",
-            "Frequency": {
-              "Type": "WEEK",
-              "CountPerPeriod": 1
+          "MandateIdentification": "Caravanners",
+          "Classification": "FIXE",
+          "CategoryPurposeCode": "BONU",
+          "FirstPaymentDateTime": "2024-04-25T12:46:49.425Z",
+          "RecurringPaymentDateTime": "2024-04-25T12:46:49.425Z",
+          "FinalPaymentDateTime": "2024-04-25T12:46:49.425Z",
+          "Reason": "To pay monthly membership",
+          "Frequency": {
+            "Type": "WEEK",
+            "CountPerPeriod": 1
           }
         },
         "DirectDebitStatusCode": "ACTV",
@@ -173,16 +173,16 @@ Content-Type: application/json
         "AccountId": "22289",
         "DirectDebitId": "DD03",
         "MandateRelatedInformation": {
-            "MandateIdentification": "Caravanners",
-            "Classification": "FIXE",
-            "CategoryPurposeCode": "BONU",
-            "FirstPaymentDateTime": "2024-04-25T12:46:49.425Z",
-            "RecurringPaymentDateTime": "2024-04-25T12:46:49.425Z",
-            "FinalPaymentDateTime": "2024-04-25T12:46:49.425Z",
-            "Reason": "To pay monthly membership",
-            "Frequency": {
-              "Type": "MNTH",
-              "CountPerPeriod": 1
+          "MandateIdentification": "Caravanners",
+          "Classification": "FIXE",
+          "CategoryPurposeCode": "BONU",
+          "FirstPaymentDateTime": "2024-04-25T12:46:49.425Z",
+          "RecurringPaymentDateTime": "2024-04-25T12:46:49.425Z",
+          "FinalPaymentDateTime": "2024-04-25T12:46:49.425Z",
+          "Reason": "To pay monthly membership",
+          "Frequency": {
+            "Type": "MNTH",
+            "CountPerPeriod": 1
           }
         },
         "DirectDebitStatusCode": "ACTV",
@@ -203,7 +203,7 @@ Content-Type: application/json
           "FirstPaymentDateTime": "2024-04-25T12:46:49.425Z",
           "RecurringPaymentDateTime": "2024-04-25T12:46:49.425Z",
           "FinalPaymentDateTime": "2024-04-25T12:46:49.425Z",
-          "Frequency": { 
+          "Frequency": {
             "Type": "MNTH",
             "CountPerPeriod": 1
           }
