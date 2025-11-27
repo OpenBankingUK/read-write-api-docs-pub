@@ -564,7 +564,14 @@ Content-Type: application/json
           "Type": "Telephone"
         }
     },
-    "Refund" : "Yes", 
+    "Refund": {
+      "Account": {
+        "SchemeName": "SortCodeAccountNumber",
+        "Identification": "30949330000010",
+        "SecondaryIdentification": "Roll 90210",
+        "Name": "Marcus Sweepimus"
+      }
+    }, 
     "Initiation": {
       "DebtorAccount": {
         "SchemeName": "UK.OBIE.IBAN",
@@ -576,12 +583,6 @@ Content-Type: application/json
           "Code": "TELE",
           "Type": "Telephone"
         }
-      },
-      "Refund":{
-        "SchemeName": "SortCodeAccountNumber",
-        "Identification": "30949330000010",
-        "SecondaryIdentification": "Roll 90210",
-        "Name": "Marcus Sweepimus"
       },
       "CreditorAccount": {
         "SchemeName": "SortCodeAccountNumber",
@@ -1033,7 +1034,6 @@ Accept: application/json
     "PSUAuthenticationMethod": "UK.OBIE.SCA",
     "PSUInteractionType": "OffSession",
     "VRPType": "UK.OBIE.VRPType.Sweeping",
-    "Refund": "Yes",
     "Initiation": {
       "DebtorAccount": {
         "SchemeName": "UK.OBIE.IBAN",
@@ -1214,7 +1214,14 @@ Content-Type: application/json
           "Type": "Telephone"
         }
     },
-    "Refund" : "Yes", 
+    "Refund": {
+      "Account": {
+        "SchemeName": "SortCodeAccountNumber",
+        "Identification": "30949330000010",
+        "Name": "Marcus Sweepimus",
+        "SecondaryIdentification": "Roll 90210"
+      }
+    },
     "Initiation": {
       "DebtorAccount": {
         "SchemeName": "UK.OBIE.IBAN",
@@ -1226,12 +1233,6 @@ Content-Type: application/json
           "Code": "TELE",
           "Type": "Telephone"
         }
-      },
-      "Refund":{
-        "SchemeName": "SortCodeAccountNumber",
-        "Identification": "30949330000010",
-        "SecondaryIdentification": "Roll 90210",
-        "Name": "Marcus Sweepimus"
       },
       "CreditorAccount": {
         "SchemeName": "SortCodeAccountNumber",
