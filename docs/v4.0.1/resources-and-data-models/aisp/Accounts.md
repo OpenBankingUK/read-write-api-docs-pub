@@ -257,7 +257,7 @@ Content-Type: application/json
 ### Specific Account - Detail Permission
 
 An AISP may also retrieve the account resource details specifically for AccountId 22289.
-The  **ReadAccountsDetail**  permission has been granted.
+The **ReadAccountsDetail** permission has been granted.
 
 #### Get Accounts Request
 
