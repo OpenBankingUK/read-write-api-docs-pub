@@ -27,7 +27,6 @@
     - [Get Wallet Balances Request](#get-wallet-balances-request)
     - [Get Wallet Balances Response](#get-wallet-balances-response)
 
-
 ## Overview
 
 The balances resource is used by an AISP to retrieve in bulk or single account balance information for a specific AccountId for that the PSU has authorised to access.
@@ -105,6 +104,7 @@ The resource requires the ReadBalances permission. The resource response payload
 | TotalValue |0..1 |OBReadBalance1/Data/TotalValue |Combined sum of all Amounts in the accounts base currency. | | | |
 | Amount |1..1 |OBReadBalance1/Data/TotalValue/Amount |A number of monetary units specified in an active currency where the unit of currency is explicit and compliant with ISO 4217. |OBActiveCurrencyAndAmount_SimpleType | |`^\d{1,13}$|^\d{1,13}\.\d{1,5}$` |
 | Currency |1..1 |OBReadBalance1/Data/TotalValue/Currency |A code allocated to a currency by a Maintenance Agency under an international identification scheme, as described in the latest edition of the international standard ISO 4217 "Codes for the representation of currencies and funds". |ActiveOrHistoricCurrencyCode | |^[A-Z]{3,3}$ |
+
 ## Usage Examples
 
 ### Bulk
@@ -139,15 +139,15 @@ Content-Type: application/json
           "Currency": "GBP",
           "SubType": "BCUR"
         },
-        "LocalAmount":  {
+        "LocalAmount": {
           "Amount": "1230.00",
           "Currency": "GBP",
           "SubType": "BCUR"
-        }, 
-        "TotalAmount": { 
+        },
+        "TotalAmount": {
           "Amount": "1230.00",
           "Currency": "GBP"
-        }, 
+        },
         "CreditDebitIndicator": "Credit",
         "Type": "ITAV",
         "DateTime": "2017-04-05T10:43:07+00:00",
@@ -219,17 +219,17 @@ Content-Type: application/json
         "Amount": {
           "Amount": "300.00",
           "Currency": "GBP",
-            "SubType": "BCUR"
-          },
-          "LocalAmount":  {
-            "Amount": "1230.00",
-            "Currency": "GBP",
-            "SubType": "BCUR"
-          }, 
-          "TotalAmount": { 
-            "Amount": "1230.00",
-            "Currency": "GBP"
-          }, 
+          "SubType": "BCUR"
+        },
+        "LocalAmount": {
+          "Amount": "1230.00",
+          "Currency": "GBP",
+          "SubType": "BCUR"
+        },
+        "TotalAmount": {
+          "Amount": "1230.00",
+          "Currency": "GBP"
+        },
         "CreditDebitIndicator": "Credit",
         "Type": "ITAV",
         "DateTime": "2017-04-05T10:43:07+00:00",
@@ -299,17 +299,17 @@ Content-Type: application/json
         "Amount": {
           "Amount": "800.00",
           "Currency": "GBP",
-            "SubType": "BCUR"
-          },
-          "LocalAmount":  {
-            "Amount": "1230.00",
-            "Currency": "GBP",
-            "SubType": "BCUR"
-          }, 
-          "TotalAmount": { 
-            "Amount": "1230.00",
-            "Currency": "GBP"
-          }, 
+          "SubType": "BCUR"
+        },
+        "LocalAmount": {
+          "Amount": "1230.00",
+          "Currency": "GBP",
+          "SubType": "BCUR"
+        },
+        "TotalAmount": {
+          "Amount": "1230.00",
+          "Currency": "GBP"
+        },
         "CreditDebitIndicator": "Credit",
         "Type": "ITAV",
         "DateTime": "2017-04-05T10:43:07+00:00",
@@ -373,23 +373,23 @@ Content-Type: application/json
 ```json
 {
   "Data": {
-    "Balance": [ 
+    "Balance": [
       {
         "AccountId": "22289",
         "Amount": {
           "Amount": "100.00",
           "Currency": "GBP",
-            "SubType": "BCUR"
-          },
-          "LocalAmount":  {
-            "Amount": "1230.00",
-            "Currency": "GBP",
-            "SubType": "BCUR"
-          }, 
-          "TotalAmount": { 
-            "Amount": "1230.00",
-            "Currency": "GBP"
-          }, 
+          "SubType": "BCUR"
+        },
+        "LocalAmount": {
+          "Amount": "1230.00",
+          "Currency": "GBP",
+          "SubType": "BCUR"
+        },
+        "TotalAmount": {
+          "Amount": "1230.00",
+          "Currency": "GBP"
+        },
         "CreditDebitIndicator": "Debit",
         "Type": "ITAV",
         "DateTime": "2017-04-05T10:43:07+00:00",
@@ -426,6 +426,7 @@ Content-Type: application/json
   }
 }
 ```
+
 ### Wallet Account with multiple currencies
 
 #### Get Wallet Balances Request
@@ -453,7 +454,7 @@ Content-Type: application/json
 ```json
 {
   "Data": {
-    "Balance": [ 
+    "Balance": [
       {
         "AccountId": "22289",
         "Amount": {
