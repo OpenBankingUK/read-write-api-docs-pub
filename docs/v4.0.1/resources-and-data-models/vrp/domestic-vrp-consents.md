@@ -103,6 +103,7 @@ An ASPSP can only respond to a funds confirmation request if the resource has a 
 If resource has any other Status, the ASPSP must respond with a 400 (Bad Request) and a `U009` (UK.OBIE.Resource.InvalidConsentStatus) error code.
 
 ### PUT /domestic-vrp-consents/{consentId}
+
 This endpoint is only used for migration of consent data across API Standard versions. The ASPSP can choose to implement one or both of the PUT/PATCH endpoints and TPPs should refer to the ASPSP developer portal for information on availability.    
 
 This endpoint should not be used to modify content of an existing consent created on the same version.  The ASPSP __must__ reject request if a TPP attempts to modify an existing resource which does not require migration to the new format.
@@ -112,6 +113,7 @@ The request body should contain the correct schema for the current version of th
 Successful submission must return the updated consent resource body.
 
 ### PATCH /domestic-vrp-consents/{consentId}
+
 This endpoint is only used for migration of consent data across Standard versions. The ASPSP can choose to implement one or both of the PUT/PATCH endpoints and TPPs should refer to the ASPSP developer portal for information on availability.    
 
 This endpoint should not be used to modify content of an existing consent created on the same version.  The ASPSP __must__ reject request if a TPP attempts to modify an existing resource which does not require migration to the new format.
