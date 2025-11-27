@@ -1241,21 +1241,6 @@ Accept: application/json
           "Country": "UK"
         }
       },
-      "UltimateCreditor": {
-        "SchemeName": "UK.OBIE.BICFI",
-        "Identification": "2360549017905161589",
-        "Name": "Ultimate Creditor",
-        "LEI": "60450004FECVJV7YN339",
-        "PostalAddress": {
-          "AddressType": "BIZZ",
-          "StreetName": "Bank Street",
-          "BuildingNumber": "11",
-          "Floor": "6",
-          "PostCode": "Z78 4TY",
-          "TownName": "London",
-          "Country": "UK"
-        }
-      },
       "RemittanceInformation": {
         "Structured": [
           {
