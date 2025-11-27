@@ -13,7 +13,7 @@ As part of Version 3 Open Banking Specifications defined new custom Data Types, 
 
 The extendable Data Type values are namespaced, to help identify the issuer of the value, and the relevant value.
 
-Version 4 of the specification introduced further alignment to ISO 20022 with the use of ISO 20022 code values.  OBL specific enums have been allocated a 4 character code and will be submitted for inclusion in the ISO 20022 external codelist in due course.
+Version 4 of the specification introduced further alignment to ISO 20022 with the use of ISO 20022 code values. OBL specific enums have been allocated a 4 character code and will be submitted for inclusion in the ISO 20022 external codelist in due course.
 
 ## Basics
 
@@ -36,7 +36,7 @@ When extending a namespaced enumeration:
 
 Usage of non-namespaced values may be discontinued in a future version of this standard.
 
-A comprehensive list of enumerations, from both OBL and ISO 20022, have been catalogued and made available [here](https://github.com/OpenBankingUK/External_Internal_CodeSets).  
+A comprehensive list of enumerations, from both OBL and ISO 20022, have been catalogued and made available [here](https://github.com/OpenBankingUK/External_Internal_CodeSets).
 
 ASPSPs and TPPs should reference this repository for an up-to-date list of enums and values.
 
