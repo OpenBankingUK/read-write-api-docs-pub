@@ -21,4 +21,5 @@ The Swagger Specification for R/W APIs can be downloaded from the following GitH
 ## Change Log
 
 ### Version 4.0.1
+
 - See the [Version Control page](./version-control.md)
