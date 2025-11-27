@@ -50,8 +50,6 @@ The Open Banking Standard has been updated to accommodate additional ISO 20022 f
 |CategoryPurposeCode| Risk/CategoryPurposeCode| 0..1|
 |SupplementaryData||0..1|
 
-
-
 ## ISO 8583
 
 The ISO 8583 message format is used for the Faster Payments Scheme (FPS).
@@ -140,10 +138,10 @@ In the case that a PISP sets up a payment-order consent with a larger field size
 
 On 19th June 2023 CHAPS migrated to the ISO 20022 message standard. A migration to the new message format is underway and participants should refer to the Bank of England’s [advice on CHAPS and the Real Time Gross Settlement System (RTGS)](https://www.bankofengland.co.uk/payment-and-settlement/rtgs-renewal-programme/iso-20022) for current milestones and dates.
 
-
 All required fields in the CHAPS ISO 20022 message can be generated from the Initiation section of the payload or from the ASPSP for domestic-payments and domestic-scheduled-payments.
 
 Execution:
+
 * The processing of payments via the CHAPS scheme is business as usual processing - i.e., no change
 
 In the size column, highlighted in bold are the fields which are smaller in size than the corresponding ISO 20022 field.
