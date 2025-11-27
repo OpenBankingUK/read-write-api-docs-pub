@@ -75,8 +75,8 @@ An account (AccountId) must only have a single product.
 * All PSD2 in-scope accounts are expected to return a response to the product resource. However, the BCA and PCA objects only apply to current account products (which are a CMA Order requirement).
 * Product/ProductIdentifier and Product/SecondaryProductIdentifier are renamed to Product/ProductId and Product/SecondaryProductId respectively.
 * The APIs are split in to 2 broad groups based on respective security requirements:-
-    * Open Data includes an API which provides **Marketed** PCA/BCA/Other Information.
-    * Read-Write (aka "Closed Data") includes an API which provides **Operated** PCA/BCA/Other Information.
+  * Open Data includes an API which provides **Marketed** PCA/BCA/Other Information.
+  * Read-Write (aka "Closed Data") includes an API which provides **Operated** PCA/BCA/Other Information.
 * Open Data Product information covers:- Core Product, Eligibility, Credit Interest, Overdraft, Features &amp; Benefits and Other Fees &amp; Charges.
 * In July 2017, as part of Open Data-Account Information design workshop, it was agreed that the Products endpoint should contain a reference to Open Data AND subset of Open Data model (Decision [039](https://openbanking.atlassian.net/wiki/spaces/WOR/pages/3654377/039) - option 4).
 * Approach to supplying product information via the Account and Transaction Information API for v2.x:
@@ -115,7 +115,6 @@ Data Dictionary for Common Payload between PCA, BCA and other product types.
 | BCA |0..1 |OBReadProduct2/Data/Product/BCA | |OBBCAData1 | | |
 | PCA |0..1 |OBReadProduct2/Data/Product/PCA | |OBPCAData1 | | |
 
-
 #### PCA & BCA Extensions
 
 [BCA Product Data Model v3.1.2](./bca-product-data-model)
@@ -123,7 +122,6 @@ Data Dictionary for Common Payload between PCA, BCA and other product types.
 [PCA Product Data Model v3.1.2](./pca-product-data-model.md)
 
 [Other Product Data Model v3.1.2](./other-product-data-model.md)
-
 
 ## Usage Examples
 
@@ -158,12 +156,16 @@ Content-Type: application/json
         "AccountId": "22289",
         "ProductId": "51B",
         "SecondaryProductId": "CA78",
-        "MarketingStateId": "22878123", 
+        "MarketingStateId": "22878123",
         "ProductType": "PersonalCurrentAccount",
         "ProductName": "321 Product",
-        "PCA": { .. },
-        "BCA": { .. }
-	    }
+        "PCA": {
+          ..
+        },
+        "BCA": {
+          ..
+        }
+      }
     ]
   },
   "Links": {
@@ -205,22 +207,26 @@ Content-Type: application/json
         "ProductId": "51B",
         "ProductType": "PersonalCurrentAccount",
         "SecondaryProductId": "CA78",
-        "MarketingStateId": "22878123", 
+        "MarketingStateId": "22878123",
         "ProductName": "321 Product",
-        "PCA": { .. }
+        "PCA": {
+          ..
+        }
       },
       {
         "AccountId": "31820",
         "ProductId": "001",
         "SecondaryProductId": "OTH453",
         "ProductType": "Other",
-        "OtherProductType":{
-          "Type": "e-Wallet", 
-          "Description": "Virtual wallet",
+        "OtherProductType": {
+          "Type": "e-Wallet",
+          "Description": "Virtual wallet"
         },
         "ProductName": "123 Product",
         "MarketingStateId": "22878123",
-        "BCA": { .. }
+        "BCA": {
+          ..
+        }
       }
     ]
   },
