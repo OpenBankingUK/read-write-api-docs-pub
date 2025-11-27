@@ -301,7 +301,7 @@ Content-Type: application/json
      }],
      "StatementValue": [{
       "Type": "UK.OBIE.AirMilesPoints",
-      "Value": 100         
+      "Value": "100"         
      }],
      "StatementFee": [{ 
       "Description": "International usage charge",
@@ -416,7 +416,7 @@ Content-Type: application/json
       }],
       "StatementValue": [{
       "Type": "UK.OBIE.AirMilesPoints",
-      "Value": 100         
+      "Value": "100"         
      }],
       "StatementInterest": [{
         "Description": "Interest occurred over statement duration",
@@ -530,7 +530,7 @@ Content-Type: application/json
       }],
       "StatementValue": [{
         "Type": "UK.OBIE.AirMilesPoints",
-        "Value": 100         
+        "Value": "100"         
       }],
        "StatementFee": [{ 
           "Description": "International usage charge",
