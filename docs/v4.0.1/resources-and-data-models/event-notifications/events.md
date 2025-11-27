@@ -84,7 +84,6 @@ The `OBEventPolling1` will be used as the request payload for:
 | err |1..1 |`OBEventPolling1/setErrs/<jti>/err` |A value from the IANA "Security Event Token Delivery Error Codes" registry that identifies the error as defined [here](https://tools.ietf.org/id/draft-ietf-secevent-http-push-03.html#error_codes) |Max40Text | | |
 | description |1..1 |`OBEventPolling1/setErrs/<jti>/description` |A human-readable string that provides additional diagnostic information |Max256Text | | |
 
-
 ### Aggregated Polling - Response
 
 The `OBEventPollingResponse1` will be used as the response payload for:
@@ -186,7 +185,7 @@ This section describes the OBEventConsentAuthorizationRevoked1 class which is us
 
 #### Notes
 
-For the OBEventConsentAuthorizationRevoked1 object:  
+For the OBEventConsentAuthorizationRevoked1 object:
 
 - The subject claim **must** be populated if the Event Notification does not include a `urn:uk:org:openbanking:events:resource-update` event.
 
@@ -208,7 +207,7 @@ This section describes the OBEventAccountAccessConsentLinkedAccountUpdate1 class
 
 #### Notes
 
-For the OBEventAccountAccessConsentLinkedAccountUpdate object: 
+For the OBEventAccountAccessConsentLinkedAccountUpdate object:
 
 - The http://openbanking.org.uk/rty claim **must** be populated with "account-access-consent".
 
@@ -290,7 +289,7 @@ x-fapi-interaction-id: 295f6c6c7b2045b2a3e91e4f1c31d681
 
 ```json
 {
-  "sets": { }
+  "sets": {}
 }
 ```
 
@@ -310,7 +309,9 @@ x-fapi-interaction-id: 3fc0df586e45404abd5bbf1b23ce343d
 {
   "returnImmediately": true,
   "maxEvents": 1,
-  "ack": [ "2644f8cbc8294325ad103ddfc4a5b15d" ],
+  "ack": [
+    "2644f8cbc8294325ad103ddfc4a5b15d"
+  ],
   "setErrs": {
     "1fd954d5fb964afb97deee232bb88d1f": {
       "err": "jwtIss",
