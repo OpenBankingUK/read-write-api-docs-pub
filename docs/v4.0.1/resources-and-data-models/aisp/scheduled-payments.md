@@ -51,9 +51,11 @@ This will retrieve the scheduled-payments resources for all authorised accounts 
 ### Reused Classes
 
 #### OBProxy1
+
 The OBProxy1 class is defined in the [account-and-transaction-api-profile](../../profiles/account-and-transaction-api-profile.md#obproxy1) page.
 
 #### OBPostalAddress7
+
 The OBPostalAddress7 class is defined in the [account-and-transaction-api-profile](../../profiles/account-and-transaction-api-profile.md#obpostaladdress7) page.
 
 ### Resource Definition
@@ -78,8 +80,8 @@ An account (AccountId) may have no scheduled payments set up, or may have multip
 The resource differs depending on the permissions (ReadScheduledPaymentsBasic and ReadScheduledPaymentsDetail) used to access resource. In the event that the resource is accessed with both ReadScheduledPaymentsBasic and ReadScheduledPaymentsDetail, the most detailed level (ReadScheduledPaymentsDetail) must be used.
 
 * These objects **must not** be returned **without** the **ReadScheduledPaymentsDetail** permission:
-    * OBReadScheduledPayment3/Data/ScheduledPayment/CreditorAgent
-    * OBReadScheduledPayment3/Data/ScheduledPayment/CreditorAccount
+  * OBReadScheduledPayment3/Data/ScheduledPayment/CreditorAgent
+  * OBReadScheduledPayment3/Data/ScheduledPayment/CreditorAccount
 * If the **ReadScheduledPaymentsDetail** is granted by the PSU:
     * OBReadScheduledPayment3/Data/ScheduledPayment/CreditorAgent **may** be returned if applicable to the account and ASPSP (0..1)
     * OBReadScheduledPayment3/Data/ScheduledPayment/CreditorAccount **must** be returned (1..1)
@@ -109,7 +111,7 @@ If the ReadPAN permission is granted by the PSU - the ASPSP may choose to popula
 | Identification |1..1 |OBReadScheduledPayment3/Data/ScheduledPayment/CreditorAgent/Identification |Unique and unambiguous identification of the servicing institution. |Max35Text | | |
 | CreditorAccount |0..1 |OBReadScheduledPayment3/Data/ScheduledPayment/CreditorAccount |Provides the details to identify the beneficiary account. |OBCashAccount5 | | |
 | Proxy |0..1 |OBReadScheduledPayment3/Data/ScheduledPayment/CreditorAccount/Proxy | Specifies an alternate assumed name for the identification of the account.  |OBProxy1 | | |
-| SchemeName |1..1 |OBReadScheduledPayment3/Data/ScheduledPayment/CreditorAccount/SchemeName |Name of the identification scheme, in a coded form as published in an external list. | For a full list of enumeration values refer to `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets). |OBInternalAccountIdentification4Code | 
+| SchemeName |1..1 |OBReadScheduledPayment3/Data/ScheduledPayment/CreditorAccount/SchemeName |Name of the identification scheme, in a coded form as published in an external list. | For a full list of enumeration values refer to `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets). |OBInternalAccountIdentification4Code |
 | Identification |1..1 |OBReadScheduledPayment3/Data/ScheduledPayment/CreditorAccount/Identification |Beneficiary account identification. |Max256Text | | |
 | Name |0..1 |OBReadScheduledPayment3/Data/ScheduledPayment/CreditorAccount/Name |The account name is the name or names of the account owner(s) represented at an account level, as displayed by the ASPSP's online channels. Note, the account name is not the product name or the nickname of the account. |Max350Text | | |
 | SecondaryIdentification |0..1 |OBReadScheduledPayment3/Data/ScheduledPayment/CreditorAccount/SecondaryIdentification |This is secondary identification of the account, as assigned by the account servicing institution. This can be used by building societies to additionally identify accounts with a roll number (in addition to a sort code and account number combination). |Max34Text | | |
@@ -150,12 +152,12 @@ Content-Type: application/json
           "Amount": "10.00",
           "Currency": "GBP"
         },
-        "CreditorAgent": {  
+        "CreditorAgent": {
           "LEI": "IZ9Q00LZEVUKWCQY6X15",
           "SchemeName": "UK.OBIE.BICFI",
           "Identification": "80200112344562",
-          "Name": "The Credit Agent", 
-          "PostalAddress": { 
+          "Name": "The Credit Agent",
+          "PostalAddress": {
             "AddressType": "BIZZ",
             "StreetName": "Bank Street",
             "BuildingNumber": "11",
@@ -173,11 +175,11 @@ Content-Type: application/json
           "Proxy": {
             "Identification": "441234012345",
             "Code": "TELE",
-            "Type":"Telephone"
+            "Type": "Telephone"
           }
         },
         "Reference": "REF561988",
-        "DebtorReference" : "REF51561806",
+        "DebtorReference": "REF51561806"
       }
     ]
   },
@@ -216,7 +218,7 @@ Content-Type: application/json
   "Data": {
     "ScheduledPayment": [
       {
-		"AccountId": "22289",
+        "AccountId": "22289",
         "ScheduledPaymentId": "SP03",
         "ScheduledPaymentDateTime": "2017-05-05T00:00:00+00:00",
         "ScheduledType": "Execution",
@@ -224,12 +226,12 @@ Content-Type: application/json
           "Amount": "10.00",
           "Currency": "GBP"
         },
-        "CreditorAgent": {  
+        "CreditorAgent": {
           "LEI": "IZ9Q00LZEVUKWCQY6X15",
           "SchemeName": "UK.OBIE.BICFI",
           "Identification": "80200112344562",
-          "Name": "The Credit Agent", 
-          "PostalAddress": { 
+          "Name": "The Credit Agent",
+          "PostalAddress": {
             "AddressType": "BIZZ",
             "StreetName": "Bank Street",
             "BuildingNumber": "11",
@@ -237,21 +239,21 @@ Content-Type: application/json
             "PostCode": "Z78 4TY",
             "TownName": "London",
             "Country": "UK"
-        },
-        "CreditorAccount": {
-          "SchemeName": "UK.OBIE.SortCodeAccountNumber",
-          "Identification": "23605490179017",
-          "SecondaryIdentification": "23605445279017",
-          "Name": "Mr Tee",
-          "Proxy": {
-            "Identification": "441234012345",
-            "Code": "TELE",
-            "Type":"Telephone"
-          }
-        },
-        "Reference": "REF561988",
-        "DebtorReference" : "51561899806",
-      }
+          },
+          "CreditorAccount": {
+            "SchemeName": "UK.OBIE.SortCodeAccountNumber",
+            "Identification": "23605490179017",
+            "SecondaryIdentification": "23605445279017",
+            "Name": "Mr Tee",
+            "Proxy": {
+              "Identification": "441234012345",
+              "Code": "TELE",
+              "Type": "Telephone"
+            }
+          },
+          "Reference": "REF561988",
+          "DebtorReference": "51561899806"
+        }
       },
       {
         "AccountId": "39570",
@@ -269,7 +271,7 @@ Content-Type: application/json
           "Proxy": {
             "Identification": "441234012345",
             "Code": "TELE",
-            "Type":"Telephone"
+            "Type": "Telephone"
           }
         }
       }
