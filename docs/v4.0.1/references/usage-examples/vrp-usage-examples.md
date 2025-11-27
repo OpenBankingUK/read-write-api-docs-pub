@@ -142,10 +142,10 @@ Content-Type: application/json
     "ConsentId": "fe615446-e53a-45ed-954c-ae5d1f97a93b",
     "CreationDateTime": "2017-06-05T15:15:15+00:00",
     "Status": "AUTH",
-    "StatusReason": {
+    "StatusReason": [{
       "StatusReasonCode": "U038", 
-      "StatusReasonDescription":"Consent consumed successfully"
-    },
+      "StatusReasonDescription": "Consent consumed successfully"
+    }],
     "StatusUpdateDateTime": "2017-06-05T15:15:15+05:00",
     "ReadRefundAccount": "Yes",
     "ControlParameters": {
@@ -283,10 +283,10 @@ Content-Type: application/json
     "Status": "AUTH",
     "StatusUpdateDateTime": "2017-06-05T15:15:15+05:00",
     "ReadRefundAccount": "Yes",
-    "StatusReason": {
+    "StatusReason": [{
       "StatusReasonCode": "U038", 
-      "StatusReasonDescription":"Consent consumed successfully"
-    },
+      "StatusReasonDescription": "Consent consumed successfully"
+    }],
     "ControlParameters": {
       "PSUAuthenticationMethods": [ "UK.OBIE.SCA" ],
       "PSUInteractionTypes": [ "OffSession" ],
@@ -546,10 +546,10 @@ Content-Type: application/json
     "CreationDateTime": "2017-06-05T15:15:15+00:00",
     "DomesticVRPId": "OU90210",
     "Status": "PDNG",
-    "StatusReason": {
+    "StatusReason": [{
       "StatusReasonCode": "83",
-      "StatusReasonDescription":"Pending completion next working day"
-    },
+      "StatusReasonDescription": "Pending completion next working day"
+    }],
     "StatusUpdateDateTime": "2017-06-05T15:15:15+00:00",
     "ExpectedExecutionDateTime": "2017-06-05T15:15:15+00:00",
     "ExpectedSettlementDateTime": "2017-06-06T15:15:15+00:00",
