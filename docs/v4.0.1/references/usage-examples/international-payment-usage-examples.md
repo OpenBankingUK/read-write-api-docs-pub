@@ -38,18 +38,18 @@ Accept: application/json
 ```json
 {
   "Data": {
-    "Permission":"Create",
+    "Permission": "Create",
     "Initiation": {
       "InstructionIdentification": "ACME412",
       "EndToEndIdentification": "FRESCO.21302.GFX.20",
       "RequestedExecutionDate": "2018-08-06T00:00:00+00:00",
       "InstructedAmount": {
         "Amount": {
-           "Amount": "165.88",
-           "Currency": "USD"
-         }
+          "Amount": "165.88",
+          "Currency": "USD"
+        }
       },
-      "CurrencyOfTransfer":"USD",
+      "CurrencyOfTransfer": "USD",
       "CreditorAccount": {
         "SchemeName": "UK.OBIE.SortCodeAccountNumber",
         "Identification": "08080021325698",
@@ -64,12 +64,14 @@ Accept: application/json
             }
           }
         ],
-        "Unstructured": ["Internal ops code 5120101"]
+        "Unstructured": [
+          "Internal ops code 5120101"
+        ]
       },
-	  "ExchangeRateInformation": {
-		"UnitCurrency": "GBP",
-	  	"RateType": "Actual"
-	  }
+      "ExchangeRateInformation": {
+        "UnitCurrency": "GBP",
+        "RateType": "Actual"
+      }
     }
   },
   "Risk": {
@@ -89,31 +91,31 @@ Content-Type: application/json
 
 ```json
 {
-	"Data": {
-		"Permission": "Create",
-		"ConsentId": "58923",
-		"Status": "AWAU",
-		"CutOffDateTime": "2017-06-05T16:00:13+00:00",
-		"CreationDateTime": "2017-06-05T15:15:13+00:00",
-		"StatusUpdateDateTime": "2017-06-05T15:15:13+00:00",
-		"Initiation": {
-			"InstructionIdentification": "ACME412",
-			"EndToEndIdentification": "FRESCO.21302.GFX.20",
-            "RequestedExecutionDate": "2018-08-06T00:00:00+00:00",	     
-			"InstructedAmount": {
-		        "Amount": {
-    		       "Amount": "165.88",
-		           "Currency": "USD"
-        		 }
-		      },
-			"CurrencyOfTransfer":"USD",
-			"CreditorAccount": {
-				"SchemeName": "UK.OBIE.SortCodeAccountNumber",
-				"Identification": "08080021325698",
-				"Name": "ACME Inc",
-				"SecondaryIdentification": "0002"
-			},
-			"RemittanceInformation": {
+  "Data": {
+    "Permission": "Create",
+    "ConsentId": "58923",
+    "Status": "AWAU",
+    "CutOffDateTime": "2017-06-05T16:00:13+00:00",
+    "CreationDateTime": "2017-06-05T15:15:13+00:00",
+    "StatusUpdateDateTime": "2017-06-05T15:15:13+00:00",
+    "Initiation": {
+      "InstructionIdentification": "ACME412",
+      "EndToEndIdentification": "FRESCO.21302.GFX.20",
+      "RequestedExecutionDate": "2018-08-06T00:00:00+00:00",
+      "InstructedAmount": {
+        "Amount": {
+          "Amount": "165.88",
+          "Currency": "USD"
+        }
+      },
+      "CurrencyOfTransfer": "USD",
+      "CreditorAccount": {
+        "SchemeName": "UK.OBIE.SortCodeAccountNumber",
+        "Identification": "08080021325698",
+        "Name": "ACME Inc",
+        "SecondaryIdentification": "0002"
+      },
+      "RemittanceInformation": {
         "Structured": [
           {
             "CreditorReferenceInformation": {
@@ -121,28 +123,29 @@ Content-Type: application/json
             }
           }
         ],
-				"Unstructured": ["Internal ops code 5120101"]
-			},
-		  	"ExchangeRateInformation": {
-				"UnitCurrency": "GBP",
-	  			"RateType": "Actual"
-	  		}
-		},
-		"ExchangeRateInformation": {
-			"UnitCurrency": "GBP",
-			"ExchangeRate": "1.10",
-			"RateType": "Actual",
-			"ExpirationDateTime": "2017-06-05T15:45:13+00:00"
-		}
-	},
-	"Risk": {
-		"PaymentContextCode": "TransferToThirdParty"
-
-	},
-	"Links": {
-		"Self": "https://api.alphabank.com/open-banking/v4.0/pisp/international-scheduled-payment-consents/58923"
-	},
-	"Meta": {}
+        "Unstructured": [
+          "Internal ops code 5120101"
+        ]
+      },
+      "ExchangeRateInformation": {
+        "UnitCurrency": "GBP",
+        "RateType": "Actual"
+      }
+    },
+    "ExchangeRateInformation": {
+      "UnitCurrency": "GBP",
+      "ExchangeRate": "1.10",
+      "RateType": "Actual",
+      "ExpirationDateTime": "2017-06-05T15:45:13+00:00"
+    }
+  },
+  "Risk": {
+    "PaymentContextCode": "TransferToThirdParty"
+  },
+  "Links": {
+    "Self": "https://api.alphabank.com/open-banking/v4.0/pisp/international-scheduled-payment-consents/58923"
+  },
+  "Meta": {}
 }
 ```
 
@@ -171,18 +174,18 @@ Accept: application/json
 ```json
 {
   "Data": {
-    "Permission":"Create",
+    "Permission": "Create",
     "Initiation": {
       "InstructionIdentification": "ACME412",
       "EndToEndIdentification": "FRESCO.21302.GFX.20",
       "RequestedExecutionDate": "2018-08-06T00:00:00+00:00",
       "InstructedAmount": {
         "Amount": {
-           "Amount": "165.88",
-           "Currency": "USD"
-         }
+          "Amount": "165.88",
+          "Currency": "USD"
+        }
       },
-      "CurrencyOfTransfer":"USD",
+      "CurrencyOfTransfer": "USD",
       "CreditorAccount": {
         "SchemeName": "UK.OBIE.SortCodeAccountNumber",
         "Identification": "08080021325698",
@@ -197,12 +200,14 @@ Accept: application/json
             }
           }
         ],
-        "Unstructured": ["Internal ops code 5120101"]
+        "Unstructured": [
+          "Internal ops code 5120101"
+        ]
       },
-	  "ExchangeRateInformation": {
-		"UnitCurrency": "GBP",
-	  	"RateType": "Indicative"
-	  }
+      "ExchangeRateInformation": {
+        "UnitCurrency": "GBP",
+        "RateType": "Indicative"
+      }
     }
   },
   "Risk": {
@@ -222,31 +227,31 @@ Content-Type: application/json
 
 ```json
 {
-	"Data": {
-		"Permission": "Create",
-		"ConsentId": "58923",
-		"Status": "AWAU",
-		"CutOffDateTime": "2017-06-05T16:00:13+00:00",
-		"CreationDateTime": "2017-06-05T15:15:13+00:00",
-		"StatusUpdateDateTime": "2017-06-05T15:15:13+00:00",
-		"Initiation": {
-			"InstructionIdentification": "ACME412",
-			"EndToEndIdentification": "FRESCO.21302.GFX.20",
-            "RequestedExecutionDate": "2018-08-06T00:00:00+00:00",	     
-			"InstructedAmount": {
-		        "Amount": {
-    		       "Amount": "165.88",
-		           "Currency": "USD"
-        		 }
-		      },
-			"CurrencyOfTransfer":"USD",
-			"CreditorAccount": {
-				"SchemeName": "UK.OBIE.SortCodeAccountNumber",
-				"Identification": "08080021325698",
-				"Name": "ACME Inc",
-				"SecondaryIdentification": "0002"
-			},
-			"RemittanceInformation": {
+  "Data": {
+    "Permission": "Create",
+    "ConsentId": "58923",
+    "Status": "AWAU",
+    "CutOffDateTime": "2017-06-05T16:00:13+00:00",
+    "CreationDateTime": "2017-06-05T15:15:13+00:00",
+    "StatusUpdateDateTime": "2017-06-05T15:15:13+00:00",
+    "Initiation": {
+      "InstructionIdentification": "ACME412",
+      "EndToEndIdentification": "FRESCO.21302.GFX.20",
+      "RequestedExecutionDate": "2018-08-06T00:00:00+00:00",
+      "InstructedAmount": {
+        "Amount": {
+          "Amount": "165.88",
+          "Currency": "USD"
+        }
+      },
+      "CurrencyOfTransfer": "USD",
+      "CreditorAccount": {
+        "SchemeName": "UK.OBIE.SortCodeAccountNumber",
+        "Identification": "08080021325698",
+        "Name": "ACME Inc",
+        "SecondaryIdentification": "0002"
+      },
+      "RemittanceInformation": {
         "Structured": [
           {
             "CreditorReferenceInformation": {
@@ -254,22 +259,23 @@ Content-Type: application/json
             }
           }
         ],
-				"Unstructured": ["Internal ops code 5120101"]
-			},
-		  	"ExchangeRateInformation": {
-				"UnitCurrency": "GBP",
-	  			"RateType": "Indicative"
-	  		}
-		}
-	},
-	"Risk": {
-		"PaymentContextCode": "TransferToThirdParty"
-
-	},
-	"Links": {
-		"Self": "https://api.alphabank.com/open-banking/v4.0/pisp/international-scheduled-payment-consents/58923"
-	},
-	"Meta": {}
+        "Unstructured": [
+          "Internal ops code 5120101"
+        ]
+      },
+      "ExchangeRateInformation": {
+        "UnitCurrency": "GBP",
+        "RateType": "Indicative"
+      }
+    }
+  },
+  "Risk": {
+    "PaymentContextCode": "TransferToThirdParty"
+  },
+  "Links": {
+    "Self": "https://api.alphabank.com/open-banking/v4.0/pisp/international-scheduled-payment-consents/58923"
+  },
+  "Meta": {}
 }
 ```
 
@@ -299,15 +305,15 @@ Content-Type: application/json
 
 ```json
 {
-	"Data": {
-		"FundsAvailableResult": {
-			"FundsAvailableDateTime": "2017-06-05T15:15:23+00:00",
-			"FundsAvailable": true
-		}
-	},
-	"Links": {
-		"Self": "https://api.alphabank.com/open-banking/v4.0/pisp/international-scheduled-payment-consents/58923/funds-confirmation"
-	},
-	"Meta": {}
+  "Data": {
+    "FundsAvailableResult": {
+      "FundsAvailableDateTime": "2017-06-05T15:15:23+00:00",
+      "FundsAvailable": true
+    }
+  },
+  "Links": {
+    "Self": "https://api.alphabank.com/open-banking/v4.0/pisp/international-scheduled-payment-consents/58923/funds-confirmation"
+  },
+  "Meta": {}
 }
 ```
