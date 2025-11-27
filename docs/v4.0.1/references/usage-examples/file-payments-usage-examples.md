@@ -63,7 +63,7 @@ Content-Type: application/json
 ```json
 {
   "Data": {
-    "ConsentId" : "512345",
+    "ConsentId": "512345",
     "Status": "AWUP",
     "CreationDateTime": "2018-06-05T15:15:13+00:00",
     "StatusUpdateDateTime": "2018-06-05T15:15:13+00:00",
@@ -75,10 +75,10 @@ Content-Type: application/json
       "ControlSum": 3459.30
     }
   },
-  "Links":{
-    "Self":"https://api.alphabank.com/open-banking/v4.0/pisp/file-payment-consents/512345"
+  "Links": {
+    "Self": "https://api.alphabank.com/open-banking/v4.0/pisp/file-payment-consents/512345"
   },
-  "Meta":{}
+  "Meta": {}
 }
 ```
 
@@ -114,200 +114,200 @@ A sample file with 3 transactions is provided below:
 ```xml
 <?xml version="1.0" encoding="UTF-8" ?>
 <Document xmlns="urn:iso:std:iso:20022:tech:xsd:pain.001.001.08" xmlns:xsi="http://www.w3.org/2001/XMLSchema- instance">
-	<CstmrCdtTrfInitn>
-	<GrpHdr>
-		<MsgId>ABC/120928/CCT001</MsgId>
-		<CreDtTm>2012-09-28T14:07:00</CreDtTm>
-		<NbOfTxs>3</NbOfTxs>
-		<CtrlSum>11500000</CtrlSum>
-		<InitgPty>
-			<Nm>ABC Corporation</Nm>
-			<PstlAdr>
-				<StrtNm>Times Square</StrtNm>
-				<BldgNb>7</BldgNb>
-				<PstCd>NY 10036</PstCd>
-				<TwnNm>New York</TwnNm>
-				<Ctry>US</Ctry>
-			</PstlAdr>
-		</InitgPty>
-	</GrpHdr>
-	<PmtInf>
-		<PmtInfId>ABC/086</PmtInfId>
-		<PmtMtd>TRF</PmtMtd>
-		<BtchBookg>false</BtchBookg>
-		<ReqdExctnDt>
-			<Dt>2012-09-29</Dt>
-		</ReqdExctnDt>
-		<Dbtr>
-			<Nm>ABC Corporation</Nm>
-			<PstlAdr>
-				<StrtNm>Times Square</StrtNm>
-				<BldgNb>7</BldgNb>
-				<PstCd>NY 10036</PstCd>
-				<TwnNm>New York</TwnNm>
-				<Ctry>US</Ctry>
-			</PstlAdr>
-		</Dbtr>
-		<DbtrAcct>
-			<Id>
-				<Othr>
-					<Id>00125574999</Id>
-				</Othr>
-			</Id>
-		</DbtrAcct>
-		<DbtrAgt>
-			<FinInstnId>
-				<BICFI>BBBBUS33</BICFI>
-			</FinInstnId>
-		</DbtrAgt>
-		<CdtTrfTxInf>
-			<PmtId>
-				<InstrId>ABC/120928/CCT001/01</InstrId>
-				<EndToEndId>ABC/4562/2012-09-08</EndToEndId>
-			</PmtId>
-			<Amt>
-				<InstdAmt Ccy="JPY">10000000</InstdAmt>
-			</Amt>
-			<ChrgBr>SHAR</ChrgBr>
-			<CdtrAgt>
-				<FinInstnId>
-					<BICFI>AAAAGB2L</BICFI>
-				</FinInstnId>
-			</CdtrAgt>
-			<Cdtr>
-				<Nm>DEF Electronics</Nm>
-				<PstlAdr>
-					<AdrLine>Corn Exchange 5th Floor</AdrLine>
-					<AdrLine>Mark Lane 55</AdrLine>
-					<AdrLine>EC3R7NE London</AdrLine>
-					<AdrLine>GB</AdrLine>
-				</PstlAdr>
-			</Cdtr>
-			<CdtrAcct>
-				<Id>
-					<Othr>
-						<Id>23683707994125</Id>
-					</Othr>
-				</Id>
-			</CdtrAcct>
-			<Purp>
-				<Cd>GDDS</Cd>
-			</Purp>
-			<RmtInf>
-				<Strd>
-					<RfrdDocInf>
-						<Tp>
-							<CdOrPrtry>
-								<Cd>CINV</Cd>
-							</CdOrPrtry>
-						</Tp>
-						<Nb>4562</Nb>
-						<RltdDt>2012-09-08</RltdDt>
-					</RfrdDocInf>
-				</Strd>
-			</RmtInf>
-		</CdtTrfTxInf>
-		<CdtTrfTxInf>
-			<PmtId>
-				<InstrId>ABC/120928/CCT001/2</InstrId>
-				<EndToEndId>ABC/ABC-13679/2012-09-15</EndToEndId>
-			</PmtId>
-			<Amt>
-				<InstdAmt Ccy="EUR">500000</InstdAmt>
-			</Amt>
-			<ChrgBr>CRED</ChrgBr>
-			<CdtrAgt>
-				<FinInstnId>
-					<BICFI>DDDDBEBB</BICFI>
-				</FinInstnId>
-			</CdtrAgt>
-			<Cdtr>
-				<Nm>GHI Semiconductors</Nm>
-				<PstlAdr>
-					<StrtNm>Avenue Brugmann</StrtNm>
-					<BldgNb>415</BldgNb>
-					<PstCd>1180</PstCd>
-					<TwnNm>Brussels</TwnNm>
-					<Ctry>BE</Ctry>
-				</PstlAdr>
-			</Cdtr>
-			<CdtrAcct>
-				<Id>
-					<IBAN>BE30001216371411</IBAN>
-				</Id>
-			</CdtrAcct>
-			<InstrForCdtrAgt>
-				<Cd>PHOB</Cd>
-				<InstrInf>+32/2/2222222</InstrInf>
-			</InstrForCdtrAgt>
-			<Purp>
-				<Cd>GDDS</Cd>
-			</Purp>
-			<RmtInf>
-				<Strd>
-					<RfrdDocInf>
-						<Tp>
-							<CdOrPrtry>
-								<Cd>CINV</Cd>
-							</CdOrPrtry>
-						</Tp>
-						<Nb>ABC-13679</Nb>
-						<RltdDt>2012-09-15</RltdDt>
-					</RfrdDocInf>
-				</Strd>
-			</RmtInf>
-		</CdtTrfTxInf>
-		<CdtTrfTxInf>
-			<PmtId>
-				<InstrId>ABC/120928/CCT001/3</InstrId>
-				<EndToEndId>ABC/987-AC/2012-09-27</EndToEndId>
-			</PmtId>
-			<Amt>
-				<InstdAmt Ccy="USD">1000000</InstdAmt>
-			</Amt>
-			<ChrgBr>SHAR</ChrgBr>
-			<CdtrAgt>
-				<FinInstnId>
-					<BICFI>BBBBUS66</BICFI>
-				</FinInstnId>
-			</CdtrAgt>
-			<Cdtr>
-				<Nm>ABC Corporation</Nm>
-				<PstlAdr>
-					<Dept>Treasury department</Dept>
-					<StrtNm>Bush Street</StrtNm>
-					<BldgNb>13</BldgNb>
-					<PstCd>CA 94108</PstCd>
-					<TwnNm>San Francisco</TwnNm>
-					<Ctry>US</Ctry>
-				</PstlAdr>
-			</Cdtr>
-			<CdtrAcct>
-				<Id>
-					<Othr>
-						<Id>4895623</Id>
-					</Othr>
-				</Id>
-			</CdtrAcct>
-			<Purp>
-				<Cd>INTC</Cd>
-			</Purp>
-			<RmtInf>
-				<Strd>
-					<RfrdDocInf>
-						<Tp>
-							<CdOrPrtry>
-								<Cd>CINV</Cd>
-							</CdOrPrtry>
-						</Tp>
-						<Nb>987-AC</Nb>
-						<RltdDt>2012-09-27</RltdDt>
-					</RfrdDocInf>
-				</Strd>
-			</RmtInf>
-		</CdtTrfTxInf>
-	</PmtInf>
-</CstmrCdtTrfInitn>
+    <CstmrCdtTrfInitn>
+        <GrpHdr>
+            <MsgId>ABC/120928/CCT001</MsgId>
+            <CreDtTm>2012-09-28T14:07:00</CreDtTm>
+            <NbOfTxs>3</NbOfTxs>
+            <CtrlSum>11500000</CtrlSum>
+            <InitgPty>
+                <Nm>ABC Corporation</Nm>
+                <PstlAdr>
+                    <StrtNm>Times Square</StrtNm>
+                    <BldgNb>7</BldgNb>
+                    <PstCd>NY 10036</PstCd>
+                    <TwnNm>New York</TwnNm>
+                    <Ctry>US</Ctry>
+                </PstlAdr>
+            </InitgPty>
+        </GrpHdr>
+        <PmtInf>
+            <PmtInfId>ABC/086</PmtInfId>
+            <PmtMtd>TRF</PmtMtd>
+            <BtchBookg>false</BtchBookg>
+            <ReqdExctnDt>
+                <Dt>2012-09-29</Dt>
+            </ReqdExctnDt>
+            <Dbtr>
+                <Nm>ABC Corporation</Nm>
+                <PstlAdr>
+                    <StrtNm>Times Square</StrtNm>
+                    <BldgNb>7</BldgNb>
+                    <PstCd>NY 10036</PstCd>
+                    <TwnNm>New York</TwnNm>
+                    <Ctry>US</Ctry>
+                </PstlAdr>
+            </Dbtr>
+            <DbtrAcct>
+                <Id>
+                    <Othr>
+                        <Id>00125574999</Id>
+                    </Othr>
+                </Id>
+            </DbtrAcct>
+            <DbtrAgt>
+                <FinInstnId>
+                    <BICFI>BBBBUS33</BICFI>
+                </FinInstnId>
+            </DbtrAgt>
+            <CdtTrfTxInf>
+                <PmtId>
+                    <InstrId>ABC/120928/CCT001/01</InstrId>
+                    <EndToEndId>ABC/4562/2012-09-08</EndToEndId>
+                </PmtId>
+                <Amt>
+                    <InstdAmt Ccy="JPY">10000000</InstdAmt>
+                </Amt>
+                <ChrgBr>SHAR</ChrgBr>
+                <CdtrAgt>
+                    <FinInstnId>
+                        <BICFI>AAAAGB2L</BICFI>
+                    </FinInstnId>
+                </CdtrAgt>
+                <Cdtr>
+                    <Nm>DEF Electronics</Nm>
+                    <PstlAdr>
+                        <AdrLine>Corn Exchange 5th Floor</AdrLine>
+                        <AdrLine>Mark Lane 55</AdrLine>
+                        <AdrLine>EC3R7NE London</AdrLine>
+                        <AdrLine>GB</AdrLine>
+                    </PstlAdr>
+                </Cdtr>
+                <CdtrAcct>
+                    <Id>
+                        <Othr>
+                            <Id>23683707994125</Id>
+                        </Othr>
+                    </Id>
+                </CdtrAcct>
+                <Purp>
+                    <Cd>GDDS</Cd>
+                </Purp>
+                <RmtInf>
+                    <Strd>
+                        <RfrdDocInf>
+                            <Tp>
+                                <CdOrPrtry>
+                                    <Cd>CINV</Cd>
+                                </CdOrPrtry>
+                            </Tp>
+                            <Nb>4562</Nb>
+                            <RltdDt>2012-09-08</RltdDt>
+                        </RfrdDocInf>
+                    </Strd>
+                </RmtInf>
+            </CdtTrfTxInf>
+            <CdtTrfTxInf>
+                <PmtId>
+                    <InstrId>ABC/120928/CCT001/2</InstrId>
+                    <EndToEndId>ABC/ABC-13679/2012-09-15</EndToEndId>
+                </PmtId>
+                <Amt>
+                    <InstdAmt Ccy="EUR">500000</InstdAmt>
+                </Amt>
+                <ChrgBr>CRED</ChrgBr>
+                <CdtrAgt>
+                    <FinInstnId>
+                        <BICFI>DDDDBEBB</BICFI>
+                    </FinInstnId>
+                </CdtrAgt>
+                <Cdtr>
+                    <Nm>GHI Semiconductors</Nm>
+                    <PstlAdr>
+                        <StrtNm>Avenue Brugmann</StrtNm>
+                        <BldgNb>415</BldgNb>
+                        <PstCd>1180</PstCd>
+                        <TwnNm>Brussels</TwnNm>
+                        <Ctry>BE</Ctry>
+                    </PstlAdr>
+                </Cdtr>
+                <CdtrAcct>
+                    <Id>
+                        <IBAN>BE30001216371411</IBAN>
+                    </Id>
+                </CdtrAcct>
+                <InstrForCdtrAgt>
+                    <Cd>PHOB</Cd>
+                    <InstrInf>+32/2/2222222</InstrInf>
+                </InstrForCdtrAgt>
+                <Purp>
+                    <Cd>GDDS</Cd>
+                </Purp>
+                <RmtInf>
+                    <Strd>
+                        <RfrdDocInf>
+                            <Tp>
+                                <CdOrPrtry>
+                                    <Cd>CINV</Cd>
+                                </CdOrPrtry>
+                            </Tp>
+                            <Nb>ABC-13679</Nb>
+                            <RltdDt>2012-09-15</RltdDt>
+                        </RfrdDocInf>
+                    </Strd>
+                </RmtInf>
+            </CdtTrfTxInf>
+            <CdtTrfTxInf>
+                <PmtId>
+                    <InstrId>ABC/120928/CCT001/3</InstrId>
+                    <EndToEndId>ABC/987-AC/2012-09-27</EndToEndId>
+                </PmtId>
+                <Amt>
+                    <InstdAmt Ccy="USD">1000000</InstdAmt>
+                </Amt>
+                <ChrgBr>SHAR</ChrgBr>
+                <CdtrAgt>
+                    <FinInstnId>
+                        <BICFI>BBBBUS66</BICFI>
+                    </FinInstnId>
+                </CdtrAgt>
+                <Cdtr>
+                    <Nm>ABC Corporation</Nm>
+                    <PstlAdr>
+                        <Dept>Treasury department</Dept>
+                        <StrtNm>Bush Street</StrtNm>
+                        <BldgNb>13</BldgNb>
+                        <PstCd>CA 94108</PstCd>
+                        <TwnNm>San Francisco</TwnNm>
+                        <Ctry>US</Ctry>
+                    </PstlAdr>
+                </Cdtr>
+                <CdtrAcct>
+                    <Id>
+                        <Othr>
+                            <Id>4895623</Id>
+                        </Othr>
+                    </Id>
+                </CdtrAcct>
+                <Purp>
+                    <Cd>INTC</Cd>
+                </Purp>
+                <RmtInf>
+                    <Strd>
+                        <RfrdDocInf>
+                            <Tp>
+                                <CdOrPrtry>
+                                    <Cd>CINV</Cd>
+                                </CdOrPrtry>
+                            </Tp>
+                            <Nb>987-AC</Nb>
+                            <RltdDt>2012-09-27</RltdDt>
+                        </RfrdDocInf>
+                    </Strd>
+                </RmtInf>
+            </CdtTrfTxInf>
+        </PmtInf>
+    </CstmrCdtTrfInitn>
 </Document>
 ```
 
@@ -345,7 +345,7 @@ Accept: application/json
 ```json
 {
   "Data": {
-    "ConsentId":"512345",
+    "ConsentId": "512345",
     "Initiation": {
       "FileType": "UK.OBIE.pain.001.001.08",
       "FileHash": "m5ah/h1UjLvJYMxqAoZmj9dKdjZnsGNm+yMkJp/KuqQ",
@@ -369,8 +369,8 @@ Content-Type: application/json
 ```json
 {
   "Data": {
-    "ConsentId" : "512345",
-	"FilePaymentId":"FP1-512345",
+    "ConsentId": "512345",
+    "FilePaymentId": "FP1-512345",
     "Status": "PDNG",
     "CreationDateTime": "2018-06-05T15:15:13+00:00",
     "StatusUpdateDateTime": "2018-06-05T15:15:13+00:00",
@@ -382,10 +382,10 @@ Content-Type: application/json
       "ControlSum": 3459.30
     }
   },
-  "Links":{
-     "Self":"https://api.alphabank.com/open-banking/v4.0/pisp/file-payments/FP1-512345"
+  "Links": {
+    "Self": "https://api.alphabank.com/open-banking/v4.0/pisp/file-payments/FP1-512345"
   },
-  "Meta":{}
+  "Meta": {}
 }
 ```
 
