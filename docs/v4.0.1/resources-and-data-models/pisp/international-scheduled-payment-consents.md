@@ -75,7 +75,7 @@ The default Status is "AWAU" immediately after the international-scheduled-payme
 
 ### GET /international-scheduled-payment-consents/{ConsentId}
 
-A PISP can optionally retrieve a payment consent resource that they have created to check its status. 
+A PISP can optionally retrieve a payment consent resource that they have created to check its status.
 
 #### Status
 
@@ -105,7 +105,7 @@ The API endpoint allows the PISP to ask an ASPSP to confirm funds on an **intern
 
 #### Payment Order Consent
 
-The state model for the international-scheduled-payment-consent resource follows the generic consent state model. 
+The state model for the international-scheduled-payment-consent resource follows the generic consent state model.
 
 ![State model](./images/PO_Consent.png)
 
@@ -144,12 +144,11 @@ The OBRegulatoryReporting1 class is defined in the [payment-initiation-api-profi
 
 The OBUltimateCreditor1 class is defined in the [payment-initiation-api-profile](../../profiles/payment-initiation-api-profile.md#obultimatecreditor1) page.
 
-
-#### OBUltimateDebtor1 
+#### OBUltimateDebtor1
 
 The OBUltimateDebtor1 class is defined in the [payment-initiation-api-profile](../../profiles/payment-initiation-api-profile.md#obultimatedebtor1) page.
 
-#### OBPostalAddress7 
+#### OBPostalAddress7
 
 The OBPostalAddress7 class is defined in the [payment-initiation-api-profile](../../profiles/payment-initiation-api-profile.md#obpostaladdress7) page.
 
@@ -194,7 +193,7 @@ For the OBInternationalScheduled3 Initiation object:
 The ExchangeRateInformation object must conform to these behaviours:
 
 * A PISP must specify the DebtorAccount currency in the UnitCurrency field if the PISP is requesting a specific RateType so the ASPSP can respond with an exchange rate quote prior to PSU authorisation.
-* A PISP may indicate an exchange rate request using the RateType with these enumerations: 
+* A PISP may indicate an exchange rate request using the RateType with these enumerations:
   * Actual.
   * Agreed.
   * Indicative.
@@ -239,7 +238,7 @@ The ExchangeRateInformation object must conform to these behaviours:
 | Name |0..1 |OBInternationalScheduled3/CreditorAgent/Name |Name by which an agent is known and which is usually used to identify that agent. |Max140Text | | |
 | PostalAddress |0..1 |OBInternationalScheduled3/CreditorAgent/PostalAddress |Information that locates and identifies a specific address, as defined by postal services. |OBPostalAddress7 | | |
 | CreditorAccount |1..1 |OBInternationalScheduled3/CreditorAccount |Unambiguous identification of the account of the creditor to which a credit entry will be posted as a result of the payment transaction. |OBCashAccountCreditor3 | | |
-| SchemeName |1..1 |OBInternationalScheduled3/CreditorAccount/SchemeName |Name of the identification scheme, in a coded form as published in an external list. | For a full list of enumeration values refer to `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets). |OBInternalAccountIdentification4Code | 
+| SchemeName |1..1 |OBInternationalScheduled3/CreditorAccount/SchemeName |Name of the identification scheme, in a coded form as published in an external list. | For a full list of enumeration values refer to `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets). |OBInternalAccountIdentification4Code |
 | Identification |1..1 |OBInternationalScheduled3/CreditorAccount/Identification |Identification assigned by an institution to identify an account. This identification is known by the account owner. |Max256Text | | |
 | Name |1..1 |OBInternationalScheduled3/CreditorAccount/Name |The account name is the name or names of the account owner(s) represented at an account level. Note, the account name is not the product name or the nickname of the account. OB: ASPSPs may carry out name validation for Confirmation of Payee, but it is not mandatory. |Max350Text | | |
 | SecondaryIdentification |0..1 |OBInternationalScheduled3/CreditorAccount/SecondaryIdentification |This is secondary identification of the account, as assigned by the account servicing institution. This can be used by building societies to additionally identify accounts with a roll number (in addition to a sort code and account number combination). |Max34Text | | |
@@ -247,9 +246,6 @@ The ExchangeRateInformation object must conform to these behaviours:
 | RemittanceInformation |0..1 |OBInternationalScheduled3/RemittanceInformation |Information supplied to enable the matching of an entry with the items that the transfer is intended to settle, such as commercial invoices in an accounts' receivable system. |OBRemittanceInformation2 | | |
 | RegulatoryReporting |0..10 |OBInternationalScheduled3/RegulatoryReporting |Information needed due to regulatory and statutory requirements. |OBRegulatoryReporting1 | | |
 | SupplementaryData |0..1 |OBInternationalScheduled3/SupplementaryData |Additional information that can not be captured in the structured fields and/or any other specific block. |OBSupplementaryData1 | | |
-
-
-
 
 #### OBExchangeRate2
 
@@ -318,7 +314,7 @@ The OBWriteInternationalScheduledConsentResponse6 object will be used for a resp
 
 ![ OBWriteInternationalScheduledConsentResponse6 ](./images/OBWriteInternationalScheduledConsentResponse6.svg )
 
-####  Notes
+#### Notes
 
 The international-scheduled-payment-consent **response** contains the full **original** payload from the international-scheduled-payment-consent **request** with the additional elements below:
 
@@ -372,7 +368,7 @@ Exchange rate behaviour:
 | Authorisation |0..1 |OBWriteInternationalScheduledConsentResponse6/Data/Authorisation |The multiple authorisation flow response from the ASPSP. |OBAuthorisation1 | | |
 | SCASupportData |0..1 |OBWriteInternationalScheduledConsentResponse6/Data/SCASupportData |Supporting Data provided by TPP, when requesting SCA Exemption. |OBSCASupportData1 | | |
 | Debtor |0..1 |OBWriteInternationalScheduledConsentResponse6/Data/Debtor |Set of elements used to identify a person or an organisation. | | | |
-| SchemeName |0..1 |OBWriteInternationalScheduledConsentResponse6/Data/Debtor/SchemeName |Name of the identification scheme, in a coded form as published in an external list. | For a full list of enumeration values refer to `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets). |OBInternalAccountIdentification4Code | 
+| SchemeName |0..1 |OBWriteInternationalScheduledConsentResponse6/Data/Debtor/SchemeName |Name of the identification scheme, in a coded form as published in an external list. | For a full list of enumeration values refer to `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets). |OBInternalAccountIdentification4Code |
 | Identification |0..1 |OBWriteInternationalScheduledConsentResponse6/Data/Debtor/Identification |Identification assigned by an institution to identify an account. This identification is known by the account owner. |Max256Text | | |
 | Name |0..1 |OBWriteInternationalScheduledConsentResponse6/Data/Debtor/Name |The account name is the name or names of the account owner(s) represented at an account level, as displayed by the ASPSP's online channels. Note, the account name is not the product name or the nickname of the account. |Max350Text | | |
 | SecondaryIdentification |0..1 |OBWriteInternationalScheduledConsentResponse6/Data/Debtor/SecondaryIdentification |This is secondary identification of the account, as assigned by the account servicing institution. This can be used by building societies to additionally identify accounts with a roll number (in addition to a sort code and account number combination). |Max34Text | | |
@@ -389,7 +385,7 @@ The OBWriteFundsConfirmationResponse1 object will be used for a response to a ca
 
 ![ OBWriteConfirmFundsResponse1 ](./images/OBWriteFundsConfirmationResponse1.svg )
 
-####  Notes
+#### Notes
 
 The confirmation of funds response contains the result of a funds availability check, or SupplementaryData.
 
@@ -424,211 +420,211 @@ Accept: application/json
 
 ```json
 {
-    "Data": {
-      "Permission": "Create",
-      "ReadRefundAccount": "Yes",
-      "Initiation": {
-        "InstructionIdentification": "ACME412",
-        "EndToEndIdentification": "FRESCO.21302.GFX.20",
-        "LocalInstrument": "UK.OBIE.Paym",
-        "InstructionPriority": "Normal",
-        "ChargeBearer": "Shared",
-        "RequestedExecutionDateTime": "2024-09-16T10:25:28.422Z",
-        "CurrencyOfTransfer": "USD",
-        "DestinationCountryCode": "GB",
-        "InstructedAmount": {
-          "Amount": "165.88",
-          "Currency": "GBP"
-        },
-        "ExchangeRateInformation": {
-          "UnitCurrency": "GBP",
-          "ExchangeRate": 1.22,
-          "RateType": "Actual",
-          "ContractIdentification": "415621656"
-        },
-        "DebtorAccount": {
-          "SchemeName": "UK.OBIE.SortCodeAccountNumber",
-          "SecondaryIdentification": "0002",
-          "Identification": "11280001234567",
-          "Name": "Andrea Smith",
-          "Proxy": {
-            "Identification": "2360549017905188",
-            "Code": "TELE",
-            "Type": "Telephone"
-          }
-        },
-        "Creditor": {
-          "Name": "A Creditor Name",
-          "LEI": "8200007YHFDMEODY8412",
-          "PostalAddress": {
-            "AddressType": "BIZZ",
-            "StreetName": "Bank Street",
-            "BuildingNumber": "11",
-            "Floor": "6",
-            "PostCode": "Z78 4TY",
-            "TownName": "London",
-            "Country": "UK"
-          }
-        },
-        "CreditorAgent": {
-          "SchemeName": "UK.OBIE.BICF",
-          "Identification": "08080021325698",
-          "LEI": "X3F8005BLKBSWLCX4E37",
-          "Name": "ACED Inc",
-          "PostalAddress": {
-            "AddressType": "BIZZ",
-            "Department": "Finance",
-            "SubDepartment": "Payroll",
-            "StreetName": "Bank Street",
-            "BuildingNumber": "11",
-            "BuildingName": "Tower Bridges",
-            "Floor": "6",
-            "UnitNumber": "UNIT591",
-            "Room": "844",
-            "PostBox": "PO Box 123456",
-            "DistrictName": "Greater London",
-            "CareOf": "Ms Jane Smith",
-            "PostCode": "Z78 4TY",
-            "TownName": "London",
-            "CountrySubDivision": "string",
-            "Country": "UK"
-          }
-        },
-        "CreditorAccount": {
-          "SchemeName": "UK.OBIE.SortCodeAccountNumber",
-          "Identification": "08080021325698",
-          "Name": "ACME Inc",
-          "SecondaryIdentification": "0002",
-          "Proxy": {
-            "Identification": "2360549017905188",
-            "Code": "TELE",
-            "Type": "Telephone"
-          }
-        },
-        "UltimateCreditor": {
-          "Name": "Ultimate Creditor",
-          "Identification": "2360549017905161589",
-          "LEI": "60450004FECVJV7YN339",
-          "SchemeName": "UK.OBIE.BICFI",
-          "PostalAddress": {
-            "AddressType": "BIZZ",
-            "StreetName": "Bank Street",
-            "BuildingNumber": "11",
-            "Floor": "6",
-            "PostCode": "Z78 4TY",
-            "TownName": "London",
-            "Country": "UK"
-          }
-        },
-        "UltimateDebtor": {
-          "Name": "Ultimate Debtor",
-          "Identification": "2360549017905161589",
-          "LEI": "8200007YHFDMEODY1965",
-          "SchemeName": "UK.OBIE.BICFI",
-          "PostalAddress": {
-            "AddressType": "BIZZ",
-            "StreetName": "Bank Street",
-            "BuildingNumber": "11",
-            "Floor": "6",
-            "PostCode": "Z78 4TY",
-            "TownName": "London",
-            "Country": "UK"
-          }
-        },
-        "RegulatoryReporting": [
+  "Data": {
+    "Permission": "Create",
+    "ReadRefundAccount": "Yes",
+    "Initiation": {
+      "InstructionIdentification": "ACME412",
+      "EndToEndIdentification": "FRESCO.21302.GFX.20",
+      "LocalInstrument": "UK.OBIE.Paym",
+      "InstructionPriority": "Normal",
+      "ChargeBearer": "Shared",
+      "RequestedExecutionDateTime": "2024-09-16T10:25:28.422Z",
+      "CurrencyOfTransfer": "USD",
+      "DestinationCountryCode": "GB",
+      "InstructedAmount": {
+        "Amount": "165.88",
+        "Currency": "GBP"
+      },
+      "ExchangeRateInformation": {
+        "UnitCurrency": "GBP",
+        "ExchangeRate": 1.22,
+        "RateType": "Actual",
+        "ContractIdentification": "415621656"
+      },
+      "DebtorAccount": {
+        "SchemeName": "UK.OBIE.SortCodeAccountNumber",
+        "SecondaryIdentification": "0002",
+        "Identification": "11280001234567",
+        "Name": "Andrea Smith",
+        "Proxy": {
+          "Identification": "2360549017905188",
+          "Code": "TELE",
+          "Type": "Telephone"
+        }
+      },
+      "Creditor": {
+        "Name": "A Creditor Name",
+        "LEI": "8200007YHFDMEODY8412",
+        "PostalAddress": {
+          "AddressType": "BIZZ",
+          "StreetName": "Bank Street",
+          "BuildingNumber": "11",
+          "Floor": "6",
+          "PostCode": "Z78 4TY",
+          "TownName": "London",
+          "Country": "UK"
+        }
+      },
+      "CreditorAgent": {
+        "SchemeName": "UK.OBIE.BICF",
+        "Identification": "08080021325698",
+        "LEI": "X3F8005BLKBSWLCX4E37",
+        "Name": "ACED Inc",
+        "PostalAddress": {
+          "AddressType": "BIZZ",
+          "Department": "Finance",
+          "SubDepartment": "Payroll",
+          "StreetName": "Bank Street",
+          "BuildingNumber": "11",
+          "BuildingName": "Tower Bridges",
+          "Floor": "6",
+          "UnitNumber": "UNIT591",
+          "Room": "844",
+          "PostBox": "PO Box 123456",
+          "DistrictName": "Greater London",
+          "CareOf": "Ms Jane Smith",
+          "PostCode": "Z78 4TY",
+          "TownName": "London",
+          "CountrySubDivision": "string",
+          "Country": "UK"
+        }
+      },
+      "CreditorAccount": {
+        "SchemeName": "UK.OBIE.SortCodeAccountNumber",
+        "Identification": "08080021325698",
+        "Name": "ACME Inc",
+        "SecondaryIdentification": "0002",
+        "Proxy": {
+          "Identification": "2360549017905188",
+          "Code": "TELE",
+          "Type": "Telephone"
+        }
+      },
+      "UltimateCreditor": {
+        "Name": "Ultimate Creditor",
+        "Identification": "2360549017905161589",
+        "LEI": "60450004FECVJV7YN339",
+        "SchemeName": "UK.OBIE.BICFI",
+        "PostalAddress": {
+          "AddressType": "BIZZ",
+          "StreetName": "Bank Street",
+          "BuildingNumber": "11",
+          "Floor": "6",
+          "PostCode": "Z78 4TY",
+          "TownName": "London",
+          "Country": "UK"
+        }
+      },
+      "UltimateDebtor": {
+        "Name": "Ultimate Debtor",
+        "Identification": "2360549017905161589",
+        "LEI": "8200007YHFDMEODY1965",
+        "SchemeName": "UK.OBIE.BICFI",
+        "PostalAddress": {
+          "AddressType": "BIZZ",
+          "StreetName": "Bank Street",
+          "BuildingNumber": "11",
+          "Floor": "6",
+          "PostCode": "Z78 4TY",
+          "TownName": "London",
+          "Country": "UK"
+        }
+      },
+      "RegulatoryReporting": [
+        {
+          "DebitCreditReportingIndicator": "CRED",
+          "Authority": {
+            "Name": "Authority Name",
+            "CountryCode": "UK"
+          },
+          "Details": [
+            {
+              "Type": "CRED",
+              "Date": "2024-09-16T10:25:28.422Z",
+              "Country": "UK",
+              "Amount": {
+                "Amount": "165.88",
+                "Currency": "USD"
+              },
+              "Information": [
+                "Reg Info 1",
+                "Reg Info 2"
+              ]
+            }
+          ]
+        }
+      ],
+      "RemittanceInformation": {
+        "Structured": [
           {
-            "DebitCreditReportingIndicator": "CRED",
-            "Authority": {
-              "Name": "Authority Name",
-              "CountryCode": "UK"
-            },
-            "Details": [
+            "ReferredDocumentInformation": [
               {
-                "Type": "CRED",
-                "Date": "2024-09-16T10:25:28.422Z",
-                "Country": "UK",
-                "Amount": {
-                  "Amount": "165.88",
-                  "Currency": "USD"
-                },
-                "Information": [
-                  "Reg Info 1",
-                  "Reg Info 2"
+                "Code": "CINV",
+                "Issuer": "Issuer01",
+                "Number": "Number_01",
+                "RelatedDate": "2024-09-16T10:25:28.422Z",
+                "LineDetails": [
+                  "Line details 1",
+                  "Line details 2"
                 ]
               }
+            ],
+            "ReferredDocumentAmount": 1,
+            "CreditorReferenceInformation": {
+              "Code": "DISP",
+              "Issuer": "Issuer01",
+              "Reference": "REF_26518"
+            },
+            "Invoicer": "INVR51856",
+            "Invoicee": "INVE5161856",
+            "TaxRemittance": "Tax Remittance related information",
+            "AdditionalRemittanceInformation": [
+              "Free text for additional information"
             ]
           }
         ],
-        "RemittanceInformation": {
-          "Structured": [
-            {
-              "ReferredDocumentInformation": [
-                {
-                  "Code": "CINV",
-                  "Issuer": "Issuer01",
-                  "Number": "Number_01",
-                  "RelatedDate": "2024-09-16T10:25:28.422Z",
-                  "LineDetails": [
-                    "Line details 1",
-                    "Line details 2"
-                  ]
-                }
-              ],
-              "ReferredDocumentAmount": 1,
-              "CreditorReferenceInformation": {
-                "Code": "DISP",
-                "Issuer": "Issuer01",
-                "Reference": "REF_26518"
-              },
-              "Invoicer": "INVR51856",
-              "Invoicee": "INVE5161856",
-              "TaxRemittance": "Tax Remittance related information",
-              "AdditionalRemittanceInformation": [
-                "Free text for additional information"
-              ]
-            }
-          ],
-          "Unstructured": [
-            "Internal ops code 5120101"
-          ]
-        },
-        "SupplementaryData": {
-          "additionalProp1": {}
-        }
+        "Unstructured": [
+          "Internal ops code 5120101"
+        ]
       },
-      "Authorisation": {
-        "AuthorisationType": "Any",
-        "CompletionDateTime": "2024-09-16T10:25:28.422Z"
-      },
-      "SCASupportData": {
-        "RequestedSCAExemptionType": "EcommerceGoods",
-        "AppliedAuthenticationApproach": "SCA",
-        "ReferencePaymentOrderId": "O-611265"
+      "SupplementaryData": {
+        "additionalProp1": {}
       }
     },
-    "Risk": {
-      "PaymentContextCode": "TransferToThirdParty",
-      "ContractPresentIndicator": false,
-      "PaymentPurposeCode": "EPAY",
-      "CategoryPurposeCode": "CASH",
-      "BeneficiaryPrepopulatedIndicator": false,
-      "BeneficiaryAccountType": "Business",
-      "MerchantCategoryCode": "7300",
-      "MerchantCustomerIdentification": "053598653254",
-      "DeliveryAddress": {
-        "AddressLine": [
-          "Flat 7",
-          "Acacia Lodge"
-        ],
-        "StreetName": "Acacia Avenue",
-        "BuildingNumber": "27",
-        "PostCode": "GU31 2ZZ",
-        "TownName": "Sparsholt",
-        "CountrySubDivision": "Wessex",
-        "Country": "UK"
-      }
+    "Authorisation": {
+      "AuthorisationType": "Any",
+      "CompletionDateTime": "2024-09-16T10:25:28.422Z"
+    },
+    "SCASupportData": {
+      "RequestedSCAExemptionType": "EcommerceGoods",
+      "AppliedAuthenticationApproach": "SCA",
+      "ReferencePaymentOrderId": "O-611265"
+    }
+  },
+  "Risk": {
+    "PaymentContextCode": "TransferToThirdParty",
+    "ContractPresentIndicator": false,
+    "PaymentPurposeCode": "EPAY",
+    "CategoryPurposeCode": "CASH",
+    "BeneficiaryPrepopulatedIndicator": false,
+    "BeneficiaryAccountType": "Business",
+    "MerchantCategoryCode": "7300",
+    "MerchantCustomerIdentification": "053598653254",
+    "DeliveryAddress": {
+      "AddressLine": [
+        "Flat 7",
+        "Acacia Lodge"
+      ],
+      "StreetName": "Acacia Avenue",
+      "BuildingNumber": "27",
+      "PostCode": "GU31 2ZZ",
+      "TownName": "Sparsholt",
+      "CountrySubDivision": "Wessex",
+      "Country": "UK"
     }
   }
+}
 
 ```
 
@@ -901,7 +897,6 @@ Content-Type: application/json
 }
 ```
 
-
 ### GET /international-scheduled-payment-consents/{ConsentId}/funds-confirmation
 
 #### Request
@@ -926,15 +921,15 @@ Content-Type: application/json
 
 ```json
 {
-	"Data": {
-		"FundsAvailableResult": {
-			"FundsAvailableDateTime": "2017-06-05T15:15:23+00:00",
-			"FundsAvailable": true
-		}
-	},
-	"Links": {
-		"Self": "https://api.alphabank.com/open-banking/v4.0/pisp/international-scheduled-payment-consents/58923/funds-confirmation"
-	},
-	"Meta": {}
+  "Data": {
+    "FundsAvailableResult": {
+      "FundsAvailableDateTime": "2017-06-05T15:15:23+00:00",
+      "FundsAvailable": true
+    }
+  },
+  "Links": {
+    "Self": "https://api.alphabank.com/open-banking/v4.0/pisp/international-scheduled-payment-consents/58923/funds-confirmation"
+  },
+  "Meta": {}
 }
 ```
