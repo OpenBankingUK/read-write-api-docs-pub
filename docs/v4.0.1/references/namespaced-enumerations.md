@@ -26,6 +26,7 @@ The namespaced enumeration values specified by Open Banking are documented here 
 ### Design Principles
 
 When extending a namespaced enumeration:
+
 * ASPSPs **must not** publish an ASPSP-specific enumerated value where a generic OBL defined enumerated value or ISO 20022 code value may be used.
 * ASPSPs **must** place such values in a namespace consisting of their two-letter country code (ISO 3166-1 Alpha-2 code), followed by a full-stop, followed by their name. e.g.
   *  UK.Barclays.PingIt
@@ -34,7 +35,6 @@ When extending a namespaced enumeration:
 ### Release Management
 
 Usage of non-namespaced values may be discontinued in a future version of this standard.
-
 
 A comprehensive list of enumerations, from both OBL and ISO 20022, have been catalogued and made available [here](https://github.com/OpenBankingUK/External_Internal_CodeSets).  
 
