@@ -30,9 +30,9 @@
     - [Notes](#notes-3)
     - [Data Dictionary](#data-dictionary-3)
 - [Usage Examples](#usage-examples)
-    - [POST /international-standing-order-consents](#post-international-standing-order-consents-2)
-      - [Request](#request)
-      - [Response](#response)
+  - [POST /international-standing-order-consents](#post-international-standing-order-consents-2)
+    - [Request](#request)
+    - [Response](#response)
 
 ## Overview
 
@@ -63,10 +63,9 @@ The default Status is "AWAU" immediately after the international-standing-order-
 | --- |
 | AWAU |
 
-
 ### GET /international-standing-order-consents/{ConsentId}
 
-A PISP can optionally retrieve a payment consent resource that they have created to check its status. 
+A PISP can optionally retrieve a payment consent resource that they have created to check its status.
 
 #### Status
 
@@ -89,7 +88,7 @@ The available status codes for the international-standing-order-consent resource
 
 #### Payment Order Consent
 
-The state model for the international-standing-order-consent resource follows the generic consent state model. 
+The state model for the international-standing-order-consent resource follows the generic consent state model.
 
 ![State model](./images/PO_Consent.png)
 
@@ -132,12 +131,11 @@ The OBRegulatoryReporting1 class is defined in the [payment-initiation-api-profi
 
 The OBUltimateCreditor1 class is defined in the [payment-initiation-api-profile](../../profiles/payment-initiation-api-profile.md#obultimatecreditor1) page.
 
-
-#### OBUltimateDebtor1 
+#### OBUltimateDebtor1
 
 The OBUltimateDebtor1 class is defined in the [payment-initiation-api-profile](../../profiles/payment-initiation-api-profile.md#obultimatedebtor1) page.
 
-#### OBPostalAddress7 
+#### OBPostalAddress7
 
 The OBPostalAddress7 class is defined in the [payment-initiation-api-profile](../../profiles/payment-initiation-api-profile.md#obpostaladdress7) page
 
@@ -205,15 +203,13 @@ For the OBInternationalStandingOrder4 Initiation object:
 | LEI |0..1 | OBInternationalStandingOrder4/CreditorAgent/LEI |Legal Entity Identification Legal entity identification as an alternate identification for a party. Legal Entity Identifier is a code allocated to a party as described in ISO 17442 "Financial Services - Legal Entity Identifier (LEI)". |Max20Text | |^[A-Z0-9]{18,18}[0-9]{2,2}$ |
 | PostalAddress |0..1 |OBInternationalStandingOrder4/CreditorAgent/PostalAddress |Information that locates and identifies a specific address, as defined by postal services. |OBPostalAddress7 | | |
 | CreditorAccount |1..1 |OBInternationalStandingOrder4/CreditorAccount |Provides the details to identify the beneficiary account. |OBCashAccountCreditor3 | | |
-| SchemeName |1..1 |OBInternationalStandingOrder4/CreditorAccount/SchemeName |Name of the identification scheme, in a coded form as published in an external list. | For a full list of enumeration values refer to `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets). |OBInternalAccountIdentification4Code | 
+| SchemeName |1..1 |OBInternationalStandingOrder4/CreditorAccount/SchemeName |Name of the identification scheme, in a coded form as published in an external list. | For a full list of enumeration values refer to `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets). |OBInternalAccountIdentification4Code |
 | Identification |1..1 |OBInternationalStandingOrder4/CreditorAccount/Identification |Identification assigned by an institution to identify an account. This identification is known by the account owner. |Max256Text | | |
 | Name |1..1 |OBInternationalStandingOrder4/CreditorAccount/Name |The account name is the name or names of the account owner(s) represented at an account level. Note, the account name is not the product name or the nickname of the account. OB: ASPSPs may carry out name validation for Confirmation of Payee, but it is not mandatory. |Max350Text | | |
 | SecondaryIdentification |0..1 |OBInternationalStandingOrder4/CreditorAccount/SecondaryIdentification |This is secondary identification of the account, as assigned by the account servicing institution. This can be used by building societies to additionally identify accounts with a roll number (in addition to a sort code and account number combination). |Max34Text | | |
 | Proxy |0..1 |OBInternationalStandingOrder4/CreditorAccount/Proxy |Specifies an alternate assumed name for the identification of the account.  |OBProxy1 | | |
 | SupplementaryData |0..1 |OBInternationalStandingOrder4/SupplementaryData |Additional information that can not be captured in the structured fields and/or any other specific block. |OBSupplementaryData1 | | |
 | RegulatoryReporting |0..10 |OBInternationalStandingOrder4/RegulatoryReporting |Information needed due to regulatory and statutory requirements. |RegulatoryReporting1 | | |
-
-
 
 ### International Standing Order Consent - Request
 
@@ -246,7 +242,6 @@ The international-standing-order-consent **request** contains these objects:
 | Authorisation |0..1 |OBWriteInternationalStandingOrderConsent6/Data/Authorisation | |OBAuthorisation1 | | |
 | SCASupportData |0..1 |OBWriteInternationalStandingOrderConsent6/Data/SCASupportData |Supporting Data provided by TPP, when requesting SCA Exemption. |OBSCASupportData1 | | |
 | Risk |1..1 |OBWriteInternationalStandingOrderConsent6/Risk |The Risk section is sent by the initiating party to the ASPSP. It is used to specify additional details for risk scoring for Payments. |OBRisk1 | | |
-
 
 ### International Standing Order Consent - Response
 
@@ -293,7 +288,7 @@ The international-standing-order-consent **response** contains the full **origin
 | Authorisation |0..1 |OBWriteInternationalStandingOrderConsentResponse7/Data/Authorisation | |OBAuthorisation1 | | |
 | SCASupportData |0..1 |OBWriteInternationalStandingOrderConsentResponse7/Data/SCASupportData |Supporting Data provided by TPP, when requesting SCA Exemption. |OBSCASupportData1 | | |
 | Debtor |0..1 |OBWriteInternationalStandingOrderConsentResponse7/Data/Debtor |Set of elements used to identify a person or an organisation. | | | |
-| SchemeName |0..1 |OBWriteInternationalStandingOrderConsentResponse7/Data/Debtor/SchemeName |Name of the identification scheme, in a coded form as published in an external list. | For a full list of enumeration values refer to `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets). |OBInternalAccountIdentification4Code | 
+| SchemeName |0..1 |OBWriteInternationalStandingOrderConsentResponse7/Data/Debtor/SchemeName |Name of the identification scheme, in a coded form as published in an external list. | For a full list of enumeration values refer to `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets). |OBInternalAccountIdentification4Code |
 | Identification |0..1 |OBWriteInternationalStandingOrderConsentResponse7/Data/Debtor/Identification |Identification assigned by an institution to identify an account. This identification is known by the account owner. |Max256Text | | |
 | Name |0..1 |OBWriteInternationalStandingOrderConsentResponse7/Data/Debtor/Name |The account name is the name or names of the account owner(s) represented at an account level, as displayed by the ASPSP's online channels. Note, the account name is not the product name or the nickname of the account. |Max350Text | | |
 | SecondaryIdentification |0..1 |OBWriteInternationalStandingOrderConsentResponse7/Data/Debtor/SecondaryIdentification |This is secondary identification of the account, as assigned by the account servicing institution. This can be used by building societies to additionally identify accounts with a roll number (in addition to a sort code and account number combination). |Max34Text | | |
@@ -321,78 +316,78 @@ Accept: application/json
 ```json
 {
   "Data": {
-	"Permission": "Create",
-  "ReadRefundAccount": "Yes",
-  "Authorisation": {
-	  "AuthorisationType": "Any", 
-      "CompletionDateTime": "2025-05-30T10:35:27Z",
-  },
-  "Initiation": {
-    "ChargeBearer": "Shared",
-    "Purpose": "CCRD",
-    "CurrencyOfTransfer": "USD",
-    "DestinationCountryCode": "GB",
-    "MandateRelatedInformation": {
-      "MandateIdentification": "Caravanners",
-      "Classification": "FIXE",
-      "CategoryPurposeCode": "BONU",
-      "FirstPaymentDateTime": "2024-04-25T12:46:49.425Z",
-      "RecurringPaymentDateTime": "2024-04-25T12:46:49.425Z",
-      "FinalPaymentDateTime": "2024-04-25T12:46:49.425Z",
-      "Frequency": {
-        "Type": "WEEK",
-        "CountPerPeriod": 1
-      }
+    "Permission": "Create",
+    "ReadRefundAccount": "Yes",
+    "Authorisation": {
+      "AuthorisationType": "Any",
+      "CompletionDateTime": "2025-05-30T10:35:27Z"
     },
-    "Creditor": {
-      "Name": "ACME Inc",
-      "LEI": "8200007YHFDMEODY1965",
-      "PostalAddress": {
-        "AddressType": "BIZZ",
-        "StreetName": "Bank Street",
-        "BuildingNumber": "11",
-        "Floor": "6",
-        "PostCode": "Z78 4TY",
-        "TownName": "London",
-        "Country": "UK"
-      }
-    },
-    "CreditorAccount": {
-      "SchemeName": "UK.OBIE.IBAN",
-      "Identification": "DE89370400440532013000",
-      "SecondaryIdentification": "0002",
-      "Name": "Tom Kirkman",
-      "Proxy": {
-        "Identification": "07700900000",
-        "Code": "TELE",
-        "Type": "Telephone"
+    "Initiation": {
+      "ChargeBearer": "Shared",
+      "Purpose": "CCRD",
+      "CurrencyOfTransfer": "USD",
+      "DestinationCountryCode": "GB",
+      "MandateRelatedInformation": {
+        "MandateIdentification": "Caravanners",
+        "Classification": "FIXE",
+        "CategoryPurposeCode": "BONU",
+        "FirstPaymentDateTime": "2024-04-25T12:46:49.425Z",
+        "RecurringPaymentDateTime": "2024-04-25T12:46:49.425Z",
+        "FinalPaymentDateTime": "2024-04-25T12:46:49.425Z",
+        "Frequency": {
+          "Type": "WEEK",
+          "CountPerPeriod": 1
+        }
       },
-    },
-    "CreditAgent": {
-      "SchemeName": "UK.OBIE.IBAN",
-      "Identification": "DE89370400440532013000",
-      "LEI": "8200007YHFDMEODY1965",
-      "Name": "Tom Kirkman",
-      "PostalAddress": {
-        "AddressType": "BIZZ",
-        "StreetName": "Bank Street",
-        "BuildingNumber": "11",
-        "Floor": "6",
-        "PostCode": "Z78 4TY",
-        "TownName": "London",
-        "Country": "UK"
-      }
-    },
-    "DebtorAccount": {
+      "Creditor": {
+        "Name": "ACME Inc",
+        "LEI": "8200007YHFDMEODY1965",
+        "PostalAddress": {
+          "AddressType": "BIZZ",
+          "StreetName": "Bank Street",
+          "BuildingNumber": "11",
+          "Floor": "6",
+          "PostCode": "Z78 4TY",
+          "TownName": "London",
+          "Country": "UK"
+        }
+      },
+      "CreditorAccount": {
+        "SchemeName": "UK.OBIE.IBAN",
+        "Identification": "DE89370400440532013000",
+        "SecondaryIdentification": "0002",
+        "Name": "Tom Kirkman",
+        "Proxy": {
+          "Identification": "07700900000",
+          "Code": "TELE",
+          "Type": "Telephone"
+        }
+      },
+      "CreditAgent": {
+        "SchemeName": "UK.OBIE.IBAN",
+        "Identification": "DE89370400440532013000",
+        "LEI": "8200007YHFDMEODY1965",
+        "Name": "Tom Kirkman",
+        "PostalAddress": {
+          "AddressType": "BIZZ",
+          "StreetName": "Bank Street",
+          "BuildingNumber": "11",
+          "Floor": "6",
+          "PostCode": "Z78 4TY",
+          "TownName": "London",
+          "Country": "UK"
+        }
+      },
+      "DebtorAccount": {
         "SchemeName": "UK.OBIE.SortCodeAccountNumber",
         "Identification": "11280001234567",
         "Name": "Andrea Frost"
       },
-	  "InstructedAmount": {
+      "InstructedAmount": {
         "Amount": "20",
         "Currency": "EUR"
-	  },
-    "MandateRelatedInformation": {
+      },
+      "MandateRelatedInformation": {
         "MandateIdentification": "Golfers",
         "Classification": "FIXE",
         "CategoryPurposeCode": "BONU",
@@ -400,7 +395,7 @@ Accept: application/json
         "RecurringPaymentDateTime": "2024-04-25T12:46:49.425Z",
         "FinalPaymentDateTime": "2024-04-25T12:46:49.425Z",
         "Reason": "Membership fees",
-        "Frequency": { 
+        "Frequency": {
           "Type": "MNTH",
           "CountPerPeriod": 1
         }
@@ -411,13 +406,13 @@ Accept: application/json
         "Name": "Ultimate Debtor",
         "LEI": "8200007YHFDMEODY1965",
         "PostalAddress": {
-            "AddressType": "BIZZ",
-            "StreetName": "Bank Street",
-            "BuildingNumber": "11",
-            "Floor": "6",
-            "PostCode": "Z78 4TY",
-            "TownName": "London",
-            "Country": "UK"
+          "AddressType": "BIZZ",
+          "StreetName": "Bank Street",
+          "BuildingNumber": "11",
+          "Floor": "6",
+          "PostCode": "Z78 4TY",
+          "TownName": "London",
+          "Country": "UK"
         }
       },
       "UltimateCreditor": {
@@ -426,78 +421,85 @@ Accept: application/json
         "Name": "Ultimate Creditor",
         "LEI": "60450004FECVJV7YN339",
         "PostalAddress": {
-            "AddressType": "BIZZ",
-            "StreetName": "Bank Street",
-            "BuildingNumber": "11",
-            "Floor": "6",
-            "PostCode": "Z78 4TY",
-            "TownName": "London",
-            "Country": "UK"
-            }
-        },
+          "AddressType": "BIZZ",
+          "StreetName": "Bank Street",
+          "BuildingNumber": "11",
+          "Floor": "6",
+          "PostCode": "Z78 4TY",
+          "TownName": "London",
+          "Country": "UK"
+        }
+      },
       "RegulatoryReporting": [
-          {
-            "DebitCreditReportingIndicator": "CRED",
-            "Authority": {
-              "Name": "string",
-              "CountryCode": "UG"
-            },
-            "Details": [
-              {
+        {
+          "DebitCreditReportingIndicator": "CRED",
+          "Authority": {
+            "Name": "string",
+            "CountryCode": "UG"
+          },
+          "Details": [
+            {
               "Type": "CRED",
               "Date": "2024-04-25T13:26:41.911Z",
-              "Information": ["Reg info1", "Reg info2"],
+              "Information": [
+                "Reg info1",
+                "Reg info2"
+              ],
               "Country": "QG",
               "Amount": {
                 "Amount": "4.68702",
                 "Currency": "JGM"
-                }
               }
+            }
           ]
         }
       ],
       "RemittanceInformation": {
-          "Structured": [
-            {
-              "ReferredDocumentInformation": [
-                {
-                  "Code": "CINV",
-                  "Issuer": "Issuer01",
-                  "Number": "Number_01",
-                  "RelatedDate": "2024-04-25T13:26:41.911Z",
-                  "LineDetails": [
-                    "string"
-                  ]
-                }
-              ],
-              "ReferredDocumentAmount": 1,
-              "CreditorReferenceInformation": {
-                "Code": "DISP",
+        "Structured": [
+          {
+            "ReferredDocumentInformation": [
+              {
+                "Code": "CINV",
                 "Issuer": "Issuer01",
-                "Reference": "REF_26518"
-              },
-              "Invoicer": "INVR51856",
-              "Invoicee": "INVE5161856",
-              "TaxRemittance": "Tax Remittance related information",
-              "AdditionalRemittanceInformation": ["Free text for additional information"],
-            }
-          ],
-          "Unstructured": ["Internal ops code 5120101"]
-        }
+                "Number": "Number_01",
+                "RelatedDate": "2024-04-25T13:26:41.911Z",
+                "LineDetails": [
+                  "string"
+                ]
+              }
+            ],
+            "ReferredDocumentAmount": 1,
+            "CreditorReferenceInformation": {
+              "Code": "DISP",
+              "Issuer": "Issuer01",
+              "Reference": "REF_26518"
+            },
+            "Invoicer": "INVR51856",
+            "Invoicee": "INVE5161856",
+            "TaxRemittance": "Tax Remittance related information",
+            "AdditionalRemittanceInformation": [
+              "Free text for additional information"
+            ]
+          }
+        ],
+        "Unstructured": [
+          "Internal ops code 5120101"
+        ]
+      }
     }
   },
   "SCASupportData": {
     "RequestedSCAExemptionType": "EcommerceGoods",
     "AppliedAuthenticationApproach": "SCA",
-    "ReferencePaymentOrderId": "O-611265",
+    "ReferencePaymentOrderId": "O-611265"
   },
   "Risk": {
     "PaymentContextCode": "TransferToThirdParty",
     "PaymentPurposeCode": "EPAY",
-    "CategoryPurposeCode": "CASH", 
+    "CategoryPurposeCode": "CASH",
     "BeneficiaryPrepopulatedIndicator": false,
     "BeneficiaryAccountType": "Business",
-    "MerchantCategoryCode": "7300", 
+    "MerchantCategoryCode": "7300",
     "MerchantCustomerIdentification": "053598653254",
     "DeliveryAddress": {
       "AddressLine": [
@@ -526,111 +528,64 @@ Content-Type: application/json
 
 ```json
 {
-"Data": {
-	"ConsentId": "ISOC-100",
-	"CreationDateTime": "2018-01-01T06:06:06+00:00",
-  "CutOffDateTime": "2017-06-05T16:00:13+00:00",
-	"StatusUpdateDateTime": "2017-06-05T15:15:13+00:00",
-  "ExpectedExecutionDateTime": "2018-06-05T15:15:22+00:00",
-  "ExpectedSettlementDateTime": "2018-06-06T15:15:22+00:00",
-	"Permission": "Create",
-  "ReadRefundAccount": "Yes",
-	"Status": "AWAU",
-  "StatusReason": [{
-    "StatusReasonCode": "U036", 
-    "StatusReasonDescription":"Waiting for completion of consent authorisation to be completed by user",
-  }],
-  "Debtor":{
+  "Data": {
+    "ConsentId": "ISOC-100",
+    "CreationDateTime": "2018-01-01T06:06:06+00:00",
+    "CutOffDateTime": "2017-06-05T16:00:13+00:00",
+    "StatusUpdateDateTime": "2017-06-05T15:15:13+00:00",
+    "ExpectedExecutionDateTime": "2018-06-05T15:15:22+00:00",
+    "ExpectedSettlementDateTime": "2018-06-06T15:15:22+00:00",
+    "Permission": "Create",
+    "ReadRefundAccount": "Yes",
+    "Status": "AWAU",
+    "StatusReason": [
+      {
+        "StatusReasonCode": "U036",
+        "StatusReasonDescription": "Waiting for completion of consent authorisation to be completed by user"
+      }
+    ],
+    "Debtor": {
       "SchemeName": "UK.OBIE.SortCodeAccountNumber",
       "Identification": "08080021325698",
       "Name": "ACME Inc",
       "SecondaryIdentification": "0002",
-      "LEI": "8200007YHFDMEODY1965",
-  },
-  "Charges": [{
-       "ChargeBearer": "Shared",
-       "Type": "UK.OBIE.CHAPSOut",
-       "Amount"  {
+      "LEI": "8200007YHFDMEODY1965"
+    },
+    "Charges": [
+      {
+        "ChargeBearer": "Shared",
+        "Type": "UK.OBIE.CHAPSOut",
+        "Amount"
+      {
         "Amount": "0.88",
         "Currency": "GBP"
       }
-  }],
-  "Authorisation": {
-    "AuthorisationType": "Any", 
-    "CompletionDateTime": "2025-05-30T10:35:27Z",
-  },
-  "Initiation": {
-    "ChargeBearer": "Shared",   
-    "Purpose": "CCRD",
-    "CurrencyOfTransfer": "USD",
-    "DestinationCountryCode": "GB",
-    "InstructedAmount": {
-      "Amount": {
+      }
+    ],
+    "Authorisation": {
+      "AuthorisationType": "Any",
+      "CompletionDateTime": "2025-05-30T10:35:27Z"
+    },
+    "Initiation": {
+      "ChargeBearer": "Shared",
+      "Purpose": "CCRD",
+      "CurrencyOfTransfer": "USD",
+      "DestinationCountryCode": "GB",
+      "InstructedAmount": {
+        "Amount": {
           "Amount": "165.88",
           "Currency": "USD"
         }
-    },
-    "ExchangeRateInformation": {
-      "UnitCurrency": "GBP",
-      "ContractIdentification": "0591968098186",
-      "ExchangeRate": 1.22,
-      "RateType": "Actual"
-    },
-    "Creditor": {
-      "SchemeName": "UK.OBIE.SortCodeAccountNumber",
-      "LEI": "8200007YHFDMEODY8412",
-        "PostalAddress": {
-          "AddressType": "BIZZ",
-          "StreetName": "Bank Street",
-          "BuildingNumber": "11",
-          "Floor": "6",
-          "PostCode": "Z78 4TY",
-          "TownName": "London",
-          "Country": "UK"
-      }
-    },
-    "CreditorAccount": {
-      "SchemeName": "UK.OBIE.SortCodeAccountNumber",
-      "Identification": "08080021325698",
-      "Name": "ACME Inc",
-      "SecondaryIdentification": "0002",
-      "Proxy": {
-        "Identification": "+441632960540",
-        "Code": "TELE",
-        "Type": "Telephone"
       },
-    },
-    "CreditorAgent": {  
-      "LEI": "IZ9Q00LZEVUKWCQY6X15",
-      "SchemeName": "UK.OBIE.BICFI",
-      "Identification": "80200112344562",
-      "Name": "The Credit Agent", 
-      "PostalAddress": { 
-        "AddressType": "BIZZ",
-        "StreetName": "Bank Street",
-        "BuildingNumber": "11",
-        "Floor": "6",
-        "PostCode": "Z78 4TY",
-        "TownName": "London",
-        "Country": "UK"
-    },
-    "DebtorAccount":{
-      "SchemeName": "UK.OBIE.SortCodeAccountNumber",
-      "Identification": "08080021325698",
-      "Name": "ACME Inc",
-      "SecondaryIdentification": "0002",
-      "LEI": "8200007YHFDMEODY1965",
-      "Proxy": {
-        "Identification": "07700900000",
-        "Code": "TELE",
-        "Type": "Telephone"
+      "ExchangeRateInformation": {
+        "UnitCurrency": "GBP",
+        "ContractIdentification": "0591968098186",
+        "ExchangeRate": 1.22,
+        "RateType": "Actual"
       },
-    },
-    "UltimateDebtor": {
-        "SchemeName": "UK.OBIE.BICFI",
-        "Identification": "2360549017905161589",
-        "Name": "Ultimate Debtor",
-        "LEI": "8200007YHFDMEODY1965",
+      "Creditor": {
+        "SchemeName": "UK.OBIE.SortCodeAccountNumber",
+        "LEI": "8200007YHFDMEODY8412",
         "PostalAddress": {
           "AddressType": "BIZZ",
           "StreetName": "Bank Street",
@@ -641,11 +596,22 @@ Content-Type: application/json
           "Country": "UK"
         }
       },
-      "UltimateCreditor": {
+      "CreditorAccount": {
+        "SchemeName": "UK.OBIE.SortCodeAccountNumber",
+        "Identification": "08080021325698",
+        "Name": "ACME Inc",
+        "SecondaryIdentification": "0002",
+        "Proxy": {
+          "Identification": "+441632960540",
+          "Code": "TELE",
+          "Type": "Telephone"
+        }
+      },
+      "CreditorAgent": {
+        "LEI": "IZ9Q00LZEVUKWCQY6X15",
         "SchemeName": "UK.OBIE.BICFI",
-        "Identification": "2360549017905161589",
-        "Name": "Ultimate Creditor",
-        "LEI": "60450004FECVJV7YN339",
+        "Identification": "80200112344562",
+        "Name": "The Credit Agent",
         "PostalAddress": {
           "AddressType": "BIZZ",
           "StreetName": "Bank Street",
@@ -654,95 +620,150 @@ Content-Type: application/json
           "PostCode": "Z78 4TY",
           "TownName": "London",
           "Country": "UK"
+        },
+        "DebtorAccount": {
+          "SchemeName": "UK.OBIE.SortCodeAccountNumber",
+          "Identification": "08080021325698",
+          "Name": "ACME Inc",
+          "SecondaryIdentification": "0002",
+          "LEI": "8200007YHFDMEODY1965",
+          "Proxy": {
+            "Identification": "07700900000",
+            "Code": "TELE",
+            "Type": "Telephone"
           }
         },
-    "RegulatoryReporting": [{
-      "DebitCreditReportingIndicator": "CRED",
-      "Authority": {
-        "Name": "string",
-        "CountryCode": "UG"
-      },
-      "Details": [{
-        "Type": "CRED",
-        "Date": "2024-04-25T13:26:41.911Z",
-        "Information": ["Reg info1", "Reg info2"],
-        "Country": "QG",
-        "Amount": {
-          "Amount": "4.68702",
-          "Currency": "JGM"
-        }
-      }]
-    }],
-   "RemittanceInformation": {
-      "Structured": [{
-          "ReferredDocumentInformation": [{
-              "Code": "CINV",
-              "Issuer": "Issuer01",
-              "Number": "Number_01",
-              "RelatedDate": "2024-04-25T13:26:41.911Z",
-              "LineDetails": [
-                "string"
+        "UltimateDebtor": {
+          "SchemeName": "UK.OBIE.BICFI",
+          "Identification": "2360549017905161589",
+          "Name": "Ultimate Debtor",
+          "LEI": "8200007YHFDMEODY1965",
+          "PostalAddress": {
+            "AddressType": "BIZZ",
+            "StreetName": "Bank Street",
+            "BuildingNumber": "11",
+            "Floor": "6",
+            "PostCode": "Z78 4TY",
+            "TownName": "London",
+            "Country": "UK"
+          }
+        },
+        "UltimateCreditor": {
+          "SchemeName": "UK.OBIE.BICFI",
+          "Identification": "2360549017905161589",
+          "Name": "Ultimate Creditor",
+          "LEI": "60450004FECVJV7YN339",
+          "PostalAddress": {
+            "AddressType": "BIZZ",
+            "StreetName": "Bank Street",
+            "BuildingNumber": "11",
+            "Floor": "6",
+            "PostCode": "Z78 4TY",
+            "TownName": "London",
+            "Country": "UK"
+          }
+        },
+        "RegulatoryReporting": [
+          {
+            "DebitCreditReportingIndicator": "CRED",
+            "Authority": {
+              "Name": "string",
+              "CountryCode": "UG"
+            },
+            "Details": [
+              {
+                "Type": "CRED",
+                "Date": "2024-04-25T13:26:41.911Z",
+                "Information": [
+                  "Reg info1",
+                  "Reg info2"
+                ],
+                "Country": "QG",
+                "Amount": {
+                  "Amount": "4.68702",
+                  "Currency": "JGM"
+                }
+              }
+            ]
+          }
+        ],
+        "RemittanceInformation": {
+          "Structured": [
+            {
+              "ReferredDocumentInformation": [
+                {
+                  "Code": "CINV",
+                  "Issuer": "Issuer01",
+                  "Number": "Number_01",
+                  "RelatedDate": "2024-04-25T13:26:41.911Z",
+                  "LineDetails": [
+                    "string"
+                  ]
+                }
+              ],
+              "ReferredDocumentAmount": 1,
+              "CreditorReferenceInformation": {
+                "Code": "DISP",
+                "Issuer": "Issuer01",
+                "Reference": "REF_26518"
+              },
+              "Invoicer": "INVR51856",
+              "Invoicee": "INVE5161856",
+              "TaxRemittance": "Tax Remittance related information",
+              "AdditionalRemittanceInformation": [
+                "Free text for additional information"
               ]
-            }],
-          "ReferredDocumentAmount": 1,
-          "CreditorReferenceInformation": {
-            "Code": "DISP",
-            "Issuer": "Issuer01",
-            "Reference": "REF_26518"
-          },
-          "Invoicer": "INVR51856",
-          "Invoicee": "INVE5161856",
-          "TaxRemittance": "Tax Remittance related information",
-          "AdditionalRemittanceInformation": ["Free text for additional information"],
+            }
+          ],
+          "Unstructured": [
+            "Internal ops code 5120101"
+          ]
+        },
+        "MandateRelatedInformation": {
+          "MandateIdentification": "Golfers",
+          "Classification": "FIXE",
+          "CategoryPurposeCode": "BONU",
+          "FirstPaymentDateTime": "2024-04-25T12:46:49.425Z",
+          "RecurringPaymentDateTime": "2024-04-25T12:46:49.425Z",
+          "FinalPaymentDateTime": "2024-04-25T12:46:49.425Z",
+          "Reason": "Golf membership fees",
+          "Frequency": {
+            "Type": "MNTH",
+            "CountPerPeriod": 1
+          }
+        },
+        "DebtorAccount": {
+          "SchemeName": "UK.OBIE.SortCodeAccountNumber",
+          "Identification": "11280001234567",
+          "Name": "Andrea Frost",
+          "SecondaryIdentification": "0002",
+          "LEI": "8200007YHFDMEODY1965",
+          "Proxy": {
+            "Identification": "07700900000",
+            "Code": "TELE",
+            "Type": "Telephone"
+          }
+        },
+        "CreditorAccount": {
+          "SchemeName": "UK.OBIE.IBAN",
+          "Identification": "DE89370400440532013000",
+          "Name": "Tom Kirkman"
         }
-      ],
-      "Unstructured": ["Internal ops code 5120101"]
-    },
-	 "MandateRelatedInformation": {
-      "MandateIdentification": "Golfers",
-      "Classification": "FIXE",
-      "CategoryPurposeCode": "BONU",
-      "FirstPaymentDateTime": "2024-04-25T12:46:49.425Z",
-      "RecurringPaymentDateTime": "2024-04-25T12:46:49.425Z",
-      "FinalPaymentDateTime": "2024-04-25T12:46:49.425Z",
-      "Reason": "Golf membership fees", 
-      "Frequency": { 
-        "Type": "MNTH",
-        "CountPerPeriod": 1
       }
     },
-    "DebtorAccount": {
-      "SchemeName": "UK.OBIE.SortCodeAccountNumber",
-      "Identification": "11280001234567",
-      "Name": "Andrea Frost",
-      "SecondaryIdentification": "0002",
-      "LEI": "8200007YHFDMEODY1965",
-      "Proxy": {
-        "Identification": "07700900000",
-        "Code": "TELE",
-        "Type": "Telephone"
-      },
-    },
-    "CreditorAccount": {
-      "SchemeName": "UK.OBIE.IBAN",
-      "Identification": "DE89370400440532013000",
-      "Name": "Tom Kirkman"
-    },
-  }
-  },
-  "SCASupportData": {
-    "RequestedSCAExemptionType": "EcommerceGoods",
-    "AppliedAuthenticationApproach": "SCA",
-    "ReferencePaymentOrderId": "O-611265",
-  },  
+    "SCASupportData": {
+      "RequestedSCAExemptionType": "EcommerceGoods",
+      "AppliedAuthenticationApproach": "SCA",
+      "ReferencePaymentOrderId": "O-611265"
+    }
   },
   "Risk": {
     "PaymentContextCode": "TransferToThirdParty",
     "PaymentPurposeCode": "EPAY",
-    "CategoryPurposeCode": "CASH", 
+    "CategoryPurposeCode": "CASH",
     "BeneficiaryPrepopulatedIndicator": false,
     "BeneficiaryAccountType": "Business",
-    "MerchantCategoryCode": "7300", 
+    "MerchantCategoryCode": "7300",
     "MerchantCustomerIdentification": "053598653254",
     "DeliveryAddress": {
       "AddressLine": [
