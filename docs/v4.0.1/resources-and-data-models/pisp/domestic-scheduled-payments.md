@@ -1,4 +1,4 @@
-# Domestic Scheduled Payments  - v4.0.1 <!-- omit in toc -->
+# Domestic Scheduled Payments - v4.0.1 <!-- omit in toc -->
 
 - [Overview](#overview)
 - [Endpoints](#endpoints)
@@ -28,9 +28,9 @@
     - [Data Dictionary](#data-dictionary-3)
   - [OBRegulatoryReporting1](#obregulatoryreporting1)
 - [Usage Examples](#usage-examples)
-    - [Create a Domestic Scheduled Payment](#create-a-domestic-scheduled-payment)
-      - [POST /domestic-scheduled-payments Request](#post-domestic-scheduled-payments-request)
-      - [POST /domestic-scheduled-payments Response](#post-domestic-scheduled-payments-response)
+  - [Create a Domestic Scheduled Payment](#create-a-domestic-scheduled-payment)
+    - [POST /domestic-scheduled-payments Request](#post-domestic-scheduled-payments-request)
+    - [POST /domestic-scheduled-payments Response](#post-domestic-scheduled-payments-response)
 
 ## Overview
 
@@ -58,7 +58,7 @@ Once the domestic-scheduled-payment-consent has been authorised by the PSU, the 
 
 #### Status
 
-A domestic-scheduled-payment can only be created if its corresponding domestic-scheduled-payment-consent resource has the Status of "AUTH". 
+A domestic-scheduled-payment can only be created if its corresponding domestic-scheduled-payment-consent resource has the Status of "AUTH".
 
 The domestic-scheduled-payment resource that is created successfully must have one of the following initial status codes:
 
@@ -134,14 +134,13 @@ __Payment order state model key:__
 
 ![Payment Order Status](./images/PIS_PO_FDPStatuses_1.png)
 
-
 ##### Multiple Authorisation
+
 If the payment-order requires multiple authorisations the status of the multiple authorisations will be updated in the MultiAuthorisation object.
 
 Once the payment is RCVD, the domestic-scheduled-payment Status must be set to PATC and the MultiAuthorisation object status updated with the AWAF status. Once all authorisations have been successfully completed the MultiAuthorisation status must be set to AUTH and domestic-scheduled-payment Status updated to ACSP if any intermediate status are not supported.
 
-Any rejections in the multiple authorisation process should result in the MultiAuthorisation status and Status being set to RJCT. 
-
+Any rejections in the multiple authorisation process should result in the MultiAuthorisation status and Status being set to RJCT.
 
 ![Multi Auth](./images/PO_MultiAuthFlow.png)
 
@@ -180,7 +179,7 @@ The OBWriteDomesticScheduled2 object will be used for a call to:
 
 #### Notes
 
-The domestic-scheduled-payment **request** object contains the: 
+The domestic-scheduled-payment **request** object contains the:
 
 * ConsentId.
 * The full Initiation and Risk objects from the domestic-scheduled-payment-consent request.
@@ -210,7 +209,7 @@ The OBWriteDomesticScheduledResponse5 object will be used for a response to a ca
 
 #### Notes
 
-The domestic-scheduled-payment **response** object contains the: 
+The domestic-scheduled-payment **response** object contains the:
 
 * DomesticScheduledPaymentId.
 * ConsentId.
@@ -246,12 +245,11 @@ The domestic-scheduled-payment **response** object contains the:
 | Initiation |1..1 |OBWriteDomesticScheduledResponse5/Data/Initiation |The Initiation payload is sent by the initiating party to the ASPSP. It is used to request movement of funds from the debtor account to a creditor for a single scheduled domestic payment. |OBDomesticScheduled2 | | |
 | MultiAuthorisation |0..1 |OBWriteDomesticScheduledResponse5/Data/MultiAuthorisation |The multiple authorisation flow response from the ASPSP. |OBMultiAuthorisation1 | | |
 | Debtor |0..1 |OBWriteDomesticScheduledResponse5/Data/Debtor |Set of elements used to identify a person or an organisation. | | | |
-| SchemeName |0..1 |OBWriteDomesticScheduledResponse5/Data/Debtor/SchemeName |Name of the identification scheme, in a coded form as published in an external list. | For a full list of enumeration values refer to `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets). |OBInternalAccountIdentification4Code | 
+| SchemeName |0..1 |OBWriteDomesticScheduledResponse5/Data/Debtor/SchemeName |Name of the identification scheme, in a coded form as published in an external list. | For a full list of enumeration values refer to `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets). |OBInternalAccountIdentification4Code |
 | Identification |0..1 |OBWriteDomesticScheduledResponse5/Data/Debtor/Identification |Identification assigned by an institution to identify an account. This identification is known by the account owner. |Max256Text | | |
 | Name |0..1 |OBWriteDomesticScheduledResponse5/Data/Debtor/Name |The account name is the name or names of the account owner(s) represented at an account level, as displayed by the ASPSP's online channels. Note, the account name is not the product name or the nickname of the account. |Max350Text | | |
 | SecondaryIdentification |0..1 |OBWriteDomesticScheduledResponse5/Data/Debtor/SecondaryIdentification |This is secondary identification of the account, as assigned by the account servicing institution. This can be used by building societies to additionally identify accounts with a roll number (in addition to a sort code and account number combination). |Max34Text | | |
 | RegulatoryReporting |0..10 |OBWriteDomesticScheduledResponse5/Data/RegulatoryReporting |Information needed due to regulatory and statutory requirements. |OBRegulatoryReporting1 | | |
-
 
 ### Domestic Schedule Payment Order - Payment Details - Response
 
@@ -313,7 +311,7 @@ Accept: application/json
           "Identification": "441234012345",
           "Code": "TELE",
           "Type": "Telephone"
-        },
+        }
       },
       "CreditorAccount": {
         "SchemeName": "UK.OBIE.SortCodeAccountNumber",
@@ -324,9 +322,9 @@ Accept: application/json
           "Identification": "+441632960540",
           "Code": "TELE",
           "Type": "Telephone"
-        },
+        }
       },
-      "CreditorPostalAddress":{
+      "CreditorPostalAddress": {
         "AddressType": "BIZZ",
         "Department": "Finance",
         "SubDepartment": "Payroll",
@@ -338,7 +336,7 @@ Accept: application/json
         "Room": "844",
         "PostBox": "PO Box 123456",
         "PostCode": "Z78 4TY",
-        "TownLocationName":"Bank",
+        "TownLocationName": "Bank",
         "TownName": "London",
         "DistrictName": "Greater London",
         "CareOf": "Ms Jane Smith",
@@ -346,11 +344,11 @@ Accept: application/json
         "Country": "UK"
       },
       "UltimateDebtor": {
-      "SchemeName": "UK.OBIE.BICFI",
-      "Identification": "2360549017905161589",
-      "Name": "Ultimate Debtor",
-      "LEI": "8200007YHFDMEODY1965",
-      "PostalAddress": {
+        "SchemeName": "UK.OBIE.BICFI",
+        "Identification": "2360549017905161589",
+        "Name": "Ultimate Debtor",
+        "LEI": "8200007YHFDMEODY1965",
+        "PostalAddress": {
           "AddressType": "BIZZ",
           "StreetName": "Bank Street",
           "BuildingNumber": "11",
@@ -366,53 +364,57 @@ Accept: application/json
         "Name": "Ultimate Creditor",
         "LEI": "60450004FECVJV7YN339",
         "PostalAddress": {
-            "AddressType": "BIZZ",
-            "StreetName": "Bank Street",
-            "BuildingNumber": "11",
-            "Floor": "6",
-            "PostCode": "Z78 4TY",
-            "TownName": "London",
-            "Country": "UK"
-          }
+          "AddressType": "BIZZ",
+          "StreetName": "Bank Street",
+          "BuildingNumber": "11",
+          "Floor": "6",
+          "PostCode": "Z78 4TY",
+          "TownName": "London",
+          "Country": "UK"
+        }
       },
-     "RemittanceInformation": {
-          "Structured": [
-            {
-              "ReferredDocumentInformation": [
-                {
-                  "Code": "CINV",
-                  "Issuer": "Issuer01",
-                  "Number": "Number_01",
-                  "RelatedDate": "2024-04-25T13:26:41.911Z",
-                  "LineDetails": [
-                    "string"
-                  ]
-                }
-              ],
-              "ReferredDocumentAmount": 1,
-              "CreditorReferenceInformation": {
-                "Code": "DISP",
+      "RemittanceInformation": {
+        "Structured": [
+          {
+            "ReferredDocumentInformation": [
+              {
+                "Code": "CINV",
                 "Issuer": "Issuer01",
-                "Reference": "REF_26518"
-              },
-              "Invoicer": "INVR51856",
-              "Invoicee": "INVE5161856",
-              "TaxRemittance": "Tax Remittance related information",
-              "AdditionalRemittanceInformation": ["Free text for additional information"], 
-            }
-          ]
-        },
-        "Unstructured": ["Internal ops code 5120101"]
+                "Number": "Number_01",
+                "RelatedDate": "2024-04-25T13:26:41.911Z",
+                "LineDetails": [
+                  "string"
+                ]
+              }
+            ],
+            "ReferredDocumentAmount": 1,
+            "CreditorReferenceInformation": {
+              "Code": "DISP",
+              "Issuer": "Issuer01",
+              "Reference": "REF_26518"
+            },
+            "Invoicer": "INVR51856",
+            "Invoicee": "INVE5161856",
+            "TaxRemittance": "Tax Remittance related information",
+            "AdditionalRemittanceInformation": [
+              "Free text for additional information"
+            ]
+          }
+        ]
+      },
+      "Unstructured": [
+        "Internal ops code 5120101"
+      ]
     }
   },
   "Risk": {
     "PaymentContextCode": "TransferToThirdParty",
     "ContractPresentIndicator": false,
     "PaymentPurposeCode": "EPAY",
-    "CategoryPurposeCode": "CASH", 
+    "CategoryPurposeCode": "CASH",
     "BeneficiaryPrepopulatedIndicator": false,
     "BeneficiaryAccountType": "Business",
-    "MerchantCategoryCode": "7300", 
+    "MerchantCategoryCode": "7300",
     "MerchantCustomerIdentification": "053598653254",
     "DeliveryAddress": {
       "AddressLine": [
@@ -445,35 +447,40 @@ Content-Type: application/json
     "DomesticScheduledPaymentId": "7290-003",
     "ConsentId": "7290",
     "Status": "RCVD",
-    "StatusReason": [{
-      "StatusReasonCode": "U030", 
-      "StatusReasonDescription":"Payment order successfully received",
-    }],
+    "StatusReason": [
+      {
+        "StatusReasonCode": "U030",
+        "StatusReasonDescription": "Payment order successfully received"
+      }
+    ],
     "CreationDateTime": "2018-05-05T15:15:13+00:00",
     "StatusUpdateDateTime": "2018-05-05T15:15:13+00:00",
     "ExpectedExecutionDateTime": "2018-06-05T15:15:22+00:00",
     "ExpectedSettlementDateTime": "2018-06-06T15:15:22+00:00",
-    "Charges": [{
-       "ChargeBearer": "Shared",
-       "Type": "UK.OBIE.CHAPSOut",
-       "Amount"  {
+    "Charges": [
+      {
+        "ChargeBearer": "Shared",
+        "Type": "UK.OBIE.CHAPSOut",
+        "Amount"
+      {
         "Amount": "0.88",
         "Currency": "GBP"
-      },
-    }],
+      }
+      }
+    ],
     "Debtor": {
       "SchemeName": "UK.OBIE.SortCodeAccountNumber",
       "Identification": "08080021325698",
       "Name": "ACME Inc",
       "SecondaryIdentification": "0002",
-      "LEI": "8200007YHFDMEODY1965",
+      "LEI": "8200007YHFDMEODY1965"
     },
-    "MultiAuthorisation": { 
-      "Status": "AUTH", 
+    "MultiAuthorisation": {
+      "Status": "AUTH",
       "NumberRequired": 2,
       "NumberReceived": 2,
       "LastUpdateDateTime": "2018-06-05T15:15:13+00:00",
-      "ExpirationDateTime": "2018-06-06T15:15:13+00:00",
+      "ExpirationDateTime": "2018-06-06T15:15:13+00:00"
     },
     "Refund": {
       "Account": {
@@ -501,7 +508,7 @@ Content-Type: application/json
           "Identification": "+441632960540",
           "Code": "TELE",
           "Type": "Telephone"
-        },
+        }
       },
       "CreditorAccount": {
         "SchemeName": "UK.OBIE.SortCodeAccountNumber",
@@ -512,9 +519,9 @@ Content-Type: application/json
           "Identification": "+441632960540",
           "Code": "TELE",
           "Type": "Telephone"
-        },
+        }
       },
-      "CreditorPostalAddress":{
+      "CreditorPostalAddress": {
         "AddressType": "BIZZ",
         "Department": "Finance",
         "SubDepartment": "Payroll",
@@ -526,7 +533,7 @@ Content-Type: application/json
         "Room": "844",
         "PostBox": "PO Box 123456",
         "PostCode": "Z78 4TY",
-        "TownLocationName":"Bank",
+        "TownLocationName": "Bank",
         "TownName": "London",
         "DistrictName": "Greater London",
         "CareOf": "Ms Jane Smith",
@@ -539,13 +546,13 @@ Content-Type: application/json
         "Name": "Ultimate Debtor",
         "LEI": "8200007YHFDMEODY1965",
         "PostalAddress": {
-            "AddressType": "BIZZ",
-            "StreetName": "Bank Street",
-            "BuildingNumber": "11",
-            "Floor": "6",
-            "PostCode": "Z78 4TY",
-            "TownName": "London",
-            "Country": "UK"
+          "AddressType": "BIZZ",
+          "StreetName": "Bank Street",
+          "BuildingNumber": "11",
+          "Floor": "6",
+          "PostCode": "Z78 4TY",
+          "TownName": "London",
+          "Country": "UK"
         }
       },
       "UltimateCreditor": {
@@ -554,64 +561,69 @@ Content-Type: application/json
         "Name": "Ultimate Creditor",
         "LEI": "60450004FECVJV7YN339",
         "PostalAddress": {
-            "AddressType": "BIZZ",
-            "StreetName": "Bank Street",
-            "BuildingNumber": "11",
-            "Floor": "6",
-            "PostCode": "Z78 4TY",
-            "TownName": "London",
-            "Country": "UK"
-            }
-        },
+          "AddressType": "BIZZ",
+          "StreetName": "Bank Street",
+          "BuildingNumber": "11",
+          "Floor": "6",
+          "PostCode": "Z78 4TY",
+          "TownName": "London",
+          "Country": "UK"
+        }
+      },
       "RegulatoryReporting": [
-          {
-            "DebitCreditReportingIndicator": "CRED",
-            "Authority": {
-              "Name": "string",
-              "CountryCode": "UG"
-            },
-            "Details": [
-              {
+        {
+          "DebitCreditReportingIndicator": "CRED",
+          "Authority": {
+            "Name": "string",
+            "CountryCode": "UG"
+          },
+          "Details": [
+            {
               "Type": "CRED",
               "Date": "2024-04-25T13:26:41.911Z",
-              "Information": ["Reg info1", "Reg info2"],
+              "Information": [
+                "Reg info1",
+                "Reg info2"
+              ],
               "Country": "QG",
               "Amount": {
                 "Amount": "4.68702",
                 "Currency": "JGM"
-                }
+              }
             }
           ]
         }
       ],
       "RemittanceInformation": {
-          "Structured": [
-            {
-              "ReferredDocumentInformation": [
-                {
-                  "Code": "CINV",
-                  "Issuer": "Issuer01",
-                  "Number": "Number_01",
-                  "RelatedDate": "2024-04-25T13:26:41.911Z",
-                  "LineDetails": [
-                    "string"
-                  ]
-                }
-              ],
-              "ReferredDocumentAmount": 1,
-              "CreditorReferenceInformation": {
-                "Code": "DISP",
+        "Structured": [
+          {
+            "ReferredDocumentInformation": [
+              {
+                "Code": "CINV",
                 "Issuer": "Issuer01",
-                "Reference": "REF_26518"
-              },
-              "Invoicer": "INVR51856",
-              "Invoicee": "INVE5161856",
-              "TaxRemittance": "Tax Remittance related information",
-              "AdditionalRemittanceInformation": ["Free text for additional information"], 
-            }
-          ]
-        }
-    },
+                "Number": "Number_01",
+                "RelatedDate": "2024-04-25T13:26:41.911Z",
+                "LineDetails": [
+                  "string"
+                ]
+              }
+            ],
+            "ReferredDocumentAmount": 1,
+            "CreditorReferenceInformation": {
+              "Code": "DISP",
+              "Issuer": "Issuer01",
+              "Reference": "REF_26518"
+            },
+            "Invoicer": "INVR51856",
+            "Invoicee": "INVE5161856",
+            "TaxRemittance": "Tax Remittance related information",
+            "AdditionalRemittanceInformation": [
+              "Free text for additional information"
+            ]
+          }
+        ]
+      }
+    }
   },
   "Links": {
     "Self": "https://api.alphabank.com/open-banking/v4.0/pisp/domestic-scheduled-payments/7290-003"
