@@ -53,7 +53,7 @@ Once the international-scheduled-payment-consent has been authorised by the PSU,
 
 #### Status
 
-An international-scheduled-payment can only be created if its corresponding international-scheduled-payment-consent resource has the Status of "AUTH". 
+An international-scheduled-payment can only be created if its corresponding international-scheduled-payment-consent resource has the Status of "AUTH".
 
 The international-scheduled-payment resource that is created successfully must have one of the following initial status codes:
 
@@ -93,7 +93,7 @@ A PISP can retrieve the Details of the underlying payment transaction via this e
 
 #### Status
 
-The international-scheduled-payments - payment-details must have one of the following 
+The international-scheduled-payments - payment-details must have one of the following
 `ExternalPaymentTransactionStatus1Code` code-set enumerations (for more information see
 `ExternalPaymentTransactionStatus1Code` [here](https://github.com/OpenBankingUK/External_internal_CodeSets)) :
 
@@ -131,15 +131,14 @@ __Payment order state model key:__
 ![Payment Order Status](./images/PIS_PO_FDPStatuses_1.png)
 
 ##### Multiple Authorisation
+
 If the payment-order requires multiple authorisations the status of the multiple authorisations will be updated in the MultiAuthorisation object.
 
 Once the payment is RCVD, the international-scheduled-payment Status must be set to PATC and the MultiAuthorisation object status updated with the AWAF status. Once all authorisations have been successfully completed the MultiAuthorisation status must be set to AUTH and international-scheduled-payment Status updated to ACSP if any intermediate status are not supported.
 
-Any rejections in the multiple authorisation process should result in the MultiAuthorisation status and Status being set to RJCT. 
-
+Any rejections in the multiple authorisation process should result in the MultiAuthorisation status and Status being set to RJCT.
 
 ![Multi Auth](./images/PO_MultiAuthFlow.png)
-
 
 The definitions for the Status:
 
@@ -163,8 +162,6 @@ The OBInternationalScheduled3 class is defined in the [international-scheduled-p
 
 The OBExchangeRate2 class is defined in the [international-scheduled-payment-consents](./international-scheduled-payment-consents.md#obexchangerate2) page.
 
-
-
 ### International Scheduled Payment - Request
 
 The OBWriteInternationalScheduled3 object will be used for a call to:
@@ -177,7 +174,7 @@ The OBWriteInternationalScheduled3 object will be used for a call to:
 
 #### Notes
 
-The international-scheduled-payment **request** object contains the: 
+The international-scheduled-payment **request** object contains the:
 
 * ConsentId.
 * The full Initiation and Risk objects from the international-scheduled-payment-consent request.
@@ -243,7 +240,7 @@ The international-scheduled-payment **response** object contains the:
 | Initiation |1..1 |OBWriteInternationalScheduledResponse6/Data/Initiation |The Initiation payload is sent by the initiating party to the ASPSP. It is used to request movement of funds from the debtor account to a creditor for a single scheduled international payment. |OBInternationalScheduled3 | | |
 | MultiAuthorisation |0..1 |OBWriteInternationalScheduledResponse6/Data/MultiAuthorisation | |OBMultiAuthorisation1 | | |
 | Debtor |0..1 |OBWriteInternationalScheduledResponse6/Data/Debtor |Set of elements used to identify a person or an organisation. | | | |
-| SchemeName |0..1 |OBWriteInternationalScheduledResponse6/Data/Debtor/SchemeName |Name of the identification scheme, in a coded form as published in an external list. | For a full list of enumeration values refer to `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets). |OBInternalAccountIdentification4Code | 
+| SchemeName |0..1 |OBWriteInternationalScheduledResponse6/Data/Debtor/SchemeName |Name of the identification scheme, in a coded form as published in an external list. | For a full list of enumeration values refer to `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets). |OBInternalAccountIdentification4Code |
 | Identification |0..1 |OBWriteInternationalScheduledResponse6/Data/Debtor/Identification |Identification assigned by an institution to identify an account. This identification is known by the account owner. |Max256Text | | |
 | Name |0..1 |OBWriteInternationalScheduledResponse6/Data/Debtor/Name |The account name is the name or names of the account owner(s) represented at an account level, as displayed by the ASPSP's online channels. Note, the account name is not the product name or the nickname of the account. |Max350Text | | |
 | SecondaryIdentification |0..1 |OBWriteInternationalScheduledResponse6/Data/Debtor/SecondaryIdentification |This is secondary identification of the account, as assigned by the account servicing institution. This can be used by building societies to additionally identify accounts with a roll number (in addition to a sort code and account number combination). |Max34Text | | |
