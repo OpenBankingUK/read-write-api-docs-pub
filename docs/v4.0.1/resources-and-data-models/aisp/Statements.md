@@ -306,7 +306,7 @@ Content-Type: application/json
      "StatementFee": [{ 
       "Description": "International usage charge",
       "Type": "UK.OBIE.ForeignTransaction",
-      "Rate": 0.229,
+      "Rate": "0.229",
       "CreditDebitIndicator": "Credit",        
       "RateType": "UK.OBIE.AER",
       "Frequency": "UK.OBIE.StatementMonthly",
@@ -318,7 +318,7 @@ Content-Type: application/json
      "StatementInterest": [{
       "Description": "Interest occurred over statement duration",
       "Type": "UK.OBIE.Total", 
-      "Rate": 0.229,
+      "Rate": "0.229",
       "CreditDebitIndicator": "Credit",        
       "RateType": "UK.OBIE.FixedRate",
       "Frequency": "UK.OBIE.StatementMonthly",
@@ -328,7 +328,7 @@ Content-Type: application/json
       }
      }],
      "StatementRate": [{ 
-        "Rate": 0.229,
+        "Rate": "0.229",
         "Type": "UK.OBIE.MonthlyPurchase"
      }]
     },
@@ -421,7 +421,7 @@ Content-Type: application/json
       "StatementInterest": [{
         "Description": "Interest occurred over statement duration",
         "Type": "UK.OBIE.Total", 
-        "Rate": 0.229,
+        "Rate": "0.229",
         "CreditDebitIndicator": "Credit",        
         "RateType": "UK.OBIE.FixedRate",
         "Frequency": "UK.OBIE.StatementMonthly",
@@ -433,7 +433,7 @@ Content-Type: application/json
       "StatementFee": [{ 
           "Description": "International usage charge",
           "Type": "UK.OBIE.ForeignTransaction",
-          "Rate": 0.229,
+          "Rate": "0.229",
           "CreditDebitIndicator": "Credit",        
           "RateType": "UK.OBIE.AER",
           "Frequency": "UK.OBIE.StatementMonthly",
@@ -443,7 +443,7 @@ Content-Type: application/json
           }
       }],
       "StatementRate": [{ 
-        "Rate": 0.229,
+        "Rate": "0.229",
         "Type": "UK.OBIE.MonthlyPurchase"
       }],
       "StatementDescription": ["August 2023 Statement", "One Free Uber Ride"],
@@ -535,7 +535,7 @@ Content-Type: application/json
        "StatementFee": [{ 
           "Description": "International usage charge",
           "Type": "UK.OBIE.ForeignTransaction",
-          "Rate": 0.229,
+          "Rate": "0.229",
           "CreditDebitIndicator": "Credit",        
           "RateType": "UK.OBIE.AER",
           "Frequency": "UK.OBIE.StatementMonthly",
@@ -545,7 +545,7 @@ Content-Type: application/json
           }
       }],
       "StatementRate": [{ 
-        "Rate": 0.229,
+        "Rate": "0.229",
         "Type": "UK.OBIE.MonthlyPurchase"
       }],
       "StatementAmount": [
