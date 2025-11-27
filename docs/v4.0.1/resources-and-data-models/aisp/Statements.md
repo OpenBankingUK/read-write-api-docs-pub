@@ -259,10 +259,10 @@ Content-Type: application/json
       "StartDateTime": "2017-08-01T00:00:00+00:00",
       "EndDateTime": "2017-08-31T23:59:59+00:00",
       "CreationDateTime": "2017-09-01T00:00:00+00:00",
-      "StatementDateTime": {
+      "StatementDateTime": [{
         "DateTime": "2017-08-01T00:00:00+00:00",
         "Type": "UK.OBIE.DirectDebitDue"
-      },
+      }],
       "TotalValue": {
          "Amount": "1024.00",
           "Currency": "GBP"
@@ -403,10 +403,10 @@ Content-Type: application/json
       "StartDateTime": "2023-08-01T00:00:00+00:00",
       "EndDateTime": "2023-08-31T23:59:59+00:00",
       "CreationDateTime": "2023-09-01T00:00:00+00:00",
-      "StatementDateTime": {
+      "StatementDateTime": [{
         "DateTime": "2017-08-01T00:00:00+00:00",
         "Type": "UK.OBIE.DirectDebitDue"
-      },
+      }],
       "StatementBenefit": [{ 
         "Type": "UK.OBIE.Cashback",
         "Amount": {
@@ -517,10 +517,10 @@ Content-Type: application/json
           "Currency": "GBP"
       },
       "StatementDescription": ["August 2017 Statement", "One Free Uber Ride"],
-      "StatementDateTime": {
+      "StatementDateTime": [{
         "DateTime": "2017-08-01T00:00:00+00:00",
         "Type": "UK.OBIE.DirectDebitDue"
-      },
+      }],
       "StatementBenefit": [{ 
         "Type": "UK.OBIE.Cashback",
         "Amount": {
