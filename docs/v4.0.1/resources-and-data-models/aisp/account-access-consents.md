@@ -57,7 +57,6 @@ The API allows the AISP to ask an ASPSP to create a new account-access-consent r
 * An ASPSP creates the account-access-consent resource and responds with a unique ConsentId to refer to the resource.
 * Prior to calling the API, the AISP must have an access token issued by the ASPSP using a client credentials grant.
 
-
 #### Account Access Consent Status
 
 The PSU  **must**  authenticate with the ASPSP and authorise the account-access-consent for the account-access-consent to be successfully setup.
@@ -73,7 +72,6 @@ After authorisation has taken place the account-access-consent resource may have
 | --- |--- |--- |
 | 1 |RJCT |The account access consent has been rejected. |
 | 2 |AUTH |The account access consent has been successfully authorised. |
-
 
 #### Status Flow
 
@@ -111,7 +109,6 @@ Changes to the Status, such as being rejected, should be captured in `StatusReas
 | StatusReasonDescription | Description of why the code was returned |
 |Path| Path is optional but relevant when the status reason refers to an object/field and hence conditional to provide JSON path.  |
 
-
 ### DELETE /account-access-consents/{ConsentId}
 
 If the PSU revokes consent to data access with the AISP, the AISP  **must**  delete the account-access-consent resource with the ASPSP as soon as is practically possible.
@@ -120,6 +117,7 @@ If the PSU revokes consent to data access with the AISP, the AISP  **must**  del
 * Prior to calling the API, the AISP must have an access token issued by the ASPSP using a client credentials grant.
 
 TPP should also clear the Account Access Consent resources, from ASPSP's system, which are:
+
 * Expired, i.e. ExpirationDateTime is lapsed, or ExpirationDateTime is not lapsed, but PSU doesn't want to refresh/re-authenticate it, and
 * Consent Resource may never be referenced by the PSU in AISP or ASPSP domain.
 
@@ -254,10 +252,12 @@ Content-Type: application/json
     "Status": "AWAU",
     "StatusUpdateDateTime": "2017-05-02T00:00:00+00:00",
     "CreationDateTime": "2017-05-02T00:00:00+00:00",
-    "StatusReason": [{
-      "StatusReasonCode": "U036", 
-      "StatusReasonDescription":"Waiting for completion of consent authorisation to be completed by user",
-    }],
+    "StatusReason": [
+      {
+        "StatusReasonCode": "U036",
+        "StatusReasonDescription": "Waiting for completion of consent authorisation to be completed by user"
+      }
+    ],
     "Permissions": [
       "ReadAccountsDetail",
       "ReadBalances",
@@ -311,16 +311,19 @@ HTTP/1.1 200 OK
 x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Content-Type: application/json
 ```
+
 ```json
 {
   "Data": {
     "ConsentId": "urn-alphabank-intent-88379",
     "Status": "AWAU",
-   "StatusReason": [{
-      "StatusReasonCode": "U036", 
-      "StatusReasonDescription":"Waiting for completion of consent authorisation to be completed by user",
-    }],
-    "StatusReasonDescription":"Waiting for completion of consent authorisation to be completed by user",
+    "StatusReason": [
+      {
+        "StatusReasonCode": "U036",
+        "StatusReasonDescription": "Waiting for completion of consent authorisation to be completed by user"
+      }
+    ],
+    "StatusReasonDescription": "Waiting for completion of consent authorisation to be completed by user",
     "StatusUpdateDateTime": "2017-05-02T00:00:00+00:00",
     "CreationDateTime": "2017-05-02T00:00:00+00:00",
     "Permissions": [
@@ -376,15 +379,18 @@ HTTP/1.1 200 OK
 x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Content-Type: application/json
 ```
+
 ```json
 {
   "Data": {
     "ConsentId": "urn-alphabank-intent-88379",
     "Status": "AUTH",
-    "StatusReason": [{
-      "StatusReasonCode": "U038", 
-      "StatusReasonDescription":"Consent has been completed successfully"
-    }],
+    "StatusReason": [
+      {
+        "StatusReasonCode": "U038",
+        "StatusReasonDescription": "Consent has been completed successfully"
+      }
+    ],
     "StatusUpdateDateTime": "2017-05-02T00:05:00+00:00",
     "CreationDateTime": "2017-05-02T00:00:00+00:00",
     "Permissions": [
@@ -440,16 +446,19 @@ HTTP/1.1 200 OK
 x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Content-Type: application/json
 ```
+
 ```json
 {
   "Data": {
     "ConsentId": "urn-alphabank-intent-88379",
     "Status": "REJT",
-    "StatusReason": [{
-      "StatusReasonCode": "U038", 
-      "StatusReasonDescription":"Data.LocalInstrument is invalid.  Expected ExternalLocalInstrument1Code value, received SEPE",
-      "Path": "Data.LocalInstrument"
-    }],
+    "StatusReason": [
+      {
+        "StatusReasonCode": "U038",
+        "StatusReasonDescription": "Data.LocalInstrument is invalid.  Expected ExternalLocalInstrument1Code value, received SEPE",
+        "Path": "Data.LocalInstrument"
+      }
+    ],
     "StatusUpdateDateTime": "2017-05-02T00:05:00+00:00",
     "CreationDateTime": "2017-05-02T00:00:00+00:00",
     "Permissions": [
@@ -541,6 +550,7 @@ HTTP/1.1 201 Created
 x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Content-Type: application/json
 ```
+
 ```json
 {
   "Data": {
@@ -548,10 +558,12 @@ Content-Type: application/json
     "Status": "AWAU",
     "StatusUpdateDateTime": "2017-05-02T00:00:00+00:00",
     "CreationDateTime": "2017-05-02T00:00:00+00:00",
-    "StatusReason": [{
-      "StatusReasonCode": "U036", 
-      "StatusReasonDescription":"Waiting for completion of consent authorisation to be completed by user",
-    }],
+    "StatusReason": [
+      {
+        "StatusReasonCode": "U036",
+        "StatusReasonDescription": "Waiting for completion of consent authorisation to be completed by user"
+      }
+    ],
     "Permissions": [
       "ReadAccountsBasic",
       "ReadBalances"
