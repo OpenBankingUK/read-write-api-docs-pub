@@ -57,11 +57,12 @@ The OBReadBeneficiary5 object will be used for the call to:
 
 ### Reused Classes
 
-#### OBProxy1  
+#### OBProxy1
 
 The OBProxy1 class is defined in the [account-and-transaction-api-profile](../../profiles/account-and-transaction-api-profile.md#obproxy1) page.
 
 #### OBPostalAddress7
+
 The OBPostalAddress7 class is defined in the [account-and-transaction-api-profile](../../profiles/account-and-transaction-api-profile.md#obpostaladdress7) page.
 
 ### Resource Definition
@@ -93,7 +94,7 @@ This is the expected behaviour of the beneficiaries endpoints, in the case an AS
   * The CreditorAgent object may be used to represent either (1) the BIC (with UK.OBIE.BICFI in the SchemeName field and the BIC in the Identification field), or (2) the Name and Address details for the financial institution.
   * The CreditorAccount/Identification field may be used to represent a non-UK specific branch and account numbering scheme with "UK.OBIE.SortCodeAccountNumber" being populated in the CreditorAccount/SchemeName.
 * For the /accounts/{AccountId}/beneficiaries endpoint, the CreditorAccount and CreditorAgent blocks represent the account of the beneficiary that is receiving funds (so has been named the CreditorAccount for consistency with the PISP use case).
-* The beneficiaries may be Trusted Beneficiaries as well as other types of beneficiaries as indicated by the BeneficiaryType property. When the BeneficiaryType property is not specified, the consumer should refer to the ASPSP's developer portal.
+* The beneficiaries may be Trusted Beneficiaries as well as other types of beneficiaries as indicated by the BeneficiaryType property. When the BeneficiaryType property is not specified, the consumer should refer to the ASPSP's developer portal.
 
 ### Permission Codes
 
@@ -127,7 +128,7 @@ If the ReadPAN permission is granted by the PSU, the ASPSP may choose to populat
 | Name |0..1 |OBReadBeneficiary5/Data/Beneficiary/CreditorAgent/Name |Name by which an agent is known and which is usually used to identify that agent. |Max140Text | | |
 | PostalAddress |0..1 |OBReadBeneficiary5/Data/Beneficiary/CreditorAgent/PostalAddress |Information that locates and identifies a specific address, as defined by postal services. |OBPostalAddress7 | | |
 | CreditorAccount |0..1 |OBReadBeneficiary5/Data/Beneficiary/CreditorAccount |Provides the details to identify the beneficiary account. |OBCashAccount5 | | |
-| SchemeName |1..1 |OBReadBeneficiary5/Data/Beneficiary/CreditorAccount/SchemeName |Name of the identification scheme, in a coded form as published in an external list. | For a full list of enumeration values refer to `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets). |OBInternalAccountIdentification4Code | 
+| SchemeName |1..1 |OBReadBeneficiary5/Data/Beneficiary/CreditorAccount/SchemeName |Name of the identification scheme, in a coded form as published in an external list. | For a full list of enumeration values refer to `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets). |OBInternalAccountIdentification4Code |
 | Identification |1..1 |OBReadBeneficiary5/Data/Beneficiary/CreditorAccount/Identification |Identification assigned by an institution to identify an account. This identification is known by the account owner. |Max256Text | | |
 | Name |0..1 |OBReadBeneficiary5/Data/Beneficiary/CreditorAccount/Name |The account name is the name or names of the account owner(s) represented at an account level, as displayed by the ASPSP's online channels. Note, the account name is not the product name or the nickname of the account. |Max350Text | | |
 | SecondaryIdentification |0..1 |OBReadBeneficiary5/Data/Beneficiary/CreditorAccount/SecondaryIdentification |This is secondary identification of the account, as assigned by the account servicing institution. This can be used by building societies to additionally identify accounts with a roll number (in addition to a sort code and account number combination). |Max34Text | | |
@@ -135,7 +136,7 @@ If the ReadPAN permission is granted by the PSU, the ASPSP may choose to populat
 
 ### Reused Classes
 
-#### OBPostalAddress7 
+#### OBPostalAddress7
 
 The OBPostalAddress7 class is defined in the [payment-initiation-api-profile](../../profiles/payment-initiation-api-profile.md#obpostaladdress7) page
 
@@ -154,7 +155,7 @@ x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Accept: application/json
 ```
 
- #### Get Account Beneficiaries Response
+#### Get Account Beneficiaries Response
 
 ```
 HTTP/1.1 200 OK
@@ -171,12 +172,12 @@ Content-Type: application/json
         "BeneficiaryId": "Ben1",
         "BeneficiaryType": "Ordinary",
         "Reference": "Towbar Club",
-        "CreditorAgent": { 
+        "CreditorAgent": {
           "LEI": "IZ9Q00LZEVUKWCQY6X15",
           "SchemeName": "UK.OBIE.BICFI",
           "Identification": "80200112344562",
-          "Name": "The Credit Agent", 
-          "PostalAddress": { 
+          "Name": "The Credit Agent",
+          "PostalAddress": {
             "AddressType": "BIZZ",
             "StreetName": "Bank Street",
             "BuildingNumber": "11",
@@ -238,12 +239,12 @@ Content-Type: application/json
         "BeneficiaryId": "Ben1",
         "BeneficiaryType": "Ordinary",
         "Reference": "Towbar Club",
-        "CreditorAgent": { 
+        "CreditorAgent": {
           "LEI": "IZ9Q00LZEVUKWCQY6X15",
           "SchemeName": "UK.OBIE.BICFI",
           "Identification": "80200112344562",
-          "Name": "The Credit Agent", 
-          "PostalAddress": { 
+          "Name": "The Credit Agent",
+          "PostalAddress": {
             "AddressType": "BIZZ",
             "StreetName": "Bank Street",
             "BuildingNumber": "11",
@@ -268,12 +269,12 @@ Content-Type: application/json
         "AccountId": "31820",
         "BeneficiaryId": "Ben37",
         "Reference": "Golf Club",
-        "CreditorAgent": { 
+        "CreditorAgent": {
           "LEI": "IZ9Q00LZEVUKWCQY6X15",
           "SchemeName": "UK.OBIE.BICFI",
           "Identification": "80200112344562",
-          "Name": "The Credit Agent", 
-          "PostalAddress": { 
+          "Name": "The Credit Agent",
+          "PostalAddress": {
             "AddressType": "BIZZ",
             "StreetName": "Bank Street",
             "BuildingNumber": "11",
@@ -287,11 +288,11 @@ Content-Type: application/json
           "SchemeName": "UK.OBIE.SortCodeAccountNumber",
           "Identification": "87562298675421",
           "Name": "Mr Large",
-          "SecondaryIdentification": "87562298675897", 
+          "SecondaryIdentification": "87562298675897",
           "Proxy": {
             "Identification": "2360549017905188",
             "Code": "TELE",
-            "Type": "Telephone", 
+            "Type": "Telephone"
           }
         }
       }
@@ -317,12 +318,12 @@ Content-Type: application/json
         "BeneficiaryId": "Ben1",
         "BeneficiaryType": "Ordinary",
         "Reference": "Towbar Club",
-        "CreditorAgent": { 
+        "CreditorAgent": {
           "LEI": "IZ9Q00LZEVUKWCQY6X15",
           "SchemeName": "UK.OBIE.BICFI",
           "Identification": "80200112344562",
-          "Name": "The Credit Agent", 
-          "PostalAddress": { 
+          "Name": "The Credit Agent",
+          "PostalAddress": {
             "AddressType": "BIZZ",
             "StreetName": "Bank Street",
             "BuildingNumber": "11",
@@ -343,7 +344,7 @@ Content-Type: application/json
         "BeneficiaryId": "Ben2",
         "BeneficiaryType": "Trusted",
         "Reference": "Champagne Club",
-        "CreditorAgent": { 
+        "CreditorAgent": {
           "LEI": "6PLS00H77T87PEZOTK71"
         },
         "CreditorAccount": {
@@ -354,7 +355,7 @@ Content-Type: application/json
           "Proxy": {
             "Identification": "2360549017905188",
             "Code": "TELE",
-            "Type": "Telephone", 
+            "Type": "Telephone"
           }
         }
       },
@@ -362,7 +363,7 @@ Content-Type: application/json
         "AccountId": "22289",
         "BeneficiaryId": "Ben3",
         "Reference": "O2-234823781",
-        "CreditorAgent": { 
+        "CreditorAgent": {
           "LEI": "X3F8005BLKBSWLCX4E37"
         },
         "CreditorAccount": {
@@ -373,7 +374,7 @@ Content-Type: application/json
           "Proxy": {
             "Identification": "2360549017905188",
             "Code": "TELE",
-            "Type": "Telephone", 
+            "Type": "Telephone"
           }
         }
       }
