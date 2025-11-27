@@ -341,7 +341,9 @@ Accept: application/json
             }
           }
         ],
-        "Unstructured": ["Internal ops code 5120101"]
+        "Unstructured": [
+          "Internal ops code 5120101"
+        ]
       }
     }
   },
@@ -406,7 +408,9 @@ Content-Type: application/json
             }
           }
         ],
-        "Unstructured": ["Internal ops code 5120101"]
+        "Unstructured": [
+          "Internal ops code 5120101"
+        ]
       }
     }
   },
@@ -467,7 +471,9 @@ Content-Type: application/json
             }
           }
         ],
-        "Unstructured": ["Internal ops code 5120101"]
+        "Unstructured": [
+          "Internal ops code 5120101"
+        ]
       }
     }
   },
@@ -550,7 +556,9 @@ Content-Type: application/json
             }
           }
         ],
-        "Unstructured": ["Internal ops code 5120101"]
+        "Unstructured": [
+          "Internal ops code 5120101"
+        ]
       }
     }
   },
@@ -679,7 +687,9 @@ Accept: application/json
             }
           }
         ],
-        "Unstructured": [ "Internal ops code 5120103" ]
+        "Unstructured": [
+          "Internal ops code 5120103"
+        ]
       }
     }
   },
@@ -730,7 +740,9 @@ Content-Type: application/json
             }
           }
         ],
-        "Unstructured": ["Internal ops code 5120103"]
+        "Unstructured": [
+          "Internal ops code 5120103"
+        ]
       }
     }
   },
@@ -789,7 +801,9 @@ Accept: application/json
             }
           }
         ],
-        "Unstructured": ["Internal ops code 5120103"]
+        "Unstructured": [
+          "Internal ops code 5120103"
+        ]
       }
     }
   },
@@ -841,7 +855,9 @@ Content-Type: application/json
             }
           }
         ],
-        "Unstructured": ["Internal ops code 5120103"]
+        "Unstructured": [
+          "Internal ops code 5120103"
+        ]
       }
     }
   },
@@ -906,7 +922,9 @@ Content-Type: application/json
             }
           }
         ],
-        "Unstructured": ["Internal ops code 5120103"]
+        "Unstructured": [
+          "Internal ops code 5120103"
+        ]
       }
     }
   },
@@ -975,7 +993,9 @@ Content-Type: application/json
             }
           }
         ],
-        "Unstructured": ["Internal ops code 5120103"]
+        "Unstructured": [
+          "Internal ops code 5120103"
+        ]
       }
     }
   },
@@ -1033,7 +1053,9 @@ Accept: application/json
             }
           }
         ],
-        "Unstructured": ["Internal ops code 5120103"]
+        "Unstructured": [
+          "Internal ops code 5120103"
+        ]
       }
     }
   },
@@ -1059,7 +1081,7 @@ Content-Type: application/json
     "Status": "AWAU",
     "CreationDateTime": "2017-06-05T15:15:13+00:00",
     "StatusUpdateDateTime": "2017-06-05T15:15:13+00:00",
-    "CutOffDateTime":"2017-06-05T17:30:00+00:00",
+    "CutOffDateTime": "2017-06-05T17:30:00+00:00",
     "Initiation": {
       "InstructionIdentification": "ANSM023",
       "EndToEndIdentification": "FRESCO.21302.GFX.37",
@@ -1086,7 +1108,9 @@ Content-Type: application/json
             }
           }
         ],
-        "Unstructured": ["Internal ops code 5120103"]
+        "Unstructured": [
+          "Internal ops code 5120103"
+        ]
       }
     }
   },
@@ -1155,7 +1179,9 @@ Accept: application/json
             }
           }
         ],
-        "Unstructured": ["Internal ops code 5120103"]
+        "Unstructured": [
+          "Internal ops code 5120103"
+        ]
       }
     }
   },
@@ -1176,29 +1202,29 @@ Content-Type: application/json
 
 ```json
 {
-  "Data":{
-    "ConsentId":"7290",
-    "Status":"AWAU",
-    "CreationDateTime":"2017-06-05T15:15:13+00:00",
-    "StatusUpdateDateTime":"2017-06-05T15:15:13+00:00",
-    "CutOffDateTime":"2017-06-05T17:30:00+00:00",
-    "Initiation":{
-      "InstructionIdentification":"ANSM023",
-      "EndToEndIdentification":"FRESCO.21302.GFX.37",
-      "LocalInstrument":"UK.OBIE.CHAPS",
-      "InstructedAmount":{
-        "Amount":"20.00",
-        "Currency":"GBP"
+  "Data": {
+    "ConsentId": "7290",
+    "Status": "AWAU",
+    "CreationDateTime": "2017-06-05T15:15:13+00:00",
+    "StatusUpdateDateTime": "2017-06-05T15:15:13+00:00",
+    "CutOffDateTime": "2017-06-05T17:30:00+00:00",
+    "Initiation": {
+      "InstructionIdentification": "ANSM023",
+      "EndToEndIdentification": "FRESCO.21302.GFX.37",
+      "LocalInstrument": "UK.OBIE.CHAPS",
+      "InstructedAmount": {
+        "Amount": "20.00",
+        "Currency": "GBP"
       },
-      "DebtorAccount":{
-        "SchemeName":"UK.OBIE.SortCodeAccountNumber",
-        "Identification":"11280001234567",
-        "Name":"Andrea Smith"
+      "DebtorAccount": {
+        "SchemeName": "UK.OBIE.SortCodeAccountNumber",
+        "Identification": "11280001234567",
+        "Name": "Andrea Smith"
       },
-      "CreditorAccount":{
-        "SchemeName":"UK.OBIE.SortCodeAccountNumber",
-        "Identification":"08080021325698",
-        "Name":"Bob Clements"
+      "CreditorAccount": {
+        "SchemeName": "UK.OBIE.SortCodeAccountNumber",
+        "Identification": "08080021325698",
+        "Name": "Bob Clements"
       },
       "CreditorPostalAddress": {
         "AddressType": "CORR",
@@ -1216,31 +1242,34 @@ Content-Type: application/json
             }
           }
         ],
-        "Unstructured": ["Internal ops code 5120103"]
+        "Unstructured": [
+          "Internal ops code 5120103"
+        ]
       }
     },
-    "Charges":[
+    "Charges": [
       {
-        "ChargeBearer":"BorneByDebtor",
-        "Type":"UK.OBIE.ChapsOut",
-        "Amount":{
-          "Amount":"30.00",
-          "Currency":"GBP"
+        "ChargeBearer": "BorneByDebtor",
+        "Type": "UK.OBIE.ChapsOut",
+        "Amount": {
+          "Amount": "30.00",
+          "Currency": "GBP"
         }
       }
     ]
   },
-  "Risk":{
-    "PaymentContextCode":"TransferToThirdParty"
+  "Risk": {
+    "PaymentContextCode": "TransferToThirdParty"
   },
-  "Links":{
-    "Self":"https://api.alphabank.com/open-banking/v4.0/pisp/domestic-payment-consents/7290"
+  "Links": {
+    "Self": "https://api.alphabank.com/open-banking/v4.0/pisp/domestic-payment-consents/7290"
   },
-  "Meta":{}
+  "Meta": {}
 }
 ```
 
 ## Balance Transfer
+
 Below in an example illustrating a balance transfer offer available on a Card A.
 
 To facilitate a Balance Transfer, a PISP can initiate a Payment from Card B to Card A with LocalInstrument as UK.OBIE.BalanceTransfer, Account SchemeName as UK.OBIE.PAN and if there is an Offer Code/Id provided by Issuer of the Card A, then it can be supplied in the field: `RemittanceInformation.Structured.0.CreditorReferenceInformation.Reference`.
@@ -1312,55 +1341,57 @@ Content-Type: application/json
 
 ```json
 {
-    "Data": {
-        "ConsentId": "7290",
-        "Status": "AWAU",
-        "CreationDateTime": "2017-06-05T15:15:13+00:00",
-        "StatusUpdateDateTime": "2017-06-05T15:15:13+00:00",
-        "CutOffDateTime": "2017-06-05T17:30:00+00:00",
-        "Initiation": {
-            "InstructionIdentification": "ANSM023",
-            "EndToEndIdentification": "FRESCO.21302.GFX.37",
-            "LocalInstrument": "UK.OBIE.BalanceTransfer",
-            "InstructedAmount": {
-                "Amount": "3000.00",
-                "Currency": "GBP"
-            },
-            "DebtorAccount": {
-                "SchemeName": "UK.OBIE.PAN",
-                "Identification": "5555555555554444",
-                "Name": "Andrea Smith"
-            },
-            "CreditorAccount": {
-                "SchemeName": "UK.OBIE.PAN",
-                "Identification": "4444333322221111",
-                "Name": "Andrea Smith"
-            },
-            "RemittanceInformation": {
-                "Structured": [
-                    {
-                        "CreditorReferenceInformation": {
-                            "Reference": "BT-OfferCode-12"
-                        }
-                    }
-                ],
-                "Unstructured": ["Internal ops code 5120103"]
+  "Data": {
+    "ConsentId": "7290",
+    "Status": "AWAU",
+    "CreationDateTime": "2017-06-05T15:15:13+00:00",
+    "StatusUpdateDateTime": "2017-06-05T15:15:13+00:00",
+    "CutOffDateTime": "2017-06-05T17:30:00+00:00",
+    "Initiation": {
+      "InstructionIdentification": "ANSM023",
+      "EndToEndIdentification": "FRESCO.21302.GFX.37",
+      "LocalInstrument": "UK.OBIE.BalanceTransfer",
+      "InstructedAmount": {
+        "Amount": "3000.00",
+        "Currency": "GBP"
+      },
+      "DebtorAccount": {
+        "SchemeName": "UK.OBIE.PAN",
+        "Identification": "5555555555554444",
+        "Name": "Andrea Smith"
+      },
+      "CreditorAccount": {
+        "SchemeName": "UK.OBIE.PAN",
+        "Identification": "4444333322221111",
+        "Name": "Andrea Smith"
+      },
+      "RemittanceInformation": {
+        "Structured": [
+          {
+            "CreditorReferenceInformation": {
+              "Reference": "BT-OfferCode-12"
             }
-        }
-    },
-    "Risk": {
-        "PaymentContextCode": "TransferToThirdParty"
-    },
-    "Links": {
-        "Self": "https://api.alphabank.com/open-banking/v4.0/pisp/domestic-payment-consents/7290"
-    },
-    "Meta": {}
+          }
+        ],
+        "Unstructured": [
+          "Internal ops code 5120103"
+        ]
+      }
+    }
+  },
+  "Risk": {
+    "PaymentContextCode": "TransferToThirdParty"
+  },
+  "Links": {
+    "Self": "https://api.alphabank.com/open-banking/v4.0/pisp/domestic-payment-consents/7290"
+  },
+  "Meta": {}
 }
 ```
 
 ## Money Transfer
 
-Below in an example illustrating Money transfer from a card account to a bank account. 
+Below in an example illustrating Money transfer from a card account to a bank account.
 
 ### POST /domestic-payment-consents request
 
@@ -1375,42 +1406,45 @@ x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
 Content-Type: application/json
 Accept: application/json
 ```
+
 ```json
 {
-    "Data": {
-        "Initiation": {
-            "InstructionIdentification": "ANSM023",
-            "EndToEndIdentification": "FRESCO.21302.GFX.37",
-            "LocalInstrument": "UK.OBIE.MoneyTransfer",
-            "InstructedAmount": {
-                "Amount": "3000.00",
-                "Currency": "GBP"
-            },
-            "DebtorAccount": {
-                "SchemeName": "UK.OBIE.PAN",
-                "Identification": "5555555555554444",
-                "Name": "Andrea Smith"
-            },
-            "CreditorAccount": {
-                "SchemeName": "UK.OBIE.SortCodeAccountNumber",
-                "Identification": "11280001234567",
-                "Name": "Andrea Smith"
-            },
-            "RemittanceInformation": {
-                "Structured": [
-                    {
-                        "CreditorReferenceInformation": {
-                            "Reference": "BT-OfferCode-24"
-                        }
-                    }
-                ],
-                "Unstructured": ["Internal ops code 5120103"]
+  "Data": {
+    "Initiation": {
+      "InstructionIdentification": "ANSM023",
+      "EndToEndIdentification": "FRESCO.21302.GFX.37",
+      "LocalInstrument": "UK.OBIE.MoneyTransfer",
+      "InstructedAmount": {
+        "Amount": "3000.00",
+        "Currency": "GBP"
+      },
+      "DebtorAccount": {
+        "SchemeName": "UK.OBIE.PAN",
+        "Identification": "5555555555554444",
+        "Name": "Andrea Smith"
+      },
+      "CreditorAccount": {
+        "SchemeName": "UK.OBIE.SortCodeAccountNumber",
+        "Identification": "11280001234567",
+        "Name": "Andrea Smith"
+      },
+      "RemittanceInformation": {
+        "Structured": [
+          {
+            "CreditorReferenceInformation": {
+              "Reference": "BT-OfferCode-24"
             }
-        }
-    },
-    "Risk": {
-        "PaymentContextCode": "TransferToThirdParty"
+          }
+        ],
+        "Unstructured": [
+          "Internal ops code 5120103"
+        ]
+      }
     }
+  },
+  "Risk": {
+    "PaymentContextCode": "TransferToThirdParty"
+  }
 }
 ```
 
@@ -1425,48 +1459,50 @@ Content-Type: application/json
 
 ```json
 {
-    "Data": {
-        "ConsentId": "7290",
-        "Status": "AWAU",
-        "CreationDateTime": "2017-06-05T15:15:13+00:00",
-        "StatusUpdateDateTime": "2017-06-05T15:15:13+00:00",
-        "CutOffDateTime": "2017-06-05T17:30:00+00:00",
-        "Initiation": {
-            "InstructionIdentification": "ANSM023",
-            "EndToEndIdentification": "FRESCO.21302.GFX.37",
-            "LocalInstrument": "UK.OBIE.MoneyTransfer",
-            "InstructedAmount": {
-                "Amount": "3000.00",
-                "Currency": "GBP"
-            },
-            "DebtorAccount": {
-                "SchemeName": "UK.OBIE.PAN",
-                "Identification": "5555555555554444",
-                "Name": "Andrea Smith"
-            },
-            "CreditorAccount": {
-                "SchemeName": "UK.OBIE.SortCodeAccountNumber",
-                "Identification": "11280001234567",
-                "Name": "Andrea Smith"
-            },
-            "RemittanceInformation": {
-                "Structured": [
-                    {
-                        "CreditorReferenceInformation": {
-                            "Reference": "BT-OfferCode-24"
-                        }
-                    }
-                ],
-                "Unstructured": ["Internal ops code 5120103"]
+  "Data": {
+    "ConsentId": "7290",
+    "Status": "AWAU",
+    "CreationDateTime": "2017-06-05T15:15:13+00:00",
+    "StatusUpdateDateTime": "2017-06-05T15:15:13+00:00",
+    "CutOffDateTime": "2017-06-05T17:30:00+00:00",
+    "Initiation": {
+      "InstructionIdentification": "ANSM023",
+      "EndToEndIdentification": "FRESCO.21302.GFX.37",
+      "LocalInstrument": "UK.OBIE.MoneyTransfer",
+      "InstructedAmount": {
+        "Amount": "3000.00",
+        "Currency": "GBP"
+      },
+      "DebtorAccount": {
+        "SchemeName": "UK.OBIE.PAN",
+        "Identification": "5555555555554444",
+        "Name": "Andrea Smith"
+      },
+      "CreditorAccount": {
+        "SchemeName": "UK.OBIE.SortCodeAccountNumber",
+        "Identification": "11280001234567",
+        "Name": "Andrea Smith"
+      },
+      "RemittanceInformation": {
+        "Structured": [
+          {
+            "CreditorReferenceInformation": {
+              "Reference": "BT-OfferCode-24"
             }
-        }
-    },
-    "Risk": {
-        "PaymentContextCode": "TransferToThirdParty"
-    },
-    "Links": {
-        "Self": "https://api.alphabank.com/open-banking/v4.0/pisp/domestic-payment-consents/7290"
-    },
-    "Meta": {}
+          }
+        ],
+        "Unstructured": [
+          "Internal ops code 5120103"
+        ]
+      }
+    }
+  },
+  "Risk": {
+    "PaymentContextCode": "TransferToThirdParty"
+  },
+  "Links": {
+    "Self": "https://api.alphabank.com/open-banking/v4.0/pisp/domestic-payment-consents/7290"
+  },
+  "Meta": {}
 }
 ```
