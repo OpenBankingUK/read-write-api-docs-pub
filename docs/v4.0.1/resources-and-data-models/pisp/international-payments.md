@@ -54,7 +54,7 @@ Once the international-payment-consent has been authorised by the PSU, the PISP 
 
 #### Status
 
-An international-payment can only be created if its corresponding international-payment-consent resource has the Status of "AUTH". 
+An international-payment can only be created if its corresponding international-payment-consent resource has the Status of "AUTH".
 
 The international-payment resource that is created successfully must have one of the following initial Status code-set enumerations:
 
@@ -127,18 +127,15 @@ __Payment order state model key:__
 
 ![Payment Order Status](./images/PIS_PO_Statuses_1.png)
 
-
-
 ##### Multiple Authorisation
+
 If the payment-order requires multiple authorisations the status of the multiple authorisations will be updated in the MultiAuthorisation object.
 
 Once the payment is RCVD, the international-payment Status must be set to PATC and the MultiAuthorisation object status updated with the AWAF status. Once all authorisations have been successfully completed the MultiAuthorisation status must be set to AUTH and international-payment Status updated to ACSP if any intermediate status are not supported.
 
-Any rejections in the multiple authorisation process should result in the MultiAuthorisation status and Status being set to RJCT. 
-
+Any rejections in the multiple authorisation process should result in the MultiAuthorisation status and Status being set to RJCT.
 
 ![Multi Auth](./images/PO_MultiAuthFlow.png)
-
 
 The definitions for the Status:
 
@@ -176,9 +173,9 @@ The OBWriteInternational3 object will be used for a call to:
 
 ![International Payment - Request](./images/OBWriteInternational3.svg)
 
-#### Notes 
+#### Notes
 
-The international-payment **request** object contains the: 
+The international-payment **request** object contains the:
 
 * ConsentId.
 * The full Initiation and Risk objects from the international-payment request.
@@ -205,7 +202,7 @@ The OBWriteInternationalResponse5 object will be used for a response to a call t
 
 ![International Payment - Response](./images/OBWriteInternationalResponse5.svg)
 
-#### Notes 
+#### Notes
 
 The international-payment **response** object contains the:
 
@@ -244,7 +241,7 @@ The international-payment **response** object contains the:
 | Initiation |1..1 |OBWriteInternationalResponse5/Data/Initiation |The Initiation payload is sent by the initiating party to the ASPSP. It is used to request movement of funds from the debtor account to a creditor for a single international payment. |OBInternational3 | | |
 | MultiAuthorisation |0..1 |OBWriteInternationalResponse5/Data/MultiAuthorisation |The multiple authorisation flow response from the ASPSP. |OBMultiAuthorisation1 | | |
 | Debtor |0..1 |OBWriteInternationalResponse5/Data/Debtor |Set of elements used to identify a person or an organisation. | | | |
-| SchemeName |0..1 |OBWriteInternationalResponse5/Data/Debtor/SchemeName |Name of the identification scheme, in a coded form as published in an external list. | For a full list of enumeration values refer to `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets). |OBInternalAccountIdentification4Code | 
+| SchemeName |0..1 |OBWriteInternationalResponse5/Data/Debtor/SchemeName |Name of the identification scheme, in a coded form as published in an external list. | For a full list of enumeration values refer to `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets). |OBInternalAccountIdentification4Code |
 | Identification |0..1 |OBWriteInternationalResponse5/Data/Debtor/Identification |Identification assigned by an institution to identify an account. This identification is known by the account owner. |Max256Text | | |
 | Name |0..1 |OBWriteInternationalResponse5/Data/Debtor/Name |The account name is the name or names of the account owner(s) represented at an account level, as displayed by the ASPSP's online channels. Note, the account name is not the product name or the nickname of the account. |Max350Text | | |
 | SecondaryIdentification |0..1 |OBWriteInternationalResponse5/Data/Debtor/SecondaryIdentification |This is secondary identification of the account, as assigned by the account servicing institution. This can be used by building societies to additionally identify accounts with a roll number (in addition to a sort code and account number combination). |Max34Text | | |
