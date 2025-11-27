@@ -39,41 +39,43 @@ Accept: application/json
 
 ```json
 {
- "Data": {
-  "Initiation": {
-   "InstructionIdentification": "ACME412",
-   "EndToEndIdentification": "FRESCO.21302.GFX.20",
-   "InstructionPriority": "Normal",
-   "CurrencyOfTransfer": "USD",
-   "InstructedAmount": {
-    "Amount": "165.88",
-    "Currency": "GBP"
-   },
-   "CreditorAccount": {
-    "SchemeName": "UK.OBIE.SortCodeAccountNumber",
-    "Identification": "08080021325698",
-    "Name": "ACME Inc",
-    "SecondaryIdentification": "0002"
-   },
-   "RemittanceInformation": {
-     "Structured": [
-       {
-         "CreditorReferenceInformation": {
-           "Reference": "FRESCO-101"
-         }
-       }
-     ],
-    "Unstructured": ["Internal ops code 5120101"]
-   },
-   "ExchangeRateInformation": {
-    "UnitCurrency": "GBP",
-    "RateType": "Actual"
-   }
+  "Data": {
+    "Initiation": {
+      "InstructionIdentification": "ACME412",
+      "EndToEndIdentification": "FRESCO.21302.GFX.20",
+      "InstructionPriority": "Normal",
+      "CurrencyOfTransfer": "USD",
+      "InstructedAmount": {
+        "Amount": "165.88",
+        "Currency": "GBP"
+      },
+      "CreditorAccount": {
+        "SchemeName": "UK.OBIE.SortCodeAccountNumber",
+        "Identification": "08080021325698",
+        "Name": "ACME Inc",
+        "SecondaryIdentification": "0002"
+      },
+      "RemittanceInformation": {
+        "Structured": [
+          {
+            "CreditorReferenceInformation": {
+              "Reference": "FRESCO-101"
+            }
+          }
+        ],
+        "Unstructured": [
+          "Internal ops code 5120101"
+        ]
+      },
+      "ExchangeRateInformation": {
+        "UnitCurrency": "GBP",
+        "RateType": "Actual"
+      }
+    }
+  },
+  "Risk": {
+    "PaymentContextCode": "TransferToThirdParty"
   }
- },
- "Risk": {
-  "PaymentContextCode": "TransferToThirdParty"
- }
 }
 ```
 
@@ -88,56 +90,58 @@ Content-Type: application/json
 
 ```json
 {
- "Data": {
-  "ConsentId": "58923",
-  "Status": "AWAU",
-  "CutOffDateTime": "2017-06-05T16:00:13+00:00",
-  "CreationDateTime": "2017-06-05T15:15:13+00:00",
-  "StatusUpdateDateTime": "2017-06-05T15:15:13+00:00",
-  "Initiation": {
-   "InstructionIdentification": "ACME412",
-   "EndToEndIdentification": "FRESCO.21302.GFX.20",
-   "InstructionPriority": "Normal",
-   "CurrencyOfTransfer": "USD",
-   "InstructedAmount": {
-    "Amount": "165.88",
-    "Currency": "GBP"
-   },
-   "CreditorAccount": {
-    "SchemeName": "UK.OBIE.SortCodeAccountNumber",
-    "Identification": "08080021325698",
-    "Name": "ACME Inc",
-    "SecondaryIdentification": "0002"
-   },
-   "RemittanceInformation": {
-     "Structured": [
-       {
-         "CreditorReferenceInformation": {
-           "Reference": "FRESCO-101"
-         }
-       }
-     ],
-    "Unstructured": ["Internal ops code 5120101"]
-   },
-   "ExchangeRateInformation": {
-    "UnitCurrency": "GBP",
-    "RateType": "Actual"
-   }
+  "Data": {
+    "ConsentId": "58923",
+    "Status": "AWAU",
+    "CutOffDateTime": "2017-06-05T16:00:13+00:00",
+    "CreationDateTime": "2017-06-05T15:15:13+00:00",
+    "StatusUpdateDateTime": "2017-06-05T15:15:13+00:00",
+    "Initiation": {
+      "InstructionIdentification": "ACME412",
+      "EndToEndIdentification": "FRESCO.21302.GFX.20",
+      "InstructionPriority": "Normal",
+      "CurrencyOfTransfer": "USD",
+      "InstructedAmount": {
+        "Amount": "165.88",
+        "Currency": "GBP"
+      },
+      "CreditorAccount": {
+        "SchemeName": "UK.OBIE.SortCodeAccountNumber",
+        "Identification": "08080021325698",
+        "Name": "ACME Inc",
+        "SecondaryIdentification": "0002"
+      },
+      "RemittanceInformation": {
+        "Structured": [
+          {
+            "CreditorReferenceInformation": {
+              "Reference": "FRESCO-101"
+            }
+          }
+        ],
+        "Unstructured": [
+          "Internal ops code 5120101"
+        ]
+      },
+      "ExchangeRateInformation": {
+        "UnitCurrency": "GBP",
+        "RateType": "Actual"
+      }
+    },
+    "ExchangeRateInformation": {
+      "UnitCurrency": "GBP",
+      "ExchangeRate": 1.1,
+      "RateType": "Actual",
+      "ExpirationDateTime": "2017-06-05T15:45:13+00:00"
+    }
   },
-  "ExchangeRateInformation": {
-   "UnitCurrency": "GBP",
-   "ExchangeRate": 1.1,
-   "RateType": "Actual",
-   "ExpirationDateTime": "2017-06-05T15:45:13+00:00"
-  }
- },
- "Risk": {
-  "PaymentContextCode": "TransferToThirdParty"
- },
- "Links": {
-  "Self": "https://api.alphabank.com/open-banking/v4.0/pisp/international-payment-consents/58923"
- },
- "Meta": {}
+  "Risk": {
+    "PaymentContextCode": "TransferToThirdParty"
+  },
+  "Links": {
+    "Self": "https://api.alphabank.com/open-banking/v4.0/pisp/international-payment-consents/58923"
+  },
+  "Meta": {}
 }
 ```
 
@@ -165,16 +169,16 @@ Content-Type: application/json
 
 ```json
 {
-	"Data": {
-		"FundsAvailableResult": {
-			"FundsAvailableDateTime": "2017-06-05T15:15:23+00:00",
-			"FundsAvailable": true
-		}
-	},
-	"Links": {
-		"Self": "https://api.alphabank.com/open-banking/v4.0/pisp/international-payment-consents/58923/funds-confirmation"
-	},
-	"Meta": {}
+  "Data": {
+    "FundsAvailableResult": {
+      "FundsAvailableDateTime": "2017-06-05T15:15:23+00:00",
+      "FundsAvailable": true
+    }
+  },
+  "Links": {
+    "Self": "https://api.alphabank.com/open-banking/v4.0/pisp/international-payment-consents/58923/funds-confirmation"
+  },
+  "Meta": {}
 }
 ```
 
@@ -198,41 +202,43 @@ Accept: application/json
 
 ```json
 {
- "Data": {
-  "Initiation": {
-   "InstructionIdentification": "ACME412",
-   "EndToEndIdentification": "FRESCO.21302.GFX.20",
-   "InstructionPriority": "Normal",
-   "CurrencyOfTransfer": "USD",
-   "InstructedAmount": {
-    "Amount": "165.88",
-    "Currency": "GBP"
-   },
-   "CreditorAccount": {
-    "SchemeName": "UK.OBIE.SortCodeAccountNumber",
-    "Identification": "08080021325698",
-    "Name": "ACME Inc",
-    "SecondaryIdentification": "0002"
-   },
-   "RemittanceInformation": {
-     "Structured": [
-       {
-         "CreditorReferenceInformation": {
-           "Reference": "FRESCO-101"
-         }
-       }
-     ],
-    "Unstructured": ["Internal ops code 5120101"]
-   },
-   "ExchangeRateInformation": {
-    "UnitCurrency": "GBP",
-    "RateType": "Indicative"
-   }
+  "Data": {
+    "Initiation": {
+      "InstructionIdentification": "ACME412",
+      "EndToEndIdentification": "FRESCO.21302.GFX.20",
+      "InstructionPriority": "Normal",
+      "CurrencyOfTransfer": "USD",
+      "InstructedAmount": {
+        "Amount": "165.88",
+        "Currency": "GBP"
+      },
+      "CreditorAccount": {
+        "SchemeName": "UK.OBIE.SortCodeAccountNumber",
+        "Identification": "08080021325698",
+        "Name": "ACME Inc",
+        "SecondaryIdentification": "0002"
+      },
+      "RemittanceInformation": {
+        "Structured": [
+          {
+            "CreditorReferenceInformation": {
+              "Reference": "FRESCO-101"
+            }
+          }
+        ],
+        "Unstructured": [
+          "Internal ops code 5120101"
+        ]
+      },
+      "ExchangeRateInformation": {
+        "UnitCurrency": "GBP",
+        "RateType": "Indicative"
+      }
+    }
+  },
+  "Risk": {
+    "PaymentContextCode": "TransferToThirdParty"
   }
- },
- "Risk": {
-  "PaymentContextCode": "TransferToThirdParty"
- }
 }
 ```
 
@@ -247,27 +253,26 @@ Content-Type: application/json
 
 ```json
 {
-	"Data": {
-		"ConsentId": "58923",
-		"Status": "AWAU",
-		"CutOffDateTime": "2017-06-05T16:00:13+00:00",
-		"CreationDateTime": "2017-06-05T15:15:13+00:00",
-		"StatusUpdateDateTime": "2017-06-05T15:15:13+00:00",
-		"Initiation": {},
-		"ExchangeRateInformation": {
-			"UnitCurrency": "GBP",
-			"ExchangeRate": 1.10,
-			"RateType": "Indicative"
-		},
-	},
-	"Risk": {
-		"PaymentContextCode": "TransferToThirdParty"
-
-	},
-	"Links": {
-		"Self": "https://api.alphabank.com/open-banking/v4.0/pisp/international-payment-consents/58923"
-	},
-	"Meta": {}
+  "Data": {
+    "ConsentId": "58923",
+    "Status": "AWAU",
+    "CutOffDateTime": "2017-06-05T16:00:13+00:00",
+    "CreationDateTime": "2017-06-05T15:15:13+00:00",
+    "StatusUpdateDateTime": "2017-06-05T15:15:13+00:00",
+    "Initiation": {},
+    "ExchangeRateInformation": {
+      "UnitCurrency": "GBP",
+      "ExchangeRate": 1.10,
+      "RateType": "Indicative"
+    }
+  },
+  "Risk": {
+    "PaymentContextCode": "TransferToThirdParty"
+  },
+  "Links": {
+    "Self": "https://api.alphabank.com/open-banking/v4.0/pisp/international-payment-consents/58923"
+  },
+  "Meta": {}
 }
 ```
 
@@ -291,43 +296,45 @@ Accept: application/json
 
 ```json
 {
- "Data": {
-  "Initiation": {
-   "InstructionIdentification": "ACME412",
-   "EndToEndIdentification": "FRESCO.21302.GFX.20",
-   "InstructionPriority": "Normal",
-   "CurrencyOfTransfer": "USD",
-   "InstructedAmount": {
-    "Amount": "165.88",
-    "Currency": "GBP"
-   },
-   "CreditorAccount": {
-    "SchemeName": "UK.OBIE.SortCodeAccountNumber",
-    "Identification": "08080021325698",
-    "Name": "ACME Inc",
-    "SecondaryIdentification": "0002"
-   },
-   "RemittanceInformation": {
-     "Structured": [
-       {
-         "CreditorReferenceInformation": {
-           "Reference": "FRESCO-101"
-         }
-       }
-     ],
-    "Unstructured": ["Internal ops code 5120101"]
-   },
-   "ExchangeRateInformation": {
-    "UnitCurrency": "GBP",
-    "RateType": "Agreed",
-    "ExchangeRate": 1.09,
-    "ContractIdentification": "/tbill/2018/T102993"
-   }
+  "Data": {
+    "Initiation": {
+      "InstructionIdentification": "ACME412",
+      "EndToEndIdentification": "FRESCO.21302.GFX.20",
+      "InstructionPriority": "Normal",
+      "CurrencyOfTransfer": "USD",
+      "InstructedAmount": {
+        "Amount": "165.88",
+        "Currency": "GBP"
+      },
+      "CreditorAccount": {
+        "SchemeName": "UK.OBIE.SortCodeAccountNumber",
+        "Identification": "08080021325698",
+        "Name": "ACME Inc",
+        "SecondaryIdentification": "0002"
+      },
+      "RemittanceInformation": {
+        "Structured": [
+          {
+            "CreditorReferenceInformation": {
+              "Reference": "FRESCO-101"
+            }
+          }
+        ],
+        "Unstructured": [
+          "Internal ops code 5120101"
+        ]
+      },
+      "ExchangeRateInformation": {
+        "UnitCurrency": "GBP",
+        "RateType": "Agreed",
+        "ExchangeRate": 1.09,
+        "ContractIdentification": "/tbill/2018/T102993"
+      }
+    }
+  },
+  "Risk": {
+    "PaymentContextCode": "TransferToThirdParty"
   }
- },
- "Risk": {
-  "PaymentContextCode": "TransferToThirdParty"
- }
 }
 ```
 
@@ -342,28 +349,27 @@ Content-Type: application/json
 
 ```json
 {
-	"Data": {
-		"ConsentId": "58923",
-		"Status": "AWAU",
-		"CutOffDateTime": "2017-06-05T16:00:13+00:00",
-		"CreationDateTime": "2017-06-05T15:15:13+00:00",
-		"StatusUpdateDateTime": "2017-06-05T15:15:13+00:00",
-		"Initiation": {},
-		"ExchangeRateInformation": {
-			"UnitCurrency": "GBP",
-	 		"RateType": "Agreed",
-			"ExchangeRate": 1.09,
-			"ContractIdentification": "/tbill/2018/T102993"
-	 	}
-	},
-	"Risk": {
-		"PaymentContextCode": "TransferToThirdParty"
-
-	},
-	"Links": {
-		"Self": "https://api.alphabank.com/open-banking/v4.0/pisp/international-payment-consents/58923"
-	},
-	"Meta": {}
+  "Data": {
+    "ConsentId": "58923",
+    "Status": "AWAU",
+    "CutOffDateTime": "2017-06-05T16:00:13+00:00",
+    "CreationDateTime": "2017-06-05T15:15:13+00:00",
+    "StatusUpdateDateTime": "2017-06-05T15:15:13+00:00",
+    "Initiation": {},
+    "ExchangeRateInformation": {
+      "UnitCurrency": "GBP",
+      "RateType": "Agreed",
+      "ExchangeRate": 1.09,
+      "ContractIdentification": "/tbill/2018/T102993"
+    }
+  },
+  "Risk": {
+    "PaymentContextCode": "TransferToThirdParty"
+  },
+  "Links": {
+    "Self": "https://api.alphabank.com/open-banking/v4.0/pisp/international-payment-consents/58923"
+  },
+  "Meta": {}
 }
 ```
 
@@ -389,40 +395,42 @@ Accept: application/json
 
 ```json
 {
- "Data": {
-  "Initiation": {
-   "InstructionIdentification": "ACME412",
-   "EndToEndIdentification": "FRESCO.21302.GFX.20",
-   "InstructedAmount": {
-    "Amount": "165.88",
-    "Currency": "USD"
-   },
-   "CurrencyOfTransfer": "USD",
-   "CreditorAccount": {
-    "SchemeName": "UK.OBIE.SortCodeAccountNumber",
-    "Identification": "08080021325698",
-    "Name": "ACME Inc",
-    "SecondaryIdentification": "0002"
-   },
-   "RemittanceInformation": {
-     "Structured": [
-       {
-         "CreditorReferenceInformation": {
-           "Reference": "FRESCO-101"
-         }
-       }
-     ],
-    "Unstructured": ["Internal ops code 5120101"]
-   },
-   "ExchangeRateInformation": {
-    "UnitCurrency": "GBP",
-    "RateType": "Actual"
-   }
+  "Data": {
+    "Initiation": {
+      "InstructionIdentification": "ACME412",
+      "EndToEndIdentification": "FRESCO.21302.GFX.20",
+      "InstructedAmount": {
+        "Amount": "165.88",
+        "Currency": "USD"
+      },
+      "CurrencyOfTransfer": "USD",
+      "CreditorAccount": {
+        "SchemeName": "UK.OBIE.SortCodeAccountNumber",
+        "Identification": "08080021325698",
+        "Name": "ACME Inc",
+        "SecondaryIdentification": "0002"
+      },
+      "RemittanceInformation": {
+        "Structured": [
+          {
+            "CreditorReferenceInformation": {
+              "Reference": "FRESCO-101"
+            }
+          }
+        ],
+        "Unstructured": [
+          "Internal ops code 5120101"
+        ]
+      },
+      "ExchangeRateInformation": {
+        "UnitCurrency": "GBP",
+        "RateType": "Actual"
+      }
+    }
+  },
+  "Risk": {
+    "PaymentContextCode": "TransferToThirdParty"
   }
- },
- "Risk": {
-  "PaymentContextCode": "TransferToThirdParty"
- }
 }
 ```
 
@@ -437,46 +445,48 @@ Content-Type: application/json
 
 ```json
 {
- "Data": {
-  "ConsentId": "58923",
-  "Status": "AWAU",
-  "CutOffDateTime": "2017-06-05T16:00:13+00:00",
-  "CreationDateTime": "2017-06-05T15:15:13+00:00",
-  "StatusUpdateDateTime": "2017-06-05T15:15:13+00:00",
-  "Initiation": {
-   "InstructionIdentification": "ACME412",
-   "EndToEndIdentification": "FRESCO.21302.GFX.20",
-   "InstructionPriority": "Normal",
-   "CurrencyOfTransfer": "USD",
-   "InstructedAmount": {
-    "Amount": "165.88",
-    "Currency": "GBP"
-   },
-   "CreditorAccount": {
-    "SchemeName": "UK.OBIE.SortCodeAccountNumber",
-    "Identification": "08080021325698",
-    "Name": "ACME Inc",
-    "SecondaryIdentification": "0002"
-   },
-   "RemittanceInformation": {
-     "Structured": [
-       {
-         "CreditorReferenceInformation": {
-           "Reference": "FRESCO-101"
-         }
-       }
-     ],
-    "Unstructured": ["Internal ops code 5120101"]
-   },
-   "ExchangeRateInformation": {
-    "UnitCurrency": "GBP",
-    "RateType": "Actual"
-   }
+  "Data": {
+    "ConsentId": "58923",
+    "Status": "AWAU",
+    "CutOffDateTime": "2017-06-05T16:00:13+00:00",
+    "CreationDateTime": "2017-06-05T15:15:13+00:00",
+    "StatusUpdateDateTime": "2017-06-05T15:15:13+00:00",
+    "Initiation": {
+      "InstructionIdentification": "ACME412",
+      "EndToEndIdentification": "FRESCO.21302.GFX.20",
+      "InstructionPriority": "Normal",
+      "CurrencyOfTransfer": "USD",
+      "InstructedAmount": {
+        "Amount": "165.88",
+        "Currency": "GBP"
+      },
+      "CreditorAccount": {
+        "SchemeName": "UK.OBIE.SortCodeAccountNumber",
+        "Identification": "08080021325698",
+        "Name": "ACME Inc",
+        "SecondaryIdentification": "0002"
+      },
+      "RemittanceInformation": {
+        "Structured": [
+          {
+            "CreditorReferenceInformation": {
+              "Reference": "FRESCO-101"
+            }
+          }
+        ],
+        "Unstructured": [
+          "Internal ops code 5120101"
+        ]
+      },
+      "ExchangeRateInformation": {
+        "UnitCurrency": "GBP",
+        "RateType": "Actual"
+      }
+    }
+  },
+  "Risk": {
+    "PaymentContextCode": "TransferToThirdParty"
   }
- },
- "Risk": {
-  "PaymentContextCode": "TransferToThirdParty"
- }
 }
 ```
 
@@ -500,30 +510,32 @@ Accept: application/json
 
 ```json
 {
- "Data": {
-  "Initiation": {
-   "InstructionIdentification": "ACME412",
-   "EndToEndIdentification": "FRESCO.21302.GFX.20",
-   "ChargeBearer": "BorneByDebtor",
-   "RemittanceInformation": {
-     "Structured": [
-       {
-         "CreditorReferenceInformation": {
-           "Reference": "FRESCO-101"
-         }
-       }
-     ],
-    "Unstructured": ["Internal ops code 5120101"]
-   },
-	 "ExchangeRateInformation": {
-		"UnitCurrency": "USD",
-	 	"RateType": "Indicative"
-	 }
+  "Data": {
+    "Initiation": {
+      "InstructionIdentification": "ACME412",
+      "EndToEndIdentification": "FRESCO.21302.GFX.20",
+      "ChargeBearer": "BorneByDebtor",
+      "RemittanceInformation": {
+        "Structured": [
+          {
+            "CreditorReferenceInformation": {
+              "Reference": "FRESCO-101"
+            }
+          }
+        ],
+        "Unstructured": [
+          "Internal ops code 5120101"
+        ]
+      },
+      "ExchangeRateInformation": {
+        "UnitCurrency": "USD",
+        "RateType": "Indicative"
+      }
+    }
+  },
+  "Risk": {
+    "PaymentContextCode": "TransferToThirdParty"
   }
- },
- "Risk": {
-  "PaymentContextCode": "TransferToThirdParty"
- }
 }
 ```
 
@@ -538,31 +550,32 @@ Content-Type: application/json
 
 ```json
 {
-	"Data": {
-		"ConsentId": "58923",
-		"Status": "AWAU",
-		"CutOffDateTime": "2017-06-05T16:00:13+00:00",
-		"CreationDateTime": "2017-06-05T15:15:13+00:00",
-		"StatusUpdateDateTime": "2017-06-05T15:15:13+00:00",
-		"Initiation": {},
-    "Charges":[{
-      "ChargeBearer": "BorneByDebtor",
-      "Type":"UK.OBIE.MoneyTransferOut"
-     }],
+  "Data": {
+    "ConsentId": "58923",
+    "Status": "AWAU",
+    "CutOffDateTime": "2017-06-05T16:00:13+00:00",
+    "CreationDateTime": "2017-06-05T15:15:13+00:00",
+    "StatusUpdateDateTime": "2017-06-05T15:15:13+00:00",
+    "Initiation": {},
+    "Charges": [
+      {
+        "ChargeBearer": "BorneByDebtor",
+        "Type": "UK.OBIE.MoneyTransferOut"
+      }
+    ],
     "ExchangeRateInformation": {
-			"UnitCurrency": "USD",
-			"ExchangeRate": 0.9090,
-			"RateType": "Indicative"
-		}
-	},
-	"Risk": {
-		"PaymentContextCode": "TransferToThirdParty"
-
-	},
-	"Links": {
-		"Self": "https://api.alphabank.com/open-banking/v4.0/pisp/international-payment-consents/58923"
-	},
-	"Meta": {}
+      "UnitCurrency": "USD",
+      "ExchangeRate": 0.9090,
+      "RateType": "Indicative"
+    }
+  },
+  "Risk": {
+    "PaymentContextCode": "TransferToThirdParty"
+  },
+  "Links": {
+    "Self": "https://api.alphabank.com/open-banking/v4.0/pisp/international-payment-consents/58923"
+  },
+  "Meta": {}
 }
 
 ```
