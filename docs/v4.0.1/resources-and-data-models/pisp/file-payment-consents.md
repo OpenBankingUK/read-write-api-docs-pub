@@ -13,9 +13,9 @@
     - [Payment Order Consent](#payment-order-consent)
 - [Data Model](#data-model)
   - [Reused Classes](#reused-classes)
-	- [OBRemittanceInformation2](#obremittanceinformation2)
-	- [OBUltimateDebtor1](#obultimatedebtor1)
-	- [OBPostalAddress7](#obpostaladdress7)
+    - [OBRemittanceInformation2](#obremittanceinformation2)
+    - [OBUltimateDebtor1](#obultimatedebtor1)
+    - [OBPostalAddress7](#obpostaladdress7)
     - [OBFile2](#obfile2)
       - [UML Diagram](#uml-diagram)
       - [Notes](#notes)
@@ -51,7 +51,7 @@ This resource description should be read in conjunction with a compatible Paymen
 | file-payment-consents |GET |GET /file-payment-consents/{ConsentId} |Mandatory (if resource POST implemented) |payments |Client Credentials |Signed Response |No |NA |OBWriteFileConsentResponse4 |
 | file-payment-consents |GET |GET /file-payment-consents/{ConsentId}/file |Conditional |payments |Client Credentials |Signed Response |No |NA |File |
 
-### POST /file-payment-consents 
+### POST /file-payment-consents
 
 The API endpoint allows the PISP to ask an ASPSP to create a new **file-payment-consent** resource.
 
@@ -94,7 +94,7 @@ The default Status is "AWAU" immediately after the file has been uploaded.
 
 ### GET /file-payment-consents/{ConsentId}
 
-A PISP can optionally retrieve a payment consent resource that they have created to check its status. 
+A PISP can optionally retrieve a payment consent resource that they have created to check its status.
 
 #### Status
 
@@ -113,7 +113,6 @@ The available Status codes for the file-payment-consent resource are:
 | AWUP |
 | RJCT |
 | COND |
-
 
 ### GET /file-payment-consents/{ConsentId}/file
 
@@ -156,11 +155,11 @@ The data dictionary section gives the detail on the payload content for the File
 
 The OBRemittanceInformation2 class is defined in the [payment-initiation-api-profile](../../profiles/payment-initiation-api-profile.md#obremittanceinformation2) page.
 
-#### OBUltimateDebtor1 
+#### OBUltimateDebtor1
 
 The OBUltimateDebtor1 class is defined in the [payment-initiation-api-profile](../../profiles/payment-initiation-api-profile.md#obultimatedebtor1) page.
 
-#### OBPostalAddress7 
+#### OBPostalAddress7
 
 The OBPostalAddress7 class is defined in the [payment-initiation-api-profile](../../profiles/payment-initiation-api-profile.md#obpostaladdress7) page
 
@@ -176,7 +175,7 @@ This section describes the OBFile2 class, which is reused as the Initiation obje
 
 * TPPs should refer to ASPSP developer portals for information on which File Payment endpoints are available, specification of accepted file format(s) and information on File Payment statuses.
 
-For the OBFile2 Initiation object: 
+For the OBFile2 Initiation object:
 
 * All elements in the Initiation payload that are specified by the PISP must not be changed via the ASPSP, as this is part of formal consent from the PSU.
 * If the ASPSP is able to establish a problem with payload or any contextual error during the API call, the ASPSP must reject the file-payment-consent request immediately.
@@ -218,7 +217,7 @@ The OBWriteFileConsent3 object will be used for the call to:
 
 ![OBWriteFileConsent3](./images/OBWriteFileConsent3.svg )
 
-#### Notes 
+#### Notes
 
 The file-payment-consent **request** contains these objects:
 
@@ -283,7 +282,6 @@ The file-payment-consent **response** contains the full **original** payload fro
 | SCASupportData |0..1 |OBWriteFileConsentResponse4/Data/SCASupportData |Supporting Data provided by TPP, when requesting SCA Exemption. |OBSCASupportData1 |                              | |
 | Debtor |0..1 |OBWriteFileConsentResponse4/Data/Debtor |Set of elements used to identify a person or an organisation. |OBCashAccountDebtor4 |                              | |
 
-
 ## Usage Examples
 
 ### POST /file-payment-consents
@@ -305,146 +303,19 @@ Accept: application/json
 ```json
 {
   "Data": {
-	"Authorisation": {
-	  "AuthorisationType": "Any", 
-      "CompletionDateTime": "2025-05-30T10:35:27Z",
-   	},
+    "Authorisation": {
+      "AuthorisationType": "Any",
+      "CompletionDateTime": "2025-05-30T10:35:27Z"
+    },
     "Initiation": {
       "FileType": "UK.OBIE.pain.001.001.08",
       "FileHash": "m5ah/h1UjLvJYMxqAoZmj9dKdjZnsGNm+yMkJp/KuqQ",
       "FileReference": "GB2OK238",
       "NumberOfTransactions": "100",
       "ControlSum": 3459.30,
-	  "RequestedExecutionDateTime": "2024-06-03T00:00:00Z",
-	  "LocalInstrument": "UK.OBIE.CHAPS",
-	  "DebtorAccount": {
-        "SchemeName": "UK.OBIE.SortCodeAccountNumber",
-        "Identification": "11280001234567",
-        "Name": "Andrea Smith",
-        "SecondaryIdentification": "0002",
-         "Proxy": {
-          "Identification": "441234012345",
-          "Code": "TELE",
-		  "Type": "Telephone"
-          }
-      	},
-		"UltimateDebtor": {
-          "SchemeName": "UK.OBIE.BICFI",
-          "Identification": "2360549017905161589",
-          "Name": "Ultimate Debtor",
-          "LEI": "8200007YHFDMEODY1965",
-          "PostalAddress": {
-            "AddressType": "BIZZ",
-            "StreetName": "Bank Street",
-            "BuildingNumber": "11",
-            "Floor": "6",
-            "PostCode": "Z78 4TY",
-            "TownName": "London",
-            "Country": "UK"
-          }
-        },
-		 "CreditorAgent": {  
-          "LEI": "IZ9Q00LZEVUKWCQY6X15",
-          "SchemeName": "UK.OBIE.BICFI",
-          "Identification": "80200112344562",
-          "Name": "The Credit Agent", 
-          "PostalAddress": { 
-            "AddressType": "BIZZ",
-            "StreetName": "Bank Street",
-            "BuildingNumber": "11",
-            "Floor": "6",
-            "PostCode": "Z78 4TY",
-            "TownName": "London",
-            "Country": "UK"
-        }
-      },
-	    "RemittanceInformation": {
-          "Structured": [
-          {
-            "ReferredDocumentInformation": [
-              {
-                "Code": "CINV",
-                "Issuer": "Issuer01",
-                "Number": "Number_01",
-                "RelatedDate": "2024-04-25T13:26:41.911Z",
-                "LineDetails": [
-                  "string"
-                ]
-              }
-            ],
-            "ReferredDocumentAmount": 1,
-            "CreditorReferenceInformation": {
-              "Code": "DISP",
-              "Issuer": "Issuer01",
-              "Reference": "REF_26518"
-            },
-            "Invoicer": "INVR51856",
-            "Invoicee": "INVE5161856",
-			"TaxRemittance": "Tax Remittance related information",
-          	"AdditionalRemittanceInformation": ["Free text for additional information"],
-          }
-        ],
-	     "Unstructured": ["Internal ops code 5120101"]
-      }
-	},
-	"SCASupportData": {
-	    "RequestedSCAExemptionType": "EcommerceGoods",
-		"AppliedAuthenticationApproach": "SCA",
-		"ReferencePaymentOrderId": "O-611265",
-    },
-  }
-}
-```
-
-#### Response
-
-```
-HTTP/1.1 201 Created
-x-jws-signature: V2hhdCB3ZSBnb3QgaGVyZQ0K..aXMgZmFpbHVyZSB0byBjb21tdW5pY2F0ZQ0K
-x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
-Content-Type: application/json
-```
-
-```json
-{
-  "Data": {
-    "ConsentId" : "512345",
-    "Status": "AWUP",
-    "CreationDateTime": "2018-06-05T15:15:13+00:00",
-    "StatusUpdateDateTime": "2018-06-05T15:15:13+00:00",
-	"CutOffDateTime": "2018-07-05T15:15:22+00:00",
-	"StatusReason": [{ 
-		"StatusReasonCode": "U036",
-		"StatusReasonDescription": "Authorisation not completed. Awaiting file upload"
-	}],
-	"Charges": [{
-		"ChargeBearer": "Shared",
-		"Type": "UK.OBIE.CHAPSOut",
-		"Amount": {
-      "Amount": "0.88",
-      "Currency": "GBP"
-    }
-  }],
-	"Authorisation": {
-      "Type": "Any",
-      "CompletionDateTime": "2019-05-30T10:35:27Z"
-    },
-	"Debtor": { 
-	 	"SchemeName": "UK.OBIE.SortCodeAccountNumber",
-        "Identification": "11280001234567",
-		"LEI": "8200007YHFDMEODY1965",
-        "Name": "Andrea Smith",
-        "SecondaryIdentification": "0002"	
-	},
-    "Initiation": {
-	  "LocalInstrument": "UK.OBIE.Paym",
-	  "RequestedExecutionDateTime": "2017-06-05T15:15:22+00:00",
-      "FileType": "UK.OBIE.pain.001.001.08",
-      "FileHash": "m5ah/h1UjLvJYMxqAoZmj9dKdjZnsGNm+yMkJp/KuqQ",
-      "FileReference": "GB2OK238",
-      "NumberOfTransactions": "100",
-      "ControlSum": 3459.30,
-	  "DebtorAccount": {
+      "RequestedExecutionDateTime": "2024-06-03T00:00:00Z",
+      "LocalInstrument": "UK.OBIE.CHAPS",
+      "DebtorAccount": {
         "SchemeName": "UK.OBIE.SortCodeAccountNumber",
         "Identification": "11280001234567",
         "Name": "Andrea Smith",
@@ -452,40 +323,40 @@ Content-Type: application/json
         "Proxy": {
           "Identification": "441234012345",
           "Code": "TELE",
-		  "Type": "Telephone"
-          }
-      	},
-	  "CreditorAgent": {  
-		"LEI": "IZ9Q00LZEVUKWCQY6X15",
-		"SchemeName": "UK.OBIE.BICFI",
-		"Identification": "80200112344562",
-		"Name": "The Credit Agent", 
-		"PostalAddress": { 
-		"AddressType": "BIZZ",
-		"StreetName": "Bank Street",
-		"BuildingNumber": "11",
-		"Floor": "6",
-		"PostCode": "Z78 4TY",
-		"TownName": "London",
-		"Country": "UK"
+          "Type": "Telephone"
         }
       },
-	  "UltimateDebtor": {
-		"SchemeName": "UK.OBIE.BICFI",
-		"Identification": "2360549017905161589",
-		"Name": "Ultimate Debtor",
-		"LEI": "8200007YHFDMEODY1965",
-		"PostalAddress": {
-			"AddressType": "BIZZ",
-			"StreetName": "Bank Street",
-			"BuildingNumber": "11",
-			"Floor": "6",
-			"PostCode": "Z78 4TY",
-			"TownName": "London",
-			"Country": "UK"
-			}
-  		},
-	   "RemittanceInformation": {
+      "UltimateDebtor": {
+        "SchemeName": "UK.OBIE.BICFI",
+        "Identification": "2360549017905161589",
+        "Name": "Ultimate Debtor",
+        "LEI": "8200007YHFDMEODY1965",
+        "PostalAddress": {
+          "AddressType": "BIZZ",
+          "StreetName": "Bank Street",
+          "BuildingNumber": "11",
+          "Floor": "6",
+          "PostCode": "Z78 4TY",
+          "TownName": "London",
+          "Country": "UK"
+        }
+      },
+      "CreditorAgent": {
+        "LEI": "IZ9Q00LZEVUKWCQY6X15",
+        "SchemeName": "UK.OBIE.BICFI",
+        "Identification": "80200112344562",
+        "Name": "The Credit Agent",
+        "PostalAddress": {
+          "AddressType": "BIZZ",
+          "StreetName": "Bank Street",
+          "BuildingNumber": "11",
+          "Floor": "6",
+          "PostCode": "Z78 4TY",
+          "TownName": "London",
+          "Country": "UK"
+        }
+      },
+      "RemittanceInformation": {
         "Structured": [
           {
             "ReferredDocumentInformation": [
@@ -507,23 +378,162 @@ Content-Type: application/json
             },
             "Invoicer": "INVR51856",
             "Invoicee": "INVE5161856",
-			"TaxRemittance": "Tax Remittance related information",
-          	"AdditionalRemittanceInformation": ["Free text for additional information"]
+            "TaxRemittance": "Tax Remittance related information",
+            "AdditionalRemittanceInformation": [
+              "Free text for additional information"
+            ]
           }
         ],
-		"Unstructured": ["Internal ops code 5120101"]
-   	  }
+        "Unstructured": [
+          "Internal ops code 5120101"
+        ]
+      }
     },
-	"SCASupportData": {
-	  	"RequestedSCAExemptionType": "EcommerceGoods",
-		"AppliedAuthenticationApproach": "SCA",
-		"ReferencePaymentOrderId": "O-611265"
+    "SCASupportData": {
+      "RequestedSCAExemptionType": "EcommerceGoods",
+      "AppliedAuthenticationApproach": "SCA",
+      "ReferencePaymentOrderId": "O-611265"
+    }
+  }
+}
+```
+
+#### Response
+
+```
+HTTP/1.1 201 Created
+x-jws-signature: V2hhdCB3ZSBnb3QgaGVyZQ0K..aXMgZmFpbHVyZSB0byBjb21tdW5pY2F0ZQ0K
+x-fapi-interaction-id: 93bac548-d2de-4546-b106-880a5018460d
+Content-Type: application/json
+```
+
+```json
+{
+  "Data": {
+    "ConsentId": "512345",
+    "Status": "AWUP",
+    "CreationDateTime": "2018-06-05T15:15:13+00:00",
+    "StatusUpdateDateTime": "2018-06-05T15:15:13+00:00",
+    "CutOffDateTime": "2018-07-05T15:15:22+00:00",
+    "StatusReason": [
+      {
+        "StatusReasonCode": "U036",
+        "StatusReasonDescription": "Authorisation not completed. Awaiting file upload"
+      }
+    ],
+    "Charges": [
+      {
+        "ChargeBearer": "Shared",
+        "Type": "UK.OBIE.CHAPSOut",
+        "Amount": {
+          "Amount": "0.88",
+          "Currency": "GBP"
+        }
+      }
+    ],
+    "Authorisation": {
+      "Type": "Any",
+      "CompletionDateTime": "2019-05-30T10:35:27Z"
+    },
+    "Debtor": {
+      "SchemeName": "UK.OBIE.SortCodeAccountNumber",
+      "Identification": "11280001234567",
+      "LEI": "8200007YHFDMEODY1965",
+      "Name": "Andrea Smith",
+      "SecondaryIdentification": "0002"
+    },
+    "Initiation": {
+      "LocalInstrument": "UK.OBIE.Paym",
+      "RequestedExecutionDateTime": "2017-06-05T15:15:22+00:00",
+      "FileType": "UK.OBIE.pain.001.001.08",
+      "FileHash": "m5ah/h1UjLvJYMxqAoZmj9dKdjZnsGNm+yMkJp/KuqQ",
+      "FileReference": "GB2OK238",
+      "NumberOfTransactions": "100",
+      "ControlSum": 3459.30,
+      "DebtorAccount": {
+        "SchemeName": "UK.OBIE.SortCodeAccountNumber",
+        "Identification": "11280001234567",
+        "Name": "Andrea Smith",
+        "SecondaryIdentification": "0002",
+        "Proxy": {
+          "Identification": "441234012345",
+          "Code": "TELE",
+          "Type": "Telephone"
+        }
+      },
+      "CreditorAgent": {
+        "LEI": "IZ9Q00LZEVUKWCQY6X15",
+        "SchemeName": "UK.OBIE.BICFI",
+        "Identification": "80200112344562",
+        "Name": "The Credit Agent",
+        "PostalAddress": {
+          "AddressType": "BIZZ",
+          "StreetName": "Bank Street",
+          "BuildingNumber": "11",
+          "Floor": "6",
+          "PostCode": "Z78 4TY",
+          "TownName": "London",
+          "Country": "UK"
+        }
+      },
+      "UltimateDebtor": {
+        "SchemeName": "UK.OBIE.BICFI",
+        "Identification": "2360549017905161589",
+        "Name": "Ultimate Debtor",
+        "LEI": "8200007YHFDMEODY1965",
+        "PostalAddress": {
+          "AddressType": "BIZZ",
+          "StreetName": "Bank Street",
+          "BuildingNumber": "11",
+          "Floor": "6",
+          "PostCode": "Z78 4TY",
+          "TownName": "London",
+          "Country": "UK"
+        }
+      },
+      "RemittanceInformation": {
+        "Structured": [
+          {
+            "ReferredDocumentInformation": [
+              {
+                "Code": "CINV",
+                "Issuer": "Issuer01",
+                "Number": "Number_01",
+                "RelatedDate": "2024-04-25T13:26:41.911Z",
+                "LineDetails": [
+                  "string"
+                ]
+              }
+            ],
+            "ReferredDocumentAmount": 1,
+            "CreditorReferenceInformation": {
+              "Code": "DISP",
+              "Issuer": "Issuer01",
+              "Reference": "REF_26518"
+            },
+            "Invoicer": "INVR51856",
+            "Invoicee": "INVE5161856",
+            "TaxRemittance": "Tax Remittance related information",
+            "AdditionalRemittanceInformation": [
+              "Free text for additional information"
+            ]
+          }
+        ],
+        "Unstructured": [
+          "Internal ops code 5120101"
+        ]
+      }
+    },
+    "SCASupportData": {
+      "RequestedSCAExemptionType": "EcommerceGoods",
+      "AppliedAuthenticationApproach": "SCA",
+      "ReferencePaymentOrderId": "O-611265"
     }
   },
-  "Links":{
-    "Self":"https://api.alphabank.com/open-banking/v4.0/pisp/file-payment-consents/512345"
+  "Links": {
+    "Self": "https://api.alphabank.com/open-banking/v4.0/pisp/file-payment-consents/512345"
   },
-  "Meta":{}
+  "Meta": {}
 }
 ```
 
@@ -549,204 +559,204 @@ A sample file with 3 transactions is provided below:
 
 <details>
  <summary>File Data Expand source </summary>
-   
+
 ```xml
 <?xml version="1.0" encoding="UTF-8" ?>
 <Document xmlns="urn:iso:std:iso:20022:tech:xsd:pain.001.001.08" xmlns:xsi="http://www.w3.org/2001/XMLSchema- instance">
-	<CstmrCdtTrfInitn>
-	<GrpHdr>
-		<MsgId>ABC/120928/CCT001</MsgId>
-		<CreDtTm>2012-09-28T14:07:00</CreDtTm>
-		<NbOfTxs>3</NbOfTxs>
-		<CtrlSum>11500000</CtrlSum>
-		<InitgPty>
-			<Nm>ABC Corporation</Nm>
-			<PstlAdr>
-				<StrtNm>Times Square</StrtNm>
-				<BldgNb>7</BldgNb>
-				<PstCd>NY 10036</PstCd>
-				<TwnNm>New York</TwnNm>
-				<Ctry>US</Ctry>
-			</PstlAdr>
-		</InitgPty>
-	</GrpHdr>
-	<PmtInf>
-		<PmtInfId>ABC/086</PmtInfId>
-		<PmtMtd>TRF</PmtMtd>
-		<BtchBookg>false</BtchBookg>
-		<ReqdExctnDt>
-			<Dt>2012-09-29</Dt>
-		</ReqdExctnDt>
-		<Dbtr>
-			<Nm>ABC Corporation</Nm>
-			<PstlAdr>
-				<StrtNm>Times Square</StrtNm>
-				<BldgNb>7</BldgNb>
-				<PstCd>NY 10036</PstCd>
-				<TwnNm>New York</TwnNm>
-				<Ctry>US</Ctry>
-			</PstlAdr>
-		</Dbtr>
-		<DbtrAcct>
-			<Id>
-				<Othr>
-					<Id>00125574999</Id>
-				</Othr>
-			</Id>
-		</DbtrAcct>
-		<DbtrAgt>
-			<FinInstnId>
-				<BICFI>BBBBUS33</BICFI>
-			</FinInstnId>
-		</DbtrAgt>
-		<CdtTrfTxInf>
-			<PmtId>
-				<InstrId>ABC/120928/CCT001/01</InstrId>
-				<EndToEndId>ABC/4562/2012-09-08</EndToEndId>
-			</PmtId>
-			<Amt>
-				<InstdAmt Ccy="JPY">10000000</InstdAmt>
-			</Amt>
-			<ChrgBr>SHAR</ChrgBr>
-			<CdtrAgt>
-				<FinInstnId>
-					<BICFI>AAAAGB2L</BICFI>
-				</FinInstnId>
-			</CdtrAgt>
-			<Cdtr>
-				<Nm>DEF Electronics</Nm>
-				<PstlAdr>
-					<AdrLine>Corn Exchange 5th Floor</AdrLine>
-					<AdrLine>Mark Lane 55</AdrLine>
-					<AdrLine>EC3R7NE London</AdrLine>
-					<AdrLine>GB</AdrLine>
-				</PstlAdr>
-			</Cdtr>
-			<CdtrAcct>
-				<Id>
-					<Othr>
-						<Id>23683707994125</Id>
-					</Othr>
-				</Id>
-			</CdtrAcct>
-			<Purp>
-				<Cd>GDDS</Cd>
-			</Purp>
-			<RmtInf>
-				<Strd>
-					<RfrdDocInf>
-						<Tp>
-							<CdOrPrtry>
-								<Cd>CINV</Cd>
-							</CdOrPrtry>
-						</Tp>
-						<Nb>4562</Nb>
-						<RltdDt>2012-09-08</RltdDt>
-					</RfrdDocInf>
-				</Strd>
-			</RmtInf>
-		</CdtTrfTxInf>
-		<CdtTrfTxInf>
-			<PmtId>
-				<InstrId>ABC/120928/CCT001/2</InstrId>
-				<EndToEndId>ABC/ABC-13679/2012-09-15</EndToEndId>
-			</PmtId>
-			<Amt>
-				<InstdAmt Ccy="EUR">500000</InstdAmt>
-			</Amt>
-			<ChrgBr>CRED</ChrgBr>
-			<CdtrAgt>
-				<FinInstnId>
-					<BICFI>DDDDBEBB</BICFI>
-				</FinInstnId>
-			</CdtrAgt>
-			<Cdtr>
-				<Nm>GHI Semiconductors</Nm>
-				<PstlAdr>
-					<StrtNm>Avenue Brugmann</StrtNm>
-					<BldgNb>415</BldgNb>
-					<PstCd>1180</PstCd>
-					<TwnNm>Brussels</TwnNm>
-					<Ctry>BE</Ctry>
-				</PstlAdr>
-			</Cdtr>
-			<CdtrAcct>
-				<Id>
-					<IBAN>BE30001216371411</IBAN>
-				</Id>
-			</CdtrAcct>
-			<InstrForCdtrAgt>
-				<Cd>PHOB</Cd>
-				<InstrInf>+32/2/2222222</InstrInf>
-			</InstrForCdtrAgt>
-			<Purp>
-				<Cd>GDDS</Cd>
-			</Purp>
-			<RmtInf>
-				<Strd>
-					<RfrdDocInf>
-						<Tp>
-							<CdOrPrtry>
-								<Cd>CINV</Cd>
-							</CdOrPrtry>
-						</Tp>
-						<Nb>ABC-13679</Nb>
-						<RltdDt>2012-09-15</RltdDt>
-					</RfrdDocInf>
-				</Strd>
-			</RmtInf>
-		</CdtTrfTxInf>
-		<CdtTrfTxInf>
-			<PmtId>
-				<InstrId>ABC/120928/CCT001/3</InstrId>
-				<EndToEndId>ABC/987-AC/2012-09-27</EndToEndId>
-			</PmtId>
-			<Amt>
-				<InstdAmt Ccy="USD">1000000</InstdAmt>
-			</Amt>
-			<ChrgBr>SHAR</ChrgBr>
-			<CdtrAgt>
-				<FinInstnId>
-					<BICFI>BBBBUS66</BICFI>
-				</FinInstnId>
-			</CdtrAgt>
-			<Cdtr>
-				<Nm>ABC Corporation</Nm>
-				<PstlAdr>
-					<Dept>Treasury department</Dept>
-					<StrtNm>Bush Street</StrtNm>
-					<BldgNb>13</BldgNb>
-					<PstCd>CA 94108</PstCd>
-					<TwnNm>San Francisco</TwnNm>
-					<Ctry>US</Ctry>
-				</PstlAdr>
-			</Cdtr>
-			<CdtrAcct>
-				<Id>
-					<Othr>
-						<Id>4895623</Id>
-					</Othr>
-				</Id>
-			</CdtrAcct>
-			<Purp>
-				<Cd>INTC</Cd>
-			</Purp>
-			<RmtInf>
-				<Strd>
-					<RfrdDocInf>
-						<Tp>
-							<CdOrPrtry>
-								<Cd>CINV</Cd>
-							</CdOrPrtry>
-						</Tp>
-						<Nb>987-AC</Nb>
-						<RltdDt>2012-09-27</RltdDt>
-					</RfrdDocInf>
-				</Strd>
-			</RmtInf>
-		</CdtTrfTxInf>
-	</PmtInf>
-</CstmrCdtTrfInitn>
+    <CstmrCdtTrfInitn>
+        <GrpHdr>
+            <MsgId>ABC/120928/CCT001</MsgId>
+            <CreDtTm>2012-09-28T14:07:00</CreDtTm>
+            <NbOfTxs>3</NbOfTxs>
+            <CtrlSum>11500000</CtrlSum>
+            <InitgPty>
+                <Nm>ABC Corporation</Nm>
+                <PstlAdr>
+                    <StrtNm>Times Square</StrtNm>
+                    <BldgNb>7</BldgNb>
+                    <PstCd>NY 10036</PstCd>
+                    <TwnNm>New York</TwnNm>
+                    <Ctry>US</Ctry>
+                </PstlAdr>
+            </InitgPty>
+        </GrpHdr>
+        <PmtInf>
+            <PmtInfId>ABC/086</PmtInfId>
+            <PmtMtd>TRF</PmtMtd>
+            <BtchBookg>false</BtchBookg>
+            <ReqdExctnDt>
+                <Dt>2012-09-29</Dt>
+            </ReqdExctnDt>
+            <Dbtr>
+                <Nm>ABC Corporation</Nm>
+                <PstlAdr>
+                    <StrtNm>Times Square</StrtNm>
+                    <BldgNb>7</BldgNb>
+                    <PstCd>NY 10036</PstCd>
+                    <TwnNm>New York</TwnNm>
+                    <Ctry>US</Ctry>
+                </PstlAdr>
+            </Dbtr>
+            <DbtrAcct>
+                <Id>
+                    <Othr>
+                        <Id>00125574999</Id>
+                    </Othr>
+                </Id>
+            </DbtrAcct>
+            <DbtrAgt>
+                <FinInstnId>
+                    <BICFI>BBBBUS33</BICFI>
+                </FinInstnId>
+            </DbtrAgt>
+            <CdtTrfTxInf>
+                <PmtId>
+                    <InstrId>ABC/120928/CCT001/01</InstrId>
+                    <EndToEndId>ABC/4562/2012-09-08</EndToEndId>
+                </PmtId>
+                <Amt>
+                    <InstdAmt Ccy="JPY">10000000</InstdAmt>
+                </Amt>
+                <ChrgBr>SHAR</ChrgBr>
+                <CdtrAgt>
+                    <FinInstnId>
+                        <BICFI>AAAAGB2L</BICFI>
+                    </FinInstnId>
+                </CdtrAgt>
+                <Cdtr>
+                    <Nm>DEF Electronics</Nm>
+                    <PstlAdr>
+                        <AdrLine>Corn Exchange 5th Floor</AdrLine>
+                        <AdrLine>Mark Lane 55</AdrLine>
+                        <AdrLine>EC3R7NE London</AdrLine>
+                        <AdrLine>GB</AdrLine>
+                    </PstlAdr>
+                </Cdtr>
+                <CdtrAcct>
+                    <Id>
+                        <Othr>
+                            <Id>23683707994125</Id>
+                        </Othr>
+                    </Id>
+                </CdtrAcct>
+                <Purp>
+                    <Cd>GDDS</Cd>
+                </Purp>
+                <RmtInf>
+                    <Strd>
+                        <RfrdDocInf>
+                            <Tp>
+                                <CdOrPrtry>
+                                    <Cd>CINV</Cd>
+                                </CdOrPrtry>
+                            </Tp>
+                            <Nb>4562</Nb>
+                            <RltdDt>2012-09-08</RltdDt>
+                        </RfrdDocInf>
+                    </Strd>
+                </RmtInf>
+            </CdtTrfTxInf>
+            <CdtTrfTxInf>
+                <PmtId>
+                    <InstrId>ABC/120928/CCT001/2</InstrId>
+                    <EndToEndId>ABC/ABC-13679/2012-09-15</EndToEndId>
+                </PmtId>
+                <Amt>
+                    <InstdAmt Ccy="EUR">500000</InstdAmt>
+                </Amt>
+                <ChrgBr>CRED</ChrgBr>
+                <CdtrAgt>
+                    <FinInstnId>
+                        <BICFI>DDDDBEBB</BICFI>
+                    </FinInstnId>
+                </CdtrAgt>
+                <Cdtr>
+                    <Nm>GHI Semiconductors</Nm>
+                    <PstlAdr>
+                        <StrtNm>Avenue Brugmann</StrtNm>
+                        <BldgNb>415</BldgNb>
+                        <PstCd>1180</PstCd>
+                        <TwnNm>Brussels</TwnNm>
+                        <Ctry>BE</Ctry>
+                    </PstlAdr>
+                </Cdtr>
+                <CdtrAcct>
+                    <Id>
+                        <IBAN>BE30001216371411</IBAN>
+                    </Id>
+                </CdtrAcct>
+                <InstrForCdtrAgt>
+                    <Cd>PHOB</Cd>
+                    <InstrInf>+32/2/2222222</InstrInf>
+                </InstrForCdtrAgt>
+                <Purp>
+                    <Cd>GDDS</Cd>
+                </Purp>
+                <RmtInf>
+                    <Strd>
+                        <RfrdDocInf>
+                            <Tp>
+                                <CdOrPrtry>
+                                    <Cd>CINV</Cd>
+                                </CdOrPrtry>
+                            </Tp>
+                            <Nb>ABC-13679</Nb>
+                            <RltdDt>2012-09-15</RltdDt>
+                        </RfrdDocInf>
+                    </Strd>
+                </RmtInf>
+            </CdtTrfTxInf>
+            <CdtTrfTxInf>
+                <PmtId>
+                    <InstrId>ABC/120928/CCT001/3</InstrId>
+                    <EndToEndId>ABC/987-AC/2012-09-27</EndToEndId>
+                </PmtId>
+                <Amt>
+                    <InstdAmt Ccy="USD">1000000</InstdAmt>
+                </Amt>
+                <ChrgBr>SHAR</ChrgBr>
+                <CdtrAgt>
+                    <FinInstnId>
+                        <BICFI>BBBBUS66</BICFI>
+                    </FinInstnId>
+                </CdtrAgt>
+                <Cdtr>
+                    <Nm>ABC Corporation</Nm>
+                    <PstlAdr>
+                        <Dept>Treasury department</Dept>
+                        <StrtNm>Bush Street</StrtNm>
+                        <BldgNb>13</BldgNb>
+                        <PstCd>CA 94108</PstCd>
+                        <TwnNm>San Francisco</TwnNm>
+                        <Ctry>US</Ctry>
+                    </PstlAdr>
+                </Cdtr>
+                <CdtrAcct>
+                    <Id>
+                        <Othr>
+                            <Id>4895623</Id>
+                        </Othr>
+                    </Id>
+                </CdtrAcct>
+                <Purp>
+                    <Cd>INTC</Cd>
+                </Purp>
+                <RmtInf>
+                    <Strd>
+                        <RfrdDocInf>
+                            <Tp>
+                                <CdOrPrtry>
+                                    <Cd>CINV</Cd>
+                                </CdOrPrtry>
+                            </Tp>
+                            <Nb>987-AC</Nb>
+                            <RltdDt>2012-09-27</RltdDt>
+                        </RfrdDocInf>
+                    </Strd>
+                </RmtInf>
+            </CdtTrfTxInf>
+        </PmtInf>
+    </CstmrCdtTrfInitn>
 </Document>
 ``` 
 
