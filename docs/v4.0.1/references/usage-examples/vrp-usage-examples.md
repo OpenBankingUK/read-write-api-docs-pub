@@ -151,7 +151,7 @@ Content-Type: application/json
     "ControlParameters": {
       "PSUAuthenticationMethods": [ "UK.OBIE.SCA" ],
       "PSUInteractionTypes": [ "OffSession" ],
-      "VRPType": "UK.OBIE.VRPType.Sweeping",
+      "VRPType": ["UK.OBIE.VRPType.Sweeping"],
       "ValidFromDateTime": "2017-06-05T15:15:13+00:00",
       "ValidToDateTime": "2020-06-05T15:15:13+00:00",
       "MaximumIndividualAmount": {
@@ -290,7 +290,7 @@ Content-Type: application/json
     "ControlParameters": {
       "PSUAuthenticationMethods": [ "UK.OBIE.SCA" ],
       "PSUInteractionTypes": [ "OffSession" ],
-      "VRPType": "UK.OBIE.VRPType.Sweeping",
+      "VRPType": ["UK.OBIE.VRPType.Sweeping"],
       "ValidFromDateTime": "2017-06-05T15:15:13+00:00",
       "ValidToDateTime": "2020-06-05T15:15:13+00:00",
       "MaximumIndividualAmount": {
@@ -412,7 +412,7 @@ Accept: application/json
     "ConsentId": "fe615446-e53a-45ed-954c-ae5d1f97a93b",
     "PSUAuthenticationMethod": "UK.OBIE.SCA",
     "PSUInteractionType": "OffSession",
-    "VRPType": "UK.OBIE.VRPType.Sweeping" ,
+    "VRPType": "UK.OBIE.VRPType.Sweeping",
 
     "Initiation": {
       "DebtorAccount": {
@@ -850,7 +850,7 @@ Content-Type: application/json
     "ControlParameters": {
       "PSUAuthenticationMethods": [ "UK.OBIE.SCA" ],
       "PSUInteractionTypes": [ "OffSession" ],
-      "VRPType": "UK.OBIE.VRPType.Sweeping",
+      "VRPType": ["UK.OBIE.VRPType.Sweeping"],
       "ValidFromDateTime": "2017-06-05T15:15:13+00:00",
       "ValidToDateTime": "2020-06-05T15:15:13+00:00",
       "MaximumIndividualAmount": {
