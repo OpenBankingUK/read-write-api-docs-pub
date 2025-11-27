@@ -536,10 +536,10 @@ Content-Type: application/json
     "ConsentId": "58923",
     "Status": "AWAU",
     "LocalInstrument": "UK.OBIE.CHAPS", 
-    "StatusReason": {
+    "StatusReason": [{
       "StatusReasonCode": "U036", 
       "StatusReasonDescription":"Waiting for completion of consent authorisation to be completed by user",
-    },
+    }],
     "CutOffDateTime": "2017-07-05T15:15:22+00:00",
     "ExpectedExecutionDateTime": "2017-06-05T15:15:22+00:00",
     "ExpectedSettlementDateTime": "2017-06-06T15:15:22+00:00",
@@ -553,10 +553,10 @@ Content-Type: application/json
     "Charges": [{
        "ChargeBearer": "Shared",
        "Type": "UK.OBIE.CHAPSOut",
-       "Amount"  {
+       "Amount": {
         "Amount": "0.88",
         "Currency": "GBP"
-      },
+      }
     }],
     "Initiation": {
       "InstructionIdentification": "ACME412",
