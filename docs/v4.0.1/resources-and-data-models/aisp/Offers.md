@@ -152,7 +152,7 @@ Content-Type: application/json
           "Amount": "2000.00",
           "Currency": "GBP"
         }
-      }      
+      }
     ]
   },
   "Links": {
@@ -232,7 +232,7 @@ Content-Type: application/json
           "Amount": "50000.00",
           "Currency": "GBP"
         }
-      }   
+      }
     ]
   },
   "Links": {
