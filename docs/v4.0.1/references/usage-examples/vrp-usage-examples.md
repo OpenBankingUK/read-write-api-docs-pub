@@ -334,7 +334,6 @@ Content-Type: application/json
       "Identification": "GB76LOYD30949301273801",
       "Name": "Marcus Sweepimus",
       "SecondaryIdentification": "008419",
-      "Name": "Marcus Sweepimus",
       "Proxy": {
         "Identification": "441234012345",
         "Code": "TELE",
@@ -347,7 +346,6 @@ Content-Type: application/json
         "Identification": "GB76LOYD30949301273801",
         "Name": "Marcus Sweepimus",
         "SecondaryIdentification": "008419",
-        "Name": "Marcus Sweepimus",
         "Proxy": {
           "Identification": "441234012345",
           "Code": "TELE",
