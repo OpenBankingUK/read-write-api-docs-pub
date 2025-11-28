@@ -555,7 +555,7 @@ A custom claim, `reason` should be used with the event to indicate the reason fo
 The `sub` and `subject` claim references the URL of the `vrp-consent` that gives the TPP access to the account.
 The TPP can then use the GET operation to retrieve the `vrp-consent`
 
-``` json
+```json
 {
   "iss": "https://examplebank.com/",
   "iat": 1516239022,
