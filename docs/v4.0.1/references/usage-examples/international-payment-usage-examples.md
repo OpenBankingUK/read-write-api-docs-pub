@@ -153,7 +153,7 @@ Content-Type: application/json
 
 The example below shows a Scheduled (future dated) payment with final credit amount specified and requesting an Indicative rate to be applied.
 
-**Indicative rate will be applied on RequestedExecutionDateTime, as per the prevailing Indicative rate** . So No Exchange Rate information will be returned in the ASPSP response
+**Indicative rate will be applied on RequestedExecutionDateTime, as per the prevailing Indicative rate**. So No Exchange Rate information will be returned in the ASPSP response
 
 ### POST /international-scheduled-payment-consents
 
