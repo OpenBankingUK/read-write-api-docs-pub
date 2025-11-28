@@ -35,7 +35,7 @@ Once a `domestic-vrp-consents` has been authorised by the PSU, the TPP can proce
 
 This is done by making a POST request to the `domestic-vrps` endpoint.
 
-This request is an instruction to the ASPSP to begin the domestic single immediate payment journey. The domestic payment must be executed immediately, however, there are some scenarios where the domestic payment may not be executed immediately (e.g., busy periods at the ASPSP).
+This request is an instruction to the ASPSP to begin the domestic single immediate payment journey. The domestic payment must be executed immediately, however, there are some scenarios where the domestic payment may not be executed immediately (e.g. busy periods at the ASPSP).
 
 The TPP **must** ensure that the `Initiation` and `Risk` section matches the values specified in the consent.
 
@@ -108,7 +108,7 @@ The API must return one of the following status codes:
 
 ### Payment Order
 
-The state model for the `domestic-vrps` resource follows the behavior and definitions for the ISO 20022 PaymentStatusCode code-set.
+The state model for the `domestic-vrps` resource follows the behaviour and definitions for the ISO 20022 PaymentStatusCode code-set.
 
 __Note: Multi-authorisation is not currently supported in VRP.__
 
