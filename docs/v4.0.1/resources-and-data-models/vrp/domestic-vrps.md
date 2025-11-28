@@ -118,9 +118,7 @@ __Payment order state model key:__
 | Green (Bold) | Mandatory |
 | Orange (Italic) | Optional, but recommended |
 
-
 ![Payment Order Status](./images/PIS_VRP_PO_Statuses_1.png)
-
 
 ## Data Model
 
