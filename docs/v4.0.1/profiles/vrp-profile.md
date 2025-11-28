@@ -33,7 +33,7 @@
     - [OBUltimateCreditor1](#obultimatecreditor1)
       - [Data Dictionary](#obultimatecreditor1-data-dictionary)
     - [OBUltimateDebtor1](#obultimatedebtor1)
-      - [Data Dictionary](#obultimatedebtor1-data-dictionary)  
+      - [Data Dictionary](#obultimatedebtor1-data-dictionary)
     - [OBRegulatoryReporting1](#obregulatoryreporting1)
       - [Data Dictionary](#obregulatoryreporting1-data-dictionary)
 - [Event Notifications](#event-notifications)
@@ -412,6 +412,7 @@ __Example:__
 
 #### HTTP PUT | PATCH  /domestic-vrp-consents/{consentId}
 Implementation of these endpoints is conditional and TPPs should check the ASPSP developer portal for information on which have been implemented. 
+
 Additional information on usage is on the **Domestic VRP Consents** page
 
 ## Data Model
@@ -421,6 +422,7 @@ Additional information on usage is on the **Domestic VRP Consents** page
 #### OBProxy1
 
 ##### OBProxy1 Data Dictionary
+
 | Name | Occurrence | XPath | EnhancedDefinition | Class | Codes |
 | --- | --- | --- | --- | --- | --- | 
 | OBProxy1 | | |Specifies an alternate assumed name for the identification of the account. |OBProxy1 | |
@@ -431,6 +433,7 @@ Additional information on usage is on the **Domestic VRP Consents** page
 #### OBPostalAddress7
 
 ##### OBPostalAddress7 Data Dictionary
+
 | Name | Occurrence | XPath | EnhancedDefinition | Class | Codes | Pattern |
 | --- | --- | --- | --- | --- | --- | --- |
 | OBPostalAddress7 | | |Information that locates and identifies a specific address, as defined by postal services. |OBPostalAddress7 | | |
@@ -456,6 +459,7 @@ Additional information on usage is on the **Domestic VRP Consents** page
 #### OBRemittanceInformation2
 
 ##### OBRemittanceInformation2 Data Dictionary
+
 | Name                            | Occurrence | XPath                                                                       | EnhancedDefinition                                                                                                                                                                                                    | Class                                | Codes                                                                                                                            | Pattern |
 |---------------------------------|------------|-----------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------|----------------------------------------------------------------------------------------------------------------------------------|---------|
 | OBRemittanceInformation2        |            |                                                                             | Information supplied to enable the matching of an entry with the items that the transfer is intended to settle, such as commercial invoices in an accounts' receivable system.                                        | OBRemittanceInformation2             |                                                                                                                                  |         |
@@ -486,6 +490,7 @@ Additional information on usage is on the **Domestic VRP Consents** page
 #### OBUltimateCreditor1
 
 ##### OBUltimateCreditor1 Data Dictionary
+
 | Name | Occurrence | XPath | EnhancedDefinition | Class | Codes | Pattern |
 | --- | --- | --- | --- | --- | --- | --- |
 | OBUltimateCreditor1 | | | Ultimate party to which an amount of money is due.| OBUltimateCreditor1 | | |
@@ -498,14 +503,15 @@ Additional information on usage is on the **Domestic VRP Consents** page
 #### OBUltimateDebtor1
 
 ##### OBUltimateDebtor1 Data Dictionary
+
 | Name | Occurrence | XPath | EnhancedDefinition | Class | Codes | Pattern |
 | --- | --- | --- | --- | --- | --- | --- |
 | OBUltimateDebtor1 | | | Ultimate party that owes an amount of money to the (ultimate) creditor. | OBUltimateDebtor1 | | |
 | Name |0..1 |OBUltimateDebtor1/Name |Name by which a party is known and which is usually used to identify that party. |Max140Text | | |
 | Identification |0..1 |OBUltimateDebtor1/Identification |Identification assigned by an institution. |Max256Text | | |
 | LEI |0..1 | OBUltimateDebtor1/LEI |Legal entity identification as an alternate identification for a party. Legal Entity Identifier is a code allocated to a party as described in ISO 17442 "Financial Services - Legal Entity Identifier (LEI)".|Max20Text | | `^[A-Z0-9]{18,18}[0-9]{2,2}$`|
-| SchemeName |0..1 |OBUltimateDebtor1/SchemeName |Name of the identification scheme, in a coded form as published in an external list. | For a full list of enumeration values refer to `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets). |OBInternalAccountIdentification4Code | 
-| PostalAddress | 0..1 | OBUltimateDebtor1/PostalAddress | Information that locates and identifies a specific address, as defined by postal services. | OBPostalAddress7 | | 
+| SchemeName |0..1 |OBUltimateDebtor1/SchemeName |Name of the identification scheme, in a coded form as published in an external list. | For a full list of enumeration values refer to `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets). |OBInternalAccountIdentification4Code |
+| PostalAddress | 0..1 | OBUltimateDebtor1/PostalAddress | Information that locates and identifies a specific address, as defined by postal services. | OBPostalAddress7 | |
 
 #### OBRegulatoryReporting1
 
