@@ -101,7 +101,7 @@ Accept: application/json
         "DistrictName": "Greater London",
         "CareOf": "Ms Jane Smith",
         "CountrySubDivision": "England",
-        "Country": "UK"
+        "Country": "GB"
       },
       "RemittanceInformation": {
         "Structured": [
@@ -120,7 +120,7 @@ Accept: application/json
     "ContractPresentIndicator": true,
     "PaymentPurposeCode": "EPAY",
     "CategoryPurposeCode": "GP2P", 
-    "BeneficiaryPaymentDetailsPrepopulatedIndicator": true,
+    "BeneficiaryPrepopulatedIndicator": true,
     "BeneficiaryAccountType": "Personal"
   }
 }
@@ -218,7 +218,7 @@ Content-Type: application/json
         "DistrictName": "Greater London",
         "CareOf": "Ms Jane Smith",
         "CountrySubDivision": "England",
-        "Country": "UK"
+        "Country": "GB"
       },
       "RemittanceInformation": {
         "Structured": [
@@ -239,7 +239,7 @@ Content-Type: application/json
     "ContractPresentIndicator": true,
     "PaymentPurposeCode": "EPAY",
     "CategoryPurposeCode": "GP2P", 
-    "BeneficiaryPaymentDetailsPrepopulatedIndicator": true,
+    "BeneficiaryPrepopulatedIndicator": true,
     "BeneficiaryAccountType": "Personal"
   }
   },
@@ -360,7 +360,7 @@ Content-Type: application/json
         "DistrictName": "Greater London",
         "CareOf": "Ms Jane Smith",
         "CountrySubDivision": "England",
-        "Country": "UK"
+        "Country": "GB"
       },
       "RemittanceInformation": {
         "Structured": [
@@ -380,7 +380,7 @@ Content-Type: application/json
     "ContractPresentIndicator": true,
     "PaymentPurposeCode": "EPAY",
     "CategoryPurposeCode": "GP2P", 
-    "BeneficiaryPaymentDetailsPrepopulatedIndicator": true,
+    "BeneficiaryPrepopulatedIndicator": true,
     "BeneficiaryAccountType": "Personal"
 },
   "Links": {
@@ -454,7 +454,7 @@ Accept: application/json
         "DistrictName": "Greater London",
         "CareOf": "Ms Jane Smith",
         "CountrySubDivision": "England",
-        "Country": "UK"
+        "Country": "GB"
       },
     "RemittanceInformation": {
         "Structured": [
@@ -504,7 +504,7 @@ Accept: application/json
         "DistrictName": "Greater London",
         "CareOf": "Ms Jane Smith",
         "CountrySubDivision": "England",
-        "Country": "UK"
+        "Country": "GB"
       },
       "RemittanceInformation": {
         "Structured": [
@@ -524,7 +524,7 @@ Accept: application/json
     "ContractPresentIndicator": true,
     "PaymentPurposeCode": "EPAY",
     "CategoryPurposeCode": "GP2P", 
-    "BeneficiaryPaymentDetailsPrepopulatedIndicator": true,
+    "BeneficiaryPrepopulatedIndicator": true,
     "BeneficiaryAccountType": "Personal"
     }
 }
@@ -612,7 +612,7 @@ Content-Type: application/json
         "DistrictName": "Greater London",
         "CareOf": "Ms Jane Smith",
         "CountrySubDivision": "England",
-        "Country": "UK"
+        "Country": "GB"
       },
      "RemittanceInformation": {
         "Structured": [
@@ -659,7 +659,7 @@ Content-Type: application/json
         "DistrictName": "Greater London",
         "CareOf": "Ms Jane Smith",
         "CountrySubDivision": "England",
-        "Country": "UK"
+        "Country": "GB"
       },
       "InstructedAmount": {
         "Amount": "10.00",
@@ -677,7 +677,7 @@ Content-Type: application/json
           "Floor": "6",
           "PostCode": "Z78 4TY",
           "TownName": "London",
-          "Country": "UK"
+          "Country": "GB"
           }
         },
       "RemittanceInformation": {
@@ -697,7 +697,7 @@ Content-Type: application/json
     "ContractPresentIndicator": true,
     "PaymentPurposeCode": "EPAY",
     "CategoryPurposeCode": "GP2P", 
-    "BeneficiaryPaymentDetailsPrepopulatedIndicator": true,
+    "BeneficiaryPrepopulatedIndicator": true,
     "BeneficiaryAccountType": "Personal"
   },
 
@@ -763,7 +763,7 @@ Accept: application/json
     "ContractPresentIndicator": true,
     "PaymentPurposeCode": "EPAY",
     "CategoryPurposeCode": "GP2P", 
-    "BeneficiaryPaymentDetailsPrepopulatedIndicator": true,
+    "BeneficiaryPrepopulatedIndicator": true,
     "BeneficiaryAccountType": "Personal"
   }
 }
@@ -808,7 +808,7 @@ Content-Type: application/json
     "ContractPresentIndicator": true,
     "PaymentPurposeCode": "EPAY",
     "CategoryPurposeCode": "GP2P", 
-    "BeneficiaryPaymentDetailsPrepopulatedIndicator": true,
+    "BeneficiaryPrepopulatedIndicator": true,
     "BeneficiaryAccountType": "Personal"
   }
 }
@@ -907,7 +907,7 @@ Content-Type: application/json
         "DistrictName": "Greater London",
         "CareOf": "Ms Jane Smith",
         "CountrySubDivision": "England",
-        "Country": "UK"
+        "Country": "GB"
       },
       "CreditorAccount": {
         "SchemeName": "SortCodeAccountNumber",
@@ -939,7 +939,7 @@ Content-Type: application/json
     "ContractPresentIndicator": true,
     "PaymentPurposeCode": "EPAY",
     "CategoryPurposeCode": "GP2P", 
-    "BeneficiaryPaymentDetailsPrepopulatedIndicator": true,
+    "BeneficiaryPrepopulatedIndicator": true,
     "BeneficiaryAccountType": "Personal"
 },
   
@@ -1074,7 +1074,7 @@ Accept: application/json
         "DistrictName": "Greater London",
         "CareOf": "Ms Jane Smith",
         "CountrySubDivision": "England",
-        "Country": "UK"
+        "Country": "GB"
       },
       "UltimateCreditor": {
         "SchemeName": "UK.OBIE.BICFI",
@@ -1088,7 +1088,7 @@ Accept: application/json
           "Floor": "6",
           "PostCode": "Z78 4TY",
           "TownName": "London",
-          "Country": "UK"
+          "Country": "GB"
         }
       },
       "UltimateDebtor": {
@@ -1103,7 +1103,7 @@ Accept: application/json
           "Floor": "6",
           "PostCode": "Z78 4TY",
           "TownName": "London",
-          "Country": "UK"
+          "Country": "GB"
         }
       },
       "RemittanceInformation": {
@@ -1152,7 +1152,7 @@ Accept: application/json
         "DistrictName": "Greater London",
         "CareOf": "Ms Jane Smith",
         "CountrySubDivision": "England",
-        "Country": "UK"
+        "Country": "GB"
       },
       "InstructedAmount": {
         "Amount": "10.00",
@@ -1178,7 +1178,7 @@ Accept: application/json
     "ContractPresentIndicator": true,
     "PaymentPurposeCode": "EPAY",
     "CategoryPurposeCode": "GP2P",
-    "BeneficiaryPaymentDetailsPrepopulatedIndicator": true,
+    "BeneficiaryPrepopulatedIndicator": true,
     "BeneficiaryAccountType": "Personal"
   }
 }
@@ -1262,7 +1262,7 @@ Content-Type: application/json
         "DistrictName": "Greater London",
         "CareOf": "Ms Jane Smith",
         "CountrySubDivision": "England",
-        "Country": "UK"
+        "Country": "GB"
       },
       "RemittanceInformation": {
         "Structured": [
@@ -1309,7 +1309,7 @@ Content-Type: application/json
         "DistrictName": "Greater London",
         "CareOf": "Ms Jane Smith",
         "CountrySubDivision": "England",
-        "Country": "UK"
+        "Country": "GB"
       },
       "InstructedAmount": {
         "Amount": "10.00",
@@ -1334,7 +1334,7 @@ Content-Type: application/json
     "ContractPresentIndicator": true,
     "PaymentPurposeCode": "EPAY",
     "CategoryPurposeCode": "GP2P", 
-    "BeneficiaryPaymentDetailsPrepopulatedIndicator": true,
+    "BeneficiaryPrepopulatedIndicator": true,
     "BeneficiaryAccountType": "Personal"
 },
   
