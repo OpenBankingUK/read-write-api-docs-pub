@@ -567,7 +567,7 @@ This example set of flows and payload examples are for a domestic payment initia
 
 In this scenario:
 
-* The PSU has pre-specified the account from which funds will be transferred (i.e., the Debtor Account details)
+* The PSU has pre-specified the account from which funds will be transferred (i.e. the Debtor Account details)
 * No building society accounts are involved in this interaction, and there only the sort code and account number are specified in the DebtorAccount and CreditorAccount sections.
 
 ### Sequence Diagram
@@ -1243,7 +1243,7 @@ Content-Type: application/json
 ## Balance Transfer
 Below in an example illustrating a balance transfer offer available on a Card A.
 
-To facilitate a Balance Transfer, a PISP can initiate a Payment from Card B to Card A with LocalInstrument as UK.OBIE.BalanceTransfer, Account SchemeName as UK.OBIE.PAN and if there is an Offer Code/Id provided by Issuer of the Card A, then it can be supplied in the field: `RemittanceInformation.Structured.0.CreditorReferenceInformation.Reference`.
+To facilitate a Balance Transfer, a PISP can initiate a Payment from Card B to Card A with LocalInstrument as UK.OBIE.BalanceTransfer, Account SchemeName as UK.OBIE.PAN and if there is an Offer Code/ID provided by Issuer of the Card A, then it can be supplied in the field: `RemittanceInformation.Structured.0.CreditorReferenceInformation.Reference`.
 Example below:
 
 ### POST /domestic-payment-consents request
