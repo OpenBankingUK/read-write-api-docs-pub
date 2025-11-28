@@ -5,7 +5,7 @@
   - [Illustrative Interactions](#illustrative-interactions)
     - [Create Domestic Payment Order Consent](#create-domestic-payment-order-consent)
       - [POST /domestic-payment-consents request](#post-domestic-payment-consents-request)
-      - [POST  /domestic-payment-consents response](#post--domestic-payment-consents-response)
+      - [POST  /domestic-payment-consents response](#post-domestic-payment-consents-response)
     - [Confirm Funds on Domestic Payment Order Consent](#confirm-funds-on-domestic-payment-order-consent)
       - [GET /domestic-payment-consents/{ConsentId}/funds-confirmation Request](#get-domestic-payment-consents-consentidfunds-confirmation-request)
       - [GET /domestic-payment-consents/{ConsentId}/funds-confirmation Response](#get-domestic-payment-consents-consentidfunds-confirmation-response)
