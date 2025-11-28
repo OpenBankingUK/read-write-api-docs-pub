@@ -43,7 +43,7 @@ The ASPSP **must** ensure that the payment instruction adheres to the limitation
 
 When a payment would breach a limitation set by one or more `ControlParameters`, the ASPSP **must** return an error with code `U014` and pass in the control parameter field that caused the error in the `Field` field of the error message.
 
-If the `CreditorAccount` was not specified in the the consent, the `CreditorAccount` must be specified in the instruction.
+If the `CreditorAccount` was not specified in the consent, the `CreditorAccount` must be specified in the instruction.
 
 The TPP **must** ensure that the end-point is called with the same scope as the one used for the corresponding consent.
 
