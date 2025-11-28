@@ -227,7 +227,7 @@ Content-Type: application/json
           "Amount": "0.56",
           "Currency": "GBP"
         },
-        "CreditorAgent": {  
+        "LastPaymentAmount": {  
         "LastPaymentDateTime": "2017-07-13T00:00:00+00:00", 
         "LastPaymentAmount": {
           "Amount": "0.56",
@@ -299,15 +299,8 @@ Content-Type: application/json
       {
         "AccountId": "22289",
         "StandingOrderId": "Ben3",
-        "MandateRelatedInformation": {
-          "FirstPaymentDate": "2017-08-12",
-          "LastPaymentDate": "2027-08-12",
-          "Frequency": {
-            "PeriodType": "DAIL",           
-            "CountPerPeriod": 1
           }
         },
-        "Reference": "Towbar Club 2 - We Love Towbars",
         "FirstPaymentAmount": {
           "Amount": "0.57",
           "Currency": "GBP"
@@ -345,8 +338,8 @@ Content-Type: application/json
           "MandateIdentification": "Golfers",
           "Classification": "FIXE",
           "CategoryPurposeCode": "BONU",
-          "FirstPaymentDateTime": "2024-04-25T12:46:49.425Z",
-          "RecurringPaymentDateTime": "2024-04-25T12:46:49.425Z",
+          "FirstPaymentDateTime": "2017-07-13T12:46:49.425Z",
+          "RecurringPaymentDateTime": "2017-08-13T12:46:49.425Z",
           "FinalPaymentDateTime": "2024-04-25T12:46:49.425Z",
           "Reason": "To pay monthly membership",
           "Frequency": { 
