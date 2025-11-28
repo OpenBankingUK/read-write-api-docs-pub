@@ -390,7 +390,7 @@ Content-Type: application/json
             "Floor": "6",
             "PostCode": "Z78 4TY",
             "TownName": "London",
-            "Country": "UK"
+            "Country": "GB"
           }
         },
         "DebtorAgent": {
@@ -405,7 +405,7 @@ Content-Type: application/json
             "Floor": "6",
             "PostCode": "Z78 4TY",
             "TownName": "London",
-            "Country": "UK"
+            "Country": "GB"
           }
         },
          "DebtorAccount": {
@@ -440,7 +440,7 @@ Content-Type: application/json
             "Floor": "6",
             "PostCode": "Z78 4TY",
             "TownName": "London",
-            "Country": "UK"
+            "Country": "GB"
           }
         },
         "UltimateCreditor": {
@@ -455,7 +455,7 @@ Content-Type: application/json
             "Floor": "6",
             "PostCode": "Z78 4TY",
             "TownName": "London",
-            "Country": "UK"
+            "Country": "GB"
           }
         },
         "CardInstrument": {
@@ -581,7 +581,7 @@ Content-Type: application/json
             "Floor": "6",
             "PostCode": "Z78 4TY",
             "TownName": "London",
-            "Country": "UK"
+            "Country": "GB"
           }
         },
         "DebtorAgent": {
@@ -596,7 +596,7 @@ Content-Type: application/json
             "Floor": "6",
             "PostCode": "Z78 4TY",
             "TownName": "London",
-            "Country": "UK"
+            "Country": "GB"
           }
         },
         "ExtendedProprietaryBankTransactionCodes": [{
@@ -646,7 +646,7 @@ Content-Type: application/json
             "Floor": "6",
             "PostCode": "Z78 4TY",
             "TownName": "London",
-            "Country": "UK"
+            "Country": "GB"
           }
         },
         "CardInstrument": {
@@ -671,7 +671,7 @@ Content-Type: application/json
             "Floor": "6",
             "PostCode": "Z78 4TY",
             "TownName": "London",
-            "Country": "UK"
+            "Country": "GB"
           }
         }
       },
@@ -728,7 +728,7 @@ Content-Type: application/json
             "Floor": "6",
             "PostCode": "Z78 4TY",
             "TownName": "London",
-            "Country": "UK"
+            "Country": "GB"
           }
         },
         "UltimateCreditor": {
@@ -743,7 +743,7 @@ Content-Type: application/json
             "Floor": "6",
             "PostCode": "Z78 4TY",
             "TownName": "London",
-            "Country": "UK"
+            "Country": "GB"
           }
         }
       }

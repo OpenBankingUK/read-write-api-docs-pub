@@ -331,7 +331,7 @@ Content-Type: application/json
             "Floor": "6",
             "PostCode": "Z78 4TY",
             "TownName": "London",
-            "Country": "UK"
+            "Country": "GB"
           }
         },
         "MandateRelatedInformation": {
