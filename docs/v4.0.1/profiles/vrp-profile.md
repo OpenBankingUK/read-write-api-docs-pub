@@ -63,7 +63,7 @@ This profile should be read in conjunction with a compatible Read/Write Data API
 
 ### Resources
 
-Each of the Payment Initiation API resources are documented in the  [Resources and Data Models](../resources-and-data-models/) area of the specification. Each resource is documented with:
+Each of the Payment Initiation API resources are documented in the [Resources and Data Models](../resources-and-data-models/) area of the specification. Each resource is documented with:
 
 - Endpoints
   - The API endpoints available for the resource.
@@ -115,7 +115,7 @@ Step 3: Authorise Consent
     - The ASPSP provides an interface for the PSU to select the debtor accounts to be used.
     - The ASPSP updates the state of the VRP Consent resource internally to indicate that the consent has been authorised.
     - Once the consent has been authorised, the PSU is redirected back to the TPP.
-  - In a decoupled flow, the ASPSP requests the PSU to authorise consent on an  *authentication device* that is separate from the  *consumption device* on which the PSU is interacting with the TPP.
+  - In a decoupled flow, the ASPSP requests the PSU to authorise consent on an *authentication device* that is separate from the *consumption device* on which the PSU is interacting with the TPP.
     - The decoupled flow is initiated by the TPP calling a back-channel authorisation request.
     - The request contains a 'hint' that identifies the PSU paired with the consent to be authorised.
     - The ASPSP authenticates the PSU
@@ -286,7 +286,7 @@ end opt
 
 ### Payment Restrictions
 
-The standard provides a set of conrol parameters that may be specified as part of the VRP Consent. These control parameters set limits for the payment orders that can be created by the TPP for a given VRP.
+The standard provides a set of control parameters that may be specified as part of the VRP Consent. These control parameters set limits for the payment orders that can be created by the TPP for a given VRP.
 
 In addition to the control parameters defined in this standard ASPSPs may implement additional control parameters, limits and restrictions for non-sweeping VRPs.
 
@@ -324,11 +324,11 @@ As defined in resources and data models.
 
 ### Consent Authorisation
 
-OAuth 2.0 scopes are coarse-grained and the set of available scopes are defined at the point of client registration. There is no standard method for specifying and enforcing fine-grained scopes e.g., a scope to enforce payments of a specified amount on a specified date.
+OAuth 2.0 scopes are coarse-grained and the set of available scopes are defined at the point of client registration. There is no standard method for specifying and enforcing fine-grained scopes E.g. a scope to enforce payments of a specified amount on a specified date.
 
 A *consent authorisation* is used to define the fine-grained scope that is granted by the PSU to the TPP.
 
-The TPP **must** begin setup of a Variable Recurring Payment, by creating a `domestic-vrp-consents` resource through a **POST** operation. These resources indicate the  _consent_ that the TPP claims it has been given by the PSU. At this stage, the consent is not yet authorised as the ASPSP has not yet verified this claim with the PSU.
+The TPP **must** begin setup of a Variable Recurring Payment, by creating a `domestic-vrp-consents` resource through a **POST** operation. These resources indicate the _consent_ that the TPP claims it has been given by the PSU. At this stage, the consent is not yet authorised as the ASPSP has not yet verified this claim with the PSU.
 
 The ASPSP responds with a ConsentId. This is the intent-id that is used when initiating the authorization code grant (as described in the Trust Framework).
 
@@ -378,13 +378,13 @@ This can also be used for vrp consents.
 
 ### Error Condition
 
-If the PSU does not complete a successful consent authorisation (e.g., if the PSU has not authenticated successfully), the authorization code grant ends with a redirection to the TPP with an error response as described in [RFC 6749 Section 4.1.2.1](https://tools.ietf.org/html/rfc6749#section-4.1.2.1). The PSU is redirected to the TPP with an error parameter indicating the error that occurred.
+If the PSU does not complete a successful consent authorisation (E.g. if the PSU has not authenticated successfully), the authorization code grant ends with a redirection to the TPP with an error response as described in [RFC 6749 Section 4.1.2.1](https://tools.ietf.org/html/rfc6749#section-4.1.2.1). The PSU is redirected to the TPP with an error parameter indicating the error that occurred.
 
 ### Consent Re-authentication
 
 VRP Consents are long-lived and can be re-authenticated by the PSU. The access token issued by the ASPSP must be valid for the same length of time as the VRP consent.
 
-ASPSPs may revoke access tokens associated with a VRP consent for fraud and risk reduction. In such situations, they would have to provide a event delivery mechanism.
+ASPSPs may revoke access tokens associated with a VRP consent for fraud and risk reduction. In such situations, they would have to provide an event delivery mechanism.
 
 A PSU may re-authenticate a VRP Consent where:
 
@@ -403,7 +403,7 @@ New releases of the standard may change the schema and/or enumerations used in V
 These features __must__ only be used to support migration across Standards versions and __must not__ be used to modify consent data that does not require migration.
 
 #### Payload-version header
-This header can be used to indicate the version of a payload being sent/received. It’s value is the _major.minor.patch_ of the API standard used to create it
+This header can be used to indicate the version of a payload being sent/received. Its value is the _major.minor.patch_ of the API standard used to create it
 
 TPPs should check ASPSP developer portals for information on whether legacy formats will be accepted.
 
@@ -625,46 +625,46 @@ The TPP can then use the GET operation to retrieve the consent.
 #### POST
 
 - A PISP **must not** create a VRP consent ConsentId on a newer version and use it to create a payment-order resource in a previous version.
-  - E.g., A ConsentId created in v4 must not be used to create a DomesticVRPId on a v3 endpoint.
+  - E.g. A ConsentId created in v4 must not be used to create a DomesticVRPId on a v3 endpoint.
 - A PISP may create a VRP consent ConsentId on a previous version and use it to create a payment-order resource in a newer version
-  - E.g., A consent created in v3 can used to create a VRP payment in v4
+  - E.g. A consent created in v3 can be used to create a VRP payment in v4
 
 #### GET
 
 - A PISP **must not** access a payment-order ConsentId created in a newer version via a previous version endpoint
-  - E.g., A ConsentId created in v4 cannot be accessed via a v3 endpoint
+  - E.g. A ConsentId created in v4 cannot be accessed via a v3 endpoint
 - An ASPSP **must** make ConsentIds accessible across versions
-  - E.g., A ConsentId created in v3 must be accessible in v4 endpoints
+  - E.g. A ConsentId created in v3 must be accessible in v4 endpoints
 
 ### VRP Payment Resource
 
 #### POST
 
 - A PISP **must not** use a VRP consent ConsentId created in a newer version to make VRP payments in an older version.
-  - E.g., A consent created in v4 must not be used to create a VRP payment in v3
+  - E.g. A consent created in v4 must not be used to create a VRP payment in v3
 - An ASPSP **must** allow a PISP to use a ConsentId from a previous version to create a VRP payment in a newer version.
-  - E.g., A v3 VRP consent can be used to create a VRP payment-order resource in v4.
+  - E.g. A v3 VRP consent can be used to create a VRP payment-order resource in v4.
 
 #### GET
 
 - A PISP **must** refer to the ASPSP's online Developer Portal for guidelines on accessibility of completed VRP payment resources in a newer version.
 - A PISP **must not** access the VRP payment resource created in a newer version on an older version endpoint:
-  - E.g., for a VRP payment created in v4, access via the v3 payment endpoint is not permitted.
+  - E.g. for a VRP payment created in v4, access via the v3 payment endpoint is not permitted.
 - An ASPSP **must** document the availability and behaviours of a completed VRP payment resource in a newer version on the ASPSP's online Developer Portal.
 - An ASPSP **must** allow access to a completed VRP payment resource created in a previous version on a newer version endpoint (depending on an ASPSP's legal requirement for data retention):
-  - E.g., a VRP payment created in v3, must be accessible as a v4 payment, with sensible defaults for additional fields introduced in v4 (e.g., if an ASPSP must make payment resources available for 7 years).
+  - E.g. a VRP payment created in v3, must be accessible as a v4 payment, with sensible defaults for additional fields introduced in v4 (E.g. if an ASPSP must make payment resources available for 7 years).
 - In the case where a VRP payment type is the same, but the structure has changed in a newer version, sensible defaults may be used, with the ASPSP's Developer Portal clearly specifying the behaviour.
 - Where values have been updated across versions the ASPSP must map older values to the new when accessed in a newer endpoint.
-  - E.g., The v3 address value “Business” must be mapped to the v4 “BIZZ”.  The ASPSP **must** document the process for this developer portal.
+  - E.g. The v3 address value “Business” must be mapped to the v4 “BIZZ”.  The ASPSP **must** document the process for this developer portal.
 - ASPSPs **must** document on their developer portal how migration to a new version will impact fields and values for Consents created on an older version what steps, if any, a TPP must take for migration to a new version.
-  - E.g., ASPSPs may choose to implement the optional VRP PUT/PATCH endpoints which require a TPP to initiate a migration or may migrate a TPPs consent data in bulk at a given time agreed with the TPP.
+  - E.g. ASPSPs may choose to implement the optional VRP PUT/PATCH endpoints which require a TPP to initiate a migration or may migrate a TPPs consent data in bulk at a given time agreed with the TPP.
 
 ### Deprecation of values across releases
 
 - In the case that codeset values are deprecated without replacement across releases and a Consent or VRP Payment remains accessible in a newer version the ASPSP **must** return the legacy values in any GET calls and support making payments with these values.
-  - E.g., A consent is created on v3 using the deprecated “PartyToParty” value in the “OBRisk/PaymentContextCode” field.  On v4 the ASPSP should still return this value in GET calls and accept payments against this ConsentId using this value.
+  - E.g. A consent is created on v3 using the deprecated “PartyToParty” value in the “OBRisk/PaymentContextCode” field.  On v4 the ASPSP should still return this value in GET calls and accept payments against this ConsentId using this value.
 - Consents set up on the new version **must not** accept deprecated values.
-  - E.g., a new consent created on v4 using the deprecated “PartyToParty” value in the “OBRisk/PaymentContextCode” field **must** be rejected.
+  - E.g. a new consent created on v4 using the deprecated “PartyToParty” value in the “OBRisk/PaymentContextCode” field **must** be rejected.
 - A PISP **must not** use deprecated values when setting up a new consent
-  - E.g., a new consent created on v4 using the deprecated v3 “PartyToParty” value in the “OBRisk/PaymentContextCode” must not be submitted to the ASPSP
+  - E.g. a new consent created on v4 using the deprecated v3 “PartyToParty” value in the “OBRisk/PaymentContextCode” must not be submitted to the ASPSP
 - An ASPSP **must** document on their developer portal how deprecated or older values (such as v3 code names with a v4 ISO equivalent) are treated across versions, and any steps a TPP must take to migrate to a new version.
