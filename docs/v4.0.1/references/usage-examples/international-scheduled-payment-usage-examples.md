@@ -1,25 +1,25 @@
 # International Payment Usage Examples - v4.0.1 <!-- omit in toc -->
 
-- [Debit amount specified; ASPSP provides actual (guaranteed) FX rate, for limited time](#debit-amount-specified-aspsp-provides-actual-guaranteed-fx-rate-for-limited-time)
+- [Debit amount specified; ASPSP provides actual (guaranteed) FX rate, for a limited time](#debit-amount-specified-aspsp-provides-actual-guaranteed-fx-rate-for-a-limited-time)
   - [POST /international-payment-consents request](#post-international-payment-consents-request)
   - [POST /international-payment-consents response](#post-international-payment-consents-response)
 - [Confirm Funds on International Payment Order Consent](#confirm-funds-on-international-payment-order-consent)
   - [GET / international-payment-consents/{ConsentId}/funds-confirmation Request](#get--international-payment-consentsconsentidfunds-confirmation-request)
   - [GET /international-payment-consents/{ConsentId}/funds-confirmation Response](#get-international-payment-consentsconsentidfunds-confirmation-response)
-- [Debit amount specified; ASPSP provides indicative FX rate](#debit-amount-specified-aspsp-provides-indicative-fx-rate)
+- [Debit amount specified; ASPSP provides indicative an FX rate](#debit-amount-specified-aspsp-provides-an-indicative-fx-rate)
   - [POST /international-payment-consents request](#post-international-payment-consents-request-1)
   - [POST /international-payment-consents response](#post-international-payment-consents-response-1)
 - [Debit amount specified; ASPSP provides a pre-booked FX rate](#debit-amount-specified-aspsp-provides-a-pre-booked-fx-rate)
   - [POST /international-payment-consents request](#post-international-payment-consents-request-2)
   - [POST /international-payment-consents response](#post-international-payment-consents-response-2)
-- [Credit amount specified; ASPSP provides actual (guaranteed) FX rate, for limited time](#credit-amount-specified-aspsp-provides-actual-guaranteed-fx-rate-for-limited-time)
+- [Credit amount specified; ASPSP provides actual (guaranteed) FX rate, for a limited time](#credit-amount-specified-aspsp-provides-actual-guaranteed-fx-rate-for-a-limited-time)
   - [POST /international-payment-consents request](#post-international-payment-consents-request-3)
   - [POST /international-payment-consents response](#post-international-payment-consents-response-3)
 - [International payment with all charges paid by payer](#international-payment-with-all-charges-paid-by-payer)
   - [POST /international-payment-consents request](#post-international-payment-consents-request-4)
   - [POST /international-payment-consents response](#post-international-payment-consents-response-4)
 
-## Debit amount specified; ASPSP provides actual (guaranteed) FX rate, for limited time
+## Debit amount specified; ASPSP provides actual (guaranteed) FX rate, for a limited time
 
 The payee specifies the amount to be debited from the payment account and requests a payment to be credited in USD at a fixed rate.
 
@@ -182,7 +182,7 @@ Content-Type: application/json
 }
 ```
 
-## Debit amount specified; ASPSP provides indicative FX rate
+## Debit amount specified; ASPSP provides an indicative FX rate
 
 The payee specifies the amount to be debited from the payment account and requests a payment to be credited in USD at an indicative rate.
 
@@ -373,7 +373,7 @@ Content-Type: application/json
 }
 ```
 
-## Credit amount specified; ASPSP provides actual (guaranteed) FX rate, for limited time
+## Credit amount specified; ASPSP provides actual (guaranteed) FX rate, for a limited time
 
 In this situation, the PSU specifies the amount that must be credited to the payee. The ASPSP will debit the appropriate amount in GBP depending on the exchange rate.
 
