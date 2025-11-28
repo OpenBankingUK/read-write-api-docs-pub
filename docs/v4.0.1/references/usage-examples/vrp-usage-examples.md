@@ -85,7 +85,7 @@ Accept: application/json
             "Floor": "6",
             "PostCode": "Z78 4TY",
             "TownName": "London",
-            "Country": "UK"
+            "Country": "GB"
         }
       },
       "CreditorAccount": {
@@ -116,7 +116,7 @@ Accept: application/json
         "DistrictName": "Greater London",
         "CareOf": "Ms Jane Smith",
         "CountrySubDivision": "England",
-        "Country": "UK"
+        "Country": "GB"
       },
       "RemittanceInformation": {
         "Structured": [
@@ -228,7 +228,7 @@ Content-Type: application/json
             "Floor": "6",
             "PostCode": "Z78 4TY",
             "TownName": "London",
-            "Country": "UK"
+            "Country": "GB"
         }
       },
       "CreditorPostalAddress": {
@@ -248,7 +248,7 @@ Content-Type: application/json
         "DistrictName": "Greater London",
         "CareOf": "Ms Jane Smith",
         "CountrySubDivision": "England",
-        "Country": "UK"
+        "Country": "GB"
       },
       "RemittanceInformation": {
         "Structured": [
@@ -385,7 +385,7 @@ Content-Type: application/json
             "Floor": "6",
             "PostCode": "Z78 4TY",
             "TownName": "London",
-            "Country": "UK"
+            "Country": "GB"
         }
       },
       "CreditorPostalAddress": {
@@ -405,7 +405,7 @@ Content-Type: application/json
         "DistrictName": "Greater London",
         "CareOf": "Ms Jane Smith",
         "CountrySubDivision": "England",
-        "Country": "UK"
+        "Country": "GB"
       },
       "RemittanceInformation": {
         "Structured": [
@@ -483,7 +483,7 @@ Accept: application/json
             "Floor": "6",
             "PostCode": "Z78 4TY",
             "TownName": "London",
-            "Country": "UK"
+            "Country": "GB"
         }
       },
       "CreditorAccount": {
@@ -514,7 +514,7 @@ Accept: application/json
         "DistrictName": "Greater London",
         "CareOf": "Ms Jane Smith",
         "CountrySubDivision": "England",
-        "Country": "UK"
+        "Country": "GB"
       },
     "RemittanceInformation": {
         "Structured": [
@@ -559,7 +559,7 @@ Accept: application/json
             "Floor": "6",
             "PostCode": "Z78 4TY",
             "TownName": "London",
-            "Country": "UK"
+            "Country": "GB"
         }
       },
       "CreditorPostalAddress": {
@@ -579,7 +579,7 @@ Accept: application/json
         "DistrictName": "Greater London",
         "CareOf": "Ms Jane Smith",
         "CountrySubDivision": "England",
-        "Country": "UK"
+        "Country": "GB"
       },
       "RemittanceInformation": {
         "Structured": [
@@ -670,7 +670,7 @@ Content-Type: application/json
             "Floor": "6",
             "PostCode": "Z78 4TY",
             "TownName": "London",
-            "Country": "UK"
+            "Country": "GB"
         }
       },
       "CreditorAccount": {
@@ -701,7 +701,7 @@ Content-Type: application/json
         "DistrictName": "Greater London",
         "CareOf": "Ms Jane Smith",
         "CountrySubDivision": "England",
-        "Country": "UK"
+        "Country": "GB"
       },
      "RemittanceInformation": {
         "Structured": [
@@ -743,7 +743,7 @@ Content-Type: application/json
             "Floor": "6",
             "PostCode": "Z78 4TY",
             "TownName": "London",
-            "Country": "UK"
+            "Country": "GB"
         }
       },
       "CreditorPostalAddress": {
@@ -763,7 +763,7 @@ Content-Type: application/json
         "DistrictName": "Greater London",
         "CareOf": "Ms Jane Smith",
         "CountrySubDivision": "England",
-        "Country": "UK"
+        "Country": "GB"
       },
       "InstructedAmount": {
         "Amount": "10.00",
@@ -781,7 +781,7 @@ Content-Type: application/json
           "Floor": "6",
           "PostCode": "Z78 4TY",
           "TownName": "London",
-          "Country": "UK"
+          "Country": "GB"
           }
         },
       "RemittanceInformation": {
@@ -1011,7 +1011,7 @@ Content-Type: application/json
         "DistrictName": "Greater London",
         "CareOf": "Ms Jane Smith",
         "CountrySubDivision": "England",
-        "Country": "UK"
+        "Country": "GB"
       },
       "CreditorAgent": {  
           "LEI": "IZ9Q00LZEVUKWCQY6X15",
@@ -1025,7 +1025,7 @@ Content-Type: application/json
             "Floor": "6",
             "PostCode": "Z78 4TY",
             "TownName": "London",
-            "Country": "UK"
+            "Country": "GB"
         }
       },
       "CreditorAccount": {
@@ -1189,7 +1189,7 @@ Accept: application/json
             "Floor": "6",
             "PostCode": "Z78 4TY",
             "TownName": "London",
-            "Country": "UK"
+            "Country": "GB"
         }
       },
       "CreditorPostalAddress": {
@@ -1209,7 +1209,7 @@ Accept: application/json
         "DistrictName": "Greater London",
         "CareOf": "Ms Jane Smith",
         "CountrySubDivision": "England",
-        "Country": "UK"
+        "Country": "GB"
       },
       "UltimateCreditor": {
         "SchemeName": "UK.OBIE.BICFI",
@@ -1223,7 +1223,7 @@ Accept: application/json
           "Floor": "6",
           "PostCode": "Z78 4TY",
           "TownName": "London",
-          "Country": "UK"
+          "Country": "GB"
           }
         },
       "UltimateDebtor": {
@@ -1238,7 +1238,7 @@ Accept: application/json
           "Floor": "6",
           "PostCode": "Z78 4TY",
           "TownName": "London",
-          "Country": "UK"
+          "Country": "GB"
         }
       },
       "UltimateCreditor": {
@@ -1253,7 +1253,7 @@ Accept: application/json
           "Floor": "6",
           "PostCode": "Z78 4TY",
           "TownName": "London",
-          "Country": "UK"
+          "Country": "GB"
           }
         },
       "RemittanceInformation": {
@@ -1296,7 +1296,7 @@ Accept: application/json
             "Floor": "6",
             "PostCode": "Z78 4TY",
             "TownName": "London",
-            "Country": "UK"
+            "Country": "GB"
         }
       },
       "CreditorPostalAddress": {
@@ -1316,7 +1316,7 @@ Accept: application/json
         "DistrictName": "Greater London",
         "CareOf": "Ms Jane Smith",
         "CountrySubDivision": "England",
-        "Country": "UK"
+        "Country": "GB"
       },
       "InstructedAmount": {
         "Amount": "10.00",
@@ -1418,7 +1418,7 @@ Content-Type: application/json
             "Floor": "6",
             "PostCode": "Z78 4TY",
             "TownName": "London",
-            "Country": "UK"
+            "Country": "GB"
         }
       },
       "CreditorPostalAddress": {
@@ -1438,7 +1438,7 @@ Content-Type: application/json
         "DistrictName": "Greater London",
         "CareOf": "Ms Jane Smith",
         "CountrySubDivision": "England",
-        "Country": "UK"
+        "Country": "GB"
       },
       "RemittanceInformation": {
         "Structured": [
@@ -1480,7 +1480,7 @@ Content-Type: application/json
             "Floor": "6",
             "PostCode": "Z78 4TY",
             "TownName": "London",
-            "Country": "UK"
+            "Country": "GB"
         }
       },
       "CreditorPostalAddress": {
@@ -1500,7 +1500,7 @@ Content-Type: application/json
         "DistrictName": "Greater London",
         "CareOf": "Ms Jane Smith",
         "CountrySubDivision": "England",
-        "Country": "UK"
+        "Country": "GB"
       },
       "InstructedAmount": {
         "Amount": "10.00",
