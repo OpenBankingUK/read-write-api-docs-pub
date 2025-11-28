@@ -183,7 +183,7 @@ Accept: application/json
       "PostCode": "GU31 2ZZ",
       "TownName": "Sparsholt",
       "CountrySubDivision": "Wessex",
-      "Country": "UK",
+      "Country": "GB",
       "AddressLine": [
         "Flat 7",
         "Acacia Lodge"
@@ -249,7 +249,7 @@ Content-Type: application/json
       "PostCode": "GU31 2ZZ",
       "TownName": "Sparsholt",
       "CountrySubDivision": "Wessex",
-      "Country": "UK",
+      "Country": "GB",
       "AddressLine": [
         "Flat 7",
         "Acacia Lodge"
@@ -358,7 +358,7 @@ Accept: application/json
       "PostCode": "GU31 2ZZ",
       "TownName": "Sparsholt",
       "CountrySubDivision": "Wessex",
-      "Country": "UK",
+      "Country": "GB",
       "AddressLine": [
         "Flat 7",
         "Acacia Lodge"
@@ -488,7 +488,7 @@ Content-Type: application/json
       "PostCode": "GU31 2ZZ",
       "TownName": "Sparsholt",
       "CountrySubDivision": "Wessex",
-      "Country": "UK"
+      "Country": "GB"
     }
   },
   "Links": {
@@ -1145,7 +1145,7 @@ Accept: application/json
         "BuildingNumber": "1",
         "PostCode": "AB1 2CD",
         "TownName": "London",
-        "Country": "UK"
+        "Country": "GB"
       },
       "RemittanceInformation": {
         "Structured": [
@@ -1206,7 +1206,7 @@ Content-Type: application/json
         "BuildingNumber": "1",
         "PostCode": "AB1 2CD",
         "TownName": "London",
-        "Country": "UK"
+        "Country": "GB"
       },
       "RemittanceInformation": {
         "Structured": [

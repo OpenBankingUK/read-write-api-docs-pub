@@ -354,7 +354,7 @@ Accept: application/json
         "Floor": "6",
         "PostCode": "Z78 4TY",
         "TownName": "London",
-        "Country": "UK"
+        "Country": "GB"
       }
     },
     "CreditorAccount": {
@@ -380,7 +380,7 @@ Accept: application/json
         "Floor": "6",
         "PostCode": "Z78 4TY",
         "TownName": "London",
-        "Country": "UK"
+        "Country": "GB"
       }
     },
     "DebtorAccount": {
@@ -417,7 +417,7 @@ Accept: application/json
             "Floor": "6",
             "PostCode": "Z78 4TY",
             "TownName": "London",
-            "Country": "UK"
+            "Country": "GB"
         }
       },
       "UltimateCreditor": {
@@ -432,7 +432,7 @@ Accept: application/json
             "Floor": "6",
             "PostCode": "Z78 4TY",
             "TownName": "London",
-            "Country": "UK"
+            "Country": "GB"
             }
         },
       "RegulatoryReporting": [
@@ -509,7 +509,7 @@ Accept: application/json
       "PostCode": "GU31 2ZZ",
       "TownName": "Sparsholt",
       "CountrySubDivision": "Wessex",
-      "Country": "UK"
+      "Country": "GB"
     }
   }
 }
@@ -586,7 +586,7 @@ Content-Type: application/json
           "Floor": "6",
           "PostCode": "Z78 4TY",
           "TownName": "London",
-          "Country": "UK"
+          "Country": "GB"
       }
     },
     "CreditorAccount": {
@@ -612,7 +612,7 @@ Content-Type: application/json
         "Floor": "6",
         "PostCode": "Z78 4TY",
         "TownName": "London",
-        "Country": "UK"
+        "Country": "GB"
     },
     "DebtorAccount":{
       "SchemeName": "UK.OBIE.SortCodeAccountNumber",
@@ -638,7 +638,7 @@ Content-Type: application/json
           "Floor": "6",
           "PostCode": "Z78 4TY",
           "TownName": "London",
-          "Country": "UK"
+          "Country": "GB"
         }
       },
       "UltimateCreditor": {
@@ -653,7 +653,7 @@ Content-Type: application/json
           "Floor": "6",
           "PostCode": "Z78 4TY",
           "TownName": "London",
-          "Country": "UK"
+          "Country": "GB"
           }
         },
     "RegulatoryReporting": [{
@@ -754,7 +754,7 @@ Content-Type: application/json
       "PostCode": "GU31 2ZZ",
       "TownName": "Sparsholt",
       "CountrySubDivision": "Wessex",
-      "Country": "UK"
+      "Country": "GB"
     }
   }
   "Links": {
