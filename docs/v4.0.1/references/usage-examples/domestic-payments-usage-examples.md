@@ -193,7 +193,7 @@ Accept: application/json
 }
 ```
 
-##### POST  /domestic-payment-consents response
+##### POST /domestic-payment-consents response
 
 ```
 HTTP/1.1 201 Created
