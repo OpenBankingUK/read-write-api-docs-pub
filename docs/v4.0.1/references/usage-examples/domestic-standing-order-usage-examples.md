@@ -70,6 +70,7 @@ PISP &lt;-> ASPSP Resource Server: Establish TLS 1.2 MA
 PISP -> ASPSP Resource Server: POST /domestic-standing-orders
 ASPSP Resource Server -> PISP: HTTP 201 (Created), DomesticStandingOrder resource
 ```
+
 </details>
 
 ### Create Domestic Standing Order Consent
@@ -91,24 +92,20 @@ Accept: application/json
 ```json
 {
   "Data": {
-	"Permission": "Create",
+    "Permission": "Create",
     "Initiation": {
-	  "Frequency": "EvryDay",
-	  "Reference": "Pocket money for Damien",
-	  "FirstPaymentDateTime": "1976-06-06T06:06:06+00:00",
-	  "FirstPaymentAmount": {
+      "FirstPaymentAmount": {
         "Amount": "6.66",
         "Currency": "GBP"
-	  },
-	  "RecurringPaymentAmount": {
+      },
+      "RecurringPaymentAmount": {
         "Amount": "7.00",
         "Currency": "GBP"
-	  },
-	  "FinalPaymentDateTime": "1981-03-20T06:06:06+00:00",
-	  "FinalPaymentAmount": {
+      },
+      "FinalPaymentAmount": {
         "Amount": "7.00",
         "Currency": "GBP"
-	  },
+      },
       "DebtorAccount": {
         "SchemeName": "UK.OBIE.SortCodeAccountNumber",
         "Identification": "11280001234567",
@@ -118,6 +115,13 @@ Accept: application/json
         "SchemeName": "UK.OBIE.SortCodeAccountNumber",
         "Identification": "08080021325698",
         "Name": "Bob Clements"
+      },
+      "MandateRelatedInformation": {
+        "FirstPaymentDateTime": "1976-06-06T10:48:48.312Z",
+        "FinalPaymentDateTime": "1981-03-20T10:48:48.312Z",
+        "Frequency": {
+          "Type": "DAIL"
+        }
       }
     }
   },
@@ -139,28 +143,24 @@ Content-Type: application/json
 ```json
 {
   "Data": {
-	"ConsentId": "SOC-100",
-	"CreationDateTime": "1976-01-01T06:06:06+00:00",
-	"Status": "AWAU",
-	"StatusUpdateDateTime": "1976-06-06T06:06:06+00:00",
-	"Permission": "Create",
+    "ConsentId": "SOC-100",
+    "CreationDateTime": "1976-01-01T06:06:06+00:00",
+    "Status": "AWAU",
+    "StatusUpdateDateTime": "1976-06-06T06:06:06+00:00",
+    "Permission": "Create",
     "Initiation": {
-	  "Frequency": "EvryDay",
-	  "Reference": "Pocket money for Damien",
-	  "FirstPaymentDateTime": "1976-06-06T06:06:06+00:00",
-	  "FirstPaymentAmount": {
+      "FirstPaymentAmount": {
         "Amount": "6.66",
         "Currency": "GBP"
-	  },
-	  "RecurringPaymentAmount": {
+      },
+      "RecurringPaymentAmount": {
         "Amount": "7.00",
         "Currency": "GBP"
-	  },
-	  "FinalPaymentDateTime": "1981-03-20T06:06:06+00:00",
-	  "FinalPaymentAmount": {
+      },
+      "FinalPaymentAmount": {
         "Amount": "7.00",
         "Currency": "GBP"
-	  },
+      },
       "DebtorAccount": {
         "SchemeName": "UK.OBIE.SortCodeAccountNumber",
         "Identification": "11280001234567",
@@ -170,6 +170,13 @@ Content-Type: application/json
         "SchemeName": "UK.OBIE.SortCodeAccountNumber",
         "Identification": "08080021325698",
         "Name": "Bob Clements"
+      },
+      "MandateRelatedInformation": {
+        "FirstPaymentDateTime": "1976-06-06T10:48:48.312Z",
+        "FinalPaymentDateTime": "1981-03-20T10:48:48.312Z",
+        "Frequency": {
+          "Type": "DAIL"
+        }
       }
     }
   },
@@ -181,8 +188,8 @@ Content-Type: application/json
   },
   "Meta": {}
 }
-
 ```
+
 ### Create a Domestic Standing Order
 
 #### POST /domestic-standing-orders request
@@ -202,24 +209,24 @@ Accept: application/json
 ```json
 {
   "Data": {
-	"ConsentId": "SOC-100",
+    "ConsentId": "SOC-100",
     "Initiation": {
-	  "Frequency": "EvryDay",
-	  "Reference": "Pocket money for Damien",
-	  "FirstPaymentDateTime": "1976-06-06T06:06:06+00:00",
-	  "FirstPaymentAmount": {
+      "Frequency": "DAIL",
+      "Reference": "Pocket money for Damien",
+      "FirstPaymentDateTime": "1976-06-06T06:06:06+00:00",
+      "FirstPaymentAmount": {
         "Amount": "6.66",
         "Currency": "GBP"
-	  },
-	  "RecurringPaymentAmount": {
+      },
+      "RecurringPaymentAmount": {
         "Amount": "7.00",
         "Currency": "GBP"
-	  },
-	  "FinalPaymentDateTime": "1981-03-20T06:06:06+00:00",
-	  "FinalPaymentAmount": {
+      },
+      "FinalPaymentDateTime": "1981-03-20T06:06:06+00:00",
+      "FinalPaymentAmount": {
         "Amount": "7.00",
         "Currency": "GBP"
-	  },
+      },
       "DebtorAccount": {
         "SchemeName": "UK.OBIE.SortCodeAccountNumber",
         "Identification": "11280001234567",
@@ -251,28 +258,28 @@ Content-Type: application/json
 ```json
 {
   "Data": {
-	"DomesticStandingOrderId": "SO-SOC-100",
-	"ConsentId": "SOC-100",
-	"CreationDateTime": "1976-01-01T06:06:06+00:00",
-	"Status": "RCVD",
-	"StatusUpdateDateTime": "1976-06-06T06:06:06+00:00",
+    "DomesticStandingOrderId": "SO-SOC-100",
+    "ConsentId": "SOC-100",
+    "CreationDateTime": "1976-01-01T06:06:06+00:00",
+    "Status": "RCVD",
+    "StatusUpdateDateTime": "1976-06-06T06:06:06+00:00",
     "Initiation": {
-	  "Frequency": "EvryDay",
-	  "Reference": "Pocket money for Damien",
-	  "FirstPaymentDateTime": "1976-06-06T06:06:06+00:00",
-	  "FirstPaymentAmount": {
+      "Frequency": "DAIL",
+      "Reference": "Pocket money for Damien",
+      "FirstPaymentDateTime": "1976-06-06T06:06:06+00:00",
+      "FirstPaymentAmount": {
         "Amount": "6.66",
         "Currency": "GBP"
-	  },
-	  "RecurringPaymentAmount": {
+      },
+      "RecurringPaymentAmount": {
         "Amount": "7.00",
         "Currency": "GBP"
-	  },
-	  "FinalPaymentDateTime": "1981-03-20T06:06:06+00:00",
-	  "FinalPaymentAmount": {
+      },
+      "FinalPaymentDateTime": "1981-03-20T06:06:06+00:00",
+      "FinalPaymentAmount": {
         "Amount": "7.00",
         "Currency": "GBP"
-	  },
+      },
       "DebtorAccount": {
         "SchemeName": "UK.OBIE.SortCodeAccountNumber",
         "Identification": "11280001234567",
@@ -319,28 +326,28 @@ Content-Type: application/json
 ```json
 {
   "Data": {
-	"ConsentId": "SOC-100",
-	"CreationDateTime": "1976-01-01T06:06:06+00:00",
-	"Status": "AUTH",
-	"StatusUpdateDateTime": "1976-06-06T06:06:06+00:00",
-	"Permission": "Create",
+    "ConsentId": "SOC-100",
+    "CreationDateTime": "1976-01-01T06:06:06+00:00",
+    "Status": "AUTH",
+    "StatusUpdateDateTime": "1976-06-06T06:06:06+00:00",
+    "Permission": "Create",
     "Initiation": {
-	  "Frequency": "EvryDay",
-	  "Reference": "Pocket money for Damien",
-	  "FirstPaymentDateTime": "1976-06-06T06:06:06+00:00",
-	  "FirstPaymentAmount": {
+      "Frequency": "DAIL",
+      "Reference": "Pocket money for Damien",
+      "FirstPaymentDateTime": "1976-06-06T06:06:06+00:00",
+      "FirstPaymentAmount": {
         "Amount": "6.66",
         "Currency": "GBP"
-	  },
-	  "RecurringPaymentAmount": {
+      },
+      "RecurringPaymentAmount": {
         "Amount": "7.00",
         "Currency": "GBP"
-	  },
-	  "FinalPaymentDateTime": "1981-03-20T06:06:06+00:00",
-	  "FinalPaymentAmount": {
+      },
+      "FinalPaymentDateTime": "1981-03-20T06:06:06+00:00",
+      "FinalPaymentAmount": {
         "Amount": "7.00",
         "Currency": "GBP"
-	  },
+      },
       "DebtorAccount": {
         "SchemeName": "UK.OBIE.SortCodeAccountNumber",
         "Identification": "11280001234567",
