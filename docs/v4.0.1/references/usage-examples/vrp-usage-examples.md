@@ -573,7 +573,7 @@ Content-Type: application/json
     "Status": "PDNG",
     "StatusReason": [
       {
-        "StatusReasonCode": "83",
+        "StatusReasonCode": "0083",
         "StatusReasonDescription": "Pending completion next working day"
       }
     ],
