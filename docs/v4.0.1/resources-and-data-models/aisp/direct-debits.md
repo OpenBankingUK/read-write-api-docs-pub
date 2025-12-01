@@ -125,7 +125,7 @@ Content-Type: application/json
               "CountPerPeriod": 1
           }
         },
-        "DirectDebitStatusCode": "Active",
+        "DirectDebitStatusCode": "ACTV",
         "Name": "Towbar Club 3 - We Love Towbars",
         "PreviousPaymentDateTime": "2017-04-05T10:43:07+00:00",
         "PreviousPaymentAmount": {
@@ -185,7 +185,7 @@ Content-Type: application/json
               "CountPerPeriod": 1
           }
         },
-        "DirectDebitStatusCode": "Active",
+        "DirectDebitStatusCode": "ACTV",
         "Name": "Towbar Club 3 - We Love Towbars",
         "PreviousPaymentDateTime": "2017-04-05T10:43:07+00:00",
         "PreviousPaymentAmount": {
@@ -208,7 +208,7 @@ Content-Type: application/json
             "CountPerPeriod": 1
           }
         },
-        "DirectDebitStatusCode": "Active",
+        "DirectDebitStatusCode": "ACTV",
         "Name": "Golf Club",
         "PreviousPaymentDateTime": "2017-05-06T09:00:00+00:00",
         "PreviousPaymentAmount": {
