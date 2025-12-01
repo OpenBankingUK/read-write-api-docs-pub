@@ -123,12 +123,13 @@ Accept: application/json
           }
         ]
       }
+    }
   },
   "Risk": {
     "PaymentContextCode": "TransferToSelf",
     "ContractPresentIndicator": true,
     "PaymentPurposeCode": "EPAY",
-    "CategoryPurposeCode": "GP2P", 
+    "CategoryPurposeCode": "GP2P",
     "BeneficiaryPrepopulatedIndicator": true,
     "BeneficiaryAccountType": "Personal"
   }
@@ -259,7 +260,7 @@ Content-Type: application/json
     "CategoryPurposeCode": "GP2P",
     "BeneficiaryPrepopulatedIndicator": true,
     "BeneficiaryAccountType": "Personal"
-   }
+  },
   "Links": {
     "Self": "https://api.alphabank.com/open-banking/v4.0/pisp/domestic-vrp-consents/fe615446-e53a-45ed-954c-ae5d1f97a93b"
   },
