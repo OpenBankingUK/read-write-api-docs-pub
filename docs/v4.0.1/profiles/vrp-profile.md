@@ -625,25 +625,25 @@ The TPP can then use the GET operation to retrieve the consent.
 #### POST
 
 - A PISP **must not** create a VRP consent ConsentId on a newer version and use it to create a payment-order resource in a previous version.
-  - E.g. A ConsentId created in v4 must not be used to create a DomesticVRPId on a v3 endpoint.
+  - E.g. A ConsentId created in v4 **must not** be used to create a DomesticVRPId on a v3 endpoint.
 - A PISP may create a VRP consent ConsentId on a previous version and use it to create a payment-order resource in a newer version
-  - E.g. A consent created in v3 can be used to create a VRP payment in v4
+  - E.g. A consent created in v3 **can** be used to create a VRP payment in v4
 
 #### GET
 
 - A PISP **must not** access a payment-order ConsentId created in a newer version via a previous version endpoint
-  - E.g. A ConsentId created in v4 cannot be accessed via a v3 endpoint
+  - E.g. A ConsentId created in v4 **cannot** be accessed via a v3 endpoint
 - An ASPSP **must** make ConsentIds accessible across versions
-  - E.g. A ConsentId created in v3 must be accessible in v4 endpoints
+  - E.g. A ConsentId created in v3 **must** be accessible in v4 endpoints
 
 ### VRP Payment Resource
 
 #### POST
 
 - A PISP **must not** use a VRP consent ConsentId created in a newer version to make VRP payments in an older version.
-  - E.g. A consent created in v4 must not be used to create a VRP payment in v3
+  - E.g. A consent created in v4 **must not** be used to create a VRP payment in v3
 - An ASPSP **must** allow a PISP to use a ConsentId from a previous version to create a VRP payment in a newer version.
-  - E.g. A v3 VRP consent can be used to create a VRP payment-order resource in v4.
+  - E.g. A v3 VRP consent **can** be used to create a VRP payment-order resource in v4.
 
 #### GET
 
@@ -652,10 +652,10 @@ The TPP can then use the GET operation to retrieve the consent.
   - E.g. for a VRP payment created in v4, access via the v3 payment endpoint is not permitted.
 - An ASPSP **must** document the availability and behaviours of a completed VRP payment resource in a newer version on the ASPSP's online Developer Portal.
 - An ASPSP **must** allow access to a completed VRP payment resource created in a previous version on a newer version endpoint (depending on an ASPSP's legal requirement for data retention):
-  - E.g. a VRP payment created in v3, must be accessible as a v4 payment, with sensible defaults for additional fields introduced in v4 (E.g. if an ASPSP must make payment resources available for 7 years).
+  - E.g. a VRP payment created in v3, **must** be accessible as a v4 payment, with sensible defaults for additional fields introduced in v4 (E.g. if an ASPSP must make payment resources available for 7 years).
 - In the case where a VRP payment type is the same, but the structure has changed in a newer version, sensible defaults may be used, with the ASPSP's Developer Portal clearly specifying the behaviour.
 - Where values have been updated across versions the ASPSP must map older values to the new when accessed in a newer endpoint.
-  - E.g. The v3 address value “Business” must be mapped to the v4 “BIZZ”.  The ASPSP **must** document the process for this developer portal.
+  - E.g. The v3 address value “Business” **must** be mapped to the v4 “BIZZ”.  The ASPSP **must** document the process for this developer portal.
 - ASPSPs **must** document on their developer portal how migration to a new version will impact fields and values for Consents created on an older version what steps, if any, a TPP must take for migration to a new version.
   - E.g. ASPSPs may choose to implement the optional VRP PUT/PATCH endpoints which require a TPP to initiate a migration or may migrate a TPPs consent data in bulk at a given time agreed with the TPP.
 
@@ -666,5 +666,5 @@ The TPP can then use the GET operation to retrieve the consent.
 - Consents set up on the new version **must not** accept deprecated values.
   - E.g. a new consent created on v4 using the deprecated “PartyToParty” value in the “OBRisk/PaymentContextCode” field **must** be rejected.
 - A PISP **must not** use deprecated values when setting up a new consent
-  - E.g. a new consent created on v4 using the deprecated v3 “PartyToParty” value in the “OBRisk/PaymentContextCode” must not be submitted to the ASPSP
+  - E.g. a new consent created on v4 using the deprecated v3 “PartyToParty” value in the “OBRisk/PaymentContextCode” **must not** be submitted to the ASPSP
 - An ASPSP **must** document on their developer portal how deprecated or older values (such as v3 code names with a v4 ISO equivalent) are treated across versions, and any steps a TPP must take to migrate to a new version.
