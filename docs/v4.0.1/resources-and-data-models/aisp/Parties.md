@@ -218,8 +218,8 @@ Content-Type: application/json
                         "Id": "22289"
                     }
                 },
-                "Phone": "+442079460000", 
-                "Mobile": "+447700900000",
+                "Phone": "+44-2079460000", 
+                "Mobile": "+44-7700900000",
                 "Address": [
                     {
                         "AddressType": "BIZZ",
@@ -390,8 +390,8 @@ Content-Type: application/json
       "BeneficialOwnership": false,
       "AccountRole": "UK.OBIE.SeniorManagingOfficial",
       "LEI": "068700IA8DVYPS77MD05",
-      "Phone": "+442079460000", 
-      "Mobile": "+447700900000",
+      "Phone": "+44-2079460000", 
+      "Mobile": "+44-7700900000",
       "Address": {
         "AddressType": "BIZZ",
         "StreetName": "Street",
@@ -451,8 +451,8 @@ Content-Type: application/json
       "AccountRole": "UK.OBIE.SeniorManagingOfficial",
       "LEI": "713200JVLXQKY2R7XS50",
       "EmailAddress": "d.user@semiotec.co.jp",
-      "Phone": "+442079460000", 
-      "Mobile": "+447700900000",
+      "Phone": "+44-2079460000", 
+      "Mobile": "+44-7700900000",
       "Address": {
         "AddressType": "BIZZ",
         "StreetName": "Street",

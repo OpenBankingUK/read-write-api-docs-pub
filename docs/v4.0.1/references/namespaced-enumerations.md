@@ -36,7 +36,7 @@ When extending a namespaced enumeration:
 Usage of non-namespaced values may be discontinued in a future version of this standard.
 
 
-A comprehensive list of enumerations, from both OBL and ISO 20022, have been catalogued and made available [here](https://github.com/OpenBankingUK/External_Internal_CodeSets).  
+A comprehensive list of enumerations, from both OBL and ISO 20022, has been catalogued and made available [here](https://github.com/OpenBankingUK/External_Internal_CodeSets).  
 
 ASPSPs and TPPs should reference this repository for an up-to-date list of enums and values.
 
