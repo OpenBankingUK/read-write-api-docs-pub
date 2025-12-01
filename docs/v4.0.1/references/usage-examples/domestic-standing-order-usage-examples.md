@@ -211,7 +211,7 @@ Accept: application/json
   "Data": {
     "ConsentId": "SOC-100",
     "Initiation": {
-      "Frequency": "EvryDay",
+      "Frequency": "DAIL",
       "Reference": "Pocket money for Damien",
       "FirstPaymentDateTime": "1976-06-06T06:06:06+00:00",
       "FirstPaymentAmount": {
@@ -264,7 +264,7 @@ Content-Type: application/json
     "Status": "RCVD",
     "StatusUpdateDateTime": "1976-06-06T06:06:06+00:00",
     "Initiation": {
-      "Frequency": "EvryDay",
+      "Frequency": "DAIL",
       "Reference": "Pocket money for Damien",
       "FirstPaymentDateTime": "1976-06-06T06:06:06+00:00",
       "FirstPaymentAmount": {
@@ -332,7 +332,7 @@ Content-Type: application/json
     "StatusUpdateDateTime": "1976-06-06T06:06:06+00:00",
     "Permission": "Create",
     "Initiation": {
-      "Frequency": "EvryDay",
+      "Frequency": "DAIL",
       "Reference": "Pocket money for Damien",
       "FirstPaymentDateTime": "1976-06-06T06:06:06+00:00",
       "FirstPaymentAmount": {
