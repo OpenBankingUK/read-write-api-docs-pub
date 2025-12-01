@@ -212,8 +212,6 @@ Content-Type: application/json
       {
         "AccountId": "22289",
         "StandingOrderId": "Ben3",
-          }
-        },
         "FirstPaymentAmount": {
           "Amount": "0.57",
           "Currency": "GBP"
@@ -299,8 +297,6 @@ Content-Type: application/json
       {
         "AccountId": "22289",
         "StandingOrderId": "Ben3",
-          }
-        },
         "FirstPaymentAmount": {
           "Amount": "0.57",
           "Currency": "GBP"
