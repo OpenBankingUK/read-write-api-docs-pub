@@ -101,7 +101,7 @@ Accept: application/json
         "DistrictName": "Greater London",
         "CareOf": "Ms Jane Smith",
         "CountrySubDivision": "England",
-        "Country": "UK"
+        "Country": "GB"
       },
       "RemittanceInformation": {
         "Structured": [
@@ -218,7 +218,7 @@ Content-Type: application/json
         "DistrictName": "Greater London",
         "CareOf": "Ms Jane Smith",
         "CountrySubDivision": "England",
-        "Country": "UK"
+        "Country": "GB"
       },
       "RemittanceInformation": {
         "Structured": [
@@ -360,7 +360,7 @@ Content-Type: application/json
         "DistrictName": "Greater London",
         "CareOf": "Ms Jane Smith",
         "CountrySubDivision": "England",
-        "Country": "UK"
+        "Country": "GB"
       },
       "RemittanceInformation": {
         "Structured": [
@@ -454,7 +454,7 @@ Accept: application/json
         "DistrictName": "Greater London",
         "CareOf": "Ms Jane Smith",
         "CountrySubDivision": "England",
-        "Country": "UK"
+        "Country": "GB"
       },
     "RemittanceInformation": {
         "Structured": [
@@ -504,7 +504,7 @@ Accept: application/json
         "DistrictName": "Greater London",
         "CareOf": "Ms Jane Smith",
         "CountrySubDivision": "England",
-        "Country": "UK"
+        "Country": "GB"
       },
       "RemittanceInformation": {
         "Structured": [
@@ -611,7 +611,7 @@ Content-Type: application/json
         "DistrictName": "Greater London",
         "CareOf": "Ms Jane Smith",
         "CountrySubDivision": "England",
-        "Country": "UK"
+        "Country": "GB"
       },
      "RemittanceInformation": {
         "Structured": [
@@ -658,7 +658,7 @@ Content-Type: application/json
         "DistrictName": "Greater London",
         "CareOf": "Ms Jane Smith",
         "CountrySubDivision": "England",
-        "Country": "UK"
+        "Country": "GB"
       },
       "InstructedAmount": {
         "Amount": "10.00",
@@ -676,7 +676,7 @@ Content-Type: application/json
           "Floor": "6",
           "PostCode": "Z78 4TY",
           "TownName": "London",
-          "Country": "UK"
+          "Country": "GB"
           }
         },
       "RemittanceInformation": {
@@ -906,7 +906,7 @@ Content-Type: application/json
         "DistrictName": "Greater London",
         "CareOf": "Ms Jane Smith",
         "CountrySubDivision": "England",
-        "Country": "UK"
+        "Country": "GB"
       },
       "CreditorAccount": {
         "SchemeName": "UK.OBIE.SortCodeAccountNumber",
@@ -1074,7 +1074,7 @@ Accept: application/json
         "DistrictName": "Greater London",
         "CareOf": "Ms Jane Smith",
         "CountrySubDivision": "England",
-        "Country": "UK"
+        "Country": "GB"
       },
       "UltimateCreditor": {
         "SchemeName": "UK.OBIE.BICFI",
@@ -1088,9 +1088,9 @@ Accept: application/json
           "Floor": "6",
           "PostCode": "Z78 4TY",
           "TownName": "London",
-          "Country": "UK"
-        }
-      },
+          "Country": "GB"
+          }
+        },
       "UltimateDebtor": {
         "SchemeName": "UK.OBIE.BICFI",
         "Identification": "2360549017905161589",
@@ -1103,7 +1103,7 @@ Accept: application/json
           "Floor": "6",
           "PostCode": "Z78 4TY",
           "TownName": "London",
-          "Country": "UK"
+          "Country": "GB"
         }
       },
       "RemittanceInformation": {
@@ -1152,7 +1152,7 @@ Accept: application/json
         "DistrictName": "Greater London",
         "CareOf": "Ms Jane Smith",
         "CountrySubDivision": "England",
-        "Country": "UK"
+        "Country": "GB"
       },
       "InstructedAmount": {
         "Amount": "10.00",
@@ -1261,7 +1261,7 @@ Content-Type: application/json
         "DistrictName": "Greater London",
         "CareOf": "Ms Jane Smith",
         "CountrySubDivision": "England",
-        "Country": "UK"
+        "Country": "GB"
       },
       "RemittanceInformation": {
         "Structured": [
@@ -1308,7 +1308,7 @@ Content-Type: application/json
         "DistrictName": "Greater London",
         "CareOf": "Ms Jane Smith",
         "CountrySubDivision": "England",
-        "Country": "UK"
+        "Country": "GB"
       },
       "InstructedAmount": {
         "Amount": "10.00",

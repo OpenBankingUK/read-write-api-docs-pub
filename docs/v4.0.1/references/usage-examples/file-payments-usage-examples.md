@@ -447,7 +447,7 @@ A sample file with 3 Domestic Payments - CHAPS, BACS and one unspecified is prov
           "BuildingNumber": "1",
           "PostCode": "AB1 2CD",
           "TownName": "London",
-          "Country": "UK"
+          "Country": "GB"
         },
         "RemittanceInformation": {
           "Structured": [
