@@ -5,16 +5,16 @@
   - [Illustrative Interactions](#illustrative-interactions)
     - [Create Domestic Payment Order Consent](#create-domestic-payment-order-consent)
       - [POST /domestic-payment-consents request](#post-domestic-payment-consents-request)
-      - [POST  /domestic-payment-consents response](#post--domestic-payment-consents-response)
+      - [POST  /domestic-payment-consents response](#post-domestic-payment-consents-response)
     - [Confirm Funds on Domestic Payment Order Consent](#confirm-funds-on-domestic-payment-order-consent)
-      - [GET /domestic-payment-consents/{ConsentId}/funds-confirmation Request](#get-domestic-payment-consents-consentidfunds-confirmation-request)
-      - [GET /domestic-payment-consents/{ConsentId}/funds-confirmation Response](#get-domestic-payment-consents-consentidfunds-confirmation-response)
+      - [GET /domestic-payment-consents/{ConsentId}/funds-confirmation Request](#get-domestic-payment-consentsconsentidfunds-confirmation-request)
+      - [GET /domestic-payment-consents/{ConsentId}/funds-confirmation Response](#get-domestic-payment-consentsconsentidfunds-confirmation-response)
     - [Create Domestic Payment Order](#create-domestic-payment-order)
       - [POST /domestic-payments Request](#post-domestic-payments-request)
       - [POST /domestic-payments Response](#post-domestic-payments-response)
     - [Get Domestic Payment Order Consent](#get-domestic-payment-order-consent)
-      - [GET /domestic-payment-consents/{ConsentId} Request](#get-domestic-payment-consents-consentid-request)
-      - [GET /domestic-payment-consents/{ConsentId} Response](#get-domestic-payment-consents-consentid-response)
+      - [GET /domestic-payment-consents/{ConsentId} Request](#get-domestic-payment-consentsconsentid-request)
+      - [GET /domestic-payment-consents/{ConsentId} Response](#get-domestic-payment-consentsconsentid-response)
     - [Get Domestic Payment Order](#get-domestic-payment-order)
       - [GET /domestic-payments/{DomesticPaymentId} Request](#get-domestic-paymentsdomesticpaymentid-request)
       - [GET /domestic-payments/{DomesticPaymentId} Response](#get-domestic-paymentsdomesticpaymentid-response)
@@ -28,8 +28,8 @@
       - [POST /domestic-payments request](#post-domestic-payments-request-1)
       - [POST /domestic-payments response](#post-domestic-payments-response-1)
     - [Get Domestic Payment Order Consent](#get-domestic-payment-order-consent-1)
-      - [GET /domestic-payment-consents/{ConsentId} request](#get-domestic-payment-consents-consentid-request-1)
-      - [GET /domestic-payment-consents/{ConsentId} response](#get-domestic-payment-consents-consentid-response-1)
+      - [GET /domestic-payment-consents/{ConsentId} request](#get-domestic-payment-consentsconsentid-request-1)
+      - [GET /domestic-payment-consents/{ConsentId} response](#get-domestic-payment-consentsconsentid-response-1)
     - [Get Domestic Payment Order](#get-domestic-payment-order-1)
       - [GET /domestic-payments/{DomesticPaymentId} request](#get-domestic-paymentsdomesticpaymentid-request-1)
       - [GET /domestic-payments/{DomesticPaymentId} response](#get-domestic-paymentsdomesticpaymentid-response-1)
@@ -193,7 +193,7 @@ Accept: application/json
 }
 ```
 
-##### POST  /domestic-payment-consents response
+##### POST /domestic-payment-consents response
 
 ```
 HTTP/1.1 201 Created
@@ -567,7 +567,7 @@ This example set of flows and payload examples are for a domestic payment initia
 
 In this scenario:
 
-* The PSU has pre-specified the account from which funds will be transferred (i.e., the Debtor Account details)
+* The PSU has pre-specified the account from which funds will be transferred (i.e. the Debtor Account details)
 * No building society accounts are involved in this interaction, and there only the sort code and account number are specified in the DebtorAccount and CreditorAccount sections.
 
 ### Sequence Diagram
@@ -1243,7 +1243,7 @@ Content-Type: application/json
 ## Balance Transfer
 Below in an example illustrating a balance transfer offer available on a Card A.
 
-To facilitate a Balance Transfer, a PISP can initiate a Payment from Card B to Card A with LocalInstrument as UK.OBIE.BalanceTransfer, Account SchemeName as UK.OBIE.PAN and if there is an Offer Code/Id provided by Issuer of the Card A, then it can be supplied in the field: `RemittanceInformation.Structured.0.CreditorReferenceInformation.Reference`.
+To facilitate a Balance Transfer, a PISP can initiate a Payment from Card B to Card A with LocalInstrument as UK.OBIE.BalanceTransfer, Account SchemeName as UK.OBIE.PAN and if there is an Offer Code/ID provided by Issuer of the Card A, then it can be supplied in the field: `RemittanceInformation.Structured.0.CreditorReferenceInformation.Reference`.
 Example below:
 
 ### POST /domestic-payment-consents request
