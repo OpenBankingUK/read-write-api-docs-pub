@@ -3,7 +3,7 @@
 Resources accessed by VRPs are detailed here:
 * [Domestic VRP Consents](domestic-vrp-consents.md)
 * [Domestic VRPs](domestic-vrps.md)
-* [Usage Examples](../../references/usage-examples/vrp-usage-examples.html)
+* [Usage Examples](../../references/usage-examples/vrp-usage-examples.md)
 
   
 ## Endpoints
