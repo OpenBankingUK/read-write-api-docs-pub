@@ -562,7 +562,7 @@ Accept: application/json
                   "string"
                 ]
               }],
-            "ReferredDocumentAmount": 1,
+            "ReferredDocumentAmount": "1.00",
             "CreditorReferenceInformation": {
               "Code": "DISP",
               "Issuer": "Issuer01",
@@ -622,10 +622,10 @@ Content-Type: application/json
  "Data": {
   "ConsentId": "58923",
   "Status": "AWAU",
-  "StatusReason": {
+  "StatusReason": [{
     "StatusReasonCode": "U036", 
     "StatusReasonDescription":"Waiting for completion of consent authorisation to be completed by user",
-  },
+  }],
   "ExpectedExecutionDateTime": "2017-06-05T15:15:22+00:00",
   "ExpectedSettlementDateTime": "2017-06-06T15:15:22+00:00",
   "CutOffDateTime": "2017-06-05T16:00:13+00:00",
@@ -793,7 +793,7 @@ Content-Type: application/json
                   "string"
                 ]
               }],
-            "ReferredDocumentAmount": 1,
+            "ReferredDocumentAmount": "1.00",
             "CreditorReferenceInformation": {
               "Code": "DISP",
               "Issuer": "Issuer01",

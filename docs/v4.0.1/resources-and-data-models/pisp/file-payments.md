@@ -302,7 +302,7 @@ Accept: application/json
                 ]
               }
             ],
-            "ReferredDocumentAmount": 1,
+            "ReferredDocumentAmount": "1.00",
             "CreditorReferenceInformation": {
               "Code": "DISP",
               "Issuer": "Issuer01",
@@ -338,17 +338,17 @@ Content-Type: application/json
     "Status": "RCVD",
     "CreationDateTime": "2018-06-05T15:15:13+00:00",
     "StatusUpdateDateTime": "2018-06-05T15:15:13+00:00",
-    "StatusReason": { 
+    "StatusReason": [{ 
       "StatusReasonCode": "U030",
       "StatusReasonDescription": "Payment order successfully received"
-    },
+    }],
     "Charges": [{
       "ChargeBearer": "Shared",
       "Type": "UK.OBIE.CHAPSOut",
-      "Amount"  {
+      "Amount": {
         "Amount": "0.88",
         "Currency": "GBP"
-      },
+      }
     }],
     "Debtor": { 
 	 	  "SchemeName": "UK.OBIE.SortCodeAccountNumber",
@@ -427,7 +427,7 @@ Content-Type: application/json
                 ]
               }
             ],
-            "ReferredDocumentAmount": 1,
+            "ReferredDocumentAmount": "1.00",
             "CreditorReferenceInformation": {
               "Code": "DISP",
               "Issuer": "Issuer01",

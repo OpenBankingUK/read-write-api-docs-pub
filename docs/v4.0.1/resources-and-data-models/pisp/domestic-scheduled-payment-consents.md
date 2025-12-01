@@ -405,7 +405,7 @@ Accept: application/json
                   ]
                 }
               ],
-              "ReferredDocumentAmount": 1,
+              "ReferredDocumentAmount": "1.00",
               "CreditorReferenceInformation": {
                 "Code": "DISP",
                 "Issuer": "Issuer01",
@@ -454,10 +454,10 @@ Content-Type: application/json
       "AuthorisationType": "Any", 
       "CompletionDateTime": "2025-05-30T10:35:27Z",
     },
-    "StatusReason": {
+    "StatusReason": [{
       "StatusReasonCode": "U036", 
       "StatusReasonDescription":"Waiting for completion of consent authorisation to be completed by user",
-    },
+    }],
     "Debtor":{
       "SchemeName": "UK.OBIE.SortCodeAccountNumber",
       "Identification": "08080021325698",
@@ -585,7 +585,7 @@ Content-Type: application/json
                 ]
               }
             ],
-            "ReferredDocumentAmount": 1,
+            "ReferredDocumentAmount": "1.00",
             "CreditorReferenceInformation": {
               "Code": "DISP",
               "Issuer": "Issuer01",
