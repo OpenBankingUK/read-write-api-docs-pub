@@ -2,7 +2,7 @@
 
 - [Overview](#overview)
 - [Endpoints](#endpoints)
-  - [Endpoints](#endpoints-2)
+  - [Endpoints](#endpoints-1)
     - [POST /event-notifications](#post-event-notifications)
   - [Transport Level Security](#transport-level-security)
 - [Data Model](#data-model)
@@ -11,20 +11,20 @@
     - [Notes](#notes)
     - [Data Dictionary](#data-dictionary)
   - [OBEventSubject1](#obeventsubject1)
-    - [UML Diagram](#uml-diagram-2)
-    - [Notes](#notes-2)
-    - [Data Dictionary](#data-dictionary-2)
+    - [UML Diagram](#uml-diagram-1)
+    - [Notes](#notes-1)
+    - [Data Dictionary](#data-dictionary-1)
   - [OBEventResourceUpdate2](#obeventresourceupdate2)
     - [UML Diagram](#uml-diagram-2)
-    - [Data Dictionary](#data-dictionary-3)
+    - [Data Dictionary](#data-dictionary-2)
   - [OBEventConsentAuthorizationRevoked1](#obeventconsentauthorizationrevoked1)
     - [UML Diagram](#uml-diagram-3)
     - [Notes](#notes-2)
-    - [Data Dictionary](#data-dictionary-4)
+    - [Data Dictionary](#data-dictionary-3)
   - [OBEventAccountAccessConsentLinkedAccountUpdate1](#obeventaccountaccessconsentlinkedaccountupdate1)
     - [UML Diagram](#uml-diagram-4)
     - [Notes](#notes-3)
-    - [Data Dictionary](#data-dictionary-5)
+    - [Data Dictionary](#data-dictionary-4)
 - [Event Notification Retry Policy](#event-notification-retry-policy)
   - [ASPSP](#aspsp)
   - [TPP](#tpp)
@@ -33,11 +33,11 @@
     - [POST Event Notification Request](#post-event-notification-request)
     - [POST Event Notification Response](#post-event-notification-response)
   - [Send Event Notification - CBPII Consent Authorisation Revoked](#send-event-notification---cbpii-consent-authorisation-revoked)
+    - [POST Event Notification Request](#post-event-notification-request-1)
+    - [POST Event Notification Response](#post-event-notification-response-1)
+  - [Send Event Notification - AIS Consent Authorisation Revoked](#send-event-notification---ais-consent-authorisation-revoked)
     - [POST Event Notification Request](#post-event-notification-request-2)
     - [POST Event Notification Response](#post-event-notification-response-2)
-  - [Send Event Notification - AIS Consent Authorisation Revoked](#send-event-notification---ais-consent-authorisation-revoked)
-    - [POST Event Notification Request](#post-event-notification-request-3)
-    - [POST Event Notification Response](#post-event-notification-response-3)
 
 ## Overview
 
@@ -54,7 +54,6 @@ An ASPSP will send event notifications to a TPP using the event-notification res
 | Resource |HTTP Operation |Endpoint |Mandatory ? |Scope |Grant Type |Message Signing |Idempotency Key |Request Object |Response Object |
 | --- |--- |--- |--- |--- |--- |--- |--- |--- |--- |
 | event-notification |POST |POST /event-notifications |Optional |n/a |n/a |Signed Request |No |OBEventNotification1 | |
-
 
 Notes:
 
@@ -159,7 +158,7 @@ This section describes the OBEventConsentAuthorizationRevoked1 class which is us
 
 #### Notes
 
-For the OBEventConsentAuthorizationRevoked1 object:  
+For the OBEventConsentAuthorizationRevoked1 object:
 
 - The subject claim **must** be populated if the Event Notification does not include a `urn:uk:org:openbanking:events:resource-update` event.
 
@@ -181,7 +180,7 @@ This section describes the OBEventAccountAccessConsentLinkedAccountUpdate1 class
 
 #### Notes
 
-For the OBEventAccountAccessConsentLinkedAccountUpdate object: 
+For the OBEventAccountAccessConsentLinkedAccountUpdate object:
 
 - The http://openbanking.org.uk/rty claim **must** be populated with "account-access-consent".
 
@@ -236,7 +235,8 @@ Decoded JWT Body - Event Notification Payload
         "subject_type": "http://openbanking.org.uk/rid_http://openbanking.org.uk/rty",
         "http://openbanking.org.uk/rid": "aac-1234-007",
         "http://openbanking.org.uk/rty": "account-access-consent",
-        "http://openbanking.org.uk/rlk": [{
+        "http://openbanking.org.uk/rlk": [
+          {
             "version": "v3.1",
             "link": "https://examplebank.com/api/open-banking/v4.0/aisp/account-access-consents/aac-1234-007"
           }
@@ -330,27 +330,28 @@ Decoded JWT Body - Event Notification Payload
 
 ```json
 {
-	"iss": "https://examplebank.com/",
-	"iat": 1516239022,
-	"jti": "b460a07c-4962-43d1-85ee-9dc10fbb8f6c",
-	"sub": "https://examplebank.com/api/open-banking/v4.0/aisp/account-access-consents/aac-1234-007",
-	"aud": "7umx5nTR33811QyQfi",
-	"events": {
-		"urn:uk:org:openbanking:events:consent-authorization-revoked": {
-			"subject": {
-				"subject_type": "http://openbanking.org.uk/rid_http://openbanking.org.uk/rty",
-				"http://openbanking.org.uk/rid": "aac-1234-007",
-				"http://openbanking.org.uk/rty": "account-access-consents",
-				"http://openbanking.org.uk/rlk": [{
-						"version": "v3.1",
-						"link": "https://examplebank.com/api/open-banking/v4.0/aisp/account-access-consents/aac-1234-007"
-					}
-				]
-			}
+  "iss": "https://examplebank.com/",
+  "iat": 1516239022,
+  "jti": "b460a07c-4962-43d1-85ee-9dc10fbb8f6c",
+  "sub": "https://examplebank.com/api/open-banking/v4.0/aisp/account-access-consents/aac-1234-007",
+  "aud": "7umx5nTR33811QyQfi",
+  "events": {
+    "urn:uk:org:openbanking:events:consent-authorization-revoked": {
+      "subject": {
+        "subject_type": "http://openbanking.org.uk/rid_http://openbanking.org.uk/rty",
+        "http://openbanking.org.uk/rid": "aac-1234-007",
+        "http://openbanking.org.uk/rty": "account-access-consents",
+        "http://openbanking.org.uk/rlk": [
+          {
+            "version": "v3.1",
+            "link": "https://examplebank.com/api/open-banking/v4.0/aisp/account-access-consents/aac-1234-007"
+          }
+        ]
       }
-   },
-	"txn": "dfc51628-3479-4b81-ad60-210b43d02306",
-	"toe": 1516239022
+    }
+  },
+  "txn": "dfc51628-3479-4b81-ad60-210b43d02306",
+  "toe": 1516239022
 }
 ```
 

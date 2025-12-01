@@ -9,7 +9,7 @@
   - [Payment Restrictions](#payment-restrictions)
   - [Deferred specification of VRP Consent Parameters](#deferred-specification-of-vrp-consent-parameters)
   - [Deferred specification of CreditorAccount and CreditorAgent](#deferred-specification-of-creditoraccount-and-creditoragent)
-- [Security & Access Control](#security-access-control)
+- [Security & Access Control](#security--access-control)
   - [Scopes](#scopes)
   - [Grants Types](#grants-types)
   - [Consent Authorisation](#consent-authorisation)
@@ -33,7 +33,7 @@
     - [OBUltimateCreditor1](#obultimatecreditor1)
       - [Data Dictionary](#obultimatecreditor1-data-dictionary)
     - [OBUltimateDebtor1](#obultimatedebtor1)
-      - [Data Dictionary](#obultimatedebtor1-data-dictionary)  
+      - [Data Dictionary](#obultimatedebtor1-data-dictionary)
     - [OBRegulatoryReporting1](#obregulatoryreporting1)
       - [Data Dictionary](#obregulatoryreporting1-data-dictionary)
 - [Event Notifications](#event-notifications)
@@ -63,7 +63,7 @@ This profile should be read in conjunction with a compatible Read/Write Data API
 
 ### Resources
 
-Each of the Payment Initiation API resources are documented in the  [Resources and Data Models](../resources-and-data-models/) area of the specification. Each resource is documented with:
+Each of the Payment Initiation API resources are documented in the [Resources and Data Models](../resources-and-data-models) area of the specification. Each resource is documented with:
 
 - Endpoints
   - The API endpoints available for the resource.
@@ -115,7 +115,7 @@ Step 3: Authorise Consent
     - The ASPSP provides an interface for the PSU to select the debtor accounts to be used.
     - The ASPSP updates the state of the VRP Consent resource internally to indicate that the consent has been authorised.
     - Once the consent has been authorised, the PSU is redirected back to the TPP.
-  - In a decoupled flow, the ASPSP requests the PSU to authorise consent on an  *authentication device* that is separate from the  *consumption device* on which the PSU is interacting with the TPP.
+  - In a decoupled flow, the ASPSP requests the PSU to authorise consent on an *authentication device* that is separate from the *consumption device* on which the PSU is interacting with the TPP.
     - The decoupled flow is initiated by the TPP calling a back-channel authorisation request.
     - The request contains a 'hint' that identifies the PSU paired with the consent to be authorised.
     - The ASPSP authenticates the PSU
@@ -286,7 +286,7 @@ end opt
 
 ### Payment Restrictions
 
-The standard provides a set of conrol parameters that may be specified as part of the VRP Consent. These control parameters set limits for the payment orders that can be created by the TPP for a given VRP.
+The standard provides a set of control parameters that may be specified as part of the VRP Consent. These control parameters set limits for the payment orders that can be created by the TPP for a given VRP.
 
 In addition to the control parameters defined in this standard ASPSPs may implement additional control parameters, limits and restrictions for non-sweeping VRPs.
 
@@ -324,11 +324,11 @@ As defined in resources and data models.
 
 ### Consent Authorisation
 
-OAuth 2.0 scopes are coarse-grained and the set of available scopes are defined at the point of client registration. There is no standard method for specifying and enforcing fine-grained scopes e.g., a scope to enforce payments of a specified amount on a specified date.
+OAuth 2.0 scopes are coarse-grained and the set of available scopes are defined at the point of client registration. There is no standard method for specifying and enforcing fine-grained scopes E.g. a scope to enforce payments of a specified amount on a specified date.
 
 A *consent authorisation* is used to define the fine-grained scope that is granted by the PSU to the TPP.
 
-The TPP **must** begin setup of a Variable Recurring Payment, by creating a `domestic-vrp-consents` resource through a **POST** operation. These resources indicate the  _consent_ that the TPP claims it has been given by the PSU. At this stage, the consent is not yet authorised as the ASPSP has not yet verified this claim with the PSU.
+The TPP **must** begin setup of a Variable Recurring Payment, by creating a `domestic-vrp-consents` resource through a **POST** operation. These resources indicate the _consent_ that the TPP claims it has been given by the PSU. At this stage, the consent is not yet authorised as the ASPSP has not yet verified this claim with the PSU.
 
 The ASPSP responds with a ConsentId. This is the intent-id that is used when initiating the authorization code grant (as described in the Trust Framework).
 
@@ -378,13 +378,13 @@ This can also be used for vrp consents.
 
 ### Error Condition
 
-If the PSU does not complete a successful consent authorisation (e.g., if the PSU has not authenticated successfully), the authorization code grant ends with a redirection to the TPP with an error response as described in [RFC 6749 Section 4.1.2.1](https://tools.ietf.org/html/rfc6749#section-4.1.2.1). The PSU is redirected to the TPP with an error parameter indicating the error that occurred.
+If the PSU does not complete a successful consent authorisation (E.g. if the PSU has not authenticated successfully), the authorization code grant ends with a redirection to the TPP with an error response as described in [RFC 6749 Section 4.1.2.1](https://tools.ietf.org/html/rfc6749#section-4.1.2.1). The PSU is redirected to the TPP with an error parameter indicating the error that occurred.
 
 ### Consent Re-authentication
 
 VRP Consents are long-lived and can be re-authenticated by the PSU. The access token issued by the ASPSP must be valid for the same length of time as the VRP consent.
 
-ASPSPs may revoke access tokens associated with a VRP consent for fraud and risk reduction. In such situations, they would have to provide a event delivery mechanism.
+ASPSPs may revoke access tokens associated with a VRP consent for fraud and risk reduction. In such situations, they would have to provide an event delivery mechanism.
 
 A PSU may re-authenticate a VRP Consent where:
 
@@ -403,7 +403,7 @@ New releases of the standard may change the schema and/or enumerations used in V
 These features __must__ only be used to support migration across Standards versions and __must not__ be used to modify consent data that does not require migration.
 
 #### Payload-version header
-This header can be used to indicate the version of a payload being sent/received. It’s value is the _major.minor.patch_ of the API standard used to create it
+This header can be used to indicate the version of a payload being sent/received. Its value is the _major.minor.patch_ of the API standard used to create it
 
 TPPs should check ASPSP developer portals for information on whether legacy formats will be accepted.
 
@@ -412,6 +412,7 @@ __Example:__
 
 #### HTTP PUT | PATCH  /domestic-vrp-consents/{consentId}
 Implementation of these endpoints is conditional and TPPs should check the ASPSP developer portal for information on which have been implemented. 
+
 Additional information on usage is on the **Domestic VRP Consents** page
 
 ## Data Model
@@ -421,33 +422,35 @@ Additional information on usage is on the **Domestic VRP Consents** page
 #### OBProxy1
 
 ##### OBProxy1 Data Dictionary
+
 | Name | Occurrence | XPath | EnhancedDefinition | Class | Codes |
 | --- | --- | --- | --- | --- | --- | 
 | OBProxy1 | | |Specifies an alternate assumed name for the identification of the account. |OBProxy1 | |
-| Identification |1..1 |OBProxy1/Identification|  Identification used to indicate the account identification under another specified name. | Max2048Text| |
+| Identification |1..1 |OBProxy1/Identification|  Identification used to indicate the account identification under another specified name. | Max2048Text| |
 | Type |0..1 |OBProxy1/Type| Type of the proxy identification. |Max35Text | |
 | Code |1..1 |OBProxy1/Code| Specifies the external proxy account type code, as published in the proxy account type external code set. |For a full list of enumeration values refer `to External_CodeSet`[here](https://github.com/OpenBankingUK/External_Internal_CodeSets) |ExternalProxyAccountType1Code|
 
 #### OBPostalAddress7
 
 ##### OBPostalAddress7 Data Dictionary
+
 | Name | Occurrence | XPath | EnhancedDefinition | Class | Codes | Pattern |
 | --- | --- | --- | --- | --- | --- | --- |
 | OBPostalAddress7 | | |Information that locates and identifies a specific address, as defined by postal services. |OBPostalAddress7 | | |
-| AddressType |0..1 |OBPostalAddress7/AddressType |Identifies the nature of the postal address. | `OBAddressType2Code` | For a full set of codes see `OBAddressType2Code` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets).| |
-| CareOf |0..1 |OBPostalAddress7/CareOf |The 'care of' address is used whenever sending mail to a person or organisation who does not actually live or work at the address. They will receive the mail for the individual. |Max140Text | | |
+| AddressType |0..1 |OBPostalAddress7/AddressType |Identifies the nature of the postal address. | `OBAddressType2Code` | For a full set of codes see `OBAddressType2Code` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets).| |
+| CareOf |0..1 |OBPostalAddress7/CareOf |The 'care of' address is used whenever sending mail to a person or organisation who does not actually live or work at the address. They will receive the mail for the individual. |Max140Text | | |
 | PostBox |0..1 |OBPostalAddress7/PostBox |Numbered box in a post office, assigned to a person or organisation, where letters are kept until called for |Max16Text | | |
 | BuildingNumber |0..1 |OBPostalAddress7/BuildingNumber |Number that identifies the position of a building on a street. |Max16Text | | |
-| UnitNumber|0..1 |OBPostalAddress7/UnitNumber|Number that identifies the unit of a specific address |Max16Text | | |
-| BuildingName |0..1 |OBPostalAddress7/BuildingName |Name of a referenced building. |Max140Text | | |
+| UnitNumber|0..1 |OBPostalAddress7/UnitNumber|Number that identifies the unit of a specific address |Max16Text | | |
+| BuildingName |0..1 |OBPostalAddress7/BuildingName |Name of a referenced building. |Max140Text | | |
 | Department |0..1 |OBPostalAddress7/Department |Identification of a division of a large organisation or building. |Max70Text | | |
 | SubDepartment |0..1 |OBPostalAddress7/SubDepartment |Identification of a sub-division of a large organisation or building. |Max70Text | | |
-| Room |0..1 |OBPostalAddress7/Room|Information that locates and identifies a room to form part of an address. |Max70Text | | |
-| Floor |0..1 |OBPostalAddress7/Floor|Number that identifies the level within a building. |Max70Text | | |
+| Room |0..1 |OBPostalAddress7/Room|Information that locates and identifies a room to form part of an address. |Max70Text | | |
+| Floor |0..1 |OBPostalAddress7/Floor|Number that identifies the level within a building. |Max70Text | | |
 | StreetName |0..1 |OBPostalAddress7/StreetName |Name of a street or thoroughfare. |Max140Text | | |
 | TownName |0..1 |OBPostalAddress7/TownName |Name of a built-up area, with defined boundaries, and a local government. |Max140Text | | |
-| TownLocationName |0..1 |OBPostalAddress7/TownLocationName |Name of a built-up area, with defined boundaries, and a local government. |Max140Text | | |
-| DistrictName |0..1 |OBPostalAddress7/DistrictName |Number that of the regional area, known as a district, which forms part of an address. |Max140Text | | |
+| TownLocationName |0..1 |OBPostalAddress7/TownLocationName |Name of a built-up area, with defined boundaries, and a local government. |Max140Text | | |
+| DistrictName |0..1 |OBPostalAddress7/DistrictName |Number that of the regional area, known as a district, which forms part of an address. |Max140Text | | |
 | PostCode |0..1 |OBPostalAddress7/PostCode |Identifier consisting of a group of letters and/or numbers that is added to a postal address to assist the sorting of mail. |Max16Text | | |
 | CountrySubDivision |0..1 |OBPostalAddress7/CountrySubDivision |Identifies a subdivision of a country such as state, region, county. |Max35Text | | |
 | Country |0..1 |OBPostalAddress7/Country |Nation with its own government. |CountryCode | |`^[A-Z]{2,2}$` |
@@ -456,6 +459,7 @@ Additional information on usage is on the **Domestic VRP Consents** page
 #### OBRemittanceInformation2
 
 ##### OBRemittanceInformation2 Data Dictionary
+
 | Name                            | Occurrence | XPath                                                                       | EnhancedDefinition                                                                                                                                                                                                    | Class                                | Codes                                                                                                                            | Pattern |
 |---------------------------------|------------|-----------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------|----------------------------------------------------------------------------------------------------------------------------------|---------|
 | OBRemittanceInformation2        |            |                                                                             | Information supplied to enable the matching of an entry with the items that the transfer is intended to settle, such as commercial invoices in an accounts' receivable system.                                        | OBRemittanceInformation2             |                                                                                                                                  |         |
@@ -466,7 +470,7 @@ Additional information on usage is on the **Domestic VRP Consents** page
 | TaxRemittance                   | 0..1       | OBRemittanceInformation2/Structured/TaxRemittance                           | Provides remittance information about a payment made for tax-related purposes.                                                                                                                                        | Max140Text                           |                                                                                                                                  |         | 
 | AdditionalRemittanceInformation | 0..3       | OBRemittanceInformation2/Structured/AdditionalRemittanceInformation         | Additional information, in free text form, to complement the structured remittance information.                                                                                                                       | Array of Max140Text                  |                                                                                                                                  |         |
 | CreditorReferenceInformation    | 0..1       | OBRemittanceInformation2/Structured/CreditorReferenceInformation            | Reference information provided by the creditor to allow the identification of the underlying documents.                                                                                                               | OBCreditorReferenceInformation1      |                                                                                                                                  |         | 
-| Code                            | 0..1       | OBRemittanceInformation2/Structured/CreditorReferenceInformation/Code       | Specifies the amount type, as published in an external referred amount code set.                                                                                                                                      | `ExternalCreditorReferenceType1Code` | For more information see `ExternalCreditorReferenceType1Code` [here](https:/github.com/OpenBankingUK/External_internal_CodeSets) |         |
+| Code                            | 0..1       | OBRemittanceInformation2/Structured/CreditorReferenceInformation/Code       | Specifies the amount type, as published in an external referred amount code set.                                                                                                                                      | `ExternalCreditorReferenceType1Code` | For more information see `ExternalCreditorReferenceType1Code` [here](https://github.com/OpenBankingUK/External_internal_CodeSets) |         |
 | Issuer                          | 0..1       | OBRemittanceInformation2/Structured/CreditorReferenceInformation/Issuer     | Entity that assigns the identification.                                                                                                                                                                               | Max35Text                            |                                                                                                                                  |         |
 | Reference                       | 0..1       | OBRemittanceInformation2/Structured/CreditorReferenceInformation/Reference  | Unique reference, as assigned by the creditor, to unambiguously refer to the payment transaction.                                                                                                                     | Max35Text                            |                                                                                                                                  |         |
 | ReferredDocumentInformation     | 0..*       | OBRemittanceInformation2/Structured/ReferredDocumentInformation | Provides the identification and the content of the referred document. | Array of OBReferredDocumentInformation | | |
@@ -486,26 +490,28 @@ Additional information on usage is on the **Domestic VRP Consents** page
 #### OBUltimateCreditor1
 
 ##### OBUltimateCreditor1 Data Dictionary
+
 | Name | Occurrence | XPath | EnhancedDefinition | Class | Codes | Pattern |
 | --- | --- | --- | --- | --- | --- | --- |
 | OBUltimateCreditor1 | | | Ultimate party to which an amount of money is due.| OBUltimateCreditor1 | | |
 | Name |0..1 |OBUltimateCreditor1/Name |Name by which a party is known and which is usually used to identify that party. |Max140Text | | |
 | Identification |0..1 |OBUltimateCreditor1/Identification |Identification assigned by an institution. |Max256Text | | |
-| LEI |0..1 | OBUltimateCreditor1/LEI |Legal entity identification as an alternate identification for a party. Legal Entity Identifier is a code allocated to a party as described in ISO 17442 "Financial Services - Legal Entity Identifier (LEI)".|Max20Text | | `^[A-Z0-9]{18,18}[0-9]{2,2}$`|
+| LEI |0..1 | OBUltimateCreditor1/LEI |Legal entity identification as an alternate identification for a party. Legal Entity Identifier is a code allocated to a party as described in ISO 17442 "Financial Services - Legal Entity Identifier (LEI)".|Max20Text | | `^[A-Z0-9]{18,18}[0-9]{2,2}$`|
 | SchemeName |0..1 |OBUltimateCreditor1/SchemeName |Name of the identification scheme, in a coded form as published in an external list. |For a full list of enumeration values refer to `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets). |OBInternalAccountIdentification4Code |
 | PostalAddress | 0..1 | OBUltimateCreditor1/PostalAddress | Information that locates and identifies a specific address, as defined by postal services. | OBPostalAddress7 | |
 
 #### OBUltimateDebtor1
 
 ##### OBUltimateDebtor1 Data Dictionary
+
 | Name | Occurrence | XPath | EnhancedDefinition | Class | Codes | Pattern |
 | --- | --- | --- | --- | --- | --- | --- |
 | OBUltimateDebtor1 | | | Ultimate party that owes an amount of money to the (ultimate) creditor. | OBUltimateDebtor1 | | |
 | Name |0..1 |OBUltimateDebtor1/Name |Name by which a party is known and which is usually used to identify that party. |Max140Text | | |
 | Identification |0..1 |OBUltimateDebtor1/Identification |Identification assigned by an institution. |Max256Text | | |
-| LEI |0..1 | OBUltimateDebtor1/LEI |Legal entity identification as an alternate identification for a party. Legal Entity Identifier is a code allocated to a party as described in ISO 17442 "Financial Services - Legal Entity Identifier (LEI)".|Max20Text | | `^[A-Z0-9]{18,18}[0-9]{2,2}$`|
-| SchemeName |0..1 |OBUltimateDebtor1/SchemeName |Name of the identification scheme, in a coded form as published in an external list. | For a full list of enumeration values refer to `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets). |OBInternalAccountIdentification4Code | 
-| PostalAddress | 0..1 | OBUltimateDebtor1/PostalAddress | Information that locates and identifies a specific address, as defined by postal services. | OBPostalAddress7 | | 
+| LEI |0..1 | OBUltimateDebtor1/LEI |Legal entity identification as an alternate identification for a party. Legal Entity Identifier is a code allocated to a party as described in ISO 17442 "Financial Services - Legal Entity Identifier (LEI)".|Max20Text | | `^[A-Z0-9]{18,18}[0-9]{2,2}$`|
+| SchemeName |0..1 |OBUltimateDebtor1/SchemeName |Name of the identification scheme, in a coded form as published in an external list. | For a full list of enumeration values refer to `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets). |OBInternalAccountIdentification4Code |
+| PostalAddress | 0..1 | OBUltimateDebtor1/PostalAddress | Information that locates and identifies a specific address, as defined by postal services. | OBPostalAddress7 | |
 
 #### OBRegulatoryReporting1
 
@@ -549,7 +555,7 @@ A custom claim, `reason` should be used with the event to indicate the reason fo
 The `sub` and `subject` claim references the URL of the `vrp-consent` that gives the TPP access to the account.
 The TPP can then use the GET operation to retrieve the `vrp-consent`
 
-``` json
+```json
 {
   "iss": "https://examplebank.com/",
   "iat": 1516239022,
@@ -619,46 +625,46 @@ The TPP can then use the GET operation to retrieve the consent.
 #### POST
 
 - A PISP **must not** create a VRP consent ConsentId on a newer version and use it to create a payment-order resource in a previous version.
-  - E.g., A ConsentId created in v4 must not be used to create a DomesticVRPId on a v3 endpoint.
+  - E.g. A ConsentId created in v4 **must not** be used to create a DomesticVRPId on a v3 endpoint.
 - A PISP may create a VRP consent ConsentId on a previous version and use it to create a payment-order resource in a newer version
-  - E.g., A consent created in v3 can used to create a VRP payment in v4
+  - E.g. A consent created in v3 **can** be used to create a VRP payment in v4
 
 #### GET
 
 - A PISP **must not** access a payment-order ConsentId created in a newer version via a previous version endpoint
-  - E.g., A ConsentId created in v4 cannot be accessed via a v3 endpoint
+  - E.g. A ConsentId created in v4 **cannot** be accessed via a v3 endpoint
 - An ASPSP **must** make ConsentIds accessible across versions
-  - E.g., A ConsentId created in v3 must be accessible in v4 endpoints
+  - E.g. A ConsentId created in v3 **must** be accessible in v4 endpoints
 
 ### VRP Payment Resource
 
 #### POST
 
 - A PISP **must not** use a VRP consent ConsentId created in a newer version to make VRP payments in an older version.
-  - E.g., A consent created in v4 must not be used to create a VRP payment in v3
+  - E.g. A consent created in v4 **must not** be used to create a VRP payment in v3
 - An ASPSP **must** allow a PISP to use a ConsentId from a previous version to create a VRP payment in a newer version.
-  - E.g., A v3 VRP consent can be used to create a VRP payment-order resource in v4.
+  - E.g. A v3 VRP consent **can** be used to create a VRP payment-order resource in v4.
 
 #### GET
 
 - A PISP **must** refer to the ASPSP's online Developer Portal for guidelines on accessibility of completed VRP payment resources in a newer version.
 - A PISP **must not** access the VRP payment resource created in a newer version on an older version endpoint:
-  - E.g., for a VRP payment created in v4, access via the v3 payment endpoint is not permitted.
+  - E.g. for a VRP payment created in v4, access via the v3 payment endpoint is not permitted.
 - An ASPSP **must** document the availability and behaviours of a completed VRP payment resource in a newer version on the ASPSP's online Developer Portal.
 - An ASPSP **must** allow access to a completed VRP payment resource created in a previous version on a newer version endpoint (depending on an ASPSP's legal requirement for data retention):
-  - E.g., a VRP payment created in v3, must be accessible as a v4 payment, with sensible defaults for additional fields introduced in v4 (e.g., if an ASPSP must make payment resources available for 7 years).
+  - E.g. a VRP payment created in v3, **must** be accessible as a v4 payment, with sensible defaults for additional fields introduced in v4 (E.g. if an ASPSP must make payment resources available for 7 years).
 - In the case where a VRP payment type is the same, but the structure has changed in a newer version, sensible defaults may be used, with the ASPSP's Developer Portal clearly specifying the behaviour.
 - Where values have been updated across versions the ASPSP must map older values to the new when accessed in a newer endpoint.
-  - E.g., The v3 address value “Business” must be mapped to the v4 “BIZZ”.  The ASPSP **must** document the process for this developer portal.
+  - E.g. The v3 address value “Business” **must** be mapped to the v4 “BIZZ”.  The ASPSP **must** document the process for this developer portal.
 - ASPSPs **must** document on their developer portal how migration to a new version will impact fields and values for Consents created on an older version what steps, if any, a TPP must take for migration to a new version.
-  - E.g., ASPSPs may choose to implement the optional VRP PUT/PATCH endpoints which require a TPP to initiate a migration or may migrate a TPPs consent data in bulk at a given time agreed with the TPP.
+  - E.g. ASPSPs may choose to implement the optional VRP PUT/PATCH endpoints which require a TPP to initiate a migration or may migrate a TPPs consent data in bulk at a given time agreed with the TPP.
 
 ### Deprecation of values across releases
 
 - In the case that codeset values are deprecated without replacement across releases and a Consent or VRP Payment remains accessible in a newer version the ASPSP **must** return the legacy values in any GET calls and support making payments with these values.
-  - E.g., A consent is created on v3 using the deprecated “PartyToParty” value in the “OBRisk/PaymentContextCode” field.  On v4 the ASPSP should still return this value in GET calls and accept payments against this ConsentId using this value.
+  - E.g. A consent is created on v3 using the deprecated “PartyToParty” value in the “OBRisk/PaymentContextCode” field.  On v4 the ASPSP should still return this value in GET calls and accept payments against this ConsentId using this value.
 - Consents set up on the new version **must not** accept deprecated values.
-  - E.g., a new consent created on v4 using the deprecated “PartyToParty” value in the “OBRisk/PaymentContextCode” field **must** be rejected.
+  - E.g. a new consent created on v4 using the deprecated “PartyToParty” value in the “OBRisk/PaymentContextCode” field **must** be rejected.
 - A PISP **must not** use deprecated values when setting up a new consent
-  - E.g., a new consent created on v4 using the deprecated v3 “PartyToParty” value in the “OBRisk/PaymentContextCode” must not be submitted to the ASPSP
+  - E.g. a new consent created on v4 using the deprecated v3 “PartyToParty” value in the “OBRisk/PaymentContextCode” **must not** be submitted to the ASPSP
 - An ASPSP **must** document on their developer portal how deprecated or older values (such as v3 code names with a v4 ISO equivalent) are treated across versions, and any steps a TPP must take to migrate to a new version.
