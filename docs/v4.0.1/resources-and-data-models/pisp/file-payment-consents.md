@@ -372,7 +372,7 @@ Accept: application/json
                 ]
               }
             ],
-            "ReferredDocumentAmount": 1,
+            "ReferredDocumentAmount": "1.00",
             "CreditorReferenceInformation": {
               "Code": "DISP",
               "Issuer": "Issuer01",
@@ -413,28 +413,28 @@ Content-Type: application/json
     "CreationDateTime": "2018-06-05T15:15:13+00:00",
     "StatusUpdateDateTime": "2018-06-05T15:15:13+00:00",
 	"CutOffDateTime": "2018-07-05T15:15:22+00:00",
-	"StatusReason": { 
+	"StatusReason": [{ 
 		"StatusReasonCode": "U036",
 		"StatusReasonDescription": "Authorisation not completed. Awaiting file upload"
-	},
+	}],
 	"Charges": [{
 		"ChargeBearer": "Shared",
 		"Type": "UK.OBIE.CHAPSOut",
-		"Amount"  {
-			"Amount": "0.88",
-			"Currency": "GBP"
-		},
-    }],
+		"Amount": {
+      "Amount": "0.88",
+      "Currency": "GBP"
+    }
+  }],
 	"Authorisation": {
-    	"Type": "Any",
-    	"CompletionDateTime": "2019-05-30T10:35:27Z"
+      "Type": "Any",
+      "CompletionDateTime": "2019-05-30T10:35:27Z"
     },
 	"Debtor": { 
 	 	"SchemeName": "UK.OBIE.SortCodeAccountNumber",
         "Identification": "11280001234567",
 		"LEI": "8200007YHFDMEODY1965",
         "Name": "Andrea Smith",
-        "SecondaryIdentification": "0002",	
+        "SecondaryIdentification": "0002"	
 	},
     "Initiation": {
 	  "LocalInstrument": "UK.OBIE.Paym",
@@ -499,7 +499,7 @@ Content-Type: application/json
                 ]
               }
             ],
-            "ReferredDocumentAmount": 1,
+            "ReferredDocumentAmount": "1.00",
             "CreditorReferenceInformation": {
               "Code": "DISP",
               "Issuer": "Issuer01",
@@ -508,7 +508,7 @@ Content-Type: application/json
             "Invoicer": "INVR51856",
             "Invoicee": "INVE5161856",
 			"TaxRemittance": "Tax Remittance related information",
-          	"AdditionalRemittanceInformation": ["Free text for additional information"],
+          	"AdditionalRemittanceInformation": ["Free text for additional information"]
           }
         ],
 		"Unstructured": ["Internal ops code 5120101"]
@@ -517,8 +517,8 @@ Content-Type: application/json
 	"SCASupportData": {
 	  	"RequestedSCAExemptionType": "EcommerceGoods",
 		"AppliedAuthenticationApproach": "SCA",
-		"ReferencePaymentOrderId": "O-611265",
-    },
+		"ReferencePaymentOrderId": "O-611265"
+    }
   },
   "Links":{
     "Self":"https://api.alphabank.com/open-banking/v4.0/pisp/file-payment-consents/512345"
