@@ -4,8 +4,8 @@
 - [Endpoints](#endpoints)
   - [POST /domestic-vrps](#post-domestic-vrps)
     - [Status](#status)
-  - [GET /domestic-vrps/{DomesticVRPId}](#get-domestic-vrps-domesticvrpid)
-  - [GET /domestic-vrps/{DomesticVRPId}/payment-details](#get-domestic-vrps-domesticvrpid-payment-details)
+  - [GET /domestic-vrps/{DomesticVRPId}](#get-domestic-vrpsdomesticvrpid)
+  - [GET /domestic-vrps/{DomesticVRPId}/payment-details](#get-domestic-vrpsdomesticvrpidpayment-details)
 - [State Model](#state-model)
   - [Payment Order](#payment-order)
 - [Data Model](#data-model)
@@ -35,7 +35,7 @@ Once a `domestic-vrp-consents` has been authorised by the PSU, the TPP can proce
 
 This is done by making a POST request to the `domestic-vrps` endpoint.
 
-This request is an instruction to the ASPSP to begin the domestic single immediate payment journey. The domestic payment must be executed immediately, however, there are some scenarios where the domestic payment may not be executed immediately (e.g., busy periods at the ASPSP).
+This request is an instruction to the ASPSP to begin the domestic single immediate payment journey. The domestic payment must be executed immediately, however, there are some scenarios where the domestic payment may not be executed immediately (e.g. busy periods at the ASPSP).
 
 The TPP **must** ensure that the `Initiation` and `Risk` section matches the values specified in the consent.
 
@@ -43,7 +43,7 @@ The ASPSP **must** ensure that the payment instruction adheres to the limitation
 
 When a payment would breach a limitation set by one or more `ControlParameters`, the ASPSP **must** return an error with code `U014` and pass in the control parameter field that caused the error in the `Field` field of the error message.
 
-If the `CreditorAccount` was not specified in the the consent, the `CreditorAccount` must be specified in the instruction.
+If the `CreditorAccount` was not specified in the consent, the `CreditorAccount` must be specified in the instruction.
 
 The TPP **must** ensure that the end-point is called with the same scope as the one used for the corresponding consent.
 
@@ -108,7 +108,7 @@ The API must return one of the following status codes:
 
 ### Payment Order
 
-The state model for the `domestic-vrps` resource follows the behavior and definitions for the ISO 20022 PaymentStatusCode code-set.
+The state model for the `domestic-vrps` resource follows the behaviour and definitions for the ISO 20022 PaymentStatusCode code-set.
 
 __Note: Multi-authorisation is not currently supported in VRP.__
 
@@ -118,9 +118,7 @@ __Payment order state model key:__
 | Green (Bold) | Mandatory |
 | Orange (Italic) | Optional, but recommended |
 
-
 ![Payment Order Status](./images/PIS_VRP_PO_Statuses_1.png)
-
 
 ## Data Model
 
@@ -132,7 +130,7 @@ __Payment order state model key:__
 | ---- |-----|---------- |------|
 | __InstructionIdentification__ (1..1) | `InstructionIdentification` |Unique identification as assigned by an instructing party for an instructed party to unambiguously identify the instruction. Usage: the instruction identification is a point to point reference that can be used between the instructing party and the instructed party to refer to the individual instruction. It can be included in several messages related to the instruction. |Max35Text
 | __EndToEndIdentification__ (1..1) | `EndToEndIdentification` |Unique identification assigned by the initiating party to unambiguously identify the transaction. This identification is passed on, unchanged, throughout the entire end-to-end chain. Usage: The end-to-end identification can be used for reconciliation or to link tasks relating to the transaction. It can be included in several messages related to the transaction. OB: The Faster Payments Scheme can only access 31 characters for the EndToEndIdentification field. |Max35Text
-| __RemittanceInformation__ (0..1) | `RemittanceInformation` |Information supplied to enable the matching of an entry with the items that the transfer is intended to settle, such as commercial invoices in an accounts' receivable system. | [OBRemittanceInformation1](../../profiles/vrp-profile.md#obremittanceinformation1)
+| __RemittanceInformation__ (0..1) | `RemittanceInformation` |Information supplied to enable the matching of an entry with the items that the transfer is intended to settle, such as commercial invoices in an accounts' receivable system. | [OBRemittanceInformation1](../../profiles/vrp-profile.md#obremittanceinformation2)
 | __LocalInstrument__ (0..1) | `LocalInstrument` |User community specific instrument. Usage: This element is used to specify a local instrument, local clearing option and/or further qualify the service or service level. For a full list of enumeration values refer to `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets) |OBInternalLocalInstrument1Code |
 | __InstructedAmount__ (1..1) | `InstructedAmount` |Amount of money to be moved between the debtor and creditor, before deduction of charges, expressed in the currency as ordered by the initiating party. Usage: This amount has to be transported unchanged through the transaction chain. | OBActiveOrHistoricCurrencyAndAmount
 | __Amount__ (1..1) |`InstructedAmount. Amount` |A number of monetary units specified in an active currency where the unit of currency is explicit and compliant with ISO 4217. |OBActiveCurrencyAndAmount_SimpleType | `^\d{1,13}$|^\d{1,13}\.\d{1,5}$`
@@ -140,7 +138,7 @@ __Payment order state model key:__
 | __CreditorAccount__ (1..1) | `CreditorAccount`   |Unambiguous identification of the account of the creditor to which a credit entry will be posted as a result of the payment transaction.       |OBCashAccountCreditor3|
 | __CreditorPostalAddress__ (0..1)| `CreditorPostalAddress` |Information that locates and identifies a specific address, as defined by postal services.| [OBPostalAddress7](../../profiles/vrp-profile.md#obpostaladdress7)  |
 | __UltimateCreditor__ (0..1)| `UltimateCreditor` | Ultimate party to which an amount of money is due. |[OBUltimateCreditor1](../../profiles/vrp-profile.md#obultimatecreditor1) |
-| __SupplementaryData__ (0..1)        | `SupplementaryData`                 | Additional information that can not be captured in the structured fields and/or any other specific block     
+| __SupplementaryData__ (0..1)        | `SupplementaryData`                 | Additional information that can not be captured in the structured fields and/or any other specific block
 
 ### OBDomesticVRPRequest
 
@@ -149,7 +147,7 @@ __Payment order state model key:__
 | Name                               | Path                            | Definition                                                                                                  | Type                                                  |
 |------------------------------------|---------------------------------|-------------------------------------------------------------------------------------------------------------|-------------------------------------------------------|
 | __Data__ (1..1)                    | `Data`                          |                                                                                                             |                                                       |
-| __PSUAuthenticationMethod__ (1..1) | `Data. PSUAuthenticationMethod` | The authentication method that was used to authenicate the PSU.                                             | OBVRPAuthenticationMethods - Namespaced Enumeration   |
+| __PSUAuthenticationMethod__ (1..1) | `Data. PSUAuthenticationMethod` | The authentication method that was used to authenticate the PSU.                                            | OBVRPAuthenticationMethods - Namespaced Enumeration   |
 | __PSUInteractionType__ (0..1)      | `Data. PSUInteractionType`      | Indicates interaction type, currently if customer is present or not present. If not provided the default is `"OffSession"` (customer is not present) when the individual VRP payment is made.                                                  | OBVRPInteractionTypes                                 |
 | __VRPType__ (1..1)      | `Data. VRPType`      |  	The type of payment being made under the VRP consent. This can be used to indicate whether this include sweeping payment or other ecommerce payments. 	                                | OBVRPConsentType - Namespaced Enumeration                                 |
 | __ConsentId__ (1..1)               | `Data. ConsentId`               | Identifier for the Domestic VRP Consent that this payment is made under                                     | Max128Text                                            |
