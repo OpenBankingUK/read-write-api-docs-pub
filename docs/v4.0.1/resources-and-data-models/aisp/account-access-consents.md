@@ -254,10 +254,10 @@ Content-Type: application/json
     "Status": "AWAU",
     "StatusUpdateDateTime": "2017-05-02T00:00:00+00:00",
     "CreationDateTime": "2017-05-02T00:00:00+00:00",
-    "StatusReason": {
+    "StatusReason": [{
       "StatusReasonCode": "U036", 
       "StatusReasonDescription":"Waiting for completion of consent authorisation to be completed by user",
-    },
+    }],
     "Permissions": [
       "ReadAccountsDetail",
       "ReadBalances",
@@ -316,10 +316,10 @@ Content-Type: application/json
   "Data": {
     "ConsentId": "urn-alphabank-intent-88379",
     "Status": "AWAU",
-   "StatusReason": {
+   "StatusReason": [{
       "StatusReasonCode": "U036", 
       "StatusReasonDescription":"Waiting for completion of consent authorisation to be completed by user",
-    },
+    }],
     "StatusReasonDescription":"Waiting for completion of consent authorisation to be completed by user",
     "StatusUpdateDateTime": "2017-05-02T00:00:00+00:00",
     "CreationDateTime": "2017-05-02T00:00:00+00:00",
@@ -381,10 +381,10 @@ Content-Type: application/json
   "Data": {
     "ConsentId": "urn-alphabank-intent-88379",
     "Status": "AUTH",
-    "StatusReason": {
+    "StatusReason": [{
       "StatusReasonCode": "U038", 
       "StatusReasonDescription":"Consent has been completed successfully"
-    },
+    }],
     "StatusUpdateDateTime": "2017-05-02T00:05:00+00:00",
     "CreationDateTime": "2017-05-02T00:00:00+00:00",
     "Permissions": [
@@ -445,11 +445,11 @@ Content-Type: application/json
   "Data": {
     "ConsentId": "urn-alphabank-intent-88379",
     "Status": "REJT",
-    "StatusReason": {
+    "StatusReason": [{
       "StatusReasonCode": "U038", 
       "StatusReasonDescription":"Data.LocalInstrument is invalid.  Expected ExternalLocalInstrument1Code value, received SEPE",
       "Path": "Data.LocalInstrument"
-    },
+    }],
     "StatusUpdateDateTime": "2017-05-02T00:05:00+00:00",
     "CreationDateTime": "2017-05-02T00:00:00+00:00",
     "Permissions": [
@@ -548,11 +548,10 @@ Content-Type: application/json
     "Status": "AWAU",
     "StatusUpdateDateTime": "2017-05-02T00:00:00+00:00",
     "CreationDateTime": "2017-05-02T00:00:00+00:00",
-    "Status": "AWAU",
-    "StatusReason": {
+    "StatusReason": [{
       "StatusReasonCode": "U036", 
       "StatusReasonDescription":"Waiting for completion of consent authorisation to be completed by user",
-    },
+    }],
     "Permissions": [
       "ReadAccountsBasic",
       "ReadBalances"

@@ -137,16 +137,16 @@ Content-Type: application/json
         "Amount": {
           "Amount": "1230.00",
           "Currency": "GBP",
-          "SubType": "BCUR",
+          "SubType": "BCUR"
         },
         "LocalAmount":  {
           "Amount": "1230.00",
           "Currency": "GBP",
-          "SubType": "BCUR",
+          "SubType": "BCUR"
         }, 
         "TotalAmount": { 
-            "Amount": "1230.00",
-            "Currency": "GBP",
+          "Amount": "1230.00",
+          "Currency": "GBP"
         }, 
         "CreditDebitIndicator": "Credit",
         "Type": "ITAV",
@@ -176,7 +176,7 @@ Content-Type: application/json
     "TotalValue": {
       "Amount": "720.39",
       "Currency": "GBP"
-    },
+    }
   },
   "Links": {
     "Self": "https://api.alphabank.com/open-banking/v4.0/aisp/balances/"
@@ -191,7 +191,7 @@ Content-Type: application/json
 
 #### Get Account Balances Request
 
-An account has a balance of 300 GBP with an arranged overdraft of 500 GBP none of which has been used.
+An account has a balance of 300 GBP with an arranged overdraft of 500 GBP none of which has been used.
 
 ```
 GET /accounts/22289/balances HTTP/1.1
@@ -213,48 +213,50 @@ Content-Type: application/json
 ```json
 {
   "Data": {
-    "Balance": {
-      "AccountId": "22289",
-      "Amount": {
-        "Amount": "300.00",
-        "Currency": "GBP",
-          "SubType": "BCUR",
-        },
-        "LocalAmount":  {
-          "Amount": "1230.00",
+    "Balance": [
+      {
+        "AccountId": "22289",
+        "Amount": {
+          "Amount": "300.00",
           "Currency": "GBP",
-          "SubType": "BCUR",
-        }, 
-        "TotalAmount": { 
+            "SubType": "BCUR"
+          },
+          "LocalAmount":  {
             "Amount": "1230.00",
             "Currency": "GBP",
-        }, 
-      "CreditDebitIndicator": "Credit",
-      "Type": "ITAV",
-      "DateTime": "2017-04-05T10:43:07+00:00",
-      "CreditLine": [
-        {
-          "Included": false,
-          "Amount": {
-            "Amount": "500.00",
+            "SubType": "BCUR"
+          }, 
+          "TotalAmount": { 
+            "Amount": "1230.00",
             "Currency": "GBP"
+          }, 
+        "CreditDebitIndicator": "Credit",
+        "Type": "ITAV",
+        "DateTime": "2017-04-05T10:43:07+00:00",
+        "CreditLine": [
+          {
+            "Included": false,
+            "Amount": {
+              "Amount": "500.00",
+              "Currency": "GBP"
+            },
+            "Type": "Available"
           },
-          "Type": "Available"
-        },
-        {
-          "Included": false,
-          "Amount": {
-            "Amount": "500.00",
-            "Currency": "GBP"
-          },
-          "Type": "Pre-Agreed"
-        }
-      ]
-    },
+          {
+            "Included": false,
+            "Amount": {
+              "Amount": "500.00",
+              "Currency": "GBP"
+            },
+            "Type": "Pre-Agreed"
+          }
+        ]
+      }
+    ],
     "TotalValue": {
       "Amount": "720.39",
       "Currency": "GBP"
-    },
+    }
   },
   "Links": {
     "Self": "https://api.alphabank.com/open-banking/v4.0/aisp/accounts/22289/balances/"
@@ -269,7 +271,7 @@ Content-Type: application/json
 
 #### Get Account Balances Request
 
-An account has a balance of 300 GBP with an temporary creditline of 500 GBP none of which has been used.
+An account has a balance of 300 GBP with a temporary creditline of 500 GBP none of which has been used.
 
 ```
 GET /accounts/22289/balances HTTP/1.1
@@ -291,48 +293,50 @@ Content-Type: application/json
 ```json
 {
   "Data": {
-    "Balance": {
-      "AccountId": "22289",
-      "Amount": {
-        "Amount": "800.00",
-        "Currency": "GBP",
-          "SubType": "BCUR",
-        },
-        "LocalAmount":  {
-          "Amount": "1230.00",
+    "Balance": [
+      {
+        "AccountId": "22289",
+        "Amount": {
+          "Amount": "800.00",
           "Currency": "GBP",
-          "SubType": "BCUR",
-        }, 
-        "TotalAmount": { 
+            "SubType": "BCUR"
+          },
+          "LocalAmount":  {
             "Amount": "1230.00",
             "Currency": "GBP",
-        }, 
-      "CreditDebitIndicator": "Credit",
-      "Type": "ITAV",
-      "DateTime": "2017-04-05T10:43:07+00:00",
-      "CreditLine": [
-        {
-          "Included": false,
-          "Amount": {
-            "Amount": "500.00",
+            "SubType": "BCUR"
+          }, 
+          "TotalAmount": { 
+            "Amount": "1230.00",
             "Currency": "GBP"
+          }, 
+        "CreditDebitIndicator": "Credit",
+        "Type": "ITAV",
+        "DateTime": "2017-04-05T10:43:07+00:00",
+        "CreditLine": [
+          {
+            "Included": false,
+            "Amount": {
+              "Amount": "500.00",
+              "Currency": "GBP"
+            },
+            "Type": "Available"
           },
-          "Type": "Available"
-        },
-        {
-          "Included": true,
-          "Amount": {
-            "Amount": "500.00",
-            "Currency": "GBP"
-          },
-          "Type": "Temporary"
-        }
-      ]
-    },
+          {
+            "Included": true,
+            "Amount": {
+              "Amount": "500.00",
+              "Currency": "GBP"
+            },
+            "Type": "Temporary"
+          }
+        ]
+      }
+    ],
     "TotalValue": {
       "Amount": "720.39",
       "Currency": "GBP"
-    },
+    }
   },
   "Links": {
     "Self": "https://api.alphabank.com/open-banking/v4.0/aisp/accounts/22289/balances/"
@@ -347,7 +351,7 @@ Content-Type: application/json
 
 #### Get Account Balances Request
 
-If the account holder spends 400 GBP, then their account balance drops to 100 GBP (Debit) with a further 400 GBP available (if their pre-agreed overdraft remains unchanged at 500 GBP)
+If the account holder spends 400 GBP, then their account balance drops to 100 GBP (Debit) with a further 400 GBP available (if their pre-agreed overdraft remains unchanged at 500 GBP)
 
 ```
 GET /accounts/22289/balances HTTP/1.1
@@ -369,48 +373,50 @@ Content-Type: application/json
 ```json
 {
   "Data": {
-    "Balance": {
-      "AccountId": "22289",
-      "Amount": {
-        "Amount": "100.00",
-        "Currency": "GBP",
-          "SubType": "BCUR",
-        },
-        "LocalAmount":  {
-          "Amount": "1230.00",
+    "Balance": [ 
+      {
+        "AccountId": "22289",
+        "Amount": {
+          "Amount": "100.00",
           "Currency": "GBP",
-          "SubType": "BCUR",
-        }, 
-        "TotalAmount": { 
+            "SubType": "BCUR"
+          },
+          "LocalAmount":  {
             "Amount": "1230.00",
             "Currency": "GBP",
-        }, 
-      "CreditDebitIndicator": "Debit",
-      "Type": "ITAV",
-      "DateTime": "2017-04-05T10:43:07+00:00",
-      "CreditLine": [
-        {
-          "Included": false,
-          "Amount": {
-            "Amount": "400.00",
+            "SubType": "BCUR"
+          }, 
+          "TotalAmount": { 
+            "Amount": "1230.00",
             "Currency": "GBP"
+          }, 
+        "CreditDebitIndicator": "Debit",
+        "Type": "ITAV",
+        "DateTime": "2017-04-05T10:43:07+00:00",
+        "CreditLine": [
+          {
+            "Included": false,
+            "Amount": {
+              "Amount": "400.00",
+              "Currency": "GBP"
+            },
+            "Type": "Available"
           },
-          "Type": "Available"
-        },
-        {
-          "Included": false,
-          "Amount": {
-            "Amount": "500.00",
-            "Currency": "GBP"
-          },
-          "Type": "Pre-Agreed"
-        }
-      ]
-    },
+          {
+            "Included": false,
+            "Amount": {
+              "Amount": "500.00",
+              "Currency": "GBP"
+            },
+            "Type": "Pre-Agreed"
+          }
+        ]
+      }
+    ],
     "TotalValue": {
       "Amount": "720.39",
       "Currency": "GBP"
-    },
+    }
   },
   "Links": {
     "Self": "https://api.alphabank.com/open-banking/v4.0/aisp/accounts/22289/balances/"
@@ -424,7 +430,7 @@ Content-Type: application/json
 
 #### Get Wallet Balances Request
 
-If the account holder has 2 currencies under the wallet.
+If the account holder has 2 currencies under the wallet.
 Total value of all currencies in the wallet in local currency.
 
 ```
@@ -447,44 +453,46 @@ Content-Type: application/json
 ```json
 {
   "Data": {
-    "Balance": {
-      "AccountId": "22289",
-      "Amount": {
-        "Amount": "329.06",
-        "Currency": "GBP",
-        "SubType": "BCUR"
-      },
-      "LocalAmount": {
-        "Amount": "400.00",
-        "Currency": "USD",
-        "SubType": "LCUR"
-      },
-      "CreditDebitIndicator": "Credit",
-      "Type": "CLAV",
-      "DateTime": "2023-04-05T10:43:07+00:00"
-    },
+    "Balance": [ 
+      {
+        "AccountId": "22289",
+        "Amount": {
+          "Amount": "329.06",
+          "Currency": "GBP",
+          "SubType": "BCUR"
+        },
+        "LocalAmount": {
+          "Amount": "400.00",
+          "Currency": "USD",
+          "SubType": "LCUR"
+        },
+        "CreditDebitIndicator": "Credit",
+        "Type": "CLAV",
+        "DateTime": "2023-04-05T10:43:07+00:00"
+      }
+    ],
     "TotalValue": {
       "Amount": "720.39",
       "Currency": "GBP"
     },
     "CreditLine": [
-        {
-          "Included": false,
-          "Amount": {
-            "Amount": "400.00",
-            "Currency": "GBP"
-          },
-          "Type": "Available"
+      {
+        "Included": false,
+        "Amount": {
+          "Amount": "400.00",
+          "Currency": "GBP"
         },
-        {
-          "Included": false,
-          "Amount": {
-            "Amount": "500.00",
-            "Currency": "GBP"
-          },
-          "Type": "Pre-Agreed"
-        }
-      ]
+        "Type": "Available"
+      },
+      {
+        "Included": false,
+        "Amount": {
+          "Amount": "500.00",
+          "Currency": "GBP"
+        },
+        "Type": "Pre-Agreed"
+      }
+    ]
   },
   "Links": {
     "Self": "https://api.alphabank.com/open-banking/v4.0/aisp/accounts/22289/balances/"
