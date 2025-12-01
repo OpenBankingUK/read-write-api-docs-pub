@@ -380,6 +380,7 @@ The PSU may request the CBPII to revoke consent that it has authorised. If conse
 #### OBProxy1
 
 ##### OBProxy1 Data Dictionary
+
 | Name | Occurrence | XPath | EnhancedDefinition | Class | Codes |
 | --- | --- | --- | --- | --- | --- | 
 | OBProxy1 | | |Specifies an alternate assumed name for the identification of the account. |OBProxy1 | |
