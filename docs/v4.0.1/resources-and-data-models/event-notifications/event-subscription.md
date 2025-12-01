@@ -40,7 +40,7 @@ A TPP will set up and maintain its event subscription details (URL, event types 
 | event-subscription |POST |POST /event-subscriptions | Optional                            |accounts<br>payments<br>fundsconfirmations |Client Credentials |Signed Request<br><br>Signed Response |No |OBEventSubscription1 |OBEventSubscriptionResponse1 |
 | event-subscription |GET |GET /event-subscriptions | Mandatory (if resource POST implemented) |accounts<br>payments<br>fundsconfirmations |Client Credentials |Signed Response |No |n/a |OBEventSubscriptionsResponse1 |
 | event-subscription |PUT |PUT /event-subscriptions/{EventSubscriptionId} | Conditional (See [Note 1](#note-1)) |accounts<br>payments<br>fundsconfirmations |Client Credentials |Signed Request<br><br>Signed Response |No |OBEventSubscriptionResponse1 |OBEventSubscriptionResponse1 |
-| event-subscription |DELETE |DELETE /event-subscriptions/{EventSubscriptionId} | Conditional (See [Note 1](#note-1----omit-in-toc---)) |accounts<br>payments<br>fundsconfirmations |Client Credentials |n/a |No |n/a |n/a |
+| event-subscription |DELETE |DELETE /event-subscriptions/{EventSubscriptionId} | Conditional (See [Note 1](#note-1)) |accounts<br>payments<br>fundsconfirmations |Client Credentials |n/a |No |n/a |n/a |
 
 ### Note 1 <!-- omit in toc -->
 
