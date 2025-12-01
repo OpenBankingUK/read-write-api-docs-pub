@@ -38,8 +38,8 @@ A TPP will set up and maintain its call back details (URL and version number) us
 | --- |--- |--- |--- |--- |--- |--- |--- |--- |--- |
 | callback-url |POST |POST /callback-urls |Optional |accounts<br>payments<br>fundsconfirmations |Client Credentials |Signed Request<br><br>Signed Response |No |OBCallbackUrl1 |OBCallbackUrlResponse1 |
 | callback-url |GET |GET /callback-urls |Mandatory (if resource POST implemented) |accounts<br>payments<br>fundsconfirmations |Client Credentials |Signed Response |No |n/a |OBCallbackUrlsResponse1 |
-| callback-url |PUT |PUT /callback-urls/{CallbackUrlId} | Conditional (See [Note 1](#note-1----omit-in-toc---))  |accounts<br>payments<br>fundsconfirmations |Client Credentials |Signed Request<br><br>Signed Response |No |OBCallbackUrlResponse1 |OBCallbackUrlResponse1 |
-| callback-url |DELETE |DELETE /callback-urls/{CallbackUrlId} | Conditional (See [Note 1](#note-1----omit-in-toc---))  |accounts<br>payments<br>fundsconfirmations |Client Credentials |n/a |No |n/a |n/a |
+| callback-url |PUT |PUT /callback-urls/{CallbackUrlId} | Conditional (See [Note 1](#note-1))  |accounts<br>payments<br>fundsconfirmations |Client Credentials |Signed Request<br><br>Signed Response |No |OBCallbackUrlResponse1 |OBCallbackUrlResponse1 |
+| callback-url |DELETE |DELETE /callback-urls/{CallbackUrlId} | Conditional (See [Note 1](#note-1))  |accounts<br>payments<br>fundsconfirmations |Client Credentials |n/a |No |n/a |n/a |
 
 ### Note 1 <!-- omit in toc -->
 
