@@ -73,21 +73,6 @@ Accept: application/json
           "Type": "Telephone"
         }
       },
-      "CreditorAgent": {  
-          "LEI": "IZ9Q00LZEVUKWCQY6X15",
-          "SchemeName": "UK.OBIE.BICFI",
-          "Identification": "80200112344562",
-          "Name": "The Credit Agent", 
-          "PostalAddress": { 
-            "AddressType": "BIZZ",
-            "StreetName": "Bank Street",
-            "BuildingNumber": "11",
-            "Floor": "6",
-            "PostCode": "Z78 4TY",
-            "TownName": "London",
-            "Country": "GB"
-        }
-      },
       "CreditorAccount": {
         "SchemeName": "UK.OBIE.SortCodeAccountNumber",
         "Identification": "30949330000010",
@@ -123,12 +108,12 @@ Accept: application/json
           {
           "ReferredDocumentAmount": "1",
           "CreditorReferenceInformation": {
-            "Reference": "SweepCo",
+            "Reference": "SweepCo"
             },
-        "AdditionalRemittanceInformation": ["Rose's pocket money"],
-          },
-        ],
-      },
+        "AdditionalRemittanceInformation": ["Rose's pocket money"]
+          }
+        ]
+      }
   },
   "Risk": {
     "PaymentContextCode": "TransferToSelf",
@@ -136,7 +121,7 @@ Accept: application/json
     "PaymentPurposeCode": "EPAY",
     "CategoryPurposeCode": "GP2P", 
     "BeneficiaryPrepopulatedIndicator": true,
-    "BeneficiaryAccountType": "Personal",
+    "BeneficiaryAccountType": "Personal"
   }
 }
 }
@@ -157,16 +142,16 @@ Content-Type: application/json
     "ConsentId": "fe615446-e53a-45ed-954c-ae5d1f97a93b",
     "CreationDateTime": "2017-06-05T15:15:15+00:00",
     "Status": "AUTH",
-    "StatusReason": {
+    "StatusReason": [{
       "StatusReasonCode": "U038", 
-      "StatusReasonDescription":"Consent consumed successfully",
-    },
+      "StatusReasonDescription": "Consent consumed successfully"
+    }],
     "StatusUpdateDateTime": "2017-06-05T15:15:15+05:00",
     "ReadRefundAccount": "Yes",
     "ControlParameters": {
       "PSUAuthenticationMethods": [ "UK.OBIE.SCA" ],
       "PSUInteractionTypes": [ "OffSession" ],
-      "VRPType": "UK.OBIE.VRPType.Sweeping",
+      "VRPType": ["UK.OBIE.VRPType.Sweeping"],
       "ValidFromDateTime": "2017-06-05T15:15:13+00:00",
       "ValidToDateTime": "2020-06-05T15:15:13+00:00",
       "MaximumIndividualAmount": {
@@ -216,21 +201,6 @@ Content-Type: application/json
           "Type": "Telephone"
         }
       },
-      "CreditorAgent": {  
-          "LEI": "IZ9Q00LZEVUKWCQY6X15",
-          "SchemeName": "UK.OBIE.BICFI",
-          "Identification": "80200112344562",
-          "Name": "The Credit Agent", 
-          "PostalAddress": { 
-            "AddressType": "BIZZ",
-            "StreetName": "Bank Street",
-            "BuildingNumber": "11",
-            "Floor": "6",
-            "PostCode": "Z78 4TY",
-            "TownName": "London",
-            "Country": "GB"
-        }
-      },
       "CreditorPostalAddress": {
         "AddressType": "BIZZ",
         "Department": "Finance",
@@ -255,14 +225,14 @@ Content-Type: application/json
           {
           "ReferredDocumentInformation": [{
             "CreditorReferenceInformation": {
-              "Reference": "SweepCo",
+              "Reference": "SweepCo"
             },
-          "AdditionalRemittanceInformation": ["Rose's pocket money"],
-          },
+          "AdditionalRemittanceInformation": ["Rose's pocket money"]
+          }
         ]
       }
       ]
-    },
+    }
   },
   "Risk": {
     "PaymentContextCode": "TransferToSelf",
@@ -270,8 +240,8 @@ Content-Type: application/json
     "PaymentPurposeCode": "EPAY",
     "CategoryPurposeCode": "GP2P", 
     "BeneficiaryPrepopulatedIndicator": true,
-    "BeneficiaryAccountType": "Personal",
-  },
+    "BeneficiaryAccountType": "Personal"
+  }
   },
   "Links": {
     "Self": "https://api.alphabank.com/open-banking/v4.0/pisp/domestic-vrp-consents/fe615446-e53a-45ed-954c-ae5d1f97a93b"
@@ -313,14 +283,14 @@ Content-Type: application/json
     "Status": "AUTH",
     "StatusUpdateDateTime": "2017-06-05T15:15:15+05:00",
     "ReadRefundAccount": "Yes",
-    "StatusReason": {
+    "StatusReason": [{
       "StatusReasonCode": "U038", 
-      "StatusReasonDescription":"Consent consumed successfully",
-    },
+      "StatusReasonDescription": "Consent consumed successfully"
+    }],
     "ControlParameters": {
       "PSUAuthenticationMethods": [ "UK.OBIE.SCA" ],
       "PSUInteractionTypes": [ "OffSession" ],
-      "VRPType": "UK.OBIE.VRPType.Sweeping",
+      "VRPType": ["UK.OBIE.VRPType.Sweeping"],
       "ValidFromDateTime": "2017-06-05T15:15:13+00:00",
       "ValidToDateTime": "2020-06-05T15:15:13+00:00",
       "MaximumIndividualAmount": {
@@ -373,21 +343,6 @@ Content-Type: application/json
           "Type": "Telephone"
         }
       },
-      "CreditorAgent": {  
-          "LEI": "IZ9Q00LZEVUKWCQY6X15",
-          "SchemeName": "UK.OBIE.BICFI",
-          "Identification": "80200112344562",
-          "Name": "The Credit Agent", 
-          "PostalAddress": { 
-            "AddressType": "BIZZ",
-            "StreetName": "Bank Street",
-            "BuildingNumber": "11",
-            "Floor": "6",
-            "PostCode": "Z78 4TY",
-            "TownName": "London",
-            "Country": "GB"
-        }
-      },
       "CreditorPostalAddress": {
         "AddressType": "BIZZ",
         "Department": "Finance",
@@ -412,13 +367,13 @@ Content-Type: application/json
           {
           "ReferredDocumentAmount": "1",
           "CreditorReferenceInformation": {
-            "Reference": "SweepCo",
+            "Reference": "SweepCo"
             },
-        "AdditionalRemittanceInformation": ["Rose's pocket money"],
-          },
-        ],
-      },
-  },
+        "AdditionalRemittanceInformation": ["Rose's pocket money"]
+          }
+        ]
+      }
+  }
   },
   "Risk": {
     "PaymentContextCode": "TransferToSelf",
@@ -426,8 +381,8 @@ Content-Type: application/json
     "PaymentPurposeCode": "EPAY",
     "CategoryPurposeCode": "GP2P", 
     "BeneficiaryPrepopulatedIndicator": true,
-    "BeneficiaryAccountType": "Personal",
-}
+    "BeneficiaryAccountType": "Personal"
+},
   "Links": {
     "Self": "https://api.alphabank.com/open-banking/v4.0/pisp/domestic-vrp-consents/fe615446-e53a-45ed-954c-ae5d1f97a93b"
   },
@@ -457,7 +412,7 @@ Accept: application/json
     "ConsentId": "fe615446-e53a-45ed-954c-ae5d1f97a93b",
     "PSUAuthenticationMethod": "UK.OBIE.SCA",
     "PSUInteractionType": "OffSession",
-    "VRPType": "UK.OBIE.VRPType.Sweeping" ,
+    "VRPType": "UK.OBIE.VRPType.Sweeping",
 
     "Initiation": {
       "DebtorAccount": {
@@ -469,21 +424,6 @@ Accept: application/json
           "Identification": "441234012345",
           "Code": "TELE",
           "Type": "Telephone"
-        }
-      },
-      "CreditorAgent": {  
-          "LEI": "IZ9Q00LZEVUKWCQY6X15",
-          "SchemeName": "UK.OBIE.BICFI",
-          "Identification": "80200112344562",
-          "Name": "The Credit Agent", 
-          "PostalAddress": { 
-            "AddressType": "BIZZ",
-            "StreetName": "Bank Street",
-            "BuildingNumber": "11",
-            "Floor": "6",
-            "PostCode": "Z78 4TY",
-            "TownName": "London",
-            "Country": "GB"
         }
       },
       "CreditorAccount": {
@@ -521,11 +461,11 @@ Accept: application/json
           {
           "ReferredDocumentAmount": "1",
           "CreditorReferenceInformation": {
-            "Reference": "SweepCo",
+            "Reference": "SweepCo"
             },
-        "AdditionalRemittanceInformation": ["Rose's pocket money"],
-          },
-        ],
+        "AdditionalRemittanceInformation": ["Rose's pocket money"]
+          }
+        ]
       }
   },
     "Instruction": {
@@ -533,7 +473,7 @@ Accept: application/json
       "EndToEndIdentification": "fe699996-e53a-45ed-954c-ae5d1f97a93a",
       "LocalInstrument": "UK.OBIE.Paym",
       "CreditorAccount": {
-        "SchemeName": "SortCodeAccountNumber",
+        "SchemeName": "UK.OBIE.SortCodeAccountNumber",
         "Identification": "30949330000010",
         "SecondaryIdentification": "Roll 90210",
         "Name": "Marcus Sweepimus",
@@ -546,21 +486,6 @@ Accept: application/json
       "InstructedAmount": {
         "Amount": "10.00",
         "Currency": "GBP"
-      },
-      "CreditorAgent": {  
-          "LEI": "IZ9Q00LZEVUKWCQY6X15",
-          "SchemeName": "UK.OBIE.BICFI",
-          "Identification": "80200112344562",
-          "Name": "The Credit Agent", 
-          "PostalAddress": { 
-            "AddressType": "BIZZ",
-            "StreetName": "Bank Street",
-            "BuildingNumber": "11",
-            "Floor": "6",
-            "PostCode": "Z78 4TY",
-            "TownName": "London",
-            "Country": "GB"
-        }
       },
       "CreditorPostalAddress": {
         "AddressType": "BIZZ",
@@ -586,11 +511,11 @@ Accept: application/json
           {
           "ReferredDocumentAmount": "1",
           "CreditorReferenceInformation": {
-            "Reference": "SweepCo",
+            "Reference": "SweepCo"
             },
-        "AdditionalRemittanceInformation": ["Rose's pocket money"],
-          },
-        ],
+        "AdditionalRemittanceInformation": ["Rose's pocket money"]
+          }
+        ]
       }
     }
   },
@@ -600,7 +525,7 @@ Accept: application/json
     "PaymentPurposeCode": "EPAY",
     "CategoryPurposeCode": "GP2P", 
     "BeneficiaryPrepopulatedIndicator": true,
-    "BeneficiaryAccountType": "Personal",
+    "BeneficiaryAccountType": "Personal"
     }
 }
 ```
@@ -621,10 +546,10 @@ Content-Type: application/json
     "CreationDateTime": "2017-06-05T15:15:15+00:00",
     "DomesticVRPId": "OU90210",
     "Status": "PDNG",
-    "StatusReason": {
+    "StatusReason": [{
       "StatusReasonCode": "83",
-      "StatusReasonDescription":"Pending completion next working day",
-    },
+      "StatusReasonDescription": "Pending completion next working day"
+    }],
     "StatusUpdateDateTime": "2017-06-05T15:15:15+00:00",
     "ExpectedExecutionDateTime": "2017-06-05T15:15:15+00:00",
     "ExpectedSettlementDateTime": "2017-06-06T15:15:15+00:00",
@@ -656,25 +581,10 @@ Content-Type: application/json
         "SchemeName": "SortCodeAccountNumber",
         "Identification": "30949330000010",
         "SecondaryIdentification": "Roll 90210",
-        "Name": "Marcus Sweepimus",
-      },
-      "CreditorAgent": {  
-          "LEI": "IZ9Q00LZEVUKWCQY6X15",
-          "SchemeName": "UK.OBIE.BICFI",
-          "Identification": "80200112344562",
-          "Name": "The Credit Agent", 
-          "PostalAddress": { 
-            "AddressType": "BIZZ",
-            "StreetName": "Bank Street",
-            "BuildingNumber": "11",
-            "Floor": "6",
-            "PostCode": "Z78 4TY",
-            "TownName": "London",
-            "Country": "GB"
-        }
+        "Name": "Marcus Sweepimus"
       },
       "CreditorAccount": {
-        "SchemeName": "SortCodeAccountNumber",
+        "SchemeName": "UK.OBIE.SortCodeAccountNumber",
         "Identification": "30949330000010",
         "SecondaryIdentification": "Roll 90210",
         "Name": "Marcus Sweepimus",
@@ -708,11 +618,11 @@ Content-Type: application/json
           {
           "ReferredDocumentAmount": "1",
           "CreditorReferenceInformation": {
-            "Reference": "SweepCo",
+            "Reference": "SweepCo"
             },
-        "AdditionalRemittanceInformation": ["Rose's pocket money"],
-          },
-        ],
+        "AdditionalRemittanceInformation": ["Rose's pocket money"]
+          }
+        ]
       }
     },
 
@@ -721,7 +631,7 @@ Content-Type: application/json
       "EndToEndIdentification": "fe699996-e53a-45ed-954c-ae5d1f97a93a",
       "LocalInstrument": "UK.OBIE.Paym",
       "CreditorAccount": {
-        "SchemeName": "SortCodeAccountNumber",
+        "SchemeName": "UK.OBIE.SortCodeAccountNumber",
         "Identification": "30949330000010",
         "SecondaryIdentification": "Roll 90210",
         "Name": "Marcus Sweepimus",
@@ -729,21 +639,6 @@ Content-Type: application/json
           "Identification": "441234012385",
           "Code": "TELE",
           "Type": "Telephone"
-        }
-      },
-      "CreditorAgent": {  
-          "LEI": "IZ9Q00LZEVUKWCQY6X15",
-          "SchemeName": "UK.OBIE.BICFI",
-          "Identification": "80200112344562",
-          "Name": "The Credit Agent", 
-          "PostalAddress": { 
-            "AddressType": "BIZZ",
-            "StreetName": "Bank Street",
-            "BuildingNumber": "11",
-            "Floor": "6",
-            "PostCode": "Z78 4TY",
-            "TownName": "London",
-            "Country": "GB"
         }
       },
       "CreditorPostalAddress": {
@@ -789,11 +684,11 @@ Content-Type: application/json
           {
           "ReferredDocumentAmount": "1",
           "CreditorReferenceInformation": {
-            "Reference": "SweepCo",
+            "Reference": "SweepCo"
             },
-        "AdditionalRemittanceInformation": ["Rose's pocket money"],
-          },
-        ],
+        "AdditionalRemittanceInformation": ["Rose's pocket money"]
+          }
+        ]
       }
     }},
   "Risk": {
@@ -802,7 +697,7 @@ Content-Type: application/json
     "PaymentPurposeCode": "EPAY",
     "CategoryPurposeCode": "GP2P", 
     "BeneficiaryPrepopulatedIndicator": true,
-    "BeneficiaryAccountType": "Personal",
+    "BeneficiaryAccountType": "Personal"
   },
 
   
@@ -868,7 +763,7 @@ Accept: application/json
     "PaymentPurposeCode": "EPAY",
     "CategoryPurposeCode": "GP2P", 
     "BeneficiaryPrepopulatedIndicator": true,
-    "BeneficiaryAccountType": "Personal",
+    "BeneficiaryAccountType": "Personal"
   }
 }
 ```
@@ -913,7 +808,7 @@ Content-Type: application/json
     "PaymentPurposeCode": "EPAY",
     "CategoryPurposeCode": "GP2P", 
     "BeneficiaryPrepopulatedIndicator": true,
-    "BeneficiaryAccountType": "Personal",
+    "BeneficiaryAccountType": "Personal"
   }
 }
 ```
@@ -955,7 +850,7 @@ Content-Type: application/json
     "ControlParameters": {
       "PSUAuthenticationMethods": [ "UK.OBIE.SCA" ],
       "PSUInteractionTypes": [ "OffSession" ],
-      "VRPType": "UK.OBIE.VRPType.Sweeping",
+      "VRPType": ["UK.OBIE.VRPType.Sweeping"],
       "ValidFromDateTime": "2017-06-05T15:15:13+00:00",
       "ValidToDateTime": "2020-06-05T15:15:13+00:00",
       "MaximumIndividualAmount": {
@@ -1013,23 +908,8 @@ Content-Type: application/json
         "CountrySubDivision": "England",
         "Country": "GB"
       },
-      "CreditorAgent": {  
-          "LEI": "IZ9Q00LZEVUKWCQY6X15",
-          "SchemeName": "UK.OBIE.BICFI",
-          "Identification": "80200112344562",
-          "Name": "The Credit Agent", 
-          "PostalAddress": { 
-            "AddressType": "BIZZ",
-            "StreetName": "Bank Street",
-            "BuildingNumber": "11",
-            "Floor": "6",
-            "PostCode": "Z78 4TY",
-            "TownName": "London",
-            "Country": "GB"
-        }
-      },
       "CreditorAccount": {
-        "SchemeName": "SortCodeAccountNumber",
+        "SchemeName": "UK.OBIE.SortCodeAccountNumber",
         "Identification": "30949330000010",
         "SecondaryIdentification": "Roll 90210",
         "Name": "Marcus Sweepimus",
@@ -1044,11 +924,11 @@ Content-Type: application/json
           {
           "ReferredDocumentAmount": "1",
           "CreditorReferenceInformation": {
-            "Reference": "SweepCo",
+            "Reference": "SweepCo"
             },
-        "AdditionalRemittanceInformation": ["Rose's pocket money"],
-          },
-        ],
+        "AdditionalRemittanceInformation": ["Rose's pocket money"]
+          }
+        ]
       }
     }
   },
@@ -1059,7 +939,7 @@ Content-Type: application/json
     "PaymentPurposeCode": "EPAY",
     "CategoryPurposeCode": "GP2P", 
     "BeneficiaryPrepopulatedIndicator": true,
-    "BeneficiaryAccountType": "Personal",
+    "BeneficiaryAccountType": "Personal"
 },
   
   "Links": {
@@ -1153,7 +1033,7 @@ Accept: application/json
     "PSUAuthenticationMethod": "UK.OBIE.SCA",
     "PSUInteractionType": "OffSession",
     "VRPType": "UK.OBIE.VRPType.Sweeping",
-    "Refund" : "Yes", 
+    "Refund": "Yes",
     "Initiation": {
       "DebtorAccount": {
         "SchemeName": "UK.OBIE.IBAN",
@@ -1167,7 +1047,7 @@ Accept: application/json
         }
       },
       "CreditorAccount": {
-        "SchemeName": "SortCodeAccountNumber",
+        "SchemeName": "UK.OBIE.SortCodeAccountNumber",
         "Identification": "30949330000010",
         "SecondaryIdentification": "Roll 90210",
         "Name": "Marcus Sweepimus",
@@ -1175,21 +1055,6 @@ Accept: application/json
           "Identification": "441234012385",
           "Code": "TELE",
           "Type": "Telephone"
-        }
-      },
-      "CreditorAgent": {  
-          "LEI": "IZ9Q00LZEVUKWCQY6X15",
-          "SchemeName": "UK.OBIE.BICFI",
-          "Identification": "80200112344562",
-          "Name": "The Credit Agent", 
-          "PostalAddress": { 
-            "AddressType": "BIZZ",
-            "StreetName": "Bank Street",
-            "BuildingNumber": "11",
-            "Floor": "6",
-            "PostCode": "Z78 4TY",
-            "TownName": "London",
-            "Country": "GB"
         }
       },
       "CreditorPostalAddress": {
@@ -1204,7 +1069,7 @@ Accept: application/json
         "Room": "844",
         "PostBox": "PO Box 123456",
         "PostCode": "Z78 4TY",
-        "TownLocationName":"Bank",
+        "TownLocationName": "Bank",
         "TownName": "London",
         "DistrictName": "Greater London",
         "CareOf": "Ms Jane Smith",
@@ -1241,40 +1106,26 @@ Accept: application/json
           "Country": "GB"
         }
       },
-      "UltimateCreditor": {
-        "SchemeName": "UK.OBIE.BICFI",
-        "Identification": "2360549017905161589",
-        "Name": "Ultimate Creditor",
-        "LEI": "60450004FECVJV7YN339",
-        "PostalAddress": {
-          "AddressType": "BIZZ",
-          "StreetName": "Bank Street",
-          "BuildingNumber": "11",
-          "Floor": "6",
-          "PostCode": "Z78 4TY",
-          "TownName": "London",
-          "Country": "GB"
-          }
-        },
       "RemittanceInformation": {
         "Structured": [
           {
-          "ReferredDocumentAmount": "1",
-          "CreditorReferenceInformation": {
-            "Reference": "SweepCo",
+            "ReferredDocumentAmount": 1,
+            "CreditorReferenceInformation": {
+              "Reference": "SweepCo"
             },
-        "AdditionalRemittanceInformation": ["Rose's pocket money"],
-          },
-        ],
+            "AdditionalRemittanceInformation": [
+              "Rose's pocket money"
+            ]
+          }
+        ]
       }
     },
-
     "Instruction": {
       "InstructionIdentification": "fe655556-e53a-45ed-954c-ae5d1f97a93b",
       "EndToEndIdentification": "fe699996-e53a-45ed-954c-ae5d1f97a93a",
       "LocalInstrument": "UK.OBIE.Paym",
       "CreditorAccount": {
-        "SchemeName": "SortCodeAccountNumber",
+        "SchemeName": "UK.OBIE.SortCodeAccountNumber",
         "Identification": "30949330000010",
         "SecondaryIdentification": "Roll 90210",
         "Name": "Marcus Sweepimus",
@@ -1282,21 +1133,6 @@ Accept: application/json
           "Identification": "441234012385",
           "Code": "TELE",
           "Type": "Telephone"
-        }
-      },
-      "CreditorAgent": {  
-          "LEI": "IZ9Q00LZEVUKWCQY6X15",
-          "SchemeName": "UK.OBIE.BICFI",
-          "Identification": "80200112344562",
-          "Name": "The Credit Agent", 
-          "PostalAddress": { 
-            "AddressType": "BIZZ",
-            "StreetName": "Bank Street",
-            "BuildingNumber": "11",
-            "Floor": "6",
-            "PostCode": "Z78 4TY",
-            "TownName": "London",
-            "Country": "GB"
         }
       },
       "CreditorPostalAddress": {
@@ -1311,7 +1147,7 @@ Accept: application/json
         "Room": "844",
         "PostBox": "PO Box 123456",
         "PostCode": "Z78 4TY",
-        "TownLocationName":"Bank",
+        "TownLocationName": "Bank",
         "TownName": "London",
         "DistrictName": "Greater London",
         "CareOf": "Ms Jane Smith",
@@ -1322,27 +1158,29 @@ Accept: application/json
         "Amount": "10.00",
         "Currency": "GBP"
       },
-     "RemittanceInformation": {
+      "RemittanceInformation": {
         "Structured": [
           {
-          "ReferredDocumentAmount": "1",
-          "CreditorReferenceInformation": {
-            "Reference": "SweepCo",
+            "ReferredDocumentAmount": 1,
+            "CreditorReferenceInformation": {
+              "Reference": "SweepCo"
             },
-        "AdditionalRemittanceInformation": ["Rose's pocket money"],
-          },
-        ],
+            "AdditionalRemittanceInformation": [
+              "Rose's pocket money"
+            ]
+          }
+        ]
       }
     }
   },
-
   "Risk": {
     "PaymentContextCode": "TransferToSelf",
     "ContractPresentIndicator": true,
     "PaymentPurposeCode": "EPAY",
-    "CategoryPurposeCode": "GP2P", 
+    "CategoryPurposeCode": "GP2P",
     "BeneficiaryPrepopulatedIndicator": true,
-    "BeneficiaryAccountType": "Personal",
+    "BeneficiaryAccountType": "Personal"
+  }
 }
 ```
 
@@ -1393,10 +1231,10 @@ Content-Type: application/json
         "SchemeName": "SortCodeAccountNumber",
         "Identification": "30949330000010",
         "SecondaryIdentification": "Roll 90210",
-        "Name": "Marcus Sweepimus",
+        "Name": "Marcus Sweepimus"
       },
       "CreditorAccount": {
-        "SchemeName": "SortCodeAccountNumber",
+        "SchemeName": "UK.OBIE.SortCodeAccountNumber",
         "Identification": "30949330000010",
         "SecondaryIdentification": "Roll 90210",
         "Name": "Marcus Sweepimus",
@@ -1404,21 +1242,6 @@ Content-Type: application/json
           "Identification": "441234012385",
           "Code": "TELE",
           "Type": "Telephone"
-        }
-      },
-      "CreditorAgent": {  
-          "LEI": "IZ9Q00LZEVUKWCQY6X15",
-          "SchemeName": "UK.OBIE.BICFI",
-          "Identification": "80200112344562",
-          "Name": "The Credit Agent", 
-          "PostalAddress": { 
-            "AddressType": "BIZZ",
-            "StreetName": "Bank Street",
-            "BuildingNumber": "11",
-            "Floor": "6",
-            "PostCode": "Z78 4TY",
-            "TownName": "London",
-            "Country": "GB"
         }
       },
       "CreditorPostalAddress": {
@@ -1445,11 +1268,11 @@ Content-Type: application/json
           {
           "ReferredDocumentAmount": "1",
           "CreditorReferenceInformation": {
-            "Reference": "SweepCo",
+            "Reference": "SweepCo"
             },
-        "AdditionalRemittanceInformation": ["Rose's pocket money"],
-          },
-        ],
+        "AdditionalRemittanceInformation": ["Rose's pocket money"]
+          }
+        ]
       }
     },
 
@@ -1458,7 +1281,7 @@ Content-Type: application/json
       "EndToEndIdentification": "fe699996-e53a-45ed-954c-ae5d1f97a93a",
       "LocalInstrument": "UK.OBIE.Paym",
       "CreditorAccount": {
-        "SchemeName": "SortCodeAccountNumber",
+        "SchemeName": "UK.OBIE.SortCodeAccountNumber",
         "Identification": "30949330000010",
         "SecondaryIdentification": "Roll 90210",
         "Name": "Marcus Sweepimus",
@@ -1466,21 +1289,6 @@ Content-Type: application/json
           "Identification": "441234012385",
           "Code": "TELE",
           "Type": "Telephone"
-        }
-      },
-      "CreditorAgent": {  
-          "LEI": "IZ9Q00LZEVUKWCQY6X15",
-          "SchemeName": "UK.OBIE.BICFI",
-          "Identification": "80200112344562",
-          "Name": "The Credit Agent", 
-          "PostalAddress": { 
-            "AddressType": "BIZZ",
-            "StreetName": "Bank Street",
-            "BuildingNumber": "11",
-            "Floor": "6",
-            "PostCode": "Z78 4TY",
-            "TownName": "London",
-            "Country": "GB"
         }
       },
       "CreditorPostalAddress": {
@@ -1511,11 +1319,11 @@ Content-Type: application/json
           {
           "ReferredDocumentAmount": "1",
           "CreditorReferenceInformation": {
-            "Reference": "SweepCo",
+            "Reference": "SweepCo"
             },
-          "AdditionalRemittanceInformation": ["Rose's pocket money"],
-          },
-        ],
+          "AdditionalRemittanceInformation": ["Rose's pocket money"]
+          }
+        ]
       }
     }
   },
@@ -1526,7 +1334,7 @@ Content-Type: application/json
     "PaymentPurposeCode": "EPAY",
     "CategoryPurposeCode": "GP2P", 
     "BeneficiaryPrepopulatedIndicator": true,
-    "BeneficiaryAccountType": "Personal",
+    "BeneficiaryAccountType": "Personal"
 },
   
   "Links": {
