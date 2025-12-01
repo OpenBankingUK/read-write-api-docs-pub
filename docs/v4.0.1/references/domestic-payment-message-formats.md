@@ -128,7 +128,7 @@ In the case that a PISP sets up a payment-order consent with a larger field size
 ### Notes
 
 * If the Initiation/CreditorAccount/SecondaryIdentification field is populated, this must be mapped to field 10 service user's reference as this will be used for the Creditor Agent to identify the account (i.e. the roll numbers in the building society context).
-* However, if the /CreditorAccount/SecondaryIdentification is **not** populated then 10 service user's references must be populated with the Initiation/RemittanceInformation/Structured/CreditorReferenceInformation/Reference field.
+* However, if the /CreditorAccount/SecondaryIdentification is **not** populated then 10 service user's reference must be populated with the Initiation/RemittanceInformation/Structured/CreditorReferenceInformation/Reference field.
 * If both Initiation/CreditorAccount/SecondaryIdentification and Initiation/RemittanceInformation/Structured/CreditorReferenceInformation/Reference are populated by the PISP, only the SecondaryIdentification will be mapped to field 10 service user's reference. Whether the Initiation/RemittanceInformation/Structured/CreditorReferenceInformation/Reference is used in any other ASPSP systems is for the ASPSP to decide.
 * Field 9 service user's name must be populated from the ASPSP's system of record.
 * Where the Initiation/DebtorAccount/SchemeName field is populated with "UK.OBIE.SortCodeAccountNumber", the Initiation/DebtorAccount/Identification field will be populated with a 14 digit field comprised of a 6 digit Sort Code (mapped to field 5 originating sorting code) and 8 digit Account Number (mapped to field 6 originating account number).
