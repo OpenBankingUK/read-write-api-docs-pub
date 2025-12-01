@@ -4,7 +4,7 @@
   - [Document Structure](#document-structure)
   - [Resources](#resources)
 - [Basics](#basics)
-  - [Overview](#overview-2)
+  - [Overview](#overview-1)
     - [Steps](#steps)
     - [Sequence Diagram](#sequence-diagram)
   - [Idempotency](#idempotency)
@@ -14,8 +14,8 @@
       - [GET](#get)
       - [DELETE](#delete)
     - [Funds Confirmation Resource](#funds-confirmation-resource)
-      - [POST](#post-2)
-- [Security & Access Control](#security-access-control)
+      - [POST](#post-1)
+- [Security & Access Control](#security--access-control)
   - [Scopes](#scopes)
   - [Grants Types](#grants-types)
   - [Consent Authorisation](#consent-authorisation)
@@ -52,7 +52,7 @@ This document consists of the following parts:
 
 ### Resources
 
-Each of the Payment Initiation API resources are documented in the  [*Resources and Data Models*  /  *CBPII*](../resources-and-data-models/cbpii) area of the specification. Each resource is documented with:
+Each of the Payment Initiation API resources are documented in the [*Resources and Data Models* / *CBPII*](../resources-and-data-models/cbpii) area of the specification. Each resource is documented with:
 
 - Endpoints
   - The API endpoints available for the resource.
@@ -116,7 +116,7 @@ Step 5: Confirm Funds
 - This step is carried out by making a **POST** request to the /funds-confirmations endpoint, under an authorization code grant
 - The setup payload will include these fields - which describe the data that the PSU has consented with the CBPII:
   - Amount - the amount to be confirmed available.
-  - ConsentId - an Id that relates the request to a **funds-confirmation-consent**, and specific account with the ASPSP. This Id must match the intent identifier.
+  - ConsentId - an ID that relates the request to a **funds-confirmation-consent**, and specific account with the ASPSP. This ID must match the intent identifier.
 
 Step 6: Get Funds Confirmation Consent Status
 
@@ -274,32 +274,32 @@ This section overviews the release management and versioning strategy for the Co
 ##### POST
 
 - A CBPII **must not** create a consent on a newer version, and use it on a previous version.
-  - E.g., ConsentId for a funds-confirmation-consent resource created in v4, must not be used to access v3 endpoints.
+  - E.g. ConsentId for a funds-confirmation-consent resource created in v4, must not be used to access v3 endpoints.
 
 ##### GET
 
 - A CBPII **must not** access a funds-confirmation-consent on an older version, via the ConsentId created in a newer version.
-  - E.g., a funds-confirmation-consent created in v3 accessed via v2.
+  - E.g. a funds-confirmation-consent created in v3 accessed via v2.
 - An ASPSP **must** allow a funds-confirmation-consent to be accessed in a newer version.
 - An ASPSP **must** ensure details in the funds-confirmation-consent are unchanged when accessed via a newer version.
-  - E.g., a ConsentId created in v3 will have the same details when accessed via v3 and v4.
+  - E.g. a ConsentId created in v3 will have the same details when accessed via v3 and v4.
 - An ASPSP **may** allow expired funds-confirmation-consents to be accessed in a newer version.
 
 ##### DELETE
 
 - A CBPII **must not** delete a funds-confirmation-consent on an older version via a ConsentId created in a newer version.
-  - E.g., A funds-confirmation-consent is created in v4, and request DELETE on v3.
+  - E.g. A funds-confirmation-consent is created in v4, and request DELETE on v3.
 - An ASPSP **must** support deleting a funds-confirmation-consent from a previous version via a newer version.
-  - E.g., A funds-confirmation-consent is created in v3, and request DELETE on v4.
+  - E.g. A funds-confirmation-consent is created in v3, and request DELETE on v4.
 
 #### Funds Confirmation Resource
 
 ##### POST
 
 - A CBPII **may** use a ConsentId created in a previous version to create a funds-confirmation resource in a newer version.
-  - E.g., a ConsentId created in v3 can be used as a ConsentId in v4, to POST /funds-confirmations.
+  - E.g. a ConsentId created in v3 can be used as a ConsentId in v4, to POST /funds-confirmations.
 - A CBPII **must not** use a ConsentId created in a newer version to create Funds Confirmation resource in a previous version.
-  - E.g., a ConsentId created in v4, must not be used as a ConsentId in v3, to POST /funds-confirmations.
+  - E.g. a ConsentId created in v4, must not be used as a ConsentId in v3, to POST /funds-confirmations.
 - A CBPII **may** use a token that is bound to a funds-confirmation-consent in a previous version, to access an endpoint of a newer version.
 - An ASPSP **must** allow a ConsentId from previous version to create a funds-confirmation resource in a newer version, provided it has not expired.
 - An ASPSP **must not** allow a ConsentId from a newer version to create a funds-confirmation resource in a previous version.
