@@ -445,10 +445,10 @@ Content-Type: application/json
     "DomesticScheduledPaymentId": "7290-003",
     "ConsentId": "7290",
     "Status": "RCVD",
-    "StatusReason": {
+    "StatusReason": [{
       "StatusReasonCode": "U030", 
       "StatusReasonDescription":"Payment order successfully received",
-    },
+    }],
     "CreationDateTime": "2018-05-05T15:15:13+00:00",
     "StatusUpdateDateTime": "2018-05-05T15:15:13+00:00",
     "ExpectedExecutionDateTime": "2018-06-05T15:15:22+00:00",
