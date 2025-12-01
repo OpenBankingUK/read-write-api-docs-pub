@@ -6,7 +6,7 @@
 - [Confirm Funds on International Payment Order Consent](#confirm-funds-on-international-payment-order-consent)
   - [GET / international-payment-consents/{ConsentId}/funds-confirmation Request](#get--international-payment-consentsconsentidfunds-confirmation-request)
   - [GET /international-payment-consents/{ConsentId}/funds-confirmation Response](#get-international-payment-consentsconsentidfunds-confirmation-response)
-- [Debit amount specified; ASPSP provides indicative an FX rate](#debit-amount-specified-aspsp-provides-an-indicative-fx-rate)
+- [Debit amount specified; ASPSP provides an indicative FX rate](#debit-amount-specified-aspsp-provides-an-indicative-fx-rate)
   - [POST /international-payment-consents request](#post-international-payment-consents-request-1)
   - [POST /international-payment-consents response](#post-international-payment-consents-response-1)
 - [Debit amount specified; ASPSP provides a pre-booked FX rate](#debit-amount-specified-aspsp-provides-a-pre-booked-fx-rate)
