@@ -106,7 +106,7 @@ Accept: application/json
       "RemittanceInformation": {
         "Structured": [
           {
-          "ReferredDocumentAmount": "1",
+          "ReferredDocumentAmount": "1.00",
           "CreditorReferenceInformation": {
             "Reference": "SweepCo"
             },
@@ -365,7 +365,7 @@ Content-Type: application/json
       "RemittanceInformation": {
         "Structured": [
           {
-          "ReferredDocumentAmount": "1",
+          "ReferredDocumentAmount": "1.00",
           "CreditorReferenceInformation": {
             "Reference": "SweepCo"
             },
@@ -459,7 +459,7 @@ Accept: application/json
     "RemittanceInformation": {
         "Structured": [
           {
-          "ReferredDocumentAmount": "1",
+          "ReferredDocumentAmount": "1.00",
           "CreditorReferenceInformation": {
             "Reference": "SweepCo"
             },
@@ -509,7 +509,7 @@ Accept: application/json
       "RemittanceInformation": {
         "Structured": [
           {
-          "ReferredDocumentAmount": "1",
+          "ReferredDocumentAmount": "1.00",
           "CreditorReferenceInformation": {
             "Reference": "SweepCo"
             },
@@ -616,7 +616,7 @@ Content-Type: application/json
      "RemittanceInformation": {
         "Structured": [
           {
-          "ReferredDocumentAmount": "1",
+          "ReferredDocumentAmount": "1.00",
           "CreditorReferenceInformation": {
             "Reference": "SweepCo"
             },
@@ -682,7 +682,7 @@ Content-Type: application/json
       "RemittanceInformation": {
         "Structured": [
           {
-          "ReferredDocumentAmount": "1",
+          "ReferredDocumentAmount": "1.00",
           "CreditorReferenceInformation": {
             "Reference": "SweepCo"
             },
@@ -922,7 +922,7 @@ Content-Type: application/json
       "RemittanceInformation": {
         "Structured": [
           {
-          "ReferredDocumentAmount": "1",
+          "ReferredDocumentAmount": "1.00",
           "CreditorReferenceInformation": {
             "Reference": "SweepCo"
             },
@@ -1109,7 +1109,7 @@ Accept: application/json
       "RemittanceInformation": {
         "Structured": [
           {
-            "ReferredDocumentAmount": 1,
+            "ReferredDocumentAmount": "1.00",
             "CreditorReferenceInformation": {
               "Reference": "SweepCo"
             },
@@ -1161,7 +1161,7 @@ Accept: application/json
       "RemittanceInformation": {
         "Structured": [
           {
-            "ReferredDocumentAmount": 1,
+            "ReferredDocumentAmount": "1.00",
             "CreditorReferenceInformation": {
               "Reference": "SweepCo"
             },
@@ -1266,7 +1266,7 @@ Content-Type: application/json
       "RemittanceInformation": {
         "Structured": [
           {
-          "ReferredDocumentAmount": "1",
+          "ReferredDocumentAmount": "1.00",
           "CreditorReferenceInformation": {
             "Reference": "SweepCo"
             },
@@ -1317,7 +1317,7 @@ Content-Type: application/json
       "RemittanceInformation": {
         "Structured": [
           {
-          "ReferredDocumentAmount": "1",
+          "ReferredDocumentAmount": "1.00",
           "CreditorReferenceInformation": {
             "Reference": "SweepCo"
             },

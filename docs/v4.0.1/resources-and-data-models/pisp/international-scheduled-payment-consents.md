@@ -574,7 +574,7 @@ Accept: application/json
                   ]
                 }
               ],
-              "ReferredDocumentAmount": "1",
+              "ReferredDocumentAmount": "1.00",
               "CreditorReferenceInformation": {
                 "Code": "DISP",
                 "Issuer": "Issuer01",
@@ -823,7 +823,7 @@ Content-Type: application/json
                 ]
               }
             ],
-            "ReferredDocumentAmount": "1",
+            "ReferredDocumentAmount": "1.00",
             "CreditorReferenceInformation": {
               "Code": "DISP",
               "Issuer": "Issuer01",
