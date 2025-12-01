@@ -267,7 +267,7 @@ Content-Type: application/json
             "CountPerPeriod": 1
           }
         },
-        "StandingOrderStatusCode": "Active",
+        "StandingOrderStatusCode": "ACTV",
         "CreditorAccount": {
           "SchemeName": "UK.OBIE.SortCodeAccountNumber",
           "Identification": "80200112345678",
@@ -374,7 +374,7 @@ Content-Type: application/json
             "CountPerPeriod": 1
           }
         },
-        "StandingOrderStatusCode": "Active",
+        "StandingOrderStatusCode": "ACTV",
         "CreditorAccount": {
           "SchemeName": "UK.OBIE.SortCodeAccountNumber",
           "Identification": "80200112345678",
@@ -383,7 +383,7 @@ Content-Type: application/json
           "Proxy": {
             "Identification": "441234012345",
             "Code": "TELE",
-            "Type": "Telephone", 
+            "Type": "Telephone"
           }
         }
       },
@@ -412,7 +412,7 @@ Content-Type: application/json
           "Amount": "23.00",
           "Currency": "GBP"
         },
-        "StandingOrderStatusCode": "Active",
+        "StandingOrderStatusCode": "ACTV",
         "CreditorAccount": {
           "SchemeName": "UK.OBIE.SortCodeAccountNumber",
           "SecondaryIdentification": "80200112895462",
