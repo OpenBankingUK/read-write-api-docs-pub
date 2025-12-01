@@ -344,7 +344,7 @@ Content-Type: application/json
             "CountPerPeriod": 1
           }
         },
-        "StandingOrderStatusCode": "Active",
+        "StandingOrderStatusCode": "ACTV",
         "CreditorAccount": {
           "SchemeName": "UK.OBIE.SortCodeAccountNumber",
           "Identification": "80200112345678",
