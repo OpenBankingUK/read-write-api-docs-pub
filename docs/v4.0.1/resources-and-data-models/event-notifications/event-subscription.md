@@ -51,7 +51,7 @@ Implementation for an ASPSP is:
   - The ASPSP supports aggregated polling only
   - The ASPSP only supports a single event type for aggregated polling
 - **Mandatory**, when the above is not true and ASPSP implemented `POST /event-subscriptions`
-  
+
 ### POST /event-subscriptions
 
 The API endpoint allows the TPP to ask an ASPSP to create a new **event-subscription** resource.
@@ -112,7 +112,6 @@ For the OBEventSubscription1 object:
 | Version |1..1 |OBEventSubscription1/Data/Version |Version for the event notification. |Max10Text | | |
 | EventTypes |0..* |OBEventSubscription1/Data/EventTypes |Array of event types the subscription applies to. |OBEventType1Code | | |
 
-
 ### Event Subscription - Response
 
 The OBEventSubscriptionResponse1 object will be used for a response to a call to:
@@ -161,7 +160,6 @@ The OBEventSubscriptionsResponse1 object will be used for a response to a call t
 | Version |1..1 |OBEventSubscriptionsResponse1/Data/EventSubscription/Version |Version for the event notification. |Max10Text | | |
 | EventTypes |0..* |OBEventSubscriptionsResponse1/Data/EventSubscription/EventTypes |Array of event types the subscription applies to. |OBEventType1Code | | |
 
-
 ## Usage Examples
 
 ### Create Event Subscription
@@ -180,8 +178,8 @@ Accept: application/json
 ```json
 {
   "Data": {
-	"CallbackUrl": "https://tpp.com/open-banking/v4.0/event-notifications",
-	"Version": "4.0"
+    "CallbackUrl": "https://tpp.com/open-banking/v4.0/event-notifications",
+    "Version": "4.0"
   }
 }
 ```
@@ -197,15 +195,15 @@ Content-Type: application/json
 
 ```json
 {
-	"Data": {
-		"EventSubscriptionId": "CB-101",
-		"CallbackUrl": "https://tpp.com/open-banking/v4.0/event-notifications",
-		"Version": "4.0"
-	},
-	"Links": {
-		"Self": "https://api.alphabank.com/open-banking/v4.0/event-subscriptions/CB-101"
-	},
-	"Meta": {}
+  "Data": {
+    "EventSubscriptionId": "CB-101",
+    "CallbackUrl": "https://tpp.com/open-banking/v4.0/event-notifications",
+    "Version": "4.0"
+  },
+  "Links": {
+    "Self": "https://api.alphabank.com/open-banking/v4.0/event-subscriptions/CB-101"
+  },
+  "Meta": {}
 }
 ```
 
@@ -231,16 +229,18 @@ Content-Type: application/json
 
 ```json
 {
-	"Data": {
-		"EventSubscription": [{
-			"EventSubscriptionId": "CB-101",
-			"CallbackUrl": "https://tpp.com/open-banking/v4.0/event-notifications",
-			"Version": "4.0"
-		}]
-	},
-	"Links": {
-		"Self": "https://api.alphabank.com/open-banking/v4.0/event-subscriptions/"
-	},
-	"Meta": {}
+  "Data": {
+    "EventSubscription": [
+      {
+        "EventSubscriptionId": "CB-101",
+        "CallbackUrl": "https://tpp.com/open-banking/v4.0/event-notifications",
+        "Version": "4.0"
+      }
+    ]
+  },
+  "Links": {
+    "Self": "https://api.alphabank.com/open-banking/v4.0/event-subscriptions/"
+  },
+  "Meta": {}
 }
 ```
