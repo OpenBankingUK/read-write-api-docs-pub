@@ -5,16 +5,16 @@
   - [Illustrative Interactions](#illustrative-interactions)
     - [Create Domestic Payment Order Consent](#create-domestic-payment-order-consent)
       - [POST /domestic-payment-consents request](#post-domestic-payment-consents-request)
-      - [POST  /domestic-payment-consents response](#post--domestic-payment-consents-response)
+      - [POST  /domestic-payment-consents response](#post-domestic-payment-consents-response)
     - [Confirm Funds on Domestic Payment Order Consent](#confirm-funds-on-domestic-payment-order-consent)
-      - [GET /domestic-payment-consents/{ConsentId}/funds-confirmation Request](#get-domestic-payment-consents-consentidfunds-confirmation-request)
-      - [GET /domestic-payment-consents/{ConsentId}/funds-confirmation Response](#get-domestic-payment-consents-consentidfunds-confirmation-response)
+      - [GET /domestic-payment-consents/{ConsentId}/funds-confirmation Request](#get-domestic-payment-consentsconsentidfunds-confirmation-request)
+      - [GET /domestic-payment-consents/{ConsentId}/funds-confirmation Response](#get-domestic-payment-consentsconsentidfunds-confirmation-response)
     - [Create Domestic Payment Order](#create-domestic-payment-order)
       - [POST /domestic-payments Request](#post-domestic-payments-request)
       - [POST /domestic-payments Response](#post-domestic-payments-response)
     - [Get Domestic Payment Order Consent](#get-domestic-payment-order-consent)
-      - [GET /domestic-payment-consents/{ConsentId} Request](#get-domestic-payment-consents-consentid-request)
-      - [GET /domestic-payment-consents/{ConsentId} Response](#get-domestic-payment-consents-consentid-response)
+      - [GET /domestic-payment-consents/{ConsentId} Request](#get-domestic-payment-consentsconsentid-request)
+      - [GET /domestic-payment-consents/{ConsentId} Response](#get-domestic-payment-consentsconsentid-response)
     - [Get Domestic Payment Order](#get-domestic-payment-order)
       - [GET /domestic-payments/{DomesticPaymentId} Request](#get-domestic-paymentsdomesticpaymentid-request)
       - [GET /domestic-payments/{DomesticPaymentId} Response](#get-domestic-paymentsdomesticpaymentid-response)
@@ -28,8 +28,8 @@
       - [POST /domestic-payments request](#post-domestic-payments-request-1)
       - [POST /domestic-payments response](#post-domestic-payments-response-1)
     - [Get Domestic Payment Order Consent](#get-domestic-payment-order-consent-1)
-      - [GET /domestic-payment-consents/{ConsentId} request](#get-domestic-payment-consents-consentid-request-1)
-      - [GET /domestic-payment-consents/{ConsentId} response](#get-domestic-payment-consents-consentid-response-1)
+      - [GET /domestic-payment-consents/{ConsentId} request](#get-domestic-payment-consentsconsentid-request-1)
+      - [GET /domestic-payment-consents/{ConsentId} response](#get-domestic-payment-consentsconsentid-response-1)
     - [Get Domestic Payment Order](#get-domestic-payment-order-1)
       - [GET /domestic-payments/{DomesticPaymentId} request](#get-domestic-paymentsdomesticpaymentid-request-1)
       - [GET /domestic-payments/{DomesticPaymentId} response](#get-domestic-paymentsdomesticpaymentid-response-1)
@@ -164,34 +164,36 @@ Accept: application/json
             }
           }
         ],
-        "Unstructured": ["Internal ops code 5120101"]
+        "Unstructured": [
+          "Internal ops code 5120101"
+        ]
       }
     }
   },
   "Risk": {
     "PaymentContextCode": "EcommerceMerchantInitiatedPayment",
-    "ContractPresentIndicator": false,
-    "PaymentPurposeCode": "EPAY",
-    "BeneficiaryPaymentDetailsPrepopulatedIndicator": false,
-    "BeneficiaryAccountType": "Business",
     "MerchantCustomerIdentification": "053598653254",
+    "ContractPresentIndicator": false,
+    "BeneficiaryPrepopulatedIndicator": false,
+    "PaymentPurposeCode": "EPAY",
+    "BeneficiaryAccountType": "Business",
     "DeliveryAddress": {
-      "AddressLine": [
-        "Flat 7",
-        "Acacia Lodge"
-      ],
       "StreetName": "Acacia Avenue",
       "BuildingNumber": "27",
       "PostCode": "GU31 2ZZ",
       "TownName": "Sparsholt",
       "CountrySubDivision": "Wessex",
-      "Country": "UK"
+      "Country": "GB",
+      "AddressLine": [
+        "Flat 7",
+        "Acacia Lodge"
+      ]
     }
   }
 }
 ```
 
-##### POST  /domestic-payment-consents response
+##### POST /domestic-payment-consents response
 
 ```
 HTTP/1.1 201 Created
@@ -204,8 +206,8 @@ Content-Type: application/json
 {
   "Data": {
     "ConsentId": "58923",
-    "Status": "AWAU",
     "CreationDateTime": "2017-06-05T15:15:13+00:00",
+    "Status": "AWAU",
     "StatusUpdateDateTime": "2017-06-05T15:15:13+00:00",
     "Initiation": {
       "InstructionIdentification": "ACME412",
@@ -228,28 +230,30 @@ Content-Type: application/json
             }
           }
         ],
-        "Unstructured": ["Internal ops code 5120101"]
+        "Unstructured": [
+          "Internal ops code 5120101"
+        ]
       }
     }
   },
   "Risk": {
     "PaymentContextCode": "EcommerceMerchantInitiatedPayment",
-    "ContractPresentIndicator": false,
-    "PaymentPurposeCode": "EPAY",
-    "BeneficiaryPaymentDetailsPrepopulatedIndicator": false,
-    "BeneficiaryAccountType": "Business",
     "MerchantCustomerIdentification": "053598653254",
+    "ContractPresentIndicator": false,
+    "BeneficiaryPrepopulatedIndicator": false,
+    "PaymentPurposeCode": "EPAY",
+    "BeneficiaryAccountType": "Business",
     "DeliveryAddress": {
-      "AddressLine": [
-        "Flat 7",
-        "Acacia Lodge"
-      ],
       "StreetName": "Acacia Avenue",
       "BuildingNumber": "27",
       "PostCode": "GU31 2ZZ",
       "TownName": "Sparsholt",
       "CountrySubDivision": "Wessex",
-      "Country": "UK"
+      "Country": "GB",
+      "AddressLine": [
+        "Flat 7",
+        "Acacia Lodge"
+      ]
     }
   },
   "Links": {
@@ -283,16 +287,16 @@ Content-Type: application/json
 
 ```json
 {
-    "Data": {
-        "FundsAvailableResult": {
-            "FundsAvailableDateTime": "2017-06-05T15:15:23+00:00",
-            "FundsAvailable": true
-        }
-    },
-    "Links": {
-        "Self": "https://api.alphabank.com/open-banking/v4.0/pisp/domestic-payment-consents/58923/funds-confirmation"
-    },
-    "Meta": {}
+  "Data": {
+    "FundsAvailableResult": {
+      "FundsAvailableDateTime": "2017-06-05T15:15:23+00:00",
+      "FundsAvailable": true
+    }
+  },
+  "Links": {
+    "Self": "https://api.alphabank.com/open-banking/v4.0/pisp/domestic-payment-consents/58923/funds-confirmation"
+  },
+  "Meta": {}
 }
 ```
 
@@ -343,22 +347,22 @@ Accept: application/json
   },
   "Risk": {
     "PaymentContextCode": "EcommerceMerchantInitiatedPayment",
-    "ContractPresentIndicator": false,
-    "PaymentPurposeCode": "EPAY",
-    "BeneficiaryPaymentDetailsPrepopulatedIndicator": false,
-    "BeneficiaryAccountType": "Business",
     "MerchantCustomerIdentification": "053598653254",
+    "ContractPresentIndicator": false,
+    "BeneficiaryPrepopulatedIndicator": false,
+    "PaymentPurposeCode": "EPAY",
+    "BeneficiaryAccountType": "Business",
     "DeliveryAddress": {
-      "AddressLine": [
-        "Flat 7",
-        "Acacia Lodge"
-      ],
       "StreetName": "Acacia Avenue",
       "BuildingNumber": "27",
       "PostCode": "GU31 2ZZ",
       "TownName": "Sparsholt",
       "CountrySubDivision": "Wessex",
-      "Country": "UK"
+      "Country": "GB",
+      "AddressLine": [
+        "Flat 7",
+        "Acacia Lodge"
+      ]
     }
   }
 }
@@ -471,7 +475,7 @@ Content-Type: application/json
     "PaymentContextCode": "EcommerceMerchantInitiatedPayment",
     "ContractPresentIndicator": false,
     "PaymentPurposeCode": "EPAY",
-    "BeneficiaryPaymentDetailsPrepopulatedIndicator": false,
+    "BeneficiaryPrepopulatedIndicator": false,
     "BeneficiaryAccountType": "Business",
     "MerchantCustomerIdentification": "053598653254",
     "DeliveryAddress": {
@@ -484,7 +488,7 @@ Content-Type: application/json
       "PostCode": "GU31 2ZZ",
       "TownName": "Sparsholt",
       "CountrySubDivision": "Wessex",
-      "Country": "UK"
+      "Country": "GB"
     }
   },
   "Links": {
@@ -563,7 +567,7 @@ This example set of flows and payload examples are for a domestic payment initia
 
 In this scenario:
 
-* The PSU has pre-specified the account from which funds will be transferred (i.e., the Debtor Account details)
+* The PSU has pre-specified the account from which funds will be transferred (i.e. the Debtor Account details)
 * No building society accounts are involved in this interaction, and there only the sort code and account number are specified in the DebtorAccount and CreditorAccount sections.
 
 ### Sequence Diagram
@@ -675,7 +679,7 @@ Accept: application/json
             }
           }
         ],
-        "Unstructured": ["Internal ops code 5120103"]
+        "Unstructured": [ "Internal ops code 5120103" ]
       }
     }
   },
@@ -1138,10 +1142,10 @@ Accept: application/json
       "CreditorPostalAddress": {
         "AddressType": "CORR",
         "StreetName": "Liberty",
-        "BuildingNumber":"1",
-        "PostCode":"AB1 2CD",
-        "TownName":"London",
-        "Country":"UK"
+        "BuildingNumber": "1",
+        "PostCode": "AB1 2CD",
+        "TownName": "London",
+        "Country": "GB"
       },
       "RemittanceInformation": {
         "Structured": [
@@ -1199,12 +1203,12 @@ Content-Type: application/json
       "CreditorPostalAddress": {
         "AddressType": "CORR",
         "StreetName": "Liberty",
-        "BuildingNumber":"1",
-        "PostCode":"AB1 2CD",
-        "TownName":"London",
-        "Country":"UK"
+        "BuildingNumber": "1",
+        "PostCode": "AB1 2CD",
+        "TownName": "London",
+        "Country": "GB"
       },
-      "RemittanceInformation":{
+      "RemittanceInformation": {
         "Structured": [
           {
             "CreditorReferenceInformation": {
@@ -1239,7 +1243,7 @@ Content-Type: application/json
 ## Balance Transfer
 Below in an example illustrating a balance transfer offer available on a Card A.
 
-To facilitate a Balance Transfer, a PISP can initiate a Payment from Card B to Card A with LocalInstrument as UK.OBIE.BalanceTransfer, Account SchemeName as UK.OBIE.PAN and if there is an Offer Code/Id provided by Issuer of the Card A, then it can be supplied in the field: `RemittanceInformation.Structured.0.CreditorReferenceInformation.Reference`.
+To facilitate a Balance Transfer, a PISP can initiate a Payment from Card B to Card A with LocalInstrument as UK.OBIE.BalanceTransfer, Account SchemeName as UK.OBIE.PAN and if there is an Offer Code/ID provided by Issuer of the Card A, then it can be supplied in the field: `RemittanceInformation.Structured.0.CreditorReferenceInformation.Reference`.
 Example below:
 
 ### POST /domestic-payment-consents request
@@ -1258,40 +1262,42 @@ Accept: application/json
 
 ```json
 {
-    "Data": {
-        "Initiation": {
-            "InstructionIdentification": "ANSM023",
-            "EndToEndIdentification": "FRESCO.21302.GFX.37",
-            "LocalInstrument": "UK.OBIE.BalanceTransfer",
-            "InstructedAmount": {
-                "Amount": "3000.00",
-                "Currency": "GBP"
-            },
-            "DebtorAccount": {
-                "SchemeName": "UK.OBIE.PAN",
-                "Identification": "5555555555554444",
-                "Name": "Andrea Smith"
-            },
-            "CreditorAccount": {
-                "SchemeName": "UK.OBIE.PAN",
-                "Identification": "4444333322221111",
-                "Name": "Andrea Smith"
-            },
-            "RemittanceInformation": {
-                "Structured": [
-                    {
-                        "CreditorReferenceInformation": {
-                            "Reference": "BT-OfferCode-12"
-                        }
-                    }
-                ],
-                "Unstructured": ["Internal ops code 5120103"]
+  "Data": {
+    "Initiation": {
+      "InstructionIdentification": "ANSM023",
+      "EndToEndIdentification": "FRESCO.21302.GFX.37",
+      "LocalInstrument": "UK.OBIE.BalanceTransfer",
+      "InstructedAmount": {
+        "Amount": "3000.00",
+        "Currency": "GBP"
+      },
+      "DebtorAccount": {
+        "SchemeName": "UK.OBIE.PAN",
+        "Identification": "5555555555554444",
+        "Name": "Andrea Smith"
+      },
+      "CreditorAccount": {
+        "SchemeName": "UK.OBIE.PAN",
+        "Identification": "4444333322221111",
+        "Name": "Andrea Smith"
+      },
+      "RemittanceInformation": {
+        "Structured": [
+          {
+            "CreditorReferenceInformation": {
+              "Reference": "BT-OfferCode-12"
             }
-        }
-    },
-    "Risk": {
-        "PaymentContextCode": "TransferToThirdParty"
+          }
+        ],
+        "Unstructured": [
+          "Internal ops code 5120103"
+        ]
+      }
     }
+  },
+  "Risk": {
+    "PaymentContextCode": "TransferToThirdParty"
+  }
 }
 ```
 

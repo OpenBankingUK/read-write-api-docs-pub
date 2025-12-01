@@ -467,7 +467,7 @@ Accept: application/json
             "Floor": "6",
             "PostCode": "Z78 4TY",
             "TownName": "London",
-            "Country": "UK"
+            "Country": "GB"
           }
         },
         "CreditorAgent": {
@@ -491,7 +491,7 @@ Accept: application/json
             "PostCode": "Z78 4TY",
             "TownName": "London",
             "CountrySubDivision": "string",
-            "Country": "UK"
+            "Country": "GB"
           }
         },
         "CreditorAccount": {
@@ -517,7 +517,7 @@ Accept: application/json
             "Floor": "6",
             "PostCode": "Z78 4TY",
             "TownName": "London",
-            "Country": "UK"
+            "Country": "GB"
           }
         },
         "UltimateDebtor": {
@@ -532,7 +532,7 @@ Accept: application/json
             "Floor": "6",
             "PostCode": "Z78 4TY",
             "TownName": "London",
-            "Country": "UK"
+            "Country": "GB"
           }
         },
         "RegulatoryReporting": [
@@ -546,7 +546,7 @@ Accept: application/json
               {
                 "Type": "CRED",
                 "Date": "2024-09-16T10:25:28.422Z",
-                "Country": "UK",
+                "Country": "GB",
                 "Amount": {
                   "Amount": "165.88",
                   "Currency": "USD"
@@ -611,7 +611,7 @@ Accept: application/json
       "ContractPresentIndicator": false,
       "PaymentPurposeCode": "EPAY",
       "CategoryPurposeCode": "CASH",
-      "BeneficiaryPaymentDetailsPrepopulatedIndicator": false,
+      "BeneficiaryPrepopulatedIndicator": false,
       "BeneficiaryAccountType": "Business",
       "MerchantCategoryCode": "7300",
       "MerchantCustomerIdentification": "053598653254",
@@ -625,7 +625,7 @@ Accept: application/json
         "PostCode": "GU31 2ZZ",
         "TownName": "Sparsholt",
         "CountrySubDivision": "Wessex",
-        "Country": "UK"
+        "Country": "GB"
       }
     }
   }
@@ -716,7 +716,7 @@ Content-Type: application/json
           "Floor": "6",
           "PostCode": "Z78 4TY",
           "TownName": "London",
-          "Country": "UK"
+          "Country": "GB"
         }
       },
       "CreditorAgent": {
@@ -740,7 +740,7 @@ Content-Type: application/json
           "PostCode": "Z78 4TY",
           "TownName": "London",
           "CountrySubDivision": "string",
-          "Country": "UK"
+          "Country": "GB"
         }
       },
       "CreditorAccount": {
@@ -766,7 +766,7 @@ Content-Type: application/json
           "Floor": "6",
           "PostCode": "Z78 4TY",
           "TownName": "London",
-          "Country": "UK"
+          "Country": "GB"
         }
       },
       "UltimateDebtor": {
@@ -781,7 +781,7 @@ Content-Type: application/json
           "Floor": "6",
           "PostCode": "Z78 4TY",
           "TownName": "London",
-          "Country": "UK"
+          "Country": "GB"
         }
       },
       "RegulatoryReporting": [
@@ -795,7 +795,7 @@ Content-Type: application/json
             {
               "Type": "CRED",
               "Date": "2024-09-16T10:25:28.422Z",
-              "Country": "UK",
+              "Country": "GB",
               "Amount": {
                 "Amount": "165.88",
                 "Currency": "USD"

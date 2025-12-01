@@ -8,37 +8,37 @@
     - [UML Diagram](#uml-diagram)
     - [Data Dictionary](#data-dictionary)
   - [Aggregated Polling - Response](#aggregated-polling---response)
-    - [UML Diagram](#uml-diagram-2)
-    - [Data Dictionary](#data-dictionary-2)
+    - [UML Diagram](#uml-diagram-1)
+    - [Data Dictionary](#data-dictionary-1)
   - [OBEventNotification2](#obeventnotification2)
-    - [UML Diagram](#uml-diagram-3)
+    - [UML Diagram](#uml-diagram-2)
     - [Notes](#notes)
-    - [Data Dictionary](#data-dictionary-3)
+    - [Data Dictionary](#data-dictionary-2)
   - [OBEventSubject1](#obeventsubject1)
-    - [UML Diagram](#uml-diagram-4)
-    - [Notes](#notes-2)
-    - [Data Dictionary](#data-dictionary-4)
+    - [UML Diagram](#uml-diagram-3)
+    - [Notes](#notes-1)
+    - [Data Dictionary](#data-dictionary-3)
   - [OBEventResourceUpdate2](#obeventresourceupdate2)
-    - [UML Diagram](#uml-diagram-5)
-    - [Data Dictionary](#data-dictionary-5)
+    - [UML Diagram](#uml-diagram-4)
+    - [Data Dictionary](#data-dictionary-4)
   - [OBEventConsentAuthorizationRevoked1](#obeventconsentauthorizationrevoked1)
-    - [UML Diagram](#uml-diagram-6)
-    - [Notes](#notes-6)
-    - [Data Dictionary](#data-dictionary-7)
+    - [UML Diagram](#uml-diagram-5)
+    - [Notes](#notes-2)
+    - [Data Dictionary](#data-dictionary-6)
   - [OBEventAccountAccessConsentLinkedAccountUpdate1](#obeventaccountaccessconsentlinkedaccountupdate1)
-    - [UML Diagram](#uml-diagram-7)
-    - [Notes](#notes-4)
-    - [Data Dictionary](#data-dictionary-7)
+    - [UML Diagram](#uml-diagram-6)
+    - [Notes](#notes-3)
+    - [Data Dictionary](#data-dictionary-6)
 - [Usage Examples](#usage-examples)
   - [Poll Only](#poll-only)
     - [POST Events Request](#post-events-request)
     - [POST Events Response](#post-events-response)
   - [Acknowledge Only](#acknowledge-only)
+    - [POST Events Request](#post-events-request-1)
+    - [POST Events Response](#post-events-response-1)
+  - [Poll and Acknowledge With Errors](#poll-and-acknowledge-with-errors)
     - [POST Events Request](#post-events-request-2)
     - [POST Events Response](#post-events-response-2)
-  - [Poll and Acknowledge With Errors](#poll-and-acknowledge-with-errors)
-    - [POST Events Request](#post-events-request-3)
-    - [POST Events Response](#post-events-response-3)
 
 ## Overview
 
@@ -83,7 +83,6 @@ The `OBEventPolling1` will be used as the request payload for:
 | `<jti>` |0..* |`OBEventPolling1/setErrs/<jti>` |A event notification error object entitled using the `jti` of the event notification |OBEventError1 | | |
 | err |1..1 |`OBEventPolling1/setErrs/<jti>/err` |A value from the IANA "Security Event Token Delivery Error Codes" registry that identifies the error as defined [here](https://tools.ietf.org/id/draft-ietf-secevent-http-push-03.html#error_codes) |Max40Text | | |
 | description |1..1 |`OBEventPolling1/setErrs/<jti>/description` |A human-readable string that provides additional diagnostic information |Max256Text | | |
-
 
 ### Aggregated Polling - Response
 
@@ -186,7 +185,7 @@ This section describes the OBEventConsentAuthorizationRevoked1 class which is us
 
 #### Notes
 
-For the OBEventConsentAuthorizationRevoked1 object:  
+For the OBEventConsentAuthorizationRevoked1 object:
 
 - The subject claim **must** be populated if the Event Notification does not include a `urn:uk:org:openbanking:events:resource-update` event.
 
@@ -208,7 +207,7 @@ This section describes the OBEventAccountAccessConsentLinkedAccountUpdate1 class
 
 #### Notes
 
-For the OBEventAccountAccessConsentLinkedAccountUpdate object: 
+For the OBEventAccountAccessConsentLinkedAccountUpdate object:
 
 - The http://openbanking.org.uk/rty claim **must** be populated with "account-access-consent".
 
@@ -290,7 +289,7 @@ x-fapi-interaction-id: 295f6c6c7b2045b2a3e91e4f1c31d681
 
 ```json
 {
-  "sets": { }
+  "sets": {}
 }
 ```
 
@@ -310,7 +309,9 @@ x-fapi-interaction-id: 3fc0df586e45404abd5bbf1b23ce343d
 {
   "returnImmediately": true,
   "maxEvents": 1,
-  "ack": [ "2644f8cbc8294325ad103ddfc4a5b15d" ],
+  "ack": [
+    "2644f8cbc8294325ad103ddfc4a5b15d"
+  ],
   "setErrs": {
     "1fd954d5fb964afb97deee232bb88d1f": {
       "err": "jwtIss",
