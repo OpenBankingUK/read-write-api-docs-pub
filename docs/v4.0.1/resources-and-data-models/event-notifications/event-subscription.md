@@ -13,15 +13,15 @@
     - [Data Dictionary](#data-dictionary)
   - [Event Subscription - Response](#event-subscription---response)
     - [UML](#uml)
-    - [Data Dictionary](#data-dictionary-2)
+    - [Data Dictionary](#data-dictionary-1)
   - [Event Subscriptions - Response](#event-subscriptions---response)
-    - [UML](#uml-2)
-    - [Data Dictionary](#data-dictionary-3)
+    - [UML](#uml-1)
+    - [Data Dictionary](#data-dictionary-2)
 - [Usage Examples](#usage-examples)
   - [Create Event Subscription](#create-event-subscription)
     - [POST Event Subscription Request](#post-event-subscription-request)
     - [POST Event Subscription Response](#post-event-subscription-response)
-  - [Get Event Subscriptions](#get-event-subscriptions-2)
+  - [Get Event Subscriptions](#get-event-subscriptions-1)
     - [GET Event Subscription Request](#get-event-subscription-request)
     - [GET Event Subscription Response](#get-event-subscription-response)
 
@@ -35,10 +35,10 @@ This resource description should be read in conjunction with a compatible Event 
 
 A TPP will set up and maintain its event subscription details (URL, event types and version number) using the event-subscription resource.
 
-| Resource |HTTP Operation |Endpoint |Mandatory ? |Scope |Grant Type |Message Signing |Idempotency Key |Request Object |Response Object |
-| --- |--- |--- |--- |--- |--- |--- |--- |--- |--- |
-| event-subscription |POST |POST /event-subscriptions |Optional |accounts<br>payments<br>fundsconfirmations |Client Credentials |Signed Request<br><br>Signed Response |No |OBEventSubscription1 |OBEventSubscriptionResponse1 |
-| event-subscription |GET |GET /event-subscriptions |Mandatory (if resource POST implemented) |accounts<br>payments<br>fundsconfirmations |Client Credentials |Signed Response |No |n/a |OBEventSubscriptionsResponse1 |
+| Resource |HTTP Operation |Endpoint | Mandatory ?                         |Scope |Grant Type |Message Signing |Idempotency Key |Request Object |Response Object |
+| --- |--- |--- |-------------------------------------|--- |--- |--- |--- |--- |--- |
+| event-subscription |POST |POST /event-subscriptions | Optional                            |accounts<br>payments<br>fundsconfirmations |Client Credentials |Signed Request<br><br>Signed Response |No |OBEventSubscription1 |OBEventSubscriptionResponse1 |
+| event-subscription |GET |GET /event-subscriptions | Mandatory (if resource POST implemented) |accounts<br>payments<br>fundsconfirmations |Client Credentials |Signed Response |No |n/a |OBEventSubscriptionsResponse1 |
 | event-subscription |PUT |PUT /event-subscriptions/{EventSubscriptionId} | Conditional (See [Note 1](#note-1)) |accounts<br>payments<br>fundsconfirmations |Client Credentials |Signed Request<br><br>Signed Response |No |OBEventSubscriptionResponse1 |OBEventSubscriptionResponse1 |
 | event-subscription |DELETE |DELETE /event-subscriptions/{EventSubscriptionId} | Conditional (See [Note 1](#note-1)) |accounts<br>payments<br>fundsconfirmations |Client Credentials |n/a |No |n/a |n/a |
 
@@ -51,7 +51,7 @@ Implementation for an ASPSP is:
   - The ASPSP supports aggregated polling only
   - The ASPSP only supports a single event type for aggregated polling
 - **Mandatory**, when the above is not true and ASPSP implemented `POST /event-subscriptions`
-  
+
 ### POST /event-subscriptions
 
 The API endpoint allows the TPP to ask an ASPSP to create a new **event-subscription** resource.
@@ -112,7 +112,6 @@ For the OBEventSubscription1 object:
 | Version |1..1 |OBEventSubscription1/Data/Version |Version for the event notification. |Max10Text | | |
 | EventTypes |0..* |OBEventSubscription1/Data/EventTypes |Array of event types the subscription applies to. |OBEventType1Code | | |
 
-
 ### Event Subscription - Response
 
 The OBEventSubscriptionResponse1 object will be used for a response to a call to:
@@ -161,7 +160,6 @@ The OBEventSubscriptionsResponse1 object will be used for a response to a call t
 | Version |1..1 |OBEventSubscriptionsResponse1/Data/EventSubscription/Version |Version for the event notification. |Max10Text | | |
 | EventTypes |0..* |OBEventSubscriptionsResponse1/Data/EventSubscription/EventTypes |Array of event types the subscription applies to. |OBEventType1Code | | |
 
-
 ## Usage Examples
 
 ### Create Event Subscription
@@ -180,8 +178,8 @@ Accept: application/json
 ```json
 {
   "Data": {
-	"CallbackUrl": "https://tpp.com/open-banking/v4.0/event-notifications",
-	"Version": "4.0"
+    "CallbackUrl": "https://tpp.com/open-banking/v4.0/event-notifications",
+    "Version": "4.0"
   }
 }
 ```
@@ -197,15 +195,15 @@ Content-Type: application/json
 
 ```json
 {
-	"Data": {
-		"EventSubscriptionId": "CB-101",
-		"CallbackUrl": "https://tpp.com/open-banking/v4.0/event-notifications",
-		"Version": "4.0"
-	},
-	"Links": {
-		"Self": "https://api.alphabank.com/open-banking/v4.0/event-subscriptions/CB-101"
-	},
-	"Meta": {}
+  "Data": {
+    "EventSubscriptionId": "CB-101",
+    "CallbackUrl": "https://tpp.com/open-banking/v4.0/event-notifications",
+    "Version": "4.0"
+  },
+  "Links": {
+    "Self": "https://api.alphabank.com/open-banking/v4.0/event-subscriptions/CB-101"
+  },
+  "Meta": {}
 }
 ```
 
@@ -231,16 +229,18 @@ Content-Type: application/json
 
 ```json
 {
-	"Data": {
-		"EventSubscription": [{
-			"EventSubscriptionId": "CB-101",
-			"CallbackUrl": "https://tpp.com/open-banking/v4.0/event-notifications",
-			"Version": "4.0"
-		}]
-	},
-	"Links": {
-		"Self": "https://api.alphabank.com/open-banking/v4.0/event-subscriptions/"
-	},
-	"Meta": {}
+  "Data": {
+    "EventSubscription": [
+      {
+        "EventSubscriptionId": "CB-101",
+        "CallbackUrl": "https://tpp.com/open-banking/v4.0/event-notifications",
+        "Version": "4.0"
+      }
+    ]
+  },
+  "Links": {
+    "Self": "https://api.alphabank.com/open-banking/v4.0/event-subscriptions/"
+  },
+  "Meta": {}
 }
 ```
