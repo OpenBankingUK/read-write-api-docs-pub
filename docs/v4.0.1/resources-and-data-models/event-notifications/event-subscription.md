@@ -35,11 +35,11 @@ This resource description should be read in conjunction with a compatible Event 
 
 A TPP will set up and maintain its event subscription details (URL, event types and version number) using the event-subscription resource.
 
-| Resource |HTTP Operation |Endpoint | Mandatory ?                                           |Scope |Grant Type |Message Signing |Idempotency Key |Request Object |Response Object |
-| --- |--- |--- |-------------------------------------------------------|--- |--- |--- |--- |--- |--- |
-| event-subscription |POST |POST /event-subscriptions | Optional                                              |accounts<br>payments<br>fundsconfirmations |Client Credentials |Signed Request<br><br>Signed Response |No |OBEventSubscription1 |OBEventSubscriptionResponse1 |
-| event-subscription |GET |GET /event-subscriptions | Mandatory (if resource POST implemented)              |accounts<br>payments<br>fundsconfirmations |Client Credentials |Signed Response |No |n/a |OBEventSubscriptionsResponse1 |
-| event-subscription |PUT |PUT /event-subscriptions/{EventSubscriptionId} | Conditional (See [Note 1](#note-1----omit-in-toc---)) |accounts<br>payments<br>fundsconfirmations |Client Credentials |Signed Request<br><br>Signed Response |No |OBEventSubscriptionResponse1 |OBEventSubscriptionResponse1 |
+| Resource |HTTP Operation |Endpoint | Mandatory ?                         |Scope |Grant Type |Message Signing |Idempotency Key |Request Object |Response Object |
+| --- |--- |--- |-------------------------------------|--- |--- |--- |--- |--- |--- |
+| event-subscription |POST |POST /event-subscriptions | Optional                            |accounts<br>payments<br>fundsconfirmations |Client Credentials |Signed Request<br><br>Signed Response |No |OBEventSubscription1 |OBEventSubscriptionResponse1 |
+| event-subscription |GET |GET /event-subscriptions | Mandatory (if resource POST implemented) |accounts<br>payments<br>fundsconfirmations |Client Credentials |Signed Response |No |n/a |OBEventSubscriptionsResponse1 |
+| event-subscription |PUT |PUT /event-subscriptions/{EventSubscriptionId} | Conditional (See [Note 1](#note-1)) |accounts<br>payments<br>fundsconfirmations |Client Credentials |Signed Request<br><br>Signed Response |No |OBEventSubscriptionResponse1 |OBEventSubscriptionResponse1 |
 | event-subscription |DELETE |DELETE /event-subscriptions/{EventSubscriptionId} | Conditional (See [Note 1](#note-1----omit-in-toc---)) |accounts<br>payments<br>fundsconfirmations |Client Credentials |n/a |No |n/a |n/a |
 
 ### Note 1 <!-- omit in toc -->
