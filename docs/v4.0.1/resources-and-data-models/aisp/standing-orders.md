@@ -59,9 +59,11 @@ The OBReadStandingOrder6 object will be used for the call to:
 ### Reused Classes
 
 #### OBProxy1
+
 The OBProxy1 class is defined in the [account-and-transaction-api-profile](../../profiles/account-and-transaction-api-profile.md#obproxy1) page.
 
 #### OBPostalAddress7
+
 The OBPostalAddress7 class is defined in the [account-and-transaction-api-profile](../../profiles/account-and-transaction-api-profile.md#obpostaladdress7) page.
 
 #### OBMandateRelatedInformation1
@@ -71,6 +73,7 @@ The OBMandateRelatedInformation1 class is defined in the [account-and-transactio
 #### OBRemittanceInformation2
 
 ##### Data Dictionary
+
 | Name                            | Occurrence | XPath                                                                       | EnhancedDefinition                                                                                                                                                                                                    | Class                                | Codes                                                                                                                            | Pattern                          |
 |---------------------------------|------------|-----------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------|----------------------------------------------------------------------------------------------------------------------------------|----------------------------------|
 | OBRemittanceInformation2        |            |                                                                             | Information supplied to enable the matching of an entry with the items that the transfer is intended to settle, such as commercial invoices in an accounts' receivable system.                                        | OBRemittanceInformation2             |                                                                                                                                  |                                  |
@@ -114,7 +117,7 @@ An account (AccountId) may have no standing orders set up, or may have multiple 
 * A DateTime element has been used so that there is consistency across all API endpoints using dates. Where time elements do not exist in ASPSP systems, the time portion of the DateTime element will be defaulted to 00:00:00+00:00.
 * The Amount elements all have embedded Currency elements for consistency is ISO 20022, and across the other API endpoints.
 * ASPSPs must give TPPs at least three month's notice, prior to implementing any change in the code-lists of the fields, if such a change impacts the ability of TPPs to continue with the provision of their service.
-  
+
 ### Frequency Examples
 
 |Frequency Code | Description |
@@ -173,7 +176,7 @@ If the ReadPAN permission is granted by the PSU, the ASPSP may choose to populat
 | Identification |1..1 |OBReadStandingOrder6/Data/StandingOrder/CreditorAgent/Identification |Unique and unambiguous identification of the servicing institution. |Max35Text | | |
 | PostalAddress |0..1 |OBReadStandingOrder6/Data/StandingOrder/CreditorAgent/PostalAddress | Information that locates and identifies a specific address, as defined by postal services. |OBPostalAddress7 | | |
 | CreditorAccount |0..1 |OBReadStandingOrder6/Data/StandingOrder/CreditorAccount |Provides the details to identify the beneficiary account. |OBCashAccount5 | | |
-| SchemeName |1..1 |OBReadStandingOrder6/Data/StandingOrder/CreditorAccount/SchemeName |Name of the identification scheme, in a coded form as published in an external list. | For a full list of enumeration values refer to `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets). |OBInternalAccountIdentification4Code | 
+| SchemeName |1..1 |OBReadStandingOrder6/Data/StandingOrder/CreditorAccount/SchemeName |Name of the identification scheme, in a coded form as published in an external list. | For a full list of enumeration values refer to `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets). |OBInternalAccountIdentification4Code |
 | Identification |1..1 |OBReadStandingOrder6/Data/StandingOrder/CreditorAccount/Identification |Beneficiary account identification. |Max256Text | | |
 | Name |0..1 |OBReadStandingOrder6/Data/StandingOrder/CreditorAccount/Name |The account name is the name or names of the account owner(s) represented at an account level, as displayed by the ASPSP's online channels. Note, the account name is not the product name or the nickname of the account. |Max350Text | | |
 | Proxy |0..1 |OBReadStandingOrder6/Data/StandingOrder/CreditorAccount/Proxy |Specifies an alternate assumed name for the identification of the account. |OBProxy1 | | |
@@ -225,12 +228,10 @@ Content-Type: application/json
           "Amount": "0.56",
           "Currency": "GBP"
         },
-        "LastPaymentAmount": {  
-        "LastPaymentDateTime": "2017-07-13T00:00:00+00:00", 
+        "LastPaymentDateTime": "2017-07-13T00:00:00+00:00",
         "LastPaymentAmount": {
           "Amount": "0.56",
           "Currency": "GBP"
-          }
         },
         "MandateRelatedInformation": {
           "MandateIdentification": "Golfers",
@@ -240,7 +241,7 @@ Content-Type: application/json
           "RecurringPaymentDateTime": "2024-04-25T12:46:49.425Z",
           "FinalPaymentDateTime": "2024-04-25T12:46:49.425Z",
           "Reason": "To pay monthly membership",
-          "Frequency": { 
+          "Frequency": {
             "Type": "MNTH",
             "CountPerPeriod": 1
           }
@@ -310,17 +311,17 @@ Content-Type: application/json
           "Amount": "0.56",
           "Currency": "GBP"
         },
-        "LastPaymentDateTime": "2017-07-13T00:00:00+00:00", 
+        "LastPaymentDateTime": "2017-07-13T00:00:00+00:00",
         "LastPaymentAmount": {
           "Amount": "0.56",
           "Currency": "GBP"
         },
-        "CreditorAgent": {  
+        "CreditorAgent": {
           "LEI": "IZ9Q00LZEVUKWCQY6X15",
           "SchemeName": "UK.OBIE.BICFI",
           "Identification": "80200112344562",
-          "Name": "The Creditor Agent", 
-          "PostalAddress": { 
+          "Name": "The Creditor Agent",
+          "PostalAddress": {
             "AddressType": "BIZZ",
             "StreetName": "Bank Street",
             "BuildingNumber": "11",
@@ -338,7 +339,7 @@ Content-Type: application/json
           "RecurringPaymentDateTime": "2017-08-13T12:46:49.425Z",
           "FinalPaymentDateTime": "2024-04-25T12:46:49.425Z",
           "Reason": "To pay monthly membership",
-          "Frequency": { 
+          "Frequency": {
             "Type": "MNTH",
             "CountPerPeriod": 1
           }
@@ -352,7 +353,7 @@ Content-Type: application/json
           "Proxy": {
             "Identification": "441234012345",
             "Code": "TELE",
-            "Type": "Telephone", 
+            "Type": "Telephone"
           }
         }
       },
@@ -360,11 +361,11 @@ Content-Type: application/json
         "AccountId": "22289",
         "StandingOrderId": "Ben5",
         "MandateRelatedInformation": {
-            "FirstPaymentDate": "2017-06-12",
-            "LastPaymentDate": "2018-06-12",
-            "Frequency":{
-              "PeriodType": "MNTH",
-              "CountPerPeriod": 1
+          "FirstPaymentDate": "2017-06-12",
+          "LastPaymentDate": "2018-06-12",
+          "Frequency": {
+            "PeriodType": "MNTH",
+            "CountPerPeriod": 1
           }
         },
         "Reference": "Golf - We Love Golf",
