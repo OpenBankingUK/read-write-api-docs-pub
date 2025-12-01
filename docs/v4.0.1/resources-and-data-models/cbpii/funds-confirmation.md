@@ -8,16 +8,16 @@
     - [UML Diagram](#uml-diagram)
     - [Data Dictionary](#data-dictionary)
   - [Funds Confirmation - Response](#funds-confirmation---response)
-    - [UML Diagram](#uml-diagram-2)
-    - [Data Dictionary](#data-dictionary-2)
+    - [UML Diagram](#uml-diagram-1)
+    - [Data Dictionary](#data-dictionary-1)
 - [Usage Examples](#usage-examples)
   - [Funds Confirmation](#funds-confirmation)
     - [Example with all permitted fields](#example-with-all-permitted-fields)
       - [Request](#request)
       - [Response](#response)
     - [Example with a USD account](#example-with-a-usd-account)
-      - [Request](#request-2)
-      - [Response](#response-2)
+      - [Request](#request-1)
+      - [Response](#response-1)
 
 ## Overview
 
@@ -26,10 +26,10 @@ The Funds Confirmation resource is used by an CBPII to request to confirm funds 
 This resource description should be read in conjunction with a compatible Confirmation of Funds API Profile.
 
 ## Endpoints
+
 | Resource |HTTP Operation |Endpoint |Mandatory ? |Scope |Grant Type |Message Signing |Idempotency Key |Request Object |Response Object |
 | --- |--- |--- |--- |--- |--- |--- |--- |--- |--- |
 | funds-confirmation |POST |POST /funds-confirmations |Mandatory |fundsconfirmations |Authorization Code |No |No |OBFundsConfirmation1 |OBFundsConfirmationResponse1 |
-
 
 ### POST /funds-confirmations
 
@@ -88,6 +88,7 @@ The OBFundsConfirmationResponse1 object contains the same information as the OBF
 * CreationDateTime - to indicate when the resource was created.
 
 #### Data Dictionary
+
 | Name |Occurrence |XPath |EnhancedDefinition |Class |Codes |Pattern |
 | --- |--- |--- |--- |--- |--- |--- |
 | OBFundsConfirmationResponse1 | |OBFundsConfirmationResponse1 | |OBFundsConfirmationResponse1 | | |
@@ -123,10 +124,10 @@ x-fapi-interaction-id: hook5i13-ntIg-4th3-rP41-3ro535touch3
 {
   "Data": {
     "ConsentId": "88379",
-	"Reference": "Purchase01",
+    "Reference": "Purchase01",
     "InstructedAmount": {
-       "Amount": "20.00",
-       "Currency": "GBP"
+      "Amount": "20.00",
+      "Currency": "GBP"
     }
   }
 }
@@ -148,11 +149,11 @@ x-fapi-interaction-id: hook5i13-ntIg-4th3-rP41-3ro535touch3
     "FundsConfirmationId": "123456",
     "ConsentId": "88379",
     "CreationDateTime": "2017-05-02T00:00:00+00:00",
-	"FundsAvailable": true,
-	"Reference": "Purchase01",
+    "FundsAvailable": true,
+    "Reference": "Purchase01",
     "InstructedAmount": {
-       "Amount": "20.00",
-       "Currency": "GBP"
+      "Amount": "20.00",
+      "Currency": "GBP"
     }
   },
   "Links": {
@@ -184,10 +185,10 @@ x-fapi-interaction-id: hook5i13-ntIg-4th3-rP41-3ro535touch3
 {
   "Data": {
     "ConsentId": "912304",
-	"Reference": "Purchase02",
+    "Reference": "Purchase02",
     "InstructedAmount": {
-       "Amount": "20.00",
-       "Currency": "USD"
+      "Amount": "20.00",
+      "Currency": "USD"
     }
   }
 }
@@ -209,11 +210,11 @@ x-fapi-interaction-id: hook5i13-ntIg-4th3-rP41-3ro535touch3
     "FundsConfirmationId": "836403",
     "ConsentId": "912304",
     "CreationDateTime": "2017-06-02T00:00:00+00:00",
-	"FundsAvailable": true,
-	"Reference": "Purchase02",
+    "FundsAvailable": true,
+    "Reference": "Purchase02",
     "InstructedAmount": {
-       "Amount": "20.00",
-       "Currency": "USD"
+      "Amount": "20.00",
+      "Currency": "USD"
     }
   },
   "Links": {

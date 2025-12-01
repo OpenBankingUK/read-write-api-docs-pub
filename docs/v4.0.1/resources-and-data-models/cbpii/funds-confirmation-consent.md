@@ -6,7 +6,7 @@
     - [Funds Confirmation Consent Status](#funds-confirmation-consent-status)
     - [Status Flow](#status-flow)
   - [GET /funds-confirmation-consents/{ConsentId}](#get-funds-confirmation-consentsconsentid)
-    - [Funds Confirmation Consent Status](#funds-confirmation-consent-status-2)
+    - [Funds Confirmation Consent Status](#funds-confirmation-consent-status-1)
   - [DELETE /funds-confirmation-consents/{ConsentId}](#delete-funds-confirmation-consentsconsentid)
 - [Data Model](#data-model)
   - [Reused Classes](#reused-classes)
@@ -15,25 +15,25 @@
     - [UML Diagram](#uml-diagram)
     - [Data Dictionary](#data-dictionary)
   - [Funds Confirmation Consent - Response](#funds-confirmation-consent---response)
-    - [UML Diagram](#uml-diagram-2)
-    - [Data Dictionary](#data-dictionary-2)
-  - [Data Payload - Enumerations](#data-payload-enumerations)
+    - [UML Diagram](#uml-diagram-1)
+    - [Data Dictionary](#data-dictionary-1)
+  - [Data Payload - Enumerations](#data-payload---enumerations)
 - [Usage Examples](#usage-examples)
   - [POST - Funds Confirmation Consent](#post---funds-confirmation-consent)
     - [Example with all permitted fields](#example-with-all-permitted-fields)
       - [Request](#request)
       - [Response](#response)
   - [GET - Funds Confirmation Consent](#get---funds-confirmation-consent)
-    - [Example with all permitted fields](#example-with-all-permitted-fields-2)
+    - [Example with all permitted fields](#example-with-all-permitted-fields-1)
+      - [Request](#request-1)
+      - [Response](#response-1)
+    - [Example with PAN as Account Identification](#example-with-pan-as-account-identification)
       - [Request](#request-2)
       - [Response](#response-2)
-    - [Example with PAN as Account Identification](#example-with-pan-as-account-identification)
+  - [DELETE - Funds Confirmation Consent](#delete---funds-confirmation-consent)
+    - [Example with all permitted fields](#example-with-all-permitted-fields-2)
       - [Request](#request-3)
       - [Response](#response-3)
-  - [DELETE - Funds Confirmation Consent](#delete---funds-confirmation-consent)
-    - [Example with all permitted fields](#example-with-all-permitted-fields-3)
-      - [Request](#request-4)
-      - [Response](#response-4)
 
 ## Overview
 
@@ -90,10 +90,9 @@ This is the state diagram for Status.
 
 ![ Consent Authorisation.jpg ](./images/AIS_Consent.png)
 
-
 ### GET /funds-confirmation-consents/{ConsentId}
 
-A CBPII may optionally retrieve a **funds-confirmation-consent** resource that they have created to check its status. 
+A CBPII may optionally retrieve a **funds-confirmation-consent** resource that they have created to check its status.
 
 Prior to calling the operation, the CBPII must have an access token issued by the ASPSP using a client credentials grant.
 
@@ -115,7 +114,6 @@ The available Status code-list enumerations for the **funds-confirmation-consent
 | 4 | CANC | The Funds Confirmation Consent has been cancelled |
 | 5 | EXPD | The Funds Confirmation Consent has expired |
 
-
 ### DELETE /funds-confirmation-consents/{ConsentId}
 
 If the PSU revokes consent to confirm funds with the CBPII, the CBPII **must** delete the **funds-confirmation-consent** resource.
@@ -127,14 +125,13 @@ If the PSU revokes consent to confirm funds with the CBPII, the CBPII **must** d
 
 This data dictionary section gives the detail on the payload content.
 
-
 ### Reused Classes
 
-#### OBProxy1  
+#### OBProxy1
 
 The OBProxy1 class is defined in the [confirmation-of-funds-api-profile](../../profiles/confirmation-of-funds-api-profile.md#obproxy1) page.
 
-#### OBCashAccountDebtorWithName  
+#### OBCashAccountDebtorWithName
 
 The OBCashAccountDebtorWithName class is defined in the [confirmation-of-funds-api-profile](../../profiles/confirmation-of-funds-api-profile.md#obcashaccountdebtorwithname) page.
 
@@ -199,7 +196,6 @@ The OBFundsConfirmationConsentResponse1 object contains the same information as 
 
 A full list of enumerations for both OBL and ISO 20022 used in the payloads can be found [here](https://github.com/OpenBankingUK/External_internal_CodeSets)
 
-
 ## Usage Examples
 
 ### POST - Funds Confirmation Consent
@@ -229,10 +225,10 @@ x-fapi-interaction-id: hook5i13-ntIg-4th3-rP41-3ro535touch3
       "SecondaryIdentification": "Roll 56988",
       "Name": "Jane Smith",
       "Proxy": {
-          "Identification": "+441632960540",
-          "Code": "TELE",
-          "Type": "Telephone"
-        }
+        "Identification": "+441632960540",
+        "Code": "TELE",
+        "Type": "Telephone"
+      }
     },
     "ExpirationDateTime": "2017-05-02T00:00:00+00:00"
   }
@@ -257,8 +253,8 @@ x-fapi-interaction-id: hook5i13-ntIg-4th3-rP41-3ro535touch3
     "Status": "AWAU",
     "StatusReason": [
       {
-      "StatusReasonCode": "83",
-      "StatusReasonDescription":"Pending completion next working day",
+        "StatusReasonCode": "83",
+        "StatusReasonDescription": "Pending completion next working day"
       }
     ],
     "StatusUpdateDateTime": "2017-05-02T00:00:00+00:00",
@@ -272,7 +268,7 @@ x-fapi-interaction-id: hook5i13-ntIg-4th3-rP41-3ro535touch3
         "Identification": "+441632960540",
         "Code": "TELE",
         "Type": "Telephone"
-      },
+      }
     }
   },
   "Links": {
@@ -324,8 +320,8 @@ Content-Type: application/json
         "Identification": "+441632960540",
         "Code": "TELE",
         "Type": "Telephone"
-      },
-    },
+      }
+    }
   },
   "Links": {
     "Self": "https://api.alphabank.com/open-banking/v4.0/cbpii/funds-confirmation-consents/88379"
@@ -333,6 +329,7 @@ Content-Type: application/json
   "Meta": {}
 }
 ```
+
 #### Example with PAN as Account Identification
 
 ##### Request
@@ -364,8 +361,8 @@ Content-Type: application/json
     "Status": "AWAU",
     "StatusReason": [
       {
-      "StatusReasonCode": "83",
-      "StatusReasonDescription":"Pending completion next working day",
+        "StatusReasonCode": "83",
+        "StatusReasonDescription": "Pending completion next working day"
       }
     ],
     "StatusUpdateDateTime": "2017-05-02T00:00:00+00:00",
@@ -375,11 +372,11 @@ Content-Type: application/json
       "SchemeName": "UK.OBIE.PAN",
       "SecondaryIdentification": "008419",
       "Identification": "4444********1111",
-      "Proxy":{
-          "Identification": "441234012348",
-          "Code": "TELE",
-          "Type": "Telephone"
-        }
+      "Proxy": {
+        "Identification": "441234012348",
+        "Code": "TELE",
+        "Type": "Telephone"
+      }
     }
   },
   "Links": {
