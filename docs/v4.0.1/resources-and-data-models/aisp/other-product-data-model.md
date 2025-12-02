@@ -134,7 +134,7 @@ Content-Type: application/json
       {
         "AccountId": "22389",
         "ProductId": "HSBC12234BAS",
-        "ProductType": "Othert",
+        "ProductType": "Other",
         "ProductName": "HSBC Basic Saving Account",
         "OtherProductType": {
           "Name": "BasicSavingAccount",
