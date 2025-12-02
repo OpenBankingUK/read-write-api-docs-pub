@@ -372,6 +372,11 @@ Content-Type: application/json
                 "BufferAmount": "10.00",
                 "Notes": [
                   "The daily usage fee-free overdraft period is for 12 months starting on the date you open a Current Account with us."
+                ],
+                "OverdraftTierBand": [
+                  {
+                    "TierValueMin": "-09229"
+                  }
                 ]
               }
             ]
