@@ -365,7 +365,7 @@ Content-Type: application/json
               "Currency": "GBP"
             },
             "CreditDebitIndicator": "Credit",
-            "Type": "PreviousClosingBalance"
+            "Type": "UK.OBIE.PreviousClosingBalance"
           },
           {
             "Amount": {
@@ -373,7 +373,7 @@ Content-Type: application/json
               "Currency": "GBP"
             },
             "CreditDebitIndicator": "Credit",
-            "Type": "PreviousClosingBalance"
+            "Type": "UK.OBIE.ClosingBalance"
           }
         ]
       }
