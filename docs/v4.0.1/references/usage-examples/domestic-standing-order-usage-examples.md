@@ -211,9 +211,15 @@ Accept: application/json
   "Data": {
     "ConsentId": "SOC-100",
     "Initiation": {
-      "Frequency": "DAIL",
-      "Reference": "Pocket money for Damien",
-      "FirstPaymentDateTime": "1976-06-06T06:06:06+00:00",
+      "RemittanceInformation": {
+        "Structured": [
+          {
+            "CreditorReferenceInformation": {
+              "Reference": "Pocket money for Damien"
+            }
+          }
+        ]
+      },
       "FirstPaymentAmount": {
         "Amount": "6.66",
         "Currency": "GBP"
@@ -222,7 +228,6 @@ Accept: application/json
         "Amount": "7.00",
         "Currency": "GBP"
       },
-      "FinalPaymentDateTime": "1981-03-20T06:06:06+00:00",
       "FinalPaymentAmount": {
         "Amount": "7.00",
         "Currency": "GBP"
@@ -236,6 +241,13 @@ Accept: application/json
         "SchemeName": "UK.OBIE.SortCodeAccountNumber",
         "Identification": "08080021325698",
         "Name": "Bob Clements"
+      },
+      "MandateRelatedInformation": {
+        "FirstPaymentDateTime": "1976-06-06T06:06:06+00:00",
+        "FinalPaymentDateTime": "1981-03-20T06:06:06+00:00",
+        "Frequency": {
+          "Type": "DAIL"
+        }
       }
     }
   },
@@ -243,7 +255,6 @@ Accept: application/json
     "PaymentContextCode": "TransferToThirdParty"
   }
 }
-
 ```
 
 #### POST /domestic-standing-orders response
@@ -260,13 +271,19 @@ Content-Type: application/json
   "Data": {
     "DomesticStandingOrderId": "SO-SOC-100",
     "ConsentId": "SOC-100",
-    "CreationDateTime": "1976-01-01T06:06:06+00:00",
+    "CreationDateTime": "21976-01-01T06:06:06+00:00",
     "Status": "RCVD",
-    "StatusUpdateDateTime": "1976-06-06T06:06:06+00:00",
+    "StatusUpdateDateTime": "21976-06-06T06:06:06+00:00",
     "Initiation": {
-      "Frequency": "DAIL",
-      "Reference": "Pocket money for Damien",
-      "FirstPaymentDateTime": "1976-06-06T06:06:06+00:00",
+      "RemittanceInformation": {
+        "Structured": [
+          {
+            "CreditorReferenceInformation": {
+              "Reference": "Pocket money for Damien"
+            }
+          }
+        ]
+      },
       "FirstPaymentAmount": {
         "Amount": "6.66",
         "Currency": "GBP"
@@ -275,7 +292,6 @@ Content-Type: application/json
         "Amount": "7.00",
         "Currency": "GBP"
       },
-      "FinalPaymentDateTime": "1981-03-20T06:06:06+00:00",
       "FinalPaymentAmount": {
         "Amount": "7.00",
         "Currency": "GBP"
@@ -289,11 +305,15 @@ Content-Type: application/json
         "SchemeName": "UK.OBIE.SortCodeAccountNumber",
         "Identification": "08080021325698",
         "Name": "Bob Clements"
+      },
+      "MandateRelatedInformation": {
+        "FirstPaymentDateTime": "1976-06-06T06:06:06+00:00",
+        "FinalPaymentDateTime": "1981-03-20T06:06:06+00:00",
+        "Frequency": {
+          "Type": "DAIL"
+        }
       }
     }
-  },
-  "Risk": {
-    "PaymentContextCode": "TransferToThirdParty"
   },
   "Links": {
     "Self": "https://api.alphabank.com/open-banking/v4.0/pisp/domestic-standing-orders/SO-SOC-100"
@@ -332,9 +352,15 @@ Content-Type: application/json
     "StatusUpdateDateTime": "1976-06-06T06:06:06+00:00",
     "Permission": "Create",
     "Initiation": {
-      "Frequency": "DAIL",
-      "Reference": "Pocket money for Damien",
-      "FirstPaymentDateTime": "1976-06-06T06:06:06+00:00",
+      "RemittanceInformation": {
+        "Structured": [
+          {
+            "CreditorReferenceInformation": {
+              "Reference": "Pocket money for Damien"
+            }
+          }
+        ]
+      },
       "FirstPaymentAmount": {
         "Amount": "6.66",
         "Currency": "GBP"
@@ -343,7 +369,6 @@ Content-Type: application/json
         "Amount": "7.00",
         "Currency": "GBP"
       },
-      "FinalPaymentDateTime": "1981-03-20T06:06:06+00:00",
       "FinalPaymentAmount": {
         "Amount": "7.00",
         "Currency": "GBP"
@@ -357,6 +382,13 @@ Content-Type: application/json
         "SchemeName": "UK.OBIE.SortCodeAccountNumber",
         "Identification": "08080021325698",
         "Name": "Bob Clements"
+      },
+      "MandateRelatedInformation": {
+        "FirstPaymentDateTime": "1976-06-06T06:06:06+00:00",
+        "FinalPaymentDateTime": "1981-03-20T06:06:06+00:00",
+        "Frequency": {
+          "Type": "DAIL"
+        }
       }
     }
   },
