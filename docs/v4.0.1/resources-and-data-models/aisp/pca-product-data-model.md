@@ -484,27 +484,29 @@ Content-Type: application/json
         "ProductName": "BankOfScotland Classic Vantage Account",
         "PCA": {
           "CreditInterest": {
-            "TierBandSet": {
-              "TierBandMethod": "Whole",
-              "CalculationMethod": "Compound",
-              "Notes": [
-                "No interest on balances over £5000"
-              ],
-              "TierBand": [
-                {
-                  "Identification": "1",
-                  "TierValueMinimum": "1.00",
-                  "TierValueMaximum": "5000.00",
-                  "CalculationFrequency": "Monthly",
-                  "ApplicationFrequency": "Monthly",
-                  "DepositInterestAppliedCoverage": "Whole",
-                  "FixedVariableInterestRateType": "Variable",
-                  "AER": "2.00",
-                  "BankInterestRateType": "Gross",
-                  "BankInterestRate": "1.98"
-                }
-              ]
-            }
+            "TierBandSet": [
+              {
+                "TierBandMethod": "Whole",
+                "CalculationMethod": "Compound",
+                "Notes": [
+                  "No interest on balances over £5000"
+                ],
+                "TierBand": [
+                  {
+                    "Identification": "1",
+                    "TierValueMinimum": "1.00",
+                    "TierValueMaximum": "5000.00",
+                    "CalculationFrequency": "Monthly",
+                    "ApplicationFrequency": "Monthly",
+                    "DepositInterestAppliedCoverage": "Whole",
+                    "FixedVariableInterestRateType": "Variable",
+                    "AER": "2.00",
+                    "BankInterestRateType": "Gross",
+                    "BankInterestRate": "1.98"
+                  }
+                ]
+              }
+            ]
           }
         }
       }
