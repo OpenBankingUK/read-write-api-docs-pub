@@ -364,7 +364,8 @@ Content-Type: application/json
         "CurrencyExchange": {
           "SourceCurrency": "GBP", 
           "TargetCurrency": "GBP", 
-          "UnitCurrency": "GBP"
+          "UnitCurrency": "GBP",
+          "ExchangeRate": 0
         },
         "InstructedAmount": {
            "Amount": "10.00",
@@ -408,7 +409,7 @@ Content-Type: application/json
             "Country": "GB"
           }
         },
-         "DebtorAccount": {
+        "DebtorAccount": {
           "SchemeName": "UK.OBIE.SortCodeAccountNumber",
           "Identification": "80200112345784",
           "Name": "Mr Juniper",
@@ -503,8 +504,8 @@ Content-Type: application/json
   },
   "Meta": {
     "TotalPages": 1,
-	"FirstAvailableDateTime": "2017-05-03T00:00:00+00:00",
-	"LastAvailableDateTime": "2017-12-03T00:00:00+00:00"
+	  "FirstAvailableDateTime": "2017-05-03T00:00:00+00:00",
+	  "LastAvailableDateTime": "2017-12-03T00:00:00+00:00"
   }
 }
 ```
