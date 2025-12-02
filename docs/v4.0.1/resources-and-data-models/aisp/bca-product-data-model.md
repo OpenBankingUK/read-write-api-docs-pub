@@ -498,7 +498,7 @@ Content-Type: application/json
         "ProductId": "HSBC1234BCA",
         "ProductType": "BusinessCurrentAccount",
         "ProductName": "BCA Startup Current Account",
-        "PCA": {
+        "BCA": {
           "OtherFeesCharges": [
             {
               "TariffType": "Mixed",
