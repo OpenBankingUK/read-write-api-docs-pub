@@ -655,14 +655,15 @@ Content-Type: application/json
           }
         },
         "CardInstrument": {
-          "CardSchemeName": "	VISA",
+          "CardSchemeName": "VISA",
           "AuthorisationType": "Contactless",
           "Name": "Mr Juniper"
         },
         "CurrencyExchange": {
           "SourceCurrency": "GBP",
           "TargetCurrency": "GBP",
-          "UnitCurrency": "GBP"
+          "UnitCurrency": "GBP",
+          "ExchangeRate": 0
         },
         "UltimateCreditor": {
           "SchemeName": "UK.OBIE.BICFI",
