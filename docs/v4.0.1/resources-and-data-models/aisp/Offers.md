@@ -127,7 +127,7 @@ Content-Type: application/json
         "OfferType": "LimitIncrease",
         "Description": "Credit limit increase for the account up to £10000.00",
         "StartDateTime": "2024-05-29T00:00:00Z",
-        "EndDateime": "2024-06-29T00:00:00Z",
+        "EndDateTime": "2024-06-29T00:00:00Z",
         "Rate": "100.00",
         "Value": 10,
         "Term": "Starting first of the month and ending at the end of year",
