@@ -488,7 +488,7 @@ Accept: application/json
     },
     "Authorisation": {
       "AuthorisationType": "Any",
-      "CompletionDateTime": "2025-05-30T10:35:27Z"
+      "CompletionDateTime": "2024-04-25T14:20:41.911Z"
     },
     "SCASupportData": {
       "RequestedSCAExemptionType": "EcommerceGoods",
@@ -548,7 +548,7 @@ Content-Type: application/json
     "ReadRefundAccount": "Yes",
     "Authorisation": {
       "Type": "Any",
-      "CompletionDateTime": "2024-05-30T10:35:27Z"
+      "CompletionDateTime": "2024-04-25T14:20:41.911Z"
     },
     "Charges": [{
        "ChargeBearer": "Shared",
