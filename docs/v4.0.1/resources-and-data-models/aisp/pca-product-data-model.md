@@ -675,7 +675,7 @@ Content-Type: application/json
                         "FeeType": [
                           "UnauthorisedBorrowing"
                         ],
-                        "FeeMinMaxType": "Maximum",
+                        "MinMaxType": "Maximum",
                         "FeeCapAmount": "60.00"
                       },
                       {
@@ -683,7 +683,7 @@ Content-Type: application/json
                         "FeeType": [
                           "BorrowingItem"
                         ],
-                        "FeeMinMaxType": "Maximum",
+                        "MinMaxType": "Maximum",
                         "FeeCapAmount": "35.00"
                       }
                     ],
