@@ -606,7 +606,7 @@ Content-Type: application/json
               "Currency": "USD"
             },
             "CreditDebitIndicator": "Credit",
-            "Type": "ClosingBalance"
+            "Type": "UK.OBIE.ClosingBalance"
           },
           {
             "Amount": {
@@ -614,7 +614,7 @@ Content-Type: application/json
               "Currency": "GBP"
             },
             "CreditDebitIndicator": "Credit",
-            "Type": "PreviousClosingBalance"
+            "Type": "UK.OBIE.PreviousClosingBalance"
           }
         ]
       },
@@ -636,7 +636,7 @@ Content-Type: application/json
               "Currency": "GBP"
             },
             "CreditDebitIndicator": "Credit",
-            "Type": "ClosingBalance"
+            "Type": "UK.OBIE.ClosingBalance"
           },
           {
             "Amount": {
@@ -644,7 +644,7 @@ Content-Type: application/json
               "Currency": "GBP"
             },
             "CreditDebitIndicator": "Credit",
-            "Type": "PreviousClosingBalance"
+            "Type": "UK.OBIE.PreviousClosingBalance"
           }
         ]
       },
@@ -663,7 +663,7 @@ Content-Type: application/json
               "Currency": "GBP"
             },
             "CreditDebitIndicator": "Credit",
-            "Type": "ClosingBalance"
+            "Type": "UK.OBIE.ClosingBalance"
           },
           {
             "Amount": {
@@ -671,7 +671,7 @@ Content-Type: application/json
               "Currency": "GBP"
             },
             "CreditDebitIndicator": "Credit",
-            "Type": "PreviousClosingBalance"
+            "Type": "UK.OBIE.PreviousClosingBalance"
           }
         ]
       }
