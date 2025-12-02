@@ -277,8 +277,21 @@ Content-Type: application/json
     "Status": "RCVD",
     "StatusUpdateDateTime": "1976-06-06T06:06:06+00:00",
     "Initiation": {
-      "Frequency": "DAIL",
-      "Reference": "Pocket money for Damien",
+      "RemittanceInformation": {
+        "Structured": [
+          {
+            "ReferredDocumentInformation": [
+              {
+                "Code": "CINV",
+              }
+            ]
+          }
+        ],
+        "ReferredDocumentAmount": "1.00",
+        "CreditorReferenceInformation": {
+          "Reference": "Pocket money for Damien"
+        },
+      }
       "FirstPaymentDateTime": "1976-06-06T06:06:06+00:00",
       "FirstPaymentAmount": {
         "Amount": "6.66",
@@ -303,10 +316,11 @@ Content-Type: application/json
         "Identification": "08080021325698",
         "Name": "Bob Clements"
       }
-    }
-  },
+    },
   "Risk": {
     "PaymentContextCode": "TransferToThirdParty"
+  }
+}
   },
   "Links": {
     "Self": "https://api.alphabank.com/open-banking/v4.0/pisp/domestic-standing-orders/SO-SOC-100"
@@ -345,8 +359,21 @@ Content-Type: application/json
     "StatusUpdateDateTime": "1976-06-06T06:06:06+00:00",
     "Permission": "Create",
     "Initiation": {
-      "Frequency": "DAIL",
-      "Reference": "Pocket money for Damien",
+      "RemittanceInformation": {
+        "Structured": [
+          {
+            "ReferredDocumentInformation": [
+              {
+                "Code": "CINV",
+              }
+            ]
+          }
+        ],
+        "ReferredDocumentAmount": "1.00",
+        "CreditorReferenceInformation": {
+          "Reference": "Pocket money for Damien"
+        },
+      }
       "FirstPaymentDateTime": "1976-06-06T06:06:06+00:00",
       "FirstPaymentAmount": {
         "Amount": "6.66",
