@@ -709,7 +709,7 @@ Content-Type: application/json
             "Currency": "GBP"
           },
           "CreditDebitIndicator": "Debit",
-          "Type": "InterimBooked"
+          "Type": "ITBD"
         },
         "ExtendedProprietaryBankTransactionCodes": [
           {
