@@ -655,6 +655,18 @@ Content-Type: application/json
               {
                 "TierBandMethod": "Whole",
                 "Identification": "Arranged Overdraft",
+                "OverdraftTierBand": [
+                  {
+                    "Identification": "G-001",
+                    "TierValueMin": "0.00",
+                    "TierValueMax": "3000.00",
+                    "BankGuaranteedIndicator": true,
+                    "EAR": "0",
+                    "Notes": [
+                      "Upto £3000"
+                    ]
+                  }
+                ],
                 "OverdraftFeesCharges": [
                   {
                     "OverdraftFeeChargeCap": [
