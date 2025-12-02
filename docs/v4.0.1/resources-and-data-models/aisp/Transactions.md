@@ -377,7 +377,9 @@ Content-Type: application/json
           "MerchantName": "Merchant's Name",
           "MerchantCategoryCode": "5874"
         },
-        "StatementReference": "003",
+        "StatementReference": [
+          "003"
+        ],
         "AddressLine": "Floor 5, 5 Dawson House",
         "CreditorAgent": {
           "LEI": "IZ9Q00LZEVUKWCQY6X15",
