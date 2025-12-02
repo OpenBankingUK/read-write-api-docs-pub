@@ -172,22 +172,22 @@ Content-Type: application/json
 
 ```json
 {
-   "Data":{
-      "Product":[
-         {
-            "AccountId":"22389",
-            "ProductId":"HSBC12234BAS",
-            "ProductType":"BusinessCurrentAccount",
-            "ProductName":"HSBC Startup Business Current Account"
-         }
-      ]
-   },
-   "Links":{
-      "Self":"https://api.alphabank.com/open-banking/v4.0/aisp/accounts/22289/product"
-   },
-   "Meta":{
-      "TotalPages":1
-   }
+  "Data": {
+    "Product": [
+      {
+        "AccountId": "22389",
+        "ProductId": "HSBC12234BAS",
+        "ProductType": "BusinessCurrentAccount",
+        "ProductName": "HSBC Startup Business Current Account"
+      }
+    ]
+  },
+  "Links": {
+    "Self": "https://api.alphabank.com/open-banking/v4.0/aisp/accounts/22289/product"
+  },
+  "Meta": {
+    "TotalPages": 1
+  }
 }
 ```
 
@@ -217,38 +217,38 @@ Content-Type: application/json
 
 ```json
 {
-   "Data":{
-      "Product":[
-         {
-            "AccountId":"22390",
-            "ProductId":"HSBC12234BAS",
-            "ProductType":"BusinessCurrentAccount",
-            "ProductName":"Business Current Account £12.50 Monthly Fee",
-            "BCA":{
-               "OtherFeesCharges":{
-                  "FeeChargeDetail":[
-                     {
-                        "FeeCategory":"Servicing",
-                        "FeeType":"ServiceCAccountFeeMonthly",
-                        "FeeAmount":"12.500",
-                        "ApplicationFrequency":"Monthly",
-                        "CalculationFrequency":"Daily",
-                        "Notes":[
-                           "Our tariff includes:\n* depositing and sending cheques\n* cash deposits up to the limit your tariff allows\n* withdrawals\n* Direct Debits, standing orders, bill payments\n* Bas credits\n* debit card payments"
-                        ]
-                     }
-                  ]
-               }
-            }
-         }
-      ]
-   },
-   "Links":{
-      "Self":"https://api.alphabank.com/open-banking/v4.0/aisp/accounts/22390/product"
-   },
-   "Meta":{
-      "TotalPages":1
-   }
+  "Data": {
+    "Product": [
+      {
+        "AccountId": "22390",
+        "ProductId": "HSBC12234BAS",
+        "ProductType": "BusinessCurrentAccount",
+        "ProductName": "Business Current Account £12.50 Monthly Fee",
+        "BCA": {
+          "OtherFeesCharges": {
+            "FeeChargeDetail": [
+              {
+                "FeeCategory": "Servicing",
+                "FeeType": "ServiceCAccountFeeMonthly",
+                "FeeAmount": "12.500",
+                "ApplicationFrequency": "Monthly",
+                "CalculationFrequency": "Daily",
+                "Notes": [
+                  "Our tariff includes:\n* depositing and sending cheques\n* cash deposits up to the limit your tariff allows\n* withdrawals\n* Direct Debits, standing orders, bill payments\n* Bas credits\n* debit card payments"
+                ]
+              }
+            ]
+          }
+        }
+      }
+    ]
+  },
+  "Links": {
+    "Self": "https://api.alphabank.com/open-banking/v4.0/aisp/accounts/22390/product"
+  },
+  "Meta": {
+    "TotalPages": 1
+  }
 }
 ```
 
@@ -277,29 +277,31 @@ Content-Type: application/json
 
 ```json
 {
-   "Data":{
-      "Product":[
-         {
-            "AccountId":"22391",
-            "ProductType":"BusinessCurrentAccount",
-            "ProductName":"Lloyds Business Current Account",
-			"BCA": {
-				"ProductDetails": {
-					"Segment": "General",
-					"FeeFreeLength": "18",
-					"FeeFreeLengthPeriod":"Month",
-					"Notes": ["The customer is no longer in the fee free period."]
-				}
-			}
-         }
-      ]
-   },
-   "Links":{
-      "Self":"https://api.alphabank.com/open-banking/v4.0/aisp/accounts/22391/product"
-   },
-   "Meta":{
-      "TotalPages":1
-   }
+  "Data": {
+    "Product": [
+      {
+        "AccountId": "22391",
+        "ProductType": "BusinessCurrentAccount",
+        "ProductName": "Lloyds Business Current Account",
+        "BCA": {
+          "ProductDetails": {
+            "Segment": "General",
+            "FeeFreeLength": "18",
+            "FeeFreeLengthPeriod": "Month",
+            "Notes": [
+              "The customer is no longer in the fee free period."
+            ]
+          }
+        }
+      }
+    ]
+  },
+  "Links": {
+    "Self": "https://api.alphabank.com/open-banking/v4.0/aisp/accounts/22391/product"
+  },
+  "Meta": {
+    "TotalPages": 1
+  }
 }
 ```
 
@@ -328,62 +330,62 @@ Content-Type: application/json
 
 ```json
 {
-   "Data":{
-      "Product":[
-         {
-            "AccountId":"22392",
-            "ProductType":"BusinessCurrentAccount",
-            "ProductName":"Barclays Business Current Account",
-            "BCA":{
-               "Overdraft":{
-                  "OverdraftTierBandSet":[
-                     {
-                        "TierBandMethod":"Tiered",
-                        "OverdraftType":"Committed",
-                        "OverdraftFeesCharges":[
-                           {
-                              "OverdraftFeeChargeDetail":[
-                                 {
-                                    "FeeType":"OverdraftSetup",
-                                    "NegotiableIndicator":true,
-                                    "FeeAmount":"75.00",
-                                    "CalculationFrequency":"OnOpening",
-                                    "ApplicationFrequency":"OnOpening"
-                                 },
-                                 {
-                                    "FeeType":"TempOverdraft",
-                                    "FeeRate":"12.30",
-                                    "FeeRateType":"Gross",
-                                    "ApplicationFrequency":"Monthly",
-                                    "CalculationFrequency":"Daily"
-                                 },
-                                 {
-                                    "FeeType":"OverdraftRenewal",
-                                    "FeeRate":"0.5",
-                                    "FeeRateType":"Gross",
-                                    "ApplicationFrequency":"OnAnniversary",
-                                    "CalculationFrequency":"OnAnniversary"
-                                 }
-                              ]
-                           }
-                        ],
-                        "BufferAmount":"10.00",
-                        "Notes":[
-                           "The daily usage fee-free overdraft period is for 12 months starting on the date you open a Current Account with us."
-                        ]
-                     }
-                  ]
-               }
-            }
-         }
-      ]
-   },
-   "Links":{
-      "Self":"https://api.alphabank.com/open-banking/v4.0/aisp/accounts/22392/product"
-   },
-   "Meta":{
-      "TotalPages":1
-   }
+  "Data": {
+    "Product": [
+      {
+        "AccountId": "22392",
+        "ProductType": "BusinessCurrentAccount",
+        "ProductName": "Barclays Business Current Account",
+        "BCA": {
+          "Overdraft": {
+            "OverdraftTierBandSet": [
+              {
+                "TierBandMethod": "Tiered",
+                "OverdraftType": "Committed",
+                "OverdraftFeesCharges": [
+                  {
+                    "OverdraftFeeChargeDetail": [
+                      {
+                        "FeeType": "OverdraftSetup",
+                        "NegotiableIndicator": true,
+                        "FeeAmount": "75.00",
+                        "CalculationFrequency": "OnOpening",
+                        "ApplicationFrequency": "OnOpening"
+                      },
+                      {
+                        "FeeType": "TempOverdraft",
+                        "FeeRate": "12.30",
+                        "FeeRateType": "Gross",
+                        "ApplicationFrequency": "Monthly",
+                        "CalculationFrequency": "Daily"
+                      },
+                      {
+                        "FeeType": "OverdraftRenewal",
+                        "FeeRate": "0.5",
+                        "FeeRateType": "Gross",
+                        "ApplicationFrequency": "OnAnniversary",
+                        "CalculationFrequency": "OnAnniversary"
+                      }
+                    ]
+                  }
+                ],
+                "BufferAmount": "10.00",
+                "Notes": [
+                  "The daily usage fee-free overdraft period is for 12 months starting on the date you open a Current Account with us."
+                ]
+              }
+            ]
+          }
+        }
+      }
+    ]
+  },
+  "Links": {
+    "Self": "https://api.alphabank.com/open-banking/v4.0/aisp/accounts/22392/product"
+  },
+  "Meta": {
+    "TotalPages": 1
+  }
 }
 ```
 
@@ -414,46 +416,46 @@ Content-Type: application/json
 
 ```json
 {
-   "Data":{
-      "Product":[
-         {
-            "AccountId":"22393",
-            "ProductType":"BusinessCurrentAccount",
-            "ProductName":"School Bank Account",
-            "BCA":{
-               "CreditInterest":{
-                  "TierBandSet":{
-                     "TierBandMethod":"Whole",
-                     "CalculationMethod":"Compound",
-                     "Destination":"SelfCredit",
-                     "Notes":[
-                        "£1 minimum balance"
-                     ],
-                     "TierBand":[
-                        {
-                           "Identification":"1",
-                           "TierValueMinimum":"1.0000",
-                           "CalculationFrequency":"Monthly",
-                           "ApplicationFrequency":"Monthly",
-                           "DepositInterestAppliedCoverage":"Whole",
-                           "FixedVariableInterestRateType":"Fixed",
-                           "AER":"0.0500",
-                           "BankInterestRateType":"Gross",
-                           "BankInterestRate":"0.0500"
-                        }
-                     ]
-                  }
-               }
+  "Data": {
+    "Product": [
+      {
+        "AccountId": "22393",
+        "ProductType": "BusinessCurrentAccount",
+        "ProductName": "School Bank Account",
+        "BCA": {
+          "CreditInterest": {
+            "TierBandSet": {
+              "TierBandMethod": "Whole",
+              "CalculationMethod": "Compound",
+              "Destination": "SelfCredit",
+              "Notes": [
+                "£1 minimum balance"
+              ],
+              "TierBand": [
+                {
+                  "Identification": "1",
+                  "TierValueMinimum": "1.0000",
+                  "CalculationFrequency": "Monthly",
+                  "ApplicationFrequency": "Monthly",
+                  "DepositInterestAppliedCoverage": "Whole",
+                  "FixedVariableInterestRateType": "Fixed",
+                  "AER": "0.0500",
+                  "BankInterestRateType": "Gross",
+                  "BankInterestRate": "0.0500"
+                }
+              ]
             }
-         }
-      ]
-   },
-   "Links":{
-      "Self":"https://api.alphabank.com/open-banking/v4.0/aisp/accounts/22393/product"
-   },
-   "Meta":{
-      "TotalPages":1
-   }
+          }
+        }
+      }
+    ]
+  },
+  "Links": {
+    "Self": "https://api.alphabank.com/open-banking/v4.0/aisp/accounts/22393/product"
+  },
+  "Meta": {
+    "TotalPages": 1
+  }
 }
 ```
 
@@ -482,53 +484,53 @@ Content-Type: application/json
 
 ```json
 {
-   "Data":{
-      "Product":[
-         {
-            "AccountId":"22394",
-            "ProductId":"HSBC1234BCA",
-            "ProductType":"BusinessCurrentAccount",
-            "ProductName":"BCA Startup Current Account",
-            "PCA":{
-               "OtherFeesCharges":[
-                  {
-                     "TariffType":"Mixed",
-                     "TariffName":"Small Business Tariff",
-                     "FeeChargeDetail":{
-                        "FeeCategory":"Servicing",
-                        "FeeType":"ServiceCAccountFeeMonthly",
-                        "FeeAmount":"5.50",
-                        "CalculationFrequency":"Monthly",
-                        "ApplicationFrequency":"Monthly",
-                        "Notes":[
-                           "Standard account charges. Small Business Tariff."
-                        ]
-                     }
-                  },
-                  {
-                     "TariffType":"Electronic",
-                     "TariffName":"Electronic Banking Tariff",
-                     "FeeChargeDetail":{
-                        "FeeCategory":"Servicing",
-                        "FeeType":"ServiceCAccountFeeMonthly",
-                        "FeeAmount":"5.50",
-                        "CalculationFrequency":"Monthly",
-                        "ApplicationFrequency":"Monthly",
-                        "Notes":[
-                           "Standard account charges. Electronic Banking Tariff."
-                        ]
-                     }
-                  }
-               ]
+  "Data": {
+    "Product": [
+      {
+        "AccountId": "22394",
+        "ProductId": "HSBC1234BCA",
+        "ProductType": "BusinessCurrentAccount",
+        "ProductName": "BCA Startup Current Account",
+        "PCA": {
+          "OtherFeesCharges": [
+            {
+              "TariffType": "Mixed",
+              "TariffName": "Small Business Tariff",
+              "FeeChargeDetail": {
+                "FeeCategory": "Servicing",
+                "FeeType": "ServiceCAccountFeeMonthly",
+                "FeeAmount": "5.50",
+                "CalculationFrequency": "Monthly",
+                "ApplicationFrequency": "Monthly",
+                "Notes": [
+                  "Standard account charges. Small Business Tariff."
+                ]
+              }
+            },
+            {
+              "TariffType": "Electronic",
+              "TariffName": "Electronic Banking Tariff",
+              "FeeChargeDetail": {
+                "FeeCategory": "Servicing",
+                "FeeType": "ServiceCAccountFeeMonthly",
+                "FeeAmount": "5.50",
+                "CalculationFrequency": "Monthly",
+                "ApplicationFrequency": "Monthly",
+                "Notes": [
+                  "Standard account charges. Electronic Banking Tariff."
+                ]
+              }
             }
-         }
-      ]
-   },
-   "Links":{
-      "Self":"https://api.alphabank.com/open-banking/v4.0/aisp/accounts/22394/product"
-   },
-   "Meta":{
-      "TotalPages":1
-   }
+          ]
+        }
+      }
+    ]
+  },
+  "Links": {
+    "Self": "https://api.alphabank.com/open-banking/v4.0/aisp/accounts/22394/product"
+  },
+  "Meta": {
+    "TotalPages": 1
+  }
 }
 ```
