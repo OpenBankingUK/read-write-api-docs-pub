@@ -207,10 +207,6 @@ Content-Type: application/json
         "Amount": {
           "Amount": "10000.00",
           "Currency": "GBP"
-        },
-        "Amount": {
-          "Amount": "10000.00",
-          "Currency": "GBP"
         }
       },
       {
