@@ -336,7 +336,9 @@ Content-Type: application/json
         "MarketingStateId": "EAR2",
         "PCA": {
           "ProductDetails": {
-            "Segment": "General",
+            "Segment": [
+              "General"
+            ],
             "MonthlyMaximumCharge": "32",
             "Notes": [
               "We'll only charge you a single fee - whichever is highest. So, for example, if your've exceeded your overdraft limit, exceeded your Emergency Borrowing Limit and had a transaction returned as unpaid, all on the same day, we'll only charge your the £8 Unpaid Transaction Fee"
