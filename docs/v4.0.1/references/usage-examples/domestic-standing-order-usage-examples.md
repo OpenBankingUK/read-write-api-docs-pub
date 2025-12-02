@@ -271,9 +271,9 @@ Content-Type: application/json
   "Data": {
     "DomesticStandingOrderId": "SO-SOC-100",
     "ConsentId": "SOC-100",
-    "CreationDateTime": "21976-01-01T06:06:06+00:00",
+    "CreationDateTime": "1976-01-01T06:06:06+00:00",
     "Status": "RCVD",
-    "StatusUpdateDateTime": "21976-06-06T06:06:06+00:00",
+    "StatusUpdateDateTime": "1976-06-06T06:06:06+00:00",
     "Initiation": {
       "RemittanceInformation": {
         "Structured": [
