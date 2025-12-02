@@ -392,7 +392,7 @@ Content-Type: application/json
         "ProductName": "BankOfScotland Classic Vantage Account",
         "PCA": {
           "CreditInterest": {
-            "TierBandSet": [ 
+            "TierBandSet": [
               {
                 "TierBandMethod": "Tiered",
                 "CalculationMethod": "Compound",
