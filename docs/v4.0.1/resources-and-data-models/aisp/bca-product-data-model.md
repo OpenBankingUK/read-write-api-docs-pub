@@ -429,27 +429,29 @@ Content-Type: application/json
         "ProductName": "School Bank Account",
         "BCA": {
           "CreditInterest": {
-            "TierBandSet": {
-              "TierBandMethod": "Whole",
-              "CalculationMethod": "Compound",
-              "Destination": "SelfCredit",
-              "Notes": [
-                "£1 minimum balance"
-              ],
-              "TierBand": [
-                {
-                  "Identification": "1",
-                  "TierValueMinimum": "1.0000",
-                  "CalculationFrequency": "Monthly",
-                  "ApplicationFrequency": "Monthly",
-                  "DepositInterestAppliedCoverage": "Whole",
-                  "FixedVariableInterestRateType": "Fixed",
-                  "AER": "0.0500",
-                  "BankInterestRateType": "Gross",
-                  "BankInterestRate": "0.0500"
-                }
-              ]
-            }
+            "TierBandSet": [
+              {
+                "TierBandMethod": "Whole",
+                "CalculationMethod": "Compound",
+                "Destination": "SelfCredit",
+                "Notes": [
+                  "£1 minimum balance"
+                ],
+                "TierBand": [
+                  {
+                    "Identification": "1",
+                    "TierValueMinimum": "1.0000",
+                    "CalculationFrequency": "Monthly",
+                    "ApplicationFrequency": "Monthly",
+                    "DepositInterestAppliedCoverage": "Whole",
+                    "FixedVariableInterestRateType": "Fixed",
+                    "AER": "0.0500",
+                    "BankInterestRateType": "Gross",
+                    "BankInterestRate": "0.0500"
+                  }
+                ]
+              }
+            ]
           }
         }
       }
