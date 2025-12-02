@@ -232,19 +232,21 @@ Content-Type: application/json
         "ProductName": "Select Current Account",
         "PCA": {
           "OtherFeesCharges": {
-            "FeeChargeDetail": {
-              "FeeCategory": "Servicing",
-              "FeeType": "ServiceCAccountFeeMonthly",
-              "FeeAmount": "5.0",
-              "CalculationFrequency": "Yearly",
-              "ApplicationFrequency": "Monthly",
-              "Notes": [
-                "Personal support from a Relationship Manager.",
-                "24 hour priority service at home and abroad",
-                "Preferential products",
-                "Access to Santander Select globally"
-              ]
-            }
+            "FeeChargeDetail": [
+              {
+                "FeeCategory": "Servicing",
+                "FeeType": "ServiceCAccountFeeMonthly",
+                "FeeAmount": "5.0",
+                "CalculationFrequency": "Yearly",
+                "ApplicationFrequency": "Monthly",
+                "Notes": [
+                  "Personal support from a Relationship Manager.",
+                  "24 hour priority service at home and abroad",
+                  "Preferential products",
+                  "Access to Santander Select globally"
+                ]
+              }
+            ]
           }
         }
       }
