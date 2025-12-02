@@ -377,13 +377,13 @@ Content-Type: application/json
           }
         ]
       }
-    ],
-    "Links": {
-      "Self": "https://api.alphabank.com/open-banking/v4.0/aisp/accounts/22289/statements/"
-    },
-    "Meta": {
-      "TotalPages": 1
-    }
+    ]
+  },
+  "Links": {
+    "Self": "https://api.alphabank.com/open-banking/v4.0/aisp/accounts/22289/statements/"
+  },
+  "Meta": {
+    "TotalPages": 1
   }
 }
 ```
@@ -501,13 +501,13 @@ Content-Type: application/json
           "Currency": "GBP"
         }
       }
-    ],
-    "Links": {
-      "Self": "https://api.alphabank.com/open-banking/v4.0/aisp/accounts/22289/statements/"
-    },
-    "Meta": {
-      "TotalPages": 1
-    }
+    ]
+  },
+  "Links": {
+    "Self": "https://api.alphabank.com/open-banking/v4.0/aisp/accounts/22289/statements/"
+  },
+  "Meta": {
+    "TotalPages": 1
   }
 }
 ```
@@ -675,13 +675,13 @@ Content-Type: application/json
           }
         ]
       }
-    ],
-    "Links": {
-      "Self": "https://api.alphabank.com/open-banking/v4.0/aisp/statements/"
-    },
-    "Meta": {
-      "TotalPages": 1
-    }
+    ]
+  },
+  "Links": {
+    "Self": "https://api.alphabank.com/open-banking/v4.0/aisp/statements/"
+  },
+  "Meta": {
+    "TotalPages": 1
   }
 }
 ```
