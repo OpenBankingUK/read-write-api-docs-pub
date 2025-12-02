@@ -285,7 +285,7 @@ Content-Type: application/json
         "ProductName": "Lloyds Business Current Account",
         "BCA": {
           "ProductDetails": {
-            "Segment": "General",
+            "Segment": "Standard",
             "FeeFreeLength": "18",
             "FeeFreeLengthPeriod": "Month",
             "Notes": [
