@@ -211,8 +211,21 @@ Accept: application/json
   "Data": {
     "ConsentId": "SOC-100",
     "Initiation": {
-      "Frequency": "DAIL",
-      "Reference": "Pocket money for Damien",
+      "RemittanceInformation": {
+        "Structured": [
+          {
+            "ReferredDocumentInformation": [
+              {
+                "Code": "CINV",
+              }
+            ]
+          }
+        ],
+        "ReferredDocumentAmount": "1.00",
+        "CreditorReferenceInformation": {
+          "Reference": "Pocket money for Damien"
+        },
+      }
       "FirstPaymentDateTime": "1976-06-06T06:06:06+00:00",
       "FirstPaymentAmount": {
         "Amount": "6.66",
