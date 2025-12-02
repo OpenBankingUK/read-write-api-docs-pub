@@ -143,11 +143,7 @@ Content-Type: application/json
           "Amount": "1230.00",
           "Currency": "GBP",
           "SubType": "BCUR"
-        }, 
-        "TotalAmount": { 
-          "Amount": "1230.00",
-          "Currency": "GBP"
-        }, 
+        },
         "CreditDebitIndicator": "Credit",
         "Type": "ITAV",
         "DateTime": "2017-04-05T10:43:07+00:00",
@@ -225,11 +221,7 @@ Content-Type: application/json
             "Amount": "1230.00",
             "Currency": "GBP",
             "SubType": "BCUR"
-          }, 
-          "TotalAmount": { 
-            "Amount": "1230.00",
-            "Currency": "GBP"
-          }, 
+          },
         "CreditDebitIndicator": "Credit",
         "Type": "ITAV",
         "DateTime": "2017-04-05T10:43:07+00:00",
@@ -305,11 +297,7 @@ Content-Type: application/json
             "Amount": "1230.00",
             "Currency": "GBP",
             "SubType": "BCUR"
-          }, 
-          "TotalAmount": { 
-            "Amount": "1230.00",
-            "Currency": "GBP"
-          }, 
+          },
         "CreditDebitIndicator": "Credit",
         "Type": "ITAV",
         "DateTime": "2017-04-05T10:43:07+00:00",
@@ -385,11 +373,7 @@ Content-Type: application/json
             "Amount": "1230.00",
             "Currency": "GBP",
             "SubType": "BCUR"
-          }, 
-          "TotalAmount": { 
-            "Amount": "1230.00",
-            "Currency": "GBP"
-          }, 
+          },
         "CreditDebitIndicator": "Debit",
         "Type": "ITAV",
         "DateTime": "2017-04-05T10:43:07+00:00",
