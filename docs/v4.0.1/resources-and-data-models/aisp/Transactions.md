@@ -497,7 +497,7 @@ Content-Type: application/json
             "Currency": "GBP"
           },
           "CreditDebitIndicator": "Credit",
-          "Type": "InterimBooked"
+          "Type": "ITBD"
         }
       }
     ]
