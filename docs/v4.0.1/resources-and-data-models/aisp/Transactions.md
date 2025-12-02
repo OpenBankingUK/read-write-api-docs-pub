@@ -362,16 +362,16 @@ Content-Type: application/json
           "Currency": "GBP"
         },
         "CurrencyExchange": {
-          "SourceCurrency": "GBP", 
-          "TargetCurrency": "GBP", 
+          "SourceCurrency": "GBP",
+          "TargetCurrency": "GBP",
           "UnitCurrency": "GBP",
           "ExchangeRate": 0
         },
         "InstructedAmount": {
-           "Amount": "10.00",
+          "Amount": "10.00",
           "Currency": "GBP"
         },
-        "PaymentPurposeCode":"RETL",
+        "PaymentPurposeCode": "RETL",
         "CategoryPurposeCode": "RETL",
         "MerchantDetails": {
           "MerchantName": "Merchant's Name",
@@ -380,11 +380,11 @@ Content-Type: application/json
         "StatementReference": "003",
         "AddressLine": "Floor 5, 5 Dawson House",
         "CreditorAgent": {
-         "LEI": "IZ9Q00LZEVUKWCQY6X15",
+          "LEI": "IZ9Q00LZEVUKWCQY6X15",
           "SchemeName": "UK.OBIE.BICFI",
           "Identification": "80200112344562",
-          "Name": "The Credit Agent", 
-          "PostalAddress": { 
+          "Name": "The Credit Agent",
+          "PostalAddress": {
             "AddressType": "BIZZ",
             "StreetName": "Bank Street",
             "BuildingNumber": "11",
@@ -395,11 +395,11 @@ Content-Type: application/json
           }
         },
         "DebtorAgent": {
-         "LEI": "IZ9Q00LZEVUKWCQY8i14",
+          "LEI": "IZ9Q00LZEVUKWCQY8i14",
           "SchemeName": "UK.OBIE.BICFI",
           "Identification": "8020011234487",
-          "Name": "The Debtor Agent", 
-          "PostalAddress": { 
+          "Name": "The Debtor Agent",
+          "PostalAddress": {
             "AddressType": "BIZZ",
             "StreetName": "Bank Street",
             "BuildingNumber": "11",
@@ -460,7 +460,7 @@ Content-Type: application/json
           }
         },
         "CardInstrument": {
-          "CardSchemeName": "	VISA", 
+          "CardSchemeName": "VISA",
           "AuthorisationType": "Contactless",
           "Name": "Mr Juniper"
         },
@@ -477,15 +477,16 @@ Content-Type: application/json
           "Code": "Transfer",
           "Issuer": "AlphaBank"
         },
-        "ExtendedProprietaryBankTransactionCodes": [{
-          "Code": "Transfer 2",
-          "Issuer": "AlphaBank",
-          "Description": "Local View"
+        "ExtendedProprietaryBankTransactionCodes": [
+          {
+            "Code": "Transfer 2",
+            "Issuer": "AlphaBank",
+            "Description": "Local View"
           },
           {
-          "Code": "Transfer 3",
-          "Issuer": "AlphaBank",
-          "Description": "SWIFT View"
+            "Code": "Transfer 3",
+            "Issuer": "AlphaBank",
+            "Description": "SWIFT View"
           }
         ],
         "Balance": {
@@ -504,8 +505,8 @@ Content-Type: application/json
   },
   "Meta": {
     "TotalPages": 1,
-	  "FirstAvailableDateTime": "2017-05-03T00:00:00+00:00",
-	  "LastAvailableDateTime": "2017-12-03T00:00:00+00:00"
+    "FirstAvailableDateTime": "2017-05-03T00:00:00+00:00",
+    "LastAvailableDateTime": "2017-12-03T00:00:00+00:00"
   }
 }
 ```
@@ -545,7 +546,7 @@ Content-Type: application/json
           "Amount": "10.00",
           "Currency": "GBP"
         },
-         "ChargeAmount": {
+        "ChargeAmount": {
           "Amount": "0.01",
           "Currency": "GBP"
         },
@@ -571,11 +572,11 @@ Content-Type: application/json
           "Type": "ITBD"
         },
         "CreditorAgent": {
-         "LEI": "IZ9Q00LZEVUKWCQY6X15",
+          "LEI": "IZ9Q00LZEVUKWCQY6X15",
           "SchemeName": "UK.OBIE.BICFI",
           "Identification": "80200112344562",
-          "Name": "The Credit Agent", 
-          "PostalAddress": { 
+          "Name": "The Credit Agent",
+          "PostalAddress": {
             "AddressType": "BIZZ",
             "StreetName": "Bank Street",
             "BuildingNumber": "11",
@@ -586,11 +587,11 @@ Content-Type: application/json
           }
         },
         "DebtorAgent": {
-         "LEI": "IZ9Q00LZEVUKWCQY8i14",
+          "LEI": "IZ9Q00LZEVUKWCQY8i14",
           "SchemeName": "UK.OBIE.BICFI",
           "Identification": "8020011234487",
-          "Name": "The Debtor Agent", 
-          "PostalAddress": { 
+          "Name": "The Debtor Agent",
+          "PostalAddress": {
             "AddressType": "BIZZ",
             "StreetName": "Bank Street",
             "BuildingNumber": "11",
@@ -600,22 +601,23 @@ Content-Type: application/json
             "Country": "GB"
           }
         },
-        "ExtendedProprietaryBankTransactionCodes": [{
-          "Code": "Transfer 2",
-          "Issuer": "AlphaBank",
-          "Description": "Local View"
+        "ExtendedProprietaryBankTransactionCodes": [
+          {
+            "Code": "Transfer 2",
+            "Issuer": "AlphaBank",
+            "Description": "Local View"
           },
           {
-          "Code": "Transfer 3",
-          "Issuer": "AlphaBank",
-          "Description": "SWIFT View"
+            "Code": "Transfer 3",
+            "Issuer": "AlphaBank",
+            "Description": "SWIFT View"
           }
         ],
         "MerchantDetails": {
           "MerchantName": "Merchant's Name",
           "MerchantCategoryCode": "5874"
         },
-         "DebtorAccount": {
+        "DebtorAccount": {
           "SchemeName": "UK.OBIE.SortCodeAccountNumber",
           "Identification": "80200112345784",
           "Name": "Mr Juniper",
@@ -651,13 +653,13 @@ Content-Type: application/json
           }
         },
         "CardInstrument": {
-          "CardSchemeName": "	VISA", 
+          "CardSchemeName": "	VISA",
           "AuthorisationType": "Contactless",
           "Name": "Mr Juniper"
         },
         "CurrencyExchange": {
-          "SourceCurrency": "GBP", 
-          "TargetCurrency": "GBP", 
+          "SourceCurrency": "GBP",
+          "TargetCurrency": "GBP",
           "UnitCurrency": "GBP"
         },
         "UltimateCreditor": {
@@ -706,15 +708,16 @@ Content-Type: application/json
           "CreditDebitIndicator": "Debit",
           "Type": "InterimBooked"
         },
-        "ExtendedProprietaryBankTransactionCodes": [{
-          "Code": "Transfer 2",
-          "Issuer": "AlphaBank",
-          "Description": "Local View"
+        "ExtendedProprietaryBankTransactionCodes": [
+          {
+            "Code": "Transfer 2",
+            "Issuer": "AlphaBank",
+            "Description": "Local View"
           },
           {
-          "Code": "Transfer 3",
-          "Issuer": "AlphaBank",
-          "Description": "SWIFT View"
+            "Code": "Transfer 3",
+            "Issuer": "AlphaBank",
+            "Description": "SWIFT View"
           }
         ],
         "UltimateDebtor": {
@@ -755,8 +758,8 @@ Content-Type: application/json
   },
   "Meta": {
     "TotalPages": 1,
-	"FirstAvailableDateTime": "2017-05-03T00:00:00+00:00",
-	"LastAvailableDateTime": "2017-12-03T00:00:00+00:00"
+    "FirstAvailableDateTime": "2017-05-03T00:00:00+00:00",
+    "LastAvailableDateTime": "2017-12-03T00:00:00+00:00"
   }
 }
 ```
