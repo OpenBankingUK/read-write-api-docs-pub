@@ -493,7 +493,7 @@ Content-Type: application/json
               "Currency": "USD"
             },
             "CreditDebitIndicator": "Credit",
-            "Type": "ClosingBalance"
+            "Type": "UK.OBIE.ClosingBalance"
           }
         ],
         "TotalValue": {
