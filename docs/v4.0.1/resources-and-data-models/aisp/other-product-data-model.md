@@ -186,23 +186,23 @@ Content-Type: application/json
         "ProductName": "Saving Account No Monthly Fee",
         "OtherProductType": {
           "Name": "BasicSavingAccount",
-          "Description": "HSBC fee free saving basic saving account"
-          "OtherProductDetails": {
-            "OtherFeesCharges": {
+          "Description": "HSBC fee free saving basic saving account",
+          "OtherFeesCharges": [
+            {
               "FeeChargeDetail": [
                 {
-                  "FeeCategory": "Servicing",
-                  "FeeType": "ServiceCAccountFeeMonthly",
+                  "FeeCategory": "FCSV",
+                  "FeeType": "FYAM",
                   "FeeAmount": "12.500",
-                  "ApplicationFrequency": "Monthly",
-                  "CalculationFrequency": "Daily",
+                  "ApplicationFrequency": "FEMO",
+                  "CalculationFrequency": "FEDA",
                   "Notes": [
-                    "Our tariff includes:\n* depositing and sending cheques\n* cash deposits up to the limit your tariff allows\n* withdrawals\n* Direct Debits, standing orders, bill payments\n* Bas credits\n* debit card payments"
+                    "Our tariff includes:\n* depositing and sending cheques\n* cash deposits up to the limit your tariff allows\n* withdrawals\n* Direct Debits, standing orders, bill payments\n* Bacs credits\n* debit card payments"
                   ]
                 }
               ]
             }
-          }
+          ]
         }
       }
     ]
