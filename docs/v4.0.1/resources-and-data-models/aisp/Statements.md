@@ -281,7 +281,7 @@ Content-Type: application/json
           "SubType": "BCUR"
         },
         "CreditDebitIndicator": "Credit",        
-        "Type": "ClosingBalance"        
+        "Type": "UK.OBIE.ClosingBalance"        
       },
       {
         "Amount": {
@@ -289,7 +289,7 @@ Content-Type: application/json
           "Currency": "GBP"
         },
         "CreditDebitIndicator": "Credit",
-        "Type": "PreviousClosingBalance"
+        "Type": "UK.OBIE.PreviousClosingBalance"
       }
       ],
      "StatementBenefit": [{ 
