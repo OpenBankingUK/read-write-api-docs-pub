@@ -519,7 +519,6 @@ Content-Type: application/json
         }
       },
       "Creditor": {
-        "SchemeName": "UK.OBIE.SortCodeAccountNumber",
         "LEI": "8200007YHFDMEODY8412",
         "PostalAddress": {
           "AddressType": "BIZZ",
