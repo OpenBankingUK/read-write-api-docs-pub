@@ -574,7 +574,6 @@ Content-Type: application/json
         "RateType": "Actual"
       },
       "Creditor": {
-        "SchemeName": "UK.OBIE.SortCodeAccountNumber",
         "LEI": "8200007YHFDMEODY8412",
         "PostalAddress": {
           "AddressType": "BIZZ",
