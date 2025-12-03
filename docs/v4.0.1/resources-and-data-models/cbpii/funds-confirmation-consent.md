@@ -308,8 +308,8 @@ Content-Type: application/json
     "DebtorAccount": {
       "SchemeName": "UK.OBIE.IBAN",
       "Identification": "GB76LOYD30949301273801",
-      "SecondaryIdentification": "Roll 56988",
       "Name": "Jane Smith",
+      "SecondaryIdentification": "Roll 56988",
       "Proxy": {
         "Identification": "+441632960540",
         "Code": "TELE",
