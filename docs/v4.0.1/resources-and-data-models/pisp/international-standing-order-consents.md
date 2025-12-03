@@ -329,7 +329,6 @@ Accept: application/json
   },
   "Initiation": {
     "ChargeBearer": "Shared",
-    "Purpose": "CCRD",
     "CurrencyOfTransfer": "USD",
     "DestinationCountryCode": "GB",
     "MandateRelatedInformation": {
@@ -561,7 +560,6 @@ Content-Type: application/json
   },
   "Initiation": {
     "ChargeBearer": "Shared",   
-    "Purpose": "CCRD",
     "CurrencyOfTransfer": "USD",
     "DestinationCountryCode": "GB",
     "InstructedAmount": {
