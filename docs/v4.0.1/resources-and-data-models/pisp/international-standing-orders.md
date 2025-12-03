@@ -343,7 +343,7 @@ Accept: application/json
           "Country": "GB"
         }
       },
-      "CurrencyOfTansfer": "EUR",
+      "CurrencyOfTransfer": "EUR",
       "UltimateDebtor": {
         "SchemeName": "UK.OBIE.BICFI",
         "Identification": "2360549017905161589",
@@ -561,7 +561,7 @@ Content-Type: application/json
         "Amount": "20",
         "Currency": "EUR"
       },
-      "CurrencyOfTansfer": "EUR",
+      "CurrencyOfTransfer": "EUR",
       "UltimateDebtor": {
         "SchemeName": "UK.OBIE.BICFI",
         "Identification": "2360549017905161589",
