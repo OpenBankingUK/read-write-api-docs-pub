@@ -779,7 +779,7 @@ Content-Type: application/json
       "CountrySubDivision": "Wessex",
       "Country": "GB"
     }
-  }
+  },
   "Links": {
     "Self": "https://api.alphabank.com/open-banking/v4.0/pisp/international-standing-order-consents/ISOC-100"
   },
