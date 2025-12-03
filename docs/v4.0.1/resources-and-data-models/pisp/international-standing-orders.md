@@ -288,7 +288,6 @@ Accept: application/json
     "Initiation": {
 	  "Frequency": "EvryWorkgDay",
     "ChargeBearer": "Shared", 
-    "Purpose": "CCRD",
     "DestinationCountryCode": "GB",  
 	  "FirstPaymentDateTime": "2018-06-06T06:06:06+00:00",
 	  "FinalPaymentDateTime": "2020-03-20T06:06:06+00:00",
@@ -487,7 +486,6 @@ Content-Type: application/json
     },
     "Initiation": {
       "ChargeBearer": "Shared",   
-      "Purpose": "CCRD",
       "Frequency": "EvryWorkgDay",
       "DestinationCountryCode": "GB",
       "FirstPaymentDateTime": "2018-06-06T06:06:06+00:00",
