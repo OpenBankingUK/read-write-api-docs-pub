@@ -828,6 +828,11 @@ Content-Type: application/json
           "Internal ops code 5120101"
         ]
       }
+    },
+    "SCASupportData": {
+      "RequestedSCAExemptionType": "EcommerceGoods",
+      "AppliedAuthenticationApproach": "SCA",
+      "ReferencePaymentOrderId": "O-611265"
     }
   },
   "Risk": {
@@ -851,11 +856,6 @@ Content-Type: application/json
       "CountrySubDivision": "Wessex",
       "Country": "GB"
     }
-  },
-  "SCASupportData": {
-    "RequestedSCAExemptionType": "EcommerceGoods",
-    "AppliedAuthenticationApproach": "SCA",
-    "ReferencePaymentOrderId": "O-611265"
   },
   "Links": {
     "Self": "https://api.alphabank.com/open-banking/v4.0/pisp/international-payment-consents/58923"
