@@ -389,8 +389,8 @@ Accept: application/json
           "PostCode": "Z78 4TY",
           "TownName": "London",
           "Country": "GB"
-          }
-        },
+        }
+      },
       "UltimateDebtor": {
         "SchemeName": "UK.OBIE.BICFI",
         "Identification": "2360549017905161589",
@@ -423,7 +423,7 @@ Accept: application/json
                 "Currency": "GBP"
               },
               "Information": [
-                "Reg info1", 
+                "Reg info1",
                 "Reg info2"
               ]
             }
@@ -565,8 +565,8 @@ Content-Type: application/json
           "PostCode": "Z78 4TY",
           "TownName": "London",
           "Country": "GB"
-          }
-        },
+        }
+      },
       "UltimateDebtor": {
         "SchemeName": "UK.OBIE.BICFI",
         "Identification": "2360549017905161589",
@@ -599,7 +599,7 @@ Content-Type: application/json
                 "Currency": "GBP"
               },
               "Information": [
-                "Reg info1", 
+                "Reg info1",
                 "Reg info2"
               ]
             }
@@ -751,8 +751,8 @@ Content-Type: application/json
           "PostCode": "Z78 4TY",
           "TownName": "London",
           "Country": "GB"
-          }
-        },
+        }
+      },
       "UltimateDebtor": {
         "SchemeName": "UK.OBIE.BICFI",
         "Identification": "2360549017905161589",
@@ -785,7 +785,7 @@ Content-Type: application/json
                 "Currency": "GBP"
               },
               "Information": [
-                "Reg info1", 
+                "Reg info1",
                 "Reg info2"
               ]
             }
