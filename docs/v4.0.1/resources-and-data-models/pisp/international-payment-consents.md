@@ -685,7 +685,6 @@ Content-Type: application/json
       "CurrencyOfTransfer": "USD",
       "DestinationCountryCode": "GB",
       "LocalInstrument": "UK.OBIE.Paym",
-      "InstructionPriority": "Normal",
       "Purpose": "CCRD",
       "InstructedAmount": {
         "Amount": "165.88",
