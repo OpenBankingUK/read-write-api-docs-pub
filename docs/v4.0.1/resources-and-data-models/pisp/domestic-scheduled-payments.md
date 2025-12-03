@@ -402,11 +402,11 @@ Accept: application/json
               "Free text for additional information"
             ]
           }
+        ],
+        "Unstructured": [
+          "Internal ops code 5120101"
         ]
-      },
-      "Unstructured": [
-        "Internal ops code 5120101"
-      ]
+      }
     }
   },
   "Risk": {
