@@ -455,7 +455,7 @@ Content-Type: application/json
     "Status": "AWAU",
     "CreationDateTime": "2018-05-05T15:15:13+00:00",
     "StatusUpdateDateTime": "2018-05-05T15:15:13+00:00",
-    "CutOffTime": "2018-05-06T15:15:13+00:00",
+    "CutOffDateTime": "2018-05-06T15:15:13+00:00",
     "ExpectedExecutionDateTime": "2018-06-05T15:15:22+00:00",
     "ExpectedSettlementDateTime": "2018-06-06T15:15:22+00:00",
     "Authorisation": {
