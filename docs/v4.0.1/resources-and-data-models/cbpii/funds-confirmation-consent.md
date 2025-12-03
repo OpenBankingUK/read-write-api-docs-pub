@@ -353,12 +353,6 @@ Content-Type: application/json
     "ConsentId": "88999",
     "CreationDateTime": "2017-05-02T00:00:00+00:00",
     "Status": "AWAU",
-    "StatusReason": [
-      {
-        "StatusReasonCode": "83",
-        "StatusReasonDescription": "Pending completion next working day"
-      }
-    ],
     "StatusUpdateDateTime": "2017-05-02T00:00:00+00:00",
     "ExpirationDateTime": "2017-05-02T00:00:00+00:00",
     "DebtorAccount": {
