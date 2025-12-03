@@ -733,8 +733,7 @@ Content-Type: application/json
         "UnitCurrency": "GBP",
         "ExchangeRate": 1.22,
         "RateType": "Actual",
-        "ContractIdentification": "19854961984",
-        "ExpirationDateTime": "2017-06-05T15:45:13+00:00"
+        "ContractIdentification": "19854961984"
       },
       "UltimateDebtor": {
         "SchemeName": "UK.OBIE.BICFI",
