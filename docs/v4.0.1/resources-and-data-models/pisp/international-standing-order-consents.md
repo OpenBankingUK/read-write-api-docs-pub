@@ -331,18 +331,6 @@ Accept: application/json
       "ChargeBearer": "Shared",
       "CurrencyOfTransfer": "USD",
       "DestinationCountryCode": "GB",
-      "MandateRelatedInformation": {
-        "MandateIdentification": "Caravanners",
-        "Classification": "FIXE",
-        "CategoryPurposeCode": "BONU",
-        "FirstPaymentDateTime": "2024-04-25T12:46:49.425Z",
-        "RecurringPaymentDateTime": "2024-04-25T12:46:49.425Z",
-        "FinalPaymentDateTime": "2024-04-25T12:46:49.425Z",
-        "Frequency": {
-          "Type": "WEEK",
-          "CountPerPeriod": 1
-        }
-      },
       "Creditor": {
         "Name": "ACME Inc",
         "LEI": "8200007YHFDMEODY1965",
