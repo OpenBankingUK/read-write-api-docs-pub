@@ -464,7 +464,7 @@ Content-Type: application/json
     "ConsentId": "58923",
     "Status": "ACSP",
     "StatusReason": [
-        {
+      {
         "StatusReasonCode": "U30",
         "Description": "Payment order successfully received"
       }
