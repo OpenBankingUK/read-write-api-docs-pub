@@ -479,11 +479,10 @@ Content-Type: application/json
       {
         "ChargeBearer": "Shared",
         "Type": "UK.OBIE.CHAPSOut",
-        "Amount"
-      {
-        "Amount": "0.88",
-        "Currency": "GBP"
-      }
+        "Amount": {
+          "Amount": "0.88",
+          "Currency": "GBP"
+        }
       }
     ],
     "Initiation": {
@@ -623,12 +622,12 @@ Content-Type: application/json
           "Internal ops code 5120101"
         ]
       }
+    },
+    "SCASupportData": {
+      "RequestedSCAExemptionType": "EcommerceGoods",
+      "AppliedAuthenticationApproach": "SCA",
+      "ReferencePaymentOrderId": "O-611265"
     }
-  },
-  "SCASupportData": {
-    "RequestedSCAExemptionType": "EcommerceGoods",
-    "AppliedAuthenticationApproach": "SCA",
-    "ReferencePaymentOrderId": "O-611265"
   },
   "Risk": {
     "PaymentContextCode": "TransferToThirdParty",
