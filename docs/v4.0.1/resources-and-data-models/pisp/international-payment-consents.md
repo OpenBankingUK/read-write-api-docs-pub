@@ -837,10 +837,6 @@ Content-Type: application/json
         "Unstructured": [
           "Internal ops code 5120101"
         ]
-      },
-      "ExchangeRateInformation": {
-        "UnitCurrency": "GBP",
-        "RateType": "Actual"
       }
     }
   },
