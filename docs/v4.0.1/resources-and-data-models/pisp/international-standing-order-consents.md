@@ -331,18 +331,6 @@ Accept: application/json
       "ChargeBearer": "Shared",
       "CurrencyOfTransfer": "USD",
       "DestinationCountryCode": "GB",
-      "MandateRelatedInformation": {
-        "MandateIdentification": "Caravanners",
-        "Classification": "FIXE",
-        "CategoryPurposeCode": "BONU",
-        "FirstPaymentDateTime": "2024-04-25T12:46:49.425Z",
-        "RecurringPaymentDateTime": "2024-04-25T12:46:49.425Z",
-        "FinalPaymentDateTime": "2024-04-25T12:46:49.425Z",
-        "Frequency": {
-          "Type": "WEEK",
-          "CountPerPeriod": 1
-        }
-      },
       "Creditor": {
         "Name": "ACME Inc",
         "LEI": "8200007YHFDMEODY1965",
@@ -390,19 +378,6 @@ Accept: application/json
       "InstructedAmount": {
         "Amount": "20",
         "Currency": "EUR"
-      },
-      "MandateRelatedInformation": {
-        "MandateIdentification": "Golfers",
-        "Classification": "FIXE",
-        "CategoryPurposeCode": "BONU",
-        "FirstPaymentDateTime": "2024-04-25T12:46:49.425Z",
-        "RecurringPaymentDateTime": "2024-04-25T12:46:49.425Z",
-        "FinalPaymentDateTime": "2024-04-25T12:46:49.425Z",
-        "Reason": "Membership fees",
-        "Frequency": {
-          "Type": "MNTH",
-          "CountPerPeriod": 1
-        }
       },
       "UltimateDebtor": {
         "SchemeName": "UK.OBIE.BICFI",
