@@ -463,11 +463,10 @@ Content-Type: application/json
       {
         "ChargeBearer": "Shared",
         "Type": "UK.OBIE.CHAPSOut",
-        "Amount"
-      {
-        "Amount": "0.88",
-        "Currency": "GBP"
-      }
+        "Amount": {
+          "Amount": "0.88",
+          "Currency": "GBP"
+        }
       }
     ],
     "Debtor": {
