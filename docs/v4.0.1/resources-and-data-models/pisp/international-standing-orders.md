@@ -476,9 +476,6 @@ Content-Type: application/json
     "Status": "ACSP",
     "StatusUpdateDateTime": "2018-01-01T06:36:06+00:00",
     "Refund": {
-      "Creditor": {
-        "Name": "NTPC Ltd"
-      },
       "Account": {
         "SchemeName": "UK.OBIE.SortCodeAccountNumber",
         "Identification": "08080021325677",
