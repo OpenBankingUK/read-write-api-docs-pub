@@ -660,7 +660,8 @@ Content-Type: application/json
     "ExchangeRateInformation": {
       "UnitCurrency": "GBP",
       "ExchangeRate": 1.22,
-      "RateType": "Actual"
+      "RateType": "Actual",
+      "ExpirationDateTime": "2017-06-05T15:45:13+00:00"
     },
     "Authorisation": {
       "Type": "Any",
@@ -842,12 +843,6 @@ Content-Type: application/json
         "UnitCurrency": "GBP",
         "RateType": "Actual"
       }
-    },
-    "ExchangeRateInformation": {
-      "UnitCurrency": "GBP",
-      "ExchangeRate": 1.1,
-      "RateType": "Actual",
-      "ExpirationDateTime": "2017-06-05T15:45:13+00:00"
     }
   },
   "Risk": {
