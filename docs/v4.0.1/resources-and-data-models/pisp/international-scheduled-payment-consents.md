@@ -629,7 +629,6 @@ Accept: application/json
     }
   }
 }
-
 ```
 
 #### Response
