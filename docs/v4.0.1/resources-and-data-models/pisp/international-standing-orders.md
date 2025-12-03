@@ -288,8 +288,6 @@ Accept: application/json
     "Initiation": {
       "ChargeBearer": "Shared",
       "DestinationCountryCode": "GB",
-      "FirstPaymentDateTime": "2018-06-06T06:06:06+00:00",
-      "FinalPaymentDateTime": "2020-03-20T06:06:06+00:00",
       "DebtorAccount": {
         "SchemeName": "UK.OBIE.SortCodeAccountNumber",
         "Identification": "08080021325698",
@@ -428,6 +426,8 @@ Accept: application/json
         ]
       },
       "MandateRelatedInformation": {
+        "FirstPaymentDateTime": "2018-06-06T06:06:06+00:00",
+        "FinalPaymentDateTime": "2020-03-20T06:06:06+00:00",
         "Frequency": {
           "Type": "WODL"
         }
@@ -495,8 +495,6 @@ Content-Type: application/json
     "Initiation": {
       "ChargeBearer": "Shared",
       "DestinationCountryCode": "GB",
-      "FirstPaymentDateTime": "2018-06-06T06:06:06+00:00",
-      "FinalPaymentDateTime": "2020-03-20T06:06:06+00:00",
       "DebtorAccount": {
         "SchemeName": "UK.OBIE.SortCodeAccountNumber",
         "Identification": "08080021325698",
@@ -646,6 +644,8 @@ Content-Type: application/json
         ]
       },
       "MandateRelatedInformation": {
+        "FirstPaymentDateTime": "2018-06-06T06:06:06+00:00",
+        "FinalPaymentDateTime": "2020-03-20T06:06:06+00:00",
         "Frequency": {
           "Type": "WODL"
         }
