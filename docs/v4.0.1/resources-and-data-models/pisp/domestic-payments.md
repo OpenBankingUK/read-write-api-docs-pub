@@ -465,7 +465,7 @@ Content-Type: application/json
     "Status": "ACSP",
     "StatusReason":{
       "StatusReasonCode": "U30",
-      "Description": "	Payment order successfully received"
+      "Description": "Payment order successfully received"
     },
     "CreationDateTime": "2017-06-05T15:15:22+00:00",
     "StatusUpdateDateTime": "2017-06-05T15:15:13+00:00",
