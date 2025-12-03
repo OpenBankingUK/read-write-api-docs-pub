@@ -648,7 +648,7 @@ Content-Type: application/json
     "Status": "AWAU",
     "StatusReason": [
       {
-        "StatusReasonCode": "AWAU",
+        "StatusReasonCode": "U009",
         "StatusReasonDescription": "Waiting for completion of consent authorisation to be completed by user"
       }
     ],
