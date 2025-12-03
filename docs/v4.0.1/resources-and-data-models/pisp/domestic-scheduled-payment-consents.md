@@ -630,7 +630,6 @@ Content-Type: application/json
     }
   },
   "Risk": {
-    "PaymentContextCode": "TransferToThirdParty",
     "PaymentContextCode": "EcommerceMerchantInitiatedPayment",
     "ContractPresentIndicator": false,
     "PaymentPurposeCode": "EPAY",
