@@ -421,7 +421,7 @@ Accept: application/json
     "Charges": [{
       "ChargeBearer": "Shared",
       "Type": "UK.OBIE.CHAPSOut",
-      "Amount"  {
+      "Amount":  {
       "Amount": "0.88",
       "Currency": "GBP"
     },
@@ -651,7 +651,7 @@ Content-Type: application/json
   "Charges": [{
       "ChargeBearer": "Shared",
       "Type": "UK.OBIE.CHAPSOut",
-      "Amount"  {
+      "Amount":  {
       "Amount": "0.88",
       "Currency": "GBP"
     },
