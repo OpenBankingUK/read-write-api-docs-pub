@@ -654,7 +654,7 @@ Content-Type: application/json
       "ExpirationDateTime": "2017-06-05T15:45:13+00:00"
     },
     "Authorisation": {
-      "Type": "Any",
+      "AuthorisationType": "Any",
       "CompletionDateTime": "2024-05-30T10:35:27Z"
     },
     "Charges": [
