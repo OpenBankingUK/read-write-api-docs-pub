@@ -652,27 +652,6 @@ Content-Type: application/json
       }
     }
   },
-  "Risk": {
-    "PaymentContextCode": "TransferToThirdParty",
-    "PaymentPurposeCode": "EPAY",
-    "CategoryPurposeCode": "CASH",
-    "BeneficiaryPrepopulatedIndicator": false,
-    "BeneficiaryAccountType": "Business",
-    "MerchantCategoryCode": "7300",
-    "MerchantCustomerIdentification": "053598653254",
-    "DeliveryAddress": {
-      "AddressLine": [
-        "Flat 7",
-        "Acacia Lodge"
-      ],
-      "StreetName": "Acacia Avenue",
-      "BuildingNumber": "27",
-      "PostCode": "GU31 2ZZ",
-      "TownName": "Sparsholt",
-      "CountrySubDivision": "Wessex",
-      "Country": "GB"
-    }
-  },
   "Links": {
     "Self": "https://api.alphabank.com/open-banking/v4.0/pisp/international-standing-orders/SO-ISOC-100"
   },
