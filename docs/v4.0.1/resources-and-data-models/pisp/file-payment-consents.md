@@ -305,61 +305,61 @@ Accept: application/json
 ```json
 {
   "Data": {
-	"Authorisation": {
-	  "AuthorisationType": "Any", 
-      "CompletionDateTime": "2025-05-30T10:35:27Z",
-   	},
+    "Authorisation": {
+      "AuthorisationType": "Any",
+      "CompletionDateTime": "2025-05-30T10:35:27Z"
+    },
     "Initiation": {
       "FileType": "UK.OBIE.pain.001.001.08",
       "FileHash": "m5ah/h1UjLvJYMxqAoZmj9dKdjZnsGNm+yMkJp/KuqQ",
       "FileReference": "GB2OK238",
       "NumberOfTransactions": "100",
       "ControlSum": 3459.30,
-	  "RequestedExecutionDateTime": "2024-06-03T00:00:00Z",
-	  "LocalInstrument": "UK.OBIE.CHAPS",
-	  "DebtorAccount": {
+      "RequestedExecutionDateTime": "2024-06-03T00:00:00Z",
+      "LocalInstrument": "UK.OBIE.CHAPS",
+      "DebtorAccount": {
         "SchemeName": "UK.OBIE.SortCodeAccountNumber",
         "Identification": "11280001234567",
         "Name": "Andrea Smith",
         "SecondaryIdentification": "0002",
-         "Proxy": {
+        "Proxy": {
           "Identification": "441234012345",
           "Code": "TELE",
-		  "Type": "Telephone"
-          }
-      	},
-		"UltimateDebtor": {
-          "SchemeName": "UK.OBIE.BICFI",
-          "Identification": "2360549017905161589",
-          "Name": "Ultimate Debtor",
-          "LEI": "8200007YHFDMEODY1965",
-          "PostalAddress": {
-            "AddressType": "BIZZ",
-            "StreetName": "Bank Street",
-            "BuildingNumber": "11",
-            "Floor": "6",
-            "PostCode": "Z78 4TY",
-            "TownName": "London",
-            "Country": "GB"
-          }
-        },
-		 "CreditorAgent": {  
-          "LEI": "IZ9Q00LZEVUKWCQY6X15",
-          "SchemeName": "UK.OBIE.BICFI",
-          "Identification": "80200112344562",
-          "Name": "The Credit Agent", 
-          "PostalAddress": { 
-            "AddressType": "BIZZ",
-            "StreetName": "Bank Street",
-            "BuildingNumber": "11",
-            "Floor": "6",
-            "PostCode": "Z78 4TY",
-            "TownName": "London",
-            "Country": "GB"
+          "Type": "Telephone"
         }
       },
-	    "RemittanceInformation": {
-          "Structured": [
+      "UltimateDebtor": {
+        "SchemeName": "UK.OBIE.BICFI",
+        "Identification": "2360549017905161589",
+        "Name": "Ultimate Debtor",
+        "LEI": "8200007YHFDMEODY1965",
+        "PostalAddress": {
+          "AddressType": "BIZZ",
+          "StreetName": "Bank Street",
+          "BuildingNumber": "11",
+          "Floor": "6",
+          "PostCode": "Z78 4TY",
+          "TownName": "London",
+          "Country": "GB"
+        }
+      },
+      "CreditorAgent": {
+        "LEI": "IZ9Q00LZEVUKWCQY6X15",
+        "SchemeName": "UK.OBIE.BICFI",
+        "Identification": "80200112344562",
+        "Name": "The Credit Agent",
+        "PostalAddress": {
+          "AddressType": "BIZZ",
+          "StreetName": "Bank Street",
+          "BuildingNumber": "11",
+          "Floor": "6",
+          "PostCode": "Z78 4TY",
+          "TownName": "London",
+          "Country": "GB"
+        }
+      },
+      "RemittanceInformation": {
+        "Structured": [
           {
             "ReferredDocumentInformation": [
               {
@@ -380,18 +380,22 @@ Accept: application/json
             },
             "Invoicer": "INVR51856",
             "Invoicee": "INVE5161856",
-			"TaxRemittance": "Tax Remittance related information",
-          	"AdditionalRemittanceInformation": ["Free text for additional information"],
+            "TaxRemittance": "Tax Remittance related information",
+            "AdditionalRemittanceInformation": [
+              "Free text for additional information"
+            ]
           }
         ],
-	     "Unstructured": ["Internal ops code 5120101"]
+        "Unstructured": [
+          "Internal ops code 5120101"
+        ]
       }
-	},
-	"SCASupportData": {
-	    "RequestedSCAExemptionType": "EcommerceGoods",
-		"AppliedAuthenticationApproach": "SCA",
-		"ReferencePaymentOrderId": "O-611265",
     },
+    "SCASupportData": {
+      "RequestedSCAExemptionType": "EcommerceGoods",
+      "AppliedAuthenticationApproach": "SCA",
+      "ReferencePaymentOrderId": "O-611265"
+    }
   }
 }
 ```
