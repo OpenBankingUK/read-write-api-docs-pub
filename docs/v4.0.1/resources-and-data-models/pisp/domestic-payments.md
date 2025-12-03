@@ -544,15 +544,6 @@ Content-Type: application/json
         "TownName": "London",
         "Country": "GB"
       },
-      "CreditorPostalAddress": {
-        "AddressType": "BIZZ",
-        "StreetName": "Bank Street",
-        "BuildingNumber": "11",
-        "Floor": "6",
-        "PostCode": "Z78 4TY",
-        "TownName": "London",
-        "Country": "GB"
-      },
       "UltimateDebtor": {
         "SchemeName": "UK.OBIE.BICFI",
         "Identification": "2360549017905161589",
