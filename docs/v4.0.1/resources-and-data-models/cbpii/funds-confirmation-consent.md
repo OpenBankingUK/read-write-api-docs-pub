@@ -251,19 +251,13 @@ x-fapi-interaction-id: hook5i13-ntIg-4th3-rP41-3ro535touch3
     "ConsentId": "88379",
     "CreationDateTime": "2017-05-02T00:00:00+00:00",
     "Status": "AWAU",
-    "StatusReason": [
-      {
-        "StatusReasonCode": "83",
-        "StatusReasonDescription": "Pending completion next working day"
-      }
-    ],
     "StatusUpdateDateTime": "2017-05-02T00:00:00+00:00",
     "ExpirationDateTime": "2017-05-02T00:00:00+00:00",
     "DebtorAccount": {
       "SchemeName": "UK.OBIE.IBAN",
       "Identification": "GB76LOYD30949301273801",
-      "SecondaryIdentification": "Roll 56988",
       "Name": "Jane Smith",
+      "SecondaryIdentification": "Roll 56988",
       "Proxy": {
         "Identification": "+441632960540",
         "Code": "TELE",
