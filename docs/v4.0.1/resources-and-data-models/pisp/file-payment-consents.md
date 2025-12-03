@@ -434,7 +434,7 @@ Content-Type: application/json
       }
     ],
     "Authorisation": {
-      "Type": "Any",
+      "AuthorisationType": "Any",
       "CompletionDateTime": "2019-05-30T10:35:27Z"
     },
     "Debtor": {
