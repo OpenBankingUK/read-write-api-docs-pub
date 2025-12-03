@@ -389,30 +389,6 @@ Accept: application/json
           "Country": "GB"
         }
       },
-      "RegulatoryReporting": [
-        {
-          "DebitCreditReportingIndicator": "CRED",
-          "Authority": {
-            "Name": "string",
-            "CountryCode": "UG"
-          },
-          "Details": [
-            {
-              "Type": "CRED",
-              "Date": "2024-04-25T13:26:41.911Z",
-              "Information": [
-                "Reg info1",
-                "Reg info2"
-              ],
-              "Country": "QG",
-              "Amount": {
-                "Amount": "4.68702",
-                "Currency": "JGM"
-              }
-            }
-          ]
-        }
-      ],
       "RemittanceInformation": {
         "Structured": [
           {
