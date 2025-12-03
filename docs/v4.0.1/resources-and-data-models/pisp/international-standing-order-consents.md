@@ -465,12 +465,12 @@ Accept: application/json
           "Internal ops code 5120101"
         ]
       }
+    },
+    "SCASupportData": {
+      "RequestedSCAExemptionType": "EcommerceGoods",
+      "AppliedAuthenticationApproach": "SCA",
+      "ReferencePaymentOrderId": "O-611265"
     }
-  },
-  "SCASupportData": {
-    "RequestedSCAExemptionType": "EcommerceGoods",
-    "AppliedAuthenticationApproach": "SCA",
-    "ReferencePaymentOrderId": "O-611265"
   },
   "Risk": {
     "PaymentContextCode": "TransferToThirdParty",
