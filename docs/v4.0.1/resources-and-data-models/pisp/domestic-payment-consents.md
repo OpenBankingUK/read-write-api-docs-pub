@@ -718,7 +718,6 @@ Content-Type: application/json
       "ReferencePaymentOrderId": "O-611265"
     }
   },
-  
   "Risk": {
     "PaymentContextCode": "EcommerceMerchantInitiatedPayment",
     "ContractPresentIndicator": false,
