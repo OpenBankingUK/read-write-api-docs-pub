@@ -355,7 +355,7 @@ Accept: application/json
           "Type": "Telephone"
         }
       },
-      "CreditAgent": {
+      "CreditorAgent": {
         "SchemeName": "UK.OBIE.IBAN",
         "Identification": "DE89370400440532013000",
         "LEI": "8200007YHFDMEODY1965",
