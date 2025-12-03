@@ -286,7 +286,6 @@ Accept: application/json
   "Data": {
     "ConsentId": "ISOC-100",
     "Initiation": {
-      "Frequency": "EvryWorkgDay",
       "ChargeBearer": "Shared",
       "DestinationCountryCode": "GB",
       "FirstPaymentDateTime": "2018-06-06T06:06:06+00:00",
@@ -427,6 +426,11 @@ Accept: application/json
         "Unstructured": [
           "Internal ops code 5120101"
         ]
+      },
+      "MandateRelatedInformation": {
+        "Frequency": {
+          "Type": "WODL"
+        }
       }
     }
   },
@@ -490,7 +494,6 @@ Content-Type: application/json
     },
     "Initiation": {
       "ChargeBearer": "Shared",
-      "Frequency": "EvryWorkgDay",
       "DestinationCountryCode": "GB",
       "FirstPaymentDateTime": "2018-06-06T06:06:06+00:00",
       "FinalPaymentDateTime": "2020-03-20T06:06:06+00:00",
@@ -641,6 +644,11 @@ Content-Type: application/json
         "Unstructured": [
           "Internal ops code 5120101"
         ]
+      },
+      "MandateRelatedInformation": {
+        "Frequency": {
+          "Type": "WODL"
+        }
       }
     }
   },
