@@ -551,7 +551,7 @@ Content-Type: application/json
     "StatusUpdateDateTime": "2017-06-05T15:15:13+00:00",
     "ReadRefundAccount": "Yes",
     "Authorisation": {
-      "Type": "Any",
+      "AuthorisationType": "Any",
       "CompletionDateTime": "2024-04-25T14:20:41.911Z"
     },
     "Charges": [
