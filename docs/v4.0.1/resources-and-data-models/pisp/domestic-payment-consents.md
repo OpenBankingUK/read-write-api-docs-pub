@@ -907,12 +907,12 @@ Content-Type: application/json
       "Identification": "08080021325698",
       "SecondaryIdentification": "0002",
       "LEI": "8200007YHFDMEODY1965"
+    },
+    "SCASupportData": {
+      "RequestedSCAExemptionType": "EcommerceGoods",
+      "AppliedAuthenticationApproach": "SCA",
+      "ReferencePaymentOrderId": "O-611265"
     }
-  },
-  "SCASupportData": {
-    "RequestedSCAExemptionType": "EcommerceGoods",
-    "AppliedAuthenticationApproach": "SCA",
-    "ReferencePaymentOrderId": "O-611265"
   },
   "Risk": {
     "PaymentContextCode": "EcommerceMerchantInitiatedPayment",
@@ -939,5 +939,4 @@ Content-Type: application/json
   },
   "Meta": {}
 }
-
 ```
