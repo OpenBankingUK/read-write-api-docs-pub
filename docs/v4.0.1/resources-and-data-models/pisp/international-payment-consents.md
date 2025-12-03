@@ -433,7 +433,7 @@ Accept: application/json
       "EndToEndIdentification": "FRESCO.21302.GFX.20",
       "LocalInstrument": "UK.OBIE.Paym",
       "InstructionPriority": "Normal",
-      "Purpose": "CCRD",
+      "ExtendedPurpose": "CCRD",
       "CurrencyOfTransfer": "USD",
       "DestinationCountryCode": "GB",
       "InstructedAmount": {
@@ -685,7 +685,7 @@ Content-Type: application/json
       "CurrencyOfTransfer": "USD",
       "DestinationCountryCode": "GB",
       "LocalInstrument": "UK.OBIE.Paym",
-      "Purpose": "CCRD",
+      "ExtendedPurpose": "CCRD",
       "InstructedAmount": {
         "Amount": "165.88",
         "Currency": "GBP"
