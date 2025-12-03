@@ -418,16 +418,6 @@ Accept: application/json
       "AuthorisationType": "Any",
       "CompletionDateTime": "2025-05-30T10:35:27Z"
     },
-    "Charges": [
-      {
-        "ChargeBearer": "Shared",
-        "Type": "UK.OBIE.CHAPSOut",
-        "Amount": {
-          "Amount": "0.88",
-          "Currency": "GBP"
-        }
-      }
-    ],
     "Initiation": {
       "InstructionIdentification": "ACME412",
       "EndToEndIdentification": "FRESCO.21302.GFX.20",
