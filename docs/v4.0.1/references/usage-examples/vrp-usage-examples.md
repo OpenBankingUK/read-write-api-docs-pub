@@ -44,6 +44,15 @@ Accept: application/json
   "Data": {
     "ReadRefundAccount": "Yes",
     "ControlParameters": {
+      "PSUAuthenticationMethods": [
+        "UK.OBIE.SCA"
+      ],
+      "PSUInteractionTypes": [
+        "OffSession"
+      ],
+      "VRPType": [
+        "UK.OBIE.VRPType.Sweeping"
+      ],
       "ValidFromDateTime": "2017-06-05T15:15:13+00:00",
       "ValidToDateTime": "2020-06-05T15:15:13+00:00",
       "MaximumIndividualAmount": {
@@ -52,142 +61,77 @@ Accept: application/json
       },
       "PeriodicLimits": [
         {
-          "PeriodType": "Week",
-          "PeriodAlignment": "Consent",
           "Amount": "200.00",
-          "Currency": "GBP"
+          "Currency": "GBP",
+          "PeriodAlignment": "Consent",
+          "PeriodType": "Week"
         }
-      ],
-      "VRPType": [
-        "UK.OBIE.VRPType.Sweeping"
-      ],
-      "PSUAuthenticationMethods": [
-        "UK.OBIE.SCA"
-      ],
-      "PSUInteractionTypes": [
-        "OffSession"
-      ],
-      "Initiation": {
-        "DebtorAccount": {
-          "SchemeName": "UK.OBIE.IBAN",
-          "Identification": "GB76LOYD30949301273801",
-          "Name": "Marcus Sweepimus",
-          "SecondaryIdentification": "008419",
-          "Proxy": {
-            "Identification": "441234012345",
-            "Code": "TELE",
-            "Type": "Telephone"
-          }
-        },
-        "CreditorAccount": {
-          "SchemeName": "UK.OBIE.SortCodeAccountNumber",
-          "Identification": "30949330000010",
-          "Name": "Marcus Sweepimus",
-          "SecondaryIdentification": "Roll 90210",
-          "Proxy": {
-            "Identification": "441234012346",
-            "Code": "TELE",
-            "Type": "Telephone"
-          }
-        },
-        "CreditorPostalAddress": {
-          "AddressType": "BIZZ",
-          "Department": "Finance",
-          "SubDepartment": "Payroll",
-          "StreetName": "Bank Street",
-          "BuildingNumber": "11",
-          "BuildingName": "Tower Bridges",
-          "Floor": "6",
-          "UnitNumber": "UNIT591",
-          "Room": "844",
-          "PostBox": "PO Box 123456",
-          "TownLocationName": "Bank",
-          "DistrictName": "Greater London",
-          "CareOf": "Ms Jane Smith",
-          "PostCode": "Z78 4TY",
-          "TownName": "London",
-          "CountrySubDivision": "England",
-          "Country": "GB"
-        },
-        "UltimateCreditor": {
-          "Name": "string",
-          "Identification": "string",
-          "LEI": "IZ9Q00LZEVUKWCQY6X15",
-          "SchemeName": "string",
-          "PostalAddress": {
-            "AddressType": "BIZZ",
-            "Department": "string",
-            "SubDepartment": "string",
-            "StreetName": "string",
-            "BuildingNumber": "string",
-            "BuildingName": "string",
-            "Floor": "string",
-            "UnitNumber": "string",
-            "Room": "string",
-            "PostBox": "string",
-            "TownLocationName": "string",
-            "DistrictName": "string",
-            "CareOf": "string",
-            "PostCode": "string",
-            "TownName": "string",
-            "CountrySubDivision": "string",
-            "Country": "NM",
-            "AddressLine": [
-              "string"
-            ]
-          }
-        },
-        "UltimateDebtor": {
-          "Name": "string",
-          "Identification": "string",
-          "LEI": "IZ9Q00LZEVUKWCQY6X15",
-          "SchemeName": "string",
-          "PostalAddress": {
-            "AddressType": "BIZZ",
-            "Department": "string",
-            "SubDepartment": "string",
-            "StreetName": "string",
-            "BuildingNumber": "string",
-            "BuildingName": "string",
-            "Floor": "string",
-            "UnitNumber": "string",
-            "Room": "string",
-            "PostBox": "string",
-            "TownLocationName": "string",
-            "DistrictName": "string",
-            "CareOf": "string",
-            "PostCode": "string",
-            "TownName": "string",
-            "CountrySubDivision": "string",
-            "Country": "DC",
-            "AddressLine": [
-              "string"
-            ]
-          }
-        },
-        "RemittanceInformation": {
-          "Structured": [
-            {
-              "ReferredDocumentAmount": "1.00",
-              "CreditorReferenceInformation": {
-                "Reference": "SweepCo"
-              },
-              "AdditionalRemittanceInformation": [
-                "Rose's pocket money"
-              ]
-            }
-          ]
-        }
-      }
+      ]
     },
-    "Risk": {
-      "PaymentContextCode": "TransferToSelf",
-      "ContractPresentIndicator": true,
-      "BeneficiaryPrepopulatedIndicator": true,
-      "PaymentPurposeCode": "EPAY",
-      "CategoryPurposeCode": "GP2P",
-      "BeneficiaryAccountType": "Personal"
+    "Initiation": {
+      "DebtorAccount": {
+        "SchemeName": "UK.OBIE.IBAN",
+        "Identification": "GB76LOYD30949301273801",
+        "SecondaryIdentification": "008419",
+        "Name": "Marcus Sweepimus",
+        "Proxy": {
+          "Identification": "441234012345",
+          "Code": "TELE",
+          "Type": "Telephone"
+        }
+      },
+      "CreditorAccount": {
+        "SchemeName": "UK.OBIE.SortCodeAccountNumber",
+        "Identification": "30949330000010",
+        "SecondaryIdentification": "Roll 90210",
+        "Name": "Marcus Sweepimus",
+        "Proxy": {
+          "Identification": "441234012346",
+          "Code": "TELE",
+          "Type": "Telephone"
+        }
+      },
+      "CreditorPostalAddress": {
+        "AddressType": "BIZZ",
+        "Department": "Finance",
+        "SubDepartment": "Payroll",
+        "StreetName": "Bank Street",
+        "BuildingNumber": "11",
+        "BuildingName": "Tower Bridges",
+        "Floor": "6",
+        "UnitNumber": "UNIT591",
+        "Room": "844",
+        "PostBox": "PO Box 123456",
+        "PostCode": "Z78 4TY",
+        "TownLocationName": "Bank",
+        "TownName": "London",
+        "DistrictName": "Greater London",
+        "CareOf": "Ms Jane Smith",
+        "CountrySubDivision": "England",
+        "Country": "GB"
+      },
+      "RemittanceInformation": {
+        "Structured": [
+          {
+            "ReferredDocumentAmount": "1.00",
+            "CreditorReferenceInformation": {
+              "Reference": "SweepCo"
+            },
+            "AdditionalRemittanceInformation": [
+              "Rose's pocket money"
+            ]
+          }
+        ]
+      }
     }
+  },
+  "Risk": {
+    "PaymentContextCode": "TransferToSelf",
+    "ContractPresentIndicator": true,
+    "PaymentPurposeCode": "EPAY",
+    "CategoryPurposeCode": "GP2P",
+    "BeneficiaryPrepopulatedIndicator": true,
+    "BeneficiaryAccountType": "Personal"
   }
 }
 ```
