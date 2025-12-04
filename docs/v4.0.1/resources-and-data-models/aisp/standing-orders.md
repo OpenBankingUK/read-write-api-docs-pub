@@ -368,7 +368,6 @@ Content-Type: application/json
             "CountPerPeriod": 1
           }
         },
-        "Reference": "Golf - We Love Golf",
         "FirstPaymentAmount": {
           "Amount": "23.00",
           "Currency": "GBP"
@@ -388,6 +387,15 @@ Content-Type: application/json
           "SecondaryIdentification": "80200112895462",
           "Identification": "23605490179017",
           "Name": "Mr Tee"
+        },
+        "RemittanceInformation": {
+          "Structured": [
+            {
+              "CreditorReferenceInformation": {
+                "Reference": "Golf - We Love Golf"
+              }
+            }
+          ]
         }
       }
     ]
