@@ -253,7 +253,7 @@ x-fapi-interaction-id: hook5i13-ntIg-4th3-rP41-3ro535touch3
     "Status": "AWAU",
     "StatusReason": [
       {
-        "StatusReasonCode": "83",
+        "StatusReasonCode": "0083",
         "StatusReasonDescription": "Pending completion next working day"
       }
     ],
