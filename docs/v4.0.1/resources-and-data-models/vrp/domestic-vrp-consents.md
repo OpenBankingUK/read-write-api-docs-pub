@@ -124,7 +124,7 @@ PATCH operations are atomic, all requested changes are successfully applied or n
 
 The following examples shows a series of patch operations that updates the ContractPresentIndicator field name and updates the AddressType value to the ISO code value.
 
-``` json
+```json
 [
  { "op": "remove", "path": "/Risk/ContractPresentInidicator" },
  { "op": "add", "path": "/Risk/ContractPresentIndicator", "value": "true" },
@@ -281,8 +281,7 @@ The VRP consent is a common class used in `domestic-payment-consents` requests a
 
 ##### Example 1
 
-``` json
-
+```json
 // created on 06-Jun-2021
 {
   "PeriodType": "Month",
@@ -300,7 +299,7 @@ The VRP consent is a common class used in `domestic-payment-consents` requests a
 
 ##### Example 2
 
-``` json
+```json
 // created on 05-Jun-2021
 {
   "PeriodType": "Month",
@@ -318,7 +317,7 @@ The VRP consent is a common class used in `domestic-payment-consents` requests a
 
 ##### Example 3
 
-``` json
+```json
 // created on 05-Jun-2021
 {
   "PeriodType": "Year",
@@ -336,7 +335,7 @@ The VRP consent is a common class used in `domestic-payment-consents` requests a
 
 ##### Example 4
 
-``` json
+```json
 // created on 05-Jun-2021
 {
   "PeriodType": "Year",
