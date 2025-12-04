@@ -139,15 +139,11 @@ Content-Type: application/json
           "Currency": "GBP",
           "SubType": "BCUR"
         },
-        "LocalAmount":  {
+        "LocalAmount": {
           "Amount": "1230.00",
           "Currency": "GBP",
           "SubType": "BCUR"
-        }, 
-        "TotalAmount": { 
-          "Amount": "1230.00",
-          "Currency": "GBP"
-        }, 
+        },
         "CreditDebitIndicator": "Credit",
         "Type": "ITAV",
         "DateTime": "2017-04-05T10:43:07+00:00",
@@ -219,17 +215,13 @@ Content-Type: application/json
         "Amount": {
           "Amount": "300.00",
           "Currency": "GBP",
-            "SubType": "BCUR"
-          },
-          "LocalAmount":  {
-            "Amount": "1230.00",
-            "Currency": "GBP",
-            "SubType": "BCUR"
-          }, 
-          "TotalAmount": { 
-            "Amount": "1230.00",
-            "Currency": "GBP"
-          }, 
+          "SubType": "BCUR"
+        },
+        "LocalAmount": {
+          "Amount": "1230.00",
+          "Currency": "GBP",
+          "SubType": "BCUR"
+        },
         "CreditDebitIndicator": "Credit",
         "Type": "ITAV",
         "DateTime": "2017-04-05T10:43:07+00:00",
@@ -299,17 +291,13 @@ Content-Type: application/json
         "Amount": {
           "Amount": "800.00",
           "Currency": "GBP",
-            "SubType": "BCUR"
-          },
-          "LocalAmount":  {
-            "Amount": "1230.00",
-            "Currency": "GBP",
-            "SubType": "BCUR"
-          }, 
-          "TotalAmount": { 
-            "Amount": "1230.00",
-            "Currency": "GBP"
-          }, 
+          "SubType": "BCUR"
+        },
+        "LocalAmount": {
+          "Amount": "1230.00",
+          "Currency": "GBP",
+          "SubType": "BCUR"
+        },
         "CreditDebitIndicator": "Credit",
         "Type": "ITAV",
         "DateTime": "2017-04-05T10:43:07+00:00",
@@ -373,23 +361,19 @@ Content-Type: application/json
 ```json
 {
   "Data": {
-    "Balance": [ 
+    "Balance": [
       {
         "AccountId": "22289",
         "Amount": {
           "Amount": "100.00",
           "Currency": "GBP",
-            "SubType": "BCUR"
-          },
-          "LocalAmount":  {
-            "Amount": "1230.00",
-            "Currency": "GBP",
-            "SubType": "BCUR"
-          }, 
-          "TotalAmount": { 
-            "Amount": "1230.00",
-            "Currency": "GBP"
-          }, 
+          "SubType": "BCUR"
+        },
+        "LocalAmount": {
+          "Amount": "1230.00",
+          "Currency": "GBP",
+          "SubType": "BCUR"
+        },
         "CreditDebitIndicator": "Debit",
         "Type": "ITAV",
         "DateTime": "2017-04-05T10:43:07+00:00",
@@ -453,7 +437,7 @@ Content-Type: application/json
 ```json
 {
   "Data": {
-    "Balance": [ 
+    "Balance": [
       {
         "AccountId": "22289",
         "Amount": {

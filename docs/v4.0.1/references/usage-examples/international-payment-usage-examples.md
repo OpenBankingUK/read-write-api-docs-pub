@@ -42,7 +42,7 @@ Accept: application/json
     "Initiation": {
       "InstructionIdentification": "ACME412",
       "EndToEndIdentification": "FRESCO.21302.GFX.20",
-      "RequestedExecutionDate": "2018-08-06T00:00:00+00:00",
+      "RequestedExecutionDateTime": "2018-08-06T00:00:00+00:00",
       "InstructedAmount": {
         "Amount": {
           "Amount": "165.88",
@@ -101,7 +101,7 @@ Content-Type: application/json
     "Initiation": {
       "InstructionIdentification": "ACME412",
       "EndToEndIdentification": "FRESCO.21302.GFX.20",
-      "RequestedExecutionDate": "2018-08-06T00:00:00+00:00",
+      "RequestedExecutionDateTime": "2018-08-06T00:00:00+00:00",
       "InstructedAmount": {
         "Amount": {
           "Amount": "165.88",
@@ -178,7 +178,7 @@ Accept: application/json
     "Initiation": {
       "InstructionIdentification": "ACME412",
       "EndToEndIdentification": "FRESCO.21302.GFX.20",
-      "RequestedExecutionDate": "2018-08-06T00:00:00+00:00",
+      "RequestedExecutionDateTime": "2018-08-06T00:00:00+00:00",
       "InstructedAmount": {
         "Amount": {
           "Amount": "165.88",
@@ -237,7 +237,7 @@ Content-Type: application/json
     "Initiation": {
       "InstructionIdentification": "ACME412",
       "EndToEndIdentification": "FRESCO.21302.GFX.20",
-      "RequestedExecutionDate": "2018-08-06T00:00:00+00:00",
+      "RequestedExecutionDateTime": "2018-08-06T00:00:00+00:00",
       "InstructedAmount": {
         "Amount": {
           "Amount": "165.88",
