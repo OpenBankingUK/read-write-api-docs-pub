@@ -216,7 +216,7 @@ Content-Type: application/json
         "ProductType": "Other",
         "OtherProductType":{
           "Type": "e-Wallet", 
-          "Description": "Virtual wallet",
+          "Description": "Virtual wallet"
         },
         "ProductName": "123 Product",
         "MarketingStateId": "22878123",
