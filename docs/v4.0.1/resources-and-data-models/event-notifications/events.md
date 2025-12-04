@@ -271,7 +271,9 @@ POST /events HTTP/1.1
 Authorization: Bearer 7b99f6c331e841dab811176e25d57ca7
 Content-Type: application/json
 x-fapi-interaction-id: 295f6c6c7b2045b2a3e91e4f1c31d681
- 
+```
+
+```json
 {
   "maxEvents": 0,
   "ack": [ "b6a68c1db7fc4c178fd7d8a41b9ef85c" ]
