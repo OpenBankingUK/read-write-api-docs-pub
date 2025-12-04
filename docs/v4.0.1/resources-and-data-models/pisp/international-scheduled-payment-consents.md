@@ -489,8 +489,7 @@ Accept: application/json
           "DistrictName": "Greater London",
           "CareOf": "Ms Jane Smith",
           "PostCode": "Z78 4TY",
-          "TownName": "London",
-          "CountrySubDivision": "string",
+          "TownName": "London"
           "Country": "GB"
         }
       },
@@ -737,8 +736,7 @@ Content-Type: application/json
           "DistrictName": "Greater London",
           "CareOf": "Ms Jane Smith",
           "PostCode": "Z78 4TY",
-          "TownName": "London",
-          "CountrySubDivision": "string",
+          "TownName": "London"
           "Country": "GB"
         }
       },
@@ -862,35 +860,25 @@ Content-Type: application/json
     }
   },
   "Risk": {
-    "PaymentContextCode": "BillingGoodsAndServicesInAdvance",
-    "MerchantCategoryCode": "stri",
-    "MerchantCustomerIdentification": "string",
-    "ContractPresentIndicator": true,
-    "BeneficiaryPrepopulatedIndicator": true,
-    "PaymentPurposeCode": "BKDF",
-    "CategoryPurposeCode": "BONU",
+    "PaymentContextCode": "TransferToThirdParty",
+    "ContractPresentIndicator": false,
+    "PaymentPurposeCode": "EPAY",
+    "CategoryPurposeCode": "CASH",
+    "BeneficiaryPrepopulatedIndicator": false,
     "BeneficiaryAccountType": "Business",
+    "MerchantCategoryCode": "7300",
+    "MerchantCustomerIdentification": "053598653254",
     "DeliveryAddress": {
-      "AddressType": "BIZZ",
-      "Department": "string",
-      "SubDepartment": "string",
-      "StreetName": "string",
-      "BuildingNumber": "string",
-      "BuildingName": "string",
-      "Floor": "string",
-      "UnitNumber": "string",
-      "Room": "string",
-      "PostBox": "string",
-      "TownLocationName": "string",
-      "DistrictName": "string",
-      "CareOf": "string",
-      "PostCode": "string",
-      "TownName": "string",
-      "CountrySubDivision": "string",
-      "Country": "HD",
       "AddressLine": [
-        "string"
-      ]
+        "Flat 7",
+        "Acacia Lodge"
+      ],
+      "StreetName": "Acacia Avenue",
+      "BuildingNumber": "27",
+      "PostCode": "GU31 2ZZ",
+      "TownName": "Sparsholt",
+      "CountrySubDivision": "Wessex",
+      "Country": "GB"
     }
   },
   "Links": {
