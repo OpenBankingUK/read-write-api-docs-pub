@@ -298,7 +298,7 @@ Accept: application/json
                 "Number": "Number_01",
                 "RelatedDate": "2024-04-25T13:26:41.911Z",
                 "LineDetails": [
-                  "string"
+                  "Line detail entry 1"
                 ]
               }
             ],
@@ -431,7 +431,7 @@ Content-Type: application/json
                 "Number": "Number_01",
                 "RelatedDate": "2024-04-25T13:26:41.911Z",
                 "LineDetails": [
-                  "string"
+                  "Line detail entry 1"
                 ]
               }
             ],
