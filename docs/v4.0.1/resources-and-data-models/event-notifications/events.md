@@ -291,6 +291,7 @@ x-fapi-interaction-id: 295f6c6c7b2045b2a3e91e4f1c31d681
 
 ```json
 {
+  "moreAvailable": false,
   "sets": {}
 }
 ```
