@@ -171,12 +171,12 @@ Content-Type: application/json
         "BeneficiaryId": "Ben1",
         "BeneficiaryType": "Ordinary",
         "Reference": "Towbar Club",
-        "CreditorAgent": { 
+        "CreditorAgent": {
           "LEI": "IZ9Q00LZEVUKWCQY6X15",
           "SchemeName": "UK.OBIE.BICFI",
           "Identification": "80200112344562",
-          "Name": "The Credit Agent", 
-          "PostalAddress": { 
+          "Name": "The Credit Agent",
+          "PostalAddress": {
             "AddressType": "BIZZ",
             "StreetName": "Bank Street",
             "BuildingNumber": "11",
@@ -238,12 +238,12 @@ Content-Type: application/json
         "BeneficiaryId": "Ben1",
         "BeneficiaryType": "Ordinary",
         "Reference": "Towbar Club",
-        "CreditorAgent": { 
+        "CreditorAgent": {
           "LEI": "IZ9Q00LZEVUKWCQY6X15",
           "SchemeName": "UK.OBIE.BICFI",
           "Identification": "80200112344562",
-          "Name": "The Credit Agent", 
-          "PostalAddress": { 
+          "Name": "The Credit Agent",
+          "PostalAddress": {
             "AddressType": "BIZZ",
             "StreetName": "Bank Street",
             "BuildingNumber": "11",
@@ -268,12 +268,12 @@ Content-Type: application/json
         "AccountId": "31820",
         "BeneficiaryId": "Ben37",
         "Reference": "Golf Club",
-        "CreditorAgent": { 
+        "CreditorAgent": {
           "LEI": "IZ9Q00LZEVUKWCQY6X15",
           "SchemeName": "UK.OBIE.BICFI",
           "Identification": "80200112344562",
-          "Name": "The Credit Agent", 
-          "PostalAddress": { 
+          "Name": "The Credit Agent",
+          "PostalAddress": {
             "AddressType": "BIZZ",
             "StreetName": "Bank Street",
             "BuildingNumber": "11",
@@ -287,11 +287,11 @@ Content-Type: application/json
           "SchemeName": "UK.OBIE.SortCodeAccountNumber",
           "Identification": "87562298675421",
           "Name": "Mr Large",
-          "SecondaryIdentification": "87562298675897", 
+          "SecondaryIdentification": "87562298675897",
           "Proxy": {
             "Identification": "2360549017905188",
             "Code": "TELE",
-            "Type": "Telephone", 
+            "Type": "Telephone"
           }
         }
       }
@@ -317,12 +317,12 @@ Content-Type: application/json
         "BeneficiaryId": "Ben1",
         "BeneficiaryType": "Ordinary",
         "Reference": "Towbar Club",
-        "CreditorAgent": { 
+        "CreditorAgent": {
           "LEI": "IZ9Q00LZEVUKWCQY6X15",
           "SchemeName": "UK.OBIE.BICFI",
           "Identification": "80200112344562",
-          "Name": "The Credit Agent", 
-          "PostalAddress": { 
+          "Name": "The Credit Agent",
+          "PostalAddress": {
             "AddressType": "BIZZ",
             "StreetName": "Bank Street",
             "BuildingNumber": "11",
@@ -343,7 +343,7 @@ Content-Type: application/json
         "BeneficiaryId": "Ben2",
         "BeneficiaryType": "Trusted",
         "Reference": "Champagne Club",
-        "CreditorAgent": { 
+        "CreditorAgent": {
           "LEI": "6PLS00H77T87PEZOTK71"
         },
         "CreditorAccount": {
@@ -354,7 +354,7 @@ Content-Type: application/json
           "Proxy": {
             "Identification": "2360549017905188",
             "Code": "TELE",
-            "Type": "Telephone", 
+            "Type": "Telephone"
           }
         }
       },
@@ -362,7 +362,7 @@ Content-Type: application/json
         "AccountId": "22289",
         "BeneficiaryId": "Ben3",
         "Reference": "O2-234823781",
-        "CreditorAgent": { 
+        "CreditorAgent": {
           "LEI": "X3F8005BLKBSWLCX4E37"
         },
         "CreditorAccount": {
@@ -373,7 +373,7 @@ Content-Type: application/json
           "Proxy": {
             "Identification": "2360549017905188",
             "Code": "TELE",
-            "Type": "Telephone", 
+            "Type": "Telephone"
           }
         }
       }
