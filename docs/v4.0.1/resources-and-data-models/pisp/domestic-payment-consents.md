@@ -435,8 +435,8 @@ Accept: application/json
         {
           "DebitCreditReportingIndicator": "CRED",
           "Authority": {
-            "Name": "string",
-            "CountryCode": "UG"
+            "Name": "FCA",
+            "CountryCode": "UK"
           },
           "Details": [
             {
@@ -446,10 +446,10 @@ Accept: application/json
                 "Reg info1",
                 "Reg info2"
               ],
-              "Country": "QG",
+              "Country": "UK",
               "Amount": {
                 "Amount": "4.68702",
-                "Currency": "JGM"
+                "Currency": "GBP"
               }
             }
           ]
@@ -659,8 +659,8 @@ Content-Type: application/json
         {
           "DebitCreditReportingIndicator": "CRED",
           "Authority": {
-            "Name": "string",
-            "CountryCode": "UG"
+            "Name": "FCA",
+            "CountryCode": "UK"
           },
           "Details": [
             {
@@ -670,10 +670,10 @@ Content-Type: application/json
                 "Reg info1",
                 "Reg info2"
               ],
-              "Country": "QG",
+              "Country": "UK",
               "Amount": {
                 "Amount": "4.68702",
-                "Currency": "JGM"
+                "Currency": "GBP"
               }
             }
           ]
@@ -689,7 +689,7 @@ Content-Type: application/json
                 "Number": "Number_01",
                 "RelatedDate": "2024-04-25T13:26:41.911Z",
                 "LineDetails": [
-                  "string"
+                  "Line details entry 1"
                 ]
               }
             ],
@@ -853,16 +853,16 @@ Content-Type: application/json
         {
           "DebitCreditReportingIndicator": "CRED",
           "Authority": {
-            "Name": "string",
-            "CountryCode": "UG"
+            "Name": "FCA",
+            "CountryCode": "UK"
           },
           "Details": [
             {
               "Date": "2024-04-25T13:26:41.911Z",
-              "Country": "QG",
+              "Country": "UK",
               "Amount": {
                 "Amount": "4.68702",
-                "Currency": "JGM"
+                "Currency": "GBP"
               }
             }
           ]
@@ -878,7 +878,7 @@ Content-Type: application/json
                 "Number": "Number_01",
                 "RelatedDate": "2024-04-25T13:26:41.911Z",
                 "LineDetails": [
-                  "string"
+                  "Line details entry 1"
                 ]
               }
             ],
