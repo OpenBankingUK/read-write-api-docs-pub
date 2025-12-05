@@ -355,7 +355,40 @@ Content-Type: application/json
     "CutOffDateTime": "2017-06-05T16:00:13+00:00",
     "CreationDateTime": "2017-06-05T15:15:13+00:00",
     "StatusUpdateDateTime": "2017-06-05T15:15:13+00:00",
-    "Initiation": {},
+    "Initiation": {
+      "InstructionIdentification": "ACME412",
+      "EndToEndIdentification": "FRESCO.21302.GFX.20",
+      "InstructionPriority": "Normal",
+      "CurrencyOfTransfer": "USD",
+      "InstructedAmount": {
+        "Amount": "165.88",
+        "Currency": "GBP"
+      },
+      "CreditorAccount": {
+        "SchemeName": "UK.OBIE.SortCodeAccountNumber",
+        "Identification": "08080021325698",
+        "Name": "ACME Inc",
+        "SecondaryIdentification": "0002"
+      },
+      "RemittanceInformation": {
+        "Structured": [
+          {
+            "CreditorReferenceInformation": {
+              "Reference": "FRESCO-101"
+            }
+          }
+        ],
+        "Unstructured": [
+          "Internal ops code 5120101"
+        ]
+      },
+      "ExchangeRateInformation": {
+        "UnitCurrency": "GBP",
+        "RateType": "Agreed",
+        "ExchangeRate": 1.09,
+        "ContractIdentification": "/tbill/2018/T102993"
+      }
+    },
     "ExchangeRateInformation": {
       "UnitCurrency": "GBP",
       "RateType": "Agreed",
@@ -515,6 +548,17 @@ Accept: application/json
       "InstructionIdentification": "ACME412",
       "EndToEndIdentification": "FRESCO.21302.GFX.20",
       "ChargeBearer": "BorneByDebtor",
+      "CurrencyOfTransfer": "USD",
+      "InstructedAmount": {
+        "Amount": "165.88",
+        "Currency": "USD"
+      },
+      "CreditorAccount": {
+        "SchemeName": "UK.OBIE.SortCodeAccountNumber",
+        "Identification": "08080021325698",
+        "Name": "ACME Inc",
+        "SecondaryIdentification": "0002"
+      },
       "RemittanceInformation": {
         "Structured": [
           {
@@ -556,11 +600,46 @@ Content-Type: application/json
     "CutOffDateTime": "2017-06-05T16:00:13+00:00",
     "CreationDateTime": "2017-06-05T15:15:13+00:00",
     "StatusUpdateDateTime": "2017-06-05T15:15:13+00:00",
-    "Initiation": {},
+    "Initiation": {
+      "InstructionIdentification": "ACME412",
+      "EndToEndIdentification": "FRESCO.21302.GFX.20",
+      "ChargeBearer": "BorneByDebtor",
+      "CurrencyOfTransfer": "USD",
+      "InstructedAmount": {
+        "Amount": "165.88",
+        "Currency": "USD"
+      },
+      "CreditorAccount": {
+        "SchemeName": "UK.OBIE.SortCodeAccountNumber",
+        "Identification": "08080021325698",
+        "Name": "ACME Inc",
+        "SecondaryIdentification": "0002"
+      },
+      "RemittanceInformation": {
+        "Structured": [
+          {
+            "CreditorReferenceInformation": {
+              "Reference": "FRESCO-101"
+            }
+          }
+        ],
+        "Unstructured": [
+          "Internal ops code 5120101"
+        ]
+      },
+      "ExchangeRateInformation": {
+        "UnitCurrency": "USD",
+        "RateType": "Indicative"
+      }
+    },
     "Charges": [
       {
         "ChargeBearer": "BorneByDebtor",
-        "Type": "UK.OBIE.MoneyTransferOut"
+        "Type": "UK.OBIE.MoneyTransferOut",
+        "Amount": {
+          "Amount": "1",
+          "Currency": "USD"
+        }
       }
     ],
     "ExchangeRateInformation": {
