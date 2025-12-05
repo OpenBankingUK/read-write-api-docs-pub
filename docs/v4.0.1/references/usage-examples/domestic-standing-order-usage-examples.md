@@ -216,7 +216,7 @@ Accept: application/json
           {
             "ReferredDocumentInformation": [
               {
-                "Code": "CINV",
+                "Code": "CINV"
               }
             ]
           }
@@ -224,7 +224,7 @@ Accept: application/json
         "ReferredDocumentAmount": "1.00",
         "CreditorReferenceInformation": {
           "Reference": "Pocket money for Damien"
-        },
+        }
       }
       "FirstPaymentDateTime": "1976-06-06T06:06:06+00:00",
       "FirstPaymentAmount": {
@@ -282,7 +282,7 @@ Content-Type: application/json
           {
             "ReferredDocumentInformation": [
               {
-                "Code": "CINV",
+                "Code": "CINV"
               }
             ]
           }
@@ -290,7 +290,7 @@ Content-Type: application/json
         "ReferredDocumentAmount": "1.00",
         "CreditorReferenceInformation": {
           "Reference": "Pocket money for Damien"
-        },
+        }
       }
       "FirstPaymentDateTime": "1976-06-06T06:06:06+00:00",
       "FirstPaymentAmount": {
@@ -317,15 +317,16 @@ Content-Type: application/json
         "Name": "Bob Clements"
       }
     },
-  "Risk": {
-    "PaymentContextCode": "TransferToThirdParty"
+    "Risk": {
+      "PaymentContextCode": "TransferToThirdParty"
+    }
   }
+},
+"Links": {
+"Self": "https://api.alphabank.com/open-banking/v4.0/pisp/domestic-standing-orders/SO-SOC-100"
+},
+"Meta": {
 }
-  },
-  "Links": {
-    "Self": "https://api.alphabank.com/open-banking/v4.0/pisp/domestic-standing-orders/SO-SOC-100"
-  },
-  "Meta": {}
 }
 ```
 
@@ -364,7 +365,7 @@ Content-Type: application/json
           {
             "ReferredDocumentInformation": [
               {
-                "Code": "CINV",
+                "Code": "CINV"
               }
             ]
           }
@@ -372,7 +373,7 @@ Content-Type: application/json
         "ReferredDocumentAmount": "1.00",
         "CreditorReferenceInformation": {
           "Reference": "Pocket money for Damien"
-        },
+        }
       }
       "FirstPaymentDateTime": "1976-06-06T06:06:06+00:00",
       "FirstPaymentAmount": {
