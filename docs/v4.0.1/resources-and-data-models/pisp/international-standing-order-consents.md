@@ -321,78 +321,65 @@ Accept: application/json
 ```json
 {
   "Data": {
-	"Permission": "Create",
-  "ReadRefundAccount": "Yes",
-  "Authorisation": {
-	  "AuthorisationType": "Any", 
-      "CompletionDateTime": "2025-05-30T10:35:27Z",
-  },
-  "Initiation": {
-    "ChargeBearer": "Shared",
-    "Purpose": "CCRD",
-    "CurrencyOfTransfer": "USD",
-    "DestinationCountryCode": "GB",
-    "MandateRelatedInformation": {
-      "MandateIdentification": "Caravanners",
-      "Classification": "FIXE",
-      "CategoryPurposeCode": "BONU",
-      "FirstPaymentDateTime": "2024-04-25T12:46:49.425Z",
-      "RecurringPaymentDateTime": "2024-04-25T12:46:49.425Z",
-      "FinalPaymentDateTime": "2024-04-25T12:46:49.425Z",
-      "Frequency": {
-        "Type": "WEEK",
-        "CountPerPeriod": 1
-      }
+    "Permission": "Create",
+    "ReadRefundAccount": "Yes",
+    "Authorisation": {
+      "AuthorisationType": "Any",
+      "CompletionDateTime": "2025-05-30T10:35:27Z"
     },
-    "Creditor": {
-      "Name": "ACME Inc",
-      "LEI": "8200007YHFDMEODY1965",
-      "PostalAddress": {
-        "AddressType": "BIZZ",
-        "StreetName": "Bank Street",
-        "BuildingNumber": "11",
-        "Floor": "6",
-        "PostCode": "Z78 4TY",
-        "TownName": "London",
-        "Country": "GB"
-      }
-    },
-    "CreditorAccount": {
-      "SchemeName": "UK.OBIE.IBAN",
-      "Identification": "DE89370400440532013000",
-      "SecondaryIdentification": "0002",
-      "Name": "Tom Kirkman",
-      "Proxy": {
-        "Identification": "07700900000",
-        "Code": "TELE",
-        "Type": "Telephone"
+    "Initiation": {
+      "ChargeBearer": "Shared",
+      "CurrencyOfTransfer": "USD",
+      "DestinationCountryCode": "GB",
+      "Creditor": {
+        "Name": "ACME Inc",
+        "LEI": "8200007YHFDMEODY1965",
+        "PostalAddress": {
+          "AddressType": "BIZZ",
+          "StreetName": "Bank Street",
+          "BuildingNumber": "11",
+          "Floor": "6",
+          "PostCode": "Z78 4TY",
+          "TownName": "London",
+          "Country": "GB"
+        }
       },
-    },
-    "CreditAgent": {
-      "SchemeName": "UK.OBIE.IBAN",
-      "Identification": "DE89370400440532013000",
-      "LEI": "8200007YHFDMEODY1965",
-      "Name": "Tom Kirkman",
-      "PostalAddress": {
-        "AddressType": "BIZZ",
-        "StreetName": "Bank Street",
-        "BuildingNumber": "11",
-        "Floor": "6",
-        "PostCode": "Z78 4TY",
-        "TownName": "London",
-        "Country": "GB"
-      }
-    },
-    "DebtorAccount": {
+      "CreditorAccount": {
+        "SchemeName": "UK.OBIE.IBAN",
+        "Identification": "DE89370400440532013000",
+        "SecondaryIdentification": "0002",
+        "Name": "Tom Kirkman",
+        "Proxy": {
+          "Identification": "07700900000",
+          "Code": "TELE",
+          "Type": "Telephone"
+        }
+      },
+      "CreditorAgent": {
+        "SchemeName": "UK.OBIE.IBAN",
+        "Identification": "DE89370400440532013000",
+        "LEI": "8200007YHFDMEODY1965",
+        "Name": "Tom Kirkman",
+        "PostalAddress": {
+          "AddressType": "BIZZ",
+          "StreetName": "Bank Street",
+          "BuildingNumber": "11",
+          "Floor": "6",
+          "PostCode": "Z78 4TY",
+          "TownName": "London",
+          "Country": "GB"
+        }
+      },
+      "DebtorAccount": {
         "SchemeName": "UK.OBIE.SortCodeAccountNumber",
         "Identification": "11280001234567",
         "Name": "Andrea Frost"
       },
-	  "InstructedAmount": {
+      "InstructedAmount": {
         "Amount": "20",
         "Currency": "EUR"
-	  },
-    "MandateRelatedInformation": {
+      },
+      "MandateRelatedInformation": {
         "MandateIdentification": "Golfers",
         "Classification": "FIXE",
         "CategoryPurposeCode": "BONU",
@@ -400,7 +387,7 @@ Accept: application/json
         "RecurringPaymentDateTime": "2024-04-25T12:46:49.425Z",
         "FinalPaymentDateTime": "2024-04-25T12:46:49.425Z",
         "Reason": "Membership fees",
-        "Frequency": { 
+        "Frequency": {
           "Type": "MNTH",
           "CountPerPeriod": 1
         }
@@ -411,13 +398,13 @@ Accept: application/json
         "Name": "Ultimate Debtor",
         "LEI": "8200007YHFDMEODY1965",
         "PostalAddress": {
-            "AddressType": "BIZZ",
-            "StreetName": "Bank Street",
-            "BuildingNumber": "11",
-            "Floor": "6",
-            "PostCode": "Z78 4TY",
-            "TownName": "London",
-            "Country": "GB"
+          "AddressType": "BIZZ",
+          "StreetName": "Bank Street",
+          "BuildingNumber": "11",
+          "Floor": "6",
+          "PostCode": "Z78 4TY",
+          "TownName": "London",
+          "Country": "GB"
         }
       },
       "UltimateCreditor": {
@@ -426,78 +413,85 @@ Accept: application/json
         "Name": "Ultimate Creditor",
         "LEI": "60450004FECVJV7YN339",
         "PostalAddress": {
-            "AddressType": "BIZZ",
-            "StreetName": "Bank Street",
-            "BuildingNumber": "11",
-            "Floor": "6",
-            "PostCode": "Z78 4TY",
-            "TownName": "London",
-            "Country": "GB"
-            }
-        },
+          "AddressType": "BIZZ",
+          "StreetName": "Bank Street",
+          "BuildingNumber": "11",
+          "Floor": "6",
+          "PostCode": "Z78 4TY",
+          "TownName": "London",
+          "Country": "GB"
+        }
+      },
       "RegulatoryReporting": [
-          {
-            "DebitCreditReportingIndicator": "CRED",
-            "Authority": {
-              "Name": "string",
-              "CountryCode": "UG"
-            },
-            "Details": [
-              {
+        {
+          "DebitCreditReportingIndicator": "CRED",
+          "Authority": {
+            "Name": "FCA",
+            "CountryCode": "UK"
+          },
+          "Details": [
+            {
               "Type": "CRED",
               "Date": "2024-04-25T13:26:41.911Z",
-              "Information": ["Reg info1", "Reg info2"],
-              "Country": "QG",
+              "Information": [
+                "Reg info1",
+                "Reg info2"
+              ],
+              "Country": "UK",
               "Amount": {
                 "Amount": "4.68702",
-                "Currency": "JGM"
-                }
+                "Currency": "GBP"
               }
+            }
           ]
         }
       ],
       "RemittanceInformation": {
-          "Structured": [
-            {
-              "ReferredDocumentInformation": [
-                {
-                  "Code": "CINV",
-                  "Issuer": "Issuer01",
-                  "Number": "Number_01",
-                  "RelatedDate": "2024-04-25T13:26:41.911Z",
-                  "LineDetails": [
-                    "string"
-                  ]
-                }
-              ],
-              "ReferredDocumentAmount": "1.00",
-              "CreditorReferenceInformation": {
-                "Code": "DISP",
+        "Structured": [
+          {
+            "ReferredDocumentInformation": [
+              {
+                "Code": "CINV",
                 "Issuer": "Issuer01",
-                "Reference": "REF_26518"
-              },
-              "Invoicer": "INVR51856",
-              "Invoicee": "INVE5161856",
-              "TaxRemittance": "Tax Remittance related information",
-              "AdditionalRemittanceInformation": ["Free text for additional information"],
-            }
-          ],
-          "Unstructured": ["Internal ops code 5120101"]
-        }
+                "Number": "Number_01",
+                "RelatedDate": "2024-04-25T13:26:41.911Z",
+                "LineDetails": [
+                  "Line detail entry 1"
+                ]
+              }
+            ],
+            "ReferredDocumentAmount": "1.00",
+            "CreditorReferenceInformation": {
+              "Code": "DISP",
+              "Issuer": "Issuer01",
+              "Reference": "REF_26518"
+            },
+            "Invoicer": "INVR51856",
+            "Invoicee": "INVE5161856",
+            "TaxRemittance": "Tax Remittance related information",
+            "AdditionalRemittanceInformation": [
+              "Free text for additional information"
+            ]
+          }
+        ],
+        "Unstructured": [
+          "Internal ops code 5120101"
+        ]
+      }
+    },
+    "SCASupportData": {
+      "RequestedSCAExemptionType": "EcommerceGoods",
+      "AppliedAuthenticationApproach": "SCA",
+      "ReferencePaymentOrderId": "O-611265"
     }
-  },
-  "SCASupportData": {
-    "RequestedSCAExemptionType": "EcommerceGoods",
-    "AppliedAuthenticationApproach": "SCA",
-    "ReferencePaymentOrderId": "O-611265",
   },
   "Risk": {
     "PaymentContextCode": "TransferToThirdParty",
     "PaymentPurposeCode": "EPAY",
-    "CategoryPurposeCode": "CASH", 
+    "CategoryPurposeCode": "CASH",
     "BeneficiaryPrepopulatedIndicator": false,
     "BeneficiaryAccountType": "Business",
-    "MerchantCategoryCode": "7300", 
+    "MerchantCategoryCode": "7300",
     "MerchantCustomerIdentification": "053598653254",
     "DeliveryAddress": {
       "AddressLine": [
@@ -526,59 +520,61 @@ Content-Type: application/json
 
 ```json
 {
-"Data": {
-	"ConsentId": "ISOC-100",
-	"CreationDateTime": "2018-01-01T06:06:06+00:00",
-  "CutOffDateTime": "2017-06-05T16:00:13+00:00",
-	"StatusUpdateDateTime": "2017-06-05T15:15:13+00:00",
-  "ExpectedExecutionDateTime": "2018-06-05T15:15:22+00:00",
-  "ExpectedSettlementDateTime": "2018-06-06T15:15:22+00:00",
-	"Permission": "Create",
-  "ReadRefundAccount": "Yes",
-	"Status": "AWAU",
-  "StatusReason": [{
-    "StatusReasonCode": "U036", 
-    "StatusReasonDescription":"Waiting for completion of consent authorisation to be completed by user",
-  }],
-  "Debtor":{
+  "Data": {
+    "ConsentId": "ISOC-100",
+    "CreationDateTime": "2018-01-01T06:06:06+00:00",
+    "CutOffDateTime": "2017-06-05T16:00:13+00:00",
+    "StatusUpdateDateTime": "2017-06-05T15:15:13+00:00",
+    "ExpectedExecutionDateTime": "2018-06-05T15:15:22+00:00",
+    "ExpectedSettlementDateTime": "2018-06-06T15:15:22+00:00",
+    "Permission": "Create",
+    "ReadRefundAccount": "Yes",
+    "Status": "AWAU",
+    "StatusReason": [
+      {
+        "StatusReasonCode": "U036",
+        "StatusReasonDescription": "Waiting for completion of consent authorisation to be completed by user"
+      }
+    ],
+    "Debtor": {
       "SchemeName": "UK.OBIE.SortCodeAccountNumber",
       "Identification": "08080021325698",
       "Name": "ACME Inc",
       "SecondaryIdentification": "0002",
-      "LEI": "8200007YHFDMEODY1965",
-  },
-  "Charges": [{
-       "ChargeBearer": "Shared",
-       "Type": "UK.OBIE.CHAPSOut",
-       "Amount"  {
-        "Amount": "0.88",
-        "Currency": "GBP"
+      "LEI": "8200007YHFDMEODY1965"
+    },
+    "Charges": [
+      {
+        "ChargeBearer": "Shared",
+        "Type": "UK.OBIE.CHAPSOut",
+        "Amount": {
+          "Amount": "0.88",
+          "Currency": "GBP"
+        }
       }
-  }],
-  "Authorisation": {
-    "AuthorisationType": "Any", 
-    "CompletionDateTime": "2025-05-30T10:35:27Z",
-  },
-  "Initiation": {
-    "ChargeBearer": "Shared",   
-    "Purpose": "CCRD",
-    "CurrencyOfTransfer": "USD",
-    "DestinationCountryCode": "GB",
-    "InstructedAmount": {
-      "Amount": {
+    ],
+    "Authorisation": {
+      "AuthorisationType": "Any",
+      "CompletionDateTime": "2025-05-30T10:35:27Z"
+    },
+    "Initiation": {
+      "ChargeBearer": "Shared",
+      "CurrencyOfTransfer": "USD",
+      "DestinationCountryCode": "GB",
+      "InstructedAmount": {
+        "Amount": {
           "Amount": "165.88",
           "Currency": "USD"
         }
-    },
-    "ExchangeRateInformation": {
-      "UnitCurrency": "GBP",
-      "ContractIdentification": "0591968098186",
-      "ExchangeRate": 1.22,
-      "RateType": "Actual"
-    },
-    "Creditor": {
-      "SchemeName": "UK.OBIE.SortCodeAccountNumber",
-      "LEI": "8200007YHFDMEODY8412",
+      },
+      "ExchangeRateInformation": {
+        "UnitCurrency": "GBP",
+        "ContractIdentification": "0591968098186",
+        "ExchangeRate": 1.22,
+        "RateType": "Actual"
+      },
+      "Creditor": {
+        "LEI": "8200007YHFDMEODY8412",
         "PostalAddress": {
           "AddressType": "BIZZ",
           "StreetName": "Bank Street",
@@ -587,46 +583,24 @@ Content-Type: application/json
           "PostCode": "Z78 4TY",
           "TownName": "London",
           "Country": "GB"
-      }
-    },
-    "CreditorAccount": {
-      "SchemeName": "UK.OBIE.SortCodeAccountNumber",
-      "Identification": "08080021325698",
-      "Name": "ACME Inc",
-      "SecondaryIdentification": "0002",
-      "Proxy": {
-        "Identification": "+441632960540",
-        "Code": "TELE",
-        "Type": "Telephone"
+        }
       },
-    },
-    "CreditorAgent": {  
-      "LEI": "IZ9Q00LZEVUKWCQY6X15",
-      "SchemeName": "UK.OBIE.BICFI",
-      "Identification": "80200112344562",
-      "Name": "The Credit Agent", 
-      "PostalAddress": { 
-        "AddressType": "BIZZ",
-        "StreetName": "Bank Street",
-        "BuildingNumber": "11",
-        "Floor": "6",
-        "PostCode": "Z78 4TY",
-        "TownName": "London",
-        "Country": "GB"
-    },
-    "DebtorAccount":{
-      "SchemeName": "UK.OBIE.SortCodeAccountNumber",
-      "Identification": "08080021325698",
-      "Name": "ACME Inc",
-      "SecondaryIdentification": "0002",
-      "LEI": "8200007YHFDMEODY1965",
-      "Proxy": {
-        "Identification": "07700900000",
-        "Code": "TELE",
-        "Type": "Telephone"
+      "CreditorAgent": {
+        "LEI": "IZ9Q00LZEVUKWCQY6X15",
+        "SchemeName": "UK.OBIE.BICFI",
+        "Identification": "80200112344562",
+        "Name": "The Credit Agent",
+        "PostalAddress": {
+          "AddressType": "BIZZ",
+          "StreetName": "Bank Street",
+          "BuildingNumber": "11",
+          "Floor": "6",
+          "PostCode": "Z78 4TY",
+          "TownName": "London",
+          "Country": "GB"
+        }
       },
-    },
-    "UltimateDebtor": {
+      "UltimateDebtor": {
         "SchemeName": "UK.OBIE.BICFI",
         "Identification": "2360549017905161589",
         "Name": "Ultimate Debtor",
@@ -654,95 +628,108 @@ Content-Type: application/json
           "PostCode": "Z78 4TY",
           "TownName": "London",
           "Country": "GB"
-          }
-        },
-    "RegulatoryReporting": [{
-      "DebitCreditReportingIndicator": "CRED",
-      "Authority": {
-        "Name": "string",
-        "CountryCode": "UG"
-      },
-      "Details": [{
-        "Type": "CRED",
-        "Date": "2024-04-25T13:26:41.911Z",
-        "Information": ["Reg info1", "Reg info2"],
-        "Country": "QG",
-        "Amount": {
-          "Amount": "4.68702",
-          "Currency": "JGM"
         }
-      }]
-    }],
-   "RemittanceInformation": {
-      "Structured": [{
-          "ReferredDocumentInformation": [{
-              "Code": "CINV",
-              "Issuer": "Issuer01",
-              "Number": "Number_01",
-              "RelatedDate": "2024-04-25T13:26:41.911Z",
-              "LineDetails": [
-                "string"
-              ]
-            }],
-          "ReferredDocumentAmount": "1.00",
-          "CreditorReferenceInformation": {
-            "Code": "DISP",
-            "Issuer": "Issuer01",
-            "Reference": "REF_26518"
+      },
+      "RegulatoryReporting": [
+        {
+          "DebitCreditReportingIndicator": "CRED",
+          "Authority": {
+            "Name": "FCA",
+            "CountryCode": "UK"
           },
-          "Invoicer": "INVR51856",
-          "Invoicee": "INVE5161856",
-          "TaxRemittance": "Tax Remittance related information",
-          "AdditionalRemittanceInformation": ["Free text for additional information"],
+          "Details": [
+            {
+              "Type": "CRED",
+              "Date": "2024-04-25T13:26:41.911Z",
+              "Information": [
+                "Reg info1",
+                "Reg info2"
+              ],
+              "Country": "UK",
+              "Amount": {
+                "Amount": "4.68702",
+                "Currency": "GBP"
+              }
+            }
+          ]
         }
       ],
-      "Unstructured": ["Internal ops code 5120101"]
-    },
-	 "MandateRelatedInformation": {
-      "MandateIdentification": "Golfers",
-      "Classification": "FIXE",
-      "CategoryPurposeCode": "BONU",
-      "FirstPaymentDateTime": "2024-04-25T12:46:49.425Z",
-      "RecurringPaymentDateTime": "2024-04-25T12:46:49.425Z",
-      "FinalPaymentDateTime": "2024-04-25T12:46:49.425Z",
-      "Reason": "Golf membership fees", 
-      "Frequency": { 
-        "Type": "MNTH",
-        "CountPerPeriod": 1
+      "RemittanceInformation": {
+        "Structured": [
+          {
+            "ReferredDocumentInformation": [
+              {
+                "Code": "CINV",
+                "Issuer": "Issuer01",
+                "Number": "Number_01",
+                "RelatedDate": "2024-04-25T13:26:41.911Z",
+                "LineDetails": [
+                  "Line detail entry 1"
+                ]
+              }
+            ],
+            "ReferredDocumentAmount": "1.00",
+            "CreditorReferenceInformation": {
+              "Code": "DISP",
+              "Issuer": "Issuer01",
+              "Reference": "REF_26518"
+            },
+            "Invoicer": "INVR51856",
+            "Invoicee": "INVE5161856",
+            "TaxRemittance": "Tax Remittance related information",
+            "AdditionalRemittanceInformation": [
+              "Free text for additional information"
+            ]
+          }
+        ],
+        "Unstructured": [
+          "Internal ops code 5120101"
+        ]
+      },
+      "MandateRelatedInformation": {
+        "MandateIdentification": "Golfers",
+        "Classification": "FIXE",
+        "CategoryPurposeCode": "BONU",
+        "FirstPaymentDateTime": "2024-04-25T12:46:49.425Z",
+        "RecurringPaymentDateTime": "2024-04-25T12:46:49.425Z",
+        "FinalPaymentDateTime": "2024-04-25T12:46:49.425Z",
+        "Reason": "Golf membership fees",
+        "Frequency": {
+          "Type": "MNTH",
+          "CountPerPeriod": 1
+        }
+      },
+      "DebtorAccount": {
+        "SchemeName": "UK.OBIE.SortCodeAccountNumber",
+        "Identification": "11280001234567",
+        "Name": "Andrea Frost",
+        "SecondaryIdentification": "0002",
+        "LEI": "8200007YHFDMEODY1965",
+        "Proxy": {
+          "Identification": "07700900000",
+          "Code": "TELE",
+          "Type": "Telephone"
+        }
+      },
+      "CreditorAccount": {
+        "SchemeName": "UK.OBIE.IBAN",
+        "Identification": "DE89370400440532013000",
+        "Name": "Tom Kirkman"
       }
     },
-    "DebtorAccount": {
-      "SchemeName": "UK.OBIE.SortCodeAccountNumber",
-      "Identification": "11280001234567",
-      "Name": "Andrea Frost",
-      "SecondaryIdentification": "0002",
-      "LEI": "8200007YHFDMEODY1965",
-      "Proxy": {
-        "Identification": "07700900000",
-        "Code": "TELE",
-        "Type": "Telephone"
-      },
-    },
-    "CreditorAccount": {
-      "SchemeName": "UK.OBIE.IBAN",
-      "Identification": "DE89370400440532013000",
-      "Name": "Tom Kirkman"
-    },
-  }
-  },
-  "SCASupportData": {
-    "RequestedSCAExemptionType": "EcommerceGoods",
-    "AppliedAuthenticationApproach": "SCA",
-    "ReferencePaymentOrderId": "O-611265",
-  },  
+    "SCASupportData": {
+      "RequestedSCAExemptionType": "EcommerceGoods",
+      "AppliedAuthenticationApproach": "SCA",
+      "ReferencePaymentOrderId": "O-611265"
+    }
   },
   "Risk": {
     "PaymentContextCode": "TransferToThirdParty",
     "PaymentPurposeCode": "EPAY",
-    "CategoryPurposeCode": "CASH", 
+    "CategoryPurposeCode": "CASH",
     "BeneficiaryPrepopulatedIndicator": false,
     "BeneficiaryAccountType": "Business",
-    "MerchantCategoryCode": "7300", 
+    "MerchantCategoryCode": "7300",
     "MerchantCustomerIdentification": "053598653254",
     "DeliveryAddress": {
       "AddressLine": [
@@ -756,7 +743,7 @@ Content-Type: application/json
       "CountrySubDivision": "Wessex",
       "Country": "GB"
     }
-  }
+  },
   "Links": {
     "Self": "https://api.alphabank.com/open-banking/v4.0/pisp/international-standing-order-consents/ISOC-100"
   },
