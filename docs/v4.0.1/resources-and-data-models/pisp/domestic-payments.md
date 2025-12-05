@@ -307,7 +307,7 @@ Accept: application/json
           "Identification": "+441632960540",
           "Code": "TELE",
           "Type": "Telephone"
-        },
+        }
       },
       "DebtorAccount": {
         "SchemeName": "UK.OBIE.SortCodeAccountNumber",
@@ -318,14 +318,14 @@ Accept: application/json
           "Identification": "441234012345",
           "Code": "TELE",
           "Type": "Telephone"
-        },
+        }
       },
       "UltimateDebtor": {
-      "SchemeName": "UK.OBIE.BICFI",
-      "Identification": "2360549017905161589",
-      "Name": "Ultimate Debtor",
-      "LEI": "8200007YHFDMEODY1965",
-      "PostalAddress": {
+        "SchemeName": "UK.OBIE.BICFI",
+        "Identification": "2360549017905161589",
+        "Name": "Ultimate Debtor",
+        "LEI": "8200007YHFDMEODY1965",
+        "PostalAddress": {
           "AddressType": "BIZZ",
           "StreetName": "Bank Street",
           "BuildingNumber": "11",
@@ -333,14 +333,14 @@ Accept: application/json
           "PostCode": "Z78 4TY",
           "TownName": "London",
           "Country": "GB"
-      }
-    },
+        }
+      },
       "UltimateCreditor": {
-      "SchemeName": "UK.OBIE.BICFI",
-      "Identification": "2360549017905161589",
-      "Name": "Ultimate Creditor",
-      "LEI": "60450004FECVJV7YN339",
-      "PostalAddress": {
+        "SchemeName": "UK.OBIE.BICFI",
+        "Identification": "2360549017905161589",
+        "Name": "Ultimate Creditor",
+        "LEI": "60450004FECVJV7YN339",
+        "PostalAddress": {
           "AddressType": "BIZZ",
           "StreetName": "Bank Street",
           "BuildingNumber": "11",
@@ -348,92 +348,78 @@ Accept: application/json
           "PostCode": "Z78 4TY",
           "TownName": "London",
           "Country": "GB"
-          }
+        }
       },
       "RegulatoryReporting": [
-          {
-            "DebitCreditReportingIndicator": "CRED",
-            "Authority": {
-              "Name": "string",
-              "CountryCode": "UG"
-            },
-            "Details": [
-              {
+        {
+          "DebitCreditReportingIndicator": "CRED",
+          "Authority": {
+            "Name": "FCA",
+            "CountryCode": "UK"
+          },
+          "Details": [
+            {
               "Type": "CRED",
               "Date": "2024-04-25T13:26:41.911Z",
-              "Information": ["Reg info1", "Reg info2"],
-              "Country": "QG",
+              "Information": [
+                "Reg info1",
+                "Reg info2"
+              ],
+              "Country": "UK",
               "Amount": {
                 "Amount": "4.68702",
-                "Currency": "JGM"
+                "Currency": "GBP"
               }
             }
           ]
-          }
+        }
       ],
-       "CreditorAgent": {  
-          "LEI": "IZ9Q00LZEVUKWCQY6X15",
-          "SchemeName": "UK.OBIE.BICFI",
-          "Identification": "80200112344562",
-          "Name": "The Credit Agent", 
-          "PostalAddress": { 
-            "AddressType": "BIZZ",
-            "StreetName": "Bank Street",
-            "BuildingNumber": "11",
-            "Floor": "6",
-            "PostCode": "Z78 4TY",
-            "TownName": "London",
-            "Country": "GB"
+      "CreditorAgent": {
+        "LEI": "IZ9Q00LZEVUKWCQY6X15",
+        "SchemeName": "UK.OBIE.BICFI",
+        "Identification": "80200112344562",
+        "Name": "The Credit Agent",
+        "PostalAddress": {
+          "AddressType": "BIZZ",
+          "StreetName": "Bank Street",
+          "BuildingNumber": "11",
+          "Floor": "6",
+          "PostCode": "Z78 4TY",
+          "TownName": "London",
+          "Country": "GB"
         }
       },
-      "RegulatoryReporting": [
-          {
-            "DebitCreditReportingIndicator": "CRED",
-            "Authority": {
-              "Name": "string",
-              "CountryCode": "UG"
-            },
-            "Details": [
-              {
-              "Type": "CRED",
-              "Date": "2024-04-25T13:26:41.911Z",
-              "Information": ["Reg info1", "Reg info2"],
-              "Country": "QG",
-              "Amount": {
-                "Amount": "4.68702",
-                "Currency": "JGM"
-                }
-            }
-          ]
-        }
-      ],
       "RemittanceInformation": {
-          "Structured": [
-            {
-              "ReferredDocumentInformation": [
-                {
-                  "Code": "CINV",
-                  "Issuer": "Issuer01",
-                  "Number": "Number_01",
-                  "RelatedDate": "2024-04-25T13:26:41.911Z",
-                  "LineDetails": [
-                    "string"
-                  ]
-                }
-              ],
-              "ReferredDocumentAmount": "1.00",
-              "CreditorReferenceInformation": {
-                "Code": "DISP",
+        "Structured": [
+          {
+            "ReferredDocumentInformation": [
+              {
+                "Code": "CINV",
                 "Issuer": "Issuer01",
-                "Reference": "REF_26518"
-              },
-              "Invoicer": "INVR51856",
-              "Invoicee": "INVE5161856",
-              "TaxRemittance": "Tax Remittance related information",
-              "AdditionalRemittanceInformation": ["Free text for additional information"],  
+                "Number": "Number_01",
+                "RelatedDate": "2024-04-25T13:26:41.911Z",
+                "LineDetails": [
+                  "Line details entry 1"
+                ]
+              }
+            ],
+            "ReferredDocumentAmount": "1.00",
+            "CreditorReferenceInformation": {
+              "Code": "DISP",
+              "Issuer": "Issuer01",
+              "Reference": "REF_26518"
+            },
+            "Invoicer": "INVR51856",
+            "Invoicee": "INVE5161856",
+            "TaxRemittance": "Tax Remittance related information",
+            "AdditionalRemittanceInformation": [
+              "Free text for additional information"
+            ]
           }
         ],
-        "Unstructured": ["Internal ops code 5120101"]
+        "Unstructured": [
+          "Internal ops code 5120101"
+        ]
       }
     }
   },
@@ -441,10 +427,10 @@ Accept: application/json
     "PaymentContextCode": "EcommerceMerchantInitiatedPayment",
     "ContractPresentIndicator": false,
     "PaymentPurposeCode": "EPAY",
-    "CategoryPurposeCode": "CASH", 
+    "CategoryPurposeCode": "CASH",
     "BeneficiaryPrepopulatedIndicator": false,
     "BeneficiaryAccountType": "Business",
-    "MerchantCategoryCode": "7300", 
+    "MerchantCategoryCode": "7300",
     "MerchantCustomerIdentification": "053598653254",
     "DeliveryAddress": {
       "AddressLine": [
@@ -477,10 +463,12 @@ Content-Type: application/json
     "DomesticPaymentId": "58923-001",
     "ConsentId": "58923",
     "Status": "ACSP",
-    "StatusReason":{
-      "StatusReasonCode": "U30",
-      "Description": "	Payment order successfully received"
-    },
+    "StatusReason": [
+      {
+        "StatusReasonCode": "U30",
+        "Description": "Payment order successfully received"
+      }
+    ],
     "CreationDateTime": "2017-06-05T15:15:22+00:00",
     "StatusUpdateDateTime": "2017-06-05T15:15:13+00:00",
     "ExpectedExecutionDateTime": "2017-06-05T15:15:22+00:00",
@@ -493,32 +481,34 @@ Content-Type: application/json
         "Name": "NTPC Inc"
       }
     },
-    "Debtor":{
+    "Debtor": {
       "SchemeName": "UK.OBIE.SortCodeAccountNumber",
       "Identification": "08080021325698",
       "Name": "ACME Inc",
       "SecondaryIdentification": "0002",
-      "LEI": "8200007YHFDMEODY1965",
+      "LEI": "8200007YHFDMEODY1965"
     },
-    "Charges": [{
-       "ChargeBearer": "Shared",
-       "Type": "UK.OBIE.CHAPSOut",
-       "Amount"  {
-        "Amount": "0.88",
-        "Currency": "GBP"
-      },
-    }],
-    "MultiAuthorisation": { 
-      "Status": "AUTH", 
+    "Charges": [
+      {
+        "ChargeBearer": "Shared",
+        "Type": "UK.OBIE.CHAPSOut",
+        "Amount": {
+          "Amount": "0.88",
+          "Currency": "GBP"
+        }
+      }
+    ],
+    "MultiAuthorisation": {
+      "Status": "AUTH",
       "NumberRequired": 2,
       "NumberReceived": 2,
       "LastUpdateDateTime": "2017-06-05T15:15:13+00:00",
-      "ExpirationDateTime": "2017-06-06T15:15:13+00:00",
+      "ExpirationDateTime": "2017-06-06T15:15:13+00:00"
     },
     "Initiation": {
       "InstructionIdentification": "ACME412",
       "EndToEndIdentification": "FRESCO.21302.GFX.20",
-      "LocalInstrument": "UK.OBIE.CHAPS", 
+      "LocalInstrument": "UK.OBIE.CHAPS",
       "InstructedAmount": {
         "Amount": "165.88",
         "Currency": "GBP"
@@ -545,7 +535,7 @@ Content-Type: application/json
           "Type": "Telephone"
         }
       },
-      "CreditorPostalAddress":{
+      "CreditorPostalAddress": {
         "AddressType": "BIZZ",
         "StreetName": "Bank Street",
         "BuildingNumber": "11",
@@ -554,36 +544,12 @@ Content-Type: application/json
         "TownName": "London",
         "Country": "GB"
       },
-      "CreditorPostalAddress":{
-        "AddressType": "BIZZ",
-        "StreetName": "Bank Street",
-        "BuildingNumber": "11",
-        "Floor": "6",
-        "PostCode": "Z78 4TY",
-        "TownName": "London",
-        "Country": "GB"
-      },
-     "UltimateDebtor": {
+      "UltimateDebtor": {
         "SchemeName": "UK.OBIE.BICFI",
         "Identification": "2360549017905161589",
         "Name": "Ultimate Debtor",
         "LEI": "8200007YHFDMEODY1965",
         "PostalAddress": {
-            "AddressType": "BIZZ",
-            "StreetName": "Bank Street",
-            "BuildingNumber": "11",
-            "Floor": "6",
-            "PostCode": "Z78 4TY",
-            "TownName": "London",
-            "Country": "GB"
-        }
-      },
-    "UltimateCreditor": {
-      "SchemeName": "UK.OBIE.BICFI",
-      "Identification": "2360549017905161589",
-      "Name": "Ultimate Creditor",
-      "LEI": "60450004FECVJV7YN339",
-      "PostalAddress": {
           "AddressType": "BIZZ",
           "StreetName": "Bank Street",
           "BuildingNumber": "11",
@@ -591,45 +557,63 @@ Content-Type: application/json
           "PostCode": "Z78 4TY",
           "TownName": "London",
           "Country": "GB"
-          }
+        }
       },
-    "RegulatoryReporting": [
+      "UltimateCreditor": {
+        "SchemeName": "UK.OBIE.BICFI",
+        "Identification": "2360549017905161589",
+        "Name": "Ultimate Creditor",
+        "LEI": "60450004FECVJV7YN339",
+        "PostalAddress": {
+          "AddressType": "BIZZ",
+          "StreetName": "Bank Street",
+          "BuildingNumber": "11",
+          "Floor": "6",
+          "PostCode": "Z78 4TY",
+          "TownName": "London",
+          "Country": "GB"
+        }
+      },
+      "RegulatoryReporting": [
         {
           "DebitCreditReportingIndicator": "CRED",
           "Authority": {
-            "Name": "string",
-            "CountryCode": "UG"
+            "Name": "FCA",
+            "CountryCode": "UK"
           },
           "Details": [
             {
-             "Type": "CRED",
+              "Type": "CRED",
               "Date": "2024-04-25T13:26:41.911Z",
-              "Information": ["Reg info1", "Reg info2"],
-              "Country": "QG",
+              "Information": [
+                "Reg info1",
+                "Reg info2"
+              ],
+              "Country": "UK",
               "Amount": {
                 "Amount": "4.68702",
-                "Currency": "JGM"
+                "Currency": "GBP"
               }
             }
-        ]
-      }
-    ],
-     "CreditorAgent": {  
-          "LEI": "IZ9Q00LZEVUKWCQY6X15",
-          "SchemeName": "UK.OBIE.BICFI",
-          "Identification": "80200112344562",
-          "Name": "The Credit Agent", 
-          "PostalAddress": { 
-            "AddressType": "BIZZ",
-            "StreetName": "Bank Street",
-            "BuildingNumber": "11",
-            "Floor": "6",
-            "PostCode": "Z78 4TY",
-            "TownName": "London",
-            "Country": "GB"
+          ]
+        }
+      ],
+      "CreditorAgent": {
+        "LEI": "IZ9Q00LZEVUKWCQY6X15",
+        "SchemeName": "UK.OBIE.BICFI",
+        "Identification": "80200112344562",
+        "Name": "The Credit Agent",
+        "PostalAddress": {
+          "AddressType": "BIZZ",
+          "StreetName": "Bank Street",
+          "BuildingNumber": "11",
+          "Floor": "6",
+          "PostCode": "Z78 4TY",
+          "TownName": "London",
+          "Country": "GB"
         }
       },
-    "RemittanceInformation": {
+      "RemittanceInformation": {
         "Structured": [
           {
             "ReferredDocumentInformation": [
@@ -639,7 +623,7 @@ Content-Type: application/json
                 "Number": "Number_01",
                 "RelatedDate": "2024-04-25T13:26:41.911Z",
                 "LineDetails": [
-                  "string"
+                  "line details entry 1"
                 ]
               }
             ],
@@ -652,10 +636,14 @@ Content-Type: application/json
             "Invoicer": "INVR51856",
             "Invoicee": "INVE5161856",
             "TaxRemittance": "Tax Remittance related information",
-            "AdditionalRemittanceInformation": ["Free text for additional information"],  
+            "AdditionalRemittanceInformation": [
+              "Free text for additional information"
+            ]
           }
         ],
-        "Unstructured": ["Internal ops code 5120101"]
+        "Unstructured": [
+          "Internal ops code 5120101"
+        ]
       }
     }
   },
@@ -665,6 +653,7 @@ Content-Type: application/json
   "Meta": {}
 }
 ```
+
 ### GET /domestic-payments/{DomesticPaymentId}
 
 #### Request
@@ -702,19 +691,19 @@ Content-Type: application/json
         "Amount": "165.88",
         "Currency": "GBP"
       },
-       "CreditorAgent": {  
-          "LEI": "IZ9Q00LZEVUKWCQY6X15",
-          "SchemeName": "UK.OBIE.BICFI",
-          "Identification": "80200112344562",
-          "Name": "The Credit Agent", 
-          "PostalAddress": { 
-            "AddressType": "BIZZ",
-            "StreetName": "Bank Street",
-            "BuildingNumber": "11",
-            "Floor": "6",
-            "PostCode": "Z78 4TY",
-            "TownName": "London",
-            "Country": "GB"
+      "CreditorAgent": {
+        "LEI": "IZ9Q00LZEVUKWCQY6X15",
+        "SchemeName": "UK.OBIE.BICFI",
+        "Identification": "80200112344562",
+        "Name": "The Credit Agent",
+        "PostalAddress": {
+          "AddressType": "BIZZ",
+          "StreetName": "Bank Street",
+          "BuildingNumber": "11",
+          "Floor": "6",
+          "PostCode": "Z78 4TY",
+          "TownName": "London",
+          "Country": "GB"
         }
       },
       "CreditorAccount": {
@@ -738,7 +727,7 @@ Content-Type: application/json
                 "Number": "Number_01",
                 "RelatedDate": "2024-04-25T13:26:41.911Z",
                 "LineDetails": [
-                  "string"
+                  "Line details entry 1"
                 ]
               }
             ],
@@ -751,17 +740,21 @@ Content-Type: application/json
             "Invoicer": "INVR51856",
             "Invoicee": "INVE5161856",
             "TaxRemittance": "Tax Remittance related information",
-            "AdditionalRemittanceInformation": ["Free text for additional information"],  
+            "AdditionalRemittanceInformation": [
+              "Free text for additional information"
+            ]
           }
         ],
-        "Unstructured": ["Internal ops code 5120101"]
+        "Unstructured": [
+          "Internal ops code 5120101"
+        ]
       },
-    "Debtor": { 
-      "Name": "D Jones",
-      "SchemeName": "UK.OBIE.SortCodeAccountNumber",
-      "Identification": "08080021325698",
-      "SecondaryIdentification": "0002",
-      "LEI": "8200007YHFDMEODY1965",
+      "Debtor": {
+        "Name": "D Jones",
+        "SchemeName": "UK.OBIE.SortCodeAccountNumber",
+        "Identification": "08080021325698",
+        "SecondaryIdentification": "0002",
+        "LEI": "8200007YHFDMEODY1965"
       }
     }
   },
