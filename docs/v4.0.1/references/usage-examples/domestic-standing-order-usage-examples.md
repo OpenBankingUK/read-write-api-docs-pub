@@ -214,11 +214,17 @@ Accept: application/json
       "RemittanceInformation": {
         "Structured": [
           {
-            "CreditorReferenceInformation": {
-              "Reference": "Pocket money for Damien"
-            }
+            "ReferredDocumentInformation": [
+              {
+                "Code": "CINV"
+              }
+            ]
           }
-        ]
+        ],
+        "ReferredDocumentAmount": "1.00",
+        "CreditorReferenceInformation": {
+          "Reference": "Pocket money for Damien"
+        }
       },
       "FirstPaymentAmount": {
         "Amount": "6.66",
@@ -278,11 +284,17 @@ Content-Type: application/json
       "RemittanceInformation": {
         "Structured": [
           {
-            "CreditorReferenceInformation": {
-              "Reference": "Pocket money for Damien"
-            }
+            "ReferredDocumentInformation": [
+              {
+                "Code": "CINV"
+              }
+            ]
           }
-        ]
+        ],
+        "ReferredDocumentAmount": "1.00",
+        "CreditorReferenceInformation": {
+          "Reference": "Pocket money for Damien"
+        }
       },
       "FirstPaymentAmount": {
         "Amount": "6.66",
@@ -314,6 +326,9 @@ Content-Type: application/json
         }
       }
     }
+  },
+  "Risk": {
+    "PaymentContextCode": "TransferToThirdParty"
   },
   "Links": {
     "Self": "https://api.alphabank.com/open-banking/v4.0/pisp/domestic-standing-orders/SO-SOC-100"
@@ -355,11 +370,17 @@ Content-Type: application/json
       "RemittanceInformation": {
         "Structured": [
           {
-            "CreditorReferenceInformation": {
-              "Reference": "Pocket money for Damien"
-            }
+            "ReferredDocumentInformation": [
+              {
+                "Code": "CINV"
+              }
+            ]
           }
-        ]
+        ],
+        "ReferredDocumentAmount": "1.00",
+        "CreditorReferenceInformation": {
+          "Reference": "Pocket money for Damien"
+        }
       },
       "FirstPaymentAmount": {
         "Amount": "6.66",
