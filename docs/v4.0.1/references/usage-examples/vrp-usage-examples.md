@@ -86,7 +86,7 @@ Accept: application/json
         "SecondaryIdentification": "Roll 90210",
         "Name": "Marcus Sweepimus",
         "Proxy": {
-          "Identification": "441234012346",
+          "Identification": "441234012345",
           "Code": "TELE",
           "Type": "Telephone"
         }
@@ -148,6 +148,7 @@ Content-Type: application/json
 ```json
 {
   "Data": {
+    "ReadRefundAccount": "Yes",
     "ConsentId": "fe615446-e53a-45ed-954c-ae5d1f97a93b",
     "CreationDateTime": "2017-06-05T15:15:15+00:00",
     "Status": "AUTH",
@@ -158,15 +159,7 @@ Content-Type: application/json
       }
     ],
     "StatusUpdateDateTime": "2017-06-05T15:15:15+05:00",
-    "ReadRefundAccount": "Yes",
     "ControlParameters": {
-      "PSUAuthenticationMethods": [
-        "UK.OBIE.SCA"
-      ],
-      "PSUInteractionTypes": [
-        "OffSession"
-      ],
-      "VRPType": "UK.OBIE.VRPType.Sweeping",
       "ValidFromDateTime": "2017-06-05T15:15:13+00:00",
       "ValidToDateTime": "2020-06-05T15:15:13+00:00",
       "MaximumIndividualAmount": {
@@ -175,30 +168,29 @@ Content-Type: application/json
       },
       "PeriodicLimits": [
         {
-          "Amount": "200.00",
-          "Currency": "GBP",
+          "PeriodType": "Week",
           "PeriodAlignment": "Consent",
-          "PeriodType": "Week"
+          "Amount": "200.00",
+          "Currency": "GBP"
         }
-      ]
-    },
-    "DebtorAccount": {
-      "SchemeName": "UK.OBIE.IBAN",
-      "Identification": "GB76LOYD30949301273801",
-      "SecondaryIdentification": "008419",
-      "Name": "Marcus Sweepimus",
-      "Proxy": {
-        "Identification": "441234012345",
-        "Code": "TELE",
-        "Type": "Telephone"
-      }
+      ],
+      "VRPType": [
+        "UK.OBIE.VRPType.Sweeping"
+      ],
+      "PSUAuthenticationMethods": [
+        "UK.OBIE.SCA"
+      ],
+      "PSUInteractionTypes": [
+        "OffSession"
+      ],
+      "SupplementaryData": {}
     },
     "Initiation": {
       "DebtorAccount": {
         "SchemeName": "UK.OBIE.IBAN",
         "Identification": "GB76LOYD30949301273801",
-        "SecondaryIdentification": "008419",
         "Name": "Marcus Sweepimus",
+        "SecondaryIdentification": "008419",
         "Proxy": {
           "Identification": "441234012345",
           "Code": "TELE",
@@ -208,10 +200,10 @@ Content-Type: application/json
       "CreditorAccount": {
         "SchemeName": "UK.OBIE.SortCodeAccountNumber",
         "Identification": "30949330000010",
-        "SecondaryIdentification": "Roll 90210",
         "Name": "Marcus Sweepimus",
+        "SecondaryIdentification": "Roll 90210",
         "Proxy": {
-          "Identification": "441234012348",
+          "Identification": "441234012345",
           "Code": "TELE",
           "Type": "Telephone"
         }
@@ -227,38 +219,46 @@ Content-Type: application/json
         "UnitNumber": "UNIT591",
         "Room": "844",
         "PostBox": "PO Box 123456",
-        "PostCode": "Z78 4TY",
         "TownLocationName": "Bank",
-        "TownName": "London",
         "DistrictName": "Greater London",
         "CareOf": "Ms Jane Smith",
+        "PostCode": "Z78 4TY",
+        "TownName": "London",
         "CountrySubDivision": "England",
         "Country": "GB"
       },
       "RemittanceInformation": {
         "Structured": [
           {
-            "ReferredDocumentInformation": [
-              {
-                "CreditorReferenceInformation": {
-                  "Reference": "SweepCo"
-                },
-                "AdditionalRemittanceInformation": [
-                  "Rose's pocket money"
-                ]
-              }
+            "ReferredDocumentAmount": "1.00",
+            "CreditorReferenceInformation": {
+              "Reference": "SweepCo"
+            },
+            "AdditionalRemittanceInformation": [
+              "Rose's pocket money"
             ]
           }
         ]
+      }
+    },
+    "DebtorAccount": {
+      "SchemeName": "UK.OBIE.IBAN",
+      "Identification": "GB76LOYD30949301273801",
+      "Name": "Marcus Sweepimus",
+      "SecondaryIdentification": "008419",
+      "Proxy": {
+        "Identification": "441234012345",
+        "Code": "TELE",
+        "Type": "Telephone"
       }
     }
   },
   "Risk": {
     "PaymentContextCode": "TransferToSelf",
     "ContractPresentIndicator": true,
+    "BeneficiaryPrepopulatedIndicator": true,
     "PaymentPurposeCode": "EPAY",
     "CategoryPurposeCode": "GP2P",
-    "BeneficiaryPrepopulatedIndicator": true,
     "BeneficiaryAccountType": "Personal"
   },
   "Links": {
@@ -358,7 +358,7 @@ Content-Type: application/json
         "SecondaryIdentification": "Roll 90210",
         "Name": "Marcus Sweepimus",
         "Proxy": {
-          "Identification": "441234012348",
+          "Identification": "441234012345",
           "Code": "TELE",
           "Type": "Telephone"
         }
@@ -453,7 +453,7 @@ Accept: application/json
         "SecondaryIdentification": "Roll 90210",
         "Name": "Marcus Sweepimus",
         "Proxy": {
-          "Identification": "441234012348",
+          "Identification": "441234012345",
           "Code": "TELE",
           "Type": "Telephone"
         }
@@ -501,7 +501,7 @@ Accept: application/json
         "SecondaryIdentification": "Roll 90210",
         "Name": "Marcus Sweepimus",
         "Proxy": {
-          "Identification": "441234012348",
+          "Identification": "441234012345",
           "Code": "TELE",
           "Type": "Telephone"
         }
@@ -586,7 +586,7 @@ Content-Type: application/json
       "Name": "Marcus Sweepimus",
       "SecondaryIdentification": "008419",
       "Proxy": {
-        "Identification": "441234012348",
+        "Identification": "441234012345",
         "Code": "TELE",
         "Type": "Telephone"
       }
@@ -617,7 +617,7 @@ Content-Type: application/json
         "SecondaryIdentification": "Roll 90210",
         "Name": "Marcus Sweepimus",
         "Proxy": {
-          "Identification": "441234012385",
+          "Identification": "441234012345",
           "Code": "TELE",
           "Type": "Telephone"
         }
@@ -665,7 +665,7 @@ Content-Type: application/json
         "SecondaryIdentification": "Roll 90210",
         "Name": "Marcus Sweepimus",
         "Proxy": {
-          "Identification": "441234012385",
+          "Identification": "441234012345",
           "Code": "TELE",
           "Type": "Telephone"
         }
@@ -958,7 +958,7 @@ Content-Type: application/json
         "SecondaryIdentification": "Roll 90210",
         "Name": "Marcus Sweepimus",
         "Proxy": {
-          "Identification": "441234012385",
+          "Identification": "441234012345",
           "Code": "TELE",
           "Type": "Telephone"
         }
@@ -1093,7 +1093,7 @@ Accept: application/json
         "SecondaryIdentification": "Roll 90210",
         "Name": "Marcus Sweepimus",
         "Proxy": {
-          "Identification": "441234012385",
+          "Identification": "441234012345",
           "Code": "TELE",
           "Type": "Telephone"
         }
@@ -1171,7 +1171,7 @@ Accept: application/json
         "SecondaryIdentification": "Roll 90210",
         "Name": "Marcus Sweepimus",
         "Proxy": {
-          "Identification": "441234012385",
+          "Identification": "441234012345",
           "Code": "TELE",
           "Type": "Telephone"
         }
@@ -1250,7 +1250,7 @@ Content-Type: application/json
       "Name": "Marcus Sweepimus",
       "SecondaryIdentification": "008419",
       "Proxy": {
-        "Identification": "441234012348",
+        "Identification": "441234012345",
         "Code": "TELE",
         "Type": "Telephone"
       }
@@ -1281,7 +1281,7 @@ Content-Type: application/json
         "SecondaryIdentification": "Roll 90210",
         "Name": "Marcus Sweepimus",
         "Proxy": {
-          "Identification": "441234012385",
+          "Identification": "441234012345",
           "Code": "TELE",
           "Type": "Telephone"
         }
@@ -1329,7 +1329,7 @@ Content-Type: application/json
         "SecondaryIdentification": "Roll 90210",
         "Name": "Marcus Sweepimus",
         "Proxy": {
-          "Identification": "441234012385",
+          "Identification": "441234012345",
           "Code": "TELE",
           "Type": "Telephone"
         }
