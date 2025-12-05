@@ -363,9 +363,9 @@ Content-Type: application/json
         },
         "CurrencyExchange": {
           "SourceCurrency": "GBP",
-          "TargetCurrency": "GBP",
+          "TargetCurrency": "EUR",
           "UnitCurrency": "GBP",
-          "ExchangeRate": 0
+          "ExchangeRate": 1.14
         },
         "InstructedAmount": {
           "Amount": "10.00",
@@ -661,9 +661,9 @@ Content-Type: application/json
         },
         "CurrencyExchange": {
           "SourceCurrency": "GBP",
-          "TargetCurrency": "GBP",
+          "TargetCurrency": "EUR",
           "UnitCurrency": "GBP",
-          "ExchangeRate": 0
+          "ExchangeRate": 1.14
         },
         "UltimateCreditor": {
           "SchemeName": "UK.OBIE.BICFI",
