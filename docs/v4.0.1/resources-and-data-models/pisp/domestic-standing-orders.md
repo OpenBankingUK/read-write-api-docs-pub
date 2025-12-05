@@ -453,7 +453,7 @@ Content-Type: application/json
     "Charges": [
       {
         "ChargeBearer": "Shared",
-        "Type": "striUK.OBIE.CHAPSOutng",
+        "Type": "UK.OBIE.CHAPSOut",
         "Amount": {
           "Amount": "0.80",
           "Currency": "GBP"
