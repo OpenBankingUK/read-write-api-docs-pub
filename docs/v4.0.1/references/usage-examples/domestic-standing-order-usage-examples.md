@@ -225,8 +225,7 @@ Accept: application/json
         "CreditorReferenceInformation": {
           "Reference": "Pocket money for Damien"
         }
-      }
-      "FirstPaymentDateTime": "1976-06-06T06:06:06+00:00",
+      },
       "FirstPaymentAmount": {
         "Amount": "6.66",
         "Currency": "GBP"
@@ -235,7 +234,6 @@ Accept: application/json
         "Amount": "7.00",
         "Currency": "GBP"
       },
-      "FinalPaymentDateTime": "1981-03-20T06:06:06+00:00",
       "FinalPaymentAmount": {
         "Amount": "7.00",
         "Currency": "GBP"
@@ -249,6 +247,13 @@ Accept: application/json
         "SchemeName": "UK.OBIE.SortCodeAccountNumber",
         "Identification": "08080021325698",
         "Name": "Bob Clements"
+      },
+      "MandateRelatedInformation": {
+        "FirstPaymentDateTime": "1976-06-06T06:06:06+00:00",
+        "FinalPaymentDateTime": "1981-03-20T06:06:06+00:00",
+        "Frequency": {
+          "Type": "DAIL"
+        }
       }
     }
   },
@@ -256,7 +261,6 @@ Accept: application/json
     "PaymentContextCode": "TransferToThirdParty"
   }
 }
-
 ```
 
 #### POST /domestic-standing-orders response
@@ -291,8 +295,7 @@ Content-Type: application/json
         "CreditorReferenceInformation": {
           "Reference": "Pocket money for Damien"
         }
-      }
-      "FirstPaymentDateTime": "1976-06-06T06:06:06+00:00",
+      },
       "FirstPaymentAmount": {
         "Amount": "6.66",
         "Currency": "GBP"
@@ -301,7 +304,6 @@ Content-Type: application/json
         "Amount": "7.00",
         "Currency": "GBP"
       },
-      "FinalPaymentDateTime": "1981-03-20T06:06:06+00:00",
       "FinalPaymentAmount": {
         "Amount": "7.00",
         "Currency": "GBP"
@@ -315,18 +317,23 @@ Content-Type: application/json
         "SchemeName": "UK.OBIE.SortCodeAccountNumber",
         "Identification": "08080021325698",
         "Name": "Bob Clements"
+      },
+      "MandateRelatedInformation": {
+        "FirstPaymentDateTime": "1976-06-06T06:06:06+00:00",
+        "FinalPaymentDateTime": "1981-03-20T06:06:06+00:00",
+        "Frequency": {
+          "Type": "DAIL"
+        }
       }
-    },
-    "Risk": {
-      "PaymentContextCode": "TransferToThirdParty"
     }
-  }
-},
-"Links": {
-"Self": "https://api.alphabank.com/open-banking/v4.0/pisp/domestic-standing-orders/SO-SOC-100"
-},
-"Meta": {
-}
+  },
+  "Risk": {
+    "PaymentContextCode": "TransferToThirdParty"
+  },
+  "Links": {
+    "Self": "https://api.alphabank.com/open-banking/v4.0/pisp/domestic-standing-orders/SO-SOC-100"
+  },
+  "Meta": {}
 }
 ```
 
@@ -374,8 +381,7 @@ Content-Type: application/json
         "CreditorReferenceInformation": {
           "Reference": "Pocket money for Damien"
         }
-      }
-      "FirstPaymentDateTime": "1976-06-06T06:06:06+00:00",
+      },
       "FirstPaymentAmount": {
         "Amount": "6.66",
         "Currency": "GBP"
@@ -384,7 +390,6 @@ Content-Type: application/json
         "Amount": "7.00",
         "Currency": "GBP"
       },
-      "FinalPaymentDateTime": "1981-03-20T06:06:06+00:00",
       "FinalPaymentAmount": {
         "Amount": "7.00",
         "Currency": "GBP"
@@ -398,6 +403,13 @@ Content-Type: application/json
         "SchemeName": "UK.OBIE.SortCodeAccountNumber",
         "Identification": "08080021325698",
         "Name": "Bob Clements"
+      },
+      "MandateRelatedInformation": {
+        "FirstPaymentDateTime": "1976-06-06T06:06:06+00:00",
+        "FinalPaymentDateTime": "1981-03-20T06:06:06+00:00",
+        "Frequency": {
+          "Type": "DAIL"
+        }
       }
     }
   },
