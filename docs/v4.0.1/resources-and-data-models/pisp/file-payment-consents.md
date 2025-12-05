@@ -305,61 +305,61 @@ Accept: application/json
 ```json
 {
   "Data": {
-	"Authorisation": {
-	  "AuthorisationType": "Any", 
-      "CompletionDateTime": "2025-05-30T10:35:27Z",
-   	},
+    "Authorisation": {
+      "AuthorisationType": "Any",
+      "CompletionDateTime": "2025-05-30T10:35:27Z"
+    },
     "Initiation": {
       "FileType": "UK.OBIE.pain.001.001.08",
       "FileHash": "m5ah/h1UjLvJYMxqAoZmj9dKdjZnsGNm+yMkJp/KuqQ",
       "FileReference": "GB2OK238",
       "NumberOfTransactions": "100",
       "ControlSum": 3459.30,
-	  "RequestedExecutionDateTime": "2024-06-03T00:00:00Z",
-	  "LocalInstrument": "UK.OBIE.CHAPS",
-	  "DebtorAccount": {
+      "RequestedExecutionDateTime": "2024-06-03T00:00:00Z",
+      "LocalInstrument": "UK.OBIE.CHAPS",
+      "DebtorAccount": {
         "SchemeName": "UK.OBIE.SortCodeAccountNumber",
         "Identification": "11280001234567",
         "Name": "Andrea Smith",
         "SecondaryIdentification": "0002",
-         "Proxy": {
+        "Proxy": {
           "Identification": "441234012345",
           "Code": "TELE",
-		  "Type": "Telephone"
-          }
-      	},
-		"UltimateDebtor": {
-          "SchemeName": "UK.OBIE.BICFI",
-          "Identification": "2360549017905161589",
-          "Name": "Ultimate Debtor",
-          "LEI": "8200007YHFDMEODY1965",
-          "PostalAddress": {
-            "AddressType": "BIZZ",
-            "StreetName": "Bank Street",
-            "BuildingNumber": "11",
-            "Floor": "6",
-            "PostCode": "Z78 4TY",
-            "TownName": "London",
-            "Country": "GB"
-          }
-        },
-		 "CreditorAgent": {  
-          "LEI": "IZ9Q00LZEVUKWCQY6X15",
-          "SchemeName": "UK.OBIE.BICFI",
-          "Identification": "80200112344562",
-          "Name": "The Credit Agent", 
-          "PostalAddress": { 
-            "AddressType": "BIZZ",
-            "StreetName": "Bank Street",
-            "BuildingNumber": "11",
-            "Floor": "6",
-            "PostCode": "Z78 4TY",
-            "TownName": "London",
-            "Country": "GB"
+          "Type": "Telephone"
         }
       },
-	    "RemittanceInformation": {
-          "Structured": [
+      "UltimateDebtor": {
+        "SchemeName": "UK.OBIE.BICFI",
+        "Identification": "2360549017905161589",
+        "Name": "Ultimate Debtor",
+        "LEI": "8200007YHFDMEODY1965",
+        "PostalAddress": {
+          "AddressType": "BIZZ",
+          "StreetName": "Bank Street",
+          "BuildingNumber": "11",
+          "Floor": "6",
+          "PostCode": "Z78 4TY",
+          "TownName": "London",
+          "Country": "GB"
+        }
+      },
+      "CreditorAgent": {
+        "LEI": "IZ9Q00LZEVUKWCQY6X15",
+        "SchemeName": "UK.OBIE.BICFI",
+        "Identification": "80200112344562",
+        "Name": "The Credit Agent",
+        "PostalAddress": {
+          "AddressType": "BIZZ",
+          "StreetName": "Bank Street",
+          "BuildingNumber": "11",
+          "Floor": "6",
+          "PostCode": "Z78 4TY",
+          "TownName": "London",
+          "Country": "GB"
+        }
+      },
+      "RemittanceInformation": {
+        "Structured": [
           {
             "ReferredDocumentInformation": [
               {
@@ -368,7 +368,7 @@ Accept: application/json
                 "Number": "Number_01",
                 "RelatedDate": "2024-04-25T13:26:41.911Z",
                 "LineDetails": [
-                  "string"
+                  "Line detail entry 1"
                 ]
               }
             ],
@@ -380,18 +380,22 @@ Accept: application/json
             },
             "Invoicer": "INVR51856",
             "Invoicee": "INVE5161856",
-			"TaxRemittance": "Tax Remittance related information",
-          	"AdditionalRemittanceInformation": ["Free text for additional information"],
+            "TaxRemittance": "Tax Remittance related information",
+            "AdditionalRemittanceInformation": [
+              "Free text for additional information"
+            ]
           }
         ],
-	     "Unstructured": ["Internal ops code 5120101"]
+        "Unstructured": [
+          "Internal ops code 5120101"
+        ]
       }
-	},
-	"SCASupportData": {
-	    "RequestedSCAExemptionType": "EcommerceGoods",
-		"AppliedAuthenticationApproach": "SCA",
-		"ReferencePaymentOrderId": "O-611265",
     },
+    "SCASupportData": {
+      "RequestedSCAExemptionType": "EcommerceGoods",
+      "AppliedAuthenticationApproach": "SCA",
+      "ReferencePaymentOrderId": "O-611265"
+    }
   }
 }
 ```
@@ -408,43 +412,47 @@ Content-Type: application/json
 ```json
 {
   "Data": {
-    "ConsentId" : "512345",
+    "ConsentId": "512345",
     "Status": "AWUP",
     "CreationDateTime": "2018-06-05T15:15:13+00:00",
     "StatusUpdateDateTime": "2018-06-05T15:15:13+00:00",
-	"CutOffDateTime": "2018-07-05T15:15:22+00:00",
-	"StatusReason": [{ 
-		"StatusReasonCode": "U036",
-		"StatusReasonDescription": "Authorisation not completed. Awaiting file upload"
-	}],
-	"Charges": [{
-		"ChargeBearer": "Shared",
-		"Type": "UK.OBIE.CHAPSOut",
-		"Amount": {
-      "Amount": "0.88",
-      "Currency": "GBP"
-    }
-  }],
-	"Authorisation": {
-      "Type": "Any",
+    "CutOffDateTime": "2018-07-05T15:15:22+00:00",
+    "StatusReason": [
+      {
+        "StatusReasonCode": "U036",
+        "StatusReasonDescription": "Authorisation not completed. Awaiting file upload"
+      }
+    ],
+    "Charges": [
+      {
+        "ChargeBearer": "Shared",
+        "Type": "UK.OBIE.CHAPSOut",
+        "Amount": {
+          "Amount": "0.88",
+          "Currency": "GBP"
+        }
+      }
+    ],
+    "Authorisation": {
+      "AuthorisationType": "Any",
       "CompletionDateTime": "2019-05-30T10:35:27Z"
     },
-	"Debtor": { 
-	 	"SchemeName": "UK.OBIE.SortCodeAccountNumber",
-        "Identification": "11280001234567",
-		"LEI": "8200007YHFDMEODY1965",
-        "Name": "Andrea Smith",
-        "SecondaryIdentification": "0002"	
-	},
+    "Debtor": {
+      "SchemeName": "UK.OBIE.SortCodeAccountNumber",
+      "Identification": "11280001234567",
+      "LEI": "8200007YHFDMEODY1965",
+      "Name": "Andrea Smith",
+      "SecondaryIdentification": "0002"
+    },
     "Initiation": {
-	  "LocalInstrument": "UK.OBIE.Paym",
-	  "RequestedExecutionDateTime": "2017-06-05T15:15:22+00:00",
+      "LocalInstrument": "UK.OBIE.Paym",
+      "RequestedExecutionDateTime": "2017-06-05T15:15:22+00:00",
       "FileType": "UK.OBIE.pain.001.001.08",
       "FileHash": "m5ah/h1UjLvJYMxqAoZmj9dKdjZnsGNm+yMkJp/KuqQ",
       "FileReference": "GB2OK238",
       "NumberOfTransactions": "100",
       "ControlSum": 3459.30,
-	  "DebtorAccount": {
+      "DebtorAccount": {
         "SchemeName": "UK.OBIE.SortCodeAccountNumber",
         "Identification": "11280001234567",
         "Name": "Andrea Smith",
@@ -452,40 +460,40 @@ Content-Type: application/json
         "Proxy": {
           "Identification": "441234012345",
           "Code": "TELE",
-		  "Type": "Telephone"
-          }
-      	},
-	  "CreditorAgent": {  
-		"LEI": "IZ9Q00LZEVUKWCQY6X15",
-		"SchemeName": "UK.OBIE.BICFI",
-		"Identification": "80200112344562",
-		"Name": "The Credit Agent", 
-		"PostalAddress": { 
-		"AddressType": "BIZZ",
-		"StreetName": "Bank Street",
-		"BuildingNumber": "11",
-		"Floor": "6",
-		"PostCode": "Z78 4TY",
-		"TownName": "London",
-		"Country": "GB"
+          "Type": "Telephone"
         }
       },
-	  "UltimateDebtor": {
-		"SchemeName": "UK.OBIE.BICFI",
-		"Identification": "2360549017905161589",
-		"Name": "Ultimate Debtor",
-		"LEI": "8200007YHFDMEODY1965",
-		"PostalAddress": {
-			"AddressType": "BIZZ",
-			"StreetName": "Bank Street",
-			"BuildingNumber": "11",
-			"Floor": "6",
-			"PostCode": "Z78 4TY",
-			"TownName": "London",
-			"Country": "GB"
-			}
-  		},
-	   "RemittanceInformation": {
+      "CreditorAgent": {
+        "LEI": "IZ9Q00LZEVUKWCQY6X15",
+        "SchemeName": "UK.OBIE.BICFI",
+        "Identification": "80200112344562",
+        "Name": "The Credit Agent",
+        "PostalAddress": {
+          "AddressType": "BIZZ",
+          "StreetName": "Bank Street",
+          "BuildingNumber": "11",
+          "Floor": "6",
+          "PostCode": "Z78 4TY",
+          "TownName": "London",
+          "Country": "GB"
+        }
+      },
+      "UltimateDebtor": {
+        "SchemeName": "UK.OBIE.BICFI",
+        "Identification": "2360549017905161589",
+        "Name": "Ultimate Debtor",
+        "LEI": "8200007YHFDMEODY1965",
+        "PostalAddress": {
+          "AddressType": "BIZZ",
+          "StreetName": "Bank Street",
+          "BuildingNumber": "11",
+          "Floor": "6",
+          "PostCode": "Z78 4TY",
+          "TownName": "London",
+          "Country": "GB"
+        }
+      },
+      "RemittanceInformation": {
         "Structured": [
           {
             "ReferredDocumentInformation": [
@@ -495,7 +503,7 @@ Content-Type: application/json
                 "Number": "Number_01",
                 "RelatedDate": "2024-04-25T13:26:41.911Z",
                 "LineDetails": [
-                  "string"
+                  "Line detail entry 1"
                 ]
               }
             ],
@@ -507,23 +515,27 @@ Content-Type: application/json
             },
             "Invoicer": "INVR51856",
             "Invoicee": "INVE5161856",
-			"TaxRemittance": "Tax Remittance related information",
-          	"AdditionalRemittanceInformation": ["Free text for additional information"]
+            "TaxRemittance": "Tax Remittance related information",
+            "AdditionalRemittanceInformation": [
+              "Free text for additional information"
+            ]
           }
         ],
-		"Unstructured": ["Internal ops code 5120101"]
-   	  }
+        "Unstructured": [
+          "Internal ops code 5120101"
+        ]
+      }
     },
-	"SCASupportData": {
-	  	"RequestedSCAExemptionType": "EcommerceGoods",
-		"AppliedAuthenticationApproach": "SCA",
-		"ReferencePaymentOrderId": "O-611265"
+    "SCASupportData": {
+      "RequestedSCAExemptionType": "EcommerceGoods",
+      "AppliedAuthenticationApproach": "SCA",
+      "ReferencePaymentOrderId": "O-611265"
     }
   },
-  "Links":{
-    "Self":"https://api.alphabank.com/open-banking/v4.0/pisp/file-payment-consents/512345"
+  "Links": {
+    "Self": "https://api.alphabank.com/open-banking/v4.0/pisp/file-payment-consents/512345"
   },
-  "Meta":{}
+  "Meta": {}
 }
 ```
 
@@ -549,7 +561,7 @@ A sample file with 3 transactions is provided below:
 
 <details>
  <summary>File Data Expand source </summary>
-   
+
 ```xml
 <?xml version="1.0" encoding="UTF-8" ?>
 <Document xmlns="urn:iso:std:iso:20022:tech:xsd:pain.001.001.08" xmlns:xsi="http://www.w3.org/2001/XMLSchema- instance">
