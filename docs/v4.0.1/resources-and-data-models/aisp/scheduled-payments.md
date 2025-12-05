@@ -150,12 +150,12 @@ Content-Type: application/json
           "Amount": "10.00",
           "Currency": "GBP"
         },
-        "CreditorAgent": {  
+        "CreditorAgent": {
           "LEI": "IZ9Q00LZEVUKWCQY6X15",
           "SchemeName": "UK.OBIE.BICFI",
           "Identification": "80200112344562",
-          "Name": "The Credit Agent", 
-          "PostalAddress": { 
+          "Name": "The Credit Agent",
+          "PostalAddress": {
             "AddressType": "BIZZ",
             "StreetName": "Bank Street",
             "BuildingNumber": "11",
@@ -173,11 +173,11 @@ Content-Type: application/json
           "Proxy": {
             "Identification": "441234012345",
             "Code": "TELE",
-            "Type":"Telephone"
+            "Type": "Telephone"
           }
         },
         "Reference": "REF561988",
-        "DebtorReference" : "REF51561806",
+        "DebtorReference": "REF51561806"
       }
     ]
   },
@@ -216,7 +216,7 @@ Content-Type: application/json
   "Data": {
     "ScheduledPayment": [
       {
-		"AccountId": "22289",
+        "AccountId": "22289",
         "ScheduledPaymentId": "SP03",
         "ScheduledPaymentDateTime": "2017-05-05T00:00:00+00:00",
         "ScheduledType": "Execution",
@@ -224,12 +224,12 @@ Content-Type: application/json
           "Amount": "10.00",
           "Currency": "GBP"
         },
-        "CreditorAgent": {  
+        "CreditorAgent": {
           "LEI": "IZ9Q00LZEVUKWCQY6X15",
           "SchemeName": "UK.OBIE.BICFI",
           "Identification": "80200112344562",
-          "Name": "The Credit Agent", 
-          "PostalAddress": { 
+          "Name": "The Credit Agent",
+          "PostalAddress": {
             "AddressType": "BIZZ",
             "StreetName": "Bank Street",
             "BuildingNumber": "11",
@@ -237,21 +237,21 @@ Content-Type: application/json
             "PostCode": "Z78 4TY",
             "TownName": "London",
             "Country": "GB"
-        },
-        "CreditorAccount": {
-          "SchemeName": "UK.OBIE.SortCodeAccountNumber",
-          "Identification": "23605490179017",
-          "SecondaryIdentification": "23605445279017",
-          "Name": "Mr Tee",
-          "Proxy": {
-            "Identification": "441234012345",
-            "Code": "TELE",
-            "Type":"Telephone"
-          }
-        },
-        "Reference": "REF561988",
-        "DebtorReference" : "51561899806",
-      }
+          },
+          "CreditorAccount": {
+            "SchemeName": "UK.OBIE.SortCodeAccountNumber",
+            "Identification": "23605490179017",
+            "SecondaryIdentification": "23605445279017",
+            "Name": "Mr Tee",
+            "Proxy": {
+              "Identification": "441234012345",
+              "Code": "TELE",
+              "Type": "Telephone"
+            }
+          },
+          "Reference": "REF561988",
+          "DebtorReference": "51561899806"
+        }
       },
       {
         "AccountId": "39570",
@@ -269,7 +269,7 @@ Content-Type: application/json
           "Proxy": {
             "Identification": "441234012345",
             "Code": "TELE",
-            "Type":"Telephone"
+            "Type": "Telephone"
           }
         }
       }
