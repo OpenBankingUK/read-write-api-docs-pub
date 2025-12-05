@@ -232,19 +232,21 @@ Content-Type: application/json
         "ProductName": "Select Current Account",
         "PCA": {
           "OtherFeesCharges": {
-            "FeeChargeDetail": {
-              "FeeCategory": "Servicing",
-              "FeeType": "ServiceCAccountFeeMonthly",
-              "FeeAmount": "5.0",
-              "CalculationFrequency": "Yearly",
-              "ApplicationFrequency": "Monthly",
-              "Notes": [
-                "Personal support from a Relationship Manager.",
-                "24 hour priority service at home and abroad",
-                "Preferential products",
-                "Access to Santander Select globally"
-              ]
-            }
+            "FeeChargeDetail": [
+              {
+                "FeeCategory": "Servicing",
+                "FeeType": "ServiceCAccountFeeMonthly",
+                "FeeAmount": "5.0",
+                "CalculationFrequency": "Yearly",
+                "ApplicationFrequency": "Monthly",
+                "Notes": [
+                  "Personal support from a Relationship Manager.",
+                  "24 hour priority service at home and abroad",
+                  "Preferential products",
+                  "Access to Santander Select globally"
+                ]
+              }
+            ]
           }
         }
       }
@@ -334,7 +336,9 @@ Content-Type: application/json
         "MarketingStateId": "EAR2",
         "PCA": {
           "ProductDetails": {
-            "Segment": "General",
+            "Segment": [
+              "General"
+            ],
             "MonthlyMaximumCharge": "32",
             "Notes": [
               "We'll only charge you a single fee - whichever is highest. So, for example, if your've exceeded your overdraft limit, exceeded your Emergency Borrowing Limit and had a transaction returned as unpaid, all on the same day, we'll only charge your the £8 Unpaid Transaction Fee"
@@ -388,48 +392,50 @@ Content-Type: application/json
         "ProductName": "BankOfScotland Classic Vantage Account",
         "PCA": {
           "CreditInterest": {
-            "TierBandSet": {
-              "TierBandMethod": "Tiered",
-              "CalculationMethod": "Compound",
-              "Notes": [
-                "From the 11th June 2017, we will be changing how we pat credit interest on our Bank of Scotland current accounts with Vantage.",
-                "We are replacing the current tiered rates with a single interest rate of 2% AER(1.98% gross) (variable) on credit balances between £1 and £5,000. Depending on the balance of your account this may be an increase or decrease to the rate your currently receive."
-              ],
-              "TierBand": [
-                {
-                  "Identification": "1",
-                  "TierValueMinimum": "1.00",
-                  "TierValueMaximum": "999.99",
-                  "CalculationFrequency": "Monthly",
-                  "ApplicationFrequency": "Monthly",
-                  "DepositInterestAppliedCoverage": "Tiered",
-                  "FixedVariableInterestRateType": "Variable",
-                  "AER": "1.50",
-                  "BankInterestRateType": "Gross"
-                },
-                {
-                  "Identification": "2",
-                  "TierValueMinimum": "1000.00",
-                  "TierValueMaximum": "2999.99",
-                  "CalculationFrequency": "Monthly",
-                  "ApplicationFrequency": "Monthly",
-                  "DepositInterestAppliedCoverage": "Tiered",
-                  "FixedVariableInterestRateType": "Variable",
-                  "AER": "2.00",
-                  "BankInterestRateType": "Gross"
-                },
-                {
-                  "TierValueMinimum": "3000.00",
-                  "TierValueMaximum": "5000.00",
-                  "CalculationFrequency": "Monthly",
-                  "ApplicationFrequency": "Monthly",
-                  "DepositInterestAppliedCoverage": "Tiered",
-                  "FixedVariableInterestRateType": "Variable",
-                  "AER": "3.00",
-                  "BankInterestRateType": "Gross"
-                }
-              ]
-            }
+            "TierBandSet": [
+              {
+                "TierBandMethod": "Tiered",
+                "CalculationMethod": "Compound",
+                "Notes": [
+                  "From the 11th June 2017, we will be changing how we pay credit interest on our Bank of Scotland current accounts with Vantage.",
+                  "We are replacing the current tiered rates with a single interest rate of 2% AER(1.98% gross) (variable) on credit balances between £1 and £5,000. Depending on the balance of your account this may be an increase or decrease to the rate your currently receive."
+                ],
+                "TierBand": [
+                  {
+                    "Identification": "1",
+                    "TierValueMinimum": "1.00",
+                    "TierValueMaximum": "999.99",
+                    "CalculationFrequency": "Monthly",
+                    "ApplicationFrequency": "Monthly",
+                    "DepositInterestAppliedCoverage": "Tiered",
+                    "FixedVariableInterestRateType": "Variable",
+                    "AER": "1.50",
+                    "BankInterestRateType": "Gross"
+                  },
+                  {
+                    "Identification": "2",
+                    "TierValueMinimum": "1000.00",
+                    "TierValueMaximum": "2999.99",
+                    "CalculationFrequency": "Monthly",
+                    "ApplicationFrequency": "Monthly",
+                    "DepositInterestAppliedCoverage": "Tiered",
+                    "FixedVariableInterestRateType": "Variable",
+                    "AER": "2.00",
+                    "BankInterestRateType": "Gross"
+                  },
+                  {
+                    "TierValueMinimum": "3000.00",
+                    "TierValueMaximum": "5000.00",
+                    "CalculationFrequency": "Monthly",
+                    "ApplicationFrequency": "Monthly",
+                    "DepositInterestAppliedCoverage": "Tiered",
+                    "FixedVariableInterestRateType": "Variable",
+                    "AER": "3.00",
+                    "BankInterestRateType": "Gross"
+                  }
+                ]
+              }
+            ]
           }
         }
       }
@@ -478,27 +484,29 @@ Content-Type: application/json
         "ProductName": "BankOfScotland Classic Vantage Account",
         "PCA": {
           "CreditInterest": {
-            "TierBandSet": {
-              "TierBandMethod": "Whole",
-              "CalculationMethod": "Compound",
-              "Notes": [
-                "No interest on balances over £5000"
-              ],
-              "TierBand": [
-                {
-                  "Identification": "1",
-                  "TierValueMinimum": "1.00",
-                  "TierValueMaximum": "5000.00",
-                  "CalculationFrequency": "Monthly",
-                  "ApplicationFrequency": "Monthly",
-                  "DepositInterestAppliedCoverage": "Whole",
-                  "FixedVariableInterestRateType": "Variable",
-                  "AER": "2.00",
-                  "BankInterestRateType": "Gross",
-                  "BankInterestRate": "1.98"
-                }
-              ]
-            }
+            "TierBandSet": [
+              {
+                "TierBandMethod": "Whole",
+                "CalculationMethod": "Compound",
+                "Notes": [
+                  "No interest on balances over £5000"
+                ],
+                "TierBand": [
+                  {
+                    "Identification": "1",
+                    "TierValueMinimum": "1.00",
+                    "TierValueMaximum": "5000.00",
+                    "CalculationFrequency": "Monthly",
+                    "ApplicationFrequency": "Monthly",
+                    "DepositInterestAppliedCoverage": "Whole",
+                    "FixedVariableInterestRateType": "Variable",
+                    "AER": "2.00",
+                    "BankInterestRateType": "Gross",
+                    "BankInterestRate": "1.98"
+                  }
+                ]
+              }
+            ]
           }
         }
       }
@@ -647,6 +655,18 @@ Content-Type: application/json
               {
                 "TierBandMethod": "Whole",
                 "Identification": "Arranged Overdraft",
+                "OverdraftTierBand": [
+                  {
+                    "Identification": "G-001",
+                    "TierValueMin": "0.00",
+                    "TierValueMax": "3000.00",
+                    "BankGuaranteedIndicator": true,
+                    "EAR": "0",
+                    "Notes": [
+                      "Upto £3000"
+                    ]
+                  }
+                ],
                 "OverdraftFeesCharges": [
                   {
                     "OverdraftFeeChargeCap": [
@@ -655,7 +675,7 @@ Content-Type: application/json
                         "FeeType": [
                           "UnauthorisedBorrowing"
                         ],
-                        "FeeMinMaxType": "Maximum",
+                        "MinMaxType": "Maximum",
                         "FeeCapAmount": "60.00"
                       },
                       {
@@ -663,7 +683,7 @@ Content-Type: application/json
                         "FeeType": [
                           "BorrowingItem"
                         ],
-                        "FeeMinMaxType": "Maximum",
+                        "MinMaxType": "Maximum",
                         "FeeCapAmount": "35.00"
                       }
                     ],
