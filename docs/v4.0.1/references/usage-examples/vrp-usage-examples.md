@@ -230,7 +230,6 @@ Content-Type: application/json
       "RemittanceInformation": {
         "Structured": [
           {
-            "ReferredDocumentInformation": [],
             "CreditorReferenceInformation": {
               "Reference": "SweepCo"
             },
