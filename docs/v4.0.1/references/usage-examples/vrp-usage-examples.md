@@ -203,7 +203,7 @@ Content-Type: application/json
         "Name": "Marcus Sweepimus",
         "SecondaryIdentification": "Roll 90210",
         "Proxy": {
-          "Identification": "441234012348",
+          "Identification": "441234012345",
           "Code": "TELE",
           "Type": "Telephone"
         }
@@ -230,6 +230,7 @@ Content-Type: application/json
       "RemittanceInformation": {
         "Structured": [
           {
+            "ReferredDocumentAmount": "1.00",
             "CreditorReferenceInformation": {
               "Reference": "SweepCo"
             },
@@ -357,7 +358,7 @@ Content-Type: application/json
         "SecondaryIdentification": "Roll 90210",
         "Name": "Marcus Sweepimus",
         "Proxy": {
-          "Identification": "441234012348",
+          "Identification": "441234012345",
           "Code": "TELE",
           "Type": "Telephone"
         }
@@ -452,7 +453,7 @@ Accept: application/json
         "SecondaryIdentification": "Roll 90210",
         "Name": "Marcus Sweepimus",
         "Proxy": {
-          "Identification": "441234012348",
+          "Identification": "441234012345",
           "Code": "TELE",
           "Type": "Telephone"
         }
@@ -500,7 +501,7 @@ Accept: application/json
         "SecondaryIdentification": "Roll 90210",
         "Name": "Marcus Sweepimus",
         "Proxy": {
-          "Identification": "441234012348",
+          "Identification": "441234012345",
           "Code": "TELE",
           "Type": "Telephone"
         }
@@ -585,7 +586,7 @@ Content-Type: application/json
       "Name": "Marcus Sweepimus",
       "SecondaryIdentification": "008419",
       "Proxy": {
-        "Identification": "441234012348",
+        "Identification": "441234012345",
         "Code": "TELE",
         "Type": "Telephone"
       }
@@ -616,7 +617,7 @@ Content-Type: application/json
         "SecondaryIdentification": "Roll 90210",
         "Name": "Marcus Sweepimus",
         "Proxy": {
-          "Identification": "441234012385",
+          "Identification": "441234012345",
           "Code": "TELE",
           "Type": "Telephone"
         }
@@ -664,7 +665,7 @@ Content-Type: application/json
         "SecondaryIdentification": "Roll 90210",
         "Name": "Marcus Sweepimus",
         "Proxy": {
-          "Identification": "441234012385",
+          "Identification": "441234012345",
           "Code": "TELE",
           "Type": "Telephone"
         }
@@ -957,7 +958,7 @@ Content-Type: application/json
         "SecondaryIdentification": "Roll 90210",
         "Name": "Marcus Sweepimus",
         "Proxy": {
-          "Identification": "441234012385",
+          "Identification": "441234012345",
           "Code": "TELE",
           "Type": "Telephone"
         }
@@ -1092,7 +1093,7 @@ Accept: application/json
         "SecondaryIdentification": "Roll 90210",
         "Name": "Marcus Sweepimus",
         "Proxy": {
-          "Identification": "441234012385",
+          "Identification": "441234012345",
           "Code": "TELE",
           "Type": "Telephone"
         }
@@ -1170,7 +1171,7 @@ Accept: application/json
         "SecondaryIdentification": "Roll 90210",
         "Name": "Marcus Sweepimus",
         "Proxy": {
-          "Identification": "441234012385",
+          "Identification": "441234012345",
           "Code": "TELE",
           "Type": "Telephone"
         }
@@ -1249,7 +1250,7 @@ Content-Type: application/json
       "Name": "Marcus Sweepimus",
       "SecondaryIdentification": "008419",
       "Proxy": {
-        "Identification": "441234012348",
+        "Identification": "441234012345",
         "Code": "TELE",
         "Type": "Telephone"
       }
@@ -1280,7 +1281,7 @@ Content-Type: application/json
         "SecondaryIdentification": "Roll 90210",
         "Name": "Marcus Sweepimus",
         "Proxy": {
-          "Identification": "441234012385",
+          "Identification": "441234012345",
           "Code": "TELE",
           "Type": "Telephone"
         }
@@ -1328,7 +1329,7 @@ Content-Type: application/json
         "SecondaryIdentification": "Roll 90210",
         "Name": "Marcus Sweepimus",
         "Proxy": {
-          "Identification": "441234012385",
+          "Identification": "441234012345",
           "Code": "TELE",
           "Type": "Telephone"
         }
