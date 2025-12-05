@@ -122,12 +122,10 @@ The request body should contain an array of JSON Patch operations, as per [RFC 6
 
 PATCH operations are atomic, all requested changes are successfully applied or none are. Errors should reflect the underlying cause and indicate which field caused the failure if relevant.
 
-The following examples shows a series of patch operations that updates the ContractPresentIndicator field name and updates the AddressType value to the ISO code value.
+The following examples shows a series of patch operations that updates the AddressType value to the ISO code value.
 
 ```json
 [
- { "op": "remove", "path": "/Risk/ContractPresentInidicator" },
- { "op": "add", "path": "/Risk/ContractPresentIndicator", "value": "true" },
  { "op": "replace", "path": "/Data/Initiation/CreditorPostalAddress/AddressType", "value": "HOME" }
  { "op": "replace", "path": "/Risk/DeliveryAddress/AddressType", "value": "HOME" }
 ]
