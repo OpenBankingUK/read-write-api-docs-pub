@@ -51,13 +51,13 @@ Once the file-payment-consent has been authorised by the PSU, the PISP can proce
 
 - This is done by making a POST request to the **file-payments** endpoint.
 
-### GET /file-payments/{FilePaymentId}
-
-A PISP can retrieve the file-payment to check its status.
-
 #### Status
 
 The initial file-payments resource status **must** be `PDNG`
+
+### GET /file-payments/{FilePaymentId}
+
+A PISP can retrieve the file-payment to check its status.
 
 ### GET /file-payments/{FilePaymentId}/report-file
 
