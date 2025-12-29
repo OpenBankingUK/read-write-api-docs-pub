@@ -416,14 +416,14 @@ This section overviews the release management and versioning strategy for the Pa
 - A PISP **must not** create a payment-order consent ConsentId on a newer version and use it to create a payment-order resource in a previous version
   - E.g., A ConsentId created in v3, must not be used to create a v1 PaymentSubmissionId
 - A PISP **must not** create a payment-order consent ConsentId on a previous version and use it to create a payment-order resource in a newer version
-  - E.g., A PaymentId created in v1, must not be used to create a v3 DomesticPaymentId
+  - E.g., A ConsentId created in v1, must not be used to create a v3 PaymentSubmissionId
 
 ##### GET
 
 - A PISP **must not** access a payment-order ConsentId created in a newer version, via a previous version endpoint
-  - E.g., A ConsentId created in v3 accessed via a v1 PaymentId
+  - E.g., A ConsentId created in v3 must not be accessed via a v1 endpoint.
 - An ASPSP **may** choose to make ConsentIds accessible across versions
-  - E.g., for a PaymentId created in v1, an ASPSP may or may not make it available via v3, as this is a short-lived consent
+  - E.g., for a ConsentId created in v1, an ASPSP may or may not make it available via v3, as this is a short-lived consent
 
 #### Payment-Order Consent (Confirm Funds)
 
