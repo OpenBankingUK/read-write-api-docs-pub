@@ -136,6 +136,8 @@
 - Replaced AWAU with AWAF for Multiple Authorisation in File Payments ([File Payments - v4.0.1](https://openbankinguk.github.io/spec-pages-preview/v4.0.1/resources-and-data-models/pisp/file-payments.html#uml-diagram))
 - Added clarification to PointInTime in the Data Dictionary to note that negative numbers are permitted
   ([Payment Initiation API Profile - v4.0.1](https://openbankinguk.github.io/spec-pages-preview/v4.0.1/profiles/payment-initiation-api-profile.html#data-dictionary-10))
+- Updated [Payment Initiation Release Management](https://openbankinguk.github.io/spec-pages-preview/v4.0/profiles/payment-initiation-api-profile.html#release-management) section to consistently reference ConsentId in the consent section.
+- Moved the initial File Payment status information to the [`POST /file-payments`](https://openbankinguk.github.io/spec-pages-preview/v4.0/resources-and-data-models/pisp/file-payments.html#post-file-payments) section.
 
 ### Removed
 
