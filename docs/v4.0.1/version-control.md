@@ -2,6 +2,13 @@
 
 ## v4.0.1 Release Candidate 1 - 2026-01-05
 
+### Changed
+
+- Updated [Payment Initiation Release Management](https://openbankinguk.github.io/read-write-api-site3/v4.0.1/profiles/payment-initiation-api-profile.html#release-management) section to consistently reference ConsentId in the consent section.
+- Moved the initial File Payment status information to the [`POST /file-payments`](https://openbankinguk.github.io/read-write-api-site3/v4.0.1/resources-and-data-models/pisp/file-payments.html#post-file-payments) section.
+
+## v4.0.1 Draft 1 - 2025-11-20
+
 ### Added
 
 - Add `OBRemittanceInformation2` definition and Data Dictionary to [AIS Standing Orders page](https://openbankinguk.github.io/read-write-api-site3/v4.0.1/resources-and-data-models/aisp/standing-orders.html#obremittanceinformation2)
@@ -136,8 +143,6 @@
 - Replaced AWAU with AWAF for Multiple Authorisation in File Payments ([File Payments - v4.0.1](https://openbankinguk.github.io/read-write-api-site3/v4.0.1/resources-and-data-models/pisp/file-payments.html#uml-diagram))
 - Added clarification to PointInTime in the Data Dictionary to note that negative numbers are permitted
   ([Payment Initiation API Profile - v4.0.1](https://openbankinguk.github.io/read-write-api-site3/v4.0.1/profiles/payment-initiation-api-profile.html#data-dictionary-10))
-- Updated [Payment Initiation Release Management](https://openbankinguk.github.io/read-write-api-site3/v4.0.1/profiles/payment-initiation-api-profile.html#release-management) section to consistently reference ConsentId in the consent section.
-- Moved the initial File Payment status information to the [`POST /file-payments`](https://openbankinguk.github.io/read-write-api-site3/v4.0.1/resources-and-data-models/pisp/file-payments.html#post-file-payments) section.
 
 ### Removed
 
