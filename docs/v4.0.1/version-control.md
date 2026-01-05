@@ -1,6 +1,6 @@
 # Version control
 
-## v4.0.1 - 2025-11-20
+## v4.0.1 Release Candidate 1 - 2026-01-05
 
 ### Added
 
