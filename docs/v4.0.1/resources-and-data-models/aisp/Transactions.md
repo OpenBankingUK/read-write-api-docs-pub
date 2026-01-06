@@ -190,13 +190,14 @@ The resource differs depending on the permissions (ReadTransactionsBasic and Rea
 Where both ReadTransactionsBasic and ReadTransactionsDetail are present, the most detailed level (ReadTransactionsDetail) must be used.  The permissions array **must** contain at least ReadAccountsBasic or ReadAccountsDetail.
 
 The following combinations of permissions are not allowed, and it is **MANDATORY** that the ASPSP rejects these account-access-consents with a 400 response code:
-	* Permissions array that contains **ReadTransactionsBasic** but does not contain at least one of **ReadTransactionsCredits**		and **ReadTransactionsDebits** 
-	* Permissions array that contains **ReadTransactionsDetail** but does not contain at least one of **ReadTransactionsCredits**		and **ReadTransactionsDebits** 
-	* Permissions array that contains **ReadTransactionsCredits** but does not contain at least one of **ReadTransactionsBasic**		and **ReadTransactionsDetail** 
-	* Permissions array that contains **ReadTransactionsDebits** but does not contain at least one of **ReadTransactionsBasic**		and **ReadTransactionsDetail**	
+
+* Permissions array that contains **ReadTransactionsBasic** but does not contain at least one of **ReadTransactionsCredits** and **ReadTransactionsDebits** 
+* Permissions array that contains **ReadTransactionsDetail** but does not contain at least one of **ReadTransactionsCredits** and **ReadTransactionsDebits** 
+* Permissions array that contains **ReadTransactionsCredits** but does not contain at least one of **ReadTransactionsBasic** and **ReadTransactionsDetail** 
+* Permissions array that contains **ReadTransactionsDebits** but does not contain at least one of **ReadTransactionsBasic** and **ReadTransactionsDetail**	
+
 
 It is **MANDATORY** to include the ReadTransactionDetail permission to return any of the following objects:
-
   * OBReadTransaction6/Data/Transaction/TransactionInformation
   * OBReadTransaction6/Data/Transaction/Balance
   * OBReadTransaction6/Data/Transaction/MerchantDetails
