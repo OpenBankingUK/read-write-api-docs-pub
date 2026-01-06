@@ -197,7 +197,7 @@ The following combinations of permissions are not allowed, and it is **MANDATORY
 * Permissions array that contains **ReadTransactionsDebits** but does not contain at least one of **ReadTransactionsBasic** and **ReadTransactionsDetail**	
 
 
-It is **MANDATORY** to include the ReadTransactionDetail permission to return any of the following objects:
+* It is **MANDATORY** to include the ReadTransactionDetail permission to return any of the following objects:
   * OBReadTransaction6/Data/Transaction/TransactionInformation
   * OBReadTransaction6/Data/Transaction/Balance
   * OBReadTransaction6/Data/Transaction/MerchantDetails
@@ -210,6 +210,7 @@ It is **MANDATORY** to include the ReadTransactionDetail permission to return an
   * OBReadTransaction6/Data/Transaction/IntermediaryAgent1
   * OBReadTransaction6/Data/Transaction/IntermediaryAgent2
   * OBReadTransaction6/Data/Transaction/IntermediaryAgent3
+
 
 * If the **ReadTransactionsDetail** is granted by the PSU it is **CONDITIONAL** to return the following, conditionality being based on the information being applicable to the transaction and ASPSP:
   * OBReadTransaction6/Data/Transaction/TransactionInformation (0..1)
