@@ -1,5 +1,11 @@
 # Version control
 
+## Unreleased
+
+## Fixed
+
+- Fixed list formatting in [transaction permissions code](https://openbankinguk.github.io/read-write-api-site3/v4.0.1/resources-and-data-models/aisp/Transactions.html#permission-codes)
+
 ## v4.0.1 Release Candidate 1 - 2026-01-05
 
 ### Changed
