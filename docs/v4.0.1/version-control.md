@@ -1,5 +1,15 @@
 # Version control
 
+## Unreleased
+
+### Added
+
+- Add example to description of point in time relative to frequency in OBMandateRelatedInformation1 for PIS and AIS Profiles
+
+### Changed
+
+- Moved OBFrequency6 codes note to description column in OBMandateRelatedInformation1 for PIS and AIS Profiles
+
 ## v4.0.1 Release Candidate 1 - 2026-01-05
 
 ### Changed
