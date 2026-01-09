@@ -119,13 +119,13 @@ Changes to the Status, such as being rejected, should be captured in `StatusReas
 | YEAR | Annual |
 | DAIL | Daily |
 | FRTN | Fortnightly |
-| INDA | Intra day |
+| INDA | Intra-day |
 | LWMH | Last Working Day of the Month |
-| LXMH | Last x day of the month. Must be used in conjunction with PointInTime to indicate which day of the week (1=Monday, 2=Tuesday, etc.) |
+| LXMH | Last X Day of the Month. Must be used in conjunction with PointInTime to indicate which day of the week (1 = Monday, 2 = Tuesday, etc.) |
 | MNTH | Monthy |
 | QURT | Quarterly |
 | MIAN | Semi Annual |
-| TWYR | Two yearly |
+| TWYR | Two Yearly |
 | WEEK | Weekly |
 
 ## Data Model
