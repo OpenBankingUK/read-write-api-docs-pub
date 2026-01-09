@@ -4,11 +4,8 @@
 
 ### Added
 
-- Add example to description of point in time relative to frequency in OBMandateRelatedInformation1 for PIS and AIS Profiles
-
-### Changed
-
-- Moved OBFrequency6 codes note to description column in OBMandateRelatedInformation1 for PIS and AIS Profiles
+- Added LWMH, LXMH, & TWYR to Frequency Examples in PIS Domestic Standing Order consents & AIS Standing Orders
+- Added Frequency Examples table to PIS International Standing Order Consents
 
 ## v4.0.1 Release Candidate 1 - 2026-01-05
 
