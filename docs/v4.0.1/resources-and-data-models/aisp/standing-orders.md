@@ -126,13 +126,13 @@ An account (AccountId) may have no standing orders set up, or may have multiple 
 | YEAR | Annual |
 | DAIL | Daily |
 | FRTN | Fortnightly |
-| INDA | Intra day |
-| LWMH | Last Working Day of the Month |
-| LXMH | Last x day of the month. Will be be used in conjunction with PointInTime to indicate which day of the week (1=Monday, 2=Tuesday, etc.) |
+| INDA | Intra-day |
+| LWMH | Last Working Day of the Month | 
+| LXMH | Last X Day of the Month. Should be used in conjunction with PointInTime to indicate which day of the week (1 = Monday, 2 = Tuesday, etc.) |
 | MNTH | Monthy |
 | QURT | Quarterly |
 | MIAN | Semi Annual |
-| TWYR | Two yearly |
+| TWYR | Two Yearly |
 | WEEK | Weekly |
 
 ### Permission Codes
