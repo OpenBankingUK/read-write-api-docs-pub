@@ -8,6 +8,7 @@
     - [Status](#status-2)
   - [State Model](#state-model)
     - [Payment Order Consent](#payment-order-consent)
+    - [Frequency Examples](#frequency-examples)
 - [Data Model](#data-model)
   - [Reused Classes](#reused-classes)
     - [OBRemittanceInformation2](#obremittanceinformation2)
@@ -109,6 +110,23 @@ Changes to the Status, such as being rejected, should be captured in `StatusReas
 | StatusReasonCode | Specifies the status reason in a code form. For a full description see `OBExternalStatusReason1Code` in `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_Internal_CodeSets) |
 | StatusReasonDescription | Description of why the code was returned |
 |Path| Path is optional but relevant when the status reason refers to an object/field and hence conditional to provide JSON path. |
+
+#### Frequency Examples
+
+| Frequency Code | Description |
+|---|---|
+| ADHO | Adhoc |
+| YEAR | Annual |
+| DAIL | Daily |
+| FRTN | Fortnightly |
+| INDA | Intra day |
+| LWMH | Last Working Day of the Month |
+| LXMH | Last x day of the month. Must be used in conjunction with PointInTime to indicate which day of the week (1=Monday, 2=Tuesday, etc.) |
+| MNTH | Monthy |
+| QURT | Quarterly |
+| MIAN | Semi Annual |
+| TWYR | Two yearly |
+| WEEK | Weekly |
 
 ## Data Model
 
