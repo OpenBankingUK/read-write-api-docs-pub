@@ -1,6 +1,6 @@
 # Version control
 
-## Unreleased
+## v4.0.1 Release Candidate 2 - Date TBC
 
 ### Added
 
