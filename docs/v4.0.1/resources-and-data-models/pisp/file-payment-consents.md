@@ -4,11 +4,11 @@
 - [Endpoints](#endpoints)
   - [POST /file-payment-consents](#post-file-payment-consents)
     - [Status](#status)
-  - [POST /file-payment-consents/{ConsentId}/file](#post-file-payment-consents-consentid-file)
+  - [POST /file-payment-consents/{ConsentId}/file](#post-file-payment-consentsconsentidfile)
+    - [Status](#status-1)
+  - [GET /file-payment-consents/{ConsentId}](#get-file-payment-consentsconsentid)
     - [Status](#status-2)
-  - [GET /file-payment-consents/{ConsentId}](#get-file-payment-consents-consentid)
-    - [Status](#status-3)
-  - [GET /file-payment-consents/{ConsentId}/file](#get-file-payment-consents-consentid-file)
+  - [GET /file-payment-consents/{ConsentId}/file](#get-file-payment-consentsconsentidfile)
   - [State Model](#state-model)
     - [Payment Order Consent](#payment-order-consent)
 - [Data Model](#data-model)
@@ -20,21 +20,21 @@
       - [UML Diagram](#uml-diagram)
       - [Notes](#notes)
       - [Data Dictionary](#data-dictionary)
-  - [File Payment Consent - Request](#file-payment-consent-request)
+  - [File Payment Consent - Request](#file-payment-consent---request)
+    - [UML Diagram](#uml-diagram-1)
+    - [Notes](#notes-1)
+    - [Data Dictionary](#data-dictionary-1)
+  - [File Payment Consent - Response](#file-payment-consent---response)
     - [UML Diagram](#uml-diagram-2)
     - [Notes](#notes-2)
     - [Data Dictionary](#data-dictionary-2)
-  - [File Payment Consent - Response](#file-payment-consent-response)
-    - [UML Diagram](#uml-diagram-3)
-    - [Notes](#notes-3)
-    - [Data Dictionary](#data-dictionary-3)
 - [Usage Examples](#usage-examples)
-  - [POST /file-payment-consents](#post-file-payment-consents-2)
+  - [POST /file-payment-consents](#post-file-payment-consents-1)
     - [Request](#request)
     - [Response](#response)
-  - [POST /file-payment-consents/{ConsentId}/file](#post-file-payment-consents-consentid-file-2)
-    - [Request](#request-2)
-    - [Response](#response-2)
+  - [POST /file-payment-consents/{ConsentId}/file](#post-file-payment-consentsconsentidfile-1)
+    - [Request](#request-1)
+    - [Response](#response-1)
 
 ## Overview
 
@@ -156,11 +156,11 @@ The data dictionary section gives the detail on the payload content for the File
 
 The OBRemittanceInformation2 class is defined in the [payment-initiation-api-profile](../../profiles/payment-initiation-api-profile.md#obremittanceinformation2) page.
 
-#### OBUltimateDebtor1 
+#### OBUltimateDebtor1
 
 The OBUltimateDebtor1 class is defined in the [payment-initiation-api-profile](../../profiles/payment-initiation-api-profile.md#obultimatedebtor1) page.
 
-#### OBPostalAddress7 
+#### OBPostalAddress7
 
 The OBPostalAddress7 class is defined in the [payment-initiation-api-profile](../../profiles/payment-initiation-api-profile.md#obpostaladdress7) page
 
@@ -218,7 +218,7 @@ The OBWriteFileConsent3 object will be used for the call to:
 
 ![OBWriteFileConsent3](./images/OBWriteFileConsent3.svg )
 
-#### Notes 
+#### Notes
 
 The file-payment-consent **request** contains these objects:
 
