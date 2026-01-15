@@ -95,7 +95,6 @@
             2. [Risk](#risk)
          2. [Response Structure](#response-structure)
          3. [Error Response Structure](#error-response-structure)
-            1. [UML Diagram](#uml-diagram)
             2. [Data Dictionary](#data-dictionary)
          4. [Conditional Fields](#conditional-fields)
          5. [Links](#links)
