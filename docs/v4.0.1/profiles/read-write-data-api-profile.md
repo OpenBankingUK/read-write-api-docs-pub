@@ -120,16 +120,16 @@
 
 The Read/Write Data API Profile provides a description of the elements that are common across all the Read/Write Data APIs.
 
-This profile should be used in conjunction with compatible functional profiles (such as Accounts and Transactions or Payments) and compatible resources.
+This profile should be used in conjunction with compatible functional profiles (such as Accounts and Transactions or Payments) and compatible resources.
 
 ### Document Structure
 
 This document consists of the following parts:
 
-* **Overview**: Provides an overview of the profile and the key decisions and principles.
+* **Overview**: Provides an overview of the profile and the key decisions and principles.
 * **Basics**: The section begins with an introduction to how the APIs are used.
-* **Security & Access Control**: Specifies the means for TPPs and PSUs to authenticate themselves and provide consent.
-* **Data Model**: Describes the data model for the API payloads.
+* **Security & Access Control**: Specifies the means for TPPs and PSUs to authenticate themselves and provide consent.
+* **Data Model**: Describes the data model for the API payloads.
 * **Usage Examples**: Usage examples for Pagination and Error Flows.
 
 ### Design Principles
@@ -152,8 +152,8 @@ The OBL principles for developing API standards:
 
 * OBL will adopt existing standards where relevant/appropriate to minimise re-inventing the wheel.
 * The Standards currently being reviewed include ISO20022 and FAPI.
-* OBL will favour developer/user experience over and above adoption of existing Standards, in order to create a more future proof Standard.
-* OBL will work with other relevant bodies to align with, contribute to and/or adopt other Standards work, especially relating to creation of Standards around APIs and JSON payloads.
+* OBL will favour developer/user experience over and above adoption of existing Standards, in order to create a more future proof Standard.
+* OBL will work with other relevant bodies to align with, contribute to and/or adopt other Standards work, especially relating to creation of Standards around APIs and JSON payloads.
 
 #### ISO 20022
 
@@ -163,9 +163,9 @@ Article 30(3) of the FCA’s Regulatory Technical Standards on strong customer a
 
 The principles we have applied to re-use of ISO message elements and components are:
 
-* Where relevant, the API payloads have been **flattened** so that they are more developer friendly. This has been a request from the developer community, and the stakeholders involved in the design workshop.
+* Where relevant, the API payloads have been **flattened** so that they are more developer friendly. This has been a request from the developer community, and the stakeholders involved in the design workshop.
 * Only elements that are required for the functioning of the API endpoint will be included in the API payload. API endpoints are defined for specific use-cases (not to be generically extensible for all use-cases).
-* We will modify ISO 20022 elements where the existing standard does not cater for an API context (such as filtering, pagination etc.). An example is having latitude and longitude in decimal format, as this is how developers will work with latitude and longitude; or using simple types (e.g., a single date-time field) instead of a complex type (e.g., a choice field with a nesting of date and time).
+* We will modify ISO 20022 elements where the existing standard does not cater for an API context (such as filtering, pagination etc.). An example is having latitude and longitude in decimal format, as this is how developers will work with latitude and longitude; or using simple types (e.g., a single date-time field) instead of a complex type (e.g., a choice field with a nesting of date and time).
 
 #### Extensibility
 
@@ -207,7 +207,7 @@ We will provide further mapping guidance to ensure that differences are understo
 
 The API uses two status codes that serve two different purposes:
 
-* The HTTP Status Code reflects the outcome of the API call (the HTTP operation on the resource). Granular Functional Error Codes are specified as part of API [Error Response Structure](#error-response-structure), after consultation with Security and Fraud Working Group.
+* The HTTP Status Code reflects the outcome of the API call (the HTTP operation on the resource). Granular Functional Error Codes are specified as part of API [Error Response Structure](#error-response-structure), after consultation with Security and Fraud Working Group.
 * A Status field in some of the resource payloads reflects the status of resources.
 
 #### Unique Identifiers (Id Fields)
@@ -220,39 +220,39 @@ An ASPSP that chooses to populate optional Id fields must ensure that the values
 
 #### Categorisation of Implementation Requirements
 
-Where a requirement is being implemented by either an ASPSP and/or a TPP, a different categorisation is applied. The functionality, endpoints and fields within each resource are categorised as 'Mandatory', 'Conditional' or 'Optional'.
+Where a requirement is being implemented by either an ASPSP and/or a TPP, a different categorisation is applied. The functionality, endpoints and fields within each resource are categorised as 'Mandatory', 'Conditional' or 'Optional'.
 
-ASPSPs **must** make documentation available to TPPs (e.g. on their developer portals) to which 'Conditional' / 'Optional' endpoints and fields are implemented for any given implementation of the specification.
+ASPSPs **must** make documentation available to TPPs (e.g. on their developer portals) to which 'Conditional' / 'Optional' endpoints and fields are implemented for any given implementation of the specification.
 
 ##### Mandatory
 
 Functionality, endpoints and fields marked as Mandatory are required in all cases for regulatory compliance and/or for the API to function and deliver essential customer outcomes.
 
-For functionalities and endpoints: 
-* An ASPSP **must** implement an endpoint that is marked Mandatory.
-* An ASPSP **must** implement functionality that is marked Mandatory.
+For functionalities and endpoints: 
+* An ASPSP **must** implement an endpoint that is marked Mandatory.
+* An ASPSP **must** implement functionality that is marked Mandatory.
 
 For fields:
 
-* A TPP **must** specify the value of a Mandatory field.
-* An ASPSP **must** process a Mandatory field when provided by the TPP in an API request.
-* An ASPSP **must** include meaningful values for Mandatory fields in an API response.
+* A TPP **must** specify the value of a Mandatory field.
+* An ASPSP **must** process a Mandatory field when provided by the TPP in an API request.
+* An ASPSP **must** include meaningful values for Mandatory fields in an API response.
 * Mandatory fields are represented as `1..1` or `1..*` in the Data Dictionary Occurrence column and UML diagrams.
 
 ##### Conditional
 
-Functionality, endpoints and fields marked as Conditional may be required in some cases for regulatory compliance (for example, if these are made available to the PSU in the ASPSP's existing Online Channel, or if ASPSPs (or a subset of ASPSPs) have been mandated by a regulatory requirement).
+Functionality, endpoints and fields marked as Conditional may be required in some cases for regulatory compliance (for example, if these are made available to the PSU in the ASPSP's existing Online Channel, or if ASPSPs (or a subset of ASPSPs) have been mandated by a regulatory requirement).
 
 For functionalities and endpoints:
 
-* An ASPSP **must** implement functionality and endpoints marked as Conditional if these are required for regulatory compliance.
+* An ASPSP **must** implement functionality and endpoints marked as Conditional if these are required for regulatory compliance.
 
 For fields:
 
 * All fields that are not marked as Mandatory are Conditional.
-* A TPP **may** specify the value of a Conditional field.
-* An ASPSP **must** process a Conditional field when provided by the TPP in an API request, and **must** respond with an error if it cannot support a particular value of a Conditional field.
-* An ASPSP **must** include meaningful values for Conditional fields in an API response if these are required for regulatory compliance.
+* A TPP **may** specify the value of a Conditional field.
+* An ASPSP **must** process a Conditional field when provided by the TPP in an API request, and **must** respond with an error if it cannot support a particular value of a Conditional field.
+* An ASPSP **must** include meaningful values for Conditional fields in an API response if these are required for regulatory compliance.
 * Conditional fields are represented as `0..1` or `0..*` in the Data Dictionary Occurrence column and UML diagrams.
 
 ##### Optional
@@ -261,8 +261,8 @@ Functionality and endpoints marked as Optional are not necessarily required for 
 
 For functionalities and endpoints:
 
-* An ASPSP **may** implement an Optional endpoint.
-* An ASPSP **may** implement Optional functionality.
+* An ASPSP **may** implement an Optional endpoint.
+* An ASPSP **may** implement Optional functionality.
 
 For fields:
 
@@ -287,35 +287,35 @@ For fields:
 
 ### Character Encoding
 
-The API requests and responses **must** use a UTF-8 character encoding. This is the default character encoding for JSON (RFC 7158 - [Section 8.1](https://tools.ietf.org/html/rfc7158#section-8.1))
+The API requests and responses **must** use a UTF-8 character encoding. This is the default character encoding for JSON (RFC 7158 - [Section 8.1](https://tools.ietf.org/html/rfc7158#section-8.1))
 
-However, an ASPSP's downstream system may not accept some UTF-8 characters, such as emoji characters (e.g. "Happy Birthday 🎂🎂!" may not be an acceptable Payment Reference). If the ASPSP rejects the message with a UTF-8 character that cannot be processed, the ASPSP **must** respond with an HTTP 400 (Bad Request) status code.
+However, an ASPSP's downstream system may not accept some UTF-8 characters, such as emoji characters (e.g. "Happy Birthday 🎂🎂!" may not be an acceptable Payment Reference). If the ASPSP rejects the message with a UTF-8 character that cannot be processed, the ASPSP **must** respond with an HTTP 400 (Bad Request) status code.
 
 ### Date Formats
 
 An ASPSP must accept all valid [ISO-8601](https://www.iso.org/iso-8601-date-and-time-format.html) date formats including its permitted variations (e.g. variations in how the timezone is defined, dates with or with a seconds or milliseconds part etc.) in the requests.
 
-All dates in the JSON payloads are represented in [ISO-8601](https://www.iso.org/iso-8601-date-and-time-format.html) date-time format. All date-time fields in responses **must** include the timezone. For Example:
+All dates in the JSON payloads are represented in [ISO-8601](https://www.iso.org/iso-8601-date-and-time-format.html) date-time format. All date-time fields in responses **must** include the timezone. For Example:
 
 ```
 2017-04-05T10:43:07+00:00
 2018-07-03T14:43:41Z
 ```
 
-All dates in the query string are represented in [ISO-8601](https://www.iso.org/iso-8601-date-and-time-format.html) date-time format and **must not** include the timezone. For example:
+All dates in the query string are represented in [ISO-8601](https://www.iso.org/iso-8601-date-and-time-format.html) date-time format and **must not** include the timezone. For example:
 
 ```
 2017-04-05T10:43:07
 2017-04-05
 ```
 
-All dates in the HTTP headers are represented as [RFC 7231](https://tools.ietf.org/html/rfc7231#section-7.1.1.1) Full Dates. An example is below:
+All dates in the HTTP headers are represented as [RFC 7231](https://tools.ietf.org/html/rfc7231#section-7.1.1.1) Full Dates. An example is below:
 
 ```
 Sun, 10 Sep 2017 19:43:31 GMT
 ```
 
-All dates in the JWT claims are expressed as a JSON number, representing the number of seconds from 1970-01-01T0:0:0Z as measured in GMT until the date/time.
+All dates in the JWT claims are expressed as a JSON number, representing the number of seconds from 1970-01-01T0:0:0Z as measured in GMT until the date/time.
 
 ```
 //Sun, 12 Feb 2018 14:45:00 GMT
@@ -333,8 +333,8 @@ The path of the URI must follow the structure below (from the OB API Release Man
 This consists of the following elements:
 * [participant-path-prefix]<br>An optional ASPSP specific path prefix.
 * open-banking<br>The constant string "open-banking".
-* [version]<br>The version of the APIs expressed as /v[major-version].[minor-version]/.
-* [resource-group]<br>The resource-group identifies the group of endpoints, according to the PSD2 role used to access the API (as "aisp", "pisp" or "cbpii").
+* [version]<br>The version of the APIs expressed as /v[major-version].[minor-version]/.
+* [resource-group]<br>The resource-group identifies the group of endpoints, according to the PSD2 role used to access the API (as "aisp", "pisp" or "cbpii").
 * [resource]/[resource-id]<br>Details the resource.
 * [sub-resource]<br>Details the sub-resource.
 
@@ -369,7 +369,7 @@ For brevity, the APIs are referred to by their resource names in these documents
 |payload-version| An optional header included only to assist migration to new versions of the API standard.<br><br>If supported by the ASPSP, the TPP can submit a payload using an older schema.<br><br>`payload-version: 3.1.11`|Optional|Do not use|Do not use| Optional|
 
 
-Whether the PSU is present or not-present is identified via the x-fapi-customer-ip-address header. If the PSU IP address is supplied, it is inferred that the PSU is present during the interaction.
+Whether the PSU is present or not-present is identified via the x-fapi-customer-ip-address header. If the PSU IP address is supplied, it is inferred that the PSU is present during the interaction.
 
 The implications to this are:
 
@@ -430,21 +430,21 @@ The following are the HTTP response codes for the different HTTP methods, across
 |Service version deprecation|503 Service Unavailable                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |Where an API is deprecated and no longer operationally supported by an ASPSP, its URI path may still be active and accept API requests. In this context it is recommended that a 503 Service Unavailable be returned so that the TPP is aware of the API version being offline.|Yes             |Yes            |Yes               |Yes            |
 
 
-An ASPSP **MAY** return other standard HTTP status codes (e.g. from gateways and other edge devices) as described in [RFC 7231 - Section 6](https://tools.ietf.org/html/rfc7231#section-6).
+An ASPSP **MAY** return other standard HTTP status codes (e.g. from gateways and other edge devices) as described in [RFC 7231 - Section 6](https://tools.ietf.org/html/rfc7231#section-6).
 
-ASPSPs **must** respond with error response in the OAuth/OIDC flow with mandatory alignment of the error codes to those specified in OpenID Connect Core Specification [Section 3.1.2.6](https://openid.net/specs/openid-connect-core-1_0.html#AuthError).
+ASPSPs **must** respond with error response in the OAuth/OIDC flow with mandatory alignment of the error codes to those specified in OpenID Connect Core Specification [Section 3.1.2.6](https://openid.net/specs/openid-connect-core-1_0.html#AuthError).
 
 ASPSPs **must** respond with Open Banking [Error Response Structure](#error-response-structure) for all errors during API Calls.
 
-#### 400 (Bad Request) v/s 404 (Not Found)
+#### 400 (Bad Request) v/s 404 (Not Found)
 
-When a TPP tries to request a resource URL with a resource Id that does not exist, the ASPSP **must** respond with a 400 (Bad Request) rather than a 404 (Not Found).
+When a TPP tries to request a resource URL with a resource Id that does not exist, the ASPSP **must** respond with a 400 (Bad Request) rather than a 404 (Not Found).
 
 e.g., if a TPP tries to GET /domestic-payments/22289 where 22289 is not a valid DomesticPaymentId, the ASPSP must respond with a 400.
 
-When a TPP tries to request a resource URL that results in no business data being returned (e.g. a request to retrieve standing order on an account that does not have standing orders) the ASPSP **must** respond with a 200 (OK) and set the array to be empty.
+When a TPP tries to request a resource URL that results in no business data being returned (e.g. a request to retrieve standing order on an account that does not have standing orders) the ASPSP **must** respond with a 200 (OK) and set the array to be empty.
 
-If the TPP tries to access a URL for a resource that is not defined by these specifications (e.g. GET /card-accounts), the ASPSP **may** choose to respond with a 404 (Not Found).
+If the TPP tries to access a URL for a resource that is not defined by these specifications (e.g. GET /card-accounts), the ASPSP **may** choose to respond with a 404 (Not Found).
 
 If an ASPSP has not implemented an API endpoint, it **must** respond with a 404 (Not Found) for requests to that URL.
 
@@ -460,15 +460,15 @@ The table below illustrates some examples of expected behaviour:
 
 #### 403 (Forbidden)
 
-When a TPP tries to access a resource that it does not have permission to access, the ASPSP **must** return a 403 (Forbidden) with an optional body with Error Response.
+When a TPP tries to access a resource that it does not have permission to access, the ASPSP **must** return a 403 (Forbidden) with an optional body with Error Response.
 
 The situation could arise when:
 
 * The TPP uses an access token that does not have the appropriate scope to access the requested resource.
-* The TPP attempted to access a resource with an Id that it does not have access to. e.g., an attempt to access GET /domestic-payments/1001 where a payment resource with Id 1001 belongs to another TPP.
+* The TPP attempted to access a resource with an Id that it does not have access to. e.g., an attempt to access GET /domestic-payments/1001 where a payment resource with Id 1001 belongs to another TPP.
 * The TPP tries to access an account/transaction resource and the TPP does not have a consent authorisation with the right Permissions to access the requested resource. e.g., an attempt to access GET /standing-orders when the ReadStandingOrdersBasic permission was not included in the consent authorisation.
 * The TPP tries to access an account/transaction resource and the TPP does not have a consent authorisation for the AccountId. e.g., an attempt to access GET /accounts/2001 or GET /accounts/2001/transactions when the PSU has not selected AccountId 2001 for authorisation.
-* The TPP attempts to access a Resource and the ASPSP decides to re-authenticate the PSU. The ASPSP must respond back with an appropriate error code to indicate re-authentication is required and also update the Consent `Status` with `CANC` and appropriate `StatusReasonCode`. For more guidance refer to the [CEGs](https://standards.openbanking.org.uk/customer-experience-guidelines/appendices/common-errors/v4-0/).
+* The TPP attempts to access a Resource and the ASPSP decides to re-authenticate the PSU. The ASPSP must respond back with an appropriate error code to indicate re-authentication is required and also update the Consent `Status` with `CANC` and appropriate `StatusReasonCode`. For more guidance refer to the [CEGs](https://standards.openbanking.org.uk/customer-experience-guidelines/appendices/common-errors/v4-0/).
 
 #### 401 (Unauthorized)
 
@@ -486,12 +486,12 @@ This error can potentially be remedied by asking the PSU to re-authenticate or a
 
 #### 429 (Too Many Requests)
 
-When a TPP tries to access a resource too frequently the ASPSP **may** return a 429 (Too Many Requests).  This is a non functional requirement and is down to individual ASPSPs to decide throttling limits. 
+When a TPP tries to access a resource too frequently the ASPSP **may** return a 429 (Too Many Requests).  This is a non functional requirement and is down to individual ASPSPs to decide throttling limits. 
 
 This situation could arise when:
 
 * A TPP decides to implement "Real Time Payment Status" functionality for its users and implements this badly by polling a GET endpoint or an Idempotent POST endpoint in excess of the ASPSP's fair usage policy to provide pseudo "real-time" Status updates to the user.
-* A TPP decides to use the Single Immediate Payment endpoint as if it were a batch payment facility and sends a large number of payment requests in a very short space of time such that it exceeds the ASPSP's fair usage policy. 
+* A TPP decides to use the Single Immediate Payment endpoint as if it were a batch payment facility and sends a large number of payment requests in a very short space of time such that it exceeds the ASPSP's fair usage policy. 
 
 ### Pre-Conditions
 
@@ -514,23 +514,23 @@ The following pre-conditions must be satisfied in order to use these APIs:
 
 ### Idempotency
 
-An idempotency key is used to guard against the creation of duplicate resources when using the **POST** API endpoints (where indicated). 
+An idempotency key is used to guard against the creation of duplicate resources when using the **POST** API endpoints (where indicated). 
 
 If an idempotency key is required for an API endpoint:
 
-* The x-idempotency-key provided in the header **must** be at most 40 characters in size. If a larger x-idempotency-key length is provided, the ASPSP **must** reject the request with a status code is 400 (Bad Request).
-* The TPP **must not** change the request body while using the same x-idempotency-key. If the TPP changes the request body, the ASPSP **must not** modify the end resource. The ASPSP **may** treat this as a fraudulent action.
-* The ASPSP **must** treat a request as idempotent if it had received the first request with the same x-idempotency-key from the same TPP in the **preceding 24 hours**. 
-* The ASPSP **must not** create a new resource for a POST request if it is determined to be an idempotent request.
+* The x-idempotency-key provided in the header **must** be at most 40 characters in size. If a larger x-idempotency-key length is provided, the ASPSP **must** reject the request with a status code is 400 (Bad Request).
+* The TPP **must not** change the request body while using the same x-idempotency-key. If the TPP changes the request body, the ASPSP **must not** modify the end resource. The ASPSP **may** treat this as a fraudulent action.
+* The ASPSP **must** treat a request as idempotent if it had received the first request with the same x-idempotency-key from the same TPP in the **preceding 24 hours**. 
+* The ASPSP **must not** create a new resource for a POST request if it is determined to be an idempotent request.
 * The ASPSP **must** respond to the request with the current status of the resource (or a status which is at least as current as what is available on existing online channels) and a HTTP status code of 201 (Created).
-* The TPP **must not** use the idempotent behaviour to poll the status of resources.
-* The ASPSP **may** use the message signature, along with the x-idempotency-key to ensure that the request body has not changed.
+* The TPP **must not** use the idempotent behaviour to poll the status of resources.
+* The ASPSP **may** use the message signature, along with the x-idempotency-key to ensure that the request body has not changed.
 * The TPP **must** delay sending duplicate payment initiation requests using the same x-idempotency key for a minimum of 1 second even if they have not received a response.
 * The TPP **may** use the GET endpoint to check the status of the payment before initiating a duplicate payment whenever possible to do so.
 
-If an idempotency key is not required for an API endpoint:
+If an idempotency key is not required for an API endpoint:
 
-* The ASPSP **must** ignore the idempotency key if provided.
+* The ASPSP **must** ignore the idempotency key if provided.
 
 ### Message Signing
 
@@ -540,9 +540,9 @@ This section provides an overview of how message signing is implemented for the 
 
 The APIs require TLS 1.2 Mutual Authentication and this may be used as a means of non-repudiation. However, it would be difficult to maintain digital records and evidence of non-repudiation if the API only relied on TLS 1.2.
 
-A solution for non-repudiation that does not rely on TLS, would be achieved by providing a JWS with detached content (as defined in [RFC 7515 - Appendix F](https://tools.ietf.org/html/rfc7515)) in the HTTP header of each API request.
+A solution for non-repudiation that does not rely on TLS, would be achieved by providing a JWS with detached content (as defined in [RFC 7515 - Appendix F](https://tools.ietf.org/html/rfc7515)) in the HTTP header of each API request.
 
-The HTTP body would form an un-encoded payload as defined in [RFC 7797](https://tools.ietf.org/html/rfc7797).
+The HTTP body would form an un-encoded payload as defined in [RFC 7797](https://tools.ietf.org/html/rfc7797).
 
 The JWS would be signed using an algorithm that supports asymmetric keys.
 
@@ -552,35 +552,35 @@ Not all API requests and responses are signed. Whether message signing is mandat
 
 #### Key Stores
 
-A Trust Anchor that is trusted by the ASPSPs and TPPs is responsible for providing a store of public keys for each of the parties. 
+A Trust Anchor that is trusted by the ASPSPs and TPPs is responsible for providing a store of public keys for each of the parties. 
 
 The Trust Anchor could be a centralised directory (such as the Open Banking Directory) that hosts the public part of a key pair generated any of the parties.
 
-Alternatively the Trust Anchor could be a CA (or a set of CAs) that provide digital certificates (such as a QTSP providing eIDAS certificates)
+Alternatively the Trust Anchor could be a CA (or a set of CAs) that provide digital certificates (such as a QTSP providing eIDAS certificates)
 
 The Trust Anchor must provide a means for any of the parties to retrieve public keys to verify messages.
 
 #### Specification
 
-The TPP **must** sign the HTTP body of each API request that requires message signing.
+The TPP **must** sign the HTTP body of each API request that requires message signing.
 
-The ASPSP **must** sign the HTTP body of each API response that requires message signing.
+The ASPSP **must** sign the HTTP body of each API response that requires message signing.
 
-The ASPSP **must** verify the signature of API requests that it receives before carrying out the request. If the signature fails validation, the ASPSP **must** respond with a 400 (Bad Request).
+The ASPSP **must** verify the signature of API requests that it receives before carrying out the request. If the signature fails validation, the ASPSP **must** respond with a 400 (Bad Request).
 
-The ASPSP **must** reject any API requests that should be signed but do not contain a signature in the HTTP header with a 400 (Bad Request) error.
+The ASPSP **must** reject any API requests that should be signed but do not contain a signature in the HTTP header with a 400 (Bad Request) error.
 
-The TPP **must** verify the signature of API responses that it receives and immediately inform the ASPSP if it receives a payload with an invalid or missing mandatory signature.
+The TPP **must** verify the signature of API responses that it receives and immediately inform the ASPSP if it receives a payload with an invalid or missing mandatory signature.
 
-The signer **must** sign the message with PS256.
+The signer **must** sign the message with PS256.
 
 #### Process for Signing a Payload
 
 ##### Step 1: Identify the Private Key and Corresponding Signing Certificate to be Used for Signing
 
-The signer **must** use a private key that has a corresponding public key that is lodged with the Trust Anchor.
+The signer **must** use a private key that has a corresponding public key that is lodged with the Trust Anchor.
 
-The signing key **must** be valid at the time of creating the JWS.
+The signing key **must** be valid at the time of creating the JWS.
 
 ##### Step 2: Form the JOSE Header
 
@@ -599,7 +599,7 @@ The JOSE header for the signature must contain the following fields
 
 ##### Step 3: Compute the JWS
 
-The signer must compute the signature as a detached JWS as defined in [RFC 7515, Appendix F](https://tools.ietf.org/html/rfc7515)
+The signer must compute the signature as a detached JWS as defined in [RFC 7515, Appendix F](https://tools.ietf.org/html/rfc7515)
 
 > "One way to do this is to create a JWS
    in the normal fashion using a representation of the content as the
@@ -610,9 +610,9 @@ The signer must compute the signature as a detached JWS as defined in [RFC 7515
    applications can use this method by modifying the inputs and outputs
    of standard JWS libraries.   
 
-##### Step 4: Add the JWS as a HTTP Header 
+##### Step 4: Add the JWS as a HTTP Header 
 
-The signer **must** include an HTTP header called **x-jws-signature** with its value set to the signature computed in Step 3.
+The signer **must** include an HTTP header called **x-jws-signature** with its value set to the signature computed in Step 3.
 
 ```
 x-jws-signature: V2hhdCBoYXRoIGdvZCB3cm91Z2h0ID8=..QnkgR2VvcmdlLCBzaGUncyBnb3QgaXQhIEJ5IEdlb3JnZSBzaGUncyBnb3QgaXQhIE5vdyBvbmNlIGFnYWluLCB3aGVyZSBkb2VzIGl0IHJhaW4/
@@ -1304,7 +1304,7 @@ The error response structure for Open Banking Read/Write APIs:
 
 In objects where the value for a conditional field is not specified, the field **must** be excluded from the JSON payload.
 
-In objects where an array field is defined as having 0..* values, the array field **must be** included in the payload with an empty array.
+In objects where an array field is defined as having 0..* values, the array field **must be** included in the payload with an empty array.
 
 ```
 {
@@ -1329,7 +1329,7 @@ For example:
   }
 ```
 
-Where an API provides a paginated response, the `Links` element may also contain the members `First`, `Prev`, `Next` and `Last` as described in the section Basics / Pagination.
+Where an API provides a paginated response, the `Links` element may also contain the members `First`, `Prev`, `Next` and `Last` as described in the section Basics / Pagination.
 
 For example:
 
@@ -1345,7 +1345,7 @@ For example:
 
 #### Meta
 
-The Meta section is **Conditional**, but may be empty.  An optional member is "TotalPages" which is specified as an integer (int32) and shows how many pages of results (for pagination) are available.
+The Meta section is **Conditional**, but may be empty.  An optional member is "TotalPages" which is specified as an integer (int32) and shows how many pages of results (for pagination) are available.
 
 For example:
 
@@ -1363,7 +1363,7 @@ This section provides usage examples for some repeating patterns that are used b
 
 ### Pagination Flows
 
-The example below illustrates how an ASPSP may return a paginated response. 
+The example below illustrates how an ASPSP may return a paginated response. 
 
 #### Request
 
