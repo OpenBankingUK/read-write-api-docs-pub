@@ -128,7 +128,7 @@ An account (AccountId) may have no standing orders set up, or may have multiple 
 | FRTN | Fortnightly |
 | INDA | Intra-day |
 | LWMH | Last Working Day of the Month | 
-| LXMH | Last X Day of the Month. Should be used in conjunction with PointInTime to indicate which day of the week (1 = Monday, 2 = Tuesday, etc.) |
+| LXMH | Last X Day of the Month. Must be used in conjunction with PointInTime to indicate which day of the week (1 = Monday, 2 = Tuesday, etc.) |
 | MNTH | Monthy |
 | QURT | Quarterly |
 | MIAN | Semi Annual |
