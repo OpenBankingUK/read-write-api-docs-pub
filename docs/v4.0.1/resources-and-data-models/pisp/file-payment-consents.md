@@ -4,37 +4,37 @@
 - [Endpoints](#endpoints)
   - [POST /file-payment-consents](#post-file-payment-consents)
     - [Status](#status)
-  - [POST /file-payment-consents/{ConsentId}/file](#post-file-payment-consents-consentid-file)
+  - [POST /file-payment-consents/{ConsentId}/file](#post-file-payment-consentsconsentidfile)
+    - [Status](#status-1)
+  - [GET /file-payment-consents/{ConsentId}](#get-file-payment-consentsconsentid)
     - [Status](#status-2)
-  - [GET /file-payment-consents/{ConsentId}](#get-file-payment-consents-consentid)
-    - [Status](#status-3)
-  - [GET /file-payment-consents/{ConsentId}/file](#get-file-payment-consents-consentid-file)
+  - [GET /file-payment-consents/{ConsentId}/file](#get-file-payment-consentsconsentidfile)
   - [State Model](#state-model)
     - [Payment Order Consent](#payment-order-consent)
 - [Data Model](#data-model)
   - [Reused Classes](#reused-classes)
-	- [OBRemittanceInformation2](#obremittanceinformation2)
-	- [OBUltimateDebtor1](#obultimatedebtor1)
-	- [OBPostalAddress7](#obpostaladdress7)
+    - [OBRemittanceInformation2](#obremittanceinformation2)
+    - [OBUltimateDebtor1](#obultimatedebtor1)
+    - [OBPostalAddress7](#obpostaladdress7)
     - [OBFile2](#obfile2)
       - [UML Diagram](#uml-diagram)
       - [Notes](#notes)
       - [Data Dictionary](#data-dictionary)
-  - [File Payment Consent - Request](#file-payment-consent-request)
+  - [File Payment Consent - Request](#file-payment-consent---request)
+    - [UML Diagram](#uml-diagram-1)
+    - [Notes](#notes-1)
+    - [Data Dictionary](#data-dictionary-1)
+  - [File Payment Consent - Response](#file-payment-consent---response)
     - [UML Diagram](#uml-diagram-2)
     - [Notes](#notes-2)
     - [Data Dictionary](#data-dictionary-2)
-  - [File Payment Consent - Response](#file-payment-consent-response)
-    - [UML Diagram](#uml-diagram-3)
-    - [Notes](#notes-3)
-    - [Data Dictionary](#data-dictionary-3)
 - [Usage Examples](#usage-examples)
-  - [POST /file-payment-consents](#post-file-payment-consents-2)
+  - [POST /file-payment-consents](#post-file-payment-consents-1)
     - [Request](#request)
     - [Response](#response)
-  - [POST /file-payment-consents/{ConsentId}/file](#post-file-payment-consents-consentid-file-2)
-    - [Request](#request-2)
-    - [Response](#response-2)
+  - [POST /file-payment-consents/{ConsentId}/file](#post-file-payment-consentsconsentidfile-1)
+    - [Request](#request-1)
+    - [Response](#response-1)
 
 ## Overview
 
@@ -51,7 +51,7 @@ This resource description should be read in conjunction with a compatible Paymen
 | file-payment-consents |GET |GET /file-payment-consents/{ConsentId} |Mandatory (if resource POST implemented) |payments |Client Credentials |Signed Response |No |NA |OBWriteFileConsentResponse4 |
 | file-payment-consents |GET |GET /file-payment-consents/{ConsentId}/file |Conditional |payments |Client Credentials |Signed Response |No |NA |File |
 
-### POST /file-payment-consents 
+### POST /file-payment-consents
 
 The API endpoint allows the PISP to ask an ASPSP to create a new **file-payment-consent** resource.
 
@@ -77,12 +77,12 @@ The API endpoint allows the PISP to upload a file to an ASPSP, against a **file-
 * The file structure must match the FileType in the file-payment-consent request.
 * An ASPSP must confirm the hash of the file matches with the FileHash provided in the file-payment-consent Metadata.
 * The metadata for the file-payment-consent must match the contents of the uploaded file:
-    * If the content of the metadata does not match the content of the file, the ASPSP **must** reject the file-payment-consent.
+  * If the content of the metadata does not match the content of the file, the ASPSP **must** reject the file-payment-consent.
 * The file is sent in the HTTP request body.
 * HTTP headers (e.g. Content-Type) are used to describe the file.
 * ASPSPs should document accepted file types on their developer portal.
 * ASPSPs who accept the `UK.OBIE.PaymentInitiation.4.0` file type should specify which payload schemas they accept as payload structures vary across payment types.
-	* E.g.  An ASPSP accepting domestic, international and domestic standing orders via file payment should explicitly specify support for these 3 payload schemas on their developer portal.
+  * E.g.  An ASPSP accepting domestic, international and domestic standing orders via file payment should explicitly specify support for these 3 payload schemas on their developer portal.
 
 #### Status
 
@@ -94,7 +94,7 @@ The default Status is "AWAU" immediately after the file has been uploaded.
 
 ### GET /file-payment-consents/{ConsentId}
 
-A PISP can optionally retrieve a payment consent resource that they have created to check its status. 
+A PISP can optionally retrieve a payment consent resource that they have created to check its status.
 
 #### Status
 
@@ -138,7 +138,7 @@ The definitions for the Status:
 | 4 |AUTH |The consent resource has been successfully authorised. |
 | 5 |COND| The consented action has been successfully completed. This does not reflect the status of the consented action.|
 
-Changes to the Status, such as being rejected, should be captured in `StatusReason`, an array of `StatusReasonCode`, `StatusReasonDescription` and `Path`.  
+Changes to the Status, such as being rejected, should be captured in `StatusReason`, an array of `StatusReasonCode`, `StatusReasonDescription` and `Path`.
 
 | Field | Description |
 |---|---|
@@ -156,11 +156,11 @@ The data dictionary section gives the detail on the payload content for the File
 
 The OBRemittanceInformation2 class is defined in the [payment-initiation-api-profile](../../profiles/payment-initiation-api-profile.md#obremittanceinformation2) page.
 
-#### OBUltimateDebtor1 
+#### OBUltimateDebtor1
 
 The OBUltimateDebtor1 class is defined in the [payment-initiation-api-profile](../../profiles/payment-initiation-api-profile.md#obultimatedebtor1) page.
 
-#### OBPostalAddress7 
+#### OBPostalAddress7
 
 The OBPostalAddress7 class is defined in the [payment-initiation-api-profile](../../profiles/payment-initiation-api-profile.md#obpostaladdress7) page
 
@@ -176,7 +176,7 @@ This section describes the OBFile2 class, which is reused as the Initiation obje
 
 * TPPs should refer to ASPSP developer portals for information on which File Payment endpoints are available, specification of accepted file format(s) and information on File Payment statuses.
 
-For the OBFile2 Initiation object: 
+For the OBFile2 Initiation object:
 
 * All elements in the Initiation payload that are specified by the PISP must not be changed via the ASPSP, as this is part of formal consent from the PSU.
 * If the ASPSP is able to establish a problem with payload or any contextual error during the API call, the ASPSP must reject the file-payment-consent request immediately.
@@ -218,7 +218,7 @@ The OBWriteFileConsent3 object will be used for the call to:
 
 ![OBWriteFileConsent3](./images/OBWriteFileConsent3.svg )
 
-#### Notes 
+#### Notes
 
 The file-payment-consent **request** contains these objects:
 
