@@ -120,17 +120,20 @@ An account (AccountId) may have no standing orders set up, or may have multiple 
 
 ### Frequency Examples
 
-|Frequency Code | Description |
+| Frequency Code | Description |
 |---|---|
-|ADHO|Adhoc|
-|YEAR|Annual|
-|DAIL|Daily|
-|FRTN|Fortnightly|
-|INDA| Intra-day|
-|MNTH| Monthly|
-|QURT| Quarterly|
-|MIAN| Semi-annual|
-|WEEK| Weekly|
+| ADHO | Adhoc |
+| YEAR | Annual |
+| DAIL | Daily |
+| FRTN | Fortnightly |
+| INDA | Intra-day |
+| LWMH | Last Working Day of the Month | 
+| LXMH | Last X Day of the Month. Must be used in conjunction with PointInTime to indicate which day of the week (1 = Monday, 2 = Tuesday, etc.) |
+| MNTH | Monthy |
+| QURT | Quarterly |
+| MIAN | Semi Annual |
+| TWYR | Two Yearly |
+| WEEK | Weekly |
 
 ### Permission Codes
 

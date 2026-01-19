@@ -168,18 +168,20 @@ For the OBDomesticStandingOrder3 Initiation object:
 
 ###### Frequency Examples
 
-|Frequency|Detail|
+| Frequency Code | Description |
 |---|---|
-|ADHO| Adhoc|
-|INDA| Intra day|
-|DAIL| Daily|
-|WEEK| Weekly|
-|FRTN| Fortnightly|
-|MNTH| Monthy|
-|QURT| Quarterly|
-|MIAN| Semi Annual|
-|YEAR| Annual|
-
+| ADHO | Adhoc |
+| YEAR | Annual |
+| DAIL | Daily |
+| FRTN | Fortnightly |
+| INDA | Intra-day |
+| LWMH | Last Working Day of the Month |
+| LXMH | Last X Day of the Month. Must be used in conjunction with PointInTime to indicate which day of the week (1 = Monday, 2 = Tuesday, etc.) |
+| MNTH | Monthy |
+| QURT | Quarterly |
+| MIAN | Semi Annual |
+| TWYR | Two Yearly |
+| WEEK | Weekly |
 
 ##### Data Dictionary
 

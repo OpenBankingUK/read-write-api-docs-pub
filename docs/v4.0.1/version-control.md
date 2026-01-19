@@ -1,5 +1,12 @@
 # Version control
 
+## v4.0.1 Release Candidate 2 - Date TBC
+
+### Added
+
+- Added LWMH, LXMH, & TWYR to Frequency Examples in PIS Domestic Standing Order consents & AIS Standing Orders
+- Added Frequency Examples table to PIS International Standing Order Consents
+
 ## v4.0.1 Release Candidate 1 - 2026-01-05
 
 ### Changed
