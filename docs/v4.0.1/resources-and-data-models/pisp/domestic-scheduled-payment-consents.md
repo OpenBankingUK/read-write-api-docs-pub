@@ -4,8 +4,8 @@
 - [Endpoints](#endpoints)
   - [POST /domestic-scheduled-payment-consents](#post-domestic-scheduled-payment-consents)
     - [Status](#status)
-  - [GET /domestic-scheduled-payment-consents/{ConsentId}](#get-domestic-scheduled-payment-consents-consentid)
-    - [Status](#status-2)
+  - [GET /domestic-scheduled-payment-consents/{ConsentId}](#get-domestic-scheduled-payment-consentsconsentid)
+    - [Status](#status-1)
   - [State Model](#state-model)
     - [Payment Order Consent](#payment-order-consent)
 - [Data Model](#data-model)
@@ -19,14 +19,14 @@
       - [UML Diagram](#uml-diagram)
       - [Notes](#notes)
       - [Data Dictionary](#data-dictionary)
-  - [Domestic Scheduled Payment Consent - Request](#domestic-scheduled-payment-consent-request)
+  - [Domestic Scheduled Payment Consent - Request](#domestic-scheduled-payment-consent---request)
+    - [UML Diagram](#uml-diagram-1)
+    - [Notes](#notes-1)
+    - [Data Dictionary](#data-dictionary-1)
+  - [Domestic Scheduled Payment Consent - Response](#domestic-scheduled-payment-consent---response)
     - [UML Diagram](#uml-diagram-2)
     - [Notes](#notes-2)
     - [Data Dictionary](#data-dictionary-2)
-  - [Domestic Scheduled Payment Consent - Response](#domestic-scheduled-payment-consent-response)
-    - [UML Diagram](#uml-diagram-3)
-    - [Notes](#notes-3)
-    - [Data Dictionary](#data-dictionary-3)
 - [Usage Examples](#usage-examples)
     - [Create a Domestic Scheduled Payment Consent](#create-a-domestic-scheduled-payment-consent)
       - [POST /domestic-scheduled-payment-consents Request](#post-domestic-scheduled-payment-consents-request)
@@ -125,11 +125,11 @@ The OBRegulatoryReporting1 class is defined in the [payment-initiation-api-profi
 The OBUltimateCreditor1 class is defined in the [payment-initiation-api-profile](../../profiles/payment-initiation-api-profile.md#obultimatecreditor1) page.
 
 
-#### OBUltimateDebtor1 
+#### OBUltimateDebtor1
 
 The OBUltimateDebtor1 class is defined in the [payment-initiation-api-profile](../../profiles/payment-initiation-api-profile.md#obultimatedebtor1) page.
 
-#### OBPostalAddress7 
+#### OBPostalAddress7
 
 The OBPostalAddress7 class is defined in the [payment-initiation-api-profile](../../profiles/payment-initiation-api-profile.md#obpostaladdress7) page.
 

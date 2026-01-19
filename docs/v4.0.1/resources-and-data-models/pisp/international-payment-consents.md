@@ -4,9 +4,9 @@
 - [Endpoints](#endpoints)
   - [POST /international-payment-consents](#post-international-payment-consents)
     - [Status](#status)
-- [GET /international-payment-consents/{ConsentId}](#get-international-payment-consents-consentid)
-    - [Status](#status-2)
-  - [GET /international-payment-consents/{ConsentId}/funds-confirmation](#get-international-payment-consents-consentid-funds-confirmation)
+- [GET /international-payment-consents/{ConsentId}](#get-international-payment-consentsconsentid)
+    - [Status](#status-1)
+  - [GET /international-payment-consents/{ConsentId}/funds-confirmation](#get-international-payment-consentsconsentidfunds-confirmation)
   - [State Model](#state-model)
     - [Payment Order Consent](#payment-order-consent)
 - [Data Model](#data-model)
@@ -23,25 +23,25 @@
     - [OBExchangeRate2](#obexchangerate2)
       - [Data Dictionary](#data-dictionary-2)
     - [OBPostalAddress7](#obpostaladdress7)
-  - [International Payment Consent - Request](#international-payment-consent-request)
+  - [International Payment Consent - Request](#international-payment-consent---request)
+    - [UML Diagram](#uml-diagram-1)
+    - [Notes](#notes-1)
+    - [Data Dictionary](#data-dictionary-3)
+  - [International Payment Consent - Response](#international-payment-consent---response)
     - [UML Diagram](#uml-diagram-2)
     - [Notes](#notes-2)
     - [Data Dictionary](#data-dictionary-3)
-  - [International Payment Consent - Response](#international-payment-consent-response)
+  - [International Payment Consent Confirmation of Funds - Response](#international-payment-consent-confirmation-of-funds---response)
     - [UML Diagram](#uml-diagram-3)
     - [Notes](#notes-3)
-    - [Data Dictionary](#data-dictionary-3)
-  - [International Payment Consent Confirmation of Funds - Response](#international-payment-consent-confirmation-of-funds-response)
-    - [UML Diagram](#uml-diagram-4)
-    - [Notes](#notes-4)
     - [Data Dictionary](#data-dictionary-4)
 - [Usage Examples](#usage-examples)
-  - [POST /international-payment-consents](#post-international-payment-consents-2)
+  - [POST /international-payment-consents](#post-international-payment-consents-1)
     - [Request](#request)
     - [Response](#response)
-  - [GET / international-payment-consents/{ConsentId}/funds-confirmation](#get-international-payment-consents-consentid-funds-confirmation-2)
-    - [Request](#request-2)
-    - [Response](#response-2)
+  - [GET / international-payment-consents/{ConsentId}/funds-confirmation](#get-international-payment-consentsconsentidfunds-confirmation-1)
+    - [Request](#request-1)
+    - [Response](#response-1)
 
 ## Overview
 
@@ -145,11 +145,11 @@ The OBRegulatoryReporting1 class is defined in the [payment-initiation-api-profi
 The OBUltimateCreditor1 class is defined in the [payment-initiation-api-profile](../../profiles/payment-initiation-api-profile.md#obultimatecreditor1) page.
 
 
-#### OBUltimateDebtor1 
+#### OBUltimateDebtor1
 
 The OBUltimateDebtor1 class is defined in the [payment-initiation-api-profile](../../profiles/payment-initiation-api-profile.md#obultimatedebtor1) page.
 
-#### OBPostalAddress7 
+#### OBPostalAddress7
 
 The OBPostalAddress7 class is defined in the [payment-initiation-api-profile](../../profiles/payment-initiation-api-profile.md#obpostaladdress7) page
 
@@ -268,7 +268,7 @@ The OBWriteInternationalConsent5 object will be used for the call to:
 
 ![International Payment Consent - Request](./images/OBWriteInternationalConsent5.svg)
 
-#### Notes 
+#### Notes
 
 The international-payment-consent **request** contains these objects:
 
@@ -308,7 +308,7 @@ The OBWriteInternationalConsentResponse6 object will be used for a response to a
 
 ![International Payment Consent - Response](./images/OBWriteInternationalConsentResponse6.svg)
 
-#### Notes 
+#### Notes
 
 The international-payment-consent **response** contains the full **original** payload from the international-payment-consent **request** with the additional elements below:
 
@@ -377,7 +377,7 @@ The OBWriteFundsConfirmationResponse1 object will be used for a response to a ca
 
 ![International Payment Consent Confirmation of Funds - Response](./images/OBWriteFundsConfirmationResponse1.svg)
 
-#### Notes 
+#### Notes
 
 The confirmation of funds response contains the result of a funds availability check, or SupplementaryData.
 
@@ -861,7 +861,7 @@ Content-Type: application/json
 }
 ```
 
-### GET / international-payment-consents/{ConsentId}/funds-confirmation
+### GET /international-payment-consents/{ConsentId}/funds-confirmation
 
 #### Request
 

@@ -4,8 +4,8 @@
 - [Endpoints](#endpoints)
   - [POST /international-standing-order-consents](#post-international-standing-order-consents)
     - [Status](#status)
-  - [GET /international-standing-order-consents/{ConsentId}](#get-international-standing-order-consents-consentid)
-    - [Status](#status-2)
+  - [GET /international-standing-order-consents/{ConsentId}](#get-international-standing-order-consentsconsentid)
+    - [Status](#status-1)
   - [State Model](#state-model)
     - [Payment Order Consent](#payment-order-consent)
     - [Frequency Examples](#frequency-examples)
@@ -22,16 +22,16 @@
       - [UML Diagram](#uml-diagram)
       - [Notes](#notes)
       - [Data Dictionary](#data-dictionary)
-  - [International Standing Order Consent - Request](#international-standing-order-consent-request)
+  - [International Standing Order Consent - Request](#international-standing-order-consent---request)
+    - [UML Diagram](#uml-diagram-1)
+    - [Notes](#notes-1)
+    - [Data Dictionary](#data-dictionary-1)
+  - [International Standing Order Consent - Response](#international-standing-order-consent---response)
     - [UML Diagram](#uml-diagram-2)
     - [Notes](#notes-2)
     - [Data Dictionary](#data-dictionary-2)
-  - [International Standing Order Consent - Response](#international-standing-order-consent-response)
-    - [UML Diagram](#uml-diagram-3)
-    - [Notes](#notes-3)
-    - [Data Dictionary](#data-dictionary-3)
 - [Usage Examples](#usage-examples)
-    - [POST /international-standing-order-consents](#post-international-standing-order-consents-2)
+    - [POST /international-standing-order-consents](#post-international-standing-order-consents-1)
       - [Request](#request)
       - [Response](#response)
 
@@ -151,11 +151,11 @@ The OBRegulatoryReporting1 class is defined in the [payment-initiation-api-profi
 The OBUltimateCreditor1 class is defined in the [payment-initiation-api-profile](../../profiles/payment-initiation-api-profile.md#obultimatecreditor1) page.
 
 
-#### OBUltimateDebtor1 
+#### OBUltimateDebtor1
 
 The OBUltimateDebtor1 class is defined in the [payment-initiation-api-profile](../../profiles/payment-initiation-api-profile.md#obultimatedebtor1) page.
 
-#### OBPostalAddress7 
+#### OBPostalAddress7
 
 The OBPostalAddress7 class is defined in the [payment-initiation-api-profile](../../profiles/payment-initiation-api-profile.md#obpostaladdress7) page
 

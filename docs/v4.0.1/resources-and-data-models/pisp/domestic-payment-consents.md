@@ -4,9 +4,9 @@
 - [Endpoints](#endpoints)
   - [POST /domestic-payment-consents](#post-domestic-payment-consents)
     - [Status](#status)
-  - [GET /domestic-payment-consents/{ConsentId}](#get-domestic-payment-consents-consentid)
-    - [Status](#status-2)
-  - [GET /domestic-payment-consents/{ConsentId}/funds-confirmation](#get-domestic-payment-consents-consentid-funds-confirmation)
+  - [GET /domestic-payment-consents/{ConsentId}](#get-domestic-payment-consentsconsentid)
+    - [Status](#status-1)
+  - [GET /domestic-payment-consents/{ConsentId}/funds-confirmation](#get-domestic-payment-consentsconsentidfunds-confirmation)
   - [State Model](#state-model)
     - [Payment Order Consent](#payment-order-consent)
 - [Data Model](#data-model)
@@ -20,25 +20,25 @@
       - [UML Diagram](#uml-diagram)
       - [Notes](#notes)
       - [Data Dictionary](#data-dictionary)
-  - [Domestic Payment Consent - Request](#domestic-payment-consent-request)
+  - [Domestic Payment Consent - Request](#domestic-payment-consent---request)
+    - [UML Diagram](#uml-diagram-1)
+    - [Notes](#notes-1)
+    - [Data Dictionary](#data-dictionary-1)
+  - [Domestic Payment Consent - Response](#domestic-payment-consent---response)
     - [UML Diagram](#uml-diagram-2)
     - [Notes](#notes-2)
     - [Data Dictionary](#data-dictionary-2)
-  - [Domestic Payment Consent - Response](#domestic-payment-consent-response)
+  - [Domestic Payment Consent Confirmation of Funds - Response](#domestic-payment-consent-confirmation-of-funds---response)
     - [UML Diagram](#uml-diagram-3)
     - [Notes](#notes-3)
     - [Data Dictionary](#data-dictionary-3)
-  - [Domestic Payment Consent Confirmation of Funds - Response](#domestic-payment-consent-confirmation-of-funds-response)
-    - [UML Diagram](#uml-diagram-4)
-    - [Notes](#notes-4)
-    - [Data Dictionary](#data-dictionary-4)
 - [Usage Examples](#usage-examples)
-  - [POST /domestic-payment-consents](#post-domestic-payment-consents-2)
+  - [POST /domestic-payment-consents](#post-domestic-payment-consents-1)
     - [Request](#request)
     - [Response](#response)
-  - [GET /domestic-payment-consents/{ConsentId}](#get-domestic-payment-consents-consentid-2)
-    - [Request](#request-2)
-    - [Response](#response-2)
+  - [GET /domestic-payment-consents/{ConsentId}](#get-domestic-payment-consentsconsentid-1)
+    - [Request](#request-1)
+    - [Response](#response-1)
 
 ## Overview
 
@@ -142,11 +142,11 @@ The OBRegulatoryReporting1 class is defined in the [payment-initiation-api-profi
 The OBUltimateCreditor1 class is defined in the [payment-initiation-api-profile](../../profiles/payment-initiation-api-profile.md#obultimatecreditor1) page.
 
 
-#### OBUltimateDebtor1 
+#### OBUltimateDebtor1
 
 The OBUltimateDebtor1 class is defined in the [payment-initiation-api-profile](../../profiles/payment-initiation-api-profile.md#obultimatedebtor1) page.
 
-#### OBPostalAddress7 
+#### OBPostalAddress7
 
 The OBPostalAddress7 class is defined in the [payment-initiation-api-profile](../../profiles/payment-initiation-api-profile.md#obpostaladdress7) page
 

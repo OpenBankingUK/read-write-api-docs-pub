@@ -4,29 +4,29 @@
 - [Endpoints](#endpoints)
   - [POST /file-payments](#post-file-payments)
     - [Status](#status)
-  - [GET /file-payments/{FilePaymentId}](#get-file-payments-filepaymentid)
-  - [GET /file-payments/{FilePaymentId}/report-file](#get-file-payments-filepaymentid-report-file)
-  - [GET /file-payments/{FilePaymentId}/payment-details](#get-file-payments-filepaymentid-payment-details)
-    - [Status](#status-2)
+  - [GET /file-payments/{FilePaymentId}](#get-file-paymentsfilepaymentid)
+  - [GET /file-payments/{FilePaymentId}/report-file](#get-file-paymentsfilepaymentidreport-file)
+  - [GET /file-payments/{FilePaymentId}/payment-details](#get-file-paymentsfilepaymentidpayment-details)
+    - [Status](#status-1)
   - [State Model](#state-model)
     - [Initiation](#initiation)
     - [Multiple Authorisation](#multiple-authorisation)
 - [Data Model](#data-model)
   - [Reused Classes](#reused-classes)
     - [OBFile2](#obfile2)
-  - [File Payment - Request](#file-payment-request)
+  - [File Payment - Request](#file-payment---request)
     - [UML Diagram](#uml-diagram)
     - [Notes](#notes)
     - [Data Dictionary](#data-dictionary)
-  - [File Payment - Response](#file-payment-response)
+  - [File Payment - Response](#file-payment---response)
+    - [UML Diagram](#uml-diagram-1)
+    - [Notes](#notes-1)
+    - [Data Dictionary](#data-dictionary-1)
+  - [File Payment - Payment Details - Response](#file-payment---payment-details---response)
     - [UML Diagram](#uml-diagram-2)
-    - [Notes](#notes-2)
     - [Data Dictionary](#data-dictionary-2)
-  - [File Payment - Payment Details - Response](#file-payment-payment-details-response)
-    - [UML Diagram](#uml-diagram-3)
-    - [Data Dictionary](#data-dictionary-3)
 - [Usage Examples](#usage-examples)
-  - [POST /file-payments](#post-file-payments-2)
+  - [POST /file-payments](#post-file-payments-1)
     - [Request](#request)
     - [Response](#response)
 
@@ -137,7 +137,7 @@ The OBWriteFile2 object will be used for a call to:
 
 ![OBWriteFile2](./images/OBWriteFile2.svg )
 
-#### Notes 
+#### Notes
 
 The file-payment **request** object contains the: 
 
@@ -166,7 +166,7 @@ The OBWriteFileResponse3 object will be used for a response to a call to:
 
 ![OBWriteFileResponse3](./images/OBWriteFileResponse3.svg)
 
-#### Notes 
+#### Notes
 
 The file-payment **response** object contains the:
 

@@ -4,10 +4,10 @@
 - [Endpoints](#endpoints)
   - [POST /international-payments](#post-international-payments)
     - [Status](#status)
-  - [GET /international-payments/{InternationalPaymentId}](#get-international-payments-internationalpaymentid)
+  - [GET /international-payments/{InternationalPaymentId}](#get-international-paymentsinternationalpaymentid)
+    - [Status](#status-1)
+  - [GET /international-payments/{InternationalPaymentId}/payment-details](#get-international-paymentsinternationalpaymentidpayment-details)
     - [Status](#status-2)
-  - [GET /international-payments/{InternationalPaymentId}/payment-details](#get-international-payments-internationalpaymentid-payment-details)
-    - [Status](#status-3)
   - [State Model](#state-model)
     - [Payment Order](#payment-order)
       - [Multiple Authorisation](#multiple-authorisation)
@@ -16,17 +16,17 @@
     - [OBInternational3](#obinternational3)
     - [OBExchangeRate2](#obexchangerate2)
     - [OBRemittanceInformation2](#obremittanceinformation2)
-  - [International Payment - Request](#international-payment-request)
+  - [International Payment - Request](#international-payment---request)
     - [UML Diagram](#uml-diagram)
     - [Notes](#notes)
     - [Data Dictionary](#data-dictionary)
-  - [International Payment - Response](#international-payment-response)
+  - [International Payment - Response](#international-payment---response)
+    - [UML Diagram](#uml-diagram-1)
+    - [Notes](#notes-1)
+    - [Data Dictionary](#data-dictionary-1)
+  - [International Payment Order - Payment Details - Response](#international-payment-order---payment-details---response)
     - [UML Diagram](#uml-diagram-2)
-    - [Notes](#notes-2)
     - [Data Dictionary](#data-dictionary-2)
-  - [International Payment Order - Payment Details - Response](#international-payment-order-payment-details-response)
-    - [UML Diagram](#uml-diagram-3)
-    - [Data Dictionary](#data-dictionary-3)
 
 ## Overview
 
@@ -176,7 +176,7 @@ The OBWriteInternational3 object will be used for a call to:
 
 ![International Payment - Request](./images/OBWriteInternational3.svg)
 
-#### Notes 
+#### Notes
 
 The international-payment **request** object contains the: 
 
@@ -205,7 +205,7 @@ The OBWriteInternationalResponse5 object will be used for a response to a call t
 
 ![International Payment - Response](./images/OBWriteInternationalResponse5.svg)
 
-#### Notes 
+#### Notes
 
 The international-payment **response** object contains the:
 
