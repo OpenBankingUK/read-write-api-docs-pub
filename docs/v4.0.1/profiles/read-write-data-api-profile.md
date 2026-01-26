@@ -292,20 +292,18 @@ However, an ASPSP's downstream system may not accept some UTF-8 characters, such
 
 ### Date Formats
 
-An ASPSP must accept all valid [ISO-8601](https://www.iso.org/iso-8601-date-and-time-format.html) date formats including its permitted variations (e.g. variations in how the timezone is defined, dates with or with a seconds or milliseconds part etc.) in the requests.
+An ASPSP must accept all valid [ISO-8601](https://www.iso.org/iso-8601-date-and-time-format.html) date-time formats including its permitted variations (e.g. variations in how the timezone is defined, dates with or without a seconds or milliseconds part etc.) in the requests.
 
 All dates in the JSON payloads are represented in [ISO-8601](https://www.iso.org/iso-8601-date-and-time-format.html) date-time format. All date-time fields in responses **must** include the timezone. For Example:
 
 ```
 2017-04-05T10:43:07+00:00
-2018-07-03T14:43:41Z
 ```
 
 All dates in the query string are represented in [ISO-8601](https://www.iso.org/iso-8601-date-and-time-format.html) date-time format and **must not** include the timezone. For example:
 
 ```
 2017-04-05T10:43:07
-2017-04-05
 ```
 
 All dates in the HTTP headers are represented as [RFC 7231](https://tools.ietf.org/html/rfc7231#section-7.1.1.1) Full Dates. An example is below:
