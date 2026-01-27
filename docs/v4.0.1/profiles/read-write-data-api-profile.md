@@ -298,6 +298,7 @@ All dates in the JSON payloads are represented in [ISO-8601](https://www.iso.org
 
 ```
 2017-04-05T10:43:07+00:00
+2018-07-03T14:43:41T
 ```
 
 All dates in the query string are represented in [ISO-8601](https://www.iso.org/iso-8601-date-and-time-format.html) date-time format and **must not** include the timezone. For example:
