@@ -189,13 +189,11 @@ The resource differs depending on the permissions (ReadTransactionsBasic and Rea
 
 Where both ReadTransactionsBasic and ReadTransactionsDetail are present, the most detailed level (ReadTransactionsDetail) must be used.  The permissions array **must** contain at least ReadAccountsBasic or ReadAccountsDetail.
 
-The following combinations of permissions are not allowed, and it is **MANDATORY** that the ASPSP rejects these account-access-consents with a 400 response code:
-
-* Permissions array that contains **ReadTransactionsBasic** but does not contain at least one of **ReadTransactionsCredits** and **ReadTransactionsDebits** 
-* Permissions array that contains **ReadTransactionsDetail** but does not contain at least one of **ReadTransactionsCredits** and **ReadTransactionsDebits** 
-* Permissions array that contains **ReadTransactionsCredits** but does not contain at least one of **ReadTransactionsBasic** and **ReadTransactionsDetail** 
-* Permissions array that contains **ReadTransactionsDebits** but does not contain at least one of **ReadTransactionsBasic** and **ReadTransactionsDetail**	
-
+* The following combinations of permissions are **not** allowed, and it is **MANDATORY** that the ASPSP rejects these account-access-consents with a 400 response code:
+  * Permissions array that contains **ReadTransactionsBasic** but does not contain at least one of **ReadTransactionsCredits** and **ReadTransactionsDebits**
+  * Permissions array that contains **ReadTransactionsDetail** but does not contain at least one of **ReadTransactionsCredits** and **ReadTransactionsDebits**
+  * Permissions array that contains **ReadTransactionsCredits** but does not contain at least one of **ReadTransactionsBasic** and **ReadTransactionsDetail**
+  * Permissions array that contains **ReadTransactionsDebits** but does not contain at least one of **ReadTransactionsBasic** and **ReadTransactionsDetail**
 
 * It is **MANDATORY** to include the ReadTransactionDetail permission to return any of the following objects:
   * OBReadTransaction6/Data/Transaction/TransactionInformation
@@ -210,7 +208,6 @@ The following combinations of permissions are not allowed, and it is **MANDATORY
   * OBReadTransaction6/Data/Transaction/IntermediaryAgent1
   * OBReadTransaction6/Data/Transaction/IntermediaryAgent2
   * OBReadTransaction6/Data/Transaction/IntermediaryAgent3
-
 
 * If the **ReadTransactionsDetail** is granted by the PSU it is **CONDITIONAL** to return the following, conditionality being based on the information being applicable to the transaction and ASPSP:
   * OBReadTransaction6/Data/Transaction/TransactionInformation (0..1)
@@ -227,7 +224,6 @@ The following combinations of permissions are not allowed, and it is **MANDATORY
   * OBReadTransaction6/Data/Transaction/IntermediaryAgent3 (0..1)
 
 * If the ReadPAN permission is granted by the PSU - the ASPSP may **OPTIONALLY** choose to populate the unmasked PAN - if the PAN is being populated in the response for these fields:
-
   * OBReadTransaction6/Data/Transaction/CreditorAccount/Identification
   * OBReadTransaction6/Data/Transaction/DebtorAccount/Identification
   * OBReadTransaction6/Data/Transaction/CardInstrument/Identification
