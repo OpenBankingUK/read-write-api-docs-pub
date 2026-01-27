@@ -4,10 +4,11 @@
 - [Endpoints](#endpoints)
   - [POST /international-standing-order-consents](#post-international-standing-order-consents)
     - [Status](#status)
-  - [GET /international-standing-order-consents/{ConsentId}](#get-international-standing-order-consents-consentid)
-    - [Status](#status-2)
+  - [GET /international-standing-order-consents/{ConsentId}](#get-international-standing-order-consentsconsentid)
+    - [Status](#status-1)
   - [State Model](#state-model)
     - [Payment Order Consent](#payment-order-consent)
+    - [Frequency Examples](#frequency-examples)
 - [Data Model](#data-model)
   - [Reused Classes](#reused-classes)
     - [OBRemittanceInformation2](#obremittanceinformation2)
@@ -21,16 +22,16 @@
       - [UML Diagram](#uml-diagram)
       - [Notes](#notes)
       - [Data Dictionary](#data-dictionary)
-  - [International Standing Order Consent - Request](#international-standing-order-consent-request)
+  - [International Standing Order Consent - Request](#international-standing-order-consent---request)
+    - [UML Diagram](#uml-diagram-1)
+    - [Notes](#notes-1)
+    - [Data Dictionary](#data-dictionary-1)
+  - [International Standing Order Consent - Response](#international-standing-order-consent---response)
     - [UML Diagram](#uml-diagram-2)
     - [Notes](#notes-2)
     - [Data Dictionary](#data-dictionary-2)
-  - [International Standing Order Consent - Response](#international-standing-order-consent-response)
-    - [UML Diagram](#uml-diagram-3)
-    - [Notes](#notes-3)
-    - [Data Dictionary](#data-dictionary-3)
 - [Usage Examples](#usage-examples)
-    - [POST /international-standing-order-consents](#post-international-standing-order-consents-2)
+    - [POST /international-standing-order-consents](#post-international-standing-order-consents-1)
       - [Request](#request)
       - [Response](#response)
 
@@ -110,6 +111,23 @@ Changes to the Status, such as being rejected, should be captured in `StatusReas
 | StatusReasonDescription | Description of why the code was returned |
 |Path| Path is optional but relevant when the status reason refers to an object/field and hence conditional to provide JSON path. |
 
+#### Frequency Examples
+
+| Frequency Code | Description |
+|---|---|
+| ADHO | Adhoc |
+| YEAR | Annual |
+| DAIL | Daily |
+| FRTN | Fortnightly |
+| INDA | Intra-day |
+| LWMH | Last Working Day of the Month |
+| LXMH | Last X Day of the Month. Must be used in conjunction with PointInTime to indicate which day of the week (1 = Monday, 2 = Tuesday, etc.) |
+| MNTH | Monthy |
+| QURT | Quarterly |
+| MIAN | Semi Annual |
+| TWYR | Two Yearly |
+| WEEK | Weekly |
+
 ## Data Model
 
 The data dictionary section gives the detail on the payload content for the International Standing Order API flows.
@@ -133,11 +151,11 @@ The OBRegulatoryReporting1 class is defined in the [payment-initiation-api-profi
 The OBUltimateCreditor1 class is defined in the [payment-initiation-api-profile](../../profiles/payment-initiation-api-profile.md#obultimatecreditor1) page.
 
 
-#### OBUltimateDebtor1 
+#### OBUltimateDebtor1
 
 The OBUltimateDebtor1 class is defined in the [payment-initiation-api-profile](../../profiles/payment-initiation-api-profile.md#obultimatedebtor1) page.
 
-#### OBPostalAddress7 
+#### OBPostalAddress7
 
 The OBPostalAddress7 class is defined in the [payment-initiation-api-profile](../../profiles/payment-initiation-api-profile.md#obpostaladdress7) page
 

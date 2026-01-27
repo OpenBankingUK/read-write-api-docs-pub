@@ -4,8 +4,8 @@
 - [Endpoints](#endpoints)
   - [POST /domestic-standing-order-consents](#post-domestic-standing-order-consents)
     - [Status](#status)
-  - [GET /domestic-standing-order-consents/{ConsentId}](#get-domestic-standing-order-consents-consentid)
-    - [Status](#status-2)
+  - [GET /domestic-standing-order-consents/{ConsentId}](#get-domestic-standing-order-consentsconsentid)
+    - [Status](#status-1)
   - [State Model](#state-model)
     - [Payment Order Consent](#payment-order-consent)
 - [Data Model](#data-model)
@@ -20,20 +20,20 @@
       - [Notes](#notes)
         - [Frequency Examples](#frequency-examples)
       - [Data Dictionary](#data-dictionary)
-  - [Domestic Standing Order Consent - Request](#domestic-standing-order-consent-request)
+  - [Domestic Standing Order Consent - Request](#domestic-standing-order-consent---request)
+    - [UML Diagram](#uml-diagram-1)
+    - [Notes](#notes-1)
+    - [Data Dictionary](#data-dictionary-1)
+  - [Domestic Standing Order Consent - Response](#domestic-standing-order-consent---response)
     - [UML Diagram](#uml-diagram-2)
     - [Notes](#notes-2)
-    - [Data Dictionary](#data-dictionary-2)
-  - [Domestic Standing Order Consent - Response](#domestic-standing-order-consent-response)
-    - [UML Diagram](#uml-diagram-3)
-    - [Notes](#notes-3)
-    - [Data Dictionary](#data-dictionary-3)
+    - [Data Dictionary](#data-dictionary-1)
 - [Usage Examples](#usage-examples)
     - [Create Domestic Standing Order Consent](#create-domestic-standing-order-consent)
-      - [POST /domestic-standing-order-consents](#post-domestic-standing-order-consents-2)
+      - [POST /domestic-standing-order-consents](#post-domestic-standing-order-consents-1)
       - [POST /domestic-standing-order-consents response](#post-domestic-standing-order-consents-response)
   - [Get a Domestic Standing Order Consent](#get-a-domestic-standing-order-consent)
-    - [GET /domestic-standing-order-consents/{ConsentId}](#get-domestic-standing-order-consents-consentid-2)
+    - [GET /domestic-standing-order-consents/{ConsentId}](#get-domestic-standing-order-consentsconsentid-1)
     - [GET /domestic-standing-order-consents response](#get-domestic-standing-order-consents-response)
 
 ## Overview
@@ -130,7 +130,7 @@ The OBMandateRelatedInformation1 class is defined in the [payment-initiation-api
 The OBUltimateCreditor1 class is defined in the [payment-initiation-api-profile](../../profiles/payment-initiation-api-profile.md#obultimatecreditor1) page.
 
 
-#### OBUltimateDebtor1 
+#### OBUltimateDebtor1
 
 The OBUltimateDebtor1 class is defined in the [payment-initiation-api-profile](../../profiles/payment-initiation-api-profile.md#obultimatedebtor1) page.
 
@@ -168,18 +168,20 @@ For the OBDomesticStandingOrder3 Initiation object:
 
 ###### Frequency Examples
 
-|Frequency|Detail|
+| Frequency Code | Description |
 |---|---|
-|ADHO| Adhoc|
-|INDA| Intra day|
-|DAIL| Daily|
-|WEEK| Weekly|
-|FRTN| Fortnightly|
-|MNTH| Monthy|
-|QURT| Quarterly|
-|MIAN| Semi Annual|
-|YEAR| Annual|
-
+| ADHO | Adhoc |
+| YEAR | Annual |
+| DAIL | Daily |
+| FRTN | Fortnightly |
+| INDA | Intra-day |
+| LWMH | Last Working Day of the Month |
+| LXMH | Last X Day of the Month. Must be used in conjunction with PointInTime to indicate which day of the week (1 = Monday, 2 = Tuesday, etc.) |
+| MNTH | Monthy |
+| QURT | Quarterly |
+| MIAN | Semi Annual |
+| TWYR | Two Yearly |
+| WEEK | Weekly |
 
 ##### Data Dictionary
 

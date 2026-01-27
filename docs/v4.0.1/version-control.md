@@ -2,9 +2,17 @@
 
 ## Unreleased
 
+## v4.0.1 Release Candidate 2 - Date TBC
+
+### Added
+
+- Added LWMH, LXMH, & TWYR to Frequency Examples in PIS Domestic Standing Order consents & AIS Standing Orders
+- Added Frequency Examples table to PIS International Standing Order Consents
+
 ## Fixed
 
 - Fixed list formatting in [transaction permissions code](https://openbankinguk.github.io/read-write-api-site3/v4.0.1/resources-and-data-models/aisp/Transactions.html#permission-codes)
+- Fixed the table of contents links on the majority of pages.
 
 ## v4.0.1 Release Candidate 1 - 2026-01-05
 

@@ -149,7 +149,7 @@ Further information can be found at [Account and Transaction Permissions](../../
 
 ### Reused Classes
 
-#### OBPostalAddress7 
+#### OBPostalAddress7
 
 The OBPostalAddress7 class is defined in the [payment-initiation-api-profile](../../profiles/payment-initiation-api-profile.md#obpostaladdress7) page
 
