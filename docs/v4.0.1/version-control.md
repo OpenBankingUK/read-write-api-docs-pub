@@ -6,7 +6,7 @@
 
 - Added LWMH, LXMH, & TWYR to Frequency Examples in PIS Domestic Standing Order consents & AIS Standing Orders
 - Added Frequency Examples table to PIS International Standing Order Consents
-- Added clarifying text in Date Formats to emphasise DateTime **must** always inbclude a time element. Related to CDRW-4937.
+- Added clarifying text in Date Formats to emphasise DateTime **must** always include a time element. Related to CDRW-4937.
 
 ### Removed
 
