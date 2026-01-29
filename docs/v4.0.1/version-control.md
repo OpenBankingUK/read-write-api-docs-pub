@@ -15,6 +15,11 @@
 - Fixed the table of contents links on the majority of pages.
 - [v40_KI48] - OBReadStatement2/Data/Statement/StatementInterest/RateType was incorrectly listed as using `OBInternalStatementInterestType1Code`, this has been corrected to `OBInternalStatementInterestRateType1Code`
 
+### Changed
+
+- [CDRW-4948] - Description for `OBReadStatement2/Data/Statement/StatementFee/RateType` changed to "This code indicates the specific type of fee rate (e.g., AER, EAR)"
+- [CDRW-4948] - Description for `OBReadStatement2/Data/Statement/StatementInterest/RateType` changed to "This code specifies the type of interest (e.g., BOE Base Rate, Fixed Rate, Gross)"
+
 ## v4.0.1 Release Candidate 1 - 2026-01-05
 
 ### Changed
