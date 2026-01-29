@@ -8,6 +8,7 @@
 
 - Added LWMH, LXMH, & TWYR to Frequency Examples in PIS Domestic Standing Order consents & AIS Standing Orders
 - Added Frequency Examples table to PIS International Standing Order Consents
+- [CDRW-4937] - added example of query string `date-time` where only the Date is required.
 
 ## Fixed
 
@@ -19,6 +20,7 @@
 
 - [CDRW-4948] - Description for `OBReadStatement2/Data/Statement/StatementFee/RateType` changed to "This code indicates the specific type of fee rate (e.g., AER, EAR)"
 - [CDRW-4948] - Description for `OBReadStatement2/Data/Statement/StatementInterest/RateType` changed to "This code specifies the type of interest (e.g., BOE Base Rate, Fixed Rate, Gross)"
+- [CDRW-4937] - Amended description of query string `date-time` usage to clarify how to represent values where only the `Date` component is required.
 
 ## v4.0.1 Release Candidate 1 - 2026-01-05
 
