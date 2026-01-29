@@ -298,12 +298,14 @@ All dates in the JSON payloads are represented in [ISO-8601](https://www.iso.org
 
 ```
 2017-04-05T10:43:07+00:00
+2018-07-03T14:43:41Z
 ```
 
-All dates in the query string are represented in [ISO-8601](https://www.iso.org/iso-8601-date-and-time-format.html) date-time format and **must not** include the timezone. For example:
+All dates in the query string are represented in [ISO-8601](https://www.iso.org/iso-8601-date-and-time-format.html) date-time format and **must not** include the timezone. The Time component is optional - set to 00:00:00 for just Date. For example:
 
 ```
 2017-04-05T10:43:07
+2026-01-01T00:00:00
 ```
 
 All dates in the HTTP headers are represented as [RFC 7231](https://tools.ietf.org/html/rfc7231#section-7.1.1.1) Full Dates. An example is below:
