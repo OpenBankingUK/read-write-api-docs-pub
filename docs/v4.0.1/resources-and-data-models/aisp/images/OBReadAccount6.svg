@@ -313,6 +313,7 @@ Values:
  - MOVE
  - WEEK
  - NONE
+ - SLCT
 </title>
 Frequency [0..1]
 </text>
