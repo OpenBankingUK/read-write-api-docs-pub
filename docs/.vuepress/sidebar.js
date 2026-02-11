@@ -1,6 +1,6 @@
 module.exports = [
     {
-        title: 'Version 4.0.1 RC 2',
+        title: 'Version 4.0.1',
         path: '/v4.0.1/profiles/read-write-data-api-profile',
         children: [
             {
