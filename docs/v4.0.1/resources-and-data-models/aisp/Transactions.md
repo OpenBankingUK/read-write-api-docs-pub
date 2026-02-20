@@ -125,7 +125,7 @@ The ASPSP must treat the following as valid input:
 * Non-working days (e.g. a Sunday or a Bank holiday) or any other days on which no transactions are recorded.
 * Dates that fall outside the range for which transaction information is provided through APIs.
 * Dates that fall outside the range for which a consent authorisation is available.
-* Timezone may be included in the filter request, but must be ignored by the ASPSP.
+* Timezone **must not** be included in the filter request.
 
 In the above situations, the ASPSP must return data for the remaining valid period specified by the filter.
 
