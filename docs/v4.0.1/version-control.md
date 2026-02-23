@@ -10,8 +10,8 @@
 
 ### Added
 
-- Added LWMH, LXMH, & TWYR to Frequency Examples in PIS Domestic Standing Order consents & AIS Standing Orders
-- Added Frequency Examples table to PIS International Standing Order Consents
+- [TDA Decision 283] Added LWMH, LXMH, & TWYR to Frequency Examples in PIS Domestic Standing Order consents & AIS Standing Orders
+- [TDA Decision 283] Added Frequency Examples table to PIS International Standing Order Consents
 - [CDRW-4937] - added example of query string `date-time` where only the Date is required.
 
 ## Fixed
