@@ -2,9 +2,10 @@ const sidebar = require('./sidebar.js');
 const nav = require('./nav.js');
 const head = require('./head.js');
 const devServer = require('./devServer.js');
+const markdownConfig = require('./markdown.js');
 
 module.exports = {
-    base: '/read-write-api-site3/',
+    base: '/test-toc-links/',
     title: '',
     description: 'OBL Read/Write API Standards',
     head: [
@@ -21,6 +22,7 @@ module.exports = {
         smoothScroll: true,
         lastUpdated: false,
     },
+    markdown: markdownConfig,
     extendMarkdown: (md) => {
         return md;
     },
