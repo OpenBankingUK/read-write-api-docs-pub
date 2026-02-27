@@ -1,23 +1,6 @@
 # Event Notification API Profile - v4.0.1 <!-- omit in toc -->
 
-- [Overview](#overview)
-  - [Design Principles](#design-principles)
-    - [Security Event Token Alignment](#security-event-token-alignment)
-    - [Event Notification Message Signing](#event-notification-message-signing)
-    - [SET Aggregation Alignment](#set-aggregation-alignment)
-- [Basics](#basics)
-  - [Overview](#overview-1)
-    - [Steps](#steps)
-    - [Sequence Diagram](#sequence-diagram)
-  - [Event Types and Extensibility](#event-types-and-extensibility)
-  - [Event-Notification Backwards Compatibility](#event-notification-backwards-compatibility)
-  - [Release Management](#release-management)
-    - [Event-Subscription Resource](#event-subscription-resource)
-      - [POST](#post)
-      - [GET](#get)
-      - [PUT](#put)
-      - [DELETE](#delete)
-    - [Event-Subscription per TPP](#event-subscription-per-tpp)
+[[toc]]
 
 ## Overview
 

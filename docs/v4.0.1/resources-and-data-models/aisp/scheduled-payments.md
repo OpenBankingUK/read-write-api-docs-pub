@@ -1,25 +1,6 @@
 # Scheduled Payments - v4.0.1 <!-- omit in toc -->
 
-- [Overview](#overview)
-- [Endpoints](#endpoints)
-  - [GET /accounts/{AccountId}/scheduled-payments](#get-accountsaccountidscheduled-payments)
-  - [GET /scheduled-payments](#get-scheduled-payments)
-- [Data Model](#data-model)
-  - [Reused Classes](#reused-classes)
-    - [OBProxy1](#obproxy1)
-    - [OBPostalAddress7](#obpostaladdress7)
-  - [Resource Definition](#resource-definition)
-  - [UML Diagram](#uml-diagram)
-    - [Notes](#notes)
-  - [Permission Codes](#permission-codes)
-  - [Data Dictionary](#data-dictionary)
-- [Usage Examples](#usage-examples)
-  - [Specific Account](#specific-account)
-    - [Get Account Specific Scheduled Payments Request](#get-account-specific-scheduled-payments-request)
-    - [Response: Get Accounts Specific Scheduled Payments Response](#response-get-accounts-specific-scheduled-payments-response)
-  - [Bulk](#bulk)
-    - [Get Bulk Scheduled Payments Request](#get-bulk-scheduled-payments-request)
-    - [Get Bulk Scheduled Payments Response](#get-bulk-scheduled-payments-response)
+[[toc]]
 
 ## Overview
 

@@ -1,21 +1,6 @@
 # File Payment Usage Examples - v4.0.1 <!-- omit in toc -->
 
-- [Setup File Payment Consent](#setup-file-payment-consent)
-  - [POST /file-payment-consents](#post-file-payment-consents)
-    - [Request](#request)
-    - [Response](#response)
-- [Upload File to for the File Payment Consent](#upload-file-to-for-the-file-payment-consent)
-  - [POST /file-payment-consents/{ConsentId}/file](#post-file-payment-consentsconsentidfile)
-    - [Request](#request-1)
-    - [Response](#response-1)
-- [Submit the File Payment after Authorisation](#submit-the-file-payment-after-authorisation)
-  - [POST /file-payments](#post-file-payments)
-    - [Request](#request-2)
-    - [Response](#response-2)
-- [Upload File in the UK.OBIE.PaymentInitiation.4.0 format to the File Payment Consent](#upload-file-in-the-ukobiepaymentinitiation40-format-to-the-file-payment-consent)
-  - [POST /file-payment-consents/{ConsentId}/file](#post-file-payment-consentsconsentidfile-1)
-    - [Request](#request-3)
-    - [Response](#response-3)
+[[toc]]
 
 ## Setup File Payment Consent
 

@@ -1,34 +1,6 @@
 # Domestic Standing Orders - v4.0.1 <!-- omit in toc -->
 
-- [Overview](#overview)
-- [Endpoints](#endpoints)
-  - [POST /domestic-standing-orders](#post-domestic-standing-orders)
-    - [Status](#status)
-  - [GET /domestic-standing-orders/{DomesticStandingOrderId}](#get-domestic-standing-ordersdomesticstandingorderid)
-    - [Status](#status-1)
-  - [GET /domestic-standing-orders/{DomesticStandingOrderId}/payment-details](#get-domestic-standing-ordersdomesticstandingorderidpayment-details)
-    - [Status](#status-2)
-  - [State Model](#state-model)
-    - [Payment Order](#payment-order)
-      - [Multiple Authorisation](#multiple-authorisation)
-- [Data Model](#data-model)
-  - [Reused Classes](#reused-classes)
-    - [OBDomesticStandingOrder3](#obdomesticstandingorder3)
-  - [Domestic Standing Order - Request](#domestic-standing-order---request)
-    - [UML Diagram](#uml-diagram)
-    - [Notes](#notes)
-    - [Data Dictionary](#data-dictionary)
-  - [Domestic Standing Order - Response](#domestic-standing-order---response)
-    - [UML Diagram](#uml-diagram-1)
-    - [Notes](#notes-1)
-    - [Data Dictionary](#data-dictionary-1)
-  - [Domestic Standing Order - Payment Details - Response](#domestic-standing-order---payment-details---response)
-    - [UML Diagram](#uml-diagram-2)
-    - [Data Dictionary](#data-dictionary-2)
-- [Usage Examples](#usage-examples)
-  - [Create a Domestic Standing Order](#create-a-domestic-standing-order)
-    - [POST /domestic-standing-orders request](#post-domestic-standing-orders-request)
-    - [POST /domestic-standing-orders response](#post-domestic-standing-orders-response)
+[[toc]]
 
 ## Overview
 

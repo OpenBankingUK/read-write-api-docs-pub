@@ -1,29 +1,6 @@
 # Standing Orders - v4.0.1 <!-- omit in toc -->
 
-- [Overview](#overview)
-- [Endpoints](#endpoints)
-  - [GET /accounts/{AccountId}/standing-orders](#get-accountsaccountidstanding-orders)
-  - [GET /standing-orders](#get-standing-orders)
-- [Data Model](#data-model)
-  - [Reused Classes](#reused-classes)
-    - [OBProxy1](#obproxy1)
-    - [OBPostalAddress7](#obpostaladdress7)
-    - [OBMandateRelatedInformation1](#obmandaterelatedinformation1)
-    - [OBRemittanceInformation2](#obremittanceinformation2)
-    - [OBReferredDocumentInformation](#obreferreddocumentinformation)
-  - [Resource Definition](#resource-definition)
-  - [UML Diagram](#uml-diagram)
-  - [Notes](#notes)
-  - [Frequency Examples](#frequency-examples)
-  - [Permission Codes](#permission-codes)
-  - [Data Dictionary](#data-dictionary)
-- [Usage Examples](#usage-examples)
-  - [Specific Account](#specific-account)
-    - [Get Accounts Standing Orders Request](#get-accounts-standing-orders-request)
-    - [Get Accounts Standing Orders Response](#get-accounts-standing-orders-response)
-  - [Bulk](#bulk)
-    - [Get Standing Orders Request](#get-standing-orders-request)
-    - [Get Standing Orders Response](#get-standing-orders-response)
+[[toc]]
 
 ## Overview
 

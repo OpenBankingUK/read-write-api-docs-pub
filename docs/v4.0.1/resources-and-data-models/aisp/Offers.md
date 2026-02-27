@@ -1,22 +1,6 @@
 # Offers - v4.0.1 <!-- omit in toc -->
 
-- [Overview](#overview)
-- [Endpoints](#endpoints)
-  - [GET /accounts/{AccountId}/offers](#get-accountsaccountidoffers)
-  - [GET /offers](#get-offers)
-- [Data Model](#data-model)
-  - [Resource Definition](#resource-definition)
-  - [UML Diagram](#uml-diagram)
-  - [Notes](#notes)
-  - [Permission Codes](#permission-codes)
-  - [Data Dictionary](#data-dictionary)
-- [Usage Examples](#usage-examples)
-  - [Specific Account](#specific-account)
-    - [Get Offers Request](#get-offers-request)
-    - [Response: Get Offers Response](#response-get-offers-response)
-  - [Bulk](#bulk)
-    - [Request: Get Offers Request](#request-get-offers-request)
-    - [Response: Get Offers Response](#response-get-offers-response-1)
+[[toc]]
 
 ## Overview
 

@@ -1,16 +1,6 @@
 # Domestic Payment Message Formats - v4.0.1 <!-- omit in toc -->
 
-- [ISO 20022](#iso-20022)
-- [CBPR+ and MX Messages](#cbpr-and-mx-messages)
-- [ISO 8583](#iso-8583)
-  - [Mapping](#mapping)
-  - [Notes](#notes)
-- [BACS STD18](#bacs-std18)
-  - [Mapping](#mapping-1)
-  - [Notes](#notes-1)
-- [MT103](#mt103-and-iso-20022)
-  - [Mapping](#mapping-2)
-  - [Notes](#notes-2)
+[[toc]]
 
 ## ISO 20022
 

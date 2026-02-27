@@ -1,36 +1,6 @@
 # Domestic Scheduled Payments  - v4.0.1 <!-- omit in toc -->
 
-- [Overview](#overview)
-- [Endpoints](#endpoints)
-  - [POST /domestic-scheduled-payments](#post-domestic-scheduled-payments)
-    - [Status](#status)
-  - [GET /domestic-scheduled-payments/{DomesticScheduledPaymentId}](#get-domestic-scheduled-paymentsdomesticscheduledpaymentid)
-    - [Status](#status-1)
-  - [GET /domestic-scheduled-payments/{DomesticScheduledPaymentId}/payment-details](#get-domestic-scheduled-paymentsdomesticscheduledpaymentidpayment-details)
-    - [Status](#status-2)
-  - [State Model](#state-model)
-    - [Payment Order](#payment-order)
-      - [Multiple Authorisation](#multiple-authorisation)
-- [Data Model](#data-model)
-  - [Reused Classes](#reused-classes)
-    - [OBDomesticScheduled2](#obdomesticscheduled2)
-    - [OBRemittanceInformation2](#obremittanceinformation2)
-  - [Domestic Scheduled Payment - Request](#domestic-scheduled-payment---request)
-    - [UML Diagram](#uml-diagram)
-    - [Notes](#notes)
-    - [Data Dictionary](#data-dictionary)
-  - [Domestic Scheduled Payment - Response](#domestic-scheduled-payment---response)
-    - [UML Diagram](#uml-diagram-1)
-    - [Notes](#notes-1)
-    - [Data Dictionary](#data-dictionary-1)
-  - [Domestic Schedule Payment Order - Payment Details - Response](#domestic-schedule-payment-order---payment-details---response)
-    - [UML Diagram](#uml-diagram-2)
-    - [Data Dictionary](#data-dictionary-2)
-  - [OBRegulatoryReporting1](#obregulatoryreporting1)
-- [Usage Examples](#usage-examples)
-    - [Create a Domestic Scheduled Payment](#create-a-domestic-scheduled-payment)
-      - [POST /domestic-scheduled-payments Request](#post-domestic-scheduled-payments-request)
-      - [POST /domestic-scheduled-payments Response](#post-domestic-scheduled-payments-response)
+[[toc]]
 
 ## Overview
 

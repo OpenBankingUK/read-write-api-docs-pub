@@ -1,34 +1,6 @@
 # Confirmation of Funds API Profile - v4.0.1 <!-- omit in toc -->
 
-- [Overview](#overview)
-  - [Document Structure](#document-structure)
-  - [Resources](#resources)
-- [Basics](#basics)
-  - [Overview](#overview-1)
-    - [Steps](#steps)
-    - [Sequence Diagram](#sequence-diagram)
-  - [Idempotency](#idempotency)
-  - [Release Management](#release-management)
-    - [Funds Confirmation Consent](#funds-confirmation-consent)
-      - [POST](#post)
-      - [GET](#get)
-      - [DELETE](#delete)
-    - [Funds Confirmation Resource](#funds-confirmation-resource)
-      - [POST](#post-1)
-- [Security & Access Control](#security--access-control)
-  - [Scopes](#scopes)
-  - [Grants Types](#grants-types)
-  - [Consent Authorisation](#consent-authorisation)
-    - [Consent Elements](#consent-elements)
-    - [Funds Confirmation Consent Status](#funds-confirmation-consent-status)
-    - [Consent Re-authentication](#consent-re-authentication)
-  - [Consent Revocation](#consent-revocation)
-- [Data Model](#data-model)
-  - [Reused Classes](#reused-classes)
-    - [OBProxy1](#obproxy1)
-      - [Data Dictionary](#obproxy1-data-dictionary)
-    - [OBCashAccountDebtorWithName](#obcashaccountdebtorwithname)
-      - [Data Dictionary](#obcashaccountdebtorwithname-data-dictionary)
+[[toc]]
 
 ## Overview
 

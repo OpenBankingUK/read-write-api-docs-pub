@@ -1,34 +1,6 @@
 # File Payments - v4.0.1 <!-- omit in toc -->
 
-- [Overview](#overview)
-- [Endpoints](#endpoints)
-  - [POST /file-payments](#post-file-payments)
-    - [Status](#status)
-  - [GET /file-payments/{FilePaymentId}](#get-file-paymentsfilepaymentid)
-  - [GET /file-payments/{FilePaymentId}/report-file](#get-file-paymentsfilepaymentidreport-file)
-  - [GET /file-payments/{FilePaymentId}/payment-details](#get-file-paymentsfilepaymentidpayment-details)
-    - [Status](#status-1)
-  - [State Model](#state-model)
-    - [Initiation](#initiation)
-    - [Multiple Authorisation](#multiple-authorisation)
-- [Data Model](#data-model)
-  - [Reused Classes](#reused-classes)
-    - [OBFile2](#obfile2)
-  - [File Payment - Request](#file-payment---request)
-    - [UML Diagram](#uml-diagram)
-    - [Notes](#notes)
-    - [Data Dictionary](#data-dictionary)
-  - [File Payment - Response](#file-payment---response)
-    - [UML Diagram](#uml-diagram-1)
-    - [Notes](#notes-1)
-    - [Data Dictionary](#data-dictionary-1)
-  - [File Payment - Payment Details - Response](#file-payment---payment-details---response)
-    - [UML Diagram](#uml-diagram-2)
-    - [Data Dictionary](#data-dictionary-2)
-- [Usage Examples](#usage-examples)
-  - [POST /file-payments](#post-file-payments-1)
-    - [Request](#request)
-    - [Response](#response)
+[[toc]]
 
 ## Overview
 

@@ -1,32 +1,6 @@
 # Balances - v4.0.1 <!-- omit in toc -->
 
-- [Overview](#overview)
-- [Endpoints](#endpoints)
-  - [GET /accounts/{AccountId}/balances](#get-accountsaccountidbalances)
-  - [GET /balances](#get-balances)
-- [Data Model](#data-model)
-  - [Resource Definition](#resource-definition)
-  - [UML Diagram](#uml-diagram)
-  - [Notes](#notes)
-  - [Permission Codes](#permission-codes)
-  - [Data Dictionary](#data-dictionary)
-- [Usage Examples](#usage-examples)
-  - [Bulk](#bulk)
-    - [Get Balances Request](#get-balances-request)
-    - [Get Balances Response](#get-balances-response)
-  - [Specific Account with High Cost Credit Not Included in Balance and Account in Credit](#specific-account-with-high-cost-credit-not-included-in-balance-and-account-in-credit)
-    - [Get Account Balances Request](#get-account-balances-request)
-    - [Get Account Balances Response](#get-account-balances-response)
-  - [Specific Account with Creditline Included in Balance and Account in Credit](#specific-account-with-creditline-included-in-balance-and-account-in-credit)
-    - [Get Account Balances Request](#get-account-balances-request-1)
-    - [Get Account Balances Response](#get-account-balances-response-1)
-  - [Specific Account with High Cost Credit not Included in Balance and Account in Debit](#specific-account-with-high-cost-credit-not-included-in-balance-and-account-in-debit)
-    - [Get Account Balances Request](#get-account-balances-request-2)
-    - [Get Account Balances Response](#get-account-balances-response-2)
-  - [Wallet Account with multiple currencies](#wallet-account-with-multiple-currencies)
-    - [Get Wallet Balances Request](#get-wallet-balances-request)
-    - [Get Wallet Balances Response](#get-wallet-balances-response)
-
+[[toc]]
 
 ## Overview
 

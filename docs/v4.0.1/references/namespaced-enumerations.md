@@ -1,9 +1,6 @@
 # Namespaced Enumerations - v4.0.1 <!-- omit in toc -->
 
-- [Overview](#overview)
-- [Basics](#basics)
-  - [Design Principles](#design-principles)
-  - [Release Management](#release-management)
+[[toc]]
 
 ## Overview
 

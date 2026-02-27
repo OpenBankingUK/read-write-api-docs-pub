@@ -1,13 +1,6 @@
 # Event Notification Subscription API Profile - v4.0.1 <!-- omit in toc -->
 
-- [Overview](#overview)
-- [Basics](#basics)
-  - [Overview](#overview-1)
-    - [Steps](#steps)
-    - [Sequence Diagram](#sequence-diagram)
-  - [Subscriptions for Real Time Event Notifications and Aggregated Polling](#subscriptions-for-real-time-event-notifications-and-aggregated-polling)
-    - [Real Time Event Notifications](#real-time-event-notifications)
-    - [Aggregated Polling](#aggregated-polling)
+[[toc]]
 
 ## Overview
 

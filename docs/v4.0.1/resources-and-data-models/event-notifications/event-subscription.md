@@ -1,29 +1,6 @@
 # Event Subscription - v4.0.1 <!-- omit in toc -->
 
-- [Overview](#overview)
-- [Endpoints](#endpoints)
-  - [POST /event-subscriptions](#post-event-subscriptions)
-  - [GET /event-subscriptions](#get-event-subscriptions)
-  - [PUT /event-subscriptions/{EventSubscriptionId}](#put-event-subscriptionseventsubscriptionid)
-  - [DELETE /event-subscriptions/{EventSubscriptionId}](#delete-event-subscriptionseventsubscriptionid)
-- [Data Model](#data-model)
-  - [Event Subscription - Request](#event-subscription---request)
-    - [UML Diagram](#uml-diagram)
-    - [Notes](#notes)
-    - [Data Dictionary](#data-dictionary)
-  - [Event Subscription - Response](#event-subscription---response)
-    - [UML](#uml)
-    - [Data Dictionary](#data-dictionary-1)
-  - [Event Subscriptions - Response](#event-subscriptions---response)
-    - [UML](#uml-1)
-    - [Data Dictionary](#data-dictionary-2)
-- [Usage Examples](#usage-examples)
-  - [Create Event Subscription](#create-event-subscription)
-    - [POST Event Subscription Request](#post-event-subscription-request)
-    - [POST Event Subscription Response](#post-event-subscription-response)
-  - [Get Event Subscriptions](#get-event-subscriptions-1)
-    - [GET Event Subscription Request](#get-event-subscription-request)
-    - [GET Event Subscription Response](#get-event-subscription-response)
+[[toc]]
 
 ## Overview
 

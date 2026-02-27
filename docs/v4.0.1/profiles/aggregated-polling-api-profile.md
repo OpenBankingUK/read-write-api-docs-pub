@@ -1,19 +1,6 @@
 # Aggregated Polling API Profile - v4.0.1 <!-- omit in toc -->
 
-- [Overview](#overview)
-- [Basics](#basics)
-  - [Overview](#overview-1)
-    - [Steps](#steps)
-    - [Sequence Diagram](#sequence-diagram)
-  - [Acknowledgement by the TPP](#acknowledgement-by-the-tpp)
-  - [Operating without acknowledgements](#operating-without-acknowledgements)
-  - [Event Recycling Frequency](#event-recycling-frequency)
-  - [Polling Frequency](#polling-frequency)
-  - [Polling Parameters](#polling-parameters)
-  - [Security](#security)
-    - [Authentication](#authentication)
-    - [Scopes](#scopes)
-    - [Grants Types](#grants-types)
+[[toc]]
 
 ## Overview
 

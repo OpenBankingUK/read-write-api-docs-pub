@@ -1,28 +1,6 @@
 # Beneficiaries - v4.0.1 <!-- omit in toc -->
 
-- [Overview](#overview)
-- [Endpoints](#endpoints)
-  - [GET /accounts/{AccountId}/beneficiaries](#get-accountsaccountidbeneficiaries)
-  - [GET /beneficiaries](#get-beneficiaries)
-- [Data Model](#data-model)
-  - [Reused Classes](#reused-classes)
-    - [OBProxy1](#obproxy1)
-    - [OBPostalAddress7](#obpostaladdress7)
-  - [Resource Definition](#resource-definition)
-  - [UML Diagram](#uml-diagram)
-  - [Notes](#notes)
-  - [Permission Codes](#permission-codes)
-  - [Data Dictionary](#data-dictionary)
-  - [Reused Classes](#reused-classes)
-    - [OBPostalAddress7](#obpostaladdress7)
-- [Usage Examples](#usage-examples)
-  - [Specific Account](#specific-account)
-    - [Get Account Beneficiaries Request](#get-account-beneficiaries-request)
-    - [Get Account Beneficiaries Response](#get-account-beneficiaries-response)
-  - [Bulk](#bulk)
-    - [Get Beneficiaries Request](#get-beneficiaries-request)
-    - [Get Beneficiaries Response](#get-beneficiaries-response)
-    - [Get Account Beneficiaries Response with BeneficiaryType](#get-account-beneficiaries-response-with-beneficiarytype)
+[[toc]]
 
 ## Overview
 
