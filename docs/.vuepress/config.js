@@ -5,7 +5,7 @@ const devServer = require('./devServer.js');
 const markdownConfig = require('./markdown.js');
 
 module.exports = {
-    base: '/test-toc-links/',
+    base: '/read-write-api-site3/',
     title: '',
     description: 'OBL Read/Write API Standards',
     head: [
