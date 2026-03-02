@@ -1,4 +1,4 @@
-# Event Subscription - v4.0.1 <!-- omit in toc -->
+# Event Subscription - v4.0.1
 
 - [Overview](#overview)
 - [Endpoints](#endpoints)

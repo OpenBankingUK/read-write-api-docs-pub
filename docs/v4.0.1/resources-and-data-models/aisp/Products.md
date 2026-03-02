@@ -1,4 +1,4 @@
-# Products - v4.0.1 <!-- omit in toc -->
+# Products - v4.0.1
 
 [[toc]]
 

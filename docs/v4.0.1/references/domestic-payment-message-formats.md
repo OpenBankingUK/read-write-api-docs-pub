@@ -1,4 +1,4 @@
-# Domestic Payment Message Formats - v4.0.1 <!-- omit in toc -->
+# Domestic Payment Message Formats - v4.0.1
 
 [[toc]]
 

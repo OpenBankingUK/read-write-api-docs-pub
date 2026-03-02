@@ -1,4 +1,4 @@
-# Domestic Standing Order Usage Examples - v4.0.1 <!-- omit in toc -->
+# Domestic Standing Order Usage Examples - v4.0.1
 
 [[toc]]
 

@@ -1,4 +1,4 @@
-# Callback URL API Profile - v4.0.1 <!-- omit in toc -->
+# Callback URL API Profile - v4.0.1
 
 [[toc]]
 

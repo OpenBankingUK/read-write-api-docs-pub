@@ -1,4 +1,4 @@
-# Aggregated Polling API Profile - v4.0.1 <!-- omit in toc -->
+# Aggregated Polling API Profile - v4.0.1
 
 [[toc]]
 

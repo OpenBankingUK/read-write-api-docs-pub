@@ -1,4 +1,4 @@
-# Domestic VRPs - v4.0.1 <!-- omit in toc -->
+# Domestic VRPs - v4.0.1
 
 [[toc]]
 

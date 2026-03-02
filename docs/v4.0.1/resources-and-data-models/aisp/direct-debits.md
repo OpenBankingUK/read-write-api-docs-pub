@@ -1,4 +1,4 @@
-# Direct Debits - v4.0.1 <!-- omit in toc -->
+# Direct Debits - v4.0.1
 
 [[toc]]
 

@@ -1,4 +1,4 @@
-# BCA Product Data Model - v4.0.1 <!-- omit in toc -->
+# BCA Product Data Model - v4.0.1
 
 [[toc]]
 

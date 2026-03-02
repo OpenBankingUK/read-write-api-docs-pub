@@ -1,4 +1,4 @@
-# Events - v4.0.1 <!-- omit in toc -->
+# Events - v4.0.1
 
 [[toc]]
 

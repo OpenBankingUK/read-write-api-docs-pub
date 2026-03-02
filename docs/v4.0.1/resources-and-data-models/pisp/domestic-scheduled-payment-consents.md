@@ -1,4 +1,4 @@
-# Domestic Scheduled Payment Consents  - v4.0.1 <!-- omit in toc -->
+# Domestic Scheduled Payment Consents  - v4.0.1
 
 [[toc]]
 

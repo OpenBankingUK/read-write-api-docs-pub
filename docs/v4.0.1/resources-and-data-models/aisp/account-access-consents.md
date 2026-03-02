@@ -1,4 +1,4 @@
-# Account Access Consents - v4.0.1 <!-- omit in toc -->
+# Account Access Consents - v4.0.1
 
 [[toc]]
 

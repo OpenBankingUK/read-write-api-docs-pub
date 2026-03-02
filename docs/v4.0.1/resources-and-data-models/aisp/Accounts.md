@@ -1,4 +1,4 @@
-# Accounts - v4.0.1 <!-- omit in toc -->
+# Accounts - v4.0.1
 
 [[toc]]
 

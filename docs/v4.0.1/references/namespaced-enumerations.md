@@ -1,4 +1,4 @@
-# Namespaced Enumerations - v4.0.1 <!-- omit in toc -->
+# Namespaced Enumerations - v4.0.1
 
 [[toc]]
 

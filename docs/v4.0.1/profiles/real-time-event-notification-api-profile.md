@@ -1,4 +1,4 @@
-# Real Time Event Notification API Profile - v4.0.1 <!-- omit in toc -->
+# Real Time Event Notification API Profile - v4.0.1
 
 [[toc]]
 

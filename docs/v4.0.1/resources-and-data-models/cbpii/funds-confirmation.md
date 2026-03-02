@@ -1,4 +1,4 @@
-# Funds Confirmation - v4.0.1 <!-- omit in toc -->
+# Funds Confirmation - v4.0.1
 
 [[toc]]
 

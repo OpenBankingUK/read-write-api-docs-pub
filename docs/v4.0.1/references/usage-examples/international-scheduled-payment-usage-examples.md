@@ -1,4 +1,4 @@
-# International Payment Usage Examples - v4.0.1 <!-- omit in toc -->
+# International Payment Usage Examples - v4.0.1
 
 [[toc]]
 

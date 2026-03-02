@@ -1,4 +1,4 @@
-# Domestic Scheduled Payments  - v4.0.1 <!-- omit in toc -->
+# Domestic Scheduled Payments  - v4.0.1
 
 [[toc]]
 
