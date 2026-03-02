@@ -17,7 +17,7 @@
 ## Fixed
 
 - Fixed list formatting in [transaction permissions code](https://openbankinguk.github.io/read-write-api-site3/v4.0.1/resources-and-data-models/aisp/Transactions.html#permission-codes)
-- Fixed the table of contents links on the majority of pages.
+- [CDRW-5016 & CDRW-5015] Fixed the table of contents links on all the v4.0.1 pages.
 - [v40_KI48] - OBReadStatement2/Data/Statement/StatementInterest/RateType was incorrectly listed as using `OBInternalStatementInterestType1Code`, this has been corrected to `OBInternalStatementInterestRateType1Code`
 
 ### Changed
