@@ -5,7 +5,7 @@
   - [POST /callback-urls](#post-callback-urls)
   - [GET /callback-urls](#get-callback-urls)
   - [PUT /callback-urls/{CallbackUrlId}](#put-callback-urls-callbackurlid)
-  - [DELETE /callback-urls/{CallbackUrlId}](#delete-callback-url-scallbackurlid)
+  - [DELETE /callback-urls/{CallbackUrlId}](#delete-callback-urls-callbackurlid)
 - [Data Model](#data-model)
   - [Callback Url - Request](#callback-url-request)
     - [UML Diagram](#uml-diagram)
