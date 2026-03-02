@@ -22,6 +22,7 @@ module.exports = {
         smoothScroll: true,
         lastUpdated: false,
     },
+    // Import the Markdown config from an external file for organisation.
     markdown: markdownConfig,
     extendMarkdown: (md) => {
         return md;
