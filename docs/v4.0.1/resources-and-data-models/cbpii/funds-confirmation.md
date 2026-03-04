@@ -1,23 +1,6 @@
-# Funds Confirmation - v4.0.1 <!-- omit in toc -->
+# Funds Confirmation - v4.0.1
 
-- [Overview](#overview)
-- [Endpoints](#endpoints)
-  - [POST /funds-confirmations](#post-funds-confirmations)
-- [Data Model](#data-model)
-  - [Funds Confirmation - Request](#funds-confirmation---request)
-    - [UML Diagram](#uml-diagram)
-    - [Data Dictionary](#data-dictionary)
-  - [Funds Confirmation - Response](#funds-confirmation---response)
-    - [UML Diagram](#uml-diagram-1)
-    - [Data Dictionary](#data-dictionary-1)
-- [Usage Examples](#usage-examples)
-  - [Funds Confirmation](#funds-confirmation)
-    - [Example with all permitted fields](#example-with-all-permitted-fields)
-      - [Request](#request)
-      - [Response](#response)
-    - [Example with a USD account](#example-with-a-usd-account)
-      - [Request](#request-1)
-      - [Response](#response-1)
+[[toc]]
 
 ## Overview
 

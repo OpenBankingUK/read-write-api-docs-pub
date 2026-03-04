@@ -1,25 +1,6 @@
-# Other Product Data Model - v4.0.1 <!-- omit in toc -->
+# Other Product Data Model - v4.0.1
 
-- [Overview](#overview)
-  - [Fields to include in Other Product](#fields-to-include-in-other-product)
-  - [Data Model](#data-model)
-    - [CreditInterest Model](#creditinterest-model)
-    - [Overdraft](#overdraft)
-    - [OverdraftFeeCharges](#overdraftfeecharges)
-    - [LoanInterest](#loaninterest)
-    - [Repayment](#repayment)
-    - [OtherFeesCharges](#otherfeescharges)
-    - [SupplementaryData](#supplementarydata)
-  - [Data Payload](#data-payload)
-  - [Data Dictionary](#data-dictionary)
-  - [Data Payload - Enumerations](#data-payload---enumerations)
-- [Usage Examples](#usage-examples)
-  - [Publish Other Product Type](#publish-other-product-type)
-    - [Get Accounts Product Request](#get-accounts-product-request)
-    - [Get Accounts Product Response](#get-accounts-product-response)
-  - [Publish Other Product Type along with Other Fee and Charges](#publish-other-product-type-along-with-other-fee-and-charges)
-    - [Get Accounts Product Request](#get-accounts-product-request-1)
-    - [Get Accounts Product Response](#get-accounts-product-response-1)
+[[toc]]
 
 ## Overview
 

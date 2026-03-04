@@ -1,38 +1,6 @@
-# Parties - v4.0.1 <!-- omit in toc -->
+# Parties - v4.0.1
 
-- [Overview](#overview)
-- [Endpoints](#endpoints)
-  - [GET /accounts/{AccountId}/parties](#get-accountsaccountidparties)
-  - [GET /accounts/{AccountId}/party](#get-accountsaccountidparty)
-  - [GET /party](#get-party)
-- [Data Model](#data-model)
-  - [Reused Classes](#reused-classes)
-    - [OBParty2](#obparty2)
-        - [UML Diagram](#uml-diagram)
-        - [Notes](#notes)
-        - [Data Dictionary](#data-dictionary)
-    - [OBPostalAddress7](#obpostaladdress7)
-  - [OBReadParty2](#obreadparty2)
-    - [UML Diagram](#uml-diagram-1)
-    - [Data Dictionary](#data-dictionary-1)
-  - [OBReadParty3](#obreadparty3)
-    - [UML Diagram](#uml-diagram-2)
-    - [Data Dictionary](#data-dictionary-2)
-  - [OBPostalAddress7](#obpostaladdress7)
-  - [Permission Codes](#permission-codes)
-- [Usage Examples](#usage-examples)
-  - [All Parties](#all-parties)
-    - [Get Account Parties Request](#get-account-parties-request)
-    - [Get Account Parties Response](#get-account-parties-response)
-  - [All Parties](#all-parties-1)
-    - [Get Parties Request](#get-parties-request)
-    - [Get Parties Response](#get-parties-response)
-  - [Account Owner](#account-owner)
-    - [Get Account Party Request](#get-account-party-request)
-    - [Get Account Party Response](#get-account-party-response)
-  - [Authorised User](#authorised-user)
-    - [Get Party Request](#get-party-request)
-    - [Get Party Response](#get-party-response)
+[[toc]]
 
 ## Overview
 

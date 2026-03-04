@@ -1,36 +1,6 @@
-# Domestic Scheduled Payment Consents  - v4.0.1 <!-- omit in toc -->
+# Domestic Scheduled Payment Consents  - v4.0.1
 
-- [Overview](#overview)
-- [Endpoints](#endpoints)
-  - [POST /domestic-scheduled-payment-consents](#post-domestic-scheduled-payment-consents)
-    - [Status](#status)
-  - [GET /domestic-scheduled-payment-consents/{ConsentId}](#get-domestic-scheduled-payment-consentsconsentid)
-    - [Status](#status-1)
-  - [State Model](#state-model)
-    - [Payment Order Consent](#payment-order-consent)
-- [Data Model](#data-model)
-  - [Reused Classes](#reused-classes)
-    - [OBRemittanceInformation2](#obremittanceinformation2)
-    - [OBRegulatoryReporting1](#obregulatoryreporting1)
-    - [OBUltimateCreditor1](#obultimatecreditor1)
-    - [OBUltimateDebtor1](#obultimatedebtor1)
-    - [OBPostalAddress7](#obpostaladdress7)
-    - [OBDomesticScheduled2](#obdomesticscheduled2)
-      - [UML Diagram](#uml-diagram)
-      - [Notes](#notes)
-      - [Data Dictionary](#data-dictionary)
-  - [Domestic Scheduled Payment Consent - Request](#domestic-scheduled-payment-consent---request)
-    - [UML Diagram](#uml-diagram-1)
-    - [Notes](#notes-1)
-    - [Data Dictionary](#data-dictionary-1)
-  - [Domestic Scheduled Payment Consent - Response](#domestic-scheduled-payment-consent---response)
-    - [UML Diagram](#uml-diagram-2)
-    - [Notes](#notes-2)
-    - [Data Dictionary](#data-dictionary-2)
-- [Usage Examples](#usage-examples)
-    - [Create a Domestic Scheduled Payment Consent](#create-a-domestic-scheduled-payment-consent)
-      - [POST /domestic-scheduled-payment-consents Request](#post-domestic-scheduled-payment-consents-request)
-      - [POST /domestic-scheduled-payment-consents Response](#post-domestic-scheduled-payment-consents-response)
+[[toc]]
 
 ## Overview
 

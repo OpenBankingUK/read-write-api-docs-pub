@@ -1,15 +1,6 @@
-# Domestic Standing Order Usage Examples - v4.0.1 <!-- omit in toc -->
+# Domestic Standing Order Usage Examples - v4.0.1
 
-- [Standing Order Initiation](#standing-order-initiation)
-  - [Create Domestic Standing Order Consent](#create-domestic-standing-order-consent)
-    - [POST /domestic-standing-order-consents](#post-domestic-standing-order-consents)
-    - [POST /domestic-standing-order-consents response](#post-domestic-standing-order-consents-response)
-  - [Create a Domestic Standing Order](#create-a-domestic-standing-order)
-    - [POST /domestic-standing-orders request](#post-domestic-standing-orders-request)
-    - [POST /domestic-standing-orders response](#post-domestic-standing-orders-response)
-  - [Get a Domestic Standing Order Consent](#get-a-domestic-standing-order-consent)
-    - [GET /domestic-standing-order-consents/{ConsentId}](#get-domestic-standing-order-consentsconsentid)
-    - [GET /domestic-standing-order-consents response](#get-domestic-standing-order-consents-response)
+[[toc]]
 
 ## Standing Order Initiation
 

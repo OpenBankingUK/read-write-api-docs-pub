@@ -1,23 +1,6 @@
-# Direct Debits - v4.0.1 <!-- omit in toc -->
+# Direct Debits - v4.0.1
 
-- [Overview](#overview)
-- [Endpoints](#endpoints)
-  - [GET /accounts/{AccountId}/direct-debits](#get-accountsaccountiddirect-debits)
-  - [GET /direct-debits](#get-direct-debits)
-- [Data Model](#data-model)
-  - [Reused Classes](#reused-classes)
-    - [OBMandateRelatedInformation1](#obmandaterelatedinformation1)
-  - [Resource Definition](#resource-definition)
-  - [UML Diagram](#uml-diagram)
-  - [Permission Codes](#permission-codes)
-  - [Data Dictionary](#data-dictionary)
-- [Usage Examples](#usage-examples)
-  - [Specific Account](#specific-account)
-    - [Get Accounts Direct Debits Request](#get-accounts-direct-debits-request)
-    - [Get Accounts Direct Debits Response](#get-accounts-direct-debits-response)
-  - [Bulk](#bulk)
-    - [Get Direct Debits Request](#get-direct-debits-request)
-    - [Get Direct Debits Response](#get-direct-debits-response)
+[[toc]]
 
 ## Overview
 

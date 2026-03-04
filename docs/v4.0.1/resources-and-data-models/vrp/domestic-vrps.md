@@ -1,19 +1,6 @@
-# Domestic VRPs - v4.0.1 <!-- omit in toc -->
+# Domestic VRPs - v4.0.1
 
-- [Overview](#overview)
-- [Endpoints](#endpoints)
-  - [POST /domestic-vrps](#post-domestic-vrps)
-    - [Status](#status)
-  - [GET /domestic-vrps/{DomesticVRPId}](#get-domestic-vrpsdomesticvrpid)
-  - [GET /domestic-vrps/{DomesticVRPId}/payment-details](#get-domestic-vrpsdomesticvrpidpayment-details)
-- [State Model](#state-model)
-  - [Payment Order](#payment-order)
-- [Data Model](#data-model)
-  - [OBDomesticVRPInstruction](#obdomesticvrpinstruction)
-  - [OBDomesticVRPRequest](#obdomesticvrprequest)
-  - [OBDomesticVRPResponse](#obdomesticvrpresponse)
-  - [OBDomesticVRPDetails](#obdomesticvrpdetails)
-- [Usage Examples](#usage-examples)
+[[toc]]
 
 ## Overview
 

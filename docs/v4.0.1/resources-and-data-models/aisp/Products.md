@@ -1,25 +1,6 @@
-# Products - v4.0.1 <!-- omit in toc -->
+# Products - v4.0.1
 
-- [Overview](#overview)
-- [Endpoints](#endpoints)
-  - [GET /accounts/{AccountId}/product](#get-accountsaccountidproduct)
-  - [GET /products](#get-products)
-- [Data Model](#data-model)
-  - [Resource Definition](#resource-definition)
-    - [Notes](#notes)
-  - [UML Diagram](#uml-diagram)
-    - [Notes](#notes-1)
-  - [Permission Codes](#permission-codes)
-  - [Data Dictionary](#data-dictionary)
-    - [Common Payload](#common-payload)
-    - [PCA & BCA Extensions](#pca--bca-extensions)
-- [Usage Examples](#usage-examples)
-  - [Specific Account](#specific-account)
-    - [Get Accounts Product Request](#get-accounts-product-request)
-    - [Get Accounts Product Response](#get-accounts-product-response)
-  - [Bulk](#bulk)
-    - [Get Products Request](#get-products-request)
-    - [Get Products Response](#get-products-response)
+[[toc]]
 
 ## Overview
 

@@ -1,39 +1,6 @@
-# Transactions - v4.0.1 <!-- omit in toc -->
+# Transactions - v4.0.1
 
-- [Overview](#overview)
-- [Endpoints](#endpoints)
-  - [GET /accounts/{AccountId}/transactions](#get-accountsaccountidtransactions)
-  - [GET /transactions](#get-transactions)
-- [Data Model](#data-model)
-  - [Reused Classes](#reused-classes)
-    - [OBProxy1](#obproxy1)
-    - [OBPostalAddress7](#obpostaladdress7)
-    - [OBUltimateCreditor1](#obultimatecreditor1)
-    - [OBUltimateDebtor1](#obultimatedebtor1)
-    - [OBIntermediaryAgent](#obintermediaryagent)
-  - [Resource Definition](#resource-definition)
-  - [UML Diagram](#uml-diagram)
-    - [Notes](#notes)
-  - [Filtering](#filtering)
-    - [Filtering Examples](#filtering-examples)
-  - [Mutability](#mutability)
-    - [Examples to illustrate mutability](#examples-to-illustrate-mutability)
-  - [Permission Codes](#permission-codes)
-  - [Data Dictionary](#data-dictionary)
-  - [Reused Classes](#reused-classes)
-    - [OBUltimateCreditor1](#obultimatecreditor1)
-    - [OBUltimateDebtor1](#obultimatedebtor1)
-    - [OBPostalAddress7](#obpostaladdress7)
-- [Usage Examples](#usage-examples)
-  - [Specific Account](#specific-account)
-    - [Get Account Transactions Request](#get-account-transactions-request)
-    - [Get Account Transactions Response](#get-account-transactions-response)
-  - [Bulk](#bulk)
-    - [Get Transactions Request](#get-transactions-request)
-    - [Get Transactions Response](#get-transactions-response)
-  - [No Access](#no-access)
-    - [GET Account Transactions Request](#get-account-transactions-request-1)
-    - [GET Account Transactions Response](#get-account-transactions-response-1)
+[[toc]]
 
 ## Overview
 

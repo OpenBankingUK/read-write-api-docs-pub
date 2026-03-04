@@ -1,27 +1,6 @@
-# Accounts - v4.0.1 <!-- omit in toc -->
+# Accounts - v4.0.1
 
-- [Overview](#overview)
-- [Endpoints](#endpoints)
-  - [GET /accounts](#get-accounts)
-  - [GET /accounts/{AccountId}](#get-accountsaccountid)
-- [Data Model](#data-model)
-  - [Resource Definition](#resource-definition)
-  - [UML Diagram](#uml-diagram)
-  - [Notes](#notes)
-  - [Permission Codes](#permission-codes)
-  - [Data Dictionary](#data-dictionary)
-  - [Reused Classes](#reused-classes)
-    - [OBPostalAddress7](#obpostaladdress7)
-- [Usage Examples](#usage-examples)
-  - [Bulk - Detail Permission](#bulk---detail-permission)
-    - [Get Accounts Request](#get-accounts-request)
-    - [Get Accounts Response](#get-accounts-response)
-  - [Specific Account - Detail Permission](#specific-account---detail-permission)
-    - [Get Accounts Request](#get-accounts-request-1)
-    - [Get Accounts Response](#get-accounts-response-1)
-  - [Bulk - Basic Permission](#bulk---basic-permission)
-    - [Get Accounts Request](#get-accounts-request-2)
-    - [Get Accounts Response](#get-accounts-response-2)
+[[toc]]
 
 ## Overview
 

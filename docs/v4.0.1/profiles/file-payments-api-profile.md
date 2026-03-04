@@ -1,11 +1,6 @@
-# File Payments API Profile - v4.0.1 <!-- omit in toc -->
+# File Payments API Profile - v4.0.1
 
-- [Overview](#overview)
-  - [Document Overview](#document-overview)
-- [Basics](#basics)
-  - [Overview](#overview-1)
-    - [Steps](#steps)
-    - [Sequence Diagram](#sequence-diagram)
+[[toc]]
 
 ## Overview
 

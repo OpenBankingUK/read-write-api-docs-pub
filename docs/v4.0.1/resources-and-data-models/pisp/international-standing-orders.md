@@ -1,34 +1,6 @@
-# International Standing Orders - v4.0.1 <!-- omit in toc -->
+# International Standing Orders - v4.0.1
 
-- [Overview](#overview)
-- [Endpoints](#endpoints)
-  - [POST /international-standing-orders](#post-international-standing-orders)
-    - [Status](#status)
-  - [GET /international-standing-orders/{InternationalStandingOrderPaymentId}](#get-international-standing-ordersinternationalstandingorderpaymentid)
-    - [Status](#status-1)
-  - [GET /international-standing-orders/{InternationalStandingOrderPaymentId}/payment-details](#get-international-standing-ordersinternationalstandingorderpaymentidpayment-details)
-    - [Status](#status-2)
-  - [State Model](#state-model)
-    - [Payment Order](#payment-order)
-      - [Multiple Authorisation](#multiple-authorisation)
-- [Data Model](#data-model)
-  - [Reused Classes](#reused-classes)
-    - [OBInternationalStandingOrder4](#obinternationalstandingorder4)
-  - [International Standing Order - Request](#international-standing-order---request)
-    - [UML Diagram](#uml-diagram)
-    - [Notes](#notes)
-    - [Data Dictionary](#data-dictionary)
-  - [International Standing Order - Response](#international-standing-order---response)
-    - [UML Diagram](#uml-diagram-1)
-    - [Notes](#notes-1)
-    - [Data Dictionary](#data-dictionary-1)
-  - [International Standing Order - Payment Details - Response](#international-standing-order---payment-details---response)
-    - [UML Diagram](#uml-diagram-2)
-    - [Data Dictionary](#data-dictionary-2)
-- [Usage Examples](#usage-examples)
-  - [POST /international-standing-orders](#post-international-standing-orders-1)
-    - [Request](#request)
-    - [Response](#response)
+[[toc]]
 
 ## Overview
 

@@ -1,26 +1,6 @@
 # Usage Examples
 
-- [Usage Examples](#usage-examples)
-  - [VRP with Debtor Account specified by PISP](#vrp-with-debtor-account-specified-by-pisp)
-    - [POST /domestic-vrp-consents](#post-domestic-vrp-consents)
-      - [Request](#request)
-      - [Response](#response)
-    - [GET /domestic-vrp-consents/{ConsentId}](#get-domestic-vrp-consentsconsentid)
-      - [Request](#request-1)
-      - [Response](#response-1)
-    - [POST /domestic-vrps](#post-domestic-vrps)
-      - [Request](#request-2)
-      - [Response](#response-2)
-  - [VRP with Debtor Account specified during consent authorisation and CreditorAccount specified during payment initiation](#vrp-with-debtor-account-specified-during-consent-authorisation-and-creditoraccount-specified-during-payment-initiation)
-    - [POST /domestic-vrp-consents](#post-domestic-vrp-consents-1)
-      - [Request](#request-3)
-      - [Response](#response-3)
-    - [GET /domestic-vrp-consents/{ConsentId}](#get-domestic-vrp-consentsconsentid-1)
-      - [Request](#request-4)
-      - [Response](#response-4)
-    - [POST /domestic-vrps](#post-domestic-vrps-1)
-      - [Request](#request-5)
-      - [Response](#response-5)
+[[toc]]
 
 ## VRP with Debtor Account specified by PISP
 

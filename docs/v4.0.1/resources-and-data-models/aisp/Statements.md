@@ -1,30 +1,6 @@
-# Statements - v4.0.1 <!-- omit in toc -->
+# Statements - v4.0.1
 
-- [Overview](#overview)
-- [Endpoints](#endpoints)
-  - [GET /accounts/{AccountId}/statements](#get-accountsaccountidstatements)
-  - [GET /accounts/{AccountId}/statements/{StatementId}](#get-accountsaccountidstatementsstatementid)
-  - [GET /accounts/{AccountId}/statements/{StatementId}/file](#get-accountsaccountidstatementsstatementidfile)
-  - [GET /accounts/{AccountId}/statements/{StatementId}/transactions](#get-accountsaccountidstatementsstatementidtransactions)
-  - [GET /statements](#get-statements)
-- [Data Model](#data-model)
-  - [Resource Definition](#resource-definition)
-  - [UML Diagram](#uml-diagram)
-  - [Notes](#notes)
-  - [Filtering](#filtering)
-    - [Filtering Examples](#filtering-examples)
-  - [Permission Codes](#permission-codes)
-  - [Data Dictionary](#data-dictionary)
-- [Usage Examples](#usage-examples)
-  - [Specific Account](#specific-account)
-    - [Get Account Statements Request](#get-account-statements-request)
-    - [Get Account Statements Response](#get-account-statements-response)
-  - [Wallet Account with multiple currencies](#wallet-account-with-multiple-currencies)
-    - [Get Wallet Statements Request](#get-wallet-statements-request)
-    - [Get Wallet Statements Response](#get-wallet-statements-response)
-  - [Bulk](#bulk)
-    - [Get Statements Request](#get-statements-request)
-    - [Get Statements Response](#get-statements-response)
+[[toc]]
 
 ## Overview
 

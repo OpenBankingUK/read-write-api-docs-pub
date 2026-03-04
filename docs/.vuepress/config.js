@@ -2,6 +2,7 @@ const sidebar = require('./sidebar.js');
 const nav = require('./nav.js');
 const head = require('./head.js');
 const devServer = require('./devServer.js');
+const markdownConfig = require('./markdown.js');
 
 module.exports = {
     base: '/read-write-api-site3/',
@@ -21,6 +22,8 @@ module.exports = {
         smoothScroll: true,
         lastUpdated: false,
     },
+    // Import the Markdown config from an external file for organisation.
+    markdown: markdownConfig,
     extendMarkdown: (md) => {
         return md;
     },
