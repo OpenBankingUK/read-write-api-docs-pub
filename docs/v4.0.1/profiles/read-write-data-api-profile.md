@@ -294,10 +294,10 @@ However, an ASPSP's downstream system may not accept some UTF-8 characters, such
 
 An ASPSP must accept all valid [ISO-8601](https://www.iso.org/iso-8601-date-and-time-format.html) date-time formats including its permitted variations (e.g. variations in how the timezone is defined, dates with or without a seconds or milliseconds part etc.) in the requests.
 
-Requests including a decimal fraction for the number of seconds must not use more than 5 digits of precision.
+Requests including a decimal fraction for the number of seconds **must not** use more than 5 digits of precision.
 
-* This requirement was introduced in v4.0.1, long lived data containing a date - such as VRP or AIS consents created on v4.0 or v3 - may return decimal fractions larger than 5 if the ASPSP accepted them at the time of creation.
-* New consents and associated requests must not use more than 5 digits of precision.
+* This requirement was introduced in v4.0.1, long lived data containing a date - such as VRP or AIS consents created on v4.0 or v3 - **may** return decimal fractions larger than 5 if the ASPSP accepted them at the time of creation.
+* New consents and associated requests **must not** use more than 5 digits of precision.
 
 All dates in the JSON payloads are represented in [ISO-8601](https://www.iso.org/iso-8601-date-and-time-format.html) date-time format. All date-time fields in responses **must** include the timezone. For example:
 
