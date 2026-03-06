@@ -13,7 +13,7 @@
 - Added LWMH, LXMH, & TWYR to Frequency Examples in PIS Domestic Standing Order consents & AIS Standing Orders
 - Added Frequency Examples table to PIS International Standing Order Consents
 - [CDRW-4937] - added example of query string `date-time` where only the Date is required.
-- [CDRW-5038] - Added text to [Date Formats](https://openbankinguk.github.io/read-write-api-site3/v4.0/profiles/read-write-data-api-profile.html#date-formats) section advising on decimal precisiosn limit of 5, as agreed in TDA Decision 284
+- [CDRW-5038] - Added text to [Date Formats](https://openbankinguk.github.io/read-write-api-site3/v4.0/profiles/read-write-data-api-profile.html#date-formats) section advising on decimal precision limit of 5, as agreed in TDA Decision 284
 - [CDRW-5039]- Added new [Days of the Week](https://openbankinguk.github.io/read-write-api-site3/v4.0.1/profiles/read-write-data-api-profile.html#days-of-the-week) section to Date Formats advising of ISO-8601 alignment and providing a table of week days and ordinal values.
 
 ## Fixed
