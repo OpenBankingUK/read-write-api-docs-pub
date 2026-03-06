@@ -292,7 +292,7 @@ However, an ASPSP's downstream system may not accept some UTF-8 characters, such
 
 ### Date Formats
 
-An ASPSP must accept all valid [ISO-8601](https://www.iso.org/iso-8601-date-and-time-format.html) date-time formats including its permitted variations (e.g. variations in how the timezone is defined, dates with or without a seconds or milliseconds part etc.) in the requests.
+An ASPSP **must** accept all valid [ISO-8601](https://www.iso.org/iso-8601-date-and-time-format.html) date-time formats including its permitted variations (e.g. variations in how the timezone is defined, dates with or without a seconds or milliseconds part etc.) in the requests.
 
 Requests including a decimal fraction for the number of seconds **must not** use more than 5 digits of precision.
 
@@ -344,7 +344,7 @@ Representation of week days is aligned to [ISO-8601](https://www.iso.org/iso-860
 
 ### Resource URI Path Structure
 
-The path of the URI must follow the structure below (from the OB API Release Management document).
+The path of the URI **must** follow the structure below (from the OB API Release Management document).
 
 * [participant-path-prefix]/open-banking/[version]/[resource-group]/[resource]/[resource-id]/[sub-resource]
 
