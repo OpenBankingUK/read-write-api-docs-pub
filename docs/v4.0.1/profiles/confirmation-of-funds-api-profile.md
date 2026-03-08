@@ -366,7 +366,7 @@ The PSU may request the CBPII to revoke consent that it has authorised. If conse
 
 ##### OBCashAccountDebtorWithName Data Dictionary
 
-| Name | Occurence | XPath | EnhancedDefinition | Class | Codes |
+| Name | Occurrence | XPath | EnhancedDefinition | Class | Codes |
 | --- | --- | --- | --- | --- | --- |
 | OBCashAccountDebtorWithName | | | Unambiguous identification of the account of the debtor to which a debit entry will be made as a result of the transaction. | OBCashAccountDebtorWithName| |
 | SchemeName | 1..1 | OBCashAccountDebtorWithName/SchemeName | Name of the identification scheme, in a coded form as published in an external list. | For a full list of enumeration values refer to `OB_Internal_CodeSet` [here](https://github.com/OpenBankingUK/External_internal_CodeSets)| `OBInternalAccountIdentification4Code` |

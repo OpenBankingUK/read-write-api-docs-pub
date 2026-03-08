@@ -61,7 +61,7 @@ TPP <-> ASPSP Authorisation Server: Establish TLS 1.2 MA
 TPP -> ASPSP Authorisation Server: Initiate Client Credentials Grant
 ASPSP Authorisation Server -> TPP: access-token
 TPP <-> ASPSP Resource Server: Establish TLS 1.2 MA
-alt Retrive
+alt Retrieve
 TPP -> ASPSP Resource Server: GET /event-subscriptions
 ASPSP Resource Server -> TPP: HTTP 200 (OK)
 else Update

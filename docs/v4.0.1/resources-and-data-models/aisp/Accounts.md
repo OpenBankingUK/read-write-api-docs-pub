@@ -4,7 +4,7 @@
 
 ## Overview
 
-The accounts resource is used by an AISP to retrieve full list of accounts and account infromation that the PSU has authorised to access.
+The accounts resource is used by an AISP to retrieve full list of accounts and account information that the PSU has authorised to access.
 
 This resource description should be read in conjunction with a compatible Account Information Services API Profile.
 

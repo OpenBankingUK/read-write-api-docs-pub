@@ -18,12 +18,12 @@ Further analysis required:-
 
 | Product Section |Fields to be included |
 | --- |--- |
-| ProductDetails |<ul><li>Name</li><li>Segmeent </li><li>Notes to capture other details</li></ul> |
+| ProductDetails |<ul><li>Name</li><li>Segment </li><li>Notes to capture other details</li></ul> |
 | CreditInterest |<ul><li>TierBandSet fields (excluding credit interest eligibility). </li><li>All TierBand fields</li></ul> |
 | LoanInterest |<ul><li>TierBandSet fields. </li><li>All TierBand fields</li></ul> |
 | Repayment |<ul><li>Repayment Charges </li><li>Repayment holiday</li></ul> |
 | OtherFeesAndCharges |<ul><li>Other fee charges such as servicing</li></ul> |
-| SupplementaryData |Any other feature of the product which cant be published using above functionality. |
+| SupplementaryData |Any other feature of the product which cannot be published using above functionality. |
 
 ### Data Model
 

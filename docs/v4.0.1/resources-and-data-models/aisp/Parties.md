@@ -66,7 +66,7 @@ The Party resource contains a set of elements that describes a party. The party 
 
 ###### Data Dictionary
 
-| Name |Occurence |XPath |EnhancedDefinition |Class |Codes |Pattern |
+| Name |Occurrence |XPath |EnhancedDefinition |Class |Codes |Pattern |
 | --- |--- |--- |--- |--- |--- |--- |
 | OBParty2 | |OBParty2 | |OBParty2 | | |
 | PartyId |1..1 |OBParty2/PartyId |A unique and immutable identifier used to identify the customer resource. This identifier has no meaning to the account owner. |Max40Text | | |
