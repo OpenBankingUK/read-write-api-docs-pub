@@ -27,6 +27,7 @@
   - Fixed "Retrive" to "Retrieve" in sequence diagrams (3 instances across event-notification-subscription-api-profile, event-notification-api-profile, and callback-url-api-profile)
   - Fixed "Segmeent" to "Segment" in other-product-data-model
   - Fixed "cant" to "cannot" in other-product-data-model
+- [CDRW-5049] Fix incorrect `OBActiveCurrencyAndAmount_SimpleType` regexes from `^\d{1,13}$\|^\d{1,13}\.\d{1,5}$` -> `^\d{1,13}$|^\d{1,13}\.\d{1,5}$` (remove incorrect `\`).
 - [CDRW-5052] Fixed broken GitHub url link in table `docs/v4.0.1/profiles/payment-initiation-api-profile.md` Line: 668
 - [CDRW-5050] Added missing ^...$ wrappers to regex
   - `docs/v4.0.1/profiles/account-and-transaction-api-profile.md`
