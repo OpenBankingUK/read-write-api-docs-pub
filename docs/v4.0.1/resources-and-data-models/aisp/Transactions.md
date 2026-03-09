@@ -152,7 +152,7 @@ Since Version 3.1.5, the mutability for a transaction has been made explicit:
 
 ### Permission Codes
 
-The resource differs depending on the permissions (ReadTransactionsBasic and ReadTransactionsDetail in addition to the appropriate ReadTransactionsCredits and/or ReadTransactionsDebits) used to access resource. When the resource is accessed with ReadTransactionsDetail it implies that access is also granted to the ReadTransactionsBasic permissions.  Whilst it is duplicaton for a TPP to request both permission codes, it is not a malformed request, and the ASPSP must not reject solely on the basis of duplication.
+The resource differs depending on the permissions (ReadTransactionsBasic and ReadTransactionsDetail in addition to the appropriate ReadTransactionsCredits and/or ReadTransactionsDebits) used to access resource. When the resource is accessed with ReadTransactionsDetail it implies that access is also granted to the ReadTransactionsBasic permissions.  Whilst it is duplication for a TPP to request both permission codes, it is not a malformed request, and the ASPSP must not reject solely on the basis of duplication.
 
 Where both ReadTransactionsBasic and ReadTransactionsDetail are present, the most detailed level (ReadTransactionsDetail) must be used.  The permissions array **must** contain at least ReadAccountsBasic or ReadAccountsDetail.
 

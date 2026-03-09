@@ -31,7 +31,7 @@ CBPR+ provides guidance and standardisation for using ISO 20022 messages for cro
 
 The Open Banking Standard has been updated to accommodate additional ISO 20022 fields and payload values. 
 
-| Name| XPath| Occurence|
+| Name| XPath| Occurrence|
 | --- |--- |--- |
 | UltimateCreditor| Initiation/UltimateCreditor| 0..1|
 | UltimateDebtor| Initiation/UltimateDebtor| 0..1|

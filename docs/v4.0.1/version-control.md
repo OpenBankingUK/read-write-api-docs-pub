@@ -7,6 +7,16 @@
 - [CDRW-4965] Guidance on Timezone inclusion in the [Filtering section](https://openbankinguk.github.io/read-write-api-site3/v4.0.1/resources-and-data-models/aisp/Transactions.html#filtering) of the Transactions page has been updated from "Timezone may be included in the filter request, but must be ignored by the ASPSP." to "Timezone **must not** be included in the filter request."
 - [CDRW-5040] - added some missing bold formatting to `must` in the [Date Formats](https://openbankinguk.github.io/read-write-api-site3/v4.0/profiles/read-write-data-api-profile.html#date-formats) and [Resource URI Path Structure](https://openbankinguk.github.io/read-write-api-site3/v4.0/profiles/read-write-data-api-profile.html#resource-uri-path-structure) sections.
 
+### Fixed
+
+- [CDRW-5044] Corrected spelling errors across multiple documentation files:
+  - Fixed "infromation" to "information" in Accounts
+  - Fixed "duplicaton" to "duplication" in Transactions
+  - Fixed "Occurence" to "Occurrence" in table headers (5 instances across confirmation-of-funds-api-profile, account-and-transaction-api-profile, payment-initiation-api-profile, Parties, and domestic-payment-message-formats)
+  - Fixed "Retrive" to "Retrieve" in sequence diagrams (3 instances across event-notification-subscription-api-profile, event-notification-api-profile, and callback-url-api-profile)
+  - Fixed "Segmeent" to "Segment" in other-product-data-model
+  - Fixed "cant" to "cannot" in other-product-data-model
+
 ## v4.0.1 Release Candidate 2 - 2026-02-04
 
 ### Added
