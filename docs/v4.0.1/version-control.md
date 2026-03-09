@@ -6,6 +6,13 @@
 
 - [CDRW-4965] Guidance on Timezone inclusion in the [Filtering section](https://openbankinguk.github.io/read-write-api-site3/v4.0.1/resources-and-data-models/aisp/Transactions.html#filtering) of the Transactions page has been updated from "Timezone may be included in the filter request, but must be ignored by the ASPSP." to "Timezone **must not** be included in the filter request."
 - [CDRW-5040] - added some missing bold formatting to `must` in the [Date Formats](https://openbankinguk.github.io/read-write-api-site3/v4.0/profiles/read-write-data-api-profile.html#date-formats) and [Resource URI Path Structure](https://openbankinguk.github.io/read-write-api-site3/v4.0/profiles/read-write-data-api-profile.html#resource-uri-path-structure) sections.
+- [CDRW-5050] Improved formatting of regex patterns by wrapping in backticks for code formatting visual:
+  - `docs/v4.0.1/profiles/account-and-transaction-api-profile.md`
+  - `docs/v4.0.1/profiles/payment-initiation-api-profile.md`
+- [CDRW-5051] Improved blank space encoding and table cell spacing:
+  - `docs/v4.0.1/profiles/account-and-transaction-api-profile.md`
+  - `docs/v4.0.1/profiles/payment-initiation-api-profile.md`
+- [CDRW-4913] Improved JSON syntax of example in `docs/v4.0.1/profiles/account-and-transaction-api-profile.md`
 
 ### Fixed
 
@@ -17,6 +24,11 @@
   - Fixed "Segmeent" to "Segment" in other-product-data-model
   - Fixed "cant" to "cannot" in other-product-data-model
 - [CDRW-5049] Fix incorrect `OBActiveCurrencyAndAmount_SimpleType` regexes from `^\d{1,13}$\|^\d{1,13}\.\d{1,5}$` -> `^\d{1,13}$|^\d{1,13}\.\d{1,5}$` (remove incorrect `\`).
+- [CDRW-5052] Fixed broken GitHub url link in table `docs/v4.0.1/profiles/payment-initiation-api-profile.md`
+- [CDRW-5050] Added missing ^...$ wrappers to regex
+  - `docs/v4.0.1/profiles/account-and-transaction-api-profile.md`
+  - `docs/v4.0.1/profiles/payment-initiation-api-profile.md`
+  - `docs/v4.0.1/profiles/vrp-profile.md`
 
 ## v4.0.1 Release Candidate 2 - 2026-02-04
 
