@@ -563,11 +563,13 @@ The absence of transactions / statements in the payload does not indicate that t
 To ensure that the data is interpreted correctly, the ASPSP **may** provide the date of the first available transaction and last available transaction as part of the response in the Meta section in the FirstAvailableDateTime and LastAvailableDateTime fields.
 
 ```json
+{
   "Meta": {
     "TotalPages": 1,
     "FirstAvailableDateTime": "2017-05-03T00:00:00+00:00",
     "LastAvailableDateTime": "2017-12-03T00:00:00+00:00"
   }
+}
 ```
 
 ### Mapping to Schemes & Standards
