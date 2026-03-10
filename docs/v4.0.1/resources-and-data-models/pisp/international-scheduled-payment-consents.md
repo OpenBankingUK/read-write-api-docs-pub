@@ -448,7 +448,7 @@ Accept: application/json
           "DistrictName": "Greater London",
           "CareOf": "Ms Jane Smith",
           "PostCode": "Z78 4TY",
-          "TownName": "London"
+          "TownName": "London",
           "Country": "GB"
         }
       },
@@ -695,7 +695,7 @@ Content-Type: application/json
           "DistrictName": "Greater London",
           "CareOf": "Ms Jane Smith",
           "PostCode": "Z78 4TY",
-          "TownName": "London"
+          "TownName": "London",
           "Country": "GB"
         }
       },
