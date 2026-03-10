@@ -1,5 +1,19 @@
 # Version control
 
+For v4.0.1 the following approach has been adopted for identifying changes:
+
+- [Known Issues](https://openbanking.atlassian.net/wiki/spaces/DZ/pages/47546479/Known+Specification+Issues) - these are tagged with the KI identifier, e.g. [v40_KI45]
+- [Change Requests](https://openbanking.atlassian.net/wiki/spaces/WOR/pages/3872948225/2025-09-11+EAG+for+v4.x.x+Standards+release+Workshop+4#Discussion-material) - these are tagged with the CR number used in the consultations, e.g. [CR4a]
+- EAG/Consultation items - Items included in the consultations are tagged with an identifier representing the consultation period they were introduced, e.g. [v4.0.1 RC 1]
+- Feedback remediation - Technical errata and other minor corrections identified by participants or OBL during the Advanced Information period for Release Candidates 1 and 2 with an appropriate identifier for internal OBL traceability e.g. [CDRW-5006]
+
+**Consultations:**
+
+- [v4.x.x Consultation 1](https://openbanking.atlassian.net/wiki/spaces/WOR/pages/3880550401/Feedback+-+V4.x.x+Consultation+1)
+- [v4.0.1 Draft 1](https://openbanking.atlassian.net/wiki/spaces/WOR/pages/4096950276/Feedback+-+v4.0.1+Draft+1)
+- [v4.0.1 Release Candidate 1](https://openbanking.atlassian.net/wiki/spaces/WOR/pages/4203282434/Feedback+-+v4.0.1+Release+Candidate+1)
+- [v4.0.1 Release Candidate 2](https://openbanking.atlassian.net/wiki/spaces/WOR/pages/4309942273/Feedback+-+v4.0.1+Release+Candidate+2)
+
 ## v4.0.1 - Unreleased
 
 ### Changed
@@ -7,12 +21,12 @@
 - [CDRW-4965] Guidance on Timezone inclusion in the [Filtering section](https://openbankinguk.github.io/read-write-api-site3/v4.0.1/resources-and-data-models/aisp/Transactions.html#filtering) of the Transactions page has been updated from "Timezone may be included in the filter request, but must be ignored by the ASPSP." to "Timezone **must not** be included in the filter request."
 - [CDRW-5040] - added some missing bold formatting to `must` in the [Date Formats](https://openbankinguk.github.io/read-write-api-site3/v4.0/profiles/read-write-data-api-profile.html#date-formats) and [Resource URI Path Structure](https://openbankinguk.github.io/read-write-api-site3/v4.0/profiles/read-write-data-api-profile.html#resource-uri-path-structure) sections.
 - [CDRW-5050] Improved formatting of regex patterns by wrapping in backticks for code formatting visual:
-  - `docs/v4.0.1/profiles/account-and-transaction-api-profile.md`
-  - `docs/v4.0.1/profiles/payment-initiation-api-profile.md`
+  - `v4.0.1/profiles/account-and-transaction-api-profile`
+  - `v4.0.1/profiles/payment-initiation-api-profile`
 - [CDRW-5051] Improved blank space encoding and table cell spacing:
-  - `docs/v4.0.1/profiles/account-and-transaction-api-profile.md`
-  - `docs/v4.0.1/profiles/payment-initiation-api-profile.md`
-- [CDRW-4913] Improved JSON syntax of example in `docs/v4.0.1/profiles/account-and-transaction-api-profile.md`
+  - `v4.0.1/profiles/account-and-transaction-api-profile`
+  - `v4.0.1/profiles/payment-initiation-api-profile`
+- [CDRW-4913] Improved JSON syntax of example in `v4.0.1/profiles/account-and-transaction-api-profile`
 
 ### Fixed
 
@@ -23,41 +37,41 @@
   - Fixed "Retrive" to "Retrieve" in sequence diagrams (3 instances across event-notification-subscription-api-profile, event-notification-api-profile, and callback-url-api-profile)
   - Fixed "Segmeent" to "Segment" in other-product-data-model
   - Fixed "cant" to "cannot" in other-product-data-model
-- [CDRW-5049] Fix incorrect `OBActiveCurrencyAndAmount_SimpleType` regexes from `^\d{1,13}$\|^\d{1,13}\.\d{1,5}$` -> `^\d{1,13}$|^\d{1,13}\.\d{1,5}$` (remove incorrect `\`).
-- [CDRW-5052] Fixed broken GitHub url link in table `docs/v4.0.1/profiles/payment-initiation-api-profile.md`
+- [CDRW-5049] Fix incorrect `OBActiveCurrencyAndAmount_SimpleType` regexes from `^\d{1,13}$\|^\d{1,13}\.\d{1,5}$` -> `^\d{1,13}$|^\d{1,13}\.\d{1,5}$` (removed incorrect `\`).
+- [CDRW-5052] Fixed broken GitHub url link in table `docs/v4.0.1/profiles/payment-initiation-api-profile`
 - [CDRW-5050] Added missing ^...$ wrappers to regex
-  - `docs/v4.0.1/profiles/account-and-transaction-api-profile.md`
-  - `docs/v4.0.1/profiles/payment-initiation-api-profile.md`
-  - `docs/v4.0.1/profiles/vrp-profile.md`
+  - `v4.0.1/profiles/account-and-transaction-api-profile`
+  - `v4.0.1/profiles/payment-initiation-api-profile`
+  - `v4.0.1/profiles/vrp-profile`
 
 ## v4.0.1 Release Candidate 2 - 2026-02-04
 
 ### Added
 
-- Added LWMH, LXMH, & TWYR to Frequency Examples in PIS Domestic Standing Order consents & AIS Standing Orders
-- Added Frequency Examples table to PIS International Standing Order Consents
-- [CDRW-4937] - added example of query string `date-time` where only the Date is required.
-- [CDRW-5038] - Added text to [Date Formats](https://openbankinguk.github.io/read-write-api-site3/v4.0/profiles/read-write-data-api-profile.html#date-formats) section advising on decimal precision limit of 5, as agreed in TDA Decision 284
-- [CDRW-5039]- Added new [Days of the Week](https://openbankinguk.github.io/read-write-api-site3/v4.0.1/profiles/read-write-data-api-profile.html#days-of-the-week) section to Date Formats advising of ISO-8601 alignment and providing a table of week days and ordinal values as discussed at TDA on 2026-03-04
+- [v40_KI45] Added LWMH, LXMH, & TWYR to Frequency Examples in PIS Domestic Standing Order consents & AIS Standing Orders
+- [v40_KI45] Added Frequency Examples table to PIS International Standing Order Consents
+- [CDRW-4937] Added example of query string `date-time` where only the Date is required.
+- [CDRW-5038] Added text to [Date Formats](https://openbankinguk.github.io/read-write-api-site3/v4.0/profiles/read-write-data-api-profile.html#date-formats) section advising on decimal precision limit of 5, as agreed in TDA Decision 284
+- [CDRW-5039] Added new [Days of the Week](https://openbankinguk.github.io/read-write-api-site3/v4.0.1/profiles/read-write-data-api-profile.html#days-of-the-week) section to Date Formats advising of ISO-8601 alignment and providing a table of week days and ordinal values as discussed at TDA on 2026-03-04
 
 ## Fixed
 
-- Fixed list formatting in [transaction permissions code](https://openbankinguk.github.io/read-write-api-site3/v4.0.1/resources-and-data-models/aisp/Transactions.html#permission-codes)
+- [CDRW-5056] Fixed list formatting in [transaction permissions code](https://openbankinguk.github.io/read-write-api-site3/v4.0.1/resources-and-data-models/aisp/Transactions.html#permission-codes)
 - [CDRW-5016 & CDRW-5015] Fixed the table of contents links on all the v4.0.1 pages.
-- [v40_KI48] - OBReadStatement2/Data/Statement/StatementInterest/RateType was incorrectly listed as using `OBInternalStatementInterestType1Code`, this has been corrected to `OBInternalStatementInterestRateType1Code`
+- [v40_KI48] OBReadStatement2/Data/Statement/StatementInterest/RateType was incorrectly listed as using `OBInternalStatementInterestType1Code`, this has been corrected to `OBInternalStatementInterestRateType1Code`
 
 ### Changed
 
-- [CDRW-4948] - Description for `OBReadStatement2/Data/Statement/StatementFee/RateType` changed to "This code indicates the specific type of fee rate (e.g., AER, EAR)"
-- [CDRW-4948] - Description for `OBReadStatement2/Data/Statement/StatementInterest/RateType` changed to "This code specifies the type of interest (e.g., BOE Base Rate, Fixed Rate, Gross)"
-- [CDRW-4937] - Amended description of query string `date-time` usage to clarify how to represent values where only the `Date` component is required.
+- [CDRW-4948] Description for `OBReadStatement2/Data/Statement/StatementFee/RateType` changed to "This code indicates the specific type of fee rate (e.g., AER, EAR)"
+- [CDRW-4948] Description for `OBReadStatement2/Data/Statement/StatementInterest/RateType` changed to "This code specifies the type of interest (e.g., BOE Base Rate, Fixed Rate, Gross)"
+- [CDRW-4937] Amended description of query string `date-time` usage to clarify how to represent values where only the `Date` component is required.
 
 ## v4.0.1 Release Candidate 1 - 2026-01-05
 
 ### Changed
 
-- Updated [Payment Initiation Release Management](https://openbankinguk.github.io/read-write-api-site3/v4.0.1/profiles/payment-initiation-api-profile.html#release-management) section to consistently reference ConsentId in the consent section.
-- Moved the initial File Payment status information to the [`POST /file-payments`](https://openbankinguk.github.io/read-write-api-site3/v4.0.1/resources-and-data-models/pisp/file-payments.html#post-file-payments) section.
+- [CDRW-5054] Updated [Payment Initiation Release Management](https://openbankinguk.github.io/read-write-api-site3/v4.0.1/profiles/payment-initiation-api-profile.html#release-management) section to consistently reference ConsentId in the consent section.
+- [CDRW-5055] Moved the initial File Payment status information to the [`POST /file-payments`](https://openbankinguk.github.io/read-write-api-site3/v4.0.1/resources-and-data-models/pisp/file-payments.html#post-file-payments) section.
 
 ## v4.0.1 Draft 1 - 2025-11-20
 
