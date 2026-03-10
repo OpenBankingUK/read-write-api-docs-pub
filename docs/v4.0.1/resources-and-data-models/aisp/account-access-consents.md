@@ -412,7 +412,7 @@ Content-Type: application/json
 {
   "Data": {
     "ConsentId": "urn-alphabank-intent-88379",
-    "Status": "REJT",
+    "Status": "RJCT",
     "StatusReason": [{
       "StatusReasonCode": "U038", 
       "StatusReasonDescription":"Data.LocalInstrument is invalid.  Expected ExternalLocalInstrument1Code value, received SEPE",
