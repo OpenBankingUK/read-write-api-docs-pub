@@ -209,13 +209,13 @@ Accept: application/json
               {
                 "Code": "CINV"
               }
-            ]
+            ],
+            "ReferredDocumentAmount": "1.00",
+            "CreditorReferenceInformation": {
+              "Reference": "Pocket money for Damien"
+            }
           }
         ],
-        "ReferredDocumentAmount": "1.00",
-        "CreditorReferenceInformation": {
-          "Reference": "Pocket money for Damien"
-        }
       },
       "FirstPaymentAmount": {
         "Amount": "6.66",
@@ -279,13 +279,13 @@ Content-Type: application/json
               {
                 "Code": "CINV"
               }
-            ]
+            ],
+            "ReferredDocumentAmount": "1.00",
+            "CreditorReferenceInformation": {
+              "Reference": "Pocket money for Damien"
+            }
           }
         ],
-        "ReferredDocumentAmount": "1.00",
-        "CreditorReferenceInformation": {
-          "Reference": "Pocket money for Damien"
-        }
       },
       "FirstPaymentAmount": {
         "Amount": "6.66",
