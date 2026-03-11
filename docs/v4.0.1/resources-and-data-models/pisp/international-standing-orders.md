@@ -265,7 +265,6 @@ Accept: application/json
         "Identification": "08080021325698",
         "Name": "ACME Inc",
         "SecondaryIdentification": "0002",
-        "LEI": "8200007YHFDMEODY1965",
         "Proxy": {
           "Identification": "07700900000",
           "Code": "TELE",
@@ -468,7 +467,6 @@ Content-Type: application/json
         "Identification": "08080021325698",
         "Name": "ACME Inc",
         "SecondaryIdentification": "0002",
-        "LEI": "8200007YHFDMEODY1965",
         "Proxy": {
           "Identification": "07700900000",
           "Code": "TELE",
@@ -476,14 +474,16 @@ Content-Type: application/json
         }
       },
       "Refund": {
-        "SchemeName": "SortCodeAccountNumber",
-        "Identification": "30949330000010",
-        "SecondaryIdentification": "Roll 90210",
-        "Name": "Marcus Sweepimus",
-        "Proxy": {
-          "Identification": "441234012385",
-          "Code": "TELE",
-          "Type": "Telephone"
+        "Account": {
+          "SchemeName": "SortCodeAccountNumber",
+          "Identification": "30949330000010",
+          "SecondaryIdentification": "Roll 90210",
+          "Name": "Marcus Sweepimus",
+          "Proxy": {
+            "Identification": "441234012385",
+            "Code": "TELE",
+            "Type": "Telephone"
+          }
         }
       },
       "Creditor": {
