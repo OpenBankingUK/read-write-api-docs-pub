@@ -472,8 +472,8 @@ Accept: application/json
       }
     },
     "Instruction": {
-      "InstructionIdentification": "fe655556-e53a-45ed-954c-ae5d1f97a93b",
-      "EndToEndIdentification": "fe699996-e53a-45ed-954c-ae5d1f97a93a",
+      "InstructionIdentification": "fe655556-e53a-45ed-954c-ae5d1f97a93",
+      "EndToEndIdentification": "fe699996-e53a-45ed-954c-ae5d1f97a94",
       "LocalInstrument": "UK.OBIE.Paym",
       "CreditorAccount": {
         "SchemeName": "UK.OBIE.SortCodeAccountNumber",
@@ -636,8 +636,8 @@ Content-Type: application/json
       }
     },
     "Instruction": {
-      "InstructionIdentification": "fe655556-e53a-45ed-954c-ae5d1f97a93b",
-      "EndToEndIdentification": "fe699996-e53a-45ed-954c-ae5d1f97a93a",
+      "InstructionIdentification": "fe655556-e53a-45ed-954c-ae5d1f97a93",
+      "EndToEndIdentification": "fe699996-e53a-45ed-954c-ae5d1f97a94",
       "LocalInstrument": "UK.OBIE.Paym",
       "CreditorAccount": {
         "SchemeName": "UK.OBIE.SortCodeAccountNumber",
@@ -1010,8 +1010,8 @@ Accept: application/json
     "VRPType": "UK.OBIE.VRPType.Sweeping",
     "Initiation": {},
     "Instruction": {
-      "InstructionIdentification": "fe655556-e53a-45ed-954c-ae5d1f97a93b",
-      "EndToEndIdentification": "fe699996-e53a-45ed-954c-ae5d1f97a93a",
+      "InstructionIdentification": "fe655556-e53a-45ed-954c-ae5d1f97a93",
+      "EndToEndIdentification": "fe699996-e53a-45ed-954c-ae5d1f97a94",
       "LocalInstrument": "UK.OBIE.FPS",
       "CreditorAccount": {
         "SchemeName": "UK.OBIE.SortCodeAccountNumber",
@@ -1094,8 +1094,8 @@ Content-Type: application/json
     },
     "Initiation": {},
     "Instruction": {
-      "InstructionIdentification": "fe655556-e53a-45ed-954c-ae5d1f97a93b",
-      "EndToEndIdentification": "fe699996-e53a-45ed-954c-ae5d1f97a93a",
+      "InstructionIdentification": "fe655556-e53a-45ed-954c-ae5d1f97a93",
+      "EndToEndIdentification": "fe699996-e53a-45ed-954c-ae5d1f97a94",
       "LocalInstrument": "UK.OBIE.FPS",
       "CreditorAccount": {
         "SchemeName": "UK.OBIE.SortCodeAccountNumber",
