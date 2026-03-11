@@ -224,7 +224,7 @@ Content-Type: application/json
     "CreationDateTime": "2017-05-02T00:00:00+00:00",
     "StatusReason": [{
       "StatusReasonCode": "U036", 
-      "StatusReasonDescription":"Waiting for completion of consent authorisation to be completed by user",
+      "StatusReasonDescription":"Waiting for completion of consent authorisation to be completed by user"
     }],
     "Permissions": [
       "ReadAccountsDetail",
@@ -286,9 +286,8 @@ Content-Type: application/json
     "Status": "AWAU",
    "StatusReason": [{
       "StatusReasonCode": "U036", 
-      "StatusReasonDescription":"Waiting for completion of consent authorisation to be completed by user",
+      "StatusReasonDescription":"Waiting for completion of consent authorisation to be completed by user"
     }],
-    "StatusReasonDescription":"Waiting for completion of consent authorisation to be completed by user",
     "StatusUpdateDateTime": "2017-05-02T00:00:00+00:00",
     "CreationDateTime": "2017-05-02T00:00:00+00:00",
     "Permissions": [
@@ -412,11 +411,11 @@ Content-Type: application/json
 {
   "Data": {
     "ConsentId": "urn-alphabank-intent-88379",
-    "Status": "REJT",
+    "Status": "RJCT",
     "StatusReason": [{
-      "StatusReasonCode": "U038", 
-      "StatusReasonDescription":"Data.LocalInstrument is invalid.  Expected ExternalLocalInstrument1Code value, received SEPE",
-      "Path": "Data.LocalInstrument"
+      "StatusReasonCode": "U003", 
+      "StatusReasonDescription":"Data.Permissions is invalid, unknown permission present",
+      "Path": "Data.Permissions"
     }],
     "StatusUpdateDateTime": "2017-05-02T00:05:00+00:00",
     "CreationDateTime": "2017-05-02T00:00:00+00:00",
@@ -435,7 +434,8 @@ Content-Type: application/json
       "ReadParty",
       "ReadPartyPSU",
       "ReadScheduledPaymentsDetail",
-      "ReadStatementsDetail"
+      "ReadStatementsDetail",
+      "BadPermisionCode"
     ],
     "ExpirationDateTime": "2017-08-02T00:00:00+00:00",
     "TransactionFromDateTime": "2017-05-03T00:00:00+00:00",
@@ -518,7 +518,7 @@ Content-Type: application/json
     "CreationDateTime": "2017-05-02T00:00:00+00:00",
     "StatusReason": [{
       "StatusReasonCode": "U036", 
-      "StatusReasonDescription":"Waiting for completion of consent authorisation to be completed by user",
+      "StatusReasonDescription":"Waiting for completion of consent authorisation to be completed by user"
     }],
     "Permissions": [
       "ReadAccountsBasic",
