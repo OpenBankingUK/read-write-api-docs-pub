@@ -318,9 +318,6 @@ Content-Type: application/json
       }
     }
   },
-  "Risk": {
-    "PaymentContextCode": "TransferToThirdParty"
-  },
   "Links": {
     "Self": "https://api.alphabank.com/open-banking/v4.0/pisp/domestic-standing-orders/SO-SOC-100"
   },
