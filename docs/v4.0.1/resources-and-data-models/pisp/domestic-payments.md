@@ -434,7 +434,7 @@ Content-Type: application/json
     "StatusReason": [
       {
         "StatusReasonCode": "U30",
-        "Description": "Payment order successfully received"
+        "StatusReasonDescription": "Payment order successfully received"
       }
     ],
     "CreationDateTime": "2017-06-05T15:15:22+00:00",
