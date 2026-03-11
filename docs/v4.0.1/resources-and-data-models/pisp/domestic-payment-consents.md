@@ -302,7 +302,7 @@ Accept: application/json
     "Initiation": {
       "InstructionIdentification": "ACME412",
       "EndToEndIdentification": "FRESCO.21302.GFX.20",
-      "LocalInstrument": "UK.OBIE.Paym",
+      "LocalInstrument": "UK.OBIE.CHAPS",
       "InstructedAmount": {
         "Amount": "165.88",
         "Currency": "GBP"
@@ -499,7 +499,6 @@ Content-Type: application/json
   "Data": {
     "ConsentId": "58923",
     "Status": "AWAU",
-    "LocalInstrument": "UK.OBIE.CHAPS",
     "StatusReason": [
       {
         "StatusReasonCode": "U036",
@@ -529,7 +528,7 @@ Content-Type: application/json
     "Initiation": {
       "InstructionIdentification": "ACME412",
       "EndToEndIdentification": "FRESCO.21302.GFX.20",
-      "LocalInstrument": "UK.OBIE.Paym",
+      "LocalInstrument": "UK.OBIE.CHAPS",
       "InstructedAmount": {
         "Amount": "165.88",
         "Currency": "GBP"
