@@ -652,6 +652,13 @@ Content-Type: application/json
     "Status": "ACSP",
     "CreationDateTime": "2017-06-05T15:15:22+00:00",
     "StatusUpdateDateTime": "2017-06-05T15:15:22+00:00",
+    "Debtor": {
+      "Name": "D Jones",
+      "SchemeName": "UK.OBIE.SortCodeAccountNumber",
+      "Identification": "08080021325698",
+      "SecondaryIdentification": "0002",
+      "LEI": "8200007YHFDMEODY1965"
+    },
     "Initiation": {
       "InstructionIdentification": "ACME412",
       "EndToEndIdentification": "FRESCO.21302.GFX.20",
@@ -716,13 +723,6 @@ Content-Type: application/json
         "Unstructured": [
           "Internal ops code 5120101"
         ]
-      },
-      "Debtor": {
-        "Name": "D Jones",
-        "SchemeName": "UK.OBIE.SortCodeAccountNumber",
-        "Identification": "08080021325698",
-        "SecondaryIdentification": "0002",
-        "LEI": "8200007YHFDMEODY1965"
       }
     }
   },
