@@ -302,7 +302,7 @@ Accept: application/json
     "Initiation": {
       "InstructionIdentification": "ACME412",
       "EndToEndIdentification": "FRESCO.21302.GFX.20",
-      "LocalInstrument": "UK.OBIE.Paym",
+      "LocalInstrument": "UK.OBIE.CHAPS",
       "InstructedAmount": {
         "Amount": "165.88",
         "Currency": "GBP"
@@ -499,7 +499,6 @@ Content-Type: application/json
   "Data": {
     "ConsentId": "58923",
     "Status": "AWAU",
-    "LocalInstrument": "UK.OBIE.CHAPS",
     "StatusReason": [
       {
         "StatusReasonCode": "U036",
@@ -529,7 +528,7 @@ Content-Type: application/json
     "Initiation": {
       "InstructionIdentification": "ACME412",
       "EndToEndIdentification": "FRESCO.21302.GFX.20",
-      "LocalInstrument": "UK.OBIE.Paym",
+      "LocalInstrument": "UK.OBIE.CHAPS",
       "InstructedAmount": {
         "Amount": "165.88",
         "Currency": "GBP"
@@ -610,13 +609,6 @@ Content-Type: application/json
           "Country": "GB"
         }
       },
-      "Debtor": {
-        "Name": "D Jones",
-        "SchemeName": "UK.OBIE.SortCodeAccountNumber",
-        "Identification": "08080021325698",
-        "SecondaryIdentification": "0002",
-        "LEI": "8200007YHFDMEODY1965"
-      },
       "RegulatoryReporting": [
         {
           "DebitCreditReportingIndicator": "CRED",
@@ -673,6 +665,13 @@ Content-Type: application/json
           "Internal ops code 5120101"
         ]
       }
+    },
+    "Debtor": {
+      "Name": "D Jones",
+      "SchemeName": "UK.OBIE.SortCodeAccountNumber",
+      "Identification": "08080021325698",
+      "SecondaryIdentification": "0002",
+      "LEI": "8200007YHFDMEODY1965"
     },
     "SCASupportData": {
       "RequestedSCAExemptionType": "EcommerceGoods",

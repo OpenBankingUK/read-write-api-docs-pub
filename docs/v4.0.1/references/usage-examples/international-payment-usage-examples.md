@@ -33,10 +33,8 @@ Accept: application/json
       "EndToEndIdentification": "FRESCO.21302.GFX.20",
       "RequestedExecutionDateTime": "2018-08-06T00:00:00+00:00",
       "InstructedAmount": {
-        "Amount": {
           "Amount": "165.88",
           "Currency": "USD"
-        }
       },
       "CurrencyOfTransfer": "USD",
       "CreditorAccount": {
@@ -92,10 +90,8 @@ Content-Type: application/json
       "EndToEndIdentification": "FRESCO.21302.GFX.20",
       "RequestedExecutionDateTime": "2018-08-06T00:00:00+00:00",
       "InstructedAmount": {
-        "Amount": {
           "Amount": "165.88",
           "Currency": "USD"
-        }
       },
       "CurrencyOfTransfer": "USD",
       "CreditorAccount": {
@@ -169,10 +165,8 @@ Accept: application/json
       "EndToEndIdentification": "FRESCO.21302.GFX.20",
       "RequestedExecutionDateTime": "2018-08-06T00:00:00+00:00",
       "InstructedAmount": {
-        "Amount": {
           "Amount": "165.88",
           "Currency": "USD"
-        }
       },
       "CurrencyOfTransfer": "USD",
       "CreditorAccount": {
@@ -228,10 +222,8 @@ Content-Type: application/json
       "EndToEndIdentification": "FRESCO.21302.GFX.20",
       "RequestedExecutionDateTime": "2018-08-06T00:00:00+00:00",
       "InstructedAmount": {
-        "Amount": {
           "Amount": "165.88",
           "Currency": "USD"
-        }
       },
       "CurrencyOfTransfer": "USD",
       "CreditorAccount": {

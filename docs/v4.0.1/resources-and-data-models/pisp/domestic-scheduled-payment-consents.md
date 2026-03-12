@@ -553,13 +553,6 @@ Content-Type: application/json
           ]
         }
       ],
-      "Debtor": {
-        "Name": "D Jones",
-        "SchemeName": "UK.OBIE.SortCodeAccountNumber",
-        "Identification": "08080021325698",
-        "SecondaryIdentification": "0002",
-        "LEI": "8200007YHFDMEODY1965"
-      },
       "RemittanceInformation": {
         "Structured": [
           {

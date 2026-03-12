@@ -510,8 +510,6 @@ Content-Type: application/json
     "CreationDateTime": "2018-01-01T06:06:06+00:00",
     "CutOffDateTime": "2017-06-05T16:00:13+00:00",
     "StatusUpdateDateTime": "2017-06-05T15:15:13+00:00",
-    "ExpectedExecutionDateTime": "2018-06-05T15:15:22+00:00",
-    "ExpectedSettlementDateTime": "2018-06-06T15:15:22+00:00",
     "Permission": "Create",
     "ReadRefundAccount": "Yes",
     "Status": "AWAU",
@@ -547,16 +545,8 @@ Content-Type: application/json
       "CurrencyOfTransfer": "USD",
       "DestinationCountryCode": "GB",
       "InstructedAmount": {
-        "Amount": {
           "Amount": "165.88",
           "Currency": "USD"
-        }
-      },
-      "ExchangeRateInformation": {
-        "UnitCurrency": "GBP",
-        "ContractIdentification": "0591968098186",
-        "ExchangeRate": 1.22,
-        "RateType": "Actual"
       },
       "Creditor": {
         "LEI": "8200007YHFDMEODY8412",
@@ -689,7 +679,6 @@ Content-Type: application/json
         "Identification": "11280001234567",
         "Name": "Andrea Frost",
         "SecondaryIdentification": "0002",
-        "LEI": "8200007YHFDMEODY1965",
         "Proxy": {
           "Identification": "07700900000",
           "Code": "TELE",
