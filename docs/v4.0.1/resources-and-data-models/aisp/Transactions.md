@@ -103,7 +103,7 @@ In the above situations, the ASPSP must return data for the remaining valid peri
 GET /transactions?fromBookingDateTime=2015-01-01T00:00:00
 
 // All transactions in 2016
-GET /transactions?fromBookingDateTime=2016-01-01T00:00:00&amp;toBookingDateTime=2016-12-31T23:59:59
+GET /transactions?fromBookingDateTime=2016-01-01T00:00:00&toBookingDateTime=2016-12-31T23:59:59
 
 // All transactions in a specific account up to 31-Mar-2017
 GET /accounts/1/transactions?toBookingDateTime=2017-03-31T23:59:59
