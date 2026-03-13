@@ -86,7 +86,7 @@ StatementDescription [0..*]
 <title>Type: string
 MinLength: 1
 MaxLength: 40
-Description: Unique identifier for the statement resource within an servicing institution. This identifier is both unique and immutable.
+Description: Unique identifier for the statement resource within a servicing institution. This identifier is both unique and immutable.
 </title>
 StatementId [0..1]
 </text>
