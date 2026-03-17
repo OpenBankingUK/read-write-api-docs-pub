@@ -43,7 +43,8 @@ For v4.0.1 the following approach has been adopted for identifying changes:
   - `v4.0.1/profiles/account-and-transaction-api-profile`
   - `v4.0.1/profiles/payment-initiation-api-profile`
   - `v4.0.1/profiles/vrp-profile`
-[CDRW-5065] Transactions filtering example incorrectly showed `&` as `&amp;`
+- [CDRW-5065] Transactions filtering example incorrectly showed `&` as `&amp;`
+- [v40_KI16] Updated Multiple Authorisation tables to correctly list `AWAF` instead of `AWAU`.
 
 ## v4.0.1 Release Candidate 2 - 2026-02-04
 
