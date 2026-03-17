@@ -661,8 +661,8 @@ Content-Type: application/json
         "TransactionInformation": "Paid the gas bill",
         "AddressLine": "Coventry",
         "BankTransactionCode": {
-          "Code": "IssuedCreditTransfer",
-          "SubCode": "AutomaticTransfer"
+          "Code": "ICDT",
+          "SubCode": "AUTT"
         },
         "ProprietaryBankTransactionCode": {
           "Code": "DirectDebit",
