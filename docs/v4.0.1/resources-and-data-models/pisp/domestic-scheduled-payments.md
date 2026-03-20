@@ -72,20 +72,22 @@ The domestic-scheduled-payments - payment-details must have one of the following
 
 | Status |
 | ------ |
-| RCVD |
 | CANC |
-| PDNG |
+| RCVD |
 | ACTC |
 | PATC |
+| PDNG |
+| RJCT |
+| INFA |
+| INCO |
 | ACCP |
 | ACFC |
 | ACSP |
 | ACWC |
 | ACSC |
-| ACWP |
-| ACCC |
 | BLCK |
-| RJCT |
+| ACCC |
+| ACWP |
 
 Refer to [External_Internal_CodeSets](https://github.com/OpenBankingUK/External_Internal_CodeSets) ->
 OB_Internal_CodeSet -> `ExternalPaymentTransactionStatus1Code`.

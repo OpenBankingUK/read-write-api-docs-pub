@@ -46,6 +46,14 @@ For v4.0.1 the following approach has been adopted for identifying changes:
 - [CDRW-5065] Transactions filtering example incorrectly showed `&` as `&amp;`
 - [v40_KI16] Updated Multiple Authorisation tables to correctly list `AWAF` instead of `AWAU`.
 - [v40_KI20] Fixed `BankTransactionCode` examples in `Transactions`
+- [CDRW-5073] Fixed incorrect CodeSet source references and missing/incorrect status codes in `payment-details` sections across PISP pages:
+  - Fixed `ISO_External_CodeSet` → `OB_Internal_CodeSet` in the `payment-details` CodeSet source reference in [File Payments](https://openbankinguk.github.io/read-write-api-site3/v4.0.1/resources-and-data-models/pisp/file-payments.html#get-file-payments-filepaymentid-payment-details)
+  - Fixed `OB_External_CodeSet` → `OB_Internal_CodeSet` in the `payment-details` CodeSet source reference in [International Payments](https://openbankinguk.github.io/read-write-api-site3/v4.0.1/resources-and-data-models/pisp/international-payments.html#get-international-payments-internationalpaymentid-payment-details)
+  - Fixed `ISO_External_CodeSet` → `OB_Internal_CodeSet` in the main status CodeSet source reference in [International Standing Orders](https://openbankinguk.github.io/read-write-api-site3/v4.0.1/resources-and-data-models/pisp/international-standing-orders.html#status)
+  - Fixed `PART` → `PATC` and added missing status codes (`CANC`, `RJCT`, `INFA`, `INCO`, `BLCK`, `ACWP`) to the `payment-details` status table in [File Payments](https://openbankinguk.github.io/read-write-api-site3/v4.0.1/resources-and-data-models/pisp/file-payments.html#get-file-payments-filepaymentid-payment-details)
+  - Added missing status codes (`CANC`, `RJCT`, `INFA`, `INCO`) and fixed ordering in the `payment-details` status table in [International Payments](https://openbankinguk.github.io/read-write-api-site3/v4.0.1/resources-and-data-models/pisp/international-payments.html#get-international-payments-internationalpaymentid-payment-details)
+  - Added missing status codes (`INFA`, `INCO`) and fixed ordering in the `payment-details` status table in [Domestic Scheduled Payments](https://openbankinguk.github.io/read-write-api-site3/v4.0.1/resources-and-data-models/pisp/domestic-scheduled-payments.html#get-domestic-scheduled-payments-domesticscheduledpaymentid-payment-details)
+  - Fixed POST `/file-payments` response example `"Status"` from `"RCVD"` to `"PDNG"` to align with normative text
 
 ## v4.0.1 Release Candidate 2 - 2026-02-04
 
