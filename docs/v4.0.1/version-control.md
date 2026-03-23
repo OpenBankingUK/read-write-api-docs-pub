@@ -71,7 +71,6 @@ For v4.0.1 the following approach has been adopted for identifying changes:
 - [CR8] Added guidance to the [Transaction page](https://openbankinguk.github.io/read-write-api-site3/v4.0.1/resources-and-data-models/aisp/Transactions.html#notes) for returning Counterparty information in the `TransactionInformation` field.
 - [v4.x.x Consultation 1] `ReadStandingOrdersBasic` and `ReadStandingOrdersDetail` added to overarching [Permission Codes list](https://openbankinguk.github.io/read-write-api-site3/v4.0.1/profiles/account-and-transaction-api-profile.html#permissions)
 
-
 ### Changed
 
 - [CDRW-4965] Guidance on Timezone inclusion in the [Filtering section](https://openbankinguk.github.io/read-write-api-site3/v4.0.1/resources-and-data-models/aisp/Transactions.html#filtering) of the Transactions page has been updated from "Timezone may be included in the filter request, but must be ignored by the ASPSP." to "Timezone **must not** be included in the filter request."
@@ -156,12 +155,6 @@ For v4.0.1 the following approach has been adopted for identifying changes:
 - [v40_KI16] Replaced AWAU with AWAF for Multiple Authorisation in File Payments ([File Payments - v4.0.1](https://openbankinguk.github.io/read-write-api-site3/v4.0.1/resources-and-data-models/pisp/file-payments.html#uml-diagram))
 - [CDRW-4828] Added clarification to PointInTime in the Data Dictionary to note that negative numbers are permitted
   ([Payment Initiation API Profile - v4.0.1](https://openbankinguk.github.io/read-write-api-site3/v4.0.1/profiles/payment-initiation-api-profile.html#data-dictionary-10))
-
-
-
-
-
-
 
 ### Removed
 
