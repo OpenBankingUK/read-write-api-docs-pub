@@ -71,22 +71,19 @@ The international-payments - payment-details must have one of the following Paym
 
 | Status |
 | ------ |
-| CANC |
 | RCVD |
+| PDNG |
 | ACTC |
 | PATC |
-| PDNG |
-| RJCT |
-| INFA |
-| INCO |
 | ACCP |
 | ACFC |
 | ACSP |
 | ACWC |
 | ACSC |
-| BLCK |
-| ACCC |
 | ACWP |
+| ACCC |
+| BLCK |
+| RJCT |
 
 Refer to [External_Internal_CodeSets](https://github.com/OpenBankingUK/External_Internal_CodeSets) -> OB_Internal_CodeSet -> `ExternalPaymentTransactionStatus1Code`.
 

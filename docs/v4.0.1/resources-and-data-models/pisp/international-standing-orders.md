@@ -70,20 +70,22 @@ The international-standing-orders - payment-details must have one of the followi
 
 | Status |
 | ------ |
-| INCO |
 | CANC |
-| PDNG |
+| RCVD |
 | ACTC |
 | PATC |
+| PDNG |
+| RJCT |
+| INFA |
+| INCO |
 | ACCP |
 | ACFC |
 | ACSP |
 | ACWC |
 | ACSC |
-| ACWP |
-| ACCC |
 | BLCK |
-| RJCT |
+| ACCC |
+| ACWP |
 
 For full flow refer to state 2 diagram bellow.
 

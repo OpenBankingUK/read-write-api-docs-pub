@@ -68,21 +68,22 @@ The domestic-standing-orders - payment-details must have one of the following Ex
 
 | Status |
 | ------ |
-| INCO |
 | CANC |
-| PDNG |
+| RCVD |
 | ACTC |
 | PATC |
+| PDNG |
+| RJCT |
+| INFA |
+| INCO |
 | ACCP |
 | ACFC |
 | ACSP |
 | ACWC |
 | ACSC |
-| ACWP |
-| ACCC |
 | BLCK |
-| RJCT |
-| RCVD |
+| ACCC |
+| ACWP |
 
 For full flow refer to state 2 diagram bellow.
 
