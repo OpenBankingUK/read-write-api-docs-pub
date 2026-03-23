@@ -50,19 +50,24 @@ The file-payments - payment-details must have one of the following ExternalPayme
 
 | Status |
 | ------ |
+| CANC |
 | RCVD |
-| PDNG |
 | ACTC |
-| PART |
+| PATC |
+| PDNG |
+| RJCT |
+| INFA |
+| INCO |
 | ACCP |
 | ACFC |
 | ACSP |
 | ACWC |
 | ACSC |
+| BLCK |
 | ACCC |
-| RJCT |
+| ACWP |
 
-Refer to [External_Internal_CodeSets](https://github.com/OpenBankingUK/External_Internal_CodeSets) -> ISO_External_CodeSet -> `ExternalPaymentTransactionStatus1Code`.
+Refer to [External_Internal_CodeSets](https://github.com/OpenBankingUK/External_Internal_CodeSets) -> OB_Internal_CodeSet -> `ExternalPaymentTransactionStatus1Code`.
 
 ### State Model
 
@@ -311,7 +316,7 @@ Content-Type: application/json
   "Data": {
     "ConsentId": "512345",
     "FilePaymentId": "FP1-512345",
-    "Status": "RCVD",
+    "Status": "PDNG",
     "CreationDateTime": "2018-06-05T15:15:13+00:00",
     "StatusUpdateDateTime": "2018-06-05T15:15:13+00:00",
     "StatusReason": [

@@ -58,7 +58,7 @@ The international-standing-orders resource must have one of the following status
 
 For full flow refer to state 1 diagram bellow.
 
-Refer to [External_Internal_CodeSets](https://github.com/OpenBankingUK/External_Internal_CodeSets) -> ISO_External_CodeSet -> `ExternalPaymentTransactionStatus1Code`.
+Refer to [External_Internal_CodeSets](https://github.com/OpenBankingUK/External_Internal_CodeSets) -> OB_Internal_CodeSet -> `ExternalPaymentTransactionStatus1Code`.
 
 ### GET /international-standing-orders/{InternationalStandingOrderPaymentId}/payment-details
 
@@ -70,20 +70,22 @@ The international-standing-orders - payment-details must have one of the followi
 
 | Status |
 | ------ |
-| INCO |
 | CANC |
-| PDNG |
+| RCVD |
 | ACTC |
 | PATC |
+| PDNG |
+| RJCT |
+| INFA |
+| INCO |
 | ACCP |
 | ACFC |
 | ACSP |
 | ACWC |
 | ACSC |
-| ACWP |
-| ACCC |
 | BLCK |
-| RJCT |
+| ACCC |
+| ACWP |
 
 For full flow refer to state 2 diagram bellow.
 
