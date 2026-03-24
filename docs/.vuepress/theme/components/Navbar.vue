@@ -220,7 +220,7 @@ $navbar-horizontal-padding = 1.5rem
 }
 
 .socket {
-  background-color: $primaryBlue;
+  background-color: #51509e;
   padding: 10px 0;
   color: #fff;
   text-align: right;
@@ -228,7 +228,7 @@ $navbar-horizontal-padding = 1.5rem
 
 .search-wrapper {
   display: none;
-  background: $primaryBlue
+  background: #51509e
   position: absolute;
   width: 100%;
   padding: 0;
