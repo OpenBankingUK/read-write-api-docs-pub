@@ -31,7 +31,7 @@ module.exports = [
         items: [
             {
                 text: 'API Specifications',
-                link: 'https://openbankinguk.github.io/read-write-api-site3/v4.0.1/',
+                link: 'https://standards.openbanking.org.uk/api-specifications/latest/',
                 items: [
                     { text: 'Read/Write API Specifications', link: 'https://openbankinguk.github.io/read-write-api-site3/v4.0/profiles/read-write-data-api-profile.html' },
                     { text: 'Open Data API Specifications', link: 'https://openbankinguk.github.io/opendata-api-docs-pub/' },
