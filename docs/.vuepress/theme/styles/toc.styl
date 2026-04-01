@@ -1,3 +1,8 @@
 .table-of-contents
   .badge
     vertical-align middle
+
+// For some reason generating the toc removed boldness from the top level items (h2s) in the toc
+// This sytle rule enforces that manually ensuring the top level h2 items in the toc are bold.
+.table-of-contents > ul > li > a
+  font-weight 700

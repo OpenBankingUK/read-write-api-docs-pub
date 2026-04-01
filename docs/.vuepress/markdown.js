@@ -1,10 +1,7 @@
 module.exports = {
-    // https://vuepress.vuejs.org/config/#markdown-linenumbers
+    // Config for these values can be found here: https://v1.vuepress.vuejs.org/config/#plugins
     lineNumbers: false,
-    // options for markdown-it-anchor
     anchor: {
-        permalinkBefore: true,
-        permalink: true,
         level: [
             2,
             3,
@@ -13,7 +10,6 @@ module.exports = {
             6,
         ],
     },
-    // options for markdown-it-toc
     toc: {
         includeLevel: [
             2,
