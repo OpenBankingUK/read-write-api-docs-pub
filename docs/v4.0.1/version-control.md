@@ -21,7 +21,7 @@ For v4.0.1 the following approach has been adopted for identifying changes:
 - [v40_KI45] Added LWMH, LXMH, & TWYR to Frequency Examples in PIS Domestic Standing Order consents & AIS Standing Orders
 - [v40_KI45] Added Frequency Examples table to PIS International Standing Order Consents
 - [CDRW-4937] Added example of query string `date-time` where only the Date is required.
-- [CDRW-5038] Added text to [Date Formats](https://openbankinguk.github.io/read-write-api-site3/v4.0/profiles/read-write-data-api-profile.html#date-formats) section advising on decimal precision limit of 5, as agreed in TDA Decision 284
+- [CDRW-5038] Added text to [Date Formats](https://openbankinguk.github.io/read-write-api-site3/v4.0.1/profiles/read-write-data-api-profile.html#date-formats) section advising on decimal precision limit of 5, as agreed in TDA Decision 284
 - [CDRW-5039] Added new [Days of the Week](https://openbankinguk.github.io/read-write-api-site3/v4.0.1/profiles/read-write-data-api-profile.html#days-of-the-week) section to Date Formats advising of ISO-8601 alignment and providing a table of week days and ordinal values as discussed at TDA on 2026-03-04
 - [CDRW-5057] Added `OBRemittanceInformation2` definition and Data Dictionary to [AIS Standing Orders page](https://openbankinguk.github.io/read-write-api-site3/v4.0.1/resources-and-data-models/aisp/standing-orders.html#obremittanceinformation2)
 - [v4.x.x Consultation 1] Added a note regarding the use of `ExternalPaymentTransactionStatus1Code` values in `payment-details` endpoints in
@@ -74,7 +74,7 @@ For v4.0.1 the following approach has been adopted for identifying changes:
 ### Changed
 
 - [CDRW-4965] Guidance on Timezone inclusion in the [Filtering section](https://openbankinguk.github.io/read-write-api-site3/v4.0.1/resources-and-data-models/aisp/Transactions.html#filtering) of the Transactions page has been updated from "Timezone may be included in the filter request, but must be ignored by the ASPSP." to "Timezone **must not** be included in the filter request."
-- [CDRW-5040] - added some missing bold formatting to `must` in the [Date Formats](https://openbankinguk.github.io/read-write-api-site3/v4.0/profiles/read-write-data-api-profile.html#date-formats) and [Resource URI Path Structure](https://openbankinguk.github.io/read-write-api-site3/v4.0/profiles/read-write-data-api-profile.html#resource-uri-path-structure) sections.
+- [CDRW-5040] - added some missing bold formatting to `must` in the [Date Formats](https://openbankinguk.github.io/read-write-api-site3/v4.0.1/profiles/read-write-data-api-profile.html#date-formats) and [Resource URI Path Structure](https://openbankinguk.github.io/read-write-api-site3/v4.0.1/profiles/read-write-data-api-profile.html#resource-uri-path-structure) sections.
 - [CDRW-5050] Improved formatting of regex patterns by wrapping in backticks for code formatting visual:
   - `v4.0.1/profiles/account-and-transaction-api-profile`
   - `v4.0.1/profiles/payment-initiation-api-profile`
